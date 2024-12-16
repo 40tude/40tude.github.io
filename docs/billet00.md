@@ -48,17 +48,20 @@ $$ E = mc^2 $$
 ## Exemple d'image ?
 Avec une référence à : site.url
 
-![]({{site.url}}/assets/images/img01.png)
+<!-- ![]({{site.url}}/assets/images/img01.png) -->
+![](./images/img01.png)
 
 En utilisant `../assets/images`
 
-![](../assets/images/img02.png)
+<!-- ![](../assets/images/img02.png) -->
+![](./images/img02.png)
 
 
 En utilisant une `div` pour centrer l'image et pouvoir continuer avec du markdown ensuite
 
 <div align="center">
-<img src="../assets/images/img02.png" alt="Zoubida" width="400"/>
+<!-- <img src="../assets/images/img02.png" alt="Zoubida" width="400"/> -->
+<img src="./images/img02.png" alt="Zoubida" width="400"/>
 </div>
 
 [Lien vers un autre site](https://example.com)  

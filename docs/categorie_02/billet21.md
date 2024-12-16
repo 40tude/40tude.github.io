@@ -16,7 +16,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt non
 En utilisant une `div` pour centrer l'image et pouvoir continuer avec du markdown ensuite
 
 <div align="center">
-<img src="{{site.url}}/assets/images/img02.png" alt="Zoubida" width="400"/>
+<img src="./images/img02.png" alt="Zoubida" width="400"/>
 </div>
 
 [Lien vers un autre site](https://example.com)  

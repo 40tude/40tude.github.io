@@ -16,11 +16,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt non
 En utilisant une `div` pour centrer l'image et pouvoir continuer avec du markdown ensuite
 
 <div align="center">
-<img src="{{site.url}}/assets/images/img02.png" alt="Zoubida" width="400"/>
+<img src="./images/img02.png" alt="Zoubida" width="400"/>
 </div>
 
 [Lien vers un autre site](https://example.com)  
 
-Quisque justo urna, egestas non dolor in, auctor euismod mi. Maecenas rutrum placerat metus, a malesuada sapien dapibus eget. Vivamus porta, enim eget volutpat gravida, lacus dui pellentesque mi, quis aliquam arcu diam eget nibh. Morbi efficitur arcu in interdum porttitor. Maecenas vitae dapibus elit. Sed pulvinar velit sed facilisis pulvinar. Donec aliquet dolor et tortor pharetra, id commodo libero volutpat. Vivamus convallis enim sed pretium porttitor. Ut sed pellentesque ex.
+Justo urna, egestas non dolor in, auctor euismod mi. Maecenas rutrum placerat metus, a malesuada sapien dapibus eget. Vivamus porta, enim eget volutpat gravida, lacus dui pellentesque mi, quis aliquam arcu diam eget nibh. Morbi efficitur arcu in interdum porttitor. Maecenas vitae dapibus elit. Sed pulvinar velit sed facilisis pulvinar. Donec aliquet dolor et tortor pharetra, id commodo libero volutpat. Vivamus convallis enim sed pretium porttitor. Ut sed pellentesque ex.
 
  
