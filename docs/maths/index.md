@@ -3,7 +3,7 @@ layout: default
 title: "Catégorie 01"
 math: mathjax
 date:               2024-12-14 23:00:00 +0000
-last_modified_date: 2024-12-14 23:00:00 +0000
+last_modified_date: 2024-12-18 22:00:00 +0000
 ---
 
-Mes pages de maths
+Cette page d'index est obligatoire à priori.
