@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "C'est quoi un angle?"
-parent: "Catégorie 01"
+parent: "Maths" 
 math: mathjax
 date:               2024-12-18 22:00:00 +0000
 last_modified_date: 2024-12-18 22:00:00 +0000
