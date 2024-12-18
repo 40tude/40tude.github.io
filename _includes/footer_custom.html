@@ -2,7 +2,7 @@
 
 
 
-
+<!-- 
 <div class="d-flex mt-2">
     {% if site.last_edit_time_format and page.last_modified_date %}
     <p class="text-small text-grey-dk-000 mb-0 mr-2">
@@ -16,4 +16,15 @@
 
 <div align="center">
     <p class="text-small text-grey-dk-100 mb-0 mr-2">Copyright &copy; 1964-{{ site.time | date: '%Y' }} - 40tude</p>
+</div> -->
+
+
+<div class="container text-center text-small">
+    {% if site.last_edit_time_format and page.last_modified_date %}
+    <p class="mb-1">
+        <span>Published on: <strong>{{ page.date | date: site.last_edit_time_format }}</strong></span> |
+        <span>Last updated: <strong>{{ page.last_modified_date | date: site.last_edit_time_format }}</strong></span>
+    </p>
+    {% endif %}
+    <p class="mb-1">Copyright &copy; 1964-{{ site.time | date: '%Y' }} - 40tude</p>
 </div>
