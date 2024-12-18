@@ -1,4 +1,19 @@
 <!-- Copyright &copy; 1964-{{ site.time | date: '%Y' }} - 40tude -->
+
+
+
+
+<div class="d-flex mt-2">
+    {% if site.last_edit_time_format and page.last_modified_date %}
+    <p class="text-small text-grey-dk-000 mb-0 mr-2">
+        First Edition: <span class="d-inline-block">{{ page.date | date: site.last_edit_time_format }}</span> | Last
+        Modification: <span class="d-inline-block">{{ page.last_modified_date | date: site.last_edit_time_format
+            }}</span>.
+    </p>
+    {% endif %}
+</div>
+
+
 <div align="center">
-<p class="text-small text-grey-dk-100 mb-0">Copyright &copy; 1964-{{ site.time | date: '%Y' }} - 40tude</p>
+    <p class="text-small text-grey-dk-100 mb-0 mr-2">Copyright &copy; 1964-{{ site.time | date: '%Y' }} - 40tude</p>
 </div>
