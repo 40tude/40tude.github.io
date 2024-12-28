@@ -1,11 +1,12 @@
 ---
 layout: default
-parent: "Simple OS"
 title: "SOS 2 le retour 20 ans après... Episode 1"
-math: mathjax
+parent: "Simple OS"
+# math: mathjax
 date: 2023-11-19 00:20:43
 last_modified_date: 2023-12-04 00:02:38
 ---
+
 <div align="center">
 <img src="./assets/image-2.webp" alt="" width="900" loading="lazy"/>
 </div>

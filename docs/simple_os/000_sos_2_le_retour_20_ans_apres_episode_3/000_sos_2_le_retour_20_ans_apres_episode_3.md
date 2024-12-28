@@ -1,11 +1,12 @@
 ---
 layout: default
-parent: "Simple OS"
 title: "SOS 2 le retour 20 ans après… Episode 3"
-math: mathjax
+parent: "Simple OS"
+# math: mathjax
 date: 2023-12-18 18:37:12
 last_modified_date: 2024-03-30 20:20:02
 ---
+
 ## Les épisodes précédents
 
 * [Episode 1](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/) (vaut mieux lire le 1 avant le 0)
