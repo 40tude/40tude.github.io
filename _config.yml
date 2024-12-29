@@ -20,6 +20,8 @@ last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https:/
 
 favicon_ico: "/assets/images/40tude.png"
 lang: fr
+back_to_top: true
+back_to_top_text: "Back to top"
 
 exclude:
   # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
