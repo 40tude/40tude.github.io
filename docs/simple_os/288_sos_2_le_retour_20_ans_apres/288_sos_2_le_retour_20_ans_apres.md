@@ -77,6 +77,7 @@ Là aussi, si certains sujets ne sont pas encore très clairs, pas d'angoisse on
 
 <!-- ### **Note** -->
 {: .note }
+
 Si tu veux avoir une idée de ce qu'il faut faire en 2023 pour faire tourner SOS dans une configuration similaire à celle de l'époque, tu peux [lire ce billet](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/). Good luck, ce sera sans moi. 😊
 
 ## **Qu'est-ce qui tourne aujourd'hui ?**
