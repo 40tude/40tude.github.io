@@ -82,8 +82,8 @@ Faire redémarrer SOS en utilisant des moyens contemporains.
 
 Là aussi, si certains sujets ne sont pas encore très clairs, pas d'angoisse on aura l'occasion de revenir dessus. Oui, bien sûr, beaucoup de choses ont évolué : 64 bits partout, UEFI, NVMe, Git a vu le jour, plus de lecteur de disquette dans les PC, plus de CD dans les magazines etc. N'empêche, tout ce qui est dit dans les articles, tout ce qui y est expliqué reste valable en grande partie encore aujourd'hui. Cerise sur le gâteau pour certains, tout est en français (j'ai pensé écrire ce billet en anglais mais ce n'était pas raccord avec les articles alors, j'ai laissé tomber l'idée).
 
-### **Note**
-
+<!-- ### **Note** -->
+{: .note }
 Si tu veux avoir une idée de ce qu'il faut faire en 2023 pour faire tourner SOS dans une configuration similaire à celle de l'époque, tu peux [lire ce billet](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/). Good luck, ce sera sans moi. 😊
 
 ## **Qu'est-ce qui tourne aujourd'hui ?**
