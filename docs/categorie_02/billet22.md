@@ -2,7 +2,7 @@
 layout: default
 title: "Billet 2/2"
 parent: "Catégorie 02"
-math: mathjax
+# math: mathjax
 date:               2024-12-14 23:00:00 +0000
 last_modified_date: 2024-12-15 14:00:00 +0000
 ---
@@ -16,7 +16,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt non
 En utilisant une `div` pour centrer l'image et pouvoir continuer avec du markdown ensuite
 
 <div align="center">
-<img src="./images/img01.png" alt="Zoubida" width="400"/>
+<img src="./assets/img01.png" alt="Zoubida" width="400"/>
 </div>
 
 [Lien vers un autre site](https://example.com)  

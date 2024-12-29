@@ -16,7 +16,7 @@ Lorem ipsum[^1] dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt
 En utilisant une `div` pour centrer l'image et pouvoir continuer avec du markdown ensuite
 
 <div align="center">
-<img src="./images/img02.png" alt="Zoubida" width="400"/>
+<img src="./assets/img02.png" alt="Zoubida" width="400"/>
 </div>
 
 [Lien vers un autre site](https://example.com)  
@@ -24,7 +24,7 @@ En utilisant une `div` pour centrer l'image et pouvoir continuer avec du markdow
 Quisque justo urna, egestas non dolor in, auctor euismod mi. Maecenas rutrum placerat metus, a malesuada sapien dapibus eget. Vivamus porta, enim eget volutpat gravida, lacus dui pellentesque mi, quis aliquam arcu diam eget nibh. Morbi efficitur arcu in interdum porttitor. Maecenas vitae dapibus elit. Sed pulvinar velit sed facilisis pulvinar. Donec aliquet dolor et tortor pharetra, id commodo libero volutpat. Vivamus convallis enim sed pretium porttitor. Ut sed pellentesque ex.
 
 <div align="center">
-<img src="./images/img01.png" alt="Zoubida" width="400"/>
+<img src="./assets/img01.png" alt="Zoubida" width="400"/>
 </div>
 
 ----

@@ -4,7 +4,7 @@ title: "Mon Premier Billet"
 math: mathjax
 date:               2024-12-13 23:00:00 +0000
 last_modified_date: 2024-12-16 14:00:00 +0000
-nav_order: 2
+# nav_order: 2
 ---
 
 # Billet 0/0 
@@ -49,19 +49,19 @@ $$ E = mc^2 $$
 Avec une référence à : site.url
 
 <!-- ![]({{site.url}}/assets/images/img01.png) -->
-![](./images/img01.png)
+![](./assets/img01.png)
 
 En utilisant `../assets/images`
 
 <!-- ![](../assets/images/img02.png) -->
-![](./images/img02.png)
+![](./assets/img02.png)
 
 
 En utilisant une `div` pour centrer l'image et pouvoir continuer avec du markdown ensuite
 
 <div align="center">
 <!-- <img src="../assets/images/img02.png" alt="Zoubida" width="400"/> -->
-<img src="./images/img02.png" alt="Zoubida" width="400"/>
+<img src="./assets/img02.png" alt="Zoubida" width="400"/>
 </div>
 
 [Lien vers un autre site](https://example.com)  

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Catégorie 02"
-math: mathjax
+#math: mathjax
 date:               2024-12-14 23:00:00 +0000
 last_modified_date: 2024-12-14 23:00:00 +0000
 ---
