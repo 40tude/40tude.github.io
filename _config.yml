@@ -19,7 +19,7 @@ last_edit_timestamp: false # It is set to false because I have my own footer sho
 last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
 favicon_ico: "/assets/images/40tude.png"
-# lang: fr
+lang: fr
 
 exclude:
   # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
