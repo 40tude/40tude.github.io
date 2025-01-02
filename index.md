@@ -14,8 +14,8 @@ Soyez pas surpris si les menus changent, les billets et catégories disparraisse
 
 ## TODO
 * Sur la 1ere page, la liste des 10 derniers billets édités
-* Correcteur ortho dans VScode
-* ?? 
+* Correcteur ortho FR dans VScode ?
+* What else ? 
 
 
 <!-- ## Site under construction - Give me much more time
