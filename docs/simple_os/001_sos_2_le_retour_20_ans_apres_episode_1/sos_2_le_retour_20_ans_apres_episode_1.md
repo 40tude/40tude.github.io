@@ -254,7 +254,7 @@ Copie de la VM
 **Ne pas passer à la suite** sans avoir fait une copie. Aie confiance, crois en moi...🎵🎶
 
 {: .warning }
-Copie de la VM
+Copie de la VM. Je peux pas mettre beaucoup plus de warnings. Tu es prévenu.
 
 ## Installer un répertoire partagé
 

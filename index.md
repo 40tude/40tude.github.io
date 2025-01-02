@@ -13,9 +13,15 @@ Laissez moi un peu de temps (ça devrait être terminé fin janvier 2025)
 Soyez pas surpris si d'ici là, les menus changent, les billets et catégories disparraissent, apparaissent...
 
 ## TODO
+* Porter les pages de SOS pour tester les outils de recupération du site WP
+* Test du site avec outils Google etc.
 * Sur la 1ere page, la liste des 10 derniers billets édités
+* Lightbox pour les grosses images
 * Correcteur ortho FR dans VScode ?
+* Pages en anglais? avec lang=en avant le Head
 * What else ? 
+* ~~Back to Top~~
+* ~~First et last Edit en bas de page~~
 
 
 <!-- ## Site under construction - Give me much more time

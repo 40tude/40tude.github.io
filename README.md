@@ -1,5 +1,1 @@
-# TODO
-* Pages en anglais? avec lang=en avant le Head
-* Porter les pages SOS
-* ~~Back to Top~~
-* ~~First et last Edit en bas de page~~
+C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + GitHub
