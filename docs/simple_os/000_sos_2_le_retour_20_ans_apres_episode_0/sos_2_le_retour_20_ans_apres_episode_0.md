@@ -15,7 +15,14 @@ last_modified_date: 2023-12-04 00:02:38
 
 # Simple OS
 
-## Créez votre OS
+## Les épisodes de la série
+
+* [Episode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) 
+* [Episode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %})
+* [Episode 2]({% link docs/simple_os/002_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_2.md %})
+* [Episode 3]({% link docs/simple_os/003_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_3.md %})
+
+## Introduction
 
 En 2004, rappelez-vous, c'était l'année des Black Eyed Peas, de la sortie du film le prisonnier d'Azkaban, de l'atterrissage de Opportunity sur Mars... Le noyau Linux était en 2.6 et Chirac était président... Toute une époque... En plus, en juin de cette année-là, avec le numéro 62 de GNU Linux Magazine France, a débuté une série d'articles dont l'objectif était d'expliquer comment on pouvait écrire son propre système d'exploitation (SOS comme [Simple OS](http://sos.enix.org/fr/SOSDownload)). Je ne sais pas pourquoi, mais il y a des articles et des sujets qui vous restent dans la tête...
 

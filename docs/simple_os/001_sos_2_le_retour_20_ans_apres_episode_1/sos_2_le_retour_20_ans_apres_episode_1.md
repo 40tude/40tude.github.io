@@ -10,13 +10,21 @@ last_modified_date: 2023-12-05 21:58:13
 
 # Simple OS
 
+## Les épisodes de la série
+
+* [Episode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) 
+* [Episode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %})
+* [Episode 2]({% link docs/simple_os/002_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_2.md %})
+* [Episode 3]({% link docs/simple_os/003_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_3.md %})
+
+
+## Introduction
+
 J'explique ici la galère que c'est, en 2023, de remonter une machine susceptible de faire tourner le code d'un OS écrit en 2004.
 
 <div align="center">
 <img src="./assets/image-1.webp" alt="" width="900" loading="lazy"/>
 </div>
-
-## **Intro**
 
 Commence par lire [cet article (épisode 1)](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/) avant de revenir ici car j'ai écrit l'épisode 1 avant celui-ci. Ayé, t'as lu? Donc maintenant tu sais que j'ai décidé de faire du bouche-à-bouche à un code qui a une vingtaine d'année et de le faire tourner dans un setup modernisé à base de Grub2, Docker, NASM etc.
 
