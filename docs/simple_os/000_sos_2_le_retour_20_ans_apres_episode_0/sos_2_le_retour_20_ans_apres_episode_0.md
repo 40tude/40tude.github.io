@@ -20,13 +20,13 @@ last_modified_date: 2023-12-04 00:02:38
 ## Introduction
 
 <div align="center">
-<img src="./assets/image-2.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-2.webp" alt="" width="225" loading="lazy"/>
 </div>
 
 En 2004, rappelez-vous, c'était l'année des Black Eyed Peas, de la sortie du film le prisonnier d'Azkaban, de l'atterrissage de Opportunity sur Mars... Le noyau Linux était en 2.6 et Chirac était président... Toute une époque... En plus, en juin de cette année-là, avec le numéro 62 de GNU Linux Magazine France, a débuté une série d'articles dont l'objectif était d'expliquer comment on pouvait écrire son propre système d'exploitation (SOS comme [Simple OS](http://sos.enix.org/fr/SOSDownload)). Je ne sais pas pourquoi, mais il y a des articles et des sujets qui vous restent dans la tête...
 
 <div align="center">
-<img src="./assets/image-5_1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-5_1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -295,7 +295,7 @@ Etat du répertoire avant d'avoir lancé le script
 </div>
 
 
-Lance le script `sos2.sh` (n'oublie pas le point devant, je l'oublie toujours...)
+Lance le script `sos2.sh` (n'oublie pas le point devant le nom du script, je l'oublie toujours...)
 
 ```
 . sos2.sh
