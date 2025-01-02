@@ -15,7 +15,7 @@ last_modified_date: 2024-03-30 20:20:02
 * [Episode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) 
 * [Episode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %})
 * [Episode 2]({% link docs/simple_os/002_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_2.md %})
-* [Episode 3]({% link docs/simple_os/003_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_3.md %})
+* [Episode 3]({% link docs/simple_os/003_sos_2_le_retour_20_ans_apres_episode_3/sos_2_le_retour_20_ans_apres_episode_3.md %})
 
 ## Introduction
 
