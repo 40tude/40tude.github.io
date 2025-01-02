@@ -22,6 +22,8 @@ last_modified_date: 2023-12-05 21:58:13
 
 J'explique ici la galère que c'est, en 2023, de remonter une machine susceptible de faire tourner le code d'un OS écrit en 2004. C'est un excellent exemple de ce qu'il ne faut **PAS** faire.
 
+La lecture de ce billet est facultative pour comprendre comment on passe de SOS à SOS2. Tu peux donc passer au billet suivant si tu ne souhaite pas faire démarrer le SOS "historique" dans une VM.
+
 <div align="center">
 <img src="./assets/image-1.webp" alt="" width="900" loading="lazy"/>
 </div>
