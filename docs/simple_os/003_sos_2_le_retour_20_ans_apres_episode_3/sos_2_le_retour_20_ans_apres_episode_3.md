@@ -52,7 +52,7 @@ Ensuite copie-colle le code ci-dessous dans un script PowerShell que tu dois nom
 
 * De copier dans l'arborescence de sos2-3 les nouveaux fichiers qui sont apparus entre les versions des épisodes 2 et 3 de SOS. On fait ça afin de coller au mieux au code source original.
 
-```
+```powershell
 # Make a copy of the directory containing previous version of sos2 and name it sos2-3
 Copy-Item ./sos2-2 ./sos2-3 -Recurse
 
@@ -113,13 +113,13 @@ Bon, allez, on "build" le projet.
 
 Ça va râler un peu mais ce n'est pas grave... Depuis le terminal de VSCode, lance l'image Docker avec la commande suivante :
 
-```
+```powershell
 docker run --rm -it -v $pwd/:/root/env sos2-buildenv
 ```
 
 Ensuite, depuis le terminal de l'image, tu "build" avec les commandes :
 
-```
+```bash
 make clean
 make
 ```
@@ -133,7 +133,7 @@ Voilà ce que je vois
 
 Ça, c'est facile. C'est même un classique dorénavant. Cette erreur de compilation est due au fait que le `main.c` de l'épisode 3 historique "cause" Grub 1 alors que SOS2 doit parler Grub 2... Relis les épisodes précédents si besoin. Dans `main.c` il faut faire la modification suivante :
 
-```
+```c
 // #include <bootstrap/multiboot.h>
 #include <sos/multiboot2.h>
 
@@ -141,13 +141,12 @@ Voilà ce que je vois
 
 Build.
 
-```
+```bash
 Make clean
 Make
 ```
 
-Du coup il y [cialis sans ordonnance](https://www.e-vroum.fr/acheter-cialis-en-ligne-sans-ordonnance-decouvrez-nos-reductions-exceptionnelles.html)
-a plus de messages mais ce n'est pas trop gênant... Ce sont encore des histoires de structures de données liées à Grub 1
+Du coup il y a plus de messages mais ce n'est pas trop gênant... Ce sont encore des histoires de structures de données liées à Grub 1
 
 <div align="center">
 <img src="./assets/image-24.webp" alt="" width="900" loading="lazy"/>
@@ -156,14 +155,14 @@ a plus de messages mais ce n'est pas trop gênant... Ce sont encore des histoire
 
 Dans le fichier `main.c` je te propose de faire les modifications suivantes :
 
-```
+```c
 // multiboot_info_t *mbi;
 // mbi = (multiboot_info_t *) addr;
 ```
 
 Puis
 
-```
+```c
 // if (magic == MULTIBOOT_BOOTLOADER_MAGIC)
 //   /* Loaded with Grub */
 //   sos_x86_videomem_printf(1, 0,
@@ -181,7 +180,7 @@ Puis
 
 On sauve, on build.
 
-```
+```bash
 Make clean
 Make
 ```
@@ -195,7 +194,7 @@ Il reste des erreurs
 
 CTRL+click sur la ligne `main.c 158` puis tu mets en commentaire les lignes ci-dessous :
 
-```
+```c
 
   // if (magic != MULTIBOOT_BOOTLOADER_MAGIC) {
   //   sos_x86_videomem_putstring(20, 0, SOS_X86_VIDEO_FG_LTRED | SOS_X86_VIDEO_BG_BLUE | SOS_X86_VIDEO_FG_BLINKING, "I'm not loaded with Grub !");
@@ -208,13 +207,13 @@ CTRL+click sur la ligne `main.c 158` puis tu mets en commentaire les lignes ci-d
 
 Il y a aussi un warning à cause d'une variable `i` qui n'est pas utilisée. Il faut appliquer la correction suivante :
 
-```
+```c
 //unsigned i;
 ```
 
 On sauve, on build.
 
-```
+```bash
 Make clean
 Make
 ```
@@ -228,14 +227,14 @@ Quand y en a plus, y en a encore... Voilà ce que je vois :
 
 Là, c'est plus "touchy"... Mais bon on peut résoudre le premier warning en se rappelant que dans l'épisode 2 j'avais renommé la fonction `sos_exceptions_setup()` en `sos_install_dbl_fault_exceptions()`. Toujours dans `main.c` il faut donc appliquer la modification suivante :
 
-```
+```c
 //sos_exceptions_setup();
 sos_install_dbl_fault_exceptions();
 ```
 
 Ensuite, si on étudie un peu le code on réalise qu'il faut alimenter la fonction `sos_physmem_setup()` avec la limite haute de la RAM. Pour cela il faut utiliser les informations que nous donne Grub 2 et modifier le code comme suit (oui, oui je sais on peut faire beaucoup mieux mais comme j'ai hâte de voir si ça démarre je copie-colle un bout de code qui marchait dans l'épisode 1) :
 
-```
+```c
 struct multiboot_tag *tag;
 for (tag = (struct multiboot_tag *)(addr + 8); tag->type != MULTIBOOT_TAG_TYPE_END; tag = (struct multiboot_tag *)((multiboot_uint8_t *)tag + ((tag->size + 7) & ~7))) {
   switch (tag->type) {
@@ -250,7 +249,7 @@ sos_physmem_setup((mem_upper << 10) + (1 << 20), &sos_kernel_core_base_paddr, &s
 
 Bien sûr, au tout début de la fonction `sos_main()` il faut pas oublier de déclarer la nouvelle variable `mem_upper` :
 
-```
+```c
 void sos_main(unsigned long magic, unsigned long addr) {
   // unsigned i;
   unsigned mem_upper = 0;
@@ -293,7 +292,7 @@ Je ne déclare pas exactement l'étiquette `__b_kernel` comme dans le fichier `.
 
 On sauve, on build.
 
-```
+```bash
 Make clean
 Make
 ```
@@ -307,7 +306,7 @@ Il n'y a plus d'erreur ni de warning.
 
 Allez, depuis VSCode, on lance l'émulateur dans un second terminal PowerShell:
 
-```
+```powershell
 qemu-system-i386 -cdrom ./dist/sos2.iso
 ```
 <div align="center">
@@ -317,7 +316,7 @@ qemu-system-i386 -cdrom ./dist/sos2.iso
 
 Si dans un second test je lance l'émulateur avec cette commande :
 
-```
+```powershell
 qemu-system-i386 -m 32M -cdrom ./dist/sos2.iso
 ```
 
@@ -329,7 +328,13 @@ Voilà ce que je vois :
 
 ## Conclusion
 
-Si on compare avec les épisodes précédents, on ne s'en sort vraiment pas trop mal. C'est vrai que le chapitre en question traite surtout de structures de données en C, mais bon, si tous les épisodes à venir pouvaient se passer de la même façon... Sinon, je viens tout juste de déposer [SOS2-3 sur GitHub](https://github.com/40tude/sos2-3). Je réalise qu'il est peut-être temps de faire un peu de ménage : le `main.c` me parait bien encombré, il y a des `.bak` un peu partout et des `readelf.txt` ou `objdump.txt` qui ne sont pas d'actualité dans ce chapitre. Bref, je crois que je vais faire un peu de rangement. Ah oui, et si j'ai 2 minutes j'en profiterais pour corriger la rustine qui permet d'initialiser la variable `mem_upper`...
+Si on compare avec les épisodes précédents, on ne s'en sort vraiment pas trop mal. C'est vrai que le chapitre en question traite surtout de structures de données en C, mais bon, si tous les épisodes à venir pouvaient se passer de la même façon... 
+
+Sinon, je viens tout juste de déposer [SOS2-3 sur GitHub](https://github.com/40tude/sos2-3). 
+
+Je réalise qu'il est peut-être temps de faire un peu de ménage : le `main.c` me parait bien encombré, il y a des `.bak` un peu partout et des `readelf.txt` ou `objdump.txt` qui ne sont pas d'actualité dans ce chapitre. 
+
+Bref, je crois que je vais faire un peu de rangement. Ah oui, et si j'ai 2 minutes j'en profiterais pour corriger la rustine qui permet d'initialiser la variable `mem_upper`...
 
 *Allez, à plus et la suite au prochain épisode...*
 

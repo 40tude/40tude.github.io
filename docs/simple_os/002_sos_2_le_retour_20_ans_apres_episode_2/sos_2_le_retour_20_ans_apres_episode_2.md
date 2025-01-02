@@ -122,13 +122,9 @@ Ensuite tu ouvres une console PowerShell et tu lance le script (si problème rel
 ### Séquence explications
 
 * On fait une copie du répertoire `sos2`
-
 * Le répertoire du projet s'appelle `sos2-2` (le `-2` c'est pour épisode 2)
-
 * `./sos2/download` contient les projets `sos` "canal historique" des épisodes 1 et 2
-
 * À titre d'info on compare les répertoires et on affiche les différences
-
 * On remonte d'un cran certains source qui n'existaient pas ou qui étaient très différents dans l'épisode 1 : `sos_main.c`, le répertoire `hw_core`...
 
 ### TO DO :
