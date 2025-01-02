@@ -470,7 +470,7 @@ Voilà ce que cela donne chez moi
 
 Dans le fichier multiboot_header.asm, colle les lignes suivantes :
 
-```assembly
+```nasm
 section .multiboot_header
 header_start:
     dd 0xe85250d6                                                   ; magic number multiboot 2
@@ -489,7 +489,7 @@ header_end:
 
 Dans multiboot.asm colle ces lignes :
 
-```assembly
+```nasm
 MULTIBOOT_STACK_SIZE equ 0x4000                ; 16KB
 
 section .bss
@@ -543,7 +543,7 @@ Ensuite dans le répertoire `sos`, il faut créer un nouveau fichier `multiboot2
 
 Comme c'est un point qui m'a fait perdre pas mal de temps je laisse ici une copie du `multiboot2.h` que j'utilise.
 
-```assembly
+```nasm
 /*   multiboot2.h - Multiboot 2 header file. */
 /*   Copyright (C) 1999,2003,2007,2008,2009,2010  Free Software Foundation, Inc.
  *
@@ -994,7 +994,7 @@ C'est assez classique, c'est le fichier qui explique à Grub 2 comment il doit s
 
 Copie le code ci-dessous et met le dans un fichier `target\sos2.ld`. Je ne suis pas intimement persuadé que ce soit le meilleur endroit mais bon ce fichier n'est pas un morceau du kernel, c'est pas un driver ni un constituant du bootstrap. Comme en plus je souhaite limiter au maximum le nombre de fichiers à la racine du projet... Si besoin on pourra toujours le déplacer plus tard.
 
-```assembly
+```nasm
 ENTRY(start)
 
 SECTIONS {
@@ -1495,7 +1495,7 @@ Histoire de "jouer" avec l'organisation de notre binaire (sos.bin) je te propose
 * On repasse à 2M
 * On renomme la section .boot
 
-```assembly
+```nasm
 ENTRY(start)
 
 SECTIONS {
@@ -1556,7 +1556,7 @@ Si on compile et qu'on liste les sections voilà ce que je vois (`.eh_frame` a d
 
 On peut aller plus loin et se rapprocher de l'organisation du fichier `sos.lds` de l'article. N'oublie pas, tu as accès à ce fichier, il est dans `download\sos-code-article1\support\sos.lds`). Je te propose de modifier sos2.ld comme suit :
 
-```assembly
+```nasm
 ENTRY(start)
 
 SECTIONS {
@@ -1642,7 +1642,7 @@ Google est notre ami... Pour y remédier je propose de faire 2 choses.
 
 1 - Modifier le fichier ``sos2.ld`` comme ci-dessous :
 
-```assembly
+```nasm
 ENTRY(start)
 
 SECTIONS {
@@ -1684,7 +1684,7 @@ On ne retrouve pas les `__b_load` et autres qu'il y avait dans le fichier `sos.l
 
 2 - Rajouter la ligne ci-dessous tout en bas des fichiers `multiboot.asm` et `multiboot_header.asm`.
 
-```assembly
+```nasm
 section .note.GNU-stack noalloc noexec nowrite progbits             ; https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart
                                                                     ; https://stackoverflow.com/questions/73435637/how-can-i-fix-usr-bin-ld-warning-trap-o-missing-note-gnu-stack-section-imp
 ```
