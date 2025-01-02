@@ -22,7 +22,7 @@ last_modified_date: 2023-12-06 22:15:35
 Je ne reviens pas sur les motivations etc. Si tu arrives ici par hasard, note que l'idée c'est de faire tourner, dans un contexte remis au goût du jour, un OS 32 bits dont le code date d'une vingtaine d'années. Ce qui est vraiment génial c'est que Simple OS (c'est le nom de l'OS en question) est excessivement bien documenté car, à l'époque, toute une série d'articles étaient parus à son sujet dans Linux Mag. Je te laisse lire [les articles de l'époque](http://sos.enix.org/fr/SOSDownload) ainsi que l'épisode 1 puis l'épisode 0 de cette série (oui, je sais, c'est bizarre mais c'est mieux comme ça).
 
 <div align="center">
-<img src="./assets/image-21.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-21.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 

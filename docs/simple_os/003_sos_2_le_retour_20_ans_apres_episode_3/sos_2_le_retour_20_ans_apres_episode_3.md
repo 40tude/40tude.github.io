@@ -24,7 +24,7 @@ Si tu arrives ici par hasard, note que l'idée c'est de faire tourner, dans un c
 Dans l'épisode 3, l'article original parle de la gestion de la mémoire physique.
 
 <div align="center">
-<img src="./assets/image-27_1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-27_1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 

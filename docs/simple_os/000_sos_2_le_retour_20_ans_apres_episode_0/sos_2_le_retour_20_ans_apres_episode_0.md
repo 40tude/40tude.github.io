@@ -458,8 +458,8 @@ Histoire qu'on soit bien synchronisés, je te propose de quitter (exit) le conta
 Dans le répertoire /bootstrap on va :
 
 * Renommer les fichiers existants en .bak. Il suffit d'appuyer sur F2 une fois que le nom d'un fichier est sélectionné puis de le renommer.
-* Créer un fichier multiboot.asm
-* Créer un fichier multiboot_header.asm
+* Créer un fichier ``multiboot.asm``
+* Créer un fichier ``multiboot_header.asm``
 
 Voilà ce que cela donne chez moi
 
@@ -468,7 +468,7 @@ Voilà ce que cela donne chez moi
 </div>
 
 
-Dans le fichier multiboot_header.asm, colle les lignes suivantes :
+Dans le fichier ``multiboot_header.asm``, colle les lignes suivantes :
 
 ```nasm
 section .multiboot_header
@@ -487,7 +487,7 @@ header_start:
 header_end:
 ```
 
-Dans multiboot.asm colle ces lignes :
+Dans ``multiboot.asm`` colle ces lignes :
 
 ```nasm
 MULTIBOOT_STACK_SIZE equ 0x4000                ; 16KB
@@ -543,7 +543,7 @@ Ensuite dans le répertoire `sos`, il faut créer un nouveau fichier `multiboot2
 
 Comme c'est un point qui m'a fait perdre pas mal de temps je laisse ici une copie du `multiboot2.h` que j'utilise.
 
-```nasm
+```c
 /*   multiboot2.h - Multiboot 2 header file. */
 /*   Copyright (C) 1999,2003,2007,2008,2009,2010  Free Software Foundation, Inc.
  *
@@ -994,7 +994,7 @@ C'est assez classique, c'est le fichier qui explique à Grub 2 comment il doit s
 
 Copie le code ci-dessous et met le dans un fichier `target\sos2.ld`. Je ne suis pas intimement persuadé que ce soit le meilleur endroit mais bon ce fichier n'est pas un morceau du kernel, c'est pas un driver ni un constituant du bootstrap. Comme en plus je souhaite limiter au maximum le nombre de fichiers à la racine du projet... Si besoin on pourra toujours le déplacer plus tard.
 
-```nasm
+```
 ENTRY(start)
 
 SECTIONS {
@@ -1490,7 +1490,7 @@ C'est rassurant, sos2.bin est bien un code au format ELF32. De plus on apprend q
 </div>
 
 
-Histoire de "jouer" avec l'organisation de notre binaire (sos.bin) je te propose de modifier `sos2.ld` comme suit :
+Histoire de "jouer" avec l'organisation de notre binaire (``sos.bin``) je te propose de modifier `sos2.ld` comme suit :
 
 * On repasse à 2M
 * On renomme la section .boot
@@ -1554,7 +1554,7 @@ Si on compile et qu'on liste les sections voilà ce que je vois (`.eh_frame` a d
 </div>
 
 
-On peut aller plus loin et se rapprocher de l'organisation du fichier `sos.lds` de l'article. N'oublie pas, tu as accès à ce fichier, il est dans `download\sos-code-article1\support\sos.lds`). Je te propose de modifier sos2.ld comme suit :
+On peut aller plus loin et se rapprocher de l'organisation du fichier `sos.lds` de l'article. N'oublie pas, tu as accès à ce fichier, il est dans `download\sos-code-article1\support\sos.lds`). Je te propose de modifier ``sos2.ld`` comme suit :
 
 ```nasm
 ENTRY(start)
@@ -1642,7 +1642,7 @@ Google est notre ami... Pour y remédier je propose de faire 2 choses.
 
 1 - Modifier le fichier ``sos2.ld`` comme ci-dessous :
 
-```nasm
+```
 ENTRY(start)
 
 SECTIONS {
