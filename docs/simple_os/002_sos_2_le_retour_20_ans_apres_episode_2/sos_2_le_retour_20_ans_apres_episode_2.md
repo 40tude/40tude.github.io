@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "SOS 2 le retour 20 ans après… Episode 2"
+title: "SOS2 Episode 2"
 parent: "Simple OS"
 nav_order: 4
 #math: mathjax
