@@ -19,10 +19,14 @@ Soyez pas surpris si d'ici là, les menus changent, les billets et catégories d
 * Lightbox pour les grosses images
 * Correcteur ortho FR dans VScode ?
 * Pages en anglais? avec lang=en avant le Head
+* Google Search Console
+* PageSpeed Insights
 * What else ? 
 * ~~Back to Top~~
 * ~~First et last Edit en bas de page~~
 
+## À garder eous le coude
+* https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers
 
 <!-- ## Site under construction - Give me much more time
 

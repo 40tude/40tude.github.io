@@ -39,7 +39,7 @@ Je confirme. C'était une **très mauvaise idée** et je m'en vais te raconter i
 ## La méthode
 
 <div align="center">
-<img src="./assets/image-38.webp" alt="" loading="lazy"/>
+<img src="./assets/image-38.webp" alt="" width="225" loading="lazy"/>
 </div>
 
 
@@ -49,8 +49,9 @@ Je ne peux pas porter le code sur une machine sur laquelle tourne une distributi
 
 J'ai essayé, vraiment essayé d'utiliser une image Docker mais je me suis retrouvé rapidement face à des problèmes de version de Grub 2 vs Grub Legacy, des soucis de compilateur trop récent, des problèmes dans le Makefile qui passait plus... En plus, il y a un mixte entre l'image qui peut être de type 386 et le sous-jacent du container qui est "moderne". Là, je ne suis pas sûr de tout comprendre. Bref, j'ai essayé, j'ai passé/perdu beaucoup de temps et finalement je me dis qu'il vaut mieux émuler une configuration matérielle et logicielle "historique".
 
-### Note
+<!-- ### Note -->
 
+{: .note }
 Compte tenu de ce que j'ai appris avec les tests ci-dessous... Un jour de pluie, je ferai peut-être un nouveau test avec une image Docker. À voir...
 
 Comme je manque de PC, je vais installer une "vieille" distribution dans une machine virtuelle "vieille" qui sera émulée à l'aide de VMware Workstation 17 Player (sérieux, t'as vu la longueur du nom... Ils ont fumé quoi au marketing ?). Je décide de faire tout ça sur un host Linux sur lequel tourne une Mint 21.2 (cela ne change pas grand-chose à mon avis si on met l'émulateur VMware sur un host WIN11).
@@ -162,7 +163,7 @@ apt-key adv --recv-keys --keyserver keyserver.ubuntu.com F42584E6
 
 ### Méthode que j'utilise finalement
 
-On peut ne **PAS** changer la date de la VM et laisser `apt-get install` râler et nous demander de confirmer qu'on veut faire l'installation sans vérification (authentification).
+On peut éviter de changer la date de la VM et laisser `apt-get install` râler et nous demander de confirmer qu'on veut faire l'installation sans vérification (authentification).
 
 ### Changer la date de la VM
 

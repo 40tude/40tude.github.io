@@ -56,7 +56,7 @@ Je suppose que tu as le setup dont on a discuté dans [l'épisode 1](https://www
 
 Ensuite copie-colle ce script dans un script PowerShell que tu peux nommer `Create_sos2-2.ps1` par exemple. Prends soin à ce que dans l'arborescence des fichiers, il soit "au-dessus" du répertoire `sos2`.
 
-```
+```powershell
 # Make a copy of the directory containing previous version of sos2 and name it sos2-2
 Copy-Item ./sos2 ./sos2-2 -Recurse
 
@@ -145,7 +145,7 @@ Bon, bref, il y a 2 choses à faire :
 
 * Copie colle le code ci-dessous dans un nouveau fichier `Makefile`
 
-```
+```makefile
 CC      = gcc
 CFLAGS  = -Wall -nostdlib -nostdinc -ffreestanding -m32 -fno-asynchronous-unwind-tables
 LDFLAGS = --warn-common -melf_i386
@@ -229,13 +229,13 @@ clean:
 
 Ça va planter, ce n'est pas très grave... Depuis le terminal de VSCode par exemple, lance l'image Docker
 
-```
+```powershell
 docker run --rm -it -v $pwd/:/root/env sos2-buildenv
 ```
 
 Ensuite, dans le terminal de l'image Docker saisis :
 
-```
+```bash
 make clean
 make
 ```
@@ -251,7 +251,7 @@ C'est normal notre nouveau `main.c` "parle" Grub 1 alors qu'il doit causer Grub 
 
 2. Commenter la ligne multiboot et inclure multiboot2. Vers la ligne 21.
 
-```
+```c
 // #include <bootstrap/multiboot.h>
 #include <sos/multiboot2.h>
 
@@ -259,14 +259,14 @@ C'est normal notre nouveau `main.c` "parle" Grub 1 alors qu'il doit causer Grub 
 
 3. Commenter les lignes 85 et 86. C'est du pur multiboot1.
 
-```
+```c
 // multiboot_info_t *mbi;
 // mbi = (multiboot_info_t *) addr;
 ```
 
 4. Commenter les lignes 95-107. En fait, on s'en fout un peu car dans l'épisode 1 on a déjà validé qu'on démarrait dorénavant en Grub 2.
 
-```
+```c
 // if (magic == MULTIBOOT_BOOTLOADER_MAGIC)
 //   /* Loaded with Grub */
 //   sos_x86_videomem_printf(1, 0,
@@ -297,7 +297,7 @@ Je ne vais plus pouvoir faire référence aux numéros de lignes car mon VSCode 
 
 Ouvre un second terminal `pwsh` dans VSCode et lance QEMU. Si tu ne comprends rien à ce que je raconte, je te conseille d'aller lire l'épisode 1.
 
-```
+```powershell
 qemu-system-i386 -cdrom ./dist/sos2.iso
 ```
 
@@ -324,7 +324,7 @@ Bref... Il en manque un bout. Et ne viens pas me faire suer avec le texte qui ne
 
 Et là commence un long, un très long moment de solitude... Je ne vais pas m'éterniser mais en gros tu sais que le code a fonctionné, il est donc valide mais là, tu cherches et tu trouves... Rien. J'ai remis en cause l'éditeur de lien, les segments de code, le compilateur... Pour finir, comme je l'ai dit je me suis senti obligé de faire une chose que je voulais absolument éviter : remonter une configuration identique à celle de l'époque. Cela a donné lieu à [l'épisode 0](https://www.40tude.fr/sos-2-le-retour-20-ans-apres-episode-0/) de cette série. Oui, oui, j'ai appris des trucs mais bon, cela n'a pas été une sinécure... N'empêche... Tu te prouves que le code fonctionnait bien à l'époque, then what? SOS2 a des bouts en NASM, la version du compilateur n'est plus la même... Tu cherches, tu fouilles, t'efface tout, tu recommence tout, tu relis tout... Le pire c'est que si tu as bien lu le second article paru dans Linux Mag, tu sais que si les IRQ fonctionnent, les exceptions doivent fonctionner. Mais bon tu as toujours des doutes alors tu commences à désassembler le code. Typiquement j'ai pas mal utilisé les 2 commandes ci-dessous :
 
-```
+```bash
 readelf -aW ./target/iso/boot/sos2.bin > readelf.txt
 objdump -D  ./target/iso/boot/sos2.bin > objdump.txt
 ```
@@ -343,7 +343,7 @@ Tout doit fonctionner comme avant. À moitié donc... Et tu cherches, et tu cher
 
 2. Tu désassemble le code du noyau en tapant dans le terminal docker la commande suivante :
 
-```
+```bash
 objdump -D  ./target/iso/boot/sos2.bin > objdump.txt
 ```
 
@@ -351,7 +351,7 @@ objdump -D  ./target/iso/boot/sos2.bin > objdump.txt
 
 7. Tu cherches ensuite l'appel à la fonction `sos_bochs_printf` qui est dans la boucle "tant que" et voilà ce que je vois... La fin de `main.c` avec la boucle tant que :
 
-```
+```c
   asm volatile("sti\n");
 
   /* Raise a rafale of 'division by 0' exceptions. All this code is
@@ -395,7 +395,7 @@ Le code assembleur correspondant. On retrouve bien le `sti` et le call `sos_boch
 
 Il n'y a pas un truc qui te choque ? Moi, je ne vois pas de division par 0... Du coup, je retourne sur la machine où tourne la configuration "historique" (voir [l'épisode 0](https://www.40tude.fr/sos-2-le-retour-20-ans-apres-episode-0/) si besoin) et je relance la commande :
 
-```
+```bash
 objdump -D  ./target/iso/boot/sos2.bin > objdump.txt
 ```
 
@@ -419,7 +419,7 @@ Après le call `sos_bochs_printf`, on retrouve les `mov` des valeurs `1` et `0` 
 
 J'ai essayé de travailler en C dans la boucle "tant que" mais à chaque fois GCC faisait le malin et évitait de coder des divisions par 0. Du coup je te propose de modifier la boucle "tant que" comme suit :
 
-```
+```c
 while (1) {
   /* Stupid function call to fool gcc optimizations */
   // sos_bochs_printf("i = 1 / %d...\n", i);
@@ -534,7 +534,7 @@ Bon ben "yaka, faukon". Cela dit, comme j'ai passé pas mal de temps sur l'artic
 
 Cette partie devrait être assez rapide puisqu'il s'agit de remplacer `exception_wrappers.S` et `irq_wrappers.S` par leur version respective à la sauce "Intel". Je te propose de commencer par renommer les 2 fichiers en question en "`.S.bak`". Ensuite copie-colle les 2 fichiers ci-dessous dans le répertoire ./hwcore :
 
-```
+```nasm
 ; nasm -f elf32 hwcore/irq_wrappers.asm -o build/irq_wrappers.o
 
 ; Address of the table of handlers (defined in irq.c)
@@ -653,7 +653,7 @@ section .note.GNU-stack noalloc noexec nowrite progbits             ; https://wi
 
 * À la toute fin, la ligne évite un warning. Lire les références web si besoin.
 
-```
+```nasm
 ; nasm -f elf32 hwcore/exception_wrappers.asm -o build/exception_wrappers.o
 
 ; Address of the table of handlers (defined in exception.c)
@@ -845,14 +845,14 @@ Typiquement voilà ce à quoi ressemble le répertoire ./hwcore
 
 Ce n'est pas du tout obligatoire car on a renommé les "`.S`" en "`.S.bak`" mais... afin d'être sûr de ne plus tenir compte que des fichiers "`.asm`" du répertoire `./hwcore` je te propose de commenter les 2 lignes ci-dessous dans le Makefile :
 
-```
+```makefile
 # HWCORE_S    := $(shell find hwcore -name *.S)
 # HWCORE_OBJ0 := $(patsubst hwcore/%.S, build/%.o, $(HWCORE_S))
 ```
 
 Enfin, toujours dans le Makefile, je te propose de modifier la variable HWCORE_OBJ comme ci-dessous :
 
-```
+```makefile
 #HWCORE_OBJ  := ${HWCORE_OBJ0} ${HWCORE_OBJ1} ${HWCORE_OBJ2}
 HWCORE_OBJ  := ${HWCORE_OBJ1} ${HWCORE_OBJ2}
 
