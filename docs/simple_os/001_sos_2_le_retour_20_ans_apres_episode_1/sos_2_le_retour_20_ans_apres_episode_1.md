@@ -20,17 +20,19 @@ last_modified_date: 2023-12-05 21:58:13
 
 ## Introduction
 
-J'explique ici la galère que c'est, en 2023, de remonter une machine susceptible de faire tourner le code d'un OS écrit en 2004. 
+J'explique ici la galère que c'est, en 2023, de remonter une machine susceptible de faire tourner le code d'un OS écrit en 2004. C'est un excellent exemple de ce qu'il ne faut **PAS** faire.
 
 <div align="center">
 <img src="./assets/image-1.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Commence par lire [cet article]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) avant de revenir ici. Ayé, t'as lu? Donc maintenant tu sais que j'ai décidé de faire du bouche-à-bouche à un code qui a une vingtaine d'année et de le faire tourner dans un setup modernisé à base de Grub2, Docker, NASM etc.
+Commence par lire [cet article]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) avant de revenir ici. 
 
-So far so good... À l'issue de mon premier billet, le code de l'épisode 1 tourne et c'est le sourire aux lèvres que je m'attaque au code de l'épisode 2 de la [saga SOS](http://sos.enix.org/fr/SOSDownload). Ce dernier concerne les interruptions (exceptions et IRQ). Là aussi, ça se passe plutôt bien et assez rapidement j'ai un code qui "marchotte". Je dis "marchotte" car si les IRQ matérielles du timer sont bien prises en compte, je passe complètement à côté des exceptions (entre autres la division par 0 qui est mise en œuvre dans le code de démonstration de l'article). J'ai beau chercher je ne trouve pas... Je vois bien un ou deux trucs dans mon code mais globalement je suis sec... Finalement j'en arrive à la *très mauvaise idée* qu'il serait judicieux de remonter une machine de l'époque. Le principe serait d'y faire tourner le code "canal historique", sans y toucher du tout et de voir comment ça se passe.
+Ayé, t'as lu? Donc maintenant tu sais que j'ai décidé de faire du bouche-à-bouche à un code qui a une vingtaine d'année et de le faire tourner dans un setup modernisé à base de Grub2, Docker, NASM etc.
 
-Je confirme. C'était une très mauvaise idée et je m'en vais te raconter ici ce qui m'est arrivé. Je vais tout détailler mais franchement je ne te conseille pas de le refaire de ton côté. De mon point de vue, il est très intéressant et instructif de refaire tourner le code de SOS mais il vaut mieux le faire dans un setup "moderne". À toi de voir. Sur ce, allez, c'est parti...
+So far so good... À l'issue de mon premier billet, le code de l'épisode 1 historique tourne et c'est le sourire aux lèvres que je m'attaque au code de l'épisode 2 de la [saga SOS](http://sos.enix.org/fr/SOSDownload). Ce dernier concerne les interruptions (exceptions et IRQ). Là aussi, ça se passe plutôt bien et assez rapidement j'ai un code qui "marchotte". Je dis "marchotte" car si les IRQ matérielles du timer sont bien prises en compte, je passe complètement à côté des exceptions (entre autres la division par 0 qui est mise en œuvre dans le code de démonstration de l'article). J'ai beau chercher je ne trouve pas... Je vois bien un ou deux trucs dans mon code mais globalement je suis sec... Finalement j'en arrive à la **très mauvaise idée** qu'il serait judicieux de remonter une machine de l'époque. Le principe serait d'y faire tourner le code "canal historique", sans y toucher du tout et de voir comment ça se passe.
+
+Je confirme. C'était une **très mauvaise idée** et je m'en vais te raconter ici ce qui m'est arrivé. Je vais tout détailler mais franchement je ne te conseille pas de le refaire de ton côté. De mon point de vue, il est très intéressant et instructif de refaire tourner le code de SOS mais il vaut mieux le faire dans un setup "moderne". À toi de voir. Sur ce, allez, c'est parti...
 
 ## La méthode
 
@@ -80,14 +82,14 @@ Donc jusque-là c'est simple :
 </div>
 
 
-* Oui, bien sûr, avant de lancer la VM, il faut faire pointer le CD de la VM vers le fichier ISO qu'on vient de récupérer.
+Oui, bien sûr, avant de lancer la VM, il faut faire pointer le CD de la VM vers le fichier ISO qu'on vient de récupérer.
 
 <div align="center">
 <img src="./assets/settings1.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-* Lancer la VM
+Lancer la VM
 
 ## Installation de Debian Lenny
 
@@ -98,15 +100,14 @@ Donc jusque-là c'est simple :
 <img src="./assets/mirroir.webp" alt="" loading="lazy"/>
 </div>
 
-* On est gentil on confirme qu'on sait (plus ou moins) ce que l'on fait
+On est gentil on confirme qu'on sait (plus ou moins) ce que l'on fait
 
 <div align="center">
 <img src="./assets/miroir2.webp" alt="" loading="lazy"/>
 </div>
 
 
-* À la fin, on a donc un système minimum dans la VM.
-* Je passe les détails mais à la fin, comme la chenille, c'est la VM qui redémarre 🎵🎶.
+Pour finir, on a donc un système minimum dans la VM. Je passe les détails mais à la fin, comme la chenille, c'est la VM qui redémarre 🎵🎶.
 
 ## Quand on est logué sur la VM lenny
 
@@ -236,7 +237,9 @@ sudo shutdown -h now
 ```
 ## Faire une copie de la VM
 
-### --- /Z!\ Copie de la VM ---
+
+{: .highlight }
+Copie de la VM
 
 * C'est très important car en cas de plantage total de la VM on sera bien content de pouvoir repartir d'une copie. Oui, je te confirme, ça sent le vécu...
 * Si la VM s'appelle `lenny` et que je m'appelle `philippe` elle est dans : `/home/philippe/vmware/lenny` (`~/vmware/lenny` pour les intimes)
@@ -250,7 +253,8 @@ sudo shutdown -h now
 
 **Ne pas passer à la suite** sans avoir fait une copie. Aie confiance, crois en moi...🎵🎶
 
-### --- /Z!\ Copie de la VM ---
+{: .highlight }
+Copie de la VM
 
 ## Installer un répertoire partagé
 
