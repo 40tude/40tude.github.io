@@ -7,10 +7,10 @@ last_modified_date: 2025-01-02 15:00:00 +0000
 ---
 
 # 40tude.fr 
-Faut dire fortitude  
+Faut lire fortitude  
 Le site 40tude.fr est en cours de migration (300 billets de 2011 à 2024).  
 Laissez moi un peu de temps (ça devrait être terminé fin janvier 2025)  
-Soyez pas surpris si les menus changent, les billets et catégories disparraissent...
+Soyez pas surpris si d'ici là, les menus changent, les billets et catégories disparraissent, apparaissent...
 
 ## TODO
 * Sur la 1ere page, la liste des 10 derniers billets édités
