@@ -3,10 +3,22 @@ title: Home
 layout: home
 nav_order: 1
 date:               1964-02-25 20:00:00 +0000
-last_modified_date: 2024-02-25 21:00:00 +0000
+last_modified_date: 2025-01-02 15:00:00 +0000
 ---
 
-## Site under construction - Give me much more time
+# 40tude.fr 
+Faut dire fortitude  
+Le site 40tude.fr est en cours de migration (300 billets de 2011 à 2024).  
+Laissez moi un peu de temps (ça devrait être terminé fin janvier 2025)  
+Soyez pas surpris si les menus changent, les billets et catégories disparraissent...
+
+## TODO
+* Sur la 1ere page, la liste des 10 derniers billets édités
+* Correcteur ortho dans VScode
+* ?? 
+
+
+<!-- ## Site under construction - Give me much more time
 
 This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
 
@@ -37,4 +49,4 @@ If you want to maintain your docs in the `docs` directory of an existing project
 [README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
 [Jekyll]: https://jekyllrb.com
 [GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
+[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate -->
