@@ -238,7 +238,7 @@ sudo shutdown -h now
 ## Faire une copie de la VM
 
 
-{: .highlight }
+{: .warning }
 Copie de la VM
 
 * C'est très important car en cas de plantage total de la VM on sera bien content de pouvoir repartir d'une copie. Oui, je te confirme, ça sent le vécu...
@@ -253,7 +253,7 @@ Copie de la VM
 
 **Ne pas passer à la suite** sans avoir fait une copie. Aie confiance, crois en moi...🎵🎶
 
-{: .highlight }
+{: .warning }
 Copie de la VM
 
 ## Installer un répertoire partagé
