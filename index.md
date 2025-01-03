@@ -17,6 +17,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billet, je ne 
 * Porter les pages de SOS pour tester les outils de recupération du site WP
     * Faire un billet concernant le portage de WP vers markdown?
 * Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle
+    * Lire : https://jekyllrb.com/docs/permalinks/#front-matter
 * Lightbox pour les images
 * Ajouter un indicateur de durée de lecture en haut des pages
 * Sur la 1ere page, la liste des 10 derniers billets édités
@@ -34,6 +35,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billet, je ne 
 ## À garder sous le coude
 * https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers
 * https://just-the-docs.github.io/just-the-docs/
+* https://jekyllrb.com/
 
 ## Organisation des catégories ?
 
