@@ -156,7 +156,6 @@ apt-key adv --recv-keys --keyserver keyserver.ubuntu.com F42584E6
 ```
 
 * Lire : <https://futurestud.io/tutorials/fix-ubuntu-debian-apt-get-keyexpired-the-following-signatures-were-invalid>
-
 * Faire une recherche sur `KEYEXPIRED apt-key`
 
 ## Installer les softs sur la VM lenny
@@ -383,9 +382,7 @@ top
 
 Bon, ben, "ça passe pas...". Va falloir trouver autre chose.
 
-Je pensais avoir trouvé un truc grâce à ce lien :
-
-* <https://stackoverflow.com/questions/27939316/bochs-2-4-6-grub-0-97-error-13-invalid-or-unsupported-executable-format-wh>
+Je pensais avoir trouvé un truc grâce à ce lien : <https://stackoverflow.com/questions/27939316/bochs-2-4-6-grub-0-97-error-13-invalid-or-unsupported-executable-format-wh>
 
 Dans `sos.ldS` je déplace `*(.rodata)` dans la section `.text` du code.
 
@@ -451,9 +448,9 @@ Mouai... Et on fait quoi maintenant qu'on est revenu au point de départ ?
 
 Heu... Je vais te calmer tout de suite. On ne va pas aller aux pays des merveilles mais plutôt à la cave... Et encore, je vais te donner une version édulcorée, un truc bien propre, à la chronologie bien linéaire, genre tuto de YouTube où tout se passe toujours bien.
 
-En réalité ça ne s'est pas du tout passé comme ça. C'est parti dans tous les sens, j'ai pas mal cherché, j'ai fait les trucs dans le mauvais ordre, j'ai perdu pas mal de VM... Une vraie boucherie, y avait du sang partout. Le genre d'expérience qui te donne envie de tout jeter. Un peu comme ces p💀t@ins de randos qui n'en finissent pas de monter...
+En réalité ça ne s'est pas du tout passé comme ça. C'est parti dans tous les sens, j'ai pas mal cherché, j'ai fait les trucs dans le mauvais ordre, j'ai perdu pas mal de VM... Une vraie boucherie, y avait du sang partout. Le genre d'expérience qui te donne envie de tout jeter. Un peu comme ces [p💀t@ins de randos qui n'en finissent pas de monter...](https://www.youtube.com/shorts/d92jbkVY8wY)
 
-https://www.youtube.com/shorts/d92jbkVY8wY
+
 
 ## Ce que je crois avoir compris
 
