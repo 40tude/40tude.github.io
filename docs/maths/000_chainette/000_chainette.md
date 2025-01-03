@@ -33,9 +33,9 @@ $$\vec{-T} + \vec{T+dT} + \vec{P} = \vec{0} $$
 
 On projette sur les axes x et y
 
-Sur x : $cos(\alpha)dT = 0$
+Sur x : $$cos(\alpha)dT = 0$$
 
-Sur y : $sin(\alpha)dT - \mu gdL = 0$
+Sur y : $$sin(\alpha)dT - \mu gdL = 0$$
 
 Dans l'équation ci-dessus on a: $ P = mg = \mu dLg $
 
