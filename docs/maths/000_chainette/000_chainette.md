@@ -35,9 +35,9 @@ On projette sur les axes x et y
 
 Sur x : $cos(\alpha)dT = 0$
 
-Sur y : $sin(\alpha)dT - {\mu}gdL = 0$
+Sur y : $sin(\alpha)dT - \mu gdL = 0$
 
-Dans l'équation ci-dessus on a: $ P = mg = {\mu}dLg $
+Dans l'équation ci-dessus on a: $ P = mg = \mu dLg $
 
 Où μ est la masse linéique, dL est un élément de longueur et g est l'accélération de pesanteur
 
@@ -47,15 +47,15 @@ Il vient : $Tcos(\alpha) = K$
 
 Autrement dit, à chaque endroit, le long du cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $\alpha$ est nul et K=To.
 
-On intègre maintenant l'équation de la projection sur l'axe y : $\int{}{}{sin(\alpha)dT} = \int{}{}{{\mu}gdL}$
+On intègre maintenant l'équation de la projection sur l'axe y : $\int{}{}{sin(\alpha)dT} = \int{}{}{\mu gdL}$
 
-Il vient : $Tsin(\alpha) = {\mu}gL$
+Il vient : $Tsin(\alpha) = \mu gL$
 
 Mouai... Et on fait quoi maintenant avec les deux équations en question ?
 
 (1) $Tcos(\alpha) = K$
 
-(2) $Tsin(\alpha) = {\mu}gL$
+(2) $Tsin(\alpha) = \mu gL$
 
 Si on divise (2) par (1) il vient : $tg{\alpha} = \frac{\mu g}{K} L$
 
