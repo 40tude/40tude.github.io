@@ -7,7 +7,7 @@ date: 2012-06-16 15:48:30
 last_modified_date: 2022-11-25 17:01:53
 ---
 
-## Introduction
+## Intro\mathrm{d}uction
 
 L'autre jour en rentrant de Dunkerque, sur l'autoroute, alors que tout le monde dormait dans la voiture, j'ai, je ne sais pas pourquoi, commencé à regarder les pylônes électriques. Entre autres, je me suis demandé qu'elle était la courbe décrite par le fil électrique mais aussi et surtout quel était le paramètre qui était minimisé. De retour à la maison, un tour sur Google et zou, j'avais la réponse : équation de la chaînette. Cela dit, afin de retenir et de comprendre un peu mieux j'ai commencé à gribouiller sur le papier. Vous trouverez ci-dessous mes explications et ce que je crois avoir compris.
 
@@ -45,7 +45,7 @@ Ensuite, on intègre l'équation de la projection sur l'axe x : $$\int{}{}{\cos(
 
 Il vient : $$T\cos(\alpha) = K$$
 
-Autrement dit, à chaque endroit, le long du cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
+Autrement dit, à chaque endroit, le long \mathrm{d}u cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
 
 On intègre maintenant l'équation de la projection sur l'axe y : $$\int{}{}{\sin(\alpha)\mathrm{d}T} = \int{}{}{\mu g\mathrm{d}L}$$
 
@@ -63,47 +63,47 @@ Mouai... Then what? Essayons de différencier l'équation ci-dessus : $$d(\tan{\
 
 Maintenant, remarquons que
 
-$$\tan{\alpha} = \frac{dy}{dx}$$
+$$\tan{\alpha} = \frac{\mathrm{d}y}{\mathrm{d}x}$$
 
 Et que
 
-$$\mathrm{d}L^2 = dx^2 + dy^2$$
+$$\mathrm{d}L^2 = \mathrm{d}x^2 + \mathrm{d}y^2$$
 
 Soit encore
 
-$$\mathrm{d}L = \sqrt{dx^2 + dy^2}$$
+$$\mathrm{d}L = \sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}$$
 
 Bref, notre équation précédente devient
 
 $$d(\tan{\alpha}) = \frac{\mu g}{K} d(L)$$
 
-$$d(\frac{dy}{dx}) = \frac{\mu g}{K} \sqrt{dx^2 + dy^2}$$
+$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}$$
 
-À ce niveau, ce qui serait bien, se serait d'avoir une équation homogène. Pour cela on aimerait avoir un dy/dx dans le membre de droite. Qu'à cela ne tienne allons-y. L'équation devient :
+À ce niveau, ce qui serait bien, se serait d'avoir une équation homogène. Pour cela on aimerait avoir un \mathrm{d}y/\mathrm{d}x dans le membre de droite. Qu'à cela ne tienne allons-y. L'équation devient :
 
-$$d(\frac{dy}{dx}) = \frac{\mu g}{K} \sqrt{dx^{2} + dy^{2}}$$
+$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^{2} + \mathrm{d}y^{2}}$$
 
-$$d(\frac{dy}{dx}) = \frac{\mu g}{K} \frac{\sqrt{dx^2 + dy^2}} {dx} dx$$
+$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \frac{\sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}} {\mathrm{d}x} \mathrm{d}x$$
 
-$$d(\frac{dy}{dx}) = \frac{\mu g}{K} \sqrt{\frac{dx^2}{dx^2} + \frac{dy^2}{dx^2}} dx$$
+$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\frac{\mathrm{d}x^2}{\mathrm{d}x^2} + \frac{\mathrm{d}y^2}{\mathrm{d}x^2}} \mathrm{d}x$$
 
-$$d(\frac{dy}{dx}) = \frac{\mu g}{K} \sqrt{1 + \frac{dy^2}{dx^2}} dx$$
+$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{1 + \frac{\mathrm{d}y^2}{\mathrm{d}x^2}} \mathrm{d}x$$
 
-$$d(\frac{dy}{dx}) = \frac{\mu g}{K} \sqrt{1 + \frac{dy}{dx}^{2}}dx$$
+$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{1 + \frac{\mathrm{d}y}{\mathrm{d}x}^{2}}\mathrm{d}x$$
 
 Faisons un peu le ménage histoire d'y voir plus clair
 
-$$d(u) = \frac{\mu g}{K} \sqrt{1 + u^{2}}dx$$
+$$d(u) = \frac{\mu g}{K} \sqrt{1 + u^{2}}\mathrm{d}x$$
 
-$$du = C \sqrt{1 + u^{2}}dx$$
+$$\mathrm{d}u = C \sqrt{1 + u^{2}}\mathrm{d}x$$
 
-$$\frac {du}{\sqrt{1 + u^{2}}} = C dx$$
+$$\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}} = C \mathrm{d}x$$
 
 Bon, ben, on y va, on intègre
 
-$$\int{}{}{\frac {du}{\sqrt{1 + u^{2}}}} = \int{}{}{C dx}$$
+$$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = \int{}{}{C \mathrm{d}x}$$
 
-$$\int{}{}{\frac {du}{\sqrt{1 + u^{2}}}} = Cx$$
+$$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = Cx$$
 
 Hein, hein... Et l'intégrale de gauche... On fait comment ?
 
@@ -117,19 +117,19 @@ $$u = sh(x)$$
 
 En différenciant on a
 
-$$du = ch(x)dx$$
+$$\mathrm{d}u = ch(x)\mathrm{d}x$$
 
 L'intégrale (le membre de gauche) s'écrit alors
 
-$$\int{}{}{\frac {du}{\sqrt{1 + u^{2}}}}$$
+$$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}}$$
 
-$$\int{}{}{\frac{ch(x)}{\sqrt{1 + sh^{2}(x)}}dx}$$
+$$\int{}{}{\frac{ch(x)}{\sqrt{1 + sh^{2}(x)}}\mathrm{d}x}$$
 
-$$\int{}{}{\frac{ch(x)} {\sqrt{ch^{2}(x)}}dx}$$
+$$\int{}{}{\frac{ch(x)} {\sqrt{ch^{2}(x)}}\mathrm{d}x}$$
 
-$$\int{}{}{\frac{ch(x)}{ch(x)}dx}$$
+$$\int{}{}{\frac{ch(x)}{ch(x)}\mathrm{d}x}$$
 
-$$\int{}{}{dx}$$
+$$\int{}{}{\mathrm{d}x}$$
 
 $$x$$
 
@@ -141,11 +141,11 @@ C'est à dire
 
 $$arcsh(u) = x$$
 
-On en déduit que l'intégrale vaut arcsh(u)
+On en dé\mathrm{d}uit que l'intégrale vaut arcsh(u)
 
 On se retrouve donc avec
 
-$$\int{}{}{\frac {du}{\sqrt{1 + u^{2}}}} = Cx$$
+$$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = Cx$$
 
 $$arcsh(u)= Cx$$
 
@@ -153,13 +153,13 @@ $$u= sh(Cx)$$
 
 On a presque terminé... Faut cependant se rappeler qu'on avait écrit
 
-$$u=\frac {dy} {dx}$$
+$$u=\frac {\mathrm{d}y} {\mathrm{d}x}$$
 
 Et donc, on se retrouve à résoudre l'équation suivante
 
-$$\frac {dy} {dx}= sh(Cx)$$
+$$\frac {\mathrm{d}y} {\mathrm{d}x}= sh(Cx)$$
 
-$$dy= sh(Cx)dx$$
+$$\mathrm{d}y= sh(Cx)\mathrm{d}x$$
 
 On pose
 
@@ -167,29 +167,27 @@ $$u = Cx$$
 
 On a donc
 
-$$du = Cdx$$
+$$\mathrm{d}u = C\mathrm{d}x$$
 
-$$dx = \frac {du}{C}$$
+$$\mathrm{d}x = \frac {\mathrm{d}u}{C}$$
 
 L'équation devient
 
-$$dy= sh(Cx)dx$$
+$$\mathrm{d}y= sh(Cx)\mathrm{d}x$$
 
-$$dy= \frac {1}{C sh(u)}du$$
+$$\mathrm{d}y= \frac {1}{C sh(u)}\mathrm{d}u$$
 
-$$\int{}{}{dy}= \frac{1}{C} \int{}{}{sh(u)du}$$
+$$\int{}{}{\mathrm{d}y}= \frac{1}{C} \int{}{}{sh(u)\mathrm{d}u}$$
 
 $$y= \frac{1}{C} ch(u)$$
 
 $$y= \frac{1}{C} ch(Cx)$$
 
-Comme on a dit que
-
-$$C = \frac {\mu g}{K} $$ avec K=Cte=To
+Comme on a dit que $$C = \frac {\mu g}{K} $$ avec K=Cte=To
 
 $$y= \frac {K}{\mu g} ch ( \frac {K}{\mu g} x)$$
 
-L'équation du fil électrique entre 2 poteaux est donc un \cosh et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
+L'équation \mathrm{d}u fil électrique entre 2 poteaux est donc un \cosh et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
 
 <div align="center">
 <img src="./assets/courbe.webp" alt="" loading="lazy"/>
