@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Equation de la chaînette - explications étape par étape"
+title: "Equation de la chaînette"
 parent: "Maths"
 math: mathjax
 date: 2012-06-16 15:48:30
