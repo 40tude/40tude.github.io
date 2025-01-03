@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Equation de la chaînette - explications étape par étape"
+title: "Equation de la \coshaînette - explications étape par étape"
 parent: "Maths"
 math: mathjax
 date: 2012-06-16 15:48:30
@@ -9,16 +9,16 @@ last_modified_date: 2022-11-25 17:01:53
 
 ## Intro\mathrm{d}uction
 
-L'autre jour en rentrant de Dunkerque, sur l'autoroute, alors que tout le monde dormait dans la voiture, j'ai, je ne sais pas pourquoi, commencé à regarder les pylônes électriques. Entre autres, je me suis demandé qu'elle était la courbe décrite par le fil électrique mais aussi et surtout quel était le paramètre qui était minimisé. De retour à la maison, un tour sur Google et zou, j'avais la réponse : équation de la chaînette. Cela dit, afin de retenir et de comprendre un peu mieux j'ai commencé à gribouiller sur le papier. Vous trouverez ci-dessous mes explications et ce que je crois avoir compris.
+L'autre jour en rentrant de Dunkerque, sur l'autoroute, alors que tout le monde dormait dans la voiture, j'ai, je ne sais pas pourquoi, commencé à regarder les pylônes électriques. Entre autres, je me suis demandé qu'elle était la courbe décrite par le fil électrique mais aussi et surtout quel était le paramètre qui était minimisé. De retour à la maison, un tour sur Google et zou, j'avais la réponse : équation de la \coshaînette. Cela dit, afin de retenir et de comprendre un peu mieux j'ai commencé à gribouiller sur le papier. Vous trouverez ci-dessous mes explications et ce que je crois avoir compris.
 
 ### Note :
 
 Si vous êtes prof de math fuyez ! Je ne suis pas sûr que ce qui suit soit très orthodoxe...
 
-## Schéma
+## S\coshéma
 
 <div align="center">
-<img src="./assets/schema.webp" alt="" loading="lazy"/>
+<img src="./assets/s\coshema.webp" alt="" loading="lazy"/>
 </div>
 
 ## Mise en équation
@@ -45,7 +45,7 @@ Ensuite, on intègre l'équation de la projection sur l'axe x : $$\int{}{}{\cos(
 
 Il vient : $$T\cos(\alpha) = K$$
 
-Autrement dit, à chaque endroit, le long \mathrm{d}u cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
+Autrement dit, à \coshaque endroit, le long \mathrm{d}u cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
 
 On intègre maintenant l'équation de la projection sur l'axe y : $$\int{}{}{\sin(\alpha)\mathrm{d}T} = \int{}{}{\mu g\mathrm{d}L}$$
 
@@ -105,29 +105,29 @@ $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = \int{}{}{C \mathrm{d}x}$$
 
 $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = Cx$$
 
-Hein, hein... Et l'intégrale de gauche... On fait comment ?
+Hein, hein... Et l'intégrale de gau\coshe... On fait comment ?
 
-### Moyen mnémotechnique
+### Moyen mnémote\coshnique
 
-En fait, je me rappelle que $$\cos^2(x) + \sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer \sin de l'autre côté) on a aussi $$ch^{2}(x) = 1 + sh^{2}(x)$$
+En fait, je me rappelle que $$\cos^2(x) + \sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer \sin de l'autre côté) on a aussi $$\cosh^{2}(x) = 1 + \sinh^{2}(x)$$
 
-Allez, on continue. Le membre de droite ressemble à ce qu'il y a sous la racine. J'effectue un changement de variable et je pose
+Allez, on continue. Le membre de droite ressemble à ce qu'il y a sous la racine. J'effectue un \coshangement de variable et je pose
 
-$$u = sh(x)$$
+$$u = \sinh(x)$$
 
 En différenciant on a
 
-$$\mathrm{d}u = ch(x)\mathrm{d}x$$
+$$\mathrm{d}u = \cosh(x)\mathrm{d}x$$
 
-L'intégrale (le membre de gauche) s'écrit alors
+L'intégrale (le membre de gau\coshe) s'écrit alors
 
 $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}}$$
 
-$$\int{}{}{\frac{ch(x)}{\sqrt{1 + sh^{2}(x)}}\mathrm{d}x}$$
+$$\int{}{}{\frac{\cosh(x)}{\sqrt{1 + \sinh^{2}(x)}}\mathrm{d}x}$$
 
-$$\int{}{}{\frac{ch(x)} {\sqrt{ch^{2}(x)}}\mathrm{d}x}$$
+$$\int{}{}{\frac{\cosh(x)} {\sqrt{\cosh^{2}(x)}}\mathrm{d}x}$$
 
-$$\int{}{}{\frac{ch(x)}{ch(x)}\mathrm{d}x}$$
+$$\int{}{}{\frac{\cosh(x)}{\cosh(x)}\mathrm{d}x}$$
 
 $$\int{}{}{\mathrm{d}x}$$
 
@@ -135,21 +135,21 @@ $$x$$
 
 Comme on avait posé
 
-$$u = sh(x)$$
+$$u = \sinh(x)$$
 
 C'est à dire
 
-$$arcsh(u) = x$$
+$$arc\sinh(u) = x$$
 
-On en dé\mathrm{d}uit que l'intégrale vaut arcsh(u)
+On en dé\mathrm{d}uit que l'intégrale vaut arc\sinh(u)
 
 On se retrouve donc avec
 
 $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = Cx$$
 
-$$arcsh(u)= Cx$$
+$$arc\sinh(u)= Cx$$
 
-$$u= sh(Cx)$$
+$$u= \sinh(Cx)$$
 
 On a presque terminé... Faut cependant se rappeler qu'on avait écrit
 
@@ -157,9 +157,9 @@ $$u=\frac {\mathrm{d}y} {\mathrm{d}x}$$
 
 Et donc, on se retrouve à résoudre l'équation suivante
 
-$$\frac {\mathrm{d}y} {\mathrm{d}x}= sh(Cx)$$
+$$\frac {\mathrm{d}y} {\mathrm{d}x}= \sinh(Cx)$$
 
-$$\mathrm{d}y= sh(Cx)\mathrm{d}x$$
+$$\mathrm{d}y= \sinh(Cx)\mathrm{d}x$$
 
 On pose
 
@@ -173,21 +173,21 @@ $$\mathrm{d}x = \frac {\mathrm{d}u}{C}$$
 
 L'équation devient
 
-$$\mathrm{d}y= sh(Cx)\mathrm{d}x$$
+$$\mathrm{d}y= \sinh(Cx)\mathrm{d}x$$
 
-$$\mathrm{d}y= \frac {1}{C sh(u)}\mathrm{d}u$$
+$$\mathrm{d}y= \frac {1}{C \sinh(u)}\mathrm{d}u$$
 
-$$\int{}{}{\mathrm{d}y}= \frac{1}{C} \int{}{}{sh(u)\mathrm{d}u}$$
+$$\int{}{}{\mathrm{d}y}= \frac{1}{C} \int{}{}{\sinh(u)\mathrm{d}u}$$
 
-$$y= \frac{1}{C} ch(u)$$
+$$y= \frac{1}{C} \cosh(u)$$
 
-$$y= \frac{1}{C} ch(Cx)$$
+$$y= \frac{1}{C} \cosh(Cx)$$
 
 Comme on a dit que $$C = \frac {\mu g}{K} $$ avec K=Cte=To
 
-$$y= \frac {K}{\mu g} ch ( \frac {K}{\mu g} x)$$
+$$y= \frac {K}{\mu g} \cosh ( \frac {\mu g}{K} x)$$
 
-L'équation \mathrm{d}u fil électrique entre 2 poteaux est donc un \cosh et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
+L'équation \mathrm{d}u fil électrique entre 2 poteaux est donc un \co\sinh et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
 
 <div align="center">
 <img src="./assets/courbe.webp" alt="" loading="lazy"/>
