@@ -7,7 +7,7 @@ date: 2012-06-16 15:48:30
 last_modified_date: 2022-11-25 17:01:53
 ---
 
-## Intro\mathrm{d}uction
+## Introduction
 
 L'autre jour en rentrant de Dunkerque, sur l'autoroute, alors que tout le monde dormait dans la voiture, j'ai, je ne sais pas pourquoi, commencé à regarder les pylônes électriques. Entre autres, je me suis demandé qu'elle était la courbe décrite par le fil électrique mais aussi et surtout quel était le paramètre qui était minimisé. De retour à la maison, un tour sur Google et zou, j'avais la réponse : équation de la chaînette. Cela dit, afin de retenir et de comprendre un peu mieux j'ai commencé à gribouiller sur le papier. Vous trouverez ci-dessous mes explications et ce que je crois avoir compris.
 
