@@ -35,19 +35,18 @@ En ce qui concerne le code de démo il tourne de nouveau (voir ci-dessous). Ne t
 </div>
 
 
-Après avoir terminé l'épisode 1, je pensais que le portage de l'épisode 2 allait se passer dans la joie et la bonne humeur. Que nenni... J'en ai bavé à cause d'un truc tout bête dont j'ai un peu honte après coup mais bon... Mes soucis au début de l'épisode 2 m'ont même obligé à faire ce que je ne voulais surtout pas faire : remonter un setup complet de l'époque (machine, Debian, GCC et Grub d'époque...). Cela a d'ailleurs fait l'objet de la rédaction de [l'épisode 0](https://www.40tude.fr/sos-2-le-retour-20-ans-apres-episode-0/). Ça a été une vraie galère mais il fallait que je me donne les moyens de comparer des pommes avec des pommes... Bref, les débuts de l'épisode 2 ont été très laborieux mais ce soir je suis au milieu du gué car j'estime que l'épisode 2 en est à sa moitié.
+Après avoir terminé l'épisode 1, je pensais que le portage de l'épisode 2 allait se passer dans la joie et la bonne humeur. Que nenni... J'en ai bavé à cause d'un truc tout bête dont j'ai un peu honte après coup mais bon... Mes soucis au début de l'épisode 2 m'ont même obligé à faire ce que je ne voulais surtout pas faire : remonter un setup complet de l'époque (machine, Debian, GCC et Grub d'époque...). Cela a d'ailleurs fait l'objet de la rédaction de [l'épisode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %}). Ça a été une vraie galère mais il fallait que je me donne les moyens de comparer des pommes avec des pommes... Bref, les débuts de l'épisode 2 ont été très, très laborieux mais ce soir je suis au milieu du gué car j'estime que l'épisode 2 en est à sa moitié.
 
 OK... Tu peux traduire ? Ça tourne mais tout le code assembleur spécifique à cet opus n'a pas encore été réécrit en NASM. Il y a donc 2 parties dans cet épisode 2 :
 
-* **Episode 2, partie 1** : où je porte le code en gardant les codes assembleur à la syntaxe GAS
-
+* **Episode 2, partie 1** : où je porte le code en gardant les codes assembleur à la syntaxe GAS (je suis vraiment pas fan)
 * **Episode 2, partie 2** : où le code assembleur aura été traduit en NASM
 
 Non, je ne sais pas encore si je vais créer 2 billets différents ou laisser les 2 parties sur la même page web.
 
 ## Partie 1 où on garde le code assembleur en GAS
 
-Je suppose que tu as le setup dont on a discuté dans [l'épisode 1](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/) (docker, QEMU etc.) ainsi qu'un répertoire `sos2` qui contient le code du même épisode. Si ce n'est pas le cas ce n'est pas grave, on s'adapte. Relis l'épisode 1 et récupère le code sur [GitHub](https://github.com/40tude/sos2). Par exemple récupère un zip et extraie-le. Pour la suite, il faut juste que le répertoire s'appelle `sos2`. Attention, si tu dézippe vérifies que les fichiers du projet sont bien sous `./sos2` et qu'il n'y a pas une arborescence du style `./sos2/sos2-main` avec les fichiers en dessous. Si c'est le cas, remonte les fichiers et les répertoires du projet d'un cran pour qu'ils soient bien sous `./sos2`.
+Je suppose que tu as le setup dont on a discuté dans [l'épisode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) (docker, QEMU etc.) ainsi qu'un répertoire `sos2` qui contient le code du même épisode. Si ce n'est pas le cas ce n'est pas grave, on s'adapte. Relis l'épisode 0 et récupère le code sur [GitHub](https://github.com/40tude/sos2). Par exemple récupère un zip et extraie-le. Pour la suite, il faut juste que le répertoire s'appelle `sos2`. Attention, si tu dézippe vérifies que les fichiers du projet sont bien sous `./sos2` et qu'il n'y a pas une arborescence du style `./sos2/sos2-main` avec les fichiers en dessous. Si c'est le cas, remonte les fichiers et les répertoires du projet d'un cran pour qu'ils soient bien sous `./sos2`.
 
 <div align="center">
 <img src="./assets/image-10.webp" alt="" loading="lazy"/>
@@ -216,10 +215,8 @@ clean:
 #### Séquence explications
 
 * J'ai renommé plusieurs variables
-
 * Je tiens compte du fait que les fichiers assembleur du répertoire ./hwcore pourront être en syntaxe AT&T (`.S`) ou Intel (`.asm`)
-
-* Si besoin n'hésite pas à relire les explications que je donnais à propos du Makefile dans [l'épisode 1](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/)
+* Si besoin n'hésite pas à relire les explications que je donnais à propos du Makefile dans [l'épisode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %})
 
 ### Premier Make
 
@@ -318,7 +315,9 @@ Bref... Il en manque un bout. Et ne viens pas me faire suer avec le texte qui ne
 </div>
 
 
-Et là commence un long, un très long moment de solitude... Je ne vais pas m'éterniser mais en gros tu sais que le code a fonctionné, il est donc valide mais là, tu cherches et tu trouves... Rien. J'ai remis en cause l'éditeur de lien, les segments de code, le compilateur... Pour finir, comme je l'ai dit je me suis senti obligé de faire une chose que je voulais absolument éviter : remonter une configuration identique à celle de l'époque. Cela a donné lieu à [l'épisode 0](https://www.40tude.fr/sos-2-le-retour-20-ans-apres-episode-0/) de cette série. Oui, oui, j'ai appris des trucs mais bon, cela n'a pas été une sinécure... N'empêche... Tu te prouves que le code fonctionnait bien à l'époque, then what? SOS2 a des bouts en NASM, la version du compilateur n'est plus la même... Tu cherches, tu fouilles, t'efface tout, tu recommence tout, tu relis tout... Le pire c'est que si tu as bien lu le second article paru dans Linux Mag, tu sais que si les IRQ fonctionnent, les exceptions doivent fonctionner. Mais bon tu as toujours des doutes alors tu commences à désassembler le code. Typiquement j'ai pas mal utilisé les 2 commandes ci-dessous :
+Et là commence un long, un très long moment de solitude... Je ne vais pas m'éterniser mais en gros tu sais que le code a fonctionné, il est donc valide mais là, tu cherches et tu trouves... Rien. J'ai remis en cause l'éditeur de lien, les segments de code, le compilateur... Pour finir, comme je l'ai dit je me suis senti obligé de faire une chose que je voulais absolument éviter : remonter une configuration identique à celle de l'époque. Cela a donné lieu à [l'épisode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %}) de cette série. 
+
+Oui, oui, j'ai appris des trucs mais bon, cela n'a pas été une sinécure... N'empêche... Tu te prouves que le code fonctionnait bien à l'époque, then what? SOS2 a des bouts en NASM, la version du compilateur n'est plus la même... Tu cherches, tu fouilles, t'efface tout, tu recommence tout, tu relis tout... Le pire c'est que si tu as bien lu le second article paru dans Linux Mag, tu sais que si les IRQ fonctionnent, les exceptions doivent fonctionner. Mais bon tu as toujours des doutes alors tu commences à désassembler le code. Typiquement j'ai pas mal utilisé les 2 commandes ci-dessous :
 
 ```bash
 readelf -aW ./target/iso/boot/sos2.bin > readelf.txt
@@ -327,25 +326,23 @@ objdump -D  ./target/iso/boot/sos2.bin > objdump.txt
 
 Ma crainte c'était (je ne sais pas pourquoi, à posteriori c'était une idée idiote) que les IRQ étaient bien rangées dans l'IDT mais pas les exceptions... Débile... J'ai pas mal épluché l'article 1 original. À force j'ai remarqué des trucs dans le code source. Rien de critique, mais je te propose de faire les changements car du coup, je trouve que le code devient plus facile à lire. Il n'y a aucune obligation à le faire cependant.
 
-* On refactorise le code et depuis .`/sos/main.c` on renomme la fonction `sos_exceptions_setup()` en `sos_install_dbl_fault_exceptions()`. Dans VSCode il suffit de sélectionner le nom de la fonction, d'appuyer sur F2 puis de saisir le nouveau nom.
-
-* À partir de ./hwcore/idt.c on renomme dans tout le projet la fonction `sos_idt_set_handler()` en `sos_idt_set_wrapper()`. Idéalement il faut aussi renommer le second paramètre de la fonction et transformer `handler_address` en `wrapper_address`. En effet, à chaque fois que la fonction `sos_idt_set_handler()` est invoquée on lui passe l'adresse d'un wrapper (bout de code en assembleur) plutôt que l'adresse d'un handler (bout code de haut niveau en C).
-
-* À partir de ./hwcore/idt.c on renomme dans tout le projet la fonction `sos_idt_get_handler()` par `sos_idt_get_wrapper()`. Vérifie aussi le nom du second paramètre. Il doit devenir `wrapper_address` lui aussi.
+* On refactorise le code et depuis `./sos/main.c` on renomme la fonction `sos_exceptions_setup()` en `sos_install_dbl_fault_exceptions()`. Dans VSCode il suffit de sélectionner le nom de la fonction, d'appuyer sur F2 puis de saisir le nouveau nom.
+* À partir de ``./hwcore/idt.c`` on renomme dans tout le projet la fonction `sos_idt_set_handler()` en `sos_idt_set_wrapper()`. Idéalement il faut aussi renommer le second paramètre de la fonction et transformer `handler_address` en `wrapper_address`. En effet, à chaque fois que la fonction `sos_idt_set_handler()` est invoquée on lui passe l'adresse d'un wrapper (bout de code en assembleur) plutôt que l'adresse d'un handler (bout code de haut niveau en C).
+* À partir de ``./hwcore/idt.c`` on renomme dans tout le projet la fonction `sos_idt_get_handler()` par `sos_idt_get_wrapper()`. Vérifie aussi le nom du second paramètre. Il doit devenir `wrapper_address` lui aussi.
 
 Sauve tous les fichiers, `Make clean`, `Make` et on relance `qemu-system-i386`.
 
-Tout doit fonctionner comme avant. À moitié donc... Et tu cherches, et tu cherches. Bon allez je te donne la solution.
+Tout doit fonctionner comme avant. À moitié donc... Et tu cherches, et tu cherches. Bon, allez, je te donne la solution.
 
-2. Tu désassemble le code du noyau en tapant dans le terminal docker la commande suivante :
+Tu désassemble le code du noyau en tapant dans le terminal docker la commande suivante :
 
 ```bash
 objdump -D  ./target/iso/boot/sos2.bin > objdump.txt
 ```
 
-3. Tu ouvres le fichier `objdump.txt` dans VSCode et tu cherches la fonction `main`
+Tu ouvres le fichier `objdump.txt` dans VSCode et tu cherches la fonction `main`
 
-7. Tu cherches ensuite l'appel à la fonction `sos_bochs_printf` qui est dans la boucle "tant que" et voilà ce que je vois... La fin de `main.c` avec la boucle tant que :
+Tu cherches ensuite l'appel à la fonction `sos_bochs_printf` qui est dans la boucle "tant que" et voilà ce que je vois... La fin de `main.c` avec la boucle tant que :
 
 ```c
   asm volatile("sti\n");
@@ -430,14 +427,14 @@ while (1) {
 
 Sauve tous les fichiers, `Make clean`, `Make` et relance `qemu-system-i386`.
 
-Ça doit passer "crème". GCC va chouiner un peu car, la variable `i` n'est pas utilisé. On s'en fiche. Tadaaa ! À priori on a trouvé ce qui clochait (compilateur trop malin...).
+Ça doit passer "crème". GCC va chouiner un peu car, la variable `i` n'est pas utilisée. On s'en fiche. Tadaaa ! À priori on a trouvé ce qui clochait (compilateur trop malin...).
 
 <div align="center">
 <img src="./assets/image-19.webp" alt="" loading="lazy"/>
 </div>
 
 
-À ce niveau, tu peux retourner dans la fonction `sos_main()` et, si cela te fait plaisir, mettre les lignes où `i` apparait en commentaire ("`unsigned i;`" au début de sos_main() et "i=10;" juste avant la boucle "tant-que").
+À ce niveau, tu peux retourner dans la fonction `sos_main()` et, si cela te fait plaisir, mettre les lignes où `i` apparait en commentaire ("`unsigned i;`" au début de ``sos_main()`` et ``i=10;`` juste avant la boucle "tant-que").
 
 On n'est pas trop mal. Je te propose de lire, relire et re-relire l'article de l'épisode 2. C'est dense et c'est sûr il y a des trucs que tu as raté. Ci-dessous un exemple de ce que cela donne chez moi. Cela dit, je ne suis pas le plus malin et j'ai passé beaucoup de temps à chercher une raison pour laquelle les exceptions de type division par zéro ne seraient pas levées ni traitées correctement.
 
@@ -455,76 +452,46 @@ Bon ben "yaka, faukon". Cela dit, comme j'ai passé pas mal de temps sur l'artic
 **Première série de notes :**
 
 * Depuis `sos_main` on appelle `exception.c/sos_exception_set_routine` et on passe `divide_ex`
-
 * Depuis `exception.c/sos_exception_set_routine`
-
 * On met à jour `exception.c/sos_exception_handler_array[exception_number]` avec l'adresse mémoire de `routine`
-
 * On appelle ensuite `idt.c/sos_idt_set_handler(SOS_EXCEPT_BASE + exception_number, (sos_vaddr_t)sos_exception_wrapper_array[exception_number], 0)`
-
 * Bien voir qu'en second paramètre on passe l'adresse du wrapper assembleur de l'exception en question
-
 * Ce dernier est stocké dans `sos_exception_wrapper_array[exception_number]`
-
 * On met à jour l'IDT
-
 * Au lieu de `sos_idt_set_handler(int index, sos_vaddr_t handler_address, int lowest_priviledge)`
-
 * Faudrait `sos_idt_set_wrapper(int index, sos_vaddr_t wrapper_address, int lowest_priviledge)`
-
 * => Changer le nom de la fonction ?
 
 **Seconde série de notes :**
 
 * Voir fig 5 p 7
-
 * Quand une interruption n (exception, IRQ...) arrive, le processeur lit l'entrée n de l'idt
-
 * Il y trouve l'adresse du wrapper.
-
 * C'est la routine assembleur de traitement qui va, après avoir sauvé les registres, appeler le handler qui lui est écrit en C
-
 * L'adresse du handler est dans `exception.c/sos_exception_handler_array[]`
-
 * `sos_exception_handler_array[]` est référencé dans exception_wrappers.S
-
 * Dans `sos/main.c` l'idt est initialisée lors de l'appel `sos_idt_setup()`
-  + On initialise les 256 entrées etc.
-
-  + Ce sont toutes des interrutions de type interrupt gate (0x06) non interruptibles
-
-  + On charge l'`idt` avec l'instruction `lidt`
-
+    * On initialise les 256 entrées etc.
+    * Ce sont toutes des interrutions de type interrupt gate (0x06) non interruptibles
+    * On charge l'`idt` avec l'instruction `lidt`
 * Ensuite toujours dans `sos/main.c` on appelle
-  + `sos_exceptions_setup()` (ou `sos_install_dbl_fault_exceptions()`) pour définir le handler des double faute (boucle infinie dans `./hwcore/exception_wrappers.S`)
-
+    * `sos_exceptions_setup()` (ou `sos_install_dbl_fault_exceptions()`) pour définir le handler des double faute (boucle infinie dans `./hwcore/exception_wrappers.S`)
 * Dans `sos/main.c` on appelle ensuite `sos_exception_set_routine(SOS_EXCEPT_DIVIDE_ERROR, divide_ex)` pour definir `divide_ex` comme handler de l'exception division par 0
-  + `divide_ex` est de type sos_exception_handler_t
-
+    * `divide_ex` est de type sos_exception_handler_t
 * `sos_exception_set_routine` est définie dans `./hwcore/exception.c`
-  + On met à jour le tableau `sos_exception_handler_array[]` à l'indice `SOS_EXCEPT_DIVIDE_ERROR` avec l'adr de `divide_ex`
-
-  + Voir `sos_exception_handler_array[exception_number] = routine;`
-
-  + Le tableau `sos_exception_handler_array[]` est défini dans `exception.c` et référencé dans `exception_wrapper.S`
-
-  + Ensuite on appelle `idt.c/sos_idt_set_handler(SOS_EXCEPT_BASE + exception_number, sos_exception_wrapper_array[exception_number], 0)`
-
-  + `sos_exception_wrapper_array[]` est défini dans `exception_wrappers.S`
-    - C'est un tableau qui contient les adr des routines assembleur (wrappers) de 0 à 31
-
-    - Dans `exception_wrappers.S` selon que la routine retourne ou non un code d'erreur elle est encodée d'une façon ou d'une autre
-
-  + Dans `idt.c/sos_idt_set_handler`
-    - on met à jour le contenu du tableau idt.
-
-    - idt a 256 entrées sous forme de structures
-
-    - Un des champs de la struct dit qu'il existe un handler.
-
-    - 2 autres champs ont l'adr du handler
-
-    - l'adr du handler passée c'est l'adr de la cellule du tableau `sos_exception_wrapper_array[exception_number]` qui contient l'adr du wrapper, la routine en assembleur
+    * On met à jour le tableau `sos_exception_handler_array[]` à l'indice `SOS_EXCEPT_DIVIDE_ERROR` avec l'adr de `divide_ex`
+    * Voir `sos_exception_handler_array[exception_number] = routine;`
+    * Le tableau `sos_exception_handler_array[]` est défini dans `exception.c` et référencé dans `exception_wrapper.S`
+    * Ensuite on appelle `idt.c/sos_idt_set_handler(SOS_EXCEPT_BASE + exception_number, sos_exception_wrapper_array[exception_number], 0)`
+    * `sos_exception_wrapper_array[]` est défini dans `exception_wrappers.S`
+        * C'est un tableau qui contient les adr des routines assembleur (wrappers) de 0 à 31
+        * Dans `exception_wrappers.S` selon que la routine retourne ou non un code d'erreur elle est encodée d'une façon ou d'une autre
+    * Dans `idt.c/sos_idt_set_handler`
+        * on met à jour le contenu du tableau idt.
+        * idt a 256 entrées sous forme de structures
+        * Un des champs de la struct dit qu'il existe un handler.
+        * 2 autres champs ont l'adr du handler
+        * l'adr du handler passée c'est l'adr de la cellule du tableau `sos_exception_wrapper_array[exception_number]` qui contient l'adr du wrapper, la routine en assembleur
 
 ## Partie 2 où le code assembleur est traduit en NASM
 
@@ -634,19 +601,12 @@ section .note.GNU-stack noalloc noexec nowrite progbits             ; https://wi
 ### Explications rapides
 
 * Le noyau dur, c'est à dire le code des différents wrappers et une traduction directe du code original. Voir le contenu du fichier `irq_wrappers.S`
-
 * Sinon, il y a 2 macros pour sauvegarder puis récupérer les registres
-
 * Il y a une macro qui prend en paramètre `Id`. Si `Id` faut 8, la macro génère un label qui se nomme `sos_irq_wrapper_8`
-
 * Ensuite on utilise une facilité de NASM qui permet de répéter des bouts de code (voir les pseudo-instructions `%rep`, `%endrep` et `%assign`). En gros c'est comme une boucle for. On initialise `id` avant la boucle et à chaque tour de boucle on l'incrémente jusqu'à ce qu'il atteigne la valeur du paramètre de `%rep`.
-
 * Entre temps on répete le code mais on peut paramètrer certaines instructions avec `id`. Voir par exemple : `call [edi + 4*id]`.
-
 * Il y a 2 boucles car le code des IRQ est différent selon que le N° de IRQ et inférieure ou supérieure/égale à 8
-
 * À la fin on utilise encore une boucle pour créer le tableau `sos_irq_wrapper_array` qui contient les adresses (les labels) des différentes routines précédentes.
-
 * À la toute fin, la ligne évite un warning. Lire les références web si besoin.
 
 ```nasm
@@ -819,17 +779,11 @@ section .note.GNU-stack noalloc noexec nowrite progbits     ; https://wiki.gento
 ### Explications rapides
 
 * Lire le code `exception_wrappers.S`
-
 * J'applique les mêmes techniques que dans `irq_wrappers.asm`
-
 * Il faut peut-être juste remarquer que dans les macros `Exception_No_Err` et `Exception_With_Err` je fais appelle à d'autres macros à qui je transfère le paramètre. Exemple : `Label(%1):`
-
 * Un truc qui est bien avec GAS et que je n'ai pas retrouvé dans NASM c'est qu'on peut écrire des choses du type : `for n in (jeu de valeurs) répette les instructions suivantes end_for`. Voir le code de `exception_wrappers.S` si besoin.
-
 * Il y a bien la notion de boucle dans NASM mais les valeurs de l'indice doivent être espacées du même intervalle. Tous les 1, tous les 3. Je n'ai pas trouvé comment faire le `for n in ...` de GAS (je n'ai pas non plus posé la question sur Stack Overflow)
-
 * C'est pour cette raison que les différentes boucles n'utilisent que des N° d'exceptions qui se suivent. C'est ballot. On aurait pu faire plus court et donc plus "safe".
-
 * Bon, sinon comme dans le code original on fait la différence selon que l'exception possède ou non un code d'erreur. Les exceptions, leur N° et l'indication concernant leur code d'erreur sont en commentaire.
 
 Typiquement voilà ce à quoi ressemble le répertoire ./hwcore

@@ -451,28 +451,20 @@ Mouai... Et on fait quoi maintenant qu'on est revenu au point de départ ?
 
 Heu... Je vais te calmer tout de suite. On ne va pas aller aux pays des merveilles mais plutôt à la cave... Et encore, je vais te donner une version édulcorée, un truc bien propre, à la chronologie bien linéaire, genre tuto de YouTube où tout se passe toujours bien.
 
-En réalité ça ne s'est pas du tout passé comme ça. C'est parti dans tous les sens, j'ai pas mal cherché, j'ai fait les trucs dans le mauvais ordre, j'ai perdu pas mal de VM... Une vraie boucherie, y avait du sang partout. Le genre d'expérience qui te donne envie de tout jeter. Un peu comme les ces p💀t@ins de randos qui n'en finissent pas de monter...
+En réalité ça ne s'est pas du tout passé comme ça. C'est parti dans tous les sens, j'ai pas mal cherché, j'ai fait les trucs dans le mauvais ordre, j'ai perdu pas mal de VM... Une vraie boucherie, y avait du sang partout. Le genre d'expérience qui te donne envie de tout jeter. Un peu comme ces p💀t@ins de randos qui n'en finissent pas de monter...
 
 https://www.youtube.com/shorts/d92jbkVY8wY
 
 ## Ce que je crois avoir compris
 
 * SOS fonctionne avec Grub 1
-
 * Dans la configuration actuelle, avec le Grub 1 installé sur la VM lenny, le Makefile retrouve bien ses petits mais ça part en vrille à l'exécution. Message du style "Invalid or unsupported executable format".
-
 * En cherchant sur le web, je fini par fouiller, à la main, message par message, dans les [archives de la mailing](http://the-doors.enix.org/pipermail/sos/) [l](http://the-doors.enix.org/pipermail/sos/)[ist de SOS](http://the-doors.enix.org/pipermail/sos/) (merci les gars, franchement merci de tout laisser en ligne après autant d'années)
-
 * Plus précisément, je tombe sur ce message : <http://the-doors.enix.org/pipermail/sos/2011-January/001076.html>. Là, tu te dis qu'il y a des mecs qui ont plus d'idées que toi et qu'il y a peut-être un truc à tenter.
-
 * Du coup je recompile un Grub 1 et je l'installe sur la VM lenny
-
 * Ensuite je recompile SOS. Ça génère un nouveau fichier fd.img en utilisant, entre autres, le fichier Stage 2 du "nouveau" Grub 1
-
 * Et là... Ça ne marche toujours pas... P💀t@in fait suer !!!
-
 * Grand moment de solitude... Pas le moral... Je tombe dans l'alcool, la drogue et la prostitution...
-
 * Mais bon, en continuant à chercher je trouve ce billet : [https://wiki.archlinux.org/title/Talk:GRUB_Legacy](https://wiki.archlinux.org/title/Talk%3AGRUB_Legacy)
 
 <div align="center">
@@ -481,52 +473,32 @@ https://www.youtube.com/shorts/d92jbkVY8wY
 
 
 * Là, tu comprends que pour Grub 1, il faut que les [inodes du système de fichiers](https://fr.wikipedia.org/wiki/N%C5%93ud_d%27index) aient une taille de 128 octets.
-
 * Bien sûr, quand je vérifie la taille des inodes de la VM lenny je découvre qu'ils ont une taille de 256 octets. C'est bizarre et contradictoire avec ce qui est dit dans le billet mais bon... On va quand même essayer de mettre les inodes à 128 octets.
-
 * Le problème c'est que je ne peux pas changer la taille des inodes sur un disque qui est monté
-
 * Je récupère une distribution qui possède un mode "live".
-
 * Je boote la VM lenny sur le CD de la distribution live en question
-
 * Je vérifie la taille des inodes. Ils sont à 256 bytes.
-
 * Je demande à les faire passer à 128...
-
 * Et là on me dit que ce n'est pas possible de réduire la taille des inodes qu'on ne peut que les faire grandir
-
 * P💀t@in, je suis maudit ou quoi ?
 
-* Re alcool, re drogue et re prostitution...
+Re alcool, re drogue et re prostitution...
 
 * J'essaie de jouer avec l'installeur de la Debian Lenny. J'essaie le mode expert mais là il y a trop de questions auxquelles je n'ai pas les réponses. Je pense cependant qu'un "bon" aurait choisi cette voie.
-
 * Finalement je fais un entre-deux un peu "cracra". Accroche ta ceinture et reste avec moi deux minutes. Imagine... :
-  + Je boote le live CD sur la VM leny
-
-  + Cette dernière a toutes ses partitions, tout va bien. Y a juste la première dont il faut faire passer la taille des inodes de 256 à 128 octets
-
-  + On sacrifie la première partition en claquant dessus un nouveau système de fichiers dont les inodes ont une taille de 128. Ça ne va sans doute pas matcher au niveau de la taille de la partition mais on s'en fout on est plus à ça près.
-
-  + Par contre, c'est sûr, on aura perdu tous les fichiers.
-
-  + Faut donc refaire une installation de la Debian Lenny
-
-  + Je reboote donc la VM lenny avec le CD d'installation de la Debian Lenny
-
-  + Lors du paramétrage de l'installation on demande à garder les partitions ainsi que les systèmes de fichiers en place et à simplement copier les fichiers de Lenny dessus
-
-  + Enfin je reboote la VM lenny.
-
-  + Tout devrait être pareil sauf que dorénavant, les inodes de sda1 devraient être à 128 octets.
+    * Je boote le live CD sur la VM leny
+    * Cette dernière a toutes ses partitions, tout va bien. Y a juste la première dont il faut faire passer la taille des inodes de 256 à 128 octets
+    * On sacrifie la première partition en claquant dessus un nouveau système de fichiers dont les inodes ont une taille de 128. Ça ne va sans doute pas matcher au niveau de la taille de la partition mais on s'en fout on est plus à ça près.
+    * Par contre, c'est sûr, on aura perdu tous les fichiers.
+    * Faut donc refaire une installation de la Debian Lenny
+    * Je reboote donc la VM lenny avec le CD d'installation de la Debian Lenny
+    * Lors du paramétrage de l'installation on demande à garder les partitions ainsi que les systèmes de fichiers en place et à simplement copier les fichiers de Lenny dessus
+    * Enfin je reboote la VM lenny.
+    * Tout devrait être pareil sauf que dorénavant, les inodes de sda1 devraient être à 128 octets.
 
 * Pour faire bonne mesure, je recompile un Grub 1 et je le réinstalle
-
 * Je reboote de la VM lenny
-
 * Je compile et je teste SOS
-
 * Et si ça ne marche pas... Ben je ne sais pas... J'élève des brebis sur les hauteurs de [Solenzara](https://www.sarisolenzara.fr/) ?
 
 Mouai... Ça a l'air compliqué ton affaire. Tu peux résumer ?
@@ -803,9 +775,9 @@ Afin de lever le doute, voilà ce que j'ai fait.
 * Le nom c'est juste pour dire qu'on va passer sous système de fenêtrage
 * Dans VMware Player, faire apparaître la VM `lenny128X`
 * Dans ses settings
-  + Lui donner 8 ou 4 GB de mémoire
-  + Lui donner le nom `lenny128X`
-  + Mettre en place un répertoire partagé avec le host Mint. J'ai appelé ce répertoire `shared_lenny128X`
+    * Lui donner 8 ou 4 GB de mémoire
+    * Lui donner le nom `lenny128X`
+    * Mettre en place un répertoire partagé avec le host Mint. J'ai appelé ce répertoire `shared_lenny128X`
 * Je lance la VM `lenny128X`
 * Je confirme que c'est une VM que j'ai copié
 * Quand je suis sur le terminal je tape les commandes suivantes

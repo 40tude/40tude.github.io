@@ -19,7 +19,7 @@ last_modified_date: 2024-03-30 20:20:02
 
 ## Introduction
 
-Si tu arrives ici par hasard, note que l'idée c'est de faire tourner, dans un contexte remis au goût du jour, un OS 32 bits dont le code date d'une vingtaine d'années. Ce qui est vraiment génial c'est que **Simple OS** (c'est le nom de l'OS en question) est excessivement bien documenté car, à l'époque, toute une série d'articles étaient parus à son sujet dans Linux Mag. Je te laisse lire [les articles de l'époque](http://sos.enix.org/fr/SOSDownload) ainsi que les [épisodes précédents](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/) de cette série. En ce qui concerne mes billets, je t'incite très fortement à lire le 1 puis le 0 puis de reprendre un ordre "normal" (oui, je confirme, la vie n'est pas un long fleuve tranquille).
+Si tu arrives ici par hasard, note que l'idée c'est de faire tourner, dans un contexte remis au goût du jour, un OS 32 bits dont le code date d'une vingtaine d'années. Ce qui est vraiment génial c'est que **Simple OS** (c'est le nom de l'OS en question) est excessivement bien documenté car, à l'époque, toute une série d'articles étaient parus à son sujet dans Linux Mag. Je te laisse lire [les articles de l'époque](http://sos.enix.org/fr/SOSDownload) ainsi que les [épisodes précédents]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) de cette série. En ce qui concerne mes billets, je t'incite très fortement à les lire dans lo'rdre. Dans le 1 il n'y a rine à faire, juste prendre concience que la vie n'est pas un long fleuve tranquille.
 
 Dans l'épisode 3, l'article original parle de la gestion de la mémoire physique.
 

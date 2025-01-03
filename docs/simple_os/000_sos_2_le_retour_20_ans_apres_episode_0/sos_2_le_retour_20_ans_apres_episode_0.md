@@ -39,7 +39,7 @@ Par exemple, à la fin du premier épisode de la série (je pense qu'on peut mê
 
 Sans divulguer la fin de l'histoire (mais oui, oui, ils vont se marier et avoir beaucoup d'enfants), la série s'est déployée sur 13 articles de juin 2004 à octobre 2007. Sauf erreur de ma part, rien n'a été publié par la suite (c'est dommage, j'attendais avec impatience l'implémentation de la stack réseau).
 
-Heu... Non, non je ne suis pas nostalgique. Je n'aime pas particulièrement les voitures anciennes, je préfère bien mieux [ma récente RSV4](https://www.40tude.fr/category/rsv4-sur-circuit/) à une vieille [RG 500 Gama](https://www.motoplanete.com/suzuki/3154/RG-500-GAMMA-1985/contact.html). Cela dit, je trouve que pour ceux qui veulent comprendre ce qui se passe au démarrage d'un PC et/ou ce qui se cache dans un operating system, cette série reste d'actualité et peut être une excellente base de départ.
+Heu... Non, non je ne suis pas nostalgique. Je n'aime pas particulièrement les voitures anciennes, je préfère bien mieux ma [RSV4](https://www.motoplanete.com/aprilia/8740/RSV4-1100-Factory-2021/contact.html) à une vieille [RG 500 Gama](https://www.motoplanete.com/suzuki/3154/RG-500-GAMMA-1985/contact.html). Cela dit, je trouve que pour ceux qui veulent comprendre ce qui se passe au démarrage d'un PC et/ou ce qui se cache dans un operating system, cette série reste d'actualité et peut être une excellente base de départ.
 
 ### Quelles sont les caractéristiques de SOS ?
 
@@ -76,7 +76,7 @@ Là aussi, si certains sujets ne sont pas encore très clairs, pas d'angoisse on
 
 ### Note
 
-Si tu veux avoir une idée de ce qu'il faut faire en 2023 pour faire tourner SOS dans une configuration similaire à celle de l'époque, tu peux [lire ce billet](https://www.40tude.fr/sos-2-le-retour-20-ans-apres/). Good luck, ce sera sans moi. 😊
+Si tu veux avoir une idée de ce qu'il faut faire en 2023 pour faire tourner SOS dans une configuration similaire à celle de l'époque, tu peux [lire ce billet]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %}). Good luck, ce sera sans moi. 😊
 
 ## Qu'est-ce qui tourne aujourd'hui ?
 
@@ -108,7 +108,7 @@ Je pense que ce billet va être le plus long de la série car c'est ici qu'on va
 
 ## 1 - Installation des outils
 
-Je suis sous [Windows 11 (23H2)](https://www.40tude.fr/finalize-windows-11-installation-2/) mais c'est exactement la même chose si tu es sous Linux (j'ai un [host mint 21.2](https://github.com/40tude/mint_config_latitude))
+Je suis sous Windows 11 (23H2) mais c'est exactement la même chose si tu es sous Linux (je fais aussi les test sur un host [Mint 21.2](https://github.com/40tude/mint_config_latitude))
 
 ### WIN11
 
@@ -142,13 +142,13 @@ Ensuite
 
 * Redémarre si besoin
 * Quand c'est fait, assure-toi que tu arrives à lancer les 3 outils.
-  + Dans une console normale (WIN+X puis I)
-  + Tape : `code .`
-  + Fermes ensuite la fenêtre VSCode
-  + Tape : `qemu-system-i386`
-  + Ferme la fenêtre de l'émulateur qui pleure car il ne trouve pas d'OS à faire démarrer
-  + Tape : `docker --help`
-  + S'il pleut ou si tu n'as pas d'amis lis ce qui est écrit, sinon passe à la suite...
+    * Dans une console normale (WIN+X puis I)
+    * Tape : `code .`
+    * Fermes ensuite la fenêtre VSCode
+    * Tape : `qemu-system-i386`
+    * Ferme la fenêtre de l'émulateur qui pleure car il ne trouve pas d'OS à faire démarrer
+    * Tape : `docker --help`
+    * S'il pleut ou si tu n'as pas d'amis lis ce qui est écrit, sinon passe à la suite...
 
 ### LINUX
 
@@ -177,13 +177,13 @@ Ensuite
 
 * Redémarre si besoin
 * Quand c'est fait, assure-toi que tu arrives à lancer les 3 outils.
-  + Dans une console
-  + Tape : `code .`
-  + Fermes ensuite la fenêtre VSCode
-  + Tape : `qemu-system-i386`
-  + Ferme alors la fenêtre de l'émulateur qui pleure car il ne trouve pas d'OS à faire démarrer
-  + Tape : `docker --help`
-  + S'il pleut ou si tu n'as pas d'amis lis ce qui est écrit, sinon passe à la suite...
+    * Dans une console
+    * Tape : `code .`
+    * Fermes ensuite la fenêtre VSCode
+    * Tape : `qemu-system-i386`
+    * Ferme alors la fenêtre de l'émulateur qui pleure car il ne trouve pas d'OS à faire démarrer
+    * Tape : `docker --help`
+    * S'il pleut ou si tu n'as pas d'amis lis ce qui est écrit, sinon passe à la suite...
 
 ## 2 - Création des répertoires du projet
 
@@ -192,11 +192,11 @@ Ensuite
 * T'inquiète paupiette, ça va bien se passer...
 * Comme il y a peu ou pas d'intérêt à mettre par écrit toutes les instructions à suivre, on va utiliser un script.
 * Ce dernier va :
-  + Créer un sous-répertoire `sos2`
-  + Aller chercher le code de SOS de l'article 1 et le mettre dans un sous-répertoire `download`
-  + Créer les différents sous-répertoires dont on aura besoin plus tard
-  + Copier, depuis le sous-répertoire `download` les sources qu'on va utiliser pour créer SOS2
-  + Créer un fichier `.gitignore` (utile si tu as git sur ta machine)
+    * Créer un sous-répertoire `sos2`
+    * Aller chercher le code de SOS de l'article 1 et le mettre dans un sous-répertoire `download`
+    * Créer les différents sous-répertoires dont on aura besoin plus tard
+    * Copier, depuis le sous-répertoire `download` les sources qu'on va utiliser pour créer SOS2
+    * Créer un fichier `.gitignore` (utile si tu as git sur ta machine)
 
 À l'issue du script on sera placé dans le sous-répertoire `sos2` et on pourra vraiment commencer.
 
@@ -255,13 +255,13 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 ```
 ### LINUX
 
-Déplace-toi dans le répertoire dans lequel tu veux créer le sous-répertoire `sos2` qui contiendra le projet SOS2
-* Exemple : `/home/philippe/temp`
+Déplace-toi dans le répertoire dans lequel tu veux créer le sous-répertoire `sos2` qui contiendra le projet SOS2  
+**Exemple** : `/home/philippe/temp`
 
-Copie colle le code ci-dessous dans un script `sos2.sh` dans le répertoire en question
-* Exemple : `/home/philippe/temp/sos2.sh`
+Copie colle le code ci-dessous dans un script `sos2.sh` dans le répertoire en question  
+**Exemple** : `/home/philippe/temp/sos2.sh`
 
-Rends le script exécutable
+Rends le script exécutable 
 * `chmod u+x ./sos2.sh`
 
 ```bash
@@ -312,11 +312,8 @@ Lance le script `sos2.sh` (n'oublie pas le point devant le nom du script, je l'o
 Je ne reviens pas sur les répertoires de SOS (`./bootstrap`, `./drivers`, `./hwcore` et `./sos`)
 
 * `./build` : va contenir les fichiers compilés (.o). Ça évite d'avoir des fichiers .o qui "trainent" dans les répertoires `./bootstrap`, `./sos` etc. On verra par la suite si au lieu de tout mettre "à plat" dans `./build` on ne créé pas des sous répertoires du style `./build/sos`, `./build/drivers` etc.
-
 * `./buildenv` : c'est dans ce répertoire qu'on va écrire le fichier en charge de créer l'environnement dans lequel on va compiler, linker puis graver sur CD virtuel SOS2. On en parle dans 2 minutes. C'est par lui qu'on va commencer.
-
 * `./download` : on en a déjà parlé brièvement. C'est là qu'on met une copie des sources de SOS de l'épisode en question. Ici le 1 par exemple.
-
 * `./target` : un répertoire dont va avoir besoin `[grub-mkrescue](https://www.gnu.org/software/grub/manual/grub/html_node/Invoking-grub_002dmkrescue.html)` afin de créer l'image .iso de SOS2. On en reparle au moment de la rédaction du `Makefile`.
 
 ## 3 - Modifications des fichiers du projet
@@ -968,7 +965,6 @@ Pour la seconde étape, il suffit d'ouvrir `main.c` et d'apporter les modificati
 ```c
 //#include <bootstrap/multiboot.h>
 #include <sos/multiboot2.h>
-
 ```
 
 Ceci dit, on devra revenir pour modifier le fichier `main.c`. En effet, ce dernier "cause" multiboot 1 alors que nous, on est dorénavant compatibles multiboot 2. Pas grave, on y reviendra en temps utile.
@@ -1097,7 +1093,6 @@ clean:
 	$(RM) -rf dist
 	$(RM) $(SOS_BIN)
 	$(RM) build/*.o build/*~
-
 ```
 
 #### Séquence explications
@@ -1424,7 +1419,6 @@ void sos_main(unsigned long magic, unsigned long addr) {
 
   return;
 }
-
 ```
 
 Ensuite, on ne change rien. On garde `sos2.ld` en l'état avec son point de chargement à 1MB. Voir ci-dessous :
@@ -1517,10 +1511,10 @@ SECTIONS {
 
 Je fais court :
 
-* make clean
-* make
-* qemu-system-i386 -cdrom ./dist/sos2.iso (côté PowerShell pour se rassurer)
-* readelf -a ./target/iso/boot/sos2.bin (côté Docker)
+* ``make clean``
+* ``make``
+* ``qemu-system-i386 -cdrom ./dist/sos2.iso`` (côté PowerShell pour se rassurer)
+* ``readelf -a ./target/iso/boot/sos2.bin`` (côté Docker)
 
 Voilà ce que je vois :
 
@@ -1541,7 +1535,7 @@ Par contre on observe que des sections ont été rajoutées. Là aussi, il en es
 
 Par contre il y a des sections avec des noms de l'espace... `.shstrtab` (contient les noms de sections ?), `.comment`(?), `.eh_frame` (ça me fait penser aux exceptions C++, bizarre on est en C ANSI classique).
 
-Afin de supprimer la section .eh_frame je te propose d'ajouter `-fno-asynchronous-unwind-tables` à `CFLAGS` dans le fichier `Makefile` :
+Afin de supprimer la section ``.eh_frame`` je te propose d'ajouter `-fno-asynchronous-unwind-tables` à `CFLAGS` dans le fichier `Makefile` :
 
 ```bash
 CFLAGS  = -Wall -nostdlib -nostdinc -ffreestanding -m32 -fno-asynchronous-unwind-tables
@@ -1594,15 +1588,15 @@ SECTIONS {
 }
 ```
 
-J'ai gardé zoubida. C'est cadeau, ça me fait plaisir...
+J'ai gardé ``zoubida``. C'est cadeau, ça me fait plaisir...
 
-Sinon on aligne la section .text et on force l'ordre des sections .data, .rodata etc.
+Sinon on aligne la section ``.text`` et on force l'ordre des sections ``.data``, ``.rodata`` etc.
 
-Après faut aller potasser la syntaxe du script attendu par ld. Voir les liens à la fin de cette section.
+Après faut aller potasser la syntaxe du script attendu par ``ld``. Voir les liens à la fin de cette section.
 
 C'est presque évident mais "`.text ALIGN(4096) :`" veut dire qu'il faut que la section `.text` commence au début d'une page.
 
-De même, le second "`.`" de "`.data . :`" demande à ce que la section `.data` commence là où se termine la précédente section. Personnellement je comprend les "`.`" comme "les adresses de là où on est au moment où on les lis".
+De même, le second "`.`" de "`.data . :`" demande à ce que la section `.data` commence là où se termine la précédente section. Personnellement je comprends les "`.`" comme "les adresses de là où on est au moment où on les lis".
 
 Je passe les détails mais à la fin voilà ce que l'on peut voir dans le terminal :
 
@@ -1613,16 +1607,14 @@ Je passe les détails mais à la fin voilà ce que l'on peut voir dans le termin
 #### À lire
 
 * <https://www.cs.princeton.edu/courses/archive/spring09/cos217/lectures/02_SimplePrograms.pdf>
-
 * <https://man7.org/linux/man-pages/man5/elf.5.html>
-
 * /DISCARD/ : <https://sourceware.org/binutils/docs/ld/Output-Section-Discarding.html>
 
 Bon, allez, on va siffler la fin de la récré car sinon on va y passer la nuit. Je te propose de passer dans le terminal du container, de faire un `make clean` suivit d'un `exit`, de repasser sur ton terminal puis de mettre tout ça sur [GitHub](https://github.com/40tude/sos2/tree/main) à partir de VSCode.
 
 ## Conclusion
 
-Si on prend un peu de recul, à part `main.c` on a touché aucun des fichiers du répertoire `sos`. Même chose pour les répertoires `drivers` et `hwcore`. Oui, bien sûr, on a touché au répertoire `bootstrap` mais bon, au final, on peut attaquer dans la joie et la bonne humeur les autres épisodes de la série. On a une toolchain moderne, solide, indépendante de l'OS qui l'héberge... Et nom de Zeus, réalise qu'on a fait un peu de bouche à bouche à un code qui a 20 ans et zou il est reparti. Moi, perso, je trouve ça vraiment cool.
+Si on prend un peu de recul, à part `main.c` on a touché aucun des fichiers du répertoire `sos`. Même chose pour les répertoires `drivers` et `hwcore`. Oui, bien sûr, on a touché au répertoire `bootstrap` mais bon, au final, on peut attaquer dans la joie et la bonne humeur les autres épisodes de la série. On a une toolchain moderne, solide, indépendante de l'OS qui l'héberge... Et nom de Zeus, réalise qu'on a fait un peu de bouche à bouche à un code qui a 20 ans et zou il est reparti. Moi, perso, je trouve ça vraiment trop cool.
 
 Maintenant, ce qui m'excite le plus, c'est d'attaquer le second épisode de la série qui traite de la segmentation mémoire et des interruptions. J'ai hâte de voir comment l'adaptation va se passer. Cela fera sans doute l'objet d'un second billet de blog.
 
@@ -1698,7 +1690,6 @@ Par exemple, voilà ce à quoi ressemble la fin de `multiboot_header.asm`
 #### À lire
 
 * <https://osdev.org/Linker_Scripts> à propos du warning RWX permissions et de la solution
-
 * <https://www.redhat.com/en/blog/linkers-warnings-about-executable-stacks-and-segments>
 
 ### PS-2 :

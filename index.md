@@ -3,30 +3,59 @@ title: Home
 layout: home
 nav_order: 1
 date:               1964-02-25 20:00:00 +0000
-last_modified_date: 2025-01-02 15:00:00 +0000
+last_modified_date: 2025-01-03 15:00:00 +0000
 ---
 
 # 40tude.fr 
-Faut lire fortitude  
+Faut lire fortitude. Il n'y a pas de sens caché, j'ai toujours aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité. Pas de référence non plus à l'opération de désinformation de la seconde guerre mondiale.  
 Le site 40tude.fr est en cours de migration (300 billets de 2011 à 2024).  
-Laissez moi un peu de temps (ça devrait être terminé fin janvier 2025)  
+Laissez moi un peu de temps (j'espère avoir terminé fin janvier 2025)  
 Soyez pas surpris si d'ici là, les menus changent, les billets et catégories disparraissent, apparaissent...
+Pendant le portage, même si j'apporte quelques modifications aux billet, je ne vais pas changer les dates de dernières mise à jour.  
 
 ## TODO
 * Porter les pages de SOS pour tester les outils de recupération du site WP
-* Test du site avec outils Google etc.
+    * Faire un billet concernant le portage de WP vers markdown?
+* Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle
+* Lightbox pour les images
+* Ajouter un indicateur de durée de lecture en haut des pages
 * Sur la 1ere page, la liste des 10 derniers billets édités
-* Lightbox pour les grosses images
+* Voir comment permettre le téléchargement de fichiers pdf, zip, xlsx...
 * Correcteur ortho FR dans VScode ?
 * Pages en anglais? avec lang=en avant le Head
-* Google Search Console
-* PageSpeed Insights
+    * À mon avis c'est mort mais bon je vais continuer à chercher
+* Test du site avec outils Google etc.
+    * Google Search Console
+    * PageSpeed Insights
 * What else ? 
 * ~~Back to Top~~
 * ~~First et last Edit en bas de page~~
 
-## À garder eous le coude
+## À garder sous le coude
 * https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers
+* https://just-the-docs.github.io/just-the-docs/
+
+## Organisation des catégories ?
+
+1. Simple OS
+1. Maths
+1. Windows
+1. Linux
+1. Programmation
+    1. Python
+    1. C++
+    1. ANSI C avec CVI
+1. Moto
+    1. Pilotage circuit
+    1. RSV4
+    1. ZX6R
+    1. Divers
+1. Snowboard débuter 
+1. Divers
+    * Billet Jeune
+    * Billet Gravel
+    * ... 
+
 
 <!-- ## Site under construction - Give me much more time
 
