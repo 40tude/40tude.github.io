@@ -37,29 +37,29 @@ Sur x : $$cos(\alpha)dT = 0$$
 
 Sur y : $$sin(\alpha)dT - \mu gdL = 0$$
 
-Dans l'équation ci-dessus on a: $ P = mg = \mu dLg $
+Dans l'équation ci-dessus on a: $$ P = mg = \mu dLg $$
 
 Où μ est la masse linéique, dL est un élément de longueur et g est l'accélération de pesanteur
 
-Ensuite, on intègre l'équation de la projection sur l'axe x : $\int{}{}{cos(\alpha)dT} = K$
+Ensuite, on intègre l'équation de la projection sur l'axe x : $$\int{}{}{cos(\alpha)dT} = K$$
 
-Il vient : $Tcos(\alpha) = K$
+Il vient : $$Tcos(\alpha) = K$$
 
-Autrement dit, à chaque endroit, le long du cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $\alpha$ est nul et K=To.
+Autrement dit, à chaque endroit, le long du cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
 
-On intègre maintenant l'équation de la projection sur l'axe y : $\int{}{}{sin(\alpha)dT} = \int{}{}{\mu gdL}$
+On intègre maintenant l'équation de la projection sur l'axe y : $$\int{}{}{sin(\alpha)dT} = \int{}{}{\mu gdL}$$
 
-Il vient : $Tsin(\alpha) = \mu gL$
+Il vient : $$Tsin(\alpha) = \mu gL$$
 
 Mouai... Et on fait quoi maintenant avec les deux équations en question ?
 
-(1) $Tcos(\alpha) = K$
+(1) $$Tcos(\alpha) = K$$
 
-(2) $Tsin(\alpha) = \mu gL$
+(2) $$Tsin(\alpha) = \mu gL$$
 
-Si on divise (2) par (1) il vient : $tg{\alpha} = \frac{\mu g}{K} L$
+Si on divise (2) par (1) il vient : $$tg{\alpha} = \frac{\mu g}{K} L$$
 
-Mouai... Then what? Essayons de différencier l'équation ci-dessus : $d(tg{\alpha}) = \frac{\mu g}{K}d(L)$
+Mouai... Then what? Essayons de différencier l'équation ci-dessus : $$d(tg{\alpha}) = \frac{\mu g}{K}d(L)$$
 
 Maintenant, remarquons que
 
@@ -109,7 +109,7 @@ Hein, hein... Et l'intégrale de gauche... On fait comment ?
 
 ### Moyen mnémotechnique
 
-En fait, je me rappelle que $cos^2(x) + sin^2(x) = 1 $ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer sin de l'autre côté) on a aussi $ch^{2}(x) = 1 + sh^{2}(x)$
+En fait, je me rappelle que $$cos^2(x) + sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer sin de l'autre côté) on a aussi $$ch^{2}(x) = 1 + sh^{2}(x)$$
 
 Allez, on continue. Le membre de droite ressemble à ce qu'il y a sous la racine. J'effectue un changement de variable et je pose
 
@@ -185,7 +185,7 @@ $$y= \frac{1}{C} ch(Cx)$$
 
 Comme on a dit que
 
-$C = \frac {\mu g}{K} $ avec K=Cte=To
+$$C = \frac {\mu g}{K} $$ avec K=Cte=To
 
 $$y= \frac {K}{\mu g} ch ( \frac {K}{\mu g} x)$$
 

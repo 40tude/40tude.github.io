@@ -36,6 +36,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billet, je ne 
 * https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers
 * https://just-the-docs.github.io/just-the-docs/
 * https://jekyllrb.com/
+* Dasn VScode, retrouver les $ qui sont seuls : `(?<!\$)\$(?!\$)`
 
 ## Organisation des catégories ?
 
