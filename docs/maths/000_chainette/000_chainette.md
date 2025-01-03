@@ -29,53 +29,53 @@ Comme le système est au repos, l'accélération est nulle. On a donc :
 
 $$\sum{}{}\vec{F} = \vec{0} $$
 
-$$\vec{-T} + \vec{T+dT} + \vec{P} = \vec{0} $$
+$$\vec{-T} + \vec{T+\mathrm{d}T} + \vec{P} = \vec{0} $$
 
 On projette sur les axes x et y
 
-Sur x : $$cos(\alpha)dT = 0$$
+Sur x : $$\cos(\alpha)\mathrm{d}T = 0$$
 
-Sur y : $$sin(\alpha)dT - \mu gdL = 0$$
+Sur y : $$\sin(\alpha)\mathrm{d}T - \mu g\mathrm{d}L = 0$$
 
-Dans l'équation ci-dessus on a: $$ P = mg = \mu dLg $$
+Dans l'équation ci-dessus on a: $$ P = mg = \mu \mathrm{d}Lg $$
 
-Où μ est la masse linéique, dL est un élément de longueur et g est l'accélération de pesanteur
+Où μ est la masse linéique, \mathrm{d}L est un élément de longueur et g est l'accélération de pesanteur
 
-Ensuite, on intègre l'équation de la projection sur l'axe x : $$\int{}{}{cos(\alpha)dT} = K$$
+Ensuite, on intègre l'équation de la projection sur l'axe x : $$\int{}{}{\cos(\alpha)\mathrm{d}T} = K$$
 
-Il vient : $$Tcos(\alpha) = K$$
+Il vient : $$T\cos(\alpha) = K$$
 
 Autrement dit, à chaque endroit, le long du cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
 
-On intègre maintenant l'équation de la projection sur l'axe y : $$\int{}{}{sin(\alpha)dT} = \int{}{}{\mu gdL}$$
+On intègre maintenant l'équation de la projection sur l'axe y : $$\int{}{}{\sin(\alpha)\mathrm{d}T} = \int{}{}{\mu g\mathrm{d}L}$$
 
-Il vient : $$Tsin(\alpha) = \mu gL$$
+Il vient : $$T\sin(\alpha) = \mu gL$$
 
 Mouai... Et on fait quoi maintenant avec les deux équations en question ?
 
-(1) $$Tcos(\alpha) = K$$
+(1) $$T\cos(\alpha) = K$$
 
-(2) $$Tsin(\alpha) = \mu gL$$
+(2) $$T\sin(\alpha) = \mu gL$$
 
-Si on divise (2) par (1) il vient : $$tg{\alpha} = \frac{\mu g}{K} L$$
+Si on divise (2) par (1) il vient : $$\tan{\alpha} = \frac{\mu g}{K} L$$
 
-Mouai... Then what? Essayons de différencier l'équation ci-dessus : $$d(tg{\alpha}) = \frac{\mu g}{K}d(L)$$
+Mouai... Then what? Essayons de différencier l'équation ci-dessus : $$d(\tan{\alpha}) = \frac{\mu g}{K}d(L)$$
 
 Maintenant, remarquons que
 
-$$tg{\alpha} = \frac{dy}{dx}$$
+$$\tan{\alpha} = \frac{dy}{dx}$$
 
 Et que
 
-$$dL^2 = dx^2 + dy^2$$
+$$\mathrm{d}L^2 = dx^2 + dy^2$$
 
 Soit encore
 
-$$dL = \sqrt{dx^2 + dy^2}$$
+$$\mathrm{d}L = \sqrt{dx^2 + dy^2}$$
 
 Bref, notre équation précédente devient
 
-$$d(tg{\alpha}) = \frac{\mu g}{K} d(L)$$
+$$d(\tan{\alpha}) = \frac{\mu g}{K} d(L)$$
 
 $$d(\frac{dy}{dx}) = \frac{\mu g}{K} \sqrt{dx^2 + dy^2}$$
 
@@ -109,7 +109,7 @@ Hein, hein... Et l'intégrale de gauche... On fait comment ?
 
 ### Moyen mnémotechnique
 
-En fait, je me rappelle que $$cos^2(x) + sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer sin de l'autre côté) on a aussi $$ch^{2}(x) = 1 + sh^{2}(x)$$
+En fait, je me rappelle que $$\cos^2(x) + \sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer \sin de l'autre côté) on a aussi $$ch^{2}(x) = 1 + sh^{2}(x)$$
 
 Allez, on continue. Le membre de droite ressemble à ce qu'il y a sous la racine. J'effectue un changement de variable et je pose
 
@@ -189,7 +189,7 @@ $$C = \frac {\mu g}{K} $$ avec K=Cte=To
 
 $$y= \frac {K}{\mu g} ch ( \frac {K}{\mu g} x)$$
 
-L'équation du fil électrique entre 2 poteaux est donc un cosh et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
+L'équation du fil électrique entre 2 poteaux est donc un \cosh et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
 
 <div align="center">
 <img src="./assets/courbe.webp" alt="" loading="lazy"/>

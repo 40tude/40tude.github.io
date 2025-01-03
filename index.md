@@ -33,10 +33,12 @@ Pendant le portage, même si j'apporte quelques modifications aux billet, je ne 
 * ~~First et last Edit en bas de page~~
 
 ## À garder sous le coude
-* https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers
-* https://just-the-docs.github.io/just-the-docs/
-* https://jekyllrb.com/
-* Dasn VScode, retrouver les $ qui sont seuls : `(?<!\$)\$(?!\$)`
+* <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
+* <https://just-the-docs.github.io/just-the-docs/>
+* <https://jekyllrb.com/>
+* Dans VScode, retrouver les $ qui sont seuls : ``(?<!\$)\$(?!\$)``
+* d droit ``\mathrm{d}``
+* <https://www.mathematex.fr/guide-mathjax>
 
 ## Organisation des catégories ?
 
