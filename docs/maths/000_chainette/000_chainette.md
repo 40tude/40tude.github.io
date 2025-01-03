@@ -59,7 +59,7 @@ Mouai... Et on fait quoi maintenant avec les deux équations en question ?
 
 Si on divise (2) par (1) il vient : $$\tan{\alpha} = \frac{\mu g}{K} L$$
 
-Mouai... Then what? Essayons de différencier l'équation ci-dessus : $$d(\tan{\alpha}) = \frac{\mu g}{K}d(L)$$
+Mouai... Then what? Essayons de différencier l'équation ci-dessus : $$\mathrm{d}(\tan{\alpha}) = \frac{\mu g}{K}\mathrm{d}(L)$$
 
 Maintenant, remarquons que
 
@@ -75,25 +75,25 @@ $$\mathrm{d}L = \sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}$$
 
 Bref, notre équation précédente devient
 
-$$d(\tan{\alpha}) = \frac{\mu g}{K} d(L)$$
+$$\mathrm{d}(\tan{\alpha}) = \frac{\mu g}{K} \mathrm{d}(L)$$
 
-$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}$$
+$$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}$$
 
 À ce niveau, ce qui serait bien, se serait d'avoir une équation homogène. Pour cela on aimerait avoir un \mathrm{d}y/\mathrm{d}x dans le membre de droite. Qu'à cela ne tienne allons-y. L'équation devient :
 
-$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^{2} + \mathrm{d}y^{2}}$$
+$$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^{2} + \mathrm{d}y^{2}}$$
 
-$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \frac{\sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}} {\mathrm{d}x} \mathrm{d}x$$
+$$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \frac{\sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}} {\mathrm{d}x} \mathrm{d}x$$
 
-$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\frac{\mathrm{d}x^2}{\mathrm{d}x^2} + \frac{\mathrm{d}y^2}{\mathrm{d}x^2}} \mathrm{d}x$$
+$$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\frac{\mathrm{d}x^2}{\mathrm{d}x^2} + \frac{\mathrm{d}y^2}{\mathrm{d}x^2}} \mathrm{d}x$$
 
-$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{1 + \frac{\mathrm{d}y^2}{\mathrm{d}x^2}} \mathrm{d}x$$
+$$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{1 + \frac{\mathrm{d}y^2}{\mathrm{d}x^2}} \mathrm{d}x$$
 
-$$d(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{1 + \frac{\mathrm{d}y}{\mathrm{d}x}^{2}}\mathrm{d}x$$
+$$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{1 + \frac{\mathrm{d}y}{\mathrm{d}x}^{2}}\mathrm{d}x$$
 
 Faisons un peu le ménage histoire d'y voir plus clair
 
-$$d(u) = \frac{\mu g}{K} \sqrt{1 + u^{2}}\mathrm{d}x$$
+$$\mathrm{d}(u) = \frac{\mu g}{K} \sqrt{1 + u^{2}}\mathrm{d}x$$
 
 $$\mathrm{d}u = C \sqrt{1 + u^{2}}\mathrm{d}x$$
 
@@ -109,25 +109,25 @@ Hein, hein... Et l'intégrale de gauche... On fait comment ?
 
 ### Moyen mnémotechnique
 
-En fait, je me rappelle que $$\cos^2(x) + \sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer \sin de l'autre côté) on a aussi $$ch^{2}(x) = 1 + sh^{2}(x)$$
+En fait, je me rappelle que $$\cos^2(x) + \sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer \sin de l'autre côté) on a aussi $$\cosh^{2}(x) = 1 + \sinh^{2}(x)$$
 
 Allez, on continue. Le membre de droite ressemble à ce qu'il y a sous la racine. J'effectue un changement de variable et je pose
 
-$$u = sh(x)$$
+$$u = \sinh(x)$$
 
 En différenciant on a
 
-$$\mathrm{d}u = ch(x)\mathrm{d}x$$
+$$\mathrm{d}u = \cosh(x)\mathrm{d}x$$
 
 L'intégrale (le membre de gauche) s'écrit alors
 
 $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}}$$
 
-$$\int{}{}{\frac{ch(x)}{\sqrt{1 + sh^{2}(x)}}\mathrm{d}x}$$
+$$\int{}{}{\frac{\cosh(x)}{\sqrt{1 + \sinh^{2}(x)}}\mathrm{d}x}$$
 
-$$\int{}{}{\frac{ch(x)} {\sqrt{ch^{2}(x)}}\mathrm{d}x}$$
+$$\int{}{}{\frac{\cosh(x)} {\sqrt{\cosh^{2}(x)}}\mathrm{d}x}$$
 
-$$\int{}{}{\frac{ch(x)}{ch(x)}\mathrm{d}x}$$
+$$\int{}{}{\frac{\cosh(x)}{\cosh(x)}\mathrm{d}x}$$
 
 $$\int{}{}{\mathrm{d}x}$$
 
@@ -135,7 +135,7 @@ $$x$$
 
 Comme on avait posé
 
-$$u = sh(x)$$
+$$u = \sinh(x)$$
 
 C'est à dire
 
@@ -149,7 +149,7 @@ $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = Cx$$
 
 $$arcsh(u)= Cx$$
 
-$$u= sh(Cx)$$
+$$u= \sinh(Cx)$$
 
 On a presque terminé... Faut cependant se rappeler qu'on avait écrit
 
@@ -157,9 +157,9 @@ $$u=\frac {\mathrm{d}y} {\mathrm{d}x}$$
 
 Et donc, on se retrouve à résoudre l'équation suivante
 
-$$\frac {\mathrm{d}y} {\mathrm{d}x}= sh(Cx)$$
+$$\frac {\mathrm{d}y} {\mathrm{d}x}= \sinh(Cx)$$
 
-$$\mathrm{d}y= sh(Cx)\mathrm{d}x$$
+$$\mathrm{d}y= \sinh(Cx)\mathrm{d}x$$
 
 On pose
 
@@ -173,21 +173,21 @@ $$\mathrm{d}x = \frac {\mathrm{d}u}{C}$$
 
 L'équation devient
 
-$$\mathrm{d}y= sh(Cx)\mathrm{d}x$$
+$$\mathrm{d}y= \sinh(Cx)\mathrm{d}x$$
 
-$$\mathrm{d}y= \frac {1}{C sh(u)}\mathrm{d}u$$
+$$\mathrm{d}y= \frac {1}{C \sinh(u)}\mathrm{d}u$$
 
-$$\int{}{}{\mathrm{d}y}= \frac{1}{C} \int{}{}{sh(u)\mathrm{d}u}$$
+$$\int{}{}{\mathrm{d}y}= \frac{1}{C} \int{}{}{\sinh(u)\mathrm{d}u}$$
 
-$$y= \frac{1}{C} ch(u)$$
+$$y= \frac{1}{C} \cosh(u)$$
 
-$$y= \frac{1}{C} ch(Cx)$$
+$$y= \frac{1}{C} \cosh(Cx)$$
 
 Comme on a dit que $$C = \frac {\mu g}{K} $$ avec K=Cte=To
 
-$$y= \frac {K}{\mu g} ch ( \frac {\mu g}{K} x)$$
+$$y= \frac {K}{\mu g} \cosh ( \frac {\mu g}{K} x)$$
 
-L'équation \mathrm{d}u fil électrique entre 2 poteaux est donc un \cosh et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
+L'équation \mathrm{d}u fil électrique entre 2 poteaux est donc un cosh() et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
 
 <div align="center">
 <img src="./assets/courbe.webp" alt="" loading="lazy"/>
