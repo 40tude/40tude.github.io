@@ -38,7 +38,7 @@ C'est bon comme ça ?
 <img src="./assets/img03.webp" alt="" width="400"/>
 </div>
 
-*Ouai... Maintenant, comme tes couleurs me donnent mal au crâne et m'empêchent de réfléchir je t(e propose de passer en noir et blanc.*
+*Ouai... Maintenant, comme tes couleurs me donnent mal au crâne et m'empêchent de réfléchir je te propose de passer en noir et blanc.*
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="400"/>
@@ -137,7 +137,7 @@ J'enlève l'équerre jaune... Alors, une idée...
 <img src="./assets/img17.webp" alt="" width="400"/>
 </div>
 
-Oui en effet, En fait, les triangles sont dits semblables. Si par exemple on multiplie d2 par 3 alors la hauteur h2 est, elle aussi, multipliée par 3. Autrement dit étudier un des triangles, c'est étudier l'autre. C'est cool car ça permet de simplifier notre figure.
+Oui en effet, les triangles sont dits semblables. Si par exemple on multiplie d2 par 3 alors la hauteur h2 est, elle aussi, multipliée par 3. Autrement dit étudier un des triangles, c'est étudier l'autre. C'est cool car ça permet de simplifier notre figure.
 
 Tiens, du coup regarde à quoi ça ressemble.
 
@@ -147,9 +147,9 @@ Tiens, du coup regarde à quoi ça ressemble.
 
 Au fait, une remarque avant qu'on continue. 
 
-On a posé l'équerre sur la droite horizontale. On aurait pu la poser sur l'autre droite (voir ci-dessous). Cela revient strictement au même. On est bien en train d'étudier le même ecart entre les mêmes droites. 
+On a posé l'équerre sur la droite horizontale. On aurait pu la poser sur l'autre droite (voir ci-dessous). Cela revient strictement au même. On est bien en train d'étudier le même écart entre les mêmes droites. 
 
-Tiens, regarde cette figure et persuade toi que les 2 situations sont les identiques. Allez, on avance...
+Tiens, regarde cette figure et persuade toi que les 2 situations sont identiques. Allez, on avance...
 
 <div align="center">
 <img src="./assets/img19.webp" alt="" width="400"/>
@@ -181,7 +181,7 @@ Tu as tout à fait raison. Le rapport h1/d1 **n'est pas** la mesure de l'angle.
 
 Le rapport h1/d1 c'est un rapport... Oui, je sais, dit comme ça, ça à l'air débile. Dit autrement, h1/d1 ce n'est rien d'autre qu'un **taux d'accroissement**. Du coup ce terme est important. 
 
-Prenons un exemple. J'ai 2 droites qui s'écartent. Je choisis d1, je mesure h1 et je calcule h1/d1 et je trouve une valeur (1.42 par exemple). J'aurai pu prendre une autre valeur pour d1 : 2 fois plus petite, 10 fois plus grande. Comme on parle des 2 mêmes droites, du coup le ratio a toujours la même valeur (1.42) et du coup h1 aurait été respectivement 2 fois plus petit ou 10 fois plus grand.
+Prenons un exemple. J'ai 2 droites qui s'écartent. Je choisis d1, je mesure h1, je calcule h1/d1 et je trouve une valeur (1.42 par exemple). J'aurai pu prendre une autre valeur pour d1 : 2 fois plus petite, 10 fois plus grande. Comme on parle des 2 mêmes droites, du coup le ratio a toujours la même valeur (1.42) et du coup h1 aurait été respectivement 2 fois plus petit ou 10 fois plus grand.
 
 ## Tangente
 
@@ -208,7 +208,7 @@ Imagine... Imagine une belle courbe sympa que tu trace sur une feuille d'un seul
 
 Ce que l'on peut observer c'est qu'à gauche, la courbe "descend". Ses valeurs sont de plus en plus petites alors que je me déplace de la gauche vers la droite sur l'axe des x. 
 
-Fais le test (je peux pas le faire à ta place). Mets ton index sur l'abcisse -2. Tu lis quelle valeur? Maintenant mets ton index sur l'abscisse -1. Tu lis quelle valeurs? Tu vois bien avec la courbe précédente, elle descend (elle décroit) quand je me toruve à gauche dans la figure.
+Fais le test (je peux pas le faire à ta place). Mets ton index sur l'abcisse -2. Tu lis quelle valeur? Maintenant mets ton index sur l'abscisse -1. Tu lis quelle valeurs? Tu vois bien avec la courbe précédente, elle descend (elle décroit) quand je me trouve à gauche dans la figure.
 
 De même la courbe "monte" (croît) quand je me trouve à droite dans la figure. 
 
@@ -246,7 +246,7 @@ Ce que tu viens de tracer, c'est la direction de la vitesse. Si j'enlève les é
 
 Du coup je peux enlever tes billes. Et là tu me dis...
 
-*Je te dis que pour qualifier le comportement de la courbe (elle monte doucement, elle monte rapidement) faut une equerre, la faire glisser au point qu'on veut étudier sur la courbe et tracer la droite qui passe par le base. Elle a l'air bien pourri ta méthode...*
+*Je te dis que pour qualifier le comportement de la courbe (elle monte doucement, elle monte rapidement) faut une equerre, la faire glisser au point qu'on veut étudier sur la courbe et tracer la droite qui passe par la base. Elle a l'air bien pourrie ta méthode...*
 
 *Heu... Non, non, non. En y regardant de plus près, en fait faut juste retrouver l'angle que font les droites vertes avec l'horizontale. Plus l'angle est grand et plus la courbe monte vite... Je suis trop malin...*
 
@@ -323,7 +323,7 @@ Prenons un exemple et faisons les calculs pour fixer les idées.
 
 On vient donc de calculer le taux d'accroissement et on a dit qu'il valait 2x + dx. Mais le truc c'est que si dx est infiniment petit, cela veut dire que le taux d'accroissement est très proche de 2x. Par exemple le taux d'accroissement vaut 2 si x vaut 1 et il vaut 10 si x vaut 5. On quantifie bien le fait que la courbe grimpe plus vite quand x vaut 5 que lorsque x vaut 1. On peut même affirmer que son taux d'accroissement est 5 fois plus grand (car 10 c'est 2 fois 5).
 
-Crois le ou non mais par défintion le 2x qu'on vient de calculer c'est la dérivée de f quand cette dernière vaut x².
+Crois-le ou non mais par défintion le 2x qu'on vient de calculer c'est la **dérivée** de f quand cette dernière vaut x².
 
 <div align="center">
 <img src="./assets/img32.webp" alt="" width="400"/>

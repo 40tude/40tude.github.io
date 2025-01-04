@@ -99,16 +99,16 @@ Déjà, je vais préciser le vocabulaire. À partir de maintenant j'appelle **SO
 
 Ok mais la suite c'est quoi ? Je vais repartir d'une page blanche, refaire toutes les étapes et tout mettre par écrit au fur et à mesure. Pendant ce temps-là, je te propose de :
 
-* [Récupérer l'article 1](http://sos.enix.org/fr/SOSDownload#TOC_0_2_25) et de l'imprimer (pas la peine de râler, 66% du papier est recyclé)
+* [Récupérer l'article 1](http://sos.enix.org/fr/SOSDownload#TOC_0_2_25) et de l'imprimer (pas la peine de râler, 66% du papier c'est du papier recyclé)
 * Le lire de manière "active" en prenant des notes, beaucoup de notes, dans les marges
 * De ne pas passer trop de temps sur la section 4.2.3 qui traite du boot avec le secteur de boot d'une diskette. C'est instructif mais nous on ne va pas faire ça. En effet, SOS2 sera chargé en mémoire par Grub 2 (voir la section 4.2.2 de l'article).
-* Suite à la lecture de l'article (pas de soucis si tu dois le lire 2 ou 3 fois, c'est dense, très dense), n'hésite pas à aller faire le plein d'informations complémentaires sur le web. En effet, je ne vais ni reprendre ni revenir le contenu des articles. Ce n'est pas l'objet de ce billet. Rappelle-toi Barbara, moi ce que je veux, c'est que le code "historique" puisse tourner à nouveau.
+* Suite à la lecture de l'article (pas de soucis si tu dois le lire 2 ou 3 fois, c'est dense, très dense), n'hésite pas à aller faire le plein d'informations complémentaires sur le web. En effet, je ne vais ni reprendre ni revenir sur le contenu des articles. Ce n'est pas l'objet de ce billet. Rappelle-toi Barbara, moi ce que je veux, c'est que le code "historique" puisse tourner à nouveau.
 
 Je pense que ce billet va être le plus long de la série car c'est ici qu'on va mettre la "toolchain" en place, faire les adaptations pour le support de Grub 2 et de multiboot 2. On va aussi modifier le makefile, traduire et adapter des fichiers assembleur etc. Quand ce travail préliminaire indispensable sera terminé et que tout sera en place j'espère qu'on pourra facilement transposer les autres épisodes. On verra, on n'y est pas encore.
 
 ## 1 - Installation des outils
 
-Je suis sous Windows 11 (23H2) mais c'est exactement la même chose si tu es sous Linux (je fais aussi les test sur un host [Mint 21.2](https://github.com/40tude/mint_config_latitude))
+Je suis sous Windows 11 (23H2) mais c'est exactement la même chose si tu es sous Linux (je fais aussi les tests sur un host [Mint 21.2](https://github.com/40tude/mint_config_latitude))
 
 ### WIN11
 
@@ -314,7 +314,7 @@ Je ne reviens pas sur les répertoires de SOS (`./bootstrap`, `./drivers`, `./hw
 * `./build` : va contenir les fichiers compilés (.o). Ça évite d'avoir des fichiers .o qui "trainent" dans les répertoires `./bootstrap`, `./sos` etc. On verra par la suite si au lieu de tout mettre "à plat" dans `./build` on ne créé pas des sous répertoires du style `./build/sos`, `./build/drivers` etc.
 * `./buildenv` : c'est dans ce répertoire qu'on va écrire le fichier en charge de créer l'environnement dans lequel on va compiler, linker puis graver sur CD virtuel SOS2. On en parle dans 2 minutes. C'est par lui qu'on va commencer.
 * `./download` : on en a déjà parlé brièvement. C'est là qu'on met une copie des sources de SOS de l'épisode en question. Ici le 1 par exemple.
-* `./target` : un répertoire dont va avoir besoin `[grub-mkrescue](https://www.gnu.org/software/grub/manual/grub/html_node/Invoking-grub_002dmkrescue.html)` afin de créer l'image .iso de SOS2. On en reparle au moment de la rédaction du `Makefile`.
+* `./target` : un répertoire dont va avoir besoin [grub-mkrescue](https://www.gnu.org/software/grub/manual/grub/html_node/Invoking-grub_002dmkrescue.html) afin de créer l'image .iso de SOS2. On en reparle au moment de la rédaction du `Makefile`.
 
 ## 3 - Modifications des fichiers du projet
 
@@ -349,7 +349,7 @@ WORKDIR /root/env
 
 On sauve, on ouvre un terminal dans VSCode
 
-Pas d'embrouille... Assure toi que dans le terminal tu es bien dans le répertoire `sos2`
+Pas d'embrouille... Assure-toi que dans le terminal tu es bien dans le répertoire `sos2`
 
 Saisir alors la commande
 
@@ -1550,7 +1550,7 @@ Si on compile et qu'on liste les sections voilà ce que je vois (`.eh_frame` a d
 
 On peut aller plus loin et se rapprocher de l'organisation du fichier `sos.lds` de l'article. N'oublie pas, tu as accès à ce fichier, il est dans `download\sos-code-article1\support\sos.lds`). Je te propose de modifier ``sos2.ld`` comme suit :
 
-```nasm
+```
 ENTRY(start)
 
 SECTIONS {
@@ -1694,4 +1694,4 @@ Par exemple, voilà ce à quoi ressemble la fin de `multiboot_header.asm`
 
 ### PS-2 :
 * À l'attention des développeurs du soi-disant "éditeur" de WordPress... Je vous hais d'une force messieurs... Vous ne pouvez pas imaginer.
-* 02 01 2025 : qu'est ce que je suis content d'avoir quitté Wordpress et de tout éditer sous VSCode 😁
+* 02 01 2025 : qu'est ce que je suis content d'avoir quitté Wordpress et d'éditer les pages du site sous VSCode en markdown 😁
