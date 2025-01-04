@@ -16,8 +16,6 @@ Pendant le portage, même si j'apporte quelques modifications aux billet, je ne 
 ## TODO
 * Porter les pages de SOS pour tester les outils de recupération du site WP
     * Faire un billet concernant le portage de WP vers markdown?
-* Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle
-    * Lire : https://jekyllrb.com/docs/permalinks/#front-matter
 * Lightbox pour les images
 * Ajouter un indicateur de durée de lecture en haut des pages
 * Sur la 1ere page, la liste des 10 derniers billets édités
@@ -29,6 +27,8 @@ Pendant le portage, même si j'apporte quelques modifications aux billet, je ne 
     * Google Search Console
     * PageSpeed Insights
 * What else ? 
+* ~~Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle~~
+    * Lire : <https://jekyllrb.com/docs/permalinks/#front-matter>
 * ~~Back to Top~~
 * ~~First et last Edit en bas de page~~
 
