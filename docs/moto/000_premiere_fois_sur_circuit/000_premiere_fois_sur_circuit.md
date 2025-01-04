@@ -45,7 +45,7 @@ Bon alors ton planning, ça vient ? Voili, voilà ce sur quoi on est tombé d'ac
 
 Il suffit de récupérer le .pdf ci-dessous et de l'imprimer. C'est écrit en mode sms. Pour le comprendre il faut lire la section suivante.
 
-[Agenda de la Journee de Roulage](..\assets\agenda_roulage.pdf)
+[Agenda de la Journee de Roulage]({% link docs\moto\000_premiere_fois_sur_circuit\assets\agenda_roulage.pdf %})
                                           
 
 ## Le planning en mode détaillé
