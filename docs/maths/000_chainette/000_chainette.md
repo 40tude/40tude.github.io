@@ -39,13 +39,13 @@ Sur y : $$\sin(\alpha)\mathrm{d}T - \mu g\mathrm{d}L = 0$$
 
 Dans l'équation ci-dessus on a: $$ P = mg = \mu \mathrm{d}Lg $$
 
-Où μ est la masse linéique, \mathrm{d}L est un élément de longueur et g est l'accélération de pesanteur
+Où $$\mu$$ est la masse linéique (la masse par unité de longeur), $$\mathrm{d}L$$ est un élément de longueur et g est l'accélération de pesanteur
 
 Ensuite, on intègre l'équation de la projection sur l'axe x : $$\int{}{}{\cos(\alpha)\mathrm{d}T} = K$$
 
 Il vient : $$T\cos(\alpha) = K$$
 
-Autrement dit, à chaque endroit, le long \mathrm{d}u cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
+Autrement dit, à chaque endroit, le long du cable, la projection de la tension sur l'axe horizontal est constante. Si on se place à l'endroit le plus bas de la courbe, alors l'angle $$\alpha$$ est nul et K=To.
 
 On intègre maintenant l'équation de la projection sur l'axe y : $$\int{}{}{\sin(\alpha)\mathrm{d}T} = \int{}{}{\mu g\mathrm{d}L}$$
 
@@ -79,7 +79,7 @@ $$\mathrm{d}(\tan{\alpha}) = \frac{\mu g}{K} \mathrm{d}(L)$$
 
 $$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^2 + \mathrm{d}y^2}$$
 
-À ce niveau, ce qui serait bien, se serait d'avoir une équation homogène. Pour cela on aimerait avoir un \mathrm{d}y/\mathrm{d}x dans le membre de droite. Qu'à cela ne tienne allons-y. L'équation devient :
+À ce niveau, ce qui serait bien, se serait d'avoir une équation homogène. Pour cela on aimerait avoir un $$\frac{\mathrm{d}y}{\mathrm{d}x}$$ dans le membre de droite. Qu'à cela ne tienne allons-y. L'équation devient :
 
 $$\mathrm{d}(\frac{\mathrm{d}y}{\mathrm{d}x}) = \frac{\mu g}{K} \sqrt{\mathrm{d}x^{2} + \mathrm{d}y^{2}}$$
 
@@ -105,11 +105,11 @@ $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = \int{}{}{C \mathrm{d}x}$$
 
 $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = Cx$$
 
-Hein, hein... Et l'intégrale de gauche... On fait comment ?
+T'es mignon... Et l'intégrale de gauche... On fait comment ?
 
 ### Moyen mnémotechnique
 
-En fait, je me rappelle que $$\cos^2(x) + \sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et que (en faisant migrer \sin de l'autre côté) on a aussi $$\cosh^{2}(x) = 1 + \sinh^{2}(x)$$
+En fait, je me rappelle que $$\cos^2(x) + \sin^2(x) = 1 $$ (ben, si, ça quand même je peux m'en rappeler) et qu'en faisant migrer $$\sin$$ de l'autre côté on a aussi $$\cosh^{2}(x) = 1 + \sinh^{2}(x)$$ (c'est mnémotechnique, c'est pas exact...)
 
 Allez, on continue. Le membre de droite ressemble à ce qu'il y a sous la racine. J'effectue un changement de variable et je pose
 
@@ -119,7 +119,7 @@ En différenciant on a
 
 $$\mathrm{d}u = \cosh(x)\mathrm{d}x$$
 
-L'intégrale (le membre de gauche) s'écrit alors
+L'intégrale (le membre de gauche) s'écrit alors :
 
 $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}}$$
 
@@ -139,15 +139,15 @@ $$u = \sinh(x)$$
 
 C'est à dire
 
-$$arcsh(u) = x$$
+$$arc \sinh(u) = x$$
 
-On en dé\mathrm{d}uit que l'intégrale vaut arcsh(u)
+On en déduit que l'intégrale vaut arc sinh(u)
 
 On se retrouve donc avec
 
 $$\int{}{}{\frac {\mathrm{d}u}{\sqrt{1 + u^{2}}}} = Cx$$
 
-$$arcsh(u)= Cx$$
+$$arcsinh(u)= Cx$$
 
 $$u= \sinh(Cx)$$
 
@@ -175,7 +175,7 @@ L'équation devient
 
 $$\mathrm{d}y= \sinh(Cx)\mathrm{d}x$$
 
-$$\mathrm{d}y= \frac {1}{C \sinh(u)}\mathrm{d}u$$
+$$\mathrm{d}y= \frac {1}{C}\sinh(u)\mathrm{d}u$$
 
 $$\int{}{}{\mathrm{d}y}= \frac{1}{C} \int{}{}{\sinh(u)\mathrm{d}u}$$
 
@@ -187,7 +187,7 @@ Comme on a dit que $$C = \frac {\mu g}{K} $$ avec K=Cte=To
 
 $$y= \frac {K}{\mu g} \cosh ( \frac {\mu g}{K} x)$$
 
-L'équation \mathrm{d}u fil électrique entre 2 poteaux est donc un cosh() et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes (la parabole est rehaussée pour que les 2 points bas coïncident) :
+L'équation du fil électrique entre 2 poteaux est donc un cosh() et non une simple parabolique comme on pourrait "intuitivement" s'y attendre. Voilà par ailleurs les 2 courbes. La parabole est rehaussée pour que les 2 extremums coïncident :
 
 <div align="center">
 <img src="./assets/courbe.webp" alt="" loading="lazy"/>

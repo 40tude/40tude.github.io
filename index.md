@@ -39,6 +39,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billet, je ne 
 * Dans VScode, retrouver les $ qui sont seuls : ``(?<!\$)\$(?!\$)``
 * d droit ``\mathrm{d}``
 * <https://www.mathematex.fr/guide-mathjax>
+* <https://docs.mathjax.org/en/latest/input/tex/macros/index.html>
 
 ## Organisation des catégories ?
 
