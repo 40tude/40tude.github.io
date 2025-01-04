@@ -170,7 +170,7 @@ Ok, bon ben on va calculer h1/d1. Là c'est cool parce que même si d1 est nul, 
 
 *Heu oui mais... Si h1 est infini... Avec ton rapport de h1/d1 on a une valeur infinie ce qui est débile pour un angle car les angles son limité à 90°... Bravo !*
 
-Tu as tout a fait raison. Le rapport h1/d1 n'est pas la mesure de l'angle.
+Tu as tout a fait raison. Le rapport h1/d1 **n'est pas** la mesure de l'angle.
 
 <div align="center">
 <img src="./assets/img21.webp" alt="" width="400"/>
@@ -191,56 +191,138 @@ Prenons un exemple. J'ai 2 droites qui s'écartent. Je choisis d1, je mesure h1 
 * Par définition $$\frac{h1}{d1}=\frac{\text{Opp}}{\text{Adj}}$$, c'est la **tangente de l'angle**.
 * Et du coup, pour trouver la valeur de l'angle, il faut prendre sa calculatrice et chercher la valeur de l'arc dont la tangente vaut 1.42 par exemple. On utilise la touche arctg (ou math.atan(1.42) en python) et on trouve 54.84 degrés (0.95 radians)
 
-## Dérivée
 <div align="center">
 <img src="./assets/img22.webp" alt="" width="400"/>
 </div>
 
+## Dérivée d'une fonction
+
+Commence pas à râler... Tu vas voir, c'est exactement la même chose. 
+
+Imagine... Imagine une belle courbe sympa que tu trace sur une feuille d'un seul coup de crayon. Tiens, voilà un exemple :
 
 <div align="center">
 <img src="./assets/img23.webp" alt="" width="400"/>
 </div>
 
+Ce que l'on peut observer c'est qu'à gauche, la courbe "descend". Ses valeurs sont de plus en plus petites alors que je me déplace de la gauche vers la droite sur l'axe des x. Fais le test (je peux pas le faire à ta place). Mets ton index sur l'abcisse -2. Tu lis quelle valeur? Maintenant mets ton index sur l'abscisse -1. Tu lis quelle valeurs? Tu vois bien avec la courbe précédente, elle descend (elle décroit) quand je me toruve à gauche dans la figure.
+
+De même la courbe "monte" (croît) quand je me trouve à droite dans la figure. 
+
+La question à 1 million de dollars, c'est : comment on pourrait qualifier (donner un qualificatif, croissante, décroissante) à la courbe? Et puis si on est dans la partie droite de la figure, comment on pourrait mesurer le fait que la courbe "monte" doucement ou qu'elle monte "rapidement" ?
+
+Vas-y, à toi de jouer, "the floor is yours"... 
+
+*Aucune idée. Je vois bien que si je met une bille à gauche ou à droite elle va glisser vers le bas de la cuvette. À part ça... Je vois pas trop.*
+
+Ok, on va garder ton idée. Imagine une bille qui est sur la droite et qui descend. Comment tu indiquerai sa vitesse ?
+
+*Ben avec un vecteur. Je suis pas débile non plus. Un vecteur attaché à la bille, dirigé vers le bas et plus ou moins long en fonction de la vélocité*
+
+*Pour la bille verte la vitesse est moindre (flêche plus petite) que pour la bille jaune*
+
+<div align="center">
+<img src="./assets/img23_1.webp" alt="" width="400"/>
+</div>
+
+Outre leurs longeurs qui changent, tu ne remarques pas turc concernant les vecteurs vitesse? Attache toi aux directions?
+
+*Si, si j'ai bien vu. Les directions des vecteurs vitesses changent. Par contre, si j'arrive à le dessiner, j'arrive pas trop à l'exprimer*
+
+Je vais t'aider. Imagine des equerres comme celles de tout à l'heure. Elles glissent le long de la courbe et leur côté vertical passe par le centre de chauqe bille. Prolonge ensuite le base de chaque equerre.
+
+<div align="center">
+<img src="./assets/img23_2.webp" alt="" width="400"/>
+</div>
+
+Ce que tu viens de tracer, c'est la direction de la vitesse. Si j'enlève les équerres voilà à quoi ça ressemble.
+
+<div align="center">
+<img src="./assets/img23_3.webp" alt="" width="400"/>
+</div>
+
+Du coup je peux enlever tes billes. Et là tu me dis...
+
+*Je te dis que pour qualifier le comportement de la coube (elle monte doucement, elle monte rapidement) faut une equerre, la faire glisser au point qu'on veut étudier sur la courbe et tracer la droite qui passe par le base. Ca à l'air bien pourri comme méthode...*
+
+*Heu... Non, non, non. En y regardant de plus près, en fait faut juste retrouver l'angle que font les droites vertes avec l'horizontale. Plus l'angle est grand et plus la courbe monte vite... Je suis trop malin...*
+
+<div align="center">
+<img src="./assets/img23_4.webp" alt="" width="400"/>
+</div>
+
+Oui c'est ça. Aller, je vais reprendre la main. Prenons une abcisse particulière sur l'axe des x (x1). À partir de là, on trace une verticale et on croise la courbe rouge.
 
 <div align="center">
 <img src="./assets/img24.webp" alt="" width="400"/>
 </div>
 
-
+Imagine qu'on pose une équerre sur la courbe. On trace en gris la droite portée par la base de l'équerre. 
 <div align="center">
 <img src="./assets/img25.webp" alt="" width="400"/>
 </div>
 
+Du coup si je reprends les notations de tout à l'heure, je retrouve notre triangle jaune, la distance d1 et la hauteur h1. 
 
 <div align="center">
 <img src="./assets/img26.webp" alt="" width="400"/>
 </div>
 
+En fait d1 c'est une variation (un delta) de la variable x. Je vais donc l'appeler $$\Delta x$$ et h1 c'est une variation de y que je vais appeler $$\Delta y$$.
+
+Mais là, on a un petit problème. Sur le figure, la variation de x est tellement grande qu'on va pas être capable d'évaluer la valeur de $$\Delta y$$.
 
 <div align="center">
 <img src="./assets/img27.webp" alt="" width="400"/>
 </div>
 
+On va donc refaire la même chose mais une toute petite variation de la variable x. Rigole pas il a fallu plus de 100 ans pour les scientifiques arrivent à faire ce changement d'échelle. 
+
+Du coup, ci-dessous, on retrouve notre courbe en rouge. On retrouve aussi une abcisse x. La droite verticale pointillée qui passe par x, coupe alors la courbe à la hauteur y qui vaut f(x). 
 
 <div align="center">
 <img src="./assets/img28.webp" alt="" width="400"/>
 </div>
+
+Maintenant on va ajouter à x une toute petite valeur dx. Note la variation est tellement petite qu'on dit plus Delta x mais dx avec un d minuscule.
+
+Si la valeur de l'abcisees passe de x à x+dx, quelle est alors la valeur de la fonction? 
+
+*Ben vas-y... Trop facile, c'est f de x plus dx (f(x+dx) pour les intimes)*
+
+Et pour le retrouver on fait comment? 
+
+*On fait passer par l'abcisse (x+dx) une droite verticale qui va couper la courbe rouge à une certaine hauteur. Cette hauteur c'est précisément f(x+dx).*
 
 
 <div align="center">
 <img src="./assets/img29.webp" alt="" width="400"/>
 </div>
 
+{: .warning }
+Faut vraiment que la dernière phrase ai du sens pour toi. Si c'est pas clair, met ton index sur l'écran. Mets le en x. Déplace un peu ton index à droite. Pour cette possition, quelle est la valeur de f()? 
+
+Bon allez, on va chercher notre pote le triangle jaune et on redessine tout ça.
+
+Ce qui est très important à comprendre c'est que dx est tellement petit qu'on va pouvoir dire que tout se passe comme si (mais ce n'est **PAS** vrai) que le côte opposé à pour longueur f(x+dx) - f(x)
 
 <div align="center">
 <img src="./assets/img30.webp" alt="" width="400"/>
 </div>
 
+Encore une fois la figure précédente est une approximation qu'on accepte car on suppose que dx est tout petit. Infiniment petit.
+
+Si on est avec dx tout petit alors on va pouvoir calculer le taux d'accroissement (h1/d1) dont on avait parlé précedement et être capable de dire si la courbe monte doucement (ratio faible) ou si elle monte rapidement (ratio élevé)
+
+Prenons un exemple et faisons les calculs pour fixer les idées.
 
 <div align="center">
 <img src="./assets/img31.webp" alt="" width="400"/>
 </div>
 
+On vient donc de calculer le taux d'accroissement et on a dit qu'il valait 2x + dx. Mais le truc c'est que si dx est infiniment petit, cela veut dire que le taux d'accroissement est très proche de 2x. Par exemple le taux d'accroissement vaut 2 si x vaut 1 et il vaut 10 si x vaut 5. On quantifie bien le fait que la courbe grimpe plus vite quand x vaut 5 que lorsque x vaut 1. On peut même affirmer que son taux d'accroissement est 5 fois plus grand (car 10 c'est 2 fois 5).
+
+Crois le ou non mais par défintion le 2x qu'on vient de calculer c'est la dérivée de f quand cette dernière vaut x².
 
 <div align="center">
 <img src="./assets/img32.webp" alt="" width="400"/>
@@ -248,8 +330,16 @@ Prenons un exemple. J'ai 2 droites qui s'écartent. Je choisis d1, je mesure h1 
 
 
 # Conclusion 
-[Lien vers un autre site](https://example.com)  
+1. On est parti des angles
+1. Triangles rectangles semblables
+1. Coté opposé à l'angle
+1. Coté opposé sur côté adjacent, taux d'accroissemt
+1. Tangente
+1. Pour retrouver la valeur de l'angle on utilise "l'arc dont la tangente vaut xxx"
+1. La tangente une coube c'est la droite qui fait un angle avec l'horizontale dont la tangente vaut f(x+dx)-f(x)/dx
+1. Petit triangle sous la courbe
+1. [VIDEOS](https://www.youtube.com/c/frbaucop) : avec des exemples de calcul de dérivées 
 
-Justo urna, egestas non dolor in, auctor euismod mi. Maecenas rutrum placerat metus, a malesuada sapien dapibus eget. Vivamus porta, enim eget volutpat gravida, lacus dui pellentesque mi, quis aliquam arcu diam eget nibh. Morbi efficitur arcu in interdum porttitor. Maecenas vitae dapibus elit. Sed pulvinar velit sed facilisis pulvinar. Donec aliquet dolor et tortor pharetra, id commodo libero volutpat. Vivamus convallis enim sed pretium porttitor. Ut sed pellentesque ex.
+
 
  
