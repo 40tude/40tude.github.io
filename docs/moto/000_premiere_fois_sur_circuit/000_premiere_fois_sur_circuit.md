@@ -11,19 +11,17 @@ last_modified_date: 2023-09-01 11:50:52
 
 ## Introduction
 
-J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a les [Notes de pilotage](https://www.40tude.fr/pilotage-moto/) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
+J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a les Notes de pilotage (pas encore portées sur ce site) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
 
 Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les commentaires. Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
 
-Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les commentaires. Sinon, tu peux regarder cette série de vidéos :
-
-https://youtu.be/aPERgBZrk4c
+Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les commentaires. Sinon, tu peux regarder cette série de vidéos sur [YouTube](https://youtu.be/aPERgBZrk4c)
 
 Dans ce billet il y aura :
 
-* Le planning en mode synthétique : ça donne une idée du programme.
-* Le planning en mode action : c'est la partie à imprimer et à garder à portée de main le jour du roulage.
-* Le planning en mode détaillé : à lire avant d'aller sur le circuit et à relire sur son téléphone le midi de la journée de roulage. C'est dans cette partie que je prends du temps pour expliquer le contenu des différentes sessions.
+* [Le planning en mode synthétique](#le-planning-synthetique) : ça donne une idée du programme.
+* [Le planning en mode action](#le-planning-en-mode-action) : c'est la partie à imprimer et à garder à portée de main le jour du roulage.
+* [Le planning en mode détaillé](#le-planning-en-mode-detaille) : à lire avant d'aller sur le circuit et à relire sur son téléphone le midi de la journée de roulage. C'est dans cette partie que je prends du temps pour expliquer le contenu des différentes sessions.
 
 ## Le planning synthétique
 
@@ -33,13 +31,13 @@ Du point de vue de la journée, afin de découvrir un maximum de choses, on a au
 
 Bon alors ton planning, ça vient ? Voili, voilà ce sur quoi on est tombé d'accord :
 
-1. [Reconnaissance de la piste](#reco)
-1. [Accélération dans les lignes droites](#accel)
-1. [Se coucher sur le réservoir](#coucher)
-1. [Point de corde et trajectoire](#corde)
-1. [Freinage](#frein)
-1. [Conduite du virage](#conduite)
-1. [La septième session](#last)
+1. [Reconnaissance de la piste](#1-reconnaissance-de-la-piste)
+1. [Accélération dans les lignes droites](#2-acceleration-dans-les-lignes-droites)
+1. [Se coucher sur le réservoir](#3-se-coucher-sur-la-moto)
+1. [Point de corde et trajectoire](#4-point-de-corde-et-trajectoire)
+1. [Freinage](#5-freinage)
+1. [Conduite du virage](#6-conduite-du-virage)
+1. [La septième session](#7-la-septième-session)
 
 ## Le planning en mode action
 
@@ -53,7 +51,7 @@ Il suffit de récupérer le .pdf ci-dessous et de l'imprimer. C'est écrit en mo
 ### 1. Reconnaissance de la piste
 
 <div align="center">
-<img src="./assets/image-21-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-21-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -66,7 +64,7 @@ Deux choses à respecter cependant.
 6. Tu arrives en étant à droite de la piste si le prochain virage tourne à gauche et à gauche de la piste si le prochain virage tourne à droite. C'est tout et c'est déjà pas mal car quand je dis à droite par exemple, cela veut dire que tes roues sont à 1 cm de la bande blanche. Pas 1 mètre, pas 25 cm, non, non il faut que tu colles la ligne. Oui bien sûr si c'est 5 cm je ne vais pas te faire un procès. Sérieux, il faut que tu apprennes à le faire maintenant alors que tu n'as pas de vitesse. Il faut que tu prennes l'habitude de voir la bande blanche très proche de tes pneus (et non, tu ne vas pas te sortir).
 
 <div align="center">
-<img src="./assets/Screenshot_20230622_182719_Instagram.webp" alt="" width="425" loading="lazy"/>
+<img src="./assets/Screenshot_20230622_182719_Instagram.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -103,16 +101,16 @@ Le fait de sortir peut-être très utile si tu te retrouves dans un paquet et qu
 
 * Si un marshal organise des sessions en salle spécifiquement pour les Débutants tu y vas. Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable le restant de ta vie : dès qu'un marshal consacre du temps à ton groupe (Débutants, Intermédiaires...) tu y vas.
 
-**Note de pilotage que tu peux lire :**
+<!-- **Note de pilotage que tu peux lire :**
 
 * [D](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[é](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[c](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[o](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[u](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[v](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[r](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[t](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[d](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[l](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[a](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[p](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[i](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[s](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[t](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[1](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[/](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)[2](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)
 
-* [D](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[é](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[c](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[o](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[u](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[v](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[r](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[t](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[d](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[l](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[a](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[p](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[i](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[s](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[t](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[2/](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[2](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)
+* [D](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[é](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[c](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[o](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[u](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[v](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[r](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[t](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[d](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[l](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[a](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[p](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[i](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[s](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[t](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[e](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[2/](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)[2](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/) -->
 
 ### 2. Accélération dans les lignes droites
 
 <div align="center">
-<img src="./assets/image-21-2.webp" alt="" width="425" loading="lazy"/>
+<img src="./assets/image-21-2.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -162,7 +160,7 @@ Organise-toi dans ta session... En effet, ça va être difficile de faire, d'ent
 ### 3. Se coucher sur la moto
 
 <div align="center">
-<img src="./assets/image-21.webp" alt="" width="425" loading="lazy"/>
+<img src="./assets/image-21.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -247,7 +245,7 @@ Ok, t'es mignon, mais une fois que tu as dit ça, moi, sur la moto, je fais quoi
 On va utiliser le formidable schéma ci-dessous :
 
 <div align="center">
-<img src="./assets/image-20.webp" alt="" width="425" loading="lazy"/>
+<img src="./assets/image-20.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -345,7 +343,7 @@ N'essaie pas de tout faire tout de suite. Là aussi, choisis tes batailles. Choi
 ### 5. Freinage
 
 <div align="center">
-<img src="./assets/image-22.webp" alt="" width="425" loading="lazy"/>
+<img src="./assets/image-22.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -426,9 +424,9 @@ Bon, ben il ne reste plus qu'à faire la même chose avec tous les autres virage
   Encore une fois, s'il n'y avait pas de pilote sur la moto, le comportement de cette dernière serait beaucoup moins violent, moins erratique. Si le pilote tombe et que la moto reste sur ses roues, elle va continuer tout droit. Au moment de franchir les vibreurs et d'aller dans l'herbe, elle va sauter, retomber sur ses roues et continuer. Laisse un pilote dessus, il va se jeter sur les freins et ils vont finir tous les 2 au tas.
   Il faut être pro-gre-ssif et y aller doucement pour ne pas brusquer la moto. Tu relâches l'embrayage doucement. Tu respectes les 2 premières phases du freinage, tu laisses la moto enfoncer l'avant puis tu serres pro-gres-si-ve-ment les freins. Tu enroule continument et de plus en plus vite la câble d'accélérateur, les exemples sont innombrables...
 
-**Note de pilotage que tu peux lire :**
+<!-- **Note de pilotage que tu peux lire :**
 
-* [Tout ou presque sur le freinage](https://www.40tude.fr/pilotage-moto-03-freinage/)
+* [Tout ou presque sur le freinage](https://www.40tude.fr/pilotage-moto-03-freinage/) -->
 
 ### 6. Conduite du virage
 
@@ -482,7 +480,7 @@ Voici ce que je te propose de faire dans un virage où tu te sens à l'aise :
 * Comme avant : pas de filet de gaz. Quand tu commences à enrouler le câble tu le fais de manière imperceptible au début mais surtout tu ne t'arrêtes plus et tu enroule de plus en plus vite au fur et à mesure que tu redresse la moto en t'approchant du PC.
 
 <div align="center">
-<img src="./assets/20230625_001949-1-scaled.webp" alt="" width="425" loading="lazy"/>
+<img src="./assets/20230625_001949-1-scaled.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -551,7 +549,7 @@ Dorénavant, à vitesse de passage identique, la moto prend moins d'angle. Tu es
   Si tu poses la question c'est que tu claque ta moto sur l'angle et que tu as une belle vitesse d'entrée en virage. On est d'accord ? Bon, ben si c'est effectivement le cas, pour passer encore plus vite dans le virage, il faut rajouter du poids à l'intérieur du virage. L'idée consiste alors à décaler tout le pilote sur la selle vers l'intérieur du virage. Tout ce que l'on a dit précédemment reste valable mais typiquement il cherche maintenant à caller sa raie des fesses dans le coin de la selle. Ensuite, il va rajouter encore de la masse en posant le pied intérieur au bout du cale-pied. Il va s'en servir comme d'une rotule lorsqu'il va ouvrir son genou. Ici, ce n'est pas "il nous faut plus de dents" mais "il nous faut plus de poids à l'intérieur".
   Mais bon, "avant de savoir courir il faut savoir marcher". Mettre tout ça en place sur une seule session, alors que cela impacte aussi le freinage, nous paraissait un peu "touchy". Comme le pilote débute, on a fait le choix de se concentrer sur le haut du corps dans un premier temps. Une fois que ça c'est en place, qu'il claque la moto sur l'angle et qu'il a la vitesse d'entrée suffisante, plus tard, il pourra "facilement" y rajouter le bas du corps. On adapte sa position pour passer plus vite, pas le contraire.
 
-**Note de pilotage que tu peux lire :**
+<!-- **Note de pilotage que tu peux lire :** -->
 
 <!-- * [Une conduite de virage efficace](https://www.40tude.fr/pilotage-moto-04-conduite-du-virage/) -->
 
@@ -587,13 +585,13 @@ Quand ça s'est fait, redonne-toi une chance sur circuit et/ou fais une journée
 
 6. En revanche, si tu as vraiment l'intention de refaire de la piste achète un chrono GPS (n'utilise pas ton téléphone ou alors mets le sous la selle). On peut dire ce que l'on veut, "le chrono ne ment pas". Tu pourras te faire les films que tu veux, te trouver les excuses que tu veux... Soit, tu vas plus vite soit tu es moins efficace. Point. En plus, le chrono tu pourras l'utiliser sur d'autres motos par la suite.
 
-10. Participe rapidement à un stage de 1 ou 2 jours. C'est un sacré investissement (600 € environ rien que pour le stage de 2 jours) mais c'est cadré, pro etc. C'est un budget mais cela va te faire gagner beaucoup plus de secondes au tour que n'importe quel accessoire carbone, commande reculée ou pot d'échappement en Mithril. C'est comme [apprendre le Snowboard](https://www.40tude.fr/category/dr-snowgood/) tout seul ou passer par l'ESF. Il n'y a pas photo. **Attention**, il faudra que tu arrives au stage en forme (abdos, cuisses) et reposé car le rythme y est soutenu. Ce n'est pas un stage commandos de marine mais il faut se donner, pas perdre de temps entre les sessions et tenir jusqu'au bout (physique & mental). Exemple avec [mon tout premier stage](https://www.40tude.fr/zx6r-sur-circuit-stage-de-pilotage-de-radigues-rider-school-drrs/) avec DRRS en 2019.
+10. Participe rapidement à un stage de 1 ou 2 jours. C'est un sacré investissement (600 € environ rien que pour le stage de 2 jours) mais c'est cadré, pro etc. C'est un budget mais cela va te faire gagner beaucoup plus de secondes au tour que n'importe quel accessoire carbone, commande reculée ou pot d'échappement en Mithril. C'est comme apprendre le Snowboard tout seul ou passer par l'ESF. Il n'y a pas photo. **Attention**, il faudra que tu arrives au stage en forme (abdos, cuisses) et reposé car le rythme y est soutenu. Ce n'est pas un stage commandos de marine mais il faut se donner, pas perdre de temps entre les sessions et tenir jusqu'au bout (physique & mental). Exemple avec mon tout premier stage avec DRRS en 2019.
 
 Pense à aller voir les photos de la journée. Soit, elles sont déjà consultables sur le circuit soit, tu les auras la semaine prochaine en ligne. Achète la moins moche d'entre elles et mets-la de côté. On en reparlera l'année prochaine ou dans 2 ans😊
 
 De retour à la maison, reprends le plan du circuit et l'agenda de la journée. Prends 15 à 20 minutes pour y ajouter tes notes. Vas-y, lâches toi, notes tout. Tes sentiments, tes impressions, les trucs que tu ne comprends pas encore, les rapports de boite, les questions que tu souhaites poser, telle ou telle difficulté... Tu t'en serviras comme anti-sèche ou comme TO DO list la prochaine fois que tu viendras sur ce circuit.
 
-Bon, allez, la suite au prochain numéro et d’ici-là relis les [notes de pilotage](https://www.40tude.fr/pilotage-moto/) ou fais des squats afin de préparer les prochains roulages.
+Bon, allez, la suite au prochain numéro et d’ici-là relis les Notes de pilotage (pas encore portées sur ce site) ou fais des [squats](https://youtu.be/TIhtpItTuxc) afin de préparer les prochains roulages.
 
-https://youtu.be/TIhtpItTuxc
+
 
