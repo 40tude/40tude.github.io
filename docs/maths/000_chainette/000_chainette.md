@@ -39,7 +39,7 @@ Sur y : $$\sin(\alpha)\mathrm{d}T - \mu g\mathrm{d}L = 0$$
 
 Dans l'équation ci-dessus on a: $$ P = mg = \mu \mathrm{d}Lg $$
 
-Où $$\mu$$ est la masse linéique (la masse par unité de longeur), $$\mathrm{d}L$$ est un élément de longueur et g est l'accélération de pesanteur
+Où $$\mu$$ est la masse linéique (la masse par unité de longueur), $$\mathrm{d}L$$ est un élément de longueur et g est l'accélération de pesanteur
 
 Ensuite, on intègre l'équation de la projection sur l'axe x : $$\int{}{}{\cos(\alpha)\mathrm{d}T} = K$$
 

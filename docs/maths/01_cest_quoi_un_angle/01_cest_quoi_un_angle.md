@@ -95,7 +95,7 @@ Bravo. Un truc quand même... C'est assez pénible de mesurer la distance le lon
 <img src="./assets/img11.webp" alt="" width="400"/>
 </div>
 
-*Oui bien sûr dans ce cas là, c'est plus simple. Pour comparer les angles il suffit de comparer la longeur H2 à la longeur H1. Comme elle est plus grande, cela veut dire que l'angle est plus grand.*
+*Oui bien sûr dans ce cas là, c'est plus simple. Pour comparer les angles il suffit de comparer la longueur H2 à la longueur H1. Comme elle est plus grande, cela veut dire que l'angle est plus grand.*
 
 <div align="center">
 <img src="./assets/img12.webp" alt="" width="400"/>
