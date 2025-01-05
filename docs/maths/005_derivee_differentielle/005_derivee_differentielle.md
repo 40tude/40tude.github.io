@@ -24,20 +24,20 @@ Bon, allez, c'est parti... On imagine qu'on a une courbe sympa (continue, dériv
 </div>
 
 
-Premier point : Heu... C'est quoi l'intérêt des différentielles, du calcul différentiel etc. ? Regardons la courbe ci-dessus. L'idée sous-jacente à ces histoires de calcul différentiel c'est tout simple. Ça consiste à dire que même si la courbe (la fonction) est très compliquée, localement, pour peu qu'on s'intéresse à des tout petits bouts de courbe alors on peut assimiler le morceau de courbe MoM à la droite MoM. 
+Premier point : Heu... C'est quoi l'intérêt des différentielles, du calcul différentiel etc. ? Regardons la courbe ci-dessus. L'idée sous-jacente à ces histoires de calcul différentiel c'est tout simple. Ça consiste à dire que même si la courbe (la fonction) est très compliquée, localement, pour peu qu'on s'intéresse à des tout petits bouts de courbe alors **on peut assimiler le morceau de courbe MoM à la droite MoM**. 
 
-Bon, là, dans le graphe d'avant ça ne marche pas trop car on "voit" bien qu'au niveau de M, il y a une différence, un espace, entre la droite tangente et la courbe. Cela dit... Cela dit, faites glisser gentiment le point M vers le point Mo et ? Et à ce moment-là on sent bien qu'on pourra utiliser la droite tangente comme une "bonne" approximation de la courbe. 
+Bon, là, dans le graphe d'avant ça ne marche pas trop car on "voit" bien qu'au niveau de M, il y a une différence, un espace, entre la droite tangente et la courbe. Cela dit... Cela dit, sur la courbe, faites glisser gentiment le point M vers le point Mo et? Et à ce moment-là on sent bien qu'on pourra utiliser la droite tangente comme une "bonne" approximation de la courbe. 
 
 {: .important }
 Relisez les 2 dernières phrases. Elles sont importantes.
+
+## Equation de la tangente
 
 Déterminons l'équation de la droite tangente qui passe par Mo. Honnêtement, je ne connais pas la formule par cœur (et en plus il est hors de question que je l'apprenne). On va voir 2 méthodes pour retrouver nos petits.
 
 Sinon, il y a cette [vidéo](https://youtu.be/GVWad0mqKtQ) 
 
-
-
-## Méthode 1
+### Méthode 1
 
 Je sais qu'on cherche un truc du style :
 
@@ -47,15 +47,16 @@ Eh oh... Arrêtez de râler... Ce n'est pas très dur. C'est juste l'équation d
 
 $$y = f'(xo)x + b$$
 
-**Attention**, j'écris bien f'(xo) et pas f'(x). Je suis sans doute un peu lourd mais il faut bien se mettre dans la tête que la pente de la droite tangente au point Mo c'est la valeur de la dérivée de la fonction au point Mo. 
+{: .warning }
+J'écris bien $$f'(xo)$$ et pas $$f'(x)$$. Je suis sans doute un peu lourd mais il faut bien se mettre dans la tête que la pente de la droite tangente au point Mo c'est la valeur de la dérivée de la fonction au point Mo. 
 
-J'insiste... Si la fonction était f(x)=x² et si le point était le point d'abscisse xo=3 alors la pente vaudrait 2x3=6 (la dérivée de x² c'est 2x. Quand x vaut 3 la dérivée vaut 6). Bon allez, ce n'est pas tout ça mais il faut qu'on avance...
+J'insiste... Si la fonction était $$f(x)=x^2$$ et si le point était le point d'abscisse $$xo=3$$ alors la pente vaudrait $$2x3=6$$ (la dérivée de $$x^2$$ c'est $$2x$$. Quand $$x$$ vaut 3 la dérivée vaut 6). Bon allez, ce n'est pas tout ça mais il faut qu'on avance...
 
-Ensuite je me dis : "Quand x vaut xo, la droite passe par f(xo)". Tout de suite, vous je ne sais pas, mais moi ça me fait penser à un changement de variable et j'écris l'équation précédente sous la forme :
+Ensuite je me dis : "Quand $$x$$ vaut $$xo$$, la droite passe par $$f(xo)$$". Tout de suite, vous je sais pas, mais moi ça me fait penser à un changement de variable et j'écris l'équation précédente sous la forme :
 
 $$y = f'(xo) (x-xo) + b$$
 
-A partir de là, je me redis : "Quand x vaut xo, la droite passe par f(xo)". Avec l'équation ci-dessus, quand x vaut xo il ne me reste plus que :
+À partir de là, je me redis : "Quand $$x$$ vaut $$xo$$, la droite passe par $$f(xo)$$". Avec l'équation ci-dessus, quand $$x$$ vaut $$xo$$ il ne me reste plus que :
 
 $$f(xo) = f'(xo) (xo-xo) + b$$
 
@@ -67,15 +68,15 @@ Finalement l'équation de la droite tangente qui passe par Mo est :
 
 $$y = f'(xo) (x-xo) + f(xo)$$
 
-## Méthode 2
+### Méthode 2
 
 Ci-dessus j'explique ce que l'on peut faire, si on a tout oublié, afin de retrouver l'équation de la tangente au point Mo. Cela dit, ça prend trois plombes et y a moyen d'aller plus vite... Beaucoup plus vite... Watch this!
 
-Au point Mo, si je regarde le triangle Mo H M qui est rectangle en H, alors je peux écrire un truc du style :
+Au point Mo, si je regarde le triangle (Mo, H, M) qui est rectangle en H, alors je peux écrire un truc du style :
 
 $$\tan(\alpha) = \frac{opp}{adj} = \frac{y_{M} - y_{H}}{x_{M} - x_{H}} = \frac{y - f(xo)}{x-xo}$$
 
-Où α est l'angle en Mo. Comme la tangente au point Mo c'est la dérivée alors, en deux lignes chrono, on a bien :
+Où $$\alpha$$ est l'angle en Mo. Comme la tangente au point Mo c'est la dérivée alors, en deux lignes chrono, on a bien :
 
 $$f'(xo) = \frac{y - f(xo)}{x-xo}$$
 
@@ -103,23 +104,24 @@ Soit
 
 $$y_{M} {\approx} f(xo) + f'(xo) h$$
 
-Autrement dit, et pour répondre à la question à propos de P, ce dernier est en fait une approximation de M. Son principal intérêt par rapport à M c'est qu'on peut facilement le calculer. On prend Mo, on ajoute h en abscisse et la quantité f'(xo)h en ordonnée et zou on a notre point P.
+Autrement dit, et pour répondre à la question à propos de P, ce dernier est en fait **une approximation de M**. Son principal intérêt par rapport à M c'est qu'on peut facilement le calculer. On prend Mo, on ajoute h en abscisse et la quantité f'(xo)h en ordonnée et zou on a notre point P.
 
-**Attention :** Il ne faut pas oublier qu'on n'a pas une égalité mais bien une approximation. En effet, sur le graphe on voit bien (enfin j'espère) que sur l'axe des y, passer de Mo à M c'est passer de H à M et que cela se fait en deux étapes : HP puis PM. Dans l'égalité précédente il manque encore un "ptit" bout (le morceau PM. HP quant à lui, on le connait déjà, il vaut f'(xo)h).
+{: .warning }
+Il ne faut pas oublier qu'on n'a pas une égalité mais bien une approximation. En effet, sur le graphe on voit bien (enfin j'espère) que sur l'axe des y, passer de Mo à M c'est passer de H à M et que cela se fait en deux étapes : HP puis PM. Dans l'égalité précédente il manque encore un "ptit" bout (le morceau PM. HP quant à lui, on le connaît déjà, il vaut f'(xo)h).
 
-Par définition on appelle différentielle, et on la note dy, la quantité suivante :
+Par définition **on appelle différentielle**, et on la note $$\mathrm{d}y$$, la quantité suivante :
 
-$$dy = f'(xo) h$$
+$$\mathrm{d}y = f'(xo) h$$
 
 Où h est un accroissement infinitésimal (tout petit) de x. Si on note cet accroissement dx au lieu de h alors, en Mo(xo, yo) on peut écrire :
 
-$$dy = f'(xo) dx$$
+$$\mathrm{d}y = f'(xo) \mathrm{d}x$$
 
 Finalement sur notre dessin on a donc :
 
 $$y_{M} {\approx} y_{Mo} + f'(xo) h$$
 
-$$y_{M} {\approx} y_{Mo} + dy$$
+$$y_{M} {\approx} y_{Mo} + \mathrm{d}y$$
 
 ## Résumé
 
@@ -134,34 +136,35 @@ dy = YP - YMo
 
 P est une "bonne" approximation de M
 
-$$dy = f'(x)dx$$
+$$\mathrm{d}y = f'(x)\mathrm{d}x$$
 
 **La différentielle d'une fonction f se calcule en multipliant la dérivée de la fonction (f'(x)) par la différentielle de la variable (dx).** 
+
 * Merci de lire la phrase précédente 3 ou 4 fois jusqu'à ce les mots aient vraiment un sens pour vous.
 
-dx c'est un accroissement, une quantité très petite, un scalaire qui ne dépend pas de x (dx=0.0001 par exemple, de plus la dérivée de dx est nulle... tout ça quoi)
+$$\mathrm{d}x$$ c'est un accroissement, une quantité très petite, un scalaire qui ne dépend pas de x (dx=0.0001 par exemple, de plus la dérivée de $$\mathrm{d}x$$ est nulle... tout ça quoi)
 
-Dernier point. Il ne faut pas oublier que dy (HP) n'est pas égal à ∆y (HM) mais une approximation d'autant meilleure que dx est petit.
+Dernier point. Il ne faut pas oublier que $$\mathrm{d}y$$ (HP) n'est pas égal à ∆y (HM) mais que c'en est une approximation d'autant meilleure que $$\mathrm{d}x$$ est petit.
 
 ## Exemples de différentielles
 
-Si $$y = x^2$$ alors $$dy = 2xdx$$
+Si $$y = x^2$$ alors $$\mathrm{d}y = 2x\mathrm{d}x$$
 
-Si $$y = \ln(x)$$ alors $$dy = \frac {1}{x} dx$$
+Si $$y = \ln(x)$$ alors $$\mathrm{d}y = \frac {1}{x} \mathrm{d}x$$
 
-Si $$y = \tan(x)$$ alors $$dy = \frac {1}{cos^2(x)} dx$$
+Si $$y = \tan(x)$$ alors $$\mathrm{d}y = \frac {1}{cos^2(x)} \mathrm{d}x$$
 
 ## Règles de calcul
 
 Voilà de quoi survivre...
 
-$$d(u+v) = du + dv$$
+$$\mathrm{d}(u+v) = \mathrm{d}u + \mathrm{d}v$$
 
-$$d(uv) = vdu + udv$$
+$$\mathrm{d}(uv) = v\mathrm{d}u + u\mathrm{d}v$$
 
-$$d(\frac{u}{v}) = \frac{vdu - udv}{v^2}$$
+$$\mathrm{d}(\frac{u}{v}) = \frac{v\mathrm{d}u - u\mathrm{d}v}{v^2}$$
 
-$$\frac{dy}{dx} = \frac{dy}{du} \frac{du}{dx}$$
+$$\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}y}{\mathrm{d}u} \frac{\mathrm{d}u}{\mathrm{d}x}$$
 
 ## Exemple
 
@@ -177,21 +180,21 @@ $$R = R_0(1 + {\alpha}t)$$
 
 On différencie car on veut étudier ce qui se passe quand la température évolue un tout petit peu. On trouve :
 
-$$dR = R_0{\alpha}dt$$
+$$\mathrm{d}R = R_0{\alpha}\mathrm{d}t$$
 
 **Application numérique :** Si Ro=1kΩ et si t varie de 40 °C alors la résistance varie de :
 
-$$dR = 1000 * 4 10^{-4} * 40 = 16 {\Omega}$$
+$$\mathrm{d}R = 1000 * 4 10^{-4} * 40 = 16 {\Omega}$$
 
 ## Exemple
 
 Calculer la dérivée de
 
-$$y = tg(x)^x$$
+$$y = \tan(x)^x$$
 
 Si y a des puissances "bizarres", on ne perd pas de temps et on prend le log
 
-$$ln(y) = x ln(tg(x))$$
+$$\ln(y) = x \ln(\tan(x))$$
 
 On différencie l'équation ci-dessus. Faites-le sur un bout de papier sur le côté. Il n'y a rien de terrible si on se rappelle les règles qu'on utilise pour le calcul des dérivées. Au pire, jetez un oeil sur les règles qu'on a rappelé un peu avant. Heu... N'oubliez pas que la dérivée de tg c'est 1/cos2.
 
@@ -199,27 +202,27 @@ Sinon, à propos des dérivées, j'ai [quelques vidéos sur YouTube](https://you
 
 
 
-$$\frac{1}{y} dy = (ln(tg(x)) + x \frac{1}{tg(x)} \frac{1}{cos^2(x)})dx$$
+$$\frac{1}{y} dy = (\ln(\tan(x)) + x \frac{1}{\tan(x)} \frac{1}{\cos^2(x)})\mathrm{d}x$$
 
 On fait passer y de l'autre côté
 
-$$dy = y (ln(tg(x)) + x \frac{1}{tg(x)} \frac{1}{cos^2(x)})dx$$
+$$\mathrm{d}y = y (\ln(\tan(x)) + x \frac{1}{\tan(x)} \frac{1}{\cos^2(x)})\mathrm{d}x$$
 
 On remplace y par son expression en x histoire d'avoir un truc homogène à droite.
 
-$$dy = tg(x)^x (ln(tg(x)) + x \frac{1}{tg(x)} \frac{1}{cos^2(x)})dx$$
+$$\mathrm{d}y = \tan(x)^x (\ln(\tan(x)) + x \frac{1}{\tan(x)} \frac{1}{\cos^2(x)})\mathrm{d}x$$
 
-On fait passer dx de l'autre côté
+On fait passer $$\mathrm{d}x$$ de l'autre côté
 
-$$\frac{dy}{dx} = tg(x)^x (ln(tg(x)) + x \frac{1}{tg(x)} \frac{1}{cos^2(x)})$$
+$$\frac{\mathrm{d}y}{\mathrm{d}x} = \tan(x)^x (\ln(\tan(x)) + x \frac{1}{\tan(x)} \frac{1}{\cos^2(x)})$$
 
-$$\frac{dy}{dx} = tg(x)^x (ln(tg(x)) + \frac{x}{tg(x) cos^2(x)})$$
+$$\frac{\mathrm{d}y}{\mathrm{d}x} = \tan(x)^x (\ln(tg(x)) + \frac{x}{\tan(x) \cos^2(x)})$$
 
-$$\frac{dy}{dx} = tg(x)^x (ln(tg(x)) + \frac{x}{\frac{sin(x)}{cos(x)} cos^2(x)})$$
+$$\frac{\mathrm{d}y}{\mathrm{d}x} = \tan(x)^x (\ln(tg(x)) + \frac{x}{\frac{\sin(x)}{\cos(x)} \cos^2(x)})$$
 
-$$\frac{dy}{dx} = tg(x)^x (ln(tg(x)) + \frac{x}{sin(x)cos(x)})$$
+$$\frac{\mathrm{d}y}{\mathrm{d}x} = \tan(x)^x (\ln(\tan(x)) + \frac{x}{\sin(x)\cos(x)})$$
 
-$$\frac{dy}{dx} = f'(x) = tg(x)^x (ln(tg(x)) + \frac{x}{sin(x)cos(x)})$$
+$$\frac{\mathrm{d}y}{\mathrm{d}x} = f'(x) = \tan(x)^x (\ln(\tan(x)) + \frac{x}{\sin(x)\cos(x)})$$
 
 Pour ceux qui se demandent à quoi peut bien ressembler une telle "horreur" voici ce que ça donne sous Grapher.
 
