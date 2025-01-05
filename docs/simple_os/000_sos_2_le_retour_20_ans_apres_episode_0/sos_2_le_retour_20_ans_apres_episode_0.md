@@ -1489,7 +1489,7 @@ Histoire de "jouer" avec l'organisation de notre binaire (``sos.bin``) je te pro
 * On repasse à 2M
 * On renomme la section .boot
 
-```nasm
+```
 ENTRY(start)
 
 SECTIONS {

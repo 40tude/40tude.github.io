@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "A tour of C++ – Exemple page 75"
+title: "A tour of C++ – Exemple page 075"
 parent: "A tour of C++"
 nav_order: 75
 #math: mathjax
