@@ -48,15 +48,15 @@ Il y a deux choses importantes : la syntaxe (notation) et la sémantique (signif
 
 **Notation :** C'est un truc tout bête mais quand on voit écrit 5% il faut lire $$\frac {5}{100} $$. Le signe "%" veut dire "prend la valeur qui est à gauche et divise-la par 100". Ce n'est pas plus compliqué que ça. Autrement dit, on ne peut pas avoir un signe "%" tout seul. Si besoin, dans une phrase, on écrit en toutes lettres le mot "pourcentage". De plus, c'est l'ensemble des deux signes "5" et "%" qu'il faut considérer. Par exemple, en typographie il y a normalement un espace entre les 2 signes mais ce dernier est insécable (on ne peut donc pas séparer le "5" de son "%" favori). Perso, je ne mets pas d'espace entre le "5" et le signe "%". Tiens, vas-y, fais-moi un procès si t'es pas content... 😊
 
-**Signification :** Je vous propose le truc suivant. À partir d'aujourd'hui et jusqu'à votre arrivée au cimetière, à chaque fois que vous lisez ou que vous entendez un truc du style "5%", dans votre tête, vous rajoutez "de quoi ?".
+**Signification :** Je vous propose le truc suivant. À partir d'aujourd'hui et jusqu'à votre arrivée au cimetière, à chaque fois que vous lisez ou que vous entendez un truc du style "5%", dans votre tête, vous rajoutez "**de quoi ?**".
 
 Si c'est dans une conversation, et si ce n'est pas clair pour vous, n'hésitez surtout pas interrompre votre interlocuteur. Peut-être qu'il essaie de vous embrouiller la tête (vendeur de voitures, banquier, assureur...), peut-être que c'est très clair pour lui, peut-être qu'il n'a rien compris lui non plus...
 
-Il ne faut pas oublier que si "5%" représente la valeur $$\frac {5}{100}$$, il ne peut pas exister tout seul. C'est toujours une proportion (un ratio, un rapport de 2 nombres l'un sur l'autre) d'une autre chose : 5% de votre salaire annuel, 5% de la population est rousse (c'est vrai), 5% des extra-terrestres sont verts (c'est vrai aussi). Un pourcentage, c'est toujours le pourcentage de quelque chose d'autre. C'est aussi pour cela que du point de vue pratique, si je veux signifier la valeur 0.05 il est préférable d'utiliser 0.05 plutôt que d'écrire (ou de dire) 5%. En effet si j'utilise 5%, on va se demander "5% de quoi" alors que le 0.05 dont je voulais parler n'était que le résultat d'un calcul.
+Il ne faut pas oublier que si "5%" représente la valeur $$\frac {5}{100}$$, il ne peut pas exister tout seul. C'est toujours une proportion (un ratio, un rapport de 2 nombres l'un sur l'autre) d'une autre chose : 5% de votre salaire annuel, 5% de la population est rousse (c'est vrai), 5% des extra-terrestres sont verts (c'est vrai aussi). Un pourcentage, c'est toujours le pourcentage de quelque chose d'autre. C'est aussi pour cela que du point de vue pratique, si je veux signifier la valeur 0.05 il est préférable d'utiliser 0.05 plutôt que d'écrire (ou de dire) 5%. En effet si j'utilise 5%, on va se demander "5% **de quoi ?**" alors que le 0.05 dont je voulais parler n'était que le résultat d'un calcul.
 
 ### Retour au challenge de Mamie
 
-Bon OK, on ajoute 5%, "de quoi ?", de la somme précédente. Autrement dit, au bout de la première année, dans la première case vide du dessin précédent il y aura :
+Bon OK, on ajoute 5%, "**de quoi ?**", de la somme précédente. Autrement dit, au bout de la première année, dans la première case vide du dessin précédent il y aura :
 
 $$V_1 = V_0 + 5\% \textrm{ de } V_0$$
 
@@ -72,7 +72,7 @@ Bon, là, je m'arrête car je dois faire une remarque qui n'est pas liée spéci
 
 La règle dit que (à lire avec une grosse voix qui fout un peu la trouille) :
 
-***Si dans une expression mathématique, un truc apparait plusieurs fois, tu ne cherches pas, tu le mets en facteur.***
+**Si dans une expression mathématique, un truc apparaît plusieurs fois, tu ne cherches pas, tu le mets en facteur.**
 
 Oui, certains ronchons diront qu'il y a des cas où, justement, il ne faut pas mettre en facteur. Cela dit, dans le doute commençons toujours par mettre en facteur ce qui peut l'être. Dans la grande majorité des cas on sera gagnant.
 
@@ -156,11 +156,11 @@ $$V_{35} = 1000 * 1.05^{35}$$
 
 Heu... Mamie, tu peux utiliser ton téléphone et calculer cette valeur pour moi ?
 
-$$V_{35} = 1000 * 1.05^{35} = 5 516 €$$
+$$V_{35} = 1000 * 1.05^{35} = 5 516$$
 
 Ah oui quand même... Ça me parait énorme et je n'ai pas envie de vider tes comptes.
 
-T'inquiète Marty ma paupiette. Ce n'est pas tous les jours qu'on a 16 ans. J'avais donc décidé de marquer le coup. Considère ça comme ma contribution à tes [roulages moto sur circuit](https://www.40tude.fr/pilotage-moto/). Tu as trouvé la solution. Bravo. Je suis très fière de toi.
+T'inquiète Marty ma paupiette. Ce n'est pas tous les jours qu'on a 16 ans. J'avais donc décidé de marquer le coup. Considère ça comme ma contribution à tes [roulages moto sur circuit]({% link docs/moto/index.md %}). Tu as trouvé la solution. Bravo. Je suis très fière de toi.
 
 Pour le reste, cet argent je ne l'ai pas mis à la banque il y a 35 ans. Nan, en fait, à l'occasion d'un petit héritage en 2004, j'ai acheté de l'or avec cette somme sur laquelle je ne comptais pas. Crois-le si tu veux, depuis les cours de l'or ont été multipliés par 6 (voir ci-dessous). Ensuite, je me suis arrangé pour te raconter une histoire d'intérêts composés afin de te motiver un peu... 💰
 
@@ -201,7 +201,7 @@ Bref, je cherche $$n$$ mais là, je suis un peu coincé. On pourrait prendre la 
 
 Marty, en maths, il y a une recommandation qui dit à peu près ceci (ne pas oublier la grosse voix) :
 
-***Si dans une égalité une inconnue apparaît comme un exposant, essaies d'utiliser les logs***
+**Si dans une égalité une inconnue apparaît comme un exposant, essaies d'utiliser les logs**
 
 Allez, c'est parti. On avait :
 
@@ -276,7 +276,7 @@ Du coup je peux écrire
 
 $$n = \frac{\ln(2)}{\ln(1 + 5\%)}$$
 
-$$n = \frac{\ln(2)}{5\% + 5\%^2}$$
+$$n = \frac{\ln(2)}{5\% - \frac{5\%^2}{2}}$$
 
 Je vire le $$5\%^2$$ car c'est vraiment très faible (0.0025). Il vient :
 
@@ -367,7 +367,7 @@ Ensuite, c'est toujours pareil et je peux donc dresser le tableau suivant :
 ## Le cinquième challenge de Mamie - Des bactéries dans un bocal
 
 <div align="center">
-<img src="./assets/image-63_1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-63_1.webp" width="450" alt="" loading="lazy"/>
 </div>
 
 
@@ -420,7 +420,7 @@ Bref, pas simple de se faire entendre quand les gens n'ont toujours pas compris 
 ## Le sixième challenge de Mamie - L'échiquier de Sissa
 
 <div align="center">
-<img src="./assets/image-63-1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-63-1.webp" width="450" alt="" loading="lazy"/>
 </div>
 
 
@@ -475,12 +475,11 @@ Marty, on n'en a pas terminé avec l'échiquier mais, comme je n'ai pas envie qu
 
 Tu remarques que je suis allé jusqu'à l'année 29 car elle correspond à la deuxième période de doublement de la valeur initiale. En effet si tu divises 70 par 5 tu trouves 14. Dans le tableau ci-dessus à T=15 on a bien doublé la valeur initiale et en T=29 on l'a quadruplé. C'est bon pour toi ? OK, on continue.
 
+Question : quelle est la somme des valeurs entre l'indice 0 et l'indice n ? Cela n'a rien à voir avec les pourcentages, mais on en a besoin pour la suite. Aie confiance, crois en moi...
+
 <div align="center">
 <img src="./assets/image-63.webp" alt="" loading="lazy"/>
 </div>
-
-
-Question : quelle est la somme des valeurs entre l'indice 0 et l'indice n ? Cela n'a rien à voir avec les pourcentages, mais on en a besoin pour la suite. Aie confiance, crois en moi 🎶...
 
 Heu là... Ça me rappelle un truc mais je sais plus quoi. On avait vu ça avec les suites, les suites géométriques je crois. Ah oui, ayé, ça me revient.
 
@@ -655,8 +654,6 @@ Et ça c'est tout le temps vrai. En langage compliqué par les indices et les ex
 
 Il faut vraiment garder ça en tête, c'est important. Regardez cette [vidéo](https://www.youtube.com/live/FkiMqLD3_YQ?feature=share&t=436) par exemple.
 
-https://www.youtube.com/watch?v=FkiMqLD3_YQ&t=436s
-
 Cela permet aux politiques et aux journalistes de faire des gros titres alarmistes mais en fait ce type d'annonce n'est qu'une conséquence de la nature exponentielle de la croissance commentée. Il y a donc des cas où il faut donc rester impassible (car on sait d'où ça vient et que cela n'a rien de magique) et d'autres où il faut carrément remettre son interlocuteur en place tout simplement parce qu'il dit des choses qui sont des aberrations.
 
 ## Le huitième challenge de Mamie - À propos des ressources non renouvelables
@@ -691,12 +688,12 @@ L'axe des abscisses, l'axe horizontal, c'est le temps en années. Avec d'autres 
 
 L'axe des ordonnées (l'axe vertical) c'est la consommation annuelle. Là, par contre, il faut faire attention. Il faut que ce soit une consommation par la même unité de temps que celle utilisée sur l'axe des abscisses. La consommation est donc ici exprimée en nombre de barils par an.
 
+
+Comme le niveau de consommation mondiale est stable (c'est toi qui l'as dit), je tire un trait horizontal à partir d'une ordonnée quelconque et je le prolonge jusqu'à $$T$$. Ensuite, il n'y a plus de consommation (elle retombe à zéro) car, comme tu l'as dit aussi, à cette date, il n'y a plus de pétrole, tout a été consommé et c'est Mad Max sur la planète.
+
 <div align="center">
 <img src="./assets/image-67.webp" alt="" loading="lazy"/>
 </div>
-
-
-Comme le niveau de consommation mondiale est stable (c'est toi qui l'as dit), je tire un trait horizontal à partir d'une ordonnée quelconque et je le prolonge jusqu'à $$T$$. Ensuite, il n'y a plus de consommation (elle retombe à zéro) car, comme tu l'as dit aussi, à cette date, il n'y a plus de pétrole, tout a été consommé et c'est Mad Max sur la planète.
 
 Ok Marty. C'est d'ailleurs bien que tu ais rempli la zone sous le niveau de consommation. Peux-tu me dire ce que représente vraiment la surface de ce rectangle ?
 
@@ -706,7 +703,7 @@ $$Surface = Ans * \frac{Barils}{Ans} = Barils$$
 
 La surface verte représente donc le nombre total de barils disponibles. C'est ça ?
 
-Oui, oui, c'est bien ça. Maintenant, la population mondiale ne fait qu'augmenter et même si elle n'augmentait pas, il y a de plus en plus de classe moyenne en Chine et il en sera de même un jour en Inde. Penses-tu vraiment que le niveau de consommation va rester constant ? Si une population croit de $$x\%$$ par an, la croissance est, on l'a vu, exponentielle et donc la consommation va croître le la même façon. Peux-tu compléter ton schéma et faire apparaître le nouveau temps $$T_2$$ auquel il n'y aura plus de pétrole ?
+Oui, oui, c'est bien ça. Maintenant, la population mondiale ne fait qu'augmenter et même si elle n'augmentait pas, il y a de plus en plus de classe moyenne en Chine et il en sera de même un jour en Inde. Penses-tu vraiment que le niveau de consommation va rester constant ? Si une population croit de $$x\%$$ par an, la croissance est, on l'a vu, exponentielle et donc la consommation va croître de la même façon. Peux-tu compléter ton schéma et faire apparaître le nouveau temps $$T_2$$ auquel il n'y aura plus de pétrole ?
 
 C'est simple, je modifie le niveau de consommation qui dorénavant croît, comme la population, de manière exponentielle. Bien sûr, la courbe rouge est supérieure à la courbe verte mais idéalement (ce n'est sans doute pas le cas sur mon dessin) la surface rouge doit être égale à la surface verte. En effet, le nombre de barils (les surfaces sous les courbes) reste le même. En revanche, comme on consomme de plus en plus au fil du temps, on va consommer moins longtemps et donc $$T_2$$ se trouve quelque part avant $$T$$
 
@@ -778,7 +775,7 @@ Je fais passer un max de choses à droite pour garder $$T_2$$ à gauche :
 
 $$ e^{k\%*T_2} = k\%*T + 1$$
 
-On cherche $$T_2$$ qui est en exposant, donc on prend le log de l'égalité (voir plus haut pourquoi si besoin) :
+On cherche $$T_2$$ qui est en exposant, donc on prend le log de l'égalité (voir plus haut):
 
 $$ k\%*T_2 = \ln(k\%*T + 1)$$
 
@@ -854,7 +851,7 @@ Allez, Marty, mettons ça en pratique.
 </div>
 
 
-Ensuite, vite fait, rentre tout dans Excel. On va prendre l'hypothèse basse qu'on va garder les 3.4% de croissance par an mais franchement, je suis dubitative quand je vois que dans une voiture thermique il y a 20 kg de cuivre, 80kg dans une voiture électrique, 100 kg par prise dans une borne de recharge et je ne compte pas tout le cuivre des câbles pour alimenter ces dernières. Enfin bref, rentres tout ça et donne-moi ton commentaire :
+Ensuite, vite fait, rentre tout dans Excel. On va prendre l'hypothèse basse qu'on va garder les 3.4% de croissance par an. Cela dit, je suis dubitative quand je vois que dans une voiture thermique il y a 20 kg de cuivre et 80kg dans une voiture électrique. En plus il faut 100 kg de cuivre par prise dans une borne de recharge... Et je ne compte pas tout le cuivre des câbles pour alimenter ces dernières. Enfin bref, rentres tout ça et donne-moi ton commentaire :
 
 <div align="center">
 <img src="./assets/image-55.webp" alt="" loading="lazy"/>
@@ -878,15 +875,15 @@ Quand, pour me rassurer, je vérifie la quantité de cuivre recyclé annuellemen
 </div>
 
 
-Dans la vidéo ci-dessous on retrouve les chiffres du cuivre précédent MAIS, il explique pourquoi il en est ainsi. Toute la vidéo est vraiment superbe mais je pointe sur la section qui m'interesse. Prenez le temps de tout regarder, ça vaut vraiment le coup.
+Dans cette [vidéo](https://youtu.be/UmbFaPrXFcE?t=1144) on retrouve les chiffres du cuivre précédent **MAIS**, il explique pourquoi il en est ainsi. Toute la vidéo est vraiment superbe mais je pointe sur la section qui m’intéresse. Prenez le temps de tout regarder, ça vaut vraiment le coup.
 
-https://youtu.be/UmbFaPrXFcE?t=1144
+
 
 ## Récapitulatif
 
 * Quand on lit 5% il faut lire $$\frac {5}{100} $$
 
-* Quand on lit 5%, il faut toujours rajouter "de quoi ?"
+* Quand on lit 5%, il faut toujours rajouter "**de quoi ?**"
 
 * $$V_n = V_0 * (1 + x\%)^n$$
 
@@ -904,5 +901,4 @@ https://youtu.be/UmbFaPrXFcE?t=1144
 
 *À écrire.*
 
-##
 

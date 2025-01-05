@@ -43,14 +43,23 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 
 ## À garder sous le coude
 * `NOT YET TRANSFERED`
+
 * `[Finalize Windows 11 installation]({% link docs/windows/finalize_windows_11_installation/finalize_windows_11_installation.md %})`
+
+* Lister les 10 plus longs articles : 
+    * ``Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}``
+
 * Enlever le gras des titres CTRL+H + Exp Reg
     * ``(#+)\s\*\*(.*?)\*\*``
     * `$1 $2`
+
+* Retrouver les $ qui sont seuls : ``(?<!\$)\$(?!\$)``
+
+
+
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
-* Dans VScode, retrouver les $ qui sont seuls : ``(?<!\$)\$(?!\$)``
 * d droit ``\mathrm{d}``
 * <https://www.mathematex.fr/guide-mathjax>
 * <https://docs.mathjax.org/en/latest/input/tex/macros/index.html>
