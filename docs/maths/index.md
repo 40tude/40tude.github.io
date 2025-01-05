@@ -8,3 +8,5 @@ nav_order: 3
 permalink: /maths/
 ---
 
+# Maths
+
