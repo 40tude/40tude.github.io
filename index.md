@@ -49,6 +49,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 * Lister les 10 plus longs articles : 
     * ``Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}``
 
+* `{: .note }` `{: .warning }``{: .important }``{: .new }``{: .highlight }`
 * Enlever le gras des titres CTRL+H + Exp Reg
     * ``(#+)\s\*\*(.*?)\*\*``
     * `$1 $2`
