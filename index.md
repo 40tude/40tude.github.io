@@ -54,8 +54,8 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
     * ``(#+)\s\*\*(.*?)\*\*``
     * `$1 $2`
 
-* Retrouver les $ qui sont seuls : ``(?<!\$)\$(?!\$)``
-
+* Retrouver les $ qui sont seuls => ``(?<!\$)\$(?!\$)`` 
+* Remplacer les $ seuls par $$   => ``(?<!\$)\$(?!\$)`` et `$$$`
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
