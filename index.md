@@ -55,8 +55,6 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 
 * Retrouver les $ qui sont seuls : ``(?<!\$)\$(?!\$)``
 
-
-
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
@@ -80,14 +78,14 @@ last_modified_date: 2023-12-04 00:02:38
 
 ## Organisation des catégories ?
 
-1. Simple OS
+2. Simple OS
 1. Maths
 1. Windows
 1. Linux
 1. Programmation
     1. Python
     1. C++
-    1. ANSI C avec CVI
+    1. C
 1. Moto
     1. Pilotage circuit
     1. RSV4
