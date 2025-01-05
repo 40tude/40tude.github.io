@@ -2,6 +2,7 @@
 layout: default
 title: "A tour of C++ – >Exemple page 43"
 parent: "A tour of C++"
+nav_order: 43
 #math: mathjax
 date: 2014-12-15 06:43:37
 last_modified_date: 2020-05-02 23:22:08
@@ -10,9 +11,9 @@ last_modified_date: 2020-05-02 23:22:08
 # A Tour of C++ – Exemple page 43
 
 ## Introduction
-Il s'agit d'un des codes d'exemple du livre **A Tour of C++** écrit par Bjarne Stroustrup et qui est disponible [ici](http://www.amazon.fr/Tour-C-Bjarne-Stroustrup/dp/0321958314/ref%3Dsr_1_1?ie=UTF8&qid=1416699327&sr=8-1&keywords=a+tour+of+c%2B%2B). 
+Il s'agit d'un des codes d'exemple du livre **A Tour of C++** écrit par Bjarne Stroustrup et qui est disponible [ici](http://www.amazon.fr/Tour-C-Bjarne-Stroustrup/dp/0321958314/ref%3Dsr_1_1?ie=UTF8&qid=1416699327&sr=8-1&keywords=a+tour+of+c%2B%2B). 
 
-Le contenu de ce livre correspond au début du livre **The C++ Programming Language** qu'on trouve [ici](http://www.amazon.fr/The-Programming-Language-Bjarne-Stroustrup/dp/0321563840/ref%3Dpd_sim_eb_3?ie=UTF8&refRID=0CR047TTJV1HA6CVA9XA).
+Le contenu de ce livre correspond au début du livre **The C++ Programming Language** qu'on trouve [ici](http://www.amazon.fr/The-Programming-Language-Bjarne-Stroustrup/dp/0321563840/ref%3Dpd_sim_eb_3?ie=UTF8&refRID=0CR047TTJV1HA6CVA9XA).
 
 Pour chaque exemple, j'ai essayé de faire en sorte que le code se compile, soit complètement autonome et tienne dans un seul source.
 
@@ -25,7 +26,7 @@ J'ai tenté de coller au maximum à l'exemple du bouquin. À part peut être un 
 
 J'ai surtout travaillé avec [Visual Studio Community 2013](http://www.visualstudio.com/products/visual-studio-community-vs).
 
-Ceci dit les exemples tournent dans [Ideone.com](http://ideone.com/) mais faut pas hésiter à les tester avec d'autres compilateurs en ligne. [Compiler Explorer](https://godbolt.org/) est un très bon exemple.
+Ceci dit les exemples tournent dans [Ideone.com](http://ideone.com/) mais faut pas hésiter à les tester avec d'autres compilateurs en ligne. [Compiler Explorer](https://godbolt.org/) est un très bon exemple.
 
 * Dans certains, j'ai été amené à aller y faire des tests.  
 * Dans certains cas j'ai aussi fait aussi des tests avec le compilateur clang de mon Mac.  
@@ -36,14 +37,14 @@ Ceci dit les exemples tournent dans [Ideone.com](http://ideone.com/) mais faut 
 ## Notes spécifiques à cet exemple
 
 
-J'ai un peu ratatouillé avant que le code compile, link et démarre. En fait la compilation passait mais pas le link. J'ai été mieux supporté sous IdeOne que sous MSVC. En fait j'avais un peu oublié de définir les fonction Smiley wink(), move() et rotate(). Rien de très grave mais bon les messages sous MSVC étaient pas franchement "friendly" alors que sous IdeOne les messages émis par Clang étaient vraiment utiles. Enfin bref, encore une fois c'est toujours une très bonne idée que de faire passer ses sources dans différents compilateurs et éditeur de liens.
+J'ai un peu ratatouillé avant que le code compile, link et démarre. En fait la compilation passait mais pas le link. J'ai été mieux supporté sous IdeOne que sous MSVC. En fait j'avais un peu oublié de définir les fonction Smiley wink(), move() et rotate(). Rien de très grave mais bon les messages sous MSVC étaient pas franchement "friendly" alors que sous IdeOne les messages émis par Clang étaient vraiment utiles. Enfin bref, encore une fois c'est toujours une très bonne idée que de faire passer ses sources dans différents compilateurs et éditeur de liens.
 Bien voir que j'implémente les sources qui sont dispos sur les pages 43-47. Il y a donc une classe Smiley qui utilise l'explicit overriding, un dynamique_cast dans la fonction Test(). Ceci dit, attention, je n'ai pas implémenté la fonction read_shape(). C'est ce que l'on peut voir dans la task list de visual studio ou en haut du code.
 
 
 
 ## Le code source
 
-```
+```cpp
                                                                                 // TODO : immplement read_shape() using unique_ptr. see p 48
 #ifdef _MSC_VER
 #define _CRTDBG_MAP_ALLOC

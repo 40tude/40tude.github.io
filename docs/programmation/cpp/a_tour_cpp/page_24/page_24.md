@@ -2,6 +2,7 @@
 layout: default
 title: "A tour of C++ - Exemple page 24"
 parent: "A tour of C++"
+nav_order: 20
 #math: mathjax
 date: 2014-12-14 19:23:12
 last_modified_date: 2020-05-02 23:24:38
@@ -10,9 +11,9 @@ last_modified_date: 2020-05-02 23:24:38
 # A Tour of C++ – Exemple page 24
 
 ## Introduction
-Il s'agit d'un des codes d'exemple du livre **A Tour of C++** écrit par Bjarne Stroustrup et qui est disponible [ici](http://www.amazon.fr/Tour-C-Bjarne-Stroustrup/dp/0321958314/ref%3Dsr_1_1?ie=UTF8&qid=1416699327&sr=8-1&keywords=a+tour+of+c%2B%2B). 
+Il s'agit d'un des codes d'exemple du livre **A Tour of C++** écrit par Bjarne Stroustrup et qui est disponible [ici](http://www.amazon.fr/Tour-C-Bjarne-Stroustrup/dp/0321958314/ref%3Dsr_1_1?ie=UTF8&qid=1416699327&sr=8-1&keywords=a+tour+of+c%2B%2B). 
 
-Le contenu de ce livre correspond au début du livre **The C++ Programming Language** qu'on trouve [ici](http://www.amazon.fr/The-Programming-Language-Bjarne-Stroustrup/dp/0321563840/ref%3Dpd_sim_eb_3?ie=UTF8&refRID=0CR047TTJV1HA6CVA9XA).
+Le contenu de ce livre correspond au début du livre **The C++ Programming Language** qu'on trouve [ici](http://www.amazon.fr/The-Programming-Language-Bjarne-Stroustrup/dp/0321563840/ref%3Dpd_sim_eb_3?ie=UTF8&refRID=0CR047TTJV1HA6CVA9XA).
 
 Pour chaque exemple, j'ai essayé de faire en sorte que le code se compile, soit complètement autonome et tienne dans un seul source.
 
@@ -25,7 +26,7 @@ J'ai tenté de coller au maximum à l'exemple du bouquin. À part peut être un 
 
 J'ai surtout travaillé avec [Visual Studio Community 2013](http://www.visualstudio.com/products/visual-studio-community-vs).
 
-Ceci dit les exemples tournent dans [Ideone.com](http://ideone.com/) mais faut pas hésiter à les tester avec d'autres compilateurs en ligne. [Compiler Explorer](https://godbolt.org/) est un très bon exemple.
+Ceci dit les exemples tournent dans [Ideone.com](http://ideone.com/) mais faut pas hésiter à les tester avec d'autres compilateurs en ligne. [Compiler Explorer](https://godbolt.org/) est un très bon exemple.
 
 * Dans certains, j'ai été amené à aller y faire des tests.  
 * Dans certains cas j'ai aussi fait aussi des tests avec le compilateur clang de mon Mac.  
@@ -39,7 +40,7 @@ Ceci dit les exemples tournent dans [Ideone.com](http://ideone.com/) mais faut 
 Bon, là, bien sûr, il y a plusieurs sources car il y a plusieurs fichiers utilisés. Je ne sais pas trop comment tester ce projet dans ideone.
 
 
-## Fichier p024.cpp
+## Fichier p024.cpp
 
 ```cpp
 #ifdef _MSC_VER
@@ -54,35 +55,35 @@ using namespace std;
 // ----------------------------------------------------------------------------
 int main() {
 #ifdef _MSC_VER
-  _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+  _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif // _MSC_VER
-  Vector v(5);                                                                 // make a vector of 5 elements
-  for (auto i = 0; i<5; ++i)
-    v[i] = i;
-  cout<<"Sum of the vector's square rooted components is : "<<sqrt_sum(v)<<endl;
+  Vector v(5);                                                                 // make a vector of 5 elements
+  for (auto i = 0; i<5; ++i)
+    v[i] = i;
+  cout<<"Sum of the vector's square rooted components is : "<<sqrt_sum(v)<<endl;
 #ifdef _MSC_VER
-  _CrtMemDumpAllObjectsSince(NULL);                                             // Begins the dump from the start of program execution
-  _CrtDumpMemoryLeaks();
+  _CrtMemDumpAllObjectsSince(NULL);                                             // Begins the dump from the start of program execution
+  _CrtDumpMemoryLeaks();
 #endif // _MSC_VER
-  cout<<"Press ENTER to quit : ";
-  cin.ignore((numeric_limits<streamsize>::max)(), '\n');
+  cout<<"Press ENTER to quit : ";
+  cin.ignore((numeric_limits<streamsize>::max)(), '\n');
 }
 ```
 ### Fichier user.cpp
 
 ```cpp
 // user.cpp
-#include "Vector.h"                                                             // get Vector’s interface
-#include <cmath>                                                                // get the standard-library math function interface including sqrt()
-using namespace std;                                                            // make std members visible (§3.3)
+#include "Vector.h"                                                             // get Vector’s interface
+#include <cmath>                                                                // get the standard-library math function interface including sqrt()
+using namespace std;                                                            // make std members visible (§3.3)
 // ----------------------------------------------------------------------------
 double sqrt_sum(Vector& v) {
 
-  double sum = 0.0;
-  for (int i = 0; i!=v.size(); ++i)
-    sum += sqrt(v[i]);                                                          // sum of square roots
+  double sum = 0.0;
+  for (int i = 0; i!=v.size(); ++i)
+    sum += sqrt(v[i]);                                                          // sum of square roots
 
-  return sum;
+  return sum;
 }
 ```
 ### Fichier Vector.cpp
@@ -96,11 +97,11 @@ Vector::Vector(int s) : elem {new double[s]}, sz {s} // initialize members
 }
 // ----------------------------------------------------------------------------
 double& Vector::operator[](int i) {
-  return elem[i];
+  return elem[i];
 }
 // ----------------------------------------------------------------------------
 int Vector::size() {
-  return sz;
+  return sz;
 }
 ```
 ### Fichier Vector.h
@@ -109,11 +110,11 @@ int Vector::size() {
 // Vector.h
 class Vector {
 public:
-  Vector(int s);
-  double& operator[](int i);
-  int size();
+  Vector(int s);
+  double& operator[](int i);
+  int size();
 private:
-  double ∗elem;                                                                 // elem points to an array of sz doubles
-  int sz;
+  double ∗elem;                                                                 // elem points to an array of sz doubles
+  int sz;
 };
 ```
