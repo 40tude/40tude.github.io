@@ -44,7 +44,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 ## À garder sous le coude
 * `NOT YET TRANSFERED`
 
-* `[Finalize Windows 11 installation]({% link docs/windows/finalize_windows_11_installation/finalize_windows_11_installation.md %})`
+* `[Finalize Windows 11 installation]({\% link docs/04_windows/finalize_windows_11_installation/finalize_windows_11_installation.md \%})`
 
 * Lister les 10 plus longs articles : 
     * ``Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}``

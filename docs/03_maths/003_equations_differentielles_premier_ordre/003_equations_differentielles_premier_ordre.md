@@ -254,7 +254,7 @@ Le facteur d'intégration est donc :  $$e^{-\ln(\cos(t))} = (e^{\ln(\cos(t))})^{
 
 (3) On multiplie par le facteur d'intégration l'équation initiale
 
-$$\frac{\mathrm{d}s}{\mathrm{d}t} \frac{1}{\cos(t)} + s \frac{\sin(t)}{\cos^{2}(t)} = \frac{1}{cos^{2}(t)}$$
+$$\frac{\mathrm{d}s}{\mathrm{d}t} \frac{1}{\cos(t)} + s \frac{\sin(t)}{\cos^{2}(t)} = \frac{1}{\cos^{2}(t)}$$
 
 $$(\frac{s}{\cos(t)})^{\prime} = \frac{1}{\cos^{2}(t)} $$
 
