@@ -36,7 +36,7 @@ Si j'ai le nombre 124 en base 10 alors il se décompose comme suit :
 
 $$ 124_{10} = 1 * 10^2 + 2 * 10^1 + 4 * 10^0 $$
 
-Il en va de même dans les autres bases. En particulier, dans la base $ k$ que l'on cherche, on peut écrire
+Il en va de même dans les autres bases. En particulier, dans la base $k$ que l'on cherche et où on peut écrire :
 
 $$ 30_k = 3 * k^1 + 0 * k^0 $$
 
@@ -44,7 +44,7 @@ Si vous avez toujours des problèmes avec ces histoires, jetez un œil sur cette
 
 ## Reprenons...
 
-À ce stade il faut que l'on s'impose des choses afin de circonscrire le problème. En gros, l'idée c'est de se dire que si on veut un 3 comme facteur des $ k^1$ ce dernier pourrait être la somme du premier digit de $$y$$ et du premier digit de $$z$$ ainsi que d'une retenue.
+À ce stade il faut que l'on s'impose des choses afin de circonscrire le problème. En gros, l'idée c'est de se dire que si on veut un 3 comme facteur des $$k^1$$ ce dernier pourrait être la somme du premier digit de $$y$$ et du premier digit de $$z$$ ainsi que d'une retenue.
 
 Compte tenu de ce que l'on vient de dire, on cherche donc une solution dans laquelle $$y$$ et $$z$$ possèdent chacun 2 digits (et $$x$$ n'en possède qu'un seul). Si c'est le cas on peut écrire $$y$$ et $$z$$ sous la forme
 
@@ -86,9 +86,9 @@ Dans la table ci-dessus, en ligne et en colonne on retrouve les digits concerné
 | 7 | 15 | 13 | 11 |
 | 9 | 17 | 15 | 13 |
 
-Sur la première ligne, c'est le digit unité des différentes additions entre $$ y_2$$, $$ z_2$$(voir la première table). Dans la première colonne on reporte les valeurs que peut prendre $$x$$ (chiffres impairs à un digit de l'ensemble de départ). On remarque que toutes les sommes sont des nombres qui appartiennent à l'ensemble de départ. Toutes ? Non, il reste quand même la valeur 17. Si on se rappelle que l'on veut que la somme de $$y_2$$, $$z_2$$ et $$ x$$ génère une retenue il faut absolument que la somme ne soit pas égale à l'un des nombres de l'ensemble de départ.
+Sur la première ligne, c'est le digit unité des différentes additions entre $$ y_2$$, $$ z_2$$ (voir la première table). Dans la première colonne on reporte les valeurs que peut prendre $$x$$ (chiffres impairs à un digit de l'ensemble de départ). On remarque que toutes les sommes sont des nombres qui appartiennent à l'ensemble de départ. Toutes ? Non, il reste quand même la valeur 17. Si on se rappelle que l'on veut que la somme de $$y_2$$, $$z_2$$ et $$ x$$ génère une retenue il faut absolument que la somme ne soit pas égale à l'un des nombres de l'ensemble de départ.
 
-Bon allez, c'est mon dernier choix Jean Pierre, je décide que la solution existe en base 17. Vérifions si ça colle.
+Bon allez, c'est mon dernier choix Jean-Pierre, je décide que la solution existe en base 17. Vérifions si ça colle.
 
 ## Une solution en base 17 ?
 
