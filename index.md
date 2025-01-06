@@ -41,6 +41,10 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 * ~~Back to Top~~
 * ~~First et last Edit en bas de page~~
 
+
+
+
+
 ## À garder sous le coude
 
 | Aligné à gauche  | Centré          | Aligné à droite |
