@@ -35,14 +35,19 @@ Ensuite pour retrouver la hauteur h on peut faire :
 
 
 $$x^2 = h^2 +(x/2)^2$$
+
 $$h^2 = x^2 - x^2/4$$
+
 $$h^2 = (3/4) x^2$$
+
 $$h = x \frac{\sqrt{3}}{2}$$
 
 Ensuite on repart de :
 
 $$S = \frac{bh}{2}$$
+
 $$S = \frac{1}{2}x * x \frac{\sqrt{3}}{2} * \frac{1}{2}$$
+
 $$S = x^2 \frac{\sqrt{3}}{4} $$
 
 Appelons cette première surface Ao et donnons à x la valeur 1. Ao devient :
@@ -108,37 +113,53 @@ $$S =\frac{\sqrt{3}}{4} +\sum_{1}^{n}{ 3*4^{k-1}\frac{\sqrt{3}}{4} (1/3^k)^2}$$
 Faisons un peu le ménage et il vient :
 
 $$S =\frac{\sqrt{3}}{4} +\sum_{1}^{n}{ 3 \frac{\sqrt{3}}{4} 4^{k-1} (1/3^{2k})}$$
+
 $$S =\frac{\sqrt{3}}{4} +\sum_{1}^{n}{ 3 \frac{\sqrt{3}}{4} 4^{k-1} \frac{1}{3^{2k}}}$$
+
 $$S =\frac{\sqrt{3}}{4} + 3 \frac{\sqrt{3}}{4} \sum_{1}^{n}{ {4^{k-1}} \frac{1}{3^{2k}}}$$
 
 Si on divise par 4 ce qu'il y a dans la somme on obtient :
 
 $$S = \frac{\sqrt{3}}{4} + 3 \frac{\sqrt{3}}{4} \sum_{1}^{n}{ \frac{4^k}{4} \frac{1}{3^{2k}}}$$
+
 $$S = \frac{\sqrt{3}}{4} + 3 \frac{\sqrt{3}}{4} \frac{1}{4} \sum_{1}^{n}{ (\frac{4}{9})^k}$$
 
 Là, il est peut-être utile d'identifier la somme des n premiers termes (de 1 à n) d'une suite géométrique de premier terme 4/9 et de raison 4/9. Si on ne s'intéresse qu'à cette dernière pour l'instant on a :
 
 $$\sigma = \sum_{1}^{n}{ (\frac{4}{9})^k}$$
+
 $$\sigma =\frac{(\frac{4}{9})^{n+1} - (\frac{4}{9})^{1}}{\frac{4}{9}-1}$$
+
 $$\sigma =\frac{\frac{4}{9}((\frac{4}{9})^{n} - 1)}{\frac{4}{9}-1}$$
+
 $$\sigma =\frac{\frac{4}{9}(1 - (\frac{4}{9})^{n})}{1 - \frac{4}{9}}$$
+
 $$\sigma =\frac{4}{9} \frac{(1 - (\frac{4}{9})^{n})}{\frac{5}{9}}$$
+
 $$\sigma =\frac{4}{9} \frac{9}{5} (1 - (\frac{4}{9})^{n})$$
+
 $$\sigma =\frac{4}{5} (1 - \frac{4}{9}^{n})$$
 
 Quand n tend vers l'infini on a :
 
 $$\sigma =\frac{4}{5} (1 - \frac{4}{9}^{n})$$
+
 $$\sigma =\frac{4}{5}$$
 
 Finalement, la surface tend vers une limite finie :
 
 $$S = \frac{\sqrt{3}}{4} + 3 \frac{\sqrt{3}}{4} \frac{1}{4} \sum_{1}^{n}{ (\frac{4}{9})^k}$$
+
 $$S = \frac{\sqrt{3}}{4} + 3 \frac{\sqrt{3}}{4} \frac{1}{4} \frac{4}{5}$$
+
 $$S = \frac{\sqrt{3}}{4} + 3 \frac{\sqrt{3}}{4} \frac{1}{5}$$
+
 $$S = \frac{\sqrt{3}}{4} + 3 \frac{\sqrt{3}}{20}$$
+
 $$S = \frac{5 \sqrt{3}}{20} + 3 \frac{\sqrt{3}}{20}$$
+
 $$S = \frac{8 \sqrt{3}}{20} $$
+
 $$S = \frac{2 \sqrt{3}}{5} $$
 
 ## Conclusion 
