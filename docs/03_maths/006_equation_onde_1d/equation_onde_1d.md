@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Equation d'onde à une dimension"
+parent: "Maths"
+#nav_order: 2
 math: mathjax
 date: 2014-04-26 17:19:37
 last_modified_date: 2022-11-17 18:06:46
