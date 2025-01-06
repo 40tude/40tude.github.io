@@ -11,7 +11,7 @@ last_modified_date: 2020-12-06 19:40:30
 
 ## Introduction
 
-x+y+z=30 ... Problème posé l'autre jour par ma fille suite discussion en classe avec ses potes et le prof de [Maths]({% link docs\03_maths\index.md %}). On cherche $$x$$, $$y$$ et $$z$$ tels que :
+x+y+z=30 ... Problème posé l'autre jour par ma fille suite discussion en classe avec ses potes et le prof de [Maths]({% link docs/03_maths/index.md %}). On cherche $$x$$, $$y$$ et $$z$$ tels que :
 
 $$ x+y+z=30 $$
 
