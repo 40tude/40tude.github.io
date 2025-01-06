@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Une définition du nombre d'Euler"
+title: "Une définition du nombre e"
 parent: "Maths"
 math: mathjax
 date: 2015-11-22 12:36:50
