@@ -4,7 +4,6 @@ title: "x+y+z=30"
 parent: "Maths"
 #nav_order: 2
 math: mathjax
-
 date: 2015-06-22 18:30:15
 last_modified_date: 2020-12-06 19:40:30
 ---
