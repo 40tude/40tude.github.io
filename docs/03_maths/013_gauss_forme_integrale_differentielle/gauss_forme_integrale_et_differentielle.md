@@ -224,6 +224,17 @@ $$ \varepsilon_o $$ : c'est la même que tout à l'heure.
 * La forme intégrale met en relation le flux à travers une surface fermée et la quantité de charges contenue dans la surface en question. On regarde donc la situation "de loin", globalement. On intègre la situation. Typiquement on l'utilisera lorsque, connaissant une distribution de charges, on cherche à déterminer le flux électrique à travers une surface (flux à travers un cylindre qui entoure un fil conducteur contenant n charges par centimètre par exemple). Il faut donc garder en tête qu'on s'intéresse au résultat global et pas à ce qui se passe en chaque point.
 * La forme différentielle s’intéresse à ce qui se passe en un point particulier. C'est un cas limite dans lequel on fait tendre la surface fermée précédente vers un tout petit volume autour d'un point particulier. Par exemple, on l'utilisera lorsque, connaissant l'expression du champ électrique en fonction de x, y et z, on souhaite déterminer la densité de charge en un point particulier (x=2, y =0 et z = 42 par exemple).
 
+
+
+
+
+
+
+
+
+
+
+
 ## Passage d'une équation à l'autre
 
 ### Motivation
@@ -254,9 +265,12 @@ $$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s=???$$
 On oublie la limite pour l'instant et on décompose l'intégration sur toute la surface en une somme d'intégrations par face. En effet, c'est plus simple car sur chaque face la normale est constante (toujours vers le haut, toujours vers la gauche etc.). Il vient :
 
 $$\oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s = 
-\\+ \int E_x(x_0 + \text{d}x, y, z) \ \text{d}y \text{d}z - \int E_x(x_0, y, z) \ \text{d}y \text{d}z 
-\\+ \int E_y(x, y_0+ \text{d}y, z) \ \text{d}x \text{d}z - \int E_y(x, y_0, z) \ \text{d}x \text{d}z 
-\\+ \int E_z(x, y, z_0+ \text{d}z) \ \text{d}x \text{d}y - \int E_z(x, y, z_0) \ \text{d}x \text{d}y$$
+\begin{aligned}
+&+ \int E_x(x_0 + \text{d}x, y, z) \ \text{d}y \text{d}z - \int E_x(x_0, y, z) \ \text{d}y \text{d}z 
+&+ \int E_y(x, y_0+ \text{d}y, z) \ \text{d}x \text{d}z - \int E_y(x, y_0, z) \ \text{d}x \text{d}z 
+&+ \int E_z(x, y, z_0+ \text{d}z) \ \text{d}x \text{d}y - \int E_z(x, y, z_0) \ \text{d}x \text{d}y
+\end{aligned}
+$$
 
 Pour expliquer la première ligne à droite de l'égalité il faut remarquer les choses suivantes
 
@@ -271,17 +285,24 @@ On applique le même raisonnement pour écrire les lignes 2 et 3
 
 Pour passer à l'étape suivante on remarque que chaque intégration élémentaire va se simplifier lors du passage à la limite. En effet, la composante $$ E_x$$ est orthogonale à la surface $$ \text{d}y \text{d}z $$. La somme intégrale élémentaire se réduit donc au produit de la surface par le vecteur. Il en va de même pour les deux autres lignes.
 
-$$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s= 
-\\+ E_x(x_0 + \text{d}x, y, z) \cdot \text{d}y \text{d}z - E_x(x_0, y, z) \cdot \text{d}y \text{d}z 
-\\+ E_y(x, y_0+ \text{d}y, z) \cdot \text{d}x \text{d}z - E_y(x, y_0, z) \cdot \text{d}x \text{d}z 
-\\+ E_z(x, y, z_0+ \text{d}z) \cdot \text{d}x \text{d}y - E_z(x, y, z_0) \cdot \text{d}x \text{d}y$$
+$$
+\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s =
+\begin{aligned}
+&+ E_x(x_0 + \text{d}x, y, z) \cdot \text{d}y \text{d}z - E_x(x_0, y, z) \cdot \text{d}y \text{d}z \\
+&+ E_y(x, y_0 + \text{d}y, z) \cdot \text{d}x \text{d}z - E_y(x, y_0, z) \cdot \text{d}x \text{d}z \\
+&+ E_z(x, y, z_0 + \text{d}z) \cdot \text{d}x \text{d}y - E_z(x, y, z_0) \cdot \text{d}x \text{d}y
+\end{aligned}
+$$
 
 Là c'est simple on factorise.
 
 $$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s= 
-\\+ \left( E_x(x_0 + \text{d}x, y, z) - E_x(x_0, y, z) \right) \cdot \text{d}y \text{d}z 
-\\+ \left( E_y(x, y_0+ \text{d}y, z) - E_y(x, y_0, z) \right) \cdot \text{d}x \text{d}z 
-\\+ \left( E_z(x, y, z_0+ \text{d}z) - E_z(x, y, z_0) \right) \cdot \text{d}x \text{d}y$$
+\begin{aligned}
+&+ \left( E_x(x_0 + \text{d}x, y, z) - E_x(x_0, y, z) \right) \cdot \text{d}y \text{d}z 
+&+ \left( E_y(x, y_0+ \text{d}y, z) - E_y(x, y_0, z) \right) \cdot \text{d}x \text{d}z 
+&+ \left( E_z(x, y, z_0+ \text{d}z) - E_z(x, y, z_0) \right) \cdot \text{d}x \text{d}y
+\end{aligned}
+$$
 
 Afin de pouvoir progresser, je propose de retourner en classe de Terminale et de revenir à la définition de la dérivée :
 
