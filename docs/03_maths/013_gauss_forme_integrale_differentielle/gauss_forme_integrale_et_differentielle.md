@@ -266,8 +266,8 @@ On oublie la limite pour l'instant et on décompose l'intégration sur toute la 
 
 $$\oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s = 
 \begin{aligned}
-&+ \int E_x(x_0 + \text{d}x, y, z) \ \text{d}y \text{d}z - \int E_x(x_0, y, z) \ \text{d}y \text{d}z 
-&+ \int E_y(x, y_0+ \text{d}y, z) \ \text{d}x \text{d}z - \int E_y(x, y_0, z) \ \text{d}x \text{d}z 
+&+ \int E_x(x_0 + \text{d}x, y, z) \ \text{d}y \text{d}z - \int E_x(x_0, y, z) \ \text{d}y \text{d}z \\
+&+ \int E_y(x, y_0+ \text{d}y, z) \ \text{d}x \text{d}z - \int E_y(x, y_0, z) \ \text{d}x \text{d}z \\
 &+ \int E_z(x, y, z_0+ \text{d}z) \ \text{d}x \text{d}y - \int E_z(x, y, z_0) \ \text{d}x \text{d}y
 \end{aligned}
 $$
@@ -296,10 +296,10 @@ $$
 
 Là c'est simple on factorise.
 
-$$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s= 
+$$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s = 
 \begin{aligned}
-&+ \left( E_x(x_0 + \text{d}x, y, z) - E_x(x_0, y, z) \right) \cdot \text{d}y \text{d}z 
-&+ \left( E_y(x, y_0+ \text{d}y, z) - E_y(x, y_0, z) \right) \cdot \text{d}x \text{d}z 
+&+ \left( E_x(x_0 + \text{d}x, y, z) - E_x(x_0, y, z) \right) \cdot \text{d}y \text{d}z \\
+&+ \left( E_y(x, y_0+ \text{d}y, z) - E_y(x, y_0, z) \right) \cdot \text{d}x \text{d}z \\ 
 &+ \left( E_z(x, y, z_0+ \text{d}z) - E_z(x, y, z_0) \right) \cdot \text{d}x \text{d}y
 \end{aligned}
 $$
