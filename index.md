@@ -47,6 +47,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 * `[Finalize Windows 11 installation]({\% link docs/04_windows/finalize_windows_11_installation/finalize_windows_11_installation.md \%})`
 
 * Lister les 10 plus longs articles : 
+    * `cd C:\Users\phili\OneDrive\Documents\40tude_to_repair\converted_to_markdown\docs`
     * ``Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}``
 
 * `{: .note }` `{: .warning }``{: .important }``{: .new }``{: .highlight }`
