@@ -22,7 +22,11 @@ $$y = Acos(kx)$$
 
 Cette onde ne se déplace pas. Par exemple ses maximums et ses minimums restent à la même place. Pensez à une corde de guitare que vous pincez. Les 2 extrémités sont fixes. Ci-dessous une illustration que l'on trouve sur [Wikipedia](https://fr.wikipedia.org/wiki/Onde_stationnaire)
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standing_wave.gif/400px-Standing_wave.gif)
+<div align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standing_wave.gif/400px-Standing_wave.gif" width=600 alt="" loading="lazy"/>
+</div>
+
+<!-- ![](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standing_wave.gif/400px-Standing_wave.gif) -->
 
 Ici "A" est simplement l'amplitude maximum. Dans la suite je la pose égale à 1. La question qui se pose maintenant, c'est : "Oui mais k c'est quoi?"
 
