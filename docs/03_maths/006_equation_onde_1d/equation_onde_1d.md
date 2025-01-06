@@ -1,10 +1,12 @@
 ---
 layout: default
-title: "Equation d'onde à une dimension - théorie et exemple"
+title: "Equation d'onde à une dimension"
 math: mathjax
 date: 2014-04-26 17:19:37
 last_modified_date: 2022-11-17 18:06:46
 ---
+
+# Equation d'onde à une dimension
 
 ## Mise en équation
 
@@ -35,23 +37,25 @@ $$sin(\theta) \approx \theta$$
 
 $$tan(\theta) \approx \theta sin(\theta)$$
 
-**Ruse de Sioux 1 :**Comme l'angle est faible, on peut remplacer les sinus par les tangentes et on écrit :
+### Ruse de Sioux 1 
+Comme l'angle est faible, on peut remplacer les sinus par les tangentes et on écrit :
 
 $$T (tan(\theta_1) - tan(\theta_2)) = m a_y$$
 
 Ensuite, et c'est là qu'on se dit qu'il y en a qui en ont vraiment dans le chou, comme
 
-$$tan(\theta) = \frac {dy}{dx}$$
+$$tan(\theta) = \frac {\mathrm{d}y}{\mathrm{d}x}$$
 
-l'équation devient :
+L'équation devient :
 
-$$T ((\frac {dy}{dx})_{x+dx} - (\frac {dy}{dx})_x) = m a_y$$
+$$T ((\frac {\mathrm{d}y}{\mathrm{d}x})_{x+\mathrm{d}x} - (\frac {\mathrm{d}y}{\mathrm{d}x})_x) = m a_y$$
 
-Les indices (x+dx) et (x) indiquent 'en x+dx' et 'en x'.
+Les indices (x+\mathrm{d}x) et (x) indiquent 'en x+\mathrm{d}x' et 'en x'.
 
-**Ruse de Sioux 2:**Ensuite, il faut se rappeler que
+### Ruse de Sioux 2
+Ensuite, il faut se rappeler que
 
-$$(\frac {dy}{dx})_{x+dx} - (\frac {dy}{dx})_x = \frac{d^2y}{dx^2} dx$$
+$$(\frac {\mathrm{d}y}{\mathrm{d}x})_{x+\mathrm{d}x} - (\frac {\mathrm{d}y}{\mathrm{d}x})_x = \frac{\mathrm{d}^2y}{\mathrm{d}x^2} \mathrm{d}x$$
 
 En cas de doute, on peut revenir à la définition de la dérivée d'une fonction et écrire :
 
@@ -65,37 +69,37 @@ $${f(x+h) - f(x)} = h f'(x)$$
 
 En remplaçant h par dx on a :
 
-$${f(x+dx) - f(x)} = f'(x) dx$$
+$${f(x+\mathrm{d}x) - f(x)} = f'(x) \mathrm{d}x$$
 
-$${f(x+dx) - f(x)} = {\frac{dy}{dx}} dx$$
+$${f(x+\mathrm{d}x) - f(x)} = {\frac{\mathrm{d}y}{\mathrm{d}x}} \mathrm{d}x$$
 
 Ensuite, on voit que si au lieu de la fonction, on s'intéresse à la dérivée de la fonction alors on obtient :
 
-$$(\frac {dy}{dx})_{x+dx} - (\frac {dy}{dx})_x = \frac{d^2y}{d x^2} dx$$
+$$(\frac {\mathrm{d}y}{\mathrm{d}x})_{x+\mathrm{d}x} - (\frac {\mathrm{d}y}{\mathrm{d}x})_x = \frac{\mathrm{d}^2y}{\mathrm{d} x^2} \mathrm{d}x$$
 
 Bref... À ce stade on a donc :
 
-$$T (\frac{d^2y}{d x^2} dx) = m a_y$$
+$$T (\frac{\mathrm{d}^2y}{\mathrm{d} x^2} \mathrm{d}x) = m a_y$$
 
 Ensuite on évalue l'accélération selon l'axe des y à :
 
-$$a_y = \frac{d^2y}{d t^2}$$
+$$a_y = \frac{\mathrm{d}^2y}{\mathrm{d} t^2}$$
 
 Et l'équation devient :
 
-$$T \frac{d^2y}{d x^2} dx = m \frac{d^2y}{d t^2}$$
+$$T \frac{\mathrm{d}^2y}{\mathrm{d} x^2} \mathrm{d}x = m \frac{\mathrm{d}^2y}{\mathrm{d} t^2}$$
 
 On remplace la masse m par le produit de dx par la masse par unité de longueur (masse linéique) :
 
-$$T \frac{d^2y}{d x^2} dx = \mu dx \frac{d^2y}{d t^2}$$
+$$T \frac{\mathrm{d}^2y}{\mathrm{d} x^2} \mathrm{d}x = \mu \mathrm{d}x \frac{\mathrm{d}^2y}{\mathrm{d} t^2}$$
 
 On divise à gauche et à droite par dx :
 
-$$T \frac{d^2y}{d x^2} = \mu \frac{d^2y}{d t^2}$$
+$$T \frac{\mathrm{d}^2y}{\mathrm{d} x^2} = \mu \frac{\mathrm{d}^2y}{\mathrm{d} t^2}$$
 
 Si on divise par T et si on rapatrie tout à gauche, au final, on a l'équation suivante à résoudre :
 
-$$\frac{d^2y}{d x^2} - \frac{\mu}{T} \frac{d^2y}{d t^2} = 0 $$
+$$\frac{\mathrm{d}^2y}{\mathrm{d} x^2} - \frac{\mu}{T} \frac{\mathrm{d}^2y}{\mathrm{d} t^2} = 0 $$
 
 Intéressons-nous au terme $$\frac{\mu}{T}$$ et plus précisément à sa dimension. Ci-dessous on se rappelle qu'une tension c'est une force, c'est à dire le produit d'une masse par une accélération. Il vient :
 
@@ -107,7 +111,7 @@ $$c^2 = \frac{T}{\mu}$$
 
 Pour finir la mise en équation nous donne :
 
-$$\frac{d^2y}{d x^2} - \frac{1}{c^2} \frac{d^2y}{d t^2} = 0 $$
+$$\frac{\mathrm{d}^2y}{\mathrm{d} x^2} - \frac{1}{c^2} \frac{\mathrm{d}^2y}{\mathrm{d} t^2} = 0 $$
 
 La solution de cette équation est de la forme :
 
@@ -140,7 +144,7 @@ $$Forme(x) = F(x) + G(x)$$
 
 De même, imaginons que à t=0, les vitesses initiales des points de la corde (là, pour le coup, on parle bien des vitesses verticales de déplacement de chaque bout de corde) soient données par :
 
-$$(\frac{d f(x,t)}{d t})_{t=0} = {Vitesse'}(x)$$
+$$(\frac{\mathrm{d} f(x,t)}{\mathrm{d} t})_{t=0} = {Vitesse'}(x)$$
 
 <div align="center">
 <img src="./assets/VitesseX.webp" alt="" loading="lazy"/>
@@ -151,7 +155,7 @@ Y a bien un 'prime' afin de faire ressortir le fait qu'on parle de la dérivée 
 
 $$f(x,t) = F(x+ct) + G(x-ct)$$
 
-$$\frac{d f(x,t)}{d t} = c F'(x+ct) - c G'(x-ct)$$
+$$\frac{\mathrm{d} f(x,t)}{\mathrm{d} t} = c F'(x+ct) - c G'(x-ct)$$
 
 En t=0 on a donc :
 

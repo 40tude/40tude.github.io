@@ -60,10 +60,11 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
     * ``(?<!\$)\$(?!\$)`` 
     * `$$$`
 
+* d droit ``\mathrm{d}``
+
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
-* d droit ``\mathrm{d}``
 * <https://www.mathematex.fr/guide-mathjax>
 * <https://docs.mathjax.org/en/latest/input/tex/macros/index.html>
 
