@@ -14,7 +14,7 @@ last_modified_date: 2023-12-03 15:34:12
 
 ## Prelude
 
-Read this page first. [Install Windows 11 with a USB key]({% link docs/windows/install_windows_11_with_a_usb_key/install_windows_11_with_a_usb_key.md %})
+Read this page first. [Install Windows 11 with a USB key]({% link docs/04_windows/000_install_windows_11_with_a_usb_key/install_windows_11_with_a_usb_key.md %})
 
 * Indeed, below, I assume [Chocolatey](https://chocolatey.org/) is up and running
 * Most of the software installations are done in Windows Terminal using CLI

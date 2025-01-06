@@ -12,7 +12,7 @@ last_modified_date: 2022-11-26 18:59:20
 
 ## Introduction
 
-Les équations de Bernoulli sont des équations différentielles du premier ordre un peu particulières. Dans un [précédent article]({% link docs/maths/003_equations_differentielles_premier_ordre/003_equations_differentielles_premier_ordre.md %}) on a vu que les équations différentielles du premier ordre pouvaient s'écrire sous la forme :
+Les équations de Bernoulli sont des équations différentielles du premier ordre un peu particulières. Dans un [précédent article]({% link docs/03_maths/003_equations_differentielles_premier_ordre/003_equations_differentielles_premier_ordre.md %}) on a vu que les équations différentielles du premier ordre pouvaient s'écrire sous la forme :
 
 $$y ^{\prime} + p(x)y = q(x)$$
 

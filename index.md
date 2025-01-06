@@ -50,12 +50,15 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
     * ``Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}``
 
 * `{: .note }` `{: .warning }``{: .important }``{: .new }``{: .highlight }`
+
 * Enlever le gras des titres CTRL+H + Exp Reg
     * ``(#+)\s\*\*(.*?)\*\*``
     * `$1 $2`
 
-* Retrouver les $ qui sont seuls => ``(?<!\$)\$(?!\$)`` 
-* Remplacer les $ seuls par $$   => ``(?<!\$)\$(?!\$)`` et `$$$`
+* Remplacer les $ seuls par $$ CTRL+H + Exp Reg
+    * ``(?<!\$)\$(?!\$)`` 
+    * `$$$`
+
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
@@ -79,21 +82,21 @@ last_modified_date: 2023-12-04 00:02:38
 
 ## Organisation des catégories ?
 
-2. Simple OS
-1. Maths
-1. Windows
-1. Linux
-1. Programmation
-    1. Python
-    1. C++
-    1. C
-1. Moto
-    1. Pilotage circuit
-    1. RSV4
-    1. ZX6R
-    1. Divers
-1. Snowboard débuter 
-1. Divers
+* 02_simple_os
+* 03_maths
+* 04_windows
+* 05_linux
+* 06_programmation
+    *  Python
+    *  C++
+    *  C
+* 07_moto
+    *  Pilotage circuit
+    *  RSV4
+    *  ZX6R
+    *  Divers
+* 08_snowboard 
+* 99_divers
     * Billet Jeune
     * Billet Gravel
     * ... 

@@ -160,7 +160,7 @@ $$V_{35} = 1000 * 1.05^{35} = 5 516$$
 
 Ah oui quand même... Ça me parait énorme et je n'ai pas envie de vider tes comptes.
 
-T'inquiète Marty ma paupiette. Ce n'est pas tous les jours qu'on a 16 ans. J'avais donc décidé de marquer le coup. Considère ça comme ma contribution à tes [roulages moto sur circuit]({% link docs/moto/index.md %}). Tu as trouvé la solution. Bravo. Je suis très fière de toi.
+T'inquiète Marty ma paupiette. Ce n'est pas tous les jours qu'on a 16 ans. J'avais donc décidé de marquer le coup. Considère ça comme ma contribution à tes [roulages moto sur circuit]({% link docs/07_moto/index.md %}). Tu as trouvé la solution. Bravo. Je suis très fière de toi.
 
 Pour le reste, cet argent je ne l'ai pas mis à la banque il y a 35 ans. Nan, en fait, à l'occasion d'un petit héritage en 2004, j'ai acheté de l'or avec cette somme sur laquelle je ne comptais pas. Crois-le si tu veux, depuis les cours de l'or ont été multipliés par 6 (voir ci-dessous). Ensuite, je me suis arrangé pour te raconter une histoire d'intérêts composés afin de te motiver un peu... 💰
 

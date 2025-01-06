@@ -52,6 +52,7 @@ exclude:
   - docs/billet01.md
   - docs/categorie_02/
   - docs/categorie_03/
+  - scrap_book/
   # - docs/maths/
   # - .sass-cache/
   # - .jekyll-cache/

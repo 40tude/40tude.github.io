@@ -379,5 +379,5 @@ Believe it or not, this is important to clean up a fresh Windows installation. I
 
 
 ## Next step
-[Finalize Windows 11 installation]({% link docs/windows/finalize_windows_11_installation/finalize_windows_11_installation.md %})
+[Finalize Windows 11 installation]({% link docs/04_windows/001_finalize_windows_11_installation/finalize_windows_11_installation.md %})
 

@@ -12,10 +12,10 @@ last_modified_date: 2023-12-06 22:15:35
 
 ## Les épisodes de la série
 
-* [Episode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) 
-* [Episode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %})
-* [Episode 2]({% link docs/simple_os/002_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_2.md %})
-* [Episode 3]({% link docs/simple_os/003_sos_2_le_retour_20_ans_apres_episode_3/sos_2_le_retour_20_ans_apres_episode_3.md %})
+* [Episode 0]({% link docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) 
+* [Episode 1]({% link docs/02_simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %})
+* [Episode 2]({% link docs/02_simple_os/002_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_2.md %})
+* [Episode 3]({% link docs/02_simple_os/003_sos_2_le_retour_20_ans_apres_episode_3/sos_2_le_retour_20_ans_apres_episode_3.md %})
 
 ## Introduction
 
@@ -35,7 +35,7 @@ En ce qui concerne le code de démo il tourne de nouveau (voir ci-dessous). Ne t
 </div>
 
 
-Après avoir terminé l'épisode 1, je pensais que le portage de l'épisode 2 allait se passer dans la joie et la bonne humeur. Que nenni... J'en ai bavé à cause d'un truc tout bête dont j'ai un peu honte après coup mais bon... Mes soucis au début de l'épisode 2 m'ont même obligé à faire ce que je ne voulais surtout pas faire : remonter un setup complet de l'époque (machine, Debian, GCC et Grub d'époque...). Cela a d'ailleurs fait l'objet de la rédaction de [l'épisode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %}). Ça a été une vraie galère mais il fallait que je me donne les moyens de comparer des pommes avec des pommes... Bref, les débuts de l'épisode 2 ont été très, très laborieux mais ce soir je suis au milieu du gué car j'estime que l'épisode 2 en est à sa moitié.
+Après avoir terminé l'épisode 1, je pensais que le portage de l'épisode 2 allait se passer dans la joie et la bonne humeur. Que nenni... J'en ai bavé à cause d'un truc tout bête dont j'ai un peu honte après coup mais bon... Mes soucis au début de l'épisode 2 m'ont même obligé à faire ce que je ne voulais surtout pas faire : remonter un setup complet de l'époque (machine, Debian, GCC et Grub d'époque...). Cela a d'ailleurs fait l'objet de la rédaction de [l'épisode 1]({% link docs/02_simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %}). Ça a été une vraie galère mais il fallait que je me donne les moyens de comparer des pommes avec des pommes... Bref, les débuts de l'épisode 2 ont été très, très laborieux mais ce soir je suis au milieu du gué car j'estime que l'épisode 2 en est à sa moitié.
 
 OK... Tu peux traduire ? Ça tourne mais tout le code assembleur spécifique à cet opus n'a pas encore été réécrit en NASM. Il y a donc 2 parties dans cet épisode 2 :
 
@@ -46,7 +46,7 @@ Non, je ne sais pas encore si je vais créer 2 billets différents ou laisser le
 
 ## Partie 1 où on garde le code assembleur en GAS
 
-Je suppose que tu as le setup dont on a discuté dans [l'épisode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) (docker, QEMU etc.) ainsi qu'un répertoire `sos2` qui contient le code du même épisode. Si ce n'est pas le cas ce n'est pas grave, on s'adapte. Relis l'épisode 0 et récupère le code sur [GitHub](https://github.com/40tude/sos2). Par exemple récupère un zip et extraie-le. Pour la suite, il faut juste que le répertoire s'appelle `sos2`. Attention, si tu dézippe vérifies que les fichiers du projet sont bien sous `./sos2` et qu'il n'y a pas une arborescence du style `./sos2/sos2-main` avec les fichiers en dessous. Si c'est le cas, remonte les fichiers et les répertoires du projet d'un cran pour qu'ils soient bien sous `./sos2`.
+Je suppose que tu as le setup dont on a discuté dans [l'épisode 0]({% link docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %}) (docker, QEMU etc.) ainsi qu'un répertoire `sos2` qui contient le code du même épisode. Si ce n'est pas le cas ce n'est pas grave, on s'adapte. Relis l'épisode 0 et récupère le code sur [GitHub](https://github.com/40tude/sos2). Par exemple récupère un zip et extraie-le. Pour la suite, il faut juste que le répertoire s'appelle `sos2`. Attention, si tu dézippe vérifies que les fichiers du projet sont bien sous `./sos2` et qu'il n'y a pas une arborescence du style `./sos2/sos2-main` avec les fichiers en dessous. Si c'est le cas, remonte les fichiers et les répertoires du projet d'un cran pour qu'ils soient bien sous `./sos2`.
 
 <div align="center">
 <img src="./assets/image-10.webp" alt="" loading="lazy"/>
@@ -216,7 +216,7 @@ clean:
 
 * J'ai renommé plusieurs variables
 * Je tiens compte du fait que les fichiers assembleur du répertoire ./hwcore pourront être en syntaxe AT&T (`.S`) ou Intel (`.asm`)
-* Si besoin n'hésite pas à relire les explications que je donnais à propos du Makefile dans [l'épisode 0]({% link docs/simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %})
+* Si besoin n'hésite pas à relire les explications que je donnais à propos du Makefile dans [l'épisode 0]({% link docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md %})
 
 ### Premier Make
 
@@ -315,7 +315,7 @@ Bref... Il en manque un bout. Et ne viens pas me faire suer avec le texte qui ne
 </div>
 
 
-Et là commence un long, un très long moment de solitude... Je ne vais pas m'éterniser mais en gros tu sais que le code a fonctionné, il est donc valide mais là, tu cherches et tu trouves... Rien. J'ai remis en cause l'éditeur de lien, les segments de code, le compilateur... Pour finir, comme je l'ai dit je me suis senti obligé de faire une chose que je voulais absolument éviter : remonter une configuration identique à celle de l'époque. Cela a donné lieu à [l'épisode 1]({% link docs/simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %}) de cette série. 
+Et là commence un long, un très long moment de solitude... Je ne vais pas m'éterniser mais en gros tu sais que le code a fonctionné, il est donc valide mais là, tu cherches et tu trouves... Rien. J'ai remis en cause l'éditeur de lien, les segments de code, le compilateur... Pour finir, comme je l'ai dit je me suis senti obligé de faire une chose que je voulais absolument éviter : remonter une configuration identique à celle de l'époque. Cela a donné lieu à [l'épisode 1]({% link docs/02_simple_os/001_sos_2_le_retour_20_ans_apres_episode_1/sos_2_le_retour_20_ans_apres_episode_1.md %}) de cette série. 
 
 Oui, oui, j'ai appris des trucs mais bon, cela n'a pas été une sinécure... N'empêche... Tu te prouves que le code fonctionnait bien à l'époque, then what? SOS2 a des bouts en NASM, la version du compilateur n'est plus la même... Tu cherches, tu fouilles, t'efface tout, tu recommence tout, tu relis tout... Le pire c'est que si tu as bien lu le second article paru dans Linux Mag, tu sais que si les IRQ fonctionnent, les exceptions doivent fonctionner. Mais bon tu as toujours des doutes alors tu commences à désassembler le code. Typiquement j'ai pas mal utilisé les 2 commandes ci-dessous :
 
