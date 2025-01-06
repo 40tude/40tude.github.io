@@ -68,6 +68,26 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 
 * d droit ``\mathrm{d}``
 
+$$
+\begin{align*}
+(-4) \cdot (0) & = 0 \\
+(-4) \cdot (5 - 5) & = 0 \\
+(-4) \cdot 5 + (-4) \cdot (-5) & = 0 \\
+-20 + (-4) \cdot (-5) & = 0 \\
+(-4) \cdot (-5) & = 20
+\end{align*}
+$$
+
+$$
+\begin{align}
+(-4) \cdot (0) & = 0 \\
+(-4) \cdot (5 - 5) & = 0 \\
+(-4) \cdot 5 + (-4) \cdot (-5) & = 0 \\
+-20 + (-4) \cdot (-5) & = 0 \\
+(-4) \cdot (-5) & = 20
+\end{align}
+$$
+
 
 * Lister les 10 plus longs articles : 
     * `cd C:\Users\phili\OneDrive\Documents\40tude_to_repair\converted_to_markdown\docs`

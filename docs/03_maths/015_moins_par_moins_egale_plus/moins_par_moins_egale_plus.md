@@ -69,15 +69,15 @@ On distribue le -1 sur le contenu de la parenthèse et il vient : (-1) x 1 + (-
 
 On a vu que (-1) x 1 = -1 et on sait que le résultat de la ligne vaut 0.
 
-Autrement dit, on n'a pas le choix. Il faut que (-1)*(-1) soit l'opposé de (-1) x 1.  
-Il faut que (-1)*(-1) soit l'opposé de -1   
-Il faut que (-1)*(-1) vale 1
+Autrement dit, on n'a pas le choix. Il faut que (-1)x(-1) soit l'opposé de (-1) x 1.  
+Il faut que (-1)x(-1) soit l'opposé de -1   
+Il faut que (-1)x(-1) vale 1
 
 Ce qui est vrai pour -1 et 1 l'est aussi pour n'importe quel autre couple de nombres de signe opposés.
 
-On a bien, moins par moins égale plus.
+Au final on a bien, moins par moins égale plus.
 
-### PS :
+### Note
 
 Pour prouver que $(-4) \cdot (-5) = 20$ on suit le raisonnement suivant
 
