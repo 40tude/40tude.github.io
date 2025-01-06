@@ -2,11 +2,10 @@
 layout: default
 title: "Pourcentages, croissance, gestion des ressources..."
 parent: "Maths"
-#nav_order: 2
+nav_order: 2
 math: mathjax
 date: 2023-03-21 23:27:31
 last_modified_date: 2023-04-14 11:48:24
-# permalink: /sos/
 ---
 
 

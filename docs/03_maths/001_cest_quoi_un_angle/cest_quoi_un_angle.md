@@ -2,6 +2,7 @@
 layout: default
 title: "Angle, tangente et dérivée"
 parent: "Maths" 
+nav_order: 3
 math: mathjax
 date:               2024-12-18 22:00:00 +0000
 last_modified_date: 2025-01-04 12:00:00 +0000

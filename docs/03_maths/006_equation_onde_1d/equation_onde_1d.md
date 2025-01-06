@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Equation d'onde à une dimension"
+title: "Equation d'onde 1D"
 parent: "Maths"
 #nav_order: 2
 math: mathjax
