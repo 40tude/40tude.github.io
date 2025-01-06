@@ -39,12 +39,12 @@ Si le but du jeu ici est de comprendre la forme intégrale et différentielle de
 
 $$\oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s=\frac{q_{enc}}{\varepsilon_o}$$
 
+
 ### Le terme de gauche de la forme intégrale
 
 $$\oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s$$
 
-$$\vec{E}$$ 
-: le champ électrique. Dans la formule, c’est un vecteur. En effet, un champ électrique possède (comme un vecteur…) un sens, une direction et une amplitude.
+$$\vec{E}$$ : le champ électrique. Dans la formule, c’est un vecteur. En effet, un champ électrique possède (comme un vecteur…) un sens, une direction et une amplitude.
 
 Pour faire simple, un champ électrique est une région de l'espace où s'exerce des forces électriques sur des particules chargées. Pour faire encore plus simple... Je me promène et j'ai dans la main une charge électrique positive. J'ouvre ma main. La charge ne bouge pas... J'en déduis qu'il n'y a pas de champ électrique dans le coin. Si la charge bouge... J'en déduis qu'il y a un champ électrique qui exerce une force sur la charge ($$ \vec{F} = q \vec{E}$$).
 
@@ -59,15 +59,13 @@ Dans cette  [vidéo](https://www.youtube.com/watch?v=Y6YdC2UoDYY), via diverses 
 
 
 
-$$ \hat{n} $$ 
-: c'est un vecteur unitaire. Sa longueur vaut 1. Comme il est un peu spécial, pour bien le repérer dans la formule, au lieu d'une flèche il est recouvert par un chapeau. Pour construire un tel vecteur, c'est relativement simple :
+$$ \hat{n} $$ : c'est un vecteur unitaire. Sa longueur vaut 1. Comme il est un peu spécial, pour bien le repérer dans la formule, au lieu d'une flèche il est recouvert par un chapeau. Pour construire un tel vecteur, c'est relativement simple :
 
 $$\hat{V} = \frac {\vec{V}} {|\vec{V}|}$$
 
 Dans la formule, au point considéré, $$ \hat{n} $$ est le vecteur normal à la surface $$ \text{d}s $$
 
-$$ \cdot $$ 
-: produit scalaire entre deux vecteurs. Le produit scalaire entre deux vecteurs vaut :
+$$ \cdot $$ : produit scalaire entre deux vecteurs. Le produit scalaire entre deux vecteurs vaut :
 
 $$V_1V_2cos(V_1,V_2) $$
 
@@ -77,8 +75,7 @@ Le résultat est un scalaire, une valeur. À cause du (ou grâce à) cosinus, le
 * nul quand les vecteurs sont à 90° l'un de l'autre.
 * minimal quand les vecteurs sont co-linéaires mais de sens opposé (le cos vaut -1 et ne peut pas valoir moins).
 
-$$ \text{d}s $$ 
-: c'est une surface infinitésimale, une surface élémentaire. Si on pense à un ballon de rugby, il suffit d'imaginer qu'on dessine dessus des carrés de 1mm de côté. Vu le loin on recouvre parfaitement le ballon. À y regarder de plus près chaque facette, chaque carré élémentaire, possède une orientation différente de celle de son voisin. Les différences son faibles entre deux carrés adjacents. Pourtant, on constate que les facettes qui sont au sommet et à la base du ballon sont à 90° des facettes qui se trouvent à l'équateur (aux pôles les facettes sont horizontales alors qu'à l'équateur les facettes sont verticales)
+$$ \text{d}s $$ : c'est une surface infinitésimale, une surface élémentaire. Si on pense à un ballon de rugby, il suffit d'imaginer qu'on dessine dessus des carrés de 1mm de côté. Vu le loin on recouvre parfaitement le ballon. À y regarder de plus près chaque facette, chaque carré élémentaire, possède une orientation différente de celle de son voisin. Les différences son faibles entre deux carrés adjacents. Pourtant, on constate que les facettes qui sont au sommet et à la base du ballon sont à 90° des facettes qui se trouvent à l'équateur (aux pôles les facettes sont horizontales alors qu'à l'équateur les facettes sont verticales)
 
 <div align="center">
 <img src="./assets/gauss-ballon.webp" alt="" width="900" loading="lazy"/>
@@ -89,11 +86,9 @@ $$ \text{d}s $$
 </div>
 
 
-$$ \vec{E} \cdot \hat{n} \ \text{d}s $$ 
-: c'est le flux élémentaire de $$ \vec{E}$$ à travers $$ \text{d}s $$. Quand on pense à un flux, on pense souvent à l'eau qui coule à travers un trou. Ici rien ne coule. En fait ici le flux mesure la quantité de champ électrique qui passe à travers la surface élémentaire. Dans l'illustration ci-dessous, le champ électrique est constant (les lignes sont parallèles sur toute la largeur de la page) mais on fait varier l'angle de la surface élémentaire $$ \text{d}s$$. À gauche il y a 8 lignes qui passent à travers. Forcément plus il y a de l'angle et moins il y a de lignes de champ qui traversent la surface (l'épaisseur est censée être nulle). À la fin, à droite, plus aucune ligne ne passe et le flux est nul.
+$$ \vec{E} \cdot \hat{n} \ \text{d}s $$ : c'est le flux élémentaire de $$ \vec{E}$$ à travers $$ \text{d}s $$. Quand on pense à un flux, on pense souvent à l'eau qui coule à travers un trou. Ici rien ne coule. En fait ici le flux mesure la quantité de champ électrique qui passe à travers la surface élémentaire. Dans l'illustration ci-dessous, le champ électrique est constant (les lignes sont parallèles sur toute la largeur de la page) mais on fait varier l'angle de la surface élémentaire $$ \text{d}s$$. À gauche il y a 8 lignes qui passent à travers. Forcément plus il y a de l'angle et moins il y a de lignes de champ qui traversent la surface (l'épaisseur est censée être nulle). À la fin, à droite, plus aucune ligne ne passe et le flux est nul.
 
-$$ \oint\limits_S $$ 
-: c'est la somme intégrale sur toute la surface de tous les flux élémentaires. Il faut bien comprendre que c'est une intégrale double sur toute la surface (y a pas le signe de double intégragtion mais y a un "S". Le cercle indique que la surface est fermée). Si on reprend le ballon de rugby, "l’algorithme" de la somme intégrale pourrait ressembler à ce qui suit.
+$$ \oint\limits_S $$ : c'est la somme intégrale sur toute la surface de tous les flux élémentaires. Il faut bien comprendre que c'est une intégrale double sur toute la surface (y a pas le signe de double intégragtion mais y a un "S". Le cercle indique que la surface est fermée). Si on reprend le ballon de rugby, "l’algorithme" de la somme intégrale pourrait ressembler à ce qui suit.
 
 Pour chaque facette sur la surface du ballon :
 
@@ -116,13 +111,11 @@ Pour chaque facette sur la surface du ballon :
 
 $$\frac{q_{enc}}{\varepsilon_o}$$
 
-$$ q_{enc} $$ 
-: c'est la quantité de charges enfermées par la surface close. C'est une quantité net exprimée en Coulombs. Si il y a autant de charges positives que négatives la somme est nulle.
+$$ q_{enc} $$ : c'est la quantité de charges enfermées par la surface close. C'est une quantité net exprimée en Coulombs. Si il y a autant de charges positives que négatives la somme est nulle.
 
 ***Remarque :*** C'est un point de vocabulaire. Les charges électriques dont on parle ici sont des charges "statiques". Ce sont elles qui engendrent un champ électrostatique. Il existe un autre type de champ électrique qui lui est induit par la variation dans le temps d'un champ magnétique (loi de Faraday).
 
-$$ \varepsilon_o $$ 
-: c'est la permittivité du vide. C'est un coefficient qui traduit le fait que le vide est plus ou moins sensible au champ électrique. On le voit, dans la formule $$ \varepsilon_o $$ agit comme un facteur de mise à l'échelle. On pourrait très bien imaginer un système d'unités dans lequel $$ \varepsilon_o $$ n’apparaîtrait pas dans cette formule (mais bon, il apparaîtrait ailleurs c'est sûr).
+$$ \varepsilon_o $$ : c'est la permittivité du vide. C'est un coefficient qui traduit le fait que le vide est plus ou moins sensible au champ électrique. On le voit, dans la formule $$ \varepsilon_o $$ agit comme un facteur de mise à l'échelle. On pourrait très bien imaginer un système d'unités dans lequel $$ \varepsilon_o $$ n’apparaîtrait pas dans cette formule (mais bon, il apparaîtrait ailleurs c'est sûr).
 
 
 
@@ -162,8 +155,7 @@ $$\vec{\nabla} \cdot \vec{E} = \frac{\rho }{\varepsilon_o}$$
 
 $$\vec{\nabla} \cdot \vec{E}$$
 
-$$ \vec{\nabla}$$ 
-: le triangle inversé se nomme nabla. C'est un opérateur différentiel vectoriel. Pas de panique... Cela veut simplement dire qu'il s'agit d'un vecteur dont les composantes sont des dérivées partielles. Typiquement on a :
+$$ \vec{\nabla}$$ : le triangle inversé se nomme nabla. C'est un opérateur différentiel vectoriel. Pas de panique... Cela veut simplement dire qu'il s'agit d'un vecteur dont les composantes sont des dérivées partielles. Typiquement on a :
 $$\vec{\nabla} = \hat{i} \frac{\partial }{\partial x} + \hat{j} \frac{\partial }{\partial y} + \hat{k} \frac{\partial }{\partial z}$$
 
 Histoire de bien garder en tête que $$ \vec{\nabla}$$ est un vecteur et quitte à être un peu lourd, notons qu'on peut l'écrire aussi comme ça :
@@ -222,18 +214,15 @@ On retiendra qu'une divergence positive indique que les vecteurs s'écartent du 
 </div>
 
 
-$$ \vec{\nabla} \cdot \vec{E}$$ 
-: c'est la divergence du champ électrique au point considéré. Si elle est positive les vecteurs du champ électrique s'écartent du point d'étude. Dans le cas contraire, quand la divergence est négative, les vecteurs du champ électrique convergent vers le point d'étude.
+$$ \vec{\nabla} \cdot \vec{E}$$ : c'est la divergence du champ électrique au point considéré. Si elle est positive les vecteurs du champ électrique s'écartent du point d'étude. Dans le cas contraire, quand la divergence est négative, les vecteurs du champ électrique convergent vers le point d'étude.
 
 ### Le terme de droite de la forme différentielle
 
 $$\frac{\rho }{\varepsilon_o}$$
 
-$$ \rho $$ 
-: c'est la densité de charge électrique au point d'étude. C'est donc le rapport d'une quantité de charge sur un volume.
+$$ \rho $$ : c'est la densité de charge électrique au point d'étude. C'est donc le rapport d'une quantité de charge sur un volume.
 
-$$ \varepsilon_o $$ 
-: c'est la même que tout à l'heure.
+$$ \varepsilon_o $$ : c'est la même que tout à l'heure.
 
 ## Ça va mieux en le disant
 
