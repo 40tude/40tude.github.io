@@ -40,10 +40,6 @@ callouts:
     color: green
   highlight:
     color: yellow
-
-mathjax:
-  inline_math: ["$", "$"]
-  block_math: ["$$", "$$"]
   
 exclude:
   # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
