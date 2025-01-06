@@ -171,23 +171,18 @@ Ce qui est gênant c'est que pour l'instant on ne voit pas sur quoi l'opérateur
 
 Dans le cas qui nous intéresse, première ligne de la table ci-dessous, le produit scalaire du vecteur nabla et d'un vecteur, retourne un scalaire (c'est le propre du produit scalaire). Ce dernier est la somme des dérivées partielles de chacune des composantes du vecteur (dérivée de $$E_x$$ par rapport à $$x$$ plus la dérivée de $$E_y$$ par rapport à $$y$$ etc.)
 
+| Opération | Écriture | Nom | Opérandes | Résultat |
+|:---       |:---      |:--- |:---       |:---      |
 | Produit scalaire | $$ \vec{\nabla} \cdot \vec{E} $$ | Divergence | $$ (\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial y}) \cdot (E_x,E_y,E_z)$$ | $$ \frac{\partial E_x }{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}$$ |
-| --- | --- | --- | --- | --- |
-| Produit vectoriel | $$ \vec{\nabla} \times \vec{E}$$ | Rotationnel (Curl) | $$ (\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial y}) \times (E_x,E_y,E_z)$$ |  |
+| Produit vectoriel | $$ \vec{\nabla} \times \vec{E}$$ | Rotationnel (Curl) | $$ (\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial y}) \times (E_x,E_y,E_z)$$ | $$ \begin{pmatrix}\frac{\partial E_z}{\partial y}-\frac{\partial E_y}{\partial z} \\ \frac{\partial E_x}{\partial z}-\frac{\partial E_z}{\partial x} \\ \frac{\partial E_y}{\partial x}-\frac{\partial E_x}{\partial y}\end{pmatrix}$$|
+| Application sur un champ scalaire | $$\vec{\nabla} \phi$$ | Gradient | $$(\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial y})  \phi$$ | $$ \begin{pmatrix}\frac{\partial \phi}{\partial x} \\ \frac{\partial \phi}{\partial y} \\ \frac{\partial \phi}{\partial z} \end{pmatrix}$$ |
 
-$$\begin{pmatrix}\frac{\partial E_z}{\partial y}-\frac{\partial E_y}{\partial z}
-\\ \frac{\partial E_x}{\partial z}-\frac{\partial E_z}{\partial x}
-\\ \frac{\partial E_y}{\partial x}-\frac{\partial E_x}{\partial y}
-\end{pmatrix}$$
 
-Application sur un champ scalaire $$ \vec{\nabla} \phi$$ Gradient
 
-$$
-\begin{pmatrix}\frac{\partial \phi}{\partial x}
-\\ \frac{\partial \phi}{\partial y}
-\\ \frac{\partial \phi}{\partial z}
-\end{pmatrix}
-$$
+
+
+
+
 
 ### Remarque :
 
