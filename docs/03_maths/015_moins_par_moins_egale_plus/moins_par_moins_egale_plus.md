@@ -40,6 +40,8 @@ On a donc -1 x 0 = 0
 
 Si jamais le -1 pose problème, il n'y a qu'à inverser les rôles dans l'égalité précédente et dire que l'on a zéro objet de type -1. Autrement dit on a, rien, zéro, nada.
 
+
+
 ### Second prérequis : -1 x 1 = -1
 
 Maintenant vérifions que nous sommes d'accord sur le fait que
@@ -52,17 +54,24 @@ Pour ce qui nous intéresse, on retiendra que ce qui est vrai pour 5 et -4 l'est
 
 Autrement dit -1 x 1 = -1
 
+Su tu as toujours un problème, dis toi que tu as dans la main 1 objet de genre -1
+
+
+
+
 ## Moins par moins égale plus
 
-Ayé, on est équipé, on peut y aller et pour cela on part de : -1 x 0 = 0
+Ayé, on est équipé, on peut y aller et pour cela on part du premier prérequis : -1 x 0 = 0
 
-Ce qui peut s'écrire de la façon suivante : -1 x (1-1) =0
+Ce qui peut s'écrire de la façon suivante : -1 x (1 - 1) = 0
 
 On distribue le -1 sur le contenu de la parenthèse et il vient : (-1) x 1 + (-1) x (-1) =0
 
 On a vu que (-1) x 1 = -1 et on sait que le résultat de la ligne vaut 0.
 
-Autrement dit, on n'a pas le choix, (-1)*(-1) est l'opposé de -1. Bref (-1) x (-1) vaut 1
+Autrement dit, on n'a pas le choix. Il faut que (-1)*(-1) soit l'opposé de (-1) x 1.  
+Il faut que (-1)*(-1) soit l'opposé de -1   
+Il faut que (-1)*(-1) vale 1
 
 Ce qui est vrai pour -1 et 1 l'est aussi pour n'importe quel autre couple de nombres de signe opposés.
 
@@ -72,15 +81,15 @@ On a bien, moins par moins égale plus.
 
 Pour prouver que $(-4) \cdot (-5) = 20$ on suit le raisonnement suivant
 
-$$(-4) \cdot (0) = 0$$
-
-$$(-4) \cdot (5 - 5) = 0$$
-
-$$(-4) \cdot 5 + (-4) \cdot (-5) = 0$$
-
-$$-20 + (-4) \cdot (-5) = 0$$
-
-$$(-4) \cdot (-5) = 20$$
+$$
+\begin{align*}
+(-4) \cdot (0) & = 0 \\
+(-4) \cdot (5 - 5) & = 0 \\
+(-4) \cdot 5 + (-4) \cdot (-5) & = 0 \\
+-20 + (-4) \cdot (-5) & = 0 \\
+(-4) \cdot (-5) & = 20
+\end{align*}
+$$
 
 ## Démonstrations sur YouTube
 
