@@ -10,11 +10,11 @@ last_modified_date: 2023-02-22 23:22:53
 
 # Implication logique
 
-Hello \(\alpha = 42 \) la vie est belle
+Hello \(\alpha = 42 \) la vie est belle (VSCode marche pas, Jekyll marche pas)
 
-Hello $\alpha = 42 $ la vie est belle
+Hello $\alpha = 42 $ la vie est belle (VSCode marche , Jekyll marche pas)
 
-Hello $$\alpha = 42 $$ la vie est belle
+Hello $$\alpha = 42 $$ la vie est belle (VSCode marche pas car sur une ligne, Jekyll marche)
 
 L'implication logique est une construction moins intuitive que le "et logique" ou le "ou logique". Comme en plus on l'utilise tous les jours à chaque fois que l'on conduit un raisonnement (mathématique, philosophique, business) il n'est peut-être pas inutile de bien préciser les choses. Allez c'est parti.
 
