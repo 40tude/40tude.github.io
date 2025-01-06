@@ -69,7 +69,7 @@ Ah ben super, bravo... On avait une équation à trois inconnues et on se retrou
 C'est vrai, vu comme ça, ça ne fait pas rêver. Toutefois, on a réduit les possibilités pour $$y_2$$ et $$z_2$$. En effet, ils ne peuvent plus prendre leurs valeurs que dans l'ensemble 5, 3 et 1 car on a que 3 nombres à 2 digits dans l'ensemble de départ (15, 13 et 11). Faisons une petite table pour voir ce que donnent les différentes additions de ces digits.
 
 |  | 5 | 3 | 1 |
-| --- | --- | --- | --- |
+|:---:|:---:|:---:|:---:|
 | 5 | x | 8 | 6 |
 | 3 | x | x | 4 |
 | 1 | x | x | x |
@@ -79,7 +79,7 @@ Dans la table ci-dessus, en ligne et en colonne on retrouve les digits concerné
 À l'aide de cette première table, on observe que l'addition de $$y$$ et $$z$$ nous donnera un nombre qui se terminera par 8, 6 ou 4. Comme on sait que $$x$$ peut prendre une valeur impaire entre 1 et 9, construisons une seconde table afin de voir ce que cela donne
 
 |  | 8 | 6 | 4 |
-| --- | --- | --- | --- |
+|:---:|:---:|:---:|:---:|
 | 1 | 9 | 7 | 5 |
 | 3 | 11 | 9 | 7 |
 | 5 | 13 | 11 | 9 |

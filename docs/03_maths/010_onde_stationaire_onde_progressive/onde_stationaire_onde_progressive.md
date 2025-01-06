@@ -14,11 +14,11 @@ last_modified_date: 2022-11-24 06:43:56
 
 C'est une onde de la forme :
 
-$$y = Asin(kx)$$
+$$y = A \sin(kx)$$
 
 ou
 
-$$y = Acos(kx)$$
+$$y = A \cos(kx)$$
 
 Cette onde ne se déplace pas. Par exemple ses maximums et ses minimums restent à la même place. Pensez à une corde de guitare que vous pincez. Les 2 extrémités sont fixes. Ci-dessous une illustration que l'on trouve sur [Wikipedia](https://fr.wikipedia.org/wiki/Onde_stationnaire)
 
@@ -30,15 +30,15 @@ Cette onde ne se déplace pas. Par exemple ses maximums et ses minimums restent
 
 Ici "A" est simplement l'amplitude maximum. Dans la suite je la pose égale à 1. La question qui se pose maintenant, c'est : "Oui mais k c'est quoi?"
 
-On appelle longueur d'onde λ la distance entre 2 points identiques successifs sur l'onde. Par exemple, prenez 2 points rouges successifs sur l'onde ci-dessus. On sait que cos() et sin() ont une période de 2π donc on pourrait se dire que la distance entre 2 points c'est 2π. Nan... ça ne marche pas. Imaginez qu'on pince une corde de guitare. Il y a aucune raison pour que les nœuds et les ventres de l'onde soient espacés de 3.14 (et puis d'abord, on ne sait même pas si ce sont des mètres ou des centimètres).
+On appelle longueur d'onde $$\lambda$$ la distance entre 2 points identiques successifs sur l'onde. Par exemple, prenez 2 points rouges successifs sur l'onde ci-dessus. On sait que $$\cos()$$ et $$\sin()$$ ont une période de $$2\pi$$ donc on pourrait se dire que la distance entre 2 points c'est $$2\pi$$. Nan... ça ne marche pas. Imaginez qu'on pince une corde de guitare. Il y a aucune raison pour que les nœuds et les ventres de l'onde soient espacés de 3.14 (et puis d'abord, on ne sait même pas si ce sont des mètres ou des centimètres).
 
-Ce que l'on va faire c'est qu'on va faire une règle de trois et on va dire : Si je mesure λ cm entre 2 nœuds successifs sur la corde alors tout se passe comme si je parcourais 2π radians. Pour faire la règle de 3 on se retrouve à compléter le tableau suivant :
+Ce que l'on va faire c'est qu'on va faire une règle de trois et on va dire : Si je mesure $$\lambda$$ cm entre 2 nœuds successifs sur la corde alors tout se passe comme si je parcourais $$2\pi$$ radians. Pour faire la règle de 3 on se retrouve à compléter le tableau suivant :
 
-| λ | 2π |
-| --- | --- |
+| $$\lambda$$ | $$2\pi$$ |
+|:---:|:---:|
 | x | ?? |
 
-Je cherche "??". Sur la première ligne, pour passer de λ à 2π, je divise par λ et je multiplie par 2π. Autrement dit :
+Je cherche "??". Sur la première ligne, pour passer de $$\lambda$$ à $$2\pi$$, je divise par $\lambda$ et je multiplie par $$2\pi$$. Autrement dit :
 
 $$?? = \frac{x}{\lambda} * 2 \pi$$
 
@@ -48,25 +48,25 @@ $$k = \frac{2*\pi}{\lambda} $$
 
 Finalement une onde stationnaire est donc une fonction de la forme :
 
-$$y = cos(\frac{2*\pi*x}{\lambda})$$
+$$y = \cos(\frac{2*\pi*x}{\lambda})$$
 
-On "voit" que si x vaut λ alors l'intérieur de la parenthèse vaut 2π et on retombe sur un nœud. De même si x vaut nλ (un nombre entier de fois λ) il en est de même.
+On "voit" que si $$x$$ vaut $$\lambda$$ alors l'intérieur de la parenthèse vaut $$2\pi$$ et on retombe sur un nœud. De même si x vaut n$\lambda$ (un nombre entier de fois $$\lambda$$) il en est de même.
 
 Maintenant si on nous donne une fonction de la forme :
 
-$$y = cos(\frac{\pi*x}{3*\lambda})$$
+$$y = \cos(\frac{\pi*x}{3*\lambda})$$
 
 Histoire d'y retrouver mes petits je peux toujours écrire
 
-$$y = cos(\frac{2 \pi x}{6 \lambda})$$
+$$y = \cos(\frac{2 \pi x}{6 \lambda})$$
 
-Je "vois" alors que j'ai affaire à une fonction dans laquelle x/6 doit parcourir 2π pour retrouver un point identique. Donc x doit parcourir 12π avant de retrouver un point similaire. La longueur d'onde de la nouvelle fonction est donc 12π c'est à dire 6 fois plus grande que la précédente.
+Je "vois" alors que j'ai affaire à une fonction dans laquelle x/6 doit parcourir $$2\pi$$ pour retrouver un point identique. Donc x doit parcourir 1$$2\pi$$ avant de retrouver un point similaire. La longueur d'onde de la nouvelle fonction est donc 1$$2\pi$$ c'est à dire 6 fois plus grande que la précédente.
 
 ## Onde progressive
 
 L'équation de l'onde est de la forme
 
-$$y = Acos(kx - \omega t)$$
+$$y = A \cos(kx - \omega t)$$
 
 On peut se demander ce qui caractérise les maximums. En fait se sont les points tels que
 
@@ -110,17 +110,17 @@ On peut se demander dans quel sens circule l'onde (vers la gauche ou vers la dro
 
 Pour cela je fixe x et je le prends par exemple égal à 0. Alors à t=0 et en x=0 l'amplitude vaut 1. Ensuite je pose t=1 et je regarde l'amplitude toujours en x=0.
 
-Je me retrouve alors à évaluer $$Acos(-w)$$. En d'autres mots, à t=1 et x=0 le point à pour amplitude celle qu'avait le point d’abscisse $$x = -w/k$$ à l'instant t=0.
+Je me retrouve alors à évaluer $$A \cos(-w)$$. En d'autres mots, à t=1 et x=0 le point à pour amplitude celle qu'avait le point d’abscisse $$x = -w/k$$ à l'instant t=0.
 
-En effet si à t=0, je remplace x par $$-w/k$$ alors je me retrouve bien avec un $$cos(-w)$$. Bref, en x=0 et à t=1 je me retrouve avec l'ordonnée d'un point qui était à gauche $$(-w/k)$$ du point x=0 à l’instant t=0.
+En effet si à t=0, je remplace x par $$-w/k$$ alors je me retrouve bien avec un $$\cos(-w)$$. Bref, en x=0 et à t=1 je me retrouve avec l'ordonnée d'un point qui était à gauche $$(-w/k)$$ du point x=0 à l’instant t=0.
 
-Conclusion l'onde se déplace vers la droite. Si on avait $$y = Acos(kx + \omega t)$$ l'onde irait à gauche.
+Conclusion l'onde se déplace vers la droite. Si on avait $$y = A \cos(kx + \omega t)$$ l'onde irait à gauche.
 
 ## Résumé
 
-Onde stationnaire $$y = Acos(kx)$$ où $$k = \frac {2 pi}{\lambda}$$
+Onde stationnaire $$y = A \cos(kx)$$ où $$k = \frac {2 pi}{\lambda}$$
 
-Onde progressive vers la droite $$y = Acos(kx - \omega t)$$
+Onde progressive vers la droite $$y = A \cos(kx - \omega t)$$
 
 Où $$k = \frac{2*\pi}{\lambda} $$ et où l'onde se déplace à la vitesse $$ v = \frac{\omega}{k} = f \lambda$$
 
