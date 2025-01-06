@@ -134,19 +134,37 @@ En effet si à $$t=0$$, je remplace $$x$$ par $$-w/k$$ alors je me retrouve bi
 
 Conclusion **l'onde se déplace vers la droite**. Si on avait $$y = A \cos(kx + \omega t)$$ l'onde irait à gauche.
 
+
+
+
+
+
+
+
+
 ## Résumé
 
-Onde stationnaire $$y = A \cos(kx)$$ où $$k = \frac {2 pi}{\lambda}$$
+* Onde stationnaire $$y = A \cos(kx)$$ où $$k = \frac {2 pi}{\lambda}$$
+* La **longueur d'onde** $$\lambda$$ c'est la distance entre 2 points identiques successifs sur l'onde
+* Onde progressive vers la droite $$y = A \cos(kx - \omega t)$$
+* Où $$k = \frac{2*\pi}{\lambda} $$ et où l'onde se déplace à la vitesse $$ v = \frac{\omega}{k} = f \lambda$$ vers la droite
+* La **fréquence** $$f$$ de l'onde c'est le nombre de maximums qui passent devant nos yeux par seconde
+* La fréquence, c'est l'inverse d'un temps
+* On a $$ \omega = 2 pi f \text{(en rad s}^{-1})$$
 
-Onde progressive vers la droite $$y = A \cos(kx - \omega t)$$
 
-Où $$k = \frac{2*\pi}{\lambda} $$ et où l'onde se déplace à la vitesse $$ v = \frac{\omega}{k} = f \lambda$$
 
-On a $$ \omega = 2 pi f \text{(en rad s}^{-1})$$
+
+
+
+
+
 
 ## Note spécifique à la mécanique quantique
 
-Il est possible que je commence une série de billets à propos de la mécanique quantique (MQ). Autant anticiper l'action 😁. Dans le cadre de la MQ, on souhaite écrire k en fonction de p la quantité de mouvement.
+Il est possible que je commence une série de billets à propos de la mécanique quantique (MQ). Autant anticiper l'action 😁. 
+
+Dans le cadre de la MQ, on souhaite écrire $$k$$ en fonction de $$p$$ la quantité de mouvement.
 
 Pour rappel on a vu que $$k = \frac{2\pi}{\lambda}$$
 
