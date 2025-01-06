@@ -12,12 +12,11 @@ last_modified_date: 2020-12-06 18:07:48
 
 ## Introduction
 
-Forme intégrale et différentielle de la loi de Gauss... Pour être honnête à propos des [équations de Maxwell](https://fr.wikipedia.org/wiki/%C3%89quations_de_Maxwell), quand j'étais étudiant, je ne suis pas sûr d'avoir compris de quoi il s'agissait vraiment. Je voyais bien des signes au tableau, dans les livres et sur mes feuilles mais bon, franchement, je ne crois pas que j'avais vraiment saisi de quoi on parlait. Je ne me rappelle plus très bien mais suis presque certains qu'à l'époque je ne savais pas quand utiliser l'une ou l'autre. Quant à passer d'une forme à l'autre... Bref, je vais essayer de remédier à cela et expliquer les choses de la façon dont j'aurai voulu qu'on me les explique à l'époque. C'est parti.
+Forme intégrale et différentielle de la loi de Gauss... Pour être honnête à propos des [équations de Maxwell](https://fr.wikipedia.org/wiki/%C3%89quations_de_Maxwell), quand j'étais étudiant, je ne suis pas sûr d'avoir compris de quoi il s'agissait vraiment. Je voyais bien des signes au tableau, dans les livres et sur mes feuilles, j'arrivais à calculer des trucs mais bon, franchement, je ne crois pas que j'avais saisi de quoi on parlait. 
 
+Je ne me rappelle plus très bien mais je suis presque certains qu'à l'époque je ne savais pas quand utiliser l'une ou l'autre. Quant à passer d'une forme à l'autre... 
 
-
-
-## Forme intégrale
+Bref, je vais essayer de remédier à cela et expliquer les choses de la façon dont j'aurai voulu qu'on me les explique à l'époque. C'est parti.
 
 La loi de Gauss est la première et la plus simple des quatre équations. Sous sa forme intégrale s'exprime de la façon suivante :
 
@@ -65,7 +64,7 @@ $$\hat{V} = \frac {\vec{V}} {|\vec{V}|}$$
 
 Dans la formule, au point considéré, $$ \hat{n} $$ est le vecteur normal à la surface $$ \text{d}s $$
 
-$$ \cdot $$ : produit scalaire entre deux vecteurs. Le produit scalaire entre deux vecteurs vaut :
+$$ \cdot $$ : Le "point" c'est le produit scalaire entre deux vecteurs. Ce dernier vaut :
 
 $$V_1V_2cos(V_1,V_2) $$
 
@@ -75,18 +74,19 @@ Le résultat est un scalaire, une valeur. À cause du (ou grâce à) cosinus, le
 * nul quand les vecteurs sont à 90° l'un de l'autre.
 * minimal quand les vecteurs sont co-linéaires mais de sens opposé (le cos vaut -1 et ne peut pas valoir moins).
 
-$$ \text{d}s $$ : c'est une surface infinitésimale, une surface élémentaire. Si on pense à un ballon de rugby, il suffit d'imaginer qu'on dessine dessus des carrés de 1mm de côté. Vu le loin on recouvre parfaitement le ballon. À y regarder de plus près chaque facette, chaque carré élémentaire, possède une orientation différente de celle de son voisin. Les différences son faibles entre deux carrés adjacents. Pourtant, on constate que les facettes qui sont au sommet et à la base du ballon sont à 90° des facettes qui se trouvent à l'équateur (aux pôles les facettes sont horizontales alors qu'à l'équateur les facettes sont verticales)
+$$ \text{d}s $$ : c'est une surface infinitésimale, une surface élémentaire. Si on pense à un ballon de rugby, il suffit d'imaginer qu'on dessine dessus des carrés de 1mm de côté. Vu le loin on recouvre parfaitement le ballon. À y regarder de plus près chaque facette, chaque carré élémentaire, possède une orientation différente de celle de son voisin. Les différences son faibles entre deux carrés adjacents. Ci-dessous, une illustration de que ce j'ai en tête. Quoiqu'il en soit, on constate que les facettes qui sont au sommet et à la base du ballon sont à 90° des facettes qui se trouvent à l'équateur (aux pôles les facettes sont horizontales alors qu'à l'équateur les facettes sont verticales)
 
 <div align="center">
 <img src="./assets/gauss-ballon.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+
+$$ \vec{E} \cdot \hat{n} \ \text{d}s $$ : c'est le flux élémentaire de $$ \vec{E}$$ à travers $$ \text{d}s $$. Quand on pense à un flux, on pense souvent à l'eau qui coule à travers un trou. Ici rien ne coule. En fait ici le flux mesure la quantité de champ électrique qui passe à travers la surface élémentaire. Dans l'illustration ci-dessous, le champ électrique est constant (les lignes sont parallèles sur toute la largeur de la page) mais on fait varier l'angle de la surface élémentaire $$ \text{d}s$$. À gauche il y a 8 lignes qui passent à travers. Forcément plus il y a de l'angle et moins il y a de lignes de champ qui traversent la surface (l'épaisseur est censée être nulle). À la fin, à droite, plus aucune ligne ne passe et le flux est nul.
+
 <div align="center">
 <img src="./assets/flux.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-
-$$ \vec{E} \cdot \hat{n} \ \text{d}s $$ : c'est le flux élémentaire de $$ \vec{E}$$ à travers $$ \text{d}s $$. Quand on pense à un flux, on pense souvent à l'eau qui coule à travers un trou. Ici rien ne coule. En fait ici le flux mesure la quantité de champ électrique qui passe à travers la surface élémentaire. Dans l'illustration ci-dessous, le champ électrique est constant (les lignes sont parallèles sur toute la largeur de la page) mais on fait varier l'angle de la surface élémentaire $$ \text{d}s$$. À gauche il y a 8 lignes qui passent à travers. Forcément plus il y a de l'angle et moins il y a de lignes de champ qui traversent la surface (l'épaisseur est censée être nulle). À la fin, à droite, plus aucune ligne ne passe et le flux est nul.
 
 $$ \oint\limits_S $$ : c'est la somme intégrale sur toute la surface de tous les flux élémentaires. Il faut bien comprendre que c'est une intégrale double sur toute la surface (y a pas le signe de double intégragtion mais y a un "S". Le cercle indique que la surface est fermée). Si on reprend le ballon de rugby, "l’algorithme" de la somme intégrale pourrait ressembler à ce qui suit.
 
@@ -169,9 +169,9 @@ $$
 
 Ce qui est gênant c'est que pour l'instant on ne voit pas sur quoi l'opérateur s'applique et on ne voit pas non plus comment on va pouvoir manipuler tout ça. En fait tout va dépendre de l'opération (produit scalaire, produit vectoriel...) ainsi que de l'objet auquel on va appliquer l'opérateur $$ \vec{\nabla}$$ (sur un vecteur, sur un champ scalaire).
 
-Dans le cas qui nous intéresse, première ligne de la table ci-dessous, le produit scalaire du vecteur nabla et d'un vecteur, retourne un scalaire (c'est le propre du produit scalaire). Ce dernier est la somme des dérivées partielles de chacune des composantes du vecteur (dérivée de $$ E_x$$ par rapport à $$ x$$ etc.)
+Dans le cas qui nous intéresse, première ligne de la table ci-dessous, le produit scalaire du vecteur nabla et d'un vecteur, retourne un scalaire (c'est le propre du produit scalaire). Ce dernier est la somme des dérivées partielles de chacune des composantes du vecteur (dérivée de $$E_x$$ par rapport à $$x$$ plus la dérivée de $$E_y$$ par rapport à $$y$$ etc.)
 
-| Produit scalaire | $$ \vec{\nabla} \cdot \vec{E} $$ | Divergence | $$ (\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial y}) \cdot (E_x,E_y,E_z)$$ | [latex size="1" background="eeeeee"] \frac{\partial E_x }{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}$$ |
+| Produit scalaire | $$ \vec{\nabla} \cdot \vec{E} $$ | Divergence | $$ (\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial y}) \cdot (E_x,E_y,E_z)$$ | $$ \frac{\partial E_x }{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}$$ |
 | --- | --- | --- | --- | --- |
 | Produit vectoriel | $$ \vec{\nabla} \times \vec{E}$$ | Rotationnel (Curl) | $$ (\frac{\partial }{\partial x},\frac{\partial }{\partial y},\frac{\partial }{\partial y}) \times (E_x,E_y,E_z)$$ |  |
 
@@ -193,7 +193,7 @@ $$
 
 Non, non, je n'ai pas l'intention d'expliquer les lignes 2 et 3 du tableau. Elles sont là pour illustrer le fait que l'opérateur nabla s'applique de 3 façons différentes (divergence, rotationnel, gradient)
 
-Pour essayer de saisir à quoi correspond la divergence, raisonnons à une dimension. On considère dans l'exemple qui suit que les composantes $$ E_y$$ et $$ E_z$$ sont nulles. Je m'impose en plus que $$ E_x$$ varie en $$ x^2$$. Alors si je calcule la divergence, seule la composante en x va rentrer en jeu. Cette dernière vaut $$ 2x$$. Ci-dessous on a tracé 3 instances du champ électrique aux abscisses 1, 2 et 3. On affiche aussi les valeurs des divergences associées.
+Pour essayer de saisir à quoi correspond la divergence (1ere ligne), raisonnons à une dimension. On considère dans l'exemple qui suit que les composantes $$ E_y$$ et $$ E_z$$ sont nulles. Je m'impose en plus que $$ E_x$$ varie en $$ x^2$$. Alors si je calcule la divergence, seule la composante en x va rentrer en jeu. Cette dernière vaut $$ 2x$$. Ci-dessous on a tracé 3 instances du champ électrique aux abscisses 1, 2 et 3. On affiche aussi les valeurs des divergences associées.
 
 <div align="center">
 <img src="./assets/Div.webp" alt="" loading="lazy"/>
@@ -226,7 +226,7 @@ $$ \varepsilon_o $$ : c'est la même que tout à l'heure.
 
 ## Ça va mieux en le disant
 
-* La forme intégrale met en relation le flux à travers une surface fermée et la quantité de charges contenue dans la surface en question. On regarde donc la situation "de loin", globalement. Typiquement on l'utilisera lorsque, connaissant une distribution de charges, on cherche à déterminer le flux électrique à travers une surface (flux à travers un cylindre qui entoure un fil conducteur contenant n charges par centimètre par exemple). Il faut donc garder en tête qu'on s'intéresse au résultat global et pas à ce qui se passe en chaque point.
+* La forme intégrale met en relation le flux à travers une surface fermée et la quantité de charges contenue dans la surface en question. On regarde donc la situation "de loin", globalement. On intègre la situation. Typiquement on l'utilisera lorsque, connaissant une distribution de charges, on cherche à déterminer le flux électrique à travers une surface (flux à travers un cylindre qui entoure un fil conducteur contenant n charges par centimètre par exemple). Il faut donc garder en tête qu'on s'intéresse au résultat global et pas à ce qui se passe en chaque point.
 * La forme différentielle s’intéresse à ce qui se passe en un point particulier. C'est un cas limite dans lequel on fait tendre la surface fermée précédente vers un tout petit volume autour d'un point particulier. Par exemple, on l'utilisera lorsque, connaissant l'expression du champ électrique en fonction de x, y et z, on souhaite déterminer la densité de charge en un point particulier (x=2, y =0 et z = 42 par exemple).
 
 ## Passage d'une équation à l'autre
@@ -258,7 +258,10 @@ $$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s=???$$
 
 On oublie la limite pour l'instant et on décompose l'intégration sur toute la surface en une somme d'intégrations par face. En effet, c'est plus simple car sur chaque face la normale est constante (toujours vers le haut, toujours vers la gauche etc.). Il vient :
 
-$$\oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s = + \int E_x(x_0 + \text{d}x, y, z) \ \text{d}y \text{d}z - \int E_x(x_0, y, z) \ \text{d}y \text{d}z + \int E_y(x, y_0+ \text{d}y, z) \ \text{d}x \text{d}z - \int E_y(x, y_0, z) \ \text{d}x \text{d}z + \int E_z(x, y, z_0+ \text{d}z) \ \text{d}x \text{d}y - \int E_z(x, y, z_0) \ \text{d}x \text{d}y$$
+$$\oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s = 
+\\+ \int E_x(x_0 + \text{d}x, y, z) \ \text{d}y \text{d}z - \int E_x(x_0, y, z) \ \text{d}y \text{d}z 
+\\+ \int E_y(x, y_0+ \text{d}y, z) \ \text{d}x \text{d}z - \int E_y(x, y_0, z) \ \text{d}x \text{d}z 
+\\+ \int E_z(x, y, z_0+ \text{d}z) \ \text{d}x \text{d}y - \int E_z(x, y, z_0) \ \text{d}x \text{d}y$$
 
 Pour expliquer la première ligne à droite de l'égalité il faut remarquer les choses suivantes
 
@@ -273,13 +276,19 @@ On applique le même raisonnement pour écrire les lignes 2 et 3
 
 Pour passer à l'étape suivante on remarque que chaque intégration élémentaire va se simplifier lors du passage à la limite. En effet, la composante $$ E_x$$ est orthogonale à la surface $$ \text{d}y \text{d}z $$. La somme intégrale élémentaire se réduit donc au produit de la surface par le vecteur. Il en va de même pour les deux autres lignes.
 
-$$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s= E_x(x_0 + \text{d}x, y, z) \cdot \text{d}y \text{d}z - E_x(x_0, y, z) \cdot \text{d}y \text{d}z + E_y(x, y_0+ \text{d}y, z) \cdot \text{d}x \text{d}z - E_y(x, y_0, z) \cdot \text{d}x \text{d}z + E_z(x, y, z_0+ \text{d}z) \cdot \text{d}x \text{d}y - E_z(x, y, z_0) \cdot \text{d}x \text{d}y$$
+$$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s= 
+\\+ E_x(x_0 + \text{d}x, y, z) \cdot \text{d}y \text{d}z - E_x(x_0, y, z) \cdot \text{d}y \text{d}z 
+\\+ E_y(x, y_0+ \text{d}y, z) \cdot \text{d}x \text{d}z - E_y(x, y_0, z) \cdot \text{d}x \text{d}z 
+\\+ E_z(x, y, z_0+ \text{d}z) \cdot \text{d}x \text{d}y - E_z(x, y, z_0) \cdot \text{d}x \text{d}y$$
 
 Là c'est simple on factorise.
 
-$$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s= \left( E_x(x_0 + \text{d}x, y, z) - E_x(x_0, y, z) \right) \cdot \text{d}y \text{d}z + \left( E_y(x, y_0+ \text{d}y, z) - E_y(x, y_0, z) \right) \cdot \text{d}x \text{d}z +\left( E_z(x, y, z_0+ \text{d}z) - E_z(x, y, z_0) \right) \cdot \text{d}x \text{d}y$$
+$$\lim_{S \to 0 } \oint\limits_S \vec{E} \cdot \hat{n} \ \text{d}s= 
+\\+ \left( E_x(x_0 + \text{d}x, y, z) - E_x(x_0, y, z) \right) \cdot \text{d}y \text{d}z 
+\\+ \left( E_y(x, y_0+ \text{d}y, z) - E_y(x, y_0, z) \right) \cdot \text{d}x \text{d}z 
+\\+ \left( E_z(x, y, z_0+ \text{d}z) - E_z(x, y, z_0) \right) \cdot \text{d}x \text{d}y$$
 
-Afin de pouvoir progresser, je propose de retourner en Terminale et de revenir à la définition de la dérivée :
+Afin de pouvoir progresser, je propose de retourner en classe de Terminale et de revenir à la définition de la dérivée :
 
 $$\lim_{h \to 0 } \frac{f(x+h)-f(x)}{h}=f^{\prime}$$
 
