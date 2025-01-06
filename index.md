@@ -44,7 +44,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 ## À garder sous le coude
 * `NOT YET TRANSFERED`
 
-* `[Finalize Windows 11 installation]({% link docs/04_windows/finalize_windows_11_installation/finalize_windows_11_installation.md %})`
+* `[Finalize Windows 11 installation]({% link docs/04_windows/001_finalize_windows_11_installation/finalize_windows_11_installation.md %})`
 
 * Lister les 10 plus longs articles : 
     * `cd C:\Users\phili\OneDrive\Documents\40tude_to_repair\converted_to_markdown\docs`
