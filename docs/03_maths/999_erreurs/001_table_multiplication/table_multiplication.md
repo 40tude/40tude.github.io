@@ -38,6 +38,7 @@ Allez faire un tour sur ce site de [révision des tables de multiplication](http
 
 
 ## Next ?
-Prend une feuille A4
-Dessine une demi table de multiplication
-Accroche-la dans les toilettes (vois quand même avec ta mère avant)
+Prend une feuille A4  
+Dessine une demi table de multiplication  
+Accroche-la dans les toilettes (vois quand même avec ta mère avant)  
+

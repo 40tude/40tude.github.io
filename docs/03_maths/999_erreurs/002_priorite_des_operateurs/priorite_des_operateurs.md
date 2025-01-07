@@ -16,11 +16,11 @@ Ce sont des choses que l'on commence à voir en cinquième je crois. De toute fa
 
 1. J'effectue les calculs de gauche à droite.
 2. J'effectue en priorité les opérations situées entre parenthèses.
-3. A l’intérieur des parenthèses, j’effectue les multiplications et les divisions **puis** les additions et les soustractions.
+3. À l’intérieur des parenthèses, j’effectue les multiplications et les divisions **puis** les additions et les soustractions.
 4. Quand les calculs entre parenthèses sont terminés je fais sauter les parenthèses.
 5. Quand il n'y a plus de parenthèses, j’effectue les multiplications et les divisions **puis** les additions et les soustractions.
 
-À la limite, on pourrait se passer des règles une et cinq. La une car c'est notre façon de lire. La quatre car c'est la même que la trois sauf qu'il n'y a plus de parenthèses. Je propose donc de suivre l'algorithme, la recette de cuisine, suivant :
+À la limite, on pourrait se passer des règles une et cinq. La une car c'est notre façon de lire. La cinq car c'est la même que la trois sauf qu'il n'y a plus de parenthèses. Je propose donc de suivre l'algorithme, la recette de cuisine, suivant :
 
 1. J'effectue en priorité les opérations situées entre **parenthèses**.
 2. J’effectue les multiplications et les divisions **puis** les additions et les soustractions.
