@@ -56,7 +56,11 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 * `[Finalize Windows 11 installation]({% link docs/04_windows/001_finalize_windows_11_installation/finalize_windows_11_installation.md %})`
 
 
+
 * `{: .note }` `{: .warning }``{: .important }``{: .new }``{: .highlight }`
+
+
+
 
 * Enlever le gras des titres CTRL+H + Exp Reg
     * ``(#+)\s\*\*(.*?)\*\*``

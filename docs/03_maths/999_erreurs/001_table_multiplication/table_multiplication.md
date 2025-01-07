@@ -10,16 +10,20 @@ last_modified_date: 2020-05-02 11:19:43
 
 
 # La table de multiplication
+
+{: .important }
+Under Construction
+
+
+
 ## Introduction
 
-
-## Erreurs de calcul : table de multiplication
 
 <div align="center">
 <img src="./assets/MultiplierPar9.webp" alt="" loading="lazy"/>
 </div>
 
-### **Une remarque**
+## Une remarque
 
 1. Je dois effectuer 6 x 9.
 2. Avec l'astuce précédente, je remarque que le chiffre des dizaines c'est le plus petit des opérandes moins 1.

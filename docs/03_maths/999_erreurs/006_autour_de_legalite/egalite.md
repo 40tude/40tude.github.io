@@ -88,5 +88,5 @@ Le but du jeu (oui, oui je persiste et signe, c'est un jeu, un casse tête, une 
 
 Heu... Tu dois noter deux ou trois petits trucs
 1. C'est un peu toujours le même refrain. 
-1. Prends le temps de regarder les résultats intermédiaires
+1. Prends le temps de regarder les résultats intermédiaires (c'est un autre mantra)
 1. Ici à la fin le x est à droite. On s'en fout complètement. En effet les 2 écritures x=42 et 42=x sont identiques. Entraîne toi à faire tes enquêtes en laissant les x à droite.  
