@@ -10,7 +10,7 @@ last_modified_date: 2023-02-22 23:22:53
 
 # Implication logique
 
-Hello \(\alpha = 42 \) la vie est belle (VSCode marche pas, Jekyll marche pas)
+Hello \( \alpha = 42 \) la vie est belle (VSCode marche pas, Jekyll marche pas)
 
 Hello $\alpha = 42 $ la vie est belle (VSCode marche , Jekyll marche pas)
 
@@ -201,11 +201,14 @@ Comme pour la contraposée, il est parfois plus facile de démontrer ($$\neg P \
 
 Le test est le suivant. Certains font l'hypothèse que les Dames ont un dos bleu. On nous présente 4 cartes (voir ci-dessous). Quelles sont les cartes qu'il faut retourner pour vérifier l'hypothèse ?
 
-![Test logique des 4 cartes](https://www.40tude.fr/wp-content/uploads/2017/09/TestLogique.png)
+<div align="center">
+<img src="./assets/TestLogique.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 
 Ayé, vous avez fait votre choix ? Pas besoin d'un coup de fil et d'en appeler au public ? Très bien, on va voir si vous faites partie des 4% qui ont trouvé la bonne réponse.
 
-https://youtu.be/1c1jZQ9Bkq0?t=2m2s
+La réponse se trouve dans cette [vidéo](https://youtu.be/1c1jZQ9Bkq0?t=2m2s)
 
 Oh, by the way... Abonnez-vous à la chaîne [Hygiène Mentale](https://www.youtube.com/channel/UCMFcMhePnH4onVHt2-ItPZw).
 
