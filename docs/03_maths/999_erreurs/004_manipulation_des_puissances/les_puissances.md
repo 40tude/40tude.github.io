@@ -11,9 +11,9 @@ last_modified_date: 2020-12-06 18:22:44
 
 # Manipulation des puissances
 
-## Le trucs à retenir
+## Les trucs à comprendre
 
-Voilà les principales règles qu'il faut connaître. Il ne faut pas hésiter à rayer celles que vous connaissez déjà.
+Voilà les principales règles qu'il faut comprendre. Je dis comprendre car idéalement faut savoir pourquoi c'est comme ça. Pas de panique, on va voir qu'on peut en virer pas mal et de toute façon, faut pas hésiter à rayer celles que vous connaissez déjà.
 
 $$ q^0 = 1 $$
 $$ q^1 = q $$
@@ -37,13 +37,16 @@ On peut se convaincre que $$ q^0 = 1 $$ de cette façon :
 </div>
 
 
-À ce stade il semble utile de **ne garder que la règle 4** qui peut poser quelques problème de mémorisation.  
+À ce stade il semble utile de **ne garder QUE la règle 4** qui peut poser quelques problème de mémorisation.  
 
 $$ q^{-n} = \frac{1}{q^n}$$
 
 Ceci dit, c'est juste une façon de décrire l'inverse de $$q^n$$. 
 
 Il faut faire un travail similaire sur les autres lignes et **ne garder que celles avec lesquelles on est pas à l'aise** ou que l''on ne connaît pas encore **par cœur**.
+
+
+
 
 
 ## Mise en applications
@@ -81,3 +84,10 @@ Je fais la somme des puissances au dénominateur (règle 5).
 Ensuite on applique la règle 4 et on fait la somme des exposant (règle 5).
 
 
+
+
+## Next ?
+A toi de jouer.  
+Personne ne peut le faire à ta place. 
+Prend ton bouquin de maths et fais des exercices, reprends les exercices que vous avez fait en cours
+Au pire si tu bute sur un truc, ramène tes calculs sur une copie propre puis demande à ton prof demain

@@ -35,5 +35,9 @@ Under Construction
 
 Allez faire un tour sur ce site de [révision des tables de multiplication](http://tables-de-multiplication.fr/tafels-oefenen.aspx). Ce n'est pas le seul dans son genre, loin de là.
 
-[Lire la suite...](https://www.40tude.fr/priorite-des-operateurs/)
 
+
+## Next ?
+Prend une feuille A4
+Dessine une demi table de multiplication
+Accroche-la dans les toilettes (vois quand même avec ta mère avant)

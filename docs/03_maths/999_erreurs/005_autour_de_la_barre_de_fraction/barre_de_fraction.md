@@ -14,7 +14,7 @@ last_modified_date: 2020-05-01 23:35:59
 
 Là, on aborde un sujet intéressant. En fait, pour simplifier une fraction, il n'y a qu'une seule règle.
 
-1. On ne change pas la valeur d'une fraction si on **divise** ou si on **multiplie** le numérateur et le dénominateur par un même nombre non nul
+1. On ne change pas la valeur d'une fraction si on **divise** ou si on **multiplie** le numérateur (en haut) et le dénominateur (en bas) par un même nombre non nul
 
 Prenons une analogie "débile" afin de bien marquer les esprits.
 
@@ -48,7 +48,7 @@ Voici un autre exemple ou on utilise la méthode TGV. Ceci dit, il ne faut jamai
 </div>
 
 
-Dans l'exemple ci-dessus, pas la peine d'additionner les puissances au dénominateur ou au numérateur. Rappelons nous le mantra Indien 
+Dans l'exemple ci-dessus, pas la peine d'additionner les puissances au dénominateur ou au numérateur. Rappelons-nous le fameux mantra Indien : 
 
 {: .important }
 Avant de me lancer dans le calcul, je prends un peu de recul. 
@@ -81,3 +81,10 @@ Je rappelle que 5-5 = 0 et que $$ x^0=1$$.
 * Ligne 5. Je divise le numérateur et le dénominateur par (x - 3). Je raye le (x - 3) du dénominateur. En haut, je diminue de 1 la puissance du (x-3). Elle passe de 2 à 1. Il reste (x-3)1 c'est à dire (x-3) dont on aurait pu faire sauter les parenthèses.
 * Pour finir j'entoure le résultat.
 
+
+
+## Next ?
+A toi de jouer.  
+Personne ne peut le faire à ta place. 
+Prend ton bouquin de maths et fais des exercices, reprends les exercices que vous avez fait en cours
+Au pire si tu bute sur un truc, ramène tes calculs sur une copie propre puis demande à ton prof demain

@@ -15,11 +15,13 @@ On termine par le top du top : la résolution d'équation. Il n'y ici que deux r
 1. L'égalité est conservée si on ajoute la même quantité à droite **et** à gauche.
 2. L'égalité est conservée si on multiplie par la même quantité à droite **et** à gauche.
 
-Petite remarque. Je dis "ajouter". Si on se rappelle que soustraire c'est additionner un nombre négatif, la règle 1 est aussi valable pour les soustractions. De même, comme "**diviser c'est multiplier par l'inverse**", la règle 2 est aussi valable pour les divisions.
+Petite remarque. Je dis "ajouter". Si on se rappelle que soustraire c'est additionner un nombre négatif, la règle 1 est aussi valable pour les soustractions. De même, comme "**diviser c'est multiplier par l'inverse**", la règle 2 est aussi valable pour les divisions. 
+
+Attention toutefois. On se rappelle qu'on a pas le droit ni d'avoir faim ni d'avoir froid mais surtout qu'on a pas le droit de diviser à gauche et à droite par 0. Il est donc important quand on divise à droite et à gauche de préciser/vérifier que ce par quoi on divise n'a aucune chance de valoir 0.  
 
 *Oui mais moi j'ai vu des trucs avec des chiffres qui changent de signe quand ils passent de l'autre côté et d'autres qui passent en dessous... je sais plus quoi.*  
 
-Peut être mais on va faire simple, on va s'en tenir aux deux règles et les utiliser sur des exemples que l'on va expliquer en détail.
+Peut être mais nous, pour l'instant, on va faire simple, on va s'en tenir aux deux règles précédentes et les utiliser sur des exemples que l'on va expliquer en détail.
 
 Un premier exemple très simple pour commencer où on cherche à déterminer la valeur de x
 
@@ -27,7 +29,7 @@ Un premier exemple très simple pour commencer où on cherche à déterminer la 
 <img src="./assets/egalite2.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Pour commencer, il faut prendre ça comme un jeu, une intrigue, une enquête. C'est surtout pas une punition. Dis toi qu'on a une situation, un meutre dans la cuisine, t'arrives, tu inspecte les lieux, tu cherches des indices, tu utilise ton flaire... Et tu découvre l'assassin. Ben ici c'est pareil. T'arrives, je te donne les faits, à toi de cherche la valeur de x qui répond à la situation
+Heu... Déjà, il faut prendre ça comme un jeu, une intrigue, une enquête. C'est surtout pas une punition. Dis toi qu'on a une situation, un meurtre dans la cuisine, t'arrives, tu inspecte les lieux, tu cherches des indices, tu utilise ton flaire... Et tu découvre l'assassin. Ben ici c'est pareil. T'arrives, je te donne les faits, à toi de cherche la valeur de x qui répond à la situation.
 
 * Ligne 1. J'ai un x à gauche de l'égalité. Je vais essayer de le laisser là.
 * Ligne 2. Je veux me débarrasser du 8 de gauche. Le mieux c'est de soustraire 8. Oui mais avec une égalité si j'enlève 8 à gauche je dois enlever 8 à droite. C'est ce que je fais ressortir en rouge. Quand c'est fait je simplifie en rayant le +8 et le -8 du membre de gauche.
@@ -90,3 +92,11 @@ Heu... Tu dois noter deux ou trois petits trucs
 1. C'est un peu toujours le même refrain. 
 1. Prends le temps de regarder les résultats intermédiaires (c'est un autre mantra)
 1. Ici à la fin le x est à droite. On s'en fout complètement. En effet les 2 écritures x=42 et 42=x sont identiques. Entraîne toi à faire tes enquêtes en laissant les x à droite.  
+
+
+
+## Next ?
+A toi de jouer.  
+Personne ne peut le faire à ta place. 
+Prend ton bouquin de maths et fais des exercices, reprends les exercices que vous avez fait en cours...
+Au pire si tu bute sur un truc, ramène tes calculs sur une copie propre puis demande à ton prof demain

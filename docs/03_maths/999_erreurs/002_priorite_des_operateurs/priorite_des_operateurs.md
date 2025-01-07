@@ -11,6 +11,7 @@ last_modified_date: 2020-12-06 18:28:02
 
 # Priorité des opérateurs
 
+## Rappels
 Ce sont des choses que l'on commence à voir en cinquième je crois. De toute façon, aucune honte à avoir. Personne ne sait que vous lisez ce billet. Voici les 4 règles à appliquer.
 
 1. J'effectue les calculs de gauche à droite.
@@ -48,7 +49,7 @@ Voici un exemple typique
 12. Ligne 5. Il n'y a plus de parenthèses. Il ne reste plus qu'une division que j'effectue. Règle 2
 13. Ligne 6. J'obtiens le résultat, 17
 
-Un autre exemple pour souligner le fait que l'on peut traiter en parallèle le contenu de plusieurs parenthèses indépendantes. On dit que 2 parenthèses sont indépendantes lorsque le contenu de l'une ne modifie pas le contenu de l'autre.
+Un autre exemple pour souligner le fait que l'on peut traiter en parallèle le contenu de plusieurs parenthèses indépendantes. On dit que 2 parenthèses sont indépendantes car le contenu de l'une ne modifie pas le contenu de l'autre. Pense aux parenthèses et à leur contenu comme à des conteneur. Ce qu'il y a dans un conteneur (des voitures) est indépendant de ce qu'il y a dans un autres (des vélos) 
 
 <div align="center">
 <img src="./assets/priorité2.webp" alt="" width="900" loading="lazy"/>
@@ -62,4 +63,11 @@ Un autre exemple pour souligner le fait que l'on peut traiter en parallèle le c
 5. Dans les 2 cas, comme c'était la dernière opération entre parenthèses, je fais sauter ces dernières. Règle 3
 6. Ligne 3. Il n'y a plus de parenthèses. Il ne reste plus qu'à additionner 3, -28 et 24
 7. Ligne 4. J'obtiens le résultat, -1
+
+
+## Next ?
+A toi de jouer.  
+Personne ne peut le faire à ta place. 
+Prend ton bouquin de maths et fais des exercices, reprends les exercices que vous avez fait en cours
+Au pire si tu bute sur un truc, ramène tes calculs sur une copie propre puis demande à ton prof demain
 

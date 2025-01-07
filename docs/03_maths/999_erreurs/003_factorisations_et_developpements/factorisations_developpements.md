@@ -11,9 +11,13 @@ last_modified_date: 2020-12-06 18:24:18
 
 # Factorisations et développements
 
-Là, on s'intéresse surtout aux différents outils qui permettent de simplifier les écritures algébriques. Pour cela on va être amené à les développer puis à les factoriser. Rappels sur les règles que l'on peut mettre en œuvre :
+On s'intéresse ici aux différents outils qui permettent de simplifier les écritures algébriques. Pour cela on va être amené à développer, déplier ces dernières. Ensuite on va sans doute factoriser, les condenser. 
 
-## Règle 1
+Quelques rappels sur les règles et les outils qui sont à notre disposition.
+
+
+
+## Outil N°1
 Pour alléger les écritures algébriques je peux supprimer le signe multiplier devant une lettre ou une parenthèse. En règle générale on met d'abord le scalaire puis les variables. On écrit donc 5t plutôt que t5 car on dit "j'ai 2 portables" plutôt que "j'ai portables 2". De manière pratique ça donne :
 
 * 6 x t = 6t
@@ -22,10 +26,12 @@ Pour alléger les écritures algébriques je peux supprimer le signe multiplier 
 
 Il faut remarquer que sur la dernière ligne, au lieu d'écrire 1t, on écrit encore plus simplement t.
 
-## Règle 2
+
+
+## Outil N°2
 Pour alléger les écritures algébriques je peux changer l'ordre des facteurs et les regrouper différemment. 
 
-**Attention** : on parle bien de facteurs. On parle donc des opérandes qui apparaissent autour du signe multiplier. On peut le faire car 3 x 4 = 4 x 3. Ceci n'est pas possible avec une soustraction car par exemple 4 - 3 != 3 - 4. 
+**Attention** : on parle bien des facteurs. On parle donc des opérandes qui apparaissent autour du signe multiplier. On peut le faire car 3 x 4 = 4 x 3. Ceci n'est pas possible avec une soustraction car par exemple 4 - 3 != 3 - 4. 
 
 Dans la pratique cela donne :
 
@@ -33,7 +39,9 @@ Dans la pratique cela donne :
 * 2t x 4t = 2 x 4 x t x t = 8t²
 
 
-## Règle 3 - Faire sauter les parenthèses 1/2
+
+
+## Outil N°3 - Faire sauter les parenthèses 1/2
 Pour alléger les écritures algébriques, quand il y a un signe + devant une parenthèse que je veux supprimer
 
 1. Je supprime le signe + en question
@@ -48,9 +56,9 @@ Dans le premier exemple, il faut noter que le 3 qui est le premier terme de la p
 
 
 
-## Règle 4 - Faire sauter les parenthèses 2/2
+## Outil N°4 - Faire sauter les parenthèses 2/2
 {: .warning }
-Généralent, c'est elle qui pose problème
+Généralement, c'est cette règle qui pose problème
 
 Pour alléger les écritures algébriques, quand il y a un signe - devant une parenthèse que je veux supprimer
 
@@ -64,7 +72,7 @@ Deux exemples :
 
 Il faut vraiment bien voir se qui se passe.  
 1. Par exemple pour le second exemple j'écris x.  
-1. Comme je veux faire sauter les parenthèses je n'écris pas le moins et je n'écris pas la 1. parenthèse ouvrante.   
+1. Comme je veux faire sauter les parenthèses je n'écris pas le moins et je n'écris pas la parenthèse ouvrante.   
 1. Ensuite pour chaque terme de la parenthèse j'inverse le signe.   
 1. Je vois 'y'.  
 1. Je lis '+y'.  
@@ -73,11 +81,13 @@ Il faut vraiment bien voir se qui se passe.
 
 
 
-## Règle 5- Développer un produit ne pose généralement pas trop de soucis.
+## Outil N°5- Développer un produit 
 
-Il faut multiplier chaque élément du premier terme par chaque élément du second. Lors des multiplications les opérandes gardent leur signe.
+Généralement ça ne pose pas trop de problèmes.  
+Il faut multiplier chaque élément du premier terme par chaque élément du second.  
+Lors des multiplications les opérandes gardent leur signe.
 
-De plus, on peut donc faire la remarque suivante : si il y a 3 éléments dans le premier terme et 4 dans le second je dois me retrouver avec 4 x 3 = 12 éléments. Un moyen comme un autre de vérifier qu'on a pas faire l'erreur d'oublier une multiplication.
+De plus, on peut faire la remarque suivante : si il y a 3 éléments dans le premier terme et 4 dans le second je dois me retrouver avec 4 x 3 = 12 éléments. Un moyen comme un autre de vérifier qu'on a pas faire l'erreur d'oublier une multiplication entre termes.
 
 Deux exemples typiques :
 
@@ -95,9 +105,9 @@ Dans le second exemple on a un terme avec 2 éléments et un autre terme avec en
 
 
 
-## Règle 6 - Factoriser une somme de termes algébriques
+## Outil N°6 - Factoriser une somme de termes algébriques
 
-C'est identifier leur facteur commun et le mettre en avant.  
+C'est identifier leur facteur commun et le mettre devant.  
 Je sais je suis lourd mais le **facteur commun** c'est le terme qui est **répété**.
 
 Quelques exemples pour se faire les dents :
@@ -125,14 +135,14 @@ On est d'accord? Les 4 premiers exemples sont débiles. En effet, si 't' est une
 
 
 
-## Règle 7 - Apprendre par cœur les 3 identités remarquables 
+## Outil N°7 - Apprendre par cœur les 3 identités remarquables 
 
 1. (a+b)² = a² + 2ab + b²
 2. (a-b)² = a² - 2ab + b²
 3. (a-b)(a+b) = a² - b²
 
 Et il faut les apprendre dans les 2 sens
-C'est tout simplement non négociable. Point. Le reste c'est de la poésie...
+C'est tout simplement pas négociable. Point. Le reste c'est de la poésie...
 
 Apprendre dans les 2 sens ça veut dire que si j'entends "a² - b²", de suite je balance "(a-b) facteur de (a+b)".
 
@@ -155,3 +165,10 @@ Tiens, tiens on a un (x + 3) à la fin de l'expression à simplifier.
 Je pourrais donc le mettre en facteur par la suite.  
 Allez, je me lance...
 
+
+
+## Next ?
+A toi de jouer.  
+Personne ne peut le faire à ta place. 
+Prend ton bouquin de math et fais des exercices, reprends les exercices que vous avez fait en cours
+Au pire si tu bute sur un truc, ramène tes calculs sur une copie propre puis demande à ton prof demain
