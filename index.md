@@ -67,6 +67,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
     * `$$$`
 
 * d droit ``\mathrm{d}``
+* $$\mathrm{\LaTeX}$$
 
 $$
 \begin{align*}
