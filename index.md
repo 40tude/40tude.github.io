@@ -6,6 +6,12 @@ date:               1964-02-25 20:00:00 +0000
 last_modified_date: 2025-01-03 15:00:00 +0000
 ---
 
+\( \alpha \)
+Dans une $ \alpha $ phrase
+$$ \alpha $$
+
+
+
 # 40tude.fr 
 Faut lire "fortitude".  
 Il n'y a pas de sens caché, j'ai toujours aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité.  
@@ -29,6 +35,9 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 * What else ?
 
 ## DONE
+* Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes
+    * Impossible
+    * https://github.com/just-the-docs/just-the-docs/discussions/1593
 * ~~Comment faire des liens (ancres) au sein d'une même page en markdown~~
     * Option 1 : `[Le planning en mode synthétique](#le-planning-synthétique)` avec accent
     * Option 2 : ## Un long titre de section <a id="short-id"></a> puis plus loin [Aller à cette section](#short-id)

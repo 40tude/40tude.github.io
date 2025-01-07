@@ -2,7 +2,7 @@
 layout: default
 title: "Comment apprendre ?"
 parent: Maths
-nav_order: 999
+#nav_order: 100
 #math: mathjax
 date: 2017-09-18 00:02:15
 last_modified_date: 2023-09-20 09:28:58

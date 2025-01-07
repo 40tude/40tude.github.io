@@ -40,7 +40,11 @@ callouts:
     color: green
   highlight:
     color: yellow
-  
+
+              
+ga_tracking: G-HEDHH8MLQE
+ga_tracking_anonymize_ip: true
+
 exclude:
   # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
   - README.md
