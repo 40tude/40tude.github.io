@@ -2,6 +2,7 @@
 layout: default
 title: "Comment apprendre ?"
 parent: Maths
+nav_order: 999
 #math: mathjax
 date: 2017-09-18 00:02:15
 last_modified_date: 2023-09-20 09:28:58
@@ -11,9 +12,9 @@ last_modified_date: 2023-09-20 09:28:58
 # Comment apprendre ?
 
 ## Introduction
-Comment apprendre ? En ces temps de rentrée scolaire (au moment de la rédaction de ce billet) "en voilà une question qu'elle est bonne !". Plus sérieusement j'ai eu l'occasion d'en discuter avec des élèves, de chercher un peu sur le Web où j'ai trouvé des informations principalement en Anglais alors... Alors j'ai décidé de mettre les choses à plat en français et de faire une fiche de cuisine applicable de suite, dès la fin de lecture de ce billet.
+Comment apprendre ? En ces temps de rentrée scolaire (au moment de la rédaction initiale de ce billet) "en voilà une question qu'elle est bonne !". Plus sérieusement j'ai eu l'occasion d'en discuter avec des élèves, de chercher un peu sur le Web où j'ai trouvé des informations principalement en anglais alors... Alors j'ai décidé de mettre les choses à plat en français et de faire une fiche de cuisine applicable de suite, dès la fin de lecture de ce billet.
 
-Comme les mêmes causes produisent les mêmes effets… Si je ne change rien je vais obtenir les mêmes résultats. Autrement dit si je souhaite améliorer mes résultats j'ai tout intérêt à essayer autre chose et pourquoi pas ma façon d'apprendre et de retenir mes cours.
+Comme les mêmes causes produisent les mêmes effets… Si je ne change rien je vais obtenir les mêmes résultats. Autrement dit **si je souhaite améliorer mes résultats j'ai tout intérêt à essayer autre chose** et pourquoi pas ma façon d'apprendre et de retenir mes cours.
 
 ### Note
 Tout ce qui est dit par la suite est justifié et/ou prouvé. Comme je ne souhaite pas alourdir cette fiche de cuisine je n'ai pas donné toutes les références. Je sais, c'est pas bien. Cela dit, si le sujet vous intéresse n'hésitez pas, suivez par exemple la vidéo qui se trouve à la fin du billet. Ensuite, ne me croyez pas sur paroles, cherchez des confirmations et n'oubliez pas que Google est votre ami...
@@ -21,9 +22,9 @@ Tout ce qui est dit par la suite est justifié et/ou prouvé. Comme je ne souhai
 
 ## Se reposer
 * Je vais au lit sans écran (tél portable, liseuse, iPad...)
-* Ensuite, je dors au moins **8 heures** et j'essaie d'être le plus routinier possible tout au long de l’année (ce n'est pas drôle mais si c'est l'année du BAC faut peut-être se donner les moyens de ses ambitions)
-* Je m'arrange pour marcher au moins 15 minutes en allant au lycée
-* Enfin, je m'arrange pour marcher au moins 15 minutes sur le chemin du retour (idéalement faudrait marcher 1H par jour, à un rythme un peu soutenu).
+* Ensuite, je dors au moins **8 heures** et j'essaie d'être le plus routinier possible tout au long de l’année (ce n'est pas drôle mais si c'est l'année du BAC faut peut-être se donner les moyens de ses ambitions). Je ne suis pas ta mère, c'est toi qui vois mais bon tu peux pas d'un côté vénérer tel ou tel sportif qui a organisé sa vie autour des son sports depuis qu'il est tout petit et penser que toi, ca va tomber tout seul.
+* Je m'arrange pour marcher au moins 15 minutes en allant au lycée. Descend un ou deux arrêts avant si tu viens de loin. Là aussi, réfléchis. Donne toi les moyens.
+* Enfin, je m'arrange pour marcher au moins 15 minutes sur le chemin du retour (idéalement faudrait marcher 1H par jour, à un rythme un peu soutenu [110 ppm par exemple]).
 
 
 ## Apprendre
@@ -31,9 +32,7 @@ Tout ce qui est dit par la suite est justifié et/ou prouvé. Comme je ne souhai
 {: .warning }
 De retour à la maison, je commence par **relire** mon cours.
 
-**Aucune excuse n'est acceptable !**  
-Point.  
-Je ferai le reste ensuite (exercices, DM…).  
+**Aucune excuse n'est acceptable !**Point. Je ferai le reste ensuite (exercices, DM…).  
 
 Soyez persuadé que toute autre méthode est vouée à l'échec. En effet, vous allez prendre de plus en plus de retard dans les cours, les exercices...
 
@@ -44,8 +43,8 @@ Soyez persuadé que toute autre méthode est vouée à l'échec. En effet, vous 
 
 ### Début
 * Je précise **à voix haute** mon objectif. Exemple : "Je vais apprendre mon cours avec une attention soutenue pendant 25 min."
-* Je ne pars surtout pas avec l'idée de faire tous mes devoirs en 25 min.
-* Je n'ouvre pas mon cahier et j’essaie de me rappeler ce qu’il y avait dans le cours.
+* Je ne pars surtout pas avec l'idée d'apprendre tous mes cours en 25 min.
+* Je n'ouvre pas mon cahier et j’essaie de me rappeler ce qu’il y avait dans le cours. 
 
 ### Milieu
 * J'ouvre le cahier, je survole alors une fois l’ensemble du chapitre pour en identifier les grandes parties.
@@ -62,7 +61,7 @@ Soyez persuadé que toute autre méthode est vouée à l'échec. En effet, vous 
 * Encore une fois, ce n’est pas grave si je ne me rappelle pas de tout. Je sais que je vais revenir sur mon cours.
 
 ### Fin
-À la fin des 25 minutes je fais une pause de 5 minutes. Je me lève, je marche, je pose mon regard sur des choses qui sont à plus d’un mètre de moi pour reposer mes yeux.
+À la fin des 25 minutes je fais une pause de 5 minutes. Je me lève, je marche (non t'as pas besoin d'aller ouvrir le frigo), je pose mon regard sur des choses qui sont à plus d’un mètre de moi pour reposer mes yeux.
 
 Si la relecture du cours n'est pas terminée alors je relance un second Pomodoro de 25 min.
 
@@ -122,13 +121,13 @@ Si on fait ça pour les chansons il n'y a aucune raison de faire différemment p
 * Si j'ai regardé la solution je reprends l'exercice et je vais au bout sans regarder la solution
 * Il ne faut surtout pas lire la solution, la comprendre et se dire qu'on saura le refaire. C'est prouvé, ça ne marche pas. Ça s’appelle "**l'illusion de la compétence**" (c'est le piège des tutoriels sur YouTube par exemple). Pour progresser il faut nécessairement résoudre le problème par soi-même. 
 
-{: .important }
+{: .warning }
 La compréhension c’est la récompense de la résolution 
 
 Ça marche même si c’est la seconde fois ou la troisième fois qu’on fait l’exercice.
 
 * Quand un concept est acquis ce n'est pas la peine de faire 5 exercices similaires. Au contraire, il faut passer à autre chose et varier les plaisirs...
-* En plus des nouveaux exercices, il est alors essentiel de revenir sur les exercices de la veille et des jours précédents (chanter, chanter encore, chanter toujours). Il faut que les **répétitions soient espacées**. Par exemple : Lundi, Mardi, Mercredi, Vendredi, Dimanche. En cours d’année il faudra que je pense à revenir sur des exercices du début de l’année.
+* En plus des nouveaux exercices, il est alors essentiel de revenir sur les exercices de la veille et des jours précédents (**chanter, chanter encore, chanter toujours**). Il faut que les **répétitions soient espacées**. Par exemple : Lundi, Mardi, Mercredi, Vendredi, Dimanche. En cours d’année il faudra que je pense à revenir sur des exercices du début de l’année.
 
 À la fin des 25 minutes je fais une pause de 5 min. Je me lève, je marche, je pose mon regard sur des choses à plus d’un mètre de moi.
 
@@ -148,8 +147,7 @@ Faire les choses importantes (ou qu'on aime moins) en début de matinée puis en
 ## Comment faire pour que ça reste dans la tête et s'en servir dans les contrôles ?
 
 ### Exercices et interrogations en temps limité
-
-* C'est de très loin le plus efficace.
+* C'est, de très loin, **le plus efficace.**
 * Pour comprendre et retenir, une heure d'interrogation est bien plus rentable qu'une heure d'étude du cours.
 * Je peux décider de faire tel ou tel exercice de mes devoirs en temps limité (faut penser à demander au prof une estimation du temps quand il donne les exercices à faire)
 * Faire les DM en temps limité comme si c’était une interrogation (penser à demander au prof une estimation du temps)
@@ -159,6 +157,7 @@ Faire les choses importantes (ou qu'on aime moins) en début de matinée puis en
 * C'est une feuille volante que j'ai toujours avec moi et sur laquelle je note ce que je n'arrive pas bien à me mettre dans le crâne.
 * Cette feuille est dynamique. Cela signifie qu'en cours d'année, je vais ajouter et enlever des choses. Je vais très vraisemblablement la refaire entièrement plusieurs fois.
 * Je ne mets que ce que je ne retiens pas. J’enlève ce dont je me rappelle ou qui est devenu évident en cours d'année. Je ne mets pas "Marignan 1515" par exemple.
+* Je ne fais pas de belle phrases. Ton cerveau s'en fout. 2 mots clé, une formule, une abréviation... Ne note que les mots clé, pas de verbes, complément... Le strict minimum.
 * Il n'est pas toujours possible de regrouper physiquement des concepts similaires et liés entre eux au même endroit sur la feuille. No problémo. Tire une flèche
 * Peu importe que la feuille de notes soit belle et propre. C’est **ma** feuille, il n’y a que moi qui la relis. Si à la fin y a des pattes de mouches en bas à droite, des dessins, des encadrés en rouge... On s'en fiche.
 
