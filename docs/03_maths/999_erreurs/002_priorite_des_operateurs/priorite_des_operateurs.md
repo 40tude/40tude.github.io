@@ -68,6 +68,6 @@ Un autre exemple pour souligner le fait que l'on peut traiter en parallèle le c
 ## Next ?
 A toi de jouer.  
 Personne ne peut le faire à ta place. 
-Prend ton bouquin de maths et fais des exercices, reprends les exercices que vous avez fait en cours
+Prend ton bouquin de maths et fais des exercices, reprends les exercices que vous avez fait en cours  
 Au pire si tu bute sur un truc, ramène tes calculs sur une copie propre puis demande à ton prof demain
 
