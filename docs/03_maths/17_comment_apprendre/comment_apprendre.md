@@ -32,7 +32,7 @@ Tout ce qui est dit par la suite est justifié et/ou prouvé. Comme je ne souhai
 {: .warning }
 De retour à la maison, je commence par **relire** mon cours.
 
-**Aucune excuse n'est acceptable !**Point. Je ferai le reste ensuite (exercices, DM…).  
+**Aucune excuse n'est acceptable !** Point. Je ferai le reste ensuite (exercices, DM…).  
 
 Soyez persuadé que toute autre méthode est vouée à l'échec. En effet, vous allez prendre de plus en plus de retard dans les cours, les exercices...
 
