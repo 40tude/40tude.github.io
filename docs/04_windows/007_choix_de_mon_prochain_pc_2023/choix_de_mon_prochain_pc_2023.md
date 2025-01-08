@@ -142,9 +142,7 @@ Bon allez, je passe mon chemin et je continue à chercher. Je me suis retrouvé 
 
 Ce qui m'a un peu déçu chez Dell c'est qu'il y a encore quelques années on pouvait tout changer, tout modifier, passer des heures sur leur site... À la limite, on faisait soi-même le BOM (bill of material) qui allait être envoyé à l'usine. Alors que là, finalement, ils n'ont plus que quelques configurations et il n'y avait pas vraiment moyen de les faire évoluer. J'étais prêt à attendre, je ne suis pas vraiment pressé. J'ai même appelé et reçu des devis. Dommage.
 
-Une revue du G15 (il ne faut pas se laisser avoir par le titre alarmiste). Ce n'est pas tout à fait la même configuration (par exemple il y a une 3070Ti et pas une 3060 comme dans "ma" configuration) mais bon, c'est assez complet je pense.
-
-https://www.youtube.com/watch?v=T8EzGLfRdiI
+Une revue du G15 (il ne faut pas se laisser avoir par le titre alarmiste). Ce n'est pas tout à fait la même configuration (par exemple il y a une 3070Ti et pas une 3060 comme dans "ma" configuration) mais bon, c'est assez complet je pense : <https://www.youtube.com/watch?v=T8EzGLfRdiI>
 
 Une vue de l'intérieur du G15. C'est classique et upgradable (mémoire, carte Wifi, disque SSD à interface NVMe [Non-Volatile Memory Express])
 
@@ -177,7 +175,7 @@ Un résumé des specs. Note au passage qu'il a autant de RAM dans la carte vidé
 Voilà ce qui a été mesuré sur le disque
 
 <div align="center">
-<img src="./assets/image-14-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-14-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -194,7 +192,7 @@ Finalement, [une vidéo](https://youtu.be/HvfIeTieXOI) assez ancienne mais qui e
 Pour info, un comparatif des principales specs des cartes graphiques que l'on peut trouver dans ce type de portable.
 
 <div align="center">
-<img src="./assets/image-9.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-9.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -241,14 +239,14 @@ Toujours sur le sujet du nombre de Pixels Per Degree mais plutôt dans un contex
 Du point de vue de la densité des pixels on sera loin des 267 PPI du Surface, mais bon, avec 190 PPI ça devrait bien se passer.
 
 <div align="center">
-<img src="./assets/image-12.webp" alt="" loading="lazy"/>
+<img src="./assets/image-12.webp" width="450" alt="" loading="lazy"/>
 </div>
 
 
 On peut utiliser cet excellent graphique pour s'y retrouver dans les résolutions, les ratios et les dénominations.
 
 <div align="center">
-<img src="./assets/image-13-1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-13-1.webp" width="450" alt="" loading="lazy"/>
 </div>
 
 
@@ -259,25 +257,25 @@ Pour compléter, 2 articles d'introduction aux gamuts
 Le Legion 5 i Pro a été mesuré à 97%, 70% et 72% des gamuts sRGB, AdobeRGB et DCI-P3 respectivement.
 
 <div align="center">
-<img src="./assets/image-14-8.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-14-8.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Un autre jeu de mesures des gamuts
 
 <div align="center">
-<img src="./assets/image-19-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-19-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Un dernier couple de jeu de mesures que j'ai trouvé
 
 <div align="center">
-<img src="./assets/image-139.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-139.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-139_1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-139_1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -293,7 +291,7 @@ Optimus de NVIDIA permet d'utiliser le bon GPU en fonction du contexte (je trava
 Pour bénéficier des meilleures performances il faut aller dans le BIOS pour configurer "manuellement" le multiplexeur pour qu'il connecte le dGPU tout le temps à l'écran. Certes, c'est top pour les performances mais c'est moins bien pour la batterie car tout passe tout le temps via le dGPU qui consomme beaucoup plus que le iGPU. En plus cela oblige à sauvegarder ce sur quoi on bosse puis rebooter une fois pour configurer le multiplexeur puis une seconde fois quand c'est fait. Bref, pas cool.
 
 <div align="center">
-<img src="./assets/image-14.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-14.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -312,7 +310,7 @@ Une vidéo spécifique sur [Advanced Optimus](https://youtu.be/h73dFLZgfh4).
 * L'inconvénient de la config Intel c'est qu'elle vide plus rapidement la batterie
 
 <div align="center">
-<img src="./assets/image-14-2.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-14-2.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 ## Pourquoi un Legion 5 Pro et pas un simplement un Legion 5?
@@ -337,7 +335,7 @@ Le problème n'existe plus depuis que les PC sont livrés avec de la RAM de type
 Je ne suis vraiment pas un expert en RAM mais apparemment Lenovo et d'autres constructeurs livraient leur DDR4 sur des modules Single Sided (composants d'un seul côté) mais surtout en rank 16 (1R16).
 
 <div align="center">
-<img src="./assets/image-14-6.webp" alt="" loading="lazy"/>
+<img src="./assets/image-14-6.webp" alt=""  loading="lazy"/>
 </div>
 
 <div align="center">
@@ -428,5 +426,5 @@ Petites remarques avant de se quitter :
 Si d'ici la livraison je pense à d'autres choses, je viendrai mettre à jour cette page.
 
 <div align="center">
-<img src="./assets/image-14-3.webp" alt="" loading="lazy"/>
+<img src="./assets/image-14-3.webp" width="600" alt="" loading="lazy"/>
 </div>
