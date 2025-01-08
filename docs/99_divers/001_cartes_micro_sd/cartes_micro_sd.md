@@ -1,13 +1,13 @@
 ---
 layout: default
 title: "Un point sur les cartes microSD"
+parent: "Divers"
 #math: mathjax
 date: 2017-12-17 15:58:10
 last_modified_date: 2020-04-27 00:26:34
 ---
 
 # Un point sur les cartes microSD
-
 
 Voilà ce que je crois avoir compris à propos de cartes microSD.
 
@@ -113,4 +113,4 @@ Elles garantissent un nombre minimal d’accès en entrée et sortie par seconde
 * Elles sont de 1500 IOPS en lecture, 500 IOPS en écriture et 10 MB en séquentiel pour la classe A1. 
 * Pour la classes A2 les vitesses d'accès en lecture et écriture sont respectivement de 4000 et 2000 IOPS. 
 
-Plus de détails dans ce cours [white paper](https://www.google.com/url?q=https://www.sdcard.org/downloads/pls/latest_whitepapers/Application_Peformance_Class_White_Paper.pdf&sa=U&ved=0ahUKEwjNveO6n5HYAhVDYVAKHZSTBCUQFggHMAE&client=internal-uds-cse&cx=016669442993988930814:vtyt4shdoyi&usg=AOvVaw1cnWsDVHN3JIDL8-LZKlUb) en anglais.
+Plus de détails dans ce [white paper](https://www.google.com/url?q=https://www.sdcard.org/downloads/pls/latest_whitepapers/Application_Peformance_Class_White_Paper.pdf&sa=U&ved=0ahUKEwjNveO6n5HYAhVDYVAKHZSTBCUQFggHMAE&client=internal-uds-cse&cx=016669442993988930814:vtyt4shdoyi&usg=AOvVaw1cnWsDVHN3JIDL8-LZKlUb) en anglais.
