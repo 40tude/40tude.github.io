@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Raspberry problèmes de lag vidéo YouTube en 1080p"
+title: "Raspberry lag vidéo YouTube 1080p"
 parent: "Linux"
 #math: mathjax
 date: 2018-01-15 08:02:28
 last_modified_date: 2023-01-12 00:11:09
 ---
 
-# Raspberry problèmes de lag vidéo YouTube en 1080p
+# Raspberry lag vidéo YouTube 1080p
 
 Cette fiche tente de résoudre les problèmes de lag vidéo sur le Raspberry 3 lors des lectures de vidéo sur YouTube. On va faire ça en mode télégraphe.
 
