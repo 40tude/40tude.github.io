@@ -13,31 +13,45 @@ last_modified_date: 2022-12-29 09:45:02
 
 Open a console
 
-* sudo apt install xrdp -y
-* sudo systemctl start xrdp
-* sudo systemctl enable xrdp
-* sudo systemctl status xrdp
+```bash
+sudo apt install xrdp -y
+sudo systemctl start xrdp
+sudo systemctl enable xrdp
+sudo systemctl status xrdp
 
-[XRDP](https://github.com/neutrinolabs/xrdp) use /etc/ssl/private/ssl-cert-snakeoil.key which can be read by the members of the "ssl-cert" group.
+```
 
-* sudo adduser xrdp ssl-cert
-* sudo systemctl restart xrdp
+[XRDP](https://github.com/neutrinolabs/xrdp) use ``/etc/ssl/private/ssl-cert-snakeoil.key`` which can be read by the members of the "ssl-cert" group.
+
+
+```bash
+sudo adduser xrdp ssl-cert
+sudo systemctl restart xrdp
+
+```
 
 Port 3389 must be open on the firewall
 
-* sudo ufw status
-* sudo ufw allow 3389/tcp
-* sudo ufw status
+```bash
+sudo ufw status
+sudo ufw allow 3389/tcp
+sudo ufw status
+```
 
 We need to know the IP address of the Linux box
 
-* ifconfig
+```bash
+ifconfig
+```
 
 The 3 lines below might be useful if you plan some testing over ssh or with Putty
 
-* sudo apt install openssh-server
-* sudo ufw allow 22
-* sudo systemctl status ssh
+```bash
+sudo apt install openssh-server
+sudo ufw allow 22
+sudo systemctl status ssh
+```
+
 
 
 
@@ -47,7 +61,7 @@ The 3 lines below might be useful if you plan some testing over ssh or with Putt
 
 ### Linux PC
 
-* Make sure to log out from the Linux session
+* Make sure to **log out** from the Linux session
 
 ### Windows PC
 
@@ -82,6 +96,4 @@ You may need to adjust the zoom. If so, right click in the tittle bar
 <img src="./assets/image-8.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-
 Voilà!
-

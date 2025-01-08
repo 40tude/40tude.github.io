@@ -17,9 +17,9 @@ Afin d'éviter trop de redites je vous propose de lire [le billet en question]({
 
 Si besoin, n'hésitez pas à lire [cet autre billet]({%link docs/04_windows/003_configurer_remote_powershell_winrm_dans_un_workgroup/configurer_remote_powershell_winrm_dans_un_workgroup.md%}) qui traite de la configuration de remote PowerShell dans un contexte WORKGROUP (à la maison) et dans lequel je parle de WinRM.
 
-Enfin bref, ici on va faire court...
+Enfin bref, ici on va pouvoir faire court...
 
-Les coordonnées de la machine distante
+Les coordonnées de la machine distante :
 
 * 192.168.1.44
 * MINT-PHILIPPE
@@ -42,13 +42,13 @@ sudo apt install openssh-client
 sudo apt install openssh-client
 ```
 
-Editer le fichier de configuration du serveur SSH pour, entre autres, y enregistrer PowerShell comme sous-système SSH
+Éditer le fichier de configuration du serveur SSH pour, entre autres, y enregistrer PowerShell comme sous-système SSH
 
 ```
 sudo nano /etc/ssh/sshd_config
 ```
 
-3 choses à faire
+3 choses à faire :
 
 * Enlever le # devant : PasswordAuthentication yes
 * Enlever le # devant : PubkeyAuthentication yes
