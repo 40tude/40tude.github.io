@@ -8,6 +8,7 @@ last_modified_date: 2023-01-12 00:08:33
 ---
 
 # Nettoyage de Windows 10
+{: .no_toc }
 
 {: .warning }
 Janvier 2025. Je viens de transférer ce billet. Pas d'embrouille, le billet parle de **Windows 10**. Si certains points sont sans doute applicables à Windows 11, la dernière mise à jour du billet date de Janvier 2023. Beaucoup de choses ont évolué depuis. Bonne lecture mais prudence quand même...  
@@ -28,6 +29,7 @@ En plus, je pense que j'aurai l'occasion de revenir sur la page (c'est une "neve
 
 
 ### Méthode 
+{: .no_toc }
 * De la parcourir une fois sans **rien faire** à part noter les sections intéressantes
 * De refaire une passe en mettant en oeuvre telle ou telle section
 
@@ -39,7 +41,7 @@ En plus, je pense que j'aurai l'occasion de revenir sur la page (c'est une "neve
 ## Conventions d'écriture utilisées dans ce billet
 
 ### 1er cas
-
+{: .no_toc }
 Dans le billet, si on voit :
 
 * WIN + R
@@ -63,7 +65,7 @@ Saisie de la commande "winver" puis appui sur ENTER
 </div>
 
 ### 2eme Cas
-
+{: .no_toc }
 Maintenant, si dans le billet, j'écris
 
 * WIN
@@ -119,7 +121,7 @@ On va aller jeter un oeil dans les informations système
 </div>
 
 ### Ligne de commande (PowerShell ou WT)
-
+{: .no_toc }
 * WIN + X
 * "i" + ENTER
 
@@ -198,7 +200,7 @@ En cas de problème il faudra revenir sur la boite de dialogue initiale et appuy
 
 
 ### Note
-
+{: .no_toc }
 Si un jour il faut trouver de la place on peut supprimer les points de restauration (à l'exception du dernier)
 
 * WIN
@@ -214,7 +216,7 @@ Si un jour il faut trouver de la place on peut supprimer les points de restaurat
 
 
 ### Version résumée
-
+{: .no_toc }
 * WIN
 * "rest" + ENTER
 * Cliquer sur "Créer..."
@@ -222,7 +224,7 @@ Si un jour il faut trouver de la place on peut supprimer les points de restaurat
 * Attendre 2 min.
 
 ### Ligne de commande (PowerShell en mode Administrateur)
-
+{: .no_toc }
 * WIN + X
 * "a" + ENTER
 * Coller la ligne ci-dessous
@@ -263,7 +265,7 @@ Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je 
 * Faire une capture et la mettre dans OneNote
 
 ### Les process les plus gourmands en processeur
-
+{: .no_toc }
 <div align="center">
 <img src="./assets/image-26.webp" alt="" width="450" loading="lazy"/>
 </div>
@@ -272,13 +274,13 @@ Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je 
 * Je clique sur l'en-tête de la colonne Mémoire pour mettre les process les plus gourmand en haut de la liste
 
 ### Les process les plus gourmands en mémoire
-
+{: .no_toc }
 <div align="center">
 <img src="./assets/image-62.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ### Ligne de commande (PowerShell ou WT)
-
+{: .no_toc }
 * WIN + X
 * "i" + ENTER
 * Coller les lignes ci-dessous
@@ -703,7 +705,7 @@ Lancer un terminal en mode **Administrateur**
 
 
 ### Ce que je n'aime pas dans la version GUI
-
+{: .no_toc }
 <div align="center">
 <img src="./assets/image-90.webp" alt="" width="450" loading="lazy"/>
 </div>
@@ -723,7 +725,7 @@ Lancer un terminal en mode **Administrateur**
 
 
 ### Pour revoir les tuiles
-
+{: .no_toc }
 * WIN
 * Retrouver l'application
 * Clic droit sur l'icone
@@ -946,7 +948,7 @@ Sors les Curly et regardons cette vidéo : <https://youtu.be/AAC0Jb4YRc0>
 
 
 ### Etat des lieux
-
+{: .no_toc }
 On commence à aller chercher les derniers %. Je vais donc affiner un peu les choses au niveau de la mesure. Bref, tu n'es pas obligé de faire ce que j'explique ci-dessous. Lis et dans 2 minutes on va lancer l'outil de Pegasun
 
 * Je fais un reboot
@@ -1070,7 +1072,7 @@ Voilà ce qui reste quand je cache les services Microsoft et que je liste en pre
 
 
 ### Etat des lieux
-
+{: .no_toc }
 Après reboot et attente de 10 minutes voilà ce que je vois à l'écran :
 
 <div align="center">
@@ -1399,7 +1401,7 @@ Sinon je me demande s'il ne serait pas utile de compléter chacune des sections 
 ## Post-scriptum
 
 ### PS N°1 :
-
+{: .no_toc }
 J'ai eu l'occasion de faire les manipulations ci-dessus sur une machine assez ancienne, Intel I7 avec 1 cœur, 16GB de RAM pas à jour depuis longtemps etc.. J'ai fait exprès d'intervertir l'ordre des outils pour voir l'influence des uns et des autres. Voilà en mode télégraphique ce que cela a donné :
 
 * Départ 175 Threads - 3.3 GB
@@ -1424,7 +1426,7 @@ J'ai eu l'occasion de faire les manipulations ci-dessus sur une machine assez an
 
 
 ### PS N°2 :
-
+{: .no_toc }
 J'ai dû réinstaller un Windows 10 2022H2 Home (pas pro) sur un Dell XPS 13 9343. Une bonne occasion de voir ce que la "méthode" et les outils ci-dessus pourraient donner. Pour l'installation de Windows je fais simple, je dis oui à tout, je le laisse faire et j'utilise un compte Microsoft (pas un compte local).
 
 Après l'installation je déroule la séquence. J'arrive à ça. Je suis content le PC démarre rapidement et utilise que 55 process et 2 GB de RAM. Cela dit, on ne peut pas faire grand-chose avec car il manque la plupart des softs...
