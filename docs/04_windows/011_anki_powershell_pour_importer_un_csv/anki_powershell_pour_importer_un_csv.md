@@ -7,24 +7,6 @@ date: 2023-03-01 11:46:50
 last_modified_date: 2023-03-01 23:48:57
 ---
 
-Abruti
-Ahuri
-Honni
-Maudit
-Banni
-Incompris
-Avili
-Flétri
-
-Pourri
-Perverti
-Malappris
-Petit 
-
-Salami 
-Mal servi
-Démuni
-
 
 # Anki - PowerShell pour importer un .csv
 
@@ -36,7 +18,7 @@ Démuni
 
 * [L'épisode 1]({%link docs/04_windows/010_anki_creer_et_utiliser_son_premier_deck/anki_creer_et_utiliser_son_premier_deck.md%}) pour créer votre premier deck Anki à partir d'un contenu qui est maintenu dans Excel.
 * [L'épisode 2]({%link docs/04_windows/011_anki_powershell_pour_importer_un_csv/anki_powershell_pour_importer_un_csv.md%}) pour préparer, avec PowerShell, le fichier .csv qu'on va importer dans Anki.
-* [L'épisode 3]({%link docs\04_windows\012_anki_powershell_pour_traiter_cr_et_lf\anki_powershell_pour_traiter_cr_et_lf.md%}) pour traiter avec PowerShell les CR et les LF des feuilles Excel qu'on veut envoyer à Anki.
+* [L'épisode 3]({%link docs/04_windows/012_anki_powershell_pour_traiter_cr_et_lf/anki_powershell_pour_traiter_cr_et_lf.md%}) pour traiter avec PowerShell les CR et les LF des feuilles Excel qu'on veut envoyer à Anki.
 
 
 
