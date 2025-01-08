@@ -6,14 +6,17 @@ date:               1964-02-25 20:00:00 +0000
 last_modified_date: 2025-01-03 15:00:00 +0000
 ---
 
-\( \alpha \)
-Dans une $ \alpha $ phrase
-$$ \alpha $$
-
-
 
 # 40tude.fr 
-Faut lire "fortitude".  
+
+{: .note }
+La page et le site sont en construction alors je suis en train des transférer le 40tude.fr de (WordPress + OVH) vers (markdown + Jekyll + Just The Docs + GitHub).
+
+* De tout façon, je n'en pouvais plus de WP. Quelle bouse!
+    * <https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185>
+* Chez OVH, mon site a été piraté en Avril 2024. Ils n'ont rien fait pour me protéger le site ou m'aider après coup (j'étais client depuis 2011 sans aucun coup de fil au support...) 
+
+Il faut lire "fortitude".  
 Il n'y a pas de sens caché, j'ai toujours aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité.  
 Pas de référence non plus à l'opération de désinformation de la seconde guerre mondiale.  
 
@@ -22,11 +25,16 @@ Laissez moi un peu de temps (j'espère avoir terminé fin janvier 2025)
 Soyez pas surpris si d'ici là, les menus changent, les billets et catégories disparaissent, apparaissent...
 Pendant le portage, même si j'apporte quelques modifications aux billets, je ne vais pas changer les dates de dernières mise à jour.  
 
+---
 ## TODO
-* Faire un billet concernant le portage de WP vers markdown?
-* Lightbox pour les images
-* Ajouter un indicateur de durée de lecture en haut des pages
 * Sur la 1ere page, la liste des 10 derniers billets édités
+* Voir ces histoires de plugins
+* Ajouter un indicateur de durée de lecture en haut des pages
+* Lightbox pour les images?
+* SEO? 
+    * Pas sûr de comprendre grand chose...
+    * Pas intéressé
+* Faire un billet concernant le portage de WP vers markdown?
 * Pages en anglais? avec lang=en avant le Head
     * À mon avis c'est mort mais bon je vais continuer à chercher
 * Test du site avec outils Google etc.
@@ -34,8 +42,12 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
     * PageSpeed Insights
 * What else ?
 
+
+---
+
 ## DONE
-* Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes
+* ~~Installer Google Analytics~~
+* ~~Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes~~
     * Impossible
     * https://github.com/just-the-docs/just-the-docs/discussions/1593
 * ~~Comment faire des liens (ancres) au sein d'une même page en markdown~~
@@ -53,7 +65,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 
 
 
-
+---
 ## À garder sous le coude
 
 | Aligné à gauche  | Centré          | Aligné à droite |
