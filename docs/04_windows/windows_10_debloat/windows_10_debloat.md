@@ -10,8 +10,10 @@ last_modified_date: 2023-01-12 00:08:33
 # Nettoyage de Windows 10
 
 {: .warning }
-Janvier 2025. Je viens de transférer ce billet. Pas d'embrouille, le parle de **Windows 10**. Si certains points sont sans doute applicables à Windows 11, la dernière mise à jour du billet date de Janvier 2023. Beaucoup de choses ont évoluées depuis. Prudence donc...  
+Janvier 2025. Je viens de transférer ce billet. Pas d'embrouille, le billet parle de **Windows 10**. Si certains points sont sans doute applicables à Windows 11, la dernière mise à jour du billet date de Janvier 2023. Beaucoup de choses ont évolué depuis. Bonne lecture mais prudence quand même...  
 
+1. TOC
+{:toc}
 
 ## Introduction
 
@@ -23,6 +25,8 @@ Afin de faire de cette page un outil, une fois n'est pas coutume, il y a une tab
 
 En plus, je pense que j'aurai l'occasion de revenir sur la page (c'est une "never ending story" cette affaire). De nouvelles sections vont apparaître, d'autres seront là mais "*à finir*", finalement certaines seront estampillées "obsolètes"... Bref, cette page est vivante et je vous propose :
 
+
+
 ### Méthode 
 * De la parcourir une fois sans **rien faire** à part noter les sections intéressantes
 * De refaire une passe en mettant en oeuvre telle ou telle section
@@ -31,79 +35,6 @@ En plus, je pense que j'aurai l'occasion de revenir sur la page (c'est une "neve
 
 
 
-<!-- ## Table des matières
-
-* [Introduction](#intro)
-
-* [Conventions](#conventions)
-
-* [Version de Windows](#version)
-
-* [Point de restauration](#restauration)
-
-* [État des lieux : avant le nettoyage](#etatdeslieuxavantnettoyage) (*à finir : PS ou WT*)
-
-* [Faire le tri des process lancés au démarrage](#triprocessdemarrage)
-
-* [Visite de la base de registre](#visiteregistre)
-
-* [Faire le tri dans les process de la barre de tâche](#triprocessbarretache)
-
-* [Empêcher le redémarrage des applications](#empecher)
-
-* [Nettoyage du répertoire temporaire](#reptemporaire)
-
-* [Vider le cache Dropbox](#vidercachedrobox)
-
-* [Inspecter les répertoires de "Démarrage"](#repdemarrages)
-
-* [Nettoyage du disque](#nettoyerdisque1)
-
-* [Nettoyage du disque bis](#nettoyerdisquebis)
-
-* [Faisons un break](#break1) (*vidéo à voir*)
-
-* [Utiliser l'outil Windows10Debloater](#Windows10Debloater)
-
-* [Etat des lieux](#etatdeslieux1)
-
-* [Paramètres de confidentialité](#confidentialité)
-
-* [Disable Indexing du disque](#indexing)
-
-* [Faisons un break](#break2) (*vidéo à voir*)
-
-* [Utiliser l'outil de Chris Titus Tech](#CTT)
-
-* [Etat des lieux](#etatdeslieux2)
-
-* [Faisons un break](http://break3) (*vidéo à voir*)
-
-* [Utiliser l'outil System Utilities de Pegasun](#pegasun)
-
-* [Arrêter Windows Search](#windowssearch)
-
-* [Etat des lieux](#etatdeslieux3)
-
-* [Faisons un break](#break4) (*vidéo à voir*)
-
-* [Utilisation de l'outil Autoruns de SysInternals](#SysInternals)
-
-* [Faisons un break](#break5) (*vidéo à voir*)
-
-* [Utiliser le Task Manager](#taskmanager)
-
-* [Utiliser l'application OOAppBuster](#OOAppBuster)
-
-* [Utiliser l'application OOShutUp](#OOShutUp)
-
-* [Conclusion](#conclusion)
-
-* [Post-scriptum](#post-scriptum)
-
-* [Optionnel - Arrêter Windows Update?](#winupdate)
-
-* [Optionnel - Forcer les performances settings?](#perfo) -->
 
 ## Conventions d'écriture utilisées dans ce billet
 
@@ -200,7 +131,7 @@ Get-ComputerInfo -Property WindowsUBR
 ```
 
 <div align="center">
-<img src="./assets/image-124.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/image-124.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
@@ -685,9 +616,7 @@ Il y a là moyen de paramétrer certains nettoyages ou allègements. Par exemple
 
 ## Faisons un break
 
-Sors le popcorn et regardons cette vidéo.
-
-https://youtu.be/9a_BHAMrdsw?t=94
+Sors le popcorn et regardons cette vidéo : <https://youtu.be/9a_BHAMrdsw?t=94>
 
 
 
@@ -1237,7 +1166,7 @@ On va utiliser un de leurs outils : Autoruns. Cela dit comme les outils de la su
 </div>
 
 
-* https://live.sysinternals.com/
+* <https://live.sysinternals.com/>
 * Quand on clique ensuite sur le lien qu'on vient de créer on arrive sur cette page qui contiendra toujours la dernière version des différents exécutables de la suite SysInternals.
 
 <div align="center">
