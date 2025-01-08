@@ -9,11 +9,6 @@ last_modified_date: 2023-01-12 00:21:15
 
 # Choix de mon prochain PC (2023)
 
-Test embarquement vidéo
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HxGt_gZJybQ?si=fj_qG_-99YSMNiGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
 ## Introduction
 
 Novembre 2022, je suis en train de changer de PC et je me dis qu'il est peut-être utile de regrouper sur une page mes notes, les points étudiés, mon "cahier des charges" etc. Il y aura donc un maximum de liens à consulter et à garder sous le coude. Même si finalement vous choisissez un autre type de PC, j'imagine que les points abordés ici ainsi que la démarche pourront être utiles à certains.
@@ -413,22 +408,12 @@ Ensuite j'installerai comme d'habitude mes softs avec l'excellent [Chocolatey](h
 
 ### Quelques ressources que j'ai trouvé utiles sur ces sujets
 
-https://youtu.be/1N_YcnbRegM
-
-Avec [Rufus](https://rufus.ie/fr/), il faut faire une clé UEFI (schéma de partition GPT) et pas MBR
-
-https://youtu.be/_zUbVvhYI3M
-
-Une [procédure d'installation](https://www.reddit.com/r/LenovoLegion/comments/p0zdx2/softwaredrivers_to_install_when_buying_a_lenovo/), "pas à pas", à lire absolument
-
-Une autre façon de faire ses propres points de restauration
-
-https://youtu.be/x9BGn4MivJw
-
-L'outil de nettoyage en question a pas mal évolué depuis quelques années maintenant.
-
-https://youtu.be/WmOvg0MagW0
-
+* Une vidéo à propos des clés [Windows OEM](https://youtu.be/1N_YcnbRegM)
+* Avec [Rufus](https://rufus.ie/fr/), il faut faire une clé UEFI (schéma de partition GPT) et pas MBR
+* Une [vidéo](https://youtu.be/_zUbVvhYI3M) qui montre en détail le point précédent
+* Une [procédure d'installation](https://www.reddit.com/r/LenovoLegion/comments/p0zdx2/softwaredrivers_to_install_when_buying_a_lenovo/), "pas à pas", à lire absolument
+* Une [vidéo](https://youtu.be/x9BGn4MivJw) qui montre une autre façon de faire ses propres points de restauration
+* L'outil de nettoyage de Windows dont il est question dans cette [vidéo](https://youtu.be/WmOvg0MagW0) a pas mal évolué depuis.
 
 
 
