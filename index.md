@@ -14,7 +14,7 @@ La page et le site sont en construction alors je suis en train des transférer l
 
 * De tout façon, je n'en pouvais plus de WP. Quelle bouse!
     * <https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185>
-* Chez OVH, mon site a été piraté en Avril 2024. Ils n'ont rien fait pour me protéger le site ou m'aider après coup (j'étais client depuis 2011 sans aucun coup de fil au support...) 
+* Chez OVH, mon site a été piraté en Avril 2024. Ils n'ont rien fait pour protéger le site ou m'aider après coup (j'étais client depuis 2011 sans aucun coup de fil au support...) 
 
 Il faut lire "fortitude".  
 Il n'y a pas de sens caché, j'ai toujours aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité.  
@@ -33,7 +33,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 * Lightbox pour les images?
 * SEO? 
     * Pas sûr de comprendre grand chose...
-    * Pas intéressé
+    * Pas intéressé par le sujet
 * Faire un billet concernant le portage de WP vers markdown?
 * Pages en anglais? avec lang=en avant le Head
     * À mon avis c'est mort mais bon je vais continuer à chercher
