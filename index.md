@@ -77,9 +77,8 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 * `[Finalize Windows 11 installation]({% link docs/04_windows/001_finalize_windows_11_installation/finalize_windows_11_installation.md %})`
 
 
-
+* `    purple       red            blue             green      yellow     `
 * `{: .note }` `{: .warning }``{: .important }``{: .new }``{: .highlight }`
-
 
 
 
