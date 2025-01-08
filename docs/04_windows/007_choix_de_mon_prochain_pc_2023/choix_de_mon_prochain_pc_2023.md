@@ -9,15 +9,14 @@ last_modified_date: 2023-01-12 00:21:15
 
 # Choix de mon prochain PC (2023)
 
+Test embarquement vidéo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HxGt_gZJybQ?si=fj_qG_-99YSMNiGQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ## Introduction
 
-Novembre 2022, je suis en train de changer de PC et je me dis qu'il est peut-être utile de regrouper sur une page mes notes, les points étudiés, mon "cahier des charges" etc. Il y aura donc un maximum de liens à consulter et à garder sous le coude. Même si finalement vous choisissez un autre type de PC, j'imagine que les points abordés ici seront toujours utiles.
-
-Désolé le "post" est un peu long.
-
-Allez, c'est parti.
+Novembre 2022, je suis en train de changer de PC et je me dis qu'il est peut-être utile de regrouper sur une page mes notes, les points étudiés, mon "cahier des charges" etc. Il y aura donc un maximum de liens à consulter et à garder sous le coude. Même si finalement vous choisissez un autre type de PC, j'imagine que les points abordés ici ainsi que la démarche pourront être utiles à certains.
 
 Mon précédent PC est un Surface Book i7 qui date de 2016. En fait, j'ai eu du mal à retrouver l'information. Pour rappel, sous Windows on peut retrouver la date d'installation de l'OS avec l'une ou l'autre des deux commandes ci-dessous. Sur mon Surface, cela ne marche pas car je retrouve la date à laquelle j'avais réinstallé Windows
 
@@ -94,13 +93,27 @@ Finalement
 
 $$\text{PPI} = \frac {3 605}{13.5} = 267$$
 
+
+#### La suite de ce que je retiens à propos de mon Surface
+
 * Le SSD de 256G est un peu court même si je mets beaucoup de choses sur Dropbox (je pense que je vais arrêter de payer et passer à OneDrive)
-* La machine aurait mérité, un peu plus de coffre, de processeurs et de dents.
+* La machine aurait mérité, un peu plus de coffre, de processeurs et [de dents](https://www.youtube.com/clip/UgkxDSlB66Fhqu6LMU8Nr_mOeZQl7l72OTkw).
+
+
+
+## Mon cahier des charges
+
+* Ecran mat, non tactile.
+* Pas 13' ni 17' mais entre les 2
+* Résolution plus haute que 1920x1080
+* Pixel per degree supérieur à 57 (idéalement supérieur à 60)
+* NITS supérieur à 250
+* Plus de 2 cores (4 processeurs logiques). C'est ce que j'ai actuellement et franchement c'est un peu court.
 
 <div align="center">
 <img src="./assets/image-19.webp" alt="" width="600" loading="lazy"/>
 </div>
-
+*Ci-dessus, je viens de démarrer, j'ai Chrome d'ouvert... Je suis déjà à 70% de RAM et franchement je ne sais pas ce que fait le processeur (85%). 120 Process en mémoire quand même...*
 
 * 32 GB de RAM. Actuellement j'ai 8 GB. En 2023, de mon point de vue, il faut 16 GB minimum (c'est ce que j'ai sur le laptop du boulot)
 * Disque dur 512 GB
@@ -108,6 +121,9 @@ $$\text{PPI} = \frac {3 605}{13.5} = 267$$
 * Prise RJ45 directement disponible (pas via une prise et un chipset USB)
 * Windows Pro (il dispose d'une [sand box](https://www.zebulon.fr/astuces/securite-systeme/comment-utiliser-la-sandbox-de-windows-10.html) pour y faire des tests). Les versions Home et Pro de Windows disposent toutes les deux de WSL
 * Je n'ai pas de contrainte particulière vis à vis de l'autonomie
+
+
+
 
 ## Mon premier choix
 
@@ -150,16 +166,18 @@ Une vue de l'intérieur du G15. C'est classique et upgradable (mémoire, carte W
 <img src="./assets/image-9-1.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+
+
+
 ## C'est mon dernier choix Jean-Pierre
 
 Bon... Je passe les détails, le nombre de vidéos regardées, le nombre de sites visités et de configurateurs torturés. En fait, j'adore ça... J'en ai profité pour me faire une orgie de pages et de vidéos techniques. Du coup j'ai réalisé que j'étais carrément à la ramasse et qu'il faudrait que je trouve le moyen de faire une remise à niveau plus régulièrement (une fois par semestre par exemple).
 
-Finalement j'ai arrêté mon choix sur un **Lenovo Legion 5i Pro** livré sans OS. Le "i" c'est parce qu'il est équipé d'un processeur Intel.
+Finalement j'ai arrêté mon choix sur un **Lenovo Legion 5i Pro** livré sans OS. Le "i" c'est parce qu'il est équipé d'un processeur Intel pour laquelle il y avait une "promo" à 1699 € (ça pique quand même...)
 
 <div align="center">
 <img src="./assets/image-14-5.webp" alt="" width="450" loading="lazy"/>
 </div>
-
 
 Un résumé des specs. Note au passage qu'il a autant de RAM dans la carte vidéo que dans mon Surface...
 
