@@ -205,7 +205,7 @@ $Data | ForEach-Object {
 
 Les lignes précédentes signifient : pour toutes les lignes de l'objet Data, retrouve la partie Question et la partie Réponse et remplaces-y le caractère "\n" (LF) par `<br/>`. 
 
-On voit là l'un des intérêts d'utiliser PowerShell. Il a chargé toutes les lignes. Chaque ligne a été transformée en un objet dont les propriétés portent les noms des colonnes du fichier .csv (Question et Réponse dans mon cas). Ça permet d'écrire des lignes qu'on arrive à relire facilement. Cerise sur le loukoum, on a plus le problème des CRLF qu'il fallait éviter de modifier. En fait ils ont disparu quand le fichier .csv a été interprété et chargé en mémoire. Ils réapparaîtront quand on sauvera le fichier.
+On voit là l'un des intérêts d'utiliser PowerShell. Il a chargé toutes les lignes. Chaque ligne a été transformée en un objet dont les propriétés portent les noms des colonnes du fichier ``.csv``. Notons que comme les colonnes s'appellent ``Question`` et ``Réponse`` (avec un accent), on a des propriétés qui s'appellent ``Question``  et ``Réponse`` (toujours avec l'accent). Ça permet d'écrire des lignes qu'on arrive à relire facilement. Cerise sur le loukoum, on a plus le problème des CRLF qu'il fallait éviter de modifier. En fait ils ont disparu quand le fichier ``.csv`` a été lu, interprété puis chargé en mémoire. Ils réapparaîtront quand on sauvera le fichier. It's a kind of magic 🎶
 
 Quand je copie et colle les 4 lignes précédentes d'un coup, le terminal me demande de confirmer si c'est bien ce que je veux faire. Oui, oui, t'inquiète paupiette, vas-y, colle les lignes.
 
