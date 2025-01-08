@@ -57,7 +57,6 @@ Calcul du nombre de Pixels per inch
 <img src="./assets/image-17.webp" width="450" alt="" loading="lazy"/>
 </div>
 
-
 Ce que l'oeil peut discerner
 
 <div align="center">
@@ -89,7 +88,7 @@ Finalement
 $$\text{PPI} = \frac {3 605}{13.5} = 267$$
 
 
-#### La suite de ce que je retiens à propos de mon Surface
+### La suite de ce que je retiens à propos de mon Surface
 
 * Le SSD de 256G est un peu court même si je mets beaucoup de choses sur Dropbox (je pense que je vais arrêter de payer et passer à OneDrive)
 * La machine aurait mérité, un peu plus de coffre, de processeurs et [de dents](https://www.youtube.com/clip/UgkxDSlB66Fhqu6LMU8Nr_mOeZQl7l72OTkw).
@@ -98,7 +97,7 @@ $$\text{PPI} = \frac {3 605}{13.5} = 267$$
 
 ## Mon cahier des charges
 
-* Ecran mat, non tactile.
+* Écran mat, non tactile.
 * Pas 13' ni 17' mais entre les 2
 * Résolution plus haute que 1920x1080
 * Pixel per degree supérieur à 57 (idéalement supérieur à 60)
@@ -216,7 +215,7 @@ Pour info, un comparatif des principales specs des cartes graphiques que l'on pe
 
 Tout simplement parce que l'on passe un temps infini devant l'écran. Un peu comme pour le clavier, on a intérêt à savoir ce que l'on choisit, quels compromis on fait, leurs conséquences etc.
 
-Pour commencer, je vous propose d'aller voir cette vidéo : <https://www.youtube.com/embed/vEKtElvxl8A>
+Pour commencer, je vous propose d'aller voir cette [vidéo](https://youtu.be/vEKtElvxl8A?si=Q9tznF3uVMe9JcWH) qui fait le point sur les résolutions, les prix etc.
 
 Ensuite, il faut aller jouer avec cette [feuille de calcul](https://bit.ly/techless-rescalc). J'ai fait quelques modifications dans ma copie pour tenir compte de la diagonale de 16 pouces ainsi que du ratio et du format QHD+. 
 
@@ -263,9 +262,7 @@ On peut utiliser cet excellent graphique pour s'y retrouver dans les résolution
 </div>
 
 
-Pour compléter, 2 articles d'introduction aux gamuts 
-1. [ici](https://www.viewsonic.com/library/fr/photographie-fr/quest-ce-que-le-gamut/) 
-1. [là](https://www.benq.eu/fr-fr/knowledge-center/knowledge/color-gamut-monitor.html)
+Pour compléter, 2 articles d'introduction aux gamuts [ici](https://www.viewsonic.com/library/fr/photographie-fr/quest-ce-que-le-gamut/) et [là](https://www.benq.eu/fr-fr/knowledge-center/knowledge/color-gamut-monitor.html).
 
 Le Legion 5 i Pro a été mesuré à 97%, 70% et 72% des gamuts sRGB, AdobeRGB et DCI-P3 respectivement.
 
@@ -383,9 +380,9 @@ Bien évidement je n'ai pas encore eu la possibilité de mettre les doigts dessu
 <img src="./assets/image-19-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-En cherchant j'ai trouvé une vidéo sur [la technologie TrueStrike](https://youtu.be/VdN1AzDxJAE) des claviers Legion.
-
-Un point sur les [différentes conceptions de claviers](http://www.ergopedia.ca/ergonomic_concepts/Mechanical_Keyswitches_Membrane_Keyswitches_and_Scissor_Switch_Membrane_Keyswitches_Ergonomic_Considerations.html) et la page [Wikipédia dédiée aux claviers.](https://en.wikipedia.org/wiki/Keyboard_technology)
+* En cherchant j'ai trouvé une vidéo sur [la technologie TrueStrike](https://youtu.be/VdN1AzDxJAE) des claviers Legion.
+* Un point sur les [différentes conceptions de claviers](http://www.ergopedia.ca/ergonomic_concepts/Mechanical_Keyswitches_Membrane_Keyswitches_and_Scissor_Switch_Membrane_Keyswitches_Ergonomic_Considerations.html) 
+* La page [Wikipédia dédiée aux claviers.](https://en.wikipedia.org/wiki/Keyboard_technology)
 
 
 
@@ -429,5 +426,5 @@ Petites remarques avant de se quitter :
 Si d'ici la livraison je pense à d'autres choses, je viendrai mettre à jour cette page.
 
 <div align="center">
-<img src="./assets/image-14-3.webp" width="600" alt="" loading="lazy"/>
+<img src="./assets/image-14-3.webp" width="450" alt="" loading="lazy"/>
 </div>
