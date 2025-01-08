@@ -262,7 +262,7 @@ $$(\frac{s}{\cos(t)})^{\prime} = \frac{1}{\cos^{2}(t)} $$
 
 $$(\frac{s}{\cos(t)})^{\prime} = \frac{1}{\cos^{2}(t)} $$
 
-$$\frac{s}{{\cos(t)}} = \int{}{}\frac{1}{\cos^{2}(t)}\mathrm{d}t + K$$
+$$\frac{s}{\cos(t)} = \int{}{}\frac{1}{\cos^{2}(t)}\mathrm{d}t + K$$
 
 Si on se rappelle que
 

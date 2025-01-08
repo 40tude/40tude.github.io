@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Anki - Créer et utiliser son premier deck"
-parents: "Windows"
+parent: "Windows"
 #math: mathjax
 date: 2023-02-27 19:52:35
 last_modified_date: 2023-03-01 23:44:43

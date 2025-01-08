@@ -1,6 +1,6 @@
 ---
 layout: default
-title: " Anki - PowerShell pour importer un .csv"
+title: "Anki - PowerShell pour importer un .csv"
 parent: "Windows"
 #math: mathjax
 date: 2023-03-01 11:46:50
