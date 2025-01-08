@@ -122,13 +122,13 @@ Cela veut dire :
 Si on revoit l'action au ralenti, voilà ce que cela donne à l'écran. Appui sur les touches Windows et "r". Pas besoin de saisir un "R" majuscule, il faut juste appuyer sur la touche "r". La boite de dialogue pour la saisie de la commande apparaît.
 
 <div align="center">
-<img src="./assets/image-75_1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-75_1.webp" width=450 alt="" width=450 loading="lazy"/>
 </div>
 
 Saisie de la commande "winver" puis appui sur ENTER
 
 <div align="center">
-<img src="./assets/image-76.webp" alt="" loading="lazy"/>
+<img src="./assets/image-76.webp" width=450 alt="" width=450 loading="lazy"/>
 </div>
 
 ### 2eme Cas
@@ -147,21 +147,21 @@ Cela veut dire :
 À l'écran, voilà ce que cela donne. Appui sur la touche Win. Le menu Windows apparaît.
 
 <div align="center">
-<img src="./assets/image-75.webp" alt="" loading="lazy"/>
+<img src="./assets/image-75.webp" width=450 alt="" width=450 loading="lazy"/>
 </div>
 
 
 Il ne faut pas se poser de question et commencer à taper le mot "info" au clavier. Quand je tape les lettres, les différentes applications susceptibles d'être lancées apparaissent. Quand je vois celle que je veux en haut de la liste je clique sur ENTER.
 
 <div align="center">
-<img src="./assets/image-75-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-75-1.webp" width=450  alt="" width=450 loading="lazy"/>
 </div>
 
 
 Dans le cas où il faudrait lancer l'application en question en mode **Administrateur**, pas besoin d'utiliser la souris. Il suffit d'utiliser les flèches du clavier pour se déplacer une fois à droite puis une fois vers le bas pour mettre le focus sur l'option "Exécuter en tant que...". Quand c'est fait, on appuie sur ENTER.
 
 <div align="center">
-<img src="./assets/image-77.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-77.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ## Version de Windows
@@ -174,7 +174,7 @@ Allez, c'est parti je vérifie la version de Windows que j'utilise :
 * "winver" + ENTER
 
 <div align="center">
-<img src="./assets/image-21.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-21.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -184,7 +184,7 @@ On va aller jeter un oeil dans les informations système
 * "info" + ENTER
 
 <div align="center">
-<img src="./assets/image-61.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-61.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ### Ligne de commande (PowerShell ou WT)
@@ -200,7 +200,7 @@ Get-ComputerInfo -Property WindowsUBR
 ```
 
 <div align="center">
-<img src="./assets/image-124.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-124.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -223,43 +223,43 @@ Je vais prendre un peu de temps pour expliquer, promouvoir et illustrer. L'idée
 * Si besoin je sélectionne le disque C (celui où Windows est installé) et j'appuie sur Configurer...
 
 <div align="center">
-<img src="./assets/image-23.webp" alt="" loading="lazy"/>
+<img src="./assets/image-23.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 Là, j'active la protection et je réserve un certain pourcentage du disque pour y stocker le ou les points de restauration. Typiquement 5% du disque dur suffisent. Voilà ce que l'on voit quand on clique sur le bouton Configurer...
 
 <div align="center">
-<img src="./assets/image-77_1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-77_1.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 À titre informatif, en ce qui me concerne, j'ai 2 points de restauration qui prennent 15.5 GB
 
 <div align="center">
-<img src="./assets/image-78.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-78.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Bon bref, quand la première boite de dialogue est à l'écran, j'appuie sur Créer, je donne un nom au point de restauration et c'est terminé.
 
 <div align="center">
-<img src="./assets/image-79.webp" alt="" loading="lazy"/>
+<img src="./assets/image-79.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 En cas de problème il faudra revenir sur la boite de dialogue initiale et appuyer sur le bouton "Restauration de système...". Il suffira alors de choisir le nom du bon point de restauration
 
 <div align="center">
-<img src="./assets/image-23_2022_11.webp" alt="" loading="lazy"/>
+<img src="./assets/image-23_2022_11.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-81.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-81.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-82.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-82.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -277,7 +277,7 @@ Si un jour il faut trouver de la place on peut supprimer les points de restaurat
 * Bouton "Supprimer" sur la boîte de dialogue
 
 <div align="center">
-<img src="./assets/image-140.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-140.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -299,7 +299,7 @@ Si un jour il faut trouver de la place on peut supprimer les points de restaurat
   + Checkpoint-Computer –Description "20221129 - Billet Blog"
 
 <div align="center">
-<img src="./assets/image-125.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-125.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -321,7 +321,7 @@ L'idée c'est d'avoir une photographie du système avant de faire quoique ce soi
 * CTRL + TAB pour aller sur l'onglet performance
 
 <div align="center">
-<img src="./assets/image-22.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-22.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -334,7 +334,7 @@ Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je 
 ### Les process les plus gourmands en processeur
 
 <div align="center">
-<img src="./assets/image-26.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-26.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -343,7 +343,7 @@ Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je 
 ### Les process les plus gourmands en mémoire
 
 <div align="center">
-<img src="./assets/image-62.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-62.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ### Ligne de commande (PowerShell ou WT)
@@ -361,14 +361,14 @@ Cela se fait via le gestionnaire de tâches
 * Faire clic droit dans l'en-tête et cliquer sur toutes des cases à cocher
 
 <div align="center">
-<img src="./assets/image-63.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-63.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Faire ensuite le tri dans les informations que vous souhaitez garder. Par exemple, j'aime bien voir la ligne de commande utilisée
 
 <div align="center">
-<img src="./assets/image-83.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-83.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -378,7 +378,7 @@ Cela se fait via le gestionnaire de tâches
 * Si besoin double clic sur une ligne et la mettre en "Désactivé"
 
 <div align="center">
-<img src="./assets/image-64.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-64.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ## Visite de la base de registre
@@ -389,7 +389,7 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
 * "regedit" + ENTER
 
 <div align="center">
-<img src="./assets/image-114.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-114.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -399,7 +399,7 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
 * Voilà alors ce que je vois
 
 <div align="center">
-<img src="./assets/image-115.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-115.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -410,7 +410,7 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
     * ``HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run``
 
 <div align="center">
-<img src="./assets/image-116.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-116.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -429,7 +429,7 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
 * Appuyer sur la flèche de la barre de taches
 
 <div align="center">
-<img src="./assets/image-30.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-30.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -447,7 +447,7 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
 * Vérifier que le switch est off dans "Redémarrer des applications"
 
 <div align="center">
-<img src="./assets/image-106.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-106.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -461,7 +461,7 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
 * "%temp%" + ENTER
 
 <div align="center">
-<img src="./assets/image-34.webp" alt="" loading="lazy"/>
+<img src="./assets/image-34.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -469,14 +469,14 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
 * SHIFT + SUPPR pour supprimer les fichiers sans les mettre dans la corbeille
 
 <div align="center">
-<img src="./assets/image-65.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-65.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Si besoin cocher la case "Faire ceci..." et appuyer sur le bouton "Ignorer".
 
 <div align="center">
-<img src="./assets/image-66.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-66.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -502,7 +502,7 @@ Allez, on y va
 * S'assurer que les cases "Extensions de noms de fichiers" et "Eléments masqués" sont bien cochées
 
 <div align="center">
-<img src="./assets/image-109.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-109.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -512,13 +512,13 @@ Allez, on y va
 * Assurez-vous que Dropbox est à jour et qu'il n'y a pas de transfers en cours
 
 <div align="center">
-<img src="./assets/image-112.webp" alt="" loading="lazy"/>
+<img src="./assets/image-112.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 * Double cliquer sur .dropbox.cache
 
 <div align="center">
-<img src="./assets/image-110.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-110.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -526,7 +526,7 @@ Allez, on y va
 * SHIFT + SUPPR pour les supprimer sans les stocker dans la corbeille
 
 <div align="center">
-<img src="./assets/image-111.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-111.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -546,14 +546,14 @@ Allez, on y va
 * "shell:startup"
 
 <div align="center">
-<img src="./assets/image-96.webp" alt="" loading="lazy"/>
+<img src="./assets/image-96.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 On arrive sur le répertoire de démarrage qui est propre à l'utilisateur courant. Y a-t-il des choses à supprimer ?
 
 <div align="center">
-<img src="./assets/image-97.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-97.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -561,14 +561,14 @@ On arrive sur le répertoire de démarrage qui est propre à l'utilisateur coura
 * "shell:common startup"
 
 <div align="center">
-<img src="./assets/image-98.webp" alt="" loading="lazy"/>
+<img src="./assets/image-98.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 On arrive sur le répertoire de démarrage qui est commun à tous les utilisateurs. Apparemment je n'ai rien à supprimer.
 
 <div align="center">
-<img src="./assets/image-99.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-99.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -592,7 +592,7 @@ Pareil. Ça ne va pas nous faire gagner de la puissance CPU ni de la mémoire ma
 * Lancer en tant qu'**Administrateur**
 
 <div align="center">
-<img src="./assets/image-67_1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-67_1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -600,7 +600,7 @@ Pareil. Ça ne va pas nous faire gagner de la puissance CPU ni de la mémoire ma
 * OK
 
 <div align="center">
-<img src="./assets/image-29.webp" alt="" loading="lazy"/>
+<img src="./assets/image-29.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -622,14 +622,14 @@ C'est sans doute un peu redondant avec ce que l'on vient de faire mais bon...
 * "temp" + ENTER
 
 <div align="center">
-<img src="./assets/image-84-scaled.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-84-scaled.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Cliquer sur le premier lien "Configurer l'Assistant de stockage..."
 
 <div align="center">
-<img src="./assets/image-84.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-84.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -639,7 +639,7 @@ Il y a là moyen de paramétrer certains nettoyages ou allègements. Par exemple
 * Revenir à la première page
 
 <div align="center">
-<img src="./assets/image-85.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-85.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -647,7 +647,7 @@ Il y a là moyen de paramétrer certains nettoyages ou allègements. Par exemple
   Cela dit, avec le temps, je me dis qu'il est sans doute plus efficace de faire le ménage dans les applications installées avec l'outil **OOAppBuster** : voir cette [section](#OOAppBuster) du billet.
 
 <div align="center">
-<img src="./assets/image-86.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-86.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -657,21 +657,21 @@ Il y a là moyen de paramétrer certains nettoyages ou allègements. Par exemple
 * Je regarde la taille des différentes catégories. Dans mon cas, je vois que le Bureau est à 4 GB et que "Autre" est à 16 GB. Le Bureau, je sais ce qui se passe, c'est une image ISO. Il faut que je la range ailleurs.
 
 <div align="center">
-<img src="./assets/image-84-scaled_2022_11.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-84-scaled_2022_11.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Allez, je clique sur Autre. En fait c'est mon dossier Dropbox qui prend de la place. Il faudra que je pense à mettre ses fichiers en ligne et/ou à le paramétrer de manière plus fine. En revanche, .vscode à 700MB... Aucune idée de ce qui se passe là.
 
 <div align="center">
-<img src="./assets/image-87.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-87.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Quand je clique sur la ligne, je vérifie rapidement que ce sont les extensions qui prennent de la place. Voir ci-dessous :
 
 <div align="center">
-<img src="./assets/image-88.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-88.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -709,7 +709,7 @@ https://youtu.be/9a_BHAMrdsw?t=94
 * Le projet semble assez vieux et pas mis à jour depuis quelques temps déjà. Voir ci-dessous les dates de mise à jour : 2 ans, 17 mois...
 
 <div align="center">
-<img src="./assets/image-89.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-89.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -719,7 +719,7 @@ https://youtu.be/9a_BHAMrdsw?t=94
   + Cliquer sur le bouton vert et tout en bas cliquer sur "Download Zip"
 
 <div align="center">
-<img src="./assets/image-101.webp" alt="" loading="lazy"/>
+<img src="./assets/image-101.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -732,7 +732,7 @@ Lancer un terminal en mode **Administrateur**
 * Se déplacer dans le répertoire où on a décompressé Windows10Debloater
 
 <div align="center">
-<img src="./assets/image-31.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-31.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -743,31 +743,31 @@ Lancer un terminal en mode **Administrateur**
 * Ne **PAS** lancer la version GUI (Windows10DebloaterGUI.ps1) car lancer Windows10Debloater.ps1 est le seul moyen que j'ai touvé pour contrôler ce qu'il fait. En effet avec Windows10Debloater.ps1 des boites de dialogue apparaissent et aux étapes importantes on peut répondre "Oui", "Non"... Voir ci-dessous :
 
 <div align="center">
-<img src="./assets/image-67.webp" alt="" loading="lazy"/>
+<img src="./assets/image-67.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-68.webp" alt="" loading="lazy"/>
+<img src="./assets/image-68.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-25.webp" alt="" loading="lazy"/>
+<img src="./assets/image-25.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-69.webp" alt="" loading="lazy"/>
+<img src="./assets/image-69.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-32.webp" alt="" loading="lazy"/>
+<img src="./assets/image-32.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-27.webp" alt="" loading="lazy"/>
+<img src="./assets/image-27.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/image-28.webp" alt="" loading="lazy"/>
+<img src="./assets/image-28.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -776,7 +776,7 @@ Lancer un terminal en mode **Administrateur**
 ### Ce que je n'aime pas dans la version GUI
 
 <div align="center">
-<img src="./assets/image-90.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-90.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -786,7 +786,7 @@ Lancer un terminal en mode **Administrateur**
 * Bon la version GUI c'est une bonne idée mal exécutée. À éviter je pense.
 
 <div align="center">
-<img src="./assets/image-57.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-57.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -801,14 +801,14 @@ Lancer un terminal en mode **Administrateur**
 * Choisir "Epingler au menu Démarrer"
 
 <div align="center">
-<img src="./assets/image-120_1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-120_1.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 * Faut ensuite aller chercher les autres... Good luck
 
 <div align="center">
-<img src="./assets/image-120-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-120-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -818,7 +818,7 @@ Une fois qu'on a au moins une tuile on peut suivre la méthode suivante
 * explorer shell:AppsFolder
 
 <div align="center">
-<img src="./assets/image-119.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-119.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -826,7 +826,7 @@ Une fois qu'on a au moins une tuile on peut suivre la méthode suivante
 * Choisir l'option "Epingler à l'écran de démarrage" (je pense qu'il y a là un souci de traduction)
 
 <div align="center">
-<img src="./assets/image-120.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-120.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -843,7 +843,7 @@ Une fois qu'on a au moins une tuile on peut suivre la méthode suivante
 Après l'utilisation de Windows10Debloater.ps1 le PC passe de 192 à 160 process (-16% quand même). Je pense qu'on peut faire mieux.
 
 <div align="center">
-<img src="./assets/image-47.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-47.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -866,28 +866,28 @@ Un peu comme le ménage sur le disque dur, ça ne va pas nous faire gagner de la
 Quelques exemples qui me semblent importants ci-dessous :
 
 <div align="center">
-<img src="./assets/image-39.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-39.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Localisation
 
 <div align="center">
-<img src="./assets/image-61_1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-61_1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Arrêter les applications en arrière-plan
 
 <div align="center">
-<img src="./assets/image-63_1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-63_1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Diagnostic
 
 <div align="center">
-<img src="./assets/image-61-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-61-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -911,7 +911,7 @@ Diagnostic
 * Propriétés
 
 <div align="center">
-<img src="./assets/image-92.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-92.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -919,7 +919,7 @@ Diagnostic
 * Cliquer sur OK
 
 <div align="center">
-<img src="./assets/image-36.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-36.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -966,7 +966,7 @@ Ou alors, si tu as l'excellent [Windows Terminal](http://ibit.ly/2NkQ) sur ton P
 Quand l'interface graphique est à l'écran, cliquer sur Tweaks puis sur Laptop (ou autre selon la situation) dans la section "Recommended Selections".
 
 <div align="center">
-<img src="./assets/image-43.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-43.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -983,7 +983,7 @@ Quand l'interface graphique est à l'écran, cliquer sur Tweaks puis sur Laptop 
 On passe de 159 à 95 process. Depuis le départ on a diminué le nombre de process de près de 50%. On est sous la barre des 100. Je pense que ce n'est pas trop mal.
 
 <div align="center">
-<img src="./assets/image-70.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-70.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1003,14 +1003,14 @@ Sors les Curly et regardons cette vidéo : <https://youtu.be/AAC0Jb4YRc0>
 * Tout en bas de la page, récupérer la version portable (pas d'installeur, rien dans la base de registre etc.)
 
 <div align="center">
-<img src="./assets/image-93.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-93.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Il suffit de décompresser le fichier et de double cliquer sur SystemUtilities.exe
 
 <div align="center">
-<img src="./assets/image-94.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-94.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1027,7 +1027,7 @@ On commence à aller chercher les derniers %. Je vais donc affiner un peu les ch
 * Je lance OneNote et je colle l'image dedans
 
 <div align="center">
-<img src="./assets/image-53.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-53.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1037,21 +1037,21 @@ On commence à aller chercher les derniers %. Je vais donc affiner un peu les ch
 * Je lance OneNote et je colle la copie dedans
 
 <div align="center">
-<img src="./assets/image-71.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-71.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Si je refais la même chose 5 minutes plus tard
 
 <div align="center">
-<img src="./assets/image-59.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-59.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Lancer "SystemUtilities.exe" en double cliquant dessus. Voilà l'IHM :
 
 <div align="center">
-<img src="./assets/image-48.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-48.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1059,14 +1059,14 @@ On commence à aller chercher les derniers %. Je vais donc affiner un peu les ch
 * Clique sur bouton radio "Maximum" puis sur le bouton vert "Optimize" (en bas)
 
 <div align="center">
-<img src="./assets/image-45.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-45.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Avant de faire quoi que ce soit, il montre ce qu'il va optimiser. Faut lire le contenu des colonne "Currently" et "New"
 
 <div align="center">
-<img src="./assets/image-72.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-72.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1075,7 +1075,7 @@ On commence à aller chercher les derniers %. Je vais donc affiner un peu les ch
   + Voir aussi le bouton Describe qui peut aider quand on passe en revue certaines lignes
 
 <div align="center">
-<img src="./assets/image-73.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-73.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1083,21 +1083,21 @@ On commence à aller chercher les derniers %. Je vais donc affiner un peu les ch
 * De retour dans l'interface du Service Manager de Pegasun on peut encore faire des ajustements manuels
 
 <div align="center">
-<img src="./assets/image-45_2022_11.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-45_2022_11.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Par exemple, clic droit sur Adobe Update pour le désactiver au démarrage.
 
 <div align="center">
-<img src="./assets/image-95.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-95.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Voilà ce qui reste quand je cache les services Microsoft et que je liste en premier les services qui sont lancés au démarrage. Il y a peut-être encore des trucs encore à virer
 
 <div align="center">
-<img src="./assets/image-51.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-51.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1106,14 +1106,14 @@ Voilà ce qui reste quand je cache les services Microsoft et que je liste en pre
 * Cliquer sur Boost PC Start Up à droite
 
 <div align="center">
-<img src="./assets/image-38.webp" alt="" loading="lazy"/>
+<img src="./assets/image-38.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 * Voilà ce que je vois
 
 <div align="center">
-<img src="./assets/image-50.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-50.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1121,14 +1121,14 @@ Voilà ce qui reste quand je cache les services Microsoft et que je liste en pre
 * Voilà ce que je vois alors
 
 <div align="center">
-<img src="./assets/image-54.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-54.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Je peux faire du ménage et supprimer carrément la ligne en rouge
 
 <div align="center">
-<img src="./assets/image-74.webp" alt="" loading="lazy"/>
+<img src="./assets/image-74.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -1145,7 +1145,7 @@ Voilà ce qui reste quand je cache les services Microsoft et que je liste en pre
 Après reboot et attente de 10 minutes voilà ce que je vois à l'écran :
 
 <div align="center">
-<img src="./assets/image-60.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-60.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1157,7 +1157,7 @@ On fait passer le nombre de processus de 97 à 94 mais on fait baisser le nombre
 * Exit
 
 <div align="center">
-<img src="./assets/image-100.webp" alt="" loading="lazy"/>
+<img src="./assets/image-100.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -1179,7 +1179,7 @@ On fait passer le nombre de processus de 97 à 94 mais on fait baisser le nombre
 * Retrouver Windows Search dans la liste
 
 <div align="center">
-<img src="./assets/image-52.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-52.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1188,7 +1188,7 @@ On fait passer le nombre de processus de 97 à 94 mais on fait baisser le nombre
 * Cliquer sur OK
 
 <div align="center">
-<img src="./assets/image-44.webp" alt="" loading="lazy"/>
+<img src="./assets/image-44.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -1203,7 +1203,7 @@ On fait passer le nombre de processus de 97 à 94 mais on fait baisser le nombre
 J'ai toujours Dropbox et l'antivirus qui prennent pas mal de ressources. Je me demande si il n'y a pas un truc à faire pour Dropbox… Voilà ce que je vois au bout de 5 min.
 
 <div align="center">
-<img src="./assets/image-55.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-55.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ## Faisons un break
@@ -1226,14 +1226,14 @@ On va utiliser un de leurs outils : Autoruns. Cela dit comme les outils de la su
 * Y créer un raccourci
 
 <div align="center">
-<img src="./assets/image-102.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-102.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Dans la boite de dialogue qui s'ouvre, taper
 
 <div align="center">
-<img src="./assets/image-103.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-103.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1241,7 +1241,7 @@ On va utiliser un de leurs outils : Autoruns. Cela dit comme les outils de la su
 * Quand on clique ensuite sur le lien qu'on vient de créer on arrive sur cette page qui contiendra toujours la dernière version des différents exécutables de la suite SysInternals.
 
 <div align="center">
-<img src="./assets/image-104.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-104.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1249,7 +1249,7 @@ On va utiliser un de leurs outils : Autoruns. Cela dit comme les outils de la su
 * L'application se télécharge et se lance
 
 <div align="center">
-<img src="./assets/image-126.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-126.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1257,56 +1257,56 @@ On va utiliser un de leurs outils : Autoruns. Cela dit comme les outils de la su
 * Une fois à l'écran, allez dans le menu File et choisissez "Run As Administrator"
 
 <div align="center">
-<img src="./assets/image-137.webp" alt="" loading="lazy"/>
+<img src="./assets/image-137.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 En haut il y a un onglet par catégorie : Everything, Logon... Pour l'instant on a "Everything" sous les yeux. Autrement dit on voit tout ce qui se lance. Histoire alléger l'affichage je vous propose de choisir les options ci-dessous :
 
 <div align="center">
-<img src="./assets/image-138.webp" alt="" loading="lazy"/>
+<img src="./assets/image-138.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 Si je déroule la catégorie "Everything", je retrouve le service d'Acrobat qui est désactivé
 
 <div align="center">
-<img src="./assets/image-127.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-127.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 De la même façon on retrouve dans ``HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run`` les entrées correspondantes à OneDrive et Edge. Ensuite, si on déroule encore la liste "Everything", on "découvre" tous les autres process qui sont lancés.
 
 <div align="center">
-<img src="./assets/image-136.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-136.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Si je prends une autre catégorie moins bondée (Drivers par exemple), voilà ce que je vois sur ma machine.
 
 <div align="center">
-<img src="./assets/image-129.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-129.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 La ligne en jaune correspond à un fichier qui n'a pas été trouvé par Autoruns. Cela ne veut pas dire qu'il est plus sur le disque. Cela veut dire qu'il n'a pas été trouvé. Si après avoir vérifié que le fichier en question n'est pas ailleurs sur le disque, je peux donc supprimer la ligne avec un clic droit (CTRL+D). À noter les options "Search Online" et "Properties" (qu'on ne voit pas sur la capture d'écran ci-dessous). Allez, je supprime la ligne.
 
 <div align="center">
-<img src="./assets/image-130.webp" alt="" loading="lazy"/>
+<img src="./assets/image-130.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 Il y a quand même une boite de confirmation
 
 <div align="center">
-<img src="./assets/image-131.webp" alt="" loading="lazy"/>
+<img src="./assets/image-131.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
 Voilà la liste mise à jour
 
 <div align="center">
-<img src="./assets/image-132.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-132.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1316,7 +1316,7 @@ Du coup, je peux aller dans la catégorie Everything, vérifier s'il y a d'autre
 * Clic sur l'option "Check Virue Total"
 
 <div align="center">
-<img src="./assets/image-133.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-133.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1325,7 +1325,7 @@ Du coup, je peux aller dans la catégorie Everything, vérifier s'il y a d'autre
 * Ci-dessous: 0/76
 
 <div align="center">
-<img src="./assets/image-134.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-134.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1333,7 +1333,7 @@ Du coup, je peux aller dans la catégorie Everything, vérifier s'il y a d'autre
 * On arrive sur une page qui contient un rapport spécifique. À priori ici tout va bien, aucun des anti-virus utilisés n'a trouvé quoique ce soit. Il ne faut pas hésiter à visiter les autres onglets du rapport web.
 
 <div align="center">
-<img src="./assets/image-135.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-135.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1360,14 +1360,14 @@ Sors les Knackis et la moutarde et regardons ces vidéos
 * WIN + Fleche HAUT
 
 <div align="center">
-<img src="./assets/image-105.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-105.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Typiquement, il faut relire la liste et désactiver ce qui peut l'être. Par exemple la mise à jour d'Adobe (encore lui!) et les rapports de crash de Nvidia. Il vaut mieux désactiver les lignes car si besoin, bien sûr, on peut les réactiver (con, mais pas con Jean-Pierre).
 
 <div align="center">
-<img src="./assets/image-113.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-113.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1388,7 +1388,7 @@ Là c'est facile c'est de l'utilisation d'application.
 * Récupérer et lancer l'application
 
 <div align="center">
-<img src="./assets/image-117.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-117.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1397,7 +1397,7 @@ Là c'est facile c'est de l'utilisation d'application.
 * Confirmer le choix
 
 <div align="center">
-<img src="./assets/image-118.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-118.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1421,14 +1421,14 @@ L'idée est d'utiliser un soft qui va pour nous aller positionner tous les switc
 * Récupérer et lancer l'application
 
 <div align="center">
-<img src="./assets/image-121.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-121.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 * Dans Actions cliquer sur "Appliquer tous les paramètres recommandés"
 
 <div align="center">
-<img src="./assets/image-122.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-122.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1487,7 +1487,7 @@ J'ai eu l'occasion de faire les manipulations ci-dessus sur une machine assez an
 * J'avais vraiment l'impression (pas de mesure) que le PC démarrait plus vite.
 
 <div align="center">
-<img src="./assets/image.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1501,7 +1501,7 @@ J'ai dû réinstaller un Windows 10 2022H2 Home (pas pro) sur un Dell XPS 13 934
 Après l'installation je déroule la séquence. J'arrive à ça. Je suis content le PC démarre rapidement et utilise que 55 process et 2 GB de RAM. Cela dit, on ne peut pas faire grand-chose avec car il manque la plupart des softs...
 
 <div align="center">
-<img src="./assets/Img1.webp" alt="" loading="lazy"/>
+<img src="./assets/Img1.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -1519,7 +1519,7 @@ Sauf erreur de ma part j'ai installé
 La plupart ont été installés avec l'excellent Chocolatey, d'autres avec winget et d'autres encore "à la main" (Windows 365 par exemple). J'ai dû réinstaller un driver son qui est venu avec 3 ou 4 soft parasites qu'il a fallu éradiquer. Ensuite, j'ai fait une repasse sur la séquence. J'arrive à ça :
 
 <div align="center">
-<img src="./assets/Img4.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/Img4.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1535,7 +1535,7 @@ Je ne suis franchement pas sûr que ce soit une bonne idée. De toute façon il 
 * "services.msc"
 
 <div align="center">
-<img src="./assets/image-91.webp" alt="" loading="lazy"/>
+<img src="./assets/image-91.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -1550,7 +1550,7 @@ Je ne suis pas vraiment chaud non plus pour cet ajustement. Si on en est là, c'
 * "adv" + ENTER
 
 <div align="center">
-<img src="./assets/image-107.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-107.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -1558,7 +1558,7 @@ Je ne suis pas vraiment chaud non plus pour cet ajustement. Si on en est là, c'
 * Cliquer sur le bouton Paramètres...
 
 <div align="center">
-<img src="./assets/image-107_1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-107_1.webp" alt="" width=450 loading="lazy"/>
 </div>
 
 
@@ -1566,5 +1566,5 @@ Je ne suis pas vraiment chaud non plus pour cet ajustement. Si on en est là, c'
 * OK
 
 <div align="center">
-<img src="./assets/image-108.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-108.webp" alt="" width="450" loading="lazy"/>
 </div>
