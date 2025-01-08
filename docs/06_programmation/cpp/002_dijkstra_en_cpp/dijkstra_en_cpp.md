@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Algorithme de Dijkstra en C++"
-parents: "C++"
+parent: "C++"
 #math: mathjax
 date: 2015-05-15 19:41:59
 last_modified_date: 2020-05-01 22:31:34
@@ -11,7 +11,7 @@ last_modified_date: 2020-05-01 22:31:34
 
 ## Introduction
 
-Je suis toujours sur [Codingame](https://www.codingame.com) et pour l'un des challenges je cherchais un exemple simple d'implémentation de l'algorithme de [Dijkstra](http://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) en C++ sur lequel je pourrais expérimenter etc. Je n'ai pas trouvé ce que je cherchais car soit le code C++ n'utilisait pas la STL, soit le code était très long, soit il n'utilisait pas de priority_queue soit encore le code n'était pas prêt à l'emploi.
+Je suis toujours sur [Codingame](https://www.codingame.com) et pour l'un des challenges je cherchais un exemple simple d'implémentation de l'algorithme de [Dijkstra](http://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) en C++ sur lequel je pourrais expérimenter etc. Je n'ai pas trouvé ce que je cherchais car soit le code C++ n'utilisait pas la STL, soit le code était très long, soit il n'utilisait pas de priority_queue soit encore le code n'était pas prêt à l'emploi.
 
 ## Show me the code
 
@@ -30,70 +30,70 @@ auto comp = [](const pair<int, int> &a, const pair<int, int> &b) {return a.secon
 
 int main() {
 
-  ifstream TestFile("Test Dijkstra 3.txt", ios::in);                            // open the test file
-  if (!TestFile) return 1;
-  cin.rdbuf(TestFile.rdbuf());
+  ifstream TestFile("Test Dijkstra 3.txt", ios::in);                            // open the test file
+  if (!TestFile) return 1;
+  cin.rdbuf(TestFile.rdbuf());
 
-  int NbNodes, NbEdges;
-  cin >> NbNodes >> NbEdges;
+  int NbNodes, NbEdges;
+  cin >> NbNodes >> NbEdges;
 
-  vector<vector<pair<int, int>>> G(NbNodes);                                    // The graph is a vector with NbNodes nodes.
-                                                                                // Each node is connected to others nodes via weighted edges. This information is stored in a vector of pair
-  for (auto i = 0; i != NbEdges; ++i) {
-    int u, v, w;
-    cin >> u >> v >> w;
-    G[u].push_back(make_pair(v, w));                                            // Each pair contains : first=index of the node connected to u, second=weight/distance/codst of the path from v to u
-    //G[v].push_back(make_pair(u, w));                                          // Comment this line if the graph use directed edges.
-                                                                                // With undirected edges, create link from v to u and u to v. Both with weight w
-  }
+  vector<vector<pair<int, int>>> G(NbNodes);                                    // The graph is a vector with NbNodes nodes.
+                                                                                // Each node is connected to others nodes via weighted edges. This information is stored in a vector of pair
+  for (auto i = 0; i != NbEdges; ++i) {
+    int u, v, w;
+    cin >> u >> v >> w;
+    G[u].push_back(make_pair(v, w));                                            // Each pair contains : first=index of the node connected to u, second=weight/distance/codst of the path from v to u
+    //G[v].push_back(make_pair(u, w));                                          // Comment this line if the graph use directed edges.
+                                                                                // With undirected edges, create link from v to u and u to v. Both with weight w
+  }
 
-  int StartNode;
-  cin >> StartNode;
+  int StartNode;
+  cin >> StartNode;
 
-  vector<int> Distances(NbNodes, numeric_limits<int>::max());                   // Distances is a vector of NbNodes cells. All cells are initialized with max()
-                                                                                // Distances[i] is the distance from StartNode to node whose index is i
+  vector<int> Distances(NbNodes, numeric_limits<int>::max());                   // Distances is a vector of NbNodes cells. All cells are initialized with max()
+                                                                                // Distances[i] is the distance from StartNode to node whose index is i
 
-  Distances[StartNode] = 0;                                                     // Distance to StartNode is initialized to 0
+  Distances[StartNode] = 0;                                                     // Distance to StartNode is initialized to 0
 
-  vector<int> Parents(NbNodes, -1);                                             // Parents is a vector of NbNodes cells. All cells are initialized with -1
+  vector<int> Parents(NbNodes, -1);                                             // Parents is a vector of NbNodes cells. All cells are initialized with -1
 
-                                                                                // Priority queue storing pairs and using a specific comparator function
-                                                                                // Because of the comparator we need to specify the 3 parameters
-                                                                                // The comparator make sure that the closest node is always on top of the queue
-                                                                                // Each pair is made of : index of the node and the distance to StartNode
-  priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)> Q(comp);
-  Q.push(make_pair(StartNode, 0));                                              // Initialize the priority queue with StartNode
+                                                                                // Priority queue storing pairs and using a specific comparator function
+                                                                                // Because of the comparator we need to specify the 3 parameters
+                                                                                // The comparator make sure that the closest node is always on top of the queue
+                                                                                // Each pair is made of : index of the node and the distance to StartNode
+  priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)> Q(comp);
+  Q.push(make_pair(StartNode, 0));                                              // Initialize the priority queue with StartNode
 
-  while (!Q.empty()) {                                                          // Dijkstra
-    int v = Q.top().first;                                                      // get the index of the nearest node
-    int w = Q.top().second;                                                     // get the weight/cost/distance
-    Q.pop();
+  while (!Q.empty()) {                                                          // Dijkstra
+    int v = Q.top().first;                                                      // get the index of the nearest node
+    int w = Q.top().second;                                                     // get the weight/cost/distance
+    Q.pop();
 
-    if (w <= Distances[v]) {                                                    // Pay attention to this test.
-                                                                                // It can be removed, however, it avoid duplicated work
+    if (w <= Distances[v]) {                                                    // Pay attention to this test.
+                                                                                // It can be removed, however, it avoid duplicated work
 
-      for (const auto& i : G[v]) {                                              // v is the index of the nearest node
-        auto v2 = i.first;                                                      // For each node connected to node v
-        auto w2 = i.second;
+      for (const auto& i : G[v]) {                                              // v is the index of the nearest node
+        auto v2 = i.first;                                                      // For each node connected to node v
+        auto w2 = i.second;
 
-        if (Distances[v] + w2 < Distances[v2]) {                                // If distance from StartNode to v2 thru v is shorter then the current distance from StartNode to v2
-          Distances[v2] = Distances[v] + w2;                                    // then update the distance from StartNode to v2 and parent[v2]
-          Parents[v2] = v;                                                      // https://www.youtube.com/watch?v=8Ls1RqHCOPw
-          Q.push(make_pair(v2, Distances[v2]));
-        }
-      }
-    }
-  }
+        if (Distances[v] + w2 < Distances[v2]) {                                // If distance from StartNode to v2 thru v is shorter then the current distance from StartNode to v2
+          Distances[v2] = Distances[v] + w2;                                    // then update the distance from StartNode to v2 and parent[v2]
+          Parents[v2] = v;                                                      // https://www.youtube.com/watch?v=8Ls1RqHCOPw
+          Q.push(make_pair(v2, Distances[v2]));
+        }
+      }
+    }
+  }
 
-  for (auto i = 0; i != NbNodes; ++i) {                                          // display the results
-    cout << "\nPath from node " << StartNode << " to node " << i << " cost " << Distances[i] << endl;
+  for (auto i = 0; i != NbNodes; ++i) {                                          // display the results
+    cout << "\nPath from node " << StartNode << " to node " << i << " cost " << Distances[i] << endl;
 
-    cout << i;
-    for (auto p = Parents[i]; p != -1; p = Parents[p])
-      cout << " <- " << p;                                                      // when links are not bi directional the output is accurate when using <- instead of ->
-    cout << endl;                                                               // otherwise it make no difference
-  }
-  getchar();
+    cout << i;
+    for (auto p = Parents[i]; p != -1; p = Parents[p])
+      cout << " <- " << p;                                                      // when links are not bi directional the output is accurate when using <- instead of ->
+    cout << endl;                                                               // otherwise it make no difference
+  }
+  getchar();
 }
 ```
 
@@ -160,15 +160,15 @@ Dernier fichier correspondant à la vidéo [YouTube](https://www.youtube.com/wat
 
 ## Explications
 
-Exemple de sortie console quand on utilise le troisième fichier.
+Exemple de sortie console quand on utilise le troisième fichier.
 
 <div align="center">
 <img src="./assets/im2.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-Pour chaque noeud, on retrouve le poids total du chemin qui va de la source au noeud en question. Par exemple, pour le noeud 4 il n'y a pas de chemin. Le poids est donc infini (2147483647) et on observe qu'il n'y a pas de chemin affiché. Pour le noeud 5, le coût total est de 30. Cela se décompose en un brin qui va de 0 à 1 et qui coûte 20 puis un autre qui va de 1 à 5 et qui coûte 10.
+Pour chaque noeud, on retrouve le poids total du chemin qui va de la source au noeud en question. Par exemple, pour le noeud 4 il n'y a pas de chemin. Le poids est donc infini (2147483647) et on observe qu'il n'y a pas de chemin affiché. Pour le noeud 5, le coût total est de 30. Cela se décompose en un brin qui va de 0 à 1 et qui coûte 20 puis un autre qui va de 1 à 5 et qui coûte 10.
 
 {: .warning } 
-Comme indiqué dans le code source, pour obtenir une sortie exacte avec le fichier test3 il faut commenter la ligne 26. En effet, le troisième graphe est directionnel. Autrement dit on peut avoir une liaison de 2 vers 3 mais pas de liaison de 3 vers 2 par exemple. Quand le graphe est bidirectionnel il ne faut pas commenter la ligne 26.  Bien sûr, dans ce cas, au niveau de la sortie écran, les "flèches" indiquent toujours le chemin de la source vers le noeud considéré mais le parcours peut tout aussi bien se faire du noeud vers la source et/ou de la source vers le noeud.
+Comme indiqué dans le code source, pour obtenir une sortie exacte avec le fichier test3 il faut commenter la ligne 26. En effet, le troisième graphe est directionnel. Autrement dit on peut avoir une liaison de 2 vers 3 mais pas de liaison de 3 vers 2 par exemple. Quand le graphe est bidirectionnel il ne faut pas commenter la ligne 26.  Bien sûr, dans ce cas, au niveau de la sortie écran, les "flèches" indiquent toujours le chemin de la source vers le noeud considéré mais le parcours peut tout aussi bien se faire du noeud vers la source et/ou de la source vers le noeud.
 
