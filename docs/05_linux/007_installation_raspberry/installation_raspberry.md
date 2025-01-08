@@ -197,7 +197,7 @@ sudo raspi-config
 Quand l’icône est dans la barre de titre, cliquer dessus.
 
 <div align="center">
-<img src="./assets/vnc1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/vnc1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -209,7 +209,7 @@ Quand l’icône est dans la barre de titre, cliquer dessus.
 * Là il faut saisir l'identifiant d'un utilisateur préalablement enregistré
 
 <div align="center">
-<img src="./assets/vnc2.webp" alt="" loading="lazy"/>
+<img src="./assets/vnc2.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -235,14 +235,14 @@ Il faut que le user "bob" existe sur le raspberry et bien sûr faut connaître s
 Windows on peut utiliser [Putty](http://www.clubic.com/telecharger-fiche10874-putty.html) ou [Putty Portable](http://portableapps.com/apps/internet/putty_portable). Une fois installé, la méthode est identique mais on passe par une boite de dialogue intermédiaire.
 
 <div align="center">
-<img src="./assets/putty.webp" alt="" loading="lazy"/>
+<img src="./assets/putty.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Comme ici je n'ai rien saisi à part l'adr IP du RPI, quand on clique sur le bouton Open, une console s'ouvre et demande le login et le mot de passe (pi, raspberry).
 
 <div align="center">
-<img src="./assets/console.webp" alt="" loading="lazy"/>
+<img src="./assets/console.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ### Windows 2/2
@@ -256,7 +256,7 @@ ssh bob@192.168.0.47
 Il faut bien sûr que l'utilisateur "bob" existe sur la machine dont l'adresse est "192.168.0.47". Il va demander le mot de passe de "bob". Quand c'est fait, on est à la maison (en mode texte). On peut lancer raspi-config si besoin etc.
 
 <div align="center">
-<img src="./assets/raspi-config.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/raspi-config.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ## VNC Viewer
@@ -270,7 +270,7 @@ Il faut bien sûr que l'utilisateur "bob" existe sur la machine dont l'adresse e
   + Son mot de passe sur le Raspberry
 
 <div align="center">
-<img src="./assets/vnc3.webp" alt="" loading="lazy"/>
+<img src="./assets/vnc3.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -279,7 +279,7 @@ Il faut bien sûr que l'utilisateur "bob" existe sur la machine dont l'adresse e
 * On peut prendre le contrôle graphique du Raspberry Pi
 
 <div align="center">
-<img src="./assets/X11SousWindows.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/X11SousWindows.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
