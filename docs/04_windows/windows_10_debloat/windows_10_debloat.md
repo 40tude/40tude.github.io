@@ -892,7 +892,7 @@ Ou alors, si tu as l'excellent [Windows Terminal](http://ibit.ly/2NkQ) sur ton P
 * Taper "wt"
 * GAUCHE + BAS + ENTER
 * Dans l'une ou l'autre console, taper la commande suivante
-  + irm christitus.com/win | iex
+  + ``irm christitus.com/win | iex``
 
 Quand l'interface graphique est à l'écran, cliquer sur Tweaks puis sur Laptop (ou autre selon la situation) dans la section "Recommended Selections".
 
