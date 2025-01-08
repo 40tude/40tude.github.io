@@ -53,7 +53,7 @@ Bref, Decathlon, gravel, neuf, commande en ligne d'un truc disponible dans ma ta
 
 Ci-dessous une des vidéos qui m'a permis de comprendre les différences entre les modèles 120 et 520 et qui m'a décidé à choisir le RC 520. De plus, c'est avec les explications qui sont à 9:03 de la vidéo que j'ai choisi le [modèle "gros plateau"](https://www.decathlon.fr/p/velo-gravel-triban-rc520-gravel-kaki-shimano-105/_/R-p-337677?mc=8733355&orderId=fr10040376973) car chez moi c'est surtout du bitume partout encore et toujours (le RC 520 existe en trois déclinaisons. Je n'avais pas bien compris ça sur le site de Decathlon).
 
-Attention. En 2023 le prix c'est 1 220 € (prix livré). À ce jour la vidéo date d'un an. Ça fait donc [+20%]({%link docs/03_maths/002_pourcentages/pourcentages.md }) en un an. Pas mal, pas mal...
+Attention. En 2023 le prix c'est 1 220 € (prix livré). À ce jour la vidéo date d'un an. Ça fait donc [+20%]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) en un an. Pas mal, pas mal...
 
 
 
