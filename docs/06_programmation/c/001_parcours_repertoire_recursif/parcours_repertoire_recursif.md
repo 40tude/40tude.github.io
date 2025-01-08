@@ -1,12 +1,13 @@
 ---
 layout: default
-title: "Parcours de répertoires de manière récursive en C ANSI"
+title: "Parcours récursifs de répertoires en C ANSI"
 parent: "ANSI C"
 #math: mathjax
 date: 2013-12-26 13:46:18
 last_modified_date: 2020-05-03 18:19:46
 ---
 
+# Parcours récursifs de répertoires en C ANSI
 
 Dans un récent projet j'ai dû coder un parcours de répertoires récursif. Bien sûr il fallait traiter les sous-répertoires et les fichiers afin d'appliquer un traitement particulier aux fichiers ``.c`` que je trouvais. En fait ce n'est pas possible avec les fonctions ``GetFirstFile()`` et ``GetNextFile()`` de [CVI](https://www.ni.com/cvi) car elles ne supportent pas bien la récursivité.
 
