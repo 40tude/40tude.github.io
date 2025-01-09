@@ -185,7 +185,7 @@ Cela dit, prenons un exemple pour fixer les idées et disons qu'en fin de journ�
 * Je suis à 16 gr de glucides et 86 gr de lipides
 * Je devrais être à 16 + 86 = 102 gr de protéines
 * Comme je suis à 87 gr de protéines il me manque 5 gr protéines
-* Ça doit se trouver dans une tranche de jambon blanc (20% en proteines). Ooui, oui, je sais, il y aura aussi des glucides et des lipides dans la tranche en question.
+* Ça doit se trouver dans une tranche de jambon blanc (20% en protéines). Oui, oui, je sais, il y aura aussi des glucides et des lipides dans la tranche en question.
 
 ### Option 2
 
