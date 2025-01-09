@@ -25,19 +25,19 @@ Il existe trois types principaux de corps cétoniques :
 2. **Le bêta-hydroxybutyrate (BHB)** : Bien que techniquement ce ne soit pas une vraie cétone, il est souvent considéré comme tel. Le BHB est la principale forme de transport des corps cétoniques dans le sang, et il est utilisé par les cellules pour produire de l'énergie.
 3. **L'acétone** : C'est le produit secondaire de la dégradation de l'acétoacétate. L'acétone est une molécule volatile qui est souvent éliminée du corps par la respiration (ce qui peut donner une haleine avec une odeur caractéristique).
 
-Les corps cétoniques fournissent une source alternative d'énergie, surtout pour des organes comme le cerveau, qui dépendent principalement du glucose en temps normal. Dans des conditions comme la cétose (induite par le régime cétogène) ou la cétose diabétique, les niveaux de corps cétoniques dans le sang augmentent. Dans le cadre d'une cétose contrôlée (comme avec un régime), cette augmentation est sans danger et même recherchée. En revanche, dans le diabète non contrôlé, une accumulation excessive de corps cétoniques peut conduire à une acidocétose diabétique, une condition potentiellement mortelle.
+Les corps cétoniques fournissent une source alternative d'énergie, surtout pour des organes comme le cerveau, qui dépendent principalement du glucose en temps normal. Dans des conditions comme la cétose (induite justement par le régime cétogène) ou la cétose diabétique, les niveaux de corps cétoniques dans le sang augmentent. Dans le cadre d'une cétose contrôlée (comme avec un régime), cette augmentation est sans danger et même recherchée. En revanche, dans le diabète non contrôlé, une accumulation excessive de corps cétoniques peut conduire à une acidocétose diabétique, une condition potentiellement mortelle.
 
 
 
 
 
 ## Transformation des graisses
-On a dit **le corps utilise les graisses comme source principale d'énergie au lieu des glucides**. Il faut cependant comprendre que le gras n'est pas directement transformé en glucides. Ce serait trop facile... Ce qui se passe est plus complexe, et c'est pourquoi le corps produit des corps cétoniques.
+On a dit plus haut que **le corps utilise les graisses comme source principale d'énergie au lieu des glucides**. Il faut cependant comprendre que le gras n'est pas directement transformé en glucides. Ce serait trop facile... Ce qui se passe est plus complexe, et c'est pourquoi le corps produit des corps cétoniques.
 
-En gros, les graisses ne sont pas directement transformées en glucides. Le foie génère des corps cétoniques à partir des acides gras lorsque les réserves de glucose sont basses. Ces corps cétoniques servent de carburant alternatif pour les organes qui dépendent normalement du glucose, comme le cerveau. Ce mécanisme permet au corps de maintenir ses fonctions vitales en période de faible apport en glucides.
+En gros... Le foie génère des corps cétoniques à partir des acides gras lorsque les réserves de glucose sont basses. Ces corps cétoniques servent alors de carburant alternatif pour les organes qui dépendent normalement du glucose, comme le cerveau. Ce mécanisme permet au corps de maintenir ses fonctions vitales en période de faible apport en glucides.
 
-Plus de détails : 
-### 1. Utilisation des Glucides vs. Graisses pour l'Énergie
+En détails... 
+### 1. Utilisation des glucides vs. graisses pour l'énergie
 {: .no_toc }
 - **Glucides** : Normalement, le corps préfère utiliser les glucides (glucose) comme source principale d'énergie. Le glucose est facilement disponible et est rapidement métabolisé pour produire de l'ATP, la molécule d'énergie.
 - **Graisses** : Lorsque les réserves de glucose sont faibles (comme lors d'un jeûne prolongé ou d'un régime très pauvre en glucides), le corps commence à décomposer les graisses stockées en acides gras pour les utiliser comme source d'énergie.
@@ -46,12 +46,12 @@ Plus de détails :
 {: .no_toc }
 - **Les graisses (ou triglycérides) sont décomposées en acides gras et en glycérol**. Le glycérol peut être converti en glucose par un processus appelé **néoglucogenèse**, mais cela ne suffit pas à fournir toute l'énergie nécessaire au corps, surtout pour des organes comme le cerveau, qui consomment beaucoup de glucose.
 
-### 3. Production de Corps Cétoniques
+### 3. Production de corps cétoniques
 {: .no_toc }
 - **Acides Gras** : **Les acides gras sont transportés au foie**, où ils sont convertis en acétyl-CoA via un processus appelé **β-oxydation**. Normalement, l'acétyl-CoA entre dans le cycle de Krebs pour produire de l'ATP.
-- **Quand le Glucose est Faible** : En cas de carence en glucose, le cycle de Krebs ne fonctionne pas à pleine capacité car il dépend aussi de certains dérivés du glucose (comme l'oxaloacétate). L'excès d'acétyl-CoA est alors détourné pour produire des corps cétoniques.
+- **Quand le glucose est faible** : En cas de carence en glucose, le cycle de Krebs ne fonctionne pas à pleine capacité car il dépend aussi de certains dérivés du glucose (comme l'oxaloacétate). **C'est l'excès d'acétyl-CoA qui est alors détourné pour produire des corps cétoniques.**
 
-### 4. Rôle des Corps Cétoniques
+### 4. Rôle des corps cétoniques
 {: .no_toc }
 - Les corps cétoniques sont solubles dans l'eau et peuvent être transportées par le sang jusqu'aux organes comme le cerveau, qui les utilisent alors comme une source d'énergie alternative au glucose.
 - Cela permet au corps de continuer à fonctionner même en l'absence de glucose suffisant, tout en utilisant les réserves de graisse comme carburant.
@@ -78,23 +78,20 @@ Donc pour chaque triglycéride décomposé, on obtient **1/4 de glycérol** et *
 
 
 
-## métabolisme des acides gras
+## Métabolisme des acides gras
+Quand on parlait des proportions, on a dit que : **Les acides gras sont transportés vers les cellules** pour être utilisés dans la production d'énergie (par β-oxydation), ou vers le foie pour être transformés en corps cétoniques en cas de besoin.
 
-Quand on parlait des proportions, on a dit que :  
-- Acides gras : **Les acides gras sont transportés vers les cellules** pour être utilisés dans la production d'énergie (par β-oxydation), ou vers le foie pour être transformés en corps cétoniques en cas de besoin.
-
-Quand on parlait de la Production de Corps Cétoniques, on a dit que :
-- Acides Gras : **Les acides gras sont transportés au foie**, où ils sont convertis en acétyl-CoA via un processus appelé β-oxydation. Normalement, l'acétyl-CoA entre dans le cycle de Krebs pour produire de l'ATP.
+Quand on parlait de la Production de Corps Cétoniques, on a dit aussi que : **Les acides gras sont transportés au foie**, où ils sont convertis en acétyl-CoA via un processus appelé β-oxydation.
 
 Il faut sans doute rentrer dans les détails...Les deux phrases décrivent les étapes du métabolisme des acides gras, mais avec un angle différent : l'une se concentre sur le transport et la destination des acides gras (cellules ou foie), tandis que l'autre se focalise sur le métabolisme des acides gras spécifiquement au niveau du foie.
 
-### 1. Première Phrase
+### 1. Première phrase
 {: .no_toc }
 - **Transport des acides gras** : Les acides gras sont transportés vers deux endroits potentiels :
   1. **Les cellules** : Pour y être utilisés directement comme source d'énergie via la β-oxydation. Dans ce cas, les acides gras sont décomposés en acétyl-CoA qui entre ensuite dans le cycle de Krebs pour produire de l'ATP (énergie).
   2. **Le foie** : Lorsqu'il y a un besoin accru de production d'énergie et que le glucose est insuffisant (comme lors d'un jeûne prolongé), les acides gras sont transportés vers le foie pour être convertis en corps cétoniques.
 
-### 2. Deuxième Phrase
+### 2. Deuxième phrase
 {: .no_toc }
 - **Concentration sur le foie** : Cette phrase précise que, lorsqu'ils sont transportés au foie, les acides gras sont décomposés en acétyl-CoA via la β-oxydation. Ce processus est commun, que l'acétyl-CoA soit ensuite utilisé pour :
   1. **Cycle de Krebs** : Pour produire de l'énergie (ATP) en conditions normales, lorsque le glucose est disponible.
@@ -140,8 +137,3 @@ Le passage du corps à l'utilisation des corps cétoniques comme principale sour
 - **Alimentation préalable** : Les personnes ayant une alimentation riche en glucides peuvent mettre un peu plus de temps à entrer en cétose par rapport à celles qui suivent déjà une alimentation pauvre en glucides ou cétogène.
 - **Activité physique** : L'exercice physique peut accélérer l'épuisement des réserves de glycogène et donc accélérer l'entrée en cétose.
 - **Réserves de glycogène** : Les réserves de glycogène varient d'une personne à l'autre, ce qui peut affecter le moment où la cétose commence.
-
-
-
-
-
