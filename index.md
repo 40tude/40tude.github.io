@@ -28,9 +28,11 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 ---
 ## TODO
 * Sur la 1ere page, la liste des 10 derniers billets édités
-* Voir ces histoires de plugins
-* Ajouter un indicateur de durée de lecture en haut des pages
 * Lightbox pour les images?
+* Voir ces histoires de plugins
+    * Va être chaud
+    * Faut installer ruby meme si on a un plugin sous forme de gem 
+    * Faut l'installer avec Bundle etc.
 * SEO? 
     * Pas sûr de comprendre grand chose...
     * Pas intéressé par le sujet
@@ -46,6 +48,7 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 ---
 
 ## DONE
+* ~~Ajouter un indicateur de durée de lecture en haut des pages~~
 * ~~Installer Google Analytics~~
 * ~~Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes~~
     * Impossible
