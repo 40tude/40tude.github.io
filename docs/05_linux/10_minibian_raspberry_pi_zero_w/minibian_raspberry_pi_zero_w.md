@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Installation de Minibian sur Raspberry"
+title: "Minibian sur Raspberry Pi Zero"
 parent: "Linux"
 #math: mathjax
 date: 2017-03-12 15:20:32
@@ -8,7 +8,7 @@ last_modified_date: 2020-05-03 22:05:08
 ---
 
 
-# Installation de Minibian sur Raspberry
+# Minibian sur Raspberry Pi Zero
 
 Le Raspberry Pi Zero est très bien mais il n'est pas très véloce. Il n'est sans doute pas inutile de lui installer plutôt une Minibian.
 
@@ -28,7 +28,7 @@ wget https://sourceforge.net/projects/minibian/files/2016-03-12-jessie-minibian.
 tar xvf 2016-03-12-jessie-minibian.tar.gz
 ```
 
-* On se retrouve avec un fichier "2016-03-12-jessie-minibian.img" (830 Mo)
+* On se retrouve avec un fichier ``2016-03-12-jessie-minibian.img`` (830 Mo)
 * Il faut le copier sur une carte Micro SD Card. La procédure est identique à celle [expliquée ici](docs/05_linux/008_install_rpi0_from_rpi/install_rpi0_from_rpi.md).
 * Ne rien connecter au RPI3 et faire l'inventaire des périphériques connectés.
 
