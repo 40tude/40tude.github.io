@@ -10,20 +10,20 @@ last_modified_date: 2025-01-03 15:00:00 +0000
 # 40tude.fr 
 
 {: .note }
-La page et le site sont en construction alors je suis en train des transférer le 40tude.fr de (WordPress + OVH) vers (markdown + Jekyll + Just The Docs + GitHub).
+La page et le site sont en construction alors que je suis en train des transférer le site 40tude.fr de (WordPress + OVH) vers (markdown + Jekyll + Just The Docs + GitHub).
 
 * De tout façon, je n'en pouvais plus de WP. Quelle bouse!
     * <https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185>
 * Chez OVH, mon site a été piraté en Avril 2024. Ils n'ont rien fait pour protéger le site ou m'aider après coup (j'étais client depuis 2011 sans aucun coup de fil au support...) 
 
-Il faut lire "fortitude".  
+Il faut lire "fortitude point fr".  
 Il n'y a pas de sens caché, j'ai toujours aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité.  
 Pas de référence non plus à l'opération de désinformation de la seconde guerre mondiale.  
 
 Le site 40tude.fr est en cours de migration (300 billets de 2011 à 2024).  
 Laissez moi un peu de temps (j'espère avoir terminé fin janvier 2025)  
 Soyez pas surpris si d'ici là, les menus changent, les billets et catégories disparaissent, apparaissent...
-Pendant le portage, même si j'apporte quelques modifications aux billets, je ne vais pas changer les dates de dernières mise à jour.  
+Pendant le portage, même si j'apporte quelques modifications aux billets, je ne vais pas changer les dates de dernières mise à jour. Je le ferai suivre, après le transfert, je reviens sur telle ou telle page pour y apporter des compléments, la récrire... Pour l'instant je suis focus sur le transfert.
 
 ---
 ## TODO
