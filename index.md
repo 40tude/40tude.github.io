@@ -121,8 +121,8 @@ $$
     * `cd C:\Users\phili\OneDrive\Documents\40tude_to_repair\converted_to_markdown\docs`
     * ``Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}``
 
-* <https://just-the-docs.github.io/just-the-docs-tests/components/math/mathjax/index/>
 * <https://just-the-docs.github.io/just-the-docs/>
+* <https://just-the-docs.github.io/just-the-docs-tests/components/math/mathjax/index/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
 * <https://www.mathematex.fr/guide-mathjax>
@@ -140,6 +140,17 @@ date:               2023-11-19 00:20:43
 last_modified_date: 2023-12-04 00:02:38
 ---
 
+```
+
+Mettre toc que sur les titres de niveau 2. Eviter 3 et +
+```
+# Corps cétoniques
+{: .no_toc }
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 ```
 
 ## Organisation des catégories ?
