@@ -14,7 +14,20 @@ C'est une liste de liens, de données, de vidéos à propos du sucre que je souh
 
 
 
-## Update de 2024 : Corps cétoniques
+## Update de 2024 : 
+
+1-Ozempic et GLP-1:
+Ozempic, Wegovy, Saxenda, Mounjaro, Trulicity… ces médicaments appartiennent à la famille des « glucagon-like peptide-1 receptor agonists », ou GLP-1
+Sont prescrits aux US contre le diabète de type 2 depuis 2005. 
+En ralentissant le processus de digestion, ils coupent l'appétit. Avec le recul, les effets secondaires graves sont très rares.
+2021: Novo Nordisk réussi à faire approuver Wegovy aux US pour la gestion de l'obésité chronique, en démontrant que les patients pouvaient perdre plus de 15 % de leur poids. => espoir pour les 42 % d'Américains (110 millions d'adultes et 15 millions d'enfants) d'obeses. Sinon, tout va bien, les trois quarts de la population sont en surpoids.
+
+Novo Nordisk = 54 % du marché mondial des GLP-1. Voir aussi Eli Lilly ?
+
+Obésité = 147 mds $ par an aux US
+
+
+2-Corps cétoniques
 Il y avait trop d'infos du coup j'ai fait [un billet]({%link docs/99_divers/007_corps_cetoniques/corps_cetoniques.md%})
 
 
