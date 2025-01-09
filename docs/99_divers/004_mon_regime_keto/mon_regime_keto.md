@@ -125,7 +125,7 @@ Dans MyFitnessPal la résolution n'est que de 5% donc il ne faut pas essayer d'�
 
 De plus, il ne faut pas hésiter à ajuster lipides et protéines en augmentant les lipides si on n'arrive pas à atteindre le niveau de protéines. 
 
-Pour info on considère que 2 fois le poids du corps pour les Protéines c'est plutôt pour ceux qui font de la musculation etc. Sinon j'ai lu assez souvent des valeurs de l'ordre de [1.2 à 1.7](https://sportchezsoi.com/combien-de-proteine-par-jour-muscler-mincir/). 
+Pour info on considère que 2 fois le poids du corps pour les protéines c'est plutôt pour ceux qui font de la musculation etc. Sinon j'ai lu assez souvent des valeurs de l'ordre de [1.2 à 1.7](https://sportchezsoi.com/combien-de-proteine-par-jour-muscler-mincir/). 
 
 De toute façon vous avez maintenant la méthode mais bon 1.7 c'est moins facile à utiliser que 2. Ou alors… On peut faire -5% en protéines et +5% en lipides en faisant attention à ne pas aller trop haut en lipides. Généralement je trouve assez facile d'atteindre le niveau de lipide (un peu plus de vinaigrette, un peu plus de beurre…).
 
@@ -143,15 +143,15 @@ Le but du jeu dans les 3 cas précédents est d'espacer les moments où on mange
 
 L'insuline c'est l'hormone qui signale qu'il faut faire diminuer le taux de glucose dans le sang. Ce dernier est alors stocké dans le foie et les muscles squelettiques. Si cela ne suffit pas, le reste du glucose est alors transformé (en triglycéride) et stocké dans les cellules adipeuses. C'est pour ça qu'on dit parfois que l'insuline c'est l'hormone du stockage.
 
-Bref, il faut qu'on mange, c'est sûr, mais on n'est pas obligé de manger 3 fois par jour et de grignoter 3 fois par jour entre les repas.
+Bref, il faut qu'on mange, c'est sûr, mais on n'est pas obligé de manger 3 fois par jour et de grignoter 3 fois par jour entre les repas (à chaque fois c'est des pics d'insuline qui indiquent au corps qu'il faut stocker, stocker, stocker. )
 
 Quand je suis en régime intermittent (2 repas par jour) ou OMAD (1 repas par jour) je mange en une (ou deux) fois presque toutes les calories que je devrais manger. Cela dit, il y a une restriction calorique naturelle due à la mécanique car je n'arrive tout simplement pas à manger tout ça en un seul repas.
 
-Je ne vais pas faire ici une page sur le jeûne mais… Le jeûne c'est complètement différent du fait de ne pas pouvoir manger à sa faim ou de manger mais de manger très peu dans la journée (famine). Lors du jeûne on ne mange rien. Le corps change donc rapidement (au bout de 1 ou 2 jours typiquement, le temps de consommer les réserves de glucose du foie) de filière énergétique et il utilise alors le gras stocké. D'un autre côté, quand on réduit fortement les calories (régime drastique), les pics d'insuline apparaissent quand on mange (même un peu) et le corps n'a alors aucune raison de passer en mode "utilisation du gras". On se fait alors plus de mal que de bien : on a faim, on ne déstocke rien et on pense à manger toute la journée. C'est la double peine.
+Je ne vais pas faire ici une page sur le jeûne mais… Le jeûne c'est complètement différent du fait de ne pas pouvoir manger à sa faim ou de manger mais de manger très peu dans la journée (famine). Lors du jeûne on ne mange rien. Le corps change donc rapidement (au bout de 1 ou 2 jours typiquement, le temps de consommer les réserves de glucose du foie) de filière énergétique et il utilise alors le gras stocké. D'un autre côté, quand on réduit fortement les calories (régime drastique), les pics d'insuline apparaissent quand on mange (même un peu) et le corps n'a alors aucune raison de passer en mode "utilisation du gras". On se fait alors plus de mal que de bien : on a faim, on ne déstocke rien et on pense à manger toute la journée. C'est le régime de **la double peine**.
 
-* En ce qui me concerne supprimer le pain c'est ce qu'il y a de plus dur. Ah oui, au fait, que le pain soit complet ou non n'a strictement aucune importance (vérifiez par vous même les indices glycémiques pour vous en convaincre). Ils sont donc à supprimer tous les 2. Les autres types de sucres (soda, jus de fruits, fruits, sucre de table…) ça va, j'arrive à m'en passer très facilement.
+* En ce qui me concerne supprimer le pain c'est ce qu'il y a de plus dur. Ah oui, au fait, que le pain soit complet ou non n'a strictement aucune importance (vérifiez par vous même les indices glycémiques pour vous en convaincre). Ils sont donc à supprimer tous les 2. Les autres types de sucres (soda, jus de fruits, desserts, plats ou sauce industriels, sucre de table…) ça va, j'arrive à m'en passer facilement.
 
-* Le week-end, en famille, au restaurant je ne fais pas suer le monde et je profite à fond du moment et des personnes autour de moi. Oui, oui bien sûr j'essaie d'éviter le pain (je l'ai dit, ça c'est dur), j'ai du mal avec les Curly et les gateaux salés mais généralement je n'ai pas trop de mal à ne pas prendre de dessert ou de thé gourmand. Et puis... Si y a craquage, y a craquage. Pas la peine de se prendre la tête. On corrigera le tir dans les jours à venir.
+* Le week-end, en famille, au restaurant je ne fais pas suer le monde et je profite à fond du moment et des personnes autour de moi. Oui, oui bien sûr j'essaie d'éviter le pain (mais bon, je l'ai dit, ça c'est dur), j'ai du mal avec les Curly et les gateaux salés mais généralement je n'ai pas trop de mal à ne pas prendre de dessert ou de thé gourmand. Et puis... Si y a craquage, y a craquage. Pas la peine de se prendre la tête. On va se peser demain matin et on corrigera le tir dans les jours à venir.
 
 * Je fais un peu de sport mais faut pas se leurrer la perte ou le maintien de poids c'est lié à 80% à l'alimentation. Cela dit, le sport c'est super pour le cardio, les muscles, le mental etc.
 
@@ -164,7 +164,9 @@ Je ne vais pas faire ici une page sur le jeûne mais… Le jeûne c'est complèt
 
 ## Ajustements en fin de journée
 
-Généralement je ne le fais pas. J'essaie de m'améliorer le jour d'après. Cela dit, prenons un exemple pour fixer les idées et disons qu'en fin de journée, dans MyFitnessPal, la situation est la suivante :
+Généralement je ne le fais pas. J'essaie de m'améliorer le jour d'après. 
+
+Cela dit, prenons un exemple pour fixer les idées et disons qu'en fin de journée, dans MyFitnessPal, la situation est la suivante :
 
 | Macronutriments | gr    | Note            |
 | --------------- |:-----:| --------------- |
@@ -183,7 +185,7 @@ Généralement je ne le fais pas. J'essaie de m'améliorer le jour d'après. Cel
 * Je suis à 16 gr de glucides et 86 gr de lipides
 * Je devrais être à 16 + 86 = 102 gr de protéines
 * Comme je suis à 87 gr de protéines il me manque 5 gr protéines
-* Ça doit se trouver dans une tranche de jambon blanc (oui, oui, je sais, il y aura aussi des glucides et des lipides dans la tranche en question)
+* Ça doit se trouver dans une tranche de jambon blanc (20% en proteines). Ooui, oui, je sais, il y aura aussi des glucides et des lipides dans la tranche en question.
 
 ### Option 2
 
