@@ -11,12 +11,13 @@ last_modified_date: 2020-07-08 00:04:06
 
 Ce n'est pas très compliqué, ce n'est pas très long, mais faire la vidange d'un MT 07 est toujours instructif.
 
-## Du point de vue outillage il faut
+## Outillage
 
 * Une clé à pipe de 17 pour le bouchon de vidange
 * Une cloche multipan (64.2 mm) pour le filtre à huile et peut être un adaptateur pour la clé à cliquet.
 * Un bac à huile pour recevoir l'huile usagée et l'emmener ensuite à la déchetterie
 * Un entonnoir pour remettre l'huile neuve sans en mettre partout
+* Chiffon et/ou Sopalin
 
 ## Achats
  * 3L d'huile 10-40 hyper classique
@@ -47,6 +48,7 @@ Tu changes le filtre et le joint à chaque vidange.
 
 Bac à vidange sous la moto avant et pas après 😁 (étape 4)  
 On voit que le bouchon de remplissage a été enlevé (étape 5).   
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-05-24-16.09.46.webp" alt="" width="450" loading="lazy"/>
@@ -54,6 +56,7 @@ On voit que le bouchon de remplissage a été enlevé (étape 5).
 </div>
 
 Laisse couler. Va prendre un thé, t'es pas un pro, tu as 2 minutes.
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-05-24-16.14.06.webp" alt="" width="450" loading="lazy"/>
@@ -62,6 +65,7 @@ Laisse couler. Va prendre un thé, t'es pas un pro, tu as 2 minutes.
 
 
 Filtre à huile démonté
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-05-24-16.19.49.webp" alt="" width="450" loading="lazy"/>
@@ -69,6 +73,7 @@ Filtre à huile démonté
 </div>
 
 Achète toujours un joint
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-05-24-16.27.35.webp" alt="" width="450" loading="lazy"/>
@@ -78,24 +83,25 @@ Achète toujours un joint
 
 Boulon et joint neuf à remonter  
 Y a pas d'aimant sur le bouchon sinon lors du démontage faut regarder si y a pas de la limaille  
-Si c'est le cas et si la moto n'est plus en rôdage... Ca pue.  
-Si y un peu (j'ai bien dit un peu) de limaille et que la moto est en rodage, faut pas s’inquiéter. 
+Si c'est le cas, si la moto n'est plus en rodage et si c'est plus des petit morceau d'acier que de la limaille... Ca pue. Prends un photo et va voir ton mécano préféré.  
+Si y a un peu (j'ai bien dit un peu) de limaille, que ce sont des paillettes très fines et que la moto est encore en rodage, faut pas s’inquiéter, c'est normal. Sur une moto neuve, c'est pour enlever cette limaille qu'il y a une vidange des 1000 km. 
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-05-24-16.26.27.webp" alt="" width="450" loading="lazy"/>
 &nbsp;
 </div>
 
+Avec le doigt, un peu d'huile sur le joint du filter avant de le revisser à la main au début.
 
-
-Avec le doigt, un peu d'huile sur le joint
 <div align="center">
 &nbsp;
 <img src="./assets/2020-05-24-16.37.14.webp" alt="" width="450" loading="lazy"/>
 &nbsp;
 </div>
 
-Mesure de la quantité d'huile. Ici 2.6L
+Mesure de la quantité d'huile. Ici il faut 2.6L
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-05-24-16.50.11.webp" alt="" width="450" loading="lazy"/>
@@ -103,6 +109,7 @@ Mesure de la quantité d'huile. Ici 2.6L
 </div>
 
 Cloche multipan avec son adaptateur 3/8
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-06-27-12.25.49.webp" alt="" width="450" loading="lazy"/>
@@ -110,7 +117,8 @@ Cloche multipan avec son adaptateur 3/8
 </div>
 
 
-10W-40 hyper classique
+10W-40 hyper classique. Pas la peine de prendre du Yamaha, n'importe quelle marque fait l'affaire.
+
 <div align="center">
 &nbsp;
 <img src="./assets/2020-06-27-12.26.27.webp" alt="" width="450" loading="lazy"/>
