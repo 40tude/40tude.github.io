@@ -10,7 +10,9 @@ last_modified_date: 2023-06-16 09:23:56
 # Jeûne de 6 jours - Février 2023
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
+&nbsp;
 </div>
 
 ## Contexte
@@ -42,14 +44,16 @@ Ah oui, j'allais oublier. J'ai déjà fait un jeûne l'année dernière (3 ou 4 
 * Retrouver ma discipline vis-à-vis du [sucre](`NOT YET TRANSFERED`). Ça, c'est une vraie saloperie et en plus il y en a partout, de plus en plus. Je fais la chasse au sucre depuis des années mais bon, il y a des hauts et des bas et ces derniers temps je me suis un peu relâché (pain le dimanche, petit bout de chocolat le soir, une part de tarte pour finir le repas dominical etc.).
 
 * Reprendre squats, pompes et planche quotidiennement (sauf le dimanche). Continuer la marche rapide et la course lente. Ça ne fait pas maigrir mais c'est surtout pour le moral (dopamine) et la moto sur piste car il faut des cuisses et du cardio.
-  Je dis course lente et marche rapide car l'idée est de rester dans la zone aérobie (zone dans laquelle on doit être capable de parler). Typiquement j'essaie de me mettre à 130 battements par minute même si d'autres préconisent de rester à 120 bpm. Il y a une formule du style $70\% * (220 - \textrm{age})$ mais comme suis vieux la fréquence ainsi calculée est vraiment trop basse pour moi.
+  Je dis course lente et marche rapide car l'idée est de rester dans la zone aérobie (zone dans laquelle on doit être capable de parler). Typiquement j'essaie de me mettre à 130 battements par minute même si d'autres préconisent de rester à 120 bpm. Il y a une formule du style $$70\% * (220 - \textrm{age})$$ mais comme suis vieux la fréquence ainsi calculée est vraiment trop basse pour moi.
 
 ## IMC ou tour de taille ?
 
 Je l'ai dit, l'IMC est plutôt un bon indicateur statistique. De son côté, le tour de taille est sans doute un meilleur indicateur personnel. Pour faire court, afin d'augmenter le nombre d'années de vie, idéalement le tour de taille doit être égal à 1/2 de ta taille (voir l'article de [PLoS One](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0103483) si besoin).
 
 <div align="center">
+&nbsp;
 <img src="./assets/image.webp" alt="" loading="lazy"/>
+&nbsp;
 </div>
 
 
@@ -96,40 +100,46 @@ Bon, sinon que garder en tête ?
 Ci-dessous les différentes courbes :
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-25_1.webp" alt="" loading="lazy"/>
+&nbsp;
 </div>
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-26.webp" alt="" loading="lazy"/>
+&nbsp;
 </div>
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-27.webp" alt="" loading="lazy"/>
+&nbsp;
 </div>
 
 ## Note : Autophagie
 
 Je l'ai dit un peu plus haut, on considère généralement qu'on est en cétose quand le taux mesuré est aux alentours de 3 mmol/l. Ok. En revanche, comment savoir si on est en autophagie ? Pour rappel, [l'autophagie](https://fr.wikipedia.org/wiki/Autophagie) c'est un mode dans lequel le corps fait le "grand ménage" et recycle tout ce qu'il peut : cellules malades, endommagées, mal repliées... C'est un état dans lequel on souhaite arriver lors du jeûne.
 
-On considère qu'on est en autophagie lorsque le rapport $\frac{G}{K}$ est aux alentours de 1. Dans le ratio précédent G et K sont respectivement les mesures de glucose et ketone exprimées dans les mêmes unités. J'utilise un Go-Keto. K y est exprimé en mmol/l et G en mg/dl. Pour convertir G de mg/dl en mmol/l je commence par retrouver la formule du glucose C6H12O6 . Ensuite, je trouve un [tableau de Mendeleïev](https://fr.wikipedia.org/wiki/Tableau_p%C3%A9riodique_des_%C3%A9l%C3%A9ments) ou je me rappelle qu'une mole de carbone pèse 12 gr, une d'oxygène pèse 16 gr et une d'hydrogène pèse 1 gr. J'en déduis qu'une mole de glucose pèse $12*6 + 12*1 + 16*6 = 180$ grammes. Enfin, il ne reste plus qu'un problème de règle de trois. Par exemple, si le Go-Keto me retourne la mesure suivante :
+On considère qu'on est en autophagie lorsque le rapport $$\frac{G}{K}$$ est aux alentours de 1. Dans le ratio précédent G et K sont respectivement les mesures de glucose et ketone exprimées dans les mêmes unités. J'utilise un Go-Keto. K y est exprimé en mmol/l et G en mg/dl. Pour convertir G de mg/dl en mmol/l je commence par retrouver la formule du glucose C6H12O6 . Ensuite, je trouve un [tableau de Mendeleïev](https://fr.wikipedia.org/wiki/Tableau_p%C3%A9riodique_des_%C3%A9l%C3%A9ments) ou je me rappelle qu'une mole de carbone pèse 12 gr, une d'oxygène pèse 16 gr et une d'hydrogène pèse 1 gr. J'en déduis qu'une mole de glucose pèse $$12*6 + 12*1 + 16*6 = 180$$ grammes. Enfin, il ne reste plus qu'un problème de règle de trois. Par exemple, si le Go-Keto me retourne la mesure suivante :
 
-$x$ mg/dl
+$$x$$ mg/dl
 
 Je transforme en grammes en divisant par 1000
 
-$\frac{x}{1000}$ g/dl
+$$\frac{x}{1000}$$ g/dl
 
 Comme 180 gr correspondent à 1 mole on peut écrire
 
-$\frac{x}{180 * 1000}$ mol/dl
+$$\frac{x}{180 * 1000}$$ mol/dl
 
 On passe en mmol en multipliant par 1000
 
-$\frac{1000* x}{180 * 1000} = \frac{x}{180}$ mmol/dl
+$$\frac{1000* x}{180 * 1000} = \frac{x}{180}$$ mmol/dl
 
 On passe en litre en multipliant par 10
 
-$\frac{10*x}{180} = \frac{x}{18}$ mmol/l
+$$\frac{10*x}{180} = \frac{x}{18}$$ mmol/l
 
 **À retenir**
 
