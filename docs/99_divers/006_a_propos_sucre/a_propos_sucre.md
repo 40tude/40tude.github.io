@@ -9,10 +9,18 @@ last_modified_date: 2023-02-23 19:12:16
 
 # À propos du sucre
 
-## Objectif
-C'est une liste de vidéos et de liens à propos du sucre que je souhaite garder sous le coude. Quand je trouve un truc intéressant je viens et je l'ajoute
+## Introduction
+C'est une liste de liens, de données, de vidéos à propos du sucre que je souhaite garder sous le coude. Quand je trouve un truc intéressant et que j'y pense je viens ici et je l'ajoute. Si je fais des update sous forme de texte ils sont en haut de la page
 
-## 2023 : Etude de l'INSERM
+
+
+## Update de 2024 : Corps cétoniques
+Il y avait trop d'infos du coup j'ai fait [un billet]({%link docs/99_divers/007_corps_cetoniques/corps_cetoniques.md%})
+
+
+
+
+## Update de 2023 : Etude de l'INSERM
 
 Résumé d'une [étude de l'INSERM](https://presse.inserm.fr/obesite-et-surpoids-pres-dun-francais-sur-deux-concerne/46494/) qui vient de sortir. 
 
@@ -36,8 +44,6 @@ Ceci dit, allez lire le commentaire de l'étude c'est court, factuel et instruct
 
 
 
-
-
 ## En 2018, en France 
 
 * 3 millions de diabétiques
@@ -50,7 +56,11 @@ Sur la planète, il y avait 100 millions de diabétiques en 1980, 400 millions e
 
 
 
-### FR - 3 min - Mise en bouche rapide et factuelle.
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## FR - 3 min - Mise en bouche rapide et factuelle.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b_xF9Ak7TMs?si=gT86liUqfVbFThjZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -59,33 +69,27 @@ Il faut lire la page de la [recommandation "forte" de l'OMS](http://www.who.int/
 
 **Note :** Les sucres libres sont ajoutés aux aliments/boissons, soit par le fabricant, le cuisinier, le consommateur. Exemple : sachet de sucre dans le thé, cuillère de sucre dans le yaourt... Les noms de ces sucres se terminent souvent par « ose ». Il y a 56 appellations différentes. Exemple : lactose, maltose, dextrose, glucose, fructose... Ils existent aussi sous l'acronyme HFCS (High Fructose Corn Syrup). À propos du HFCS, voir les vidéos de Robert Lustig un peu plus bas.
 
-À propos des [sucres libres](http://lepharmachien.com/sucre-libre/) et parce qu'un bon dessin vaut mieux qu'un long discours... En plus y a pas mal de liens au bas de la page.
-
-<div align="center">
-<img src="./assets/sucre.webp" alt="" loading="lazy"/>
-</div>
-
-
-### FR - 1H04 - C dans l'air - Et si on arrêtait le sucre ?
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GFORQ93Tp_o?si=vnQgtNiBB7C00LPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-
-### EN - 1H39 - Est-ce la version 2015 de l'autre vidéo du Dr LUSTIG ?  
-Pas sûr à 100% mais j'aime bien l'évolution de l'approche et le déroulement des slides.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nxyxcTZccsE?si=wb9Qqsmq0rbroBGz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
 
-### EN - 1H35 - Le film Fed Up qui est mentionné à la fin de la vidéo précédente 
-Je ne suis pas sûr que le lien reste valide très longtemps...
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## FR - 3 min. - Quelle est la consommation de sucres ajoutés en France ?
 
-Lien supprimé à retrouver
+Une vidéo du CEDUS histoire de ne pas être toujours à charge. J'ai du mal à trouver des vidéos à décharge.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hdfGoPISChY?si=YrTSu1V0gSdfzSpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### EN - 1H30 - La base. C'est LA vidéo historique 
 Enfin je crois... Elle date de 2009, c'est long mais ça vaut vraiment le coup. De toutes les vidéos de cette page, c'est par celle-là que j'ai commencé sur YouTube.
 
@@ -97,9 +101,49 @@ Enfin je crois... Elle date de 2009, c'est long mais ça vaut vraiment le coup. 
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### FR - 1H04 - C dans l'air - Et si on arrêtait le sucre ?
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GFORQ93Tp_o?si=vnQgtNiBB7C00LPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### EN - 1H39 - Est-ce la version 2015 de l'autre vidéo du Dr LUSTIG ?  
+Pas sûr à 100% mais j'aime bien l'évolution de l'approche et le déroulement des slides.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nxyxcTZccsE?si=wb9Qqsmq0rbroBGz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### EN - 1H35 - Le film Fed Up qui est mentionné à la fin de la vidéo précédente 
+Je ne suis pas sûr que le lien reste valide très longtemps...
+
+Lien supprimé à retrouver
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### EN - 18 min. On a aucun besoin de sucre dans notre consommation... 
-Et un régime low card aide vraiment ceux qui sont prédiabétique ou diabétique de type 2.
+Et un régime low carb aide vraiment ceux qui sont prédiabétique ou diabétique de type 2.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/da1vvigy5tQ?si=bghCHdECCRIlEyhQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -107,6 +151,10 @@ Et un régime low card aide vraiment ceux qui sont prédiabétique ou diabétiqu
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### EN - 1H38 - Fat Fiction
 Va pas rester longtemps en ligne à mon avis mais c'est vraiment bien car il revient sur l'histoire mais surtout il donne de l'espoir. Bon, cela dit, y a des moments ou y a matière à se mettre en colère.
 
@@ -116,13 +164,14 @@ Va pas rester longtemps en ligne à mon avis mais c'est vraiment bien car il rev
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### EN - 47 min - Jamie's Sugar Rush 
-
 J'ai vraiment bien aimé cette vidéo. Ça révolte et ça met en colère mais j'aime bien la démarche.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/spCVTRHnZ1E?si=f5KTPv4ukviU3O0Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
 
 Pour info en France en 2013 on était déjà à 150 amputations par semaine à cause du diabète (plus de détails sur cette [page](https://www.sciencesetavenir.fr/sante/diabete/8-000-amputations-par-an-en-france-a-cause-du-diabete_102278) où, bonheur suprême il y a un lien sur la source)
 
@@ -133,6 +182,10 @@ Pour info en France en 2013 on était déjà à 150 amputations par semaine à c
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### EN - 13 min. - Vidéo de Yoni Freedhoff 
 Il en était question dans une vidéo qui a été supprimée de la liste car plus dispo
 
@@ -142,8 +195,11 @@ Il en était question dans une vidéo qui a été supprimée de la liste car plu
 
 
 
-FR - 52 min - J'arrête le sucre France 5
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### FR - 52 min - J'arrête le sucre France 5
 Sous prétexte de supprimer le sucre, différentes facettes sont exposées/expliquées. Moins alarmiste que la plupart des autres vidéos. Le ton est sympa.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Kt2ftvHfIjc?si=ZNT3HKNbj8sNiQB7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -153,47 +209,121 @@ Sous prétexte de supprimer le sucre, différentes facettes sont exposées/expli
 
 
 
-FR - 40 min - C'est bien d'avoir un point de vue Canadien
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### FR - 40 min - Sucre et gras
+C'est bien d'avoir un point de vue Canadien
 
-https://www.youtube.com/watch?v=cQJ-SA4u0wM&t=1327s
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cQJ-SA4u0wM?si=Cel5F2zmF-AzLKHu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-EN - 30 min. - Début intéressant pour l'historique. La fin, à propos des probiotiques, je ne sais pas, je ne connais pas.
 
-https://www.youtube.com/watch?v=GljwL4KbLTo
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### EN - 30 min. - Sugar the Truth
+Début intéressant pour l'historique.  
+La fin, à propos des probiotiques, je ne sais pas, je ne connais pas.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GljwL4KbLTo?si=6LBguS-nDxbZuACe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Pour en savoir un peu plus sur le Candida : <https://www.santenatureinnovation.com/etes-vous-infeste-de-candida-albicans-2/>
 
-FR - 9 min. - A propos des probiotiques - Trop de langue de bois où finalement on dit sans rien dire... Pénible, surtout à la fin.
 
-https://www.youtube.com/watch?v=iMoKD-ryxT0
 
-FR - 1H11 - Cash investigation - Sucre : comment l'industrie vous rend accros
 
-https://www.youtube.com/watch?v=Rja_Riy_90M
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### FR - 9 min. - On n'est Pas des Pigeons - Les Probiotiques
+À propos des probiotiques  
+Trop de langue de bois où finalement on dit sans rien dire...  
+Pénible, surtout à la fin.
 
-FR - 1H42 - Sucre : gare à l'overdose.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iMoKD-ryxT0?si=7hZz1jKc_V5O0RKz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-https://youtu.be/Rj9ZbIHNHtk?t=2m7s
 
-FR - 3 min. - Une vidéo du CEDUS histoire de ne pas être toujours à charge. J'ai du mal à trouver des vidéos à décharge.
 
-https://www.youtube.com/watch?v=hdfGoPISChY
 
-## À propos de la chimie
 
-EN - 4:21 min. - Explique la différence entre le fructose des fruits et le fructose du saccharose du HFCS (high fructose corn syrup, plus utilisé aux US et au Canada qu'en France). On y explique aussi l'importance des fibres et tout s'appuie sur des publications scientifiques. Il y a par ailleurs pas mal d'autres vidéos intéressantes sur cette chaîne. Bref, ça vaut le coup d’œil.
 
-https://youtu.be/sHEJE6I-Yl4
 
-EN - 3 min. - Explique le mécanisme d’absorption de sucre, la sécrétion d'insuline, les dérèglements possibles et la prise de poids qui en résulte. Faut penser à mettre les sous-titres si besoin.
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### FR - 1H11 - Cash investigation - Sucre : comment l'industrie vous rend accros
 
-https://www.youtube.com/watch?v=cxXZUqJGofg
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Rja_Riy_90M?si=MQaT3F7ecszorOQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-FR - 4 min. - Sur le même sujet
 
-https://www.youtube.com/watch?v=0mn2mu0NyFA
 
-FR - 3.30 min. Sur l'asservissement du glucose dans le sang (en trop, en manque) et le travail du pancréas. Si excès, le pancréas sécrète de l'insuline, clé pour faire rentrer le glucose dans les cellules mais aussi pour le stockage dans les muscles et le foie. Si pas assez de glucose dans le sang, le pancréas sécrète du glucagon (hormone) et le foie restitue alors le glucose qu'il avait stocké précédemment.
 
-https://www.youtube.com/watch?v=UoGPhPQPKy8
 
+
+
+
+
+
+
+
+## Chimie
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### EN - 4:21 min. - If Fructose Is Bad, What About Fruit?
+Explique la différence entre le fructose des fruits et le fructose du saccharose du HFCS (high fructose corn syrup, plus utilisé aux US et au Canada qu'en France). On y explique aussi l'importance des fibres et tout s'appuie sur des publications scientifiques. Il y a par ailleurs pas mal d'autres vidéos intéressantes sur cette chaîne. Bref, ça vaut le coup d’œil.
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sHEJE6I-Yl4?si=smp1j5p_LozLEuu-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### EN - 3 min. - L'insuline et la prise de poids
+
+Explique le mécanisme d’absorption de sucre, la sécrétion d'insuline, les dérèglements possibles et la prise de poids qui en résulte. Faut penser à mettre les sous-titres si besoin.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cxXZUqJGofg?si=F7YgrYYMkVvf_t6h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+### FR - 4 min. - L'insuline, le glucose et vous
+Sur le même sujet
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0mn2mu0NyFA?si=-_zA4Y2ctA_CrE-u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+### FR - 3.30 min. Au coeur des organes : La glycémie
+Sur l'asservissement du glucose dans le sang (en trop, en manque) et le travail du pancréas. Si excès, le pancréas sécrète de l'insuline, clé pour faire rentrer le glucose dans les cellules mais aussi pour le stockage dans les muscles et le foie. Si pas assez de glucose dans le sang, le pancréas sécrète du glucagon (hormone) et le foie restitue alors le glucose qu'il avait stocké précédemment.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UoGPhPQPKy8?si=7l4TWElVf1H25m9X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
