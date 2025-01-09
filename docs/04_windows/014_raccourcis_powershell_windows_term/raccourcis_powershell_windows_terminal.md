@@ -7,6 +7,7 @@ date: 2023-01-13 09:05:51
 last_modified_date: 2023-02-22 14:21:34
 ---
 
+# Raccourcis PowerShell & Windows Terminal
 
 |Keys | Action |
 |:------- | :---------- |

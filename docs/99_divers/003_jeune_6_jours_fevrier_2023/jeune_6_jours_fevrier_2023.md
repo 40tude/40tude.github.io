@@ -153,7 +153,7 @@ Voir : <https://youtu.be/96dv7Xrgksw>
 
 Pour finir, une vidéo d'une personne que je ne trouve pas trop mal et que je suis où il explique ce qui se passe lors d'un jeûne. Oui, oui c'est anglais mais tu peux mettre les sous-titres et baisser la vitesse de lecture à 75% si besoin (mais il parle lentement).
 
-https://youtu.be/Wzmacu2TgFg
+Voir : <https://youtu.be/Wzmacu2TgFg>
 
 En ce qui me concerne le prochain jeûne est normalement prévu dans 3 mois et demi, W25, du dimanche 18 juin au soir au samedi 24 juin au soir.
 
