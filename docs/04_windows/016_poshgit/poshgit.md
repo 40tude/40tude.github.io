@@ -60,7 +60,7 @@ choco upgrade all
 
 ### 2 - Installation de Git classique
 
-1. Aller sur <https://git-scm.com/download/win> pour récupérer l'installeur
+1. Aller sur <https://git-scm.com/download/win> pour récupérer l'installeur
 2. Lancer l'installeur
 3. "Aie confiance..." dis oui à tout.
 
@@ -159,8 +159,8 @@ code ./Microsoft.PowerShell_profile.ps1
 Voilà à quoi ressemble mon fichier profile
 
 ```powershell
-Import-Module posh-git
-Set-PoshPrompt -Theme powerLine
+Import-Module posh-git
+Set-PoshPrompt -Theme powerLine
 ```
 
 Ensuite il faut ouvrir un nouveau PowerShell pour vérifier que le bon thème Oh my Posh est utilisé.

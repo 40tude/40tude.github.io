@@ -229,11 +229,11 @@ Finalement, sin Win10 22H2, voilà mes paramètres actuels. Je garde en tête qu
 </div>
 
 
-Pour info on voit que par rapport à ce que je pouvais avoir avec d'autres portables, j'ai pas le modi hybride etc.
+Pour info on voit que par rapport à ce que je pouvais avoir avec d'autres portables, j'ai pas le mode hybride etc.
 
 <div align="center">
 &nbsp;
-<img src="./assets/image-3.webp" alt="" loading="lazy"/>
+<img src="./assets/image-3.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
@@ -340,7 +340,7 @@ Pour qu'en mon absence, le portable ce mette tout seul en veille prolongée au b
 
 <div align="center">
 &nbsp;
-<img src="./assets/ConfigRestauration.webp" alt="" loading="lazy"/>
+<img src="./assets/ConfigRestauration.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
@@ -379,7 +379,7 @@ Pour voir où sont les fichiers de restauration sur le disques dur
 
 <div align="center">
 &nbsp;
-<img src="./assets/Nettoyage.webp" alt="" loading="lazy"/>
+<img src="./assets/Nettoyage.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
@@ -627,7 +627,7 @@ La résolution du Surface Pro est très grande et les machines virtuelles Debian
 
 <div align="center">
 &nbsp;
-<img src="./assets/PourVMWare.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/PourVMWare.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
@@ -646,12 +646,12 @@ La résolution du Surface Pro est très grande et les machines virtuelles Debian
 
 <div align="center">
 &nbsp;
-<img src="./assets/Nettoyage_2017_01.webp" alt="" loading="lazy"/>
+<img src="./assets/Nettoyage_2017_01.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
 <div align="center">
 &nbsp;
-<img src="./assets/Nettoyage_2017_01.webp" alt="" loading="lazy"/>
+<img src="./assets/Nettoyage_2017_01.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
