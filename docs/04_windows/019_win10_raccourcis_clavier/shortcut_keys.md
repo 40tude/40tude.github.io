@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "Windows, raccourcis clavier vraiment utiles"
+title: "Raccourcis clavier"
 #math: mathjax
 date: 2015-09-27 21:38:30
 last_modified_date: 2023-01-12 00:17:11
 ---
 
-# Raccourcis clavier Windows que j'utilise au quotidien
+# Raccourcis clavier
 
 Cette page n'est qu'un listing des raccourcis clavier que j'utilise régulièrement.  
 Allez faire un tour sur cette page pour [quelques manipes utiles]({%link docs/04_windows/017_windows_notes_diverses/notes_diverses.md%}) sous Windows.  
