@@ -47,8 +47,8 @@ J'espère qu'à terme il y aura d'autres pages pour les niveaux [Medium]({%link 
 <!-- ###################################################################### -->
 ## Onboarding
 
-### Note :
-$1\n{: .no_toc }
+### Note
+{: .no_toc }
 
 Le 20/09/2015 je viens de réaliser que le challenge Onboarding est devenu beaucoup, beaucoup plus simple que celui qui était proposé il y a encore quelques mois. En effet il ne faut plus s'occuper d'une liste plus ou moins longue d’ennemis mais uniquement des 2 plus proches. Bref, tout ce que je dis plus bas n'est plus vraiment nécessaire. En plus, dans la doc du challenge y a carrément la solution... Bref c'est vraiment une mise en bouche. À titre indicatif voilà un code Javascript qui passe le test (oui oui j'avais dit que je ne donnais pas mes solutions mais là franchement on va pas très loin même avec le code source en main) :
 
@@ -68,7 +68,7 @@ while (true) {
 ```
 
 ### Billet original
-$1\n{: .no_toc }
+{: .no_toc }
 
 C'est le tout, tout premier "challenge". Y a vraiment rien de tordu. Je prends le parti de travailler avec mon [Visual Studio Community 2013](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx) préféré (depuis l'été dernier [2015] j'utilise l'excellentissime [Visual Sutdio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs)). Pour passer de Visual Studio à [Codingame](https://www.codingame.com/start) je fais simplement des copier/coller du code. Du point de vue du code je décide de tirer parti du C++11 et d'utiliser la STL au maximum afin d'éviter de ré-écrire ce qui existe déjà. "No raw loop". Si vous ne voyez pas de quoi je parle allez faire un tour sur : <https://channel9.msdn.com/Events/GoingNative/2013/Cpp-Seasoning>
 
@@ -380,7 +380,8 @@ string BitMessage(ss.str()));
 ```
 
 ### Note
-$1\n{: .no_toc }
+{: .no_toc }
+
 Dans les boucles for autant utiliser "auto&" et "const auto&" selon que l'on modifie, ou pas, la valeur de la variable de la boucle ('c' ci-dessous) :
 
 ```actionscript3
