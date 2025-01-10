@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Mon Git Survival Guide"
+parent: "Programmation"
 #math: mathjax
 date: 2017-02-26 15:15:44
 last_modified_date: 2020-05-03 17:26:04
