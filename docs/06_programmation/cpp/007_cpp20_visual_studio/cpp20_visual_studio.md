@@ -13,7 +13,7 @@ last_modified_date: 2023-01-12 00:12:28
 We are in May 2021 and my version of Visual Studio Communitiy is 16.9.5
 
 <div align="center">
-<img src="./assets/image-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-1.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -107,7 +107,7 @@ Hopefully, the solution directory should not be too messy. Below the build direc
 At this point I would recommend saving this project as a template. This will speed up the start of your next C++20 project. To do so, select the Project menu then the "Export Template..." option. Then, follow the instructions and fill the dialog boxes. You can even add your own icon.
 
 <div align="center">
-<img src="./assets/image-11.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-11.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
