@@ -35,14 +35,17 @@ Vous trouverez-ci dessous les tests que j'ai faits ainsi que mes remarques sur l
 * Je clique sur Traduire (SHIFT + ALT + F7)
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-21.webp" alt="" loading="lazy"/>
+&nbsp;
 </div>
-
 
 * Le contenu de la cellule est traduit dans le volet de droite
 
 <div align="center">
-<img src="./assets/image-22.webp" alt="" loading="lazy"/>
+&nbsp;
+<img src="./assets/image-22.webp" alt="" width="300" loading="lazy"/>
+&nbsp;
 </div>
 
 
@@ -81,7 +84,9 @@ Vous trouverez-ci dessous les tests que j'ai faits ainsi que mes remarques sur l
 * Je copie-colle la colonne de cellules à traduire
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-17.webp" alt="" width="900" loading="lazy"/>
+&nbsp;
 </div>
 
 
@@ -91,7 +96,9 @@ Vous trouverez-ci dessous les tests que j'ai faits ainsi que mes remarques sur l
 =GOOGLETRANSLATE(A2,"fr","en")
 ```
 <div align="center">
+&nbsp;
 <img src="./assets/image-18.webp" alt="" width="900" loading="lazy"/>
+&nbsp;
 </div>
 
 
@@ -104,7 +111,9 @@ Vous trouverez-ci dessous les tests que j'ai faits ainsi que mes remarques sur l
   + Je copie uniquement le texte
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-19.webp" alt="" loading="lazy"/>
+&nbsp;
 </div>
 
 * Relecture obligatoire dans Excel
@@ -124,7 +133,9 @@ Vous trouverez-ci dessous les tests que j'ai faits ainsi que mes remarques sur l
 * Le traducteur touche à la mise en page et aux majuscules. Dans mon cas c'est gênant pour moi car je suis dans un contexte "programmation" avec pas mal de termes qui sont impactés. Par exemple certains noms de fonctions ou de paramètres sont traduit ou partiellement traduits. Voir un autre exemple ci-dessous :
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-20.webp" alt="" width="900" loading="lazy"/>
+&nbsp;
 </div>
 
 
@@ -146,7 +157,9 @@ Une fois que les données à traduire sont dans la feuille on va écrire une fon
 * Dans le menu Extensions, choisir l'option Apps Script
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-23.webp" alt="" width="900" loading="lazy"/>
+&nbsp;
 </div>
 
 
@@ -174,7 +187,9 @@ function deepl(cell) {
 * Dans la feuille, on utilise ensuite alors notre "fonction" deepl() comme on avait utilisé la fonction GOOGLETRANSLATE() précédemment.
 
 <div align="center">
+&nbsp;
 <img src="./assets/image-24.webp" alt="" loading="lazy"/>
+&nbsp;
 </div>
 
 * À titre indicatif, il peut être utile de faire un test et de confronter dans 2 colonnes les traductions issues de Google Translate et de Deepl. De mon point de vue, à ce jour, il n'y a pas photo.
