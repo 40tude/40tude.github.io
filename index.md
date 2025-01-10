@@ -28,6 +28,17 @@ Pendant le portage, même si j'apporte quelques modifications aux billets, je ne
 Pour l'instant c'est pas fun mais je suis focus sur le transfert.
 
 ---
+## IDEES DE BILLET
+* Pareto et 50%-1%
+* Revenir sur Codingame
+* SOS Chapitres IV et suivants
+* IA et ML 
+* Relire les notes OneNote de préparation certification IA et voir ce que je peux rapatrier
+* Rapatrier la page install Linux Mint qui est sur GitHub 
+* 52 nuances de physique
+
+
+---
 ## TODO
 * Sur la 1ere page, la liste des 10 derniers billets édités
 * Lightbox pour les images?
@@ -48,7 +59,6 @@ Pour l'instant c'est pas fun mais je suis focus sur le transfert.
 
 
 ---
-
 ## DONE
 * ~~Ajouter un indicateur de durée de lecture en haut des pages~~
 * ~~Installer Google Analytics~~

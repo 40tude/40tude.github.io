@@ -31,8 +31,9 @@ Cet article commence à dater (2015). La plupart des informations à propos des 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Mai 2016 je remarque 3 choses :
+## Mai 2016 
 
+Je remarque 3 choses
 1. Cela fait un an que je n'ai pas joué sur Codingame (le temps passe vite...)
 2. Plus gênant... Il semble que les fichiers test que l'on pouvait télécharger ont disparus. Je trouve ça nul. Je préfère de loin tester mon code dans Visual Studio Community puis faire un copier-coller sur Codingame plutôt que d'être "forcé" à développer dans une IHM Web. En plus les fichiers en question permettaient de cogiter dans le train et en tout cas partout où on n'avait pas nécessairement de liaison web. Nul je vous dis.
 3. APU Init Phase passait l'année dernière. Je viens de faire un test vite fait. J'ai l'impression qu'il y a beaucoup plus de Test case et malheureusement il ne passe plus. Ça me fatigue un petit peu car si cela arrive sur ce "challenge" en particulier cela peut très bien arriver sur d'autres. J'ai pas du tout envie de tout tester à nouveau car rien ne dit qu'il ne faudra pas encore tout tester à nouveau dans 6 mois. Je trouve que ce n'est pas très pro comme attitude. Par exemple ils auraient pu mettre un APU Init Phase V1, APU Init Phase V2 etc. et/ou laisser le challenge dans son état initial. Bref, ça fait suer. Je vais mettre un tag sur les commentaires, un truc du style "marche en Mai 2016" afin d'indiquer la date à laquelle les explications que je donne se rapportent. Ensuite si l'équipe de Codingame change ses tests et/ou la nature du puzzle je n'y peux malheureusement pas grand-chose.
