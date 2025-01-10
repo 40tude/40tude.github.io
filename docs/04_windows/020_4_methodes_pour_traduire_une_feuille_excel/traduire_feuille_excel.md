@@ -190,11 +190,13 @@ function deepl(cell) {
 
 **Contre**
 
+{: .warning }
+Faire **très attention** aux rafraîchissements de page qui consomment des tokens de traduction
+
+* /Z!\ ☣️ Je ne suis pas sûr de comprendre **exactement** à quel moment les fonctions deepl() des différentes cellules sont invoquées. Ce qui est sûr c'est qu'à chaque fois qu'on ouvre la feuille elles sont appelées. On peut rapidement exploser son quota. Au début, il y a donc intérêt à faire des tests avec 5 ou 6 lignes. Quand on est à peu près satisfait on se lance sur l'ensemble des lignes. Dans mon cas j'ai 600 lignes et à peu près 30 000 mots à traduire. Bien sûr, j'ai explosé mon quota dans la journée. De tous les points négatifs c'est, de mon point de vue, le plus important. Je veux maitriser précisément à quels instants ma fonction `deepl()` est invoquée.
 * Il faut un compte Deepl, mais bon, à créer, ce n'est pas la mort non plus
 * Avec un compte gratuit il y a un quota (500 000 mots par mois je crois)
 * Il faut écrire une fonction. Cela dit, avec le code ci-dessus, vous avez une pas trop mauvaise base de départ. Par exemple j'ai passé pas mal de temps à trouver la fonction `encodeURIComponent()`.
-* /Z!\ ☣️Faire **très attention** aux rafraîchissements de page qui consomment des tokens de traduction
-* /Z!\ ☣️ Je ne suis pas sûr de comprendre **exactement** à quel moment les fonctions deepl() des différentes cellules sont invoquées. Ce qui est sûr c'est qu'à chaque fois qu'on ouvre la feuille elles sont appelées. On peut rapidement exploser son quota. Au début, il y a donc intérêt à faire des tests avec 5 ou 6 lignes. Quand on est à peu près satisfait on se lance sur l'ensemble des lignes. Dans mon cas j'ai 600 lignes et à peu près 30 000 mots à traduire. Bien sûr, j'ai explosé mon quota dans la journée. De tous les points négatifs c'est, de mon point de vue, le plus important. Je veux maitriser précisément à quels instants ma fonction `deepl()` est invoquée.
 * On sort d'Excel (mais bon, là aussi, on pouvait choisir de tout faire à partir de Google Sheets dès le départ)
 * Il supprime des espaces qui se répètent. Gênant dans mon cas particulier mais bon je peux comprendre. En fait mes cellules Excel sont éditées avec une police Consolas (chasse fixe), elles ont quasiment toutes plusieurs lignes et je fais de la "mise en page" en alignant certaines lignes entre elles. Voir par exemple un exemple de contenu de cellule typique ci-dessous :
 
