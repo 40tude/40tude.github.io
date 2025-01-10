@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "posh-git"
+title: "Oh My Posh"
 parent : "Windows"
 #math: mathjax
 date: 2017-03-05 14:25:28
 last_modified_date: 2023-01-12 00:14:42
 ---
 
-# posh-git
+# Oh My Posh
 
 ## Introduction
 
