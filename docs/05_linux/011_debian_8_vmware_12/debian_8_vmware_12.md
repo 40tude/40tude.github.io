@@ -12,9 +12,9 @@ last_modified_date: 2020-05-04 09:44:52
 
 ## Introduction
 
-À la date de rédaction de ce billet, installer une Debian dans VMWare Workstation ne pose aucun problème. Le truc se sont les quelques étapes supplémentaires à faire ensuite. Comme je n'ai pas envie de consommer des cases mémoire pour cela je préfère me faire une check-list.
+À la date de rédaction de ce billet, installer une Debian dans VMWare Workstation ne pose aucun problème. Le truc se sont les quelques étapes supplémentaires à faire ensuite. Comme je n'ai pas envie de consommer des cases mémoire pour ça je préfère me faire une **check-list**.
 
-Je suis sous Windows 10
+Je suis sous Windows 10 mais la version de Windows n'est pas essentielle.
 
 Je fais une installation de [VMware Workstation 12 Player](https://www.vmware.com/fr/products/workstation-player/workstation-player-evaluation.html)
 
