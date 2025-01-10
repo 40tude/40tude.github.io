@@ -11,7 +11,7 @@ last_modified_date: 2020-05-03 17:26:04
 # Mon Git Survival Guide
 
 {: .warning }
-Janvier 2025. De mon côté les choses ont pas mal évolué du côté de Git. Je transfère cette page avec la ferme intention d'y revenir. Par sûr quelle soit vraiment utile en l'état. En attendant sa mise à jour je vous propose d'aller [lire cette page sur mon repo GitHub](https://github.com/40tude/01_github_issues_fixed).
+Janvier 2025. De mon côté les choses ont pas mal évolué du avec Git. Je transfère cette page vers la nouvelle version du site avec la ferme intention d'y revenir. Par sûr quelle soit vraiment utile en l'état. En attendant sa mise à jour je vous propose d'aller [lire cette page sur mon repo GitHub](https://github.com/40tude/01_github_issues_fixed).
 
 
 ## Introduction
