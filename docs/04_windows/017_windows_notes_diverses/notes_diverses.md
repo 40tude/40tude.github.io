@@ -74,7 +74,6 @@ Le répertoire "lxss" n’apparaît pas du tout dans l'explorateur de fichier (m
 {: .no_toc }
 
 * Lire cette [page](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/) pour plus d'information (police etc.)
-
 * Voir cette [vidéo](https://channel9.msdn.com/Events/Ignite/Australia-2017/WIN321b)
 
 
@@ -205,7 +204,6 @@ Il faut absolument aller vois cette vidéo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OHKKcd3sx2c?si=9XAPkYg1McZ4aeUP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-
 À **retenir** quand on utilise un portable :
 1. Je débranche
 1. Je rabats
@@ -220,7 +218,7 @@ Par exemple mon Surface Book ne supporte que le mode S0
 </div>
 
 
-Finalement, sin Win10 22H2, voilà mes paramètres actuels. Je garde en tête qu'en mode "veille prolongée" le PC est toujours susceptible de répondre à des solicitations issues du réseau (téléchargement de mises à jour...) et qu'il faut vraiment l'éteindre si on ne veut pas que la batterie se vide.
+Finalement, sous Win10 22H2, voilà mes paramètres actuels. Je garde en tête qu'en mode "veille prolongée" le PC est toujours susceptible de répondre à des solicitations issues du réseau (téléchargement de mises à jour...) et qu'il faut vraiment l'éteindre si on ne veut pas que la batterie se vide.
 
 <div align="center">
 &nbsp;
@@ -408,6 +406,7 @@ Pour voir où sont les fichiers de restauration sur le disques dur
 1. Ensuite avec Win + X on a les options PowerShell et Powershel (admin) dans le menu
 
 ### Note
+{: .no_toc }
 Penser à ouvrir de suite une console en mode Admin et à taper :
 
 ```
@@ -454,7 +453,7 @@ Pour faire démarrer PowerShell dans un répertoire particulier ou bien lancer l
 1. Taper :
 
 ```powershell
-New-Item -path $profile -type file –force
+New-Item -path $profile -type file -force
 ```
 
 4. Aller dans  C:\Users\xyz\Documents\WindowsPowerShell
@@ -650,8 +649,3 @@ La résolution du Surface Pro est très grande et les machines virtuelles Debian
 &nbsp;
 </div>
 
-<div align="center">
-&nbsp;
-<img src="./assets/Nettoyage_2017_01.webp" alt="" width="600" loading="lazy"/>
-&nbsp;
-</div>
