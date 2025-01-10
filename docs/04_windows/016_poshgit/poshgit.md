@@ -13,7 +13,7 @@ last_modified_date: 2023-01-12 00:14:42
 
 **Avril 2021** : je fais une grosse mise à jour de cette page qui date de 2017. Ah oui, quand même...
 
-Je vous propose une installation de Git et de Oh-My-Posh étape par étape afin d'avoir des terminaux qui ressemblent à quelque chose surtout quand on travaille avec Git.
+Je vous propose une installation de Git, posh-git et de Oh-My-Posh étape par étape afin d'avoir des terminaux qui ressemblent à quelque chose surtout quand on travaille avec Git.
 
 Typiquement voilà ce que cela peut donner dans un PowerShell sous Win Terminal. On voit tout de suite que le répertoire est un dépôt Git, qu'on est sur la branche master, qu'il n'y a pas de fichier modifié et rien dans le Stage.
 
@@ -67,7 +67,7 @@ Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned -Force
 Install-Module -Name posh-git -Scope CurrentUser -Force
 ```
 
-Si tu as un dépôt Git sur ton disque vas-y...
+Si tu as un dépôt Git sur ton disque vas-y et jette ton oeil sur le prompt...
 
 
 
@@ -76,11 +76,19 @@ Si tu as un dépôt Git sur ton disque vas-y...
 
 ## Installer Oh my Posh
 
-Oh my Posh, permet de rendre l'affichage de posh-git beaucoup plus beau. Dans le même terminal PowerShell Admin que précédemment, il faut saisir la ligne suivante
+[Oh my Posh](https://ohmyposh.dev/), permet de rendre l'affichage de posh-git beaucoup plus beau. Dans le même terminal PowerShell Admin que précédemment, il faut saisir l'une des 2 lignes suivantes selon que vous utilisez Chocolatey ou pas. 
 
+### Chocolatey
 ```powershell
-Install-Module oh-my-posh -Scope CurrentUser -Force
+choco install oh-my-posh
 ```
+
+### Manuelle
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+```
+
+
 
 ### Installation de la police Meslo
 
@@ -152,9 +160,9 @@ Ensuite il faut ouvrir un nouveau PowerShell pour vérifier que le bon thème Oh
 
 ## Tuning de Win Terminal
 
-Si Win Terminal n'est pas encore sur votre PC je ne peux plus rien faire pour vous. Vous êtes perdu pour la cause 😡 Au pire, essayez un petit `choco install microsoft-windows-terminal` dans un PowerShell Admin... À vous de voir 😉
+Si Win Terminal n'est pas encore sur votre PC je ne peux plus rien faire pour vous. Vous êtes perdu pour la cause 😡. Au pire, essayez un petit `choco install microsoft-windows-terminal` dans un PowerShell Admin... À vous de voir 😉
 
-On lance win terminal : Touche ⊞ WIN puis on tape "wt"
+On lance win terminal : Touche WIN puis on tape "wt"
 
 Ensuite on affiche les paramètres : CTRL + virgule
 
