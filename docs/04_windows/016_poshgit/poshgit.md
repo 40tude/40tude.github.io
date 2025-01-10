@@ -27,7 +27,7 @@ Typiquement voilà ce que cela peut donner dans un PowerShell sous Win Terminal.
 Rien de compliqué. Cette **check-list** a juste pour objectif de nous faire gagner du temps.
 
 
-## Installer GIT (si ce n'est pas encore fait)
+## Installer Git (si ce n'est pas encore fait)
 
 2 solutions.
 
@@ -42,13 +42,23 @@ Rien de compliqué. Cette **check-list** a juste pour objectif de nous faire gag
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-* Installation proprement dite de Git via choco
-  + Dans le terminal admin précédent saisir : `choco install git -y`
+* Installation proprement dite de Git 
+  + Dans le terminal admin précédent saisir coller le texte ci-dessous  
 
-Oui, oui on a l'air de perdre du temps... Mais la prochaine fois qu'on voudra mettre à jour tous les softs installés avec Chocolatey on aura juste à ouvrir un PowerShell Admin et à taper cette commande : `choco upgrade all`
+```powershell
+choco install git -y  
+```
+
+Oui, oui on a l'air de perdre du temps... Mais la prochaine fois qu'on voudra mettre à jour tous les softs installés avec Chocolatey on aura juste à ouvrir un PowerShell Admin et à taper cette commande : 
 
 
-### 2 - Installation classique
+```powershell
+choco upgrade all
+```
+
+
+
+### 2 - Installation de Git classique
 
 1. Aller sur <https://git-scm.com/download/win> pour récupérer l'installeur
 2. Lancer l'installeur
