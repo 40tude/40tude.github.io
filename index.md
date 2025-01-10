@@ -153,7 +153,17 @@ Mettre toc que sur les titres de niveau 2. Eviter 3 et +
 {: .no_toc .text-delta}
 - TOC
 {:toc}
+
+### Blablabla
+{: .no_toc }
 ```
+Pour exclure de la TOC les titres de niveaux 3+
+CTRL+H + Exp Reg
+* ``(#{3,}\s.+)``
+* `$1\n{: .no_toc }`
+
+
+
 
 ## Organisation des catégories ?
 

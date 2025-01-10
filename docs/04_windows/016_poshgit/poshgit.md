@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "posh-git sous Windows 10"
+title: "posh-git"
 parent : "Windows"
 #math: mathjax
 date: 2017-03-05 14:25:28
 last_modified_date: 2023-01-12 00:14:42
 ---
 
-# posh-git sous Windows 10
+# posh-git
 
 ## Introduction
 
@@ -121,7 +121,7 @@ En haut à gauche de la fenêtre PowerShell qu'on a sous les yeux, il faut aller
 
 <div align="center">
 &nbsp;
-<img src="./assets/image-17.webp" alt="" loading="lazy"/>
+<img src="./assets/image-17.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
@@ -187,7 +187,7 @@ Enfin, il faut cliquer sur la roue crantée en bas à gauche. VSCode doit s'ouvr
 
 <div align="center">
 &nbsp;
-<img src="./assets/image-21.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-21.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
@@ -196,7 +196,7 @@ Afin d'éditer les settings en mode texte plutôt qu'en mode graphique, lorsque 
 
 <div align="center">
 &nbsp;
-<img src="./assets/image-22.webp" alt="" loading="lazy"/>
+<img src="./assets/image-22.webp" alt="" width="600" loading="lazy"/>
 &nbsp;
 </div>
 
