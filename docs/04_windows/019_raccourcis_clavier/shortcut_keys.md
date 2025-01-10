@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Raccourcis clavier"
+parent: "Windows"
 #math: mathjax
 date: 2015-09-27 21:38:30
 last_modified_date: 2023-01-12 00:17:11
@@ -16,12 +17,12 @@ S'il y a d'autres raccourcis clavier que je me mets à utiliser je ferai une mis
 
 | RACCOURCIS CLAVIER                                   | DESCRIPTION            |
 | :--------------------------------------------------- |:---------------------- |
-| Windows + E                                           | Explorateur de fichiers |
+| Windows + E                                          | Explorateur de fichiers |
 | Windows + Shift + s                                  | Capture écran |
 | Ctrl + Shift + Echap                                 | Gestionnaire de tâches |
 | Alt + Tab                                            | Les tâches |
 | Windows + X + i ou +a (admin)                        | Terminal normal ou admin |
-| Windows + R                                           | Run une commande |
+| Windows + R                                          | Run une commande |
 
 
 
