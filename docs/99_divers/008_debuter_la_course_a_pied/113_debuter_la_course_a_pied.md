@@ -87,7 +87,7 @@ Oui, bien sûr, ce n'est pas de la course à pied, c'est de la marche mais en to
 
 
 
-## C'est quand qu'on court ?
+### C'est quand qu'on court ?
 Pour ta prochaine sortie, je te propose de sortir une heure (ou une demi-heure, au début on s'en fiche un peu) et de suivre le programme suivant (il te faut une montre au poignet)
 
 * Tu marches 5 min.
@@ -110,7 +110,7 @@ Heu... Je n'ai pas parlé de montre connectée (j'en ai une et j'en suis très c
 
 
 
-## À ce propos, j'ai une question bête... Je cours comment ?
+### À ce propos, j'ai une question bête... Je cours comment ?
 Non, non ce n'est pas du tout une question bête, au contraire, c'est une très bonne question ! J'imagine qu'actuellement tu es en train de lire cette page à l'intérieur (maison, bureau...) alors je te propose de te lever et de sauter à pieds joints une dizaine de fois (un peu comme si tu avais une corde à sauter)
 
 <div align="center">
@@ -146,7 +146,7 @@ De la même façon, si un jour tu fais autant de bruit qu'une armée Romaine en 
 
 
 
-## OK, mais je cours à quelle vitesse ?
+### OK, mais je cours à quelle vitesse ?
 Heu... Ne le prends pas mal mais je crains que ta carrière Olympique soit plus derrière toi que devant toi alors pour l'instant on va éviter de parler de chronos. OK ?
 
 <div align="center">
@@ -165,7 +165,7 @@ Je te propose de courir à peine plus vite que quand tu marches.
 
 Non, non je ne rigole pas. Pour bien débuter la course à pied, on va courir excessivement lentement et on va tout faire pour ne pas accélérer. C'est d'ailleurs pour ça que je ne recommande pas la musique dans les oreilles car elle nous incite à accélérer le rythme et à allonger la foulée.
 
-## Mouai... Et je fais ça comment ?
+### Mouai... Et je fais ça comment ?
 
 Idéalement, il faudrait que le pied qui se pose au sol, se pose juste devant la pointe de celui qui est déjà au sol. Ça fait des foulées ridicules, je sais. Cela dit, c'est l'idée générale. On n'est pas au centimètre près. Tiens, regarde l'image ci-dessous :
 
@@ -199,7 +199,7 @@ Là, n'y a pas 36 solutions, faut faire des tests à la maison avec une montre e
 
 Un bon indicateur c'est qu'en faisant comme ça (foulée courte et rythme soutenu) tu dois être capable de parler sans avoir l'impression de mourir ou de courir en ne respirant que part le nez. Si tu es tout seul, récites une [fable de la Fontaine](https://youtu.be/0Q_V7yZaEDE?si=BThSt1mx2ANAgIZ3&t=9) ou la [table de multiplication]({%link docs/03_maths/999_erreurs/001_table_multiplication/table_multiplication.md%}).
 
-### Débuter la course à pied : synthèse
+### Débuter la course à pied - Synthèse
 * Tu atterris sur l'avant de tes pieds (silencieux comme un Ninja)
 * Tu fais de toutes petites foulées et tu cours très lentement
 * Le haut de ton corps est légèrement penché vers l'avant
@@ -209,7 +209,7 @@ Un bon indicateur c'est qu'en faisant comme ça (foulée courte et rythme souten
 * Tes mains ne se croisent PAS et restent de leur côté respectif
 * Tu alternes 5 minutes de marche et 5 minutes de course
 
-## Oui mais j'ai l'air d'un con!
+### Oui mais j'ai l'air d'un con!
 C'est sûr, le papy de 70 ans qui vient de te doubler vient de te mettre un coup au moral.
 
 <div align="center">
@@ -239,14 +239,14 @@ Tu débutes. Le billet s'appelle "Débuter la course à pied". Tu n'as pas le ni
 
 
 
-## On termine par 5 minutes de course. Ce n'est pas très malin...
+### On termine par 5 minutes de course. Ce n'est pas très malin...
 Pas de problème, on s'adapte... Tu termines ta dernière session de 5 minutes de course, tu arrives à la maison et... Tu ne t'arrêtes pas, tu fais un tour de pâté de maison et tu marches encore 5 minutes si tu veux.
 
 Cependant, si tu veux absolument montrer aux autres de la tribu que tu te bouges, rentrer en sueur ce n'est pas con... Nan, je plaisante. Va plutôt marcher 5 minutes de plus.
 
 
 
-## Courir tout seul ou à plusieurs ?
+### Courir tout seul ou à plusieurs ?
 Je m'en fous. Ton problème c'est de te remettre à sortir et à te bouger. Si le fait d'aller avec un ou des potes t'aide à débuter la course à pied, tant mieux. Sinon, assume ta décision de t'y remettre et sors tout seul.
 
 <div align="center">
@@ -265,7 +265,7 @@ Attention à un truc si tu sors avec des potes. Il faut que les niveaux, les obj
 </div>
 
 
-## Il ne fait pas beau et je n'ai pas envie d'y aller
+### Il ne fait pas beau et je n'ai pas envie d'y aller
 C'est l'éternel problème. En tout cas, moi c'est sûr, je ne suis jamais en manque de course à pied et je peux très bien vivre sans aller courir.
 
 Il n'y a pas de solution miracle. C'est une question de motivation et de coup pied aux fesses.
@@ -292,7 +292,7 @@ Enfin, c'est aussi l'avantage de commencer par 5 minutes de marche. C'est plus f
 
 
 
-## Oui mais moi, la marche ça va mais quand je cours, au bout de 3 minutes je suis à 2 doigts de mourir.
+### Oui mais moi, la marche ça va mais quand je cours, au bout de 3 minutes je suis à 2 doigts de mourir.
 Simple... Arrêtes de courir. Remets-toi à la marche. Quand tu seras redescendu en température et en rythme cardiaque, que tu en aura envie et que tu auras atteint le prochain multiple de 5 sur ta montre, tu repars en courant avec l'idée de tenir 5 min.
 
 <div align="center">
@@ -303,7 +303,7 @@ Simple... Arrêtes de courir. Remets-toi à la marche. Quand tu seras redescendu
 
 
 
-## Oui mais si j'y arrive toujours pas ?
+### Oui mais si j'y arrive toujours pas ?
 Pas de problème. Tu veux débuter la course à pied. C'est ce qu'il y a de plus dur. Donc te prends pas la tête. Si ça arrive, tu t'arrêtes et tu reprends la marche le temps qu'il faut... Si tu dois marcher pendant un mois avant de pouvoir tenir 5 minutes de course, ce n'est pas un problème.
 
 <div align="center">
@@ -312,10 +312,17 @@ Pas de problème. Tu veux débuter la course à pied. C'est ce qu'il y a de plus
 &nbsp;
 </div>
 
-## Oui mais si au bout d'une heure j'ai couru finalement que 5 minutes et marché 55 minutes ?
+
+
+
+### Oui mais si au bout d'une heure j'ai couru finalement que 5 minutes et marché 55 minutes ?
 Eh bien dis-toi que c'est déjà ça de pris et qu'en comparaison de la semaine dernière il y a du plus. À la prochaine sortie repars avec l'idée de suivre le rythme de 5 minutes de marche puis 5 minutes de course. Si tu ne tiens pas, il n'y a pas mort d'homme. Cours moins et marche plus.
 
-## Oui mais moi je suis toujours en train de regarder ma montre
+
+
+
+
+### Oui mais moi je suis toujours en train de regarder ma montre
 Et? Franchement, c'est quoi le problème ? T'en bave, t'en as marre, t'as envie de marcher... Et tu regardes ta montre... La belle affaire. Te prends pas la tête avec ça, c'est normal.
 
 Focalise plutôt ton attention sur les choses importantes : avant du pied, regard au loin, bras à 90° et mains au niveau des hanches par exemple. Pour le reste si tu regardes ta montre... Tout le monde s'en fout. Allez cours Forest, cours !
@@ -327,7 +334,7 @@ Focalise plutôt ton attention sur les choses importantes : avant du pied, regar
 </div>
 
 
-## Quelle fréquence pour les sorties ?
+### Quelle fréquence pour les sorties ?
 Une tous les jours ce n'est pas possible ni raisonnable à long terme. Une tous les 2 jours c'est super. Une seule fois le samedi à 11H du matin, ce n'est tout simplement pas assez. Tu peux te bercer d'illusions, te dire que c'est déjà bien. Oui... Mais non. Sur une semaine, idéalement, il faudrait arriver à sortir :
 
 * Lundi
@@ -346,7 +353,7 @@ En tout cas, un jour de repos entre 2 sorties c'est bien. La sortie du samedi tu
 
 
 
-## À quel moment aller courir ?
+### À quel moment aller courir ?
 À ce stade on s'en fout. Sors et cours. On verra après...
 
 Bon, maintenant si tu es déjà sorti plusieurs fois tu as dû remarquer que si tu cours le soir, ensuite tu es tout excité, tonique etc. Conclusion, le soir ce n'est pas le meilleur moment car ensuite tu peux avoir du mal à t'endormir.
@@ -371,7 +378,10 @@ Perso, à part en vacances, l'été, je n'arrive pas à me lever pour aller cour
 
 Finalement, j'essaie d'aller courir le midi et bien sûr, comme je n'ai pas le temps, je cours en fin de journée après le boulot. Pas top, mais c'est toujours pareil.... Mieux vaut courir en fin d'après-midi que de ne pas sortir du tout...
 
-## Faut que j’emmène à boire et à manger ?
+
+
+
+### Faut que j’emmène à boire et à manger ?
 Non. Tu ne t’embarrasse pas avec tout ça. En été tu n'es pas débile au point de sortir à midi en plein cagnard. Tu sortiras le matin ou en fin d'après-midi. Attention, l'été en fin d'après-midi ce n'est vraiment pas top car il fait encore très chaud et il y a encore beaucoup de réverbération. L'été le mieux c'est donc le matin et vu qu'on est en 5/5 tu peux survivre à la soif.
 
 Si maintenant tu as vraiment un problème emmène une "petite" bouteille d'eau et gardes-la en main (c'est vite chiant, je te préviens). À notre niveau, pas besoin d'investir dans une ceinture de marathonien ou un camel bag.
@@ -386,7 +396,7 @@ Si maintenant tu as vraiment un problème emmène une "petite" bouteille d'eau e
 </div>
 
 
-## Résumé du 5/5
+### Le 5/5 - Synthèse
 * Bouge-toi ! Sors! C'est le plus dur, le plus important et personne ne peut le faire à ta place.
 * Mets en place une routine, une discipline.
 * Une paire de shoes neuves (voir plus bas) et une montre "normale" au poignet
@@ -399,7 +409,7 @@ Si maintenant tu as vraiment un problème emmène une "petite" bouteille d'eau e
 
 
 
-## T'as rien à dire à propos des étirements ?
+### T'as rien à dire à propos des étirements ?
 Nan! Je suis nul et je n'ai jamais rien compris... En revanche il y a pas mal de choses intelligentes qui sont dites dans cette vidéo.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wTU4BM_FxCY?si=DUKd6m2ABER6OcBt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -539,7 +549,7 @@ Bon, de toute manière tu vas te faire avoir une ou deux fois et tu vas apprendr
 
 Ah si quand même... En cas de pluie, que tu portes des lunettes ou pas, le mieux c'est encore la casquette.
 
-## À propos des chaussures
+### À propos des chaussures
 C'est le seul truc où il ne faut pas trop plaisanter. Avant d'aller courir, tu vas chez Décathlon (ou un autre) et tu t'achètes une paire de pompes pas trop cher (évite les tout premiers prix quand même).
 
 Oui, oui je sais, tu as au fond d'un placard les pompes que tu utilisais y a 5 ans quand tu faisais du tennis... Bon, je t'arrête tout de suite. Elles sont cuites tes tennis. Mieux vaut aller en acheter une paire neuve que tu réserveras uniquement à la course à pied.
@@ -563,7 +573,7 @@ Ne prends pas non plus un modèle fluo, hyper spécialisé. Tu ne pourras pas l'
 
 
 
-### Synthèse à propos des chaussures
+### À propos des chaussures - Synthèse
 Ne prends pas le premier prix
 Prends une pointure au-dessus
 Tu ne serres pas tes lacets comme un sourd
