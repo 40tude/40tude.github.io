@@ -581,7 +581,7 @@ Ne prends pas non plus un modèle fluo, hyper spécialisé. Tu ne pourras pas l'
 &nbsp;
 </div>
 
-Pense aussi à acheter 2 paires de chaussettes. Il faut quelles remontent au-dessus de l'arrière de la chaussure car sinon tu vas faire des soufflettes. Quand tu as confirmé que les chaussettes ne glissaient pas dans chaussures, que tu n'avais pas de soufflettes, que c'étaient les bonnes... Tu vas en acheter 2 autres paires (bien sûr tu prends les mêmes)
+Pense aussi à acheter 2 paires de chaussettes. Il faut quelles remontent au-dessus de l'arrière de la chaussure car sinon tu vas faire des soufflettes. Quand tu as confirmé que les chaussettes ne glissent pas dans chaussures, que tu n'as pas de soufflettes, que c'est les bonnes... Tu vas en acheter 2 autres paires (bien sûr tu prends les mêmes).
 
 
 

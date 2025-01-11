@@ -136,6 +136,7 @@ $$
     * ``Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}``
 
 * <https://just-the-docs.github.io/just-the-docs/>
+* <https://jekyllcodex.org/without-plugins/>
 * <https://just-the-docs.github.io/just-the-docs-tests/components/math/mathjax/index/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
