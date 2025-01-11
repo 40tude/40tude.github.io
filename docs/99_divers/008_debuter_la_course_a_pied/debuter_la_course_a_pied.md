@@ -40,7 +40,7 @@ Cependant, si tu te sens lourd, gros, gras et qu'en complément d'un régime tu 
 * De commencer par lire cette page
 * De ne PAS me faire confiance et d'aller en lire d'autres sur le web
 * De te faire ta propre opinion
-* Mais surtout... De sortir dehors aujourd'hui (personne ne peut le faire à ta place 😁)
+* Mais surtout... De sortir aujourd'hui (personne ne peut le faire à ta place 😁)
 
 <div align="center">
 &nbsp;
@@ -48,21 +48,21 @@ Cependant, si tu te sens lourd, gros, gras et qu'en complément d'un régime tu 
 &nbsp;
 </div>
 
-Je me place dans un contexte de [perte de poids](%link docs\99_divers\005_2017_alimentation_sport\2017_alimentation_sport.md%) où, en complément du régime (qui est responsable à 90% de la perte de poids) tu souhaites débuter la course à pied, te mettre à courir histoire de te tonifier, de récupérer du souffle, de mieux dormir le soir etc.
+Je me place dans un contexte de [perte de poids](%link docs\99_divers\005_2017_alimentation_sport\2017_alimentation_sport.md%). Typiquement, en complément du régime qui est responsable à 90% de la perte de poids, tu souhaites débuter la course à pied afin de te tonifier, de récupérer du souffle, de mieux dormir le soir etc.
 
-Cependant, si tu ne fais pas de régime et que tu veux juste te mettre à courir, vas-y, fais-toi plaisir et lis le reste de la page.
+Cela dit, même si tu ne fais pas de régime et que tu veux juste te mettre ou te remettre à courir, vas-y, fais-toi plaisir et lis le reste de ce billet.
 
 ## Courir en 5/5
 On ne va pas perdre de temps et pour bien débuter la course à pied, on va passer à la pratique tout de suite. J'imagine que tu n'as pas couru depuis longtemps et qu'à force de regarder des vidéos sur YouTube tu te dis qu'il faudrait que tu t'y mettes vraiment.
 
 Bon, et ben tu sais quoi ? Arrête de lire cette page, ferme ton PC et commence par aller marcher une heure dehors.
 
-Arrête de lire je te dis, vas marcher ! Allez, ouste, dehors !
+Arrête de lire je te dis, vas marcher, là maintenant. Allez, ouste, dehors !
 
 
 <div align="center">
 &nbsp;
-<img src="./assets/img3.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img3_1.webp" alt="" width="450" loading="lazy"/>
 &nbsp;
 </div>
 
@@ -87,7 +87,7 @@ Oui, bien sûr, ce n'est pas de la course à pied, c'est de la marche mais en to
 
 
 
-### **C'est quand qu'on court ?**
+### *C'est quand qu'on court ?*
 Pour ta prochaine sortie, je te propose de sortir une heure (ou une demi-heure, au début on s'en fiche un peu) et de suivre le programme suivant (il te faut une montre au poignet)
 
 * Tu marches 5 min.
@@ -95,7 +95,7 @@ Pour ta prochaine sortie, je te propose de sortir une heure (ou une demi-heure, 
 
 Attention, **tu commences par la marche**. Elle sert d'échauffement et à dérouiller les articulations. Tu ne cours donc pas tout de suite en sortant de chez toi.
 
-Après avoir couru la troisième fois (marche, course, marche, course, marche, course), tu fais demi-tour et tu reviens sur tes pas avec la même séquence (marche, course etc.). Elle n'est pas belle la vie ? C'est pas sympa de débuter la course à pied dans ces conditions ?
+Après avoir couru la troisième fois (marche, *course*, marche, *course*, marche, *course*), tu fais demi-tour et tu reviens sur tes pas avec la même séquence (marche, *course* etc.). Elle n'est pas belle la vie ? C'est pas sympa de débuter la course à pied dans ces conditions ?
 
 Heu... Je n'ai pas parlé de montre connectée (j'en ai une et j'en suis très content) ni de musique dans les oreilles (oui, oui j'ai aussi un téléphone portable). Pour débuter la course à pied, tu n'as besoin de rien ni de personne. Bien sûr, si tu as un téléphone et si tu veux absolument de la musique en marchant alors mets-le en mode avion et allume ta musique pendant les 5 minutes de marche. Tu le couperas dans les périodes de course. En effet, au départ **je ne recommande pas** la musique en courant car elle a tendance à te faire courir trop vite.
 
@@ -123,7 +123,7 @@ Tu atterris comment ? Sur les talons ou sur l'avant des pieds ? Normalement, si 
 
 Oh, by the way, tu faisais du bruit ou pas ? Normalement en atterrissant sur l'avant du pied tu ne devrais pas faire de bruit (gardes ça en tête).
 
-OK, recommence à sautiller. Maintenant penche le haut de ton corps un peu vers l'avant. Normalement tu dois avoir le sentiment de tomber et pour te rattraper tu mets naturelement, par réflexe, un pied devant. Ayé, tu es parti, tu t'es remis à la course à pied !
+OK, recommence à sautiller. Maintenant penche le haut de ton corps un peu vers l'avant. Normalement tu dois avoir le sentiment de tomber et pour te rattraper tu mets naturellement, par réflexe, un pied devant. Ayé, tu es parti, tu t'es remis à la course à pied !
 
 <div align="center">
 &nbsp;
@@ -132,7 +132,7 @@ OK, recommence à sautiller. Maintenant penche le haut de ton corps un peu vers 
 </div>
 
 
-C'est cette attitude qu'il va falloir retrouver en courant. Si un jour tu as du mal à la retrouver, arrêtes toi, sautille quelques secondes, penche-toi en avant et repars. Y a pas de honte à avoir. On est en train de débuter la course à pied, donc tout n'est pas parfait, et 100 fois sur l'ouvrage on remettra notre métier. Bref, on fait le job quoi !
+C'est cette attitude qu'il va falloir retrouver en courant. Si un jour tu as du mal à la retrouver, arrêtes toi, sautille quelques secondes, penche-toi en avant et repars. Y a pas de honte à avoir. On est en train de débuter la course à pied, donc tout n'est pas parfait, et 100 fois sur l'ouvrage on remettra notre métier. On fait le job quoi !
 
 De la même façon, si un jour tu réalise que tu fais autant de bruit qu'une armée Romaine en train de défiler, arrêtes toi, sautilles, penche-toi et repars. Bien sûr pour s'entendre il ne faut pas de musique dans les oreilles.
 
@@ -156,7 +156,7 @@ Heu... Comment te dir mon petit lapin... Ne le prends pas mal mais je crains que
 </div>
 
 
-Mouai... C'est gentil, je me moque gentiment de toit mais bon, ça répond pas à ma question... Bon... Attention, car il y a deux composantes dans la vitesse de course :
+Mouai... C'est gentil, je me moque gentiment de toi mais bon, ça répond pas à ma question... Bon... Attention, car il y a deux composantes dans la vitesse de course :
 
 * La longueur des foulées
 * Le rythme des foulées
@@ -193,14 +193,14 @@ En cela, le fait de marcher 5 minutes entre 2 phases de course à pied, permet "
 
 On a parlé de la longueur des foulées. Quid du rythme de ces dernières ? Afin de pouvoir se préparer pour plus tard l'idée serait d'avoir un rythme de 180 pas minute. Donc un des 2 pieds doit se poser 90 fois par minute ou 22 fois toutes les 15 secondes.
 
-Là, n'y a pas 36 solutions, faut faire des tests à la maison avec une montre et se mettre le rythme dans la tête (1, 2, 3, 4...1, 2, 3, 4...). Pour info, 180 bpm c'est le rythme de "I'm so excited" des Pointer Sisters.
+Là, il n'y a pas 36 solutions, faut faire des tests à la maison avec une montre et se mettre le rythme dans la tête (1, 2, 3, 4...1, 2, 3, 4...). Pour info, 180 bpm c'est le rythme de "I'm so excited" des Pointer Sisters.
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8iwBM_YB1sE?si=TCLWXrQI7dOIEqOv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
-Un bon indicateur c'est qu'en faisant comme ça (foulée courte et rythme soutenu) tu dois être capable de parler sans avoir l'impression de mourir ou de courir en ne respirant que part le nez. Si tu es tout seul, récites une [fable de la Fontaine](https://youtu.be/0Q_V7yZaEDE?si=BThSt1mx2ANAgIZ3&t=9) ou la [table de multiplication]({%link docs/03_maths/999_erreurs/001_table_multiplication/table_multiplication.md%}).
+Un bon indicateur c'est qu'en faisant comme ça (foulée courte et rythme soutenu) tu dois être capable de parler sans avoir l'impression de mourir ou de courir en ne respirant que par le nez. Si tu es tout seul, récites une [fable de la Fontaine](https://youtu.be/0Q_V7yZaEDE?si=BThSt1mx2ANAgIZ3&t=9) ou la [table de multiplication]({%link docs/03_maths/999_erreurs/001_table_multiplication/table_multiplication.md%}).
 
 
 
@@ -247,14 +247,14 @@ Tu débutes. Cette page s'appelle "Débuter la course à pied". Tu n'as pas le n
 
 
 ### *On termine par 5 minutes de course. Ce n'est pas très malin...*
-Pas de problème, on s'adapte... Tu termines ta dernière session de 5 minutes de course, tu arrives à la maison et... Tu ne t'arrêtes pas, tu fais un tour de pâté de maison et tu marches encore 5 minutes si tu veux.
+Pas de problème, on s'adapte... Tu termines ta dernière session de 5 minutes de course, tu arrives à la maison et... Tu t'arrêtes pas. Tu fais un tour de pâté de maison en marchant 5 minutes.
 
-Cependant, si tu veux absolument montrer aux autres de la tribu que tu te bouges, rentrer en sueur ce n'est pas con... Nan, je plaisante. Va plutôt marcher 5 minutes de plus.
+Cependant, si tu veux absolument montrer aux autres de la tribu que tu te bouges, rentrer en sueur c'est pas con... Nan, je plaisante. Va plutôt marcher 5 minutes de plus.
 
 
 
 ### *Courir tout seul ou à plusieurs ?*
-Je m'en fous. Ton problème c'est de te remettre à sortir et à te bouger. Si le fait d'aller avec un ou des potes t'aide à débuter la course à pied, tant mieux. Sinon, assume ta décision de t'y remettre et sors tout seul.
+Je m'en fous. Ton problème c'est de te remettre à sortir et à te bouger. Si le fait d'aller avec un ou des potes t'aide à débuter la course à pied, tant mieux. Sinon, assume ta décision de t'y remettre et sors tout seul. Encore une fois personne ne peut le faire à ta place. Le reste c'est de la poésie ou des discussions de comptoir. 
 
 <div align="center">
 &nbsp;
@@ -291,7 +291,7 @@ By the way, à l'occasion, achètes et lis [ce livre](https://www.amazon.fr/One-
 </div>
 
 
-En ce qui me concerne, j'ai une alarme dans mon téléphone qui s'allume 15 minutes avant l'heure à laquelle je dois aller courir. Si jamais je ne sors pas, j'ai toujours un peu honte lorsque j'ignore l'alarme. Essaie, ça peut, peut être t'aider...
+En ce qui me concerne, j'ai une alarme dans mon téléphone qui s'allume 15 minutes avant l'heure à laquelle je dois aller courir. Si jamais je ne sors pas, j'ai toujours un peu honte lorsque j'ignore l'alarme. Essaies, ça peut, peut être t'aider...
 
 Ensuite, le truc qui marche pour moi c'est de commencer à m'équiper. Une fois que je lève mes fesses et que je m'habille, c'est bon, je ne recule plus et je pars.
 
@@ -351,7 +351,7 @@ Une tous les jours ce n'est pas possible ni raisonnable à long terme. Une tous 
 
 Heu... Attention, je n'ai pas dit que tu devais sortir pour aller faire 40 km à chaque fois. On est toujours dans la partie "Courir en 5/5" dans laquelle on alterne marche et course.
 
-Le truc c'est de mettre en place une routine, une discipline. Après, c'est toujours pareil, on s'adapte. Si tu ne peux vraiment pas le mercredi, ce n'est pas grave. Sécurise et sanctuarise le vendredi qui vient. Heu... vendredi pas d'excès... Tu te tiens à l'agenda et tu sors 1H. Vas pas faire des bêtises sous prétexte de vouloir rattraper la séance de mercredi. Elle est perdue, n'y pense plus et assures toi de la qualité de la sortie du jour.
+Le truc c'est de **mettre en place une routine**, une discipline. Après, c'est toujours pareil, on s'adapte. Si tu ne peux vraiment pas le mercredi, ce n'est pas grave. Sécurise et sanctuarise le vendredi qui vient. Heu... Vendredi pas d'excès... Tu te tiens à l'agenda et tu sors 1H. Vas pas faire des bêtises et sortir 2H sous prétexte de vouloir "rattraper" la séance de mercredi. Elle est perdue. N'y pense plus et assures toi de la qualité de la sortie du jour.
 
 Le samedi tu vas faire les courses et franchement t'as autre chose à faire que de t'occuper de toi. OK, pas de problème. Supprime la session du samedi et reste sur 3 sorties par semaine ce qui est déjà vraiment très très bien.
 
@@ -391,7 +391,7 @@ Finalement, j'essaie d'aller courir le midi et bien sûr, comme je n'ai pas le t
 ### *Faut que j’emmène à boire et à manger ?*
 Non. Tu ne t’embarrasse pas avec tout ça. En été tu n'es pas débile au point de sortir à midi en plein cagnard. Tu sortiras le matin ou en fin d'après-midi. Attention, l'été en fin d'après-midi ce n'est vraiment pas top car il fait encore très chaud et il y a encore beaucoup de réverbération. L'été le mieux c'est donc le matin et vu qu'on est en 5/5 tu peux survivre à la soif.
 
-Si maintenant tu as vraiment un problème emmène une "petite" bouteille d'eau et gardes-la en main (c'est vite chiant, je te préviens). À notre niveau, pas besoin d'investir dans une ceinture de marathonien ou un camel bag.Ce serait ridicule.
+Si maintenant tu as vraiment un problème emmène une "petite" bouteille d'eau et gardes-la en main (c'est vite chiant, je te préviens). À notre niveau, pas besoin d'investir dans une ceinture de marathonien ou un camel bag. Ce serait ridicule.
 
 1 heure de marche alternée avec un peu de course ne nécessite pas non plus que tu emmènes des bananes ou des barres énergisantes. Faut se calmer... On marche puis on court comme des papy pendant une heure. On devrait survivre...
 
@@ -509,6 +509,8 @@ Là, ça rigole plus. Ca a pris le temps que ça a pris mais depuis 1 mois tu ti
 
 Cela dit on se calme... Même foulée, même rythme, même agenda et mêmes réflexes si ça se barre en vrille. Tu t'arrêtes, tu marches et tu repars. On ne change pas une formule qui gagne.
 
+Ah oui... J'allais oublier... Tu sors de la maison, tu marches 5 minutes et ensuite tu cours 30 minutes... Vas pas me la faire à l'envers, partir en courant et te blesser au bout de 50 m.
+
 
 
 
@@ -522,7 +524,7 @@ Après, y a 12 000 pros sur YouTube qui peuvent t'inspirer. Moi je te recommande
 
 Une fois que tu es à 60 minutes, il faut voir où tu en es. Tu as perdu du poids, tu te sens bien, tout va bien... Bon, ben gardes le rythme et ne changes rien (c'est d’ailleurs aussi valable une fois que tu arrives à tenir 45 minutes non-stop).
 
-Tu cours 60 min. tu es très content mais tu voudrais aller un peu plus vite. "No problemo". Tu as le souffle, tu sais ce que c'est que de courir une heure. Vas-y mais vas-y doucement. Il faudra peut-être investir dans une montre qui te donnera ta cadence (c'est l'inverse de la vitesse) pour savoir en combien de minutes tu parcours un kilomètre. Prends alors une montre simple, pas trop cher. Idéalement tu veux ta cadence et peut être, je dis bien peut être ton rythme cardiaque. Tu pêteras ta tirelire dans une montre à 2 millions de $ plus tard. 
+Tu cours 60 minutes, tu es très content mais tu voudrais aller un peu plus vite. "No problemo". Tu as le souffle, tu sais ce que c'est que de courir une heure. Vas-y mais vas-y dou-ce-ment. Il faudra peut-être investir dans une montre qui te donnera ta cadence (c'est l'inverse de la vitesse) pour savoir en combien de minutes tu parcours un kilomètre. Prends alors une montre simple, pas trop cher. Idéalement tu veux ta cadence et peut être, je dis bien peut être ton rythme cardiaque. Tu pêteras ta tirelire dans une montre à 2 millions de $ plus tard. 
 
 Tu cours 60 minutes, tu es très content mais tu voudrais aller un peu plus loin. Là aussi, "No problemo". Tu as le souffle, tu sais ce que c'est que de courir une heure. Vas-y mais vas-y doucement. Par exemple, tu peux ajouter 10 minutes de course (5 dans un sens et 5 dans l'autre). Tenir la distance pendant deux ou trois semaines puis rallonger la distance de 10 minutes.
 
@@ -560,8 +562,6 @@ Ah si quand même... En cas de pluie, que tu portes des lunettes ou pas, le mieu
 ### À propos des chaussures
 C'est **le seul truc** où il ne faut pas trop plaisanter. Avant de faire ta première vraie sortie en 5/5, tu vas chez Décathlon (ou un autre) et tu t'achètes une paire de pompes pas trop cher (évite les tout premiers prix quand même). 
 
-Pense aussi à acheter 2 paires de chaussettes. Il faut quelles remontent au-dessus de l'arrière de la chaussure car sinon tu vas faire des soufflettes. Quand tu as confirmé que les chaussettes ne glissaient pas dans chaussures, que tu n'avais pas de soufflettes, que c'étaient les bonnes... Tu vas en acheter 2 autres paires (bien sûr tu prends les mêmes)
-
 Oui, oui je sais, tu as au fond d'un placard les pompes que tu utilisais il y a 5 ans quand tu t'étais remis du tennis... Bon, je t'arrête tout de suite. Elles sont cuites tes tennis. Mieux vaut aller en acheter une paire neuve que tu réserveras à la course à pied.
 
 <div align="center">
@@ -581,22 +581,25 @@ Ne prends pas non plus un modèle fluo, hyper spécialisé. Tu ne pourras pas l'
 &nbsp;
 </div>
 
+Pense aussi à acheter 2 paires de chaussettes. Il faut quelles remontent au-dessus de l'arrière de la chaussure car sinon tu vas faire des soufflettes. Quand tu as confirmé que les chaussettes ne glissaient pas dans chaussures, que tu n'avais pas de soufflettes, que c'étaient les bonnes... Tu vas en acheter 2 autres paires (bien sûr tu prends les mêmes)
+
+
 
 
 ### À propos des chaussures - Synthèse
-* Ne prends pas le premier prix
+* Ne prends pas le premier prix 
 * Prends une pointure au-dessus
-* Tu ne serres pas tes lacets comme un sourd et tu fais un double noeud (non négociable)
-* Coupe-toi les ongles de pieds régulièrement
-* Mets des chaussettes dans tes chaussures
 * Réserve ces chaussures à la course
 * Typiquement une paire de pompe c'est 1000 km 
+* Tu ne serres pas tes lacets comme un sourd et tu fais un **double noeud** (non négociable)
+* Coupe-toi les ongles de pieds régulièrement
+* Mets des chaussettes dans tes chaussures
 
 
 
 
 
-## Des vidéos que j'aime sur le sujet
+## Des vidéos que j'aime bien sur le sujet
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9L2b2khySLE?si=sy0FHbXuykb_HxRq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
