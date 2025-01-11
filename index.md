@@ -40,6 +40,8 @@ Pour l'instant c'est pas fun mais je suis focus sur le transfert.
 
 ---
 ## TODO
+* sitemap
+* S'assurer que Google index bien. Aps le cas aujourd'hui 11 01 2025
 * Sur la 1ere page, la liste des 10 derniers billets édités
 * Lightbox pour les images?
 * Voir ces histoires de plugins

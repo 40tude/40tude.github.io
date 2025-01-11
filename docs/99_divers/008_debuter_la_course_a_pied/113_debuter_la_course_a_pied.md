@@ -8,8 +8,20 @@ last_modified_date: 2022-08-28 23:15:06
 ---
 
 # Débuter la course à pied
+{: .no_toc }
 
-***Il y a un update 2022 au bas de la page***
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
+
+
+{: .note }
+Il y a un **Update août 2022** au bas de la page
+
+
+## Introduction
 
 Si tu es jeune, beau et sportif... Passes ton chemin, cette page n'est pas pour toi... Désolé. En fait, ici on part résolument du niveau zéro, on ne présume de rien, on veut juste débuter la course à pied dans la joie et la bonne humeur.
 
@@ -187,7 +199,7 @@ Là, n'y a pas 36 solutions, faut faire des tests à la maison avec une montre e
 
 Un bon indicateur c'est qu'en faisant comme ça (foulée courte et rythme soutenu) tu dois être capable de parler sans avoir l'impression de mourir ou de courir en ne respirant que part le nez. Si tu es tout seul, récites une [fable de la Fontaine](https://youtu.be/0Q_V7yZaEDE?si=BThSt1mx2ANAgIZ3&t=9) ou la [table de multiplication]({%link docs/03_maths/999_erreurs/001_table_multiplication/table_multiplication.md%}).
 
-## Débuter la course à pied : synthèse
+### Débuter la course à pied : synthèse
 * Tu atterris sur l'avant de tes pieds (silencieux comme un Ninja)
 * Tu fais de toutes petites foulées et tu cours très lentement
 * Le haut de ton corps est légèrement penché vers l'avant
@@ -527,7 +539,7 @@ Bon, de toute manière tu vas te faire avoir une ou deux fois et tu vas apprendr
 
 Ah si quand même... En cas de pluie, que tu portes des lunettes ou pas, le mieux c'est encore la casquette.
 
-### À propos des chaussures
+## À propos des chaussures
 C'est le seul truc où il ne faut pas trop plaisanter. Avant d'aller courir, tu vas chez Décathlon (ou un autre) et tu t'achètes une paire de pompes pas trop cher (évite les tout premiers prix quand même).
 
 Oui, oui je sais, tu as au fond d'un placard les pompes que tu utilisais y a 5 ans quand tu faisais du tennis... Bon, je t'arrête tout de suite. Elles sont cuites tes tennis. Mieux vaut aller en acheter une paire neuve que tu réserveras uniquement à la course à pied.
@@ -583,7 +595,7 @@ Réserve ces chaussures uniquement à la course
 
 
 
-## Update Aout 2022
+## Update août 2022
 Une vidéo qui explique dans le détail pourquoi, si on veut perdre du poids, il est préférable de courir en mode aérobie (120 pulsations par min. environ)
 
 <https://youtu.be/GoQ_Qt2REgQ?si=zH920zk3xuGm25yL>
@@ -621,116 +633,3 @@ C'est pour cela que depuis quelques mois déjà je pars en marche rapide (100 bp
 Sur mon circuit habituel il y a une côte. Du coup, je fais un peu de HIIT en donnant mon max dans la cote en question pendant 30 secondes environ. Sur un circuit habituel je monte la cote 5 à 6 fois.
 
 Enfin, mais cela n'a rien à voir avec la course à pied et/ou la perte de poids, tous les kilomètres je fais alternativement une série de levées de bras, puis au prochain km une série de pompes puis au suivant une série de squats. Oui je confirme j'utilise une montre qui mesure les bpm et les km.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Finalement, j'essaie d'aller courir le midi et bien sûr, comme je n'ai pas le temps, je cours en fin de journée après le boulot. Pas top, mais c'est toujours pareil.... Mieux vaut courir en fin d'après-midi que de ne pas sortir du tout...
-
-### Faut que j’emmène à boire et à manger ?
-
-Non. Tu ne t’embarrasse pas avec tout ça. En été tu n'es pas débile au point de sortir à midi en plein cagnard. Tu sortiras le matin ou en fin d'après-midi. Attention, l'été en fin d'après-midi ce n'est vraiment pas top car il fait encore très chaud et il y a encore beaucoup de réverbération. L'été le mieux c'est donc le matin et vu qu'on est en 5/5 tu peux survivre à la soif.
-
-Si maintenant tu as vraiment un problème emmène une "petite" bouteille d'eau et gardes-la en main (c'est vite chiant, je te préviens). À notre niveau, pas besoin d'investir dans une ceinture de marathonien ou un camel bag.
-
-1 heure de marche alternée avec un peu de course ne nécessite pas non plus que tu emmènes des bananes ou des barres énergisantes. Faut se calmer... On marche puis on court comme des papy pendant une heure. On devrait survivre...
-
-<div align="center">
-<img src="./assets/image-1.webp" alt="" width="450" loading="lazy"/>
-</div>
-
-
-https://youtu.be/HcenVfig1fc
-
-Allez, un dernier pour la route... Sur [cette page](https://www.running-addict.fr/conseil-running/bruler-les-graisses-pour-courir-plus-longtemps/) l'article qui s'adresse surtout à des amateurs qui veulent courir pour courir et pas courir pour perdre du poids, confirme que pour courir longtemps il faut utiliser le gras comme source principale d'énergie et que pour cela il y a une zone optimale qui va de 65 à 80% de la fréquence cardiaque maximale.
-
-<div align="center">
-<img src="./assets/image-2.webp" alt="" width="450" loading="lazy"/>
-</div>
-
-
-En ce qui me concerne, à la mi 2022, 65% de ma fréquence cardiaque max (183 bpm) correspond à 120 bpm et 80% correspondent à 140 bpm.
-
-C'est pour cela que depuis quelques mois déjà je pars en marche rapide (100 bpm) puis je cours au bout de quelques minutes quand je le sens bien. Je cours doucement, quand j'arrive dans la zone des 130-140 bpm je marche à nouveau jusqu'à descendre jusqu'à 110-120 bpm puis je repars alors en courant.
-
-Sur mon circuit habituel il y a une côte. Du coup, je fais un peu de HIIT en donnant mon max dans la cote en question pendant 30 secondes environ. Sur un circuit habituel je monte la cote 5 à 6 fois.
-
-Enfin, mais cela n'a rien à voir avec la course à pied et/ou la perte de poids, tous les kilomètres je fais alternativement une série de levées de bras, puis au prochain km une série de pompes puis au suivant une série de squats. Oui je confirme j'utilise une montre qui mesure les bpm et les km.
-
