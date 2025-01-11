@@ -2,7 +2,8 @@ title: 40tude
 description: Personal 
 theme: just-the-docs
 
-url: https://40tude.github.io/
+# url: https://40tude.github.io/
+url: https://www.40tude.fr
 
 defaults:
   - scope:
