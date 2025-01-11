@@ -40,7 +40,6 @@ Pour l'instant c'est pas fun mais je suis focus sur le transfert.
 
 ---
 ## TODO
-* sitemap
 * S'assurer que Google index bien. Aps le cas aujourd'hui 11 01 2025
 * Sur la 1ere page, la liste des 10 derniers billets édités
 * Lightbox pour les images?
@@ -62,6 +61,9 @@ Pour l'instant c'est pas fun mais je suis focus sur le transfert.
 
 ---
 ## DONE
+* sitemap
+    * fix url in _config.yml
+    * modify _includes\head_custom.html
 * ~~Ajouter un indicateur de durée de lecture en haut des pages~~
 * ~~Installer Google Analytics~~
 * ~~Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes~~
