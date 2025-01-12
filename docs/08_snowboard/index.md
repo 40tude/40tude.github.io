@@ -19,7 +19,7 @@ Vous trouverez dans les billets de la catégorie [Apprendre le Snowboard]({%link
 Attention, je ne suis, ni un [moniteur de l'ESF](http://www.esf.net), ni un pro. Tout ce que vous pourrez lire ici devra donc être interprété comme une suite de conseils que pourrait donner un surfeur à un autre. Typiquement le genre d'info que l'on peut échanger sur le bord d'une piste...
 
 <div align="center">
-<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
+<img src="{%link docs/08_snowboard/assets/img_03.webp%}" alt="" width="450" loading="lazy"/>
 </div>
 
 Ces billets ne visent qu'à **rendre service aux débutants** et je ne demande à personne d'être d'accord avec moi. Autrement dit, si vous trouvez qu'à un moment donné, je raconte des bêtises (préjudiciable à la sécurité des lecteurs par exemple) faites le moi savoir et je tiendrai, compte de vos avis.
@@ -35,7 +35,7 @@ C'est Dimanche après-midi, vous êtes arrivé la veille, vous avez skié ce mat
 Et là, à gauche, ce groupe de nains assis bêtement les fesses dans la neige...
 
 <div align="center">
-<img src="./assets/img_05.webp" alt="" width="450" loading="lazy"/>
+<img src="{%link docs/08_snowboard/assets/img_05.webp%}" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -44,7 +44,7 @@ Là encore, à droite, un pauvre gars en perdition. Sûr, il a le look et l'équ
 Et là, en bas de la petite pente, sur le gros plat, y encore ce "jobar" qui arrive à fond la caisse. Il attaque un virage, plie les genoux, tend le bras vers l'intérieur du virage, penche, penche encore jusqu'à se trouver pratiquement à l'horizontal. Sûr, il va manger de sorbet nature… Tu parles Charles, il termine cet énorme "hameçon" comme une fleur par un petit saut histoire de se trouver dos à la pente. Cool, vraiment cool… Et la trace qu'il a laissé dans la neige… Un vrai coup de rasoir !
 
 <div align="center">
-<img src="./assets/img_04.webp" alt="" width="450" loading="lazy"/>
+<img src="{%link docs/08_snowboard/assets/img_04.webp%}" alt="" width="450" loading="lazy"/>
 </div>
 
 Et puis il y a toujours la petite de tout à l'heure, sa descente tout en douceur, sans bruit, avec une belle trace bien coupée... ça donne envie. Allez zou, la décision est prise, ce soir vous irez chercher une planche et demain... Ah, oui, tiens au fait, on commence comment, on fait quoi et dans quel ordre... Ooops !
