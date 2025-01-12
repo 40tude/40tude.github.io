@@ -10,77 +10,47 @@ last_modified_date: 2025-01-03 15:00:00 +0000
 # 40tude.fr 
 
 {: .note }
-La page et le site sont en construction alors que je suis en train de transférer le site 40tude.fr de (WordPress + OVH) vers (markdown + Jekyll + Just The Docs + GitHub).
-
-* De tout façon, je n'en pouvais plus de WP. Quelle bouse! Au début en 2010 ça allait à peu près mais sur la fin c'est devenu n'importe quoi...
-    * <https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185>
-* Chez OVH, mon site a été piraté en Avril 2024. De mon point de vue d'utilisateur de base qui veut juste écrire sur son blog, ils n'ont rien fait pour protéger le site ou m'aider après coup (j'étais client depuis 2011 sans aucun coup de fil au support...) 
-
-Il faut lire "fortitude point fr".  
-Il n'y a pas de sens caché, j'ai toujours aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité.  
-Pas de référence non plus à l'opération de désinformation de la seconde guerre mondiale.  
-
-Le site 40tude.fr est en cours de migration (environ 300 billets de 2011 à 2024).  
-Laissez moi un peu de temps (j'espère avoir terminé fin janvier 2025)
-Je ne suis pas sûr de tout transférer car y a des pages qui ne sont vraiment plus d'actualité. D'un autre côté, j'ai souvent été bien content de retrouver une info dans une vieille page... Je vais voir...
-Soyez pas surpris si en janvier, les menus changent, les billets et catégories disparaissent, apparaissent...
-Pendant le portage, même si j'apporte quelques modifications aux billets, je ne vais pas changer les dates de dernières mise à jour. Je le ferai si, après le transfert, je reviens sur telle ou telle page pour y apporter des compléments, la ré-écrire... 
+Le site est [40tude.fr](https://www.40tude.fr/) en phase de renovation alors que je suis en train de le transférer de (WordPress + OVH) vers (markdown + Jekyll + Just The Docs + GitHub).  
+Le **12 janvier 2025** il reste **170 articles** à transférer (essentiellement dans les catégories C++, Snowboard et Moto). J'espère avoir terminé fin janvier 2025. Je ne suis pas sûr de transférer tous les billets car certaines ne sont vraiment plus d'actualité. D'un autre côté, j'ai souvent été bien content de retrouver une info dans une "vieille" page qui était toujours en ligne... Lire par exemple le premier épisode de la série d'article sur [Simple OS](docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0). Je ne sais pas, je vais voir...  
+Pendant le portage, même si j'apporte quelques modifications aux billets, je ne vais pas changer les dates de dernières mise à jour. Je le ferai si, après le transfert, je reviens sur telle ou telle page pour y apporter des compléments, la ré-écrire complètement...   
 Pour l'instant c'est pas fun mais je suis focus sur le transfert.
 
----
-## IDEES DE BILLET
-* Pareto et 50%-1%
-* Revenir sur Codingame
-* SOS Chapitres IV et suivants
-* IA et ML 
-* Relire les notes OneNote de préparation certification IA et voir ce que je peux rapatrier
-* Rapatrier la page install Linux Mint qui est sur GitHub 
-* 52 nuances de physique
+Pour le reste...   
+* Il faut lire "**fortitude point fr**". Il n'y a pas de sens caché, j'ai toujours bien aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité. Pas de référence non plus à [l'opération de désinformation](https://fr.wikipedia.org/wiki/Op%C3%A9ration_Fortitude) de la seconde guerre mondiale.  
+* Le site précédent, hébergé chez OVH a été piraté en Avril 2024. De mon point de vue d'utilisateur "de base" qui veut juste écrire sur son blog, OVH n'a rien fait pour protéger mon site ou m'aider après coup (j'étais client depuis 2011 sans aucun coup de fil au support...). 
+* D'un autre côté, je n'en pouvais plus de WordPress. Je parle surtout de l'édition de billets. Au début, en 2010, ça allait à peu près mais sur la fin c'est devenu n'importe quoi...  WP c'est sans doute très bien pour certains mais cela ne correspond plus du tout à mes besoins. En plus, j'ai l'impression que ça pue chez WP. Lire ce billet sur Medium.
+    * <https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185>
+
+
+Pas la peine de lire plus loin. Ce sont des notes que je garde sous le coude lors du transfer.
+
 
 
 ---
 ## TODO
-* S'assurer que Google index bien. Pas sûr que ce soit le cas aujourd'hui 11 01 2025
-* Sur la 1ere page, la liste des 10 derniers billets édités
+* Sur la 1ere page, la liste des 10 derniers billets mis à jour
+* Faire un billet sur le portage de WP vers markdown?
 * Lightbox pour les images?
+* PageSpeed Insights indique : just-the-docs.js = 1.6s de chargement
+* Voir ces histoires de balise rel="canonical"
+* S'assurer que Google indexe bien le site. Pas sûr à 100% que ce soit le cas aujourd'hui 11 01 2025
 * Voir ces histoires de plugins
     * Va être chaud
     * Faut installer ruby meme si on a un plugin sous forme de gem 
     * Faut l'installer avec Bundle etc.
 * SEO? 
-    * Pas sûr de comprendre grand chose...
+    * Pas sûr de comprendre grand chose au sujet
     * Pas intéressé par le sujet
-* Faire un billet concernant le portage de WP vers markdown?
 * Pages en anglais? avec lang=en avant le Head
     * À mon avis c'est mort mais bon je vais continuer à chercher
-* Test du site avec outils Google etc.
-    * Google Search Console
-    * PageSpeed Insights
+    * Y a peut être une option avec les collection mais je sais pas si y a lang="en" avant le head
 * What else ?
 
 
----
-## DONE
-* ~~robots.txt~~
-* ~~sitemap~~
-    * fix url in _config.yml
-    * modify _includes\head_custom.html
-* ~~Ajouter un indicateur de durée de lecture en haut des pages~~
-* ~~Installer Google Analytics~~
-* ~~Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes~~
-    * Impossible
-    * https://github.com/just-the-docs/just-the-docs/discussions/1593
-* ~~Comment faire des liens (ancres) au sein d'une même page en markdown~~
-    * Option 1 : `[Le planning en mode synthétique](#le-planning-synthétique)` avec accent
-    * Option 2 : ## Un long titre de section <a id="short-id"></a> puis plus loin [Aller à cette section](#short-id)
-* ~~Correcteur ortho FR dans VScode ?~~
-* ~~Voir comment permettre le téléchargement de fichiers pdf, zip, xlsx...~~
-    * `[Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)`
-* ~~Porter les pages de SOS pour tester les outils de recupération du site WP~~
-* ~~Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle~~
-    * Lire : <https://jekyllrb.com/docs/permalinks/#front-matter>
-* ~~Back to Top~~
-* ~~First et last Edit en bas de page~~
+
+
+
+
 
 
 
@@ -140,6 +110,7 @@ $$
 
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllcodex.org/without-plugins/>
+* <https://mademistakes.com/>
 * <https://just-the-docs.github.io/just-the-docs-tests/components/math/mathjax/index/>
 * <https://jekyllrb.com/>
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
@@ -181,6 +152,69 @@ CTRL+H + Exp Reg
 
 
 
+
+
+
+
+
+
+---
+## DONE
+* ~~Voir cette histoire de pull request de la part de Just The Docs~~
+* ~~robots.txt~~
+    * Dans Google Search Console aller verifier dans "Paramètres" si il le voit bien
+* ~~sitemap~~
+    * fix url in _config.yml
+    * modify _includes\head_custom.html
+* ~~Test du site avec outils Google etc.~~
+    * Google Search Console
+    * PageSpeed Insights
+* ~~Ajouter un indicateur de durée de lecture en haut des pages~~
+* ~~Installer Google Analytics~~
+* ~~Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes~~
+    * Impossible
+    * https://github.com/just-the-docs/just-the-docs/discussions/1593
+* ~~Comment faire des liens (ancres) au sein d'une même page en markdown~~
+    * Option 1 : `[Le planning en mode synthétique](#le-planning-synthétique)` avec accent
+    * Option 2 : ## Un long titre de section <a id="short-id"></a> puis plus loin [Aller à cette section](#short-id)
+* ~~Correcteur ortho FR dans VScode ?~~
+* ~~Voir comment permettre le téléchargement de fichiers pdf, zip, xlsx...~~
+    * `[Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)`
+* ~~Porter les pages de SOS pour tester les outils de recupération du site WP~~
+* ~~Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle~~
+    * Lire : <https://jekyllrb.com/docs/permalinks/#front-matter>
+* ~~Back to Top~~
+* ~~First et last Edit en bas de page~~
+
+
+
+
+
+
+
+
+
+
+---
+## IDEES DE BILLETS
+* Pareto et 50%-1%
+* Revenir sur Codingame
+* SOS Chapitres IV et suivants
+* IA et ML 
+* Relire les notes OneNote de préparation certification IA et voir ce que je peux rapatrier
+* Rapatrier la page install Linux Mint qui est sur GitHub 
+* 52 nuances de physique (faut vraiment que je l'écrive un jour)
+
+
+
+
+
+
+
+
+
+
+---
 ## Organisation des catégories ?
 
 * 02_simple_os
