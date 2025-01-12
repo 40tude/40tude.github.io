@@ -89,13 +89,15 @@ Bon, pour les chaussures on fait quoi ? Tout bête, le gars vous propose une pai
 
 Bon... ben, re-belotte avec la seconde chaussure. Si les tests précédents passent encore, fermez les yeux et laissez parler vos pieds. Si vous sentez un point dur, un truc qui fait mal sur un orteil ou pire sur le côté extérieur du pied... Pas d'hésitation. Demandez une demi-pointure au-dessus ou carrément un modèle différent. C'est bête mais la façon de tailler les chaussures change radicalement d'un constructeur à un autre. Problème de coup de pied, pointe de chaussure trop serrée... Soyez à l'écoute de vos pieds.
 
-### Petite remarque qui peut être utile
+### Une petite remarque 
 
-Ne serrez pas vos lacets comme un sourd. Positionnez correctement la languette intérieure sur votre pied et vérifiez bien qu'il n'y a pas des trucs et des machins qui traînent dans la "shoes". Ensuite, pour le lacet intérieur, serrez fermement au-dessus des orteils et du coup de pied, relâchez un peu la pression, faites bouger vos orteils, appuyez sur la languette interne de sorte qu'elle porte bien sur la jonction entre la fin du tibia et la fin du coup de pied, terminez le laçage intérieur en serrant fermement autour du tibia (en fait comme vous allez pas mal bouger y a de fortes chances pour qu'à la fin il y ait de l'espace entre le chausson intérieur et votre tibia). Pour le lacet extérieur, prenez le temps de bien positionner la languette de la chaussure, serrez les lacets au-dessus des orteils, lâchez la pression, bougez ces derniers, terminez le laçage et serrant fermement autour du tibia. Pourquoi tout ce protocole ? En fait, le truc c'est qu'il ne faut pas serrer trop fort car sinon, il n'y a pas d'air entre vos pieds et la chaussure et en plus d'avoir mal... vous allez avoir froid aux pieds. Pour avoir chaud, faut de l'air alors serrez mais serrez malin. Ok ? Ok !
+**Ne serrez pas vos lacets comme un sourd**. Positionnez correctement la languette intérieure sur votre pied et vérifiez bien qu'il n'y a pas des trucs et des machins qui traînent dans la "shoes". Ensuite, pour le lacet intérieur, serrez fermement au-dessus des orteils et du coup de pied, relâchez un peu la pression, faites bouger vos orteils, appuyez sur la languette interne de sorte qu'elle porte bien sur la jonction entre la fin du tibia et la fin du coup de pied, terminez le laçage intérieur en serrant fermement autour du tibia (en fait comme vous allez pas mal bouger y a de fortes chances pour qu'à la fin il y ait de l'espace entre le chausson intérieur et votre tibia). 
+
+Pour le lacet extérieur, prenez le temps de bien positionner la languette de la chaussure, serrez les lacets au-dessus des orteils, lâchez la pression, bougez ces derniers, terminez le laçage et serrant fermement autour du tibia. Pourquoi tout ce protocole ? En fait, le truc c'est qu'il ne faut pas serrer trop fort car sinon, il n'y a pas d'air entre vos pieds et la chaussure et en plus d'avoir mal... vous allez avoir froid aux pieds. Pour avoir chaud, faut de l'air alors serrez mais serrez malin. Ok ? Ok !
 
 Ah oui, ne soyez pas complètement surpris si lorsque vous pliez les genoux, vous avez l'impression que votre tibia "flotte" un peu dans la chaussure. Bon, bien sûr faut pas que vous puissiez passer la main mais s'il y a un petit espace entre la jambe et la chaussure, ce n'est pas mortel. Ne l'oubliez pas, ce que vous avez aux pieds, ce ne sont plus des shoes de ski.
 
-### Petite remarque 
+### Une autre petite remarque 
 
 Il y a de plus en plus de chaussure sans lacet. Elles ont un système BOA. En gros avec deux mollettes on règle le niveau de serrage. C'est assez pratique et ça marche bien. Sur mes chaussures perso, j'ai cassé un seul câble. Le constructeur m'en a renvoyé 2. Entre temps j'avais commandé et reçu une paire de cables achetée sur le Web.
 
@@ -143,7 +145,11 @@ OK mais qu'est-ce que je fais si justement la languette est abîmée ? A ton avi
 
 Bon ben, vous voilà l'heureux locataire d'un ensemble qui devrait vous permettre d'attaquer gentiment demain le cœur léger. Bonne tartiflette et bonne nuit !
 
-Toc, toc ? Vous dormez ? Heu... Désolé, mais bon, faudrait peut-être faire un p'tit test avant d'aller dormir... En effet, il me semble judicieux, voir malin, de faire ce que l'on appelle en mécanique un "montage à sec". J'entends par là le fait que vous remontiez les shoes et la planche au chalet (ou dans l'appart'), que vous vous équipiez comme si vous partiez (pantalon, chaussettes), que vous régliez la longueur des lacets etc., que vous mettiez les bottes dans les fixes et que serriez tout ça (si vous avez un doute sur comment serrez les fixations allez faire un tour sur la page "premier contact").
+
+
+
+## Toc, toc ? Vous dormez ? 
+Heu... Désolé, mais bon, faudrait peut-être faire un p'tit test avant d'aller dormir... En effet, il me semble judicieux, voir malin, de faire ce que l'on appelle en mécanique un "montage à sec". J'entends par là le fait que vous remontiez les shoes et la planche au chalet (ou dans l'appart'), que vous vous équipiez comme si vous partiez (pantalon, chaussettes), que vous régliez la longueur des lacets etc., que vous mettiez les bottes dans les fixes et que serriez tout ça (si vous avez un doute sur comment serrez les fixations allez faire un tour sur la page "premier contact").
 
 Si vous avez des coques, un truc tout bête. Sans mettre les pieds dans les chaussures, prenez le temps de mettre une des chaussures dans les fixes et assurez-vous que la partie la plus large de la languette qui va sur votre coup de pied est bien centrée. 
 
