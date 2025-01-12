@@ -34,6 +34,11 @@ C'est Dimanche après-midi, vous êtes arrivé la veille, vous avez skié ce mat
 
 Et là, à gauche, ce groupe de nains assis bêtement les fesses dans la neige...
 
+<div align="center">
+<img src="./assets/img_05.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
 Là encore, à droite, un pauvre gars en perdition. Sûr, il a le look et l'équipement mais, tout raide sur ses jambes, sa planche fait un bruit d'enfer, ça gratte, ça talonne de tous les côtés, une vraie pitié.
 
 Et là, en bas de la petite pente, sur le gros plat, y encore ce "jobar" qui arrive à fond la caisse. Il attaque un virage, plie les genoux, tend le bras vers l'intérieur du virage, penche, penche encore jusqu'à se trouver pratiquement à l'horizontal. Sûr, il va manger de sorbet nature… Tu parles Charles, il termine cet énorme "hameçon" comme une fleur par un petit saut histoire de se trouver dos à la pente. Cool, vraiment cool… Et la trace qu'il a laissé dans la neige… Un vrai coup de rasoir !
