@@ -11,22 +11,27 @@ last_modified_date: 2020-05-03 00:06:51
 
 C'est la suite de la toute première page de cette série à ceux qui veulent [apprendre le Snowboard]({%link docs/08_snowboard/index.md%})
 
-Dimanche soir, 18H. Les skis sont rangés, la douche prise, vous avez enfilé votre jean, (un truc pas trop slim dont vous pouvez facilement remonter le bas des jambes jusqu'aux genoux) vous portez **vos chaussettes de ski préférées** et vous voilà dans le sous-sol de votre loueur local. Nerveuse à l'idée d'aller chercher votre première planche ? Normal... Mais vous allez voir, on va faire simple, très simple...
+Dimanche soir, 18H. Les skis sont rangés, la douche prise, vous avez enfilé votre jean, (un truc pas trop slim dont vous pouvez facilement remonter le bas des jambes jusqu'aux genoux) vous portez **vos chaussettes de ski préférées** et vous voilà dans le sous-sol de votre loueur local. Nerveuse à l'idée d'aller chercher votre première planche ? Normal... T'inquiète paupiette, on va faire simple, très simple...
 
 ## La board
 
-Au stade où on en est (débutant), on se fout complètement du type de board que le gars va vous remettre ! Voilà, c'est dit, c'est simple et c'est direct.
+Au stade où on en est (débutant), **on se fout complètement du type de board** que le gars va vous remettre ! Voilà, c'est dit, c'est simple et c'est direct.
 
-Comment ça on s'en fout ? Je croyais qu'en lisant ces pages j'aurais droit à des conseils, des tips, des trucs et des machins pour choisir la bonne planche ?
+*Comment ça on s'en fout ? Je croyais qu'en lisant ces pages j'aurais droit à des conseils, des tips, des trucs et des machins pour choisir la bonne planche ?*
 
-Ok, ok, mais bon soyons honnêtes. Actuellement le marché est entièrement dominé par les boards de type **FreeStyle** (souples, symétriques avec des spatules à chaque bout). En conséquence, le commerçant a en sa possession un maximum de planches de ce type. Comme en plus vous n'avez normalement aucune référence, vous êtes incapables de vraiment faire la différence entre une planche à pain et une board de la mort avec un noyau carbone.
+Ok, ok, mais bon soyons honnêtes. Actuellement le marché est entièrement dominé par les boards de type **FreeStyle** (souples, symétriques avec des spatules à chaque bout). En conséquence, le commerçant a en sa possession un maximum de planches de ce type. Comme en plus vous n'avez normalement aucune référence, vous êtes incapables de vraiment faire la différence entre une planche à pain et une board de la mort qui tue avec un noyau carbone à percolateur intégré.
 
-Bref, à ce stade, faites-lui confiance. De toute façon, c'est un pro et le dimanche soir, il a plus de temps à vous consacrer puisque la vague des nouveaux arrivants du samedi est passée. Quoiqu'il en soit, il va vous passer une planche FreeStyle qui sera toute bonne pour ce que vous allez en faire. Attention quand même à ne pas accepter une planche trop grande. Typiquement, en FreeStyle elle ne devrait pas dépasser votre menton (milieu du cou typiquement).
+Bref, à ce stade, faites-lui confiance. De toute façon, c'est un pro et le dimanche soir, il a plus de temps à vous consacrer puisque la vague des nouveaux arrivants du samedi est passée. Quoiqu'il en soit, il va vous passer une planche FreeStyle qui sera toute bonne pour ce que vous allez en faire. Attention quand même à ne pas accepter une planche trop grande. Typiquement, en FreeStyle elle ne devrait pas dépasser votre menton. Elle doit vous arriver à mi-coup typiquement.
+
+<div align="center">
+<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
+</div>
 
 Enfin, quand je dis "faites-lui confiance", je ne veux pas dire "soyez crédules". Nan, ce que cela signifie c'est que la décoration de la planche n'a aucune importance, mais qu'en revanche, vous devez jeter un œil sur l'état des carres et de la semelle.
 
-* **La semelle** : elle doit être lisse et pas trop abîmée. J'entends par là que s'il y a 2 ou trois rayures, ce n'est pas très grave. En revanche si vous repérez une grosse balafre, faites-le remarquer. Au pire il changera la board ou mieux il la fera traiter le soir même et demain matin, vous reviendrez au magasin et vous récupérerez une planche avec une semelle toute neuve.
-* **Les carres** : là, faut être plus critique. Gentiment, passez l'ongle de votre pouce sur les carres au niveau des fixations (on se fiche des carres qui sont au niveau des spatules). Attention, n'appuyez pas comme une bête. Si, à l'issue d'un passage votre ongle est marqué, tout est bon. Si cependant aucune rayure n'apparaît, faites remarquer que les carres ont peut-être besoin d'un petit affûtage. Là aussi, 2 solutions. Soit il change la planche soit le lendemain matin les carres seront affûtées.
+* **La semelle** : C'est ce qui va glisser sur la neige. Elle doit être lisse et pas trop abîmée. J'entends par là que s'il y a 2 ou trois rayures, ce n'est pas très grave. En revanche si vous repérez une grosse balafre, faites-le remarquer. Au pire il changera la board ou mieux il la fera traiter le soir même et demain matin, vous reviendrez au magasin et vous récupérerez une planche avec une semelle toute neuve.
+
+* **Les carres** : Là, faut être plus critique. Gentiment, passez l'ongle de votre pouce sur les carres au niveau des fixations (on se fiche des carres qui sont au niveau des spatules). Attention, n'appuyez pas comme une bête. Si, à l'issue d'un passage votre ongle est marqué, tout est bon. Si aucune rayure n'apparaît, faites remarquer que les carres ont peut-être besoin d'un petit affûtage. Là aussi, 2 solutions. Soit il change la planche soit le lendemain matin les carres seront affûtées.
 
 Un dernier point. Si la planche a quelques rayures sur le dessus, ou même quelques "éclats" sur les bords... Là aussi ce n'est pas très grave. Je vous l'ai dit, compte tenu de notre niveau actuel... la planche on s'en fout.
 
@@ -56,7 +61,7 @@ Ah oui, j'oubliais (mais on verra ça avec les chaussures) compte tenu du systè
 
 Y a du mieux, puisqu'elles sont très faciles à mettre et à régler. Cela dit, à l'usage, je n'aime pas trop la sensation de "flottement" que l'on peut ressentir sur le dessus du pied.
 
-Si le troisième type de fixe vous intimide, choisissez les flow. Au pire, vous pourrez toujours changer dans la semaine si, à l'usage, vous n'êtes pas à l'aise.
+Si le troisième type de fixe vous intimide, choisissez les flow. Au pire, vous pourrez toujours changer dans la semaine si, à l'usage, vous n'êtes vraiment pas pas à l'aise.
 
 * **Coque :**
 
@@ -67,7 +72,7 @@ Si le troisième type de fixe vous intimide, choisissez les flow. Au pire, vous 
 
 Ce sont de loin celles que je recommande.
 
-La raison en est très simple. Quand votre niveau va augmenter, vous chercherez des fixations offrants un maximum de réglages et de réactivité. Vous trouverez toujours dans la gamme de ce type de fixations votre bonheur.
+La raison est très simple. Quand votre niveau va augmenter, vous chercherez des fixations offrants un maximum de réglages et de réactivité. Vous trouverez toujours dans la gamme de ce type de fixations votre bonheur.
 
 Une dernière remarque. Ne rêvez pas trop quand même... En effet, rares sont les loueurs qui vont étaler devant vous la gamme de leurs fixations et qui vont vous demander "alors, avec cette planche, j'vous met quoi ?" Non, souvent les planches sont déjà équipées ce qui limite le choix. S'il y a des Flow et que vous voulez absolument des coques, assurez-vous que le loueur n'est pas débordé, soyez poli et vous verrez tout devrait bien se passer.
 
@@ -83,23 +88,37 @@ En gros ça veut dire que même si vous avez la meilleure board avec les meilleu
 
 Attention, ne me faites pas dire ce que je n'ai pas dit. Je ne demande pas à ce que vous preniez une planche de débutant et des chaussures dans la gamme "pro". Non, le truc c'est que vraiment, il ne faut pas hésiter à essayer 2 paires dans 2 modèles différents. Juste pour voir. En plus telle paire est peut être en location depuis 10 000 ans. L'intérieur est tout usée mais bon... Finalement tu t'y sens bien. Enfin bref, faut faire au moins 2 essais et toujours commencer avec une pointure en plus (c'est comme en running en fait).
 
-Ceci fait, il ne faudra peut-être pas hésiter à demander une demi-pointure au-dessus ou au-dessous. Là aussi, juste pour voir. Bon dans tous les cas, de la première règle découle la seconde : "**Si sur ton surf, t'as les pieds qui meurent, retourne voir ton loueur**". Il n'est pas fou, il préfère avoir un client satisfait et il n'hésitera pas à vous changer la paire qu'il vous aura loué la veille.
+Ceci fait, il ne faudra peut-être pas hésiter à demander une demi-pointure au-dessus ou au-dessous. Là aussi, juste pour voir. Bon dans tous les cas, de la première règle découle la seconde : "**Si sur ton surf, t'as les pieds qui meurent, retourne voir ton loueur**". Il n'est pas fou, il préfère avoir un client satisfait et si il le peut, il n'hésitera pas à vous échanger la paire louée la veille.
 
-Bon, pour les chaussures on fait quoi ? Tout bête, le gars vous propose une paire, vous la délacer largement, vous faites de même avec le lacet intérieur (n'hésitez pas à plonger les doigts dans la chaussure !). Vous remonter largement le bas de pantalon (d'où l'idée au début de ne PAS avoir un pantalon trop slim... Malin le mec...). Vous enfilez la bête, vous faites le lacet intérieur (oui, vous serrez comme si vous alliez sur la piste) vous faites le lacet extérieur (oui, là aussi, vous serrez). Vous vous mettez debout et vous bougez les orteils. C'est bon ? Ça le fait ? Vous pouvez bouger vos orteils? Ils ne touchent pas le bout de la chaussure? Maintenant pliez les genoux. Ça va toujours ?
+*Bon, pour les chaussures on fait quoi ?* Tout bête, le gars vous propose une paire, vous la délacer largement, vous faites de même avec le lacet intérieur (n'hésitez pas à plonger les doigts dans la chaussure !). Vous remonter largement le bas de pantalon (d'où l'idée de ne PAS avoir un pantalon trop slim... Malin le mec...). Vous enfilez la bête, vous faites le lacet intérieur (oui, vous serrez comme si vous alliez sur la piste). Vous faites ensuite le lacet extérieur (oui, là aussi, vous serrez). Vous vous mettez debout et vous bougez les orteils. C'est bon ? Ça le fait ? Vous pouvez bouger vos orteils? Ils ne touchent pas le bout de la chaussure? Maintenant pliez les genoux. Ça va toujours ?
 
-Bon... ben, re-belotte avec la seconde chaussure. Si les tests précédents passent encore, fermez les yeux et laissez parler vos pieds. Si vous sentez un point dur, un truc qui fait mal sur un orteil ou pire sur le côté extérieur du pied... Pas d'hésitation. Demandez une demi-pointure au-dessus ou carrément un modèle différent. C'est bête mais la façon de tailler les chaussures change radicalement d'un constructeur à un autre. Problème de coup de pied, pointe de chaussure trop serrée... Soyez à l'écoute de vos pieds.
+Bon... ben, re-belotte avec la seconde chaussure. Si les tests précédents passent encore, fermez les yeux et laissez parler vos pieds. Si vous sentez un point dur, un truc qui fait mal sur un orteil ou pire, sur le côté extérieur du pied... Pas d'hésitation. Demandez une demi-pointure au-dessus ou carrément un modèle différent. C'est bête mais la façon de tailler les chaussures change radicalement d'un constructeur à un autre. Problème de coup de pied, pointe de chaussure trop serrée... Soyez à l'écoute de vos pieds.
 
 ### Une petite remarque 
 
-**Ne serrez pas vos lacets comme un sourd**. Positionnez correctement la languette intérieure sur votre pied et vérifiez bien qu'il n'y a pas des trucs et des machins qui traînent dans la "shoes". Ensuite, pour le lacet intérieur, serrez fermement au-dessus des orteils et du coup de pied, relâchez un peu la pression, faites bouger vos orteils, appuyez sur la languette interne de sorte qu'elle porte bien sur la jonction entre la fin du tibia et la fin du coup de pied, terminez le laçage intérieur en serrant fermement autour du tibia (en fait comme vous allez pas mal bouger y a de fortes chances pour qu'à la fin il y ait de l'espace entre le chausson intérieur et votre tibia). 
+**Ne serrez pas vos lacets comme un sourd**. Positionnez correctement la languette intérieure sur votre pied et vérifiez bien qu'il n'y a pas des trucs et des machins qui traînent dans la "shoes". Ensuite, pour le lacet intérieur
+* serrez fermement au-dessus des orteils 
+* et du coup de pied
+* relâchez un peu la pression
+* faites bouger vos orteils
+* appuyez sur la languette interne de sorte qu'elle porte bien sur la jonction entre la fin du tibia et la fin du coup de pied
+* terminez le laçage intérieur en serrant fermement autour du tibia (en fait comme vous allez pas mal bouger y a de fortes chances pour qu'à la fin il y ait de l'espace entre le chausson intérieur et votre tibia). 
 
-Pour le lacet extérieur, prenez le temps de bien positionner la languette de la chaussure, serrez les lacets au-dessus des orteils, lâchez la pression, bougez ces derniers, terminez le laçage et serrant fermement autour du tibia. Pourquoi tout ce protocole ? En fait, le truc c'est qu'il ne faut pas serrer trop fort car sinon, il n'y a pas d'air entre vos pieds et la chaussure et en plus d'avoir mal... vous allez avoir froid aux pieds. Pour avoir chaud, faut de l'air alors serrez mais serrez malin. Ok ? Ok !
+Pour le lacet extérieur
+* prenez le temps de bien positionner la languette de la chaussure
+* serrez les lacets au-dessus des orteils, lâchez la pression, bougez ces derniers
+* terminez le laçage 
+* et serrant fermement autour du tibia. 
 
-Ah oui, ne soyez pas complètement surpris si lorsque vous pliez les genoux, vous avez l'impression que votre tibia "flotte" un peu dans la chaussure. Bon, bien sûr faut pas que vous puissiez passer la main mais s'il y a un petit espace entre la jambe et la chaussure, ce n'est pas mortel. Ne l'oubliez pas, ce que vous avez aux pieds, ce ne sont plus des shoes de ski.
+Pourquoi tout ce protocole ? En fait, le truc c'est qu'il ne faut pas serrer trop fort car sinon, il n'y a pas d'air entre vos pieds et la chaussure et en plus d'avoir mal... vous allez avoir **froid aux pieds**. Pour avoir chaud, faut de l'air alors serrez mais serrez malin. Ok ? Ok !
+
+Ah oui, ne soyez pas complètement surpris si, lorsque vous pliez les genoux, vous avez l'impression que votre tibia "flotte" un peu dans la chaussure. Bon, bien sûr faut pas que vous puissiez passer la main entre la chaussure et la jambe mais s'il y a un petit espace ce n'est pas mortel. Ne l'oubliez pas, ce que vous avez aux pieds, ce ne sont plus des shoes de ski.
+
+
 
 ### Une autre petite remarque 
 
-Il y a de plus en plus de chaussure sans lacet. Elles ont un système BOA. En gros avec deux mollettes on règle le niveau de serrage. C'est assez pratique et ça marche bien. Sur mes chaussures perso, j'ai cassé un seul câble. Le constructeur m'en a renvoyé 2. Entre temps j'avais commandé et reçu une paire de cables achetée sur le Web.
+Il y a de plus en plus de chaussures sans lacet. Elles ont un système BOA. En gros avec deux mollettes on règle le niveau de serrage. C'est assez pratique et ça marche bien. Sur mes chaussures perso, j'ai cassé un seul câble. Le constructeur m'en a renvoyé 2. Entre temps j'avais commandé et reçu une paire de cables achetée sur le Web.
 
 Ce qui a de bien c'est qu'on peut très facilement re-régler le serrage en cours de demi-journée.
 
@@ -114,35 +133,39 @@ Bon, là, compte tenu de notre niveau d'incompétence, il n'y a pas grand-chose 
 
 "Oh non, déjà à l'oral du BAC ce n'était pas terrible, mais là, je ne comprends même pas la question...". Pas de panique. Les termes Goofy et Regular déterminent simplement quel pied vous souhaitez mettre devant, une fois que vous êtes sur la planche.
 
-"Et comment je sais moi... je débute !".
+*Et comment je sais moi... je débute !*
 
-Une méthode très simple consiste à imaginer que vous courrez en chaussettes dans le couloir chez votre grand-mère et que vous décidez de faire une glissade. Si le pied que vous mettez devant est le pied gauche alors vous êtes Regular, sinon, si c'est le pied droit, vous êtes... Oui bien, vous êtes Gooffy.
+Une méthode très simple consiste à imaginer que vous courrez en chaussettes dans le couloir chez votre grand-mère et que vous décidez de faire une glissade. Si le pied que vous mettez devant est le pied gauche alors vous êtes **Regular**, sinon, si c'est le pied droit, vous êtes... Oui bien, vous êtes **Gooffy**.
 
 | Type    | Pied          |
 | ------- | ------------- |
 | Regular | Gauche devant |
 | Goofy   | Droite devant |
 
-Un autre test consiste, à fermer les yeux, à vous tenir bien droit et à demander à un tiers de vous pousser dans le dos. Si c'est le pied gauche qui part en premier vous êtes toujours et encore Regular. Si c'est l'autre (le droit), vous êtes toujours et encore Gooffy.
+Un autre test consiste, à fermer les yeux, à vous tenir bien droit et à demander à un tiers de vous pousser dans le dos. Si c'est le pied gauche qui part en premier vous êtes toujours et encore Regular. Sinon c'est l'autre (le droit), vous êtes toujours et encore Gooffy.
 
-Bon et les réglages ? Qu'est-ce qui va faire ? Normalement, le loueur va mettre des réglages tout à fait standards du style +15 à l'avant et -15 à l'arrière. En Français dans le texte cela signifie que vous allez vous retrouver avec les pieds écartés (en canard). De plus, il est vraisemblable qu'il centrera les fixations de manières symétriques par rapport au milieu de la planche.
+*Bon et les réglages ? Qu'est-ce qui va faire ?* 
+
+Normalement, le loueur va mettre des réglages tout à fait standards du style +15 à l'avant et -15 à l'arrière. En Français dans le texte cela signifie que vous allez vous retrouver avec les pieds écartés (en canard). De plus, il est vraisemblable qu'il centrera les fixations de manières symétriques par rapport au milieu de la planche.
 
 Une fois que c'est fait, puisque vous avez toujours les chaussures aux pieds (cela vous permet, entre autres, de vérifier si, dans le temps que prend le loueur pour régler les fixes, vous les supportez...), remontez sur la planche et verrouillez vos pieds dans les fixations. Ca permet de découvrir la mécanique...
 
 Ensuite, tenez-vous droit, pliez un peu les genoux, relevez la tête, bras le long du corps. Ça va, à l'aise ? Non, vous avez l'impression d'avoir les pieds trop écartés ? Demandez son avis au loueur. Il existe des règles plus ou moins empiriques mais il doit être capable d'évaluer d'un seul coup d'œil si ça va ou pas.
 
-Pendant que vous y êtes, vérifiez bien sur les fixations que lorsque vous serrez les languettes du coup de pied et des orteils ces dernières ne sont pas abîmées à l'endroit même où vous arrêtez de serrer. Mais kékidit? Le Mr te dit : serre les fixes gentiment et vérifie que les dents des languettes de tes coques ne sont pas abîmées justement à l'endroit où tu arrêtes de serrer. 
+Pendant que vous y êtes, vérifiez bien sur les fixations que lorsque vous serrez les languettes du coup de pied et des orteils ces dernières ne sont pas abîmées à l'endroit même où vous arrêtez de serrer. *Mais kékidit?* Le Mr te dit : serre les fixes gentiment et vérifie que les dents des languettes de tes coques ne sont pas abîmées justement à l'endroit où tu arrêtes de serrer. 
 
 <div align="center">
 <img src="./assets/img_07.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-Sinon ? Ben sinon y a toutes les chances que demain la languette en question se desserre. Tu auras plein d'autres bonnes et mauvaises raisons de râler alors ce n'est pas la peine de rajouter des problèmes de languette. Faut bien penser à verifier les dents des 4 languettes (2x2 fixes)
+*Sinon ?* Ben sinon y a toutes les chances que demain la languette en question se desserre. Tu auras plein d'autres bonnes et mauvaises raisons de râler alors ce n'est pas la peine de rajouter des problèmes de languette. Faut bien penser à verifier les dents des 4 languettes (2x2 fixes)
 
-OK mais qu'est-ce que je fais si justement la languette est abîmée ? A ton avis banane ? Tu es poli et tu causes avec le loueur... Idem si demain matin y a des problèmes de languette, tu ne te prends pas la tête et tu retournes voir ton loueur à midi. Bon allez il est temps de conclure.
+*OK mais qu'est-ce que je fais si justement la languette est abîmée ?* À ton avis banane ? Tu es poli et tu causes avec le loueur... Idem si demain matin y a des problèmes de languette, tu ne te prends pas la tête et tu retournes voir ton loueur à midi. Bon allez il est temps de conclure.
+
+
+
 
 ## Conclusion
-
 Bon ben, vous voilà l'heureux locataire d'un ensemble qui devrait vous permettre d'attaquer gentiment demain le cœur léger. Bonne tartiflette et bonne nuit !
 
 
@@ -158,7 +181,7 @@ Si vous avez des coques, un truc tout bête. Sans mettre les pieds dans les chau
 </div>
 
 
-Si ce n'est pas le cas, regardez attentivement le système de fixation. Y a forcément un moyen de décaler la languette un peu à droite ou un peu à gauche (généralement c'est un petit cliquet à lever, à décaler et à refermer). Ensuite passez à l'autre chaussure. De la même façon, assurez-vous que la languette qui sera sur vos orteils n'est pas trop décalée et qu'il n'y a pas de problème quand vous serez tout ça. 
+Si ce n'est pas le cas, regardez attentivement le système de fixation. Y a forcément un moyen de décaler la languette un peu à droite ou un peu à gauche (généralement c'est un petit cliquet à lever, à décaler et à refermer). Ensuite passez à l'autre fixe. De la même façon, assurez-vous que la languette qui sera sur vos orteils n'est pas trop décalée et qu'il n'y a pas de problème quand vous serez tout ça. 
 
 <div align="center">
 <img src="./assets/img_09.webp" alt="" width="450" loading="lazy"/>
@@ -171,7 +194,7 @@ Soyez consciencieux, prenez votre temps. Si enfin, sur le bout des orteils ce n'
 </div>
 
 
-Une fois que vous avez fait le test avec une "shoes" dans une fixe, faite les mêmes vérifications avec l'autre fixe. C'est important pour que vous soyez tranquille demain matin.
+Une fois que vous avez fait le test avec une chaussure dans une fixe, faite les mêmes vérifications avec l'autre fixe et l'autre chaussure. C'est important pour que vous soyez tranquille demain matin.
 
 Ça va toujours ? Bon ben maintenant vous pouvez aller vous coucher. Faites de beaux rêves de glisse parce que demain... Ah demain... Ce sera une toute autre histoire...
 
