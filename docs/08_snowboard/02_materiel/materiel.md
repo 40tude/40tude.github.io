@@ -7,6 +7,7 @@ date: 2015-01-11 21:03:37
 last_modified_date: 2020-05-03 00:06:51
 ---
 
+C'est la suite de la [toute première page de la série]({%link docs/08_snowboard/index.md%})
 
 Dimanche soir 18H. Les skis sont rangés, la douche prise, vous avez enfilé votre jean, (un truc pas trop slim dont vous pouvez facilement remonter le bas des jambes jusqu'aux genoux) vous portez **vos chaussettes de ski préférées** et vous voilà dans le sous-sol de votre loueur local. Nerveuse à l'idée d'aller chercher votre première planche ? Normal... Mais vous allez voir, on va faire simple, très simple...
 

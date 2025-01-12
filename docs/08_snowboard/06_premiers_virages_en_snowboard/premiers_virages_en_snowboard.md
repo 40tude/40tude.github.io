@@ -120,3 +120,6 @@ Si vous êtes tout seul, en plus du reste, essayez "d'écouter" la board. Si ell
 
 Allez au boulot, et n'hésitez pas à y passer le temps qu'il faut (en gros, tout le reste de l'après midi).
 
+## Ce soir après la douche
+Prends le temps de noter au dos de la feuille tes impressions du jour.
+

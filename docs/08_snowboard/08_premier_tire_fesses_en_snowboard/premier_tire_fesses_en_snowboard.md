@@ -90,3 +90,8 @@ Un seul conseil. Choisissez votre tire-fesses "de grands" avec précaution. C'es
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbwMp4uvDNc?si=5LlFTnCjrIpYtKT-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
+
+## Ce soir après la douche
+Prends le temps de noter au dos de la feuille tes impressions du jour.
+
+

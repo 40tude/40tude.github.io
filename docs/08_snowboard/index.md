@@ -14,11 +14,15 @@ permalink: /apprendre_snowboard/
 
 # Apprendre le Snowboard
 
-Vous trouverez dans les posts de la catégorie [Apprendre le Snowboard]({%link docs/08_snowboard/index.md%}) un certain nombre de conseils qui devraient vous aider à débuter. Attention, je ne suis, ni un [moniteur de l'ESF](http://www.esf.net), ni une super bête. Tout ce que vous pourrez lire ici devra donc être interprété comme une suite de conseils que pourrait donner un surfeur à un autre. Typiquement le genre d'info que l'on peut échanger sur le bord d'une piste...
+Vous trouverez dans les posts de la catégorie [Apprendre le Snowboard]({%link docs/08_snowboard/index.md%}) un certain nombre de conseils qui devraient vous aider à **débuter** dans la joie et la bonne humeur. 
 
-Ces billets ne visent qu'à rendre service aux débutants et je ne demande à personne d'être d'accord avec moi. Autrement dit, si vous trouvez qu'à un moment donné, je raconte des bêtises (préjudiciable à la sécurité des lecteurs par exemple) faites le moi savoir et je tiendrai, compte de vos avis.
+Attention, je ne suis, ni un [moniteur de l'ESF](http://www.esf.net), ni un pro. Tout ce que vous pourrez lire ici devra donc être interprété comme une suite de conseils que pourrait donner un surfeur à un autre. Typiquement le genre d'info que l'on peut échanger sur le bord d'une piste...
 
-Avant de partir cette année, imprimez les différents billets et lisez-les au coup par coup lors de votre séjour ou pendant votre voyage. L'avantage c'est qu'en faisant ainsi, au dos de chaque feuille vous pourrez chaque soir mettre noir sur blanc vos commentaires et vos impressions. De mon point de vue, il est **très important**, surtout au début, de faire l'effort de noter par écrit ce qui a marché, pourquoi on n'était pas à l'aise, de retranscrire ses sensations... Le truc c'est que l'année d'après, en relisant vos propres notes, vous serez très rapidement prêt dans votre tête...
+Ces billets ne visent qu'à **rendre service aux débutants** et je ne demande à personne d'être d'accord avec moi. Autrement dit, si vous trouvez qu'à un moment donné, je raconte des bêtises (préjudiciable à la sécurité des lecteurs par exemple) faites le moi savoir et je tiendrai, compte de vos avis.
+
+Avant de partir cette année, imprimez les différents billets et lisez-les dans l'ordre au coup par coup lors de votre séjour ou pendant votre voyage. L'avantage c'est qu'en faisant ainsi, au dos de chaque feuille vous pourrez **chaque soir** mettre noir sur blanc vos commentaires et vos impressions. 
+
+De mon point de vue, il est **très important**, surtout au début, de faire l'effort de noter par écrit ce qui a marché, pourquoi on n'était pas à l'aise, de retranscrire ses sensations... Le truc c'est que l'année d'après, en relisant vos propres notes, vous serez très rapidement prêt dans votre tête...
 
 ## La décision est prise...
 

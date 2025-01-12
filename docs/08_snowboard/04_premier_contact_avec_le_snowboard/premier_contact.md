@@ -179,3 +179,7 @@ Encore une fois, ici tout est affaire de finesse, de doigté. Alors dérapez, d�
 
 Ah oui, j'allais oublier... A chaque arrêt, évitez de vous laisser tomber et de vous rouler dans la neige. Soyez fier, faites l'effort de rester digne, même dans l'adversité et restez debout sur votre board. Sérieux, combien de fois avez-vous vu un prof de snowboard de l'ESF se rouler dans la neige tel un Saint-Bernard qui retrouverait ses Alpes natales après 10 ans d'exil au Congo. Allez, maîtrisez votre équilibre... Ça peut pas vous faire de mal et en plus, vous rendrez un grand service à l'image de marque des surfeurs. Que demande le peuple ?
 
+## Ce soir après la douche
+Prends le temps de noter au dos de la feuille tes impressions du jour. Ces notes sont les tiennes. Personne ne viendra les lire, sauf toi l'année prochaine. Donce tu écris comme tu veux mais débrouille toi pour que tu puisse te relire et te comprendre dans un an. Par exemple, demain soir, quand tu aura terminé d'écrire tes notes du jour, reviens sur celle de veille. Fais de même alors que la semaine avance. 
+
+Note tes sensations, comment tu te sentais... Comment ça se passait dans les chaussure, les gants, ce qui allait, ce qui n'allait pas...

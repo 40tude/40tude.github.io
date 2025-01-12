@@ -76,3 +76,6 @@ https://www.youtube.com/watch?feature=player_embedded&v=GSPDu5cz17o
 
 A ce niveau, y a un truc qu'il est bon de pratiquer afin de voir où vous en êtes du point de vue de l'équilibre... Vous partez en traversée de la piste (en front par exemple), vous êtes fléchi sur les genoux et quand vous le sentez, vous faites un petit saut (5-10 cm de haut par exemple) vertical. Attention, faut êtes clair... Vous êtiez en traversée, donc sur la carre située sous vos orteils. Vous sautez et... Et, vous retombez sur la même carre. Hors de question de tricher en retombant à plat et de faire une faute de carre quand vous allez toucher la neige ou tout autre plaisanterie de ce type...
 
+## Ce soir après la douche
+Prends le temps de noter au dos de la feuille tes impressions du jour.
+

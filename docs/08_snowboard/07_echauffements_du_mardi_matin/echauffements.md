@@ -18,7 +18,7 @@ On est mardi en tout début de matinée. Bon... Là on va faire court et ludique
 ### Tête, Epaules et Genoux Pieds
 <https://youtu.be/57ivuBX1kLU?si=erDljTz9nE3SFhZK&t=42>
 
-* Tu est debout, bien droit. Tu fais rouler ta tête. A un moment ton menton "roule" sur haut de ton torse. À un autre moment tu as les yeux au ciel. Tu roule ta tête dou-ce-ment. T'en fais 5 dans un sens 5 dans l'autre et t'évite de vomir ton ptit'dej. 
+* Tu es debout, bien droit. Tu fais rouler ta tête. A un moment ton menton "roule" sur haut de ton torse. À un autre moment tu as les yeux au ciel. Tu roule ta tête dou-ce-ment. T'en fais 5 dans un sens 5 dans l'autre et t'évite de vomir ton ptit'dej. 
 * Bras écartés à l'horizontal. Tu fais des moulinet dans un sens puis dans l'autre. Pendant une minute environ au total.
 * Bras écartés tu fasi le moulin à vent avec tes bras. Dans un sens puis dans l'autre. Là aussi, pendant une minute environ au total.
 * T'enlève tes gants si besoin. Tu croise tes doigts. Tu fais rouler tes poignets dans un sens puis dans l'autre pendant une minute environ.
@@ -53,3 +53,7 @@ Remarquez... Comme vous êtes chauds et que vous avez déjà remonté la piste d
 Fentes et squat classiques sans snowboard au pied évidemment !
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/O1sqFSHiED8?si=GakMfZy-wzJU4mPM&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+## Ce soir après la douche
+Prends le temps de noter au dos de la feuille tes impressions du jour à propos de l'échauffement.
