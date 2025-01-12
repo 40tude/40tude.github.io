@@ -11,7 +11,7 @@ last_modified_date: 2020-05-02 23:50:18
 
 # Équipement du snowboarder débutant
 
-C'est la suite de cet [article]({%link docs/08_snowboard/001_materiel/materiel.md%}).
+C'est la suite de cet [article]({%link docs/08_snowboard/02_materiel/materiel.md%}).
 
 Autant sur la planche je pouvais paraître laxiste autant là, vraiment y a des choses à dire. Pourquoi? Tout simplement parce que j'ai pas envie qu'il vous arrive ce qui m'est arrivé...
 
