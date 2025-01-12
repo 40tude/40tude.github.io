@@ -11,7 +11,7 @@ permalink: /apprendre_snowboard/
 # Apprendre le Snowboard
 
 <div align="center">
-<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/>
+<img src="{%link docs/08_snowboard/assets/img_02.webp%}" alt="" width="450" loading="lazy"/>
 </div>
 
 Vous trouverez dans les billets de la catégorie [Apprendre le Snowboard]({%link docs/08_snowboard/index.md%}) un certain nombre de conseils qui devraient vous aider à **débuter** dans la joie et la bonne humeur. 
