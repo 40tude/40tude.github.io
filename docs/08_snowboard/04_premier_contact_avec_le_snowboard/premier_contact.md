@@ -10,7 +10,7 @@ last_modified_date: 2020-05-02 23:49:47
 
 # Premier contact avec le Snowboard
 
-C'est la suite de cet [article](docs/08_snowboard/03_equipement/equipement_snowboarder_debutant.md)
+C'est la suite de cet [article]({%link docs/08_snowboard/03_equipement/equipement_snowboarder_debutant.md %})
 
 On est lundi matin, la planche est là, il fait beau, vous êtes équipé, tout va bien... On y va ? Nan ! Rhabillez-vous, prenez vos skis et allez faire une matinée de descentes avec vos potes... Pourquoi ? Je vois trois bonnes raisons :
 
@@ -27,9 +27,9 @@ On est Lundi, 14H, ding dong, c'est l'heure... Faut y aller... Pour commencer, j
 5. Déraper
 
 
-Attention, ce n'est que le début de l'après midi. Faudra ensuite, toujours cet après midi consacrer du temps aux [traversées de la piste](docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md) ainsi qu'aux [premiers virages](docs\08_snowboard\06_premiers_virages_en_snowboard\premiers_virages_en_snowboard.md).
+Attention, ce n'est que le début de l'après midi. Faudra ensuite, toujours cet après midi consacrer du temps aux [traversées de la piste]({%link docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md%}) ainsi qu'aux [premiers virages]({%link docs\08_snowboard\06_premiers_virages_en_snowboard\premiers_virages_en_snowboard.md%}).
 
-Pour fixer les idées. Si on imagine qu'on est sur la piste de 14H à 17H je pense qu'il faut consacrer 1H environ à cette page puis passer le reste de l'après midi, sur les histoires de [traversées](docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md) et de [virages](docs\08_snowboard\06_premiers_virages_en_snowboard\premiers_virages_en_snowboard.md). De toute façon, en cours d'après midi, tu seras obligé de déchausser, rechausser, t’asseoir, te relever, glisser, patiner... Bref tu vas pratiquer. Heu... Faudra penser à faire une bonne pose au bar du coin en laissant la planche au soleil. 
+Pour fixer les idées. Si on imagine qu'on est sur la piste de 14H à 17H je pense qu'il faut consacrer 1H environ à cette page puis passer le reste de l'après midi, sur les histoires de [traversées]({%link docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md%}) et de [virages]({%link docs\08_snowboard\06_premiers_virages_en_snowboard\premiers_virages_en_snowboard.md%}). De toute façon, en cours d'après midi, tu seras obligé de déchausser, rechausser, t’asseoir, te relever, glisser, patiner... Bref tu vas pratiquer. Heu... Faudra penser à faire une bonne pose au bar du coin en laissant la planche au soleil. 
 
 
 Ça n'a l'air de rien, mais bon, va falloir que vous restiez zen, et promis, quand vous aurez fait tout ça, vous aurez votre compte.
@@ -227,5 +227,5 @@ Ah oui, j'allais oublier... À chaque arrêt, évitez de vous laisser tomber et 
 
 Allez, maîtrisez votre équilibre... Ça peut pas vous faire de mal et en plus, vous rendrez un grand service à l'image de marque des surfeurs. Que demande le peuple ?
 
-Allez, on passe à la suite... Les [traversées](docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md) de piste.
+Allez, on passe à la suite... Les [traversées]({%link docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md%}) de piste.
 

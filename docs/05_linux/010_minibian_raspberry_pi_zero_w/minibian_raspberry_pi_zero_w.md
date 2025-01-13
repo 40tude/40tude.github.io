@@ -29,7 +29,7 @@ tar xvf 2016-03-12-jessie-minibian.tar.gz
 ```
 
 * On se retrouve avec un fichier ``2016-03-12-jessie-minibian.img`` (830 Mo)
-* Il faut le copier sur une carte Micro SD Card. La procédure est identique à celle [expliquée ici](docs/05_linux/008_install_rpi0_from_rpi/install_rpi0_from_rpi.md).
+* Il faut le copier sur une carte Micro SD Card. La procédure est identique à celle [expliquée ici]({%link docs/05_linux/008_install_rpi0_from_rpi/install_rpi0_from_rpi.md%}).
 * Ne rien connecter au RPI3 et faire l'inventaire des périphériques connectés.
 
 ```bash

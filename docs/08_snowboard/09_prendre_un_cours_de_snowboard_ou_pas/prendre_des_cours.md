@@ -9,7 +9,7 @@ last_modified_date: 2020-05-02 23:52:33
 
 # Prendre des cours de Snowboard
 
-C'est la suite de cet [article](docs/08_snowboard/08_premier_tire_fesses_en_snowboard/premier_tire_fesses_en_snowboard.md)
+C'est la suite de cet [article]({%link docs/08_snowboard/08_premier_tire_fesses_en_snowboard/premier_tire_fesses_en_snowboard.md%})
 
 Aujourd'hui nous devrions être mercredi. En l'état actuel des choses, vous êtes capable de chausser rapidement et de patiner avec grâce. De plus, vous virez à plat en front et en back et vous prenez le tire fesse de la piste Pitchoun avec facilité (hein, vous confirmez...).
 
