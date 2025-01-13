@@ -66,20 +66,12 @@ Ah, oui, en back c'est genoux pliés et talons, talons talons.
 Si vous ne comprenez pas ce que je viens de dire relisez la fin du paragraphe qui traite des fautes de carre.
 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/az2IcAOWCv0?si=S7oOcmJhrOpI6OmI&amp;start=38" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### Une autre petite vidéo
+Bon, là il va un peu vite pour nous mais en fin d'après midi on doit être capable de faire ça.
 
-Regardez bien ce qu'elle fait avec sa hanche gauche pour mettre la planche dans la pente et de son bras droit pour arrêter la glisse.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XNVgqDgRneA?si=SVEG-UI1dHuRl1YH&amp;start=23" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-https://www.youtube.com/watch?feature=player_embedded&v=6pq5Z4h6VoQ
-
-
-
-### Une dernière vidéo
-
-J'aime bien cette vidéo car elle montre vraiment (vitesse, pente etc...) ce que devrait être vos premières traversées de pistes.
-
-https://www.youtube.com/watch?feature=player_embedded&v=GSPDu5cz17o
 
 
 

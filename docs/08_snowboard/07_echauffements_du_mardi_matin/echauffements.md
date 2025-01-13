@@ -27,10 +27,17 @@ On est mardi en tout début de matinée. Bon... Là on va faire court et ludique
 * T'enlève tes gants si besoin. Tu croise tes doigts. Tu fais rouler tes poignets dans un sens puis dans l'autre pendant une minute environ.
 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FPs_w7J4_mo?si=n3wYzS8HoA30MW7_&amp;start=64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 ### Petits sauts à plat
-Dans un premier temps, on chausse les deux pieds sur la planche sur un terrain plat (le bas de Pitchoun par ex.). Ensuite, on plie les genoux et on "s'amuse" à faire des petits sauts verticaux (une dizaine) en faisant l'effort de bien retomber à plat et en pliant exagérément les genoux. N'ayez pas peur par exemple de faire en sorte que, le dos droit, les mains se retrouvent très près de la planche quand vous retombez et que vos genoux sont pliés. Bien... Allez on passe à la suite.
+Dans un premier temps, on chausse les deux pieds sur la planche sur un terrain plat (le bas de Pitchoun par ex.). Ensuite, on plie les genoux et on "s'amuse" à faire des petits sauts verticaux (une dizaine) en faisant l'effort de bien retomber à plat et en pliant exagérément les genoux. N'ayez pas peur par exemple de faire en sorte que, le dos droit, les mains se retrouvent très près de la planche quand vous retombez et que vos genoux sont pliés. 
 
+Dans la vidéo ci-dessous ne regarde que les "petits sauts". Le reste c'est un peu trop avancé pour nous.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7D6oZnJAFng?si=lA99uWsWuYWAIF8Z&amp;start=28" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Bien... Allez on passe à la suite.
 
 ### Tournez manège
 Maintenant, même position mais alors que vous êtes en l'air essayez de faire tourner votre corps, vos jambes et la planche de 45°. En fait, avec 8 sauts vous devriez avoir fait un tour complet. Ne forcez pas ! Si ce n'est pas tout à fait ça, ce n'est pas grave. Prenez votre temps et laissez vos muscles démarrer la journée gentiment. Heu... N'oubliez pas... On est en vacances. Bien... Pensez à bien retomber à plat et à bien plier les genoux. 

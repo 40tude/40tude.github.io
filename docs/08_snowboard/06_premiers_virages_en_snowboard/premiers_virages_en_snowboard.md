@@ -51,6 +51,8 @@ En fait, on a pas fait un vrai virage mais juste une partie de virage. Comme en 
 </div>
 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PL969NUdTxk?si=ShyZO5eEgKtyU-Dc&amp;start=78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Allez, faites en quelques uns comme ça. Quand vous en aurez marre d'avoir les bras écartés, mettez vos mains sur vos hanches (comme des danseurs Russes) et faites encore une fois pivoter les épaules, les hanches et les bras qui y sont accrochés.
 
 Enfin, quand vous en aurez marre de passer pour un danseur Russe qui aurait du mal à se recycler, essayez d'être "surf attitude" et continuez à faire des virages mais en laissant vos bras à la verticale. Attention comme il faut impérativement que vos épaules tournent, vos bras, même verticaux, vont tourner aussi. Aidez-vous du regard... Vous partez "nez dans la pente", quand vous faites pivoter vos épaules, votre regard lui aussi remonte vers la montagne. Allez, faites encore des virages frontside, expérimentez, faites des tests. Ah oui, puisqu'on est en front, c'est genoux pliés et c'est "orteils, orteils, orteils".
@@ -84,7 +86,7 @@ En back comme en front, un bon moyen de se forcer à appuyer sur la jambe avant 
 
 ## Enchaînement de virages
 
-Jusqu'à présent, on a fait des morceaux de virages histoire de ne pas impressionner les foules dès le départ... Maintenant, il est temps d'utiliser ce que l'on vient de décomposer afin de descendre "dignement" cette fameuse piste Pitchoun. Attention, ici on va mettre en oeuvre, non seulement les virages, mais aussi les traversées.
+Jusqu'à présent, on a fait des morceaux de virages histoire de ne pas impressionner les foules dès le départ... En france on parle d'hameçon, aux US on parle de virage en J. Maintenant, il est temps d'utiliser ce que l'on vient de décomposer afin de descendre "dignement" cette fameuse piste Pitchoun. Attention, ici on va mettre en oeuvre, non seulement les virages, mais aussi les traversées.
 
 Pour ces exercices, je vous conseille de monter un bon morceau de la piste. Ceci fait, mettez vous perpendiculaire à la ligne de pente en front ou en back, comme il vous plaira. Vous êtes vertical, à l'arrêt et les jambes légèrement fléchies. Pour les besoins des explications qui vont suivre, j'imagine que vous vous êtes relevé à quatre pattes, et que vous êtes donc en position frontside. La situation serait symétrique si vous étiez en back.
 
@@ -95,6 +97,8 @@ Commencez par l'équivalent d'une traversée. Attention, pas un truc à toute vi
 N'ayez pas peur au début de continuer à faire tourner exagérément vos bras quitte à ce que la planche remonte un peu la pente et s'arrête en back. Le plus délicat à gérer dans ces premiers virages, c'est le passage d'une carre sur l'autre. Faut être clair... Au tout début, personne n'aime cet instant où l'on passe d'une carre à l'autre via une position à plat. Ceci dit, réfléchissez...
 
 Dans les premiers exercices de virages en front ou en back on faisait partir la planche à plat. D'autre part, même si on ne l'a pas encore fait, la planche dans le tire fesse sera, là aussi, à plat. Conclusion, rassurez vous, une board n'est pas un être vicieux qui attend la moindre occasion pour vous faire du mal. Non, non, au contraire, elle sait glisser à plat et n'attend qu'une chose... Que vous passiez le cap mental du "carre-plat-carre" pour vraiment commencer à jouer avec vous.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PL969NUdTxk?si=xcxCW5zF2KeCLoKV&amp;start=264" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Si jamais vous rencontrez des problèmes, ils sont certainement dû au fait que vous n'appuyez pas suffisamment sur votre jambe avant (en fait, c'est à mon avis tout le secret des premiers virages).
 

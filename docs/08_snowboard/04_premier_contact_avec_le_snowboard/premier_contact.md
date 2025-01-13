@@ -76,6 +76,8 @@ Notez aussi que si vous avez des coques, à l'arrière de la fixation, il y a un
 
 Ça y est, c'est fait ? Vous êtes bien embêté avec ce machin collé à votre jambe hein ? Bon, normalement puisque vous êtes en terrain plat vous devriez être capable de faire 2 exercices simples.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n7UHStne0Ag?si=OMTBvat-rtP8tDWO&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 
 
@@ -84,9 +86,15 @@ Notez aussi que si vous avez des coques, à l'arrière de la fixation, il y a un
 ### Patiner
 
 Donc là normalement vous avez le pied avant dans la fixation avant et le pied arrière dans la neige et vous êtes statique. Dans un premier temps, vous allez "monter" sur la planche, faire passer votre poids sur la jambe avant, mettre l'autre pied sur la neige (en aval de la board) et essayer de patiner gentiment. Si vous êtes Regular vous partez à gauche, si vous êtes Goofy vous partez vers la droite.
+
 Non ! ne regardez pas vos pieds, ne pliez pas le corp, ne baissez pas le tronc, soyez fier (mais prudent), relevez le buste, relevez la tête et patinez quelques mètres dans un sens puis dans l'autre. Bien sûr, au bout de quelques mètres, faut quand même faire demi-tour pour revenir à votre point de départ. Pas facile ? Bon, ben recommencez... Prenez votre temps. Il faut qu'à la fin vous soyez relativement à l'aise.
 
 Le truc c'est qu'il ne faut pas vouloir aller trop vite. Commence doucement, laisse ton corps apprendre le mouvement. Ensuite tu peux executer le mouvement un peu plus vite. 
+
+<div align="center">
+<img src="./assets/patiner.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 
 C'est bon, la patinette vous dominez ? Bon et bien repartez pour un tour mais ce coup-ci, une fois que vous avez donné un coup de patin avec votre jambe arrière, vous ramenez votre pied libre sur la planche et vous le calez **entre les 2 fixations**.
 
@@ -96,7 +104,12 @@ Au contraire, lorsque la planche glisse à plat, forcez-vous à plier la jambe a
 
 Autrement dit, pour regarder ce qui se passe devant (tu confirmes, tu regardes pas tes pieds, tu as les yeux levés et tu regardes là où tu veux aller...), vous êtes obligé de tourner la tête, le menton sur ton épaule. 
 
-Pour les bras, faites simple, gardez-les le long du corps. Chaque main doit être à la verticale de la planche. 
+Pour les bras, faites simple, écartez-les dans l'axe de la planche puis ramenez-les le long du corps quand vous vous sentez plus à l'aise. Dans tous les cas, chaque main doit être à la verticale de la planche. 
+
+<div align="center">
+<img src="./assets/attitude.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 
 Vous ne me croyez pas? Vous avez raison. Faites le test... Alors que vous glissez, le pied arrière entre les fixes, vous écartez les bras et vous ramenez vos deux mains devant, comme si vous conduisiez une moto. Normalement la planche à tourné et c'est **PAS** ce que l'on veut.
 
@@ -114,6 +127,9 @@ Jusque là, ça va ? Bon, ben après la vidéo on passera à la suite...
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kGpGC1l7il0?si=mtwamqDTdPV45UIC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+Une autre pour la route...
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eFH00ZH425c?si=x9wWLyGpSd_KKSH6&amp;start=47" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
@@ -159,6 +175,8 @@ Bref, au contraire, quand vous sentez que vous allez être en position verticale
 
 Ouf, ça y est... Ooops, la planche à tendance à partir... Cherchez pas, "jetez-vous" gentiment par terre en vous penchant en avant et en vous retenant avec les mains (ici y a pas de problème car c'est un mouvement volontaire de votre part et donc, y a peu de risques de se casser quelque chose)
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x4caDjjOQS4?si=NRsQ-oxtj1lbS-Zy&amp;start=88" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Si la planche part, c'est qu'elle n'est pas perpendiculaire à la ligne de pente. Si vous vous êtes "jeté" par terre, vous êtes à nouveau sur le ventre, le nez dans la neige ou à quatre pattes. Bon, ben y a plus qu'à recommencer en vérifiant bien la position de la planche par rapport à la ligne de pente.
 
 Quand vous êtes finalement relevé, la planche ne bouge pas, vous êtes face à la montagne, vous avez les genoux pliés, les épaules dans l'axe longitudinal de la planche, les bras le long du corps, les mains à la verticale de l'axe central de la planche et la tête relevée, le regard fier... "Surf attitude" quoi !
@@ -172,6 +190,10 @@ Vous restez assis, vous pliez bien les jambes afin de ramener la planche le plus
 Quoiqu'il en soit, tout ce qui a été dit précédemment reste vrai ici: ne vous précipitez pas, ne vous détendez pas d'un coup... Là aussi faites plusieurs essais et pensez à garder la planche perpendiculaire à la ligne de pente.
 
 Au final vous êtes en position "surf attitude" et vous avez la montagne dans le dos.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/x4caDjjOQS4?si=2hVQHFjRZDWnX1Ss&amp;start=28" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 
 
 
@@ -215,17 +237,25 @@ Bien sûr, ce que l'on a fait dans un sens, on peut le faire dans l'autre. Autre
 
 Soyez fier, ne regardez pas vos pieds, relevez la tête, bras le long du corps, mains au dessus de la planche, genoux fléchis, soyez détendu et n'hésitez pas à faire ces exercices à plusieurs reprises. 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8sdaseV7SEk?si=oYHz3FRNcnBsi17Y&amp;start=106" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Encore une fois, au début, afin de vous aider à bien glisser perpendiculairement à la ligne de pente, il faut équilibrer le poids du corps sur la planche (via vos deux pieds). Pour cela, vous pouvez choisir d'écarter largement les bras (à l'horizontal) et de bien vérifier qu'ils sont effectivement à l'aplomb de l'axe longitudinal de la planche.
 
 On va maintenant compliquer un peu les choses histoire de bien sentir la mécanique. Au départ, vous allez délibérément pousser un tout petit peu plus sur une jambe que sur l'autre. La planche va alors avoir tendance à partir du côté où vous avez appuyé le plus. Dès qu'elle part, vous appuyez alors sur l'autre jambe. La planche doit alors revenir dans une position perpendiculaire à la ligne de pente. Si vous avez trop poussé la planche ne dérape plus. Si par contre vous avez appuyé juste ce qu'il faut, la planche ne glisse plus mais dérape perpendiculairement à la ligne de pente. On est revenu à l'un des deux cas précédents. Entraînez-vous à faire cet exercice alternativement face et dos à la montagne.
+
+### La feuille morte
 
 Une fois ce principe compris, recommencez à descendre la petite pente mais en enchaînant les départs volontaires de la planche à gauche et à droite. Le truc c'est de bien comprendre ce qu'il faut faire pour maîtriser les départs intempestifs de la planche : si elle part à gauche j'appuie sur la jambe droite et inversement.
 
 Encore une fois, ici tout est affaire de finesse, de doigté. Alors dérapez, dérapez encore, dérapez toujours.
 
-Ah oui, j'allais oublier... À chaque arrêt, évitez de vous laisser tomber et de vous rouler dans la neige. Soyez fier, faites l'effort de rester digne, même dans l'adversité (40tude) et restez debout sur votre board. Sérieux, combien de fois avez-vous vu un prof de snowboard de l'ESF se rouler dans la neige tel un Saint-Bernard qui retrouverait ses Alpes natales après 10 ans d'exil au Congo. 
+Ah oui, j'allais oublier... À chaque arrêt, évitez de vous laisser tomber et de vous rouler dans la neige. Soyez fier, faites l'effort de rester digne, même dans l'adversité (40tude) et restez debout sur votre board. Sérieux, combien de fois avez-vous vu un prof de snowboard se rouler dans la neige tel un Saint-Bernard qui retrouverait ses Alpes natales après 10 ans d'exil au Congo. 
 
 Allez, maîtrisez votre équilibre... Ça peut pas vous faire de mal et en plus, vous rendrez un grand service à l'image de marque des surfeurs. Que demande le peuple ?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H5Och_4QLyE?si=zZMYyqBPMFUDY-ZK&amp;start=62" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 
 Allez, on passe à la suite... Les [traversées]({%link docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md%}) de piste.
 
