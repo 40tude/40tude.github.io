@@ -11,6 +11,10 @@ last_modified_date: 2020-05-02 23:52:33
 
 C'est la suite de cet [article]({%link docs/08_snowboard/08_premier_tire_fesses_en_snowboard/premier_tire_fesses_en_snowboard.md%})
 
+<div align="center">
+<img src="./assets/img_01.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 Aujourd'hui nous devrions être mercredi. En l'état actuel des choses, vous êtes capable de chausser rapidement et de patiner avec grâce. De plus, vous virez à plat en front et en back et vous prenez le tire fesse de la piste Pitchoun avec facilité (hein, vous confirmez...).
 
 À ce niveau toutefois, vous sentez que ce n'est pas parfait. Vous avez beau visionner 12 000 vidéos le soir sur YouTube ou lire et relire le soir les pages imprimées de ce site, ça ne va pas, vous vous heurtez à un plafond de verre... 
@@ -23,6 +27,10 @@ Y a pas, faut passer par un cours. Voyons ensemble les options qui s'offrent à 
 
 ## Cours perso
 
+<div align="center">
+<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 C'est de loin ce qu'il y a de mieux pour apprendre vite et bien. C'est cher (très cher même), mais bon, je suis intimement persuadé que le jeu en vaut vraiment la chandelle (surtout au début). De plus, soyez-en persuadés, vous avez des atouts dans votre poche. Oui, en effet, compte tenu de ce que vous savez déjà faire, votre moniteur ne va pas passer son temps (votre argent) à vous regarder chausser ou à attendre que vous vous releviez. Encore une fois, compte tenu de ce que vous savez déjà faire, vous allez pleinement rentabiliser les heures que vous allez passer avec lui.
 
 De plus, si vous êtes deux à débuter, n'oubliez pas que vous pouvez vous inscrire ensemble à un cours perso. Assurez-vous simplement qu'il n'y a pas trop de différences de niveau entre vous et que tout ce qui sera dit à l'un bénéficiera aussi à l'autre.
@@ -30,6 +38,10 @@ De plus, si vous êtes deux à débuter, n'oubliez pas que vous pouvez vous insc
 Si vous êtes seul vous pourriez peut-être prendre une heure (ou 1H30) de cours mercredi et jeudi. Prenez-les le midi, quand il n'y a pas trop de monde sur les pistes et que la neige s'est réchauffée. Si vous êtes 2, prenez deux fois 2 heures le mercredi et le jeudi. À l'issue de ces deux séances, il sera toujours temps de voir avec le moniteur si ça vaut le coup de faire de même vendredi (là faudra peut-être commencer à compter vos sous).
 
 ## Cours collectif
+
+<div align="center">
+<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
+</div>
 
 Bon, il ne faut pas se leurrer... Malgré toute son expérience, son enthousiasme et la durée du cours (3H en collectif), le moniteur ne pourra pas, dans un cours collectif, vous prêter autant d'attention que dans un cours perso. Par exemple, si vous vous trouvez en queue de peloton, que la file s'allonge un tantinet, vos défauts auront moins de chance d'être détectés et corrigé. Dans tous les cas, il sera difficile pour le moniteur de délaisser tous les autres afin de passer avec vous les 5 ou 10 min. dont vous avez besoin.
 
@@ -41,5 +53,5 @@ Cela dit faudra attendre l'année prochaine et intégrer le cours "débutant Sno
 
 ## Conclusion
 
-Que vous soyez seul ou à deux, commencez par prendre quelques leçons particulières. L'investissement est vraiment (oui vraiment) rentable. Par la suite, l'année prochaine, passez dans un cours collectif. Soyez critique. Lors de la réservation, si vous voyez qu'il y a trop de monde... n'y allez pas, cela ne servirait à rien. Attendez le lendemain matin ou le lendemain midi.
+Que vous soyez seul ou à deux, commencez par prendre quelques leçons particulières cette semaine. L'investissement est vraiment (oui vraiment) rentable. Le dernier jour, pensez à demander à votre instructeur en quel niveau vous inscrire la prochaine fois. L'année prochaine, inscrivez-vous dans un cours collectif. 
 

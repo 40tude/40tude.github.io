@@ -16,7 +16,7 @@ On est mardi en tout début de matinée. Bon... Là on va faire court et ludique
 ## Idées
 
 ### Tête, Epaules et Genoux Pieds
-À propos du [titre](https://youtu.be/57ivuBX1kLU?si=erDljTz9nE3SFhZK&t=42>){:target="_blank"}. Attention c'est un peu violent.
+À propos du [titre](https://youtu.be/57ivuBX1kLU?si=bI3xfPOcipMe5F3O&t=42){:target="_blank"}. Attention c'est un peu violent.
 
 * Tu es debout, bien droit. Tu fais rouler ta tête. À un moment ton menton "roule" sur le haut de ton torse. À un autre moment tu as les yeux au ciel. Tu roules ta tête **dou-ce-ment**. T'en fais 5 dans un sens 5 dans l'autre et t'évite de vomir ton ptit'dej. 
 

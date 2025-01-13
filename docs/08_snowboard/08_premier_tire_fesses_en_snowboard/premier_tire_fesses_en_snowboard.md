@@ -37,6 +37,11 @@ Faut pas rêver, il est possible que 2 ou 3 démarrages soient nécessaires avan
 
 Ne vous leurrez pas quand même. Avant d'aller sur les autres tire-fesses (qui vont, comparativement, beaucoup plus vite) il faudra, de manière régulière, être capable "d'atteindre le sommet" de la piste Pitchoun ! (ça vaut pas le K2 mais bon, on débute...)
 
+Une petite vidéo?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YVJJaXJ0k6g?si=8qqtzTN5idJCcPOI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 
 
 
@@ -58,6 +63,15 @@ En fait de bosses, on est d'accord, on parle des amas de neige de 5 cm de haut q
 
 Bon ben là faut réfléchir. Vous êtes plus vieux, plus gros et plus fort que lui donc c'est à vous de faire attention. Il est encore loin, ne lâchez pas la perche tout de suite. À tous les coups, si tu lâche la perche il va la prendre dans la tête quand elle arrivera à son niveau. Continuez gentiment, entre temps il aura peut être eu le temps de sortir de la trace. Si il ne s'en sort pas, une fois que vous êtes près, retirez votre pied arrière, retirez la perche d'entre vos jambes et lâchez-la en l'écartant du gamin (vers la gauche ou vers la droite selon) ensuite... ben, ensuite vous vous arrêtez comme vous pouvez et sans lui rentrer dedans. Ceci fait, vous jetez un coup d’œil derrière et vous sortez de la trace. Si le gamin s'en sort toujours pas, essayez de l'aider...
 
+
+Ça, je sais pas faire mais j'aimerai bien. En fait j'ai jamais essayé. Faut que je trouve le courage de m'y essayer un jour. De toute façon c'est une arme de plus dans notre ratelier. Toujours bon à prendre.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbwMp4uvDNc?si=5LlFTnCjrIpYtKT-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
 ## L'arrivée
 
 Sur Pitchoun, le seul truc qui peut arriver, c'est un "léger" embouteillage dû à une horde de marmots qui attend sagement son moniteur ou une tribu de surfeurs débutants qui fait une pause.
@@ -70,6 +84,10 @@ Pour le reste, c'est pas parce que vous arrivez (enfin) que vous devez changer q
 
 Voilà, vous êtes arrêté, pied arrière libre. Dégagez l'aire d'arrivée, allez chausser dans un coin tranquille et, si c'est votre première montée, profitez du paysage !
 
+
+
+
+
 ## *Bon, ben on fait quoi maintenant?*
 
 Vous avez maintenant suffisamment d'éléments pour vous amuser sur Pitchoun. Faites des traversées, essayez d'enchaîner les virages, refaites des dérapages en front et en backside etc.... N'oubliez pas, sur le plat, à l'arrivée, de vous entraîner à patiner et à glisser à plat, pied arrière libre.
@@ -79,9 +97,11 @@ Ceci dit, **faites très attention !** En effet, à force de monter, de descendr
 
 
 
+
+
 ## Le dérapage d'urgence
 
-Pendant qu'on y est, et avant d'aller voir un prof, y a un dernier truc que vous devez avoir dans votre escarcelle : le dérapage d'urgence.
+Pendant qu'on y est, et avant d'aller d'autres pistes ou un prof, il y a un dernier truc que vous devez avoir dans votre escarcelle : le dérapage d'urgence.
 
 Ce dernier est maintenant obligatoire car vous faites partie des seigneurs de la piste Pitchoun. Vous montez, vous descendez, les autres vous regardent... Bref vous avez d'autant plus de responsabilités que vous allez de plus en plus "vite" et qu'en moyenne, la faune qui peuple la piste, elle, a toujours autant de mal à savoir où elle va et à contrôler sa vitesse. Bref, vous devez être capable de vous arrêter, vite et bien.
 
@@ -101,13 +121,7 @@ Bon là, faut être clair, ça va être chaud... En effet, Pitchoun, c'est de la
 
 Un seul conseil. Choisissez votre tire-fesses "de grands" avec précaution. C'est idiot mais évitez d'arriver sur le haut d'une rouge qui commence par un goulet... D'autre part choisissez un tir-fesses relativement rectiligne et enfin un tir-fesses qui ne soit pas trop sec au démarrage (c'est en effet la phase qui risque de vous poser le plus de problèmes). Pour le reste... Ben y a pas... Faut vous lancer, vous planter, recommencer... Persévérer.
 
-## Une petite vidéo pour la fin
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YVJJaXJ0k6g?si=8qqtzTN5idJCcPOI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-Ça je sais pas faire mais j'aimerai bien. En fait j'ai jamais essayé. Faut que je trouve le courage de m'y essayer un jour. De toute façon c'est une arme de plus dans notre ratelier. Toujours bon à prendre.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbwMp4uvDNc?si=5LlFTnCjrIpYtKT-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
