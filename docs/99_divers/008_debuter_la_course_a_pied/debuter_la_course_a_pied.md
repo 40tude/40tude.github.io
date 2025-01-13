@@ -48,7 +48,7 @@ Cependant, si tu te sens lourd, gros, gras et qu'en complément d'un régime tu 
 &nbsp;
 </div>
 
-Je me place dans un contexte de [perte de poids]({%link docs\99_divers\005_2017_alimentation_sport\2017_alimentation_sport.md%}). Typiquement, en complément du régime qui est responsable à 90% de la perte de poids, tu souhaites débuter la course à pied afin de te tonifier, de récupérer du souffle, de mieux dormir le soir etc.
+Je me place dans un contexte de [perte de poids]({%link docs/99_divers/005_2017_alimentation_sport/2017_alimentation_sport.md%}). Typiquement, en complément du régime qui est responsable à 90% de la perte de poids, tu souhaites débuter la course à pied afin de te tonifier, de récupérer du souffle, de mieux dormir le soir etc.
 
 Cela dit, même si tu ne fais pas de régime et que tu veux juste te mettre ou te remettre à courir, vas-y, fais-toi plaisir et lis le reste de ce billet.
 
