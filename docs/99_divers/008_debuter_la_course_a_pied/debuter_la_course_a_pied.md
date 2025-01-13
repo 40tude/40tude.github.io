@@ -156,7 +156,7 @@ Heu... Comment te dir mon petit lapin... Ne le prends pas mal mais je crains que
 </div>
 
 
-Mouai... C'est gentil, je me moque gentiment de toi mais bon, ça répond pas à ma question... Bon... Attention, car il y a deux composantes dans la vitesse de course :
+Mouai... C'est gentil, je me moque gentiment de toi mais bon, ça répond pas à ta question... Bon... Il y a deux composantes dans la vitesse de course :
 
 * La longueur des foulées
 * Le rythme des foulées
