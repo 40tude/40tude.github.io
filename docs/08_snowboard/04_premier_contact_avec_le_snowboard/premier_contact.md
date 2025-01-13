@@ -14,7 +14,7 @@ C'est la suite de cet [article]({%link docs/08_snowboard/03_equipement/equipemen
 
 On est lundi matin, la planche est là, il fait beau, vous êtes équipé, tout va bien... On y va ? Nan ! Rhabillez-vous, prenez vos skis et allez faire une matinée de descentes avec vos potes... Pourquoi ? Je vois trois bonnes raisons :
 
-1. **Observations** : le premier truc c'est de se dire que ce matin, skis aux pieds, vous allez partir en reconnaissance, histoire de voir ce que font les autres débutants. Vous en profiterez aussi pour noter ce qui est fait par ceux qui savent et, entres autres, ce que font les profs de snow avec leurs élèves : il ne faut pas se leurrer, ils sont dans leur deuxième journée, en groupe... Bref y a des choses à apprendre d'eux. Pigé ? Ce matin vous allez ob-ser-ver.
+1. **Observations** : le premier truc c'est de se dire que ce matin, skis aux pieds, vous allez partir en reconnaissance, histoire de voir ce que font les autres débutants. Vous en profiterez aussi pour noter ce qui est fait par ceux qui savent et, entres autres, ce que font les profs de snow avec leurs élèves : il ne faut pas se leurrer, ils sont dans leur deuxième journée, en groupe... Bref, y a des choses à apprendre d'eux. Pigé ? Ce matin vous allez ob-ser-ver.
 2. **Échauffements** : sérieux, vous aviez l'intention de vous échauffer ? Nan, bien sûr, comme tout le monde, vous aviez l'intention de vous jeter sur la planche et zou, en voiture Simone... Bon ben, c'est vraiment pas une bonne idée, alors vous allez aller faire du ski, ça vous réchauffera.
 3. **Qualité de la neige** : c'est ce dernier point qui est le plus important... En effet, à ce moment de la journée (9H00 pétante), la neige est encore dure. Cela signifie qu'à chaque fois que vous allez tomber, vous allez percuter l'équivalent d'un trottoir. Ça vous tente ? Moi, non... Autant aller faire du ski et revenir tout à l'heure quand la neige sera plus douce et qu'on sera chaud bouillant.
 
@@ -29,10 +29,10 @@ On est Lundi, 14H, ding dong, c'est l'heure... Faut y aller... Pour commencer, j
 
 Attention, ce n'est que le début de l'après midi. Faudra ensuite, toujours cet après midi consacrer du temps aux [traversées de la piste]({%link docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md%}) ainsi qu'aux [premiers virages]({%link docs/08_snowboard/06_premiers_virages_en_snowboard/premiers_virages_en_snowboard.md%}).
 
-Pour fixer les idées. Si on imagine qu'on est sur la piste de 14H à 17H je pense qu'il faut consacrer 1H environ à cette page puis passer le reste de l'après midi, sur les histoires de [traversées]({%link docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md%}) et de [virages]({%link docs/08_snowboard/06_premiers_virages_en_snowboard/premiers_virages_en_snowboard.md%}). De toute façon, en cours d'après midi, tu seras obligé de déchausser, rechausser, t’asseoir, te relever, glisser, patiner... Bref tu vas pratiquer. Heu... Faudra penser à faire une bonne pose au bar du coin en laissant la planche au soleil. 
+Pour fixer les idées. Si on imagine qu'on est sur la piste de 14H à 17H je pense qu'il faut consacrer 1H environ à cette page puis passer le reste de l'après midi, sur les histoires de [traversées]({%link docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md%}) et de [virages]({%link docs/08_snowboard/06_premiers_virages_en_snowboard/premiers_virages_en_snowboard.md%}). De toute façon, en cours d'après midi, tu seras obligé de déchausser, rechausser, t’asseoir, te relever, glisser, patiner... Bref, tu vas pratiquer. Heu... Faudra penser à faire une bonne pose au bar du coin en laissant la planche au soleil (j'explique pourquoi plus bas). 
 
 
-Ça n'a l'air de rien, mais bon, va falloir que vous restiez zen, et promis, quand vous aurez fait tout ça, vous aurez votre compte.
+Ça n'a l'air de rien, mais bon, va falloir que vous restiez zen, et promis, quand vous aurez fait tout ça cet après-midi, vous aurez votre compte et vous allez bien dormir ce soir.
 
 Ah, au fait, bien sûr, si vous avez un collègue qui débute aussi, emmenez-le avec vous. Vous vous sentirez moins seul dans l'adversité et vous pourrez toujours comparer vos sensations.
 
@@ -48,27 +48,28 @@ Heu... Dans le même état d'esprit, si vous avez des potes qui surfent déjà, 
 
 ## 1. Chausser un pied
 
-Dirigez-vous vers la piste, Ecole, Mickey, Pitchoune, Grenouillère... oui celle avec le tire-fesse qui va à 2 à l'heure et où les marmots descendent les mains sur les genoux... Bon, là trouvez-vous un espace relativement plat et libre (pas trop près du bar où les Allemands qui sont toujours en train de manger vont finir par se moquer de vous...).
+Dirigez-vous vers la piste, Ecole, Mickey, Pitchoune, Grenouillère... oui celle avec le tire-fesse qui va à 2 à l'heure et où les marmots descendent les mains sur les genoux... Bon, là trouvez-vous un espace relativement plat et libre (pas trop près du bar où les Allemands qui sont toujours en train de manger et qui vont finir par se moquer de vous...).
 
 Juste pour être très explicite... À ce moment de votre "voyage initiatique", il faut une section de terrain plat car vous allez juste "glissouiller" à plat et "sentir" ce qui se passe lorsque l'ensemble "planche + bonhomme" essaie d'aller, ensemble (le mot est important), dans la même direction et le même sens. Bref, c'est pas encore la peine de remonter à pied la piste Pitchoune.
 
 Posez la planche perpendiculaire à la pente (même si y a pas de pente !) et mettez vous en aval de la board. Pour que ce soit clair : 
 * en **aval** : ça veut dire "plus bas que", en dessous, val, vallon, vallée...
-* en **amont** : ça veut dire "plus haut que", au dessus, mon, montagne...
+* en **amont** : ça veut dire "plus haut que", au dessus, mont, montagne...
 
 Si la planche veut partir, vous la stoppez avec vos pieds. À ce stade, vous n'avez pas besoin de vous asseoir pour fixer votre **pied avant** (pas d'embrouille... Regular, pied gauche devant, Goofy, pied droit devant). Vous n'avez pas besoin non plus de bloquer la planche en mettant votre second pied en partie sur la planche, et en partie sur la neige. En effet, vous êtes en terrain plat, donc tout doit bien se passer. Bref, vous mettez le pied dans la fixe avant et vous réglez tout ça gentiment.
 
 Attention quand même... Si vous avez des coques, pensez à ne pas serrer comme un sourd la languette qui se trouve au niveau des orteils. Faites glisser la languette à la main, clic, clic et normalement c'est bon. En ce qui concerne celle que se trouve au niveau du coup de pied, là par contre, vous pouvez serrer un peu plus (j'ai dit un peu...).
 
 ### Petite remarque
-Vous vous êtes assurez, avant de mettre votre chaussure dans la fixe qu'il n'y avait plus de neige ni de glace? En cas de doute, enlevez le pide, jetez un oeil. Si besoin faites le ménage.  
-En fait si y a de la neige ou de la glace ça va empêcher de positionner la chaussure à la bonne place, le pied peut se retrouver légèrement de travers ce qui à la longue risque de faire mal. Enfin bref, petit coup d'oeil, petit coup de gant et on est bon.  
-Au prochain arrêt **vin-chaud** mettez la planche plutôt au soleil. La glace aura disparue à votre retour.
+Vous vous êtes assurez, avant de mettre votre chaussure dans la fixe qu'il n'y avait plus de neige ni de glace? En cas de doute, enlevez le pied, jetez un oeil. Si besoin faites le ménage.  
+En fait si y a de la neige ou de la glace ça va empêcher de positionner la chaussure à la bonne place, le pied peut se retrouver légèrement de travers ce qui, à la longue, risque de faire mal. Enfin bref, petit coup d'oeil, petit coup de gant et on est bon.  
+Si un jour la fixe est pleine de neige ou de glace... Suffit généralement de plaquer la board au sol. Sinon on sort les clés de l'appart et on vire la glace.    
+C'est pour ça qu'aux arrêts **vin-chaud** il faut mettre la planche plutôt au soleil. La glace aura disparue à votre retour.
 
 
 ### Petite remarque
 
-Plus ça va et moins je serre la languette au dessus des orteils. C'est vraiment un truc du style : j'enfonce la languette à la main dans le cliquet et zou clic, clic c'est fini. Non, j'ai pas dis que je laissais un espace entre la languette et la chaussure. J'ai simplement dit clic, clic. Pourquoi ? Tout bête. Si on serre de trop, y a plus d'air entre le pied et la chaussure et zou au bout de vingt minutes on a froid aux pieds. Enfin bref, serrez correctement le coup de pied et allez-y mollo sur les orteils.
+Plus ça va et moins je serre la languette des orteils. C'est vraiment un truc du style : j'enfonce la languette à la main dans le cliquet et zou clic, clic c'est fini. Non, j'ai pas dis que je laissais un espace entre la languette et la chaussure. J'ai simplement dit clic, clic. Pourquoi ? Tout bête. Si on serre de trop, y a plus d'air entre le pied et la chaussure et zou au bout de vingt minutes on a froid aux pieds. Enfin bref, serrez correctement le coup de pied et allez-y mollo sur les orteils.
 
 Ah oui, j'allais oublier... Vous mettez votre pied dans la fixe, vous serrez la languette du coup de pied, **PUIS**, la languette du bout de pied. C'est logique, mécanique... En effet, en serrant d'abord la sangle du coup de pied vous vous assurez que la botte est bien au fond de la fixe puis en serrant la sangle au niveau des orteils, vous plaquez la botte dans la fixe et vous vous assurez de la solidarité de l'ensemble "fixe + chaussure".
 
@@ -87,7 +88,7 @@ Notez aussi que si vous avez des coques, à l'arrière de la fixation, il y a un
 
 Donc là normalement vous avez le pied avant dans la fixation avant et le pied arrière dans la neige et vous êtes statique. Dans un premier temps, vous allez "monter" sur la planche, faire passer votre poids sur la jambe avant, mettre l'autre pied sur la neige (en aval de la board) et essayer de patiner gentiment. Si vous êtes Regular vous partez à gauche, si vous êtes Goofy vous partez vers la droite.
 
-Non ! ne regardez pas vos pieds, ne pliez pas le corp, ne baissez pas le tronc, soyez fier (mais prudent), relevez le buste, relevez la tête et patinez quelques mètres dans un sens puis dans l'autre. Bien sûr, au bout de quelques mètres, faut quand même faire demi-tour pour revenir à votre point de départ. Pas facile ? Bon, ben recommencez... Prenez votre temps. Il faut qu'à la fin vous soyez relativement à l'aise.
+Non ! ne regardez pas vos pieds, ne pliez pas le corp, ne baissez pas le tronc. Soyez fier (mais prudent), relevez le buste, relevez la tête et patinez quelques mètres dans un sens puis dans l'autre. Bien sûr, au bout de quelques mètres, faut quand même faire demi-tour pour revenir à votre point de départ. Pas facile ? Bon, ben recommencez... Prenez votre temps. Il faut qu'à la fin vous soyez relativement à l'aise.
 
 Le truc c'est qu'il ne faut pas vouloir aller trop vite. Commence doucement, laisse ton corps apprendre le mouvement. Ensuite tu peux executer le mouvement un peu plus vite. 
 
@@ -217,7 +218,11 @@ En fait vous avez mis plus de pression sur une jambe que sur l'autre, un pied c'
 
 Au bout du compte, en jouant simplement sur l'angle que font vos pieds avec vos tibias, vous devez être capable de faire déraper (ou arrêter) la planche afin de "descendre" perpendiculairement à la ligne de pente. Commencez gentiment, par une succession de petits dérapages. Il faut que vous appreniez à doser votre façon de déraper. À la fin, vous devez être capable de déraper la petite pente (sur 2 ou 3 m) en un ou deux longs dérapages.
 
-Ah oui, ne faites pas la "mitraillete"... *Hein ? Mé kékidi ?* Très simple! Au début la tentation est grande de faire des micro-glissades de quelques centimètres (5 à 10 cm). C'est pas le but recherché ici. Il faut vraiment essayer de faire des dérapages relativement longs.
+Ah oui, ne faites pas la "mitraillete"... 
+
+*Hein ? Mé kékidi ?* 
+
+Très simple! Au début la tentation est grande de faire des micro-glissades de quelques centimètres (5 à 10 cm). C'est **PAS** ce que l'on recherche ici. Il faut vraiment essayer de faire des dérapages relativement longs.
 
 <div align="center">
 <img src="./assets/deraper2.webp" alt="" loading="lazy"/>

@@ -21,7 +21,7 @@ Au stade où on en est (débutant), **on se fout complètement du type de board*
 
 Ok, ok, mais bon soyons honnêtes. Actuellement le marché est entièrement dominé par les boards de type **FreeStyle** (souples, symétriques avec des spatules à chaque bout). En conséquence, le commerçant a en sa possession un maximum de planches de ce type. Comme en plus vous n'avez normalement aucune référence, vous êtes incapables de vraiment faire la différence entre une planche à pain et une board de la mort qui tue avec un noyau carbone à percolateur intégré.
 
-Bref, à ce stade, faites-lui confiance. De toute façon, c'est un pro et le dimanche soir, il a plus de temps à vous consacrer puisque la vague des nouveaux arrivants du samedi est passée. Quoiqu'il en soit, il va vous passer une planche FreeStyle qui sera toute bonne pour ce que vous allez en faire. Attention quand même à ne pas accepter une planche trop grande. Typiquement, en FreeStyle elle ne devrait pas dépasser votre menton. Elle doit vous arriver à mi-coup typiquement.
+Bref, à ce stade, faites-lui confiance. De toute façon, [c'est un pro](https://www.docteur-feelgood.fr/) et le dimanche soir, il a plus de temps à vous consacrer puisque la vague des nouveaux arrivants du samedi est passée. Quoiqu'il en soit, il va vous passer une planche FreeStyle qui sera toute bonne pour ce que vous allez en faire. Attention quand même à ne pas accepter une planche trop grande. Typiquement, en FreeStyle elle ne devrait pas dépasser votre menton. Elle doit vous arriver à mi-coup typiquement.
 
 <div align="center">
 <img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
@@ -86,17 +86,19 @@ Je l'ai dit en haut de cette page, vous avez aux pieds les chaussettes que vous 
 
 En gros ça veut dire que même si vous avez la meilleure board avec les meilleurs fixes, si au bout de 30 min vous avez mal aux pieds, la journée sera foutue. C'est vrai, dès que l'on commence à avoir mal, on ne pense plus qu'à cela, on est tendu, raide et bon plus rien ne va. C'est incroyable de voir l'impact que peut avoir le confort d'une paire de chaussure. Par contre le contraire n'est pas vrai. Tu peux avoir une planche "so-so" mais bon si tu es bien dans tes pieds, la journée n'est pas gâchée.
 
-Attention, ne me faites pas dire ce que je n'ai pas dit. Je ne demande pas à ce que vous preniez une planche de débutant et des chaussures dans la gamme "pro". Non, le truc c'est que vraiment, il ne faut pas hésiter à essayer 2 paires dans 2 modèles différents. Juste pour voir. En plus telle paire est peut être en location depuis 10 000 ans. L'intérieur est tout usée mais bon... Finalement tu t'y sens bien. Enfin bref, faut faire au moins 2 essais et toujours commencer avec une pointure en plus (c'est comme en running en fait).
+Attention, ne me faites pas dire ce que je n'ai pas dit. Je ne demande pas à ce que vous preniez une planche de débutant et des chaussures dans la gamme "pro". Non, le truc c'est que vraiment, il ne faut pas hésiter à essayer 2 paires dans 2 modèles différents. Juste pour voir. En plus telle paire est peut être en location depuis 10 000 ans. L'intérieur est tout usé mais bon... Finalement tu t'y sens bien. Enfin bref, faut faire au moins 2 essais et toujours commencer avec une pointure en plus (c'est comme en running en fait).
 
 Ceci fait, il ne faudra peut-être pas hésiter à demander une demi-pointure au-dessus ou au-dessous. Là aussi, juste pour voir. Bon dans tous les cas, de la première règle découle la seconde : "**Si sur ton surf, t'as les pieds qui meurent, retourne voir ton loueur**". Il n'est pas fou, il préfère avoir un client satisfait et si il le peut, il n'hésitera pas à vous échanger la paire louée la veille.
 
-*Bon, pour les chaussures on fait quoi ?* Tout bête, le gars vous propose une paire, vous la délacer largement, vous faites de même avec le lacet intérieur (n'hésitez pas à plonger les doigts dans la chaussure !). Vous remonter largement le bas de pantalon (d'où l'idée de ne PAS avoir un pantalon trop slim... Malin le mec...). Vous enfilez la bête, vous faites le lacet intérieur (oui, vous serrez comme si vous alliez sur la piste). Vous faites ensuite le lacet extérieur (oui, là aussi, vous serrez). Vous vous mettez debout et vous bougez les orteils. C'est bon ? Ça le fait ? Vous pouvez bouger vos orteils? Ils ne touchent pas le bout de la chaussure? Maintenant pliez les genoux. Ça va toujours ?
+*Bon, pour les chaussures on fait quoi ?* 
 
-Bon... ben, re-belotte avec la seconde chaussure. Si les tests précédents passent encore, fermez les yeux et laissez parler vos pieds. Si vous sentez un point dur, un truc qui fait mal sur un orteil ou pire, sur le côté extérieur du pied... Pas d'hésitation. Demandez une demi-pointure au-dessus ou carrément un modèle différent. C'est bête mais la façon de tailler les chaussures change radicalement d'un constructeur à un autre. Problème de coup de pied, pointe de chaussure trop serrée... Soyez à l'écoute de vos pieds.
+Tout bête. Le gars vous propose une paire, vous la délacer largement, vous faites de même avec le lacet intérieur (n'hésitez pas à plonger les doigts dans la chaussure !). Vous remonter largement le bas de pantalon (d'où l'idée de ne **PAS** avoir un pantalon trop slim... Malin le mec...). Vous enfilez la bête, vous faites le lacet intérieur (oui, vous serrez comme si vous alliez sur la piste). Vous faites ensuite le lacet extérieur (oui, là aussi, vous serrez). Vous vous mettez debout et vous bougez les orteils. C'est bon ? Ça le fait ? Vous pouvez bouger vos orteils? Ils ne touchent pas le bout de la chaussure? Maintenant pliez les genoux. Ça va toujours ?
+
+Bon... ben, re-belotte avec la seconde chaussure. Si les tests précédents passent encore, **fermez les yeux et laissez parler vos pieds**. Si vous sentez un point dur, un truc qui fait mal sur un orteil ou pire, sur le côté extérieur du pied... Pas d'hésitation. Demandez une demi-pointure au-dessus ou carrément un modèle différent. C'est bête mais la façon de tailler les chaussures change radicalement d'un constructeur à un autre. Problème de coup de pied, pointe de chaussure trop serrée... Soyez à l'écoute de vos pieds.
 
 ### Une petite remarque 
 
-**Ne serrez pas vos lacets comme un sourd**. Positionnez correctement la languette intérieure sur votre pied et vérifiez bien qu'il n'y a pas des trucs et des machins qui traînent dans la "shoes". Ensuite, pour le lacet intérieur
+**Ne serrez pas vos lacets comme un sourd**. Positionnez correctement la languette intérieure sur votre pied et vérifiez bien qu'il n'y a pas des trucs ni de machins (bout de lacets, morceau de languette, marmotte...) qui traînent dans la "shoes". Ensuite, pour le lacet intérieur : 
 * serrez fermement au-dessus des orteils 
 * et du coup de pied
 * relâchez un peu la pression
@@ -110,7 +112,7 @@ Pour le lacet extérieur
 * terminez le laçage 
 * et serrant fermement autour du tibia. 
 
-Pourquoi tout ce protocole ? En fait, le truc c'est qu'il ne faut pas serrer trop fort car sinon, il n'y a pas d'air entre vos pieds et la chaussure et en plus d'avoir mal... vous allez avoir **froid aux pieds**. Pour avoir chaud, faut de l'air alors serrez mais serrez malin. Ok ? Ok !
+Pourquoi tout ce protocole ? En fait, le truc c'est qu'il ne faut pas serrer trop fort car sinon, il n'y a pas d'air entre vos pieds et la chaussure. Du coup en plus d'avoir mal vous allez avoir **froid aux pieds**. C'est la double peine. Pour avoir chaud, faut de l'air alors serrez mais serrez malin. Ok ? Ok !
 
 Ah oui, ne soyez pas complètement surpris si, lorsque vous pliez les genoux, vous avez l'impression que votre tibia "flotte" un peu dans la chaussure. Bon, bien sûr faut pas que vous puissiez passer la main entre la chaussure et la jambe mais s'il y a un petit espace ce n'est pas mortel. Ne l'oubliez pas, ce que vous avez aux pieds, ce ne sont plus des shoes de ski.
 
@@ -118,7 +120,7 @@ Ah oui, ne soyez pas complètement surpris si, lorsque vous pliez les genoux, vo
 
 ### Une autre petite remarque 
 
-Il y a de plus en plus de chaussures sans lacet. Elles ont un système BOA. En gros avec deux mollettes on règle le niveau de serrage. C'est assez pratique et ça marche bien. Sur mes chaussures perso, j'ai cassé un seul câble. Le constructeur m'en a renvoyé 2. Entre temps j'avais commandé et reçu une paire de cables achetée sur le Web.
+Il y a de plus en plus de chaussures sans lacet. Elles ont un système BOA. En gros avec deux mollettes on règle le niveau de serrage. C'est assez pratique et ça marche bien. Sur mes chaussures perso, j'ai cassé un seul câble en 10 000 ans. Le constructeur m'en a renvoyé 2 gratuitement. Entre temps j'avais commandé et reçu une paire de cables achetée sur le Web (faut faire attention il y a plusieurs longueurs etc.)
 
 Ce qui a de bien c'est qu'on peut très facilement re-régler le serrage en cours de demi-journée.
 
@@ -131,7 +133,9 @@ Ce qui a de bien c'est qu'on peut très facilement re-régler le serrage en cour
 
 Bon, là, compte tenu de notre niveau d'incompétence, il n'y a pas grand-chose que l'on puisse faire. En effet, le loueur va maintenant à force tournevis et visseuse automatique, ajuster l'écartement des fixes, l'angle de chaque pied après vous avoir poser la sacro-sainte question : "**Goofy ou Regular ?**"
 
-"Oh non, déjà à l'oral du BAC ce n'était pas terrible, mais là, je ne comprends même pas la question...". Pas de panique. Les termes Goofy et Regular déterminent simplement quel pied vous souhaitez mettre devant, une fois que vous êtes sur la planche.
+*Oh non, déjà à l'oral du BAC ce n'était pas terrible, mais là, je ne comprends même pas la question...*  
+
+Pas de panique. Les termes Goofy et Regular déterminent simplement quel pied vous souhaitez mettre devant, une fois que vous êtes sur la planche.
 
 *Et comment je sais moi... je débute !*
 
@@ -150,9 +154,13 @@ Normalement, le loueur va mettre des réglages tout à fait standards du style +
 
 Une fois que c'est fait, puisque vous avez toujours les chaussures aux pieds (cela vous permet, entre autres, de vérifier si, dans le temps que prend le loueur pour régler les fixes, vous les supportez...), remontez sur la planche et verrouillez vos pieds dans les fixations. Ca permet de découvrir la mécanique...
 
-Ensuite, tenez-vous droit, pliez un peu les genoux, relevez la tête, bras le long du corps. Ça va, à l'aise ? Non, vous avez l'impression d'avoir les pieds trop écartés ? Demandez son avis au loueur. Il existe des règles plus ou moins empiriques mais il doit être capable d'évaluer d'un seul coup d'œil si ça va ou pas.
+Ensuite, mettez la planche sur la moquette et mettez vos pieds dans les fixations sans rien serrer. Tenez-vous droit, pliez un peu les genoux, relevez la tête, bras le long du corps. Ça va, à l'aise ? Non, vous avez l'impression d'avoir les pieds trop écartés ? Demandez son avis au loueur. Il existe des règles plus ou moins empiriques mais il doit être capable d'évaluer d'un seul coup d'œil si ça va ou pas.
 
-Pendant que vous y êtes, vérifiez bien sur les fixations que lorsque vous serrez les languettes du coup de pied et des orteils ces dernières ne sont pas abîmées à l'endroit même où vous arrêtez de serrer. *Mais kékidit?* Le Mr te dit : serre les fixes gentiment et vérifie que les dents des languettes de tes coques ne sont pas abîmées justement à l'endroit où tu arrêtes de serrer. 
+Quand c'est bon, vérifiez bien sur les fixations que lorsque vous serrez les languettes du coup de pied et des orteils ces dernières ne sont pas abîmées à l'endroit même où vous arrêtez de serrer. 
+
+*Mais kékidit?* 
+
+Le Mr te dit : serre les fixes gentiment et vérifie que les dents des languettes de tes coques ne sont pas abîmées justement à l'endroit où tu arrêtes de serrer. 
 
 <div align="center">
 <img src="./assets/img_07.webp" alt="" width="450" loading="lazy"/>
@@ -160,7 +168,9 @@ Pendant que vous y êtes, vérifiez bien sur les fixations que lorsque vous serr
 
 *Sinon ?* Ben sinon y a toutes les chances que demain la languette en question se desserre. Tu auras plein d'autres bonnes et mauvaises raisons de râler alors ce n'est pas la peine de rajouter des problèmes de languette. Faut bien penser à verifier les dents des 4 languettes (2x2 fixes)
 
-*OK mais qu'est-ce que je fais si justement la languette est abîmée ?* À ton avis banane ? Tu es poli et tu causes avec le loueur... Idem si demain matin y a des problèmes de languette, tu ne te prends pas la tête et tu retournes voir ton loueur à midi. Bon allez il est temps de conclure.
+*OK mais qu'est-ce que je fais si justement la languette est abîmée ?* 
+
+À ton avis banane ? Tu es poli et tu causes avec le loueur... Idem si demain matin y a des problèmes de languette, tu ne te prends pas la tête et tu retournes voir ton loueur à midi. Bon allez il est temps de conclure.
 
 
 
@@ -172,7 +182,7 @@ Bon ben, vous voilà l'heureux locataire d'un ensemble qui devrait vous permettr
 
 
 ## Toc, toc ? Vous dormez ? 
-Heu... Désolé, mais bon, faudrait peut-être faire un p'tit test avant d'aller dormir... En effet, il me semble judicieux, voir malin, de faire ce que l'on appelle en mécanique un "montage à sec". J'entends par là le fait que vous remontiez les shoes et la planche au chalet (ou dans l'appart'), que vous vous équipiez comme si vous partiez (pantalon, chaussettes), que vous régliez la longueur des lacets etc., que vous mettiez les bottes dans les fixes et que serriez tout ça (si vous avez un doute sur comment serrez les fixations allez faire un tour sur la page "premier contact").
+Heu... Désolé, mais bon, faudrait peut-être faire un p'tit test avant d'aller dormir... En effet, il me semble judicieux, voir malin, de faire ce que l'on appelle en mécanique un **montage à sec**. J'entends par là le fait que vous remontiez les shoes et la planche au chalet (ou dans l'appart'), que vous vous équipiez comme si vous partiez (pantalon, chaussettes), que vous régliez la longueur des lacets etc., que vous mettiez les bottes dans les fixes et que serriez tout ça (si vous avez un doute sur comment serrez les fixations allez faire un tour sur la [page premier contact]({%link docs\08_snowboard\04_premier_contact_avec_le_snowboard\premier_contact.md}).
 
 Si vous avez des coques, un truc tout bête. Sans mettre les pieds dans les chaussures, prenez le temps de mettre une des chaussures dans les fixes et assurez-vous que la partie la plus large de la languette qui va sur votre coup de pied est bien centrée. 
 

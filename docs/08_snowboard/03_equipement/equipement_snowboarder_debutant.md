@@ -17,20 +17,24 @@ Autant sur la planche je pouvais paraître laxiste autant là, vraiment y a des 
 
 ## Les gants
 
-De mon point de vue, après le confort des pieds c'est le plus important.
+De mon point de vue, après le confort des pieds, le confort des mains c'est le plus important.
 
 Regardez vos gants de ski, ils sont biens hein ! Vous en êtes fiers, y vont faire l'affaire hein? Nuuuuut! Mauvaise réponse, ils sont pas bons du tout! Changez-les tout de suite!
 
-*Oui t'es mignon, et je vais chercher l'argent où?* Je sais, c'est le problème ceci dit, en tant que débutant vous allez passer vos premières journées à quatre pattes et vos gants ne vont pas faire la semaine. Ils vont être trempés, les coutures vont lâcher, ils vont peser 3 tonnes à la fin de la journée, vos mains vont puer... Super l'odeur du Migou pour aller draguer le soir au bar...
+*Oui t'es mignon, et je vais chercher l'argent où?* 
 
-Et le pire, c'est que si vous ne faites pas l'investissement de suite, il faudra 2 ou 3 semaines (saisons) pour que vous compreniez qu'il faut que vous investissiez une bonne fois pour toute et que là, il sera trop tard, vous ne mettrez pratiquement plus les mains par terre. Enfin bref, après avoir loué votre matériel, si après un ou deux jours vous êtes sûr de vouloir continuer le snowboard et que vos gants de ski ne sont pas à la hauteur, achetez des gants de snowboard corrects.
+Je sais, c'est le problème ceci dit, en tant que débutant vous allez passer vos premières journées à quatre pattes et vos gants ne vont pas faire la semaine. Ils vont être trempés, les coutures vont lâcher, ils vont peser 3 tonnes à la fin de la journée, vos mains vont puer... Super l'odeur du Migou pour aller draguer le soir au bar...
+
+Et le pire, c'est que si vous ne faites pas l'investissement de suite, il faudra 2 ou 3 semaines (saisons) pour que vous compreniez qu'il faut que vous investissiez une bonne fois pour toute et que là, il sera trop tard, vous ne mettrez pratiquement plus les mains par terre. Enfin bref, après avoir loué votre matériel, si après un ou deux jours vous êtes sûr de vouloir continuer le snowboard et que vos gants de ski ne sont pas à la hauteur, achetez des gants de snowboard corrects (ou ajoutez ça à votre liste de Noyel)
 
 <div align="center">
 <img src="./assets/gants.webp" alt="" loading="lazy"/>
 </div>
 
 
-Des gants corrects c'est quoi? De mon point de vue, ce sont des gants qui montent haut sur l'avant du bras, en Gore-Tex, avec une Polaire en interne et des systèmes de resserrage au niveau du poignet et de l'avant bras (cela évite que la neige rentre dans le gant quand on prend une pelle). De plus, vérifiez bien qu'il n'y a pas de coutures aux bouts des doigts. Facile. Prenez, deux paires de gants, une chère, l'autre pas, inspectez-les point par point (surtout les coutures) et zou, vous comprendrez rapidement dans quelle paire il faut investir.
+*Des gants corrects c'est quoi?* 
+
+De mon point de vue, ce sont des gants qui montent haut sur l'avant du bras, en Gore-Tex, avec une Polaire en interne et des systèmes de resserrage au niveau du poignet et de l'avant bras (cela évite que la neige rentre dans le gant quand on prend une pelle). De plus, vérifiez bien qu'il n'y a pas de coutures aux bouts des doigts. Facile. Prenez, deux paires de gants, une chère, l'autre pas, inspectez-les point par point (surtout les coutures) et zou, vous comprendrez rapidement dans quelle paire il faut investir.
 
 <div align="center">
 <img src="./assets/gants2.webp" alt="" loading="lazy"/>
@@ -38,7 +42,7 @@ Des gants corrects c'est quoi? De mon point de vue, ce sont des gants qui monten
 
 ## Pantalon
 
-Je l'ai dit, au début, vous allez passer du temps sur les fesses et sur les genoux. Il faut donc que vous trouviez un moyen pour éviter d'atomiser l'équipement que vous possédez déjà (pantalon de ski typiquement)
+Je l'ai dit, au début, vous allez passer du temps sur les fesses et sur les genoux. Il faut donc que vous trouviez un moyen pour éviter d'atomiser l'équipement que vous possédez déjà (pantalon de ski typiquement).
 
 Comme je suis pas certains que vous soyez prêt à acheter un vrai pantalon de surf (et pourtant si vous continuez vous y viendrez) y a pas trop de solution.
 
@@ -48,7 +52,7 @@ Oui je sais, vous allez avoir un look de pingouin... Mais bon, soit vous faites 
 
 D'un autre côté, si le pantalon à quelques années... Paix à son âme. Attention toutefois faudra peut être acheter une bombe pour le rendre un peu plus étanche. Si il est vieux, il n'est plus imperméable et vous allez être trempé aux fesses.
 
-Un dernier truc. Pensez à ne rien mettre dans vos poches de pantalon (encore un bon argument pour le K-Way). En effet, vous serez toujours plus ou moins plié en deux. Alors, afin d'éviter d'exploser votre paquet de cigarettes ou de vous sectionner l'aine avec la clé de l'appartement, évitez de mettre quoi que se soit dans vos poches. Enfin bon, ça, on le fait généralement une fois et après on retient la leçon.
+Un dernier truc. Pensez à ne rien mettre dans vos poches de pantalon (encore un bon argument pour le K-Way). En effet, vous serez toujours plus ou moins plié en deux. Alors, afin d'éviter d'exploser votre paquet de cigarettes ou de vous sectionner l'aine avec la clé de l'appartement, évitez de mettre quoi que ce soit dans vos poches. Enfin bon, ça, on le fait généralement une fois et après on retient la leçon.
 
 ## Le haut
 
@@ -56,7 +60,7 @@ Deux trucs simplement. Choisissez un vêtement ample et pas trop glissant. Ample
 
 Bon, je passe sur les détails classiques que vous connaissez déjà si vous avez fait du ski (des poches partout, des fermetures qui ferment quand on les remontent, un tour de cou en polaire, des aérations etc.)
 
-Pour le reste, évitez d'aller faire du Snobarde avec uniquement un gros pull sur le dos. Vous allez le tuer quand la neige se sera accrochée dans la fibre. Enfin, toujours parce que vous allez passer vos premières journées à vous rouler par terre, même si il fait beau, éviter le T-Shirt à manches courtes.
+Pour le reste, évitez d'aller faire du Snowboard avec uniquement un gros pull sur le dos. Vous allez le tuer quand la neige se sera accrochée dans la fibre. Enfin, toujours parce que vous allez passer vos premières journées à vous rouler par terre, même si il fait beau, éviter le T-Shirt à manches courtes.
 
 ## Le reste
 

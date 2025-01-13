@@ -35,7 +35,6 @@ Pas la peine de lire plus loin. Ce sont des notes que je garde sous le coude lor
 
 ---
 ## TODO
-* Snowboard, ajouter des photos et des vidéos
 * Sur la 1ere page, la liste des 10 derniers billets mis à jour
 * Faire un billet sur le portage de WP vers markdown?
 * Lightbox pour les images?
@@ -74,6 +73,17 @@ Pas la peine de lire plus loin. Ce sont des notes que je garde sous le coude lor
 ```
 
 
+```
+Target
+[titre](https://youtu.be/57ivuBX1kLU?si=bI3xfPOcipMe5F3O&t=42){:target="_blank"}
+
+Pour les images sur les pages où il y a un permalink
+<div align="center">
+<img src="{%link docs/08_snowboard/assets/img_05.webp%}" alt="" width="450" loading="lazy"/>
+</div>
+
+
+```
 
 
 ```
@@ -210,6 +220,7 @@ Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Desc
 
 ---
 ## DONE
+* ~~Snowboard, ajouter des photos et des vidéos~~
 * ~~Voir cette histoire de pull request de la part de Just The Docs~~
 * ~~robots.txt~~
     * Dans Google Search Console aller verifier dans "Paramètres" si il le voit bien

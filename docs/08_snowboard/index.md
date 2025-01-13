@@ -14,9 +14,9 @@ permalink: /apprendre_snowboard/
 <img src="{%link docs/08_snowboard/assets/img_02.webp%}" alt="" width="450" loading="lazy"/>
 </div>
 
-Vous trouverez dans les billets de la catégorie [Apprendre le Snowboard]({%link docs/08_snowboard/index.md%}) un certain nombre de conseils qui devraient vous aider à **débuter** dans la joie et la bonne humeur. L'idée c'est de permettre aux débutant de pouvoir poursuivre dans les meilleures conditions par un cours et en tout cas d'arriver en sachant chausser, patiner, glisouiller, virer et prendre un tir fesse. De mon point de vue il n'y a en effet aucun intérêt à aller en cours pour apprendre à se relever.  
+Vous trouverez dans les billets de la catégorie [Apprendre le Snowboard]({%link docs/08_snowboard/index.md%}) un certain nombre de conseils qui devraient vous aider à **débuter** dans la joie et la bonne humeur. L'idée c'est de permettre aux débutants de pouvoir poursuivre dans les meilleures conditions par un cours et en tout cas d'arriver en sachant chausser, patiner, glissouiller, virer et prendre un tire-fesses. De mon point de vue il n'y a en effet aucun intérêt à aller en cours pour apprendre à se relever.  
 
-Attention, je ne suis, ni un [moniteur de l'ESF](http://www.esf.net), ni un pro. Tout ce que vous pourrez lire ici devra donc être interprété comme une série de conseils que pourrait donner un surfeur à un autre. Typiquement le genre d'infos que l'on peut s'échanger lors d'une conversation sur le bord d'une piste...
+Attention, je ne suis, ni un [moniteur de l'ESF](http://www.esf.net), ni un [pro](https://www.ecole-ski-buissonniere.com/). Tout ce que vous pourrez lire ici devra donc être interprété comme une série de conseils que pourrait donner un surfeur à un autre. Typiquement le genre d'infos que l'on peut s'échanger lors d'une conversation sur le bord d'une piste...
 
 <div align="center">
 <img src="{%link docs/08_snowboard/assets/img_03.webp%}" alt="" width="450" loading="lazy"/>
@@ -24,7 +24,7 @@ Attention, je ne suis, ni un [moniteur de l'ESF](http://www.esf.net), ni un pro
 
 Ces billets ne visent qu'à **rendre service aux débutants** et je ne demande à personne d'être d'accord avec moi. Si vous trouvez qu'à un moment, je raconte des bêtises (préjudiciable à la sécurité des lecteurs par exemple) faites le moi savoir et je tiendrai, compte de vos remarques.
 
-Avant de partir cette année, imprimez les différents billets et lisez-les dans l'ordre lors de votre séjour ou pendant votre voyage. L'avantage c'est qu'en faisant ainsi, au dos de chaque feuille vous pourrez **chaque soir** mettre noir sur blanc vos commentaires et vos impressions. 
+Avant de partir il faudra bien vous couvrir mais aussi penser à imprimer les différents billets. Il faudra les lire dans l'ordre lors de votre séjour ou pendant votre voyage. L'avantage c'est qu'en faisant ainsi, au dos de chaque feuille vous pourrez **chaque soir** mettre noir sur blanc vos commentaires et vos impressions. 
 
 De mon point de vue, il est **très important**, surtout quand on débute, de faire l'effort de noter par écrit ce qui a marché, pourquoi on n'était pas à l'aise, de retranscrire ses sensations... Le truc c'est que l'année d'après, en relisant vos propres notes, vous serez prêt plus rapidement car vous saurez quelles sensations retrouver (un genou qui se rapproche, un regard qui porte au loin...)
 
@@ -47,9 +47,9 @@ Et là, en bas de la petite pente, sur le gros plat, y encore ce "jobar" qui arr
 <img src="{%link docs/08_snowboard/assets/img_04.webp%}" alt="" width="450" loading="lazy"/>
 </div>
 
-Et puis il y a toujours la petite de tout à l'heure, sa descente tout en douceur, sans bruit, avec une belle trace bien coupée... ça donne envie. Allez zou, la décision est prise, ce soir vous irez chercher une planche et demain... Ah, oui, tiens au fait, on commence comment, on fait quoi et dans quel ordre... Ooops !
+Et puis il y a toujours la petite de tout à l'heure, sa descente tout en douceur, sans bruit, avec une belle trace bien coupée... ça donne envie. Allez zou, la décision est prise, ce soir vous irez chercher une planche et demain... *Ah, oui, tiens au fait, on commence comment, on fait quoi et dans quel ordre... Ooops !*
 
-Pas de panique, ça va bien se passer, on va essayer de démystifier tout ça ensemble et on va commencer par le [matériel]({%link docs/08_snowboard/02_materiel/materiel.md%}) et je te donne en avant première le programme des 2 jours à venir:
+Pas de panique, ça va bien se passer, on va essayer de démystifier tout ça ensemble. Tiens, je te donne en avant première le programme des 2 jours à venir. 
 
 |          | Matin                        | Après midi       |
 |----------|------------------------------|------------------|
@@ -57,3 +57,5 @@ Pas de panique, ça va bien se passer, on va essayer de démystifier tout ça en
 | Mardi    | Echauffements<br>Tire fesses | Pratique         |
 | Mercredi | Cours ?                      | Pratique         |
 | Jeudi    | ...                          | ...              |
+
+Allez, on va commencer par le [matériel]({%link docs/08_snowboard/02_materiel/materiel.md%}).

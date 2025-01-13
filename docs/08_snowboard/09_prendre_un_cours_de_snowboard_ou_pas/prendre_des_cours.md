@@ -43,9 +43,11 @@ Si vous êtes seul vous pourriez peut-être prendre une heure (ou 1H30) de cours
 <img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-Bon, il ne faut pas se leurrer... Malgré toute son expérience, son enthousiasme et la durée du cours (3H en collectif), le moniteur ne pourra pas, dans un cours collectif, vous prêter autant d'attention que dans un cours perso. Par exemple, si vous vous trouvez en queue de peloton, que la file s'allonge un tantinet, vos défauts auront moins de chance d'être détectés et corrigé. Dans tous les cas, il sera difficile pour le moniteur de délaisser tous les autres afin de passer avec vous les 5 ou 10 min. dont vous avez besoin.
+Bon, il ne faut pas se leurrer... Malgré toute son expérience, son enthousiasme et la durée du cours (3H en collectif), le moniteur ne pourra pas, dans un cours collectif, vous prêter autant d'attention que dans un cours perso. Par exemple, si vous vous trouvez en queue de peloton, que la file s'allonge un tantinet, vos défauts auront moins de chance d'être détectés et corrigés. Dans tous les cas, il sera difficile pour le moniteur de délaisser tous les autres afin de passer avec vous les 5 ou 10 min. dont vous avez besoin.
 
 Cela dit, l'énorme avantage des cours collectifs c'est qu'ils vont vous permettre de vous évaluer par rapport aux autres. Si vous avez l'esprit de compétition, l'envie de faire mieux, la "niak"... Allez-y, si y en a un qui va vite, observez, copiez et faites mieux que lui ! 
+
+En plus en cours perso si tu veux vraiment pas faire un truc (le snowpark par exemple) vous n'allez pas y aller. Par contre en collectif c'est pour tout le monde pareil et si on va au border cross... On va au border cross. C'est bête mais t'as pas le choix, tu y vas et bizarrement... Ca passe et ça se passe plutôt bine. Comme si le moniteur avait choisi un exercice qui nous fasse sortir de notre zone de confort sans nous mettre en danger. C'est bizarre ça...
 
 Cela dit faudra attendre l'année prochaine et intégrer le cours "débutant Snow 1" car ce n'est pas trop possible (ni souhaitable de mon point de vue) d'intégrer un cours collectif en plein milieu de la semaine.
 
