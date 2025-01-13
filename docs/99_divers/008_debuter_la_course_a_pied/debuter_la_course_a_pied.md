@@ -249,7 +249,7 @@ Tu débutes. Cette page s'appelle "Débuter la course à pied". Tu n'as pas le n
 ### *On termine par 5 minutes de course. Ce n'est pas très malin...*
 Pas de problème, on s'adapte... Tu termines ta dernière session de 5 minutes de course, tu arrives à la maison et... Tu t'arrêtes pas. Tu fais un tour de pâté de maison en marchant 5 minutes.
 
-Cependant, si tu veux absolument montrer aux autres de la tribu que tu te bouges, rentrer en sueur c'est pas con... Nan, je plaisante. Va plutôt marcher 5 minutes de plus.
+Cependant, si tu veux absolument montrer aux autres de la tribu que tu te bouges, rentrer en sueur c'est pas con... Nan, je plaisante. Vas plutôt marcher 5 minutes de plus.
 
 
 
@@ -263,7 +263,7 @@ Je m'en fous. Ton problème c'est de te remettre à sortir et à te bouger. Si l
 </div>
 
 
-Attention à un truc si tu sors avec des potes. Il faut que les niveaux, les objectifs et les motivations soient de niveaux similaires. Ne sors pas avec un marathonien même s'il est de très bonne volonté. De même, si après un mois ta sœur veut venir avec toi dis-lui de faire quelques sorties toute seule et/ou retrouve là pour le dernier quart d'heure mais ne partez pas ensemble car vos niveaux sont trop différents et c'est un coup à la dégoûter.
+Attention à un truc si tu sors avec des potes. Il faut que les niveaux, les objectifs et les motivations soient similaires. Ne sors pas avec un marathonien même s'il est de très bonne volonté. De même, si après un mois ta sœur veut venir avec toi dis-lui de faire quelques sorties toute seule et/ou retrouve là pour le dernier quart d'heure mais ne partez pas ensemble car vos niveaux sont trop différents et c'est un coup à la dégoûter.
 
 <div align="center">
 &nbsp;
