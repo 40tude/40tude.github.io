@@ -34,7 +34,7 @@ Il est très important de ne **pas tendre la jambe avant**, de se raidir et de r
 
 ### Une petite vidéo
 
-Je sais c'est en anglais... N'oubliez pas de cliquer sur le bouton CC pour avoir les sous-titres. Ensuite, regardez bien ce qu'elle fait de son bras et la façon dont le regard "pilote" la board.
+Je sais c'est en anglais... Regardez bien ce qu'elle fait de son bras et la façon dont le regard "pilote" la board.
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5HA8DkBlmXE?si=OgAn_npRYt0UVwSz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -68,7 +68,7 @@ Si vous ne comprenez pas ce que je viens de dire relisez la fin du paragraphe qu
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/az2IcAOWCv0?si=S7oOcmJhrOpI6OmI&amp;start=38" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Bon, là il va un peu vite pour nous mais en fin d'après midi on doit être capable de faire ça.
+Bon, là il va un peu vite pour nous mais en fin d'après midi on doit être capable de faire ça. Bien voir comment il remonte la pente et qu'il laisse la board s'arrêter tout seule quand il est de l'autre côté de la piste. La trace fait une sorte de "J". 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XNVgqDgRneA?si=SVEG-UI1dHuRl1YH&amp;start=23" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
