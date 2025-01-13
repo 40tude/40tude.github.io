@@ -49,5 +49,11 @@ Et là, en bas de la petite pente, sur le gros plat, y encore ce "jobar" qui arr
 
 Et puis il y a toujours la petite de tout à l'heure, sa descente tout en douceur, sans bruit, avec une belle trace bien coupée... ça donne envie. Allez zou, la décision est prise, ce soir vous irez chercher une planche et demain... Ah, oui, tiens au fait, on commence comment, on fait quoi et dans quel ordre... Ooops !
 
-Pas de panique, ça va bien se passer, on va essayer de démystifier tout ça ensemble et on va commencer par le [matériel]({%link docs/08_snowboard/02_materiel/materiel.md%}).
+Pas de panique, ça va bien se passer, on va essayer de démystifier tout ça ensemble et on va commencer par le [matériel]({%link docs/08_snowboard/02_materiel/materiel.md%}) et je te donne en avant première le programme des 2 jours à venir:
 
+|          | Matin                        | Après midi       |
+|----------|------------------------------|------------------|
+| Lundi    | Ski                          | Premier contact avec le snowboard<br> Premieres traversées<br>Premier virages |
+| Mardi    | Echauffements<br>Tire fesses | Pratique         |
+| Mercredi | Cours ?                      | Pratique         |
+| Jeudi    | ...                          | ...              |

@@ -35,6 +35,7 @@ Pas la peine de lire plus loin. Ce sont des notes que je garde sous le coude lor
 
 ---
 ## TODO
+* Snowboard, ajouter des photos et des vidéos
 * Sur la 1ere page, la liste des 10 derniers billets mis à jour
 * Faire un billet sur le portage de WP vers markdown?
 * Lightbox pour les images?

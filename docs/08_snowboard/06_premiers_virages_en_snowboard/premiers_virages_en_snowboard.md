@@ -17,7 +17,7 @@ On est toujours Lundi après midi et comme on est en forme, il est temps de pass
 
 Je pense qu'il est préférable de commencer par ce virage car, psychologiquement, en ayant l'impression de pouvoir vous laisser tomber sur les mains, vous devriez être mentalement "rassuré".
 
-Puisque la pente est faible, mettez le nez de la planche dans la pente. Vous gardez la planche à plat même si elle prend un tout petit peu de vitesse, vous tendez les bras dans l'axe longitudinal de la planche, vous tournez la tête et vous regardez devant vous. Euh... On est d'accord, vous êtes fléchi et vous appuyez sur la jambe avant.
+Puisque la pente est faible, mettez le nez de la planche dans la pente. Vous gardez la planche à plat même si elle prend un tout petit peu de vitesse, vous tendez les bras dans l'axe longitudinal de la planche, vous tournez la tête et vous regardez devant vous. Euh... On est d'accord, vous êtes légèrement fléchi et vous appuyez sur la jambe avant.
 
 Une petite remarque : quand je dis, "mettez le nez de la planche dans la pente", il ne s'agit pas de débouler à 100 km/h ou d'aller sauter un mur avec les cameramen de M6 en dessous. Du calme, on est d'accord, vous êtes sur Pitchoun... Alors même si la phrase semble "agressive" et tonique, je ne vous demande pas d'aller vous fracasser mais plutôt d'être volontaire, physique et de ne pas avoir peur de glisser à plat sur une faible distance (2-3 m par exemple).
 
@@ -26,7 +26,9 @@ Une petite remarque : quand je dis, "mettez le nez de la planche dans la pente",
 </div>
 
 
-On en était où ? Ah, oui, on en était à : "Ooops ! Ça va bien vite tout d'un coup..." Pas de panique. Surtout, vous ne reculez pas le tronc vers l'arrière de la planche et vous ne tendez pas la jambe avant. Au contraire, vous gardez la position fléchie, volontaire, et vous continuez à peser sur la jambe avant. Ceci dit, vous tournez progressivement les épaules et les bras. La main avant doit quitter la verticale de la planche et venir pointer vers l'amont (vers le haut de la montagne) alors que la main arrière doit quitter la verticale de la planche et aller vers l'aval (le bas de la montagne). Bien sûr, vous restez fléchi et vous appuyez toujours sur la jambe avant. "Ouais, mais ça marche pas, la planche continue tout droit !"
+On en était où ? Ah, oui, on en était à : "Ooops ! Ça va bien vite tout d'un coup..." Pas de panique. Surtout, vous ne reculez pas le tronc vers l'arrière de la planche et vous ne tendez pas la jambe avant. Au contraire, vous gardez la position fléchie, volontaire, et vous continuez à peser sur la jambe avant. Ceci dit, vous tournez progressivement les épaules et les bras. La main avant doit quitter la verticale de la planche et venir pointer vers l'amont (vers le haut de la montagne) alors que la main arrière doit quitter la verticale de la planche et aller vers l'aval (le bas de la montagne). Bien sûr, vous restez fléchi et vous appuyez toujours sur la jambe avant. 
+
+*Ouais, mais ça marche pas, la planche continue tout droit !*
 
 <div align="center">
 <img src="./assets/findevirage.webp" alt="" loading="lazy"/>
@@ -86,27 +88,29 @@ Jusqu'à présent, on a fait des morceaux de virages histoire de ne pas impressi
 
 Pour ces exercices, je vous conseille de monter un bon morceau de la piste. Ceci fait, mettez vous perpendiculaire à la ligne de pente en front ou en back, comme il vous plaira. Vous êtes vertical, à l'arrêt et les jambes légèrement fléchies. Pour les besoins des explications qui vont suivre, j'imagine que vous vous êtes relevé à quatre pattes, et que vous êtes donc en position frontside. La situation serait symétrique si vous étiez en back.
 
-Commencez par l'équivalent d'une traversée. Attention, pas un truc à toute vitesse. Nan, un truc tout cool, presque à plat. Quand vous êtes prêt "dans votre tête", faites tourner pro-gre-ssi-ve-ment vos bras vers l'aval et le nez de la planche "va plonger tout seul dans la pente". Encore une fois, pas de panique, vous avez déjà ressenti cette sensation dans les exercices précédents. Ne raidissez pas vos jambes, gardez la position fléchie, continuez à appuyer sur la jambe avant et à faire tourner vos bras.
+Commencez par l'équivalent d'une traversée. Attention, pas un truc à toute vitesse. Nan, un truc tout cool, presque à plat. Quand vous êtes prêt "dans votre tête", faites tourner **pro-gre-ssi-ve-ment** vos bras vers l'aval et le nez de la planche "va plonger tout seul dans la pente". Encore une fois, pas de panique, vous avez déjà ressenti cette sensation dans les exercices précédents. Ne raidissez pas vos jambes, gardez la position fléchie, continuez à appuyer sur la jambe avant et à faire tourner vos bras.
 
 Ça y est, la planche qui un moment c'est retrouvée à plat dans la pente, continue de tourner et vient de passer sur l'autre carre. Vous étiez partis en front, la "board" est passé momentanément à plat et vous vous retrouvez en back.
 
-N'ayez pas peur au début de continuer à faire tourner exagérément vos bras quitte à ce que la planche remonte un peu la pente et s'arrête en back. Le plus délicat à gérer dans ces tout premiers virages, c'est le passage d'une carre sur l'autre. Faut être clair... Au tout début, personne n'aime cet instant où l'on passe d'une carre à l'autre via une position à plat. Ceci dit, réfléchissez...
+N'ayez pas peur au début de continuer à faire tourner exagérément vos bras quitte à ce que la planche remonte un peu la pente et s'arrête en back. Le plus délicat à gérer dans ces premiers virages, c'est le passage d'une carre sur l'autre. Faut être clair... Au tout début, personne n'aime cet instant où l'on passe d'une carre à l'autre via une position à plat. Ceci dit, réfléchissez...
 
 Dans les premiers exercices de virages en front ou en back on faisait partir la planche à plat. D'autre part, même si on ne l'a pas encore fait, la planche dans le tire fesse sera, là aussi, à plat. Conclusion, rassurez vous, une board n'est pas un être vicieux qui attend la moindre occasion pour vous faire du mal. Non, non, au contraire, elle sait glisser à plat et n'attend qu'une chose... Que vous passiez le cap mental du "carre-plat-carre" pour vraiment commencer à jouer avec vous.
 
 Si jamais vous rencontrez des problèmes, ils sont certainement dû au fait que vous n'appuyez pas suffisamment sur votre jambe avant (en fait, c'est à mon avis tout le secret des premiers virages).
 
-Encore une fois, réfléchissez... Si, alors que la planche est à plat dans la pente, vous raidissez votre jambe avant et reportez tout votre poids vers l'arrière, vous comprenez intuitivement que la planche va avoir tendance à se trouver le nez en l'air. Autrement dit il y aura moins de carre en contact avec la neige pour vous aider à passer en back et réaliser le virage. Bref, la peur n'évitant pas le danger, lorsque la board est à plat, il faut continuer à appuyer sur la jambe avant et à tourner les bras.
+Encore une fois, réfléchissez... Si, alors que la planche est à plat dans la pente, vous raidissez votre jambe avant et reportez tout votre poids vers l'arrière. Vous comprenez intuitivement que la planche va avoir tendance à se trouver le nez en l'air. Autrement dit il y aura moins de carre en contact avec la neige pour vous aider à passer en back et réaliser le virage. Bref, la peur n'évitant pas le danger, lorsque la board est à plat, il faut continuer à appuyer sur la jambe avant et à tourner les épaules, les bras et la tête (alouette).
 
+### Réflexion
 Tiens, arrêtez tout. Mettez-vous en perpendiculairement à la ligne de pente ou sur une portion plate de la piste. OK ? Bon maintenant, à l'arrêt, appuyez comme un bête sur votre jambe arrière et remontez votre jambe avant. Qu'est-ce qui se passe ? La planche se tord et son nez se retrouve à 20-30 cm de la neige. Pas convaincu ? L'avant ne lève pas vraiment... C'est de votre faute! Tirez plus fort. Elle est plus solide et plus souple que vous. Elle ne va pas casser. Levez bien le nez de la planche. Bon maintenant, remettez-vous à plat, gentiment, reprenez votre souffle et encore une fois réfléchissez...
 
-En surf, comme en ski, ce qui vous fait tourner ce sont les carres. Si à l'extrême, il n'y a plus que votre spatule arrière qui touche la neige, c'est pas avec 2 cm de carre que vous allez tourner... Allez je vous laisse méditer là dessus...
+En surf, comme en ski, ce qui vous fait tourner ce sont les carres. Si à l'extrême, il n'y a plus que votre spatule arrière qui touche la neige, c'est pas avec 2 cm de carre que vous allez tourner... Allez, je vous laisse méditer là dessus...
 
-Autre truc. Vous l'avez compris maintenant : on est passé d'une carre sur l'autre... Autrement dit, afin d'éviter les fautes de carre il faut que vous vous rappeliez la règle qui dit que : "en front je suis sur les orteils alors qu'en back je suis sur les talons". Même si sur ces premiers virages qui se font dans des pentes et à des vitesses faibles vous ne voulez pas chuter lourdement, il faut que vous soyez capable de placer "instinctivement" la pression sur les orteils ou les talons.
+### Un autre truc
+Vous l'avez compris maintenant : on est passé d'une carre sur l'autre... Autrement dit, afin d'éviter les fautes de carre il faut que vous vous rappeliez la règle qui dit que : "en front je suis sur les orteils alors qu'en back je suis sur les talons". Même si sur ces premiers virages qui se font dans des pentes et à des vitesses faibles vous ne voulez pas chuter lourdement, il faut que vous soyez capable de placer "instinctivement" la pression sur les orteils ou les talons.
 
-Bon, ben faut aller plus loin maintenant... On vient de faire front, back. Il faut faire maintenant back, front, back. Allez, repartez au charbon, faites une traversée en back (sur les talons), mettez la planche dans la pente (pieds à plat) grâce à la rotation des bras, passez en front (sur les orteils), repartez sur une petite traversée, faites pivoter à nouveau vos bras vers l'aval, vous vous retrouvez encore à plat, continuez à pivoter, changez de carre (vous êtes sur les talons) et vous finissez en back. Deux choses importantes : poids sur l'avant et rotation des bras progressive.
+Bon, ben faut aller plus loin maintenant... On vient de faire front, back. Il faut faire maintenant back, front, back. Allez, repartez au charbon, faites une traversée en back (sur les talons), mettez la planche dans la pente (pieds à plat) grâce à la rotation des épaules, des bras, passez en front (sur les orteils), repartez sur une petite traversée, faites pivoter à nouveau vos bras vers l'aval, vous vous retrouvez encore à plat, continuez à pivoter, changez de carre (vous êtes sur les talons) et vous finissez en back. Deux choses importantes : poids sur l'avant et rotation des épaules, des bras et du regard **pro-gre-ssi-veu**.
 
-Heu... C'est idiot mais le dernier mot "pro-gre-ssive" est très important. Cela sous entend que vous ne donnez pas de coups de hanche intempestifs sous prétexte que "la planche veut pas tourner !". De la même manière cela suppose que vous ne balancez pas ni un bon vieux coup de pied arrière, ni un bon coup de fesse histoire d'abréger ce virage qui ne veut pas se déclencher.
+Heu... C'est idiot mais le dernier mot **pro-gre-ssi-veu** est très important. Cela sous-entend que vous ne donnez pas de coups de hanche intempestifs sous prétexte que "la planche veut pas tourner !". De la même manière cela suppose que vous ne balancez pas ni un bon vieux coup de pied arrière, ni un bon coup de fesse histoire d'abréger ce virage qui ne veut pas se déclencher.
 
 Pensez à un grand prix moto... Vous avez déjà vu Max Biaggi ou El Doctor changer brutalement l'angle de sa moto en plein milieu d'une courbe parabolique ? Nan... Il arrive comme un boulet, il freine comme un malade, il angle (je passe sous silence l'aspect contre braquage qui sort du cadre de ce billet...), il garde l'angle et accélère le plus tôt possible. Bon ben nous c'est pareil. Une fois que la décision de virage est prise, que les bras et le regard ont tourné, on garde la position... Comme on est sur Pitchoun qui est dégagée, on appuie sur la jambe avant, on garde les genoux pliés et on attend que cela se passe.
 
@@ -120,6 +124,13 @@ Si vous êtes tout seul, en plus du reste, essayez "d'écouter" la board. Si ell
 
 Allez au boulot, et n'hésitez pas à y passer le temps qu'il faut (en gros, tout le reste de l'après midi).
 
-## Ce soir après la douche
-Prends le temps de noter au dos de la feuille tes impressions du jour.
 
+
+## Ce soir après la douche
+Prends le temps de noter au dos de la feuille tes impressions du jour. Ces notes sont les tiennes. Personne ne viendra les lire, sauf toi l'année prochaine. Donc tu écris comme tu veux mais débrouille toi pour que tu puisse te relire et te comprendre dans un an. 
+
+Par exemple, demain soir, quand tu aura terminé d'écrire tes notes du jour, reviens sur celle d’aujourd’hui. Fais de même les jours suivants de la semaine avance. 
+
+Note tes sensations, comment tu te sentais... Comment ça se passait dans les chaussure, les gants, ce qui allait, ce qui n'allait pas...
+
+Une fois les notes prises, si tu as des ajustements à faire sur les fixations, rapporte la planche à ton loueur ou vas le voir et achète lui un petit tournevis multi-fonction (cruciforme, plat...) et fais les réglages toi même.

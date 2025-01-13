@@ -26,6 +26,12 @@ On est Lundi, 14H, ding dong, c'est l'heure... Faut y aller... Pour commencer, j
 4. Se relever
 5. Déraper
 
+
+Attention, ce n'est que le début de l'après midi. Faudra ensuite, toujours cet après midi consacrer du temps aux [traversées de la piste](docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md) ainsi qu'aux [premiers virages](docs\08_snowboard\06_premiers_virages_en_snowboard\premiers_virages_en_snowboard.md).
+
+Pour fixer les idées. Si on imagine qu'on est sur la piste de 14H à 17H je pense qu'il faut consacrer 1H environ à cette page puis passer le reste de l'après midi, sur les histoires de [traversées](docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md) et de [virages](docs\08_snowboard\06_premiers_virages_en_snowboard\premiers_virages_en_snowboard.md). De toute façon, en cours d'après midi, tu seras obligé de déchausser, rechausser, t’asseoir, te relever, glisser, patiner... Bref tu vas pratiquer. Heu... Faudra penser à faire une bonne pose au bar du coin en laissant la planche au soleil. 
+
+
 Ça n'a l'air de rien, mais bon, va falloir que vous restiez zen, et promis, quand vous aurez fait tout ça, vous aurez votre compte.
 
 Ah, au fait, bien sûr, si vous avez un collègue qui débute aussi, emmenez-le avec vous. Vous vous sentirez moins seul dans l'adversité et vous pourrez toujours comparer vos sensations.
@@ -172,7 +178,6 @@ Au final vous êtes en position "surf attitude" et vous avez la montagne dans l
 
 
 ## 5. Déraper
-
 Bon, allez, il est temps de faire autre chose. Pour cela, vous allez chercher un endroit sur la piste où il y a de la pente. Attention, j'ai dit un peu de pente, pas un mur (quoique que sur la piste Mickey, un mur...). Pour vous y rendre, soit vous déchaussez le pied arrière et vous y allez en patinant soit vous déchaussez complètement et vous vous y rendez la planche sous le bras.
 
 Soyez malins... Pendant que vous y êtes, grimpez en haut de la petite pente... Bon, une fois en haut, vous rechaussez. En partant d'une position sur le ventre, vous vous relevez. Faites bien attention à ce que la planche soit perpendiculaire à la ligne de pente et à ce que la pression exercée sur vos pieds soit identique. À la fin vous devez vous retrouver face à la montagne, légèrement sur la pointe des pieds. En ce qui concerne la tête, elle est relevée et vous regardez vers la montagne.
@@ -222,11 +227,5 @@ Ah oui, j'allais oublier... À chaque arrêt, évitez de vous laisser tomber et 
 
 Allez, maîtrisez votre équilibre... Ça peut pas vous faire de mal et en plus, vous rendrez un grand service à l'image de marque des surfeurs. Que demande le peuple ?
 
-## Ce soir après la douche
-Prends le temps de noter au dos de la feuille tes impressions du jour. Ces notes sont les tiennes. Personne ne viendra les lire, sauf toi l'année prochaine. Donc tu écris comme tu veux mais débrouille toi pour que tu puisse te relire et te comprendre dans un an. 
+Allez, on passe à la suite... Les [traversées](docs/08_snowboard/05_premieres_traversees_en_snowboard/premieres_traversees.md) de piste.
 
-Par exemple, demain soir, quand tu aura terminé d'écrire tes notes du jour, reviens sur celle d’aujourd’hui. Fais de même les jours suivants de la semaine avance. 
-
-Note tes sensations, comment tu te sentais... Comment ça se passait dans les chaussure, les gants, ce qui allait, ce qui n'allait pas...
-
-Une fois les notes prises, si tu as des ajustements à faire sur les fixations, rapporte la planche à ton loueur ou vas le voir et achète lui un petit tournevis multi-fonction (cruciforme, plat...) et fais les réglages toi même.
