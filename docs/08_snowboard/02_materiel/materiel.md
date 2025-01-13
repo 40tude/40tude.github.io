@@ -182,7 +182,7 @@ Bon ben, vous voilà l'heureux locataire d'un ensemble qui devrait vous permettr
 
 
 ## Toc, toc ? Vous dormez ? 
-Heu... Désolé, mais bon, faudrait peut-être faire un p'tit test avant d'aller dormir... En effet, il me semble judicieux, voir malin, de faire ce que l'on appelle en mécanique un **montage à sec**. J'entends par là le fait que vous remontiez les shoes et la planche au chalet (ou dans l'appart'), que vous vous équipiez comme si vous partiez (pantalon, chaussettes), que vous régliez la longueur des lacets etc., que vous mettiez les bottes dans les fixes et que serriez tout ça (si vous avez un doute sur comment serrez les fixations allez faire un tour sur la [page premier contact]({%link docs\08_snowboard\04_premier_contact_avec_le_snowboard\premier_contact.md%})).
+Heu... Désolé, mais bon, faudrait peut-être faire un p'tit test avant d'aller dormir... En effet, il me semble judicieux, voir malin, de faire ce que l'on appelle en mécanique un **montage à sec**. J'entends par là le fait que vous remontiez les shoes et la planche au chalet (ou dans l'appart'), que vous vous équipiez comme si vous partiez (pantalon, chaussettes), que vous régliez la longueur des lacets etc., que vous mettiez les bottes dans les fixes et que serriez tout ça (si vous avez un doute sur comment serrez les fixations allez faire un tour sur la [page premier contact]({%link docs/08_snowboard/04_premier_contact_avec_le_snowboard/premier_contact.md%})).
 
 Si vous avez des coques, un truc tout bête. Sans mettre les pieds dans les chaussures, prenez le temps de mettre une des chaussures dans les fixes et assurez-vous que la partie la plus large de la languette qui va sur votre coup de pied est bien centrée. 
 
