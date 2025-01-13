@@ -9,6 +9,14 @@ last_modified_date: 2025-01-13 17::00:00
 ---
 
 # Linux Mint Installation and Configuration
+{: .no_toc }
+
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
+
 
 <!-- ##################################################### -->
 
@@ -155,7 +163,7 @@ sudo ufw allow samba
 <!-- ##################################################### -->
 ## Access the Public shared directory on a WIN 11 host
 
-## WIN11 host
+### WIN11 host
 1. You have a Public shared directory that you can access from another WIN client. [Read this page](https://www.40tude.fr/shared-folder-in-local-network/) if needed.
 1. WIN + i, Accounts, Connexion Options
 1. Deselect the option "Only Hello...". 
@@ -167,7 +175,7 @@ sudo ufw allow samba
 </div>
 
 
-## LINUX host
+### LINUX host
 
 ```
 sudo apt smbclient
@@ -191,7 +199,7 @@ sudo systemctl restart smbd
 
 * You use your Microsoft credentials : `E-mail` and `Microsoft account password`
 
-## CLI
+### CLI
 * 192.168.1.49 is the WIN11 host ip address 
 
 ```
@@ -224,7 +232,10 @@ smb: \> ls
 
 		249823487 blocks of size 4096. 225382835 blocks available
 ```
-## GUI
+
+
+
+### GUI
 <!-- <img src="assets/Capture d’écran LINUX du 2023-11-12 00-42-44.png" width="700"> -->
 
 <div align="center">
@@ -232,12 +243,21 @@ smb: \> ls
 </div>
 
 
-## Read 
+
+### Read 
 * https://www.40tude.fr/shared-folder-in-local-network/
 * https://losst.pro/en/how-to-access-windows-share-in-linux
 * https://forum.manjaro.org/t/access-windows-11-shared-folder-from-manjaro-kde-linux/113213/5
 * https://www.malekal.com/comment-utiliser-smbclient-exemples/
 * https://4sysops.com/archives/the-smb-protocol-all-you-need-to-know/
+
+
+
+
+
+
+
+
 
 
 
@@ -370,6 +390,15 @@ sudo apt install brave-browser
 ```
 * Read : https://brave.com/linux/
 
+
+
+
+
+
+
+
+
+
 <!-- ##################################################### -->
 ## Install Chrome
 * S'assurer que le gestionnaire synaptic n'est PAS ouvert
@@ -384,6 +413,11 @@ sudo add-apt-repository "deb http://dl.google.com/linux/chrome/deb/ stable main"
 sudo apt update
 sudo apt install google-chrome-stable -y
 ```
+
+
+
+
+
 
 <!-- ##################################################### -->
 ## Create a shortcut keys to launch an app 
@@ -483,7 +517,7 @@ sudo apt install ttf-mscorefonts-installer
 
 
   
-## List available fonts
+### List available fonts
 ```
 fc-list
 fc-list | grep Meslo
@@ -604,6 +638,9 @@ sudo apt install btop -y
 
 More
 * https://github.com/ibraheemdev/modern-unix
+
+
+
 
 
 <!-- ##################################################### -->
