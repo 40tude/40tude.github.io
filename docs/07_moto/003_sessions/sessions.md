@@ -32,37 +32,34 @@ last_modified_date : 2022-03-26 12:00:00
 | Vent           | OUI - NON             |
 
 
-### SP V2
+### Pirelli SuperCorsa SP V2
 
-| **Pirelli SuperCorsa SP V2**  | Ambiant | Si très chaud |
+|                               | Ambiant | Si très chaud |
 |-------------------------------|---------|---------------|
 | AV                            | 2.1     | 2.0           |
 | AR                            | 1.9     | 1.7           |
 
-### SC V2
+### Pirelli Diablo SuperCorsa SC V2
 
-| **Pirelli Diablo SuperCorsa SC V2** - Chauffe 80° - 50 min | Ambiant | Sortie Couve | Sortie Piste | Mini |
-|------------------------------------------------------------|---------|--------------|--------------|------|
-| AV                                                         | 1.9     | 2.10         | 2.1          | 2.1  |
-| AR                                                         | 1.6     | 1.75         | 1.8          | 1.7  |
+| Chauffe 80° - 50 min    | Ambiant | Sortie Couve | Sortie Piste | Mini |
+|-------------------------|---------|--------------|--------------|------|
+| AV                      | 1.9     | 2.10         | 2.1          | 2.1  |
+| AR                      | 1.6     | 1.75         | 1.8          | 1.7  |
 
 | Temp piste. 10° de + environ 100 gramme de - ici. | inf 30° | 30 - 40 | 40   |
 |---------------------------------------------------|---------|---------|------|
 | AV                                                | 2.4     | 2.3     | 2.2  |
 | AR                                                | 1.9     | 1.8     | 1.7  |
 
-
 ### D212
 
-| **D212** - Chauffe 80° - 60 min | Ambiant | Sortie Couve | Sortie Piste | Mini |
-|---------------------------------|---------|--------------|--------------|------|
-| AV                              | 2.10    | 2.35         | 2.45         | 1.90 |
-| AR                              | 1.10    | 1.40         | 1.50         | 1.30 |
+| Chauffe 80° - 60 min | Ambiant      | Sortie Couve | Sortie Piste | Mini |
+|----------------------|--------------|--------------|--------------|------|
+| AV                   | 2.10         | 2.35         | 2.45         | 1.90 |
+| AR                   | 1.10         | 1.40         | 1.50         | 1.30 |
 
 
 
-
----
 
 
 
