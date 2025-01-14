@@ -10,9 +10,9 @@ last_modified_date : 2022-03-26 12:00:00
 
 # Feuille de sessions
 
-Imprimer une feuille par journée de roulage
+* Imprimer une feuille par journée de roulage
 
-|                | _____________________ |
+|                |                       |
 |----------------|-----------------------|
 | Organisateur   |                       |
 | Date           |                       |
@@ -33,13 +33,11 @@ Imprimer une feuille par journée de roulage
 
 
 ### SP V2
+
 | **Pirelli SuperCorsa SP V2**  | Ambiant | Si très chaud |
 |-------------------------------|---------|---------------|
 | AV                            | 2.1     | 2.0           |
 | AR                            | 1.9     | 1.7           |
-
-
-
 
 ### SC V2
 
@@ -64,12 +62,12 @@ Imprimer une feuille par journée de roulage
 
 
 
+---
 
 
 
-
-## 1 objectif par session 
-
+## Sessions 
+* 1 objectif par session 
 * À remplir **AVANT** d'arriver sur le circuit
 
 
