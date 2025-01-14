@@ -1,21 +1,24 @@
 ---
 layout: default
-title: "RValue References et Move Semantics"
+title: "rvalue references et move semantics"
 parent: "C++"
 #math: mathjax
 date: 2012-10-17 15:43:54
 last_modified_date: 2020-04-26 16:35:29
 ---
 
-# RValue References et Move Semantics
+# rvalue references et move semantics
 
 ## Introduction
-Je suis toujours en train de "ré-apprendre" le C++ et je fais des tests soit avec XCode (clang) sous Mac OS soit avec MSVC 2012 Express for Desktop lorsque je suis sous Windows 7. J'ai aussi installé récemment Code::Blocks 10.05 (gcc 4.4.1) mais bon, je l'utilise pas trop celui là. Ici je vais surtout faire des tests sous Windows et je vais essayer de transcrire ce que je crois avoir compris du Move Semantics et des RValues References qui sont deux éléments nouveaux des spécifications de C++ 11.
+Je suis toujours en train de "ré-apprendre" le C++ et je fais des tests soit avec XCode (clang) sous Mac OS soit avec MSVC 2012 Express for Desktop lorsque je suis sous Windows 7. J'ai aussi installé récemment Code::Blocks 10.05 (gcc 4.4.1) mais bon, je l'utilise pas trop celui là. Ici je vais surtout faire des tests sous Windows et je vais essayer de transcrire ce que je crois avoir compris du move semantics et des RValues References qui sont deux éléments nouveaux des spécifications de C++ 11.
 
 Ceci dit, attention... En effet, si vous connaissez déjà le sujet passez votre chemin car je ne crois pas que vous apprendrez grand chose. Par contre, si après avoir lu et cherché sur le web vous vous posez encore des questions j'espère que ces quelques notes vous permettront de mieux comprendre ce qui se passe et/ou de lire un article en français avec un point de vue qui vous permettra d'avancer dans vos réflexions.
 
-## Le code source de départ
 
+
+
+
+## Le code source de départ
 On va partir d'un exemple hyper classique : une classe qui gère des tableaux d'entiers. Cette classe comporte le strict minimum pour survivre. Pour les besoins de la cause elle est déclarée et définie dans le code source principal (et unique) qui comprend aussi la fonction main(). Je sais c'est peut être pas top mais bon cela devrait vous permettre de copier/coller/tester rapidement.
 
 Quoiqu'il en soit, la classe MyArray comporte un Default Constructor, un Copy Constructor, un Destructor, un Subscripting Operator et finalement un Assignment Operator. Question membres on retrouve un pointeur sur des entiers et un entier qui contient le nombre d'éléments du tableau.
@@ -167,6 +170,9 @@ Main ends
 Destructor
 ```
 
+
+
+
 ## Explications détaillées
 
 Décortiquons tout cela ligne à ligne quitte à prendre du temps et à être un peu lourd...
@@ -184,6 +190,10 @@ Décortiquons tout cela ligne à ligne quitte à prendre du temps et à être un
 11. Tout à la fin (sur l'accolade fermante en fait) la variable objet ``Tableau2`` est détruite (message "Destructor").
 
 Ouf, ça y est c'est finit ! J'espère que l'intérêt des traces dans la fenêtre Output de MSVC 2012 apparaît plus clairement. En effet, même si l'utilisation de la fonction ``OutputDebugString`` est un peu lourde (n'oubliez as le 'L' devant les chaînes de caractères), elle offre un bon moyen de "tracer" dans le bon ordre ce qui se passe. Pensez à la dernière destruction d'objet ``MyArray``. Si de manière classique on faisait afficher un message dans la console à partir du destructeur de la classe ``MyArray`` on ne verrait rien car la destruction effective de l'objet se fait au niveau de la dernière accolade de la fonction ``main()``. À cet instant il y a bien longtemps que la console n'est plus à l'écran.
+
+
+
+
 
 
 
@@ -235,13 +245,13 @@ Au **point 9**, il n'y a rien de vraiment tordu. L'objet sans nom a fait son off
 
 
 
-## RValue References et Move Semantics
+## rvalue references et move semantics
 
 Bon ben voilà... J'espère que c'est plus clair maintenant et j'espère que vous comprenez mieux tout se qui se passe parfois derrière une simple ligne (constructions, destructions, copies multiples) On va donc pouvoir passer à la suite et pour cela on va commencer par prendre un peu de recul.
 
 En gros, à la ligne 89 (``Tableau2 = CreateArray();`` ) on souhaite, entre autres, assigner au tableau de l'objet ``Tableau2`` le contenu du tableau retourné par ``CreateArray()``. Ceci dit, dans le détail, on se rend compte qu'en dehors des choses essentielles (création de l'objet tmp par exemple) on a été amené à créer une copie de la variable ``tmp`` puis à refaire encore une copie afin de remplir le tableau de la variable objet ``Tableau2``. Ça manque un peu d'efficacité et on peut légitimement se demander pourquoi on ne peut pas directement copier le contenu de la variable ``tmp`` dans la variable ``Tableau2``. Il faut bien garder en tête que la création par copie d'une variable non nommée puis la copie du contenu de cette dernière dans la variable Tableau2 nous coûte deux opérations de copie (``std::copy``). Là ça va à peu près car on a un tableau de 20 entiers. Quel serait l'impact si on avait des millions d'affectations et/ou des objets contenant non pas 20 entiers mais 2Mo de caractères?
 
-C'est entre autres pour répondre à cette question que les **RValues References** et le **Move Semantics** ont été incorporés dans les spécifications de C++11. Avant de rentrer dans les détails, je vous propose de jeter un oeil sur le code modifié. À ce stade la seule chose vraiment importante à remarquer c'est que la fonction ``main()`` reste identique. Autrement dit, je vous demande de garder en tête que l'implémentation du Move Semantics et l'utilisation des RValues References n'impose aucun changement dans les codes sources qui utilisent les classes. Pour peu que le Move Semantics et le RValues References apportent leurs lots d'améliorations en termes de performances, on gagne sur tous les tableaux. Champagne !
+C'est entre autres pour répondre à cette question que les **RValues References** et le **move semantics** ont été incorporés dans les spécifications de C++11. Avant de rentrer dans les détails, je vous propose de jeter un oeil sur le code modifié. À ce stade la seule chose vraiment importante à remarquer c'est que la fonction ``main()`` reste identique. Autrement dit, je vous demande de garder en tête que l'implémentation du move semantics et l'utilisation des RValues References n'impose aucun changement dans les codes sources qui utilisent les classes. Pour peu que le move semantics et le RValues References apportent leurs lots d'améliorations en termes de performances, on gagne sur tous les tableaux. Champagne !
 
 ```cpp
 #include "stdafx.h"
@@ -379,7 +389,7 @@ En C++11 une RValue est une variable non nommée. Typiquement la variable non no
 
 Une autre façon de se faire une idée de ce qu'est une RValue consiste à dire que c'est **tout ce qui n'est pas une LValue** sachant qu'**une LValue est un truc qui possède une adresse** (une variable, un objet...).
 
-Mouai... Et alors? En fait les RValue References vont permettre, entre autres mais pas uniquement, d'implémenter deux fonctions spéciales supplémentaires dans notre classe :
+Mouai... Et alors? En fait les rvalue references vont permettre, entre autres mais pas uniquement, d'implémenter deux fonctions spéciales supplémentaires dans notre classe :
 
 1. Move Constructor
 2. Move Assignment
@@ -470,7 +480,7 @@ Pour cela, on affecte directement à mArray la valeur du pointeur rhs.mArray et 
 
 À l'instar de ce que l'on a fait dans le move constructor, histoire de renforcer le fait qu'on ne va plus utiliser l'objet (rhs) à la fin de la définition de la fonction on met à zéro la taille du tableau (``rhs.mSize=0;``) et on annule le pointeur mArray (``rhs.mArray=nullptr;``)
 
-Je peux comprendre que ce soit pas si facile à lire et à retenir. Ceci dit, à ce stade, la chose à retenir c'est qu'en enrichissant notre classe avec le Move Constructor et le Move Assignment, sous réserve que cela fonctionne, lors de l'exécution de la ligne Tableau2 = CreateArray(); **on évite les deux std::copy** et on réalise vraiment ce que l'on voulait : le transfert quasiment direct de l'objet tmp vers l'objet Tableau2.
+Je peux comprendre que ce ne soit pas si facile à lire et à retenir. Ceci dit, à ce stade, la chose à retenir c'est qu'en enrichissant notre classe avec le **Move Constructor** et le **Move Assignment**, sous réserve que cela fonctionne, lors de l'exécution de la ligne ``Tableau2 = CreateArray();`` **on évite les deux std::copy** et on réalise vraiment ce que l'on voulait : le transfert quasiment direct de l'objet ``tmp`` vers l'objet ``Tableau2``.
 
 Au fait... Est-ce que ça marche? Lançons le code et regardons le contenu de la fenêtre Output :
 
