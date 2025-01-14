@@ -208,8 +208,13 @@ Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Desc
 
 
 
-
-
+### Tooling
+* Google PageSpeed Insights : <https://pagespeed.web.dev/>
+* Google Search Console : <https://search.google.com/search-console>
+* Google Analytics : <https://analytics.google.com/analytics/web/>
+* Web Page Test : <https://www.webpagetest.org/>
+* GTMetrix : <https://gtmetrix.com/>
+* Pingdom Tools : <https://tools.pingdom.com/>
 
 
 
