@@ -15,8 +15,7 @@ last_modified_date : 2022-03-26 12:00:00
 
 | Catégorie                  | Articles                                                                             |
 |----------------------------|--------------------------------------------------------------------------------------|
-| **Divers**                 |                                                                                      |
-|                            | **Clé moto**                                                                         |
+| **Divers**                 | **Clé moto**                                                                         |
 |                            | Sac à dos PC                                                                         |
 |                            | Clés voiture + papiers                                                               |
 |                            | Clés maison + bip garage                                                             |
@@ -29,8 +28,7 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | Chargeur de montre (charger la montre)                                               |
 |                            | PC & alimentation pour la veille au soir?                                            |
 |                            | 1 livre + cahier de notes + stylo                                                    |
-| **Admin. & Papiers**       |                                                                                      |
-|                            | Si Carole alors Pass Circuit Eco (19€)                                               |
+| **Admin. & Papiers**       | Si Carole alors Pass Circuit Eco (19€)                                               |
 |                            | Portefeuille & permis                                                                |
 |                            | Argent liquide & Chéquier & CB                                                       |
 |                            | Pochette avec les confirmations d'inscription, hôtel etc.                            |
@@ -51,11 +49,10 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | **N** serviettes éponge                                                              |
 |                            | Sous-combinaison                                                                     |
 |                            | **N** slips                                                                          |
-|                            | 1x**N** chaussettes montantes                                                        |
-|                            | 1x**N** T-shirt techniques                                                           |
+|                            | **N** chaussettes montantes                                                          |
+|                            | **N** T-shirt techniques                                                             |
 |                            | Febreze si **N** > 1                                                                 |
-| **Habillement & Toilette** |                                                                                      |
-|                            | Sac voyage + Sac à linge sale                                                        |
+| **Toilette & Fringues**    | Sac voyage + Sac à linge sale                                                        |
 |                            | Trousse de toilette (Rasoir, Brosse à dent (chargeur?), Champoing)                   |
 |                            | **N** slips (en plus de ceux pour la piste)                                          |
 |                            | **N-1** chaussettes (en plus de celles pour la piste)                                |
@@ -69,8 +66,7 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | Trousse médicale (Doliprane, Pastille Rennie, Nectaloe, Crème pieds, kit Kéto…)      |
 |                            | Chaussures, short, chaussettes, T-shirt, brassard téléphone pour aller courir?       |
 |                            | Corde à sauter?                                                                      |
-| **Divers**                 |                                                                                      |
-|                            | Vérifier la pression des pneus (D 2.1-1.1 P 1.9-1.55 Corsa SP 2.1-1.9)               |
+| **Divers**                 | Vérifier la pression des pneus (D 2.1-1.1 P 1.9-1.55 Corsa SP 2.1-1.9)               |
 |                            | Vérifier le plein moto                                                               |
 |                            | Jerricane 20L + **pompe à main** si **N** > 1                                        |
 |                            | Barnum + poids + côtés (ombre)                                                       |
@@ -99,8 +95,7 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | - Gonfleur à pied                                                                    |
 |                            | - Multiprise                                                                         |
 |                            | - **N** sacs poubelle                                                                |
-|                            |                                                                                      |
-|                            | Couvertures chauffantes                                                              |
+| *À voir...*                | Couvertures chauffantes                                                              |
 |                            | Lève roue AR                                                                         |
 |                            | Lève roue AV                                                                         |
 |                            | Vulcanet & produits entretien si **N** > 1                                           |
