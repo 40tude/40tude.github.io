@@ -20,29 +20,35 @@ En gros, j'ai eu l'occasion de lire les bouquins de maths utilisés actuellement
 
 ## L'algorithmie
 
-Je ne reviens pas dessus. Ce n'est pas fun, c'est formateur blablabla...
+Je ne reviens pas dessus. Ce n'est pas fun, c'est formateur blablabla... Je rappelle juste que les gamins veulent voir des trucs sexy en 3D alors qu'on leur parle du crible d'Eratosthène, de trouver les racines d'un polynôme... La misère quoi !
 
 ## Les calculatrices
 
 Je passe sur les calculatrices car je pense que tout le monde comprend ce que je veux dire. Si vous ne voyez pas, prenez une TI ou une Casio. Mettez-vous devant la télé dans une ambiance lumineuse "normale" et essayez de faire un programme de plus de 20 lignes de code. Au bout de cinq minutes vous ne voyez plus rien (écran trop petit, pas rétro éclairé) et vous finissez sur la table de la salle à manger sous le lustre offert par tante Germaine.
 
-Je passe sur l'ergonomie du clavier qui n'est surtout pas fait pour éditer du code. Je passe sous silence les affectations de variables qui ne se font pas dans le bon sens (2->Bob au lieu de Bob=2). Oui, oui, c'est un point de détail mais quitte à apprendre la programmation d'un algorithme à un gamin autant en profiter pour lui apprendre des choses et des méthodes qu'il retrouvera ailleurs (la majorité des langages de programmation que je connais réalisent les affectations de droite à gauche). Tiens en parlant de syntaxe du langage de programmation... Celle de la TI est complètement spécifique et ne se rapproche en rien de ce qui existe ailleurs. Ce n'est pas grave en soit, ce qui me gêne c'est que le gamin ne va pas retrouver une syntaxe similaire ailleurs (attention je ne parle pas de 12 000 fonctions mathématiques disponibles mais bien de la syntaxe).
+Je passe sur l'ergonomie du clavier qui n'est surtout pas fait pour éditer du code. Je passe sous silence les affectations de variables qui ne se font pas dans le bon sens (2->Bob au lieu de Bob=2). Oui, oui, c'est un point de détail mais quitte à apprendre la programmation d'un algorithme à un gamin autant en profiter pour lui enseigner les pratiques qu'il retrouvera ailleurs (la majorité des langages de programmation que je connais réalisent les affectations de droite à gauche). 
 
-Heu... J'allais oublier... Le nombre et les noms de variables sont limités. Autrement dit, il est possible qu'après avoir cherché sur Google vous découvriez que telle ou telle variable est déjà utilisée par un autre programme et doit être affectée au votre. Bon j'ergote... Pour finir, je vais mentionner l'absence d'un mode Debug. Pour ceux qui arriveraient de la planète Mars et/ou qui ne savent pas ce qu'est un mode Debug, notez que son absence signifie qu'il n'y a pas moyen de tester son code en progressant d'une ligne à l'autre afin d'observer ce qui se passe (inspecter les valeurs prises par les variables en cours de route par exemple) et essayer de trouver la raison pour laquelle le programme ne se comporte pas comme prévu. Bref... Une misère.
+Tiens en parlant de syntaxe du langage de programmation... Celle de la TI est complètement spécifique et ne se rapproche en rien de ce qui existe ailleurs. Ce n'est pas grave en soit, ce qui me gêne c'est que le gamin ne va pas retrouver une syntaxe similaire ailleurs (attention je ne parle pas de 12 000 fonctions mathématiques disponibles mais bien de la syntaxe).
+
+Heu... J'allais oublier... Le nombre et les noms de variables sont limités. Autrement dit, il est possible qu'après avoir cherché sur Google vous découvriez que telle ou telle variable est déjà utilisée par un autre programme et doit être affectée au votre. Bon j'ergote... 
+
+Pour finir, je vais mentionner l'absence d'un mode Debug. Pour ceux qui arriveraient de la planète Mars et/ou qui ne savent pas ce qu'est un mode Debug, notez que son absence signifie qu'il n'y a pas moyen de tester son code en progressant d'une ligne à l'autre afin d'observer ce qui se passe (inspecter les valeurs prises par les variables en cours de route par exemple) et essayer de trouver la raison pour laquelle le programme ne se comporte pas comme prévu. Bref... Une misère.
 
 ## AlgoBox
 
 Je suis allé sur le site. J'ai téléchargé l'application et j'ai "joué" avec. Franchement c'est très bien fait, on sent qu'il y a du vécu, du retour d'utilisateurs... Bien, très bien, vraiment très belle réalisation, très bon packaging marketing avec des tutos, des fiches des vidéos... Tout est fait pour qu'on débute rapidement.
 
-Cela dit cela n'a rien à voir avec la vraie vie. Je veux dire que si cela prend le gamin par la main, l'incite à déclarer ses variables, à utiliser telle ou telle fonction etc... Demain dans Excel, dans javascript ou autre il ne pourra pas réutiliser son savoir-faire AlgoBox. Bref, de mon point de vue, tout ça c'est du temps perdu... Sauf... sauf pour les profs car AlgoBox propose un environnement gratuit et une méthode de programmation dans laquelle, pour finir, l'enseignant n'a pas besoin de connaître tel ou tel langage puisque dans la méthode par défaut (hors de l'éditeur de code d'AlgoBox) il faut juste cliquer sur des boutons. Mouai... On demande quand même aux profs de connaître les syntaxes TI et Casio (j'ai aussi vu des livres de maths avec du Python à l'intérieur) alors je ne vois pas pourquoi on ne pourrait pas oublier la programmation sur calculette et n'utiliser qu'un seul vrai langage de programmation.
+Cela dit... Cela n'a rien à voir avec la vraie vie. Je veux dire que si cela prend le gamin par la main, l'incite à déclarer ses variables, à utiliser telle ou telle fonction etc... Demain dans Excel, dans javascript ou autre il ne pourra pas réutiliser son savoir-faire AlgoBox. 
+
+Bref, de mon point de vue, tout ça c'est du temps perdu... Sauf... sauf pour les profs car AlgoBox propose un environnement gratuit et une méthode de programmation dans laquelle, pour finir, l'enseignant n'a pas besoin de connaître tel ou tel langage puisque dans la méthode il suffit de cliquer sur des boutons. Mouai... On demande quand même aux profs de connaître les syntaxes TI et Casio (j'ai aussi vu des livres de maths avec du Python à l'intérieur) alors je ne vois pas pourquoi on ne pourrait pas oublier la programmation sur calculette et n'utiliser qu'un seul vrai langage de programmation.
 
 ## Et ?
 
-Sous-entendu : "Ok mais tu proposes quoi ? Quel langage ? Quelle méthode et pour quel coût ?"
+*Ok, mais tu proposes quoi ? Quel langage ? Quelle méthode et pour quel coût?*
 
 Reprenons depuis le départ. Je suppose que les gamins ont étudié le problème posé (résolution des équations du second degré dans R dans la suite du billet) et qu'ils ont un algorithme entre les mains.
 
-Bon maintenant, afin d'aller plus loin, de se faire plaisir et d'apprendre en expérimentant, nous devons coder cet algorithme dans un langage de programmation. Idéalement l'environnement de développement (là où les élèves vont taper leur code) doit :
+Bon maintenant, afin d'aller plus loin, de se faire "plaisir" et d'apprendre en expérimentant, nous devons coder cet algorithme dans un langage de programmation. Idéalement l'environnement de développement (là où les élèves vont taper leur code) doit :
 
 * Être simple (AlgoBox est un bon exemple). De mon point de vue il n'est pas nécessaire qu'il soit en français et de toute façon, en première, on s'adresse à des gamins qui passent leur vie sur le Web et un peu d'anglais ne peut pas faire de mal.
 * Pas cher (voir gratuit)
@@ -51,14 +57,14 @@ Bon maintenant, afin d'aller plus loin, de se faire plaisir et d'apprendre en ex
 
 De mon point de vue, le langage de programmation qu'on va utiliser pour traduire l'algorithme doit :
 
-* Être un standard. C'est **LE** truc le plus important et s'il n'y avait qu'une chose à retenir de ce billet ce serait : "Faites travailler les enfants sur des outils standards, largement utilisés et arrêtez de les confiner à des outils trop spécialisés et qu'ils n'utiliseront plus".
+* Être un standard. C'est **LE** truc le plus important et s'il n'y avait qu'une chose à retenir de ce billet ce serait : "**Faites pratiquer les mômes sur des outils standards**, largement utilisés et arrêtez de les confiner à des outils trop spécialisés et qu'ils n'utiliseront plus".
 * D'une syntaxe pas trop difficile à retenir (apprendre la syntaxe doit être fait de toute façon que le langage soit standard ou propriétaire). On peut quand même remarquer que compte tenu des exercices, les élèves vont avoir besoin de faire 2 ou 3 entrées/sorties à l'écran, un peu de calcul et des boucles. Je n'ai pas tout lu avec attention mais je ne crois pas qu'on utilise des fichiers, qu'on fasse des appels de fonctions et/ou qu'on mette en œuvre la récursivité. Afin de faire l'inventaire, il suffit d'aller voir sur la page d'AlgoBox pour faire rapidement la liste des choses nécessaires.
 * Permettre de traduire facilement l'algorithme en code. Idéalement s'il y a 20 lignes dans l'algorithme il faudrait avoir 20 lignes dans le code source.
 * Éviter toutes les limitations mentionnées ci-dessus à propos des calculatrices. Pas de limites dans le nombre des variables ni dans la longueur des noms de variables par exemple.
 
-Ok, ok... Tu nous as fait une liste de Noël. Très bien tu proposes quoi ?
+*Ok, ok... Tu nous as fait une liste de Noël. Très bien tu proposes quoi ?*
 
-Commençons par les langages et je vais utiliser une approche pragmatique. Quand on fait une recherche rapide sur le Web à propos des langages les plus utilisés on trouve rapidement : Java, C, C++, C#, Objective C, PHP, Python, Ruby...
+Commençons par les langages et je vais utiliser une approche pragmatique. Quand on fait une recherche rapide sur le Web à propos [des langages les plus utilisés dans l'industrie](https://www.tiobe.com/tiobe-index/) on trouve rapidement : Java, C, C++, C#, Objective C, PHP, Python, Ruby...
 
 Bon allez, on taille :
 
@@ -69,7 +75,7 @@ Bon allez, on taille :
 
 C'est dur, c'est sans doute un peu sectaire et cela demanderait un peu plus de développement au niveau des arguments mais bon... Allez il nous reste : Java, C, C++, Ruby
 
-## Le C ANSI
+## C ANSI
 
 De loin le langage avec lequel je suis le plus à l'aise alors vérifiez tout ce que je vais dire. Quoiqu'il en soit, c'est du standard de chez standard mais le langage est "vieux". Attention je dis ça avec beaucoup de respect mais bon du côté des fonctions à utiliser ça sent vraiment le sapin... Un exemple ?
 
@@ -86,7 +92,7 @@ int main(){
 }
 ```
 
-Le code ci-dessus attend que l'utilisateur tape son nom (Bob). Ensuite il affiche "Hello Bob". Question a 2 millions de dollars. Qu'est-ce qui se passe si l'utilisateur est un polonais qui a un nom avec 243 lettres, plein de 'k', de 'i' et de 'y' ?  Je dis 243 pour rire mais plus sérieusement que se passe-t-il si le nom possède plus de lettres que le tableau de caractères de la variable "name" qui ne peut en contenir que 9 plus un caractère null de fin de chaîne). Ben... On ne sait pas. Ça peut tourner, planter... Ce qui est certains c'est qu'on ne peut pas demander à des gamins qui débutent de prendre tout ça en compte. Bon, allez, j'adore le [C]({% link docs/06_programmation/c/index.md%}) mais non, on ne prend pas.
+Le code ci-dessus attend que l'utilisateur tape son nom (Bob). Ensuite il affiche "Hello Bob". Question a 2 millions de dollars. Qu'est-ce qui se passe si l'utilisateur est un polonais qui a un nom avec 243 lettres, plein de 'k', de 'i' et de 'y' ?  Je dis 243 pour rire mais plus sérieusement que se passe-t-il si le nom possède plus de lettres que le tableau de caractères de la variable "name" qui ne peut en contenir que 9 plus un caractère null de fin de chaîne. Ben... On ne sait pas. Ça peut tourner, planter, déclarer une guerre mondiale... Ce qui est certains c'est qu'on ne peut pas demander à des gamins qui débutent de prendre tout ça en compte. Bon, allez, j'adore le [C]({% link docs/06_programmation/c/index.md%}) mais non, on ne prend pas.
 
 Ah ah. Il ne reste plus que Java, C++ et Ruby.
 
@@ -98,7 +104,7 @@ De plus j'ai quand même l'impression qu'en dehors de ideone (voir en bas de pag
 
 ## Ruby
 
-Pour le coup c'est de loin le langage que je connais le moins. Sur le Web en 2 minutes on trouve des tutoriaux, sur Mac on peut invoquer "irb" (interactive ruby) et faire quelques tests.
+Pour le coup c'est de loin le langage que je connais le moins. Sur le Web en 2 minutes on trouve des tutos, sur Mac on peut invoquer "irb" (interactive ruby) et faire quelques tests.
 
 Côté environnement de développement je ne sais pas trop mais Aptana semble être un truc sympa qui évolue dans le bon sens et Eclipse doit pouvoir venir à la rescousse mais c'est du lourd. Et...
 
@@ -106,7 +112,7 @@ Cerise sur le gâteau le langage est normalisé : ISO 30170:2012. Bon ben alors 
 
 Du calme... Moi y a une chose qui me gêne : le tout objet. Franchement je trouve que cela amène des lignes de code un peu cabalistique mais bon j'imagine que pour faire des calculs basiques Ruby sera capable de faire l'affaire.
 
-A titre d'exemple voilà un bout de code pour trouver les racines d'un polynôme de degré 2 (vous noterez au passage que les variables ne sont pas déclarées et n'ont pas, à priori de type particulier, ce qui va à l'encontre de ce qui est fait dans AlgoBox) :
+À titre d'exemple voilà un bout de code pour trouver les racines d'un polynôme de degré 2 (vous noterez au passage que les variables ne sont pas déclarées et n'ont pas, à priori de type particulier, ce qui va à l'encontre de ce qui est fait dans AlgoBox) :
 
 ```ruby
 def cherche(a, b, c)
@@ -126,9 +132,9 @@ cherche(1, 2, 4)
 
 C'est standard de chez standard. Celui qui sait programmer en C++ est capable de s'adapter à Objective C, au C et à C#. Attention ne me faites pas dire ce que je n'ai pas dit. Un étudiant de première qui a fait 3 lignes de C++ pour afficher une racine carrée **N'EST PAS** un développeur Objective C.
 
-Cependant, à contrario de AlgoBox, s'il le souhaite, l'élève peut aller plus loin, apprendre... Il ne rencontrera aucune limite (la communauté est immense) et il sera alors en mesure de lire un code C ou Objective C sur le Web par exemple. De plus celui qui connaît le C++ couvrira les langages qui sont en tête du [top 50 des langages de programmation](https://www.tiobe.com/tiobe-index/) que je citais plus haut. Il fait donc d'une pierre deux coups.
+Cependant, à contrario de AlgoBox, s'il le souhaite, l'élève peut aller plus loin, apprendre... Mais bon franchement j'ai de sérieux doutes. Admettons qu'un élève cherche des infos complémentaires. Il ne rencontrera aucune limite (la communauté est immense) et il sera alors en mesure de lire un code C ou Objective C sur le Web par exemple. De plus celui qui connaît le C++ couvrira les langages qui sont en tête du [top 50 des langages de programmation](https://www.tiobe.com/tiobe-index/) que je citais plus haut. Il fait donc d'une pierre deux coups.
 
-Pour le reste, à l'instar de Java et de Ruby, pour faire ce que l'on a à faire en classe de première la syntaxe est très simple (ce qui est vrai pour l'élève l'est aussi pour le prof aussi et ce dernier n'aura que 2 ou trois trucs à connaître).
+Pour le reste, à l'instar de Java et de Ruby, pour faire ce que l'on a à faire en classe de première la syntaxe est très simple (ce qui est vrai pour l'élève l'est aussi pour le prof et ce dernier n'aura que 2 ou trois trucs à connaître).
 
 Le langage est moderne. Par exemple le souci qu'on avait en C précédemment n'existe pas (taille du tableau) et contrairement à Ruby il oblige (et c'est une très bonne chose) l'élève à déclarer les variables utilisées mais aussi à leur donner un type (un entier, un nombre à virgule, une chaîne de caractères).
 
@@ -203,15 +209,15 @@ Je propose d'arrêter la "programmation" sur calculette. Ensuite, à ce jour, mo
 * C++
 * Ruby
 
-L'idée est de les utiliser dans l'environnement de développement Web Ideone. Je place ensuite C++ en premier choix de langage car il oblige à déclarer les variables (alors qu'on peut faire sans dans Ruby) mais surtout il est, de mon point de vue, plus universel et ne demande pas une approche objet dès le départ. Cette solution ne nécessite qu'un accès Web, elle est gratuite et évite toute une logistique (compilateur etc.) qui est au-delà des compétences des élèves et des enseignants.
+L'idée est d'utiliser le langage de programmation dans l'environnement de développement Web Ideone. Je place ensuite C++ en premier choix de langage car il oblige à déclarer les variables (alors qu'on peut faire sans dans Ruby) mais surtout il est, de mon point de vue, plus universel et ne demande pas une approche objet dès le départ. Cette solution ne nécessite qu'un accès Web, elle est gratuite et évite toute une logistique (compilateur etc.) qui est au-delà des compétences des élèves et des enseignants.
 
-Un tout dernier mot... **Je ne suis pas sûr qu'il soit nécessaire ou utile de faire de l'algorithmie et de la programmation en première**. Je crois qu'on aborde ces sujets pour noyer le poisson et, qu'à l'instar des livres de physique dans lesquels il n'y a plus de formules, que des belles images et des rappels historiques, on fait du marketing, on met un beau ruban rose autour du colis en priant pour que la pilule passe...
+Un tout dernier mot... **Je ne suis pas sûr qu'il soit nécessaire ou utile de faire de l'algorithmie et de la programmation en première**. Je crois qu'on aborde ces sujets pour noyer le poisson. À l'instar des livres de physique dans lesquels il n'y a plus de formules, seulement de belles images et des rappels historiques, on fait du marketing : on met un beau ruban rose autour du colis en espérant que la pilule (le sujet étudié, ici les maths) passe.
 
-Bref, de mon point de vue on fait de la programmation pour dire qu'on en fait mais finalement les profs y vont à reculons, les élèves aussi et comme il n'y a pas plus d'heures de cours si cela se fait cela se fait au détriment des autres chapitres de maths.
+Bref, de mon point de vue on fait de la programmation pour dire qu'on en fait mais finalement les profs y vont à reculons, les élèves aussi et comme il n'y a pas plus d'heures de cours, si cela se fait, cela se fait au détriment des autres chapitres de maths.
 
-Franchement je crois qu'on perd le focus (faire des maths) et qu'on noie certains élèves avec des trucs en plus à faire et à apprendre. À la limite, qu'on fasse un programme de maths "normal" et qu'en fin d'année on consacre un peu de temps en maths (tiens au fait, pourquoi on voit la programmation en maths et pas en histoire ou en gym ?) pour revenir sur certains sujets de l'année... Mouai... Je ne suis toujours pas convaincu mais ça peut s'entendre.
+Franchement je crois qu'on perd le focus (faire des maths) et qu'on noie certains élèves avec des trucs en plus à faire et à apprendre. À la limite, qu'on fasse un programme de maths "normal" et qu'en fin d'année on consacre un peu de temps pour revenir sur certains sujets de l'année avec une approche algorithmique. Mouai... Je ne suis toujours pas convaincu mais ça peut s'entendre.
 
-Je ne demande pas qu'on revienne au programme d'après-guerre. Je dis simplement qu'à vouloir tout faire, tout couvrir on obtiendra non pas des bons à rien mais **des mauvais à tout**.
+Je ne demande pas non plus qu'on revienne au programme d'après-guerre. Je dis simplement qu'à vouloir tout faire, tout couvrir on obtiendra, non pas, des bons à rien mais **des mauvais à tout**.
 
  
 {: .warning }
