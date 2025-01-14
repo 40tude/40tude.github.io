@@ -35,6 +35,7 @@ Pas la peine de lire plus loin. Ce sont des notes que je garde sous le coude lor
 
 ---
 ## TODO
+* Rapatrier la page Git Survival de GitHub ici
 * Sur la 1ere page, la liste des 10 derniers billets mis à jour
 * Faire un billet sur le portage de WP vers markdown?
 * Lightbox pour les images?
@@ -233,6 +234,7 @@ Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Desc
 
 ---
 ## DONE
+* ~~Page Linux Mint à rapatrier~~
 * ~~Snowboard, ajouter des photos et des vidéos~~
 * ~~Voir cette histoire de pull request de la part de Just The Docs~~
 * ~~robots.txt~~
