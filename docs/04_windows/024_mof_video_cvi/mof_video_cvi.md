@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "MOF vidéo CVI"
+parent: "Windows"
 #math: mathjax
 date: 2013-12-01 16:24:09
 last_modified_date: 2020-05-04 15:27:58
