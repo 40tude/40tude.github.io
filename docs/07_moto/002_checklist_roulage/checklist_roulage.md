@@ -24,13 +24,12 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | Télépéage                                                                            |
 |                            | Pare Soleil                                                                          |
 |                            | Crochet remorque (il est graissé?)                                                   |
-|                            | Tapis de sol pour le coffre voiture                                                  |
+|                            | Tapis de sol coffre voiture                                                          |
 |                            | Téléphone & chargeur & casque & porte téléphone                                      |
 |                            | Chargeur de montre (charger la montre)                                               |
 |                            | PC & alimentation pour la veille au soir?                                            |
 |                            | 1 livre + cahier de notes + stylo                                                    |
-|                            |                                                                                      |
-| **Administratif & Papiers**|                                                                                      |
+| **Admin. & Papiers**       |                                                                                      |
 |                            | Si Carole alors Pass Circuit Eco (19€)                                               |
 |                            | Portefeuille & permis                                                                |
 |                            | Argent liquide & Chéquier & CB                                                       |
@@ -39,7 +38,6 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | Plan du circuit avec les notes                                                       |
 |                            | Feuille de sessions avec un **programme établi à l'avance** + programme échauffement |
 |                            | Manuel moto avec réglages suspensions                                                |
-|                            |                                                                                      |
 | **Équipement Piste**       | Les 2 sacs                                                                           |
 |                            | Paillasson                                                                           |
 |                            | Casque, 2 visières, housse et microfibre                                             |
@@ -56,7 +54,6 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | 1x**N** chaussettes montantes                                                        |
 |                            | 1x**N** T-shirt techniques                                                           |
 |                            | Febreze si **N** > 1                                                                 |
-|                            |                                                                                      |
 | **Habillement & Toilette** |                                                                                      |
 |                            | Sac voyage + Sac à linge sale                                                        |
 |                            | Trousse de toilette (Rasoir, Brosse à dent (chargeur?), Champoing)                   |
@@ -72,7 +69,6 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | Trousse médicale (Doliprane, Pastille Rennie, Nectaloe, Crème pieds, kit Kéto…)      |
 |                            | Chaussures, short, chaussettes, T-shirt, brassard téléphone pour aller courir?       |
 |                            | Corde à sauter?                                                                      |
-|                            |                                                                                      |
 | **Divers**                 |                                                                                      |
 |                            | Vérifier la pression des pneus (D 2.1-1.1 P 1.9-1.55 Corsa SP 2.1-1.9)               |
 |                            | Vérifier le plein moto                                                               |
@@ -85,10 +81,8 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | Badoit (temp normale : **N**, chaud : **3xN**) + glacière                            |
 |                            | Thé vert (4x**N**) + **Thermos + Mug**                                               |
 |                            | Couteau Suisse                                                                       |
-|                            |                                                                                      |
 | **Outillage**              |                                                                                      |
-| Une boite noire            |                                                                                      |
-|                            | - Valise clé à cliquet                                                               |
+| *Une boite noire avec :*   | - Valise clé à cliquet                                                               |
 |                            | - **OBLIGATOIRE :** Boite avec manomètre, laser température, thermomètre ext…        |
 |                            | - Plateau métal + chiffon tissu + gants nitrile                                      |
 |                            | - Boite bleue de clé Hexa                                                            |
@@ -98,8 +92,7 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | - Clé à pipe 17 hexa Facom (fourche)                                                 |
 |                            | - Rilsan, marteau, maillet, Becro, coupante, plate, à clips, clé ressort AR          |
 |                            | - Scotch bleu pour y coller les stickers                                             |
-| Une boite noire            |                                                                                      |
-|                            | - Rallonge                                                                           |
+| *Une boite noire avec :*   | - Rallonge                                                                           |
 |                            | - Horloge + Zip                                                                      |
 |                            | - Sangles pour accrocher Barnum                                                      |
 |                            | - Adaptateur prise caravane                                                          |
