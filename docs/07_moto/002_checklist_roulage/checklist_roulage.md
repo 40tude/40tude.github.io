@@ -73,9 +73,9 @@ last_modified_date : 2022-03-26 12:00:00
 |                            | Siège campeur                                                                        |
 |                            | Table                                                                                |
 |                            | Ventilateur pour casque                                                              |
-|                            | 2x**N** : la bouffe - Sardine, Maquereau, Asperges                                   |
+|                            | **2xN** : la bouffe - Sardine, Maquereau, Asperges                                   |
 |                            | Badoit (temp normale : **N**, chaud : **3xN**) + glacière                            |
-|                            | Thé vert (4x**N**) + **Thermos + Mug**                                               |
+|                            | Thé vert (**4xN**) + **Thermos + Mug**                                               |
 |                            | Couteau Suisse                                                                       |
 | **Outillage**              |                                                                                      |
 | *Une boite noire avec :*   | - Valise clé à cliquet                                                               |
