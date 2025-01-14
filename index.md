@@ -85,6 +85,13 @@ Pour les images sur les pages où il y a un permalink
 
 ```
 
+```
+Ancre
+## Un titre long pour une section <a id="short-id"></a>
+
+[Aller à cette section](#short-id)
+```
+
 
 ```
 Mettre {:toc} que sur les titres de niveau 2. Éviter 3 et +
@@ -208,7 +215,7 @@ Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Desc
 
 
 
-### Tooling
+### Tooling (à voir plus tard)
 * Google PageSpeed Insights : <https://pagespeed.web.dev/>
 * Google Search Console : <https://search.google.com/search-console>
 * Google Analytics : <https://analytics.google.com/analytics/web/>
