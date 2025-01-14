@@ -42,7 +42,7 @@ Quand on est de retour sous Windows
 
 Pour connaître la version en cours d'utilisation, ouvrir PowerShell et saisir :
 
-```powershell
+```
 PS C:\Users\phili> wsl -l -v
   NAME            STATE           VERSION
 * Legacy          Stopped         1
@@ -53,7 +53,7 @@ On voit que j'ai un vieil Ubuntu qui traîne (Legacy) , qui est stoppé, qui est
 
 Pour faire en sorte que Ubuntu 20 devienne la distribution par défaut et vérifier que c'est bien pris en compte, on peut taper :
 
-```powershell
+```
 PS C:\Users\phili> wsl --setdefault Ubuntu-20.04
 PS C:\Users\phili> wsl -l
 Distributions du sous-système Windows pour Linux :
@@ -63,13 +63,13 @@ Legacy
 
 Si Unbuntu 20 est en Version 1, pour le forcer à fonctionner en version 2, taper :
 
-```powershell
+```
  PS C:\Users\phili> wsl --set-version Ubuntu-20.04 2
 ```
 
 Cela ne sera peut-être pas possible directement et il vous sera demandé de télécharger un update du kernel sur la page <https://docs.microsoft.com/fr-fr/windows/wsl/wsl2-kernel>. Une fois téléchargé et installé on peut relancer la demande (--set-version). Ensuite la commande "wsl -l -v" doit retourner la version 2. Pour s'assurer de fonctionner en version 2 par défaut, dans PowerShell, on peut saisir :
 
-```powershell
+```
 PS C:\Users\phili> wsl --set-default-version 2
 ```
 
@@ -84,7 +84,7 @@ Dans PowerShell, pour passer en mode Linux, je tape wsl. Le prompt change. Au pi
 
 Si à partir du prompt PowerShell je ne veux pas lancer la distribution par défaut je peux, dans mon cas, saisir :
 
-```powershell
+```
 PS C:\Users\phili> wsl -d legacy
 ```
 
@@ -167,7 +167,7 @@ L'application Windows VS Code se lance. À gauche, en bas et en vert, je retrouv
 
 Dans le cas d'un développement, je peux aussi débugger à partir de VSCode. Par exemple ci-dessous j'ai créé un répertoire Tmp ainsi qu'un fichier Python test.py. Pour débuguer, la toute première fois, VS Code m'a demandé d'installer pip. Pour cela j'ai fermé Code puis dans la console Linux j'ai tapé :
 
-```powershell
+```bash
 philippe@SURFACE:~/Tmp$ sudo apt install python3-pip
 ```
 
@@ -208,7 +208,7 @@ Faut peut-être passer un peu de temps sur cette page : <https://docs.microsoft.
 
 ## Dupliquer une distribution
 
-```powershell
+```
 # créer un répertoire pour stocker une image de base
 PS C:\Users\phili\Documents\Temp> mkdir ./WSL-Copy
 
