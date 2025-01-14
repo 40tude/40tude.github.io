@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Installation de Boost"
+title: "Boost"
 parent: "C++"
 #math: mathjax
 date: 2012-10-25 08:29:33
 last_modified_date: 2020-05-03 15:16:22
 ---
 
-# Installation de Boost
+# Boost
 
 # Introduction
 Si vous êtes pressé, lisez [l'update](#update-remarques-et-notes-finales) de l'installation de Boost qui se trouve tout à la fin de ce billet.

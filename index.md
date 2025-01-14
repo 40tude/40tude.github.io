@@ -87,9 +87,10 @@ Pour les images sur les pages où il y a un permalink
 
 ```
 Ancre
-## Un titre long pour une section <a id="short-id"></a>
+[Aller à cette section](#short-id) Dès qu'on met le # code propose une liste d'ancres
 
 [Aller à cette section](#short-id)
+## Un titre long pour une section <a id="short-id"></a>
 ```
 
 
