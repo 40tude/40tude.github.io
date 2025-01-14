@@ -1,6 +1,7 @@
 ---
 layout: default
-title: "WSL 2 - Windows Subsystem for Linux "
+title: "WSL 2 - Windows Subsystem for Linux"
+parent: Windows
 date: 2020-10-24 14:35:28
 last_modified_date: 2023-01-12 00:10:03
 ---
@@ -41,7 +42,7 @@ Quand on est de retour sous Windows
 
 Pour connaître la version en cours d'utilisation, ouvrir PowerShell et saisir :
 
-```
+```powershell
 PS C:\Users\phili> wsl -l -v
   NAME            STATE           VERSION
 * Legacy          Stopped         1
@@ -52,7 +53,7 @@ On voit que j'ai un vieil Ubuntu qui traîne (Legacy) , qui est stoppé, qui est
 
 Pour faire en sorte que Ubuntu 20 devienne la distribution par défaut et vérifier que c'est bien pris en compte, on peut taper :
 
-```
+```powershell
 PS C:\Users\phili> wsl --setdefault Ubuntu-20.04
 PS C:\Users\phili> wsl -l
 Distributions du sous-système Windows pour Linux :
@@ -62,13 +63,13 @@ Legacy
 
 Si Unbuntu 20 est en Version 1, pour le forcer à fonctionner en version 2, taper :
 
-```
+```powershell
  PS C:\Users\phili> wsl --set-version Ubuntu-20.04 2
 ```
 
 Cela ne sera peut-être pas possible directement et il vous sera demandé de télécharger un update du kernel sur la page <https://docs.microsoft.com/fr-fr/windows/wsl/wsl2-kernel>. Une fois téléchargé et installé on peut relancer la demande (--set-version). Ensuite la commande "wsl -l -v" doit retourner la version 2. Pour s'assurer de fonctionner en version 2 par défaut, dans PowerShell, on peut saisir :
 
-```
+```powershell
 PS C:\Users\phili> wsl --set-default-version 2
 ```
 
@@ -83,7 +84,7 @@ Dans PowerShell, pour passer en mode Linux, je tape wsl. Le prompt change. Au pi
 
 Si à partir du prompt PowerShell je ne veux pas lancer la distribution par défaut je peux, dans mon cas, saisir :
 
-```
+```powershell
 PS C:\Users\phili> wsl -d legacy
 ```
 
@@ -110,12 +111,12 @@ Pour lancer une console Linux dans une console indépendante
 
 Une fois sous Linux
 
-```
+```bash
 philippe@SURFACE:~$ uname -a
 Linux SURFACE 4.19.128-microsoft-standard #1 SMP Tue Jun 23 12:58:10 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-```
+```bash
 philippe@SURFACE:~$ lsb_release -a
 No LSB modules are available.
 Distributor ID: Ubuntu
@@ -124,9 +125,9 @@ Release:        20.04
 Codename:       focal
 ```
 
-Faire la mise à jour. C'est du Linux classique. Normal, on est sous Linux :-)
+Faire la mise à jour. C'est du Linux classique. Normal, on est sous Linux 😁
 
-```
+```bash
 philippe@SURFACE:~$ sudo apt update
 philippe@SURFACE:~$ sudo apt upgrade
 ```
@@ -135,13 +136,13 @@ philippe@SURFACE:~$ sudo apt upgrade
 
 Lancer VS Code à partir du prompt Linux. Ça c'est super cool et la réalisation est vraiment top.
 
-```
+```bash
 philippe@SURFACE:~$ code .
 ```
 
 Si besoin il va installer le serveur
 
-```
+```bash
 philippe@SURFACE:~$ code .
 Installing VS Code Server for x64 (d2e414d9e4239a252d1ab117bd7067f125afd80a)
 Downloading: 100%
@@ -151,7 +152,7 @@ Unpacked 2357 files and folders to /home/philippe/.vscode-server/bin/d2e414d9e42
 
 Relancer VS Code à partir du prompt Linux
 
-```
+```bash
 philippe@SURFACE:~$ code .
 ```
 
@@ -166,7 +167,7 @@ L'application Windows VS Code se lance. À gauche, en bas et en vert, je retrouv
 
 Dans le cas d'un développement, je peux aussi débugger à partir de VSCode. Par exemple ci-dessous j'ai créé un répertoire Tmp ainsi qu'un fichier Python test.py. Pour débuguer, la toute première fois, VS Code m'a demandé d'installer pip. Pour cela j'ai fermé Code puis dans la console Linux j'ai tapé :
 
-```
+```powershell
 philippe@SURFACE:~/Tmp$ sudo apt install python3-pip
 ```
 
@@ -190,7 +191,7 @@ Depuis la console Linux, si je veux accéder à me fichiers Windows je vais dans
 
 Bien voir le format de l'adresse du répertoire qui est du style
 
-```
+```bash
 \\wsl$\Ubuntu-20.04\home\philippe
 ```
 
@@ -207,7 +208,7 @@ Faut peut-être passer un peu de temps sur cette page : <https://docs.microsoft.
 
 ## Dupliquer une distribution
 
-```
+```powershell
 # créer un répertoire pour stocker une image de base
 PS C:\Users\phili\Documents\Temp> mkdir ./WSL-Copy
 
@@ -257,5 +258,5 @@ Ubuntu-20.04 (par défaut)
 PS C:\Users\phili\Documents\Temp\WSL-Copy> ls .\Ubuntu-20.04-testing\
 ```
 
-Bon, la suite au prochain épisode. D'ici là, portez-vous bien, prenez soin de vous et de vos proches.
+*Bon, la suite au prochain épisode...*
 
