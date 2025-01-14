@@ -17,7 +17,6 @@ Ceci dit, attention... En effet, si vous connaissez déjà le sujet passez votre
 
 
 
-
 ## Le code source de départ
 On va partir d'un exemple hyper classique : une classe qui gère des tableaux d'entiers. Cette classe comporte le strict minimum pour survivre. Pour les besoins de la cause elle est déclarée et définie dans le code source principal (et unique) qui comprend aussi la fonction main(). Je sais c'est peut être pas top mais bon cela devrait vous permettre de copier/coller/tester rapidement.
 
