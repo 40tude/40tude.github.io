@@ -33,14 +33,14 @@ First thing first, few words about is the settings :
 * You don't have to but if you plan to edit some C++ code in VS Code I would recommend to install the "C/C++" extension for Visual Studio Code.
 
 <div align="center">
-<img src="./assets/CppVSCode1.webp" alt="" loading="lazy"/>
+<img src="./assets/CppVSCode1.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
-* Since we are going to use [CMake](https://cmake.org/download/), it should be installed as well. If you run Windows 10, on the web page select the last stable version (as today, March 2018 select [cmake-3.10.3-win64-x64.msi](https://cmake.org/files/v3.10/cmake-3.10.3-win64-x64.msi)). Once downloaded, run the installer, says yes to everything. Done !
+* Since we are going to use [CMake](https://cmake.org/download/), it should be installed as well. If you run Windows 10, on the web page select the last stable version (as today, March 2018 select [cmake-3.10.3-win64-x64.msi](https://cmake.org/files/v3.10/cmake-3.10.3-win64-x64.msi)). Once downloaded, run the installer, says yes to everything. Done !
 
 <div align="center">
-<img src="./assets/CMakeVSCode8.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/CMakeVSCode8.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -81,7 +81,7 @@ Why do I need to open a Developer Command Prompt to launch VS Code from the comm
 Using a Developer Command Prompt (and not a basic/classic/regular console) helps to make sure that all the paths and environment variables are set up correctly. For example from a Developer Command Prompt you can invoke "cl" (the C/C++ compiler from Microsoft) while this command might not be successful from a "basic" console. Yes, this is specific to Microsoft compiler. For example, if you want to make your tests with clang front-end, before to run VS Code you need to make sure you can call "clang" from a console. In other words, you need to make sure that the path is set such that calling clang does not return any error. Once this is done, yes, you do not need to open a console and you can open VS Code as you use to (press the Win key, type "co", Visual Studio Code should appear first in the best results list, strike ENTER)
 
 <div align="center">
-<img src="./assets/CMakeVSCode34.webp" alt="" loading="lazy"/>
+<img src="./assets/CMakeVSCode34.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -92,7 +92,7 @@ Again, before to run VS Code, we make sure all the environment variables and pat
 </div>
 
 
-OK, switch back to VS Code with ALT + TAB. The directory (I should say workspace) from which we invoked VS Code should be visible on the left side of the environment. Remember that, in the Developer Command Prompt, before to call VS Code, we moved to a directory named "Test CMake VSCode". This is what we can see in VS Code below :
+OK, switch back to VS Code with ALT + TAB. The directory (I should say workspace) from which we invoked VS Code should be visible on the left side of the environment. Remember that, in the Developer Command Prompt, before to call VS Code, we moved to a directory named "Test CMake VSCode". This is what we can see in VS Code below :
 
 <div align="center">
 <img src="./assets/CMakeVSCode3.webp" alt="" width="900" loading="lazy"/>
@@ -102,7 +102,7 @@ OK, switch back to VS Code with ALT + TAB. The directory (I should say workspac
 So far so good. Let's write some code... However, in order to have a well organised project we will put our source code in a subdirectory. In VS Code, bring the cursor on the name of the workspace (Test CMake VSCode) and click on the "+folder" icon when it becomes visible
 
 <div align="center">
-<img src="./assets/CMakeVSCode4.webp" alt="" loading="lazy"/>
+<img src="./assets/CMakeVSCode4.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -111,7 +111,7 @@ Type "src".
 Now highlight the subdirectory named "src" then click on the "+file" icon
 
 <div align="center">
-<img src="./assets/CMakeVSCode5.webp" alt="" loading="lazy"/>
+<img src="./assets/CMakeVSCode5.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -128,13 +128,13 @@ Here is a version of the code you can copy'n paste
 #include <iostream>
 
 int main() {
-  std::cout << "Hello World\n";
-  int bob = 3;
-  getchar();
+  std::cout << "Hello World\n";
+  int bob = 3;
+  getchar();
 }
 ```
 
-Ok... Now the big question... How do we compile the code ? In another [page](https://www.40tude.fr/how-to-compile-cpp-code-with-vscode-cl/) I explained how to invoke the C++ compiler that comes with Visual Studio (cl). Here, we are going to play another game and we will use CMake (and a CMakeLists.txt file) then call NMake from VS Code.
+Ok... Now the big question... How do we compile the code ? In another [page](https://www.40tude.fr/how-to-compile-cpp-code-with-vscode-cl/) I explained how to invoke the C++ compiler that comes with Visual Studio (cl). Here, we are going to play another game and we will use CMake (and a CMakeLists.txt file) then call NMake from VS Code.
 
 Just to make sure we all know where we go here is how our journey will look like :
 
@@ -149,8 +149,8 @@ When everything will be in place, for the developer, the workflow will be as fol
 1. Run once the task which generates the Makefile of the Debug version
 2. While editing the code, call, many many times the task that invoke NMake. This will generate a new Debug versions each time.
 3. Debug, debug and debug again the application
-4. When the application is bug free, run the task which generates the Makefile of the Release version
-5. Call the task that invoke NMake. This will generate a Release version of the application.
+4. When the application is bug free, run the task which generates the Makefile of the Release version
+5. Call the task that invoke NMake. This will generate a Release version of the application.
 
 ### This seems like lot of work. No?
 
@@ -159,24 +159,28 @@ Why one would follow such process rather than calling the compiler available loc
 Well, among all the good reasons to use CMake and Make, here are 2 scenarios which may happen:
 
 1. You may get from GitHub (or any other places) a project that come with a CMakeLists.txt. In this case, if you want to edit and debug the code from VS Code you have to use CMake from VS Code
-2. You may be working on  project which is multi-platforms. In this case, rather than to get locked within the CodeBlocks or the XCode way of describing the projects, it is safer to use CMake in order to describe how to build the project on the various platforms you are targeting. On Windows you could ask CMake to generate a Visual Studio 2017 project (and solution) while under Linux you could ask to get a Makefile. For example, here, and even if Visual Studio is available, I will ask CMake to generate a Makefile which will be processed by NMake (the Make application from Microsoft).
+2. You may be working on  project which is multi-platforms. In this case, rather than to get locked within the CodeBlocks or the XCode way of describing the projects, it is safer to use CMake in order to describe how to build the project on the various platforms you are targeting. On Windows you could ask CMake to generate a Visual Studio 2017 project (and solution) while under Linux you could ask to get a Makefile. For example, here, and even if Visual Studio is available, I will ask CMake to generate a Makefile which will be processed by NMake (the Make application from Microsoft).
 
 Are you still here? OK ! At this point, this is not mandatory, but it doesn't hurt, you should install the CMake plug'in for VS Code. See below :
 
 <div align="center">
+&nbsp;
 <img src="./assets/CMakeVSCode7.webp" alt="" width="900" loading="lazy"/>
+&nbsp;
 </div>
 
 <div align="center">
+&nbsp;
 <img src="./assets/CMakeVSCode9.webp" alt="" width="900" loading="lazy"/>
+&nbsp;
 </div>
 
 
-Next, press CTRL + N to create a new file. Then press CTRL + S to save it. Name it CMakeLists.txt and make sure to save it in the directory **above** /src. When this is done, the VS Code workspace should look like this :
+Next, press CTRL + N to create a new file. Then press CTRL + S to save it. Name it CMakeLists.txt and make sure to save it in the directory **above** /src. When this is done, the VS Code workspace should look like this :
 
 Again, this page is not the the best place to explain CMake. However, what I can say is that we will use this **C**ross **Make** to explain what is needed to build the project. This description in totally independent from the OS (Windows, Linux...). Let's see how a description looks like. To do so, type the following instructions in the file CMakeLists.txt.
 
-```text
+```make
 cmake_minimum_required (VERSION 3.0.0)
 
 project (Test)
@@ -200,29 +204,29 @@ In plain English the code above says :
 
 1. Make sure CMake 3.0.0 or higher is available on the machine (line 1)
 2. No matter the IDE I'm working for (Visual Studio, Make files NMake files, CodeBlocks...) the project will be named Test (line 3)
-3. When it will be built, the executable will be either in a Debug or a Release sub directory (line 4). The ${CMAKE_BUILD_TYPE} variable takes the value "Debug" or "Release" on whether the configuration is Debug or Release.
+3. When it will be built, the executable will be either in a Debug or a Release sub directory (line 4). The ${CMAKE_BUILD_TYPE} variable takes the value "Debug" or "Release" on whether the configuration is Debug or Release.
 4. Let's create a variable named SOURCE which includes only one file so far. The name of the file is main.cpp (line 6) and it is in the src subdirectory. And yes, there is no comma between parameters of the set "function call".
 5. The target is an executable whose name is deduced from the name of the project (see the parameter ${PROJECT_NAME}) and which is built with all the source files.
 
 Just to make sure, the file could be shorter. For example, a bare minimal version could look like :
 
-```text
+```make
 cmake_minimum_required (VERSION 3.0.0)
 add_executable (Test src/main.cpp)
 ```
 
 Just to make sure also... If you have more than one file in the ./src directory you could modify the CMakeLists.txt as follow :
 
-```text
+```make
 cmake_minimum_required (VERSION 3.0.0)
 
 project (Test)
 set(EXECUTABLE_OUTPUT_PATH ./${CMAKE_BUILD_TYPE})
 
 file(
-    GLOB_RECURSE
-    MY_SOURCE_FILES
-    src/*
+    GLOB_RECURSE
+    MY_SOURCE_FILES
+    src/*
 )
 
 add_executable (${PROJECT_NAME} ${MY_SOURCE_FILES})
@@ -230,7 +234,7 @@ add_executable (${PROJECT_NAME} ${MY_SOURCE_FILES})
 
 ### Note
 
-In most other articles about CMake it is usual to save the CMakeLists.txt file in the directory where the source files are. If the project is large and include many sub-projects with many subdirectories it really make sense to include a CMakeLists.txt file in each directory. Each file is then responsible to build a component of the project with the source code of the directory. At the end, a final CMakeLists.txt sit in the top directory and is in charge of calling each CMakeLists.txt file recursively. Here, the project is very simple and include only one source code. This is why I decided to put everything in the CMakeLists.txt file which is in the top directory.
+In most other articles about CMake it is usual to save the CMakeLists.txt file in the directory where the source files are. If the project is large and include many sub-projects with many subdirectories it really make sense to include a CMakeLists.txt file in each directory. Each file is then responsible to build a component of the project with the source code of the directory. At the end, a final CMakeLists.txt sit in the top directory and is in charge of calling each CMakeLists.txt file recursively. Here, the project is very simple and include only one source code. This is why I decided to put everything in the CMakeLists.txt file which is in the top directory.
 
 Again this is not a training course about CMake (do not hesitated to invest some time on YouTube) but one can note that nothing is related to any OS. In fact, one can think about CMakeLists.txt as a recipe on how to build the executable but a recipe that is platform independent. Lest's save this file with CTRL + S.
 
@@ -264,21 +268,21 @@ Once the tasks.json file is visible I propose to modify it as follow
 
 Here is a version you can copy and paste
 
-```text
+```json
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "CMake Debug",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "command": "CMake",
-            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
-            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Debug .."]
-        }
-     ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake Debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "command": "CMake",
+            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
+            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Debug .."]
+        }
+     ]
 }
 ```
 
@@ -294,12 +298,12 @@ In fact VS Code knows nothing about CMake (or any other process) so we need to t
 * However, before to run any command, in order to keep our directory/workspace as clean as possible we instruct VS Code to execute the commands from a subdirectory whose name is "build" (line 7, 8 and 9).
 * Once this is done, we tell VS Code that the command is "CMake" (line 10).
 * This command will have a set of arguments (line 12). If you have already used CMake on a command line you should not be surprised : "NMake Makefiles" is the expected generator, "-DCMAKE_BUILD_TYPE=Debug" defines a variable whose name is Debug. This is mandatory since a Makefile generated by CMake only have on configuration (read line 11).
-* Finally, since CMake is invoked from the /build subdirectory we indicate where to find the CMakeLists.txt file to process. This is done with the last two dots which indicates that the CMakeLists.txt file is in the parent directory.
+* Finally, since CMake is invoked from the /build subdirectory we indicate where to find the CMakeLists.txt file to process. This is done with the last two dots which indicates that the CMakeLists.txt file is in the parent directory.
 
 Let's save the tasks.json file with CTRL+S and let's create a "build" directory. Our workspace should look as follow :
 
 <div align="center">
-<img src="./assets/CMakeVSCode16.webp" alt="" loading="lazy"/>
+<img src="./assets/CMakeVSCode16.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -327,7 +331,7 @@ Press ENTER again. If everything goes well, the console should appear in VS Code
 In effect here is the content of the ./build directory
 
 <div align="center">
-<img src="./assets/CMakeVSCode20.webp" alt="" loading="lazy"/>
+<img src="./assets/CMakeVSCode20.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -342,33 +346,33 @@ To do so I propose to edit the tasks.json and to modify it as follow
 
 Here is a version you can copy and paste
 
-```text
+```json
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "CMake Debug",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "command": "CMake",
-            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
-            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Debug .."]
-        },
-        {
-            "label": "Make",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "command": "nmake",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        }
-     ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake Debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "command": "CMake",
+            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
+            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Debug .."]
+        },
+        {
+            "label": "Make",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "command": "nmake",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+     ]
 }
 ```
 
@@ -384,17 +388,21 @@ Let's save the tasks.json file (CTRL+S)
 Let's build the application by pressing CTRL+SHIFT+B. If everything goes well a new set of messages should appears in the VS Code console.
 
 <div align="center">
+&nbsp;
 <img src="./assets/CMakeVSCode22.webp" alt="" width="900" loading="lazy"/>
+&nbsp;
 </div>
 
 <div align="center">
-<img src="./assets/CMakeVSCode23.webp" alt="" loading="lazy"/>
+&nbsp;
+<img src="./assets/CMakeVSCode23.webp" alt="" width="600" loading="lazy"/>
+&nbsp;
 </div>
 
 
 In addition a Debug directory should be created and the debug version of the code should be available :
 
-## Debugging with VS Code
+## Debugging with VS Code
 
 This is all fine but now we would like to go one step further. In fact, it is time to debug our code...
 
@@ -457,7 +465,10 @@ Starting from now you can edit the code, make all the modifications you want. Wh
 
 Ok, let's imagine we fixed all the issues in the code and that everything works as expected. Show times! Let's compile a release version of the code
 
-## Compiling a release version with CMake, NMake and VS Code
+
+
+
+## Compile a release version with CMake, NMake and VS Code
 
 This is very similar to what we did in the first place with the debug task. Let's edit the tasks.json and let's modify it as follow.
 
@@ -468,47 +479,47 @@ This is very similar to what we did in the first place with the debug task. Let'
 
 Here is a text version of the file
 
-```text
+```json
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "CMake Debug",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "command": "CMake",
-            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
-            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Debug .."]
-        },
-        {
-            "label": "CMake Release",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "command": "CMake",
-            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
-            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Release .."]
-        },
-        {
-            "label": "Make",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceRoot}/build"
-            },
-            "command": "nmake",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        }
-    ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake Debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "command": "CMake",
+            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
+            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Debug .."]
+        },
+        {
+            "label": "CMake Release",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "command": "CMake",
+            // Define CMAKE_BUILD_TYPE variable because makefiles generated by CMake are single-configuration.
+            "args": ["-G 'NMake Makefiles' -DCMAKE_BUILD_TYPE=Release .."]
+        },
+        {
+            "label": "Make",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "command": "nmake",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
 }
 ```
 
-In fact we have inserted a new task named "CMake Release". Pay attention to the "," on line 13 and 23 which separates the tasks in the list. For the rest, the new task is very similar to the first one except that it define a CMAKE_BUILD_TYPE variable and set its value to "Release".
+In fact we have inserted a new task named "CMake Release". Pay attention to the "," on line 13 and 23 which separates the tasks in the list. For the rest, the new task is very similar to the first one except that it define a CMAKE_BUILD_TYPE variable and set its value to "Release".
 
 Let's save the new version of tasks.json
 
@@ -519,7 +530,7 @@ Now press ALT+T to select the task
 </div>
 
 
-Use the down arrow and select "CMake Release" option and press ENTER. You may have to select one additional option saying something like "Continue without analyzing the output of the task" (I'm really not sure about the purpose of the different options available here...). Press ENTER again.
+Use the down arrow and select "CMake Release" option and press ENTER. You may have to select one additional option saying something like "Continue without analyzing the output of the task" (I'm really not sure about the purpose of the different options available here...). Press ENTER again.
 
 <div align="center">
 <img src="./assets/CppVSCode28.webp" alt="" loading="lazy"/>
@@ -546,7 +557,7 @@ As a final touch, we can double click on Test.exe in the Release directory. When
 
 Since there is no "(32 bits)" after the name of the application this confirms our application is 64 bits.
 
-## Next steps?
+## What is next?
 
 LLVM 6.0 is installed on my PC and I'm able to compile and link code using the LLVM toolchain. It could be interesting to compile & link project from VS Code. No?
 
