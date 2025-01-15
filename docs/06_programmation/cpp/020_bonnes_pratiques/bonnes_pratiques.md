@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Bonnes pratiques C++"
+parent: "C++"
 #math: mathjax
 date: 2017-03-09 18:17:31
 last_modified_date: 2020-05-03 15:02:18
