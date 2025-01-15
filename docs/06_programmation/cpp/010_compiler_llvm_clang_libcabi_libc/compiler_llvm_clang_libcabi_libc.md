@@ -1,8 +1,7 @@
 ---
 layout: default
 title: "Compiler llvm, clang, libc++abi et libc++"
-parent: "Linux"
-#math: mathjax
+parent: "C++"
 date: 2013-05-15 01:39:04
 last_modified_date: 2020-05-03 23:09:21
 ---
@@ -12,10 +11,18 @@ last_modified_date: 2020-05-03 23:09:21
 {: .no_toc }
 
 ## Introduction
+{: .no_toc }
 
 Les dates de rédaction et de dernière modification de ce type d'article sont importantes (voir le pied pde page du billet). Par exemple, j'ai rencontré des problèmes qui ont été résolu depuis. 
 
 Pour fixer les idées, je rappelle que je suis sous Windows 7, dans une VirtualBox 4.2.12 où je fais tourner Debian 7.0 Wheezy 64 bits. J'espère toutefois que cet article donnera des pistes si jamais vous rencontrez des problèmes similaires.
+
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
+
 
 ## Articles qui peuvent être utiles
 {: .no_toc }
@@ -33,10 +40,6 @@ Ne commencez pas par tout lire... Vous allez mourir car certains points sont un 
 
 
 
-## Table of Contents
-{: .no_toc .text-delta}
-- TOC
-{:toc}
 
 
 
