@@ -2,6 +2,7 @@
 layout: default
 title: "My Computer Science Vocabulary Page"
 parent: "Programmation"
+nav_order: 2
 #math: mathjax
 date: 2015-09-27 21:42:50
 last_modified_date: 2023-02-16 17:19:55
