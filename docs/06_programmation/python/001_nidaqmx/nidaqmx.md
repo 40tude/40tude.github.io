@@ -13,7 +13,7 @@ last_modified_date: 2023-01-12 00:14:26
 
 NIDaqmx, Python et Visual Studio 2017. Ah la belle brochette ! NI vient (enfin) de mettre à jour son propre driver [NI-Daqmx pour Python](https://github.com/ni/nidaqmx-python) sur GitHub. Voici une méthode pour utiliser ce dernier dans l’excellent Visual Studio 2017. On en profitera aussi pour faire un exemple un peu moins moche que ceux qui viennent par défaut avec la package.
 
-
+À garder aussi sous le coude : <https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z0000019Pf1SAE&l=en-US>
 
 
 
@@ -106,19 +106,18 @@ with nidaqmx.Task() as task:
     pp.pprint(data)
 ```
 
-* Lancer le code. Voilà par exemple ce que j'obtiens :
+* Lancer le code. 
+* Voilà par exemple ce que j'obtiens :
 
 <div align="center">
 <img src="./assets/test1.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 {: .note }
-* Je ne comprends pas pourquoi mais ça prend 2H avant d'afficher quoique ce soit et ce, que l'on soit en mode "Debug" ou en mode "Release".
-* Ceci dit, si on lance le code Python à partir d'une console tout se passe normalement.
+Je ne comprends pas pourquoi mais ça prend 2H avant d'afficher quoique ce soit et ce, que l'on soit en mode "Debug" ou en mode "Release". Ceci dit, si on lance le code Python à partir d'une console tout se passe normalement.
 
 {: .note }
-* Un des nombreux avantages à travailler avec Visual Studio c'est **IntelliSense**
-* Par exemple, si à la suite du code précédent on commence à taper "task." alors, dès qu'on a tapé le point ".", la liste des fonctions membres et les propriétés de l'objet courant apparaît. Cerise sur le gâteau on a aussi l'aide...
+Un des nombreux avantages à travailler avec Visual Studio c'est **IntelliSense**. Par exemple, si à la suite du code précédent on commence à taper "task." alors, dès qu'on a tapé le point ".", la liste des fonctions membres et les propriétés de l'objet courant apparaît. Cerise sur le gâteau on a aussi l'aide en ligne...
 
 <div align="center">
 <img src="./assets/intellisense.webp" alt="" width="900" loading="lazy"/>
@@ -145,17 +144,17 @@ with nidaqmx.Task() as task:
 
 ```python
 import nidaqmx
-from matplotlib.pyplot import *
-from numpy import *
+from matplotlib.pyplot as plt
+from numpy as np
 
 with nidaqmx.Task() as task:
     task.ai_channels.add_ai_voltage_chan("Dev1/ai0")
     data = task.read(number_of_samples_per_channel=1000)
 
-t1 = arange(0.0, 1000.0, 1)
-plot(t1, data, 'r.')
-grid(True)
-show()
+t1 = np.arange(0.0, 1000.0, 1)
+plt.plot(t1, data, 'r.')
+plt.grid(True)
+plt.show()
 ```
 
 * Voilà ce que j'obtiens
@@ -201,5 +200,5 @@ plt.show()
 </div>
 
 
-**La suite au prochain épisode...**
+*La suite au prochain épisode...*
 
