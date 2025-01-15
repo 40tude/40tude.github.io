@@ -30,13 +30,13 @@ Pour fixer les idées, je rappelle que je suis sous Windows 7, dans une VirtualB
 Ne commencez pas par tout lire... Vous allez mourir car certains points sont un peu "chauds". Cela dit, dans quelques jours, quand vous en aurez marre et que vous voudrez tout jeter par la fenêtre... Il est possible que vous y trouviez, là aussi, 2 ou trois pistes.
 
 1. <http://sylvestre.ledru.info/blog/>
-2. <http://18739c.ece.cmu.edu/alpha-1/debugging-debian/tools/clang/>
-3. http://solarianprogrammer.com/2013/01/17/building-clang-libcpp-ubuntu-linux/
-4. http://dragoonsheir.wordpress.com/2013/03/16/wayland-and-c11-programming-part-1-of-n/
-5. http://clang.llvm.org/get_started.html
-6. <http://comments.gmane.org/gmane.comp.compilers.clang.devel/22540>
-7. <http://lists.alioth.debian.org/pipermail/soc-coordination/2012-July/001316.html>
-8. http://lists.alioth.debian.org/pipermail/soc-coordination/2012-July/001316.html
+1. <http://18739c.ece.cmu.edu/alpha-1/debugging-debian/tools/clang/>
+1. <http://solarianprogrammer.com/2013/01/17/building-clang-libcpp-ubuntu-linux/>
+1. <http://dragoonsheir.wordpress.com/2013/03/16/wayland-and-c11-programming-part-1-of-n/>
+1. <http://clang.llvm.org/get_started.html>
+1. <http://comments.gmane.org/gmane.comp.compilers.clang.devel/22540>
+1. <http://lists.alioth.debian.org/pipermail/soc-coordination/2012-July/001316.html>
+1. <http://lists.alioth.debian.org/pipermail/soc-coordination/2012-July/001316.html>
 
 
 
@@ -50,14 +50,14 @@ Bon allez, c'est parti... Dans VirtualBox, je commence par donner 3Go de RAM à 
 
 ```bash
 $ su
-# apt-get install cmake
-# apt-get install make
-# apt-get update
-# apt-get upgrade
-# apt-get install gcc
-# apt-get install g++
-# apt-get install subversion
-# exit
+apt-get install cmake
+apt-get install make
+apt-get update
+apt-get upgrade
+apt-get install gcc
+apt-get install g++
+apt-get install subversion
+exit
 ```
 
 ## llvm et clang
@@ -257,7 +257,7 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 
 ## libc++abi et libc++
 
-Pour pouvoir supporter C++11, il faut créer libc++abi et libc++ (ABI = application binary interface). Afin de séparer les combattants je propose de créer un répertoire libstdcxx dans $HOME pour y construire les deux lib en question.
+Pour pouvoir supporter C++11, il faut créer ``libc++abi`` et ``libc++`` (ABI = application binary interface). Afin de séparer les combattants je propose de créer un répertoire ``libstdcxx`` dans ``$HOME`` pour y construire les deux lib en question.
 
 ```bash
 $ cd
@@ -292,13 +292,17 @@ Dans la sortie console, il faut noter la ligne qui ressemble à : ``/usr/lib/gcc
 /usr/include
 ```
 
-Afin d'aider le compilateur, copions, à partir du répertoire qu'on vient d'identifier, le fichier "unwind.h" là où il l'attend :
+Afin d'aider le compilateur, copions, à partir du répertoire qu'on vient d'identifier, le fichier ``unwind.h`` là où il l'attend :
 
 ```bash
 $ cp /usr/lib/gcc/x86_64-linux-gnu/4.7/include/unwind.h .
 ```
 
-***Attention*** : Il ne faut pas oublier le "." tout à la fin de la ligne ci-dessus. Ceci fait il faut éditer le script buildit
+{: .warning }
+Il ne faut pas oublier le "." tout à la fin de la ligne ci-dessus. 
+
+
+Ceci fait il faut éditer le script buildit
 
 ```bash
 $ cd ../lib
@@ -308,7 +312,7 @@ $ nano buildit
 Bon, là y a un peu de boulot. En effet il faut :
 
 * Supprimer ``-stdlib=libc++`` de la ligne EXTRA_FLAGS
-* Retrouver le case ``$TRIPLE`` puis un peu plus bas le case "*)"
+* Retrouver le case ``$TRIPLE`` puis un peu plus bas le case ``*)``
 * Supprimer le ``-lstdc++`` de ``LDSHARED_FLAG`` (c'est tout à la fin de la définition)
 * Retrouver la ligne ``for FILE in ../src/*.cpp; do``
 * Ajouter ``-I../../libcxx/include`` juste après ``$EXTRA_FLAGS``
