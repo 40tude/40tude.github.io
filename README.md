@@ -13,6 +13,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ---
 ## TODO
+* Mettre à jour : 022_compile_cpp_code_with_vscode
 * Rapatrier la page Git Survival de GitHub ici
 * Sur la 1ere page, la liste des 10 derniers billets mis à jour
 * Faire un billet sur le portage de WP vers markdown?

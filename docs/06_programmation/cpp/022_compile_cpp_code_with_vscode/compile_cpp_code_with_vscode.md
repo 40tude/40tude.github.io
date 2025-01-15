@@ -496,7 +496,7 @@ Ok, let's imagine we have fixed some issues in the code and that everything work
 
 ## Compiling a release version with VS Code
 
-This is like what we did in the first place with the debug task. Let's edit the tasks.json and let's modify it as follow.
+This is like what we did in the first place with the debug task. Let's edit the ``tasks.json`` and let's modify it as follow.
 
 <div align="center">
 <img src="./assets/CppVSCode26.webp" alt="" loading="lazy"/>
@@ -716,7 +716,7 @@ If the project includes multiple cpp files like the one below where ``myfunction
 </div>
 
 
-We can use a tasks.json similar to the one here below:
+We can use a ``tasks.json`` similar to the one here below:
 
 ```json
 {
@@ -793,7 +793,7 @@ Please note that the ``${file}`` had been replaced by ``${workspaceFolder}/*.cpp
 
 
 
-### What if includes files are in a specific directory?
+### What if the includes files are in a specific directory?
 
 In the example below, ``mylib.h`` is in a directory named ``include``. Please note that now line 2 is ``#include <mylib.h>`` and no longer #include ``mylib.h``
 
