@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Python virtual environment made easy"
+title: "Python virtual env"
 parent: "Python"
 #math: mathjax
 date: 2022-12-08 11:30:39
 last_modified_date: 2023-01-12 00:11:51
 ---
 
-# Python virtual environment made easy
+# Python virtual env
 
 # Intro
 I'm getting started with Pyton and little bit confused with venv so I want to write black on white what I understood so far. I use Windows 10 22H2 but the process should be similar on other Windows versions or OSes. I suppose Python 3 is installed, up and working.

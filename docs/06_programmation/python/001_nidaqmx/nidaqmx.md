@@ -48,7 +48,7 @@ NIDaqmx, Python et Visual Studio 2017. Ah la belle brochette ! NI vient (enfin) 
 </div>
 
 
-* Choisir "Installer nidaqmx" dans la liste (ne PAS choisir pidaqmx)
+* Choisir "Installer nidaqmx" dans la liste (ne **PAS** choisir pidaqmx)
 * En profiter pour installer de la même manière le package "numplot"
 * Sortir de Visual Studio (sans l'éteindre) et lancer NI Max
 * Créer un device simulé
