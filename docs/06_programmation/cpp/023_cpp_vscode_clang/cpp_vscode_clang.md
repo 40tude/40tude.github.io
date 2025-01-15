@@ -33,19 +33,20 @@ Bonjour. Today, under Windows, we will use VS Code to compile and link C++ code 
 <img src="./assets/CppVSCode1.webp" alt="" loading="lazy"/>
 </div>
 
-* [Install LLVM](http://releases.llvm.org/). In April 2018 you should install LLVM 6.0 or higher. During installation make sure to check the box saying "Make LLVM Tools available in current user ath" or similar. By default LLVM tools are NOT in your path.
-* Install [Visual Studio Build Tools](https://www.visualstudio.com/fr/downloads/). Scroll down the page, the link to the Build Tools is very close to the bottom of the page. Again, this is not a Visual Studio Express 2017 installer. Instead this is a package which provides all the tools and libs you need to compile and link code under Windows. Among other things it provides the libs that are not coming with the LLVM installer. It does not provide Visual Studio IDE nor VS Code.
+* [Install LLVM](http://releases.llvm.org/). In April 2018 you should install LLVM 6.0 or higher. During installation make sure to check the box saying "Make LLVM Tools available in current user path" or similar. By default LLVM tools are **NOT** in your path.
+* Install [Visual Studio Build Tools](https://www.visualstudio.com/fr/downloads/). Scroll down the page, the link to the Build Tools is very close to the bottom of the page. Again, this is not a Visual Studio Express 2017 installer. Instead this is a package which provides all the tools and libs you need to compile and link code under Windows. Among other things it provides the libs that are not coming with the LLVM installer. Again this pack does **NOT** provide Visual Studio IDE nor VS Code.
 
-From the tooling stand point we are ready. Let's move on.
+From the tooling stand point we are ready. Let's set up the "project".
 
-* With file Explorer create a directory where the files of the "project" will take place. Don't worry, nothing will be created outside this directory. If at one point you get lost, delete everything except the source code (``main.cpp``, see below) and start again the procedure.
+* With file Explorer create a directory where the files of the project will take place. 
+* Don't worry, nothing will be created outside this directory. If at one point you get lost, delete everything except the source code (``main.cpp``, see below) and start again the checklist.
 * Once the directory is created in file Explorer, open it, right click then select "Open with Code" option.
 
 <div align="center">
 <img src="./assets/vscode-clang.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-* Once in VS Code create a new file, copy and paste the code below
+* Once in VS Code, create a new file, copy and paste the code below
 
 ```cpp
 #include <iostream>
@@ -76,7 +77,7 @@ VS Code should look like this :
 
 ## Configuration of the C++ context
 
-* Now, press F1 and then type "cpp" in the bar
+* Press F1 and then type "cpp" in the bar
 * Select the ``C/Cpp : edit configuration`` option
 
 <div align="center">
@@ -85,7 +86,7 @@ VS Code should look like this :
 
 * An auto-generated ``c_cpp_properties.json`` file should appear. Save it pressing CTRL+S
 * At this point a ``.vscode`` subdirectory should be created. 
-    * We can see it in the file tree on the left of VS Code as well as in file Explorer. Here is how it looks in VS Code
+    * We can see it in the file tree on the left hand side of VS Code as well as in file Explorer. Here is how it looks in VS Code
 
 <div align="center">
 <img src="./assets/vscode-directory.webp" alt="" loading="lazy"/>
@@ -391,9 +392,9 @@ int main(){
 </div>
 
 
-* In order to create a Release version of the code with the message box you follow exactly the same steps as before 
-    * ALT+T
-    * Select "Execute the task..."
-    * Select "clang-cl Release", press ENTER
+In order to create a Release version of the code with the message box you follow exactly the same steps as before : 
+* ALT+T
+* Select "Execute the task..."
+* Select "clang-cl Release", press ENTER
 
 You are all set. Enjoy 😁
