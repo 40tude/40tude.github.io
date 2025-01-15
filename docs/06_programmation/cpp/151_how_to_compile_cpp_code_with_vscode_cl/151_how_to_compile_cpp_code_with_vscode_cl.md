@@ -19,7 +19,7 @@ Bonjour. This is a step-by-step procedure (a checklist) which explains how to co
 
 ## Software setup
 
-* I'm using Windows 10.
+* I'm using Windows (10 or 11 the process is similar).
 * [Visual Studio 2017](https://www.visualstudio.com/fr/downloads/?rr=https%3A%2F%2Fwww.google.fr%2F) (15.6.2) is installed and you can compile some C++ project using Visual Studio 2017. I just want to make sure the C++ toolchain is in place, up and running.
 * If you don't want to install Visual Studio but only the bare minimum set of tools you can install the **Build Tools** for Visual Studio 19 for example. See at the very bottom of [this page](https://visualstudio.microsoft.com/downloads/).
 * [VS Code](https://code.visualstudio.com/) (1.21.1) is installed
@@ -881,11 +881,11 @@ Let's review the basic process:
 
 Do you want to debug your code? Strike F5 and VSCode will do everything for you.
 
-This said
-* if your code grows
-* if you have multiple files
-* if you want to keep your directories well organized 
-* if you want to generate debug and release versions 
-* if you want to use specific compiler argument ("/std:c++latest" for example)
-then I hope this article has been helpful.
+This said, if :
+* your code grows
+* you have multiple files
+* you want to keep your directories well organized 
+* you want to generate debug and release versions 
+* you want to use specific compiler argument (``/std:c++latest`` for example)
 
+then I hope this article has been helpful.
