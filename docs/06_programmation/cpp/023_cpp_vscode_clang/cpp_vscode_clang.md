@@ -33,7 +33,7 @@ Bonjour. Today, under Windows, we will use VS Code to compile and link C++ code 
 <img src="./assets/CppVSCode1.webp" alt="" loading="lazy"/>
 </div>
 
-* [Install LLVM](http://releases.llvm.org/). In April 2018 you should install LLVM 6.0 or higher. During installation make sure to check the box saying "Make LLVM Tools available in current user path" or similar. By default LLVM tools are **NOT** in your path.
+* [Install LLVM](http://releases.llvm.org/). In April 2018 you should install LLVM 6.0 or higher. During installation make sure to check the box saying "**Make LLVM Tools available in current user path**" or similar. By default LLVM tools are **NOT** in your path.
 * Install [Visual Studio Build Tools](https://www.visualstudio.com/fr/downloads/). Scroll down the page, the link to the Build Tools is very close to the bottom of the page. Again, this is not a Visual Studio Express 2017 installer. Instead this is a package which provides all the tools and libs you need to compile and link code under Windows. Among other things it provides the libs that are not coming with the LLVM installer. Again this pack does **NOT** provide Visual Studio IDE nor VS Code.
 
 From the tooling stand point we are ready. Let's set up the "project".
@@ -77,7 +77,7 @@ VS Code should look like this :
 
 ## Configuration of the C++ context
 
-* Press F1 and then type "cpp" in the bar
+* Press **F1** and then type "cpp" in the bar
 * Select the ``C/Cpp : edit configuration`` option
 
 <div align="center">
@@ -85,7 +85,7 @@ VS Code should look like this :
 </div>
 
 * An auto-generated ``c_cpp_properties.json`` file should appear. Save it pressing **CTRL+S**
-* At this point a ``.vscode`` subdirectory should be created. 
+* At this point a ``./.vscode`` subdirectory should be created. 
     * We can see it in the file tree on the left hand side of VS Code as well as in file Explorer. Here is how it looks in VS Code
 
 <div align="center">
@@ -111,7 +111,7 @@ VS Code should look like this :
 
 ## Compilation with VS Code
 
-* Press ALT+T then select the ``Configure Default Build Task`` option
+* Press **ALT+T** then select the ``Configure Default Build Task`` option
 * Select the ``Create tasks.json file from a template``  option
 * Select ``Others`` since we don’t want to use MSBuild, maven etc. to build our application
 
@@ -199,13 +199,13 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 }
 ```
 
-* Save the ``tasks.json`` file with **CTRL+S**. The file will be saved in the ``.vscode`` subdirectory
+* Save the ``tasks.json`` file with **CTRL+S**. The file will be saved in the ``./.vscode`` subdirectory
 
 <div align="center">
 <img src="./assets/tasks.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-* Create a ``Debug`` and a ``Release`` subdirectories in the initial directory. This can be done with VS Code, with file Explorer or a terminal within VS Code.
+* Create a ``./Debug`` and a ``./Release`` subdirectories in the initial directory. This can be done with VS Code, with file Explorer or a terminal within VS Code.
 
 
 <div align="center">
@@ -216,7 +216,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 
 * Press **CTRL+SHIFT+B** to compile and link the debug version of the code
-* 3 new files should appear in the Debug subdirectory (Test.exe, .ilk and .pdb)
+* 3 new files should appear in the ``./Debug`` subdirectory (``Test.exe``, ``.ilk`` and ``.pdb``)
 
 
 <div align="center">
@@ -234,7 +234,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 ## Debugging with VS Code
 
-* In order to debug the code, press F5
+* In order to debug the code, press **F5**
 * Select "C++ (Windows)" among the different options
 
 
@@ -265,8 +265,8 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 }
 ```
 
-* Save the file with **CTRL+S**. A launch.json file is created in the .vscode subdirectory
-* In main.cpp source code set a breakpoint on line 5 for example (click in the left margin)
+* Save the file with **CTRL+S**. A ``launch.json`` file is created in the ``./.vscode`` subdirectory
+* In the ``main.cpp`` source code set a breakpoint on line 5 for example (click in the left margin)
 
 
 <div align="center">
@@ -299,11 +299,11 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 ## Compile a release version with VS Code
 
-* Press **ALT+t**
+* Press **ALT+T**
 * Select Execute the task
 * Select ``clang-cl Release`` in the list
 * Press ``Enter`` on the next option
-* Test.exe should be generated in the ``./Release`` subdirectory
+* ``Test.exe`` should be generated in the ``./Release`` subdirectory
 
 
 <div align="center">
