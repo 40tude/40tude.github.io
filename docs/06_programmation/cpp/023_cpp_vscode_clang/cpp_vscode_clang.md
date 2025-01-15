@@ -109,7 +109,7 @@ VS Code should look like this :
 
 
 
-## Compilation with VS Code
+## Compile a debug version with VS Code
 
 * Press **ALT+T** then select the ``Configure Default Build Task`` option
 * Select the ``Create tasks.json file from a template``  option
