@@ -8,9 +8,16 @@ last_modified_date: 2023-01-12 00:14:03
 ---
 
 # C++ with VS Code
+{: .no_toc }
+
 
 {: .note }
-I updated the article in April 2021. At this time, I use VS Code 1.55.2 and cl version 19.28.29913
+I updated the article in April 2021. I was then using VS Code 1.55.2 and cl 19.28.29913.
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
 
 ## Introduction
@@ -58,9 +65,7 @@ Make sure the directory is empty (check the "dir" command below) and launch VS C
 </div>
 
 
-### Question
-
-Why do I need to open a Developer Command Prompt and launch VS Code manually?
+### Why do I need to open a Developer Command Prompt and launch VS Code manually?
 
 Using a Developer Command Prompt (and not a basic console) helps to make sure that all the paths and environment variables are set up correctly. For example, from a Developer Command Prompt you can invoke "cl" (the Microsoft compiler) while this command might not be successful from a regular console. 
 
@@ -156,8 +161,10 @@ Here is a version you can copy and paste
 }
 ```
 
-{: .note}
-With VS Code version 1.22.1 and higher it seems it is better to put one argument per line and to write the ``tasks.json`` file. See below.
+### With VS Code version 1.22.1 and higher 
+{: .no_toc }
+
+It seems it is better to put one argument per line and to write the ``tasks.json`` file. See below.
 
 ```json
 {
@@ -183,7 +190,9 @@ With VS Code version 1.22.1 and higher it seems it is better to put one argument
 }
 ```
 
-### In 2021, with cl 19.28.29913 and VSCode 1.55.1 
+### With 2021, with cl 19.28.29913 and VSCode 1.55.1 
+{: .no_toc }
+
 One could try ``tasks.json`` as below:
 
 ```json
@@ -215,7 +224,7 @@ One could try ``tasks.json`` as below:
 }
 ```
 
-### Can you explain what is going on here?
+### Can you explain the content of ``task.json``?
 
 * The content of the ``.json`` file is a list of tasks (line 5) that VS Code can execute.
 * Here, for the moment, we only have one task. The task is named "Build Debug" (line 7).
@@ -290,6 +299,7 @@ Again, here is a version you can copy'n paste
 
 
 ### With VS Code version 1.22.1 and higher 
+{: .no_toc }
 
 One should write:
 
@@ -321,6 +331,8 @@ One should write:
 ```
 
 ## With VS Code 1.55.1 
+{: .no_toc }
+
 One could write the ``tasks.json`` as below
 
 ```json
@@ -531,8 +543,10 @@ Here is a text version of the file
 
 Pay attention to the "," on line 21 which separates the two tasks in the list. For the rest, the second task is named ``Build Release``, the arguments no longer include debug option and the output subdirectory now points to the ``Release`` subdirectory. No major surprise...
 
-### Note
-With VS Code version 1.22.1 and higher you should write:
+### With VS Code version 1.22.1 and higher 
+{: .no_toc }
+
+You should write
 
 ```json
 {
@@ -580,7 +594,10 @@ With VS Code version 1.22.1 and higher you should write:
 }
 ```
 
-With VSCode 1.55.1 one could try tasks.json as below:
+### With VSCode 1.55.1 
+{: .no_toc }
+
+One could try ``tasks.json`` as below:
 
 ```json
 {
@@ -776,11 +793,9 @@ Please note that the ``${file}`` had been replaced by ``${workspaceFolder}/*.cpp
 
 
 
-### What if...
+### What if includes files are in a specific directory?
 
-The include files are in a specific directory like in the example below where mylib.h is in a directory named "include". Please note that now line 2 is ``#include <mylib.h>`` and no longer #include ``mylib.h``
-
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2021/04/image-1-1024x390.png) -->
+In the example below, ``mylib.h`` is in a directory named ``include``. Please note that now line 2 is ``#include <mylib.h>`` and no longer #include ``mylib.h``
 
 <div align="center">
 <img src="./assets/image_1.webp" alt="" loading="lazy"/>
