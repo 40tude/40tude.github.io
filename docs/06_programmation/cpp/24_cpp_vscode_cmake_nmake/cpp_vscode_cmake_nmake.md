@@ -189,7 +189,7 @@ Next, press **CTRL+N** to create a new file. Then press **CTRL+S** to save it. N
 
 Again, this page is not the the best place to explain CMake. However, what I can say is that we will use this **C**ross **Make** to explain what is needed to build the project. This description in totally independent from the OS (Windows, Linux...). Let's see how a description looks like. To do so, type the following instructions in the file CMakeLists.txt.
 
-```make
+```
 cmake_minimum_required (VERSION 3.0.0)
 
 project (Test)
@@ -219,14 +219,14 @@ In plain English the code above says :
 
 Just to make sure, the file could be even shorter. For example, a bare minimal version could look like :
 
-```make
+```
 cmake_minimum_required (VERSION 3.0.0)
 add_executable (Test src/main.cpp)
 ```
 
 Just to make sure also... If you have more than one file in the ``./src`` directory you could modify the ``CMakeLists.txt`` as follow :
 
-```make
+```
 cmake_minimum_required (VERSION 3.0.0)
 
 project (Test)
@@ -276,7 +276,7 @@ Once the ``tasks.json`` file is visible I propose to modify it as follow :
 
 Here is a version you can copy and paste
 
-```json
+```
 {
     "version": "2.0.0",
     "tasks": [
@@ -354,7 +354,7 @@ To do so I propose to edit the tasks.json and to modify it as follow
 
 Here is a version you can copy and paste
 
-```json
+```
 {
     "version": "2.0.0",
     "tasks": [
@@ -499,7 +499,7 @@ This is very similar to what we did in the first place with the debug task. Let'
 
 Here is a text version of the file
 
-```json
+```
 {
     "version": "2.0.0",
     "tasks": [
