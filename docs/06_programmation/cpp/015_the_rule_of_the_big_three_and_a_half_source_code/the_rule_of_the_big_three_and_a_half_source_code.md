@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "The rule of the big three (and a half) - Source code"
+parent: "C++"
 #math: mathjax
 date: 2014-12-22 00:11:38
 last_modified_date: 2020-05-03 22:42:28
