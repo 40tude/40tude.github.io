@@ -3,7 +3,7 @@ title: Home
 layout: home
 nav_order: 1
 date:               2024-12-25 12:00:00 +0000
-last_modified_date: 2025-01-12 12:00:00 +0000
+last_modified_date: 2025-01-15 08:00:00 +0000
 ---
 
 
@@ -11,9 +11,9 @@ last_modified_date: 2025-01-12 12:00:00 +0000
 
 {: .note }
 [**40tude.fr**](https://www.40tude.fr/) en phase de rénovation. Je suis en train de le transférer de (WordPress + OVH) vers (markdown + GitHub).  
-Le **15 janvier 2025** il reste environ **130 billets** à transférer (essentiellement dans les catégories C++ et Pilotage). J'espère avoir terminé fin janvier 2025. Je ne suis pas sûr de transférer tous les billets car certains ne sont vraiment plus d'actualité. Cela dit, j'ai souvent été bien content de retrouver une info dans une "vieille" page qui était toujours en ligne... Lire par exemple le premier épisode de la série d'article sur [Simple OS]({%link docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md%}).     
-Pendant le transfert, même si j'apporte quelques modifications aux billets, je ne vais **pas modifier les dates de dernière mise à jour**. Je ne le ferai que si, après le transfert, je reviens sur une page pour y ajouter des compléments ou la réécrire complètement. Les dates de **première** et de **dernière édition** se trouvent en bas de chaque page, tandis que le **temps de lecture** est affiché en haut.  
-Pour l'instant c'est pas fun mais je suis focus sur le transfert.
+Le **15 janvier 2025** il reste environ **130 billets** à transférer (essentiellement dans les catégories C++ et Pilotage). J'espère avoir terminé fin janvier 2025. Je ne suis pas sûr de transférer tous les billets car certains ne sont vraiment plus d'actualité. Cela dit, j'ai souvent été bien content de retrouver une info dans une "vieille" page qui était toujours en ligne... Lire par exemple le premier épisode de la série [**Simple OS**]({%link docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md%}).     
+Pendant le transfert, même si j'apporte quelques modifications aux billets, je ne vais **pas modifier les dates de dernière mise à jour**. Je ne le ferai que si, après le transfert, je reviens sur une page pour y ajouter des compléments ou la réécrire complètement. Les dates de première et de dernière édition se trouvent **en bas de chaque page**, tandis que le **temps de lecture** est affiché en haut.  
+Pour l'instant je suis focus sur le transfert.
 
 ### À propos du site   
 * Il faut lire "**fortitude point fr**". Il n'y a pas de sens caché, j'ai toujours bien aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité. Pas de référence non plus à [l'opération de désinformation](https://fr.wikipedia.org/wiki/Op%C3%A9ration_Fortitude){:target="_blank"} de la seconde guerre mondiale.  
