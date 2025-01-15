@@ -67,7 +67,7 @@ Make sure the directory is empty (check the "dir" command below) and launch VS C
 
 ### Why do I need to open a Developer Command Prompt and launch VS Code manually?
 
-Using a Developer Command Prompt (and not a basic console) helps to make sure that all the paths and environment variables are set up correctly. For example, from a Developer Command Prompt you can invoke "cl" (the Microsoft compiler) while this command might not be successful from a regular console. 
+Using a Developer Command Prompt (and not a basic console) helps to make sure that all the paths and environment variables are set up correctly. For example, from a Developer Command Prompt you can invoke "cl" (the Microsoft compiler-linker) while this command might not be successful from a regular console. 
 
 Yes, this is specific to Microsoft compiler. However, if clang in installed, before to jump in VS Code you need to make sure you can invoke it. In other word, you need to make sure the path is set such a way that calling clang does not return an error.
 
@@ -224,7 +224,7 @@ One could try ``tasks.json`` as below:
 }
 ```
 
-### Can you explain the content of ``task.json``?
+### Can you explain the content of ``tasks.json``?
 
 * The content of the ``.json`` file is a list of tasks (line 5) that VS Code can execute.
 * Here, for the moment, we only have one task. The task is named "Build Debug" (line 7).
