@@ -113,6 +113,17 @@ last_modified_date: 2023-12-04 00:02:38
 ```
 
 
+{% raw %}
+```json
+{
+  "win32RegValueName": "CodeOSS",
+  "win32AppId": "{{E34003BB-9E10-4501-8C11-BE3FAA83F23F}",
+  "win32AppUserModelId": "Microsoft.CodeOSS",
+}
+```
+{% endraw %}
+
+
 
 
 * <https://just-the-docs.github.io/just-the-docs/>
