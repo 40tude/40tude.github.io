@@ -27,7 +27,7 @@ Bonjour. Today, under Windows, we will use VS Code to compile and link C++ code 
 
 * Windows is running
 * [Install VS Code](https://code.visualstudio.com/). In April 2018, I use 1.21.1.
-* Launch VS Code and then install the C/C++ for Visual Studio Code extension. Use the extension icon on the left or press CTRL+SHIFT+X
+* Launch VS Code and then install the C/C++ for Visual Studio Code extension. Use the extension icon on the left or press **CTRL+SHIFT+X**
 
 <div align="center">
 <img src="./assets/CppVSCode1.webp" alt="" loading="lazy"/>
@@ -84,7 +84,7 @@ VS Code should look like this :
 <img src="./assets/cpp-config.webp" alt="" loading="lazy"/>
 </div>
 
-* An auto-generated ``c_cpp_properties.json`` file should appear. Save it pressing CTRL+S
+* An auto-generated ``c_cpp_properties.json`` file should appear. Save it pressing **CTRL+S**
 * At this point a ``.vscode`` subdirectory should be created. 
     * We can see it in the file tree on the left hand side of VS Code as well as in file Explorer. Here is how it looks in VS Code
 
@@ -113,13 +113,11 @@ VS Code should look like this :
 
 * Press ALT+T then select the ``Configure Default Build Task`` option
 * Select the ``Create tasks.json file from a template``  option
-* Select ``Other`` since we don’t want to use MSBuild, maven etc. to build our application
+* Select ``Others`` since we don’t want to use MSBuild, maven etc. to build our application
 
 <div align="center">
 <img src="./assets/generate.webp" alt="" loading="lazy"/>
 </div>
-
-
 
 * Modify the generated file as follow
 
@@ -156,7 +154,7 @@ VS Code should look like this :
 ```
 ### With VS Code 1.22.1 and higher you should set one arg per line
 
-Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line. At the end, ``tasks.json`` should be written as follow :
+Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line. At the end, ``tasks.json`` should look like as follow :
 
 ```json
 {
@@ -201,13 +199,13 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 }
 ```
 
-* Save the tasks.json file with CTRL+S. The file will be saved in the .vscode subdirectory
+* Save the ``tasks.json`` file with **CTRL+S**. The file will be saved in the ``.vscode`` subdirectory
 
 <div align="center">
 <img src="./assets/tasks.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-* Create a "Debug" and a "Release" subdirectories in the initial directory. This can be done with VS Code or with file Explorer. Just for the fun create both directories with VS Code.
+* Create a ``Debug`` and a ``Release`` subdirectories in the initial directory. This can be done with VS Code, with file Explorer or a terminal within VS Code.
 
 
 <div align="center">
@@ -217,7 +215,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 
 
-* Press CTRL+SHIFT+B to compile and link the debug version of the code
+* Press **CTRL+SHIFT+B** to compile and link the debug version of the code
 * 3 new files should appear in the Debug subdirectory (Test.exe, .ilk and .pdb)
 
 
@@ -248,7 +246,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 * VS Code will generate a default launch.json file. Modify the file as follow
 
-```
+```json
 {
   "version": "0.2.0",
   "configurations": [
@@ -267,7 +265,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 }
 ```
 
-* Save the file with CTRL+S. A launch.json file is created in the .vscode subdirectory
+* Save the file with **CTRL+S**. A launch.json file is created in the .vscode subdirectory
 * In main.cpp source code set a breakpoint on line 5 for example (click in the left margin)
 
 
@@ -277,9 +275,9 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 
 
-* Press F5
+* Press **F5**
 * The code should start and stop on the breakpoint
-* Strike F10 to go one step further. The string_view variable s should be initialized.
+* Strike **F10** to go one step further. The string_view variable ``s`` should be initialized.
 
 <div align="center">
 <img src="./assets/brk2.webp" alt="" loading="lazy"/>
@@ -291,7 +289,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 
 
-* At this point you can either press F5 to continue or to press SHIFT+F5 to stop the debug session.
+* At this point you can either press **F5** to continue or to press **SHIFT+F5** to stop the debug session.
 
 
 
@@ -301,11 +299,11 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 ## Compile a release version with VS Code
 
-* Press Alt+t
+* Press **ALT+t**
 * Select Execute the task
-* Select "clang-cl Release" in the list
-* Press Enter on the next option
-* Test.exe should be generated in the Release subdirectory
+* Select ``clang-cl Release`` in the list
+* Press ``Enter`` on the next option
+* Test.exe should be generated in the ``./Release`` subdirectory
 
 
 <div align="center">
@@ -336,7 +334,7 @@ int main(){
 }
 ```
 
-* If you press CTRL+SHIFT+B you can't link the code because some library are missing
+* If you press **CTRL+SHIFT+B** you can't link the code because some library are missing
 
 
 
@@ -346,7 +344,7 @@ int main(){
 
 
 
-* Edit the tasks.json file and modify it as follow
+* Edit the ``tasks.json`` file and modify it as follow
 
 ```json
 {
@@ -382,8 +380,8 @@ int main(){
 }
 ```
 
-* Save the file CTRL+S
-* Press F5 to run a debug session
+* Save the file **CTRL+S**
+* Press **F5** to run a debug session
 * A message box should appear on the screen when you execute line 8.
 
 
@@ -393,8 +391,8 @@ int main(){
 
 
 In order to create a Release version of the code with the message box you follow exactly the same steps as before : 
-* ALT+T
-* Select "Execute the task..."
-* Select "clang-cl Release", press ENTER
+* **ALT+T**
+* Select ``Execute the task...``
+* Select ``clang-cl Release``, press **ENTER**
 
 You are all set. Enjoy 😁
