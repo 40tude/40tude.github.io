@@ -15,7 +15,7 @@ last_modified_date: 2020-05-03 23:09:21
 
 Les dates de rédaction et de dernière modification de ce type d'article sont importantes (voir le pied pde page du billet). Par exemple, j'ai rencontré des problèmes qui ont été résolu depuis. 
 
-Pour fixer les idées, je rappelle que je suis sous Windows 7, dans une VirtualBox 4.2.12 où je fais tourner Debian 7.0 Wheezy 64 bits. J'espère toutefois que cet article donnera des pistes si jamais vous rencontrez des problèmes similaires.
+Pour fixer les idées, je rappelle que je suis sous Windows 7, dans une VirtualBox 4.2.12 où je fais tourner Debian 7.0 Wheezy 64 bits. J'espère toutefois que cet article donnera des pistes si jamais vous rencontrez des problèmes similaires.
 
 
 ## Table of Contents
@@ -62,7 +62,7 @@ $ su
 
 ## llvm et clang
 
-Ensuite il faut créer un répertoire llvm (ce n'est pas très malin comme nom, choisissez autre chose si possible) où on va télécharger llvm, clang et leurs amis...
+Ensuite il faut créer un répertoire ``llvm`` (ce n'est pas très malin comme nom, choisissez autre chose si possible) où on va télécharger llvm, clang et leurs amis...
 
 ```bash
 $ mkdir llvm
@@ -72,7 +72,8 @@ $ svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm
 
 On a donc une arborescence qui ressemble à : $HOME/llvm/llvm/
 
-***Note*** : C'est pour ça que je disais que choisir "lvm" comme nom de premier répertoire dans $HOME n'était pas malin
+{: .note } 
+C'est pour ça que je disais que choisir "lvm" comme nom de premier répertoire dans $HOME n'était pas malin
 
 ```bash
 $ cd llvm/tools
@@ -105,7 +106,7 @@ $ su
 # exit
 ```
 
-Le ``-j 8`` propose à make d'utiliser jusqu'à 8 "jobs" en parallèle. Ça tombe bien on a donné 4 cœurs à la machine virtuelle. Cela dit l'opération va prendre beaucoup de temps mais normalement à ce stade ça doit rouler sans problème. Profitez-en peut être pour aller, sur le web, lire un ou deux des articles ci-dessus.
+Le ``-j 8`` propose à make d'utiliser jusqu'à 8 "jobs" en parallèle. Ça tombe bien on a donné 4 cœurs à la machine virtuelle. Cela dit l'opération va prendre beaucoup de temps mais normalement à ce stade ça doit rouler sans problème. Profitez-en peut être pour aller, sur le web, lire un ou deux des articles ci-dessus.
 
 ## Faisons un premier test
 
@@ -119,15 +120,15 @@ using namespace std;
 
 int main(){
 
-  cout << "Hello World" << endl;
+  cout << "Hello World" << endl;
 
-  vector<int> vec;
-  vec.push_back(10);
-  vec.push_back(20);
-  for(int i:vec){
-    cout << i << endl;
-  }
-  return 0;
+  vector<int> vec;
+  vec.push_back(10);
+  vec.push_back(20);
+  for(int i:vec){
+    cout << i << endl;
+  }
+  return 0;
 }
 ```
 
@@ -141,12 +142,12 @@ Après avoir testé que tout marche bien, voilà ce que donne ldd
 
 ```bash
 $ ldd test1
-        linux-vdso.so.1 =>  (0x00007fffc11d8000)
-        libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007ff891901000)
-        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ff89167f000)
-        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007ff891468000)
-        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ff8910de000)
-        /lib64/ld-linux-x86-64.so.2 (0x00007ff891c13000)
+        linux-vdso.so.1 =>  (0x00007fffc11d8000)
+        libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007ff891901000)
+        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ff89167f000)
+        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007ff891468000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ff8910de000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007ff891c13000)
 ```
 
 Maintenant qu'on a clang on peut aussi compiler ``test1.cpp`` avec :
@@ -159,12 +160,12 @@ Si on demande à ldd de nous indiquer les lib utilisées, voilà ce que l'on obt
 
 ```bash
 $ ldd test1
-        linux-vdso.so.1 =>  (0x00007fff2adff000)
-        libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f260f583000)
-        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f260f301000)
-        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f260f0ea000)
-        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f260ed60000)
-        /lib64/ld-linux-x86-64.so.2 (0x00007f260f894000)
+        linux-vdso.so.1 =>  (0x00007fff2adff000)
+        libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f260f583000)
+        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f260f301000)
+        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f260f0ea000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f260ed60000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f260f894000)
 ```
 
 On remarque que l'exécutable utilise les bibliothèques fournies par gcc.
@@ -179,7 +180,7 @@ Cela dit, même si la compilation du code test2.cpp (voir un peu plus bas) passe
 
 ```bash
 terminate called after throwing an instance of 'std::regex_error'
-  what():  regex_error
+  what():  regex_error
 Abandon
 ```
 
@@ -192,10 +193,10 @@ C'est normal. En effet test2 utilise des regular expression qui font partie des 
 
 int main() {
 
-  char *x = (char*)malloc(10 * sizeof(char*));
+  char *x = (char*)malloc(10 * sizeof(char*));
 
-  free(x);
-  return x[5];
+  free(x);
+  return x[5];
 }
 ```
 
@@ -211,52 +212,52 @@ Lors de l'exécution voilà ce que l'on obtient :
 =================================================================
 ==3133==ERROR: AddressSanitizer: heap-use-after-free on address 0x60700000dfb5 at pc 0x42fcc3 bp 0x7fff85463610 sp 0x7fff85463608
 READ of size 1 at 0x60700000dfb5 thread T0
-    #0 0x42fcc2 (/home/philippe/devel/test3/test3+0x42fcc2)
-    #1 0x7f087eaf9eac (/lib/x86_64-linux-gnu/libc.so.6+0x1eeac)
-    #2 0x42fa2c (/home/philippe/devel/test3/test3+0x42fa2c)
+    #0 0x42fcc2 (/home/philippe/devel/test3/test3+0x42fcc2)
+    #1 0x7f087eaf9eac (/lib/x86_64-linux-gnu/libc.so.6+0x1eeac)
+    #2 0x42fa2c (/home/philippe/devel/test3/test3+0x42fa2c)
 0x60700000dfb5 is located 5 bytes inside of 80-byte region [0x60700000dfb0,0x60700000e000)
 freed by thread T0 here:
-    #0 0x421251 (/home/philippe/devel/test3/test3+0x421251)
-    #1 0x42fc4e (/home/philippe/devel/test3/test3+0x42fc4e)
-    #2 0x7f087eaf9eac (/lib/x86_64-linux-gnu/libc.so.6+0x1eeac)
+    #0 0x421251 (/home/philippe/devel/test3/test3+0x421251)
+    #1 0x42fc4e (/home/philippe/devel/test3/test3+0x42fc4e)
+    #2 0x7f087eaf9eac (/lib/x86_64-linux-gnu/libc.so.6+0x1eeac)
 previously allocated by thread T0 here:
-    #0 0x421391 (/home/philippe/devel/test3/test3+0x421391)
-    #1 0x42fc14 (/home/philippe/devel/test3/test3+0x42fc14)
-    #2 0x7f087eaf9eac (/lib/x86_64-linux-gnu/libc.so.6+0x1eeac)
+    #0 0x421391 (/home/philippe/devel/test3/test3+0x421391)
+    #1 0x42fc14 (/home/philippe/devel/test3/test3+0x42fc14)
+    #2 0x7f087eaf9eac (/lib/x86_64-linux-gnu/libc.so.6+0x1eeac)
 Shadow bytes around the buggy address:
-  0x0c0e7fff9ba0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9bb0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9bc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9bd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9be0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9ba0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9bb0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9bc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9bd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9be0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
 =>0x0c0e7fff9bf0: fa fa fa fa fa fa[fd]fd fd fd fd fd fd fd fd fd
-  0x0c0e7fff9c00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9c10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9c20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9c30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
-  0x0c0e7fff9c40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9c00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9c10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9c20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9c30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9c40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
 Shadow byte legend (one shadow byte represents 8 application bytes):
-  Addressable:           00
-  Partially addressable: 01 02 03 04 05 06 07
-  Heap left redzone:     fa
-  Heap right redzone:    fb
-  Freed heap region:     fd
-  Stack left redzone:    f1
-  Stack mid redzone:     f2
-  Stack right redzone:   f3
-  Stack partial redzone: f4
-  Stack after return:    f5
-  Stack use after scope: f8
-  Global redzone:        f9
-  Global init order:     f6
-  Poisoned by user:      f7
-  ASan internal:         fe
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:     fa
+  Heap right redzone:    fb
+  Freed heap region:     fd
+  Stack left redzone:    f1
+  Stack mid redzone:     f2
+  Stack right redzone:   f3
+  Stack partial redzone: f4
+  Stack after return:    f5
+  Stack use after scope: f8
+  Global redzone:        f9
+  Global init order:     f6
+  Poisoned by user:      f7
+  ASan internal:         fe
 ==3133==ABORTING
 ```
 
 ## libc++abi et libc++
 
-Pour pouvoir supporter C++11, il faut créer libc++abi et libc++ (ABI = application binary interface). Afin de séparer les combattants je propose de créer un répertoire libstdcxx dans $HOME pour y construire les deux lib en question.
+Pour pouvoir supporter C++11, il faut créer libc++abi et libc++ (ABI = application binary interface). Afin de séparer les combattants je propose de créer un répertoire libstdcxx dans $HOME pour y construire les deux lib en question.
 
 ```bash
 $ cd
@@ -312,13 +313,13 @@ Bon, là y a un peu de boulot. En effet il faut :
 * Retrouver la ligne ``for FILE in ../src/*.cpp; do``
 * Ajouter ``-I../../libcxx/include`` juste après ``$EXTRA_FLAGS``
 
-Sauver (CTRL+O), quitter (CTRL+X) nano puis taper dans la console
+Sauver (CTRL+O), quitter (CTRL+X) nano puis taper dans la console
 
 ```bash
 $ TRIPLE=-linux- ./buildit
 ```
 
-Dans mon cas, cela n'a pas marché, j'avais des messages du style :
+Dans mon cas, cela n'a pas marché, j'avais des messages du style :
 
 ```bash
 error: no member named 'aligned_alloc' in the global namespace
@@ -326,7 +327,7 @@ using ::aligned_alloc;
 ~~^
 ```
 
-À la suite de diverses recherches et discussions (voir <http://dragoonsheir.wordpress.com/2013/03/16/wayland-and-c11-programming-part-1-of-n/> et <https://groups.google.com/forum/?fromgroups=#!topic/llvm-dev/5isiIWNpjv8> ) j'ai pu appliquer un patch. À partir d'un répertoire ``$HOME/tmp`` dans lequel j'avais un fichier ``linux2.diff``, j'ai dû faire :
+À la suite de diverses recherches et discussions (voir <http://dragoonsheir.wordpress.com/2013/03/16/wayland-and-c11-programming-part-1-of-n/> et <https://groups.google.com/forum/?fromgroups=#!topic/llvm-dev/5isiIWNpjv8> ) j'ai pu appliquer un patch. À partir d'un répertoire ``$HOME/tmp`` dans lequel j'avais un fichier ``linux2.diff``, j'ai dû faire :
 
 ```bash
 $ cp ../libstdcxx/libcxx/include/__config ./__config.bak
@@ -387,36 +388,37 @@ $ clang++ -std=c++11 -stdlib=libc++ test1.cpp -lc++abi -o test1
 
 ## Faisons un autre test
 
-Si on compile ``test1`` avec la ligne ci-dessus et si on lance ldd dessus voilà ce que l'on obtient.
+Si on compile ``test1`` avec la ligne ci-dessus et si on lance ldd dessus voilà ce que l'on obtient.
 
 ```bash
 $ ldd test1
-       linux-vdso.so.1 =>  (0x00007fffc51ff000)
-       libc++abi.so.1 => /usr/lib/libc++abi.so.1 (0x00007fb8964d4000)
-       libc++.so.1 => /usr/lib/libc++.so.1 (0x00007fb89621b000)
-       libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fb895f98000)
-       libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fb895d82000)
-       libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb8959f8000)
-       libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fb8957db000)
-       librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fb8955d3000)
-       /lib64/ld-linux-x86-64.so.2 (0x00007fb89672c000)
+       linux-vdso.so.1 =>  (0x00007fffc51ff000)
+       libc++abi.so.1 => /usr/lib/libc++abi.so.1 (0x00007fb8964d4000)
+       libc++.so.1 => /usr/lib/libc++.so.1 (0x00007fb89621b000)
+       libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fb895f98000)
+       libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fb895d82000)
+       libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb8959f8000)
+       libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fb8957db000)
+       librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fb8955d3000)
+       /lib64/ld-linux-x86-64.so.2 (0x00007fb89672c000)
 ```
 
 Pour rappel voilà ce que l'on avait la dernière fois quand on avait compilé test1 avec clang
 
 ```bash
 $ ldd test1
-        linux-vdso.so.1 =>  (0x00007fff2adff000)
-        libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f260f583000)
-        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f260f301000)
-        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f260f0ea000)
-        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f260ed60000)
-        /lib64/ld-linux-x86-64.so.2 (0x00007f260f894000)
+        linux-vdso.so.1 =>  (0x00007fff2adff000)
+        libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f260f583000)
+        libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f260f301000)
+        libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f260f0ea000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f260ed60000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f260f894000)
 ```
 
 On voit donc que dorénavant ``test1`` est lié avec les lib de clang (``libc++abi`` et ``libc++``).
 
-***Note :*** Pour le reste, je ne comprends pas trop la présence de ``libgcc_s``, ``libc`` etc. J'aurai pensé qu'elles auraient été remplacées par des lib issues de clang. Faudra que je cherche/comprenne avant de revenir sur le sujet (stay tuned).
+{: .note } 
+Pour le reste, je ne comprends pas trop la présence de ``libgcc_s``, ``libc`` etc. J'aurai pensé qu'elles auraient été remplacées par des lib issues de clang. Faudra que je cherche/comprenne avant de revenir sur le sujet (stay tuned).
 
 
 
@@ -439,7 +441,7 @@ $ ../llvm/configure --enable-optimized --enable-targets=host
 $ make -j 8
 ```
 
-Pour ceux qui le souhaitent, la liste des options possibles pour "configure" se trouve dans le fichier ``~/llvm/llvm/configure`` aux alentours de la ligne 1404 en ce qui me concerne. Au pire faites une recherche sur **Optional Features**. Bien sûr le ``VERBOSE=1`` permet d'avoir plus d'informations à l'écran lors du make. En fait j'ai été obligé d'utiliser ce mode car, comme on le verra, j'ai eu des problèmes. À propos du  ``2>&1 | tee -a filename.txt`` faut pas trop s'inquiéter. C'est juste un moyen d'avoir dans le fichier "filename.txt" la totalité de ce qui se passe à l'écran lors du ``configure`` ou du ``make``. 
+Pour ceux qui le souhaitent, la liste des options possibles pour "configure" se trouve dans le fichier ``~/llvm/llvm/configure`` aux alentours de la ligne 1404 en ce qui me concerne. Au pire faites une recherche sur **Optional Features**. Bien sûr le ``VERBOSE=1`` permet d'avoir plus d'informations à l'écran lors du make. En fait j'ai été obligé d'utiliser ce mode car, comme on le verra, j'ai eu des problèmes. À propos du  ``2>&1 | tee -a filename.txt`` faut pas trop s'inquiéter. C'est juste un moyen d'avoir dans le fichier "filename.txt" la totalité de ce qui se passe à l'écran lors du ``configure`` ou du ``make``. 
 
 Comme je l'ai dit, en ce qui me concerne j'ai eu des problèmes (encore) au niveau du ``make``. En gros j'ai rencontré 2 types de soucis.
 
@@ -491,8 +493,8 @@ C'est ceux sur lesquels je suis en ce moment (18/05/2013). En fait avec la versi
 
 ```bash
 llvm[4]: Linking Release+Asserts Shared Library libclang.so
-clang++ -I/home/philippe/llvm/build/include -I/home/philippe/llvm/build/tools/clang/tools/libclang -I/home/philippe/llvm/llvm/include -I/home/philippe/llvm/llvm/tools/clang/tools/libclang  -D_DEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS$
-          -lclangFrontend -lclangDriver -lclangTooling -lclangSerialization -lclangParse -lclangSema -lclangARCMigrate -lclangRewriteFrontend -lclangRewriteCore -lclangAnalysis -lclangEdit -lclangAST -lclangLex -lclangBasic -lclangForma$
+clang++ -I/home/philippe/llvm/build/include -I/home/philippe/llvm/build/tools/clang/tools/libclang -I/home/philippe/llvm/llvm/include -I/home/philippe/llvm/llvm/tools/clang/tools/libclang  -D_DEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS$
+          -lclangFrontend -lclangDriver -lclangTooling -lclangSerialization -lclangParse -lclangSema -lclangARCMigrate -lclangRewriteFrontend -lclangRewriteCore -lclangAnalysis -lclangEdit -lclangAST -lclangLex -lclangBasic -lclangForma$
 llvm[4]: Building Release+Asserts Archive Library libclang.a
 /bin/rm -f /home/philippe/llvm/build/Release+Asserts/lib/libclang.a
 ar cru /home/philippe/llvm/build/Release+Asserts/lib/libclang.a /home/philippe/llvm/build/tools/clang/tools/libclang/Release+Asserts/ARCMigrate.o /home/philippe/llvm/build/tools/clang/tools/libclang/Release+Asserts/CIndex.o /home/philip$
@@ -500,11 +502,11 @@ ranlib /home/philippe/llvm/build/Release+Asserts/lib/libclang.a
 make[4]: quittant le répertoire « /home/philippe/llvm/build/tools/clang/tools/libclang »
 make[4]: entrant dans le répertoire « /home/philippe/llvm/build/tools/clang/tools/c-index-test »
 llvm[4]: Compiling c-index-test.c for Release+Asserts build
-if  clang -I/home/philippe/llvm/build/include -I/home/philippe/llvm/build/tools/clang/tools/c-index-test -I/home/philippe/llvm/llvm/include -I/home/philippe/llvm/llvm/tools/clang/tools/c-index-test  -D_DEBUG -D_GNU_SOURCE -D__STDC_CONST$
-                then /bin/mv -f "/home/philippe/llvm/build/tools/clang/tools/c-index-test/Release+Asserts/c-index-test.d.tmp" "/home/philippe/llvm/build/tools/clang/tools/c-index-test/Release+Asserts/c-index-test.d"; else /bin/rm "/home$
+if  clang -I/home/philippe/llvm/build/include -I/home/philippe/llvm/build/tools/clang/tools/c-index-test -I/home/philippe/llvm/llvm/include -I/home/philippe/llvm/llvm/tools/clang/tools/c-index-test  -D_DEBUG -D_GNU_SOURCE -D__STDC_CONST$
+                then /bin/mv -f "/home/philippe/llvm/build/tools/clang/tools/c-index-test/Release+Asserts/c-index-test.d.tmp" "/home/philippe/llvm/build/tools/clang/tools/c-index-test/Release+Asserts/c-index-test.d"; else /bin/rm "/home$
 llvm[4]: Linking Release+Asserts executable c-index-test (without symbols)
-clang++ -I/home/philippe/llvm/build/include -I/home/philippe/llvm/build/tools/clang/tools/c-index-test -I/home/philippe/llvm/llvm/include -I/home/philippe/llvm/llvm/tools/clang/tools/c-index-test  -D_DEBUG -D_GNU_SOURCE -D__STDC_CONSTAN$
-        -lLLVMBitReader -lLLVMAsmParser -lLLVMX86Disassembler -lLLVMX86AsmParser -lLLVMX86CodeGen -lLLVMSelectionDAG -lLLVMAsmPrinter -lLLVMMCParser -lLLVMCodeGen -lLLVMObjCARCOpts -lLLVMScalarOpts -lLLVMInstCombine -lLLVMTransformUtils$
+clang++ -I/home/philippe/llvm/build/include -I/home/philippe/llvm/build/tools/clang/tools/c-index-test -I/home/philippe/llvm/llvm/include -I/home/philippe/llvm/llvm/tools/clang/tools/c-index-test  -D_DEBUG -D_GNU_SOURCE -D__STDC_CONSTAN$
+        -lLLVMBitReader -lLLVMAsmParser -lLLVMX86Disassembler -lLLVMX86AsmParser -lLLVMX86CodeGen -lLLVMSelectionDAG -lLLVMAsmPrinter -lLLVMMCParser -lLLVMCodeGen -lLLVMObjCARCOpts -lLLVMScalarOpts -lLLVMInstCombine -lLLVMTransformUtils$
 /home/philippe/llvm/build/Release+Asserts/lib/libclang.so: undefined reference to `std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&)'
 /home/philippe/llvm/build/Release+Asserts/lib/libclang.so: undefined reference to `std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&)'
 /home/philippe/llvm/build/Release+Asserts/lib/libclang.so: undefined reference to `std::string::_Rep::_M_destroy(std::allocator<char> const&)'
@@ -522,9 +524,9 @@ make[1]: quittant le répertoire « /home/philippe/llvm/build/tools »
 make: *** [all] Erreur 1
 ```
 
-J'ai beau chercher pour l'instant je ne trouve pas de solution. Ce qu'il y a de bizarre c'est qu'en allant sur le web ce type d'erreur (``undefined reference``) ressemble aux erreurs générées lorsque c'est  ``libstc++`` (gcc) qui est liée au lieu de ``libc++`` (clang). À ce stade je cherche, cherche...
+J'ai beau chercher pour l'instant je ne trouve pas de solution. Ce qu'il y a de bizarre c'est qu'en allant sur le web ce type d'erreur (``undefined reference``) ressemble aux erreurs générées lorsque c'est  ``libstc++`` (gcc) qui est liée au lieu de ``libc++`` (clang). À ce stade je cherche, cherche...
 
-Un gros merci [fulvioesposito](http://dragoonsheir.wordpress.com/) qui via son blog m'a donné **LA** solution. Faut juste faire un ``make clean`` afin de mettre tout le monde d'accord. Les commandes à utiliser deviennent donc :
+Un gros merci [fulvioesposito](http://dragoonsheir.wordpress.com/) qui via son blog m'a donné **LA** solution. Faut juste faire un ``make clean`` afin de mettre tout le monde d'accord. Les commandes à utiliser deviennent donc :
 
 ```bash
 $ cd ~/llvm/build
@@ -560,21 +562,21 @@ Pour info voici le code de test2:
 using namespace std;
 
 int main(){
-  string input;
-  regex rr("((\\+|-)?[[:digit:]]+)(\\.(([[:digit:]]+)?))?((e|E)((\\+|-)?)[[:digit:]]+)?");
-  //As long as the input is correct ask for another number
-  while(true){
-    cout<<"Give me a real number!"<<endl;
-    cin>>input;
-    //Exit when the user inputs q
-    if(input=="q")
-      break;
-    if(regex_match(input,rr))
-      cout<<"float"<<endl;
-    else{
-      cout<<"Invalid input"<<endl;
-    }
-  }
+  string input;
+  regex rr("((\\+|-)?[[:digit:]]+)(\\.(([[:digit:]]+)?))?((e|E)((\\+|-)?)[[:digit:]]+)?");
+  //As long as the input is correct ask for another number
+  while(true){
+    cout<<"Give me a real number!"<<endl;
+    cin>>input;
+    //Exit when the user inputs q
+    if(input=="q")
+      break;
+    if(regex_match(input,rr))
+      cout<<"float"<<endl;
+    else{
+      cout<<"Invalid input"<<endl;
+    }
+  }
 }
 ```
 
@@ -589,7 +591,7 @@ $ ldd /usr/local/bin/clang
 Voilà ce que l'on obtient
 
 ```text
-linux-vdso.so.1 =>  (0x00007fffde0df000)
+linux-vdso.so.1 =>  (0x00007fffde0df000)
 libc++abi.so.1 => /usr/lib/libc++abi.so.1 (0x00007f699b8be000)
 libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f699b6a2000)
 librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f699b499000)
@@ -610,12 +612,12 @@ ldd /lib/x86_64-linux-gnu/libgcc_s.so.1
 Voilà ce que l'on voit :
 
 ```bash
-linux-vdso.so.1 =>  (0x00007fffb27ff000)
+linux-vdso.so.1 =>  (0x00007fffb27ff000)
 libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f76b1bed000)
 /lib64/ld-linux-x86-64.so.2 (0x00007f76b2198000)
 ```
 
-Autrement dit si on arrive à s'affranchir de ``ligcc_s`` dans clang on supprimera aussi ``libc``. D'après ce que je crois avoir compris, la recommandation est de construire clang à partir de la lib compiler-rt pour y arriver. C'est ce sur quoi je suis actuellement. La suite au prochain épisode.
+Autrement dit si on arrive à s'affranchir de ``ligcc_s`` dans clang on supprimera aussi ``libc``. D'après ce que je crois avoir compris, la recommandation est de construire clang à partir de la lib compiler-rt pour y arriver. C'est ce sur quoi je suis actuellement. La suite au prochain épisode.
 
 
 
