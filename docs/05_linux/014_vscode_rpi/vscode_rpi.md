@@ -80,7 +80,7 @@ Il y aura peut-être quelques Warnings mais ce n'est pas grave. Quand c'est term
 1. Dans le fichier ``package.json`` qui se trouve dans ``../vscode``, il faut changer la propriété ``name`` et la mettre à ``Code``. Si vous ne le faites pas ce n'est pas grave mais par la suite, si vous installez l'extension ``vscode-icons``, cette dernière ne s'installera pas correctement (elle s'installera, il n'y aura pas d'erreur mais aucune icône ne sera visible).
 2. Tel que configuré, aucune extension ne sera visible dans VSCode. Il faut modifier le fichier ``product.json`` en ajoutant la section ``extensionsGallery`` à la fin. Il ne faut **pas oublier** de virgule en fin de ligne (oui ça sent le vécu...). Voir ci-dessous :
 
-```
+<!-- ```
 {
   "nameShort": "Code - OSS",
   "nameLong": "Code - OSS",
@@ -92,7 +92,7 @@ Il y aura peut-être quelques Warnings mais ce n'est pas grave. Quand c'est term
   "win32DirName": "Microsoft Code OSS",
   "win32NameVersion": "Microsoft Code OSS",
   "win32RegValueName": "CodeOSS",
-  "win32AppId": "{E34003BB-9E10-4501-8C11-BE3FAA83F23F}",
+  "win32AppId": "{{E34003BB-9E10-4501-8C11-BE3FAA83F23F}",
   "win32AppUserModelId": "Microsoft.CodeOSS",
   "darwinBundleIdentifier": "com.visualstudio.code.oss",
   "reportIssueUrl": "https://github.com/Microsoft/vscode/issues/new",
@@ -103,7 +103,7 @@ Il y aura peut-être quelques Warnings mais ce n'est pas grave. Quand c'est term
     "itemUrl": "https://marketplace.visualstudio.com/items"
   }
 }
-```
+``` -->
 
 ## Liens utiles :
 
