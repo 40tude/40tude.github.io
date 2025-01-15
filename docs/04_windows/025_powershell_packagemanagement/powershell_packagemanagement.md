@@ -15,19 +15,19 @@ Je suis sous Windows 10 et j'utilise Powershell 5.0. À l'instar de ce que l'on 
 Win + X et je lance un PowerShell en mode Admin. Ensuite, je commence par regarder l'aide :
 
 ```powershell
-C:\WINDOWS\system32> get-help *Package*
+get-help *Package*
 ```
 
 Entre autres :
 
 ```powershell
-C:\WINDOWS\system32> get-help about_PackageManagement
+get-help about_PackageManagement
 ```
 
 Ensuite on peut inspecter les fonctions à notre disposition avec la commande suivante :
 
 ```powershell
-C:\WINDOWS\system32> Get-Command -module PackageManagement
+Get-Command -module PackageManagement
 
 CommandType Name Version
 ----------- ---- -------
@@ -46,7 +46,7 @@ Cmdlet Unregister-PackageSource 1.0.0.0
 Enfin je fais un test pour retrouver un package sur l'excellent [Chocolatey](https://chocolatey.org/)
 
 ```powershell
-C:\WINDOWS\system32> Find-Package NotepadPlusplus -ProviderName chocolatey
+Find-Package NotepadPlusplus -ProviderName chocolatey
 
 Le fournisseur « chocolatey v2.8.5.130 » n'est pas installé.
 chocolatey peut être téléchargé manuellement à partir de https://oneget.org/ChocolateyPrototype-2.8.5.130.exe et
@@ -79,4 +79,3 @@ Start-Process Notepad++
 ```
 
 Ensuite, on imagine que l'installation de PC et/ou de machines virtuelles va pouvoir se faire dans la joie et la bonne humeur. Il ne me manque plus qu'un truc : la mise à disposition de PowerShell 5 sur Win8.1 et Win 7?
-
