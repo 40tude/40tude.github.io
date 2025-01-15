@@ -353,7 +353,7 @@ Ce que l'on va s'attacher à faire dans cette session c'est "construire" la phas
 
 En fait, il faut garder en tête que le but du freinage c'est de fixer la vitesse d'entrée dans le virage le plus rapidement possible. Ensuite, et après c'est terminé pour les préliminaires, il faut retenir qu'on a autant de précision dans les freins qu'on en a dans l'accélérateur. Dans un cas on règle la vitesse alors qu'elle augmente alors que dans l'autre on la règle alors qu'elle diminue.
 
-Pour illustrer la construction du freinage, prenons le cas du bout de la plus grande ligne droite du circuit. Voici la check-list que je te propose de suivre :
+Pour illustrer la construction du freinage, prenons le cas du bout de la plus grande ligne droite du circuit. Voici la checklist que je te propose de suivre :
 
 * À 200 m avant le prochain PMSA (en tout cas plus tôt que ce que tu as l'habitude de faire)
 

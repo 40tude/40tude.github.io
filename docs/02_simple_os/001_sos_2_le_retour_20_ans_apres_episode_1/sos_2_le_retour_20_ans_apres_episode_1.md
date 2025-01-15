@@ -500,7 +500,7 @@ Re alcool, re drogue et re prostitution...
 
 Mouai... Ça a l'air compliqué ton affaire. Tu peux résumer ?
 
-## La check-list qu'on va suivre
+## La checklist qu'on va suivre
 
 1. Récupérer une distribution "live" et booter dessus
 1. Créer un système de fichiers avec des inodes à 128 octets sur le sda1 de la VM

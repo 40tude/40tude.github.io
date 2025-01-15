@@ -24,7 +24,7 @@ Typiquement voilà ce que cela peut donner dans un PowerShell sous Win Terminal.
 </div>
 
 
-Rien de compliqué. Cette **check-list** a juste pour objectif de nous faire gagner du temps.
+Rien de compliqué. Cette **checklist** a juste pour objectif de nous faire gagner du temps.
 
 
 ## Installer Git (si ce n'est pas encore fait)

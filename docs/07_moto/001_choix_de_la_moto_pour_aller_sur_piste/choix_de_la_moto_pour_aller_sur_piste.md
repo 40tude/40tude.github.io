@@ -213,7 +213,7 @@ Première visite... Ça, ça veut dire qu'il y en aura *peut-être* une seconde.
 
 Au fait, c'est un détail mais par téléphone tu auras demandé au gars de démonter le bas de carénage pour le jour de la visite.
 
-La veille de la visite tu te tapes toutes les vidéos de vérification de véhicules d'occasion sur YouTube. Oui, oui tu sais tout sur tout et tu es un dieu de la mécanique. N'empêche, les pilotes de ligne connaissent par coeur leur avion mais cela ne les empêche pas de lire une check-list pour faire la mise en route... À toi de voir comment tu veux te comporter.
+La veille de la visite tu te tapes toutes les vidéos de vérification de véhicules d'occasion sur YouTube. Oui, oui tu sais tout sur tout et tu es un dieu de la mécanique. N'empêche, les pilotes de ligne connaissent par coeur leur avion mais cela ne les empêche pas de lire une checklist pour faire la mise en route... À toi de voir comment tu veux te comporter.
 
 ### Une fois sur place
 
