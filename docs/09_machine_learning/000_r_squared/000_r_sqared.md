@@ -41,9 +41,9 @@ I recently went to Sequoia National Park with a park ranger. All day long, I mea
 
 When I plot the age of the sequoias against their trunk diameters, here's what I see:  
 
-<p align="center">
-<img src="./assets/img01.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img01.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 
@@ -63,17 +63,17 @@ For every diameter value (horizontal axis, the x-axis), I've placed a red dot at
 
 I don't know about you, but my brain immediately wants to draw a straight line through all these points. What I have in mind looks like this:  
 
-<p align="center">
-<img src="./assets/img02.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img02.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 The green line is my model, and we usually denote the predicted value of the model as $$\hat{y}$$. I say this is my model because if you give it a diameter which was not in the initial dataset, it will be able to infer an age. Notice that, to generalize, on the graph, I'm no longer mentioning sequoia trunk diameters or ages but simply a variable $$x$$ and corresponding values $$y$$.  
 
 It seems to work for most points, but I notice there's always a difference between the actual measurement (red dots) and the value predicted by the model (the green dots of the line). To illustrate this, I've exaggerated the differences in the diagram below:  
 
-<p align="center">
-<img src="./assets/img03.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img03.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 For example, the diameters range from 0 to 11 m (the General Sherman), and I've picked a specific value: 7 m. To generalize later, I'll call this specific value $$x_i$$. When I check my notes and the graph, the ranger's estimated age for this diameter was 1_750 years (see the dashed “Measure” line). Meanwhile, for this same $$x_i$$, the green line (the model) predicts an age of 1_500 years (see the “Model” line).  
@@ -115,9 +115,9 @@ OK? Let's continue.
 
 The situation would look like this:  
 
-<p align="center">
-<img src="./assets/img04.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img04.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 Here, I've drawn a horizontal blue line at a height of $$\bar{y}$$ (notice the bar above $$y$$), which is the average value of all measured ages. This model would respond, for instance, with 1,250 years regardless of the trunk diameter. If I say the diameter is 2 m, the model predicts 1,250 years. If I say the diameter is 8 m, the model still predicts 1_250 years. When I say it's “not-so-smart,” I really mean it.  
@@ -149,9 +149,9 @@ So, to compare the performance of our linear regression to the true measurements
 
 It's going to be fine—you'll see—and it will look something like this:  
 
-<p align="center">
-<img src="./assets/img05.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img05.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 Don't panic, bear with me. Our model is a regression—hence the "R." Above, $$SSR$$ represents the distance between the predictions of the baseline model (I'll stop calling it "not-so-smart" to avoid hurting its feelings) and the predictions of our model (Regression). In other words, it's the difference between the blue line and the green line.  
@@ -170,9 +170,9 @@ $$R^2 = \frac{\text{Model}}{\text{Measure}}$$
 
 This is what the situation looks like:  
 
-<p align="center">
-<img src="./assets/img06.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img06.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 
@@ -226,31 +226,31 @@ Hmm... Sum of squared differences. Sum with an 'S' and squared with an 'S' too. 
 
 ## Here's how it works:  
 
-<p align="center">
-<img src="./assets/img07.png" alt="drawing" width="600"/>
-<p>
+<div align="center">
+<img src="./assets/img07.png" alt="drawing" width="600" loading="lazy"/>
+</div>
 
 
 For each index $$i$$, we calculate $$SSR_i$$ and $$SST_i$$.  
 
-<p align="center">
-<img src="./assets/img08.png" alt="drawing" width="600"/>
-<p>
+<div align="center">
+<img src="./assets/img08.png" alt="drawing" width="600" loading="lazy"/>
+</div>
 
 Next, we square these two calculated values.  
 
-<p align="center">
-<img src="./assets/img09.png" alt="drawing" width="600"/>
-<p>
+<div align="center">
+<img src="./assets/img09.png" alt="drawing" width="600" loading="lazy"/>
+</div>
 
 
 Finally, we sum up all the squared values. At the end, we have the true values of $$SST$$, $$SSR$$, and $$R^2$$.  
 
 This is what the final situation looks like:  
 
-<p align="center">
-<img src="./assets/img10.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img10.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 At the end, $$R^2$$ synthesizes into a single value the model's ability to explain the variability of measurements relative to their average. Once again :
@@ -276,9 +276,9 @@ We said $$R^2$$ is the ratio of the model's predictions to what happens, on aver
 
 We can illustrate the situation as follows:  
 
-<p align="center">
-<img src="./assets/img11.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img11.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 Notice that we've written:  
@@ -289,9 +289,9 @@ In plain English, this means that the total variability ($$SST$$) equals the var
 
 Finally, we can express $$R^2$$ in two different ways:  
 
-<p align="center">
-<img src="./assets/img12.png" alt="drawing" width="800"/>
-<p>
+<div align="center">
+<img src="./assets/img12.png" alt="drawing" width="800" loading="lazy"/>
+</div>
 
 
 
