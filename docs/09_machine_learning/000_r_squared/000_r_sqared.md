@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Yet another linear regression and $$R^2$$ introduction"
+title: "Yet another linear regression and $R^2$ introduction"
 parent: "Machine Learning"
 math: mathjax
 date:               2025-01-16 10:00:00 +0000
