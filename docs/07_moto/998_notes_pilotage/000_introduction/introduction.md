@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Introduction"
-parent: "Pilotage moto"
+parent: "Notes de Pilotage Moto"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
 last_modified_date: 2025-01-16 16:00:00 +0000

@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Découverte de la piste"
-parent: "Pilotage moto"
+title: "Découverte de la piste 1"
+parent: "Notes de Pilotage Moto"
 nav_order: 3
-date: 2019-09-07 18:48:13
+date:               2019-09-07 18:48:13
 last_modified_date: 2023-06-01 18:22:57
 ---
 
-# Découverte de la piste
+# Découverte de la piste 1
 
 ## Introduction
 
