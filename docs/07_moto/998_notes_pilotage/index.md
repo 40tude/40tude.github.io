@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Pilotage moto"
+parent: "Motos"
 nav_order: 4
 # math: mathjax
 date:               2025-01-16 16:00:00 +0000
@@ -11,29 +12,34 @@ permalink: /notes_pilotage_moto/
 # Pilotage moto
 
 {: .warning }
-Je ne suis pas un "top" pilote et encore moins un expert. Loin de là... Cependant, j'ai la chance de parler Anglais et d'aimer mettre mes notes à plat. Bref, comme je passe pas mal de temps sur le net, le nez dans les bouquins et que j'essaie de m'améliorer quand je participe à des roulages, j'ai décidé d'organiser mes réflexions dans ces Notes de Pilotage Moto.
+Je ne suis **PAS** un Top pilote et encore moins un Expert. Loin de là... Cependant, j'ai la chance de parler Anglais et d'aimer mettre mes notes à plat. Bref, comme je passe pas mal de temps sur le net, le nez dans les bouquins et que j'essaie de m'améliorer quand je participe à des roulages, j'ai décidé d'organiser mes réflexions dans ces Notes de Pilotage Moto.
 
 
 ## Comment lire les Notes de Pilotage Moto ?
 
-Elles sont numérotées de 1 à n. Finalement je pense qu'il y en aura une dizaine. Elles sont plus ou moins dans l'ordre chronologique. Ainsi la Note 01 concerne la découverte de la piste, la 02 focalise sur le virage en 3 étapes etc.
+Je pense qu'il y en aura une dizaine. Elles sont plus ou moins dans l'ordre chronologique d'une journée de roulage typique. Ainsi la première note concerne la découverte de la piste, la seconde focalise sur le virage en 3 étapes etc.
 
-Chaque note de Pilotage Moto suppose qu'on la mette en œuvre lors d'une session de roulage de 20 minutes. Cela dit, on va être pragmatique et se dire qu'il n'y a rien d'obligatoire. Par exemple, s'il faut 3 sessions pour découvrir le circuit et bien... Il faudra 3 sessions "et pis c'est tout !"... Pas la peine de se mettre martèle en tête et/ou de se mettre dans le rouge dès le départ.
+Chaque Note de Pilotage Moto suppose qu'on la mette en œuvre lors d'une session de roulage de 20 minutes. Cela dit, on va être pragmatique et se dire qu'il n'y a rien d'obligatoire. Par exemple, s'il faut 3 sessions pour découvrir le circuit et bien... Il faudra 3 sessions "et pis c'est tout !"... Pas la peine de se mettre martèle en tête et/ou de se mettre dans le rouge dès le départ.
+
+
 
 ### Structure des notes de Pilotage Moto
 
 Elles ont toutes la même structure :
 
-* **Objectif de la session** - J'explique rapidement de quoi on va parler
-* **Prérequis** - Certaines notes demandent que certains points soient déjà acquis. Par exemple pour s'attaquer au contre braquage en sortie de virage il vaut mieux que la conduite du virage soit acquise.
-* **Rappel** - C'est juste de la prudence avant d'entrer en piste. Ça va sans doute soûler ceux qui lisent les Notes de Pilotage Moto dans l'ordre mais ça rendra service à ceux qui arriveront directement sur telle ou telle note via une recherche sur le Web.
-* **La session proprement dite** - C'est là qu'on rentre dans le vif du sujet.
-* **À la fin de la session** - On fait un point sur nos acquis
-* **Remarques complémentaires** - C'est un certain nombre de points plus ou moins en rapport avec le sujet de la note de Pilotage Moto.
+1. **Objectif de la session** - J'explique rapidement de quoi on va parler
+1. **Prérequis** - Certaines notes demandent que certains points soient déjà acquis. Par exemple pour s'attaquer au contre braquage en sortie de virage il vaut mieux que la conduite du virage soit acquise.
+1. **Rappel** - C'est juste de la prudence avant d'entrer en piste. Ça va sans doute soûler ceux qui lisent les Notes de Pilotage Moto dans l'ordre mais ça rendra service à ceux qui arriveront directement sur telle ou telle note via une recherche sur le Web.
+1. **La session proprement dite** - C'est là qu'on rentre dans le vif du sujet.
+1. **À la fin de la session** - On fait un point sur nos acquis
+1. **Remarques complémentaires** - C'est un certain nombre de points plus ou moins en rapport avec le sujet de la note de Pilotage Moto.
 
 Il y aura sans doute des répétitions car certains aspects me paraissent vraiment importants. De toute façon, certains lecteurs, grâce à Google, arriveront directement sur une note particulière et donc ce n'est pas complètement idiot de répéter certaines choses.
 
 <!-- Attention. Sur le site [40tude](https://www.40tude.fr/), les notes de Pilotage Moto peuvent ne pas apparaître dans l'ordre. En effet, si j'ajoute un complément à telle ou telle note, cette dernière arrivera en haut de la liste et sur la première page du site. Ce n'est pas la peine de râler... Il suffit de les lire dans l'ordre de leur numérotation et/ou d'aller sur cette [page](https://www.40tude.fr/pilotage-moto/) qui fait office de table des matières et de choisir un sujet particulier. De plus chaque note de Pilotage Moto dispose de 2 tableaux en haut et en bas de page avec des liens sur les notes précédente et suivante ainsi que la table des matières. Enfin sur PC, il y a un lien vers la table des matières en haut de toutes les pages du site. -->
+
+
+
 
 ## À propos de vos commentaires
 
@@ -44,6 +50,9 @@ En revanche si un point n'est pas clair ou pas suffisamment expliqué, lâchez-v
 Par exemple, n'hésitez pas à conseiller telle ou telle vidéo sur YouTube qui illustre bien le point abordé dans la note où à pointer une autre page web.
 
 <!-- Si ça part en vrille je fermerai les commentaires mais je continuerai à publier et à éditer les notes. -->
+
+
+
 
 ## Vidéos utiles
 
@@ -68,17 +77,11 @@ Une série de podcast disponibles sur YouTube qui est pas mal si vous parlez ang
 Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 
 * [A twist of the wrist II](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=TLKKSHBHVY2Z&keywords=twist+of+the+wrist&qid=1567934828&s=gateway&sprefix=TWIST+OF+%2Caps%2C219&sr=8-1) (évitez le I. Je le trouve beaucoup moins bien)
-
 * [Le chrono ne ment pas 1&2](http://kennyforay.com/shop/Le-chrono-ne-ment-pas-1%262-p195955506)
-
 * [Performance Riding Techniques](https://www.performanceridingtechniques.co.uk/product/performance-riding-techniques) (Edition 4)
-
 * [The Perfect Corner 1](https://www.amazon.fr/gp/product/0997382422/ref%3Dppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&psc=1)
-
 * [The Perfect Corner 2](https://www.amazon.fr/gp/product/0997382449/ref%3Dppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1)
-
 * [Total Control: High Performance Street Riding Techniques](https://www.amazon.fr/gp/product/0760343446/ref%3Dppx_yo_dt_b_asin_title_o06_s00?ie=UTF8&psc=1)
-
 * Le e-bouquin de [Life at Lean](https://lifeatlean.com/free-guide-and-training-series/)
 
 
@@ -88,8 +91,6 @@ Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 ## Sites utiles
 
 * [Les secrets du pilotage](http://dmic.free.fr/Pilotage/Secrets-du-pilotage-shared-by-Micboy.pdf)
-
 * [Motopiste.net](http://www.motopiste.net/)
-
 * [Life at Lean](https://lifeatlean.com/free-guide-and-training-series/)
 
