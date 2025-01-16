@@ -10,7 +10,7 @@ last_modified_date: 2022-01-29 19:25:24
 
 # La formule d'Euler depuis le début, étape par étape
 
-Encore une autre occasion de jouer avec  [Latex](http://www.xm1math.net/doculatex/index.html) et [Asymptote](http://asymptote.sourceforge.net/). 
+Encore une autre occasion de jouer avec  [$$\mathrm{\LaTeX}$$](http://www.xm1math.net/doculatex/index.html) et [Asymptote](http://asymptote.sourceforge.net/). 
 
 Ce coup-ci je reviens sur la formule d'Euler : $$e^{i\pi}=-1$$. 
 

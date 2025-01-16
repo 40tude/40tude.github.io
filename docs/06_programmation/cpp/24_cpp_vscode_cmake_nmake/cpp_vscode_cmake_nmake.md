@@ -34,7 +34,7 @@ First thing first, few words about is the settings :
 
 * I'm using Windows.
 * [Visual Studio 2017](https://www.visualstudio.com/fr/downloads/?rr=https%3A%2F%2Fwww.google.fr%2F) (15.6.2) is installed and the C++ "load" is up and running. I mean you are able to compile a C++ project with Visual Studio 2017. If you really don't want to install Visual Studio Code 2017 (this is a mistake because the debugger is, by far, one of the best available) you could install the [Visual Studio Build Tools](https://www.visualstudio.com/fr/downloads/) (make sure to scroll down the page). Basically it includes everything needed (compiler, linker etc.) except the Visual Studio IDE itself.
-* [VS Code](https://code.visualstudio.com/) (1.21.1) is also installed (otherwise this page makes no sense :-) )
+* [VS Code](https://code.visualstudio.com/) (1.21.1) is also installed (otherwise this page makes no sense 😁 )
 * You don't have to but if you plan to edit some C++ code in VS Code I would recommend to install the "C/C++" extension for Visual Studio Code.
 
 

@@ -14,7 +14,7 @@ last_modified_date: 2025-01-16 10:00:00 +0000
 
 
 
-# Yet Another Intro to Linear Regression and R²
+# Yet Another Intro to Linear Regression and $$R^2$$
 {: .no_toc }
 
 {: .note }

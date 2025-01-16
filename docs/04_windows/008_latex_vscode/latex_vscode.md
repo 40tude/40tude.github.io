@@ -7,7 +7,7 @@ date: 2023-01-23 15:57:34
 last_modified_date: 2023-01-27 17:38:21
 ---
 
-# Latex and VSCode
+# $$\mathrm{\LaTeX}$$ and VSCode
 
 
 * WIN + x, a
@@ -41,7 +41,7 @@ Close the terminal and open a new one. The new terminal is required because the 
 
 * Win + X, i
 
-* Installs the Latex Workshop VSCode extension
+* Installs the $$\mathrm{\LaTeX}$$ Workshop VSCode extension
 
 ```
 code --install-extension James-Yu.latex-workshop
@@ -127,14 +127,11 @@ code .
 
 ## Optional
 
-### If you prefer to install the Latex Workshop extension once VSCode is on screen,
+### If you prefer to install the $$\mathrm{\LaTeX}$$ Workshop extension once VSCode is on screen,
 
 * CTRL + SHIFT + X to open the Extension pane
-
-* Search for Latex
-
+* Search for $$\mathrm{\LaTeX}$$
 * Select Latex Workshop
-
 * Press the Install button
 
 <div align="center">
