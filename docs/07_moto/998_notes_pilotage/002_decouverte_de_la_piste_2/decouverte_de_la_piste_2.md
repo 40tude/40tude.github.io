@@ -86,6 +86,14 @@ La vidéo complète est ci-dessous.
 
 https://www.youtube.com/watch?v=0LA2pNlNNw0
 
+
+
+
+
+
+
+
+
 ## Note 4 : Comment vérifier qu'on a les bonnes lignes dans les virages ?
 
 * Si on suppose qu'on rentre gaz coupés et freins relâchés dans la courbe
@@ -276,6 +284,4 @@ Dans le tableau ci-dessous, on a 0.43 G (4.2 m/s²) d'accélération alors qu'on
 
 ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-10.png)
 
-| [Précédent](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/) | [Table des matières](https://www.40tude.fr/pilotage-moto/) | [Suivant](https://www.40tude.fr/pilotage-moto-02-three-steps/) |
-| --- | --- | --- |
 
