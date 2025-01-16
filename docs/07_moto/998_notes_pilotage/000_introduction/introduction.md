@@ -48,29 +48,34 @@ Par exemple, n'hésitez pas à conseiller telle ou telle vidéo sur YouTube qui 
 
 
 
-## Vidéos utiles
+## Vidéos et podcast
 
 Cliquez sur la vidéo ci-dessous. C'est une playlist d'une centaine de vidéos que je garde sous le coude sur YouTube. Il y a un peu de tout et c'est plus ou moins organisé : Fitness, Trajectoire, Position...
 
 Il y en a dans toutes les langues : Français, Italien, Anglais, Espagnol... Si besoin, mettez les sous-titres et passez la vitesse de lecture à 75% ou moins.
 
-<!-- https://www.youtube.com/playlist?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS -->
+
+Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous conseille de cliquer sur le "**Regarder sur YouTube**" en bas à droite plutôt que sur le bouton play rouge. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n7LHAWWeSbHh5IqF&amp;start=1014&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=5AktqODs0LX3bt7i&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
 
 Une série de podcast disponibles sur YouTube qui est pas mal si vous parlez Anglais. En ce qui me concerne je les écoute sur téléphone avec l'application Podcast Addict. Je vous conseille de les suivre dans l'ordre de publication (du plus vieux au plus récent).
 
-<!-- https://www.youtube.com/watch?v=7Joj-yc_pWM&list=PLNOc2dc5lwq_f6NsNYG49PqkwYAmEVt32 -->
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7Joj-yc_pWM?si=k61W85NBye3zYzAW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=fq-aZtF8T0Rqstxw&amp;list=PLNOc2dc5lwq9CVw_j3IhX6vY4YXYAUrAx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
-## Livres utiles
+
+
+
+
+
+
+
+## Livres
 
 Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 
@@ -86,7 +91,9 @@ Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 
 
 
-## Sites utiles
+
+
+## Sites
 
 * [Les secrets du pilotage](http://dmic.free.fr/Pilotage/Secrets-du-pilotage-shared-by-Micboy.pdf)
 * [Motopiste.net](http://www.motopiste.net/)
