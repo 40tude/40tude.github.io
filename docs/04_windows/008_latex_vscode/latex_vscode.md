@@ -2,7 +2,7 @@
 layout: default
 title: "Latex and VSCode"
 parent: "Windows"
-#math: mathjax
+math: mathjax
 date: 2023-01-23 15:57:34
 last_modified_date: 2023-01-27 17:38:21
 ---
@@ -10,9 +10,9 @@ last_modified_date: 2023-01-27 17:38:21
 # $$\mathrm{\LaTeX}$$ and VSCode
 
 
-* WIN + x, a
-  + This means : Press the window key AND the X key. Then press A
-  + It launches an elevated console
+* **WIN+x, a**
+    * This means : Press the window key AND the X key. Then press A
+    * It launches an elevated console
 * Install [choco](https://community.chocolatey.org/packages) with the line below
 
 ```
