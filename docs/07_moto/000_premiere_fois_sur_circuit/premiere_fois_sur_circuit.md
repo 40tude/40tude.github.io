@@ -12,7 +12,7 @@ last_modified_date: 2023-09-01 11:50:52
 
 ## Introduction
 
-J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a les Notes de pilotage (pas encore portées sur ce site) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
+J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a les [Notes de Pilotage Moto]({%link docs\07_moto\998_notes_pilotage\index.md%}) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
 
 Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les commentaires. Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
 
@@ -556,7 +556,7 @@ Pense à aller voir les photos de la journée. Soit, elles sont déjà consultab
 
 De retour à la maison, reprends le plan du circuit et l'agenda de la journée. Prends 15 à 20 minutes pour y ajouter tes notes. Vas-y, lâches toi, notes tout. Tes sentiments, tes impressions, les trucs que tu ne comprends pas encore, les rapports de boite, les questions que tu souhaites poser, telle ou telle difficulté... Tu t'en serviras comme anti-sèche ou comme TO DO list la prochaine fois que tu viendras sur ce circuit.
 
-Bon, allez, la suite au prochain numéro et d’ici-là relis les Notes de pilotage (pas encore portées sur ce site) ou fais des [squats](https://youtu.be/TIhtpItTuxc) afin de préparer les prochains roulages.
+Bon, allez, la suite au prochain numéro et d’ici-là relis les [Notes de Pilotage Moto]({%link docs/07_moto/998_notes_pilotage/index.md%}) ou fais des [squats](https://youtu.be/TIhtpItTuxc) afin de préparer les prochains roulages.
 
 
 

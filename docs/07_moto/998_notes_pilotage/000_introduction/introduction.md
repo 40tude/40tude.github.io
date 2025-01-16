@@ -23,21 +23,21 @@ Elles ont toutes la même structure :
 
 1. **Objectif de la session** - J'explique rapidement de quoi on va parler
 1. **Prérequis** - Certaines notes demandent que certains points soient déjà acquis. Par exemple pour s'attaquer au contre braquage en sortie de virage il vaut mieux que la conduite du virage soit acquise.
-1. **Rappel** - C'est juste de la prudence avant d'entrer en piste. Ça va sans doute soûler ceux qui lisent les Notes de Pilotage Moto dans l'ordre mais ça rendra service à ceux qui arriveront directement sur telle ou telle note via une recherche sur le Web.
-1. **La session proprement dite** - C'est là qu'on rentre dans le vif du sujet.
+1. **Petit rappel utile avant de rentrer sur le circuit** - C'est juste de la prudence avant d'entrer en piste. Ça va sans doute soûler ceux qui lisent les Notes de Pilotage Moto dans l'ordre mais ça rendra service à ceux qui arriveront directement sur telle ou telle note via une recherche sur le Web.
+1. **La session** - C'est là qu'on rentre dans le vif du sujet.
 1. **À la fin de la session** - On fait un point sur nos acquis
 1. **Remarques complémentaires** - C'est un certain nombre de points plus ou moins en rapport avec le sujet de la note de Pilotage Moto.
 
 Il y aura sans doute des répétitions car certains aspects me paraissent vraiment importants. De toute façon, certains lecteurs, grâce à Google, arriveront directement sur une note particulière et donc ce n'est pas complètement idiot de répéter certaines choses.
 
-<!-- Attention. Sur le site [40tude](https://www.40tude.fr/), les notes de Pilotage Moto peuvent ne pas apparaître dans l'ordre. En effet, si j'ajoute un complément à telle ou telle note, cette dernière arrivera en haut de la liste et sur la première page du site. Ce n'est pas la peine de râler... Il suffit de les lire dans l'ordre de leur numérotation et/ou d'aller sur cette [page](https://www.40tude.fr/pilotage-moto/) qui fait office de table des matières et de choisir un sujet particulier. De plus chaque note de Pilotage Moto dispose de 2 tableaux en haut et en bas de page avec des liens sur les notes précédente et suivante ainsi que la table des matières. Enfin sur PC, il y a un lien vers la table des matières en haut de toutes les pages du site. -->
+<!-- Attention. Sur le site [40tude](https://www.40tude.fr/), les Notes de Pilotage Moto peuvent ne pas apparaître dans l'ordre. En effet, si j'ajoute un complément à telle ou telle note, cette dernière arrivera en haut de la liste et sur la première page du site. Ce n'est pas la peine de râler... Il suffit de les lire dans l'ordre de leur numérotation et/ou d'aller sur cette [page](https://www.40tude.fr/pilotage-moto/) qui fait office de table des matières et de choisir un sujet particulier. De plus chaque note de Pilotage Moto dispose de 2 tableaux en haut et en bas de page avec des liens sur les notes précédente et suivante ainsi que la table des matières. Enfin sur PC, il y a un lien vers la table des matières en haut de toutes les pages du site. -->
 
 
 
 
 ## À propos des commentaires
 
-Ils sont, bien sûr, les bienvenus s'ils sont bienveillants et constructifs. J'ai ces notes de Pilotage Moto depuis pas mal de temps dans OneNote et j'estime qu'il est temps de les partager. Si dans une des notes vous considérez que je dis une bêtise, pas la peine de me tirer dessus ou de m'agonir avec un commentaire au vitriol. J'ai peut-être, tout simplement, pas encore compris telle ou telle technique de pilotage.
+Ils sont, bien sûr, les bienvenus s'ils sont bienveillants et constructifs. J'ai ces Notes de Pilotage Moto depuis pas mal de temps dans OneNote et j'estime qu'il est temps de les partager. Si dans une des notes vous considérez que je dis une bêtise, pas la peine de me tirer dessus ou de m'agonir avec un commentaire au vitriol. J'ai peut-être, tout simplement, pas encore compris telle ou telle technique de pilotage.
 
 En revanche si un point n'est pas clair ou pas suffisamment expliqué, lâchez-vous et aidez-moi à améliorer la note de Pilotage Moto en question.
 

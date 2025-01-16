@@ -8,10 +8,24 @@ last_modified_date: 2023-09-09 00:08:32
 ---
 
 # Découverte de la piste 2
+{: .no_toc }
 
-Comme la première des Notes de [Pilotage Moto](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀.
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
-## Note 3 : À propos du point de corde
+
+
+
+
+Comme la première note de [Pilotage Moto](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀.
+
+
+
+## Suite des remarques complémentaires
+
+### Note 3 : À propos du point de corde
 
 Bon, là on ne rigole plus... C'est le quatrième, le plus important et le plus difficile à atteindre des objectifs que l'on a quand on met les pneus sur la piste (rappelle-toi Barbara : apprendre la piste, couché sur la moto, gaz à 100%, pneus sur le point de corde... [Relire ici si besoin](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/))
 
@@ -26,25 +40,49 @@ Bon, là on ne rigole plus... C'est le quatrième, le plus important et le plus 
   Ce qui compte c'est la position des pneus vis à vis du point de corde et pas la position du casque ou des sliders.
   Comme on est en mode découverte de la piste, on est largement en dessous de nos capacités. Il faut donc vraiment en profiter pour faire passer les pneus à un millimètre à la verticale du point de corde. Perso j'ai tendance à vouloir aller trop vite, trop rapidement. Je ne prends pas le temps d'assurer mes points de corde à "basse vitesse" puis à passer de plus en plus vite au fil des tours. C'est complètement idiot de ma part.
 
-### Un exemple
+#### Un exemple
 
 <div align="center">
-<img src="./assets/image-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img_01.webp" alt=""  loading="lazy"/>
+</div>
+Oui…mais non
+
+<div align="center">
+<img src="./assets/img_02.webp" alt=""  loading="lazy"/>
+</div>
+
+Oui. Notez la différence d'écartement des pneus vis à vis de la bande blanche.
+
+Voir la vidéo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kfZlxpH2cZ0?si=cnNNl8Og5Z_6LiIj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+#### Remarques
+
+1. Une des clés au début c'est de river ses yeux sur le cône au point de corde. On verra dans la prochaine session (three steps) que notre menton et nos yeux vont changer de cible au fur et à mesure de notre avancement dans le virage mais là, l'idée c'est d'apprendre à voir le virage, à faire abstraction du reste de la scene mais de rester focus sur le point de corde.
+J'arrive au virage, je chope le cône du regard, je ne regarde rien d'autre, sans l'oublier je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas. Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approche du cône. Il ne faut pas regarder l'entrée du virage dans son ensemble. Faut être "laser focus" sur le cône (pense aux lasers des yeux de superman).
+
+
+<div align="center">
+<img src="./assets/img_03.webp" alt=""  loading="lazy"/>
 </div>
 
 
-3. Si j'ai du mal à placer mes pneus parfaitement sur le point de corde, je peux appuyer légèrement sur le frein arrière. Ça permet de resserrer le virage et d'ajuster la trajectoire le cas échéant.
+2. Si j'ai du mal à placer mes pneus parfaitement sur le point de corde, je peux appuyer légèrement sur le frein arrière. Ça permet de resserrer le virage et d'ajuster la trajectoire le cas échéant.
 
-7. Si je suis constamment trop loin du cône c'est que ma mise sur l'angle est trop lente. Pas de soucis, on débute... Donc, au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
+3. Si je suis constamment trop loin du cône c'est que ma mise sur l'angle est trop lente. Pas de soucis, on débute... Donc, au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
 
-11. Ça marche aussi dans l'autre sens. Si je suis trop tôt à la corde au prochain tour je ne change rien mais je retarde un peu (5 m, 2 motos de long) mon freinage.
+4. Ça marche aussi dans l'autre sens. Si je suis trop tôt à la corde au prochain tour je ne change rien mais je retarde un peu (5 m, 2 motos de long) mon freinage.
 
-### Une autre image pour fixer les idées
+#### Une autre image pour fixer les idées
 
 Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. Ils sont où ? Sur le bitume, à un mètre du vibreur ? Nan. À 10 centimètres ? Nan. À un millimètre ? Même pas en rêve ! Ils sont sur la bande blanche en train de lécher le vibreur.
 
 <div align="center">
-<img src="./assets/image-17-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img_04.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
@@ -56,45 +94,70 @@ Qu'est-ce qui va se passer ? Je vais peaufiner mon accélération, la vitesse à
 
 Je le redis. Le point corde c'est le quatrième, le plus difficile et le plus important de nos 4 objectifs initiaux. Il ne faut pas passer à la suite tant qu'on n'est pas capable de les assurer à chaque tour. À ce point de notre formation (niveau padawan première année...) on se fiche de la vitesse de passage et de la prise d'angle (les photographes on verra plus tard). Ça viendra naturellement par la suite lorsqu'on va accroitre notre rythme. À ce moment-là, pour assurer nos points de corde nous n'aurons pas d'autre choix que d'augmenter la vitesse de nos mises sur l'angle (très important, mais on verra plus tard), comme on ira plus vite on devra aussi prendre plus d'angle et pour prendre plus d'angle nous devrons changer notre position sur la moto, sortir un genou etc. Et là, il sera temps d'appeler Canal+ pour faire un reportage.
 
-### Une petite vidéo peut être...
+#### Une petite vidéo peut être...
 
 Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture à 50% ou à 25% et à regarder où passe la roue avant... Oui, oui je sais, il n'est pas trop en mode découverte de la piste... Quoiqu'il en soit, ce sont vraiment des passages au millimètre sur les bandes blanches...
 
 https://youtu.be/Ym4SRjSKmoI
 
-### Un autre exemple
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ym4SRjSKmoI?si=TxKZ0QJrkl6UXa5b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+#### Un autre exemple
 
 Heu… Oui, oui je confirme, lui aussi est un peu au-delà de nos 75% mais c'est parce qu'il est jeune et enthousiaste… ✊
 
-![Point de codre 1/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-2.png)
+<div align="center">
+<img src="./assets/img_05.webp" alt=""  with="450" loading="lazy"/>
+</div>
 
-![Point de codre 2/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-3.png)
+<div align="center">
+<img src="./assets/img_06.webp" alt=""  with="450" loading="lazy"/>
+</div>
 
-![Point de codre 3/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-4-300x243.png)
+<div align="center">
+<img src="./assets/img_07.webp" alt=""  with="450" loading="lazy"/>
+</div>
 
-![Point de codre 4/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-5.png)
+<div align="center">
+<img src="./assets/img_08.webp" alt=""  with="450" loading="lazy"/>
+</div>
 
-![Point de codre 5/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-6-300x249.png)
+<div align="center">
+<img src="./assets/img_09.webp" alt=""  with="450" loading="lazy"/>
+</div>
 
-![Point de codre 6/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-7.png)
+<div align="center">
+<img src="./assets/img_10.webp" alt=""  with="450" loading="lazy"/>
+</div>
 
-![Point de codre 7/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-8.png)
+<div align="center">
+<img src="./assets/img_11.webp" alt=""  with="450" loading="lazy"/>
+</div>
 
-![Point de codre 8/8](https://www.40tude.fr/wp-content/uploads/2019/09/image-9.png)
+<div align="center">
+<img src="./assets/img_12.webp" alt=""  with="450" loading="lazy"/>
+</div>
+
+
 
 La vidéo complète est ci-dessous.
 
 https://www.youtube.com/watch?v=0LA2pNlNNw0
 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0LA2pNlNNw0?si=b_x5V-D-BSLU1jnK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
 
-
-
-
-## Note 4 : Comment vérifier qu'on a les bonnes lignes dans les virages ?
+### Note 4 : Comment vérifier qu'on a les bonnes lignes dans les virages ?
 
 * Si on suppose qu'on rentre gaz coupés et freins relâchés dans la courbe
 
@@ -112,9 +175,21 @@ https://www.youtube.com/watch?v=0LA2pNlNNw0
 * À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde. Avec la throttle rule, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde. Cela permet de répartir la charge de manière idéale entre l'avant et l'arrière. Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque.
   Mouai... Ben moi j'ai beau le savoir et faire le fanfaron en l'expliquant, je n'arrive toujours pas à le faire comme je voudrais.
 
-## Note 5 : Lors de la première session il faut se forcer…
 
-### À ne pas rouler vite
+
+
+
+
+
+
+
+
+
+
+
+### Note 5 : Lors de la première session il faut se forcer…
+
+#### À ne pas rouler vite
 
 Encore une fois, on est en mode découverte de la piste. Il faut donc savoir rester à 75% de nos capacités ou en tout cas à en garder sous le pied.
 
@@ -124,7 +199,7 @@ Il faut aussi avoir le courage de retomber à 2/3 de ses capacités pour étudie
 
 Il ne faut pas hésiter non plus à sortir de la piste et à s'arrêter devant le gars qui autorise les rentrées sur piste. Ça casse le rythme et ça calme les esprits...
 
-### À être relâché et détendu
+#### À être relâché et détendu
 
 On ne peut pas tenir 7 sessions de 20 minutes par jour si on n'est pas détendu sur la moto. De même, comment être efficace à l'approche du prochain virage si on est tendu comme une corde dans la ligne droite qui le précède ? On n'a pas le choix, il faut se ménager des "aires de repos" où on peut reprendre notre souffle (ou s'assurer qu'on n'est pas en apnée), relâcher ses mains, ses doigts, ses bras etc.
 
@@ -134,13 +209,18 @@ Dans un même ordre d'idée, en ligne droite je dois être capable de tenir l'ac
 
 https://youtu.be/h24XjzybrA0
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/h24XjzybrA0?si=1AiXYc_QGYxzFj5v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
 De même, en ligne droite ou bien quand la moto est sur l'angle, je peux écarter mes coudes du corps. Je suis re-lâ-ché, je peux lâcher la main gauche (tu connais ta droite de ta gauche au fait?) et faire coucou au photographe...
 
-### À rester large en entrée de courbe
+#### À rester large en entrée de courbe
 
 Encore une fois : "Arrêtes de plonger à la corde dès que tu peux car tu vas être dans les soucis à la sortie !"
 
-### À ne pas utiliser systématiquement toute la piste en sortie de courbe
+#### À ne pas utiliser systématiquement toute la piste en sortie de courbe
 
 Oui, oui, c'est contre intuitif car on a beau être débutant et dans une première session de découverte de la piste, on a tous en tête le mantra "Extérieur, Intérieur, Extérieur".
 
@@ -150,7 +230,7 @@ L'idée, c'est qu'en faisant ainsi, on aura de la marge pour plus tard quand on 
 
 Un truc qui peut aider au début c'est de se forcer, en sortie de virage, à garder la tête en position basse, sur le côté de la moto alors que cette dernière est en position presque verticale.
 
-### Penser à regarder où passent les plus rapides et à les copier si cela a du sens.
+#### Penser à regarder où passent les plus rapides et à les copier si cela a du sens.
 
 Choisissez des gars qui, avant un virage, sont complètement à l'extérieur de la piste (limite à rouler sur la ligne blanche). Pensez aussi à repérer le marshal s'il tourne avec vous sur la piste et bien sûr s'il a adapté son rythme à celui de la session. À notre niveau, il faut regarder une seule chose... Son point de corde.
 
@@ -160,13 +240,22 @@ Ne suivez pas non plus un gars qui a un 1000 alors que vous roulez en 600. Il ro
 
 Idem si vous êtes en 600 et qu'un gamin en Yam R3 vous met 10" au tour (ptit con!). Il n'a pas le même moteur, et donc pas les mêmes trajectoires.
 
-## Note 6 : Faut être relâché sur la moto
+
+
+
+
+
+
+
+
+
+### Note 6 : Faut être relâché sur la moto
 
 Je sais, j'en ai déjà parlé mais je vais en remettre une couche avec d'autres mots. Nos premières sessions sont des sessions de découverte de la piste. On est à 75% de nos possibilités. Donc autant faire l'effort d'être relâché. Non ?
 
 Il faut donc vérifier régulièrement qu'on n'a pas tendance à s'accrocher au guidon.
 
-### À propos des guidonnages (wobble, tank slapper)
+#### À propos des guidonnages (wobble, tank slapper)
 
 * Les mouvements de fourche sont nécessaires. Ils font partie du système de la suspension (pneus et fourche)
 
@@ -188,7 +277,7 @@ Si la tête de fourche secoue en sortie de virage, si la moto est correctement e
 
 Bref, autant relâcher les bracelets et laisser la moto s'auto réguler.
 
-### Être relâché ça veut dire
+#### Être relâché ça veut dire
 
 * Être capable d'écarter et de rapprocher les coudes du corps (Chicken Wings)
 
@@ -212,7 +301,7 @@ La tête de fourche peut bouger à l'accélération si cette dernière est trop 
 
 * C'est une évidence, mais quand la roue est en l'air, on ne touche surtout pas le frein avant mais on peut toucher le frein arrière.
 
-### Être accroché au guidon c'est ce qui nous fait sortir large
+#### Être accroché au guidon c'est ce qui nous fait sortir large
 
 2. Je suis en virage
 
@@ -233,7 +322,19 @@ La tête de fourche peut bouger à l'accélération si cette dernière est trop 
 
 22. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève mécaniquement la moto et nous fait sortir large.
 
-## Note 7 : Idée d'exercice
+
+
+
+
+
+
+
+
+
+
+
+
+### Note 7 : Idée d'exercice
 
 * Faire plusieurs tours de circuit en restant sur un seul rapport. Au pire on en utilise 2 (la 2 et la 3 par exemple) mais utiliser un seul rapport c'est ce qu'il y a de mieux.
 
@@ -245,7 +346,18 @@ La tête de fourche peut bouger à l'accélération si cette dernière est trop 
 
 https://youtu.be/EJQaKf3txVg?t=184
 
-## Note 8 : À vérifier lors de la prochaine session
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EJQaKf3txVg?si=_SHs0_X1wy9_4IL4&amp;start=184" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+
+
+### Note 8 : À vérifier lors de la prochaine session
 
 Trois petits trucs liés à la vitesse
 
@@ -256,7 +368,13 @@ Trois petits trucs liés à la vitesse
 
 Bref, il ne faut pas mettre la charrue avant les bœufs et tant qu'on n'est pas à l'aise avec la vitesse, les vibreurs qui jaillissent etc... Mieux vaut rester en mode découverte de la piste et se dire que le temps qu'on passe là, à se forcer à ouvrir en grand dès qu'on en a l'occasion est un investissement pour plus tard.
 
-## Note 9 : À propos des virages importants
+
+
+
+
+
+
+### Note 9 : À propos des virages importants
 
 Il y a 2 types de virages qui sont beaucoup plus importants que les autres et sur lesquels il va falloir porter une attention particulière lors de la reconnaissance :
 
@@ -267,6 +385,8 @@ Il y a 2 types de virages qui sont beaucoup plus importants que les autres et su
 La vidéo ci-dessous rentre plus dans les détails.
 
 https://youtu.be/xJqnsOYD8T0
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xJqnsOYD8T0?si=aohrMEMyOgs7CJYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Un calcul rapide montre que :
 
@@ -282,6 +402,10 @@ Un calcul rapide montre que :
 
 Dans le tableau ci-dessous, on a 0.43 G (4.2 m/s²) d'accélération alors qu'on part à 103 km/h (à gauche) et 90 km/h (à droite). Au bout de 8.32 sec, à gauche, on a fait 400m. A droite, pour faire 400 m il faut attendre 8,79 sec. Y a donc 0.5 sec d'écart.
 
-![](https://www.40tude.fr/wp-content/uploads/2019/09/image-10.png)
+
+<div align="center">
+<img src="./assets/img_13.webp" alt=""  with="450" loading="lazy"/>
+</div>
+
 
 
