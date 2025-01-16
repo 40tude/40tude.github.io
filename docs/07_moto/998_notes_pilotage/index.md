@@ -16,4 +16,4 @@ Je ne suis **PAS** un Top pilote et encore moins un Expert. Loin de là... Cepen
 
 **Si vous n'avez jamais mis les pieds sur un circuit** pour participer à un roulage moto je vous conseille de lire ce [billet]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) qui parle spécifiquement de ce sujet et qui va vous aider à organiser votre journée.
 
-Ci-dessous, **mieux vaut lire dans l'ordre** les Notes de Pilotage Moto.
+Ci-dessous, mieux vaut lire **dans l'ordre** les Notes de Pilotage Moto.
