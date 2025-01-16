@@ -13,10 +13,6 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ---
 ## TODO
-* Remplacer les CTRL + A par **CTRL+A**
-    * ALT et WIN
-* Mettre à jour la façon d'ecrire Latex partout sur le site
-    * $$\mathrm{\LaTeX}$$
 * Mettre à jour : 022_compile_cpp_code_with_vscode
 * Rapatrier la page Git Survival de GitHub ici
 * Sur la 1ere page, la liste des 10 derniers billets mis à jour
@@ -94,7 +90,7 @@ Mettre {:toc} que sur les titres de niveau 2. Éviter 3 et +
 
 
 Pour exclure de la TOC les titres de niveaux 3+
-   - CTRL+H + Exp Reg
+   - CTRL + H + Exp Reg
    - ``(#{3,}\s.+)``
    - `$1\n{: .no_toc }`
 
@@ -160,7 +156,7 @@ last_modified_date: 2023-12-04 00:02:38
 
 ### Enlever le gras des titres 
 ```
-CTRL+H + Exp Reg
+CTRL + H + Exp Reg
 (#+)\s\*\*(.*?)\*\*
 $1 $2
 ```
@@ -170,7 +166,7 @@ $1 $2
 
 ### Remplacer les $ seuls par $$ 
 ```
-CTRL+H + Exp Reg
+CTRL + H + Exp Reg
 (?<!\$)\$(?!\$) 
 $$$
 ```
@@ -228,6 +224,11 @@ Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Desc
 
 ---
 ## DONE
+* ~~Remplacer les CTRL + A par **CTRL + A**~~
+    * ~~Vérifier ALT et WIN~~
+    * ~~WIN + X, A~~
+* ~~Mettre à jour la façon d'ecrire Latex partout sur le site~~
+    * $$\mathrm{\LaTeX}$$
 * ~~Page Linux Mint à rapatrier~~
 * ~~Snowboard, ajouter des photos et des vidéos~~
 * ~~Voir cette histoire de pull request de la part de Just The Docs~~

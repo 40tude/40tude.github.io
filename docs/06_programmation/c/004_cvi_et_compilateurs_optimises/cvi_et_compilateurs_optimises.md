@@ -15,7 +15,7 @@ En 2012, le compilateur de CVI n'est toujours pas optimisé. Il a plein d'autres
 
 Ouvrez l'exemple life.cws qui se trouve dans ../samples/apps/life
 
-SHIFT+F5. Le code se compile en mode debug et la fenêtre suivante apparaît :
+**SHIFT + F5**. Le code se compile en mode debug et la fenêtre suivante apparaît :
 
 <div align="center">
 <img src="./assets/life1.webp" alt="" loading="lazy"/>
@@ -33,7 +33,7 @@ Dans le menu Options/Build Options... cliquez sur l'onglet Build Process Options
 </div>
 
 
-Vérifiez simplement que le "Active 32-bit compiler" est bien Standard CVI Compiler. Cliquez sur OK. Vous êtes de retour dans l'éditeur de code. Faites CTRL+M puis CTRL+F5 pour compiler et lancer l'application en mode release. Sur la fenêtre à l'écran faites les mêmes manipulations que précédemment (Acom, Universe à pleine échelle). Quand vous cliquez sur Go les choses vont beaucoup plus vite. Entre autres observez la vitesse à laquelle arrive les 2 derniers petits "missiles" et leur vitesse de déplacement. C'est bien, ça avance, mais comme vous allez le voir, on peut encore améliorer les choses.
+Vérifiez simplement que le "Active 32-bit compiler" est bien Standard CVI Compiler. Cliquez sur OK. Vous êtes de retour dans l'éditeur de code. Faites **CTRL + M** puis **CTRL + F5** pour compiler et lancer l'application en mode release. Sur la fenêtre à l'écran faites les mêmes manipulations que précédemment (Acom, Universe à pleine échelle). Quand vous cliquez sur Go les choses vont beaucoup plus vite. Entre autres observez la vitesse à laquelle arrive les 2 derniers petits "missiles" et leur vitesse de déplacement. C'est bien, ça avance, mais comme vous allez le voir, on peut encore améliorer les choses.
 
 ## Mise en œuvre de clang
 
@@ -69,7 +69,7 @@ Cliquez sur OK et revenez à la boîte de dialogue Build Options. Normalement l'
 </div>
 
 
-Cliquez sur OK. Assurez-vous que l'option Build/Configuration est toujours bien sur Release. CTRL+M et CTRL+F5 pour compiler et lancer l'application en mode release compilée avec le compilateur clang.
+Cliquez sur OK. Assurez-vous que l'option Build/Configuration est toujours bien sur Release. **CTRL + M** et **CTRL + F5** pour compiler et lancer l'application en mode release compilée avec le compilateur clang.
 
 Une fois la fenêtre à l'écran refaites la manipulation : Acom, taille de l'univers à fond et cliquez sur Go. On le sent bien, les 2 petits missiles arrivent beaucoup plus vite qu'avant et la figure finale se stabilisent beaucoup plus vite.
 

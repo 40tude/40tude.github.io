@@ -37,7 +37,7 @@ vcpkg is a package manager for acquiring and managing libraries. More informatio
 April 2021. The following software are installed on my PC
 
 * Windows 10 20H2 19042.870 (WIN key, type winver)
-* VSCode 1.55.2 (WIN + R, type powershell, type `code --version`)
+* VSCode 1.55.2 (**WIN + R**, type powershell, type `code --version`)
 * Microsoft compiler cl version 19.28.29913. You can either install Visual Studio or [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/).
 * Git version 2.31.1.windows.1 (in the previous console type `git --version`)
 * CMake version 3.20.1 (in the previous console type `cmake --version`). If you want to learn more about CMake you can start [here](https://cliutils.gitlab.io/modern-cmake/).
@@ -116,7 +116,7 @@ cd TestSQL-vcpkg
 code .
 ```
 
-In VSCode, make sure C/C++, CMake and CMake Tools extensions are installed. Open the Extensions pane (CTRL + SHIFT +x) and check what is missing. See below:
+In VSCode, make sure C/C++, CMake and CMake Tools extensions are installed. Open the Extensions pane (**CTRL + SHIFT + X**) and check what is missing. See below:
 
 <div align="center">
 <img src="./assets/image-3.webp" alt="" width="450" loading="lazy"/>
@@ -138,7 +138,7 @@ int main(void) {
 Once this is done, modify the VSCode ``settings.json``. You will have to do it once. Indeed this is how we let VS Code know about CMake.
 
 Anyway, to edit, ``settings.json``
-* Hit **CTRL+comma**
+* Hit **CTRL + comma**
 * To switch in text mode, click the first of the 3 icons on the top right-hand side (the one looking like a file)
 
 <div align="center">
@@ -187,7 +187,7 @@ Just to make sure, here is the content of my ``settings.json`` as it is today.
 }
 ```
 
-**CTRL+SHIFT+P** and type ``CMake`` then select ``CMake Quick Start``
+**CTRL + SHIFT + P** and type ``CMake`` then select ``CMake Quick Start``
 
 <div align="center">
 <img src="./assets/image-5.webp" alt="" loading="lazy"/>
@@ -242,7 +242,7 @@ TARGET_LINK_LIBRARIES(TestSQL
 )
 ```
 
-Everything seems to be configured. **CTRL+SHIFT+P** then type ``CMake`` and select ``CMake: Build``. You can also strike **F7** which is much faster.
+Everything seems to be configured. **CTRL + SHIFT + P** then type ``CMake`` and select ``CMake: Build``. You can also strike **F7** which is much faster.
 
 <div align="center">
 <img src="./assets/image-7.webp" alt="" width="900" loading="lazy"/>
@@ -381,7 +381,7 @@ Anyway, press **F7** to build the release version. At the end of the build, a ``
 </div>
 
 
-On a french keyboard, strike **CTRL+ù** to open a new terminal and type the line below to run your application.
+On a french keyboard, strike **CTRL + ù** to open a new terminal and type the line below to run your application.
 
 ```powershell
 cd .\build\Release\

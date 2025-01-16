@@ -39,7 +39,7 @@ choco install vscode -y
 
 Close the terminal and open a new one. The new terminal is required because the path has been updated and the new console doesn't have to be elevated.
 
-* Win + X, i
+* **WIN + X, I**
 
 * Installs the $$\mathrm{\LaTeX}$$ Workshop VSCode extension
 
@@ -129,7 +129,7 @@ code .
 
 ### If you prefer to install the $$\mathrm{\LaTeX}$$ Workshop extension once VSCode is on screen,
 
-* CTRL + SHIFT + X to open the Extension pane
+* **CTRL + SHIFT + X** to open the Extension pane
 * Search for $$\mathrm{\LaTeX}$$
 * Select Latex Workshop
 * Press the Install button

@@ -175,7 +175,7 @@ network={
 }
 ```
 
-* CTRL+O et CTRL+X pour quitter nano.
+* **CTRL + O** et **CTRL + X** pour quitter nano.
 
 Ensuite on va modifier le fichier "interfaces" de la clé USB
 
@@ -202,7 +202,7 @@ iface wlan0 inet dhcp
 ...
 ```
 
-* CTRL+O et CTRL+X pour quitter nano.
+* **CTRL + O** et **CTRL + X** pour quitter nano.
 
 Pour terminer il faut créer un fichier "ssh" dans le sous-répertoire boot car le protocole ssh n'est pas [supporté par défaut](https://www.raspberrypi.org/blog/a-security-update-for-raspbian-pixel/).
 

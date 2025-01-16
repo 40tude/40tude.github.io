@@ -15,7 +15,7 @@ In a personal context, we have several networked PCs. We want to implement Publi
 ## Check that the network is private - PowerShell
 
 * Open an elevated Terminal (AKA run as **Administrator)**
-* WIN X + I
+* **WIN + X,  I**
   + This means press 'WIN' key and 'x' key simultaneously. Then press 'i' key.
   + I will not list that step in the next PowerShell sections.
 * Get-NetConnectionProfile
@@ -38,7 +38,7 @@ IPv6Connectivity         : Internet
 
 ## Check that the network is private - Win11
 
-* WIN + I
+* **WIN + I**
   + This means press 'WIN' key and 'i' key simultaneously
 
 <div align="center">
@@ -59,7 +59,7 @@ IPv6Connectivity         : Internet
 
 ## Check that the network is private - Win10
 
-* WIN + I
+* **WIN + I**
   + This means press 'WIN' key and 'i' key simultaneously
 
 <div align="center">
@@ -90,7 +90,7 @@ PS C:\Users\phili> Set-NetConnectionProfile -InterfaceIndex 21 -NetworkCategory 
 ## 3.1 - Set the sharing and discovery option correctly - Win11
 
 * Reach the Network and Internet settings
-  + WIN + I
+  + **WIN + I**
   + Network and Internet
 * Select Advanced parameters
 
@@ -141,7 +141,7 @@ The last parameter should be set if and only if you want to ask the users to ent
 ## Set the sharing and discovery option correctly - Win10
 
 * Reach the Network and Internet settings
-  + WIN + I
+  + **WIN + I**
   + Network and Internet
 * Select Network and Sharing
 

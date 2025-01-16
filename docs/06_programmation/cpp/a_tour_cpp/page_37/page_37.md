@@ -131,7 +131,7 @@ void Test(void) {
   Vector v2 = {1.23, 3.45, 6.7, 8};                                             // v2 has 4 elements
   fct(1024);
 
-  cout << "Enter double values separated with SPACE. Finish the line with CTRL+Z : ";
+  cout << "Enter double values separated with SPACE. Finish the line with CTRL + Z : ";
   Vector v = read(cin);
   for (int i=0; i != v.size(); ++i)
     cout << v[i] << endl;

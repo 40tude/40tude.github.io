@@ -153,11 +153,11 @@ void TimerFunction(int Value) {
 
 Pour l'instant, ne cherchez pas à comprendre... On veut juste être capable de compiler et de linker. Si vous souhaitez des explications détaillées à propos du code, allez lire la page suivante : <http://openglbook.com/the-book/chapter-1-getting-started/>
 
-Quand le code est collé, faites une sauvegarde du source. Je vous propose de sauver (CTRL+S) dans **./OpenGL 4.0/Test1/Test1.c**. Bien sûr il faut créer le répertoire **./Test1**. Ceci fait ajoutez le source au projet (via le menu File/Add Test1.c to Project).
+Quand le code est collé, faites une sauvegarde du source. Je vous propose de sauver (**CTRL + S**) dans **./OpenGL 4.0/Test1/Test1.c**. Bien sûr il faut créer le répertoire **./Test1**. Ceci fait ajoutez le source au projet (via le menu File/Add Test1.c to Project).
 
 ## Compilation
 
-Maintenant il est temps d'essayer de compiler le projet (CTRL+K). CVI vous demande de sauvegarder le projet. Faites simple, nommez ce dernier **Test1** et sauvez-le à côté du code source précédent. Clang, le compilateur de CVI 2013 devrait se plaindre. Voilà ce que j'obtiens :
+Maintenant il est temps d'essayer de compiler le projet (**CTRL + K**). CVI vous demande de sauvegarder le projet. Faites simple, nommez ce dernier **Test1** et sauvez-le à côté du code source précédent. Clang, le compilateur de CVI 2013 devrait se plaindre. Voilà ce que j'obtiens :
 
 <div align="center">
 <img src="./assets/compile1.webp" alt="" width="900" loading="lazy"/>
@@ -203,11 +203,11 @@ typedef uint64_t GLuint64EXT;
 #endif
 ```
 
-Sauvez le fichier **glew.h** (CTRL+S) et relancez la compilation (CTRL+K). Là, ça doit passer à la compilation. Tant que la compilation ne s'effectue pas sans erreur, il est inutile de passer à la suite.
+Sauvez le fichier **glew.h** (**CTRL + S**) et relancez la compilation (**CTRL + K**). Là, ça doit passer à la compilation. Tant que la compilation ne s'effectue pas sans erreur, il est inutile de passer à la suite.
 
 ## Edition de liens
 
-Bon, ben allez, on passe à la création de l'exécutable et on fait CTRL+M (menu Build, option Build). Là c'est une autre histoire. Dans mon cas j'ai 22 erreurs de link. Y pas mal de "**Undefined symbol**". En gros le linker est perdu, il ne retrouve pas ses petits. C'est normal, on n'a pas encore ajouté les bibliothèques d'importation nécessaires dans le projet.
+Bon, ben allez, on passe à la création de l'exécutable et on fait **CTRL + M** (menu Build, option Build). Là c'est une autre histoire. Dans mon cas j'ai 22 erreurs de link. Y pas mal de "**Undefined symbol**". En gros le linker est perdu, il ne retrouve pas ses petits. C'est normal, on n'a pas encore ajouté les bibliothèques d'importation nécessaires dans le projet.
 
 Dans le projet, sur le nom du projet, tout en haut de l'arborescence, cliquez droit et choisissez "Explore Directory...". Utilisez la fenêtre de l'explorateur Windows pour aller dans le répertoire **./tmp/OpenGL 4.0/tools/freeglut/lib**. Là vous cliquez sur **freeglut.lib** et vous faites un glissé-déposé dans la fenêtre projet de CVI (la partie gauche de l'environnement de développement, ne lâchez pas la lib sur le code source).
 
@@ -220,13 +220,13 @@ A ce stade le projet doit ressembler à ce qui suit :
 </div>
 
 
-On continue. CTRL+M pour construire le projet. Là, l'éditeur de lien pleure car il lui manque des fonctions du style **glClear()**. Dans CVI je vous propose d'aller dans le menu "**Edit/Add Files To Project/Library (.lib)..."**. Avec la fenêtre de dialogue allez dans le répertoire **C:/Program Files (x86)/National Instruments/CVI2013/sdk/lib/msvc** et là vous choisissez le fichier **OpenGL32.lib**.
+On continue. **CTRL + M** pour construire le projet. Là, l'éditeur de lien pleure car il lui manque des fonctions du style **glClear()**. Dans CVI je vous propose d'aller dans le menu "**Edit/Add Files To Project/Library (.lib)..."**. Avec la fenêtre de dialogue allez dans le répertoire **C:/Program Files (x86)/National Instruments/CVI2013/sdk/lib/msvc** et là vous choisissez le fichier **OpenGL32.lib**.
 
 ### Note
 
 Dans la boite de dialogue qui apparaît, tout en haut, là où vous voyez le chemin actuel, si vous cliquez sur la flèche qui est au bout à droite du chemin, vous allez faire apparaître un historique ainsi qu'une liste de répertoires que CVI "garde sous la main". Il y a généralement toujours moyen de pointer rapidement sur le répertorie de CVI 2013.
 
-OpenGL32.lib est maintenant ajoutée au projet. Allez, on build avec CTRL+M. Alors là... C'est plutôt bizarre cette histoire... On a pourtant bien toutes les bibliothèques d'importation et pourtant l'éditeur de lien continue à ce plaindre.
+OpenGL32.lib est maintenant ajoutée au projet. Allez, on build avec **CTRL + M**. Alors là... C'est plutôt bizarre cette histoire... On a pourtant bien toutes les bibliothèques d'importation et pourtant l'éditeur de lien continue à ce plaindre.
 
 En fait, si on va faire un tour dans le fichier **glew.h** on remarque qu'il mappe les fonctions des différentes version d'Opengl. Bon, je passe les détails mais je vous propose d'aller inspecter les lignes 120 à 129 du fichier **glew.h**. Elles devraient ressembler à ceci :
 
@@ -258,7 +258,7 @@ Je vous propose de modifier la ligne 124 ainsi :
 #endif
 ```
 
-CTRL+S pour sauver le fichier **glew.h**. Ensuite CTRL+M pour construire le projet. Là, ça doit passer mais attention, ce n'est pas tout à fait terminé. Cela dit voilà ce que j'obtiens :
+**CTRL + S** pour sauver le fichier **glew.h**. Ensuite **CTRL + M** pour construire le projet. Là, ça doit passer mais attention, ce n'est pas tout à fait terminé. Cela dit voilà ce que j'obtiens :
 
 <div align="center">
 <img src="./assets/compile3.webp" alt="" width="900" loading="lazy"/>
@@ -266,7 +266,7 @@ CTRL+S pour sauver le fichier **glew.h**. Ensuite CTRL+M pour construire le proj
 
 ## Exécution
 
-En l'état, si on lance l'application (SHIFT+F5), voilà ce que l'on obtient :
+En l'état, si on lance l'application (**SHIFT + F5**), voilà ce que l'on obtient :
 
 <div align="center">
 <img src="./assets/erreur.webp" alt="" loading="lazy"/>
@@ -282,7 +282,7 @@ Voilà l'organisation de mes fichiers :
 </div>
 
 
-Si maintenant, dans CVI on fait SHIFT+F5, ce coup-ci ça tourne et c'est que du bonheur...
+Si maintenant, dans CVI on fait **SHIFT + F5**, ce coup-ci ça tourne et c'est que du bonheur...
 
 Voilà ce que j'obtiens à l'écran:
 
@@ -316,7 +316,7 @@ Voilà ma configuration via l'application NVIDIA :
 
 Faites le test. Attention, la sortie du programme est un peu violente (en effet le code est plein de **exit(EXIT_FAILURE)**) de plus en traçant le code pas à pas en mode Debug (F8) j'ai réalisé que si mon contexte OpenGL n'est pas au moins égal à 4.0 c'est la fonction **glutCreateWindow()** (ligne 61) qui sort comme une brute et que la gestion d'erreur aux lignes 63 et suivante n'est même pas utilisée. Bizarre, faudra que je regarde ça plus tard...
 
-Un autre test possible. Laissez votre votre carte graphique par défaut, allez dans le code source ci-dessus, sélectionnez les lignes [51, 53] et faites CTRL+E pour les exclure (elles deviennent grisées dans l'éditeur de code). Avec SHIFT+F5, relancez un Build et une exécution de l'application.
+Un autre test possible. Laissez votre votre carte graphique par défaut, allez dans le code source ci-dessus, sélectionnez les lignes [51, 53] et faites **CTRL + E** pour les exclure (elles deviennent grisées dans l'éditeur de code). Avec **SHIFT + F5**, relancez un Build et une exécution de l'application.
 
 Dans mon cas voilà ce que j'obtiens :
 

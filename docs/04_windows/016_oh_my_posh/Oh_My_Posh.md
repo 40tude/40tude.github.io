@@ -174,7 +174,7 @@ Si Win Terminal n'est pas encore sur votre PC je ne peux plus rien faire pour vo
 
 On lance win terminal : Touche WIN puis on tape "wt"
 
-Ensuite on affiche les paramètres : CTRL + virgule
+Ensuite on affiche les paramètres : **CTRL + virgule**
 
 <div align="center">
 &nbsp;

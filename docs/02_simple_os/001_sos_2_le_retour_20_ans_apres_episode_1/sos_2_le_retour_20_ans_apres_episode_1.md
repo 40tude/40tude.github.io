@@ -127,8 +127,8 @@ nano /etc/apt/sources.list
 deb http://archive.debian.org/debian-archive/debian/ lenny main contrib non-free
 ```
 
-* CTRL + O pour écrire
-* CTRL + X pour quitter nano
+* **CTRL + O** pour écrire
+* **CTRL + X** pour quitter nano
 
 <div align="center">
 <img src="./assets/nano1.webp" alt="" loading="lazy"/>
@@ -185,8 +185,8 @@ visudo
 
 * Quand `apt-get` râle parce que le paquet `sudo` n'a pas été authentifié faut appuyer sur `o`
 * Dans le fichier qui s'ouvre sous nano, rajouter une ligne du style `nom_user ALL=…` comme pour `root`.
-* On sauve CTRL+O
-* On quitte CTRL+X
+* On sauve **CTRL + O**
+* On quitte **CTRL + X**
 
 ```bash
 exit                                      # pour ne plus être root

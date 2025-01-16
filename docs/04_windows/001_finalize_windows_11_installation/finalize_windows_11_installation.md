@@ -125,7 +125,7 @@ conda update -n base --all
 choco install rufus.portable -y
 ```
 
-* When needed, type `rufusp` in a terminal or WIN + R then `rufusp`
+* When needed, type `rufusp` in a terminal or **WIN + R** then `rufusp`
 
 * If needed, visit : C:\ProgramData\chocolatey\bin
 
@@ -140,7 +140,7 @@ choco install sumatrapdf.portable -y
 * Edge or Chrome might be OK
 
 * Install Sumatra Portable Version
-  + When needed, type `sumatrapdf-64` in a terminal or WIN + R then `sumatrapdf-64`
+  + When needed, type `sumatrapdf-64` in a terminal or **WIN + R** then `sumatrapdf-64`
 
   + If needed, visit : C:\ProgramData\chocolatey\bin
 

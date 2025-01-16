@@ -12,7 +12,7 @@ last_modified_date: 2023-01-12 00:17:31
 
 Je suis sous Windows 10 et j'utilise Powershell 5.0. À l'instar de ce que l'on peut faire sous Debian avec un bon ``apt-get`` voilà comment j'utilise le Package Management de Powershell pour installer Notepad++ sur ma machine.
 
-Win + X et je lance un PowerShell en mode Admin. Ensuite, je commence par regarder l'aide :
+**WIN + X** et je lance un PowerShell en mode Admin. Ensuite, je commence par regarder l'aide :
 
 ```powershell
 get-help *Package*

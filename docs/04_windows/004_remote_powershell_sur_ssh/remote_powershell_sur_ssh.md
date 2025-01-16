@@ -22,7 +22,7 @@ Ici, on est toujours dans un Workgroup et le but est de faire du Remote PowerShe
   **Ce n'est pas une bonne idée.**
 * Si on l'installe avec [choco](https://chocolatey.org/), PowerShell sera dans le répertoire C:\Program Files\PowerShell\7\pwsh.exe
   **C'est vraiment la méthode que je recommande.**
-* Pour installer choco il faut ouvrir une console en mode administrateur (Win + X, A) puis saisir la commande ci-dessous
+* Pour installer choco il faut ouvrir une console en mode administrateur (**WIN + X, A**) puis saisir la commande ci-dessous
 
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))

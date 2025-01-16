@@ -76,9 +76,9 @@ Afin de tester tout ça, dans le gestionnaire de fichier je double clic sur lua.
 </div>
 
 
-Afin de quitter l'interpréteur, au lieu de taper os.exit() on peut simplement taper CTRL+Z.
+Afin de quitter l'interpréteur, au lieu de taper os.exit() on peut simplement taper **CTRL + Z**.
 
-Remarque : La raison pour laquelle j'ai des doutes sur la façon de tenir compte de la library d'importation (lualib.lib) dans le projet lua c'est tout simplement que pour l'instant, alors qu'on compile en mode Debug. Cela dit quand on aura une bibliothèque compilée en mode release on aura une autre bibliothèque d'importation dans une autre répertoire (Release au lieu de Debug). Enfin bref, idéalement (et je n'ai pas trop regardé comment le faire dans l'IDE MSVC2012) faudrait pouvoir indiquer qu'il faut utiliser telle ou telle lib d'importation selon que le projet lua est compilé en mode Debug ou Relase. On ne va pas passer la nuit là-dessus... On passe à la compilation dans CVI.
+Remarque : La raison pour laquelle j'ai des doutes sur la façon de tenir compte de la library d'importation (lualib.lib) dans le projet lua c'est tout simplement que pour l'instant, alors qu'on compile en mode Debug. Cela dit quand on aura une bibliothèque compilée en mode release on aura une autre bibliothèque d'importation dans une autre répertoire (Release au lieu de Debug). Enfin bref, idéalement (et je n'ai pas trop regardé comment le faire dans l'IDE MSVC2012) faudrait pouvoir indiquer qu'il faut utiliser telle ou telle lib d'importation selon que le projet lua est compilé en mode Debug ou Release. On ne va pas passer la nuit là-dessus... On passe à la compilation dans CVI.
 
 ## Compilation avec CVI 2012
 
@@ -102,9 +102,9 @@ Là je choisi "Symbols marked for export"
 </div>
 
 
-Je clique sur OK, OK et je reviens dans l'IDE CVI. Afin de compiler lualib sous forme de DLL je clique sur CTRL+M et là... Ça ne marche pas ! Si on lit les messages de warning et d'erreur on voit que dans le fichier liolib.c on a des problèmes avec les fonctions "lua_pclose" et "lua_popen".
+Je clique sur OK, OK et je reviens dans l'IDE CVI. Afin de compiler lualib sous forme de DLL je clique sur **CTRL + M** et là... Ça ne marche pas ! Si on lit les messages de warning et d'erreur on voit que dans le fichier liolib.c on a des problèmes avec les fonctions "lua_pclose" et "lua_popen".
 
-Afin de trouver la source du souci je copie "lua_popen" et je fais CTRL+F. Dans la boite de dialogue qui apparait je fais bien attention de choisir l'option "Multiple Files" et je clique sur le bouton "Mark Files in Project" et je clique sur Find Next pour lancer la recherche.
+Afin de trouver la source du souci je copie "lua_popen" et je fais **CTRL + F**. Dans la boite de dialogue qui apparait je fais bien attention de choisir l'option "Multiple Files" et je clique sur le bouton "Mark Files in Project" et je clique sur Find Next pour lancer la recherche.
 
 <div align="center">
 <img src="./assets/cvi3.webp" alt="" loading="lazy"/>
@@ -124,9 +124,9 @@ c:\Users\frbaucop\Documents\tmp\lua-5.2.1\src\liolib.c(241):      p->f = lu
 
 Si on clique sur les différentes références on arrive dans le fichier liolib.c et on comprend que selon que LUA_USE_POPEN ou LUA_WIN sont définies (ou pas) on a une fonction lua_popen qui s'appuie sur "popen" ou sur "_popen" (ou sur rien). Compte tenu du contexte on imagine assez que LUA_WIN doit être définie et donc que CVI a des problèmes avec la fonction "_popen". Une recherche sur le Web nous montre que cette dernière n'est pas une fonction ANSI C mais une fonctions Microsoft qui appartient à la librairie CRT. Enfin bref...
 
-Vérifions tout cela... Je copie (CTRL+C) le nom de la fonction "_popen" et je vais dans le menu Options/Preprocess Source file. Une nouvelle fenêtre apparaît. Je fais ensuite une recherche (CTRL+F) sur "_popen". Je retrouve en effet l'invocation de cette fonction dans la fonction "io_open". Autrement dit à ce stade on a la preuve que "LUA_WIN" est définie et donc dans le code on utilise la fonction "_popen".
+Vérifions tout cela... Je copie (**CTRL + C**) le nom de la fonction "_popen" et je vais dans le menu Options/Preprocess Source file. Une nouvelle fenêtre apparaît. Je fais ensuite une recherche (**CTRL + F**) sur "_popen". Je retrouve en effet l'invocation de cette fonction dans la fonction "io_open". Autrement dit à ce stade on a la preuve que "LUA_WIN" est définie et donc dans le code on utilise la fonction "_popen".
 
-Si on revient dans le code csource liolib.c et si après avoir sélectionné le mot "LUA_WIN" on clique sur CTRL+I et ensuite on arrive dans le fichier luaconf.h dans la section de code suivante
+Si on revient dans le code csource liolib.c et si après avoir sélectionné le mot "LUA_WIN" on clique sur **CTRL + I** et ensuite on arrive dans le fichier luaconf.h dans la section de code suivante
 
 ```c
 /*
@@ -167,7 +167,7 @@ Je modifie le fichier de la façon suivante
 #endif
 ```
 
-Ce faisant on peut gentiment construire le projet avec CTRL+M. A la fin dans le répertoire CVI2012 on retrouve entre autres un fichier lualib.dll et lualib.lib.
+Ce faisant on peut gentiment construire le projet avec **CTRL + M**. A la fin dans le répertoire CVI2012 on retrouve entre autres un fichier lualib.dll et lualib.lib.
 
 Pour le reste j'ajoute un projet lua au workspace. J'ajoute simplement le fichier lua.c dans le répertoire Source Files et j'ajoute lualib.lib au projet. Avant de compiler quoi que ce soit je m'assure que l'application sera une application de type console. Pour cela je vais dans Build/Target Settings et je coche la case à cocher qui va bien.
 
@@ -176,7 +176,7 @@ Pour le reste j'ajoute un projet lua au workspace. J'ajoute simplement le fichie
 </div>
 
 
-Je construis le projet lua avec CTRL+M et je retrouve un fichier lua.exe dans le répertoire CVI2012. Pour tester lua.exe compilé avec CVI un bon SHIFT F5 suffit :
+Je construis le projet lua avec **CTRL + M** et je retrouve un fichier lua.exe dans le répertoire CVI2012. Pour tester lua.exe compilé avec CVI un bon SHIFT F5 suffit :
 
 <div align="center">
 <img src="./assets/cvi4.webp" alt="" loading="lazy"/>
@@ -192,7 +192,7 @@ Peut-on aller plus loin ? Bien sûr, c'est la fête on est sous CVI donc tout es
 </div>
 
 
-Si je recompile (CTRL+M) lualib.dll et lua.exe avec ces options et si refais le même test alors quand je suis de retour dans l'IDE CVI je remarque que la fenêtre Resource Tracking est à l'écran et que cette dernière est remplie de fragment de mémoire qui n'ont pas été relâchés.
+Si je recompile (**CTRL + M**) lualib.dll et lua.exe avec ces options et si refais le même test alors quand je suis de retour dans l'IDE CVI je remarque que la fenêtre Resource Tracking est à l'écran et que cette dernière est remplie de fragment de mémoire qui n'ont pas été relâchés.
 
 <div align="center">
 <img src="./assets/cvi6.webp" alt="" loading="lazy"/>
@@ -274,11 +274,11 @@ Toutes les allocations sont faites à priori lors de l'appel à luaL_newstate()
 
 Je continue à tracer avec F10. Lorsque j'arrive sur l'appel à lua_pcall(...) j'ai la main dans la console et je dois saisir du code. Si je tape os.exit() et que je tape ENTER bizarrement la console se ferme, je reviens dans CVI, j'ai plus le moyen de tracer quoique ce soit mais cependant je vois les allocations mémoires qui traînent.
 
-Je relance avec F5. Je trace avec F10. Ce coup-ci dans la console au lieu de taper os.exit() je tape CTRL+Z. Dans ce cas, je reviens bien dans CVI sur la ligne lua_toboolean() et je peux continuer à tracer. Pour finir je me rend compte que c'est l'appel lua_close() qui nettoie correctement les fragments de mémoires qui traînent (ils deviennent grisés dans la fenêtre Resource Tracking) . L'invocation de la fonction CVIDynamicMemoryInfo indique qu'il n'y a aucun fragment oublié. Quand je passe sur getc() la console revient au premier plan, je tape sur ENTER, je reveins dans CVI et je termine l'application gentiement.
+Je relance avec F5. Je trace avec F10. Ce coup-ci dans la console au lieu de taper os.exit() je tape **CTRL + Z**. Dans ce cas, je reviens bien dans CVI sur la ligne lua_toboolean() et je peux continuer à tracer. Pour finir je me rend compte que c'est l'appel lua_close() qui nettoie correctement les fragments de mémoires qui traînent (ils deviennent grisés dans la fenêtre Resource Tracking) . L'invocation de la fonction CVIDynamicMemoryInfo indique qu'il n'y a aucun fragment oublié. Quand je passe sur getc() la console revient au premier plan, je tape sur ENTER, je reviens dans CVI et je termine l'application gentiement.
 
-Ouf ! L'honneur est sauf lua est propre sur lui. Morale de l'histoire : ne faut pas utiliser os.exit() mais CTRL+Z
+Ouf ! L'honneur est sauf lua est propre sur lui. Morale de l'histoire : ne faut pas utiliser os.exit() mais **CTRL + Z**
 
-Une dernière remarque pour la route. Si vous voulez une version Release de lua vous faites comme d'habitude. Pensez à vérifier qu'en mode Release vous faites, là aussi, une application en mode console sinon au moment de l'exécution (CTRL+F5 et non plus SHIFT+F5) vous allez avoir à l'écran une console toute moche qui ne ressemble à rien.
+Une dernière remarque pour la route. Si vous voulez une version Release de lua vous faites comme d'habitude. Pensez à vérifier qu'en mode Release vous faites, là aussi, une application en mode console sinon au moment de l'exécution (**CTRL + F5** et non plus **SHIFT + F5**) vous allez avoir à l'écran une console toute moche qui ne ressemble à rien.
 
 Plus important, quitte à être en mode release autant compiler aussi la dll en mode Release et donc il faut penser à indiquer à CVI qu'en mode Release vous voulez, là encore, exporter les symboles qui sont explicitement "marked for export" (voir plus haut la méthode). Le fin du fin en mode release c'est sans doute d'utiliser l'un des deux compilateurs supplémentaires qui viennent avec CVI (je veux parler de clang et clang 2.9). Je vous laisse chercher sur ce site et/ou dans la doc de CVI et/ou je vous propose d'aller faire un tour dans Options/Build Options/Onglet Build Process Options/Section Compiler for Release Configurations).
 

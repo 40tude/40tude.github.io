@@ -145,7 +145,7 @@ Même pas peur ! Passez sous le gestionnaire de fichiers et allez faire un tour 
 C:\Program Files (x86)\National Instruments\CVI2010\include
 ```
 
-Dans le gestionnaire de fichiers de Windows, cliquez sur le chemin (tout en haut de la fenêtre), faites CTRL+C et revenez dans MSVC. Après avoir cliqué sur Project/Properties assurez-vous que Configuration est bien sur "All Configurations".  Ensuite dans C/C++ puis dans General sélectionnez Additional Include Directories et collez (CTRL+V) le chemin complet au répertoire Include que vous venez de mettre dans le presse papier. Cliquez sur OK pour finir.
+Dans le gestionnaire de fichiers de Windows, cliquez sur le chemin (tout en haut de la fenêtre), faites **CTRL + C** et revenez dans MSVC. Après avoir cliqué sur Project/Properties assurez-vous que Configuration est bien sur "All Configurations".  Ensuite dans C/C++ puis dans General sélectionnez Additional Include Directories et collez (**CTRL + V**) le chemin complet au répertoire Include que vous venez de mettre dans le presse papier. Cliquez sur OK pour finir.
 
 <div align="center">
 <img src="./assets/img6.webp" alt="" loading="lazy"/>
@@ -244,5 +244,5 @@ On voit bien qu'on va chercher le fichier UIR dans le répertore assets.
 
 Enfin voilà le contenu de mon répertoire MSVC
 
-Cette organisation permet d'être tranquille et de pouvoir tester les choses de fond en comble avec plusieurs compilateurs. Par exemple je peux éditer le fichier UIR dans CVI, faire CTRL+S, passer sous Visual Studio qui est resté ouvert, faire un Run et voir le résultat. De même si depuis Visual Studio je fais des modifications dans un des sources, lorsque je vais passer sous CVI ce dernier me demandera si je veux utilier la dernière version du fichier source en question... Que du bonheur. Faudra juste pas oublier de distribuer le répertoire assets à côté de l'exécutable le jour du déploiement ou bien de gérer la recherche du fichier UIR (et autres ressources) de façon dynamique dans le code. A vous de voir...
+Cette organisation permet d'être tranquille et de pouvoir tester les choses de fond en comble avec plusieurs compilateurs. Par exemple je peux éditer le fichier UIR dans CVI, faire **CTRL + S**, passer sous Visual Studio qui est resté ouvert, faire un Run et voir le résultat. De même si depuis Visual Studio je fais des modifications dans un des sources, lorsque je vais passer sous CVI ce dernier me demandera si je veux utiliser la dernière version du fichier source en question... Que du bonheur. Faudra juste pas oublier de distribuer le répertoire assets à côté de l'exécutable le jour du déploiement ou bien de gérer la recherche du fichier UIR (et autres ressources) de façon dynamique dans le code. A vous de voir...
 

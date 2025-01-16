@@ -23,7 +23,7 @@ Dans le répertoire "sqlite-dll" copiez le fichier sqlite3.dll et collez-le dans
 
 Dans le répertoire "shell" copiez le fichier sqlite3.exe et collez-le dans le répertoire  `testsql` précédent.
 
-Toujours dans le gestionnaire de fichier Windows, faites SHIFT+CLICK DROIT sur le nom du répertoire  `testsql` et choisissez l'option "Ouvrir une fenêtre de commande ici". On va tester SQLite afin de voir que tout va bien. Dans la console tapez simplement :
+Toujours dans le gestionnaire de fichier Windows, faites **SHIFT + Click Droit** sur le nom du répertoire  `testsql` et choisissez l'option "Ouvrir une fenêtre de commande ici". On va tester SQLite afin de voir que tout va bien. Dans la console tapez simplement :
 
 ```powershell
 sqlite3 Mabase.db
@@ -128,7 +128,7 @@ int main(int argc, char **argv){
 }
 ```
 
-Finalement, vous avez 3 fichiers dans la fenêtre projet : ``sqlite3.h``, ``sqlite3.lib`` et ``test.c`` (si c'est comme ça que vous avez nommé le code source ci-dessous). Allez zou, SHIFT+F5. Ça doit tourner. Voilà la sortie écran que j'obtiens :
+Finalement, vous avez 3 fichiers dans la fenêtre projet : ``sqlite3.h``, ``sqlite3.lib`` et ``test.c`` (si c'est comme ça que vous avez nommé le code source ci-dessous). Allez zou, **SHIFT + F5**. Ça doit tourner. Voilà la sortie écran que j'obtiens :
 
 ```bash
 Nom = BAUCOUR

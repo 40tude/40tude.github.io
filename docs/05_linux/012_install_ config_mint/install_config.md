@@ -165,7 +165,7 @@ sudo ufw allow samba
 
 ### WIN11 host
 1. You have a Public shared directory that you can access from another WIN client. [Read this page](https://www.40tude.fr/shared-folder-in-local-network/) if needed.
-1. WIN + i, Accounts, Connexion Options
+1. **WIN + I**, Accounts, Connexion Options
 1. Deselect the option "Only Hello...". 
 
 <!-- <img src="assets/options_connexion.png" width="700"> -->
@@ -422,11 +422,11 @@ sudo apt install google-chrome-stable -y
 <!-- ##################################################### -->
 ## Create a shortcut keys to launch an app 
 
-* `CTRL+ALT+T` already exists for terminal
-* You want to add, `CTRL+ALT+G` for Google Chrome 
+* **CTRL + ALT + T** already exists for terminal
+* You want to add, **CTRL + ALT + G** for Google Chrome 
 
 1. WIN key, find the app icon, right click, select "Add to Desktop"
-1. WIN + D, right click the icon, select "Properties"
+1. **WIN + D**, right click the icon, select "Properties"
 1. Basic Tab, copy the content of "Command TextBox"
 1. WIN key, launch the Keyboard app, in the top of the GUI, click the "Shortcuts" tab 
 1. Bottom of the GUI, press "Add custom shortcuts"
@@ -434,7 +434,7 @@ sudo apt install google-chrome-stable -y
 1. In the "key shortcuts" list, select one of the unasigned entry, press the keys (CTRL + ALT + G for example)
 1. You can then test the shortcut right away
 1. Once satisfied, close the Keyboard app
-1. WIN + D, deleted the icon of the app from the Desktop
+1. **WIN + D**, deleted the icon of the app from the Desktop
 
 
 

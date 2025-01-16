@@ -39,7 +39,7 @@ Si jamais vous avez un Visual Studio Community 2017RC ca marchera aussi (j'ai fa
 
 Cependant les autres exemples qui viennent avec C++WinRT et qui tournent dans des consoles ou qui ne sont pas des applications Universelles fonctionneront parfaitement.
 
-Les préliminaires étant vérifiés, on passe aux choses sérieuses, on lance Visual Studio et zou, New Project (CTRL+SHIFT+N)
+Les préliminaires étant vérifiés, on passe aux choses sérieuses, on lance Visual Studio et zou, New Project (**CTRL + SHIFT + N**)
 Choisir Visual C++, puis Windows et enfin Blank App (Universal Windows). Ensuite il faut choisir un nom et un répertoire où déposer la solution. Enfin on clique sur OK.
 
 <div align="center">
@@ -75,14 +75,14 @@ Normalement tout doit bien se passer et on obtient ça à l'écran.
 </div>
 
 
-Après avoir fermé l'application et une fois de retour dans l'environnement de développement, on commence par faire le ménage dans le projet et on supprime App.xaml et MainPage.xaml (CTRL+ clic pour les sélectionner l'un puis l'autre)
+Après avoir fermé l'application et une fois de retour dans l'environnement de développement, on commence par faire le ménage dans le projet et on supprime App.xaml et MainPage.xaml (**CTRL + clic** pour les sélectionner l'un puis l'autre)
 
 <div align="center">
 <img src="./assets/Menage1.webp" alt="" loading="lazy"/>
 </div>
 
 
-Après avoir appuyé sur "Suppr", quand on nous le demande, il faut confirmer qu'on souhaite bien supprimer les fichiers sur le disque dur. Ensuite, clic droit sur le nom du projet App1 et on demande à ajouter une nouvelle ressource (Add/New Items... ou CTRL+SHIFT+A pour les intimes)
+Après avoir appuyé sur "Suppr", quand on nous le demande, il faut confirmer qu'on souhaite bien supprimer les fichiers sur le disque dur. Ensuite, clic droit sur le nom du projet App1 et on demande à ajouter une nouvelle ressource (Add/New Items... ou **CTRL + SHIFT + A** pour les intimes)
 
 <div align="center">
 <img src="./assets/NewRessource.webp" alt="" width="900" loading="lazy"/>
@@ -205,7 +205,7 @@ Remarque 2 : l'exemple peut tourner même si on ne met pas l'option /await. Cela
 </div>
 
 
-De retour dans l'éditeur, en ayant le code de App.cpp sous les yeux commencez par faire une compilation du code avec CTRL+F7 (ou menu "Build" puis l'option "Compile" tout en bas). Normalement ça doit compiler sans Warning ni Error.
+De retour dans l'éditeur, en ayant le code de App.cpp sous les yeux commencez par faire une compilation du code avec **CTRL + F7** (ou menu "Build" puis l'option "Compile" tout en bas). Normalement ça doit compiler sans Warning ni Error.
 
 <div align="center">
 <img src="./assets/Compile.webp" alt="" width="900" loading="lazy"/>

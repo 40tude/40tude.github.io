@@ -25,7 +25,7 @@ Quand je clique sur l'icône je n'ai accès qu'à une page web de gestion qui me
 
 Pas la peine de râler... À ce jour il n'y a pas le choix... Oui, oui je sais, c'est un peu la honte pour Orange et ses ingénieurs de ne rien supporter de mieux que ça en 2023.
 
-* WIN + I
+* **WIN + I**
 
 * Applications
 
@@ -77,7 +77,7 @@ Si je clique dessus j'accède dans la joie et la bonne humeur au disque dur SSD 
 
 L'option est dorénavant encore plus cachée qu'avant. Un peu comme le cousin machin qu'on n'a pas trop envie de voir sur la photo de mariage....
 
-* WIN + R
+* **WIN + R**
 
 * "control"
 
@@ -197,12 +197,9 @@ Vu la taille des VM, il faudra sans doute que j'enlève leur dossier du Backup..
 
 ## Forcer une synchro à la main
 
-* WIN + R
-
+* **WIN + R**
 * "control"
-
 * Seconde option du groupe Système et sécurité
-
 * Dans la boite de dialogue qui apparait on peut cliquer sur le lien "Exécuter maintenant"
 
 <div align="center">
@@ -233,7 +230,7 @@ Activer aussi la sauvegarde OneDrive et voir ce que cela donne. En effet si on s
 
 Pour activer OneDrive
 
-* CTRL + I
+* **CTRL + I**
 
 * OneDrive (tout en haut à la hauteur du compte Microsoft)
 

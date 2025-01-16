@@ -211,7 +211,7 @@ int __stdcall WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
 }
 ```
 
-A la suite de quelques copier-coller et de quelques CTRL+M pour compiler le code et vérifier que l'on n'oublie pas des trucs, le début du code source ressemble maintenant à :
+A la suite de quelques copier-coller et de quelques **CTRL + M** pour compiler le code et vérifier que l'on n'oublie pas des trucs, le début du code source ressemble maintenant à :
 
 ```c
 #include "Application_axs.h"
@@ -500,14 +500,14 @@ Quand c'est fait, cliquez sur "Next". En fait CVI va créer à la volée un driv
 
 On retrouve bien les deux interfaces et dans chacune les fonctions que nous avions déclarées  précédemment. Remarquez que dans chaque interface on a, pour le même prix, récupéré 3 nouvelles fonctions : New, Open et Active.
 
-Créez un nouveau code source. Insérez une fonction main() ou winmain() via le menu "Edit" et l'option "Insert Construct". Placez le curseur sur la ligne 8 en dessous du return -1. Double cliquez sur "NewIScalar" dans l'arborescence à gauche. Le panneau de fonction apparaît. Dans le paramètre "ObjectHandle" tapez "hScalar" et cliquez sur CTRL+D . Dans la boîte de dialogue assurez-vous que l'option "Add déclaration to current block..." est sélectionnée (c'est la troisième, tout en bas).
+Créez un nouveau code source. Insérez une fonction main() ou winmain() via le menu "Edit" et l'option "Insert Construct". Placez le curseur sur la ligne 8 en dessous du return -1. Double cliquez sur "NewIScalar" dans l'arborescence à gauche. Le panneau de fonction apparaît. Dans le paramètre "ObjectHandle" tapez "hScalar" et cliquez sur **CTRL + D** . Dans la boîte de dialogue assurez-vous que l'option "Add déclaration to current block..." est sélectionnée (c'est la troisième, tout en bas).
 
 <div align="center">
 <img src="./assets/functionpanel.webp" alt="" loading="lazy"/>
 </div>
 
 
-Quand vous revenez sur le panneau de fonction, faite CTRL+I pour insérer la ligne de code. Maintenant, avant de faire quoi que cela soit d'autre, il est très important de rajouter les deux lignes suivantes un peu au-dessus du return 0 final.
+Quand vous revenez sur le panneau de fonction, faite **CTRL + I** pour insérer la ligne de code. Maintenant, avant de faire quoi que cela soit d'autre, il est très important de rajouter les deux lignes suivantes un peu au-dessus du return 0 final.
 
 ```c
 CA_DiscardObjHandle (hIScalar);
@@ -516,7 +516,7 @@ hIScalar=0;
 
 En effet, si on ne le fait pas on risque des problèmes de gestion mémoire et de ressources.
 
-Cela étant fait je vous propose de faire ce que l'on a fait pour la fonction "Zoubida_NewIScalar" mais pour les fonctions "Zoubida_IScalarSetx", "Zoubida_IScalarSety" et "Zoubida_IScalarGetz". Ceci fait mettez un point d'arrêt sur a ligne CADiscardObjHandle et essayez de lancer l'application cliente avec SHIFT+F5. CVI va demander à sauvegarder les codes source et le projet. Il va sans doute vouloir rajouter les "#include" qui manque. Ne soyez pas farouches et dites "oui" à tout ce qu'il vous demande.
+Cela étant fait je vous propose de faire ce que l'on a fait pour la fonction "Zoubida_NewIScalar" mais pour les fonctions "Zoubida_IScalarSetx", "Zoubida_IScalarSety" et "Zoubida_IScalarGetz". Ceci fait mettez un point d'arrêt sur a ligne CADiscardObjHandle et essayez de lancer l'application cliente avec **SHIFT + F5**. CVI va demander à sauvegarder les codes source et le projet. Il va sans doute vouloir rajouter les "#include" qui manque. Ne soyez pas farouches et dites "oui" à tout ce qu'il vous demande.
 
 A la fin le code source doit ressembler à ce qui suit. N'oubliez pas de mettre un point d'arrêt sur la ligne "CA_DiscardObjHandle" et lancez l'application.
 
@@ -556,7 +556,7 @@ Pour aller plus loin, allez dans le menu Options, choisissez Build Options. Mett
 </div>
 
 
-Allez dans le menu Windows et  sélectionnez l'option "Resource Tracking". Relancez le code avec SHIFT+F5 et observez bien ce qui se passe quand vous passez sur la ligne "CA_DiscardObjHandle".
+Allez dans le menu Windows et  sélectionnez l'option "Resource Tracking". Relancez le code avec **SHIFT + F5** et observez bien ce qui se passe quand vous passez sur la ligne "CA_DiscardObjHandle".
 
 Bon allez... La question a 1M$... Dans ce contexte, comment on debug le client et le serveur ? Notez que pour l'instant notre client n'utilise que l'interface IScalar. Ok ? Ok ! Double cliquez sur le fichier ".axs" du projet. Cliquez sur "Edit Object", demandez à éditer le seul objet du serveur. Assurez-vous que le champ "Default Interface" est positionné sur "IScalar" comme ci-dessous.
 
@@ -565,7 +565,7 @@ Bon allez... La question a 1M$... Dans ce contexte, comment on debug le client e
 </div>
 
 
-Faites "OK", "OK"... "Save and Generate" puis "Exit". De retour dans l'éditeur de CVI faites CTRL+M pour reconstruire le serveur. Dans le code source serverAPI.c mettez un point d'arrêt dans la fonction MultObjIScalarget_z. Pour finir  lancez le serveur avec SHIFT+F5. La fenêtre de l'application doit apparaître à l'écran.
+Faites "OK", "OK"... "Save and Generate" puis "Exit". De retour dans l'éditeur de CVI faites **CTRL + M** pour reconstruire le serveur. Dans le code source serverAPI.c mettez un point d'arrêt dans la fonction MultObjIScalarget_z. Pour finir  lancez le serveur avec **SHIFT + F5**. La fenêtre de l'application doit apparaître à l'écran.
 
 Maintenant ouvrez une seconde instance de CVI. Assurez-vous que le projet Client est bien le projet actif. Ouvrez le source "client.c". Changez la ligne :
 
@@ -581,7 +581,7 @@ Zoubida_ActiveIScalar (NULL, 1, LOCALE_NEUTRAL, 0, &hIScalar);
 
 Dans ce cas, au lieu de créer une nouvelle interface IScalar, le client va essayer de se connecter à l'interface IScalar disponible.  Ça  tombe bien on vient juste de configurer le serveur de telle sorte que son interface par défaut soit IScalar.
 
-Après avoir vérifié qu'il y avait bien un point d'arrêt sur la ligne "Zoubida_ActiveIScalar" on lance le client avec SHIFT + F5. Quand le client s'arrête sur la ligne  "Zoubida_ActiveIScalar" et qu'on avance avec F8 rien ne se passe. Ceci dit, quand on fait F8 sur la ligne "Zoubida_IScalarGetz", l'autre instance de CVI passe au premier plan et on arrive dans "MultObjIScalarget_z" sur la ligne "GetCtrlVal" où on avait mis un point d'arrêt.
+Après avoir vérifié qu'il y avait bien un point d'arrêt sur la ligne "Zoubida_ActiveIScalar" on lance le client avec **SHIFT + F5**. Quand le client s'arrête sur la ligne  "Zoubida_ActiveIScalar" et qu'on avance avec F8 rien ne se passe. Ceci dit, quand on fait F8 sur la ligne "Zoubida_IScalarGetz", l'autre instance de CVI passe au premier plan et on arrive dans "MultObjIScalarget_z" sur la ligne "GetCtrlVal" où on avait mis un point d'arrêt.
 
 <div align="center">
 <img src="./assets/debug2.webp" alt="" loading="lazy"/>

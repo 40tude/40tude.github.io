@@ -829,7 +829,7 @@ Vérifiez ensuite ses paramètres. Mettez-le en mode Debug (Build/Configuration/
 </div>
 
 
-Maintenant, cliquez sur CTRL+M pour construire le projet Target.
+Maintenant, cliquez sur **CTRL + M** pour construire le projet Target.
 
 Ensuite rendez le projet Host actif
 
@@ -838,9 +838,9 @@ Ensuite rendez le projet Host actif
 </div>
 
 
-Là normalement il n'y a rien à vérifier. Appuyez sur CTRL+M pour construire l'application Windows. Quand c'est fait, cliquez droit sur le nom du projet et choisissez Execute. L'interface graphique devrait apparaître à l'écran. Ne touchez à rien, il faut qu'on lance la cible.
+Là normalement il n'y a rien à vérifier. Appuyez sur **CTRL + M** pour construire l'application Windows. Quand c'est fait, cliquez droit sur le nom du projet et choisissez Execute. L'interface graphique devrait apparaître à l'écran. Ne touchez à rien, il faut qu'on lance la cible.
 
-Avec ALT+TAB revenez sous CVI. Allez dans le menu Windows et assurez-vous que la fenêtre Debug Output est visible. Ensuite, cliquez droit sur le projet Target et choisissez l'option Set Active Project. Faites SHIFT+F5 pour lancer le code de la cible. Une fenêtre de type console apparaît alors à l'écran. Jouez avec ALT+TAB pour avoir CVI en fond et les fenêtres console et Host bien en évidence. Cliquez enfin sur Connect. Vous devriez voir des messages dans la fenêtre Debug Output de CVI. Cliquez sur Start... Amusez-vous et testez le comportement des deux codes.
+Avec ALT+TAB revenez sous CVI. Allez dans le menu Windows et assurez-vous que la fenêtre Debug Output est visible. Ensuite, cliquez droit sur le projet Target et choisissez l'option Set Active Project. Faites **SHIFT + F5** pour lancer le code de la cible. Une fenêtre de type console apparaît alors à l'écran. Jouez avec ALT+TAB pour avoir CVI en fond et les fenêtres console et Host bien en évidence. Cliquez enfin sur Connect. Vous devriez voir des messages dans la fenêtre Debug Output de CVI. Cliquez sur Start... Amusez-vous et testez le comportement des deux codes.
 
 **Attention**, tout à la fin, cliquez sur le bouton Shutdown (pour arrêter le code de la cible). La console doit disparaître de l'écran. Ensuite, et uniquement ensuite, cliquez sur la croix pour fermer l'application cliente. Cela dit, si jamais vous cliquez dans le mauvais ordre ou si vous cliquez sur Disconnect avant d'arrêter le client, normalement ce n'est pas un problème. Vous êtes juste bon pour relancer le client (clic droit sur le projet Host et sélection de l'option Execute), vous reconnecter, arrêter la cible, arrêter le client.
 
@@ -865,7 +865,7 @@ Côté Workspace, il va falloir s'assurer que tout est paré afin de déployer l
 
 Vous aurez noté que le paramètre Real-time function tracing est sur Disable. Normal, on n'a rien mis dans le code pour en tirer parti pour l'instant.
 
-Bon allez, clic droit sur le projet Host et sélectionnez l'option Execute pour voir apparaître la fenêtre du client Windows à l'écran. Ceci fait, si la flèche verte de CVI est grisée (Debug Project) pensez à aller dans le menu Run/Switch Execution Target et à choisir votre cible RT. Allez, ceci fait, lancez un bon vieux SHIFT+F5 pour que CVI compile, link et déploie la version Debug du code RT sur la cible.
+Bon allez, clic droit sur le projet Host et sélectionnez l'option Execute pour voir apparaître la fenêtre du client Windows à l'écran. Ceci fait, si la flèche verte de CVI est grisée (Debug Project) pensez à aller dans le menu Run/Switch Execution Target et à choisir votre cible RT. Allez, ceci fait, lancez un bon vieux **SHIFT + F5** pour que CVI compile, link et déploie la version Debug du code RT sur la cible.
 
 La suite vous la connaissez. Par exemple, voilà ce que je vois dans la fenêtre de l'application hôte ainsi que dans la fenêtre Debug Output de CVI quand je me connecte avec l'application cliente.
 

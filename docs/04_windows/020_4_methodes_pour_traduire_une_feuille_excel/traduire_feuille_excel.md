@@ -32,7 +32,7 @@ Vous trouverez-ci dessous les tests que j'ai faits ainsi que mes remarques sur l
 
 * Je clique sur une cellule
 * Onglet révision
-* Je clique sur Traduire (SHIFT + ALT + F7)
+* Je clique sur Traduire (**SHIFT + ALT + F7**)
 
 <div align="center">
 &nbsp;
@@ -106,7 +106,7 @@ Vous trouverez-ci dessous les tests que j'ai faits ainsi que mes remarques sur l
 * Je double clique sur la poignée. Le petit carré bleu en bas à droite de la cellule. Voir ci-dessus.
 * Toutes les cellules adjacentes sont alors traduites. C'est bluffant la première fois 😀
 * Je sélectionne la colonne
-* CTRL + C
+* **CTRL + C**
 * Je la colle ensuite dans mon document Excel original
   + Je copie uniquement le texte
 

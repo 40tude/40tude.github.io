@@ -44,7 +44,7 @@ This launches VSCode "in" the current directory
 
 ## In VSCode
 
-* CTRL + SHIFT + P
+* **CTRL + SHIFT + P**
 * Python: Select Interpreter
     * If needed start to type "Python" then the different options should be listed.
 
@@ -67,7 +67,7 @@ This launches VSCode "in" the current directory
 </div>
 
 
-* CTRL + SHIFT + ù
+* **CTRL + SHIFT + ù**
     * To open a new Terminal within VSCode
 
 <div align="center">
@@ -104,7 +104,7 @@ if __name__ == '__main__':
   MyFunction()
 ```
 
-* CTRL+S
+* **CTRL + S**
   Save the code
 
 * Set a breakpoint

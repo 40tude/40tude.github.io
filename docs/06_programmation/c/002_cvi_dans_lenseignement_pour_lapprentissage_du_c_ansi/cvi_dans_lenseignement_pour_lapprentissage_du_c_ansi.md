@@ -123,7 +123,7 @@ C’est une particularité unique de CVI que nous allons présenter ici. En effe
 
 Imaginons que vous vouliez utiliser la fonction **strcpy** mais que vous ne sachiez plus très bien comment la mettre en oeuvre. Au sein de l’environnement CVI, dans le menu "**Library**"  (ou dans la liste déroulante en bas à gauche de l'environnement de développement) et dans la catégorie "**ANSI C**", vous allez chercher la fonction **strcpy**. Notez que pour vous aider à retrouver la fonction une arborescence est disponible et que chaque fonction ou groupe de fonctions est accompagné d’un descriptif.
 
-Un autre alternative existe. Dans la fenêtre d'édition du code source, vous pouvez toujours taper "**strc**" puis **CTRL+SHIFT+P**. Notez que vous pouvez aussi faire l'inverse : taper **CTRL+SHIFT+P** puis saisir le mot **"strc"**. Ceci fait, la boîte de dialogue ci-dessous vous aide alors à mettre la main sur la fonction en question.
+Un autre alternative existe. Dans la fenêtre d'édition du code source, vous pouvez toujours taper "**strc**" puis **CTRL + SHIFT + P**. Notez que vous pouvez aussi faire l'inverse : taper **CTRL + SHIFT + P** puis saisir le mot **"strc"**. Ceci fait, la boîte de dialogue ci-dessous vous aide alors à mettre la main sur la fonction en question.
 
 <div align="center">
 <img src="./assets/searchstrc.webp" alt="" loading="lazy"/>
@@ -194,7 +194,7 @@ Pensez aux cas où l'étudiant doit communiquer via un port série. Il peut comm
 
 ## Utilisation de la complétion
 
-A l'instar d'autres environnement de développement de code, l'éditeur de code surveille et assiste le développeur à tout instant. Imaginons que l'étudiant soit en train de taper **"strc"** si il tape alors sur CTRL+ESPACE une liste déroulante avec les noms des fonctions possibles apparaît.
+A l'instar d'autres environnement de développement de code, l'éditeur de code surveille et assiste le développeur à tout instant. Imaginons que l'étudiant soit en train de taper **"strc"** si il tape alors sur **CTRL + ESPACE** une liste déroulante avec les noms des fonctions possibles apparaît.
 
 <div align="center">
 <img src="./assets/completion.webp" alt="" width="900" loading="lazy"/>
@@ -215,7 +215,7 @@ Si il tape sur F1 il retrouve l'aide de la fonction en question (il peut aussi c
 </div>
 
 
-En gras, l'étudiant voit le paramètre qu'il est en train de saisir. Si il tape Destination comme nom de variable, il peut déclarer cette dernière en appuyant sur CTRL+D. Une boite de dialogue similaire à celle utilisée précédement apparaît. Il faut saisir la dimension du tableau puis cliquer sur OK pour revenir dans l'éditeur de code source.
+En gras, l'étudiant voit le paramètre qu'il est en train de saisir. Si il tape Destination comme nom de variable, il peut déclarer cette dernière en appuyant sur **CTRL + D**. Une boite de dialogue similaire à celle utilisée précédement apparaît. Il faut saisir la dimension du tableau puis cliquer sur OK pour revenir dans l'éditeur de code source.
 
 Le curseur est sur la ligne en cours d'édition mais la déclaration de la variable a été ajoutée au code source. Pour le second paramètre (la chaîne source dans le cas qui nous interresse) il en va de même. Attention, il ne faudra pas oublier de saisir la parenthèse fermante ni le point virgule.
 

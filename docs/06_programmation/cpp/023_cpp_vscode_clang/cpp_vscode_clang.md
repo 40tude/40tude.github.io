@@ -27,7 +27,7 @@ Bonjour. Today, under Windows, we will use VS Code to compile and link C++ code 
 
 * Windows is running
 * [Install VS Code](https://code.visualstudio.com/). In April 2018, I use 1.21.1.
-* Launch VS Code and then install the C/C++ for Visual Studio Code extension. Use the extension icon on the left or press **CTRL+SHIFT+X**
+* Launch VS Code and then install the C/C++ for Visual Studio Code extension. Use the extension icon on the left or press **CTRL + SHIFT + X**
 
 <div align="center">
 <img src="./assets/CppVSCode1.webp" alt="" loading="lazy"/>
@@ -84,7 +84,7 @@ VS Code should look like this :
 <img src="./assets/cpp-config.webp" alt="" loading="lazy"/>
 </div>
 
-* An auto-generated ``c_cpp_properties.json`` file should appear. Save it pressing **CTRL+S**
+* An auto-generated ``c_cpp_properties.json`` file should appear. Save it pressing **CTRL + S**
 * At this point a ``./.vscode`` subdirectory should be created. 
     * We can see it in the file tree on the left hand side of VS Code as well as in file Explorer. Here is how it looks in VS Code
 
@@ -199,7 +199,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 }
 ```
 
-* Save the ``tasks.json`` file with **CTRL+S**. The file will be saved in the ``./.vscode`` subdirectory
+* Save the ``tasks.json`` file with **CTRL + S**. The file will be saved in the ``./.vscode`` subdirectory
 
 <div align="center">
 <img src="./assets/tasks.webp" alt="" width="450" loading="lazy"/>
@@ -215,7 +215,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 
 
 
-* Press **CTRL+SHIFT+B** to compile and link the debug version of the code
+* Press **CTRL + SHIFT + B** to compile and link the debug version of the code
 * 3 new files should appear in the ``./Debug`` subdirectory (``Test.exe``, ``.ilk`` and ``.pdb``)
 
 
@@ -265,7 +265,7 @@ Pay attention on how the **spaces are escaped** on the ``/o`` and ``/link`` line
 }
 ```
 
-* Save the file with **CTRL+S**. A ``launch.json`` file is created in the ``./.vscode`` subdirectory
+* Save the file with **CTRL + S**. A ``launch.json`` file is created in the ``./.vscode`` subdirectory
 * In the ``main.cpp`` source code set a breakpoint on line 5 for example (click in the left margin)
 
 
@@ -334,7 +334,7 @@ int main(){
 }
 ```
 
-* If you press **CTRL+SHIFT+B** you can't link the code because some library are missing
+* If you press **CTRL + SHIFT + B** you can't link the code because some library are missing
 
 
 
@@ -380,7 +380,7 @@ int main(){
 }
 ```
 
-* Save the file **CTRL+S**
+* Save the file **CTRL + S**
 * Press **F5** to run a debug session
 * A message box should appear on the screen when you execute line 8.
 

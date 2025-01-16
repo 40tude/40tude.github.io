@@ -14,7 +14,7 @@ Je souhaite afficher aléatoirement l'un des "about_*" de la documentation Power
 
 ## Recette
 
-* Win + R
+* **WIN + R**
 * taskschd.msc
 
 <div align="center">

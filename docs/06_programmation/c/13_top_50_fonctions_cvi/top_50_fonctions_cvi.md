@@ -71,7 +71,7 @@ Delay@8
 HideBuiltInCtrlMenuItem@12
 ```
 
-Je vous conseille donc de jeter votre œil. Si une fonction est inconnue, faites CTRL+SHFT+P dans l'éditeur de code de CVI, retrouvez-la et lisez la doc. Oui, oui bien sûr il ne faut pas mettre l'@ ni le chiffre s'il y en a un. Attention, je pense que la fonction _GetFilesArray est une fonction cachée.
+Je vous conseille donc de jeter votre œil. Si une fonction est inconnue, faites **CTRL + SHFT + P** dans l'éditeur de code de CVI, retrouvez-la et lisez la doc. Oui, oui bien sûr il ne faut pas mettre l'@ ni le chiffre s'il y en a un. Attention, je pense que la fonction _GetFilesArray est une fonction cachée.
 
 {: .note }
 Oubliez la fonction ``Fmt``. C'est un veau qui n'avance pas qui date de LabWindows/DOS (oui oui j'ai bien dit [MS-DOS](https://fr.wikipedia.org/wiki/MS-DOS) comme Disk Operating System)

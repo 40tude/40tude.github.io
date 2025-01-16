@@ -239,7 +239,7 @@ network={
 }
 ```
 
-* CTRL+O puis CTRL+X pour sauver, quitter
+* **CTRL + O** puis **CTRL + X** pour sauver, quitter
 * Edition du fichier interfaces
 
 ```bash
@@ -260,7 +260,7 @@ iface wlan0 inet dhcp
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
-* CTRL+O puis CTRL+X pour sauver, quitter
+* **CTRL + O** puis **CTRL + X** pour sauver, quitter
 
 
 

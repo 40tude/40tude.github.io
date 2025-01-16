@@ -13,7 +13,7 @@ last_modified_date: 2023-01-12 00:10:03
 
 WSL 2 utilise une machine virtuelle plutôt qu'une couche de traduction entre Windows et Linux (WSL). Ça se lance plus vite et l'intégration avec Windows est bien plus aboutie.
 
-Il faut être en Windows 10 Version 1903 ou supérieure. À vérifier avec l'utilitaire WinVer (à lancer avec WIN + R). En octobre 2020 je suis sous la version 2004.
+Il faut être en Windows 10 Version 1903 ou supérieure. À vérifier avec l'utilitaire WinVer (à lancer avec **WIN + R**). En octobre 2020 je suis sous la version 2004.
 
 <div align="center">
 <img src="./assets/image-4.webp" alt="" width="600" loading="lazy"/>

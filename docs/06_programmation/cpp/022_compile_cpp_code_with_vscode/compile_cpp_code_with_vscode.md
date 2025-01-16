@@ -80,14 +80,14 @@ Once VS Code is launched, the directory (workspace) from which we invoked it sho
 
 So far so good. Let's write some complex C++ code to stress our compiler...
 
-CTRL + N to create a new file. Then enter few lines of code.
+**CTRL + N** to create a new file. Then enter few lines of code.
 
 <div align="center">
 <img src="./assets/CppVSCode5.webp" alt="" loading="lazy"/>
 </div>
 
 
-At this point the code looks "bad" because it is not yet recognized as a C++ code. Let's save it. CTRL + S and let's call it main.cpp.
+At this point the code looks "bad" because it is not yet recognized as a C++ code. Let's save it. **CTRL + S** and let's call it main.cpp.
 
 <div align="center">
 <img src="./assets/CppVSCode6.webp" alt="" loading="lazy"/>
@@ -110,7 +110,7 @@ So, we will create what VS Code call a ``Task``. Don't panic... From now, all th
 </div>
 
 
-Ok, now, inside VS Code let's press F1 (or CTRL + SHIFT + P). In the control bar, after the ">" sign, type the word "task" then select the ``Configure Default Build Task`` option.
+Ok, now, inside VS Code let's press F1 (or **CTRL + SHIFT + P**). In the control bar, after the ">" sign, type the word "task" then select the ``Configure Default Build Task`` option.
 
 <div align="center">
 <img src="./assets/CppVSCode8.webp" alt="" width="900" loading="lazy"/>
@@ -236,9 +236,9 @@ One could try ``tasks.json`` as below:
   + ``/EHsc`` is for the exceptions
   + ``/ZI`` is for the format of the debug information.
   + If you want more information, Google is your friend 😁
-* At the very end of the file, the "group" (line 14) instructs VS Code that the command will be the default build command. This mean one will be able to invoke it by pressing ``CTRL + SHIFT + B``.
+* At the very end of the file, the "group" (line 14) instructs VS Code that the command will be the default build command. This mean one will be able to invoke it by pressing **CTRL + SHIFT + B**.
 
-Let's save the ``tasks.json`` file and let's press ``CTRL + SHIFT + B``. If everything works fine the VS Code terminal should show up and display various messages during the build process.
+Let's save the ``tasks.json`` file and let's press **CTRL + SHIFT + B**. If everything works fine the VS Code terminal should show up and display various messages during the build process.
 
 <div align="center">
 <img src="./assets/CppVSCode14.webp" alt="" width="900" loading="lazy"/>
@@ -422,7 +422,7 @@ The directory should now look like this:
 </div>
 
 
-Ready?  Press CTRL + SHIFT + B. If everything works fine, at the end of the compilation, no new file should be added in the workspace folder, but the Debug should look like this:
+Ready?  Press **CTRL + SHIFT + B**. If everything works fine, at the end of the compilation, no new file should be added in the workspace folder, but the Debug should look like this:
 
 <div align="center">
 <img src="./assets/CppVSCode18.webp" alt="" loading="lazy"/>
@@ -672,7 +672,7 @@ One could try ``tasks.json`` as below:
 
 OK, let's save the latest version of ``tasks.json``
 
-Now click on the ``Tasks`` menu (ALT+T) and select the ``Execute Task`` option. In the list select the ``Build Release`` option. Alternatively, you can strike **CTRL+ALT+B** and select the ``Build Release`` option.
+Now click on the ``Tasks`` menu (ALT+T) and select the ``Execute Task`` option. In the list select the ``Build Release`` option. Alternatively, you can strike **CTRL + ALT + B** and select the ``Build Release`` option.
 
 <div align="center">
 <img src="./assets/CppVSCode27.webp" alt="" loading="lazy"/>
@@ -693,7 +693,7 @@ At the end, the ``Release`` subdirectory should look like this:
 </div>
 
 
-We can now double click on ``test.exe``. When the console is on screen while ``getchar()`` is waiting, we can press ``CTRL + ALT + SUPP``, select the ``Task Manager`` and find ``test.exe`` in the list
+We can now double click on ``test.exe``. When the console is on screen while ``getchar()`` is waiting, we can press **CTRL + ALT + SUPP**, select the ``Task Manager`` and find ``test.exe`` in the list
 
 <div align="center">
 <img src="./assets/CppVSCode30.webp" alt="" loading="lazy"/>
@@ -889,9 +889,9 @@ Let's review the basic process:
 * ``cd`` into the directory
 * Invoke ``code .`` from the prompt (don't forget the dot)
 * Write and save a ``test.cpp`` file
-* ``CTRL + SHIFT + B`` to build the application
+* **CTRL + SHIFT + B** to build the application
 * Done! A ``test.exe`` is in the current directory
-* ``CTRL + SHILF + ù`` (french keyboard) to open a terminal
+* **CTRL + SHIFT + ù** (french keyboard) to open a new terminal
 * Invoke ``./test.exe`` from the terminal
 
 Do you want to debug your code? Strike F5 and VSCode will do everything for you.

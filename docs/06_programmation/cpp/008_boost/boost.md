@@ -157,7 +157,7 @@ Ceci dit, dans ce cas il faut que le fichier stdafx.h ressemble à :
 
 Quand les code sources sont corrects il faut lancer la compilation et l'édition de liens en appuyant F7.
 
-Pour tester le programme il faut appuyer sur F5. Quand la console est à l'écran on rentre plusieurs chiffres séparés par un espace et on tape sur ENTER. Pour arrêter le programme il faut faire CTRL+Z.
+Pour tester le programme il faut appuyer sur F5. Quand la console est à l'écran on rentre plusieurs chiffres séparés par un espace et on tape sur ENTER. Pour arrêter le programme il faut faire **CTRL + Z**.
 
 <div align="center">
 <img src="./assets/boost41.webp" alt="" loading="lazy"/>
@@ -275,7 +275,7 @@ Ensuite il faut :
 1. Cliquer droit sur "Solution 'regsample2' (1 project)"
 2. Choisir l'option "Open Folder in File Explorer"
 3. Cliquer sur le répertoire Debug
-4. CTRL+SHIFT+Click Droit sur le répertoire Debug et choisir l'option "Ouvrir un fenêtre de commandes ici"
+4. **CTRL + SHIFT + Click Droit** sur le répertoire Debug et choisir l'option "Ouvrir un fenêtre de commandes ici"
 
 Taper alors :
 

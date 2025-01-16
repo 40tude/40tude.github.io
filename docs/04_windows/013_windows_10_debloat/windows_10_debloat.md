@@ -44,7 +44,7 @@ En plus, je pense que j'aurai l'occasion de revenir sur la page (c'est une "neve
 {: .no_toc }
 Dans le billet, si on voit :
 
-* WIN + R
+* **WIN + R**
 * "winver" + ENTER
 
 Cela veut dire :
@@ -103,7 +103,7 @@ C'est pour fixer les idées et éviter d'appliquer à la version de Windows de l
 
 Allez, c'est parti je vérifie la version de Windows que j'utilise :
 
-* WIN + R
+* **WIN + R**
 * "winver" + ENTER
 
 <div align="center">
@@ -122,7 +122,7 @@ On va aller jeter un oeil dans les informations système
 
 ### Ligne de commande (PowerShell ou WT)
 {: .no_toc }
-* WIN + X
+* **WIN + X**
 * "i" + ENTER
 
 * Saisissez les commandes ci-dessous
@@ -225,7 +225,7 @@ Si un jour il faut trouver de la place on peut supprimer les points de restaurat
 
 ### Ligne de commande (PowerShell en mode Administrateur)
 {: .no_toc }
-* WIN + X
+* **WIN + X**
 * "a" + ENTER
 * Coller la ligne ci-dessous
   + Get-ComputerRestorePoint
@@ -250,17 +250,17 @@ Si un jour il faut trouver de la place on peut supprimer les points de restaurat
 
 L'idée c'est d'avoir une photographie du système avant de faire quoique ce soit. Cela nous permettra de mesurer nos progrès (s'il y en a...) J'estime avoir un usage "normal" du PC. Par exemple, je n'installe pas 30 softs par semaine et je ne me suis pas occupé du PC depuis un bon moment (quelques mois).
 
-* CTRL + SHIFT +ESC
-* CTRL + TAB pour aller sur l'onglet performance
+* **CTRL + SHIFT + ESC**
+* **CTRL + TAB** pour aller sur l'onglet performance
 
 <div align="center">
 <img src="./assets/image-22.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
-Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je recommande de faire une copie de toute la fenêtre (WIN + SHIFT +S puis sélection du mode capture de fenêtre) et de coller cette capture dans OneNote. Là, j'ai fait la bêtise de ne copier que le bas de la fenêtre et finalement je le regrette.
+Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je recommande de faire une copie de toute la fenêtre (**WIN + SHIFT + S** puis sélection du mode capture de fenêtre) et de coller cette capture dans OneNote. Là, j'ai fait la bêtise de ne copier que le bas de la fenêtre et finalement je le regrette.
 
-* CTRL + SHIFT + TAB pour aller sur l'onglet processus
+* **CTRL + SHIFT + TAB** pour aller sur l'onglet processus
 * Je clique sur l'en-tête de la colonne Processeur pour mettre les process les plus gourmand en puissance CPU en haut de la liste
 * Faire une capture et la mettre dans OneNote
 
@@ -281,7 +281,7 @@ Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je 
 
 ### Ligne de commande (PowerShell ou WT)
 {: .no_toc }
-* WIN + X
+* **WIN + X**
 * "i" + ENTER
 * Coller les lignes ci-dessous
   + *À faire*
@@ -290,7 +290,7 @@ Au bas de la page, je vois qu'il y a 192 processus qui tournent. Idéalement je 
 
 Cela se fait via le gestionnaire de tâches
 
-* WIN + SHIFT + ESC
+* **WIN + SHIFT + ESC**
 * Faire clic droit dans l'en-tête et cliquer sur toutes des cases à cocher
 
 <div align="center">
@@ -318,7 +318,7 @@ Cela se fait via le gestionnaire de tâches
 
 Il y a encore 2 endroits où on peut trouver des lancements de programmes au démarrage. Pour cela il va falloir aller dans la base de registre. /Z!\ On a vite fait de mettre le bronx sur le PC si on n'est pas très prudent. Allez, on y va :
 
-* WIN + R
+* **WIN + R**
 * "regedit" + ENTER
 
 <div align="center">
@@ -398,8 +398,8 @@ Il y a encore 2 endroits où on peut trouver des lancements de programmes au dé
 </div>
 
 
-* CTRL + A pour sélectionner tous les fichiers
-* SHIFT + SUPPR pour supprimer les fichiers sans les mettre dans la corbeille
+* **CTRL + A** pour sélectionner tous les fichiers
+* **SHIFT + SUPPR** pour supprimer les fichiers sans les mettre dans la corbeille
 
 <div align="center">
 <img src="./assets/image-65.webp" alt="" width="450" loading="lazy"/>
@@ -430,7 +430,7 @@ Pas la peine de vider le cache si Dropbox fonctionne bien. Cela dit, si en inspe
 
 Allez, on y va
 
-* WIN + E
+* **WIN + E**
 * Cliquer sur Affichage
 * S'assurer que les cases "Extensions de noms de fichiers" et "Eléments masqués" sont bien cochées
 
@@ -455,8 +455,8 @@ Allez, on y va
 </div>
 
 
-* CTRL + A pour sélectionner tous les répertoires et fichiers
-* SHIFT + SUPPR pour les supprimer sans les stocker dans la corbeille
+* **CTRL + A** pour sélectionner tous les répertoires et fichiers
+* **SHIFT + SUPPR** pour les supprimer sans les stocker dans la corbeille
 
 <div align="center">
 <img src="./assets/image-111.webp" alt="" width="450" loading="lazy"/>
@@ -475,7 +475,7 @@ Allez, on y va
 
 ## Inspecter les répertoires de "Démarrage"
 
-* WIN + r
+* **WIN + R**
 * "shell:startup"
 
 <div align="center">
@@ -490,7 +490,7 @@ On arrive sur le répertoire de démarrage qui est propre à l'utilisateur coura
 </div>
 
 
-* WIN + r
+* **WIN + R**
 * "shell:common startup"
 
 <div align="center">
@@ -658,7 +658,7 @@ Sors le popcorn et regardons cette vidéo : <https://youtu.be/9a_BHAMrdsw?t=94>
 
 Lancer un terminal en mode **Administrateur**
 
-* WIN + X
+* **WIN + X**
 * "a" + ENTER
 * Se déplacer dans le répertoire où on a décompressé Windows10Debloater
 
@@ -745,7 +745,7 @@ Lancer un terminal en mode **Administrateur**
 
 Une fois qu'on a au moins une tuile on peut suivre la méthode suivante
 
-* WIN + R
+* **WIN + R**
 * explorer shell:AppsFolder
 
 <div align="center">
@@ -836,7 +836,7 @@ Diagnostic
 
 À chaque démarrage, je vois bien que la charge processeur est liée en grande partie à l'indexation du disque dur. Je vais donc la supprimer.
 
-* WIN + E (pour lancer l'explorateur de fichiers)
+* **WIN + E** pour lancer l'explorateur de fichiers
 * Retrouver le disque C
 * Clic droit
 * Propriétés
@@ -883,7 +883,7 @@ Diagnostic
 
 Lancer un terminal en mode **Administrateur**
 
-* WIN + X
+* **WIN + X**
 * "a" + ENTER
 
 Ou alors, si tu as l'excellent [Windows Terminal](http://ibit.ly/2NkQ) sur ton PC tu peux faire...
@@ -954,7 +954,7 @@ On commence à aller chercher les derniers %. Je vais donc affiner un peu les ch
 * Je fais un reboot
 * Je lance le gestionnaire de tâches et je ne touche à rien
 * J'attends 5 min.
-* Je fais une copie d'écran (WIN + SHIFT + S)
+* Je fais une copie d'écran (**WIN + SHIFT + S**)
 * Je lance OneNote et je colle l'image dedans
 
 <div align="center">
@@ -1152,7 +1152,7 @@ Remember : "Un grand pouvoir implique de grandes responsabilités" : <https://yo
 
 On va utiliser un de leurs outils : Autoruns. Cela dit comme les outils de la suite évoluent très vite on va se faire un lien sur le repository "live" ce qui nous permettra de toujours utiliser la dernière version à jour
 
-* WIN + E
+* **WIN + E**
 * Créer un répertoire
 * Y créer un raccourci
 
@@ -1220,7 +1220,7 @@ Si je prends une autre catégorie moins bondée (Drivers par exemple), voilà ce
 </div>
 
 
-La ligne en jaune correspond à un fichier qui n'a pas été trouvé par Autoruns. Cela ne veut pas dire qu'il est plus sur le disque. Cela veut dire qu'il n'a pas été trouvé. Si après avoir vérifié que le fichier en question n'est pas ailleurs sur le disque, je peux donc supprimer la ligne avec un clic droit (CTRL+D). À noter les options "Search Online" et "Properties" (qu'on ne voit pas sur la capture d'écran ci-dessous). Allez, je supprime la ligne.
+La ligne en jaune correspond à un fichier qui n'a pas été trouvé par Autoruns. Cela ne veut pas dire qu'il est plus sur le disque. Cela veut dire qu'il n'a pas été trouvé. Si après avoir vérifié que le fichier en question n'est pas ailleurs sur le disque, je peux donc supprimer la ligne avec un clic droit (**CTRL + D**). À noter les options "Search Online" et "Properties" (qu'on ne voit pas sur la capture d'écran ci-dessous). Allez, je supprime la ligne.
 
 <div align="center">
 <img src="./assets/image-130.webp" alt="" width=450 loading="lazy"/>
@@ -1288,7 +1288,7 @@ Sors les Knackis et la moutarde et regardons ces vidéos
 
 * WIN
 * "plan" + ENTER
-* WIN + Fleche HAUT
+* **WIN + Fleche HAUT**
 
 <div align="center">
 <img src="./assets/image-105.webp" alt="" width="450" loading="lazy"/>
@@ -1462,7 +1462,7 @@ La plupart ont été installés avec l'excellent Chocolatey, d'autres avec winge
 
 Je ne suis franchement pas sûr que ce soit une bonne idée. De toute façon il peut être réactiver dans notre dos. Heu... C'est tout bête mais avant de le faire il faut vérifier que la machine est à jour et s'assurer qu'il n'est PAS en cours d'utilisation et/ou l'arrêter.
 
-* WIN + R
+* **WIN + R**
 * "services.msc"
 
 <div align="center">

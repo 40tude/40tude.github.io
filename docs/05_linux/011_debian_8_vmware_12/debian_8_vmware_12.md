@@ -32,8 +32,8 @@ Au premier démarrage, commencer par éjecter le CD. Ensuite dans un terminal :
 2. ``visudo``
 3. En dessous de la ligne : ``%sudo ALL=(ALL:ALL) ALL``
 4. Je rentre une ligne du style : ``philippe ALL=(ALL:ALL) ALL``
-5. ``CTRL + O`` pour écrire
-6. ``CTRL + X`` pour quitter
+5. **CTRL + O** pour écrire
+6. **CTRL + X** pour quitter
 7. ``exit`` (pour quitter le mode super user)
 
 Dans un terminal :

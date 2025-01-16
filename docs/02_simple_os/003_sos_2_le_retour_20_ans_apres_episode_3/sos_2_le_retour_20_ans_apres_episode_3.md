@@ -189,7 +189,7 @@ Il reste des erreurs
 </div>
 
 
-CTRL+click sur la ligne `main.c 158` puis tu mets en commentaire les lignes ci-dessous :
+**CTRL + click** sur la ligne `main.c 158` puis tu mets en commentaire les lignes ci-dessous :
 
 ```c
 

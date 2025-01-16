@@ -28,9 +28,9 @@ Et me retrouver dans une console avec mon environnement virtuel Anaconda classiq
 ## Méthode
 Je suppose que des versions relativement récentes de Win 11, Win Terminal et Anaconda sont installées.
 
-Ouvrir Win Terminal (WIN + X + I)
+Ouvrir Win Terminal (**WIN + X + I**)
 
-Ouvrir les settings de Win Terminal (CTRL + , )
+Ouvrir les settings de Win Terminal (**CTRL + ,** )
 
 En bas, à gauche, choisir "Ouvrir le fichier JSON". En ce qui me concerne, la suite va se faire sous l'excellent VSCode.
 
@@ -39,7 +39,7 @@ En bas, à gauche, choisir "Ouvrir le fichier JSON". En ce qui me concerne, la s
 </div>
 
 
-Retrouver la section "profiles" dans le fichier (plutôt en haut de ce dernier). Si vous êtes perdu, faites une recherche (CTRL+F) sur le mot "profiles"
+Retrouver la section "profiles" dans le fichier (plutôt en haut de ce dernier). Si vous êtes perdu, faites une recherche (**CTRL + F**) sur le mot "profiles"
 
 <div align="center">
 <img src="./assets/image-3.webp" alt="" width="900" loading="lazy"/>
@@ -99,7 +99,7 @@ J'appuie sur ALT + ENTER pour faire apparaitre les propriétés du fichier séle
 </div>
 
 
-Je clique dans le champ cible. CTRL + A pour tout sélectionner puis je colle ça dans un nouveau fichier dans VSCode. Chez moi ça ressemble à ça :
+Je clique dans le champ cible. **CTRL + A** pour tout sélectionner puis je colle ça dans un nouveau fichier dans VSCode. Chez moi ça ressemble à ça :
 
 ```
 %windir%\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\phili\anaconda3\shell\condabin\conda-hook.ps1' ; conda activate 'C:\Users\phili\anaconda3' "

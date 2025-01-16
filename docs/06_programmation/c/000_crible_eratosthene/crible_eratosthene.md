@@ -19,7 +19,7 @@ Je ne reviens pas sur le principe de cet algorithme qui permet de retrouver des 
 
 ## Code initial
 
-Le code ci-dessous est l'implémentation directe de ce qui vient d'être dit. Faites un copier-coller dans CVI par exemple, SHIFT-F5, sauvez sur disque ce qui doit l'être, et roule ça doit fonctionner.
+Le code ci-dessous est l'implémentation directe de ce qui vient d'être dit. Faites un copier-coller dans CVI par exemple, **SHIFT + F5**, sauvez sur disque ce qui doit l'être, et roule ça doit fonctionner.
 
 ```c
 #include <stdlio.h>

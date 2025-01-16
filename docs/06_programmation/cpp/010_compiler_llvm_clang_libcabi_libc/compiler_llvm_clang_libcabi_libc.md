@@ -317,7 +317,7 @@ Bon, là y a un peu de boulot. En effet il faut :
 * Retrouver la ligne ``for FILE in ../src/*.cpp; do``
 * Ajouter ``-I../../libcxx/include`` juste après ``$EXTRA_FLAGS``
 
-Sauver (CTRL+O), quitter (CTRL+X) nano puis taper dans la console
+Sauver (**CTRL + O**), quitter (**CTRL + X**) nano puis taper dans la console
 
 ```bash
 $ TRIPLE=-linux- ./buildit
@@ -464,7 +464,7 @@ $ cd ~/llvm
 $ nano llvm/tools/clang/lib/Frontend/InitHeaderSearch.cpp
 ```
 
-Ensuite, dans le fichier en question il faut faire une recherche (CTRL W sous nano) du mot "FIXME:" et modifier le code en s'inspirant de ce qui suit :
+Ensuite, dans le fichier en question il faut faire une recherche (**CTRL + W** sous nano) du mot "FIXME:" et modifier le code en s'inspirant de ce qui suit :
 
 ```bash
 // FIXME: temporary hack: hard-coded paths.
@@ -480,7 +480,7 @@ AddPath("/usr/include/x86_64-linux-gnu", System, true);
 AddPath("/usr/include", System, true);
 ```
 
-Notez qu'il n'y a bien que 3 paramètres (et pas 5 comme on peut le voir sur d'autres sites web) dans la fonction AddPath. Ceci fait, on sauve (CTRL O), on quitte (CTRL X) et c'est parti. Rebelotte :
+Notez qu'il n'y a bien que 3 paramètres (et pas 5 comme on peut le voir sur d'autres sites web) dans la fonction AddPath. Ceci fait, on sauve (**CTRL + O**), on quitte (**CTRL + X**) et c'est parti. Rebelotte :
 
 ```bash
 $ cd ~/llvm/build

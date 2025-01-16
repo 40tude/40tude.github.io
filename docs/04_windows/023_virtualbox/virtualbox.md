@@ -29,7 +29,7 @@ Allez, une bonne chose de faite. On passe à la suite.
 $ sudo apt-get install mc
 ```
 
-Maintenant on peut "graphiquement" naviguer dans les répertoires avec "mc". On peut surtout éditer les fichiers avec "mcedit". En fait je préfère "mcedit" à "nano" car on a pas besoin de faire CTRL+C pour savoir sur quelle ligne on est (toutes les informations sont affichée en haut de la "fenêtre"). Enfin bref c'est du détail. Pour en apprendre plus on peut aller jeter un oeil sur : <http://www.thegeekstuff.com/2008/10/midnight-commander-mc-guide-powerful-text-based-file-manager-for-unix/>
+Maintenant on peut "graphiquement" naviguer dans les répertoires avec "mc". On peut surtout éditer les fichiers avec "mcedit". En fait je préfère "mcedit" à "nano" car on a pas besoin de faire **CTRL + C** pour savoir sur quelle ligne on est (toutes les informations sont affichée en haut de la "fenêtre"). Enfin bref c'est du détail. Pour en apprendre plus on peut aller jeter un oeil sur : <http://www.thegeekstuff.com/2008/10/midnight-commander-mc-guide-powerful-text-based-file-manager-for-unix/>
 
 ## Pour installer les Additions invité
 

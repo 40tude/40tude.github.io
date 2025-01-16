@@ -224,8 +224,8 @@ Il faut cliquer sur ``Browse`` dans le bandeau.
 Les 2 cartes sont alors visibles dans la colonne du milieu. Je propose, sans être sûr à 100% que ce soit la meilleure façon de faire, de :
 
 * Cliquer sur l'une d'elle
-* CTRL + A pour les sélectionner toutes les deux
-* CTRL + SUPPR pour les supprimer
+* **CTRL + A** pour les sélectionner toutes les deux
+* **CTRL + SUPPR** pour les supprimer
 
 On ferme le Browser et on revient à l'accueil.
 

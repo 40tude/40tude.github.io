@@ -13,7 +13,7 @@ Tests have been done with Linux Mint 21.2 but the process does not depend on the
 
 * Plug the key.
 * Once detected, Nemo or any other "file explorer" opens.
-* "CTRL+ALT+T" to open a terminal.
+* **CTRL + ALT + T** to open a terminal.
 
 ```
 lsblk                                       # No need to be root

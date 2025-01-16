@@ -65,7 +65,7 @@ Bon allez, pour le coup, c'est parti.
 
 ### Ouvrir une console en mode administrateur
 
-* WIN + X, i
+* **WIN + X, I**
   + Cela veut dire qu'il faut presser les touches Windows et 'x' simultanément puis appuyer sur la touche 'i'
 
 ### Vérifier que le réseau est privé
@@ -158,7 +158,7 @@ On en a terminé avec la ou les machines distantes
 
 ### Ouvrir une console en mode administrateur
 
-* WIN + X, i
+* **WIN + X, i**
 
 ### Vérifier la communication avec la machine distante
 
@@ -390,7 +390,7 @@ On peut vérifier le certificat sur la machine cible en suivant les étapes ci-d
 </div>
 
 
-* CTRL + M
+* **CTRL + M**
 
 * Certificats (liste de gauche)
 

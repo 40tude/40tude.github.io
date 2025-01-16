@@ -34,7 +34,7 @@ add_executable (TestNoProject main.cpp)
 
 * Je lance Visual Studio 2017 (je suis en version 15.5.5)
 * Ensuite j'appuie sur 'ALT F', puis sur 'o', puis sur 'd'
-    * Autrement dit je vais dans le menu Fichiers, option ``Ouvrir``, option ``Dossier`` (on peut aussi taper CTRL+ALT+MAJ+o)
+    * Autrement dit je vais dans le menu Fichiers, option ``Ouvrir``, option ``Dossier`` (on peut aussi taper **CTRL + ALT + MAJ + O**)
 * Là, je choisi le répertorie que je viens de créer
 * À partir de là, Visual Studio utilise les infos du fichier ``CMakeLists.txt`` pour générer les cibles nécessaires. Comme il est gentil il nous dit ce qu'il fait dans la console de sortie.
 

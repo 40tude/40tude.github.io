@@ -72,7 +72,7 @@ Ajouter une ligne du style (c'est une copie de la ligne du user pi)
 Marcel ALL=(ALL) NOPASSWD: ALL
 ```
 
-Sauver le fichier (CTRL+X puis CTRL+O) et normalement le user (Marcel dans notre cas) peut lancer des commandes de type sudo...
+Sauver le fichier (**CTRL + X** puis **CTRL + O**) et normalement le user (Marcel dans notre cas) peut lancer des commandes de type sudo...
 
 ### Changer le nom de la machine 1/2
 

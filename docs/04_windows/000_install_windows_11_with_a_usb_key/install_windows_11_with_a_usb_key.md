@@ -51,7 +51,7 @@ Then the download should start. According to the quality of your connexion to th
 
 No matter how you got the ISO. The steps below may help you.
 
-Once the ISO file is in the Downloads directory, open a terminal (WIN + x, i). This means press the WIN and the "x" keys at the same time and then press the "i" key. If this does not work for you, press the WIN key then type "PowerShell" and press ENTER.
+Once the ISO file is in the Downloads directory, open a terminal (**WIN + X, I**). This means press the WIN key and the "x" keys at the same time and then press the "i" key. If this does not work for you, press the WIN key then type "PowerShell" and press ENTER.
 
 The prompt should confirm you are in a PowerShell session and in your home directory. Go to the Downloads directory with this command:
 
@@ -195,7 +195,7 @@ OK, OK, Windows is installed but this is the beginning of the journey not the en
 
 ## Windows Update
 
-Give your brand-new PC few minutes to recover then press WIN + I and click on the Windows Update option at the bottom of the list. You may have to go thru this process one or two times and your PC may restart one or two times as well.
+Give your brand-new PC few minutes to recover then press **WIN + I** and click on the Windows Update option at the bottom of the list. You may have to go thru this process one or two times and your PC may restart one or two times as well.
 
 <div align="center">
 <img src="./assets/image-48.webp" alt="" loading="lazy"/>
@@ -205,7 +205,7 @@ Give your brand-new PC few minutes to recover then press WIN + I and click on th
 
 Make sur all the Fn keys, sound, trackball, Wifi... Are working properly. If not, you may have to go and download the latest BIOS update from the PC supplier. I can't say much here because the situation depends on the brand of your PC. Just keep this paragraph as a reminder.
 
-For example, I was not able to make the mic working. There are plenty of web site that help you checking mike, camera etc. I had to press WIN + R and to type :
+For example, I was not able to make the mic working. There are plenty of web site that help you checking mike, camera etc. I had to press **WIN + R** and to type :
 
 ```
 mmsys.cpl
@@ -254,7 +254,7 @@ Once in the Downloads directory, double click on it and let the installer work. 
 
 Trust me, you may not know it yet but [choco](https://community.chocolatey.org/) is one of your best friends. Below we will install choco and we will install one software. Just to show how easy the process is and demonstrate the benefits. To make a long story short, with choco you oversimplify the installation process and the upgrade of ALL the installed softwares with one command. OK, let's start by installing choco.
 
-Open a terminal in elevated mode (WIN + x, a). If this does not work for you, press the WIN key then type "PowerShell" and then select the "Execute as administrator" option.
+Open a terminal in elevated mode (**WIN + X, A**). If this does not work for you, press the WIN key then type "PowerShell" and then select the "Execute as administrator" option.
 
 Copy and paste the line below, press ENTER and let it work.
 

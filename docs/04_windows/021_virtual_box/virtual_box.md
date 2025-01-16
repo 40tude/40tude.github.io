@@ -28,7 +28,7 @@ Of course, you can install any other ISO
 * In the Tools palette, on the right-hand side, click on the green "+ Install" button and install the Extension Pack
 * Download a Mint 21 .iso file [from here](https://www.linuxmint.com/download.php).
     * Obviously, this could be any other ISO (Windows, Debian...)
-* In VirtualBox press CTRL + A to add a new VM, select the previous .iso file etc.
+* In VirtualBox press **CTRL + A** to add a new VM, select the previous .iso file etc.
 * Run the VM
     * You will tune the details later
 * You may have some issues with the screen resolution but install the OS first

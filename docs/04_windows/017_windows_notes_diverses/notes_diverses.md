@@ -22,7 +22,7 @@ last_modified_date: 2023-11-25 15:25:42
 
 Je regroupe ici un ensemble de notes diverses à propos de Windows 10 & 11.   
 Les notes sont classées par ordre alphabétique.  
-Sinon faites CTRL+F et tapez un mot clé : "Mise en veille" ou "ISO" par exemple.  
+Sinon faites **CTRL + F** et tapez un mot clé : "Mise en veille" ou "ISO" par exemple.  
 Il y a aussi une TOC juste au dessus.  
 
 Il est possible qu'avec les mises à jour de Windows, certaines boîtes de dialogue changent ou que la mise en page évolue. Cela dit vous devriez vous y retrouver.  
@@ -35,9 +35,9 @@ Si vous cherchez des raccourcis clavier Windows, allez plutôt sur cette [page] 
 <!-- ###################################################################### -->
 ## Application en mode admin
 
-* WIN + R
+* **WIN + R**
 * Saisir le nom de l'application (regedit par exemple)
-* CTRL + SHIFT + ENTER
+* **CTRL + SHIFT + ENTER**
 
 
 
@@ -82,7 +82,7 @@ Le répertoire "lxss" n’apparaît pas du tout dans l'explorateur de fichier (m
 <!-- ###################################################################### -->
 ## Gestionnaire de tâches
 
-* CTRL + SHIFT + Esc
+* **CTRL + SHIFT + ESC**
 
 
 
@@ -120,7 +120,7 @@ Je suis sous Windows 10. Si il s'agit de faire la mise à jour tout en préserva
 * Penser à bien préciser de ne pas tout supprimer mais de garder les users en place
 * Window va redémarrer plusieurs fois mais tout va bien se passer
 * Pour vérifier à la fin la version de Window
-  + Win + R
+  + **WIN + R**
   + Taper "winver" puis ENTER
 
 Pour refaire une installation complète à partir d'une clé USB, [consultez cette page]({%link docs/04_windows/000_install_windows_11_with_a_usb_key/install_windows_11_with_a_usb_key.md%}).
@@ -134,7 +134,7 @@ Pour refaire une installation complète à partir d'une clé USB, [consultez cet
 <!-- ###################################################################### -->
 ## Mise en veille : déterminer ce qui empêche la mise en veille
 
-1. Win + X
+1. **WIN + X**
 1. PowerShell (admin)
 1. Saisir
 
@@ -170,7 +170,7 @@ Si la raison est différente, faire une recherche sur le service/application qui
 <!-- ###################################################################### -->
 ## Mise en veille : faire apparaître l'option "Mise en veille prolongée"
 
-1. Win + X
+1. **WIN + X**
 1. Options d'alimentation
 1. Clic sur "Choisir l'action des boutons d'alimentation"
 1. Clic sur "Modifier des paramètres actuellement non disponibles"
@@ -248,7 +248,7 @@ Le truc à retenir c'est qu'il faut :
 
 Pour qu'en mon absence, le portable ce mette tout seul en veille prolongée au bout de 10 min.
 
-1. Win + X
+1. **WIN + X**
 1. Options d'alimentation
 1. Paramètres d'alimentation supplémentaires
 1. Clic sur "Modifier les paramètres du mode"
@@ -278,7 +278,7 @@ Pour qu'en mon absence, le portable ce mette tout seul en veille prolongée au b
 <!-- ###################################################################### -->
 ## OneDrive : supprimer le dossier dupliqué dans Explorer
 
-1. Win + R
+1. **WIN + R**
 1. Taper ``regedit`` puis Enter.
 1. Aller dans ``HKEY_CURRENT_USER``
 1. ``SOFTWARE``
@@ -315,7 +315,7 @@ Pour qu'en mon absence, le portable ce mette tout seul en veille prolongée au b
 <!-- ###################################################################### -->
 ## Point de restauration : appliquer
 
-* Win + R puis saisir "RSTRUI". On peut aussi faire Win + S, taper "Restauration"
+* **WIN + R** puis saisir "RSTRUI". On peut aussi faire **WIN + S**, taper "Restauration"
 * Cliquer sur le bouton "Restauration du système..."
 * Cliquer sur "Suivant>"
 * Choisir le nom de la restauration à appliquer
@@ -330,7 +330,7 @@ Pour qu'en mon absence, le portable ce mette tout seul en veille prolongée au b
 
 **Rappel** : on ne peut pas créer plus d'un point de restauration par jour.
 
-* Win + S
+* **WIN + S**
 * Taper "Restauration"
 * Si besoin cliquer sur "Configurer" pour activer la protection
 * Cliquer sur le bouton radio "Activer la protection du système"
@@ -352,7 +352,7 @@ Aller voir cette [page](http://winaero.com/blog/restore-point-windows-10-powersh
 
 Pour voir où sont les fichiers de restauration sur le disques dur
 
-* Win + E
+* **WIN + E**
 * Clic sur "Affichage"
 * Puis clic sur "Options" (tout à droite)
 * Clic sur l'onglet "Affichage"
@@ -372,7 +372,7 @@ Pour voir où sont les fichiers de restauration sur le disques dur
 <!-- ###################################################################### -->
 ## Point de restauration : supprimer
 
-* Win + S
+* **WIN + S**
 * Taper "Nettoyage"
 
 <div align="center">
@@ -430,7 +430,7 @@ help ls
 
 Entre autres, celui le script démarrage
 
-1. Win + X
+1. **WIN + X**
 1. Console PowerShell en mode Admin
 1. Saisir
 
@@ -448,7 +448,7 @@ Set-ExecutionPolicy RemoteSigned
 
 Pour faire démarrer PowerShell dans un répertoire particulier ou bien lancer le profile posh-git par exemple
 
-1. Win + X
+1. **WIN + X**
 1. Choisir PowerShell
 1. Taper :
 
@@ -495,7 +495,7 @@ Il suffit de saisir :
 <!-- ###################################################################### -->
 ## Power User Menu
 
-* Win + x
+* **WIN + X**
 
 
 
@@ -516,7 +516,7 @@ Voir cette page pour quelques [raccourcis clavier]`NOT YET TRANSFERED` (https://
 
 Pour désactiver Adobe Acrobat Update Service par exemple
 
-1. Win +R
+1. **WIN + R**
 1. Taper **msconfig**
 1. Aller dans l'onglet Services
 1. Décocher qui vous voulez!
@@ -531,7 +531,7 @@ Pour désactiver Adobe Acrobat Update Service par exemple
 
 Pour désactiver ``CompatTelRunner.exe`` par exemple
 
-1. Win + R
+1. **WIN + R**
 1. Taper **taskschd.msc**
 1. Rechercher Microsoft Compatibility Appraiser (\Microsoft\Windows\Application Experience)
 1. Click droit
@@ -549,7 +549,7 @@ Pour désactiver ``CompatTelRunner.exe`` par exemple
 
 * https://fr.mictests.com/
 * https://www.malekal.com/le-micro-non-detecte-windows-11/
-* WIN + R
+* **WIN + R**
 * mmsys.cpl
 
 
@@ -562,7 +562,7 @@ Pour désactiver ``CompatTelRunner.exe`` par exemple
 
 Pour supprimer defaultuser0 par exemple.
 
-1. Win +R
+1. **WIN + R**
 1. Taper **lusrmgr.msc**
 1. Supprimer **defaultuser0**
 
@@ -576,7 +576,7 @@ Pour supprimer defaultuser0 par exemple.
 <!-- ###################################################################### -->
 ## Variable d'environnement PATH
 
-1. Win + Pause
+1. **WIN + Pause**
 1. Clic sur "Paramètres Système Avancés" (liste à gauche, tout en bas)
 1. Clic sur bouton "Variables d'environnement" (tout en bas)
 1. Double clic sur "PATH" dans la liste
@@ -599,7 +599,7 @@ Pour supprimer defaultuser0 par exemple.
 
 Pour vérifier le N° de la version installée
 
-1. Win + I
+1. **WIN + I**
 1. Système
 1. Information Système (tout en bas à gauche)
 1. On accède au numéro de Version
@@ -637,7 +637,7 @@ La résolution du Surface Pro est très grande et les machines virtuelles Debian
 <!-- ###################################################################### -->
 ## Windows Old : supprimer
 
-1. Win + S
+1. **WIN + S**
 1. Taper "Nettoyage"
 1. Bouton "Nettoyer les fichiers système"
 1. Cocher "Précédente(s) installation(s) de Windows"

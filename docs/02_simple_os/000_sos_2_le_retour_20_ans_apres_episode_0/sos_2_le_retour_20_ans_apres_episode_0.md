@@ -529,7 +529,7 @@ On a que 2 choses à faire :
 1. Mettre dans le sous-répertoire `sos` une copie du fichier `multiboot2.h`
 1. Inclure `multiboot2.h` dans le fichier `main.c` et ne plus tenir compte de l'ancien fichier /bootstrap/multiboot.h (qu'on a déjà renommé en .bak de toute façon)
 
-Pour l'étape 1 je me suis déjà fait avoir en téléchargeant de mauvaises versions. Finalement, le plus sûr mais aussi le plus pénible, c'est d'aller sur [la page des spécifications de Grub 2](https://www.gnu.org/software/grub/manual/multiboot2/multiboot.html#multiboot2_002eh), de sélectionner puis de copier (CTRL+C) le texte de multiboot2.h. C'est un peu la loose mais je n'ai pas trouvé mieux ni plus sûr jusqu'à maintenant.
+Pour l'étape 1 je me suis déjà fait avoir en téléchargeant de mauvaises versions. Finalement, le plus sûr mais aussi le plus pénible, c'est d'aller sur [la page des spécifications de Grub 2](https://www.gnu.org/software/grub/manual/multiboot2/multiboot.html#multiboot2_002eh), de sélectionner puis de copier (**CTRL + C**) le texte de multiboot2.h. C'est un peu la loose mais je n'ai pas trouvé mieux ni plus sûr jusqu'à maintenant.
 
 <div align="center">
 <img src="./assets/image-14.webp" alt="" width="900" loading="lazy"/>
@@ -1145,7 +1145,7 @@ Et on lance la construction du projet : `make sos2`
 </div>
 
 
-Pour le premier warning à la ligne 52 de `bochs.c` je te propose de faire un CTRL+click sur `drivers/bosch.c` dans le terminal puis de mettre la macro sur une même ligne. On passe donc de :
+Pour le premier warning à la ligne 52 de `bochs.c` je te propose de faire un **CTRL + click** sur `drivers/bosch.c` dans le terminal puis de mettre la macro sur une même ligne. On passe donc de :
 
 ```c
 #define BOCHS_PRTHEX(q) \
@@ -1167,14 +1167,14 @@ Quand c'est fait on relance un `make`. Pour le coup il y a moins d'erreurs et c'
 </div>
 
 
-Allez, CTRL+click sur `sos/main.c:35:3`, on va aller voir ce qui se passe. Voilà ce que je vois :
+Allez, **CTRL + click** sur `sos/main.c:35:3`, on va aller voir ce qui se passe. Voilà ce que je vois :
 
 <div align="center">
 <img src="./assets/image-19.webp" alt="" loading="lazy"/>
 </div>
 
 
-On voit qu'il y a aussi un problème avec `MULTIBOOT_BOOTLOADER_MAGIC` qu'il ne connait pas. Je propose de commenter (CTRL + /) **toute et rien que** la fonction `sos_main(...)` existante et de copier le code ci-dessous à sa suite :
+On voit qu'il y a aussi un problème avec `MULTIBOOT_BOOTLOADER_MAGIC` qu'il ne connait pas. Je propose de commenter (**CTRL + /**) **toute et rien que** la fonction `sos_main(...)` existante et de copier le code ci-dessous à sa suite :
 
 ```c
 void sos_main(unsigned long magic, unsigned long addr) {
