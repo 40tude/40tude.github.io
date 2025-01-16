@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Yet another linear regression and R² introduction"
+title: "Yet Another Intro to Linear Regression and R²"
 parent: "Machine Learning"
 math: mathjax
 date:               2025-01-16 10:00:00 +0000
@@ -14,11 +14,11 @@ last_modified_date: 2025-01-16 10:00:00 +0000
 
 
 
-# Yet another linear regression and R² introduction
+# Yet Another Intro to Linear Regression and R²
 {: .no_toc }
 
 {: .note }
-This article was first published on [Medium](https://medium.com/@philippe.baucour/yet-another-linear-regression-introduction-0835e333508b){:target="_blank"} on Dec 5, 2024. I really enjoy reading on Medium. However, at the time of writing, and based on my understanding, Medium does not support Markdown or $$\mathrm{\LaTeX}$$. As a result, the content of the article is not rendered as intended. Additionally, to be honest, the writing experience was frustrating. I suppose this will be my first and last article on Medium.
+This article was first published on [**Medium**](https://medium.com/@philippe.baucour/yet-another-linear-regression-introduction-0835e333508b){:target="_blank"} on Dec 5, 2024 under the title : ***Yet another linear regression and R² introduction***. I really enjoy reading on Medium so I wanted to contribute. However, at the time of writing, and based on my understanding, Medium does not support Markdown nor $$\mathrm{\LaTeX}$$. As a result, the content of the article is not rendered as intended. Additionally, the writing experience was frustrating. I suppose this will be my first and last article on Medium.
 
 This article is for beginners. My goal is to help you gain a clearer understanding of $$R^2$$ so you can confidently explain it to yourself or someone else. 
 
@@ -96,7 +96,7 @@ And while we're at it, if tomorrow I have another a dark green line model (color
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## How good is this model ?
+## How good is this model?
 
 This is where $$R^2$$ comes in. The idea is that it gives us a single value that helps us compare the performance of different models.  
 
@@ -139,7 +139,7 @@ The key takeaway here is that the model returning the average serves as a **benc
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Ok but how do we compare two quantities?
+## Ok, but how do we compare two quantities?
 
 This is where Weber's Law comes in, which states that we are more sensitive to ratios than to absolute differences.  
 
@@ -224,7 +224,7 @@ Hmm... Sum of squared differences. Sum with an 'S' and squared with an 'S' too. 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Here's how it works:  
+## Here's how it works  
 
 <div align="center">
 <img src="./assets/img07.png" alt="drawing" width="600" loading="lazy"/>
