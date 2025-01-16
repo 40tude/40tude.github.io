@@ -114,7 +114,7 @@ Je suis sous Windows 11 (23H2) mais c'est exactement la même chose si tu es sou
 
 #### Installer Docker
 
-Soit, tu vas sur [le site de Docker](https://www.docker.com/products/docker-desktop/), soit, si tu as installé l'excellent [choco](https://chocolatey.org/). Dans ce cas tu saisis les 2 lignes ci-dessous dans un terminal PowerShell en **mode Administrateur** (WIN+X puis A). À propos de choco tu peux [aller sur cette page](https://www.40tude.fr/how-to-install-windows-11-with-a-usb-key/) et y rechercher le mot "choco". La procédure d'installation y est expliquée. Pour le reste Docker doit demander que l'on s'enregistre à un moment ou à un autre.
+Soit, tu vas sur [le site de Docker](https://www.docker.com/products/docker-desktop/), soit, si tu as installé l'excellent [choco](https://chocolatey.org/). Dans ce cas tu saisis les 2 lignes ci-dessous dans un terminal PowerShell en **mode Administrateur** (WIN + X puis A). À propos de choco tu peux [aller sur cette page](https://www.40tude.fr/how-to-install-windows-11-with-a-usb-key/) et y rechercher le mot "choco". La procédure d'installation y est expliquée. Pour le reste Docker doit demander que l'on s'enregistre à un moment ou à un autre.
 
 ```powershell
 choco install docker-desktop -y
@@ -142,7 +142,7 @@ Ensuite
 
 * Redémarre si besoin
 * Quand c'est fait, assure-toi que tu arrives à lancer les 3 outils.
-    * Dans une console normale (WIN+X puis I)
+    * Dans une console normale (**WIN + X, I**)
     * Tape : `code .`
     * Fermes ensuite la fenêtre VSCode
     * Tape : `qemu-system-i386`

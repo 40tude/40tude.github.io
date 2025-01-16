@@ -50,7 +50,7 @@ April 2021. The following software are installed on my PC
 
 ## Install vcpkg
 
-Open a PowerShell console (**WIN+X+I**)     
+Open a PowerShell console (**WIN + X, I**)     
 Move to a directory which will host the vcpkg directory.
 
 ```powershell
@@ -60,7 +60,7 @@ cd vcpkg
 .\bootstrap-vcpkg.bat
 ```
 
-Launch Windows PowerShell as Administrator (**WIN+X+A**)  
+Launch Windows PowerShell as Administrator (**WIN + X, A**)  
 Reach the previous directory
 
 ```powershell

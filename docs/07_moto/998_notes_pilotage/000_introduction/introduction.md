@@ -26,7 +26,7 @@ Elles ont toutes la même structure :
 1. **Petit rappel utile avant de rentrer sur le circuit** - C'est juste de la prudence avant d'entrer en piste. Ça va sans doute soûler ceux qui lisent les Notes de Pilotage Moto dans l'ordre mais ça rendra service à ceux qui arriveront directement sur telle ou telle page via une recherche sur le Web.
 1. **La session** - C'est là qu'on rentre dans le vif du sujet.
 1. **À la fin de la session** - On fait un point sur nos acquis
-1. **Remarques complémentaires** - C'est un certain nombre de points plus ou moins en rapport avec le sujet de la Note de Pilotage Moto.
+1. **Remarques** - Des points plus ou moins en rapport avec le sujet de la Note de Pilotage Moto.
 
 Il y aura sans doute des répétitions car certains aspects me paraissent vraiment importants. De toute façon, certains lecteurs, grâce à Google, arriveront directement sur une Note de Pilotage particulière et donc ce n'est pas complètement idiot de répéter certaines choses.
 
@@ -55,7 +55,7 @@ Cliquez sur la vidéo ci-dessous. C'est une playlist d'une centaine de vidéos q
 Il y en a dans toutes les langues : Français, Italien, Anglais, Espagnol... Si besoin, mettez les sous-titres et passez la vitesse de lecture à 75% ou moins.
 
 
-Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous conseille de cliquer sur le "**Regarder sur YouTube**" en bas à droite plutôt que sur le bouton play rouge. 
+Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous conseille de cliquer sur le "**Regarder sur YouTube**" en bas plutôt que sur le bouton play rouge. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n7LHAWWeSbHh5IqF&amp;start=1014&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

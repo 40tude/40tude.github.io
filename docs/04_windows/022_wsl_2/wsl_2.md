@@ -197,7 +197,7 @@ Bien voir le format de l'adresse du répertoire qui est du style
 
 Là, je peux faire ce que je veux. Copier, modifier, supprimer. Bien sûr, si je veux aller mettre le bronx dans \\wsl$\Ubuntu-20.04\root, là ça ne va pas passer.
 
-Depuis Windows, je peux bien sûr lancer Explorer (WIN+E) puis taper \\wsl$ dans la barre d'adresse. C'est quand même plus pratique que ce que l'on avait avant. Lire le premier point de [cette page](https://www.40tude.fr/windows-10-notes-diverses/) si besoin.
+Depuis Windows, je peux bien sûr lancer Explorer (**WIN + E**) puis taper \\wsl$ dans la barre d'adresse. C'est quand même plus pratique que ce que l'on avait avant. Lire le premier point de [cette page](https://www.40tude.fr/windows-10-notes-diverses/) si besoin.
 
 <div align="center">
 <img src="./assets/image-9.webp" alt="" width="900" loading="lazy"/>

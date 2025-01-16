@@ -10,7 +10,7 @@ last_modified_date: 2023-01-27 17:38:21
 # $$\mathrm{\LaTeX}$$ and VSCode
 
 
-* **WIN+x, a**
+* **WIN + X, a**
     * This means : Press the window key AND the X key. Then press A
     * It launches an elevated console
 * Install [choco](https://community.chocolatey.org/packages) with the line below

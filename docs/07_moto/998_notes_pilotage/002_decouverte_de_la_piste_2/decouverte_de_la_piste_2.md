@@ -10,7 +10,7 @@ last_modified_date: 2023-09-09 00:08:32
 # Découverte de la piste 2
 {: .no_toc }
 
-## Table of Contents
+## Plan de la Note de Pilotage
 {: .no_toc .text-delta}
 - TOC
 {:toc}
@@ -19,15 +19,15 @@ last_modified_date: 2023-09-09 00:08:32
 
 
 
-Comme la première note de [Pilotage Moto](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀.
+Comme la première [Note de Pilotage Moto]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀.
 
 
 
-## Suite des remarques complémentaires
+## Suite des remarques 
 
 ### Note 3 : À propos du point de corde
 
-Bon, là on ne rigole plus... C'est le quatrième, le plus important et le plus difficile à atteindre des objectifs que l'on a quand on met les pneus sur la piste (rappelle-toi Barbara : apprendre la piste, couché sur la moto, gaz à 100%, pneus sur le point de corde... [Relire ici si besoin](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/))
+Bon, là on ne rigole plus... C'est le quatrième, le plus important et le plus difficile à atteindre des objectifs que l'on a quand on met les pneus sur la piste (rappelle-toi Barbara : apprendre la piste, couché sur la moto, gaz à 100%, pneus sur le point de corde... [Relire ici si besoin]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))
 
 * Quand on arrive sur un virage, il ne faut pas plonger trop tôt à la corde afin de ne pas y être coincé pendant 3 heures...
 
@@ -43,12 +43,12 @@ Bon, là on ne rigole plus... C'est le quatrième, le plus important et le plus 
 #### Un exemple
 
 <div align="center">
-<img src="./assets/img_01.webp" alt=""  loading="lazy"/>
+<img src="./assets/img_01.webp" alt="" width="450" loading="lazy"/>
 </div>
 Oui…mais non
 
 <div align="center">
-<img src="./assets/img_02.webp" alt=""  loading="lazy"/>
+<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 Oui. Notez la différence d'écartement des pneus vis à vis de la bande blanche.
@@ -67,7 +67,7 @@ J'arrive au virage, je chope le cône du regard, je ne regarde rien d'autre, san
 
 
 <div align="center">
-<img src="./assets/img_03.webp" alt=""  loading="lazy"/>
+<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -82,7 +82,7 @@ J'arrive au virage, je chope le cône du regard, je ne regarde rien d'autre, san
 Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. Ils sont où ? Sur le bitume, à un mètre du vibreur ? Nan. À 10 centimètres ? Nan. À un millimètre ? Même pas en rêve ! Ils sont sur la bande blanche en train de lécher le vibreur.
 
 <div align="center">
-<img src="./assets/img_04.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img_04.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -98,7 +98,7 @@ Je le redis. Le point corde c'est le quatrième, le plus difficile et le plus im
 
 Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture à 50% ou à 25% et à regarder où passe la roue avant... Oui, oui je sais, il n'est pas trop en mode découverte de la piste... Quoiqu'il en soit, ce sont vraiment des passages au millimètre sur les bandes blanches...
 
-https://youtu.be/Ym4SRjSKmoI
+<!-- https://youtu.be/Ym4SRjSKmoI -->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ym4SRjSKmoI?si=TxKZ0QJrkl6UXa5b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -114,42 +114,42 @@ https://youtu.be/Ym4SRjSKmoI
 Heu… Oui, oui je confirme, lui aussi est un peu au-delà de nos 75% mais c'est parce qu'il est jeune et enthousiaste… ✊
 
 <div align="center">
-<img src="./assets/img_05.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_05.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/img_06.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_06.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/img_07.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_07.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/img_08.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_08.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/img_09.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_09.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/img_10.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_10.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/img_11.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_11.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 <div align="center">
-<img src="./assets/img_12.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_12.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 
 
 La vidéo complète est ci-dessous.
 
-https://www.youtube.com/watch?v=0LA2pNlNNw0
+<!-- https://www.youtube.com/watch?v=0LA2pNlNNw0 -->
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0LA2pNlNNw0?si=b_x5V-D-BSLU1jnK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -170,7 +170,7 @@ https://www.youtube.com/watch?v=0LA2pNlNNw0
 
   + Pour un autre pilote qui accélérerait au tout début de la courbe (c'est un exemple théorique), la fin "officielle" de son virage se situerait peut-être au milieu du virage (ou au SAMU local).
 
-* En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule** (relire la première partie de la note de [Pilotage moto](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/))
+* En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule** (relire la première partie de la note de [Pilotage moto]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))
 
 * À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde. Avec la throttle rule, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde. Cela permet de répartir la charge de manière idéale entre l'avant et l'arrière. Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque.
   Mouai... Ben moi j'ai beau le savoir et faire le fanfaron en l'expliquant, je n'arrive toujours pas à le faire comme je voudrais.
@@ -207,7 +207,7 @@ Typiquement, je dois être capable de relâcher mon grip, de détendre mes doigt
 
 Dans un même ordre d'idée, en ligne droite je dois être capable de tenir l'accélérateur avec 3 doigts et avec la paume de la main décollée de la poignée. Qui a dit qu'il fallait être crispé et avoir une force de taureau pour enrouler une poignée de gaz ? Prends le temps de regarder cette vidéo par exemple. Instructif...
 
-https://youtu.be/h24XjzybrA0
+<!-- https://youtu.be/h24XjzybrA0 -->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/h24XjzybrA0?si=1AiXYc_QGYxzFj5v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -291,7 +291,9 @@ Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on pe
 
 6. **Doigts de Sauron** : être capable d'étirer ses doigts et d'aller les poser sur les leviers d'embrayage. Côté accélérateur, on tient ce dernier à 3 doigts et la paume est écartée de la poignée.
 
-La tête de fourche peut bouger à l'accélération si cette dernière est trop forte. Pour éviter ce phénomène il faut avoir des accélérations précoces, douces et continues en virages (ce n'est rien d'autre que la **[Throttle Rule](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/)** )
+La tête de fourche peut bouger à l'accélération si cette dernière est trop forte. Pour éviter ce phénomène il faut avoir des accélérations précoces, douces et continues en virages (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})))
+
+
 
 ### En cas de wheeling il faudrait...
 
@@ -303,24 +305,17 @@ La tête de fourche peut bouger à l'accélération si cette dernière est trop 
 
 #### Être accroché au guidon c'est ce qui nous fait sortir large
 
-2. Je suis en virage
-
-6. Comme je suis accroché au guidon je tire dessus (c'est mécanique)
-
-10. Je tire plus sur le bracelet intérieur car c'est celui qui est le plus accessible (mon bras intérieur est plié donc c'est plus facile de tirer).
-
-14. Donc on contre braque
+1. Je suis en virage
+1. Comme je suis accroché au guidon je tire dessus (c'est mécanique)
+1. Je tire plus sur le bracelet intérieur car c'est celui qui est le plus accessible (mon bras intérieur est plié donc c'est plus facile de tirer).
+1. Donc on contre braque
     * Si ce n'est pas clair cette histoire de contre braquage, il faut juste se rappeler qu'en entrée de virage, je pousse sur le bracelet intérieur au virage (qu'on le veuille ou non, qu'on le sente ou non, qu'on le fasse sciemment ou non)
     * Autrement dit la moto tourne
-      + Du côté du bracelet que je pousse
-
-      + Du côté opposé du bracelet que je tire.
-
+        * Du côté du bracelet que je pousse
+        * Du côté opposé du bracelet que je tire.
     * Relisez le point 2 précédent. Si je tire (au lieu de pousser) sur le bracelet intérieur, la moto va donc mécaniquement se diriger de l'autre côté. Pour cela elle va se relever et elle va donc élargir le virage.
-
-18. Donc, dans un virage, quand on tire sur le bracelet intérieur, on relève la moto
-
-22. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève mécaniquement la moto et nous fait sortir large.
+1. Donc, dans un virage, quand on tire sur le bracelet intérieur, on relève la moto
+1. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève mécaniquement la moto et nous fait sortir large.
 
 
 
@@ -342,9 +337,9 @@ La tête de fourche peut bouger à l'accélération si cette dernière est trop 
 
 * Le but est de tout faire à l'accélérateur (accélération et ralentissement)
 
-* Pour des raisons évidentes de sécurité, lors des journées de roulages, ce n'est pas possible. Cela dit, c'est un super exercice qui permet de réaliser qu'en règle générale, on rentre beaucoup trop lentement dans les virages. C'est un exercice qui a été initialement inventé par [Keith Code](https://en.wikipedia.org/wiki/Keith_Code) pour la California Superbike School. Cet exercice est réalisé lors des [stages de pilotage DRRS](https://www.40tude.fr/zx6r-sur-circuit-stage-de-pilotage-de-radigues-rider-school-drrs/) ou [LFG](https://www.circuitslfg.fr/produit/lfgmoto-stage-pilotage-1-jour/).
+* Pour des raisons évidentes de sécurité, lors des journées de roulages, ce n'est pas possible. Cela dit, c'est un super exercice qui permet de réaliser qu'en règle générale, on rentre beaucoup trop lentement dans les virages. C'est un exercice qui a été initialement inventé par [Keith Code](https://en.wikipedia.org/wiki/Keith_Code) pour la California Superbike School. Cet exercice est réalisé lors des [stages de pilotage DRRS] NOT YET TRANSFERED  ou [LFG] NOT YET TRANSFERED .
 
-https://youtu.be/EJQaKf3txVg?t=184
+<!-- https://youtu.be/EJQaKf3txVg?t=184 -->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EJQaKf3txVg?si=_SHs0_X1wy9_4IL4&amp;start=184" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -384,7 +379,7 @@ Il y a 2 types de virages qui sont beaucoup plus importants que les autres et su
 
 La vidéo ci-dessous rentre plus dans les détails.
 
-https://youtu.be/xJqnsOYD8T0
+<!-- https://youtu.be/xJqnsOYD8T0 -->
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xJqnsOYD8T0?si=aohrMEMyOgs7CJYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

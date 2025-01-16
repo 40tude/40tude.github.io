@@ -121,7 +121,7 @@ ssh philippe@MINT-PHILIPPE
 </div>
 
 
-WIN+R. I can use the name of the linux box
+**WIN + R**. I can use the name of the linux box
 
 <div align="center">
 <img src="./assets/image-19.webp" alt="" loading="lazy"/>
