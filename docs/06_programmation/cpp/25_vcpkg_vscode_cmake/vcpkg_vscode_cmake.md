@@ -32,6 +32,8 @@ last_modified_date: 2023-01-12 00:12:49
 
 ## Introduction
 
+vcpkg is a package manager for acquiring and managing libraries. More information are available [on this page](https://vcpkg.io/en/).
+
 April 2021. The following software are installed on my PC
 
 * Windows 10 20H2 19042.870 (WIN key, type winver)
@@ -39,6 +41,8 @@ April 2021. The following software are installed on my PC
 * Microsoft compiler cl version 19.28.29913. You can either install Visual Studio or [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/).
 * Git version 2.31.1.windows.1 (in the previous console type `git --version`)
 * CMake version 3.20.1 (in the previous console type `cmake --version`). If you want to learn more about CMake you can start [here](https://cliutils.gitlab.io/modern-cmake/).
+
+
 
 
 
@@ -115,7 +119,7 @@ code .
 In VSCode, make sure C/C++, CMake and CMake Tools extensions are installed. Open the Extensions pane (CTRL + SHIFT +x) and check what is missing. See below:
 
 <div align="center">
-<img src="./assets/image-3.webp" alt="" loading="lazy"/>
+<img src="./assets/image-3.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -202,31 +206,31 @@ Later, you will be asked for the name of the project (``TestSQL`` in my case) an
 Here is the content of the generated ``CMakeLists.txt`` you will get
 
 ```
-cmake_minimum_required(VERSION 3.0.0)
-project(TestSQL VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.0.0)
+project(TestSQL VERSION 0.1.0)
 include(CTest)
 enable_testing()
-add_executable(TestSQL main.cpp)
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+add_executable(TestSQL main.cpp)
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 ```
 
 This should be simplified and modified as follow. Pay attention to the **TAB** before the paths : ``c:/Users/phili/Documents/...``
 
 ```
-cmake_minimum_required(VERSION 3.0.0)
-project(TestSQL VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.0.0)
+project(TestSQL VERSION 0.1.0)
 INCLUDE_DIRECTORIES(
-  c:/Users/phili/Documents/vcpkg/installed/x64-windows/include/
+  c:/Users/phili/Documents/vcpkg/installed/x64-windows/include/
 )
 
 LINK_DIRECTORIES(
-  c:/Users/phili/Documents/vcpkg/installed/x64-windows/lib/
+  c:/Users/phili/Documents/vcpkg/installed/x64-windows/lib/
 )
-add_executable(TestSQL main.cpp)
+add_executable(TestSQL main.cpp)
 TARGET_LINK_LIBRARIES(TestSQL
-  sqlite3
+  sqlite3
 )
 ```
 
@@ -234,7 +238,7 @@ Later, if the project needs additional libraries, just add their names after sql
 
 ```
 TARGET_LINK_LIBRARIES(TestSQL
-  sqlite3 mylib blabla_lib
+  sqlite3 mylib blabla_lib
 )
 ```
 
@@ -248,7 +252,7 @@ Everything seems to be configured. **CTRL+SHIFT+P** then type ``CMake`` and sele
 If everything went well, you should have a ``Debug`` directory hosting a ``TestSQL.exe`` debug version.
 
 <div align="center">
-<img src="./assets/image-15.webp" alt="" loading="lazy"/>
+<img src="./assets/image-15.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -272,24 +276,24 @@ Here is the content of the initial ``launch.json`` file you may get.
 
 ```json
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "cl.exe - Build and debug active file",
-      "type": "cppvsdbg",
-      "request": "launch",
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "console": "externalTerminal",
-      "preLaunchTask": "C/C++: cl.exe build active file"
-    }
-  ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "cl.exe - Build and debug active file",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "externalTerminal",
+      "preLaunchTask": "C/C++: cl.exe build active file"
+    }
+  ]
 }
 ```
 
@@ -297,24 +301,24 @@ Now, here is the modified version where ``preLaunchTask`` is commented and where
 
 ```json
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "cl.exe - Build and debug active file",
-      "type": "cppvsdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/Debug/TestSQL.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "console": "externalTerminal",
-      //"preLaunchTask": "C/C++: cl.exe build active file"
-    }
-  ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "cl.exe - Build and debug active file",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/Debug/TestSQL.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "externalTerminal",
+      //"preLaunchTask": "C/C++: cl.exe build active file"
+    }
+  ]
 }
 ```
 
@@ -362,18 +366,18 @@ If you want to change the kit (Visual Studio 2019 Release - amd64 was our initia
 
 ```
 INCLUDE_DIRECTORIES(
-  c:/Users/phili/Documents/vcpkg/installed/x64-windows/include/
+  c:/Users/phili/Documents/vcpkg/installed/x64-windows/include/
 )
 
 LINK_DIRECTORIES(
-  c:/Users/phili/Documents/vcpkg/installed/x64-windows/lib/
+  c:/Users/phili/Documents/vcpkg/installed/x64-windows/lib/
 )
 ```
 
 Anyway, press **F7** to build the release version. At the end of the build, a ``Release`` directory with a brand new ``TestSQL.exe`` should be available.
 
 <div align="center">
-<img src="./assets/image-13.webp" alt="" loading="lazy"/>
+<img src="./assets/image-13.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
