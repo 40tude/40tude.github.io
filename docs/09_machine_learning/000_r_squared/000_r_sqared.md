@@ -34,7 +34,9 @@ This article is for beginners. My goal is to help you gain a clearer understandi
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## Introduction
+
 I recently went to Sequoia National Park with a park ranger. All day long, I measured tree trunk diameters, and he gave me his opinion on the age of each sequoia. I'm exhausted but happy. The weather was beautiful, the ranger was super friendly and incredibly knowledgeable, and the cherry on top—I now have a wealth of data to build my model.  
 
 When I plot the age of the sequoias against their trunk diameters, here's what I see:  
@@ -54,6 +56,7 @@ When I plot the age of the sequoias against their trunk diameters, here's what I
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## The million-dollar question
 
 For every diameter value (horizontal axis, the x-axis), I've placed a red dot at the height (vertical axis, the y-axis) corresponding to the age given by the ranger. 
@@ -92,6 +95,7 @@ And while we're at it, if tomorrow I have another a dark green line model (color
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## How good is this model ?
 
 This is where $$R^2$$ comes in. The idea is that it gives us a single value that helps us compare the performance of different models.  
@@ -128,10 +132,15 @@ The key takeaway here is that the model returning the average serves as a **benc
 
 
 
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## Ok but how do we compare two quantities?
+
 This is where Weber's Law comes in, which states that we are more sensitive to ratios than to absolute differences.  
 
 Let's use an example to make this clearer. Imagine I'm walking down the street and see two couples ahead of me. In the first couple, both people are about 1.75 m tall. The woman might be slightly taller, but it's only a matter of a centimeter or so. To me, they seem the same height. In the second couple, it's a different story. It looks like Shi Feng Luo (the Chinese weightlifting champion, 1.65 m tall) is walking with Victor Wembanyama (the French basketball player, 2.23 m tall). In this case, the difference is glaringly obvious.  
@@ -166,9 +175,19 @@ This is what the situation looks like:
 <p>
 
 
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## It is completely wrong
 
 Yes, of course, this is not entirely correct—in fact, it's completely wrong. But keep in mind that $$R^2$$ is essentially a **comparison** (a ratio) of the model's predictions versus what happens, on average, in real life.  
@@ -193,9 +212,18 @@ If at $$x_3$$, the difference is -4, and at $$x_{42}$$, the difference is +4, th
 
 Hmm... Sum of squared differences. Sum with an 'S' and squared with an 'S' too. Do you understand from where the "SS" are coming from?
 
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## Here's how it works:  
 
 <p align="center">
@@ -241,6 +269,7 @@ At the end, $$R^2$$ synthesizes into a single value the model's ability to expla
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## One last thing before we summarize
 
 We said $$R^2$$ is the ratio of the model's predictions to what happens, on average, in real life ($$\frac{SSR}{SST}$$). With that in mind, if we note that **total variability** equals **explained variability** plus **unexplained variability**, we can introduce the term we must not name—no, not Lord Voldemort, but $$SSE$$.  
@@ -276,6 +305,7 @@ Finally, we can express $$R^2$$ in two different ways:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## Summary Notes
 
 1. **We worked in 2D for simplicity**, as it makes illustrations easier to understand. However, everything discussed so far applies to higher dimensions as well. Imagine that, besides measuring the diameter, I also measured the height of the sequoias. With $$x$$ as the diameter and $$y$$ as the height, we can determine $$z$$, the age of the tree. In this case, our green line becomes a green plane. Similarly, if we add another feature (I'm not sure what—I'm not exactly a sequoia expert), we now have three features: $$x$$, $$y$$, and $$z$$. The plane becomes a 3D regression cube, and at that point, aside from drawing its shadow, I'm not sure what else we can do visually.  
@@ -299,6 +329,11 @@ Finally, we can express $$R^2$$ in two different ways:
 * $$SST$$ : Distance between the **mean** and the **actual value**.  
 * $$SSE$$ : Distance between the **actual value** and the **predicted value**.  
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## TODOs  
 
