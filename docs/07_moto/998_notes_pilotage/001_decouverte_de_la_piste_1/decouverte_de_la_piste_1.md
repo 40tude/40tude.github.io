@@ -2,8 +2,7 @@
 layout: default
 title: "Découverte de la piste"
 parent: "Pilotage moto"
-nav_order: 2
-#math: mathjax
+nav_order: 3
 date: 2019-09-07 18:48:13
 last_modified_date: 2023-06-01 18:22:57
 ---
