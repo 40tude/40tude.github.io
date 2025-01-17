@@ -336,19 +336,19 @@ Bienvenue au club ! En fait, nous ne sommes pas suicidaires donc on freine, on f
 
 * *C'est bizarre, je n'ai pas peur, tout va bien mais je passe toujours à 1 m du PC.*  
 C'est sans doute parce que la mise sur l'angle ou le pivot sont **beaucoup trop lents**. Tu peux alors essayer ça :
-* Ne change rien mais assure-toi de regarder le PC avec **ton menton**. Ne regarde pas la scène, désigne ta cible. Oui, tu sais qu'il y a des cônes, un virage, un mec devant toi etc. Tu as l'information en tête mais ils sortent de ton champ de vision car tu désignes ta cible avec **ton menton**. Je dis menton pour t'obliger à tourner la tête **et** les épaules vers le PC.
-* Fais l'effort d'ouvrir tes épaules, de les orienter vers l'intérieur du virage. Typiquement, tu peux très bien tourner la tête vers le PC, le désigner du menton **mais** garder tes épaules parallèles au guidon. Ce n'est pas ce que l'on veut. Il faut que tu désignes ta cible du menton **et** que, un peu à la façon de Robocop, tes épaules tournent avec la tête. Il faut que tu sentes que ton bras intérieur se plie et que le bras extérieur se tend.
-* Freine un peu plus tôt et fais ta mise sur l'angle comme d'habitude mais un peu avant le PMSA. Quand je dis "un peu" cela veut dire l'équivalent d'une ou 2 motos de long. Après, au tour suivant tu ajustes mais bon, fondamentalement ta mise sur l'angle est trop lente.
-* Ne change rien mais sois plus incisif, plus rapide quand tu fais pivoter la moto. Pour cela, il suffit (yaka-faukon) de pousser plus fort sur la poignée intérieure. Tu peux aussi essayer de mettre un peu plus de poids sur le cale-pied intérieur en te penchant vers l'intérieur du virage, en appuyant consciemment dessus avec ton pied.
+    * Ne change rien mais assure-toi de regarder le PC avec **ton menton**. Ne regarde pas la scène, désigne ta cible. Oui, tu sais qu'il y a des cônes, un virage, un mec devant toi etc. Tu as l'information en tête mais ils sortent de ton champ de vision car tu désignes ta cible avec **ton menton**. Je dis menton pour t'obliger à tourner la tête **et** les épaules vers le PC.
+    * Fais l'effort d'ouvrir tes épaules, de les orienter vers l'intérieur du virage. Typiquement, tu peux très bien tourner la tête vers le PC, le désigner du menton **mais** garder tes épaules parallèles au guidon. Ce n'est pas ce que l'on veut. Il faut que tu désignes ta cible du menton **et** que, un peu à la façon de Robocop, tes épaules tournent avec la tête. Il faut que tu sentes que ton bras intérieur se plie et que le bras extérieur se tend.
+    * Freine un peu plus tôt et fais ta mise sur l'angle comme d'habitude mais un peu avant le PMSA. Quand je dis "un peu" cela veut dire l'équivalent d'une ou 2 motos de long. Après, au tour suivant tu ajustes mais bon, fondamentalement ta mise sur l'angle est trop lente.
+    * Ne change rien mais sois plus incisif, plus rapide quand tu fais pivoter la moto. Pour cela, il suffit (yaka-faukon) de pousser plus fort sur la poignée intérieure. Tu peux aussi essayer de mettre un peu plus de poids sur le cale-pied intérieur en te penchant vers l'intérieur du virage, en appuyant consciemment dessus avec ton pied.
 
-* *Je ne sais pas ce qui se passe, mes pneus passent bien au point de corde mais en sortie de virage, je termine toujours au milieu de la piste et jamais sur le PS.*  
+* *Je ne sais pas ce qui se passe, mes pneus passent bien au point de corde mais en sortie de virage, je termine toujours au milieu de la piste et jamais sur le PS.*   
 C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui déporte la moto vers l'extérieur. Pour te donner une idée, mets ta moto sur béquille latérale. Passe derrière la moto. Avec cet angle-là tu peux facilement avoir toute la puissance à la roue arrière. Je n'ai pas dit être en butée de gaz et attendre la cavalerie. Non, je dis être en butée de gaz **et** avoir tous les canassons au pneu. Quoiqu'il en soit, tu peux essayer 2 ou 3 choses :
-* Es-tu sûr de bien viser le PS et pas un point au 3/4 de la piste à l'extérieur ? La moto va là où tu regardes.
-* Es-tu sûr qu'à aucun moment tu n'arrêtes pas d'ouvrir les gaz ?
-* Enroule le câble d'accélérateur à la même vitesse qu'avant mais commence à accélérer plus tôt. Tu vas donc passer moins de temps sans frein ni gaz. Tu vas réduire le temps de la phase neutre. C'est bien, c'est ce que l'on cherche à faire.
-* Commence à enrouler le câble d'accélérateur comme avant mais enroule-le de plus en plus vite et assure-toi d'atteindre la butée. En fait, au début tu vas transférer la charge vers l'arrière. La moto va se retrouver dans sa position idéale avec 40% du poids à l'avant et 60% à l'arrière. Quand ça s'est fait et qu'elle est callée, tu peux enrouler de plus en plus vite tout en redressant la moto. Oui, on peut dire qu'on accélère en 2 temps : 
-    1. Je cale 
-    1. Grosse louche
+    * Es-tu sûr de bien viser le PS et pas un point au 3/4 de la piste à l'extérieur ? La moto va là où tu regardes.
+    * Es-tu sûr qu'à aucun moment tu n'arrêtes pas d'ouvrir les gaz ?
+    * Enroule le câble d'accélérateur à la même vitesse qu'avant mais commence à accélérer plus tôt. Tu vas donc passer moins de temps sans frein ni gaz. Tu vas réduire le temps de la phase neutre. C'est bien, c'est ce que l'on cherche à faire.
+    * Commence à enrouler le câble d'accélérateur comme avant mais enroule-le de plus en plus vite et assure-toi d'atteindre la butée. En fait, au début tu vas transférer la charge vers l'arrière. La moto va se retrouver dans sa position idéale avec 40% du poids à l'avant et 60% à l'arrière. Quand ça s'est fait et qu'elle est callée, tu peux enrouler de plus en plus vite tout en redressant la moto. Oui, on peut dire qu'on accélère en 2 temps : 
+        1. Je cale 
+        1. Grosse louche
 
 ### 5. Freinage
 
