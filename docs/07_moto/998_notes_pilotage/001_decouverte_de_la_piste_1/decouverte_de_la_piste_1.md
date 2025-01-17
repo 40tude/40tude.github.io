@@ -186,7 +186,7 @@ Si c'est difficile ou si cela ne passe pas au niveau des bras, pense à reculer 
 <img src="./assets/image-1-1.webp" alt="" width="600" loading="lazy"/>
 </div>
 
-Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas encore là. Perso j'ai un mal de chien à le faire car je me pette les cervicales et que je ne vois pas grand-chose... En plus ce n'est toujours pas devenu un réflexe naturel... Y a du boulot...
+Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas encore là. Perso j'ai un mal de chien à le faire car je me casse les cervicales et que je ne vois pas grand-chose... En plus ce n'est toujours pas devenu un réflexe naturel... Y a du boulot...
 
 
 
@@ -285,13 +285,44 @@ De même, en ligne droite ou bien quand la moto est sur l'angle, je peux écarte
 
 
 
-### J'insiste. Est-ce que tu es relâché sur la moto ?
+<!-- ### J'insiste. Est-ce que tu es relâché sur la moto ?
 
 Nos premières sessions sont des sessions de découverte de la piste. On est à 75% de nos possibilités. Donc, autant faire l'effort d'être relâché. Non ?
 
-Il faut donc vérifier régulièrement qu'on n'a pas tendance à s'accrocher au guidon.
+Il faut donc vérifier régulièrement qu'on n'a pas tendance à s'accrocher au guidon. -->
 
-#### À propos des guidonnages (wobble, tank slapper)
+
+### Être relâché ça veut dire
+
+* Être capable d'écarter et de rapprocher les coudes du corps (Chicken Wings)
+* Changer le grip sur les poignées quand on est sur l'angle.
+* Avant et dans le virage, sentir que le buste est mobile et qu'on plie bien le coude intérieur. Avant un virage, à la fin du freinage ne pas sentir qu'on force comme un "dahu" sur les avant-bras afin de les garder tendus avec le secret espoir d'enfoncer l'avant de la moto dans le sol. À la fin du freinage, quand on relâche progressivement la poignée, on est normalement très light sur le frein avant, on utilise le poids du corps (tête et buste) pour appuyer l'avant de la moto. Les bras ne sont donc pas tendus. Au contraire, à la fin du freinage, les bras se plient pour nous permettre de pencher le buste et approcher la tête vers la poignée qui est à l'intérieur du virage.
+
+Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on peut vérifier qu'on est capable de faire des :
+1. **Chicken Wings** : être capable de faire le poulet en levant et en baissant les coudes. Oui, oui je confirme, on est ridicule...
+1. **Doigts de Sauron** : être capable d'étirer ses doigts et d'aller les poser sur les leviers d'embrayage. Côté accélérateur, on tient ce dernier à 3 doigts et la paume est écartée de la poignée.
+
+La tête de fourche peut bouger à l'accélération si on est pas détendu et si elle est trop forte. Pour éviter ce phénomène il faut avoir des accélérations précoces, douces et continues en virages (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})))
+
+
+
+### Être accroché au guidon nous fait sortir large
+
+1. Je suis en virage
+1. Comme je ne suis pas détendu, je suis accroché au guidon je tire dessus (c'est mécanique)
+1. Je tire plus sur le bracelet intérieur car c'est celui qui est le plus accessible (mon bras intérieur est plié donc c'est plus facile de tirer).
+1. Donc on contre-braque
+    * Si ce n'est pas clair cette histoire de contre braquage, il faut juste se rappeler qu'en entrée de virage, je pousse sur le bracelet intérieur au virage (qu'on le veuille ou non, qu'on le sente ou non, qu'on le fasse sciemment ou non)
+    * Autrement dit la moto tourne
+        1. Du côté du bracelet que je pousse
+        1. Du côté opposé du bracelet que je tire.
+    * Relisez le second point précédent. Si je tire (au lieu de pousser) sur le bracelet intérieur, la moto va donc mécaniquement se diriger de l'autre côté. Pour cela elle va se relever et elle va donc élargir le virage.
+1. Donc, dans un virage, quand on tire sur le bracelet intérieur, on relève la moto
+1. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève la moto et nous fait sortir large.
+
+
+### Être accroché au guidon amplifies les guidonnages (wobble, tank slapper)
+<!-- #### À propos des guidonnages (wobble, tank slapper) -->
 
 * Les mouvements de fourche sont nécessaires. Ils font partie du système de la suspension (pneus et fourche)
 * Ça arrive quand les pneus et la fourche ont atteint leurs limites
@@ -306,39 +337,14 @@ Si la tête de fourche secoue en sortie de virage, si la moto est correctement e
 
 Bref, autant relâcher les bracelets et laisser la moto s'auto réguler.
 
-#### Être relâché ça veut dire
-
-* Être capable d'écarter et de rapprocher les coudes du corps (Chicken Wings)
-* Changer le grip sur les poignées quand on est sur l'angle.
-* Avant et dans le virage, sentir que le buste est mobile et qu'on plie bien le coude intérieur. Avant un virage, à la fin du freinage ne pas sentir qu'on force comme un "dahu" sur les avant-bras afin de les garder tendus avec le secret espoir d'enfoncer l'avant de la moto dans le sol. À la fin du freinage, quand on relâche progressivement la poignée, on est normalement très light sur le frein avant, on utilise le poids du corps (tête et buste) pour appuyer l'avant de la moto. Les bras ne sont donc pas tendus. Au contraire, à la fin du freinage, les bras se plient pour nous permettre de pencher le buste et approcher la tête vers la poignée qui est à l'intérieur du virage.
-
-Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on peut vérifier qu'on est capable de faire des :
-1. **Chicken Wings** : être capable de faire le poulet en levant et en baissant les coudes. Oui, oui je confirme, on est ridicule...
-1. **Doigts de Sauron** : être capable d'étirer ses doigts et d'aller les poser sur les leviers d'embrayage. Côté accélérateur, on tient ce dernier à 3 doigts et la paume est écartée de la poignée.
-
-La tête de fourche peut bouger à l'accélération si on est pas détendu et si elle est trop forte. Pour éviter ce phénomène il faut avoir des accélérations précoces, douces et continues en virages (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})))
 
 
-
-### En cas de wheeling il faudrait...
+<!-- ### En cas de wheeling il faudrait...
 
 * Rester couché, s'avancer sur le réservoir, le nez dans la bulle, fesses "soulagées " par les cuisses, en poussant sur les cales pied (sur circuit, faut finir par avoir la marque des cale-pieds sous nos semelles)
 * Ne pas serrer trop fort le guidon quand la roue retouchera le sol
 * C'est une évidence, mais quand la roue est en l'air, on ne touche surtout pas le frein avant mais on peut toucher le frein arrière pour faire baisser le nez de la moto.
-
-#### Être accroché au guidon c'est ce qui nous fait sortir large
-
-1. Je suis en virage
-1. Comme je ne suis pas détendu, je suis accroché au guidon je tire dessus (c'est mécanique)
-1. Je tire plus sur le bracelet intérieur car c'est celui qui est le plus accessible (mon bras intérieur est plié donc c'est plus facile de tirer).
-1. Donc on contre-braque
-    * Si ce n'est pas clair cette histoire de contre braquage, il faut juste se rappeler qu'en entrée de virage, je pousse sur le bracelet intérieur au virage (qu'on le veuille ou non, qu'on le sente ou non, qu'on le fasse sciemment ou non)
-    * Autrement dit la moto tourne
-        1. Du côté du bracelet que je pousse
-        1. Du côté opposé du bracelet que je tire.
-    * Relisez le second point précédent. Si je tire (au lieu de pousser) sur le bracelet intérieur, la moto va donc mécaniquement se diriger de l'autre côté. Pour cela elle va se relever et elle va donc élargir le virage.
-1. Donc, dans un virage, quand on tire sur le bracelet intérieur, on relève la moto
-1. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève la moto et nous fait sortir large.
+ -->
 
 
 

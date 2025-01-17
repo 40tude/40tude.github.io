@@ -24,7 +24,10 @@ J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais 
 
 Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les commentaires. Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
 
-Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les commentaires. Sinon, tu peux regarder cette série de vidéos sur [YouTube](https://youtu.be/aPERgBZrk4c)
+Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les commentaires. Sinon, tu peux regarder cette série de vidéos :
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=9aGfzYXK7sVjutL3&amp;list=PLHh0ACbIwXxmNbfiJzfiXttLZltL586zy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 Dans ce billet il y aura :
 
@@ -34,7 +37,10 @@ Dans ce billet il y aura :
 
 ## Le planning synthétique
 
-Lors de notre discussion nous avons décidé de nous caler sur l'agenda d'une journée de roulage type qui est divisée en 6 sessions de 20 minutes chacune. Si jamais la journée comporte une septième session on ne va pas se plaindre, ce sera du plus en plus. On s'est mis aussi d'accord sur le fait qu'elle viendra sur le circuit avec une copie papier du planning et du plan de la piste, un crayon à papier et une gomme.
+Lors de notre discussion nous avons décidé de nous caler sur l'agenda d'une journée de roulage type qui est divisée en 6 sessions de 20 minutes chacune. Si jamais la journée comporte une septième session on ne va pas se plaindre, ce sera du plus en plus. On s'est mis aussi d'accord sur le fait qu'elle viendra sur le circuit avec 
+1. une copie papier du planning 
+1. une copie papier du plan de la piste
+1. un crayon à papier et une gomme
 
 Du point de vue de la journée, afin de découvrir un maximum de choses, on a aussi pris le parti de passer d'une session à la suivante même si la session précédente n'a pas été entièrement couronnée de succès. L'idée c'est, par exemple, d'éviter de passer les 3/4 de la journée à apprendre le circuit alors qu'on pourra continuer à le faire dans les sessions suivantes. Il y a tellement de choses à découvrir d'ici ce soir !
 
@@ -186,10 +192,11 @@ Tu vas commencer par la plus grande ligne droite parce que c'est là que tu as l
 
 Heu... C'est peut-être un détail pour toi mais pour moi ça veut dire beaucoup 🎶. Quand tu abaisse le haut du corps tu ne t'accroche pas au guidon. Idéalement tu devrais être capable de baisser le torse sans utiliser tes mains (c'est d'ailleurs un bon exercice à faire en statique sur l'aire plane ou la veille dans ton garage). Le truc, c'est que moins on touche la moto mieux c'est et idéalement s'il n'y avait pas de pilote, la moto se comporterait bien mieux la plupart du temps. Donc, bref, tu ne tiens presque pas les poignées et tu fais tout avec les abdos. Oui, oui je confirme c'est un sport et tu vas bien dormir ce soir. Et non, tu n'as pas besoin de serrer l'accélérateur comme tu le fais. Tu peux le tenir ouvert à 100% avec 3 doigts. Là aussi, fais le test sur le parking ou quand tu roules la semaine qui précède le roulage.
 
-<div align="center">
+<!-- <div align="center">
 <img src="./assets/image-21_1.webp" alt="" width="300" loading="lazy"/>
-</div>
+</div> -->
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Ça va ? T'es pas mouru l'âne ? Là, pour le coup, il n'y a aucune raison de se mettre en mode panique. Tu accélères comme avant, tu freines comme avant. Le seul truc c'est qu'entre les deux tu t'es couché sur la moto. Oui, bien sûr, tu t'es aussi relevé au moment de freiner.
 
