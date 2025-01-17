@@ -16,7 +16,7 @@ last_modified_date: 2023-06-01 18:22:57
 - TOC
 {:toc}
 
-Tu as dormi peu la nuit dernière... Endormis tard, tu t'es levé à 5H30, dans la voiture tu as fait le mariolle devant les autres mais bon, tu es excité comme une puce et ça gargouille un peu au niveau des intestins... Il est maintenant 9H35, tu as passé le sonomètre et assisté au briefing. Un marshal a peut-être organisé une petite réunion à l'intention des "débutants" pendant que ceux du groupe "des hargneux" ouvraient le bal. Quoiqu'il en soit, il est 9H37 et les débutants doivent prendre possession du circuit dans 3 minutes. Tu mets les pieds et les roues pour la première fois sur un circuit et c'est à ce moment-là que tu te demandes comment ça va se passer et si tu t'es pas embringué dans un plan galère...
+Tu as dormi peu la nuit dernière... Endormis tard, tu t'es levé à 5H30. Dans la voiture tu as fait le mariolle devant les autres mais bon, tu es excité comme une puce et ça gargouille un peu au niveau des intestins... Il est maintenant 9H35, tu as passé le sonomètre et assisté au briefing. Un marshal a peut-être organisé une petite réunion à l'intention des "débutants" pendant que ceux du groupe "des hargneux" ouvraient le bal. Quoiqu'il en soit, il est 9H37 et les débutants doivent prendre possession du circuit dans 3 minutes. Tu mets les pieds et les roues pour la première fois sur un circuit et c'est à ce moment-là que tu te demandes comment ça va se passer et si tu t'es pas embringué dans un plan galère...
 
 
 
@@ -211,9 +211,9 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 
 
 ### Les rapports 
-* Je sais, on en a pas parlé, mais pour chaque virage, tu peux indiquer sur ton plan de la piste combien de rapport tu rentre (-2, -1, -3...)?
+* Je sais, on en a pas parlé, mais pour chaque virage, peux tu indiquer sur ton plan de la piste combien de rapport tu rentre (-2, -1, -3...)?
 * Si tu ne sais pas c'est pas grave. Lors de la prochaine session notes l'information pour 1 ou 2 virages puis encore 1 ou 2 à la session d'après. En fin de journée tu auras couvert tout le circuit.
-* En session tu n'as pas de temps à consacrer aux rétrogradages et il ne faut pas regarder ton tableau de bord. Afin de te libérer la tête d'un truc supplémentaire on peut apprendre par cœur le nombre de rapport à rentrer avant chaque virage.
+* En session tu n'as pas de temps à consacrer aux rétrogradages et il ne faut pas regarder ton tableau de bord. Afin de te libérer la tête d'un truc supplémentaire apprends le nombre de rapport à rentrer à chaque virage.
 
 
 
@@ -302,7 +302,9 @@ Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on pe
 1. **Chicken Wings** : être capable de faire le poulet en levant et en baissant les coudes. Oui, oui je confirme, on est ridicule...
 1. **Doigts de Sauron** : être capable d'étirer ses doigts et d'aller les poser sur les leviers d'embrayage. Côté accélérateur, on tient ce dernier à 3 doigts et la paume est écartée de la poignée.
 
-La tête de fourche peut bouger à l'accélération si on est pas détendu et si elle est trop forte. Pour éviter ce phénomène il faut avoir des accélérations précoces, douces et continues en virages (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})))
+La tête de fourche peut bouger à l'accélération si on est pas détendu et si elle est trop forte. Pour éviter ce phénomène, dans les virages il suffit d'avoir des accélérations précoces, douces et continues. Je dis "il suffit" car c'est vraiment la seule chose qu'il y a à faire. Je me demande bien pourquoi on est pas tous en Moto GP...
+
+<!-- (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))) -->
 
 
 
@@ -312,13 +314,15 @@ La tête de fourche peut bouger à l'accélération si on est pas détendu et si
 1. Comme je ne suis pas détendu, je suis accroché au guidon je tire dessus (c'est mécanique)
 1. Je tire plus sur le bracelet intérieur car c'est celui qui est le plus accessible (mon bras intérieur est plié donc c'est plus facile de tirer).
 1. Donc on contre-braque
-    * Si ce n'est pas clair cette histoire de contre braquage, il faut juste se rappeler qu'en entrée de virage, je pousse sur le bracelet intérieur au virage (qu'on le veuille ou non, qu'on le sente ou non, qu'on le fasse sciemment ou non)
+    * Si ce n'est pas clair cette histoire de contre-braquage, il faut juste se rappeler qu'en entrée de virage, je pousse sur le bracelet intérieur au virage (qu'on le veuille ou non, qu'on le sente ou non, qu'on le fasse sciemment ou non)
     * Autrement dit la moto tourne
         1. Du côté du bracelet que je pousse
         1. Du côté opposé du bracelet que je tire.
-    * Relisez le second point précédent. Si je tire (au lieu de pousser) sur le bracelet intérieur, la moto va donc mécaniquement se diriger de l'autre côté. Pour cela elle va se relever et elle va donc élargir le virage.
+    * Relisez le second point précédent. "Si je tire d'un côté, la moto va tourner de l'autre...". Si je tire (au lieu de pousser) sur le bracelet intérieur, la moto va donc mécaniquement se diriger de l'autre côté. Pour cela elle va se relever et elle va élargir le virage.
 1. Donc, dans un virage, quand on tire sur le bracelet intérieur, on relève la moto
-1. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève la moto et nous fait sortir large.
+1. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève la moto et c'est ça qui me fait élargir (ou m'empêche d'atteindre le point de corde à 1 cm près).
+
+La solution? Être détendu au guidon, zen, relâché...
 
 
 ### Être accroché au guidon amplifies les guidonnages (wobble, tank slapper)
@@ -330,10 +334,10 @@ La tête de fourche peut bouger à l'accélération si on est pas détendu et si
 * Personne n'a la force d'empêcher les mouvements de la tête de fourche
 * Normalement les vibrations de l'avant ne se propagent pas au reste de la moto
 * Sauf... Si le pilote est accroché au guidon (les motos rouleraient bien mieux si il n'y avait pas de pilote...)
-* [Exemple de guidonnage](https://www.facebook.com/MotoGP/videos/quartararos-super-scary-sachsenring-moment-at-262kmh/343457489889047/)
-* [Article complémentaire](http://www.lerepairedesmotards.com/conseils/guidonnage.php)
+    * [Exemple de guidonnage](https://www.facebook.com/MotoGP/videos/quartararos-super-scary-sachsenring-moment-at-262kmh/343457489889047/)
+    * [Article complémentaire](http://www.lerepairedesmotards.com/conseils/guidonnage.php)
 
-Si la tête de fourche secoue en sortie de virage, si la moto est correctement entretenue, cela ira tout aussi mal si on serre les bracelets. Afin de s'économiser physiquement, finalement, il est donc plus efficace de relâcher les bracelets. C'est tellement facile à dire devant un écran de PC...
+Si la tête de fourche secoue en sortie de virage, si la moto est correctement entretenue, cela ira tout aussi mal si on serre les bracelets. Afin de s'économiser physiquement, il est donc plus efficace de relâcher les bracelets. C'est tellement facile à dire devant un écran de PC...
 
 Bref, autant relâcher les bracelets et laisser la moto s'auto réguler.
 
