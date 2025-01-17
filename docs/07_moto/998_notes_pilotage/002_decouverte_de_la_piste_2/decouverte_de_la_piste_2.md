@@ -21,6 +21,11 @@ last_modified_date: 2023-09-09 00:08:32
 
 <!-- Comme la première [Note de Pilotage Moto]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀. -->
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Objectifs de la session
 
 <!-- 1. Découvrir la piste en roulant à 75% de nos capacités.  -->
@@ -30,6 +35,10 @@ last_modified_date: 2023-09-09 00:08:32
 
 
 
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 ## Prérequis
 1. Avoir fait la première session de [Découverte de la piste]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})
 1. Se coucher dans les lignes droite
@@ -38,6 +47,8 @@ last_modified_date: 2023-09-09 00:08:32
 Si tu te couche pas encore bien sur la moto, c'est pas grave. Identifie une ligne droite du circuit où tu t'engages à le faire lors de cette session. Indique-le, fais une marque sur ton plan de la piste.
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Petit rappel utile avant de rentrer sur le circuit
 
 On ne pourra pas dire qu'on n'en a pas parlé...
@@ -64,13 +75,40 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## La session
 
-
+* Pense à noter sur un ou 2 virages combien de rapport tu rentre
 
 ### À vérifier pendant la session
 
 
+### La poignée de gaz
+* Faire attention à ce qu'on ne joue pas avec la poignée de gaz dans les virages
+    * Jouer avec la poignée de gaz signifie, augmenter les gaz, puis les diminuer, puis en remettre une lichette, oups, je suis allé trop loin, je coupe...
+    * Dit autrement, cela concerne les cas où, avant le point de corde, on rajoute des gaz car on est rentré trop lentement dans le virage. Au prochain tour il faudra retarder la mise sur l'angle.
+    * Cela concerne aussi les cas où, après le point de corde, on coupe les gaz car on est beaucoup trop vite. Au prochain tour il faudra avancer la mise sur l'angle.
+    * Au début, en mode découverte de la piste, on peut se faire surprendre et jouer avec la poignée de gaz dans les virages qui ont un rayon de courbure qui se resserre par exemple
+    * On ne souhaite pas jouer avec la poignée de gaz car si on joue avec les gaz cela veut dire qu'on n'est PAS encore sur la ligne idéale (plus d'explications plus loin).
+    * Au prochain tour il faudra donc rentrer beaucoup moins vite dans CE virage
+        * Être très à l'aise pour pouvoir être très attentif
+        * 2/3 de ce qu'on sait faire (au lieu de 75%)
+        * On s'appliquera à ne pas jouer avec la poignée de gaz.
+        * Dans les prochains tours on reviendra à 75% de nos capacités
+        * Il faut passer, là, pile poil sur le point de corde sans jouer avec la poignée de gaz (ni up, ni down)
+        * Et s'appliquer à mettre la Throttle Rule (voir juste après) en action dans CE virage
+* Il faut bien retenir que si dans un virage on est constant sur la poignée de gaz alors on n'est PAS sur la ligne idéale (car on ne respecte pas la Throttle Rule)
+
+
+### La Throttle Rule
+Once the throttle is cracked on, it is rolled on evenly, smoothly and constantly troughout the remainder of the turn
+
+À partir du moment où on ouvre les gaz, on n'arrête pas de tourner la poignée, gentiment et continûment pendant tout le reste du virage.
+
+On en parle dans cette vidéo :
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CE_UaGJqH-E?si=W9VrsJk1hFqXJi5V&amp;start=1014" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 
@@ -81,6 +119,10 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## À la fin de la session
 
 ### Est-ce que tu t'es couché dans la ligne droite que tu avais choisis?
@@ -90,6 +132,11 @@ Là, le truc c'est qu'il y a tellement de choses qui se passe que tu "oublies" e
 
 
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Remarques
 
 
