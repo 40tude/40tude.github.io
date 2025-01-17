@@ -10,9 +10,17 @@ last_modified_date: 2023-09-01 11:50:52
 
 # Première fois sur circuit
 
+<div align="center">
+<img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 ## Introduction
 
 J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a les [Notes de Pilotage Moto]({%link docs/07_moto/998_notes_pilotage/index.md%}) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
+
+<div align="center">
+<img src="./assets/image-24.webp" alt="" width="450" loading="lazy"/>
+</div>
 
 Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les commentaires. Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
 
@@ -179,7 +187,7 @@ Tu vas commencer par la plus grande ligne droite parce que c'est là que tu as l
 Heu... C'est peut-être un détail pour toi mais pour moi ça veut dire beaucoup 🎶. Quand tu abaisse le haut du corps tu ne t'accroche pas au guidon. Idéalement tu devrais être capable de baisser le torse sans utiliser tes mains (c'est d'ailleurs un bon exercice à faire en statique sur l'aire plane ou la veille dans ton garage). Le truc, c'est que moins on touche la moto mieux c'est et idéalement s'il n'y avait pas de pilote, la moto se comporterait bien mieux la plupart du temps. Donc, bref, tu ne tiens presque pas les poignées et tu fais tout avec les abdos. Oui, oui je confirme c'est un sport et tu vas bien dormir ce soir. Et non, tu n'as pas besoin de serrer l'accélérateur comme tu le fais. Tu peux le tenir ouvert à 100% avec 3 doigts. Là aussi, fais le test sur le parking ou quand tu roules la semaine qui précède le roulage.
 
 <div align="center">
-<img src="./assets/image-21_1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-21_1.webp" alt="" width="300" loading="lazy"/>
 </div>
 
 
@@ -544,10 +552,16 @@ Laisse-les partir devant. Tu ne sais pas dans quel état de "fraicheur" ils sont
 
 Maintenant il y a deux cas de figure :
 
-1. Soit, tu n'as pas apprécié la journée, tu t'es fait peur, tu n'es pas à l'aise avec les autres qui te double, tu ne prends pas de plaisir... Ce n'est pas grave. Il y a plein de façons de faire de la moto. En revanche, essaies peut-être de participer à un [stage de l'AFDM](https://afdm.org/le-stage-perf-2-jours/) et si possible fais un stage de 2 jours. Cela n'a rien à voir avec le circuit mais toi et la moto allez faire des trucs que tu ne penses pas possible, tu vas comprendre beaucoup de choses et surtout, tu vas prendre confiance, beaucoup de confiance.  
+1. Soit, tu n'as pas apprécié la journée, tu t'es fait peur, tu n'es pas à l'aise avec les autres qui te double, tu ne prends pas de plaisir... Ce n'est pas grave. Il y a plein de façons de faire de la moto. En revanche, essaies peut-être de participer à un [stage de l'AFDM](https://afdm.org/le-stage-perf-2-jours/) et si possible fais un stage de 2 jours.   
+Cela n'a rien à voir avec le circuit mais toi et la moto allez faire des trucs que tu ne penses pas possible, tu vas comprendre beaucoup de choses et surtout, tu vas prendre confiance, beaucoup de confiance.  
 Quand ça s'est fait, redonne-toi une chance sur circuit et/ou fais une journée de stage dédiée aux Novices (c'est le niveau avant Débutant). Le circuit de la Ferté Gaucher organise des journées de ce type mais je suis certains que cela existe aussi ailleurs. Là, c'est top car il y a moins de monde par session (moitié moins de monde que ce que l'on a en journée de roulage typique où on compte une moto par 100 m de circuit), tout le monde a le même niveau, c'est encadré, il y a des sessions en salle, des débriefings etc.
 
-1. Dans le second cas, si tu as la banane alors que tu es crevé et que tu sais que tu as encore 12 000 trucs à apprendre... Welcome. J'ai juste 3 recommandations :
+<div align="center">
+<img src="./assets/image-23.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
+2. Dans le second cas, si tu as la banane alors que tu es crevé et que tu sais que tu as encore 12 000 trucs à apprendre... Welcome. J'ai juste 3 recommandations :
     * Ta moto est bien meilleure que toi. Donc, pour l'instant, continue avec elle, telle qu'elle est. Ne dépense rien. Entretiens-la correctement (pneus, plaquettes de frein AV, liquide de frein, vidange de fourche, joints spi de fourche, entretien moteur classique...) et ne vas pas mettre 1500€ dans un échappement. C'est de la connerie.
     * En revanche, si tu as vraiment l'intention de refaire de la piste achète un chrono GPS (n'utilise pas ton téléphone ou alors mets le sous la selle). On peut dire ce que l'on veut, "le chrono ne ment pas". Tu pourras te faire les films que tu veux, te trouver les excuses que tu veux... Soit, tu vas plus vite soit tu es moins efficace. Point. En plus, le chrono tu pourras l'utiliser sur d'autres motos par la suite.
     * Participe rapidement à un stage de 1 ou 2 jours. C'est un sacré investissement (600 € environ rien que pour le stage de 2 jours) mais c'est cadré, pro etc. C'est un budget mais cela va te faire gagner beaucoup plus de secondes au tour que n'importe quel accessoire carbone, commande reculée ou pot d'échappement en Mithril. C'est comme apprendre le Snowboard tout seul ou passer par l'ESF. Il n'y a pas photo. **Attention**, il faudra que tu arrives au stage en forme (abdos, cuisses) et reposé car le rythme y est soutenu. Ce n'est pas un stage commandos de marine mais il faut se donner, pas perdre de temps entre les sessions et tenir jusqu'au bout (physique & mental). Exemple avec mon tout premier stage avec DRRS en 2019.

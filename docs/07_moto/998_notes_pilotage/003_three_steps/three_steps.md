@@ -33,42 +33,54 @@ Le virage est ainsi découpé en 3 étapes :
 
 ## Prérequis
 
-* On "connait" la piste et on a identifié les points de mise sur l'angle et les points de corde. Oui, oui je suis d'accord. On ne connait peut-être pas toute la piste par cœur. Il y a sans doute encore des sections qui posent des problèmes etc.
-
+* On "connaît" la piste et on a identifié les points de mise sur l'angle et les points de corde. Oui, oui je suis d'accord. On ne connait peut-être pas toute la piste par cœur. Il y a sans doute encore des sections qui posent des problèmes etc.
 * Lire **ATOTW II** p 98 (ça parle de Two Steps mais nous ici on passe directement à Three Steps puisqu'on décompose le virage en 3 portions)
-
 * En deux mots
-  + Two Steps va "over-simplifier" la lecture de l'entrée du virage avec uniquement 2 points de référence qu'on acquiert en avance de phase.
-
-  + Nous ici on passe directement à 3 steps parce qu'on est trop fort ✊
+    * Two Steps va "over-simplifier" la lecture de l'entrée du virage avec uniquement 2 points de référence qu'on acquiert en avance de phase.
+    * Nous ici on passe directement à 3 steps parce qu'on est trop fort ✊
 
 ### Note
 
 **ATOW II** c'est LE bouquin [A Twist Of The Wrist](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=A+twist+of+the+Wrist&qid=1567893832&s=gateway&sr=8-3). Le livre commence à être un peu vieux mais fondamentalement tout y est.
 Il y a aussi une vidéo... Franchement elle, elle date carrément et elle n'est franchement pas top au niveau concernant le jeu des "acteurs" mais bon, elle reprend bien tout le contenu du bouquin. Elle dure une heure quand elle est d'un seul tenant mais ça vaut le coup. J'arrête de mettre un lien dans cette page car la vidéo est régulièrement supprimée de YouTube. Le mieux c'est encore d'aller sur YouTube et de faire une recherche sur "[a twist of the wrist](https://www.youtube.com/results?search_query=a+twist+of+the+wrist)".
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## Petit rappel utile avant de rentrer sur le circuit
 
+On ne pourra pas dire qu'on n'en a pas parlé...
+
 * Petit coup d'œil derrière, sur la piste, avant de rentrer
-  + Je lève mes fesses et je tourne franchement la tête et le haut du corps pour vraiment voir ce qui arrive
-
+    * Je lève mes fesses de la selle et je tourne franchement la tête et le haut du corps pour vraiment voir ce qui arrive. Si on reste assis, il ne faut pas hésiter à lâcher la main du côté vers lequel on tourne le buste.
 * Ne **PAS** prendre la corde du tout premier virage
-  + On rentre généralement dans une ligne droite
+    * On rentre sur le circuit, généralement, dans une ligne droite
+    * Si on va à la corde du premier virage, au bout de la ligne droite, on peut se faire percuter par un gars qui est sur la piste depuis un moment et qui est lancé
+* Si on n'a pas de **couvertures chauffantes** alors on a gagné 2 tours de chauffe
+    * Accélérations franches en ligne droite pour le pneu arrière
+    * Freinages progressivement de plus en plus appuyés pour le pneu avant
+    * **PAS** de zigzag. Ça ne sert strictement à rien
+* On se fiche du chrono lors des tours de chauffe.
+* Rouler très à l'aise, 2/3 de ses possibilités, ne pas se mettre en mode panique
+* Au 3eme tour on monte gentiment à 3/4 de ses possibilités car c'est une session de travail (on n'est pas là pour claquer une pendule)
 
-  + Au bout on peut se faire percuter par un gars qui est sur la piste depuis un moment et qui est lancé
 
-* Si on n'a pas de couvertures chauffantes alors on a gagné 2 tours de chauffe
-  + Accélérations en ligne droite pour l'arrière
 
-  + Freinages progressivement plus appuyés pour l'avant
 
-  + **PAS**de zigzag. Ça ne sert strictement à rien.
 
-* On se fiche du chrono
 
-* Rouler à l'aise, 2/3 de ses possibilités, ne pas se mettre en mode panique
 
-* Au 3eme tour on monte à 75% car c'est une session de travail (on n'est pas là pour claquer une pendule)
+
+
 
 ## La session
 
@@ -170,13 +182,13 @@ On se met sur l'angle en visant le point de corde
 
 
 
-## Remarques complémentaires
+## Remarques
 
 ### Remise des gaz
 
 Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
-* C'est la [Throttle Rule](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/), on en a parlé dans la note précédente. Une fois que c'est parti on arrête plus d'enrouler la poignée et on n'a pas peur de finir ouvert en grand (100% gaz)
+* C'est la [Throttle Rule]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). On en a parlé dans la note précédente. Une fois que c'est parti on arrête plus d'enrouler la poignée et on n'a pas peur de finir ouvert en grand (100% gaz)
 
 * Encore une fois : pour l'instant, peu importe le moment exact où on commence à accélérer
 
@@ -194,7 +206,7 @@ Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
 ### Progressif on te dit
 
-Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux :-)
+Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
 
 https://youtu.be/rPlp_SvbLLE?t=160
 
@@ -202,7 +214,7 @@ Profites-en pour noter la différence de distance entre la bande blanche et les 
 
 Bref... À ce stade, la décomposition des virages nous permet de passer sereinement et régulièrement au point de corde en ayant la sortie en point de mire.
 
-Plus tard (note de [Pilotage N°09](https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/), Freinage sur l'angle & Trail Braking) il n'y aura presque plus de temps mort entre la fin du freinage et le début de l'accélération (en fait on terminera le freinage sur l'angle, bien après le PMSA)
+Plus tard (note de [Pilotage N°09] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/), Freinage sur l'angle & Trail Braking) il n'y aura presque plus de temps mort entre la fin du freinage et le début de l'accélération (en fait on terminera le freinage sur l'angle, bien après le PMSA)
 
 L'image ci-dessous illustre bien l'idée de regarder où on veut aller.
 
