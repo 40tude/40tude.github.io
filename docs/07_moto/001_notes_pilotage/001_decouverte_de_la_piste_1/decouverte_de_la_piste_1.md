@@ -129,7 +129,7 @@ Lors de découverte de la piste on souhaite juste prendre nos marques sur le cir
 En plus, il faut que notre cerveau s'habitue à la vitesse et qu'il ait suffisamment de bande passante pour bien enregistrer ce qui se passe. Si on brûle les étapes, si on va trop vite, si on se met dans le rouge, on ne va pas pouvoir apprendre le circuit. On va "oublier" de se coucher sur la moto et finalement ce sera une session pour rien.   
 
 ### Les pieds
-Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus large de tes pieds (normal faut répartir la pression au maximum). Eh bien c'est cette partie du pied que tu dois faire reposer sur tes reposes pieds. Pas la pointe du pied ni le talon, non, non, juste cette partie. Oui faut plier les genoux. Oui ça fait bizarre mais oui tu peux aussi t’entraîner, pendant les semaines avant de venir alors tu es à moto sur la route.
+Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus large de tes pieds (normal faut répartir la pression au maximum). Eh bien c'est cette partie du pied que tu dois faire reposer sur tes reposes pieds. Pas la pointe du pied ni le talon, non, non, juste cette partie. Oui, faut plier les genoux. Oui, ça fait bizarre mais oui, tu peux aussi anticiper l'action et prendre l'habitude de poser tes pieds de cette façon les semaines qui précèdent la journée de roulage quand tu es sur route.
 
 ### Utilise toute la piste
 * Je roule à gauche si le prochain virage est à droite.
@@ -138,11 +138,11 @@ Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus 
 
 ### La chasse aux cônes
 * C'est comme à Pâques lors de la chasse au oeufs. Normalement, sur chaque virage il y aura 3 cônes. Un à l'entrée et à l'extérieur du virage (au bout du vibreur typiquement). Un second à l'intérieur du virage. Un dernier à la sortie et à l'extérieur du virage, lui aussi au bout du vibreur. 
-* Comme tu es à 75% de tes capacités, prends le temps de bien les repérer.
+* Comme tu es à 75% de tes capacités, prends le temps de les repérer.
 * Prends aussi le temps de remarquer que plus le virage est serré, plus le cône intérieur est loin dans le virage. Par exemple dans un virage en épingle tu vas le trouver au 3/4 du virage.
 * Idéalement tu dois passer à 1cm de chacun d'entre eux. 
     * Pour le 1 et le 3 c'est trop facile car tu roules, tout à gauche ou tout à droite sur la piste. J'en parle même pas. Trop facile je te dis. 
-    * Le second cône lui par contre : good luck. On en reparle plus tard. Pour l'instant note où il est et garde en tête qu'à terme tu veux passer **sur** lui.
+    * Le second cône lui par contre... Good luck. On en reparle plus tard. Pour l'instant note juste où il est et garde en tête qu'à terme tu veux faire passer tes roues dessus (j'ai bien dis tes roues)
 
 
 
@@ -162,11 +162,10 @@ Parce qu'en revenant de cette session de découverte de la piste c'est le plus i
 Alors...Est-ce que tu t'es fait plaisir ? Si c'est le cas, bravo. Tu peux être très fier de toi. Ça veut dire que tu as roulé suffisamment lentement pour avoir assez de bande passante afin que ton cerveau réalise et mémorise tout ce qui s'est passé.
 
 
-### De retour à l'aire plane
-* Le cas échéant, remets de suite les couvertures chauffantes sur les pneus
-* Bois un coup d'eau, nettoyage de la visière et tu te remets de tes émotions
+### De retour sur l'aire plane
+* Tu bois un coup d'eau, tu nettoies la visière et tu te remets de tes émotions
 * Pour le reste tu as 40 minutes avant la prochaine session. On est laaarge...
-    * Attention y a peut être un debriefing avec le Marshall. Vas-y, y a toujours des choses à apprendre.
+    * Attention, y a peut être un debriefing avec le marshall. Vas-y, y a toujours des choses à apprendre.
 * Allez, encore un petit effort. Prends le temps de noter tes impressions, par écrit, virage par virage, sur la feuille de papier que tu utilisais en regardant YouTube. 
 
 
@@ -176,7 +175,7 @@ Alors...Est-ce que tu t'es fait plaisir ? Si c'est le cas, bravo. Tu peux être 
 
 Oui, je sais, ça fait bizarre. D'un côté on dit qu'on roule à 75% de nos moyens et de l'autre on dit qu'il faut se positionner comme si on devait aller chercher le dernier centième de seconde. En fait, ce n'est pas contradictoire avec la session de découverte de la piste. On est sur circuit, on apprend des choses nouvelles et l'une des toutes premières c'est le positionnement sur la moto dans les lignes droites et les virages rapides.
 
-Bref, en ligne droite il ne faut plus de bras tendus, de nez au vent... Non, non, on est menton sur le réservoir, bras pliés et resserrés sur ce dernier. Quand je dis menton, c'est vraiment ça. Le casque doit toucher le réservoir. Il ne faut pas hésiter à s’entraîner à la maison, en statique dans le garage avec le casque sur la tête. Cela permet vraiment de voir ce que cela donne. Quand l'avant du casque touche le réservoir, qu'est-ce que je vois devant ? Rien, pas grand-chose... Si je veux que ma vision passe juste au-dessus du tableau de bord comment je dois être sur la moto ? Est-ce que mes coudes touchent mes genoux, est-ce qu'il y a de la place (ou pas) ... Enfin bref, autant prendre 15 minutes dans le garage ou l'aire plane du circuit pour vérifier tout ça.
+Bref, en ligne droite il ne faut plus de bras tendus, de nez au vent... Non, non, on est menton sur le réservoir, bras pliés et resserrés sur ce dernier. Quand je dis menton, c'est vraiment ça. Le casque doit toucher le réservoir (tu dois entendre le "poc"). Il ne faut pas hésiter à s’entraîner à la maison, en statique dans le garage avec le casque sur la tête. Cela permet vraiment de voir ce que cela donne. Quand l'avant du casque touche le réservoir, qu'est-ce que je vois devant ? Rien, pas grand-chose... Si je veux que ma vision passe juste au-dessus du tableau de bord comment je dois être sur la moto ? Est-ce que mes coudes touchent mes genoux, est-ce qu'il y a de la place (ou pas) ... Enfin bref, autant prendre 15 minutes dans le garage ou l'aire plane du circuit pour vérifier tout ça.
 
 Faudra en profiter pour mettre du scotch à peinture bleu sur le compteur (pas la peine d'être tenté de regarder autre chose que la piste le jour du roulage).
 
@@ -202,19 +201,19 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 ### À propos des cônes 
 * Tu peux indiquer, pour chaque virage où sont les cônes sur ton plan de la piste ?
 * En fin de session, pour chaque virage, il faudrait avoir identifié :
-    * Le point de freinage (PF). Point où on commence à freiner.
-    * Le point de mise sur l'angle (PMSA). Point où on fait basculer la moto. Le premier cône.
-    * Le point de corde (PC, apex en anglais US). L'unique point où les pneus de la moto se trouvent à la corde. Le second cône.
-    * Le point de sortie (PS). Le troisième cône.
+    * Le point de freinage (**PF**). Point où on commence à freiner.
+    * Le point de mise sur l'angle (**PMSA**). Point où on fait basculer la moto. Le premier cône.
+    * Le point de corde (**PC**, apex en anglais US). L'unique point où les pneus de la moto se trouvent à la corde. Le second cône.
+    * Le point de sortie (**PS**). Le troisième cône.
 
 <!-- * Les virages où la **Throttle Rule** n'est pas appliquée sont identifiés afin d'y revenir lors de la prochaine session (on n'est pas pressé, on a le temps, on peut passer plusieurs sessions à apprendre le circuit). -->
 
 
 
 ### Les rapports 
-* Je sais, on en a pas parlé, mais pour chaque virage, peux tu indiquer sur ton plan de la piste combien de rapport tu rentre (-2, -1, -3...)?
-* Si tu ne sais pas c'est pas grave. Lors de la prochaine session notes l'information pour 1 ou 2 virages puis encore 1 ou 2 à la session d'après. En fin de journée tu auras couvert tout le circuit.
-* En session tu n'as pas de temps à consacrer aux rétrogradages et il ne faut pas regarder ton tableau de bord. Afin de te libérer la tête d'un truc supplémentaire apprends le nombre de rapport à rentrer à chaque virage.
+* Je sais, on en a pas parlé, mais pour chaque virage, peux tu indiquer sur ton plan de la piste combien de rapport tu rentres (-2, -1, -3...) ?
+* Si tu ne sais pas c'est pas grave. Lors de la prochaine session notes l'information pour 1 ou 2 virages puis encore pour 1 ou 2 virages à la session d'après. En fin de journée tu auras couvert tout le circuit.
+* En session tu n'as pas de temps à consacrer aux rétrogradages et il ne faut pas regarder ton tableau de bord. Afin de te libérer la tête apprends le nombre de rapport à rentrer à chaque virage.
 
 
 
@@ -239,7 +238,7 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 ## Remarques
 
 ### Avant de partir
-Il faudra bien se couvrir... Ça on sait. Cela dit, pense peut-être à bien remonter l'avant de ton casque quitte à avoir l'impression que ton menton ressort (ça fait bizarre au départ). Le truc c'est qu'une fois couché sur la moto, si ton casque est positionné comme pour la route tu ne vas pas voir grand-chose ou tu vas t'exploser les cervicales. Si tu oublies tu le feras à la seconde session 😂.
+Il faudra bien se couvrir... Ça on sait. Cela dit, pense peut-être à bien remonter l'avant de ton casque quitte à avoir l'impression que ton menton ressort (ça fait bizarre au départ). Le truc c'est qu'une fois couché sur la moto, si ton casque est positionné comme pour la route tu ne vas pas voir grand-chose ou tu vas t'exploser les cervicales. Si tu oublies à le première session, crois moi, tu le feras à la seconde session 😂.
 
 
 
@@ -297,14 +296,15 @@ Il faut donc vérifier régulièrement qu'on n'a pas tendance à s'accrocher au 
 ### Être relâché ça veut dire
 
 * Être capable d'écarter et de rapprocher les coudes du corps (Chicken Wings)
-* Changer le grip sur les poignées quand on est sur l'angle.
-* Avant et dans le virage, sentir que le buste est mobile et qu'on plie bien le coude intérieur. Avant un virage, à la fin du freinage ne pas sentir qu'on force comme un "dahu" sur les avant-bras afin de les garder tendus avec le secret espoir d'enfoncer l'avant de la moto dans le sol. À la fin du freinage, quand on relâche progressivement la poignée, on est normalement très light sur le frein avant, on utilise le poids du corps (tête et buste) pour appuyer l'avant de la moto. Les bras ne sont donc pas tendus. Au contraire, à la fin du freinage, les bras se plient pour nous permettre de pencher le buste et approcher la tête vers la poignée qui est à l'intérieur du virage.
+* Être capable de changer le grip (la façon de tenir) sur les poignées quand on est sur l'angle.
+* Avant et dans le virage, sentir que le buste est mobile et qu'on plie bien le coude intérieur. 
+* Avant un virage, à la fin du freinage ne pas sentir qu'on force comme un "dahu" sur les avant-bras afin de les garder tendus avec le secret espoir d'enfoncer l'avant de la moto dans le sol. À la fin du freinage, quand on relâche progressivement la poignée de frein, on est de plus en plus "lite" sur le frein avant, on utilise le poids du corps (tête et buste) pour appuyer l'avant de la moto. Les bras ne sont donc pas tendus. Au contraire, à la fin du freinage, les bras se plient pour nous permettre de pencher le buste et approcher la tête vers la poignée qui est à l'intérieur du virage. Mais bon n'anticipons pas... À ce stade retiens juste que tu dois éviter d'être trop tendu au niveau des bras à la fin du freinage.
 
 Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on peut vérifier qu'on est capable de faire des :
 1. **Chicken Wings** : être capable de faire le poulet en levant et en baissant les coudes. Oui, oui je confirme, on est ridicule...
 1. **Doigts de Sauron** : être capable d'étirer ses doigts et d'aller les poser sur les leviers d'embrayage. Côté accélérateur, on tient ce dernier à 3 doigts et la paume est écartée de la poignée.
 
-La tête de fourche peut bouger à l'accélération si on est pas détendu et si elle est trop forte. Pour éviter ce phénomène, dans les virages il suffit d'avoir des accélérations précoces, douces et continues. Je dis "il suffit" car c'est vraiment la seule chose qu'il y a à faire. Je me demande bien pourquoi on est pas tous en Moto GP...
+En sortie de virage, la tête de fourche peut bouger si on est pas détendu et si l’accélération est trop brutale. Pour éviter ce phénomène, dans les virages il suffit d'avoir des accélérations précoces, douces et continues. Je dis "il suffit" car c'est vraiment la seule chose qu'il y a à faire. C'est tellement facile... Je me demande bien pourquoi on est pas tous en Moto GP...
 
 <!-- (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))) -->
 
@@ -320,7 +320,7 @@ La tête de fourche peut bouger à l'accélération si on est pas détendu et si
     * Autrement dit la moto tourne
         1. Du côté du bracelet que je pousse
         1. Du côté opposé du bracelet que je tire.
-    * Relisez le second point précédent. "Si je tire d'un côté, la moto va tourner de l'autre...". Si je tire (au lieu de pousser) sur le bracelet intérieur, la moto va donc mécaniquement se diriger de l'autre côté. Pour cela elle va se relever et elle va élargir le virage.
+    * Relisez le second point précédent. "Si je tire d'un côté, la moto va tourner de l'autre...". Si je tire (au lieu de pousser) sur le bracelet intérieur, la moto va se diriger de l'autre côté. Pour cela elle va se relever et elle va élargir le virage.
 1. Donc, dans un virage, quand on tire sur le bracelet intérieur, on relève la moto
 1. Conclusion : quand je suis accroché au guidon en virage, je tire sur le bracelet intérieur ce qui relève la moto et c'est ça qui me fait élargir (ou m'empêche d'atteindre le point de corde à 1 cm près).
 
@@ -331,11 +331,11 @@ La solution? Être détendu au guidon, zen, relâché...
 <!-- #### À propos des guidonnages (wobble, tank slapper) -->
 
 * Les mouvements de fourche sont nécessaires. Ils font partie du système de la suspension (pneus et fourche)
-* Ça arrive quand les pneus et la fourche ont atteint leurs limites
+* Les guidonnages arrivent quand les pneus et la fourche ont atteint leurs limites
 * Il y a alors un changement de la charge sur les pneus qui se répercute dans la fourche qui rebondi en ne revenant pas de suite à sa position d'équilibre
 * Personne n'a la force d'empêcher les mouvements de la tête de fourche
 * Normalement les vibrations de l'avant ne se propagent pas au reste de la moto
-* Sauf... Si le pilote est accroché au guidon (les motos rouleraient bien mieux si il n'y avait pas de pilote...)
+* Sauf... Sauf si le pilote est accroché au guidon (les motos rouleraient bien mieux si il n'y avait pas de pilote...)
     * [Exemple de guidonnage](https://www.facebook.com/MotoGP/videos/quartararos-super-scary-sachsenring-moment-at-262kmh/343457489889047/)
     * [Article complémentaire](http://www.lerepairedesmotards.com/conseils/guidonnage.php)
 
@@ -356,33 +356,6 @@ Bref, autant relâcher les bracelets et laisser la moto s'auto réguler.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ### Est-ce qu'il y a des sorties de virages où tu pourrais sortir moins large?
 
 Oui, oui, c'est contre intuitif car on a beau être débutant et dans une première session de découverte de la piste, on a tous en tête le mantra "Extérieur, Intérieur, Extérieur".
@@ -395,7 +368,7 @@ Un truc qui peut aider au début c'est de se forcer, en sortie de virage, à gar
 
 
 
-<!-- ### Est-ce que tu as eu le temps de regarder où passent les Marshall et les plus rapides et de les copier si cela a du sens?
+<!-- ### Est-ce que tu as eu le temps de regarder où passent les marshall et les plus rapides et de les copier si cela a du sens?
 
 Choisissez des gars qui, avant un virage, sont complètement à l'extérieur de la piste (limite à rouler sur la ligne blanche). Pensez aussi à repérer le marshal s'il tourne avec vous sur la piste et bien sûr s'il a adapté son rythme à celui de la session. À notre niveau, il faut regarder une seule chose... Son point de corde.
 
@@ -404,14 +377,6 @@ Ne suivez pas un gars qui vient de vous faire l'intérieur. Il est peut-être co
 Ne suivez pas non plus un gars qui a un 1000 alors que vous roulez en 600. Il roule au couple et pas vous.
 
 Idem si vous êtes en 600 et qu'un gamin en Yam R3 vous met 10" au tour (ptit con!). Il n'a pas le même moteur, et donc pas les mêmes trajectoires. -->
-
-
-
-
-
-
-
-
 
 
 

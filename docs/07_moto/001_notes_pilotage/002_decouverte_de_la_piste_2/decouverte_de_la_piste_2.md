@@ -28,10 +28,9 @@ last_modified_date: 2023-09-09 00:08:32
 <!-- ###################################################################### -->
 ## Objectifs de la session
 
-<!-- 1. Découvrir la piste en roulant à 75% de nos capacités.  -->
-<!-- 1. Faire l'effort de se coucher sur la moto -->
-1. Ouvrir les **gaz à 100%** 
-1. Faire passer ses pneus sur les **points de corde**
+1. Continuer à découvrir la piste en roulant à 75% de nos capacités. 
+1. Ouvrir les gaz à 100%, **en butée** 
+<!-- 1. Faire passer ses pneus sur les **points de corde** -->
 
 
 
@@ -41,7 +40,7 @@ last_modified_date: 2023-09-09 00:08:32
 
 ## Prérequis
 1. Avoir fait la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})
-1. Se coucher dans les lignes droite
+1. Se coucher dans les lignes droite 
 
 
 Si tu te couche pas encore bien sur la moto, c'est pas grave. Identifie une ligne droite du circuit où tu t'engages à le faire lors de cette session. Indique-le, fais une marque sur ton plan de la piste.
@@ -80,31 +79,51 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 ## La session
 
 * Pense à noter sur un ou 2 virages combien de rapport tu rentre
+* N'oublie pas tes pieds
+* Utilise toute la piste, roule à 1 cm de la bande blanche
+* Pense à te coucher dans les lignes droites et les grands virages (casque sur le réservoir)
+
+Vu que tout ça c'est trop facile et acquis, tu va t'appliquer à mettre la poignée de gaz **en butée** dans la plus grande ligne droite du circuit ainsi que dans une autre portion, idéalement à l'autre bout du circuit. L'idée c'est d'espacer c'est 2 instants "magiques". 
+
+Ensuite on change pas une formule qui gagne. A l'instar de le première session, dès que tu es butée dans une des sections, tu en rajoute une troisième etc. Tu connais la méthode.
+
+
+
 
 ### À vérifier pendant la session
 
+Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en butée**, voici 2 ou 3 points complémentaire sur le même sujet.
 
-### La poignée de gaz
-* Faire attention à ce qu'on ne joue pas avec la poignée de gaz dans les virages
-    * Jouer avec la poignée de gaz signifie, augmenter les gaz, puis les diminuer, puis en remettre une lichette, oups, je suis allé trop loin, je coupe...
-    * Dit autrement, cela concerne les cas où, avant le point de corde, on rajoute des gaz car on est rentré trop lentement dans le virage. Au prochain tour il faudra retarder la mise sur l'angle.
-    * Cela concerne aussi les cas où, après le point de corde, on coupe les gaz car on est beaucoup trop vite. Au prochain tour il faudra avancer la mise sur l'angle.
-    * Au début, en mode découverte de la piste, on peut se faire surprendre et jouer avec la poignée de gaz dans les virages qui ont un rayon de courbure qui se resserre par exemple
-    * On ne souhaite pas jouer avec la poignée de gaz car si on joue avec les gaz cela veut dire qu'on n'est PAS encore sur la ligne idéale (plus d'explications plus loin).
-    * Au prochain tour il faudra donc rentrer beaucoup moins vite dans CE virage
-        * Être très à l'aise pour pouvoir être très attentif
-        * 2/3 de ce qu'on sait faire (au lieu de 75%)
-        * On s'appliquera à ne pas jouer avec la poignée de gaz.
-        * Dans les prochains tours on reviendra à 75% de nos capacités
-        * Il faut passer, là, pile poil sur le point de corde sans jouer avec la poignée de gaz (ni up, ni down)
-        * Et s'appliquer à mettre la Throttle Rule (voir juste après) en action dans CE virage
+### Ne PAS jouer avec la poignée de gaz dans les virages
+* Jouer avec la poignée de gaz signifie, augmenter les gaz, puis les diminuer, puis en remettre une lichette, oups, je suis allé trop loin, je coupe...
+* Dit autrement, cela concerne les cas où, avant le point de corde, on rajoute des gaz car on est rentré trop lentement dans le virage. Au prochain tour il faudra retarder la mise sur l'angle.
+* Cela concerne aussi les cas où, après le point de corde, on coupe les gaz car on est beaucoup trop vite. Au prochain tour il faudra avancer la mise sur l'angle.
+* Au début, en mode découverte de la piste, on peut se faire surprendre et jouer avec la poignée de gaz dans les virages qui ont un rayon de courbure qui se resserre par exemple
+* On ne souhaite pas jouer avec la poignée de gaz car si on joue avec les gaz cela veut dire qu'on n'est PAS encore sur la ligne idéale (plus d'explications plus loin).
+* Au prochain tour il faudra donc rentrer beaucoup moins vite dans CE virage
+    * Être très à l'aise pour pouvoir être très attentif
+    * 2/3 de ce qu'on sait faire (au lieu de 75%)
+    * On s'appliquera à ne pas jouer avec la poignée de gaz.
+    * Dans les prochains tours on reviendra à 75% de nos capacités
+    * Il faut passer, là, pile poil sur le point de corde sans jouer avec la poignée de gaz (ni up, ni down)
+    * Et s'appliquer à mettre la Throttle Rule (voir juste après) en action dans CE virage
 * Il faut bien retenir que si dans un virage on est constant sur la poignée de gaz alors on n'est PAS sur la ligne idéale (car on ne respecte pas la Throttle Rule)
+
+### PAS de filet de gaz dans le virage
+* La poignée est soit fermée soit on l'enroule. 
+* Il n'y a **PAS** de phase dans laquelle dans le virage on a un filet de gaz.
+* Je répète. **PAS** de filet de gaz
+* Quand la poignée de gaz est à 0%, **si** on y touche **alors** c'est la **Throttle Rule** qui s'applique
 
 
 ### La Throttle Rule
-Once the throttle is cracked on, it is rolled on evenly, smoothly and constantly troughout the remainder of the turn
+C'est LA règle qu'il faut appliquer quand, dans le virage, on retouche à la poignée de gaz. Super simple tu vas voir :
+
+**Once the throttle is cracked on, it is rolled on evenly, smoothly and constantly troughout the remainder of the turn**
 
 À partir du moment où on ouvre les gaz, on n'arrête pas de tourner la poignée, gentiment et continûment pendant tout le reste du virage.
+
+Bien sûr on cherche mettre la poignée **en butée**.
 
 On en parle dans cette vidéo :
 
@@ -122,14 +141,40 @@ On en parle dans cette vidéo :
 
 
 
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## À la fin de la session
 
 ### Est-ce que tu t'es couché dans la ligne droite que tu avais choisis?
-* Si oui bravo! Bon ben reprends ton plan, identifie le prochain endroit où tu vas faire l'effort de te coucher sur la moto (ça peut être une ligne droite ou un grand virage). LOrs de la prochaine session. En faisant étape par étape en fin de journée tu aura tout couvert. En tout cas bravo. 
-* Si tu as "oublié" de te coucher sur la moto c'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre toi sur cet objectif très simple et pas si difficile. Une fois que arriveras à faire cet exercice pendant la session tu vas voir, faire les autres exercices ça va être beaucoup plus facile.  
-Là, le truc c'est qu'il y a tellement de choses qui se passe que tu "oublies" et que malheureusement ça va être difficile de passer à la suite si tu "oublies" les exercices une fois en session et si tu n'es pas couché sur la moto en ligne droite.   
+Si oui bravo! Bon ben reprends ton plan, identifie le prochain endroit où tu vas faire l'effort de te coucher sur la moto (ça peut être une ligne droite ou un grand virage). Lors de la prochaine session. En faisant étape par étape en fin de journée tu aura tout couvert. En tout cas, bravo! 
+
+Si tu as "oublié" de te coucher sur la moto c'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentres toi sur cet objectif relativement simple. 
+
+Une fois que arriveras à faire un exercice pendant une session tu vas voir, faire d'autres exercices sera beaucoup plus facile.  
+
+Là, le truc c'est qu'il y a tellement de choses qui se passent que tu "oublies" et que malheureusement ça va être difficile de passer à la suite. Bref, **CTRL + ALT + SUPP** et on reprend depuis le début. Crois moi, c'est préférable.   
+
+
+
+### Est-ce que j'ouvre les gaz en grand dès que je le peux ?
+
+Typiquement, en ligne droite, est-ce que je suis sûr que les gaz étaient bien ouverts à 100% ?
+
+Honnêtement, la poignée était au taquet ? Vraiment ? Et dans le petit bout de ligne droite, est ce que je n'ai pas été un peu "timide" en me disant que de toute façon, dans une demi-seconde j'allais sauter sur les freins...
+
+Là aussi, ça peut paraître contradictoire avec le fait d'être en mode découverte de la piste et de se forcer à rouler à 75% de nos capacités. Cela dit, on peut très bien ne pas se mettre dans le rouge et accélérer à 100% dans les lignes droites (il n'y a rien de plus simple en fait). Par exemple, j’accélère fort mais je coupe tôt pour éviter de me mettre en mode panique à l'entrée du prochain freinage/virage.
+
+Attention. S'assurer qu'on ouvre à 100% ne veut pas dire qu'on ouvre rapidement (trop rapidement) les gaz en sortie de virage. Dit autrement, ici, il faut juste s'assurer qu'on fait bien l'effort d'enrouler de plus en plus rapidement les gaz jusqu'à 100%. Faut enrouler jusqu'à ce que la poignée soit bloquée. **En butée**. Pas plus, pas moins.
+
+C'est très rare que sur route on tire sur tous les rapports. On est même plutôt toujours en sous-régime. De même, il est rare qu'on ouvre en grand quand on est sur une route de campagne. Il faut donc changer ce comportement et vraiment s'assurer qu'on est gaz à 100% dans les lignes droite et qu'on monte bien dans les tours avant de passer un rapport. Pas d'angoisse à avoir. Les moteurs modernes encaissent tout ça très bien... Cependant, il faut s'habituer à essorer la poignée de gaz et à entendre le moteur dans les tours.
+
+Pour le reste, tu peux te raconter tout ce que tu veux... Tant que tu n'as pas senti que la poignée était **en butée**, tu n'étais **PAS** 100% gaz ouvert. Point
 
 
 
@@ -142,17 +187,6 @@ Là, le truc c'est qu'il y a tellement de choses qui se passe que tu "oublies" e
 
 
 
-### Est-ce que j'ouvre les gaz en grand dès que je le peux ?
-
-Typiquement, en ligne droite, est-ce que je suis sûr que les gaz étaient bien ouverts à 100% ?
-
-Honnêtement, la poignée était au taquet ? Vraiment ? Et dans le petit bout de ligne droite, est ce que je n'ai pas été un peu "timide" en me disant que de toute façon, dans une demi-seconde j'allais sauter sur les freins...
-
-Là aussi, ça peut paraître contradictoire avec le fait d'être en mode découverte de la piste et de se forcer à rouler à 75% de nos capacités. Cela dit, on peut très bien ne pas se mettre dans le rouge et accélérer à 100% dans les lignes droites (il n'y a rien de plus simple en fait). Par exemple, j’accélère fort mais je coupe tôt pour éviter de me mettre en mode panique à l'entrée du prochain freinage/virage.
-
-Attention. S'assurer qu'on ouvre à 100% ne veut pas dire qu'on ouvre rapidement (trop rapidement) les gaz en sortie de virage. Dit autrement, ici, il faut juste s'assurer qu'on fait bien l'effort d'enrouler de plus en plus rapidement les gaz jusqu'à 100%. Faut enrouler jusqu'à ce que la poignée soit bloquée. Pas plus, pas moins.
-
-C'est très rare que sur route on tire comme un malade sur tous les rapports. On est même plutôt toujours en sous-régime. De même, il est rare qu'on ouvre en grand quand on est sur une route de campagne. Il faut donc changer ce comportement et vraiment s'assurer qu'on est gaz à 100% dans les lignes droite et qu'on monte bien dans les tours avant de passer un rapport. Pas d'angoisse à avoir. Les moteurs modernes encaissent tout ça très bien... Cependant, il faut s'habituer à essorer la poignée de gaz et à entendre le moteur dans les tours.
 
 
 
@@ -409,7 +443,7 @@ Dans le tableau ci-dessous, on a 0.43 G (4.2 m/s²) d'accélération alors qu'on
 
 
 <div align="center">
-<img src="./assets/img_13.webp" alt=""  with="450" loading="lazy"/>
+<img src="./assets/img_13.webp" alt=""  width="450" loading="lazy"/>
 </div>
 
 

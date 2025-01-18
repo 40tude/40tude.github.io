@@ -34,18 +34,18 @@ Comme son nom l'indique, la section **Basics** s'intéresse aux fondamentaux. C'
 
 
 ### Basics
-01. **Découverte de la piste 1/2** : On se prépare pour la journée, on découvre la piste à 75% de nos capacités et on apprend à se coucher sur la moto.
-02. **Découverte de la piste 2/2** : On continue à découvrir la piste, on se couche sur la moto et on ouvre les gaz à 100%, **en butée**.
-03. **Three steps** : On parle de la façon de décomposer le virage, des endroits où il faut fixer son regard, quand, comment... Le but est de simplifier la lecture du virage ce qui permet de se concentrer sur autre chose et surtout d'être régulier d'un tour à l'autre.
-04. **Freinage** : NOT YET TRANSFERED - Ce que l'on cherche, c'est de sortir fort du virage afin de favoriser la vitesse de pointe au bout de la ligne droite qui suit. Dans cette première page consacrée au freinage on ne parle que du freinage en ligne droite, de ses différentes phases et on termine avec la mise sur l'angle... Il y a aussi quelques remarques à propos des réglages des commandes. Plus loin il y a une page consacrée au freinage sur l'angle.
-05. **Conduite du virage** : NOT YET TRANSFERED - On vient de terminer le freinage en ligne droite. Je passe sur l'angle et... Je fais quoi ? Ça se passe comment dans le virage ? Comment je fais pour passer correctement au point de corde tour après tour ? Et puis... À quel moment je commence à accélérer ? On discute de tout ça de cette page.
+1. **Découverte de la piste 1/2** : On se prépare pour la journée, on découvre la piste à 75% de nos capacités et on apprend à se coucher sur la moto.
+2. **Découverte de la piste 2/2** : On continue à découvrir la piste, on se couche sur la moto et on ouvre les gaz à 100%, **en butée**.
+3. **Three steps** : On parle de la façon de décomposer le virage, des endroits où il faut fixer son regard, quand, comment... Le but est de simplifier la lecture du virage ce qui permet de se concentrer sur autre chose et surtout d'être régulier d'un tour à l'autre.
+4. **Freinage** : NOT YET TRANSFERED - Ce que l'on cherche, c'est de sortir fort du virage afin de favoriser la vitesse de pointe au bout de la ligne droite qui suit. Dans cette première page consacrée au freinage on ne parle que du freinage en ligne droite, de ses différentes phases et on termine avec la mise sur l'angle... Il y a aussi quelques remarques à propos des réglages des commandes. Plus loin il y a une page consacrée au freinage sur l'angle.
+5. **Conduite du virage** : NOT YET TRANSFERED - On vient de terminer le freinage en ligne droite. Je passe sur l'angle et... Je fais quoi ? Ça se passe comment dans le virage ? Comment je fais pour passer correctement au point de corde tour après tour ? Et puis... À quel moment je commence à accélérer ? On discute de tout ça de cette page.
 
 ### Advanced
-06. **Hook Turns** : NOT YET TRANSFERED - On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner...
+6. **Hook Turns** : NOT YET TRANSFERED - On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner...
 En gros, on verrouille le bas du corps "dans" la moto alors que le buste est très mobile. Ensuite on cherche à déplacer le centre de gravité de l'ensemble moto-pilote encore plus vers l'**intérieur du virage**. On en parle que maintenant car il faut que pas mal de choses soient déjà en place avant de s'attaquer à ce sujet.
-07. **Contre braquage en sortie de virage** : NOT YET TRANSFERED - En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
-08. **Knee to knee** : NOT YET TRANSFERED - On ajoute un outil à notre panoplie qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
-09. **Pif-paf** : NOT YET TRANSFERED - Je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
+7. **Contre braquage en sortie de virage** : NOT YET TRANSFERED - En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
+8. **Knee to knee** : NOT YET TRANSFERED - On ajoute un outil à notre panoplie qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
+9. **Pif-paf** : NOT YET TRANSFERED - Je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
 10. **Freinage sur l’angle (Trail Braking)** : NOT YET TRANSFERED - Si je veux favoriser ma vitesse en ligne droite, je dois garder les gaz ouverts à 100% le plus longtemps possible. Cela veut donc dire que je dois réduire de plus en plus ma distance de freinage. Mouai... Mais bon, à un moment, ce n'est plus tenable si on veut toujours continuer à freiner avec la moto droite. Je suis donc amené, logiquement, à terminer mon freinage sur l'angle... On fait le point ici.
 11. **Short shift** : NOT YET TRANSFERED - C'est l'art de passer au rapport supérieur bien avant d'être au régime moteur optimum. Pourquoi, comment... Un pro (un vrai, pas moi 😂) nous explique tout ça, en français, dans le texte.
 
@@ -66,9 +66,7 @@ En gros, on verrouille le bas du corps "dans" la moto alors que le buste est tr�
 
 ## Comment lire les Notes de Pilotage Moto ?
 
-Je pense qu'il y aura une dizaine de Notes (c'est toujours pas fixé et je pesne que cela ne le sera jamais). Au moins dans la sections **Basics**, elles sont plus ou moins dans l'ordre chronologique d'une journée de roulage typique. Ainsi la première note concerne la découverte de la piste, la seconde focalise sur le virage en 3 étapes etc.
-
-Chaque Note de Pilotage Moto suppose qu'on la mette en œuvre lors d'une session de roulage de 20 minutes. Cela dit, on va être pragmatique et se dire qu'il n'y a rien d'obligatoire. Par exemple, s'il faut 2 sessions pour découvrir le circuit et bien... Il faudra 2 sessions "et pis c'est tout !"... Pas la peine de se mettre martèle en tête et/ou de se mettre dans le rouge dès le départ.
+Je souhaite qu'il y ait une dizaine de sujets (c'est toujours pas fixé et je pense que cela ne le sera jamais). Chaque Note de Pilotage Moto suppose qu'on la mette en œuvre lors d'une session de roulage de 20 minutes. Cela dit, on va être pragmatique et se dire qu'il n'y a rien d'obligatoire. Par exemple, s'il faut 3 sessions pour découvrir le circuit et bien... Il faudra 3 sessions "et pis c'est tout !"... Pas la peine de se mettre martèle en tête et/ou de se mettre dans le rouge dès le départ.
 
 
 
@@ -82,9 +80,8 @@ Elles ont toutes la même structure :
 1. **À la fin de la session** - On fait un point sur nos acquis
 1. **Remarques** - Des points et des questions plus ou moins en rapport avec le sujet de la Note de Pilotage Moto.
 
-Il y aura des répétitions car certains aspects me paraissent vraiment importants. De toute façon, certains lecteurs, grâce à Google, arriveront directement sur une Note de Pilotage particulière et donc ce n'est pas complètement idiot de répéter certaines choses. Enfin je suis persuadé de l'utilité qu'il y a à expliquer les mêmes choses dans un contexte légèrement différent, avec un autre vocabulaire, des exemples différents. Des fois c'est là que le "Oh putain, j'ai compris" arrive.
+Il y aura des répétitions car certains aspects me paraissent vraiment importants. De toute façon, certains lecteurs, grâce à leur moteur de recherche préféré, arriveront directement sur une Note de Pilotage particulière et donc ce n'est pas complètement idiot de répéter certaines choses. Enfin je suis persuadé de l'utilité qu'il y a à expliquer les mêmes choses dans un contexte légèrement différent, avec un autre vocabulaire, des exemples différents. Des fois c'est là que le "Oh putain, j'ai compris" arrive.
 
-<!-- Attention. Sur le site [40tude](https://www.40tude.fr/), les Notes de Pilotage Moto peuvent ne pas apparaître dans l'ordre. En effet, si j'ajoute un complément à telle ou telle note, cette dernière arrivera en haut de la liste et sur la première page du site. Ce n'est pas la peine de râler... Il suffit de les lire dans l'ordre de leur numérotation et/ou d'aller sur cette [page](https://www.40tude.fr/pilotage-moto/) qui fait office de table des matières et de choisir un sujet particulier. De plus chaque note de Pilotage Moto dispose de 2 tableaux en haut et en bas de page avec des liens sur les notes précédente et suivante ainsi que la table des matières. Enfin sur PC, il y a un lien vers la table des matières en haut de toutes les pages du site. -->
 
 
 
@@ -96,8 +93,6 @@ Ils sont, bien sûr, les bienvenus s'ils sont bienveillants et constructifs. J'a
 En revanche si un point n'est pas clair ou pas suffisamment expliqué, lâchez-vous et aidez-moi à améliorer la Note de Pilotage Moto en question.
 
 Par exemple, n'hésitez pas à conseiller telle ou telle vidéo sur YouTube qui illustre bien le point abordé dans la Note.
-
-<!-- Si ça part en vrille je fermerai les commentaires mais je continuerai à publier et à éditer les notes. -->
 
 
 
