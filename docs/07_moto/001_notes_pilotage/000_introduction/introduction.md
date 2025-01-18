@@ -15,17 +15,17 @@ Les choses ont évolué depuis la première mise en ligne des Notes de Pilotage 
 * L'article vous guide tout au long de la journée 
 * Il y a un agenda .pdf à imprimer
 * Le billet a été écrit après les Notes de Pilotage Moto
-* Il est moins complet que les Notes de Pilotage Moto, moins exhaustif, moins technique mais il y a déjà beaucoup de choses (encore un peu trop à mon goût) et il est très **laaaaargement** suffisant.
+* Il est moins complet que les Notes de Pilotage Moto, moins exhaustif, moins technique. Cependant, il y a déjà beaucoup de choses (encore un peu trop à mon goût) et il est très **laaaaargement** suffisant.
 
-Une fois que votre première journée c'est bien déroulé et que vous avez trouvé utile les conseils et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails, 
+Une fois que votre première journée c'est bien déroulé et si vous avez trouvé utile les conseils et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails. 
 
 
 
 ## Le programme
 
-Ma première journée de roulage... Un bon exemple ici... NOT YET TRANSFERED. Je n'ai pas dormi de la nuit, j'étais excité depuis des semaines, j'avais un peu la trouille de me mettre au tas et de ne pas pouvoir rentrer par mes propres moyens... Cela dit, j'aurai bien aimé qu'on m'explique un peu comment appréhender la piste et le pilotage. Je ne parle pas ici de la [logistique]({%link docs/07_moto/002_checklist_roulage/checklist_roulage.md%}) mais uniquement du pilotage. C'est tout l'objet de ces Notes de Pilotage Moto. 
+Ma première journée de roulage... Un bon exemple ici... NOT YET TRANSFERED. Je n'ai pas dormi de la nuit, j'étais excité depuis des semaines, j'avais un peu la trouille de me mettre au tas et de ne pas pouvoir rentrer par mes propres moyens... Cela dit, j'aurai bien aimé qu'on m'explique un peu comment appréhender la piste et le pilotage. Je ne parle pas ici de la [logistique]({%link docs/07_moto/002_checklist_roulage/checklist_roulage.md%}) mais uniquement du pilotage. 
 
-Comme son nom l'indique, la section **Basic** s'intéresse aux fondamentaux. C'est grosso-modo le programme abordé dans [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) mais en plus détaillé. De toute façon cela ne fait jamais de mal que de lire ou d'entendre les mêmes explications mais avec un vocabulaire différent. Typiquement, à la fin des **Basics** on possède des bases saines et solides sur lesquelles on peut s'appuyer passer à l'étape suivante. 
+Comme son nom l'indique, la section **Basics** s'intéresse aux fondamentaux. C'est grosso-modo le programme abordé dans [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) mais en plus détaillé. De toute façon cela ne fait jamais de mal que de lire ou d'entendre les mêmes explications mais avec un vocabulaire différent. Typiquement, à la fin des **Basics** on possède des bases saines et solides sur lesquelles on peut s'appuyer pour passer à l'étape suivante. 
 
 **Advanced** couvre bien entendu des sujets plus avancés. Pas la peine d'aller lire cette section en avance de phase tant que les **Basics** ne sont pas en place. Oui bien sûr, allez-y, lisez les mais ne "gâchez" pas une session à travailler tel ou tel aspect tant que vous passez à 1m du point de corde. L'idée, c'est Basics puis Advanced.
 
@@ -34,29 +34,20 @@ Comme son nom l'indique, la section **Basic** s'intéresse aux fondamentaux. C'e
 
 
 ### Basics
-01. **Découverte de la piste** : 
-
-02. **Découverte de la piste** : ce qui devait arriver arriva. Trop de choses à dire, trop de notes complémentaires... Bref, il a fallu couper l'article en deux.
-
-03. **Three steps** : on parle de la façon de décomposer le virage, des endroits où il faut fixer son regard, quand, comment... Le but est de simplifier la lecture du virage ce qui permet de se concentrer sur autre chose et surtout d'être régulier d'un tour à l'autre.
-
-04. **Freinage** : NOT YET TRANSFERED - ce que l'on cherche, c'est de sortir fort du virage afin de favoriser la vitesse de pointe au bout de la ligne droite qui suit. Dans cette première page consacrée au freinage on ne parle que du freinage en ligne droite, de ses différentes phases et on termine avec la mise sur l'angle... Il y a aussi quelques remarques à propos des réglages des commandes. Plus loin il y a une page consacrée au freinage sur l'angle.
-
-05. **Conduite du virage** : NOT YET TRANSFERED - on vient de terminer le freinage en ligne droite. Je passe sur l'angle et... Je fais quoi ? Ça se passe comment dans le virage ? Comment je fais pour passer correctement au point de corde tour après tour ? Et puis... À quel moment je commence à accélérer ? On discute de tout ça de cette page.
+01. **Découverte de la piste 1/2** : On se prépare pour la journée, on découvre la piste à 75% de nos capacités et on apprend à se coucher sur la moto.
+02. **Découverte de la piste 2/2** : On continue à découvrir la piste, on se couche sur la moto et on ouvre les gaz à 100%, **en butée**.
+03. **Three steps** : On parle de la façon de décomposer le virage, des endroits où il faut fixer son regard, quand, comment... Le but est de simplifier la lecture du virage ce qui permet de se concentrer sur autre chose et surtout d'être régulier d'un tour à l'autre.
+04. **Freinage** : NOT YET TRANSFERED - Ce que l'on cherche, c'est de sortir fort du virage afin de favoriser la vitesse de pointe au bout de la ligne droite qui suit. Dans cette première page consacrée au freinage on ne parle que du freinage en ligne droite, de ses différentes phases et on termine avec la mise sur l'angle... Il y a aussi quelques remarques à propos des réglages des commandes. Plus loin il y a une page consacrée au freinage sur l'angle.
+05. **Conduite du virage** : NOT YET TRANSFERED - On vient de terminer le freinage en ligne droite. Je passe sur l'angle et... Je fais quoi ? Ça se passe comment dans le virage ? Comment je fais pour passer correctement au point de corde tour après tour ? Et puis... À quel moment je commence à accélérer ? On discute de tout ça de cette page.
 
 ### Advanced
-06. **Hook Turns** : NOT YET TRANSFERED - on parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner...
-En gros, on verrouille le bas du corps "dans" la moto alors que le buste est très mobile. Ensuite on cherche à déplacer le centre de gravité de l'ensemble moto-pilote encore plus vers l'intérieur du virage. On en parle que maintenant car il faut que pas mal de choses soient déjà en place avant de s'attaquer à ce sujet.
-
-07. **Contre braquage en sortie de virage** : NOT YET TRANSFERED - en entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
-
-08. **Knee to knee** : NOT YET TRANSFERED - on ajoute un outil à notre panoplie qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
-
-09. **Pif-paf** : NOT YET TRANSFERED - je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
-
+06. **Hook Turns** : NOT YET TRANSFERED - On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner...
+En gros, on verrouille le bas du corps "dans" la moto alors que le buste est très mobile. Ensuite on cherche à déplacer le centre de gravité de l'ensemble moto-pilote encore plus vers l'**intérieur du virage**. On en parle que maintenant car il faut que pas mal de choses soient déjà en place avant de s'attaquer à ce sujet.
+07. **Contre braquage en sortie de virage** : NOT YET TRANSFERED - En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
+08. **Knee to knee** : NOT YET TRANSFERED - On ajoute un outil à notre panoplie qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
+09. **Pif-paf** : NOT YET TRANSFERED - Je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
 10. **Freinage sur l’angle (Trail Braking)** : NOT YET TRANSFERED - Si je veux favoriser ma vitesse en ligne droite, je dois garder les gaz ouverts à 100% le plus longtemps possible. Cela veut donc dire que je dois réduire de plus en plus ma distance de freinage. Mouai... Mais bon, à un moment, ce n'est plus tenable si on veut toujours continuer à freiner avec la moto droite. Je suis donc amené, logiquement, à terminer mon freinage sur l'angle... On fait le point ici.
-
-11. **Short shift** : NOT YET TRANSFERED - c'est l'art de passer au rapport supérieur bien avant d'être au régime moteur optimum. Pourquoi, comment... Un pro (un vrai, pas moi 😂) nous explique tout ça, en français, dans le texte.
+11. **Short shift** : NOT YET TRANSFERED - C'est l'art de passer au rapport supérieur bien avant d'être au régime moteur optimum. Pourquoi, comment... Un pro (un vrai, pas moi 😂) nous explique tout ça, en français, dans le texte.
 
 ### Compléments
 12. **Conseils de pro** : NOT YET TRANSFERED - Ce sont en effet des conseils de vrais pros pour lesquelles il y a des références etc. À lire, à relire et à inscrire dans sa feuille de session comme exercices à faire par exemple.

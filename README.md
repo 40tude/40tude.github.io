@@ -229,6 +229,7 @@ Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Desc
 
 ---
 ## DONE
+* ~~Centrer les vidéos~~
 * ~~Remplacer les CTRL + A par **CTRL + A**~~
     * ~~Vérifier ALT et WIN~~
     * ~~WIN + X, A~~
