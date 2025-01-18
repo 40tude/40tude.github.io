@@ -26,7 +26,9 @@ Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer
 
 Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les commentaires. Sinon, tu peux regarder cette série de vidéos :
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=9aGfzYXK7sVjutL3&amp;list=PLHh0ACbIwXxmNbfiJzfiXttLZltL586zy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 Dans ce billet il y aura :
