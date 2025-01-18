@@ -306,7 +306,7 @@ Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on pe
 
 La tête de fourche peut bouger à l'accélération si on est pas détendu et si elle est trop forte. Pour éviter ce phénomène, dans les virages il suffit d'avoir des accélérations précoces, douces et continues. Je dis "il suffit" car c'est vraiment la seule chose qu'il y a à faire. Je me demande bien pourquoi on est pas tous en Moto GP...
 
-<!-- (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))) -->
+<!-- (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))) -->
 
 
 

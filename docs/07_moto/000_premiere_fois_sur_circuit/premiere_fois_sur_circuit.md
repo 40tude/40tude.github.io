@@ -15,7 +15,7 @@ last_modified_date: 2023-09-01 11:50:52
 
 ## Introduction
 
-J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a bien les [Notes de Pilotage Moto]({%link docs/07_moto/998_notes_pilotage/index.md%}) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
+J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a bien les [Notes de Pilotage Moto]({%link docs/07_moto/001_notes_pilotage/index.md%}) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
 
 <div align="center">
 <img src="./assets/image-24.webp" alt="" width="450" loading="lazy"/>
@@ -582,7 +582,7 @@ Pense à aller voir les photos de la journée. Soit, elles sont déjà consultab
 
 De retour à la maison, reprends le plan du circuit et l'agenda de la journée. Prends 15 à 20 minutes pour y ajouter tes notes. Vas-y, lâches toi, notes tout. Tes sentiments, tes impressions, les trucs que tu ne comprends pas encore, les rapports de boite, les questions que tu souhaites poser, telle ou telle difficulté... Tu t'en serviras comme anti-sèche ou comme TO DO list la prochaine fois que tu viendras sur ce circuit. Fais en sorte d'être sûr de pouvoir te relire et de comprendre tes notes dans un an ou au prochain roulage. Écris pas un roman mais sois clair et ne perd pas la feuille de note entre temps.
 
-Bon, allez, la suite au prochain numéro et d’ici-là relis les [Notes de Pilotage Moto]({%link docs/07_moto/998_notes_pilotage/index.md%}) ou fais des [squats](https://youtu.be/TIhtpItTuxc) afin de préparer les prochains roulages.
+Bon, allez, la suite au prochain numéro et d’ici-là relis les [Notes de Pilotage Moto]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou fais des [squats](https://youtu.be/TIhtpItTuxc) afin de préparer les prochains roulages.
 
 
 

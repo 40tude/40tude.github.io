@@ -19,7 +19,7 @@ last_modified_date: 2023-09-09 00:08:32
 
 
 
-<!-- Comme la première [Note de Pilotage Moto]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀. -->
+<!-- Comme la première [Note de Pilotage Moto]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀. -->
 
 
 
@@ -40,7 +40,7 @@ last_modified_date: 2023-09-09 00:08:32
 <!-- ###################################################################### -->
 
 ## Prérequis
-1. Avoir fait la première session de [Découverte de la piste]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})
+1. Avoir fait la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})
 1. Se coucher dans les lignes droite
 
 
@@ -128,7 +128,7 @@ On en parle dans cette vidéo :
 
 ### Est-ce que tu t'es couché dans la ligne droite que tu avais choisis?
 * Si oui bravo! Bon ben reprends ton plan, identifie le prochain endroit où tu vas faire l'effort de te coucher sur la moto (ça peut être une ligne droite ou un grand virage). LOrs de la prochaine session. En faisant étape par étape en fin de journée tu aura tout couvert. En tout cas bravo. 
-* Si tu as "oublié" de te coucher sur la moto c'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre toi sur cet objectif très simple et pas si difficile. Une fois que arriveras à faire cet exercice pendant la session tu vas voir, faire les autres exercices ça va être beaucoup plus facile.  
+* Si tu as "oublié" de te coucher sur la moto c'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre toi sur cet objectif très simple et pas si difficile. Une fois que arriveras à faire cet exercice pendant la session tu vas voir, faire les autres exercices ça va être beaucoup plus facile.  
 Là, le truc c'est qu'il y a tellement de choses qui se passe que tu "oublies" et que malheureusement ça va être difficile de passer à la suite si tu "oublies" les exercices une fois en session et si tu n'es pas couché sur la moto en ligne droite.   
 
 
@@ -159,7 +159,7 @@ C'est très rare que sur route on tire comme un malade sur tous les rapports. On
 
 ### Note 3 : À propos du point de corde
 
-Bon, là on ne rigole plus... C'est le quatrième, le plus important et le plus difficile à atteindre des objectifs que l'on a quand on met les pneus sur la piste (rappelle-toi Barbara : apprendre la piste, couché sur la moto, gaz à 100%, pneus sur le point de corde... [Relire ici si besoin]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))
+Bon, là on ne rigole plus... C'est le quatrième, le plus important et le plus difficile à atteindre des objectifs que l'on a quand on met les pneus sur la piste (rappelle-toi Barbara : apprendre la piste, couché sur la moto, gaz à 100%, pneus sur le point de corde... [Relire ici si besoin]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))
 
 * Quand on arrive sur un virage, il ne faut pas plonger trop tôt à la corde afin de ne pas y être coincé pendant 3 heures...
 
@@ -304,7 +304,7 @@ La vidéo complète est ci-dessous.
 
   + Pour un autre pilote qui accélérerait au tout début de la courbe (c'est un exemple théorique), la fin "officielle" de son virage se situerait peut-être au milieu du virage (ou au SAMU local).
 
-* En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule** (relire la première partie de la note de [Pilotage moto]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))
+* En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule** (relire la première partie de la note de [Pilotage moto]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))
 
 * À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde. Avec la throttle rule, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde. Cela permet de répartir la charge de manière idéale entre l'avant et l'arrière. Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque.
   Mouai... Ben moi j'ai beau le savoir et faire le fanfaron en l'expliquant, je n'arrive toujours pas à le faire comme je voudrais.

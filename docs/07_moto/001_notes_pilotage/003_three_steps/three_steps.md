@@ -188,7 +188,7 @@ On se met sur l'angle en visant le point de corde
 
 Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
-* C'est la [Throttle Rule]({%link docs/07_moto/998_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). On en a parlé dans la note précédente. Une fois que c'est parti on arrête plus d'enrouler la poignée et on n'a pas peur de finir ouvert en grand (100% gaz)
+* C'est la [Throttle Rule]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). On en a parlé dans la note précédente. Une fois que c'est parti on arrête plus d'enrouler la poignée et on n'a pas peur de finir ouvert en grand (100% gaz)
 
 * Encore une fois : pour l'instant, peu importe le moment exact où on commence à accélérer
 
