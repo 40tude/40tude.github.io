@@ -162,7 +162,12 @@ $1 $2
 ```
 
 
-
+### Centrer les vidéos Youtube
+```
+CTRL + H + Exp Reg
+(<iframe.*?<\/iframe>)
+<div align="center">\n$1\n</div>
+```
 
 ### Remplacer les $ seuls par $$ 
 ```

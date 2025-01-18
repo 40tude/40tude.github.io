@@ -13,8 +13,9 @@ last_modified_date: 2020-05-04 15:27:58
 
 Après des années d'hésitation, j'ai enfin posté une vidéo à propos de CVI sur YouTube. Rendez-vous sur : <https://www.youtube.com/watch?v=48pPFFJe27Y> (soyez indulgents et merci pour les feedbacks.) ou alors visionnez-la [ici](https://www.youtube.com/watch?v=48pPFFJe27Y).
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/48pPFFJe27Y?si=xBxnwDFUUDZa7Xz2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 

@@ -29,7 +29,9 @@ Une fois en position, c'est le technicien qui va déclencher le départ du tire-
 
 Ceci dit, dès que la planche démarre, patinez un coup ou deux avec votre jambe arrière puis mettez votre pied arrière entre les deux fixations. N'oubliez pas de garder votre bras arrière tendu dans l'axe de la trace du tire-fesses. Pour le reste, regardez au loin, gainez les abdos, restez droit et oubliez que votre planche est à plat.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/87BQilfgisg?si=VPQj6ZNhINHDACSn&amp;start=28" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Si en cours de route ça ratatouille, c'est de votre faute! Êtes-vous un peu fléchi, avez-vous votre bras tendu vers l'arrière, êtes-vous souple au niveau des genoux et des chevilles ? Tous ces éléments comptent.
 
@@ -39,7 +41,9 @@ Ne vous leurrez pas quand même. Avant d'aller sur les autres tire-fesses (qui v
 
 Une petite vidéo?
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YVJJaXJ0k6g?si=8qqtzTN5idJCcPOI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -66,7 +70,9 @@ Bon ben là faut réfléchir. Vous êtes plus vieux, plus gros et plus fort que 
 
 Ça, je sais pas faire mais j'aimerai bien. En fait j'ai jamais essayé. Faut que je trouve le courage de m'y essayer un jour. De toute façon c'est une arme de plus dans notre ratelier. Toujours bon à prendre.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbwMp4uvDNc?si=5LlFTnCjrIpYtKT-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 

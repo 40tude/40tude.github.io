@@ -69,7 +69,9 @@ Arrête de lire je te dis, vas marcher, là maintenant. Allez, ouste, dehors !
 
 Ayé, tu es revenu ? T'es pas mouru?
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -196,7 +198,9 @@ On a parlé de la longueur des foulées. Quid du rythme de ces dernières ? Afin
 Là, il n'y a pas 36 solutions, faut faire des tests à la maison avec une montre et se mettre le rythme dans la tête (1, 2, 3, 4...1, 2, 3, 4...). Pour info, 180 bpm c'est le rythme de "I'm so excited" des Pointer Sisters.
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8iwBM_YB1sE?si=TCLWXrQI7dOIEqOv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -419,7 +423,9 @@ Si maintenant tu as vraiment un problème emmène une "petite" bouteille d'eau e
 ### *T'as rien à dire à propos des étirements ?*
 Nan! Je suis nul et je n'ai jamais rien compris... En revanche il y a pas mal de choses intelligentes qui sont dites dans cette vidéo.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wTU4BM_FxCY?si=DUKd6m2ABER6OcBt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 Par exemple, mollets 1/2 :
@@ -601,16 +607,26 @@ Pense aussi à acheter 2 paires de chaussettes. Il faut quelles remontent au-des
 
 ## Des vidéos que j'aime bien sur le sujet
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9L2b2khySLE?si=sy0FHbXuykb_HxRq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rYNZUioUdHQ?si=ucv8y61kJetDQtw-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4FsCbkMrtOg?si=R_r8RmV3lfMXj0w3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xu36I2rEcQw?si=cJuy9JIRgeqOMGxN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_ydJvCNxapM?si=JueOV-NVhwlaT9at" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -624,7 +640,9 @@ Une vidéo qui explique dans le détail pourquoi, si on veut perdre du poids, il
 
 <https://youtu.be/GoQ_Qt2REgQ?si=zH920zk3xuGm25yL>
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GoQ_Qt2REgQ?si=Mx9NOihrsWtSsQc6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Dans la vidéo ci-dessous il est principalement question de nutrition mais vers 14:00 on y voit ces 2 courbes qui disent la même chose que précédemment. Si on veut brûler du gras faut le faire à un rythme cardiaque lent (autour des 120 BPM). Sinon, au-delà, en **mode anaérobie**, c'est surtout le glycogène qu'on consomme quand on se bouge.
 
@@ -637,7 +655,9 @@ Dans la vidéo ci-dessous il est principalement question de nutrition mais vers 
 
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HcenVfig1fc?si=3FKFPsO_8mDvZf9G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 

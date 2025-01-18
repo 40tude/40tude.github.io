@@ -76,7 +76,9 @@ Sur la planète, il y avait 100 millions de diabétiques en 1980, 400 millions e
 <!-- ###################################################################### -->
 ## FR - 3 min - Mise en bouche rapide et factuelle.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/b_xF9Ak7TMs?si=gT86liUqfVbFThjZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Il faut lire la page de la [recommandation "forte" de l'OMS](http://www.who.int/mediacentre/news/releases/2015/sugar-guideline/fr/) (2015) qui propose de ramener la quantité de sucres libres à 5% de la ration énergétique quotidienne.
 
@@ -95,7 +97,9 @@ Il faut lire la page de la [recommandation "forte" de l'OMS](http://www.who.int/
 
 Une vidéo du CEDUS histoire de ne pas être toujours à charge. J'ai du mal à trouver des vidéos à décharge.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hdfGoPISChY?si=YrTSu1V0gSdfzSpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -107,7 +111,9 @@ Une vidéo du CEDUS histoire de ne pas être toujours à charge. J'ai du mal à 
 ### EN - 1H30 - La base. C'est LA vidéo historique 
 Enfin je crois... Elle date de 2009, c'est long mais ça vaut vraiment le coup. De toutes les vidéos de cette page, c'est par celle-là que j'ai commencé sur YouTube.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dBnniua6-oM?si=Mlei_F_YWI1wI_r1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 [Is sugar toxic?](http://www.nytimes.com/2011/04/17/magazine/mag-17Sugar-t.html) C'est l'article du NY Times Magazine dont parle le Dr LUSTIG dans d'autres vidéos.
@@ -121,7 +127,9 @@ Enfin je crois... Elle date de 2009, c'est long mais ça vaut vraiment le coup. 
 <!-- ###################################################################### -->
 ### FR - 1H04 - C dans l'air - Et si on arrêtait le sucre ?
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GFORQ93Tp_o?si=vnQgtNiBB7C00LPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -132,7 +140,9 @@ Enfin je crois... Elle date de 2009, c'est long mais ça vaut vraiment le coup. 
 ### EN - 1H39 - Est-ce la version 2015 de l'autre vidéo du Dr LUSTIG ?  
 Pas sûr à 100% mais j'aime bien l'évolution de l'approche et le déroulement des slides.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nxyxcTZccsE?si=wb9Qqsmq0rbroBGz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -159,7 +169,9 @@ Lien supprimé à retrouver
 ### EN - 18 min. On a aucun besoin de sucre dans notre consommation... 
 Et un régime low carb aide vraiment ceux qui sont prédiabétique ou diabétique de type 2.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/da1vvigy5tQ?si=bghCHdECCRIlEyhQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -172,7 +184,9 @@ Et un régime low carb aide vraiment ceux qui sont prédiabétique ou diabétiqu
 ### EN - 1H38 - Fat Fiction
 Va pas rester longtemps en ligne à mon avis mais c'est vraiment bien car il revient sur l'histoire mais surtout il donne de l'espoir. Bon, cela dit, y a des moments ou y a matière à se mettre en colère.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TUADs-CK7vI?si=veL9CHRzwnRIgfPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -185,7 +199,9 @@ Va pas rester longtemps en ligne à mon avis mais c'est vraiment bien car il rev
 ### EN - 47 min - Jamie's Sugar Rush 
 J'ai vraiment bien aimé cette vidéo. Ça révolte et ça met en colère mais j'aime bien la démarche.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/spCVTRHnZ1E?si=f5KTPv4ukviU3O0Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Pour info en France en 2013 on était déjà à 150 amputations par semaine à cause du diabète (plus de détails sur cette [page](https://www.sciencesetavenir.fr/sante/diabete/8-000-amputations-par-an-en-france-a-cause-du-diabete_102278) où, bonheur suprême il y a un lien sur la source)
 
@@ -203,7 +219,9 @@ Pour info en France en 2013 on était déjà à 150 amputations par semaine à c
 ### EN - 13 min. - Vidéo de Yoni Freedhoff 
 Il en était question dans une vidéo qui a été supprimée de la liste car plus dispo
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-BdFkK-HufU?si=y5IIRTFAR8ieK1zH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -216,7 +234,9 @@ Il en était question dans une vidéo qui a été supprimée de la liste car plu
 ### FR - 52 min - J'arrête le sucre France 5
 Sous prétexte de supprimer le sucre, différentes facettes sont exposées/expliquées. Moins alarmiste que la plupart des autres vidéos. Le ton est sympa.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Kt2ftvHfIjc?si=ZNT3HKNbj8sNiQB7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -230,7 +250,9 @@ Sous prétexte de supprimer le sucre, différentes facettes sont exposées/expli
 ### FR - 40 min - Sucre et gras
 C'est bien d'avoir un point de vue Canadien
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cQJ-SA4u0wM?si=Cel5F2zmF-AzLKHu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -249,7 +271,9 @@ C'est bien d'avoir un point de vue Canadien
 Début intéressant pour l'historique.  
 La fin, à propos des probiotiques, je ne sais pas, je ne connais pas.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GljwL4KbLTo?si=6LBguS-nDxbZuACe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Pour en savoir un peu plus sur le Candida : <https://www.santenatureinnovation.com/etes-vous-infeste-de-candida-albicans-2/>
 
@@ -265,7 +289,9 @@ Pour en savoir un peu plus sur le Candida : <https://www.santenatureinnovation.
 Trop de langue de bois où finalement on dit sans rien dire...  
 Pénible, surtout à la fin.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iMoKD-ryxT0?si=7hZz1jKc_V5O0RKz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -279,7 +305,9 @@ Pénible, surtout à la fin.
 <!-- ###################################################################### -->
 ### FR - 1H11 - Cash investigation - Sucre : comment l'industrie vous rend accros
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Rja_Riy_90M?si=MQaT3F7ecszorOQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -303,7 +331,9 @@ Pénible, surtout à la fin.
 Explique la différence entre le fructose des fruits et le fructose du saccharose du HFCS (high fructose corn syrup, plus utilisé aux US et au Canada qu'en France). On y explique aussi l'importance des fibres et tout s'appuie sur des publications scientifiques. Il y a par ailleurs pas mal d'autres vidéos intéressantes sur cette chaîne. Bref, ça vaut le coup d’œil.
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sHEJE6I-Yl4?si=smp1j5p_LozLEuu-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -318,7 +348,9 @@ Explique la différence entre le fructose des fruits et le fructose du saccharos
 
 Explique le mécanisme d’absorption de sucre, la sécrétion d'insuline, les dérèglements possibles et la prise de poids qui en résulte. Faut penser à mettre les sous-titres si besoin.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cxXZUqJGofg?si=F7YgrYYMkVvf_t6h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -331,7 +363,9 @@ Explique le mécanisme d’absorption de sucre, la sécrétion d'insuline, les d
 Sur le même sujet
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0mn2mu0NyFA?si=-_zA4Y2ctA_CrE-u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -340,4 +374,6 @@ Sur le même sujet
 ### FR - 3.30 min. Au coeur des organes : La glycémie
 Sur l'asservissement du glucose dans le sang (en trop, en manque) et le travail du pancréas. Si excès, le pancréas sécrète de l'insuline, clé pour faire rentrer le glucose dans les cellules mais aussi pour le stockage dans les muscles et le foie. Si pas assez de glucose dans le sang, le pancréas sécrète du glucagon (hormone) et le foie restitue alors le glucose qu'il avait stocké précédemment.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UoGPhPQPKy8?si=7l4TWElVf1H25m9X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

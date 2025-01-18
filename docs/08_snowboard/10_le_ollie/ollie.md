@@ -55,8 +55,12 @@ Bon, vous êtes en sueur, vous puez, vous êtes crevé... Oubliez tout. Descende
 
 ## Vidéos sur YouTube
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BDpxekjUCqw?si=LcaO1Ub0sUMjfYRY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H_tSuAipjWc?si=0knjP2RW8plFLDmS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 

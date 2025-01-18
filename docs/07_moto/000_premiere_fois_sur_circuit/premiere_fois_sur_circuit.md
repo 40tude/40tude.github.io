@@ -3,8 +3,7 @@ layout: default
 title: "Première fois sur circuit"
 parent: "Motos"
 nav_order: 2
-#math: mathjax
-date: 2023-05-23 18:40:48
+date:               2023-05-23 18:40:48
 last_modified_date: 2023-09-01 11:50:52
 ---
 
@@ -203,7 +202,9 @@ Heu... C'est peut-être un détail pour toi mais pour moi ça veut dire beaucoup
 <img src="./assets/image-21_1.webp" alt="" width="300" loading="lazy"/>
 </div> -->
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Ça va ? T'es pas mouru l'âne ? Là, pour le coup, il n'y a aucune raison de se mettre en mode panique. Tu accélères comme avant, tu freines comme avant. Le seul truc c'est qu'entre les deux tu t'es couché sur la moto. Oui, bien sûr, tu t'es aussi relevé au moment de freiner.
 

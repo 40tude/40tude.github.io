@@ -77,7 +77,9 @@ Notez aussi que si vous avez des coques, à l'arrière de la fixation, il y a un
 
 Ça y est, c'est fait ? Vous êtes bien embêté avec ce machin collé à votre jambe hein ? Bon, normalement puisque vous êtes en terrain plat vous devriez être capable de faire 2 exercices simples.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n7UHStne0Ag?si=OMTBvat-rtP8tDWO&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div align="center">
+\1
+</div>
 
 
 
@@ -126,11 +128,15 @@ Allez, courage, faites l'aller et le retour et revenez à l'endroit initial. Not
 
 Jusque là, ça va ? Bon, ben après la vidéo on passera à la suite...
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kGpGC1l7il0?si=mtwamqDTdPV45UIC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Une autre pour la route...
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eFH00ZH425c?si=x9wWLyGpSd_KKSH6&amp;start=47" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -176,7 +182,9 @@ Bref, au contraire, quand vous sentez que vous allez être en position verticale
 
 Ouf, ça y est... Ooops, la planche à tendance à partir... Cherchez pas, "jetez-vous" gentiment par terre en vous penchant en avant et en vous retenant avec les mains (ici y a pas de problème car c'est un mouvement volontaire de votre part et donc, y a peu de risques de se casser quelque chose)
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/x4caDjjOQS4?si=NRsQ-oxtj1lbS-Zy&amp;start=88" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Si la planche part, c'est qu'elle n'est pas perpendiculaire à la ligne de pente. Si vous vous êtes "jeté" par terre, vous êtes à nouveau sur le ventre, le nez dans la neige ou à quatre pattes. Bon, ben y a plus qu'à recommencer en vérifiant bien la position de la planche par rapport à la ligne de pente.
 
@@ -192,7 +200,9 @@ Quoiqu'il en soit, tout ce qui a été dit précédemment reste vrai ici: ne vou
 
 Au final vous êtes en position "surf attitude" et vous avez la montagne dans le dos.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/x4caDjjOQS4?si=2hVQHFjRZDWnX1Ss&amp;start=28" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -242,7 +252,9 @@ Bien sûr, ce que l'on a fait dans un sens, on peut le faire dans l'autre. Autre
 
 Soyez fier, ne regardez pas vos pieds, relevez la tête, bras le long du corps, mains au dessus de la planche, genoux fléchis, soyez détendu et n'hésitez pas à faire ces exercices à plusieurs reprises. 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8sdaseV7SEk?si=oYHz3FRNcnBsi17Y&amp;start=106" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Encore une fois, au début, afin de vous aider à bien glisser perpendiculairement à la ligne de pente, il faut équilibrer le poids du corps sur la planche (via vos deux pieds). Pour cela, vous pouvez choisir d'écarter largement les bras (à l'horizontal) et de bien vérifier qu'ils sont effectivement à l'aplomb de l'axe longitudinal de la planche.
 
@@ -258,7 +270,9 @@ Ah oui, j'allais oublier... À chaque arrêt, évitez de vous laisser tomber et 
 
 Allez, maîtrisez votre équilibre... Ça peut pas vous faire de mal et en plus, vous rendrez un grand service à l'image de marque des surfeurs. Que demande le peuple ?
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H5Och_4QLyE?si=zZMYyqBPMFUDY-ZK&amp;start=62" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 

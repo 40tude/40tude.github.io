@@ -51,7 +51,9 @@ En fait, on a pas fait un vrai virage mais juste une partie de virage. Comme en 
 </div>
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PL969NUdTxk?si=ShyZO5eEgKtyU-Dc&amp;start=78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Allez, faites en quelques uns comme ça. Quand vous en aurez marre d'avoir les bras écartés, mettez vos mains sur vos hanches (comme des danseurs Russes) et faites encore une fois pivoter les épaules, les hanches et les bras qui y sont accrochés.
 
@@ -82,7 +84,9 @@ En back comme en front, un bon moyen de se forcer à appuyer sur la jambe avant 
 
 ## Une petite vidéo qui reprend tout ça
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i9af352o5Ok?si=AXp0x6jG_w-cphfG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ## Enchaînement de virages
 
@@ -98,7 +102,9 @@ N'ayez pas peur au début de continuer à faire tourner exagérément vos bras q
 
 Dans les premiers exercices de virages en front ou en back on faisait partir la planche à plat. D'autre part, même si on ne l'a pas encore fait, la planche dans le tire fesse sera, là aussi, à plat. Conclusion, rassurez vous, une board n'est pas un être vicieux qui attend la moindre occasion pour vous faire du mal. Non, non, au contraire, elle sait glisser à plat et n'attend qu'une chose... Que vous passiez le cap mental du "carre-plat-carre" pour vraiment commencer à jouer avec vous.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PL969NUdTxk?si=xcxCW5zF2KeCLoKV&amp;start=264" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Si jamais vous rencontrez des problèmes, ils sont certainement dû au fait que vous n'appuyez pas suffisamment sur votre jambe avant (en fait, c'est à mon avis tout le secret des premiers virages).
 

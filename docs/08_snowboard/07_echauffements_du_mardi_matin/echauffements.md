@@ -27,7 +27,9 @@ On est mardi en tout début de matinée. Bon... Là on va faire court et ludique
 * T'enlève tes gants si besoin. Tu croise tes doigts. Tu fais rouler tes poignets dans un sens puis dans l'autre pendant une minute environ.
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FPs_w7J4_mo?si=n3wYzS8HoA30MW7_&amp;start=64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 ### Petits sauts à plat
@@ -35,7 +37,9 @@ Dans un premier temps, on chausse les deux pieds sur la planche sur un terrain p
 
 Dans la vidéo ci-dessous ne regarde que les "petits sauts". Le reste c'est un peu trop avancé pour nous.
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7D6oZnJAFng?si=lA99uWsWuYWAIF8Z&amp;start=28" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Bien... Allez on passe à la suite.
 
@@ -80,6 +84,8 @@ Remarquez... Comme vous êtes chauds et que vous avez déjà remonté la piste d
 
 Fentes et squat classiques sans snowboard au pied évidemment !
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/O1sqFSHiED8?si=GakMfZy-wzJU4mPM&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 

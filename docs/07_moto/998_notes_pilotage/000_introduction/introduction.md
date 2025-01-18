@@ -119,12 +119,15 @@ Il y en a dans toutes les langues : Français, Italien, Anglais, Espagnol... Si 
 
 Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous conseille de cliquer sur le "**Regarder sur YouTube**" en bas plutôt que sur le bouton play rouge. 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n7LHAWWeSbHh5IqF&amp;start=1014&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Une série de podcasts disponibles sur YouTube qui est pas mal si vous parlez Anglais. En ce qui me concerne je les écoute sur téléphone avec l'application Podcast Addict. Je vous conseille de les suivre dans l'ordre de publication (du plus vieux au plus récent).
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=fq-aZtF8T0Rqstxw&amp;list=PLNOc2dc5lwq9CVw_j3IhX6vY4YXYAUrAx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 

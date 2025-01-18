@@ -52,8 +52,9 @@ Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 
 
 * Est-ce que j'ai une feuille imprimée avec le tracé du circuit et mes notes manuscrites ? Typiquement ces notes manuscrites sont prises en regardant YouTube à 75% ou même 50% de la vitesse normale. Il ne faut pas hésiter à chercher les séances Duo Run [DDRS] NOT YET TRANSFERED (https://www.40tude.fr/zx6r-sur-circuit-stage-de-pilotage-de-radigues-rider-school-drrs/) où le moniteur fait des remarques au stagiaire. Il faut éviter de regarder les vidéos de pilotes pros ou de record du tour. Leurs marques de freinage, leur vitesse d'exécution n'ont rien à voir avec ce que l'on peut faire. Le seul truc qu'on a en commun avec les pros ce sont les points de corde. Bref, idéalement la découverte de la piste doit se faire avec un "prof". Un bon exemple ci-dessous au Vigeant :
 
-
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ifJmAPjkvX0?si=y7HGEcN_FeJfx2Rx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ### Dans la tête
 
@@ -275,8 +276,9 @@ Dans un même ordre d'idée, en ligne droite je dois être capable de tenir l'ac
 
 <!-- https://youtu.be/h24XjzybrA0 -->
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/h24XjzybrA0?si=1AiXYc_QGYxzFj5v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 

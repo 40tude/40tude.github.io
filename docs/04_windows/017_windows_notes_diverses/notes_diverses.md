@@ -201,8 +201,9 @@ Si la raison est différente, faire une recherche sur le service/application qui
 {: .no_toc }
 
 Il faut absolument aller vois cette vidéo
-
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OHKKcd3sx2c?si=9XAPkYg1McZ4aeUP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 À **retenir** quand on utilise un portable :
 1. Je débranche

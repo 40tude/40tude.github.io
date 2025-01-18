@@ -108,8 +108,9 @@ Once the throttle is cracked on, it is rolled on evenly, smoothly and constantly
 
 On en parle dans cette vidéo :
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CE_UaGJqH-E?si=W9VrsJk1hFqXJi5V&amp;start=1014" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 
@@ -186,8 +187,9 @@ Oui. Notez la différence d'écartement des pneus vis à vis de la bande blanche
 
 Voir la vidéo
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kfZlxpH2cZ0?si=cnNNl8Og5Z_6LiIj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 
@@ -231,8 +233,9 @@ Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture 
 
 <!-- https://youtu.be/Ym4SRjSKmoI -->
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ym4SRjSKmoI?si=TxKZ0QJrkl6UXa5b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 
@@ -282,9 +285,9 @@ La vidéo complète est ci-dessous.
 
 <!-- https://www.youtube.com/watch?v=0LA2pNlNNw0 -->
 
-
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0LA2pNlNNw0?si=b_x5V-D-BSLU1jnK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 
@@ -346,8 +349,9 @@ La vidéo complète est ci-dessous.
 
 <!-- https://youtu.be/EJQaKf3txVg?t=184 -->
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EJQaKf3txVg?si=_SHs0_X1wy9_4IL4&amp;start=184" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 
 
 
@@ -385,8 +389,9 @@ Il y a 2 types de virages qui sont beaucoup plus importants que les autres et su
 La vidéo ci-dessous rentre plus dans les détails.
 
 <!-- https://youtu.be/xJqnsOYD8T0 -->
-
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xJqnsOYD8T0?si=aohrMEMyOgs7CJYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Un calcul rapide montre que :
 

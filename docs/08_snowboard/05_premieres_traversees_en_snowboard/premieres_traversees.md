@@ -37,7 +37,9 @@ Il est très important de ne **pas tendre la jambe avant**, de se raidir et de r
 Je sais c'est en anglais... Regardez bien ce qu'elle fait de son bras et la façon dont le regard "pilote" la board.
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5HA8DkBlmXE?si=OgAn_npRYt0UVwSz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 De même, si vous trouvez qu'appuyer sur la jambe arrière c'est trop puissant (vous dérapez et vous vous arrêtez à chaque fois), alors essayez de regarder vers l'amont (la haut de la montagne) pour vous ralentir et l'aval (la valée, le bas de la montagne) pour continuer à glisser. En fait, se faisant, votre visage et vos épaules vont tourner ce qui au niveau des jambes va se traduire par une différence de pression sur les pieds. Cette dernière entraînera le ralentissement ou l'accélération de la planche.
 
@@ -66,11 +68,15 @@ Ah, oui, en back c'est genoux pliés et talons, talons talons.
 Si vous ne comprenez pas ce que je viens de dire relisez la fin du paragraphe qui traite des fautes de carre.
 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/az2IcAOWCv0?si=S7oOcmJhrOpI6OmI&amp;start=38" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Bon, là il va un peu vite pour nous mais en fin d'après midi on doit être capable de faire ça. Bien voir comment il remonte la pente et qu'il laisse la board s'arrêter tout seule quand il est de l'autre côté de la piste. La trace fait une sorte de "J". 
 
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XNVgqDgRneA?si=SVEG-UI1dHuRl1YH&amp;start=23" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
