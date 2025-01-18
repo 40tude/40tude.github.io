@@ -78,14 +78,14 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 <!-- ###################################################################### -->
 ## La session
 
-* Pense à noter sur un ou 2 virages combien de rapport tu rentre
+* Pense à noter sur un ou deux virages combien de rapport tu rentre
 * N'oublie pas tes pieds
 * Utilise toute la piste, roule à 1 cm de la bande blanche
 * Pense à te coucher dans les lignes droites et les grands virages (casque sur le réservoir)
 
 Vu que tout ça c'est trop facile et acquis, tu va t'appliquer à mettre la poignée de gaz **en butée** dans la plus grande ligne droite du circuit ainsi que dans une autre portion, idéalement à l'autre bout du circuit. L'idée c'est d'espacer c'est 2 instants "magiques". 
 
-Ensuite on change pas une formule qui gagne. A l'instar de le première session, dès que tu es butée dans une des sections, tu en rajoute une troisième etc. Tu connais la méthode.
+Ensuite on change pas une formule qui gagne. A l'instar de le première session, dès que tu es butée dans une des deux sections, tu en rajoute une troisième etc. Tu connais la méthode.
 
 
 
@@ -106,8 +106,8 @@ Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en but�
     * On s'appliquera à ne pas jouer avec la poignée de gaz.
     * Dans les prochains tours on reviendra à 75% de nos capacités
     * Il faut passer, là, pile poil sur le point de corde sans jouer avec la poignée de gaz (ni up, ni down)
-    * Et s'appliquer à mettre la Throttle Rule (voir juste après) en action dans CE virage
-* Il faut bien retenir que si dans un virage on est constant sur la poignée de gaz alors on n'est PAS sur la ligne idéale (car on ne respecte pas la Throttle Rule)
+    * Et s'appliquer à mettre la **Throttle Rule** (voir juste après) en action dans CE virage
+* Il faut bien retenir que si dans un virage on est constant sur la poignée de gaz alors on n'est PAS sur la ligne idéale (car on ne respecte pas la **Throttle Rule**)
 
 ### PAS de filet de gaz dans le virage
 * La poignée est soit fermée soit on l'enroule. 
@@ -200,9 +200,9 @@ Heu... Ne me faites pas dire ce que j'ai pas dit. Il faut **sortir de sa zone de
 
 Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
-* C'est la [Throttle Rule]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). On en a parlé dans la note précédente. Une fois que c'est parti on arrête plus d'enrouler la poignée et on n'a pas peur de finir ouvert en grand (100% gaz)
+* C'est la **Throttle Rule**. Une fois que c'est parti on arrête plus d'enrouler la poignée et on n'a pas peur de finir ouvert en grand : 100% gaz, **en butée**.
 * Encore une fois : pour l'instant, peu importe le moment exact où on commence à accélérer
-* En revanche il est très important qu'à partir du moment où on commence à accélérer, on arrête plus jusqu'à ce que la moto soit verticale et les gaz à 100% (c'est alors la fin officielle du virage)
+* En revanche il est très important qu'à partir du moment où on commence à accélérer, on arrête plus jusqu'à ce que la moto soit verticale et les gaz à 100% (c'est alors **la fin officielle du virage**)
 
 *Ben, pourquoi ?*
 * Si on a accéléré trop tôt on va sortir trop large. Donc au prochain tour, toutes choses égales par ailleurs (PMSA, vitesse d'entrée...) je suis patient, je suis patient... et j'attends un peu plus qu'au tour précédent avant de commencer à enrouler la poignée de gaz.
@@ -213,7 +213,7 @@ Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
 ### Progressif on te dit
 
-Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
+Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [**Throttle Rule**] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
 
 <!-- https://youtu.be/rPlp_SvbLLE?t=160 -->
 
