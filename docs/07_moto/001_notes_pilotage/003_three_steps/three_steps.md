@@ -16,7 +16,7 @@ last_modified_date: 2023-04-27 17:10:45
 {:toc}
 
 
-J'essaie de courir régulièrement et mon parcours et un peu toujours le même. Là, je sais que le trottoir est vraiment incliné, ici y a une chaîne entre plots etc. Je sais où je vais, j'ai mes points de repère et je peux quasiment dire si je suis en avance ou en retard sans regarder ma montre.... Le fait de savoir comment ça va se passer me permet d'anticiper, d'être plus à l'aise et de me concentrer sur l'essentiel. 
+J'essaie de courir régulièrement et mon parcours est un peu toujours le même. Là, je sais que le trottoir est vraiment incliné, ici y a une chaîne entre des plots etc. Je sais où je vais, j'ai mes points de repère et je peux quasiment dire si je suis en avance ou en retard sans regarder ma montre.... Le fait de savoir comment ça va se passer me permet d'anticiper, d'être plus à l'aise et de me concentrer sur l'essentiel. 
 
 La décomposition des virages se propose de faire la même chose. C'est un outil qui va nous permettre d'anticiper, de savoir comment ça va se passer, de libérer notre esprit et d'être plus régulier tour après tour.
 
@@ -43,14 +43,14 @@ Le virage est ainsi découpé en 3 étapes :
 
 ## Prérequis
 
-* On "connaît" la piste et comme on a repéré les cônes, on a identifié les points de mise sur l'angle et les points de corde. Oui, oui je suis d'accord. On ne connaît peut-être pas toute la piste par cœur. Il y a sans doute encore des sections qui posent des problèmes etc.
+* On "connaît" la piste et comme on a repéré les cônes, on a identifié les points de mise sur l'angle et les points de corde. Oui, oui je suis d'accord. On ne connaît peut-être pas encore tout le circuit par cœur. Il y a sans doute encore des sections qui posent des problèmes etc.
 * Lire **ATOTW II** p 98 (ça parle de Two Steps mais nous ici on passe directement à Three Steps puisqu'on décompose le virage en 3 portions). En deux mots:
     * Two Steps va "over-simplifier" la lecture de l'entrée du virage avec uniquement 2 points de référence qu'on acquiert en avance de phase.
     * Nous ici on passe directement à 3 steps parce qu'on est trop fort ✊
 
 {: .note }
 **ATOW II** c'est LE bouquin [A Twist Of The Wrist](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=A+twist+of+the+Wrist&qid=1567893832&s=gateway&sr=8-3). Le livre commence à être un peu vieux mais fondamentalement tout y est.  
-Il y a aussi une vidéo... Franchement elle, elle date carrément et elle n'est franchement pas top au niveau concernant le jeu des "acteurs" mais bon, elle reprend bien tout le contenu du bouquin. Elle dure une heure quand elle est d'un seul tenant mais ça vaut le coup. J'arrête de mettre un lien dans cette page car la vidéo est régulièrement supprimée de YouTube. Le mieux c'est encore d'aller sur YouTube et de faire une recherche sur "[a twist of the wrist](https://www.youtube.com/results?search_query=a+twist+of+the+wrist)".
+Il y a aussi une vidéo... Franchement elle, elle date carrément et franchement le jeu des acteurs n'est pas au top. Mais bon, elle reprend tout le contenu du bouquin. Elle dure une heure quand elle est d'un seul tenant mais ça vaut le coup. J'arrête de mettre un lien dans cette page car la vidéo est régulièrement supprimée de YouTube. Le mieux c'est encore d'aller sur YouTube et de faire une recherche sur "[a twist of the wrist](https://www.youtube.com/results?search_query=a+twist+of+the+wrist)".
 
 
 
@@ -96,13 +96,13 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 Avant même l'entrée de virage :
 * T1 : le premier temps de la décomposition des virages consiste à localiser le point de mise sur l'angle.
-Point de mise sur l'angle = **PMSA** (turn-point)
-Cela se fait le plus tôt possible. Cela dit, à notre niveau, cela peut se faire avant ou pendant le freinage… Plus tard la localisation du PMSA se fera systématiquement bien **AVANT** le freinage.
+Point de mise sur l'angle = **PMSA** (turn-point).  
+Cela se fait le plus tôt possible. Cela dit, à notre niveau, cela peut se faire avant ou pendant le freinage… Plus tard, la localisation du PMSA se fera systématiquement bien **AVANT** le freinage.
 * T2 : localisation du point de corde (**PC**, apex)
 Cela doit être fait pendant le freinage, **AVANT** d'arriver au PMSA.
 L'apex peut se situer au milieu du virage mais plus généralement au 3/4 du virage. En règle générale, plus un virage est serré et plus le point de corde est retardé.
-* T3 : localisation du point de sortie (**PS**) avant d'arriver sur l'apex
-Avant de faire passer les pneus sur le point de corde, avec le regard on accroche le point de sortie et on ne le lâche plus.
+* T3 : localisation du point de sortie (**PS**) **AVANT** d'arriver sur l'apex.  
+**AVANT de faire passer les pneus sur le point de corde, avec le regard, on accroche le point de sortie PS et on ne le lâche plus.
 
 Il faut donc **an-ti-ci-per** et accrocher du regard
 * Le point de corde alors qu'on se dirige vers le point de mise sur l'angle
@@ -122,7 +122,7 @@ L'anticipation permet d'être plus à l'aise et plus serein.
   + Sinon on n'appellerait pas ça la décomposition des virages 😁
   + Plus sérieusement, on a tendance à aller trop vite entre le moment où on a repéré le point de corde et la mise sur l'angle
   + Il faut donc faire l'effort de viser le point de corde "longtemps" avant la mise sur l'angle effective. En d'autres mots cela veut dire qu'on continue de rouler tout droit, de freiner puis de faire la mise sur l'angle alors qu'on ne regarde QUE le point de corde et plus le PMSA. Un peu comme quand on était gamin et qu'à vélo on tournait la tête pour regarder la belle Rosalie qui marchait sur le trottoir.
-* Une fois qu'on est sur l'angle et qu'on se dirige vers le point de corde
+* Une fois qu'on est sur l'angle et qu'on est sûr que nos roues vont passer sur le point de corde...
 * Alors, on accroche du regard le point de sortie **AVANT** de passer sur le point de corde
 * En fait, **on change d'objectif dès qu'on est sûr qu'on va passer sur le point de corde**
 
@@ -161,7 +161,7 @@ En ayant 3 points ça "over-simplifie" le décodage du virage. Ça aide le cerve
 
 Viser le point d'après, en avance de phase, permet de gagner en sérénité et de vraiment passer sur le point en question.
 
-À notre niveau, on prend la fin du freinage en ligne droite comme point de départ de la mise sur l'angle. En d'autres mots, à notre niveau, on ne freine plus et on est gaz coupés lorsqu'on met la moto sur l'angle.
+À notre niveau, on prend la fin du freinage en ligne droite comme point de départ de la mise sur l'angle. En d'autres mots, à notre niveau, on ne freine plus et on est gaz coupés lorsqu'on met la moto sur l'angle. Il ne peut donc RIEN arriver.
 
 On se met sur l'angle en visant le point de corde
 
