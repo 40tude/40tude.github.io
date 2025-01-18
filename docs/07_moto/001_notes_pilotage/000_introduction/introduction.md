@@ -23,7 +23,7 @@ Une fois que votre première journée c'est bien déroulé et si vous avez trouv
 
 ## Le programme
 
-Ma première journée de roulage... Un bon exemple ici... NOT YET TRANSFERED. Je n'ai pas dormi de la nuit, j'étais excité depuis des semaines, j'avais un peu la trouille de me mettre au tas et de ne pas pouvoir rentrer par mes propres moyens... Cela dit, j'aurai bien aimé qu'on m'explique un peu comment appréhender la piste et le pilotage. Je ne parle pas ici de la [logistique]({%link docs/07_moto/002_checklist_roulage/checklist_roulage.md%}) mais uniquement du pilotage. 
+Ma première journée de roulage... Un bon exemple ici... NOT YET TRANSFERED. Je n'ai pas dormi de la nuit, j'étais excité depuis des semaines, j'avais un peu la trouille de me mettre au tas et de ne pas pouvoir rentrer par mes propres moyens... Cela dit, j'aurai bien aimé qu'on m'explique un peu comment appréhender la piste et le pilotage. Je ne parle pas ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) mais uniquement du pilotage. 
 
 Comme son nom l'indique, la section **Basics** s'intéresse aux fondamentaux. C'est grosso-modo le programme abordé dans [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) mais en plus détaillé. De toute façon cela ne fait jamais de mal que de lire ou d'entendre les mêmes explications mais avec un vocabulaire différent. Typiquement, à la fin des **Basics** on possède des bases saines et solides sur lesquelles on peut s'appuyer pour passer à l'étape suivante. 
 
