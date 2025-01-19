@@ -108,7 +108,7 @@ Cela se fait le plus tôt possible. Cela dit, à notre niveau, cela peut se fair
 Cela doit être fait pendant le freinage, **AVANT** d'arriver au PMSA.
 L'apex peut se situer au milieu du virage mais plus généralement au 3/4 du virage. En règle générale, plus un virage est serré et plus le point de corde est retardé.
 * T3 : localisation du point de sortie (**PS**) **AVANT** d'arriver sur l'apex.  
-**AVANT de faire passer les pneus sur le point de corde, avec le regard, on accroche le point de sortie PS et on ne le lâche plus.
+**AVANT** de faire passer les pneus sur le point de corde, avec le regard, on accroche le point de sortie PS et on ne le lâche plus.
 
 Il faut donc **an-ti-ci-per** et accrocher du regard :
 * Le point de corde (PC) alors qu'on se dirige vers le point de mise sur l'angle (PMSA)
@@ -210,7 +210,7 @@ J'exagère mais si on remonte le circuit, tout se passe comme si on tirait une d
     * Si c'est pas clair, imagine que tu es à la corde à l'entrée d'un grand virage qui est un demi-cercle. À partir de quand tu vas pouvoir accélérer? J'exagère à peine mais comme il va falloir attendre que tes roues indiquent la bonne direction tu ne pourras accélérer qu'à la toute fin du demi-cercle (ou presque).  
     Comme en plus ta trajectoire suit un cercle de faible rayon ta vitesse est faible (double peine).  
     Donc tu va passer 3H dans le virage et accélérer très tard.  
-    Bref t'es mort.
+    Bref, t'es mort.
     * Regarde ci-dessous. En 1 et 2 si tu accélères tu sors dans les graviers. Il faut attendre d'être en 3 (ou un peu avant) pour pouvoir accélérer. 
 
 <div align="center">
@@ -252,11 +252,11 @@ Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien d
 
 C'est quoi l'objectif? On veut passer **sur** PC (le point de corde) en ayant les roues dans la direction de PS (le point de sortie). Dans le superbe crobar ci-dessous, tu arrives de la gauche et tu vas sortir par la droite (normalement).
 
-Bon ben vas-y, trace une droite qui va de PS à PC (voir les pointillés). Oui, oui je confirme on "remonte" le circuit. La droite "dépasse PC et s'enfonce dans le virage. 
+Bon, ben vas-y, trace une droite qui va de PS à PC (voir les pointillés). Oui, oui je confirme on "remonte" le circuit. La droite "dépasse PC et s'enfonce dans le virage. 
 
 Imagine... Imagine la situation théorique suivante. Là où la droite coupe l'extérieur du virage (un peu au-dessus du 1). Tu es à l'arrêt, tu oriente les roues de ton dragster (j'ai dis que c'était théorique, je fais ce que je veux...) selon la direction de la droite. C'est bon? Allez, 100% gaz...
 
-Qu'est-ce qui va se passer? Rien. Tu vas sortir comme une balle du virage. Aucune chance d'aller dans les graviers et tu bénificera de la plus longue durée d'accélération possible (tu pars du bord de la piste)
+Qu'est-ce qui va se passer? Rien. Tu vas sortir comme une balle du virage. Aucune chance d'aller dans les graviers et tu bénificeras de la plus longue durée d'accélération possible (tu pars du bord de la piste)
 
 <div align="center">
 <img src="./assets/img_106.webp" alt="" width="450" loading="lazy"/>
@@ -268,7 +268,7 @@ On reprend...
 * Tu as terminé le freinage au PMSA et tu vise le PC avec ton menton
 * Tu es gaz coupé et tes doigts ne touchent plus le levier de frein. 
 * Tu ne plonges **PAS** à la corde
-* Au contraire, tu restes large, tu a peu d'angle et tu "t'enfonces" dans le virage
+* Au contraire, tu restes large, tu as peu d'angle et tu "t'enfonces" dans le virage
 * "Quand tu le sens" (tu es sur PV), tu fais pivoter très rapidement la moto en poussant fort sur le bracelet intérieur
 * C'est possible car tu ne freine pas, tu n’accélère pas, tu ne fais rien. Il ne peut rien t'arriver.
 * Tu arrêtes de faire pivoter la moto quand ses roues sont alignées sur la droite qui va de PC à PS
@@ -299,7 +299,7 @@ T'as compris le truc.
 
 Un truc qui peut aider au début c'est de river ses yeux et son menton sur le point de corde. Notre menton et nos yeux vont changer de cible au fur et à mesure de notre avancement dans le virage mais ici l'idée c'est de s'entrainer en exagérant à faire abstraction du reste de la scene et d'être "focus" sur le point de corde.
 
-J'arrive au virage, je chope le cône de PC du regard. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas. 
+J'arrive au virage, je chope le cône de PC du regard et du menton. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas. 
 
 Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approche du cône. Il ne faut pas regarder l'entrée du virage dans son ensemble. Faut être "laser focus" sur le cône (pense aux lasers des yeux de superman).
 
@@ -337,13 +337,13 @@ Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. I
 
 
 ### Je suis lourd
-Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tours passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique que, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
+Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tour passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique que, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
 
 Prenons un exemple. Il est illusoire de vouloir améliorer son accélération en sortie de virage alors que mes roues ne passent toujours pas au point de corde. Pourquoi ? Tout simple. Je suis en intermédiaire, mes temps ne sont pas ridicules, j'ai, je pense des freinages de tueur etc. Je me dis qu'il faut maintenant que je soigne ma façon d'accélérer et de sortir des virages. Cela dit, je passe systématiquement à un mètre des points de corde (ma tête est au-dessus de la ligne blanche et/ou mon slider est sur la bande blanche).
 
 Qu'est-ce qui va se passer ? Je vais peaufiner mon accélération, la vitesse à laquelle je redresse la moto en sortie de virage etc. Cela dit, je vais rapidement me heurter à un plafond de verre. En effet, comme mes pneus sont à un mètre du point de corde, mécaniquement j'ai moins d'espace pour élargir mon virage (il me manque 1 à 1.5 mètre). Le pire c'est que si je comprends qu'il faut que maintenant je soigne mes points de corde il sera trop tard (ou presque). J'aurai tellement de "mauvaises" habitudes qu'il sera très dur de revenir en arrière. En effet, cela revient à tout casser, à revenir aux fondamentaux et à tout reconstruire. Bref, ça va être long, pénible et frustrant. Autant partir sur de bonnes bases et commencer par soigner ses points de corde quitte à passer avec la moto verticale à 2 à l'heure (j'exagère bien sûr). Le reste, on verra plus tard.
 
-Il ne faut pas passer à la suite tant qu'on n'est pas capable de les assurer à chaque tour. À ce point de notre formation (niveau Padawan première année...) on se fiche de la vitesse de passage et de la prise d'angle (les photographes on verra plus tard). Ça viendra naturellement par la suite lorsqu'on va accroître notre rythme. À ce moment-là, pour assurer nos points de corde nous n'aurons pas d'autre choix que d'augmenter la vitesse de nos mises sur l'angle (très important, mais on verra plus tard), comme on ira plus vite on devra aussi prendre plus d'angle et pour prendre plus d'angle nous devrons changer notre position sur la moto, sortir un genou etc. Et là, il sera temps d'appeler Canal+ pour faire un reportage.
+Il ne faut pas passer à la suite tant qu'on n'est pas capable de les assurer à chaque tour. À ce point de notre formation (niveau Padawan première année...) on se fiche de la vitesse de passage et de la prise d'angle (les photographes on verra plus tard). Ça viendra naturellement par la suite lorsqu'on va accroître notre rythme. À ce moment-là, pour assurer nos points de corde nous n'aurons pas d'autre choix que d'augmenter la vitesse de nos mises sur l'angle (très important), comme on ira plus vite on devra aussi prendre plus d'angle et pour prendre plus d'angle nous devrons changer notre position sur la moto, sortir un genou etc. Et là, il sera temps d'appeler Canal+ pour faire un reportage.
 
 **Une petite vidéo peut être...**
 
