@@ -219,6 +219,20 @@ Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Desc
 ```
 
 
+### Lister tous les fichiers qui sont pas .webp dans les sous-répertoires /assets
+
+```powershell
+Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
+    # List files in the found "assets" directory
+    Get-ChildItem -Path $_.FullName -File | Where-Object {
+        $_.Extension -ne ".webp"
+    } | ForEach-Object {
+        # Output the full path of files that don't have a .webp extension
+        Write-Output $_.FullName
+    }
+}
+```
+
 
 ### Tooling (à voir plus tard)
 * Google PageSpeed Insights : <https://pagespeed.web.dev/>

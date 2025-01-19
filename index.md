@@ -54,7 +54,7 @@ Pour l'instant je suis focus sur le transfert.
         {% if image == page.content %} 
             {% assign image = '/assets/images/40tude_307.webp' %}
         {% endif %}
-        <img src="{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;">
+        <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;">
       </td>
       <td>
         <a href="{{ page.url }}">{{ page.title }}</a>

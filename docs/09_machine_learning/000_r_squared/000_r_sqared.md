@@ -42,7 +42,7 @@ I recently went to Sequoia National Park with a park ranger. All day long, I mea
 When I plot the age of the sequoias against their trunk diameters, here's what I see:  
 
 <div align="center">
-<img src="./assets/img01.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img01.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
@@ -64,7 +64,7 @@ For every diameter value (horizontal axis, the x-axis), I've placed a red dot at
 I don't know about you, but my brain immediately wants to draw a straight line through all these points. What I have in mind looks like this:  
 
 <div align="center">
-<img src="./assets/img02.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img02.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 The green line is my model, and we usually denote the predicted value of the model as $$\hat{y}$$. I say this is my model because if you give it a diameter which was not in the initial dataset, it will be able to infer an age. Notice that, to generalize, on the graph, I'm no longer mentioning sequoia trunk diameters or ages but simply a variable $$x$$ and corresponding values $$y$$.  
@@ -72,7 +72,7 @@ The green line is my model, and we usually denote the predicted value of the mod
 It seems to work for most points, but I notice there's always a difference between the actual measurement (red dots) and the value predicted by the model (the green dots of the line). To illustrate this, I've exaggerated the differences in the diagram below:  
 
 <div align="center">
-<img src="./assets/img03.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img03.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
@@ -116,7 +116,7 @@ OK? Let's continue.
 The situation would look like this:  
 
 <div align="center">
-<img src="./assets/img04.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img04.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
@@ -150,7 +150,7 @@ So, to compare the performance of our linear regression to the true measurements
 It's going to be fine—you'll see—and it will look something like this:  
 
 <div align="center">
-<img src="./assets/img05.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img05.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
@@ -171,7 +171,7 @@ $$R^2 = \frac{\text{Model}}{\text{Measure}}$$
 This is what the situation looks like:  
 
 <div align="center">
-<img src="./assets/img06.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img06.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
@@ -227,20 +227,20 @@ Hmm... Sum of squared differences. Sum with an 'S' and squared with an 'S' too. 
 ## Here's how it works  
 
 <div align="center">
-<img src="./assets/img07.png" alt="drawing" width="600" loading="lazy"/>
+<img src="./assets/img07.webp" alt="drawing" width="600" loading="lazy"/>
 </div>
 
 
 For each index $$i$$, we calculate $$SSR_i$$ and $$SST_i$$.  
 
 <div align="center">
-<img src="./assets/img08.png" alt="drawing" width="600" loading="lazy"/>
+<img src="./assets/img08.webp" alt="drawing" width="600" loading="lazy"/>
 </div>
 
 Next, we square these two calculated values.  
 
 <div align="center">
-<img src="./assets/img09.png" alt="drawing" width="600" loading="lazy"/>
+<img src="./assets/img09.webp" alt="drawing" width="600" loading="lazy"/>
 </div>
 
 
@@ -249,7 +249,7 @@ Finally, we sum up all the squared values. At the end, we have the true values o
 This is what the final situation looks like:  
 
 <div align="center">
-<img src="./assets/img10.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img10.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
@@ -277,7 +277,7 @@ We said $$R^2$$ is the ratio of the model's predictions to what happens, on aver
 We can illustrate the situation as follows:  
 
 <div align="center">
-<img src="./assets/img11.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img11.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
@@ -290,7 +290,7 @@ In plain English, this means that the total variability ($$SST$$) equals the var
 Finally, we can express $$R^2$$ in two different ways:  
 
 <div align="center">
-<img src="./assets/img12.png" alt="drawing" width="800" loading="lazy"/>
+<img src="./assets/img12.webp" alt="drawing" width="800" loading="lazy"/>
 </div>
 
 
