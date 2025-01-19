@@ -47,10 +47,10 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     </tr>
   </thead>
   <tbody>
-    {% assign n = 5 %}  {# Nb articles à afficher #}
-    {% assign m = 20 %} {# Nb mots à afficher     #} 
+    {% assign nb_articles = 5 %}  
+    {% assign nb_words = 20 %}  
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
-    {% for page in articles_sorted limit: n %}
+    {% for page in articles_sorted limit: nb_articles %}
     <tr>
       <td>
         {% assign image = page.content | split: '<img src="' | last | split: '"' | first %}
@@ -64,8 +64,9 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ page.output | strip_html | truncatewords: m }}
+        {{ page.output | strip_html | truncatewords: nb_words }}
       </td>
+
     </tr>
     {% endfor %}
   </tbody>
