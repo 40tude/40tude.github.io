@@ -4,9 +4,8 @@ layout: home
 nav_order: 1
 date:               2024-12-25 12:00:00 +0000
 last_modified_date: 2025-01-15 08:00:00 +0000
-
-n: 5  # Nombre d'articles à afficher
-m: 20 # Nombre de mots par extrait
+#n: 5  # Nombre d'articles à afficher
+#m: 20 # Nombre de mots par extrait
 ---
 
 
@@ -45,35 +44,23 @@ Pour l'instant je suis focus sur le transfert.
     </tr>
   </thead>
   <tbody>
-    <!--     
     {% assign n = 5 %} {# Définir la limite d'articles #}
     {% assign m = 20 %} {# Définir la limite de mots #} 
-    -->
-
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
-    {% for page in articles_sorted limit: 5 %}
+    {% for page in articles_sorted limit: n %}
     <tr>
       <td>
-        <!-- 
-        {% assign image = page.content | regex_find_first: '<img.+?src=["\'](.+?)["\']' %}
-        {% if image == '' %}
-          {% assign image = './assets/images/40tude_307.webp' %}
-        {% endif %}
-        <img src="{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;"> 
-        -->
-
         {% assign image = page.content | split: '<img src="' | last | split: '"' | first %}
-        {% if image contains '<img src="' %}
-            {% assign image = './assets/images/40tude_307.webp' %}
+        {% if image == page.content %} 
+            {% assign image = '/assets/images/40tude_307.webp' %}
         {% endif %}
         <img src="{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;">
-
       </td>
       <td>
         <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ page.content | strip_html | truncatewords: 20 }}
+        {{ page.content | strip_html | truncatewords: m }}
       </td>
     </tr>
     {% endfor %}
