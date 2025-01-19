@@ -24,17 +24,12 @@ Pour l'instant je suis focus sur le transfert.
 * D'un autre côté, je n'en pouvais plus de **WordPress**. Je parle surtout de l'édition des billets. Au début, en 2010, ça allait à peu près mais sur la fin c'est devenu n'importe quoi...  WP c'est sans doute très bien pour certains mais il ne correspond plus du tout à mes besoins. En plus, j'ai l'impression que ça pue chez WP. [Lire ce billet sur Medium.](https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185){:target="_blank"}
 
 
-<p>Nombre d'articles du site : {{ site.posts | size }}</p>
-
-{% for post in site.posts limit: 1 %}
-  <p>{{ post.last_modified_date }}</p>
-{% endfor %}
 
 
-<p>Nombre d'articles du site : {{ site.pages | size }}</p>
+<!-- <p>Nombre d'articles du site : {{ site.pages | size }}</p>
 {% for page in site.pages limit: 1 %}
   <p>{{ page.last_modified_date }}</p>
-{% endfor %}
+{% endfor %} -->
 
 
 <table>
@@ -46,21 +41,21 @@ Pour l'instant je suis focus sur le transfert.
     </tr>
   </thead>
   <tbody>
-    {% assign articles_sorted = site.posts | sort: 'last_modified_date' | reverse %}
-    {% for post in articles_sorted limit: n %}
+    {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
+    {% for page in articles_sorted limit: n %}
     <tr>
       <td>
-        {% assign image = post.content | regex_find_first: '<img.+?src=["\'](.+?)["\']' %}
+        {% assign image = page.content | regex_find_first: '<img.+?src=["\'](.+?)["\']' %}
         {% if image == '' %}
           {% assign image = './assets/images/40tude_307.webp' %}
         {% endif %}
-        <img src="{{ image }}" alt="Illustration de {{ post.title }}" style="width: 100px; height: auto;">
+        <img src="{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;">
       </td>
       <td>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ post.content | strip_html | truncatewords: m }}
+        {{ page.content | strip_html | truncatewords: m }}
       </td>
     </tr>
     {% endfor %}

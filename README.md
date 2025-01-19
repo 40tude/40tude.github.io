@@ -126,6 +126,14 @@ last_modified_date: 2023-12-04 00:02:38
 
 
 
+```
+<p>Nombre d'articles du site : {{ site.pages | size }}</p>
+{% for page in site.pages limit: 1 %}
+  <p>{{ page.last_modified_date }}</p>
+{% endfor %}
+
+```
+
 
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllcodex.org/without-plugins/>
