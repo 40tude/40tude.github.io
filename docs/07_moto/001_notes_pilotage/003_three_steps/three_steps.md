@@ -248,7 +248,7 @@ Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien d
 </div>
 
 
-### Le point de pivot
+### Le point de pivot (PV)
 
 C'est quoi l'objectif? On veut passer **sur** PC (le point de corde) en ayant les roues dans la direction de PS (le point de sortie). Dans le superbe crobar ci-dessous, tu arrives de la gauche et tu vas sortir par la droite (normalement).
 
@@ -312,14 +312,22 @@ Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approch
 Si j'ai du mal à placer mes pneus parfaitement sur le point de corde, je peux appuyer légèrement sur le frein arrière. Ça permet de resserrer le virage et d'ajuster la trajectoire le cas échéant.
 
 
-### Ta mise sur l'angle est trop lente
-Si je suis constamment trop loin du cône c'est que ma mise sur l'angle est trop lente. Pas de soucis, on débute... Donc, au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
+### Ta mise sur l'angle et le pivot sont trop lents
 
-Ça marche aussi dans l'autre sens. Si je suis trop tôt à la corde au prochain tour je ne change rien mais je retarde un peu (5 m, 2 motos de long) mon freinage.
+Prenons le cas où je suis trop tôt à la corde. Au prochain tour je ne change rien mais je retarde un peu (5 m, 2 motos de long) mon freinage. Je vais m'enfoncer un peu plus dans le virage et m'écarter de la corde, faire mon PV plus loin et passer sur PC.
+
+Si on est d'accord sur le point précédent, si je suis constamment trop loin du cône du PC on va faire le contraire. Au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
+
+
+Mais bon, faut pas se bercer d'illusions, nous sommes trop lents à la mise sur l'angle et surtout au PV. 
+
+Je crois qu'on hésite car on se dit qu'on va être tellement rapide que l'avant ne va pas suivre et qu'on va le perdre. À notre niveau c'est très improbable. Oui on va perdre l'avant car on a repris les freins mais là... On ne freine plus, on accélère pas encore. Le pneu avant est bien ancré, le pilote n'applique aucune action parasite sur la moto. Aucune chance que ça parte en vrille cette histoire. 
+
+Une solution c'est de faire du gymkhana entre des cônes. C'est un exercice qu'on fait en stage.
 
 
 
-#### Une image pour bien fixer les idées
+**Une image pour bien fixer les idées**
 
 Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. Ils sont où ? Sur le bitume, à un mètre du vibreur ? Nan. À 10 centimètres ? Nan. À un millimètre ? Même pas en rêve ! Ils sont sur la bande blanche en train de lécher le vibreur.
 
@@ -328,7 +336,8 @@ Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. I
 </div>
 
 
-Je suis lourd, j'insiste etc. Mais finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tours passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on réaccélère dans le virage... En effet, tout cela ne sera bénéfique que, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
+### Je suis lourd
+Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tours passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique que, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
 
 Prenons un exemple. Il est illusoire de vouloir améliorer son accélération en sortie de virage alors que mes roues ne passent toujours pas au point de corde. Pourquoi ? Tout simple. Je suis en intermédiaire, mes temps ne sont pas ridicules, j'ai, je pense des freinages de tueur etc. Je me dis qu'il faut maintenant que je soigne ma façon d'accélérer et de sortir des virages. Cela dit, je passe systématiquement à un mètre des points de corde (ma tête est au-dessus de la ligne blanche et/ou mon slider est sur la bande blanche).
 
@@ -336,7 +345,7 @@ Qu'est-ce qui va se passer ? Je vais peaufiner mon accélération, la vitesse à
 
 Il ne faut pas passer à la suite tant qu'on n'est pas capable de les assurer à chaque tour. À ce point de notre formation (niveau Padawan première année...) on se fiche de la vitesse de passage et de la prise d'angle (les photographes on verra plus tard). Ça viendra naturellement par la suite lorsqu'on va accroître notre rythme. À ce moment-là, pour assurer nos points de corde nous n'aurons pas d'autre choix que d'augmenter la vitesse de nos mises sur l'angle (très important, mais on verra plus tard), comme on ira plus vite on devra aussi prendre plus d'angle et pour prendre plus d'angle nous devrons changer notre position sur la moto, sortir un genou etc. Et là, il sera temps d'appeler Canal+ pour faire un reportage.
 
-#### Une petite vidéo peut être...
+**Une petite vidéo peut être...**
 
 Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture à 50% ou à 25% et à regarder où passe la roue avant... Oui, oui je sais, il n'est pas trop en mode débutant... Quoiqu'il en soit, ce sont vraiment des passages au millimètre sur les bandes blanches...
 
@@ -352,7 +361,7 @@ Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture 
 
 
 
-#### Un autre exemple
+**Un autre exemple**
 
 Heu… Oui, oui je confirme, lui aussi est un peu au-delà de nos 75% mais c'est parce qu'il est jeune et enthousiaste… ✊
 
@@ -480,7 +489,7 @@ Allez, une autre vidéo sur le sujet. J'aime bien la démo à **1:11** ainsi que
 
 
 
-### Comment confirmer qu'on a la bonne trajectoire dans le virage ?
+### Confirmer qu'on a la bonne trajectoire dans le virage 
 
 * Si on suppose qu'on rentre gaz coupés et freins relâchés dans la courbe
 * C'est la ligne où on accélère constamment à partir du moment où on commence à accélérer. C'est la **Throttle Rule**. Le mieux, c'est de la relire, de la relire encore, de la relire toujours...
@@ -498,7 +507,7 @@ Mouai... Ben moi j'ai beau le savoir et l'expliquer, je n'arrive toujours pas à
 
 
 
-### À propos des virages importants
+### Les virages importants
 
 Il y a 2 types de virages qui sont beaucoup plus importants que les autres et qu'il faudra peut être choisir en premier pour faire l'exercice. En tout cas, que ce soit maintenant ou plus tard, il faudra leur porter une attention particulière lors de la reconnaissance :
 1. Les virages avant les longues lignes droites. Il faut être sur la ligne qui nous permet d'appliquer la **Throttle Rule** très tôt afin de pouvoir bénéficier d'une accélération maximum pendant le plus longtemps possible.
