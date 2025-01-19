@@ -1,5 +1,5 @@
 ---
-title: Home
+title: 40tude.fr
 layout: home
 nav_order: 1
 date:               2024-12-25 12:00:00 +0000
@@ -34,6 +34,9 @@ Pour l'instant je suis focus sur le transfert.
 
 
 
+### Les articles mis à jour récemment 
+
+**Nombre d'articles du site :** {{ site.pages | size }}
 
 <table>
   <thead>
@@ -54,6 +57,7 @@ Pour l'instant je suis focus sur le transfert.
         {% if image == page.content %} 
             {% assign image = '/assets/images/40tude_307.webp' %}
         {% endif %}
+        {% assign page_dir = page.url | split: '/' | slice: 0, -1 | join: '/' | append: '/' %}
         <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;">
       </td>
       <td>
