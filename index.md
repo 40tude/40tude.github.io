@@ -33,7 +33,7 @@ Pour l'instant je suis focus sur le transfert.
     </tr>
   </thead>
   <tbody>
-    {% assign articles_sorted = site.posts | sort: 'last_modified_at' | reverse %}
+    {% assign articles_sorted = site.posts | sort: 'last_modified_date' | reverse %}
     {% for post in articles_sorted limit: n %}
     <tr>
       <td>
