@@ -36,7 +36,7 @@ Pour l'instant je suis focus sur le transfert.
 
 ### Les articles mis à jour récemment 
 
-**Nombre d'articles du site :** {{ site.pages | size }}
+Nombre d'articles sur le site : **{{ site.pages | size }}**
 
 <table>
   <thead>
