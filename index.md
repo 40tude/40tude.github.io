@@ -33,6 +33,7 @@ Pour l'instant je suis focus sur le transfert.
 -->
 
 
+<!-- {{ page.output | strip_html | truncatewords: nb_words }} -->
 
 ### Les articles mis à jour récemment 
 
@@ -47,7 +48,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     </tr>
   </thead>
   <tbody>
-    {% assign nb_articles = 5 %}  
+    {% assign nb_articles = 2 %}  
     {% assign nb_words = 20 %}  
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
     {% for page in articles_sorted limit: nb_articles %}
@@ -64,7 +65,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ page.output | strip_html | truncatewords: nb_words }}
+        {{ page.output }}
       </td>
 
     </tr>
