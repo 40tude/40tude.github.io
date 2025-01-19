@@ -30,6 +30,13 @@ Pour l'instant je suis focus sur le transfert.
   <p>{{ post.last_modified_date }}</p>
 {% endfor %}
 
+
+<p>Nombre d'articles du site : {{ site.pages | size }}</p>
+{% for page in site.pages limit: 1 %}
+  <p>{{ page.last_modified_date }}</p>
+{% endfor %}
+
+
 <table>
   <thead>
     <tr>
