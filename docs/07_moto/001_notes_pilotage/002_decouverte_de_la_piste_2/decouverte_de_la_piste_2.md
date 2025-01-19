@@ -1,4 +1,4 @@
-﻿---
+---
 layout: default
 title: "Découverte de la piste 2"
 parent: "Notes de Pilotage Moto"
