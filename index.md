@@ -71,7 +71,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
+        {{ page.content | strip_html | truncatewords: nb_words }}
       </td>
 
     </tr>
