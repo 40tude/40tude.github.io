@@ -35,11 +35,11 @@ Pour l'instant je suis focus sur le transfert.
 <!-- {{ page.output | strip_html | truncatewords: nb_words }} -->
 <!-- {{ page.content | markdownify | strip_html | truncatewords: 20 }} -->
 
-<p>Test</p>
+<!-- <p>Test</p>
 {% for page in articles_sorted limit: 1 %}
 {{ page.output | strip_html | truncatewords: 50 }}
 {% endfor %}
-<p>Test</p>
+<p>Test</p> -->
 
 ### Les articles mis à jour récemment 
 
@@ -71,7 +71,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ page.content | markdownify | strip_html | truncatewords: 20 }}
+        {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
       </td>
 
     </tr>
