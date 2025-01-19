@@ -4,8 +4,6 @@ layout: home
 nav_order: 1
 date:               2024-12-25 12:00:00 +0000
 last_modified_date: 2025-01-15 08:00:00 +0000
-#n: 5  # Nombre d'articles à afficher
-#m: 20 # Nombre de mots par extrait
 ---
 
 
@@ -25,22 +23,6 @@ Pour l'instant je suis focus sur le transfert.
 
 
 
-<!-- 
-<p>Nombre d'articles du site : {{ site.pages | size }}</p>
-{% for page in site.pages limit: 1 %}
-  <p>{{ page.last_modified_date }}</p>
-{% endfor %} 
--->
-
-<!-- {{ page.output | strip_html | truncatewords: nb_words }} -->
-<!-- {{ page.content | markdownify | strip_html | truncatewords: 20 }} -->
-
-<!-- <p>Test</p>
-{% for page in articles_sorted limit: 1 %}
-{{ page.output | strip_html | truncatewords: 50 }}
-{% endfor %}
-<p>Test</p> -->
-
 ### Les articles mis à jour récemment 
 
 Nombre d'articles sur le site : **{{ site.pages | size }}**
@@ -54,10 +36,10 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     </tr>
   </thead>
   <tbody>
-    <!-- {% assign nb_articles = 2 %}   -->
-    <!-- {% assign nb_words = 20 %}   -->
+    {% assign nb_articles = 5 %}
+    {% assign nb_words = 20 %}
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
-    {% for page in articles_sorted limit: 2 %}
+    {% for page in articles_sorted limit: nb_articles %}
     <tr>
       <td>
         {% assign image = page.content | split: '<img src="' | last | split: '"' | first %}
@@ -71,9 +53,10 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ page.content | strip_html | truncatewords: 20 }}
+        {{ page.content | strip_html | truncatewords: nb_words }}
       </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
