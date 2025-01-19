@@ -1,4 +1,4 @@
----
+﻿---
 layout: default
 title: "Découverte de la piste 2"
 parent: "Notes de Pilotage Moto"
@@ -14,12 +14,6 @@ last_modified_date: 2023-09-09 00:08:32
 {: .no_toc .text-delta}
 - TOC
 {:toc}
-
-
-
-
-
-<!-- Comme la première [Note de Pilotage Moto]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}) à propos de la découverte de la piste devenait vraiment trop longue j'ai décidé de la couper en deux. Je continue donc ici avec une série de remarques diverses zé variées 😀. -->
 
 
 
@@ -43,7 +37,7 @@ last_modified_date: 2023-09-09 00:08:32
 1. Se coucher dans les lignes droite 
 
 
-Si tu te couches pas encore bien sur la moto, c'est pas grave. Identifie une ligne droite du circuit où tu t'engages à le faire lors de cette session. Indiques-le, fais une marque sur ton plan de la piste.
+Si tu ne te couches pas encore bien sur la moto, ce n'est pas grave. Identifie une ligne droite du circuit où tu t'engages à le faire lors de cette session. Indique-le, fais une marque sur ton plan de la piste.
 
 
 <!-- ###################################################################### -->
@@ -85,7 +79,7 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 Vu que tout ça c'est trop facile et déjà acquis, tu vas t'appliquer à mettre la poignée de gaz **en butée** dans la plus grande ligne droite du circuit ainsi que dans une autre portion, idéalement à l'autre bout du circuit. L'idée c'est d'espacer c'est 2 instants "magiques". 
 
-Ensuite on change pas une formule qui gagne. À l'instar de la première session, dès que tu es butée dans une des deux sections, tu en rajoute une troisième etc. Tu connais la méthode.
+Ensuite on ne change pas une formule qui gagne. À l'instar de la première session, dès que tu es butée dans une des deux sections, tu en rajoute une troisième etc. Tu connais la méthode.
 
 
 
@@ -151,10 +145,10 @@ On en parle dans cette vidéo :
 <!-- ###################################################################### -->
 ## À la fin de la session
 
-### Est-ce que tu t'es couché dans la ligne droite que tu avais choisis?
-Si oui bravo! Bon ben reprends ton plan. Identifie le prochain endroit où tu vas te coucher sur la moto (ça peut être une ligne droite ou un grand virage) lors de la prochaine session. En faisant ainsi, étape par étape, en fin de journée tu auras tout couvert. En tout cas, bravo! 
+### Est-ce que tu t'es couché dans la ligne droite que tu avais choisie ?
+Si oui bravo ! Bon ben reprends ton plan. Identifie le prochain endroit où tu vas te coucher sur la moto (ça peut être une ligne droite ou un grand virage) lors de la prochaine session. En faisant ainsi, étape par étape, en fin de journée tu auras tout couvert. En tout cas, bravo ! 
 
-Si tu as "oublié" de te coucher sur la moto c'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre toi uniquement sur cet objectif. 
+Si tu as "oublié" de te coucher sur la moto ce n'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre-toi uniquement sur cet objectif. 
 
 Quand tu arriveras à inclure un exercice dans une session tu vas voir, faire d'autres exercices sera beaucoup plus facile.  
 
@@ -193,7 +187,7 @@ Je ne souhaite pas être grossier pour être grossier mais c'est vrai que la pre
 
 Il ne faut pas mettre la charrue avant les bœufs et tant qu'on n'est pas à l'aise avec la vitesse, les vibreurs qui jaillissent etc... Mieux vaut rester en mode découverte de la piste et se dire que le temps qu'on passe là, à se forcer à ouvrir en grand dès qu'on en a l'occasion est un investissement pour plus tard. 
 
-Heu... Ne me faites pas dire ce que j'ai pas dit. Il faut se forcer à **sortir de sa zone de confort**, faut de l'engagement, faut mettre la poignée en butée... Et faut pas se leurrer, pour habituer notre cerveau à la vitesse, c'est pas suffisant de regarder des vidéos sur YouTube, faut se donner un coup de pied aux fesses et rouler plus vite que d'habitude. Point.
+Heu... Ne me faites pas dire ce que je n'ai pas dit. Il faut se forcer à **sortir de sa zone de confort**, faut de l'engagement, faut mettre la poignée en butée... Et faut pas se leurrer, pour habituer notre cerveau à la vitesse, ce n'est pas suffisant de regarder des vidéos sur YouTube, faut se donner un coup de pied aux fesses et rouler plus vite que d'habitude. Point.
 
 
 ### Remise des gaz
