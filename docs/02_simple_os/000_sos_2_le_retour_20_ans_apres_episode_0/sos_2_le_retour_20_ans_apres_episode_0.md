@@ -4,8 +4,9 @@ title: "SOS2 Episode 0"
 parent: "Simple OS"
 nav_order: 2
 #math: mathjax
-date: 2023-11-19 00:20:43
-last_modified_date: 2023-12-04 00:02:38
+date:               2023-11-19 00:20:43
+last_modified_date: 2025-01-19 19:00:00
+#2023-12-04 00:02:38
 ---
 
 # Simple OS
