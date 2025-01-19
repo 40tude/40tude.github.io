@@ -4,6 +4,9 @@ layout: home
 nav_order: 1
 date:               2024-12-25 12:00:00 +0000
 last_modified_date: 2025-01-15 08:00:00 +0000
+
+n: 5  # Nombre d'articles à afficher
+m: 20 # Nombre de mots par extrait
 ---
 
 
@@ -21,4 +24,32 @@ Pour l'instant je suis focus sur le transfert.
 * D'un autre côté, je n'en pouvais plus de **WordPress**. Je parle surtout de l'édition des billets. Au début, en 2010, ça allait à peu près mais sur la fin c'est devenu n'importe quoi...  WP c'est sans doute très bien pour certains mais il ne correspond plus du tout à mes besoins. En plus, j'ai l'impression que ça pue chez WP. [Lire ce billet sur Medium.](https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185){:target="_blank"}
 
 
-
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Titre</th>
+      <th>Extrait</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% assign articles_sorted = site.posts | sort: 'last_modified_at' | reverse %}
+    {% for post in articles_sorted limit: n %}
+    <tr>
+      <td>
+        {% assign image = post.content | regex_find_first: '<img.+?src=["\'](.+?)["\']' %}
+        {% if image == '' %}
+          {% assign image = './assets/images/40tude_307.webp' %}
+        {% endif %}
+        <img src="{{ image }}" alt="Illustration de {{ post.title }}" style="width: 100px; height: auto;">
+      </td>
+      <td>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </td>
+      <td>
+        {{ post.content | strip_html | truncatewords: m }}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
