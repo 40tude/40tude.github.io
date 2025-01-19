@@ -47,8 +47,8 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     </tr>
   </thead>
   <tbody>
-    {% assign n = 5 %} {# Définir la limite d'articles #}
-    {% assign m = 20 %} {# Définir la limite de mots #} 
+    {% assign n = 5 %}  {# Nb articles à afficher #}
+    {% assign m = 20 %} {# Nb mots à afficher     #} 
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
     {% for page in articles_sorted limit: n %}
     <tr>
@@ -64,7 +64,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <a href="{{ page.url }}">{{ page.title }}</a>
       </td>
       <td>
-        {{ page.content | strip_html | truncatewords: m }}
+        {{ page.output | strip_html | truncatewords: m }}
       </td>
     </tr>
     {% endfor %}
