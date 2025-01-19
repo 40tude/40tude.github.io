@@ -54,10 +54,10 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     </tr>
   </thead>
   <tbody>
-    {% assign nb_articles = 2 %}  
-    {% assign nb_words = 20 %}  
+    <!-- {% assign nb_articles = 2 %}   -->
+    <!-- {% assign nb_words = 20 %}   -->
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
-    {% for page in articles_sorted limit: nb_articles %}
+    {% for page in articles_sorted limit: 2 %}
     <tr>
       <td>
         {% assign image = page.content | split: '<img src="' | last | split: '"' | first %}
