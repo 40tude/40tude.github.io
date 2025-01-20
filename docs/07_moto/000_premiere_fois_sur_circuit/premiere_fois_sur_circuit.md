@@ -218,7 +218,7 @@ Un dernier truc... Si tu as la flemme, si tu sens que tu as moins de jus, sors. 
 
 **Objectif à la fin de la session**
 
-* Il y a au moins une ligne droite où tu es couché sur le réservoir, coudes serrés, fesses reculées. Tu dois vraiment sentir la pression du réservoir sur ton torse.
+* Il y a au moins une ligne droite où tu es couché sur le réservoir, coudes serrés et la poignée en **butée**. Tu dois vraiment sentir la pression du réservoir sur ton torse et/ou l'avant du casque qui touche.
 
 * Regarde le plan. Marque les endroits où tu te couches avec un signe "égal". Dans quelle ligne droite tu vas te coucher lors de la prochaine session ? Il ne faut pas se leurrer, à part lors des freinages, à terme tu seras dans des positions avec la tête en bas quasiment tout le temps.
 
