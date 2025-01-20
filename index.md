@@ -29,13 +29,13 @@ Pour l'instant je suis focus sur le transfert.
 Nombre d'articles sur le site : **{{ site.pages | size }}**
 
 <table>
-    <thead>
+    <!-- <thead>
     <tr>
         <th>Image</th>
         <th>Titre</th>
         <th>Extrait</th>
     </tr>
-    </thead>
+    </thead> -->
     <tbody>
 
 
@@ -79,9 +79,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                 <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy"/>
             </td>
             <td>
-                <a href="{{ page.url }}">{{ page.title }}</a>
-            </td>
-            <td>
+                <a href="{{ page.url }}">**{{ page.title }}**</a>
                 {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
             </td>
         </tr>
