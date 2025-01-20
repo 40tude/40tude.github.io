@@ -53,24 +53,26 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                     {% assign img_part = parts[1] %}
                     {% assign image = img_part | split: '"' | first %}
                 {% endif %}
-                <pre>image before slice = {{ image }}</pre> 
+                <pre>image after search = {{ image }}</pre> 
+                
+                {% assign page_dir = '' %} 
                 {% if image == '' %} 
                     {% assign image = '/assets/images/40tude_307.webp' %} 
                 {% else %} 
                     {% assign image = image | slice: 2, image.size %}
+                    <pre>page.url = {{ page.url }}</pre>
+
+                    <!-- Extract the directory from page.url --> 
+                    {% assign parts = page.url | split: '/' %} 
+                    {% for part in parts %} 
+                        {% unless forloop.last %} 
+                            {% assign page_dir = page_dir | append: part | append: '/' %} 
+                        {% endunless %} 
+                    {% endfor %}
+                
                 {% endif %}
-                <pre>image after extract = {{ image }}</pre>
 
-                <pre>page.url = {{ page.url }}</pre>
-
-                <!-- Extract the directory from page.url --> 
-                {% assign page_dir = '' %} 
-                {% assign parts = page.url | split: '/' %} 
-                {% for part in parts %} 
-                    {% unless forloop.last %} 
-                        {% assign page_dir = page_dir | append: part | append: '/' %} 
-                    {% endunless %} 
-                {% endfor %}
+                <pre>image file path = {{ image }}</pre>
                 <pre>page_dir = {{ page_dir }}</pre>
                 <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="100" loading="lazy"/>
             </td>
