@@ -51,8 +51,13 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
 
             <pre>page.url = {{ page.url }}</pre>
             <!-- {% assign page_dir = page.url | split: '/' | slice: 0, -1 | join: '/' | append: '/' %} -->
-            {% capture page_dir %}{{ page.url | split: '/' | slice: 0, -1 | join: '/' }}/{% endcapture %}
+            <!-- {% capture page_dir %}{{ page.url | split: '/' | slice: 0, -1 | join: '/' }}/{% endcapture %} -->
+
+            {% assign page_url_length = page.url | size %} 
+            {% assign last_slash_index = page.url | rindex: '/' %} 
+            {% assign page_dir = page.url | slice: 0, last_slash_index %}
             <pre>page_dir = {{ page_dir }}</pre>
+            
             <!-- <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;"> -->
         </td>
         <td>
