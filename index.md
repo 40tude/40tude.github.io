@@ -44,7 +44,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <tr>
         <td>
             {% assign image = page.content | split: '<img src="' | last | split: '"' | first %}
-            <pre>image</pre>
+            <pre>{{ image }}</pre>
             {% if image == page.content %} 
                 {% assign image = '/assets/images/40tude_307.webp' %}
             {% endif %}
