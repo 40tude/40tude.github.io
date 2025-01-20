@@ -38,7 +38,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     <tbody>
 
 
-    {% assign nb_articles = 5 %}
+    {% assign nb_articles = 10 %}
     {% assign nb_words = 20 %}
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
     {% for page in articles_sorted limit: nb_articles %}
@@ -74,7 +74,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
 
                 <pre>image file path = {{ image }}</pre>
                 <pre>page_dir = {{ page_dir }}</pre>
-                <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="100" loading="lazy"/>
+                <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="200" loading="lazy"/>
             </td>
             <td>
                 <a href="{{ page.url }}">{{ page.title }}</a>
