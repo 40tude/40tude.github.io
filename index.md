@@ -36,6 +36,8 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     </tr>
     </thead>
     <tbody>
+
+
     {% assign nb_articles = 5 %}
     {% assign nb_words = 20 %}
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
@@ -46,16 +48,11 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                 {% assign image = '' %} 
                 {% capture page_content %}{{ page.content }}{% endcapture %} 
                 {% assign img_tag_start = '<img src="' %} 
-                {% assign img_tag_end = '"' %} 
-                {% assign img_start_index = page_content | index: img_tag_start %} 
-                {% if img_start_index != nil %}
-                    {% assign img_start_index = img_start_index | plus: img_tag_start.size %}
-                    {% assign img_substring = page_content | slice: img_start_index %} 
-                    {% assign img_end_index = img_substring | index: img_tag_end %}
-                    {% if img_end_index != nil %}
-                        {% assign image = img_substring | slice: 0, img_end_index %} 
-                    {% endif %}
-                {% endif %} 
+                {% assign parts = page_content | split: img_tag_start %} 
+                {% if parts.size > 1 %}
+                    {% assign img_part = parts[1] %}
+                    {% assign image = img_part | split: '"' | first %}
+                {% endif %}
                 <pre>image before slice = {{ image }}</pre> 
                 {% if image == '' %} 
                     {% assign image = '/assets/images/40tude_307.webp' %} 
@@ -85,6 +82,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
             </td>
         </tr>
     {% endfor %}
+
     </tbody>
 </table>
 
