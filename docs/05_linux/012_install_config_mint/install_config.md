@@ -168,8 +168,6 @@ sudo ufw allow samba
 1. **WIN + I**, Accounts, Connexion Options
 1. Deselect the option "Only Hello...". 
 
-<!-- <img src="assets/options_connexion.png" width="700"> -->
-
 <div align="center">
 <img src="./assets/options_connexion.webp" alt="" width="900" loading="lazy"/>
 </div>
