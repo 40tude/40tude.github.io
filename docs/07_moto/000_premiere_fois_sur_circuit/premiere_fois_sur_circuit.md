@@ -235,6 +235,11 @@ Lors de la prochaine session, quand tu auras sanglé ton casque, mets une main s
 
 ### 4. Point de corde et trajectoire
 
+<div align="center">
+<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
 Je ne veux pas te mettre la pression mais bon, de toutes les sessions c'est, de mon point de vue, la plus importante. Allez, comme ça, c'est dit et ça donne le ton pour le reste de l'après-midi.
 
 Sinon, j'espère que tu as été raisonnable sur la bouffe ce midi. Sérieux, fais "lite", tu feras mieux ce soir s'il y a vraiment besoin. J'espère aussi et que tu as pris le temps de te reposer car cet après-midi tu as 3 ou 4 sessions et encore pas mal de choses à découvrir. Cela dit, si je résume :
