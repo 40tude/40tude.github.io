@@ -47,7 +47,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
             <td>
                 <!-- Extract image if it exists --> 
                 {% assign image = '' %} 
-                <pre>image before search = {{ image }}</pre>
+                <!-- <pre>image before search = {{ image }}</pre> -->
                 {% capture page_content %}{{ page.content }}{% endcapture %} 
                 {% assign img_tag_start = '<img src="' %} 
                 {% assign parts = page_content | split: img_tag_start %} 
@@ -55,15 +55,15 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                     {% assign img_part = parts[1] %}
                     {% assign image = img_part | split: '"' | first %}
                 {% endif %}
-                <pre>image after search = {{ image }}</pre> 
+                <!-- <pre>image after search = {{ image }}</pre>  -->
                 
                 {% assign page_dir = '' %} 
-                <pre>page_dir before = {{ page_dir }}</pre>
+                <!-- <pre>page_dir before = {{ page_dir }}</pre> -->
                 {% if image == '' %} 
                     {% assign image = '/assets/images/40tude_307.webp' %} 
                 {% else %} 
                     {% assign image = image | slice: 2, image.size %}
-                    <pre>page.url = {{ page.url }}</pre>
+                    <!-- <pre>page.url = {{ page.url }}</pre> -->
 
                     <!-- Extract the directory from page.url --> 
                     {% assign parts = page.url | split: '/' %} 
@@ -74,8 +74,8 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                     {% endfor %}
                 {% endif %}
 
-                <pre>page_dir = {{ page_dir }}</pre>
-                <pre>image file path = {{ page_dir }}{{ image }}</pre>
+                <!-- <pre>page_dir = {{ page_dir }}</pre> -->
+                <!-- <pre>image file path = {{ page_dir }}{{ image }}</pre> -->
                 <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy"/>
             </td>
             <td>
