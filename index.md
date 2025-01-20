@@ -69,12 +69,11 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                             {% assign page_dir = page_dir | append: part | append: '/' %} 
                         {% endunless %} 
                     {% endfor %}
-                
                 {% endif %}
 
                 <pre>image file path = {{ image }}</pre>
                 <pre>page_dir = {{ page_dir }}</pre>
-                <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="200" loading="lazy"/>
+                <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy"/>
             </td>
             <td>
                 <a href="{{ page.url }}">{{ page.title }}</a>
