@@ -54,6 +54,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <td>
             <!-- <a href="{{ page.url }}">{{ page.title }}</a> -->
             {% assign image = '/assets/images/40tude_307.webp' %}
+            <img src="{{ image }}" alt="" style="width: 100px; height: auto;">
         </td>
         <td>
             {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
