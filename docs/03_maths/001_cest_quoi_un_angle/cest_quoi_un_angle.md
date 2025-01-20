@@ -5,7 +5,7 @@ parent: "Maths"
 nav_order: 3
 math: mathjax
 date:               2024-12-18 22:00:00 +0000
-last_modified_date: 2025-01-04 12:00:00 +0000
+last_modified_date: 2025-01-20 19:00:00 +0000
 ---
 
 # Angle, tangente et dérivée
@@ -89,7 +89,7 @@ En plus c'est toi qui m'a fait enlever le couleurs et donc les bateaux. Non, fau
 <img src="./assets/img10.webp" alt="" width="400"/>
 </div>
 
-Bravo. Un truc quand même... C'est assez pénible de mesurer la distance le long d'un arc de cercle. Tiens, voilà une équerre. Tu note que je suis sympa et que je la pose à un endroit bien précis... Alors tu dis quoi à propos des angles ?
+Bravo. Un truc quand même... C'est assez pénible de mesurer la distance le long d'un arc de cercle. Tiens, voilà une équerre. Tu notes que je suis sympa et que je la pose à un endroit bien précis... Alors tu dis quoi à propos des angles ?
 
 
 <div align="center">
@@ -157,8 +157,8 @@ Tiens, regarde cette figure et persuade toi que les 2 situations sont identiques
 </div>
 
 On avance mais bon, on va faire un petit point de vocabulaire. 
-1. On dit que notre triangle est un **triangle rectangle** car il possède un angle droit là où on avait posé l'équerre jaune. C'est surtout parce que si tu prends 2 de ces triangles et que tu les met tête-bêche, tu peux reconstruire un rectangle.
-1. Si tu te place sur un des deux autres coins du triangle en question et que tu regarde vers l'intérieur du triangle on appelle :
+1. On dit que notre triangle est un **triangle rectangle** car il possède un angle droit là où on avait posé l'équerre jaune. C'est surtout parce que si tu prends 2 de ces triangles et que tu les mets tête-bêche, tu peux reconstruire un rectangle.
+1. Si tu te place sur un des deux autres coins du triangle en question et que tu regardes vers l'intérieur du triangle on appelle :
     * **Côté opposé**, celui qui est en face de toi 
     * **Côté adjacent**, celui qui est à côté de toi 
 
@@ -166,7 +166,7 @@ On avance mais bon, on va faire un petit point de vocabulaire.
 <img src="./assets/img20.webp" alt="" width="400"/>
 </div>
 
-Du coup, on peut s'amuser à calculer d1/h1... Ah ben non... Ça va pas le faire car si les droites s'écartent très très peu, alors h1 va tendre vers 0 et on sait tous que divisier par 0 c'est jamais une bonne idée.
+Du coup, on peut s'amuser à calculer d1/h1... Ah ben non... Ça va pas le faire car si les droites s'écartent très très peu, alors h1 va tendre vers 0 et on sait tous que diviser par 0 c'est jamais une bonne idée.
 
 Ok, bon ben on va calculer h1/d1. Là c'est cool parce que même si d1 est nul, alors on peut en prendre un autre un peu plus grand. De plus, si h1 est petit, ça correspond bien au cas où les droites s'écartent peu l'une de l'autre. C'est bien le cas ou l'angle est faible...
 
@@ -201,7 +201,7 @@ Prenons un exemple. J'ai 2 droites qui s'écartent. Je choisis d1, je mesure h1,
 
 Commence pas à râler... Tu vas voir, c'est exactement la même chose. 
 
-Imagine... Imagine une belle courbe sympa que tu trace sur une feuille d'un seul coup de crayon. Tiens, voilà un exemple :
+Imagine... Imagine une belle courbe sympa que tu traces sur une feuille d'un seul coup de crayon. Tiens, voilà un exemple :
 
 <div align="center">
 <img src="./assets/img23.webp" alt="" width="400"/>
@@ -219,7 +219,7 @@ Vas-y, à toi de jouer, "the floor is yours"...
 
 *Aucune idée. Je vois bien que si je met une bille à gauche ou à droite elle va glisser vers le bas de la cuvette. À part ça... Je vois pas trop.*
 
-Ok, on va garder ton idée. Imagine une bille qui est sur la droite et qui descend. Comment tu indiquerai sa vitesse ?
+Ok, on va garder ton idée. Imagine une bille qui est sur la droite et qui descend. Comment tu indiquerais sa vitesse ?
 
 *Ben avec un vecteur. Je suis pas débile non plus. Un vecteur attaché à la bille, dirigé vers le bas et plus ou moins long en fonction de la vélocité de la bille*
 
@@ -233,7 +233,7 @@ Outre leurs longueurs qui changent, tu ne remarques pas truc concernant les vect
 
 *Si, si j'ai bien vu. Les directions des vecteurs vitesses changent. Par contre, si j'arrive à le dessiner, j'arrive pas trop à l'exprimer.*
 
-Je vais t'aider. Imagine des équerres comme celles de tout à l'heure. Elles glissent le long de la courbe et leur côté vertical passe par le centre de chaque bille. Prolonge ensuite la base de chaque equerre.
+Je vais t'aider. Imagine des équerres comme celles de tout à l'heure. Elles glissent le long de la courbe et leur côté vertical passe par le centre de chaque bille. Prolonges ensuite la base de chaque equerre.
 
 <div align="center">
 <img src="./assets/img23_2.webp" alt="" width="400"/>
@@ -274,7 +274,7 @@ Du coup si je reprends les notations de tout à l'heure, je retrouve notre trian
 
 En fait d1 c'est une variation (un delta) de la variable x. Je vais donc l'appeler $$\Delta x$$ et h1 c'est une variation de y que je vais appeler $$\Delta y$$.
 
-Mais là, on a un petit problème. Sur le figure, la variation de x est tellement grande qu'on va pas être capable d'évaluer la valeur de $$\Delta y$$.
+Mais là, on a un petit problème. Sur la figure, la variation de x est tellement grande qu'on va pas être capable d'évaluer la valeur de $$\Delta y$$.
 
 <div align="center">
 <img src="./assets/img27.webp" alt="" width="400"/>
@@ -304,7 +304,7 @@ Et pour le retrouver on fait comment?
 </div>
 
 {: .warning }
-Faut vraiment que la dernière phrase ai du sens pour toi. Si c'est pas clair, met ton index sur l'écran. Mets le en x. Déplace un peu ton index à droite. Pour cette position, quelle est la valeur de f()? 
+Faut vraiment que la dernière phrase ai du sens pour toi. Si c'est pas clair, met ton index sur l'écran. Mets le en x. Déplace un peu ton index à droite. Pour cette nouvelle valeur de x, quelle est la valeur de f()? 
 
 Bon allez, on va chercher notre pote le triangle jaune et on redessine tout ça.
 
@@ -322,7 +322,9 @@ Prenons un exemple et faisons les calculs pour fixer les idées.
 <img src="./assets/img31.webp" alt="" width="400"/>
 </div>
 
-On vient donc de calculer le taux d'accroissement et on a dit qu'il valait 2x + dx. Mais le truc c'est que si dx est infiniment petit, cela veut dire que le taux d'accroissement est très proche de 2x. Par exemple le taux d'accroissement vaut 2 si x vaut 1 et il vaut 10 si x vaut 5. On quantifie bien le fait que la courbe grimpe plus vite quand x vaut 5 que lorsque x vaut 1. On peut même affirmer que son taux d'accroissement est 5 fois plus grand (car 10 c'est 2 fois 5).
+Heu... Arrête de râler, je sais très bien que la courbe rouge c'est pas la représentation de $$y=x^2$$.
+
+Quoiqu'il en soit, on vient donc de calculer le taux d'accroissement et on a dit qu'il valait 2x + dx. Mais le truc c'est que si dx est infiniment petit, cela veut dire que le taux d'accroissement est très proche de 2x. Par exemple le taux d'accroissement vaut 2 si x vaut 1 et il vaut 10 si x vaut 5. On quantifie bien le fait que la courbe grimpe plus vite quand x vaut 5 que lorsque x vaut 1. On peut même affirmer que son taux d'accroissement est 5 fois plus grand (car 10 c'est 2 fois 5).
 
 Crois-le ou non mais par défintion le 2x qu'on vient de calculer c'est la **dérivée** de f quand cette dernière vaut x².
 
