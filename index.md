@@ -48,8 +48,10 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
             {% if image == page.content %} 
                 {% assign image = '/assets/images/40tude_307.webp' %}
             {% endif %}
-            {% assign page_dir = page.url | split: '/' | slice: 0, -1 | join: '/' | append: '/' %}
+
             <pre>page.url = {{ page.url }}</pre>
+            <!-- {% assign page_dir = page.url | split: '/' | slice: 0, -1 | join: '/' | append: '/' %} -->
+            {% capture page_dir = page.url | split: '/' | slice: 0, -1 | join: '/' | append: '/' %}
             <pre>page_dir = {{ page_dir }}</pre>
             <!-- <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;"> -->
         </td>
