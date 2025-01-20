@@ -440,6 +440,11 @@ Il faut être **pro-gre-ssif** et y aller doucement pour ne pas brusquer la moto
 
 ### 6. Conduite du virage
 
+<div align="center">
+<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
 Showtime ! En effet, à ce stade tu as mis beaucoup de choses en place :
 
 * Tu connais le circuit.
