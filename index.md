@@ -63,3 +63,31 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
   </tbody>
 </table>
 
+
+
+{% assign nb_articles = 5 %}
+{% assign nb_words = 20 %}
+{% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
+{% for page in articles_sorted limit: nb_articles %}
+    {% unless page.url contains '/index' %}
+        <tr>
+            <td>
+                {% assign image = page.content | markdownify | split: '<img src="' | last | split: '"' | first %}
+                <pre>{{ image }}</pre>
+                {% if image contains '<img' or image == page.content %}
+                    {% assign image = '/assets/images/40tude_307.webp' %}
+                {% endif %}
+                {% assign page_dir = page.url | split: '/' | slice: 0, -1 | join: '/' | append: '/' %}
+                <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;">
+            </td>
+            <td>
+                <!-- <a href="{{ page.url }}">{{ page.title }}</a> -->
+                {% assign image = '/assets/images/40tude_307.webp' %}
+                <img src="{{ image }}" alt="" style="width: 100px; height: auto;">
+            </td>
+            <td>
+                {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
+            </td>
+        </tr>
+    {% endunless %}
+{% endfor %}
