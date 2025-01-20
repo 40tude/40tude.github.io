@@ -44,6 +44,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <tr>
         <td>
             {% assign image = page.content | markdownify | split: '<img src="' | last | split: '"' | first %}
+            {% assign image = image | slice: 2, image.size %}
             <pre>image = {{ image }}</pre>
             {% if image == page.content %} 
                 {% assign image = '/assets/images/40tude_307.webp' %}
@@ -63,7 +64,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
             {% endfor %}
             <pre>page_dir = {{ page_dir }}</pre>
             
-            <!-- <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;"> -->
+            <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" style="width: 100px; height: auto;">
         </td>
         <td>
             <a href="{{ page.url }}">{{ page.title }}</a>
