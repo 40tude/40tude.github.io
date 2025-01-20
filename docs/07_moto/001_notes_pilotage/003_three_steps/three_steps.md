@@ -239,9 +239,9 @@ Oui…mais non
 <img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-Oui. Notez la différence d'écartement des pneus vis à vis de la bande blanche.
+Oui. Dans les 2 photos, notez la différence d'écartement entre les pneus et la bande blanche.
 
-Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien dire "Le corps au-dessus de la peinture"...
+Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien dire "Le corps au-dessus de la peinture".
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kfZlxpH2cZ0?si=cnNNl8Og5Z_6LiIj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -143,6 +143,7 @@ last_modified_date: 2023-12-04 00:02:38
 * <https://github.com/rouge-ruby/rouge/wiki/list-of-supported-languages-and-lexers>
 * <https://www.mathematex.fr/guide-mathjax>
 * <https://docs.mathjax.org/en/latest/input/tex/macros/index.html>
+* <https://shopify.github.io/liquid/>
 
 
 
