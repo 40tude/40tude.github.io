@@ -269,8 +269,8 @@ On va utiliser le formidable schéma ci-dessous :
 </div>
 
 
-Tu es gaz coupé, tu as terminé ton freinage. Tu as retiré tes doigts du levier de frein. La moto est à 1 cm de la ligne blanche, verticale **et** parallèle à cette dernière.  
-**Attention**, il est important d'arriver au PMSA en longeant la ligne blanche. Autrement dit, tu n'arrives pas au PMSA en diagonale : la roue AV sur le cône mais la roue AR au milieu de la piste par exemple (j'exagère bien sûr). Par exemple, si tu sors d'un virage à gauche et que tu rejoins un virage à droite, traverses la piste et rejoins la ligne blanche bien AVANT le PMSA. Ensuite ensuite tu longes la ligne pour arriver au PMSA en étant parallèle à cette dernière (tes roues sont toutes les 2 à 1 cm de la ligne blanche).
+Tu arrive par la gauche du schéma, tu es gaz coupé, tu as terminé ton freinage. Tu as retiré tes doigts du levier de frein. La moto est à 1 cm de la ligne blanche, verticale **et** parallèle à cette dernière.  
+**Attention**, il est important d'arriver au PMSA en longeant la ligne blanche. Autrement dit, tu n'arrives pas au PMSA en diagonale : la roue AV sur le cône mais la roue AR au milieu de la piste par exemple (j'exagère bien sûr). Par exemple, si tu sors d'un virage à gauche et que tu rejoins un virage à droite, tu traverses la piste et tu rejoins la ligne blanche bien AVANT le PMSA. Ensuite ensuite tu longes la ligne pour arriver au PMSA en étant parallèle à cette dernière (tes roues sont toutes les 2 à 1 cm de la ligne blanche).
 
 Tu vas rentrer dans ce que l'on appelle la phase neutre (pas de frein, pas d'accélérateur)
 
@@ -280,11 +280,11 @@ Comme le PC est loin tu fais l'effort de rester large et de ne pas rejoindre le 
 
 Tu mets la moto sur l'angle. Tu arrives sur le point de pivot (PV). Là, tu fais pivoter la moto. Cela se fait en poussant consciemment (ou non) sur la poignée intérieure au virage. C'est à cet endroit que tu as le plus d'angle (et qu'un jour tu mettras le genou au sol). Il ne peut rien arriver de fâcheux car tu ne freines pas et tu n'accélères pas non plus.
 
-Tu es toujours gaz coupé. La moto pivote, tu es patient, tu es patient... C'est très dur au début, comme tu n'as pas assez de vitesse, tu vas avoir tendance à vouloir ouvrir les gaz trop tôt. Non, non, tu attends, tu fais tourner la moto.
+Tu es toujours gaz coupé. La moto pivote, tu es patient, tu es patient... C'est très dur au début, car comme tu n'as pas assez de vitesse, tu vas avoir tendance à vouloir ouvrir les gaz trop tôt. Non, non, tu attends, tu fais tourner la moto.
 
 Quand la moto a suffisamment pivoté, tu es écarté du vibreur et tes roues sont dans la direction qui relie le PC au PS. **C'est LE truc important**.
 
-Quand les roues sont bien alignées, tu arrêtes de faire pivoter la moto et un peu avant le PC tu commences à ouvrir les gaz. Tu quittes donc la phase neutre. Au début l'accélération doit être imperceptible. Faut à peine sentir le nez de la moto qui se relève.
+Quand les roues sont bien alignées, tu arrêtes de faire pivoter la moto et un peu avant le PC tu commences à ouvrir les gaz. Tu quittes donc la phase neutre. Au début, l'accélération doit être imperceptible. Faut à peine sentir le nez de la moto qui se relève.
 
 En revanche, une fois que tu as commencé à enrouler le câble d'accélérateur tu ne t'arrêtes plus. **Pas de filet de gaz !** Je répète, **pas de filet de gaz**. Au début tu enroules doucement puis de plus en plus vite au fur et à mesure que la moto se redresse.
 
@@ -301,7 +301,7 @@ Relis ce paragraphe plusieurs fois si besoin. C'est important que tu gardes cett
 
 Tu passes le PC, tu tires sur la poignée intérieure au virage pour continuer à relever la moto (tu peux aussi "repousser" la moto avec les bras, ça revient au même en fait). Comme tu n'es pas 100% gaz au PC tu continues à enrouler. La moto est de plus en plus verticale.
 
-L'accélération déporte la moto vers l'extérieur. Tu passes à 1 cm du PS, full gaz. La moto peut encore être légèrement anglée dans certains virages.
+L'accélération déporte la moto vers l'extérieur. Tu passes à 1 cm du PS, full gaz. La moto peut encore être légèrement anglée  à la sortie de certains virages.
 
 N'essaies pas de tout faire tout de suite. Là aussi, choisis tes batailles. Choisis 2 virages assez espacés, idéalement un droit et un gauche, où tu te sens à l'aise et essaies d'y relier les 3 cônes. S'il n'y a pour l'instant qu'un virage où tu te sens capable de t'y mettre, vas-y, travaille sur ce virage. Sur les autres sections du circuit tu peux au choix, soit te décontracter soit travailler les autres points du matin. Mais bon, là aussi, il ne faut pas se bercer d'illusions, à terme tu devras relier les 3 cônes dans tous les virages.
 
@@ -317,7 +317,7 @@ N'essaies pas de tout faire tout de suite. Là aussi, choisis tes batailles. Cho
 La température a évolué depuis ce matin donc la pression des pneus a, elle aussi, changé.
 
 * Ce qui compte c'est ta vitesse de sortie, **pas** ta vitesse d'entrée dans le virage.  
-Il vaut mieux rentrer "doucement" et être 100% gaz en sortie plutôt que se faire peur au freinage, rater le PC et mettre 3H avant de pouvoir accélérer.
+Il vaut mieux rentrer "doucement" et être 100% gaz en sortie plutôt que de se faire peur au freinage, de rater le PC et mettre 3H avant de pouvoir accélérer.
 
 * Je l'ai déjà dit, ce qui compte c'est la vitesse au bout de la ligne droite qui suit le virage.  
 Cette dernière dépend uniquement de ta capacité à être 100% gaz le plus tôt possible, c'est à dire à ne pas louper le PC. Le reste c'est de la poésie et des discussions de comptoir.
