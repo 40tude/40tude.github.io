@@ -3,7 +3,7 @@ title: 40tude.fr
 layout: home
 nav_order: 1
 date:               2024-12-25 12:00:00 +0000
-last_modified_date: 1964-01-01 08:00:00 +0000           # Evite de l'indexer comme page récemment mise à jour
+last_modified_date: 1964-01-01 08:00:00 +0000   # Ne tient pas compte de cette page dans les pages récemment mises à jour
 # last_modified_date: 2025-01-15 08:00:00 +0000
 ---
 
