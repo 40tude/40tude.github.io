@@ -273,14 +273,14 @@ On reprend...
 * C'est possible car tu ne freine pas, tu n’accélère pas, tu ne fais rien. Il ne peut rien t'arriver.
 * Tu arrêtes de faire pivoter la moto quand ses roues sont alignées sur la droite qui va de PC à PS
 * Tu vises PS du menton. Là c'est facile tu es dans l'axe
-* Tu commences à accélérer tout de suite après PV (pas en 2 mais en 3). Tu appliques la **Throttle Rule**. Il ne peux rien arriver car tes roues sont dans la bonne direction. Tu vas juste aller de plus en plus vite entre PV, PC et PS. Rien de plus. Plus la moto se relève plus tu enroule.
+* Tu commences à accélérer tout de suite après PV (pas en 2 mais en 3). Tu appliques la **Throttle Rule**. Il ne peut rien arriver car tes roues sont dans la bonne direction. Tu vas juste aller de plus en plus vite entre PV, PC et PS. Rien de plus. Plus la moto se relève plus tu enroule le câble d'accélérateur.
 * N'hésites pas à tirer sur le bracelet intérieur pour aider la moto à se relever plus vite.
 
 Si on compare avec le pilote qui reste collé à la corde: 
 * Qui des deux a accéléré le premier ?
 * Qui des deux va avoir l'accélération la plus longue?
 * Qui va avoir la vitesse la plus élevée au PC?
-* Qui des deux va être le premier 100% gaz, en butée?
+* Qui des deux va être le premier 100% gaz, **en butée**?
 * Qui va avoir la vitesse la plus élevée au bout de la ligne droite qui suit?
 
 T'as compris le truc.
@@ -299,7 +299,7 @@ T'as compris le truc.
 
 Un truc qui peut aider au début c'est de river ses yeux et son menton sur le point de corde. Notre menton et nos yeux vont changer de cible au fur et à mesure de notre avancement dans le virage mais ici l'idée c'est de s'entrainer en exagérant à faire abstraction du reste de la scene et d'être "focus" sur le point de corde.
 
-J'arrive au virage, je chope le cône de PC du regard et du menton. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas. 
+J'arrive au virage, je chope le cône du PC du regard et du menton. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas. 
 
 Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approche du cône. Il ne faut pas regarder l'entrée du virage dans son ensemble. Faut être "laser focus" sur le cône (pense aux lasers des yeux de superman).
 
@@ -316,7 +316,7 @@ Si j'ai du mal à placer mes pneus parfaitement sur le point de corde, je peux a
 
 Prenons le cas où je suis trop tôt à la corde. Au prochain tour je ne change rien mais je retarde un peu (5 m, 2 motos de long) mon freinage. Je vais m'enfoncer un peu plus dans le virage et m'écarter de la corde, faire mon PV plus loin et passer sur PC.
 
-Si on est d'accord sur le point précédent, si je suis constamment trop loin du cône du PC on va faire le contraire. Au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
+Si on est d'accord avec le point précédent, si je suis constamment trop loin du cône du PC on va faire le contraire. Au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
 
 
 Mais bon, faut pas se bercer d'illusions, nous sommes trop lents à la mise sur l'angle et surtout au PV. 
