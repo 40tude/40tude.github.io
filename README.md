@@ -235,6 +235,24 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 ```
 
 
+### liquid
+```
+    split ne fonctionne pas
+    {% unless page.url contains '/index' %}
+    {% endunless %}
+
+    {% assign image = page.content | markdownify | split: '<img src="' | last | split: '"' | first %}
+
+    {% assign image = page.content | split: '<img src="' | last | split: '"' | first %}
+    {% assign image = image | slice: 2, image.size %}
+    <pre>image = {{ image }}</pre>
+    {% if image == page.content %} 
+        {% assign image = '/assets/images/40tude_307.webp' %}
+    {% endif %}
+
+
+```
+
 ### Tooling (à voir plus tard)
 * Google PageSpeed Insights : <https://pagespeed.web.dev/>
 * Google Search Console : <https://search.google.com/search-console>

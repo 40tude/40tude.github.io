@@ -40,14 +40,24 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
     {% assign nb_words = 20 %}
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
     {% for page in articles_sorted limit: nb_articles %}
-    {% unless page.url contains '/index' %}
         <tr>
         <td>
-            {% assign image = page.content | markdownify | split: '<img src="' | last | split: '"' | first %}
-            {% assign image = image | slice: 2, image.size %}
-            <pre>image = {{ image }}</pre>
-            {% if image == page.content %} 
-                {% assign image = '/assets/images/40tude_307.webp' %}
+            <!-- Extract the image if it exists --> 
+            {% assign image = '' %} 
+            {% capture page_content %}{{ page.content | markdownify }}{% endcapture %} 
+            {% assign img_tag_start = '<img src="' %} 
+            {% assign img_tag_end = '"' %} 
+            {% assign img_start_index = page_content | index: img_tag_start %} 
+            {% if img_start_index %} 
+                {% assign img_start_index = img_start_index | plus: img_tag_start.size %} 
+                {% assign img_end_index = page_content | slice: img_start_index | index: img_tag_end %} 
+                {% assign image = page_content | slice: img_start_index, img_end_index %} 
+            {% endif %} 
+            <pre>image before slice = {{ image }}</pre> 
+            {% if image == '' %} 
+                {% assign image = '/assets/images/40tude_307.webp' %} 
+            {% else %} 
+                {% assign image = image | slice: 2, image.size %} 
             {% endif %}
 
             <pre>page.url = {{ page.url }}</pre>
@@ -70,7 +80,6 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
             {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
         </td>
         </tr>
-    {% endunless %}
     {% endfor %}
   </tbody>
 </table>
