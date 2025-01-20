@@ -7,6 +7,10 @@ date:               2025-01-16 16:00:00 +0000
 last_modified_date: 2025-01-16 16:00:00 +0000
 ---
 
+<div align="center">
+<img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
+</div>
+
 # Introduction aux Notes de Pilotage Moto
 
 ## Première fois sur circuit

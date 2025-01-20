@@ -8,6 +8,10 @@ date: 2023-11-05 11:44:55
 last_modified_date: 2023-12-03 15:34:12
 ---
 
+<div align="center">
+<img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
+</div>
+
 
 # Finalize Windows 11 installation
 
