@@ -48,21 +48,24 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                 {% assign img_tag_start = '<img src="' %} 
                 {% assign img_tag_end = '"' %} 
                 {% assign img_start_index = page_content | index: img_tag_start %} 
-                {% if img_start_index %} 
-                    {% assign img_start_index = img_start_index | plus: img_tag_start.size %} 
-                    {% assign img_end_index = page_content | slice: img_start_index | index: img_tag_end %} 
-                    {% assign image = page_content | slice: img_start_index, img_end_index %} 
+                {% if img_start_index != nil %}
+                    {% assign img_start_index = img_start_index | plus: img_tag_start.size %}
+                    {% assign img_substring = page_content | slice: img_start_index %} 
+                    {% assign img_end_index = img_substring | index: img_tag_end %}
+                    {% if img_end_index != nil %}
+                        {% assign image = img_substring | slice: 0, img_end_index %} 
+                    {% endif %}
                 {% endif %} 
                 <pre>image before slice = {{ image }}</pre> 
                 {% if image == '' %} 
                     {% assign image = '/assets/images/40tude_307.webp' %} 
                 {% else %} 
-                    {% assign image = image | slice: 2, image.size %} 
+                    {% assign image = image | slice: 2, image.size %}
                 {% endif %}
                 <pre>image after extract = {{ image }}</pre>
 
                 <pre>page.url = {{ page.url }}</pre>
-                
+
                 <!-- Extract the directory from page.url --> 
                 {% assign page_dir = '' %} 
                 {% assign parts = page.url | split: '/' %} 
