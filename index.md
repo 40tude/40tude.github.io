@@ -51,9 +51,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
             {% endif %}
 
             <pre>page.url = {{ page.url }}</pre>
-            {# {% assign page_dir = page.url | split: '/' | slice: 0, -1 | join: '/' | append: '/' %} #}
-            {# {% capture page_dir %}{{ page.url | split: '/' | slice: 0, -1 | join: '/' }}/{% endcapture %} #}
-
+            
             <!-- Extract the directory from page.url --> 
             {% assign parts = page.url | split: '/' %} 
             {% assign page_dir = '' %} 
@@ -63,8 +61,6 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
                 {% endunless %} 
             {% endfor %}
             <pre>page_dir = {{ page_dir }}</pre>
-            {# <pre>image path = {{ page_dir }}{{ image }} #}
-            
             <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="100" loading="lazy"/>
         </td>
         <td>
