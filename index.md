@@ -28,60 +28,61 @@ Pour l'instant je suis focus sur le transfert.
 Nombre d'articles sur le site : **{{ site.pages | size }}**
 
 <table>
-  <thead>
+    <thead>
     <tr>
-      <th>Image</th>
-      <th>Titre</th>
-      <th>Extrait</th>
+        <th>Image</th>
+        <th>Titre</th>
+        <th>Extrait</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     {% assign nb_articles = 5 %}
     {% assign nb_words = 20 %}
     {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
     {% for page in articles_sorted limit: nb_articles %}
         <tr>
-        <td>
-            <!-- Extract the image if it exists --> 
-            {% assign image = '' %} 
-            {% capture page_content %}{{ page.content | markdownify }}{% endcapture %} 
-            {% assign img_tag_start = '<img src="' %} 
-            {% assign img_tag_end = '"' %} 
-            {% assign img_start_index = page_content | index: img_tag_start %} 
-            {% if img_start_index %} 
-                {% assign img_start_index = img_start_index | plus: img_tag_start.size %} 
-                {% assign img_end_index = page_content | slice: img_start_index | index: img_tag_end %} 
-                {% assign image = page_content | slice: img_start_index, img_end_index %} 
-            {% endif %} 
-            <pre>image before slice = {{ image }}</pre> 
-            {% if image == '' %} 
-                {% assign image = '/assets/images/40tude_307.webp' %} 
-            {% else %} 
-                {% assign image = image | slice: 2, image.size %} 
-            {% endif %}
+            <td>
+                <!-- Extract image if it exists --> 
+                {% assign image = '' %} 
+                {% capture page_content %}{{ page.content }}{% endcapture %} 
+                {% assign img_tag_start = '<img src="' %} 
+                {% assign img_tag_end = '"' %} 
+                {% assign img_start_index = page_content | index: img_tag_start %} 
+                {% if img_start_index %} 
+                    {% assign img_start_index = img_start_index | plus: img_tag_start.size %} 
+                    {% assign img_end_index = page_content | slice: img_start_index | index: img_tag_end %} 
+                    {% assign image = page_content | slice: img_start_index, img_end_index %} 
+                {% endif %} 
+                <pre>image before slice = {{ image }}</pre> 
+                {% if image == '' %} 
+                    {% assign image = '/assets/images/40tude_307.webp' %} 
+                {% else %} 
+                    {% assign image = image | slice: 2, image.size %} 
+                {% endif %}
+                <pre>image after extract = {{ image }}</pre>
 
-            <pre>page.url = {{ page.url }}</pre>
-            
-            <!-- Extract the directory from page.url --> 
-            {% assign parts = page.url | split: '/' %} 
-            {% assign page_dir = '' %} 
-            {% for part in parts %} 
-                {% unless forloop.last %} 
-                    {% assign page_dir = page_dir | append: part | append: '/' %} 
-                {% endunless %} 
-            {% endfor %}
-            <pre>page_dir = {{ page_dir }}</pre>
-            <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="100" loading="lazy"/>
-        </td>
-        <td>
-            <a href="{{ page.url }}">{{ page.title }}</a>
-        </td>
-        <td>
-            {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
-        </td>
+                <pre>page.url = {{ page.url }}</pre>
+                
+                <!-- Extract the directory from page.url --> 
+                {% assign page_dir = '' %} 
+                {% assign parts = page.url | split: '/' %} 
+                {% for part in parts %} 
+                    {% unless forloop.last %} 
+                        {% assign page_dir = page_dir | append: part | append: '/' %} 
+                    {% endunless %} 
+                {% endfor %}
+                <pre>page_dir = {{ page_dir }}</pre>
+                <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="100" loading="lazy"/>
+            </td>
+            <td>
+                <a href="{{ page.url }}">{{ page.title }}</a>
+            </td>
+            <td>
+                {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
+            </td>
         </tr>
     {% endfor %}
-  </tbody>
+    </tbody>
 </table>
 
 
