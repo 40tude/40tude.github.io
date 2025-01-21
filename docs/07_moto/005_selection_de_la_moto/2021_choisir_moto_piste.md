@@ -1,12 +1,13 @@
 ---
 layout: default
-title: "2021 - Choisir la moto pour aller sur piste"
+title: "2021 - Choisir sa moto pour la piste"
+parent: "Motos"
 #math: mathjax
 date: 2021-12-28 12:43:48
 last_modified_date: 2022-01-10 08:40:35
 ---
 
-# 2021 - Choisir la moto pour aller sur piste
+# 2021 - Choisir sa moto pour la piste
 
 ## Introduction
 Cela fait 3 ans que je tourne avec [Kawette sur circuit] NOT YET TRANSFERED (https://www.40tude.fr/category/zx6r-sur-circuit/). Elle est vraiment top et franchement je recommande à ceux qui veulent passer sur piste de démarrer avec ce type de moto (moto prête pour la piste, 600, japonaise etc.) J'ai déjà expliqué mon choix à l'époque sur [cette page]({#link docs/07_moto/004_choix_de_la_moto_pour_aller_sur_piste/2018_choisir_moto_piste.md#}). Cela dit, depuis la fin de saison dernière, j'ai envie de passer à autre chose :
