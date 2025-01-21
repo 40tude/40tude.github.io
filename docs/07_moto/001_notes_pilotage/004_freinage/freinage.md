@@ -309,7 +309,7 @@ Ensuite, au fil des tours, on rapprochera la marque de freinage du point de mise
 
 ### Revoyons l'action au ralenti
 
-Pendant le freinage, alors qu'on est en ligne droite, moto verticale, le visage se tourne vers le point de corde (voir la note de Pilotage 03 [Three Steps]({#link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md#}))
+Pendant le freinage, alors qu'on est en ligne droite, moto verticale, le visage se tourne vers le point de corde (voir la note de Pilotage 03 [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}))
 
 On freine très fort mais progressivement et de manière contrôlée comme si on pressait une balle en mousse. Si, dans ses conditions, on va au bout de la suspension, il faut revoir les réglages de cette dernière. En effet, si on pousse la fourche en dehors de son domaine de fonctionnement, elle ne va plus être capable d'amortir quoi que ce soit, la moto va rebondir, la roue avant se bloquer etc. (voir ce qu'on a dit un peu avant). 
 

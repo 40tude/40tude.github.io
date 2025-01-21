@@ -10,7 +10,7 @@ last_modified_date: 2022-01-10 08:40:35
 # 2021 - Choisir sa moto pour la piste
 
 ## Introduction
-Cela fait 3 ans que je tourne avec [Kawette sur circuit] NOT YET TRANSFERED (https://www.40tude.fr/category/zx6r-sur-circuit/). Elle est vraiment top et franchement je recommande à ceux qui veulent passer sur piste de démarrer avec ce type de moto (moto prête pour la piste, 600, japonaise etc.) J'ai déjà expliqué mon choix à l'époque sur [cette page]({#link docs/07_moto/004_choix_de_la_moto_pour_aller_sur_piste/2018_choisir_moto_piste.md#}). Cela dit, depuis la fin de saison dernière, j'ai envie de passer à autre chose :
+Cela fait 3 ans que je tourne avec [Kawette sur circuit] NOT YET TRANSFERED (https://www.40tude.fr/category/zx6r-sur-circuit/). Elle est vraiment top et franchement je recommande à ceux qui veulent passer sur piste de démarrer avec ce type de moto (moto prête pour la piste, 600, japonaise etc.) J'ai déjà expliqué mon choix à l'époque sur [cette page]({%link docs/07_moto/004_choix_de_la_moto_pour_aller_sur_piste/2018_choisir_moto_piste.md%}). Cela dit, depuis la fin de saison dernière, j'ai envie de passer à autre chose :
 
 * Changer de moto car cela va m'obliger à me comporter différemment. Certains ont vraiment progressé en changeant de bécanne.
 * Rouler en 1 000 sur circuit. Je n'ai pas le niveau, je m'en fou, je ne l'ai jamais fait, je veux voir ce que cela va donner... C'est complètement irrationnel, je sais, mais bon je reviendrai sans doute en 600 plus tard. N'empêche, je me pisse un peu dessus quand j'y pense...
@@ -114,5 +114,5 @@ Bref, en cette fin 2021, je me dis que tant que les trajectoires ne sont pas au 
 
 Un dernier mot. Bien sûr, dorénavant c'est donc dans la section [RSV4 sur circuit]NOT YET TRANSFERED (https://www.40tude.fr/category/rsv4-sur-circuit/) que je viendrai partager mes expériences.
 
-*Bon, allez, la suite au prochain numéro*. D'ici-là relisez les [notes de pilotage]({# link docs/07_moto/001_notes_pilotage/index.md#}) ou faites des squats pour préparer le ski et/ou les roulages du printemps.
+*Bon, allez, la suite au prochain numéro*. D'ici-là relisez les [notes de pilotage]({% link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats pour préparer le ski et/ou les roulages du printemps.
 
