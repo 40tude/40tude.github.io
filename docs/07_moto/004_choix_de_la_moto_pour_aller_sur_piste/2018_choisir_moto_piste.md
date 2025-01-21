@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Le choix de la moto pour aller sur piste"
+title: "2018 - Choisir la moto pour aller sur piste"
 parent: "Motos"
 #math: mathjax
 date: 2018-11-01 17:02:55
 last_modified_date: 2021-11-25 23:57:10
 ---
 
-# Le choix de la moto pour aller sur piste
+# 2018 - Choisir la moto pour aller sur piste
 
 
 # Introduction
