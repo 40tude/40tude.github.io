@@ -112,9 +112,12 @@ Voir ci-dessous la vidéo dont est extraite la photo :
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EJCCMohqHMI?si=yyBj7XFiJsgpDaFR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+Heu... Si tu sors d'un gauche, que tu enquilles un petit bout de ligne droite pour attaquer un autre gauche... On est d'accord. On an-ti-ci-pe et on **réfléchit**. Donc c'est même pas la peine de remettre tes 2 fesses sur la selle. Tu gardes la fesse gauche dehors pendant toute la ligne droite. Encore une fois, moins on perturbe la moto mieux c'est. Donc moins tu déplace tes 80 kg (faut pas oublier la combine, les bottes, le casque...) sur une moto qui pèse 200 kg mieux c'est. En plus tu gagnes du temps et tu t'économise physiquement. Que demande le peuple...
+
+
 * Pointe du pied intérieur sur le bout du repose-pied afin de pouvoir, plus tard, ouvrir le genou
     * Le pied intérieur est très mobile. Tout se passe comme si au bout du cale-pied il y avait une rotule.
-    * Pied extérieur à plat, calé au talon (personnellement je n'y arrive pas. La partie la plus large de mon pied reste en place. Comme je ne suis pas grand, je peux pousser sur la point du pied afin de bien ajuster la hauteur du genous "dans" le réservoir)
+    * Pied extérieur à plat, calé au talon (personnellement je n'y arrive pas. La partie la plus large de mon pied reste en place. Comme je ne suis pas grand, je peux pousser sur la point du pied afin de bien ajuster la hauteur du genou "dans" le réservoir)
     * Jambes collées au réservoir pour s'y "accrocher" (Hooked In)
         * Oui, oui c'est bizarre car on a une fesse dehors avec les jambes serrées, pour l'instant on est tordu MAIS…
         * Dès qu'on va ouvrir la jambe intérieure on sera quasiment en position finale pour le virage.

@@ -513,7 +513,7 @@ Ca a l'air tellement facile, tellement naturel quand c'est résumé de cette fa�
 
 ## 1 - Récupérer une distribution live et booter dessus
 
-Après coup je pense que j'aurai pu prendre une BusyBox, une ToyBox où un truc de ce genre. Sur le moment je n'ai pas réfléchi, j'ai fait simple et j'ai récupéré une [Mint XFCE](https://www.linuxmint.com/edition.php?id=307) parce que c'est pas trop lourd, que je sais qu'il y a `gparted` etc.
+Après coup je pense que j'aurai pu prendre une BusyBox, une ToyBox où un truc de ce genre. Sur le moment je n'ai pas réfléchis, j'ai fait simple et j'ai récupéré une [Mint XFCE](https://www.linuxmint.com/edition.php?id=307) parce que c'est pas trop lourd, que je sais qu'il y a `gparted` etc.
 
 Je la dépose dans le répertoire `/home/philippe/Téléchargements` du host Mint
 
