@@ -112,7 +112,6 @@ Voir ci-dessous la vidéo dont est extraite la photo :
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EJCCMohqHMI?si=yyBj7XFiJsgpDaFR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-Heu... Si tu sors d'un gauche, que tu enquilles un petit bout de ligne droite pour attaquer un autre gauche... On est d'accord. On an-ti-ci-pe et on **réfléchit**. Donc c'est même pas la peine de remettre tes 2 fesses sur la selle. Tu gardes la fesse gauche dehors pendant toute la ligne droite. Encore une fois, moins on perturbe la moto mieux c'est. Donc moins tu déplace tes 80 kg (faut pas oublier la combine, les bottes, le casque...) sur une moto qui pèse 200 kg mieux c'est. En plus tu gagnes du temps et tu t'économise physiquement. Que demande le peuple...
 
 
 * Pointe du pied intérieur sur le bout du repose-pied afin de pouvoir, plus tard, ouvrir le genou
@@ -135,10 +134,14 @@ La vidéo dont est extraite la photo :
 <iframe width="560" height="315" src="https://www.youtube.com/embed/V8Osi_tAYi0?si=KxT9Wi7HVg8REtCk&amp;start=197" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-* On laisse un doigt sur l'embrayage pendant tout le freinage (je ne suis pas sûr de le faire. Faut que je prenne le temps de vérifier)
-    * Pour rétrograder si besoin
-    * **Plus important** : si la roue arrière veut passer devant, rebondit etc. il "suffira" de tirer très légèrement sur l'embrayage (1 mm) pour désolidariser le moteur de la roue et remettre cette dernière dans l'axe
-    * Bien sûr, il faut avoir remis de l'ordre et avoir relâché l'embrayage avant de passer sur l'angle
+
+Heu... Si tu sors d'un gauche, que tu enquilles un petit bout de ligne droite pour attaquer un autre gauche... On est d'accord. On an-ti-ci-pe et on **réfléchit**. Donc c'est même pas la peine de remettre tes 2 fesses sur la selle. Tu gardes la fesse gauche dehors pendant toute la ligne droite. Encore une fois, moins on perturbe la moto mieux c'est. Donc moins tu déplace tes 80 kg (faut pas oublier la combine, les bottes, le casque...) sur une moto qui pèse 200 kg mieux c'est. En plus tu gagnes du temps et tu t'économise physiquement. Que demande le peuple...
+
+
+On laisse un doigt sur l'embrayage pendant tout le freinage (je ne suis pas sûr de le faire. Faut que je prenne le temps de vérifier)
+* Pour rétrograder si besoin
+* **Plus important** : si la roue arrière veut passer devant, rebondit etc. il "suffira" de tirer très légèrement sur l'embrayage (1 mm) pour désolidariser le moteur de la roue et remettre cette dernière dans l'axe
+* Bien sûr, il faut avoir remis de l'ordre et avoir relâché l'embrayage avant de passer sur l'angle
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" loading="lazy"/>
