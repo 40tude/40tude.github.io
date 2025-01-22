@@ -2,6 +2,8 @@
 layout: default
 title: "Lecture des pneus"
 parent: "Motos"
+nav_order: 4
+math: mathjax
 date:               2022-10-29 13:04:06
 last_modified_date: 2022-11-26 19:02:18
 ---
@@ -65,6 +67,8 @@ En tout cas, ce n'est pas la peine non plus de dire "laisse tomber, je ne compre
 <img src="./assets/image-10.webp" alt="" loading="lazy"/>
 </div>
 
+Date de production du pneu. Si le DOT n'est pas d'un côté du pneu il est de l'autre. Le 1er N° c'est la semaine, le second c'est l'année.
+
 <div align="center">
 <img src="./assets/image-15.webp" alt="" width="900" loading="lazy"/>
 </div>
@@ -76,13 +80,15 @@ En tout cas, ce n'est pas la peine non plus de dire "laisse tomber, je ne compre
 * Prenez des notes et des photos : il ne faut pas hésiter à faire des tests. Par exemple, j'ouvre tout et je pompe plusieurs fois la fourche. Qu'est ce qui se passe quand je relâche ? Bon, cela dit, c'est bien gentil de faire des tests mais si je n'ai pas noté la position de départ... Je suis dans les soucis. Donc je note et/ou je prends des photos.
 * À l'aide de la documentation de la moto, identifiez les différents réglages et leurs positions respectives. Typiquement : précharge, compression, détente. Parfois compression et détente rapide.
 
+Ci-dessous, c'est un extrait de la documentation du RSV4. Positions des différents réglages de la fourche.
 <div align="center">
 <img src="./assets/image-2-3.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-* Retrouvez sur le web ou dans la documentation les réglages recommandés.
+* Retrouvez sur le web ou dans la documentation les réglages recommandés. 
 
+Ci-dessous, c'est un extrait de la documentation du RSV4. Réglages piste de la fourche.
 <div align="center">
 <img src="./assets/image-2.webp" alt="" width="900" loading="lazy"/>
 </div>
@@ -91,10 +97,12 @@ En tout cas, ce n'est pas la peine non plus de dire "laisse tomber, je ne compre
 * Retrouvez sur le web les pressions recommandées par le constructeur des pneus.
 * Ensuite, mettez la main sur l'outillage nécessaire : tournevis, clé Allen... Rien de très spécial en fait. La clé pour régler la précontrainte de l'amortisseur est normalement dans la trousse à outils livrée avec la moto mais la qualité est faible voire nulle. Il faudra peut-être en acheter une.
 
+Clé issue de la trousse à outil du RSV4
 <div align="center">
 <img src="./assets/image-7-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Faut penser à prendre un manche assez long pour avoir du couple
 <div align="center">
 <img src="./assets/image-6_1.webp" alt="" loading="lazy"/>
 </div>
@@ -119,18 +127,22 @@ On souhaite :
 * Que sur les bords des pneus, on ne retrouve pas de bande lisses (voir plus bas) mais plutôt des boules de gommes.
 * Que sur les pneus à rainures, l'avant et l'arrière de ces dernières soient à la même hauteur (voir plus loin).
 
+Un exemple
 <div align="center">
 <img src="./assets/image-6-8.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Un autre exemple
 <div align="center">
 <img src="./assets/image-6-9.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Faut regarder dans le losange rouge
 <div align="center">
 <img src="./assets/image-6-10.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Faut regarder la droite du pneu
 <div align="center">
 <img src="./assets/image-6-11.webp" alt="" width="900" loading="lazy"/>
 </div>
@@ -151,7 +163,7 @@ Tu notes que je ne parle pas de vérifier la température des pneus. En fait, un
 
 Heu... Pourquoi tu dis que c'est normal de prendre 250 gr de pression au cours d'une session ? En fait, en physique il y a une loi (loi des [gaz parfaits](https://fr.wikipedia.org/wiki/Loi_des_gaz_parfaits)) qui dit qu'à volume constant, le rapport de la pression sur la température est constant (autrement dit ils varient dans les mêmes proportions). Si on dit que l'air est un gaz parfait (ce qui n'est pas vrai), ça donne un truc comme ça :
 
-$\frac{PV}{T} = K$
+$$\frac{PV}{T} = K$$
 
 Ne commence pas à râler, c'est juste une division, ça reste gérable... Quoiqu'il en soit, cela signifie que si la température T du pneu augmente (à cause des frottements avec la piste par exemple), comme le volume V du pneu ne change pas (ou presque) alors la pression P doit augmenter. Au pire, dans l'équation précédente si tu multiplies la température T par deux, afin que la division donne toujours le même résultat K, tu dois multiplier par la pression P par deux aussi.
 
@@ -191,10 +203,12 @@ C'est bizarre, au bout de la flèche verte les 2 bords de la rainure sont à la 
 
 Il faut, en priorité, régler les problèmes qu'on rencontre quand on est sur l'angle. Ici il faut donc s'occuper de ce que l'on voit au bout de la flèche rouge.
 
+La moto avance si elle vient vers nous
 <div align="center">
 <img src="./assets/image-11.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Le pneu AR avance quand il va vers la gauche.
 <div align="center">
 <img src="./assets/image-3-1-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
@@ -217,6 +231,7 @@ Il faut, en priorité, régler les problèmes qu'on rencontre quand on est sur l
 
 * Si, sur le bord avant des rainures du pneu AV il y a des accumulations de billes de gomme cela indique que la pression est trop basse. C'est exactement le même diagnostique si on trouve des accumulations de billes de gomme à l'arrière des rainures du pneu AR. On peut commencer par ajouter 250 gr de pression et voir ce que cela donne à la fin de la session.
 
+Le pneu AV avance vers nous. La pression est trop basse.
 <div align="center">
 <img src="./assets/image-2-2.webp" alt="" width="900" loading="lazy"/>
 </div>
@@ -225,11 +240,12 @@ Il faut, en priorité, régler les problèmes qu'on rencontre quand on est sur l
 
 Niveau intermédiaire
 
+La roue avance vers la droite
 <div align="center">
 <img src="./assets/image.webp" alt="" loading="lazy"/>
 </div>
 
-
+La roue avance vers la droite
 <div align="center">
 <img src="./assets/image-1-1.webp" alt="" loading="lazy"/>
 </div>
@@ -247,6 +263,8 @@ Il faut laisser complètement refroidir le pneu et la jante puis vérifier la pr
 
 Niveau intermédiaire
 
+
+La roue avance en s’enfonçant dans l'écran
 <div align="center">
 <img src="./assets/image-2-1.webp" alt="" loading="lazy"/>
 </div>
@@ -277,10 +295,12 @@ C'est bien gentil tout ça mais, moi, demain je fais quoi de toutes ces informat
 4. Sur la fourche je mets un Rilsan. Cela permettra de vérifier si la fourche travaille sur une amplitude maximale et/ou si elle n'arrive pas en butée. C'est alors dangereux car en butée il n'y a plus d'amortissement à part ce que peut fournir la déformation du pneu. Mais bon, cela ne va pas très loin, on croise rapidement l'avant et on termine au tas bêtement.
    C'est beaucoup moins pratique mais j'essaie aussi de mettre aussi un Rilsan sur l'amortisseur.
 
+Voir le Rilsan sur le fourreau. Quand la fourche va s'enfoncer, il va encore descendre.
 <div align="center">
 <img src="./assets/image-6-3.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Bien sûr, en début de session il faut penser à le remonter.
 <div align="center">
 <img src="./assets/image-6-5.webp" alt="" loading="lazy"/>
 </div>
@@ -309,7 +329,7 @@ Concernant la précision du thermomètre il ne faut pas trop s'inquiéter. Ce qu
 <div align="center">
 <img src="./assets/image-2_2022_10.webp" alt="" loading="lazy"/>
 </div>
-
+Typiquement 20€ sur [Amazon](https://www.amazon.fr/Thermom%C3%A8tre-Infrarouge-Temp%C3%A9rature-58%C2%B0F-1112%C2%B0F-50%C2%B0C%EF%BD%9E600%C2%B0C/dp/B089DYHPC6/ref=sr_1_9?keywords=thermometre+laser&qid=1667034685&qu=eyJxc2MiOiI1LjA4IiwicXNhIjoiNC41MyIsInFzcCI6IjQuNDcifQ%3D%3D&sr=8-9)
 
 Sinon quand vous serez riches vous pourrez investir dans un ensemble de précision de type karting pour mesurer [pression et température](https://www.action-karting.fr/Manometre-HIPREMA-4-v-PRESSION-PNEUS-INFRAROUGE-T-PNEUS-par-SOND/p/4/511/18357/) (450€ quand même).
 
@@ -348,6 +368,9 @@ Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourch
 <img src="./assets/image-6-2.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0mGDdnFGyZ0?si=-gEWGkAnxt1S5sZA&amp;start=13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Pour une introduction rapide en anglais sur le réglage des suspensions et sur ce que l'on peut faire (ou pas) en fonction des motos, il y a cette vidéo de **[MotoJitsu](https://www.youtube.com/c/MotoJitsu)** :
 
@@ -387,6 +410,13 @@ Côté bouquins c'est un peu la misère en français et, là aussi, ils traitent
 
 
 Ensuite dans le Tome 2 de "[Le chrono ne ment pas](http://kennyforay.com/shop/Le-chrono-ne-ment-pas-1%262-p195955506)" il y a un chapitre dédié aux suspensions. Sinon, il y a des informations disséminées dans les autres chapitres. Il faut acheter le livre sur le site de Kenny Foray, pas en belgique.
+
+<div align="center">
+<img src="./assets/image-16.webp" alt="" loading="lazy"/>
+</div>
+
+
+Enfin, je pense au bouquin [Total Control de Lee Parks]({#link https://lire.amazon.fr/kp/embed?asin=B00R31222S&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_T3MD1F4X96MNY97WZPHT&tag=40tude-21#}) dont les chapitres 3 et 15 sont dédiés aux suspensions et à leurs réglages. Malheureusement, lui aussi ne parle pas de la lecture des pneus.
 
 <div align="center">
 <img src="./assets/image-6-1.webp" alt="" width="900" loading="lazy"/>
