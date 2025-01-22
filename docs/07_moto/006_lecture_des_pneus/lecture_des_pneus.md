@@ -1,9 +1,8 @@
 ---
 layout: default
 title: "Lecture des pneus"
-parents: "Motos"
-#math: mathjax
-date: 2022-10-29 13:04:06
+parent: "Motos"
+date:               2022-10-29 13:04:06
 last_modified_date: 2022-11-26 19:02:18
 ---
 
@@ -188,7 +187,7 @@ Afin de retenir la règle j'ai envie de proposer un truc du style "***Si y en a 
 
 Dans la photo ci-dessous le sens de rotation est vers nous. Au bout de la flèche rouge le bord avant de la rainure est plus haut que le bord arrière. Le rebond est trop lent. J'ouvre de 2 clics, je ne touche à rien d'autre et je vois comment évolue la situation à la fin de la session.
 
-C'est bizarre, au bout de la flèche verte les 2 bords de la rainure sont à la même hauteur ? Cela s'explique par le fait que la rainure de la flèche verte est sur la bande de roulement. Normalement le rebond a déjà eu lieu et on est 100% gaz ouvert alors qu'au bout de la flèche rouge on est encore sur l'angle en train d'appliquer la [Throttle Rule](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/).
+C'est bizarre, au bout de la flèche verte les 2 bords de la rainure sont à la même hauteur ? Cela s'explique par le fait que la rainure de la flèche verte est sur la bande de roulement. Normalement le rebond a déjà eu lieu et on est 100% gaz ouvert alors qu'au bout de la flèche rouge on est encore sur l'angle en train d'appliquer la [Throttle Rule]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}).
 
 Il faut, en priorité, régler les problèmes qu'on rencontre quand on est sur l'angle. Ici il faut donc s'occuper de ce que l'on voit au bout de la flèche rouge.
 
@@ -302,7 +301,7 @@ Si entre 2 sessions je gagne 3 secondes au tour... C'est sûr, j'ai changé quel
 
 Idem, si entre 9H00 et 11H on prend 10°C au niveau de la température ambiante. Il est clair que la température de la piste va monter aussi. Il est peut-être judicieux de mesurer de nouveau les pressions.
 
-Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page](https://www.40tude.fr/rsv4-sur-circuit-roulage-du-23-10-2022-lfg/) avec les 3 types de pneus que j'utilise régulièrement)
+Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-roulage-du-23-10-2022-lfg/) avec les 3 types de pneus que j'utilise régulièrement)
 
 Accessoirement...Investir dans un thermomètre laser à 20€ afin de mesurer et prendre conscience des températures des pneus en retour de sessions. Encore une fois, il faut mesurer AV et AR mais aussi côté gauche et côté droit. Instructif.
 Concernant la précision du thermomètre il ne faut pas trop s'inquiéter. Ce qui est important c'est d'utiliser toujours le même en cours de journée et d'être attentif, plus aux variations qu'aux mesures. Ce que je veux dire c'est que s'il indique 52° alors qu'en réalité le pneu est à 55° ce n'est pas très grave. Cependant si entre le matin et l'après-midi nos mesures passent de 55° à 65° là, en revanche ça veut dire quelque chose et il faudra sans doute en tenir compte.
@@ -352,11 +351,21 @@ Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourch
 
 Pour une introduction rapide en anglais sur le réglage des suspensions et sur ce que l'on peut faire (ou pas) en fonction des motos, il y a cette vidéo de **[MotoJitsu](https://www.youtube.com/c/MotoJitsu)** :
 
-https://www.youtube.com/watch?v=lo0kv_6hG-0&list=PLOmfq6wDOTY47KYrwDJZC12l5aDa5ST2Y&index=74&t=22s
+<!-- https://www.youtube.com/watch?v=lo0kv_6hG-0&list=PLOmfq6wDOTY47KYrwDJZC12l5aDa5ST2Y&index=74&t=22s -->
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lo0kv_6hG-0?si=wEv5FPW99-gH_rh8&amp;start=22" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
 
 Il y a enfin cette vidéo de l'excellente chaine anglaise [**Life at Lean**](https://www.youtube.com/c/LifeatLean) qui est pour le coup, inspirée du travail de Dave Moss et pile-poil sur le sujet. Je suis un peu inquiet, cela fait longtemps qu'il n'y a rien eu de publié sur la chaine en question. Je crois que [Dan Netting](https://www.youtube.com/channel/UCY9gbD_LrCoBCMzSiV0I1kg) est passé à autre chose. En tout cas, cela n'enlève rien à la vidéo ci-dessous.
 
-https://youtu.be/Cqq5dEiADJY
+<!-- https://youtu.be/Cqq5dEiADJY -->
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Cqq5dEiADJY?si=OYjaFbpurriqBqhf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ### Pages Web
 
@@ -389,7 +398,11 @@ Vu le prix des pneus on a intérêt à en prendre soin. Si en plus leur lecture 
 
 Encore une fois je ne suis pas un pro du sujet et donc, si vous avez des remarques **constructives** à apporter pour améliorer la page, lâchez un commentaire. Rappelez-vous toutefois que la page traite de la lecture des pneus pour faire évoluer les pressions de pneus et/ou faire évoluer les réglages des suspensions. La page n'est pas dédiée aux réglages initiaux des suspensions qui est un sujet à part entière (si vous pensez qu'une page sur le sujet serait bienvenue, dites-le dans les commentaires).
 
-Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage](https://www.40tude.fr/pilotage-moto/) ou faites des squats afin de préparer les prochains roulages.
+Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
-https://youtu.be/TIhtpItTuxc
+<!-- https://youtu.be/TIhtpItTuxc -->
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 

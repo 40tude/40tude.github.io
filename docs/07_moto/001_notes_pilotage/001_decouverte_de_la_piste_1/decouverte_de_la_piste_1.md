@@ -206,7 +206,6 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
     * Le point de corde (**PC**, apex en anglais US). L'unique point où les pneus de la moto se trouvent à la corde. Le second cône.
     * Le point de sortie (**PS**). Le troisième cône.
 
-<!-- * Les virages où la **Throttle Rule** n'est pas appliquée sont identifiés afin d'y revenir lors de la prochaine session (on n'est pas pressé, on a le temps, on peut passer plusieurs sessions à apprendre le circuit). -->
 
 
 
@@ -306,7 +305,6 @@ Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on pe
 
 En sortie de virage, la tête de fourche peut bouger si on est pas détendu et si l’accélération est trop brutale. Pour éviter ce phénomène, dans les virages il suffit d'avoir des accélérations précoces, douces et continues. Je dis "il suffit" car c'est vraiment la seule chose qu'il y a à faire. C'est tellement facile... Je me demande bien pourquoi on est pas tous en Moto GP...
 
-<!-- (ce n'est rien d'autre que la Throttle Rule dont on parle sans cette [Note de Pilotage](({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}))) -->
 
 
 
