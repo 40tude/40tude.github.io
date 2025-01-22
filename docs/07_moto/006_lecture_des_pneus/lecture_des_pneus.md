@@ -23,13 +23,13 @@ Pour faire court, dans cette page on va parler de la lecture des pneus après le
 L'idée est qu'à l'instar de l'indien qui lit les traces qu'ont laissé les bisons dans la prairie, ce qui est inscrit sur le pneu nous dit quelque chose. "Les pneus ne mentent pas". De plus, c'est très certainement plus précis et plus factuel que les "sentiments" dont on se rappelle à la descente de moto. Autrement dit, sous réserve d'interpréter correctement ces signes, on a là un formidable moyen d'améliorer le comportement de la moto, de préserver ses pneus et de faire tomber les chronos.
 
 <div align="center">
-<img src="./assets/image-14.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-14.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
-Attention aux Charlots ! Tous ceux avec qui j'aborde le sujet des suspensions et/ou de la lecture des pneus me disent que soit ils n'y comprennent rien, soit ils ne connaissaient que le strict minimum pour survivre sur piste. Dans tous les cas ils confirment que les gens compétents sur le sujet se compte sur les doigts d'une main. Donc, méfiez-vous que ce soit sur les forums ou les tarmacs et méfiez-vous de ce que vous allez lire ici car il se peut que je n'aie pas encore complètement compris tel ou tel aspect.
+Attention aux Charlots ! Tous ceux avec qui j'aborde le sujet des suspensions et/ou de la lecture des pneus me disent que soit ils n'y comprennent rien, soit ils ne connaissaient que le strict minimum pour survivre sur piste. Dans tous les cas ils confirment que les gens compétents sur le sujet se compte sur les doigts d'une main. Donc, méfiez-vous que ce soit sur les forums ou les tarmacs et méfiez-vous de ce que vous allez lire ici car il se peut que je n'ai pas encore complètement compris tel ou tel aspect.
 
-Cela dit, j'essaie d'être un peu sérieux et de recouper un maximum d'informations avant d'écrire quoique ce soit. De toute façon, au pire, je peux facilement corriger/améliorer l'article au fil du temps. Mais bon, soyez indulgents, je ne suis pas un professionnel du sujet, j'ai juste la chance de parler un peu la langue de Shakespeare et de prendre des notes quand je lis ou regarde des vidéos.
+Cela dit, j'essaie d'être un peu sérieux et de recouper un maximum d'informations avant d'écrire quoique ce soit. De toute façon, au pire, je peux facilement corriger/améliorer l'article au fil du temps. Mais bon, soyez indulgents, je ne suis pas un professionnel du sujet. J'ai juste la chance de parler un peu la langue de Shakespeare et de prendre des notes quand je lis ou que je regarde des vidéos.
 
 En tout cas, ce n'est pas la peine non plus de dire "laisse tomber, je ne comprends rien, c'est compliqué...". Non, non tout au contraire, il faut s'intéresser au sujet car :
 
@@ -42,13 +42,13 @@ En tout cas, ce n'est pas la peine non plus de dire "laisse tomber, je ne compre
 * À part peut-être la précontrainte de l'amortisseur arrière (et encore) qui n'est pas toujours facile d'accès et qui peut demander un peu de force tout le monde peut faire tous les réglages : ado, femme, homme, bison...
 
 <div align="center">
-<img src="./assets/image-7-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-7-1.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 ## Parce que ça va mieux en le disant...
 
 * On ne va pas parler du réglage initial des suspensions. Il y a déjà pas mal de choses écrites sur le sujet (voir plus loin la section [Références](#references)).
-* On va plutôt parler des pneus à rainure plutôt que des pneus slicks.
+* On va plutôt parler des pneus à rainures plutôt que des pneus slicks.
 * On suppose que la moto est bien entretenue, que la chaine n'est pas trop tendue, que les suspensions sont en bon état et que si on joue sur un paramètre cela engendre un effet.
 * Ce qui est dit ici s'applique aussi en grande partie aux motos de route qui viennent pour la première fois sur un circuit. Dans ce cas il faudra penser à baisser la pression des pneus (AV 2.1, AR 1.9 typiquement) et à vérifier que la chaine n'est pas trop tendue (risque d'empêcher le bras oscillant de travailler comme il faut). En fin de journée on pensera à remonter les pressions avant de reprendre la route.
 * On suppose bien sûr qu'il y a de la marge avant d'atteindre les témoins d'usure et que les pneus ne sont pas déjà complètement rincés (au fait, savez-vous retrouver la date de production du pneu ?)
@@ -99,7 +99,7 @@ Ci-dessous, c'est un extrait de la documentation du RSV4. Réglages piste de la 
 
 Clé issue de la trousse à outil du RSV4
 <div align="center">
-<img src="./assets/image-7-scaled.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-7-scaled.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 Faut penser à prendre un manche assez long pour avoir du couple
@@ -149,7 +149,7 @@ Faut regarder la droite du pneu
 
 ## Variation de pression
 
-Niveau facile
+**Niveau facile**
 
 Il s'agit simplement de suivre la pression des pneus avant et après les différentes sessions.
 
@@ -161,7 +161,9 @@ Il ne faut pas négliger le point 1. Il peut nous éviter de perdre du temps à 
 
 Tu notes que je ne parle pas de vérifier la température des pneus. En fait, un peu plus loin dans la section [Recommandations](#recommandations), je propose de vérifier cette dernière à chaque fin de session.
 
-Heu... Pourquoi tu dis que c'est normal de prendre 250 gr de pression au cours d'une session ? En fait, en physique il y a une loi (loi des [gaz parfaits](https://fr.wikipedia.org/wiki/Loi_des_gaz_parfaits)) qui dit qu'à volume constant, le rapport de la pression sur la température est constant (autrement dit ils varient dans les mêmes proportions). Si on dit que l'air est un gaz parfait (ce qui n'est pas vrai), ça donne un truc comme ça :
+*Heu... Pourquoi tu dis que c'est normal de prendre 250 gr de pression au cours d'une session ?* 
+
+En fait, en physique il y a une loi (loi des [gaz parfaits](https://fr.wikipedia.org/wiki/Loi_des_gaz_parfaits)) qui dit qu'à volume constant, le rapport de la pression sur la température est constant (autrement dit ils varient dans les mêmes proportions). Si on dit que l'air est un gaz parfait (ce qui n'est pas vrai), ça donne un truc comme ça :
 
 $$\frac{PV}{T} = K$$
 
@@ -178,7 +180,7 @@ Cela explique aussi pourquoi il est important de mesurer la pression des pneus a
 </div>
 
 
-Niveau facile
+**Niveau facile**
 
 Il n'y a pas trop d'inquiétude à avoir et pas grand-chose à faire. Cela n'est pas lié à ce que subit le pneu sur la piste mais plutôt aux cycles de montée et de descente en température. En fait, la gomme du pneu contient, [entre autres](https://www.tiregom.fr/guide/auto/pneu-voiture/choisir/longevite/entretien/indispensable/fabrication#Les_materiaux_qui_composent_un_pneu), des huiles qui permettent d'homogénéiser le mélange de gommes. Ces huiles remontent à la surface lorsque le pneu monte haut en température et ont tendance à rester en surface lorsque le pneu refroidit vite.
 
@@ -188,7 +190,7 @@ Au début de la prochaine session le film d'huile va partir et non, le pneu ne v
 
 ## Le bord des rainures
 
-Niveau facile
+**Niveau facile**
 
 Il suffit d'inspecter les rainures qui sont sur le pneu. Dans ce qui suit, on va appeler "bord avant" de la rainure le coté de la rainure qui, dans le sens de rotation normal, est devant. Du coup la règle est simple mais je n'arrive jamais à la retenir :
 
@@ -238,7 +240,7 @@ Le pneu AV avance vers nous. La pression est trop basse.
 
 ## Pneu qui ne monte pas en température
 
-Niveau intermédiaire
+**Niveau intermédiaire**
 
 La roue avance vers la droite
 <div align="center">
@@ -261,7 +263,7 @@ Il faut laisser complètement refroidir le pneu et la jante puis vérifier la pr
 
 ## Pneu trop chaud
 
-Niveau intermédiaire
+**Niveau intermédiaire**
 
 
 La roue avance en s’enfonçant dans l'écran
@@ -278,7 +280,9 @@ Il faut laisser complètement refroidir le pneu et la jante puis vérifier la pr
 
 ## Recommandations
 
-C'est bien gentil tout ça mais, moi, demain je fais quoi de toutes ces informations. Ok, ok, on va faire une petite synthèse qui se divise en deux parties selon que l'on est avant la saison des roulages ou pendant une journée de roulage.
+*C'est bien gentil tout ça mais, moi, demain je fais quoi de toutes ces informations?* 
+
+Ok, ok, on va faire une petite synthèse qui se divise en deux parties selon que l'on est avant la saison des roulages ou pendant une journée de roulage.
 
 ### Avant la saison de roulages
 
@@ -291,7 +295,7 @@ C'est bien gentil tout ça mais, moi, demain je fais quoi de toutes ces informat
 </div>
 
 
-3. Je prends le temps de régler mes suspensions en statique et de noter mes réglages. Voir la section [Références](#references) un peu plus bas. Pensez à bien tout ouvrir (compression, détente etc.) quand vous vérifiez les courses mortes.
+3. Je prends le temps de régler mes suspensions en statique et de noter mes réglages. Voir la section [Références](#references) un peu plus bas. Pensez à bien **tout ouvrir** (compression, détente etc.) quand vous vérifiez les courses mortes.
 4. Sur la fourche je mets un Rilsan. Cela permettra de vérifier si la fourche travaille sur une amplitude maximale et/ou si elle n'arrive pas en butée. C'est alors dangereux car en butée il n'y a plus d'amortissement à part ce que peut fournir la déformation du pneu. Mais bon, cela ne va pas très loin, on croise rapidement l'avant et on termine au tas bêtement.
    C'est beaucoup moins pratique mais j'essaie aussi de mettre aussi un Rilsan sur l'amortisseur.
 
@@ -307,21 +311,21 @@ Bien sûr, en début de session il faut penser à le remonter.
 
 ### Lors d'une journée de roulage
 
-* À t moins 10 min de la premiere session du matin, vérifier les pressions. Personnellement j'utilise de moins en moins les couvertures chauffantes donc j'ajuste les pressions aux pressions à froid. Sinon quand j'utilise des couvertures chauffantes je ne les enlève pas et je règle la pression des pneus à la pression "sortie de couverture".
+* À t moins 10 min de la premiere session du matin, vérifier les pressions. Personnellement j'utilise de moins en moins les couvertures chauffantes donc j'ajuste les pressions aux pressions à froid. Sinon quand j'utilise des couvertures chauffantes je les laisse sur les pneus je règle la pression des pneus à la pression "sortie de couvertures".
 * À chaque fin de session
   + En ayant encore les gants aux mains et le casque sur la tête : mesurer la température des pneus, à l'avant et à l'arrière, sur les côtés gauches et droits.
   + Une fois les gants et le casque enlevés, prendre 1 minute pour inspecter les pneus et selon ce que l'on voit, utiliser les paragraphes précédents pour corriger le tir si besoin.
   + Avant de faire un changement sur la fourche ou l'amortisseur je m'assure que les pressions sont bonnes.
-  + Si les pressions sont bonnes et si je décide de faire un changement sur la fourche ou l'amortisseur, je ne fais jamais plus de 2 clics à la fois et je ne change **jamais** plus d'un paramètre à la fois.
+  + Si les pressions sont bonnes et si je décide de faire un changement sur la fourche ou l'amortisseur, je ne fais **jamais** plus de 2 clics à la fois et je ne change **jamais** plus d'un paramètre à la fois.
 * À t moins 10 min de la premiere session de l'après-midi, vérifier les pressions. Voir les modalités au premier point.
 
-#### En complément des conseils de la journée de roulage
+#### **En complément des conseils de la journée de roulage**
 
 Si entre 2 sessions je gagne 3 secondes au tour... C'est sûr, j'ai changé quelque chose : je passe plus vite à certains endroits, j'accélère plus fort... Bref, il faut avoir une attention particulière sur les pneus et prendre 2 minutes pour mesurer la pression avant la prochaine session.
 
 Idem, si entre 9H00 et 11H on prend 10°C au niveau de la température ambiante. Il est clair que la température de la piste va monter aussi. Il est peut-être judicieux de mesurer de nouveau les pressions.
 
-Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-roulage-du-23-10-2022-lfg/) avec les 3 types de pneus que j'utilise régulièrement)
+Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page] NOT YET TRANSFERED ({#link docs/07_moto/002_feuille_sessions/feuille_sessions.md#}) avec les 3 types de pneus que j'utilise régulièrement)
 
 Accessoirement...Investir dans un thermomètre laser à 20€ afin de mesurer et prendre conscience des températures des pneus en retour de sessions. Encore une fois, il faut mesurer AV et AR mais aussi côté gauche et côté droit. Instructif.
 Concernant la précision du thermomètre il ne faut pas trop s'inquiéter. Ce qui est important c'est d'utiliser toujours le même en cours de journée et d'être attentif, plus aux variations qu'aux mesures. Ce que je veux dire c'est que s'il indique 52° alors qu'en réalité le pneu est à 55° ce n'est pas très grave. Cependant si entre le matin et l'après-midi nos mesures passent de 55° à 65° là, en revanche ça veut dire quelque chose et il faudra sans doute en tenir compte.
@@ -405,7 +409,7 @@ Côté bouquins c'est un peu la misère en français et, là aussi, ils traitent
 À l'occasion vous pouvez-lire (en anglais) la première partie de [ce livre](https://lire.amazon.fr/kp/embed?asin=B00FKYXJCM&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_WKMHBQW5KY3X3XCR9AJE&tag=40tude-21) qui est dédié aux suspensions. Je trouve la seconde moitié pas appropriée à mes besoins car je n'ai pas du tout l'intention de démonter/remonter complètement ma fourche.
 
 <div align="center">
-<img src="./assets/image-6_2022_10.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-6_2022_10.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -419,7 +423,7 @@ Ensuite dans le Tome 2 de "[Le chrono ne ment pas](http://kennyforay.com/shop/Le
 Enfin, je pense au bouquin [Total Control de Lee Parks]({#link https://lire.amazon.fr/kp/embed?asin=B00R31222S&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_T3MD1F4X96MNY97WZPHT&tag=40tude-21#}) dont les chapitres 3 et 15 sont dédiés aux suspensions et à leurs réglages. Malheureusement, lui aussi ne parle pas de la lecture des pneus.
 
 <div align="center">
-<img src="./assets/image-6-1.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-6-1.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 ## Conclusion
