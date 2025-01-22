@@ -99,7 +99,7 @@ Ci-dessous, c'est un extrait de la documentation du RSV4. Réglages piste de la 
 
 Clé issue de la trousse à outil du RSV4
 <div align="center">
-<img src="./assets/image-7-scaled.webp" alt="" width="600" loading="lazy"/>
+<img src="./assets/image-7-scaled.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 Faut penser à prendre un manche assez long pour avoir du couple
@@ -291,7 +291,7 @@ Ok, ok, on va faire une petite synthèse qui se divise en deux parties selon que
    Pendant qu'on y est... Alors que j'ai l'amortisseur en main ou qu'il vient d'être remonté, j'en profite pour vérifier que je peux facilement dévisser et revisser les 2 bagues du réglage de précontrainte. C'est quand même plus facile de faire ça maintenant, gentiment au garage, plutôt que de découvrir, en pleine journée de roulage, que tout est coincé, qu'on manque de force etc.
 
 <div align="center">
-<img src="./assets/image-6-6.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/image-6-6.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
