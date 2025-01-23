@@ -2,7 +2,7 @@
 layout: default
 title: "Trajectoires - Ferté Gaucher 1/2"
 parent: "Motos"
-nav_order: 5
+nav_order: 6
 #math: mathjax
 date: 2023-05-15 18:21:41
 last_modified_date: 2023-09-01 13:12:25
@@ -15,8 +15,8 @@ last_modified_date: 2023-09-01 13:12:25
 * Suite roulage du 10 juin 2023
 * Billet initial 22 mai 2023
 
-## Introduction
 
+## Introduction
 Les 13 et 14 mai 2023 j'étais, une fois n'est pas coutume, sur le circuit de la Ferté Gaucher. Le samedi c'était un [stage de pilotage moto] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-stage-du-13-05-23-lfg/) d'une journée et le dimanche un [roulage classique] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-roulage-du-14-05-23-lfg/). Le 14, j'ai eu l'occasion d'aller faire le tour du circuit à pied entre midi et deux. J'en ai profité pour prendre des photos et, un peu comme je l'ai déjà fait pour le [Vigeant] NOT YET TRANSFERED (https://www.40tude.fr/le-vigeant-1-3/), je vous propose de faire une présentation du circuit.
 
 Ici il n'y aura que 2 épisodes. La division du circuit se fera entre les deux bypass qui coupent le circuit en 2 plus petits. Le "rapide" de 2 km au sud et le "technique" de 1.6 km au nord. Pour rappel, voilà ce à quoi ressemble le circuit. Il tourne à gauche, il y a pas mal de grip et par temps sec on peut rouler sur les bandes blanches et les vibreurs (même moi je le fait, c'est dire...). Ci-dessous le sud est en bas et le nord en haut. Si vous ne connaissez pas du tout le circuit, cliquez sur l'image ci-dessous. Les bypass sont autour du spot N°6.
@@ -31,7 +31,7 @@ Un dernier mot : je ne suis pas un expert, loin de là, et donc, s'il y a des tr
 Afin de montrer que je ne "pipotte" pas, voilà la trace de ma "balade" relevée par ma montre. Je trouvais l'image sympa et c'est juste pour ça que je la mets ici.
 
 <div align="center">
-<img src="./assets/Screenshot_20230514_223734_Connect.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/Screenshot_20230514_223734_Connect.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ### Note
