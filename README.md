@@ -13,7 +13,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ---
 ## TODO
-* 404
+
 * Lightbox pour les images?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Rapatrier la page Git Survival de GitHub ici
@@ -370,6 +370,7 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 
 ---
 ## DONE
+* ~~implement 404 page~~
 * ~~Sur la 1ere page, la liste des 10 derniers billets mis à jour~~
 * ~~Centrer les vidéos~~
 * ~~Remplacer les CTRL + A par **CTRL + A**~~
