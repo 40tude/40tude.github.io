@@ -48,7 +48,6 @@ ga_tracking_anonymize_ip: true
 
 exclude:
   # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
-  - 404.md
   - README.md
   - LICENSE
   - Gemfile
