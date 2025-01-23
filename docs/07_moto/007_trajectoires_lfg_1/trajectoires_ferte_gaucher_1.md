@@ -161,7 +161,7 @@ On fait virer la moto pour atteindre le PC qui est au 3/4 du vibreur. Quand je s
 
 ### Note
 
-Quand je dis "je vais passer sur le PC" cela veut dire qu'à cet endroit-là j'aurai le corps au-dessus du vibreur ([body over the paint](https://www.40tude.fr/pilotage-moto-01-2-2-decouverte-de-la-piste/)) parce que les roues seront à 1mm de la bande blanche (et dans la bonne direction). Enfin c'est l'esprit...
+Quand je dis "je vais passer sur le PC" cela veut dire qu'à cet endroit-là j'aurai le corps au-dessus du vibreur ([body over the paint]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%})) parce que les roues seront à 1mm de la bande blanche (et dans la bonne direction). Enfin c'est l'esprit...
 
 Ce premier point de corde est très important car il conditionne notre accélération et notre vitesse au niveau des 2 prochains PC. En effet, si on est trop large sur ce premier PC ou si on est encore en train de faire tourner la moto, on ne va pas pouvoir accélérer tout de suite, il faudra attendre puis faire basculer la moto sur une plus grande amplitude et finalement on va perdre en vitesse de pointe au bout de la petite ligne droite qui suit. Donc, désolé d'être lourd, mais au PMSA il faut rester large, claquer la moto au sol, la faire pivoter et aligner ses roues pour tangenter le PC.
 
@@ -234,9 +234,12 @@ Quand je sais que je vais atteindre le PMSA que j'ai choisi, je vise le point de
 
 ### Note
 
-C'est pour ça aussi qu'on peut avoir de mauvaises surprises ici. Je m'explique. Tu as la bonne trajectoire, tu es à l'extérieur, tu changes de direction à partir du PMSA et tu "surprends" un gars qui te collait, qui ne connait pas bien encore ce virage et qui avait décidé de te faire les freins en plongeant depuis le panneau 50 m vers la corde. Croisement d'effluves... C'est mal, très mal...
+C'est pour ça aussi qu'on peut avoir de mauvaises surprises ici. Je m'explique. Tu as la bonne trajectoire, tu es à l'extérieur, tu changes de direction à partir du PMSA et tu "surprends" un gars qui te collait, qui ne connaît pas bien encore ce virage et qui avait décidé de te faire les freins en plongeant depuis le panneau 50 m vers la corde. Croisement d'effluves... C'est mal, très mal...
 
-https://youtu.be/TAQnOzY7QXE
+<!-- https://youtu.be/TAQnOzY7QXE -->
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TAQnOzY7QXE?si=gnSm_zT7x-XU--2Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 OK, je sais que vais passer par le point de corde. Je lève donc les yeux et le menton pour aller chercher le prochain PMSA (bleu sous la flèche ci-dessous). Il est très à l'extérieur. Plus la cylindrée augmente et plus on devra s'en rapprocher. Avec un 1000 typiquement c'est là-bas qu'on fait pivoter la moto. Avec un R3 la courbe en V sera beaucoup moins prononcée.
 
@@ -315,7 +318,7 @@ Je sais que je vais passer sur le point de corde donc... Je lève les yeux et le
 
 Au point de corde j'accélère franchement ("wouaap effect"). On devrait être 100% gaz au PC car avec l'inertie du moteur il sera 100% dans les tours après le point de corde alors que la moto est de plus en plus verticale.
 
-Avec l'accélération la moto va se déporter naturellement vers la gauche. Je tire sur le bracelet intérieur pour aider la moto à se relever plus vite ([contre braquage](https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)). Si cela ne te parle pas, "repousse" la moto en tendant bien ton bras gauche au-dessus du réservoir (ça revient au même en fait). Je garde bien la tête en bas, à l'intérieur du virage et le corps à droite pour pouvoir accélérer fort. Je ne remonte pas sur la selle car le prochain virage tourne encore à droite.
+Avec l'accélération la moto va se déporter naturellement vers la gauche. Je tire sur le bracelet intérieur pour aider la moto à se relever plus vite ([contre braquage] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)). Si cela ne te parle pas, "repousse" la moto en tendant bien ton bras gauche au-dessus du réservoir (ça revient au même en fait). Je garde bien la tête en bas, à l'intérieur du virage et le corps à droite pour pouvoir accélérer fort. Je ne remonte pas sur la selle car le prochain virage tourne encore à droite.
 
 <div align="center">
 <img src="./assets/20230514_130151.webp" alt="" width="900" loading="lazy"/>
@@ -357,7 +360,7 @@ Accélération franche au point de corde.
 </div>
 
 
-Avec l'accélération, la moto se déporte à gauche. Attention, là, il y a du boulot... Lors du changement d'angle, au moment où la moto est verticale, je passe un rapport de plus ([short shift](https://www.40tude.fr/pilotage-moto-10-short-shift/), je passe en 3). Je mets ensuite mon pied gauche en position haute sur le cale-pied. J'angle la moto à gauche, je colle à la ligne et j'enroule. Idéalement il faut faire tout ça alors que le corps passe de droite à gauche sans s'arrêter pour s'assoir sur la selle. Mouai... En ce qui me concerne il y a encore du boulot ici...
+Avec l'accélération, la moto se déporte à gauche. Attention, là, il y a du boulot... Lors du changement d'angle, au moment où la moto est verticale, je passe un rapport de plus ([short shift] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-10-short-shift/), je passe en 3). Je mets ensuite mon pied gauche en position haute sur le cale-pied. J'angle la moto à gauche, je colle à la ligne et j'enroule. Idéalement il faut faire tout ça alors que le corps passe de droite à gauche sans s'arrêter pour s'assoir sur la selle. Mouai... En ce qui me concerne il y a encore du boulot ici...
 
 <div align="center">
 <img src="./assets/20230514_130516.webp" alt="" width="900" loading="lazy"/>
@@ -387,13 +390,13 @@ La [seconde partie]({%link docs/07_moto/008_trajectoires_lfg_2/trajectoires_fert
 Sinon j'aime bien cette vidéo. Le mec est super propre sur les trajectoires et ça à l'air tellement facile devant un écran. J'adorerai être capable de rouler comme ça.
 
 <!-- https://youtu.be/1uPDnXCMEJg -->
-<div align="center>
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1uPDnXCMEJg?si=83SYHdhaBjMk-zsx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 Il y a aussi celle-ci. Dans la parabolique on voit bien qu'il est en 4, là où il rentre la 3 (avant le 50 m) et la façon de lier entre eux la fin de la parabolique et le pif (on va en parler dans le second épisode). Y a d'autres trucs à prendre dans le reste du circuit...
 
 <!-- https://youtu.be/ATbZfWwVQiA -->
-<div align="center>
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ATbZfWwVQiA?si=3S-eW6VRI_wHGSdX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
