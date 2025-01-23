@@ -33,7 +33,7 @@ last_modified_date: 1964-01-01 08:00:00 +0000   # Ne tient pas compte de cette p
                 {% assign page_dir = '' %} 
                 <!-- <pre>page_dir before = {{ page_dir }}</pre> -->
                 {% if image == '' %} 
-                    {% assign image = '/assets/images/40tude_307.webp' %} 
+                    {% assign image = '/assets/images/40tude_150.webp' %} 
                 {% else %} 
                     {% assign image = image | slice: 2, image.size %}
                     <!-- <pre>page.url = {{ page.url }}</pre> -->

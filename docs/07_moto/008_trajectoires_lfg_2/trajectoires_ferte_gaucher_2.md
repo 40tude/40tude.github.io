@@ -301,7 +301,7 @@ Une vraie ligne droite. Gaaaz !
 </div>
 
 
-Si on aaccéléré fort on freine fort (un peu avant le 50m en ce qui me concerne) mais surtout, je mets mes roues le long de la ligne blanche bien avant le PMSA. Je ne veux surtout pas arriver au PMSA comme si j'avais tracé une diagonale. Non, non, je longe le bord de la piste avant d'arriver au PMSA.
+Si on a accéléré fort on freine fort (un peu avant le 50m en ce qui me concerne) mais surtout, je mets mes roues le long de la ligne blanche bien avant le PMSA. Je ne veux surtout pas arriver au PMSA comme si j'avais tracé une diagonale. Non, non, je longe le bord de la piste avant d'arriver au PMSA.
 
 <div align="center">
 <img src="./assets/20230514_132259.webp" alt="" width="900" loading="lazy"/>
