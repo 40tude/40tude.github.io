@@ -17,7 +17,7 @@ last_modified_date: 2023-09-01 13:12:25
 
 
 ## Introduction
-Les 13 et 14 mai 2023 j'étais, une fois n'est pas coutume, sur le circuit de la Ferté Gaucher. Le samedi c'était un [stage de pilotage moto] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-stage-du-13-05-23-lfg/) d'une journée et le dimanche un [roulage classique] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-roulage-du-14-05-23-lfg/). Le 14, j'ai eu l'occasion d'aller faire le tour du circuit à pied entre midi et deux. J'en ai profité pour prendre des photos et, un peu comme je l'ai déjà fait pour le [Vigeant] NOT YET TRANSFERED (https://www.40tude.fr/le-vigeant-1-3/), je vous propose de faire une présentation du circuit.
+Les 13 et 14 mai 2023 j'étais, une fois n'est pas coutume, sur [le circuit de la Ferté Gaucher](https://www.circuitslfg.fr/). Le samedi c'était un [stage de pilotage moto] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-stage-du-13-05-23-lfg/) d'une journée et le dimanche un [roulage classique] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-roulage-du-14-05-23-lfg/). Le 14, j'ai eu l'occasion d'aller faire le tour du circuit à pied entre midi et deux. J'en ai profité pour prendre des photos et, un peu comme je l'ai déjà fait pour le [Vigeant] NOT YET TRANSFERED (https://www.40tude.fr/le-vigeant-1-3/), je vous propose de faire une présentation du circuit.
 
 Ici il n'y aura que 2 épisodes. La division du circuit se fera entre les deux bypass qui coupent le circuit en 2 plus petits. Le "rapide" de 2 km au sud et le "technique" de 1.6 km au nord. Pour rappel, voilà ce à quoi ressemble le circuit. Il tourne à gauche, il y a pas mal de grip et par temps sec on peut rouler sur les bandes blanches et les vibreurs (même moi je le fait, c'est dire...). Ci-dessous le sud est en bas et le nord en haut. Si vous ne connaissez pas du tout le circuit, cliquez sur l'image ci-dessous. Les bypass sont autour du spot N°6.
 
@@ -31,12 +31,12 @@ Un dernier mot : je ne suis pas un expert, loin de là, et donc, s'il y a des tr
 Afin de montrer que je ne "pipotte" pas, voilà la trace de ma "balade" relevée par ma montre. Je trouvais l'image sympa et c'est juste pour ça que je la mets ici.
 
 <div align="center">
-<img src="./assets/Screenshot_20230514_223734_Connect.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/Screenshot_20230514_223734_Connect.webp" alt="" width="225" loading="lazy"/>
 </div>
 
 ### Note
 
-Alors que Météo-France promettait "grand bleu" le matin même... Le matin même ! La météo a été pourrie toute la journée du 14. Ils ne sont vraiment pas bons eux... . Cela explique la couleur "bizarre" du ciel et le manque de luminosité des photos. Toujours à propos des photos, normalement elles sont toutes en mode paysage et sans trop de zoom (x2 je crois). Il ne faut pas hésiter à cliquer dessus pour mieux voir, zoomer et plus si affinités.
+Alors que Météo-France promettait "grand bleu" le matin même... Le matin même ! La météo a été pourrie toute la journée du 14. Ils ne sont vraiment pas bons eux... . Cela explique la couleur "bizarre" du ciel et le manque de luminosité des photos. Toujours à propos des photos, normalement elles sont toutes en mode paysage et sans trop de zoom (x2 je crois). ~~Il ne faut pas hésiter à cliquer dessus pour mieux voir, zoomer et plus si affinités.~~
 
 ## Trajectoire 1/2
 
@@ -94,7 +94,7 @@ Dès que possible je vise l'arbre qui est après l'ensemble constitué par : le 
 
 ### Note
 
-Sur un tour lancé je suis en 4 dans la ligne droite. Comme au bout on tourne à gauche et qu'on sort d'un virage qui tournait à gauche, j'essaie de rester avec la fesse gauche sortie. Cela dit, j'ai une fâcheuse tendance à revenir sur la selle. En fait la ligne droite n'est pas si longue que ça (400 m je crois) et donc, autant limiter les mouvements inutiles. Si besoin, relire [ce billet](https://www.40tude.fr/pilotage-moto-03-freinage/) ou potasser la photo ci-dessous :
+Sur un tour lancé je suis en 4 dans la ligne droite. Comme au bout on tourne à gauche et qu'on sort d'un virage qui tournait à gauche, j'essaie de rester avec la fesse gauche sortie. Cela dit, j'ai une fâcheuse tendance à revenir sur la selle. En fait la ligne droite n'est pas si longue que ça (400 m je crois) et donc, autant limiter les mouvements inutiles. Si besoin, relire [ce billet]({%link docs/07_moto/001_notes_pilotage/004_freinage/freinage.md%}) ou potasser la photo ci-dessous :
 
 <div align="center">
 <img src="./assets/image-3.webp" alt="" width="900" loading="lazy"/>
@@ -122,7 +122,7 @@ Là, je suis à la hauteur de l'arbre. Cela permet d'évaluer la distance entre 
 </div>
 
 
-Dès que je freine je rentre 2 rapports tout de suite. Je vise avec les yeux et le menton (si, si avec le menton... Ce sera beaucoup plus important dans les virages...) le point de mise sur l'angle (**PMSA**). Il est très loin après le panneau 50 m. Il est au niveau du début du vibreur qui est à gauche de la piste. C'est pour cela que certains ont leur PF après le panneau 100 m ([Nathalie](http://lfgmoto.fr/) a été mesurée à 87 m).
+Dès que je freine je rentre 2 rapports tout de suite. Je vise avec les yeux et le menton (si, si avec le menton... Ce sera beaucoup plus important dans les virages...) le point de mise sur l'angle (**PMSA**). Il est très loin après le panneau 50 m. Il est au niveau du début du vibreur qui est à gauche de la piste. C'est pour cela que certains ont leur PF après le panneau 100 m ([Nathalie](https://www.openmutuelledesmotards.fr/?page_id=2157) a été mesurée à 87 m).
 
 <div align="center">
 <img src="./assets/20230514_125026-2.webp" alt="" width="900" loading="lazy"/>
@@ -218,11 +218,10 @@ Un peu avant le 50 m, je crois que je freine et, c'est sûr, j'en rentre une tou
 </div>
 
 
-Avec le temps, les choses ont un peu évolué. Je vous propose 2 alternatives. Dernièrement j'utilise plutôt la 2.
+Avec le temps, les choses ont un peu évolué. Je vous propose 2 alternatives. Dernièrement j'utilise plutôt la seconde option.
 
-2. Mon PMSA est le PMSA "officiel", le cone bleu.
-
-6. Mon PMSA est entre le panneau 50m et le cone bleu
+1. Mon PMSA est le PMSA "officiel", le cone bleu.
+1. Mon PMSA est entre le panneau 50m et le cone bleu
 
 Quand je sais que je vais atteindre le PMSA que j'ai choisi, je vise le point de corde (PC) à venir.
 
