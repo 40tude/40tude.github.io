@@ -10,7 +10,7 @@ last_modified_date: 2025-01-20 23:00:00
 # Première fois sur circuit
 
 <div align="center">
-<img src="./assets/image-25.webp" alt="" width="450" />
+<img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ## Introduction
@@ -18,7 +18,7 @@ last_modified_date: 2025-01-20 23:00:00
 J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a bien les [Notes de Pilotage Moto]({%link docs/07_moto/001_notes_pilotage/index.md%}) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
 
 <div align="center">
-<img src="./assets/image-24.webp" alt="" width="450" />
+<img src="./assets/image-24.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les commentaires. Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
@@ -67,7 +67,7 @@ Il suffit de récupérer le .pdf ci-dessous et de l'imprimer. C'est écrit en mo
 ### 1. Reconnaissance de la piste
 
 <div align="center">
-<img src="./assets/image-21-1.webp" alt="" width="450" />
+<img src="./assets/image-21-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -80,7 +80,7 @@ Deux choses à respecter cependant:
 
 
 <div align="center">
-<img src="./assets/Screenshot_20230622_182719_Instagram.webp" alt="" width="450" />
+<img src="./assets/Screenshot_20230622_182719_Instagram.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -128,7 +128,7 @@ Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable
 
 
 <div align="center">
-<img src="./assets/image-21-2.webp" alt="" width="450" />
+<img src="./assets/image-21-2.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -179,7 +179,7 @@ Ajoute des +1 et des -1 sur ton plan du circuit.
 ### 3. Se coucher sur la moto
 
 <div align="center">
-<img src="./assets/image-21.webp" alt="" width="450" />
+<img src="./assets/image-21.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -190,7 +190,7 @@ Lors de cette session tu vas faire l'effort de te coucher sur le réservoir dans
 Typiquement, dans les 2 premières sessions tu avais une position type Gendarmerie Nationale (pas d'offense les gars, n'allez pas m'envoyer à Cayenne pour ça). Tu avais les bras tendus, le torse droit, la tête penchée en opposition, type promenade du dimanche. Tu ne vas pas pouvoir garder cette position dans les sessions à venir. Il faut donc t’entraîner à être dynamique et mobile sur la moto, à baisser la tête et à voir le circuit sous cet angle. Il faut te dire que tu ne roules plus mais que tu commences à piloter. C'est complètement autre chose.
 
 <div align="center">
-<img src="./assets/img01.webp" alt="" width="450" />
+<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -199,7 +199,7 @@ Tu vas commencer par la plus grande ligne droite parce que c'est là que tu as l
 Heu... C'est peut-être un détail pour toi mais pour moi ça veut dire beaucoup 🎶. Quand tu abaisses le haut du corps tu ne t'accroches pas au guidon. Idéalement tu devrais être capable de baisser le torse sans utiliser tes mains (c'est d'ailleurs un bon exercice à faire en statique sur l'aire plane ou la veille dans ton garage). Le truc, c'est que moins on touche la moto mieux c'est et idéalement s'il n'y avait pas de pilote, la moto se comporterait bien mieux la plupart du temps. Donc, bref, tu ne tiens presque pas les poignées et tu fais tout avec **les abdos**. Oui, oui je confirme c'est un sport et tu vas bien dormir ce soir. Et non, tu n'as pas besoin de serrer l'accélérateur comme tu le fais. Tu peux le tenir ouvert à 100% avec 3 doigts. Là aussi, fais le test sur le parking ou quand tu roules la semaine qui précède le roulage.
 
 <!-- <div align="center">
-<img src="./assets/image-21_1.webp" alt="" width="300" />
+<img src="./assets/image-21_1.webp" alt="" width="300" loading="lazy"/>
 </div> -->
 
 <div align="center">
@@ -236,7 +236,7 @@ Lors de la prochaine session, quand tu auras sanglé ton casque, mets une main s
 ### 4. Point de corde et trajectoire
 
 <div align="center">
-<img src="./assets/img02.webp" alt="" width="450" />
+<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -270,7 +270,7 @@ Quand tu l'as fait une fois, tu recommences mais en essayant de sortir un peu pl
 On va utiliser le formidable schéma ci-dessous :
 
 <div align="center">
-<img src="./assets/image-20.webp" alt="" width="450" />
+<img src="./assets/image-20.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -361,7 +361,7 @@ C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui dép
 ### 5. Freinage
 
 <div align="center">
-<img src="./assets/image-22.webp" alt="" width="450" />
+<img src="./assets/image-22.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -441,7 +441,7 @@ Il faut être **pro-gre-ssif** et y aller doucement pour ne pas brusquer la moto
 ### 6. Conduite du virage
 
 <div align="center">
-<img src="./assets/img03.webp" alt="" width="450" />
+<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -481,7 +481,7 @@ Non, tu ne vas pas vers le réservoir, tu vas à côté du réservoir, vers le P
 * *Comme avant :* pas de filet de gaz. Quand tu commences à enrouler le câble tu le fais de manière imperceptible au début mais surtout tu ne t'arrêtes plus et tu enroules de plus en plus vite au fur et à mesure que tu redresses la moto en t'approchant du PC.
 
 <div align="center">
-<img src="./assets/20230625_001949-1-scaled.webp" alt="" width="450" />
+<img src="./assets/20230625_001949-1-scaled.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -572,7 +572,7 @@ Maintenant il y a deux cas de figure :
 Cela n'a rien à voir avec le circuit mais toi et la moto allez faire des trucs que tu ne penses pas possible, tu vas comprendre beaucoup de choses et surtout, tu vas prendre confiance, beaucoup de confiance.  
 
 <div align="center">
-<img src="./assets/image-23.webp" alt="" width="450" />
+<img src="./assets/image-23.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 Quand ça s'est fait, redonne-toi une chance sur circuit et/ou fais une journée de stage dédiée aux Novices (c'est le niveau avant Débutant). Le circuit de la Ferté Gaucher organise des journées de ce type mais je suis certains que cela existe aussi ailleurs. Là, c'est top car il y a encore moins de monde par session (moitié moins de monde que ce que l'on a en journée de roulage typique où on compte une moto par 100 m de circuit), tout le monde a le même niveau, c'est encadré, il y a des sessions en salle, des débriefings etc.
