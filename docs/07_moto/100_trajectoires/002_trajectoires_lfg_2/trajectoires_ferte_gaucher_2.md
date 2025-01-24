@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Trajectoires - Ferté Gaucher 2/2"
-parent: "Motos"
+title: "La Ferté Gaucher 2"
+parent: "Trajectoires"
 nav_order: 7
 #math: mathjax
 date: 2023-05-15 19:09:23
@@ -9,9 +9,9 @@ last_modified_date: 2023-09-01 13:25:39
 ---
 
 
-# Trajectoires - Ferté Gaucher 2/2
+# La Ferté Gaucher 2
 
-Si besoin, la [première partie]({%link docs/07_moto/007_trajectoires_lfg_1/trajectoires_ferte_gaucher_1.md%}) du tour du circuit de la Ferté Gaucher est ici.
+Si besoin, la [première partie]({%link docs/07_moto/100_trajectoires/001_trajectoires_lfg_1/trajectoires_ferte_gaucher_1.md%}) du tour du circuit de la Ferté Gaucher est ici.
 
 Dans ce billet on va parler de la partie Technique, le 1.6 km qui est au nord (en haut dans le plan ci-dessous)
 

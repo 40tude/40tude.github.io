@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Trajectoires - Ferté Gaucher 1/2"
-parent: "Motos"
+parent: "trajectoires"
 nav_order: 6
 #math: mathjax
 date: 2023-05-15 18:21:41
@@ -384,7 +384,7 @@ Et on arrive au premier bypass du circuit. Pour l'instant on reste le long de la
 </div>
 
 
-La [seconde partie]({%link docs/07_moto/008_trajectoires_lfg_2/trajectoires_ferte_gaucher_2.md%}) du circuit est ici.
+La [seconde partie]({%link docs/07_moto//100_trajectoires/002_trajectoires_lfg_2/trajectoires_ferte_gaucher_2.md%}) du circuit est ici.
 
 Sinon j'aime bien cette vidéo. Le mec est super propre sur les trajectoires et ça à l'air tellement facile devant un écran. J'adorerai être capable de rouler comme ça.
 
