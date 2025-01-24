@@ -481,9 +481,14 @@ Quand je sais que mes roues vont passer sur le point de corde, j'enroule, je vis
 <img src="./assets/image-4-4.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Non. Trop large.
+
 <div align="center">
 <img src="./assets/image-4-3.webp" alt="" width="900" loading="lazy"/>
 </div>
+
+Oui. Sauf erreur de ma part c'est Gregg Black le 27 05 2023.
+
 
 
 Ensuite je vise de manière classique la fin du vibreur extérieur. La moto ne doit pas être verticale avant la fin du vibreur. Je suis 100% gaz au PC (c'est l'idée...). C'est l'accélération qui me déporte à l'extérieur. Bref faut ouvrir ! (Hé t'es mignon, t'as qu'à le faire !)

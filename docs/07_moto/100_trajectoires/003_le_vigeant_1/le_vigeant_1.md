@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Le Vigeant - Trajectoires - 1/3"
+title: "Le Vigeant 1"
 parent: "Trajectoires"
 nav_order: 3
 #math: mathjax
@@ -60,7 +60,7 @@ Au PF je rentre 2 rapports tout de suite pour bénéficier d'un vrai frein moteu
 <div align="center">
 <img src="./assets/20230608_082902-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
-
+Ci-dessus, le panneau 100 m est à droite, au bout de la petite ligne blanche qui traverse la piste (en bas à droite dans l'image).
 
 Dans l'image suivante, on est sous la passerelle. Idéalement c'est là qu'il faudrait freiner. Quoiqu'il en soit on reste droit sous la passerelle pour optimiser le freinage (rallonger les lignes droites, raccourcir les virages...)
 
@@ -167,6 +167,11 @@ Au sol il y a une espèce de marque/rainure qui sépare la piste en deux. Il fau
 <img src="./assets/2022-05-27-18.08.59-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+
+<div align="center">
+<img src="./assets/2022-08-23-17.29.48-1.webp" alt="" width="900" loading="lazy"/>
+</div>
+Photo de 2022. Bien sûr, la marque va disparaître un jour ou l'autre
 
 Les 2 virages à droite qui suivent sont très importants car ils conditionnent la vitesse dans la prochaine longue ligne droite. On est sorti mi-piste puis on arrive à la hauteur du PMSA en étant 3/4 piste à gauche. On est parallèle à la bande blanche. On arrive vite et on ne freine pas. On coupe en mettant la moto très rapidement sur l'angle puis filet de gaz à partir du premier PC pour s'écarter vers l'extérieur. L'idée est d'enchaîner les 2 virages en un seul. La moto ne doit pas se relever. On passe donc les 2 virages avec le même angle, en une fois. Si on était en Snowboard, au sol on ne devrait voir qu'une seule belle courbe, bien coupée, entre les 2 PC.
 

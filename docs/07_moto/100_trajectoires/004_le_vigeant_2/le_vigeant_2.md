@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Le Vigeant - Trajectoires - 2/3"
+title: "Le Vigeant 2"
 parent: "Trajectoires"
 nav_order: 4
 
