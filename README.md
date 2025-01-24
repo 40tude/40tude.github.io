@@ -45,7 +45,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 ---
 ## À garder sous le coude
 
-* `NOT YET TRANSFERED`
+* ` NOT YET TRANSFERED `
 
 ```
     purple        red              blue               green        yellow     
