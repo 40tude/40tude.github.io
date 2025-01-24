@@ -1,21 +1,23 @@
 ---
 layout: default
-title: "2018 - Choisir sa moto pour la piste"
+title: "2018 - Choisir sa moto"
 parent: "Choisir sa moto pour la piste"
-nav_order: 2
+nav_order: 3
 #math: mathjax
 date: 2018-11-01 17:02:55
 last_modified_date: 2021-11-25 23:57:10
 ---
 
-# 2018 - Choisir sa moto pour la piste
+# 2018 - Choisir sa moto
 
 
 # Introduction
 
 J'imagine ici qu'après un ou deux roulage avec ta moto "civile", tu as décidé d'investir dans une moto qui sera dédiée à la piste... Bienvenue au club!
 
-Ceci dit... Ceci dit, pas facile cette histoire de choix de la moto pour aller sur piste... C'est généralement une somme non négligeable. Ensuite on veut progresser côté pilotage sans passer sa vie dans le cambouis... Enfin, plus encore que lors d'un autre achat de véhicule, on est excité, anxieux, impatient... Il est donc grand temps de se calmer... Je vais donc expliquer comment ça s'est passé pour moi en espérant que ça en aidera certains...
+Avant d'aller plus loin, tu penses qu'il va te falloir aussi un camion ou une remorque, les assurances et les lieux de stockage associées. Oui, oui on est d'accords ce sont des détails...
+
+Ceci dit... Ceci dit, pas facile cette histoire de choix de la moto pour aller sur piste... C'est généralement une somme non négligeable. Ensuite on veut progresser côté pilotage sans passer sa vie dans le cambouis... Enfin, plus encore que lors d'un autre achat de véhicule, on est excité, anxieux, impatient... Il est donc grand temps de se calmer et de prendre du recul... Je vais donc expliquer comment ça s'est passé pour moi en espérant que ça en aidera certains...
 
 
 

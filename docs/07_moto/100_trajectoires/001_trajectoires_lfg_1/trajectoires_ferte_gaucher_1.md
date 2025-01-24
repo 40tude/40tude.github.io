@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Trajectoires - Ferté Gaucher 1/2"
+title: "La Ferté Gaucher 1"
 parent: "Trajectoires"
 nav_order: 1
 #math: mathjax
@@ -8,7 +8,7 @@ date: 2023-05-15 18:21:41
 last_modified_date: 2023-09-01 13:12:25
 ---
 
-# Trajectoires - Ferté Gaucher 1/2
+# La Ferté Gaucher 1
 
 
 ## Mises à jour
