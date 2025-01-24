@@ -9,7 +9,7 @@ last_modified_date : 2022-03-26 12:00:00
 
 # Feuille de sessions
 
-Imprimer une feuille par journée de roulage
+Imprimer une feuille par journée de roulage ([version pdf](assets/sessions.pdf))
 
 ## Journée
 

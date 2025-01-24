@@ -10,7 +10,7 @@ last_modified_date : 2022-03-26 12:00:00
 
 # Checklist pour les roulages
 
-**N** = Nombre de jours de roulage
+**N** = Nombre de jours de roulage. La [version pdf](assets/checklist.pdf) 
 
 
 | Catégorie                  | Articles                                                                             |
