@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "2021 - Choisir sa moto pour la piste"
-parent: "Motos"
+parent: "Choisir sa moto pour la piste"
 nav_order: 2
 #math: mathjax
 date: 2021-12-28 12:43:48
