@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Trajectoires - Ferté Gaucher 1/2"
-parent: "trajectoires"
-nav_order: 6
+parent: "Trajectoires"
+nav_order: 1
 #math: mathjax
 date: 2023-05-15 18:21:41
 last_modified_date: 2023-09-01 13:12:25
