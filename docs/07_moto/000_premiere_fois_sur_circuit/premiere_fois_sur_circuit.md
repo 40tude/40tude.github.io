@@ -333,6 +333,23 @@ Il faut que les deux conditions soient réunies et c'est pour cela qu'il est plu
 * Des points de passage dont on a parlé, le PC est le plus important.  
 C'est le même pour tous les pilotes quel que soit leur niveau. Il ne changera jamais, il dépend du virage pas des pilotes. Les autres, PMSA, PV et PS vont évoluer avec ton niveau. Par exemple plus tu vas rentrer vite dans un virage et plus ton PMSA va reculer (se faire tôt). Cela dit, aujourd'hui fais l'effort de bien utiliser toute la piste et de respecter les cônes. Va bien chercher le PMSA à l'extérieur en entrée et va bien chercher le PS à l'extérieur en sortie. Ça va "t'ouvrir" le virage et surtout ça va permettre à ton cerveau d'appréhender toute la largeur de la piste. Ensuite tu apprendras que dans tel ou tel virage il faut rentrer en étant 3/4 piste ou que dans tel autre faut sortir 1/2 piste. Mais bon on n'y est pas encore. Pour l'instant on est en mode "académique" on affinera plus tard.
 
+* *Pourquoi tu insistes autant pour qu'on arrive au PMSA en longeant la ligne blanche?*  
+On va utiliser la figure ci-dessous dans laquelle on arrive du bas. On est sorti d'un virage droit qui était lui-même suivit d'un petit bout droit. Donc, à la sortie du premier virage on était tout à gauche de la piste et on doit négocier un virage à gauche.  
+
+<div align="center">
+<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+Ok, c'est plus clair avec la figure? Bon, en fait c'est un problème d'efficacité. Nous sommes lents, très lents lorsqu'on met la moto sur l'angle donc on a tout intérêt à se faciliter la vie. 
+
+1. **Cas 1 :** La ligne rouge. On sort du virage précédent, on est à gauche de la piste, on accélère et on prend notre temps. À un moment on se dit qu'il faut se mettre à droite de la piste pour attaquer le virage à gauche qui arrive à vitesse grand V. On est en retard, on vise le cône et on arrive avec la moto alignée selon la ligne rouge. Pour inscrire la moto dans le virage il faut donc la faire virer d'un angle Beta. C'est l'angle entre la ligne rouge et la courbe bleue.
+1. **Cas 2 :** La ligne verte. Non, on va pas à la chaise électrique... On sort du virage précédent, on est à gauche de la piste, on accélère et on se bouge les fesses pour se mettre, très rapidement, sur la droite de la piste. On vise le cône et on arrive avec la moto alignée selon la ligne verte. Les deux roues sont parallèles à la ligne. Pour inscrire la moto dans le virage il faut la faire virer d'un angle Alpha. L'angle entre la ligne verte et la courbe bleue.
+
+Comme on est toujours aussi lent, notre vitesse de mise sur l'angle n'a pas évolué. D'après toi, dans quelle cas tu vas mettre la moto plus rapidement sur l'angle? Bon, ben tu sais ce qu'il te reste à faire... Pour te faciliter la vie dans le prochain virage ne vise pas le cône de PMSA mais un point bien avant et dans tous les cas tu t'arranges pour **longer la ligne AVANT le PMSA.** 
+
+
+
+
 * *Pourquoi le point de pivot (PV) c'est pas le point de mise sur l'angle (PMSA)?*  
 En fait, le PMSA correspond au moment où on commence à mettre la moto sur l'angle alors que le PV correspond vraiment au moment où on fait pivoter/tourner la moto. Plus le virage est serré plus PMSA et PV seront distincts. À l'instar du PF (point de freinage) le PV dépend du pilote, de comment il le sent etc.
 

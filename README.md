@@ -1,19 +1,6 @@
 C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + Just the Docs + GitHub
 
-
-
-
-
-
-
-
-
-
-
-
----
 ## TODO
-* Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md
 * Lightbox pour les images?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Rapatrier la page Git Survival de GitHub ici
@@ -36,13 +23,23 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 
 
+## IDEES DE BILLETS
+* Pareto et 50%-1%
+* Revenir sur Codingame
+* SOS Chapitres IV et suivants
+* IA et ML 
+* Relire les notes OneNote de préparation certification Architect IA et voir ce que je peux rapatrier
+* Rapatrier la page install Linux Mint qui est sur GitHub 
+* 52 nuances de physique (faut vraiment que je l'écrive un jour)
 
 
 
 
 
 
----
+
+
+
 ## À garder sous le coude
 
 * ` NOT YET TRANSFERED `
@@ -370,6 +367,8 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 
 ---
 ## DONE
+* ~~Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md~~
+* ~~Faire une checklist.pdf~~
 * ~~implement 404 page~~
 * ~~Sur la 1ere page, la liste des 10 derniers billets mis à jour~~
 * ~~Centrer les vidéos~~
@@ -405,53 +404,3 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
     * Lire : <https://jekyllrb.com/docs/permalinks/#front-matter>
 * ~~Back to Top~~
 * ~~First et last Edit en bas de page~~
-
-
-
-
-
-
-
-
-
-
----
-## IDEES DE BILLETS
-* Pareto et 50%-1%
-* Revenir sur Codingame
-* SOS Chapitres IV et suivants
-* IA et ML 
-* Relire les notes OneNote de préparation certification Architect IA et voir ce que je peux rapatrier
-* Rapatrier la page install Linux Mint qui est sur GitHub 
-* 52 nuances de physique (faut vraiment que je l'écrive un jour)
-
-
-
-
-
-
-
-
-
-
----
-## Organisation des catégories ?
-
-* 02_simple_os
-* 03_maths
-* 04_windows
-* 05_linux
-* 06_programmation
-    *  Python
-    *  C++
-    *  C
-* 07_moto
-    *  Pilotage circuit
-    *  RSV4
-    *  ZX6R
-    *  Divers
-* 08_snowboard 
-* 99_divers
-    * Billet Jeune
-    * Billet Gravel
-    * ... 
