@@ -13,7 +13,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ---
 ## TODO
-
+* Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md
 * Lightbox pour les images?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Rapatrier la page Git Survival de GitHub ici
