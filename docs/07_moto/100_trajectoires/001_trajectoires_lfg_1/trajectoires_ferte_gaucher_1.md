@@ -384,7 +384,7 @@ Et on arrive au premier bypass du circuit. Pour l'instant on reste le long de la
 </div>
 
 
-La [seconde partie]({%link docs/07_moto//100_trajectoires/002_trajectoires_lfg_2/trajectoires_ferte_gaucher_2.md%}) du circuit est ici.
+La [seconde partie]({%link docs/07_moto/100_trajectoires/002_trajectoires_lfg_2/trajectoires_ferte_gaucher_2.md%}) du circuit est ici.
 
 Sinon j'aime bien cette vidéo. Le mec est super propre sur les trajectoires et ça à l'air tellement facile devant un écran. J'adorerai être capable de rouler comme ça.
 
