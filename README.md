@@ -2,7 +2,6 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ## TODO
 * Voir dans le repo GitHub si y a pas des articles à rapatrier
-* Lightbox pour zoomer sur les images?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Faire un billet sur le portage de WP vers markdown?
 * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
@@ -20,6 +19,11 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
     * Y a peut être une option avec les collection mais je sais pas si y a lang="en" avant le head
 
 ## DONE
+* ~~Lightbox pour zoomer sur les images?~~
+    * C'est sans doute perfectible mais on peut cliquer sur toutes les images
+    * Ensuite on peut zoomer sur PC et sur telephone
+    * Le seul truc c'est que si on zoom, la page en arrière plan zoom aussi
+    * On va partir comme ça pour l'instant
 * ~~Ajouter un espace pour les discussions~~
 * ~~Rapatrier la page Git Survival de GitHub ici~~
 * ~~Rapatrier la page install Linux Mint qui est sur GitHub~~ 

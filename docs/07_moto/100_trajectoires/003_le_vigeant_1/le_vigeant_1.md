@@ -28,7 +28,7 @@ Il y a peu de temps, j'ai eu la possibilité de faire le tour du circuit du Vige
 
 ### Une remarque
 
-~~N'hésitez pas à cliquer sur les images pour les voir en plein écran et pouvoir zoomer dessus.~~ (Momentanément non disponible)
+N'hésitez pas à cliquer sur les images pour les voir en plein écran et pouvoir zoomer dessus.
 
 Pour le reste, en cours de lecture vous croiserez des réflexions ou des questions... Pas d'offense, c'est surtout pour moi 😏.
 

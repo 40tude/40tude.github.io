@@ -36,7 +36,7 @@ Afin de montrer que je ne "pipotte" pas, voilà la trace de ma "balade" relevée
 
 ### Note
 
-Alors que Météo-France promettait "grand bleu" le matin même... Le matin même ! La météo a été pourrie toute la journée du 14. Ils ne sont vraiment pas bons eux... . Cela explique la couleur "bizarre" du ciel et le manque de luminosité des photos. Toujours à propos des photos, normalement elles sont toutes en mode paysage et sans trop de zoom (x2 je crois). ~~Il ne faut pas hésiter à cliquer dessus pour mieux voir, zoomer et plus si affinités.~~ (Momentanément non disponible)
+Alors que Météo-France promettait "grand bleu" le matin même... Le matin même ! La météo a été pourrie toute la journée du 14. Ils ne sont vraiment pas bons eux... . Cela explique la couleur "bizarre" du ciel et le manque de luminosité des photos. Toujours à propos des photos, normalement elles sont toutes en mode paysage et sans trop de zoom (x2 je crois). Il ne faut pas hésiter à cliquer dessus pour mieux voir, zoomer et plus si affinités.
 
 ## Trajectoire 1/2
 

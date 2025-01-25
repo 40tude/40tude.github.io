@@ -85,7 +85,7 @@ Une vidéo que j'ai trouvé après... : <https://youtu.be/zEuBvuRX5b0>
 
 ## T'as d'autres images en gros plan ?
 
-Voili, voilà ce que j'ai. ~~Il ne faut pas hésiter à **cliquer sur les images** puis à zoomer dessus si besoin~~ (Momentanément non disponible). Si tu ne trouves pas ton bonheur ici il faut continuer à lire. Il y a d'autres images plus loin dans le billet.
+Voili, voilà ce que j'ai. Il ne faut pas hésiter à **cliquer sur les images** puis à zoomer dessus si besoin. Si tu ne trouves pas ton bonheur ici il faut continuer à lire. Il y a d'autres images plus loin dans le billet.
 
 <div align="center">
 <img src="./assets/20230424_175638-scaled.webp" alt="" width="600" loading="lazy"/>
