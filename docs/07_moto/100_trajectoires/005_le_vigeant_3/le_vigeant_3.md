@@ -85,6 +85,14 @@ Mise sur l'angle rapide (j'ai dit rapide...) avant la fin de la moquette. On doi
 </div>
 
 
+Une version "tableau blanc" du Trop Tard. Je suis très fort au tableau... On arrive du haut. Les roues sont à 1 cm de la ligne blanche. On claque la moto sur l'angle. Pas de frein, pas de gaz jusqu'à la moitié de la piste. Angle max, genou au sol. Quand on croise la moitié de la piste (pointillés bleus) on commence à enrouler car les pneus sont dans la direction de la fin du vibreur extérieur.
+
+<div align="center">
+<img src="./assets/trop_tard.webp" alt=""  loading="lazy"/>
+</div>
+
+
+
 Là, on regarde derrière nous
 
 <div align="center">
