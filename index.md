@@ -80,3 +80,7 @@ Pour l'instant je suis focus sur le transfert.
 * Il suffit d'aller dans cet [espace dédié](https://github.com/40tude/40tude.github.io/discussions)
     * Techniquement le site est sur GitHub. Il est probable qu'avant de pouvoir écrire, on te demande de t'inscrire. 
     * Je pense que tout le monde peut lire. 
+
+### Images
+* Faut pas hésiter à cliquer sur les images. 
+* Elles s'affichent dans leur dimensions initiales et on peut zoomer si besoin    
