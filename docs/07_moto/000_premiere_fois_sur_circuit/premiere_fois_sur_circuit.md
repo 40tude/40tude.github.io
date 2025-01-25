@@ -9,17 +9,9 @@ last_modified_date: 2025-01-20 23:00:00
 
 # Première fois sur circuit
 
-<!-- <div align="center">
-<img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
-</div> -->
-
-
 <div align="center">
-    <a href="./assets/image-25.webp">
-        <img src="./assets/image-25.webp" alt="" width="450" loading="lazy" />
-    </a>
+<img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
 </div>
-
 
 
 
@@ -77,9 +69,7 @@ Il suffit de récupérer le .pdf ci-dessous et de l'imprimer. C'est écrit en mo
 ### 1. Reconnaissance de la piste
 
 <div align="center">
-    <a href="./assets/image-21-1.webp">
-        <img src="./assets/image-21-1.webp" alt="" width="450" loading="lazy"/>
-    </a>
+<img src="./assets/image-21-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -140,9 +130,7 @@ Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable
 
 
 <div align="center">
-    <a href="./assets/image-21-2.webp">
-        <img src="./assets/image-21-2.webp" alt="" width="450" loading="lazy"/>
-    </a>
+<img src="./assets/image-21-2.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
