@@ -39,30 +39,36 @@ J'ai arbitrairement découpé le circuit en 3 zones. Allez c'est parti, on attaq
 </div>
 
 
-On est au-delà de la ligne d'arrivée, on est gaz en grand en 5. Dans l'image ci-dessous on regarde derrière nous, de l'endroit d'où l'on vient.
+On est au-delà de la ligne d'arrivée, on est 100% gaz, **en butée**, en 5. Dans l'image ci-dessous on regarde derrière nous, de l'endroit d'où l'on vient.
 
 <div align="center">
 <img src="./assets/2022-05-27-17.59.08-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-On se dirige plein pot vers la passerelle. Au fait, tu es sûr que tu es en butée de l'accélérateur, à 100% de charge ? En ce qui me concerne, je colle à la ligne blanche et mon point de freinage (PF) c'est la moitié de la zone blanche après les zébras.
+On se dirige plein pot vers la passerelle. Au fait, tu es sûr que tu es **en butée** de l'accélérateur, à 100% de charge ? En ce qui me concerne, je colle à la ligne blanche et mon point de freinage (PF) c'est la moitié de la zone blanche après les zébras.
 
-Août 2023 : Quand je suis en forme, je prends dorénavant les freins au bout de la zone blanche après les zébras. Lors du stage DRRS, Wilfrid indiquait qu'avec un mille, le PF c'est la passerelle. J'ose pas encore...
+**Août 2023** : Quand je suis en forme, je prends dorénavant les freins au bout de la zone blanche après les zébras. Lors du stage DRRS, Wilfrid indiquait qu'avec un mille, le PF c'est la passerelle. J'ose pas encore...
 
 <div align="center">
 <img src="./assets/2022-05-27-17.59.14-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-Au PF je rentre 2 rapports tout de suite pour bénéficier d'un vrai frein moteur. Je reste collé à la ligne blanche. Le point à partir duquel je change de direction pour commencer à me décoller de la ligne (le tout petit cône rouge, à gauche de la piste, au milieu de l'image ci-dessous) est pile-poil au milieu de la distance qui sépare le panneau 100 m (à droite de la piste, on ne le voit pas dans la photo ci-dessous mais il est au bout de la ligne blanche qui traverse la piste) et le panneau avec une flèche noire (à gauche de la piste et à gauche de la photo ci-dessous).
+Au PF je rentre 2 rapports tout de suite pour bénéficier d'un vrai frein moteur. Je reste collé à la ligne blanche. 
+
+Le point à partir duquel je change de direction pour commencer à me décoller de la ligne est pile-poil au milieu de la distance qui sépare le panneau 100 m et le panneau avec une flèche noire qui pointe vers la droite.
+
+* **Le panneau 100 m** : il est sur la droite de la piste. On ne le voit pas dans la photo ci-dessous mais il est au bout de la ligne blanche qui traverse la piste. 
+* **Le panneau avec une flèche noire** : lui ça va, il est à gauche de la photo ci-dessous.
+* **Le milieu** dont je parle : c'est le tout petit cône rouge, à gauche de la piste, au milieu de l'image ci-dessous.
+
 
 <div align="center">
 <img src="./assets/20230608_082902-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
-Ci-dessus, le panneau 100 m est à droite, au bout de la petite ligne blanche qui traverse la piste (en bas à droite dans l'image).
 
-Dans l'image suivante, on est sous la passerelle. Idéalement c'est là qu'il faudrait freiner. Quoiqu'il en soit on reste droit sous la passerelle pour optimiser le freinage (rallonger les lignes droites, raccourcir les virages...)
+Dans l'image suivante, on est sous la passerelle. Idéalement c'est là qu'il faudrait freiner. Quoiqu'il en soit on reste droit sous la passerelle pour optimiser le freinage (rallonger les lignes droites, raccourcir les virages...). Pour le coup on voit bien la fine ligne blanche horizontale. À sa droite, se trouve le panneau 100 m.
 
 <div align="center">
 <img src="./assets/2022-05-27-18.00.34-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -92,11 +98,11 @@ On est, bien sûr, toujours sur les freins, on se dirige vers le 1er PC (au nive
 </div>
 
 
-On continue à avancer dans le virage. Quand on est 3/4 de piste environ, on devrait rentrer un rapport (se retrouver en 2). Perso je n'y arrive pas encore. On a plus les freins, on n'a pas de gaz, phase neutre, on couche la moto. C'est là qu'on fait le V, c'est là qu'on doit avoir le genou au sol, pas avant. On fait pivoter la moto en pointant du menton le second PC.
+On continue à avancer dans le virage. Quand on est 3/4 de piste environ, on devrait rentrer un rapport (se retrouver en 2). Perso, je n'y arrive pas encore. On a plus les freins, on n'a pas de gaz, phase neutre, on claque la moto pour la faire pivoter. C'est là qu'on fait la pointe du V, c'est là qu'on doit avoir le genou au sol, pas avant. On fait pivoter la moto en pointant du menton le second PC.
 
-Août 2023 : comme ce n'est pas toujours facile d'en rentrer une quand on arrive au 3/4 de la piste, certains font le choix de rentrer un rapport au premier point de corde. C'est plus facile et ça permet d'être en 2 dans le virage. À tester.
+**Août 2023** : comme ce n'est pas toujours facile d'en rentrer une quand on arrive au 3/4 de la piste, certains font le choix de rentrer un rapport au premier point de corde. C'est plus facile et ça permet d'être en 2 dans le virage. À tester.
 
-Si jamais un jour il n'y a pas de cône pour marquer le PV, le point extérieur à viser se trouve en face de la fin du vibreur intérieur. Voir ci-dessous. Sauf erreur de ma part en juin 2023 il y a dorénavant un rectangle blanc peint au sol.
+Si jamais un jour il n'y a pas de cône pour marquer le PV, le point extérieur à viser se trouve en face de la fin du vibreur intérieur. Voir ci-dessous. Sauf erreur de ma part en juin 2023 il y a dorénavant un gros rectangle blanc peint au sol.
 
 <div align="center">
 <img src="./assets/2022-08-22-19.09.05-1-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -105,28 +111,32 @@ Si jamais un jour il n'y a pas de cône pour marquer le PV, le point extérieur 
 
 Là, on a passé le second PC (avant dernier vibreur rouge) et on regarde derrière nous. À la sortie du double droit il faut faire l'effort de ne pas vouloir aller tout à l'extérieur car en fait le prochain virage est un gauche. Il va donc falloir traverser la piste et plus on sera à l'extérieur, plus cela va nous prendre du temps.
 
-Si on sort fort et sur le vibreur faut sentir qu'on contrebraque en repoussant la moto avec le bras extérieur qui est tendu et en tirant sur le bracelet intérieur (bras intérieur plié). Contrebraquer (consciemment ou pas) en sortie permet de relever la moto plus vite ce qui permet d'accélérer plus fort et pour plus longtemps (je parle spécifiquement du contre braquage en sortie de virage sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)). Bref, on sort 3/4 piste si possible sinon va falloir se bouger les fesses car le prochain virage arrive vite. L'idée ici est de favoriser la distance et d'éviter de faire des grands S (j'en parle sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)).
+Si on sort fort et sur le vibreur faut sentir qu'on contrebraque en repoussant la moto avec le bras extérieur qui est tendu et en tirant sur le bracelet intérieur (bras intérieur plié). Contrebraquer (consciemment ou pas) en sortie permet de relever la moto plus vite ce qui permet d'accélérer plus fort et pour plus longtemps. 
+
+Je parle spécifiquement du contre braquage en sortie de virage sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/). 
+
+On sort 3/4 piste si possible sinon va falloir se bouger les fesses car le prochain virage arrive vite. L'idée ici est de favoriser la distance et d'éviter de faire des grands S (j'en parle sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)).
 
 <div align="center">
 <img src="./assets/2022-05-27-18.04.47-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-Bref, on accélère fort, si on est sorti en 2 on passe la 3 et on se débrouille comme on veut MAIS il faut que la moto longe la ligne blanche de droite (à 1 cm) avant d'arriver au prochain vibreur. C'est notre prochain point de mise sur l'angle (PMSA).
+On accélère fort, si on est sorti en 2 on passe la 3 et on se débrouille comme on veut mais il faut que la moto longe la ligne blanche de droite (à 1 cm) avant d'arriver au prochain vibreur. C'est notre prochain point de mise sur l'angle (PMSA).
 
 <div align="center">
 <img src="./assets/2022-05-27-18.05.11-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-Il y a des craquelures au sol on peut s'en servir comme repaire. Je me dirige vers la droite de la piste. Je vise un point situé AVANT le vibreur afin d'avoir le temps de me mettre à longer la ligne blanche AVANT d'avoir atteint le vibreur. C'est important d'arriver au PMSA en longeant la ligne blanche.
+Il y a des craquelures au sol on peut s'en servir comme repaire. Je me dirige vers la droite de la piste. Je vise un point sur la bande blanche et situé AVANT le vibreur afin d'avoir le temps de me mettre à longer la ligne blanche AVANT d'avoir atteint le vibreur. Je sais, je suis lourd mais c'est important d'arriver au PMSA en longeant la ligne blanche.
 
 <div align="center">
 <img src="./assets/2022-08-22-19.10.45-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-On est au début du vibreur. On a freiné sans rentrer de rapport. On est en 3. On rentre avec de la vitesse et on commence la mise sur l'angle dès qu'on arrive au niveau vibreur en faisant l'effort de rester large car le point de corde qu'on va aller chercher à gauche, à l'intérieur est très tard. Faut être rapide et incisif. Genou au sol au début de la mise sur l'angle.
+On est au début du vibreur. On a freiné sans rentrer de rapport. On est en 3. On rentre avec de la vitesse et on commence la mise sur l'angle dès qu'on arrive au niveau vibreur en faisant l'effort de rester large car le point de corde qu'on va aller chercher, à gauche, à l'intérieur est très tard. Faut être rapide et incisif. Genou au sol au début de la mise sur l'angle.
 
 <div align="center">
 <img src="./assets/2022-05-27-18.06.16-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -140,7 +150,9 @@ Cela n'a rien à voir avec les trajectoires... C'est juste pour confirmer qu'au 
 </div>
 
 
-Faut rester large... Pour être complet, j'ai entendu une autre version qui dit : tu arrives mi-piste, tu claques la moto à la mise sur l'angle, genou au sol et tu colles la corde le plus vite possible. L'idée étant sans doute de bien rester à gauche à la sortie, d'accélérer fort sans trop s'écarter dans le bout de ligne droite qui suit et de rentrer très fort dans le double droit qui suit (Le Trop Vite). À voir... Pour l'instant on va rester en mode "académique".
+Faut rester large... 
+
+Pour être complet, j'ai entendu une autre version qui dit : tu arrives mi-piste, tu claques la moto à la mise sur l'angle, genou au sol et tu colles la corde le plus vite possible. L'idée étant sans doute de bien rester à gauche à la sortie, d'accélérer fort sans trop s'écarter dans le bout de ligne droite qui suit et de rentrer très fort dans le double droit qui suit (Le Trop Vite). À voir... Pour l'instant on va rester en mode "académique".
 
 <div align="center">
 <img src="./assets/2022-05-27-18.06.52-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -161,7 +173,7 @@ Le point de corde est très tard (6eme vibreur rouge). Ensuite il faudra faire l
 </div>
 
 
-Au sol il y a une espèce de marque/rainure qui sépare la piste en deux. Il faut s'en servir comme repère à ne pas dépasser et accélérer fort et se diriger vers la gauche de la piste (au 3/4, pas tout à gauche).
+Au sol il y a une espèce de marque/rainure qui sépare la piste en deux. Il faut s'en servir comme repère à ne pas dépasser, accélérer fort et se diriger vers la gauche de la piste (au 3/4, pas tout à gauche).
 
 <div align="center">
 <img src="./assets/2022-05-27-18.08.59-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -171,9 +183,12 @@ Au sol il y a une espèce de marque/rainure qui sépare la piste en deux. Il fau
 <div align="center">
 <img src="./assets/2022-08-23-17.29.48-1.webp" alt="" width="900" loading="lazy"/>
 </div>
-Photo de 2022. Bien sûr, la marque va disparaître un jour ou l'autre
 
-Les 2 virages à droite qui suivent sont très importants car ils conditionnent la vitesse dans la prochaine longue ligne droite. On est sorti mi-piste puis on arrive à la hauteur du PMSA en étant 3/4 piste à gauche. On est parallèle à la bande blanche. On arrive vite et on ne freine pas. On coupe en mettant la moto très rapidement sur l'angle puis filet de gaz à partir du premier PC pour s'écarter vers l'extérieur. L'idée est d'enchaîner les 2 virages en un seul. La moto ne doit pas se relever. On passe donc les 2 virages avec le même angle, en une fois. Si on était en Snowboard, au sol on ne devrait voir qu'une seule belle courbe, bien coupée, entre les 2 PC.
+Photo de 2022. Bien sûr, la marque va disparaître un jour ou l'autre...  
+
+Les 2 virages à droite qui suivent sont très importants car ils conditionnent la vitesse dans la prochaine longue ligne droite. 
+
+On est sorti mi-piste puis on arrive à la hauteur du PMSA en étant 3/4 piste à gauche. On est parallèle à la ligne blanche. On arrive vite et on ne freine pas. On coupe en mettant la moto très rapidement sur l'angle puis filet de gaz à partir du premier PC pour s'écarter vers l'extérieur. L'idée est d'enchaîner les 2 virages en un seul. La moto ne doit pas se relever. On passe donc les 2 virages avec le même angle, en une fois. Si on était en Snowboard, au sol on ne devrait voir qu'une seule belle courbe, bien coupée, entre les 2 PC.
 
 <div align="center">
 <img src="./assets/2022-05-27-18.09.51-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -181,7 +196,9 @@ Les 2 virages à droite qui suivent sont très importants car ils conditionnent 
 
 ### La remarque de Gregg
 
-Non, je ne connais pas personnellement Gregg Black et non il ne participe pas officiellement à la rédaction de ce billet mais il est le bienvenu. Quoiqu'il en soit, lors du roulage Box23 des 27 et 28 mai 2023, le matin, il a animé un atelier "position". À un moment on a pu le faire parler des rapports qu'il utilise dans certaines sections du circuit. J'indique simplement ici ce qu'il nous a dit. Après, bien sûr, il faut avoir le niveau pour pouvoir mettre en application...
+Non, je ne connais pas personnellement Gregg Black et non il ne participe pas officiellement à la rédaction de ce billet mais il est le bienvenu. Quoiqu'il en soit, lors du roulage Box23 des 27 et 28 mai 2023, le matin, il a animé un atelier "position". 
+
+À un moment, on s'y est mis à plusieurs, on a ligoté sur une chaise et on lui à mis une lampe dans les yeux 😁 Du coup on a pu le faire parler des rapports qu'il utilise dans certaines sections du circuit. J'indique simplement ici ce qu'il nous a dit. Après, bien sûr, il faut avoir le niveau pour pouvoir mettre en application...
 "Je rentre en 3 dans le double droit avant la ligne droite pour avoir beaucoup de vitesse et ne pas être trop ralenti par de frein moteur de la 2".
 
 Le 1er point de corde est au 3eme vibreur blanc PAS au deuxième (voir les traces au sol). Ci-dessus le 2eme vibreur blanc c'est ce que j'appelle la "pointe" du virage. En général, la pointe d'un virage n'est PAS son PC.
@@ -193,7 +210,7 @@ Ensuite il faut viser le début de la bande verte au fond à gauche et un peu av
 </div>
 
 
-Faut laisser la moto s'écarter, se faire confiance, garder un même angle et aller à la ligne blanche. C'est là que se trouve notre point pivot (PV).
+Faut laisser la moto s'écarter, se faire confiance, garder un même angle et amener les pneus sur la ligne blanche. C'est là que se trouve notre point pivot (PV).
 
 <div align="center">
 <img src="./assets/2022-05-27-18.11.18-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -237,7 +254,7 @@ Laissez la moto écarter sa trajectoire du fait de l'accélération. Utilisez to
 </div>
 
 
-Si on n'est pas 100% gaz, enroule, enroule, enroule. On s'écarte, certains choisissent de passer entre la ligne blanche et le vibreur. Ne pas hésiter à bien tendre la trajectoire, à aller tout bout jusqu'à la partie en terre. Certains roulent sur cette dernière. Heu... Non, non, pour moi ce sera sans façon.
+Si on est toujours pas 100% gaz, on enroule, on enroule... On s'écarte. Certains choisissent de passer entre la ligne blanche et le vibreur. Ne pas hésiter à bien tendre la trajectoire, à aller tout bout jusqu'à la partie en terre. Certains roulent sur cette dernière. Heu... Non, non, pour moi ce sera sans façon.
 
 <div align="center">
 <img src="./assets/2022-05-27-18.13.52-scaled.webp" alt="" width="900" loading="lazy"/>
