@@ -1,6 +1,7 @@
 C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + Just the Docs + GitHub
 
 ## TODO
+* Voir dans les projets GitHub si, en plus du Linux Mint, y a pas des articles à rapatrier
 * Lightbox pour les images?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Rapatrier la page Git Survival de GitHub ici
@@ -28,8 +29,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * Revenir sur Codingame
 * SOS Chapitres IV et suivants
 * IA et ML 
-* Relire les notes OneNote de préparation certification Architect IA et voir ce que je peux rapatrier
-* Rapatrier la page install Linux Mint qui est sur GitHub 
+    * Relire les notes OneNote de préparation certification Architect IA et voir ce que je peux rapatrier
 * 52 nuances de physique (faut vraiment que je l'écrive un jour)
 
 
@@ -367,6 +367,7 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 
 ---
 ## DONE
+* ~~Rapatrier la page install Linux Mint qui est sur GitHub~~ 
 * ~~Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md~~
 * ~~Faire une checklist.pdf~~
 * ~~implement 404 page~~
