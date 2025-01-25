@@ -36,7 +36,7 @@ Afin de montrer que je ne "pipotte" pas, voilà la trace de ma "balade" relevée
 
 ### Note
 
-Alors que Météo-France promettait "grand bleu" le matin même... Le matin même ! La météo a été pourrie toute la journée du 14. Ils ne sont vraiment pas bons eux... . Cela explique la couleur "bizarre" du ciel et le manque de luminosité des photos. Toujours à propos des photos, normalement elles sont toutes en mode paysage et sans trop de zoom (x2 je crois). ~~Il ne faut pas hésiter à cliquer dessus pour mieux voir, zoomer et plus si affinités.~~
+Alors que Météo-France promettait "grand bleu" le matin même... Le matin même ! La météo a été pourrie toute la journée du 14. Ils ne sont vraiment pas bons eux... . Cela explique la couleur "bizarre" du ciel et le manque de luminosité des photos. Toujours à propos des photos, normalement elles sont toutes en mode paysage et sans trop de zoom (x2 je crois). ~~Il ne faut pas hésiter à cliquer dessus pour mieux voir, zoomer et plus si affinités.~~ (Momentanément non disponible)
 
 ## Trajectoire 1/2
 
@@ -220,8 +220,8 @@ Un peu avant le 50 m, je crois que je freine et, c'est sûr, j'en rentre une tou
 
 Avec le temps, les choses ont un peu évolué. Je vous propose 2 alternatives. Dernièrement j'utilise plutôt la seconde option.
 
-1. Mon PMSA est le PMSA "officiel", le cone bleu.
-1. Mon PMSA est entre le panneau 50m et le cone bleu
+1. Mon PMSA est le PMSA "officiel", le cône bleu.
+1. Mon PMSA est entre le panneau 50m et le cône bleu
 
 Quand je sais que je vais atteindre le PMSA que j'ai choisi, je vise le point de corde (PC) à venir.
 

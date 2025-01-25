@@ -24,11 +24,11 @@ last_modified_date: 2023-08-28 13:53:48
 
 ## Introduction
 
-Il y a peu de temps, j'ai eu la possibilité de faire le tour du circuit du Vigeant à pied. J'en ai profité pour faire un max de photos (160 environ). Je vous propose dans cette série de 3 billets de refaire un tour ensemble. Attention, je ne suis pas un expert et donc s'il y a des trucs avec lesquels vous n'êtes pas d'accord, dites-le dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Un seul truc cependant : restez courtois et constructifs.
+Il y a peu de temps, j'ai eu la possibilité de faire le tour du circuit du Vigeant à pied. J'en ai profité pour faire un max de photos (160 environ). Je vous propose dans cette série de 3 billets de refaire un tour ensemble. **Attention**, je ne suis pas un expert et donc s'il y a des trucs avec lesquels vous n'êtes pas d'accord, dites-le dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Un seul truc cependant : restez courtois et constructifs.
 
 ### Une remarque
 
-N'hésitez pas à cliquer sur les images pour les voir en plein écran et pouvoir zoomer dessus.
+~~N'hésitez pas à cliquer sur les images pour les voir en plein écran et pouvoir zoomer dessus.~~ (Momentanément non disponible)
 
 Pour le reste, en cours de lecture vous croiserez des réflexions ou des questions... Pas d'offense, c'est surtout pour moi 😏.
 
@@ -48,14 +48,14 @@ On est au-delà de la ligne d'arrivée, on est gaz en grand en 5. Dans l'image c
 
 On se dirige plein pot vers la passerelle. Au fait, tu es sûr que tu es en butée de l'accélérateur, à 100% de charge ? En ce qui me concerne, je colle à la ligne blanche et mon point de freinage (PF) c'est la moitié de la zone blanche après les zébras.
 
-Aout 2023 : Quand je suis en forme, je prends dorénavant les freins au bout de la zone blanche après les zébras. Lors du stage DRRS, Wilfrid indiquait qu'avec un mille, le PF c'est la passerelle. J'ose pas encore...
+Août 2023 : Quand je suis en forme, je prends dorénavant les freins au bout de la zone blanche après les zébras. Lors du stage DRRS, Wilfrid indiquait qu'avec un mille, le PF c'est la passerelle. J'ose pas encore...
 
 <div align="center">
 <img src="./assets/2022-05-27-17.59.14-scaled.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-Au PF je rentre 2 rapports tout de suite pour bénéficier d'un vrai frein moteur. Je reste collé à la ligne blanche. Le point à partir duquel je change de direction pour commencer à me décoller de la ligne (le cône dans l'image ci-dessous) est pile-poil au milieu de la distance qui sépare le panneau 100 m (à droite de la piste, on ne le voit pas dans la photo ci-dessous mais il est au bout de la ligne blanche qui traverse la piste) et le panneau avec une flèche noire (à gauche de la piste et à gauche de la photo ci-dessous).
+Au PF je rentre 2 rapports tout de suite pour bénéficier d'un vrai frein moteur. Je reste collé à la ligne blanche. Le point à partir duquel je change de direction pour commencer à me décoller de la ligne (le tout petit cône rouge, à gauche de la piste, au milieu de l'image ci-dessous) est pile-poil au milieu de la distance qui sépare le panneau 100 m (à droite de la piste, on ne le voit pas dans la photo ci-dessous mais il est au bout de la ligne blanche qui traverse la piste) et le panneau avec une flèche noire (à gauche de la piste et à gauche de la photo ci-dessous).
 
 <div align="center">
 <img src="./assets/20230608_082902-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -94,7 +94,7 @@ On est, bien sûr, toujours sur les freins, on se dirige vers le 1er PC (au nive
 
 On continue à avancer dans le virage. Quand on est 3/4 de piste environ, on devrait rentrer un rapport (se retrouver en 2). Perso je n'y arrive pas encore. On a plus les freins, on n'a pas de gaz, phase neutre, on couche la moto. C'est là qu'on fait le V, c'est là qu'on doit avoir le genou au sol, pas avant. On fait pivoter la moto en pointant du menton le second PC.
 
-Aout 2023 : comme ce n'est pas toujours facile d'en rentrer une quand on arrive au 3/4 de la piste, certains font le choix de rentrer un rapport au premier point de corde. C'est plus facile et ça permet d'être en 2 dans le virage. À tester.
+Août 2023 : comme ce n'est pas toujours facile d'en rentrer une quand on arrive au 3/4 de la piste, certains font le choix de rentrer un rapport au premier point de corde. C'est plus facile et ça permet d'être en 2 dans le virage. À tester.
 
 Si jamais un jour il n'y a pas de cône pour marquer le PV, le point extérieur à viser se trouve en face de la fin du vibreur intérieur. Voir ci-dessous. Sauf erreur de ma part en juin 2023 il y a dorénavant un rectangle blanc peint au sol.
 
@@ -105,7 +105,7 @@ Si jamais un jour il n'y a pas de cône pour marquer le PV, le point extérieur 
 
 Là, on a passé le second PC (avant dernier vibreur rouge) et on regarde derrière nous. À la sortie du double droit il faut faire l'effort de ne pas vouloir aller tout à l'extérieur car en fait le prochain virage est un gauche. Il va donc falloir traverser la piste et plus on sera à l'extérieur, plus cela va nous prendre du temps.
 
-Si on sort fort et sur le vibreur faut sentir qu'on contrebraque en repoussant la moto avec le bras extérieur qui est tendu et en tirant sur le bracelet intérieur (bras intérieur plié). Contrebraquer (consciemment ou pas) en sortie permet de relever la moto plus vite ce qui permet d'accélérer plus fort et pour plus longtemps (je parle spécifiquement du contre braquage en sortie de virage sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)). Bref on sort 3/4 piste si possible sinon va falloir se bouger les fesses car le prochain virage arrive vite. L'idée ici est de favoriser la distance et d'éviter de faire des grands S (j'en parle sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)).
+Si on sort fort et sur le vibreur faut sentir qu'on contrebraque en repoussant la moto avec le bras extérieur qui est tendu et en tirant sur le bracelet intérieur (bras intérieur plié). Contrebraquer (consciemment ou pas) en sortie permet de relever la moto plus vite ce qui permet d'accélérer plus fort et pour plus longtemps (je parle spécifiquement du contre braquage en sortie de virage sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)). Bref, on sort 3/4 piste si possible sinon va falloir se bouger les fesses car le prochain virage arrive vite. L'idée ici est de favoriser la distance et d'éviter de faire des grands S (j'en parle sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)).
 
 <div align="center">
 <img src="./assets/2022-05-27-18.04.47-scaled.webp" alt="" width="900" loading="lazy"/>

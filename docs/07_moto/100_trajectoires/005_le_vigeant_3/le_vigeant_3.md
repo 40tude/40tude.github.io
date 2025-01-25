@@ -517,7 +517,7 @@ Pour finir en beauté, une super vidéo très claire et qui refait avec d'autres
 <iframe width="560" height="315" src="https://www.youtube.com/embed/if_cCUqhrwA?si=ROqiTx7toRhyAaNL&amp;start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-J'aime bien la vidéo ci-dessous car on voit les rapports utilisés ainsi que les vitesses de passage en courbe. Sur YouTube faut pas hésiter à zoomer un peu sur le tableau de bord.
+J'aime bien la vidéo ci-dessous car on voit les rapports utilisés ainsi que les vitesses de passage en courbe. Sur YouTube faut pas hésiter à zoomer (si, si tu peux zoomer sur la vidéo) un peu sur le tableau de bord.
 
 <!-- https://youtu.be/eMrPhVVLpGc?si=LrBuZN1s_z50CV15&t=9 -->
 

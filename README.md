@@ -1,12 +1,11 @@
 C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + Just the Docs + GitHub
 
 ## TODO
-* Voir dans les projets GitHub si, en plus du Linux Mint, y a pas des articles à rapatrier
-* Lightbox pour les images?
+* Voir dans le repo GitHub si y a pas des articles à rapatrier
+* Lightbox pour zoomer sur les images?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
-* Rapatrier la page Git Survival de GitHub ici
 * Faire un billet sur le portage de WP vers markdown?
-* PageSpeed Insights indique : just-the-docs.js = 1.6s de chargement
+* Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
 * Voir ces histoires de balise rel="canonical"
 * S'assurer que Google indexe bien le site. Pas sûr à 100% que ce soit le cas aujourd'hui 11 01 2025
 * Voir ces histoires de plugins
@@ -19,7 +18,48 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * Pages en anglais? avec lang=en avant le Head
     * À mon avis c'est mort mais bon je vais continuer à chercher
     * Y a peut être une option avec les collection mais je sais pas si y a lang="en" avant le head
-* What else ?
+
+## DONE
+* ~~Ajouter un espace pour les discussions~~
+* ~~Rapatrier la page Git Survival de GitHub ici~~
+* ~~Rapatrier la page install Linux Mint qui est sur GitHub~~ 
+* ~~Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md~~
+* ~~Faire une checklist.pdf~~
+* ~~implement 404 page~~
+* ~~Sur la 1ere page, la liste des 10 derniers billets mis à jour~~
+* ~~Centrer les vidéos~~
+* ~~Remplacer les CTRL + A par **CTRL + A**~~
+    * ~~Vérifier ALT et WIN~~
+    * ~~WIN + X, A~~
+* ~~Mettre à jour la façon d'ecrire Latex partout sur le site~~
+    * $$\mathrm{\LaTeX}$$
+* ~~Page Linux Mint à rapatrier~~
+* ~~Snowboard, ajouter des photos et des vidéos~~
+* ~~Voir cette histoire de pull request de la part de Just The Docs~~
+* ~~robots.txt~~
+    * Dans Google Search Console aller verifier dans "Paramètres" si il le voit bien
+* ~~sitemap~~
+    * fix url in _config.yml
+    * modify _includes\head_custom.html
+* ~~Test du site avec outils Google etc.~~
+    * Google Search Console
+    * PageSpeed Insights
+* ~~Ajouter un indicateur de durée de lecture en haut des pages~~
+* ~~Installer Google Analytics~~
+* ~~Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes~~
+    * Impossible
+    * https://github.com/just-the-docs/just-the-docs/discussions/1593
+* ~~Comment faire des liens (ancres) au sein d'une même page en markdown~~
+    * Option 1 : `[Le planning en mode synthétique](#le-planning-synthétique)` avec accent
+    * Option 2 : ## Un long titre de section <a id="short-id"></a> puis plus loin [Aller à cette section](#short-id)
+* ~~Correcteur ortho FR dans VScode ?~~
+* ~~Voir comment permettre le téléchargement de fichiers pdf, zip, xlsx...~~
+    * `[Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)`
+* ~~Porter les pages de SOS pour tester les outils de recupération du site WP~~
+* ~~Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle~~
+    * Lire : <https://jekyllrb.com/docs/permalinks/#front-matter>
+* ~~Back to Top~~
+* ~~First et last Edit en bas de page~~
 
 
 
@@ -365,43 +405,3 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 
 
 
----
-## DONE
-* ~~Rapatrier la page install Linux Mint qui est sur GitHub~~ 
-* ~~Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md~~
-* ~~Faire une checklist.pdf~~
-* ~~implement 404 page~~
-* ~~Sur la 1ere page, la liste des 10 derniers billets mis à jour~~
-* ~~Centrer les vidéos~~
-* ~~Remplacer les CTRL + A par **CTRL + A**~~
-    * ~~Vérifier ALT et WIN~~
-    * ~~WIN + X, A~~
-* ~~Mettre à jour la façon d'ecrire Latex partout sur le site~~
-    * $$\mathrm{\LaTeX}$$
-* ~~Page Linux Mint à rapatrier~~
-* ~~Snowboard, ajouter des photos et des vidéos~~
-* ~~Voir cette histoire de pull request de la part de Just The Docs~~
-* ~~robots.txt~~
-    * Dans Google Search Console aller verifier dans "Paramètres" si il le voit bien
-* ~~sitemap~~
-    * fix url in _config.yml
-    * modify _includes\head_custom.html
-* ~~Test du site avec outils Google etc.~~
-    * Google Search Console
-    * PageSpeed Insights
-* ~~Ajouter un indicateur de durée de lecture en haut des pages~~
-* ~~Installer Google Analytics~~
-* ~~Configurer le site pour supporter les simple $ pour les equations ou sigles dans les paragraphes~~
-    * Impossible
-    * https://github.com/just-the-docs/just-the-docs/discussions/1593
-* ~~Comment faire des liens (ancres) au sein d'une même page en markdown~~
-    * Option 1 : `[Le planning en mode synthétique](#le-planning-synthétique)` avec accent
-    * Option 2 : ## Un long titre de section <a id="short-id"></a> puis plus loin [Aller à cette section](#short-id)
-* ~~Correcteur ortho FR dans VScode ?~~
-* ~~Voir comment permettre le téléchargement de fichiers pdf, zip, xlsx...~~
-    * `[Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)`
-* ~~Porter les pages de SOS pour tester les outils de recupération du site WP~~
-* ~~Voir ces histoires de permalinks. Je suis pas sûr de comprendre de quoi on parle~~
-    * Lire : <https://jekyllrb.com/docs/permalinks/#front-matter>
-* ~~Back to Top~~
-* ~~First et last Edit en bas de page~~
