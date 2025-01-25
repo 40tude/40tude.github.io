@@ -142,7 +142,7 @@ Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable
 <div align="center">
     <a href="./assets/image-21-2.webp">
         <img src="./assets/image-21-2.webp" alt="" width="450" loading="lazy"/>
-    <a>
+    </a>
 </div>
 
 
