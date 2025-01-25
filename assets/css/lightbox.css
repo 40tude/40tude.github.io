@@ -1,0 +1,13 @@
+/* Désactiver le zoom et les interactions lorsqu'une image est affichée dans le lightbox */
+.no-zoom {
+    touch-action: none;
+    /* Empêche les gestes tactiles de zoom ou de défilement */
+    overscroll-behavior: contain;
+    /* Empêche le défilement en dehors de l'élément */
+    user-select: none;
+    /* Désactive la sélection de texte */
+    -ms-touch-action: none;
+    /* Compatibilité IE */
+    -webkit-user-select: none;
+    /* Compatibilité Safari */
+}

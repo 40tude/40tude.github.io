@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.target.id === 'lightbox' || event.target.id === 'close') {
             lightbox.style.display = 'none';
             document.body.style.overflow = ''; // Réactive le défilement
+            document.body.classList.remove('no-zoom'); // Réactive le zoom
         }
     });
 
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             lightboxImg.setAttribute('alt', this.getAttribute('alt') || '');
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Désactive le défilement
+            document.body.classList.add('no-zoom'); // Désactive le zoom
         });
     });
 });
