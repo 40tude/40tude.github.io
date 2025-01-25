@@ -13,6 +13,14 @@ last_modified_date: 2025-01-20 23:00:00
 <img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
 </div>
 
+
+
+<div align="center">
+  <a href="https://www.example.com" target="_blank">
+    <img src="./assets/image-25.webp" alt="Description of the image" width="450" loading="lazy" />
+  </a>
+</div>
+
 ## Introduction
 
 J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a bien les [Notes de Pilotage Moto]({%link docs/07_moto/001_notes_pilotage/index.md%}) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
