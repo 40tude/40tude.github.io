@@ -17,14 +17,17 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.style.zIndex = '1000';
     lightbox.style.justifyContent = 'center';
     lightbox.style.alignItems = 'center';
-    lightbox.innerHTML = `<a id="close" style="position: absolute; top: 20px; right: 20px; font-size: 24px; color: white; cursor: pointer;">&times;</a>
-                          <img id="lightbox-img" src="" alt="" style="max-width: 90%; max-height: 90%;"/>`;
+    lightbox.innerHTML = `
+        <a id="close" style="position: absolute; top: 20px; right: 20px; font-size: 24px; color: white; cursor: pointer;">&times;</a>
+        <img id="lightbox-img" src="" alt="" style="max-width: 90%; max-height: 90%;"/>
+    `;
     document.body.appendChild(lightbox);
 
     // Gère la fermeture du lightbox
     lightbox.addEventListener("click", function (event) {
         if (event.target.id === 'lightbox' || event.target.id === 'close') {
             lightbox.style.display = 'none';
+            document.body.style.overflow = ''; // Réactive le défilement
         }
     });
 
@@ -45,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             lightboxImg.setAttribute('src', this.getAttribute('src'));
             lightboxImg.setAttribute('alt', this.getAttribute('alt') || '');
             lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Désactive le défilement
         });
     });
 });
