@@ -12,14 +12,16 @@ last_modified_date: 2024-11-29 15:00:00
 # Mon Git Survival Guide 2
 
 {: .note }
-C'est la seconde version de ce billet. À terme les deux seront fusionnés mais pour l'instant je suis toujours en train de transférer les articles de WordPress vers Markdown et je n'ai pas le temps. Ceci dit j'ajoute ça à la TODO list.
+C'est la seconde version de ce [billet]({%link docs/06_programmation/000_git_survival_guide/git_survival_guide.md%}). À terme les deux seront fusionnés mais pour l'instant je suis toujours en train de transférer les articles de WordPress vers Markdown et je n'ai pas le temps. Ceci dit j'ajoute ça à la TODO list.
+
+
+
 
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
 # Introduction
-Je veux mettre noir sur blanc une fois pour toute deux ou trois trucs qui me mettent toujours en panique   
-Je sens que ça va se transformer en ``cheat sheet`` cette histoire...  
+Je veux mettre noir sur blanc une fois pour toute deux ou trois trucs qui me mettent toujours en panique. Je sens que ça va se transformer en ``cheat sheet`` cette histoire...  
 
 
 
@@ -30,9 +32,7 @@ Je sens que ça va se transformer en ``cheat sheet`` cette histoire...
 # Branch & Merge
 
 Clairement je n'ai pas encore le réflexe...  
-Je promets, à partir de demain, je fais un effort de ce côté là  
-  
-  
+Je promets, à partir de demain, je fais un effort...  
   
 J'ai un projet avec un repo GitHub  
 J'ai une idée transcendantale...  
@@ -56,9 +56,9 @@ Je supprime la branche ``b1``
 Je reviens sur ``main`` en cliquant en bas à gauche  
 Je choisis Branch/Merge/b1  
 
-<p align="center">
+<div align="center">
 <img src="./assets/img04.png" alt="drawing" width="400"/>
-<p>
+</div>
 
 Quand le merge est fait, je commit `main`  
 Je peux alors supprimer la branche ``b1``  
@@ -67,16 +67,18 @@ Je peux alors supprimer la branche ``b1``
 
 ### Si au moment du merge il y a un conflit
 
-<p align="center">
+<div align="center">
 <img src="./assets/img05.png" alt="drawing" width="400"/>
-<p>
+</div>
+
 
 Ensuite on fait un commit de ``main``  
 Voir le graphe en bas à gauche
 
-<p align="center">
+<div align="center">
 <img src="./assets/img06.png" alt="drawing" width="400"/>
-<p>
+</div>
+
 
 
 ## Mode CLI
@@ -87,7 +89,7 @@ On peut mélanger les clicks dans VSCode et les commandes CLI
 
 | Action                          | Commande                                   |
 |---------------------------------|--------------------------------------------|
-| Initialiser un dépôt Git        | `git init`                                 |
+| Initialiser un dépôt Git        | git init                                   |
 | Ajouter des fichiers            | `git add <file>` `git add .`               |
 | Faire un commit                 | `git commit -m "message"`                  |
 | Créer une branche               | `git checkout -b <branch-name>`            |
@@ -128,14 +130,14 @@ Je synchronise
 
 ## PANIQUE! 😡
 
-<p align="center">
+<div align="center">
 <img src="./assets/img01.png" alt="drawing" width="600"/>
-<p>
+</div>
 
 
-<p align="center">
+<div align="center">
 <img src="./assets/img02.png" alt="drawing" width="600"/>
-<p>
+</div>
 
 Il semble qu'il n'a rien poussé    
 J'édite ``.gitignore``  
@@ -153,9 +155,9 @@ Cela nous ramène à 2 commits en arrière dans le ``staging area``
 
 Le gros fichier n'est plus suivi
 
-<p align="center">
+<div align="center">
 <img src="./assets/img03.png" alt="drawing" width="600"/>
-<p>
+</div>
 
 Editer ``.gitignore``  
 
