@@ -21,9 +21,9 @@ J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais 
 <img src="./assets/image-24.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les commentaires. Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
+Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
 
-Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les commentaires. Sinon, tu peux regarder cette série de vidéos :
+Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Sinon, tu peux regarder cette série de vidéos :
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=9aGfzYXK7sVjutL3&amp;list=PLHh0ACbIwXxmNbfiJzfiXttLZltL586zy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

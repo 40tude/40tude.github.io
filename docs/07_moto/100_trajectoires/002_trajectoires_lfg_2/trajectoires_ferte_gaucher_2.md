@@ -145,7 +145,7 @@ Quand j'arrive sur le PMSA en longeant la ligne blanche, j'ai un peu tendance à
 
 ### Note
 
-Si un expert peut apporter une confirmation/infirmation à propos de la "pointe" du vibreur dans les commentaires je suis preneur.
+Si un expert peut apporter une confirmation/infirmation à propos de la "pointe" du vibreur dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions) je suis preneur.
 
 <div align="center">
 <img src="./assets/20230514_131446.webp" alt="" width="900" loading="lazy"/>
@@ -608,7 +608,7 @@ Je vise le panneau 150 m et je passe la 3 et la 4 car j'adore le bruit du moteur
 </div>
 
 
-Et je crois que c'est terminé. Encore une fois, n'hésitez pas à m'aider à améliorer cette page avec des commentaires et des compléments.
+Et je crois que c'est terminé. Encore une fois, n'hésitez pas à m'aider à améliorer cette page avec des [commentaires](https://github.com/40tude/40tude.github.io/discussions) et des compléments.
 
 Une vidéo que j'aime bien pour ses commentaires instructifs.
 

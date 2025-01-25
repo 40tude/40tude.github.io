@@ -89,7 +89,7 @@ On peut mélanger les clicks dans VSCode et les commandes CLI
 
 | Action                          | Commande                                   |
 |---------------------------------|--------------------------------------------|
-| Initialiser un dépôt Git        | git init                                   |
+| Initialiser un dépôt Git        | `git init`                                 |
 | Ajouter des fichiers            | `git add <file>` `git add .`               |
 | Faire un commit                 | `git commit -m "message"`                  |
 | Créer une branche               | `git checkout -b <branch-name>`            |

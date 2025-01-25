@@ -26,7 +26,7 @@ Ici il n'y aura que 2 épisodes. La division du circuit se fera entre les deux b
 </div>
 
 
-Un dernier mot : je ne suis pas un expert, loin de là, et donc, s'il y a des trucs avec lesquels vous n'êtes pas d'accord ou si vous souhaitez apporter des compléments dites-le dans les commentaires, restez courtois et constructifs.
+Un dernier mot : je ne suis pas un expert, loin de là, et donc, s'il y a des trucs avec lesquels vous n'êtes pas d'accord ou si vous souhaitez apporter des compléments dites-le dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions), restez courtois et constructifs.
 
 Afin de montrer que je ne "pipotte" pas, voilà la trace de ma "balade" relevée par ma montre. Je trouvais l'image sympa et c'est juste pour ça que je la mets ici.
 

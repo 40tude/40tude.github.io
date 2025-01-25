@@ -53,7 +53,7 @@ Conclusion : à l'heure du choix de la moto pour aller sur piste il faut choisir
 
 ## Quelle moto ?
 
-On va faire simple...On est fin 2018, c'est mon avis à date, il n'engage que moi et je comprends très bien qu'on puisse ne pas être d'accord. Non, non je ne veux pas déclencher de guerre de religion, pas la peine de m'agonir dans les commentaires.
+On va faire simple...On est fin 2018, c'est mon avis à date, il n'engage que moi et je comprends très bien qu'on puisse ne pas être d'accord. Non, non je ne veux pas déclencher de guerre de religion, pas la peine de m'agonir dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions).
 
 * Je trouve que les CB 500 ressemblent à des ruines.
 * Je ne suis pas capable de maîtriser les 200 ch d'une 1000 cc.

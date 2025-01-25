@@ -24,7 +24,7 @@ last_modified_date: 2023-08-28 13:53:48
 
 ## Introduction
 
-Il y a peu de temps, j'ai eu la possibilité de faire le tour du circuit du Vigeant à pied. J'en ai profité pour faire un max de photos (160 environ). Je vous propose dans cette série de 3 billets de refaire un tour ensemble. Attention, je ne suis pas un expert et donc s'il y a des trucs avec lesquels vous n'êtes pas d'accord, dites-le dans les commentaires. Un seul truc cependant : restez courtois et constructifs.
+Il y a peu de temps, j'ai eu la possibilité de faire le tour du circuit du Vigeant à pied. J'en ai profité pour faire un max de photos (160 environ). Je vous propose dans cette série de 3 billets de refaire un tour ensemble. Attention, je ne suis pas un expert et donc s'il y a des trucs avec lesquels vous n'êtes pas d'accord, dites-le dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Un seul truc cependant : restez courtois et constructifs.
 
 ### Une remarque
 

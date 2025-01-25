@@ -54,11 +54,11 @@ Août 2023 : le poteau à 200 m est toujours là mais le panneau 200 a disparu.
 
 ### Question
 
-Après réflexion, je me demande si je n'ai pas un faux souvenir ou si je ne fais pas une bêtise en ayant un point de freinage aussi loin. Je vais mettre ça sur ma TO DO liste la prochaine fois que je vais au Vigeant. J'ai l'impression que le point de freinage c'est 200 m. À vérifier. Si un expert veut bien donner son avis dans les commentaires je suis preneur.
+Après réflexion, je me demande si je n'ai pas un faux souvenir ou si je ne fais pas une bêtise en ayant un point de freinage aussi loin. Je vais mettre ça sur ma TO DO liste la prochaine fois que je vais au Vigeant. J'ai l'impression que le point de freinage c'est 200 m. À vérifier. Si un expert veut bien donner son avis dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions) je suis preneur.
 
 ### Réponse
 
-En discutant avec certains, j'ai entendu l'explication suivante. À 200 m j'approche les plaquettes et je fais le transfert de masse. Au poteau de caméra je freine fort. Si un expert peut confirmer/infirmer dans les commentaires, ce serait sympa.
+En discutant avec certains, j'ai entendu l'explication suivante. À 200 m j'approche les plaquettes et je fais le transfert de masse. Au poteau de caméra je freine fort. Si un expert peut confirmer/infirmer dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions), ce serait sympa.
 
 <div align="center">
 <img src="./assets/2022-05-27-18.17.57-scaled.webp" alt="" width="900" loading="lazy"/>

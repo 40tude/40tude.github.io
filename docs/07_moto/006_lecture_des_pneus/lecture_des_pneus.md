@@ -430,7 +430,7 @@ Enfin, je pense au bouquin [Total Control de Lee Parks]({#link https://lire.amaz
 
 Vu le prix des pneus on a intérêt à en prendre soin. Si en plus leur lecture peut nous permettre de régler correctement nos suspensions ce serait dommage de s'en priver.
 
-Encore une fois je ne suis pas un pro du sujet et donc, si vous avez des remarques **constructives** à apporter pour améliorer la page, lâchez un commentaire. Rappelez-vous toutefois que la page traite de la lecture des pneus pour faire évoluer les pressions de pneus et/ou faire évoluer les réglages des suspensions. La page n'est pas dédiée aux réglages initiaux des suspensions qui est un sujet à part entière (si vous pensez qu'une page sur le sujet serait bienvenue, dites-le dans les commentaires).
+Encore une fois je ne suis pas un pro du sujet et donc, si vous avez des remarques **constructives** à apporter pour améliorer la page, lâchez un commentaire. Rappelez-vous toutefois que la page traite de la lecture des pneus pour faire évoluer les pressions de pneus et/ou faire évoluer les réglages des suspensions. La page n'est pas dédiée aux réglages initiaux des suspensions qui est un sujet à part entière (si vous pensez qu'une page sur le sujet serait bienvenue, dites-le dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions)).
 
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 

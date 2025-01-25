@@ -236,7 +236,7 @@ Il faut sans doute aussi jeter un œil sur la vidéo ci-dessous où l'on parle, 
 
 À gauche avant, à droite après.
 
-Ci-dessus, les carrés verts me permettent juste de m'assurer que les angles sont bien droits. Les lignes bleues sont les références par rapport à la fourche. Enfin bref, j'ai essayé d'avoir des mesures à peu près correctes. Finalement je pense que les bracelets de droite sont écartés de 60° par rapport à la verticale contre 54° à gauche. C'est à confirmer car l'image n'est pas prise tout à fait à la verticale mais un peu en biais. Si vous trouvez une autre valeur dites-le dans les commentaires. De toute façon, il faut essayer et voir si on se sent bien.
+Ci-dessus, les carrés verts me permettent juste de m'assurer que les angles sont bien droits. Les lignes bleues sont les références par rapport à la fourche. Enfin bref, j'ai essayé d'avoir des mesures à peu près correctes. Finalement je pense que les bracelets de droite sont écartés de 60° par rapport à la verticale contre 54° à gauche. C'est à confirmer car l'image n'est pas prise tout à fait à la verticale mais un peu en biais. Si vous trouvez une autre valeur dites-le dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). De toute façon, il faut essayer et voir si on se sent bien.
 
 Écarter les bracelets a pour objectif de donner plus de couple au moment où on va pousser le bracelet intérieur et mettre la moto sur l'angle. Si on a plus de couple, à force égale la mise sur l'angle sera plus rapide.
 
