@@ -28,6 +28,7 @@ function setGallery(el) {
         });
     }
 
+    //add the next and previous buttons
     var currentkey;
     var gallery_elements = document.querySelectorAll('img.gallery');
     Object.keys(gallery_elements).forEach(function (k) {
@@ -50,6 +51,7 @@ function setGallery(el) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
     // Crée le conteneur pour le lightbox
     var newdiv = document.createElement("div");
     newdiv.setAttribute('id', "lightbox");
