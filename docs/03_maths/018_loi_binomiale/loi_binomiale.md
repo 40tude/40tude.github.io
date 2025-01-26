@@ -22,20 +22,22 @@ La loi binomiale modélise le nombre de **succès** obtenus lors de la **répét
 ### Succès
 On parle de succès car l'expérience ne peut avoir que deux issues. Succès ou échec. 
 
-#### Exemples : 
+#### **Exemples :** 
 1. Je suis plus grand ou plus petit que la toise qui permet d’accéder à Star Tours. 
 2. La boule tirée de l'urne est verte ou elle n'est pas verte. 
 3. L’élève est une fille ou n'est pas une fille (ça peut être un Troll, un Nain, un Gobelin... mais en tout cas c'est pas une fille)
 
 ### Répétitions indépendantes 
-Cela signifie qu'une expérience n'influe pas sur les expériences suivantes.
+Cela signifie qu'une expérience n'influe pas sur les autres expériences.
 
-#### Exemples :
-1. Je tire une boule d'une urne qui contient 20 boules (rouge et bleue). Si elle est rouge c'est un succès. Après avoir vérifié sa couleur je ne la remet **pas** dans l'urne. Dans ce cas, on ne peut pas appliquer la loi binomiale car si on ne remet pas la boule rouge alors la probabilité de tirer une seconde boule rouge varie. En effet, si au départ il y a 10 rouges et 10 bleues alors la probabilité de tirer une rouge est de 50%. Je tire une rouge et je ne la remet pas. Maintenant la probabilité de tirer seconde boule rouge est $$\frac{9}{19}$$. En effet, il ne reste plus que 9 boules rouges et un total de 19 boules. Il faut aussi noter que si la probabilité de tirer une boule bleue était au départ de 50% au premier tirage, au second elle vaut $$\frac{10}{19}$$ car une boule rouge a été retirée de l'urne suite au premier tirage. Bref, le fait de ne **pas** remettre la boule influence les tirages suivants. On ne peut donc **pas** utiliser la loi binomiale dans ce cas. 
+#### **Exemples :**
+1. Je tire une boule d'une urne qui contient 20 boules (rouge et bleue). Si elle est rouge c'est un succès. Après avoir vérifié sa couleur je ne la remet **pas** dans l'urne. Dans ce cas, on ne peut pas appliquer la loi binomiale car si on ne remet pas la boule rouge alors la probabilité de tirer une seconde boule rouge varie. En effet, si au départ il y a 10 rouges et 10 bleues alors la probabilité de tirer une rouge est de 50%. Je tire une rouge et je ne la remet pas. Maintenant la probabilité de tirer seconde boule rouge est $$\frac{9}{19}$$. En effet, il ne reste plus que 9 boules rouges et un total de 19 boules. Il faut aussi noter que si la probabilité de tirer une boule bleue était au départ de 50% au premier tirage, au second elle vaut $$\frac{10}{19}$$ car une boule rouge a été retirée de l'urne suite au premier tirage. Bref, le fait de ne **pas** remettre la boule influence les tirages suivants. On ne peut donc **pas** utiliser la loi binomiale dans ce cas.  
 
-2. À la sortie de la ligne de production, à la fin de la journée, on a produit un million de billes rouge et bleu. Je tire successivement 20 billes et je ne les remet pas dans le circuit. On considérera dans ce cas que les tirages sont indépendants car 20 billes par rapport à un million c'est négligeable. On considère que la probabilité de tirer une bille rouge reste la même. Bref, on pourra dire que, dans ce cas, les expériences sont indépendantes et on pourra utiliser la loi binomiale.
+2. Je suis comme toi, j'aime pas trop c'est histoires d'urne et de boules alors on va prendre le même exemple dans une contexte différent. Il est idiot mais il est là surtout pour fixer les idées. Je suis dehors, à la porte d'un amphi bondé ou à la porte d'une boite de nuit (si, si il en reste encore quelques unes). Quand une personne veut sortir je lui demande si c'est un garcon ou une fille. Je ne le laisse pas sortir et j'attends le suivant pour lui reposer la question. Je réitère l'operation 5 fois. Oui, je sais l'exemple est "débile" MAIS pas plus que celui à base d'urne et de boules.    
 
-3. Toujours et encore avec une urne... Il y a 20 billes, 10 bleues et 10 rouges. Je tire une boule, je regarde sa couleur et je la remet dans l'urne. Là, comme la probabilité de tirer une rouge est toujours la même quelque soit l'indice du tirage (premier tirage, second tirage ...) on est vraiment dans un cas d'expériences indépendantes les unes des autres. On peut, sans crainte, utiliser la loi binomiale.
+3. À la sortie de la ligne de production, à la fin de la journée, on a produit un million de billes rouge et bleu. Je tire successivement 20 billes et je ne les remet pas dans le circuit. On considérera dans ce cas que les tirages sont indépendants car 20 billes par rapport à un million c'est négligeable. On considère que la probabilité de tirer une bille rouge reste la même. Bref, on pourra dire que, dans ce cas, les expériences sont indépendantes et on pourra utiliser la loi binomiale.
+
+4. Toujours et encore avec une urne... Il y a 20 billes, 10 bleues et 10 rouges. Je tire une boule, je regarde sa couleur et je la remet dans l'urne. Là, comme la probabilité de tirer une rouge est toujours la même quelque soit l'indice du tirage (premier tirage, second tirage ...) on est vraiment dans un cas d'expériences indépendantes les unes des autres. On peut, sans crainte, utiliser la loi binomiale.
 
 ### Expériences aléatoires identiques
 Là, ça ne casse pas trois pattes à un canard... Cela veut tout simplement dire qu'on fait à chaque fois la même chose. Sinon on peut ajouter que chaque expérience est appelée "épreuve de Bernoulli". Ca claque quand on le dit en société mais bon... Ca fait pas vraiment avancer notre problème...
