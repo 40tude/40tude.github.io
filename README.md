@@ -1,9 +1,12 @@
 C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + Just the Docs + GitHub
 
 ## TODO
-* Voir dans le repo GitHub si y a pas des articles à rapatrier
-* Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Faire un billet sur le portage de WP vers markdown?
+* Voir dans le repo GitHub si y a pas des articles à rapatrier
+    * Notes de maths
+        * Loi binomiale
+        * Equation canonique
+* Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
 * Voir ces histoires de balise rel="canonical"
 * S'assurer que Google indexe bien le site. Pas sûr à 100% que ce soit le cas aujourd'hui 11 01 2025
