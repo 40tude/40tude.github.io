@@ -53,6 +53,10 @@ Là, ça ne casse pas trois pattes à un canard... Cela veut tout simplement dir
 ## Un exemple typique
 En bout de chaîne de production de l'usine où je travaille, dans un lot de 1000 processeurs, j'en prends 5 et je les teste. En fonction de leur performance ils peuvent fonctionner (ou pas) au delà de 5 Ghz. Sachant qu'en général 20% des processeurs fonctionnent au delà de 5 GHz quelle est la probabilité d'avoir 3 processeurs qui fonctionnent au delà de 5 Ghz parmi les 5 que je viens de tirer?
 
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 #### **Remarque :**
 La question, posée de cette façon n'a aucun intérêt. On s'en fout. On sait qu'en général on a 20% des processeurs qui passent la barre des 5 GHz. 
 
@@ -232,6 +236,9 @@ print (nCr(n, k) * (p)**k * (1-p)**(n-k))
 
 Il y a donc 5% de chance pour que cette configuration se présente. De là à dire que 60% de la production passe la barre des 5 GHz il y a peut être un excès d'enthousiasme. Bon... On va aller prendre un café et réviser la loi binomiale avec le stagiaire.
 
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/>
+</div>
 
 ## Amusons nous deux minutes
 On vient de calculer la probabilité pour que dans un lot de 5 processeurs, 3 d'entre eux passent la barre des 5 GHz alors que normalement c'est 20%. On peut se demander quelle est la probabilité pour que dans le même lot 2 d'entre eux passent le test. Idem pour 1 seul processeur etc.
