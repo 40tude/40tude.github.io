@@ -20,16 +20,16 @@ last_modified_date: 2023-09-23 09:00:00
 ## Introduction
 C'est moyennement intéressant car cela ne concerne **que** les polynômes de degré 2. T'as vu, ça donne vraiment envie de lire la suite...
 
-On veut écrire $$f(x)=ax^2+bx+c$$ sous la forme $$a(x-\alpha)^2 + \beta$$ 
+On veut écrire $$f(x)=ax^2+bx+c$$ sous la forme $$aX^2+ \beta$$ soit encore $$a(x-\alpha)^2 + \beta$$ 
 
-C'est ça la forme canonique.
+La dernière forme, c'est la forme canonique.
 
 *Heu... Pourquoi? J'veux dire, pourquoi tu veux me prendre la tête avec la forme canonique d'un pauv' polynôme de d°2?*
 
 En fait on va en reparler à la fin mais ce que tu dois retenir ici c'est que si j'ai la forme canonique du polynôme alors je sais :
 1. Comment la courbe est orientée (branches en l'air ou en bas)
-1. À quelle valeur de $$x$$ se trouve son sommet (respectivement son creux)
-1. À quelle hauteur ($$y$$) se trouve le sommet en question
+1. À quelle valeur de $$x$$ se trouve son maximum (respectivement son minimum)
+1. À quelle hauteur ($$y$$) se trouve l'extremum en question
 
 Bref, l'expression canonique (sous réserve qu'elle soit pas trop prise de tête à déterminer) permet, sans graphique, de savoir à quoi ressemble la courbe.
 
@@ -49,10 +49,9 @@ ax^2+bx+c & = ax^2 - 2ax\alpha + a \alpha^2 + \beta
 \end{align*}
 $$
 
+Ca doit passer crème. À la seconde ligne on développe et à la troisième on fait le ménage.
 
-$$ $$
-
-On égalise membre à membre. En français dans le texte cela veut dire que les facteurs de $$x^2$$ sont égaux entre eux, idem pour les facteurs de $$x$$ ainsi que les constantes. On se retrouve avec 3 égalités :
+Maintenant, on égalise membre à membre. En français dans le texte cela veut dire que les facteurs de $$x^2$$ sont égaux entre eux, idem pour les facteurs de $$x$$ ainsi que les constantes. On se retrouve avec 3 égalités :
 
 $$ 
 \begin{align*}
@@ -67,6 +66,8 @@ De la seconde égalité on tire :
 
 $$ \alpha = - \frac{b}{2a}$$
 
+Ca, ça doit te rappeler quelque chose. C'est la valeur de la racine quand elle est unique. C'est surtout le milieu des 2 racines. Enfin bref, ça doit te dire quelque chose.
+
 Avec la troisième égalité on obtient :
 
 $$ \beta = c - a \alpha^2 $$
@@ -75,7 +76,8 @@ Or, on vient de trouver que :
 
 $$ \alpha = - \frac{b}{2a}$$
 
-Donc
+Donc on peut écrire :
+
 $$ 
 \begin{align*}
 \beta & = c - a \alpha^2 \\
@@ -89,7 +91,7 @@ $$
 \end{align*}
 $$
 
-Mouai...À ce stade on peut donc dire que :
+Mouai...Ca fait pas encore rêver cette histoire. Cal dit, à ce stade on peut quand même dire que :
 
 $$ ax^2+bx+c = a(x-\alpha^2) + \beta $$
 
@@ -152,12 +154,13 @@ Et
 
 $$ \beta = f(\alpha)$$
 
+Ca c'est plutôt cool. Watch this!
 
 
 
 
 
-## Mise en pratique pour montrer que c'est vraiment utile et facile
+## Mise en pratique pour montrer que c'est facile et utile
 On se donne $$f(x) = 2x^2 -12x + 22$$
 
 Exprimez $$f(x)$$ sous sa forme canonique
@@ -174,7 +177,7 @@ Donc sous sa forme canonique on a :
 
 $$
 \begin{align*}
-f(x) & = a(x-\alpha^2) + \beta \\
+f(x) & = a(x-\alpha)^2 + \beta \\
 f(x) & = 2(x-3)^2 + 4 
 \end{align*}
 $$
@@ -182,7 +185,7 @@ $$
 Une fois écrit sous cette forme on peut dire que :
 * La parabole est convexe. Ses branches sont en l'air
 * Son minimum arrive que $$x = \beta = 3$$
-* Que la valeur de $$f(x)$$ en ce point $$4$$   
+* Que la valeur de $$f(x)$$ en ce point vaut $$4$$   
 
 C'est bien ce que l'on retrouve si on trace la courbe.
 
@@ -286,9 +289,9 @@ $$ \beta = \frac{\Delta}{4a} = f(\alpha)$$
 
 
 ## À retenir
-1. $$ ax^2+bx+c = a(x-\alpha)^2 + \beta $$
+1. Forma canonique $$ ax^2+bx+c = aX^2+ \beta = a(x-\alpha)^2 + \beta $$
 1. $$\alpha = - \frac{b}{2a}$$
 1. $$ \beta = f(\alpha)$$
-1. $$\alpha$$ est la valeur de $$x$$ où se trouve l'extremum
+1. $$\alpha$$ est la valeur de $$x$$ où se trouve l'extremum (maximum ou minimum)
 1. La valeur de la fonction à cet endroit c'est $$f(\alpha)$$ c'est à dire $$\beta$$
 1. Refaire l'application numérique précédente. Il faut se rappeler que $$\alpha = - \frac{b}{2a}$$ puis calculer $$f(\alpha)$$ pour trouver $$\beta$$
