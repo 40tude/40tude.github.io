@@ -3,7 +3,7 @@ layout: default
 title: "Loi binomiale"
 parent: Maths
 #nav_order: 100
-#math: mathjax
+math: mathjax
 date:               2023-09-23 09:00:00
 last_modified_date: 2023-09-23 09:00:00
 ---
@@ -13,9 +13,7 @@ last_modified_date: 2023-09-23 09:00:00
 ## Introduction
 La formule s'écrit de la façon suivante :
 
-$$
-P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}
-$$
+$$P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$$
 
 Un peu indigeste vue comme ça, non? De plus, dans quels cas l'utiliser? Comment la comprendre? Comment s'en rappeler le cas échéant? Bon, allez, on va remettre tout ça dans l'ordre en partant de zéro ou presque. 
 
@@ -25,7 +23,7 @@ La loi binomiale modélise le nombre de **succès** obtenus lors de la **répét
 On parle de succès car l'expérience ne peut avoir que deux issues. Succès ou échec. 
 
 #### Exemples : 
-1. Je suis plus grand ou plus petit que la toise qui permet d'accèder à Star Tours. 
+1. Je suis plus grand ou plus petit que la toise qui permet d’accéder à Star Tours. 
 2. La boule tirée de l'urne est verte ou elle n'est pas verte. 
 3. L'éleve est une fille ou n'est pas une fille (ça peut être un Troll, un Nain, un Gobelin... mais en tout cas c'est pas une fille)
 
