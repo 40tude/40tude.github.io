@@ -91,7 +91,7 @@ $$
 \end{align*}
 $$
 
-Mouai...Ca fait pas encore rêver cette histoire. Cal dit, à ce stade on peut quand même dire que :
+Mouai...Ca fait pas encore rêver cette histoire. Cela dit, à ce stade on peut quand même dire que :
 
 $$ ax^2+bx+c = a(x-\alpha^2) + \beta $$
 
@@ -183,8 +183,8 @@ f(x) & = 2(x-3)^2 + 4
 $$
 
 Une fois écrit sous cette forme on peut dire que :
-* La parabole est convexe. Ses branches sont en l'air
-* Son minimum arrive que $$x = \beta = 3$$
+* La parabole est convexe. Ses branches sont en l'air ($$a>0$$)
+* Son minimum arrive que $$x = \alpha = 3$$
 * Que la valeur de $$f(x)$$ en ce point vaut $$4$$   
 
 C'est bien ce que l'on retrouve si on trace la courbe.
