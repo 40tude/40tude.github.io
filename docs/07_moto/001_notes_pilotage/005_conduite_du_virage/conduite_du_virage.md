@@ -561,11 +561,16 @@ Voir la vidéo ci-dessous à partir de 27'30''
 
 On va là où on regarde. Donc si à l'entrée du virage on regarde l'intérieur du virage, le début du vibreur par exemple, c'est là qu'on va aller.
 * On aura une ligne "facile" jusqu'à la l'intérieur du virage mais on sera planté pour la sortie.
-* En effet, si à la corde, nos roues ne sont toujours pas dans la direction de PS, notre trajectoire sera trop large. Il va falloir rester très longtemps sur l'angle avant de pouvoir accélérer. On va donc perdre beaucoup de temps à remettre la moto verticale et à 100% des gaz. On en avait parlé dans le billet [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md#le-point-de-corde-pc%})
+* En effet, si à la corde, nos roues ne sont toujours pas dans la direction de PS, notre trajectoire sera trop large. Il va falloir rester très longtemps sur l'angle avant de pouvoir accélérer. On va donc perdre beaucoup de temps à remettre la moto verticale et à 100% des gaz. On en avait parlé dans le billet [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}). Tu te rappelles ce ce schéma ?
+
+<div align="center">
+<img src="./assets/img_105.webp" alt="" width="560" loading="lazy"/>
+</div>
+
 
 Pour éviter ça il est recommandé :
-* D'arriver sur le virage en étant tout à l'extérieur (à rouler à 1 cm de la bande blanche)
-* Trouver le point de corde (typiquement il est au 2/3 ou 3/4 du virage) avant d'inscrire la moto sur l'angle et ne plus le lâcher des yeux.
+* D'arriver sur le virage en étant tout à l'extérieur (1 cm de la bande blanche)
+* Trouver le point de corde (typiquement il est au 2/3 ou 3/4 du virage) avant d'inscrire la moto sur l'angle et ne plus le lâcher du menton (pas uniquement des yeux)
   + En focalisant sur le point de corde on fait abstraction de l'entrée du virage, entre autres le vibreur intérieur, et donc, on ne va pas aller droit dessus.
 * De faire l'effort de rester large lors de la mise sur l'angle tout en visant le point de corde.
 
@@ -582,7 +587,8 @@ Ce qui ne va pas c'est la ligne qu'on suit dans le virage. Au prochain tour il f
 
 
 <!-- Pos OK -->
-### Image mentale pour éviter d'aller se jeter à la corde
+### Images mentales pour éviter d'aller se jeter à la corde
+
 Du point de vue de la trajectoire en virage, je me dis que tout se passe comme si je voulais, sur une ligne droite, aller de A en B (dessin de gauche) mais qu'il y a maintenant un virage entre les 2 points (dessin de droite). Voir ci-dessous le formidable schéma où je prends le cas d'une épingle.
 
 Sur le dessin ça ne se voit pas bien mais au milieu du virage (en C) on doit être
@@ -602,6 +608,13 @@ Donc on ne passe pas tout notre temps à longer la corde. Les pneus touchent la 
 C'est aussi pour ça qu'il faut regarder le point de corde bien avant la mise sur l'angle et faire abstraction de tout ce qui il y a autour afin d'aller de A en B sans plonger trop tôt à la corde comme un idiot.
 
 Normalement, plus le virage est lent et plus le point de corde est retardé et donc les positions de C et B dépendent de chaque virage. Je ne sais pas si c'est correct comme raisonnement mais c'est l'idée que je m'en fais.
+
+Une fois que l'image précédente est acquise, on peut passer à la seconde dont on a déjà parlé [ici]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}). Je ne vais donc par refaire les commentaires.
+
+<div align="center">
+<img src="./assets/image-28.webp" alt="" width="560" loading="lazy"/>
+</div>
+
 
 
 
