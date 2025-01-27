@@ -15,14 +15,37 @@ last_modified_date: 2023-05-21 12:35:50
 - TOC
 {:toc}
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Introduction
 
-Le freinage en ligne droite est terminé, on passe sur l'angle, on rentre dans le virage et ? 
+Je vais faire un rappel des épisodes précédents pour bien situer ce billet dans son contexte.
 
-Et la seule question que l'on doit se poser alors c'est : comment je fais pour sortir de là comme une balle ?
+1. Tu as découvert la piste. Tu poses correctement tes pieds, tu sais où sont les cônes (PMSA, PC et PS) et tu te couches sur la moto dans au moins un endroit du circuit. 
+1. Tu as continué à découvrir la piste et tu es 100% gaz, **en butée**, dans au moins un endroit du circuit.
+1. Tu sais qu'il faut décomposer les virages en 3. Tu regardes le PC avec ton menton **avant** d'arriver au PMSA. Tu vises le PS **avant** de rouler **sur** le PC. Entre le PMSA et le PC, tu sais que tu dois rejoindre sans gaz ni frein le point de pivot (PV). C'est là que tu claques la moto au sol et que tu l'orientes, le plus vite possible, sur la ligne qui va du PV au PS en passant par PC. Dès que c'est fait tu commences à enrouler les gaz (Throttle Rule).
+1. Tu décomposes ton freinage en trois phases : mise en pression rapide, maintien sur un plateau, dégressif pour finir. L'objectif c'est d'ajuster précisément la vitesse au PMSA. À la mise sur l'angle (PMSA) la vitesse est suffisante pour rejoindre PV sans frein ni gaz (phase neutre)
 
-Prenons un peu de recul... Les secondes au tour se gagnent dans les lignes droites et les grands virages (pas dans les petits virages, pas dans les freinages ni les portions lentes du circuit). On considère que l'on est efficace en ligne droite lorsque le temps passé à vitesse maximale est maximal. Si t'as du mal avec ce que tu viens de lire, relis la phrase une ou deux fois. En gros, l'idée c'est que toute chose égales par ailleurs (ligne droite, moto, accélération, V max...) un pilote est plus efficace qu'un autre si il passe plus de temps à V max. Comme les accélérations sont identiques y a pas d'autre solution que de sortir plus vite et en accélérant plus fort que l'autre pilote. C'est ça qu'on cherche et c'est ça qu'on appelle une conduite de virage efficace.
+Bon ben voilà, tout est dit, y a plus qu'à. Allez, salut!
 
-Ce qu'il y a bien, c'est que la situation va être très simple. En effet, l'efficacité de notre conduite de virage n'est mesurée qu'à l'aune de notre vitesse de sortie de virage. On se fiche donc de l'angle qu'on prend et on se contrefiche de notre vitesse d'entrée... Seule compte notre vitesse de sortie du virage.
+Hmm... Voilà où on en est : on commence à voir certains éléments se mettre en place, on a une idée générale de ce qu’on cherche à **produire**, mais le problème, c’est qu’on manque encore de régularité. Tout ça manque un peu de cohérence, comme si on avait les points mais pas encore les traits pour les relier. En gros, on n’y est pas tout à fait.
+
+Et c’est pour ça que ce billet est un peu particulier et que c'est le dernier de la section Basics. Maintenant, on sait ce qu’on veut : couché, en butée, trois phases de freinage, au point de corde avec les roues vers le point de sortie… Bref, on a les briques de base du pilotage. Ce qu’il nous reste à faire, c’est assembler tout ça pour **produire** quelque chose de solide. En gros, on va jouer au Lego. Sympa, non ? Allez, c’est parti !
+
+
+<div align="center">
+<img src="./assets/img00.webp" alt="" width="560" loading="lazy"/>
+</div>
+
+
+* Le freinage en ligne droite est terminé, on met la moto sur l'angle, on rentre dans le virage et ? 
+* Et la seule question que l'on doit se poser alors c'est : **comment je fais pour sortir de là comme une balle ?**
+
+Tu connais la réponse. Réfléchis... Les secondes se gagnent dans les lignes droites et les grands virages (pas dans les petits virages, pas dans les freinages ni les portions lentes du circuit). 
+
+On considère que l'on est efficace en ligne droite lorsque le temps passé à V max est maximisé. L'idée c'est que toute chose égales par ailleurs (ligne droite, moto, accélération, V max...) un pilote est plus efficace qu'un autre si il passe plus de temps à V max. Comme les accélérations sont identiques il n'y a pas d'autre solution que de sortir plus vite et en accélérant plus fort que l'autre pilote. C'est ça qu'on cherche à **produire** avec une conduite de virage efficace.
+
+Ce qu'il y a bien, c'est que la mesure de nos progrès va être très simple. En effet, l'efficacité de notre conduite de virage n'est mesurée qu'à l'aune de notre vitesse de sortie de virage. On se fiche de l'angle qu'on prend, on se fout d'être Débutant ou Expert et on se contrefiche de notre vitesse d'entrée... Seule compte notre vitesse de sortie du virage.
 
 
 
@@ -30,15 +53,16 @@ Ce qu'il y a bien, c'est que la situation va être très simple. En effet, l'eff
 <!-- ###################################################################### -->
 ## Objectifs de la session
 
-* Ne pas subir mais avoir une vraie conduite de virage
+* Augmenter notre vitesse à la sortie du virage pour maximiser le temps où on est 100% gaz ensuite
 * Trouver notre ligne idéale pour chaque virage
 * Gagner en répétabilité (être capable de faire le même virage tour après tour)
+* Ne pas subir mais avoir une vraie conduite de virage
 
 Autrement dit :
 
 * Être capable d'appliquer la **Throttle Rule** dans les virages (voir la [Note de Pilotage N° 02]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}))
-* Car c'est la confirmation qu'on est sur notre ligne idéale
-* On s'occupe du point de sortie (PS) car on veut qu'au point de code (PC) les roues de la moto soient sur la ligne qui relie le PC au PS mais pas vraiment de la façon dont on redresse la moto. On verra ça un peu plus tard... [Note de Pilotage N° 06] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/).
+* Car c'est la confirmation qu'on est sur notre ligne idéale pour tel ou tel virage
+* On s'occupe du point de sortie (PS) car on veut qu'au point de corde (PC) les roues soient sur la ligne qui relie le PV au PS en passant par PC mais on ne s'occupe pas vraiment de la façon dont on redresse la moto. On verra ça un peu plus tard... [Note de Pilotage N° 06] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/).
 
 
 
@@ -48,8 +72,12 @@ Autrement dit :
 <!-- ###################################################################### -->
 ## Prérequis
 
+* Faut pas avoir peur d'être 100% gaz, **en butée**. Faut l'avoir déjà fait sinon ça sert pas à grand chose de venir ici.
 * On a un freinage qui nous amène, à la bonne vitesse, au point de mise sur l'angle (PMSA)
-* Il faut peut-être consacrer un peu de temps aux vidéos ci-dessous. Oui, j'ai remarqué, y a des trucs de voitures mais ça fait de la culture générale et cela ne peut pas nous faire de mal.
+    * La bonne vitesse au PMSA, c'est celle qui nous amène sans frein ni gaz au PV
+    * Au PV on a une vitesse à laquelle on hésite pas à claquer au sol la moto pour la faire pivoter le plus rapidement possible
+    * Plus le virage est serré plus PV et PC sont espacés (dans une épingle on s'enfonce dans le virage avant de faire le pivot)  
+* Consacrer du temps aux vidéos ci-dessous. Oui, j'ai remarqué, il y a des trucs de voitures mais ça fait de la culture générale et cela ne peut pas nous faire de mal.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/60mpzDGCWVI?si=5lLh65Mcs7RgIxpb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -117,7 +145,7 @@ On a terminé le freinage en ligne droite, on est gaz coupé, on ne touche plus 
 * Je rappelle que l'idée ici c'est de ne **PAS** faire de freinage sur l'angle (enfin, [pas encore] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/) 😁)
 * La mise sur l'angle doit être **rapide** (j'explique pourquoi un peu plus loin). Pour accélérer la mise sur l'angle il faut s'entraîner à contre braquer :
     * En poussant **consciemment** sur le bras intérieur... Il faut vraiment prendre conscience qu'à l'instant où on le décide, on pousse sur le bracelet intérieur pour mettre la moto sur l'angle. L'idée c'est d'arrêter de réaliser, après coup, que la moto est sur l'angle sans vraiment savoir pourquoi, à partir de quel moment...
-    * On peut aussi s'assurer qu'on vise bien le point de corde avec le menton. Normalement c'est le cas mais en faisant la vérification, on va faire tourner la tête, les épaules, le corps et la moto. Ce faisant on va aussi mécaniquement mettre plus de poids sur le cale-pied intérieur. C'est peut-être un détail pour vous mais pour la moto ça veut dire beaucoup 🎶. Ça va contribuer à la faire passer sur l'angle plus rapidement (mais bon c'est beaucoup moins efficace en terme de rapidité que le contre braquage au guidon).
+    * On peut aussi s'assurer qu'on vise bien le point de corde avec le menton. Normalement c'est le cas mais en faisant la vérification, on va faire tourner la tête, les épaules, le corps et la moto. Ce faisant on va aussi mécaniquement mettre plus de poids sur le cale-pied intérieur. C'est peut-être un détail pour vous mais pour la moto ça veut dire beaucoup 🎶. Ça va contribuer à la faire passer sur l'angle plus rapidement. Mais bon, faut pas se leurrer, appuyer sur les cale-pieds c'est beaucoup moins efficace en terme de rapidité que le contre braquage au guidon. Pour t'en convaincre essaie de prendre une épingle en appuyant uniquement sur les cale-pieds. Good luck.
 
 
 Quoiqu'il en soit, à ce stade on est sur l'angle, gaz coupé, sans frein, on ne lâche pas le point de corde du menton et on a une vitesse suffisante. Suffisante pour quoi ? Pour laisser la moto avancer sur son erre, son inertie et aller placer nos roues sur le point de corde au millimètre près sur la ligne qui relie le PC au PS. C'est la phase neutre. Ce n'est pas facile, car il faut avoir la bonne vitesse en entrée et apprendre la patience...
@@ -129,23 +157,23 @@ Au prochain tour il faudra retarder le freinage, relâcher les freins au même e
 
 
 
-<!-- ### Retour sur la conduite du virage ... -->
 
 Si on remet les gaz trop tôt, trop fort on va s'écarter de la ligne idéale
 * Faudra couper, réaligner et réaccélérer.
-* C'est LE signe qui indique qu'on a accéléré trop fort, trop tôt
+* Remettre les gaz c'est LE signe qui indique qu'on a accéléré trop fort, trop tôt
 * Faudra corriger le tir au tour suivant en accélérant moins fort
 
-À la fin on peut se permettre d'enrouler de plus en plus vite la poignée de gaz car la moto est de plus en plus verticale et on a de plus en plus de grip sur le pneu arrière.
+À la fin du virage on peut se permettre d'enrouler de plus en plus vite la poignée de gaz car la moto est de plus en plus verticale et on a de plus en plus de grip sur le pneu arrière.
 
 À la sortie du virage
+
 * On est 100% gaz. C'est important. Trop souvent nous ne sommes pas complètement full gaz (voir la [Note 01](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/))
-* Le corps et la tête restent à l'intérieur du virage. Cela permet de resserrer la trajectoire en sortie de virage.
+* Le corps et la tête restent à l'intérieur du virage. Cela permet de resserrer la trajectoire en sortie de virage. On se prouve ainsi qu'on a encore de la marge et qu'au prochain tour on pourra accélérer encore plus fort. 
 * Ensuite, on ramène juste la tête et le torse derrière la bulle
 * Fesse intérieure encore sortie, la raie des fesses calée sur le bord de la selle.
 * Si le prochain virage est dans le même sens alors on ne bouge pas (oui, oui on reste de travers sur la moto)
 * Si le prochain virage est dans l'autre sens, quand on est en ligne droite, **au prochain passage de vitesse**, on ramène les fesses en utilisant les cuisses.
-* Si le virage suivant est dans l'autre sens mais que la ligne droite n'est pas assez longue pour qu'on passe une vitesse, comme on appuie fort sur les cale-pieds et qu'on est light sur la moto, on utilise la cuisse extérieure pour ramener le reste du corps dans l'axe. On peut même anticiper les choses et faire passer le corps carrément de l'autre côté de la moto afin de se positionner pour le prochain virage. Si la ligne droite est courte c'est très certainement l'option à choisir.
+* Si le virage suivant est dans l'autre sens mais que la ligne droite n'est pas assez longue pour qu'on passe une vitesse, comme on appuie fort sur les cale-pieds et qu'on est light sur la moto, on utilise la cuisse extérieure pour ramener le reste du corps dans l'axe. On peut même anticiper les choses et faire passer le corps carrément de l'autre côté de la moto afin de se positionner pour le prochain virage. Si la ligne droite est courte c'est l'option à choisir.
 
 Dans la vidéo ci-dessous pensez à mettre les sous-titres en Anglais et la vitesse à 0.75 car Alberto parle très vite.
 
