@@ -16,9 +16,11 @@ last_modified_date: 2023-05-21 12:35:50
 {:toc}
 
 
-Le freinage en ligne droite est terminé, on passe sur l'angle, on rentre dans le virage et ? Et la seule question que l'on doit se poser alors c'est : comment je fais pour sortir de là comme une balle ?
+Le freinage en ligne droite est terminé, on passe sur l'angle, on rentre dans le virage et ? 
 
-Prenons un peu de recul... Les secondes au tour se gagnent dans les lignes droites (pas dans les virages, pas dans les freinages ni les portions lentes du circuit). On considère que l'on est efficace en ligne droite lorsque notre vitesse est maximale au bout de cette dernière. Autrement dit, à accélération en ligne droite égale, il faut donc sortir plus vite du virage. Il nous faut donc une conduite de virage efficace.
+Et la seule question que l'on doit se poser alors c'est : comment je fais pour sortir de là comme une balle ?
+
+Prenons un peu de recul... Les secondes au tour se gagnent dans les lignes droites et les grands virages (pas dans les petits virages, pas dans les freinages ni les portions lentes du circuit). On considère que l'on est efficace en ligne droite lorsque le temps passé à vitesse maximale est maximal. Si t'as du mal avec ce que tu viens de lire, relis la phrase une ou deux fois. En gros, l'idée c'est que toute chose égales par ailleurs (ligne droite, moto, accélération, V max...) un pilote est plus efficace qu'un autre si il passe plus de temps à V max. Comme les accélérations sont identiques y a pas d'autre solution que de sortir plus vite et en accélérant plus fort que l'autre pilote. C'est ça qu'on cherche et c'est ça qu'on appelle une conduite de virage efficace.
 
 Ce qu'il y a bien, c'est que la situation va être très simple. En effet, l'efficacité de notre conduite de virage n'est mesurée qu'à l'aune de notre vitesse de sortie de virage. On se fiche donc de l'angle qu'on prend et on se contrefiche de notre vitesse d'entrée... Seule compte notre vitesse de sortie du virage.
 
@@ -29,14 +31,14 @@ Ce qu'il y a bien, c'est que la situation va être très simple. En effet, l'eff
 ## Objectifs de la session
 
 * Ne pas subir mais avoir une vraie conduite de virage
-* Trouver notre ligne idéale dans chaque virage
+* Trouver notre ligne idéale pour chaque virage
 * Gagner en répétabilité (être capable de faire le même virage tour après tour)
 
 Autrement dit :
 
 * Être capable d'appliquer la **Throttle Rule** dans les virages (voir la [Note de Pilotage N° 02]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}))
 * Car c'est la confirmation qu'on est sur notre ligne idéale
-* On s'occupe du point de sortie (PS) mais pas vraiment de la façon dont on redresse la moto en sortie (on verra ça un peu plus tard... [Note de Pilotage N° 06] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/))
+* On s'occupe du point de sortie (PS) car on veut qu'au point de code (PC) les roues de la moto soient sur la ligne qui relie le PC au PS mais pas vraiment de la façon dont on redresse la moto. On verra ça un peu plus tard... [Note de Pilotage N° 06] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/).
 
 
 
@@ -47,27 +49,23 @@ Autrement dit :
 ## Prérequis
 
 * On a un freinage qui nous amène, à la bonne vitesse, au point de mise sur l'angle (PMSA)
-* Il faut peut-être consacrer un peu de temps aux vidéos ci-dessous. Oui y a des trucs de voitures mais ça fait de la culture générale et cela ne peut pas faire de mal.
+* Il faut peut-être consacrer un peu de temps aux vidéos ci-dessous. Oui, j'ai remarqué, y a des trucs de voitures mais ça fait de la culture générale et cela ne peut pas nous faire de mal.
 
-<!-- https://www.youtube.com/watch?v=60mpzDGCWVI -->
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/60mpzDGCWVI?si=5lLh65Mcs7RgIxpb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 
-<!-- https://www.youtube.com/watch?v=VEJh4lLCzRc -->
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VEJh4lLCzRc?si=Zh4XeU6fuu2OTAoh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 
-<!-- https://www.youtube.com/watch?v=aZlOkt1oU2k -->
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aZlOkt1oU2k?si=9LlpKjdmhAiAnWtU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 
-<!-- https://youtu.be/N8qBdOs0s1E?t=209 -->
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/N8qBdOs0s1E?si=FnUlu4iAZNeAxUs5&amp;start=209" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -113,22 +111,20 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 <!-- ###################################################################### -->
 ## La session
 
-On a terminé le freinage en ligne droite, on est gaz coupé et on vient tout juste de passer sur l'angle.
+On a terminé le freinage en ligne droite, on est gaz coupé, on ne touche plus aux freins avant et on vient tout juste de mettre la moto sur l'angle.
 
 * La moto est passée sur l'angle le plus tard possible afin de prolonger le plus longtemps possible la ligne droite précédente et le freinage dans l'axe.
 * Je rappelle que l'idée ici c'est de ne **PAS** faire de freinage sur l'angle (enfin, [pas encore] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/) 😁)
-* La mise sur l'angle doit être **rapide** (voir plus bas pourquoi). Pour accélérer la mise sur l'angle il faut s'entraîner à contre braquer :
-  + En poussant **consciemment** sur le bras intérieur... Il faut vraiment prendre conscience qu'à l'instant où on le décide, on pousse sur le bracelet intérieur pour mettre la moto sur l'angle plutôt que de réaliser, après coup, que la moto est sur l'angle mais sans vraiment savoir pourquoi.
-  + On peut aussi s'assurer qu'on vise bien le point de corde avec le menton. Normalement c'est le cas mais en faisant la vérification, on va faire tourner la tête, les épaules, le corps et la moto. Ce faisant on va aussi mécaniquement mettre plus de poids sur le cale-pied intérieur. C'est peut-être un détail pour vous mais pour la moto ça veut dire beaucoup 🎶. Ça va contribuer à la faire passer sur l'angle plus vite.
+* La mise sur l'angle doit être **rapide** (j'explique pourquoi un peu plus loin). Pour accélérer la mise sur l'angle il faut s'entraîner à contre braquer :
+    * En poussant **consciemment** sur le bras intérieur... Il faut vraiment prendre conscience qu'à l'instant où on le décide, on pousse sur le bracelet intérieur pour mettre la moto sur l'angle. L'idée c'est d'arrêter de réaliser, après coup, que la moto est sur l'angle sans vraiment savoir pourquoi, à partir de quel moment...
+    * On peut aussi s'assurer qu'on vise bien le point de corde avec le menton. Normalement c'est le cas mais en faisant la vérification, on va faire tourner la tête, les épaules, le corps et la moto. Ce faisant on va aussi mécaniquement mettre plus de poids sur le cale-pied intérieur. C'est peut-être un détail pour vous mais pour la moto ça veut dire beaucoup 🎶. Ça va contribuer à la faire passer sur l'angle plus rapidement (mais bon c'est beaucoup moins efficace en terme de rapidité que le contre braquage au guidon).
 
 
-<!-- ### Retour sur la conduite de virage -->
-
-Quoiqu'il en soit, à ce stade on est sur l'angle, gaz coupé, on ne lâche pas le point de corde des yeux et on a une vitesse suffisante. Suffisante pour quoi ? Pour laisser la moto avancer sur son erre, son inertie, et aller placer nos roues sur le point de corde au millimètre près. C'est la phase neutre. Ce n'est pas facile, car il faut avoir la bonne vitesse en entrée et apprendre la patience...
+Quoiqu'il en soit, à ce stade on est sur l'angle, gaz coupé, sans frein, on ne lâche pas le point de corde du menton et on a une vitesse suffisante. Suffisante pour quoi ? Pour laisser la moto avancer sur son erre, son inertie et aller placer nos roues sur le point de corde au millimètre près sur la ligne qui relie le PC au PS. C'est la phase neutre. Ce n'est pas facile, car il faut avoir la bonne vitesse en entrée et apprendre la patience...
 
 En effet, comme on n'est pas suicidaire, généralement on a freiné trop tôt, trop fort. On entre dans le virage trop lentement et on est obligé de remettre un peu d'accélérateur bien avant d'avoir atteint le point de corde. On accélère afin d'ouvrir la trajectoire de la moto car cette dernière était en train de plonger à l'intérieur du virage et de nous emmener dans l'herbe (par manque de vitesse, l'ensemble moto/pilote était survireur).
 
-Au prochain tour il faudra retarder le freinage, relâcher les freins au même endroit et exécuter une mise sur l'angle plus rapide. On va alors rentrer un peu plus vite. Si la marque de freinage est la bonne on pourra rejoindre le point de corde (au millimètre, j'insiste) en restant gaz coupés.
+Au prochain tour il faudra retarder le freinage, relâcher les freins au même endroit et exécuter une mise sur l'angle plus rapide. On va alors rentrer un peu plus vite. Si la marque de freinage est la bonne on pourra rejoindre le point de corde (au millimètre, j'insiste) avec les roues orientés vers le PC (j'insite aussi) en restant gaz coupés.
 
 
 
@@ -136,7 +132,7 @@ Au prochain tour il faudra retarder le freinage, relâcher les freins au même e
 <!-- ### Retour sur la conduite du virage ... -->
 
 Si on remet les gaz trop tôt, trop fort on va s'écarter de la ligne idéale
-* Faudra couper, réaligner et réaccélérer
+* Faudra couper, réaligner et réaccélérer.
 * C'est LE signe qui indique qu'on a accéléré trop fort, trop tôt
 * Faudra corriger le tir au tour suivant en accélérant moins fort
 
@@ -148,12 +144,11 @@ Si on remet les gaz trop tôt, trop fort on va s'écarter de la ligne idéale
 * Ensuite, on ramène juste la tête et le torse derrière la bulle
 * Fesse intérieure encore sortie, la raie des fesses calée sur le bord de la selle.
 * Si le prochain virage est dans le même sens alors on ne bouge pas (oui, oui on reste de travers sur la moto)
-* S'il est dans l'autre sens, quand on est en ligne droite, **au prochain passage de vitesse**, on ramène les fesses en utilisant les cuisses.
-* Si le virage suivant est dans l'autre sens mais que la ligne droite n'est pas assez longue pour qu'on passe une vitesse, comme on appuie fort sur les cale-pieds et qu'on est light sur la moto, on utilise la cuisse extérieure pour ramener le reste du corps dans l'axe. On peut même anticiper les choses et faire passer le corps carrément de l'autre côté de la moto afin de se positionner pour le prochain virage.
+* Si le prochain virage est dans l'autre sens, quand on est en ligne droite, **au prochain passage de vitesse**, on ramène les fesses en utilisant les cuisses.
+* Si le virage suivant est dans l'autre sens mais que la ligne droite n'est pas assez longue pour qu'on passe une vitesse, comme on appuie fort sur les cale-pieds et qu'on est light sur la moto, on utilise la cuisse extérieure pour ramener le reste du corps dans l'axe. On peut même anticiper les choses et faire passer le corps carrément de l'autre côté de la moto afin de se positionner pour le prochain virage. Si la ligne droite est courte c'est très certainement l'option à choisir.
 
 Dans la vidéo ci-dessous pensez à mettre les sous-titres en Anglais et la vitesse à 0.75 car Alberto parle très vite.
 
-<!-- https://youtu.be/Ox3_unEQx5s?t=175 -->
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ox3_unEQx5s?si=dgrvQ8JmYChNDOOa&amp;start=175" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -161,7 +156,6 @@ Dans la vidéo ci-dessous pensez à mettre les sous-titres en Anglais et la vite
 
 Dans la vidéo suivante Simon Crafar revient en détail sur sa préférence de conduire le virage gaz fermé et sans aucune utilisation des freins (vs [Trail Braking](https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/)). Pas d'offense, mais j'avoue, j'ai un peu de mal avec son anglais de néo-zélandais.
 
-<!-- https://youtu.be/ps12mz_i3-0 -->
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ps12mz_i3-0?si=AN03fFpXL2UbP3Yg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
@@ -179,15 +173,14 @@ Dans la vidéo suivante Simon Crafar revient en détail sur sa préférence de c
 <!-- ###################################################################### -->
 ## À la fin de la session
 
-Il faut sentir
-
+Il faut sentir :
 * Qu'en entrée de virage on ne lâche pas des yeux le point de corde
 * Qu'on rentre avec une vitesse suffisante pour rejoindre le point de corde
 * Qu'il y a une phase neutre où on est patient et où on ne touche à rien.
 * Qu'on commence à enrouler le câble d'accélérateur un peu avant de placer nos roues sur le point de corde
 * Que ce sont bien les roues qui passent au point de corde, pas la tête ni le genou
 * Qu'idéalement on est 100% gaz au point de corde
-* Que la tête et le corps reste à l'intérieur en sortie de virage ce qui permet de redresser plus vite la moto et d'accélérer plus fort.
+* Que la tête et le corps reste à l'intérieur en sortie de virage ce qui permet de resserrer la sortie de virage, de redresser plus vite la moto et d'accélérer plus fort.
 
 
 

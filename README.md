@@ -88,6 +88,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 
 ## À garder sous le coude
+* Ç = ALT + 128 (du pavé numérique)
 
 * ` NOT YET TRANSFERED `
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Equation canonique"
+title: "La forme canonique"
 parent: Maths
 #nav_order: 100
 math: mathjax
@@ -9,7 +9,7 @@ last_modified_date: 2023-09-23 09:00:00
 ---
 
 
-# Equation canonique
+# La forme canonique
 
 <div align="center">
 <img src="./assets/img00.webp" alt=""  loading="lazy"/>
@@ -49,7 +49,7 @@ ax^2+bx+c & = ax^2 - 2ax\alpha + a \alpha^2 + \beta
 \end{align*}
 $$
 
-Ca doit passer crème. À la seconde ligne on développe et à la troisième on fait le ménage.
+Ça doit passer crème. À la seconde ligne on développe et à la troisième on fait le ménage.
 
 Maintenant, on égalise membre à membre. En français dans le texte cela veut dire que les facteurs de $$x^2$$ sont égaux entre eux, idem pour les facteurs de $$x$$ ainsi que les constantes. On se retrouve avec 3 égalités :
 
@@ -91,7 +91,7 @@ $$
 \end{align*}
 $$
 
-Mouai...Ca fait pas encore rêver cette histoire. Cela dit, à ce stade on peut quand même dire que :
+Mouai...Ça fait pas encore rêver cette histoire. Cela dit, à ce stade on peut quand même dire que :
 
 $$ ax^2+bx+c = a(x-\alpha^2) + \beta $$
 
@@ -154,7 +154,7 @@ Et
 
 $$ \beta = f(\alpha)$$
 
-Ca c'est plutôt cool. Watch this!
+Ça c'est plutôt cool. Watch this!
 
 
 
@@ -289,9 +289,6 @@ $$ \beta = \frac{\Delta}{4a} = f(\alpha)$$
 
 
 ## À retenir
-1. Forma canonique $$ ax^2+bx+c = aX^2+ \beta = a(x-\alpha)^2 + \beta $$
-1. $$\alpha = - \frac{b}{2a}$$
-1. $$ \beta = f(\alpha)$$
-1. $$\alpha$$ est la valeur de $$x$$ où se trouve l'extremum (maximum ou minimum)
-1. La valeur de la fonction à cet endroit c'est $$f(\alpha)$$ c'est à dire $$\beta$$
-1. Refaire l'application numérique précédente. Il faut se rappeler que $$\alpha = - \frac{b}{2a}$$ puis calculer $$f(\alpha)$$ pour trouver $$\beta$$
+1. La forme canonique $$ ax^2+bx+c = aX^2+ \beta = a(x-\alpha)^2 + \beta $$
+1. $$\alpha = - \frac{b}{2a}$$. L'abscisse de l'extremum (le centre des deux racines ou l’abscisse de la racine unique)
+1. $$ \beta = f(\alpha)$$. L'ordonnée de l'extremum 
