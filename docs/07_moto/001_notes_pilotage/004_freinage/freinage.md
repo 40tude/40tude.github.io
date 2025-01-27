@@ -435,3 +435,19 @@ J'aimerai vraiment avoir l'occasion de faire des tests similaires afin de vérif
 * Freinage jusqu'à l'arrêt à 200 m
 * Il freine ensuite jusqu'à l'arrêt à 150 m (il s'arrête au début du vibreur externe, avant le PMSA en gros…)
 * Dernier freinage à 120 m et passage à 80 km/h dans le virage
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## La suite au prochain épisode
+
+Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
+
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+

@@ -19,7 +19,7 @@ last_modified_date: 2023-05-21 12:35:50
 <!-- ###################################################################### -->
 ## Introduction
 
-Je vais faire un rappel des épisodes précédents pour bien situer ce billet dans son contexte.
+Je vais commencer par faire un rappel des épisodes précédents pour bien situer ce billet dans son contexte.
 
 1. Tu as découvert la piste. Tu poses correctement tes pieds, tu sais où sont les cônes (PMSA, PC et PS) et tu te couches sur la moto dans au moins un endroit du circuit. 
 1. Tu as continué à découvrir la piste et tu es 100% gaz, **en butée**, dans au moins un endroit du circuit.
@@ -43,7 +43,7 @@ Et c’est pour ça que ce billet est un peu particulier et que c'est le dernier
 
 Tu connais la réponse. Réfléchis... Les secondes se gagnent dans les lignes droites et les grands virages (pas dans les petits virages, pas dans les freinages ni les portions lentes du circuit). 
 
-On considère que l'on est efficace en ligne droite lorsque le temps passé à V max est maximisé. L'idée c'est que toute chose égales par ailleurs (ligne droite, moto, accélération, V max...) un pilote est plus efficace qu'un autre si il passe plus de temps à V max. Comme les accélérations sont identiques il n'y a pas d'autre solution que de sortir plus vite et en accélérant plus fort que l'autre pilote. C'est ça qu'on cherche à **produire** avec une conduite de virage efficace.
+On considère que l'on est efficace en ligne droite lorsque le temps passé à V max est maximisé. L'idée c'est que toute chose égales par ailleurs (ligne droite, moto, accélération, V max...) un pilote est plus efficace qu'un autre si il passe plus de temps à V max. Comme les accélérations sont identiques il n'y a pas d'autre solution que de sortir en étant le premier à accélérer. Mécaniquement, si on est le premier à accélérer, à chaque instant on accéléra plus fort et sortira plus vite que l'autre pilote. *Celui qui gagne ce n’est pas celui qui accélère le plus fort mais celui qui accélère le plus tôt*. C'est ça qu'on cherche à **produire** avec une conduite de virage efficace.
 
 Ce qu'il y a bien, c'est que la mesure de nos progrès va être très simple. En effet, l'efficacité de notre conduite de virage n'est mesurée qu'à l'aune de notre vitesse de sortie de virage. On se fiche de l'angle qu'on prend, on se fout d'être Débutant ou Expert et on se contrefiche de notre vitesse d'entrée... Seule compte notre vitesse de sortie du virage.
 
@@ -53,8 +53,9 @@ Ce qu'il y a bien, c'est que la mesure de nos progrès va être très simple. En
 <!-- ###################################################################### -->
 ## Objectifs de la session
 
-* Augmenter notre vitesse à la sortie du virage pour maximiser le temps où on est 100% gaz ensuite
-* Trouver notre ligne idéale pour chaque virage
+* Augmenter notre vitesse à la sortie du virage pour maximiser le temps où on est 100% gaz 
+* Pour ça faut avancer le moment à partir duquel on commence à accélérer et augmenter la vitesse à laquelle on enroule le câble d'accélérateur
+* Cela ne peut se faire que si et seulement si on a trouvé notre ligne idéale pour chaque virage
 * Gagner en répétabilité (être capable de faire le même virage tour après tour)
 * Ne pas subir mais avoir une vraie conduite de virage
 
@@ -72,7 +73,7 @@ Autrement dit :
 <!-- ###################################################################### -->
 ## Prérequis
 
-* Faut pas avoir peur d'être 100% gaz, **en butée**. Faut l'avoir déjà fait sinon ça sert pas à grand chose de venir ici.
+* Ne pas avoir peur d'être 100% gaz, **en butée**. Savoir comment passer à 100% gaz rapidement. Faut avoir déjà expérimenté sinon ça ne sert à rien de venir ici.
 * On a un freinage qui nous amène, à la bonne vitesse, au point de mise sur l'angle (PMSA)
     * La bonne vitesse au PMSA, c'est celle qui nous amène sans frein ni gaz au PV
     * Au PV on a une vitesse à laquelle on hésite pas à claquer au sol la moto pour la faire pivoter le plus rapidement possible
@@ -140,33 +141,37 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 ## La session
 
 On a terminé le freinage en ligne droite, on est gaz coupé, on ne touche plus aux freins avant et on vient tout juste de mettre la moto sur l'angle.
-
 * La moto est passée sur l'angle le plus tard possible afin de prolonger le plus longtemps possible la ligne droite précédente et le freinage dans l'axe.
-* Je rappelle que l'idée ici c'est de ne **PAS** faire de freinage sur l'angle (enfin, [pas encore] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/) 😁)
-* La mise sur l'angle doit être **rapide** (j'explique pourquoi un peu plus loin). Pour accélérer la mise sur l'angle il faut s'entraîner à contre braquer :
+    * Je rappelle que l'idée ici c'est de ne **PAS** faire de freinage sur l'angle (enfin, [pas encore] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/) 😁)
+* La mise sur l'angle doit être **rapide** (j'explique pourquoi plus loin). Pour accélérer la mise sur l'angle il faut s'entraîner à contre braquer :
     * En poussant **consciemment** sur le bras intérieur... Il faut vraiment prendre conscience qu'à l'instant où on le décide, on pousse sur le bracelet intérieur pour mettre la moto sur l'angle. L'idée c'est d'arrêter de réaliser, après coup, que la moto est sur l'angle sans vraiment savoir pourquoi, à partir de quel moment...
     * On peut aussi s'assurer qu'on vise bien le point de corde avec le menton. Normalement c'est le cas mais en faisant la vérification, on va faire tourner la tête, les épaules, le corps et la moto. Ce faisant on va aussi mécaniquement mettre plus de poids sur le cale-pied intérieur. C'est peut-être un détail pour vous mais pour la moto ça veut dire beaucoup 🎶. Ça va contribuer à la faire passer sur l'angle plus rapidement. Mais bon, faut pas se leurrer, appuyer sur les cale-pieds c'est beaucoup moins efficace en terme de rapidité que le contre braquage au guidon. Pour t'en convaincre essaie de prendre une épingle en appuyant uniquement sur les cale-pieds. Good luck.
 
 
-Quoiqu'il en soit, à ce stade on est sur l'angle, gaz coupé, sans frein, on ne lâche pas le point de corde du menton et on a une vitesse suffisante. Suffisante pour quoi ? Pour laisser la moto avancer sur son erre, son inertie et aller placer nos roues sur le point de corde au millimètre près sur la ligne qui relie le PC au PS. C'est la phase neutre. Ce n'est pas facile, car il faut avoir la bonne vitesse en entrée et apprendre la patience...
+Quoiqu'il en soit, à ce stade on est sur l'angle, gaz coupé, sans frein, on ne lâche pas le point de corde du menton et on a une vitesse suffisante. Suffisante pour quoi ? Pour laisser la moto avancer sur son erre, son inertie et aller rejoindre le point de pivot. C'est la phase neutre. Ce n'est pas facile, car il faut avoir la bonne vitesse en entrée et apprendre la patience... AU point de pivot, comme on a pas d'action parasite sur la moto (ni frein, ni gaz) on peut la claquer au sol très rapidement pour la faire pivoter et orienter nos roues sur la ligne qui lie PV, PC et PS. 
 
-En effet, comme on n'est pas suicidaire, généralement on a freiné trop tôt, trop fort. On entre dans le virage trop lentement et on est obligé de remettre un peu d'accélérateur bien avant d'avoir atteint le point de corde. On accélère afin d'ouvrir la trajectoire de la moto car cette dernière était en train de plonger à l'intérieur du virage et de nous emmener dans l'herbe (par manque de vitesse, l'ensemble moto/pilote était survireur).
+Dès qu'on a passé PV et que les roues sont alignées, on commence à enrouler. Au début c'est imperceptible et lent. On assois la moto sur sa roue arrière. Comme on est dans la bonne direction on peut pas sortir. Plus on accélère plus on relève la moto. On a plus le genou au sol au PC. On place nos roues sur le point de corde au millimètre près sur la ligne qui relie le PC au PS. 
 
-Au prochain tour il faudra retarder le freinage, relâcher les freins au même endroit et exécuter une mise sur l'angle plus rapide. On va alors rentrer un peu plus vite. Si la marque de freinage est la bonne on pourra rejoindre le point de corde (au millimètre, j'insiste) avec les roues orientés vers le PC (j'insite aussi) en restant gaz coupés.
+Ce qui va très certainement se passer pendant la session 
+1. Se retrouver trop tôt à la corde
+1. Vitesse trop lente au PMSA
+1. Une combinaison linéaire des 2 points précédents 
 
+**Premier point** :
+* Plus le virage est serré plus il faut s'enfoncer dans le virage pour aller chercher PV loin, très loin (on parle de virage en V, aux US on parle de point'n shoot)
+* Faut pas hésiter à copier le marshall ou ceux qui restent large et qui donnent l'impression, à un moment, de "plonger" à la corde. 
+* On en a déjà parlé mais normalement le roues touchent la corde 1 fois, une fraction de seconde. Si pendant la session c'est pas le cas, au prochain tour, dans ce virage, faut se forcer à aller chercher un PV plus loin dans le virage
 
-
-
+**Second point** : On n'est pas suicidaire et généralement on a freiné trop tôt, trop fort. On entre dans le virage trop lentement et on est obligé de remettre un peu d'accélérateur (filet de gaz) pour empêcher la moto de plonger à la corde. En fait, on accélère pour ouvrir la trajectoire de la moto car, par manque de vitesse l'ensemble moto/pilote est survireur. Si ça arrive pendant la session, au prochain tour il faut retarder le freinage de une ou 2 motos de long, relâcher les freins au même endroit et exécuter une inscription sur l'angle plus rapide. On va alors rentrer un peu plus vite. Si la marque de freinage est la bonne on pourra rejoindre PV gaz coupé. À partir de là c'est trop facile. On claque la moto pour la faire pivoter et tout de suite après, on commence à enrouler, on rejoint PC (au millimètre, j'insiste) avec les roues orientées vers PS (j'insiste aussi).
 
 Si on remet les gaz trop tôt, trop fort on va s'écarter de la ligne idéale
-* Faudra couper, réaligner et réaccélérer.
-* Remettre les gaz c'est LE signe qui indique qu'on a accéléré trop fort, trop tôt
-* Faudra corriger le tir au tour suivant en accélérant moins fort
+* Faudra couper, réaligner et réaccélérer ce qui est très mauvais pour le grip de la moto
+* Couper les gaz c'est LE signe qui indique qu'on a accéléré trop fort, trop tôt
+* Faudra corriger le tir au tour suivant en accélérant moins fort ou plus tard
 
 À la fin du virage on peut se permettre d'enrouler de plus en plus vite la poignée de gaz car la moto est de plus en plus verticale et on a de plus en plus de grip sur le pneu arrière.
 
-À la sortie du virage
-
+À la sortie du virage :
 * On est 100% gaz. C'est important. Trop souvent nous ne sommes pas complètement full gaz (voir la [Note 01](https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/))
 * Le corps et la tête restent à l'intérieur du virage. Cela permet de resserrer la trajectoire en sortie de virage. On se prouve ainsi qu'on a encore de la marge et qu'au prochain tour on pourra accélérer encore plus fort. 
 * Ensuite, on ramène juste la tête et le torse derrière la bulle
@@ -202,10 +207,12 @@ Dans la vidéo suivante Simon Crafar revient en détail sur sa préférence de c
 ## À la fin de la session
 
 Il faut sentir :
+* Qu'on sort dorénavant plus vite du virage car on a commencé à accélérer plus tôt
+* Qu'on est plus tôt et plus longtemps 100% gaz dans la ligne droite qui suit le virage 
 * Qu'en entrée de virage on ne lâche pas des yeux le point de corde
-* Qu'on rentre avec une vitesse suffisante pour rejoindre le point de corde
+* Qu'on rentre avec une vitesse suffisante pour rejoindre PV
 * Qu'il y a une phase neutre où on est patient et où on ne touche à rien.
-* Qu'on commence à enrouler le câble d'accélérateur un peu avant de placer nos roues sur le point de corde
+* Qu'on commence à enrouler le câble d'accélérateur juste après PV, avant de placer nos roues sur le point de corde sur la ligne PV-PC-PS
 * Que ce sont bien les roues qui passent au point de corde, pas la tête ni le genou
 * Qu'idéalement on est 100% gaz au point de corde
 * Que la tête et le corps reste à l'intérieur en sortie de virage ce qui permet de resserrer la sortie de virage, de redresser plus vite la moto et d'accélérer plus fort.
@@ -491,6 +498,20 @@ Dans la vidéo ci-dessous c'est instructif de voir, au ralenti, ce qui se passe 
 
 Maj. 17/03/23 : Sylvain Guintoli vient de dédier une [vidéo](https://youtu.be/f1NR1VdvmTA) à ce sujet. C'est dire si c'est important.
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## La suite au prochain épisode
+
+Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
+
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 

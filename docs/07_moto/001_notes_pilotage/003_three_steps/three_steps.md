@@ -533,3 +533,17 @@ La vidéo ci-dessous rentre plus dans les détails.
 </div>
 
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## La suite au prochain épisode
+
+Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
+
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
