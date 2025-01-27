@@ -612,7 +612,7 @@ Normalement, plus le virage est lent et plus le point de corde est retardé et d
 Une fois que l'image précédente est acquise, on peut passer à la seconde dont on a déjà parlé [ici]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}). Je ne vais donc par refaire les commentaires.
 
 <div align="center">
-<img src="./assets/image-28.webp" alt="" width="560" loading="lazy"/>
+<img src="./assets/img_106.webp" alt="" width="560" loading="lazy"/>
 </div>
 
 
