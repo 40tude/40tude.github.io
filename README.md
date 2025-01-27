@@ -114,6 +114,9 @@ Pour les images sur les pages où il y a un permalink
 
 ```
 Ancre
+Sur un paragraphe dans une autre page
+[Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}#le-point-de-corde-pc)
+
 [Aller à cette section](#short-id) Dès qu'on met le # code propose une liste d'ancres
 
 [Aller à cette section](#short-id)

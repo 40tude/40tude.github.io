@@ -561,7 +561,7 @@ Voir la vidéo ci-dessous à partir de 27'30''
 
 On va là où on regarde. Donc si à l'entrée du virage on regarde l'intérieur du virage, le début du vibreur par exemple, c'est là qu'on va aller.
 * On aura une ligne "facile" jusqu'à la l'intérieur du virage mais on sera planté pour la sortie.
-* En effet, si à la corde, nos roues ne sont toujours pas dans la direction de PS, notre trajectoire sera trop large. Il va falloir rester très longtemps sur l'angle avant de pouvoir accélérer. On va donc perdre beaucoup de temps à remettre la moto verticale et à 100% des gaz. On en avait parlé dans le billet [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}). Tu te rappelles ce ce schéma ?
+* En effet, si à la corde, nos roues ne sont toujours pas dans la direction de PS, notre trajectoire sera trop large. Il va falloir rester très longtemps sur l'angle avant de pouvoir accélérer. On va donc perdre beaucoup de temps à remettre la moto verticale et à 100% des gaz. On en avait parlé dans le billet à propos de [Décomposition des virages]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}#le-point-de-corde-pc). Tu te rappelles de ce schéma ?
 
 <div align="center">
 <img src="./assets/img_105.webp" alt="" width="560" loading="lazy"/>
@@ -609,7 +609,7 @@ C'est aussi pour ça qu'il faut regarder le point de corde bien avant la mise su
 
 Normalement, plus le virage est lent et plus le point de corde est retardé et donc les positions de C et B dépendent de chaque virage. Je ne sais pas si c'est correct comme raisonnement mais c'est l'idée que je m'en fais.
 
-Une fois que l'image précédente est acquise, on peut passer à la seconde dont on a déjà parlé [ici]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}). Je ne vais donc par refaire les commentaires.
+Une fois que l'image précédente est acquise, on peut passer à la seconde dont on a déjà parlé [ici]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}#le-point-de-pivot-pv). Je ne vais donc par refaire les commentaires.
 
 <div align="center">
 <img src="./assets/img_106.webp" alt="" width="560" loading="lazy"/>
@@ -669,9 +669,9 @@ C'est moins sexy mais, finalement, c'est plus efficace
 ### Grip-Shifting
 
 À propos de l'accélérateur, il faut aussi penser aussi au **Grip Shifting**. Quand on a terminé avec le freinage et **avant** qu'on commence à tourner la poignée des gaz
-* On écrate les doigt très légèrement 
+* On écarte les doigts très légèrement 
 * On tourne le poignet vers l'avant, **autour** de la poignée de gaz
-* Et ensuite seulement on ouvre les gaz
+* On ressert la prise
 * Ça évite de coincer le poignet à 50% des gaz dans la ligne droite suivante
 
 Donc il faut penser à faire ça :
