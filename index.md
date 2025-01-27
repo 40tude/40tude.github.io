@@ -64,23 +64,18 @@ last_modified_date: 1964-01-01 08:00:00 +0000   # Ne tient pas compte de cette p
 
 Nombre d'articles sur le site : **{{ site.pages | size }}**
 
-{: .note }
-Je transfère [**40tude.fr**](https://www.40tude.fr/) de (WordPress + OVH) vers (markdown + GitHub).  
-Le **20 janvier 2025** il reste une centaine de billets à transférer (essentiellement dans la catégorie Pilotage). J'espère avoir terminé d'ici fin janvier 2025. Je ne suis pas sûr de transférer tous les billets car certains ne sont vraiment plus d'actualité. Cela dit, j'ai souvent été bien content de retrouver une info dans une "vieille" page qui était toujours en ligne... Lire par exemple le premier épisode de la série [**Simple OS**]({%link docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md%}).     
-Pendant le transfert, même si j'apporte quelques modifications aux billets, je ne vais **pas modifier les dates de dernière mise à jour**. Je ne le ferai que si, après le transfert, je reviens sur une page pour y ajouter des compléments ou la réécrire complètement. Les dates de première et de dernière édition se trouvent **en bas de chaque page**, tandis que **l'estimation du temps de lecture** est s'affiche en haut.  
-Pour l'instant je suis focus sur le transfert.
 
-### À propos du site   
+### À propos  
 * Il faut lire "**fortitude point fr**". Il n'y a pas de sens caché, j'ai toujours aimé cette façon d'écrire ce mot qui en anglais veut dire courage face à l'adversité. Pas de référence non plus à [l'opération de désinformation](https://fr.wikipedia.org/wiki/Op%C3%A9ration_Fortitude){:target="_blank"} de la seconde guerre mondiale.  
+* Les **commentaires** sont les bienvenus. Il suffit d'aller dans cet [espace dédié](https://github.com/40tude/40tude.github.io/discussions). Techniquement le site est sur GitHub. Il est probable qu'avant de pouvoir écrire, on te demande de t'inscrire. 
+* Les **images**. Faut pas hésiter à cliquer dessus. Elles s'affichent alors dans leur dimensions initiales et tu peux zoomer si besoin    
 * Le site précédent, hébergé chez **OVH** a été **piraté** en avril 2024. De mon point de vue d'utilisateur "lambda" qui souhaite simplement écrire sur son blog, OVH n'a rien fait pour protéger mon site ni pour m'aider après coup (j'étais client depuis 2011 sans jamais avoir contacté le support...).
 * D'un autre côté, je n'en pouvais plus de **WordPress**. Je parle surtout de l'édition des billets. Au début, en 2010, ça allait à peu près mais sur la fin c'est devenu n'importe quoi...  WP c'est sans doute très bien pour certains mais il ne correspond plus du tout à mes besoins. En plus, j'ai l'impression que ça pue chez WP. [Lire ce billet sur Medium.](https://medium.com/notes-and-theories/this-man-controls-40-of-the-internet-and-its-a-problem-1b37a66e6185){:target="_blank"}
 
-### Commentaires
-* Ils sont les bienvenus
-* Il suffit d'aller dans cet [espace dédié](https://github.com/40tude/40tude.github.io/discussions)
-    * Techniquement le site est sur GitHub. Il est probable qu'avant de pouvoir écrire, on te demande de t'inscrire. 
-    * Je pense que tout le monde peut lire. 
 
-### Images
-* Faut pas hésiter à cliquer sur les images. 
-* Elles s'affichent dans leur dimensions initiales et on peut zoomer si besoin    
+
+<!-- {: .note }
+Je transfère [**40tude.fr**](https://www.40tude.fr/) de (WordPress + OVH) vers (markdown + GitHub).  
+Le **20 janvier 2025** il reste une centaine de billets à transférer (essentiellement dans la catégorie Pilotage). J'espère avoir terminé d'ici fin janvier 2025. Je ne suis pas sûr de transférer tous les billets car certains ne sont vraiment plus d'actualité. Cela dit, j'ai souvent été bien content de retrouver une info dans une "vieille" page qui était toujours en ligne... Lire par exemple le premier épisode de la série [**Simple OS**]({%link docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/sos_2_le_retour_20_ans_apres_episode_0.md%}).     
+Pendant le transfert, même si j'apporte quelques modifications aux billets, je ne vais **pas modifier les dates de dernière mise à jour**. Je ne le ferai que si, après le transfert, je reviens sur une page pour y ajouter des compléments ou la réécrire complètement. Les dates de première et de dernière édition se trouvent **en bas de chaque page**, tandis que **l'estimation du temps de lecture** est s'affiche en haut.  
+Pour l'instant je suis focus sur le transfert. -->
