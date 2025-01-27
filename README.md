@@ -2,6 +2,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ## TODO
 * Liens LinkedIn Youtube Github dans le footer de la navbar ?
+* Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
 * Faire un billet sur le portage de WP vers markdown?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
