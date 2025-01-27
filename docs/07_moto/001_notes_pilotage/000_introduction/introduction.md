@@ -54,7 +54,7 @@ En gros, on verrouille le bas du corps "dans" la moto alors que le buste est tr�
 11. **Short shift** : NOT YET TRANSFERED - C'est l'art de passer au rapport supérieur bien avant d'être au régime moteur optimum. Pourquoi, comment... Un pro (un vrai, pas moi 😂) nous explique tout ça, en français, dans le texte.
 
 ### Compléments
-12. **Conseils de pro** : NOT YET TRANSFERED - Ce sont en effet des conseils de vrais pros pour lesquelles il y a des références etc. À lire, à relire et à inscrire dans sa feuille de session comme exercices à faire par exemple.
+12. **[Conseils de pro]({%link docs/07_moto/001_notes_pilotage/012_conseils_de_pros/conseils_de_pros.md%})** : NOT YET TRANSFERED - Ce sont en effet des conseils de vrais pros pour lesquelles il y a des références etc. À lire, à relire et à inscrire dans sa feuille de session comme exercices à faire par exemple.
 
 
 
