@@ -30,7 +30,7 @@ Bon ben voilà, tout est dit, y a plus qu'à. Allez, salut!
 
 Hmm... Voilà où on en est : on commence à voir certains éléments se mettre en place, on a une idée générale de ce qu’on cherche à **produire**, mais le problème, c’est qu’on manque encore de régularité. Tout ça manque un peu de cohérence, comme si on avait les points mais pas encore les traits pour les relier. En gros, on n’y est pas tout à fait.
 
-Et c’est pour ça que ce billet est un peu particulier, que c'est celui dont la section Remarques est la plus longue et que c'est le dernier de la section Basics. Maintenant, on sait ce que l’on veut : couché, en butée, trois phases de freinage, sur point de corde avec les roues vers le point de sortie… Bref, on a les briques de base du pilotage. Ce qu’il nous reste à faire, c’est assembler tout ça pour **produire** quelque chose de solide. En gros, on va jouer au Lego. Sympa, non ? Allez, c’est parti !
+Et c’est pour ça que ce billet est un peu particulier, que c'est celui dont la section [Remarques](#remarques) est la plus longue et que c'est le dernier de la section Basics. En effet, on sait ce que l’on veut : couché, en butée, trois phases de freinage, sur point de corde avec les roues vers le point de sortie… On a donc les briques de base du pilotage. Ce qui nous manque, ce qu’il reste à faire, c’est assembler tout ça pour **produire** une base solide sur laquelle on va pouvoir s'appuyer. En gros, on va jouer au Lego. Sympa, non ? Allez, c’est parti !
 
 
 <div align="center">
