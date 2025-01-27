@@ -556,14 +556,12 @@ Voir la vidéo ci-dessous à partir de 27'30''
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XcMp7wuVKhY?si=fbHGWfGTN0_AzZPO&amp;start=1650" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-
-
 <!-- Pos OK -->
 ### Que faire si on se retrouve constamment coincé à la corde?
 
 On va là où on regarde. Donc si à l'entrée du virage on regarde l'intérieur du virage, le début du vibreur par exemple, c'est là qu'on va aller.
 * On aura une ligne "facile" jusqu'à la l'intérieur du virage mais on sera planté pour la sortie.
-* En effet, si à la corde, nos roues ne sont toujours pas dans la direction de PS, notre trajectoire sera trop large. Il va falloir rester très longtemps sur l'angle avant de pouvoir accélérer. On va donc perdre beaucoup de temps à remettre la moto verticale et à 100% des gaz. On en avait parlé dans le billet [Three Steps](docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md#le-point-de-corde-pc)
+* En effet, si à la corde, nos roues ne sont toujours pas dans la direction de PS, notre trajectoire sera trop large. Il va falloir rester très longtemps sur l'angle avant de pouvoir accélérer. On va donc perdre beaucoup de temps à remettre la moto verticale et à 100% des gaz. On en avait parlé dans le billet [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md#le-point-de-corde-pc%})
 
 Pour éviter ça il est recommandé :
 * D'arriver sur le virage en étant tout à l'extérieur (à rouler à 1 cm de la bande blanche)
