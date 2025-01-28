@@ -68,10 +68,10 @@ La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 | 12 | Quand tu freine tu freine ! Quand tu freine plus, tu relâche le levier et tu changes ta position pour la prise tournevis |
 | 13 | Utiliser tous les tr/min. Au [freinage]({%link docs/07_moto/001_notes_pilotage/004_freinage/freinage.md%}#le-freinage-proprement-dit), garder le régime haut dans les tours aussi (frein moteur) |
 | 14 | [Relâcher l'embrayage]({%link docs/07_moto/001_notes_pilotage/004_freinage/freinage.md%}#revoyons-laction-au-ralenti) dou-ce-ment |
-| 15 | [Accélérer à fond]({%link docs\07_moto\001_notes_pilotage\002_decouverte_de_la_piste_2\decouverte_de_la_piste_2.md%}) partout, tout le temps. Full gas, brake, full gas, brake. |
+| 15 | [Accélérer à fond]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}) partout, tout le temps. Full gas, brake, full gas, brake. |
 | 15 | Dans les lignes droite tenir l'accélérateur à 3 doigts pour [se décontracter]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}#est-ce-que-tu-%C3%A9tais-bien-rel%C3%A2ch%C3%A9-et-d%C3%A9tendu) (tenir avec le "bout" des doigts) |
-| 17 | En sortie de virage on ne [saute pas sur la selle]({%link docs\07_moto\001_notes_pilotage\005_conduite_du_virage\conduite_du_virage.md%}#la-session). On garde la fesse dehors, on ramène le buste, puis la fesse |
-| 18 | En sortie de virage, on ramène la fesse sur la selle [lorsqu'on monte un rapport]({%link docs\07_moto\001_notes_pilotage\005_conduite_du_virage\conduite_du_virage.md%}#la-session) afin de profiter du kick. |
+| 17 | En sortie de virage on ne [saute pas sur la selle]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}#la-session). On garde la fesse dehors, on ramène le buste, puis la fesse |
+| 18 | En sortie de virage, on ramène la fesse sur la selle [lorsqu'on monte un rapport]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}#la-session) afin de profiter du kick. |
 
 
 ### Vidéo 3/3
@@ -112,7 +112,7 @@ Les 10 conseils de Sylvain Guintoli
 
 | # | Conseil |
 | --- | --- |
-| 1 | [Regarder loin]({%link docs\07_moto\001_notes_pilotage\003_three_steps\three_steps.md%}#la-session), là où on veut aller. |
+| 1 | [Regarder loin]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}#la-session), là où on veut aller. |
 | 2 | Trajectoires |
 | 3 | Position, [couché]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}) en ligne droite. Rentrer les coudes. Dos plat. Poitrine sur le réservoir.[Freinage]({%link docs/07_moto/001_notes_pilotage/004_freinage/freinage.md%}), on se relève. Reculé pour garder du poids sur l'arrière. Ensuite, jambe en bas. Jambe externe en appuis sur réservoir. Lancer le coude, l'épaule et la tête dans l'intérieur du virageEn sortie de virage faut [pousser le guidon loin de soi] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/) pour relever la moto. |
 | 4 | [Privilégier les sorties de virages]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}). C'est là qu'on fait les chronos. |
@@ -121,6 +121,6 @@ Les 10 conseils de Sylvain Guintoli
 | 7 | [Rétrograder tout de suite]({%link docs/07_moto/001_notes_pilotage/004_freinage/freinage.md%}#le-freinage-proprement-dit) dès qu'on freine. Donc on coupe les gaz, on freine et on rétrograde. Préparer son pied gauche ! C'est là qu'on a le meilleur du frein moteur (pas à bas régime) |
 | 8 | Faire "rouler" l'accélérateur dans la main. En ligne droite. Tenir l'accélérateur avec moins de force/grip. Détendre la paume de la main, laisser 4 doigts sur la poignée. Mettre son **pouce par-dessus**. |
 | 9 | [Relax]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}#est-ce-que-tu-%C3%A9tais-bien-rel%C3%A2ch%C3%A9-et-d%C3%A9tendu). Trouver des endroits ou se relâcher (ligne droite) afin d'être disponible au prochain freinage/virage. |
-| 10 | [Ouvrir les gaz à 100%]({%link docs\07_moto\001_notes_pilotage\002_decouverte_de_la_piste_2\decouverte_de_la_piste_2.md%}) et les garder ouvert le plus longtemps possible. Utiliser le [short shift]NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-10-short-shift/). Short shifter c'est passer au rapport supérieur avant l'heure. |
+| 10 | [Ouvrir les gaz à 100%]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}) et les garder ouvert le plus longtemps possible. Utiliser le [short shift]NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-10-short-shift/). Short shifter c'est passer au rapport supérieur avant l'heure. |
 
 
