@@ -152,7 +152,7 @@ On laisse un doigt sur l'embrayage pendant tout le freinage (je ne suis pas sûr
 
 
 
-### La freinage proprement dit
+### Le freinage proprement dit
 On se redresse, on coupe les gaz et on commence à freiner en même temps (oui, oui il y a **3 choses à faire** en même temps).
 
 En règle générale, sur piste, il faut supprimer les moments où on ne freine pas et où on n'accélère pas non plus. On cherche donc à minimiser, voire à supprimer les phases neutres. Autrement dit, soit on accélère, soit on freine. Attention, ça ne veut pas dire, on freine à fond ou on accélère à fond. Non, non, on n'est pas sur une PlayStation. Il y a des cas où on relâchera progressivement les freins et d'autres où on enroulera le cable d'accélérateur continûment. Cela dit, soit on freine, soit on accélère.
