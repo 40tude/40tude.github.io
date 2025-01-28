@@ -47,7 +47,6 @@ Que ce soit sur route ou sur circuit, on s'est tous, au moins une fois, trouvé 
 ## Objectifs de la session
 
 * Se doter d'un outil qui va nous permettre de resserrer les virages (au milieu, au début ou à la fin). Pourquoi ? Afin de favoriser la sortie, faudra le répéter combien de fois ? Ok, mais pourquoi ça favorise la sortie ? Si on sort moins large, la prochaine fois on pourra accélérer plus fort, plus tôt et on se retrouvera 100% gaz plus vite que les autres.
-
 * On veut donner plus d'angle (resserrer le virage) tout en maîtrisant la stabilité de la moto.
 
 
@@ -120,7 +119,7 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 On se place dans le cas où on a un virage connu dont on sort avec 100% des gaz, **en butée**, et sur la bande blanche extérieure de la piste. On est donc dans le virage, une fesse dehors etc. mais bon, on souhaite sortir moins large.
 * Pour appliquer le Hook Turn, dans ce virage, il faut gentiment, progressivement, basculer le corps encore plus vers **l'avant** et **l'intérieur** qu'on ne le faisait jusqu'à présent.
 * Attention, les mots gentiment et progressivement sont **très** importants. Si on est brusque, la moto va commencer à sauter dans tous les sens comme un cabri, les pneus vont perdre leur grip etc. 
-    * **MàJ 17 03 23 :** Faut pas oublier que le pilote tout équipé représente un pourcentage non négligeable de la masse de l'ensemble moto-pilote (80 vs (200+80) soit 30% environ, ce n'est pa neutre)
+    * Faut pas oublier que le pilote tout équipé représente un pourcentage non négligeable de la masse de l'ensemble moto-pilote (80 vs (200+80) soit 30% environ, ce n'est pa neutre)
 * Le déplacement pro-gre-ssif de la masse vers **l'avant** de la moto et **l'intérieur** du virage va attirer la moto vers le bas
 * Elle va prendre plus d'angle (c'est ce que l'on souhaite pour resserrer un virage qu'on sent être trop large par exemple)
 * Il ne faut **PAS** juste faire sortir le buste sur le côté et se pencher vers le bas (comme si on voulait éviter un ballon qui nous arrive dessus).
@@ -180,7 +179,7 @@ On se place dans le cas où on a un virage connu dont on sort avec 100% des gaz,
   + Le buste va vers **l'avant** et vers **le bas** (casque, flan réservoir...)
   + On sent qu'on pousse le coude intérieur *et/ou* qu'on met le menton sur la main
   + La moto reste stable mais change de trajectoire (cette dernière se resserre)
-  + **MàJ 17 03 23 :** Le coude est cassé, très bas, plus bas que le bout du bracelet. On tient ce dernier comme un tournevis.
+  + Le coude est cassé, très bas, plus bas que le bout du bracelet. On tient ce dernier comme un tournevis.
 * Il faut constater que toutes choses égales par ailleurs (freinage, point de mise sur l'angle, accélération en sortie etc.) cette action, exécutée jusqu'à la fin du virage, permet de sortir moins large que dans les séances précédentes. Autrement dit, plus tard, on pourra sortir plus fort du virage sans sortir de la piste.
 * Finalement, on a un outil qui permet de resserrer les trajectoires ce qu'il leur donne une forme en crochet (Hook)
 
@@ -212,7 +211,7 @@ La vidéo ci-dessous revient sur les forces en action dans un virage et justifie
 </div>
 
 
-On comprend dans la vidéo précédente qu'il faut appliquer un couple afin d'empêcher la moto de se relever. **MàJ 17 03 23 :** Un couple c'est une force au bout d'un axe. Si tu n'arrives pas à desserrer un écrou, typiquement, tu prends une clé plus longue. Si on veut appliquer plus de couple, à masse égale, il faut avoir un bras de levier plus grand (et pas nécessairement avoir une masse plus basse).
+On comprend dans la vidéo précédente qu'il faut appliquer un couple afin d'empêcher la moto de se relever. Pour rappel, un couple c'est une force au bout d'un axe. Si tu n'arrives pas à desserrer un écrou, typiquement, tu prends une clé plus longue. Si on veut appliquer plus de couple, à masse égale, il faut avoir un bras de levier plus grand (et pas nécessairement avoir une masse plus basse).
 
 Il faut donc, à tout prix, sortir sa tête de l'axe longitudinal de la moto et la mettre sur le côté. Le plus loin, le mieux. Voir ci-dessous :
 
@@ -221,7 +220,7 @@ Il faut donc, à tout prix, sortir sa tête de l'axe longitudinal de la moto et 
 </div>
 
 
-On retiendra qu'en virage, il ne faut pas nécessairement mettre sa tête et son corps plus bas afin d'abaisser le centre de gravité de l'ensemble moto+pilote. Il faut sortir sa tête et son corps de l'axe de la moto pour appliquer un couple supérieur et empêcher la moto de se redresser. **MàJ 17 03 23 :** C'est aussi pour ça qu'il ne faut pas hésiter à penser qu'on sort 2 fesses (même si dans la réalité on en sort qu'une et demi). En effet, ça permet de décaler plus de masse plus loin à l'intérieur du virage et donc d'exercer plus de couple.
+On retiendra qu'en virage, il ne faut pas nécessairement mettre sa tête et son corps plus bas afin d'abaisser le centre de gravité de l'ensemble moto+pilote. Il faut sortir sa tête et son corps de l'axe de la moto pour appliquer un couple supérieur et empêcher la moto de se redresser. C'est aussi pour ça qu'il ne faut pas hésiter à penser qu'on sort 2 fesses (même si dans la réalité on en sort qu'une et demi). En effet, ça permet de décaler plus de masse plus loin à l'intérieur du virage et donc d'exercer plus de couple.
 
 Le lien sur la vidéo précédente dont est extraite l'image
 
