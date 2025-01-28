@@ -21,7 +21,7 @@ Les choses ont évolué depuis la première mise en ligne des Notes de Pilotage 
 * Le billet a été écrit après les Notes de Pilotage Moto
 * Il est moins complet que les Notes de Pilotage Moto, moins exhaustif, moins technique. Cependant, il y a déjà beaucoup de choses (encore un peu trop à mon goût) et il est très **laaaaargement** suffisant.
 
-Une fois que votre première journée c'est bien déroulé et si vous avez trouvé utile les conseils et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails. 
+Une fois que votre première journée c'est bien déroulé et si vous avez trouvé utile les conseils et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails et revoir certains points. 
 
 
 
@@ -54,7 +54,7 @@ En gros, on verrouille le bas du corps "dans" la moto alors que le buste est tr�
 11. **Short shift** : NOT YET TRANSFERED - C'est l'art de passer au rapport supérieur bien avant d'être au régime moteur optimum. Pourquoi, comment... Un pro (un vrai, pas moi 😂) nous explique tout ça, en français, dans le texte.
 
 ### Compléments
-12. **[Conseils de pro]({%link docs/07_moto/001_notes_pilotage/012_conseils_de_pros/conseils_de_pros.md%})** : NOT YET TRANSFERED - Ce sont en effet des conseils de vrais pros pour lesquelles il y a des références etc. À lire, à relire et à inscrire dans sa feuille de session comme exercices à faire par exemple.
+12. **[Conseils de pro]({%link docs/07_moto/001_notes_pilotage/012_conseils_de_pros/conseils_de_pros.md%})** : Ce sont en effet des conseils de vrais pros pour lesquels il y a des références etc. À lire, à relire et à inscrire dans sa [feuille de session]({%link docs/07_moto/002_feuille_sessions/feuille_sessions.md%}) comme exercices à faire par exemple.
 
 
 
