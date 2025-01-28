@@ -325,7 +325,7 @@ Pour avoir une idée du comportement de la suspension, on peut aussi [interprét
 
 * On tombe les rapports tout de suite, au tout début du freinage car c'est dans les hauts régimes que le frein moteur est le plus efficace.
   + Typiquement au tout début du plateau
-  + On relâche **doucement** l'embrayage. C'est important.
+  + On relâche **dou-ce-ment** l'embrayage. C'est important.
   + Si c'est le "bronx" au niveau de la roue arrière, comme on a un doigt sur l'embrayage, il "suffit" (yaka faukon) de tirer un peu dessus pour que tout rentre dans l'ordre. Cela dit, on perd alors le frein moteur (on a désolidarisé la roue arrière du vilebrequin) et donc on ne reste pas 3 heures avec les doigts sur le levier. Un dernier truc... Pas besoin de ramener le levier d'embrayage jusqu'à la poignée. Généralement on parle d'une course de quelques millimètres (un peu comme quand on fait cirer l'embrayage au démarrage). Si on tire le levier à un doigt, ce dernier n'a pas besoin de toucher les doigts qui sont sur la poignée. On tire vraiment de quelques millimètres.
 
 **Maj 17 03 23**   
