@@ -46,8 +46,11 @@ Que ce soit sur route ou sur circuit, on s'est tous, au moins une fois, trouvé 
 <!-- ###################################################################### -->
 ## Objectifs de la session
 
-* Se doter d'un outil qui va nous permettre de resserrer les virages (au milieu, au début ou à la fin). Pourquoi ? Afin de favoriser la sortie, faudra le répéter combien de fois ? Ok, mais pourquoi ça favorise la sortie ? Si on sort moins large, la prochaine fois on pourra accélérer plus fort, plus tôt et on se retrouvera 100% gaz plus vite que les autres.
-* On veut donner plus d'angle (resserrer le virage) tout en maîtrisant la stabilité de la moto.
+* Se doter d'un outil qui va nous permettre de resserrer les virages (au milieu, au début ou à la fin). 
+
+*Pourquoi ?* Afin de favoriser la sortie! Faudra le répéter combien de fois ? 
+
+*Ok, mais pourquoi ça favorise la sortie ?* Si on sort moins large, au prochain tour on pourra accélérer plus fort, plus tôt et on se retrouvera 100% gaz plus vite que les autres.
 
 
 
@@ -116,10 +119,9 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 <!-- ###################################################################### -->
 ## La session
 
-On se place dans le cas où on a un virage connu dont on sort avec 100% des gaz, **en butée**, et sur la bande blanche extérieure de la piste. On est donc dans le virage, une fesse dehors etc. mais bon, on souhaite sortir moins large.
-* Pour appliquer le Hook Turn, dans ce virage, il faut gentiment, progressivement, basculer le corps encore plus vers **l'avant** et **l'intérieur** qu'on ne le faisait jusqu'à présent.
-* Attention, les mots gentiment et progressivement sont **très** importants. Si on est brusque, la moto va commencer à sauter dans tous les sens comme un cabri, les pneus vont perdre leur grip etc. 
-    * Faut pas oublier que le pilote tout équipé représente un pourcentage non négligeable de la masse de l'ensemble moto-pilote (80 vs (200+80) soit 30% environ, ce n'est pa neutre)
+On se place dans le cas où on a un virage connu dont on sort avec 100% des gaz, **en butée**, et sur la bande blanche extérieure de la piste. On est donc dans le virage, une fesse dehors etc. mais bon, **on souhaite sortir moins large**.
+* Pour appliquer le Hook Turn, dans ce virage, il faut **gen-ti-ment** et **pro-gre-ssi-ve-ment** basculer le corps encore plus vers **l'avant** et **l'intérieur** qu'on ne le faisait jusqu'à présent.
+* Attention, les mots gen-ti-ment et pro-gre-ssi-ve-ment sont **très** importants. Si on est brusque, la moto va commencer à sauter dans tous les sens comme un cabri, les pneus vont perdre leur grip etc. Faut pas oublier que le pilote tout équipé représente un pourcentage non négligeable de la masse de l'ensemble moto-pilote (80 kg vs (200+80) soit 30% environ, ce n'est pa neutre)
 * Le déplacement pro-gre-ssif de la masse vers **l'avant** de la moto et **l'intérieur** du virage va attirer la moto vers le bas
 * Elle va prendre plus d'angle (c'est ce que l'on souhaite pour resserrer un virage qu'on sent être trop large par exemple)
 * Il ne faut **PAS** juste faire sortir le buste sur le côté et se pencher vers le bas (comme si on voulait éviter un ballon qui nous arrive dessus).
@@ -127,13 +129,15 @@ On se place dans le cas où on a un virage connu dont on sort avec 100% des gaz,
   + Tête à côté du réservoir
   + Le coté du casque touche le flan du réservoir
   + Le menton encore plus sur la main
-* On pousse :
-  1. **Devant** et **en bas** pour charger l'avant. Ce faisant ce dernier est plus enfoncé, la moto est plus courte et vire encore mieux.
-  1. Vers **l'intérieur** du virage pour contrebalancer plus efficacement la force centrifuge.
-* Bien être calé grâce aux genoux et aux pieds
-  + On est accroché à la moto. Pour faire un Hook Turn il faut être Hooked In (accroché)
-  + Sentir qu'on tient le réservoir avec les cuisses
-  + Le bas du corps fait bloc avec la moto alors que le haut du corps est très mobile.
+
+On pousse :
+1. **Devant** et **en bas** pour charger l'avant. Ce faisant ce dernier est plus enfoncé, la moto est plus courte et vire encore mieux.
+1. Vers **l'intérieur** du virage pour contrebalancer plus efficacement la force centrifuge.
+
+Bien être calé grâce aux genoux et aux pieds
+* On est accroché à la moto. Pour faire un Hook Turn il faut être Hooked In (accroché)
+* Sentir qu'on tient le réservoir avec les cuisses
+* Le bas du corps fait bloc avec la moto alors que le haut du corps est très mobile.
 * On ne change pas la pression sur les poignets. Il faut penser qu'on pourrait faire tout ça **SANS** toucher les bracelets
 
 
@@ -145,10 +149,11 @@ On se place dans le cas où on a un virage connu dont on sort avec 100% des gaz,
 * C'est pour ça qu'il faut faire des chaises et des squats à la maison.
 * Normalement les semelles des bottes doivent être marquées car on appuie beaucoup sur les cale-pieds.
 * Le basculement du buste se fait en se tenant à la moto avec les genoux. Il ne faut pas hésiter à faire des essais à blanc dans le garage.
-  + Je serre les genoux.
-  + J'écarte les bras et je penche le buste en avant et sur le côté.
-  + Je reste bras écarté (oui oui, je confirme, tu as l'air d'une andouille si la petite Chloé, 4 ans, qui cherche son papa (ou sa maman) rentre à ce moment-là dans le garage).
-  + Je tiens la position avec les cuisses et les abdos.
+    * Je serre les genoux.
+    * J'écarte les bras et je penche le buste en avant et sur le côté.
+    * Je reste bras écarté (oui oui, je confirme, tu as l'air d'une andouille si la petite Chloé, 4 ans, qui cherche son papa (ou sa maman) rentre à ce moment-là dans le garage).
+    * Je tiens la position avec les cuisses et les abdos.
+
 
 ### À retenir
 * On est Hooked In, accroché, à la moto par le bas du corps.
