@@ -9,7 +9,7 @@ last_modified_date: 2023-04-27 17:14:26
 ---
 
 
-# Conduite de virage efficace
+# Contre braquage en sortie de virage
 {: .no_toc }
 
 ## Plan de la Note de Pilotage
