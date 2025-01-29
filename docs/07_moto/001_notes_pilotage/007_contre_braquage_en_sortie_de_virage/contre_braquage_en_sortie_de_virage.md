@@ -279,8 +279,7 @@ Le reste des explications est ici :
 <!-- ###################################################################### -->
 ## Remarques
 
-
-### **Si** en entrée de virage tu pousses **Alors** en sortie tu tires
+* **Si** en entrée de virage tu pousses **Alors** en sortie tu tires
 
 
 
