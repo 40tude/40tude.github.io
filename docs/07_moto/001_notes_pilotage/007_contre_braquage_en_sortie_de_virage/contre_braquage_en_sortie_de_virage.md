@@ -120,43 +120,55 @@ On ne pourra pas dire qu'on n'en a pas parlé...
   + Ce n'est pas le bras extérieur qui est tendu et qui ne peut pas faire grand-chose.
   + Ci-dessous c'est un pif-paf et on est juste entre les 2. Bien voir la direction de la roue avant
 
+
 <div align="center">
-<img src="./assets/image.webp" alt="" loading="lazy"/>
+<img src="./assets/image-41.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
+### Tu n'es pas convaincu? 
+
+Allez, séance photos. On est dans un pif-paf. Le pif tournait à gauche. Comme le petit jeune sur la photo est généreux sur les gaz la roue avant se lève. Ça c'est bien car cela nous permet de bien voir ce qu'il fait avec ses bracelets.
+
+<div align="center">
+<img src="./assets/image.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 La roue est dorénavant bien levée et comme il tire sur le bracelet intérieur (le gauche), la roue est tournée vers la gauche.
 
 <div align="center">
-<img src="./assets/image-1.webp" alt="" loading="lazy"/>
+<img src="./assets/image-1.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Si cela ne servait à rien de tirer sur le bracelet il ne le ferait pas. En effet, pour tenir plus de 40min à ce rythme, il a intérêt à s'économiser (Maj 17 03 23 : ce sera aussi valable avec les courses sprint et dans tous les cas, nous, à notre niveau, si on veut tenir les 7 sessions d'une journée de roulage on a intérêt à s'économiser). Donc pas la peine de perdre de l'énergie à faire des trucs qui ne servent à rien. Mais là... On voit bien où pointe la roue.
 
 <div align="center">
-<img src="./assets/image-2.webp" alt="" loading="lazy"/>
+<img src="./assets/image-2.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Si elle n'était pas levée on verrait beaucoup moins bien le phénomène.
 
 <div align="center">
-<img src="./assets/image-3.webp" alt="" loading="lazy"/>
+<img src="./assets/image-3.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
-Pas convaincu ? On va donc regarder du côté de Honda. La physique et la mécanique y sont peut-être différentes. Bizarre, les deux affreux ci-dessous ont tous les deux la roues avant en l'air (ça on s'en fiche, ça permet juste de bien faire ressortir le phénomène) et ? Et on voit bien qu'eux aussi tirent sur le bracelet intérieur du virage précédent (regardes comment sont penchées les 2 autres motos derrière)
+### Toujours pas convaincu ? 
+
+On va donc regarder du côté de Honda. La physique et la mécanique y sont peut-être différentes. Bizarre, les deux affreux ci-dessous ont tous les deux la roues avant en l'air (ça on s'en fiche, ça permet juste de bien faire ressortir le phénomène) et ? Et on voit bien qu'eux aussi tirent sur le bracelet intérieur du virage précédent (regardes comment sont penchées les 2 autres motos derrière)
 
 <div align="center">
-<img src="./assets/image-4.webp" alt="" loading="lazy"/>
+<img src="./assets/image-4.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
 Allez, une dernière pour la route. Je passe les détails, on sort d'un gauche, on va dans un droit (voir la marque au sol) et pourtant, la roue levée pointe vers la gauche. Autrement dit, là aussi, en sortie de virage il tire sur le bracelet intérieur.
 
 <div align="center">
-<img src="./assets/image-5.webp" alt="" loading="lazy"/>
+<img src="./assets/image-5.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -267,14 +279,17 @@ Le reste des explications est ici :
 * Ça donne quoi par rapport au repère de fin de virage qu'on avait choisi au début de la session ?
 * Est-ce que la vitesse de pointe au bout de ligne droite suivante a augmenté ?
 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Remarques
+
+
 ### Si en entrée de virage tu pousses Alors en sortie tu tires
-
-
-
-
-
-
-
 
 
 
