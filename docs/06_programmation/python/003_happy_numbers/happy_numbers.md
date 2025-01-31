@@ -28,6 +28,9 @@ An integer is **happy** if, when calculating the sum of the squares of its digit
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?si=ITRvyc5epa5XaNW6&amp;start=31" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+This give me the opportunity to "play" with 2 different code in Python and check which one is faster. I then compare timings with a C++ implementation. 
+
+At the end you should be able to solve your first puzzle on [CodinGame](https://www.codingame.com/training/easy/happy-numbers). If you never did before, make a try. This is really fun. 
 
 
 ## First Python Code
@@ -317,7 +320,8 @@ Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C+
 * Yes, we could have used numpy and see what happen when vectorizing the algorithm.
 * Yes, we could do a better job with some multithreading etc.
 * But... It is always a tradeoff between the time spent vs speed improvement
-* Regarding speed improvement vs time spent, feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%}) 
+* Regarding speed improvement vs time spent, feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%})
+* Now you should be able to solve this puzzle on [CodinGame](https://www.codingame.com/training/easy/happy-numbers) 
 
 
 
