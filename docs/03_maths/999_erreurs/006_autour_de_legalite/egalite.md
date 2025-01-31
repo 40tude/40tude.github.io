@@ -39,7 +39,7 @@ Heu... Déjà, il faut prendre ça comme un jeu, une intrigue, une enquête. C'e
 On comprend maintenant ce **mantra Tibétain** bien connu qui dit un truc du style :
 
 {: .important }
-Si l'égalité tu traverse, ton sens s'inverse.
+Si l'égalité tu traverses, ton signe tu inverses.
 
 En effet, entre la ligne 1 et la ligne 2 **tout se passe comme si** le +8 de gauche passait à droite en changeant de signe. Watch this...
 

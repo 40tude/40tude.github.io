@@ -324,4 +324,37 @@ Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C+
 * Now you should be able to solve this puzzle on [CodinGame](https://www.codingame.com/training/easy/happy-numbers) 
 
 
+## PS :
+
+Try this
+
+```python
+import time
+from functools import lru_cache
+
+k_MAX = 100_000
+
+@lru_cache(maxsize=None)
+def sum_of_squared_digits2(n_in: int) -> int:
+    n_out = 0
+    while n_in:
+        digit = n_in % 10
+        n_out += digit * digit
+        n_in = n_in // 10
+    return n_out
+
+
+start_time = time.time()  
+
+for n in range(1, k_MAX + 1):
+    n_set = set()
+    n_init = n
+    while n != 1 and n not in n_set:
+        n_set.add(n)
+        n = sum_of_squared_digits2(n)
+
+end_time = time.time()
+print(f"Execution time: {end_time - start_time:.6f} seconds")
+```
+``Execution time: 0.287076 seconds``
 
