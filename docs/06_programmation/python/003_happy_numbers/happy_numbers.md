@@ -200,8 +200,8 @@ I did some testings calling the script with ``-O`` within a console but I did'nt
 
 ## Benchmarking in C++
 
-* If you don't have a C++ compiler on your host (shame on you!) you can copy,past and run the code below on this online compiler : https://cpp.sh/
-* I selected C++23 and 02 optimizations but it works wtih C++20 and no optimization.
+* If you don't have a C++ compiler on your host (shame on you! 😁) you can copy, past and run the code below with an [online C++ compiler](https://cpp.sh/).
+* I selected C++23 and ``-02`` optimizations and did some test with C++20 and no optimization.
 
 ```cpp
 #include <iostream>
@@ -242,9 +242,9 @@ int main() {
 ```
 ``Execution time: 0.083385 seconds``
 
-* For such simple algorithm, syntaxes are very similar. So, even if you only know Python you should understand what happens here.
+* For such a simple algorithm, the syntax is very similar across languages. So, even if Python is the only programming language you know, you should understand what is happening here. Additionally, I kept the variable names the same.
 * 34 lines in C++ vs 24 in Python
-* 0.08 sec vs 0.48 sec
+* 0.08 sec in C++ vs 0.48 sec in Python
 * 6 times faster
 
 
@@ -302,14 +302,22 @@ int main() {
 }
 
 ```
-Similar timing
+The timing is similar. 
+
+I suspect the optimizer is doing a great job. I did'nt look at assembly language but you can use [Compiler Explorer](https://godbolt.org/) to do so. It is **always** very interesting. Read this [article]({%link docs/02_simple_os/002_sos_2_le_retour_20_ans_apres_episode_2%}) to see a real case where looking to assembly language was **THE** solution.
+
+Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C++ 20 or later otherwise the ``n_set.contains(n_current)`` function call is not be available.
+
+<div align="center">
+<img src="./assets/img_02.webp" alt="" width="560" loading="lazy"/>
+</div>
 
 
 ## Conclusion
 * Yes, we could have used numpy and see what happen when vectorizing the algorithm.
-* Yes we could do a much better job with some multithreading etc.
+* Yes, we could do a better job with some multithreading etc.
 * But... It is always a tradeoff between the time spent vs speed improvement
-* Feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%}) 
+* Regarding speed improvement vs time spent, feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%}) 
 
 
 
