@@ -1,13 +1,12 @@
 C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + Just the Docs + GitHub
 
 ## TODO
-* Liens LinkedIn Youtube Github dans le footer de la navbar ?
+* Mettre à jour la page : Knee to knee
 * Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
 * Faire un billet sur le portage de WP vers markdown?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
 * Voir ces histoires de balise rel="canonical"
-* S'assurer que Google indexe bien le site. Pas sûr à 100% que ce soit le cas aujourd'hui 11 01 2025
 * Voir ces histoires de plugins
     * Va être chaud
     * Faut installer ruby meme si on a un plugin sous forme de gem 
@@ -20,6 +19,9 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
     * Y a peut être une option avec les collection mais je sais pas si y a lang="en" avant le head
 
 ## DONE
+* ~~S'assurer que Google indexe bien le site. Pas sûr à 100% que ce soit le cas aujourd'hui 11 01 2025~~
+    * Y a toujours des soucis avec les vieille pages pirates mais bon à priori les bonnes pages sont bien indexées
+* ~~Liens LinkedIn Youtube Github dans le footer de la navbar ?~~
 * ~~Voir dans le repo GitHub si y a pas des articles à rapatrier~~
     * Notes de maths
         * Loi binomiale
