@@ -1,3 +1,8 @@
+/* 
+font-weight : les valeurs disponibles vont de 100 (très fin) à 900 (très gras). 
+font-weight: bold; correspond souvent à 700. 
+*/
 main a {
-    font-weight: bold;
+    /* au lieu de bold */
+    font-weight: 600;
 }
