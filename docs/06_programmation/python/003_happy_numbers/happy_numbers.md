@@ -21,7 +21,7 @@ Image from [Wikipedia](https://en.wikipedia.org/wiki/Happy_number)
 
 ## Intro
 
-An integer is **happy** if, when calculating the sum of the squares of its digits, then the sum of the squares of the digits of the resulting number, and so on, it eventually reaches 1. Otherwise, the number is unhappy.
+An integer is **happy** if, when calculating the sum of the squares of its digits, then the sum of the squares of the digits of the resulting number, and so on, it eventually reaches 1. Otherwise, the number is **unhappy**.
 
 
 <div align="center">
@@ -32,7 +32,7 @@ An integer is **happy** if, when calculating the sum of the squares of its digit
 
 ## First Python Code
 
-Let's check if 24 is happy
+Let's check if 24 is happy. Here is the code : 
 
 ```python
 def sum_of_squared_digits2(n1:int)->int:
@@ -72,15 +72,16 @@ This output looks like :
 Unhappy
 ```
 
+I did some test with `pow()` and `**2` but finally using the cached value `digit` was more efficient.
 
 
 ## Second implementation
 Here I try to simplify ``sum_of_squared_digits()``
-* In one line we
+* The one liner goes like that :
     * Convert ``n`` in a string 
-    * Then read each char of the string
-    * Convert each of them as ``int`` 
-    * Elevate the int to power of 2 
+    * Then read each "char" (digit) of the string
+    * Convert each cahr as an ``int`` 
+    * Elevate the ``int`` to power of 2 
 
 
 
@@ -99,8 +100,10 @@ print("Happy") if n==1 else print("Unhappy")
 
 ```
 
-No surprise, we get the same output. However we may want to know which approach is faster. One thing I learn with optimized C++ compiler: 
-* **When it comes to benchmarks, don't assume—measure!**
+No surprise, we get the same output. 
+
+However we may want to know which approach is faster. One thing I learned with optimized C++ compiler: 
+* **When it comes to benchmarks, never assume. Measure!**
 
 
 
@@ -181,9 +184,9 @@ print(f"Execution time: {end_time - start_time:.6f} seconds")
 
 ```
 
-``Execution time: 0.482066 seconds``. The code of `sum_of_squared_digits2()` is longer **but** there is no string conversion etc. and we ``digit`` which is in the local cache. This explains the 1.6 speed ratio.
+``Execution time: 0.482066 seconds``. The code of `sum_of_squared_digits2()` is longer **but** there is no string conversion etc. And we use ``digit`` which is in the local cache. This explains the 1.6 speed ratio.
 
-I did some testings calling the script with ``-O`` within  a console but I did'nt get any improvement. No, I did'nt transpile Python to C.  
+I did some testings calling the script with ``-O`` within a console but I did'nt get any significant improvement. No, I did'nt transpile Python to C.  
 
 
 
@@ -197,8 +200,8 @@ I did some testings calling the script with ``-O`` within  a console but I did'n
 
 ## Benchmarking in C++
 
-* You can copy-past and run the code below on : https://cpp.sh/
-* I selected C++23 and 02 optimization
+* If you don't hace a C++ compiler on your host, copy-past and run the code below on this online compiler : https://cpp.sh/
+* I selected C++23 and 02 optimization but it works wtih C++20 and no optimization.
 
 ```cpp
 #include <iostream>
@@ -302,9 +305,9 @@ Similar timing
 
 
 ## Conclusion
-* Yes could have used numpy, thread etc.
+* Yes could have used numpy, threads etc.
 * Yes we could do a musch better job with some multithreading etc.
-* But it is always a tradeoff between the time spent vs speed improvement
+* But... It is always a tradeoff between the time spent vs speed improvement
 * Feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%}) 
 
 
