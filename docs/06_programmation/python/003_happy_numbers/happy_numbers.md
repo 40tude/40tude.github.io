@@ -305,7 +305,7 @@ Similar timing
 * Yes could have used numpy, thread etc.
 * Yes we could do a musch better job with some multithreading etc.
 * But it is always a tradeoff between the time spent vs speed improvement
-* Feel free to read this post about [Sieve of Eratosthenes]({%link docs\06_programmation\c\000_crible_eratosthene\crible_eratosthene.md%}) 
+* Feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%}) 
 
 
 
