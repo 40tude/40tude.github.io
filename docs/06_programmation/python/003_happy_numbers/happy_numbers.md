@@ -312,7 +312,7 @@ I suspect the optimizer is doing a great job. I did'nt look at assembly language
 Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C++ 20 or later otherwise the ``n_set.contains(n_current)`` function call is not be available.
 
 <div align="center">
-<img src="./assets/img_02.webp" alt="" width="560" loading="lazy"/>
+<img src="./assets/img_03.webp" alt="" width="560" loading="lazy"/>
 </div>
 
 
