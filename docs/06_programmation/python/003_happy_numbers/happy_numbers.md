@@ -54,7 +54,7 @@ while (n!=1 and n not in n_set):
     n_set.add(n)
     n = sum_of_squared_digits2(n)
     print(n)
-print("Happy")   if n==1 else print("Unhappy") 
+print("Happy") if n==1 else print("Unhappy") 
 ```
 
 This output looks like :
@@ -72,15 +72,15 @@ This output looks like :
 Unhappy
 ```
 
-I did some test with `pow()` and `**2` but finally using the cached value `digit` was more efficient.
+As you can read in the comments, I did some tests with `pow()` and `**2` but finally using the cached value `digit` was more efficient.
 
 
 ## Second implementation
 Here I try to simplify ``sum_of_squared_digits()``
-* The one liner goes like that :
+* The one liner goes like this :
     * Convert ``n`` in a string 
     * Then read each "char" (digit) of the string
-    * Convert each cahr as an ``int`` 
+    * Convert each char as an ``int`` 
     * Elevate the ``int`` to power of 2 
 
 
@@ -184,7 +184,7 @@ print(f"Execution time: {end_time - start_time:.6f} seconds")
 
 ```
 
-``Execution time: 0.482066 seconds``. The code of `sum_of_squared_digits2()` is longer **but** there is no string conversion etc. And we use ``digit`` which is in the local cache. This explains the 1.6 speed ratio.
+``Execution time: 0.482066 seconds``. The code of `sum_of_squared_digits2()` is longer **but** there is no string conversion etc. And we use ``digit`` which should be in the local cache of the processor. This explains the 1.6 speed ratio.
 
 I did some testings calling the script with ``-O`` within a console but I did'nt get any significant improvement. No, I did'nt transpile Python to C.  
 
@@ -200,8 +200,8 @@ I did some testings calling the script with ``-O`` within a console but I did'nt
 
 ## Benchmarking in C++
 
-* If you don't hace a C++ compiler on your host, copy-past and run the code below on this online compiler : https://cpp.sh/
-* I selected C++23 and 02 optimization but it works wtih C++20 and no optimization.
+* If you don't have a C++ compiler on your host (shame on you!) you can copy,past and run the code below on this online compiler : https://cpp.sh/
+* I selected C++23 and 02 optimizations but it works wtih C++20 and no optimization.
 
 ```cpp
 #include <iostream>
@@ -242,6 +242,7 @@ int main() {
 ```
 ``Execution time: 0.083385 seconds``
 
+* For such simple algorithm, syntaxes are very similar. So, even if you only know Python you should understand what happens here.
 * 34 lines in C++ vs 24 in Python
 * 0.08 sec vs 0.48 sec
 * 6 times faster
@@ -305,8 +306,8 @@ Similar timing
 
 
 ## Conclusion
-* Yes could have used numpy, threads etc.
-* Yes we could do a musch better job with some multithreading etc.
+* Yes, we could have used numpy and see what happen when vectorizing the algorithm.
+* Yes we could do a much better job with some multithreading etc.
 * But... It is always a tradeoff between the time spent vs speed improvement
 * Feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%}) 
 
