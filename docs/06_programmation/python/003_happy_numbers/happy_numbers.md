@@ -304,7 +304,7 @@ int main() {
 ```
 The timing is similar. 
 
-I suspect the optimizer is doing a great job. I did'nt look at assembly language but you can use [Compiler Explorer](https://godbolt.org/) to do so. It is **always** very interesting. Read this [article]({%link docs/02_simple_os/002_sos_2_le_retour_20_ans_apres_episode_2%}) to see a real case where looking to assembly language was **THE** solution.
+I suspect the optimizer is doing a great job. I did'nt look at assembly language but you can use [Compiler Explorer](https://godbolt.org/) to do so. It is **always** very interesting. Read this [article]({%link docs/02_simple_os/002_sos_2_le_retour_20_ans_apres_episode_2/sos_2_le_retour_20_ans_apres_episode_2.md%}) to see a real case where looking to assembly language was **THE** solution.
 
 Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C++ 20 or later otherwise the ``n_set.contains(n_current)`` function call is not be available.
 
