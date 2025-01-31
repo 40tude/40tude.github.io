@@ -3,23 +3,30 @@ layout: default
 title: "Happy Numbers"
 parent: "Python"
 #math: mathjax
-date: 2022-12-08 11:30:39
-last_modified_date: 2023-01-12 00:11:51
+date:               2025-01-31 01:00:00
+last_modified_date: 2025-01-31 01:00:00
 ---
 
 # Happy Numbers
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?si=w2W87H7oAvvdJJCM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<img src="./assets/img_01.webp" alt="" width="560" loading="lazy"/>
 </div>
+
+Image from [Wikipedia](https://en.wikipedia.org/wiki/Happy_number)
+
+
+
 
 
 ## Intro
 
 An integer is **happy** if, when calculating the sum of the squares of its digits, then the sum of the squares of the digits of the resulting number, and so on, it eventually reaches 1. Otherwise, the number is unhappy.
 
-* https://en.wikipedia.org/wiki/Happy_number
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?si=w2W87H7oAvvdJJCM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
