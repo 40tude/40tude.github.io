@@ -19,6 +19,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
     * Y a peut être une option avec les collection mais je sais pas si y a lang="en" avant le head
 
 ## DONE
+* ~~Mettre les liens des urls dans les billets en gras~~
 * ~~S'assurer que Google indexe bien le site. Pas sûr à 100% que ce soit le cas aujourd'hui 11 01 2025~~
     * Y a toujours des soucis avec les vieille pages pirates mais bon à priori les bonnes pages sont bien indexées
 * ~~Liens LinkedIn Youtube Github dans le footer de la navbar ?~~
