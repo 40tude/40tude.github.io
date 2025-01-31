@@ -23,11 +23,6 @@ favicon_ico: "/assets/images/40tude.png"
 lang: fr
 
 
-# link in bold in main page (not in the nav bar and others)
-assets:
-  css:
-    - custom.css
-
 back_to_top: true
 back_to_top_text: "Back to top"
 
