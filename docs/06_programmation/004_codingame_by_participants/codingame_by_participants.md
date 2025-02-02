@@ -243,7 +243,7 @@ Du point de vue de l'organisation des fichiers voilà ce que cela donne chez moi
 
 
 
-Du point de vue de l'utilisation du script, il faut, dans VSCode, l'éditer et mettre à jour le niveau des puzzles. Voir la ligne ``k_Level = "expert"``. En effet, en fonction des pages scrapées, je génère des fichiers ``.json`` qui s'appellent respectivement``easy.json``, ``medium.json``, ``hard.json`` et ``expert.json``. Faut juste écrire ``expert`` ou `easy`. Dans le reste du code on endéduit le nom du ``.json`` et le noms du ``.csv``. Ensuite, toujours dans VSCode, il suffit d'appuyer sur la touche ``F5``. À la fin tu récupères par exemple un fichier `expert.csv` qu'il suffit d'ouvrir dans l’excellent Excel.
+Du point de vue de l'utilisation du script, il faut, dans VSCode, l'éditer et mettre à jour le niveau des puzzles. Voir la ligne ``k_Level = "expert"``. En effet, en fonction des pages scrapées, je génère des fichiers ``.json`` qui s'appellent respectivement``easy.json``, ``medium.json``, ``hard.json`` et ``expert.json``. Faut juste écrire ``expert`` ou `easy`. Dans le reste du code on en déduit le nom du ``.json`` et le noms du ``.csv``. Ensuite, toujours dans VSCode, il suffit d'appuyer sur la touche ``F5``. À la fin tu récupères par exemple un fichier `expert.csv` qu'il suffit d'ouvrir dans l’excellent Excel.
 
 
 
