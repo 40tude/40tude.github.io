@@ -26,15 +26,15 @@ Quand tu vas sur <https://www.codingame.com/training/easy> tu vois ça :
 
 À part "À Faire" et "Fini", on a aucune option de tri. C'est vraiment très dommage. Par exemple, avant de choisir mon prochain puzzle, je peux vouloir filtrer par date de parution, par auteur, par nombre de participants... J'ai jamais compris pourquoi CodinGame ne permet pas de le faire. Enfin bref... On s'adapte, et on trouve une solution.
 
-Ci-dessous, en mode quick'n dirty, idée de Dimanche matin à l'arrache je montre comment faire du scraping de page Web avec [Scrapy](https://scrapy.org/) afin de générer une feuille Excel qui comprend les titres et le nombre de participants de chaque puzzle. Oui bien sûr, une fois que ça tourne on peut faire beaucoup plus élaboré mais bon c'était pas mon objectif. Allez c'est parti.
+Ci-dessous, en mode quick'n dirty, idée de Dimanche matin à l'arrache, je montre comment j'ai fait. En fait c'est du scraping de page Web avec [Scrapy](https://scrapy.org/) afin de générer une feuille Excel qui comprend les titres et le nombre de participants de chaque puzzle. Oui bien sûr, une fois que ça tourne on peut faire beaucoup plus élaboré mais bon c'était pas mon objectif. Allez c'est parti, je te montre.
 
-Si on inspecte la page après avoir appuyé sur la touche ``F12`` dans son browser préféré on voit un truc qui ressemble à ça :
+Si on inspecte la page précédente après avoir appuyé sur la touche ``F12`` on voit un truc qui ressemble à ça :
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Si besoin, clique sur l'image et zoome. Je passe les détails mais par exemple on peut retrouver dans la page, l'élément qui contient la phrase "Terminé par 656 CodingGamers". De la même façon, on peut retrouver l'élément qui contient le titre du puzzle. En ce qui me concerne je copie-colle dans un coin les ``xpaths`` qui me permettent de les retrouver.
+Si besoin, clique sur l'image et zoome. Je passe les détails mais par exemple on peut retrouver dans la page, l'élément qui contient la phrase "Terminé par 656 CodingGamers". De la même façon, on peut retrouver l'élément qui contient le titre du puzzle. Je copie-colle dans un coin les ``xpaths`` qui me permettent de les retrouver.
 
 ```
 # xpath
