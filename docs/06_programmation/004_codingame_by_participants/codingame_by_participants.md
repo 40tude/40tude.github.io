@@ -12,10 +12,10 @@ last_modified_date: 2025-02-02 13:00:00
 # CodinGame classement par participants
 
 ## Intro
-Quand va sur <https://www.codingame.com/training/easy>
+Quand va sur <https://www.codingame.com/training/easy> tu vois ça : 
 
 <div align="center">
-<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
@@ -24,7 +24,7 @@ On a aucune option de tri. C'est vraiment très dommage. Par exemple, avant de c
 Si on inspecte la page avec F12 dans son browser préféré on voit un truc qui ressemble à ça
 
 <div align="center">
-<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img02.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 Je passe les détails mais par exemple on peut retrouver dans la page, l'élément qui contient la phrase "Terminé par 656 CodingGamers". De la même façon, on peut retrouver l'élément qui contient le titre du puzzle. En ce qui me concerne je copie-colle les xpath qui me permettent de les retrouver.
@@ -146,7 +146,7 @@ scrapy crawl codingame_selenium -o expert.json
 ```
 
 <div align="center">
-<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img03.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 Bien voir qu'on passe le nom du spider (``codingame_selenium``) et **PAS** le nom du fichier (``codingame_spider.py``). Normalement une nouvelle instance du browser par défaut s'affiche. On attend un peu. On parse les éléments et on sauve dans une fichier ``.json``.
@@ -154,14 +154,14 @@ Bien voir qu'on passe le nom du spider (``codingame_selenium``) et **PAS** le no
 Voilà ce que je vois quand j'ouvre le fichier ``.json`` dans VSCode. Si c'est aussi propre et bien rangé, faut pas hésiter à sauver le fichier (CTRL + S) tout de suite après l'avoir ouvert.
 
 <div align="center">
-<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img04.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 Faut noter qu'il y a un espace un peu "chelou" en lieu et place du séparateur de milliers dans la phrase "...4 115 CodinGamers"
 
 
 <div align="center">
-<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img05.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 Ci-dessus j'affiche le fichier ``expert.json`` avec l'excellent ``hexedit``. J'ai surligné l'espace insécable UTF-8 qui pose problème et dont il faudra s'occuper plus tard.
@@ -229,18 +229,20 @@ Du point de vue de son utilisation, il faut dans VSCode, éditer et mettre à jo
 Tout le monde le sait mais je vais le redire. Pour ouvrir correctement un fichier ``.csv`` dans Excel, faut aller dans le menu ``Données`` puis cliquer sur `À partir d'un fichier texte/CSV` et là bizarrement ça se passe toujours bien. 
 
 <div align="center">
-<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img07.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Dans l'assitant il y a des options pour l'encodage etc. mais généralement il arrive à bien détecter le type de caractères utilisés. 
+
 <div align="center">
-<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img08.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 Bon après tu vis ta vie. Par exemple dans la catégorie Easy, voilà ce à quoi ressemble ma feuille. J'ai rajouté une colonne avec les puzzles déjà résolus. Du coup je peux choisir parmi ceux qui j'ai pas encore fait, ceux qui ont le plus (ou le moins) de participants.
 
 
 <div align="center">
-<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img09.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
