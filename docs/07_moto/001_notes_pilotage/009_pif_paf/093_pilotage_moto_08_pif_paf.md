@@ -9,7 +9,7 @@ last_modified_date: 2023-04-27 17:16:23
 ---
 
 
-# Knee to knee
+# Les pif-paf
 {: .no_toc }
 
 ## Plan de la Note de Pilotage
@@ -165,51 +165,43 @@ Il faut sentir :
 
 ### Exemple
 
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-58.png) -->
 <div align="center">
-<img src="./assets/image-58.webp" alt="" width="650" loading="lazy"/>
+<img src="./assets/image-58.webp" alt="" width="560" loading="lazy"/>
 </div>
 
 
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-54.png) -->
 <div align="center">
-<img src="./assets/image-54.webp" alt="" width="650" loading="lazy"/>
+<img src="./assets/image-54.webp" alt="" width="560" loading="lazy"/>
 </div>
 
 Le genou gauche appuie sur le réservoir et tire à lui le reste du corps. C'est d'autant plus facile pour le genou de faire glisser les fesses de droite à gauche que le pilote n'est pas vraiment assis sur la moto. En fait, il est très "lite" sur la moto et porté par ses jambes.
 
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-56.png) -->
 <div align="center">
-<img src="./assets/image-56.webp" alt="" width="650" loading="lazy"/>
+<img src="./assets/image-56.webp" alt="" width="560" loading="lazy"/>
 </div>
 
 Bien voir que la fesse gauche est déjà dehors alors que la moto est tout juste verticale. Comme pour un virage normal, il est donc positionné pour le Paf alors que la moto n'est pas encore à la verticale.
 
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-52.png) -->
 <div align="center">
-<img src="./assets/image-52.webp" alt="" width="650" loading="lazy"/>
+<img src="./assets/image-52.webp" alt="" width="560" loading="lazy"/>
 </div>
 
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-53.png) -->
 <div align="center">
-<img src="./assets/image-53.webp" alt="" width="650" loading="lazy"/>
+<img src="./assets/image-53.webp" alt="" width="560" loading="lazy"/>
 </div>
 
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-55-1024x786.png) -->
 <div align="center">
-<img src="./assets/image-55.webp" alt="" width="650" loading="lazy"/>
+<img src="./assets/image-55.webp" alt="" width="560" loading="lazy"/>
 </div>
 
 La tête est venue chercher la main sur le guidon et elle est au niveau du rétroviseur. Le poignet est en prise tournevis et le coude... au sol. C'est tellement facile sur une page web...
 
-<!-- ![](https://www.40tude.fr/wp-content/uploads/2019/09/image-57-1024x813.png) -->
 <div align="center">
-<img src="./assets/image-57.webp" alt="" width="650" loading="lazy"/>
+<img src="./assets/image-57.webp" alt="" width="560" loading="lazy"/>
 </div>
 
 Tous les détails dans cette vidéo. Commence par la partie sur le pif-paf MAIS ensuite, prends le tout regarder. Y a vraiment plein de choses à voir et à revoir.
 
-<!-- https://youtu.be/wI8WpN7aCFM?t=404 -->
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wI8WpN7aCFM?si=hqaC-dbYbDcWD6ry&amp;start=404" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
