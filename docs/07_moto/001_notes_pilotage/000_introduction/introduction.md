@@ -131,7 +131,7 @@ Une série de podcasts disponibles sur YouTube qui est pas mal si vous parlez An
 
 Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 
-* [A twist of the wrist II](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=TLKKSHBHVY2Z&keywords=twist+of+the+wrist&qid=1567934828&s=gateway&sprefix=TWIST+OF+%2Caps%2C219&sr=8-1) (évitez le I. Je le trouve beaucoup moins bien)
+* ATOTW II - [A twist of the wrist II](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=TLKKSHBHVY2Z&keywords=twist+of+the+wrist&qid=1567934828&s=gateway&sprefix=TWIST+OF+%2Caps%2C219&sr=8-1) (évitez le I. Je le trouve beaucoup moins bien)
 * [Le chrono ne ment pas 1&2](http://kennyforay.com/shop/Le-chrono-ne-ment-pas-1%262-p195955506)
 * [Performance Riding Techniques](https://www.performanceridingtechniques.co.uk/product/performance-riding-techniques) (Edition 4)
 * [The Perfect Corner 1](https://www.amazon.fr/gp/product/0997382422/ref%3Dppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&psc=1)

@@ -43,7 +43,7 @@ Dans cette session dédiée au pif-paf on va :
 
 
 * Le [Knee to knee]({% link docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md%}) doit être acquis
-* Relire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}) p 33.
+* Relire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p 33.
   + On ne fait pas 2 choses à la fois.
   + Donc on ne se déhanche pas alors qu'on est en train de changer de direction. Ce n'est pas bon pour la stabilité de la moto.
   + Il faut donc se déhancher (ou se mettre en position) **AVANT** le changement de direction

@@ -46,12 +46,12 @@ Le virage est ainsi découpé en 3 étapes :
 <!-- ###################################################################### -->
 ## Prérequis
 * On "connaît" la piste et comme on a repéré les cônes, on a identifié les points de mise sur l'angle et les points de corde. Oui, oui je suis d'accord. On ne connaît peut-être pas encore tout le circuit par cœur. Il y a sans doute encore des sections qui posent des problèmes etc.
-* Lire **ATOTW II** p 98 (ça parle de Two Steps mais nous ici on passe directement à Three Steps puisqu'on décompose le virage en 3 portions). En deux mots:
+* Lire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p 98 (ça parle de Two Steps mais nous ici on passe directement à Three Steps puisqu'on décompose le virage en 3 portions). En deux mots:
     * Two Steps va "over-simplifier" la lecture de l'entrée du virage avec uniquement 2 points de référence qu'on acquiert en avance de phase.
     * Nous ici on passe directement à 3 steps parce qu'on est trop fort ✊
 
 {: .note }
-**ATOW II** c'est LE bouquin [A Twist Of The Wrist](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=A+twist+of+the+Wrist&qid=1567893832&s=gateway&sr=8-3). Le livre commence à être un peu vieux mais fondamentalement tout y est.  
+**ATOTW II** c'est **LE** bouquin [A Twist Of The Wrist](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=A+twist+of+the+Wrist&qid=1567893832&s=gateway&sr=8-3). Le livre commence à être un peu vieux mais fondamentalement tout y est.  
 Il y a aussi une vidéo... Franchement elle, elle date carrément et franchement le jeu des acteurs n'est pas au top. Mais bon, elle reprend tout le contenu du bouquin. Elle dure une heure quand elle est d'un seul tenant mais ça vaut le coup. J'arrête de mettre un lien dans cette page car la vidéo est régulièrement supprimée de YouTube. Le mieux c'est encore d'aller sur YouTube et de faire une recherche sur "[a twist of the wrist](https://www.youtube.com/results?search_query=a+twist+of+the+wrist)".
 
 

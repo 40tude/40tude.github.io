@@ -339,7 +339,7 @@ Plateau. On garde une pression constante. Pas la peine de se mettre dans le roug
     Encore une fois… Progressif sur la libération des freins. Si on n'est pas progressif, la fourche rebondit, il y a transfert de charge vers l'arrière, l'avant qui est allégé a moins de grip, la roue avant a tendance à se bloquer plus facilement etc.
     Ici on considère que le freinage doit être terminé au moment de la mise sur l'angle. Les doigts ne sont donc plus sur le levier de frein.
 
-* Alors qu'on se dirige vers le PMSA, plier les bras pour ramener le torse vers l'avant afin de garder de la charge sur le train avant alors qu'on freine de moins en moins fort (ATOTW II p 51)
+* Alors qu'on se dirige vers le PMSA, plier les bras pour ramener le torse vers l'avant afin de garder de la charge sur le train avant alors qu'on freine de moins en moins fort ([ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p 51)
     * Les avant-bras passent à l'horizontal avant qu'on pousse sur le bracelet intérieur. En effet, c'est dans cette position qu'on a le plus de couple pour pousser sur le bracelet intérieur. Au fait est-ce que les bracelets sont bien réglés et suffisamment écartés ?
     * Tant qu'on pousse sur le bracelet la moto va prendre de l'angle. Quand on arrête de pousser sur le bracelet intérieur la moto reste sur son angle, stabilisée.
     * Plus on pousse fort, plus la mise sur l'angle est rapide. Plus on pousse fort, plus la mise sur l'angle est rapide et mieux c'est !
@@ -365,7 +365,7 @@ Dans la photo ci-dessous il faut regarder la tête (la main n'est pas en prise t
 </div>
 
 
-On passe sur l'angle à la bonne vitesse et... La bonne vitesse d'entrée c'est quand l'arrière commence à déraper ! (ATOTW II p 25) 😊
+On passe sur l'angle à la bonne vitesse et... La bonne vitesse d'entrée c'est quand l'arrière commence à déraper ! ([ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p 25) 😊
 
 Une fois qu'on est sur l'angle on ne change plus notre position sur la moto. Cela évite de faire des transferts de charge avant/arrière qui parasitent le grip.
 

@@ -90,7 +90,7 @@ On ne pourra pas dire qu'on n'en a pas parlé...
   + Une fesse sortie, buste et épaules décalés
   + Pointe du pied intérieur rentrée et pied extérieur à plat, calé sur le talon.
   + Jambe extérieure calée dans le réservoir (il faut sentir qu'on touche le réservoir avec l'intérieur de la cuisse)
-  + Garder les bras pliés pour garder de la masse sur le train avant (ATOTW II p 51) et avoir de la force sur les bracelets
+  + Garder les bras pliés pour garder de la masse sur le train avant ([ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p 51) et avoir de la force sur les bracelets
 * Pour changer de côté pour le prochain virage il faut le faire avec les genoux et **PAS** en appuyant sur la cheville intérieure et en "sautant" d'un côté à l'autre de la selle.
   + De même si on s'accroche au guidon pour passer de l'autre côté ça déstabilise la moto (ce qui explique les guidonnages)
   + Exercice à faire en statique : Est-ce que je peux glisser de l'autre côté sans les mains ? Qu'est-ce que ça donne si j'essaie dans le garage ?

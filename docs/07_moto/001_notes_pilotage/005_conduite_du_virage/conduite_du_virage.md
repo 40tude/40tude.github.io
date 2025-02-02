@@ -416,7 +416,7 @@ Si tout se passe bien c'est en effet ce qu'il faut rechercher. Il ne faut pas ou
 
 ### Virage qui se resserre
 
-Voir aussi [ATOTW II p 82](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91)
+Voir aussi [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p82.
 
 Aller le plus loin possible pour aller chercher le bord extérieur de la piste (late apex, sommet retardé)
 
@@ -445,7 +445,7 @@ Il faut donc les identifier, les chouchouter et éviter de les gâcher bêtement
 **Throttle Rule 2**
 * *In any fast-entry turn, calculate the roll-off as carefully as you would a roll-on*
 
-Dans un virage rapide il faut éviter le "**charging**" ([ATOTW II p 29](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91)). Le "charging" ça ressemble à ça :
+Dans un virage rapide il faut éviter le "**charging**" ([ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p29). Le "charging" ça ressemble à ça :
 
 * Rentrer à fond le plus loin possible
 * Couper les gaz,
@@ -486,7 +486,7 @@ Si dans un virage on est tenté, en cours de route, de couper les gaz ou de frei
 
 
 ### Virage en Hook
-Lire [ATOTW II p 59](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91). Faut mettre du poids sur l'avant et en bas pour être capable de faire un virage en Hook et pas en Arc ("Bite and Turn")
+Lire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p59. Faut mettre du poids sur l'avant et en bas pour être capable de faire un virage en Hook et pas en Arc ("Bite and Turn")
 
 Si on rallume les gaz trop tôt on a une trajectoire en Arc
 
