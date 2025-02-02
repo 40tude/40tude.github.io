@@ -30,11 +30,8 @@ last_modified_date: 2023-04-27 17:16:23
 ## L'objectif de la session
 
 Dans cette session dédiée au pif-paf on va :
-
 * Soigner le timing dans les pif-paf
-
 * Ne pas rester assis sur la moto
-
 * S'efforcer d'être en position pour le paf **AVANT** le second virage
 
 
@@ -45,9 +42,8 @@ Dans cette session dédiée au pif-paf on va :
 ## Prérequis
 
 
-* Le [Knee to knee](docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md) doit être acquis
-
-* Relire [ATOTW II](docs/07_moto/001_notes_pilotage/000_introduction/introduction.md) p 33.
+* Le [Knee to knee]({% link docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md%}) doit être acquis
+* Relire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}) p 33.
   + On ne fait pas 2 choses à la fois.
   + Donc on ne se déhanche pas alors qu'on est en train de changer de direction. Ce n'est pas bon pour la stabilité de la moto.
   + Il faut donc se déhancher (ou se mettre en position) **AVANT** le changement de direction
@@ -91,39 +87,29 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 ## La session
 
 * Il faut penser et tout faire pour optimiser la sortie du Paf
-
 * On "sacrifie" donc le Pif
 
 ### Le Pif
 
 * Je suis sur les pointes de pied sur les 2 cale-pieds.
-
 * Les points de corde dans les Pif-Paf sont en fin de vibreur
-
 * Élargir à l'entrée du Pif pour retarder l'entrée et faire l'effort d'aller chercher loin le point de corde.
-
 * Autrement dit, avant le Pif, je freine longtemps et droit. Alors que je suis très avancé et très ralenti, je fais une mise sur l'angle très rapide pour rejoindre le point de corde du Pif. Ce dernier est en fin de vibreur, donc très loin.
-
 * On ne sort pas large du Pif. Au contraire, on reste à la corde du premier virage car cela correspond à l'extérieur du second.
   Pour éviter de "plonger" trop tôt sur le Paf il faut penser à ne pas lever les yeux vers le Paf mais plutôt à regarder ce qui était l'intérieur du Pif. Ça aide à resserrer la trajectoire en sortie du Pif et à bien se placer pour le Paf.
 
 ### La bascule
 
 * Si le Pif-Paf est très petit il n'y a pas d'accélération entre les 2 virages.
-
 * Dès que la distance entre le Pif et le Paf le permet, utiliser l'accélérateur va aider à relever la moto entre les virages. Ça va alléger la moto et on va la faire basculer beaucoup plus facilement. Il faut alors appuyer sur les cales pied, avancer la tête et alléger les fesses.
-
 * On se positionne pour le second virage **avant** le contre braquage du Paf. C'est essentiellement une question de timing.
-
 * Le passage d'un côté à l'autre se fait avec les jambes, les genoux et la pression que l'on met sur les cale-pieds. On ne commence pas par balancer le buste de l'autre côté de la moto. Ça part du bas du corps.
-
 * Je dois sentir mon genou appuyé sur le réservoir et qui ramène le corps de l'autre côté. Je ne dois PAS sentir que je m'agrippe aux bracelets pour balancer la viande de l'autre côté.
-
 * On n'est PAS assis sur la moto. Au contraire, les jambes servent d'amortisseurs supplémentaire et supportent le poids du corps (on est donc léger sur la moto). C'est aussi pour ça qu'il faut faire des squats 😊.
 
 ### Le Paf
 
-En fait, tout ce qui précède n'a qu'un seul but. Faire du Paf un virage "classique". On rentre large, la moto a fait sa mise sur l'angle rapidement. Yaka, faukon... Tout comme avant : prise tournevis, coude plié... Je n'ai plus qu'à fixer mon attention sur le point de corde et le point de sortie du Paf (voir ce qu'on avait dit dans [Three Steps](docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md)) et en avant Guingamp, ça devrait bien se passer.
+En fait, tout ce qui précède n'a qu'un seul but. Faire du Paf un virage "classique". On rentre large, la moto a fait sa mise sur l'angle rapidement. Yaka, faukon... Tout comme avant : prise tournevis, coude plié... Je n'ai plus qu'à fixer mon attention sur le point de corde et le point de sortie du Paf (voir ce qu'on avait dit dans [Three Steps]({% link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%})) et en avant Guingamp, ça devrait bien se passer.
 
 Heu... Faut être clair et humble. Ce que j'explique ci-dessus, c'est ce que je crois avoir compris à ce jour et c'est ce que je voudrais arriver à faire à tous les coups. Malheureusement dans la réalité... Ce n'est pas encore ça.
 
