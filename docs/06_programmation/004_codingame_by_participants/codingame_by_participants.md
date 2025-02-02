@@ -17,7 +17,7 @@ Le repo du projet est ici : <https://github.com/40tude/codingame_py>
 
 ## Intro
 
-Quand va sur <https://www.codingame.com/training/easy> tu vois ça : 
+Quand tu vas sur <https://www.codingame.com/training/easy> tu vois ça : 
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
@@ -26,40 +26,40 @@ Quand va sur <https://www.codingame.com/training/easy> tu vois ça :
 
 À part "À Faire" et "Fini", on a aucune option de tri. C'est vraiment très dommage. Par exemple, avant de choisir mon prochain puzzle, je peux vouloir filtrer par date de parution, par auteur, par nombre de participants... J'ai jamais compris pourquoi CodinGame ne permet pas de le faire. Enfin bref... On s'adapte, et on trouve une solution.
 
-Dans la suite je montre comment faire pour faire du scraping de page Web avec Scrapy afin de générer une feuille Excel qui comprend les titres et le nombre de participants. Oui bien sûr, une fois que ça tourne on peut faire beaucoup plus élaboré mais bon c'était pas mon objectif. Allez c'est parti.
+Ci-dessous, en mode quick'n dirty, idée de Dimanche matin à l'arrache je montre comment faire du scraping de page Web avec [Scrapy](https://scrapy.org/) afin de générer une feuille Excel qui comprend les titres et le nombre de participants de chaque puzzle. Oui bien sûr, une fois que ça tourne on peut faire beaucoup plus élaboré mais bon c'était pas mon objectif. Allez c'est parti.
 
-Si on inspecte la page après avoir appuyé sur ``F12`` dans son browser préféré on voit un truc qui ressemble à ça :
+Si on inspecte la page après avoir appuyé sur la touche ``F12`` dans son browser préféré on voit un truc qui ressemble à ça :
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Je passe les détails mais par exemple on peut retrouver dans la page, l'élément qui contient la phrase "Terminé par 656 CodingGamers". De la même façon, on peut retrouver l'élément qui contient le titre du puzzle. En ce qui me concerne je copie-colle dans un coin les xpaths qui me permettent de les retrouver.
+Si besoin, clique sur l'image et zoome. Je passe les détails mais par exemple on peut retrouver dans la page, l'élément qui contient la phrase "Terminé par 656 CodingGamers". De la même façon, on peut retrouver l'élément qui contient le titre du puzzle. En ce qui me concerne je copie-colle dans un coin les ``xpaths`` qui me permettent de les retrouver.
 
 ```
 # xpath
 
-# Titre
+# Pour les titres - voir que c'est cg-puzzle[NNN] qui varie
 # //*[@id="games"]/div/div/div/cg-puzzles-section[1]/div/div[3]/cg-puzzle[1]/div/div/a/div/div/div[1]/div/div[1]
 # //*[@id="games"]/div/div/div/cg-puzzles-section[1]/div/div[3]/cg-puzzle[4]/div/div/a/div/div/div[1]/div/div[1]
 
-# Nombre de joueurs
+# Pour le nombre de joueurs qui ont réussi - voir que c'est encore cg-puzzle[NNN] qui varie
 # //*[@id="games"]/div/div/div/cg-puzzles-section[1]/div/div[3]/cg-puzzle[2]/div/div/a/div/div/div[1]/div/div[3]/span
 # //*[@id="games"]/div/div/div/cg-puzzles-section[1]/div/div[3]/cg-puzzle[4]/div/div/a/div/div/div[1]/div/div[3]/span
 ```
 
-Du coup, la méthode est relativement simple:
+Du coup, la méthode est relativement simple :
 1. [Créer une environnement conda](#créer-une-environnement-conda)
-1. [Installer les softs](#installer-les-softs)
+1. [Installer les softs](#installer-les-softs) nécessaires
 1. [Écrire un code pour scraper la page](#écrire-un-code-pour-scraper-la-page) et générer un fichier ``.json`` avec le titre et le nombre de participants
 1. [Écrire un second code qui converti le ``.json`` en ``.csv``](#écrire-un-convertisseur-json-en-csv)
 1. [Ouvrir Excel](#ouvrir-le-csv-dans-excel) et faire mes classements comme je le souhaite
 
+En fait j'ai pas tout regroupé dans un seul code car même en mode "proto du Dimanche", je souhaitais séparer les aspects "scraping" des aspects "mise en forme". 
 
 
 
-
-## Créer une environnement conda
+## Créer un environnement conda
 
 Dans une console PowerShell
 
@@ -83,15 +83,15 @@ Au début j'a installé uniquement ``scrapy`` mais comme il y a pas mal de javas
 
 ## Écrire un code pour scraper la page
 
-Dans le terminal 
+Dans le même terminal on commence par créer un projet Scrapy. 
 
 ```powershell
 scrapy startproject codingame_scraper
 ```
 
-Ça va créer un projet ``codingame_scraper`` avec tout un ensemble de répertoires et de sous-répertoires. Dans le répertoire ``./spiders`` copie colle le source ci-dessous. Moi je l'ai nommé ``codingame_spider.py`` mais ce qui compte vraiment c'est son petit nom de spider. Voir la ligne `name = "codingame_selenium"` ci-dessous.
+Ça va créer un projet ``codingame_scraper`` avec tout un ensemble de répertoires et de sous-répertoires. Dans le répertoire ``./spiders`` copie-colle le source ci-dessous. Moi je l'ai nommé ``codingame_spider.py`` mais ce qui compte vraiment c'est son petit nom de spider. Voir la ligne `name = "codingame_selenium"` ci-dessous.
 
-On est en mode quick'n dirty donc la page à scraper est codée en dur. Ici c'est ``https://www.codingame.com/training/expert``. Pour le reste, on retrouve les xpaths que j'avais copié-collé précédemment et qui me permettent de pointer le titre du puzzle ainsi que le nombre de participants. 
+On est en mode "POC du Dimanche" donc la page à scraper est codée en dur. Ici c'est ``https://www.codingame.com/training/expert``. Pour le reste, on retrouve les ``xpaths`` que j'avais copié-collé précédemment et qui me permettent de pointer le titre et le nombre de participants du chaque puzzle. 
 
 
 ```python
@@ -156,13 +156,13 @@ Ensuite dans VSCode, j'ouvre un terminal et depuis le répertoire où se trouve 
 scrapy crawl codingame_selenium -o expert.json 
 ```
 
-Ci-dessous c'est juste pour montrer comment ça se passe dans la console et du point de vue de l'organisation des fichiers.
+Ci-dessous c'est juste pour montrer comment ça se passe dans la console et du point de vue de l'organisation des fichiers et du passage de la commande.
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Bien voir qu'on passe le nom du spider (``codingame_selenium``) et **PAS** le nom du fichier (``codingame_spider.py``). Normalement une nouvelle instance du browser par défaut s'affiche. On attend un peu. On parse les éléments et on sauve dans une fichier ``.json``.
+Bien voir qu'on passe le nom du spider (``codingame_selenium``) et **PAS** le nom du fichier (``codingame_spider.py``). Normalement une nouvelle instance du browser par défaut s'affiche. On attend un peu. On parse les éléments et on sauve dans le fichier ``.json`` dont on a passé le nom dans la ligne de commande (ici ``expert.json``).
 
 Voilà ce que je vois quand j'ouvre le fichier ``.json`` dans VSCode. Si c'est pas aussi propre ni aussi bien "rangé", faut pas hésiter à sauver le fichier (CTRL + S) tout de suite après l'avoir ouvert.
 
@@ -184,7 +184,7 @@ Faut noter qu'il y a un espace un peu "chelou" en lieu et place du séparateur d
 
 ## Écrire un convertisseur ``.json`` en ``.csv``
 
-Je te propose de sauver le code ci-dessous dans ``converter.py`` dans le répertoire où les fichiers ``.json`` sont générés. 
+Je te propose de sauver le code ci-dessous dans un fichier``converter.py`` dans le répertoire où les fichiers ``.json`` sont générés. 
 
 ```python
 import os
@@ -235,7 +235,7 @@ print(f"Done : {csv_filename}")
 ```
 
 
-Du point de vue de l'organisation des fichiers voilà ce que cela donne :
+Du point de vue de l'organisation des fichiers voilà ce que cela donne chez moi :
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="225" loading="lazy"/>
@@ -243,7 +243,7 @@ Du point de vue de l'organisation des fichiers voilà ce que cela donne :
 
 
 
-Du point de vue de l'utilisation du script, il faut, dans VSCode, l'éditer et mettre à jour le niveau des puzzles. Voir la ligne ``k_Level = "expert"``. En effet, enfonction des pages scrapées, je génère des fichiers ``.json`` qui s'appellent respectivement``easy.json``, ``medium.json``, ``hard.json`` et ``expert.json``. Ensuite, toujours dans VSCode, il suffit d'appuyer sur la touche F5. À la fin tu récupères par exemple un fichier `expert.csv` qu'il suffit d'ouvrir dans l’excellent Excel.
+Du point de vue de l'utilisation du script, il faut, dans VSCode, l'éditer et mettre à jour le niveau des puzzles. Voir la ligne ``k_Level = "expert"``. En effet, en fonction des pages scrapées, je génère des fichiers ``.json`` qui s'appellent respectivement``easy.json``, ``medium.json``, ``hard.json`` et ``expert.json``. Faut juste écrire ``expert`` ou `easy`. Dans le reste du code on endéduit le nom du ``.json`` et le noms du ``.csv``. Ensuite, toujours dans VSCode, il suffit d'appuyer sur la touche ``F5``. À la fin tu récupères par exemple un fichier `expert.csv` qu'il suffit d'ouvrir dans l’excellent Excel.
 
 
 
@@ -253,7 +253,7 @@ Du point de vue de l'utilisation du script, il faut, dans VSCode, l'éditer et m
 Tout le monde le sait mais je vais le redire. Pour ouvrir correctement un fichier ``.csv`` dans Excel, une fois que tu as une feuille vide sous les yeux, faut aller dans le menu ``Données`` puis cliquer sur `À partir d'un fichier texte/CSV` et là bizarrement ça se passe toujours bien. 
 
 <div align="center">
-<img src="./assets/img07.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 Dans l’assistant il y a des options pour l'encodage etc. mais généralement il arrive à bien détecter le type de caractères utilisés. 
@@ -262,7 +262,7 @@ Dans l’assistant il y a des options pour l'encodage etc. mais généralement i
 <img src="./assets/img08.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Bon après tu vis ta vie. Par exemple dans la catégorie ``easy``, voilà ce à quoi ressemble ma feuille. J'ai rajouté une colonne avec les puzzles déjà résolus. Du coup je peux choisir parmi ceux qui j'ai pas encore fait, ceux qui ont le plus (ou le moins) de participants.
+Bon après tu vis ta vie. Par exemple dans la catégorie ``easy``, voilà ce à quoi ressemble ma feuille. J'ai rajouté une colonne avec les puzzles déjà résolus. Du coup je peux dorénavant choisir parmi ceux qui j'ai pas encore fait, ceux qui ont le plus (ou le moins) de participants.
 
 
 <div align="center">
@@ -270,5 +270,5 @@ Bon après tu vis ta vie. Par exemple dans la catégorie ``easy``, voilà ce à 
 </div>
 
 
-*Allez, la suite au prochain épisode...*
+*Bon, allez, la suite au prochain épisode...*
 
