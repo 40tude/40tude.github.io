@@ -253,7 +253,7 @@ Rossi fait la même chose mais avec un grip shift alors qu'il termine son freina
 </div>
 
 Il faut garder en tête que le grip shift permet 
-1. De replacer sa main pour pouvoir accélérer sans se retrouver coincé au niveau du poignet. 
+1. De replacer sa main pour pouvoir accélérer sans se retrouver, plus tard, "coincé" au niveau du poignet. 
 1. Ça facilite aussi le positionnement de la main et de l'avant-bras pour prendre la poignée de gaz avec une prise tournevis.
 
 <div align="center">
