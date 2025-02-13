@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Codingame, puzzles en C++"
+title: "CodinGame, puzzles en C++"
 parent: "C++"
 #math: mathjax
 date: 2015-01-14 23:35:53
 last_modified_date: 2020-05-03 22:24:37
 ---
 
-# Codingame, puzzles en C++
+# CodinGame, puzzles en C++
 
 <!-- {:.warning}
 Cet article commence à dater (2015). La plupart des informations à propos des algorithmes doivent être toujours correctes mais il y a sans doute eu des évolutions dans le mauvais sens du côté de Codingame. Par mauvais sens je veux dire : vous empêcher de développer chez vous à votre rythme puis coller votre solution quand VOUS le souhaitez. Vous obliger à ne coder que sur leur plateforme, ne plus vous permettre de récupérer les jeux d'entrainement et les solutions pour travailler en autonome... J'espère me tromper mais il sera intéressant d'y retrouner de temps à autre et de vérifier si ce que je dis se réalise (ou pas) 🤞  -->

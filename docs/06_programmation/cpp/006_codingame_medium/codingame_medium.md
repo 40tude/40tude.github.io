@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Codingame, puzzles moyens en C++"
+title: "CodinGame, puzzles moyens en C++"
 parent: "C++"
 #math: mathjax
 date: 2015-05-31 14:59:03
@@ -8,7 +8,7 @@ last_modified_date: 2020-05-05 23:48:08
 ---
 
 
-# Codingame, puzzles moyens en C++
+# CodinGame, puzzles moyens en C++
 {: .no_toc }
 
 
