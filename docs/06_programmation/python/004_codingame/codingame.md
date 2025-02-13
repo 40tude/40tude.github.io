@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Codingame, puzzles en Python"
+title: "CodinGame, puzzles en Python"
 parent: "Python"
 #math: mathjax
 date:               2025-02-13 11:00:00
 last_modified_date: 2025-02-13 11:00:00
 ---
 
-# Codingame, puzzles en Python
+# CodinGame, puzzles en Python
 
 
 
@@ -71,15 +71,25 @@ Voilà l'organisation des répertoires et des fichiers que j'utilise :
 ## Fichiers annexes
 
 ### ``input.txt``
-Dans le ou les fichiers ``input.txt`` qui sont lus par le template pour alimenter le code, je recopie typiquement les textes des exemples 
+Dans le ou les fichiers ``input.txt`` qui sont lus par le template pour alimenter le code (il suffit de modifier la ligne ``k_input = "input.txt"``), je recopie typiquement les textes des exemples 
 
 <div align="center">
 <img src="./assets/img_03.webp" alt="" loading="lazy"/>
 </div>
 
+Ci-dessous un exemple typique de fichier ``input.txt``. Dans ce cas très précis, comme je sais que le code ne va lire que les 3 premères lignes, je peux écrire la solution attendue un peu plus bas.
+
+```
+x y x' z y'
+L
+B
+
+Solution : BL
+
+```
 
 ### `scrapbook.ipynb`
-Comme son nom l'indique c'est juste un cahier de brouillon
+Comme son nom l'indique, c'est juste un cahier de brouillon.
 
 
 
@@ -156,7 +166,7 @@ if RedirectIOtoFile:
 ```
 
 
-Et voilà la partie que je copie-colle dans la page de Codingame
+Et voilà pour finir, la partie que je copie-colle dans la page de Codingame
 
 ```python
 
@@ -169,9 +179,6 @@ LUT = {
     "z'": {"L": "D", "R": "U", "U": "L", "D": "R", "F": "F", "B": "B"},
 }
 
-# for c in "xyz":
-#     LUT[c + "'"] = {v: k for k, v in LUT[c].items()}
-
 rotations = input().split()
 face1 = input()
 face2 = input()
@@ -182,7 +189,12 @@ for r in rotations:
 print(f"{face1}\n{face2}")
 ```
 
+
+
+
 C'est bien ce que l'on voit ci-dessous.
+
+
 
 <div align="center">
 <img src="./assets/img_04.webp" alt="" loading="lazy"/>
