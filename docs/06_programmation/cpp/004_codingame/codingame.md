@@ -1,16 +1,23 @@
 ---
 layout: default
-title: "Codingame - challenges en C++"
+title: "Codingame, puzzles en C++"
 parent: "C++"
 #math: mathjax
 date: 2015-01-14 23:35:53
 last_modified_date: 2020-05-03 22:24:37
 ---
 
-# Codingame - challenges en C++
+# Codingame, puzzles en C++
+
+<!-- {:.warning}
+Cet article commence à dater (2015). La plupart des informations à propos des algorithmes doivent être toujours correctes mais il y a sans doute eu des évolutions dans le mauvais sens du côté de Codingame. Par mauvais sens je veux dire : vous empêcher de développer chez vous à votre rythme puis coller votre solution quand VOUS le souhaitez. Vous obliger à ne coder que sur leur plateforme, ne plus vous permettre de récupérer les jeux d'entrainement et les solutions pour travailler en autonome... J'espère me tromper mais il sera intéressant d'y retrouner de temps à autre et de vérifier si ce que je dis se réalise (ou pas) 🤞  -->
 
 {:.warning}
-Cet article commence à dater (2015). La plupart des informations à propos des algorithmes doivent être toujours correctes mais il y a sans doute eu des évolutions dans le mauvais sens du côté de Codingame. Par mauvais sens je veux dire : vous empêcher de développer chez vous à votre rythme puis coller votre solution quand VOUS le souhaitez. Vous obliger à ne coder que sur leur plateforme, ne plus vous permettre de récupérer les jeux d'entrainement et les solutions pour travailler en autonome... J'espère me tromper mais il sera intéressant d'y retrouner de temps à autre et de vérifier si ce que je dis se réalise (ou pas) 🤞 
+Les dernières versions de mes solutions, qu'elles soient documentées ou non sur cette page sont soit dans un [repo Git C++](https://github.com/40tude/codingame_cpp) ou un [repo Git Python](https://github.com/40tude/codingame_py). 
+
+
+
+
 
 ## Introduction
 Je ne connaissais pas [Codingame](http://www.codingame.com/home). Suite discussion avec un pote j'ai eu l'occasion d'y faire un tour ce soir. C'est vraiment super. Que vous soyez développeur C, C++, Python, Java... vous y trouverez des problèmes à résoudre. Y a un tutorial qui explique l'environnement, ce que l'on peut faire, ce que l'on ne peut pas faire etc. Je suis bluffé par ce que j'ai vu. Faudra que je m'y intéresse vraiment.

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Codingame C++ Niveau Medium"
+title: "Codingame, puzzles moyens en C++"
 parent: "C++"
 #math: mathjax
 date: 2015-05-31 14:59:03
@@ -8,12 +8,16 @@ last_modified_date: 2020-05-05 23:48:08
 ---
 
 
-# Codingame C++ Niveau Medium
+# Codingame, puzzles moyens en C++
 {: .no_toc }
 
 
+<!-- {:.warning}
+Cet article commence à dater (2015). La plupart des informations à propos des algorithmes doivent être toujours correctes mais il y a sans doute eu des évolutions dans le mauvais sens du côté de Codingame. Par mauvais sens je veux dire : vous empêcher de développer chez vous à votre rythme puis coller votre solution quand VOUS le souhaitez. Vous obliger à ne coder que sur leur plateforme, ne plus vous permettre de récupérer les jeux d'entrainement et les solutions pour travailler en autonome... J'espère me tromper mais il sera intéressant d'y retrouner de temps à autre et de vérifier si ce que je dis se réalise (ou pas) 🤞  -->
+
 {:.warning}
-Cet article commence à dater (2015). La plupart des informations à propos des algorithmes doivent être toujours correctes mais il y a sans doute eu des évolutions dans le mauvais sens du côté de Codingame. Par mauvais sens je veux dire : vous empêcher de développer chez vous à votre rythme puis coller votre solution quand VOUS le souhaitez. Vous obliger à ne coder que sur leur plateforme, ne plus vous permettre de récupérer les jeux d'entrainement et les solutions pour travailler en autonome... J'espère me tromper mais il sera intéressant d'y retrouner de temps à autre et de vérifier si ce que je dis se réalise (ou pas) 🤞 
+Les dernières versions de mes solutions, qu'elles soient documentées ou non sur cette page sont soit dans un [repo Git C++](https://github.com/40tude/codingame_cpp) ou un [repo Git Python](https://github.com/40tude/codingame_py). 
+
 
 
 
@@ -31,6 +35,7 @@ Cet article commence à dater (2015). La plupart des informations à propos des 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
 ## Mai 2016 
 
 Je remarque 3 choses
@@ -61,11 +66,13 @@ Il faut remarquer que Codingame a réorganisé un peu les choses et/ou a créé 
 ## Introduction
 C'est le second post à propos de Codingame ([premier post](https://www.40tude.fr/mes-notes-a-propos-de-codingame/)). Je souhaite juste partager ici mes impressions de codage à propos de Codingame - Niveau Medium.
 
+Tous mes codes, même ceux non documentés ici sont dans mon [repo Git](https://github.com/40tude/codingame_cpp)
+
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## APU: Init Phase
+<!-- ## APU: Init Phase -->
 
 
 
@@ -334,87 +341,87 @@ Pour vous donner un ordre d'idée, le code fait 99 lignes.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## The Paranoid Android
+<!-- ## The Paranoid Android -->
 
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Winamax Sponsored Contest
+<!-- ## Winamax Sponsored Contest -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Mars Lander - Level 2
+<!-- ## Mars Lander - Level 2 -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Stock Exchange Losses
+<!-- ## Stock Exchange Losses -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Indiana - Level 1
+<!-- ## Indiana - Level 1 -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Teads Sponsored Challenge
+<!-- ## Teads Sponsored Challenge -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Network Cabling
+<!-- ## Network Cabling -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Conway Sequence
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Telephone Numbers
+<!-- ## Conway Sequence -->
 
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Dwarfs standing on the shoulders of giants
+<!-- ## Telephone Numbers -->
 
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Bender, a depressed robot
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Scrabble
+<!-- ## Dwarfs standing on the shoulders of giants -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## The Gift
+<!-- ## Bender, a depressed robot -->
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Mayan Calculation
+<!-- ## Scrabble -->
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ## The Gift -->
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ## Mayan Calculation -->
 
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Codingame C++ Niveau Easy"
+title: "Codingame, puzzles faciles en C++"
 parent: "C++"
 #math: mathjax
 date: 2015-04-14 15:13:53
@@ -8,13 +8,15 @@ last_modified_date: 2020-05-04 00:04:02
 ---
 
 
-# Codingame C++ Niveau Easy
+# Codingame, puzzles faciles en C++
 {: .no_toc }
 
 
-{:.warning}
-Cet article commence à dater (2015). La plupart des informations à propos des algorithmes doivent être toujours correctes mais il y a sans doute eu des évolutions dans le mauvais sens du côté de Codingame. Par mauvais sens je veux dire : vous empêcher de développer chez vous à votre rythme puis coller votre solution quand VOUS le souhaitez. Vous obliger à ne coder que sur leur plateforme, ne plus vous permettre de récupérer les jeux d'entrainement et les solutions pour travailler en autonome... J'espère me tromper mais il sera intéressant d'y retrouner de temps à autre et de vérifier si ce que je dis se réalise (ou pas) 🤞 
+<!-- {:.warning}
+Cet article commence à dater (2015). La plupart des informations à propos des algorithmes doivent être toujours correctes mais il y a sans doute eu des évolutions dans le mauvais sens du côté de Codingame. Par mauvais sens je veux dire : vous empêcher de développer chez vous à votre rythme puis coller votre solution quand VOUS le souhaitez. Vous obliger à ne coder que sur leur plateforme, ne plus vous permettre de récupérer les jeux d'entrainement et les solutions pour travailler en autonome... J'espère me tromper mais il sera intéressant d'y retrouner de temps à autre et de vérifier si ce que je dis se réalise (ou pas) 🤞  -->
 
+{:.warning}
+Les dernières versions de mes solutions, qu'elles soient documentées ou non sur cette page sont soit dans un [repo Git C++](https://github.com/40tude/codingame_cpp) ou un [repo Git Python](https://github.com/40tude/codingame_py). 
 
 
 <!-- ###################################################################### -->
@@ -38,6 +40,9 @@ Il n'est pas question de publier les solutions (ce ne serait pas drôle sinon) m
 Donc bref, c'est normal si certains "challenges" ci-dessous ne sont pas encore commentés ou si il en manque. J'imagine que Codingame va continuer à ajouter des challenges et que moi à un moment, je vais lever le pied. 
 
 J'espère qu'à terme il y aura d'autres pages pour les niveaux [Medium]({%link docs/06_programmation/cpp/006_codingame_medium/codingame_medium.md%}), Hard etc.
+
+Tous mes codes, même ceux non documentés ici sont dans mon [repo Git](https://github.com/40tude/codingame_cpp)
+
 
 
 
