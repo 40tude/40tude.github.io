@@ -131,6 +131,10 @@ Don't repeat yourself
 * Are made of Operators and Values (literals or variable)
 * If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement.
 
+### In French
+* Une expression est une combinaison de valeurs, de variables, d'opérateurs et de fonctions qui produit une valeur. 
+* Elle peut être évaluée pour donner un résultat.
+
 
 
 
@@ -296,7 +300,10 @@ The ability of some programming languages to inspect type and code information a
 * If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement.
 
 ### In French
-Une expression est une portion de code que le compilateur peut évaluer pour obtenir une valeur. Les expressions peuvent être simples ou complexes. Elles sont formées d'une combinaison de litéraux, d'identifiants et d’opérateurs.
+* Une instruction est une portion de code que le compilateur peut évaluer pour obtenir une valeur. 
+* Les expressions peuvent être simples ou complexes. 
+* Elles sont formées d'une combinaison de litéraux, d'identifiants et d’opérateurs.
+* Caractéristique principale : fait quelque chose, mais ne renvoie pas directement de valeur.
 
 
 
