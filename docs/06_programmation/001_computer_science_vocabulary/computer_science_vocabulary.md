@@ -134,6 +134,7 @@ Don't repeat yourself
 ### In French
 * Une expression est une combinaison de valeurs, de variables, d'opérateurs et de fonctions qui produit une valeur. 
 * Elle peut être évaluée pour donner un résultat.
+* Renvoie un résultat
 
 
 
@@ -300,11 +301,16 @@ The ability of some programming languages to inspect type and code information a
 * If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement.
 
 ### In French
-* Une instruction est une portion de code que le compilateur peut évaluer pour obtenir une valeur. 
-* Les expressions peuvent être simples ou complexes. 
+* Une instruction est une ligne de code qui exécute une action, mais qui ne renvoie pas forcément une valeur exploitable.
 * Elles sont formées d'une combinaison de litéraux, d'identifiants et d’opérateurs.
 * Caractéristique principale : fait quelque chose, mais ne renvoie pas directement de valeur.
+* Contrairement aux expressions, les instructions ne renvoient pas directement de valeur. Elles modifient l'état du programme (par exemple, en affectant une variable, en imprimant du texte, ou en contrôlant le flux d'exécution).
+* Contrairement à d'autres langages (comme JavaScript ou C), en Python l'affectation est une instruction et non une expression, donc elle ne retourne pas de valeur.
 
+```python
+x = 5  # Instruction d'affectation, ne retourne rien
+y = (x = 5)  # ❌ Erreur : l'affectation n'est pas une expression en Python !
+```
 
 
 
