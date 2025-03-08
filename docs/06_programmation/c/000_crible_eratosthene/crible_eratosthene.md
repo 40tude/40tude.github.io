@@ -439,13 +439,15 @@ $$
 
 où les $$ p_i $$ sont des nombres premiers distincts élevés aux puissances $$ a_i $$.
 
-Supposons que $$ n $$ soit composé (en français ça veut dire qu'il est le produit de...) et que tous les nombres premiers $$ p_i $$ qui le divisent satisfont à la condition :
+Supposons que $$ n $$ soit composé (en français dans le texte, cela veut dire qu'il est le produit de...) et que tous les nombres premiers $$ p_i $$ qui le divisent satisfont à la condition :
 
 $$
 (C_1) \quad \sqrt{n} < p_i \leq n
 $$
 
-Du coup, imagine qu'on ait un nombre premier $$ p $$ qui divise $$ n $$ et qui satisfait à la condition $$ C_1 $$ précédente. Alors on peut écrire :
+Tu notes au passage que cette condition est un peu "bizarre". On veut confirmer qu'on va pas chercher des nombres premiers au delà de $$\sqrt{MAXN}$$ mais on fait l'hypothèse que les nombres premiers qui composent $$n$$ sont plus grands que $$\sqrt{n}$$. T’inquiète paupiette. En fait c'est une ruse. On va justement montrer que l'hypothèse précédente est fausse et donc que sa contraposée est vraie.
+
+Du coup, imagine qu'on a un nombre premier $$ p $$ qui divise $$ n $$ et qui satisfait à la condition $$ C_1 $$ précédente. Alors on peut écrire :
 
 $$
 n = p \times b
@@ -469,7 +471,7 @@ $$
 b \leq \sqrt{n} = \frac{n}{\sqrt{n}} 
 $$
 
-Cela veut donc dire que $$ n $$ (qui est premier) possède au moins un facteur premier $$b$$ qui est inférieur à $$ \sqrt{n} $$, ce qui est une contradiction avec l'hypothèse de départ $$ C_1 $$.
+Dans ces condition, cela veut dire que $$ n $$ (qui est premier) possède au moins un facteur premier $$b$$ qui est inférieur à $$ \sqrt{n} $$, ce qui est une contradiction avec l'hypothèse de départ $$ C_1 $$.
 
 Donc, un nombre naturel $$ n $$ qui n'est divisible par aucun nombre premier $$ p \leq \sqrt{n} $$ est automatiquement lui-même premier.
 
