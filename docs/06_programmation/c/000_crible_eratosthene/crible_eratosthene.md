@@ -427,10 +427,10 @@ Count : 348513
 
 On peut sans doute aller un peu plus loin. En effet, si on test i*i par rapport à MAXN, il est idiot dans la boucle du dessus de laisser aller i de 3 à MAXN. Il est peut-être malin de le limiter à sqrt(MAXN).  
 
-### Pourquoi on peut se limiter à $$\sqrt(MAXN)$$
+### Pourquoi on peut se limiter à $$\sqrt{MAXN}$$ ?
 
 
-Le **théorème fondamental de l'arithmétique** indique que tout nombre entier naturel $$ n > 1 $$ peut s'écrire de manière unique comme le produit de nombres premiers.  
+Le **théorème fondamental de l'arithmétique** indique que tout nombre entier naturel $$ n > 1 $$ peut s'écrire de manière unique comme le produit de nombres premiers: 
 
 
 $$
@@ -439,33 +439,45 @@ $$
 
 où les $$ p_i $$ sont des nombres premiers distincts élevés aux puissances $$ a_i $$.
 
-Supposons que $$ n $$ est composé et que tous les nombres premiers $$ p_i $$ qui le divisent satisfont à la condition :
+Supposons que $$ n $$ soit composé (en français ça veut dire qu'il est le produit de...) et que tous les nombres premiers $$ p_i $$ qui le divisent satisfont à la condition :
 
 $$
 (C_1) \quad \sqrt{n} < p_i \leq n
 $$
 
-Du coup, si un nombre premier $$ p $$ particulier divise $$ n $$ et satisfait à la condition $$ C_1 $$ précédente alors on peut écrire :
+Du coup, imagine qu'on ait un nombre premier $$ p $$ qui divise $$ n $$ et qui satisfait à la condition $$ C_1 $$ précédente. Alors on peut écrire :
 
 $$
 n = p \times b
 $$
 
-Pour un certain entier $$ b > 1 $$. Mais alors, $$ b $$ divise aussi $$ n $$ et on a :
+Avec un certain entier $$ b > 1 $$. Mais alors, $$ b $$ divise aussi $$ n $$ et on a :
 
 $$
-b = \frac{n}{p} < \frac{n}{\sqrt{n}} = \sqrt{n}
+b = \frac{n}{p} 
 $$
 
-Pour finir cela veut dire que $$ n $$ (qui est premier) possède au moins un facteur premier $$b$$ inférieur à $$ \sqrt{n} $$, ce qui est une contradiction avec $$ C_1 $$.
+Comme $$p$$ respecte $$ C_1 $$, on a $$\sqrt{n} < p \leq n$$
+
+$$
+b = \frac{n}{p} < \frac{n}{\sqrt{n}} 
+$$
+
+Au final : 
+
+$$
+b \leq \sqrt{n} = \frac{n}{\sqrt{n}} 
+$$
+
+Cela veut donc dire que $$ n $$ (qui est premier) possède au moins un facteur premier $$b$$ qui est inférieur à $$ \sqrt{n} $$, ce qui est une contradiction avec l'hypothèse de départ $$ C_1 $$.
 
 Donc, un nombre naturel $$ n $$ qui n'est divisible par aucun nombre premier $$ p \leq \sqrt{n} $$ est automatiquement lui-même premier.
 
-Du coup, dans le crible d'Ératosthène, aussitôt que l'on arrive à l'étape où le plus petit nombre qui n'a pas été rayé est supérieur à $$ \sqrt{n} $$, on peut s'arrêter. et tous les nombres non rayés sont des nombres premiers.
+Du coup, dans le crible d'Ératosthène, aussitôt que l'on arrive à l'étape où le plus petit nombre qui n'a pas été rayé est supérieur à $$ \sqrt{n} $$, on peut s'arrêter. et on est assuré que tous les nombres non encore rayés sont des nombres premiers.
 
 
 
-Allez, oi on essaie avec le code suivant :
+Allez, on on essaie avec le code suivant :
 
 ```c
 #include <windows.h>
