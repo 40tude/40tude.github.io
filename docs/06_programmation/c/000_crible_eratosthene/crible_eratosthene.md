@@ -2,7 +2,7 @@
 layout: default
 title: "Crible d’Eratosthène"
 parent: "ANSI C"
-#math: mathjax
+math: mathjax
 date: 2012-05-18 02:43:01
 last_modified_date: 2020-05-03 17:52:32
 ---
@@ -425,7 +425,47 @@ Sum : 838596693108
 Count : 348513
 ```
 
-On peut sans doute aller un peu plus loin. En effet, si on test i*i par rapport à MAXN, il est idiot dans la boucle du dessus de laisser aller i de 3 à MAXN. Il est peut-être malin de le limiter à sqrt(MAXN).  Si on essaie le code suivant :
+On peut sans doute aller un peu plus loin. En effet, si on test i*i par rapport à MAXN, il est idiot dans la boucle du dessus de laisser aller i de 3 à MAXN. Il est peut-être malin de le limiter à sqrt(MAXN).  
+
+### Pourquoi on peut se limiter à $$\sqrt(MAXN)$$
+
+
+Le **théorème fondamental de l'arithmétique** indique que tout nombre entier naturel $$ n > 1 $$ peut s'écrire de manière unique comme le produit de nombres premiers.  
+
+
+$$
+n = p_1^{a_1} \times p_2^{a_2} \times p_3^{a_3} \times \dots \times p_r^{a_r}
+$$
+
+où les $$ p_i $$ sont des nombres premiers distincts élevés aux puissances $$ a_i $$.
+
+Supposons que $$ n $$ est composé et que tous les nombres premiers $$ p_i $$ qui le divisent satisfont à la condition :
+
+$$
+(C_1) \quad \sqrt{n} < p_i \leq n
+$$
+
+Du coup, si un nombre premier $$ p $$ particulier divise $$ n $$ et satisfait à la condition $$ C_1 $$ précédente alors on peut écrire :
+
+$$
+n = p \times b
+$$
+
+Pour un certain entier $$ b > 1 $$. Mais alors, $$ b $$ divise aussi $$ n $$ et on a :
+
+$$
+b = \frac{n}{p} < \frac{n}{\sqrt{n}} = \sqrt{n}
+$$
+
+Pour finir cela veut dire que $$ n $$ (qui est premier) possède au moins un facteur premier $$b$$ inférieur à $$ \sqrt{n} $$, ce qui est une contradiction avec $$ C_1 $$.
+
+Donc, un nombre naturel $$ n $$ qui n'est divisible par aucun nombre premier $$ p \leq \sqrt{n} $$ est automatiquement lui-même premier.
+
+Du coup, dans le crible d'Ératosthène, aussitôt que l'on arrive à l'étape où le plus petit nombre qui n'a pas été rayé est supérieur à $$ \sqrt{n} $$, on peut s'arrêter. et tous les nombres non rayés sont des nombres premiers.
+
+
+
+Allez, oi on essaie avec le code suivant :
 
 ```c
 #include <windows.h>
