@@ -445,7 +445,9 @@ $$
 (C_1) \quad \sqrt{n} < p_i \leq n
 $$
 
-Tu notes au passage que cette condition est un peu "bizarre". On veut confirmer qu'on va pas chercher des nombres premiers au delà de $$\sqrt{MAXN}$$ mais on fait l'hypothèse que les nombres premiers qui composent $$n$$ sont plus grands que $$\sqrt{n}$$. T’inquiète paupiette. En fait c'est une ruse. On va justement montrer que l'hypothèse précédente est fausse et donc que sa contraposée est vraie.
+Tu notes au passage que cette condition est un peu "bizarre". On veut confirmer qu'on va pas chercher des nombres premiers au delà de $$\sqrt{n}$$ mais on fait l'hypothèse que les nombres premiers qui composent $$n$$ sont plus grands que $$\sqrt{n}$$. 
+
+T’inquiète paupiette. En fait c'est une ruse. On va justement montrer que l'hypothèse précédente est fausse et donc que sa contraposée est vraie.
 
 Du coup, imagine qu'on a un nombre premier $$ p $$ qui divise $$ n $$ et qui satisfait à la condition $$ C_1 $$ précédente. Alors on peut écrire :
 
@@ -475,7 +477,7 @@ Dans ces condition, cela veut dire que $$ n $$ (qui est premier) possède au moi
 
 Donc, un nombre naturel $$ n $$ qui n'est divisible par aucun nombre premier $$ p \leq \sqrt{n} $$ est automatiquement lui-même premier.
 
-Du coup, dans le crible d'Ératosthène, aussitôt que l'on arrive à l'étape où le plus petit nombre qui n'a pas été rayé est supérieur à $$ \sqrt{n} $$, on peut s'arrêter. et on est assuré que tous les nombres non encore rayés sont des nombres premiers.
+Du coup, dans le crible d'Ératosthène, aussitôt que l'on arrive à l'étape où le plus petit nombre qui n'a pas été rayé est supérieur à $$ \sqrt{n} $$, on peut s'arrêter et on est assuré que tous les nombres non encore rayés sont des nombres premiers.
 
 
 
