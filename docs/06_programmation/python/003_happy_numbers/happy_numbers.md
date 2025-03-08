@@ -326,7 +326,8 @@ Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C+
 
 ## PS :
 
-Try this
+1. You can [read this code](https://github.com/40tude/py_coding_interview/blob/main/04_fast_slow_pointers/80_happy_numbers.ipynb)
+1. Try this
 
 ```python
 import time
