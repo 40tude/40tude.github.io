@@ -47,12 +47,12 @@ Un billet très court et non exhaustif afin de dégrossir les principaux métier
 - **AI Engineer** :  
   Développe et déploie des modèles avancés (Deep Learning, NLP, Vision, génération, etc.). Fort accent technique, compétences pointues en apprentissage profond et ingénierie logicielle dédiée à l'IA.
   
-  Ça vaut ce que ça vaut mais tu peux aller voir le [RNCP35288](https://www.francecompetences.fr/recherche/rncp/35288/) de France Formation (je l'ai obtenu via JEDDHA Bootcamp fin 2024).
+  Ça vaut ce que ça vaut mais tu peux aller voir le [RNCP35288](https://www.francecompetences.fr/recherche/rncp/35288/) de France Formation (je l'ai obtenu via JEDHA Bootcamp fin 2024).
 
 - **AI Architect** :  
   Positionnement stratégique : définit l’architecture technique globale, sélectionne les bonnes technologies IA/cloud, assure cohérence et évolutivité technique sur les projets IA à grande échelle. Vision transverse orientée décision stratégique.
   
-  Voir le [RNCP38777](https://www.francecompetences.fr/recherche/rncp/38777/) de France Formation (je l'ai obtenu via JEDDHA Bootcamp fin 2024).
+  Voir le [RNCP38777](https://www.francecompetences.fr/recherche/rncp/38777/) de France Formation (je l'ai obtenu via JEDHA Bootcamp fin 2024).
 
 
 ## Une autre façon de voir
