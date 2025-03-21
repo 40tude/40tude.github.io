@@ -5,11 +5,16 @@ parent: "Programmation"
 # nav_order: 4
 #math: mathjax
 date: 2015-09-27 21:42:50
-last_modified_date: 2023-02-16 17:19:55
+last_modified_date: 2021-03-21 17:00:00
 ---
 
 # My Computer Science Vocabulary Page
 {: .no_toc }
+
+<div align="center">
+<img src="./assets/words_cloud.webp" alt=""  width="450" loading="lazy"/>
+</div>
+
 
 ## Introduction
 {: .no_toc }
@@ -107,9 +112,53 @@ See : https://www.youtube.com/watch?v=QIHy8pXbneI at 6:30
 
 See : https://stackoverflow.com/questions/130794/what-is-dependency-injection
 
+### In French 
+Design principle qui consiste à fournir à un objet ses dépendances plutôt que de les créer lui-même. Au lieu qu'une classe crée les objets dont elle a besoin, on les lui injecte de l'extérieur. Ça permet :
+* de réduire le couplage entre les classes,
+* de faciliter les tests (ex : en injectant des mocks),
+* de favoriser la réutilisation et la maintenance du code.
 
 
+```python
+# This is the service that fetches data
+class DataFetcher:
+    def fetch(self) -> str:
+        # In a real app, this could fetch data from an API or database
+        return "some important data"
 
+# This class depends on DataFetcher
+class ReportGenerator:
+    def __init__(self, fetcher: DataFetcher):
+        # The dependency is injected via the constructor
+        self.fetcher = fetcher
+
+    def generate(self) -> str:
+        # Uses the injected dependency
+        data = self.fetcher.fetch()
+        return f"Report based on: {data}"
+
+# We create the dependency manually and inject it
+data_fetcher = DataFetcher()
+report_generator = ReportGenerator(data_fetcher)
+
+# Use the class with the injected dependency
+print(report_generator.generate())
+```
+
+Exemple, par exemple en test, de remplacement de la "vraie" dépendance par une version simulée (mock).
+
+```python
+# A fake DataFetcher for testing
+class FakeDataFetcher:
+    def fetch(self) -> str:
+        return "test data"
+
+# Inject the fake fetcher
+test_fetcher = FakeDataFetcher()
+test_generator = ReportGenerator(test_fetcher)
+
+assert test_generator.generate() == "Report based on: test data"
+```
 
 
 <!-- ###################################################################### -->
@@ -354,8 +403,11 @@ See Python Pickle
 
 [https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)](https://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29)
 
-
-
+* **S** ingle responsibility : Classes should have only one responsibility.
+* **O** pen–closed : Software compoenent should be open for extension, but closed for modification. New features can be added without modifying existing code.
+* **L** iskov substitution : Polymorphism. Functions using objects of base classes must be able to use objects of derived classes without knowing it
+* **I** nterface segregation : Decoupling, reduces dependencies between classes (modular & maintenable code). Clients should not be forced to depend upon interfaces that they do not use
+* **D** ependency inversion : Depend on abstractions, not concretes implementations. Enables changes to implementations without affecting clients
 
 
 <!-- ###################################################################### -->
