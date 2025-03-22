@@ -7,7 +7,7 @@ last_modified_date: 2020-05-04 15:23:18
 ---
 
 {: .warning } 
-**Janvier 2025**. Je viens de relire en diagonale ce que j'avais écrit en 2013. Je reste globalement d'accord avec tout ce que je disais sauf qu'aujourd'hui je propose [ideone.com + Python](https://ideone.com/l/python-3) comme ticket gagnant. Je dis ideone.com car si je dis [Google Colab](https://colab.google/) j'ai tout les profs qui vont venir manifester devant chez moi, crier au loup, parler de perte de souveraineté, j'en passe et des meilleures. Heu... Sinon, vous savez si y a encore des maths en 2025 en première? Je sais plus trop, j'ai un peu lâché l'affaire.
+**Janvier 2025**. Je viens de relire en diagonale ce que j'avais écrit en 2013. Je reste globalement d'accord avec tout ce que je disais sauf qu'aujourd'hui je propose [ideone.com + Python](https://ideone.com/l/python-3) comme ticket gagnant. Je dis ideone.com car si je dis [Google Colab](https://colab.google/) j'ai tous les profs qui vont venir manifester devant chez moi, crier au loup, parler de perte de souveraineté, j'en passe et des meilleures. Heu... Sinon, vous savez si y a encore des maths en 2025 en première? Je sais plus trop, j'ai un peu lâché l'affaire.
 
 
 # Algorithmie en première S
