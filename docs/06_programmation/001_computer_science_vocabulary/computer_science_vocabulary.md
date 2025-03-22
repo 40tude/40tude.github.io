@@ -31,7 +31,7 @@ Usually Googling helps a lot to get an "answer" at the speed of light. On the ot
 * There is no goal of completeness (how could it be?)
 * Entries are in alphabetical order
 * Whenever possible I add the sources, links and references
-* Some entries are and remains empty. This act as a reminder. Feel free to help, sharing a source of information in the comment
+* Some entries are and remains empty. This act as a reminder. Feel free to help, sharing a source of information in the [comments](https://github.com/40tude/40tude.github.io/discussions)
 
 ## Table of Contents
 {: .no_toc .text-delta}
@@ -94,7 +94,7 @@ For example, if a program needs 20 hours using a single processor core, and a pa
 
 When tasks start, run and complete in overlapping time periods.
 
-Task can be seen as a function. I can have concurrency even if I have a sigle thread of excution (this can be achieve with time slicing the thread, cooperative threading model or breaking up tasks and requeuing the tasks)
+Task can be seen as a function. I can have concurrency even if I have a sigle thread of execution (this can be achieve with time slicing the thread, cooperative threading model or breaking up tasks and requeuing the tasks)
 
 Concurrency is the basic building block that allow to get to parallelism. Also improve interactivity.
 
