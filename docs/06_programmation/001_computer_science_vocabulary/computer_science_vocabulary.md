@@ -58,7 +58,7 @@ In the context of the C++ standard library, an algorithm is a function template 
 <!-- ###################################################################### -->
 ## Arguments and Parameters
 
-```
+```cpp
 void MyFunction(int i, double d){
     // ...
 }
@@ -223,6 +223,87 @@ Frameworks are distinct from libs :
 <!-- ###################################################################### -->
 ## Initialization vs copy vs assignments
 
+| Concept                    | Quand est-ce utilisé ?                       | Fonction appelée              | Signature typique                                     |
+|----------------------------|---------------------------------------------|--------------------------------|-------------------------------------------------------|
+| Initialisation             | Lors de la création d'une nouvelle variable. Create and initialize simultaneously. | Constructeur                   | `MyClass(int val)` ou `MyClass()`                     |
+| Copie (initialisation)     | Lors de la création d'un objet à partir d'un autre objet existant. | Constructeur de copie          | `MyClass(const MyClass &other)`                       |
+| Affectation                | Lorsqu'un objet existant reçoit une nouvelle valeur d'un autre objet existant. | Opérateur d'affectation        | `MyClass& operator=(const MyClass &other)`            |
+
+```cpp
+#include <iostream>
+#include <string>
+#include <vector>
+
+void demo_initialization(void){
+
+    // Default Initialization
+    int x;                       // x is not initialized 
+    std::cout << x << std::endl; 
+
+    int y{}; // y is initialized to 0
+
+
+
+    // Direct Initialization
+    int a(10);              // a is initialized to 10
+    std::string s("Hello"); // s is initialized to "Hello"
+
+
+
+    // Copy Initialization
+    int b = 20;              // b is initialized to 20
+    std::string t = "World"; // t is initialized to "World"
+
+
+
+    // List Initialization, Uniform Initialization
+    // To be preferred avoid implicit conversions
+    int c{30};                     // c is initialized to 30
+    std::vector<int> vec{1, 2, 3}; // vec is initialized to {1, 2, 3}
+}
+
+// Copy Constructor
+// Happen when an object is created based on another object of the same class
+void demo_copy(void){
+    class MyClass {
+        public:
+            int x;
+            MyClass(int val) : x(val) {}                   // default constructor
+            MyClass(const MyClass &other) : x(other.x) {}  // copy constructor
+        };
+        
+    MyClass obj1(10);
+    MyClass obj2(obj1);  // use the copy constructor
+    MyClass obj3 = obj1; // implicit call to the copy constructor
+}
+
+// Affectation in french
+void demo_assignment(void){
+    class MyClass {
+        public:
+            int x;
+            MyClass(int val) : x(val) {}
+            MyClass& operator=(const MyClass &other) {
+                if (this != &other) { // avoid self-assignment
+                    x = other.x;
+                }
+                return *this;
+            }
+        };
+        
+    MyClass obj1(10);
+    MyClass obj2(20);
+    
+    obj2 = obj1; // use the assignment (=) operator
+}
+
+int main() {
+    demo_initialization();
+    demo_copy();
+    demo_assignment();
+}
+```
+
 
 
 
@@ -368,7 +449,7 @@ y = (x = 5)  # ❌ Erreur : l'affectation n'est pas une expression en Python !
 <!-- ###################################################################### -->
 ## Semantic
 
-* *Example* : What is common for all iterators is their **semantics** and the naming of their operations.  However, when you really need the **semantics** of pointers, unique_ptr  is a very lightweight mechanism with no space or time overhead compared to correct use of a built-in pointer.
+* **Example** : What is common for all iterators is their **semantics** and the naming of their operations.  However, when you really need the **semantics** of pointers, unique_ptr  is a very lightweight mechanism with no space or time overhead compared to correct use of a built-in pointer.
 * <http://web.archive.org/> : It's the **meaning** of the language elements in terms of what they formally mean in terms of computation. This means that it expresses what a term of your language effectively does assuming an underlying kind of model that depends on which semantic we are talking about.
 * Semantics is concerned with the interpretation or understanding of programs and how to predict the outcome of program execution. The semantics of a programming language describe the relation between the syntax and the model of computation. Semantics can be thought of as a function which maps syntactical constructs to the computational model. (<http://web.archive.org/web/20040410154109/cs.wwc.edu/~aabyan/PLBook/HTML/Semantics.html>)
 
@@ -446,6 +527,57 @@ See : <http://stackoverflow.com/questions/17930267/what-is-the-difference-betwee
 
 
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Strength reduction
+
+* See From Mathematics to Generic Programming p 26
+* ISBN-10: [0321942043](https://amzn.eu/d/fKsXji9) 
+* Code optimization
+* In loop, replace complex multiplications with "lite" additions
+    * Need to evaluate the $$\delta$$ between 2 loops
+
+**Example 1 :**
+
+Replace
+
+```python
+for i in range(10):
+    x = i * 8  # Multiplication at each iteration
+    print(x)
+```
+with
+
+```python
+x = 0
+for i in range(10):
+    print(x)
+    x += 8  # Lite addition
+```
+
+**Example 2 :**
+
+Replace this code full of multiplications
+
+```python
+    i += 1
+    factor = i+i+3
+    index_square = 2 * i * (i + 3) + 3
+```
+With this code with additions
+
+```python
+    i += 1
+    index_square += factor # index_square = factor(i)
+    factor += 2            # factor(i+1) = factor(i) + 2
+    index_square += factor # index_square = factor(i) + factor(i+1)
+```
+Because in the case above one can easily demonstrate that :
+* ``factor(i+1) = factor (i) + 2``
+* ``index_square(i+1) = factor (i) + factor(i+1)``
 
 
 <!-- ###################################################################### -->

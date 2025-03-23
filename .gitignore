@@ -21,7 +21,9 @@ vendor/
 # -----------------------------------------------------------------------------
 # directories to ignore
 .git/
-.vscode/
+# .vscode/
+Debug/
+
 
 # **/raw_assets/" ignore all directories no matters where they are
 **/raw_assets/
