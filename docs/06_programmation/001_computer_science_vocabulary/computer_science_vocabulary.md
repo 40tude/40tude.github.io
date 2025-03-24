@@ -69,9 +69,16 @@ void main(){
 }
 ```
 
-* `MyInt` and `42` are arguments. Let's keep in mind that : "The arguments are given"
 * `i` and `d` are parameters. They are part of the definition of the function. They are part of the function signature.
+* `MyInt` and `42` are arguments. Let's keep in mind that : "The arguments are given"
 
+Moyen mnémotechnique en Français : 
+* **A**rguments, **A**ppel de la fonction 
+* **P**aramètres, **P**rotoype de la fonction
+
+Mnemoni in English
+* **A**rguments are **A**ctuals
+* **P**arameters are **P**laceholders
 
 
 <!-- ###################################################################### -->
