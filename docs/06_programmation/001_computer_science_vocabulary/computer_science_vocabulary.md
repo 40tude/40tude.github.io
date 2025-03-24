@@ -472,6 +472,99 @@ See Python Pickle
 ## SFINAE
 
 * Substitution failure is not an error
+
+A C++ compiler rule that applies when resolving templates. It allows to exclude certain function overloads or template specializations if type substitution fails, without generating a compiler error. 
+
+When one write a function or a template class, the compiler tries to substitute the types passed as parameters. If this substitution fails, instead of crashing with an error, the compiler ignores this version and tries the others (if any). It is this mechanism that enables conditional overloading based on types.
+
+```cpp
+#include <iostream>
+#include <type_traits>
+
+// Version activée si T est un entier
+template<typename T>
+typename std::enable_if<std::is_integral<T>::value>::type
+print_type(T val) {
+    std::cout << "Integer: " << val << std::endl;
+}
+
+// Version activée si T est un flottant
+template<typename T>
+typename std::enable_if<std::is_floating_point<T>::value>::type
+print_type(T val) {
+    std::cout << "Floating-point: " << val << std::endl;
+}
+
+
+print_type(42);     // Integer: 42
+print_type(3.14);   // Floating-point: 3.14
+```
+``std::enable_if`` is used to enable or disable a template function according to type. If the condition is ``false``, the substitution fails, but this is not an error thanks to SFINAE.
+
+See : ``std::enable_if``, ``std::is_same``, ``std::is_integral``, ``std::is_floating_point``, ``decltype(...)`` etc.
+
+Here below the code detects at compile time whether a ``t`` object has a ``foo()`` method (useful for template introspection).
+
+```cpp
+template<typename T>
+auto has_foo(T t) -> decltype(t.foo(), std::true_type{}) {
+    return std::true_type{};
+}
+
+std::false_type has_foo(...) {
+    return std::false_type{};
+}
+```
+
+Since C++20 use concepts instead
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <list>
+#include <type_traits>  // For std::size_t
+
+// Define a concept that checks if a type T has a size() method returning something convertible to std::size_t
+template<typename T>
+concept HasSize = requires(T t) {
+    { t.size() } -> std::convertible_to<std::size_t>;
+};
+
+// Only accepts types satisfying the HasSize concept
+template<HasSize T>
+void print_size(const T& t) {
+    std::cout << "Size: " << t.size() << std::endl;
+}
+
+// A class with size() method
+class MyContainer {
+public:
+    std::size_t size() const { return 42; }
+};
+
+// A class without size() method
+class NoSizeClass {
+public:
+    void dummy() {}
+};
+
+int main() {
+    std::vector<int> v{1, 2, 3};
+    std::list<std::string> l{"a", "b", "c"};
+
+    MyContainer c;
+
+    print_size(v);  // OK: std::vector has size()
+    print_size(l);  // OK: std::list has size()
+    print_size(c);  // OK: MyContainer has size()
+
+    // NoSizeClass n;
+    // print_size(n); // ❌ Compilation error: NoSizeClass does not satisfy HasSize
+
+    return 0;
+}
+```
+
 * <https://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error>
 * <http://en.cppreference.com/w/cpp/language/sfinae>
 
@@ -490,40 +583,6 @@ See Python Pickle
 * **I** nterface segregation : Decoupling, reduces dependencies between classes (modular & maintenable code). Clients should not be forced to depend upon interfaces that they do not use
 * **D** ependency inversion : Depend on abstractions, not concretes implementations. Enables changes to implementations without affecting clients
 
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Syntax (difference between syntax and semantic)
-
-Syntax is about the **structure** or the grammar of the language. It answers the question: how do I construct a valid sentence? All languages, even English and other human (aka "natural") languages have grammars, that is, rules that define whether or not the sentence is properly constructed.
-
-Here are some C language syntax rules:
-
-* separate statements with a semi-colon
-* enclose the conditional expression of an IF statement inside parentheses
-* group multiple statements into a single statement by enclosing in curly braces
-* data types and variables must be declared before the first executable statement (this feature has been dropped in C99. C99 and latter allow mixed type declarations.)
-
-Semantics is about the **meaning** of the sentence. It answers the questions: is this sentence valid? If so, what does the sentence mean? For example:
-
-```c
-x++;                  // increment
-foo(xyz, --b, &qrs);  // call foo
-```
-
-Are syntactically valid C statements. But what do they mean? Is it even valid to attempt to transform these statements into an executable sequence of instructions? These questions are at the heart of semantics.
-
-Consider the ++ operator in the first statement. First of all, is it even valid to attempt this?
-
-* If x is a float data type, this statement has no meaning (according to the C language rules) and thus it is an error ***even though the statement is syntactically correct.***
-* If x is a pointer to **some data type**, the meaning of the statement is to "add sizeof(**some data type**) to the value at address x and store the result into the location at address x".
-* If x is a scalar, the meaning of the statement is "add one to the value at address x and store the result into the location at address x".
-
-Finally, note that some semantics cannot be determined at compile-time and must therefore must be evaluated at run-time. In the ++ operator example, if x is already at the maximum value for its data type, what happens when you try to add 1 to it? Another example: what happens if your program attempts to dereference a pointer whose value is NULL?
-
-In summary, syntax is the concept that concerns itself only whether or not the sentence is valid for the grammar of the language . Semantics is about whether or not the sentence has a valid meaning.
-
-See : <http://stackoverflow.com/questions/17930267/what-is-the-difference-between-syntax-and-semantics-of-programming-languages>
 
 
 
@@ -578,6 +637,55 @@ With this code with additions
 Because in the case above one can easily demonstrate that :
 * ``factor(i+1) = factor (i) + 2``
 * ``index_square(i+1) = factor (i) + factor(i+1)``
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Syntax (difference between syntax and semantic)
+
+Syntax is about the **structure** or the grammar of the language. It answers the question: how do I construct a valid sentence? All languages, even English and other human (aka "natural") languages have grammars, that is, rules that define whether or not the sentence is properly constructed.
+
+Here are some C language syntax rules:
+
+* separate statements with a semi-colon
+* enclose the conditional expression of an IF statement inside parentheses
+* group multiple statements into a single statement by enclosing in curly braces
+* data types and variables must be declared before the first executable statement (this feature has been dropped in C99. C99 and latter allow mixed type declarations.)
+
+Semantics is about the **meaning** of the sentence. It answers the questions: is this sentence valid? If so, what does the sentence mean? For example:
+
+```c
+x++;                  // increment
+foo(xyz, --b, &qrs);  // call foo
+```
+
+Are syntactically valid C statements. But what do they mean? Is it even valid to attempt to transform these statements into an executable sequence of instructions? These questions are at the heart of semantics.
+
+Consider the ++ operator in the first statement. First of all, is it even valid to attempt this?
+
+* If x is a float data type, this statement has no meaning (according to the C language rules) and thus it is an error ***even though the statement is syntactically correct.***
+* If x is a pointer to **some data type**, the meaning of the statement is to "add sizeof(**some data type**) to the value at address x and store the result into the location at address x".
+* If x is a scalar, the meaning of the statement is "add one to the value at address x and store the result into the location at address x".
+
+Finally, note that some semantics cannot be determined at compile-time and must therefore must be evaluated at run-time. In the ++ operator example, if x is already at the maximum value for its data type, what happens when you try to add 1 to it? Another example: what happens if your program attempts to dereference a pointer whose value is NULL?
+
+In summary, syntax is the concept that concerns itself only whether or not the sentence is valid for the grammar of the language . Semantics is about whether or not the sentence has a valid meaning.
+
+See : <http://stackoverflow.com/questions/17930267/what-is-the-difference-between-syntax-and-semantics-of-programming-languages>
+
+
+
+
+
+
+
+
+
 
 
 <!-- ###################################################################### -->
