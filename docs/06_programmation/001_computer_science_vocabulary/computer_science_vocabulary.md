@@ -320,6 +320,63 @@ Usage?
 <!-- ###################################################################### -->
 ## Invariant
 
+Something that remains constant during the execution of an algorithm, a loop, or in the state of an object.
+
+It is a logical property or condition that :
+* is true before a block of code is executed,
+* is always true during execution,
+* remains true afterwards.
+
+Use ``assert`` to check the invariants. See also Boost.Contract (C++) and ``icontract`` in Python (never used).
+
+Invariant helps:
+* Checking for correctness : to prove that an algorithm or class works as expected.
+* Reasoning tools : to understand the code, especially in complex algorithms.
+* Debugging and validation : use assertions to check invariants.
+* Safe refactoring : we can modify the code while ensuring that it still complies with the operating rules (invariant remains the same)
+* Simpler tests : a test can be limited to checking that invariants are respected. This reduces the number of error cases.
+
+### Loop invariant
+This is a property that is true before each iteration of a loop.
+It allows to
+* reason about the correctness of an algorithm,
+* demonstrate that a loop does what it is supposed to do.
+
+Sample code where at each iteration, ``max_val`` contains the maximum already observed. This invariant helps to understand that the algorithm is correct.
+
+```python
+# Goal: Find the maximum value in a list
+def find_max(lst):
+    assert len(lst) > 0
+    max_val = lst[0]
+    for i in range(1, len(lst)):
+        # Invariant: max_val is the maximum of lst[0:i]
+        if lst[i] > max_val:
+            max_val = lst[i]
+    return max_val
+```
+
+### Class or structure invariant
+This is a condition that is always true for a valid object after its construction and after each public method.
+
+Sample code where the invariant is that ``width`` and ``height`` are always strictly positive. This *contract* guarantees that all methods can function assuming the dimensions are valid.
+
+```cpp
+class Rectangle {
+private:
+    int width;
+    int height;
+
+public:
+    Rectangle(int w, int h) : width(w), height(h) {
+        assert(w > 0 && h > 0); // Class invariant: dimensions must be positive
+    }
+
+    int area() const {
+        return width * height;
+    }
+};
+```
 
 
 <!-- ###################################################################### -->
