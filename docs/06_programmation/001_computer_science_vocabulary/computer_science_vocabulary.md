@@ -648,9 +648,8 @@ int main() {
 <!-- ###################################################################### -->
 ## Statement
 
-* *Example* :  A declaration is a statement that introduces a name into the program.  C++ provides a conventional set of statements for expressing selection and looping
-* Statements are made up of expressions.
-* If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement.
+* Statements are made up of expressions
+* If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement
 * Example : ``In C++, in the if statement, the braces ['{', '}'] are not mandatory, but parentheses ['(', ')'] around the expression being tested are``. Below `bob > 3` is an expression and the are two ``if`` statements.
 
 ```cpp
