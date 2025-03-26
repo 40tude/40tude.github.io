@@ -183,15 +183,19 @@ Don't repeat yourself
 <!-- ###################################################################### -->
 ## Expressions
 
+* If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement
 * Are made up of Operators and Operands.
 * Are made of Operators and Values (literals or variable)
-* If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement.
 
 ### In French
-* Une expression est une combinaison de valeurs, de variables, d'opérateurs et de fonctions qui produit une valeur. 
-* Elle peut être évaluée pour donner un résultat.
-* Renvoie un résultat
+* Une expression est évaluée pour retourner un résultat
+* Une expression est une combinaison de valeurs, de variables, d'opérateurs et de fonctions qui produit une valeur
+* L'ensemble des expressions est inclus dans l'ensemble des instructions (statements)  
 
+| US               | FR                  | Note                                        |
+|------------------|---------------------|---------------------------------------------|
+| Statement        | Instruction         | exécute une action sans renvoyer nécessairement une valeur |
+| Expression       | Expression          | évaluée pour donner une valeur             |
 
 
 
@@ -486,25 +490,6 @@ The ability of some programming languages to inspect type and code information a
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Statement
-
-* *Example* :  A declaration is a statement that introduces a name into the program.  C++ provides a conventional set of statements for expressing selection and looping
-* Statements are made up of expressions.
-* If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement.
-
-### In French
-* Une instruction est une ligne de code qui exécute une action, mais qui ne renvoie pas forcément une valeur exploitable.
-* Elles sont formées d'une combinaison de litéraux, d'identifiants et d’opérateurs.
-* Caractéristique principale : fait quelque chose, mais ne renvoie pas directement de valeur.
-* Contrairement aux expressions, les instructions ne renvoient pas directement de valeur. Elles modifient l'état du programme (par exemple, en affectant une variable, en imprimant du texte, ou en contrôlant le flux d'exécution).
-* Contrairement à d'autres langages (comme JavaScript ou C), en Python l'affectation est une instruction et non une expression, donc elle ne retourne pas de valeur.
-
-```python
-x = 5  # Instruction d'affectation, ne retourne rien
-y = (x = 5)  # ❌ Erreur : l'affectation n'est pas une expression en Python !
-```
 
 
 
@@ -524,7 +509,7 @@ y = (x = 5)  # ❌ Erreur : l'affectation n'est pas une expression en Python !
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Object Serialisation
+## Serialisation (object serialization)
 
 See Python Pickle
 
@@ -647,6 +632,58 @@ int main() {
 * **I** nterface segregation : Decoupling, reduces dependencies between classes (modular & maintenable code). Clients should not be forced to depend upon interfaces that they do not use
 * **D** ependency inversion : Depend on abstractions, not concretes implementations. Enables changes to implementations without affecting clients
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Statement
+
+* *Example* :  A declaration is a statement that introduces a name into the program.  C++ provides a conventional set of statements for expressing selection and looping
+* Statements are made up of expressions.
+* If an instruction or a set of instructions evaluate to a single value this is an expression otherwise it is a statement.
+* Example : ``In C++, in the if statement, the braces ['{', '}'] are not mandatory, but parentheses ['(', ')'] around the expression being tested are``. Below `bob > 3` is an expression and the are two ``if`` statements.
+
+```cpp
+#include <iostream>
+ 
+int main(){
+	auto bob = 42;
+	
+ 	if (bob > 1) {
+      std::cout << "bob larger than 4\n";
+    }	
+  	
+  	if (bob > 3) std::cout << "bob larger than 3\n";
+} 
+```
+
+### In French
+* Une **instruction** est une ligne de code qui exécute une action, mais qui ne renvoie pas nécessairement une valeur.
+* Elles sont formées d'une combinaison de littéraux, d'identifiants et d’opérateurs.
+* Caractéristique principale : fait quelque chose, mais ne renvoie pas directement de valeur.
+* Contrairement aux expressions, les instructions ne renvoient pas directement de valeur. Elles modifient l'état du programme (par exemple, en affectant une variable, en imprimant du texte, ou en contrôlant le flux d'exécution).
+* Contrairement à d'autres langages (comme JavaScript ou C), en Python l'affectation est une instruction et non une expression, donc elle ne retourne pas de valeur.
+
+```python
+x = 5  # Instruction d'affectation, ne retourne rien
+y = (x = 5)  # ❌ Erreur : l'affectation n'est pas une expression en Python !
+```
+
+
+| US               | FR                  | Note                                        |
+|------------------|---------------------|---------------------------------------------|
+| Statement        | Instruction         | exécute une action sans renvoyer nécessairement une valeur |
+| Expression       | Expression          | évaluée pour donner une valeur             |
 
 
 
