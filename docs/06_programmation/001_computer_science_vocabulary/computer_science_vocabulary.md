@@ -655,16 +655,13 @@ int main() {
 
 ```cpp
 #include <iostream>
- 
 int main(){
-	auto bob = 42;
-	
- 	if (bob > 1) {
-      std::cout << "bob larger than 4\n";
+    auto bob = 42;
+    if (bob > 1) {
+        std::cout << "bob larger than 4\n";
     }	
-  	
-  	if (bob > 3) std::cout << "bob larger than 3\n";
-} 
+    if (bob > 3) std::cout << "bob larger than 3\n";
+}
 ```
 
 ### In French
