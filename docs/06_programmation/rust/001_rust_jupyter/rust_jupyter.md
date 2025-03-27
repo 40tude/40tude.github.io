@@ -13,11 +13,11 @@ last_modified_date: 2025-03-27 13:00:00
 <img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-I highly recommend you to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) where I explain, in 6 easy steps, how to install jupyterlab (Jupyter Server + Jupyter Lab UI) and xeus-cling (C++ kernel).
+I highly recommend you to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) where I explain, in 6 easy steps, how to install Jupyter Lab (Jupyter Server + Jupyter Lab UI) and xeus-cling (C++ kernel).
 
 Indeed I assume you can :
-1. Open an Ubuntu session in a WIN11 Terminal (if this gets tricky, you’re in real trouble. Try to call Houston, you never know... 🚀)
-1. Then change to the directory, on the WIN11 host, where you plan to keep your Notebooks
+* 1 - Open an Ubuntu in WSL on your favorite WIN11 host (if this gets tricky, you’re in real trouble. Try to call Houston, you never know... 🚀)
+* 2 - Then change to the directory, on the WIN11 host, where you plan to keep your Notebooks
 
 ```bash
 cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter
@@ -27,10 +27,14 @@ cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter
 <img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-3. Activate the conda virtual environment in which Jupyter has been installed
-    * ``conda activate multi_jupyter`` in my case
+* 3 - Activate the conda virtual environment in which Jupyter has been installed
 
-4. Launch Jupyter Lab from Ubuntu terminal
+```bash
+conda activate multi_jupyter
+```
+
+
+* 4 - Launch the Jupyter Lab from Ubuntu terminal
 
 ```bash
 jupyter lab --no-browser --ip=0.0.0.0
@@ -40,7 +44,7 @@ jupyter lab --no-browser --ip=0.0.0.0
 <img src="./assets/img_02.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-5. Exit the server using the ``File/Shut Down`` option in the UI 
+* 5 - Exit the server using the ``File/Shut Down`` option in Jupyter Lab UI 
 
 <div align="center">
 <img src="./assets/img_03.webp" alt="" width="900" loading="lazy"/>
@@ -69,7 +73,7 @@ conda remove --name cpp_jupyter --all
 
 ## Note about Jupyter components
 * Jupyter : open source project (Julia + Python + R)
-* Jupyter Lab :  (launched with `jupyter lab --no-browser --ip=0.0.0.0` for example)
+* Jupyter Lab : the frontend. Launched with `jupyter lab --no-browser --ip=0.0.0.0` for example
 * Jupyter Server : the backend, manage the kernels, the notebooks... Used by Jupyter Lab
     * jupyter lab = jupyter server + frontend (lab typically)
 * Kernels : 
@@ -157,6 +161,9 @@ jupyter kernelspec list
 <img src="./assets/img_07.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+Above I see the Python kernel, 3 C++ kernels and the Rust kernel.
+
+
 
 ## 3. Run Jupyter Lab 
 
@@ -170,7 +177,7 @@ jupyter lab --no-browser --ip=0.0.0.0
 <img src="./assets/img_08.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Click on the line that says : ` http://127.0.0.1:8888/lab?token=741904a7a2dfdbca843ca947031cd6a4810f02625c41d2fc`
+Click on the line that says : `http://127.0.0.1:8888/lab?token=741904a7a2dfdbca843ca947031cd6a4810f02625c41d2fc`
 
 
 
@@ -207,12 +214,12 @@ Let's write some code
 
 
 ## It works but...
-* **TOO BAD**. There is no way to set a breakpoint 😡. This is a problem with the Rust kernel. Indeed with the Python or C++ kernel "Yes we can!". To tell the truth I'm a little bit disappointed.
+* **TOO BAD**. There is no way to set a breakpoint 😡. This is a problem with the Rust kernel. Indeed with the Python or C++ kernels, "Yes we can!". To tell the truth I'm a little bit disappointed.
 * Like in C++, I had to remove the ``main()`` function
-* **IMPORTANT**. It seems that in a Notebook, every cell and every block ('{' ... '}') are compiled separately so even if I know the code was working (on [Compiler Explorer](https://compiler-explorer.com/) for example) I had to add 2 curly brace : one at the top and another at the bottom
-* I did some testing adding some lifetime in the signature of the `linked_list_midpoint()` function but it did'nt really helped.
+* **IMPORTANT**. It seems that in a Notebook, every cell and every block ('{' ... '}') are compiled separately so even if I know the code was working (on [Compiler Explorer](https://compiler-explorer.com/) for example) I had to add 2 curly braces : one at the top and another at the bottom
+* As one can see in the comments, I tried to add some lifetime in the signature of the `linked_list_midpoint()` function but it did'nt really help.
 
-Here is the original code : 
+Just to make sure, here is the original code: 
 
 ```rust
 // Define a struct to represent a singly linked list node
@@ -267,7 +274,7 @@ fn main() {
 }
 ```
 
-Here is the code of the cell. Adding the curly braces is **NOT** optimal, I know, but at least I can check that the toolchain is in place, the compiler working etc.    
+Now, here is the code of the cell. Adding the curly braces is **NOT** optimal, I know, but at least I can check that the toolchain is in place, the compiler working etc.    
 
 ```rust
 {
