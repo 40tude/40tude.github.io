@@ -213,9 +213,9 @@ This is exactly exactly what I want :
 
 
 
-## Next ?
-* I'm learning learn Rust 
-* Obviously the next step is to do the same with the kernel `evcxr_jupyter`
-* I will wrote a new checklist. 
+## What is next ?
+* I'm starting to learn Rust (👍)
+* Obviously the next step is to follow a similar process the kernel `evcxr_jupyter`
+* Find here [**checklist for Rust**]({%link docs/06_programmation/rust/001_rust_jupyter/rust_jupyter.md%})  
 
 
