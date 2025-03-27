@@ -336,11 +336,11 @@ fn linked_list_midpoint(head: &Option<Box<ListNode>>) -> &ListNode {
 
 ## What is next ?
 
-* I'm now be able to write Rust code snippets 
+* I can write Rust code snippets and add some documentation using Jupyter Notebooks 
     1. Run Ubuntu 
     1. `cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter`
     1. ``jupyter lab --no-browser --ip=0.0.0.0`` 
-* Today I'm still waiting for the book : [The Rust Programming Language](https://www.amazon.fr/gp/product/1718503105)
+* Today, I'm still waiting for the book : [The Rust Programming Language](https://www.amazon.fr/gp/product/1718503105)
 
 <div align="center">
 <img src="./assets/img_11.webp" alt="" width="225" loading="lazy"/>
