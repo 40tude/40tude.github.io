@@ -79,7 +79,7 @@ def hello():
 
 
 
-## Local Check
+## 4. Local Check
 
 Let's run the slides in a local server
 
@@ -103,8 +103,23 @@ reveal-md slides.md
 
 ## Push the slides to GitHub
 
-* Set up directories. 
-* Open a terminal where the markdown of the slidedesk is and issue the next command. This create a local ``./docs`` dir. It contains whats need to be commit on GitHub.
+### Set up directories. 
+
+In my case I want to extend [40tude.fr](https://www.40tude.fr/) with some presentations. The web site is already hosted on GitHub. It is based on Jekyll and a ``Just The Docs`` theme. Everything work fine and I don't want to break anything !
+
+As you can see below, I added a `slides` directory. I have one directory per presentation. Each directory will have one ``./docs`` sub-directory and one ``index.html`` file. More info about ``./docs`` in the next paragraph.
+
+<div align="center">
+<img src="./assets/img_06.webp" alt="" loading="lazy"/>
+</div>
+
+
+
+### Generate the content of the ./docs directory 
+
+Open a terminal where the markdown of the slides presentation is. According the previous screen capture I open a terminal in ``../slides/presentation_1``. This can and should be done within VSCode. 
+
+Then issue the following command. 
 
 ```powershell
 reveal-md .\slides_01.md --static docs
@@ -114,8 +129,12 @@ reveal-md .\slides_01.md --static docs
 <img src="./assets/img_05.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+This create a local ``./docs`` dir which contains whats need to be committed onto GitHub. 
+
+At this step, it is just a matter of commit/push to GitHub 
 
 ## Testing
+The 2 links help me to test the links and the organization of the directories.
 
 * [Slidedeck 1]({%link slides/presentation_1/docs/slides_01.html%})
 * [Slidedeck 2]({%link slides/presentation_2/docs/slides_02.html%})
