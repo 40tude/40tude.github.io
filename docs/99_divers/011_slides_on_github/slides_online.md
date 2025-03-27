@@ -144,5 +144,8 @@ The 2 links help me to test the links and the organization of the directories.
 * [Slidedeck 1]({%link slides/presentation_1/docs/slides_01.html%})
 * [Slidedeck 2]({%link slides/presentation_2/docs/slides_02.html%})
 
-
+## Notes
+1. Works like a charm on cell phone. Make sure to be landscape oriented
+1. I did'nt find out yet an easy way to leave the slides and come back to the page where the link to the presentation was.  
+1. [revealjs](https://revealjs.com/) web site for much more info
 
