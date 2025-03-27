@@ -9,6 +9,10 @@ last_modified_date: 2025-03-27 11:00:00
 
 # Using C++ in Jupyter Notebooks on Windows
 
+<div align="center">
+<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
+</div>
+
 I run WIN11 and I want to do some tests in C++ in Jupyter Notebooks. I cannot easily install the ``xeus-cling`` kernel with conda under the WIN11 host because it is based on cling + LLVM blablabla...
 
 I could use a Docker image but here I will use WSL
@@ -71,7 +75,7 @@ You can undo this by running `conda init --reverse $SHELL`
 
 
 
-### 4. Check conda 
+## 4. Check conda 
 
 ```bash
 conda --version
@@ -95,7 +99,7 @@ conda --version
 
 
 
-### 5. Create conda virtual env & install
+## 5. Create conda virtual env & install
 
 ```bash
 conda create -n cpp_jupyter -c conda-forge xeus-cling
@@ -117,7 +121,7 @@ For what I can remember
 
 
 
-### 6. Run Jupyterlab in Ubuntu
+## 6. Run Jupyterlab in Ubuntu
 
 ```bash
 jupyter lab --no-browser --ip=0.0.0.0

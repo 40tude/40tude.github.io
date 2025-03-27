@@ -9,11 +9,15 @@ last_modified_date: 2025-03-27 13:00:00
 
 # Using Rust in Jupyter Notebooks on Windows
 
-I highly recommend you read this [page]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) where I explain how to install Jupyter and a C++ kernel.
+<div align="center">
+<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+I highly recommend you to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) where I explain, in 6 easy steps, how to install jupyterlab (Jupyter Server + Jupyter Lab UI) and xeus-cling (C++ kernel).
 
 Indeed I assume you can :
-* You open an Ubuntu session in a Win Terminal
-* Move to the directory, on the WIN11 host, where you plan to keep your Notebooks
+1. Open an Ubuntu session in a WIN11 Terminal (if this gets tricky, you’re in real trouble. Try to call Houston, you never know... 🚀)
+1. Then change to the directory, on the WIN11 host, where you plan to keep your Notebooks
 
 ```bash
 cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter
@@ -23,18 +27,10 @@ cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter
 <img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-* Activate the conda virtual environment in which Jupyter has been installed
+3. Activate the conda virtual environment in which Jupyter has been installed
     * ``conda activate multi_jupyter`` in my case
 
-## Note
-In the previous [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) the virtual environment was named ``cpp_jupyter``. Since it will cover C++ and Rust I had to rename it with the following 2 commands :
-
-```bash
-conda create --name multi_jupyter --clone cpp_jupyter 
-conda remove --name cpp_jupyter --all
-```
-
-* Launch Jupyter from the Unbuntu terminal
+4. Launch Jupyter Lab from Ubuntu terminal
 
 ```bash
 jupyter lab --no-browser --ip=0.0.0.0
@@ -44,10 +40,7 @@ jupyter lab --no-browser --ip=0.0.0.0
 <img src="./assets/img_02.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-* Obviously Rust kernel is not yet installed but we should be on the same page. If not, **do not read further** until you can get the Jupyter Lab server up and running. 
-    * Feel free to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) 
-
-* Exit the server
+5. Exit the server using the ``File/Shut Down`` option in the UI 
 
 <div align="center">
 <img src="./assets/img_03.webp" alt="" width="900" loading="lazy"/>
@@ -62,7 +55,61 @@ jupyter lab --no-browser --ip=0.0.0.0
 
 
 
+## Note about the name of the virtual environment 
+In the previous [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) the virtual environment was named ``cpp_jupyter``. Since I will use it with C++ and Rust I renamed it with the following 2 commands :
+
+```bash
+conda create --name multi_jupyter --clone cpp_jupyter 
+conda remove --name cpp_jupyter --all
+```
+
+
+
+
+
+## Note about Jupyter components
+* Jupyter : open source project (Julia + Python + R)
+* Jupyter Lab :  (launched with `jupyter lab --no-browser --ip=0.0.0.0` for example)
+* Jupyter Server : the backend, manage the kernels, the notebooks... Used by Jupyter Lab
+    * jupyter lab = jupyter server + frontend (lab typically)
+* Kernels : 
+    * ipykernel for Python
+    * xeus-cling for C++
+    * evcxr_jupyter for Rust
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Obviously, at this stage, Rust kernel is not yet installed but we should be on the same page. If not, **do not read further** until you can get the Jupyter Lab in your browser. Again, feel free to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) 
+
+
+
+
+
+
+
+
+
+
+
+
 ## 1. Install & Check Rust
+
+In the Ubuntu terminal
 
 ```bash
 curl https://sh.rustup.rs -sSf | sh -s -- -y
@@ -89,6 +136,8 @@ cargo --version
 
 ## 2. Install the evcxr_jupyter kernel & Check
 
+In the Ubuntu terminal
+
 ```bash
 cargo install evcxr_jupyter
 evcxr_jupyter --install
@@ -111,6 +160,8 @@ jupyter kernelspec list
 
 ## 3. Run Jupyter Lab 
 
+In the Ubuntu terminal
+
 ```bash
 jupyter lab --no-browser --ip=0.0.0.0
 ```
@@ -119,27 +170,47 @@ jupyter lab --no-browser --ip=0.0.0.0
 <img src="./assets/img_08.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Click the line that says : ` http://127.0.0.1:8888/lab?token=741904a7a2dfdbca843ca947031cd6a4810f02625c41d2fc`
+Click on the line that says : ` http://127.0.0.1:8888/lab?token=741904a7a2dfdbca843ca947031cd6a4810f02625c41d2fc`
 
 
-Tadaa!
+
+
+
+
+
+**Tadaa !**
 
 <div align="center">
 <img src="./assets/img_09.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Let's code
+
+
+
+
+
+
+
+Let's write some code
 
 <div align="center">
 <img src="./assets/img_10.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+
+
+
+
+
+
+
+
+
 ## It works but...
-* Obviously the "Hello world" cell works
-* Regarding the second algorithm
-    * Like in C++, I have to remove the ``main()`` function
-    * It seems that in a Notebook, every cell and every block ('{' ... '}') are compiled separately so even if I know the code was working (on [Compiler Explorer](https://compiler-explorer.com/) for example) I had to add 2 curly brace : one at the top and another at the bottom
-    * I did some testing adding some explicit lifetime in the signature of the `linked_list_midpoint()` function but it did'nt really helped.
+* **TOO BAD**. There is no way to set a breakpoint 😡. This is a problem with the Rust kernel. Indeed with the Python or C++ kernel "Yes we can!". To tell the truth I'm a little bit disappointed.
+* Like in C++, I had to remove the ``main()`` function
+* **IMPORTANT**. It seems that in a Notebook, every cell and every block ('{' ... '}') are compiled separately so even if I know the code was working (on [Compiler Explorer](https://compiler-explorer.com/) for example) I had to add 2 curly brace : one at the top and another at the bottom
+* I did some testing adding some lifetime in the signature of the `linked_list_midpoint()` function but it did'nt really helped.
 
 Here is the original code : 
 
@@ -262,7 +333,7 @@ fn linked_list_midpoint(head: &Option<Box<ListNode>>) -> &ListNode {
     1. Run Ubuntu 
     1. `cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter`
     1. ``jupyter lab --no-browser --ip=0.0.0.0`` 
-* Today I'm still waiting for the book ([The Rust Programming Language](https://www.amazon.fr/gp/product/1718503105)) is here.
+* Today I'm still waiting for the book : [The Rust Programming Language](https://www.amazon.fr/gp/product/1718503105)
 
 <div align="center">
 <img src="./assets/img_11.webp" alt="" width="225" loading="lazy"/>
