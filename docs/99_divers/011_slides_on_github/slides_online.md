@@ -9,6 +9,11 @@ last_modified_date: 2025-03-27 19:00:00
 
 # Publish Slides On GitHub with revealjs
 
+<div align="center">
+<img src="./assets/img_99.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+
 ## 1. Install Node.js & Check
 In an Admin terminal
 
