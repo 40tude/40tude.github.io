@@ -171,7 +171,7 @@ First (for testing purpose) I copy and paste both files (.ipynb and .txt files) 
 <img src="./assets/img_08.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Then I ``File/Shut Down`` Jupyter because this instance is no longer useful.
+Then I ``File/Shut Down`` Jupyter because this instance is no longer useful. There is no need to `CTRL+C` in the terminal.
 
 From the Ubuntu terminal I can access the files on the WIN11 host with :
 ``ls /mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter/dijkstra/``
@@ -181,7 +181,7 @@ From the Ubuntu terminal I can access the files on the WIN11 host with :
 <img src="./assets/img_09.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-So, I move to the directory ``/mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter`` and run Jupyter from there :
+So, I move to the directory ``cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter`` and run Jupyter from there :
 
 <div align="center">
 <img src="./assets/img_10.webp" alt="" width="900" loading="lazy"/>
