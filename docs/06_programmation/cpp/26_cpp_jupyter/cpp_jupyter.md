@@ -11,7 +11,7 @@ last_modified_date: 2025-03-27 11:00:00
 
 I run WIN11 and I want to do some tests in C++ in Jupyter Notebooks. I cannot easily install the ``xeus-cling`` kernel with conda under the WIN11 host because it is based on cling + LLVM blablabla...
 
-I could use a Docker image but here I use WSL
+I could use a Docker image but here I will use WSL
 
 ## 1. Check 
 
@@ -20,12 +20,13 @@ Open a win terminal with Powerhell
 ```powershell
 wsl --list --verbose
 ```
-You should see
+You should see something similar to 
+
 <div align="center">
 <img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-If not activate WSL2 on your WIN11 host (shame on you if it was not yet activated 😁)
+If you don't see Ubuntu, activate WSL2 on your WIN11 host (shame on you if it was not yet activated 😁) and install Ubuntu.
 
 
 
@@ -66,6 +67,10 @@ You can undo this by running `conda init --reverse $SHELL`
 
 
 
+
+
+
+
 ### 4. Check conda 
 
 ```bash
@@ -81,6 +86,15 @@ conda --version
 ```
 
 
+
+
+
+
+
+
+
+
+
 ### 5. Create conda virtual env & install
 
 ```bash
@@ -88,9 +102,19 @@ conda create -n cpp_jupyter -c conda-forge xeus-cling
 conda activate cpp_jupyter
 conda install -c conda-forge jupyterlab
 ```
-For what i can remember
+For what I can remember
 * I used ``conda init`` at one point 
-* I had to restart the terminal 
+* I may have had to restart the terminal 
+
+
+
+
+
+
+
+
+
+
 
 
 ### 6. Run Jupyterlab in Ubuntu
@@ -106,7 +130,7 @@ jupyter lab --no-browser --ip=0.0.0.0
 
 Click on the line that says : `  http://127.0.0.1:8888/lab?token=cdbb449ab8b7f6f01e8cb8c8844cb4347b5c69c63dfe9940`
 
-The browser is opened on the WIN11 host
+The browser should be opened on the WIN11 host
 
 <div align="center">
 <img src="./assets/img_05.webp" alt="" width="900" loading="lazy"/>
@@ -118,9 +142,18 @@ Select C++17 and live your live...
 <img src="./assets/img_06.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-In the notebook above I first make a simple test (Hello...) then run the Dijkstra algorithm (see this [page]({%link docs/06_programmation/cpp/002_dijkstra_en_cpp/dijkstra_en_cpp.md%})). Two points :
+In the notebook above I first make a simple test (Hello...) then run the Dijkstra algorithm (read this [page]({%link docs/06_programmation/cpp/002_dijkstra_en_cpp/dijkstra_en_cpp.md%})). Two points :
 1. There is no ``main()`` function
 1. So far, the notebook and the ``test_dijkstra_03.txt`` file which is opened by the C++ code are both on the Ubuntu host
+
+
+
+
+
+
+
+
+
 
 ## What if...
 
@@ -138,7 +171,7 @@ First (for testing purpose) I copy and paste both files (.ipynb and .txt files) 
 <img src="./assets/img_08.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-I ``File/Shut Down`` Jupyter
+Then I ``File/Shut Down`` Jupyter because this instance is no longer useful.
 
 From the Ubuntu terminal I can access the files on the WIN11 host with :
 ``ls /mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter/dijkstra/``
@@ -148,15 +181,17 @@ From the Ubuntu terminal I can access the files on the WIN11 host with :
 <img src="./assets/img_09.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-So I move to the directory ``/mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter`` and run Jupyter from there
+So, I move to the directory ``/mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter`` and run Jupyter from there :
 
 <div align="center">
 <img src="./assets/img_10.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-This is what I want
+This is exactly exactly what I want :
+
 * On the left hand side I see the directories and below I clicked on ``dijkstra`` to show the files
 * I can edit/copy/debug/create... 
+* Thsi is similar to the Docker experience
 
 <div align="center">
 <img src="./assets/img_11.webp" alt="" width="900" loading="lazy"/>
@@ -164,14 +199,19 @@ This is what I want
 
 
 ### Idea
-* From the home directory on Ubuntu
-* ``code .``
-* Open ``.bashrc`` 
-* Add the line below
-``alias jupytercpp='cd "/mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter" && jupyter lab --no-browser --ip=0.0.0.0'``
-* Save and exit code
+* From the home directory on Ubuntu launch VSCode (``code .``)
+* Open the ``.bashrc`` file 
+* Add the line below 
+    * ``alias jupytercpp='cd "/mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter" && jupyter lab --no-browser --ip=0.0.0.0'``
+* Save and exit from VSCode
 * `source ~/.bashrc`
-* Now I can run Jupyter from the right directory invoking `jupytercpp`
+* Now I can run Jupyter from the right directory by invoking `jupytercpp`
+
+
+
+
+
+
 
 ## Next ?
 * I'm learning learn Rust 
