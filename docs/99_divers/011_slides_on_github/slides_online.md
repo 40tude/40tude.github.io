@@ -149,12 +149,15 @@ The 2 links help me to test the links and the organization of the directories.
 * <a href="{% link slides/presentation_1/docs/slides_01.html %}" target="_blank">Slidedeck 1</a>
 * <a href="{% link slides/presentation_2/docs/slides_02.html %}" target="_blank">Slidedeck 2</a>
 
+<!-- 
+DOES NOT WORK => Liquid Exception = Could not find document 'slides/presentation_1/docs/' in tag 'link'. Make sure the document exists and the path is correct. in docs/99_divers/011_slides_on_github/slides_online.md
+
 ### The links point to the directory NOT the html file 
 
 Double check the link at the bottom of your browser.
 
 * <a href="{% link slides/presentation_1/docs/%}" target="_blank">Slidedeck 1</a>
-* <a href="{% link slides/presentation_2/docs/%}" target="_blank">Slidedeck 2</a>
+* <a href="{% link slides/presentation_2/docs/%}" target="_blank">Slidedeck 2</a> -->
 
 
 ## Notes

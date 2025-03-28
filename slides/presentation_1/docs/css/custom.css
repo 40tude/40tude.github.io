@@ -1,0 +1,21 @@
+/* .two-column {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    border: 2px dashed red;
+}
+
+.two-column>* {
+    flex: 1;
+    margin: 0 1rem;
+} */
+
+
+.flex-columns {
+    display: flex;
+    gap: 2rem;
+}
+
+.flex-columns>.column {
+    flex: 1;
+}
