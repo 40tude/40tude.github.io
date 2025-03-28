@@ -1,0 +1,8 @@
+.flex-columns {
+    display: flex;
+    gap: 2rem;
+}
+
+.flex-columns>.column {
+    flex: 1;
+}
