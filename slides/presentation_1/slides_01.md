@@ -7,7 +7,7 @@ reveal-md slides_01.md --watch
 reveal-md .\slides_01.md --static docs
 -->
 
-
+<link rel="stylesheet" href="css/custom.css">
 
 # Welcome !
 
