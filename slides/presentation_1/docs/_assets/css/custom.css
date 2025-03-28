@@ -6,3 +6,41 @@
 .flex-columns>.column {
     flex: 1;
 }
+
+.reveal pre code {
+    font-size: 0.8em;
+}
+
+/* .reveal .slides section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+} */
+
+.reveal .slides section {
+    display: flex !important;
+    /* force le mode flex malgré les styles Reveal par défaut */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* pour aligner le texte à gauche */
+    height: 100% !important;
+    /* force la hauteur à toute la slide */
+    text-align: left;
+    padding: 1em;
+}
+
+/* .reveal h1,
+.reveal h2,
+.reveal h3 {
+    margin-top: 0 !important;
+} */
+
+.reveal .slides ul,
+.reveal .slides ol {
+    font-size: 0.8em;
+}
