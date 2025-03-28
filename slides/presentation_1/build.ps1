@@ -3,4 +3,4 @@ if (Test-Path -Path './docs') {
 }
 
 reveal-md slides_01.md --static docs
-Copy-Item -Recurse -Force css docs
+# Copy-Item -Recurse -Force css docs
