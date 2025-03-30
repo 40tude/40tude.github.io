@@ -33,7 +33,6 @@ cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter
 conda activate multi_jupyter
 ```
 
-
 * 4 - Launch the Jupyter Lab from Ubuntu terminal
 
 ```bash
@@ -49,11 +48,6 @@ jupyter lab --no-browser --ip=0.0.0.0
 <div align="center">
 <img src="./assets/img_03.webp" alt="" width="900" loading="lazy"/>
 </div>
-
-
-
-
-
 
 
 
@@ -85,27 +79,7 @@ conda remove --name cpp_jupyter --all
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 Obviously, at this stage, Rust kernel is not yet installed but we should be on the same page. If not, **do not read further** until you can get the Jupyter Lab in your browser. Again, feel free to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) 
-
-
-
-
-
-
-
 
 
 
@@ -118,8 +92,6 @@ In the Ubuntu terminal
 ```bash
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 ```
-
-
 
 <div align="center">
 <img src="./assets/img_04.webp" alt="" width="900" loading="lazy"/>
@@ -136,6 +108,9 @@ cargo --version
 <div align="center">
 <img src="./assets/img_05.webp" alt="" width="900" loading="lazy"/>
 </div>
+
+
+
 
 
 ## 2. Install the evcxr_jupyter kernel & Check
@@ -165,6 +140,8 @@ Above I see the Python kernel, 3 C++ kernels and the Rust kernel.
 
 
 
+
+
 ## 3. Run Jupyter Lab 
 
 In the Ubuntu terminal
@@ -181,10 +158,6 @@ Click on the line that says : `http://127.0.0.1:8888/lab?token=741904a7a2dfdbca8
 
 
 
-
-
-
-
 **Tadaa !**
 
 <div align="center">
@@ -193,23 +166,11 @@ Click on the line that says : `http://127.0.0.1:8888/lab?token=741904a7a2dfdbca8
 
 
 
-
-
-
-
-
 Let's write some code
 
 <div align="center">
 <img src="./assets/img_10.webp" alt="" width="900" loading="lazy"/>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -346,6 +307,3 @@ fn linked_list_midpoint(head: &Option<Box<ListNode>>) -> &ListNode {
 <div align="center">
 <img src="./assets/img_11.webp" alt="" width="225" loading="lazy"/>
 </div>
-
-
-
