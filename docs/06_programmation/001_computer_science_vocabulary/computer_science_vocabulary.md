@@ -74,7 +74,7 @@ void main(){
 
 Moyen mnémotechnique en Français : 
 * **A**rguments, **A**ppel de la fonction 
-* **P**aramètres, **P**rotoype de la fonction
+* **P**aramètres, **P**rototype de la fonction
 
 Mnemoni in English
 * **A**rguments are **A**ctuals
@@ -205,6 +205,60 @@ Don't repeat yourself
 
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Function, Method, Procedure
+
+**Function :** Reusable block of code that returns a value.
+
+**Method :** Function associated with an object (or class). It is called via an instance or the class. Acts on the object's internal data or interacts with its attributes.
+
+**Precedure :** Reusable block of code that returns no value (or implicitly returns void or None). Performs an action (e.g. display a message, modify a file, etc.).
+
+```rust
+// Rust sample code
+
+// Function: returns the square of a number
+fn square(x: i32) -> i32 {
+    x * x
+}
+
+// Struct: simple representation of a rectangle
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+// Method: defined on Rectangle, calculates its area
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+// Procedure: prints a greeting message (no return value)
+fn greet(name: &str) {
+    println!("Hello, {}!", name);
+}
+
+fn main() {
+    // Using the function
+    let val = 5;
+    let sq = square(val);
+    println!("The square of {} is {}", val, sq);
+
+    // Using the method
+    let rect = Rectangle { width: 10, height: 5 };
+    println!("The area of the rectangle is {}", rect.area());
+
+    // Using the procedure
+    greet("Philippe");
+}
+
+
+```
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
