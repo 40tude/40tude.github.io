@@ -1214,7 +1214,7 @@ fn mt_build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, heigh
 On voit bien que le code détecte dorénavant les 20 coeurs de ma machine et les timings en mode Debug et Release
 
 <div align="center">
-<img src="./assets/run_09.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+<img src="./assets/run_09.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 Les images elles, restent identiques
@@ -1260,7 +1260,8 @@ crossbeam = "0.8.4"
 
 
 
-Sinon voici la version 10 du code : 
+Sinon voici la version 10 du code.
+
 ```rust
 // main_10
 // the code has been refactored
@@ -1445,8 +1446,89 @@ fn save_image(
 ```
 
 
+### Explications à propos du code
+* Dans la fonction ``main()``
+    * J'utilise ce que j'avais appris précédement pour allouer sur le heap un tableau d'octets qui va contenir l'image traitée. 
+    * Encore une fois,je trouve qu'un tableau fixe exprime mieux qu'un vecteur redimensionnalble ce que représente une image
+
+* Dans la fonction `mt_build_mandelbrot()`
+    * La signature change. En effet elle ne construit plus l'image finale, elle rempli une image pré-allouée.
+    * Comme précédement on détermine le nombre de cores disponibles sur la machine
+    * Ensuite j'essaie d'être un peu malin et j'ajuste la hauteur des bandes pour tenir compte du fait qu'on pourrait avoir une hauteur d'image qui ne soit pas divisible par le nombre de cores. Dans les commentaires j'illustre ce qui se passe si on a H=480 et 7 cores. Pour le coup toutes les bandes (stripes) ont la même hauteur sauf les 4 premières qui ont une ligne de pixel en plus.
+    * La modification la plus importante a lieu ensuite. En effet, même si nous savons qu'il n'y a pas de recouvrement entre les stripes traités par les threads. Autrement dit même si nous nous savons qu'il n'y a pas de risque que 2 threads tentent d'accèder en même temps au même pixel... Le compilateur lui ne le sait pas et comme il est prudent il rejette notre code. Conclusion on ne peut plus utiliser une boucle for dans laquelle on initie des threads.
+    * Nous devons utiliser un scope (qu'on va chercher dans crossbeam, d'où l'obligation de modifier ``Cargo.toml``). De ce que j'ai compris, un scope permet d'aider le compilateur à comprendre notre intention. Typiquement un scope garanti, la main sur le coeur, qu'à la fin du scope tous les thread auront été "joined" et que toutes les variables locales du scope seront bien accessibles. 
+    * Du coup, au lieu de faire une boucle for dans laquelle on spawn des threads
+    * Je créé un scope nommé ``my_scope`` (voir `crossbeam::thread::scope`) dans lequel j'ai une boucle for dans laquelle j'utilise `my_scope` pour y lancer un thread qui va éxécuter la fonction `render_zone()`.
+    * Comme j'étais pas sûr de mon coup, en haut du code source, j'ai bien sûr commenté la ligne `use std::thread;` car je ne l'utilise plus ici. Cela fait, j'ai pas écris `use crossbeam::thread;`. Du coup dans le code cela m'oblige à utiliser le nom complet `crossbeam::thread::scope`.
+    * Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ca en français ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit ce lire `crossbeam::thread::scope(blablabla).unwrap();`   
+
+* Dans la fonction `render_zone()`
+    * Cette fonction remplace l'ancienne `build_mandelbrot` et l'ancienne ``render_stripe()``
+    * La signature a changé car ici aussi la fonction ne retroune plus d'image ou de bande. Elle rempli la zone qu'on lui passe en dernier paramètre
+    * Le reste du code ne change pas
+
+* Dans la fonction `mandelbrot_color()`
+    * Aucun changement
+
+* Dans la fonction ``save_image()``
+    * La signature évolue car au lieu de recevoir un vecteur d'octets, elle recoit un tableau d'octets
+    * L'impact est sur la toute dernière ligne
+
+
+
+Voilà le résultat des courses graphique : aucun changement
+
+<div align="center">
+<img src="./assets/image_rgb_10.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
+
+<div align="center">
+<img src="./assets/image_rgb_mt_10.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
+
+Du point de vue de la console voilà ce que j'observe :
+
+<div align="center">
+<img src="./assets/run_10.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Une mauvaise idée
+
+Bon, ben voilà, c'est une affaire qui roule notre histoire... Ceci dit pour être honnête avant la version précédente et l'utilisationd d'un ``scope`` je pensais benoîtement que je pouvais permettre au code exécuté par les threads de modifier la zone mémoire où se trouve l'image. Encore une fois, je sais que les codes des threads n'accèdent pas aux mêmes pixels, je suis certains qu'il n'y aura pas de problème. 
+
+Du coup, de fil en aiguille, j'ai vérouillé l'accès à la zone de l'image avec un mutex et un Arc. C'est une très mauvaise idée. En effet, c'est hyper scecure mais bon un seul thread à la fois ne peut accèder à la zone mémoire correspondant à l'image. Tout se passe comme si on avait 20 personnes pleine de bonne volonté désireuse de faire la vaisselle mais une seule à la fois ne peut utiliser l'évier. C'est sécure mais contre productif et finalement les performances sont pires qu'en single-threaded. 
+
+<div align="center">
+<img src="./assets/vaisselle.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+
+`save_image()`, `mandelbrot_color()` et ``render_zone()`` sont identiques. Dans le code ci-dessous je ne montre que ``main()`` et ``mt_build_mandelbrot()``
 
 ```rust
 // main_11
@@ -1476,7 +1558,7 @@ fn main() {
 
     let mut image = vec![0u8; (width * height * 3) as usize].into_boxed_slice();
     let start = Instant::now();
-    render_stripe(&from, &to, width, height, &mut image);
+    render_zone(&from, &to, width, height, &mut image);
     let duration = start.elapsed();
     println!("Single-threaded : {} ms.", duration.as_millis());
     save_image("./assets/image_rgb_11.png", &image, width, height).expect("Failed to save image");
@@ -1490,77 +1572,6 @@ fn main() {
         .expect("Failed to save image");
 }
 
-// ----------------------------------------------------------------------------
-// target is supposed to be allocated and filled
-fn render_stripe(
-    from: &Complex<f64>,
-    to: &Complex<f64>,
-    width: u32,
-    height: u32,
-    target: &mut [u8],
-) {
-    let size = to - from;
-    for y in 0..height {
-        for x in 0..width {
-            let c = from
-                + Complex::new(
-                    x as f64 * size.re / width as f64,
-                    y as f64 * size.im / height as f64,
-                );
-            let (r, g, b) = mandelbrot_color(&c);
-            let idx = (y * width + x) as usize * 3;
-            target[idx + 0] = r;
-            target[idx + 1] = g;
-            target[idx + 2] = b;
-        }
-    }
-}
-
-// ----------------------------------------------------------------------------
-fn mandelbrot_color(c: &Complex<f64>) -> (u8, u8, u8) {
-    const ITERATIONS: u32 = 250; //1_000;
-    let mut z = Complex::new(0.0, 0.0);
-    let mut i = 0;
-
-    for t in 0..ITERATIONS {
-        z = z * z + c;
-        if z.norm_sqr() > 4.0 {
-            i = t;
-            break;
-        }
-    }
-
-    if i == 0 {
-        return (0, 0, 0);
-    }
-
-    let zn = z.norm_sqr().sqrt().ln() / 2.0;
-    let smooth_i = (i as f64) + 1.0 - zn.ln() / std::f64::consts::LN_2;
-    let hue = smooth_i * 0.1;
-    let r = (0.5 + 0.5 * (6.2831 * (hue + 0.0)).cos()) * 255.0;
-    let g = (0.5 + 0.5 * (6.2831 * (hue + 0.33)).cos()) * 255.0;
-    let b = (0.5 + 0.5 * (6.2831 * (hue + 0.66)).cos()) * 255.0;
-
-    (r as u8, g as u8, b as u8)
-}
-
-// ----------------------------------------------------------------------------
-fn save_image(
-    filename: &str,
-    data: &[u8],
-    width: u32,
-    height: u32,
-) -> Result<(), png::EncodingError> {
-    let file = File::create(filename).unwrap();
-    let ref mut w = BufWriter::new(file);
-
-    let mut encoder = png::Encoder::new(w, width, height);
-    encoder.set_color(png::ColorType::Rgb);
-    encoder.set_depth(png::BitDepth::Eight);
-
-    let mut writer = encoder.write_header().unwrap();
-    writer.write_image_data(data)
-}
 
 // ----------------------------------------------------------------------------
 // Arc lets us share immutable data between threads, but for mutable data (such as the image to be modified), we need to associate it with a Mutex or RwLock.
@@ -1594,12 +1605,12 @@ fn mt_build_mandelbrot(
             (i + 1) * rows_per_thread
         };
 
-        let buffer = Arc::clone(&buffer);
+        let buffer_clone = Arc::clone(&buffer);
         let from = *from;
         let to = *to;
 
         let handle = thread::spawn(move || {
-            let mut guard = buffer.lock().unwrap();
+            let mut guard = buffer_clone.lock().unwrap();
             let slice = &mut guard[..];
             let size = to - from;
 
@@ -1632,10 +1643,33 @@ fn mt_build_mandelbrot(
         .into_inner()
         .expect("Mutex poisoned")
 }
-
-
 ```
 
+### Explications à propos du code
+
+Au tout début du code il faut remarquer qu'il n'y a pas de ``use crossbeam::thread;``. En effet, je n'utilise pas de `scope`, je veux juste utiliser des threads "normaux" pour aller modifier une zone mémoire. 
+
+Dans la fonction ``main()``. 
+* On voit que je me cherche encore un peu. En effet, je créé une ``image`` en mémoire puis j'appelle `render_zone(..., &mut image);`
+* Ensuite, je crée `image_mt` mais j'ai une ligne du style `let image_mt = mt_build_mandelbrot(..., image_mt);`
+* C'est pas très homogène tout ça... Allez, on passe à la suite, je fixerai ça plus tard.
+
+Dans la fonction ``mt_build_mandelbrot()``
+* Je détermine le nombre de threads et je ne cherche pas à gérer les cas où le nombre de lignes n'est pas divisible par le nombre de cores
+* Je protège l'accès à l'image avec un Mutex. C'est bien mais ce n'est pas suffisant. 
+* En effet, on ne pas utiliser directement un mutex depuis un thread. C'est pour cela que j'utilise un Arc (atomic refence counted). 
+* Et c'est cette dernière qu'on va pouvoir utiliser pour accèder, depuis les threads, au mutex puis à la zone mémoire
+* Le mutex c'est le garant de l'accès exclusif à la ressource, l'Arc<Mutex<T>> partage la propriété du mutex entre threads 
+* On prépare un vecteur `handles` pour stocker les identifiants des threads qu'on va lancer
+* Ensuite on a une boucle for dans laquelle en gros
+    * En fonction de l'indice on détermine les y_start et y_end
+    * On clone le pointeur Arc ``&buffer``
+    * Enfin on spawn le thread
+        * Il faut bien voir que dans ce dernier on peut alors utiliser `buffer_clone` pour accéder à la ressource
+    * Ensuite, c'est pas une bonne idée mais je fais l'équivalent de ``render_zone()``. 
+* On stocke le handle du thread dans le vecteur ``handles``    
+
+Ca pourrait être simplifié mais, aux vues des performances, j'ai pas continué dans cette voie et j'ai utilisé les scopes qu'on a vu dans le version 10 du code. 
 
 
 
@@ -1661,13 +1695,6 @@ fn mt_build_mandelbrot(
 
 
 
-<div align="center">
-<img src="./assets/image_rgb_10.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
-</div>
-
-<div align="center">
-<img src="./assets/image_rgb_mt_10.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
-</div>
 
 
 
@@ -1677,6 +1704,7 @@ fn mt_build_mandelbrot(
 
 
 
+Les images générées :
 
 <div align="center">
 <img src="./assets/image_rgb_11.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
@@ -1684,4 +1712,11 @@ fn mt_build_mandelbrot(
 
 <div align="center">
 <img src="./assets/image_rgb_mt_11.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
+
+
+Du point de vue de la console voilà ce que j'observe :
+
+<div align="center">
+<img src="./assets/run_11.webp" alt="" width="900" loading="lazy"/>
 </div>
