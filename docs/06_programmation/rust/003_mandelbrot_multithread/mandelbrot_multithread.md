@@ -22,7 +22,7 @@ En 2025 j'ai décidé d'apprendre Rust.
 <img src="./assets/img_00.webp" alt="Rust Logo" width="225" loading="lazy"/>
 </div>
 
-Tu trouveras ci-dessous les différentes étapes d'un de mes tout premiers test. Je n'avais pas encore lu **THE** livre, je veux parler de [The Rust Programming Language](https://www.amazon.fr/dp/1718503105?ref=ppx_yo2ov_dt_b_fed_asin_title).
+Tu trouveras ci-dessous les différentes étapes de l'un de mes tout premiers test. Je n'avais pas encore lu **THE** livre, je veux parler de [The Rust Programming Language](https://www.amazon.fr/dp/1718503105?ref=ppx_yo2ov_dt_b_fed_asin_title).
 
 <div align="center">
 <img src="./assets/TRPL.webp" alt="The Rust Programming Language" width="450" loading="lazy"/>
@@ -30,7 +30,7 @@ Tu trouveras ci-dessous les différentes étapes d'un de mes tout premiers test.
 
 **TRPL** est [disponible en ligne](https://doc.rust-lang.org/book/title-page.html).
 
-J'ai passé pas mal de temps sur YouTube et je suis tombé sur la vidéo ci-dessous dans laquelle le développeur montre comment il incorpore une lib PNG pour sauver l'image image d'[un ensemble de Mandelbrot](https://fr.wikipedia.org/wiki/Ensemble_de_Mandelbrot). 
+J'ai passé pas mal de temps sur YouTube et je suis tombé sur la vidéo ci-dessous dans laquelle le développeur montre comment il incorpore une lib PNG pour sauver l'image d'[un ensemble de Mandelbrot](https://fr.wikipedia.org/wiki/Ensemble_de_Mandelbrot) dans un fichier. 
 
 Je te propose de regarder l'extrait en question puis de revenir ici.
 
@@ -38,11 +38,11 @@ Je te propose de regarder l'extrait en question puis de revenir ici.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/k7nAtrwPhR8?si=Q4C6-UgT5lTvJLwP&amp;start=3130" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-De mon point de vue, c'est une bonne idée de projet. En effetn ce n'est pas très compliqué mais surtout ça permet de "voir" un résultat. En tout cas c'est plus excitant que d'afficher du texte dans une console. Bon allez c'est parti...
+De mon point de vue, c'est une bonne idée de projet. En effet, ce n'est pas très compliqué mais surtout ça permet de "voir" un résultat. En tout cas c'est plus excitant que d'afficher du texte dans une console. Bon allez c'est parti...
 
 
 ## Prérequis
-Oui, oui c'est parti... Mais, bon, tout le monde le sait, avant de partir, il faudra bien se couvrir... Bref :
+Oui, oui c'est parti... Mais, bon, tout le monde le sait, avant de partir, il faudra bien se couvrir 🎼... Bref :
 
 * Rust est installé 
     * Quelque soit l'OS, la procédure est simple et [détaillée ici](https://doc.rust-lang.org/book/ch01-01-installation.html#installing-rustup-on-windows)
@@ -56,14 +56,14 @@ Oui, oui c'est parti... Mais, bon, tout le monde le sait, avant de partir, il fa
 * L'ensemble du projet est disponible sur [GitHub](https://github.com/40tude/rust_mandelbrot) 
 * Il y a 12 versions du code 
 * Dans le projet il faut renommer ``main.rs`` la version qu'on souhaite lancer
-* Dans l'image ci-dessous on voit les différentes versions de ``main.rs`` (de ``main_00.rs`` à ``main_11.rs``) 
-* En haut du code source ouvert, on voit que le fichier "actif" `main.rs` s'appelle normalement `main_00.rs`
+* Dans l'image ci-dessous (clique sur l'image pour l'agrandir si besoin), sur la gauche, on voit les différentes versions de ``main.rs`` (de ``main_00.rs`` à ``main_11.rs``) 
+* En haut du code source ouvert, on lit que le fichier "actif" `main.rs` s'appelle normalement `main_00.rs` Ca peut aider en cas de poliotage et oui ça sent le vécu.
 
 <div align="center">
 <img src="./assets/vscode.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-* Dans chaque code source il y a, en haut un récapitulatif des principales modifications
+* Dans chaque code source il y a, en haut, un récapitulatif des principales modifications
 * Dans le code, d'une version à l'autre, j'ai pris soin de ne garder que les nouveaux commentaires. Ils sont en Anglais mais bon ça devrait bien se passer. 
 * Ne garder que les derniers commentaires permet de focaliser sur les changements
 * Quand il y a des modifications dans le code :
@@ -209,23 +209,26 @@ fn save_image(
 ```
 
 ### Explications à propos du code
-* Dans la fonction ``main()`` 
-    * On défini les points en bas à gauche et en haut à droite qui définissent, dans l'espace complexe, le rectangle à traiter
-    * On fixe les dimensions de l'image à 640 par 480
-    * On invoque la fonction ``build_mandelbrot()`` en lui passant les rectangles dans les espaces des complexes et des pixels
-    * On sauve l'image `image_00.png` dans le répertoire ``./assets``
-* Dans la fonction ``build_mandelbrot()`` 
-    * On parcourt l'ensemble des pixels de l'image. 
-    * On fait correspondre à chaque pixel un point de l'espace complexe
-    * Une fois qu'on a le point complexe, on appelle ``mandelbrot_color()``
-    * On récupère une couleur pour sauve dans l'image (qui est un vecteur qui comprend width*height pixels) 
-    * On retourne l'image
-* Dans la fonction ``mandelbrot_color()``
-    * On applique s'implement la règle de détermination de la couleur
-    * Par contre, contrairement à ce qui est montré dans la vidéo, ce code génère une image en noir et blanc (voir la valeur retournée à la dernière ligne)
-* Dans la fonction `save_image()`
-    * On ouvre un fichier, on crée un buffer en écriture ainsi qu'un encoder PNG dont on fixe le jeu de couleur et la profondeur (8 bits)
-    * Finalement l'encodeur écrit l'en-tête du fichier PNG et les données de l'image
+Dans la fonction ``main()`` 
+* On définit les points en bas à gauche et en haut à droite qui déterminent, dans l'espace complexe, le rectangle à traiter
+* On fixe les dimensions de l'image à 640 par 480 pixels
+* On invoque la fonction ``build_mandelbrot()`` en lui passant les rectangles dans les espaces des complexes et des pixels
+* On sauve l'image `image_00.png` dans le répertoire ``./assets``
+
+Dans la fonction ``build_mandelbrot()`` 
+* On parcourt l'ensemble des pixels de l'image. 
+* On fait correspondre à chaque pixel un point de l'espace complexe
+* Une fois qu'on a le point complexe, on appelle ``mandelbrot_color()``
+* On récupère une couleur qu'on sauve dans l'image (qui est un vecteur qui comprend ``width*height`` pixels) 
+* On retourne l'image
+
+Dans la fonction ``mandelbrot_color()``
+* On applique s'implement la règle de détermination de la couleur
+* Par contre, contrairement à ce qui est montré dans la vidéo, ce code génère une image en noir et blanc (voir la valeur retournée à la dernière ligne)
+
+Dans la fonction `save_image()`
+* On ouvre un fichier, on crée un buffer en écriture ainsi qu'un encoder PNG dont on fixe le jeu de couleurs et la profondeur (8 bits)
+* Finalement l'encodeur écrit l'en-tête du fichier PNG et les données de l'image
 
 ### Lancer le code
 * Suffit d'ouvrir un terminal (CTRL + ù)
@@ -288,10 +291,10 @@ Ensuite tu pose un point d'arrêt sur une des lignes et enfin tu appuies sur F5.
 
 
 ### Remarques
-* Il est très important d'arriver aux résultats précédents et de mon point de vue, ce n'est pas la peine d'aller plus loin sinon.
+* Il est important d'arriver aux résultats précédents (code qui tourne + debug) et de mon point de vue, ce n'est pas la peine d'aller plus loin sinon.
 * En effet on est sûr que notre setup est en place et qu'on a une bonne base de départ.
 * La suite du programme 
-    1. Utiliser les bibliothèques png et num-complex dans leur dernières versions respectives
+    1. Utiliser les bibliothèques ``png`` et ``num-complex`` dans leur dernières versions respectives
     1. Générer des images en couleurs
     1. Générer des images en couleurs pas trop moches
     1. Mettre en place ce qu'il faut pour mesurer le temps
@@ -307,7 +310,7 @@ Dans mon cas, l'étape précédente ne c'est pas bien passée. J'ai installé le
 OK c'est bien mais bon autant modifier le code pour utiliser les versions courantes. Je te propose de 
 1. Renommer le fichier main.rs en main_00.rs
 1. Renommer le fichier main_01.rs en main.rs
-1. D'utiliser c'est nouvelle version du fichier ``Cargo.toml``
+1. D'utiliser cette nouvelle version du fichier ``Cargo.toml``
 
 ```
 [package]
@@ -326,7 +329,7 @@ png = "0.17.16"
 # crossbeam = "0.8.4"
 ```
 
-4. De relancer le code avec un `cargo run`. Voilà ce que je vois dans mon terminal sous VSCode.
+Enfin tu peux relancer le code avec un `cargo run`. Voilà ce que je vois alors dans mon terminal sous VSCode.
 
 <div align="center">
 <img src="./assets/run_01.webp" alt="" width="900" loading="lazy"/>
@@ -435,11 +438,11 @@ fn save_image(
 * Dans ``build_mandelbrot()`` 
     * Je remplace 2 lignes de code par une ligne `Vec::with_capacity` 
     * J'ajoute des sorties `dbg!(image.len(), image.capacity());` pour vérifier comment cela se passe au niveau de l'utilisation de l'espace réservé
-* Dans `save_image()` j'utilise la nouvelle API pour paramétrer l'encoder
+* Dans `save_image()` j'utilise la nouvelle API pour paramétrer l'encodeur PNG
     
 
-
 Voici la nouvelle image toujours aussi moche
+
 <div align="center">
 <img src="./assets/image_01.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
 </div>
@@ -461,7 +464,7 @@ Voici la nouvelle image toujours aussi moche
 
 
 
-## First image in color
+## Première image en couleur
 
 On va maintenant modifier le code pour sauver l'image en couleur. T'excites pas trop ça va pas te plaire du tout. Voici le code modifié :
 
@@ -560,15 +563,18 @@ fn save_image(
 }
 ```
 ### Explications à propos du code
-* Dans ``build_mandelbrot()`` 
-    * il faut une image 3 fois plus grande car chaque pixel va être encodé sur 3 octets (au lieu de 1 jusqu'à présent)
-    * au retour de la fonction ``mandelbrot_color()`` on a dorénavant 3 composantes ``r``, ``g`` et ``b`` et plus une unique couleur `color`
-    * bien sûr on passe de 1 push à 3 push 
-* Dans ``mandelbrot_color()`` 
-    * comme j'ai pas d'idée et que je veux faire simple
-    * je ne joue que sur la composante bleue 
-    * je fais une règle de 3 pour ramener l'indice i entre 0 et 255
-* Dans `save_image()` on indique juste à l'encoder qu'on travaille dorénavant ne Rgb et plus en Grayscale
+
+Dans ``build_mandelbrot()`` 
+* il faut une image 3 fois plus grande car chaque pixel va être encodé sur 3 octets (au lieu de 1 jusqu'à présent)
+* au retour de la fonction ``mandelbrot_color()`` on a dorénavant 3 composantes ``r``, ``g`` et ``b`` et plus une unique couleur `color`
+* bien sûr on passe de 1 push à 3 push 
+
+Dans ``mandelbrot_color()`` 
+* comme j'ai pas d'idée et que je veux faire simple
+* je ne joue que sur la composante bleue 
+* je fais une règle de 3 pour ramener l'indice i entre 0 et 255
+
+Dans `save_image()` on indique juste à l'encoder qu'on travaille dorénavant ne Rgb et plus en Grayscale
 
 Comment te dire... C'est très moche. La première image est en couleur, on voit quelques pixels en plus mais c'est franchement pas ouf. Dans la seconde, j'ai juste fais un zoom avec Paint.NET sur une partie de la première.
 
@@ -695,24 +701,24 @@ fn save_image(
 ```
 
 ### Explications à propos du code
-* Dans la fonction mandelbrot_color()
-    * Je joue juste sur la palette 
+Dans la fonction ``mandelbrot_color()``
+* Je joue juste sur la palette 
 
 Voici les différentes versions des images générées
 
-Version 03 : C'est l'inverse de la précédente. Pas top.
+**Version 03** : C'est l'inverse de la précédente. Pas top.
 
 <div align="center">
 <img src="./assets/image_rgb_03.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
 </div>
 
-Version 04 : Y a du mieux, il y a différentes couleurs mais bon c'est limité à la bordure.
+**Version 04** : Y a du mieux, il y a différentes couleurs mais bon c'est limité à la bordure.
 
 <div align="center">
 <img src="./assets/image_rgb_04.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
 </div>
 
-Version 05 : C'est la bonne. On la garde. Si t'es pas content, fais moi un procès...
+**Version 05** : C'est la bonne. On la garde. Si t'es pas content, fais moi un procès...
 
 <div align="center">
 <img src="./assets/image_rgb_05.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
@@ -731,8 +737,7 @@ Version 05 : C'est la bonne. On la garde. Si t'es pas content, fais moi un proc�
 
 ## Mise en place d'un benchmarking
 
-Avec tout ça on a toujours pas commencé à parler de multithread mais bon on y arrive... Et afin de pouvoir comparer les gains de temps, on va mettre en place une mesure du temps que prend la fonction ``build_mandelbrot()``.
-
+Avec tout ça on a toujours pas commencé à parler de multithreading mais bon on y arrive... Et afin de pouvoir comparer les gains de performances, on va mettre en place une mesure du temps que prend la fonction ``build_mandelbrot()``. La fonction ``main()`` est la seul impactée. Ci-dessous je ne montre que sont code.
 
 ```rust
 
@@ -769,85 +774,14 @@ fn main() {
     save_image("./assets/image_rgb_06.png", &image, width, height).expect("Failed to save image");
 }
 
-// ----------------------------------------------------------------------------
-fn build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32) -> Vec<u8> {
-    let mut image: Vec<u8> = Vec::with_capacity((width * height * 3) as usize);
-    dbg!(image.len(), image.capacity());
-
-    let size = to - from;
-
-    for y in 0..height {
-        for x in 0..width {
-            let c = from
-                + Complex::new(
-                    x as f64 * size.re / width as f64,
-                    y as f64 * size.im / height as f64,
-                );
-            let (r, g, b) = mandelbrot_color(&c);
-            image.push(r);
-            image.push(g);
-            image.push(b);
-        }
-    }
-    dbg!(image.len(), image.capacity());
-    image
-}
-
-// ----------------------------------------------------------------------------
-fn mandelbrot_color(c: &Complex<f64>) -> (u8, u8, u8) {
-    const ITERATIONS: u32 = 500;
-    let mut z = Complex::new(0.0, 0.0);
-    let mut i = 0;
-
-    for t in 0..ITERATIONS {
-        z = z * z + c;
-        if z.norm_sqr() > 4.0 {
-            i = t;
-            break;
-        }
-    }
-
-    if i == 0 {
-        return (0, 0, 0);
-    }
-
-    let zn = z.norm_sqr().sqrt().ln() / 2.0;
-    let smooth_i = (i as f64) + 1.0 - zn.ln() / std::f64::consts::LN_2;
-
-    let hue = smooth_i * 0.1;
-    let r = (0.5 + 0.5 * (6.2831 * (hue + 0.0)).cos()) * 255.0;
-    let g = (0.5 + 0.5 * (6.2831 * (hue + 0.33)).cos()) * 255.0;
-    let b = (0.5 + 0.5 * (6.2831 * (hue + 0.66)).cos()) * 255.0;
-
-    (r as u8, g as u8, b as u8)
-}
-
-// ----------------------------------------------------------------------------
-fn save_image(
-    filename: &str,
-    data: &Vec<u8>,
-    width: u32,
-    height: u32,
-) -> Result<(), png::EncodingError> {
-    let file = File::create(filename).unwrap();
-    let ref mut w = BufWriter::new(file);
-
-    let mut encoder = png::Encoder::new(w, width, height);
-    encoder.set_color(png::ColorType::Rgb);
-    encoder.set_depth(png::BitDepth::Eight);
-
-    let mut writer = encoder.write_header().unwrap();
-    writer.write_image_data(data.as_slice())
-}
-
-
 ```
 
 ### Explications à propos du code
-Seule la fonction ``main()`` est impactée.
-* J'encadre juste la fonction ``build_mandelbrot()`` avec 2 mesures du temps avant d'en afficher la différence en millisecondes.
-* À ce stade, en mode Debug (cargo run) on est à 937 ms et en mode Release (cargo run --release) on est à 113 ms. Pas mal, pas mal.
-* Sinon, j'en profite aussi pour régler un détail de correspondance de ratio entre les espaces des complexe et des pixels
+
+Dans la fonction ``main()``
+* J'encadre juste l'appel à la fonction ``build_mandelbrot()`` avec 2 mesures du temps avant d'en afficher la différence en millisecondes.
+* À ce stade, en mode Debug (``cargo run``) on est à 937 ms et en mode Release (``cargo run --release``) on est à 113 ms. Pas mal, pas mal.
+* Sinon, j'en profite aussi pour régler un détail de correspondance de ratio entre les espaces des complexes et des pixels
 * En gros au tout début de la fonction ``main()`` j'explique que que j'ajuste les coordonnées des points ``from`` et ``to`` pour que les rectangles dans l'espace complexe ait lui aussi un ratio de 1.33 comme dans l'image 640x480.
 
 Ci-dessous l'image obtenue. On remarque que l'ensemble de Mandelbrot a "reculé" un peu. 
@@ -877,9 +811,7 @@ Surtout, dorénavant, au niveau de la console, on affiche combien de temps il fa
 
 ## Première version multithreaded
 
-Afin d'alléger la portion de code remarquons que le fonctions ``save_image()``, ``mandelbrot_color()`` et bien sûr ``build_mandelbrot()``. Je les fait disparaître du code source ci-dessous.
-
-
+Les fonctions ``save_image()``, ``mandelbrot_color()`` et ``build_mandelbrot()`` ne changent pas. Je ne les fait apparaître dans le code source ci-dessous.
 
 ```rust
 // main_07
@@ -1001,42 +933,43 @@ fn render_stripe(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32
 ```
 
 ### Explications à propos du code
-Là, il y a du lourd en termes de changements et on va, enfin, rentrer dans le vif du sujet....
 
-* Dans la fonction ``main()``
-    * J'ai fait un copier coller des lignes autour de ``build_mandelbrot()`` (version single-threaded) mais j'appelle ``mt_build_mandelbrot()`` (version multithreaded)
-    * Je sauve 2 versions de l'image et j'affiche les temps de calcul respectifs
+Il y a du lourd en termes de changements et on va, enfin, rentrer dans le vif du sujet....
 
-* Dans la fonction `mt_build_mandelbrot()`
-    * C'est la version multithreaded de `build_mandelbrot()`
-    * L'idée, c'est de diviser l'espace des complexes à traiter en 4 bandes (stripes) horizontales puis une fois qu'elles ont été traitées, de les joindre en une seule image et de retourner cette dernière
-    * En faisant ainsi 
-        * on se simplifie la vie car il n'y a pas d'accès concurrent à une ressource (chaque thread vie sa vie, construit sa bande de pixels dans son coin)
-        * L'inconvénient c'est qu'à la fin il va falloir collecter les bandes et les joindre pour construire l'image finale
-    * Au début de la fonction, je fixe arbitrairement le nombre de threads à 4 (on verra plus tard si on peut faire mieux)
-    * On détermine donc la hauteur de chaque bande (480/4 par exemple) et la largeur (la même que celle de l'image finale, 640)
-    * On va créer 4 threads qui vont chacun s’occuper, en parallèle, d'une bande particulière     
-        * Chaque thread est repéré par un N° (un handle) qu'on va stocker dans un vecteur ``handles``
-        * On rentre ensuite dans une boucle for dans laquelle à chaque tour
-            * on calcule les coordonnées des points complexe bas, gauche et et haut droit qui déterminent la bande
-            * on lance un thread (spawn) dans lequel on va executer la fonction ``render_stripe()``
-            * **BIEN VOIR** qu'il n'y a pas de `;` à la fin de la ligne ``render_stripe()``. Cela veut dire que ce qui est retourné par le thread c'est le résultat de la fonction ``render_stripe()``. Autrement dit une stripe. 
-            * on met de côté l'identifiant du thread. **BIEN VOIR** que les threads sont rangé dans un certain ordre. Le premier s'occupe de la bande du base, les autres des bandes au dessus. Ca va avoir son importance au moment de la récupération des différentes bandes de pixels.
-    * Après la boucle, on prépare un vecteur dans lequel on va mettre les bandes de pixels qui auront été colorisées par les threads
-    * Via une nouvelle boucle for
-        * on attend que chaque thread se termine (join)
-        * **BIEN VOIR** que la boucle for parcourt le vecteur `handles` dans l'ordre
-        * on récupère et on stocke dans le vecteur ``stripes`` les bandes, dans l'ordre. De la plus basse à la plus haute
-         
-    * Quand on a récupéré les bandes, il ne reste plus qu'à les "coudre" pour former une seule image
-        * On commence par réserver de la place pour l'image finale (``final_img``)
-        * Ensuite avec une boucle for on itère le vecteur ``stripes`` et on récupère un indice et une bande
-        * Là, on fait un petit calcul pour convertir, en fonction de l'indice de la bande (0..3) l'indice à partir duquel, dans l'image finale, il va falloir copier les composantes RGB dans la bande. 
-    * À la fin, on retourne l'image reconstituée. On a le droit de le faire car un vecteur est alloué sur le heap (et pas sur la stack)
+Dans la fonction ``main()``
+* Je fait un copier coller des lignes autour de ``build_mandelbrot()`` (version single-threaded) mais j'appelle ``mt_build_mandelbrot()`` (version multithreaded)
+* Je sauve 2 versions de l'image et j'affiche les temps de calcul respectifs
 
-* Dans la fonction ``render_stripe()``
-    * À ce stade, c'est en fait une copie de la fonction ``build_mandelbrot()``
-    * Il y a quand même un truc... Dans la fonction ``render_stripe()`` il y a un appel à la fonction ``mandelbrot_color()`` et on peut légitimement se demander si on ne va pas avoir de problème si plusieurs threads, appellent en même temps la même fonction. En fait ``mandelbrot_color()`` est une fonction pure (ou sans état). Elle ne conserve aucun état interne, ne modifie aucune variable globale et n'a aucun effet secondaire. Elle ne lit ni n'écrit de fichiers, ni n'effectue d'entrées-sorties...Il n'y a donc aucun problème si plusieurs threads l'appellent en même temps. En effet, chaque thread fournit ses propres paramètres, dispose de son propre contexte d'exécution et de sa propre pile (c'est le point clé ici). 
+Dans la fonction `mt_build_mandelbrot()`
+* C'est la version multithreaded de `build_mandelbrot()`
+* L'idée, c'est de diviser l'espace des complexes à traiter en 4 bandes horizontales (stripes) puis une fois qu'elles ont été traitées, de les joindre en une seule image et de retourner cette dernière
+* En faisant ainsi :
+    * on se simplifie la vie car il n'y a pas d'accès concurrent à une ressource partagée (chaque thread vie sa vie, construit sa bande de pixels dans son coin)
+    * L'inconvénient c'est qu'à la fin il va falloir collecter les bandes et les joindre pour construire l'image finale
+* Au début de la fonction, je fixe arbitrairement le nombre de threads à 4 (on verra plus tard si on peut faire mieux)
+* Je détermine donc la hauteur de chaque bande (480/4 par exemple) et la largeur (la même que celle de l'image finale, 640)
+* On va créer 4 threads qui vont chacun s’occuper, en parallèle, d'une bande particulière     
+    * Chaque thread est repéré par un N° (un handle) qu'on va stocker dans un vecteur ``handles``
+    * On rentre ensuite dans une boucle ``for`` dans laquelle à chaque tour :
+        * on calcule les coordonnées des points complexe en bas à gauche et en haut à droite qui déterminent la bande
+        * on lance un thread (spawn) dans lequel on va executer la fonction ``render_stripe()``
+        * **BIEN VOIR** qu'il n'y a pas de `;` à la fin de la ligne ``render_stripe()``. Cela veut dire que ce qui est retourné par le thread c'est le résultat de la fonction ``render_stripe()``. Autrement dit une stripe. 
+        * on met de côté l'identifiant du thread. 
+        * **BIEN VOIR** que les threads sont rangé dans un certain ordre. Le premier s'occupe de la bande du bas, les autres des bandes au dessus. Ca va avoir son importance au moment de la récupération des différentes bandes de pixels.
+* Après la boucle, on prépare un vecteur dans lequel on va mettre les bandes de pixels qui auront été colorisées par les threads
+* Via une nouvelle boucle ``for``
+    * on attend que chaque thread se termine (join)
+    * **BIEN VOIR** que la boucle ``for`` parcourt le vecteur `handles` dans l'ordre
+    * on récupère et on stocke dans le vecteur ``stripes`` les bandes, dans l'ordre. De la plus basse à la plus haute.
+* Quand on a récupéré les bandes, il ne reste plus qu'à les "coudre" pour former une seule image
+    * On commence par réserver de la place pour l'image finale (``final_img``)
+    * Ensuite avec une boucle ``for`` on itère le vecteur ``stripes`` et on récupère un indice et une bande
+    * Là, on fait un petit calcul pour convertir, en fonction de l'indice de la bande (0..3) l'indice à partir duquel, dans l'image finale, il va falloir copier les composantes RGB dans la bande. 
+* À la fin, on retourne l'image reconstituée. On a le droit de le faire car un vecteur est alloué sur le heap (et pas sur la stack)
+
+Dans la fonction ``render_stripe()``
+* À ce stade, c'est en fait une copie de la fonction ``build_mandelbrot()``
+* Il y a quand même un truc... Dans la fonction ``render_stripe()`` il y a un appel à la fonction ``mandelbrot_color()`` et on peut se demander si on ne va pas avoir de problème si plusieurs threads, appellent en même temps la même fonction. En fait ``mandelbrot_color()`` est une fonction pure (ou sans état). Elle ne conserve aucun état interne, ne modifie aucune variable globale et n'a aucun effet secondaire. Elle ne lit ni n'écrit de fichiers, ni n'effectue d'entrées-sorties...Il n'y a donc aucun problème si plusieurs threads l'appellent en même temps. En effet, chaque thread fournit ses propres paramètres, dispose de son propre contexte d'exécution et de sa propre pile (c'est le point clé ici). 
 
 
 Voilà les images que j'obtiens avec en premier la version single-threaded et ensuite la version multithreaded. C'est rassurant, elles semblent identiques...
@@ -1078,9 +1011,9 @@ Au niveau des performances, voilà ce que j'observe
 
 
 
-## Utilisation d'un tableau dans render_stripe()
+## Utilisation d'un tableau pour stocker l'image
 
-Dans cette version je ne modifie que la fonction `render_stripe()`. L'idée c'est que de mon point de vue une bande (stripe) c'est pas un vecteur susceptible de voir sa taille changer mais bien un tableau de taille fixe. En plus, je voulais voir comment allouer un tableau sur le tas (heap) alors que par défaut ils sont sur la pile (stack). Du coup ci-dessous je ne montre que le code de `render_stripe()`.   
+Dans cette version je ne modifie que la fonction `render_stripe()`. De mon point de vue, une bande (stripe) c'est pas un vecteur susceptible de voir sa taille changer mais bien un tableau de taille fixe. En plus, je voulais voir comment allouer un tableau sur le tas (heap) alors que par défaut ils sont sur la pile (stack). Du coup ci-dessous je ne montre que le code de `render_stripe()`.   
 
 ```rust
 // main_08
@@ -1124,9 +1057,9 @@ fn render_stripe(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32
 ```
 
 ### Explications à propos du code
-* Dans la fonction ``render_stripe()``
-    * Sa signature a changée, elle retourne un pointeur sur une zone d'octets (voir le `-> Box<[u8]>`)
-    * Sinon la seule modification concerne l'allocation de la zone mémoire pour ``image``. En gros on commence par allouer un vecteur puis on demande un pointeur sur la partie data du vecteur en question (on perd donc au passage les informations de capacité et d'occupation qui sont spécifiques aux vecteurs)
+Dans la fonction ``render_stripe()``
+* Sa signature a changée, elle retourne un pointeur sur une zone d'octets (voir le `-> Box<[u8]>`)
+* Sinon la seule modification concerne l'allocation de la zone mémoire pour ``image``. En gros on commence par allouer un vecteur puis on demande un pointeur sur la partie data du vecteur en question (on perd donc au passage les informations de capacité et d'occupation qui sont spécifiques aux vecteurs)
 
 Il n'y a aucun changement que ce soit au niveau visuel ou du timing
 
@@ -1150,7 +1083,7 @@ Il n'y a aucun changement que ce soit au niveau visuel ou du timing
 
 ## Detection du nombre de Cores disponibles
 
-Dans cette nouvelle version, je cherche à adapter le nombre de threads au nombre de cores disponibles sur la machine.
+Dans cette nouvelle version, je cherche à adapter le nombre de threads au nombre de cores disponibles sur la machine et `mt_build_mandelbrot()` est la seule fonction impactée.
 
 ```rust
 // main_09
@@ -1207,11 +1140,12 @@ fn mt_build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, heigh
 
 ```
 ### Explications à propos du code
-* Dans la fonction ``mt_build_mandelbrot()`` j'utilise `std::thread::available_parallelism()` pour ajuster la valeur de ``nthreads``
-* Histoire de ma rassurer j'affiche le nombre de coeurs toruvés.
+Dans la fonction ``mt_build_mandelbrot()`` 
+* j'utilise `std::thread::available_parallelism()` pour ajuster la valeur de ``nthreads``
+* Histoire de me rassurer j'affiche le nombre de coeurs trouvés.
 
 
-On voit bien que le code détecte dorénavant les 20 coeurs de ma machine et les timings en mode Debug et Release
+On voit bien que le code détecte dorénavant les 20 coeurs de ma machine. Pour le reste on a de nouveaux timings en mode Debug et Release.
 
 <div align="center">
 <img src="./assets/run_09.webp" alt="" width="900" loading="lazy"/>
@@ -1231,11 +1165,11 @@ Les images elles, restent identiques
 
 ## Refactorisation du code
 
-Je l'ai dit un peu plus haut le code des fonctions ``build_mandelbrot()`` (version single-threaded) et `render_stripe()` sont identiques donc, autant les factoriser. C'est normal car dans un cas comme dans l'autre, elles ne font que traiter une zone de l'espace complexe pour y appliquer exactement le même traitement. Dans un cas on traite l'ensemble de la surface correspondant à toute l'image, alors que dans l'autre on traite une bande plus ou moins haute (en fonction du nombre de threads).
+Je l'ai dit un peu plus haut le code des fonctions ``build_mandelbrot()`` (version single-threaded) et `render_stripe()` sont identiques donc, autant les factoriser. En fait l'une comme l'autre ne font que traiter une zone de l'espace complexe pour y appliquer exactement le même traitement. Dans un cas on traite l'ensemble de la surface correspondant à toute l'image, alors que dans l'autre on traite une bande plus ou moins haute (en fonction du nombre de threads).
 
-De plus, jusqu'à présent, chaque thread créait sa bande qu'il fallait joindre aux autres pour constituer l'image finale. Ici on va supprimer la séance de couture en allouant une image dès le départ et en indiquant à chaque thread la zone de l'image qu'il doit traiter. Il n'y a pas de problème de recouvrement. Chaque thread va travailler sur une partie spécifique de l'image. Typiquement, on est dans le potager, je bêche le fond alors que tu retourne le début.
+De plus, jusqu'à présent, chaque thread créait une bande de pixel qu'il fallait joindre aux autres pour reconstituer l'image finale. Ici on va supprimer la séance de couture en allouant une image dès le départ et en indiquant à chaque thread la zone de l'image qu'il doit traiter. Il n'y a pas de problème de recouvrement. Chaque thread va travailler sur une partie spécifique de l'image. Typiquement, on est dans le potager, je bêche le fond alors que tu retourne le début.
 
-Finalement, il y a pas mal de changements dans le code. Histoire qu'on soit bien synchros, je te redonne l'ensemble.
+Finalement, il y a pas mal de changements dans le code. Histoire qu'on soit bien synchros, je te redonne l'ensemble du code.
 
 ### Modifications de Cargo.toml
 Je vais expliquer pourquoi un peu plus loin mais dans le fichier ``Cargo.toml``, il faut enlever la ligne de commentaire sur la ligne `crossbeam = "0.8.4"`. Le fichier ``Cargo.toml`` doit donc ressembler à ça : 
@@ -1447,32 +1381,32 @@ fn save_image(
 
 
 ### Explications à propos du code
-* Dans la fonction ``main()``
-    * J'utilise ce que j'avais appris précédement pour allouer sur le heap un tableau d'octets qui va contenir l'image traitée. 
-    * Encore une fois,je trouve qu'un tableau fixe exprime mieux qu'un vecteur redimensionnalble ce que représente une image
+Dans la fonction ``main()``
+* J'utilise ce que j'avais appris précédement pour allouer, sur le heap, un tableau d'octets qui va contenir l'image traitée. 
+* Encore une fois, je trouve qu'un tableau fixe exprime mieux qu'un vecteur redimensionnalble ce que représente une image
 
-* Dans la fonction `mt_build_mandelbrot()`
-    * La signature change. En effet elle ne construit plus l'image finale, elle rempli une image pré-allouée.
-    * Comme précédement on détermine le nombre de cores disponibles sur la machine
-    * Ensuite j'essaie d'être un peu malin et j'ajuste la hauteur des bandes pour tenir compte du fait qu'on pourrait avoir une hauteur d'image qui ne soit pas divisible par le nombre de cores. Dans les commentaires j'illustre ce qui se passe si on a H=480 et 7 cores. Pour le coup toutes les bandes (stripes) ont la même hauteur sauf les 4 premières qui ont une ligne de pixel en plus.
-    * La modification la plus importante a lieu ensuite. En effet, même si nous savons qu'il n'y a pas de recouvrement entre les stripes traités par les threads. Autrement dit même si nous nous savons qu'il n'y a pas de risque que 2 threads tentent d'accèder en même temps au même pixel... Le compilateur lui ne le sait pas et comme il est prudent il rejette notre code. Conclusion on ne peut plus utiliser une boucle for dans laquelle on initie des threads.
-    * Nous devons utiliser un scope (qu'on va chercher dans crossbeam, d'où l'obligation de modifier ``Cargo.toml``). De ce que j'ai compris, un scope permet d'aider le compilateur à comprendre notre intention. Typiquement un scope garanti, la main sur le coeur, qu'à la fin du scope tous les thread auront été "joined" et que toutes les variables locales du scope seront bien accessibles. 
-    * Du coup, au lieu de faire une boucle for dans laquelle on spawn des threads
-    * Je créé un scope nommé ``my_scope`` (voir `crossbeam::thread::scope`) dans lequel j'ai une boucle for dans laquelle j'utilise `my_scope` pour y lancer un thread qui va éxécuter la fonction `render_zone()`.
-    * Comme j'étais pas sûr de mon coup, en haut du code source, j'ai bien sûr commenté la ligne `use std::thread;` car je ne l'utilise plus ici. Cela fait, j'ai pas écris `use crossbeam::thread;`. Du coup dans le code cela m'oblige à utiliser le nom complet `crossbeam::thread::scope`.
-    * Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ca en français ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit ce lire `crossbeam::thread::scope(blablabla).unwrap();`   
+Dans la fonction `mt_build_mandelbrot()`
+* La signature change. En effet la fonction ne construit plus l'image finale, elle rempli une zone pré-allouée.
+* Comme précédement je détermine le nombre de cores disponibles sur la machine
+* Ensuite j'essaie d'être un peu malin et j'ajuste la hauteur des bandes pour tenir compte du fait qu'on pourrait avoir une hauteur d'image qui ne soit pas divisible par le nombre de cores. Dans les commentaires j'illustre ce qui se passe si on a H=480 et 7 cores. Pour le coup toutes les bandes (stripes) ont la même hauteur sauf les 4 premières qui ont une ligne de pixel en plus.
+* La modification la plus importante a lieu ensuite. En effet, nous, nous savons qu'il n'y a pas de recouvrement entre les stripes traités par les threads. Autrement dit, même si nous, nous savons qu'il n'y a pas de risque que 2 threads tentent d'accèder en même temps au même pixel... Le compilateur lui ne le sait pas et comme il est très prident il rejette notre code. Conclusion on ne peut plus utiliser une boucle ``for`` dans laquelle on initie des threads.
+* Nous devons utiliser un objet ``scope`` (qu'on va chercher dans ``crossbeam``, d'où l'obligation de modifier ``Cargo.toml``). De ce que j'ai compris, un scope permet d'aider le compilateur à comprendre notre intention. Typiquement un scope garanti, la main sur le coeur, qu'à la fin du scope tous les threads auront été "joined" et que toutes les variables locales du scope seront bien tout le temps accessibles. 
+* Du coup, au lieu de faire une boucle ``for`` dans laquelle on spawn des threads
+* Je créé un scope nommé ``my_scope`` (voir `crossbeam::thread::scope`) dans lequel j'ai une boucle ``for`` dans laquelle j'utilise `my_scope` pour y lancer un thread qui va éxécuter la fonction `render_zone()`.
+* Comme j'étais pas sûr de mon coup, en haut du code source, j'ai bien sûr commenté la ligne `use std::thread;` car je ne l'utilise plus ici. Cela fait, j'ai pas écris `use crossbeam::thread;`. Du coup dans le code cela m'oblige à utiliser le nom complet `crossbeam::thread::scope`.
+* Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici il faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ca, en français, ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit ce lire `crossbeam::thread::scope(blablabla).unwrap();`   
 
-* Dans la fonction `render_zone()`
-    * Cette fonction remplace l'ancienne `build_mandelbrot` et l'ancienne ``render_stripe()``
-    * La signature a changé car ici aussi la fonction ne retroune plus d'image ou de bande. Elle rempli la zone qu'on lui passe en dernier paramètre
-    * Le reste du code ne change pas
+Dans la fonction `render_zone()`
+* Cette fonction remplace l'ancienne `build_mandelbrot` et l'ancienne ``render_stripe()``
+* La signature a changé car ici aussi la fonction ne retroune plus d'image ou de bande. Elle rempli la zone qu'on lui passe en dernier paramètre
+* Le reste du code ne change pas
 
-* Dans la fonction `mandelbrot_color()`
-    * Aucun changement
+Dans la fonction `mandelbrot_color()`
+* Aucun changement
 
-* Dans la fonction ``save_image()``
-    * La signature évolue car au lieu de recevoir un vecteur d'octets, elle recoit un tableau d'octets
-    * L'impact est sur la toute dernière ligne
+Dans la fonction ``save_image()``
+* La signature évolue car au lieu de recevoir un vecteur d'octets, elle reçoit un tableau d'octets
+* L'impact est sur la toute dernière ligne
 
 
 
@@ -1519,9 +1453,9 @@ Du point de vue de la console voilà ce que j'observe :
 
 ## Une mauvaise idée
 
-Bon, ben voilà, c'est une affaire qui roule notre histoire... Ceci dit pour être honnête avant la version précédente et l'utilisationd d'un ``scope`` je pensais benoîtement que je pouvais permettre au code exécuté par les threads de modifier la zone mémoire où se trouve l'image. Encore une fois, je sais que les codes des threads n'accèdent pas aux mêmes pixels, je suis certains qu'il n'y aura pas de problème. 
+Bon, ben voilà, c'est une affaire qui roule notre histoire... Ceci dit pour être honnête avant la version précédente et l'utilisation d'un ``scope`` je pensais benoîtement que je pouvais permettre au code exécuté par les threads de modifier la zone mémoire où se trouve l'image. Encore une fois, je sais que les codes des threads n'accèdent pas aux mêmes pixels, je suis certains qu'il n'y aura pas de problème. 
 
-Du coup, de fil en aiguille, j'ai vérouillé l'accès à la zone de l'image avec un mutex et un Arc. C'est une très mauvaise idée. En effet, c'est hyper scecure mais bon un seul thread à la fois ne peut accèder à la zone mémoire correspondant à l'image. Tout se passe comme si on avait 20 personnes pleine de bonne volonté désireuse de faire la vaisselle mais une seule à la fois ne peut utiliser l'évier. C'est sécure mais contre productif et finalement les performances sont pires qu'en single-threaded. 
+Du coup, de fil en aiguille, j'ai vérouillé l'accès à la zone de l'image avec un mutex et un Arc. C'est une très mauvaise idée. En effet, c'est hyper "secure" mais bon, un seul thread à la fois ne peut accèder à la zone mémoire correspondant à l'image. Tout se passe comme si on avait 20 personnes pleine de bonne volonté désireuses de faire la vaisselle mais une seule à la fois ne peut utiliser l'évier. C'est contre productif et finalement les performances sont pires qu'en single-threaded. 
 
 <div align="center">
 <img src="./assets/vaisselle.webp" alt="" width="900" loading="lazy"/>
@@ -1649,7 +1583,7 @@ fn mt_build_mandelbrot(
 
 Au tout début du code il faut remarquer qu'il n'y a pas de ``use crossbeam::thread;``. En effet, je n'utilise pas de `scope`, je veux juste utiliser des threads "normaux" pour aller modifier une zone mémoire. 
 
-Dans la fonction ``main()``. 
+Dans la fonction ``main()``
 * On voit que je me cherche encore un peu. En effet, je créé une ``image`` en mémoire puis j'appelle `render_zone(..., &mut image);`
 * Ensuite, je crée `image_mt` mais j'ai une ligne du style `let image_mt = mt_build_mandelbrot(..., image_mt);`
 * C'est pas très homogène tout ça... Allez, on passe à la suite, je fixerai ça plus tard.
@@ -1657,12 +1591,12 @@ Dans la fonction ``main()``.
 Dans la fonction ``mt_build_mandelbrot()``
 * Je détermine le nombre de threads et je ne cherche pas à gérer les cas où le nombre de lignes n'est pas divisible par le nombre de cores
 * Je protège l'accès à l'image avec un Mutex. C'est bien mais ce n'est pas suffisant. 
-* En effet, on ne pas utiliser directement un mutex depuis un thread. C'est pour cela que j'utilise un Arc (atomic refence counted). 
+* En effet, on ne pas utiliser directement un mutex depuis un thread. C'est pour cela que j'utilise un Arc (atomic reference counted). 
 * Et c'est cette dernière qu'on va pouvoir utiliser pour accèder, depuis les threads, au mutex puis à la zone mémoire
-* Le mutex c'est le garant de l'accès exclusif à la ressource, l'Arc<Mutex<T>> partage la propriété du mutex entre threads 
+    * **IMPORTANT** : le mutex c'est le garant de l'accès exclusif à la ressource, l'Arc<Mutex<T>> partage la propriété du mutex entre threads 
 * On prépare un vecteur `handles` pour stocker les identifiants des threads qu'on va lancer
 * Ensuite on a une boucle for dans laquelle en gros
-    * En fonction de l'indice on détermine les y_start et y_end
+    * En fonction de l'indice on détermine les ``y_start`` et ``y_end``
     * On clone le pointeur Arc ``&buffer``
     * Enfin on spawn le thread
         * Il faut bien voir que dans ce dernier on peut alors utiliser `buffer_clone` pour accéder à la ressource
@@ -1670,37 +1604,6 @@ Dans la fonction ``mt_build_mandelbrot()``
 * On stocke le handle du thread dans le vecteur ``handles``    
 
 Ca pourrait être simplifié mais, aux vues des performances, j'ai pas continué dans cette voie et j'ai utilisé les scopes qu'on a vu dans le version 10 du code. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
