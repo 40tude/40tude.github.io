@@ -1022,7 +1022,7 @@ Dans cette version je ne modifie que la fonction `render_stripe()`. De mon point
 
 Si tu as du mal avec ces histoires de heap et de stack, investi du temps dans la vidéo ci-dessous : 
 
-<div align="center>
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7_o-YRxf_cc?si=ilL3NkYoo1dURpO_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
@@ -1472,7 +1472,7 @@ Bon, ben voilà, c'est une affaire qui roule notre histoire... Ceci dit, pour ê
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TAQnOzY7QXE?si=w3FyGMM7o5qacGS7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-Du coup, de fil en aiguille, j'ai été amené à vérouillé l'accès à la zone de l'image avec un mutex et un Arc. C'est une très mauvaise idée. En effet, c'est hyper "secure" mais bon, du coup, un seul thread à la fois peut accèder à la zone mémoire correspondant à l'image. Tout se passe comme si on avait 20 personnes pleine de bonne volonté désireuses de faire la vaisselle mais une seule à la fois ne peut utiliser l'évier. C'est contre productif et finalement les performances sont pires qu'en single-threaded. 
+Du coup, de fil en aiguille (d'autres parlent de compiler-driven development. En gros, tu compiles, ça plante, tu lis avec beaucoup d'attention les messages d'erreur et tu essaies de satisfaire la bête) j'ai été amené à vérouiller l'accès à la zone de l'image avec un mutex et une Arc. C'est une très mauvaise idée. En effet, c'est hyper "secure" mais bon, du coup, un seul thread à la fois peut accèder à la zone mémoire correspondant à l'image. Tout se passe comme si on avait 20 personnes pleine de bonne volonté désireuses de faire la vaisselle mais une seule à la fois qui peut utiliser l'évier. C'est contre productif et finalement les performances sont pires qu'en single-threaded. 
 
 <div align="center">
 <img src="./assets/vaisselle.webp" alt="" width="450" loading="lazy"/>
