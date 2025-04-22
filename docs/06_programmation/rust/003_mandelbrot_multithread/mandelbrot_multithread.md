@@ -1039,7 +1039,7 @@ Là, il y a du lourd en termes de changements et on va, enfin, rentrer dans le v
     * Il y a quand même un truc... Dans la fonction ``render_stripe()`` il y a un appel à la fonction ``mandelbrot_color()`` et on peut légitimement se demander si on ne va pas avoir de problème si plusieurs threads, appellent en même temps la même fonction. En fait ``mandelbrot_color()`` est une fonction pure (ou sans état). Elle ne conserve aucun état interne, ne modifie aucune variable globale et n'a aucun effet secondaire. Elle ne lit ni n'écrit de fichiers, ni n'effectue d'entrées-sorties...Il n'y a donc aucun problème si plusieurs threads l'appellent en même temps. En effet, chaque thread fournit ses propres paramètres, dispose de son propre contexte d'exécution et de sa propre pile (c'est le point clé ici). 
 
 
-Voilà les images que j'obtiens avec en premier la version single-threaded et ensuite la version multithreaded.
+Voilà les images que j'obtiens avec en premier la version single-threaded et ensuite la version multithreaded. C'est rassurant, elles semblent identiques...
 
 <div align="center">
 <img src="./assets/image_rgb_07.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
@@ -1078,7 +1078,9 @@ Au niveau des performances, voilà ce que j'observe
 
 
 
-## Use
+## Utilisation d'un tableau dans render_stripe()
+
+Dans cette version je ne modifie que la fonction `render_stripe()`. L'idée c'est que de mon point de vue une bande (stripe) c'est pas un vecteur susceptible de voir sa taille changer mais bien un tableau de taille fixe. En plus, je voulais voir comment allouer un tableau sur le tas (heap) alors que par défaut ils sont sur la pile (stack). Du coup ci-dessous je ne montre que le code de `render_stripe()`.   
 
 ```rust
 // main_08
@@ -1088,74 +1090,6 @@ Au niveau des performances, voilà ce que j'observe
 // TODO : issues with scaling
 // TODO : add a zoom and be able to move the centre of the view_rectangle in complex space
 
-extern crate num_complex;
-extern crate png;
-
-use num_complex::Complex;
-use std::fs::File;
-use std::io::BufWriter;
-use std::thread;
-use std::time::Instant;
-
-// ----------------------------------------------------------------------------
-fn main() {
-    let (width, height) = (640, 480);
-    let from = Complex::new(-2.5, -1.315);
-    let to = Complex::new(1.0, 1.315);
-
-    let start = Instant::now();
-    let image = build_mandelbrot(&from, &to, width, height);
-    let duration = start.elapsed();
-    println!("Single-threaded : {} ms.", duration.as_millis());
-    save_image("./assets/image_rgb_08.png", &image, width, height).expect("Failed to save image");
-
-    let start = Instant::now();
-    let image = mt_build_mandelbrot(&from, &to, width, height);
-    let duration = start.elapsed();
-    println!("Multithreaded   : {} ms.", duration.as_millis());
-    save_image("./assets/image_rgb_mt_08.png", &image, width, height)
-        .expect("Failed to save image");
-}
-
-// ----------------------------------------------------------------------------
-fn mt_build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32) -> Vec<u8> {
-    let nthreads = 4;
-    println!("# of threads    : {nthreads}");
-
-    let mut handles = vec![];
-
-    let stripe_width = width;
-    let stripe_height = height / nthreads;
-
-    let size = to - from;
-    let delta_y = (to.im - from.im) / nthreads as f64;
-
-    for i in 0..nthreads {
-        let stripe_from = from + Complex::new(0.0, i as f64 * delta_y);
-        let stripe_to = stripe_from + Complex::new(size.re, delta_y);
-
-        let handle = thread::spawn(move || {
-            // ! no ";" at EOL => the thread return a stripe
-            render_stripe(&stripe_from, &stripe_to, stripe_width, stripe_height)
-        });
-        handles.push(handle);
-    }
-
-    let mut stripes = vec![];
-    for handle in handles {
-        let stripe = handle.join().unwrap();
-        stripes.push(stripe);
-    }
-
-    let mut final_img = vec![0u8; (width * height * 3) as usize];
-
-    for (i, stripe) in stripes.into_iter().enumerate() {
-        let start = i * stripe_height as usize * width as usize * 3;
-        final_img[start..start + stripe.len()].copy_from_slice(&stripe);
-    }
-
-    final_img
-}
 
 // ----------------------------------------------------------------------------
 // render_stripe() now returns an array of u8 (see -> Box<[u8]>)
@@ -1187,76 +1121,22 @@ fn render_stripe(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32
     image
 }
 
-// ----------------------------------------------------------------------------
-fn build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32) -> Vec<u8> {
-    let mut image: Vec<u8> = Vec::with_capacity((width * height * 3) as usize);
-    let size = to - from;
-
-    for y in 0..height {
-        for x in 0..width {
-            let c = from
-                + Complex::new(
-                    x as f64 * size.re / width as f64,
-                    y as f64 * size.im / height as f64,
-                );
-            let (r, g, b) = mandelbrot_color(&c);
-            image.push(r);
-            image.push(g);
-            image.push(b);
-        }
-    }
-    image
-}
-
-// ----------------------------------------------------------------------------
-fn mandelbrot_color(c: &Complex<f64>) -> (u8, u8, u8) {
-    const ITERATIONS: u32 = 250; //1_000;
-    let mut z = Complex::new(0.0, 0.0);
-    let mut i = 0;
-
-    for t in 0..ITERATIONS {
-        z = z * z + c;
-        if z.norm_sqr() > 4.0 {
-            i = t;
-            break;
-        }
-    }
-
-    if i == 0 {
-        return (0, 0, 0);
-    }
-
-    let zn = z.norm_sqr().sqrt().ln() / 2.0;
-    let smooth_i = (i as f64) + 1.0 - zn.ln() / std::f64::consts::LN_2;
-
-    let hue = smooth_i * 0.1;
-    let r = (0.5 + 0.5 * (6.2831 * (hue + 0.0)).cos()) * 255.0;
-    let g = (0.5 + 0.5 * (6.2831 * (hue + 0.33)).cos()) * 255.0;
-    let b = (0.5 + 0.5 * (6.2831 * (hue + 0.66)).cos()) * 255.0;
-
-    (r as u8, g as u8, b as u8)
-}
-
-// ----------------------------------------------------------------------------
-fn save_image(
-    filename: &str,
-    data: &Vec<u8>,
-    width: u32,
-    height: u32,
-) -> Result<(), png::EncodingError> {
-    let file = File::create(filename).unwrap();
-    let ref mut w = BufWriter::new(file);
-
-    let mut encoder = png::Encoder::new(w, width, height);
-    encoder.set_color(png::ColorType::Rgb);
-    encoder.set_depth(png::BitDepth::Eight);
-
-    let mut writer = encoder.write_header().unwrap();
-    writer.write_image_data(data.as_slice())
-}
-
-
 ```
+
+### Explications à propos du code
+* Dans la fonction ``render_stripe()``
+    * Sa signature a changée, elle retourne un pointeur sur une zone d'octets (voir le `-> Box<[u8]>`)
+    * Sinon la seule modification concerne l'allocation de la zone mémoire pour ``image``. En gros on commence par allouer un vecteur puis on demande un pointeur sur la partie data du vecteur en question (on perd donc au passage les informations de capacité et d'occupation qui sont spécifiques aux vecteurs)
+
+Il n'y a aucun changement que ce soit au niveau visuel ou du timing
+
+<div align="center">
+<img src="./assets/image_rgb_08.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
+
+<div align="center">
+<img src="./assets/image_rgb_mt_08.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
 
 
 
@@ -1270,6 +1150,8 @@ fn save_image(
 
 ## Detection du nombre de Cores disponibles
 
+Dans cette nouvelle version, je cherche à adapter le nombre de threads au nombre de cores disponibles sur la machine.
+
 ```rust
 // main_09
 // mt_build_mandelbrot() detects the number of cores available
@@ -1277,35 +1159,6 @@ fn save_image(
 // TODO : issues with scaling
 // TODO : add a zoom and be able to move the centre of the view_rectangle in complex space
 
-extern crate num_complex;
-extern crate png;
-
-use num_complex::Complex;
-use std::fs::File;
-use std::io::BufWriter;
-use std::thread;
-use std::time::Instant;
-
-// ----------------------------------------------------------------------------
-fn main() {
-    let (width, height) = (640, 480);
-
-    let from = Complex::new(-2.5, -1.315);
-    let to = Complex::new(1.0, 1.315);
-
-    let start = Instant::now();
-    let image = build_mandelbrot(&from, &to, width, height);
-    let duration = start.elapsed();
-    println!("Single-threaded : {} ms.", duration.as_millis());
-    save_image("./assets/image_rgb_09.png", &image, width, height).expect("Failed to save image");
-
-    let start = Instant::now();
-    let image = mt_build_mandelbrot(&from, &to, width, height);
-    let duration = start.elapsed();
-    println!("Multithreaded   : {} ms.", duration.as_millis());
-    save_image("./assets/image_rgb_mt_09.png", &image, width, height)
-        .expect("Failed to save image");
-}
 
 // ----------------------------------------------------------------------------
 fn mt_build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32) -> Vec<u8> {
@@ -1352,105 +1205,62 @@ fn mt_build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, heigh
     final_img
 }
 
-// ----------------------------------------------------------------------------
-fn render_stripe(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32) -> Box<[u8]> {
-    let mut image = vec![0u8; (width * height * 3) as usize].into_boxed_slice();
-
-    let size = to - from;
-
-    for y in 0..height {
-        for x in 0..width {
-            let c = from
-                + Complex::new(
-                    x as f64 * size.re / width as f64,
-                    y as f64 * size.im / height as f64,
-                );
-            let (r, g, b) = mandelbrot_color(&c);
-
-            let idx = (y * width + x) as usize * 3;
-            image[idx] = r;
-            image[idx + 1] = g;
-            image[idx + 2] = b;
-        }
-    }
-    image
-}
-
-// ----------------------------------------------------------------------------
-fn build_mandelbrot(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32) -> Vec<u8> {
-    let mut image: Vec<u8> = Vec::with_capacity((width * height * 3) as usize);
-
-    let size = to - from;
-
-    for y in 0..height {
-        for x in 0..width {
-            let c = from
-                + Complex::new(
-                    x as f64 * size.re / width as f64,
-                    y as f64 * size.im / height as f64,
-                );
-            let (r, g, b) = mandelbrot_color(&c);
-            image.push(r);
-            image.push(g);
-            image.push(b);
-        }
-    }
-    image
-}
-
-// ----------------------------------------------------------------------------
-fn mandelbrot_color(c: &Complex<f64>) -> (u8, u8, u8) {
-    const ITERATIONS: u32 = 250; //1_000;
-    let mut z = Complex::new(0.0, 0.0);
-    let mut i = 0;
-
-    for t in 0..ITERATIONS {
-        z = z * z + c;
-        if z.norm_sqr() > 4.0 {
-            i = t;
-            break;
-        }
-    }
-
-    if i == 0 {
-        return (0, 0, 0);
-    }
-
-    let zn = z.norm_sqr().sqrt().ln() / 2.0;
-    let smooth_i = (i as f64) + 1.0 - zn.ln() / std::f64::consts::LN_2;
-
-    let hue = smooth_i * 0.1;
-    let r = (0.5 + 0.5 * (6.2831 * (hue + 0.0)).cos()) * 255.0;
-    let g = (0.5 + 0.5 * (6.2831 * (hue + 0.33)).cos()) * 255.0;
-    let b = (0.5 + 0.5 * (6.2831 * (hue + 0.66)).cos()) * 255.0;
-
-    (r as u8, g as u8, b as u8)
-}
-
-// ----------------------------------------------------------------------------
-fn save_image(
-    filename: &str,
-    data: &Vec<u8>,
-    width: u32,
-    height: u32,
-) -> Result<(), png::EncodingError> {
-    let file = File::create(filename).unwrap();
-    let ref mut w = BufWriter::new(file);
-
-    let mut encoder = png::Encoder::new(w, width, height);
-    encoder.set_color(png::ColorType::Rgb);
-    encoder.set_depth(png::BitDepth::Eight);
-
-    let mut writer = encoder.write_header().unwrap();
-    writer.write_image_data(data.as_slice())
-}
-
-
 ```
+### Explications à propos du code
+* Dans la fonction ``mt_build_mandelbrot()`` j'utilise `std::thread::available_parallelism()` pour ajuster la valeur de ``nthreads``
+* Histoire de ma rassurer j'affiche le nombre de coeurs toruvés.
+
+
+On voit bien que le code détecte dorénavant les 20 coeurs de ma machine et les timings en mode Debug et Release
+
+<div align="center">
+<img src="./assets/run_09.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
+
+Les images elles, restent identiques
+
+<div align="center">
+<img src="./assets/image_rgb_09.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
+
+<div align="center">
+<img src="./assets/image_rgb_mt_09.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
+</div>
+
 
 
 ## Refactorisation du code
 
+Je l'ai dit un peu plus haut le code des fonctions ``build_mandelbrot()`` (version single-threaded) et `render_stripe()` sont identiques donc, autant les factoriser. C'est normal car dans un cas comme dans l'autre, elles ne font que traiter une zone de l'espace complexe pour y appliquer exactement le même traitement. Dans un cas on traite l'ensemble de la surface correspondant à toute l'image, alors que dans l'autre on traite une bande plus ou moins haute (en fonction du nombre de threads).
+
+De plus, jusqu'à présent, chaque thread créait sa bande qu'il fallait joindre aux autres pour constituer l'image finale. Ici on va supprimer la séance de couture en allouant une image dès le départ et en indiquant à chaque thread la zone de l'image qu'il doit traiter. Il n'y a pas de problème de recouvrement. Chaque thread va travailler sur une partie spécifique de l'image. Typiquement, on est dans le potager, je bêche le fond alors que tu retourne le début.
+
+Finalement, il y a pas mal de changements dans le code. Histoire qu'on soit bien synchros, je te redonne l'ensemble.
+
+### Modifications de Cargo.toml
+Je vais expliquer pourquoi un peu plus loin mais dans le fichier ``Cargo.toml``, il faut enlever la ligne de commentaire sur la ligne `crossbeam = "0.8.4"`. Le fichier ``Cargo.toml`` doit donc ressembler à ça : 
+
+```
+[package]
+name = "mandel"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# Only for main_00.rs
+# num-complex = "0.2.1"
+# png = "0.14.1"
+
+# main_01.rs and above
+num-complex = "0.4.6"
+png = "0.17.16"
+crossbeam = "0.8.4"
+
+```
+
+
+
+Sinon voici la version 10 du code : 
 ```rust
 // main_10
 // the code has been refactored
@@ -1846,23 +1656,8 @@ fn mt_build_mandelbrot(
 
 
 
-<div align="center">
-<img src="./assets/image_rgb_08.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
-</div>
-
-<div align="center">
-<img src="./assets/image_rgb_mt_08.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
-</div>
 
 
-
-<div align="center">
-<img src="./assets/image_rgb_09.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
-</div>
-
-<div align="center">
-<img src="./assets/image_rgb_mt_09.webp" alt="Multithreaded Mandelbrot Sets in Rust" width="640" loading="lazy"/>
-</div>
 
 
 
