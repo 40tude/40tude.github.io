@@ -19,7 +19,7 @@ last_modified_date : 2025-04-21 12:00:00
 En 2025 j'ai décidé d'apprendre Rust.
 
 <div align="center">
-<img src="./assets/img_00.webp" alt="Rust Logo" width="450" loading="lazy"/>
+<img src="./assets/img_00.webp" alt="Rust Logo" width="225" loading="lazy"/>
 </div>
 
 Tu trouveras ci-dessous les différentes étapes d'un de mes tout premiers test. Je n'avais pas encore lu **THE** livre, je veux parler de [The Rust Programming Language](https://www.amazon.fr/dp/1718503105?ref=ppx_yo2ov_dt_b_fed_asin_title).
@@ -30,7 +30,7 @@ Tu trouveras ci-dessous les différentes étapes d'un de mes tout premiers test.
 
 **TRPL** est [disponible en ligne](https://doc.rust-lang.org/book/title-page.html).
 
-J'ai passé pas mal de temps sur YouTube et je suis tombé sur la vidéo ci-dessous dans laquelle à un moment, histoire d'illustrer l'eco-système Rust, le développeur montre comment il incorpore une lib PNG pour sauver l'image image d'[un ensemble de Mandelbrot](https://fr.wikipedia.org/wiki/Ensemble_de_Mandelbrot). 
+J'ai passé pas mal de temps sur YouTube et je suis tombé sur la vidéo ci-dessous dans laquelle le développeur montre comment il incorpore une lib PNG pour sauver l'image image d'[un ensemble de Mandelbrot](https://fr.wikipedia.org/wiki/Ensemble_de_Mandelbrot). 
 
 Je te propose de regarder l'extrait en question puis de revenir ici.
 
@@ -38,7 +38,7 @@ Je te propose de regarder l'extrait en question puis de revenir ici.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/k7nAtrwPhR8?si=Q4C6-UgT5lTvJLwP&amp;start=3130" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-De mon point de vue, c'est une bonne idée de projet qui n'est pas très compliqué à priori et qui permet de "voir" un résultat. En tout cas c'est plus excitant que d'afficher du texte dans une console. Bon allez c'est parti...
+De mon point de vue, c'est une bonne idée de projet. En effetn ce n'est pas très compliqué mais surtout ça permet de "voir" un résultat. En tout cas c'est plus excitant que d'afficher du texte dans une console. Bon allez c'est parti...
 
 
 ## Prérequis
@@ -69,7 +69,7 @@ Oui, oui c'est parti... Mais, bon, tout le monde le sait, avant de partir, il fa
 * Quand il y a des modifications dans le code :
     * je mets en commentaire le code de la version précédente
     * j'ajoute les nouvelles lignes de code
-    * dans la version suivant je supprime les lignes en commentaire
+    * dans la version suivante je supprime les lignes en commentaire
 
 Par exemple dans la version 00 on a, dans la fonction ``save_image()`` le code ci-dessous : 
 
@@ -103,7 +103,7 @@ C'est un peu lourd à gérer au niveau de l'édition mais bon, je trouve que cel
 
 
 
-## Toute première fois
+## Toute première fois. Toute, toute première fois (JM, 1985 🎹)
 
 J'ouvre un terminal. Je fais ``cargo new mandel``. Je me retrouve avec un répertoire `mandel` que j'ouvre avec VSCode. 
 
