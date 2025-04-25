@@ -813,6 +813,54 @@ On va aller assez rapidement :
 
 ## Lifetime
 
+
+```rust
+fn longest0(s1: String, s2: String) -> String {
+    if s1.len() > s2.len() { s1 } else { s2 }
+}
+
+fn main() {
+    let s1 = String::from("hello");
+    let result0;
+
+    {
+        let s2 = String::from("worlds");
+        result0 = longest0(s1, s2);  
+        println!("Longest: {}", result0);
+    }                               
+    println!("{}", result0);       
+}
+```
+
+
+
+
+Does NOT compile
+
+```rust
+
+fn longest(s1: &str, s2: &str) -> &str {
+    if s1.len() > s2.len() { s1 } else { s2 }
+}
+
+fn main() {
+    let s1 = String::from("hello");
+    let result;
+    
+    {
+        let s2 = String::from("worlds");
+        result = longest(&s1, &s2);  
+        println!("Longest: {}", result);
+    }                               
+    println!("{}", result);       
+}
+
+```
+
+
+
+Compile
+
 ```rust
 fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
     if s1.len() > s2.len() { s1 } else { s2 }
@@ -830,7 +878,24 @@ fn main() {
     
     // println!("{}", result);       // NOK result is s2 dependant
 }
+
+
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
