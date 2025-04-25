@@ -5,7 +5,7 @@ title: "Mutabilité du Binding Local, Mutabilité d'une Référence"
 parent: "Rust"
 #math: mathjax
 date               : 2025-04-25 11:00:00
-last_modified_date : 2025-04-25 11:00:00
+last_modified_date : 2025-04-25 23:00:00
 ---
 
 # Mutabilité du Binding Local, Mutabilité d'une Référence
@@ -605,13 +605,48 @@ C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exem
 
 De plus, même sans parler de la signature du récipiendaire, Rust demande à ce j'exprime explicitement l'autorisation que je donne à la fonction de modifier le binding que je passe par référence. Du coup je dois écrire `shift_zeros_to_the_end(&mut vec0)`.
 
+
+
+
 **Notes :** 
 Je te confirme 
 * c'est ``&mut`` et pas ``mut&``
 * pour une référence mutable tu verras `ma_fonction(&mut bob)` avec un espace 
-    * &mut est un opérateur composé en Rust
-    * &mut est un seul "mot-clé logique", qui se lit "référence mutable à"
-* pour une référence non mutable tu verras surtout `ma_fonction(&bob)` sans un espace alors que ``shift_zeros_to_the_end(& vec0)`` est licite 
+    * ``&mut`` est un opérateur composé en Rust
+    * ``&mut`` est un seul "mot-clé logique", qui se lit "référence mutable à"
+* pour une référence non mutable tu verras surtout `ma_fonction(&bob)` sans un espace alors que ``shift_zeros_to_the_end(& vec0)`` est tout aussi licite 
+
+
+
+
+
+
+### La solution avec les commentaires associés
+```rust
+
+// the function receives a mutable reference to a Vec<i32> such that it can modify the data pointed to by ptr
+// The binding nums_in is immutable, but it holds a mutable reference
+// This means we can mutate the Vec it points to, but we cannot reassign nums_in itself
+// nums_in cannot be reassigned to point to another Vec
+// but the Vec it refers to can be mutated (e.g. via push, swap, etc.)
+fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>){ 
+    let mut left = 0;
+    for right in 0..nums_in.len(){
+        if nums_in[right] != 0 {
+            nums_in.swap(left, right);
+            left += 1;
+        }
+    }
+}
+
+fn main(){
+    let mut vec0 = vec![1, 0, 5, 0, 3, 12]; // vec0 is a mutable binding so it can be passed as &mut
+    shift_zeros_to_the_end(&mut vec0);      // we pass a mutable reference to allow the function to mutate the Vec
+    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]);  // values have been rearranged in-place
+}
+
+```
+
 
 ### Petite question à 1 million de dollars... 
 
@@ -690,31 +725,6 @@ fn main(){
 
 
 
-### La solution avec les commentaires associés
-```rust
-
-// the function receives a mutable reference to a Vec<i32> such that it can modify the data pointed to by ptr
-// The binding nums_in is immutable, but it holds a mutable reference
-// This means we can mutate the Vec it points to, but we cannot reassign nums_in itself
-// nums_in cannot be reassigned to point to another Vec
-// but the Vec it refers to can be mutated (e.g. via push, swap, etc.)
-fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>){ 
-    let mut left = 0;
-    for right in 0..nums_in.len(){
-        if nums_in[right] != 0 {
-            nums_in.swap(left, right);
-            left += 1;
-        }
-    }
-}
-
-fn main(){
-    let mut vec0 = vec![1, 0, 5, 0, 3, 12]; // vec0 is a mutable binding so it can be passed as &mut
-    shift_zeros_to_the_end(&mut vec0);      // we pass a mutable reference to allow the function to mutate the Vec
-    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]);  // values have been rearranged in-place
-}
-
-```
 
 
 
@@ -737,27 +747,30 @@ fn main(){
 
 ## Variations autour de la mutabilité
 
-***On a vu
+***On a vu des signatures du style ``(mut nums_in: Vec<i32>) -> Vec<i32>`` et ``(nums_in: &mut Vec<i32>)``. Ça aurait un sens d'écrire un truc du style ``(mut nums_in: &Vec<i32>)`` et à quoi ça pourrait servir?***
+
+Tiens, fais toi plaisir. Tu as tous les éléments pour analyser la situation.
 
 ```rust
 
-// This function takes a mutable reference to a String
-// Because it owns a &mut String, it is allowed to modify the contents of the String on the heap
-fn change(str_in: &mut String){
-    str_in.push_str(", world"); // Appends text to the original String
-}
-
-// This function takes an immutable reference to a String
-// It is only allowed to read from the String, not modify it
+// str_in is an immutable binding. It cannot be reassigned to another &String
+// The reference to the String is not mutable. The content of the string cannot be modified using this refrence 
 fn dont_change(str_in: &String){
     println!("{}", str_in); // Reads and prints the string
+}
+
+// This function takes a mutable reference to a String
+// The reference to the String is mutable. The content of the string can be modified using this refrence 
+fn change(str_in: &mut String){
+    str_in.push_str(", world"); // Appends text to the original String
 }
 
 // This function takes an immutable reference to a string slice (&str)
 // The binding is mutable, so we can reassign str_in to another slice,
 // but we cannot modify the data pointed to by the slice
 fn change_view(mut str_in: &str) {
-    str_in = &str_in[1..3]; // Rebinds str_in to a substring of the original
+    str_in = &str_in[1..3];   // Rebinds str_in to a substring of the original
+                              // There is no let. This is an assignment
     println!("{:?}", str_in); // Prints the new slice
 }
 
@@ -768,18 +781,58 @@ fn main() {
     // Pass an immutable reference to a function that reads the string
     dont_change(&my_str);
     
-    // Pass an immutable reference (as a slice) to a function that creates a view into the string
-    change_view(&my_str);
-    
     // Pass a mutable reference to allow the function to modify the String
     change(&mut my_str);
-
     // Print the modified String
     println!("{}", my_str); // Should print: hello, world
+
+    // Pass an immutable reference (as a slice) to a function that creates a view into the string
+    change_view(&my_str);
+
+}
+```
+On va aller assez rapidement :
+* `dont_change(str_in: &String)` : reçoit une référence sur un binding non mutable qui est associé à une String. On peut lire, afficher mais pas modifier.
+* `change(str_in: &mut String)` : reçoit une référence sur un binding mutable qui est associé à une String. On peut modifier le binding et ajouter d'autres caractères.
+* `change_view(mut str_in: &str)` : reçoit une référence non mutable sur ce que l'on appelle une string view (`&str`). Le binding est mutable (`mut str_in`). On ne peut donc le modifier ``str_in`` pour qu'il "visualise" une autre section de la slice reçue. Bine voir qu'on assigne à `str_in` une nouvelle valeur.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Lifetime
+
+```rust
+fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+    if s1.len() > s2.len() { s1 } else { s2 }
 }
 
-
+fn main() {
+    let s1 = String::from("hello");
+    let result;
+    
+    {
+        let s2 = String::from("worlds");
+        result = longest(&s1, &s2);  // OK s1 and s2 are still living
+        println!("Longest: {}", result);
+    }                               // <- s2 goes out of scope
+    
+    // println!("{}", result);       // NOK result is s2 dependant
+}
 ```
+
+
 
 
 
