@@ -11,10 +11,6 @@ last_modified_date : 2025-04-25 23:00:00
 # Mutabilité du Binding Local, Mutabilité d'une Référence
 
 
-<!-- <div align="center">
-<img src="./assets/img_00.webp" alt="" width="225" loading="lazy"/>
-</div> -->
-
 ## Rustlings : move_semantics3.rs
 
 Comme beaucoup de ceux qui débutent avec Rust, j'ai installé [Rustlings](https://github.com/rust-lang/rustlings) et voici l’énoncé de l'exercice ``move_semantics3.rs``. 
