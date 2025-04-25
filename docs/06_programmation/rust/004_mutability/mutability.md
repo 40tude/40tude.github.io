@@ -10,6 +10,10 @@ last_modified_date : 2025-04-25 23:00:00
 
 # Mutabilité du Binding Local, Mutabilité d'une Référence
 
+<div align="center">
+<img src="./assets/stack_heap.webp" alt="Rust stack heap" width="900" loading="lazy"/>
+</div>
+
 
 ## Rustlings : move_semantics3.rs
 
