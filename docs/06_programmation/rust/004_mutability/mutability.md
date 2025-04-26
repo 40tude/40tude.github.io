@@ -139,11 +139,13 @@ En fait, si on était dans un autre langage de programmation, C++ par exemple, o
 En Rust la notion de binding va peu plus loin :
 1. Il y a toujours l'association d'un nom à une valeur  
 2. Qu'on enrichi de propriétés supplémentaires. Exemples : qui est propriétaire? peut-on modifier? peut on prêter?, pendant combien de temps?...  
-3. Ces propriétés sont utilisées au moment de la compilation (pas lors de l'exécution) pour garantir que notre code annonce ce qu'il va faire et fait ce qu'il a annoncé  
+3. Ces propriétés sont utilisées au moment de la compilation (pas lors de l'exécution) pour prouver que le code gère correctement, entre autres, la mémoire  
 
-Un binding c'est donc un engagement fort (un contrat) qu'on signe avec notre sang auprès du compilateur et ce dernier refusera de compiler notre code si on ne respecte pas notre parole. Comme tu le vois, en Rust l'ambiance est assez sympa, mais bon, c'est pour notre bien.
+Un binding c'est donc un engagement fort (un contrat). On le signe avec notre sang auprès du compilateur et ce dernier refusera de compiler notre code si on ne respecte pas notre parole. Comme tu le vois, en Rust l'ambiance est assez sympa, mais bon, c'est pour notre bien.
 
-De plus, en Rust, par défaut **tout est non mutable**. Là, où par exemple en C++, tout est mutable par défaut. 
+Tout ceci étant dit je te propose qu'on commence à s'habituer à utiliser le mot binding plutôt que le mot variable.
+
+Maintenant, il faut le savoir, mais en Rust, par défaut **tout est non mutable**. Là, où par exemple en C++, tout est mutable par défaut. 
 
 ```cpp
 // code C++
@@ -159,33 +161,33 @@ let mut x = 42;   // mutable
 let     y = 42;   // non mutable par défaut
 
 ``` 
-C'est pas mieux ou moins bien en C++ c'est juste différent. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sureté il y a sans doute un avantage à ce que tout soit constant par défaut. Je suis certains que si demain on pouvait ré-écrire les specifications ISO de C++ c'est le choix qu'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
+C'est pas mieux ou moins bien en C++ c'est juste différent. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sûreté il y a sans doute un avantage à ce que tout soit constant par défaut. Je suis certains que si demain on pouvait ré-écrire les specifications ISO de C++ c'est le choix que l'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
 
-Du coup, si je reviens sur la ligne
+Du coup, maintenant qu'on a parlé de binding et de non mutabilité par défaut, si je reviens sur la 1ere ligne de code :
 
 ```rust
 let vec0 = vec![22, 44, 66];
 ```
 
-`vec0` est bien un **binding** non mutable sur un ``Vec<i32>``. 
+`vec0` est bien un binding non mutable sur un ``Vec<i32>``. 
 
-***Heu.. Attends... C'est le binding qui est non mutable? C'est pas le vecteur? T'es sûr de ton coup?*** 
+***Heu.. Attends... C'est le binding qui est non mutable? C'est pas le contenu du vecteur? T'es sûr de ton coup?*** 
 
 Oui. La mutabilité est une propriété du binding, ce n'est pas une propriété des données (`[22, 44, 66]`) et encore moins du nom (`vec0`). 
 
-Bouge pas, je t'explique et ça tombe bien car le type de données ``Vec<T>``  (vecteur contenant des données de type ``T``) est intéressant. En effet, même si on le manipule comme une entité unique, il est constitué de 2 parties : 
+Bouge pas, je t'explique et ça tombe bien car le type de données ``Vec<T>`` (vecteur contenant des données de type ``T``) est intéressant. En effet, même si on le manipule comme une entité unique, il est constitué de 2 parties : 
 1. il y a d'un côté une structure de contrôle. Je la nomme PLC. À mon avis c'est pas le terme officiel. J'ai lu "représentation interne" ou "méta-données".
 1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). 
 
 **La structure de contrôle contient 3 champs :**
 1. P = l'adresse où sont stockées en mémoire les données (`[22, 44, 66]`). C'est un pointeur.
-1. L = la longueur actuelle du vecteur (3 ici par exemple)
+1. L = la longueur actuelle du vecteur (3 dans notre exemple)
 1. C = la capacité du vecteur (10 par exemple). Si tel était le cas, le vecteur contiendrait 3 éléments de type ``i32`` et il aurait la possibilité d'en recevoir 7 de plus avant de devoir être redimensionné.
 
 **Le jeu de données :** 
 * C'est une zone mémoire qui contient les 3 entiers 32 bits : `[22, 44, 66]`
 
-De plus, les 2 constituants du type de données ``Vec<T>`` sont stockés dans 2 zones mémoire différentes :
+De plus, les 2 composants du type de données ``Vec<T>`` sont stockés dans 2 zones mémoire différentes :
 1. La structure de contrôle (PLC) est sur la stack
 1. Le jeu de données est sur le heap
 
@@ -197,7 +199,7 @@ Si tu veux, tu peux imaginer qu'en mémoire la situation ressemble à ça :
 
 ***Mais pourquoi c'est si compliqué?***
 
-Imagine... Imagine qu'on est dans une fonction ``main()``, qu'on veut appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière. Afin de bien décomposer les évènements on va utiliser le PC du [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
+Imagine... Imagine qu'on se trouve dans une fonction ``main()``. On souhaite appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière[^note1]. Afin de bien décomposer les évènements on va utiliser le PC du [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
 
 <div align="center">
 <img src="./assets/alu_3_bodies.webp" alt="ALU 3 bodies problem" width="900" loading="lazy"/>
@@ -998,5 +1000,5 @@ Si on parle de binding (et qu'on garde constamment en tête binding = nom + vale
 
 
 
-
+[^note1]: Oui, oui je sais un entier ne passe pas par la stack mais c'est pour l'exemple.
 
