@@ -16,12 +16,30 @@ last_modified_date : 2025-04-26 09:00:00
 - TOC
 {:toc}
 
+## TL;DR
+Dans un contexte Rust, je pense qu'il est préférable de ne plus parler de variables mais uniquement de bindings. 
+Un binding est plus riche qu'une variable classique.
+1. Il associe un nom à une valeur
+1. Il ajoute des propriétés
+    * de mutability
+    * de ownership 
+    * de borrowing
+    * de lifetime
+Lors de la compilation, le compilateur s'assure que les propriétés des bindings ne sont pas mise à mal.
+
+
+
+
+
+
+
+
 
 ## Mutabilité du Binding
 
 ### Exercice move_semantics3.rs de Rustlings 
 
-Comme beaucoup de ceux qui débutent avec Rust, j'ai installé [Rustlings](https://github.com/rust-lang/rustlings) et voici le code de l'exercice ``move_semantics3.rs``. 
+Comme beaucoup de ceux qui débutent avec Rust, j'ai installé [Rustlings](https://github.com/rust-lang/rustlings). Voici le code de l'exercice ``move_semantics3.rs``. 
 
 ```rust
 // TODO: Fix the compiler error in the function without adding any new line.
@@ -47,13 +65,15 @@ mod tests {
 }
 ```
 
-On nous demande de satisfaire le compilateur. OK... Regardons le code ci-dessus. Dans la section ``test`` on crée un vecteur `vec0` qu'on passe comme argument à une fonction ``fill_vec()``. Cette dernière retourne un vecteur ``vec1`` qui n'est autre que le précédent auquel on a ajouté la valeur 88 (voir le assert). 
+On nous demande de satisfaire le compilateur. OK... Regardons le code ci-dessus. 
 
-De son côté la fonction ``fill_vec()`` possède un paramètre ``vec`` qui est un vecteur de i32 et elle retourne un vecteur de i32. Dans le corps de la fonction il y a un ``.push(88)`` qui modifie le contenu du vecteur.   
+Dans la section ``test`` on crée un vecteur `vec0` qu'on passe comme argument à une fonction ``fill_vec()``. Cette dernière retourne un vecteur ``vec1`` qui n'est autre que le précédent auquel on a ajouté la valeur 88 (voir la ligne ``assert``). 
+
+De son côté la fonction ``fill_vec()`` possède un paramètre ``vec`` qui est un vecteur de ``i32`` et elle retourne un vecteur de ``i32``. Dans le corps de la fonction il y a un ``.push(88)`` qui modifie le contenu du vecteur.   
 
 
 
-Voici la solution que je propose :
+Voici la solution que j'ai proposé :
 
 ```rust
 // TODO: Fix the compiler error in the function without adding any new line.
@@ -79,7 +99,7 @@ mod tests {
     }
 }
 ```
-Dans la signature de la fonction ``fill_vec()`` j'ai juste rajouté un `mut` devant le paramètre ``vec``. 
+Dans la signature de la fonction ``fill_vec()`` j'ai rajouté un `mut` devant le paramètre ``vec``. 
 
 ***Ok, super... Et?*** Hé bien maintenant il va falloir expliquer ce qui se passe et cela va nous permettre de revenir sur pas mal de sujets. 
 
@@ -112,32 +132,34 @@ let vec0 = vec![22, 44, 66];
 
 `vec0` est ce que l'on appelle en Rust, un **binding** non mutable sur un ``Vec<i32>``. 
 
-***Hep, hep, hep. Tu peux reprendre, ça yest, tu m'as perdu... Je vois ce qu'est un vecteur de i32. C'est un tableau dont la taille peut varier et qui contient des entiers codés sur 32. Par contre binding... Pourquoi tu ne dis pas simplement qu'on déclare une variable ``vec0`` ?***
+***Hep, hep, hep. Tu peux reprendre? Ça y est, tu m'as perdu... Je vois ce qu'est un vecteur de ``i32``. C'est un tableau dont la taille peut varier et qui contient des entiers codés sur 32 bits. Par contre binding... Pourquoi tu dis pas simplement qu'on déclare une variable ``vec0`` ?***
 
-En fait, si on était dans un autre langage de programmation, C++ par exemple, oui on dirait que la ligne correspond à la déclaration de la variable ``vec0``. Après ça, j'expliquerai que, en gros, on associe un nom (`vec0`) à une valeur (ou un ensemble de valeurs ici). 
+En fait, si on était dans un autre langage de programmation, C++ par exemple, oui on dirait que la ligne correspond à la déclaration de la variable ``vec0``. Après ça, j'expliquerai que, en gros, on associe au nom `vec0` (qu'on va manipuler dans le programme) une zone mémoire qui contient des valeurs. 
 
 En Rust la notion de binding va peu plus loin :
-1. Il y a toujours l'association d'un nom à une valeur (ou à un ensemble de valeurs) 
-2. à qui on ajoute les notions de propriétés et de prêt. 
+1. Il y a toujours l'association d'un nom à une valeur  
+2. Qu'on enrichi de propriétés supplémentaires. Exemples : qui est propriétaire? peut-on modifier? peut on prêter?, pendant combien de temps?...  
+3. Ces propriétés sont utilisées au moment de la compilation (pas lors de l'exécution) pour garantir que notre code annonce ce qu'il va faire et fait ce qu'il a annoncé  
 
-Un binding c'est donc un engagement fort (un contrat) qu'on signe avec notre sang auprès du compilateur et ce dernier refusera de compiler notre code si on ne respecte pas notre parole. Comme tu le vois, en Rust l'ambiance est sympa, mais bon, c'est pour notre bien.
+Un binding c'est donc un engagement fort (un contrat) qu'on signe avec notre sang auprès du compilateur et ce dernier refusera de compiler notre code si on ne respecte pas notre parole. Comme tu le vois, en Rust l'ambiance est assez sympa, mais bon, c'est pour notre bien.
 
-De plus, en Rust, par défaut tout est non mutable. Là où en C++ par défaut tout est mutable et où il faut que je précise si je veux qu'une variable soit constante :
+De plus, en Rust, par défaut **tout est non mutable**. Là, où par exemple en C++, tout est mutable par défaut. 
 
 ```cpp
 // code C++
 int       x = 42; // mutable par défaut
-const int x = 42; // non mutable
+const int y = 42; // non mutable
 
 ```
 
 En Rust, c'est le contraire :
 
 ```rust
-let     x = 42;   // non mutable par défaut
 let mut x = 42;   // mutable 
+let     y = 42;   // non mutable par défaut
 
 ``` 
+C'est pas mieux ou moins bien en C++ c'est juste différent. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sureté il y a sans doute un avantage à ce que tout soit constant par défaut. Je suis certains que si demain on pouvait ré-écrire les specifications ISO de C++ c'est le choix qu'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
 
 Du coup, si je reviens sur la ligne
 
@@ -147,18 +169,18 @@ let vec0 = vec![22, 44, 66];
 
 `vec0` est bien un **binding** non mutable sur un ``Vec<i32>``. 
 
-***Heu.. Attends... C'est le binding qui est non mutable? T'es sûr de ton coup?*** 
+***Heu.. Attends... C'est le binding qui est non mutable? C'est pas le vecteur? T'es sûr de ton coup?*** 
 
 Oui. La mutabilité est une propriété du binding, ce n'est pas une propriété des données (`[22, 44, 66]`) et encore moins du nom (`vec0`). 
 
-Bouge pas, je t'explique et ça tombe bien car le type de données ``Vec<T>``  (vecteur contenant des données de type T) est intéressant. En effet, même si on le manipule comme une entité, dans les faits, ce type de données est constitué de 2 morceaux : 
-1. il y a d'un côté une structure de contrôle. Je la nomme PLC, à mon avis c'est pas le terme officiel. J'ai lu "représentation interne" ou "méta-données".
+Bouge pas, je t'explique et ça tombe bien car le type de données ``Vec<T>``  (vecteur contenant des données de type ``T``) est intéressant. En effet, même si on le manipule comme une entité unique, il est constitué de 2 parties : 
+1. il y a d'un côté une structure de contrôle. Je la nomme PLC. À mon avis c'est pas le terme officiel. J'ai lu "représentation interne" ou "méta-données".
 1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). 
 
 **La structure de contrôle contient 3 champs :**
 1. P = l'adresse où sont stockées en mémoire les données (`[22, 44, 66]`). C'est un pointeur.
 1. L = la longueur actuelle du vecteur (3 ici par exemple)
-1. C = la capacité du vecteur (10 par exemple). Si tel était le cas, le vecteur contiendrait 3 éléments de type i32 et il aurait la possibilité d'en recevoir 7 de plus avant de devoir être redimensionné.
+1. C = la capacité du vecteur (10 par exemple). Si tel était le cas, le vecteur contiendrait 3 éléments de type ``i32`` et il aurait la possibilité d'en recevoir 7 de plus avant de devoir être redimensionné.
 
 **Le jeu de données :** 
 * C'est une zone mémoire qui contient les 3 entiers 32 bits : `[22, 44, 66]`
@@ -175,29 +197,29 @@ Si tu veux, tu peux imaginer qu'en mémoire la situation ressemble à ça :
 
 ***Mais pourquoi c'est si compliqué?***
 
-Imagine... Imagine qu'on est dans une fonction ``main()``, qu'on veut appeler une fonction et lui passer un paramètre. Faisons simple, imaginons qu'on veut passer une valeur entière. Un peu comme dans [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4) je te propose d'utiliser une machine très rustique...
+Imagine... Imagine qu'on est dans une fonction ``main()``, qu'on veut appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière. Afin de bien décomposer les évènements on va utiliser le PC du [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
 
 <div align="center">
 <img src="./assets/alu_3_bodies.webp" alt="ALU 3 bodies problem" width="900" loading="lazy"/>
 </div>
 
-Comment on fait ? Je te propose de mettre la valeur dans un classeur, de donner ce classeur à un cavalier et d'envoyer le cavalier à l'autre bout de la plaine. Là, on ouvre le classeur, on récupère la valeur et on execute le code de la fonction. Quand c'est terminé le cavalier revient, le classeur est vide car la fonction n'avait rien à renvoyer et on reprend l'exécution de la fonction main().
+Alors... Comment on fait? Je te propose de mettre la valeur dans un classeur, de donner ce classeur à un cavalier et d'envoyer le cavalier à l'autre bout de la plaine. Là, on ouvre le classeur, on récupère la valeur et on exécute le code de la fonction. Quand c'est terminé le cavalier revient. Le classeur est vide car la fonction n'avait rien à renvoyer. On reprend l'exécution de la fonction main().
 
-Cool, ça marche. Maintenant si on veut passer 2 entiers. Même principe. Par contre attention à l'ordre. Faut que je me mette d'accord avec la fonction pour dire que la premiere feuille du classeur correspond au premier paramètre et la seconde au second paramètre.
+***Cool, ça marche.*** Maintenant si on veut passer 2 entiers. Même principe. Par contre attention à l'ordre. Faut que je me mette d'accord avec la fonction pour dire que la premiere feuille du classeur correspond au premier paramètre et la seconde au second paramètre.
 
-Cool, ça marche encore... Et si maintenant je veux passer un nombre réel (3.14159) et un entier (42). Pareil, je fais attention à l'ordre et j'écris 3.14159 sur une page et 42 sur l'autre. 
+***Cool, ça marche encore...*** Et si maintenant je veux passer un nombre réel (3.14159) et un entier (42). Pareil, je fais attention à l'ordre et j'écris 3.14159 sur une page et 42 sur l'autre. 
 
-Cool, ça marche toujours. Imaginons maintenant que je veux passer un tableau de pixels (une image) dont la taille est connue à la compilation (640x480 pixels tous codés sur un octet chacun). Là, c'est plus long mais je vais utiliser 640x480 pages et mettre sur chacune une valeur entre 0 et 255. À l'arrivée la fonction va lire toutes les pages du classeur et être capable de reconstituer l'image localement.
+***Cool, ça marche toujours.*** Imaginons maintenant que je veux passer un tableau de pixels (une image) dont la taille est connue à la compilation (640x480 pixels tous codés sur un octet chacun). Là, c'est plus long mais je vais utiliser 640x480 pages et mettre sur chacune une valeur entre 0 et 255. À l'arrivée la fonction va lire toutes les pages du classeur et être capable de reconstituer l'image localement.
 
-Bon ben voilà on a terminé! Mouai... Qu'est ce qui se passe maintenant si je veux passer un tableau de nombres dont je ne connais pas, au moment de la compilation, la longueur. Pense aussi aux cas où je souhaite passer un tableau dont la longueur est susceptible de varier au cours du temps. Ce que l'on appelle un [vecteur](https://youtu.be/KcPLUn91md0?si=6jIkvDKofiS-_Nvx).
+***Bon ben voilà on a terminé!*** Mouai... Qu'est ce qui se passe maintenant si je veux passer un tableau de nombres dont je ne connais pas, au moment de la compilation, la longueur. Pense aussi aux cas où je souhaite passer un tableau dont la longueur est susceptible de varier au cours du temps. C'est que l'on appelle un [vecteur](https://youtu.be/KcPLUn91md0?si=6jIkvDKofiS-_Nvx).
 
 <div align="center">
 <img src="./assets/vector.webp" alt="vecteur" width="900" loading="lazy"/>
 </div>
 
-On est mort... C'est pas pôssible... En effet à l'arrivée, la fonction ne va pas savoir combien de pages elle doit dépiler (lire) du classeur. Cela dit, on peut s'en sortir si on applique le **principe d'indirection**. 
+***On est mort... C'est pas pôssible...*** En effet, tu as raison, à l'arrivée, la fonction ne va pas savoir combien de pages elle doit dépiler (lire) du classeur. Cela dit, on peut s'en sortir si on applique le **principe d'indirection** (“All problems in computer science can be solved by another level of indirection.” [David Wheeler]).
 
-En gros, au lieu de passer le vecteur lui même on va passer la description de ce dernier. Elle, elle a une taille fixe. Par exemple on peut décider de décrire un vecteur avec 2 pages. Une page avec un entier qui indique le nombre de coordonnées et une autre page qui indique avec un autre entier, l'endroit où dans le champs, aller chercher les valeurs quand on en a besoin. Le truc c'est que tout se passe comme si on passait à la fonction un vecteur de taille variable mais cela se fait au prix d'une mise à disposition plus lente. En effet, au lieu de lire les valeurs du vecteur directement dans les pages du classeur, il va falloir faire faire à un cavalier des aller-retours à l'autre bout du champs pour rapatrier les valeurs dont on aura besoin.
+En gros, au lieu de passer le vecteur lui même on va passer la description de ce dernier. Elle, elle a une taille fixe. Par exemple on peut décider de décrire un vecteur avec 2 pages dans le classeur. Une page contient un entier qui indique le nombre de valeurs dans le vecteur et une autre page indique avec un autre entier, l'endroit où dans le champs, aller chercher les valeurs quand on en a besoin. Le truc c'est que tout se passe comme si on passait à la fonction un vecteur de taille variable mais cela se fait au prix d'une mise à disposition plus lente. En effet, au lieu de lire les valeurs du vecteur directement dans les pages du classeur, il va falloir faire faire à un cavalier des aller-retours à l'autre bout du champs pour rapatrier les valeurs dont on aura besoin.
 
 Du coup il faut retenir que :
 1. la stack 
@@ -205,14 +227,14 @@ Du coup il faut retenir que :
     * quand une fonction appelle une autre fonction en lui passant des paramètres
         * elle dépose ses dernier sur la stack (push)
         * la fonction les récupère dans le bon ordre (pop)
-    * on ne met dans la stack que des paramètres dont la taille est connue et des type simples (int, bool, float, tableau fixe, tuple, adresses mémoire) 
+    * on ne met dans la stack que des paramètres dont la taille est connue et des type simples (trivially copyable) : int, bool, float, tableau fixe, tuple, adresses mémoire 
 1. le heap, c'est une zone libre du champs où on peut déposer des trucs
     * c'est trucs (structures de données) peuvent avoir des tailles dynamiques
-    * tous ceux, toutes les fonctions, qui savent où se trouve le truc (qui ont son adresse) peuvent y accéder
+    * tous ceux (toutes les fonctions) qui savent où se trouve le truc (qui ont son adresse) peuvent y accéder en lecture ou en écriture
 
 Du coup on comprend pourquoi le vecteur est composé en 2 morceaux
 
-**La structure de contrôle :** elle a une taille fixe, connue au moment de la compilation. Si le vecteur `vec0` est mutable, le paramètre ``len`` va peut être passer de 3 à 18 mais en gros cette valeur sera toujours codée par un ``usize`` (pense à un entier 64 bits). De même, si pour une raison ou pour une autre on doit déplacer la zone qui contient les données (on passe de 3 à 300 données par exemple et on manque de place), l’adresse (la valeur du pointeur dont je parlais précédemment) va changer mais ce sera toujours une address sur 64 bits. Donc même si les valeurs des champs de la structure de contrôle changent, la taille, le nombre d'octets occupés par cette dernière sera toujours la même. 
+**La structure de contrôle :** elle a une taille fixe, connue au moment de la compilation. Si le vecteur `vec0` est mutable, le paramètre ``len`` va peut être passer de 3 à 18 mais en gros cette valeur sera toujours codée par un ``usize`` (pense à un entier 64 bits). De même, si pour une raison ou pour une autre on doit déplacer la zone qui contient les données (on passe de 3 à 300 données par exemple et on manque de place), l’adresse (la valeur du pointeur dont je parlais précédemment) va changer mais ce sera toujours une address sur 64 bits. Donc même si les valeurs des champs de la structure de contrôle changent, sa taille, le nombre d'octets occupés par cette dernière, sera toujours la même. 
 
 C'est cette structure de taille fixe qu'on va faire passer, d'une fonction à une autre via la stack.
 
@@ -220,9 +242,9 @@ C'est cette structure de taille fixe qu'on va faire passer, d'une fonction à un
 Il est susceptible de voir sa taille évoluer. On le stocke donc sur le heap.
 
 
-***Ok, ok je comprends pourquoi un type de données dynamique comme un vecteur est découpé en 2 parties (stack et heap) mais y sont où la stack et le heap?***
+***Ok, ok je comprends pourquoi un type de données dynamique comme un vecteur est découpé en 2 parties (descriptif sur la stack et données sur le heap) mais y sont où la stack et le heap?***
 
-Dans le cadre d'un process (exécutable) qui tourne sous Windows voilà (à peu près) à quoi ressemble le plan mémoire (c'est similaire sous Linux, sous Mac, je sais pas).
+Dans le cadre d'un process (un exécutable) qui tourne sous Windows voilà (à peu près) à quoi ressemble le plan mémoire (c'est similaire sous Linux. Sous Mac, je sais pas).
 
 ```
 +-------------------------+  ← Adresses hautes (ex: 0xFFFFFFFFFFFFFFFF)
@@ -254,8 +276,8 @@ Et si je simplifie encore, voilà ce qu'il faut retenir :
 <img src="./assets/virtual_memory_space.webp" alt="Rust stack heap" width="900" loading="lazy"/>
 </div>
 
-* le programme exécutable (le process) croît qu'il est seul au monde 
-* ce benêt pense qu'il a accès à un espace mémoire 64 bits dont les adresses vont de 0x00.. à 0xFF.. En fait c'est l'OS qui lui fait croire ça, mais non, bien sûr, il est dans un espace mémoire virtualisé. 
+* le programme exécutable (le process) croît qu'il est seul au monde (dis bonjour à Wilson 🏐)
+* ce benêt pense qu'il a accès à un espace mémoire de 64 bits dont les adresses vont de 0x00.. à 0xFF.. En fait c'est l'OS qui lui fait croire ça, mais non, bien sûr, il est dans un espace mémoire virtualisé. 
 * le code qui est exécuté se trouve dans la partie "Code Segment". 
 * il y a ensuite 2 zones qui contiennent respectivement les variables globales initialisées et non initialisées.
 * la taille du bloc mémoire ``[.text + .data + .bss]`` est fixe et connue à la fin de la compilation/édition de liens. Donc du coup, ça c'est bon, ça bouge pas.
@@ -268,38 +290,47 @@ Pour fixer les idées, sous Windows, la taille de la stack du process principal 
 
 Concernant le heap on va dire qu'au départ sa taille est de 0.
 
-***Et qu'est ce qui se passe si la Stack qui croît vers le bas rencontre le heap qui croît vers le haut?*** C'est un croisement d'effluves et tout le monde sait qu'il ne faut jamais croiser les effluves.
+***Et qu'est ce qui se passe si la Stack qui croît vers le bas rencontre le heap qui croît vers le haut?*** C'est un croisement d'effluves et tout le monde sait qu'il ne faut jamais croiser les effluves. C'est mal.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TAQnOzY7QXE?si=JlvEEWL3BTvWJvbz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 
-***Ok... Et à propos de la mutabilité du binding. Tu serais pas en train de ma le faire à l'envers? T'as toujours pas répondu.***
+***Ok... Et à propos de la mutabilité du binding. Tu serais pas en train de me la faire à l'envers? T'as toujours pas répondu.***
 
-Le compilateur Rust s'appuie sur de d'analyse statique du code. Il ne regarde pas l'emplacement mémoire en soi (stack vs heap), mais il suit les bindings et leurs droits d'accès.
-Il n'y a donc pas de différence de traitement entre la stack et le heap. Ce qui compte, c’est le type du binding et les règles d’emprunt.
+On l'a vu le heap et la stack sont dans le même espace mémoire. "Physiquement" ces 2 zones sont mutables. Par exemple, on ne dépose pas les données déclarées non mutables dans une mémoire read-only.
+
+Ce qui garanti que les bonnes opérations de lecture et d'écriture sont effectuées sur les données, quelles soient dans la stack où le heap, c'est l'analyse statique du code faite lors de la compilation.  
+
+À notre niveau, on peut imaginer que lors de la compilation, il y une table qui fait l'inventaire de tous les bindings, de toutes les zones mémoire et que si à un moment un bout de code tente de modifier un binding non mutable, le compilateur pousse un cri. 
+
+Le truc, c'est que cette analyse, lourde, longue, fastidieuse n'a lieu que pendant la compilation. Le but du jeu c'est qu'à la fin de cette dernière, on ait la certitude qu'au moment de l'exécution tout va bien se passer et qu'on va pas tenter de modifier un binding non mutable par exemple. 
+
+Finalement, quand tout est prouvé que le code est compilé, on fonce. A l'exécution il n'y a plus de table ou autre.  
+
+Le compilateur Rust s'appuie sur de d'analyse statique du code. Il ne regarde pas l'emplacement mémoire en soi (stack ou heap), mais il suit les bindings et leurs propriétés. 
+
+De son point de vue, il n'y a pas de différence de traitement entre la stack et le heap. Ce qui compte, c'est que les propriétés du binding soient respectés. 
+
+Pour l'instant nous n'avons vu que la propriété "mutability" mais il y en a d'autres...
 
 **La structure de contrôle :** 
 * Elle est sur la stack
-* Si on a un binding non mutable, le compilateur refuse toute tentative de mutation du binding ou de mutation via ce binding, même s’il pointe vers de la mémoire mutable.
+* Si on a un binding non mutable, le compilateur refuse toute tentative de mutation du binding ou de mutation via ce dernier. 
 
 **Le jeu de données :**  
 * Elles sont sur le heap
-* Si on a un binding non mutable, le compilateur 
+* 
 
 
 
-
-
-Donc du coup, à propos du binding il faut garder en tête :
-1. Il a un nom
-1. Une valeur
-1. Des propriétés
-    * de ownership 
-    * de prêt
-    * de mutabilité
-
+À ce moment, concernant le binding il faut garder en tête :
+1. Il associe un nom à une valeur
+1. Il ajoute des propriétés
+    * de mutability
+    * ... 
+Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -769,39 +800,67 @@ Tiens, fais toi plaisir. Tu as tous les éléments pour analyser la situation.
 // The binding str_in associates the name str_in with a value of type reference to a String.
 // str_in is an immutable binding; it cannot be reassigned to another &String.
 // The reference to the String is also immutable; the content of the String cannot be modified through this reference.
-/fn dont_change(str_in: &String){
+fn dont_change(str_in: &String){
     println!("{}", str_in); // Reads and prints the string. Cannot modify
 }
 
-// This function takes a mutable reference to a String
-// The reference to the String is mutable. The content of the string can be modified using this refrence 
+// The binding str_in associates the name str_in with a value of type mutable reference to a String.
+// str_in is an immutable binding; it cannot be reassigned to another &String.
+// The reference to the String is mutable. The content of the string can be modified using this reference 
 fn change(str_in: &mut String){
-    str_in.push_str(", world"); // Appends text to the original String
+    str_in.push_str(" power!"); // Appends text to the original String
 }
 
-// This function takes an immutable reference to a string slice (&str)
-// The binding is mutable, so we can reassign str_in to another slice,
-// but we cannot modify the data pointed to by the slice
+// The binding str_in associates the name str_in with a value of type reference to a string slice (&str)
+// str_in is mutable binding; it can be reassigned to another string slice (&str)
+// we cannot modify the data pointed to by the slice
 fn change_view(mut str_in: &str) {
     str_in = &str_in[1..3];   // Rebinds str_in to a substring of the original
-                              // There is no let. This is an assignment
+                              // This is NOT a let. This is an reassignment
     println!("{:?}", str_in); // Prints the new slice
 }
 
+// The binding str_in associates the name str_in with a value of type mutable reference to a String.
+// str_in is a mutable binding; it can be reassigned to another mutable reference to a String.
+// The reference itself is mutable: the content of the String can be modified through this reference.
+// We need to annotate the lifetime because we manipulate two mutable references.
+fn change_and_reassign<'a>(mut str_in: &'a mut String, other: &'a mut String) {
+    // Modify the original String
+    str_in.push_str(" modified");
+    println!("After modification                         : {}", str_in);
+
+    // Reassign str_in to point to another mutable String
+    str_in = other;
+    str_in.push_str(" changed");
+    println!("After reassignment and second modification : {}", str_in);
+}
+
+
 fn main() {
     // Create a mutable String binding
-    let mut my_str = String::from("hello");
+    let mut my_str = String::from("Banana");
     
     // Pass an immutable reference to a function that reads the string
     dont_change(&my_str);
     
     // Pass a mutable reference to allow the function to modify the String
     change(&mut my_str);
-    // Print the modified String
-    println!("{}", my_str); // Should print: hello, world
+    println!("{}", my_str); // Print my_str once modified String
 
     // Pass an immutable reference (as a slice) to a function that creates a view into the string
     change_view(&my_str);
+
+
+
+    let mut my_str = String::from("hello");
+    let mut another_str = String::from("world");
+
+    // Pass two mutable references
+    change_and_reassign(&mut my_str, &mut another_str);
+
+    // After the function, let's print the original variables
+    println!("my_str      : {}", my_str);
+    println!("another_str : {}", another_str);
 
 }
 ```
