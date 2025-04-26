@@ -199,7 +199,7 @@ Si tu veux, tu peux imaginer qu'en mémoire la situation ressemble à ça :
 
 ***Mais pourquoi c'est si compliqué?***
 
-Imagine... Imagine qu'on se trouve dans une fonction ``main()``. On souhaite appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière[^1]. Afin de bien décomposer les évènements on va utiliser le PC du [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
+Imagine... Imagine qu'on se trouve dans une fonction ``main()``. On souhaite appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière[^1]. Afin de bien décomposer les évènements on va utiliser le PC qu'on a vu dans [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
 
 <div align="center">
 <img src="./assets/alu_3_bodies.webp" alt="ALU 3 bodies problem" width="900" loading="lazy"/>
@@ -209,7 +209,7 @@ Alors... Comment on fait? Je te propose de mettre la valeur dans un classeur, de
 
 ***Cool, ça marche.*** Maintenant si on veut passer 2 entiers. Même principe. Par contre attention à l'ordre. Faut que je me mette d'accord avec la fonction pour dire que la premiere feuille du classeur correspond au premier paramètre et la seconde au second paramètre.
 
-***Cool, ça marche encore...*** Et si maintenant je veux passer un nombre réel (3.14159) et un entier (42). Pareil, je fais attention à l'ordre et j'écris 3.14159 sur une page et 42 sur l'autre. 
+***Cool, ça marche encore.*** Et si maintenant je veux passer un nombre réel (3.14159) et un entier (42). Pareil, je fais attention à l'ordre et j'écris 3.14159 sur une page et 42 sur l'autre. 
 
 ***Cool, ça marche toujours.*** Imaginons maintenant que je veux passer un tableau de pixels (une image) dont la taille est connue à la compilation (640x480 pixels tous codés sur un octet chacun). Là, c'est plus long mais je vais utiliser 640x480 pages et mettre sur chacune une valeur entre 0 et 255. À l'arrivée la fonction va lire toutes les pages du classeur et être capable de reconstituer l'image localement.
 
@@ -1002,4 +1002,4 @@ Si on parle de binding (et qu'on garde constamment en tête binding = nom + vale
 
 ----
 
-[^1]: Une note de bas de page
+[^1]: Je sais les entiers ne passent pas généralement par la stack mais c'est pour l'exemple
