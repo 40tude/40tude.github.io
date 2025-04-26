@@ -199,7 +199,7 @@ Si tu veux, tu peux imaginer qu'en mémoire la situation ressemble à ça :
 
 ***Mais pourquoi c'est si compliqué?***
 
-Imagine... Imagine qu'on se trouve dans une fonction ``main()``. On souhaite appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière[^note1]. Afin de bien décomposer les évènements on va utiliser le PC du [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
+Imagine... Imagine qu'on se trouve dans une fonction ``main()``. On souhaite appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière[^1]. Afin de bien décomposer les évènements on va utiliser le PC du [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
 
 <div align="center">
 <img src="./assets/alu_3_bodies.webp" alt="ALU 3 bodies problem" width="900" loading="lazy"/>
@@ -1000,5 +1000,6 @@ Si on parle de binding (et qu'on garde constamment en tête binding = nom + vale
 
 
 
-[^note1]: Oui, oui je sais un entier ne passe pas par la stack mais c'est pour l'exemple.
+----
 
+[^1]: Une note de bas de page
