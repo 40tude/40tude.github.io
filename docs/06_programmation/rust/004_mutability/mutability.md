@@ -1,27 +1,27 @@
 ---
 published: true
 layout: default
-title: "Mutabilité du Binding Local, Mutabilité d'une Référence"
+title: "Bindings en Rust : Bien Plus Que de Simples Variables"
 parent: "Rust"
 #math: mathjax
 date               : 2025-04-25 11:00:00
-last_modified_date : 2025-04-25 23:00:00
+last_modified_date : 2025-04-26 09:00:00
 ---
 
-# Mutabilité du Binding Local, Mutabilité d'une Référence
+# Bindings en Rust : Bien Plus Que de Simples Variables
+{: .no_toc }
 
-<div align="center">
-<img src="./assets/stack_heap.webp" alt="Rust stack heap" width="900" loading="lazy"/>
-</div>
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
 
-## Rustlings : move_semantics3.rs
+## Mutabilité du Binding
 
-Comme beaucoup de ceux qui débutent avec Rust, j'ai installé [Rustlings](https://github.com/rust-lang/rustlings) et voici l’énoncé de l'exercice ``move_semantics3.rs``. 
+### Exercice move_semantics3.rs de Rustlings 
 
-On nous demande de satisfaire le compilateur. OK... Regardons le code ci-dessous. Dans la section ``test`` on crée un vecteur `vec0` qu'on passe comme argument à une fonction ``fill_vec()``. Cette dernière retourne un vecteur ``vec1`` qui n'est autre que le précédent auquel on a ajouté la valeur 88 (voir le assert). 
-
-De son côté la fonction ``fill_vec()`` possède un paramètre ``vec`` qui est un vecteur de i32 et elle retourne un vecteur de i32. Dans le corps de la fonction il y a un ``.push(88)`` qui modifie le contenu du vecteur.   
+Comme beaucoup de ceux qui débutent avec Rust, j'ai installé [Rustlings](https://github.com/rust-lang/rustlings) et voici le code de l'exercice ``move_semantics3.rs``. 
 
 ```rust
 // TODO: Fix the compiler error in the function without adding any new line.
@@ -46,6 +46,13 @@ mod tests {
     }
 }
 ```
+
+On nous demande de satisfaire le compilateur. OK... Regardons le code ci-dessus. Dans la section ``test`` on crée un vecteur `vec0` qu'on passe comme argument à une fonction ``fill_vec()``. Cette dernière retourne un vecteur ``vec1`` qui n'est autre que le précédent auquel on a ajouté la valeur 88 (voir le assert). 
+
+De son côté la fonction ``fill_vec()`` possède un paramètre ``vec`` qui est un vecteur de i32 et elle retourne un vecteur de i32. Dans le corps de la fonction il y a un ``.push(88)`` qui modifie le contenu du vecteur.   
+
+
+
 Voici la solution que je propose :
 
 ```rust
@@ -72,7 +79,9 @@ mod tests {
     }
 }
 ```
-Dans la signature de la fonction ``fill_vec()`` j'ai juste rajouté un `mut` devant le paramètre ``vec``. Ok, super... Et? Hé bien maintenant il va falloir expliquer ce qui se passe et cela va nous permettre de revenir sur pas mal de sujets. 
+Dans la signature de la fonction ``fill_vec()`` j'ai juste rajouté un `mut` devant le paramètre ``vec``. 
+
+***Ok, super... Et?*** Hé bien maintenant il va falloir expliquer ce qui se passe et cela va nous permettre de revenir sur pas mal de sujets. 
 
 
 
@@ -103,7 +112,7 @@ let vec0 = vec![22, 44, 66];
 
 `vec0` est ce que l'on appelle en Rust, un **binding** non mutable sur un ``Vec<i32>``. 
 
-***Hep, hep, hep. Tu peux reprendre, ça yest, tu m'as perdu... Je vois ce qu'est un vecteur de i32. C'est un tableau qui contient des entiers codés sur 32 bits susceptible de voir sa taille augmenter ou diminuer. Par contre binding... Pourquoi tu dis pas simplement qu'on déclare une variable ``vec0`` ?***
+***Hep, hep, hep. Tu peux reprendre, ça yest, tu m'as perdu... Je vois ce qu'est un vecteur de i32. C'est un tableau dont la taille peut varier et qui contient des entiers codés sur 32. Par contre binding... Pourquoi tu ne dis pas simplement qu'on déclare une variable ``vec0`` ?***
 
 En fait, si on était dans un autre langage de programmation, C++ par exemple, oui on dirait que la ligne correspond à la déclaration de la variable ``vec0``. Après ça, j'expliquerai que, en gros, on associe un nom (`vec0`) à une valeur (ou un ensemble de valeurs ici). 
 
@@ -529,23 +538,25 @@ fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32> {
 
 
 
-## Coding Interview Patterns - Bonus p 5 - Shift 0 to the end
+## Mutabilité des références
 
-Si tu l'as pas déjà fait, je te conseille vivement la lecture de ce bouquin
+### Exercice "Shift 0 to the end" de Coding Interview Patterns (Bonus p 5) 
+
+Si tu ne l'as pas déjà fait, je te conseille vivement la lecture de ce bouquin
 
 <div align="center">
 <img src="./assets/coding_interview_patterns.webp" alt="Coding Interview Patterns" width="450" loading="lazy"/>
 </div>
 
-Je te passe les détails mais dans un des bonus du chapitre 1 qui traite des "Two Pointers" il y a un challenge où on nous demande de regrouper à la fin d'un vecteur tous les zéros qu'on a pu trouver. Tu peux jeter un oeil sur ce puzzle [ici en Rust](https://github.com/40tude/rust_coding_interview) ou [là en Python](https://github.com/40tude/py_coding_interview).
+Je te passe les détails mais dans un des bonus du Chapitre 1 qui traite des "Two Pointers" il y a un challenge où on nous demande de regrouper à la fin d'un vecteur tous les zéros qu'on a pu trouver. Tu peux jeter un oeil sur ce puzzle [ici en Rust](https://github.com/40tude/rust_coding_interview) ou [là en Python](https://github.com/40tude/py_coding_interview).
 
-Ci-dessous la solution en Rust
+Ci-dessous une solution en Rust
 
-* Dans la fonction ``main()`` on créé un binding `vec0` qui est associé à un vecteur d'entiers 32 bits. Ce dernier contient des 0. 
-* Tu remarques que le binding est mutable car il a la propriété `mut`. On peut donc le modifier.
-* De manière très originale il y a ensuite une fonction `shift_zeros_to_the_end()` à qui on passe en argument `vec0` (on y revient dans 2 minutes)
-* Contrairement à toput à l'heure, la fonction ne retourne rien
-* Par contre, abracadabra, sur la dernière ligne les assert nous permet de vérifier que les 0 ont bien été repoussés au fond du binding ``vec0`` 
+* Dans la fonction ``main()`` on créé un binding `vec0` qui est associe le nom ``vec0`` à un vecteur d'entiers 32 bits (``Vec<i32>``).  
+* Tu remarques qu'au moment de sa création on donne au binding (``let mut vec0``) la propriété `mut`. On peut donc le modifier.
+* De manière très originale il y a ensuite une fonction `shift_zeros_to_the_end()` à qui on passe en argument un truc à base de `vec0` (on y revient dans 2 minutes)
+* Contrairement à tout à l'heure, la fonction ne retourne rien
+* Par contre, "abracadabra !", sur la dernière ligne le assert nous permet de vérifier que les 0 ont bien été repoussés au fond du binding ``vec0`` 
 
 ```rust
 fn main(){
@@ -588,7 +599,7 @@ Ici on a une ligne du genre
 ```rust
     shift_zeros_to_the_end(&mut vec0);      
 ```
-C'est pas mieux ou moins bien. Le truc c'est qu'au retour, on a pas de nouveau binding. Au contraire, on a garde le binding original (`vec0`) et on a donné l'autorisation à la fonction `shift_zeros_to_the_end()` de modifier sa valeur. Autrement dit, je t'ai prêté ma Ferrari et tu as fais le ménage (sympa, merci). 
+C'est pas mieux ou moins bien. Le truc c'est qu'au retour de la fonction, on a pas de nouveau binding. On continue d'utiliser le binding original (`vec0`). Par contre il a fallu a donner l'autorisation à la fonction `shift_zeros_to_the_end()` de modifier sa valeur. Autrement dit, je t'ai prêté ma Ferrari et tu as fais le ménage (sympa, merci). 
 
 Le truc, c'est que cette façon d'exprimer les choses traduit peut être bien notre intention ("tiens machin, vlà les clés, pense à passer l'aspirateur avent de me la rendre") mais bon, c'est un peu chaud au niveau des écritures (y a un petit côté Klingon).
 
@@ -596,12 +607,14 @@ En fait ici, on ne veut pas céder la propriété du binding, on veut juste le p
 
 Du point de vu de la syntaxe, pour passer une référence sur un binding plutôt qu'un binding lui même on utilise la notation ``& my_binding``.
 
-***Ben alors pourquoi dans le code je vois écrit ``&mut vec0`` ?*** T'es un grand garçon... Je te laisse réfléchir... Ayé? Non? Ok, qu'est ce qui se passe si on écrit juste
+***Ben alors pourquoi dans le code je vois écrit ``&mut vec0`` ?*** T'es un grand garçon... Je te laisse réfléchir... Ayé? Non? Ok, qu'est ce qui se passe si on écrit juste ça
 
 ```rust
     shift_zeros_to_the_end(& vec0);      
 ```
-C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exemple). Soit un peu à ce qu'on fait, on en a parlé au début. Oui très bien. Par défaut tout est non mutable. Et donc si on écrit la ligne de code précédente on dit au compilateur qu'on souhaite prêter la Ferrari mais on interdit toute modification. Et bien sûr ca va pas passer à la compile car le compilateur va détecter que la signature de la fonction ``shift_zeros_to_the_end()`` n'est pas respecter. 
+C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exemple). Soit un peu à ce qu'on fait, on en a parlé au début. Oui, très bien... 
+
+**Par défaut tout est non mutable**. Et donc si on écrit la ligne de code précédente on dit au compilateur qu'on souhaite prêter la Ferrari mais on interdit toute modification. Et bien sûr ça ne va pas passer à la compilation car le compilateur va détecter que la signature de la fonction ``shift_zeros_to_the_end()`` n'est pas respecter. 
 
 De plus, même sans parler de la signature du récipiendaire, Rust demande à ce j'exprime explicitement l'autorisation que je donne à la fonction de modifier le binding que je passe par référence. Du coup je dois écrire `shift_zeros_to_the_end(&mut vec0)`.
 
@@ -753,10 +766,11 @@ Tiens, fais toi plaisir. Tu as tous les éléments pour analyser la situation.
 
 ```rust
 
-// str_in is an immutable binding. It cannot be reassigned to another &String
-// The reference to the String is not mutable. The content of the string cannot be modified using this refrence 
-fn dont_change(str_in: &String){
-    println!("{}", str_in); // Reads and prints the string
+// The binding str_in associates the name str_in with a value of type reference to a String.
+// str_in is an immutable binding; it cannot be reassigned to another &String.
+// The reference to the String is also immutable; the content of the String cannot be modified through this reference.
+/fn dont_change(str_in: &String){
+    println!("{}", str_in); // Reads and prints the string. Cannot modify
 }
 
 // This function takes a mutable reference to a String
