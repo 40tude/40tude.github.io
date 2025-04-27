@@ -9,14 +9,14 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * Voir ces histoires de balise rel="canonical"
 * Voir ces histoires de plugins
     * Va être chaud
-    * Faut installer ruby meme si on a un plugin sous forme de gem 
+    * Faut installer ruby même si on a un plugin sous forme de gem 
     * Faut l'installer avec Bundle etc.
 * SEO? 
     * Pas sûr de comprendre grand chose au sujet
-    * Pas intéressé par le sujet
+    * En plus je suis pas intéressé par le sujet
 * Pages en anglais? avec lang=en avant le Head
     * À mon avis c'est mort mais bon je vais continuer à chercher
-    * Y a peut être une option avec les collection mais je sais pas si y a lang="en" avant le head
+    * Y a peut être une option avec les collections mais je sais pas si y a lang="en" avant le head
 
 ## DONE
 * ~~Mettre les liens des urls dans les billets en gras~~
@@ -102,9 +102,27 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 {: .note }    {: .warning }    {: .important }    {: .new }    {: .highlight }
 ```
 
+### Note de bas de page
+
+Dans le texte : 
+```
+une valeur entière[^1]
+```
+
+Tout en bas de l'article
+```
+----
+
+[^1]: Ma note de bas de page.
 
 ```
-Target
+
+
+
+
+### Target
+
+```
 [titre](https://youtu.be/57ivuBX1kLU?si=bI3xfPOcipMe5F3O&t=42){:target="_blank"}
 
 Pour les images sur les pages où il y a un permalink
@@ -115,9 +133,9 @@ Pour les images sur les pages où il y a un permalink
 
 ```
 
-```
-Ancre
+### Ancre
 Sur un paragraphe dans une autre page
+```
 [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}#le-point-de-corde-pc)
 
 [Aller à cette section](#short-id) Dès qu'on met le # code propose une liste d'ancres
@@ -127,6 +145,7 @@ Sur un paragraphe dans une autre page
 ```
 
 
+### Table of content
 ```
 Mettre {:toc} que sur les titres de niveau 2. Éviter 3 et +
 

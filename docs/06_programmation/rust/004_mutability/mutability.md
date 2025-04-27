@@ -25,7 +25,7 @@ Un binding est plus riche qu'une variable classique.
     * de ownership 
     * de borrowing
     * de lifetime
-Lors de la compilation, le compilateur s'assure que les propriétés des bindings ne sont pas mise à mal.
+Le compilateur s'assure que les propriétés des bindings ne sont pas mise à mal.
 
 
 
@@ -35,9 +35,10 @@ Lors de la compilation, le compilateur s'assure que les propriétés des binding
 
 
 
-## Mutabilité du Binding
 
-### Exercice move_semantics3.rs de Rustlings 
+## Introduction
+
+<!-- ### Exercice move_semantics3.rs de Rustlings  -->
 
 Comme beaucoup de ceux qui débutent avec Rust, j'ai installé [Rustlings](https://github.com/rust-lang/rustlings). Voici le code de l'exercice ``move_semantics3.rs``. 
 
@@ -65,9 +66,37 @@ mod tests {
 }
 ```
 
-On nous demande de satisfaire le compilateur. OK... Regardons le code ci-dessus. 
+Perds pas de temps. Copie-colle le code ci-dessus dans la page de l'excellent [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) et appuie sur ``Test``. Tu devrais voir un message qui ressemble à ça :
 
-Dans la section ``test`` on crée un vecteur `vec0` qu'on passe comme argument à une fonction ``fill_vec()``. Cette dernière retourne un vecteur ``vec1`` qui n'est autre que le précédent auquel on a ajouté la valeur 88 (voir la ligne ``assert``). 
+
+```
+Compiling playground v0.0.1 (/playground)
+error: expected type, found keyword `mut`
+ --> src/main.rs:1:18
+  |
+1 | fn fill_vec(vec: mut Vec<i32>) -> Vec<i32> {
+  |                  ^^^ expected type
+
+error[E0423]: expected value, found macro `vec`
+ --> src/main.rs:2:5
+  |
+2 |     vec.push(88);
+  |     ^^^ not a value
+
+error[E0423]: expected value, found macro `vec`
+ --> src/main.rs:3:5
+  |
+3 |     vec
+  |     ^^^ not a value
+
+For more information about this error, try `rustc --explain E0423`.
+error: could not compile `playground` (bin "playground") due to 3 previous errors
+
+```
+
+Bref, ça passe pas à la compilation et le but de l'exercice, c'est justement de corriger le code afin de satisfaire le compilateur. 
+
+OK... Revenons sur le code. Dans la section ``test`` on crée un vecteur `vec0` qu'on passe comme argument à une fonction ``fill_vec()``. Cette dernière retourne un vecteur ``vec1`` qui n'est autre que le précédent auquel on a ajouté la valeur 88 (voir la ligne ``assert``). 
 
 De son côté la fonction ``fill_vec()`` possède un paramètre ``vec`` qui est un vecteur de ``i32`` et elle retourne un vecteur de ``i32``. Dans le corps de la fonction il y a un ``.push(88)`` qui modifie le contenu du vecteur.   
 
@@ -122,30 +151,30 @@ Dans la signature de la fonction ``fill_vec()`` j'ai rajouté un `mut` devant le
 
 
 
+## Mutabilité du binding
 
-### Première ligne de code 
-
+On s'intéresse à la première ligne de code 
 
 ```rust
 let vec0 = vec![22, 44, 66];
 ```
 
-`vec0` est ce que l'on appelle en Rust, un **binding** non mutable sur un ``Vec<i32>``. 
+Ici `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète de type ``Vec<i32>``
 
 ***Hep, hep, hep. Tu peux reprendre? Ça y est, tu m'as perdu... Je vois ce qu'est un vecteur de ``i32``. C'est un tableau dont la taille peut varier et qui contient des entiers codés sur 32 bits. Par contre binding... Pourquoi tu dis pas simplement qu'on déclare une variable ``vec0`` ?***
 
 En fait, si on était dans un autre langage de programmation, C++ par exemple, oui on dirait que la ligne correspond à la déclaration de la variable ``vec0``. Après ça, j'expliquerai que, en gros, on associe au nom `vec0` (qu'on va manipuler dans le programme) une zone mémoire qui contient des valeurs. 
 
-En Rust la notion de binding va peu plus loin :
+En Rust la notion de binding va plus loin :
 1. Il y a toujours l'association d'un nom à une valeur  
 2. Qu'on enrichi de propriétés supplémentaires. Exemples : qui est propriétaire? peut-on modifier? peut on prêter?, pendant combien de temps?...  
-3. Ces propriétés sont utilisées au moment de la compilation (pas lors de l'exécution) pour prouver que le code gère correctement, entre autres, la mémoire  
+3. Ces propriétés sont utilisées au moment de la compilation (pas lors de l'exécution) pour prouver que le code gère correctement la mémoire (lecture, écriture, libération, accès concurrents...)  
 
 Un binding c'est donc un engagement fort (un contrat). On le signe avec notre sang auprès du compilateur et ce dernier refusera de compiler notre code si on ne respecte pas notre parole. Comme tu le vois, en Rust l'ambiance est assez sympa, mais bon, c'est pour notre bien.
 
-Tout ceci étant dit je te propose qu'on commence à s'habituer à utiliser le mot binding plutôt que le mot variable.
+Ceci étant posé, je te propose qu'à partir de maintenant on commence à utiliser le mot binding au lieu du mot variable.
 
-Maintenant, il faut le savoir, mais en Rust, par défaut **tout est non mutable**. Là, où par exemple en C++, tout est mutable par défaut. 
+Maintenant, il faut le savoir, mais en Rust, par défaut, **tout est non mutable**. Là, où par exemple en C++, tout est mutable par défaut. 
 
 ```cpp
 // code C++
@@ -161,7 +190,7 @@ let mut x = 42;   // mutable
 let     y = 42;   // non mutable par défaut
 
 ``` 
-C'est pas mieux ou moins bien en C++ c'est juste différent. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sûreté il y a sans doute un avantage à ce que tout soit constant par défaut. Je suis certains que si demain on pouvait ré-écrire les specifications ISO de C++ c'est le choix que l'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
+C'est pas mieux ou moins bien en C++ c'est juste une philosophie différente. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sûreté il y a sans doute un avantage à ce que tout soit constant par défaut. Je suis certains que si demain on pouvait ré-écrire les specifications ISO de C++ c'est le choix que l'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
 
 Du coup, maintenant qu'on a parlé de binding et de non mutabilité par défaut, si je reviens sur la 1ere ligne de code :
 
@@ -173,10 +202,97 @@ let vec0 = vec![22, 44, 66];
 
 ***Heu.. Attends... C'est le binding qui est non mutable? C'est pas le contenu du vecteur? T'es sûr de ton coup?*** 
 
-Oui. La mutabilité est une propriété du binding, ce n'est pas une propriété des données (`[22, 44, 66]`) et encore moins du nom (`vec0`). 
 
-Bouge pas, je t'explique et ça tombe bien car le type de données ``Vec<T>`` (vecteur contenant des données de type ``T``) est intéressant. En effet, même si on le manipule comme une entité unique, il est constitué de 2 parties : 
-1. il y a d'un côté une structure de contrôle. Je la nomme PLC. À mon avis c'est pas le terme officiel. J'ai lu "représentation interne" ou "méta-données".
+
+
+
+
+
+### Test de mutabilité du binding
+
+{: .note }
+Utilise le [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). Fais des tests, plante tout, lis les messages du compilateur, "perd du temps" à essayer de comprendre ce qui se passe. Personne ne peut le faire à ta place et c'est plus rentable que de regarder des shorts de chattons sur YouTube. 
+
+OK... "You talkin to me?". Tu le prends sur ce ton? Allez, sors si t'es un homme. On va aller faire un test dehors. Copie-colle le code ci-dessous dans [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) et appuie sur ``Run`` (CTRL+ENTER). C'est le même code qu'avant sauf que j'ai tout mis dans la fonction ``main()`` et, pour te faire plaisir, j'ai aussi ajouté un ``mut`` devant `Vec<i32>` dans la signature de la la fonction `fill_vec`.
+
+```rust
+fn fill_vec(vec: mut Vec<i32>) -> Vec<i32> {
+    vec.push(88);
+    vec
+}
+
+fn main() {
+    let vec0 = vec![22, 44, 66];
+    let vec1 = fill_vec(vec0);
+    assert_eq!(vec1, [22, 44, 66, 88]);
+}
+
+```
+
+
+Si tu tente d'exécuter le code, voilà le message du compilateur :
+
+```
+Compiling playground v0.0.1 (/playground)
+error: expected type, found keyword `mut`
+ --> src/main.rs:1:18
+  |
+1 | fn fill_vec(vec: mut Vec<i32>) -> Vec<i32> {
+  |                  ^^^ expected type
+
+error[E0423]: expected value, found macro `vec`
+ --> src/main.rs:2:5
+  |
+2 |     vec.push(88);
+  |     ^^^ not a value
+
+error[E0423]: expected value, found macro `vec`
+ --> src/main.rs:3:5
+  |
+3 |     vec
+  |     ^^^ not a value
+
+For more information about this error, try `rustc --explain E0423`.
+error: could not compile `playground` (bin "playground") due to 3 previous errors
+
+```
+
+En gros il dit que sur la première ligne du code il y a une erreur de syntaxe. En effet, après les 2 points qui suivent le nom du paramètre `vec`, il attend un type et qu'il a lu `mut`. Maintenant, si tu modifies le code comme ci-dessous (dans la signature de `fill_vec()`, `mut` est passé devant le nom du binding `vec`) tout devrait bien se passer.
+
+
+```rust
+fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {
+    vec.push(88);
+    vec
+}
+
+fn main() {
+    let vec0 = vec![22, 44, 66];
+    let vec1 = fill_vec(vec0);
+    assert_eq!(vec1, [22, 44, 66, 88]);
+}
+
+```
+
+Je suis toujours scotché sur la première ligne de code. Je ne souhaite donc pas pour l'instant parler d'appel de fonction etc. Mais bon, le petit test qu'on vient de faire confirme ce que je disais. La mutabilité est une propriété du binding, ce n'est pas une propriété des données (`[22, 44, 66]`) et encore moins du nom (`vec0`). 
+
+***Ok... La mutabilité est associée au binding... Mais alors les données sont modifiables? Je comprends rien!***
+
+
+
+
+
+### Un premier détour pour comprendre ce qui se passe en mémoire
+
+Bouge pas. On va devoir faire un détour afin de bien comprendre ce qui se passe en mémoire. Cela devrait nous permettre de réaliser que dans cette dernière, physiquement, toutes les zones sont potentiellement mutables. Ce qui nous sauve c'est que dans le code on annonce ce que l'on veut (mutable, non mutable) et qu'ensuite, le compilateur, aka Vinz Clortho le Maître des Clés de Gozer, veille aux grains et autorise (ou non) que telle ou telle zone soit modifiée. 
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o1T-D_37qz0?si=SJxX45O-FpypvG-1&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+Allez, c'est parti, je t'explique et ça tombe bien car le type de données ``Vec<T>`` (vecteur contenant des données de type ``T`` : `i32`, `f64`...) est intéressant. En effet, même si dans le code on le manipule comme une entité unique, il est constitué de 2 parties : 
+1. il y a d'un côté une structure de contrôle. Je la nomme PLC. C'est pas le terme officiel. Je crois avoir lu "représentation interne" ou "méta-données".
 1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). 
 
 **La structure de contrôle contient 3 champs :**
@@ -197,15 +313,23 @@ Si tu veux, tu peux imaginer qu'en mémoire la situation ressemble à ça :
 <img src="./assets/stack_heap.webp" alt="Rust stack heap" width="900" loading="lazy"/>
 </div>
 
-***Mais pourquoi c'est si compliqué?***
 
-Imagine... Imagine qu'on se trouve dans une fonction ``main()``. On souhaite appeler une fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière[^1]. Afin de bien décomposer les évènements on va utiliser le PC qu'on a vu dans [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
+
+
+
+
+
+### Un second détour pour comprendre le passage de paramètres, le heap et la stack
+
+***Mais pourquoi c'est si compliqué?*** Désolé mais il va falloir faire un détour supplémentaire afin de comprendre pourquoi un vecteur est séparé en 2 parties. En effet, il faut qu'on comprenne le principe de base du passage de paramètres d'une fonction à une autre puis qu'on introduise les 2 zones mémoire heap et stack. Quand se sera fait on pourra vraiment comprendre pourquoi la mutabilité c'est la mutabilité du binding et pas des données.
+
+Allez, c'est reparti. Imagine... Imagine qu'on se trouve dans une fonction ``main()``. On souhaite appeler une autre fonction et lui passer un paramètre. Faisons simple pour démarrer. Imaginons qu'on veut passer une valeur entière[^1]. Afin de bien décomposer les évènements on va utiliser le PC qu'on a vu dans [Le problème à 3 corps](https://www.youtube.com/watch?v=yEnW_1YdoS4).
 
 <div align="center">
 <img src="./assets/alu_3_bodies.webp" alt="ALU 3 bodies problem" width="900" loading="lazy"/>
 </div>
 
-Alors... Comment on fait? Je te propose de mettre la valeur dans un classeur, de donner ce classeur à un cavalier et d'envoyer le cavalier à l'autre bout de la plaine. Là, on ouvre le classeur, on récupère la valeur et on exécute le code de la fonction. Quand c'est terminé le cavalier revient. Le classeur est vide car la fonction n'avait rien à renvoyer. On reprend l'exécution de la fonction main().
+Alors... Comment on fait? Je te propose de mettre la valeur dans un classeur, de donner ce classeur à un cavalier et d'envoyer le cavalier à l'autre bout de la plaine. Là, on ouvre le classeur, on récupère la valeur et on exécute le code de la fonction. Quand c'est terminé le cavalier revient. Le classeur est vide car la fonction n'avait rien à renvoyer. On reprend l'exécution de la fonction ``main()``.
 
 ***Cool, ça marche.*** Maintenant si on veut passer 2 entiers. Même principe. Par contre attention à l'ordre. Faut que je me mette d'accord avec la fonction pour dire que la premiere feuille du classeur correspond au premier paramètre et la seconde au second paramètre.
 
@@ -213,7 +337,7 @@ Alors... Comment on fait? Je te propose de mettre la valeur dans un classeur, de
 
 ***Cool, ça marche toujours.*** Imaginons maintenant que je veux passer un tableau de pixels (une image) dont la taille est connue à la compilation (640x480 pixels tous codés sur un octet chacun). Là, c'est plus long mais je vais utiliser 640x480 pages et mettre sur chacune une valeur entre 0 et 255. À l'arrivée la fonction va lire toutes les pages du classeur et être capable de reconstituer l'image localement.
 
-***Bon ben voilà on a terminé!*** Mouai... Qu'est ce qui se passe maintenant si je veux passer un tableau de nombres dont je ne connais pas, au moment de la compilation, la longueur. Pense aussi aux cas où je souhaite passer un tableau dont la longueur est susceptible de varier au cours du temps. C'est que l'on appelle un [vecteur](https://youtu.be/KcPLUn91md0?si=6jIkvDKofiS-_Nvx).
+***Bon ben voilà on a terminé!*** Mouai... Presque... Qu'est ce qui se passe maintenant si je veux passer un tableau de nombres dont je ne connais pas, au moment de la compilation, la longueur. Pense aussi aux cas où je souhaite passer un tableau dont la longueur est susceptible de varier au cours du temps. C'est que l'on appelle un [vecteur](https://youtu.be/KcPLUn91md0?si=6jIkvDKofiS-_Nvx).
 
 <div align="center">
 <img src="./assets/vector.webp" alt="vecteur" width="900" loading="lazy"/>
@@ -227,21 +351,24 @@ Du coup il faut retenir que :
 1. la stack 
     * permet de stocker des variables locales
     * quand une fonction appelle une autre fonction en lui passant des paramètres
-        * elle dépose ses dernier sur la stack (push)
+        * elle dépose ses derniers sur la stack (push)
         * la fonction les récupère dans le bon ordre (pop)
-    * on ne met dans la stack que des paramètres dont la taille est connue et des type simples (trivially copyable) : int, bool, float, tableau fixe, tuple, adresses mémoire 
+    * on ne met dans la stack que des paramètres dont la taille est connue et des types simples (trivially copyable) : int, bool, float, tableau fixe, tuple & struct avec des types simple, adresses mémoire 
 1. le heap, c'est une zone libre du champs où on peut déposer des trucs
     * c'est trucs (structures de données) peuvent avoir des tailles dynamiques
     * tous ceux (toutes les fonctions) qui savent où se trouve le truc (qui ont son adresse) peuvent y accéder en lecture ou en écriture
 
 Du coup on comprend pourquoi le vecteur est composé en 2 morceaux
 
-**La structure de contrôle :** elle a une taille fixe, connue au moment de la compilation. Si le vecteur `vec0` est mutable, le paramètre ``len`` va peut être passer de 3 à 18 mais en gros cette valeur sera toujours codée par un ``usize`` (pense à un entier 64 bits). De même, si pour une raison ou pour une autre on doit déplacer la zone qui contient les données (on passe de 3 à 300 données par exemple et on manque de place), l’adresse (la valeur du pointeur dont je parlais précédemment) va changer mais ce sera toujours une address sur 64 bits. Donc même si les valeurs des champs de la structure de contrôle changent, sa taille, le nombre d'octets occupés par cette dernière, sera toujours la même. 
-
-C'est cette structure de taille fixe qu'on va faire passer, d'une fonction à une autre via la stack.
+**La structure de contrôle :** elle a une taille fixe, connue au moment de la compilation. On peut la faire passer sur la stack pour "passer" le vecteur à une fonction. 
+* Si le vecteur `vec0` est mutable, le paramètre ``len`` va peut être passer de 3 à 18 mais en gros cette valeur sera toujours codée par un ``usize`` (pense à un entier 64 bits). 
+* De même, si pour une raison ou pour une autre on doit déplacer la zone qui contient les données (on passe de 3 à 300 données par exemple et on manque de place), l’adresse (la valeur du pointeur dont je parlais précédemment) va changer mais ce sera toujours une address sur 64 bits. 
+* Donc même si les valeurs des champs de la structure de contrôle changent, sa taille, le nombre d'octets occupés par cette dernière, sera toujours la même. 
+* C'est cette structure de taille fixe qu'on va faire passer, d'une fonction à une autre via la stack.
 
 **Le jeu de données :**  
-Il est susceptible de voir sa taille évoluer. On le stocke donc sur le heap.
+* Il est susceptible de voir sa taille évoluer.
+* On le stocke donc sur le heap.
 
 
 ***Ok, ok je comprends pourquoi un type de données dynamique comme un vecteur est découpé en 2 parties (descriptif sur la stack et données sur le heap) mais y sont où la stack et le heap?***
@@ -278,7 +405,7 @@ Et si je simplifie encore, voilà ce qu'il faut retenir :
 <img src="./assets/virtual_memory_space.webp" alt="Rust stack heap" width="900" loading="lazy"/>
 </div>
 
-* le programme exécutable (le process) croît qu'il est seul au monde (dis bonjour à Wilson 🏐)
+* le programme exécutable (le process) croît qu'il est "Seul au monde" (dis bonjour à Wilson 🏐)
 * ce benêt pense qu'il a accès à un espace mémoire de 64 bits dont les adresses vont de 0x00.. à 0xFF.. En fait c'est l'OS qui lui fait croire ça, mais non, bien sûr, il est dans un espace mémoire virtualisé. 
 * le code qui est exécuté se trouve dans la partie "Code Segment". 
 * il y a ensuite 2 zones qui contiennent respectivement les variables globales initialisées et non initialisées.
@@ -299,36 +426,174 @@ Concernant le heap on va dire qu'au départ sa taille est de 0.
 </div>
 
 
-***Ok... Et à propos de la mutabilité du binding. Tu serais pas en train de me la faire à l'envers? T'as toujours pas répondu.***
 
-On l'a vu le heap et la stack sont dans le même espace mémoire. "Physiquement" ces 2 zones sont mutables. Par exemple, on ne dépose pas les données déclarées non mutables dans une mémoire read-only.
+**Ce qu'il faut retenir à la fin de ce second détour :** 
+* Le passage de paramètres se fait via la stack
+* On y dépose des données dont la taille est fixe et connue à la fin de la compilation
+* Le heap et la stack sont 2 zones mémoire semblables
+* Elles sont toutes les 2 read-write et croissent l'une vers l'autre
+* Comme ``Vec<T>`` est de longueur variable, il ne peut pas passer par la stack 
+* On décide donc de le décomposer en 2 parties
+    * Une structure PLC, de taille fixe et qu'on peut faire passer par la stack 
+    * les valeurs qui sont sur le heap
 
-Ce qui garanti que les bonnes opérations de lecture et d'écriture sont effectuées sur les données, quelles soient dans la stack où le heap, c'est l'analyse statique du code faite lors de la compilation.  
+Et voilà. Tu comprends pourquoi ``Vec<T>`` est si "compliqué". C'est juste parce qu'on voulait pouvoir le passer comme paramètre. 
 
-À notre niveau, on peut imaginer que lors de la compilation, il y une table qui fait l'inventaire de tous les bindings, de toutes les zones mémoire et que si à un moment un bout de code tente de modifier un binding non mutable, le compilateur pousse un cri. 
 
-Le truc, c'est que cette analyse, lourde, longue, fastidieuse n'a lieu que pendant la compilation. Le but du jeu c'est qu'à la fin de cette dernière, on ait la certitude qu'au moment de l'exécution tout va bien se passer et qu'on va pas tenter de modifier un binding non mutable par exemple. 
 
-Finalement, quand tout est prouvé que le code est compilé, on fonce. A l'exécution il n'y a plus de table ou autre.  
 
-Le compilateur Rust s'appuie sur de d'analyse statique du code. Il ne regarde pas l'emplacement mémoire en soi (stack ou heap), mais il suit les bindings et leurs propriétés. 
 
-De son point de vue, il n'y a pas de différence de traitement entre la stack et le heap. Ce qui compte, c'est que les propriétés du binding soient respectés. 
 
-Pour l'instant nous n'avons vu que la propriété "mutability" mais il y en a d'autres...
 
-**La structure de contrôle :** 
+
+
+
+
+
+
+
+
+
+
+
+
+### Fin du second détour. Retour à la question concernant la mutabilité des données en mémoire
+
+On l'a vu le heap et la stack sont dans l'espace mémoire virtuel que perçoit le programme. "Physiquement" ces 2 zones sont mutables. Par exemple, on ne dépose pas les données déclarées non mutables dans une mémoire read-only.
+
+Donc pour répondre à la question : oui, potentiellement les données (quelles soient sur le heap ou dans la stack) sont toutes mutables.
+
+Ce qui garanti que les bonnes opérations de lecture et d'écriture sont effectuées sur les données (quelles soient dans la stack où le heap) au moment du runtime c'est l'analyse statique du code qui est faite lors de la compilation. Le compilateur ne traite pas différemment tel ou tel emplacement mémoire (stack ou heap). Il surveille les bindings et leurs propriétés. De son point de vue, il n'y a pas de différence de traitement entre la stack et le heap. Ce qui compte, c'est que les propriétés du binding soient respectés. 
+
+C'est comme en C++. Si je déclare une variable ``const``, qu'elle soit sur le heap ou dans la stack, si je la modifie je prends un coup de règle sur les doigts (et la règle est en métal, pas en plastique tout pourri)
+
+À notre niveau, on peut imaginer que lors de la compilation, il y a une table qui fait l'inventaire de tous les bindings, de toutes les zones mémoire et que si à un moment, un bout de code tente de modifier un binding non mutable, le compilateur pousse un cri. 
+
+Le truc, c'est que cette analyse, lourde, longue et fastidieuse n'a lieu que pendant la compilation. Le but du jeu c'est qu'à la fin de cette dernière, on ait la certitude qu'au moment de l'exécution tout va bien se passer et qu'on va pas tenter de modifier un binding non mutable par exemple. 
+
+Finalement, quand tout est prouvé, que le code est compilé, on fonce. À l'exécution il n'y a plus de table ou autre. Tout se passe comme si la veille des essais du moto GP tu prends ton vélo et tu vas faire un tour de piste. Tu vas doucement, tu notes tout. La petite bosse ici, le creux, là pil poil au point de corde, le poteau à utiliser comme point de freinage... Tu vas doucement et si besoin tu reviens sur tes pas. Quand c'est clair, que tout est vérifié, le lendemain tu te poses plus de question... Gaaaaz! 
+
+
+Une dernière remarque avant de passer à la suite. Pour l'instant nous n'avons vu que la propriété "mutability" du binding mais rien n'empêche d'en ajouter d'autres. Par exemple des propriétés de durée de vie. On en reparle plus bas. Et ça, sauf erreur de ma part, c'est pas tracé par un compilateur C++. 
+
+<!-- **La structure de contrôle :** 
 * Elle est sur la stack
 * Si on a un binding non mutable, le compilateur refuse toute tentative de mutation du binding ou de mutation via ce dernier. 
 
 **Le jeu de données :**  
-* Elles sont sur le heap
-* 
+* Il est sur le heap -->
 
 
 
-À ce moment, concernant le binding il faut garder en tête :
-1. Il associe un nom à une valeur
+
+
+
+
+
+
+
+
+
+**Ce qu'il faut retenir à la fin du premier détour :** 
+* Du point de vue du compilateur la stack et le heap sont des zones mémoire où on peut lire ou écrire
+* Les données y sont donc potentiellement toujours modifiables
+
+
+
+
+
+
+
+
+
+
+
+### Fin du premier détour. Retour à la question concernant la mutabilité du binding
+
+***Ok... Et à propos de la mutabilité du binding. Tu serais pas en train de me la faire à l'envers? T'as toujours pas répondu.***
+
+En fait compte tenu du test de code que l'on a fait et des 2 (longs) détours par lesquels on est passé il est clair que :
+* les données, qu'elles soient sur le heap ou dans la stack, peu importe, sont toujours modifiables.
+* Le compilateur connaît les propriétés de mutabilité des différents bindings 
+* Lors de l'analyse statique le compilateur détecte que le code tente de faire quelque chose d'interdit (modifier un binding non mutable par exemple) 
+* Ce qui est autorisé ou interdit c'est ce qui est inscrit sous forme de propriété dans le binding
+
+Donc oui, je confirme la mutabilité est une propriété du binding
+
+Du coup, on est toujours sur la 1ere ligne de code (à ce rythme on est pas sorti de l'auberge...)
+
+```rust
+let vec0 = vec![22, 44, 66];
+```
+Par contre, gros progrès... Dorénavant on comprend la phrase : `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète de ``Vec<i32>``. 
+
+
+***Heu... Désolé... Je comprends 80% de la phrase mais je comprends pas pourquoi tu parles de "l'état complet d'une instance concrète".*** En fait il m'a fallu beaucoup de temps pour arriver à cette phrase. Je t'explique et pour cela on repart de la ligne de code : 
+
+```rust
+let vec0 = vec![22, 44, 66];
+```
+Ce que tu vas lire c'est généralement des trucs du style "un binding relie un nom à une valeur". 
+
+Dans la cas précis de la ligne de code tu vas lire peut être des trucs du style : "``vec0`` est un binding non mutable qui lie le nom ``vec0`` à la valeur ``Vec<i32>``"
+
+OK, super mais là, la valeur c'est quoi? La partie PLC du vecteur, les valeurs dans le tableau... En fait c'est tout ça. Du coup, comme j'avais beaucoup de mal avec le mot "valeur" dans le cas d'un vecteur ma première idée a été de me dire que la "valeur" d'un vecteur (on d'une structure de données pas triviale) c'est le hash code de l'instance. 
+
+Typiquement je peux afficher le hash_code du vecteur avec le code ci-dessous.
+
+```rust
+use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
+
+fn main() {
+    let vec0 = vec![22, 44, 66];
+    
+    // Create a new hasher
+    let mut hasher = DefaultHasher::new();
+    
+    // Feed the vector into the hasher
+    vec0.hash(&mut hasher);
+    
+    // Finalize the hash and get the result as a u64
+    let hash_code = hasher.finish();
+    
+    // Print the hash code
+    println!("{}", hash_code); //2786706741450235691
+}
+
+```
+
+Du coup c'était plus clair et intérieurement je pouvais me dire : `vec0` est un binding non mutable qui lie le nom ``vec0`` au hash code de l'instance du vecteur. Et là "[Bingo, voilà ADN dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)" Non pas tout à fait mais "Bingo, maintenant je comprends que si je modifie une des valeurs de PLC ou une des valeurs du tableau je vais en prendre une car cela modifierai la valeur hash code."
+
+Mais du coup, si on réfléchit. Le hash code capture l'état à un instant t de l'instance que j'ai dans les mains. Autrement dit, si dorénavant je parle d'état plutôt que de hash code, ça revient au même. 
+
+Du coup, concernant la 1ere le de code, la description devient : 
+1. `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état d'un  ``Vec<i32>``. 
+1. `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'un ``Vec<i32>``. 
+1. `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance de ``Vec<i32>``. 
+1.`vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète de ``Vec<i32>``. 
+
+Et plus généralement, ce je garde en tête c'est : ``blablabla`` est un binding (non)mutable qui lie le nom ``blablabla`` à l'état d'une instance concrète de `<T>`.
+
+Ceci état expliquer, on y retourne et à propos de la première ligne de code
+
+```rust
+let vec0 = vec![22, 44, 66];
+```
+
+On peut dire que `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète de type ``Vec<i32>``. 
+
+* ``vec0`` c'est le nom du binding (introduit par `let`)
+* Le binding ``vec0`` est le propriétaire de ``Vec<i32>``
+    * Le vecteur est constitué d'une structure PLC qui est sur la stack
+    * Son pointeur (P) pointe sur les données `[22, 44, 66]` qui sont sur le heap
+* Le binding ``vec0`` n'est pas mutable. 
+    * Si je touche à quoi que ce soit qui modifie PLC ou les valeurs j'en prends une.
+
+
+
+**À cet instant, concernant le binding il faut garder en tête :**
+1. Il associe un nom à l'état d'une instance d'un type ``<T>``
 1. Il ajoute des propriétés
     * de mutability
     * ... 
@@ -339,21 +604,31 @@ Lors de la compilation, via une analyse statique du code, le compilateur s'assur
 
 
 
-### Point d'étape
-On est toujours sur la 1ere ligne de code (à ce rythme on est pas sorti de l'auberge...)
+Allez, il est temps de passer à la seconde ligne de code
 
-```rust
-let vec0 = vec![22, 44, 66];
-```
-Par contre, gros progrès... Dorénavant on comprend la phrase : `vec0` est un **binding** non mutable sur un ``Vec<i32>``. 
 
-* ``vec0`` c'est le nom du binding (introduit par `let`)
-* Le binding ``vec0`` est le propriétaire de Vec<i32>
-    * Le vecteur est constitué d'une structure PLC qui est sur la stack
-    * Son pointeur (P) pointe sur les données `[22, 44, 66]` qui sont sur le heap
-* Le binding ``vec0`` n'est pas mutable
 
-Allez, on passe à la seconde ligne
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -365,17 +640,19 @@ Allez, on passe à la seconde ligne
 
 ### Seconde ligne de code 
 
+Tiens, voilà la ligne qui nous intéresse :
+
 ```rust
 let vec1 = fill_vec(vec0);
 ```
 
-Que je met en regard de la fonction `fill_vec()`
+Et je la met en regard de la fonction `fill_vec()`
 
 ```rust
 fn fill_vec(vec: Vec<i32>) -> Vec<i32> {...}
 ```
 
-Afin de pouvoir avancer, je te redonne **LA** ownership rule de Rust : **Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.** Alors celle-là, tu l'imprimes et tu l'affiches dans tes toilettes...
+Maintenant, afin de pouvoir avancer, je te redonne **LA** ownership rule de Rust : **Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.** Alors celle-là, tu l'imprimes et tu l'affiches dans tes toilettes...
 
 <div align="center">
 <img src="./assets/ownerhip_rule.webp" alt="Rust ownership rule" width="450" loading="lazy"/>
@@ -385,11 +662,11 @@ On va pas y passer 3H mais bon, certains mots sont importants.
 
 **Each value has a single owner at any given time** : Ça, ça veut dire que lors de la compilation, l'analyse de code statique va suivre la trace de quel binding est propriétaire de quelle valeur et siffler la fin de la récréation si on essaie d'avoir 2 bindings sur la même valeur. Attention on parle du propriétaire. J'ai une Ferrari. Même si je te la prête j'en reste le propriétaire. Par contre si je te la donne... Donner c'est donner, reprendre c'est voler. Tu deviens le nouveau propriétaire et je n'ai plus aucun droit dessus.
 
-Attention... Il y a donc une subtilité dans le code précédent et tu vas voir ça va beaucoup mieux en le lisant. En effet, lors de l'appel `fill_vec(vec0)` qu'est-ce qui se passe ? On fait un passage par valeur? Un passage par référence ? On donne ou on prête le binding ``vec0`` à la fonction ? Ben oui, ça ressemble bigrement à un passage par valeur. Autrement dit, on donne le binding `vec0` à la fonction ``fill_vec()``. 
+Attention... Il y a donc une subtilité dans le code précédent et tu vas voir que ça va beaucoup mieux en le lisant. En effet, lors de l'appel `fill_vec(vec0)` qu'est-ce qui se passe ? On fait un passage par valeur? Un passage par référence ? On donne ou on prête le binding ``vec0`` à la fonction ? Oui, tu as raison, ça ressemble bigrement à un passage par valeur. Autrement dit, on va donner le binding `vec0` à la fonction ``fill_vec()``. 
 
 **and is automatically dropped when that owner goes out of scope** : un scope c'est une zone de code entre 2 accolades ``{`` et ``}``. 
 
-Illustrons ça à l'aide de l'ensemble du code de la fonction ``move_semantics3()``.
+Illustrons ça à l'aide de l'ensemble du code de la fonction ``move_semantics3()`` qui se trouve dans la section `#[test]`.
 
 ```rust
 fn move_semantics3() {
@@ -444,9 +721,9 @@ La question qu'on peut se poser c'est comment, au moment de l'appel de la foncti
 
 Je te laisse réfléchir... Ayé? 
 
-Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle; peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée qu'on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et complètement indépendant de la taille du vecteur. 
+Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle, peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée qu'on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et complètement indépendant de la taille du vecteur. 
 
-Par contre faut garder en tête que c'est pas une **copie** mais un **move**. Quand on arrive dans le scope de la fonction fill_vec, le binding ``vec0`` n'est plus propriétaire. Le propriétaire c'est ``vec``.
+Par contre faut garder en tête que c'est pas une **copie** mais un **move** (d'où le nom de l'exercice. Malins les mecs...). Quand on arrive dans le scope de la fonction fill_vec, le binding ``vec0`` n'est plus propriétaire. Le propriétaire c'est ``vec``.
 
 ***Ah OK, ça y est je comprends. Après on fait un push, on retourne et c'est terminé***
 
