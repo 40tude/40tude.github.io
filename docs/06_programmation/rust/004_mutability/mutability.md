@@ -1366,10 +1366,10 @@ Il n'y a pas de piège ou de choses compliquées que nous n'aurions pas vu.
 * On sort du scope artificiel 
 * On affiche   
 
-Concernant la fonction `longest` elle reçoit 2 bidings sur des types String (bon je fais court, t'as compris) et elle retourne un biding de type String. 
+Concernant la fonction `longest` elle reçoit 2 bindings sur des types String (bon je fais court, t'as compris) et elle retourne un binding de type String. 
 * Le truc à noter c'est que dans Rust les `if` sont des expressions pas des statements
 * Ça c'est cool car du coup un `if` retourne une valeur et c'est justement ce qui est fait dans la seule ligne de code.
-* Note aussi qu'il n'y a pas de `;` en bout de ligne car le ``if`` c'est le biding de retour 
+* Note aussi qu'il n'y a pas de `;` en bout de ligne car le ``if`` c'est le binding de retour 
 
 Tout va bien et à l'affichage on voit
 
@@ -1422,10 +1422,13 @@ For more information about this error, try `rustc --explain E0106`.
 error: could not compile `playground` (bin "playground") due to 1 previous error
 ```
 
-Je te laisse lire. Ayé? 
+Je te laisse lire... Ayé? 
 
+Le compilateur nous dit que la fonction retourne une référence, que c'est bien gentil mais bon lui il aimerait être sûr à 100% que la référence qui va être retournée sera une référence sur un truc qui à ce moment là sera un truc valide. Comme il arrive pas à s'en sortir tout seul il nous demande d'annoter la signature de la fonction avec les durées de vie des bindings concernés.
 
-Compile
+Il nous donne même un exemple qui est juste. En effet, la fonction retourne selon les cas, soit s1 soit s2. Donc le binding retourné et les paramètres doivent avoir les mêmes durées de vie.
+
+Aie confiance, crois en moi 🎹 Copie colle le code ci-dessous. Ça devrait passer
 
 ```rust
 fn longest<'t>(s1: &'t str, s2: &'t str) -> &'t str {
@@ -1445,6 +1448,44 @@ fn main() {
     // println!("Longest: {}", result);       // NOK result is s2 dependant
 }
 ```
+Super! Dans la console on voit ``Longest: , and beyond!``
+
+Maintenant pour vraiment comprendre ces histoires de durées de vie des bindings supprime le dernier commentaire
+
+Pour le coup ça compile plus et on a le message suivant
+
+```rust
+Compiling playground v0.0.1 (/playground)
+error[E0597]: `s2` does not live long enough
+  --> src/main.rs:11:31
+   |
+10 |         let s2 = String::from(", and beyond!");
+   |             -- binding `s2` declared here
+11 |         result = longest(&s1, &s2);  // OK s1 and s2 are still living
+   |                               ^^^ borrowed value does not live long enough
+12 |         println!("Longest: {}", result);
+13 |     }                               // <- s2 goes out of scope
+   |     - `s2` dropped here while still borrowed
+14 |     
+15 |     println!("Longest: {}", result);       // NOK result is s2 dependant
+   |                             ------ borrow later used here
+
+For more information about this error, try `rustc --explain E0597`.
+error: could not compile `playground` (bin "playground") due to 1 previous error
+
+```
+
+Tu commences à avoir l'habitude maintenant. Je the laisse lire...
+
+Le compilateur est vraiment fort (moi perso je suis bluffé). 
+* À la ligne 10 il pointe la déclaration de s2 (vérifie mais la ligne 10 est dans le scope artificiel qui commence à la ligne 9 et s'arrête à la ligne 13)
+* Il repère bien qu'à la ligne 11 on emprunte le binding s2
+* Enfin il indique juste en dessous de la seconde accolade du scope artificiel que s2 n'existe plus
+* Du coup il pointe du doigt la ligne 15, il sort la règle en aluminium et il nous en file un coup sur les doigts car il est maintenant capable de nous indiquer que nous ne respectons pas le contrat que nous avions signé. 
+    * On avait annoté la signature de la fonction avec les durées de vies
+    * On avait promis, juré craché que s1, s2 et result avait la même lifetime t
+    * Et pourtant... Et pourtant dans le code, le compilateur est capable de prouver que le binding ``s2`` n'a pas la même lifetime que le binding ``result``
+
 
 
 
@@ -1474,20 +1515,20 @@ fn main() {
 
 
 ## Conclusion
+Franchement je pense que tu as ta dose. Je me demande même si je ne vais pas couper ce billet en deux parties... À voir...
 
-Donc du coup, à propos du binding il faut garder en tête :
-1. Il a un nom
-1. Une valeur
-1. Des propriétés
+Pour le reste, concernant le binding j'espère t'avoir convaincu que :
+1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+1. Il ajoute des propriétés
+    * de mutability
     * de ownership 
-    * de mutabilité (mutability)
-    * de prêt (borrow)
-    * de durée de vie (lifetime)
+    * de borrowing
+    * de lifetime
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 Je propose qu'à partir de maintenant, dans le cadre de Rust, je ne parle plus de variables mais uniquement de bindings. 
 
 En effet, de mon point de vue le mot “variable” est hérité et plus approprié aux langages impératifs classiques (C, C++, Python...), où une variable c'est :
-
 * un nom
 * qui référence une case mémoire
 * dans laquelle la valeur peut changer
