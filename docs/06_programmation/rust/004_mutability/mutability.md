@@ -19,14 +19,17 @@ last_modified_date : 2025-04-26 09:00:00
 ## TL;DR
 Dans un contexte Rust, je pense qu'il est préférable de ne plus parler de variables mais uniquement de bindings. 
 Un binding est plus riche qu'une variable classique.
-1. Il associe un nom à une valeur
+1. Il associe un nom à l'état d'une instance
 1. Il ajoute des propriétés
     * de mutability
     * de ownership 
     * de borrowing
     * de lifetime
-Le compilateur s'assure que les propriétés des bindings ne sont pas mise à mal.
+1.Le compilateur s'assure que les propriétés des bindings ne sont pas mise à mal.
 
+À garder sous le coude : 
+* **binding** : ``blablabla`` est un **binding** (non)mutable qui lie le nom ``blablabla`` à l'**état** d'une instance concrète de type `<T>`.
+* Onwnership rule : Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.
 
 
 
@@ -520,6 +523,13 @@ En fait compte tenu du test de code que l'on a fait et des 2 (longs) détours pa
 
 Donc oui, je confirme la mutabilité est une propriété du binding
 
+
+
+
+
+
+
+### Fin de l'analyse de la 1ere ligne de code
 Du coup, on est toujours sur la 1ere ligne de code (à ce rythme on est pas sorti de l'auberge...)
 
 ```rust
@@ -539,7 +549,7 @@ Dans la cas précis de la ligne de code tu vas lire peut être des trucs du styl
 
 OK, super mais là, la valeur c'est quoi? La partie PLC du vecteur, les valeurs dans le tableau... En fait c'est tout ça. Du coup, comme j'avais beaucoup de mal avec le mot "valeur" dans le cas d'un vecteur ma première idée a été de me dire que la "valeur" d'un vecteur (on d'une structure de données pas triviale) c'est le hash code de l'instance. 
 
-Typiquement je peux afficher le hash_code du vecteur avec le code ci-dessous.
+Typiquement je peux afficher le hash code du vecteur avec le code ci-dessous.
 
 ```rust
 use std::collections::hash_map::DefaultHasher;
@@ -563,32 +573,32 @@ fn main() {
 
 ```
 
-Du coup c'était plus clair et intérieurement je pouvais me dire : `vec0` est un binding non mutable qui lie le nom ``vec0`` au hash code de l'instance du vecteur. Et là "[Bingo, voilà ADN dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)" Non pas tout à fait mais "Bingo, maintenant je comprends que si je modifie une des valeurs de PLC ou une des valeurs du tableau je vais en prendre une car cela modifierai la valeur hash code."
+Du coup c'était plus clair et intérieurement je pouvais me dire : `vec0` est un binding non mutable qui lie le nom ``vec0`` au hash code de l'instance du vecteur. Et là "[Bingo, voilà ADN dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)" Non, pas tout à fait mais "Bingo, maintenant je comprends que si je modifie une des valeurs du PLC ou une des valeurs du tableau je vais en prendre une car cela modifierai la valeur hash code."
 
-Mais du coup, si on réfléchit. Le hash code capture l'état à un instant t de l'instance que j'ai dans les mains. Autrement dit, si dorénavant je parle d'état plutôt que de hash code, ça revient au même. 
+Mais du coup, si on réfléchit. Le hash code capture, synthétise dans une valeur, l'état à un instant ``t`` de l'instance que j'ai dans les mains. Autrement dit, si dorénavant je parle d'**état** plutôt que de hash code, ça revient au même. 
 
-Du coup, concernant la 1ere le de code, la description devient : 
+Du coup, concernant la 1ere ligne de code, la description devient : 
+
 1. `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état d'un  ``Vec<i32>``. 
 1. `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'un ``Vec<i32>``. 
 1. `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance de ``Vec<i32>``. 
-1.`vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète de ``Vec<i32>``. 
+1. `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète de ``Vec<i32>``. 
 
-Et plus généralement, ce je garde en tête c'est : ``blablabla`` est un binding (non)mutable qui lie le nom ``blablabla`` à l'état d'une instance concrète de `<T>`.
+Et plus généralement, ce je garde en tête c'est : ``blablabla`` est un **binding** (non)mutable qui lie le nom ``blablabla`` à l'**état** d'une instance concrète de `<T>`.
 
-Ceci état expliquer, on y retourne et à propos de la première ligne de code
+Ceci étant expliqué, on y retourne et à propos de la première ligne de code
 
 ```rust
 let vec0 = vec![22, 44, 66];
 ```
 
-On peut dire que `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète de type ``Vec<i32>``. 
+On peut dire que `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète du type ``Vec<i32>``. 
 
 * ``vec0`` c'est le nom du binding (introduit par `let`)
-* Le binding ``vec0`` est le propriétaire de ``Vec<i32>``
-    * Le vecteur est constitué d'une structure PLC qui est sur la stack
-    * Son pointeur (P) pointe sur les données `[22, 44, 66]` qui sont sur le heap
+* Le vecteur est constitué d'une structure PLC qui est sur la stack
+* Son pointeur (P) pointe sur les données `[22, 44, 66]` qui sont sur le heap
 * Le binding ``vec0`` n'est pas mutable. 
-    * Si je touche à quoi que ce soit qui modifie PLC ou les valeurs j'en prends une.
+* Si je touche à quoi que ce soit qui modifie l'état du vecteur (PLC ou valeurs) j'en prends une.
 
 
 
@@ -658,13 +668,21 @@ Maintenant, afin de pouvoir avancer, je te redonne **LA** ownership rule de Rust
 <img src="./assets/ownerhip_rule.webp" alt="Rust ownership rule" width="450" loading="lazy"/>
 </div>
 
+Compte tenu de ce que l'on a dit à propos des états et des instances concretes, moi je garde en tête : **Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.** Concernant les affichages dans tes toilettes, je te laisse gérer.
+
 On va pas y passer 3H mais bon, certains mots sont importants. 
 
-**Each value has a single owner at any given time** : Ça, ça veut dire que lors de la compilation, l'analyse de code statique va suivre la trace de quel binding est propriétaire de quelle valeur et siffler la fin de la récréation si on essaie d'avoir 2 bindings sur la même valeur. Attention on parle du propriétaire. J'ai une Ferrari. Même si je te la prête j'en reste le propriétaire. Par contre si je te la donne... Donner c'est donner, reprendre c'est voler. Tu deviens le nouveau propriétaire et je n'ai plus aucun droit dessus.
+**1. Each value has a single owner at any given time** : Ça, ça veut dire que lors de la compilation, l'analyse de code statique va suivre la trace de quel binding est propriétaire de quel état et siffler la fin de la récréation si on essaie d'avoir 2 bindings sur le même état. Attention on parle du propriétaire. J'ai une Ferrari. Même si je te la prête j'en reste le propriétaire. Par contre si je te la donne... "Donner c'est donner, reprendre c'est voler." Tu deviens le nouveau propriétaire et je n'ai plus aucun droit dessus.
 
-Attention... Il y a donc une subtilité dans le code précédent et tu vas voir que ça va beaucoup mieux en le lisant. En effet, lors de l'appel `fill_vec(vec0)` qu'est-ce qui se passe ? On fait un passage par valeur? Un passage par référence ? On donne ou on prête le binding ``vec0`` à la fonction ? Oui, tu as raison, ça ressemble bigrement à un passage par valeur. Autrement dit, on va donner le binding `vec0` à la fonction ``fill_vec()``. 
+Attention... Il y a donc une subtilité dans le code précédent et tu vas voir que ça va beaucoup mieux en le lisant. En effet, lors de l'appel `fill_vec(vec0)` qu'est-ce qui se passe ? On fait un passage par valeur? Un passage par référence ? On donne ou on prête le binding ``vec0`` à la fonction ? Oui, tu as raison, ça "ressemble" bigrement à un passage par valeur. Tout se passe comme si on écrivait :
 
-**and is automatically dropped when that owner goes out of scope** : un scope c'est une zone de code entre 2 accolades ``{`` et ``}``. 
+```rust
+vec = vec0
+```
+
+Autrement dit, on va donner le binding `vec0` à la fonction ``fill_vec()``. 
+
+**2. and is automatically dropped when that owner goes out of scope** : un scope c'est une zone de code entre 2 accolades ``{`` et ``}``. 
 
 Illustrons ça à l'aide de l'ensemble du code de la fonction ``move_semantics3()`` qui se trouve dans la section `#[test]`.
 
@@ -678,21 +696,40 @@ fn move_semantics3() {
 
 Pas d'embrouille. On garde en tête qu'on vient de dire que le binding `vec0` a été donné lors de l'appel à à ``fill_vec()``. Du coup je peux pas dire grand chose dessus. 
 
-Par contre au retour de la fonction, ce qui est sûr, c'est que le binding ``vec1`` est le propriétaire d'une valeur. Du coup, ce que je peux dire c'est qu'à la dernière ligne, là où il y a l'accolade fermante, le binding `vec1` sort du scope. Et là, automatiquement, c'est même pas à moi de le faire, la valeur à laquelle il est lié sera supprimée de la mémoire. Si le ``assert`` ne nous saute pas à la gorge, la valeur en question, c'est le ``Vec<i32>`` qui contient les valeurs ``[22, 44, 66, 88]``.
+Par contre au retour de la fonction, ce qui est sûr, c'est que le binding ``vec1`` est le propriétaire d'un état. Du coup, ce que je peux dire c'est qu'à la dernière ligne, là où il y a l'accolade fermante, le binding `vec1` sort du scope. Et là, automatiquement, c'est même pas à moi de le faire, l'instance concrete dont l'état était lié à ``vec1`` sera supprimée de la mémoire. 
+
+Afin que ce soit bien clair, l'instance concrête qui va être droppée (supprimée de la mémoire) le ``Vec<i32>`` qui contient les valeurs ``[22, 44, 66, 88]``.
 
 
 ***Du coup, qu'est-ce qui va se passer sur la seconde ligne ?***
 
-* le binding ``vec0`` est cédé par valeur à la fonction `fill_vec()` 
+* le binding ``vec0`` est cédé par valeur à la fonction `fill_vec()`
 * le binding ``vec0`` cesse d’être propriétaire
 * le binding ``vec`` de fill_vec() devient propriétaire
 * le binding ``vec0`` est invalidé. Il reste accessible mais on a une erreur de compilation si on tente de l'utiliser
-* Au retour de la fonction `fill_vec()`, le binding ``vec1`` devient le propriétaire de la valeur retournée par `fill_vec()`
+* Au retour de la fonction `fill_vec()`, le binding non mutable ``vec1`` relie le nom `vec1` à l'état du de l'instance de type ``Vec<i32>`` retourné. 
+* `vec1` est propriétaire de l'instance en question
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+**À cet instant, concernant le binding il faut garder en tête :**
+1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+1. Il ajoute des propriétés
+    * de mutability
+    * de ownership
+    * ... 
+Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -712,24 +749,101 @@ fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
     vec
 }
 ```
-On va se permettre d'accélérer. Un peu, un tout petit peu. 
 
-* La signature de la fonction indique qu'elle a en paramètre un binding ``vec`` qui est lié à une valeur ``Vec<i32>``
-* La fonction retourne un binding qui est lié à une valeur de type `Vec<i32>`
+* La signature de la fonction indique qu'elle a en paramètre un binding ``vec`` qui est lié l'état d'un ``Vec<i32>``
+* La fonction retourne un binding qui est lié à l'état d'un type `Vec<i32>`
 
-La question qu'on peut se poser c'est comment, au moment de l'appel de la fonction, le ownership du binding ``vec0`` est-il passé à ``vec1``. Là, ça va, mais si on avait un vecteur de 1 GB on aurait un problème. Non? 
+La question qu'on peut se poser c'est comment, au moment de l'appel de la fonction, le ownership du binding ``vec0`` est-il passé à ``vec``. Là, ça va, mais si on avait un vecteur de 1 GB on aurait un problème. Non? 
 
 Je te laisse réfléchir... Ayé? 
 
-Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle, peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée qu'on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et complètement indépendant de la taille du vecteur. 
+Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle, peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée qu'on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et surtout c'est indépendant de la taille du vecteur. 
 
-Par contre faut garder en tête que c'est pas une **copie** mais un **move** (d'où le nom de l'exercice. Malins les mecs...). Quand on arrive dans le scope de la fonction fill_vec, le binding ``vec0`` n'est plus propriétaire. Le propriétaire c'est ``vec``.
+Par contre il faut garder en tête que c'est pas une **copie** de ``vec0`` ``vec`` sur mais un **move** (d'où le nom de l'exercice. Malins les mecs...). 
 
-***Ah OK, ça y est je comprends. Après on fait un push, on retourne et c'est terminé***
+***Attends, attends... Tu peux revenir sur ton histoire de move. T'es allez un peu vite.*** Pas de problème. Si je fais une copie de variables de type simple (trivially copyable, int, float... mais pas un Vec<T>) le code ci-dessous fonctionne comme attendu :  
 
-Oui presque mais entre temps on a une erreur de compilation du style :
+```rust
+fn main() {
+    let mut my_int1 = 42;
+    let my_int2 = my_int1;
+    my_int1+=1;
+    let my_int3 = my_int1;
+    
+    assert_eq!(my_int1, 43);
+    assert_eq!(my_int2, 42);
+    assert_eq!(my_int3, 43);
+}
+```
+C'est peut être un détail pour vous mais pour moi ça veut dire beaucoup...🎹 Je copie ``my_int1`` dans ``my_int2`` et regardes, après la copie, je peux encore incrémenter ``my_int1`` et copier sa nouvelle valeur dans ``my_int3``. Un comportement normal quoi!
 
-```powershell
+OK... Essayons de faire la même chose avec un type de données "pas simple" (Vec<T>, String...) :
+
+```rust
+fn main() {
+    let my_string1 = String::from("Zoubida");
+    let mut my_string2 = my_string1; // my_string1 is no longer available
+    my_string2.push_str(" for ever");
+    let my_string3 = my_string2; // my_string2 is no longer available
+
+    //assert_eq!(my_string1, "Zoubida"); // would panic
+    //assert_eq!(my_string2, "Zoubida for ever"); // would panic
+    assert_eq!(my_string3, "Zoubida for ever");
+}
+```
+
+Tel quel, le code fonctionne mais si par malheur tu supprimes les commentaires des ``assert``, là le compilateur te saute à la gorge et tu meurs dans d'affreuses douleurs, oublié de tous. Par exemple, si je supprime le 1er commentaire voilà ce que je lis : 
+
+```rust
+Compiling playground v0.0.1 (/playground)
+error[E0382]: borrow of moved value: `my_string1`
+ --> src/main.rs:7:5
+  |
+2 |     let my_string1 = String::from("Zoubida");
+  |         ---------- move occurs because `my_string1` has type `String`, which does not implement the `Copy` trait
+3 |     let mut my_string2 = my_string1; // my_string1 is no longer available
+  |                          ---------- value moved here
+...
+7 |     assert_eq!(my_string1, "Zoubida"); // would panic
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ value borrowed here after move
+  |
+  = note: this error originates in the macro `assert_eq` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider cloning the value if the performance cost is acceptable
+  |
+3 |     let mut my_string2 = my_string1.clone(); // my_string1 is no longer available
+  |                                    ++++++++
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `playground` (bin "playground") due to 1 previous error
+
+```
+
+Lis les messages du compilateur. Personne ne le fera à ta place et les gars se sont fait suer pour trouver un moyen de nous aider alors utilisons ce qu'ils mettent à notre disposition... En plus c'est hyper clair. Le compilateur nous dit qu'à la ligne 3 il y a eu un move du binding ``my_string1`` vers le binding ``my_string2`` car le binding ``my_string1`` est lié à l'état d'une instance de type String et que ce type de donnée n'implémente pas de fonction qui permettrait de le copier. Du coup, comme on peut pas faire de copie (mais uniquement un move) on a pas le droit, ni d'avoir faim ni d'avoir froid, certes, mais surtout, on a pas le droit d'utiliser le binding ``my_string1`` dans le ``assert`` pour le comparer à "Zoubida".
+
+En fait, à la fin de la ligne 3, tout se passe comme si ``my_string1`` n'est plus utilisable (c'est le cas) et que `my_string2` avait remplacé `my_string1`. 
+
+Donc le truc à retenir c'est que :
+| Opération | Syntaxe | Effet                          |
+|-----------|---------|--------------------------------|
+| Copie     | `x = y` | x et y sont utilisables         |
+| Move      | `x = y` | x est utilisable, y n'est plus utilisable |
+
+
+
+Ces histoires de move étant couvertes, je reviens au code de la fonction
+
+```rust
+fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
+    vec.push(88);
+    vec
+}
+```
+
+Et du coup, ce qu'il faut bien voir, c'est que lorsqu'on on arrive dans le scope de la fonction ``fill_vec`` le binding ``vec0`` n'est plus propriétaire. Le nouveau propriétaire c'est ``vec``.
+
+***Ah OK, ça y est je comprends. Après on fait un push, on retourne et c'est terminé.*** Oui, presque, mais entre temps on a une erreur de compilation du style :
+
+```rust
 error[E0596]: cannot borrow `vec` as mutable, as it is not declared as mutable
  --> exercises\06_move_semantics\move_semantics3.rs:3:5
   |
@@ -746,35 +860,35 @@ error: could not compile `exercises` (bin "move_semantics3") due to 1 previous e
 
 ```
 
-Bon là, bien sûr, personne ne lit et tout le monde râle... Faisons quand même l'effort de lire. C'est vrai que depuis quelques années, dans le monde C++, que ce soit gcc, clang et même MSVC tout le monde fait des efforts. Y a pas de raison pour qu'il en soit différemment avec Rust. Bon alors ça dit quoi ?
+Bon là, bien sûr, personne ne lit et tout le monde râle... Faisons quand même l'effort de lire. Bon alors ça dit quoi ?
+<!-- C'est vrai que depuis quelques années, dans le monde C++, que ce soit gcc, clang et même MSVC tout le monde fait des efforts. Y a pas de raison pour qu'il en soit différemment avec Rust. -->
 
 Clairement le compilateur indique ce qui lui pose problème : `^^^ cannot borrow as mutable` et il nous indique que c'est ``vec`` le responsable. Cerise sur le gâteau il nous donne même la solution. Il dit `consider changing this to be mutable`. Et comme si c'était pas suffisant il donne enfin la solution `fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {` avec des petits `+++` comme dans un ``diff`` pour nous indiquer ce qu'il a ajouter. C'est y pas mignon...
 
-Sérieux, on atteint presque le Nirvana. À part le mot ``borrow``, il a tout bon. En gros ce qu'il est en train de dire c'est que ``vec`` étant un binding non mutable, il n'autorise pas l’invocation de la méthode ``.push()`` dessus. En effet cette dernière tente de modifier les données du binding en ajoutant la valeur 88.
+Sérieux, on atteint presque le Nirvana. À part le mot ``borrow``, il a tout bon. En gros ce qu'il est en train de dire c'est que ``vec`` étant un binding non mutable, il n'autorise pas l’invocation de la méthode ``.push()`` dessus. En effet cette dernière tente de modifier l'état de l'instance concrete en y ajoutant la valeur 88.
 
-***Ben qu'est ce qu'on fait?***
-
-Le compilateur nous a donné la solution. Il faut re-qualifier le binding ``vec``. Rappelle toi par défaut tout est non mutable. Donc dans la signature : 
+***Ben qu'est ce qu'on fait?*** Lis je te dis... Le compilateur nous a donné la solution. Il faut re-qualifier le binding ``vec``. Rappelle toi par défaut tout est non mutable. Donc dans la signature : 
 
 ```rust
 fn fill_vec(vec: Vec<i32>) -> Vec<i32> 
     
 ```
-On indique que le paramètre ``vec`` est non mutable. On doit donc modifier la signature comme il nous le propose :  
+Le paramètre ``vec`` est non mutable. On doit donc modifier la signature comme le compilateur nous le propose :  
 
 ```rust
 fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> 
     
 ```
 
-***Y a un truc que je comprends pas... On avait un vecteur non modifiable au début. On le passe à une fonction. Et zou il peut devenir modifiable... C'est pas très secure tout ça. Non?***
+***Attends... Y a un truc que je comprends pas... On avait un vecteur non modifiable au début. On le passe à une fonction. Et zou il peut devenir modifiable... C'est pas très secure tout ça. Non?***
 
-Revenons en arrière, au moment de l'appel. Qu'est ce qui se passe précisément... Rappelle-toi la règle du ownership :**Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.** 
-Afin de respecter cette règle on a expliqué que ``vec0`` était "moved" et plus utilisable après l'appel de la fonction. Du coup pas d'angoisse ``vec0`` n'étant plus utilisable personne ne va vider ton compte en banque ou usurper ton identité numérique.
+Revenons en arrière, au moment de l'appel. Qu'est ce qui se passe précisément... Rappelle-toi la règle du ownership :**Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.** (Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.)
 
-Ensuite, et ça c'est important de le réaliser. C'est pas les données ou les zones mémoires qui sont mutable ou non-mutable. Ce sont les bindings. Typiquement les données alloués sur le heap au moment de la création de ``vec0`` étaient "physiquement" mutables. Par contre le compilateur Rust a tracé la mutabilité du binding ``vec0``, il a vu qu'on avait rien fait d'illicite et c'est passé. Ensuite, on move le binding de vec0 à vec. OK très bien. Mais si je te donne ma Ferrari. Rien ne t'empêche d'y rajouter un crochet de caravane ou de la repeindre en jaune. Tu es le propriétaire. Autrement dit, il n'est pas interdit lors du transfer du binding de vec0 à vec de le requalifier en mutable. Et du coup nous aurons le droits de modifier les données du binding.
+Afin de respecter cette règle on a expliqué que ``vec0`` était "moved" et plus utilisable après l'appel de la fonction. Du coup pas d'angoisse ``vec0`` n'étant plus utilisable personne ne peut vider ton compte en banque ou usurper ton identité numérique. Le côté secure, c'est bon, c'est réglé.
 
-Encore une fois, c'est histoires de mutabilité, c'est une propriété du binding pas des données du binding. Par contre, c'est un contrat qu'on signe avec le compilateur et qu'on s'engage à respecter. Si je dis que ``vec`` est non-mutable dans la signature j'ai pas le droit de modifier les données et réciproquement si je qualifie le binding avec ``mut``. C'est le compilateur et en particulier le borrow checker de Rust qui est chargé de faire respecter la loi et on s'autorise à dire qu'il est aussi sympa que le Juge Dredd.
+Ensuite, et ça c'est important de le réaliser. C'est pas les données ou les zones mémoires qui sont mutables ou non-mutables. Ce sont les bindings (la mutabilité est une propriété du binding). Typiquement les données alloués sur le heap au moment de la création de ``vec0`` étaient "physiquement" mutables. Par contre le compilateur a surveillé la mutabilité du binding ``vec0``, il a vu qu'on avait rien fait d'illicite et c'est passé. Ensuite, on move le binding de ``vec0`` à ``vec``. OK très bien. Mais si je te donne ma Ferrari. Rien ne t'empêche d'y rajouter un crochet de caravane ou de la repeindre en jaune. Tu es le propriétaire. Autrement dit, il n'est pas interdit lors du transfer du binding de ``vec0`` à ``vec`` de le requalifier en mutable. Et du coup nous aurons le droits de modifier l'état de l'instance concrete à l'autre bout du binding.
+
+Encore une fois, c'est histoires de mutabilité, c'est une propriété du binding pas des données du binding. Par contre, c'est un contrat qu'on signe avec le compilateur et qu'on s'engage à respecter. Si je dis que ``vec`` est non-mutable dans la signature j'ai pas le droit de modifier l'état de l'instance de type ``Vec<i32>`` (et réciproquement si je qualifie le binding avec ``mut``). C'est le compilateur et en particulier le borrow checker de Rust qui est chargé de faire respecter la loi et on s'autorise à dire qu'il est aussi flexible que le Juge Dredd.
 
 
 <div align="center">
@@ -791,19 +905,19 @@ Encore une fois, c'est histoires de mutabilité, c'est une propriété du bindin
 ### La solution avec les commentaires associés
 
 ```rust
-// ptr, len and capacity are moved (not cloned) from vec0 to vec_in
+//`vec0` is a mutable binding that links the name ``vec0`` to the complete state of a concrete instance of type ``Vec<i32>``.
 // On the heap, the data pointed to by ptr are not copied (and are mutable)
-// The `mut` keyword allows the function to modify the local binding vec_in
+// The `mut` keyword allows the function to modify state of the local concrete instance of type Vec<i32>
 // This is possible because fill_vec owns vec_in exclusively
-// vec_in is a mutable binding to Vec<i32>, not a mutable Vec itself
+// vec_in is a mutable binding to Vec<i32>, not a mutable Vec<i32> itself
 // In the function signature, `mut` works just like it would in: let mut vec_in = ...
 fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32> {
-    vec_in.push(88); // the data are modified
+    vec_in.push(88); // the state is modified because the data are modified
     vec_in           // vec_in is moved to the caller
 } 
 
 // fn main() {
-    // vec0 is an immutable binding to a Vec<i32>
+    // vec0 is a non mutable binding 
     // A binding associates a name to a value + rules of ownership & borrowing
     // mutability is a property of the binding NOT a property of the value (nor the name)
     // The term binding in Rust represents a strong contract with the compiler, not just a “classic” variable.
@@ -850,7 +964,7 @@ fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32> {
 
 ## Mutabilité des références
 
-### Exercice "Shift 0 to the end" de Coding Interview Patterns (Bonus p 5) 
+<!-- ### Exercice "Shift 0 to the end" de Coding Interview Patterns (Bonus p 5)  -->
 
 Si tu ne l'as pas déjà fait, je te conseille vivement la lecture de ce bouquin
 
@@ -862,11 +976,11 @@ Je te passe les détails mais dans un des bonus du Chapitre 1 qui traite des "Tw
 
 Ci-dessous une solution en Rust
 
-* Dans la fonction ``main()`` on créé un binding `vec0` qui est associe le nom ``vec0`` à un vecteur d'entiers 32 bits (``Vec<i32>``).  
-* Tu remarques qu'au moment de sa création on donne au binding (``let mut vec0``) la propriété `mut`. On peut donc le modifier.
+* Dans la fonction ``main()`` on créé un binding `vec0` qui lie le nom ``vec0`` à l'état complet d'une instance concrete de type ``Vec<i32>``.  
+* Tu remarques qu'au moment de sa création on donne au binding (``let mut vec0``) la propriété `mut`. On peut donc modifier l'état du vecteur.
 * De manière très originale il y a ensuite une fonction `shift_zeros_to_the_end()` à qui on passe en argument un truc à base de `vec0` (on y revient dans 2 minutes)
-* Contrairement à tout à l'heure, la fonction ne retourne rien
-* Par contre, "abracadabra !", sur la dernière ligne le assert nous permet de vérifier que les 0 ont bien été repoussés au fond du binding ``vec0`` 
+* Contrairement à tout à l'heure, la fonction ne retourne rien.
+* Par contre, "Abracadabra !", sur la dernière ligne le ``assert`` nous permet de vérifier que les 0 ont bien été repoussés au fond du binding ``vec0`` 
 
 ```rust
 fn main(){
@@ -891,7 +1005,7 @@ fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>){
 * Faut juste remarquer qu'une fois dans le corps de la fonction, on utilise ``nums_in`` comme un vecteur mutable (on peut échanger le contenu de 2 cellules par exemple)
 * À la fin, tout se passe comme si la fonction ne retournait rien
 
-Compte tenu de tout ce que l'on a déjà expliqué on va se permettre d'accélérer encore un peu et de focaliser notre attention uniquement sur 2 lignes
+Compte tenu de tout ce que l'on a déjà expliqué on va se permettre d'accélérer un peu et de focaliser notre attention uniquement sur 2 lignes
 * `shift_zeros_to_the_end(&mut vec0);`
 * `fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>)`
 
@@ -909,24 +1023,26 @@ Ici on a une ligne du genre
 ```rust
     shift_zeros_to_the_end(&mut vec0);      
 ```
-C'est pas mieux ou moins bien. Le truc c'est qu'au retour de la fonction, on a pas de nouveau binding. On continue d'utiliser le binding original (`vec0`). Par contre il a fallu a donner l'autorisation à la fonction `shift_zeros_to_the_end()` de modifier sa valeur. Autrement dit, je t'ai prêté ma Ferrari et tu as fais le ménage (sympa, merci). 
+C'est pas mieux ou moins bien. Le truc c'est qu'au retour de la fonction, on a pas de nouveau binding. On continue d'utiliser le binding original (`vec0`). Par contre il faut donner les moyens à la fonction `shift_zeros_to_the_end()` de pouvoir modifier l'état de l'instance concrète du type. Autrement dit, je t'ai prêté ma Ferrari et je te permets d'y faire le ménage. 
 
-Le truc, c'est que cette façon d'exprimer les choses traduit peut être bien notre intention ("tiens machin, vlà les clés, pense à passer l'aspirateur avent de me la rendre") mais bon, c'est un peu chaud au niveau des écritures (y a un petit côté Klingon).
+Le truc, c'est que cette façon d'exprimer les choses traduit peut être bien notre intention ("tiens machin, vlà les clés, pense à passer l'aspirateur avant de me la rendre") mais bon, c'est un peu chaud au niveau des écritures (y a un petit côté Klingon).
 
-En fait ici, on ne veut pas céder la propriété du binding, on veut juste le prêter momentanément (le temps que le fonction `shift_zeros_to_the_end()` opère dessus). Ça, en Rust cela se fait en passant comme argument, non pas le binding (si on le passe on le perd) mais une référence au binding. Si je reprends l'ALU (arithmetic logic unit) du Problème à trois corps de tout à l'heure, j'utilise une seule feuille dans le classeur où j'écris un entier (les coordonnées) qui va permettre au récipiendaire de retrouver mon binding dans la plaine. En faisant comme ça, il sait où le trouver et il peut travailler dessus. Quand il a terminé le cavalier revient à vide (pas de valeur retournée). C'est le signal pour moi que je peux continuer mon travail mais en utilisant la version modifiée de mon binding original.
+En fait ici, on ne veut pas céder la propriété du binding, on veut juste le prêter momentanément (le temps que le fonction `shift_zeros_to_the_end()` modifie l'instance concrète). Ça, en Rust cela se fait en passant comme argument, non pas le binding (si on le passe, il est moved et on le perd) mais une référence sur le binding. 
 
-Du point de vu de la syntaxe, pour passer une référence sur un binding plutôt qu'un binding lui même on utilise la notation ``& my_binding``.
+Si je reprends l'ALU (arithmetic logic unit) du Problème à trois corps de tout à l'heure, j'utilise une seule feuille dans le classeur où j'écris un entier (les coordonnées) qui va permettre au récipiendaire de retrouver mon binding dans la plaine. En faisant comme ça, il sait où le trouver et il peut travailler dessus. Quand il a terminé le cavalier revient à vide (pas de valeur retournée). C'est le signal pour moi que je peux continuer mon travail mais en utilisant la version modifiée de mon binding original.
 
-***Ben alors pourquoi dans le code je vois écrit ``&mut vec0`` ?*** T'es un grand garçon... Je te laisse réfléchir... Ayé? Non? Ok, qu'est ce qui se passe si on écrit juste ça
+Du point de vu de la syntaxe, pour passer une référence sur un binding plutôt qu'un binding lui même on utilise la notation ``&my_binding``.
+
+***Ben alors pourquoi dans le code je vois écrit ``&mut vec0`` ?*** T'es un grand garçon... Je te laisse réfléchir... Ayé? Non? Ok, qu'est ce qui se passe si dans la fonction ``main()`` on écrit une ligne du type : 
 
 ```rust
-    shift_zeros_to_the_end(& vec0);      
+    shift_zeros_to_the_end(&vec0);      
 ```
 C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exemple). Soit un peu à ce qu'on fait, on en a parlé au début. Oui, très bien... 
 
-**Par défaut tout est non mutable**. Et donc si on écrit la ligne de code précédente on dit au compilateur qu'on souhaite prêter la Ferrari mais on interdit toute modification. Et bien sûr ça ne va pas passer à la compilation car le compilateur va détecter que la signature de la fonction ``shift_zeros_to_the_end()`` n'est pas respecter. 
+**Par défaut tout est non mutable**. Et donc si on écrit la ligne de code précédente on dit au compilateur qu'on souhaite prêter la Ferrari mais on interdit toute modification. Et bien sûr ça ne va pas passer à la compilation car le compilateur va détecter que la signature de la fonction ``shift_zeros_to_the_end(nums_in: &mut Vec<i32>)`` n'est pas respectée (il y a `&mut` qui rôde).
 
-De plus, même sans parler de la signature du récipiendaire, Rust demande à ce j'exprime explicitement l'autorisation que je donne à la fonction de modifier le binding que je passe par référence. Du coup je dois écrire `shift_zeros_to_the_end(&mut vec0)`.
+De plus, même sans parler de la signature du récipiendaire, Rust demande à ce j'exprime explicitement les autorisations de modifier que je donne. Comme je veux prêter le binding ``vec0``  je vais passer une référence et comme je veux permettre la modification de ce à quoi il fait référence, je dois écrire `shift_zeros_to_the_end(&mut vec0)`.
 
 
 
@@ -937,8 +1053,26 @@ Je te confirme
 * pour une référence mutable tu verras `ma_fonction(&mut bob)` avec un espace 
     * ``&mut`` est un opérateur composé en Rust
     * ``&mut`` est un seul "mot-clé logique", qui se lit "référence mutable à"
-* pour une référence non mutable tu verras surtout `ma_fonction(&bob)` sans un espace alors que ``shift_zeros_to_the_end(& vec0)`` est tout aussi licite 
+* pour une référence non mutable tu verras surtout `ma_fonction(&bob)` sans un espace alors que ``shift_zeros_to_the_end(& vec0)`` est tout aussi licite mais pas ou très peu utilisé (je sais pas pourquoi, ça doit être historique)
 
+
+
+### À propos de `fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>)`
+
+Ca va aller vite. Très vite. Car on dorénavant, on est forts, très forts... 
+
+La fonction possède un seul paramètre qui est un binding non mutable qui lie le nom ``nums_in`` à l'état d'une instance concrète de type ``&mut Vec<i32>``. Il est très important de voir ici que le binding est non mutable mais que l'instance concrete à laquelle le nom num_in est lié est, elle modifiable.
+
+***Quoi, quoi, quoi... J'ai rien compris.*** Dans la première partie on avait  
+
+```rust
+fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32>{...}
+```
+Et on disait dans les commentaires : `vec0` is a mutable binding that links the name ``vec0`` to the complete state of a concrete instance of type ``Vec<i32>``.
+
+Ici il n'y a pas de `mut` devant ``nums_in`` donc `nums_in` est donc un binding non mutable. Ensuite le binding associe le nom `nums_in` à quoi? À l'état d'une instance concrète du type ` &mut Vec<i32>`. Dans le cas d'un type référence (mutable ou pas) sur un machin, une instance concrete c'est la référence elle même. Donc du coup je répète : ``nums-in`` est un binding non mutable qui relie le nom ``nums_in`` à une instance concrète de type ``&mut Vec<i32>``. 
+
+Le binding n'est pas modifiable mais l'état de ``Vec<i32>`` est modifiable.
 
 
 
@@ -947,7 +1081,7 @@ Je te confirme
 ### La solution avec les commentaires associés
 ```rust
 
-// the function receives a mutable reference to a Vec<i32> such that it can modify the data pointed to by ptr
+// the function use a non mutable binding that links the name nums_in to the state of an instance of type ``&mut Vect<i32>`` 
 // The binding nums_in is immutable, but it holds a mutable reference
 // This means we can mutate the Vec it points to, but we cannot reassign nums_in itself
 // nums_in cannot be reassigned to point to another Vec
@@ -971,6 +1105,8 @@ fn main(){
 ```
 
 
+
+
 ### Petite question à 1 million de dollars... 
 
 Qu'est qui se passe si la fonction main() ressemble à ça :
@@ -984,14 +1120,27 @@ fn main(){
 ```
 Oui bravo... Ça passe pas à la compile... 
 
-Oui mais pourquoi ? Oui encore bravo! On crée un binding non mutable ``vec0`` qu'on passe ensuite comme une référence mutable à la fonction `shift_zeros_to_the_end()`. Le compilateur nous fait remarque à juste raison qu'il faut pas le prendre pour un débile, qu'il a vu nos manigances et qu'en conséquence il arrête la compile. Grand prince, il nous indique une solution qui consiste à ajouter un mut devant ``vec0``.    
+Oui mais pourquoi ? Oui encore bravo! On crée un binding non mutable ``vec0`` qu'on passe ensuite comme une référence mutable à la fonction `shift_zeros_to_the_end()`. Le compilateur nous fait remarquer à juste raison qu'il faut pas le prendre pour un débile, qu'il a vu nos manigances et qu'en conséquence il arrête la compile. Grand prince, il nous indique une solution qui consiste à ajouter un mut devant ``vec0``.    
 
 
-### À propos de `fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>)`
 
-Ca va aller vite. Très vite. Car on dorénavant, on est forts, très forts...
 
-Je veux écrire une fonction qui modifie, sur place, un binding qui est associé à un ``Vec<i32>``. J'ai pas 36 solutions. Il faut que je reçoive une référence sur un binding que je vais pouvoir modifier. Ma signature doit être du style `fn my_function(params_in: &mut Vec<i32>)`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1001,9 +1150,9 @@ Le code ci-dessous montre que finalement 2 implémentations possibles.
 
 Soit on passe le binding par référence soit on le move. Elles font toutes les 2 le job. 
 
-On peut toutefois remarque que dans la version ``_byref`` on ne pousse sur la stack qu'un pointeur sur le binding (8 bytes sur un OS 64 bits).
+On peut toutefois remarquer que dans la version ``_byref`` on ne pousse sur la stack qu'un pointeur sur le binding (8 bytes sur un OS 64 bits).
 
-Dans la version `_bymove` on pousse sur la stack la structure de contrôle qui comprend un pointeur, une longueur et une capacité. Tous les 3 sont codés avec 8 octets sur un OS 64 bits. Au final on poussera 24 octets sur la stack.
+Dans la version `_bymove` on pousse sur la stack la structure de contrôle qui comprend un pointeur, une longueur et une capacité. Tous les 3 sont codés avec 8 octets sur un OS 64 bits. Au final on pousse 24 octets sur la stack.
 
 Du coup si la fonction doit être appelée de très nombreuses fois par seconde il est sans doute préférable d'utiliser la version ``_byref``. Mais bon, avant d'aller plus loin faut mesurer (faire un bench).
 
