@@ -29,7 +29,7 @@ Un binding est plus riche qu'une variable classique.
 
 À garder sous le coude : 
 * **binding** : ``blablabla`` est un **binding** (non)mutable qui lie le nom ``blablabla`` à l'**état** d'une instance concrète de type `<T>`.
-* Onwnership rule : Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.
+* Ownership rule : Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.
 
 
 
@@ -72,7 +72,7 @@ mod tests {
 Perds pas de temps. Copie-colle le code ci-dessus dans la page de l'excellent [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) et appuie sur ``Test``. Tu devrais voir un message qui ressemble à ça :
 
 
-```
+```rust
 Compiling playground v0.0.1 (/playground)
 error: expected type, found keyword `mut`
  --> src/main.rs:1:18
@@ -235,7 +235,7 @@ fn main() {
 
 Si tu tente d'exécuter le code, voilà le message du compilateur :
 
-```
+```rust
 Compiling playground v0.0.1 (/playground)
 error: expected type, found keyword `mut`
  --> src/main.rs:1:18
@@ -607,7 +607,7 @@ On peut dire que `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'
 1. Il ajoute des propriétés
     * de mutability
     * ... 
-Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -729,7 +729,7 @@ Afin que ce soit bien clair, l'instance concrête qui va être droppée (supprim
     * de mutability
     * de ownership
     * ... 
-Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -1127,6 +1127,14 @@ Oui mais pourquoi ? Oui encore bravo! On crée un binding non mutable ``vec0`` q
 
 
 
+**À cet instant, concernant le binding il faut garder en tête :**
+1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+1. Il ajoute des propriétés
+    * de mutability
+    * de ownership
+    * de borrowing
+    * ... 
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -1219,28 +1227,28 @@ fn main(){
 
 ## Variations autour de la mutabilité
 
-***On a vu des signatures du style ``(mut nums_in: Vec<i32>) -> Vec<i32>`` et ``(nums_in: &mut Vec<i32>)``. Ça aurait un sens d'écrire un truc du style ``(mut nums_in: &Vec<i32>)`` et à quoi ça pourrait servir?***
+***On a vu des signatures du style ``(mut nums_in: Vec<i32>) -> Vec<i32>`` et ``(nums_in: &mut Vec<i32>)``. Ça aurait un sens d'écrire un truc du style ``(mut nums_in: &Vec<i32>)`` ou ``(mut str_in: &mut Vec<i32>)``, et à quoi ça pourrait servir?***
 
-Tiens, fais toi plaisir. Tu as tous les éléments pour analyser la situation.
+Tiens, fais toi plaisir. Tu as tous les éléments pour analyser la situation. Attache toi à chaque fois à bien faire la difference entre la mutabilité du binding et la mutabilité de la référence passée. Prends ton temps, on est pas pressé.
 
 ```rust
 
-// The binding str_in associates the name str_in with a value of type reference to a String.
-// str_in is an immutable binding; it cannot be reassigned to another &String.
-// The reference to the String is also immutable; the content of the String cannot be modified through this reference.
+// The binding str_in associates the name str_in with the state of a concrete instance of type reference to a String.
+// str_in is a not mutable binding; it cannot be reassigned to an other &String.
+// The reference to the String is also not mutable; the content of the String cannot be modified through this reference.
 fn dont_change(str_in: &String){
     println!("{}", str_in); // Reads and prints the string. Cannot modify
 }
 
-// The binding str_in associates the name str_in with a value of type mutable reference to a String.
-// str_in is an immutable binding; it cannot be reassigned to another &String.
+// The binding str_in associates the name str_in with the state of a concrete instance of type mutable reference to a String.
+// str_in is a not table binding; it cannot be reassigned to another &mut String.
 // The reference to the String is mutable. The content of the string can be modified using this reference 
 fn change(str_in: &mut String){
     str_in.push_str(" power!"); // Appends text to the original String
 }
 
-// The binding str_in associates the name str_in with a value of type reference to a string slice (&str)
-// str_in is mutable binding; it can be reassigned to another string slice (&str)
+// The binding str_in associates the name str_in with the state of a concrete instance of type reference to a string slice (&str)
+// str_in is a mutable binding; it can be reassigned to another string slice (&str)
 // we cannot modify the data pointed to by the slice
 fn change_view(mut str_in: &str) {
     str_in = &str_in[1..3];   // Rebinds str_in to a substring of the original
@@ -1248,9 +1256,16 @@ fn change_view(mut str_in: &str) {
     println!("{:?}", str_in); // Prints the new slice
 }
 
-// The binding str_in associates the name str_in with a value of type mutable reference to a String.
+
+
+// The binding str_in associates the name str_in with the state of a concrete instance of type &mut String.
 // str_in is a mutable binding; it can be reassigned to another mutable reference to a String.
 // The reference itself is mutable: the content of the String can be modified through this reference.
+
+// The binding other associates the name other with the state of a concrete instance of type &mut String.
+// other is a not mutable binding; it cannot be reassigned to an other mutable reference to a String.
+// The reference itself is mutable: the content of the String can be modified through this reference.
+
 // We need to annotate the lifetime because we manipulate two mutable references.
 fn change_and_reassign<'a>(mut str_in: &'a mut String, other: &'a mut String) {
     // Modify the original String
@@ -1292,10 +1307,16 @@ fn main() {
 
 }
 ```
-On va aller assez rapidement :
+Je te laisse lire les commentaires des 3 premières fonctions. Normalement il ne devrait pas y avoir de problème. 
+
+Par contre, afin d'être exhaustif, je tenais absolument à avoir un exemple avec 2 `mut` dans la signature de la fonction. Un pour la mutabilité du binding et un autre pour la mutabilité de la référence. Il a fallu batailler pas mal avec le compilateur et je n'ai pas eu d'autre choix que de préciser les durée de vie des références.
+
+Je te propose de lire la suite où on ne va parler que de la propriété lifetime du binding puis de revenir ici. 
+
+<!-- On va aller assez rapidement :
 * `dont_change(str_in: &String)` : reçoit une référence sur un binding non mutable qui est associé à une String. On peut lire, afficher mais pas modifier.
 * `change(str_in: &mut String)` : reçoit une référence sur un binding mutable qui est associé à une String. On peut modifier le binding et ajouter d'autres caractères.
-* `change_view(mut str_in: &str)` : reçoit une référence non mutable sur ce que l'on appelle une string view (`&str`). Le binding est mutable (`mut str_in`). On ne peut donc le modifier ``str_in`` pour qu'il "visualise" une autre section de la slice reçue. Bine voir qu'on assigne à `str_in` une nouvelle valeur.  
+* `change_view(mut str_in: &str)` : reçoit une référence non mutable sur ce que l'on appelle une string view (`&str`). Le binding est mutable (`mut str_in`). On ne peut donc le modifier ``str_in`` pour qu'il "visualise" une autre section de la slice reçue. Bine voir qu'on assigne à `str_in` une nouvelle valeur.   -->
 
 
 
@@ -1313,79 +1334,128 @@ On va aller assez rapidement :
 
 
 ## Lifetime
-
+ 
+On va partir d'un problème simple de comparaison de longueur de chaines de caractères. Ci-dessous un exemple de code qui fonctionne.
 
 ```rust
-fn longest0(s1: String, s2: String) -> String {
+fn longest(s1: String, s2: String) -> String {
     if s1.len() > s2.len() { s1 } else { s2 }
 }
 
 fn main() {
-    let s1 = String::from("hello");
-    let result0;
+    let s1 = String::from("to infinity");
+    let result;
 
     {
-        let s2 = String::from("worlds");
-        result0 = longest0(s1, s2);  
-        println!("Longest: {}", result0);
+        let s2 = String::from(", and beyond!");
+        result = longest(s1, s2);  
+        println!("Longest: {}", result);
     }                               
-    println!("{}", result0);       
+    println!("Longest: {}", result);       
 }
+
+```
+Il n'y a pas de piège ou de choses compliquées que nous n'aurions pas vu. 
+* ``s1`` est un binding non mutable qui lie le nom ``s1`` à l'état d'une instance concrète de type String.
+* On commence à créer un binding non mutable qui lie le nom `result` à l'état d'une instance concrète de type "je sais pas encore on verra pls tard" 
+* On crée un scope artificiel avec 2 accolade. Ce sera surtout utile dans le dernier exemple. Là c'est juste pour que les codes des exemples soient très similaires
+* ``s2`` est un binding non mutable qui lie le nom ``s2`` à l'état d'une instance concrète de type String.
+* On appelle un fonction `longest` à qui ont passe les 2 binding
+* Le binding de retour de la fonction `longest` est moved dans `result` (du coup on sait que `result` sera un lien avec l'état d'une string)
+* On affiche
+* On sort du scope artificiel 
+* On affiche   
+
+Concernant la fonction `longest` elle reçoit 2 bidings sur des types String (bon je fais court, t'as compris) et elle retourne un biding de type String. 
+* Le truc à noter c'est que dans Rust les `if` sont des expressions pas des statements
+* Ça c'est cool car du coup un `if` retourne une valeur et c'est justement ce qui est fait dans la seule ligne de code.
+* Note aussi qu'il n'y a pas de `;` en bout de ligne car le ``if`` c'est le biding de retour 
+
+Tout va bien et à l'affichage on voit
+
+```
+Longest: , and beyond!
+Longest: , and beyond!
+
 ```
 
 
+Maintenant, imagine que pour une raison ou pour une autre on nous demande de réécrire la fonction `longest()` de telle sorte qu'elle prenne en paramètre des bindings dont l'extrémité est une référence sur une string slice (&str pour les intimes) 
 
-
-Does NOT compile
+Voilà par exemple code qui semble pas trop mal...Je ne commente pas c'est presque un copié-collé du code précédent.  
 
 ```rust
-
 fn longest(s1: &str, s2: &str) -> &str {
     if s1.len() > s2.len() { s1 } else { s2 }
 }
 
 fn main() {
-    let s1 = String::from("hello");
+    let s1 = String::from("to infinity");
     let result;
     
     {
-        let s2 = String::from("worlds");
+        let s2 = String::from(", and beyond!");
         result = longest(&s1, &s2);  
         println!("Longest: {}", result);
     }                               
-    println!("{}", result);       
+    println!("Longest: {}", result);       
 }
 
 ```
+Y a juste un petit détail, trois fois rien... Ça passe pas à la compilation et voilà le message affiché :
 
+```rust
+Compiling playground v0.0.1 (/playground)
+error[E0106]: missing lifetime specifier
+ --> src/main.rs:1:35
+  |
+1 | fn longest(s1: &str, s2: &str) -> &str {
+  |                ----      ----     ^ expected named lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `s1` or `s2`
+help: consider introducing a named lifetime parameter
+  |
+1 | fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+  |           ++++      ++           ++          ++
+
+For more information about this error, try `rustc --explain E0106`.
+error: could not compile `playground` (bin "playground") due to 1 previous error
+```
+
+Je te laisse lire. Ayé? 
 
 
 Compile
 
 ```rust
-fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+fn longest<'t>(s1: &'t str, s2: &'t str) -> &'t str {
     if s1.len() > s2.len() { s1 } else { s2 }
 }
 
 fn main() {
-    let s1 = String::from("hello");
+    let s1 = String::from("to infinity");
     let result;
     
     {
-        let s2 = String::from("worlds");
+        let s2 = String::from(", and beyond!");
         result = longest(&s1, &s2);  // OK s1 and s2 are still living
         println!("Longest: {}", result);
     }                               // <- s2 goes out of scope
     
-    // println!("{}", result);       // NOK result is s2 dependant
+    // println!("Longest: {}", result);       // NOK result is s2 dependant
 }
-
-
 ```
 
 
 
-
+**À cet instant, concernant le binding il faut garder en tête :**
+1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+1. Il ajoute des propriétés
+    * de mutability
+    * de ownership 
+    * de borrowing
+    * de lifetime
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -1416,7 +1486,7 @@ Donc du coup, à propos du binding il faut garder en tête :
 
 Je propose qu'à partir de maintenant, dans le cadre de Rust, je ne parle plus de variables mais uniquement de bindings. 
 
-En effet, de mon point de vue le mot “variable” est hérité de langages impératifs classiques (C, C++, Python...), où une variable c'est :
+En effet, de mon point de vue le mot “variable” est hérité et plus approprié aux langages impératifs classiques (C, C++, Python...), où une variable c'est :
 
 * un nom
 * qui référence une case mémoire
