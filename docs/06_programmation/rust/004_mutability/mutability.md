@@ -192,7 +192,7 @@ let mut x = 42;   // mutable
 let     y = 42;   // non mutable par défaut
 
 ``` 
-C'est pas mieux ou moins bien en C++ c'est juste une philosophie différente. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sûreté il y a sans doute un avantage à ce que tout soit constant par défaut. C'est vrai que si on peut éviter de casser une fusée au décollage en évitant d'aller un 1 au lieu d'un 0 c'est pas plus mal. Pour le reste, je suis certains que si demain on pouvait ré-écrire les specifications ISO du C++ c'est le choix que l'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
+C'est pas mieux ou moins bien en C++ c'est juste une philosophie différente. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sûreté il y a sans doute un avantage à ce que tout soit constant par défaut. C'est vrai que si on peut éviter de casser une fusée au décollage en écrivant un 1 là où il ne faut pas, c'est pas plus mal. Pour le reste, je suis certains que si demain on pouvait ré-écrire les specifications ISO du C++ c'est le choix que l'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
 
 Maintenant qu'on a parlé de binding et de non mutabilité par défaut, si je reviens sur la 1ere ligne de code :
 
@@ -215,7 +215,7 @@ let vec0 = vec![22, 44, 66];
 {: .note }
 Utilise le [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). Fais des tests, plante tout, lis les messages du compilateur, "perd du temps" à essayer de comprendre ce qui se passe. Personne ne peut le faire à ta place et c'est plus rentable que de regarder des shorts de chattons sur YouTube. 
 
-OK... "You talkin to me?". Tu le prends sur ce ton? Allez, sors si t'es un homme. On va aller faire un test dehors. Copie-colle le code ci-dessous dans [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) et appuie sur ``Run`` (CTRL+ENTER). C'est le même code qu'avant sauf que j'ai tout mis dans la fonction ``main()`` et, pour te faire plaisir, j'ai aussi ajouté un ``mut`` devant `Vec<i32>` dans la signature de la la fonction `fill_vec`.
+OK... "You talkin to me?". Tu le prends sur ce ton? Allez, sors si t'es un homme. On va aller faire un test dehors. Copie-colle le code ci-dessous dans [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) et appuie sur ``Run`` (CTRL+ENTER). C'est le même code qu'avant sauf que j'ai tout mis dans la fonction ``main()`` et, pour te faire plaisir, j'ai aussi ajouté un ``mut`` devant `Vec<i32>` dans la signature de la fonction `fill_vec`.
 
 ```rust
 fn fill_vec(vec: mut Vec<i32>) -> Vec<i32> {
@@ -519,7 +519,7 @@ Une dernière remarque avant de passer à la suite. Pour l'instant nous n'avons 
 
 ***Ok... Et à propos de la mutabilité du binding. Tu serais pas en train de me la faire à l'envers? T'as toujours pas répondu.***
 
-En fait compte tenu du test de code que l'on a fait et des 2 (longs) détours par lesquels on est passé il est clair que :
+En fait, compte tenu du test de code que l'on a fait et des 2 (longs) détours par lesquels on est passé il est clair que :
 * les données, qu'elles soient sur le heap ou dans la stack, peu importe, sont toujours modifiables.
 * Le compilateur connaît les propriétés de mutabilité des différents bindings 
 * Lors de l'analyse statique le compilateur détecte si le code tente de faire quelque chose d'interdit (modifier un binding non mutable par exemple) 
@@ -722,7 +722,7 @@ fn move_semantics3() {
 
 Pas d'embrouille. On garde en tête qu'on vient de dire que le binding `vec0` a été donné lors de l'appel à à ``fill_vec()``. Pour l'instant, on a pas encore les connaissances nécessaires et donc je peux pas dire grand chose dessus. 
 
-Par contre, au retour de la fonction, ce qui est sûr, c'est que le binding ``vec1`` est le propriétaire d'un état. là, ce que je peux dire c'est qu'à la dernière ligne, là où il y a l'accolade fermante, le binding `vec1` sort du scope. Et là, automatiquement, c'est même pas à moi de le faire, l'instance concrète dont l'état était lié à ``vec1`` sera supprimée de la mémoire. 
+Par contre, au retour de la fonction, ce qui est sûr, c'est que le binding ``vec1`` est le propriétaire d'un état. Là, ce que je peux dire c'est qu'à la dernière ligne, là où il y a l'accolade fermante, le binding `vec1` sort du scope. Et là, automatiquement, c'est même pas à moi de le faire, l'instance concrète à laquelle était lié ``vec1`` sera supprimée de la mémoire. 
 
 Afin que ce soit bien clair, l'instance concrète qui va être droppée (supprimée de la mémoire) c'est le ``Vec<i32>`` qui contient les valeurs ``[22, 44, 66, 88]``.
 
@@ -791,7 +791,7 @@ La question qu'on peut se poser c'est comment, au moment de l'appel de la foncti
 
 Je te laisse réfléchir... Ayé? 
 
-Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle, peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée qu'on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et surtout c'est indépendant de la taille du vecteur. 
+Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle, peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée qu'on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et surtout, c'est indépendant de la taille du vecteur. 
 
 Par contre il faut garder en tête que c'est pas une **copie** de ``vec0`` dans ``vec`` sur mais un **move** (d'où le nom de l'exercice. Malins les mecs...). 
 
@@ -856,9 +856,9 @@ Lis les messages du compilateur. Personne ne le fera à ta place et les gars se 
 
 En plus c'est hyper clair. Le compilateur nous dit qu'à la ligne 3 il y a eu un move du binding ``my_string1`` vers le binding ``my_string2`` car le binding ``my_string1`` est lié à l'état d'une instance de type String et que ce type de donnée n'implémente pas de fonction qui permettrait de le copier (il n'implémente pas le trait Copy). Du coup, comme on peut pas faire de copie (mais uniquement un move) on a pas le droit, ni d'avoir faim ni d'avoir froid, certes, mais surtout, on a pas le droit d'utiliser le binding ``my_string1`` dans le ``assert`` pour le comparer à "Zoubida". 
 
-Juste pour dire que j'essaie d'être honnête... Bine sûr qu'il est possible de faire une copie explicite d'une String. Il faut utiliser .clone(). Le truc ici c'est que comme le trait Copy n'est pas implémenté, par défaut on fait des move. 
+Juste pour dire que j'essaie d'être honnête... Bien sûr qu'il est possible de faire une copie explicite d'une String. Il faut utiliser ``.clone()``. Le truc ici c'est que comme le trait Copy n'est pas implémenté, par défaut on fait des move. 
 
-En fait, à la fin de la ligne 3, tout se passe comme si ``my_string1`` n'est plus utilisable (c'est le cas) et que `my_string2` avait remplacé `my_string1`. 
+En fait, à la fin de la ligne 3, tout se passe comme si ``my_string1`` n'était plus utilisable (c'est le cas) et que `my_string2` avait remplacé `my_string1`. 
 
 Donc le truc à retenir c'est que :
 
@@ -902,7 +902,7 @@ error: could not compile `exercises` (bin "move_semantics3") due to 1 previous e
 Bon là, bien sûr, personne ne lit et tout le monde râle... Faisons quand même l'effort de lire. Bon, alors, ça dit quoi ?
 <!-- C'est vrai que depuis quelques années, dans le monde C++, que ce soit gcc, clang et même MSVC tout le monde fait des efforts. Y a pas de raison pour qu'il en soit différemment avec Rust. -->
 
-Clairement le compilateur indique ce qui lui pose problème : `^^^ cannot borrow as mutable` et il nous indique que c'est ``vec`` le responsable. Cerise sur le gâteau il nous donne même la solution. Il dit `consider changing this to be mutable`. Et comme si c'était pas suffisant il donne enfin la solution `fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {` avec des petits `+++` comme dans un ``diff`` pour nous indiquer ce qu'il faut ajouter. C'est y pas mignon?
+Le compilateur indique clairement ce qui lui pose problème : `^^^ cannot borrow as mutable` et il nous indique que c'est ``vec`` le responsable. Cerise sur le gâteau il nous donne même la solution. Il dit `consider changing this to be mutable`. Et comme si c'était pas suffisant il donne enfin la solution `fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {` avec des petits `+++` comme dans un ``diff`` pour nous indiquer ce qu'il faut ajouter. C'est y pas mignon?
 
 Sérieux, on atteint presque le Nirvana. À part le mot ``borrow``, il a tout bon. En gros ce qu'il est en train de dire c'est que ``vec`` étant un binding non mutable, il n'autorise pas l’invocation de la méthode ``.push()`` dessus. En effet cette dernière tente de modifier l'état de l'instance concrète en y ajoutant la valeur 88.
 
@@ -1011,7 +1011,7 @@ Si tu ne l'as pas déjà fait, je te conseille vivement la lecture de ce bouquin
 <img src="./assets/coding_interview_patterns.webp" alt="Coding Interview Patterns" width="225" loading="lazy"/>
 </div>
 
-Je te passe les détails mais dans un des bonus du Chapitre 1 qui traite des "Two Pointers" il y a un challenge où on nous demande de regrouper à la fin d'un vecteur tous les zéros qu'on a pu trouver. Tu peux jeter un oeil sur ce puzzle [ici en Rust](https://github.com/40tude/rust_coding_interview) ou [là en Python](https://github.com/40tude/py_coding_interview).
+Je te passe les détails mais dans un des bonus du Chapitre 1 qui traite des "Two Pointers" il y a un exercice où on nous demande de regrouper à la fin d'un vecteur tous les zéros qu'on a pu trouver. Tu peux jeter un oeil sur ce puzzle [ici en Rust](https://github.com/40tude/rust_coding_interview) ou [là en Python](https://github.com/40tude/py_coding_interview).
 
 Ci-dessous une solution en Rust
 
@@ -1072,7 +1072,7 @@ Le truc, c'est que cette façon d'exprimer les choses traduit peut être bien no
 
 En fait ici, on ne veut pas céder la propriété du binding, on veut juste le prêter momentanément (le temps que le fonction `shift_zeros_to_the_end()` modifie l'état de l'instance concrète). Ça, en Rust cela se fait en passant comme argument, non pas le binding (si on le passe, il est moved et on le perd) mais une référence sur le binding. 
 
-Si je reprends l'ALU (arithmetic logic unit) du Problème à trois corps de tout à l'heure, j'utilise une seule feuille dans le classeur où j'écris un entier (les coordonnées) qui va permettre au récipiendaire de retrouver mon binding dans la plaine. En faisant comme ça, il sait où le trouver et il peut travailler dessus. Quand il a terminé le cavalier revient à vide (pas de valeur retournée). C'est le signal pour moi que je peux continuer mon travail mais en utilisant la version modifiée de mon binding original. Tout se passe donc bine comme si j'avais prêté le binding.
+Si je reprends l'ALU (arithmetic logic unit) du Problème à trois corps de tout à l'heure, j'utilise une seule feuille dans le classeur où j'écris un entier (les coordonnées) qui va permettre au récipiendaire de retrouver mon binding dans la plaine. En faisant comme ça, il sait où le trouver et il peut travailler dessus. Quand il a terminé le cavalier revient à vide (pas de valeur retournée). C'est le signal pour moi que je peux continuer mon travail mais en utilisant la version modifiée de mon binding original. Tout se passe donc bien comme si j'avais prêté le binding.
 
 Du point de vu de la syntaxe, pour passer une référence sur un binding plutôt qu'un binding lui même on utilise la notation ``&my_binding``.
 
@@ -1122,7 +1122,7 @@ fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32>{...}
 ```
 Et on disait dans les commentaires : `vec0` is a mutable binding that links the name ``vec0`` to the complete state of a concrete instance of type ``Vec<i32>``.
 
-Ici il n'y a pas de `mut` devant ``nums_in`` donc `nums_in` est un binding non mutable. Ensuite le binding associe le nom `nums_in` à quoi? À l'état d'une instance concrète du type ` &mut Vec<i32>`. Dans le cas d'un type référence (mutable ou pas) sur un machin, une instance concrète c'est la référence elle même. Donc, je répète : ``nums-in`` est un binding non mutable qui relie le nom ``nums_in`` à une instance concrète de type ``&mut Vec<i32>``. 
+Ici il n'y a pas de `mut` devant ``nums_in`` donc `nums_in` est un binding non mutable. Ensuite le binding associe le nom `nums_in` à quoi? À l'état d'une instance concrète du type ``&mut Vec<i32>``. Dans le cas d'un type référence (mutable ou pas) sur un machin, une instance concrète c'est la référence elle même. Donc, je répète : ``nums_in`` est un binding non mutable qui relie le nom ``nums_in`` à une instance concrète de type ``&mut Vec<i32>``. 
 
 Le binding n'est pas modifiable mais l'état de ``Vec<i32>`` est modifiable à travers la référence.
 
@@ -1220,7 +1220,7 @@ Oui mais pourquoi ? Oui, encore bravo! On crée un binding non mutable ``vec0`` 
 
 ### Pour le plaisir...🎹
 
-Le code ci-dessous montre que finalement 2 implémentations sont possibles. 
+Le code ci-dessous montre 2 implémentations sont possibles. 
 
 Soit on passe le binding par référence soit on le move. Elles font toutes les deux le job. 
 
@@ -1397,7 +1397,7 @@ Commence pas à râler. Je te propose de lire la suite où on ne va parler que d
 
 ## La propriété durée de vie des bindings (lifetime)
  
-On va partir d'un problème simple de comparaison de longueur de chaines de caractères. Ci-dessous un exemple de code qui fonctionne.
+On va partir d'un problème simple de comparaison de longueur de chaînes de caractères. Ci-dessous un exemple de code qui fonctionne.
 
 ```rust
 fn longest(s1: String, s2: String) -> String {
@@ -1442,7 +1442,7 @@ Longest: , and beyond!
 ```
 
 
-Maintenant, imagine que pour une raison ou pour une autre on nous demande de réécrire la fonction `longest()` de telle sorte qu'elle prenne en paramètre des bindings dont l'extrémité du lien est une référence sur une string slice (``&str`` pour les intimes) 
+Maintenant, imagine que pour une raison ou pour une autre on nous demande de réécrire la fonction `longest()` de telle sorte qu'elle prenne en paramètre des bindings dont l'extrémité du lien est une string slice (``&str`` pour les intimes) 
 
 Voilà par exemple code qui semble pas trop mal...Je ne commente pas c'est presque un copié-collé du code précédent.  
 
@@ -1486,7 +1486,7 @@ error: could not compile `playground` (bin "playground") due to 1 previous error
 
 Je te laisse lire... Ayé? 
 
-Le compilateur nous dit que la fonction retourne une référence, que c'est bien gentil mais que bon, lui il aimerait être sûr à 100% que la référence qui va être retournée sera une référence sur un truc qui à ce moment là sera un truc valide. Comme il arrive pas à s'en sortir tout seul il nous demande d'annoter la signature de la fonction avec les durées de vie des bindings concernés.
+Le compilateur nous dit que la fonction retourne une référence, que c'est bien gentil mais que bon, lui, il aimerait être sûr à 100% que la référence qui va être retournée sera une référence sur une donnée qui au moment du retour sera toujours une donnée valide. Comme il n'arrive pas à s'en sortir tout seul il nous demande d'annoter la signature de la fonction avec les durées de vie des bindings concernés.
 
 Il nous donne même un exemple qui est juste. En effet, la fonction retourne selon les cas, soit ``s1`` soit ``s2``. Donc le binding retourné et les paramètres doivent avoir les mêmes durées de vie.
 
@@ -1510,11 +1510,15 @@ fn main() {
     // println!("Longest: {}", result);       // NOK result is s2 dependant
 }
 ```
-Super! Dans la console on voit ``Longest: , and beyond!``
+Voici ce qui se passe dans la signature :
+* ``<'t>`` : ça introduit un paramètre de durée de vie ``t`` qui sera utilisé pour lier entre elles les durées de vie des paramètres et des valeurs de retour
+* ``s1 : &'t str`` : Le premier paramètre ``s1`` est une string slice qui doit vivre au moins aussi longtemps que ``t``
+* ``s2 : &'t str`` : Le second paramètre ``s2`` est une string slice qui doit vivre au moins aussi longtemps que ``t``
+* ``-> &'t str`` : La fonction retourne une string slice qui doit vivre au moins aussi longtemps que ``t``
 
-Maintenant pour vraiment comprendre ces histoires de durées de vie des bindings supprime le dernier commentaire
+À l'exécution, dans la console, on voit ``Longest: , and beyond!``
 
-Pour le coup ça compile plus et on a le message suivant :
+Maintenant pour vraiment comprendre ces histoires de durées de vie des bindings, supprime le dernier commentaire. Pour le coup ça ne compile plus et on a le message suivant :
 
 ```rust
 Compiling playground v0.0.1 (/playground)
