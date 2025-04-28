@@ -605,6 +605,17 @@ On peut dire que `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'
 * Si je touche à quoi que ce soit qui modifie l'état (pense au has code si besoin) du vecteur (PLC ou valeurs) j'en prends une.
 
 
+{: .important-title }
+> À cet instant, concernant le binding il faut garder en tête
+>
+> 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+>
+> 2. Il ajoute des propriétés
+> * de mutabilité
+> * ...
+>
+> 3. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
+
 {: .important }
 **À cet instant, concernant le binding il faut garder en tête :**
 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
