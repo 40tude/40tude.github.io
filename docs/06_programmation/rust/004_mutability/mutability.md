@@ -294,8 +294,8 @@ Bouge pas. On va devoir faire un détour afin de comprendre ce qui se passe en m
 
 
 Allez, c'est parti, je t'explique et ça tombe bien car le type de données ``Vec<T>`` (vecteur contenant des données de type ``T`` : `i32`, `f64`...) est intéressant. En effet, même si dans le code on le manipule comme une entité unique, il est constitué de 2 parties : 
-1. il y a d'un côté une structure de contrôle. Je la nomme PLC. C'est pas le terme officiel. Je crois avoir lu "représentation interne" ou "méta-données".
-1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). 
+1. il y a d'un côté une structure de contrôle. Je la nomme PLC. C'est pas le terme officiel. Je crois avoir lu "structure ``Vev<T>``", "représentation interne" ou "méta-données".
+1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). Là je crois que le terme officiel c'est tout simplement "buffer".
 
 **La structure de contrôle PLC contient 3 champs :**
 1. **P** : l'adresse où sont stockées en mémoire les données (`[22, 44, 66]`). C'est un pointeur.
@@ -854,7 +854,9 @@ error: could not compile `playground` (bin "playground") due to 1 previous error
 
 Lis les messages du compilateur. Personne ne le fera à ta place et les gars se sont fait suer pour trouver un moyen de nous aider alors utilisons ce qu'ils mettent à notre disposition... 
 
-En plus c'est hyper clair. Le compilateur nous dit qu'à la ligne 3 il y a eu un move du binding ``my_string1`` vers le binding ``my_string2`` car le binding ``my_string1`` est lié à l'état d'une instance de type String et que ce type de donnée n'implémente pas de fonction qui permettrait de le copier. Du coup, comme on peut pas faire de copie (mais uniquement un move) on a pas le droit, ni d'avoir faim ni d'avoir froid, certes, mais surtout, on a pas le droit d'utiliser le binding ``my_string1`` dans le ``assert`` pour le comparer à "Zoubida".
+En plus c'est hyper clair. Le compilateur nous dit qu'à la ligne 3 il y a eu un move du binding ``my_string1`` vers le binding ``my_string2`` car le binding ``my_string1`` est lié à l'état d'une instance de type String et que ce type de donnée n'implémente pas de fonction qui permettrait de le copier (il n'implémente pas le trait Copy). Du coup, comme on peut pas faire de copie (mais uniquement un move) on a pas le droit, ni d'avoir faim ni d'avoir froid, certes, mais surtout, on a pas le droit d'utiliser le binding ``my_string1`` dans le ``assert`` pour le comparer à "Zoubida". 
+
+Juste pour dire que j'essaie d'être honnête... Bine sûr qu'il est possible de faire une copie explicite d'une String. Il faut utiliser .clone(). Le truc ici c'est que comme le trait Copy n'est pas implémenté, par défaut on fait des move. 
 
 En fait, à la fin de la ligne 3, tout se passe comme si ``my_string1`` n'est plus utilisable (c'est le cas) et que `my_string2` avait remplacé `my_string1`. 
 
@@ -1086,6 +1088,11 @@ C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exem
 De plus, même sans parler de la signature du récipiendaire, Rust demande à ce j'exprime explicitement les autorisations de modifier que je donne. Comme je veux prêter le binding ``vec0``  je vais passer une référence et comme je veux permettre la modification de ce à quoi il fait référence, je dois écrire `shift_zeros_to_the_end(&mut vec0)`.
 
 
+***Heu... si je donne un ``&mut``, pourquoi je peux encore utiliser ``vec0`` après ? Ça aurait dû être "consommé", non ?*** 
+Alors là... Tu vas pouvoir te la pêter au prochain repas de famille... En fait, quand on prête un binding ``vec0`` en tant que ``&mut vec0``, Rust réalise ce qu'on appelle un **reborrow implicite**:
+* pendant l'appel à ``shift_zeros_to_the_end(&mut vec0)``, l'accès exclusif au contenu est transféré temporairement à la fonction
+* à la sortie de la fonction, le reborrow se termine, et le binding ``vec0`` redevient accessible et utilisable normalement dans ``main()``
+* contrairement à un move, ``vec0`` n'est pas perdu après l'appel. Il retrouve simplement ses droits d'usage initiaux.
 
 
 **Notes :** 
@@ -1095,6 +1102,10 @@ Je te confirme
     * ``&mut`` est un opérateur composé en Rust
     * ``&mut`` est un seul "mot-clé logique", qui se lit "référence mutable à"
 * pour une référence non mutable tu verras surtout `ma_fonction(&bob)` sans un espace alors que ``shift_zeros_to_the_end(& vec0)`` est tout aussi licite mais pas ou très peu utilisé (je sais pas pourquoi, ça doit être historique)
+
+
+
+
 
 
 
