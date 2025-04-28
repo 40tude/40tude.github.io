@@ -676,8 +676,12 @@ fn fill_vec(vec: Vec<i32>) -> Vec<i32> {...}
 
 Maintenant, afin de pouvoir avancer, je te redonne **LA** ownership rule de Rust : 
 
-{: .warning }
-**Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.** 
+<!-- {: .warning }
+**Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.**  -->
+
+{: .note-title }
+> Ownership Rule
+> Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.
 
 Alors celle-là, tu l'imprimes et tu l'affiches dans tes toilettes...
 
@@ -685,7 +689,11 @@ Alors celle-là, tu l'imprimes et tu l'affiches dans tes toilettes...
 <img src="./assets/ownerhip_rule.webp" alt="Rust ownership rule" width="450" loading="lazy"/>
 </div>
 
-Compte tenu de ce que l'on a dit à propos des états et des instances concretes, moi je garde en tête : **Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.** Concernant les affichages dans tes toilettes, je te laisse gérer.
+Compte tenu de ce que l'on a dit à propos des états et des instances concretes, moi je garde en tête : 
+
+**Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.** 
+
+Concernant les affichages dans tes toilettes, je te laisse gérer.
 
 On va pas y passer 3H mais bon, certains mots sont importants. 
 
@@ -739,15 +747,23 @@ Afin que ce soit bien clair, l'instance concrète qui va être droppée (supprim
 
 
 
-{: .important }
+<!-- {: .important }
 **À cet instant, concernant le binding il faut garder en tête :**
 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
 1. Il ajoute des propriétés
     * de mutability
     * de ownership
     * ... 
-1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées. -->
 
+{: .important-title }
+> À cet instant, concernant le binding il faut garder en tête
+> 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+> 2. Il ajoute des propriétés
+> * de mutabilité
+> * de ownership
+> * ...
+> 3. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -1146,7 +1162,7 @@ Oui mais pourquoi ? Oui, encore bravo! On crée un binding non mutable ``vec0`` 
 
 
 
-{: .important }
+<!-- {: .important }
 **À cet instant, concernant le binding il faut garder en tête :**
 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
 1. Il ajoute des propriétés
@@ -1154,7 +1170,17 @@ Oui mais pourquoi ? Oui, encore bravo! On crée un binding non mutable ``vec0`` 
     * de ownership
     * de borrowing
     * ... 
-1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées. -->
+
+{: .important-title }
+> À cet instant, concernant le binding il faut garder en tête
+> 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+> 2. Il ajoute des propriétés
+> * de mutabilité
+> * de ownership
+> * de borrowing
+> * ...
+> 3. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
@@ -1504,7 +1530,7 @@ Le compilateur est vraiment fort (moi perso je suis bluffé).
 
 
 
-{: .important }
+<!-- {: .important }
 **À cet instant, concernant le binding il faut garder en tête :**
 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
 1. Il ajoute des propriétés
@@ -1512,7 +1538,18 @@ Le compilateur est vraiment fort (moi perso je suis bluffé).
     * de ownership 
     * de borrowing
     * de lifetime
-1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées. -->
+
+
+{: .important-title }
+> À cet instant, concernant le binding il faut garder en tête
+> 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
+> 2. Il ajoute des propriétés
+> * de mutabilité
+> * de ownership
+> * de borrowing
+> * de lifetime
+> 3. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
 
 
