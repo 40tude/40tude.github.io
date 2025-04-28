@@ -607,22 +607,19 @@ On peut dire que `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'
 
 {: .important-title }
 > À cet instant, concernant le binding il faut garder en tête
->
 > 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
->
 > 2. Il ajoute des propriétés
 > * de mutabilité
 > * ...
->
 > 3. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
 
-{: .important }
+<!-- {: .important }
 **À cet instant, concernant le binding il faut garder en tête :**
 1. Il associe un nom à l'état d'une instance d'un type ``<T>``
 1. Il ajoute des propriétés
     * de mutability
     * ... 
-1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées.
+1. Lors de la compilation, via une analyse statique du code, le compilateur s'assure que les propriétés des bindings sont respectées. -->
 
 
 
