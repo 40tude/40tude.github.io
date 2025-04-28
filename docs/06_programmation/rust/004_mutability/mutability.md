@@ -99,24 +99,23 @@ error: could not compile `playground` (bin "playground") due to 3 previous error
 Bref, ça passe pas à la compilation et le but de l'exercice, c'est justement de corriger le code afin de satisfaire le compilateur. 
 
 ### Note
-Quand je dis que "ça passe pô à la compilation" c'est un abus dans langage. En fait quand on "compile" voici les grandes étapes et les différents outils mis à contribution. Dans ce qui suit, je vais continuer à dire "ça passe pas à la compilation" mais maintenant on est d'accord sur ce que cela sous-entend. 
+Quand je dis que "ça passe pô à la compilation" c'est un abus dans langage. En fait quand on "compile" voici les grandes étapes et les différents outils mis à contribution. Dans ce qui suit, je vais continuer à dire "ça passe pas à la compilation" mais maintenant on est d'accord sur ce que cela sous-entend. J'ai mis en gras 2 des étapes dont on va avoir l'occasion de reparler.
 
 | Étape                         | Description rapide |
 |:-------------------------------|:-------------------|
 | Parsing / Lexing               | Le code source est découpé (tokens) puis organisé |
 | AST Construction               | Construction d'un arbre syntaxique abstrait (AST) |
-| Name Resolution                | Résolution des chemins (foo::bar), variables, modules |
-| Type Checking                  | Chaque expression, fonction, variable est typée strictement |
+| Name Resolution                | Résolution des chemins (``foo::bar``), variables, modules |
+| Type Checking                  | Chaque expression, fonction, variable est strictement typée |
 | Trait Resolution               | Les contraintes de trait sont vérifiées |
-| Lifetime Analysis              | Analyse des durées de vie ('t, etc.) pour les références |
-| Borrow Checking                | S'assure qu'il n'y a pas de conflits de mutabilité ou d'aliasing |
+| **Lifetime Analysis**          | Analyse des durées de vie (``'t``, etc.) pour les références |
+| **Borrow Checking**            | S'assure qu'il n'y a pas de conflits de mutabilité ou d'aliasing |
 | Const Evaluation               | Les ``const`` sont calculées pour validation |
 | MIR Construction               | Rust transforme le code en une représentation intermédiaire optimisée pour les analyses (le MIR) |
-| MIR Optimizations              | Rust optimise le MIR avant de le descendre en LLVM (low level virtual machine) |
+| MIR Optimizations              | Rust optimise le MIR avant de le descendre en LLVM (low level virtual machine, voir clang par ex.) |
 | Code Generation (LLVM IR)      | Rust génère le code intermédiaire LLVM |
 | LLVM Optimizations             | LLVM optimise encore plus |
-| Machine Code                   | Finalement, le code binaire est produit |
-
+| Machine Code                   | Le code binaire est produit |
 
 OK... Revenons sur le code. Dans la section ``test`` on crée un vecteur `vec0` qu'on passe comme argument à une fonction ``fill_vec()``. Cette dernière retourne un vecteur ``vec1`` qui n'est autre que le précédent auquel on a ajouté la valeur 88 (voir la ligne ``assert``). 
 
