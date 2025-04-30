@@ -29,6 +29,7 @@ Dans un contexte Rust, je pense qu'il est préférable de ne plus parler de vari
 À garder sous le coude : 
 * ``blablabla`` est un **binding** (non)mutable qui lie le nom ``blablabla`` à l'**état** d'une instance concrète d'un type `<T>`.
 * **Ownership rule** : Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.
+* Compilers makes sure the good things happen — the logical errors are on you.
 
 
 
@@ -99,7 +100,7 @@ error: could not compile `playground` (bin "playground") due to 3 previous error
 Bref, ça passe pas à la compilation et le but de l'exercice, c'est justement de corriger le code afin de satisfaire le compilateur. 
 
 ### Note
-Quand je dis que "ça passe pô à la compilation" c'est un abus dans langage. En fait quand on "compile" voici les grandes étapes et les différents outils mis à contribution. Dans ce qui suit, je vais continuer à dire "ça passe pas à la compilation" mais maintenant on est d'accord sur ce que cela sous-entend. J'ai mis en gras 2 des étapes dont on va avoir l'occasion de reparler.
+Quand je dis que "ça passe pô à la compilation" c'est un abus dans langage. En fait, quand on "compile" voici les grandes étapes et les différents outils mis à contribution. Dans ce qui suit, je vais continuer à dire "ça passe pas à la compilation" mais maintenant on est d'accord sur ce que cela sous-entend. J'ai mis en gras 2 des étapes dont on va avoir l'occasion de reparler.
 
 | Étape                         | Description rapide |
 |:-------------------------------|:-------------------|
@@ -193,7 +194,7 @@ En Rust la notion de binding va plus loin :
 
 Un binding c'est donc un engagement fort (un contrat). On le signe avec notre sang auprès du compilateur et ce dernier refusera de compiler notre code si on ne respecte pas notre parole. Comme tu le vois, en Rust l'ambiance est assez sympa, mais bon, c'est pour notre bien.
 
-Ceci étant posé, je te propose qu'à partir de maintenant on commence à utiliser le mot binding au lieu du mot variable.
+Ceci étant posé, je propose qu'à partir de maintenant on commence à utiliser le mot binding au lieu du mot variable.
 
 Maintenant, il faut le savoir, mais en Rust, par défaut, **tout est non mutable**. Là, où par exemple en C++, tout est mutable par défaut. 
 
