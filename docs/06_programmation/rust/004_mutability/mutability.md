@@ -5,7 +5,7 @@ title: "Bindings en Rust : Bien Plus Que de Simples Variables"
 parent: "Rust"
 #math: mathjax
 date               : 2025-04-25 11:00:00
-last_modified_date : 2025-04-26 09:00:00
+last_modified_date : 2025-05-06 12:00:00
 ---
 
 # Bindings en Rust : Bien Plus Que de Simples Variables
@@ -99,7 +99,7 @@ error: could not compile `playground` (bin "playground") due to 3 previous error
 Bref, ça passe pas à la compilation et le but de l'exercice, c'est justement de corriger le code afin de satisfaire le compilateur. 
 
 ### Note
-Quand je dis que "ça passe pô à la compilation" c'est un abus dans langage. En fait, quand on "compile" voici les grandes étapes et les différents outils mis à contribution. Dans ce qui suit, je vais continuer à dire "ça passe pas à la compilation" mais maintenant on est d'accord sur ce que cela sous-entend. J'ai mis en gras 2 des étapes dont on va avoir l'occasion de reparler.
+Quand je dis que "ça passe pô à la compilation" c'est un abus de langage. En fait, quand on "compile" voici les grandes étapes et les différents outils mis à contribution. Dans ce qui suit, je vais continuer à dire "ça passe pas à la compilation" mais maintenant on est d'accord sur ce que cela sous-entend. J'ai mis en gras 2 des étapes dont on va avoir l'occasion de reparler.
 
 | Étape                         | Description rapide |
 |:-------------------------------|:-------------------|
@@ -128,7 +128,7 @@ Voici la solution que j'ai proposé :
 ```rust
 // TODO: Fix the compiler error in the function without adding any new line.
 fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {
-    //      ^^^----- Do you see the `mut` here
+    //      ^^^----- Do you see the `mut` here?
     vec.push(88);
     vec
 }
@@ -184,7 +184,7 @@ Ici `vec0` est un **binding** non mutable qui lie le nom ``vec0`` à l'état com
 
 ***Hep, hep, hep. Tu peux reprendre? Ça y est, tu m'as perdu... Je vois ce qu'est un vecteur de ``i32``. C'est un tableau dont la taille peut varier et qui contient des entiers codés sur 32 bits. Par contre binding... Pourquoi tu dis pas simplement qu'on déclare une variable ``vec0`` ?***
 
-En fait, si on était dans un autre langage de programmation, C++ par exemple, oui on dirait que la ligne correspond à la déclaration de la variable ``vec0``. Après ça, j'expliquerai que, en gros, on associe au nom `vec0` (qu'on va manipuler dans le programme) une zone mémoire qui contient des valeurs. 
+En fait, si on était dans un autre langage de programmation, C++ par exemple, oui, on dirait que la ligne correspond à la déclaration de la variable ``vec0``. Après ça, j'expliquerai que, en gros, on associe au nom `vec0` (qu'on va manipuler dans le programme) une zone mémoire qui contient des valeurs. 
 
 En Rust la notion de binding va plus loin :
 1. Il y a toujours l'association d'un nom à une valeur. On verra plus loin que c'est plutôt l'association d'un nom à l'état d'une instance mais bon c'est pas important pour l'instant.
@@ -305,7 +305,7 @@ Je suis toujours scotché sur la première ligne de code. Je ne souhaite donc pa
 
 ### Un premier détour pour comprendre ce qui se passe en mémoire
 
-Bouge pas. On va devoir faire un détour afin de comprendre ce qui se passe en mémoire. Cela devrait nous permettre de réaliser que dans cette dernière, physiquement, toutes les zones sont potentiellement mutables. Ce qui nous sauve c'est que dans le code on annonce ce que l'on veut (mutable, non mutable) et qu'ensuite, le compilateur, aka Vinz Clortho le Maître des Clés de Gozer, veille aux grains et autorise (ou non) que telle ou telle zone soit modifiée. 
+Bouge pas. On va devoir faire un détour afin de comprendre ce qui se passe en mémoire. Cela devrait nous permettre de réaliser que dans cette dernière, physiquement, toutes les zones sont potentiellement mutables. Ce qui nous sauve c'est que dans le code on annonce ce que l'on veut (mutable, non mutable) et qu'ensuite, le compilateur, aka Vinz Clortho le Maître des Clés de Gozer, veille au grain et autorise (ou non) que telle ou telle zone soit modifiée. 
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/o1T-D_37qz0?si=SJxX45O-FpypvG-1&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -314,7 +314,7 @@ Bouge pas. On va devoir faire un détour afin de comprendre ce qui se passe en m
 
 Allez, c'est parti, je t'explique et ça tombe bien car le type de données ``Vec<T>`` (vecteur contenant des données de type ``T`` : `i32`, `f64`...) est intéressant. En effet, même si dans le code on le manipule comme une entité unique, il est constitué de 2 parties : 
 1. il y a d'un côté une structure de contrôle. Je la nomme PLC. C'est pas le terme officiel. Je crois avoir lu "structure ``Vev<T>``", "représentation interne" ou "méta-données".
-1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). Là je crois que le terme officiel c'est tout simplement "buffer".
+1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). Là, je crois que le terme officiel c'est tout simplement "buffer".
 
 **La structure de contrôle PLC contient 3 champs :**
 1. **P** : l'adresse où sont stockées en mémoire les données (`[22, 44, 66]`). C'est un pointeur.
@@ -350,7 +350,7 @@ Allez, c'est reparti. Imagine... Imagine qu'on se trouve dans une fonction ``mai
 <img src="./assets/alu_3_bodies.webp" alt="ALU 3 bodies problem" width="900" loading="lazy"/>
 </div>
 
-Alors? Comment on fait? Je te propose de mettre la valeur dans un classeur, de donner ce classeur à un cavalier et d'envoyer le cavalier à l'autre bout de la plaine. Là, on ouvre le classeur, on récupère la valeur et on exécute le code de la fonction. Quand c'est terminé le cavalier revient. Le classeur est vide car la fonction n'a rien renvoyé. On reprend l'exécution de la fonction ``main()``.
+Alors? Comment on fait? Je te propose de mettre la valeur dans un classeur, de donner ce classeur à un cavalier et d'envoyer le cavalier à l'autre bout de la plaine. Là, on ouvre le classeur, on récupère la valeur et on exécute le code de la fonction en tenant compte de la valeur reçue. Quand c'est terminé le cavalier revient. Le classeur est vide car la fonction n'a rien renvoyé. On reprend alors l'exécution de la fonction ``main()``.
 
 ***Cool, ça marche.*** Maintenant si on veut passer 2 entiers. Même principe. Par contre attention à l'ordre. Faut que je me mette d'accord avec la fonction pour dire que la premiere feuille du classeur correspond au premier paramètre et la seconde au second paramètre.
 
@@ -382,10 +382,10 @@ On peut retenir que :
 Du coup on comprend pourquoi le vecteur est composé en 2 morceaux :
 
 **La structure de contrôle :** elle a une taille fixe, connue au moment de la compilation. On peut la faire passer sur la stack pour "passer" le vecteur à une fonction. 
-* Si le vecteur `vec0` est mutable, le paramètre ``len`` va peut être passer de 3 à 18 mais en gros cette valeur sera toujours codée par un ``usize`` (pense à un entier 64 bits). 
+* Si le vecteur `vec0` est mutable, le paramètre ``len`` va peut être passer de 3 à 18 mais cette valeur sera toujours codée par un ``usize`` (pense à un entier 64 bits). 
 * De même, si pour une raison ou pour une autre on doit déplacer la zone qui contient les données (on passe de 3 à 300 données par exemple et on manque de place), l’adresse (la valeur du pointeur dont je parlais précédemment) va changer mais ce sera toujours une address sur 64 bits. 
-* Donc même si les valeurs des champs de la structure de contrôle changent, sa taille, le nombre d'octets occupés par cette dernière, sera toujours la même. 
-* C'est cette structure de taille fixe qu'on va faire passer, d'une fonction à une autre via la stack.
+* Donc, même si les valeurs des champs de la structure de contrôle changent, sa taille, le nombre d'octets occupés par cette dernière, sera toujours la même. 
+* C'est cette structure de taille fixe qu'on va faire passer, d'une fonction à une autre, via la stack.
 
 **Le jeu de données :**  
 * Il est susceptible de voir sa taille évoluer.
@@ -713,7 +713,7 @@ Compte tenu de ce que l'on a dit à propos des états et des instances concrète
 
 **Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.** 
 
-Concernant les affichages dans tes toilettes, je te laisse gérer.
+Concernant l'affichage dans tes toilettes, je te laisse gérer.
 
 On va pas y passer 3H mais bon, certains mots sont importants. 
 
@@ -741,7 +741,7 @@ fn move_semantics3() {
 
 Pas d'embrouille. On garde en tête qu'on vient de dire que le binding `vec0` a été donné lors de l'appel à à ``fill_vec()``. Pour l'instant, on a pas encore les connaissances nécessaires et donc je peux pas dire grand chose dessus. 
 
-Par contre, au retour de la fonction, ce qui est sûr, c'est que le binding ``vec1`` est le propriétaire d'un état. Là, ce que je peux dire c'est qu'à la dernière ligne, là où il y a l'accolade fermante, le binding `vec1` sort du scope. Et là, automatiquement, c'est même pas à moi de le faire, l'instance concrète à laquelle était lié ``vec1`` sera supprimée de la mémoire. 
+Par contre, au retour de la fonction `fill_vec()`, ce qui est sûr, c'est que le binding ``vec1`` est le propriétaire d'un état. Là, ce que je peux dire c'est qu'à la dernière ligne, là où il y a l'accolade fermante, le binding `vec1` sort du scope. Et là, automatiquement, c'est même pas à moi de le faire, l'instance concrète à laquelle était lié ``vec1`` sera supprimée de la mémoire. 
 
 Afin que ce soit bien clair, l'instance concrète qui va être droppée (supprimée de la mémoire) c'est le ``Vec<i32>`` qui contient les valeurs ``[22, 44, 66, 88]``.
 
@@ -750,7 +750,7 @@ Afin que ce soit bien clair, l'instance concrète qui va être droppée (supprim
 
 * le binding ``vec0`` est cédé par valeur à la fonction `fill_vec()` (c'est faux mais on y revient dans 2 min.)
 * le binding ``vec0`` cesse d’être propriétaire
-* le binding ``vec`` de fill_vec() devient propriétaire
+* le binding ``vec`` de ``fill_vec()`` devient propriétaire
 * le binding ``vec0`` est invalidé. Il reste accessible mais on a une erreur de compilation si on tente de l'utiliser
 * Au retour de la fonction `fill_vec()`, le binding non mutable ``vec1`` relie le nom `vec1` à l'état de l'instance d'un type ``Vec<i32>``. 
 * `vec1` est propriétaire de l'instance en question
@@ -806,11 +806,11 @@ fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
 * La signature de la fonction indique qu'elle a en paramètre un binding ``vec`` qui est lié à l'état d'une instance d'un type ``Vec<i32>``
 * La fonction retourne un binding qui est lié à l'état d'une instance d'un type `Vec<i32>`
 
-La question qu'on peut se poser c'est comment, au moment de l'appel de la fonction, le ownership du binding ``vec0`` est-il passé à ``vec``. Là, ça va, mais si on avait un vecteur de 1 GB on aurait un problème. Non? 
+La question qu'on peut se poser c'est comment, au moment de l'appel de la fonction, le ownership du binding ``vec0`` est-il passé à ``vec``. Là, ça va parce qu'on a 3 valeurs qui se battent en duel, mais si on avait un vecteur de 1 GB de données, on aurait un problème. Non? 
 
 Je te laisse réfléchir... Ayé? 
 
-Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle, peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée qu'on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et surtout, c'est indépendant de la taille du vecteur. 
+Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données lui même. Ici on a que `[22, 44, 66]` mais en fait, grâce au principe d'indirection et au pointeur de la structure de contrôle, peu importe la quantité de valeurs dans le vecteur. Seule la structure de contrôle (PLC) qui contient 3 valeurs de type simple va transiter par la stack. Pour te donner un ordre d'idée on peut assimiler ces 3 données à 3 entiers 64 bits. C'est hyper rapide et surtout, c'est indépendant du nombre de valeur dans le vecteur. 
 
 Par contre il faut garder en tête que c'est pas une **copie** de ``vec0`` dans ``vec`` sur mais un **move** (d'où le nom de l'exercice. Malins les mecs...). 
 
@@ -875,7 +875,7 @@ Lis les messages du compilateur. Personne ne le fera à ta place et les gars se 
 
 En plus c'est hyper clair. Le compilateur nous dit qu'à la ligne 3 il y a eu un move du binding ``my_string1`` vers le binding ``my_string2`` car le binding ``my_string1`` est lié à l'état d'une instance de type String et que ce type de donnée n'implémente pas de fonction qui permettrait de le copier (il n'implémente pas le trait Copy). Du coup, comme on peut pas faire de copie (mais uniquement un move) on a pas le droit, ni d'avoir faim ni d'avoir froid, certes, mais surtout, on a pas le droit d'utiliser le binding ``my_string1`` dans le ``assert`` pour le comparer à "Zoubida". 
 
-Juste pour dire que j'essaie d'être honnête... Bien sûr qu'il est possible de faire une copie explicite d'une String. Il faut utiliser ``.clone()``. Le truc ici c'est que comme le trait Copy n'est pas implémenté, par défaut on fait des move. 
+Juste pour dire que j'essaie d'être honnête... Bien sûr qu'il est possible de faire une copie explicite d'une String. Il faut utiliser ``.clone()``. Le truc ici c'est que comme le trait Copy n'est pas implémenté, par défaut on fait des ``.move()``. 
 
 En fait, à la fin de la ligne 3, tout se passe comme si ``my_string1`` n'était plus utilisable (c'est le cas) et que `my_string2` avait remplacé `my_string1`. 
 
@@ -925,7 +925,7 @@ Le compilateur indique clairement ce qui lui pose problème : `^^^ cannot borrow
 
 Sérieux, on atteint presque le Nirvana. À part le mot ``borrow``, il a tout bon. En gros ce qu'il est en train de dire c'est que ``vec`` étant un binding non mutable, il n'autorise pas l’invocation de la méthode ``.push()`` dessus. En effet cette dernière tente de modifier l'état de l'instance concrète en y ajoutant la valeur 88.
 
-***Ben qu'est ce qu'on fait alor?*** Lis je te dis... Le compilateur nous a donné la solution. Il faut re-qualifier le binding ``vec``. Rappelle toi par défaut tout est non mutable. Donc dans la signature : 
+***Ben qu'est ce qu'on fait alors?*** Lis je te dis... Le compilateur nous a donné la solution. Il faut re-qualifier le binding ``vec``. Rappelle toi par défaut tout est non mutable. Donc dans la signature : 
 
 ```rust
 fn fill_vec(vec: Vec<i32>) -> Vec<i32> 
@@ -1114,7 +1114,7 @@ De plus, même sans parler de la signature du récipiendaire, Rust demande à ce
 > At any given time you can have **either** one mutable reference (writer) or multiple immutable references (readers).
 
 
-En français dans le texte cela veut dire que lors de l'analyses statique de code on va suivre les prêts et que lors de l'exécution du programme il ne nous sera permis d'avoir qu'une seule référence susceptible de modifier l'instance concrète sur laquelle elle pointe, ou alors, d'avoir plusieurs références susceptible de lire le contenu d'une même instance concrète. Entre proatique, cela signifie qu'on ne peut pas avoir un writer et deux reader. C'est soit un writer soit 2 readers (fromage ou dessert mais pas les 2).
+En français dans le texte cela veut dire que lors de l'analyse statique de code on va suivre les prêts et que lors de l'exécution du programme il ne nous sera permis d'avoir qu'une seule référence susceptible de modifier l'instance concrète sur laquelle elle pointe, ou alors, d'avoir plusieurs références susceptible de lire le contenu d'une même instance concrète. Entre pratique, cela signifie qu'on ne peut pas avoir un writer et 2 readers. C'est soit un writer soit 2 readers (fromage ou dessert mais pas les 2).
 
 ***Heu... Si je donne un ``&mut``, pourquoi je peux encore utiliser ``vec0`` après ? Ça aurait dû être "consommé", non ?*** 
 Alors là... Tu vas pouvoir te la pêter au prochain repas de famille... En fait, quand on prête un binding ``vec0`` en tant que ``&mut vec0``, Rust réalise ce qu'on appelle un **reborrow implicite**:
@@ -1204,7 +1204,7 @@ fn main(){
 ```
 Oui bravo... Ça passe pas à la compile... 
 
-Oui mais pourquoi ? Oui, encore bravo! On crée un binding non mutable ``vec0`` qu'on passe ensuite comme une référence mutable à la fonction `shift_zeros_to_the_end()`. Le compilateur nous fait remarquer à juste raison qu'il faut pas le prendre pour un débile, qu'il a vu nos manigances et qu'en conséquence il arrête la compile. Grand prince, il nous indique une solution qui consiste à ajouter un mut devant ``vec0``.    
+Oui mais pourquoi ? Oui, encore bravo! On crée un binding non mutable ``vec0`` qu'on passe ensuite comme une référence mutable à la fonction `shift_zeros_to_the_end()`. Le compilateur nous fait remarquer à juste titre qu'il faut pas le prendre pour un débile, qu'il a vu nos manigances et qu'en conséquence il arrête la compile. Grand prince, il nous indique une solution qui consiste à ajouter un mut devant ``vec0``.    
 
 
 
@@ -1248,7 +1248,7 @@ Oui mais pourquoi ? Oui, encore bravo! On crée un binding non mutable ``vec0`` 
 
 ### Pour le plaisir...🎹
 
-Le code ci-dessous montre 2 implémentations sont possibles. 
+Le code ci-dessous montre 2 implémentations possibles. 
 
 Soit on passe le binding par référence soit on le move. Elles font toutes les deux le job. 
 
@@ -1448,7 +1448,7 @@ fn main() {
 Il n'y a pas de piège ou de choses compliquées que nous n'aurions pas vu. 
 * ``s1`` est un binding non mutable qui lie le nom ``s1`` à l'état d'une instance concrète de type String.
 * On commence à créer un binding non mutable qui lie le nom `result` à l'état d'une instance concrète de type "je sais pas encore, on verra plus tard" 
-* On crée un scope artificiel avec 2 accolades. Ce sera surtout utile dans le dernier exemple. Là c'est juste pour que les codes des exemples soient très similaires
+* On crée un scope artificiel avec 2 accolades. Ce sera surtout utile dans le dernier exemple. Là, c'est juste pour que les codes des exemples soient très similaires
 * ``s2`` est un binding non mutable qui lie le nom ``s2`` à l'état d'une instance concrète de type String.
 * On appelle une fonction `longest` à qui ont passe les 2 bindings
 * Le binding de retour de la fonction `longest` est moved dans `result` (c'est à ce moment qu'on apprend que `result` sera un lien avec l'état d'une instance d'un type String)
