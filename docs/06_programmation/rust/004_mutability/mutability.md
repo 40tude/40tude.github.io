@@ -38,8 +38,6 @@ Dans un contexte Rust, je pense qu'il est préférable de ne plus parler de vari
 
 
 
-
-
 ## Introduction
 
 <!-- ### Exercice move_semantics3.rs de Rustlings  -->
