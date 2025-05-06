@@ -1108,8 +1108,13 @@ C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exem
 
 De plus, même sans parler de la signature du récipiendaire, Rust demande à ce j'exprime explicitement les autorisations de modifier que je donne. Comme je veux prêter le binding ``vec0``  je vais passer une référence et comme je veux permettre la modification de ce à quoi il fait référence, je dois écrire `shift_zeros_to_the_end(&mut vec0)`.
 
-***C'est pas un peu dangereux?...Qu'est-ce qui se passe si on donne à plusieurs références susceptibles de modifier le même binding...*** Bravo, je suis fier de toi. Tu commences à raisonner comme le borrow checker de Rust. Je pense même que tu peux répondre à ta question. Qu'est-ce qui serait acceptable de ton point de vue? Oui, encore bravo. Il y a une règle qui dit : 
-* At any given time you can have **either** one mutable reference (writer) or multiple immutable references (readers).  
+***C'est pas un peu dangereux?...Qu'est-ce qui se passe si on donne à plusieurs références susceptibles de modifier le même binding...*** Bravo, je suis fier de toi. Tu commences à raisonner comme le borrow checker de Rust. Je pense même que tu peux répondre à ta question. Qu'est-ce qui serait acceptable de ton point de vue? Oui, encore bravo, il y a une règle qui dit : 
+
+{: .note-title }
+> Reference Rule
+>
+> At any given time you can have **either** one mutable reference (writer) or multiple immutable references (readers).
+
 
 En français dans le texte cela veut dire que lors de l'analyses statique de code on va suivre les prêts et que lors de l'exécution du programme il ne nous sera permis d'avoir qu'une seule référence susceptible de modifier l'instance concrète sur laquelle elle pointe, ou alors, d'avoir plusieurs références susceptible de lire le contenu d'une même instance concrète. Entre proatique, cela signifie qu'on ne peut pas avoir un writer et deux reader. C'est soit un writer soit 2 readers (fromage ou dessert mais pas les 2).
 
