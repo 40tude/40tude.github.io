@@ -273,6 +273,17 @@ Frameworks are distinct from libs :
 
 
 
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Gall's law
+
+1. A complex system that works is invariably found to have evolved from a simple system that worked. 
+1. A complex system designed from scratch never works and cannot be patched up to make it work. You have to start over with a working simple system.
+
+[More info here](https://en.wikipedia.org/wiki/John_Gall_(author)#Gall's_law) 
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Heuristic
