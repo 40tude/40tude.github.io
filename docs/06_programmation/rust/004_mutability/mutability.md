@@ -29,6 +29,7 @@ Dans un contexte Rust, je pense qu'il est préférable de ne plus parler de vari
 À garder sous le coude : 
 * ``blablabla`` est un **binding** (non)mutable qui lie le nom ``blablabla`` à l'**état** d'une instance concrète d'un type `<T>`.
 * **Ownership rule** : Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.
+* **Reference rule** : At any given time you can have **either** one mutable reference (writer) or multiple immutable references (readers).
 * Compilers makes sure the good things happen — the logical errors are on you.
 
 
@@ -1084,7 +1085,7 @@ Ici on a une ligne du genre
 ```
 C'est pas mieux ou moins bien. Le truc c'est qu'au retour de la fonction, on a pas de nouveau binding. On continue d'utiliser le binding original (`vec0`). Par contre il faut donner les moyens à la fonction `shift_zeros_to_the_end()` de pouvoir modifier l'état de l'instance concrète du type. Autrement dit, je t'ai prêté ma Ferrari et je te permets d'y faire le ménage. 
 
-Le truc, c'est que cette façon d'exprimer les choses traduit peut être bien notre intention ("tiens machin, vlà les clés, pense à passer l'aspirateur avant de me la rendre") mais bon, c'est un peu chaud au niveau des écritures (y a un petit côté Klingon).
+Le truc, c'est que cette façon d'exprimer les choses traduit peut être bien notre intention ("tiens machin, vlà les clés, pense à passer l'aspirateur avant de me la rendre") mais bon, c'est un peu chaud au niveau des écritures (il y a même un petit côté Klingon...).
 
 <div align="center">
 <img src="./assets/klingon.webp" alt="Klingon" width="225" loading="lazy"/>
@@ -1096,19 +1097,23 @@ Si je reprends l'ALU (arithmetic logic unit) du Problème à trois corps de tout
 
 Du point de vu de la syntaxe, pour passer une référence sur un binding plutôt qu'un binding lui même on utilise la notation ``&my_binding``.
 
-***Ben alors pourquoi dans le code je vois écrit ``&mut vec0`` ?*** T'es un grand garçon... Je te laisse réfléchir... Ayé? Non? Ok, qu'est ce qui se passe si dans la fonction ``main()`` on écrit une ligne du type : 
+***Ben alors pourquoi dans le code je vois écrit ``&mut vec0`` ?*** T'es un grand garçon... Je te laisse réfléchir... Ayé? Non? Toujours pas ? Ok, qu'est ce qui se passe si dans la fonction ``main()`` on écrit une ligne du type : 
 
 ```rust
     shift_zeros_to_the_end(&vec0);      
 ```
-C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exemple). Soit un peu à ce qu'on fait, on en a parlé au début. Oui, très bien... 
+C'est quoi la philosophie, l'état d'esprit de Rust (par rapport au C++ par exemple). Soit un peu à ce qu'on fait... On en a parlé au début. Oui, très bien... 
 
-**Par défaut tout est non mutable**. Et donc si on écrit la ligne de code précédente on dit au compilateur qu'on souhaite prêter la Ferrari mais on interdit toute modification. Et bien sûr ça ne va pas passer à la compilation car le compilateur va détecter que la signature de la fonction ``shift_zeros_to_the_end(nums_in: &mut Vec<i32>)`` n'est pas respectée (il y a `&mut` qui rôde).
+**Par défaut tout est non mutable**. Et donc si on écrit la ligne de code précédente on dit au compilateur qu'on souhaite prêter la Ferrari mais on interdit toute modification. Et bien sûr ça ne va pas passer à la compilation car le compilateur va détecter que la signature de la fonction ``shift_zeros_to_the_end(nums_in: &mut Vec<i32>)`` n'est pas respectée (il y a un `&mut` qui traîne).
 
 De plus, même sans parler de la signature du récipiendaire, Rust demande à ce j'exprime explicitement les autorisations de modifier que je donne. Comme je veux prêter le binding ``vec0``  je vais passer une référence et comme je veux permettre la modification de ce à quoi il fait référence, je dois écrire `shift_zeros_to_the_end(&mut vec0)`.
 
+***C'est pas un peu dangereux?...Qu'est-ce qui se passe si on donne à plusieurs références susceptibles de modifier le même binding...*** Bravo, je suis fier de toi. Tu commences à raisonner comme le borrow checker de Rust. Je pense même que tu peux répondre à ta question. Qu'est-ce qui serait acceptable de ton point de vue? Oui, encore bravo. Il y a une règle qui dit : 
+* At any given time you can have **either** one mutable reference (writer) or multiple immutable references (readers).  
 
-***Heu... si je donne un ``&mut``, pourquoi je peux encore utiliser ``vec0`` après ? Ça aurait dû être "consommé", non ?*** 
+En français dans le texte cela veut dire que lors de l'analyses statique de code on va suivre les prêts et que lors de l'exécution du programme il ne nous sera permis d'avoir qu'une seule référence susceptible de modifier l'instance concrète sur laquelle elle pointe, ou alors, d'avoir plusieurs références susceptible de lire le contenu d'une même instance concrète. Entre proatique, cela signifie qu'on ne peut pas avoir un writer et deux reader. C'est soit un writer soit 2 readers (fromage ou dessert mais pas les 2).
+
+***Heu... Si je donne un ``&mut``, pourquoi je peux encore utiliser ``vec0`` après ? Ça aurait dû être "consommé", non ?*** 
 Alors là... Tu vas pouvoir te la pêter au prochain repas de famille... En fait, quand on prête un binding ``vec0`` en tant que ``&mut vec0``, Rust réalise ce qu'on appelle un **reborrow implicite**:
 * pendant l'appel à ``shift_zeros_to_the_end(&mut vec0)``, l'accès exclusif au contenu est transféré temporairement à la fonction
 * à la sortie de la fonction, le reborrow se termine, et le binding ``vec0`` redevient accessible et utilisable normalement dans ``main()``
