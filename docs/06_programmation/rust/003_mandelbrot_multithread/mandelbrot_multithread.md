@@ -38,7 +38,7 @@ Je te propose de regarder l'extrait en question puis de revenir ici.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/k7nAtrwPhR8?si=Q4C6-UgT5lTvJLwP&amp;start=3130" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-De mon point de vue, c'est une bonne idée de projet. En effet, ce n'est pas très compliqué mais surtout ça permet de "voir" un résultat. En tout cas c'est plus excitant que d'afficher du texte dans une console. Bon allez c'est parti...
+De mon point de vue, c'est une bonne idée de projet. En effet, ce n'est pas très compliqué mais surtout ça permet de "voir" un résultat. En tout cas c'est plus excitant que d'afficher du texte dans une console. Allez, c'est parti...
 
 
 ## Prérequis
@@ -57,7 +57,7 @@ Oui, oui c'est parti... Mais, bon, tout le monde le sait, avant de partir, il fa
 * Il y a 12 versions du code 
 * Dans le projet il faut renommer ``main.rs`` la version qu'on souhaite lancer
 * Dans l'image ci-dessous (clique sur l'image pour l'agrandir si besoin), sur la gauche, on voit les différentes versions de ``main.rs`` (de ``main_00.rs`` à ``main_11.rs``) 
-* En haut du code source ouvert, on lit que le fichier "actif" `main.rs` s'appelle normalement `main_00.rs` Ca peut aider en cas de "poliotage" et oui, ça sent le vécu.
+* En haut du code source ouvert, on lit que le fichier "actif" `main.rs` s'appelle normalement `main_00.rs` Ça peut aider en cas de "poliotage" et oui, ça sent le vécu.
 
 <div align="center">
 <img src="./assets/vscode.webp" alt="" width="900" loading="lazy"/>
@@ -280,7 +280,7 @@ Je te propose de créer un répertoire ``.vscode`` et d'y déposer le fichier `l
 
 ```
 
-Ensuite tu pose un point d'arrêt sur une des lignes et enfin tu appuies sur F5. Ci-dessous on voit que j'ai posé un point d'arrêt sur la ligne 19 et que l'exécution s'y arrête. Je peux alors inspecter mes variables etc. 
+Ensuite tu poses un point d'arrêt sur une des lignes et enfin tu appuies sur F5. Ci-dessous on voit que j'ai posé un point d'arrêt sur la ligne 19 et que l'exécution s'y arrête. Je peux alors inspecter mes variables etc. 
 
 <div align="center">
 <img src="./assets/debug_00.webp" alt="" width="900" loading="lazy"/>
@@ -784,7 +784,7 @@ fn main() {
 ### Explications à propos du code
 
 Dans la fonction ``main()``
-* J'encadre juste l'appel à la fonction ``build_mandelbrot()`` avec 2 mesures du temps avant d'en afficher la différence en millisecondes.
+* J'encadre l'appel à la fonction ``build_mandelbrot()`` avec 2 mesures du temps avant d'en afficher la différence en millisecondes.
 * À ce stade, en mode Debug (``cargo run``) on est à 937 ms et en mode Release (``cargo run --release``) on est à 113 ms. Pas mal, pas mal.
 * Sinon, j'en profite aussi pour régler un détail de correspondance de ratio entre les espaces des complexes et des pixels
 * En gros, au tout début de la fonction ``main()`` j'explique que j'ajuste les coordonnées des points ``from`` et ``to`` pour que le rectangle dans l'espace complexe ait, lui aussi, un ratio de 1.33 comme dans l'image 640x480.
@@ -974,7 +974,7 @@ Dans la fonction `mt_build_mandelbrot()`
 
 Dans la fonction ``render_stripe()``
 * À ce stade, c'est en fait une copie de la fonction ``build_mandelbrot()``
-* Heu... C'est peut être un détail pour vous, mais pour moi ça veut dire beaucoup...(FG, 1980). Dans la fonction ``render_stripe()`` il y a un appel à la fonction ``mandelbrot_color()`` et on peut se demander si on ne va pas avoir de problème si plusieurs threads, appellent en même temps la même fonction. En fait ``mandelbrot_color()`` est une fonction pure (ou sans état. En tout cas, c'est pas une Sang-de-bourbe). Elle ne conserve aucun état interne, ne modifie aucune variable globale et n'a aucun effet secondaire. Elle ne lit ni n'écrit de fichiers. Elle n'effectue pas non plus d'entrées-sorties...Il n'y a donc aucun problème si plusieurs threads l'appellent en même temps. En effet, chaque thread fournit ses propres paramètres, dispose de son propre contexte d'exécution et de sa propre pile (c'est le point clé ici). 
+* Heu... C'est peut être un détail pour vous, mais pour moi ça veut dire beaucoup...(FG, 1980). Dans la fonction ``render_stripe()`` il y a un appel à la fonction ``mandelbrot_color()`` et on peut se demander si on ne va pas avoir de problème si plusieurs threads, appellent en même temps la même fonction. En fait ``mandelbrot_color()`` est une fonction pure (ou sans état. En tout cas, comme elle est pure, c'est pas une Sang-de-bourbe). Elle ne conserve aucun état interne, ne modifie aucune variable globale et n'a aucun effet secondaire. Elle ne lit ni n'écrit dans aucun fichier. Elle n'effectue pas non plus d'entrées-sorties...Il n'y a donc aucun problème si plusieurs threads l'appellent en même temps. En effet, chaque thread fournit ses propres paramètres, dispose de son propre contexte d'exécution et de sa propre pile (c'est le point clé ici). 
 
 
 Voilà les images que j'obtiens avec en premier la version single-threaded et ensuite la version multithreaded. C'est rassurant, elles semblent identiques...
@@ -1072,7 +1072,7 @@ fn render_stripe(from: &Complex<f64>, to: &Complex<f64>, width: u32, height: u32
 ### Explications à propos du code
 Dans la fonction ``render_stripe()``
 * Sa signature a changé. Elle retourne dorénavant pointeur sur une zone d'octets (voir le `-> Box<[u8]>`)
-* Sinon la seule modification concerne l'allocation de la zone mémoire pour ``image``. En gros on commence par allouer un vecteur puis on demande un pointeur sur la partie data du vecteur en question (on perd donc au passage les informations de capacité et d'occupation qui sont spécifiques aux vecteurs)
+* Sinon la seule modification concerne l'allocation de la zone mémoire pour ``image``. En gros, on commence par allouer un vecteur puis on demande un pointeur sur la partie data du vecteur en question (on perd donc au passage les informations de capacité et d'occupation qui sont spécifiques aux vecteurs)
 
 Il n'y a aucun changement que ce soit au niveau visuel ou du timing
 
@@ -1178,7 +1178,7 @@ Les images elles, restent identiques
 
 ## Refactorisation du code
 
-Je l'ai dit un peu plus haut, le code des fonctions ``build_mandelbrot()`` (version single-threaded) et `render_stripe()` sont identiques donc, autant les factoriser. En fait l'une comme l'autre ne font que traiter une zone de l'espace complexe pour y appliquer exactement le même traitement. Dans un cas on traite la surface correspondant à toute l'image, alors que dans l'autre on traite une bande plus ou moins haute (en fonction du nombre de threads).
+Je l'ai dit un peu plus haut, le code des fonctions ``build_mandelbrot()`` (version single-threaded) et `render_stripe()` sont identiques donc, autant les factoriser. En fait, l'une comme l'autre ne font que traiter une zone de l'espace complexe pour y appliquer exactement le même traitement. Dans un cas on traite la surface correspondant à toute l'image, alors que dans l'autre on traite une bande plus ou moins haute (en fonction du nombre de threads).
 
 De plus, jusqu'à présent, chaque thread créait une bande de pixels qu'il fallait joindre aux autres pour reconstituer l'image finale. Ici on va supprimer la séance de couture en allouant une image dès le départ et en indiquant à chaque thread la zone de l'image qu'il doit traiter. Il n'y a pas de problème de recouvrement. Chaque thread va travailler sur une partie spécifique de l'image. Typiquement, on est dans le potager, je bêche le fond alors que tu retournes le début du terrain.
 
@@ -1407,7 +1407,7 @@ Dans la fonction `mt_build_mandelbrot()`
 * Du coup, au lieu de faire une boucle ``for`` dans laquelle on spawn des threads
 * Je créé un scope nommé ``my_scope`` (voir `crossbeam::thread::scope`) dans lequel j'ai une boucle ``for`` dans laquelle j'utilise `my_scope` pour y lancer un thread qui va éxécuter la fonction `render_zone()`.
 * Comme j'étais pas sûr de mon coup, en haut du code source, j'ai bien sûr commenté la ligne `use std::thread;` car je ne l'utilise plus ici. Cela fait, j'ai pas écris `use crossbeam::thread;`. Du coup dans le code cela m'oblige à utiliser le nom complet `crossbeam::thread::scope`.
-* Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici il faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ca, en français, ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit ce lire `crossbeam::thread::scope(blablabla).unwrap();`   
+* Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici il faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ça, en français, ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit ce lire `crossbeam::thread::scope(blablabla).unwrap();`   
 
 Dans la fonction `render_zone()`
 * Cette fonction remplace l'ancienne `build_mandelbrot` et l'ancienne ``render_stripe()``
@@ -1612,7 +1612,7 @@ Dans la fonction ``mt_build_mandelbrot()``
 * Et c'est cette dernière qu'on va pouvoir utiliser pour accèder, depuis les threads, au mutex puis à la zone mémoire
     * **IMPORTANT** : le mutex c'est le garant de l'accès exclusif à la ressource, l'Arc<Mutex<T>> partage la propriété du mutex entre les threads 
 * On prépare un vecteur `handles` pour stocker les identifiants des threads qu'on va lancer
-* Ensuite on a une boucle ``for`` dans laquelle en gros
+* Ensuite on a une boucle ``for`` dans laquelle :
     * En fonction de l'indice on détermine les ``y_start`` et ``y_end``
     * On clone le pointeur Arc ``&buffer``
     * Enfin on spawn le thread
@@ -1620,7 +1620,7 @@ Dans la fonction ``mt_build_mandelbrot()``
     * Ensuite, c'est pas une bonne idée mais je fais l'équivalent de ``render_zone()``. 
 * On stocke le handle du thread dans le vecteur ``handles``    
 
-Ca pourrait être simplifié mais, aux vues des performances, j'ai pas continué dans cette voie et j'ai utilisé les scopes qu'on a vu dans le version 10 du code. 
+Ça pourrait être simplifié mais, aux vues des performances, j'ai pas continué dans cette voie et j'ai utilisé les scopes qu'on a vu dans le version 10 du code. 
 
 
 
