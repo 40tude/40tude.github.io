@@ -352,7 +352,7 @@ Allez, c'est reparti. Imagine... Imagine qu'on se trouve dans une fonction ``mai
 
 Alors? Comment on fait? Je te propose de mettre la valeur dans un classeur, de donner ce classeur à un cavalier et d'envoyer le cavalier à l'autre bout de la plaine. Là, on ouvre le classeur, on récupère la valeur et on exécute le code de la fonction en tenant compte de la valeur reçue. Quand c'est terminé le cavalier revient. Le classeur est vide car la fonction n'a rien renvoyé. On reprend alors l'exécution de la fonction ``main()``.
 
-***Cool, ça marche.*** Maintenant si on veut passer 2 entiers. Même principe. Par contre attention à l'ordre. Faut que je me mette d'accord avec la fonction pour dire que la premiere feuille du classeur correspond au premier paramètre et la seconde au second paramètre.
+***Cool, ça marche.*** Maintenant si on veut passer 2 entiers. Même principe. Par contre attention à l'ordre. Faut que je me mette d'accord avec la fonction pour dire que la premiere feuille du classeur correspond au premier paramètre et la seconde au second paramètre. Par exemple, dans les spécifications C++ rien n'oblige le compilateur à respecter un ordre particulier (MSVC passe de droite à gauche, clang de gauche à droite), en Forth et en assembleur les paramètres sont passés de droite à gauche...
 
 ***Cool, ça marche encore.*** Et si maintenant je veux passer un nombre réel (3.14159) et un entier (42). Pareil, je fais attention à l'ordre et j'écris 3.14159 sur une page et 42 sur l'autre. 
 
@@ -366,7 +366,7 @@ Alors? Comment on fait? Je te propose de mettre la valeur dans un classeur, de d
 
 ***On est mort... C'est pas pôssible...*** En effet, tu as raison, à l'arrivée du cavalier, la fonction ne va pas savoir combien de pages elle doit dépiler (lire) du classeur. Cela dit, on peut s'en sortir si on applique le **principe d'indirection** (“All problems in computer science can be solved by another level of indirection.” [David Wheeler]).
 
-En gros, au lieu de passer le vecteur lui même on va passer la description de ce dernier. Elle, elle a une taille fixe. Par exemple on peut décider de décrire un vecteur avec 2 pages dans le classeur. Une page contient un entier qui indique le nombre de valeurs dans le vecteur et une autre page indique avec un autre entier, l'endroit où dans le champs, aller chercher les valeurs quand on en a besoin. Le truc c'est que tout se passe comme si on passait à la fonction un vecteur de taille variable mais cela se fait au prix d'une mise à disposition plus lente. En effet, au lieu de lire les valeurs du vecteur directement dans les pages du classeur, il va falloir faire faire à un cavalier des aller-retours à l'autre bout du champs pour rapatrier les valeurs dont on aura besoin.
+En gros, au lieu de passer le vecteur lui même on va passer la description de ce dernier. Elle, elle a une taille fixe. Par exemple on peut décider de décrire un vecteur avec 2 pages dans le classeur. Une page contient un entier qui indique le nombre de valeurs dans le vecteur et une autre page indique avec un autre entier, l'endroit où dans le champs, aller chercher les valeurs quand on en a besoin. Tout se passe comme si on passait à la fonction un vecteur de taille variable mais cela se fait au prix d'une mise à disposition plus lente. En effet, au lieu de lire les valeurs du vecteur directement dans les pages du classeur, il va falloir faire faire à un cavalier des aller-retours à l'autre bout du champs pour rapatrier les valeurs dont on aura besoin.
 
 On peut retenir que :
 1. la stack 
@@ -621,7 +621,7 @@ On peut dire que `vec0` est un binding non mutable qui lie le nom ``vec0`` à l'
 * Le vecteur est constitué d'une structure PLC qui est sur la stack
 * Son pointeur (P) pointe sur les données `[22, 44, 66]` qui sont sur le heap
 * Le binding ``vec0`` n'est pas mutable. 
-* Si je touche à quoi que ce soit qui modifie l'état (pense au has code si besoin) du vecteur (PLC ou valeurs) j'en prends une.
+* Si je touche à quoi que ce soit qui modifie l'état (pense au hash code si besoin) du vecteur (PLC ou valeurs) j'en prends une.
 
 
 {: .important-title }
@@ -717,7 +717,7 @@ Concernant l'affichage dans tes toilettes, je te laisse gérer.
 
 On va pas y passer 3H mais bon, certains mots sont importants. 
 
-**1. Each value has a single owner at any given time** : Ça, ça veut dire que lors de la compilation, l'analyse de code statique va suivre la trace de quel binding est propriétaire de quel état et siffler la fin de la récréation si on essaie d'avoir 2 bindings sur le même état. Attention on parle du propriétaire. J'ai une Ferrari. Même si je te la prête j'en reste le propriétaire. Par contre si je te la donne... "Donner c'est donner, reprendre c'est voler." Tu deviens le nouveau propriétaire et je n'ai plus aucun droit dessus.
+**1. Each value has a single owner at any given time** : Ça, ça veut dire que lors de la compilation, l'analyse de code statique va suivre la trace de quel binding est propriétaire de quelle instance concrète et siffler la fin de la récréation si on essaie d'avoir 2 bindings sur la même instance. Attention on parle bien du propriétaire. J'ai une Ferrari. Même si je te la prête j'en reste le propriétaire. Par contre si je te la donne... "Donner c'est donner, reprendre c'est voler." Tu deviens le nouveau propriétaire et je n'ai plus aucun droit dessus.
 
 Attention... Il y a donc une subtilité dans le code précédent et tu vas voir que ça va beaucoup mieux en le lisant. En effet, lors de l'appel `fill_vec(vec0)` qu'est-ce qui se passe ? On fait un passage par valeur? Un passage par référence ? On donne ou on prête le binding ``vec0`` à la fonction ? Oui, tu as raison, ça "ressemble" bigrement à un passage par valeur. Tout se passe comme si on écrivait :
 
@@ -875,11 +875,11 @@ Lis les messages du compilateur. Personne ne le fera à ta place et les gars se 
 
 En plus c'est hyper clair. Le compilateur nous dit qu'à la ligne 3 il y a eu un move du binding ``my_string1`` vers le binding ``my_string2`` car le binding ``my_string1`` est lié à l'état d'une instance de type String et que ce type de donnée n'implémente pas de fonction qui permettrait de le copier (il n'implémente pas le trait Copy). Du coup, comme on peut pas faire de copie (mais uniquement un move) on a pas le droit, ni d'avoir faim ni d'avoir froid, certes, mais surtout, on a pas le droit d'utiliser le binding ``my_string1`` dans le ``assert`` pour le comparer à "Zoubida". 
 
-Juste pour dire que j'essaie d'être honnête... Bien sûr qu'il est possible de faire une copie explicite d'une String. Il faut utiliser ``.clone()``. Le truc ici c'est que comme le trait Copy n'est pas implémenté, par défaut on fait des ``.move()``. 
+Histoire de te prouver que j'essaie d'être honnête... Bien sûr qu'il est possible de faire une copie explicite d'une String. Il faut utiliser ``.clone()``. Le truc ici c'est que comme le trait Copy n'est pas implémenté, par défaut on fait des ``.move()``. 
 
 En fait, à la fin de la ligne 3, tout se passe comme si ``my_string1`` n'était plus utilisable (c'est le cas) et que `my_string2` avait remplacé `my_string1`. 
 
-Donc le truc à retenir c'est que :
+Il faut peut être retenir que :
 
 | Opération | Syntaxe | Effet                          |
 |-----------|---------|--------------------------------|
@@ -1083,7 +1083,7 @@ Ici on a une ligne du genre
 ```
 C'est pas mieux ou moins bien. Le truc c'est qu'au retour de la fonction, on a pas de nouveau binding. On continue d'utiliser le binding original (`vec0`). Par contre il faut donner les moyens à la fonction `shift_zeros_to_the_end()` de pouvoir modifier l'état de l'instance concrète du type. Autrement dit, je t'ai prêté ma Ferrari et je te permets d'y faire le ménage. 
 
-Le truc, c'est que cette façon d'exprimer les choses traduit peut être bien notre intention ("tiens machin, vlà les clés, pense à passer l'aspirateur avant de me la rendre") mais bon, c'est un peu chaud au niveau des écritures (il y a même un petit côté Klingon...).
+L'idée, c'est que cette façon d'exprimer les choses traduit peut être bien notre intention ("tiens machin, vlà les clés, pense à passer l'aspirateur avant de me la rendre") mais bon, c'est un peu chaud au niveau des écritures (il y a même un petit côté Klingon...).
 
 <div align="center">
 <img src="./assets/klingon.webp" alt="Klingon" width="225" loading="lazy"/>
@@ -1116,7 +1116,7 @@ De plus, même sans parler de la signature du récipiendaire, Rust demande à ce
 
 En français dans le texte cela veut dire que lors de l'analyse statique de code on va suivre les prêts et que lors de l'exécution du programme il ne nous sera permis d'avoir qu'une seule référence susceptible de modifier l'instance concrète sur laquelle elle pointe, ou alors, d'avoir plusieurs références susceptible de lire le contenu d'une même instance concrète. Entre pratique, cela signifie qu'on ne peut pas avoir un writer et 2 readers. C'est soit un writer soit 2 readers (fromage ou dessert mais pas les 2).
 
-***Heu... Si je donne un ``&mut``, pourquoi je peux encore utiliser ``vec0`` après ? Ça aurait dû être "consommé", non ?*** 
+***Heu... Si je donne un ``&mut``, pourquoi je peux encore utiliser ``vec0`` après ? Il aurait dû être "consommé" et ne plus être disponible. Non ?*** 
 Alors là... Tu vas pouvoir te la pêter au prochain repas de famille... En fait, quand on prête un binding ``vec0`` en tant que ``&mut vec0``, Rust réalise ce qu'on appelle un **reborrow implicite**:
 * pendant l'appel à ``shift_zeros_to_the_end(&mut vec0)``, l'accès exclusif au contenu est transféré temporairement à la fonction
 * à la sortie de la fonction, le reborrow se termine, et le binding ``vec0`` redevient accessible et utilisable normalement dans ``main()``
@@ -1451,14 +1451,14 @@ Il n'y a pas de piège ou de choses compliquées que nous n'aurions pas vu.
 * On crée un scope artificiel avec 2 accolades. Ce sera surtout utile dans le dernier exemple. Là, c'est juste pour que les codes des exemples soient très similaires
 * ``s2`` est un binding non mutable qui lie le nom ``s2`` à l'état d'une instance concrète de type String.
 * On appelle une fonction `longest` à qui ont passe les 2 bindings
-* Le binding de retour de la fonction `longest` est moved dans `result` (c'est à ce moment qu'on apprend que `result` sera un lien avec l'état d'une instance d'un type String)
+* Le binding de retour de la fonction `longest` est moved dans `result` (c'est à ce moment là que le compilateur en déduit que `result` sera un lien avec l'état d'une instance d'un type String)
 * On affiche
 * On sort du scope artificiel 
 * On affiche   
 
 Concernant la fonction `longest` elle reçoit 2 bindings non mutables sur des types String (bon je fais court, t'as compris) et elle retourne un binding de type String. 
 * Le truc à noter c'est que dans Rust les `if` sont des expressions, pas des statements
-* Ça c'est cool car un `if` retourne une valeur et c'est justement ce qui est fait dans la seule ligne de code.
+* Dit autrement, un `if` retourne une valeur et c'est justement ce qui est fait dans la seule ligne de code
 * Note aussi qu'il n'y a pas de `;` en bout de ligne car la valeur du ``if`` c'est le binding de retour 
 
 Tout va bien et à l'affichage on voit
@@ -1514,7 +1514,7 @@ error: could not compile `playground` (bin "playground") due to 1 previous error
 
 Je te laisse lire... Ayé? 
 
-Le compilateur nous dit que la fonction retourne une référence, que c'est bien gentil mais que bon, lui, il aimerait être sûr à 100% que la référence qui va être retournée sera une référence sur une donnée qui au moment du retour sera toujours une donnée valide. Comme il n'arrive pas à s'en sortir tout seul il nous demande d'annoter la signature de la fonction avec les durées de vie des bindings concernés.
+Le compilateur nous dit que la fonction retourne une référence, que c'est bien gentil mais que bon, lui, il aimerait être sûr à 100% que la référence qui va être retournée sera une référence sur une donnée qui, au moment du retour sera toujours une donnée valide. Comme il n'arrive pas à s'en sortir tout seul il nous demande d'annoter la signature de la fonction avec les durées de vie des bindings concernés.
 
 Il nous donne même un exemple qui est juste. En effet, la fonction retourne selon les cas, soit ``s1`` soit ``s2``. Donc le binding retourné et les paramètres doivent avoir les mêmes durées de vie.
 
