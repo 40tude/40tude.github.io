@@ -324,16 +324,30 @@ pip install git-filter-repo
 git config --global filter.repo.clean "git filter-repo"
 ```
 
-Ensuite faut faire   
 
+Ensuite faut faire   
 ```powershell 
 cd chemin/vers/le/depot
 git filter-repo --invert-paths --path ./secrets.ps1
+```
+
+
+Afin de vérifier qu'il ne reste plus de traces dans les logs 
+```powershell 
+git log --all -- secrets.ps1
+# Si y a une arborescence pour accéder au fichier
+git log --all -- 01_model_and_data/01_model_and_data_ops/05_modelizer/assets/secrets.ps1
+
+```
+
+Quand tout est OK localement faut mettre à jour le repo distant
+
+```powershell 
 git push origin main --force
 ```
 
-### 2. Vider les caches du repo sur GitHub :
-* GitHub/Settings/Actions/Cache/supprime les caches liés au projet
+<!-- ### 2. Vider les caches du repo sur GitHub : -->
+<!-- * GitHub/Settings/Actions/Cache/supprime les caches liés au projet -->
 <!-- 
 https://github.com/40tude/01_github_issues_fixed/actions/caches
 -->
