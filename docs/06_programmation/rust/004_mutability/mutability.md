@@ -11,6 +11,8 @@ last_modified_date : 2025-05-06 12:00:00
 # Bindings en Rust : Bien Plus Que de Simples Variables
 {: .no_toc }
 
+The English version of this page is available [here]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%})
+
 ## Table of Contents
 {: .no_toc .text-delta}
 - TOC
@@ -234,7 +236,7 @@ let vec0 = vec![22, 44, 66];
 {: .note }
 Utilise le [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). Fais des tests, plante tout, lis les messages du compilateur, "perd du temps" à essayer de comprendre ce qui se passe. Personne ne peut le faire à ta place et c'est plus rentable que de regarder des shorts de chattons sur YouTube. 
 
-OK... "You talkin to me?". Tu le prends sur ce ton? Allez, sors si t'es un homme. On va aller faire un test dehors. Copie-colle le code ci-dessous dans [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) et appuie sur ``Run`` (CTRL+ENTER). C'est le même code qu'avant sauf que j'ai tout mis dans la fonction ``main()`` et, pour te faire plaisir, j'ai aussi ajouté un ``mut`` devant `Vec<i32>` dans la signature de la fonction `fill_vec`.
+OK... "You talkin to me?". Tu le prends sur ce ton? Allez, sors si t'es un homme. On va aller faire un test dehors. Copie-colle le code ci-dessous dans [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) et appuie sur ``Run`` (CTRL+ENTER). C'est le même code qu'avant sauf que j'ai tout mis dans la fonction ``main()`` et, pour te faire plaisir, j'ai aussi ajouté un ``mut`` devant `Vec<i32>` dans la signature de la fonction `fill_vec()`.
 
 ```rust
 fn fill_vec(vec: mut Vec<i32>) -> Vec<i32> {
@@ -247,7 +249,6 @@ fn main() {
     let vec1 = fill_vec(vec0);
     assert_eq!(vec1, [22, 44, 66, 88]);
 }
-
 ```
 
 
@@ -376,7 +377,7 @@ On peut retenir que :
         * la fonction les récupère dans le bon ordre (pop)
     * on ne met dans la stack que des paramètres dont la taille est connue et des types simples (trivially copyable) : int, bool, float, tableau fixe, tuple & struct avec des types simples, des adresses mémoire 
 1. le heap, c'est une zone libre du champs où on peut déposer des trucs
-    * c'est trucs (structures de données) peuvent avoir des tailles dynamiques
+    * ces trucs (structures de données) peuvent avoir des tailles dynamiques
     * tous ceux (toutes les fonctions) qui savent où se trouve le truc (qui ont son adresse) peuvent y accéder en lecture ou en écriture
 
 Du coup on comprend pourquoi le vecteur est composé en 2 morceaux :
@@ -814,7 +815,7 @@ Rappelle-toi Barbara, ce qui circule par la stack c'est pas le jeu de données l
 
 Par contre il faut garder en tête que c'est pas une **copie** de ``vec0`` dans ``vec`` sur mais un **move** (d'où le nom de l'exercice. Malins les mecs...). 
 
-***Attends, attends... Tu peux revenir sur ton histoire de move. T'es allez un peu vite.*** Pas de problème. Si je fais une copie de variables de type simple (trivially copyable, int, float... mais pas un Vec<T>) le code ci-dessous fonctionne comme attendu :  
+***Attends, attends... Tu peux revenir sur ton histoire de move. T'es allez un peu vite.*** Pas de problème. Si je fais une copie de variables de type simple (trivially copyable, int, float... mais pas un ``Vec<T>``) le code ci-dessous fonctionne comme attendu :  
 
 ```rust
 fn main() {
