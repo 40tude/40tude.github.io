@@ -314,7 +314,7 @@ Bouge pas. On va devoir faire un détour afin de comprendre ce qui se passe en m
 
 
 Allez, c'est parti, je t'explique et ça tombe bien car le type de données ``Vec<T>`` (vecteur contenant des données de type ``T`` : `i32`, `f64`...) est intéressant. En effet, même si dans le code on le manipule comme une entité unique, il est constitué de 2 parties : 
-1. il y a d'un côté une structure de contrôle. Je la nomme PLC. C'est pas le terme officiel. Je crois avoir lu "structure ``Vev<T>``", "représentation interne" ou "méta-données".
+1. il y a d'un côté une structure de contrôle. Je la nomme PLC. C'est pas le terme officiel. Je crois avoir lu "structure ``Vec<T>``", "représentation interne" ou "méta-données".
 1. et de l'autre le jeu de données (`[22, 44, 66]` dans notre exemple). Là, je crois que le terme officiel c'est tout simplement "buffer".
 
 **La structure de contrôle PLC contient 3 champs :**

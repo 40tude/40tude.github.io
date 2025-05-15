@@ -26,7 +26,7 @@ In a Rust context, I think it's better to stop talking about variables and inste
     * of mutability
     * of ownership
     * of borrowing
-    * lifetime
+    * of lifetime
 1. Static code analysis ensures that the properties of the bindings are respected.
 
 To keep in mind:
@@ -105,7 +105,7 @@ When I say that "it doesn't compile" it's a misnomer. In fact, when we "compile"
 
 |Stage	                         | Quick description  |
 |:-------------------------------|:-------------------|
-| Parsing / Lexing	             | The source code is cut (tokens) then organized |
+| Parsing / Lexing	             | The source code is tokenized then organized |
 | AST Construction	             | Construction of an Abstract Syntax Tree (AST) |
 | Name Resolution	             | Resolving paths ( ``foo::bar``), variables, modules |
 | Type Checking	                 | Each expression, function, variable is strictly typed |
@@ -114,12 +114,12 @@ When I say that "it doesn't compile" it's a misnomer. In fact, when we "compile"
 | **Borrow Checking**	         | Ensures that there are no mutability or aliasing conflicts |
 | Const Evaluation	             | ``const`` are calculated for validation |
 | MIR Construction	             | Rust transforms the code into an intermediate representation optimized for analysis (the MIR) |
-| MIR Optimizations	             | Rust optimizes the MIR before downgrading it to LLVM (low level virtual machine, see clang for example) |
+| MIR Optimizations	             | Rust optimizes the MIR before passing it to LLVM (low level virtual machine, see clang for example) |
 | Code Generation (LLVM IR)	     | Rust generates LLVM intermediate code |
 | LLVM Optimizations	         | LLVM optimizes even more |
 | Machine Code	                 | The binary code is produced |
 
-OK... Let's go back to the code. In the section ``test`` we create a vector ``vec0`` that we pass as an argument to a function ``fill_vec()``. The latter returns a vector ``vec1`` that is none other than the previous one to which we have added the value 88 (see line ``assert``).
+OK... Let's go back to the code. In the section ``test`` we create a vector ``vec0`` that we pass as an argument to a function ``fill_vec()``. The latter returns a vector ``vec1`` that is none other than the previous one to which we have added the value 88 (see the line ``assert``).
 
 On its side, the function ``fill_vec()`` has a parameter ``vec`` which is a vector of ``i32`` and it returns a vector of ``i32``. In the body of the function there is a ``.push(88)`` which modifies the contents of the vector.
 
@@ -152,7 +152,7 @@ mod tests {
 
 In the function signature ``fill_vec()`` I added a ``mut`` in front of the parameter ``vec``.
 
-***Okay, great... So?*** Well now we're going to have to explain what's going on and that's going to allow us to revisit a lot of topics.
+***Okay, great... So?*** Well... Now we're going to have to explain what's going on and that's going to allow us to revisit a lot of topics.
 
 
 
@@ -180,13 +180,13 @@ let vec0 = vec![22, 44, 66];
 
 Here ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the full state of a concrete instance of type ``Vec<i32>``
 
-***Hey, hey, hey. Can you start again? You've lost me... I see what a vector of is ``i32``. It's an array whose size can vary and which contains 32-bit integers. On the other hand, binding... Why don't you just say that we declare a variable ``vec0``?***
+***Hey, hey, hey. Can you start again? You've lost me... I see what a vector of ``i32`` is. It's an array whose size can vary and which contains 32-bit integers. On the other hand, binding... Why don't you just say that we declare a variable ``vec0``?***
 
-In fact, if we were in another programming language, C++ for example, yes, we would say that the line corresponds to the declaration of the variable ``vec0``. After that, I will explain that, basically, we associate with the name ``vec0`` (which we will manipulate in the program) a memory area that contains values.
+In fact, if we were in another programming language, C++ for example, yes, we would say that the line corresponds to the declaration of the variable ``vec0``. After that, I would explain that, basically, we associate with the name ``vec0`` (which we will manipulate in the program) a memory area that contains values.
 
 In Rust the notion of binding goes further:
 
-1. There is always the association of a name with a value. We will see later that it is rather the association of a name with the state of an instance but hey that is not important for the moment.
+1. There is always the association of a name with a value. We will see later that it is rather the association of a name with the state of an instance but that is not important for the moment.
 1. That we enrich with additional properties. Examples: Who owns it? Can it be changed? Can it be loaned? For how long?...
 1. These properties are used at compile time (not at runtime) to prove that the code is managing memory correctly (reading, writing, freeing, concurrent accesses, etc.)
 
@@ -232,9 +232,9 @@ let vec0 = vec![22, 44, 66];
 ### Binding mutability test
 
 {: .note }
-Use the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). Run tests, crash everything, read compiler messages, and “waste time" trying to figure out what's going on. No one can do it for you, and it's more cost-effective than watching kitten shorts on YouTube.
+Use the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). Run tests, crash everything, read compiler messages, and “waste time" trying to figure out what's going on. No one can do it for you, and it's much better than watching kitten shorts on YouTube.
 
-OK... “You talkin to me?". You take it that way? Come on, get out if you're a man. We're going to go do a test outside. Copy and paste the code below into [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) and press ``Run`` (CTRL+ENTER). It's the same code as before except I put everything in the function ``main()`` and, to make you happy, I also added a ``mut`` front ``Vec<i32>`` in the function signature ``fill_vec()``.
+OK... “You talkin to me?". You take it that way? Come on, get out if you're a man. We're going to go do a test outside. Copy and paste the code below into [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) and press ``Run`` (CTRL+ENTER). It's the same code as before except I put everything in the function ``main()`` and, to make you happy, I also added a ``mut`` in front of ``Vec<i32>`` in the function signature ``fill_vec()``.
 
 ```rust
 fn fill_vec(vec: mut Vec<i32>) -> Vec<i32> {
@@ -279,7 +279,7 @@ error: could not compile `playground` (bin "playground") due to 3 previous error
 
 
 
-Basically... It says that on the first line of the code there is a syntax error. Indeed, after the 2 dots that follow the parameter name ``vec``, it expects a type and it read ``mut``. Now, if you modify the code as below (in the signature of ``fill_vec()``, ``mut`` is in front of the binding name ``vec``) everything should go well.
+Basically... It says that on the first line of the code there is a syntax error. Indeed, after the colon that follow the parameter name ``vec``, it expects a type and it read ``mut``. Now, if you modify the code as below (in the signature of ``fill_vec()``, ``mut`` is in front of the binding name ``vec``) everything should go well.
 
 ```rust
 fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {
@@ -299,16 +299,20 @@ I'm still stuck on the first line of code. So I don't want to talk about functio
 ***Ok... Mutability is associated with binding... But then the data is modifiable? I don't understand anything!***
 
 ### A first detour to understand what happens in memory
-Don't move. We're going to have to take a detour to understand what's happening in memory. This should allow us to realize that in the latter, physically, all areas are potentially mutable. What saves us is that in the code we announce what we want (mutable, non-mutable) and then the compiler, aka Vinz Clortho, Gozer's Key Master, keeps an eye on things and authorizes (or not) that this or that area be modified.
+Don't move. We're going to have to take a detour to understand what's happening in memory. This should allow us to realize that in the latter, physically, all areas are potentially mutable. What saves us is that in the code we announce what we want (mutable, non-mutable) and then the compiler, aka Vinz Clortho, Gozer's Key Master, keeps an eye on things and authorizes (or not) that this or that memory area be modified.
+
+<!-- <div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o1T-D_37qz0?si=SJxX45O-FpypvG-1&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/o1T-D_37qz0?si=SJxX45O-FpypvG-1&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n_b2no3-1tc?si=IE1ZqkvIcFx3je0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 
 Come on, let's go, I'll explain it to you and it's a good thing because the data type ``Vec<T>``(vector containing data of type ``T``: ``i32``, ``f64``...) is interesting. Indeed, even if in the code we manipulate it as a single entity, it is made up of 2 parts:
 
-1. On one side, there is a control structure. I call it PLC. It's not the official term. I think I read "structure Vev<T>", "internal representation" or "metadata".
+1. On one side, there is a control structure. I call it PLC. It's not the official term. I think I read "structure Vec<T>", "internal representation" or "metadata".
 1. and on the other the data set ( ``[22, 44, 66]``in our example). There, I believe that the official term is simply “buffer".
 
 **The PLC control structure contains 3 fields:**
@@ -356,7 +360,7 @@ So? How do we do it? I suggest we put the value in a workbook, give this workboo
 
 ***Cool, it still works.*** And now if I want to pass a real number (3.14159) and an integer (42). Same here, I pay attention to the order and write 3.14159 on one page and 42 on the other.
 
-***Cool, it still works.*** Now let's imagine that I want to pass an array of pixels (an image) whose size is known at compile time (640x480 pixels all coded on one byte each). Here, it's longer but I'm going to use 640x480 pages and put on each one a value between 0 and 255. At the end the function will read all the pages of the workbook and be able to reconstruct the image locally.
+***Cool, it continue to work.*** Now let's imagine that I want to pass an array of pixels (an image) whose size is known at compile time (640x480 pixels all coded on one byte each). Here, it's longer but I'm going to use 640x480 pages and put on each one a value between 0 and 255. At the end the function will read all the pages of the workbook and be able to reconstruct the image locally.
 
 ***Well, that's it, we're done!*** Yeah... Almost... What happens now if I want to pass an array of numbers whose length I don't know at compile time? Also think about cases where I want to pass an array whose length is likely to vary during program execution. This is called a [vector](https://youtu.be/KcPLUn91md0?si=6jIkvDKofiS-_Nvx) .
 
@@ -366,19 +370,19 @@ So? How do we do it? I suggest we put the value in a workbook, give this workboo
 
 ***We're dead... It's not possible...*** Indeed, you're right, when the rider arrives, the function won't know how many pages it has to pop (read) from the binder. That said, we can get out of it if we apply the ***principle of indirection*** (“All problems in computer science can be solved by another level of indirection." [David Wheeler]).
 
-Basically, instead of passing the vector itself, we will pass the description of the latter. It has a fixed size. For example, we can decide to describe a vector with 2 pages in the workbook. One page contains an integer that indicates the number of values ​​in the vector and another page indicates with another integer, the place in the field, to fetch the values ​​when we need them. Everything happens as if we were passing a vector of variable size to the function, but this comes at the cost of slower provision. Indeed, instead of reading the values ​​of the vector directly from the pages of the workbook, we will have to make a rider go back and forth to the other end of the field to retrieve the values ​​we will need.
+Basically, instead of passing the vector itself, we will pass the description of the latter. It has a fixed size. For example, we can decide to describe a vector with 2 pages in the workbook. One page contains an integer that indicates the number of values ​​in the vector and another page indicates with another integer, the place in the field, where to fetch the values ​​when we need them. Everything happens as if we were passing a vector of variable size to the function, but this comes at the cost of slower provision. Indeed, instead of reading the values ​​of the vector directly from the pages of the workbook, we will have to make a rider go back and forth to the other end of the field to retrieve the values ​​we will need.
 
 We can remember that:
 
 1. the stack
     * allows you to store local variables
     * when a function calls another function passing it parameters
-        * she puts her last ones on the stack (push)
+        * it puts the latter on the stack (push)
         * the function retrieves them in the correct order (pop)
     * we only put parameters of known size and simple types (trivially copyable) in the stack: int, bool, float, fixed array, tuple & struct with simple types, memory addresses
 1. the heap is a free area of ​​the field where you can drop things
     * These things (data structures) can have dynamic sizes
-    * everyone (all functions) who knows where the thing is (who has its address) can access it in reading or writing
+    * everyone (all functions) who knows where a thing is (it know its address) can access it in reading or writing
 
 So we understand why the vector is composed of 2 pieces:
 
@@ -396,7 +400,7 @@ So we understand why the vector is composed of 2 pieces:
 
 In the context of a process (an executable) running under Windows, this is (roughly) what the memory map looks like (it's similar under Linux. Under Mac, I don't know).
 
-```
+<!-- ```
 +-------------------------+  ← Adresses hautes (ex: 0xFFFFFFFFFFFFFFFF)
 |      Kernel Space       |  ← Réservé au système (non accessible)
 +-------------------------+
@@ -418,8 +422,32 @@ In the context of a process (an executable) running under Windows, this is (roug
 +-------------------------+
 |     NULL Page (invalide)|  ← Provoque un segfault en cas de déréférencement
 +-------------------------+  ← Adresse 0x0000000000000000
-```
+``` -->
 
+
+```
++-------------------------+ ← High addresses (ex: 0xFFFFFFFFFFFFFF)
+|      Kernel Space       | ← System reserved (not accessible)
++-------------------------+
+|     Stack (grows ↓)     | ← Local variables, function returns
+|                         |   Dynamically allocated at runtime
++-------------------------+
+|  Guard page / padding   | ← Stack overflow protection
++-------------------------+
+|       Heap              | ← new / malloc : dynamically allocated
+|   (grows upwards ↑)     |
++-------------------------+
+|   BSS Segment (.bss)    | ← Global variables NOT initialized
++-------------------------+
+|   Data Segment (.data)  | ← Global variables initialized
++-------------------------+
+|   Code Segment (.text)  | ← Executable code, functions
++-------------------------+
+|     PE Headers (.exe)   | ← PE file headers (Portable Executable)
++-------------------------+
+|    NULL Page (invalid)  | ← Causes segfault in case of dereferencing
++-------------------------+ ← Address 0x0000000000000000
+```
 
 And if I simplify further, here is what we need to remember:
 
@@ -427,11 +455,11 @@ And if I simplify further, here is what we need to remember:
 <img src="./assets/virtual_memory_space.webp" alt="Rust stack heap" width="900" loading="lazy"/>
 </div>
 
-* the executable program (the process) believes that it is “Alone in the world" (say hello to Wilson 🏐)
+* The executable program (the process) believes that it is alone 
 * This idiot thinks he has access to a 64-bit memory space with addresses from 0x00.. to 0xFF.. In fact, it's the OS that makes him believe that, but no, of course, he's in a virtualized memory space.
 * The code that is executed is located in the “Code Segment" section.
 * Then there are 2 areas which contain the initialized and uninitialized global variables respectively.
-* The size of the memory block ``[.text + .data + .bss]`` is fixed and known at the end of compilation and linking. So that's good, it doesn't move.
+* The size of the memory block ``[.text + .data + .bss]`` is fixed and known at the end of compilation and linking. So that's good, it will not change.
 
 When the program starts, the processor executes the instructions that are in the segment ``.text``. If it needs the value of a particular global variable, it looks for it in the area ``.data``.
 
@@ -441,26 +469,29 @@ To give you an idea, on Windows, the main process's stack size is 1MB (4KB are p
 
 Regarding the heap, we will say that initially its size is 0.
 
-***And what happens if the downward-growing stack meets the upward-growing heap?*** That's a crossover of effluvia, and everyone knows you should never cross effluvia. That would be bad.
+***And what happens if the downward-growing stack meets the upward-growing heap?*** That's a cross of streams, and everyone knows you should never cross the streams. That would be bad.
+
+<!-- <div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TAQnOzY7QXE?si=JlvEEWL3BTvWJvbz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TAQnOzY7QXE?si=JlvEEWL3BTvWJvbz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4-Q42SPF2ic?si=pdqw9L44TZPL4bMn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
-
 
 
 **What you need to remember at the end of this second detour:**
 
-* Parameter passing is done via the stack
-* Data is placed there, the size of which is fixed and known at the end of compilation.
+* Parameters passing is done via the stack
+* Data whose size is fixed and known at the end of compilation is placed there
 * The heap and the stack are two similar memory areas.
 * They are both read-write and grow towards each other.
-* Since ``Vec<T>`` it is variable length, it cannot be stacked
+* Since ``Vec<T>`` it is variable length, it cannot pass through the stack
 * We therefore decided to break it down into 2 parts
     * A PLC structure, of fixed size and which can be passed through the stack
-    * the values ​​that are on the heap
+    * The values ​​that are on the heap
 
-And there you have it. You understand why ``Vec<T>`` it's so "complicated." It's just because we wanted to be able to pass it as an argument to a function.
+And there you have it. You understand why ``Vec<T>`` it's so "complicated". It's just because we wanted to be able to pass it as an argument to a function.
 
 
 
@@ -481,19 +512,19 @@ And there you have it. You understand why ``Vec<T>`` it's so "complicated." It's
 
 ### End of the second detour. Back to the question concerning the mutability of data in memory.
 
-As we have seen, the heap and the stack are in the virtual memory space that the program perceives. “Physically" these two areas are mutable. For example, we have no way of depositing data declared non-mutable into a read-only memory.
+As we have seen, the heap and the stack are in the virtual memory space that the program perceives. “Physically" these two areas are mutable. For example, we don't have the means to store non-mutable data in read-only memory.
 
 So to answer the question: yes, potentially the data (whether on the heap or in the stack) is all mutable.
 
-What guarantees that the correct read and write operations are performed on the data (whether in the stack or the heap) at runtime is the static analysis of the code that is done during compilation. The compiler does not treat this or that memory location (stack or heap) differently. It monitors the bindings and their properties. From its point of view, there is no difference in treatment between the stack and the heap. What matters is that the properties of the bindings are respected.
+What guarantees that the correct read and write operations are performed on the data (whether in the stack or the heap) at runtime is the static analysis of the code that is done during compilation. The compiler does not treat this or that memory location (stack or heap) differently. It monitors the bindings and their properties. From its point of view, there is no difference in treatment between the stack and the heap. What matters is that the bindings' properties are met.
 
 It's like in C++. If I declare a variable ``const``, whether it's on the heap or in the stack, if I modify it I get hit on the fingers with a ruler (and the ruler is made of metal, not rotten plastic).
 
 At our level, we can imagine that during compilation, there is a table which takes inventory of all the bindings, of all the memory zones and that if at some point, a piece of code tries to modify a non-mutable binding, the compiler screams.
 
-The thing is, this heavy, long, and tedious analysis only takes place during compilation. The goal is that at the end of the latter, we have the certainty that at the time of execution everything will go well and that we will not try to modify a non-mutable binding for example.
+The thing is, this heavy, long, and tedious analysis only takes place during compilation. The goal is that at the end of the latter, we know for sure that at the time of execution everything will go well and that we will not try to modify a non-mutable binding for example.
 
-Finally, when everything is proven, when the code is compiled, we go for it. At runtime there are no more tables or anything else. Everything happens as if the day before the MotoGP tests you take your bike and go for a lap of the track. You go slowly, you note everything. The little bump here, the dip there, right at the apex, the post to use as a braking point... You go slowly and if necessary you retrace your steps. When it's clear, when everything is checked, the next day you don't ask yourself any more questions... Full throttle!
+Finally, when everything is proven, when the code is compiled, we go for it. At runtime there are no more tables or anything else. Everything happens as if the day before the MotoGP tests you take your bike and go for a lap of the track. You go slowly, you note everything. The little bump here, the dip there, right at the apex, the spot to use as a braking point... You go slowly and if necessary you retrace your steps. When it's clear, when everything is checked, the next day you don't ask yourself any more questions... Full throttle!
 
 <div align="center">
 <img src="./assets/moto_gp.webp" alt="moto gp" width="225" loading="lazy"/>
@@ -523,7 +554,7 @@ One last note before moving on. For now, we've only seen the "mutability" proper
 
 **What to remember at the end of the first detour:**
 * From the compiler's point of view, the stack and the heap are memory areas where one can read or write
-* The data is therefore potentially always modifiable.
+* The data is therefore potentially always mutable.
 
 
 
@@ -537,10 +568,10 @@ One last note before moving on. For now, we've only seen the "mutability" proper
 
 ### End of the first detour. Back to the question concerning the mutability of the binding
 
-***Okay... And about the mutability of the binding. Are you trying to pull the wool over my eyes? You still haven't answered.***
+***Okay... And about the mutability of the binding. Don't try to pull the wool over my eyes. You still haven't answered my question!***
 
 In fact, considering the code test we did and the 2 (long) detours we took, it is clear that:
-* data, whether on the heap or in the stack, it doesn't matter, is always modifiable.
+* Data, whether on the heap or in the stack, it doesn't matter, is always modifiable.
 * The compiler knows the mutability properties of different bindings
 * During static analysis the compiler detects if the code tries to do something forbidden (modify a non-mutable binding for example)
 * What is allowed or forbidden is what is written as property in the binding
@@ -598,16 +629,16 @@ fn main() {
 ```
 
 
-It was becoming clearer to me and internally I could say to myself: ``vec0`` is a non-mutable binding that links the name ``vec0`` to the hash code of the vector instance. And there "[Bingo, here is DNA dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)". No, not quite but "Bingo, now I understand that if I modify one of the PLC values ​​or one of the table values ​​I will take one because that will modify the hash code value." 
+It was becoming clearer to me and I could say to myself: ``vec0`` is a non-mutable binding that links the name ``vec0`` to the hash code of the vector instance. And there "[Bingo, here is DNA dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)". No, not quite but "Bingo, now I understand that if I modify one of the PLC values ​​or one of the table values ​​I will take one because that will modify the hash code value." 
 
-But if you think about it, the hash code captures and synthesizes, in a single value, the state at a given moment ``t`` of the instance I have in my hands. In other words, if I now talk about **state** rather than hash code, it amounts to the same thing.
+But if you think about it, the hash code captures and synthesizes, in a single value, the state at a given time ``t`` of the instance I have in my hands. In other words, if I now talk about **state** rather than hash code, it amounts to the same thing.
 
 The description of the first line of code evolves and becomes:
 
 1. ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the state of a Vec<i32>.
 1. ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the full state of a Vec<i32>. This is to say that in a vector it concerns the data and the control structure.
-1. ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the full state of an instance of Vec<i32>. Yes because in the code I manipulate instances rather than types.
-1. ``vec0`` is an immutable binding that binds the name ``vec0`` to the full state of a concrete instance of a type Vec<i32>. Probably too much. It's just to emphasize that the instance in question is something like Vec or String and not really an abstract type (Trait).
+1. ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the full state of an instance of ``Vec<i32>``. Yes because in the code I manipulate instances rather than types.
+1. ``vec0`` is an immutable binding that binds the name ``vec0`` to the full state of a concrete instance of a type ``Vec<i32>``. Probably too much. It's just to emphasize that the instance in question is something like ``Vec`` or ``String`` and not really an abstract type (Trait).
 
 Finally, what I keep in mind is: ``blablabla`` is a (non-)mutable **binding** that binds the name ``blablabla`` to the **state** of a concrete instance of a type ``<T>``.
 
@@ -619,11 +650,11 @@ let vec0 = vec![22, 44, 66];
 
 We can say that ``vec0`` is an immutable binding that binds the name ``vec0`` to the complete state of a concrete instance of a type ``Vec<i32>``.
 
-* ``vec0`` this is the name of the binding (introduced by let)
+* ``vec0`` this is the name of the binding (introduced by ``let``)
 * The vector consists of a PLC structure that is on the stack
-* Its pointer (P) points to the data [22, 44, 66]that is on the heap
-* The binding vec0is not mutable.
-* If I touch anything that modifies the state (think of the hash code if necessary) of the vector (PLC or values) I take one.
+* Its pointer (P) points to the data ``[22, 44, 66]`` that is on the heap
+* The binding ``vec0`` is not mutable.
+* If I touch anything that modifies the state (think of the hash code if necessary) of the vector (PLC or values) I get a slap in the face.
 
 {: .important-title }
 > At this point, regarding the binding, you must keep in mind
@@ -688,7 +719,7 @@ Here is the line that interests us:
 let vec1 = fill_vec(vec0);
 ```
 
-And I put it in relation to the functionfill_vec()
+And I put it face to face with the function ``fill_vec()``
 
 ```rust
 fn fill_vec(vec: Vec<i32>) -> Vec<i32> {...}
@@ -701,7 +732,7 @@ Now, in order to move forward, I'll give you **THE** ownership rule of Rust:
 >
 > Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope.
 
-So you print this one out and post it in your bathroom...
+Print it and post it in your bathroom...
 
 <div align="center">
 <img src="./assets/ownerhip_rule.webp" alt="Rust ownership rule" width="225" loading="lazy"/>
@@ -714,7 +745,7 @@ Given what has been said about states and concrete instances, I keep in mind:
 
 **Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.**
 
-Regarding the display in your toilets, I'll let you manage that.
+Regarding which one to display in your toilets, I'll let you manage that.
 
 We're not going to spend 3 hours on it, but hey, some words are important.
 
@@ -742,17 +773,17 @@ fn move_semantics3() {
 
 No worries. Keep in mind that we just said that the binding ``vec0`` was given when calling to ``fill_vec()``. For now, we don't have the necessary knowledge yet, so I can't say much about it.
 
-On the other hand, when the function returns ``fill_vec()``, what is certain is that the binding ``vec1`` is the owner of a state. There, what I can say is that on the last line, where there is the closing brace, the binding ``vec1`` goes out of scope. And there, automatically, it's not even up to me to do it, the concrete instance to which it was bound vec1will be deleted from memory.
+On the other hand, when the ``fill_vec()`` returns, what is certain is that the binding ``vec1`` is the owner of a state. There, what I can say is that on the last line, where there is the closing brace, the binding ``vec1`` goes out of scope. And there, automatically, it's not even up to me to do it, the concrete instance to which ``vec1`` was bound will be deleted from memory.
 
 To be clear, the concrete instance that will be dropped (removed from memory) is the one ``Vec<i32>`` that contains the values ``[22, 44, 66, 88]``.
 
 ***So what will happen on the second line?***
 
-* the binding ``vec0`` is passed by value to the function fill_vec()(this is false but we'll come back to it in 2 min.)
+* the binding ``vec0`` is passed by value to the function ``fill_vec()`` ( this is false but we'll come back to it in 2 min.)
 * the binding ``vec0`` ceases to be proprietary
-* the binding ``vec`` becomes fill_vec()proprietary
+* the binding ``vec`` from the ``fill_vec()`` function becomes proprietary
 * the binding ``vec0`` is invalidated. It remains accessible but we get a compilation error if we try to use it
-* When the function returns ``fill_vec()``, the immutable binding ``vec1``binds the name ``vec1`` to the state of a type's instance ``Vec<i32>``.
+* When the ``fill_vec()`` function returns, the immutable binding ``vec1``binds the name ``vec1`` to the state of a type's instance ``Vec<i32>``.
 * ``vec1`` is the owner of the instance in question
 
 
@@ -804,10 +835,10 @@ fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
 }
 ```
 
-* The function signature indicates that it has as a parameter a binding ``vec`` which is linked to the state of an instance of a ``typeVec<i32>``
+* The function signature indicates that it has as a parameter a binding ``vec`` which is linked to the state of an instance of a type ``Vec<i32>``
 * The function returns a binding that is bound to the state of an instance of a type ``Vec<i32>``
 
-The question we can ask ourselves is how, at the time of the function call, the ownership of the binding ``vec0`` is passed to ``vec``. Here, it's fine because we have 3 values ​​fighting a duel, but if we had a vector of 1 GB of data, we would have a problem. No?
+The question we can ask ourselves is how, at the time of the function call, the ownership of the binding ``vec0`` is passed to ``vec``. Here, it's fine because we only have 3 values ​​involved, but if we had a vector of 1 GB of data, we would have a problem. No?
 
 I'll let you think about it... So?
 
@@ -830,7 +861,7 @@ fn main() {
 }
 ```
 
-C'est peut être un détail pour vous mais pour moi ça veut dire beaucoup...🎹 I copy ``my_int1`` in ``my_int2`` and look, after the copy, I can still increment ``my_int1`` and copy its new value in ``my_int3``. Normal behavior!
+I copy ``my_int1`` in ``my_int2`` and look, after the copy, I can still increment ``my_int1`` and copy its new value in ``my_int3``. Normal behavior!
 
 OK... Let’s try to do the same thing with a “not so simple" data type ( ``Vec<T>``, ``String``...) :
 
@@ -847,7 +878,7 @@ fn main() {
 }
 ```
 
-As is, the code works, but if you unfortunately delete the comments ``assert``, the compiler jumps down your throat and you die in terrible pain, forgotten by everyone. For example, if I delete the first comment, this is what I read:
+As is, the code works, but if you unfortunately delete the comments of the ``assert`` line, the compiler jumps down your throat and you die in terrible pain, forgotten by everyone. For example, if I delete the first comment, this is what I read:
 
 ```rust
 Compiling playground v0.0.1 (/playground)
@@ -874,7 +905,7 @@ error: could not compile `playground` (bin "playground") due to 1 previous error
 
 Read the compiler messages. No one else will do it for you, and the guys worked their asses off to find a way to help us, so let's use what they have to offer...
 
-In addition, it's super clear. The compiler tells us that on line 3 there was a move from the binding ``my_string1`` to the binding ``my_string2`` because the binding ``my_string1`` is linked to the state of an instance of type String and that this data type does not implement a function that would allow it to be copied (it does not implement the Copy trait). So, since we cannot make a copy (but only a move) we have no right, neither to be hungry nor to be cold, certainly, but above all, we have no right to use the binding ``my_string1`` in the ``assert`` to compare it to “Zoubida".
+In addition, it's super clear. The compiler tells us that on line 3 there was a move from the binding ``my_string1`` to the binding ``my_string2`` because the binding ``my_string1`` is linked to the state of an instance of type String and that this data type does not implement a function that would allow it to be copied (it does not implement the Copy trait). So, since we cannot make a copy (but only a move) we have no right to use the binding ``my_string1`` in the ``assert`` to compare it to “Zoubida".
 
 Just to prove I'm trying to be honest... Of course it's possible to make an explicit copy of a String. You have to use ``.clone()``. The thing here is that since the Copy trait isn't implemented, by default we make ``.move()``.
 
@@ -887,7 +918,7 @@ It may be worth remembering that:
 | Copy	    | ``x = y``	| x and y are usable             |
 | Move	    | ``x = y``	| x is usable, y is no longer usable |
 
-With these move stories covered, I return to the function code
+With these "move" stories covered, I return to the function code
 
 ```rust
 fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
@@ -897,7 +928,7 @@ fn fill_vec(vec: Vec<i32>) -> Vec<i32> {
 ```
 
 
-It should be noted that when we arrive in the scope of the function ``fill_vec`` the binding ``vec0`` is no longer the owner. The new owner is ``vec``.
+It should be noted that when we arrive in the scope of the function ``fill_vec()`` the binding ``vec0`` is no longer the owner. The new owner is ``vec``.
 
 ***Ah OK, that's it, I get it. Then we push, we return, and it's done***. Yes, almost, but in the meantime we have a compilation error to deal with. Something like this:
 
@@ -939,7 +970,7 @@ fn fill_vec(mut vec: Vec<i32>) -> Vec<i32>
 ```
 
 
-*** Wait... There's something I don't understand... We had an immutable vector at the beginning. We pass it to a function. And hey presto, it can become modifiable... That's not very secure. Is it?***
+*** Wait... There's something I don't understand... We had an immutable vector at the beginning. We pass it to a function. And hey presto, it can become mutable... That's not very secure. Is it?***
 
 Let's go back to the time of the call. What exactly is happening... Remember the rule of ownership: **Each value has a single owner at any given time and is automatically dropped when that owner goes out of scope**. (Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.)
 
@@ -947,7 +978,7 @@ To comply with this rule, we explained that ``vec0`` it was "moved" and no longe
 
 Next, and this is important to realize. It's not the data or memory areas that are mutable or non-mutable. It's the bindings (mutability is a property of the binding). Typically, the data allocated on the heap at the time of creation of ``vec0`` was "physically" mutable. On the other hand, the compiler monitored the mutability of the binding ``vec0``, it saw that we hadn't done anything illegal and it worked. Then, we move the binding from ``vec0`` to vec. OK, fine. But if I give you my Ferrari. Nothing prevents you from adding a caravan hook or repainting it yellow. You are the new owner, you do what you want. In other words, it is not forbidden when transferring the binding from ``vec0`` to ``vec`` to reclassify it as mutable. We will then have the right to modify the state of the concrete instance at the other end of the binding.
 
-Again, these mutability stories are a property of the binding, not the binding data. However, it is a contract that we sign with the compiler and that we agree to respect. If I say that ``vec`` is non-mutable in the signature, I do not have the right to modify the state of the type instance ``Vec<i32>`` (and vice versa if I qualify the binding with ``mut``). It is the compiler, and in particular Rust's borrow checker, which is responsible for enforcing the law, and we are allowed to say that it is as conciliatory as Judge Dredd.
+Again, these mutability stories are a property of the binding, not the binding data. However, it is a contract that we sign with the compiler and that we agree to respect. If I say that ``vec`` is non-mutable in the signature, I do not have the right to modify the state of the type instance ``Vec<i32>`` (and vice versa if I qualify the binding with ``mut``). It is the compiler, and in particular Rust's borrow checker, which is responsible for enforcing the law, and we are allowed to say that it is as accommodating as Judge Dredd.
 
 
 <div align="center">
@@ -1035,9 +1066,9 @@ I'll spare you the details, but in one of the bonus features in Chapter 1, which
 
 Below is a solution in Rust
 
-* In the function ``main()`` we create a binding ``vec0`` that binds the name ``vec0`` to the full state of a concrete instance of type ``Vec<i32>``.
+* In the function ``main()`` we create a binding ``vec0`` that binds the name ``vec0`` to the state of a concrete instance of type ``Vec<i32>``.
 * You notice that when it is created, we give the binding ( ``let mut vec0``) the property ``mut``. We can therefore modify the state of the vector.
-* In a very original way, there is then a function named ``shift_zeros_to_the_end()`` to which we pass as an argument something based on vec0(we will come back to this in 2 minutes)
+* In a very original way, there is then a function named ``shift_zeros_to_the_end()`` to which we pass as an argument something based on ``vec0`` (we will come back to this in 2 minutes)
 * Unlike before, the function does not return anything.
 * On the other hand, “Abracadabra!", on the last line ``assert`` allows us to check that the 0s have been pushed to the bottom of the binding ``vec0``
 
@@ -1083,9 +1114,9 @@ Here we have a line like this
     shift_zeros_to_the_end(&mut vec0);      
 ```
 
-It's not better or worse. The thing is, when the function returns, we don't have a new binding. We continue to use the original binding ( ``vec0``). However, we must give the function the means ``shift_zeros_to_the_end()`` to be able to modify the state of the concrete instance of the type. In other words, I lent you my Ferrari and I'm allowing you to clean it up.
+It's not better or worse. The thing is, when the function returns, we don't have a new binding. We continue to use the original binding ( ``vec0``). However, we must give the function the means ``shift_zeros_to_the_end()`` to be able to modify the state of the concrete instance of the type. In other words, I lent you my Ferrari and I give you permission to clean it.
 
-The idea is that this way of expressing things may well reflect our intention (“here you go, thing, here are the keys, remember to vacuum before giving them back to me") but hey, it’s a bit difficult in terms of writing (there’s even a little Klingon side to it...).
+The idea is that this way of expressing things may well reflect our intention (“Here are the keys. Don't forget to vacuum it before you give it back.") but hey, it’s a bit difficult in terms of writing (there’s even a little Klingon side to it...).
 
 <div align="center">
 <img src="./assets/klingon.webp" alt="Klingon" width="225" loading="lazy"/>
@@ -1127,10 +1158,10 @@ In plain English, this means that during the static analysis of code, we will fo
 **Notes:** I confirm to you
 
 * it is ``&mut`` and not ``mut&``
-* for a mutable reference you will see ``ma_fonction(&mut bob)`` with a space
+* for a mutable reference you will see ``my_function(&mut bob)`` with a space
     * ``&mut`` is a compound operator in Rust
     * ``&mut`` is a single “logical keyword", which reads “mutable reference to"
-* for a non-mutable reference you will see especially ``ma_fonction(&bob)`` without a space whereas ``shift_zeros_to_the_end(& vec0)`` is just as legal but not or very little used (I don't know why, it must be historical)
+* for a non-mutable reference you will see especially ``my_function(&bob)`` without a space whereas ``shift_zeros_to_the_end(& vec0)`` is just as legal but not or very little used (I don't know why, it must be historical)
 
 
 
@@ -1151,9 +1182,9 @@ fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32>{...}
 
 And we said in the comments: ``vec0`` is a mutable binding that links the name ``vec0`` to the complete state of a concrete instance of type ``Vec<i32>``.
 
-Here there is no ``mut`` front, ``nums_in`` so ``nums_in`` it is a non-mutable binding. Then the binding associates the name ``nums_in`` with what? To the state of a concrete instance of the type ``&mut Vec<i32>``. In the case of a reference type (mutable or not) on a thing, a concrete instance is the reference itself. So, I repeat: ``nums_in`` is a non-mutable binding that connects the name ``nums_in`` to a concrete instance of type ``&mut Vec<i32>``.
+Here, there is no ``mut`` in front of ``nums_in`` so ``nums_in`` it is a non-mutable binding. Then the binding associates the name ``nums_in`` with what? To the state of a concrete instance of the type ``&mut Vec<i32>``. In the case of a reference type (mutable or not) on a thing, a concrete instance is the reference itself. So, I repeat: ``nums_in`` is a non-mutable binding that connects the name ``nums_in`` to a concrete instance of type ``&mut Vec<i32>``.
 
-The binding is not modifiable but the state of ``Vec<i32>`` is modifiable through the reference.
+The binding is not mutable but the state of ``Vec<i32>`` is mutable through the reference.
 
 
 
@@ -1203,9 +1234,9 @@ fn main(){
 
 
 
-Yes, well done... It doesn't work in the compilation...
+Yes, well done... It doesn't compile...
 
-Yes, but why? Yes, well done again! We create a non-mutable binding ``vec0`` that we then pass as a mutable reference to the function ``shift_zeros_to_the_end()``. The compiler rightly points out to us that we shouldn't take it for an idiot, that it has seen our shenanigans and that consequently it stops the compilation. Great prince, it indicates a solution which consists of adding a mut in front of ``vec0``.
+Yes, but why? Yes, well done again! We create a non-mutable binding ``vec0`` that we then pass as a mutable reference to the function ``shift_zeros_to_the_end()``. The compiler rightly points out to us that we shouldn't take it for an fool, that it has seen our shenanigans and that consequently it stops the compilation. Not one to hold a grudge, it indicates a solution which consists of adding a ``mut`` in front of ``vec0``.
 
 
 
@@ -1247,7 +1278,7 @@ Yes, but why? Yes, well done again! We create a non-mutable binding ``vec0`` tha
 
 
 
-### For fun...
+### For the fun...
 
 The code below shows 2 possible implementations.
 
@@ -1323,7 +1354,7 @@ fn main(){
 ## Variations on mutability
 ***We've seen signatures like ``(mut nums_in: Vec<i32>) -> Vec<i32>`` and ``(nums_in: &mut Vec<i32>)``. Would it make sense to write something like ``(mut nums_in: &Vec<i32>)`` or ``(mut str_in: &mut Vec<i32>)``, and what could that be used for?***
 
-Here, treat yourself. You have all the elements you need to analyze the situation. Always make sure to distinguish between the mutability of the binding and the mutability of the past reference. Take your time; we're in no rush.
+Here, treat yourself. You have all the elements you need to analyze the situation. Always make sure to distinguish between the mutability of the binding and the mutability of the reference. Take your time; we're in no rush.
 
 
 ```rust
@@ -1407,7 +1438,7 @@ I'll let you read the comments for the first 3 functions. Normally, there should
 
 However, in order to be exhaustive, I absolutely wanted to have an example with 2 ``mut`` in the function signature. One for the mutability of the binding and another for the mutability of the reference. It took a lot of fighting with the compiler and I had no other choice but to specify the lifetimes of the references.
 
-Don't start complaining. I suggest you read the rest where we will only talk about the "lifetime" property of the binding and then come back here to get your teeth into the function ``change_and_reassign()``.
+Don't start complaining. I suggest you read the next section where we will only talk about the "lifetime" property of the bindings and then come back here to get your teeth into the function ``change_and_reassign()``.
 
 
 
@@ -1424,7 +1455,7 @@ Don't start complaining. I suggest you read the rest where we will only talk abo
 
 
 
-## The lifetime property of bindings (lifetime)
+## The lifetime property of bindings
 
 We'll start with a simple problem of comparing the length of strings. Below is an example of code that works.
 
@@ -1453,17 +1484,17 @@ There are no traps or complicated things that we haven't seen.
 * We create an artificial scope with two curly braces. This will be especially useful in the last example. Here, it's just so the codes in the examples are very similar.
 * ``s2`` is a non-mutable binding that binds the name ``s2`` to the state of a concrete instance of type String.
 * We call a function ``longest`` to which we pass the 2 bindings
-* The return binding of the function ``longest`` is moved in ``result`` (this is when the compiler deduces that ``result`` it will be a binding to the state of an instance of a String type)
+* The return binding of the function ``longest`` is moved in ``result`` (this is when the compiler deduces that ``result`` will be a binding to the state of an instance of a String type)
 * We display
-* We are moving beyond the artificial scope
+* We get out the artificial scope
 * We display
 
 Concerning the function, ``longest`` it receives 2 non-mutable bindings on String types (well, I'll keep it short, you get the idea) and it returns a binding of type String.
-* The thing to note is that in Rust they ``if`` are expressions, not statements.
+* The thing to note is that in Rust the ``if`` are expressions, not statements.
 * In other words, one ``if`` returns a value and that is precisely what is done in the single line of code
-* Also note that there is no <value> ;at the end of the line because the value of the if<value> is the return binding
+* Also note that there is no ``;`` at the end of the line because the value of the ``if`` expression is the returned binding
 
-Everything is fine and on the display we see
+Everything is fine and we can read:
 
 
 ```
@@ -1543,14 +1574,14 @@ fn main() {
 
 Here's what happens in the signature:
 
-* ``<'t>`` : this introduces a lifetime parameter tthat will be used to link the lifetimes of parameters and return values ​​together
+* ``<'t>`` : this introduces a lifetime parameter ``t`` that will be used to link the lifetimes of parameters and return values ​​together
 * ``s1 : &'t str`` : The first parameter ``s1`` is a string slice that must live at least as long as ``t``
 * ``s2 : &'t str`` : The second parameter ``s2`` is a string slice that must live at least as long as ``t``
 * ``-> &'t str`` : The function returns a string slice that must live at least as long as ``t``
 
 At runtime, in the console, we see ``Longest: , and beyond!``
 
-Now to really understand this story about binding lifetimes, delete the last comment. This stops compiling and we get the following message:
+Now to really understand this story about binding lifetimes, delete the comment on the last line. This stops compiling and we get the following message:
 
 ```rust
 Compiling playground v0.0.1 (/playground)
@@ -1575,10 +1606,10 @@ error: could not compile `playground` (bin "playground") due to 1 previous error
 
 You're starting to get used to it now. I'll let you read...
 
-The compiler is really strong (personally I am amazed).
-* On line 10 it points to the declaration of s2(checks but line 10 is in the artificial scope which starts at line 9 and stops at line 13)
-* It clearly notices that on line 11 we use the bindings2
-* Finally, it indicates just below the second brace of the artificial scope that it s2no longer exists
+The compiler is really smart (personally I am amazed).
+* On line 10 it points to the declaration of ``s2`` (checks but line 10 is in the artificial scope which starts at line 9 and stops at line 13)
+* It clearly notices that on line 11 we use the binding ``s2``
+* Finally, it indicates just below the second brace of the artificial scope that it ``s2`` no longer exists
 * So he points to line 15, takes out the aluminum ruler and slaps us on the wrist because he is now able to prove to us that we are not respecting the contract we signed with him.
     * We had annotated the function signature with the lifetimes
     * We promised, swore, spat that ``s1``, ``s2``and ``result`` had the same lifetime ``t``
@@ -1601,7 +1632,7 @@ The compiler is really strong (personally I am amazed).
 > * of mutability
 > * of ownership
 > * of borrowing
-> * lifetime
+> * of lifetime
 > 3. Static code analysis ensures that the properties of the bindings are respected.
 
 
@@ -1632,7 +1663,7 @@ For the rest, concerning the **binding** I hope to have convinced you that:
     * of mutability
     * of ownership
     * of borrowing
-    * lifetime
+    * of lifetime
 1. During static analysis, different tools (lifetime checker, borrow checker, etc.) ensure that the properties of the bindings are respected.
 
 I propose that from now on, in the context of Rust, I no longer speak of variables but only of bindings.
