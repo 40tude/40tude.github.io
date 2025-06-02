@@ -218,9 +218,9 @@ Here is how it should look like
 </div>
 
 
-* Replace `NAME_OF_APPLICATION` with the name of your application
+* In the `launch.json` file replace `NAME_OF_APPLICATION` with the name of your application
 * Save the ``.json`` file (`CTRL+S`)
-* Switch to the editor
+* Switch back to the code
 * Set a breakpoint somewhere
 * Press `F5`
 
@@ -241,7 +241,7 @@ Here is how it should look like
 
 
 
-## Run
+## Run Green Slope
 * In the editor
 * If you click Run (instead of Debug)
 * Outputs happen in a terminal
@@ -250,13 +250,31 @@ Here is how it should look like
 <img src="./assets/run.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-* Alternatively you can
-    * Open a terminal ``CTRL+ù`` (azerty keyboard)
-    * Enter `cargo run`
+
+
+
+
+
+## Run Blue Slope
+* Open a terminal ``CTRL+ù`` (azerty keyboard)
+* Enter `cargo run`
 
 <div align="center">
 <img src="./assets/cargo_run.webp" alt="" width="900" loading="lazy"/>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
