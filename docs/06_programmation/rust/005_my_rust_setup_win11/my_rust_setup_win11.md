@@ -75,11 +75,16 @@ last_modified_date : 2025-06-32 09:00:00
 </div>
 
 ### Pressing CTRL+ALT
-* Do you see the i32 and u8 in gray ?
+* Do you see the `i32` and `u8` in gray ?
 
 <div align="center">
 <img src="./assets/types_yes.webp" alt="" width="450" loading="lazy"/>
 </div>
+
+
+
+
+
 
 
 
@@ -106,7 +111,7 @@ max_width = 200
 
 
 
-## Debug
+## Debug - Green Slope
 * Install [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 <div align="center">
@@ -165,6 +170,75 @@ fn main() {
 <div align="center">
 <img src="./assets/debug_04.webp" alt="" width="900" loading="lazy"/>
 </div>
+
+
+
+
+
+
+
+## Debug - Blue Slope
+If you want to debug code when you press F5.
+* Create a `.vscode` folder at the root of the project
+* Create a `launch.json` file in that directory
+* Copy and paste the code below
+
+```json
+{
+    "configurations": [
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "name": "run trash_me",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}\\target\\debug\\NAME_OF_APPLICATION.exe",
+            "environment": [
+                {
+                    "name": "RUST_BACKTRACE",
+                    "value": "short"
+                },
+                {
+                    "name": "RUSTC_TOOLCHAIN",
+                    "value": "C:\\Users\\phili\\.rustup\\toolchains\\stable-x86_64-pc-windows-msvc"
+                }
+            ],
+            "args": [],
+            "sourceFileMap": {},
+            "osx": {
+                "MIMode": "lldb"
+            }
+        }
+    ]
+}
+```
+Here is how it should look like 
+
+<div align="center">
+<img src="./assets/debug_05.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+
+* Replace `NAME_OF_APPLICATION` with the name of your application
+* Save the ``.json`` file (`CTRL+S`)
+* Switch to the editor
+* Set a breakpoint somewhere
+* Press `F5`
+
+<div align="center">
+<img src="./assets/debug_06.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Run
