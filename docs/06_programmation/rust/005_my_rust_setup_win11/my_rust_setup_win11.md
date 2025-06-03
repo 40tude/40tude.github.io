@@ -268,6 +268,31 @@ Here is how it should look like
 
 
 
+## Optional
+
+### Color Syntax for `.toml` files
+* In VSCode install "Even Better TOML" extension
+
+<div align="center">
+<img src="./assets/even_better_toml.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
+
+### Get hints help & support while editing cargo.toml files
+* Mostly helps when editing versions of the crates to be included in the project
+* In VSCode install "dependi" extension (crates extension is now deprecated)
+
+<div align="center">
+<img src="./assets/dependi.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
+
+
+
+
+
 
 
 
