@@ -304,7 +304,7 @@ Here is how it should look like
 
 
 
-## 3 ways to run the Debug version of the code but **without** debugging it
+## 3 ways to run the Debug version of your code without the debugger
 
 Make sure the current configuration is still `Debug`
 
