@@ -244,7 +244,7 @@ If you want to debug code when you press F5 and have more options (like passing 
             "type": "cppvsdbg",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/target/debug/NAME_OF_APPLICATION.exe",
+            "program": "${workspaceFolder}/target/debug/${workspaceFolderBasename}.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "environment": [
@@ -259,7 +259,7 @@ If you want to debug code when you press F5 and have more options (like passing 
             "type": "cppvsdbg",
             "request": "launch",
             "name": "Release",
-            "program": "${workspaceFolder}/target/release/NAME_OF_APPLICATION.exe",
+            "program": "${workspaceFolder}/target/release/${workspaceFolderBasename}.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
             "environment": [
@@ -279,11 +279,6 @@ Here is how it should look like
 <div align="center">
 <img src="./assets/debug_05.webp" alt="" width="900" loading="lazy"/>
 </div>
-
-
-* In the `launch.json` file replace `NAME_OF_APPLICATION` with the name of your application
-    * Open ``Cargo.toml`` if needed
-* Save the ``.json`` file (`CTRL+S`)
 
 
 * On the left hand side, click on the `Run & Debug` icon (the bug and the triangle icon, `CTRL+SHIFT+D` otherwise)
