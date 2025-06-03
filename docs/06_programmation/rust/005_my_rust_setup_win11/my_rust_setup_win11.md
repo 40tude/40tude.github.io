@@ -75,7 +75,8 @@ last_modified_date : 2025-06-32 09:00:00
 </div>
 
 ### Pressing CTRL+ALT
-* Do you see the `i32` and `u8` in gray ?
+
+Do you see the `i32` and `u8` in gray ?
 
 <div align="center">
 <img src="./assets/types_yes.webp" alt="" width="450" loading="lazy"/>
@@ -92,7 +93,7 @@ last_modified_date : 2025-06-32 09:00:00
 ## Setup line width
 * When saving file the formatter may reformat long lines
 * I create a ``Rustfmt.toml`` file at the root of the project
-* So far mine has only only one line
+* So far my ``Rustfmt.toml`` has only only one line
 
 ```toml
 max_width = 200
@@ -151,21 +152,21 @@ fn main() {
 ```
 * Set a breakpoint on line 8 
     * See below the red dot on the left
-    * You can either click or strike ``F9``
+    * You can either click or strike ``F9`` when the cursor is on the line of interest
 * In the editor click on the "Debug" (see below in the red rectangle)
 
 <div align="center">
 <img src="./assets/debug_02.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-
-* Keep in mind that the output happens in the ``DEBUG CONSOLE`` not in the `TERMINAL`. See below
+* A `target/debug` directory is created 
+* While looking for the outputs, keep in mind they occurs in the ``DEBUG CONSOLE`` **not** in the `TERMINAL`. See below
 
 <div align="center">
 <img src="./assets/debug_03.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-* You can then inspect variables, go step by step...
+* Once the code stops on the line, you can then inspect variables, go step by step...
 
 <div align="center">
 <img src="./assets/debug_04.webp" alt="" width="900" loading="lazy"/>
@@ -285,8 +286,9 @@ Here is how it should look like
 * Save the ``.json`` file (`CTRL+S`)
 
 
-* On the left hand side, click on the Run & Debug icon (the bug and the triangle icon, `CTRL+SHIFT+D` otherwise)
-    * Make sure the current config in the list box is ``Debug``
+* On the left hand side, click on the `Run & Debug` icon (the bug and the triangle icon, `CTRL+SHIFT+D` otherwise)
+    * Make sure the current config in the list box is set on ``Debug``
+    * See below
 
 <div align="center">
 <img src="./assets/debug_07.webp" alt="" width="450" loading="lazy"/>
@@ -298,7 +300,7 @@ Here is how it should look like
 * Set a breakpoint somewhere
 * Press `F5`
     * A `target/debug` directory is created 
-    * The debugger stop on the breakpoint 
+    * The debugger stops on the breakpoint 
 
 <div align="center">
 <img src="./assets/debug_06.webp" alt="" width="900" loading="lazy"/>
@@ -307,26 +309,26 @@ Here is how it should look like
 
 
 
-## 3 ways to run the Debug version of the code but without debugging it
+## 3 ways to run the Debug version of the code but **without** debugging it
 
 Make sure the current configuration is still `Debug`
 
 ### Option 1 :
-    * If you press ``CTRL+F5`` this run the Debug version of the code but without debugging it
-    * So, the debugger does not stop on the breakpoint.
+* If you press ``CTRL+F5`` this run the Debug version of the code but without debugging it
+* So, the debugger does not stop on the breakpoint.
 
 ### Option 2 :
-    * In the editor
-    * Click `Run` (instead of `Debug`)
+* In the editor
+* Click `Run` (instead of `Debug`)
 
 <div align="center">
 <img src="./assets/run.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 ### Option 3 :
-    * In VSCode
-    * Open a terminal ``CTRL+ù`` (azerty keyboard)
-    * Enter `cargo run`
+* In VSCode
+* Open a terminal ``CTRL+ù`` (azerty keyboard)
+* Enter `cargo run`
 
 <div align="center">
 <img src="./assets/cargo_run.webp" alt="" width="450" loading="lazy"/>
@@ -349,10 +351,10 @@ Make sure the current configuration is still `Debug`
 
 
 
-## Create and Run Release Version 1/2
+## Create and Run a Release Version 1/2
 
-* On the left hand side, click on the Run & Debug icon (`CTRL+SHIFT+D`)
-    * Make sure the current config is ``Release``
+* On the left hand side, click on the `Run & Debug` icon (`CTRL+SHIFT+D`)
+    * Make sure the current config is set on ``Release``
 
 <div align="center">
 <img src="./assets/release.webp" alt="" width="450" loading="lazy"/>
@@ -363,7 +365,7 @@ Make sure the current configuration is still `Debug`
 
 
 
-## Create and Run Release Version 1/2
+## Create and Run a Release Version 1/2
 * In VSCode
 * Open a terminal ``CTRL+ù`` (azerty keyboard)
 * Enter `cargo run --release`
@@ -376,16 +378,16 @@ Make sure the current configuration is still `Debug`
 ## How to build only (either, Debug or Release version)
 
 ### Option 1 :  
-    * Click on ``Terminal/Run Task...`` option
-    * Select ``cargo-build-debug`` or ``cargo-build-release``
+* Click on ``Terminal/Run Task...`` option
+* Select ``cargo-build-debug`` or ``cargo-build-release``
 
 <div align="center">
 <img src="./assets/tasks.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 ### Option 2 :  
-    * Open a terminal in VSCode
-    * Either type `cargo build` or `cargo build --release`
+* Open a terminal in VSCode
+* Either type `cargo build` or `cargo build --release`
 
 
 
