@@ -111,7 +111,7 @@ max_width = 200
 
 
 
-## Debug - Green Slope
+## Debugging code 1/2
 * Install [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
 <div align="center">
@@ -131,7 +131,7 @@ max_width = 200
 
 * `cd .\rust_test4web\`
 * `code .`
-* Copy this code for example in `src\main.rs`
+* Copy the lines below for example in the file `src\main.rs`
 
 ```rust
 fn main() {
@@ -159,7 +159,7 @@ fn main() {
 </div>
 
 
-* Understand that the output happen in the ``DEBUG CONSOLE`` not in the `TERMINAL`. See below
+* Keep in mind that the output happens in the ``DEBUG CONSOLE`` not in the `TERMINAL`. See below
 
 <div align="center">
 <img src="./assets/debug_03.webp" alt="" width="450" loading="lazy"/>
@@ -177,40 +177,102 @@ fn main() {
 
 
 
-## Debug - Blue Slope
-If you want to debug code when you press F5.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Debugging code 2/2
+If you want to debug code when you press F5 and have more options (like passing arguments for example)
 * Create a `.vscode` folder at the root of the project
-* Create a `launch.json` file in that directory
-* Copy and paste the code below
+* Create a `tasks.json` file in that directory
+* Copy and paste the lines below
 
 ```json
 {
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cargo-build-debug",
+            "type": "cargo",
+            "command": "build",
+            "args": [],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "cargo-build-release",
+            "type": "cargo",
+            "command": "build",
+            "args": [
+                "--release"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ]
+        }
+    ]
+}
+
+```
+* Save the ``.json`` file (`CTRL+S`)
+* Create a `launch.json` file in the `.vscode` folder
+* Copy and paste the lines below
+
+```json
+{
+    "version": "0.2.0",
     "configurations": [
         {
             "type": "cppvsdbg",
             "request": "launch",
-            "name": "run trash_me",
+            "name": "Debug",
+            "program": "${workspaceFolder}/target/debug/NAME_OF_APPLICATION.exe",
+            "args": [],
             "cwd": "${workspaceFolder}",
-            "program": "${workspaceFolder}\\target\\debug\\NAME_OF_APPLICATION.exe",
             "environment": [
                 {
                     "name": "RUST_BACKTRACE",
                     "value": "short"
-                },
-                {
-                    "name": "RUSTC_TOOLCHAIN",
-                    "value": "C:\\Users\\phili\\.rustup\\toolchains\\stable-x86_64-pc-windows-msvc"
                 }
             ],
+            "preLaunchTask": "cargo-build-debug"
+        },
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "name": "Release",
+            "program": "${workspaceFolder}/target/release/NAME_OF_APPLICATION.exe",
             "args": [],
-            "sourceFileMap": {},
-            "osx": {
-                "MIMode": "lldb"
-            }
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "RUST_BACKTRACE",
+                    "value": "short"
+                }
+            ],
+            "preLaunchTask": "cargo-build-release"
         }
     ]
 }
 ```
+
 Here is how it should look like 
 
 <div align="center">
@@ -219,10 +281,24 @@ Here is how it should look like
 
 
 * In the `launch.json` file replace `NAME_OF_APPLICATION` with the name of your application
+    * Open ``Cargo.toml`` if needed
 * Save the ``.json`` file (`CTRL+S`)
+
+
+* On the left hand side, click on the Run & Debug icon (the bug and the triangle icon, `CTRL+SHIFT+D` otherwise)
+    * Make sure the current config in the list box is ``Debug``
+
+<div align="center">
+<img src="./assets/debug_07.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
+
 * Switch back to the code
 * Set a breakpoint somewhere
 * Press `F5`
+    * A `target/debug` directory is created 
+    * The debugger stop on the breakpoint 
 
 <div align="center">
 <img src="./assets/debug_06.webp" alt="" width="900" loading="lazy"/>
@@ -231,23 +307,29 @@ Here is how it should look like
 
 
 
+## 3 ways to run the Debug version of the code but without debugging it
 
+Make sure the current configuration is still `Debug`
 
+### Option 1 :
+    * If you press ``CTRL+F5`` this run the Debug version of the code but without debugging it
+    * So, the debugger does not stop on the breakpoint.
 
-
-
-
-
-
-
-
-## Run Green Slope
-* In the editor
-* If you click Run (instead of Debug)
-* Outputs happen in a terminal
+### Option 2 :
+    * In the editor
+    * Click `Run` (instead of `Debug`)
 
 <div align="center">
-<img src="./assets/run.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/run.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+### Option 3 :
+    * In VSCode
+    * Open a terminal ``CTRL+ù`` (azerty keyboard)
+    * Enter `cargo run`
+
+<div align="center">
+<img src="./assets/cargo_run.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -255,13 +337,74 @@ Here is how it should look like
 
 
 
-## Run Blue Slope
+
+
+
+
+
+
+
+
+
+
+
+
+## Create and Run Release Version 1/2
+
+* On the left hand side, click on the Run & Debug icon (`CTRL+SHIFT+D`)
+    * Make sure the current config is ``Release``
+
+<div align="center">
+<img src="./assets/release.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+* You can either press F5 or CTRL+F5
+* A `target/release` directory is created 
+
+
+
+## Create and Run Release Version 1/2
+* In VSCode
 * Open a terminal ``CTRL+ù`` (azerty keyboard)
-* Enter `cargo run`
+* Enter `cargo run --release`
+
+
+
+
+
+
+## How to build only (either, Debug or Release version)
+
+### Option 1 :  
+    * Click on ``Terminal/Run Task...`` option
+    * Select ``cargo-build-debug`` or ``cargo-build-release``
 
 <div align="center">
-<img src="./assets/cargo_run.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/tasks.webp" alt="" width="900" loading="lazy"/>
 </div>
+
+### Option 2 :  
+    * Open a terminal in VSCode
+    * Either type `cargo build` or `cargo build --release`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
