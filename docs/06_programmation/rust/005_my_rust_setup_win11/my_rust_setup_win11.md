@@ -365,7 +365,7 @@ Make sure the current configuration is still `Debug`
 
 
 
-## Create and Run a Release Version 1/2
+## Create and Run a Release Version 2/2
 * In VSCode
 * Open a terminal ``CTRL+ù`` (azerty keyboard)
 * Enter `cargo run --release`
