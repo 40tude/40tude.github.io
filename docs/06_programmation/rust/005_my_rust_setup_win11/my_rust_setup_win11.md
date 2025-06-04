@@ -59,6 +59,9 @@ last_modified_date : 2025-06-32 09:00:00
 
 
 ## Setup Inlay Hints
+
+By default, I find the type information a little too invasive, unnecessarily lengthening the lines of code and blurring readability. They're very useful, but I'd like to display them on demand.
+
 * In VSCode
 * `CTRL + ,` to open the ``Settings``
 * Enter `inlay`
@@ -114,6 +117,8 @@ max_width = 200
 
 ## Debugging code 1/2
 * Install [Build Tools for Visual Studio](https://visualstudio.microsoft.com/downloads/)
+    * This is my preferred option because [I code in C++.]({%link docs/06_programmation/cpp/index.md%}). It comes with everything : compiler, linker, debugger...
+    * Others may install [CodeLLDB VSCode extension](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb). It only provides a debugger. May be enough if you plan to only use Rust.
 
 <div align="center">
 <img src="./assets/visual_studio_ build_tools.webp" alt="" width="900" loading="lazy"/>
