@@ -742,7 +742,7 @@ Voici les différentes versions des images générées
 
 ## Mise en place d'un benchmarking
 
-Avec tout ça on a toujours pas commencé à parler de multithreading mais bon on y arrive... Et afin de pouvoir comparer les gains de performances, on va mettre en place une mesure du temps que prend la fonction ``build_mandelbrot()``. La fonction ``main()`` est la seul impactée. Ci-dessous je ne montre que son code.
+Avec tout ça on a toujours pas commencé à parler de multithreading mais bon on y arrive... Et afin de pouvoir comparer les gains de performances, on va mettre en place une mesure du temps que prend la fonction ``build_mandelbrot()``. La fonction ``main()`` est la seule impactée. Ci-dessous je ne montre que son code.
 
 ```rust
 
@@ -1406,12 +1406,12 @@ Dans la fonction `mt_build_mandelbrot()`
 * Nous devons utiliser un objet ``scope`` (qu'on va chercher dans ``crossbeam``, d'où l'obligation de modifier ``Cargo.toml``). De ce que j'ai compris, un scope permet d'aider le compilateur à comprendre notre intention. Typiquement un scope garanti, la main sur le coeur, qu'à la fin du scope tous les threads auront été "joined" et que toutes les variables locales du scope seront bien tout le temps accessibles. 
 * Du coup, au lieu de faire une boucle ``for`` dans laquelle on spawn des threads
 * Je créé un scope nommé ``my_scope`` (voir `crossbeam::thread::scope`) dans lequel j'ai une boucle ``for`` dans laquelle j'utilise `my_scope` pour y lancer un thread qui va éxécuter la fonction `render_zone()`.
-* Comme j'étais pas sûr de mon coup, en haut du code source, j'ai bien sûr commenté la ligne `use std::thread;` car je ne l'utilise plus ici. Cela fait, j'ai pas écris `use crossbeam::thread;`. Du coup dans le code cela m'oblige à utiliser le nom complet `crossbeam::thread::scope`.
-* Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici il faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ça, en français, ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit ce lire `crossbeam::thread::scope(blablabla).unwrap();`   
+* Comme j'étais pas sûr de mon coup, en haut du code source, j'ai bien sûr commenté la ligne `use std::thread;` car je ne l'utilise plus ici. Cela fait, j'ai pas écris `use crossbeam::thread;`. De cette façon, dans le code cela m'oblige à utiliser le nom complet `crossbeam::thread::scope` et c'est ce que je voulais.
+* Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici il faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ça, en français, ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit se lire `crossbeam::thread::scope(blablabla).unwrap();`   
 
 Dans la fonction `render_zone()`
 * Cette fonction remplace l'ancienne `build_mandelbrot` et l'ancienne ``render_stripe()``
-* La signature a changé car ici aussi la fonction ne retroune plus d'image ou de bande. Elle rempli la zone qu'on lui passe en dernier paramètre
+* La signature a changé car ici aussi la fonction ne retourne plus d'image ou de bande. Elle rempli la zone qu'on lui passe en dernier paramètre
 * Le reste du code ne change pas
 
 Dans la fonction `mandelbrot_color()`
@@ -1466,13 +1466,13 @@ Du point de vue de la console voilà ce que j'observe :
 
 ## Une mauvaise idée
 
-Bon, ben voilà, c'est une affaire qui roule notre histoire... Ceci dit, pour être honnête, avant la version précédente et l'utilisation d'un ``scope`` je pensais benoîtement que je pouvais permettre au code exécuté par les threads de modifier la zone mémoire où se trouve l'image. Encore une fois, je sais que les codes des threads n'accèdent pas aux mêmes pixels, je suis certains qu'il n'y aura pas de problème, qu'on ne va pas croiser les effluves...
+Bon, voilà, notre petite histoire avance plutôt bien… Cela dit, pour être honnête, **avant la version précédente** et l’introduction d’un `scope`, je pensais naïvement que les threads pouvaient modifier directement la zone mémoire de l’image. Bien sûr, j’étais certain qu’il n’y aurait aucun problème puisque chaque thread travaille sur des pixels différents — aucun risque de croiser les effluves...
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TAQnOzY7QXE?si=w3FyGMM7o5qacGS7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-Du coup, de fil en aiguille (d'autres parlent de compiler-driven development. En gros, tu compiles, ça plante, tu lis avec beaucoup d'attention les messages d'erreur et tu essaies de satisfaire la bête) j'ai été amené à vérouiller l'accès à la zone de l'image avec un mutex et une Arc. C'est une très mauvaise idée. En effet, c'est hyper "secure" mais bon, du coup, un seul thread à la fois peut accèder à la zone mémoire correspondant à l'image. Tout se passe comme si on avait 20 personnes pleine de bonne volonté désireuses de faire la vaisselle mais une seule à la fois qui peut utiliser l'évier. C'est contre productif et finalement les performances sont pires qu'en single-threaded. 
+Bref, de fil en aiguille (certains appellent ça du compiler-driven development : tu compiles, ça plante, tu lis attentivement les messages d’erreur et tu essaies de contenter la bête), j’en suis venu à protéger l’accès à l’image avec un Arc et un Mutex. Mauvaise idée. Certes, c’est très sécurisé, mais ça force un accès exclusif : un seul thread peut manipuler l’image à la fois. Imagine 20 personnes de bonne volonté prêtes à faire la vaisselle… mais avec un seul évier ! Résultat : c’est contre-productif et, au final, plus lent qu’en single-thread.
 
 <div align="center">
 <img src="./assets/vaisselle.webp" alt="" width="450" loading="lazy"/>
