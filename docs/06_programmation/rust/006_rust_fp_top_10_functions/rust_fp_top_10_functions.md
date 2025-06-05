@@ -37,6 +37,9 @@ fn main() {
 ```
 
 
+
+
+
 ## 2. `filter`
 
 Keep elements matching a condition.
@@ -163,8 +166,69 @@ fn main() {
 
 
 
+
+
+
+
+
+
+## Why ?
+Why should I spend my time learning functional programming? Let's go back to the first sample code I used to illustrate `map`
+
+```rust
+fn main() {
+    let numbers = vec![1, 2, 3];
+    let doubled: Vec<_> = numbers.iter().map(|x| x * 2).collect();
+    println!("{:?}", doubled); // [2, 4, 6]
+}
+```
+What would be the iterative equivalent code ?
+
+```rust
+fn main() {
+    let numbers = vec![1, 2, 3];
+    let mut doubled = Vec::new(); // Create a new empty vector
+
+    for num in &numbers { // Iterate over references to the elements
+        doubled.push(num * 2); // Double the value and push it to the new vector
+    }
+    println!("{:?}", doubled); // [2, 4, 6]
+}
+```
+
+In the second version it is important to note that **we must create a mutable** variable `doubled`. 
+
+This is **NOT** the case with the functional version where :  
+* `.iter()` creates an iterator on numbers
+* `.map(|x| x * 2)` applies the function to each element: this creates a new, transformed iterator
+* `.collect()` consumes the iterator and creates a new Vec directly filled with the results
+
+This means there is no need for mutability.
+
+Then? Here are some of the arguments of functional programming groupies for avoiding mutability 
+
+**1. Fewer errors :**
+* When a variable is never mutated, you can be sure that its value will never change after it's created (create'n forget)
+* The developer and the compiler don't have to keep track of every possible change. This means fewer potential bugs, less risk of corrupted state.
+
+**2. Facilitates concurrency & multithreading :**
+* If an object is immutable, several threads can access it at the same time without risk of conflict.
+* No need for Mutex, RwLock, etc.
+* This makes parallelization natural and safe.
+
+**3. Compiler optimization :**
+* Immutable data is easier to optimize (e.g., cached, inline, etc.).
+* The compiler can make aggressive decisions when they know that nothing changes.
+
+**4. More declarative code :**
+* Describe what you want (transform each element) rather than how to do it (initialize a Vec, iterate, push).
+* Expressing the intention often lead to shorter, more readable, more maintainable code (because it is supposed to be easier to reason about)
+
+
+
+
 ## How ?
-* If you did'nt yet, read that book ISBN-10: [1736049135](https://amzn.eu/d/e3MFYEf) 
+How do I do tomorow in the real life ? If you did'nt yet, read that book ISBN-10: [1736049135](https://amzn.eu/d/e3MFYEf) 
 
 <div align="center">
 <img src="./assets/book_cover.png" alt="" width="225" loading="lazy"/>
