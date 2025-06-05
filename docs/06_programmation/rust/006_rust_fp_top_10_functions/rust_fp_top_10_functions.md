@@ -174,9 +174,9 @@ You can "read" [my solutions in Rust](https://github.com/40tude/rust_coding_inte
 
 In chapter 16 (about Greedy algorithms) you are given an array. Each cell contains a positive value which represents the maximum jump distance from the current index. You are asked to determine if, starting at index 0, it is possible to reach the end of the array. 
 
-If it is not crystal clear yet, dDon't worry too much. Just keep in mind that in few minutes we will get a ``for`` loop and we will see how to get rid of it using some functional programming.
+If it is not crystal clear yet, don't worry too much. Just keep in mind that in few minutes we will get a ``for`` loop and we will see how to get rid of it using some functional programming.
 
-Below is an iterative solution. Read the comments and feel free to copy and paste the code in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). I can't do it for you and I'm not your mother...
+Below is an iterative solution. Read the comments and feel free to copy and paste the code in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). I can't do it for you and I'm not your mother...🤖
 
 ```rust
 fn jump_to_the_end(nums: &[usize]) -> bool {
@@ -187,7 +187,7 @@ fn jump_to_the_end(nums: &[usize]) -> bool {
     let mut destination = nums.len() - 1;
 
     // Traverse the array in reverse to see if the destination can be reach by earlier indexes
-    for i in (0..nums.len()).rev() {
+    for i in (0..nums.len()-1).rev() {
         // if we can reach the destination from current index, the current index becomes the new destination
         if i + nums[i] >= destination {
             destination = i;
@@ -212,7 +212,7 @@ Now here is a first version using functional programming
 * In the code above, focus on the ``for`` loop in the function `jump_to_the_end()`
 * Again, read the comments
 * We first set the `destination` index as the last index of the array (`destination = nums.len() - 1`)
-* Then, in the `for` loop, starting from the last index (`i = nums.len()-1`)
+* Then, in the `for` loop, starting from the one before last index (`i = nums.len()-1`)
 * We check if, from the index where we are, we can reach the destination (`i + nums[i] >= destination` ?)
 * If yes, our current index (`i`) becomes the new destination (`destination = i`)
 
@@ -273,7 +273,7 @@ if i + nums[i] >= destination {
 ```
 * Weird ? In fact the keyword here is that in Rust, ``if`` are expressions. They return values. In the code above, the return value of the ``if`` expression is the output of the closure and it is used to update the accumulator (``destination``) of the ``.fold()`` . 
     * So in plain French, the code above says : `destination` equals `i` if `i+nums[i]` is greater than `destination`. Otherwise `destination` equals `destination`.
-    * At the very end of the pipeline there is a comparaison sign (`==`). Indeed like in the first version of the code, at the end of the traversal of `nums` array we want to compare if the ``destination`` (the accumulator) is 0 or not and return ``true`` or ``false`` respectively. 
+    * At the very end of the pipeline there is a comparaison sign (`==`). Indeed like in the first version of the code, at the end of the traversal of the array `nums` we want to compare if the ``destination`` (the accumulator) is 0 or not and return ``true`` or ``false`` respectively. If needed, check the line `destination == 0` in the first vesion of the code. We do the same thing here.
 
 
 
