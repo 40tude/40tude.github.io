@@ -45,18 +45,25 @@ fn main() {
 
 Keep elements matching a condition.
 
-```rust
+<!-- ```rust
 fn main() {
     let numbers = vec![1, 2, 3, 4];
     let even: Vec<_> = numbers.iter().filter(|x| *x % 2 == 0).collect();
     println!("{:?}", even); // [2, 4]
+}
+``` -->
+
+```rust
+fn main() {
+    let even: Vec<_> = (3..10).filter(|x| *x % 2 == 0).collect();
+    println!("{:?}", even); // [4, 6, 8] 
 }
 ```
 
 
 ## 3. `fold`
 
-Accumulates a value from an iterator (uses an initial value). A Swiss army knife.
+Accumulates a value from an iterator (uses an initial value). A true Swiss army knife.
 
 ```rust
 fn main() {
@@ -89,10 +96,7 @@ Applies a function immediately (not lazy like `.map()`) to each element, mainly 
 ```rust
 fn main() {
     let numbers = vec![1, 2, 3];
-    numbers.iter().for_each(|x| println!("{}", x * 10));
-    // 10
-    // 20
-    // 30
+    numbers.iter().for_each(|x| print!("{} - ", x * 10)); // 10 - 20 - 30 - 
 }
 ```
 
@@ -202,9 +206,9 @@ In the second version it is important to note that **we must create a mutable** 
 This is **NOT** the case with the functional version where :  
 * `.iter()` creates an iterator on numbers
 * `.map(|x| x * 2)` applies the function to each element: this creates a new, transformed iterator
-* `.collect()` consumes the iterator and creates a new Vec directly filled with the results
+* `.collect()` consumes the iterator and creates a new `Vec` directly filled with the results
 
-This means there is no need for mutability. Then? Here are some of the arguments of functional programming groupies for avoiding mutability. 
+This means there is no need for mutability. So? Here are some of the arguments from functional programming groupies for avoiding mutability.
 
 **1. Fewer errors :**
 * When a variable is never mutated, you can be sure that its value will never change after it's created (a kind of "create'n forget" if you wish)
@@ -326,9 +330,10 @@ Again, let's focus on the ``for`` loop.
     * In addition, we need an if expression to take a decision
 * This is where `.fold()` comes in action. Again, this is a Swiss army knife and you will love it.
     * Like in the first version of the code we set the initial value of the `destination` to `num.len()-1`. See the beginning of the line `.fold(nums.len() - 1,....`
-    * Then, the second parameter of `.fold()` is a closure (think about a function if you have no idea of what a closure is)
-        * If you get lost, take 2 minutes and review point 3 of the top 10 list above
-    * Like any function, a closure accepts parameters. Here, it will use the 2 parameters : an accumulator and an index and in our case, they are respectively named `destination` and `i`. See the `|destination, i|`
+    * Then, the second parameter of `.fold()` is a closure 
+        * Think about a kind of function if you have no idea of what a closure is
+        * If you get lost, take 2 minutes and review the point 3 of the top 10 list above
+    * Like any function, a closure accepts parameters. Here, the closure uses 2 parameters : an accumulator and an index. In our case, they are respectively named `destination` and `i`. See the `|destination, i|`
     * Then, like any function, the body of the closure starts right after the opening `{`
     * In the body of the closure we transform the ``if`` expression of the first version of the code in this expression
 
@@ -339,8 +344,8 @@ if i + nums[i] >= destination {
     destination // otherwise destination stays the same
 }
 ```
-* Weird ? In fact the keyword here is that in Rust, ``if`` are expressions. They return values. In the code above, the return value of the ``if`` expression is the output of the closure and it is used to update the accumulator (``destination``) of the ``.fold()`` . 
-    * So in plain French, the code above says : `destination` equals `i` if `i+nums[i]` is greater than `destination`. Otherwise `destination` equals `destination`.
+* Weird? In fact the key is that in Rust, ``if`` are expressions. They return values. In the code above, the return value of the ``if`` expression is the output of the closure and it is used to update the accumulator (``destination``) of the ``.fold()`` . 
+    * So in plain English, the code above says : `destination` equals `i` if `i+nums[i]` is greater than `destination`. Otherwise `destination` equals `destination`.
     * At the very end of the pipeline there is a comparaison sign (`==`). Indeed like in the first version of the code, at the end of the traversal of the array `nums` we want to compare if the ``destination`` (the accumulator) is 0 or not and return ``true`` or ``false`` respectively. If needed, check the line `destination == 0` in the first vesion of the code. We do the same thing here.
 
 
