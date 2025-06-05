@@ -18,6 +18,7 @@ These functions come from the [`Iterator`](https://doc.rust-lang.org/std/iter/tr
 * Operation compositions (chaining is done using dot `.`)
 * Immutability
 * Expressions (returns values) rather than statements 
+    * In Rust if is an expression
 
 <div align="center">
 <img src="./assets/img_00.webp" alt="" width="225" loading="lazy"/>
@@ -173,7 +174,7 @@ fn main() {
 
 
 ## Why ?
-Why should I spend my time learning functional programming? Let's go back to the first sample code I used to illustrate `map`
+Why should I spend my time learning some functional programming? Let's go back to the first sample code I used to illustrate `map`
 
 ```rust
 fn main() {
@@ -203,12 +204,10 @@ This is **NOT** the case with the functional version where :
 * `.map(|x| x * 2)` applies the function to each element: this creates a new, transformed iterator
 * `.collect()` consumes the iterator and creates a new Vec directly filled with the results
 
-This means there is no need for mutability.
-
-Then? Here are some of the arguments of functional programming groupies for avoiding mutability 
+This means there is no need for mutability. Then? Here are some of the arguments of functional programming groupies for avoiding mutability. 
 
 **1. Fewer errors :**
-* When a variable is never mutated, you can be sure that its value will never change after it's created (create'n forget)
+* When a variable is never mutated, you can be sure that its value will never change after it's created (a kind of "create'n forget" if you wish)
 * The developer and the compiler don't have to keep track of every possible change. This means fewer potential bugs, less risk of corrupted state.
 
 **2. Facilitates concurrency & multithreading :**
@@ -227,8 +226,13 @@ Then? Here are some of the arguments of functional programming groupies for avoi
 
 
 
+
+
+
+
+
 ## How ?
-How do I do tomorow in the real life ? If you did'nt yet, read that book ISBN-10: [1736049135](https://amzn.eu/d/e3MFYEf) 
+How do I do tomorow in the real life? If you did'nt yet, read that book ISBN-10: [1736049135](https://amzn.eu/d/e3MFYEf) 
 
 <div align="center">
 <img src="./assets/book_cover.png" alt="" width="225" loading="lazy"/>
@@ -407,4 +411,17 @@ Found 11 outliers among 100 measurements (11.00%)
 
 ```
 
-## Why functional programming ?
+## What ?
+
+What should be my next steps?
+
+1. Start simple and **re-write** (no copy-paste, please) the 10 sample codes above in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024).
+2. Read Chapter 13 of [*The Rust Programming Language*](https://doc.rust-lang.org/book/ch13-00-functional-features.html) — it’s a great introduction to Rust’s functional programming features.
+3. Look at your own code and identify opportunities to improve it.
+4. Again, keep things simple: **find short loops** (`while`, `for`, or `loop` — it doesn’t matter).
+5. Try to replace them using some of the functions listed in the Top 10:
+   * Experiment with different combinations.
+   * Don’t hesitate to get help from ChatGPT or other resources if needed.
+6. Bonus: **Practice writing code that avoids mutation** — think "transform" instead of "modify". In this context "modify" means change existing data (mutation) while "transform" means create new data based on existing data (no mutation).
+
+Once you gain some confidence with these Top 10 functions, you should be well-equipped to continue exploring Rust’s functional side on your own.
