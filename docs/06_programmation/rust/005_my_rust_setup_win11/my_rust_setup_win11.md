@@ -4,7 +4,7 @@ title: "Rust on Windows 11, My Complete Setup Guide"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-02 09:00:00
-last_modified_date : 2025-06-32 09:00:00
+last_modified_date : 2025-06-02 09:00:00
 ---
 
 # Rust on Windows 11, My Complete Setup Guide
