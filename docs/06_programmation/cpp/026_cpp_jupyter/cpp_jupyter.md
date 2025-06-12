@@ -223,3 +223,36 @@ This is exactly exactly what I want :
 * Find here [**checklist for Rust**]({%link docs/06_programmation/rust/001_rust_jupyter/rust_jupyter.md%})  
 
 
+
+
+## How to update ?
+
+### Update of JupyterLab
+
+* Make sure JupyterLab server is closed
+* Under the Ubuntu session
+
+```bash
+conda activate multi_jupyter # the env named cpp_jupyter above
+conda update -n base -c defaults conda
+conda update -c conda-forge jupyterlab
+jupyter lab --version
+```
+
+### Update of the C++ Kernel
+
+Check latest version on this [page](https://anaconda.org/conda-forge/xeus-cling)
+
+#### Check current version
+* In the terminal
+
+```bash
+conda list xeus-cling
+```
+
+
+#### Update C++ Kernel
+
+```bash
+conda update -c conda-forge xeus-cling
+```

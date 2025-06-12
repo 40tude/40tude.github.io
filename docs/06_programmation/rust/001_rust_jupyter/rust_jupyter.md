@@ -4,7 +4,7 @@ title: "Using Rust in Jupyter Notebooks on Windows"
 parent: "Rust"
 #math: mathjax
 date: 2025-03-27 13:00:00
-last_modified_date: 2025-03-27 13:00:00
+last_modified_date: 2025-06-12 22:00:00
 ---
 
 # Using Rust in Jupyter Notebooks on Windows
@@ -297,13 +297,94 @@ fn linked_list_midpoint(head: &Option<Box<ListNode>>) -> &ListNode {
 
 ## What is next ?
 
-* I can write Rust code snippets and add some documentation using Jupyter Notebooks 
+* I can easily write Rust code snippets and add some documentation using Jupyter Notebooks 
+* The process is :
     1. Run Ubuntu 
     1. `conda activate multi_jupyter`
     1. `cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter`
     1. ``jupyter lab --no-browser --ip=0.0.0.0`` 
-* Today, I'm still waiting for the book : [The Rust Programming Language](https://www.amazon.fr/gp/product/1718503105)
+
+To speed up things, I created a script (`run_rust_jupyter.sh` saved in my home) and an alias so that I just have to type `rustnb`. Below, read the comments :
+
+```bash
+#!/bin/bash
+
+# chmod +x ~/run_rust_jupyter.sh
+# ./run_rust_jupyter.sh
+
+# Create an alias
+#   At the end of ~/.bashrc add :
+#       alias rustnb='~/run_rust_jupyter.sh'
+#   Then                : source ~/.bashrc
+#   Then you can invoke : rustnb
+
+# ! IMPORTANT Load Conda into the shell (critical for using 'conda activate' in scripts)
+source ~/miniconda3/etc/profile.d/conda.sh
+
+# Activate the multi_jupyter environment
+echo "Activating conda environment: multi_jupyter"
+conda activate multi_jupyter
+
+# Move to the directory
+cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter || {
+    echo "Directory not found."
+    exit 1
+}
+
+# Launch Jupyter Lab
+echo "Starting Jupyter Lab..."
+jupyter lab --no-browser --ip=0.0.0.0
+```
+
+
+Today, I'm still waiting for the book : [The Rust Programming Language](https://www.amazon.fr/gp/product/1718503105)
 
 <div align="center">
 <img src="./assets/img_11.webp" alt="" width="225" loading="lazy"/>
 </div>
+
+
+## How to update ?
+
+### Update of JupyterLab
+
+* Make sure JupyterLab server is closed
+* Under the Ubuntu session
+
+```bash
+conda activate multi_jupyter
+conda update -n base -c defaults conda
+conda update -c conda-forge jupyterlab
+jupyter lab --version
+```
+
+## Update of the Rust Kernel
+On this page, check [the latest version.](https://crates.io/crates/evcxr_jupyter)
+
+### Get current version
+* In the terminal
+```bash
+cargo install --list | grep evcxr_jupyter
+```
+* In a Notebook, you can alternatively create a new cell and type
+```bash
+:version
+```
+Then CTRL+ENTER
+
+### Update Rust
+
+In the terminal
+
+```bash
+rustup update
+rustc --version
+```
+
+### Update Rust Kernel
+
+```bash
+cargo install evcxr_jupyter --force
+evcxr_jupyter --install
+cargo install --list | grep evcxr_jupyter
+```
