@@ -9,11 +9,6 @@ last_modified_date : 2025-06-22 09:00:00
 ---
 
 
-
-<!-- <div align="center">
-<img src="../assets/book_cover.png" alt="" width="225" loading="lazy"/>
-</div> -->
-
 # Pair Sum - Sorted
 
 * Given a sorted array and a target sum, return the indexes of any pair of numbers that add up to the target sum.
