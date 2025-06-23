@@ -1,12 +1,16 @@
 ---
 # published: false
 layout: default
-title: "Pair Sum - Sorted"
+title: "Pair Sum - Sorted (p10)"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax
 date               : 2025-06-22 09:00:00
 last_modified_date : 2025-06-22 09:00:00
 ---
+
+<div align="center">
+<img src="../assets/book_cover.png" alt="" width="225" loading="lazy"/>
+</div>
 
 # Pair Sum - Sorted
 
@@ -65,7 +69,7 @@ last_modified_date : 2025-06-22 09:00:00
 * `right = nums.len().saturating_sub(1)` right = len - 1 or 0 if len-1 is negative
 
 
-```Rust
+```rust
 // the 1st parameter is a slice (=> the function can be called with a reference to an array OR a vector) 
 fn pair_sum_sorted(nums: &[i32], target: i32) -> Vec<usize> {
     
@@ -111,7 +115,7 @@ fn pair_sum_sorted(nums: &[i32], target: i32) -> Vec<usize> {
 * Return an error otherwise
 
 
-```Rust
+```rust
 
 // Define a custom error type
 #[derive(Debug)]
@@ -172,7 +176,7 @@ fn pair_sum_sorted(nums: &[i32], target: i32) -> Result<(usize, usize), PairNotF
 * Return None otherwise
 
 
-```Rust
+```rust
 // Function returns an Option instead of a Result
 // the 1st parameter is a slice (=> the function can be called with a reference to an array OR a vector) 
 fn pair_sum_sorted(nums: &[i32], target: i32) -> Option<(usize, usize)> {
@@ -229,7 +233,7 @@ fn pair_sum_sorted(nums: &[i32], target: i32) -> Option<(usize, usize)> {
 * We need an intermediate function to demonstrate the propagation of the Option when the `?` operator is used
 
 
-```Rust
+```rust
 // the 1st parameter is a slice (=> the function can be called with a reference to an array OR a vector) 
 fn pair_sum_sorted(nums: &[i32], target: i32) -> Option<(usize, usize)> {
 
@@ -300,7 +304,7 @@ fn intermediate_fn (nums: &[i32], target: i32) -> Option<(usize, usize)> {
 
 
 
-```Rust
+```rust
 // Function returns an Option instead of a Result
 // The 1st parameter is a slice (=> the function can be called with a reference to an array OR a vector) 
 #[allow(dead_code)] // Rust Playground : avoid some warnings during compilation for testing
