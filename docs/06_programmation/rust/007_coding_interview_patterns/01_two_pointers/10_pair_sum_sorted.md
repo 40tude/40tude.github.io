@@ -8,7 +8,6 @@ date               : 2025-06-22 09:00:00
 last_modified_date : 2025-06-22 09:00:00
 ---
 
-
 # Pair Sum - Sorted
 
 * Given a sorted array and a target sum, return the indexes of any pair of numbers that add up to the target sum.
