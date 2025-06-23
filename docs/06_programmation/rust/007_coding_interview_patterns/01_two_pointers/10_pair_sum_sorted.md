@@ -8,9 +8,11 @@ date               : 2025-06-22 09:00:00
 last_modified_date : 2025-06-22 09:00:00
 ---
 
-<div align="center">
+
+
+<!-- <div align="center">
 <img src="../assets/book_cover.png" alt="" width="225" loading="lazy"/>
-</div>
+</div> -->
 
 # Pair Sum - Sorted
 
