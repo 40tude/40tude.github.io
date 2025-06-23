@@ -1,7 +1,7 @@
 ---
 # published: false
 layout: default
-title: "Pair Sum - Sorted (p10)"
+title: "p10 - Pair Sum - Sorted"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax
 date               : 2025-06-22 09:00:00
