@@ -11,7 +11,7 @@ last_modified_date : 2025-06-24 16:00:00
 # Pair Sum - Sorted
 
 <div align="center">
-<img src="../assets/rust_logo.webp" alt="" width="225" loading="lazy"/>
+<img src="./assets/book_cover.png" alt="" width="225" loading="lazy"/>
 </div>
 
 
