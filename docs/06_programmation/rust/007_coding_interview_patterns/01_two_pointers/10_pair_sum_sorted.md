@@ -5,7 +5,7 @@ title: "p010 - Pair Sum - Sorted"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax
 date               : 2025-06-22 09:00:00
-last_modified_date : 2025-06-22 09:00:00
+last_modified_date : 2025-06-24 16:00:00
 ---
 
 # Pair Sum - Sorted
