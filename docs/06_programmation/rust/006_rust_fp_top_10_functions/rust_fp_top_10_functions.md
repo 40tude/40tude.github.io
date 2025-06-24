@@ -5,7 +5,7 @@ title: "Rust and Functional Programming: A Beginner’s Top 10 Functions"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-05 09:00:00
-last_modified_date : 2025-06-05 09:00:00
+last_modified_date : 2025-06-24 23:00:00
 ---
 
 # Rust and Functional Programming: A Beginner’s Top 10 Functions
