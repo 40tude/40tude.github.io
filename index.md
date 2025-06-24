@@ -11,59 +11,7 @@ last_modified_date: 1964-01-01 08:00:00 +0000   # Ne tient pas compte de cette p
 
 # 40tude.fr 
 
-## Old table
-<table>
-    <tbody>
-    {% assign nb_articles = 10 %}
-    {% assign nb_words = 20 %}
-    {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
-    {% for page in articles_sorted limit: nb_articles %}
-        <tr>
-            <td>
-                <!-- Extract image if it exists --> 
-                {% assign image = '' %} 
-                <!-- <pre>image before search = {{ image }}</pre> -->
-                {% capture page_content %}{{ page.content }}{% endcapture %} 
-                {% assign img_tag_start = '<img src="' %} 
-                {% assign parts = page_content | split: img_tag_start %} 
-                {% if parts.size > 1 %}
-                    {% assign img_part = parts[1] %}
-                    {% assign image = img_part | split: '"' | first %}
-                {% endif %}
-                <!-- <pre>image after search = {{ image }}</pre>  -->
-                
-                {% assign page_dir = '' %} 
-                <!-- <pre>page_dir before = {{ page_dir }}</pre> -->
-                {% if image == '' %} 
-                    {% assign image = '/assets/images/40tude_150.webp' %} 
-                {% else %} 
-                    {% assign image = image | slice: 2, image.size %}
-                    <!-- <pre>page.url = {{ page.url }}</pre> -->
-
-                    <!-- Extract the directory from page.url --> 
-                    {% assign parts = page.url | split: '/' %} 
-                    {% for part in parts %} 
-                        {% unless forloop.last %} 
-                            {% assign page_dir = page_dir | append: part | append: '/' %} 
-                        {% endunless %} 
-                    {% endfor %}
-                {% endif %}
-
-                <!-- <pre>page_dir = {{ page_dir }}</pre> -->
-                <!-- <pre>image file path = {{ page_dir }}{{ image }}</pre> -->
-                <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy"/>
-            </td>
-            <td>
-                <h2><a href="{{ page.url }}">{{ page.title }} :</a></h2>
-                {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
-            </td>
-        </tr>
-    {% endfor %}
-
-    </tbody>
-</table>
-
-## New table
+Nombre d'articles sur le site : **{{ site.pages | size }}**
 
 <table>
   <tbody>
@@ -108,7 +56,7 @@ last_modified_date: 1964-01-01 08:00:00 +0000   # Ne tient pas compte de cette p
 </table>
 
 
-Nombre d'articles sur le site : **{{ site.pages | size }}**
+
 
 
 ### À propos  
