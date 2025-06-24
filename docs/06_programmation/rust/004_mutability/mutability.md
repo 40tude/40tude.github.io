@@ -5,7 +5,7 @@ title: "Bindings en Rust : Bien Plus Que de Simples Variables"
 parent: "Rust"
 #math: mathjax
 date               : 2025-04-25 11:00:00
-last_modified_date : 2025-05-06 12:00:00
+last_modified_date : 2025-06-23 12:00:00
 ---
 
 # Bindings en Rust : Bien Plus Que de Simples Variables

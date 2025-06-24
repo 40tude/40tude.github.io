@@ -5,7 +5,7 @@ parent: "Simple OS"
 nav_order: 2
 #math: mathjax
 date:               2025-02-12 00:22:00
-last_modified_date: 2025-06-14 00:22:00
+last_modified_date: 2025-06-24 00:22:00
 ---
 
 # Simple OS
