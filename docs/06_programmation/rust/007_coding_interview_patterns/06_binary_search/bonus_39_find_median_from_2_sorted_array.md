@@ -126,7 +126,7 @@ fn find_the_median_from_two_sorted_arrays(nums1: &[i32], nums2: &[i32]) -> f64 {
     5.0
 
 
-## First translation
+## First implementation
 
 **About Rust :**
 * The code panic if one of the slice is empty

@@ -44,7 +44,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 
 **About Rust :**
-* First translation
+* First implementation
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
 
@@ -97,7 +97,7 @@ fn matrix_pathways(m : usize, n : usize) -> usize {
 
 
 **About Rust :**
-* First translation
+* First implementation
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
 

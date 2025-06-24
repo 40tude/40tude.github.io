@@ -135,7 +135,7 @@ fn main() { // no main() if this code runs in a Jupyter cell
 
 ## V1
 
-* First translation
+* First implementation
 
 **About Rust :**
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)

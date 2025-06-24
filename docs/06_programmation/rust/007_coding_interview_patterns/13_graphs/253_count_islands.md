@@ -47,7 +47,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 
 
-## First translation
+## First implementation
 
 **About Rust :**
 * Keep in mind the input matrix is modified

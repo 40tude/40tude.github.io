@@ -62,7 +62,7 @@ Reasons :
 
 ## V1
 
-A translation of the code available in the book.
+A implementation of the code available in the book.
 
 **About Rust :**
 * In TrieNode, use `String` rather `&str` avoid lifetime issues at compile time

@@ -56,7 +56,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 ## V1
 
-* Translation
+* First implementation
 
 **About Rust :**
 * `use std::collections::HashSet;`

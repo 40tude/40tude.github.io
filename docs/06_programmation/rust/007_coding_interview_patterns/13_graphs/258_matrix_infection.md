@@ -54,7 +54,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 
 
-## First translation
+## First implementation
 
 **About Rust :**
 * Check the `for (dr, dc) in &directions{` (and the 2 others variants). 

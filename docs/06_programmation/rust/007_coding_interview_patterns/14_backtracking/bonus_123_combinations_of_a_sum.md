@@ -60,7 +60,7 @@ Assume
 
 ## V1
 
-* Translation
+* First implementation
 
 **About Rust :**
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)

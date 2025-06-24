@@ -49,7 +49,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 ## V1
 
-* Translation
+* First implementation
 
 **About Rust :**
 * `for i in range(n-2, -1, -1)` -> `for i in (0..=n-2).rev() {`

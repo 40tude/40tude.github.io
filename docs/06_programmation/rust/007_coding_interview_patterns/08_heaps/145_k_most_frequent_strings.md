@@ -46,7 +46,7 @@ last_modified_date : 2025-06-22 09:00:00
 <!-- * <span style="color:lime"><b>Preferred solution?</b></span>      -->
 
 
-## First translation with Strings
+## First implementation with Strings
 
 
 ```rust

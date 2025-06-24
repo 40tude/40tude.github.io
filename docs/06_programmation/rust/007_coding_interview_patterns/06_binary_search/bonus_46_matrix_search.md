@@ -102,7 +102,7 @@ fn matrix_search(matrix: &[Vec<i32>], target: i32) -> bool {
     false
 
 
-## First translation
+## First implementation
 
 **About Rust :**
 * This code panic with empty matrix

@@ -55,7 +55,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 ## V1
 
-* First translation
+* First implementation
 
 **About Rust :**
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
@@ -108,7 +108,7 @@ fn main() { // no main() if this code runs in a Jupyter cell
 
 * Try to avoid to select extreme pivot : one larger or smaller than most other element
 * Random pivot
-* First translation
+* First implementation
 
 **About Rust :**
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
@@ -368,7 +368,7 @@ fn main() { // no main() if this code runs in a Jupyter cell
 
 
 **About Rust :**
-* First translation
+* First implementation
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
 

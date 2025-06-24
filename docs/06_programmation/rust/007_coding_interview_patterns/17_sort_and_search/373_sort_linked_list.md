@@ -51,7 +51,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 ## V1
 
-* First translation
+* First implementation
 
 **About Rust :**
 * In ``split_list()`` function, both ``slow`` and ``fast`` pointers need to point to head => ``Rc``

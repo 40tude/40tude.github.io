@@ -44,7 +44,7 @@ last_modified_date : 2025-06-22 09:00:00
 
 
 **About Rust :**
-* First translation
+* First implementation
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
 
@@ -113,7 +113,7 @@ fn climbing_stairs(n : usize, memo : &mut HashMap<usize, usize>) -> usize{
 
 
 **About Rust :**
-* First translation
+* First implementation
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
 
@@ -158,7 +158,7 @@ fn climbing_stairs_bottom_up(n : usize) -> usize{
 * Only 2 values `dp[i-1]` (`one_step_before`) and `dp[i-2]` (`two_step_before`)
 
 **About Rust :**
-* First translation
+* First implementation
 * <span style="color:lime"><b>Preferred solution?</b></span>     
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 

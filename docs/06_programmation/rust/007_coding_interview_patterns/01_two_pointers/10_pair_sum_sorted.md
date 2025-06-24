@@ -10,6 +10,11 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Pair Sum - Sorted
 
+<div align="center">
+<img src="../assets/book_cover.png" alt="" width="225" loading="lazy"/>
+</div>
+
+
 * Given a sorted array and a target sum, return the indexes of any pair of numbers that add up to the target sum.
 * Avoid brute force with 2 nested loops O(n²) and use the two pointers technique
 

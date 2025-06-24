@@ -12,7 +12,8 @@ nav_order: 0
 
 # Coding Interview Patterns in Rust
 
-My notes in **Rust** from the book ISBN-10: [**1736049135**](https://amzn.eu/d/e3MFYEf) 
+My solutions in **Rust** for all the problems in the book : ISBN-10: [**1736049135**](https://amzn.eu/d/e3MFYEf) 
+* Including Bonus.pdf
 
 <div align="center">
 <img src="./assets/book_cover.png" alt="" width="450" loading="lazy"/>
