@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Cutting Wood
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array representing the heights of trees and ``k`` an integer representing the lenght of wood to be cut
 * H the height of the cutting machine which cut top part of the trees  
 * Determine the highest H value to cut at least k m of wood

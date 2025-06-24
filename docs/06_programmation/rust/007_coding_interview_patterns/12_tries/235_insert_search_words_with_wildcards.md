@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Insert and Search Words with Wildcards
 
+<div align="center">
+<img src="../assets/chap_12.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Design and  implement a trie data structure
     * `insert(word: &str) -> None`
     * `search(word: &str) -> bool` : ``word`` may contain wildcard `.` (any letter)

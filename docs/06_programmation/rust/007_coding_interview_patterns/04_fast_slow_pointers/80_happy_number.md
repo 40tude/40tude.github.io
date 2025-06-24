@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Happy Number
 
+<div align="center">
+<img src="../assets/chap_04.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an integer determine if it is a happy number
     * happy : when repeatedly summing the squares of its digits and summing eventually lead to 1
     * unhappy : never reach 1 (the process gets stuck in a loop)

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Neighborhood Burglary
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * You are plan to rob houses in a street
 * Each house store a certain amount of money
 * When 2 adjacent houses are robed, the alarm is set

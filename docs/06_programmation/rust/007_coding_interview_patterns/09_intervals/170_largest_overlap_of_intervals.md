@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Largest Overlap of Interval
 
+<div align="center">
+<img src="../assets/chap_09.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array of intervals
 * Determine the **maximum number** of intervals that overlap
 * Overlaps are half open : ``[..[``

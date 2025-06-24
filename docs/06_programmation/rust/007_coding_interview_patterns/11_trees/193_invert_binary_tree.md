@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Invert Binary Tree
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Invert a binary tree and returns its root
     * invert => mirror image 
 

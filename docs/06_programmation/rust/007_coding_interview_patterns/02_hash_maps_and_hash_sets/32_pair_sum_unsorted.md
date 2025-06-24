@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Pair Sum - Unsorted
 
+<div align="center">
+<img src="../assets/chap_02.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 - Here the list is unsorted
     - see 01_two_pointers\12_pair_sum_**sorted**.ipynb
 - Given an array and a target sum, return the indexes of any pair of numbers that add up to the target sum.

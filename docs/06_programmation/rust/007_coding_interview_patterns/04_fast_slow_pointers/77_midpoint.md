@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Linked List Midpoint
 
+<div align="center">
+<img src="../assets/chap_04.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a singly linked list, find ans return its middle node. If there are 2 middle nodes, returns the second one
 
 <span style="color:orange"><b>The point:</b></span>

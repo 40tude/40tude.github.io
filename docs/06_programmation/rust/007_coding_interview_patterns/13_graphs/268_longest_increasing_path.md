@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Longest Increasing Path
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Find the longest strickly increasing path in a matrix of u32
 * A path is a sequence of cells adjacent in the 4 directions
 

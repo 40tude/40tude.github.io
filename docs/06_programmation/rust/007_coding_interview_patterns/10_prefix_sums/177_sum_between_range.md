@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Sum Between Range
 
+<div align="center">
+<img src="../assets/chap_10.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array of i32 return the sum of vals between 2 indexes
 * You can assume
     * Array is not empty

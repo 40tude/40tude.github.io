@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Connect the Dots
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a set of points on a plane, determine the minimum cost to connect all these points
 * The cost of connecting two points is equal to the Manhattan distance between them, which is calculated as |x1-x2|+|y1-y2| 
 * At least 2 points on the plane

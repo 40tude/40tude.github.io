@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Candies
 
+<div align="center">
+<img src="../assets/chap_16.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Children sitting in a row
 * Distribute candies while abiding the rules
     * at least one candie per kid

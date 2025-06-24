@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Median of an Integer Stream
 
+<div align="center">
+<img src="../assets/chap_08.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Design a structure where we can add i32 from a data stream and get the median
     * `add(num:i32)` : add an int to the structure
     * ``get_median() -> f64`` : returns the median from all integers so far

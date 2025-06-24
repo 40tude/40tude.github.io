@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Introduction
 
+<div align="center">
+<img src="../assets/chap_03.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 ## First implementation
 * A node holds a value and a pointer to the next node
 * Here, a node holds a value and an Option which is either None or Some() pointer to the next node

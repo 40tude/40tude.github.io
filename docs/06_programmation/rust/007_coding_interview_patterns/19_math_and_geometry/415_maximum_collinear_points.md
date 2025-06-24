@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Maximum Collinear Points
 
+<div align="center">
+<img src="../assets/chap_19.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a set of 2D points, determine the max number of aligned points 
 * No duplicate points
 

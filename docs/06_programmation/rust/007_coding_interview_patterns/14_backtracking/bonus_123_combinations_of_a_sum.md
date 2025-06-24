@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Combinations of a Sum
 
+<div align="center">
+<img src="../assets/chap_14.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an integer array and a target value
 * Find all unique combinations in the array where the numbers in each combination sum to the target
 * Each number in the array may be used an unlimited number of times in the combination

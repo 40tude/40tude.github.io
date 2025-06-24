@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Largest Container
 
+<div align="center">
+<img src="../assets/chap_01.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * You are given an array of numbers
 * Each representing the height of a vertical line
 * Return the amount of water which the largest container can hold

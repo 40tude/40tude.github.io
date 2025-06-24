@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Next lexicographical sequence
 
+<div align="center">
+<img src="../assets/chap_01.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a string of lowercase English letters
 * **Rearrange** the characters to form a new string representing the next immediate sequence in lexicographical (alphabetical) order.
 * If the given string is already the last lexicographical arrangement possible, return the first lexicographical arrangement.

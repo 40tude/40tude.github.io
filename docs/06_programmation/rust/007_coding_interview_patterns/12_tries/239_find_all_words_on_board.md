@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Find All Words on a Board
 
+<div align="center">
+<img src="../assets/chap_12.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a 2D board of chars and an array of words
 * Find all the words
 * Adjacent cells = hor or vert

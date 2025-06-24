@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Longest Palindrome in a String
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return the longest palindromic substring within a given string
 
 <span style="color:orange"><b>The point:</b></span>

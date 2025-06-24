@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Geometric Sequence Triplets
 
+<div align="center">
+<img src="../assets/chap_02.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * A geometric sequence triplet is a sequence of three numbers where each successive number is obtained by multiplying the preceding number by a constant called the common ratio.
     - 1 2 4
     - 5 15 45

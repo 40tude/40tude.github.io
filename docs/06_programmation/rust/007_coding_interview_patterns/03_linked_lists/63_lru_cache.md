@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # LRU Cache
 
+<div align="center">
+<img src="../assets/chap_03.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Design and implement a data structure for Least Recently Used (LRU) cache.
 * It should support the following operations:
     * LRUCache(capacity:int)

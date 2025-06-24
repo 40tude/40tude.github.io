@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Remove the kth Last Node From a Linked List
 
+<div align="center">
+<img src="../assets/chap_03.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 **Complexity Analysis :**
 
 | Time | Space |

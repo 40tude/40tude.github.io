@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Serialize and Deserialize a Binary Tree
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Write a function to serialize a binary tree into a string
 * Write another function to deserialize that string into initial binary tree
 

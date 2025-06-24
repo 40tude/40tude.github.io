@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Dutch National Flag
 
+<div align="center">
+<img src="../assets/chap_17.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array of 0s, 1s, and 2s representing red, white, and blue, respectively
 * Sort the array in place so it resembles the Dutch national flag, with all reds (0s) coming first, followed by whites (1s), and finally blues (2s).
 

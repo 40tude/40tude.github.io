@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Introduction
 
+<div align="center">
+<img src="../assets/chap_18.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 **About Rust :**
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 

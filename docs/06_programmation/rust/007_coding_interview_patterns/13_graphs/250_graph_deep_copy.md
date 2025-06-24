@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Graph Deep Copy
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a reference to a node in an undirected graph
 * Create a deep copy of the graph
 * The copy must be independant from the original

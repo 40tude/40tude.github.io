@@ -9,6 +9,11 @@ last_modified_date : 2025-06-22 09:00:00
 ---
 
 # Introduction
+
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 If sorted data set => binary tree
 1. Define search space
     * sorted

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # K Most Frequent Strings
 
+<div align="center">
+<img src="../assets/chap_08.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Find the ``k`` most frequent string in an array
 * Return them sorted by desc freq
 * If 2 strings have same freq sort them in lexicographical order

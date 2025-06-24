@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Sort K-Sorted Array
 
+<div align="center">
+<img src="../assets/chap_08.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an i32 array where each element is at most ``k`` positions away from its sorted position, sort the array in a non-decreasing order.
 
 <span style="color:orange"><b>The point:</b></span>

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Shortest Path
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * n represents nodes (0 to n - 1) 
 * undirected graph
 * array of non-negative weighted edges

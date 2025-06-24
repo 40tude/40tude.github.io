@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Combine Sorted Linked Lists
 
+<div align="center">
+<img src="../assets/chap_08.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given ``k`` linked lists, each sorted ascending, combine them in one sorted linked list
 
 

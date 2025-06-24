@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Balanced Binary Tree Validation
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Determine if a binary tree is height-balanced
     * left and right subtrees don't have a height difference higher than 1
 

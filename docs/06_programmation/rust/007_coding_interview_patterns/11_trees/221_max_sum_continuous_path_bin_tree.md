@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Maximum Sum of a Continuous Path in a Binary Tree
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return the maximum sum of a continuous path in a binary tree (with at least one node). A path is :
 * Sequence of nodes that can begin and end at any node
 * Each consecutive pair of node is connected by an edge

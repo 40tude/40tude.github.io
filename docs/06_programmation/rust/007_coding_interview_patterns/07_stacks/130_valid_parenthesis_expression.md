@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Valid Parenthesis Expression
 
+<div align="center">
+<img src="../assets/chap_07.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a string made of the following symbols : `(`, `)`, `[`, `]`, `{`, `}` 
 * Determine if it is well formed
 * A sequence is valid when every open symbol is paired with a close symbol

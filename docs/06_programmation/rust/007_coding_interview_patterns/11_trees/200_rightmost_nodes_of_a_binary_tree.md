@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Rightmost Nodes of a Binary Tree
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return an array containing the values of the rightmost nodes at each level of a binary tree.
 
 

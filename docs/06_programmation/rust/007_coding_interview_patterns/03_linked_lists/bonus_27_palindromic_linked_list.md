@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Palindromic Linked List
 
+<div align="center">
+<img src="../assets/chap_03.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given the head of a singly linked list, determine if it is a palindrome.
     * 1 -> 2 -> 2 -> 1          True
     * 1 -> 2 -> 3 -> 2 -> 1     True

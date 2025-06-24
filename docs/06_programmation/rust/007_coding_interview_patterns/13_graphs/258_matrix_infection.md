@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Matrix infection
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a matrix of
     * 0 empty
     * 1 uninfected

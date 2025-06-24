@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Binary Tree Symetry
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Determine if a binary tree is vertically symmetric. That is, the left subtree of the root node is a
 mirror of the right subtree.
 

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Verify Sudoku Board
 
+<div align="center">
+<img src="../assets/chap_02.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a partially completed 9x9 Sudoku board, validate it.
 
 <span style="color:orange"><b>The point:</b></span>    

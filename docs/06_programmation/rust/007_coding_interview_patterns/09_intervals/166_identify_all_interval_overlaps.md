@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Identify All Interval Overlaps
 
+<div align="center">
+<img src="../assets/chap_09.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return an vector of all overlaps between 2 arrays of intervals
 
 

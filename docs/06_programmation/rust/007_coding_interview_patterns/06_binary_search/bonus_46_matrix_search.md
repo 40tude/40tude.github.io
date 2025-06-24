@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Matrix Search
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Determine if a target value exists in a matrix. 
 * Each row of the matrix is sorted in non-decreasing order
 * The first value of each row is greater than or equal to the last value of the previous row

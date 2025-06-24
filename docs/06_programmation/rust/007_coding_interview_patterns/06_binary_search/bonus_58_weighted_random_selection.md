@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Weighted Random Selection
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array of items, each with a corresponding weight
 * Implement a function that randomly selects an item from the array, where the probability of selecting any item is proportional to its weight.
     * => the probability of picking the item at index i is weights[i] / sum(weights)

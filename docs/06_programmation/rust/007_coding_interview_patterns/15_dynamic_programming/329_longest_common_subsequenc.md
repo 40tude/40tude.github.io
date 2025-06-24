@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Longest Common Subsequence
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given 2 strings
 * Find the length of the longest common subsequence (LCS)
 * A subsequence is derived by deleting 0 or more elements, without changing the order of the remaining elements

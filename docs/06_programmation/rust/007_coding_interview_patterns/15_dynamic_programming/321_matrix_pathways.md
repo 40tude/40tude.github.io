@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Matrix Pathways
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * You are positioned at top-left corner of m x n matrix (row, col)
 * Only move downward or to the right
 * Determine the # of unique pathways to bottom-right corner

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Binary Search Tree Validation
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Verify if a binary tree is a valid BST (binary search tree)
 * nodes in left subtree are lower than node
 * nodes in right subtree are greater than node

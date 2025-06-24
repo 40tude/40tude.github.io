@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Swap Odd and Even Bits
 
+<div align="center">
+<img src="../assets/chap_18.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an u32 return an integer where all the  bits in even position are swapped with their adjacent odd bits
 
 <span style="color:orange"><b>The point:</b></span>

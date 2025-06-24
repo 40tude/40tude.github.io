@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Substring Anagrams
 
+<div align="center">
+<img src="../assets/chap_05.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given 2 strings of lowercase English letters `s` and `t`, return the number of substrings in s that are anagrams of t
 
 <span style="color:orange"><b>The point:</b></span>

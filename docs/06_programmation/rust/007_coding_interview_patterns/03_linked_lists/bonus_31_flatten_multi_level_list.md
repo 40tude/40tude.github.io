@@ -11,9 +11,8 @@ last_modified_date : 2025-06-22 09:00:00
 # Flatten a Multi-Level Linked List
 
 <div align="center">
-<img src="./assets/img_01.png" alt="" width="900" loading="lazy"/>
+<img src="../assets/chap_03.webp" alt="" width="300" loading="lazy"/>
 </div>
-
 
 * Flatten the multi-level linked list into a single-level linked list by linking the end of each level to the start of the next one.
 * Each node has a next pointer and child pointer.
@@ -26,6 +25,9 @@ last_modified_date : 2025-06-22 09:00:00
 
 
 
+<div align="center">
+<img src="./assets/img_01.png" alt="" width="900" loading="lazy"/>
+</div>
 
 
 

@@ -10,6 +10,11 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Introduction
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
+
 
 ## First attempt
 * Use objects and methods

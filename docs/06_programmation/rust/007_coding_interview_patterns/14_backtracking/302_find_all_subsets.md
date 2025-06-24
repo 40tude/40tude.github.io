@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Find All Subsets
 
+<div align="center">
+<img src="../assets/chap_14.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return all possible subset of a given set of i32
 * Each subset can be ordered
 * Subset can be returns in any order

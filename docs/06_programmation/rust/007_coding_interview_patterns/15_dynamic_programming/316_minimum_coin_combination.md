@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Minimum Coin Combination
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * You are given an array of coin values and a target amount
 * Return the minimum number of coins needed
 * If not possible return -1

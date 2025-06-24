@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Is Palindrome Valid
 
+<div align="center">
+<img src="../assets/chap_01.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a string determine if it's a palindrome after removing all non-alphanumeric characters
 
 <span style="color:orange"><b>The point:</b></span>    

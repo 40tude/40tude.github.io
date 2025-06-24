@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Phone Keypad Combinations
 
+<div align="center">
+<img src="../assets/chap_14.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * You are given a string containing digits from 2 to 9 inclusive. Each digit maps to a set of letters
 as on a traditional phone keypad
 * Return all possible letter combinations the input digits (string) could represent.

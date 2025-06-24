@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Evaluate Expression
 
+<div align="center">
+<img src="../assets/chap_07.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a string representing expression
 * Evaluate & return the value
 * May contain int, parentheses, addition and substraction

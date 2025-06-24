@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Find All Permutations
 
+<div align="center">
+<img src="../assets/chap_14.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return all permutations of a given array of unique i32. 
 * They can be returned in any order
 

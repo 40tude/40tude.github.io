@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Linked List Loop
 
+<div align="center">
+<img src="../assets/chap_04.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a singly linked list, determine if it contains a cycle
 * A cycle occurs if a node's next pointer reference an earlier node in the list (causing a loop)
 

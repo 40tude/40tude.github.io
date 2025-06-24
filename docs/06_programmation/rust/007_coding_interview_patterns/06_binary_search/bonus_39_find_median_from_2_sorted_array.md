@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Find the Median From Two Sorted Arrays
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given two sorted integer arrays, find their median value as if they were merged into a single sorted sequence 
     * once merge they would be sorted
 

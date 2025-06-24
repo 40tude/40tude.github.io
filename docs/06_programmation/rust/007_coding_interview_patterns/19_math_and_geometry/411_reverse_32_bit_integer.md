@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Reverse 32-Bit integer
 
+<div align="center">
+<img src="../assets/chap_19.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Reverse the digits of a i32
 * If overflow (out of [-2^31, 2^31-1]) return 0
 * You can only store int in the 32 bit range

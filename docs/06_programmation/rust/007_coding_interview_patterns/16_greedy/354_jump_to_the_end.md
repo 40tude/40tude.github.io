@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Jump to the End
 
+<div align="center">
+<img src="../assets/chap_16.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array of u32
 * Originally at index0
 * Numbers represent the **maximum** jump distance from the current index 

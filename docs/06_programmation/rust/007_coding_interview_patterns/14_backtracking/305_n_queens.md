@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # N Queens
 
+<div align="center">
+<img src="../assets/chap_14.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * There is a chessboard of size `nxn`
 * Place `n` queens so that no two queens attack each other
 * Return the number of distinct config

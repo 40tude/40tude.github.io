@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Sort Linked List
 
+<div align="center">
+<img src="../assets/chap_17.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given the head of singly linked list of i32
 * Sort the list in ascending order
 

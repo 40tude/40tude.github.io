@@ -16,7 +16,7 @@ My solutions in **Rust** for all the problems in the book : ISBN-10: [**17360491
 * Including Bonus.pdf
 
 <div align="center">
-<img src="./assets/book_cover.png" alt="" width="450" loading="lazy"/>
+<img src="./assets/book_cover.webp" alt="" width="300" loading="lazy"/>
 </div>
 
 

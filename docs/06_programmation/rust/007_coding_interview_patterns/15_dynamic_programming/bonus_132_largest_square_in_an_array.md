@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Largest Square in a Matrix
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Determine the area of the largest square of 1's in a binary matrix.
 
 

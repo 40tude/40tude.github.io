@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Binary Tree Columns
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given the root of a binary tree
 * Return a list of arrays 
 * Where each array represents a vertical column of the tree

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Product Array Without Current Element
 
+<div align="center">
+<img src="../assets/chap_10.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array of i32 return an array so that result[i] is equal to the product of all the elements except nums[i] itself
 
 **Example :**

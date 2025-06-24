@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Widest Binary Tree Level
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return the width of the widest level in a binary tree
 * Level width = distance between leftmost and rightmost non-null nodes
 

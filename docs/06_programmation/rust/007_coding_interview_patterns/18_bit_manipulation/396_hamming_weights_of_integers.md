@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Hamming Weights of Integer
 
+<div align="center">
+<img src="../assets/chap_18.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * The Hamming weight of an integer is the number of bits set to 1
 * Given a positive integer `n` return an array where the ith element is the Hamming weight of integer `i` for all integers from `0` to `n`
 

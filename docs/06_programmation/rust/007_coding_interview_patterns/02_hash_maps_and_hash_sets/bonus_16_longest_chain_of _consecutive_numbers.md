@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Longest Chain of Consecutive Numbers
 
+<div align="center">
+<img src="../assets/chap_02.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Find the longest chain of consecutive numbers in an array.
 * Two numbers are consecutive if they have a difference of 1.
 * I didn't realize that sorting was an option.

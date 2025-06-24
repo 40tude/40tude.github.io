@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Next Largest Number to the Right
 
+<div align="center">
+<img src="../assets/chap_07.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array of int `nums`
 * Return an output array `res` where ``res[i]`` is the first number larger than ``nums[i]`` that can be found to the right in ``nums``
 * If no larger number exists to the right => -1

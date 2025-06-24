@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Lowest Common Ancestor
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return the lowest common ancestor (LCA) of 2 nodes
 * A node can be considered as ancestor of itself
 

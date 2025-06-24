@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # The Josephus Problem
 
+<div align="center">
+<img src="../assets/chap_19.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * There are n people standing in a circle, numbered from 0 to `n - 1`. 
 * Starting from person 0, count `k` people clockwise and remove the kth person. 
 * After the removal, begin counting again from the next person still in the circle. 

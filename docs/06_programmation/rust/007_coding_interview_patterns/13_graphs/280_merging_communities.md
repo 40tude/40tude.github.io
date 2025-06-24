@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Merging Communities
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * `n` people from 0 to `n-1`
 * Initially each person belong to a separated community
 * When two people connect their communities merge

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Implement a Queue Using Stacks
 
+<div align="center">
+<img src="../assets/chap_07.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Implement a queue using the stack data structure. Include the following functions:
     * ``enqueue(x: i32)  : ``adds the value of ``x`` to the **end** of the queue.
     * ``dequeue() -> i32 : ``removes and returns the element from the **front** of the queue.

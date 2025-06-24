@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Find insertion index
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a sorted array with unique values.
     * If the array contains the target retrun its index
     * Otherwise return the insrtion index(index where the target would be if it were inserted)

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Triangle Numbers
 
+<div align="center">
+<img src="../assets/chap_19.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Consider a triangle composed of numbers where the top of the triangle is 1. 
 * Each subsequent number in the triangle is equal to the sum of three numbers above it
     1. its top-left number, 

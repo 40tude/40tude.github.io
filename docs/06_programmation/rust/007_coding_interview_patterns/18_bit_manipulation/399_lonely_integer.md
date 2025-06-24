@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Lonely Integer
 
+<div align="center">
+<img src="../assets/chap_18.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an integer array where each number occurs twice except for one, find the unique (*to rule them all?*)
 
 <span style="color:orange"><b>The point:</b></span>

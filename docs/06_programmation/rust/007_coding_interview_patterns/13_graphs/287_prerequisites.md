@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Prerequisites
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * `n` the number of courses from 0 to `n-1`
 * An array of prerequisites pairs (directed)
 * Determine if it is possible to enroll all courses

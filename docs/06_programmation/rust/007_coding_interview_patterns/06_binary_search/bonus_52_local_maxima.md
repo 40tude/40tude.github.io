@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Local Maxima
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * A local maxima is a value greater than both its immediate neighbors. 
 * Return any local maxima in an array. 
 * You may assume that an element is always considered to be strictly greater than a neighbor that is outside the array.

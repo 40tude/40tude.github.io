@@ -5,15 +5,14 @@ title: "p014 - Triplet Sum"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax
 date               : 2025-06-22 09:00:00
-last_modified_date : 2025-06-24 16:00:00
+last_modified_date : 2025-06-22 09:00:00
 ---
 
 # Triplet Sum
 
 <div align="center">
-<img src="../assets/rust_logo.webp" alt="" width="225" loading="lazy"/>
+<img src="../assets/chap_01.webp" alt="" width="300" loading="lazy"/>
 </div>
-
 
 * Given an array of int, return all triplets such that a+b+c =0
 * 1 2 3 and 2 3 1 are considered duplicates

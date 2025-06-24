@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Linked List Intersection
 
+<div align="center">
+<img src="../assets/chap_03.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Return the node where 2 singly linked lists intersect (none otherwise)
 * The intersection has nothing to do with the values of the nodes
    

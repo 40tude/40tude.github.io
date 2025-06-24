@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # K-Sum Subarray
 
+<div align="center">
+<img src="../assets/chap_10.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Find the number of subarrays in an array of i32 that sum to `k`
 
 

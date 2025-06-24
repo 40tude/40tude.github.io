@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Find the Target in a Rotated Sorted Array
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a rotated sorted array of unique numbers, return the index of a target value (-1 otherwise)
 * A rotated sorted array is an ascending sorted array where a portion slide from the front to the back
 * [1, 2, 3, 4, 5] => [3, 4, 5, 1, 2]

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Gas Stations
 
+<div align="center">
+<img src="../assets/chap_16.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Circular route with gas stations
 * Find the index of the gas station to start at
 * In order to complete the circuit without running out of gas

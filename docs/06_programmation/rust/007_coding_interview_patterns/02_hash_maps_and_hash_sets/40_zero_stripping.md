@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Zero stripping
 
+<div align="center">
+<img src="../assets/chap_02.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * For each 0 in an m x n matrix, set its entire row and col to 0 in place
 
 

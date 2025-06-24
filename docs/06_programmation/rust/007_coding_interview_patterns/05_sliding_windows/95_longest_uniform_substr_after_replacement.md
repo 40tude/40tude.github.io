@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Longest Uniform Substring After Replacements
 
+<div align="center">
+<img src="../assets/chap_05.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a string determine the length of its longest substring of similar char replacing up to `k` chars
 
 **Example**

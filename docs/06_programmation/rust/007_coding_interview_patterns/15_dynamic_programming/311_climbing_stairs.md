@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Climbing Stairs
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Determine the number of distinct ways to climb a staircase of n steps by taking either 1 or 2 steps at a time
 
 ## Top-Down

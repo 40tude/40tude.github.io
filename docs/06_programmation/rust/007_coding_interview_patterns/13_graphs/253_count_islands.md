@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Count Islands
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a binary matrix (1=land, 0=water) 
 * Return the number of islands (connected land in the 4 directions)
 

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # First and Last Occurence of a Number
 
+<div align="center">
+<img src="../assets/chap_06.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an array sorted in non-decreasing order return the first and last indexes of a target number, `[-1, -1]` otherwise
 
 <span style="color:orange"><b>The point:</b></span>

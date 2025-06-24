@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Bipartite Graph Validation
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given an undirected graph
 * Determine if it is bipartite
     * nodes can be colored in one of 2 colors

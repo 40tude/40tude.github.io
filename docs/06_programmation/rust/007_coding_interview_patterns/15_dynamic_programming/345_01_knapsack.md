@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # 0/1 Knapsack
 
+<div align="center">
+<img src="../assets/chap_15.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Robe a store
 * Carry a knapsack with capacity of `cap` units
 * Item `i` has a `weight[i]` and `value[i]`

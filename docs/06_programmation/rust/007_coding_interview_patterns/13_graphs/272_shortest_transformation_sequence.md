@@ -11,6 +11,10 @@ last_modified_date : 2025-06-22 09:00:00
 # Shortest Transformation Sequence
 
 
+<div align="center">
+<img src="../assets/chap_13.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given 2 words and a dictionary
 * return the shortest transformation sequence fro start to end
 * Each word differ from the preceding by one letter

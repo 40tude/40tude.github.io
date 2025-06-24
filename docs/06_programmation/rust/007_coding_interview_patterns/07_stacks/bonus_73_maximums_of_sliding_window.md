@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Maximums of Sliding Window
 
+<div align="center">
+<img src="../assets/chap_07.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * A sliding window of size ``k`` slides through an integer array from left to right. 
 * Create a new array that records the largest number found in each window as it slides through.
     * Input: nums = [3, 2, 4, 1, 2, 1, 1], k = 4

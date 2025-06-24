@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Build Binary Tree from Preorder and Inorder Traversals
 
+<div align="center">
+<img src="../assets/chap_11.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Construct a binary tree using arrays of values obtained after a preorder traversal and an inorder traversal of the tree
 
 <span style="color:orange"><b>The point:</b></span>

@@ -10,6 +10,10 @@ last_modified_date : 2025-06-22 09:00:00
 
 # Repeated Removal of Adjacent Duplicates
 
+<div align="center">
+<img src="../assets/chap_07.webp" alt="" width="300" loading="lazy"/>
+</div>
+
 * Given a string, continually perform the following operation: 
 * Remove pairs of adjacent duplicates from the string. 
 * Continue performing this operation until the string no longer contains pairs of adjacent duplicates.
