@@ -5,7 +5,7 @@ title: "bonus020 - Geometric Sequence Triplets"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax
 date               : 2025-06-22 09:00:00
-last_modified_date : 2025-06-22 09:00:00
+last_modified_date : 2025-06-25 09:00:00
 ---
 
 # Geometric Sequence Triplets
@@ -96,7 +96,7 @@ fn geometric_sequence_triplets(nums: &[i32], r: i32) -> i32 {
     let mut count = 0;
 
     // populate right_map
-    for x in nums {
+    for &x in nums {
         // .or_insert(0) ensures default value is 0 when accessing a key that doesn't exist
         // it returns a mutable ref
         *right_map.entry(x).or_insert(0) += 1;
