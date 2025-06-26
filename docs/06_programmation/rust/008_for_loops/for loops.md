@@ -76,9 +76,9 @@ Now the question is... How and why does this work ?
 
 ### What’s going on here?
 
-The array `the_3_body_problem[]` is an array of string slices (&str). This is a primitive, copyable type. You can think of this type as being similar to a `u64`: it's lightweight and can be efficiently manipulated by modern processors.
+The array `the_3_body_problem[]` is an array of string slices (`&str`). This is a primitive, copyable type. You can think of this type as being similar to a `u64`: it's lightweight and can be efficiently manipulated by modern processors.
 
-Next, there is the line `for s in the_3_body_problem {...`. Here my recommendation is to view the `for` loop like a function call and to imagine something like : `for(s, the_3_body_problem);`. Having this model in mind we can now apply everting we know about passing arguments in function calls. Here for example, since the array is on the stack (not on the heap) and since the elements it hold are primitive, we know that the argument is passed by value. The argument is copied.
+Next, there is the line `for s in the_3_body_problem {...`. Here my recommendation is to view the `for` loop like a function call and to imagine something like : `for(s, the_3_body_problem);`. Having this model in mind we can now apply everything we know about passing arguments in function calls. Here for example, since the array is on the stack (not on the heap) and since the elements it hold are primitive, we "know" that the argument is passed by value. The argument is copied.
 
 Note that `s` is of type string slice (`&str`). This should not be a surprise since the `the_3_body_problem[]` array is an array of `&str`. Every value of the array is copied in `s` and in the body of the loop we pass `s` as an argument to the `println!()` macro.  
 
@@ -88,7 +88,7 @@ Then we reach the second `for` loop. You may ask why should I bother? The point 
 In the last `for` loop, we become smarter and we pass the `the_3_body_problem[]` array by reference (`&the_3_body_problem`). This is smart because now we do not copy the content of the array (let's say 1MB), we just provide the address of its first element (let's say 8 bytes). 
 
 ### Smarter iteration: passing by reference
-But... In this case the `s` variable is of type "address of the element in the collection". So here `s` is of type address of a `&str`, that is `&&str`. And yes, the two ampersands may look weird — but don't panic, it's perfectly normal Rust. Knowing this, if we want to print the actual string value pointed to by `s`, we need to dereference it using `*s`. That’s why the first `println!` uses explicit dereferencing: `*s` turns our `&&str` into a `&str`. However, Rust compiler is smart enough to apply what it calls "deref coercion" and to print something even if we pass an `s` (of type `&&str`)  
+But... In this case the `s` variable is of type "address of the element in the collection". So here, `s` is of type address of a `&str`, that is `&&str`. And yes, the two ampersands may look weird — but don't panic, it's perfectly normal Rust. Knowing this, if we want to print the actual string value pointed to by `s`, we need to dereference it using `*s`. That’s why the first `println!` uses explicit dereferencing: `*s` turns our `&&str` into a `&str`. However, Rust compiler is smart enough to apply what it calls "deref coercion" and to print something even if we pass an `s` (of type `&&str`)  
 
 
 The code below is the same as the previous one, but with additional comments
@@ -218,15 +218,15 @@ String is : Vladimir Harkonnen
 ### The first loop
 Now let's comment the code. First thing first, `dune` is an array of non-primitive type. Here I use String which are allocated to the heap.
 
-We then reach the first `for` loop. If we consider the loop as a function call `for(s, dune);` and since the array is an array of non-primitive types, we know `dune` will NOT be copied. It will be moved into the for loop.
+We then reach the first `for` loop. If we consider the loop as a function call `for(s, dune);` and since the array is an array of non-primitive types, we "know" `dune` will NOT be copied. It will be moved into the `for` loop.
 
-Once is the for loop, life is easy, `s` is of type String and we can print it.
+Once in the `for` loop, life is easy. `s` is of type String and we can print it.
 
 What is not so cool is the fact the if we try to uncomment the second loop, then the code no longer compile. Indeed, `dune` was moved in the first loop and it is no longer available.
 
 ### How to fix that?
 
-Since `dune` has disappeared, we first re-create it. Then we apply the same technique has before : pass `dune` by reference to the for loop. Then everything we said remains true and we can print the strings using `*s` or `s`.
+Since `dune` has disappeared, we first re-create it. Then we apply the same technique has before : pass `dune` by reference to the `for` loop. Then everything we said remains true and we can print the strings using `*s` or `s`.
 
 
 
@@ -311,7 +311,7 @@ String is : Rocinante
 
 I guess we can, now, start to speed up while commenting the code 
 * `the_expanse` is a vector of string slice (`&str`). "Remember Barbara", unlike arrays, which are on the stack, vectors are allocated on the heap.
-* A vector does not have a Copy trait. So when we pass `the_expanse` to the for loop, it is not copied, it is moved into the loop. 
+* A vector does not have a Copy trait. So when we pass `the_expanse` to the `for` loop, it is not copied, it is moved into the loop. 
 * The first loop works like a charm
 * If we uncomment the second one the code does'nt compile because the vector is no longer accessible
 * Before going further, we must recreate a `the_expanse` vector
@@ -421,24 +421,24 @@ String is : Bayta Darell
 ```
 
 ### Comments
-* We first create `foundation` a vector of Strings
+* We first create `foundation` a vector of `String`
 * The vector is on the heap and the elements of the vector are also on the heap
-* When we pass the vector to the for loop it is moved (not copied)
-* After the first loop `foundation` is no longer available
+* When we pass the vector to the `for` loop it is moved (not copied)
+* After the first loop ,`foundation` is no longer available
 * We re-create it
-* And we pass it by reference to the for loop
+* And we pass it by reference to the `for` loop
 * We print the string slice using `*s` or `s`
 
-As explained in the comments, the last for loop does'nt compile. 
+As explained in the comments, the last `for` loop does'nt compile. 
 
 ```rust
 for &s in &foundation {
     ...
 }
 ```
-Here, we want to be very smart. Indeed, the vector holds non-primitive element so we may want to use a reference to them before printing. This would show to the rest of the universe how smart we are since this would involve no copy at all. Mouah ah, ah... Master of the world !
+Here, we want to be very smart. Indeed, the vector holds non-primitive elements so we may want to use a reference to them before printing. This would show to the rest of the universe how smart we are since this would involve no copy at all. Mouah ah, ah... Master of the world !
 
-Yes, but no. In fact I took me a while to understand what happens so let's dedicate a specific section to the topic
+Yes, but no. In fact it tooks me a while to understand what happens so let's dedicate a specific section to the topic
 
 
 
@@ -481,15 +481,15 @@ But remember — Rust is not just looking at types, it's also deeply concerned w
 ### Step 1 - Easy, we already know (more or less)
 * `foundation` is a `Vec<String>`
 * `&foundation` is `&Vec<String>`
-* A `for` loop over `&foundation` implicetly calls `.iter()` which provides an `Iterator<Item = &String>`
+* A `for` loop over `&foundation` implicitly calls `.iter()` which provides an `Iterator<Item = &String>`
 * At the end, the loop iterates over `&String`
 
-### Step 2 - Brand new
-* What does `for &s in ...` really means
-* You can read this section in [The Rust Book](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html#for-loops). 
-* It is said : "In a for loop, the value that directly follows the keyword for is a **pattern**..."
-* Again i, x, s, (dr, dc)... That we use to see in our `for` loops are NOT variables, they are patterns
-* So `&s` is a pattern - specifically, a destructuring pattern.
+### Step 2 - Brand new stuff
+* What does `for &s in ...` really means?
+* You can read this section in [The Rust Programming Language](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html#for-loops) book. 
+* It is said : "In a `for` loop, the value that directly follows the keyword `for` is a **pattern**..."
+* Again `i`, `x`, `s`, `(dr, dc)`... That we use to see in our `for` loops are NOT variables, they are patterns
+* So `&s` is a pattern - specifically, a **destructuring pattern**.
 * In plain English it says : "I expect to receive a `&T`. Then I will unstructure it to become the owner of the `T` value itself."
 * But here, the `&String` is a shared reference. We can't extract the `String` from a simple reference. Indeed the `String` is already owned by someone else. 
 * So the Rust compiler says: “You're trying to make a move from a reference - but this type (String) isn't Copy, so I refuse”.
@@ -506,7 +506,7 @@ At this point you may think that **dereferencing** and **destructuring** are sim
 **Dereferencing a variable**
 
 ``` rust
-let s: &String = "Zoubida".to_string();
+let s: &String = "Zoubida".to_string(); // create a new reference to the String
 let val = *s; // explicit dereferencing
 
 ```
@@ -563,13 +563,13 @@ So next time you write `for &x in ...`, remember: you're not just accessing the 
 
 
 
-## Can we test with a vector of even more complex elements ?
+## Can we "play" with a vector of even more complex elements ?
 
 No problem, your wish is my command. But before to read further takes 2 minutes and think about what will happen... 
 
-If this is a vector... Where will it be stored? Does the vector implement the Copy trait. Can it be passed by value? How will it be given or borrowed? If the vector is boorewed to the for loop what will be the type of the `for` loop variable ? Will be a plain value or a reference to ?
+If this is a vector... Where will it be stored? Does the vector implement the Copy trait. Can it be passed by value? Will it be given or borrowed? If the vector is borrowed to the `for` loop, what will be the type of the `for` loop variable ? Will it be a plain value or a reference to ?
 
-OK... Copy, paste and CTRL+ENTER with the code below.
+OK... Copy, paste and CTRL+ENTER the code below.
 
 ```rust
 
@@ -647,15 +647,15 @@ String 5 is : Al Capone
 ```
 
 ### Comments
-And now... Let's comment the code but I'm pretty sure you could do it by yourself...
+Let's comment the code but I'm pretty sure you could do it by yourself...
 * `THE_NIGHT_S_DAWN` is a constant. It is an array of 6 string slice.
-* We use the constant array to create the `the_night_s_dawn` variable, a vector of tuples consisting of in integer and a String
-* As usual now, the first `for` loop consume the vector
-* The second, commented for loop would not compile
+* We use the constant array to create the `the_night_s_dawn` variable, a vector of tuples consisting of an integer and a String
+* As usual, the first `for` loop consumes the vector
+* The second, commented `for` loop would not compile
 * We re-create the `the_night_s_dawn` vector
 * In the third loop `i` and `s` have the type `&usize` and `&String` respectively
 * We print the content of the vector leveraging deref coercion or not
-* For exactly the same reasons explained in Test04 the last for loop would not compile
+* For exactly the same reasons explained in Test04 the last `for` loop would not compile
 
 
 
@@ -670,7 +670,7 @@ And now... Let's comment the code but I'm pretty sure you could do it by yoursel
 ## A last experiment, just to make sure
 OK. This one comes from one solution to the [Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%})
  
-Copy, paste and CTRL+ENTER with the code below. 
+Copy, paste and CTRL+ENTER the code below. 
 
 ```rust
 fn main() {
@@ -736,13 +736,13 @@ Test06 :
 
 ### Comments
 
-Again, before reading the explanations below, look at the code, find out the iterable, what is its type, what is the type of its elements... By now you should have enough information to understand what is possible and what is not possible.
+Again, before reading the explanations below, look at the code and find out the iterable. What is its type? What is the type of its elements... By now you should have enough information to understand what is possible and what is not possible.
 
-* `DIRECTIONS` is a constant. It is an array (on the stack) of 4 tuple. The tuples contains displacement differentials along the x and y axes. Traversing the `DIRECTIONS` array and adding the content of the tuples to a cell whith the coordinates (r, c) we will visit the 4 cells (left, right, up and down) around it.
-* The iterable is on the stack and it contains primitive type...
+* `DIRECTIONS` is a constant. It is an array (on the stack) of 4 tuples. The tuples contains displacement differentials along the rows and columns. Traversing the `DIRECTIONS` array and adding the content of the tuples to a cell whith the coordinates (r, c) we will visit the 4 cells (left, right, up and down) around it.
+* The iterable is on the stack and it contains primitive type
 * In the first loop the array is copied
-* In the second loop it is borrowed and with the help of deref corecion we can derefence (or not) the loop variables (`dr`, `dc`)
-* Since the element is primitve we can even unstructure and unreference each element `&(dr, dc)`
+* In the second loop it is borrowed and with the help of deref corecion we can dereference (or not) the loop variables (`dr`, `dc`)
+* Since the elements are primitve we can unstructure and unreference each element `&(dr, dc)`
 * `dr` and `dc` are of type `isize` directly
 
 
@@ -805,13 +805,13 @@ String is : Montgomery Scott (Scotty)
 * `.iter()` returns an iterator (`&T`) over the slice and the iterator yields all items from start to end 
 * Here the iterable contains string slices (&str) so the type of `s` is `&&str`
 * We print the string slice using `*s` or `s`
-* So now we can either write `for s in &collection` or `for s in collection.iter()`
+* So, now, we can either write `for s in &collection` or `for s in collection.iter()`
 
 
 
 ### Why ?
 
-Even though `for s in &collection` and `for s in collection.iter()` are equivalent, using `.iter()` may have some advantages:
+Why should I use `for s in collection.iter()`? Even though `for s in &collection` and `for s in collection.iter()` are equivalent, using `.iter()` may have some advantages:
 
 1. It makes your intent explicit, especially in generic code
 1. It allows chaining with iterator adaptors like .filter() or .map()
@@ -876,7 +876,7 @@ Updated string : Alan Carter 💥
 
 
 ### Explanation
-* We create a **mutable** iterable. Here `space_1999` is a mutable vector of String
+* We create a **mutable** iterable. Here, `space_1999` is a mutable vector of `String`
 * As the name suggest, `.iter_mut()` returns an iterator (`&mut T`) that allows modifying the values of the mutable iterable
 * Again, the iterator yields all items from start to end
 * In the loop we modify each String by adding another string (" 💥")
@@ -887,7 +887,7 @@ Updated string : Alan Carter 💥
 
 ## Is there a way to consume an iterable with an `.iter_xxx()` method ?
 
-Copy, paste and CTRL+ENTRE the code below :
+Copy, paste and CTRL+ENTER the code below :
 
 ```rust
 
@@ -921,17 +921,17 @@ String is : WOPR
 ```
 
 ### Explanation
-* We create `wargames` a vector a String
+* We create `wargames`, a vector of `String`
 * `.into_iter()` yields `T`
 * I have some difficulties with the name `.into_iter()`. Mnemonic : `.into_iter()` → "into the loop, I move ownership in"
-* During the loop, the iterator consume the iterable
+* During the loop, the iterator consumes the iterable
 * At the end of the loop, the collection is no longer available
 * This explains why the commented `println!` would not compile
 
 
 ### What would be the use case ?
 
-OK, the previous code snippet looks somewhat artificial and you want to speak to my supervsior... Look at this code now : 
+OK, the previous code snippet looks somewhat artificial and you want to speak to my supervsior... Look at the code below : 
 
 ```rust
 fn main() {
@@ -988,12 +988,12 @@ Modified: ["Neo 🦀", "Trinity 🦀", "Morpheus 🦀"]
 
 ### Notes
 * Use `.into_iter()` when you're done with a value and want to turn it into something else — typically with `.map(...)` and `.collect()`
-* It consumes the original collection and returns owned elements (T), so we can move or transform them freely
+* It consumes the original collection and returns owned elements (`T`), so we can move or transform them freely
 * `.into_iter()` is ideal when we know the original collection won't be needed anymore. It allows us to move, transform, or mutate each element without borrowing or cloning.
 
 
 
-### A last example with `.into_iter()`
+### A last example with `.into_iter()`?
 
 ```rust
 fn rustify_names(names: Vec<String>) -> Vec<String> {
@@ -1055,7 +1055,7 @@ And not a statement?
 
 Even though we often use a `for` loops for its side effects (like printing), it’s actually an expression that evaluates to the unit type ().
 
-It’s rarely useful to store the result, but you can include for in larger expressions, like this:
+So it’s rarely useful to store the result of a for `loop`, but we can include it in larger expressions, like this:
 
 ```rust
 fn main() {
@@ -1120,7 +1120,7 @@ In Rust, almost everything is an expression — including `if`, `match`, `blocks
 
 ## Conclusion
 
-The examples use array and Vec. This is fine but but what have been said also apply to other data structure like HashMap, HashSet, BTreeMap...
+The examples use array and Vec. This is fine but but what have been said also apply to other data structures like HashMap, HashSet, BTreeMap...
 
 * Iteration in Rust is powerful, but it requires clarity about ownership.
 * Default to using references (`&collection`) in for loops to avoid accidentally moving data.
@@ -1131,6 +1131,7 @@ The examples use array and Vec. This is fine but but what have been said also ap
     * `.iter_mut()` → yields mutable references (for in-place edits)
 * If the compiler complains, read the error carefully — it usually gives you a clear hint about what's being moved or borrowed.
 * In doubt, ask yourself: “What’s being passed — the value, or a reference? Am I trying to move something I only borrowed?”
+* Can you explain the difference between **dereferencing vs destructuring** to your 10 years old kid or sister ?
 
 ### Webliography
 * Feel free to read this page in [THE book](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html#for-loops)
