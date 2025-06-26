@@ -24,6 +24,9 @@ vendor/
 # .vscode/
 Debug/
 
+# for some of the Rust sample code
+target/
+
 
 # **/raw_assets/" ignore all directories no matters where they are
 **/raw_assets/
