@@ -30,7 +30,7 @@ last_modified_date : 2025-06-27 09:00:00
 
 
 
-
+---
 ## Table of Contents
 {: .no_toc .text-delta}
 - TOC
@@ -102,7 +102,6 @@ fn main(){
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 {: .no_toc }
@@ -116,7 +115,6 @@ content_at_addr_of_my_value : 5
 ```
 
 
----
 ### Explanations
 {: .no_toc }
 * `my_value` is a binding (a variable) of type `i32` and it has the value 5. If you are not sure about the difference between binding and variable keep the term variable in mind for no, **but** put your hand on your heart and swear you will read this [page in English]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
@@ -127,7 +125,6 @@ content_at_addr_of_my_value : 5
 
 
 
----
 ***Ah OK. So a reference is a pointer. Right?*** Almost because they are both used to indirectly access and manipulate objects but **no** because they have key differences. Since there is no pointer in Rust (I know `*const T` and `*mut T` but let's avoid them for today), let's illustrate de differences between pointers and references using C++. No worries. Syntax is very similar.  
 
 ### References and Pointers comparaison in C++
@@ -220,6 +217,11 @@ content_at_addr_of_my_value : 5
 
 
 
+
+
+
+
+
 --- 
 ## Dereferencing: Mutability
 
@@ -275,7 +277,6 @@ fn dereferencing02() {
 }
 ```
 
----
 ### Expected output 
 {: .no_toc }
 
@@ -302,7 +303,6 @@ other_value : 3.141592653589793
 
 
 
----
 ### Explanations
 {: .no_toc }
 Just to make sure we are on the same page. There are 2 kinds of mutability to consider here :
@@ -378,7 +378,6 @@ fn dereferencing03() {
 ```
 
 
----
 ### Expected output 
 {: .no_toc }
 ```
@@ -393,7 +392,6 @@ Dereferencing 03 : ref as argument
 ```
 
 
----
 ### Explanations
 {: .no_toc }
 * Yes we can! Yes we can have function definitions inside function definition
@@ -505,7 +503,6 @@ fn dereferencing04() {
 ```
 
 
----
 ### Expected output 
 {: .no_toc }
 ```
@@ -518,7 +515,6 @@ Boxed value: 123
 ```
 
 
----
 ### Explanations
 {: .no_toc }
 * We first define 2 functions `print_ref` and `print_box`
@@ -579,7 +575,6 @@ fn dereferencing05() {
 ```
 
 
----
 ### Expected output 
 {: .no_toc }
 ```
@@ -605,7 +600,6 @@ Reference count (rc1): 2
 
 
 
----
 ### Explanations
 {: .no_toc }
 
@@ -699,7 +693,6 @@ fn dereferencing06() {
 ```
 
 
----
 ### Expected output 
 {: .no_toc }
 ```
@@ -713,7 +706,6 @@ Reference count: 3
 ```
 
 
----
 ### Explanations
 {: .no_toc }
 
@@ -850,7 +842,6 @@ fn main(){
 }
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
@@ -863,7 +854,6 @@ Destructuring 01 : 101
 
 ```
 
----
 ### Explanations
 {: .no_toc }
 * As I said, destructuring is the act of using a pattern to break a value apart and extract its inner pieces. In this context, a pattern is a syntax that matches the shape of a value. 
@@ -911,13 +901,11 @@ fn destructuring02() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -964,13 +952,11 @@ fn destructuring03() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1019,13 +1005,11 @@ fn destructuring04() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1053,13 +1037,11 @@ fn destructuring05() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1092,13 +1074,11 @@ fn destructuring06() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1136,7 +1116,6 @@ fn destructuring07() {
 }
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
@@ -1146,7 +1125,6 @@ x = 10, y = 20
 a = 10, b = 20
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1181,13 +1159,11 @@ fn destructuring08() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1266,13 +1242,11 @@ fn destructuring09() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1335,7 +1309,6 @@ fn destructuring10() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 
@@ -1347,7 +1320,6 @@ fn destructuring10() {
 
 
 
----
 ### Explanations
 {: .no_toc }
 
@@ -1396,13 +1368,11 @@ fn destructuring11() {
 
 ```
 
----
 ### Expected output 
 {: .no_toc }
 ```
 ```
 
----
 ### Explanations
 {: .no_toc }
 
