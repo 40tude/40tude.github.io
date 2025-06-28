@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/target/debug/${workspaceFolderBasename}.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "RUST_BACKTRACE",
+                    "value": "short"
+                }
+            ],
+            "preLaunchTask": "cargo-build-debug"
+        },
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "name": "Release",
+            "program": "${workspaceFolder}/target/release/${workspaceFolderBasename}.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "RUST_BACKTRACE",
+                    "value": "short"
+                }
+            ],
+            "preLaunchTask": "cargo-build-release"
+        }
+    ]
+}
