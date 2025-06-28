@@ -81,7 +81,8 @@ fn dereferencing03() {
 
     fn my_function03(v: &[i32]) {
         // accept reference to vectors or arrays
-        // println!("{:?}", *v); // Does not compile because *v is of type [i32] with no Sized trait (expected by println!)
+        // println!("{:?}", *v);    // Does not compile because *v is of type [i32] with no Sized trait (expected by println!)
+        // Only references like `&[i32]` implement the `Debug` trait; `[i32]` alone doesn't, as it's dynamically sized)
         println!("{:?}", &*v); // Overkill ?
         println!("{:?}", v);
     }
@@ -103,6 +104,7 @@ fn dereferencing04() {
 
     // Function that takes a value by reference
     fn print_ref(v: &i32) {
+        println!("Value: {}", *v);
         println!("Value: {}", v);
     }
 
@@ -113,7 +115,8 @@ fn dereferencing04() {
 
     // Create a value on the heap using Box
     let b = Box::new(123);
-    println!("Address in Box: {:p}", b);
+    println!("Address of the heap in the Box : {:p}", b);
+    println!("Address of b on the stack      : {:p}", &b);
 
     // We can dereference Box<T> directly thanks to Deref
     println!("Dereferenced Box: {}", *b);
@@ -196,7 +199,7 @@ fn dereferencing06() {
     // Shows that the compiler doesn't see borrow conflicts, but the runtime does.
     {
         let _first = shared_vec.borrow_mut();
-        // let _second = shared_vec.borrow_mut(); // 💥 panics at runtime
+        // let _second = shared_vec.borrow_mut(); // panics at runtime
     }
 
     // Reference count stays at 3 until `a`, `b`, and `shared_vec` go out of scope
@@ -227,12 +230,19 @@ fn destructuring01() {
     println!("\nDestructuring 01 : 101\n");
 
     let (x, y) = (1, 2); // (x, y) is a pattern
+    println!("{x}, {y}");
+
+    let (x, y) = (1, 3.14); // tuple => we can have different data type
+    println!("{x}, {y}");
+
     let [a, b, c] = [10, 20, 30]; // [a, b, c] is a pattern
+    println!("{a}, {b}, {c}");
 
     let x = 42; // `x` is a very simple pattern: it matches any value and binds it to the name `x`
+    println!("{x}");
 
     let ((x1, y1), (x2, y2)) = ((1, 2), (3, 4)); // nested destructuring
-    println!("{x1}, {y2}");
+    println!("{x1}, {y1}, {x2}, {y2}");
 }
 
 fn destructuring02() {
@@ -253,21 +263,7 @@ fn destructuring02() {
 }
 
 fn destructuring03() {
-    println!("\nDestructuring 03 : tuple, enum and functions\n");
-
-    let (name, age) = ("Salvor Hardin", 42); // tuple destructuring
-    let Some(x) = Some(5) else { todo!() }; // enum destructuring
-
-    fn print_coords((x, y): (i32, i32)) {
-        println!("{x}, {y}");
-    }
-
-    let (my_x, my_y) = (28, 56);
-    print_coords((my_x, my_y));
-}
-
-fn destructuring04() {
-    println!("\nDestructuring 04 : a struct with let\n");
+    println!("\nDestructuring 03 : a struct with let\n");
 
     struct Scientist {
         name: String,
@@ -283,8 +279,8 @@ fn destructuring04() {
     println!("{name} works in {field}");
 }
 
-fn destructuring05() {
-    println!("\nDestructuring 05 : basic pattern matching with enum\n");
+fn destructuring04() {
+    println!("\nDestructuring 04 : enum with let\n");
 
     enum Role {
         Emperor,
@@ -312,10 +308,24 @@ fn destructuring05() {
     }
 }
 
+fn destructuring05() {
+    println!("\nDestructuring 05 : tuples with let 1/2\n");
+
+    let (name, age) = ("Salvor Hardin", 42); // tuple destructuring
+    let Some(x) = Some(5) else { todo!() }; // enum destructuring
+
+    fn print_coords((x, y): (i32, i32)) {
+        println!("{x}, {y}");
+    }
+
+    let (my_x, my_y) = (28, 56);
+    print_coords((my_x, my_y));
+}
+
 // When destructuring, the pattern on the left-hand side must match the shape of the value on the right.
 // In this case, a 2-element tuple is matched by a 2-element pattern.
 fn destructuring06() {
-    println!("\nDestructuring 06 : tuples in let bindings\n");
+    println!("\nDestructuring 06 : tuples with let 2/2\n");
 
     let pair = ("Hari Seldon", 12050);
 
@@ -329,10 +339,34 @@ fn destructuring06() {
     println!("We only care about the year: {}", just_the_year);
 }
 
+fn destructuring07() {
+    println!("\nDestructuring 07 : function & closure parameters\n");
+
+    // --- Function with destructured parameters ---
+    fn print_coordinates((x, y): (i32, i32)) {
+        println!("Function received: x = {}, y = {}", x, y);
+    }
+
+    let point = (10, 20);
+    print_coordinates(point);
+
+    // --- Destructuring in a let binding ---
+    let (a, b) = point;
+    println!("Destructured binding: a = {}, b = {}", a, b);
+
+    // --- Destructuring in a closure ---
+    let points = vec![(1, 2), (3, 4), (5, 6)];
+
+    println!("\nClosure with destructuring:");
+    points.iter().for_each(|&(x, y)| {
+        println!("Point: x = {}, y = {}", x, y);
+    });
+}
+
 // In a for loop, the variable immediately after for is a pattern.
 // That’s why we can destructure tuples directly inside the loop.”
-fn destructuring07() {
-    println!("\nDestructuring 07 : in for loops with enumerate()\n");
+fn destructuring08() {
+    println!("\nDestructuring 08 : in for loops with enumerate()\n");
 
     let characters = vec!["Hari", "Salvor", "Hober"];
 
@@ -348,7 +382,7 @@ fn destructuring07() {
 }
 
 // This line might look like we're referencing s, but &[x, y] is a pattern, not a reference. The compiler matches each &[i32; 2] and destructures it in-place
-fn destructuring08() {
+fn destructuring09() {
     println!("\nDestructuring 08 : for loop over array slices\n");
 
     let coordinates = vec![[1, 2], [3, 4], [5, 6]];
@@ -366,9 +400,30 @@ fn destructuring08() {
     }
 }
 
+fn destructuring10() {
+    println!("\nDereferencing 10 : destructuring pattern in for loop\n");
+
+    let foundation: Vec<String> = vec!["Hari Seldon", "Salvor Hardin", "Hober Mallow", "The Mule", "Bayta Darell"]
+        .into_iter()
+        .map(|s| s.to_string())
+        .collect();
+
+    // The following loop will not compile
+    // In a for loop, the value that directly follows the keyword for is a pattern
+    // So `s`is NOT variable, &s is not a reference, &s is a pattern - specifically, a destructuring pattern.
+
+    // for &s in &foundation {
+    //     println!("String is : {}", s);
+    // }
+
+    for s in &foundation {
+        println!("String is : {}", s);
+    }
+}
+
 // Patterns can be used in loops to filter and destructure in a single step. Here, &Some(score) is not a reference — it’s a pattern that matches a reference to an Option and destructures it if it’s Some
-fn destructuring09() {
-    println!("\nDestructuring 09 : matching Option<T> in a for loop\n");
+fn destructuring11() {
+    println!("\nDestructuring 11 : matching Option<T> in a for loop\n");
 
     let maybe_scores = vec![Some(10), None, Some(30)];
 
@@ -396,27 +451,6 @@ fn destructuring09() {
     // Rather than going through a Vec<Option<T>>, and ignoring the None in the loop, we can avoid the if let by flattening the Some directly in the iterator.
     for score in maybe_scores.iter().flatten() {
         println!("Score via flatten: {}", score);
-    }
-}
-
-fn destructuring10() {
-    println!("\nDereferencing 10 : destructuring pattern\n");
-
-    let foundation: Vec<String> = vec!["Hari Seldon", "Salvor Hardin", "Hober Mallow", "The Mule", "Bayta Darell"]
-        .into_iter()
-        .map(|s| s.to_string())
-        .collect();
-
-    // The following loop will not compile
-    // In a for loop, the value that directly follows the keyword for is a pattern
-    // So `s`is NOT variable, &s is not a reference, &s is a pattern - specifically, a destructuring pattern.
-
-    // for &s in &foundation {
-    //     println!("String is : {}", s);
-    // }
-
-    for s in &foundation {
-        println!("String is : {}", s);
     }
 }
 

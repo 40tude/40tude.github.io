@@ -168,7 +168,7 @@ Mettre {:toc} que sur les titres de niveau 2. Éviter 3 et +
 
 Pour exclure de la TOC les titres de niveaux 3+
    - CTRL + H + Exp Reg
-   - ``(#{3,}\s.+)``
+   - `(#{3,}\s.+)`
    - `$1\n{: .no_toc }`
 
 ```

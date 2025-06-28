@@ -8,9 +8,12 @@ date               : 2025-06-27 09:00:00
 last_modified_date : 2025-06-27 09:00:00
 ---
 
-<span style="color:orange"><b>This post is still being written.</b></span>    
+<h2 align="center">
+<span style="color:red"><b>This post is still being written.</b></span>    
+</h2>
 
 # Rust Dereferencing vs Destructuring — For the Kids
+{: .no_toc }
 
 <div align="center">
 <img src="./assets/cover.webp" alt="" width="450" loading="lazy"/>
@@ -19,9 +22,19 @@ last_modified_date : 2025-06-27 09:00:00
 
 ---
 ## TL;DR
+{: .no_toc }
+
 * Dereferencing: accessing the value behind a reference or a smart pointer.
 * Destructuring: breaking apart composite values (tuples, structs) into parts.
 
+
+
+
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
 
 ---
@@ -91,6 +104,8 @@ fn main(){
 
 ---
 ### Expected output 
+{: .no_toc }
+{: .no_toc }
 
 ```
 Dereferencing 01 : 101
@@ -103,6 +118,7 @@ content_at_addr_of_my_value : 5
 
 ---
 ### Explanations
+{: .no_toc }
 * `my_value` is a binding (a variable) of type `i32` and it has the value 5. If you are not sure about the difference between binding and variable keep the term variable in mind for no, **but** put your hand on your heart and swear you will read this [page]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
 * Next come the interesting part. `addr_of_my_value` is a **reference** to `my_value`. Its value is the memory address of `my_value`. I hope you already know that every variable, data structure, code... Is somewhere in the memory of the PC. So they all have a memory address. The syntax is what it is and the `&my_value` means, in plain English : address of `my_value`
 
@@ -115,9 +131,11 @@ content_at_addr_of_my_value : 5
 
 ---
 ### References and Pointers comparaison in C++
+{: .no_toc }
 
 
 #### **1. Syntax and Declaration**
+{: .no_toc }
 - **Pointer**: Declared with `*`, can be reassigned to point to different objects (or `nullptr`).
   ```cpp
   int x = 10;
@@ -136,6 +154,7 @@ content_at_addr_of_my_value : 5
   ```
 
 #### **2. Nullability**
+{: .no_toc }
 - **Pointer**: Can be `nullptr` (uninitialized or explicitly set to null).
   ```cpp
   int* ptr = nullptr;  // Valid
@@ -146,6 +165,7 @@ content_at_addr_of_my_value : 5
   ```
 
 #### **3. Memory Address Handling**
+{: .no_toc }
 - **Pointer**: Stores the memory address of an object. You can perform arithmetic (e.g., `ptr++`).
   ```cpp
   int arr[3] = {1, 2, 3};
@@ -159,6 +179,7 @@ content_at_addr_of_my_value : 5
   ```
 
 #### **4. Indirection & Dereferencing**
+{: .no_toc }
 - **Pointer**: Requires explicit dereferencing (`*`) to access the value.
   ```cpp
   int x = 10;
@@ -173,10 +194,12 @@ content_at_addr_of_my_value : 5
   ```
 
 #### **5. Safety**
+{: .no_toc }
 - **Pointer**: Risk of dangling pointers (pointing to freed memory).  
 - **Reference**: Safer (cannot be null, always bound to an object).  
 
 #### **Summary Table**
+{: .no_toc }
 | Feature           | Pointer (`*`)                          | Reference (`&`)         |
 |-------------------|----------------------------------------|-------------------------|
 | Syntax            | `int* ptr = &x;`                       | `int& ref = x;`         |
@@ -186,6 +209,7 @@ content_at_addr_of_my_value : 5
 | Dereferencing     | Explicit dereferencing `cout << *ptr;` | No `cout << ref;`       |
 
 #### To keep in mind in a Rust context
+{: .no_toc }
 * Syntax 
     * `let ref_to_my_value = &my_value;` 
     * `let content_ref     = *ref_to_my_value;`
@@ -268,6 +292,7 @@ fn dereferencing02() {
 
 ---
 ### Expected output 
+{: .no_toc }
 
 ```
 Dereferencing 02 : mutability
@@ -304,6 +329,7 @@ other_value : 3.141592653589793
 
 ---
 ### Explanations
+{: .no_toc }
 Just to make sure we are on the same page there are 2 kinds of mutability to consider here :
 1. We want the reference to point to a mutable variable : mutability of the referenced variable
 1. We want the reference to be able to point to different variables (of the same type) : mutability of the reference
@@ -344,7 +370,7 @@ Here's another option
 
 
 ---
-## Dereferencing: 03
+## Dereferencing: Reference as argument
 
 ```rust
 fn dereferencing03() {
@@ -383,6 +409,7 @@ fn dereferencing03() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 Dereferencing 03 : ref as argument
 
@@ -398,12 +425,14 @@ Dereferencing 03 : ref as argument
 
 ---
 ### Explanations
+{: .no_toc }
 * Yes we can! We can have function definition inside function definition
 * `my_function01` has a unique parameter of type vector of `i32`
 * `my_function02` has a unique parameter of type reference to a vector of `i32`
 * `my_function03` has a unique parameter of type slice (`&[T]`)of `i32`
 
 #### Pass by value
+{: .no_toc }
 Then we create `my_vector`, a vector of `i32` and we give it as an argument to `my_function01`
 * The argument is passed by value
 * So it is given to the function and we lost it (RIP)
@@ -412,6 +441,7 @@ Then we create `my_vector`, a vector of `i32` and we give it as an argument to `
 Before to move forward we must recreate `my_vector`
 
 #### Pass by reference
+{: .no_toc }
 The 2 calls to `my_function02` and `my_function03` are much more interesting
 * In both calls `my_vector` is passed by reference.
 * `my_vector` is borrowed to the functions
@@ -507,6 +537,7 @@ fn dereferencing04() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 Dereferencing 04 : Box, Rc and Deref
 
@@ -520,6 +551,7 @@ Boxed value: 123
 
 ---
 ### Explanations
+{: .no_toc }
 * We first define 2 functions `print_ref` and `print_box`
 * Then, in order to allocate memory on the heap we use `Box::new()`. 
 * Let's keep in mind this create a unique pointer that own the pointed area.
@@ -538,7 +570,7 @@ Boxed value: 123
 
 
 ---
-## Dereferencing: 05
+## Dereferencing: `Rc<T>` and Reference Count
 I know what you mean. The heap allocated memory could be a picture of your brand new Aprilia RSV4 and you would like to make sure your friends can look at it without modifying it. This is not possible with a box directly. Indeed, in order manage memory efficiently we need to be smarter than a box and to include a counter in order to know how many people are currently watching the picture of your motorbike. Let's look at the code below :
 
 ```rust
@@ -584,6 +616,7 @@ fn dereferencing05() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 Dereferencing 05 : Rc<T> and Reference Count
 
@@ -611,6 +644,7 @@ Reference count (rc1): 2
 
 ---
 ### Explanations
+{: .no_toc }
 
 * We first create a reference counting pointer, pointing to the memory on the heap (`let rc1 = Rc::new(999);`)
 * Again, just to make sure we are in sync : Rc is for single-threaded
@@ -661,7 +695,7 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 
 
 ---
-## Dereferencing: 06
+## Dereferencing: `Rc<RefCell<T>>` for shared mutation (single-thread)
 
 This could be the case where the allocated memory represents your bank account where your company transfer your salary and where you would like to check the total amount available. We need to be even more smarter and instead of learning a new smart pointer, we will reuse what we know about Rc (reference count smart pointer) and add interior mutability to the heap allocated memory. This is done using RefCell. First thing first, let's run the code below :  
 
@@ -712,6 +746,7 @@ fn dereferencing06() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 Dereferencing 06 : Rc<RefCell<T>> for shared mutation (single-thread)
 
@@ -726,6 +761,7 @@ Reference count: 3
 
 ---
 ### Explanations
+{: .no_toc }
 
 * Let's say we want to share a vector `shared_vec` of`i32`
 * We would write : `let shared_vec = Rc::new(vec![1, 2, 3]);`
@@ -764,7 +800,7 @@ This is what is demonstrated in the last scoped area.
 
 ## Rust Gotchas: Dereferencing Edition
 
-Here are a few common traps and surprises you might encounter
+Here are a few common traps and surprises you might encounter (I did)
 
 1. **References are not pointers (exactly)**  
    They behave similarly but are *not* the same. You can't do pointer arithmetic, and they must always be valid and non-null.
@@ -864,6 +900,7 @@ fn main(){
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 Destructuring 01 : 101
 
@@ -876,6 +913,7 @@ Destructuring 01 : 101
 
 ---
 ### Explanations
+{: .no_toc }
 * As I said, destructuring is the act of using a pattern to break a value apart and extract its inner pieces. In this context, a pattern is a syntax that matches the shape of a value. 
 * The first `let` statement matches `(x, y)` to `(1, 2)`. Once this is OK shape wise, it extracts the value 1 and affect it to `x` and do the same with 2 and `y`. I told you. A smooth start.
     * I hope why `let` is a statement and not an expression. If not, read this [Computer Science Vocabulary page ]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) the this [one](https://doc.rust-lang.org/stable/reference/statements.html?highlight=statement#statements). 
@@ -898,7 +936,7 @@ Destructuring 01 : 101
 
 
 ---
-## Destructuring: 02
+## Destructuring: Partial Destructuring
 ```rust
 fn destructuring02() {
     println!("\nDestructuring 02 : partial destructuring\n");
@@ -923,11 +961,23 @@ fn destructuring02() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 ```
 
 ---
 ### Explanations
+{: .no_toc }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -940,48 +990,10 @@ fn destructuring02() {
 
 
 ---
-## Destructuring: 03
+## Destructuring: `struct` with `let`
 ```rust
 fn destructuring03() {
-    println!("\nDestructuring 03 : tuple, enum and functions\n");
-
-    let (name, age) = ("Salvor Hardin", 42); // tuple destructuring
-    let Some(x) = Some(5) else { todo!() }; // enum destructuring
-
-    fn print_coords((x, y): (i32, i32)) {
-        println!("{x}, {y}");
-    }
-
-    let (my_x, my_y) = (28, 56);
-    print_coords((my_x, my_y));
-}
-
-
-```
-
----
-### Expected output 
-```
-```
-
----
-### Explanations
-
-
-
-
-
-
-
-
-
-
-
----
-## Destructuring: 04
-```rust
-fn destructuring04() {
-    println!("\nDestructuring 04 : a struct with let\n");
+    println!("\nDestructuring 03 : a struct with let\n");
 
     struct Scientist {
         name: String,
@@ -1002,11 +1014,13 @@ fn destructuring04() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 ```
 
 ---
 ### Explanations
+{: .no_toc }
 
 
 
@@ -1019,10 +1033,10 @@ fn destructuring04() {
 
 
 ---
-## Destructuring: 05
+## Destructuring: `enum` with let
 ```rust
-fn destructuring05() {
-    println!("\nDestructuring 05 : basic pattern matching with enum\n");
+fn destructuring04() {
+    println!("\nDestructuring 04 : enum with let\n");
 
     enum Role {
         Emperor,
@@ -1055,15 +1069,47 @@ fn destructuring05() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 ```
 
 ---
 ### Explanations
+{: .no_toc }
 
 
 
 
+
+---
+## Destructuring: `tuples` with `let` 1/2
+```rust
+fn destructuring05() {
+    println!("\nDestructuring 05 : tuples with let 1/2\n");
+
+    let (name, age) = ("Salvor Hardin", 42); // tuple destructuring
+    let Some(x) = Some(5) else { todo!() }; // enum destructuring
+
+    fn print_coords((x, y): (i32, i32)) {
+        println!("{x}, {y}");
+    }
+
+    let (my_x, my_y) = (28, 56);
+    print_coords((my_x, my_y));
+}
+
+
+```
+
+---
+### Expected output 
+{: .no_toc }
+```
+```
+
+---
+### Explanations
+{: .no_toc }
 
 
 
@@ -1072,12 +1118,12 @@ fn destructuring05() {
 
 
 ---
-## Destructuring: 06
+## Destructuring: `tuples` with `let` 2/2
 ```rust
 // When destructuring, the pattern on the left-hand side must match the shape of the value on the right.
 // In this case, a 2-element tuple is matched by a 2-element pattern.
 fn destructuring06() {
-    println!("\nDestructuring 06 : tuples in let bindings\n");
+    println!("\nDestructuring 06 : tuples with let 2/2\n");
 
     let pair = ("Hari Seldon", 12050);
 
@@ -1096,40 +1142,51 @@ fn destructuring06() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 ```
 
 ---
 ### Explanations
+{: .no_toc }
 
 
 
 
 ---
-## Destructuring: 07
+## Destructuring: function & closure parameters
 
 
 ```rust
 
 fn destructuring07() {
-    println!("\nDestructuring 07 : function parameters\n");
+    println!("\nDestructuring 07 : function & closure parameters\n");
 
+    // --- Function with destructured parameters ---
     fn print_coordinates((x, y): (i32, i32)) {
-        println!("x = {}, y = {}", x, y);
+        println!("Function received: x = {}, y = {}", x, y);
     }
 
     let point = (10, 20);
     print_coordinates(point);
 
-    // You can also destructure directly in the let binding
+    // --- Destructuring in a let binding ---
     let (a, b) = point;
-    println!("a = {}, b = {}", a, b);
-}
+    println!("Destructured binding: a = {}, b = {}", a, b);
 
+    // --- Destructuring in a closure ---
+    let points = vec![(1, 2), (3, 4), (5, 6)];
+
+    println!("\nClosure with destructuring:");
+    points.iter().for_each(|&(x, y)| {
+        println!("Point: x = {}, y = {}", x, y);
+    });
+}
 ```
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 Destructuring 01 : function parameters
 
@@ -1139,6 +1196,7 @@ a = 10, b = 20
 
 ---
 ### Explanations
+{: .no_toc }
 
 
 
@@ -1148,12 +1206,12 @@ a = 10, b = 20
 
 
 ---
-## Destructuring: 08
+## Destructuring: in `for` loops with `.enumerate()`
 ```rust
 // In a for loop, the variable immediately after for is a pattern.
 // That’s why we can destructure tuples directly inside the loop.”
-fn destructuring07() {
-    println!("\nDestructuring 05 : in for loops with enumerate()\n");
+fn destructuring08() {
+    println!("\nDestructuring 08 : in for loops with enumerate()\n");
 
     let characters = vec!["Hari", "Salvor", "Hober"];
 
@@ -1173,11 +1231,13 @@ fn destructuring07() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 ```
 
 ---
 ### Explanations
+{: .no_toc }
 
 
 
@@ -1193,6 +1253,7 @@ fn destructuring07() {
 
 <!-- 
 ### Destructuring in `for` loops
+{: .no_toc }
 
 One of the less obvious places where destructuring happens is in `for` loops.
 
@@ -1229,10 +1290,10 @@ But a `&String` cannot be dereferenced into a `String` — only a `&str` or clon
 
 
 
-## Destructuring: 09
+## Destructuring: `for` loop over array slices
 ```rust
 // This line might look like we're referencing s, but &[x, y] is a pattern, not a reference. The compiler matches each &[i32; 2] and destructures it in-place
-fn destructuring08() {
+fn destructuring09() {
     println!("\nDestructuring 09 : for loop over array slices\n");
 
     let coordinates = vec![[1, 2], [3, 4], [5, 6]];
@@ -1255,11 +1316,23 @@ fn destructuring08() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 ```
 
 ---
 ### Explanations
+{: .no_toc }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1273,11 +1346,71 @@ fn destructuring08() {
 
 
 ---
-## Destructuring: 10
+## Destructuring: destructuring pattern in for loop
+
+This is the part that broke my brain when I first encountered it.
+
+When iterating over a vector of strings by reference (&Vec<String>), I naively thought that writing for &s in &foundation meant “give me the reference and then give me the value.” But that’s not what’s happening.
+
+In Rust, the expression after for is always a pattern — and here, &s is a destructuring pattern, not a reference.
+
+It tries to match a &String (which is what &foundation yields) with the pattern &s, which would only work if s were a String. But in Rust, you can’t implicitly copy or clone a String, so it fails to compile.
+
+Lesson learned: in a for loop, if you write &s, you’re telling the compiler: “I want to destructure a reference and bind the value inside it.” It’s not the same as taking a reference.
+
+
+```rust
+fn destructuring10() {
+    println!("\nDereferencing 10 : destructuring pattern in for loop\n");
+
+    let foundation: Vec<String> = vec!["Hari Seldon", "Salvor Hardin", "Hober Mallow", "The Mule", "Bayta Darell"]
+        .into_iter()
+        .map(|s| s.to_string())
+        .collect();
+
+    // The following loop will not compile
+    // In a for loop, the value that directly follows the keyword for is a pattern
+    // So `s`is NOT variable, &s is not a reference, &s is a pattern - specifically, a destructuring pattern.
+
+    // for &s in &foundation {
+    //     println!("String is : {}", s);
+    // }
+
+    for s in &foundation {
+        println!("String is : {}", s);
+    }
+}
+
+```
+
+---
+### Expected output 
+{: .no_toc }
+
+```
+
+
+```
+
+
+
+
+---
+### Explanations
+{: .no_toc }
+
+
+
+
+
+
+
+---
+## Destructuring: Option<T> in a for loop
 ```rust
 // Patterns can be used in loops to filter and destructure in a single step. Here, &Some(score) is not a reference — it’s a pattern that matches a reference to an Option and destructures it if it’s Some
-fn destructuring09() {
-    println!("\nDestructuring 10 : matching Option<T> in a for loop\n");
+fn destructuring11() {
+    println!("\nDestructuring 11 : Option<T> in a for loop\n");
 
     let maybe_scores = vec![Some(10), None, Some(30)];
 
@@ -1313,75 +1446,14 @@ fn destructuring09() {
 
 ---
 ### Expected output 
+{: .no_toc }
 ```
 ```
 
 ---
 ### Explanations
+{: .no_toc }
 
-
-
-
-
-
-
-
-
-
-
-
-
----
-## Destructuring: 11
-
-This is the part that broke my brain when I first encountered it.
-
-When iterating over a vector of strings by reference (&Vec<String>), I naively thought that writing for &s in &foundation meant “give me the reference and then give me the value.” But that’s not what’s happening.
-
-In Rust, the expression after for is always a pattern — and here, &s is a destructuring pattern, not a reference.
-
-It tries to match a &String (which is what &foundation yields) with the pattern &s, which would only work if s were a String. But in Rust, you can’t implicitly copy or clone a String, so it fails to compile.
-
-Lesson learned: in a for loop, if you write &s, you’re telling the compiler: “I want to destructure a reference and bind the value inside it.” It’s not the same as taking a reference.
-
-
-```rust
-fn destructuring10() {
-    println!("\nDereferencing 11 : destructuring pattern\n");
-
-    let foundation: Vec<String> = vec!["Hari Seldon", "Salvor Hardin", "Hober Mallow", "The Mule", "Bayta Darell"]
-        .into_iter()
-        .map(|s| s.to_string())
-        .collect();
-
-    // The following loop will not compile
-    // In a for loop, the value that directly follows the keyword for is a pattern
-    // So `s`is NOT variable, &s is not a reference, &s is a pattern - specifically, a destructuring pattern.
-
-    // for &s in &foundation {
-    //     println!("String is : {}", s);
-    // }
-
-    for s in &foundation {
-        println!("String is : {}", s);
-    }
-}
-
-```
-
----
-### Expected output 
-
-```
-
-
-```
-
-
-
-
----
-### Explanations
 
 
 
@@ -1414,6 +1486,7 @@ fn destructuring10() {
 
 
 ### Webliography
+{: .no_toc }
 * Patterns in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html#grammar-PatternNoTopAlt)
 * let statement in the [Rust Reference](https://doc.rust-lang.org/stable/reference/statements.html#grammar-LetStatement) 
 
