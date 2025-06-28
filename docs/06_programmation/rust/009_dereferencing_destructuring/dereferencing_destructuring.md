@@ -200,6 +200,7 @@ content_at_addr_of_my_value : 5
 
 #### **Summary Table**
 {: .no_toc }
+
 | Feature           | Pointer (`*`)                          | Reference (`&`)         |
 |-------------------|----------------------------------------|-------------------------|
 | Syntax            | `int* ptr = &x;`                       | `int& ref = x;`         |
@@ -210,6 +211,7 @@ content_at_addr_of_my_value : 5
 
 #### To keep in mind in a Rust context
 {: .no_toc }
+
 * Syntax 
     * `let ref_to_my_value = &my_value;` 
     * `let content_ref     = *ref_to_my_value;`
@@ -334,6 +336,8 @@ Just to make sure we are on the same page there are 2 kinds of mutability to con
 1. We want the reference to point to a mutable variable : mutability of the referenced variable
 1. We want the reference to be able to point to different variables (of the same type) : mutability of the reference
 
+If you don't feel confident enough to explain this concept to your kids, read this [page about Mutability]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
+
 In the first part of the code above we focus on the mutability of the referenced variable
 
 * Like in the first code snippet, we create a variable (immutable variable) and print its content
@@ -426,7 +430,7 @@ Dereferencing 03 : ref as argument
 ---
 ### Explanations
 {: .no_toc }
-* Yes we can! We can have function definition inside function definition
+* Yes we can! Yes we can have function definition inside function definition
 * `my_function01` has a unique parameter of type vector of `i32`
 * `my_function02` has a unique parameter of type reference to a vector of `i32`
 * `my_function03` has a unique parameter of type slice (`&[T]`)of `i32`
@@ -452,7 +456,7 @@ The 2 calls to `my_function02` and `my_function03` are much more interesting
 
 
 
-***This all good... But why do we do this?*** 
+***This is all good... But why do we do this?*** 
 What I will say here is not 100% accurate but bear with me because the idea is to get the concept, then I'll tell you the truth. I promise. 
 
 * In the call to `my_function01` we passed the vector by value. It is like passing the 3 values. We push them on the stack. Call the function. In the function, we pop the values then work on them. It was OK because we only had 3 `i32`. What if we had 1_000_000? This would be inefficient. 
@@ -486,10 +490,10 @@ What I will say here is not 100% accurate but bear with me because the idea is t
 
 
 ***You promised to tell the truth about what happens when you pass a vector by value...*** 
-In fact, the content of a vector is allocated on the heap (`[42, 43, 44]`) and you can view vector as a struct with 3 fields (PLC) : 
-1. address of the data on the heap
-1. the len of the vector
-1. the capacity of the vector (>=len). 
+In fact, the content of a vector is allocated on the heap (`[42, 43, 44]`) and you can view a vector as a struct with 3 fields (PLC) : 
+1. address of the data on the heap (P, pointer)
+1. the len of the vector (L, len)
+1. the capacity of the vector (C, capacity >=len)
 So, yes, I lied. When we pass by value a vector of 100 `i32` we do not passe 100 values. We only pass 3 `i64`(address, len and capacity). Nevertheless what is wrong for a vector is true for an array. An array is just a set of contiguous memory addresses on the stack and if we pass an array by value we pass its content by value.
 
 
@@ -565,7 +569,7 @@ Boxed value: 123
 
 
 
-***Ok I know how to safely allocate data on the heap. But how can I have 2 boxe pointing to the same area?***
+***Ok. Now I know how to safely allocate memory on the heap. But how can I have 2 boxes pointing to the same area?***
 
 
 
@@ -674,7 +678,7 @@ Then it becomes interesting...
 
 * We print the value of the counter of the smart pointer. At this point, only one pointer is pointing to area where `999` is stored
 
-Then it becomes really interesting... 
+Then it becomes *really* interesting... 
 
 * Indeed we clone the smart pointer we had (`let rc2 = Rc::clone(&rc1);`). It is important to keep in mind that no copy or worst, no deep copy happens. When applied to a reference counted pointer, `.clone()` simply add 1 to the counter. The `.clone()` operation is fast and cheap.
 * Once rc2 is created we print its the value it points to and the current value of the reference counter. This should not be a surprise but the counter of `rc1` and `rc2` are equal (otherwise we would be in be trouble)
@@ -689,7 +693,7 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 
 
 
-***Well, well, well... I know you will talk about references in a multithreaded context but... What if I need to mutate the the heap allocated memory***
+***Well, well, well... I know you will NOT talk about references in a multithreaded context but... What if I need to mutate the heap allocated memory***
 
 
 
@@ -697,7 +701,7 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 ---
 ## Dereferencing: `Rc<RefCell<T>>` for shared mutation (single-thread)
 
-This could be the case where the allocated memory represents your bank account where your company transfer your salary and where you would like to check the total amount available. We need to be even more smarter and instead of learning a new smart pointer, we will reuse what we know about Rc (reference count smart pointer) and add interior mutability to the heap allocated memory. This is done using RefCell. First thing first, let's run the code below :  
+This could be the case where the allocated memory represents your bank account where your company transfer your salary and where you would like to check the total amount available. We need to be even more smarter than before and instead of learning a new smart pointer, we will reuse what we know about `Rc` (reference-counted) and add interior mutability to the heap allocated memory. This is done using RefCell. First thing first, let's run the code below :  
 
 ```rust
 fn dereferencing06() {
@@ -769,24 +773,24 @@ Reference count: 3
 * Everthing we said about cloning and inspecting the counter remains valid. After all ``shared_vec`` is a `Rc<Vec<i32>>`
 * This is true but ``shared_vec`` is a `Rc<RefCell<Vec<i32>>>` and this is what allow us to mutate the heap allocated memory safely (almost)
 
-We create the first scoped area (more on this in few lines)
+We create the first scope (more on this in few lines)
 * We create `vec_ref`. To make a long story short it borrow the wrapped object (`vec![1, 2, 3]`) with the ability to mutate it (`a.borrow_mut()`). 
 * Then we push a value in the borrowed vector and print it
 * And the scope ends right after that
 * `vec_ref` goes out of scope and no oen is borrowing the heap allocated vector
 
-We then create a second scope area
+We then create a second scope
 * We create a new version `vec_ref`. This time it borrows the wrapped object (`vec![1, 2, 3]`) without the ability to mutate it (`b.borrow()`).
 * The print shows that the mutably shared vector has been mutated
 
-***Why do we need scoped areas here ?***
+***Why do we need scopes here ?***
 This is the one million dollars question... Remove them and the code will panic on line `let vec_ref = b.borrow();`. Can you say why? 
 
-Without the scoped areas, when we reach the line `let vec_ref = b.borrow();`, on stage we have one borrower with mutability capabilities and we would like to add a borrower with read-only capabilities. No way. 
+Without the scopes, when we reach the line `let vec_ref = b.borrow();`, on stage we have one borrower with mutability capabilities and we would like to add a borrower with read-only capabilities. No way. 
 
-One thing to keep in mind. The conflict among borrowers happen at runtime NOT compile time
+One thing to keep in mind. The conflict among borrowers happen at runtime **not** at compile time
 
-This is what is demonstrated in the last scoped area. 
+This is what is demonstrated in the last scope. 
 * If you uncomment the second line `// let _second = shared_vec...`
 * The code panic at runtime
 
