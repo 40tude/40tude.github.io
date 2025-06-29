@@ -11,14 +11,10 @@ fn dereferencing01() {
     println!("content_at_addr_of_my_value : {}", content_at_addr_of_my_value);
 }
 
-fn dereferencing02() {
-    // --------------------------------------------
-    println!("\nDereferencing 02 : mutability\n");
-
-    println!("\n\n1 - Mutability of the referenced variable");
+fn dereferencing02_1() {
+    println!("\nDereferencing 02_1 : mutabMutability of the referenced variableility\n");
     let my_value = 5; // immutable variable
     println!("my_value : {}", my_value);
-
     let ref_to_my_value = &my_value; // immutable reference to immutable variable
     println!("ref_to_my_value : {}", ref_to_my_value);
     println!();
@@ -27,25 +23,22 @@ fn dereferencing02() {
 
     let mut my_mutable_value = 55; // mutable variable
     println!("my_mutable_value : {}", my_mutable_value);
-
-    let ref_to_my_mutable_value = &mut my_mutable_value; // immutable reference to mutable value
+    let ref_to_my_mutable_value = &mut my_mutable_value; // mutable reference to mutable value
     println!("ref_to_my_mutable_value : {}", ref_to_my_mutable_value);
     println!();
-
     *ref_to_my_mutable_value += 1;
     println!("ref_to_my_mutable_value : {}", ref_to_my_mutable_value);
     println!("my_mutable_value : {}", my_mutable_value);
     println!();
+}
 
-    // --------------------------------------------
-    println!("\n\n2- Mutability of the reference");
+fn dereferencing02_2() {
+    println!("\nDereferencing 02_2 : Mutability of the reference\n");
     let my_value = 5; // immutable variable
     println!("my_value : {}", my_value);
-
     let other_value = 42;
     println!("other_value : {}", other_value);
     println!();
-
     let ref_to_my_value = &my_value; // immutable reference to immutable variable
     println!("ref_to_my_value : {}", ref_to_my_value);
     println!();
@@ -55,12 +48,10 @@ fn dereferencing02() {
     let ref_to_my_value = &other_value; // => shadowing. Does compile
     println!("ref_to_my_value : {}", ref_to_my_value); // => ref_to_my_value: &i32
     println!();
-
     let mut mut_ref_to_my_value = &my_value; // mutable reference to immutable variable
     println!("mut_ref_to_my_value : {}", mut_ref_to_my_value);
     mut_ref_to_my_value = &other_value; // mut_ref_to_my_value now reference other_value
     println!("mut_ref_to_my_value : {}", mut_ref_to_my_value);
-
     let other_value = std::f64::consts::PI; // => other_value: f64
     println!("other_value : {}", other_value);
 
@@ -89,7 +80,7 @@ fn dereferencing03() {
 
     let my_vector = vec![42, 43, 44];
     my_function01(my_vector); // after the call my_vector disappears
-    // println!("{:?}", my_vector); // Does not compile
+                              // println!("{:?}", my_vector); // Does not compile
 
     let my_vector = vec![42, 43, 44]; // must recreate my_vector
     my_function02(&my_vector); // pass a reference

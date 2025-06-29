@@ -24,8 +24,8 @@ last_modified_date : 2025-06-27 09:00:00
 ## TL;DR
 {: .no_toc }
 
-* Dereferencing: accessing the value behind a reference or smart pointer (e.g., `*x`, or implicit via `Deref`). Used to read or mutate the underlying data, respecting Rust’s borrowing rules (`&T`, `&mut T`).
-* Destructuring: breaking apart composite values (tuples, structs, enums) using pattern matching syntax. Can move or borrow parts depending on context.
+* **Dereferencing**: accessing the value behind a reference or smart pointer (e.g., `*x`, or implicit via `Deref`). Used to read or mutate the underlying data, respecting Rust’s borrowing rules (`&T`, `&mut T`).
+* **Destructuring**: breaking apart composite values (tuples, structs, enums) using pattern matching syntax. Can move or borrow parts depending on context.
 
 
 ---
@@ -260,13 +260,19 @@ content_at_addr_of_my_value : 5
 --- 
 ## Dereferencing: Mutability
 
-Let's run the code below.
+Just to make sure we are on the same page. There are 2 kinds of mutability to consider here :
+1. We want the reference to point to a mutable variable : mutability of the referenced variable
+1. We want the reference to be able to point to different variables (of the same type) : mutability of the reference
+
+If you don't feel confident enough to explain this concept to your kids, read this [page about Mutability]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
+
+In the first part of the code below we focus on the mutability of the referenced variable. Let's run the code!
+
+
 
 ```rust
-fn dereferencing02() {
-    // --------------------------------------------
-    println!("\nDereferencing 02 : mutability\n");
-    println!("\n\n1 - Mutability of the referenced variable");
+fn dereferencing02_1() {
+    println!("\nDereferencing 02_1 : mutabMutability of the referenced variableility\n");
     let my_value = 5; // immutable variable
     println!("my_value : {}", my_value);
     let ref_to_my_value = &my_value; // immutable reference to immutable variable
@@ -284,9 +290,44 @@ fn dereferencing02() {
     println!("ref_to_my_mutable_value : {}", ref_to_my_mutable_value);
     println!("my_mutable_value : {}", my_mutable_value);
     println!();
+}
 
-    // --------------------------------------------
-    println!("\n\n2- Mutability of the reference");
+```
+
+### Expected output 
+{: .no_toc }
+
+```
+Dereferencing 02_1 : mutabMutability of the referenced variableility
+my_value : 5
+ref_to_my_value : 5
+my_mutable_value : 55
+ref_to_my_mutable_value : 55
+ref_to_my_mutable_value : 56
+my_mutable_value : 56
+```
+
+
+
+### Explanations
+{: .no_toc }
+
+* Like in the very first code snippet, we create a variable (immutable variable, `let my_value = 5;`) and print its content
+* Then we create an immutable reference to the immutable variable (`let ref_to_my_value = &my_value;`) and print its content
+* The commented line does not compile (`*ref_to_my_value = 24;`). With this setup we cannot mutate the content of the reference (and the variable)
+
+Here's how we can address this issue
+* We create and print a mutable variable (`let mut my_mutable_value = 55;`)
+* Then create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable
+* We mutate the content of the reference (`*ref_to_my_mutable_value += 1;`)
+* Finally we print both, the content of the reference and the variable
+
+
+Now, let's run this code :
+
+```rust
+fn dereferencing02_2() {
+    println!("\nDereferencing 02_2 : Mutability of the reference\n");
     let my_value = 5; // immutable variable
     println!("my_value : {}", my_value);
     let other_value = 42;
@@ -310,22 +351,14 @@ fn dereferencing02() {
 
     // mut_ref_to_my_value = &other_value; // => does not compile: expected `&{integer}`, found `&f64`
 }
+
 ```
 
 ### Expected output 
 {: .no_toc }
 
 ```
-Dereferencing 02 : mutability
-1 - Mutability of the referenced variable
-my_value : 5
-ref_to_my_value : 5
-my_mutable_value : 55
-ref_to_my_mutable_value : 55
-ref_to_my_mutable_value : 56
-my_mutable_value : 56
-
-2- Mutability of the reference
+Dereferencing 02_2 : Mutability of the reference
 my_value : 5
 other_value : 42
 ref_to_my_value : 5
@@ -333,35 +366,9 @@ ref_to_my_value : 42
 mut_ref_to_my_value : 5
 mut_ref_to_my_value : 42
 other_value : 3.141592653589793
-
 ```
 
-
-
-### Explanations
-{: .no_toc }
-Just to make sure we are on the same page. There are 2 kinds of mutability to consider here :
-1. We want the reference to point to a mutable variable : mutability of the referenced variable
-1. We want the reference to be able to point to different variables (of the same type) : mutability of the reference
-
-If you don't feel confident enough to explain this concept to your kids, read this [page about Mutability]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
-
-In the first part of the code above we focus on the mutability of the referenced variable
-
-* Like in the first code snippet, we create a variable (immutable variable, `let my_value = 5;`) and print its content
-* Then we create an immutable reference to the immutable variable (`let ref_to_my_value = &my_value;`) and print its content
-* The commented line does not compile (`*ref_to_my_value = 24;`). With this setup we cannot mutate the content of the reference (and the variable)
-
-Here's how we can address this issue
-* We create and print a mutable variable (`let mut my_mutable_value = 55;`)
-* Then create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable
-* We mutate the content of the reference (`*ref_to_my_mutable_value += 1;`)
-* Finally we print both, the content of the reference and the variable
-
-
-
-
-Now, in the second part of the code we look at the mutability of the reference itself. We want the reference being able to "point to" different variables.
+In the second part of the code we look at the mutability of the reference itself. We want the reference being able to "point to" different variables.
 
 * We create 2 immutable variables (`let my_value = 5;`, `let other_value = 42;`)
 * We create an immutable reference to an immutable variable (`let ref_to_my_value = &my_value;`)
