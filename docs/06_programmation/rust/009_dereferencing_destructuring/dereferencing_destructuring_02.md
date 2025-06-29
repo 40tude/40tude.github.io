@@ -61,7 +61,32 @@ if let Some(val) = r {
     println!("val = {val}");
 }
 ```
+
 No explicit `*r` — yet the pattern matches. How?
+
+
+
+<!-- 
+```rust
+// r is of type &Option<i32>, so if let Some(val) = r works because Rust automatically matches &Some(5) with Some(val) when using pattern matching on references.
+// val is a reference to the inner value (&5), but Rust lets you use it directly in the println! macro.
+
+fn main() {
+    // Create a reference to an Option containing the value 5
+    let r = &Some(5);
+
+    // Use if let to destructure the Option reference and extract the value
+    if let Some(val) = r {
+        // val is a reference to the inner value, so we can print it
+        println!("val = {val}");
+    } else {
+        println!("No value found");
+    }
+}
+
+``` 
+-->
+
 
 Now look at this one-liner:
 
@@ -70,6 +95,32 @@ let Some(x) = &Some(42);
 ```
 Is this dereferencing, destructuring, or both?
 
+<!-- 
+```rust
+// let Some(x) = &opt else { ... }; is a new syntax available in the 2023 edition of Rust
+// allowing you to destructure with a guard for the None case.
+// x is of type &i32 because we matched on a reference to the Option<i32>.
+// If opt were None, the else block would be executed and the program would panic.
+
+fn main() {
+    // Create a reference to an Option containing the value 42
+    let opt = Some(42);
+
+    // Destructure the Option using a let statement with pattern matching
+    // This will only work if the Option is a Some variant; otherwise, it will panic
+    let Some(x) = &opt else {
+        // Handle the None case (this block is required in Rust 2023 edition and later)
+        panic!("Expected Some, found None");
+    };
+
+    // x is a reference to the value inside the Option
+    println!("The value is: {x}"); // The value is: 42
+}
+
+``` -->
+
+
+
 And then:
 
 ```rust
@@ -77,6 +128,33 @@ let b = Box::new((42, "hello"));
 let (x, y) = *b;
 let (x, y) = b; // Doesn't compile
 ```
+
+<!-- ```rust
+// let b = Box::new(...) allocates a tuple on the heap and returns a Box<(i32, &str)>.
+// *b dereferences the box to get the tuple (42, "hello"), which is then destructured.
+// The line let (x, y) = b; doesn't compile because Rust does not apply Deref coercion in let destructuring 
+// — unlike when calling methods or indexing.
+
+fn main() {
+    // Create a Box containing a tuple (i32, &str)
+    let b = Box::new((42, "hello"));
+
+    // Dereference the Box to extract the values from the tuple
+    let (x, y) = *b;
+
+    // Now x and y hold the copied values from the Box
+    println!("x = {x}, y = {y}"); // x = 42, y = hello
+
+    // let (x, y) = b; // Does not compile
+
+    // Reason: you cannot directly destructure a Box<T> like that.
+    // The compiler does not automatically dereference Box<T> during pattern matching in let bindings.
+    // You must explicitly dereference it using *b or use pattern matching with Box:
+}
+
+``` -->
+
+
 All three examples seem simple — but do you really understand why they behave this way?
 
 If you already know the answers, maybe this article isn’t for you. But if you’ve ever hesitated, been surprised by a compilation error, or struggled to explain why one line works and another doesn’t… then you’re in the right place.
