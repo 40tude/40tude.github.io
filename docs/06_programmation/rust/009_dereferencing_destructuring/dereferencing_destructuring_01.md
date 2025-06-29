@@ -345,12 +345,13 @@ my_mutable_value : 56
 {: .no_toc }
 
 * Like in the very first code snippet, we create a variable (immutable variable, `let my_value = 5;`) and print its content
-* Then we create an immutable reference to the immutable variable (`let ref_to_my_value = &my_value;`) and print its content
+* Then we create an immutable binding to the immutable reference (`let ref_to_my_value = &my_value;`) and print its content
+* It is important to realize that `&my_value` is an immutable reference (this should not be a big issue) while on left hand side, no matter its name, `ref_to_my_value` is an immutable variable, an immutable binding (a name associated to the state of an instance of a datatype + properties of mutability, ownership, borrowing and lifetime. Again read this [post]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%} if this is not crystal clear)
 * The commented line does not compile (`*ref_to_my_value = 24;`). With this setup we cannot mutate the content of the reference (and the variable)
 
 Here's how we can address this issue
 * We create and print a mutable variable (`let mut my_mutable_value = 55;`)
-* Then we create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable. The point I did'nt get at the beginning is that this is the `&mut my_mutable_value` that create a mutable reference which is assigned to a non mutable variable named `ref_to_my_mutable_value` (`let ref_to_my_mutable_value`). 
+* Then we create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable. The point I did'nt get at the beginning is that this is the `&mut my_mutable_value` that creates a mutable reference which is assigned to a non mutable variable named `ref_to_my_mutable_value` (`let ref_to_my_mutable_value...`). 
 * We mutate the content of the reference (`*ref_to_my_mutable_value += 1;`)
 * Finally we print both, the content of the reference and the variable
 
@@ -403,7 +404,7 @@ other_value : 3.141592653589793
 ### Explanations
 {: .no_toc }
 
-In the code we look at the mutability of the binding. We want the reference being able to "point to" different variables.
+In the code we look at the mutability of the binding. We want the reference being able to "point to" different variables, so we want the binding to be mutable.
 
 * We create 2 immutable variables (`let my_value = 5;`, `let other_value = 42;`)
 * We create an immutable reference to an immutable variable (`let ref_to_my_value = &my_value;`)
@@ -413,9 +414,9 @@ Here's what we can do
 * We could "write over" (shadowing) the previous reference (`let ref_to_my_value = &other_value;`)
 
 Here's another option
-* We create a mutable binding to an immutable variable (`let mut mut_ref_to_my_value = &my_value;`)
-* The binding `mut_ref_to_my_value` can then be mutated and "point to" another variable (`let mut mut_ref_to_my_value = &my_value;` then `mut_ref_to_my_value = &other_value;`)
-* Such mutable binding can only points to variable of the same type. The first version of `other_value` was an `i32`. Now if we create an `f64` version of `other_value` (`let other_value = std::f64::consts::PI;`), `mut_ref_to_my_value` cannot point to it. The very last line does not compile.
+* We create a mutable binding to an immutable variable (`let mut mut_ref_to_my_value = &my_value;`).  
+* The binding `mut_ref_to_my_value` can then be mutated and "point to" another variable (`let mut mut_ref_to_my_value = &my_value;` first then `mut_ref_to_my_value = &other_value;`)
+* Like a binding to an `i32` can only host `i32`, our mutable binding can only points to variable of the same type. The first version of `other_value` was an `i32`. Now if we create an `f64` version of `other_value` (`let other_value = std::f64::consts::PI;`), `mut_ref_to_my_value` cannot point to it. The very last line does not compile.
 
 
 
