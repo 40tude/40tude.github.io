@@ -1,7 +1,7 @@
 ---
 published: true
 layout: default
-title: "Rust Dereferencing vs Destructuring — For the Kids"
+title: "Rust Dereferencing vs Destructuring — For the Kids 2/2"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-27 09:00:00
@@ -12,7 +12,7 @@ last_modified_date : 2025-06-27 09:00:00
 <span style="color:red"><b>This post is still being written.</b></span>    
 </h2>
 
-# Rust Dereferencing vs Destructuring — For the Kids
+# Rust Dereferencing vs Destructuring — For the Kids 2/2
 {: .no_toc }
 
 <div align="center">
@@ -27,6 +27,12 @@ last_modified_date : 2025-06-27 09:00:00
 * **Dereferencing**: accessing the value behind a reference or smart pointer (e.g., `*x`, or implicit via `Deref`). Used to read or mutate the underlying data, respecting Rust’s borrowing rules (`&T`, `&mut T`).
 * **Destructuring**: breaking apart composite values (tuples, structs, enums) using pattern matching syntax. Can move or borrow parts depending on context.
 
+---
+## The post is in 2 parts
+{: .no_toc }
+
+* [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs\06_programmation\rust\009_dereferencing_destructuring\dereferencing_destructuring_01.md%})
+* [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs\06_programmation\rust\009_dereferencing_destructuring\dereferencing_destructuring_02.md%})
 
 ---
 ## Table of Contents
@@ -110,7 +116,7 @@ Whether you're just starting with Rust or adjusting your mental model, this post
 
 
 
----
+<!-- ---
 ## Dereferencing: A smooth start
 
 Copy and paste the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=95688f886df53f6776df8a63c0599ccd) then hit CTRL+ ENTER
@@ -367,6 +373,8 @@ mut_ref_to_my_value : 5
 mut_ref_to_my_value : 42
 other_value : 3.141592653589793
 ```
+### Explanations
+{: .no_toc }
 
 In the second part of the code we look at the mutability of the reference itself. We want the reference being able to "point to" different variables.
 
@@ -813,7 +821,7 @@ This is what is demonstrated in the last scope.
 
 
 
-
+ -->
 
 
 
