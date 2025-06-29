@@ -87,7 +87,9 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 
 
-
+## Longueur des posts
+* 3000 mots
+* Découper en série le cas échéant
 
 
 
