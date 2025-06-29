@@ -346,7 +346,7 @@ my_mutable_value : 56
 
 * Like in the very first code snippet, we create a variable (immutable variable, `let my_value = 5;`) and print its content
 * Then we create an immutable binding to the immutable reference (`let ref_to_my_value = &my_value;`) and print its content
-* It is important to realize that `&my_value` is an immutable reference (this should not be a big issue) while on left hand side, no matter its name, `ref_to_my_value` is an immutable variable, an immutable binding (a name associated to the state of an instance of a datatype + properties of mutability, ownership, borrowing and lifetime. Again read this [post]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%} if this is not crystal clear)
+* It is important to realize that `&my_value` is an immutable reference (this should not be a big issue) while on left hand side, no matter its name, `ref_to_my_value` is an immutable variable, an immutable binding (a name associated to the state of an instance of a datatype + properties of mutability, ownership, borrowing and lifetime. Again, you can read this [post]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}) if this is not crystal clear.)
 * The commented line does not compile (`*ref_to_my_value = 24;`). With this setup we cannot mutate the content of the reference (and the variable)
 
 Here's how we can address this issue
@@ -501,7 +501,7 @@ The 2 calls to `my_function02` and `my_function03` are much more interesting
 
 
 ***This is all good... But why do we do this?*** 
-What I will say here is not 100% accurate but bear with me because the idea is to get the concept, then I'll tell you the truth. I promise. 
+What I will say here is not 100% accurate but stick with me because the idea is to get the concept first, then I'll tell you the truth. I promise. 
 
 * In the call to `my_function01` we passed the vector by value. It is like passing the 3 values. We push them on the stack. Call the function. In the function, we pop the values from the stack, then work on them. It was OK because we only had 3 `i32`. What if we had 1_000_000? This would be inefficient. 
 * In the calls to `my_function02` and `my_function03` we pass a reference, the address of the `my_vector`. No matter the length of the vector we will always use 8 bytes (on a 64 bit OS, a memory address is on 8 bytes). This is much smarter and much faster.  
@@ -512,7 +512,7 @@ What I will say here is not 100% accurate but bear with me because the idea is t
 
 ***OK... But what is going on in `my_function02`?*** 
 * In `my_function02`, `v` is a parameter of type reference to a vector of `i32` (`&Vec<i32>`). If we want to get access to its content, we must dereference it. This is why the first `println!` has `*v` as an argument (`println!("{:?}", *v);`).
-* However, like in C++, in the second call to `println!` we can use `v` as a parameter (`println!("{:?}", v);`). The Rust compiler will then apply deref coercion, to transform, on the fly, the `&Vec<i32>` (`v`) into a `Vec<i32>` (`*v`). How does this work here ?
+* However, like in C++, in the second call to `println!` we can use `v` as a parameter (`println!("{:?}", v);`). The Rust compiler will then apply **deref coercion**, to transform, on the fly, the `&Vec<i32>` (`v`) into a `Vec<i32>` (`*v`). How does this work here ?
     * `println!` expects a type which implement Debug trait but `&Vec<i32>` doesn’t 
     * The compiler looks for Deref trait implementations on `&Vec<i32>`
     * `Vec<T>` implements `Deref<Target = [T]>`, meaning `&Vec<i32>` can auto-convert to `&[i32]` (a slice of `i32`)
@@ -529,7 +529,7 @@ What I will say here is not 100% accurate but bear with me because the idea is t
 
 
 * Last but not least, we create an array (`my_array`) and pass a reference to it as an argument to `my_function03` (`my_function03(&my_array);`)
-    * This demonstrate that `my_function03` works fine when it receives as a parameter either a reference to vector or an array (thanks to deref coercion). 
+    * This demonstrates that `my_function03` works fine when it receives as a parameter either a reference to vector or an array (thanks to deref coercion). 
 
 
 
@@ -539,7 +539,7 @@ In fact, the content of a vector is allocated on the heap (`[42, 43, 44]`) and y
 1. the len of the vector (L, len)
 1. the capacity of the vector (C, capacity >=len)
 
-So, yes, I lied. When we pass by value a vector of 100 `i32` we do not passe 100 values. We only pass 3 `i64`(address, len and capacity). Nevertheless what is wrong for a vector is true for an array. An array is just a set of contiguous memory addresses on the stack and if we pass an array by value we pass its content by value.
+So, yes, I lied. When we pass by value a vector of 100 `i32` we do not passe 100 values. We only pass 3 `i64`(address, len and capacity). Nevertheless what is false for a vector is true for an array. An array is just a set of contiguous memory addresses on the stack and if we pass an array by value we pass its content by value.
 
 
 
@@ -551,7 +551,7 @@ So, yes, I lied. When we pass by value a vector of 100 `i32` we do not passe 100
 
 
 ---
-***You mentioned data on the heap. How to dereference this kind of data ?*** You read my mind this is what we will focus on now.
+***You mentioned data on the heap. How to dereference this kind of data ?*** You read my mind, this is what we will focus on now.
 
 ## Dereferencing: Allocations on the heap
 
@@ -598,11 +598,11 @@ Boxed value: 123
 {: .no_toc }
 * We first define 2 functions `print_ref` and `print_box`
 * Then, in order to allocate memory on the heap we use `Box::new()` (`let b = Box::new(123);`)
-* Let's keep in mind this create a unique pointer that own the pointed area.
+* Let's keep in mind this creates a unique pointer that own the pointed area.
 * Here the required space to store the value 123 (an `i32`, 4 bytes) is allocated on the heap
 * `b` a variable of type `Box<i32>` remains on the stack. `b` is a smart pointer which implements **RAII**
 * RAII = Ressource Acquisition Is Initialisation. This term is pretty well known in C++. This creates a wrapper around the allocated memory and warranty that the memory will be automatically freed when `b` goes out of scope (even if a `panic` or an early `return` happens)
-* Once the variable `b` exists, with a "simple" `println!` we print, the address on the heap which is in the Box (`println!("Address of the heap in the Box : {:p}", b);`).
+* Once the variable `b` exists, using a regular `println!` we print, the address on the heap which is in the Box (`println!("Address of the heap in the Box : {:p}", b);`).
 * Just to make sure we understand that the address of `b` (data type `Box<i32>`) on the stack has nothing to do with the address in the boxe (pointing to the heap) we print the address of `b` so that we can compare (`println!("Address of b on the stack      : {:p}", &b);`).
 * Next we dereference the boxe `b` and print the value it points to (`println!("Dereferenced Box: {}", *b);`). This is really cool because once the boxe is created, we use `b` has a regular reference to an `i32`.
 * In the call to `print_ref` we pass a reference to the box (`print_ref(&b);`). The box is borrowed and it remains available after the call. 
@@ -612,12 +612,12 @@ Boxed value: 123
 
 
 ---
-***Ok. Now I know how to safely allocate memory on the heap. But can I have 2 boxes pointing to the same area?*** I know what you mean. The heap allocated memory could be a picture of your brand new [Aprilia RSV4](https://www.aprilia.com/en_EN/models/rsv4/) and you would like to make sure your friends can look at it without modifying it. This is not possible with a box directly. So let's find a solution...
+***Ok. Now I know how to safely allocate memory on the heap. But can I have 2 boxes pointing to the same area?*** I know what you mean. The heap allocated memory could be a picture of your brand new [Aprilia RSV4](https://www.aprilia.com/en_EN/models/rsv4/) and you would like to make sure your friends can look at it without modifying it. This is not possible with a box directly. So let's find out another solution...
 
 
 
-## Dereferencing: `Rc<T>` and Reference Count
-Indeed, in order to manage memory efficiently we need to be smarter than a box and to include a counter in order to know how many people are currently watching the picture of your motorbike. Let's look at the code below :
+## Dereferencing: `Rc<T>` and Reference-counted smart pointers
+Indeed, in order to manage memory efficiently we need to be smarter than a `Box` and to include a counter in order to know how many people are currently watching the picture of your motorbike. Let's look at the code below :
 
 ```rust
 use std::rc::Rc;
@@ -681,8 +681,8 @@ Reference count (rc1): 2
 ### Explanations
 {: .no_toc }
 
-* We first create a reference counting pointer, pointing to the memory on the heap (`let rc1 = Rc::new(999);`)
-* Again, just to make sure we are in sync : Rc is for single-threaded only
+* We first create a reference-counted smart pointer, pointing to the memory on the heap (`let rc1 = Rc::new(999);`)
+* Again, just to make sure we are in sync : `Rc` is for single-threaded only
 * This said, we print the value and the address on the heap. I really don't like the fact that `Box` and `Rc` don't have similar API. For example why I can't write :
 
 ```rust
@@ -705,7 +705,7 @@ fn main(){
     println!("Address in Rc: {:p}", Rc::as_ptr(&rc1)); // 0x5eca24b8eb40
 }
 ```
-* Finally we demonstrate how to dereference an Rc when we call `print_rc(&rc1);`. Nothing fundamentally new here.
+* Finally we demonstrate how to dereference an `Rc` when we call `print_rc(&rc1);`. Nothing fundamentally new here.
 
 Then it becomes interesting...
 
@@ -713,8 +713,8 @@ Then it becomes interesting...
 
 Then it becomes *really* interesting... 
 
-* Indeed we clone the smart pointer we had (`let rc2 = Rc::clone(&rc1);`). It is important to keep in mind that no copy or worst, no deep copy happens. When applied to a reference-counted smart pointer, `.clone()` simply add 1 to the counter. The `.clone()` operation is fast and cheap.
-* Once rc2 is created we print the value it points to and the current value of the reference counter (`println!("Reference count (rc2): {}", Rc::strong_count(&rc2)); // 2`). This should not be a surprise but the counter of `rc1` and `rc2` are equal (otherwise we would be in be trouble)
+* Indeed we `.clone()` the smart pointer we had (`let rc2 = Rc::clone(&rc1);`). It is important to keep in mind that no copy or worst, no deep copy happens. When applied to a reference-counted smart pointer, `.clone()` simply add 1 to the counter. The `.clone()` operation is fast and cheap.
+* Once rc2 is created we print the value it points to and the current value of the counter (`println!("Reference count (rc2): {}", Rc::strong_count(&rc2)); // 2`). This should not be a surprise but the counter of `rc1` and `rc2` are equal (otherwise we would be in be trouble)
 
 In a last experiment we create a scope (`{` and `}`) where we create another clone (`let rc3 = Rc::clone(&rc2);`).
 * Before the end of the scope we display the counter of one of the clones (`println!("Reference count: {}", Rc::strong_count(&rc3)); // 3`)
@@ -730,7 +730,7 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 
 
 ---
-***Well, well, well... I know you will NOT talk about references in a multithreaded context but... What if I need to mutate the heap allocated memory ?*** This could be the case where the allocated memory represents your bank account where your company transfer your salary and where you would like to check the total amount available. To do so, we need to be even smarter than before...
+***Well, well, well... I know you will NOT talk about references in a multithreaded context but... What if I need to mutate the heap allocated memory ?*** This could represent allocated memory acting as your bank account—where your company deposits your salary and you check your available balance. To do so, we need to be even smarter than before...
 
 ## Dereferencing: `Rc<RefCell<T>>` for shared mutation (single-thread)
 
@@ -787,7 +787,7 @@ Reference count: 3
 ### Explanations
 {: .no_toc }
 
-* Let's say we want to share a vector `shared_vec` of`i32`
+* Let's say we want to share on the heap a vector `shared_vec` of`i32`
 * We would write : `let shared_vec = Rc::new(vec![1, 2, 3]);`
 * Since we want to add interior mutability (ability to mutate the content of the vector) we write : `let shared_vec = Rc::new(RefCell::new(vec![1, 2, 3]));`
 * Everthing we said about cloning and inspecting the counter remains valid. After all, ``shared_vec`` is a `Rc<Vec<i32>>`
@@ -796,18 +796,18 @@ Reference count: 3
 Then we create the first scope (more on this in few lines)
 * Inside the scope, we create `vec_ref` (`let mut vec_ref = a.borrow_mut();`). To make a long story short it borrow the wrapped object (`vec![1, 2, 3]`) with the ability to mutate it (`.borrow_mut()`). 
 * Then we push a value in the borrowed vector (`vec_ref.push(4);`) and print it
-* And the scope ends right after the `}` `vec_ref` goes out of scope and no one is borrowing the heap allocated vector
+* And the scope ends right after the `}`, `vec_ref` goes out of scope and no one is borrowing the heap allocated vector
 
 We then create a second scope
 * We create a new version `vec_ref` (`let vec_ref = b.borrow();`). This time it borrows `b` without the ability to mutate it (`.borrow()` not `.borrow_mut()`).
 * The print shows that the mutably shared vector has been mutated
 
 ***Why do we need scopes here ?***
-This is the one million dollars question... And you should have the answer. Make a test. Remove them and the code will panic on line `let vec_ref = b.borrow();`. Can you say why? 
+This is the one million dollars question baby! And you should know the answer. Make a test. Remove the scope and the code will panic on line `let vec_ref = b.borrow();`. Can you say why? 
 
 Without the scopes, when we reach the line `let vec_ref = b.borrow();`, on stage we have one borrower with mutability capabilities and we would like to add a borrower with read-only capabilities. No way. You know the rule : Only one writer or multiple readers. 
 
-One thing to keep in mind. The conflict among borrowers happen at runtime **not** at compile time
+One thing to keep in mind however. The conflict among borrowers happen at runtime **not** at compile time.
 
 This is what is demonstrated in the last scope. 
 * If you uncomment the second line `// let _second = shared_vec...`
@@ -820,14 +820,14 @@ This is what is demonstrated in the last scope.
 
 
 ---
-***Any tips and trick to share ?*** Here are a few common traps and surprises you might encounter (I did)
+***Any tips and tricks to share ?*** Here are a few common traps and surprises you might encounter (I did)
 
 ## Rust Gotchas: Dereferencing Edition
 
 1. **References are not pointers (exactly)**  
    They behave similarly but are *not* the same. You can't do pointer arithmetic, and they must always be valid and non-null.
 
-2. **`&mut` vs `mut`**  
+2. **`&mut` vs `mut` **  
 * `mut x`: you're allowed to modify `x`.  
 * `&mut x`: you're allowed to modify the *value* `x` points to (&mut is a compound operator in Rust, it is a single “logical keyword”, which reads "mutable reference to")
 * But `let mut x = &y;` only means that `x` (the reference) can change to point elsewhere — not that `y` is mutable!
@@ -838,7 +838,7 @@ This is what is demonstrated in the last scope.
 4. **Boxing isn't cloning**  
    `Box::new(value)` allocates `value` on the heap. It does *not* create a deep copy when passed by value — it moves ownership unless you explicitly `.clone()` the inner value.
 
-5. **Rc<T> cloning doesn’t clone the value**  
+5. **`Rc<T>` cloning doesn’t clone the value**  
    It just increments the reference counter. Great for sharing read-only access — but not safe across threads or for mutation without `RefCell`.
 
 6. **Deref coercion looks like magic**  
