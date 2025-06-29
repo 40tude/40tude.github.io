@@ -113,7 +113,7 @@ Whether you're just starting with Rust or adjusting your mental model, this post
 
 Copy and paste the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=95688f886df53f6776df8a63c0599ccd) then hit CTRL+ ENTER
 
-With the other sample code I will only show the function of interest, not the `main()` function.
+With the others sample code I will only show the function of interest, not the `main()` function.
 
 ```rust
 fn dereferencing01() {
@@ -144,7 +144,7 @@ content_at_addr_of_my_value : 5
 
 ### Explanations
 {: .no_toc }
-* `my_value` is a binding (a variable) of type `i32` and it has the value 5. If you are not sure about the difference between binding and variable keep the term variable in mind for no, **but** put your hand on your heart and swear you will read this [page in English]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
+* `my_value` is a binding (a variable) of type `i32` and it has the value 5. If you are not sure about the difference between binding and variable keep the term variable in mind for now, **but**, stand up, put your right hand on your heart and swear you will read this [page in English]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
 * Next come the interesting part. `addr_of_my_value` is a **reference** to `my_value`. Its value is the memory address of `my_value`. I hope you already know that every variable, data structure, code... Is somewhere in the memory of the PC. So they all have a memory address. The syntax is what it is and the `&my_value` means, in plain English : address of `my_value`
 
 
@@ -152,7 +152,7 @@ content_at_addr_of_my_value : 5
 
 
 
-***Ah OK. So a reference is a pointer. Right?*** Almost because they are both used to indirectly access and manipulate objects but **no** because they have key differences. Since there is no pointer in Rust (I know `*const T` and `*mut T` but let's avoid them for today), let's illustrate de differences between pointers and references using C++. No worries. Syntax is very similar.  
+***Ah OK. So a reference is a pointer. Right?*** Almost because they are both used to indirectly access and manipulate objects but **no** because they have key differences. Since there is no pointer in Rust (I know `*const T` and `*mut T` exist but let's avoid them for today), let's illustrate de differences between pointers and references using C++. No worries, the syntax is very similar.  
 
 ### References and Pointers comparaison in C++
 {: .no_toc }
@@ -255,18 +255,53 @@ content_at_addr_of_my_value : 5
 ## Dereferencing: Mutability
 
 Just to make sure we are on the same page. There are 2 kinds of mutability to consider here :
-1. We want the reference to point to a mutable variable : mutability of the referenced variable
-1. We want the reference to be able to point to different variables (of the same type) : mutability of the reference
+1. We may want the reference to point to a mutable variable : mutability of the reference
+1. We may want the reference to be able to point to different variables (of the same type) : mutability of the binding
 
 If you don't feel confident enough to explain this concept to your kids, read this [page about Mutability]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
 
-In the first part of the code below we focus on the mutability of the referenced variable. Let's run the code!
+In the the code below we focus on the mutability of the reference. Let's run the code!
+
+<!-- 
+```rust
+fn main(){
+    // In Rust, the term “mutable reference” (&mut) refers only to the right to modify the pointed data, 
+    // not to the possibility of reassigning the reference itself.
+    // The mutability of the binding (let vs let mut) is a distinct and independent notion.
+
+    let my_value = 5; 
+    let ref_to_my_value = &my_value; // immutable reference to an immutable variable
+    // my_value +=1; // does not compile because my_value is not mut
+    // *ref_to_my_value += 1; // does not compile because it refers to &my_value not to &mut my_value
+    println!("{}", ref_to_my_value); // 5
+
+    let my_value = 5; 
+    // let ref_to_my_value = &mut my_value; // does not compile because my_value in not mut
+    println!("{}", my_value); // 5
+
+    let mut my_value = 5; 
+    my_value +=1; 
+    let ref_to_my_value = &my_value; // immutable reference to a mutable variable
+    // my_value +=1; // does not compile compile because my_value is borrowed
+    // *ref_to_my_value += 1; // does not compile because it refers to &my_value not &mut my_value
+    println!("{}", ref_to_my_value); // 6
+    // my_value +=1; // possible as soon as ref_to_my_value goes out of scope (end of borrowing)
+    
+    let mut my_value = 5; 
+    my_value +=1; 
+    let ref_to_my_value = &mut my_value; // mutable reference to a mutable variable
+                                         // &mut my_value creates a mutable reference (&mut T), which can be used to modify the pointed value.
+    *ref_to_my_value += 1; // the 
+    println!("{}", ref_to_my_value); // 7
+}
+``` 
+-->
 
 
 
 ```rust
 fn dereferencing02_1() {
-    println!("\nDereferencing 02_1 : mutabMutability of the referenced variableility\n");
+    println!("\nDereferencing 02_1 : Mutability of the reference\n");
     let my_value = 5; // immutable variable
     println!("my_value : {}", my_value);
     let ref_to_my_value = &my_value; // immutable reference to immutable variable
@@ -278,7 +313,10 @@ fn dereferencing02_1() {
 
     let mut my_mutable_value = 55; // mutable variable
     println!("my_mutable_value : {}", my_mutable_value);
-    let ref_to_my_mutable_value = &mut my_mutable_value; // mutable reference to mutable value
+    let ref_to_my_mutable_value = &mut my_mutable_value; // mutable reference to mutable variable
+                                                         // &mut my_mutable_value creates a mutable reference
+                                                         // which can be used to modify the pointed value
+                                                         // my_mutable_value is already a mutable variable
     println!("ref_to_my_mutable_value : {}", ref_to_my_mutable_value);
     println!();
     *ref_to_my_mutable_value += 1;
@@ -292,7 +330,7 @@ fn dereferencing02_1() {
 {: .no_toc }
 
 ```
-Dereferencing 02_1 : mutabMutability of the referenced variableility
+Dereferencing 02_1 : Mutability of the reference
 my_value : 5
 ref_to_my_value : 5
 my_mutable_value : 55
@@ -312,7 +350,7 @@ my_mutable_value : 56
 
 Here's how we can address this issue
 * We create and print a mutable variable (`let mut my_mutable_value = 55;`)
-* Then create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable
+* Then we create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable. The point I did'nt get at the beginning is that this is the `&mut my_mutable_value` that create a mutable reference which is assigned to a non mutable variable named `ref_to_my_mutable_value` (`let ref_to_my_mutable_value`). 
 * We mutate the content of the reference (`*ref_to_my_mutable_value += 1;`)
 * Finally we print both, the content of the reference and the variable
 
@@ -321,7 +359,7 @@ Now, let's run this code :
 
 ```rust
 fn dereferencing02_2() {
-    println!("\nDereferencing 02_2 : Mutability of the reference\n");
+    println!("\nDereferencing 02_2 : Mutability of the binding\n");
     let my_value = 5; // immutable variable
     println!("my_value : {}", my_value);
     let other_value = 42;
@@ -353,7 +391,7 @@ fn dereferencing02_2() {
 {: .no_toc }
 
 ```
-Dereferencing 02_2 : Mutability of the reference
+Dereferencing 02_2 : Mutability of the binding
 my_value : 5
 other_value : 42
 ref_to_my_value : 5
@@ -365,7 +403,7 @@ other_value : 3.141592653589793
 ### Explanations
 {: .no_toc }
 
-In the second part of the code we look at the mutability of the reference itself. We want the reference being able to "point to" different variables.
+In the code we look at the mutability of the binding. We want the reference being able to "point to" different variables.
 
 * We create 2 immutable variables (`let my_value = 5;`, `let other_value = 42;`)
 * We create an immutable reference to an immutable variable (`let ref_to_my_value = &my_value;`)
@@ -375,9 +413,9 @@ Here's what we can do
 * We could "write over" (shadowing) the previous reference (`let ref_to_my_value = &other_value;`)
 
 Here's another option
-* We create a mutable reference to an immutable variable (`let mut mut_ref_to_my_value = &my_value;`)
-* The reference can then be mutated and "point to" another variable (`let mut mut_ref_to_my_value = &my_value;` then `mut_ref_to_my_value = &other_value;`)
-* A mutable reference can only reference variable of the same type. The first version of `other_value` was an `i32`. Now if we create a `f64` version of `other_value` (`let other_value = std::f64::consts::PI;`), `mut_ref_to_my_value` cannot point to it. The very last line does not compile.
+* We create a mutable binding to an immutable variable (`let mut mut_ref_to_my_value = &my_value;`)
+* The binding `mut_ref_to_my_value` can then be mutated and "point to" another variable (`let mut mut_ref_to_my_value = &my_value;` then `mut_ref_to_my_value = &other_value;`)
+* Such mutable binding can only points to variable of the same type. The first version of `other_value` was an `i32`. Now if we create an `f64` version of `other_value` (`let other_value = std::f64::consts::PI;`), `mut_ref_to_my_value` cannot point to it. The very last line does not compile.
 
 
 
