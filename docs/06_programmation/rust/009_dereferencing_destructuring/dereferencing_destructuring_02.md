@@ -31,8 +31,8 @@ last_modified_date : 2025-06-27 09:00:00
 ## The post is in 2 parts
 {: .no_toc }
 
-* [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs\06_programmation\rust\009_dereferencing_destructuring\dereferencing_destructuring_01.md%})
-* [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs\06_programmation\rust\009_dereferencing_destructuring\dereferencing_destructuring_02.md%})
+* [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
+* [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
 ---
 ## Table of Contents
