@@ -315,10 +315,13 @@ content_at_addr_of_my_value : 5
 {: .no_toc }
 
 * Syntax 
-    * `let ref_to_my_value = &my_value;` 
-    * `let content_ref     = *ref_to_my_value;`
+    * `let ref_to_value = &my_value;` 
+    * `let content      = *ref_to_value;`
+* Where
+    * `&my_value` is a reference
+    * `ref_to_value` is a variable (immutable here) which receive a reference
 * Not dangling. A reference is bound to an object
-* Reassignable if `&mut`, not reassignable otherwise 
+* Mutable. If the variable which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned an other reference (of the same type) 
 * No arithmetic on a reference
 
 
@@ -333,8 +336,8 @@ content_at_addr_of_my_value : 5
 ## Dereferencing: Mutability
 
 Just to make sure we are on the same page. There are 2 kinds of mutability to consider here :
-1. We may want the reference to point to a mutable variable : mutability of the reference
-1. We may want the reference to be able to point to different variables (of the same type) : mutability of the binding
+1. Mutability of the reference target controls whether we can modify the value through the reference.
+1. Mutability of the binding controls whether we can assign a new reference to the variable.
 
 If you don't feel confident enough to explain this concept to your kids, read this [page about Mutability]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
 

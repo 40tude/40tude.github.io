@@ -92,7 +92,12 @@ For example, if a program needs 20 hours using a single processor core, and a pa
 [http://en.m.wikipedia.org/wiki/Amdahl's_law](http://en.m.wikipedia.org/wiki/Amdahl%27s_law)
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Assignment vs Initialization
 
+* Initialization : gives a variable an **initial** at creation time. 
+* Assignment : update the value of an existing variable
 
 
 <!-- ###################################################################### -->
