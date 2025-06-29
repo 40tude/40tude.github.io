@@ -125,7 +125,6 @@ fn dereferencing01() {
     let content_at_addr_of_my_value = *addr_of_my_value; // content_at_addr_of_my_value => i32
     println!("content_at_addr_of_my_value : {}", content_at_addr_of_my_value);
 }
-
 fn main(){
     dereferencing01();
 }
@@ -272,7 +271,8 @@ fn dereferencing02_1() {
     println!("ref_to_my_value : {}", ref_to_my_value);
     println!();
 
-    // *ref_to_my_value = 24; // => does not compile: `ref_to_my_value` is a `&` reference, so the data it refers to cannot be written
+    // *ref_to_my_value = 24; // => does not compile
+                              // ref_to_my_value is a `&` reference so the data it refers to cannot be written
 
     let mut my_mutable_value = 55; // mutable variable
     println!("my_mutable_value : {}", my_mutable_value);
@@ -284,7 +284,6 @@ fn dereferencing02_1() {
     println!("my_mutable_value : {}", my_mutable_value);
     println!();
 }
-
 ```
 
 ### Expected output 
@@ -330,7 +329,8 @@ fn dereferencing02_2() {
     println!("ref_to_my_value : {}", ref_to_my_value);
     println!();
 
-    // ref_to_my_value = &other_value; // => does not compile: cannot assign twice to immutable variable `ref_to_my_value`
+    // ref_to_my_value = &other_value; // => does not compile
+                                       // cannot assign twice to immutable variable `ref_to_my_value`
     
     let ref_to_my_value = &other_value; // => shadowing. Does compile
     println!("ref_to_my_value : {}", ref_to_my_value); // => ref_to_my_value: &i32
@@ -396,8 +396,10 @@ fn dereferencing03() {
         println!("{:?}", v); // deref coercion in action
     }
     fn my_function03(v: &[i32]) {   // accept reference to vectors or arrays
-        // println!("{:?}", *v);    // Does not compile because *v is of type [i32] with no Sized trait (expected by println!)
-                                    // Only references like `&[i32]` implement the `Debug` trait; `[i32]` alone doesn't, as it's dynamically sized)
+        // println!("{:?}", *v);    // Does not compile because *v is of type [i32] with no Sized trait 
+                                    // Sized trait expected by println!()
+                                    // Only references like `&[i32]` implement the `Debug` trait; 
+                                    // `[i32]` alone doesn't, as it's dynamically sized)
         println!("{:?}", &*v);      // Overkill ?
         println!("{:?}", v);
     }
@@ -536,7 +538,6 @@ fn dereferencing04() {
     // Can also pass the Box directly if signature matches
     print_box(b); // b is moved here
 }
-
 ```
 
 
@@ -608,7 +609,6 @@ fn dereferencing05() {
     println!("\nAfter rc3 is dropped:");
     println!("Reference count (rc1): {}", Rc::strong_count(&rc1)); // 2
 }
-
 ```
 
 
@@ -643,6 +643,7 @@ Reference count (rc1): 2
 * We first create a reference counting pointer, pointing to the memory on the heap (`let rc1 = Rc::new(999);`)
 * Again, just to make sure we are in sync : Rc is for single-threaded only
 * This said, we print the value and the address on the heap. I really don't like the fact that `Box` and `Rc` don't have similar API. For example why I can't write :
+
 ```rust
 use std::rc::Rc;
 
@@ -725,8 +726,6 @@ fn dereferencing06() {
     // Reference count stays at 3 until `a`, `b`, and `shared_vec` go out of scope
     println!("Reference count: {}", Rc::strong_count(&shared_vec)); // 3
 }
-
-
 ```
 
 
