@@ -163,23 +163,25 @@ content_at_addr_of_my_value : 5
 - **Pointer**: Declared with `*`, can be reassigned to point to different objects (or `nullptr`).
   ```cpp
   int x = 10;
-  int* ptr = &x;  // ptr is a pointer pointing to x
+  int* ptr = &x; // ptr is a pointer pointing to x
   int y = 20;
-  ptr = &y;       // Now pointer is pointing to y
+  ptr = &y;      // Now pointer is pointing to y
   ```
 - **Reference**: Declared with `&`, must be initialized upon declaration and **cannot be reassigned**.
+
   ```cpp
   int x = 10;
-  int& ref = x;     // ref is an alias, another name, for x
+  int& ref = x; // ref is an alias, another name, for x
   int y = 20;
-  ref = y;          // Doesn't make ref point to y; instead, assigns y's value to x because ref is an alias of x
+  ref = y;      // Doesn't make ref point to y; instead, assigns y's value to x 
+                // because ref is an alias of x
   ```
 
 #### **2. Nullability**
 {: .no_toc }
 - **Pointer**: Can be `nullptr` (uninitialized or explicitly set to null).
   ```cpp
-  int* ptr = nullptr;  // Valid
+  int* ptr = nullptr;   // Valid
   ```
 - **Reference**: Must always refer to a valid object (no null references).
   ```cpp
@@ -272,7 +274,7 @@ fn dereferencing02_1() {
     println!();
 
     // *ref_to_my_value = 24; // => does not compile
-                              // ref_to_my_value is a `&` reference so the data it refers to cannot be written
+                              // ref_to_my_value is a `&` ref so the data it refers to cannot be written
 
     let mut my_mutable_value = 55; // mutable variable
     println!("my_mutable_value : {}", my_mutable_value);
@@ -652,7 +654,8 @@ fn main(){
     println!("Dereferenced Box: {}", b); // 999
     println!("Dereferenced Box: {}", *b); // 999
     println!("Address in the Box : {:p}", b); // 0x5eca24b8eb10
-    // println!("Address in the Box : {:p}", Box::as_ptr(&b)); // Does'nt compile : use of unstable library feature `box_as_ptr`
+    // Does'nt compile use of unstable library feature `box_as_ptr`
+    // println!("Address in the Box : {:p}", Box::as_ptr(&b)); 
 
     println!();
     
