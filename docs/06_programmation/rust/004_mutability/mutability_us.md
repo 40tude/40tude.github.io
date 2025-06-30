@@ -252,13 +252,13 @@ const   MAX_SCORE: u32  = 42; // a constant
 
 Ok, let's go back on track. Regarding the previous code, it's not better or worse in C++, it's just a different philosophy. In C++ I have to specify if I want a variable to be constant. In Rust I have to specify if I want a binding to be mutable. From a security/safety point of view there is undoubtedly an advantage to everything being constant by default. It's true that if we can avoid breaking a rocket at takeoff by writing a 1 where it shouldn't, it's not so bad. For the rest, I'm certain that if tomorrow we could rewrite the ISO specifications of C++ it's the choice we would make (C dates from 72 and C++ from 85 while Rust only dates from 2006).
 
-Now that we've talked about binding and non-mutability by default, if I go back to the first line of code:
+Now that we've talked about binding and immutability by default, if I go back to the first line of code:
 
 ```rust
 let vec0 = vec![22, 44, 66];
 ```
 
-``vec0`` is indeed a non-mutable binding on a ``Vec<i32>``.
+``vec0`` is indeed a immutable binding on a ``Vec<i32>``.
 
 ***Um... Wait... Is it the binding that's immutable? Isn't it the contents of the vector? Are you sure about that?***
 
@@ -337,7 +337,7 @@ I'm still stuck on the first line of code. So I don't want to talk about functio
 ***Ok... Mutability is associated with binding... But then the data is modifiable? I don't understand anything!***
 
 ### A first detour to understand what happens in memory
-Don't move. We're going to have to take a detour to understand what's happening in memory. This should allow us to realize that in the latter, physically, all areas are potentially mutable. What saves us is that in the code we announce what we want (mutable, non-mutable) and then the compiler, aka Vinz Clortho, Gozer's Key Master, keeps an eye on things and authorizes (or not) that this or that memory area be modified.
+Don't move. We're going to have to take a detour to understand what's happening in memory. This should allow us to realize that in the latter, physically, all areas are potentially mutable. What saves us is that in the code we announce what we want (mutable, immutable) and then the compiler, aka Vinz Clortho, Gozer's Key Master, keeps an eye on things and authorizes (or not) that this or that memory area be modified.
 
 <!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/o1T-D_37qz0?si=SJxX45O-FpypvG-1&amp;start=14" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -419,7 +419,7 @@ We can remember that:
         * the function retrieves them in the correct order (pop)
     * we only put parameters of known size and simple types (trivially copyable) in the stack: int, bool, float, fixed array, tuple & struct with simple types, memory addresses
 1. the heap is a free area of ​​the field where you can drop things
-    * These things (data structures) can have dynamic sizes
+    * these things (data structures) can have dynamic sizes
     * everyone (all functions) who knows where a thing is (it know its address) can access it in reading or writing
 
 So we understand why the vector is composed of 2 pieces:
@@ -550,7 +550,7 @@ And there you have it. You understand why ``Vec<T>`` it's so "complicated". It's
 
 ### End of the second detour. Back to the question concerning the mutability of data in memory.
 
-As we have seen, the heap and the stack are in the virtual memory space that the program perceives. “Physically" these two areas are mutable. For example, we don't have the means to store non-mutable data in read-only memory.
+As we have seen, the heap and the stack are in the virtual memory space that the program perceives. “Physically" these two areas are mutable. For example, we don't have the means to store immutable data in read-only memory.
 
 So to answer the question: yes, potentially the data (whether on the heap or in the stack) is all mutable.
 
@@ -558,9 +558,9 @@ What guarantees that the correct read and write operations are performed on the 
 
 It's like in C++. If I declare a variable ``const``, whether it's on the heap or in the stack, if I modify it I get hit on the fingers with a ruler (and the ruler is made of metal, not rotten plastic).
 
-At our level, we can imagine that during compilation, there is a table which takes inventory of all the bindings, of all the memory zones and that if at some point, a piece of code tries to modify a non-mutable binding, the compiler screams.
+At our level, we can imagine that during compilation, there is a table which takes inventory of all the bindings, of all the memory zones and that if at some point, a piece of code tries to modify a immutable binding, the compiler screams.
 
-The thing is, this heavy, long, and tedious analysis only takes place during compilation. The goal is that at the end of the latter, we know for sure that at the time of execution everything will go well and that we will not try to modify a non-mutable binding for example.
+The thing is, this heavy, long, and tedious analysis only takes place during compilation. The goal is that at the end of the latter, we know for sure that at the time of execution everything will go well and that we will not try to modify a immutable binding for example.
 
 Finally, when everything is proven, when the code is compiled, we go for it. At runtime there are no more tables or anything else. Everything happens as if the day before the MotoGP tests you take your bike and go for a lap of the track. You go slowly, you note everything. The little bump here, the dip there, right at the apex, the spot to use as a braking point... You go slowly and if necessary you retrace your steps. When it's clear, when everything is checked, the next day you don't ask yourself any more questions... Full throttle!
 
@@ -611,7 +611,7 @@ One last note before moving on. For now, we've only seen the "mutability" proper
 In fact, considering the code test we did and the 2 (long) detours we took, it is clear that:
 * Data, whether on the heap or in the stack, it doesn't matter, is always modifiable.
 * The compiler knows the mutability properties of different bindings
-* During static analysis the compiler detects if the code tries to do something forbidden (modify a non-mutable binding for example)
+* During static analysis the compiler detects if the code tries to do something forbidden (modify a immutable binding for example)
 * What is allowed or forbidden is what is written as property in the binding
 
 So yes, I confirm mutability is a property of binding
@@ -629,7 +629,7 @@ We're still on the first line of code (at this rate we're not out of the woods y
 let vec0 = vec![22, 44, 66];
 ```
 
-On the other hand, big progress... From now on we understand the sentence: ``vec0`` is a non-mutable binding which links the name ``vec0`` to the complete state of a concrete instance of ``Vec<i32>``.
+On the other hand, big progress... From now on we understand the sentence: ``vec0`` is a immutable binding which links the name ``vec0`` to the complete state of a concrete instance of ``Vec<i32>``.
 
 ***Um... Sorry... I understand 80% of the sentence but I don't understand why you're talking about "the complete state of a concrete instance"***. In fact, it took me a long time to get to this sentence. Let me explain, and for that, we start from the line of code:
 
@@ -639,7 +639,7 @@ let vec0 = vec![22, 44, 66];
 
 What you'll read here and there is usually stuff like "a binding links a name to a value".
 
-In the specific case of the line of code you might read things like: "``vec0`` is a non-mutable binding that binds the name ``vec0`` to the value ``Vec<i32>``"
+In the specific case of the line of code you might read things like: "``vec0`` is a immutable binding that binds the name ``vec0`` to the value ``Vec<i32>``"
 
 OK... Great, but what is the value? The PLC part of the vector? The values ​​in the table? Actually, it's all of these things at once. Since I had a lot of trouble with the word “value" in the case of a vector, my first idea was to tell myself that the “value" of a vector (or any other non-trivial data structure) is the hash code of the instance.
 
@@ -667,18 +667,18 @@ fn main() {
 ```
 
 
-It was becoming clearer to me and I could say to myself: ``vec0`` is a non-mutable binding that links the name ``vec0`` to the hash code of the vector instance. And there "[Bingo, here is DNA dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)". No, not quite but "Bingo, now I understand that if I modify one of the PLC values ​​or one of the table values ​​I will take one because that will modify the hash code value." 
+It was becoming clearer to me and I could say to myself: ``vec0`` is a immutable binding that links the name ``vec0`` to the hash code of the vector instance. And there "[Bingo, here is DNA dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)". No, not quite but "Bingo, now I understand that if I modify one of the PLC values ​​or one of the table values ​​I will take one because that will modify the hash code value." 
 
 But if you think about it, the hash code captures and synthesizes, in a single value, the state at a given time ``t`` of the instance I have in my hands. In other words, if I now talk about **state** rather than hash code, it amounts to the same thing.
 
 The description of the first line of code evolves and becomes:
 
-1. ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the state of a Vec<i32>.
-1. ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the full state of a Vec<i32>. This is to say that in a vector it concerns the data and the control structure.
-1. ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the full state of an instance of ``Vec<i32>``. Yes because in the code I manipulate instances rather than types.
+1. ``vec0`` is a immutable binding that binds the name ``vec0`` to the state of a Vec<i32>.
+1. ``vec0`` is a immutable binding that binds the name ``vec0`` to the full state of a Vec<i32>. This is to say that in a vector it concerns the data and the control structure.
+1. ``vec0`` is a immutable binding that binds the name ``vec0`` to the full state of an instance of ``Vec<i32>``. Yes because in the code I manipulate instances rather than types.
 1. ``vec0`` is an immutable binding that binds the name ``vec0`` to the full state of a concrete instance of a type ``Vec<i32>``. Probably too much. It's just to emphasize that the instance in question is something like ``Vec`` or ``String`` and not really an abstract type (Trait).
 
-Finally, what I keep in mind is: ``blablabla`` is a (non-)mutable **binding** that binds the name ``blablabla`` to the **state** of a concrete instance of a type ``<T>``.
+Finally, what I keep in mind is: ``blablabla`` is a (im)mutable **binding** that binds the name ``blablabla`` to the **state** of a concrete instance of a type ``<T>``.
 
 That being explained, let's go back and about the first line of code
 
@@ -882,7 +882,7 @@ I'll let you think about it... So?
 
 Remember, Barbara, what circulates through the stack is not the data set itself. Here we have only that, ``[22, 44, 66]`` but in fact, thanks to the principle of indirection and the pointer of the control structure, the number of values ​​in the vector does not matter. Only the control structure (PLC) which contains 3 simple type values ​​will pass through the stack. To give you an idea, we can assimilate these 3 data to 3 64-bit integers. It's super fast and, above all, it's independent of the number of values ​​in the vector.
 
-On the other hand, you have to keep in mind that it's not a **copy** of ``vec0`` dans ``vec`` sur but a **move** (hence the name of the exercise. Clever guys...).
+On the other hand, you have to keep in mind that it's not a **copy** of ``vec0`` in ``vec`` but a **move** (hence the name of the exercise. Clever guys...).
 
 ***Wait, wait... You can come back to your move story. You went a little too fast.*** No problem. If I make a copy of simple type variables (trivially copyable, int, float... but not a ``Vec<T>``) the code below works as expected:
 
@@ -992,7 +992,7 @@ Well, of course, no one reads it and everyone complains... Let's make the effort
 
 The compiler clearly indicates what is causing the problem: ``^^^ cannot borrow as mutable`` and it tells us that it is ``vec`` the one responsible. The icing on the cake is that it even gives us the solution. It says ``consider changing this to be mutable``. And as if that wasn't enough, it finally gives the solution ``fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> {`` with little ones ``+++`` like in a diff to tell us what to add. Isn't that cute?
 
-Seriously, we're almost reaching Nirvana. Apart from the word ``borrow``, he's got it all right. Basically what he's saying is that ``vec`` being a non-mutable binding, it doesn't allow the method to be invoked ``.push()`` on it. In fact, the latter attempts to modify the state of the concrete instance by adding the value 88 to it.
+Seriously, we're almost reaching Nirvana. Apart from the word ``borrow``, he's got it all right. Basically what he's saying is that ``vec`` being a immutable binding, it doesn't allow the method to be invoked ``.push()`` on it. In fact, the latter attempts to modify the state of the concrete instance by adding the value 88 to it.
 
 ***So what do we do then?*** Read, I tell you... The compiler gave us the solution. We need to re-qualify the binding ``vec``. Remember, by default everything is immutable. So in the signature:
 
@@ -1014,9 +1014,9 @@ Let's go back to the time of the call. What exactly is happening... Remember the
 
 To comply with this rule, we explained that ``vec0`` it was "moved" and no longer usable after the function call. So, don't worry, ``vec0`` since it's no longer usable, no one can empty your bank account or steal your digital identity. The "secure" aspect is fine, it's taken care of.
 
-Next, and this is important to realize. It's not the data or memory areas that are mutable or non-mutable. It's the bindings (mutability is a property of the binding). Typically, the data allocated on the heap at the time of creation of ``vec0`` was "physically" mutable. On the other hand, the compiler monitored the mutability of the binding ``vec0``, it saw that we hadn't done anything illegal and it worked. Then, we move the binding from ``vec0`` to vec. OK, fine. But if I give you my Ferrari. Nothing prevents you from adding a caravan hook or repainting it yellow. You are the new owner, you do what you want. In other words, it is not forbidden when transferring the binding from ``vec0`` to ``vec`` to reclassify it as mutable. We will then have the right to modify the state of the concrete instance at the other end of the binding.
+Next, and this is important to realize. It's not the data or memory areas that are mutable or immutable. It's the bindings (mutability is a property of the binding). Typically, the data allocated on the heap at the time of creation of ``vec0`` was "physically" mutable. On the other hand, the compiler monitored the mutability of the binding ``vec0``, it saw that we hadn't done anything illegal and it worked. Then, we move the binding from ``vec0`` to vec. OK, fine. But if I give you my Ferrari. Nothing prevents you from adding a caravan hook or repainting it yellow. You are the new owner, you do what you want. In other words, it is not forbidden when transferring the binding from ``vec0`` to ``vec`` to reclassify it as mutable. We will then have the right to modify the state of the concrete instance at the other end of the binding.
 
-Again, these mutability stories are a property of the binding, not the binding data. However, it is a contract that we sign with the compiler and that we agree to respect. If I say that ``vec`` is non-mutable in the signature, I do not have the right to modify the state of the type instance ``Vec<i32>`` (and vice versa if I qualify the binding with ``mut``). It is the compiler, and in particular Rust's borrow checker, which is responsible for enforcing the law, and we are allowed to say that it is as accommodating as Judge Dredd.
+Again, these mutability stories are a property of the binding, not the binding data. However, it is a contract that we sign with the compiler and that we agree to respect. If I say that ``vec`` is immutable in the signature, I do not have the right to modify the state of the type instance ``Vec<i32>`` (and vice versa if I qualify the binding with ``mut``). It is the compiler, and in particular Rust's borrow checker, which is responsible for enforcing the law, and we are allowed to say that it is as accommodating as Judge Dredd.
 
 
 <div align="center">
@@ -1045,7 +1045,7 @@ fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32> {
 } 
 
 // fn main() {
-    // vec0 is a non mutable binding 
+    // vec0 is a immutable binding 
     // A binding associates a name to a value + rules of ownership & borrowing
     // mutability is a property of the binding NOT a property of the value (nor the name)
     // The term binding in Rust represents a strong contract with the compiler, not just a “classic" variable.
@@ -1199,7 +1199,7 @@ In plain English, this means that during the static analysis of code, we will fo
 * for a mutable reference you will see ``my_function(&mut bob)`` with a space
     * ``&mut`` is a compound operator in Rust
     * ``&mut`` is a single “logical keyword", which reads “mutable reference to"
-* for a non-mutable reference you will see especially ``my_function(&bob)`` without a space whereas ``shift_zeros_to_the_end(& vec0)`` is just as legal but not or very little used (I don't know why, it must be historical)
+* for a immutable reference you will see especially ``my_function(&bob)`` without a space whereas ``shift_zeros_to_the_end(& vec0)`` is just as legal but not or very little used (I don't know why, it must be historical)
 
 
 
@@ -1210,7 +1210,7 @@ In plain English, this means that during the static analysis of code, we will fo
 ### About ``fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>)``
 It's going to be fast. Very fast. Because from now on, we are strong, very strong...
 
-The function has a single parameter which is a non-mutable binding that binds the name ``nums_in`` to the state of a concrete instance of type ``&mut Vec<i32>``. It is very important to see here that the binding is non-mutable but that the concrete instance to which the name ``num_in`` is bound is, itself, mutable.
+The function has a single parameter which is a immutable binding that binds the name ``nums_in`` to the state of a concrete instance of type ``&mut Vec<i32>``. It is very important to see here that the binding is immutable but that the concrete instance to which the name ``num_in`` is bound is, itself, mutable.
 
 ***What, what, what... I didn’t understand anything***. In the first part we had
 
@@ -1220,7 +1220,7 @@ fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32>{...}
 
 And we said in the comments: ``vec0`` is a mutable binding that links the name ``vec0`` to the complete state of a concrete instance of type ``Vec<i32>``.
 
-Here, there is no ``mut`` in front of ``nums_in`` so ``nums_in`` it is a non-mutable binding. Then the binding associates the name ``nums_in`` with what? To the state of a concrete instance of the type ``&mut Vec<i32>``. In the case of a reference type (mutable or not) on a thing, a concrete instance is the reference itself. So, I repeat: ``nums_in`` is a non-mutable binding that connects the name ``nums_in`` to a concrete instance of type ``&mut Vec<i32>``.
+Here, there is no ``mut`` in front of ``nums_in`` so ``nums_in`` it is a immutable binding. Then the binding associates the name ``nums_in`` with what? To the state of a concrete instance of the type ``&mut Vec<i32>``. In the case of a reference type (mutable or not) on a thing, a concrete instance is the reference itself. So, I repeat: ``nums_in`` is a immutable binding that connects the name ``nums_in`` to a concrete instance of type ``&mut Vec<i32>``.
 
 The binding is not mutable but the state of ``Vec<i32>`` is mutable through the reference.
 
@@ -1231,7 +1231,7 @@ The binding is not mutable but the state of ``Vec<i32>`` is mutable through the 
 ### The solution with associated comments
 ```rust
 
-// the function use a non mutable binding that links the name nums_in to the state of an instance of type ``&mut Vect<i32>`` 
+// the function use a immutable binding that links the name nums_in to the state of an instance of type ``&mut Vect<i32>`` 
 // The binding nums_in is immutable, but it holds a mutable reference
 // This means we can mutate the Vec it points to, but we cannot reassign nums_in itself
 // nums_in cannot be reassigned to point to another Vec
@@ -1274,7 +1274,7 @@ fn main(){
 
 Yes, well done... It doesn't compile...
 
-Yes, but why? Yes, well done again! We create a non-mutable binding ``vec0`` that we then pass as a mutable reference to the function ``shift_zeros_to_the_end()``. The compiler rightly points out to us that we shouldn't take it for an fool, that it has seen our shenanigans and that consequently it stops the compilation. Not one to hold a grudge, it indicates a solution which consists of adding a ``mut`` in front of ``vec0``.
+Yes, but why? Yes, well done again! We create a immutable binding ``vec0`` that we then pass as a mutable reference to the function ``shift_zeros_to_the_end()``. The compiler rightly points out to us that we shouldn't take it for an fool, that it has seen our shenanigans and that consequently it stops the compilation. Not one to hold a grudge, it indicates a solution which consists of adding a ``mut`` in front of ``vec0``.
 
 
 
@@ -1517,17 +1517,17 @@ fn main() {
 
 There are no traps or complicated things that we haven't seen.
 
-* ``s1`` is a non-mutable binding that binds the name ``s1`` to the state of a concrete instance of type String.
-* We start by creating a non-mutable binding that links the name ``result`` to the state of a concrete instance of the type “I don’t know yet, we’ll see later"
+* ``s1`` is a immutable binding that binds the name ``s1`` to the state of a concrete instance of type String.
+* We start by creating a immutable binding that links the name ``result`` to the state of a concrete instance of the type “I don’t know yet, we’ll see later"
 * We create an artificial scope with two curly braces. This will be especially useful in the last example. Here, it's just so the codes in the examples are very similar.
-* ``s2`` is a non-mutable binding that binds the name ``s2`` to the state of a concrete instance of type String.
+* ``s2`` is a immutable binding that binds the name ``s2`` to the state of a concrete instance of type String.
 * We call a function ``longest`` to which we pass the 2 bindings
 * The return binding of the function ``longest`` is moved in ``result`` (this is when the compiler deduces that ``result`` will be a binding to the state of an instance of a String type)
 * We display
 * We get out the artificial scope
 * We display
 
-Concerning the function, ``longest`` it receives 2 non-mutable bindings on String types (well, I'll keep it short, you get the idea) and it returns a binding of type String.
+Concerning the function, ``longest`` it receives 2 immutable bindings on String types (well, I'll keep it short, you get the idea) and it returns a binding of type String.
 * The thing to note is that in Rust the ``if`` are expressions, not statements.
 * In other words, one ``if`` returns a value and that is precisely what is done in the single line of code
 * Also note that there is no ``;`` at the end of the line because the value of the ``if`` expression is the returned binding

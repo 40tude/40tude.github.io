@@ -299,6 +299,18 @@ Frameworks are distinct from libs :
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Indirection
+
+* "All problems in computer science can be solved by another level of indirection." 
+    * David Wheeler
+* Exemple : Passing a reference to a vector rather than passing the vector itself as an argument of a function.
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->

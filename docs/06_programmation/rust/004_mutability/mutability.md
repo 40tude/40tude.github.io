@@ -638,7 +638,7 @@ La description de la 1ere ligne de code évolue et devient :
 1. `vec0` est un binding immutable qui lie le nom ``vec0`` à l'état complet d'une instance de ``Vec<i32>``. Oui car dans le code je manipule des instances plutôt que des types. 
 1. `vec0` est un binding immutable qui lie le nom ``vec0`` à l'état complet d'une instance concrète d'un type ``Vec<i32>``. Sans doute en trop. C'est juste pour insister sur le fait que l'instance concernée est un truc du style Vec ou String et pas vraiment un type abstrait (Trait). 
 
-Finalement, ce que je garde en tête c'est : ``blablabla`` est un **binding** (non-)mutable qui lie le nom ``blablabla`` à l'**état** d'une instance concrète d'un type `<T>`.
+Finalement, ce que je garde en tête c'est : ``blablabla`` est un **binding** (im)mutable qui lie le nom ``blablabla`` à l'**état** d'une instance concrète d'un type `<T>`.
 
 Ceci étant expliqué, on y retourne et à propos de la première ligne de code
 
