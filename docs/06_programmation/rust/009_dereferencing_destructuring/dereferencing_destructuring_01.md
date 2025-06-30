@@ -335,7 +335,7 @@ Just to make sure...
     * `ref_to_value` is a binding (immutable here) initialized with the reference to `my_value`. AKA a "reference" to `my_value`.
     * `content` is a binding (immutable here) initialized by dereferencing `ref_to_value`.
 * Not dangling. A "reference" is always bound to a variable (`&variable`)
-* Mutable. If the variable which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned another reference (of same initial datatype) 
+* Mutable. If the binding which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned another reference (of same datatype) 
 * No arithmetic on a "reference" (binding whose value is a reference to a variable)
 
 
