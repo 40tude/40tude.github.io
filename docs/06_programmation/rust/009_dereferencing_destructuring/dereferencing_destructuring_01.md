@@ -610,7 +610,7 @@ What I will say here is not 100% accurate but stick with me because the idea is 
 
 ***OK... But what is going on in `my_function02`?*** 
 * In `my_function02`, `v` is a parameter of type reference to a vector of `i32` (`&Vec<i32>`). If we want to get access to its content, we must dereference it. This is why the first `println!` has `*v` as an argument (`println!("{:?}", *v);`).
-* However, like in C++, in the second call to `println!` we can use `v` as a parameter (`println!("{:?}", v);`). The Rust compiler will then apply **deref coercion**, to transform, on the fly, the `&Vec<i32>` (`v`) into a `Vec<i32>` (`*v`). How does this work here ?
+* However, like in C++, in the second call to `println!` we can use `v` as a parameter (`println!("{:?}", v);`). The Rust compiler will then apply **deref coercion**, to transform, at compile time, the `&Vec<i32>` (`v`) into a `Vec<i32>` (`*v`). How does this work here ?
     * `println!` expects a type which implement Debug trait but `&Vec<i32>` doesn’t 
     * The compiler looks for Deref trait implementations on `&Vec<i32>`
     * `Vec<T>` implements `Deref<Target = [T]>`, meaning `&Vec<i32>` can auto-convert to `&[i32]` (a slice of `i32`)
@@ -654,7 +654,7 @@ So, yes, I lied. When we pass by value a vector of 100 `i32` we do not passe 100
 ## Dereferencing: Allocations on the heap
 
 ```rust
-fn dereferencing04() {
+fn main() {
     println!("\nDereferencing 04 : Box, Rc and Deref\n");
     // Function that takes a value by reference
     fn print_ref(v: &i32) {
@@ -669,8 +669,8 @@ fn dereferencing04() {
     let b = Box::new(123);
     println!("Address of the heap in the Box : {:p}", b);
     println!("Address of b on the stack      : {:p}", &b);
-    // We can dereference Box<T> directly thanks to Deref
-    println!("Dereferenced Box: {}", *b);
+    println!("Dereferenced Box: {}", *b); // explicit deref
+    println!("Dereferenced Box: {}", b);  // works, thanks to deref coercion
     // The function expects &i32, but we give it &Box<i32>
     // Thanks to deref coercion, this works
     print_ref(&b);
@@ -684,9 +684,11 @@ fn dereferencing04() {
 {: .no_toc }
 ```
 Dereferencing 04 : Box, Rc and Deref
-Address of the heap in the Box : 0x5e603cc1fb10
-Address of b on the stack      : 0x7ffc6dbbec38
+Address of the heap in the Box : 0x5dcf88fe1b10
+Address of b on the stack      : 0x7ffe596c76d8
 Dereferenced Box: 123
+Dereferenced Box: 123
+Value: 123
 Value: 123
 Boxed value: 123
 ```
@@ -696,13 +698,14 @@ Boxed value: 123
 {: .no_toc }
 * We first define 2 functions `print_ref` and `print_box`
 * Then, in order to allocate memory on the heap we use `Box::new()` (`let b = Box::new(123);`)
-* Let's keep in mind this creates a unique pointer that own the pointed area.
+* Let's keep in mind this creates, in a single-threaded context, a unique pointer that own the pointed area.
 * Here the required space to store the value 123 (an `i32`, 4 bytes) is allocated on the heap
 * `b` a variable of type `Box<i32>` remains on the stack. `b` is a smart pointer which implements **RAII**
 * RAII = Ressource Acquisition Is Initialisation. This term is pretty well known in C++. This creates a wrapper around the allocated memory and warranty that the memory will be automatically freed when `b` goes out of scope (even if a `panic` or an early `return` happens)
 * Once the variable `b` exists, using a regular `println!` we print, the address on the heap which is in the Box (`println!("Address of the heap in the Box : {:p}", b);`).
 * Just to make sure we understand that the address of `b` (data type `Box<i32>`) on the stack has nothing to do with the address in the boxe (pointing to the heap) we print the address of `b` so that we can compare (`println!("Address of b on the stack      : {:p}", &b);`).
 * Next we dereference the boxe `b` and print the value it points to (`println!("Dereferenced Box: {}", *b);`). This is really cool because once the boxe is created, we use `b` has a regular reference to an `i32`.
+* Even cooler and more idiomatic we can print the value pointed to with `println!("Dereferenced Box: {}", b);`
 * In the call to `print_ref` we pass a reference to the box (`print_ref(&b);`). The box is borrowed and it remains available after the call. 
 * In the `print_ref` function the first `println!("Value: {}", *v);` is what we should write but the deref coercion allow us to write the second (`println!("Value: {}", v);`)
 * In the last call, make sure to understand that `b` (a variable on the stack) is moved and no longer available right after the call to `print_box`. This is at this point that RAII mechanism will work behind the scene and deallocate the memory on the heap. 
