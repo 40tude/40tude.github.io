@@ -30,7 +30,7 @@ In a Rust context, I think it's better to stop talking about variables and inste
 1. Static code analysis ensures that the properties of the bindings are respected.
 
 To keep in mind:
-* ``blablabla`` is a (non)mutable binding that binds the name to the **state** of a concrete instance of a type ``<T>``.
+* ``blablabla`` is a mutable/immutable binding that binds the name to the **state** of a concrete instance of a type ``<T>``.
 * **Ownership rule** : Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.
 * **Reference rule** : At any given time you can have **either** one mutable reference (writer) or multiple immutable references (readers).
 Compilers make sure the good things happen — the logical errors are on you.
@@ -178,7 +178,7 @@ We are interested in the first line of code
 let vec0 = vec![22, 44, 66];
 ```
 
-Here ``vec0`` is a non-mutable binding that binds the name ``vec0`` to the full state of a concrete instance of type ``Vec<i32>``
+Here ``vec0`` is a immutable binding that binds the name ``vec0`` to the full state of a concrete instance of type ``Vec<i32>``
 
 ***Hey, hey, hey. Can you start again? You've lost me... I see what a vector of ``i32`` is. It's an array whose size can vary and which contains 32-bit integers. On the other hand, binding... Why don't you just say that we declare a variable ``vec0``?***
 
@@ -200,17 +200,80 @@ Now, you have to know this, but in Rust, by default, **everything is immutable**
 
 ```cpp
 // code C++
-int       x = 42; // mutable par défaut
-const int y = 42; // non mutable
+int       x = 42; // non const by default
+const int y = 42; // a constant
 ```
 
 
 In Rust, it's the opposite:
 
 ```rust
-let mut x = 42;   // mutable 
-let     y = 42;   // non mutable par défaut
+let mut x               = 42; // mutable binding 
+let     y               = 42; // immutable binding by default
+const   MAX_SCORE: u32  = 42; // a constant 
+                              // to show constants exist in Rust
 ```
+
+
+
+
+{: .note-title }
+>Why Rust Says "Immutable" Instead of "Constant"
+>
+> In Rust, variables are **immutable by default**, and the opposite of *mutable* is *immutable*—**not** *constant*. That’s intentional.
+>
+>`let` creates a **binding**, which links a name to a value. By default, this binding is **immutable**:
+>
+>Using `mut` allows to change the value that the binding refers to. 
+>
+>This is different from declaring a **constant**, which uses the `const` keyword.
+>
+>A `const` in Rust is:
+>* **Evaluated at compile time**
+>* **Inlined wherever it’s used**
+>* **Never mutable**, not even with `mut`
+>* **Not tied to a memory location like a variable**
+>
+>So even though both immutable bindings and constants can't be modified, they are **different concepts**:
+>
+>* `immutable` refers to whether a binding can be reassigned or not
+>* `const` defines a compile-time constant value that is embedded in the binary
+>
+>That’s why Rust talks about **immutability** instead of *const-ness* when dealing with variables. They may seem similar, but they serve very different purposes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 It's not better or worse in C++, it's just a different philosophy. In C++ I have to specify if I want a variable to be constant. In Rust I have to specify if I want a binding to be mutable. From a security/safety point of view there is undoubtedly an advantage to everything being constant by default. It's true that if we can avoid breaking a rocket at takeoff by writing a 1 where it shouldn't, it's not so bad. For the rest, I'm certain that if tomorrow we could rewrite the ISO specifications of C++ it's the choice we would make (C dates from 72 and C++ from 85 while Rust only dates from 2006).
 
