@@ -5,7 +5,7 @@ title: "Bindings in Rust: Much More Than Just Variables"
 parent: "Rust"
 #math: mathjax
 date               : 2025-05-15 11:00:00
-last_modified_date : 2025-06-24 11:00:00
+last_modified_date : 2025-06-30 11:00:00
 ---
 
 # Bindings in Rust: Much More Than Just Variables
@@ -218,21 +218,21 @@ const   MAX_SCORE: u32  = 42; // a constant
 
 
 {: .note-title }
->Why Rust Says "Immutable" Instead of "Constant"
+>Why Rust Says "Immutable" Instead of "Constant"?
 >
 > In Rust, variables are **immutable by default**, and the opposite of *mutable* is *immutable*—**not** *constant*. That’s intentional.
 >
->`let` creates a **binding**, which links a name to a value. By default, this binding is **immutable**:
+>`let` creates a **binding**, which links a name to a value. By default, this binding is **immutable**.
 >
 >Using `mut` allows to change the value that the binding refers to. 
 >
 >This is different from declaring a **constant**, which uses the `const` keyword.
 >
 >A `const` in Rust is:
->* **Evaluated at compile time**
->* **Inlined wherever it’s used**
->* **Never mutable**, not even with `mut`
->* **Not tied to a memory location like a variable**
+>* Evaluated at compile time
+>* Inlined wherever it’s used
+>* Never mutable, not even with `mut`
+>* Not tied to a memory location like a binding
 >
 >So even though both immutable bindings and constants can't be modified, they are **different concepts**:
 >
@@ -250,32 +250,7 @@ const   MAX_SCORE: u32  = 42; // a constant
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-It's not better or worse in C++, it's just a different philosophy. In C++ I have to specify if I want a variable to be constant. In Rust I have to specify if I want a binding to be mutable. From a security/safety point of view there is undoubtedly an advantage to everything being constant by default. It's true that if we can avoid breaking a rocket at takeoff by writing a 1 where it shouldn't, it's not so bad. For the rest, I'm certain that if tomorrow we could rewrite the ISO specifications of C++ it's the choice we would make (C dates from 72 and C++ from 85 while Rust only dates from 2006).
+Ok, let's go back on track. Regarding the previous code, it's not better or worse in C++, it's just a different philosophy. In C++ I have to specify if I want a variable to be constant. In Rust I have to specify if I want a binding to be mutable. From a security/safety point of view there is undoubtedly an advantage to everything being constant by default. It's true that if we can avoid breaking a rocket at takeoff by writing a 1 where it shouldn't, it's not so bad. For the rest, I'm certain that if tomorrow we could rewrite the ISO specifications of C++ it's the choice we would make (C dates from 72 and C++ from 85 while Rust only dates from 2006).
 
 Now that we've talked about binding and non-mutability by default, if I go back to the first line of code:
 

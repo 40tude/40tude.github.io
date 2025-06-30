@@ -5,7 +5,7 @@ title: "Bindings en Rust : Bien Plus Que de Simples Variables"
 parent: "Rust"
 #math: mathjax
 date               : 2025-04-25 11:00:00
-last_modified_date : 2025-06-23 12:00:00
+last_modified_date : 2025-06-30 11:00:00
 ---
 
 # Bindings en Rust : Bien Plus Que de Simples Variables
@@ -215,8 +215,35 @@ const   MAX_SCORE: u32  = 42; // une constante
                               // pour montrer que les constantes existent dans Rust
 
 
-``` 
-C'est pas mieux ou moins bien en C++ c'est juste une philosophie différente. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sûreté il y a sans doute un avantage à ce que tout soit constant par défaut. C'est vrai que si on peut éviter de casser une fusée au décollage en écrivant un 1 là où il ne faut pas, c'est pas plus mal. Pour le reste, je suis certains que si demain on pouvait ré-écrire les specifications ISO du C++ c'est le choix que l'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
+```
+
+
+{: .note-title }
+>Pourquoi Rust parle de "Immutable" et pas de "Constant"?
+>
+> En Rust, les variables sont **immutable par défaut** (j'utilise exprès le mot utilisé dans la documentation US), et le contraire de *mutable* c'est *immutable*—**pas** *constant*. C'est intentionnel.
+>
+>`let` crée un **binding**, qui lie un nom à une valeur. Par défaut ce lien est **immutable**.
+>
+>Utiliser `mut` permet de changer la valeur à laquelle réfère le binding. 
+>
+>C'est différent de décalrer une **constante**, avec le mot clé `const`.
+>
+>Une `const` dans Rust est:
+>* Evaluée à la compilation
+>* Remplacée par sa valeur quand elle est utilisée
+>* Jamais modifiable, pas même si on ajoute `mut`
+>* Pas attachée à un emplacement mémoire comme un binding
+>
+>Donc même si les bindings immutables et les constantes ne peuvent pas être modifiées, ce sont des **concepts differents**:
+>
+>* `immutable` précise si un binding peut être réassigné ou non
+>* `const` définit à la compilation une valeur qui est embarquée dans le binaire
+>
+>C'est pourquoi Rust parle de **immutabe** au lieu de constance qui il est question de variables. Ils peuvent sembler proches mais ils servent des objectifs différents.
+
+
+Ok,  revenons sur le sujet. Concernant le code précédent, c'est pas mieux ou moins bien en C++ c'est juste une philosophie différente. En C++ il faut que je précise si je veux qu'une variable soit constante. En Rust il faut que je précise si je veux qu'un binding soit mutable. Du point de vue de la sécurité/sûreté il y a sans doute un avantage à ce que tout soit constant par défaut. C'est vrai que si on peut éviter de casser une fusée au décollage en écrivant un 1 là où il ne faut pas, c'est pas plus mal. Pour le reste, je suis certains que si demain on pouvait ré-écrire les specifications ISO du C++ c'est le choix que l'on ferait (C date de 72 et C++ de 85 alors que Rust ne date que de 2006).
 
 Maintenant qu'on a parlé de binding et de non mutabilité par défaut, si je reviens sur la 1ere ligne de code :
 
