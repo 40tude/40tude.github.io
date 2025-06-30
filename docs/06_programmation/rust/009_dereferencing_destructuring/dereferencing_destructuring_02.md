@@ -5,7 +5,7 @@ title: "Rust Dereferencing vs Destructuring — For the Kids 2/2"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-27 09:00:00
-last_modified_date : 2025-06-27 09:00:00
+last_modified_date : 2025-06-30 12:00:00
 ---
 
 <h2 align="center">
@@ -28,9 +28,10 @@ last_modified_date : 2025-06-27 09:00:00
 * **Destructuring**: breaking apart composite values (tuples, structs, enums) using pattern matching syntax. Can move or borrow parts depending on context.
 
 ---
-## The post is in 2 parts
+## The Post is in 2 Parts
 {: .no_toc }
 
+* The introduction is the same
 * [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
 * [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
@@ -162,10 +163,9 @@ If you already know the answers, maybe this article isn’t for you. But if you�
 This article won’t just define dereferencing and destructuring — it will show you how Rust treats them, how the compiler helps (or confuses) you, and when the distinction truly matters.
 
 
-### What This Article Covers  
-1. **Dereferencing**: How to access values through references and smart pointers (Box, Rc, RefCell), and how mutability affects this.
-
-2. **Destructuring**: How to unpack values in let, match, and function or closure parameters — including when working with references.
+### What This Post in 2 Parts Covers   
+1. **Dereferencing**: [Part 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%}). How to access values through references and smart pointers (Box, Rc, RefCell), and how mutability affects this.
+1. **Destructuring**: [Part 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%}). How to unpack values in let, match, and function or closure parameters — including when working with references.
 
 No multithreading knowledge required. For a threaded use case, see this [post on Multithreaded Mandelbrot sets (in French)]({% link docs/06_programmation/rust/003_mandelbrot_multithread/mandelbrot_multithread.md %}).
 
@@ -765,6 +765,19 @@ fn destructuring11() {
 
 ### Explanations
 {: .no_toc }
+
+
+
+
+
+
+
+---
+***Any tips and tricks to share ?*** Here are a few common traps and surprises you might encounter (I did)
+
+## Rust Gotchas: Destructuring Edition
+
+
 
 
 

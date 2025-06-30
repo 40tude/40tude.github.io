@@ -1152,9 +1152,9 @@ Here we have a line like this
     shift_zeros_to_the_end(&mut vec0);      
 ```
 
-It's not better or worse. The thing is, when the function returns, we don't have a new binding. We continue to use the original binding ( ``vec0``). However, we must give the function the means ``shift_zeros_to_the_end()`` to be able to modify the state of the concrete instance of the type. In other words, I lent you my Ferrari and I give you permission to clean it.
+It's not better or worse. The thing is, when the function returns, we don't have a new binding. We continue to use the original binding ( ``vec0``). However, we must give the function ``shift_zeros_to_the_end()`` the means to be able to modify the state of the concrete instance of the type. In other words, I lent you my Ferrari and I give you permission to clean it.
 
-The idea is that this way of expressing things may well reflect our intention (“Here are the keys. Don't forget to vacuum it before you give it back.") but hey, it’s a bit difficult in terms of writing (there’s even a little Klingon side to it...).
+The idea is that this way of expressing things may well reflect our intention (“Here are the keys. Don't forget to vacuum the Ferrari before you give it back.") but hey, it’s a bit difficult in terms of writing (there’s even a little Klingon side to it...).
 
 <div align="center">
 <img src="./assets/klingon.webp" alt="Klingon" width="225" loading="lazy"/>

@@ -5,7 +5,7 @@ title: "Rust Dereferencing vs Destructuring — For the Kids 1/2"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-27 09:00:00
-last_modified_date : 2025-06-27 09:00:00
+last_modified_date : 2025-06-30 12:00:00
 ---
 
 <!-- <h2 align="center">
@@ -28,9 +28,10 @@ last_modified_date : 2025-06-27 09:00:00
 * **Destructuring**: breaking apart composite values (tuples, structs, enums) using pattern matching syntax. Can move or borrow parts depending on context.
 
 ---
-## The post is in 2 parts
+## The Post is in 2 Parts
 {: .no_toc }
 
+* The introduction is the same
 * [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
 * [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
@@ -162,10 +163,9 @@ If you already know the answers, maybe this article isn’t for you. But if you�
 This article won’t just define dereferencing and destructuring — it will show you how Rust treats them, how the compiler helps (or confuses) you, and when the distinction truly matters.
 
 
-### What This Article Covers  
-1. **Dereferencing**: How to access values through references and smart pointers (Box, Rc, RefCell), and how mutability affects this.
-
-2. **Destructuring**: How to unpack values in let, match, and function or closure parameters — including when working with references.
+### What This Post in 2 Parts Covers  
+1. **Dereferencing**: [Part 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%}). How to access values through references and smart pointers (Box, Rc, RefCell), and how mutability affects this.
+1. **Destructuring**: [Part 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%}). How to unpack values in let, match, and function or closure parameters — including when working with references.
 
 No multithreading knowledge required. For a threaded use case, see this [post on Multithreaded Mandelbrot sets (in French)]({% link docs/06_programmation/rust/003_mandelbrot_multithread/mandelbrot_multithread.md %}).
 
@@ -222,7 +222,7 @@ content_at_addr_of_my_value : 5
 
 ### Explanations
 {: .no_toc }
-* `my_value` is a **binding** (a variable) of type `i32` and initialized with the value 5. If you are not sure about the difference between binding and variable keep the term variable in mind for now, **but**, stand up, put your right hand on your heart and swear you will read this [page in English]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
+* `my_value` is a **binding** (a variable) of type `i32` and initialized with the value 5. If the difference between initialization and assignment is not clear, read this [page (US)]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}). Same thing... If you are not sure about the difference between binding and variable keep the term variable in mind for now, **but**, stand up, put your right hand on your heart and swear you will read this [page (US)]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
 * Next come the interesting part. `addr_of_my_value` is a binding whose value is a **reference** to `my_value`, that is, it holds the memory address of `my_value`. Its type is `&i32` because `my_value` is of type `i32`. You should already know that every variable, data structure, code... Are somewhere in the memory of the PC. So, they all have a memory address. The syntax is what it is and the `&my_value` means, in plain English : "address of `my_value`".
 * `content_at_addr_of_my_value` is a binding of type `i32`. It is initialized by **dereferencing** the reference `addr_of_my_value`, i.e., accessing the value stored at the memory address it points to. 
 
@@ -238,7 +238,7 @@ Just to make sure...
 
 
 
-***Ah OK. So a reference is a pointer. Right?*** Almost because they are both used to indirectly access and manipulate objects but **no** because they have key differences. Since there is no pointer in Rust (I know `*const T` and `*mut T` exist but let's avoid them for today), let's illustrate de differences between pointers and references using C++. No worries, the syntax is very similar.  
+***Ah OK. So a reference is a pointer. Right?*** Almost because they are both used to indirectly access and manipulate objects but **no** because they have key differences. Since there is no pointer in Rust (yes, I know `*const T` and `*mut T` exist but let's avoid them for today), let's illustrate de differences between pointers and references using C++. No worries, the syntax is very similar.  
 
 ### References and Pointers comparaison in C++
 {: .no_toc }
@@ -480,7 +480,6 @@ fn dereferencing02_2() {
 
     // mut_ref_to_my_value = &other_value; // => does not compile: expected `&{integer}`, found `&f64`
 }
-
 ```
 
 ### Expected output 
@@ -499,7 +498,11 @@ other_value : 3.141592653589793
 ### Explanations
 {: .no_toc }
 
-In the code we look at the mutability of the binding. We want the reference being able to "point to" different variables, so we want the binding to be mutable.
+In the code we look at the mutability of the binding. We want the "reference" being able to "point to" different variables. 
+
+Just to make sure... It must be clear that there is no "reference" pointing to a different variable. There will be mutable binding which links a name (`mut_ref_to_my_value`) to a reference (`&my_value`) at one time then to another (`&other_value`) in a second time. It is really like a mutable binding linking a name to an `i32` value, then to another `i32` value. Here instead of `i32` we deal with `&i32`. Nothing more.
+
+This said let's read the code :
 
 * We create 2 immutable variables (`let my_value = 5;`, `let other_value = 42;`)
 * We create an immutable reference to an immutable variable (`let ref_to_my_value = &my_value;`)
