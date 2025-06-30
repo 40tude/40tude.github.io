@@ -222,8 +222,13 @@ content_at_addr_of_my_value : 5
 
 ### Explanations
 {: .no_toc }
-* `my_value` is a binding (a variable) of type `i32` and it has the value 5. If you are not sure about the difference between binding and variable keep the term variable in mind for now, **but**, stand up, put your right hand on your heart and swear you will read this [page in English]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
-* Next come the interesting part. `addr_of_my_value` is a **reference** to `my_value`. Its value is the memory address of `my_value`. I hope you already know that every variable, data structure, code... Is somewhere in the memory of the PC. So they all have a memory address. The syntax is what it is and the `&my_value` means, in plain English : address of `my_value`
+* `my_value` is a **binding** (a variable) of type `i32` and initialized with the value 5. If you are not sure about the difference between binding and variable keep the term variable in mind for now, **but**, stand up, put your right hand on your heart and swear you will read this [page in English]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
+* Next come the interesting part. `addr_of_my_value` is a binding whose value is a **reference** to `my_value`, that is, it holds the memory address of `my_value`. Its type is `&i32` because `my_value` is of type `i32`. You should already know that every variable, data structure, code... Are somewhere in the memory of the PC. So, they all have a memory address. The syntax is what it is and the `&my_value` means, in plain English : "address of `my_value`".
+* `content_at_addr_of_my_value` is a binding of type `i32`. It is initialized by **dereferencing** the reference `addr_of_my_value`, i.e., accessing the value stored at the memory address it points to. 
+
+Just to make sure...
+* **addr_of_my_value** is a binding, just like **my_value**. It is initialized by referencing `my_value` (`&my_value`). The term reference describes the value that this binding holds: in this case, a memory address produced by the `&` operator.
+* Saying "`addr_of_my_value` is a reference" is an acceptable simplification, but more precisely, we should say "`addr_of_my_value` is a binding whose value is a reference to `my_value`."
 
 
 

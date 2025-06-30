@@ -80,7 +80,7 @@ fn dereferencing03() {
 
     let my_vector = vec![42, 43, 44];
     my_function01(my_vector); // after the call my_vector disappears
-                              // println!("{:?}", my_vector); // Does not compile
+    // println!("{:?}", my_vector); // Does not compile
 
     let my_vector = vec![42, 43, 44]; // must recreate my_vector
     my_function02(&my_vector); // pass a reference
@@ -447,7 +447,8 @@ fn destructuring11() {
 
 fn main() {
     dereferencing01();
-    dereferencing02();
+    dereferencing02_1();
+    dereferencing02_2();
     dereferencing03();
     dereferencing04();
     dereferencing05();
