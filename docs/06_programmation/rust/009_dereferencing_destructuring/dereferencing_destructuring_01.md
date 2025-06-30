@@ -226,6 +226,9 @@ content_at_addr_of_my_value : 5
 * Next come the interesting part. `addr_of_my_value` is a binding whose value is a **reference** to `my_value`, that is, it holds the memory address of `my_value`. Its type is `&i32` because `my_value` is of type `i32`. You should already know that every variable, data structure, code... Are somewhere in the memory of the PC. So, they all have a memory address. The syntax is what it is and the `&my_value` means, in plain English : "address of `my_value`".
 * `content_at_addr_of_my_value` is a binding of type `i32`. It is initialized by **dereferencing** the reference `addr_of_my_value`, i.e., accessing the value stored at the memory address it points to. 
 
+
+
+
 Just to make sure...
 * **addr_of_my_value** is a binding, just like **my_value**. It is initialized by referencing `my_value` (`&my_value`). The term reference describes the value that this binding holds: in this case, a memory address produced by the `&` operator.
 * Saying "`addr_of_my_value` is a reference" is an acceptable simplification, but more precisely, we should say "`addr_of_my_value` is a binding whose value is a reference to `my_value`."
@@ -316,6 +319,11 @@ Just to make sure...
 | Memory arithmetic | Yes                                    | No                      |
 | Dereferencing     | Explicit dereferencing `cout << *ptr;` | No `cout << ref;`       |
 
+
+
+
+
+
 #### To keep in mind in a Rust context
 {: .no_toc }
 
@@ -323,11 +331,12 @@ Just to make sure...
     * `let ref_to_value = &my_value;` 
     * `let content      = *ref_to_value;`
 * Where
-    * `&my_value` is a reference
-    * `ref_to_value` is a variable (immutable here) which receive a reference
-* Not dangling. A reference is bound to an object
-* Mutable. If the variable which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned an other reference (of the same type) 
-* No arithmetic on a reference
+    * `&my_value` is a reference to `my_value`
+    * `ref_to_value` is a binding (immutable here) initialized with the reference to `my_value`. AKA a "reference" to `my_value`.
+    * `content` is a binding (immutable here) initialized by dereferencing `ref_to_value`.
+* Not dangling. A "reference" is always bound to a variable (`&variable`)
+* Mutable. If the variable which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned another reference (of same initial datatype) 
+* No arithmetic on a "reference" (binding whose value is a reference to a variable)
 
 
 
