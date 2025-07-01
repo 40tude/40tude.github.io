@@ -31,7 +31,7 @@ last_modified_date : 2025-06-30 12:00:00
 ## The Post is in 2 Parts
 {: .no_toc }
 
-* The introduction is the same
+* The introduction & conclusion are the same in both posts
 * [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
 * [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
@@ -156,7 +156,7 @@ fn main() {
 ``` -->
 
 
-All three examples seem simple — but do you really understand why they behave this way?
+All three examples seem simple — but do you really understand why they behave this way?[^1]
 
 If you already know the answers, maybe this article isn’t for you. But if you’ve ever hesitated, been surprised by a compilation error, or struggled to explain why one line works and another doesn’t… then you’re in the right place.
 
@@ -947,3 +947,10 @@ This is what is demonstrated in the last scope.
 
 7. **Borrow checker checks borrows at compile time... until `RefCell` enters the game**  
    `RefCell<T>` defers checks to *runtime*. That means your code compiles, but can still panic if you violate borrow rules (e.g., two mutable borrows).
+
+
+
+
+----
+
+[^1]: The answers to the questions are at the end of the [post 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})

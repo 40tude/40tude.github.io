@@ -5,7 +5,7 @@ title: "Rust Dereferencing vs Destructuring — For the Kids 2/2"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-27 09:00:00
-last_modified_date : 2025-06-30 12:00:00
+last_modified_date : 2025-07-01 18:00:00
 ---
 
 <h2 align="center">
@@ -32,6 +32,8 @@ last_modified_date : 2025-06-30 12:00:00
 {: .no_toc }
 
 * The introduction is the same
+
+* The introduction & conclusion are the same in both posts
 * [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
 * [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
@@ -67,28 +69,6 @@ No explicit `*r` — yet the pattern matches. How?
 
 
 
-<!-- 
-```rust
-// r is of type &Option<i32>, so if let Some(val) = r works because Rust automatically matches &Some(5) with Some(val) when using pattern matching on references.
-// val is a reference to the inner value (&5), but Rust lets you use it directly in the println! macro.
-
-fn main() {
-    // Create a reference to an Option containing the value 5
-    let r = &Some(5);
-
-    // Use if let to destructure the Option reference and extract the value
-    if let Some(val) = r {
-        // val is a reference to the inner value, so we can print it
-        println!("val = {val}");
-    } else {
-        println!("No value found");
-    }
-}
-
-``` 
--->
-
-
 Now look at this one-liner:
 
 ```rust
@@ -96,29 +76,6 @@ let Some(x) = &Some(42);
 ```
 Is this dereferencing, destructuring, or both?
 
-<!-- 
-```rust
-// let Some(x) = &opt else { ... }; is a new syntax available in the 2023 edition of Rust
-// allowing you to destructure with a guard for the None case.
-// x is of type &i32 because we matched on a reference to the Option<i32>.
-// If opt were None, the else block would be executed and the program would panic.
-
-fn main() {
-    // Create a reference to an Option containing the value 42
-    let opt = Some(42);
-
-    // Destructure the Option using a let statement with pattern matching
-    // This will only work if the Option is a Some variant; otherwise, it will panic
-    let Some(x) = &opt else {
-        // Handle the None case (this block is required in Rust 2023 edition and later)
-        panic!("Expected Some, found None");
-    };
-
-    // x is a reference to the value inside the Option
-    println!("The value is: {x}"); // The value is: 42
-}
-
-``` -->
 
 
 
@@ -130,33 +87,8 @@ let (x, y) = *b;
 let (x, y) = b; // Doesn't compile
 ```
 
-<!-- ```rust
-// let b = Box::new(...) allocates a tuple on the heap and returns a Box<(i32, &str)>.
-// *b dereferences the box to get the tuple (42, "hello"), which is then destructured.
-// The line let (x, y) = b; doesn't compile because Rust does not apply Deref coercion in let destructuring 
-// — unlike when calling methods or indexing.
 
-fn main() {
-    // Create a Box containing a tuple (i32, &str)
-    let b = Box::new((42, "hello"));
-
-    // Dereference the Box to extract the values from the tuple
-    let (x, y) = *b;
-
-    // Now x and y hold the copied values from the Box
-    println!("x = {x}, y = {y}"); // x = 42, y = hello
-
-    // let (x, y) = b; // Does not compile
-
-    // Reason: you cannot directly destructure a Box<T> like that.
-    // The compiler does not automatically dereference Box<T> during pattern matching in let bindings.
-    // You must explicitly dereference it using *b or use pattern matching with Box:
-}
-
-``` -->
-
-
-All three examples seem simple — but do you really understand why they behave this way?
+The three examples seem simple — but do you really understand why they behave this way?[^1]
 
 If you already know the answers, maybe this article isn’t for you. But if you’ve ever hesitated, been surprised by a compilation error, or struggled to explain why one line works and another doesn’t… then you’re in the right place.
 
@@ -187,7 +119,7 @@ Whether you're just starting with Rust or adjusting your mental model, this post
 
 
 ---
-Now that we’ve seen in Part 1 how to follow pointers, it’s time to open the box and peek inside with destructuring!
+Now that we’ve seen in [Part 1 ]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})how to follow pointers, it’s time to open the box and peek inside with destructuring!
 
 ## Patterns and Destructuring Patterns in Rust
 
@@ -205,7 +137,7 @@ A **pattern** tells the compiler: "I expect a value of a certain shape — and I
 ---
 ## Destructuring: A smooth start
 
-Too often we, me first, associate the concept of destructuring to ``match`` but this is too restrictive. Let's start with some `let` statements. Copy and paste the code below in the Rust Playground then hit CTRL + ENTER
+Too often we, me first, associate the concept of destructuring to ``match`` but this is too restrictive. Let's start with some `let` statements. Copy and paste the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=b4641da4e16c60950e1014c003f7de51) then hit CTRL + ENTER
 
 ```rust
 fn destructuring01() {
@@ -249,7 +181,7 @@ Destructuring 01 : 101
 
 * As I said, destructuring is the act of using a pattern to break a value apart and extract its inner pieces. In this context, a pattern is a syntax that matches the shape of a value. I like to compare it to regular expressions. Does the sequence of digits look like a phone number? If yes, extract the relevant parts.
 * The first `let` statement matches `(x, y)` to `(1, 2)`. Once the shapes match, the value 1 is assigned to `x` and 2 to `y`. I told you. A smooth start.
-    * I hope you know why `let` is a statement and not an expression. If you're not sure why `let` is a statement (and not an expression), you can start with this [Computer Science Vocabulary page ]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) then this [page](https://doc.rust-lang.org/stable/reference/statements.html?highlight=statement#statements). 
+    * I hope you know why `let` is a statement and not an expression. If you're not sure, you can start with this [Computer Science Vocabulary page ]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) then this [page](https://doc.rust-lang.org/stable/reference/statements.html?highlight=statement#statements). 
 * Let's talk again about the first `let ` but with other words. Just to make sure... When destructuring, the pattern, the left-hand side must match the shape of the value on the right hand side. In this case, a 2-element tuple is matched by a 2-element pattern.
     * We are not surprised with a line like `let x = 1;`. We understand that the Rust compiler infer the data type of `x`. This also happens here. After all, with or without destructuring, the statement is a `let` statement. 
 * The second `let` statement is similar to the first one except that `x` and `y` have different data type. Nothing magic here. Tuples can hold values of different datatype. The more important question is: "Does the shape on the left-hand side match the shape on the right-hand side?" This must be checked first, because even if both sides are tuples, they might have different numbers of elements. Once the shape is validated, one could imagine that the `let` statement is unfold as a set of 2 "regular" `let` statements (`let x=1;` and `let y=2;`)   
@@ -262,7 +194,7 @@ At this point I would like to decompose the "process" in 2 steps. Indeed, everyt
 1. Matching : Check if the left-hand side has the same shape as the right-hand side (think regular expressions).
 2. Destructuring : If matching is successful, break down the value and assign the components accordingly — effectively unfolding the `let` into multiple individual `let` statements.
 
-So, the good news is: everything we already know about `let` statements applies here too. For instance, destructuring works with custom data types, references, dereferencing, and so on. This also means that some bindings will involve `move`, others `copy`, and in some cases, the compiler may perform deref coercion behind the scene. That’s part of the fun…
+So, the good news is: everything we already know about `let` statements applies here too. For instance, destructuring works with custom data types, references, dereferencing, and so on. This also means that some bindings will `move`, while others `copy`, and in some cases, the compiler may perform deref coercion behind the scene. That’s part of the fun…
 
 Let's keep all this in mind for the moment and let's look at some of syntactic options that the destructuring brings with it.
 
@@ -429,7 +361,7 @@ Skywalker-Luke
 ### Explanations
 {: .no_toc }
 
-This the same code except that the `struct` is now a `struct` of non-primitive datatype (part of the String in on the stack but the "chars" are on the heap). They are not primitive datatype like `i32` or `&str`...
+This is the same code except that the `struct` is now a `struct` of non-primitive datatype (part of the String in on the stack but the "chars" (the buffer) are on the heap). They are not primitive datatype like `i32` or `&str`...
 * We create a new type named `Person`. This is a `struct` with 2 fields of type `String`.
 * Then we create and initialize a variable `luke` of that type (`let luke = Person { ...`)
 * The `let` statement (`let Person {last_name, first_name } = luke;`) uses pattern destructuring to extract the fields 
@@ -444,12 +376,11 @@ This the same code except that the `struct` is now a `struct` of non-primitive d
 
 ---
 ## Destructuring: `struct` of `&str` with `let`
-* In order to avoid the move (and the lost of `luke`) we may decide to use string slice (`&str`). The first idea of code we may have does not compile
-* The compiler complains because it wants to get, from us, the confirmation that the string slices will live long enough (it says : "expected named lifetime parameter" on each of the struct Person fields)
+In order to avoid the move (and the lost of `luke`) we may decide to use string slice (`&str`). The first idea of code we may have does not compile
 
 ```rust
 fn destructuring03_ter() {
-    println!("\nDestructuring 03 ter : struct of &str with let");
+    println!("\nDestructuring 03 ter : struct of `&str` with let");
     
     #[derive(Debug)]
     struct Person<'t> {
@@ -466,12 +397,13 @@ fn destructuring03_ter() {
     println!("{:?}", luke); 
 }
 ```
+The compiler complains because it wants to get, from us, the confirmation that the string slices will live long enough (it says : "expected named lifetime parameter" on each of the struct Person fields)
 
 Below is a version that compile :
 
 ```rust
 fn destructuring03_ter() {
-    println!("\nDestructuring 03 ter : struct of &str with let");
+    println!("\nDestructuring 03 ter : struct of `&str` with let");
     
     #[derive(Debug)]
     struct Person<'t> {
@@ -506,15 +438,15 @@ Pointer { addr: 0x5bb07cc760d7, metadata: 9 } - Pointer { addr: 0x5bb07cc76057, 
 ### Explanations
 {: .no_toc }
 
-Basically, it's the same code as the one that used String. We use &str instead and we had to indicate the lifetime 
-* We create a new type named `Person`. This is a `struct` with 2 fields of type `&'t str` (&str + lifetime annotation)
+Basically, it's the same code as the one that used String. We use `&str` instead and we had to indicate the lifetime 
+* We create a new type named `Person`. This is a `struct` with 2 fields of type `&'t str` `(&str` + lifetime annotation)
 * Then we create and initialize a variable `luke` of that type (`let luke = Person { ...`)
 * The `let` statement (`let Person {last_name, first_name } = luke;`) uses pattern destructuring to extract the fields
 * In the `let` statement, the patterns "wants" a variable of type `Person` that it will break apart (`let Person {last_name, first_name } = luke;`)
     * Since the components are of type `&str`, `luke` is copied before the components are extracted
-* The first 2 `println!` show how to use extracted components and display their respective adresses
-* The last 2  `println!` demonstrate that `luke` is still available after the `let` statement. They also display the adresses of the components so that we can check they are the same as the one already printed.
-* This confirm that when the copy took place only the adresses were copied, not the inner data (the "chars").
+* The first 2 `println!` show how to use extracted components and display their respective addresses
+* The last 2  `println!` demonstrate that `luke` is still available after the `let` statement. They also display the addresses of the components so that we can check they are the same as the one already printed.
+* This confirm that when the copy took place only the addresses were copied, not the buffer (the "chars").
 
 
 
@@ -534,7 +466,7 @@ Basically, it's the same code as the one that used String. We use &str instead a
 
 
 ---
-## Destructuring: `struct` of &str with `let`
+## Destructuring: `struct` of `&str` with `let`
 
 Here is another implementation of the same code. It does exactly the same thing and is not faster/slower. Only the `let` statement syntax differs.
 
@@ -586,7 +518,7 @@ Code similar to the previous one except the `let` statement.
 * It does a `*(&luke)` to get access to ``luke``. Then the components are extracted
 * The 4 `println!` display exactly the same information and confirmation
     * `luke` was copied
-    * Only the adresses were copied, NOT the inner data ("chars")
+    * Only the addresses were copied, NOT the buffer.
 
 
 
@@ -678,7 +610,7 @@ At the very end, since `Some` is an enum, the one on the rhs is destructured and
 ---
 ## Destructuring: `enum` with let
 
-Since we may not want to consume the collection of characters, the easiest way of doing is to use a reference an to destructure it in the `match` expression.
+Since we may not want to consume the collection of characters, the easiest way of doing is to use a reference and to destructure it in the `match` expression.
 
 
 ```rust
@@ -757,7 +689,7 @@ In plain English :
 1. The compiler automatically does a `*(role)`. In terms of data type it is similar to do a `*(&Role)`. Tadaa! Now, on the match side, the compiler have a `Role` in hands it can match with `Role` values on the variant side. 
 
 
-**To keep in mind** : In a `match` expression, Rust automatically applies a series of * (dereferences) as long as this allows the pattern on the `match` side to match the values type on the variants side.
+**To keep in mind** : In a `match` expression, Rust automatically applies a series of `*(references)` as long as this allows the pattern on the `match` side to match the values type on the variants side.
 
 **To keep in mind** : Pass reference to for loop (`for val in &array {...`)
 
@@ -825,12 +757,12 @@ Point: [(1, 2), (3, 4), (5, 6)]
 {: .no_toc }
 * We define the function `print_coordinates` inside a function (`destructuring05`)
 * A `point` variable is defined and initialized (`let point = (10, 20);`)
-* Then it is used as an argument when call `print_coordinates` (`print_coordinates(point);`)
+* Then it is used as an argument when we call `print_coordinates` (`print_coordinates(point);`)
 * The destructuring happens when the parameters are defined (`fn print_coordinates((x, y): (i32, i32)) {...`)
 * Since the data types of `point` are primitive (implement Copy trait), `point` is passed by value (it is copied)
-* `point` is still available after the call to `print_coordinates` and can be printed
+* `point` is still available after the call to `print_coordinates` and it can be printed
 
-As we can expect, this is another story when the components are not primitive. To illustrate the point we 
+As we can expect, this is another story when the components are not primitive. To illustrate the point we: 
 * Define a function `print_full_name`
 * `chief` is a tuple with 2 String. String do no implement Copy
 * We call `print_full_name` with `chief` as an argument
@@ -897,7 +829,7 @@ The key point here is that in a `for` loop, the variable immediately after the `
         * `name` : binds to `&&str`
     * Printing
         * The compiler will apply implicit deref coercion
-        * It will do something like *(&&str) = &str => A type which can be printed as usual.
+        * It will do something like `*(&&str)` = `&str` => A type which can be printed as usual.
 
 ***Hum, hum... How can you be sure about what you say ?*** "Trust in me, just in me...". No, don't trust people, check by yourself and the debugger is your best friend. Below I put a breakpoint on the first `println!` and hover `name`. Do you see the data type in the yellow rectangle.
 
@@ -912,7 +844,7 @@ Under VSCode, with my [setup]({%link docs/06_programmation/rust/005_my_rust_setu
 </div>
 
 
-This said, and always about the fir `for` loop, if you have time play with the code below
+This said, and always about the first `for` loop, if you have time play with the code below (Playground is your second best friend after the debugger) :
 ```rust
 fn destructuring06_bis() {
     println!("\nDestructuring 06 bis: in for loops with .enumerate()\n");
@@ -956,9 +888,9 @@ let characters = vec!["Harry".to_string(), "Hermione".to_string(), "Ron".to_stri
         * `name` : binds to `&String`
     * Printing
         * The compiler will apply implicit deref coercion
-        * It will do something like *(&String) = String => A type which can be printed as usual.
+        * It will do something like `*(&String)` = `String` => A type which can be printed as usual.
 
-In other word, we should have written the first line of the loop (`*name`), but, thanks to deref coercion we can write the second. 
+In other words, we should have written the first line of the loop (`*name`), but, thanks to deref coercion we can write the second. 
 
 ```rust
 for (index, name) in characters.iter().enumerate() {
@@ -1064,7 +996,7 @@ coord[0]: 5, coord[1]: 6
 * `&[x, y]` is a destructuring pattern that matches a reference to a 2-element array
 * The compiler matches `&[x, y]` with each `&[i32; 2]`  
 * Since `i32` is primitive, it has the Copy trait, the values are copied into `x` and `y` (no ownership issues).
-* The second for loop shows we can survive without destructuring
+* The second for loop shows how we can survive without destructuring
 
 
 
@@ -1137,12 +1069,12 @@ String is : The Mule
 * Each element iterated is a `&String`, not a `String`
 * The commented-out `for` loop (`for &s in &foundation {...`) does not compile and here is why :
     * It tries to match a `&String` with the destructuring pattern `&s`
-    * This would only work if `s` woulf be of type `String`
+    * This would only work if `s` would be of type `String`
     * String type does not implement the Copy trait and and implicit cloning is not allowed
     * So it does not complie
 * The working `for` (`for s in &foundation {`) 
     * It matches `&String` with the destructuring pattern `s`
-    * This can work because a reference (an adress) is a primitve type which can be copied
+    * This can work because a reference (an address) is a primitve type which can be copied
     * `s` is of type `&String`
     * Without deref coercion we should have to write `println!("String is : {}", *s);` (or `.as_str()`)
     * Rust allow us to write `println!("String is : {}", s);`
@@ -1366,12 +1298,103 @@ let (ref s, n) = tuple;
 
 
 
+## Answers to questions from the introduction
+The question is whether we can now either find the answer ourselves or, at the very least, understand the reasoning and causes.
+
+### Q1
+{: .no_toc }
+
+```rust
+fn main() {
+    
+    let r = &Some(5);
+
+    // `if let Some(val) = r` works even if r is a reference to an Option
+    // thanks to “pattern matching on references”.
+    if let Some(val) = r {
+        // val is a reference to the inner value (&5), since r is a reference to an Option
+        println!("val = {val}");
+    } else {
+        println!("No value found");
+    }
+}
+
+```
+
+No explicit `*r` — yet the pattern matches. How?
+* `r` is of type `&Option<i32>`
+* * The pattern `Some(val)` matches `&Some(5)` because Rust implicitly treats it as `&Some(val)`. This is part of Rust's pattern matching behavior on references.
+* `val` is a reference to the inner value (`&5`). The `println!` macro accepts references, and Rust applies deref coercion automatically when formatting, so `val` prints as `5`.
 
 
 
 
 
-## Conclusion
+
+
+### Q2
+Now look at this one-liner:
+
+```rust
+fn main() {
+    // Create a reference to an Option containing the value 42
+    let opt = Some(42);
+
+    // Destructure the Option using a let statement with pattern matching
+    // If the Option in not Some, the demo code panic
+    let Some(x) = &opt else {
+        // Handle the None case (this block is required)
+        panic!("Expected Some, found None");
+    };
+
+    // x is a reference to the value inside the Option
+    println!("The value is: {x}"); // The value is: 42
+}
+
+```
+Is this dereferencing, destructuring, or both?
+
+* This is destructuring only. No dereferencing occurs.
+* We use pattern matching to destructure the value of `&opt`, which has type `&Option<i32>`.
+* The pattern `Some(x)` is matched against `&opt`, and Rust implicitly treats it as `&Some(x)`.
+* As a result, `x` has type `&i32` — a reference to the inner value.
+* The `else` block is required in Rust 2021+ edition if the pattern might not match.
+* If `opt` is `None`, the `else` block is executed and the program panics.
+
+
+
+### Q3
+
+
+```rust
+
+fn main() {
+    // Create a Box containing a tuple (i32, &str)
+    let b = Box::new((42, "hello"));
+
+    // Dereference the Box to extract the values from the tuple
+    let (x, y) = *b;
+
+    // Now x and y hold the copied values from the Box
+    println!("x = {x}, y = {y}"); // x = 42, y = hello
+
+    // let (x, y) = b; // Does not compile
+
+    
+}
+```
+* `let b = Box::new(...)` allocates a tuple on the heap and returns a `Box<(i32, &str)>`.
+* `*b` dereferences the box to get the tuple `(42, "hello")`, which is then destructured.
+* The line `let (x, y) = b;` doesn't compile because we cannot directly destructure a `Box<T>` like that
+* The compiler does not automatically dereference `Box<T>` during pattern matching in `let` bindings.
+* We must explicitly dereference it using `*b` or use pattern matching with `Box` (`let Box((x, y)) = b;`)
+
+
+
+
+
+
+## Conclusion (same on both posts)
 
 | Aspect           | Dereferencing               | Destructuring                            |
 | ---------------- | --------------------------- | ---------------------------------------- |
@@ -1399,6 +1422,9 @@ let (ref s, n) = tuple;
 * Destructuring in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html?highlight=destructuring#destructuring)
 
 
+----
+
+[^1]: The answers to the questions are at the end of the [post 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
 
 
