@@ -324,19 +324,19 @@ Just to make sure...
 
 
 
-#### To keep in mind in a Rust context
-{: .no_toc }
-
-* Syntax 
-    * `let ref_to_value = &my_value;` 
-    * `let content      = *ref_to_value;`
-* Where
-    * `&my_value` is a reference to `my_value`
-    * `ref_to_value` is a binding (immutable here) initialized with the reference to `my_value`. AKA a "reference" to `my_value`.
-    * `content` is a binding (immutable here) initialized by dereferencing `ref_to_value`.
-* Not dangling. A "reference" is always bound to a variable (`&variable`)
-* Mutable. If the binding which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned another reference (of same datatype) 
-* No arithmetic on a "reference" (binding whose value is a reference to a variable)
+{: .note-title }
+> To keep in mind 
+> 
+> * Syntax 
+>   * `let ref_to_value = &my_value;` 
+>   * `let content      = *ref_to_value;`
+> * Where
+>    * `&my_value` is a reference to `my_value`
+>    * `ref_to_value` is a binding (immutable here) initialized with the reference to `my_value`. AKA a "reference" to `my_value`.
+>    * `content` is a binding (immutable here) initialized by dereferencing `ref_to_value`.
+> * Not dangling. A "reference" is always bound to a variable (`&variable`)
+> * Mutable. If the binding which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned another reference (of same datatype) 
+> * No arithmetic on a "reference" (binding whose value is a reference to a variable)
 
 
 
@@ -698,7 +698,7 @@ Boxed value: 123
 {: .no_toc }
 * We first define 2 functions `print_ref` and `print_box`
 * Then, in order to allocate memory on the heap we use `Box::new()` (`let b = Box::new(123);`)
-* Let's keep in mind this creates, in a single-threaded context, a unique pointer that own the pointed area.
+* Let's keep in mind that in a single-threaded context, it creates a unique pointer that own the pointed area.
 * Here the required space to store the value 123 (an `i32`, 4 bytes) is allocated on the heap
 * `b` a variable of type `Box<i32>` remains on the stack. `b` is a smart pointer which implements **RAII**
 * RAII = Ressource Acquisition Is Initialisation. This term is pretty well known in C++. This creates a wrapper around the allocated memory and warranty that the memory will be automatically freed when `b` goes out of scope (even if a `panic` or an early `return` happens)
