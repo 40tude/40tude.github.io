@@ -262,7 +262,10 @@ This post is not a reference so I just show few of the "facilities" available in
 * The third example shows how the pattern can be tested against a range of values
 * The last shows how to extract the parts of interest
 
-**To keep in mind** : Destructuring is a 2 steps process (matching, unfolding) and in the matching step we have means to describe the components we want to extract (think at `ls *.rs`)
+{: .note-title }
+> To keep in mind 
+> 
+> Destructuring is a 2 steps process (matching, unfolding) and in the matching step we have means to describe the components we want to extract (think at `ls *.rs`)
 
 
 
@@ -689,9 +692,16 @@ In plain English :
 1. The compiler automatically does a `*(role)`. In terms of data type it is similar to do a `*(&Role)`. Tadaa! Now, on the match side, the compiler have a `Role` in hands it can match with `Role` values on the variant side. 
 
 
-**To keep in mind** : In a `match` expression, Rust automatically applies a series of `*(references)` as long as this allows the pattern on the `match` side to match the values type on the variants side.
+{: .note-title }
+> To keep in mind 
+> 
+> In a `match` expression, Rust automatically applies a series of `*(references)` as long as this allows the pattern on the `match` side to match the values type on the variants side.
 
-**To keep in mind** : Pass reference to for loop (`for val in &array {...`)
+
+{: .note-title }
+> To keep in mind 
+> 
+> Pass reference to `for` loop (`for val in &array {...`)
 
 
 
@@ -1083,13 +1093,21 @@ String is : The Mule
 
 
 
-**To keep in mind** : in a for loop, if we write `&s`, we are telling the compiler: "I want to destructure a reference and bind the value inside it." It’s not the same as taking a reference.
+{: .note-title }
+> To keep in mind 
+> 
+> In a for loop, if we write `&s`, we are telling the compiler: "I want to destructure a reference and bind the value inside it." It’s not the same as taking a reference.
 
-**To keep in mind** : this may not be the canonical way of doing but... Here is how I desing the destructuring pattern. I read the for loop backward
-1. What is the type of the iterated element (ex: `String`)
-1. Is it primitive or not (Copy or not, ex: No)
-1. Do I get a reference to it or not (ex: Yes)
-1. Design (ex: `s`)
+
+
+{: .note-title }
+> To keep in mind 
+> 
+> This may not be the canonical way of doing but... Here is how I design the destructuring pattern. I read the for loop backward
+> 1. What is the type of the iterated element (ex: `String`)
+> 1. Is it primitive or not (Copy or not, ex: No)
+> 1. Do I get a reference to it or not (ex: Yes)
+> 1. Design (ex: `s`)
 
 
 

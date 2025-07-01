@@ -112,6 +112,9 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 > The last paragraph
 
 ```
+Callouts : https://just-the-docs.com/docs/ui-components/callouts/
+
+
 
 ### Lien sur une page du site
 [Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%})

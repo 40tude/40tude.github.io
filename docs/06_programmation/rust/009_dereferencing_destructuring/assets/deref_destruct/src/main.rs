@@ -512,8 +512,8 @@ fn destructuring06_bis() {
     for (index, name) in characters.iter().enumerate() {
         println!("Character #{index} is {name}");
 
-        // let bob = *name; // &str
-        // println!("{}", bob);
+        let bob = *name; // &str
+        println!("{}", bob);
 
         // let bob = **name; // str, does not compile, no size known at compile-time
         // println!("{}", bob);
@@ -531,14 +531,9 @@ fn destructuring07() {
     println!("\nDestructuring 07 : for loop over array slices\n");
 
     let coordinates = vec![[1, 2], [3, 4], [5, 6]];
-
-    // Each element is a reference to an array: &[i32; 2]
-    // Destructuring pattern applied to &[i32; 2]
     for &[x, y] in &coordinates {
-        // &[x, y] pattern that matches a reference to a 2-element array
         println!("x: {}, y: {}", x, y);
     }
-
     // Alternative: without destructuring
     for coord in &coordinates {
         println!("coord[0]: {}, coord[1]: {}", coord[0], coord[1]);
@@ -566,7 +561,10 @@ fn destructuring08() {
     }
 }
 
-// Patterns can be used in loops to filter and destructure in a single step. Here, &Some(score) is not a reference — it’s a pattern that matches a reference to an Option and destructures it if it’s Some
+// Patterns can be used in loops to filter and destructure in a single step. 
+// Here, &Some(score) is not a reference 
+// It’s a pattern that matches a reference to an Option and destructures it if it’s Some
+
 fn destructuring09() {
     println!("\nDestructuring 09 : matching Option<T> in a for loop\n");
 
@@ -586,14 +584,14 @@ fn destructuring09() {
     }
 
     // Using if-let inside the loop body
-    // Using if-let inside the loop body
     for maybe in &maybe_scores {
         if let Some(score) = maybe {
             println!("Score via if-let: {}", score);
         }
     }
 
-    // Rather than going through a Vec<Option<T>>, and ignoring the None in the loop, we can avoid the if let by flattening the Some directly in the iterator.
+    // Rather than going through a Vec<Option<T>>, and ignoring the None in the loop
+    // we can avoid the if let by flattening the Some directly in the iterator
     for score in maybe_scores.iter().flatten() {
         println!("Score via flatten: {}", score);
     }
