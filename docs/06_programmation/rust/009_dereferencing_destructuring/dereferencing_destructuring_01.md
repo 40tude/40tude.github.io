@@ -187,7 +187,7 @@ Whether you're just starting with Rust or adjusting your mental model, this post
 
 
 ---
-## Dereferencing: A smooth start
+## Dereferencing: A Smooth Start
 
 Copy and paste the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=95688f886df53f6776df8a63c0599ccd) then hit CTRL+ ENTER
 
@@ -519,10 +519,30 @@ Here's another option
 
 
 
+
+
+
+{: .note-title }
+> To keep in mind 
+> 
+> There are 2 kinds of mutability:
+> 1. Mutability of the reference target controls whether we can modify the value through the reference. `let ref = &mut my_mutable_val;`. This is the `&mut my_mutable_value` that creates a mutable reference which is assigned to a non mutable variable (`ref`).
+> 1. Mutability of the binding controls whether we can assign a new reference to the variable. `let mut mut_ref = &my_val;`. There is no “reference” pointing to a different variable. There will be mutable binding which links a name (`mut_ref`) to a reference (`&my_val`) at one time then to another (`&other_value`) in a second time. 
+
+
+
+
+
+
+
+
+
+
+
 ---
 ***That is fine but why should I care? I mean, what is the purpose?*** One of the key usage of references is to pass efficiently arguments to functions. Let's see how it works now.
 
-## Dereferencing: Reference as argument
+## Dereferencing: Reference as Argument
 
 ```rust
 fn dereferencing03() {
@@ -651,7 +671,7 @@ So, yes, I lied. When we pass by value a vector of 100 `i32` we do not passe 100
 ---
 ***You mentioned data on the heap. How to dereference this kind of data ?*** You read my mind, this is what we will focus on now.
 
-## Dereferencing: Allocations on the heap
+## Dereferencing: Allocations on the Heap
 
 ```rust
 fn main() {
@@ -717,7 +737,7 @@ Boxed value: 123
 
 
 
-## Dereferencing: `Rc<T>` and Reference-counted smart pointers
+## Dereferencing: `Rc<T>` and Reference-counted Smart Pointers
 Indeed, in order to manage memory efficiently we need to be smarter than a `Box` and to include a counter in order to know how many people are currently watching the picture of your motorbike. Let's look at the code below :
 
 ```rust
@@ -833,7 +853,7 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 ---
 ***Well, well, well... I know you will NOT talk about references in a multithreaded context but... What if I need to mutate the heap allocated memory ?*** This could represent allocated memory acting as your bank account—where your company deposits your salary and you check your available balance. To do so, we need to be even smarter than before...
 
-## Dereferencing: `Rc<RefCell<T>>` for shared mutation (single-thread)
+## Dereferencing: `Rc<RefCell<T>>` for Shared Mutation (single-threaded)
 
 However, the good news it that instead of learning a new smart pointer, we will reuse what we already know about `Rc` (reference-counted smart pointer) and add interior mutability to the heap allocated memory. This is done using ``RefCell``. First thing first, let's run the code below :  
 

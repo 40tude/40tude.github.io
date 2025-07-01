@@ -135,7 +135,7 @@ A **pattern** tells the compiler: "I expect a value of a certain shape — and I
 
 
 ---
-## Destructuring: A smooth start
+## Destructuring: A Smooth Start
 
 Too often we, me first, associate the concept of destructuring to ``match`` but this is too restrictive. Let's start with some `let` statements. Copy and paste the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=b4641da4e16c60950e1014c003f7de51) then hit CTRL + ENTER
 
@@ -533,7 +533,7 @@ Code similar to the previous one except the `let` statement.
 
 
 ---
-## Destructuring: `enum` with let
+## Destructuring: `enum` with `let`
 
 ```rust
 fn destructuring04() {
@@ -611,7 +611,7 @@ At the very end, since `Some` is an enum, the one on the rhs is destructured and
 
 
 ---
-## Destructuring: `enum` with let
+## Destructuring: `enum` with `let`
 
 Since we may not want to consume the collection of characters, the easiest way of doing is to use a reference and to destructure it in the `match` expression.
 
@@ -720,7 +720,7 @@ In plain English :
 
 
 ---
-## Destructuring: function & closure parameters
+## Destructuring: Function & Closure Parameters
 
 
 ```rust
@@ -789,7 +789,7 @@ As we can expect, this is another story when the components are not primitive. T
 
 
 ---
-## Destructuring: in `for` loops with `.enumerate()`
+## Destructuring: in `for` Loops with `.enumerate()`
 
 Do you remember, not September, but `destructuring04()` and `destructuring04_bis()` where we passed the array by value then by reference. Here, we want to avoid the raw `for` loop ("no raw loops", said Sean Parent in 2013). To do so we use an iterator to visit a vector from start to end.
 
@@ -959,7 +959,7 @@ But a `&String` cannot be dereferenced into a `String` — only a `&str` or clon
 
 
 
-## Destructuring: `for` loop over array slices
+## Destructuring: `for` Loop over Array Slices
 
 ```rust
 
@@ -1030,7 +1030,7 @@ coord[0]: 5, coord[1]: 6
 
 
 ---
-## Destructuring: destructuring pattern in for loop
+## Destructuring: Destructuring Pattern in `for` Loop
 
 This is the part that broke my brain when I first encountered it and what motivated me to write this post.
 
@@ -1117,7 +1117,7 @@ String is : The Mule
 
 
 ---
-## Destructuring: Filter and destructuring pattern in a for loop
+## Destructuring: Filter and Destructuring Pattern in `for` Loop
 
 Patterns can be used in loops to filter and destructure in a single step, let's see how.
 
@@ -1316,7 +1316,7 @@ let (ref s, n) = tuple;
 
 
 
-## Answers to questions from the introduction
+## Answers to Questions from the Introduction
 The question is whether we can now either find the answer ourselves or, at the very least, understand the reasoning and causes.
 
 ### Q1
