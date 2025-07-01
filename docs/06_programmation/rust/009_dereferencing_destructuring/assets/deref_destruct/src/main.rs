@@ -92,30 +92,24 @@ fn dereferencing03() {
 
 fn dereferencing04() {
     println!("\nDereferencing 04 : Box, Rc and Deref\n");
-
     // Function that takes a value by reference
     fn print_ref(v: &i32) {
         println!("Value: {}", *v);
         println!("Value: {}", v);
     }
-
     // Function that takes a Box<i32>
     fn print_box(v: Box<i32>) {
         println!("Boxed value: {}", v);
     }
-
     // Create a value on the heap using Box
     let b = Box::new(123);
     println!("Address of the heap in the Box : {:p}", b);
     println!("Address of b on the stack      : {:p}", &b);
-
-    // We can dereference Box<T> directly thanks to Deref
-    println!("Dereferenced Box: {}", *b);
-
+    println!("Dereferenced Box: {}", *b); // explicit deref
+    println!("Dereferenced Box: {}", b); // works, thanks to deref coercion
     // The function expects &i32, but we give it &Box<i32>
     // Thanks to deref coercion, this works
     print_ref(&b);
-
     // Can also pass the Box directly if signature matches
     print_box(b); // b is moved here
 }
@@ -237,42 +231,174 @@ fn destructuring01() {
 }
 
 fn destructuring02() {
-    println!("\nDestructuring 02 : partial destructuring\n");
+    println!("\nDestructuring 02 : partial and range destructuring\n");
 
-    let (x, ..) = (1, 2, 3); // ignore the rest
-    println!("x : {}", x);
+    let (mut x, ..) = (41, 2, 3); // ignore the rest
+    x += 1;
+    println!("x: {x}");
 
-    struct Point3D {
+    let (.., z) = (1, 2, 101); // ignore the rest
+    println!("z: {z}");
+
+    let age = 15;
+    match age {
+        1..=17 => println!("No way to access the dance floor."),
+        _ => println!("Welcome to Studio 54!"),
+    }
+
+    let pair = ("Hari Seldon", 12050);
+    let (_, just_the_year) = pair;
+    println!("We only care about the year: {}", just_the_year);
+}
+
+// fn destructuring03() {
+//     println!("\nDestructuring 03 : struct with let\n");
+
+//     struct Point3D {
+//         x: i32,
+//         y: i32,
+//         z: i32,
+//         t: i32,
+//     }
+//     let pt = Point3D { x: 1, y: 2, z: 3, t: 2054 };
+
+//     let Point3D { x, t, .. } = pt;
+//     println!("x: {x} and time: {t}");
+
+//     struct Scientist {
+//         name: String,
+//         field: String,
+//     }
+
+//     let hari = Scientist {
+//         name: "Hari Seldon".to_string(),
+//         field: "Psychohistory".to_string(),
+//     };
+
+//     let Scientist { name, field } = hari;
+//     println!("{name} works in {field}");
+// }
+
+// fn destructuring03() {
+//     println!("\nDestructuring 03 : struct with let\n");
+
+//     struct Point3D {
+//         x: i32,
+//         y: i32,
+//         z: i32,
+//         t: i32,
+//     }
+//     let pt = Point3D { x: 1, y: 2, z: 3, t: 2054 };
+
+//     let Point3D { x, t, .. } = pt;
+//     println!("x: {x} and time: {t}");
+
+// }
+
+fn destructuring03() {
+    println!("\nDestructuring 03 : struct of i32 with let");
+
+    #[derive(Debug)]
+    struct Point4D {
         x: i32,
         y: i32,
         z: i32,
+        t: i32,
     }
-    let pt = Point3D { x: 1, y: 2, z: 3 };
+    let pt = Point4D { x: 1, y: 2, z: 3, t: 2054 };
 
-    let Point3D { x, .. } = pt;
-    println!("x coordinates: {}", x);
+    let Point4D { x, t, .. } = pt; // copy
+    println!("x: {x} and time: {t}");
+    println!("{:?}", pt); // pt is available
 }
 
-fn destructuring03() {
-    println!("\nDestructuring 03 : a struct with let\n");
+fn destructuring03_bis() {
+    println!("\nDestructuring 03 bis : struct of String with let");
 
-    struct Scientist {
-        name: String,
-        field: String,
+    #[derive(Debug)]
+    struct Person {
+        last_name: String,
+        first_name: String,
     }
-
-    let hari = Scientist {
-        name: "Hari Seldon".to_string(),
-        field: "Psychohistory".to_string(),
+    let luke = Person {
+        last_name: "Skywalker".to_string(),
+        first_name: "Luke".to_string(),
     };
 
-    let Scientist { name, field } = hari;
-    println!("{name} works in {field}");
+    let Person { last_name, first_name } = luke; // move because String does'nt have Copy trait
+    println!("{}-{}", last_name, first_name);
+    // println!("{:?}", luke); // does not compile
+}
+
+// Does not compile. Require lifetime
+// fn destructuring03_ter() {
+//     println!("\nDestructuring 03 ter : struct of &str with let");
+
+//     #[derive(Debug)]
+//     struct Person<'t> {
+//         last_name: &str,
+//         first_name: &str,
+//     }
+//     let luke = Person {
+//         last_name: "Skywalker",
+//         first_name: "Luke"
+//     };
+
+//     let Person {last_name, first_name } = luke;
+//     println!("{}-{}", last_name, first_name);
+//     println!("{:?}", luke);
+// }
+
+fn destructuring03_ter() {
+    println!("\nDestructuring 03 ter : struct of &str with let");
+
+    #[derive(Debug)]
+    struct Person<'t> {
+        last_name: &'t str,
+        first_name: &'t str,
+    }
+    let luke = Person {
+        last_name: "Skywalker",
+        first_name: "Luke",
+    };
+
+    let Person { last_name, first_name } = luke; // copy of &str
+    println!("{}-{}", last_name, first_name);
+    println!("{:p} - {:p}", last_name, first_name);
+
+    println!("{:?}", luke); // does compile
+    println!("{:p} - {:p}", luke.last_name, luke.first_name);
+}
+
+fn destructuring03_qua() {
+    println!("\nDestructuring 03 qua : struct of &str with let");
+
+    #[derive(Debug)]
+    struct Person<'t> {
+        last_name: &'t str,
+        first_name: &'t str,
+    }
+
+    let luke = Person {
+        last_name: "Skywalker",
+        first_name: "Luke",
+    };
+
+    let &Person { last_name, first_name } = &luke;
+    // The line above is similar to the 2 lines below
+    // let ref = &luke;
+    // let Person {last_name, first_name} = ref;
+    println!("{} - {}", last_name, first_name);
+    println!("{:p} - {:p}", last_name, first_name);
+
+    println!("{:?}", luke);
+    println!("{:p} - {:p}", luke.last_name, luke.first_name);
 }
 
 fn destructuring04() {
     println!("\nDestructuring 04 : enum with let\n");
 
+    #[derive(Debug)]
     enum Role {
         Emperor,
         Trader(String),
@@ -289,6 +415,7 @@ fn destructuring04() {
     ];
 
     for role in characters {
+        // role is Role, characters is consumed
         match role {
             Role::Emperor => println!("The Emperor rules... vaguely."),
             Role::Trader(name) => println!("A trader named {name}"),
@@ -297,84 +424,111 @@ fn destructuring04() {
             }
         }
     }
+    // println!("{:?}", characters); // does not compile
+
+    let Some(x) = Some(5) else { todo!() }; // Some is an enum
+    println!("x: {x}");
+}
+
+fn destructuring04_bis() {
+    println!("\nDestructuring 04_bis : enum with let\n");
+
+    #[derive(Debug)]
+    enum Role {
+        Emperor,
+        Trader(String),
+        Scientist { name: String, field: String },
+    }
+
+    let characters = vec![
+        Role::Emperor,
+        Role::Trader("Hober Mallow".to_string()),
+        Role::Scientist {
+            name: "Hari Seldon".to_string(),
+            field: "Psychohistory".to_string(),
+        },
+    ];
+
+    for role in &characters {
+        // role is &Role, characters not consumed
+        match role {
+            Role::Emperor => println!("The Emperor rules... vaguely."),
+            Role::Trader(name) => println!("A trader named {name}"),
+            Role::Scientist { name, field } => {
+                println!("Scientist {name} specializes in {field}")
+            }
+        }
+    }
+    println!("{:?}", characters);
+
+    let Some(x) = Some(5) else { todo!() }; // Some is an enum
+    println!("x: {x}");
 }
 
 fn destructuring05() {
-    println!("\nDestructuring 05 : tuples with let 1/2\n");
+    println!("\nDestructuring 05 : function & closure parameters\n");
 
-    let (name, age) = ("Salvor Hardin", 42); // tuple destructuring
-    let Some(x) = Some(5) else { todo!() }; // enum destructuring
-
-    fn print_coords((x, y): (i32, i32)) {
-        println!("{x}, {y}");
-    }
-
-    let (my_x, my_y) = (28, 56);
-    print_coords((my_x, my_y));
-}
-
-// When destructuring, the pattern on the left-hand side must match the shape of the value on the right.
-// In this case, a 2-element tuple is matched by a 2-element pattern.
-fn destructuring06() {
-    println!("\nDestructuring 06 : tuples with let 2/2\n");
-
-    let pair = ("Hari Seldon", 12050);
-
-    // Destructuring the tuple into two separate variables
-    let (name, year) = pair;
-
-    println!("{} was born in year {}", name, year);
-
-    // You can also ignore parts of a tuple using _
-    let (_, just_the_year) = pair;
-    println!("We only care about the year: {}", just_the_year);
-}
-
-fn destructuring07() {
-    println!("\nDestructuring 07 : function & closure parameters\n");
-
-    // --- Function with destructured parameters ---
     fn print_coordinates((x, y): (i32, i32)) {
         println!("Function received: x = {}, y = {}", x, y);
     }
-
     let point = (10, 20);
     print_coordinates(point);
+    println!("{:?}", point);
 
-    // --- Destructuring in a let binding ---
-    let (a, b) = point;
-    println!("Destructured binding: a = {}, b = {}", a, b);
+    fn print_full_name((first, last): (String, String)) {
+        println!("Function received: First = {}, Last = {}", first, last);
+    }
+    let chief = ("Martin".to_string(), "Brody".to_string());
+    print_full_name(chief);
+    // println!("{:?}", chief);// does not compile
 
-    // --- Destructuring in a closure ---
     let points = vec![(1, 2), (3, 4), (5, 6)];
-
-    println!("\nClosure with destructuring:");
     points.iter().for_each(|&(x, y)| {
         println!("Point: x = {}, y = {}", x, y);
     });
+    println!("Point: {:?}", points);
 }
 
 // In a for loop, the variable immediately after for is a pattern.
 // That’s why we can destructure tuples directly inside the loop.”
-fn destructuring08() {
-    println!("\nDestructuring 08 : in for loops with enumerate()\n");
+fn destructuring06() {
+    println!("\nDestructuring 06 : in for loops with .enumerate()\n");
 
     let characters = vec!["Hari", "Salvor", "Hober"];
-
     for (index, name) in characters.iter().enumerate() {
-        // (index, name) a pattern that destructures the (usize, &str) tuple
         println!("Character #{index} is {name}");
     }
 
-    // Underscore can be used to ignore parts
-    for (_, name) in characters.iter().enumerate() {
-        println!("Name only: {name}");
+    let characters = vec!["Harry".to_string(), "Hermione".to_string(), "Ron".to_string()];
+    for (index, name) in characters.iter().enumerate() {
+        println!("Character #{index} is {name}");
+    }
+}
+
+fn destructuring06_bis() {
+    println!("\nDestructuring 06 bis: in for loops with .enumerate()\n");
+
+    let characters = vec!["Hari", "Salvor", "Hober"];
+    for (index, name) in characters.iter().enumerate() {
+        println!("Character #{index} is {name}");
+
+        // let bob = *name; // &str
+        // println!("{}", bob);
+
+        // let bob = **name; // str, does not compile, no size known at compile-time
+        // println!("{}", bob);
+
+        // let bob = ***name; // ???, does not compile
+        // println!("{}", bob);
+
+        let bob = &name; // &&&str
+        println!("{}", bob);
     }
 }
 
 // This line might look like we're referencing s, but &[x, y] is a pattern, not a reference. The compiler matches each &[i32; 2] and destructures it in-place
-fn destructuring09() {
-    println!("\nDestructuring 08 : for loop over array slices\n");
+fn destructuring07() {
+    println!("\nDestructuring 07 : for loop over array slices\n");
 
     let coordinates = vec![[1, 2], [3, 4], [5, 6]];
 
@@ -391,8 +545,8 @@ fn destructuring09() {
     }
 }
 
-fn destructuring10() {
-    println!("\nDereferencing 10 : destructuring pattern in for loop\n");
+fn destructuring08() {
+    println!("\nDereferencing 08 : destructuring pattern in for loop\n");
 
     let foundation: Vec<String> = vec!["Hari Seldon", "Salvor Hardin", "Hober Mallow", "The Mule", "Bayta Darell"]
         .into_iter()
@@ -413,8 +567,8 @@ fn destructuring10() {
 }
 
 // Patterns can be used in loops to filter and destructure in a single step. Here, &Some(score) is not a reference — it’s a pattern that matches a reference to an Option and destructures it if it’s Some
-fn destructuring11() {
-    println!("\nDestructuring 11 : matching Option<T> in a for loop\n");
+fn destructuring09() {
+    println!("\nDestructuring 09 : matching Option<T> in a for loop\n");
 
     let maybe_scores = vec![Some(10), None, Some(30)];
 
@@ -457,11 +611,15 @@ fn main() {
     destructuring01();
     destructuring02();
     destructuring03();
+    destructuring03_bis();
+    destructuring03_ter();
+    destructuring03_qua();
     destructuring04();
+    destructuring04_bis();
     destructuring05();
     destructuring06();
+    destructuring06_bis();
     destructuring07();
     destructuring08();
     destructuring09();
-    destructuring10();
 }

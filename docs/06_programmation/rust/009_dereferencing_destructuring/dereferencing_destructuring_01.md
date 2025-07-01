@@ -17,7 +17,7 @@ last_modified_date : 2025-06-30 12:00:00
 
 <div align="center">
 <img src="./assets/cover.webp" alt="" width="450" loading="lazy"/>
-<p>Thanks Chat GPT</p>
+<!-- <p>Thanks Chat GPT</p> -->
 </div>
 
 ---
