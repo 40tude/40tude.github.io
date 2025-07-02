@@ -210,7 +210,7 @@ Run the code below :
 fn destructuring02() {
     println!("\nDestructuring 02 : partial and range destructuring\n");
     let (mut x, ..) = (41, 2, 3); // ignore the rest
-    x+=1;
+    x += 1;
     println!("x: {x}");
     let (.., z) = (1, 2, 101); // ignore the rest
     println!("z: {z}");
@@ -219,9 +219,20 @@ fn destructuring02() {
         1..=17 => println!("No way to access the dance floor."),
         _ => println!("Welcome to Studio 54!"),
     }
+    let x = Some(1984);
+    match x {
+        Some(y) if y > 1964 => println!("Your are young."),
+        Some(_) => println!("Your are old."),
+        None => println!("Nothing."),
+    }
     let pair = ("Hari Seldon", 12050);
     let (_, just_the_year) = pair;
     println!("We only care about the year: {}", just_the_year);
+    let num = Some(10);
+    match num {
+        Some(n @ 1..=10) => println!("In the range [1;10]: {n}"),
+        _ => println!("Other"),
+    }
 }
 ```
 
@@ -233,7 +244,9 @@ Destructuring 02 : partial and range destructuring
 x: 42
 z: 101
 No way to access the dance floor.
+Your are young.
 We only care about the year: 12050
+In the range [1;10]: 10
 ```
 
 ### Explanations
@@ -241,11 +254,13 @@ We only care about the year: 12050
 
 This post is not a reference so I just show few of the "facilities" available in the matching step. The reference is [here](https://doc.rust-lang.org/stable/reference/patterns.html?highlight=destructuring#destructuring).
 
-* The first `let` shows that we can use a `mut` and that it is possible to extract only the first element
-* The second `let` shows we can extract only the last element
+* `let (mut x, ..) = (41, 2, 3);` : shows that we can use a `mut` and that it is possible to extract only the first element
+* `let (.., z) = (1, 2, 101);` : shows we can extract only the last element
     * This is not shown but yes you can write `let (x, .., z) = (31, 32, 33, 34, 35);`
-* The third example shows how the pattern can be tested against a range of values
-* The last shows how to extract the parts of interest
+* The third example (`1..=17 => println!(...`) : shows how the pattern can be tested against a range of values
+* The fourth example (`Some(y) if y > 1964 => println!(...`) : shows how to add a pattern guard in a `match`
+* `let (_, just_the_year) = pair;` : shows how to extract the parts of interest
+* The last example (`Some(n @ 1..=10) => println!(...`) : shows binding with subpattern (aka @ binding pattern). It brings filtering and binding at the same time.
 
 {: .note-title }
 > To keep in mind 
@@ -315,10 +330,86 @@ If we need to be able to modify the extracted sub component
 
 
 
+Just to make sure we talked about it... `ref` (`ref_mut`) can be used in `match` expressions as well. See below :
+
+```rust
+fn destructuring02_ter() {
+    println!("\nDestructuring 02 ter : ref in match expression\n");
+    let val = Some(String::from("Kenobi"));
+    // Match using `ref` to borrow the inner String instead of moving it
+    match val {
+        Some(ref x) => {
+            // x is a &String (reference), so we can use it without consuming `val`
+            println!("Borrowed from Some: {}", x);
+        },
+        None => println!("Got nothing"),
+    }
+    // We can still use `val` here because we didn't move its content
+    match val {
+        Some(x) => println!("Moved from Some: {}", x),
+        None => println!("Still nothing"),
+    }
+    // println!("{:?}", val); // does not compile: `val` was moved 
+}
+```
+
+### Expected output 
+{: .no_toc }
+
+```
+Destructuring 02 ter : ref in match expression
+Borrowed from Some: Kenobi
+Moved from Some: Kenobi
+```
+
+### Explanations
+{: .no_toc }
+
+* `val` is an `Option` on a non primitive data type (a `String` here)
+* In the first `match` expression
+    * We write `Some(ref x)` (rather than `Some(x)`) because, as in the previous code snippet, we don't want to move (and loose) `val`
+    * `x` is of type `&String` so we should `println!` `*x` but thanks to deref coercion we can use `x` 
+* In the second `match expression`
+    * We can use `val` because it was not moved
+    * However, here, we consume `val` (`match val {...`)
+* After this second match, `val` is no longer accessible 
+* The commented-out `println!` does not compile
 
 
 
+***Hm... What is the difference between `ref x` and `*x`?*** Again let's use some code :
 
+```rust
+fn main() {
+    let &x = &42; // &x is a pattern
+    println!("x = {}", x); // x = 42
+
+    let x = &42; // a reference
+    println!("x = {}", x); // x = 42
+    println!("*x = {}", *x); // x = 42
+
+    let ref x = 42; // a reference
+    println!("x = {}", x); // x = 42
+    println!("*x = {}", *x); // x = 42
+}
+```
+
+* `let &x = &42;`
+    * Right: `&42` is a reference to an integer (`&i32`)
+    * Left: `&x` is a **pattern** that says: "I expect a reference, and I want to extract its value"
+    * The `&` in the pattern means: "I want to deconstruct a reference".
+    * Rust compiler implicitly dereferences ``&42`` (`*(&42)`) to extract 42, and assigns it to `x`.
+* `let x = &42;`
+    * Right : `&42` is a reference to an integer (`&i32`)
+    * Left : `x` is a binding whose value is a reference to the value 
+* `let ref x = 42;`
+    * Right: 42 is an `i32`.
+    * Left: `ref x` means: "Instead of getting the value, I want a reference to the value"
+    
+The second and third lines are functionally equivalent but the context differs
+* `&` is an operator, used in expression, on the right hand side (rhs)
+* `ref` is keyword, used in patterns (`let`, `match`, `if let`...) to create a reference.
+    * We cannot use `&` in a pattern because it already have another meaning ("I expect a reference, and I want to extract its value")
 
 
 

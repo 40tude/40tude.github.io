@@ -246,9 +246,22 @@ fn destructuring02() {
         _ => println!("Welcome to Studio 54!"),
     }
 
+    let x = Some(1984);
+    match x {
+        Some(y) if y > 1964 => println!("Your are young."),
+        Some(_) => println!("Your are old."),
+        None => println!("Nothing."),
+    }
+
     let pair = ("Hari Seldon", 12050);
     let (_, just_the_year) = pair;
     println!("We only care about the year: {}", just_the_year);
+
+    let num = Some(10);
+    match num {
+        Some(n @ 1..=10) => println!("In the range [1;10]: {n}"),
+        _ => println!("Other"),
+    }
 }
 
 fn destructuring02_bis() {
