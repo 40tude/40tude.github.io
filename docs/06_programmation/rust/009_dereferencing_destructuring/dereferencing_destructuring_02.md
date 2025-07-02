@@ -809,7 +809,7 @@ As we can expect, this is another story when the components are not primitive. T
 ---
 ## Destructuring: in `for` Loops with `.enumerate()`
 
-Do you remember, not September, but `destructuring04()` and `destructuring04_bis()` where we passed the array by value then by reference. Here, we want to avoid the raw `for` loop ("no raw loops", said Sean Parent in 2013). To do so we use an iterator to visit a vector from start to end.
+Do you remember, not September (EWF, 1978), but `destructuring04()` and `destructuring04_bis()` where we passed the array by value then by reference. Here, we want to avoid the raw `for` loop ("no raw loops", said Sean Parent in 2013). To do so we can use an iterator to visit an iterable (think of a vector, for example) from start to end.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W2tWOdzgXHA?si=RadnIfHfbD5lNcaD&amp;start=131" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -844,6 +844,12 @@ Character #2 is Ron
 {: .no_toc }
 The key point here is that in a `for` loop, the variable immediately after the `for` keyword is a pattern. That’s why we can destructure tuples directly inside the loop. Once we have this in mind, understanding the code is easier.
 
+{: .note-title }
+> To keep in mind 
+> 
+> The variable immediately after the `for` keyword is a pattern.
+
+
 * We create a vector of `characters` (`&str`) with `let characters = vec!["Hari", "Salvor", "Hober"];`
 * We iterate and enumerate over the vector (`for (index, name) in characters.iter().enumerate(){...`)
     * At each iteration
@@ -856,7 +862,7 @@ The key point here is that in a `for` loop, the variable immediately after the `
         * The compiler will apply implicit deref coercion
         * It will do something like `*(&&str)` = `&str` => A type which can be printed as usual.
 
-***Hum, hum... How can you be sure about what you say ?*** "Trust in me, just in me...". No, don't trust people, check by yourself and the debugger is your best friend. Below I put a breakpoint on the first `println!` and hover `name`. Do you see the data type in the yellow rectangle.
+***Hum, hum... How can you be so sure about what you say ?*** "Trust in me, just in me...". No, don't trust people, check by yourself and here the debugger is your best friend. Below I put a breakpoint on the first `println!` and hover `name`. Do you see the data type in the yellow rectangle?
 
 <div align="center">
 <img src="./assets/debug_01.webp" alt="" width="900" loading="lazy"/>
@@ -869,7 +875,8 @@ Under VSCode, with my [setup]({%link docs/06_programmation/rust/005_my_rust_setu
 </div>
 
 
-This said, and always about the first `for` loop, if you have time play with the code below (Playground is your second best friend after the debugger) :
+This said, and always about the first `for` loop, if you have time play with the code below (Rust Playground is your second best friend after the debugger) :
+
 ```rust
 fn destructuring06_bis() {
     println!("\nDestructuring 06 bis: in for loops with .enumerate()\n");
@@ -893,9 +900,9 @@ It is time now to talk about the second `for` loop
 
 ```rust
 let characters = vec!["Harry".to_string(), "Hermione".to_string(), "Ron".to_string()];
-    for (index, name) in characters.iter().enumerate() {
-        println!("Character #{index} is {name}");
-    }
+for (index, name) in characters.iter().enumerate() {
+    println!("Character #{index} is {name}");
+}
 ```
 
 * We create a vector `characters` of `String` with `let characters = vec!["Harry".to_string()...`
@@ -1107,7 +1114,7 @@ String is : The Mule
 > 1. What is the type of the iterated element (ex: `String`)
 > 1. Is it primitive or not (Copy or not, ex: No)
 > 1. Do I get a reference to it or not (ex: Yes)
-> 1. Design (ex: `s`)
+> 1. Design (ex: `s`, `s` is `&String`)
 
 
 
@@ -1416,7 +1423,7 @@ fn main() {
 
 
 
-## Conclusion
+## Dereferencing vs Destructuring in Rust — Key Takeaways
 
 | Aspect           | Dereferencing               | Destructuring                            |
 | ---------------- | --------------------------- | ---------------------------------------- |
@@ -1425,13 +1432,40 @@ fn main() {
 | Applicable to    | `&T`, `Box<T>`, etc.        | `tuple`, `struct`, `enum`, `array`, etc. |
 | Requires traits? | Yes: `Deref`                | No (structural pattern matching)         |
 
-* Summarizes the distinction.
-    * Dereferencing is peeling a wrapper off, destructuring is breaking the thing into pieces.
-    * The word pattern refers to the left-hand side of an assignment, match or for.
-    * Destructuring occurs as soon as you “break a structure into pieces”, thanks to this pattern.
+* **Dereferencing** means *accessing* the value behind a reference (`&T`, `&mut T`, `Box<T>`, `Rc<T>`, etc.). It’s about indirection.
+* **Destructuring** means *unpacking* a composite value (tuple, array, struct, enum) using patterns. It’s about pattern matching.
+* Dereferencing happens via `*`, but is often implicit thanks to **deref coercion**.
+* Destructuring can:
+    * Move or borrow data depending on the pattern.
+    * Be used in `let`, `match`, `if let`, function parameters, closures, and loops.
+* Patterns can be enriched with:
+    * `..` to ignore parts,
+    * `ref`/`ref mut` to borrow during destructuring,
+    * lifetimes when using `&str` or references,
+    * match guards, nested patterns, and slice patterns.
+* Rust applies automatic deref and matching adjustments in `match`, making things feel “magical” — but they are deterministic.
 
-* Thinking that destructuring is only possible in `match`
-* Incorrect understanding of pattern in `for`
+
+
+
+
+
+
+## Conclusion
+
+At first glance, dereferencing and destructuring can feel like two sides of the same coin — both seem to "dig into" a value. But their roles are distinct.
+
+* **Dereferencing** is about *accessing* through indirection: it gives us the data behind a reference or a smart pointer.
+* **Destructuring** is about *unpacking* data into parts using pattern matching — whether in `let`, `match`, or function parameters.
+
+Where dereferencing is a runtime operation (or often optimized away), destructuring is a compile-time syntactic feature. And while dereferencing can happen implicitly through **deref coercion**, destructuring always requires that your patterns match the shape of the data — with the possibility to borrow, copy, or move components depending on the context.
+
+Understanding the difference between the two provides a clearer mental model of ownership, borrowing and data flow in Rust - especially when faced with a “lunar” message from the compiler.
+
+I hope you've had as much fun reading these posts as I've had writing them. From now on, you should have a clear head and be able to explain destructuring and dereferencing to a buddy (Feynman method). If not, wait 2 or 3 days. Don't reread the article, but run the examples through Rust Playground. Then link this or that part.
+
+
+
 
 
 
