@@ -267,7 +267,7 @@ fn destructuring02() {
 fn destructuring02_bis() {
     println!("\nDestructuring 02 bis : partial and range destructuring\n");
 
-    let mut data = (String::from("Obi-Wan"), 42);
+    let data = (String::from("Obi-Wan"), 42);
 
     // This would move the String out of the tuple, making it unusable afterward:
     let (s, _) = data;
@@ -645,6 +645,7 @@ fn main() {
 
     destructuring01();
     destructuring02();
+    destructuring02_bis();
     destructuring03();
     destructuring03_bis();
     destructuring03_ter();

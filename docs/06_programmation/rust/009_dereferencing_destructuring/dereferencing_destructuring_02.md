@@ -277,7 +277,7 @@ Let's stay on the subject of partial destructuring and study the code below, in 
 fn destructuring02_bis() {
     println!("\nDestructuring 02 bis : partial and range destructuring\n");
 
-    let mut data = (String::from("Obi-Wan"), 42);
+    let data = (String::from("Obi-Wan"), 42);
 
     // This would move the String out of the tuple, making it unusable afterward:
     let (s, _) = data;
