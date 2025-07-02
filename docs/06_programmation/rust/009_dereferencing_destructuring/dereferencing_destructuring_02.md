@@ -256,6 +256,65 @@ This post is not a reference so I just show few of the "facilities" available in
 
 
 
+Let's stay on the subject of partial destructuring and study the code below, in which we want to extract a member from a tuple that is not of primitive data type (`String` for example)
+
+```rust
+fn destructuring02_bis() {
+    println!("\nDestructuring 02 bis : partial and range destructuring\n");
+
+    let mut data = (String::from("Obi-Wan"), 42);
+
+    // This would move the String out of the tuple, making it unusable afterward:
+    let (s, _) = data;
+    println!("s: {}", s);
+    // println!("data.0: {}", data.0); // does not compile
+
+    let mut data = (String::from("Obi-Wan"), 42); // re-create data
+
+    // Instead, we can use `ref` to borrow the String by reference
+    let (ref s_ref, _) = data;
+    println!("Using `ref`: {}", s_ref); // s_ref is a &String
+    println!("Original still usable: {}", data.0); // data.0 is still valid
+
+    // Now let's use `ref mut` to get a mutable reference to the String
+    let (ref mut s_mut_ref, _) = data;
+    s_mut_ref.push_str(" Kenobi");
+    println!("Using `ref mut`: {}", s_mut_ref); // Modified through &mut String
+    println!("Original mutated: {}", data.0); // Shows the mutation
+}
+```
+
+### Expected output 
+{: .no_toc }
+
+```
+Destructuring 02 bis : partial and range destructuring
+s: Obi-Wan
+Using `ref`: Obi-Wan
+Original still usable: Obi-Wan
+Using `ref mut`: Obi-Wan Kenobi
+Original mutated: Obi-Wan Kenobi
+```
+
+### Explanations
+{: .no_toc }
+
+* `data` is a mutable tuple consisting of a `String` (not primitive) and an `i32` (primitive)
+* We extract (`let (s, _) = data;`) and print the string part of the data.
+* The issue is that since String cannot Copy it is moved and `data` is no longer available
+* The commented-out `println!` line does not compile
+
+What can we do ?
+* We must re-create `data` (`let mut data = (String::from("Obi-Wan"), 42);`)
+* Then we use `ref` in the pattern to create an immutable reference instead of moving the value
+
+If we need to be able to modify the extracted sub component 
+* We use `ref mut` which allows mutating the original value via a mutable reference.
+
+
+
+
+
 
 
 
@@ -803,7 +862,7 @@ The key point here is that in a `for` loop, the variable immediately after the `
 <img src="./assets/debug_01.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Under VSCode, with my [setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}), if I hit CTRL+ALT I can see the data type as overlays. Can you see the content of the red rectangle? 
+Under VSCode, with my [setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}), if I hit CTRL + ALT I can see the data type as overlays. Can you see the content of the red rectangle? 
 
 <div align="center">
 <img src="./assets/debug_02.webp" alt="" width="900" loading="lazy"/>
@@ -1165,7 +1224,7 @@ Fourth loop (`for score in maybe_scores.iter().flatten() {...`)
 
 ## Rust Gotchas: Destructuring Edition
 
-1. **Shadowing Without Realizing It**
+**1. Shadowing Without Realizing It**
 
 You might accidentally shadow variables, leading to confusion or bugs if the shadowed value was still needed later.
 
@@ -1174,7 +1233,7 @@ let x = 5;
 let (x, y) = (10, 20); // This shadows the previous `x`
 ```
 
-2. **Destructuring by Move (Not Copy)**
+**2. Destructuring by Move (Not Copy)**
 
 Destructuring consumes values unless they implement `Copy`. Be careful with types like `String`, `Vec`, or custom structs.
 
@@ -1184,7 +1243,7 @@ let (s1,) = (s,); // s is moved, not copied
 // println!("{}", s); // error: borrow of moved value
 ```
 
-3. **Patterns Are Not Always Exhaustive in Match Arms**
+**3. Patterns Are Not Always Exhaustive in Match Arms**
 
 Failing to match all variants can cause a compilation error — or worse, if using `_` too liberally, you might silently ignore important cases.
 
@@ -1199,7 +1258,7 @@ match x {
 }
 ```
 
-4. **Borrowing in `if let` and `while let` Is Tricky**
+**4. Borrowing in `if let` and `while let` Is Tricky**
 
 To keep ownership, use a reference:
 
@@ -1218,7 +1277,7 @@ if let Some(ref s) = opt { ... }
 
 
 
-5. **Destructuring `&T` vs `T`**
+**5. Destructuring `&T` vs `T`**
 
 If you destructure a reference (`&pair`), your pattern must also use `&`. This often confuses newcomers.
 
@@ -1229,7 +1288,7 @@ let &(a, b) = &pair; // Need `&` pattern to destructure a reference
 
 
 
-6. **Too Much Pattern Nesting Hurts Readability**
+**6. Too Much Pattern Nesting Hurts Readability**
 
 Consider breaking the destructuring into multiple lines or using named variables earlier for clarity.
 
@@ -1238,7 +1297,7 @@ let ((a, ), (c, d)) = ((1, 2), (3, 4)); // 😵‍💫
 ```
 
 
-7. **Partial Matching Requires `ref` or `ref mut`**
+**7. Partial Matching Requires `ref` or `ref mut`**
 
 ```rust
 let tuple = (String::from("hello"), 42);
@@ -1357,7 +1416,7 @@ fn main() {
 
 
 
-## Conclusion (same on both posts)
+## Conclusion
 
 | Aspect           | Dereferencing               | Destructuring                            |
 | ---------------- | --------------------------- | ---------------------------------------- |
@@ -1380,6 +1439,7 @@ fn main() {
 
 ### Webliography
 {: .no_toc }
+* Patterns and Matching in [RPL](https://doc.rust-lang.org/book/ch19-00-patterns.html)
 * Patterns in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html#grammar-PatternNoTopAlt)
 * let statement in the [Rust Reference](https://doc.rust-lang.org/stable/reference/statements.html#grammar-LetStatement) 
 * Destructuring in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html?highlight=destructuring#destructuring)
@@ -1388,53 +1448,3 @@ fn main() {
 ----
 
 [^1]: The answers to the questions are at the end of the [post 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

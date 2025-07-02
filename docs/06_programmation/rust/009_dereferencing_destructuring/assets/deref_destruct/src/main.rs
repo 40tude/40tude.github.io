@@ -80,7 +80,7 @@ fn dereferencing03() {
 
     let my_vector = vec![42, 43, 44];
     my_function01(my_vector); // after the call my_vector disappears
-    // println!("{:?}", my_vector); // Does not compile
+                              // println!("{:?}", my_vector); // Does not compile
 
     let my_vector = vec![42, 43, 44]; // must recreate my_vector
     my_function02(&my_vector); // pass a reference
@@ -107,8 +107,8 @@ fn dereferencing04() {
     println!("Address of b on the stack      : {:p}", &b);
     println!("Dereferenced Box: {}", *b); // explicit deref
     println!("Dereferenced Box: {}", b); // works, thanks to deref coercion
-    // The function expects &i32, but we give it &Box<i32>
-    // Thanks to deref coercion, this works
+                                         // The function expects &i32, but we give it &Box<i32>
+                                         // Thanks to deref coercion, this works
     print_ref(&b);
     // Can also pass the Box directly if signature matches
     print_box(b); // b is moved here
@@ -249,6 +249,30 @@ fn destructuring02() {
     let pair = ("Hari Seldon", 12050);
     let (_, just_the_year) = pair;
     println!("We only care about the year: {}", just_the_year);
+}
+
+fn destructuring02_bis() {
+    println!("\nDestructuring 02 bis : partial and range destructuring\n");
+
+    let mut data = (String::from("Obi-Wan"), 42);
+
+    // This would move the String out of the tuple, making it unusable afterward:
+    let (s, _) = data;
+    println!("s: {}", s);
+    // println!("data.0: {}", data.0); // does not compile
+
+    let mut data = (String::from("Obi-Wan"), 42); // re-create data
+
+    // Instead, we can use `ref` to borrow the String by reference
+    let (ref s_ref, _) = data;
+    println!("Using `ref`: {}", s_ref); // s_ref is a &String
+    println!("Original still usable: {}", data.0); // data.0 is still valid
+
+    // Now let's use `ref mut` to get a mutable reference to the String
+    let (ref mut s_mut_ref, _) = data;
+    s_mut_ref.push_str(" Kenobi");
+    println!("Using `ref mut`: {}", s_mut_ref); // Modified through &mut String
+    println!("Original mutated: {}", data.0); // Shows the mutation
 }
 
 // fn destructuring03() {
@@ -561,8 +585,8 @@ fn destructuring08() {
     }
 }
 
-// Patterns can be used in loops to filter and destructure in a single step. 
-// Here, &Some(score) is not a reference 
+// Patterns can be used in loops to filter and destructure in a single step.
+// Here, &Some(score) is not a reference
 // It’s a pattern that matches a reference to an Option and destructures it if it’s Some
 
 fn destructuring09() {

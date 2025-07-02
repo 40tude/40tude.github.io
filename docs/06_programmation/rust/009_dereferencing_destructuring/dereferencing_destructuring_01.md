@@ -189,7 +189,7 @@ Whether you're just starting with Rust or adjusting your mental model, this post
 ---
 ## Dereferencing: A Smooth Start
 
-Copy and paste the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=95688f886df53f6776df8a63c0599ccd) then hit CTRL+ ENTER
+Copy and paste the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=95688f886df53f6776df8a63c0599ccd) then hit CTRL + ENTER
 
 With the others sample code I will only show the function of interest, not the `main()` function.
 
@@ -945,33 +945,33 @@ This is what is demonstrated in the last scope.
 
 ## Rust Gotchas: Dereferencing Edition
 
-1. **References are not pointers (exactly)**  
+**1. References are not pointers (exactly)**  
 
 They behave similarly but are *not* the same. You can't do pointer arithmetic, and they must always be valid and non-null.
 
-2. **`&mut` vs `mut`**  
+**2. `&mut` vs `mut`**  
 
 * `mut x`: you're allowed to modify `x`.  
 * `&mut x`: you're allowed to modify the *value* `x` points to (&mut is a compound operator in Rust, it is a single “logical keyword”, which reads "mutable reference to")
 * But `let mut x = &y;` only means that `x` (the reference) can change to point elsewhere — not that `y` is mutable!
 
-3. **Shadowing vs reassignment**  
+**3. Shadowing vs reassignment**  
 
 You can "reassign" an immutable reference via *shadowing* (`let x = &y;` again), but trying to reassign without `let` won’t compile.
 
-4. **Boxing isn't cloning**  
+**4. Boxing isn't cloning**  
 
 `Box::new(value)` allocates `value` on the heap. It does *not* create a deep copy when passed by value — it moves ownership unless you explicitly `.clone()` the inner value.
 
-5. **`Rc<T>` cloning doesn’t clone the value**  
+**5. `Rc<T>` cloning doesn’t clone the value**  
 
 It just increments the reference counter. Great for sharing read-only access — but not safe across threads or for mutation without `RefCell`.
 
-6. **Deref coercion looks like magic**  
+**6. Deref coercion looks like magic**  
 
 But it's not: it follows well-defined `Deref` rules. Still, don’t rely on it blindly — sometimes explicit `*` helps readability and prevents surprises.
 
-7. **Borrow checker checks borrows at compile time... until `RefCell` enters the game**  
+**7. Borrow checker checks borrows at compile time... until `RefCell` enters the game**  
 
 `RefCell<T>` defers checks to *runtime*. That means your code compiles, but can still panic if you violate borrow rules (e.g., two mutable borrows).
 
