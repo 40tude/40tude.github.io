@@ -869,9 +869,9 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 {: .note-title }
 > To keep in mind 
 >
-> `Rc`, reference-counted smart pointer
-> With `let rc2 = Rc::clone(&rc1);` **NO copy** takes place
-> `.clone()` add 1 to a counter. The operation is atomic, fast and cheap.
+> * `Rc`, reference-counted smart pointer
+> * With `let rc2 = Rc::clone(&rc1);` **NO copy** takes place
+> * `.clone()` add 1 to a counter. The operation is atomic, fast and cheap.
 
 
 
