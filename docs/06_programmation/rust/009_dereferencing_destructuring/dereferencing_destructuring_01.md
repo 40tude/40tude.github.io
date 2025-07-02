@@ -595,7 +595,8 @@ Dereferencing 03 : ref as argument
 * Yes we can! Yes we can have function definitions inside function definition
 * `my_function01` has a unique parameter of type vector of `i32`
 * `my_function02` has a unique parameter of type reference to a vector of `i32`
-* `my_function03` has a unique parameter of type slice (`&[T]`) of `i32`
+* `my_function03` has a unique parameter of type slice (`&[T]`) of `i32`. 
+    * It is the preferred function signature because the function can be called with arrays or vector as argument (more flexibility) 
 
 #### Pass by value
 {: .no_toc }
@@ -652,12 +653,24 @@ What I will say here is not 100% accurate but stick with me because the idea is 
 
 
 ***You promised to tell the truth about what happens when you pass a vector by value...*** 
-In fact, the content of a vector is allocated on the heap (`[42, 43, 44]`) and you can view a vector as a struct with 3 fields (PLC) : 
+In fact, the content (the buffer) of a vector `vec0` is allocated on the heap (let's say `[22, 44, 66]`) and you can view a vector as a kind of "`struct`" with 3 fields (PLC) : 
 1. address of the data on the heap (P, pointer)
 1. the len of the vector (L, len)
 1. the capacity of the vector (C, capacity >=len)
 
-So, yes, I lied. When we pass by value a vector of 100 `i32` we do not passe 100 values. We only pass 3 `i64`(address, len and capacity). Nevertheless what is false for a vector is true for an array. An array is just a set of contiguous memory addresses on the stack and if we pass an array by value we pass its content by value.
+Here is how it looks in memory:
+
+<div align="center">
+<img src="./assets/stack_heap.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+We can interpret the situation as follows: 
+
+* The local variable `vec0` is on the stack. 
+* The field P of the "`struct`" is a pointer that holds the address, on the heap, where the buffer part of the vector is.
+
+So, yes, I lied. When we pass by value a vector of 100 `i32` we do not pass 100 values. We only pass 3 `i64`(address, len and capacity). Nevertheless what is false for a vector is true for an array. An array is just a set of contiguous memory addresses on the stack and if we pass an array by value we pass its content by value.
+
 
 
 
@@ -720,6 +733,15 @@ Boxed value: 123
 * Then, in order to allocate memory on the heap we use `Box::new()` (`let b = Box::new(123);`)
 * Let's keep in mind that in a single-threaded context, it creates a unique pointer that own the pointed area.
 * Here the required space to store the value 123 (an `i32`, 4 bytes) is allocated on the heap
+
+Here is how it looks in memory:
+
+<div align="center">
+<img src="./assets/b_stack_heap.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+
+
 * `b` a variable of type `Box<i32>` remains on the stack. `b` is a smart pointer which implements **RAII**
 * RAII = Ressource Acquisition Is Initialisation. This term is pretty well known in C++. This creates a wrapper around the allocated memory and warranty that the memory will be automatically freed when `b` goes out of scope (even if a `panic` or an early `return` happens)
 * Once the variable `b` exists, using a regular `println!` we print, the address on the heap which is in the Box (`println!("Address of the heap in the Box : {:p}", b);`).
@@ -730,6 +752,8 @@ Boxed value: 123
 * In the `print_ref` function the first `println!("Value: {}", *v);` is what we should write but the deref coercion allow us to write the second (`println!("Value: {}", v);`)
 * In the last call, make sure to understand that `b` (a variable on the stack) is moved and no longer available right after the call to `print_box`. This is at this point that RAII mechanism will work behind the scene and deallocate the memory on the heap. 
 
+
+**Side Note** : Rust compiler is optimized (thanks to LLVM) and it may decide to NOT allocate memory on the heap if this is not absolutely necessary. This is what is called : **allocation elision**. For example if you allocate memory on the heap in a function but do not return the pointer. It is smarter to allocate locally. Same thing if you allocate 1 i32? Why not store it in a local variable. OK, you get the point.
 
 
 ---
@@ -834,13 +858,20 @@ Then it becomes interesting...
 
 Then it becomes *really* interesting... 
 
-* Indeed we `.clone()` the smart pointer we had (`let rc2 = Rc::clone(&rc1);`). It is important to keep in mind that no copy or worst, no deep copy happens. When applied to a reference-counted smart pointer, `.clone()` simply add 1 to the counter. The `.clone()` operation is fast and cheap.
+* Indeed we `.clone()` the smart pointer we had (`let rc2 = Rc::clone(&rc1);`). It is important to keep in mind that no copy or worst, no deep copy happens. When applied to a reference-counted smart pointer, `.clone()` simply add 1 to the counter. The `.clone()` operation is atomic, fast and cheap.
 * Once rc2 is created we print the value it points to and the current value of the counter (`println!("Reference count (rc2): {}", Rc::strong_count(&rc2)); // 2`). This should not be a surprise but the counter of `rc1` and `rc2` are equal (otherwise we would be in be trouble)
 
 In a last experiment we create a scope (`{` and `}`) where we create another clone (`let rc3 = Rc::clone(&rc2);`).
 * Before the end of the scope we display the counter of one of the clones (`println!("Reference count: {}", Rc::strong_count(&rc3)); // 3`)
 * After the scope we display the counter of one of the clones (`println!("Reference count (rc1): {}", Rc::strong_count(&rc1)); // 2`). It goes from 3 to 2 since `rc3` no longer exists.
 
+
+{: .note-title }
+> To keep in mind 
+>
+> `Rc`, reference-counted smart pointer
+> With `let rc2 = Rc::clone(&rc1);` **NO copy** takes place
+> `.clone()` add 1 to a counter. The operation is atomic, fast and cheap.
 
 
 
@@ -936,6 +967,11 @@ This is what is demonstrated in the last scope.
 
 
 
+{: .note-title }
+> To keep in mind 
+> 
+> * `Rc<RefCell<T>>` for shared mutation in a single-threaded context
+> * Checking happens at **runtime** NOT compile time
 
 
 

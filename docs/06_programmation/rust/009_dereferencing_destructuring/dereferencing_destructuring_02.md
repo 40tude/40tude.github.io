@@ -314,13 +314,13 @@ Original mutated: Obi-Wan Kenobi
 ### Explanations
 {: .no_toc }
 
-* `data` is a mutable tuple consisting of a `String` (not primitive) and an `i32` (primitive)
+* `data` is a tuple consisting of a `String` (not primitive) and an `i32` (primitive)
 * We extract (`let (s, _) = data;`) and print the string part of the data.
 * The issue is that since String cannot Copy it is moved and `data` is no longer available
 * The commented-out `println!` line does not compile
 
 What can we do ?
-* We must re-create `data` (`let mut data = (String::from("Obi-Wan"), 42);`)
+* We must re-create `data` as a mutable tuple (`let mut data = (String::from("Obi-Wan"), 42);`)
 * Then we use `ref` in the pattern to create an immutable reference instead of moving the value
 
 If we need to be able to modify the extracted sub component 
@@ -453,7 +453,7 @@ Point4D { x: 1, y: 2, z: 3, t: 2054 }
 {: .no_toc }
 
 This one is easy.
-* We create a new type named `Point4D`. This is a `struct` with 4 fields of type `i32` (`struct Point4D {...`)
+* We create a new type named `Point4D`. This is a `struct` with 4 fields of type `i32` (`struct Point4D {...`). `#[derive(Debug)]` is mandatory if we want to `println!("{:?}..."`
 * Then we create and initialize a variable `pt` of that type (`let pt = Point4D { x: 1, y: 2, z: 3, t: 2054 };`)
 * The line `let Point4D { x, t, .. } = pt;` is a `let` statement that uses pattern destructuring to extract the fields `x` and `t` from the `Point4D` struct, while ignoring the other fields.
 * The pattern "wants" a variable of type `Point4D` that it will break apart (`let Point4D { x, t, .. } = pt; `)
