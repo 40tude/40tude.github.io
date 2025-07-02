@@ -8,9 +8,6 @@ date               : 2025-06-27 09:00:00
 last_modified_date : 2025-07-01 18:00:00
 ---
 
-<h2 align="center">
-<span style="color:red"><b>This post is still being written.</b></span>    
-</h2>
 
 # Rust Dereferencing vs Destructuring — For the Kids 2/2
 {: .no_toc }
@@ -31,9 +28,7 @@ last_modified_date : 2025-07-01 18:00:00
 ## The Post is in 2 Parts
 {: .no_toc }
 
-* The introduction is the same
-
-* The introduction & conclusion are the same in both posts
+* The introduction is the same in both posts
 * [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
 * [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
@@ -142,19 +137,14 @@ Too often we, me first, associate the concept of destructuring to ``match`` but 
 ```rust
 fn destructuring01() {
     println!("\nDestructuring 01 : 101\n");
-
     let (x, y) = (1, 2); // (x, y) is a pattern
     println!("{x}, {y}");
-
     let (x, y) = (1, 3.14); // tuple => we can have different data type
     println!("{x}, {y}");
-
     let [a, b, c] = [10, 20, 30]; // [a, b, c] is a pattern
     println!("{a}, {b}, {c}");
-
     let x = 42; // `x` is a very simple pattern: it matches any value and binds it to the name `x`
     println!("{x}");
-
     let ((x1, y1), (x2, y2)) = ((1, 2), (3, 4)); // nested destructuring
     println!("{x1}, {y1}, {x2}, {y2}");
 }
@@ -168,7 +158,6 @@ fn main(){
 {: .no_toc }
 ```
 Destructuring 01 : 101
-
 1, 2
 10, 20, 30
 42
@@ -220,20 +209,16 @@ Run the code below :
 ```rust
 fn destructuring02() {
     println!("\nDestructuring 02 : partial and range destructuring\n");
-
     let (mut x, ..) = (41, 2, 3); // ignore the rest
     x+=1;
     println!("x: {x}");
-
     let (.., z) = (1, 2, 101); // ignore the rest
     println!("z: {z}");
-
     let age = 15;
     match age {
         1..=17 => println!("No way to access the dance floor."),
         _ => println!("Welcome to Studio 54!"),
     }
-
     let pair = ("Hari Seldon", 12050);
     let (_, just_the_year) = pair;
     println!("We only care about the year: {}", just_the_year);
@@ -291,7 +276,6 @@ This post is not a reference so I just show few of the "facilities" available in
 ```rust
 fn destructuring03() {
     println!("\nDestructuring 03 : struct of i32 with let");
-
     #[derive(Debug)]
     struct Point4D {
         x: i32,
@@ -300,7 +284,6 @@ fn destructuring03() {
         t: i32,
     }
     let pt = Point4D { x: 1, y: 2, z: 3, t: 2054 };
-
     let Point4D { x, t, .. } = pt; // copy 
     println!("x: {x} and time: {t}");
     println!("{:?}", pt); // pt is available
@@ -337,7 +320,6 @@ This one is easy.
 ```rust
 fn destructuring03_bis() {
     println!("\nDestructuring 03 bis : struct of String with let");
-
     #[derive(Debug)]
     struct Person {
         last_name: String,
@@ -347,7 +329,6 @@ fn destructuring03_bis() {
         last_name: "Skywalker".to_string(),
         first_name: "Luke".to_string() 
     };
-
     let Person {last_name, first_name } = luke; // move because String does'nt have Copy trait
     println!("{}-{}", last_name, first_name);
     // println!("{:?}", luke); // does not compile
@@ -384,7 +365,6 @@ In order to avoid the move (and the lost of `luke`) we may decide to use string 
 ```rust
 fn destructuring03_ter() {
     println!("\nDestructuring 03 ter : struct of `&str` with let");
-    
     #[derive(Debug)]
     struct Person<'t> {
         last_name: &str,
@@ -394,7 +374,6 @@ fn destructuring03_ter() {
         last_name: "Skywalker",
         first_name: "Luke" 
     };
-
     let Person {last_name, first_name } = luke; 
     println!("{}-{}", last_name, first_name);
     println!("{:?}", luke); 
@@ -407,7 +386,6 @@ Below is a version that compile :
 ```rust
 fn destructuring03_ter() {
     println!("\nDestructuring 03 ter : struct of `&str` with let");
-    
     #[derive(Debug)]
     struct Person<'t> {
         last_name: &'t str,
@@ -417,11 +395,9 @@ fn destructuring03_ter() {
         last_name: "Skywalker",
         first_name: "Luke" 
     };
-
     let Person {last_name, first_name } = luke; // copy of &str
     println!("{}-{}", last_name, first_name);
     println!("{:p} - {:p}", last_name, first_name);
-
     println!("{:?}", luke); // does compile
     println!("{:p} - {:p}", luke.last_name, luke.first_name);
 }
@@ -476,25 +452,21 @@ Here is another implementation of the same code. It does exactly the same thing 
 ```rust
 fn destructuring03_qua() {
     println!("\nDestructuring 03 qua : struct of &str with let");
-    
     #[derive(Debug)]
     struct Person<'t> {
         last_name: &'t str,
         first_name: &'t str,
     }
-    
     let luke = Person { 
         last_name: "Skywalker",
         first_name: "Luke" 
     };
-    
     let &Person {last_name, first_name} = &luke; 
     // The line above is similar to the 2 lines below
     // let ref = &luke;
     // let Person {last_name, first_name} = ref;
     println!("{} - {}", last_name, first_name);
     println!("{:p} - {:p}", last_name, first_name);
-
     println!("{:?}", luke); 
     println!("{:p} - {:p}", luke.last_name, luke.first_name);
 }
@@ -538,13 +510,11 @@ Code similar to the previous one except the `let` statement.
 ```rust
 fn destructuring04() {
     println!("\nDestructuring 04 : enum with let\n");
-
     enum Role {
         Emperor,
         Trader(String),
         Scientist { name: String, field: String },
     }
-
     let characters = vec![
         Role::Emperor,
         Role::Trader("Hober Mallow".to_string()),
@@ -553,7 +523,6 @@ fn destructuring04() {
             field: "Psychohistory".to_string(),
         },
     ];
-
     for role in characters { // role is Role, characters is consumed
         match role {
             Role::Emperor => println!("The Emperor rules... vaguely."),
@@ -564,7 +533,6 @@ fn destructuring04() {
         }
     }
     println!("{}, characters"); // does not compile
-
     let Some(x) = Some(5) else { todo!() }; // Some is an enum
     println!("x: {x}");
 }
@@ -617,17 +585,14 @@ Since we may not want to consume the collection of characters, the easiest way o
 
 
 ```rust
-
 fn destructuring04_bis() {
     println!("\nDestructuring 04_bis : enum with let\n");
-
     #[derive(Debug)]
     enum Role {
         Emperor,
         Trader(String),
         Scientist { name: String, field: String },
     }
-
     let characters = vec![
         Role::Emperor,
         Role::Trader("Hober Mallow".to_string()),
@@ -636,7 +601,6 @@ fn destructuring04_bis() {
             field: "Psychohistory".to_string(),
         },
     ];
-
     for role in &characters { // role is &Role, characters not consumed
         match role {
             Role::Emperor => println!("The Emperor rules... vaguely."),
@@ -647,7 +611,6 @@ fn destructuring04_bis() {
         }
     }
     println!("{:?}", characters);
-
     let Some(x) = Some(5) else { todo!() }; // Some is an enum
     println!("x: {x}");
 }
@@ -726,28 +689,24 @@ In plain English :
 ```rust
 fn destructuring05() {
     println!("\nDestructuring 05 : function & closure parameters\n");
-
     fn print_coordinates((x, y): (i32, i32)) {
         println!("Function received: x = {}, y = {}", x, y);
     }
     let point = (10, 20);
     print_coordinates(point);
     println!("{:?}", point);
-
     fn print_full_name((first, last): (String, String)) {
         println!("Function received: First = {}, Last = {}", first, last);
     }
     let chief = ("Martin".to_string(), "Brody".to_string());
     print_full_name(chief);
     // println!("{:?}", chief);// does not compile
-
     let points = vec![(1, 2), (3, 4), (5, 6)];
     points.iter().for_each(|&(x, y)| {
         println!("Point: x = {}, y = {}", x, y);
     });
     println!("Point: {:?}", points);
 }
-
 ```
 
 ### Expected output 
@@ -800,18 +759,15 @@ Do you remember, not September, but `destructuring04()` and `destructuring04_bis
 ```rust
 fn destructuring06() {
     println!("\nDestructuring 06 : in for loops with .enumerate()\n");
-    
     let characters = vec!["Hari", "Salvor", "Hober"];
     for (index, name) in characters.iter().enumerate() {
         println!("Character #{index} is {name}");
     }
-    
     let characters = vec!["Harry".to_string(), "Hermione".to_string(), "Ron".to_string()];
     for (index, name) in characters.iter().enumerate() {
         println!("Character #{index} is {name}");
     }
 }
-
 ```
 
 ### Expected output 
@@ -858,20 +814,15 @@ This said, and always about the first `for` loop, if you have time play with the
 ```rust
 fn destructuring06_bis() {
     println!("\nDestructuring 06 bis: in for loops with .enumerate()\n");
-
     let characters = vec!["Hari", "Salvor", "Hober"];
     for (index, name) in characters.iter().enumerate() {
         println!("Character #{index} is {name}");
-
         let bob = *name; // &str
         println!("{}", bob);
-
         // let bob = **name; // str, does not compile, no size known at compile-time
         // println!("{}", bob);
-
         // let bob = ***name; // ???, does not compile
         // println!("{}", bob);
-
         let bob = &name; // &&&str
         println!("{}", bob);
     }
@@ -907,7 +858,6 @@ for (index, name) in characters.iter().enumerate() {
     println!("Character #{index} is {}", *name);
     println!("Character #{index} is {name}");
 }
-
 ```
 
 
@@ -962,10 +912,8 @@ But a `&String` cannot be dereferenced into a `String` — only a `&str` or clon
 ## Destructuring: `for` Loop over Array Slices
 
 ```rust
-
 fn destructuring07() {
     println!("\nDestructuring 07 : for loop over array slices\n");
-
     let coordinates = vec![[1, 2], [3, 4], [5, 6]];
     for &[x, y] in &coordinates {
         println!("x: {}, y: {}", x, y);
@@ -975,10 +923,6 @@ fn destructuring07() {
         println!("coord[0]: {}, coord[1]: {}", coord[0], coord[1]);
     }
 }
-
-
-
-
 ```
 
 ### Expected output 
@@ -1041,18 +985,15 @@ When iterating over a vector of strings by reference (`&Vec<String>`), I naively
 ```rust
 fn destructuring08() {
     println!("\nDereferencing 08 : destructuring pattern in for loop\n");
-
     let foundation: Vec<String> = vec!["Hari Seldon", "Salvor Hardin", "Hober Mallow", "The Mule"]
         .into_iter()
         .map(|s| s.to_string())
         .collect();
-
     // for &s in &foundation { // does not compile
     for s in &foundation {
         println!("String is : {}", s);
     }
 }
-
 ```
 
 ### Expected output 
@@ -1123,12 +1064,9 @@ Patterns can be used in loops to filter and destructure in a single step, let's 
 
 
 ```rust
-
 fn destructuring09() {
     println!("\nDestructuring 09 : filter and destructuring pattern in a for loop\n");
-
     let maybe_scores = vec![Some(10), None, Some(30)];
-
     // The pattern is a reference to an Option, so we match &Some(x)
     for &opt in &maybe_scores {
         match opt {
@@ -1136,26 +1074,21 @@ fn destructuring09() {
             None => println!("No score"),
         }
     }
-
     // Alternative: filter out None before the loop
     for score in maybe_scores.iter().filter_map(|opt| opt.as_ref()) {
         println!("Got a score (filter_map): {}", score);
     }
-
     // Alternative : if-let inside the loop body
     for maybe in &maybe_scores {
         if let Some(score) = maybe {
             println!("Score via if-let: {}", score);
         }
     }
-
     // Alternative : flattening the Some directly in the iterator
     for score in maybe_scores.iter().flatten() {
         println!("Score via flatten: {}", score);
     }
 }
-
-
 ```
 
 ### Expected output 
@@ -1233,13 +1166,16 @@ Fourth loop (`for score in maybe_scores.iter().flatten() {...`)
 ## Rust Gotchas: Destructuring Edition
 
 1. **Shadowing Without Realizing It**
+
 You might accidentally shadow variables, leading to confusion or bugs if the shadowed value was still needed later.
+
 ```rust
 let x = 5;
 let (x, y) = (10, 20); // This shadows the previous `x`
 ```
 
 2. **Destructuring by Move (Not Copy)**
+
 Destructuring consumes values unless they implement `Copy`. Be careful with types like `String`, `Vec`, or custom structs.
 
 ```rust
@@ -1249,6 +1185,7 @@ let (s1,) = (s,); // s is moved, not copied
 ```
 
 3. **Patterns Are Not Always Exhaustive in Match Arms**
+
 Failing to match all variants can cause a compilation error — or worse, if using `_` too liberally, you might silently ignore important cases.
 
 ```rust
@@ -1263,6 +1200,7 @@ match x {
 ```
 
 4. **Borrowing in `if let` and `while let` Is Tricky**
+
 To keep ownership, use a reference:
 
 ```rust
@@ -1273,7 +1211,6 @@ if let Some(s) = opt {
 // println!("{:?}", opt); // moved!
 ```
 
-
 ```rust
 if let Some(ref s) = opt { ... }
 ```
@@ -1282,6 +1219,7 @@ if let Some(ref s) = opt { ... }
 
 
 5. **Destructuring `&T` vs `T`**
+
 If you destructure a reference (`&pair`), your pattern must also use `&`. This often confuses newcomers.
 
 ```rust
@@ -1292,6 +1230,7 @@ let &(a, b) = &pair; // Need `&` pattern to destructure a reference
 
 
 6. **Too Much Pattern Nesting Hurts Readability**
+
 Consider breaking the destructuring into multiple lines or using named variables earlier for clarity.
 
 ```rust
@@ -1317,7 +1256,7 @@ let (ref s, n) = tuple;
 
 
 ## Answers to Questions from the Introduction
-The question is whether we can now either find the answer ourselves or, at the very least, understand the reasoning and causes.
+The question is whether we can now either find the answerS ourselves or, at the very least, understand what causes the problem and the reasoning of the solution.
 
 ### Q1
 {: .no_toc }
@@ -1336,10 +1275,10 @@ fn main() {
         println!("No value found");
     }
 }
-
 ```
 
 No explicit `*r` — yet the pattern matches. How?
+
 * `r` is of type `&Option<i32>`
 * * The pattern `Some(val)` matches `&Some(5)` because Rust implicitly treats it as `&Some(val)`. This is part of Rust's pattern matching behavior on references.
 * `val` is a reference to the inner value (`&5`). The `println!` macro accepts references, and Rust applies deref coercion automatically when formatting, so `val` prints as `5`.
@@ -1351,7 +1290,16 @@ No explicit `*r` — yet the pattern matches. How?
 
 
 ### Q2
+{: .no_toc }
+
 Now look at this one-liner:
+
+```rust
+let Some(x) = &Some(42);
+```
+
+Is this dereferencing, destructuring, or both?
+
 
 ```rust
 fn main() {
@@ -1368,9 +1316,7 @@ fn main() {
     // x is a reference to the value inside the Option
     println!("The value is: {x}"); // The value is: 42
 }
-
 ```
-Is this dereferencing, destructuring, or both?
 
 * This is destructuring only. No dereferencing occurs.
 * We use pattern matching to destructure the value of `&opt`, which has type `&Option<i32>`.
@@ -1382,10 +1328,11 @@ Is this dereferencing, destructuring, or both?
 
 
 ### Q3
+{: .no_toc }
 
+One last example. Can you explain what's going on here?
 
 ```rust
-
 fn main() {
     // Create a Box containing a tuple (i32, &str)
     let b = Box::new((42, "hello"));
@@ -1397,8 +1344,6 @@ fn main() {
     println!("x = {x}, y = {y}"); // x = 42, y = hello
 
     // let (x, y) = b; // Does not compile
-
-    
 }
 ```
 * `let b = Box::new(...)` allocates a tuple on the heap and returns a `Box<(i32, &str)>`.

@@ -93,6 +93,14 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 
 
+<h2 align="center">
+<span style="color:red"><b>This post is still being written.</b></span>    
+</h2>
+
+<h2 align="center">
+<span style="color:orange"><b>This post is still being reviewed.</b></span>    
+</h2>
+
 
 ## À garder sous le coude
 * Ç = ALT + 128 (du pavé numérique)

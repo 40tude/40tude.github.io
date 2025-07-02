@@ -31,7 +31,7 @@ last_modified_date : 2025-06-30 12:00:00
 ## The Post is in 2 Parts
 {: .no_toc }
 
-* The introduction & conclusion are the same in both posts
+* The introduction is the same in both posts
 * [Rust Dereferencing vs Destructuring — For the Kids 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
 * [Rust Dereferencing vs Destructuring — For the Kids 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%})
 
@@ -122,7 +122,7 @@ fn main() {
 
 
 
-And then:
+One last example. Can you explain what's going on here?
 
 ```rust
 let b = Box::new((42, "hello"));
@@ -946,27 +946,34 @@ This is what is demonstrated in the last scope.
 ## Rust Gotchas: Dereferencing Edition
 
 1. **References are not pointers (exactly)**  
-   They behave similarly but are *not* the same. You can't do pointer arithmetic, and they must always be valid and non-null.
 
-2. **`&mut` vs `mut` **  
+They behave similarly but are *not* the same. You can't do pointer arithmetic, and they must always be valid and non-null.
+
+2. **`&mut` vs `mut`**  
+
 * `mut x`: you're allowed to modify `x`.  
 * `&mut x`: you're allowed to modify the *value* `x` points to (&mut is a compound operator in Rust, it is a single “logical keyword”, which reads "mutable reference to")
 * But `let mut x = &y;` only means that `x` (the reference) can change to point elsewhere — not that `y` is mutable!
 
 3. **Shadowing vs reassignment**  
-   You can "reassign" an immutable reference via *shadowing* (`let x = &y;` again), but trying to reassign without `let` won’t compile.
+
+You can "reassign" an immutable reference via *shadowing* (`let x = &y;` again), but trying to reassign without `let` won’t compile.
 
 4. **Boxing isn't cloning**  
-   `Box::new(value)` allocates `value` on the heap. It does *not* create a deep copy when passed by value — it moves ownership unless you explicitly `.clone()` the inner value.
+
+`Box::new(value)` allocates `value` on the heap. It does *not* create a deep copy when passed by value — it moves ownership unless you explicitly `.clone()` the inner value.
 
 5. **`Rc<T>` cloning doesn’t clone the value**  
-   It just increments the reference counter. Great for sharing read-only access — but not safe across threads or for mutation without `RefCell`.
+
+It just increments the reference counter. Great for sharing read-only access — but not safe across threads or for mutation without `RefCell`.
 
 6. **Deref coercion looks like magic**  
-   But it's not: it follows well-defined `Deref` rules. Still, don’t rely on it blindly — sometimes explicit `*` helps readability and prevents surprises.
+
+But it's not: it follows well-defined `Deref` rules. Still, don’t rely on it blindly — sometimes explicit `*` helps readability and prevents surprises.
 
 7. **Borrow checker checks borrows at compile time... until `RefCell` enters the game**  
-   `RefCell<T>` defers checks to *runtime*. That means your code compiles, but can still panic if you violate borrow rules (e.g., two mutable borrows).
+
+`RefCell<T>` defers checks to *runtime*. That means your code compiles, but can still panic if you violate borrow rules (e.g., two mutable borrows).
 
 
 
