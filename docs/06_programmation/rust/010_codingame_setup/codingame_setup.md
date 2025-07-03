@@ -16,6 +16,7 @@ last_modified_date : 2025-07-03 16:00:00
 
 
 ## TL;DR
+* Mon organisation pour pourvoir développer et déboguer en local mes solutions en Rust aux puzzles de CodinGame 
 
 ## Introduction
 On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust [les solutions du livre Coding Patterns Interview]({%link docs/06_programmation/rust/007_coding_interview_patterns/index.md%}) je suis parti faire un tour sur [CodinGame](https://www.codingame.com/home). Personnellement, je ne suis pas fan des tournois et autres "Clash Of Code" mais j'adore y retourner et prendre mon temps pour résoudre un puzzle. J'adore ça.
