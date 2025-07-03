@@ -250,8 +250,9 @@ Ayé, on a une super solution qui donne satisfaction? "Yaka, faukon"... Allez, o
 Après tu pleures ou pas selon que ça passe, ou pas.
 
 ### Webliography
+* Des [solutions Rust](https://github.com/40tude/rust_codingame)
+    * Voir la [section Rust du site]({%link docs/06_programmation/rust/index.md%})
 * Des [solutions C++](https://github.com/40tude/codingame_cpp)
     * Voir la [section C++ du site]({%link docs/06_programmation/cpp/index.md%})
 * Des [solutions Python](https://github.com/40tude/codingame_py)
     * Voir la [section Python du site]({%link docs/06_programmation/python/index.md%})
-* Des [solutions Rust](https://github.com/40tude/rust_codingame)
