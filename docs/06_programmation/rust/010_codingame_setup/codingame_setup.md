@@ -21,7 +21,7 @@ last_modified_date : 2025-07-03 16:00:00
 On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust [les solutions du livre Coding Patterns Interview]({%link docs/06_programmation/rust/007_coding_interview_patterns/index.md%}) je suis parti faire un tour sur [CodinGame](https://www.codingame.com/home). Personnellement, je ne suis pas fan des tournois et autres "Clash Of Code" mais j'adore y retourner et prendre mon temps pour résoudre un puzzle. J'adore ça.
 
 Le truc, c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ (voir le challenge [Temperatures sur cette page]({%link docs/06_programmation/cpp/005_codingame_easy/codingame_easy.md%})) et Python (voir le [Template sur cette page]({%link docs/06_programmation/python/004_codingame/codingame.md%})), il faut que je remonte un setup, une façon de travailler. Je suis sous l'excellent Windows 11, j'utilise VSCode et typiquement je veux :
-* Un repo sur GitHub
+* Un [repo sur GitHub](https://github.com/40tude/rust_codingame)
 * Des répertoires Easy, Medium, Hard...
 * Un sous-répertoire par puzzle
     * C'est autonome, je peux créer des notebook jupyter, un répertoire `assets` avec des captures d'écran, des slides... 
@@ -247,3 +247,10 @@ Ayé, on a une super solution qui donne satisfaction? "Yaka, faukon"... Allez, o
 * Run
 
 Après tu pleures ou pas selon que ça passe, ou pas.
+
+### Webliography
+* Des [solutions C++](https://github.com/40tude/codingame_cpp)
+    * Voir la [section C++ du site]({%link docs/06_programmation/cpp/index.md%})
+* Des [solutions Python](https://github.com/40tude/codingame_py)
+    * Voir la [section Python du site]({%link docs/06_programmation/python/index.md%})
+* Des [solutions Rust](https://github.com/40tude/rust_codingame)
