@@ -4,7 +4,7 @@ title: "Rust on Windows 11, My Complete Setup Guide"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-02 09:00:00
-last_modified_date : 2025-06-24 09:00:00
+last_modified_date : 2025-07-02 17:00:00
 ---
 
 # Rust on Windows 11, My Complete Setup Guide
@@ -278,6 +278,78 @@ If you want to debug code when you press F5 and have more options (like passing 
     ]
 }
 ```
+
+### If LLDB extension is installed
+
+### `launch.json`
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/target/debug/${workspaceFolderBasename}.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "RUST_BACKTRACE": "1"
+            },
+            "sourceLanguages": ["rust"],
+            "preLaunchTask": "cargo-build-debug",
+
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release",
+            "program": "${workspaceFolder}/target/release/${workspaceFolderBasename}.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "RUST_BACKTRACE": "1"
+            },
+            "sourceLanguages": ["rust"],
+            "preLaunchTask": "cargo-build-release"
+        }
+    ]
+}
+```
+
+### `tasks.json`
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cargo-build-debug",
+            "type": "cargo",
+            "command": "build",
+            "args": [],
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "cargo-build-release",
+            "type": "cargo",
+            "command": "build",
+            "args": [
+                "--release"
+            ],
+            "problemMatcher": [
+                "$rustc"
+            ]
+        }
+    ]
+}
+```
+
 
 Here is how it should look like 
 
