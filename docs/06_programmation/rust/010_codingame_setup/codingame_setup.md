@@ -20,7 +20,7 @@ last_modified_date : 2025-07-03 16:00:00
 ## Introduction
 On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust [les solutions du livre Coding Patterns Interview]({%link docs/06_programmation/rust/007_coding_interview_patterns/index.md%}) je suis parti faire un tour sur CodinGame. Personnellement, je ne suis pas fan des tournois et autres mais j'adore y retourner et prendre mon temps pour résoudre un puzzle. J'adore ça.
 
-Le truc, c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ (voir le challenge [Temperatures sur cette page] ({%docs/06_programmation/cpp/005_codingame_easy/codingame_easy.md%}))et Python (voir le [Template sur cette page]({%docs/06_programmation/python/004_codingame/codingame.md%}) ), il faut que me je remonte un setup. Je suis sous l'excellent Windows 11, j'utilise VSCode et typiquement je veux :
+Le truc, c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ (voir le challenge [Temperatures sur cette page] ({%link docs/06_programmation/cpp/005_codingame_easy/codingame_easy.md%}))et Python (voir le [Template sur cette page]({%link docs/06_programmation/python/004_codingame/codingame.md%}) ), il faut que me je remonte un setup. Je suis sous l'excellent Windows 11, j'utilise VSCode et typiquement je veux :
 * Un repo sur GitHub
 * Des répertoires Easy, Medium, Hard...
 * Un sous-répertoire par puzzle
@@ -32,7 +32,7 @@ Le truc, c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ (v
     * Ca sous-entend que l'utilisation du fichier `input.txt` ne doit pas interférer quand on est sur CodinGame
 * Alors que je suis au fin fond de mon projet je veux être capable de "commiter"
 
-Je ne vais pas parler du mon Setup VSCode pour coder en Rust. J'ai déjà expliquer tout ça dans ce [post]({%docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Par contre, je viens de terminer un premier puzzle "Easy" (je débute, poussez pas...), le setup semble fonctionner, alors je vais t'expliquer tout ça gentiment.
+Je ne vais pas parler du mon Setup VSCode pour coder en Rust. J'ai déjà expliquer tout ça dans ce [post]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Par contre, je viens de terminer un premier puzzle "Easy" (je débute, poussez pas...), le setup semble fonctionner, alors je vais t'expliquer tout ça gentiment.
 
 ## Organisation des répertoires
 
