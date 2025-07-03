@@ -18,24 +18,26 @@ last_modified_date : 2025-07-03 16:00:00
 ## TL;DR
 
 ## Introduction
-On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust les solutions du livre Coding Patterns Interview je suis parti faire un tour sur CodinGame. Personnellement, je ne suis pas fan des tournois et autres mais j'adore y retourner et prendre mon temps pour résoudre un puzzle.
+On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust [les solutions du livre Coding Patterns Interview]({%link docs/06_programmation/rust/007_coding_interview_patterns/index.md%}) je suis parti faire un tour sur CodinGame. Personnellement, je ne suis pas fan des tournois et autres mais j'adore y retourner et prendre mon temps pour résoudre un puzzle. J'adore ça.
 
-Le truc c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ et Python, il faut que me remonte un setup. Je suis sous l'excellent Windows 11, j'utilise VSCode et typiquement je veux :
+Le truc, c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ (voir le challenge [Temperatures sur cette page] ({%docs/06_programmation/cpp/005_codingame_easy/codingame_easy.md%}))et Python (voir le [Template sur cette page]({%docs/06_programmation/python/004_codingame/codingame.md%}) ), il faut que me je remonte un setup. Je suis sous l'excellent Windows 11, j'utilise VSCode et typiquement je veux :
 * Un repo sur GitHub
 * Des répertoires Easy, Medium, Hard...
 * Un sous-répertoire par puzzle
+    * C'est autonome, je peux créer des notebook jupyter, un répertoire `assets` avec des captures, des slides... 
 * Être capable de travailler en local en alimentant le programme avec un fichier `input.txt` par exemple
 * Être capable de déboguer dans la joie et la bonne humeur  
-* Pouvoir sélectionner l'ensemble de la fenêtre de code (CTRL+A), de coller le tout dans CodinGame et 
-    * Ca sous-entend que l'utilisation du fichier input.txt doit pas interférer quand on est sur CodinGame
-* Alors que je suis au fin fond de mon projet être capable de "commiter"
+* Pouvoir sélectionner l'ensemble de la fenêtre de code (CTRL+A) puis de coller tout le dans CodinGame et, zou, je dois être capable de voir si ça répond.
+    * Je veux surtout devoir éditer, modifier...
+    * Ca sous-entend que l'utilisation du fichier `input.txt` ne doit pas interférer quand on est sur CodinGame
+* Alors que je suis au fin fond de mon projet je veux être capable de "commiter"
 
-Je ne vais pas parler du mon Setup VSCode pour coder en Rust. J'ai déjà expliquer tout ça dans ce post. Par contre, je viens de terminer un premier puzzle "Easy" (je débute, poussez pas...), le setup semble fonctionner, je t'explique tout ça.
+Je ne vais pas parler du mon Setup VSCode pour coder en Rust. J'ai déjà expliquer tout ça dans ce [post]({%docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Par contre, je viens de terminer un premier puzzle "Easy" (je débute, poussez pas...), le setup semble fonctionner, alors je vais t'expliquer tout ça gentiment.
 
 ## Organisation des répertoires
 
 ### Phase 1
-Là c'est simple. Je veux ça :
+Là c'est simple. À la fin je veux un truc comme ça :
 
 ```
 rust_codingame/
@@ -50,40 +52,40 @@ rust_codingame/
     ├── projet_03/
     └── projet_04/
 ```
-1. Je crée le répertoire `rust_codingame`. Bah, si, ça reste quand même gérable...
+1. Je crée le répertoire `rust_codingame`. Bah si, ça, ça reste quand même gérable...
 1. J'ouvre VSCode depuis ce répertoire (`code .` ou click droit)
 1. Je créé un fichier `README.md` avec bout de texte.
 1. Je créé un fichier `.gitignore` qui contient une seule ligne `target/`
     * Ca va éviter de pousser sur GitHub les executables, les fichiers pour le debug etc. 
-1. Depuis VSCode je crée un repo public et je pousse le répertoire sur GitHub
+1. Depuis VSCode je crée, je commit et je pousse tout ça dans un repo public sur GitHub
     * Le répertoire `.git` est créé à ce moment là. 
 
 Allez, c'est bon on a terminé, je quitte VSCode et je vais faire un tour sur GitHub pour voir si tout est OK.
 
 
 ### Phase 2
-w
-1. Il est minuit, je viens d'allumer mon PC et on imagine que j'ai décidé de m'attaquer à un puzzle (exemple [Crop-Circles](https://www.codingame.com/ide/puzzle/crop-circles)). 
-1. Que ce soit avec Win Terminal ou File Explorer, je vais dans le répertoire `rust_codingame` et je créé un répertoire `easy` (y en avait pas encore)
+
+1. Il est minuit, je viens de rallumer mon PC et on imagine que j'ai décidé de m'attaquer à un puzzle (exemple [Crop-Circles](https://www.codingame.com/ide/puzzle/crop-circles)). 
+1. Que ce soit avec Terminal Windows ou File Explorer, je vais dans le répertoire `rust_codingame` et je créé un répertoire `easy` (y en avait pas encore)
 1. Quand c'est fait je vais dans ce répertoire, et depuis un Terminal Windows je tape `cargo new crop_circles`
-1. Il est sympa, il crée tout ce dont j'ai besoin et entre autres un sous-répertoire `crop_circles`.
-1. Je "descend" dans le répertoire du puzzle (`cd .\crop_circles\`) et je lance VSCode depuis ce terminal (`code .`)
-1. Il est possible que VSCode te fasse remarquer qu'il a trouvé un repo Git dans un répertoire parent, blablabla. Tu cliques sur `OK`
+1. Il est sympa ce Cargo... Il crée tout ce dont j'ai besoin à commencer par un sous-répertoire `crop_circles`.
+1. Je "descend" dans le répertoire du puzzle (`cd .\crop_circles\`) et je lance VSCode depuis ce répertoire (`code .`)
+1. Il est possible que VSCode te fasse remarquer qu'il a trouvé un repo Git dans un répertoire parent, blablabla... Tu cliques sur `OK`
 1. Bon, du coup, on peut travailler et si tu ouvres dans VSCode un terminal (CTRL+ù) tu peux lancer un `cargo run`. Il va créer les répertoires `target` puis `debug` et tout un ensemble de fichiers dont l'exécutable qu'il va lancer.
 1. Avant d'aller plus loin il est temps de faire un commit et de pousser tout ça dans le repo distant.
 
 ## Github
 
 1. Là, c'est hyper simple
-1. CTRL + SHIFT + G pour aller dans la section Source Code Control
-1. Un petit message et commit
+1. CTRL+SHIFT+G pour aller dans la section Source Code Control
+1. Un petit message de commit
 1. Et tu synchronises.
 
 ## Debug
-Pour être tout à fait complet, j'ai essayé de monter un setup à base de Workspace Rust mais bon ça n'a pas marché. Quoi qu'il en soit, en faisant comme on a fait depuis le début, ça va être relativement simple.
+Pour être tout à fait complet, j'ai essayé de monter un setup à base de Workspace Rust mais bon ça n'a pas marché. C'était pas adapté à mon mode de fonctionnement. Quoi qu'il en soit, en faisant comme on a fait depuis le début, ça va être relativement simple.
 1. Depuis VSCode
-1. Si ce n'est pas déjà fait, tu installe l'extension LLDB (bien sûr tu ne va le faire qu'un fois)
-1. Ensuite, tu créé un sous-répertoire `.vscode` dans le répertoire du projet
+1. Si ce n'est pas déjà fait, tu installes l'extension LLDB (bien sûr, tu ne vas le faire qu'une seule fois)
+1. Ensuite, tu crées un sous-répertoire `.vscode` dans le répertoire du projet
 1. Tu colles ensuite les 2 fichiers ci-dessous
     * Il n'y a aucune modification à faire
 
@@ -157,21 +159,21 @@ Pour être tout à fait complet, j'ai essayé de monter un setup à base de Work
 }
 ```
 
-Normalement tout est prêt pour débuguer
-1. Poses un point d'arrêt dans le  `main.rs` qu'à généré Cargo
+Normalement tout est prêt pour déboguer
+1. Poses un point d'arrêt dans le  `main.rs` qu'a généré Cargo
 1. Appuis sur F5
-1. Ca démarre puis ça s'arrête sur la ligne où il y a le point d'arrêt. Après tu connais je te fais pas un dessin.
+1. Ca démarre puis ça s'arrête sur la ligne où il y a le point d'arrêt. Après tu connais, je te fais pas un dessin.
 
 Allez, il est temps de faire un petit commit 
 
 ### Faire une copie de .vscode
-Comme il faudra copier-coller le répertoire `.vscode` dans tous les projets où tu vas faire du debug (on est d'accord, tu vas pas faire des `eprintln!` de petit cochon...). Je te propose de copier-coller le répertoire `.vscode` et ses 2 fichiers deux crans au dessus, dans le répertoire `rust_codingame`. Comme ça tu saura où aller le chercher.
+Comme il faudra copier-coller le répertoire `.vscode` dans tous les projets où tu vas faire du debug (on est d'accord, tu vas pas faire des `eprintln!` de petit cochon...). Je te propose de copier-coller le répertoire `.vscode` et ses 2 fichiers deux crans au dessus, dans le répertoire `rust_codingame`. Comme ça tu sauras où aller les chercher.
 
 Bon ben voilà, y a plus qu'à coder notre solution...
 
 ## Travailler en local
-Sur CodinGame notre code lit les entrées depuis l'entrée standard et il affiche sa réponse classiquement. Le truc c'est que moi, je veux pas passer ma vie sur le site. Je veux pouvoir travailler chez moi, dans mon VSCode etc.
-Du coup, il faut que je me débrouille pour leurrer mon code de telle sorte qu'en local il aille chercher les paramètres dans un fichier 'input.txt' et qu'une fois sur CodinGame il lise les entrée depuis l'entre standard.
+Sur CodinGame notre code lit les entrées depuis l'entrée standard et il affiche sa réponse classiquement. Le truc c'est que moi, je veux pas passer ma vie sur le site. Je veux pouvoir travailler chez moi, dans mon environnement VSCode, prendre des notes, faires des exemples complémentaires etc.
+Du coup, il faut que je me débrouille pour leurrer mon code de telle sorte qu'en local il aille chercher les paramètres d'entrée dans un fichier 'input.txt' et qu'une fois sur CodinGame il lise les entrées depuis l'entre standard.
 
 Voilà ce que je te propose
 
@@ -201,14 +203,14 @@ fn main() {
 }
 ```
 
-C'est pas hyper compliqué. 
-1. Côté programme, je fais un `reader.read_line(&mut line).unwrap();` qui alimente la variable `line`. 
-1. Ensuite je manipule cette dernière comme je veux. 
+Commence pas à râler, tu vas voir, c'est pas hyper compliqué. 
+1. Côté programme (dans le `main()`), je fais un `reader.read_line(&mut line).unwrap();` qui alimente la variable `line`. 
+1. Ensuite je manipule cette dernière comme si je l'avais reçue depuis l'entrée standard 
     * Par exemple ici je fais un `.split_whitespace()` blablabla. 
 1. La partie intéressante se trouve dans la fonction `get_input_reader()` car c'est elle qui cache la misère
     * On commence par chercher le fichier `input.txt` en local
     * Si on le trouve le programme obtiendra ses entrées depuis le fichier en question
-    * Si le fichier n'existe pas le programme obtiendra ses entrées depuis `io::stdin()`, aka l'entrée standard
+    * Si le fichier `input.txt` n'existe pas le programme obtiendra ses entrées depuis `io::stdin()`, aka l'entrée standard
 
 Voici par exemple le contenu de mon fichier `input.txt`
 
@@ -230,12 +232,12 @@ ft17 PLANTft9 nf17 PLANTMOWnf9 PLANTjm5
 fg9 ls11 oe7
 
 ```
-Pas d'affolement. Dans ce puzzle, seule la première ligne compte. Du coup pour faire des tests je copie colle ce que je trouve sur CodinGame et je met en premier les paramètres à utiliser. Les autres lignes on s'en fiche on ne va pas les lire. Elles peuvent rester là, au cas où.
+Pas d'affolement. Dans ce puzzle, seule la première ligne compte. Du coup pour faire des tests je copie colle ce que je trouve sur CodinGame et je met sur la première lignes les paramètres à utiliser. Les autres lignes on s'en fiche, on ne va pas les lire. Elles peuvent rester là, au cas où.
 
 ## Tester sur CodinGame
 * Dans VSCode, dans l'éditeur, je fais CTRL+A pour sélectionner tout mon code
-* Ensuite je passe sous la page du puzzle, sur le site CodinGame
+* Ensuite je passe sur la page du puzzle, sur le site CodinGame
 * Coller (CTRL+V)
 * Run
 
-Après tu pleurs ou pas selon que ça passe, ou pas.
+Après tu pleures ou pas selon que ça passe, ou pas.
