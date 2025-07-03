@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: default
 title: "Rust, mon setup pour CodinGame"
 parent: "Rust"
@@ -18,7 +18,7 @@ last_modified_date : 2025-07-03 16:00:00
 ## TL;DR
 
 ## Introduction
-On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust toutes les solutions du livre Coding Patterns Interview je suis parti faire un tour sur CodinGame. Personnellement, je ne suis pas fan des tournois et autres mais j'adore y retourner et prendre mon temps pour résoudre un puzzle.
+On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust les solutions du livre Coding Patterns Interview je suis parti faire un tour sur CodinGame. Personnellement, je ne suis pas fan des tournois et autres mais j'adore y retourner et prendre mon temps pour résoudre un puzzle.
 
 Le truc c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ et Python, il faut que me remonte un setup. Je suis sous l'excellent Windows 11, j'utilise VSCode et typiquement je veux :
 * Un repo sur GitHub
