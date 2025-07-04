@@ -164,8 +164,8 @@ Pour être tout à fait complet, j'ai essayé de monter un setup à base de Work
 }
 ```
 #### C'est cadeau ça me fait plaisir
-* Si tu appuies sur CTRL+SHIFT+B, tu build automatiquement la version de debug 
-* Pour retrouver les tasks disponible, ALT+T, sélectionne Run Task..., tu vois les 2 tâches créées
+* Dorénavant, si tu appuies sur CTRL+SHIFT+B, tu "build" automatiquement la version de debug. 
+* Pour retrouver les tasks disponibles, ALT+T puis sélectionne `Run Task...`, tu vois alors les 2 tâches créées.
 
 <div align="center">
 <img src="./assets/tasks.webp" alt="" width="900" loading="lazy"/>
