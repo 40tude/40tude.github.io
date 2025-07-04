@@ -10,10 +10,6 @@ last_modified_date : 2025-07-03 16:00:00
 
 # Rust, mon setup pour CodinGame
 
-<div align="center">
-<img src="./assets/cover.webp" alt="" width="900" loading="lazy"/>
-</div>
-
 
 ## TL;DR
 * Mon organisation pour pourvoir développer et déboguer en local mes solutions en Rust aux puzzles de CodinGame 
@@ -54,7 +50,7 @@ rust_codingame/
     └── projet_04/
 ```
 1. Je crée le répertoire `rust_codingame`. Bah si, ça, ça reste quand même gérable...
-1. J'ouvre VSCode depuis ce répertoire (`code .` ou click droit)
+1. J'ouvre VSCode depuis ce répertoire (`code .` ou click droit "Ouvrir avec Code")
 1. Je créé un fichier `README.md` avec bout de texte.
 1. Je créé un fichier `.gitignore` qui contient une seule ligne `target/`
     * Ca va éviter de pousser sur GitHub les executables, les fichiers pour le debug etc. 
@@ -69,12 +65,17 @@ Allez, c'est bon, on a terminé, je quitte VSCode et je vais faire un tour sur G
 1. Il est minuit, je viens de rallumer mon PC et on imagine que j'ai décidé de m'attaquer à un puzzle (exemple [Crop-Circles](https://www.codingame.com/ide/puzzle/crop-circles)). 
 1. Que ce soit avec Terminal Windows ou File Explorer, je vais dans le répertoire `rust_codingame` et je créé un répertoire `easy` (y en avait pas encore)
 1. Quand c'est fait je vais dans ce répertoire, et depuis un Terminal Windows je tape `cargo new crop_circles`
-    * Au fait tu savais que tu pouvais aussi taper `cargo new crop_circles` dans la barre de File Explorer. Vas y, fais le test, je peux pas le faire à ta place... 
+    * Au fait tu savais que tu pouvais aussi taper `cargo new zoubida` dans la barre de File Explorer. Vas y, fais le test, je peux pas le faire à ta place... 
 1. Il est sympa ce Cargo... Il crée tout ce dont on a besoin à commencer par un sous-répertoire `crop_circles`.
 1. Je "descends" dans le répertoire du puzzle (`cd .\crop_circles\`) et je lance VSCode depuis ce répertoire (`code .`)
 1. Il est possible que VSCode te fasse remarquer qu'il a trouvé un repo Git dans un répertoire parent, blablabla... Tu cliques sur `OK`
 1. Bon, du coup, on peut travailler et si tu ouvres dans VSCode un terminal (CTRL+ù) tu peux lancer un `cargo run`. Il va créer les répertoires `target` puis `debug` et tout un ensemble de fichiers dont l'exécutable qu'il va lancer.
 1. Avant d'aller plus loin il est temps de faire un commit et de pousser tout ça dans le repo distant.
+
+<div align="center">
+<img src="./assets/zoubida.webp" alt="" width="900" loading="lazy"/>
+</div>
+
 
 ## Github
 
@@ -162,13 +163,23 @@ Pour être tout à fait complet, j'ai essayé de monter un setup à base de Work
     ]
 }
 ```
+#### C'est cadeau ça me fait plaisir
+* Si tu appuies sur CTRL+SHIFT+B, tu build automatiquement la version de debug 
+* Pour retrouver les tasks disponible, ALT+T, sélectionne Run Task..., tu vois les 2 tâches créées
+
+<div align="center">
+<img src="./assets/tasks.webp" alt="" width="900" loading="lazy"/>
+<p></p>
+</div>
+
 
 Normalement tout est prêt pour déboguer
-1. Poses un point d'arrêt (F9) sur une ligne du `main.rs` qu'a généré Cargo
+
+1. Mets le curseur sur une ligne du `main.rs` qu'a généré Cargo et pose un point d'arrêt (F9) sur une ligne en question
 1. Appuis sur F5 pour lancer le debug
 1. Ca démarre puis ça s'arrête sur la ligne où il y a le point d'arrêt. Après tu connais, je ne te fais pas un dessin.
 
-Allez, il est temps de faire un petit commit 
+Allez, il est temps de faire un petit commit.
 
 ### Faire une copie de .vscode
 Comme il faudra copier-coller le répertoire `.vscode` dans tous les projets où tu vas faire du debug (on est d'accord, tu vas pas faire des `eprintln!()` de petit cochon...). Je te propose de copier-coller le répertoire `.vscode` et ses 2 fichiers, deux crans au dessus, dans le répertoire `rust_codingame`. Comme ça tu sauras où aller les chercher.
@@ -176,9 +187,9 @@ Comme il faudra copier-coller le répertoire `.vscode` dans tous les projets où
 Bon, ben voilà, y a plus qu'à coder notre solution...
 
 ## Travailler en local
-Sur CodinGame notre code lit les entrées depuis l'entrée standard et il affiche sa réponse classiquement. Le truc c'est que moi, je veux pas passer ma vie sur le site. Je veux pouvoir travailler chez moi, dans mon environnement VSCode, prendre des notes, faire des exemples complémentaires etc. Surtout, je ne veux pas à avoir à remplir l'entrée standard à la main. On peut passer des paarmètres à l'exécutable lors d'une session de debug mais souvent les entrées sur CodinGame peuvent être assez complexes. 
+Sur CodinGame notre code lit les entrées depuis l'entrée standard et il affiche sa réponse classiquement. Le truc c'est que moi, je veux pas passer ma vie sur le site. Je veux pouvoir travailler chez moi, dans mon environnement VSCode, prendre des notes, faire des exemples complémentaires etc. Surtout, je ne veux pas à avoir à remplir l'entrée standard à la main. Oui, oui, on peut passer des paramètres à l'exécutable lors d'une session de debug (voir la ligne `"args": [],` dans le fichier `launch.json`) mais souvent les entrées sur CodinGame peuvent être assez complexes et ça va pas le faire. 
 
-Du coup, il faut que je me débrouille pour leurrer mon code de telle sorte, qu'en local, il aille chercher les paramètres d'entrée dans un fichier 'input.txt' et qu'une fois sur CodinGame il lise les entrées depuis l'entre standard.
+Du coup, il faut que je me débrouille pour leurrer mon code de telle sorte, qu'en local, il aille chercher les paramètres d'entrée dans un fichier 'input.txt' et qu'une fois sur CodinGame il lise les entrées depuis l'entrée standard.
 
 Voilà ce que je propose
 
@@ -208,7 +219,7 @@ fn main() {
 }
 ```
 
-Commence pas à râler, tu vas voir, c'est pas hyper compliqué. 
+Commence pas à râler, tu vas voir, c'est pas si compliqué. 
 1. Côté programme (dans le `main()`), je fais un `reader.read_line(&mut line).unwrap();` qui alimente la variable `line`. 
 1. Ensuite je manipule cette dernière comme si je l'avais reçue depuis l'entrée standard 
     * Par exemple ici je fais un `.split_whitespace()` blablabla. 
@@ -239,7 +250,7 @@ fg9 ls11 oe7
 ```
 Pas d'affolement. Dans ce puzzle, seule la première ligne compte. Du coup pour faire des tests je copie colle ce que je trouve sur CodinGame et je mets sur la première ligne les paramètres à utiliser. Les autres lignes on s'en fiche, on ne va pas les lire. Elles peuvent rester là, au cas où.
 
-Ayé, on a une super solution qui donne satisfaction? "Yaka, faukon"... Allez, on teste sur CodinGame.
+Ayé, on a une super solution qui donne satisfaction? "Yaka, faukon"... Allez, un petit commit et on teste sur CodinGame.
 
 ## Tester sur CodinGame
 * Dans VSCode, dans l'éditeur, je fais CTRL+A pour sélectionner tout mon code
