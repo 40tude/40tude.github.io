@@ -21,12 +21,12 @@ Le truc, c'est qu'à l'instar de ce que j'ai déjà fait pour les quiz en C++ (v
 * Un [repo sur GitHub](https://github.com/40tude/rust_codingame)
 * Des répertoires Easy, Medium, Hard...
 * Un sous-répertoire par puzzle
-    * C'est autonome, je peux créer des notebook jupyter, un répertoire `assets` avec des captures d'écran, des slides... 
+    * C'est autonome, je peux créer des notebook Jupyter, un répertoire `assets` avec des captures d'écran, des slides... 
 * Être capable de travailler en local en alimentant le programme avec un fichier `input.txt` par exemple
 * Être capable de déboguer dans la joie et la bonne humeur  
 * Pouvoir sélectionner l'ensemble de la fenêtre de code (CTRL+A) puis coller le tout le dans CodinGame et, zou, je dois être capable de voir si ça répond.
-    * Je veux surtout devoir éditer, modifier quand je passe d'un environnement à l'autre
-    * Ca sous-entend que l'utilisation du fichier `input.txt` ne doit pas interférer quand on est sur CodinGame
+    * Je veux surtout éviter d'avoir à éditer, modifier quand je passe d'un environnement à l'autre
+    * Cela sous-entend que l'utilisation du fichier `input.txt` ne doit pas interférer quand on est sur CodinGame
 * Alors que je suis au fin fond de mon projet je veux être capable de "commiter"
 
 Je ne vais pas parler du mon Setup VSCode pour coder en Rust. J'ai déjà expliquer tout ça dans ce [post]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Par contre, je viens de terminer un premier puzzle "Easy" (je débute, poussez pas...), le setup semble fonctionner, alors je vais t'expliquer tout ça gentiment.
