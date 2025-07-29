@@ -5,7 +5,7 @@ title: "Who Owns What in Rust Loops? (And Why It Matters)"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-26 17:00:00
-last_modified_date : 2025-06-26 17:00:00
+last_modified_date : 2025-07-29 09:00:00
 ---
 
 # Who Owns What in Rust Loops? (And Why It Matters)
@@ -537,6 +537,7 @@ Rust allows the first (read), but forbids the second (move from a reference) unl
 
 So next time you write `for &x in ...`, remember: you're not just accessing the data — you're asking to own it. And Rust will only say yes if it's Copy.
 
+Feel free to read this 2 parts article dedicated to [dereferencing versus destructuring.]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%}) 
 
 
 
