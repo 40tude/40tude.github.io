@@ -5,7 +5,7 @@ parent: "Programmation"
 nav_order: 2
 #math: mathjax
 date: 2017-02-26 15:15:44
-last_modified_date: 2020-05-03 17:26:04
+last_modified_date: 2025-07-31 15:00:00
 ---
 
 
@@ -53,6 +53,20 @@ Enfin, saisir :
 ```
 git config --global user.email "ADR EMAIL"
 ```
+
+On peu aussi saisir
+
+```
+git config --global init.defaultBranch main
+
+```
+En fait par défaut git crée une branche "master" dont le nom n'est plus dans l'air du temps (des conneries...) ce qui peut poser des soucis lorsqu'on crée un repo depuis VSCode qui lui, va créer une branch "main". 
+
+Je suis d'accords tout ça c'est des conneries, "master en servant" c'est plutôt cool, mais bon autant se simplifier la vie dès le départ.
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IsvfofcIE1Q?si=-kN_5FRF5B4D3y-f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Prendre ensuite le temps de lire cette [page](http://rogerdudler.github.io/git-guide/).
 
