@@ -54,7 +54,7 @@ Enfin, saisir :
 git config --global user.email "ADR EMAIL"
 ```
 
-On peu aussi saisir
+On peut aussi saisir
 
 ```
 git config --global init.defaultBranch main
@@ -62,7 +62,7 @@ git config --global init.defaultBranch main
 ```
 En fait par défaut git crée une branche "master" dont le nom n'est plus trop dans l'air du temps (wokisme quand tu nous tiens...) ce qui peut poser des soucis lorsqu'on crée un repo depuis VSCode qui lui, va créer une branche "main". 
 
-Je suis d'accord tout ça c'est des conneries, "master en servant" c'était pourtant plutôt cool, mais bon, autant se simplifier la vie dès le départ.
+Je suis d'accord mon lapin, tout ça c'est des conneries, "master en servant" c'était pourtant plutôt cool, mais bon, autant se simplifier la vie dès le départ.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IsvfofcIE1Q?si=-kN_5FRF5B4D3y-f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
