@@ -270,7 +270,7 @@ Paste the copied URL in your browser (here, `https://rust-bmi-api-b4fd519caa8f.h
 <img src="./assets/img_07.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-
+Please note this is now https and NOT http.
 
 ### Test with Curl
 {: .no_toc }
