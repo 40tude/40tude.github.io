@@ -33,7 +33,7 @@ last_modified_date : 2025-08-01 16:00:00
 ## Build the API
 The API is simple. It returns your bmi (body mass index) once it received your height and weight. 
 
-In the parent directory, open a terminal (WIN + X then I) 
+In the parent directory of the project, open a terminal (WIN + X then I) then enter the following commands 
 
 ```
 cargo new bmi_api
@@ -41,16 +41,15 @@ cd bmi_api
 code .
 ```
 
-In VSCode, open integrated terminal (CTRL + ù) 
+In VSCode, open the integrated terminal (CTRL + ù) 
 
 ```
 cargo add axum
 cargo add axum_server
 cargo add serde --features derive 
 cargo add tokio --features full 
-
 ```
-`Cargo.toml` should be similar to : 
+`Cargo.toml` should now be similar to : 
 
 ```
 [package]
@@ -118,7 +117,7 @@ async fn main() {
 ```
 
 
-Let's make a test locally. In VSCode, in the integrated terminal type :
+Let's make a test locally. In VSCode, in the integrated terminal enter the following command :
 
 ```
 cargo run
@@ -133,6 +132,8 @@ cargo run
 <div align="center">
 <img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
 </div>
+
+This is `http`, NOT `https`.
 
 ### Local test with Curl
 {: .no_toc }
@@ -164,14 +165,14 @@ cargo run
 ## Prepare for Heroku
 The aim of the game is
 1. To have a repo on GitHub to host our project (business as usual) 
-1. Similarly, to have a repo on Heroku in order to proved to Heroku what is need to build and run the API. The idea to the "push" on Heroku, let it work (build and run the server) and forget.
+1. Similarly, to have a repo on Heroku in order to provide to Heroku what is needed to build and run the API server. Once everything will be configured we will only have to "push" on Heroku, and let it work (build and run the server).
 
 ### Create a `Procfile` file
 {: .no_toc }
 
 * The `Procfile` must be at the root of the project and it explains how to build and start the app 
-* It is mandatory here since app made with Rust do not follow a standard "buildpack"
-* It contains one line : `web: ./target/release/bmi_api`
+* It is mandatory here since applications made with Rust do not follow a standard "buildpack"
+* `Procfile` contains one line : `web: ./target/release/bmi_api`
     * `web` : kind of process (here, web server)
     * `./target/release/bmi_api` : the command to execute to start the app
 
@@ -180,8 +181,8 @@ The aim of the game is
 ### Create a `.slugignore` file
 {: .no_toc }
 
-* Similar to `.gitignore` this avoid to send to Heroku only what is needed
-* It is similar to :
+* Similar to `.gitignore` this helps to send to Heroku only what is needed
+* At this point `.slugignore` should be similar to :
 
 ```
 /.git
@@ -196,20 +197,20 @@ It is time to commit on GitHub. You can either use the integrated terminal or us
 </div>
 
 
-If not yet done, it is time to [install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli). Heroku does not allow "_" in project name. So Use "-" to name your project instead. In the integrated terminal type : 
+If not yet done, it is time to [install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli). Heroku does not allow "_" in project name. So make sure to use "-" to name your project instead. In VSCode integrated terminal type : 
 
 ```
 heroku create rust-bmi-api --buildpack emk/rust
 ```
 In the line above, note that the name on the Heroku's dashboard is `rust-bmi-api` (with `-`) but the app (the API/web server) is named `bmi_api`. You can double check `Cargo.toml` and/or `Procfile`.
 
-Let's double check which gits are configured for this project
+Let's double check which gits are configured for this project. 
 
 ```
 git remote -v
 ```
 
-You should see, something similar to :
+You should see, something like to :
 
 ```
 heroku  https://git.heroku.com/rust-bmi-api.git (fetch)
@@ -229,19 +230,19 @@ origin  https://github.com/40tude/bmi_api.git (push)
 
 
 ## Push on Heroku
-This might be touchy because of the credentials. Indeed, Heroku no longer accepts passwords for git push. We must use the Heroku token as our password. You can read the [page](https://devcenter.heroku.com/articles/authentication). Once the token (see below how to get it) is entered, check “Remember” so you don't have to do it again.
+It might be a bit tricky because of the identification process. Indeed, Heroku no longer accepts passwords for git push. We must use the Heroku token as our password. You can read the [page](https://devcenter.heroku.com/articles/authentication). Once the token (see below how to get one) is entered, check “Remember” so you don't have to do it again.
 
 Let's get a token :
 
 ```
 heroku auth:token
 ``` 
-Select and copy the token. Now we can push on Heroku :
+Select and copy the token. Now, we can push on Heroku :
 
 ```
 git push heroku main
 ```
-When the dialog box popup, enter ANY name and paste the token
+When the dialog box popup, enter ANY name and paste the token. Files are sent, the build process starts and the server is launched.
 
 <!-- git config --global credential.helper cache   
 git config --global --unset credential.helper 
@@ -253,7 +254,7 @@ git config --global --get credential.helper # verification
 <img src="./assets/img_06.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-At the end of the build, select and copy the url. Here : `https://rust-bmi-api-b4fd519caa8f.herokuapp.com/`
+At the end of the build, select and copy the URL. Here : `https://rust-bmi-api-b4fd519caa8f.herokuapp.com/`
 
 
 
@@ -263,7 +264,7 @@ At the end of the build, select and copy the url. Here : `https://rust-bmi-api-b
 ### Test with a web browser 
 {: .no_toc }
 
-Paste the URL in your browser (here, `https://rust-bmi-api-b4fd519caa8f.herokuapp.com/`). You should see :
+Paste the copied URL in your browser (here, `https://rust-bmi-api-b4fd519caa8f.herokuapp.com/`). You should see :
 
 <div align="center">
 <img src="./assets/img_07.webp" alt="" width="900" loading="lazy"/>
@@ -359,9 +360,13 @@ cargo run --example client
 
 
 
+
+
+
+
 ## Reduce the size of the app on Heroku
 
-You can see which files have been deployed and built Heroku. In VSCode integrated terminal type in : 
+You can see which files have been deployed and built on Heroku. In VSCode integrated terminal type in : 
 ```powershell
 heroku run bash
 ``` 
@@ -381,7 +386,7 @@ $ exit
 <img src="./assets/img_10.webp" alt="" width="642" loading="lazy"/>
 </div>
 
-In order to reduce its size we can add the following sections in `Cargo.toml`
+In order to reduce the size of the application we can add the following sections in `Cargo.toml`
 
 ```
 [profile.release]
@@ -390,7 +395,7 @@ strip = "symbols"
 
 - Then we commit to GitHub
 - Finally, we push onto Heroku (`git push heroku main`)
-- When the API srver is up and running we can chack the new size
+- When the API server is up and running we can check its new size
 
 ```
 heroku run bash
@@ -406,4 +411,12 @@ $ exit
 <img src="./assets/img_11.webp" alt="" width="630" loading="lazy"/>
 </div>
 
+
+
 ## Conclusion
+- Again the is just a check list
+- The point was NOT to explain the code of API server (it is similar to what can be done with FastAPI in Python)
+- The idea was to show how to setup a Rust project so that it can be tested locally and easily pushed on Heroku
+- I hope this will help to start
+
+In the next episode `bmi_api_2` we will see how to add testing and to push on Heroku only when the tests are OK. This requires a reorganization among the files. 
