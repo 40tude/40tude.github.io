@@ -419,4 +419,4 @@ $ exit
 - The idea was to show how to setup a Rust project so that it can be tested locally and easily pushed on Heroku
 - I hope this will help to start
 
-In the next episode `bmi_api_2` we will see how to add testing and to push on Heroku only when the tests are OK. This requires a reorganization among the files. 
+In the next episode ([Episode 2/2]({%link docs/06_programmation/rust/012_api_heroku_2/api_heroku_2.md%})) we will see how to add testing and to push on Heroku only when the tests are OK. This will requires a reorganization among the files so I prefer to stop here for now. 

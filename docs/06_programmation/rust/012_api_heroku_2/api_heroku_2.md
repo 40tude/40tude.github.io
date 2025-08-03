@@ -13,8 +13,8 @@ last_modified_date : 2025-08-02 16:00:00
 
 ## TL;DR
 {: .no_toc }
-* This is a step by step recipe where I explain how to automate the testing and the deployment on Heroku of first Rust API (BMI calculator)
-* This post is a continuation of [this one]({%link docs/06_programmation/rust/011_api_heroku/api_heroku.md%}). Make sure to read it first.
+* A step by step recipe where I explain how to automate the testing and the deployment on Heroku of first Rust API (BMI calculator)
+* This is a continuation of [this post]({%link docs/06_programmation/rust/011_api_heroku/api_heroku.md%}). Make sure to read it first.
 * The current project is on [GitHub](https://github.com/40tude/bmi_api_2)
 
 
@@ -41,8 +41,8 @@ git push heroku main
 {:toc}
 
 
-## Step 1
-Make it work again. In fact since I want to keep projects from episode 1 and 2 side by side I need to copy/paste the previous project, rename it and then double check everything still works. In a real life I would modify files from episode 1 and keep track of the history with Git.
+## Step 1 : Make sure the duplicated project works
+Since I want to keep both projects from episode 1 and 2 side by side I need to copy/paste the previous project, rename it and double check everything still works as expected. In a real life I would modify files from episode 1 and keep track of the history with Git.
 
 - Copy paste the previous directory
 - Remove the `./.git` directory
@@ -66,15 +66,15 @@ tokio = { version = "1.47.1", features = ["full"] }
 strip = "symbols"
 ```
 
-- Publish on GitHub
+- Publish the new project on GitHub
 - Make a test locally
+
 ```
 cargo run
 ```
 
 ```
 curl -X POST http://localhost:8080/bmi  -H "Content-Type: application/json" -d '{"height": 1.69, "weight": 71.0}'
-
 ```
 
 <div align="center">
@@ -85,7 +85,7 @@ curl -X POST http://localhost:8080/bmi  -H "Content-Type: application/json" -d '
 
 
 
-- Update the Procfile to build and run `bmi_api_2` on Heroku
+- Update the `Procfile` file to build and run `bmi_api_2` on Heroku
 
 ```
 web: ./target/release/bmi_api_2
@@ -93,6 +93,7 @@ web: ./target/release/bmi_api_2
 ```
 
 - Create a project on Heroku
+
 ```
 heroku create rust-bmi-api-2 --buildpack emk/rust
 git remote -v
@@ -102,8 +103,8 @@ origin  https://github.com/40tude/bmi_api_2.git (fetch)
 origin  https://github.com/40tude/bmi_api_2.git (push)
 ```
 
-- No need to get a new token (`heroku auth:token`)
-- Directly deploy on Heroku
+- There is no need to get a new token (`heroku auth:token`)
+- We can directly deploy on Heroku
 
 ```
 git push heroku main
@@ -113,36 +114,60 @@ git push heroku main
 <img src="./assets/img_02.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-- Copy the URL (here, `https://rust-bmi-api-2-ddcca46c7003.herokuapp.com/`)
-- Open `./examples/client.rs` and paste the copied URL
+
+
+
+- Copy the URL (see above, `https://rust-bmi-api-2-ddcca46c7003.herokuapp.com/`)
+- Open `./examples/client.rs` and paste the copied URL. See the line below :
 
 ```rust
     let url = "https://rust-bmi-api-2-ddcca46c7003.herokuapp.com/bmi";
 ```
+
 - Make a test with the client
+
 ```
 cargo run --example client
 ```
 
 <div align="center">
-<img src="./assets/img_02.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img_03.webp" alt="" width="900" loading="lazy"/>
 </div>
 
 
-At this stage we are in good shape
+At this stage we are in good shape :
 - The previous project has been duplicated
-- The app has been renamed
+- The application has been renamed
 - The new project is on GitHub
 - The code runs locally
 - The API Server can be deployed on Heroku with a simple "push"
 - Clients (curl, web, Rust apps) can use the API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## The Plan
+
 
 Now the aim of the game is :
 1. To add testings
 1. To run the tests on GitHub each time we push on GitHub
 1. Push from GitHub to Heroku only when the tests are OK
 
-The good news is that it is possible. The bad news is that it require to reorganize the files.
+The good news is that it is possible. The bad news is that it requires to reorganize the files.
+
 At this point, the project directory looks like :
 
 ```
@@ -175,14 +200,9 @@ Everything is in the `main.rs` file and this does not facilitate testing. Below 
 
 
 
+## Step 2 : Create `src/lib.rs`
 
-
-
-
-
-
-## Step 2
-Create a file `src/lib.rs` and copy/paste the code below
+- Create a file `src/lib.rs` and copy/paste the code below
 
 ```rust
 // src/lib.rs
@@ -201,7 +221,8 @@ pub mod api;
 
 
 
-## Step 3
+## Step 3 : Simplify `src/main.rs`
+
 Modify `main.rs` as below so that it calls functions (here, `api::calculate_bmi()`) from the `api.rs` module
 
 ```rust
@@ -236,9 +257,9 @@ async fn main() {
 
 
 
-## Step 4
-Modify `Cargo.toml` and add a `[lib]` section
+## Step 4 : Create a lib section in `Cargo.toml`
 
+Modify `Cargo.toml` and add a `[lib]` section
 
 ```
 [package]
@@ -271,7 +292,7 @@ strip = "symbols"
 
 
 
-## Step 5
+## Step 5 : Create `src/api.rs`
 
 Create a file `src/api.rs` and copy/paste the code below
 
@@ -322,7 +343,7 @@ pub async fn calculate_bmi(Json(payload): Json<BmiRequest>) -> Result<Json<BmiRe
 
 
 
-## Step 6
+## Step 6 : Create `tests/api.rs`
 
 Run the command below to extend `Cargo.toml` 
 
@@ -331,7 +352,7 @@ cargo add tower
 cargo add serde-json
 ```
 
-Create a `/tests/api.rs` file with the following content.
+Create a `tests/api.rs` file with the following content :
 
 ```rust
 use axum::body::to_bytes;
@@ -392,7 +413,7 @@ async fn test_valid_bmi_should_succeed() {
 }
 ```
 
-## Step 7
+## Step 7 : Check that everything works locally
 
 - Publish on GitHub
 - Run the app locally, just to make sure...
@@ -430,7 +451,12 @@ cargo test
 
 
 
-## Step 8
+
+
+
+
+
+## Step 8 : Setup GitHub CI/CD
 
 Create `.github/workflows/test-and-deploy.yml` and copy the code below
 
@@ -475,7 +501,7 @@ jobs:
 
 In the script above, make sure to update the `heroku git:remote -a rust-bmi-api-2` with the name of you project (find the name with either `git remote -v` or `heroku apps`)
 
-If we want GitHub to talk to Heroku, we need to add the Heroku token to GitHub. Let's get back the Heroku token :
+This is obvious but, if we want GitHub to talk to Heroku, we need to add the Heroku token to GitHub. Let's get back the Heroku token :
 
 ```
 heroku auth:token
@@ -507,7 +533,7 @@ Value: Past the token value you got with `heroku auth:token`
 
 
 
-## Step 9
+## Step 9 : Check that its works when we push on GitHub 
 
 Commit on GitHub and check `Actions` in the repo
 
@@ -553,34 +579,44 @@ Above the `date` command helps to confirms that bmi_api_2 was created 4 minutes 
 
 
 
-## Step 10
+## Step 10 : Add a test logo to `README.md`
 
-- Add the line below at the top of the README.md file
-- It display the status of the tests
+- Create a `README.md` file
+- Add the line below at the top of the `README.md` file
+- It displays the status of the tests
 
 ```
 [![Test and Deploy](https://github.com/40tude/bmi_api_2/actions/workflows/test-and-deploy.yml/badge.svg)](https://github.com/40tude/bmi_api_2/actions)
 ```
 
-## Step 11 - Optional
+
+
+
+
+
+## Step 11 : Optional - Add more logos to `README.md`
 
 Additionally one can add a `LICENSE` file and a sticker
 - Go to the GitHub repo
-- Click on “Add file” > “Create new file”.
+- Click on "Add file" > "Create new file"
 - Name it `LICENSE` (with no extension)
-- At the top, GitHub offers a button “Choose a license template”.
+- At the top, GitHub offers a button "Choose a license template"
 - Click on it, choose MIT for example, and validate
-- Now that you have a `LICENSE` file you can add the line below at the top of the README.md
+- Now that you have a `LICENSE` file you can add the line below at the top of the `README.md` file
 
 ```
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ```
 
-We can also add the minimal Rust version required
+Similarly, we can also add the minimal Rust version required
+
 ```
 [![Rust Version](https://img.shields.io/badge/rust-1.88+-blue.svg)](https://www.rust-lang.org)
 ```
-In the comand above adjust the `1.88+`
+In the line above adjust the `1.88+` to your needs
+
+
+
 
 Finally, let's add an Heroku logo with a link to the app
 
@@ -607,6 +643,17 @@ Now on GitHub the `README.md` should be displayed as below
 
 
 ## Conclusion
+
+At the end of [Episode 1/2]({%link docs/06_programmation/rust/011_api_heroku/api_heroku.md%}) and Episode 2/2 (this file) we have
+* A first API Server which can be checked locally
+* We also have a Rust client
+* More importantly, the files are organized so that tests can be written and executed locally
+* Cherry on the cake, when we push on GitHub, the tests are executed remotely and if they are successful the API server is deployed from GitHub to Heroku
+* On GitHub the `README.md` file clearly indicates the status of the tests... With some logos
+
+Not bad. I hope this will help some of you.
+
+
 
 
 
