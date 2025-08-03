@@ -649,7 +649,7 @@ At the end of [Episode 1/2]({%link docs/06_programmation/rust/011_api_heroku/api
 * Cherry on the cake, when we push on GitHub, the tests are executed remotely and if they are successful the API server is deployed from GitHub to Heroku
 * On GitHub, the `README.md` file clearly indicates the status of the tests... With some logos
 
-Not bad. I hope this will help some of you.
+Not bad. I hope this can help.
 
 
 
