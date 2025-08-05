@@ -1,3 +1,5 @@
+// cargo run -- "C:\Users\phili\OneDrive\Documents\40tude.github.io\docs\06_programmation\rust\011_api_heroku\api_heroku.md"
+
 use regex::Regex;
 use std::env;
 use std::fs;
@@ -9,6 +11,21 @@ fn count_useful_words(md_path: &str, word_limit: usize) -> String {
     };
 
     // Compile each regex separately for better error handling
+    // let patterns = [
+    //     (r"(?s)^---.*?---", ""),   // YAML front matter
+    //     (r"(?s)<!--.*?-->", ""),   // HTML comments
+    //     (r"(?s)```.*?```", ""),    // Code blocks
+    //     (r"`[^`]+`", ""),          // Inline code
+    //     (r"!?\[.*?\]\(.*?\)", ""), // Images and links
+    //     (r"<[^>]+>", ""),          // HTML tags
+    //     (r"(?m){:.*?}", ""),       // Special markdown
+    //     (r"(?m)\[\^.*?\]:?", ""),  // Footnotes
+    //     (r"(?m)^>\s?", ""),        // Blockquotes
+    //     (r"(?m)^\|.*?\|$", ""),    // Tables
+    //     (r"(?m)^[-*_]{3,}$", ""),  // Horizontal rules
+    //     (r"(?s){%.*?%}", ""),      // Template tags
+    // ];
+
     let patterns = [
         (r"(?s)^---.*?---", ""),   // YAML front matter
         (r"(?s)<!--.*?-->", ""),   // HTML comments
@@ -16,12 +33,12 @@ fn count_useful_words(md_path: &str, word_limit: usize) -> String {
         (r"`[^`]+`", ""),          // Inline code
         (r"!?\[.*?\]\(.*?\)", ""), // Images and links
         (r"<[^>]+>", ""),          // HTML tags
-        (r"(?m){:.*?}", ""),       // Special markdown
+        (r"(?m)\{\:.*?\}", ""),    // Special markdown
         (r"(?m)\[\^.*?\]:?", ""),  // Footnotes
         (r"(?m)^>\s?", ""),        // Blockquotes
         (r"(?m)^\|.*?\|$", ""),    // Tables
         (r"(?m)^[-*_]{3,}$", ""),  // Horizontal rules
-        (r"(?s){%.*?%}", ""),      // Template tags
+        (r"(?s)\{\%.*?\%\}", ""),  // Template tags
     ];
 
     let mut cleaned = content.clone();

@@ -85,11 +85,18 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * 52 nuances de physique (faut vraiment que je l'écrive un jour)
 
 
+## Snippets
+Roue Crantée en bas à gauche
+Snippets
+Choisir markdown.json
+Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
+
 
 
 ## Longueur des posts
-* 3000 mots
+* 3_000 mots
 * Découper en série le cas échéant
+* Utiliser `word2read` ./blablabla.md (voir src dans C:\Users\phili\OneDrive\Documents\Programmation\rust\00_cli\words2read)
 
 
 
