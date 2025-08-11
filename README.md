@@ -5,7 +5,6 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
 * Faire un billet sur le portage de WP vers markdown?
 * Mettre à jour la page : 022_compile_cpp_code_with_vscode
-* Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
 * Voir ces histoires de balise rel="canonical"
 * Voir ces histoires de plugins
     * Va être chaud
@@ -14,11 +13,21 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * SEO? 
     * Pas sûr de comprendre grand chose au sujet
     * En plus je suis pas intéressé par le sujet
-* Pages en anglais? avec lang=en avant le Head
-    * À mon avis c'est mort mais bon je vais continuer à chercher
-    * Y a peut être une option avec les collections mais je sais pas si y a lang="en" avant le head
-
+* Optimization
+    * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
+    * F12 ou Ctrl+Shift+I pour ouvrir les DevTools.
+    * Onglet Lighthouse
+    * Performance, Accessibility, SEO, Best Practices, cliquer sur "Generate report".
+    * Pagespeed Insights (https://pagespeed.web.dev/) : Donne des conseils prioritaires.
+    * WebPageTest (https://www.webpagetest.org/) : Pour analyser la vitesse depuis différents lieux.
 ## DONE
+* ~~Pages en anglais? avec lang=en avant le Head~~
+    * ~~À mon avis c'est mort mais bon je vais continuer à chercher~~
+    * ~~Y a peut être une option avec les collections mais je sais pas si y a lang="en" avant le head~~
+<span style="color:red"><b>IMPORTANT:</b></span>  
+    * Voir `_layouts\default.html`. Si jamais just the docs le modifie faudra aller chercher la nouvelle version
+    * Voir `https://github.com/just-the-docs/just-the-docs/blob/main/_layouts/default.html`
+
 * ~~Mettre les liens des urls dans les billets en gras~~
 * ~~S'assurer que Google indexe bien le site. Pas sûr à 100% que ce soit le cas aujourd'hui 11 01 2025~~
     * Y a toujours des soucis avec les vieille pages pirates mais bon à priori les bonnes pages sont bien indexées
