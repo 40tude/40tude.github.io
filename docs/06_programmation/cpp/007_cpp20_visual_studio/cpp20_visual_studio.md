@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "C++20 with Visual Studio"
 parent: "C++"
 #math: mathjax

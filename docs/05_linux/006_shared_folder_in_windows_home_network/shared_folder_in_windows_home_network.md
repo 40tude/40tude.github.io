@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Linux shared Folder in Windows Home Network"
 parent: "Linux"
 #math: mathjax

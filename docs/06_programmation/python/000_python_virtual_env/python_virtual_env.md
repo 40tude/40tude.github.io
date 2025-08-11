@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Python virtual env"
 parent: "Python"
 #math: mathjax

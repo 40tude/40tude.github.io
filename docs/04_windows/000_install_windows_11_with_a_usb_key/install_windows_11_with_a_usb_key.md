@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Install Windows 11 with a USB key"
 parent: "Windows"
 nav_order: 2

@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p401 - Swap Odd and Even Bits"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

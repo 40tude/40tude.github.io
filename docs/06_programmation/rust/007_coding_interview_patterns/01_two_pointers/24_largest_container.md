@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p024 - Largest Container"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

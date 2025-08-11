@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p325 - Neighborhood Burglary"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "C++ with VSCode, vcpkg & CMake"
 parent: "C++"
 #math: mathjax

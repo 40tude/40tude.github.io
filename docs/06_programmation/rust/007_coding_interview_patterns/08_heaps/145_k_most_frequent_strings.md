@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p145 - K Most Frequent Strings"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

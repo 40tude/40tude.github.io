@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p298 - Find All Permutations"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

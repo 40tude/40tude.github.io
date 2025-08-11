@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p268 - Longest Increasing Path"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

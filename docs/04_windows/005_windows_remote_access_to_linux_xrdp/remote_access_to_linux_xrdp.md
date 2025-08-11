@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Remote access to Linux with XRDP"
 parent: "Windows"
 #math: mathjax

@@ -1,5 +1,6 @@
 ---
 published: true
+lang: en-US
 layout: default
 title: "How to Deploy Your Rust API on Heroku (The Easy Way)"
 parent: "Rust"

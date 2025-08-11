@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus005 - Shift zeros to the end"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

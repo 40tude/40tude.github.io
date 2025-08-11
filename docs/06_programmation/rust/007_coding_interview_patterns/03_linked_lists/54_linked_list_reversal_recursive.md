@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p054 - Linked List Reversal Recursive"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,5 +1,6 @@
 ---
 # published: false
+lang: en-US
 layout: default
 title: "Who Owns What in Rust Loops? (And Why It Matters)"
 parent: "Rust"

@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p073 - Linked List Loop"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

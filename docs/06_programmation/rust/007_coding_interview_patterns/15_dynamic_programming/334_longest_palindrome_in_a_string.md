@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p334 - Longest Palindrome in a String"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

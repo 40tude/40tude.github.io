@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p035 - Verify Sudoku Board"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

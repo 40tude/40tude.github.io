@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus020 - Geometric Sequence Triplets"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

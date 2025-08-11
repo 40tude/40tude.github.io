@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p204 - Widest Binary Tree Level"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Coding Interview Patterns in Rust"
 parent: "Rust"
 # math: mathjax

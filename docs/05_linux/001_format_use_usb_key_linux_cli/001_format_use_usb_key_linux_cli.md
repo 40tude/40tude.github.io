@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Format and use USB key"
 parent: "Linux"
 #math: mathjax

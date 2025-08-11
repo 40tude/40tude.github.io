@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p116 - Cutting Wood"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

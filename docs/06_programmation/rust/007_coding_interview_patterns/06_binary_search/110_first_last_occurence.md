@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p110 - First and Last Occurence of a Number"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

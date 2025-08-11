@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p132 - Next Largest Number to the Right"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

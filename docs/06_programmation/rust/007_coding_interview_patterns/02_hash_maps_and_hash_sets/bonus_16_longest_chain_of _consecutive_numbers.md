@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus016 - Longest Chain of Consecutive Numbers"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

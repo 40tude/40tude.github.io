@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p235 - Insert and Search Words with Wildcards"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

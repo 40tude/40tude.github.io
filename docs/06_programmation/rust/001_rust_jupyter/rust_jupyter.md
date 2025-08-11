@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Using Rust in Jupyter Notebooks on Windows"
 parent: "Rust"
 #math: mathjax

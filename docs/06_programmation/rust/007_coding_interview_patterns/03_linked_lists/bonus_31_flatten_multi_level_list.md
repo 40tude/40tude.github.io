@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus031 - Flatten a Multi-Level Linked List"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

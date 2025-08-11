@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p180 - K-Sum Subarray"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

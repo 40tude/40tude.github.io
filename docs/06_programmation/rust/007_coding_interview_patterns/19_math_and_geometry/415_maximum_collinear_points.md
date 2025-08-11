@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p415 - Maximum Collinear Points"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p122 - Find the Target in a Rotated Sorted Array"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

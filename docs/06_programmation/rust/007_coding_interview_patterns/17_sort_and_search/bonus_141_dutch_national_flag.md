@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus141 - Dutch National Flag"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

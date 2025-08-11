@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p020 - Is Palindrome Valid"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

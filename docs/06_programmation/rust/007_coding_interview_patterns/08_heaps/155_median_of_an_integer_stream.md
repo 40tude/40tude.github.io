@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p155 - Median of an Integer Stream"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

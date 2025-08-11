@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p105 - Find insertion index"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p216 - Build Binary Tree from Preorder and Inorder Traversals"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

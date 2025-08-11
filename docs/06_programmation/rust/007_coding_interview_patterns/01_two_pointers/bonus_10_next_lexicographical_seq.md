@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus010 - Next lexicographical sequence"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

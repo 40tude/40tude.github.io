@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Rust on Windows 11, My Complete Setup Guide"
 parent: "Rust"
 #math: mathjax

@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Linux Mint 21 - Install PowerShell"
 parent: "Linux"
 #math: mathjax

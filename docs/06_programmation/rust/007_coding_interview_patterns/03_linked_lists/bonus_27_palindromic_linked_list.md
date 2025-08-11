@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus027 - Palindromic Linked List"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

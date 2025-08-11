@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "Rust and Functional Programming: A Beginner’s Top 10 Functions"
 parent: "Rust"
 #math: mathjax

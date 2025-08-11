@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p063 - LRU Cache"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

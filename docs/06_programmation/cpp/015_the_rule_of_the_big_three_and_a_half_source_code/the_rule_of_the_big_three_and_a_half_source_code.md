@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "The rule of the big three (and a half) - Source code"
 parent: "C++"
 #math: mathjax

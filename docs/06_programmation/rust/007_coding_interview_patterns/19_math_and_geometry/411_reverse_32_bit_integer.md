@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p411 - Reverse 32-Bit integer"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

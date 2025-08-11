@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p339 - Maximum Subarray Sum"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

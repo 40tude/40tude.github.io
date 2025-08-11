@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus132 - Largest Square in a Matrix"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

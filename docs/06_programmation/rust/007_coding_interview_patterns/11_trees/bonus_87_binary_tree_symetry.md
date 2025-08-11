@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus087 - Binary Tree Symetry"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

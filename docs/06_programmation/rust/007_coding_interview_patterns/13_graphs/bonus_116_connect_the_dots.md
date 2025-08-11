@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus116 - Connect the Dots"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

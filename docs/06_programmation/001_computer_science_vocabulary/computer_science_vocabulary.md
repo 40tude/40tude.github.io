@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "My Computer Science Vocabulary Page"
 parent: "Programmation"
 # nav_order: 4

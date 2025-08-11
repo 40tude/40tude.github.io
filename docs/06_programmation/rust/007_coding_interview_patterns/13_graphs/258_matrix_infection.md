@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p258 - Matrix infection"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

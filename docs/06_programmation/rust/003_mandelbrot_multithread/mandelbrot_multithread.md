@@ -1,6 +1,7 @@
 ---
-published: true
+# published: true
 layout: default
+lang: en-US
 title: "Multithreaded Mandelbrot Sets in Rust"
 parent: "Rust"
 #math: mathjax

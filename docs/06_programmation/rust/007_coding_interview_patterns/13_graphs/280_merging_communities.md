@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p280 - Merging Communities"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

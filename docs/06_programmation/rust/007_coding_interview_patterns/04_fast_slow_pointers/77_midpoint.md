@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p077 - Linked List Midpoint"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

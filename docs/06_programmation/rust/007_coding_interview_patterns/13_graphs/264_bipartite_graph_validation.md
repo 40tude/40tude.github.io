@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p264 - Bipartite Graph Validation"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

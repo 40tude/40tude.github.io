@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus046 - Matrix Search"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

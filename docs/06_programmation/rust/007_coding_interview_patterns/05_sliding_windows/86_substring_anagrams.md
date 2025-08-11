@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p086 - Substring Anagrams"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

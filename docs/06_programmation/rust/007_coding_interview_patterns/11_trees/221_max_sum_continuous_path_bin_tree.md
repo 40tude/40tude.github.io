@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p221 - Maximum Sum of a Continuous Path in a Binary Tree"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

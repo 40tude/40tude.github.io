@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus052 - Local Maxima"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

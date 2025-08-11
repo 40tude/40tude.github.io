@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p253 - Count Islands"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

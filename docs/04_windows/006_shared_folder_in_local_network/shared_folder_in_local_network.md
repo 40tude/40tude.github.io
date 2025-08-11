@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Shared folders in local network"
 parent: "Windows"
 #math: mathjax

@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus058 - Weighted Random Selection"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

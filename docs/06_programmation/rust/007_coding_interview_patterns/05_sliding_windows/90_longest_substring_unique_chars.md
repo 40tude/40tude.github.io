@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p090 - Longest Substring With Unique Characters"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

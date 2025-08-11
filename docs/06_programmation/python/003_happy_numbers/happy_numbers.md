@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Happy Numbers"
 parent: "Python"
 #math: mathjax

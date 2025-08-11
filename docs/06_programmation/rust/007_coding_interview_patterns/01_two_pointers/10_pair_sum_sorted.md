@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p010 - Pair Sum - Sorted"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

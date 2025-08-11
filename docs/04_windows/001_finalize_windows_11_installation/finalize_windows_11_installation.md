@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Finalize Windows 11 installation"
 parent: "Windows"
 nav_order: 3

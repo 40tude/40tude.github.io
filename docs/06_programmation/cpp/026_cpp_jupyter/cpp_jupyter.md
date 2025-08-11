@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Using C++ in Jupyter Notebooks on Windows"
 parent: "C++"
 #math: mathjax

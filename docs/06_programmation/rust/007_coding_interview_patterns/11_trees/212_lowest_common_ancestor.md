@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p212 - Lowest Common Ancestor"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

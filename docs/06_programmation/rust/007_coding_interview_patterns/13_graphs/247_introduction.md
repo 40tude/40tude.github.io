@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p247 - Introduction"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

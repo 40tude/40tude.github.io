@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus096 - Kth Smallest Number in a Binary Search Tree"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

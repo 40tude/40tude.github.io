@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Latex and VSCode"
 parent: "Windows"
 math: mathjax

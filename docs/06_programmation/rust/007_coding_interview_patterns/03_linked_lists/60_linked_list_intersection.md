@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p060 - Linked List Intersection"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

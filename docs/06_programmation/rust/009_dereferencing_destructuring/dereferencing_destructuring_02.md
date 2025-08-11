@@ -1,5 +1,6 @@
 ---
 published: true
+lang: en-US
 layout: default
 title: "Rust Dereferencing vs Destructuring — For the Kids 2/2"
 parent: "Rust"

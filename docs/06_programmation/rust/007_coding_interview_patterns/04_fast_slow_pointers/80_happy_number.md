@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p080 - Happy Number"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

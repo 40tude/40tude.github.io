@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p166 - Identify All Interval Overlaps"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Linux Min 21 - Enable automatic Update"
 parent: "Linux"
 #math: mathjax

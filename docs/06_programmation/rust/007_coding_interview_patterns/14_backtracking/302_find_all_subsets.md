@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p302 - Find All Subsets"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

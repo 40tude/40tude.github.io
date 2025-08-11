@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus073 - Maximums of Sliding Window"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

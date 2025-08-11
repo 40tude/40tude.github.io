@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus128 - Phone Keypad Combinations"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

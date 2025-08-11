@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Install Virtual Box"
 parent: "Windows"
 #math: mathjax

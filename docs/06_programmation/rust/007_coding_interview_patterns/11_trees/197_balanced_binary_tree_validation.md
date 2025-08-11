@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p197 - Balanced Binary Tree Validation"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

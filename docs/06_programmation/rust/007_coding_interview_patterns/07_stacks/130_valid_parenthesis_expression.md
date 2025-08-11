@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p130 - Valid Parenthesis Expression"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

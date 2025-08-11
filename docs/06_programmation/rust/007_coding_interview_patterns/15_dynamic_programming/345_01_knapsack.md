@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p345 - 0/1 Knapsack"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

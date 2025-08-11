@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p396 - Hamming Weights of Integer"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

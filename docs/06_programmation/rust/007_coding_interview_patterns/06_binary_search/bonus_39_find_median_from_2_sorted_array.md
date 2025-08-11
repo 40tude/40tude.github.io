@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus039 - Find the Median From Two Sorted Arrays"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

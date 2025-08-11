@@ -1,6 +1,7 @@
 ---
-published: true
+# published: true
 layout: default
+lang: en-US
 title: "Bindings in Rust: Much More Than Just Variables"
 parent: "Rust"
 #math: mathjax

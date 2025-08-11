@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p399 - Lonely Integer"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

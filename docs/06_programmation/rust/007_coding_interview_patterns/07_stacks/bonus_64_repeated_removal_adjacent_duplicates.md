@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus064 - Repeated Removal of Adjacent Duplicates"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

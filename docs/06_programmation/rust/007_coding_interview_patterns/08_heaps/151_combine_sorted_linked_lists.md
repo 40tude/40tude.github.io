@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p151 - Combine Sorted Linked Lists"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

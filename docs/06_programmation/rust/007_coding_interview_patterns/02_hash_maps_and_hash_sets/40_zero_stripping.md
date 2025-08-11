@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p040 - Zero stripping"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

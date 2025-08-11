@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p272 - Shortest Transformation Sequence"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

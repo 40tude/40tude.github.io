@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus149 - Triangle Numbers"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

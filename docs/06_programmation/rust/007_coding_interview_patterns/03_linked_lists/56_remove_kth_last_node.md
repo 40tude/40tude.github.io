@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p056 - Remove the kth Last Node From a Linked List"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

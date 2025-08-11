@@ -1,6 +1,7 @@
 ---
 published: false
 layout: default
+lang: en-US
 title: "Why I’m Learning Rust in 2025"
 parent: "Rust"
 #math: mathjax

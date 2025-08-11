@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus101 - Serialize and Deserialize a Binary Tree"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "bonus108 - Shortest Path"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

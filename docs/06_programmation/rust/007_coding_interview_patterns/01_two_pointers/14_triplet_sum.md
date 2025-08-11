@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p014 - Triplet Sum"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

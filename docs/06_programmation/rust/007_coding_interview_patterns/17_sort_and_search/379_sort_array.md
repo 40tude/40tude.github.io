@@ -1,6 +1,7 @@
 ---
 # published: false
 layout: default
+lang: en-US
 title: "p379 - Sort Array"
 parent: "Coding Interview Patterns in Rust"
 #math: mathjax

@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "C++ with VS Code"
 parent: "C++"
 #math: mathjax

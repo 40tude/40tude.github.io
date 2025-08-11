@@ -1,5 +1,6 @@
 ---
 layout: default
+lang: en-US
 title: "Linux Mint Installation and Configuration"
 parent: "Linux"
 nav_order: 2
