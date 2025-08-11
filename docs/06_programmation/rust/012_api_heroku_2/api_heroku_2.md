@@ -1,5 +1,6 @@
 ---
 published: true
+lang: en-US
 layout: default
 title: "CI/CD for Rust: Automating Tests and Heroku Deployment of Your API"
 parent: "Rust"
