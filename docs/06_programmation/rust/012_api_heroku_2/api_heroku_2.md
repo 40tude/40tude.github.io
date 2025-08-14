@@ -14,7 +14,7 @@ last_modified_date : 2025-08-02 16:00:00
 
 ## TL;DR
 {: .no_toc }
-* A step by step recipe where I explain how to automate the testing and the deployment on Heroku of first Rust API (BMI calculator)
+* A step by step recipe where I explain how to **automate** the **testing** and the **deployment** on Heroku of our first Rust API (BMI calculator)
 * This is a continuation of [this post]({%link docs/06_programmation/rust/011_api_heroku/api_heroku.md%}). Make sure to read it first.
 * The current project is on [GitHub](https://github.com/40tude/bmi_api_2)
 
