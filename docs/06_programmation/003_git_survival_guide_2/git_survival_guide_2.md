@@ -33,9 +33,8 @@ Je met noir sur blanc, une fois pour toute, deux ou trois trucs qui me mettent t
 
 <div align="center">
 <img src="./assets/img00_bis.webp" alt="drawing" width="450"/>
-<p>Do you remember...🎵<p>
+<p>Do you remember...🎵</p>
 </div>
-
 
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
