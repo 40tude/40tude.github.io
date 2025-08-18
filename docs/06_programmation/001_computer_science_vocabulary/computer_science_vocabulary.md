@@ -6,14 +6,19 @@ parent: "Programmation"
 # nav_order: 4
 math: mathjax
 date: 2015-09-27 21:42:50
-last_modified_date: 2025-03-23 17:00:00
+last_modified_date: 2025-08-18 17:00:00
 ---
 
 # My Computer Science Vocabulary Page
 {: .no_toc }
 
-<div align="center">
+<!-- <div align="center">
 <img src="./assets/words_cloud.webp" alt=""  width="450" loading="lazy"/>
+</div> -->
+
+<div align="center">
+<img src="./assets/img_00.webp" alt=""  width="450" loading="lazy"/>
+<p>Boogie Wonderland...</p>
 </div>
 
 
@@ -871,12 +876,19 @@ See : <http://stackoverflow.com/questions/17930267/what-is-the-difference-betwee
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Tasks
+Cooperative multitasking. Think about Windows 3.1 when true parallelism via multithread was not yet available under Windows. However, even with one CPU, we were able, at the same time, to play music, print a document and draw in MSPaint. 
 
-A unit of work, often a function, to be executed on a thread.
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QIHy8pXbneI?si=5fCEHDZu2Va85AyY&amp;start=1098" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
-See : https://www.youtube.com/watch?v=QIHy8pXbneI at 18:15
+A task is a computation that can potentially be executed **concurrently** with other computations. The keyword here is concurrently. One task is executed until it must wait (IO or timer). Then a second task start again from where it was until it is paused. Then a third task etc. Until the first task is restarted from where it paused. The first task then run until it must wait again.  
 
-We call a computation that can potentially be executed concurrently with other computations a task.
+The tasks are not executed one after the other (sequentially) but one piece of each after another. A runtime manages the different tasks of the application (tasks are no seen by the OS) The runtime switches from one task to another when the running task must "wait" (I/O on a file or on the network or waiting via a timer). 
+
+Tasks are lite (sometime named green thread) and switching from one to the other is very fast. 
+
+It makes sense to use tasks when we know the tasks are doing I/O. If the tasks do number crunching it is better to use threads and run calculations in true parallelism. Indeed if a task never waits, the runtime will not be able to switch to another task. Only one task will progress until it reach the end of its processing. The application will look "sequential" not concurrent. 
 
 
 
@@ -885,14 +897,24 @@ We call a computation that can potentially be executed concurrently with other c
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Threads
-
 Execution environment consisting of a stack and processor state running in parallel to other threads.
-
-See : https://www.youtube.com/watch?v=QIHy8pXbneI at 18:15
 
 A thread is the system-level representation of a task in a program.
 
-Threads of a program share a single address space. In this, threads differ from processes, which generally do not directly share data. Since threads share an address space, they can communicate through shared objects (§13.5). Such communication is typically controlled by locks or other mechanisms to prevent data races (uncontrolled concurrent access to a variable).
+Threads of an application share a single address space. In this, threads differ from processes, which generally do not directly share data. Since threads share an address space, they can communicate through shared objects. Such communication is typically controlled by locks or other mechanisms to prevent data races (uncontrolled concurrent access to a variable).
 
-We call a computation that can potentially be executed concurrently with other computations a task. A thread is the system-level representation of a task in a program. A task to be executed concurrently with other tasks is launched by constructing a std::thread (found in <thread>) with the task as its argument. A task is a function or a function object.
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Wadler law
+
+In any language design, the total time spent discussing a feature in this list is proportional to two raised to the power of its position.
+1. Semantics ($$2^0$$)
+1. Syntax ($$2^1$$)
+1. Lexical syntax ($$2^2$$)
+1. Lexical syntax of comments ($$2^3$$)
+
+Wadler’s Law says that the further we move from a language’s core ideas (semantics) to its surface details (like comment syntax), the more debate explodes exponentially. Though meant as a joke, it neatly reflects our tendency to fixate on trivialities.
