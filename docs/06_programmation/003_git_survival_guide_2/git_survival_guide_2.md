@@ -32,7 +32,8 @@ Je met noir sur blanc, une fois pour toute, deux ou trois trucs qui me mettent t
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="drawing" width="450"/>
+<img src="./assets/img00_bis.webp" alt="drawing" width="450"/>
+<p>Do you remember...🎵<p>
 </div>
 
 
@@ -112,12 +113,12 @@ Prendre ensuite le temps de lire cette [page](http://rogerdudler.github.io/git-g
 
 ## Revenir en arrière 
 
-* J'ai un projet qui est synchronisé sur GitHub  
+* J'ai un projet Rust de démonstration, un truc simple, qui comporte peut être un ou deux fichiers source et qui est synchronisé sur GitHub  
 * Je fais pas de branche (bien sûr...)
 * Je fait des bidouilles et je commit plusieurs fois
 * Je veux juste revenir au projet dans l'état il était en version V2 (129eca1) 
 
-Je dois faire quoi ?
+Je fais quoi ?
 
 ```powershell
 git status
@@ -135,25 +136,53 @@ git push
 
 
 
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+## Tout cassé et plusieurs commits entre temps
+
+Typiquement avec le site [40tude.fr](https://www.40tude.fr/) (Jekyll + thème Just The Docs) je fais des modifs dans le GemFile... et puis à un moment ça déploie plus sur GitHub
+
+**PANIQUE!** 😡
+
+```powershell
+git log --oneline -n 5
+git reset --hard dfa46c011b33092ea30c14938616f5281f092811
+git push --force
+```
+
+* Avec le ``--hard`` on supprime les commits suivants et les modifications associées 
+* ``--force`` la mise à jour du dépôt distant pour refléter l'état actuel de la branche locale. Les commits effacés seront également supprimés du dépôt distant.
+
+C'est donc assez radical et cela ne marche que parce que je suis tout seul sur le projet. C'est pas du tout une bonne idée de faire ça si on est en équipe car pendant que tu ratatouille de ton côté, Robert lui a fait plusieurs commits vachement intéressants et si avec `--hard` tu supprimes les commits suivants... Ca va chù%@ pour ton matricule.
+
+**PLUS de PANIQUE...** 😁
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
 
-## Récupérer un projet depuis GitHub
+## Récupérer un de mes projets sur GitHub
 
-Dans PowerShell, dans le répertoire où on peut créer un sous-répertoire pour y héberger les sources du projet récupéré, taper "git clone". Exemple :
+Dans PowerShell, dans le répertoire où on peut créer un sous-répertoire pour y héberger les sources du projet récupéré, taper :
 
 ```powershell
 git clone https://github.com/40tude/A-Tour-Of-Cpp.git
 ```
 
-### Faire des modifications dans les fichiers
-
-...
-
-### Faire un commit
+* Faire des modifications dans les fichiers
+* Faire un commit
 
 ```
 git commit -am "Relecture et typos"
@@ -163,13 +192,13 @@ Bien noter le "a" de "-am" qui "commit" tous le fichiers modifiés
 
 
 
-### Faire un push sur le serveur distant GitHub
+* Faire un push sur le serveur distant GitHub
 
 ```powershell
 git push master origin
 ```
 
-### Mettre à jour le projet
+* Mettre à jour le projet
 
 ```powershell
 git fetch origin
@@ -182,8 +211,9 @@ git fetch origin
 <!-- ####################################################################### -->
 ## Branch & Merge
 
-* Clairement je n'ai pas encore le réflexe... Je promets, à partir de demain, je fais un effort...  
-* On se met dans le cas où :  
+Clairement je n'ai pas encore le réflexe... Je promets, je vais faire un effort...  
+
+* Je me met dans le cas où :  
     * J'ai un projet avec un repo GitHub  
     * J'ai une idée transcendantale...  
 
@@ -270,6 +300,8 @@ Voir le graphe en bas à gauche
 ## Gros Fichier - Cas N°1
 
 ### Note
+{: .no_toc }
+
 * Ci-dessous je peux me permettre de faire un ``git reset`` car je suis tout seul   
 * Si jamais je suis en équipe il faudra utiliser ``git revert``  
     * Dans un cas (``reset``) on modifie ce sur quoi pointe ``HEAD`` 
@@ -346,11 +378,11 @@ large_file.csv
 * Fair un ``commit``  
 * Faire un ``git push origin main --force`` (ligne de commande)
 
-### ATTENTION
+**ATTENTION**
 * Le **SYNCHRONIZE** (pull + push) de l'interface VSCode n'est **PAS** suffisant ici 
 * En effet les historiques (local et distant) ne sont PLUS synchros (=> ``--force``)
 
-#### **Différence entre Synchronize et git push --force**
+#### **Différence entre Synchronize et ``git push --force``**
 {: .no_toc }
 
 | **Action**                                   | **Synchronize**                    | **git push --force**                        |
@@ -407,7 +439,7 @@ git push origin main --force
 ```
 
 
-#### Note de ChatGPT
+### Note de ChatGPT
 {: .no_toc }
 
 Les modifications non committées dans ton espace de travail ne seront pas perdues avec un ``git reset --soft``.   
@@ -509,7 +541,8 @@ Quand tout est OK localement faut mettre à jour le repo distant
 git push origin main --force
 ```
 
-#### 2. Supprimer le cache GitHub :
+#### 2. Supprimer le cache GitHub
+{: .no_toc }
 * ???
 
 <!-- ### 2. Vider les caches du repo sur GitHub : -->
@@ -529,6 +562,7 @@ https://github.com/40tude/01_github_issues_fixed/actions/caches
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
 ## Répertoire de logs
+
 * J'ai un projet qui est synchronisé sur GitHub  
 * J'ajoute un répertoire ``./logs`` avec des centaines de logs qu'il est ridicule d'avoir sur GitHub.   
 * J'oublie d'en tenir compte dans ``.gitignore``  
@@ -563,30 +597,6 @@ Bien voir le ``-r`` de la commande ``git rm``
 
 **PLUS de PANIQUE...** 😁
 
-
-
-
-<!-- ####################################################################### -->
-<!-- ####################################################################### -->
-<!-- ####################################################################### -->
-## Tout cassé et plusieurs commits entre temps
-
-Typiquement avec le site 40tude.fr (Jekyll, et thème Just The Docs) je fais des modifs dans le GemFile... et puis à un moment ça déploie plus sur GitHub
-
-**PANIQUE!** 😡
-
-```powershell
-git log --oneline -n 5
-git reset --hard dfa46c011b33092ea30c14938616f5281f092811
-git push --force
-```
-
-* Avec le ``--hard`` on supprime les commits suivants et les modifications associées 
-* ``--force`` la mise à jour du dépôt distant pour refléter l'état actuel de la branche locale. Les commits effacés seront également supprimés du dépôt distant.
-
-C'est donc assez radical et cela ne marche que parce que je suis tout seul sur le projet. C'est pas du tout une bonne idée de faire ça si on est en équipe car pendant que tu ratatouille de ton côté, Robert lui a fait plusieurs commits vachement intéressants et si avec `--hard` tu supprimes les commits suivants... Ca va chù%@ pour ton matricule.
-
-**PLUS de PANIQUE...** 😁
 
 
 
@@ -642,7 +652,7 @@ Supprimer la branche ``b1``
 
 
 
-### Que faire si la branche b1 est affectée par les changements ?
+**Que faire si la branche b1 est affectée par les changements ?**
 
 ``git switch b1``
 
@@ -698,7 +708,8 @@ git push origin main
 ```
 
 ### Combien de fois par jour ?
-Combien de fois par jour faut il synchroniser avec le main ?  
+Combien de fois par jour faut il synchroniser avec le main ? 
+
 **Une à deux fois par jour**  
 1. Synchroniser une fois au **début de la journée** (ou avant de commencer une nouvelle tâche) 
     * Travailler avec une base de code à jour.
@@ -719,7 +730,7 @@ Combien de fois par jour faut il synchroniser avec le main ?
 <!-- ####################################################################### -->
 ## Bonnes pratiques pour les merges sur `main` ?
 
-C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politique **stricte** des merges et de la discipline.
+C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politique **stricte** des merges et de la **discipline**.
 
 ### Utiliser des `feature branches`
 - Toute idée doit être développée dans une branche (ex. : `feature/ticket-123`) 
