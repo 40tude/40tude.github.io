@@ -12,14 +12,16 @@ last_modified_date: 2025-08-18 17:00:00
 # My Computer Science Vocabulary Page
 {: .no_toc }
 
-<!-- <div align="center">
-<img src="./assets/words_cloud.webp" alt=""  width="450" loading="lazy"/>
-</div> -->
-
 <div align="center">
 <img src="./assets/img_00.webp" alt=""  width="450" loading="lazy"/>
 <p>Boogie Wonderland...</p>
 </div>
+
+
+<!-- <div align="center">
+<img src="./assets/words_cloud.webp" alt=""  width="450" loading="lazy"/>
+</div> -->
+
 
 
 ## Introduction
@@ -33,7 +35,7 @@ Usually Googling helps a lot to get an "answer" at the speed of light. On the ot
 {: .no_toc }
 
 * This is mostly for me
-* This is done mostly in a [C++]({%link docs/06_programmation/cpp/index.md%}) context
+* This is done mostly in a [Rust]({link docs/06_programmation/rust/index.md}) and [C++]({%link docs/06_programmation/cpp/index.md%}) contexts
 * There is no goal of completeness (how could it be?)
 * Entries are in alphabetical order
 * Whenever possible I add the sources, links and references
