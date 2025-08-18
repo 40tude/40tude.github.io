@@ -1,4 +1,5 @@
 ---
+published: false
 layout: default
 title: "Mon Git Survival Guide"
 parent: "Programmation"
