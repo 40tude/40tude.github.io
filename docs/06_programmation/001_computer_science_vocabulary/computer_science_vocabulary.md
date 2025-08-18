@@ -35,11 +35,14 @@ Usually Googling helps a lot to get an "answer" at the speed of light. On the ot
 {: .no_toc }
 
 * This is mostly for me
-* This is done mostly in a [Rust]({link docs/06_programmation/rust/index.md}) and [C++]({%link docs/06_programmation/cpp/index.md%}) contexts
+* This is done mostly in a [Rust]({%link docs/06_programmation/rust/index.md%}) and [C++]({%link docs/06_programmation/cpp/index.md%}) contexts
 * There is no goal of completeness (how could it be?)
 * Entries are in alphabetical order
 * Whenever possible I add the sources, links and references
 * Some entries are and remains empty. This act as a reminder. Feel free to help, sharing a source of information in the [comments](https://github.com/40tude/40tude.github.io/discussions)
+
+
+
 
 ## Table of Contents
 {: .no_toc .text-delta}
