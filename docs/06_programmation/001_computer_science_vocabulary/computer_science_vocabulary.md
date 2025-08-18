@@ -871,8 +871,6 @@ See : <http://stackoverflow.com/questions/17930267/what-is-the-difference-betwee
 
 
 
-
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Tasks
@@ -882,13 +880,14 @@ Cooperative multitasking. Think about Windows 3.1 when true parallelism via mult
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QIHy8pXbneI?si=5fCEHDZu2Va85AyY&amp;start=1098" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-A task is a computation that can potentially be executed **concurrently** with other computations. The keyword here is concurrently. One task is executed until it must wait (IO or timer). Then a second task start again from where it was until it is paused. Then a third task etc. Until the first task is restarted from where it paused. The first task then run until it must wait again.  
+A task is a computation that can potentially be executed **concurrently** with other computations. The keyword here is concurrently. One task is executed until it must wait (I/O or timer). Then a second task resumes from where it stopped, and so on, until the first task can continue again. The first task then runs until it must wait again.  
 
-The tasks are not executed one after the other (sequentially) but one piece of each after another. A runtime manages the different tasks of the application (tasks are no seen by the OS) The runtime switches from one task to another when the running task must "wait" (I/O on a file or on the network or waiting via a timer). 
+The tasks are not executed one after another (sequentially) but interleaved in small portions of work. A runtime manages the scheduling of these tasks (tasks are invisible to the OS). The runtime switches from one task to another whenever the current task has to "wait" (file I/O, network I/O, or a timer).  
 
-Tasks are lite (sometime named green thread) and switching from one to the other is very fast. 
+Tasks are lightweight (sometimes called green threads) and switching between them is very fast.  
 
-It makes sense to use tasks when we know the tasks are doing I/O. If the tasks do number crunching it is better to use threads and run calculations in true parallelism. Indeed if a task never waits, the runtime will not be able to switch to another task. Only one task will progress until it reach the end of its processing. The application will look "sequential" not concurrent. 
+It makes sense to use tasks when we know they will spend time waiting on I/O. If tasks are instead doing heavy number crunching, it is better to use threads to achieve true parallelism. Indeed, if a task never waits, the runtime will never switch, and only one task will run until completion. The application will look "sequential" instead of concurrent.  
+
 
 
 
@@ -897,12 +896,15 @@ It makes sense to use tasks when we know the tasks are doing I/O. If the tasks d
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Threads
-Execution environment consisting of a stack and processor state running in parallel to other threads.
+Execution environment consisting of a stack and processor state running in parallel with other threads.
 
-A thread is the system-level representation of a task in a program.
+A thread is the system-level representation of a unit of execution in a program. Unlike tasks, threads are managed directly by the operating system. They run truly **in parallel** when multiple CPU cores are available.  
 
-Threads of an application share a single address space. In this, threads differ from processes, which generally do not directly share data. Since threads share an address space, they can communicate through shared objects. Such communication is typically controlled by locks or other mechanisms to prevent data races (uncontrolled concurrent access to a variable).
+Threads of an application share a single address space. This is different from processes, which normally do not share memory directly. Because of this, threads can communicate quickly through shared objects. However, such communication needs to be carefully controlled with synchronization primitives (locks, semaphores, atomics, etc.) to avoid data races or inconsistent states.  
 
+Creating and switching between threads is more expensive than with tasks, but threads allow heavy computations to scale across multiple cores. This makes them well suited for CPU-bound workloads such as image processing, data analysis, or simulations.  
+
+In practice, many applications combine both threads and taks. Threads provide parallel execution on multiple cores, while tasks inside a thread allow efficient handling of thousands of concurrent I/O operations. This hybrid model leverages the strengths of each approach.  
 
 
 
