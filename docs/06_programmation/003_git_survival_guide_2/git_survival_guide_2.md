@@ -10,23 +10,10 @@ last_modified_date: 2025-08-18 14:00:00
 ---
 
 
-<!-- 
-
-Je commit sur GitHub le projet généré 
-Je modifie le source println!("Hello, world Vn"); 
-Je sauve et je commit à chaque fois 
-Tout va bien git log --oneline -n 5 Affiche bien les commit et les messages 
-Maintenant je veux juste revenir au projet dans l'état il etait en version V2 (129eca1) Je dois faire quoi ?
-
-git status
-git log --oneline -n 5
-git restore --source=129eca1 --staged --worktree .
-git commit -m "revert: back to version V2 (129eca1)"
-git push
-
--->
 
 # Mon Git Survival Guide
+{: .no_toc }
+
 
 {% comment %}
 <!-- {: .note }
@@ -39,7 +26,25 @@ C'est la seconde version de ce [billet]({%link docs/06_programmation/000_git_sur
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
 ## Introduction
+{: .no_toc }
+
 Je met noir sur blanc, une fois pour toute, deux ou trois trucs qui me mettent toujours plus ou moins en panique. Je sens que ça va se transformer en ``cheat sheet`` cette histoire...  
+
+
+<div align="center">
+<img src="./assets/img00.webp" alt="drawing" width="450"/>
+</div>
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
+
+
 
 
 
@@ -88,7 +93,7 @@ git config --global init.defaultBranch main
 ```
 En fait par défaut git crée une branche "master" dont le nom n'est plus trop dans l'air du temps (wokisme quand tu nous tiens...) ce qui peut poser des soucis lorsqu'on crée un repo depuis VSCode qui lui, va créer une branche "main". 
 
-Je suis d'accord mon lapin, tout ça c'est des conneries, "master en servant" c'était pourtant bine cool, mais bon, autant se simplifier la vie dès le départ.
+Je suis d'accord mon lapin, tout ça c'est des conneries, "master en servant" c'était pourtant bien cool, mais bon, autant se simplifier la vie dès le départ.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IsvfofcIE1Q?si=6kcJNwORKE-OPd3y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -99,6 +104,28 @@ Prendre ensuite le temps de lire cette [page](http://rogerdudler.github.io/git-g
 
 
 
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+
+## Revenir en arrière 
+
+* J'ai un projet qui est synchronisé sur GitHub  
+* Je fais pas de branche (bien sûr...)
+* Je fait des bidouilles et je commit plusieurs fois
+* Je veux juste revenir au projet dans l'état il était en version V2 (129eca1) 
+
+Je dois faire quoi ?
+
+```powershell
+git status
+git log --oneline -n 5
+git restore --source=129eca1 --staged --worktree .
+git commit -m "revert: back to version V2 (129eca1)"
+git push
+```
 
 
 
@@ -162,22 +189,26 @@ git fetch origin
 
 
 ### Mode VSCode
-En bas à gauche je clique sur ``main``  
-Je choisis `Create New Branch` (``b1`` par exemple)  
-Je modifie, j'ajoute des fichiers, je teste...  
-Je commit plusieurs fois    
-Quand j'ai terminé sur ``b1``   
+* En bas à gauche je clique sur ``main``  
+* Je choisis `Create New Branch` (``b1`` par exemple)  
+* Je modifie, j'ajoute des fichiers, je teste...  
+* Je commit plusieurs fois    
+* Quand j'ai terminé sur ``b1``   
 
 
 
 #### Si je ne suis pas content
-Je reviens sur ``main`` en cliquant en bas à gauche  
-Je supprime ensuite la branche ``b1``  
+{: .no_toc }
+
+* Je reviens sur ``main`` en cliquant en bas à gauche  
+* Je supprime ensuite la branche ``b1``  
 
 
 #### Si je veux intégrer mes modifications  
-Je reviens sur ``main`` en cliquant en bas à gauche  
-Je choisis Branch/Merge/b1  
+{: .no_toc }
+
+* Je reviens sur ``main`` en cliquant en bas à gauche  
+* Je choisis Branch/Merge/b1  
 
 <div align="center">
 <img src="./assets/img04.png" alt="drawing" width="400"/>
@@ -189,6 +220,7 @@ Je peux alors supprimer la branche ``b1``
 
 
 #### Si au moment du merge il y a un conflit
+{: .no_toc }
 
 <div align="center">
 <img src="./assets/img05.png" alt="drawing" width="400"/>
@@ -253,7 +285,7 @@ On se met dans le cas où
 * Je commit  
 * Je synchronise  
 
-### PANIQUE! 😡
+**PANIQUE!** 😡
 
 <div align="center">
 <img src="./assets/img01.png" alt="drawing" width="600"/>
@@ -319,6 +351,7 @@ large_file.csv
 * En effet les historiques (local et distant) ne sont PLUS synchros (=> ``--force``)
 
 #### **Différence entre Synchronize et git push --force**
+{: .no_toc }
 
 | **Action**                                   | **Synchronize**                    | **git push --force**                        |
 |----------------------------------------------|------------------------------------|---------------------------------------------|
@@ -326,7 +359,7 @@ large_file.csv
 | **Gestion des désalignements**               | Échoue si l’historique diverge     | Écrase l’historique distant.                |
 | **Cas d’utilisation**                        | Cas normaux (pas de désalignement) | Réécriture d’historique ou conflits majeurs |
 
-### PLUS de PANIQUE...😁
+**PLUS de PANIQUE...** 😁
 
 ### Résumé
 
@@ -362,7 +395,7 @@ git push origin main --force
 
 Je réalise que j'ai un gros fichier... Comment revenir en arrière ?
 
-### PANIQUE! 😡
+**PANIQUE!** 😡
 
 ```powershell
 git reset --soft HEAD~1
@@ -374,7 +407,9 @@ git push origin main --force
 ```
 
 
-#### Note de ChatGPT :
+#### Note de ChatGPT
+{: .no_toc }
+
 Les modifications non committées dans ton espace de travail ne seront pas perdues avec un ``git reset --soft``.   
 Ce mode préserve toutes tes modifications dans la staging area (index) et l’espace de travail.   
 Si tu veux plus de sécurité, tu peux faire une copie temporaire de ton travail (``git stash``) avant d’exécuter cette commande.
@@ -392,7 +427,7 @@ git stash pop                   # Optionnel, pour restaurer tes modifications
 ```
 On retrouve bien le projet synchro sur GitHub
 
-### PLUS de PANIQUE...😁
+**PLUS de PANIQUE...** 😁
 
 ### Résumé
 
@@ -421,7 +456,7 @@ git stash pop
 
 Comment revenir en arrière ?
 
-### PANIQUE! 😡
+**PANIQUE!** 😡
 
 ```powershell
 git reset --soft HEAD~1         
@@ -433,11 +468,13 @@ git commit -m "Remove secrets.ps1 to avoid a nuclear war :-)"
 git push origin main --force    
 ```
 
-#### Pour aller plus loin il faut : 
+### Pour aller plus loin...
 1. Nettoyer tout l’historique public : ``filter-repo``
 1. Supprimer le cache GitHub pour garantir qu’aucune trace ne reste sur leurs serveurs 
 
 #### 1. filter-repo :
+{: .no_toc }
+
 ```powershell 
 # Voir si on veut créer un env virtuel ou pas ????
 # conda install filter-repo -c conda-forge 
@@ -472,13 +509,16 @@ Quand tout est OK localement faut mettre à jour le repo distant
 git push origin main --force
 ```
 
+#### 2. Supprimer le cache GitHub :
+* ???
+
 <!-- ### 2. Vider les caches du repo sur GitHub : -->
 <!-- * GitHub/Settings/Actions/Cache/supprime les caches liés au projet -->
 <!-- 
 https://github.com/40tude/01_github_issues_fixed/actions/caches
 -->
 
-### PLUS de PANIQUE...😁
+**PLUS de PANIQUE...** 😁
 
 
 
@@ -497,7 +537,7 @@ https://github.com/40tude/01_github_issues_fixed/actions/caches
 
 Mais comment faire ? Comment revenir en arrière ?
 
-### PANIQUE! 😡
+**PANIQUE!** 😡
 
 
 Je propose :
@@ -514,12 +554,14 @@ git push origin main --force
 
 Bien voir le ``-r`` de la commande ``git rm``
 
-#### Note parce que j'oublie tout le temps :
+### Note parce que j'oublie tout le temps :
+{: .no_toc }
+
 * `logs/` - Ignore **TOUS** les dossiers nommés `logs` dans l'ensemble du projet, quelle que soit leur position dans l'arborescence.
 * `/logs/` - Ignore uniquement le dossier `logs` situé à la racine du projet. Elle n'affectera pas les dossiers `logs` situés dans des sous-répertoires.
 
 
-### PLUS de PANIQUE...😁
+**PLUS de PANIQUE...** 😁
 
 
 
@@ -531,7 +573,7 @@ Bien voir le ``-r`` de la commande ``git rm``
 
 Typiquement avec le site 40tude.fr (Jekyll, et thème Just The Docs) je fais des modifs dans le GemFile... et puis à un moment ça déploie plus sur GitHub
 
-### PANIQUE! 😡
+**PANIQUE!** 😡
 
 ```powershell
 git log --oneline -n 5
@@ -544,7 +586,7 @@ git push --force
 
 C'est donc assez radical et cela ne marche que parce que je suis tout seul sur le projet. C'est pas du tout une bonne idée de faire ça si on est en équipe car pendant que tu ratatouille de ton côté, Robert lui a fait plusieurs commits vachement intéressants et si avec `--hard` tu supprimes les commits suivants... Ca va chù%@ pour ton matricule.
 
-### PLUS de PANIQUE...😁
+**PLUS de PANIQUE...** 😁
 
 
 
@@ -620,6 +662,7 @@ Après le rebase, il faut forcer le push de la branche ``b1`` vers le fork (car 
 
 
 #### Note pour savoir si il faut faire un rebase de ``b1``
+{: .no_toc }
 
 **Etape 1 :**  
 
@@ -707,6 +750,8 @@ C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politiq
 ### 1. Membre de l'équipe
 
 #### Avant de commencer une nouvelle tâche 
+{: .no_toc }
+
 - Synchroniser avec `main` pour partir d'une base de code propre :
      ```bash
      git switch main
@@ -716,12 +761,16 @@ C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politiq
      ```
 
 #### Pendant le développement
+{: .no_toc }
+
 - Travailler dans une branche dédiée (ex. : `feature/ticket-123`) 
 - Synchroniser cette branche avec `main` régulièrement
     * surtout si le développement dure plusieurs jours.
 
 
 #### Avant de soumettre une PR
+{: .no_toc }
+
    - Synchroniser avec `main` une dernière fois pour résoudre les éventuels conflits en amont.
 
 
@@ -730,14 +779,20 @@ C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politiq
 ### 2. L'équipe
 
 #### Planifier les merges dans `main`
+{: .no_toc }
+
 - Les merges ont lieu 2 fois par jour (midi et fin de journée).
 - Cela permet à tout le monde le temps de se synchroniser 
 
 #### Communiquer activement
+{: .no_toc }
+
 - Informer à propos des merges importants 
 - Pour que tout le monde puisse vérifier si se branche est impactée ou pas
 
 #### Respecter le processus de PRs
+{: .no_toc }
+
 - On ne peut merger qu'une PR qui a été revue et testée
 
 
