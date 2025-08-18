@@ -28,9 +28,10 @@ git push
 
 # Mon Git Survival Guide
 
+{% comment %}
 <!-- {: .note }
 C'est la seconde version de ce [billet]({%link docs/06_programmation/000_git_survival_guide/git_survival_guide.md%}). À terme les deux seront fusionnés mais pour l'instant je suis toujours en train de transférer les articles de WordPress vers Markdown et je n'ai pas le temps. Ceci dit j'ajoute ça à la TODO list. -->
-
+{% endcomment %}
 
 
 
