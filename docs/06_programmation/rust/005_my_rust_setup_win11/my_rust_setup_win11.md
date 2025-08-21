@@ -96,8 +96,8 @@ Do you see the `i32` and `u8` in gray ?
 
 ## Setup line width
 * When saving file the formatter may reformat long lines
-* I create a ``Rustfmt.toml`` file at the root of the project
-* So far my ``Rustfmt.toml`` has only only one line
+* I create a ``rustfmt.toml`` file at the root of the project
+* So far my ``rustfmt.toml`` has only only one line
 
 ```toml
 max_width = 200
