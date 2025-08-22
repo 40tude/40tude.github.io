@@ -20,7 +20,7 @@ last_modified_date : 2025-08-02 16:00:00
 
 
 <div align="center">
-<img src="./assets/img_00.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 

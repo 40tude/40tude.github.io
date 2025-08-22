@@ -11,15 +11,16 @@ last_modified_date : 2025-08-22 17:45:00
 
 # From Folders to Crates: A Practical Guide to Modern Rust Module Trees (No mod.rs, No Tears
 
-<!-- ## TL;DR
-{: .no_toc }
-* A step by step recipe where I explain how to **automate** the **testing** and the **deployment** on Heroku of our first Rust API (BMI calculator)
-* This is a continuation of [this post]({%link docs/06_programmation/rust/011_api_heroku/api_heroku.md%}). Make sure to read it first.
-* The current project is on [GitHub](https://github.com/40tude/bmi_api_2) -->
+## TL;DR
+* For beginners
+* Starting from an existing directory hierarchy
+* Follow a simple process to make sure the compiler and the linker can build
+* How to write the `use ...` statements that satisfies the compiler and makes your code easier to read is also explained
+* As proposed since 2018+, in the end, there are no more `mod.rs` files everywhere.
 
 
 <div align="center">
-<img src="./assets/img_00.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 

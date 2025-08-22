@@ -21,7 +21,7 @@ last_modified_date : 2025-08-01 16:00:00
 * The project is on [GitHub](https://github.com/40tude/bmi_api)
  
 <div align="center">
-<img src="./assets/img_00.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
