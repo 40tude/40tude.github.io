@@ -14,18 +14,18 @@ last_modified_date : 2025-08-22 17:45:00
 ## TL;DR
 * For beginners
 * Starting with a hierarchy of directories and files already in place
-* A process to make sure the compiler and the linker can build the lib/app
+* A process to make sure the compiler and the linker can build the lib and the app
 * Explain the `use ...` statements that satisfy the compiler and make your code easier to read 
 * As proposed since 2018+, `mod.rs` files are not used
 * Process
-    * If you have a sub-directory named `my_dir/`
-    * Beside the sub-directory `my_dir/`, create a file named `my_dir.rs`
-    * Inside `my_dir.rs` list the module to be added to the module tree (`pub mod zoubida;`)
-        * `zoubida` is the name of a module contained in `my_dir/zoubida.rs`
-        * `my_dir/zoubida.rs` is either : 
-            * module with some code 
-            * a *hub* file with a list of modules to be added
-    * You start the process with `lib.rs`
+    * You have a sub-directory named `my_dir/`
+    * Next to `my_dir/`, create a file `my_dir.rs`
+    * Inside `my_dir.rs` declare the modules to add to the module tree (`pub mod zoubida;`)
+        * `zoubida` refers to the module defined in `my_dir/zoubida.rs`
+        * `my_dir/zoubida.rs` can be either : 
+            * a regular module file containing code, or 
+            * a *hub* file that declares further submodules
+    * The process starts at the crate root (`lib.rs`)
 
 
 <div align="center">
@@ -47,167 +47,9 @@ last_modified_date : 2025-08-22 17:45:00
 * So, below, don't start complaining. The project hierarchy is complicated for good reasons.
 * The project is on [GitHub](https://github.com/40tude/traits_for_plugins_01)
 
-<!-- ### The context
-Imagine...
-* Imagine an application that use sensors to make measurements. This is why there is a `sensors/` directory.
-* All sensors are input sensors (they are not actuators) and this is why there is an `input/` directory.
-* Some of the sensors are temperature sensors. Later the application may use pressure, weight... sensors. Do you see the `temp/` directory?
-* So far we have 2 kinds of temperature sensor 
-    * `TempSensor01` in a file named `my_sensor1.rs` in a directory `temp_sensor1/`
-    * `TempSensor02` in a file named `your_sensor2.rs` in a directory `temp_sensor2/`
-* Even if the code is not the point here, in order to insulate the usage from the implementation, I created a trait `TempSensor` which is implemented by both sensors. Doing so, from the application stand point, taking a temperature measurements with one sensor or the other is almost transparent. It looks like : `let my_temp = my_sensor.get_temp();` where `my_sensor` identify one sensor or the other. 
-* While visiting the hierarchy of the project, please note that, at the very end, the name of the sensor file (exampli gratia `my_sensor1.rs`) is **not** in a directory having the same name (e.g. `temp_sensor1`). I do so because I want to make sure I differentiate the file hierarchy from the module tree. 
-* The project also have a `lib.rs` and a `main.rs` so that we have a library crate and a binary crate
-* All of the above explains the over complicated hierarchy of directories I mentioned before (see below)
-
-```
-.
-│   .gitignore
-│   Cargo.lock
-│   Cargo.toml
-│   README.md
-│
-├───examples
-│       ex_01.rs
-│
-└───src
-    │   lib.rs
-    │   main.rs
-    │
-    └───sensors
-        └───input
-            └───temp
-                │   temp_sensor.rs
-                │
-                ├───temp_sensor1
-                │       my_sensor1.rs
-                │
-                └───temp_sensor2
-                        your_sensor2.rs
-
-```
-
-### The objective
-* Use the *modern* way (no `mod.rs` files) for building a modules tree so that... 
-* ... we can take temperature measurements in `src/main.rs` and in `examples/ex_01.rs`
-
-### What I keep in mind
-* There are a `src/lib.rs` and a `src/main.rs` files in the project directory. This means that the project becomes a library crate with a main binary.
-* First the compiler will build the library then it will build the binary (using the content of the library).
-* Keep in mind that the build system (compiler, linker and their friends) don't care about files. It only cares about the modules tree.
-
-#### 1. Building the lib
-* First I organize the directories the way I want 
-* Then I name the files the way I want
-* In other words, I don't want the build process to be restrictive — I want the flexibility to configure it according to my project's structure.
-* This also means that the `sensors/`, `sensors/input/`, `sensors/input/temp/`... directories are in place **before** the steps below.
-
-Now, in order to build the lib the build system needs to create the module tree so that the compiler and the linker can find, load, compile and link the different modules together. One way of doing (at least one way that I understand, which works and which seems to be scalable) is to use *hub* files. Indeed, [David Wheeler](https://www.40tude.fr/docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.html#indirection) once said : “All problems in computer science can be solved by another level of indirection.” But don't worry, this is not rocket science, let's see how it works. 
-
-* To build the library crate the build system needs to load modules which are, somewhere in the `src/` directory but it does'nt know yet where. 
-* So far, the file `lib.rs` (the crate root) contains one line : `pub mod sensors;`. I say "so far" because this may change in the future if some actuators are added to the project (you get the point).
-* The line declares that part of the code is in a module named `sensors`. 
-* With the line `pub mod sensors;`, the build system will look into the file `src/sensors.rs`
-* So far, the file `sensors.rs` contains only one line : `pub mod input;`
-* Then, beside the `lib.rs` file I create a *hub* file named `sensors.rs` because there is a `sensors/` sub-directory. 
-* Then we follow the white rabbit...
-
-<div align="center">
-<img src="./assets/img_02.webp" alt="" width="225" loading="lazy"/>
-</div>
-
-* In the `sensors/` directory, I create a *hub* file named `input.rs` because there is an `input/` sub-directory
-* So far, `input.rs` contains one line : `pub mod temp;`
-* In the `input/` directory, I create a *hub* file named `temps.rs` next to the `temp/` directory. 
-* So far, `temp.rs` have 3 lines
-```rust
-pub mod temp_sensor;  // The trait lives here
-pub mod temp_sensor1; // Concrete sensor #1 (folder-backed)
-pub mod temp_sensor2; // Concrete sensor #2 (folder-backed)
-```
-In the `temp/` directory, the file `temp_sensor.rs` is already there but I create 2 *hub* files named `temp_sensor1.rs`  and `temp_sensor2.rs` because there are 2 sub-directories : `temp_sensor1/` and `temp_sensor2/`. 
 
 
-
-
-
-
-
-Just to make sure... The 3 lines above list the module where the trait is defined (in the file `temp_sensor.rs`) and the 2 modules indicating where the trait is implemented. When the compiler will read the content of `temp_sensor1.rs`, look in the `temp_sensor1/` directory it will find the file with the definition of `TempSensor01` and the implementation of the trait `TempSensor` for `TempSensor01` (same thing for `TempSensor02`). 
-
-At the very end of the path, the `temp_sensor1/` directory contains `my_sensor1.rs` while `temp_sensor2/` contains `your_sensor2.rs`.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-If you open `my_sensor1.rs` file, it should be noticed that since we are building the library crate, we can bring the `TempSensor` trait into scope using this line :
-
-```rust
-use crate::sensors::input::temp::temp_sensor::TempSensor;
-```  
-We don't write  `use crate_name::...` (where `crate_name` would be the name of the crate, the one defined in `Cargo.toml`). Instead when can write `use crate::...` where `crate` refers to the crate under construction (the lib).  
-
-At the end of this process, the module tree is built, the compiler and the linker are happy, they can do their business and the library is saved on the disk. Now that the lib is ready it is time to build the executable using the content of `main.rs`.
-
-
-
-At the end, the project directory looks like that : 
-
-
-```
-.
-│   .gitignore
-│   Cargo.lock
-│   Cargo.toml
-│   README.md
-│
-├───examples
-│       ex_01.rs
-│
-├───src
-│   │   lib.rs
-│   │   main.rs
-│   │   sensors.rs
-│   │
-│   └───sensors
-│       │   input.rs
-│       │
-│       └───input
-│           │   temp.rs
-│           │
-│           └───temp
-│               │   temp_sensor.rs
-│               │   temp_sensor1.rs
-│               │   temp_sensor2.rs
-│               │
-│               ├───temp_sensor1
-│               │       my_sensor1.rs
-│               │
-│               └───temp_sensor2
-│                       your_sensor2.rs
-│
-└───target
-```
-
-
-
- -->
-
-
-
-
-### The context
+## The context
 
 Imagine... 
 
@@ -256,7 +98,7 @@ Here’s the initial structure:
 ```
 
 
-### The objective
+## The objective
 
 We want to:
 
@@ -264,14 +106,14 @@ We want to:
 * Build a proper module tree so we can call temperature sensors from both `src/main.rs` and `examples/ex_01.rs`.
 
 
-### What to keep in mind
+## What to keep in mind
 
 * Because the project has both `lib.rs` and `main.rs`, Cargo treats it as a library crate plus a binary.
 * The compiler first builds the library, then the binary (using the library’s contents).
 * The build system doesn’t really care about files or directories — it only cares about the **module tree**.
 
 
-### 1. Building the library
+## 1. Building the library (src/lib.rs)
 
 My approach is:
 
@@ -286,7 +128,6 @@ The key point: the `sensors/`, `input/`, and `temp/` directories already exist *
 
 ### Using hub files
 
-
 The compiler needs a module tree to know how to find and link everything. One simple and scalable way is to use **hub files** — small files that declare which modules exist at a given level.
 
 **Note:**
@@ -297,7 +138,7 @@ For what I know, the term *hub files* is absolutely not official. I call these f
 Don’t worry — this isn’t rocket science. Let’s go step by step.
 
 
-#### Step 1: Starting from `lib.rs`
+### Step 1: Starting from `lib.rs`
 
 Right now, `lib.rs` contains just one line:
 
@@ -317,7 +158,7 @@ pub mod input;
 
 
 
-#### Step 2: Going deeper
+### Step 2: Going deeper
 
 Inside the `sensors/` directory, we add another hub file, `input.rs`, because there is an `input/` subdirectory.
 
@@ -428,7 +269,7 @@ crate (lib.rs)
 
 
 
-**Tips'n Tools**
+### Tips'n Tools
 * `cargo install cargo-modules`
 * `cargo-modules dependencies --lib`
 * Copy the output
@@ -439,11 +280,25 @@ crate (lib.rs)
 <img src="./assets/img_03.webp" alt="" width="900" loading="lazy"/>
 </div>
 
+**What does it show?**
+
+* Each box (node) is a module, trait, struct, or function.
+* Each edge (arrow) describes a relationship:
+    * owns → parent contains the child (module owns a submodule, struct owns a method, etc.).
+    * uses (dashed line) → one element depends on another (e.g. my_sensor1 uses TempSensor).
+
+The output file basically says:
+* crate traits_for_plugins → owns sensors → owns input → owns temp → etc.
+* TempSensor01 implements TempSensor.
+* get_temp() returns an f64.
+
+The graph is a full semantic map of the crate.
 
 
 
 
-#### 2. Building the binary
+
+## 2. Building the binary (`src/main.rs`)
 * It should be clear now that the binary and the lib are 2 different beasts and this is why, in `main.rs`, we **cannot** write `use crate::...`. Instead we write `use crate_name::...` where `crate_name` is defined in `[package] name = “...”` in `Cargo.toml` (in our case `traits_for_plugins`).
 
 Indeed, `main.rs` is a *client* of `lib.rs` and it does not see the internal modules via `crate::...` directly. In `main.rs`, `crate::...`  refers to the binary crate itself, **not** to the library defined in `lib.rs`. 
@@ -467,7 +322,9 @@ path = "src/lib.rs"
 
 
 
-#### 3. Building the example (`examples/ex_01.rs`)
+
+
+## 3. Building the example (`examples/ex_01.rs`)
 * It should be clear now that that the example is also a *client* of the lib
 * All that we already know about `src/main.rs` apply to `examples/ex_01.rs`   
 * This includes the line `use crate_name::...`
@@ -499,68 +356,88 @@ path = "src/lib.rs"
 
 ## Checklist
 
-Welcome on board. Imagine you are in `parent_dir/` and you want to use a subdirectory `child_dir/` as a Rust module. Follow this checklist every time you add a new directory.
+You start with:
 
-### 1. At the parent level
+```
+src/
+├── lib.rs                
+└── parent_dir/
+    └── child_dir/
+        └── grandchild/
+            ├── foo.rs
+            └── bar.rs
+```
 
-* **File to create**: `parent.rs` (next to `parent_dir/`)
-* **Content inside**:
+### Expose `parent_dir/`
+* Add to `src/lib.rs` the line `pub mod parent_dir;`
+* Create a hub file `src/parent_dir.rs`.
+* Content of `parent_dir.rs` = `pub mod child_dir;`
 
-  ```rust
-  pub mod child;  // because there is a child_dir/
-  ```
+### Expose `child_dir/`
+* Create a hub file `src/parent_dir/child_dir.rs`.
+* Content of `child_dir.rs` = `pub mod grandchild;`
 
-  **Rule:** the file name must match the directory name (`child.rs` for `child_dir/`).
-
-
-### 2. Inside the child directory
-
-* You are now inside `child_dir/`.
-
-* **File to create**: `child.rs` (next to the subdirectory itself).
-
-* **Content inside**:
-
-  * If you want to expose submodules, repeat the pattern:
-
+### Expose leaf level `grandchild/`
+* Create a hub file `src/parent_dir/child_dir/grandchild.rs`.
+* Content of `grandchild.rs` = 
     ```rust
-    pub mod grandchild;  // because there is a grandchild_dir/
-    pub mod something;   // because there is a something.rs file
+    pub mod foo;  
+    pub mod bar;   
     ```
 
-* **Rule of thumb**:
+Final structure:
 
-  * Each *subdirectory* gets a **hub file** at the same level (`child.rs`).
-  * Each *standalone file* just works: `something.rs` becomes the `something` module automatically (no hub needed).
+```
+src/
+├── lib.rs                (crate root, declares `pub mod parent_dir;`)
+├── parent_dir.rs         (hub for directory parent_dir/)
+└── parent_dir/
+    ├── child_dir.rs      (hub for directory child_dir/)
+    └── child_dir/
+        ├── grandchild.rs (hub for directory grandchild/)
+        └── grandchild/
+            ├── foo.rs    (leaf module)
+            └── bar.rs    (leaf module)
 
+```
 
-### 3. At the leaf level (no more subdirectories)
-
-* Just put your `.rs` files directly in the folder.
-* Example: in `grandchild_dir/`, a file `foo.rs` creates the module `grandchild::foo`.
-* No hub file is needed unless you want to organize deeper.
-
-
-### 4. Bringing things into scope
-
-* From anywhere in the crate:
-
-  ```rust
-  use crate::parent::child::grandchild::foo;
-  ```
-
-* If you’re inside `grandchild/` already, you can shorten paths with `super::` or `self::` if needed.
+### Using modules
+From anywhere you can now do: `use crate::parent_dir::child_dir::grandchild::foo;`
 
 
-### 5. General rules
+### General Rules
+* One directory → one hub file in its parent
+* Hub file name = directory name + `.rs`
+* Hub file content = `pub mod ...;` for every child module (files + subdirectories)
+* Leaf files don’t need hubs (just `foo.rs`)
+* Don’t mirror blindly — only expose what you want public
 
-* **One subdirectory → one hub file**
-* **Hub file name = subdirectory name + `.rs`**
-* **Hub file content = `pub mod ...;` for each file or subdir you want to expose**
-* Don’t mirror the file system blindly — choose what you want public.
 
 
-**Exercice**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Exercice
 
 You are given the hierarchy below:
 
