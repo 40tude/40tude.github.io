@@ -43,7 +43,7 @@ last_modified_date : 2025-08-22 17:45:00
 <img src="./assets/img_01.webp" alt="" width="225" loading="lazy"/>
 </div>
 
-* More seriously, this side project is the first step of larger project. Here, once and for all, I want to understand how to build my module tree the right way (at least one way that work and that I can understand) 
+* More seriously, this side project is the first step of a larger one. Here, once and for all, I want to figure out how to properly build my module tree (at least in a way that works and that I can clearly understand).
 * So, below, don't start complaining. The project hierarchy is complicated for good reasons.
 * The project is on [GitHub](https://github.com/40tude/traits_for_plugins_01)
 
@@ -354,11 +354,11 @@ path = "src/lib.rs"
 
 
 ## What's next?
-* `git clone` the project if you wish
+* `git clone` the [project](https://github.com/40tude/traits_for_plugins_01)
 * Forget about the code it should work
-* Rename everything (files, directories), add directories etc.
+* Rename everything (files, directories), add sub-directories etc.
 * Break everything
-* Make it work and make it great again
+* Then make it work and make it great again
 
 
 
