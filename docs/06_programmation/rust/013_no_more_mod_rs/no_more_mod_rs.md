@@ -183,6 +183,18 @@ In the `temp/` directory:
 * `temp_sensor.rs` defines the `TempSensor` trait.
 * We also create hub files `temp_sensor1.rs` and `temp_sensor2.rs` because there are subdirectories `temp_sensor1/` and `temp_sensor2/`.
 
+Content of `temp_sensor1.rs`
+
+```rust
+pub mod my_sensor1;
+```
+
+Content of `temp_sensor2.rs`
+
+```rust
+pub mod your_sensor2;
+```
+
 When the compiler reads `temp_sensor1.rs`, it looks inside the `temp_sensor1/` directory and finds `my_sensor1.rs`, which defines `TempSensor01` and implements `TempSensor` for it (same logic for `TempSensor02`).
 
 At the leaves of the tree, the directories contain the actual sensor implementations:
@@ -299,15 +311,15 @@ The graph is a full semantic map of the crate.
 
 
 ## 2. Building the binary (`src/main.rs`)
-* It should be clear now that the binary and the lib are 2 different beasts and this is why, in `main.rs`, we **cannot** write `use crate::...`. Instead we write `use crate_name::...` where `crate_name` is defined in `[package] name = “...”` in `Cargo.toml` (in our case `traits_for_plugins`).
+* It should be clear by now that the binary and the lib are 2 different beasts and this is why, in `main.rs`, we **cannot** write `use crate::...`. Instead we write `use crate_name::...` where `crate_name` is defined in `[package] name = "..."` in `Cargo.toml` (in our case `traits_for_plugins`).
 
 Indeed, `main.rs` is a *client* of `lib.rs` and it does not see the internal modules via `crate::...` directly. In `main.rs`, `crate::...`  refers to the binary crate itself, **not** to the library defined in `lib.rs`. 
 
 To make a long story short:
-* Since there a `lib.rs` on the side of `main.rs`
-* Then, in `main.rs` we have to `use` as if it is an external crate
-* We use the crate name (the one defined in `[package] name = “...”` in `Cargo.toml`). 
-* And yes, if there is a `lib.rs` and a `main.rs`, both crates, the library crate and the binary crate have, by default, the same name (this can be modified in `Cargo.toml`, see below)
+* Since there a `main.rs` next to `lib.rs` 
+* In `main.rs` we write the `use` statements considering `main` is an external crate
+* We use the crate name (the one defined in `[package] name = "..."` in `Cargo.toml`). 
+* And yes, by default, if both `lib.rs` and `main.rs` exist, the library and the binary crates share the same name (this can be overriden in `Cargo.toml`)
 
 ```toml
 [[bin]]
@@ -325,7 +337,7 @@ path = "src/lib.rs"
 
 
 ## 3. Building the example (`examples/ex_01.rs`)
-* It should be clear now that that the example is also a *client* of the lib
+* The example is clearly a *client* of the lib
 * All that we already know about `src/main.rs` apply to `examples/ex_01.rs`   
 * This includes the line `use crate_name::...`
 
