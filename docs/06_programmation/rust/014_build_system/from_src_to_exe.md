@@ -123,12 +123,18 @@ In that case the process is "straightforward":
 5. **Output**: We get a binary on the disk (`target/debug/my_app.exe` under WIN11 for example)
 
 
+<div align="center">
+<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/>
+<p>1986...</p>
+</div>
+
+
 ### Note - Build pipeline
 When I say "straightforward" it is a lie. Here is the Rust build pipeline and its main steps and tools involved. 
 
 |Stage	                         | Quick description  |
 |:-------------------------------|:-------------------|
-| Parsing / Lexing	             | The source code is tokenized then organized |
+| Lexing / Parsing 	             | The source code is tokenized then organized |
 | AST Construction	             | Construction of an Abstract Syntax Tree (AST) |
 | Name Resolution	             | Resolving paths ( ``foo::bar``), variables, modules |
 | Type Checking	                 | Each expression, function, variable is strictly typed |
@@ -141,6 +147,118 @@ When I say "straightforward" it is a lie. Here is the Rust build pipeline and it
 | Code Generation (LLVM IR)	     | Rust generates LLVM intermediate code |
 | LLVM Optimizations	         | LLVM optimizes even more |
 | Machine Code	                 | The binary code is produced |
+
+### More infon about the Build pipeline 
+
+**Lexing / Parsing**
+
+*Lexing* (lexical analysis) turns raw source code (characters) into a stream of tokens (keywords, identifiers, operators). *Parsing* then organizes these tokens into a structured form according to Rust’s grammar. This is the first step where the compiler starts to “understand” our code rather than just read text.
+
+**AST Construction**
+
+**AST** stands for *Abstract Syntax Tree*. It’s a tree-like representation of the source code structure (functions, blocks, expressions). The AST is easier for the compiler to analyze than raw text and becomes the foundation for later stages of analysis.
+
+**Name Resolution**
+
+This stage ensures that when we write `foo::bar`, the compiler knows exactly which module, function, or variable we are talking about. It walks the module tree, handles imports (`use`), and checks visibility. If something can’t be resolved, we will get errors like *cannot find function in this scope*.
+
+**Type Checking**
+
+Rust enforces strict typing. At this stage, the compiler verifies that each expression and variable has a consistent type and that function calls match their signatures. This is where type inference also happens: the compiler deduces types when we don’t explicitly write them (similar to what happen with `auto` in C++)
+
+**Trait Resolution**
+
+Traits in Rust are like contracts for behavior. Here the compiler ensures that when we call a method on a type, the required trait implementation exists. This is also where generic type constraints are enforced (`T: Display`). If a trait bound is missing, you’ll see errors about methods not being found.
+
+**Lifetime Analysis**
+
+Rust uses explicit lifetimes (like `'a`) to reason about how long references are valid. This stage checks that references don’t outlive the data they point to. It’s an important step for memory safety, ensuring no “dangling pointers” can exist at runtime.
+
+**Borrow Checking**
+
+The borrow checker enforces Rust’s rules about ownership, borrowing, and mutability. It ensures we never have two mutable references at the same time or a mutable and immutable reference to the same data. This is the core of Rust’s promise: memory safety without a garbage collector.
+
+**Const Evaluation**
+
+**Const evaluation** computes constant expressions at compile time. If we write `const N: usize = 1 + 2;`, the compiler will evaluate `1 + 2` before the program ever runs. It’s also used to validate that constants used in array sizes, generics, or attributes are valid and safe.
+
+**MIR Construction**
+
+**MIR** stands for *Mid-level Intermediate Representation*. It’s a simplified version of our program designed for easier analysis and optimization. The compiler lowers the AST into MIR to perform checks (like borrow checking) and prepare for backend code generation.
+
+**MIR Optimizations**
+
+Once MIR is built, Rust applies optimizations such as removing dead code, simplifying control flow, and improving memory usage. These optimizations happen before handing things over to LLVM. This keeps the final machine code leaner and often faster.
+
+**Code Generation (LLVM IR)**
+
+The compiler translates MIR into **LLVM IR** (*Low-Level Virtual Machine Intermediate Representation*). LLVM IR is a portable, assembly-like language that LLVM understands. It bridges the gap between Rust’s high-level checks and actual machine code generation.
+
+**LLVM Optimizations**
+
+LLVM applies its powerful set of optimizations to LLVM IR: inlining functions, eliminating redundant calculations, and rearranging instructions for efficiency. Many of the performance wins in Rust programs come from this stage.
+
+**Machine Code**
+
+Finally, LLVM lowers the optimized IR into actual **machine code instructions** for the target architecture (x86, ARM, etc.). This produces object files, which the linker later combines into our final executable. At this point, our program is something the CPU can run directly.
+
+
+
+
+### From Machine Code to Object File Format
+
+When we say “Machine Code” in the compiler pipeline, we usually mean **raw instructions for the target CPU architecture** (x86-64, ARM, etc.). But... But the CPU can’t just “run a blob of instructions” — those instructions must be wrapped into a proper **object file format** that the operating system and linker understand.
+
+* **On Windows (MSVC toolchain)** → object files use the **COFF** format (*Common Object File Format*).
+* **On Linux** → object files use **ELF** (*Executable and Linkable Format*).
+* **On macOS** → object files use **Mach-O**.
+
+#### Who does it, and when?
+
+* **LLVM backend (part of `rustc`)**
+
+  * After all MIR → LLVM IR → LLVM optimizations, LLVM’s *codegen backend* runs.
+  * It emits not only the machine instructions, but also the full **object file** (with symbol tables, relocation info, section headers) in the format appropriate for the target OS/ABI.
+  * That’s why after a successful `cargo build`, we often find intermediate `.o` or `.obj` files in `target/` (depending on your platform).
+
+* **The linker (system linker or `lld`)**
+
+  * Takes these `.o`/`.obj` files and combines them into the final executable (EXE, ELF binary, Mach-O binary).
+  * The linker doesn’t generate object files — it consumes them.
+
+
+#### Timeline 
+
+From the previous table:
+
+1. MIR → LLVM IR → LLVM Optimizations
+2. **Machine Code** → This is *already* instructions plus the wrapping into an object file format (COFF/ELF/Mach-O). LLVM does both.
+3. Then → The linker combines those object files with libraries into the final binary.
+
+
+### The right way to describe what happens is:
+
+* The **compiler (via LLVM)** produces **object files** (`.o`/`.obj`) that contain machine code in the right **container format** (COFF, ELF, Mach-O).
+* The **linker** takes those object files and builds the final **executable** or **library**.
+
+
+
+
+
+
+
+
+
+<div align="center">
+<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
+<p>2024...</p>
+</div>
+
+
+
+
+
+
 
 
 
