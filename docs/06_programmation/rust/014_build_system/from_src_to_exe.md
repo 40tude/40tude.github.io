@@ -112,9 +112,9 @@ PS : In Rust if you divide an int by 0, you get an error from rustc (``attempt t
 
 ## Simple case - `src/main.rs` only
 
-Project with only one `main.rs` file. No other files. There aren't even any modules defined in `main.rs` or any external crates such as `uuid`. 
+Suppose we have a Rust project with only one `main.rs` file. No other files. There aren't even any modules defined in `main.rs` or any external crates such as `uuid`. 
 
-In that simple case the process is "straightforward":
+In that case the process is "straightforward":
 
 1. **Parsing & expansion**: The compiler reads `main.rs` which is the root of the crate (binary crate here). Then the compiler expands macros, and inserts the prelude (basic std items automatically in scope).
 2. **HIR/MIR/LLVM IR**: It goes through its internal stages (HIR → MIR → LLVM IR).
@@ -186,9 +186,9 @@ The compiler does the following:
    * Just like before, the linker sees *one* object file for our crate + the precompiled standard library crates.
    * Nothing extra is added because we haven’t introduced an external crate yet.
 
-From the build system point of view, the only thing that matters is the module tree. Can I build a tree with all the modules, all the functions, traits, structures... If yes then I know who is who, who call who and I can try to compile/link the code. 
+From the build system point of view, the only thing that matters is the **module tree**. Can I build a tree with all the modules, all the functions, traits, structures...? If yes, then I know who is who, who call who and I can try to compile/link the code. 
 
-It is important to understand that on one hand, as a developer I can use many different files, libraries... Organize these files in a hierarchy of directory BUT... At the end of the day, the only thing that matter for the build system is the module tree. So as a developer I must understand what is a module tree and I must provide the information required by the build system so that it can create the module tree in memory. If needed read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which talks specifically of the module tree.
+It is important to understand that on one hand, as a developer, I can use many different files, libraries... Organize these files in a hierarchy of directories and sub-directories BUT... At the end of the day, the only thing that matters for the build system is the module tree. So as a developer I must understand what a module tree is and I must provide the information required by the build system so that it can create the module tree in memory. If needed read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which talks specifically of the module tree.
 
 Anyway, even with 2 source code files, the life is easy, we are still in the “all-in-one” world: one crate, one object file, one binary.
 
@@ -224,7 +224,7 @@ What happens when I add an external crate like `uuid` in `Cargo.toml`?
 cargo add uuid --features "v4"    
 ```
 
-If you don't know yet, [uuid](https://crates.io/crates/uuid) is an easy to use crates which generates 128 bit unique Id (67e55044-10b1-426f-9247-bb680e5fe0c8).
+If you don't know yet, [uuid](https://crates.io/crates/uuid) is an easy to use crates which generates 128 bits unique Id (`67e55044-10b1-426f-9247-bb680e5fe0c8` is an example).
 
 1. **Dependency resolution**
 
@@ -238,13 +238,31 @@ If you don't know yet, [uuid](https://crates.io/crates/uuid) is an easy to use c
 
 3. **Codegen for our crate**
 
-   * Our crate is still compiled into a single object file.
-   * The compiler just generates calls to symbols defined in the `uuid` crate.
+* Our crate is still compiled into a single object file.
+* When our code calls into `uuid`, the compiler generates a **symbol reference**, not a direct memory address.
+  You can think of it like this: in the object file there is an instruction such as `call new_v4`, but at this point it’s only a placeholder.
+* Why? Because during compilation the compiler does not know where the function `Uuid::new_v4` will actually live in memory. It only knows that such a function exists, and it leaves a symbolic marker for it.
+* The job of resolving that marker is deferred to the linker.
+
 
 4. **Linking**
 
-   * The linker takes our object file **plus** the precompiled object files (`.rlib`s) for `uuid` (and transitively `rand`, `getrandom`, etc., if needed).
-   * These get combined into the final executable.
+* The linker takes our object file **plus** the precompiled object files (`.rlib`s) for `uuid` (and transitively `rand`, `getrandom`, etc., if needed).
+* These get combined into the final executable.
+
+You can think of this phase as follows:
+
+* The linker looks at the unresolved symbol `new_v4` in our object file.
+* It searches through `uuid.rlib` until it finds the corresponding compiled function.
+* If that function itself depends on other code (e.g., random number generation), the linker pulls in those object files as well.
+* Then it “glues everything together” into the final program.
+
+At this stage the linker knows exactly how the operating system will load the program in memory. That means it can compute the final address of `Uuid::new_v4()` in the executable and replace the placeholder `call new_v4` with the correct instruction: **“call the code at memory address X.”**
+
+We should keep in mind:
+* **Compiler:** translates code and leaves symbolic calls.
+* **Linker:** resolves symbols, pulls in needed code, and patches the calls with real addresses.
+
 
 Conceptually, nothing “magical” changes — the module tree expands to include external crates, but after that the same process applies: all symbols are resolved, everything is lowered to object files, and the linker glues them together.
 
