@@ -6,20 +6,20 @@ title: "From Source File to Executable: A Gentle Walk Through the Rust Build Sys
 parent: "Rust"
 #math: mathjax
 date               : 2025-08-25 14:45:00
-last_modified_date : 2025-08-25 14:45:00
+last_modified_date : 2025-08-26 09:00:00
 ---
 
 # From Source File to Executable: A Gentle Walk Through the Rust Build System
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b>This post is still under construction.</b></span>    
-</h2>
+</h2> -->
 
 
 ## TL;DR
 * For beginners
-* Explain how source files are transformed into executables or libraries
-* ...
+* Explain how Cargo builds crates and how they get linked into executables or libraries
+* Does not explain how to navigate the module tree to call a function or how to decide what’s visible to the outside world
 
 <div align="center">
 <img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
@@ -76,7 +76,7 @@ This design has key advantages:
 
 But it also comes with downsides:
 
-* **Errors show up at runtime**. If you forgot a variable name or mismatched types, you only discover it when that line of code runs.
+* **Errors show up at runtime**. If you forgot a variable name or mismatched types, you only discover it when that line of code runs. Personally, I hate that, but I suppose it's because of my background in C/C++.
 * **It’s slower**. Each line has to be parsed and interpreted before execution.
 
 Other ecosystems have taken different approaches to balance these trade-offs. For example, in TypeScript the source code is *transpiled* into JavaScript. This allows type errors to be caught early, but at the end of the day the output is still JavaScript source code. And even though modern JavaScript engines are extremely fast, the code is still interpreted. By contrast, in **C#** or **Java**, the source code is compiled into an **intermediate language** (bytecode). The compiler verifies the code up front (so many errors are caught earlier), and at runtime a virtual machine executes this bytecode, often with just-in-time optimizations. This is much faster than pure interpretation, but the CPU still isn’t running the instructions directly.
@@ -89,6 +89,8 @@ This is where **Rust** (06) comes in. Like C and C++, Rust compiles down to nati
 * And the safety of a compiler that’s actively looking out for you.
 
 This transformation — from source code into an executable file that the processor can run directly — is what we call **the build process**. And that’s exactly what we’re going to explore in the rest of this post.
+
+PS : In Rust if you divide an int by 0, you get an error from rustc (``attempt to divide by zero``) but you got the idea : Compilers make sure the good things happen — the logical errors are on you.
 
 
 
@@ -121,7 +123,7 @@ In that simple case the process is "straightforward":
 5. **Output**: We get a binary on the disk (`target/debug/my_app.exe` under WIN11 for example)
 
 
-### Note
+### Note - Build pipeline
 When I say "straightforward" it is a lie. Here is the Rust build pipeline and it main steps and tools involved. 
 
 |Stage	                         | Quick description  |
@@ -247,7 +249,7 @@ If you don't know yet, [uuid](https://crates.io/crates/uuid) is an easy to use c
 Conceptually, nothing “magical” changes — the module tree expands to include external crates, but after that the same process applies: all symbols are resolved, everything is lowered to object files, and the linker glues them together.
 
 
-### Note: 
+### Note - extern prelude
 
 When we declare a dependency like `uuid` in `Cargo.toml`, Cargo/rustc automatically puts that crate into the **extern prelude**. That means:
 
@@ -355,9 +357,23 @@ So selecting only `v4` is the cleanest way to keep things lean, but **having `v7
 
 
 
+## Can you share some tips that affect the speed of build or size?
+As a starting point, in `Cargo.toml` add a `[profile.release]` section with the following options  :
 
+   * `[profile.release]` options:
+     * `lto = "thin"` (great default), 
+     * `codegen-units = 1` (smaller, slower build),
+     * `panic = "abort"` (smaller, removes unwinding),
+     * `strip = "symbols"` (newer Cargo; or use platform tools).
+   * Function/data sectioning enables aggressive dead-code elimination.
 
+Read [this page](https://doc.rust-lang.org/cargo/reference/profiles.html)
 
+Watch this video
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q8irLfXwaFM?si=6DHQi7zkd8mhMFmn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
@@ -377,7 +393,8 @@ So selecting only `v4` is the cleanest way to keep things lean, but **having `v7
   * Compiled object code for the crate,
   * **Rust metadata** (types, generics, crate graph info). This is where `.rlib` files differ from "classic" `.lib` files
   * References to any native libs it needs.
-* **Purpose:** linking **from Rust to Rust**. `rustc` understands the metadata to do name resolution, monomorphization decisions, and (optionally) LTO across crates.
+* **Purpose:** linking **from Rust to Rust**. `rustc` understands the metadata to do name resolution, monomorphization decisions, and (optionally) LTO across crates. Let's keep in mind that generics are instantiated where used; code may be duplicated across crates without LTO. **LTO/ThinLTO** can de-duplicate and inline across crate boundaries.
+
 * **Not a stable ABI.** ABI stands form Application Binay Interface. It’s not meant for C/C++ or other languages to consume directly. Just to be clear : from C/C++ you cannot link with `.rlink` files.
 
 ### How is `.rlib` different from a classic static lib (`.a`/`.lib`)?
@@ -518,13 +535,13 @@ So yes — `use crate::...` is the canonical way to reference items from *within
 
 ## What happens when `/src/lib.rs` and `src/main.rs` are at the root of the project ?
 
-I don't know. What do YOU think ? Take your time... And, by the way, think twice about the `use` statements in the `main.rs` file... I wait for you...
+I don't know. What do *you* think ? Take your time... And, by the way, think twice about the `use` statements in the `main.rs` file... I wait for you...
 
 I will create an application (`.exe` under WIN11 for example) with `main.rs` but even if I can compile the code I will not be able to link the code until the library is built. Indeed the application invoque some of the functions which are defined in the library (`my_addition()`, `my_division()`...). 
 
 My belief is that the project is then a library crate that contains a binary crate. When we do `cargo build`, we start by building the lib, and everything happens as in the previous section (see "Simple case - `src/lib.rs` only"). Then the build system creates the binary crate, which needs the lib it just build. 
 
-Additionally in the `main.rs` file, I can't write `use crate...` because `crate` refers to the lib, not the bin. I have to specify the crate name that is in `cargo.toml`. Either it has the same name as the library crate by default, or we have to specify something else in cargo `.toml`. Is that right?
+Additionally in the `main.rs` file, I can't write `use crate...` because `crate` refers to the lib, not the bin. I have to specify the crate name that is in `cargo.toml`. Either it has the same name as the library crate by default, or we have to specify something else in `cargo.toml`. Is that right?
 
 You're thinking like the build system and becoming an expert! When we have **both** `lib.rs` and `main.rs` in the same package here is what happens:
 
@@ -561,10 +578,22 @@ You're thinking like the build system and becoming an expert! When we have **bot
    use mylib::some_module::some_function;
    ```
 
-Keep in mind:
-* `crate::...` = “current crate I’m compiling right now.”
-* In the **lib crate**, that’s the library
-* In the **bin crate**, that’s the binary itself
+   Keep in mind:
+   * `crate::...` = “current crate I’m compiling right now.”
+   * In the **lib crate**, that’s the library
+   * In the **bin crate**, that’s the binary itself
+
+5. **Each crate gets its own module tree**:
+   * When Cargo builds the **library crate**, `rustc` constructs the module tree rooted at `lib.rs` (plus its `mod` files). That tree is compiled and emitted as `my_lib.rlib` with metadata.
+
+   * When Cargo builds the **binary crate** (from `main.rs` or `src/bin/*.rs`), `rustc` constructs a **separate** module tree for that binary. This tree includes modules declared in `main.rs` (and any files under its `mod`s).
+
+  * The trees are not merged. From the binary’s point of view, the library is an **external crate**. You access it via its crate name (e.g., `use my_lib::foo::bar;`). Inside the library, you navigate with `crate::...`; inside the binary, `crate::...` points to the binary’s own (usually tiny) tree.
+
+
+### Compilation units for tests/benches/examples
+The situation is similar for files under `tests/` (integration tests), `benches/`, and `examples/`. Each compile as **separate crates** that depend on our lib. This is why integration tests can access only our public API.
+
 
 
 
@@ -613,7 +642,7 @@ Here’s how it works when we have **one library crate plus multiple binaries** 
   use mylib::some_module::some_fn;
   ```
 
-  The bin and lib are separate crates; the bin depends on the lib **implicitly** (no extra `[dependencies]` entry needed).
+  The bin and lib are separate crates; the bin depends on the lib **implicitly** (no extra `[dependencies]` entry needed in `Cargo.toml`).
 
 #### File layout example
 
@@ -629,6 +658,9 @@ my_pkg/
          └─ main.rs       # binary "cli_b" with its own module tree
 ```
 
+
+
+
 ### Linking & artifacts
 
 * The lib builds once into an **`.rlib`** (per profile: debug/release).
@@ -638,79 +670,93 @@ my_pkg/
   * Linux/macOS: `target/debug/cli_a`, `cli_b`
 * Linkers only pull in **referenced** object code; unused functions get removed (section GC), especially in **release** builds.
 
+
+
+
 ### Features and multiple bins (important!)
+
+* **Features are additive.** If any target (bin / test / example / bench) in the **same build invocation** needs a feature on a dependency, that feature becomes **enabled for that dependency for the whole build plan**.
+* Cargo builds a **single dependency graph** for the entire set of things you’re building at once. That graph has **one instance** of each dependency version, and its enabled features are the **union** of all requested features.
 
 * Cargo’s **feature unification** means: if we build **both** `cli_a` and `cli_b` in a single `cargo build`, the dependency graph is resolved once and **features are the union** required by all built targets.
 * If we want a bin to exist **only when a feature is enabled**, use `required-features` in `Cargo.toml`:
 
-  ```toml
-  [features]
-  cli-a = []
-  cli-b = []
+**Concrete example**:
 
-  [[bin]]
-  name = "cli_a"
-  path = "src/bin/cli_a.rs"
-  required-features = ["cli-a"]
+```toml
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2024"
 
-  [[bin]]
-  name = "cli_b"
-  path = "src/bin/cli_b/main.rs"
-  required-features = ["cli-b"]
-  ```
+[dependencies]
+uuid = { version = "1.18.0", default-features = false, features = [] }
 
-  Then:
+[[bin]]
+name = "cli_a"
+path = "src/bin/cli_a.rs"
+required-features = ["feat-a"]
 
-  * `cargo build --features cli-a` builds only `cli_a` (and the lib),
-  * `cargo build --features cli-b` builds only `cli_b`,
-  * `cargo build --features "cli-a cli-b"` builds both.
+[[bin]]
+name = "cli_b"
+path = "src/bin/cli_b.rs"
+required-features = ["feat-b"]
 
-#### Naming nuances
+[features]
+feat-a = ["uuid/v4"]  # cli_a wants v4
+feat-b = ["uuid/v7"]  # cli_b wants v7
+```
 
+**Case A – build both at once**
+
+```bash
+cargo build --features "feat-a feat-b"
+# or simply: cargo build   # if both bins have no required-features gate
+```
+
+* Dependency graph is resolved **once**.
+* `uuid` is built with **features = { v4, v7 }\`** (the union).
+* Result:
+
+  * `cli_a` links against `uuid` built with v4+v7.
+  * `cli_b` links against the same `uuid` (v4+v7).
+* **Binary size/runtime:** only the referenced code is linked in (section GC), but you still **compile** the parts for both v4 and v7.
+
+**Case B – build one bin at a time**
+
+```bash
+cargo build --bin cli_a --features "feat-a"
+# Later:
+cargo build --bin cli_b --features "feat-b"
+```
+
+* Each command creates its own build plan.
+* First build: `uuid` with **v4 only**.
+* Second build: `uuid` with **v7 only** (stored in a different target cache “slot” because the feature set differs).
+* This can **reduce compile time per build** and keep each binary’s dependency feature set minimal for that invocation.
+
+**Why I should care ?**
+
+* **Compile time:** building many targets at once can enable extra features you didn’t expect, increasing compilation work.
+* **Binary size concerns:** even though the final link strips unused code, enabling more features may still pull in more transitive deps and increase compile time.
+* **Reproducibility:** if a bin should only exist with certain features, guard it with `required-features` so `cargo build` won’t silently unify more than intended.
+
+
+**Naming nuances**
 * The **lib crate name** defaults to `[package].name` with hyphens replaced by underscores (we can override with `[lib] name = "..."`).
 * Binaries are named from their file/folder under `src/bin` (or via `[[bin]] name = "..."`).
 
-#### Tiny end-to-end example
+**This look complicated. Any advise?**
 
-```rust
-// src/lib.rs
-pub mod utils {
-    pub fn greet(who: &str) -> String {
-        format!("hello, {who}")
-    }
-}
-```
+* Want strict control per binary? **Build them separately** (separate `cargo build` commands with the exact `--features` you want).
+* Want to ensure a bin never builds unless its feature is on? Use `required-features` in `[[bin]]`.
+* Need minimal deps for a single shipping binary? Run `cargo build --release --bin the_one --no-default-features --features "exact-set"`.
 
-```rust
-// src/bin/cli_a.rs
-use mylib::utils::greet; // Replace `mylib` with the actual lib crate name
+**One more nuance (workspaces)**
 
-fn main() {
-    println!("{}", greet("from cli_a"));
-}
-```
+* Feature unification happens **within a single build plan**. 
 
-```rust
-// src/bin/cli_b/main.rs
-use mylib::utils::greet;
-
-fn main() {
-    println!("{}", greet("from cli_b"));
-}
-```
-
-Commands:
-
-```bash
-# Build everything
-cargo build
-
-# Build only cli_a
-cargo build --bin cli_a
-
-# Run a specific bin (release build)
-cargo run --release --bin cli_b
-```
+* In a workspace, each member is its own crate graph root; features unify **per dependency graph**, not globally across the whole workspace—but `cargo build` may still unify for the set of targets being built together. Subtle behavior; worth a deep dive if we split clients into separate packages.
 
 
 
@@ -730,82 +776,48 @@ cargo run --release --bin cli_b
 
 
 
-<!-- 
-## Topics to be covered 
-1. **`crate::`, `self::`, `super::` paths (inside a crate)**
+## Any other topics I should have heard about before we leave?
 
-   * We used `crate::...`, but not the contrasts:
-
-     * `self::` = current module.
-     * `super::` = parent module.
-   * Clean internal APIs often rely on re-exports (`pub use ...`) to simplify paths.
-
-2. **Privacy, re-exports, and public API shape**
-
-   * `pub`, `pub(crate)`, `pub(super)` change what *other crates* can use, not whether code is compiled.
-   * Re-exports (`pub use`) let us curate a stable public surface while reorganizing internals freely.
-
-3. **Compilation units for tests/benches/examples**
-
-   * `tests/` (integration tests), files under `src/bin/`, and `examples/` each compile as **separate crates** that depend on our lib.
-   * This is why integration tests can access only our **public** API.
-
-4. **`build.rs` (build scripts) and native linking**
+1. **`build.rs` (build scripts) and native linking**
 
    * A `build.rs` can probe the system, generate code, or emit `cargo:rustc-link-lib=...`/`cargo:rustc-link-search=...` lines to link native libs.
    * Important when binding to C libraries or controlling link search paths.
 
-5. **Crate types & outputs beyond defaults**
+2. **Crate types & outputs beyond defaults**
 
    * We mentioned `.rlib`, `staticlib`, `cdylib`, `dylib`, but also:
 
      * **`rmeta`**: metadata-only artifact sometimes used by incremental builds.
      * Multiple crate types at once via `[lib] crate-type = ["rlib","cdylib"]`.
 
-6. **Monomorphization & cross-crate generics**
 
-   * Generics are instantiated where used; code may be duplicated across crates without LTO.
-   * **LTO/ThinLTO** can de-duplicate and inline across crate boundaries.
-
-7. **Optimization knobs that affect size/linking**
-
-   * `[profile.release]` options:
-
-     * `lto = "thin"` (great default), `codegen-units = 1` (smaller, slower build),
-     * `panic = "abort"` (smaller, removes unwinding),
-     * `strip = "symbols"` (newer Cargo; or use platform tools).
-   * Function/data sectioning enables aggressive dead-code elimination.
-
-8. **Feature resolution pitfalls**
+3. **Feature resolution pitfalls**
 
    * Features are **additive** and **unified** within a cargo build plan. Building multiple bins at once unifies features across them (can pull more code). `required-features` can control when a bin is built.
 
-9. **Workspaces vs single package**
 
-   * In a workspace, each member is its own crate graph root; features unify **per dependency graph**, not globally across the whole workspace—but `cargo build` may still unify for the set of targets being built together. Subtle behavior; worth a deep dive if we split clients into separate packages.
-
-10. **`std` vs `no_std`**
+4. **`std` vs `no_std`**
 
     * We can target embedded/`no_std`; then we link only `core`/`alloc`, and often provide our own entry point/allocator. Linker scripts and target specs matter here.
 
-11. **Toolchains and linkers on Windows**
+5. **Toolchains and linkers on Windows**
 
     * **MSVC** vs **GNU** toolchain differ in linker flags, `.lib` vs `.a`, and how import libraries for DLLs work. Behavior is similar conceptually but flags differ (`/OPT:REF` vs `--gc-sections`, etc.).
 
-12. **Symbol visibility & inlining**
+6. **Symbol visibility & inlining**
 
     * `#[inline]` and `#[inline(always)]` affect codegen boundaries; visibility and LTO determine if cross-crate inlining happens.
     * `#[no_mangle] extern "C"` defines stable symbol names for FFI.
 
-13. **Procedural macros & codegen effects**
+7. **Procedural macros & codegen effects**
 
     * Proc-macros compile as special crates, then expand into our crate before codegen. They can impact what gets compiled/linked even if the surface API looks small.
 
-14. **Deterministic/reproducible builds**
+8. **Deterministic/reproducible builds**
 
     * Cargo/rustc aim for reproducibility, but environment, target, linker, and `build.rs` side effects can influence binary differences.
 
-15. **Std linkage mode**
+
+9. **Std linkage mode**
 
     * We can force dynamic std with `-C prefer-dynamic` (toolchain/target permitting), which changes how final linking happens (fewer bytes in our exe, but a runtime dependency).
- -->
