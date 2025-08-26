@@ -244,7 +244,6 @@ If you don't know yet, [uuid](https://crates.io/crates/uuid) is an easy to use c
 * Why? Because during compilation the compiler does not know where the function `Uuid::new_v4` will actually live in memory. It only knows that such a function exists, and it leaves a symbolic marker for it.
 * The job of resolving that marker is deferred to the linker.
 
-
 4. **Linking**
 
 * The linker takes our object file **plus** the precompiled object files (`.rlib`s) for `uuid` (and transitively `rand`, `getrandom`, etc., if needed).
@@ -361,6 +360,8 @@ Here’s what happens under the hood:
 
 * **LTO (Link Time Optimization) makes it even tighter:** enabling `lto = "thin"` (or `true`) lets LLVM see across crate boundaries and DCE (Dead Code Elimination) even more aggressively. Pairing with `codegen-units = 1` can squeeze a few extra kB. (`panic = "abort"` also trims size.)
 
+Feel free to [read this page](https://doc.rust-lang.org/cargo/reference/profiles.html#lto).
+
 Caveats worth knowing:
 
 * **Build time vs. binary size:** enabling `v7` still means that code **compiles** (so build time and incremental artifacts grow), but it won’t bloat the final EXE if it’s unused.
@@ -376,6 +377,7 @@ So selecting only `v4` is the cleanest way to keep things lean, but **having `v7
 
 
 ## Can you share some tips that affect the speed of build or size?
+
 As a starting point, in `Cargo.toml` add a `[profile.release]` section with the following options  :
 
    * `[profile.release]` options:
@@ -404,8 +406,6 @@ Watch this video
 
 ## What is a Rust static lib (`.rlib`) ?
 
-### What is an `.rlib`?
-
 * **Rust-specific static library.** It’s an archive (like `ar`) that contains:
 
   * Compiled object code for the crate,
@@ -415,6 +415,9 @@ Watch this video
 
 * **Not a stable ABI.** ABI stands form Application Binay Interface. It’s not meant for C/C++ or other languages to consume directly. Just to be clear : from C/C++ you cannot link with `.rlink` files.
 
+
+
+
 ### How is `.rlib` different from a classic static lib (`.a`/`.lib`)?
 
 * **`.a` / `.lib` (MSVC)** are *pure* archives of object files. No Rust metadata. Any toolchain linker can use them.
@@ -423,6 +426,9 @@ Watch this video
 
   * If we need a static library that **C can link to**, let's build a **`staticlib`** crate type, which outputs a platform native static archive (`.a` on Unix, `.lib` on Windows) with a **C ABI**.
   * If you’re staying within Rust crates, use the default **`lib` → `.rlib`**.
+
+
+
 
 ### Do DLLs/SOs exist in Rust?
 
@@ -440,7 +446,7 @@ Yes—two flavors of dynamic libraries:
    * **No Rust metadata**; exports a stable **C ABI** surface we define (e.g., `#[no_mangle] extern "C" fn ...`).
    * This is what we choose to provide a plugin or shared lib to C/C++/Python/… via FFI.
 
-### Quick “which crate-type should I use?” cheat sheet
+### Note - Which crate-type should I use? 
 
 * **Rust library used by other Rust crates:** `lib` → **`.rlib`** (default).
 * **Static library for C/C++ consumers:** `staticlib` → **`.a`/`.lib`**.
@@ -511,7 +517,7 @@ A few clarifications that help mental models:
 
 
 
-## Let's talk about the `use` statements
+## Can you say few words about the `use` statements ?
 
 In the previous case (building a library crate), all the files involved can use the statement `use crate::...` to simplify the code. Since we are compiling a library crate, starting a `use` line with `crate::` is correct because it refers to the crate currently being built (the library crate). Is that right?
 
@@ -633,7 +639,7 @@ The situation is similar for files under `tests/` (integration tests), `benches/
 
 ## What if, in the same package, I need 2 clients of the same lib ?
 
-Here’s how it works when we have **one library crate plus multiple binaries** under `src/bin/`.
+<!-- Here’s how it works when we have **one library crate plus multiple binaries** under `src/bin/`. -->
 
 ### How Cargo discovers and builds them?
 
@@ -643,6 +649,7 @@ Here’s how it works when we have **one library crate plus multiple binaries** 
 
   * Each file `src/bin/foo.rs` is its **own binary crate** named `foo`.
   * Or a folder form: `src/bin/foo/main.rs` (lets us add extra modules under `src/bin/foo/`).
+
 * **`cargo build`** (no filters) will:
 
   1. compile the **lib** first,
@@ -691,7 +698,9 @@ my_pkg/
 
 
 
-### Features and multiple bins (important!)
+### Features and multiple bins
+
+Remember, we already talked about features with uuid and the V4  and V7 features.
 
 * **Features are additive.** If any target (bin / test / example / bench) in the **same build invocation** needs a feature on a dependency, that feature becomes **enabled for that dependency for the whole build plan**.
 * Cargo builds a **single dependency graph** for the entire set of things you’re building at once. That graph has **one instance** of each dependency version, and its enabled features are the **union** of all requested features.
