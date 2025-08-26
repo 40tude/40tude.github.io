@@ -19,10 +19,11 @@ last_modified_date : 2025-08-26 09:00:00
 ## TL;DR
 * For beginners
 * Explain how Cargo builds crates and how they get linked into executables or libraries
-* Does not explain how to navigate the module tree to call a function or how to decide what’s visible to the outside world
+* Do not explain how to navigate the module tree to call a function or how to decide what’s visible to the outside world. Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) instead.
 
 <div align="center">
-<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <p>2024...</p> -->
 </div>
 
 
@@ -124,8 +125,9 @@ In that case the process is "straightforward":
 
 
 <div align="center">
-<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/>
-<p>1986...</p>
+<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/><br/>
+<span>1986...</span>
+<!-- <p>1986...</p> -->
 </div>
 
 
@@ -250,8 +252,8 @@ From the previous table:
 
 
 <div align="center">
-<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
-<p>2024...</p>
+<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/><br/>
+<span>2024...</span>
 </div>
 
 
