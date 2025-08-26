@@ -788,6 +788,13 @@ cargo build --bin cli_b --features "feat-b"
 
 
 
+<div align="center">
+<img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+Cargo first compiles the library crate (`lib.rs`) into a Rust static library (`.rlib`). Then each binary crate (`main.rs`, `bin/extra.rs`) is compiled into object files (`.obj`). Finally, the linker combines those objects with the library and external crates to produce independent executables (`main.exe`, `extra.exe`).
+
+
 
 
 
