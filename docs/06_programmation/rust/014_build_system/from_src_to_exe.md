@@ -124,7 +124,7 @@ In that case the process is "straightforward":
 
 
 ### Note - Build pipeline
-When I say "straightforward" it is a lie. Here is the Rust build pipeline and it main steps and tools involved. 
+When I say "straightforward" it is a lie. Here is the Rust build pipeline and its main steps and tools involved. 
 
 |Stage	                         | Quick description  |
 |:-------------------------------|:-------------------|
@@ -188,7 +188,7 @@ The compiler does the following:
 
 From the build system point of view, the only thing that matters is the **module tree**. Can I build a tree with all the modules, all the functions, traits, structures...? If yes, then I know who is who, who call who and I can try to compile/link the code. 
 
-It is important to understand that on one hand, as a developer, I can use many different files, libraries... Organize these files in a hierarchy of directories and sub-directories BUT... At the end of the day, the only thing that matters for the build system is the module tree. So as a developer I must understand what a module tree is and I must provide the information required by the build system so that it can create the module tree in memory. If needed read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which talks specifically of the module tree.
+It is important to understand that on one hand, as a developer, I can use many different files, libraries... Organize these files in a hierarchy of directories and sub-directories BUT... At the end of the day, the only thing that matters for the build system is the module tree. So as a developer I must understand what a module tree is and I must provide the information required by the build system so that it can create the module tree in memory. If needed read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which talks more specifically of the module tree.
 
 Anyway, even with 2 source code files, the life is easy, we are still in the “all-in-one” world: one crate, one object file, one binary.
 
@@ -271,7 +271,7 @@ Conceptually, nothing “magical” changes — the module tree expands to inclu
 When we declare a dependency like `uuid` in `Cargo.toml`, Cargo/rustc automatically puts that crate into the **extern prelude**. That means:
 
 * You can refer to items starting with the crate name (`uuid::Uuid::new_v4()`) **without writing `extern crate uuid;`** (that was needed before Rust 2018).
-* The `extern prelude` is basically a set of crate roots that are available to us by default, once the dependency is declared (via `Cargo.toml`)
+* The extern prelude is basically a set of crate roots that are available to us by default, once the dependency is declared (via `Cargo.toml`)
 * We don’t strictly need `use uuid::Uuid;` if we are fine with fully qualified calls.
 
 So yes — both work:
@@ -306,7 +306,7 @@ Most developers still prefer the `use` form because it shortens the function cal
 
 ## What happens when I specify `--features "v4"` ?
 
-In Rust, **features in `Cargo.toml`** act like switches that enable or disable optional parts of a crate. For `uuid`, if we write something like:
+In Rust, **features** in `Cargo.toml` act like switches that enable or disable optional parts of a crate. For `uuid`, if we write something like:
 
 ```toml
 [dependencies]
@@ -413,7 +413,7 @@ Watch this video
   * References to any native libs it needs.
 * **Purpose:** linking **from Rust to Rust**. `rustc` understands the metadata to do name resolution, monomorphization decisions, and (optionally) LTO across crates. Let's keep in mind that generics are instantiated where used; code may be duplicated across crates without LTO. **LTO/ThinLTO** can de-duplicate and inline across crate boundaries.
 
-* **Not a stable ABI.** ABI stands form Application Binay Interface. It’s not meant for C/C++ or other languages to consume directly. Just to be clear : from C/C++ you cannot link with `.rlink` files.
+* **Not a stable ABI.** ABI stands form Application Binary Interface. It’s not meant for C/C++ or other languages to consume directly. Just to be clear : from C/C++ you cannot link with `.rlink` files.
 
 
 
@@ -439,12 +439,15 @@ Yes—two flavors of dynamic libraries:
    * Output: `.so` (Linux), `.dylib` (macOS), `.dll`+import lib (Windows).
    * **Rust-to-Rust** dynamic linking (includes Rust metadata).
    * Rare in typical apps because Rust’s crate ABI is not stable across compiler versions; useful for special cases (e.g., `prefer-dynamic`, tools, or plugin systems compiled with the same toolchain).
+   * With `-C prefer-dynamic` we may save few bytes in our final EXE, but a runtime dependency. We must be sure the DLLs is available on the target machine.
+
 
 2. **`cdylib`** (C-ABI dynamic):
 
    * Output: `.so` / `.dylib` / `.dll` intended for **non-Rust consumers**.
    * **No Rust metadata**; exports a stable **C ABI** surface we define (e.g., `#[no_mangle] extern "C" fn ...`).
    * This is what we choose to provide a plugin or shared lib to C/C++/Python/… via FFI.
+   * Again we save few bytes in the exe, win some flexibility in the maintenance but we must be sure the dll is available on the target machine
 
 ### Note - Which crate-type should I use? 
 
@@ -657,6 +660,16 @@ The situation is similar for files under `tests/` (integration tests), `benches/
   3. and **link** each bin against the lib and all other deps.
      We can build just one with `cargo build --bin foo` (and run with `cargo run --bin foo`).
 
+
+<div align="center">
+<img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
+</div>
+
+Cargo first compiles the library crate (`lib.rs`) into a Rust static library (`.rlib`). Then each binary crate (`main.rs`, `bin/extra.rs`) is compiled into object files (`.obj`). Finally, the linker combines those objects with the library and external crates to produce independent executables (`main.exe`, `extra.exe`).
+
+
+
+
 ### How the bins use our lib?
 
 * Inside **`src/lib.rs`** and its modules, use paths like `use crate::...`.
@@ -788,12 +801,6 @@ cargo build --bin cli_b --features "feat-b"
 
 
 
-<div align="center">
-<img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
-</div>
-
-Cargo first compiles the library crate (`lib.rs`) into a Rust static library (`.rlib`). Then each binary crate (`main.rs`, `bin/extra.rs`) is compiled into object files (`.obj`). Finally, the linker combines those objects with the library and external crates to produce independent executables (`main.exe`, `extra.exe`).
-
 
 
 
@@ -824,34 +831,25 @@ Cargo first compiles the library crate (`lib.rs`) into a Rust static library (`.
      * **`rmeta`**: metadata-only artifact sometimes used by incremental builds.
      * Multiple crate types at once via `[lib] crate-type = ["rlib","cdylib"]`.
 
-
-3. **Feature resolution pitfalls**
-
-   * Features are **additive** and **unified** within a cargo build plan. Building multiple bins at once unifies features across them (can pull more code). `required-features` can control when a bin is built.
-
-
-4. **`std` vs `no_std`**
+3. **`std` vs `no_std`**
 
     * We can target embedded/`no_std`; then we link only `core`/`alloc`, and often provide our own entry point/allocator. Linker scripts and target specs matter here.
 
-5. **Toolchains and linkers on Windows**
+4. **Toolchains and linkers on Windows**
 
     * **MSVC** vs **GNU** toolchain differ in linker flags, `.lib` vs `.a`, and how import libraries for DLLs work. Behavior is similar conceptually but flags differ (`/OPT:REF` vs `--gc-sections`, etc.).
 
-6. **Symbol visibility & inlining**
+5. **Symbol visibility & inlining**
 
     * `#[inline]` and `#[inline(always)]` affect codegen boundaries; visibility and LTO determine if cross-crate inlining happens.
     * `#[no_mangle] extern "C"` defines stable symbol names for FFI.
 
-7. **Procedural macros & codegen effects**
+6. **Procedural macros & codegen effects**
 
     * Proc-macros compile as special crates, then expand into our crate before codegen. They can impact what gets compiled/linked even if the surface API looks small.
 
-8. **Deterministic/reproducible builds**
+7. **Deterministic/reproducible builds**
 
     * Cargo/rustc aim for reproducibility, but environment, target, linker, and `build.rs` side effects can influence binary differences.
 
 
-9. **Std linkage mode**
-
-    * We can force dynamic std with `-C prefer-dynamic` (toolchain/target permitting), which changes how final linking happens (fewer bytes in our exe, but a runtime dependency).
