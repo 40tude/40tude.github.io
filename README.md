@@ -139,6 +139,12 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 Callouts : https://just-the-docs.com/docs/ui-components/callouts/
 
 
+### Image avec commentaire
+<div align="center">
+<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/><br/>
+<span>1986...</span>
+</div>
+
 
 ### Lien sur une page du site
 [Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%})

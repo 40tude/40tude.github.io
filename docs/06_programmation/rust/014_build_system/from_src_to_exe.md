@@ -23,7 +23,7 @@ last_modified_date : 2025-08-26 09:00:00
 
 <div align="center">
 <img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <p>2024...</p> -->
+<span>In space, no one can hear you scream.</span>
 </div>
 
 
@@ -127,7 +127,6 @@ In that case the process is "straightforward":
 <div align="center">
 <img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/><br/>
 <span>1986...</span>
-<!-- <p>1986...</p> -->
 </div>
 
 
