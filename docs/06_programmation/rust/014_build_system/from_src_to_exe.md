@@ -111,9 +111,9 @@ PS : In Rust if you divide an int by 0, you get an error from rustc (``attempt t
 
 
 
-## Simple case - `src/main.rs` only
+## A project with 1 file
 
-Suppose we have a Rust project with only one `main.rs` file. No other files. There aren't even any modules defined in `main.rs` or any external crates such as `uuid`. 
+Suppose we have a Rust project with only one `src/main.rs` file. No other files. There aren't even any modules defined in `main.rs` or any external crates such as `uuid`. 
 
 In that case the process is "straightforward":
 
@@ -193,7 +193,7 @@ Once MIR is built, Rust applies optimizations such as removing dead code, simpli
 
 **Code Generation (LLVM IR)**
 
-The compiler translates MIR into **LLVM IR** (*Low-Level Virtual Machine Intermediate Representation*). LLVM IR is a portable, assembly-like language that LLVM understands. It bridges the gap between Rust’s high-level checks and actual machine code generation.
+The compiler translates MIR into **LLVM IR** (*Low-Level Virtual Machine Intermediate Representation*). This is where monomorphization happens (when the compiler turns generics into specialized, monomorphic (single-type) code). Before handing code to LLVM, Rust’s codegen pass instantiates generics into monomorphic MIR, producing specialized MIR/LLVM IR for each concrete usage. LLVM IR is a portable, assembly-like language that LLVM understands. It bridges the gap between Rust’s high-level checks and actual machine code generation.
 
 **LLVM Optimizations**
 
@@ -272,9 +272,9 @@ From the previous table:
 
 
 
-## Adding one file (`src/file01.rs`)
+## A project with 2 files
 
-What happens if the project is made of a `main.rs` and `file01.rs` with one function `fn01()`? 
+What happens if the project is made of a `src/main.rs` and `src/file01.rs` ? 
 
 In fact the situation remains very similar. Indeed, when we add another file like `file01.rs` and declare it in `main.rs` with
 
@@ -335,7 +335,7 @@ Anyway, even with 2 source code files, the life is easy, we are still in the “
 
 
 
-## `cargo add uuid --features "v4"`
+## Adding an external crate
 
 What happens when I add an external crate like `uuid` in `Cargo.toml`? 
 
@@ -606,9 +606,9 @@ Yes—two flavors of dynamic libraries:
 
 
 
-## Simple case - `src/lib.rs` only
+## A static lib project
 
-We now have a single `lib.rs` file at the root of the project. So it's a library crate. There are other files in sub-directories and modules. Provided that the module tree is correctly constructed, we compile and link, and at the end we have a `.rlib` file. Right ?
+We now have a single `src/lib.rs`  file at the root of the project. So it's a library crate. There are other files in sub-directories and modules. Provided that the module tree is correctly constructed, we compile and link, and at the end we have a `.rlib` file. Right ?
 
 Yes, that’s correct. With a `lib.rs` at the root (no `main.rs`), we have a **library crate**. As long as our module tree is valid (all `mod` declarations resolve, paths line up, features/`cfg`s are satisfied), the flow is:
 
@@ -936,7 +936,7 @@ cargo build --bin cli_b --features "feat-b"
 
 
 
-## Any other topics I should have heard about before we leave?
+<!-- ## Any other topics I should have heard about before we leave?
 
 1. **`build.rs` (build scripts) and native linking**
 
@@ -971,4 +971,4 @@ cargo build --bin cli_b --features "feat-b"
 
     * Cargo/rustc aim for reproducibility, but environment, target, linker, and `build.rs` side effects can influence binary differences.
 
-
+ -->
