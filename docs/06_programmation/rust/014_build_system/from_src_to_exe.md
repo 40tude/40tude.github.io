@@ -149,7 +149,7 @@ When I say "straightforward" it is a lie. Here is the Rust build pipeline and it
 | LLVM Optimizations	         | LLVM optimizes even more |
 | Machine Code	                 | The binary code is produced |
 
-### More infon about the Build pipeline 
+### More info about the Build pipeline 
 
 **Lexing / Parsing**
 
@@ -224,7 +224,7 @@ When we say “Machine Code” in the compiler pipeline, we usually mean **raw i
 
 * **The linker (system linker or `lld`)**
 
-  * Takes these `.o`/`.obj` files and combines them into the final executable (EXE, ELF binary, Mach-O binary).
+  * Takes these `.o`/`.obj` files and combines them into the final executable (COFF, ELF binary, Mach-O binary).
   * The linker doesn’t generate object files — it consumes them.
 
 
@@ -463,11 +463,11 @@ So choosing features like `v4` is about tailoring the crate to our actual needs 
 
 ## What happens if I specify `--features "v4,v7"` but only use v4 function calls?
 
-The final EXE will not “paste in all of `uuid`.” Even if we enable `v4` and `v7`, but only call v4 APIs, the linker will only pull in the pieces that are actually referenced.
+The final executable will not “paste in all of `uuid`.” Even if we enable `v4` and `v7`, but only call v4 APIs, the linker will only pull in the pieces that are actually referenced.
 
 Here’s what happens under the hood:
 
-* **`uuid` builds as an `.rlib`** (a static archive of object files). With both `v4` and `v7` features enabled, both code paths are compiled **into the archive**, but that doesn’t mean they all end up in our EXE.
+* **`uuid` builds as an `.rlib`** (a static archive of object files). With both `v4` and `v7` features enabled, both code paths are compiled **into the archive**, but that doesn’t mean they all end up in our executable.
 
 * **Archive extraction rule:** linkers (MSVC on Windows, GNU/LLD on Linux) scan the archive and **extract only object files that satisfy unresolved symbols**. If we never reference any `v7` symbol, the object(s) that contain only `v7` code aren’t pulled in.
 
@@ -483,8 +483,8 @@ Feel free to [read this page](https://doc.rust-lang.org/cargo/reference/profiles
 
 Caveats worth knowing:
 
-* **Build time vs. binary size:** enabling `v7` still means that code **compiles** (so build time and incremental artifacts grow), but it won’t bloat the final EXE if it’s unused.
-* **Feature side-effects:** some features pull extra deps (e.g., `serde`, `time`, `getrandom`). If none of their symbols are referenced, their code won’t land in the EXE—but we still pay compile time. Occasionally, auto trait impls or proc-macro–generated glue can cause tiny bits to stick around, but it’s usually negligible.
+* **Build time vs. binary size:** enabling `v7` still means that code **compiles** (so build time and incremental artifacts grow), but it won’t bloat the final executable if it’s unused.
+* **Feature side-effects:** some features pull extra deps (e.g., `serde`, `time`, `getrandom`). If none of their symbols are referenced, their code won’t land in the executable — but we still pay compile time. Occasionally, auto trait impls or proc-macro–generated glue can cause tiny bits to stick around, but it’s usually negligible.
 
 So selecting only `v4` is the cleanest way to keep things lean, but **having `v7` enabled without calling it won’t meaningfully bloat the final binary**—especially in a release build with the usual optimizations.
 
@@ -558,7 +558,7 @@ Yes—two flavors of dynamic libraries:
    * Output: `.so` (Linux), `.dylib` (macOS), `.dll`+import lib (Windows).
    * **Rust-to-Rust** dynamic linking (includes Rust metadata).
    * Rare in typical apps because Rust’s crate ABI is not stable across compiler versions; useful for special cases (e.g., `prefer-dynamic`, tools, or plugin systems compiled with the same toolchain).
-   * With `-C prefer-dynamic` we may save few bytes in our final EXE, but a runtime dependency. We must be sure the DLLs is available on the target machine.
+   * With `-C prefer-dynamic` we may save few bytes in our final executable, but a runtime dependency. We must be sure the DLLs is available on the target machine.
 
 
 2. **`cdylib`** (C-ABI dynamic):
@@ -566,7 +566,7 @@ Yes—two flavors of dynamic libraries:
    * Output: `.so` / `.dylib` / `.dll` intended for **non-Rust consumers**.
    * **No Rust metadata**; exports a stable **C ABI** surface we define (e.g., `#[no_mangle] extern "C" fn ...`).
    * This is what we choose to provide a plugin or shared lib to C/C++/Python/… via FFI.
-   * Again we save few bytes in the exe, win some flexibility in the maintenance but we must be sure the dll is available on the target machine
+   * Again we save few bytes in the executable, win some flexibility in the maintenance but we must be sure the dll is available on the target machine
 
 ### Note - Which crate-type should I use? 
 
