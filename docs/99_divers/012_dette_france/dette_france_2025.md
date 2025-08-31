@@ -292,6 +292,68 @@ En 2023, environ 31 Mds€ de ressources publiques servaient à compenser de te
 
 
 
+
+### Heu...T'es en train de dire que CNAV et Agirc-Arrco  n'impactent pas la dette publique ?
+
+En deux mots, vite fait. 
+
+#### CNAV:
+* Caisse nationale d’assurance vieillesse, régime de base des salariés du privé
+* Elle est intégrée à la **Sécurité sociale**, donc ses déficits **pèsent directement** sur le déficit et la dette publique.
+* Exemple : en 2023, la CNAV a affiché un **déficit** d’environ –3,6 Md€.
+
+#### Agirc-Arrco 
+* Ccomplémentaire des salariés du privé
+* Organisme **paritaire et autonome**, non financé par l’État (rappelle toi Barbara, l'Unédic)
+* En 2023, elle a enregistré un **excédent** de **+4,6 Md€** et elle dispose de réserves financières.
+* Son solde **n’est pas consolidé** dans la dette publique, car l’État n’a pas à couvrir ses pertes (et elle n’en fait pas porter le poids aux finances publiques).
+
+#### Pourquoi ça reste secondaire dans l’analyse Pareto
+* Seule la CNAV peut peser négativement sur la dette publique certaines années.
+* Sur la période 2017–2025, son déficit cumulé reste modeste comparé aux 500 Mds€ liés au financement des retraites publiques (fonctionnaires, CNRACL, régimes spéciaux, compensations).
+
+Une **évaluation très approximative**, à prendre avec beaucoup de précaution :
+
+| Année               | Solde estimé CNAV (Md€)                                     |
+| ------------------- | ----------------------------------------------------------- |
+| 2017–2018           | **Excédent** (≈ +1 à +2 Md€ par an)                         |
+| 2019                | **Équilibre** / léger déficit                               |
+| 2020–2022           | **Déficits** cumulés ≈ –(3,7 + 2 à 3) ≈ –6 à –7 Md€         |
+| 2023–2025           | **Probable continuation** : déficit modéré (–1 à –2 Md€/an) |
+| **Total 2017–2025** | **Déficit cumulé estimé entre –8 et –12 Md€**               |
+
+Ce que l'on sait: 
+* La CNAV a été **excédentaire** entre 2016 et 2018.
+* Elle est retournée au **déficit** dès 2020, avec environ –3,7 Md€ en 2020 estimés, puis –2,2 Md€ en 2022 (prévisions) ([Cour des comptes][1], [Wikipédia][2]).
+* Les résultats montrent un retournement marqué avec la crise sanitaire, sans que des chiffres précis année par année pour 2021, 2023, etc., soient systématiquement publiés dans les sources accessibles ([Wikipédia][2], [Cour des comptes][3]).
+
+
+[1]: https://www.ccomptes.fr/sites/default/files/2025-02/20250220-Situation-financiere-et-perspectives-du-systeme-de%20retraites_0.pdf?utm_source=chatgpt.com "Situation financière et perspectives du système de retraites"
+[2]: https://fr.wikipedia.org/wiki/Caisse_nationale_d%27assurance_vieillesse?utm_source=chatgpt.com "Caisse nationale d'assurance vieillesse"
+[3]: https://www.ccomptes.fr/sites/default/files/2024-05/20240529-Ralfss-2024-Situation-financiere-SS.pdf?utm_source=chatgpt.com "Chapitre I La situation financière de la sécurité sociale"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Récapitulons
 
 En regroupant ces éléments, on explique l’essentiel du "déficit retraites" supporté par l’État. Environ 80 % de ce déficit provient du combo fonctionnaires (d’État, locaux) + régimes spéciaux. Le solde vient des mesures de solidarité (famille, minima) et des allègements de charges. 
