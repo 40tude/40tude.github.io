@@ -417,17 +417,21 @@ Ce que l'on sait:
 
 
 
-### Heu... On parle de combien de personnes?
+### Heu... Et on parle de combien de personnes?
 {: .no_toc }
 
-* Un peu plus de **6 millions** de personnes en 2022
-    * 5.76 millions d'agents en 2022 
+Plus de **6 millions** de personnes en 2022
+* **15% de la population qui travaille**.
+    * En 2025 on est [68 millions](https://en.wikipedia.org/wiki/Demographics_of_France?utm_source=chatgpt.com) en France
+    * Dont 61% en age de travailler (15-64 ans). 
+    
+<!-- * 5.76 millions d'agents en 2022 
     * 281 000 militaires et personnels civils qui sont des fonctionnaires de droit public classiques
-    * SNCF, RATP...
+    * SNCF, RATP... -->
 
 Cela se ventile de la façon suivante:
 
-* Fonctionnaires de la fonction publique d'État (FPE) 
+<!-- * Fonctionnaires de la fonction publique d'État (FPE) 
     * 2022
     * environ 2,46 millions d'agents 
     * Hors militaires et contrats aidés 
@@ -448,14 +452,148 @@ Cela se ventile de la façon suivante:
     * J'ai pas trouvé
     * SNCF 270 000 tous statuts (ne donne pas le nombre de fonctionnaires seul)
     * RATP 70 000 tous statuts
-    * Opéra : 1 600
+    * Opéra : 1 600 -->
 
-Sources : 
+| Catégorie                                    | Effectifs (≈ 2022) | Détail / Commentaire                                    |
+|----------------------------------------------|--------------------|---------------------------------------------------------|
+| Fonction publique d’État (FPE)               | ~2,46 M            | Inclut enseignants et hors militaires et contrats aidés |
+| Fonction publique territoriale (FPT)         | ~2,06 M            | Communes, départements, régions, intercommunalités      |
+| Fonction publique hospitalière (FPH)         | ~1,24 M            | Hôpitaux, EHPAD, établissements de santé                |
+| **Sous-total FPT+FPH**                       | ~3,30 M            |                                                         |
+| **Total agents publics FPE+FPT+FPH**         | ~5,76 M            |                                                         |
+| Militaires                                   | ~282 000           | Terre 114k, Marine 44k, Air 42k, Services 6k, + 76k civils |
+| Entreprises publiques (statuts spécifiques)  | ???                | SNCF ~270k, RATP ~70k, Opéra ~1,6k  Effectifs tous statuts |
+| **Grand TOTAL** (sous estimé)                | ~6.,04 M           | ~15 % de la population active                          |
+
+Notes:
+* Les civils comptés chez les militaires sont des fonctionnaires de droit public
+* Effectifs tous statuts car en fait SNCF et RATP ne publient pas le nombre de fonctionnaires
+
+Sources: 
 * Site de l'INSEE (Institut National de la Statistique et des Études Économiques) 
 * Site de la DGAFP (Direction Générale de l'Administration et de la Fonction Publique)
 * Site du CNFPT (Centre National de la Fonction Publique Territoriale) 
 * "Chiffres clés de la fonction publique - Édition 2023" (données 2022)
-* SNCF, RATP...
+* SNCF, RATP... 
+
+
+### On a une idée de l'évolution de ce nombre?
+
+* J'ai trouvé des chiffres sur cette [page](https://fr.wikipedia.org/wiki/%C3%89volution_des_effectifs_de_la_fonction_publique_en_France)
+* Il y a des trous mais on va faire avec (je peux faire un interpolation de 2018 à 2021)
+* Enfin j'ajoute le point de 2022 qu'on vient de calculer
+
+Voilà ce que ça donne sous forme de tableau
+
+| Année  | Effectif                                   | Remarques |
+|--------|--------------------------------------------|-----------|
+| 1914   | 543 271                                    | Avant Première Guerre mondiale |
+| 1921   | 732 926                                    | +35 % par rapport à 1914 (rapport Bokanowski) |
+| 1922   | 761 000                                    | Début compressions, avant baisse (estimation Rivet) |
+| 1927   | 688 000                                    | -10 % par rapport à 1922 |
+| 1931   | ~708 000                                   | +3 % par rapport à 1927 |
+| 1939   | ~900 000 (750 000 civils)                  | Fin Troisième République |
+| 1946   | +26 % par rapport à 1941                   | Recrutements régime de Vichy (1941-1946) |
+| 1980   | 3 902 000                                  | Avant élection Mitterrand |
+| 1981   | 3 950 000                                  | Début Mitterrand |
+| 1982   | 4 030 000                                  | Recrutements massifs |
+| 1986   | 4 165 042                                  | 1ère cohabitation |
+| 1988   | 4 185 501                                  | |
+| 1990   | 4 257 653                                  | |
+| 1992   | 4 330 398                                  | |
+| 1994   | 4 410 247                                  | |
+| 1995   | 4 450 000                                  | |
+| 1997   | 4 530 000                                  | Début Chirac |
+| 1998   | 4 583 810                                  | |
+| 1999   | 4 620 100                                  | |
+| 2000   | 4 699 690                                  | |
+| 2001   | 4 760 000                                  | |
+| 2002   | 4 896 422                                  | |
+| 2003   | 4 993 861                                  | |
+| 2004   | 5 075 507                                  | |
+| 2005   | 5 125 056                                  | |
+| 2006   | 5 226 801                                  | |
+| 2007   | 5 268 000                                  | Début Sarkozy |
+| 2008   | 5 300 000                                  | |
+| 2009   | 5 378 000                                  | |
+| 2010   | 5 371 000                                  | -0,1 % |
+| 2011   | 5 358 000                                  | -0,2 % |
+| 2012   | 5 381 500                                  | Début Hollande |
+| 2013   | 5 416 900                                  | |
+| 2014   | 5 448 300                                  | |
+| 2015   | 5 450 600                                  | |
+| 2016   | 5 480 200                                  | |
+| 2017   | 5 525 700                                  | Transition Hollande → Macron |
+| 2018   | 5 503 600                                  | Interpolation |
+| 2019   | 5 520 100                                  | Interpolation |
+| 2020   | 5 572 300                                  | Interpolation |
+| 2021   | 5 605 700                                  | Interpolation |
+| 2022   | 6 042 000                                  | Sources INSEE DGAFP CNFPT |
+
+<!-- ```python
+import matplotlib.pyplot as plt
+
+# Data from the markdown table
+years = [
+    1914, 1921, 1922, 1927, 1931, 1939, 1946,
+    1980, 1981, 1982, 1986, 1988, 1990, 1992, 1994, 1995,
+    1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
+    2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017,
+    2018, 2019, 2020, 2021, 2022
+]
+
+values = [
+    543271, 732926, 761000, 688000, 708000, 900000, None,
+    3902000, 3950000, 4030000, 4165042, 4185501, 4257653, 4330398, 4410247, 4450000,
+    4530000, 4583810, 4620100, 4699690, 4760000, 4896422, 4993861, 5075507, 5125056, 5226801, 5268000,
+    5300000, 5378000, 5371000, 5358000, 5381500, 5416900, 5448300, 5450600, 5480200, 5525700,
+    5503600, 5520100, 5572300, 5605700, 6042000
+]
+
+# Plot
+plt.figure(figsize=(12,6))
+plt.plot(years, values, marker="o", linestyle="-", color="tab:blue")
+
+# Labels and title
+plt.title("Évolution des effectifs de la fonction publique en France (1914–2022)")
+plt.xlabel("Année")
+plt.ylabel("Effectifs (millions)")
+plt.grid(True, linestyle="--", alpha=0.6)
+
+# Format y-axis in millions
+plt.gca().get_yaxis().set_major_formatter(lambda x, p: f"{int(x/1e6)} M")
+
+plt.tight_layout()
+plt.show()
+
+
+``` -->
+
+Puis sous forme de graphe
+
+<div align="center">
+<img src="./assets/img_04.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span></span>  -->
+</div>
+
+* Le point 2022 semble en dehors de l'épure. À mon avis on compte pas le même chose
+* On peut retenir qu'entre 1980 et 2021 la **croissance moyenne est de l'ordre de 1%** (0.89%)
+
+<!-- ```python
+# Values for 1980 and 2021
+year_start, val_start = 1980, 3902000
+year_end, val_end = 2021, 5605700
+
+# Number of years
+n_years = year_end - year_start
+
+# Compound Annual Growth Rate (CAGR)
+cagr = (val_end / val_start) ** (1 / n_years) - 1
+cagr_percentage = cagr * 100
+cagr_percentage
+
+``` -->
+
 
 
 
