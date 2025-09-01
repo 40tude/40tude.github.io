@@ -218,7 +218,7 @@ Oui, c'est vrai ça. On en a pas parlé et pourtant ça doit coûter un bras cet
 
 En fait, le chômage en France est géré par [l’Unédic](https://www.unedic.org/), un organisme paritaire (géré par les syndicats et le patronat), financé par les **cotisations employeurs et salariés**. Il fonctionne en dehors du budget de l’État au sens strict, même si du point de vue européen (Maastricht, tout ça, tout ça) il est comptabilisé dans les administrations publiques.
 
-**Note :** Je fais un petit rappel parce que ces histoires de Pole Emploi, France Travail, Assedic et Unédic c'était pas clair non plus pour moi. En 2008, c'est la fusion de l’ANPE et des Assedic (les caisses locales de l’Unédic qui collectaient les cotisations et versaient les allocations). Du coup lors de l'opération, l’Unédic a été réduite à un rôle de pilote financier et réglementaire. Elle reste gestionnaire du régime d’assurance chômage (budget, règles d’indemnisation, convention d’assurance chômage). Elle a délégué l’exécution (versement des allocations, gestion des dossiers) à France Travail (guichet unique). L’Unédic est passée en back-office : elle ne verse plus directement les allocations, mais elle en finance le paiement (par France Travail).
+**Note:** Je fais un petit rappel parce que ces histoires de Pole Emploi, France Travail, Assedic et Unédic c'était pas clair non plus pour moi. En 2008, c'est la fusion de l’ANPE et des Assedic (les caisses locales de l’Unédic qui collectaient les cotisations et versaient les allocations). Du coup lors de l'opération, l’Unédic a été réduite à un rôle de pilote financier et réglementaire. Elle reste gestionnaire du régime d’assurance chômage (budget, règles d’indemnisation, convention d’assurance chômage). Elle a délégué l’exécution (versement des allocations, gestion des dossiers) à France Travail (guichet unique). L’Unédic est passée en back-office : elle ne verse plus directement les allocations, mais elle en finance le paiement (par France Travail).
 
 #### Est-ce que l’Unédic contribue au déficit public ?
 
@@ -253,7 +253,7 @@ Bien sûr les chiffres sont arrondis
 
 * L’Unédic a lourdement pesé en 2020–2021 (près de -27 Md€ cumulés).
 * Depuis 2022, ses excédents réduisent légèrement le déficit global.
-* Sur la période 2017–2025, l’effet net du chômage est secondaire par rapport aux 3 causes qu'on a listé. On parle de quelques Mds vs quelques centaines de Mds. Ca reste des milliards d'euros mais y a un rapport 100 entre les deux.
+* Sur la période 2017–2025, l’effet net du chômage est secondaire par rapport aux 3 causes qu'on a listé (retraites, dépenses de crise, allègements fiscaux). On parle de quelques Mds vs quelques centaines de Mds. Ça reste des milliards d'euros mais y a un rapport 100 entre les deux.
 
 
 
@@ -265,18 +265,22 @@ Ceci étant précisé, revenons à nos 3 gagnants du jour
 
 ## 1. Financement des retraites : ~50 % du déficit cumulé
 
-Officiellement, le "déficit du système de retraites" est faible (quelques milliards d’€ par an selon le Conseil d'Orientation des Retraites (COR)) car on ne compte généralement que l’écart cotisations/prestations dans les caisses de retraite. Cependant, l’État complète massivement le financement des retraites par des subventions et des impôts affectés, et ces montants pèsent lourdement sur le budget. 
+Officiellement, le "déficit du système de retraites" est faible (quelques milliards d’€ par an selon le Conseil d'Orientation des Retraites (COR)) car on ne compte généralement que l’écart cotisations/prestations dans les caisses de retraite. Cependant, l’État complète massivement le financement des retraites par des subventions et des impôts affectés, et ces montants pèsent sur le budget. 
 
 Une mission flash de la Cour des comptes a chiffré la contribution réelle des retraites au déficit public à -69 Mds€ en 2023 (et -81 Mds€ prévus en 2024), soit près de la moitié du déficit public annuel ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=match%20at%20L578%20administrations%20publiques%2C,de%20la%20nation%2C%20s%E2%80%99il%20existait)). 
 
 Sur 2018–2023, cela cumule environ -420 Mds€ imputables aux retraites, ce qui représente environ 50 % des déficits publics de la période ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=dont%C2%A0%20retraites)). 
 
-Ces ordres de grandeur confirment l’intuition que "la moitié du trou budgétaire, c’est les retraites" (même si la manière de présenter ce chiffre a pu prêter à débat).
+Ces ordres de grandeur confirment l’intuition que "la moitié du trou budgétaire, c’est les retraites" (même si la manière de présenter ce chiffre peut prêter à débat).
 
-Ok, très bien mais quelles composantes expliquent un besoin de financement aussi énorme du côté des retraites ? On peut identifier quelques sous-blocs majeurs (par ordre d’importance décroissante) :
+Ok, très bien, mais quelles composantes expliquent un besoin de financement aussi énorme du côté des retraites? On peut identifier quelques sous-composantes majeures. Par ordre d’importance décroissante j'invite à monter sur scène :
 
 ### Les pensions de la fonction publique d’État: 
-Le régime des pensions civiles et militaires (PCMR) des fonctionnaires d’État est très déséquilibré. En 2023, il verse près de 60 Mds€ de prestations pour seulement ~19 Mds€ de cotisations des agents. Ca fait un rapport 3 quand même... Du coup, on  laisse à la charge de l’État environ 41 Mds€ cette année-là ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=des%20services,par)). Ce besoin de financement (couvrant les retraites des fonctionnaires civils, enseignants, militaires…) est directement comblé par le budget de l’État et constitue la composante principale du déficit lié aux retraites. L’État-employeur paye des “surcotisations” très élevées pour ses agents, et c'est un transfert budgétaire massif vers le système de retraite.
+Le régime des pensions civiles et militaires (PCMR) des fonctionnaires d’État est très déséquilibré. En 2023, il verse près de 60 Mds€ de prestations pour seulement ~19 Mds€ de cotisations des agents. Y a un rapport 3 entre les 2. Autrement dit, je verse 1, je reçois 3. Pas mal, pas mal... 
+
+Ce besoin de financement des retraites des fonctionnaires civils, enseignants, militaires… est directement comblé par le budget de l’État et constitue la composante principale du déficit lié aux retraites. L’État-employeur paye des “surcotisations” très élevées pour ses agents, et c'est un transfert budgétaire massif vers le système de retraite.
+
+Il faut réaliser qu'en 2023 on  laisse à la charge de l’État environ 41 Mds€ ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=des%20services,par)). C'est pas neutre. 
 
 
 ### Les retraites des fonctions publiques locale et hospitalière: 
@@ -292,9 +296,7 @@ Par exemple, les régimes des cheminots ou des employés de la RATP reçoivent d
 
 
 ### Les dispositifs non contributifs au sein du système de retraites: 
-Une part non négligeable des dépenses de retraite est couverte par la solidarité nationale car il s’agit de droits non financés par des cotisations directes. 
-
-Par exemple, l’État prend en charge certaines majorations ou minima de pension : 
+Une part non négligeable des dépenses de retraite est couverte par la solidarité nationale car il s’agit de droits non financés par des cotisations directes. Ça a l'air compliqué mais tu vas voir c'est très simple. Par exemple, l’État prend en charge certaines majorations ou minima de pension : 
 * La majoration de 10 % pour les parents de 3 enfants (coût ~5,2 Mds€ ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=match%20at%20L885%203%20enfants%2C,et%20des%20auxiliaires%20m%C3%A9dicaux%2C%20d%C3%A9cid%C3%A9es)))
 * Les droits gratuits accordés aux parents au foyer (≈5,6 Mds€)
 * La validation de trimestres pendant le chômage pour le compte des régimes complémentaires (≈3,7 Mds€) ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=ils%20sont%20directement%20imputables%20aux,la%20S%C3%A9curit%C3%A9%20sociale%20et%20l%E2%80%99UNEDIC))
@@ -318,7 +320,7 @@ En deux mots, vite fait.
 
 #### Agirc-Arrco 
 * Ccomplémentaire des salariés du privé
-* Organisme **paritaire et autonome**, non financé par l’État (rappelle toi Barbara, l'Unédic)
+* Organisme **paritaire et autonome**, non financé par l’État (rappelle toi Barbara, l'Unédic etc.)
 * En 2023, elle a enregistré un **excédent** de **+4,6 Md€** et elle dispose de réserves financières.
 * Son solde **n’est pas consolidé** dans la dette publique, car l’État n’a pas à couvrir ses pertes (et elle n’en fait pas porter le poids aux finances publiques).
 
@@ -374,7 +376,7 @@ En regroupant ces éléments, on explique l’essentiel du "déficit retraites" 
 
 Il faut noter que les autres branches de la Sécurité sociale (maladie, famille, chômage) ne contribuent pas autant : certaines étaient même légèrement excédentaires récemment (famille : +14 Mds hors transferts en 2023 ; Unédic : +3 Mds) tandis que l’Assurance Maladie affichait un déficit (env. -10 Mds) ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=CNAF%20%3A%20exc%C3%A9dents%20de%2014,r%C3%A9gimes%20sociaux%20et%20avec%20l%E2%80%99%C3%89tat)). 
 
-La retraite (de la fonction publique) demeure donc de loin le premier poste explicatif des déficits publics français de ces dernières années.
+La retraite de la fonction publique (et pas les retraites) demeure donc de loin le premier poste explicatif des déficits publics français de ces dernières années.
 
 
 
@@ -385,14 +387,14 @@ La retraite (de la fonction publique) demeure donc de loin le premier poste expl
 
 ## 2. Dépenses de crise (Covid, énergie…) : ~26 % du déficit cumulé
 
-Le deuxième grand facteur est lié aux crises exceptionnelles qu’a traversées la France depuis 2020. Face à la pandémie de Covid-19, puis à la flambée de l’inflation en 2022–2023, l’État a engagé des dépenses massives et ponctuelles pour soutenir l’économie et les ménages (politique du "quoi qu’il en coûte"). 
+Le deuxième grand facteur est lié aux crises exceptionnelles qu’a traversées la France depuis 2020. Face à la pandémie de Covid-19, puis à la flambée de l’inflation en 2022–2023, l’État a engagé des dépenses massives et ponctuelles pour soutenir l’économie et les ménages (le "quoi qu’il en coûte"). 
 
 Selon la Cour des comptes, ces mesures d’urgence, de relance et anti-inflation représentent environ 26 % de l’augmentation de la dette sur 2017–2023 ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)), soit 223 Mds€ nets (271 Mds€ bruts avant prise en compte des contributions de l’UE et des producteurs d’énergie) ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=,271%20milliards%20d%E2%80%99euros%20bruts%29%5B2%5D)). 
 
 En d’autres termes, un peu plus du quart du déficit cumulé ces 10 dernières années provient de dépenses directement liées aux crises.
 
 
-Décomposition des dépenses de crise majeures :
+Mettons Pareto au boulot et listons les principales dépenses de crise:
 
 ### Pandémie de Covid-19 (2020–2021) 
 L’année 2020 a connu un choc budgétaire historique : le déficit public a bondi à 211,5 Mds€ (9,2 % du PIB), alors qu’il n’était que 3,1 % du PIB en 2019 ([insee.fr](https://www.insee.fr/fr/statistiques/5347882#:~:text=Le%20d%C3%A9ficit%20public%20pour%202020,La%20dette%20des)). 
@@ -407,8 +409,13 @@ Quoi qu’il en soit, la gestion de la crise sanitaire a creusé la dette d’en
 
 
 
+
+
+
+
+
 ### Crise inflationniste et énergétique (2022–2023) 
-Alors même que le déficit Covid se résorbait, la flambée des prix de l’énergie et de l’inflation généralisée en 2022 a conduit l’État à intervenir de nouveau massivement. Un "bouclier tarifaire" a été mis en place pour plafonner les tarifs du gaz et de l’électricité pour les ménages et petites entreprises, l’État compensant aux fournisseurs la différence : cette mesure, prolongée sur 2022 et 2023, a coûté des dizaines de milliards d’euros (par exemple, ~24 Mds€ rien que pour contenir les prix de l’électricité en 2023 d’après Bercy). 
+Alors que le déficit Covid se résorbait et qu'on commençait à se remettre de nos emotions, la flambée des prix de l’énergie et de l’inflation généralisée en 2022 a conduit l’État à intervenir de nouveau massivement. Un "bouclier tarifaire" a été mis en place pour plafonner les tarifs du gaz et de l’électricité pour les ménages et petites entreprises, l’État compensant aux fournisseurs la différence : cette mesure, prolongée sur 2022 et 2023, a coûté des dizaines de milliards d’euros (par exemple, ~24 Mds€ rien que pour contenir les prix de l’électricité en 2023 d’après Bercy). 
 
 Par ailleurs, des aides inflation (chèque énergie, indemnité carburant, revalorisation du point d’indice des fonctionnaires, etc.) ont été déployées pour soutenir le pouvoir d’achat. Ces dépenses de crise énergétique sont en partie financées par des recettes exceptionnelles (taxation des "superprofits" des producteurs d’énergie, dividendes élevés d’EDF/Engie reversés à l’État, etc.), mais au net elles ont tout de même aggravé le déficit. 
 
@@ -422,13 +429,13 @@ Selon les estimations, l’ensemble mesures anti-inflation de 2022–2023 repré
 
 ## 3. Allègements fiscaux et sociaux : ~23 % du déficit cumulé
 
-Le troisième grand facteur est plus structurel (décisions politiques) : il s’agit des baisses d’impôts et cotisations décidées ces dernières années sans compensation budgétaire équivalente. Ces mesures, visant à diminuer la pression fiscale pour les ménages et entreprises, ont eu pour contrepartie une baisse des recettes de l’État (ou de la Sécu) et donc un creusement du déficit si aucune économie correspondante n’était réalisée. 
+Le troisième grand facteur est plus structurel (des décisions politiques) : il s’agit des baisses d’impôts et cotisations décidées ces dernières années sans compensation budgétaire équivalente. Ces mesures, visant à diminuer la pression fiscale pour les ménages et les entreprises, ont eu pour contrepartie une baisse des recettes de l’État (ou de la Sécu) et donc un creusement du déficit si aucune économie correspondante n’était réalisée. 
 
 D’après l’analyse de la Cour des comptes, les allègements fiscaux et sociaux représentent environ 23 % de l’augmentation de la dette depuis 2017 ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)), soit un manque à gagner cumulé de l’ordre de 195 Mds€ sur 2017–2023 ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=sur%20la%20p%C3%A9riode,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)) ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=,271%20milliards%20d%E2%80%99euros%20bruts%29%5B2%5D)). C’est donc un contributeur du même ordre de grandeur que les dépenses de crise.
 
 
 
-Listons par ordre décroissants les principales baisses de recettes depuis 2017. 
+On change pas une formule qui gagne. Listons par ordre décroissants les principales baisses de recettes depuis 2017. 
 
 ### Suppression de la taxe d’habitation pour les ménages
 Cette réforme fiscale a éliminé progressivement, de 2018 à 2023, la taxe d’habitation sur les résidences principales. Pour les ménages, le gain est d’environ 18,5 Mds€ par an une fois la mesure pleinement en place ([vie-publique.fr](https://www.vie-publique.fr/parole-dexpert/287097-la-suppression-taxe-dhabitation-quelle-reforme-pour-quels-enjeux#:~:text=des%20foyers%20restants%2C%20les%20m%C3%AAmes,s%27%C3%A9talent%20de%202021%20%C3%A0%202023)) ([vie-publique.fr](https://www.vie-publique.fr/parole-dexpert/287097-la-suppression-taxe-dhabitation-quelle-reforme-pour-quels-enjeux#:~:text=Cette%20mesure%20repr%C3%A9sente%20une%20baisse,les%20pr%C3%A9l%C3%A8vements%20obligatoires%20des%20m%C3%A9nages)). L’État a dû compenser cette perte de ressources pour les communes, principalement en leur transférant une part de TVA et de taxe foncière ([vie-publique.fr](https://www.vie-publique.fr/parole-dexpert/287097-la-suppression-taxe-dhabitation-quelle-reforme-pour-quels-enjeux#:~:text=Cette%20mesure%20repr%C3%A9sente%20une%20baisse,les%20pr%C3%A9l%C3%A8vements%20obligatoires%20des%20m%C3%A9nages)) ([vie-publique.fr](https://www.vie-publique.fr/parole-dexpert/287097-la-suppression-taxe-dhabitation-quelle-reforme-pour-quels-enjeux#:~:text=Le%20m%C3%A9canisme%20de%20,%C3%A0%20compenser%20les%20collectivit%C3%A9s%20locales)). 
@@ -446,7 +453,7 @@ Le taux nominal de l’IS a été abaissé graduellement de 33,3 % à 25 % ent
 
 En 2019, le crédit d’impôt CICE accordé aux entreprises a été converti en baisse pérenne de cotisations patronales. Cette mesure pro-emploi s’est traduite par une double dépense pour l’État en 2019 (cumul du dernier crédit et de la première baisse de charges), puis par une diminution durable des recettes de cotisations financées par l’État. Le coût du CICE transformé était d’environ 20 Mds€ par an. 
 
-Par ailleurs, le gouvernement a exonéré certaines cotisations salariales : par exemple, en 2018 la cotisation chômage des salariés a été supprimée (–2,4 % de salaire) et compensée par l’État via une hausse de CSG. 
+Par ailleurs, le gouvernement a exonéré certaines cotisations salariales : par exemple, en 2018 la cotisation chômage des salariés a été supprimée (–2,4 % de salaire) et compensée par l’État via une hausse de CSG. Si c'est pas clair, tous les salariés du privé ne payaient plus 2.4% de cotisation chômage (les entreprises continuaient à payer). Afin d'alimenter l'Unédic, l’État à augmenter la CSG de 1.7%. La CSG est payée par beaucoup plus de monde : salariés, fonctionnaires, retraités. Note qu'au passage cela accroît la dépendance de l'Unédic aux finances publiques. 
 
 D’autres exonérations ciblées sur les bas salaires ou heures supplémentaires ont été élargies. L’ensemble de ces mesures d’allègement des prélèvements sociaux en faveur de l’emploi et du pouvoir d’achat a un coût cumulé significatif (plusieurs dizaines de milliards sur la période). 
 
@@ -457,17 +464,16 @@ Une partie est intégrée dans le fameux 31 Mds€ annuels de compensations de 
 
 On peut citer la diminution de l’impôt sur le revenu pour certaines tranches (baisse de 20 % de la tranche à 14 % en 2020, coût ~5 Mds€/an), la défiscalisation des heures supplémentaires (réactivée en 2019), la suppression de certaines "petites" taxes à faible rendement, etc. 
 
-Individuellement, ces mesures ont un impact plus modeste, mais cumulées elles contribuent à la baisse tendancielle du ratio de prélèvements obligatoires. Par exemple, la loi TEPA dès 2018 a rétabli des exonérations d’heures sup (gain pour les salariés, manque à gagner pour l’État) et réduit l’ISF en IFI, allégeant la charge fiscale des contribuables fortunés (coût budgétaire de l’ordre de 3–4 Mds€/an).
+Individuellement, ces mesures ont un impact modeste, mais cumulées elles contribuent à la baisse tendancielle du ratio de prélèvements obligatoires. Par exemple, la loi TEPA dès 2018 a rétabli des exonérations des heures sup (gain pour les salariés, manque à gagner pour l’État) et réduit l’ISF en IFI, allégeant la charge fiscale des contribuables fortunés (coût budgétaire de l’ordre de 3–4 Mds€/an).
 
+Bref, ces choix de politique fiscale – bien qu’ils puissent se justifier économiquement ou socialement – ont privé l’État de recettes substantielles. Comme les dépenses n’ont pas été réduites d’autant en face, ils ont creusé le déficit. 
 
-En synthèse, ces choix de politique fiscale – bien qu’ils puissent se justifier économiquement ou socialement – ont privé l’État de recettes substantielles. Comme les dépenses n’ont pas été réduites d’autant en face, ils ont creusé le déficit. 
-
-Sur 2018–2023, la baisse des impôts sur les ménages et entreprises est d’ailleurs visible : le taux de prélèvements obligatoires est passé d’environ 45 % à 43–44 % du PIB, ce qui correspond à ces 10aines de milliards redistribués en moins dans les caisses publiques. 
+Sur 2018–2023, la baisse des impôts sur les ménages et entreprises est d’ailleurs visible : le taux de prélèvements obligatoires est passé d’environ 45 % à 43–44 % du PIB, ce qui correspond à ces dizaines de milliards redistribués en moins dans les caisses publiques. 
 
 Cela explique environ un quart du "trou" de 1000 Mds€.
 
 
-*(À noter : certaines de ces mesures ont des effets indirects positifs – par ex. stimuler la croissance – qui peuvent à terme générer des recettes supplémentaires. L’analyse ci-dessus reste comptable, à court terme.)*
+**Note:** Oui, oui, certaines de ces mesures structurelles/politiques auront peut être des effets indirects positifs – par ex. stimuler la croissance – qui peuvent à terme générer des recettes supplémentaires. Mais bon, l’analyse ci-dessus s'en tient aux chiffres et au résultats avérés. On est pas là pour jouer à Mme Irma, faire un pitch de start-up ou se faire élire.
 
 
 
@@ -478,22 +484,32 @@ Cela explique environ un quart du "trou" de 1000 Mds€.
 
 ## 4. Autres postes (reste du déficit, ~10 %)
 
-Enfin, le solde des causes (environ 10 % du cumul de déficit) provient d’une multitude d’autres évolutions budgétaires plus secondaires. On peut citer : les dépenses publiques courantes en hausse dans divers domaines sans hausses d’impôts équivalentes (par exemple, l’augmentation des dépenses de défense et de sécurité ces dernières années, les revalorisations du point d’indice des fonctionnaires hors inflation exceptionnelle, certaines mesures sectorielles comme le Ségur de la santé – hausse des salaires hospitaliers – qui coûtent ~7 Mds€/an, etc.). 
+Enfin, le solde des causes provient d’une multitude d’autres évolutions budgétaires plus secondaires. On peut citer : les dépenses publiques courantes en hausse dans divers domaines sans hausses d’impôts équivalentes (par exemple, l’augmentation des dépenses de défense et de sécurité ces dernières années, les revalorisations du point d’indice des fonctionnaires hors inflation exceptionnelle, certaines mesures sectorielles comme le Ségur de la santé – hausse des salaires hospitaliers – qui coûtent ~7 Mds€/an, etc.). 
 
 De même, des décisions comme la création de postes dans l’Éducation ou la Justice, le financement de nouvelles politiques (transition écologique, etc.) sans recettes dédiées, contribuent modestement mais sûrement au déficit si aucune économie n’est faite ailleurs. Pris isolément, ces postes n’ont pas un poids déterminant dans la dérive de 1000 Mds€, mais additionnés ils en expliquent environ 1/10. 
 
-Il convient toutefois de relativiser leur impact par rapport aux trois grands facteurs détaillés plus haut. Dans une optique Pareto, il est plus efficace de concentrer l’attention sur les retraites, les dépenses de crise et les baisses d’impôts, qui constituent l’essentiel du problème, plutôt que sur ces éléments plus diffus.
+Heu... Faut se calmer. 10% c'est pas rien mais et il convient toutefois de relativiser leur impact par rapport aux trois grands facteurs détaillés plus haut. Dans une optique Pareto, il est plus efficace de concentrer l’attention sur les retraites, les dépenses de crise et les baisses d’impôts, qui constituent l’essentiel du problème, plutôt que sur ces éléments plus diffus.
+
+
+
+
+
+
+
+
 
 
 
 
 ## Résumé de Pareto
 
-### Les postes principaux
+Après le blabla, des résultats! Maintenant qu'on sait de quoi on parle, l'idée c'est d'essayer de synthétiser tout ça sous forme dans de tableaux. Et oui bien sûr, les chiffres sont arrondis, ils sont pas facile à trouver, faut être prudent et pas hésiter à les vérifier avec ton ami Google. 
+
+### Pareto sur les sources de la dette
 
 | Poste                        | % du déficit cumulé | Montant estimé 2017–2025 |
 |------------------------------|---------------------|--------------------------|
-| Retraites                    | ~50 %               | ~500 Mds€                |
+| Retraites des fonctionnaires | ~50 %               | ~500 Mds€                |
 | Dépenses de crise            | ~26 %               | ~260 Mds€                |
 | Allègements fiscaux/sociaux  | ~23 %               | ~230 Mds€                |
 | Autres dépenses              | ~10 %               | ~100 Mds€                |
@@ -507,9 +523,9 @@ Sources:
 * [Cour des comptes](https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites?utm_source=chatgpt.com)
 
 
-### Pareto² sur les retraites
+### Pareto² sur les retraites des fonctionnaires
 
-| Retraites                                                      | % de 500 Mds€ | Montant estimé 2017–2025 |
+| Retraites des fonctionnaires                                   | % de 500 Mds€ | Montant estimé 2017–2025 |
 |----------------------------------------------------------------|---------------|--------------------------|
 | Pensions civiles & militaires (fonction publique d’État)       | ~45 %         | ~225 Mds€                |
 | FP territoriale & hospitalière (CNRACL / besoins récurrents(i))| ~25 %         | ~125 Mds€                |
@@ -551,9 +567,9 @@ Sources:
 
 
 
-### Pareto² sur les allègements fiscaux
+### Pareto² sur les allègements fiscaux/sociaux
 
-| Allègements fiscaux/sociaux (sous-blocs)                                  | % de 230 Mds€ | Montant estimé 2017–2025 |
+| Allègements fiscaux/sociaux                                                | % de 230 Mds€ | Montant estimé 2017–2025 |
 |----------------------------------------------------------------------------|---------------|--------------------------|
 | Suppression taxe d’habitation (perte État, comp. collectivités)            | ~25 %         | ~ 57 Mds€                |
 | Baisse du taux d’IS (33,3 % → 25 %)                                        | ~20 %         | ~ 46 Mds€                |
@@ -586,22 +602,22 @@ Je n'aime pas du tout l'idée faire focaliser notre attention sur les derniers 1
 Faut juste pas oublier qu'on paie des intérêts sur les 3350 Mds€ de dette et pas uniquement sur les 1000 derniers. Y a un facteur 3 entre les deux.
 
 Ceci posé, une analyse Pareto du déficit public français accumulé sur la dernière décennie fait ressortir les causes dominantes suivantes: 
-* le financement des retraites arrive en tête (la moitié du total)
+* le financement des retraites de la fonction publique arrive largement en tête (la moitié du total)
 * suivi par les dépenses exceptionnelles liées aux crises (un quart+)
 * les allègements fiscaux/socials consentis sans contrepartie budgétaire (un quart-)
 
-Ces trois blocs expliquent à eux seuls près de 90 % du déficit cumulé. Chacun de ces blocs présente lui-même une concentration interne : par exemple, dans les retraites, le déficit des régimes publics (fonctionnaires d’État, territoriaux, régimes spéciaux) constitue l’essentiel.
+Ces trois blocs expliquent à eux seuls près de 90 % du déficit cumulé (montant de la dette sur la période). Chacun de ces blocs présente lui-même une concentration interne : par exemple, dans les retraites, le déficit des régimes publics (fonctionnaires d’État, territoriaux, régimes spéciaux) constitue l’essentiel.
 
 L'approche 80/20 a le mérite de faire ressortir rapidement les leviers d’action qu'il faut comprendre et dont on doit parler en premier avant de se disperser sur des sources mineures du déficit. 
 
-Par contre, une fois les blocs identifiés, il faut faire l'effort de refaire l'analyse Pareto sur chacun d'entre eux. En effet, si on ne le fait pas, on lâche le mot "retraites" en pâture sur les plateaux télé sans expliquer que cela ne concerne que les retraites des fonctionnaires. Ou bien on parle de "cadeaux fiscaux" en oubliant de préciser que le premier d'entre eux sur la période c'est la suppression de la taxe d'habitation.
+Par contre, une fois les blocs identifiés, il faut refaire l'analyse Pareto sur chacun d'entre eux. En effet, si on ne le fait pas, on lâche le mot "retraites" en pâture sur les plateaux télé sans expliquer que cela ne concerne que les retraites de la fonction publique. Ou bien on parle de "cadeaux fiscaux" en oubliant de préciser que le premier d'entre eux sur la période c'est la suppression de la taxe d'habitation.
 
 Vu que je propose de faire du Pareto sur du Pareto, on pourrait presque parler de Pareto².
 
 Bref : 
-1. maîtrise du financement des retraites publiques
+1. maîtrise du financement des retraites de la fonction publique
 1. contrôle des dépenses en cas de choc 
-1. compensations des baisses de recettes fiscales 
+1. compensations immédiate des baisses de recettes fiscales 
 
 
 Le reste c'est de la poésie.
