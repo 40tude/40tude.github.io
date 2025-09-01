@@ -12,9 +12,9 @@ last_modified_date : 2025-08-31 18:00:00
 # Déficit et dette de la France : comprendre l’essentiel avec la règle des 80/20
 {: .no_toc }
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b>Almost finished</b></span>    
-</h2>
+</h2> -->
 
 
 ## TL;DR
