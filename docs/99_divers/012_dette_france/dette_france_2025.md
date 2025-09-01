@@ -13,7 +13,7 @@ last_modified_date : 2025-08-31 18:00:00
 {: .no_toc }
 
 <h2 align="center">
-<span style="color:orange"><b>Still under construction</b></span>    
+<span style="color:orange"><b>Almost finished</b></span>    
 </h2>
 
 
@@ -24,7 +24,6 @@ last_modified_date : 2025-08-31 18:00:00
 - Fin Q1 2025 elle est de 3350 milliards d'€ ([lien](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique))
 - Le focus d'Août 2025 sur le chiffre de 1000 milliards ne concerne que la période 2017-2025 (présidence Macron)
 - La règle de Pareto est respectée et **90 %** de ce déficit n'est dû qu'à 3 causes
-- Dans l'ordre :  
   1. **Retraites** (celles de la fonction publique, celles des régimes spéciaux, 500 Mds€) 
   2. **Dépenses de crise** (Covid, énergie, inflation, 260 Mds€)
   3. **Baisses d’impôts et cotisations** (taxe d'habitation, IS, 230 Mds€)  
@@ -55,17 +54,23 @@ Je veux juste m'assurer qu'on est bien sur la même ligne.
 {: .no_toc }
 Le **principe de Pareto**, aussi appelé **règle des 80/20**, tire son nom de l’économiste italien [Vilfredo Pareto](https://fr.wikipedia.org/wiki/Vilfredo_Pareto) qui avait observé au XIXᵉ siècle que 80 % des terres en Italie étaient possédées par 20 % de la population. Plus largement, ce principe décrit une régularité fréquente : **une minorité de causes produit la majorité des effets**. Cela ne signifie pas que les chiffres soient toujours exactement 80/20, mais plutôt que les phénomènes sont souvent très concentrés.
 
+<div align="center">
+<img src="./assets/img_03.webp" alt="" width="225" loading="lazy"/><br/>
+<!-- <span>In space, no one can hear you scream.</span>  -->
+</div>
+
+
 Exemples:
 * Dans une armoire, **20 % des vêtements sont portés 80 % du temps**. By the way, si t'as pas mis cette chemise l'année dernière, donne-la, tu ne le remettras plus.
-* En entreprise, **20 % des clients génèrent 80 % du chiffre d’affaires**.
-* Dans un service informatique, **20 % des bugs causent 80 % des incidents signalés**.
+* En entreprise, 20 % des clients génèrent 80 % du chiffre d’affaires.
+* Dans un service informatique, 20 % des bugs causent 80 % des incidents signalés.
 
-On entend aussi parler de la règle du 50/1. C'est la même chose. **1% des clients qui appellent le support technique représentent 50% des appels**. On parle aussi de loi de puissance mais ça c'est vraiment pour se la péter à table en famille.
+On entend aussi parler de la règle du 50/1. Elle découle du 80/20 et c'est le même principe. **1% des clients qui appellent le support technique représentent 50% des appels**. On parle aussi de **loi de puissance** mais ça c'est vraiment pour se la péter à table en famille.
 
 
 ### Déficit
 {: .no_toc }
-Le **déficit budgétaire** désigne le solde négatif des finances publiques sur une période donnée (sur un an par exemple) : c’est la différence entre les recettes et les dépenses sur cet exercice, cette durée ([lien](https://fr.wikipedia.org/wiki/D%C3%A9ficit_public_de_la_France)). 
+Le **déficit budgétaire** désigne le solde négatif des finances publiques sur une période donnée (sur un an par exemple) : c’est la **différence entre les recettes et les dépenses** sur cet exercice, cette durée ([lien](https://fr.wikipedia.org/wiki/D%C3%A9ficit_public_de_la_France)). 
 
 Pour faire le parallèle avec une personne, c'est, à la fin de l'année, la différence entre ce qui est rentré (salaire, héritage, loto...) et ce qui est dépensé (2 Porsche, 4 Rolex...)
 
@@ -73,7 +78,7 @@ Pour faire le parallèle avec une personne, c'est, à la fin de l'année, la dif
 {: .no_toc }
 La **dette publique** c'est le **cumul** à un instant `t` de tous les déficits non résorbés. C'est l’ensemble des emprunts accumulés par les administrations publiques au fil du temps, résultant de la somme des déficits annuels non résorbés ([lien](https://fr.wikipedia.org/wiki/Dette_publique_de_la_France#:~:text=engagements%20financiers%2C%20sous%20forme%20d%27emprunts%2C,des%20d%C3%A9ficits%20publics%20annuels%20cumul%C3%A9s)). 
 
-Pour faire le parallèle avec une personne. Par exemple, 5 ans après qu'il a commencé à travailler, il se pose, il fait l'inventaire de tout ce qu'il doit rembourser et il vérifie combien ça lui coûte par an ou par mois.
+Pour faire le parallèle avec une personne. Par exemple, 5 ans après qu'il a commencé à travailler, il se pose, il fait l'inventaire de tout ce qu'il doit rembourser et il vérifie combien ça lui coûte par mois.
 
 **Note 1:**
 On parle de la dette publique, pas de la dette de l'État. 
@@ -92,11 +97,11 @@ La dette publique est plus large que la dette de l’État car elle englobe **l�
 **Note 2:**
 C'est toujours pour m'assurer qu'on est alignés. 
 
-C'est pas grave d'avoir de la dette. À notre époque, c'est même plutôt considéré comme une bonne chose. En effet, qui dit dette, dit emprunt auprès d'une banque (pour acheter une maison par exemple). Contrairement à ce que l'on pense la banque ne sort les sous de ses coffres. Elle n'a tout simplement pas assez de liquidités pour le faire mais par contre l’État lui a donné le droit de créer, à partir de rien, de la monnaie : la banque crée de la monnaie fiduciaire à qui tout le monde fait confiance. Cet argent "fictif" est injectée dans l'économie réelle pour payer les artisans et les matériaux et c'est ça qui fait tourner l'économie. Mais bon, ç'est pas le sujet ici. Ce qu'il faut retenir c'est que c'est OK d'avoir de la dette. 
+**C'est pas grave d'avoir de la dette**. À notre époque, c'est même plutôt considéré comme une bonne chose. En effet, qui dit dette, dit emprunt auprès d'une banque (pour acheter une maison par exemple). Contrairement à ce que l'on pense la banque ne sort les sous de ses coffres. Elle n'a tout simplement pas assez de liquidités pour le faire mais par contre l’État lui a donné le droit de créer, à partir de rien (ex nihilo), de la monnaie : la banque crée de la monnaie scripturale (inscrite "en écriture") à qui tout le monde fait confiance. Cet argent "fictif" est injecté dans l'économie réelle pour payer les artisans et les matériaux et c'est ça qui fait tourner l'économie. Mais bon, ç'est pas le sujet ici. Ce qu'il faut retenir c'est que c'est OK d'avoir de la dette. 
 
 Par contre il est important pour une personne (comme pour un pays) d'être capable de payer ses traites (intérêts et capital) tous les mois. Là, pour le coup, on revient à notre sujet car si y a trop de dettes, le remboursement de la dette va coûter tellement cher qu'on sera même plus capable de payer les intérêts. On ne remboursera jamais le capital et on va trainer cet emprunt ad vitam æternam. 
 
-Heu... Par contre faut pas oublier qu'une personne est mortelle ce qui n'est généralement pas le cas d'un pays. C'est peut être un détails pour vous mais pour moi ça veut dire beaucoup. Ca veut dire, en autres, qu'un pays à généralement plus de marges de manœuvre qu'un particulier. C'est vrai jusqu'au moment où il n'en a plus et où ses créanciers lui envoient le troïka du FMI (ou les huissiers). Et là... Ca saigne...    
+Heu... Par contre faut pas oublier qu'une personne est mortelle ce qui n'est généralement pas le cas d'un pays. C'est peut être un détails pour vous mais pour moi ça veut dire beaucoup. Ca veut dire, en autres, qu'un pays à généralement plus de marges de manœuvre qu'un particulier. C'est vrai jusqu'au moment où il n'en a plus et où ses créanciers lui envoient la [troïka du Européenne](https://fr.wikipedia.org/wiki/Tro%C3%AFka_(politique_europ%C3%A9enne)) (ou les huissiers). Et là... Ça saigne...    
 
 
 Bref, le déficit de chaque année vient grossir la dette. In other words, le déficit est une grandeur mesurée sur une période donnée, la dette est un stock mesuré à un moment donné ([lien](https://www.vie-publique.fr/fiches/21878-les-differences-entre-le-deficit-budgetaire-et-la-dette-de-letat)). 
@@ -149,7 +154,14 @@ Depuis **1975, le budget de l’État est chaque année déficitaire** en France
 
 
 
-## Le chiffre de "1000 milliards":
+## Le chiffre de "1000 milliards"
+
+Je trouve que ce titre a un petit côté ou "Cent Mille Dollars au soleil" ou "Mélodie en sous-sol"
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ja2b9vvQLhQ?si=wcleRJO4pgCqjfD0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 
 En août 2025 on parle beaucoup des "1000 milliards d’euros de déficit". Perso je ne comprenais pas d'où ça venait car j'avais en tête un chiffre beaucoup plus élevé.
 
@@ -171,7 +183,7 @@ D’ici fin 2025, on atteindra près de 1000 Mds d’endettement supplémentair
 
 Pour comprendre cette augmentation, il faut revenir aux causes réelles : elles sont multiples, mais le débat public les brouille tellement qu’on finit par tout confondre — moi le premier.
 
-Par exemple, une commission d'enquête présidée par le sénateur Gay annonce cet été [211 milliards](https://www.publicsenat.fr/actualites/economie/un-cout-annuel-de-211-milliards-deuros-la-commission-denquete-du-senat-sur-les-aides-publiques-aux-entreprises-reclame-un-choc-de-transparence) annuels d'aides publics aux entreprises. Allez, un autre exemple pour la route avec le premier ministre Bayrou qui annonce que "sur les 1 000 Mds€ de dette supplémentaires accumulées en dix ans, les retraites représentent 50% ([basta.media](https://basta.media/selon-bayrou-la-dette-publique-serait-due-au-financement-des-retraites-c-est-faux#:~:text=%C2%AB%C2%A0Sur%20les%20plus%20de%201000,rien%C2%A0%C2%BB%2C%20souffle%20l%E2%80%99%C3%A9conomiste%20Micha%C3%ABl%20Zemmour), [bfmtv.com](https://www.bfmtv.com/economie/economie-social/finances-publiques/francais-bayrou-s-en-prend-aux-boomers-les-retraites-beneficient-ils-d-un-traitement-privilegie_AV-202508280516.html#:~:text=%3E%20Mais%20,a%20expliqu%C3%A9%20l%27%C3%A9lu)).
+Par exemple, une commission d'enquête présidée par le sénateur Gay annonce cet été [211 milliards](https://www.publicsenat.fr/actualites/economie/un-cout-annuel-de-211-milliards-deuros-la-commission-denquete-du-senat-sur-les-aides-publiques-aux-entreprises-reclame-un-choc-de-transparence) annuels d'aides publics aux entreprises. Allez, un autre exemple pour la route avec le premier ministre Bayrou qui annonce que "sur les 1000 Mds€ de dette supplémentaires accumulées en dix ans, les retraites représentent 50% ([basta.media](https://basta.media/selon-bayrou-la-dette-publique-serait-due-au-financement-des-retraites-c-est-faux#:~:text=%C2%AB%C2%A0Sur%20les%20plus%20de%201000,rien%C2%A0%C2%BB%2C%20souffle%20l%E2%80%99%C3%A9conomiste%20Micha%C3%ABl%20Zemmour), [bfmtv.com](https://www.bfmtv.com/economie/economie-social/finances-publiques/francais-bayrou-s-en-prend-aux-boomers-les-retraites-beneficient-ils-d-un-traitement-privilegie_AV-202508280516.html#:~:text=%3E%20Mais%20,a%20expliqu%C3%A9%20l%27%C3%A9lu)).
 
 
 C'est vrai, c'est pas vrai? J'en sais rien. Et puis par exemple dans le cas des retraites, on parle de quelles retraites exactement. Le truc auquel je cotise est en faillite? Il pourra pas payer ma retraite? C'est pas clair cette histoire...
@@ -299,7 +311,7 @@ Ces ordres de grandeur confirment l’intuition que "la moitié du trou budgéta
 
 Ok, très bien, mais quelles composantes expliquent un besoin de financement aussi énorme du côté des retraites? On peut identifier quelques sous-composantes majeures. Par ordre d’importance décroissante j'invite à monter sur scène :
 
-### Les pensions de la fonction publique d’État: 
+### Les pensions de la fonction publique d’État
 {: .no_toc }
 
 Le régime des pensions civiles et militaires (PCMR) des fonctionnaires d’État est très déséquilibré. En 2023, il verse près de 60 Mds€ de prestations pour seulement ~19 Mds€ de cotisations des agents. Y a un rapport 3 entre les 2. Autrement dit, je verse 1, je reçois 3. Pas mal, pas mal... 
@@ -309,7 +321,7 @@ Ce besoin de financement des retraites des fonctionnaires civils, enseignants, m
 Il faut réaliser qu'en 2023 on  laisse à la charge de l’État environ 41 Mds€ ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=des%20services,par)). C'est pas neutre. 
 
 
-### Les retraites des fonctions publiques locale et hospitalière: 
+### Les retraites des fonctions publiques locale et hospitalière
 {: .no_toc }
 
 Le régime de retraite CNRACL (agents des collectivités locales et personnels hospitaliers) est déficitaire. En 2024, il présente environ 63 Mds€ de dépenses pour seulement ~19 Mds€ de cotisations normales, soit un besoin de financement de ~44 Mds€ ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=match%20at%20L735%20besoin%20de,charges%20couvert%20par%209%20Mds)). 
@@ -318,14 +330,14 @@ Du coup, les retraites des agents publics locaux/hospitaliers pèsent elles auss
 
 
 
-### Les régimes spéciaux déficitaires:
+### Les régimes spéciaux déficitaires
 {: .no_toc }
 
 Plusieurs régimes de retraite spécifiques (SNCF, RATP, Mines, marins, Opéra, etc.) ont des dépenses bien supérieures à leurs cotisants. L’État comble ces déséquilibres récurrents à hauteur d’environ 8 Mds€ par an ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=3,des%20Marins%2C%20dont%20le%20d%C3%A9s%C3%A9quilibre)). 
 Par exemple, les régimes des cheminots ou des employés de la RATP reçoivent des subventions d’équilibre pour payer les pensions. Ce poste, quoique moins massif que les fonctions publiques, représente tout de même près de ~8 à 10 % du total du "trou" des retraites.
 
 
-### Les dispositifs non contributifs au sein du système de retraites: 
+### Les dispositifs non contributifs au sein du système de retraites
 {: .no_toc }
 
 Une part non négligeable des dépenses de retraite est couverte par la solidarité nationale car il s’agit de droits non financés par des cotisations directes. Ça a l'air compliqué mais tu vas voir c'est très simple. Par exemple, l’État prend en charge certaines majorations ou minima de pension : 
@@ -346,7 +358,7 @@ En 2023, environ 31 Mds€ de ressources publiques servaient à compenser de te
 
 En deux mots, vite fait. 
 
-#### CNAV:
+#### CNAV
 {: .no_toc }
 
 * Caisse nationale d’assurance vieillesse, régime de base des salariés du privé
@@ -361,7 +373,7 @@ En deux mots, vite fait.
 * En 2023, elle a enregistré un **excédent** de **+4,6 Md€** et elle dispose de réserves financières.
 * Son solde **n’est pas consolidé** dans la dette publique, car l’État n’a pas à couvrir ses pertes (et elle n’en fait pas porter le poids aux finances publiques).
 
-#### Pourquoi ça reste secondaire dans l’analyse Pareto ?
+#### Pourquoi ça reste secondaire dans l’analyse Pareto?
 {: .no_toc }
 
 * Seule la CNAV peut peser négativement sur la dette publique certaines années.
@@ -403,6 +415,47 @@ Ce que l'on sait:
 
 
 
+
+
+### Heu... On parle de combien de personnes?
+{: .no_toc }
+
+* Un peu plus de **6 millions** de personnes en 2022
+    * 5.76 millions d'agents en 2022 
+    * 281 000 militaires et personnels civils qui sont des fonctionnaires de droit public classiques
+    * SNCF, RATP...
+
+Cela se ventile de la façon suivante:
+
+* Fonctionnaires de la fonction publique d'État (FPE) 
+    * 2022
+    * environ 2,46 millions d'agents 
+    * Hors militaires et contrats aidés 
+    * Ce chiffre inclut les enseignants.
+* Fonctionnaires des fonctions publiques territoriale (FPT) et hospitalière (FPH) 
+    * 2022
+    * Environ 3.3 millions d'agents.
+        * Fonction publique territoriale (FPT) : Environ 2.06 M d'agents (communes, départements, régions, intercommunalités).
+        * Fonction publique hospitalière (FPH) : Environ 1,24 M d'agents (hôpitaux, EHPAD, etc.).
+* Militaires
+    * 2022
+    * Terre : 114 000
+    * Marine : 44 000
+    * Air : 42 000
+    * Services communs : 6 000
+    * Personnel civil 76 000
+* SNCF, RATP...
+    * J'ai pas trouvé
+    * SNCF 270 000 tous statuts (ne donne pas le nombre de fonctionnaires seul)
+    * RATP 70 000 tous statuts
+    * Opéra : 1 600
+
+Sources : 
+* Site de l'INSEE (Institut National de la Statistique et des Études Économiques) 
+* Site de la DGAFP (Direction Générale de l'Administration et de la Fonction Publique)
+* Site du CNFPT (Centre National de la Fonction Publique Territoriale) 
+* "Chiffres clés de la fonction publique - Édition 2023" (données 2022)
+* SNCF, RATP...
 
 
 
@@ -666,7 +719,7 @@ L'approche 80/20 a le mérite de faire ressortir rapidement les leviers d’acti
 
 Par contre, une fois les blocs identifiés, il faut refaire l'analyse Pareto sur chacun d'entre eux. En effet, si on ne le fait pas, on lâche le mot "retraites" en pâture sur les plateaux télé sans expliquer que cela ne concerne que les retraites de la fonction publique. Ou bien on parle de "cadeaux fiscaux" en oubliant de préciser que le premier d'entre eux sur la période c'est la suppression de la taxe d'habitation.
 
-Vu que je propose de faire du Pareto sur du Pareto, on pourrait presque parler de Pareto².
+Vu que je propose de faire du Pareto sur du Pareto, on pourrait parler de Pareto².
 
 Bref : 
 1. maîtrise du financement des retraites de la fonction publique
