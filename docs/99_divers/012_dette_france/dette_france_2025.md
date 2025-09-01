@@ -843,10 +843,14 @@ Sources :
 * [Igas](https://igas.gouv.fr/sites/igas/files/2024-09/Rapport%20Igas-IGF-%20IGA%20Situation%20financi%C3%A8re%20de%20la%20cnracl.pdf)
 
 
-## Conclusion
-Je n'aime pas du tout l'idée faire focaliser notre attention sur les derniers 1000 Mds€ de dette et d'occulter par la même occasion le problème de fond : les 3350 Mds€ de dettes que nous avons alors que notre PIB était de [2917](https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut_de_la_France) Mds€ en 2024. 
 
-Faut juste pas oublier qu'on paie des intérêts sur les 3350 Mds€ de dette et pas uniquement sur les 1000 derniers. Y a un facteur 3 entre les deux.
+
+## Conclusion
+Je n’aime pas l’idée qu’on agite sans cesse le chiffon rouge des "1000 derniers milliards" de déficit comme si tout venait de là, en oubliant l’essentiel : la dette totale de [3350 Mds€](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique), bien supérieure à notre PIB de [2917](https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut_de_la_France) (2024).
+
+C’est cette montagne de dette qui génère les intérêts que nous payons chaque année, pas seulement la tranche la plus récente.
+
+Avoir de la dette n’est pas un problème en soi, mais en avoir trop devient vite insoutenable. Or, depuis 1975, aucun budget voté n’a été à l’équilibre : au départ, on pouvait justifier un peu de déficit pour investir dans la recherche, l’éducation, la défense… Mais aujourd’hui, avec un niveau d’endettement déjà critique, continuer à voter des budgets déficitaires revient à ignorer le problème.
 
 Ceci posé, une analyse Pareto du déficit public français accumulé sur la dernière décennie fait ressortir les causes dominantes suivantes: 
 * le financement des retraites de la fonction publique arrive largement en tête (la moitié du total)
