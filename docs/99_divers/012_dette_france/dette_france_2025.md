@@ -10,6 +10,7 @@ last_modified_date : 2025-08-31 18:00:00
 ---
 
 # Déficit et dette de la France : comprendre l’essentiel avec la règle des 80/20
+{: .no_toc }
 
 <h2 align="center">
 <span style="color:orange"><b>Still under construction</b></span>    
@@ -17,6 +18,8 @@ last_modified_date : 2025-08-31 18:00:00
 
 
 ## TL;DR
+{: .no_toc }
+
 - Depuis 73 la dette française ne cesse d'augmenter (Giscard est ministre des finances)
 - Fin Q1 2025 elle est de 3350 milliards d'€ ([lien](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique))
 - Le focus d'Août 2025 sur le chiffre de 1000 milliards ne concerne que la période 2017-2025 (présidence Macron)
@@ -34,6 +37,12 @@ last_modified_date : 2025-08-31 18:00:00
 <img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>In space, no one can hear you scream.</span>  -->
 </div>
+
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
 
 
@@ -221,6 +230,7 @@ En fait, le chômage en France est géré par [l’Unédic](https://www.unedic.o
 **Note:** Je fais un petit rappel parce que ces histoires de Pole Emploi, France Travail, Assedic et Unédic c'était pas clair non plus pour moi. En 2008, c'est la fusion de l’ANPE et des Assedic (les caisses locales de l’Unédic qui collectaient les cotisations et versaient les allocations). Du coup lors de l'opération, l’Unédic a été réduite à un rôle de pilote financier et réglementaire. Elle reste gestionnaire du régime d’assurance chômage (budget, règles d’indemnisation, convention d’assurance chômage). Elle a délégué l’exécution (versement des allocations, gestion des dossiers) à France Travail (guichet unique). L’Unédic est passée en back-office : elle ne verse plus directement les allocations, mais elle en finance le paiement (par France Travail).
 
 #### Est-ce que l’Unédic contribue au déficit public ?
+{: .no_toc }
 
 * Oui quand l’Unédic est en déficit, son besoin de financement s’ajoute au déficit public (car Eurostat consolide l’ensemble APU (admin. publique) : État, Sécurité sociale, collectivités locales, organismes divers).
 * À l’inverse, quand l’Unédic est en excédent, il contribue à réduire le déficit public.
@@ -231,6 +241,7 @@ En fait, le chômage en France est géré par [l’Unédic](https://www.unedic.o
 * **2022–2023** : amélioration économique → l’Unédic redevient excédentaire (≈ +3 Mds€ en 2023 selon ses comptes), ce qui allège légèrement le déficit public global.
 
 #### Impact sur la dette publique
+{: .no_toc }
 
 * On l'a dit, le chômage contribue au déficit et à la dette si l’Unédic est déficitaire. Il y a alors émission d’obligations Unédic sur les marchés. Cette dette est comptabilisée dans la dette publique au sens Maastricht.
 * Depuis 2022, l’Unédic est plutôt excédentaire, donc actuellement le chômage ne pèse pas sur le déficit global, au contraire.
@@ -238,6 +249,8 @@ En fait, le chômage en France est géré par [l’Unédic](https://www.unedic.o
 
 
 #### Déficit ou excédent de l’Unédic sur la période 2017-2025
+{: .no_toc }
+
 Bien sûr les chiffres sont arrondis
 
 | Année        | Solde Unédic (≈) | Contexte principal                               | Contribution au déficit public |
@@ -309,22 +322,28 @@ En 2023, environ 31 Mds€ de ressources publiques servaient à compenser de te
 
 
 
-### Heu...T'es en train de dire que CNAV et Agirc-Arrco  n'impactent pas la dette publique ?
+### Heu...T'es en train de dire que CNAV et Agirc-Arrco  n'impactent pas la dette publique?
 
 En deux mots, vite fait. 
 
 #### CNAV:
+{: .no_toc }
+
 * Caisse nationale d’assurance vieillesse, régime de base des salariés du privé
 * Elle est intégrée à la **Sécurité sociale**, donc ses déficits **pèsent directement** sur le déficit et la dette publique.
 * Exemple : en 2023, la CNAV a affiché un **déficit** d’environ –3,6 Md€.
 
 #### Agirc-Arrco 
+{: .no_toc }
+
 * Ccomplémentaire des salariés du privé
 * Organisme **paritaire et autonome**, non financé par l’État (rappelle toi Barbara, l'Unédic etc.)
 * En 2023, elle a enregistré un **excédent** de **+4,6 Md€** et elle dispose de réserves financières.
 * Son solde **n’est pas consolidé** dans la dette publique, car l’État n’a pas à couvrir ses pertes (et elle n’en fait pas porter le poids aux finances publiques).
 
-#### Pourquoi ça reste secondaire dans l’analyse Pareto
+#### Pourquoi ça reste secondaire dans l’analyse Pareto ?
+{: .no_toc }
+
 * Seule la CNAV peut peser négativement sur la dette publique certaines années.
 * Sur la période 2017–2025, son déficit cumulé reste modeste comparé aux 500 Mds€ liés au financement des retraites publiques (fonctionnaires, CNRACL, régimes spéciaux, compensations).
 
