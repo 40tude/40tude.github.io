@@ -25,8 +25,9 @@ last_modified_date : 2025-08-31 18:00:00
   1. **Retraites** (celles de la fonction publique, celles des régimes spéciaux, 500 Mds€) 
   2. **Dépenses de crise** (Covid, énergie, inflation, 260 Mds€)
   3. **Baisses d’impôts et cotisations** (taxe d'habitation, IS, 230 Mds€)  
-- Dans chacun des blocs, la règle de **Pareto** s'applique encore et quelques catégories sont responsables de 80% des montants (ex : dans les retraites, 80 % du déficit = pensions fonctionnaires + CNRACL + régimes spéciaux).  
-- Il ne suffit pas de dire “les retraites” : une analyse **Pareto²** montre que seules quelques sous-parties expliquent l’essentiel du déficit. Tout le monde est concerné, mais tout le monde n’est pas responsable. 
+- Dans chaque catégorie, la règle de **Pareto** est encore vérifiée: une minorité de sous-catégories est responsable de 80% des montants (dans les retraites, 80 % du déficit = pensions fonctionnaires + CNRACL + régimes spéciaux)
+- Il n'est pas suffisant de dire “les retraites” : une analyse **Pareto²** montre que seules quelques catégories expliquent l’essentiel du déficit
+- Il est nécessaire de nommer les causes pour ne pas culpabiliser inutilement tout le monde, établir les priorités et réfléchir sur ce qui compte vraiment  
 
 
 <div align="center">
@@ -53,14 +54,14 @@ On entend aussi parler de la règle du 50/1. C'est la même chose. **1% des clie
 
 
 ### Déficit
-Le **déficit budgétaire** désigne le solde négatif des finances publiques sur une période donnée (sur un an typiquement) : c’est la différence entre les recettes et les dépenses sur cet exercice, cette durée ([lien](https://fr.wikipedia.org/wiki/D%C3%A9ficit_public_de_la_France)). 
+Le **déficit budgétaire** désigne le solde négatif des finances publiques sur une période donnée (sur un an par exemple) : c’est la différence entre les recettes et les dépenses sur cet exercice, cette durée ([lien](https://fr.wikipedia.org/wiki/D%C3%A9ficit_public_de_la_France)). 
 
 Pour faire le parallèle avec une personne, c'est, à la fin de l'année, la différence entre ce qui est rentré (salaire, héritage, loto...) et ce qui est dépensé (2 Porsche, 4 Rolex...)
 
 ### Dette
 La **dette publique** c'est le **cumul** à un instant `t` de tous les déficits non résorbés. C'est l’ensemble des emprunts accumulés par les administrations publiques au fil du temps, résultant de la somme des déficits annuels non résorbés ([lien](https://fr.wikipedia.org/wiki/Dette_publique_de_la_France#:~:text=engagements%20financiers%2C%20sous%20forme%20d%27emprunts%2C,des%20d%C3%A9ficits%20publics%20annuels%20cumul%C3%A9s)). 
 
-Pour faire le parallèle avec une personne. Par exemple, 5 ans après qu'il a commencé à travaillé, il se pose et fait l'inventaire de tout ce qu'il doit rembourser et il vérifie combien ça lui coûte par an.
+Pour faire le parallèle avec une personne. Par exemple, 5 ans après qu'il a commencé à travailler, il se pose, il fait l'inventaire de tout ce qu'il doit rembourser et il vérifie combien ça lui coûte par an ou par mois.
 
 **Note 1:**
 On parle de la dette publique, pas de la dette de l'État. 
@@ -70,22 +71,33 @@ On parle de la dette publique, pas de la dette de l'État.
   * Collectivités locales,
   * Sécurité sociale (dont Unédic, retraites, hôpitaux),
   * et divers organismes publics.
-Elle est plus large que la dette de l’État car elle englobe **l’ensemble du secteur public**. 
+
+La dette publique est plus large que la dette de l’État car elle englobe **l’ensemble du secteur public**. 
 
 
 
 
 **Note 2:**
-C'est toujours pour m'assurer qu'on est alignés. C'est pas grave d'avoir un peu de dette. À notre époque, c'est même plutôt considéré comme une bonne chose car, qui dit dette, dit emprunt (on peut penser à l'achat d'une maison par exemple) et c'est ça qui fait tourner l'économie (mais bon, ç'est pas le sujet ici). 
+C'est toujours pour m'assurer qu'on est alignés. 
 
-Par contre il est important pour une personne (comme pour un pays) d'être capable de payer ses traites (intérêts et capital) tous les mois. Là, pour le coup, on revient à notre sujet car si y a trop de dettes, le remboursement de la dette va coûter tellement cher qu'on sera même plus capable de payer les intérêts. 
+C'est pas grave d'avoir de la dette. À notre époque, c'est même plutôt considéré comme une bonne chose. En effet, qui dit dette, dit emprunt auprès d'une banque (pour acheter une maison par exemple). Contrairement à ce que l'on pense la banque ne sort les sous de ses coffres. Elle n'a tout simplement pas assez de liquidités pour le faire mais par contre l’État lui a donné le droit de créer, à partir de rien, de la monnaie : la banque crée de la monnaie fiduciaire à qui tout le monde fait confiance. Cet argent "fictif" est injectée dans l'économie réelle pour payer les artisans et les matériaux et c'est ça qui fait tourner l'économie. Mais bon, ç'est pas le sujet ici. Ce qu'il faut retenir c'est que c'est OK d'avoir de la dette. 
+
+Par contre il est important pour une personne (comme pour un pays) d'être capable de payer ses traites (intérêts et capital) tous les mois. Là, pour le coup, on revient à notre sujet car si y a trop de dettes, le remboursement de la dette va coûter tellement cher qu'on sera même plus capable de payer les intérêts. On ne remboursera jamais le capital et on va trainer cet emprunt ad vitam æternam. 
 
 Heu... Par contre faut pas oublier qu'une personne est mortelle ce qui n'est généralement pas le cas d'un pays. C'est peut être un détails pour vous mais pour moi ça veut dire beaucoup. Ca veut dire, en autres, qu'un pays à généralement plus de marges de manœuvre qu'un particulier. C'est vrai jusqu'au moment où il n'en a plus et où ses créanciers lui envoient le troïka du FMI (ou les huissiers). Et là... Ca saigne...    
 
 
-Bref... Le déficit de chaque année vient donc grossir la dette. Dit autrement, le déficit est une grandeur mesurée sur une période donnée, la dette est un stock mesuré à un moment donné ([lien](https://www.vie-publique.fr/fiches/21878-les-differences-entre-le-deficit-budgetaire-et-la-dette-de-letat)). 
+Bref, le déficit de chaque année vient grossir la dette. In other words, le déficit est une grandeur mesurée sur une période donnée, la dette est un stock mesuré à un moment donné ([lien](https://www.vie-publique.fr/fiches/21878-les-differences-entre-le-deficit-budgetaire-et-la-dette-de-letat)). 
 
-En France, la dette publique englobe l’État (budget de l’État central), les collectivités locales et les administrations de sécurité sociale ([lien](https://fr.wikipedia.org/wiki/Dette_publique_de_la_France#:~:text=La%20dette%20publique%20de%20la,des%20d%C3%A9ficits%20publics%20annuels%20cumul%C3%A9s) [Ministère de l'économie](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique)).
+
+
+
+
+
+
+## La dette publique
+
+On l'a dit, en France, la dette publique englobe l’État (budget de l’État central), les collectivités locales et les administrations de sécurité sociale ([lien](https://fr.wikipedia.org/wiki/Dette_publique_de_la_France#:~:text=La%20dette%20publique%20de%20la,des%20d%C3%A9ficits%20publics%20annuels%20cumul%C3%A9s) [Ministère de l'économie](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique)).
 
 <!-- [Insee](https://www.insee.fr/fr/statistiques/7895860)  -->
 
@@ -127,11 +139,11 @@ Depuis **1975, le budget de l’État est chaque année déficitaire** en France
 
 ## Le chiffre de "1000 milliards":
 
-En août 2025 on parle beaucoup des "1000 milliards d’euros de déficit". Perso je ne comprenais pas d'où ça venait car pour la dette de la France, j'avais en tête un chiffre beaucoup plus élevé.
+En août 2025 on parle beaucoup des "1000 milliards d’euros de déficit". Perso je ne comprenais pas d'où ça venait car j'avais en tête un chiffre beaucoup plus élevé.
 
-En fait ce chiffre fait référence à l’augmentation de la dette publique sur la dernière décennie environ. En particulier, depuis 2017 (début du premier quinquennat Macron). C'est donc hyper politisé ce truc...
+En fait ce chiffre fait référence à l’augmentation de la dette publique sur la dernière décennie environ. En particulier, depuis 2017 (début du premier quinquennat Macron). C'est donc hyper politisé ce truc et du coup j'ai plein de petites LED qui se mettent à clignoter.
 
-Quoiqu'il en soit, jusqu’à aujourd’hui (2025), la dette a gonflé d’environ 800 à 1000 Mds. Par exemple, entre fin 2017 et fin 2023, la dette publique est passée d’environ 2 262 Mds€ à 3 101 Mds€, soit +839 Mds€ ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Entre%202017%20et%202023%2C%20la,pour%20environ%2080%20milliards%20d%E2%80%99euros))
+Quoiqu'il en soit, jusqu’à aujourd’hui (mi-2025), la dette a gonflé d’environ 800 à 1000 Mds. Par exemple, entre fin 2017 et fin 2023, la dette publique est passée d’environ 2 262 Mds€ à 3 101 Mds€, soit +839 Mds€ ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Entre%202017%20et%202023%2C%20la,pour%20environ%2080%20milliards%20d%E2%80%99euros))
 
 
 
@@ -147,7 +159,7 @@ D’ici fin 2025, on atteindra près de 1000 Mds d’endettement supplémentair
 
 Pour comprendre cette augmentation, il faut revenir aux causes réelles : elles sont multiples, mais le débat public les brouille tellement qu’on finit par tout confondre — moi le premier.
 
-Par exemple, une commission d'enquête présidée par le sénateur Gay annonce cet été [211 milliards](https://www.publicsenat.fr/actualites/economie/un-cout-annuel-de-211-milliards-deuros-la-commission-denquete-du-senat-sur-les-aides-publiques-aux-entreprises-reclame-un-choc-de-transparence) annuels d'aides publics aux entreprises. Allez, un autre exemple pour la route avec le premier ministre Bayrou qui annonce que "sur les 1 000 Mds€ de dette supplémentaires accumulées en dix ans, les retraites représentent 50% ([basta.media](https://basta.media/selon-bayrou-la-dette-publique-serait-due-au-financement-des-retraites-c-est-faux#:~:text=%C2%AB%C2%A0Sur%20les%20plus%20de%201000,rien%C2%A0%C2%BB%2C%20souffle%20l%E2%80%99%C3%A9conomiste%20Micha%C3%ABl%20Zemmour) ou bien [bfmtv.com](https://www.bfmtv.com/economie/economie-social/finances-publiques/francais-bayrou-s-en-prend-aux-boomers-les-retraites-beneficient-ils-d-un-traitement-privilegie_AV-202508280516.html#:~:text=%3E%20Mais%20,a%20expliqu%C3%A9%20l%27%C3%A9lu)).
+Par exemple, une commission d'enquête présidée par le sénateur Gay annonce cet été [211 milliards](https://www.publicsenat.fr/actualites/economie/un-cout-annuel-de-211-milliards-deuros-la-commission-denquete-du-senat-sur-les-aides-publiques-aux-entreprises-reclame-un-choc-de-transparence) annuels d'aides publics aux entreprises. Allez, un autre exemple pour la route avec le premier ministre Bayrou qui annonce que "sur les 1 000 Mds€ de dette supplémentaires accumulées en dix ans, les retraites représentent 50% ([basta.media](https://basta.media/selon-bayrou-la-dette-publique-serait-due-au-financement-des-retraites-c-est-faux#:~:text=%C2%AB%C2%A0Sur%20les%20plus%20de%201000,rien%C2%A0%C2%BB%2C%20souffle%20l%E2%80%99%C3%A9conomiste%20Micha%C3%ABl%20Zemmour), [bfmtv.com](https://www.bfmtv.com/economie/economie-social/finances-publiques/francais-bayrou-s-en-prend-aux-boomers-les-retraites-beneficient-ils-d-un-traitement-privilegie_AV-202508280516.html#:~:text=%3E%20Mais%20,a%20expliqu%C3%A9%20l%27%C3%A9lu)).
 
 
 C'est vrai, c'est pas vrai? J'en sais rien. Et puis par exemple dans le cas des retraites, on parle de quelles retraites exactement. Le truc auquel je cotise est en faillite? Il pourra pas payer ma retraite? C'est pas clair cette histoire...
@@ -176,11 +188,11 @@ C'est vrai, c'est pas vrai? J'en sais rien. Et puis par exemple dans le cas des 
 
 Si l’on cumule les déficits de ces dernières années (ce qui correspond à l’augmentation d’environ 1000 Mds€ de dette), on constate qu’ils proviennent d'un nombre limité de blocs de dépenses (ou de moindres recettes). 
 
-Une analyse de la Cour des comptes (note de Jean‐Pascal Beaufret, 2024) et d’autres travaux permettent de dégager un « Pareto » des causes principales ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)) :
+Une analyse de la Cour des comptes (note de Jean‐Pascal Beaufret, 2024) et d’autres travaux permettent de dégager un "Pareto" des causes principales ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)) :
 
 ### Financement des retraites 
 * 40 à 50 % du total ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011), [ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=dont%C2%A0%20retraites))
-* C’est de loin le premier facteur : près de la moitié du déficit public cumulé provient de dépenses liées aux régimes de retraite qui ne sont pas couvertes par des cotisations.
+* C’est de loin le premier facteur : près de la moitié du déficit public cumulé (la dette donc) provient de dépenses liées aux régimes de retraite qui ne sont pas couvertes par des cotisations. Les mots sont importants. 50% du déficit public est dû à des cotisations qui ne sont pas payées.
 
 ### Dépenses exceptionnelles de crise (Covid-19, plan de relance, inflation…) 
 * ~26 % du total ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011))
@@ -188,27 +200,29 @@ Une analyse de la Cour des comptes (note de Jean‐Pascal Beaufret, 2024) et d�
 
 ### Allègements fiscaux et sociaux  
 * ~23 % du total ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011))
-* Il s'agit de baisse d’impôts, exonérations de cotisations non compensées...
+* Il s'agit de baisse d’impôts, exonérations de cotisations non compensées... Là, c'est de la politique pure, la mise en application d'un programme etc.
 
 ### Autres dépenses non compensées 
 * ~10 % restant ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=sur%20la%20p%C3%A9riode,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)). 
 * Il s’agit de dépenses nouvelles sans recettes en face. Cela regroupe par exemple des revalorisations sectorielles ou des investissements publics non financés par ailleurs.
 
 
-Bref, avec 3 postes on explique 90% (89 = 50 + 26 + 23) de la dette publique sur la période 2017-2025. Du coup, si on veut parler de la dette, c'est pas la peine de perdre son temps a essayer de comprendre les autres sources. On en reparlera quand il n'y aura plus que ça à résoudre. Pour l'instant concentrons nous sur ce qui compte. 
+Quoiqu'il en soit, avec uniquement 3 postes on explique 90% (89 = 50 + 26 + 23) de la dette publique sur la période 2017-2025. Du coup, si on veut parler de la dette, c'est pas la peine de perdre son temps a essayer de comprendre les autres sources. On en reparlera quand il n'y aura plus que ça à résoudre. Pour l'instant concentrons nous sur ce qui compte. 
 
-Du coup, on va suivre le lapin blanc. On va faire pareil mais pour chacun des 3 postes précédents : on va les décomposer en sous-postes et ne retenir que les plus importants qui comptent cumulativement pour 80% environ.
+Allez, on va suivre le lapin blanc. On va faire pareil mais pour chacun des 3 postes précédents : on va les décomposer en sous-postes et ne retenir que les plus importants qui comptent cumulativement pour 80% environ.
 
 
 ### Heu... T'es en train de dire que le chômage ne participe pas à la dette? 
 
-Le chômage en France est géré par [l’Unédic](https://www.unedic.org/), un organisme paritaire (géré par les syndicats et le patronat), financé par les **cotisations employeurs et salariés**. Il fonctionne en dehors du budget de l’État au sens strict, même si du point de vue européen (Maastricht, tout ça, tout ça) il est comptabilisé dans les administrations publiques.
+Oui, c'est vrai ça. On en a pas parlé et pourtant ça doit coûter un bras cette histoire. 
 
-**Note :** Parce que ces histoires de Pole Emploi, France Travail, Assedic et Unédic c'était pas clair non plus pour moi. En 2008, c'est la fusion de l’ANPE et des Assedic (les caisses locales de l’Unédic qui collectaient les cotisations et versaient les allocations). Du coup lors de l'opération, l’Unédic a été réduite à un rôle de pilote financier et réglementaire. Elle reste gestionnaire du régime d’assurance chômage (budget, règles d’indemnisation, convention d’assurance chômage). Elle a délégué l’exécution (versement des allocations, gestion des dossiers) à France Travail (guichet unique). L’Unédic est passée en back-office : elle ne verse plus directement les allocations, mais elle en finance le paiement (par France Travail).
+En fait, le chômage en France est géré par [l’Unédic](https://www.unedic.org/), un organisme paritaire (géré par les syndicats et le patronat), financé par les **cotisations employeurs et salariés**. Il fonctionne en dehors du budget de l’État au sens strict, même si du point de vue européen (Maastricht, tout ça, tout ça) il est comptabilisé dans les administrations publiques.
+
+**Note :** Je fais un petit rappel parce que ces histoires de Pole Emploi, France Travail, Assedic et Unédic c'était pas clair non plus pour moi. En 2008, c'est la fusion de l’ANPE et des Assedic (les caisses locales de l’Unédic qui collectaient les cotisations et versaient les allocations). Du coup lors de l'opération, l’Unédic a été réduite à un rôle de pilote financier et réglementaire. Elle reste gestionnaire du régime d’assurance chômage (budget, règles d’indemnisation, convention d’assurance chômage). Elle a délégué l’exécution (versement des allocations, gestion des dossiers) à France Travail (guichet unique). L’Unédic est passée en back-office : elle ne verse plus directement les allocations, mais elle en finance le paiement (par France Travail).
 
 #### Est-ce que l’Unédic contribue au déficit public ?
 
-* Oui quand l’Unédic est en déficit, son besoin de financement s’ajoute au déficit public (car Eurostat consolide l’ensemble APU : État, Sécurité sociale, collectivités locales, organismes divers).
+* Oui quand l’Unédic est en déficit, son besoin de financement s’ajoute au déficit public (car Eurostat consolide l’ensemble APU (admin. publique) : État, Sécurité sociale, collectivités locales, organismes divers).
 * À l’inverse, quand l’Unédic est en excédent, il contribue à réduire le déficit public.
 
 **Exemple:**
@@ -218,9 +232,9 @@ Le chômage en France est géré par [l’Unédic](https://www.unedic.org/), un 
 
 #### Impact sur la dette publique
 
-* Le chômage contribue au déficit et à la dette si l’Unédic est déficitaire. Emission d’obligations Unédic sur les marchés. Cette dette est comptabilisée dans la dette publique au sens Maastricht.
+* On l'a dit, le chômage contribue au déficit et à la dette si l’Unédic est déficitaire. Il y a alors émission d’obligations Unédic sur les marchés. Cette dette est comptabilisée dans la dette publique au sens Maastricht.
 * Depuis 2022, l’Unédic est plutôt excédentaire, donc actuellement le chômage ne pèse pas sur le déficit global, au contraire.
-* Sur la période 2017–2025 qui nous intéresse ici, l’effet chômage est secondaire par rapport aux retraites, aux crises ou aux baisses d’impôts : il ne fait pas partie des « gros blocs » de l'analyse de Pareto.
+* Sur la période 2017–2025 qui nous intéresse, l’effet chômage est secondaire par rapport aux retraites, aux crises ou aux baisses d’impôts : il ne fait pas partie des "gros blocs" de l'analyse de Pareto. 
 
 
 #### Déficit ou excédent de l’Unédic sur la période 2017-2025
@@ -239,7 +253,7 @@ Bien sûr les chiffres sont arrondis
 
 * L’Unédic a lourdement pesé en 2020–2021 (près de -27 Md€ cumulés).
 * Depuis 2022, ses excédents réduisent légèrement le déficit global.
-* Sur la période 2017–2025, l’effet net chômage est secondaire par rapport aux retraites.
+* Sur la période 2017–2025, l’effet net du chômage est secondaire par rapport aux 3 causes qu'on a listé. On parle de quelques Mds vs quelques centaines de Mds. Ca reste des milliards d'euros mais y a un rapport 100 entre les deux.
 
 
 
@@ -251,7 +265,7 @@ Ceci étant précisé, revenons à nos 3 gagnants du jour
 
 ## 1. Financement des retraites : ~50 % du déficit cumulé
 
-Officiellement, le « déficit du système de retraites » est faible (quelques milliards d’€ par an selon le COR) car on ne compte généralement que l’écart cotisations/prestations dans les caisses de retraite. Cependant, l’État complète massivement le financement des retraites par des subventions et des impôts affectés, et ces montants pèsent lourdement sur le budget. 
+Officiellement, le "déficit du système de retraites" est faible (quelques milliards d’€ par an selon le Conseil d'Orientation des Retraites (COR)) car on ne compte généralement que l’écart cotisations/prestations dans les caisses de retraite. Cependant, l’État complète massivement le financement des retraites par des subventions et des impôts affectés, et ces montants pèsent lourdement sur le budget. 
 
 Une mission flash de la Cour des comptes a chiffré la contribution réelle des retraites au déficit public à -69 Mds€ en 2023 (et -81 Mds€ prévus en 2024), soit près de la moitié du déficit public annuel ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=match%20at%20L578%20administrations%20publiques%2C,de%20la%20nation%2C%20s%E2%80%99il%20existait)). 
 
@@ -274,7 +288,7 @@ Du coup, les retraites des agents publics locaux/hospitaliers pèsent elles auss
 
 ### Les régimes spéciaux déficitaires: 
 Plusieurs régimes de retraite spécifiques (SNCF, RATP, Mines, marins, Opéra, etc.) ont des dépenses bien supérieures à leurs cotisants. L’État comble ces déséquilibres récurrents à hauteur d’environ 8 Mds€ par an ([fondapol.org](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/#:~:text=3,des%20Marins%2C%20dont%20le%20d%C3%A9s%C3%A9quilibre)). 
-Par exemple, les régimes des cheminots ou des employés de la RATP reçoivent des subventions d’équilibre pour payer les pensions. Ce poste, quoique moins massif que les fonctions publiques, représente tout de même près de ~8 à 10 % du total du « trou » des retraites.
+Par exemple, les régimes des cheminots ou des employés de la RATP reçoivent des subventions d’équilibre pour payer les pensions. Ce poste, quoique moins massif que les fonctions publiques, représente tout de même près de ~8 à 10 % du total du "trou" des retraites.
 
 
 ### Les dispositifs non contributifs au sein du système de retraites: 
@@ -371,7 +385,7 @@ La retraite (de la fonction publique) demeure donc de loin le premier poste expl
 
 ## 2. Dépenses de crise (Covid, énergie…) : ~26 % du déficit cumulé
 
-Le deuxième grand facteur est lié aux crises exceptionnelles qu’a traversées la France depuis 2020. Face à la pandémie de Covid-19, puis à la flambée de l’inflation en 2022–2023, l’État a engagé des dépenses massives et ponctuelles pour soutenir l’économie et les ménages (politique du « quoi qu’il en coûte »). 
+Le deuxième grand facteur est lié aux crises exceptionnelles qu’a traversées la France depuis 2020. Face à la pandémie de Covid-19, puis à la flambée de l’inflation en 2022–2023, l’État a engagé des dépenses massives et ponctuelles pour soutenir l’économie et les ménages (politique du "quoi qu’il en coûte"). 
 
 Selon la Cour des comptes, ces mesures d’urgence, de relance et anti-inflation représentent environ 26 % de l’augmentation de la dette sur 2017–2023 ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)), soit 223 Mds€ nets (271 Mds€ bruts avant prise en compte des contributions de l’UE et des producteurs d’énergie) ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=,271%20milliards%20d%E2%80%99euros%20bruts%29%5B2%5D)). 
 
@@ -396,7 +410,7 @@ Quoi qu’il en soit, la gestion de la crise sanitaire a creusé la dette d’en
 ### Crise inflationniste et énergétique (2022–2023) 
 Alors même que le déficit Covid se résorbait, la flambée des prix de l’énergie et de l’inflation généralisée en 2022 a conduit l’État à intervenir de nouveau massivement. Un "bouclier tarifaire" a été mis en place pour plafonner les tarifs du gaz et de l’électricité pour les ménages et petites entreprises, l’État compensant aux fournisseurs la différence : cette mesure, prolongée sur 2022 et 2023, a coûté des dizaines de milliards d’euros (par exemple, ~24 Mds€ rien que pour contenir les prix de l’électricité en 2023 d’après Bercy). 
 
-Par ailleurs, des aides inflation (chèque énergie, indemnité carburant, revalorisation du point d’indice des fonctionnaires, etc.) ont été déployées pour soutenir le pouvoir d’achat. Ces dépenses de crise énergétique sont en partie financées par des recettes exceptionnelles (taxation des « superprofits » des producteurs d’énergie, dividendes élevés d’EDF/Engie reversés à l’État, etc.), mais au net elles ont tout de même aggravé le déficit. 
+Par ailleurs, des aides inflation (chèque énergie, indemnité carburant, revalorisation du point d’indice des fonctionnaires, etc.) ont été déployées pour soutenir le pouvoir d’achat. Ces dépenses de crise énergétique sont en partie financées par des recettes exceptionnelles (taxation des "superprofits" des producteurs d’énergie, dividendes élevés d’EDF/Engie reversés à l’État, etc.), mais au net elles ont tout de même aggravé le déficit. 
 
 Par exemple, la seule indexation exceptionnelle des pensions sur l’inflation a engendré plus de 15 Mds€ de dépenses supplémentaires en 2022-2023 ([bfmtv.com](https://www.bfmtv.com/economie/economie-social/finances-publiques/francais-bayrou-s-en-prend-aux-boomers-les-retraites-beneficient-ils-d-un-traitement-privilegie_AV-202508280516.html#:~:text=En%20revanche%2C%20il%20est%20vrai,constat%20en%202022%20et%202023)) (ce qui rejoint aussi le poste retraites). 
 
@@ -450,7 +464,7 @@ En synthèse, ces choix de politique fiscale – bien qu’ils puissent se justi
 
 Sur 2018–2023, la baisse des impôts sur les ménages et entreprises est d’ailleurs visible : le taux de prélèvements obligatoires est passé d’environ 45 % à 43–44 % du PIB, ce qui correspond à ces 10aines de milliards redistribués en moins dans les caisses publiques. 
 
-Cela explique environ un quart du « trou » de 1000 Mds€.
+Cela explique environ un quart du "trou" de 1000 Mds€.
 
 
 *(À noter : certaines de ces mesures ont des effets indirects positifs – par ex. stimuler la croissance – qui peuvent à terme générer des recettes supplémentaires. L’analyse ci-dessus reste comptable, à court terme.)*
