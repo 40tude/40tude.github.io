@@ -183,7 +183,9 @@ D’ici fin 2025, on atteindra près de 1000 Mds d’endettement supplémentair
 
 Pour comprendre cette augmentation, il faut revenir aux causes réelles : elles sont multiples, mais le débat public les brouille tellement qu’on finit par tout confondre — moi le premier.
 
-Par exemple, une commission d'enquête présidée par le sénateur Gay annonce cet été [211 milliards](https://www.publicsenat.fr/actualites/economie/un-cout-annuel-de-211-milliards-deuros-la-commission-denquete-du-senat-sur-les-aides-publiques-aux-entreprises-reclame-un-choc-de-transparence) annuels d'aides publics aux entreprises. Allez, un autre exemple pour la route avec le premier ministre Bayrou qui annonce que "sur les 1000 Mds€ de dette supplémentaires accumulées en dix ans, les retraites représentent 50% ([basta.media](https://basta.media/selon-bayrou-la-dette-publique-serait-due-au-financement-des-retraites-c-est-faux#:~:text=%C2%AB%C2%A0Sur%20les%20plus%20de%201000,rien%C2%A0%C2%BB%2C%20souffle%20l%E2%80%99%C3%A9conomiste%20Micha%C3%ABl%20Zemmour), [bfmtv.com](https://www.bfmtv.com/economie/economie-social/finances-publiques/francais-bayrou-s-en-prend-aux-boomers-les-retraites-beneficient-ils-d-un-traitement-privilegie_AV-202508280516.html#:~:text=%3E%20Mais%20,a%20expliqu%C3%A9%20l%27%C3%A9lu)).
+Par exemple, une commission d'enquête présidée par le sénateur Gay annonce cet été [211 milliards](https://www.publicsenat.fr/actualites/economie/un-cout-annuel-de-211-milliards-deuros-la-commission-denquete-du-senat-sur-les-aides-publiques-aux-entreprises-reclame-un-choc-de-transparence) annuels d'aides publics aux entreprises. À y [regarder de plus près](https://m-eti.fr/tribune-non-les-entreprises-ne-recoivent-pas-211-milliards-daides/), il semble malheureusement qu'on ait ajouté des choux et des carottes. 
+
+Allez, un autre exemple pour la route avec le premier ministre Bayrou qui annonce que "sur les 1000 Mds€ de dette supplémentaires accumulées en dix ans, les retraites représentent 50% ([basta.media](https://basta.media/selon-bayrou-la-dette-publique-serait-due-au-financement-des-retraites-c-est-faux#:~:text=%C2%AB%C2%A0Sur%20les%20plus%20de%201000,rien%C2%A0%C2%BB%2C%20souffle%20l%E2%80%99%C3%A9conomiste%20Micha%C3%ABl%20Zemmour), [bfmtv.com](https://www.bfmtv.com/economie/economie-social/finances-publiques/francais-bayrou-s-en-prend-aux-boomers-les-retraites-beneficient-ils-d-un-traitement-privilegie_AV-202508280516.html#:~:text=%3E%20Mais%20,a%20expliqu%C3%A9%20l%27%C3%A9lu)).
 
 
 C'est vrai, c'est pas vrai? J'en sais rien. Et puis par exemple dans le cas des retraites, on parle de quelles retraites exactement. Le truc auquel je cotise est en faillite? Il pourra pas payer ma retraite? C'est pas clair cette histoire...
@@ -212,12 +214,12 @@ C'est vrai, c'est pas vrai? J'en sais rien. Et puis par exemple dans le cas des 
 
 Si l’on cumule les déficits de ces dernières années (ce qui correspond à l’augmentation d’environ 1000 Mds€ de dette), on constate qu’ils proviennent d'un nombre limité de blocs de dépenses (ou de moindres recettes). 
 
-Une analyse de la Cour des comptes (note de Jean‐Pascal Beaufret, 2024) et d’autres travaux permettent de dégager un "Pareto" des causes principales ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011)) :
+[Une analyse](https://www.fondapol.org/etude/contribution-a-la-mission-flash-de-clarification-du-financement-des-retraites/) de la Cour des comptes (note de Jean‐Pascal Beaufret, 2024) et d’autres travaux permettent de dégager un "Pareto" des causes principales.
 
 ### Financement des retraites 
 {: .no_toc }
 
-* 40 à 50 % du total ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011), [ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=dont%C2%A0%20retraites))
+* 40 à 50 % du total ([ifrap.org](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017#:~:text=Il%20en%20r%C3%A9sulte%20que%20la,d%C3%A9penses%20additionnelles%20non%20gag%C3%A9es%2011))
 * C’est de loin le premier facteur : près de la moitié du déficit public cumulé (la dette donc) provient de dépenses liées aux régimes de retraite qui ne sont pas couvertes par des cotisations. Les mots sont importants. 50% du déficit public est dû à des cotisations qui ne sont pas payées.
 
 ### Dépenses exceptionnelles de crise (Covid-19, plan de relance, inflation…) 
@@ -395,9 +397,9 @@ Ce que l'on sait:
 * Les résultats montrent un retournement marqué avec la crise sanitaire, sans que des chiffres précis année par année pour 2021, 2023, etc., soient systématiquement publiés dans les sources accessibles ([Wikipédia][2], [Cour des comptes][3]).
 
 
-[1]: https://www.ccomptes.fr/sites/default/files/2025-02/20250220-Situation-financiere-et-perspectives-du-systeme-de%20retraites_0.pdf?utm_source=chatgpt.com "Situation financière et perspectives du système de retraites"
-[2]: https://fr.wikipedia.org/wiki/Caisse_nationale_d%27assurance_vieillesse?utm_source=chatgpt.com "Caisse nationale d'assurance vieillesse"
-[3]: https://www.ccomptes.fr/sites/default/files/2024-05/20240529-Ralfss-2024-Situation-financiere-SS.pdf?utm_source=chatgpt.com "Chapitre I La situation financière de la sécurité sociale"
+[1]: https://www.ccomptes.fr/sites/default/files/2025-02/20250220-Situation-financiere-et-perspectives-du-systeme-de%20retraites_0.pdf "Situation financière et perspectives du système de retraites"
+[2]: https://fr.wikipedia.org/wiki/Caisse_nationale_d%27assurance_vieillesse "Caisse nationale d'assurance vieillesse"
+[3]: https://www.ccomptes.fr/sites/default/files/2024-05/20240529-Ralfss-2024-Situation-financiere-SS.pdf "Chapitre I La situation financière de la sécurité sociale"
 
 
 
@@ -422,7 +424,7 @@ Ce que l'on sait:
 
 Plus de **6 millions** de personnes en 2022
 * **15% de la population qui travaille**.
-    * En 2025 on est [68 millions](https://en.wikipedia.org/wiki/Demographics_of_France?utm_source=chatgpt.com) en France
+    * En 2025 on est [68 millions](https://en.wikipedia.org/wiki/Demographics_of_France) en France
     * Dont 61% en age de travailler (15-64 ans). 
     
 <!-- * 5.76 millions d'agents en 2022 
@@ -470,17 +472,17 @@ Notes:
 * Effectifs tous statuts car en fait SNCF et RATP ne publient pas le nombre de fonctionnaires
 
 Sources: 
-* Site de l'INSEE (Institut National de la Statistique et des Études Économiques) 
-* Site de la DGAFP (Direction Générale de l'Administration et de la Fonction Publique)
-* Site du CNFPT (Centre National de la Fonction Publique Territoriale) 
-* "Chiffres clés de la fonction publique - Édition 2023" (données 2022)
+* Site de l'[INSEE](https://www.insee.fr/fr/accueil) (Institut National de la Statistique et des Études Économiques). Super moteur de recherche 
+* Site de la [DGAFP](https://www.fonction-publique.gouv.fr/la-dgafp) (Direction Générale de l'Administration et de la Fonction Publique)
+* Site du [CNFPT](https://www.cnfpt.fr/) (Centre National de la Fonction Publique Territoriale) 
+* "[Chiffres clés de la fonction publique - Édition 2023](https://www.fonction-publique.gouv.fr/files/files/publications/rapport-annuel/cc-2023-web.pdf)" (données 2022)
 * SNCF, RATP... 
 
 
 ### On a une idée de l'évolution de ce nombre?
 
 * J'ai trouvé des chiffres sur cette [page](https://fr.wikipedia.org/wiki/%C3%89volution_des_effectifs_de_la_fonction_publique_en_France)
-* Il y a des trous mais on va faire avec (je peux faire un interpolation de 2018 à 2021)
+* Il y a des trous mais on va faire avec (je peux faire une interpolation de 2018 à 2021)
 * Enfin j'ajoute le point de 2022 qu'on vient de calculer
 
 Voilà ce que ça donne sous forme de tableau
@@ -576,7 +578,7 @@ Puis sous forme de graphe
 <!-- <span></span>  -->
 </div>
 
-* Le point 2022 semble en dehors de l'épure. À mon avis on compte pas le même chose
+* Le point 2022 semble en dehors de l'épure. À mon avis on ne compte pas les mêmes choses
 * On peut retenir qu'entre 1980 et 2021 la **croissance moyenne est de l'ordre de 1%** (0.89%)
 
 <!-- ```python
@@ -643,7 +645,7 @@ La Cour des comptes a estimé qu’en 2020 la hausse des dépenses liées à la 
 
 En 2021, de nouvelles dépenses sont venues avec le plan de relance (≈100 Mds€ sur plusieurs années) et le soutien continu à certains secteurs. Ces mesures Covid ont été partiellement compensées par des financements européens (le plan de relance de l’UE a apporté des subventions à la France, ~40 Mds€ étalés). 
 
-Quoi qu’il en soit, la gestion de la crise sanitaire a creusé la dette d’environ 20 points de PIB en deux ans ([vie-publique.fr](https://www.vie-publique.fr/en-bref/281423-covid-19-le-cout-de-la-crise-sanitaire-pour-letat#:~:text=,de%20PIB%2C%20soit%202%C2%A0650%C2%A0milliards%20d%27euros)) ([vie-publique.fr](https://www.vie-publique.fr/en-bref/281423-covid-19-le-cout-de-la-crise-sanitaire-pour-letat#:~:text=en%20co%C3%BBte,de%20PIB%2C%20soit%202%C2%A0650%C2%A0milliards%20d%27euros)).
+Quoi qu’il en soit, la gestion de la crise sanitaire a creusé la dette d’environ 20 points de PIB en deux ans ([vie-publique.fr](https://www.vie-publique.fr/en-bref/281423-covid-19-le-cout-de-la-crise-sanitaire-pour-letat#:~:text=,de%20PIB%2C%20soit%202%C2%A0650%C2%A0milliards%20d%27euros)).
 
 
 
@@ -763,9 +765,9 @@ Après le blabla, des résultats! Maintenant qu'on sait de quoi on parle, l'idé
 
 Sources: 
 * Dette +839 Md€ 2017–2023 (Insee)  
-* [Fondation IFRAP](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017?utm_source=chatgpt.com)
-* [Le Monde.fr](https://www.lemonde.fr/les-decodeurs/article/2024/09/20/budget-2025-quels-impots-ont-ete-supprimes-ou-baisses-sous-la-presidence-macron_6325526_4355770.html?utm_source=chatgpt.com)
-* [Cour des comptes](https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites?utm_source=chatgpt.com)
+* [Fondation IFRAP](https://www.ifrap.org/budget-et-fiscalite/les-crises-successives-sont-responsables-de-26-de-la-dette-francaise-accumulee-depuis-2017)
+* [Le Monde.fr](https://www.lemonde.fr/les-decodeurs/article/2024/09/20/budget-2025-quels-impots-ont-ete-supprimes-ou-baisses-sous-la-presidence-macron_6325526_4355770.html)
+* [Cour des comptes](https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites)
 
 
 ### Pareto² sur les retraites des fonctionnaires
@@ -785,9 +787,9 @@ Sources:
 
 Sources : 
 * contribution État aux pensions FPE ≈45 Md€ en 2023 ; régimes spéciaux « un peu moins de 8 Md€ »/an ; mission flash : contribution retraites au déficit public ~69 Md€ (2023) / ~81 Md€ (2024) ; tensions CNRACL (emprunts 11–13 Md€ ; rôle CADES/FRR).
-* [Cour des comptes](https://www.ccomptes.fr/sites/default/files/2025-02/20250220-Situation-financiere-et-perspectives-du-systeme-de%20retraites_0.pdf?utm_source=chatgpt.com)
-* [Assemblée Nationale](https://www.assemblee-nationale.fr/dyn/17/rapports/colter/l17b1422_rapport-information?utm_source=chatgpt.com)
-* [cades.fr](https://www.cades.fr/pdf/rapportactivite/Rapport%20financier%20annuel%202024.pdf?utm_source=chatgpt.com)
+* [Cour des comptes](https://www.ccomptes.fr/sites/default/files/2025-02/20250220-Situation-financiere-et-perspectives-du-systeme-de%20retraites_0.pdf)
+* [Assemblée Nationale](https://www.assemblee-nationale.fr/dyn/17/rapports/colter/l17b1422_rapport-information)
+* [cades.fr](https://www.cades.fr/pdf/rapportactivite/Rapport%20financier%20annuel%202024.pdf)
 
 
 ### Pareto² sur les dépenses de crise
@@ -802,11 +804,11 @@ Sources :
 
 Sources: 
 * « près de 260 Md€ » pour Covid+énergie (Le Monde, synthèse gouvernementale) ; boucliers : coût net ~20,4 Md€ (CRE/Vie-publique) ; fonds de solidarité 2020–2021 : 40,9 Md€ (DGFiP) ; plan de relance : 100 Md€ annoncés (part budgétaire exécutée prise en compte).
-* [Le Monde](https://www.lemonde.fr/politique/article/2024/04/09/deficit-budgetaire-les-pistes-d-economies-du-gouvernement-pour-2025_6226761_823448.html?utm_source=chatgpt.com)
-[vie-publique.fr](https://www.vie-publique.fr/en-bref/295067-boucliers-energetiques-263-milliards-deuros-entre-2021-et-2024?utm_source=chatgpt.com)
-[La Tribune](https://www.latribune.fr/climat/energie-environnement/bouclier-tarifaire-sur-l-energie-une-facture-de-20-4-milliards-d-euros-pour-l-etat-1003007.html?utm_source=chatgpt.com)
-[impots.gouv.fr](https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_analyses/2023/num03_03/dgfip_analyses_03_2023.pdf?utm_source=chatgpt.com)
-[Assemblée Nationale](https://www.assemblee-nationale.fr/dyn/content/download/615622/file/Fiche%20ex%C3%A9cution%20Plan%20de%20relance.pdf?version=1&utm_source=chatgpt.com)
+* [Le Monde](https://www.lemonde.fr/politique/article/2024/04/09/deficit-budgetaire-les-pistes-d-economies-du-gouvernement-pour-2025_6226761_823448.html)
+* [vie-publique.fr](https://www.vie-publique.fr/en-bref/295067-boucliers-energetiques-263-milliards-deuros-entre-2021-et-2024)
+* [La Tribune](https://www.latribune.fr/climat/energie-environnement/bouclier-tarifaire-sur-l-energie-une-facture-de-20-4-milliards-d-euros-pour-l-etat-1003007.html)
+* [impots.gouv.fr](https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_analyses/2023/num03_03/dgfip_analyses_03_2023.pdf)
+* [Assemblée Nationale](https://www.assemblee-nationale.fr/dyn/content/download/615622/file/Fiche%20ex%C3%A9cution%20Plan%20de%20relance.pdf?version=1)
 
 
 
@@ -825,8 +827,8 @@ Sources:
 
 Sources : 
 * Taxe d’habitation ≈18,5 Md€/an (plein effet) ; IS : −11,1 Md€/an ; ISF→IFI : −4,5 Md€/an ; PFU : −1,8 Md€/an ; CAP (redevance) : −3,1 Md€/an ; CVAE en extinction d’ici 2027 (−5 Md€/an à terme). Répartition agrégée pour 2017–2025 à partir de ces coûts de croisière et calendriers de mise en œuvre. 
-* [vie-publique.fr](https://www.vie-publique.fr/parole-dexpert/287097-la-suppression-taxe-dhabitation-quelle-reforme-pour-quels-enjeux?utm_source=chatgpt.com)
-* [Le Monde.fr](https://www.lemonde.fr/les-decodeurs/article/2024/09/20/budget-2025-quels-impots-ont-ete-supprimes-ou-baisses-sous-la-presidence-macron_6325526_4355770.html?utm_source=chatgpt.com)
+* [vie-publique.fr](https://www.vie-publique.fr/parole-dexpert/287097-la-suppression-taxe-dhabitation-quelle-reforme-pour-quels-enjeux)
+* [Le Monde.fr](https://www.lemonde.fr/les-decodeurs/article/2024/09/20/budget-2025-quels-impots-ont-ete-supprimes-ou-baisses-sous-la-presidence-macron_6325526_4355770.html)
 
 
 
@@ -836,9 +838,9 @@ Sources :
 * Les pourcentages dans les sous-tables sont calibrés pour refléter l’ordre de grandeur des postes dominants (logique Pareto) et sommer au total (500/260/230 Md€).
 * Les sources fournissent des points d’ancrage (valeurs annuelles ou nettes) ; l’extrapolation à 2017–2025 suppose des profils réalistes (montée en charge, années pleines, extinctions).
 * Pour les retraites, la mission flash 2025 (Cour des comptes) confirme un besoin public massif (≈69 Md€ en 2023, ≈81 Md€ en 2024) et documente précisément : contribution État FPE ≈45 Md€ (2023) et régimes spéciaux ≈8 Md€/an. Les tensions CNRACL sont établies par les rapports IGAS/IGF et l’Assemblée (emprunts 11–13 Md€ en 2024–2025), et reflètent un besoin récurrent de financement couvert in fine par des mécanismes publics (CADES/FRR, hausses de taux employeurs, etc.). 
-* [Cour des comptes](https://www.ccomptes.fr/sites/default/files/2025-02/20250220-Situation-financiere-et-perspectives-du-systeme-de%20retraites_0.pdf?utm_source=chatgpt.com)
-* [Assemblée Nationale](https://www.assemblee-nationale.fr/dyn/17/rapports/colter/l17b1422_rapport-information?utm_source=chatgpt.com)
-* [Igas](https://igas.gouv.fr/sites/igas/files/2024-09/Rapport%20Igas-IGF-%20IGA%20Situation%20financi%C3%A8re%20de%20la%20cnracl.pdf?utm_source=chatgpt.com)
+* [Cour des comptes](https://www.ccomptes.fr/sites/default/files/2025-02/20250220-Situation-financiere-et-perspectives-du-systeme-de%20retraites_0.pdf)
+* [Assemblée Nationale](https://www.assemblee-nationale.fr/dyn/17/rapports/colter/l17b1422_rapport-information)
+* [Igas](https://igas.gouv.fr/sites/igas/files/2024-09/Rapport%20Igas-IGF-%20IGA%20Situation%20financi%C3%A8re%20de%20la%20cnracl.pdf)
 
 
 ## Conclusion
