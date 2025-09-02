@@ -20,8 +20,10 @@ last_modified_date : 2025-09-02 18:50:00
 ## TL;DR
 {: .no_toc }
 
+- la consommation maximale d’oxygène que le corps peut utiliser 
 - Unité ml/min/kg
-- Un prédicteur de tes performance
+- Un prédicteur de tes performances sur les efforts longs
+- Mode aérobie
 - Sur les montre, c'est un proxi, une estimation indirecte
 - Suivre l'évolution dans le temps sur plusieurs mois
 - Un entraînement planifié, régulier et diversifié améliore la VO2Max jusqu’à un certain point (retarde la baisse liée à l’âge) 
@@ -49,7 +51,7 @@ J'ai écrit il y a de ça pas mal de temps (la première version du billet date 
 
 ## C'est quoi la VO2Max ?
 
-La VO2Max (pour “Volume d’Oxygène Maximal”) désigne la consommation maximale d’oxygène que le corps peut utiliser lors d’un effort physique intense. C’est une mesure de ta capacité cardio-respiratoire et un indicateur de ton [endurance aérobie][1] (tu courre en aérobie quand tu es encore capable de parler). La VO2Max c'est la quantité maximale d’oxygène (exprimée en millilitres, faut 1000 millilitres pour faire un litre) que l’on peut consommer par minute et par kilogramme de poids corporel (ml/min/kg) lors d’un effort prolongé et intense. Plus cette valeur est élevée, plus tu es capable de maintenir un effort intense sur une [longue durée][2].
+La VO2Max (pour “Volume d’Oxygène Maximal”) désigne la **consommation maximale d’oxygène que le corps peut utiliser** lors d’un effort physique intense. C’est une mesure de ta capacité cardio-respiratoire et un indicateur de ton [endurance aérobie][1] (tu courre en **aérobie** quand tu es encore capable de parler). La VO2Max c'est la quantité maximale d’oxygène (exprimée en millilitres, faut 1000 millilitres pour faire un litre) que l’on peut consommer par minute et par kilogramme de poids corporel (ml/min/kg) lors d’un effort prolongé et intense. Plus cette valeur est élevée, plus tu es capable de maintenir un effort intense sur une [longue durée][2].
 
 ***Heu... J'ai rien compris aux unités. Tu peux revenir là-dessus?*** Si c'est pas clair, t'as raison de m'arrêter tout de suite. On a dit consommation d'oxygène par minute et par kilogramme de poids corporel (ml/min/kg). L'oxygène tu vois ce que c'est? Ben si, quand même... L'oxygène c'est un gaz ($$0_2$$) qui occupe un certain volume et les volumes s'expriment normalement en metre cube (1m par 1m par 1m). Bon, mais cette unité est un peu trop grande si on la compare à nos poumons, au nombre de litres de sang qu'on a dans le corps etc. Donc on va utiliser des millilitres pour exprimer le volume d'oxygène. OK, ça normalement c'est bon.
 
@@ -72,9 +74,14 @@ La VO2Max reflète les limites de ton moteur en mode aérobie. Sur le plan physi
 
 $$VO_2 = Q *(C_aO_2 - C_vO_2)$$
 
-où $$Q$$ est le débit cardiaque (volume de sang pompé par le cœur par minute), $$C_aO_2$$ la teneur en oxygène du sang artériel et $$C_vO_2$$ celle du sang veineux. En d’autres termes, une VO2Max élevée implique à la fois un cœur puissant ($$Q$$ grand) capable d’éjecter un grand volume de sang oxygéné, et des muscles entraînés dotés d’une riche vascularisation et de nombreuses mitochondries pour utiliser cet oxygène (une différence $$(C_aO_2 - C_vO_2)$$ grande). La VO2Max représente ainsi le “plafond” de nos capacités aérobies et on la compare souvent à la cylindrée du moteur d’une voiture.
+où $$Q$$ est le débit cardiaque (volume de sang pompé par le cœur par minute), $$C_aO_2$$ la teneur en oxygène du sang artériel et $$C_vO_2$$ celle du sang veineux. 
 
-***La cylindrée d'un moteur d'une voiture. T'explique?*** Imagine le moteur d'une voiture. La VO2Max, c'est la cylindrée (exprimée en $$cm^3$$) du moteur. Elle représente ta puissance aérobie brute. Un moteur avec une plus grosse cylindrée peut potentiellement produire plus de puissance et te faire aller plus vite. Bien sûr si tu compare 1.6L d'un moteur de F1 (si si je t'assure un moteur de F1 c'est 1600 cm^3, pas plus) à celui de ta Citroën C5 Aircross... Y a pas photo... Y a un des moteur qui est affûté et l'autre... Comment te dire les choses sans être désobligent... Y a encore un peu de boulot et pas mal de poids à perdre.
+- Le premier membre $$Q$$ c'est la capacité de ton cœur et de tes poumons (voir plus haut);
+- Le second terme, la différence $$C_aO_2 - C_vO_2$$, c'est la capacité de tes muscles à extraire (c'est pour ça qu'il y a un signe moins) et à utiliser cet oxygène (voir plus haut).
+
+En d’autres termes, une VO2Max élevée implique à la fois un cœur puissant ($$Q$$ grand) capable d’éjecter un grand volume de sang oxygéné, et **des muscles entraînés** dotés d’une riche vascularisation et de nombreuses [mitochondries](https://fr.wikipedia.org/wiki/Mitochondrie) pour utiliser cet oxygène (une différence $$(C_aO_2 - C_vO_2)$$ grande). La VO2Max représente ainsi le “plafond” de nos capacités aérobies et on la compare souvent à la cylindrée du moteur d’une voiture.
+
+***La cylindrée d'un moteur d'une voiture... T'explique?*** Imagine le moteur d'une voiture. La VO2Max, c'est la cylindrée (exprimée en $$cm^3$$) du moteur. Elle représente ta puissance aérobie brute potentielle. Un moteur avec une plus grosse cylindrée peut potentiellement produire plus de puissance et te faire aller plus vite. Bien sûr si tu compare 1.6L d'un moteur de F1 (si si je t'assure un moteur de F1 c'est 1600 $$cm^3$$, pas plus) à celui de ta Citroën C5 Aircross... Y a pas photo... Y a un des moteur qui est affûté et l'autre... Comment te dire les choses sans être désobligent... Y a encore un peu de boulot et pas mal de poids à perdre.
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
@@ -89,7 +96,7 @@ Ceci étant, faut noter que si il est important, ce n’est pas le seul facteur 
 La mesure directe de la VO2Max se fait en laboratoire lors d’un test d’effort maximal, généralement sur tapis roulant. Le coureur porte un masque relié à un analyseur de gaz qui mesure précisément l’oxygène consommé et le gaz carbonique ($$CO_2$$) expiré à mesure que l’effort augmente jusqu’à l’épuisement. Le point où la consommation d’oxygène ne parvient plus à augmenter malgré l’augmentation de l’intensité correspond à la VO2Max. Ce protocole étant contraignant (matériel, effort maximal contrôlé en labo...), on utilise souvent des tests indirects ou des estimations terrain pour approximer la VO2Max.
 
 ### Pourquoi c'est important?
-Une VO2Max élevée est corrélée à une meilleure santé cardiovasculaire, une meilleure endurance et une meilleure récupération. C'est un excellent **prédicteur de performance**, surtout sur les efforts longs (course à pied, cyclisme, natation).
+Une VO2Max élevée est corrélée à une meilleure santé cardiovasculaire, une meilleure endurance et une meilleure récupération. C'est un excellent **prédicteur de tes performances**, surtout sur les efforts longs (course à pied, cyclisme, natation).
 
 ### Les facteurs qui influencent la VO2Max
 * **Génétique** : Compte pour environ 20 à 30% de la valeur. Là c'est mort, on peut rien faire.
