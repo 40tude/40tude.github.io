@@ -29,7 +29,7 @@ last_modified_date : 2025-08-31 18:00:00
   3. **Baisses d’impôts et cotisations** (taxe d'habitation, IS, 230 Mds€)  
 - Dans chaque catégorie, la règle de **Pareto** est encore vérifiée: une minorité de sous-catégories est responsable de 80% des montants (dans les retraites, 80 % du déficit = pensions fonctionnaires + CNRACL + régimes spéciaux)
 - Il n'est pas suffisant de dire “les retraites” : une analyse **Pareto²** montre que seules quelques catégories expliquent l’essentiel du déficit
-- Il est nécessaire de nommer les causes pour ne pas culpabiliser inutilement tout le monde, établir les priorités et réfléchir sur ce qui compte vraiment  
+- Il est nécessaire de nommer les choses pour ne pas culpabiliser inutilement tout le monde, établir les priorités et réfléchir sur ce qui compte vraiment  
 
 
 <div align="center">
@@ -97,14 +97,11 @@ La dette publique est plus large que la dette de l’État car elle englobe **l�
 **Note 2:**
 C'est toujours pour m'assurer qu'on est alignés. 
 
-**C'est pas grave d'avoir de la dette**. À notre époque, c'est même plutôt considéré comme une bonne chose. En effet, qui dit dette, dit emprunt auprès d'une banque (pour acheter une maison par exemple). Contrairement à ce que l'on pense la banque ne sort les sous de ses coffres. Elle n'a tout simplement pas assez de liquidités pour le faire mais par contre l’État lui a donné le droit de créer, à partir de rien (ex nihilo), de la monnaie : la banque crée de la monnaie scripturale (inscrite "en écriture") à qui tout le monde fait confiance. Cet argent "fictif" est injecté dans l'économie réelle pour payer les artisans et les matériaux et c'est ça qui fait tourner l'économie. Mais bon, ç'est pas le sujet ici. Ce qu'il faut retenir c'est que c'est OK d'avoir de la dette. 
+**C'est pas grave d'avoir de la dette**. À notre époque, c'est même plutôt considéré comme une bonne chose. En effet, qui dit dette, dit emprunt auprès d'une banque (pour acheter une maison par exemple). Contrairement à ce que l'on pense la banque ne sort pas les sous de ses coffres. Elle n'a tout simplement pas assez de liquidités pour le faire. Par contre l’État lui a donné le droit de créer, à partir de rien (ex nihilo), de la monnaie : la banque crée de la monnaie scripturale (inscrite "en écriture") à qui tout le monde fait confiance. Cet argent "fictif" est injecté dans l'économie réelle pour payer les artisans et les matériaux et c'est ça qui fait tourner l'économie. Mais bon, ç'est pas le sujet ici. Ce qu'il faut retenir c'est que c'est OK d'avoir de la dette. 
 
-Par contre il est important pour une personne (comme pour un pays) d'être capable de payer ses traites (intérêts et capital) tous les mois. Là, pour le coup, on revient à notre sujet car si y a trop de dettes, le remboursement de la dette va coûter tellement cher qu'on sera même plus capable de payer les intérêts. On ne remboursera jamais le capital et on va trainer cet emprunt ad vitam æternam. 
+De plus, il ne faut pas oublier qu'une personne est mortelle ce qui n'est généralement pas le cas d'un pays. C'est peut être un détail pour vous mais pour moi ça veut dire beaucoup. Ça veut dire, en autres, qu'un pays à généralement plus de marges de manœuvre qu'un particulier. Par exemple, tant que son ratio Dette/PIB reste constant ou en baisse il sera capable d'emprunter. Et ça, ça peut durer des siècles. En plus les pays (comme certaines entreprises) ont la possibilité de ne rembourser que les intérêts de la dette puis, à échéance, de faire un nouvel emprunt pour rembourser le capital du précédent (ils font rouler la dette). Nous on va mourir et à un moment personne ne nous prêtera rien car il y aura trop de chance (au sens statistique) qu'on meurt avant la fin de l'emprunt. Mais bon, je m'écarte du sujet...
 
-Heu... Par contre faut pas oublier qu'une personne est mortelle ce qui n'est généralement pas le cas d'un pays. C'est peut être un détails pour vous mais pour moi ça veut dire beaucoup. Ca veut dire, en autres, qu'un pays à généralement plus de marges de manœuvre qu'un particulier. C'est vrai jusqu'au moment où il n'en a plus et où ses créanciers lui envoient la [troïka du Européenne](https://fr.wikipedia.org/wiki/Tro%C3%AFka_(politique_europ%C3%A9enne)) (ou les huissiers). Et là... Ça saigne...    
-
-
-Bref, le déficit de chaque année vient grossir la dette. In other words, le déficit est une grandeur mesurée sur une période donnée, la dette est un stock mesuré à un moment donné ([lien](https://www.vie-publique.fr/fiches/21878-les-differences-entre-le-deficit-budgetaire-et-la-dette-de-letat)). 
+On retiendra que le déficit de chaque année vient grossir la dette. In other words, le déficit est une grandeur mesurée sur une période donnée, la dette est un stock mesuré à un moment donné ([lien](https://www.vie-publique.fr/fiches/21878-les-differences-entre-le-deficit-budgetaire-et-la-dette-de-letat)). 
 
 
 
@@ -846,13 +843,15 @@ Sources :
 
 
 ## Conclusion
-Je n’aime pas l’idée qu’on agite sans cesse le chiffon rouge des "1000 derniers milliards" de déficit comme si tout venait de là, en oubliant l’essentiel : la dette totale de [3350 Mds€](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique), bien supérieure à notre PIB de [2917](https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut_de_la_France) (2024).
+Je n’aime pas l’idée qu’on agite sans cesse le chiffon rouge des "1000 derniers milliards" de déficit comme si tout venait de là, en oubliant l’essentiel : la dette totale de [3350 Mds€](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique).
 
-C’est cette montagne de dette qui génère les intérêts que nous payons chaque année, pas seulement la tranche la plus récente.
+<!-- , bien supérieure à notre PIB de [2917](https://fr.wikipedia.org/wiki/Produit_int%C3%A9rieur_brut_de_la_France) (2024). -->
 
-Avoir de la dette n’est pas un problème en soi, mais en avoir trop devient vite insoutenable. Or, depuis 1975, aucun budget voté n’a été à l’équilibre : au départ, on pouvait justifier un peu de déficit pour investir dans la recherche, l’éducation, la défense… Mais aujourd’hui, avec un niveau d’endettement déjà critique, continuer à voter des budgets déficitaires revient à ignorer le problème.
+<!-- C’est cette montagne de dette qui génère les intérêts que nous payons chaque année, pas seulement la tranche la plus récente.
 
-Ceci posé, une analyse Pareto du déficit public français accumulé sur la dernière décennie fait ressortir les causes dominantes suivantes: 
+Avoir de la dette n’est pas un problème en soi, mais en avoir trop devient vite insoutenable. Or, depuis 1975, aucun budget voté n’a été à l’équilibre : au départ, on pouvait justifier un peu de déficit pour investir dans la recherche, l’éducation, la défense… Mais aujourd’hui, avec un niveau d’endettement déjà critique, continuer à voter des budgets déficitaires revient à ignorer le problème. -->
+
+Quoiqu'il en soit, une analyse Pareto du déficit public français accumulé sur la dernière décennie fait ressortir les causes dominantes suivantes: 
 * le financement des retraites de la fonction publique arrive largement en tête (la moitié du total)
 * suivi par les dépenses exceptionnelles liées aux crises (un quart+)
 * les allègements fiscaux/socials consentis sans contrepartie budgétaire (un quart-)
@@ -865,13 +864,12 @@ Par contre, une fois les blocs identifiés, il faut refaire l'analyse Pareto sur
 
 Vu que je propose de faire du Pareto sur du Pareto, on pourrait parler de Pareto².
 
-Bref : 
-1. maîtrise du financement des retraites de la fonction publique
-1. contrôle des dépenses en cas de choc 
-1. compensations immédiate des baisses de recettes fiscales 
+A retenir Bref : 
+1. financement des retraites de la fonction publique 50%
+1. dépenses de crises 25+% 
+1. des baisses de recettes fiscales 25-% 
 
-
-Le reste c'est de la poésie.
+À ce stade, on a identifé les causes et on a quelques chiffres en tête. Bien... Mais bon la question à 1 million de $ c'est de savoir si un pays, qui n'est pas un être humain, qui est immortel, qui a le droit de faire "rouler sa dette"... Doit avoir de la dette, beaucoup, pas beaucoup etc. Et ça, c'est une autre histoire.
 
 
 
