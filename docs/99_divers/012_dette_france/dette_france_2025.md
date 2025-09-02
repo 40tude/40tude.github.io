@@ -2,14 +2,14 @@
 published: true
 # lang: en-US
 layout: default
-title: "Déficit et dette de la France : comprendre l’essentiel avec la règle des 80/20"
+title: "Dette française : 80/20 pour identifier les vrais responsables"
 parent: "Divers"
 #math: mathjax
 date               : 2025-08-31 07:00:00
-last_modified_date : 2025-08-31 18:00:00
+last_modified_date : 2025-09-02 08:00:00
 ---
 
-# Déficit et dette de la France : comprendre l’essentiel avec la règle des 80/20
+# Dette française : 80/20 pour identifier les vrais responsables
 {: .no_toc }
 
 <!-- <h2 align="center">
@@ -28,7 +28,7 @@ last_modified_date : 2025-08-31 18:00:00
   2. **Dépenses de crise** (Covid, énergie, inflation, 260 Mds€)
   3. **Baisses d’impôts et cotisations** (taxe d'habitation, IS, 230 Mds€)  
 - Dans chaque catégorie, la règle de **Pareto** est encore vérifiée: une minorité de sous-catégories est responsable de 80% des montants (dans les retraites, 80 % du déficit = pensions fonctionnaires + CNRACL + régimes spéciaux)
-- Il n'est pas suffisant de dire “les retraites” : une analyse **Pareto²** montre que seules quelques catégories expliquent l’essentiel du déficit
+- Il n'est pas suffisant de dire “les retraites” : une analyse **Pareto²** montre que seules quelques régimes expliquent l’essentiel du déficit
 - Il est nécessaire de nommer les choses pour ne pas culpabiliser inutilement tout le monde, établir les priorités et réfléchir sur ce qui compte vraiment  
 
 
