@@ -76,6 +76,10 @@ où $$Q$$ est le débit cardiaque (volume de sang pompé par le cœur par minute
 
 ***La cylindrée d'un moteur d'une voiture. T'explique?*** Imagine le moteur d'une voiture. La VO2Max, c'est la cylindrée (exprimée en $$cm^3$$) du moteur. Elle représente ta puissance aérobie brute. Un moteur avec une plus grosse cylindrée peut potentiellement produire plus de puissance et te faire aller plus vite. Bien sûr si tu compare 1.6L d'un moteur de F1 (si si je t'assure un moteur de F1 c'est 1600 cm^3, pas plus) à celui de ta Citroën C5 Aircross... Y a pas photo... Y a un des moteur qui est affûté et l'autre... Comment te dire les choses sans être désobligent... Y a encore un peu de boulot et pas mal de poids à perdre.
 
+<div align="center">
+<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
+</div>
+
 ### Rôle de la VO2Max dans la course à pied. 
 En running, la VO2Max est **un proxi**, une mesure indirecte du **potentiel aérobique maximal** du sportif. Un coureur avec une VO2Max élevée dispose d’une grande "réserve" d’oxygène à exploiter, ce qui favorise des allures soutenues sur la durée. En effet, chez les athlètes d’endurance, la VO2Max est corrélée à la performance sur des distances allant du 5 km au marathon – certaines études estiment qu’elle peut expliquer à elle seule jusqu’à 50% de la performance sur un semi ou un marathon. 
 
