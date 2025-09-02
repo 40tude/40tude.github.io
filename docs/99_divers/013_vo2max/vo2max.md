@@ -2,14 +2,14 @@
 published: true
 # lang: en-US
 layout: default
-title: "VO2Max"
+title: "VO2Max, l'essentiel"
 parent: "Divers"
-#math: mathjax
+math: mathjax
 date               : 2025-09-02 18:30:00
 last_modified_date : 2025-09-02 18:50:00
 ---
 
-# VO2Max
+# VO2Max, l'essentiel
 {: .no_toc }
 
 <h2 align="center">
@@ -99,11 +99,18 @@ Une VO2Max élevée est corrélée à une meilleure santé cardiovasculaire, une
 
 
 
-## Estimation de la VO2Max par les montres Garmin 
+## Estimation de la VO2Max sur les Garmin 
 
 Il est possible **d’estimer** sa [VO2Max][2] en conditions réelles de course, sans passer par un laboratoire. Garmin, en partenariat avec [Firstbeat Analytics](https://www.firstbeat.com/en/), a été pionnier dans cette fonctionnalité. 
 
 Faut juste se calmer et toujours garder en tête que ta Garmin ne mesure pas directement la VO2Max comme le ferait un test en labo avec un masque analysant les gaz respiratoires. Elle **l'estime**. Du coup ce qui va compter sur toi c'est pas tant sa valeur à l'instnat `t` mais son évolution dans le temps. Sur les 6 derniers mois, ta VO2Max monte ou descend?
+
+
+
+
+
+
+
 
 ### Données utilisées
 L'algo analyse la relation entre la fréquence cardiaque et l’allure de course pour estimer la [VO2Max][7]([lien][2]). Concrètement, plusieurs paramètres des sorties sont pris en compte :
@@ -121,6 +128,11 @@ Par exemple, sur terrain plat, on peut estimer le VO2 requis pour une allure don
 
 Ensuite, en comparant ce VO2 “théorique” à l’intensité cardiaque relative (% de FCmax) observée, l’algorithme détermine quelle fraction de VO2Max tu utilises à cette allure. De fil en aiguille, il en déduit ta VO2Max.
 
+
+
+
+
+
 ### Conditions requises 
 
 Pour que l’estimation soit pertinente, certaines conditions d’enregistrement doivent être réunies. Garmin recommande notamment 
@@ -129,7 +141,9 @@ Pour que l’estimation soit pertinente, certaines conditions d’enregistrement
 * De plus, il est important d’avoir configuré correctement ton profil utilisateur (âge, sexe, poids, FC max réelle, etc.), car ces informations servent de base au calcul. Une fréquence cardiaque maximale mal renseignée peut fausser l’estimation de ta VO2Max de plusieurs [points][9]. 
 
 
-### Précision et limites de l’estimation Garmin
+
+
+### Précision et limites de l’estimation 
 
 Une montre Garmin fournit une estimation (un proxy) de la VO2Max et non une mesure directe – il faut donc l’interpréter avec prudence. Le calcul repose sur des données indirectes (fréquence cardiaque, vitesse) et ne peut égaler la précision d’un test d’effort avec analyse des [gaz respiratoires][2]. 
 
