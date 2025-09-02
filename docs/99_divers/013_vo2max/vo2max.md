@@ -43,8 +43,9 @@ last_modified_date : 2025-09-02 18:50:00
 - TOC
 {:toc}
 
+
 ## Introduction
-J'ai écrit il y a de ça pas mal de temps (la première version date de 2019) un billet où j'expliquais comment [débuter la course à pied]({%link docs/99_divers/008_debuter_la_course_a_pied%}). Bien sûr, t'as rien écouté et t'as acheté une Garmin au top du top. Du coup, t'as lu la doc en diagonale et t'es tombé sur ces histoires de VO2Max mais bon, si t'as compris que plus ça monte, mieux s'est... Ça reste un peu flou, en tout cas t'es pas sûr de pouvoir expliquer à tes potes ce que t'indique ta montre à la fin de chaque sortie. Pas de panique Monique, on va faire le point gentiment.
+J'ai écrit il y a de ça pas mal de temps (la première version date de 2019) un billet où j'expliquais comment [débuter la course à pied]({%link docs/99_divers/008_debuter_la_course_a_pied/debuter_la_course_a_pied.md%}). Bien sûr, t'as rien écouté et t'as acheté une Garmin au top du top. Du coup, t'as lu la doc en diagonale et t'es tombé sur ces histoires de VO2Max mais bon, si t'as compris que plus ça monte, mieux s'est... Ça reste un peu flou, en tout cas t'es pas sûr de pouvoir expliquer à tes potes ce que t'indique ta montre à la fin de chaque sortie. Pas de panique Monique, on va faire le point gentiment.
 
 
 ## C'est quoi la VO2Max ?
