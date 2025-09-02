@@ -21,9 +21,9 @@ last_modified_date : 2025-09-02 08:00:00
 {: .no_toc }
 
 - Depuis 73 la dette française ne cesse d'augmenter (Giscard est ministre des finances)
-- Fin Q1 2025 elle est de 3350 milliards d'€ ([lien](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique))
-- Le focus d'Août 2025 sur le chiffre de 1000 milliards ne concerne que la période 2017-2025 (présidence Macron)
-- La règle de Pareto est respectée et **90 %** de ce déficit n'est dû qu'à 3 causes
+- Fin Q1 2025 elle est de 3350 Mds€ ([lien](https://www.economie.gouv.fr/decryptage-5-minutes-pour-comprendre-la-dette-publique))
+- Le focus d'Août 2025 sur le chiffre de 1000 Mds€ ne concerne que la période 2017-2025 (présidence Macron)
+- La règle de Pareto est respectée car **90 %** de ce déficit n'est dû qu'à 3 causes
   1. **Retraites** (celles de la fonction publique, celles des régimes spéciaux, 500 Mds€) 
   2. **Dépenses de crise** (Covid, énergie, inflation, 260 Mds€)
   3. **Baisses d’impôts et cotisations** (taxe d'habitation, IS, 230 Mds€)  
@@ -870,7 +870,3 @@ A retenir Bref :
 1. des baisses de recettes fiscales 25-% 
 
 À ce stade, on a identifé les causes et on a quelques chiffres en tête. Bien... Mais bon la question à 1 million de $ c'est de savoir si un pays, qui n'est pas un être humain, qui est immortel, qui a le droit de faire "rouler sa dette"... Doit avoir de la dette, beaucoup, pas beaucoup etc. Et ça, c'est une autre histoire.
-
-
-
-
