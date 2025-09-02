@@ -576,7 +576,9 @@ Puis sous forme de graphe
 </div>
 
 * Le point 2022 semble en dehors de l'épure. À mon avis on ne compte pas les mêmes choses
-* On peut retenir qu'entre 1980 et 2021 la **croissance moyenne est de l'ordre de 1%** (0.89%)
+* On peut retenir qu'entre 1980 et 2021 la **croissance moyenne est de l'ordre de 1%** (0.89%) 
+    * À la louche c'est un doublement tous les 70 ans qu'on observe sur le graphe entre 1955 et 2025
+    * Code Rust du [calcul du CAGR](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=a5918e6a05d8441d730298f206713cf7)
 
 <!-- ```python
 # Values for 1980 and 2021
@@ -869,4 +871,4 @@ A retenir Bref :
 1. dépenses de crises 25+% 
 1. des baisses de recettes fiscales 25-% 
 
-À ce stade, on a identifé les causes et on a quelques chiffres en tête. Bien... Mais bon la question à 1 million de $ c'est de savoir si un pays, qui n'est pas un être humain, qui est immortel, qui a le droit de faire "rouler sa dette"... Doit avoir de la dette, beaucoup, pas beaucoup etc. Et ça, c'est une autre histoire.
+À ce stade, on a identifé les causes et on a quelques chiffres en tête. Bien... Mais bon, la question à 1 million de $ c'est de savoir si un pays, qui n'est pas un être humain, qui est immortel, qui a le droit de faire "rouler sa dette"... Doit avoir de la dette, beaucoup, pas beaucoup etc. Et ça, c'est une autre histoire.
