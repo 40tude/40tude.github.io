@@ -1,5 +1,6 @@
 title: 40tude
-description: "Explorez 40tude.fr, un site personnel aux multiples facettes : maths, systèmes d'exploitation, programmation Python et C++, astuces Windows/Linux, mais aussi pilotage moto sur circuit et snowboard." 
+description: "40tude.fr, mon blog perso. Au programme : Rust, Python, C++, assembleur (algorithmes, tutos, création d'OS...), administration Windows/Linux, un peu de maths, sans oublier mes notes de pilotage moto sur circuit." 
+
 theme: just-the-docs
 
 # url: https://40tude.github.io/

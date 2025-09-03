@@ -46,16 +46,16 @@ last_modified_date : 2025-09-03 10:00:00
 
 
 ## Introduction
-J'ai écrit il y a de ça pas mal de temps (la première version du billet date de 2019) un billet où j'expliquais comment [débuter la course à pied]({%link docs/99_divers/008_debuter_la_course_a_pied/debuter_la_course_a_pied.md%}). Bien sûr, t'as rien écouté et après 3 runs t'as acheté une Garmin au top du top. Du coup, t'as lu la doc en diagonale et t'es tombé sur ces histoires de VO2Max mais bon, si t'as compris que plus ça monte, mieux c'est... Ça reste encore un peu flou, et en tout cas t'es pas sûr de pouvoir expliquer clairement à tes potes ce que ta montre t'indique à la fin de chaque sortie. Pas de panique Monique, on va faire le point gentiment.
+J'ai écrit il y a de ça pas mal de temps (la première version de l'article date de 2019) un billet où j'expliquais comment [débuter la course à pied]({%link docs/99_divers/008_debuter_la_course_a_pied/debuter_la_course_a_pied.md%}). Bien sûr, t'as rien écouté et après 3 runs t'as acheté une Garmin au top du top. Du coup, t'as lu la doc en diagonale et t'es tombé sur ces histoires de VO2Max mais bon, si t'as compris que plus ça monte, mieux c'est... Ça reste encore un peu flou, et t'es pas sûr de pouvoir expliquer clairement à tes potes ce que ta montre affiche à la fin de chaque sortie. Pas de panique Monique, on va faire le point gentiment.
 
 
 ## C'est quoi la VO2Max ?
 
-La VO2Max (pour “Volume d’Oxygène Maximal”) désigne la **consommation maximale d’oxygène que le corps peut utiliser** lors d’un effort physique intense. C’est une mesure de ta capacité cardio-respiratoire et un indicateur de ton [endurance aérobie][1] (tu courre en **aérobie** quand tu es encore capable de parler). La VO2Max c'est la quantité maximale d’oxygène (exprimée en millilitres, faut 1000 millilitres pour faire un litre) que l’on peut consommer par minute et par kilogramme de poids corporel (ml/min/kg) lors d’un effort prolongé et intense. Plus cette valeur est élevée, plus tu es capable de maintenir un effort intense sur une [longue durée][2].
+La VO2Max (pour “Volume d’Oxygène Maximal”) désigne la **consommation maximale d’oxygène que le corps peut utiliser** lors d’un effort physique intense. C’est une mesure de ta capacité cardio-respiratoire et un indicateur de ton [endurance aérobie][1] (tu courre en **aérobie** quand tu es encore capable de parler). La VO2Max c'est la quantité maximale d’oxygène (exprimée en millilitres, faut 1000 millilitres pour faire un litre) que l’on peut transformer par minute et par kilogramme de poids corporel (ml/min/kg) lors d’un effort prolongé et intense. Plus cette valeur est élevée, plus tu es capable de maintenir un effort intense sur une [longue durée][2].
 
 ***Heu... J'ai rien compris aux unités. Tu peux revenir là-dessus?*** Si c'est pas clair, t'as raison de m'arrêter tout de suite. On a dit consommation d'oxygène par minute et par kilogramme de poids corporel (ml/min/kg). L'oxygène tu vois ce que c'est? Ben si, quand même... L'oxygène c'est un gaz ($$0_2$$) qui occupe un certain volume et les volumes s'expriment normalement en mètre cube (1m par 1m par 1m). Bon, mais cette unité est un peu trop grande si on la compare à nos poumons, au nombre de litres de sang qu'on a dans le corps etc. Donc on va utiliser des millilitres pour exprimer le volume d'oxygène. OK, ça normalement c'est bon.
 
-Maintenant, on veut mesurer combien de millilitres d'oxygène tu es capable de transformer par minute. En fait c'est ça le truc qui est le plus important. OK... Du coup quand tu vas dans un centre médical pour sportifs, on te met un masque sur la tronche avec une entrée et une sortie d'air, tu montes sur un tapis et tu courre en suivant les instructions qu'on te donne. Là, on est capable de mesurer ce qui rentre et ce qui sort et plus tu vas consommer d'oxygène plus ton score va augmenter. Imagine... Je courre et je consomme 100 litres en 10 minutes (ici on se fiche des unités, c'est juste pour fixer les idées). Résultat : je consomme 10l/min. Toi tu arrives et tu consommes 20l/min. Au final, ton score est donc 2 fois meilleur que le mien.  
+Maintenant, on veut mesurer combien de millilitres d'oxygène tu es capable de transformer par minute. En fait c'est ça le truc qui est le plus important. OK... Du coup quand tu vas dans un centre médical pour sportifs, on te met un masque sur la tronche avec une entrée et une sortie d'air, tu montes sur un tapis et tu courre en suivant les instructions qu'on te donne. Là, on est capable de mesurer ce qui rentre et ce qui sort et plus tu vas transformer d'oxygène plus ton score va augmenter. Imagine... Je courre et je consomme 100 litres en 10 minutes (ici on se fiche des unités, c'est juste pour fixer les idées). Résultat : je consomme 10l/min. Toi tu arrives et tu consommes 20l/min. Au final, ton score est donc 2 fois meilleur que le mien.  
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
@@ -63,23 +63,23 @@ Maintenant, on veut mesurer combien de millilitres d'oxygène tu es capable de t
 </div>
 
 
-Mouai... C'est bien mais c'est pas top. En effet, j'ai 10 ans et des barbelés plein les dents. Toi t'as 22 ans... La comparaison n'est donc pas trop équitable car t'es beaucoup plus musclé que moi et on comprend bien que ta "machine" va consommer beaucoup plus que la mienne. Afin de pouvoir comparer des pommes avec des pommes on a décidé de prendre la valeur précédente et de la diviser par le poids du sportif. Dans notre exemple je pèse 30 kg tout mouillé et toi 75 kg. Du coup nos scores deviennent respectivement 0.33 et 0.26 et finalement, "bouboule", mon score est meilleur que le tien.
+Mouai... C'est bien mais c'est pas top. En effet, j'ai 10 ans et des barbelés plein les dents. Toi t'as 22 ans... La comparaison n'est donc pas trop équitable car t'es beaucoup plus musclé que moi et on comprend bien que ta "machine" va transformer beaucoup plus que la mienne. Afin de pouvoir comparer des pommes avec des pommes on a décidé de prendre la valeur précédente et de la diviser par le poids du sportif. Dans notre exemple je pèse 30 kg tout mouillé et toi 75 kg. Du coup nos scores deviennent respectivement 0.33 et 0.26 et finalement, "bouboule", mon score est meilleur que le tien.
 
-Bon, maintenant oublies les unités de mes exemples mais garde en tête qu'on prend le volume d'oxygène que tu as consommé pendant une minute et qu'on a divisé ce chiffre par ton poids.
+Bon, maintenant oublies les unités des exemples précédents mais garde en tête qu'on prend le volume d'oxygène que tu as consommé pendant une minute et qu'on divise ce chiffre par ton poids.
 
 
 ### Physiologie 
 
 La VO2Max reflète les limites de ton moteur en mode aérobie. Sur le plan physiologique, elle dépend à la fois de la capacité de ton cœur et de tes poumons à acheminer l’oxygène vers les muscles, et de la capacité de tes muscles à extraire et à utiliser cet oxygène pour produire de l’énergie. On peut modéliser cela par [le principe de Fick](https://en.wikipedia.org/wiki/Fick_principle) :
 
-$$VO_2 = Q *(C_aO_2 - C_vO_2)$$
+$$VO_2 = Q * (C_aO_2 - C_vO_2)$$
 
-où $$Q$$ est le débit cardiaque (volume de sang pompé par le cœur par minute), $$C_aO_2$$ la teneur en oxygène du sang artériel et $$C_vO_2$$ celle du sang veineux. 
+Commence pas à râler. Tu vas voir c'est simple. $$Q$$ c'est le débit cardiaque (volume de sang pompé par le cœur par minute), $$C_aO_2$$ la teneur en oxygène du sang artériel et $$C_vO_2$$ celle du sang veineux. 
 
 - Le premier membre $$Q$$ c'est la capacité de ton cœur et de tes poumons (voir plus haut);
 - Le second terme, la différence $$C_aO_2 - C_vO_2$$, c'est la capacité de tes muscles à extraire (c'est pour ça qu'il y a un signe moins) et à utiliser cet oxygène (voir plus haut).
 
-En d’autres termes, une VO2Max élevée implique à la fois un **cœur puissant** ($$Q$$ grand) capable d’éjecter un grand volume de sang oxygéné, et **des muscles entraînés** dotés d’une riche vascularisation et de nombreuses [mitochondries](https://fr.wikipedia.org/wiki/Mitochondrie) pour utiliser cet oxygène (une différence $$(C_aO_2 - C_vO_2)$$ grande). La VO2Max représente ainsi le “plafond” de nos capacités aérobies et on la compare souvent à la cylindrée du moteur d’une voiture.
+En d’autres termes, une VO2Max élevée implique à la fois un **cœur puissant** ($$Q$$ grand) capable d’éjecter un grand volume de sang oxygéné, et **des muscles entraînés** dotés d’une riche vascularisation et de nombreuses [mitochondries](https://fr.wikipedia.org/wiki/Mitochondrie). Ces dernières sont en charge, entre autres, de la production d’énergie sous forme d’ATP par la voie aérobie. Ce que l'on veut, c'est quelles utilisent un maximum de cet oxygène ce qui va donner une différence $$(C_aO_2 - C_vO_2)$$ grande. La VO2Max représente ainsi le “plafond” de nos capacités aérobies et on la compare souvent à la cylindrée du moteur d’une voiture.
 
 ***La cylindrée d'un moteur d'une voiture... T'explique?*** Imagine le moteur d'une voiture. La VO2Max, c'est la cylindrée (exprimée en $$cm^3$$) du moteur. Elle représente ta puissance aérobie brute potentielle. Un moteur avec une plus grosse cylindrée peut potentiellement produire plus de puissance et te faire aller plus vite. Bien sûr, si tu compare les 1.6 litres d'un moteur de F1 (si si je t'assure un moteur de F1 c'est 1600 $$cm^3$$, pas plus) à celui de ta Citroën C5 Aircross... Y a pas photo... Y a un des deux moteurs qui est affûté et l'autre... Comment te dire les choses sans être désobligeant... On va dire qu'il y a encore un peu de boulot et pas mal de poids à perdre.
 
