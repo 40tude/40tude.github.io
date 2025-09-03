@@ -13,24 +13,24 @@ last_modified_date : 2025-09-02 18:50:00
 {: .no_toc }
 
 <h2 align="center">
-<span style="color:orange"><b>Men at work</b></span>    
+<span style="color:orange"><b>Almost finished</b></span>    
 </h2>
 
 
 ## TL;DR
 {: .no_toc }
 
-- la consommation maximale d’oxygène que le corps peut utiliser 
-- Unité ml/min/kg
+- La consommation maximale d’oxygène que le corps peut utiliser 
+- En ml/min/kg
 - Un prédicteur de tes performances sur les efforts longs
 - Mode aérobie
-- Sur les montre, c'est un proxi, une estimation indirecte
+- Sur les montres, c'est un proxi, une estimation indirecte
 - Suivre l'évolution dans le temps sur plusieurs mois
 - Un entraînement planifié, régulier et diversifié améliore la VO2Max jusqu’à un certain point (retarde la baisse liée à l’âge) 
 - HIIT en 30-30
-- Frac long de 4x4 min. entre coupé de 2 min de récup
-- Au Seuil en 2x15 min et 5 min de récup   
-- En côtes de 30 sec à 1 min.
+- Frac long de 4x4 min. entre coupé de 2 min. de récup
+- Seuil en 2x15 min. avec 5 min. de récup   
+- Côtes pendant 30s à 1 min.
 
 
 <div align="center">
@@ -46,16 +46,16 @@ last_modified_date : 2025-09-02 18:50:00
 
 
 ## Introduction
-J'ai écrit il y a de ça pas mal de temps (la première version du billet date de 2019) un billet où j'expliquais comment [débuter la course à pied]({%link docs/99_divers/008_debuter_la_course_a_pied/debuter_la_course_a_pied.md%}). Bien sûr, t'as rien écouté et après 3 runs t'as acheté une Garmin au top du top. Du coup, t'as lu la doc en diagonale et t'es tombé sur ces histoires de VO2Max mais bon, si t'as compris que plus ça monte, mieux c'est... Ça reste un peu flou, et en tout cas t'es pas sûr de pouvoir expliquer clairement à tes potes ce que t'indique ta montre à la fin de chaque sortie. Pas de panique Monique, on va faire le point gentiment.
+J'ai écrit il y a de ça pas mal de temps (la première version du billet date de 2019) un billet où j'expliquais comment [débuter la course à pied]({%link docs/99_divers/008_debuter_la_course_a_pied/debuter_la_course_a_pied.md%}). Bien sûr, t'as rien écouté et après 3 runs t'as acheté une Garmin au top du top. Du coup, t'as lu la doc en diagonale et t'es tombé sur ces histoires de VO2Max mais bon, si t'as compris que plus ça monte, mieux c'est... Ça reste encore un peu flou, et en tout cas t'es pas sûr de pouvoir expliquer clairement à tes potes ce que ta montre t'indique à la fin de chaque sortie. Pas de panique Monique, on va faire le point gentiment.
 
 
 ## C'est quoi la VO2Max ?
 
 La VO2Max (pour “Volume d’Oxygène Maximal”) désigne la **consommation maximale d’oxygène que le corps peut utiliser** lors d’un effort physique intense. C’est une mesure de ta capacité cardio-respiratoire et un indicateur de ton [endurance aérobie][1] (tu courre en **aérobie** quand tu es encore capable de parler). La VO2Max c'est la quantité maximale d’oxygène (exprimée en millilitres, faut 1000 millilitres pour faire un litre) que l’on peut consommer par minute et par kilogramme de poids corporel (ml/min/kg) lors d’un effort prolongé et intense. Plus cette valeur est élevée, plus tu es capable de maintenir un effort intense sur une [longue durée][2].
 
-***Heu... J'ai rien compris aux unités. Tu peux revenir là-dessus?*** Si c'est pas clair, t'as raison de m'arrêter tout de suite. On a dit consommation d'oxygène par minute et par kilogramme de poids corporel (ml/min/kg). L'oxygène tu vois ce que c'est? Ben si, quand même... L'oxygène c'est un gaz ($$0_2$$) qui occupe un certain volume et les volumes s'expriment normalement en metre cube (1m par 1m par 1m). Bon, mais cette unité est un peu trop grande si on la compare à nos poumons, au nombre de litres de sang qu'on a dans le corps etc. Donc on va utiliser des millilitres pour exprimer le volume d'oxygène. OK, ça normalement c'est bon.
+***Heu... J'ai rien compris aux unités. Tu peux revenir là-dessus?*** Si c'est pas clair, t'as raison de m'arrêter tout de suite. On a dit consommation d'oxygène par minute et par kilogramme de poids corporel (ml/min/kg). L'oxygène tu vois ce que c'est? Ben si, quand même... L'oxygène c'est un gaz ($$0_2$$) qui occupe un certain volume et les volumes s'expriment normalement en mètre cube (1m par 1m par 1m). Bon, mais cette unité est un peu trop grande si on la compare à nos poumons, au nombre de litres de sang qu'on a dans le corps etc. Donc on va utiliser des millilitres pour exprimer le volume d'oxygène. OK, ça normalement c'est bon.
 
-Maintenant, on veut mesurer combien de millilitres d'oxygène tu es capable de transformer par minute. En fait c'est ça le truc qui est le plus important. OK... Du coup quand tu vas dans un centre médical pour sportifs, on te met un masque sur la tronche avec une entrée et une sortie d'air, tu montes sur un tapis et tu courre en suivant les instructions qu'on te donne. Là, du coup, on est capable de mesurer ce qui rentre et ce qui sort et plus tu va consommer d'oxygène plus ton score va augmenter. Imagine... Je courre et je consomme 100 litres en 10 minutes (ici on se fiche des unités, c'est juste pour jouer avec les unités et fixer les idées). Du coup je consomme 10l/min. Toi tu arrives et tu consommes 20l/min. Du coup, ton score est 2 fois meilleur que le mien.  
+Maintenant, on veut mesurer combien de millilitres d'oxygène tu es capable de transformer par minute. En fait c'est ça le truc qui est le plus important. OK... Du coup quand tu vas dans un centre médical pour sportifs, on te met un masque sur la tronche avec une entrée et une sortie d'air, tu montes sur un tapis et tu courre en suivant les instructions qu'on te donne. Là, on est capable de mesurer ce qui rentre et ce qui sort et plus tu vas consommer d'oxygène plus ton score va augmenter. Imagine... Je courre et je consomme 100 litres en 10 minutes (ici on se fiche des unités, c'est juste pour fixer les idées). Résultat : je consomme 10l/min. Toi tu arrives et tu consommes 20l/min. Au final, ton score est donc 2 fois meilleur que le mien.  
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
@@ -63,14 +63,14 @@ Maintenant, on veut mesurer combien de millilitres d'oxygène tu es capable de t
 </div>
 
 
-Mouai... C'est bien mais c'est pas top. En effet, j'ai 10 ans et des barbelés plein les dents. Toi t'as 22 ans... Du coup la comparaison n'est pas trop équitable car t'es beaucoup plus musclé que moi et du coup on comprend bien que ta "machine" va consommer beaucoup plus que la mienne. Afin de pouvoir comparer des pommes avec des pommes on a décidé de prendre la valeur précédente et de la diviser par le poids du sportif. Dans notre exemple je pèse 30 kg tout mouillé et toi 75 kg. Du coup nos scores deviennent respectivement 0.33 et 0.26 et du coup, "bouboule", mon score est meilleur que le tien.
+Mouai... C'est bien mais c'est pas top. En effet, j'ai 10 ans et des barbelés plein les dents. Toi t'as 22 ans... La comparaison n'est donc pas trop équitable car t'es beaucoup plus musclé que moi et on comprend bien que ta "machine" va consommer beaucoup plus que la mienne. Afin de pouvoir comparer des pommes avec des pommes on a décidé de prendre la valeur précédente et de la diviser par le poids du sportif. Dans notre exemple je pèse 30 kg tout mouillé et toi 75 kg. Du coup nos scores deviennent respectivement 0.33 et 0.26 et finalement, "bouboule", mon score est meilleur que le tien.
 
 Bon, maintenant oublies les unités de mes exemples mais garde en tête qu'on prend le volume d'oxygène que tu as consommé pendant une minute et qu'on a divisé ce chiffre par ton poids.
 
 
 ### Physiologie 
 
-La VO2Max reflète les limites de ton moteur en mode aérobie. Sur le plan physiologique, elle dépend à la fois de la capacité de ton cœur et de tes poumons à acheminer l’oxygène vers les muscles, et de la capacité de tes muscles à extraire et utiliser cet oxygène pour produire de l’énergie. On peut modéliser cela par [le principe de Fick](https://en.wikipedia.org/wiki/Fick_principle) :
+La VO2Max reflète les limites de ton moteur en mode aérobie. Sur le plan physiologique, elle dépend à la fois de la capacité de ton cœur et de tes poumons à acheminer l’oxygène vers les muscles, et de la capacité de tes muscles à extraire et à utiliser cet oxygène pour produire de l’énergie. On peut modéliser cela par [le principe de Fick](https://en.wikipedia.org/wiki/Fick_principle) :
 
 $$VO_2 = Q *(C_aO_2 - C_vO_2)$$
 
@@ -79,9 +79,9 @@ où $$Q$$ est le débit cardiaque (volume de sang pompé par le cœur par minute
 - Le premier membre $$Q$$ c'est la capacité de ton cœur et de tes poumons (voir plus haut);
 - Le second terme, la différence $$C_aO_2 - C_vO_2$$, c'est la capacité de tes muscles à extraire (c'est pour ça qu'il y a un signe moins) et à utiliser cet oxygène (voir plus haut).
 
-En d’autres termes, une VO2Max élevée implique à la fois un cœur puissant ($$Q$$ grand) capable d’éjecter un grand volume de sang oxygéné, et **des muscles entraînés** dotés d’une riche vascularisation et de nombreuses [mitochondries](https://fr.wikipedia.org/wiki/Mitochondrie) pour utiliser cet oxygène (une différence $$(C_aO_2 - C_vO_2)$$ grande). La VO2Max représente ainsi le “plafond” de nos capacités aérobies et on la compare souvent à la cylindrée du moteur d’une voiture.
+En d’autres termes, une VO2Max élevée implique à la fois un **cœur puissant** ($$Q$$ grand) capable d’éjecter un grand volume de sang oxygéné, et **des muscles entraînés** dotés d’une riche vascularisation et de nombreuses [mitochondries](https://fr.wikipedia.org/wiki/Mitochondrie) pour utiliser cet oxygène (une différence $$(C_aO_2 - C_vO_2)$$ grande). La VO2Max représente ainsi le “plafond” de nos capacités aérobies et on la compare souvent à la cylindrée du moteur d’une voiture.
 
-***La cylindrée d'un moteur d'une voiture... T'explique?*** Imagine le moteur d'une voiture. La VO2Max, c'est la cylindrée (exprimée en $$cm^3$$) du moteur. Elle représente ta puissance aérobie brute potentielle. Un moteur avec une plus grosse cylindrée peut potentiellement produire plus de puissance et te faire aller plus vite. Bien sûr si tu compare 1.6L d'un moteur de F1 (si si je t'assure un moteur de F1 c'est 1600 $$cm^3$$, pas plus) à celui de ta Citroën C5 Aircross... Y a pas photo... Y a un des moteur qui est affûté et l'autre... Comment te dire les choses sans être désobligent... Y a encore un peu de boulot et pas mal de poids à perdre.
+***La cylindrée d'un moteur d'une voiture... T'explique?*** Imagine le moteur d'une voiture. La VO2Max, c'est la cylindrée (exprimée en $$cm^3$$) du moteur. Elle représente ta puissance aérobie brute potentielle. Un moteur avec une plus grosse cylindrée peut potentiellement produire plus de puissance et te faire aller plus vite. Bien sûr, si tu compare les 1.6 litres d'un moteur de F1 (si si je t'assure un moteur de F1 c'est 1600 $$cm^3$$, pas plus) à celui de ta Citroën C5 Aircross... Y a pas photo... Y a un des deux moteurs qui est affûté et l'autre... Comment te dire les choses sans être désobligeant... On va dire qu'il y a encore un peu de boulot et pas mal de poids à perdre.
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
@@ -90,18 +90,18 @@ En d’autres termes, une VO2Max élevée implique à la fois un cœur puissant 
 ### Rôle de la VO2Max dans la course à pied. 
 En running, la VO2Max est **un proxi**, une mesure indirecte du **potentiel aérobique maximal** du sportif. Un coureur avec une VO2Max élevée dispose d’une grande "réserve" d’oxygène à exploiter, ce qui favorise des allures soutenues sur la durée. En effet, chez les athlètes d’endurance, la VO2Max est corrélée à la performance sur des distances allant du 5 km au marathon – certaines études estiment qu’elle peut expliquer à elle seule jusqu’à 50% de la performance sur un semi ou un marathon. 
 
-Ceci étant, faut noter que si il est important, ce n’est pas le seul facteur de la performance en [course à pied][2] ([lien][5]). Des coureurs ayant une VO2Max un peu plus faible peuvent parfois battre des coureurs à VO2Max plus élevée, grâce à d’autres déterminants essentiels : l’économie de course (efficacité technique), le seuil lactique (capacités à maintenir un pourcentage élevé de VO2Max sans accumuler trop de lactate), la stratégie de course, etc. La VO2Max fixe le “potentiel maximal” de ton moteur aérobie, mais la performance réelle dépend aussi non seulement de ce potentiel mais aussi de ta technique et, en compétition, de ta stratégie.
+Ceci étant, faut noter que si il est important, ce n’est pas le seul facteur de la performance en [course à pied][2] ([lien][5]). Des coureurs ayant une VO2Max un peu plus faible peuvent parfois battre des coureurs à VO2Max plus élevée, grâce à d’autres déterminants essentiels : l’économie de course (efficacité technique), le seuil lactique (capacités à maintenir un pourcentage élevé de VO2Max sans accumuler trop de lactate), la stratégie de course, etc. La VO2Max fixe le “potentiel maximal” de ton moteur aérobie, mais la performance réelle dépend non seulement de ce potentiel mais aussi de ta technique et, en compétition, de ta stratégie.
 
 ### Mesure de la VO2Max
 La mesure directe de la VO2Max se fait en laboratoire lors d’un test d’effort maximal, généralement sur tapis roulant. Le coureur porte un masque relié à un analyseur de gaz qui mesure précisément l’oxygène consommé et le gaz carbonique ($$CO_2$$) expiré à mesure que l’effort augmente jusqu’à l’épuisement. Le point où la consommation d’oxygène ne parvient plus à augmenter malgré l’augmentation de l’intensité correspond à la VO2Max. Ce protocole étant contraignant (matériel, effort maximal contrôlé en labo...), on utilise souvent des tests indirects ou des estimations terrain pour approximer la VO2Max.
 
-### Pourquoi c'est important?
-Une VO2Max élevée est corrélée à une meilleure santé cardiovasculaire, une meilleure endurance et une meilleure récupération. C'est un excellent **prédicteur de tes performances**, surtout sur les efforts longs (course à pied, cyclisme, natation).
+<!-- ### Pourquoi c'est important?
+Une VO2Max élevée est corrélée à une meilleure santé cardiovasculaire, une meilleure endurance et une meilleure récupération. C'est un excellent **prédicteur de tes performances**, surtout sur les efforts longs (course à pied, cyclisme, natation). -->
 
 ### Les facteurs qui influencent la VO2Max
 * **Génétique** : Compte pour environ 20 à 30% de la valeur. Là c'est mort, on peut rien faire.
 * **L'âge** : La valeur atteint son pic vers 20-30 ans et décline ensuite lentement. Tisane de tisane... On peut rien faire non plus là dessus.
-* **Le sexe** : En moyenne, les hommes ont une VO2Max 10 à 20% plus élevée que les femmes. Ah quand même... Il va nous rester kekchose! Non mais, qui c'est qui pisse debout 😁. Trêve de plaisanterie, on peut pas non plus changer grand chose (et commencer pas à me chauffer sur le sujet sinon je vais chercher tonton Trump)
+* **Le sexe** : En moyenne, les hommes ont une VO2Max 10 à 20% plus élevée que les femmes. Ah quand même... Il va nous rester kekchose! Non mais, qui c'est qui pisse debout 😁. Trêve de plaisanterie, on peut pas non plus changer grand chose (et commencez pas à me chauffer sur le sujet sinon je vais chercher tonton Trump)
 * **L'entraînement** : Enfin! C'est **LE** facteur sur lequel nous pouvons agir. Il se dit qu'un entraînement structuré peut l'augmenter de 15 à 20%, voire plus pour les débutants.
 
 
@@ -122,7 +122,7 @@ Une VO2Max élevée est corrélée à une meilleure santé cardiovasculaire, une
 
 Il est possible **d’estimer** sa [VO2Max][2] en conditions de running, sans passer par un laboratoire. Garmin, en partenariat avec [Firstbeat Analytics](https://www.firstbeat.com/en/), a été pionnier dans cette fonctionnalité. 
 
-Faut juste se calmer et toujours garder en tête que ta Garmin ne mesure pas directement la VO2Max comme le ferait un test en labo avec un masque et analysant les gaz respiratoires. Elle **l'estime**. Du coup ce qui va compter pour toi c'est pas tant sa valeur à l'instant `t` mais **son évolution dans le temps**. Sur les 6 derniers mois, ta VO2Max monte ou descend?
+Faut juste se calmer et toujours garder en tête que ta Garmin ne mesure pas directement la VO2Max comme le ferait un test en labo avec un masque et en meuserant les volumes de gaz qui rentrent et qui sortent. Elle **l'estime** et ce qui va compter pour toi c'est pas tant sa valeur à l'instant `t` mais **son évolution dans le temps**. Sur les 6 derniers mois, ta VO2Max monte ou descend?
 
 
 
@@ -133,7 +133,7 @@ Faut juste se calmer et toujours garder en tête que ta Garmin ne mesure pas dir
 
 ### Données utilisées
 
-L'algo analyse la relation entre la fréquence cardiaque et l’allure de course pour estimer la [VO2Max][7]([lien][2]). Concrètement, plusieurs paramètres des sorties sont pris en compte :
+L'algo analyse la relation entre la fréquence cardiaque et l’allure de course pour estimer la [VO2Max][7] ([lien][2]). Concrètement, plusieurs paramètres sont pris en compte :
 
 * **Fréquence cardiaque** – mesurée soit par le capteur cardio optique au poignet, soit par une ceinture thoracique.
 * **Vitesse/Allure de course** – déterminée via le GPS pour quantifier l’intensité de l’effort.
@@ -142,9 +142,9 @@ L'algo analyse la relation entre la fréquence cardiaque et l’allure de course
 
 L’hypothèse de base est la suivante : plus tu peux courir vite à une fréquence cardiaque donnée (modérée), plus ta VO2Max estimée sera élevée. À l’inverse, si ta fréquence cardiaque grimpe vite pour une allure modeste, l’algorithme estimera une VO2Max plus faible. 
 
-En pratique, la montre va extraire de ton activité des segments stables et fiables (quelques dizaines de secondes chacun) où le signal GPS est bon et le rythme cardiaque régulier, puis appliquer des formules issues de données de tests d’effort. 
+En pratique, la montre va extraire de ton activité des segments stables et fiables (quelques dizaines de secondes chacun) où le signal GPS est bon et le rythme cardiaque régulier, puis corréler tout ça avec les données de tests d’effort d'une BdD.
 
-Par exemple, sur terrain plat, on peut estimer le VO2 requis pour une allure donnée par la formule simplifiée VO2 (ml/kg/min) ≈ 3,5 × vitesse (en km/h)([lien][9]). 
+Par exemple, sur terrain plat, on peut estimer le VO2 requis pour une allure donnée par la formule simplifiée VO2 (ml/kg/min) ≈ 3,5 × vitesse (en km/h) ([lien][9]). 
 
 Ensuite, en comparant ce VO2 “théorique” à l’intensité cardiaque relative (% de FCmax) observée, l’algorithme détermine quelle fraction de VO2Max tu utilises à cette allure. De fil en aiguille, il en déduit ta VO2Max.
 
@@ -157,7 +157,7 @@ Ensuite, en comparant ce VO2 “théorique” à l’intensité cardiaque relati
 
 Pour que l’estimation soit pertinente, certaines conditions d’enregistrement doivent être réunies. Garmin recommande notamment : 
 
-* Courir au moins une dizaine de minutes en extérieur avec un signal GPS stable, et à une intensité suffisante (idéalement au moins ~70 % de ta fréquence cardiaque maximale sur une [durée continue][9]). Sans atteindre un effort conséquent, l’algorithme manque de données exploitables pour extrapoler la VO2Max. 
+* Courir au moins une dizaine de minutes en extérieur avec un signal GPS stable, et à une intensité suffisante (idéalement au moins ~70 % de ta fréquence cardiaque maximale sur une [durée continue][9]). Si tu n’atteins pas un niveau d'effort conséquent, l’algorithme manque de données exploitables pour extrapoler la VO2Max. 
 * De plus, il est important d’avoir configuré correctement ton profil utilisateur (âge, sexe, poids, FC max réelle, etc.), car ces informations servent de base au calcul. Une fréquence cardiaque maximale mal renseignée peut fausser l’estimation de ta VO2Max de plusieurs [points][9]. 
 
 
@@ -319,7 +319,7 @@ La VO2Max est un outil et non une fin en soi : c’est un proxi, une mesure indi
 
 
 PS : 
-Y a pas mal de liens dans ce billet. N'hésite pas à prendre un peu de temps et de les lire. Notamment les guides et études sur la [VO2Max][4]([lien][9]), les articles de fond en français sur l’entraînement fractionné et la VMA, ou encore les tableaux de classification de la VO2Max par âge ([Cooper Institute][34]). 
+Y a pas mal de liens dans ce billet. N'hésite pas à prendre un peu de temps et de les lire. Notamment les guides et études sur la [VO2Max][4] ([lien][9]), les articles de fond en français sur l’entraînement fractionné et la VMA, ou encore les tableaux de classification de la VO2Max par âge ([Cooper Institute][34]). 
 
 [1]: https://nutriandco.com/fr/pages/vo2-max "VO2 max homme et femme, âge tableau, calcul et exercices"
 [2]: https://www.wanarun.net/blog/vo2-max-73269.html "Vo2 max en course à pied"
