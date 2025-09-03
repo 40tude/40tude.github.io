@@ -95,6 +95,30 @@ I will not explain how to run the code every time.
 </div>
 
 
+### Explanations 1/2
+{: .no_toc }
+
+In this first part, I suggest approaching the problem from the opposite angle. Rather than explaining what a Trait is and then looking at how it is used, we will start with a problem to be solved, see how the Traits respond to the questions, and then study their implementation in the code.
+
+Imagine... Imagine that we work in industry. We deploy control systems at various sites around the world. Don't worry about it. Our task is simple: we install temperature sensors in the factory and we want to read them. Once we have the values, we can display them, store them...  
+
+But we have to anticipate... Sure, we're so efficient and so good that we'll be asked to deploy other types of sensors: pressure sensors, torsion sensors, flow meters, cameras... And while we're at it, we'll be asked to install actuators to close valves, unlock doors, turn on alarms... 
+
+First thing first, let's focus on the temprature sensors. Depending on the region of the world, we are asked to support both °C and °F (nobody's perfect...). On the other hand not all sensors are the same. Some of them may be already in place... Some of them may have different communication link (serial, Ethercat...). So we can imagine that we have different types of temperature sensors, but this should be transparent from the software stand point.
+
+OK... Then what? 
+
+What I just described exists in many other situations, and so there are some people who are smarter than others, who took a step back from all this and said to themselves: what you actually want is for all thermocouples to be measurable. It's a bit like describing people's characters. Some are touchy, others are cheerful, and still others are very intelligent. They are all different people, men, women, young, old... But they all have certain character traits. Well, we're going to give Rust a way to add character traits to existing types. 
+
+
+For example, I create a Dog type with a struct{}. I then create a Cat type with another struct{}. Next, I describe what the Deceitful character trait is. Finally, I can then enrich the Dog and Cat types with the trait Deceitful. If I decide to say that all Cats are deceitful but not Dogs, I only add the trait Deceitful to Cats. Anyway, you get the idea.
+
+Before we look at the first code example, there is one last point to keep in mind. Since Rust is quite strict about issues with types, we can write functions that take, as parameter, only data type we certain traits. For example, I can write a function that takes as a parameter any animal that has the trait Deceitful. It will then be able to treat Cats, Parrots, etc. in the same way. Similarly, I can create vectors that only contain animals with the trait Deceitful.
+
+Okay, let's move on to studying the first source code and see how all this apply to our thermocouple
+
+
+
 
 
 ### Show me the code!
@@ -155,10 +179,8 @@ fn main() {
 }
 ```
 
-### Explanations
+### Explanations 2/2
 {: .no_toc }
-
-
 
 
 
