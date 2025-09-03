@@ -221,16 +221,27 @@ Pour exclure de la TOC les titres de niveaux 3+
 
 ```
 ---
+published: true
+lang: en-US
 layout: default
 title: "SOS2 Episode 0"
-#parent: "Simple OS"
+description: "From basic syntax to building plugins with once_cell and organizing Rust projects."
+parent: "Simple OS"
 #nav_order: 2
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
 last_modified_date: 2023-12-04 00:02:38
 ---
+```
 
+### sous titre
+```
+# Rust Traits: Defining Character
+{: .no_toc }
+
+From basic syntax to building plugins with once_cell and organizing your Rust projects.
+{: .lead }
 ```
 
 
