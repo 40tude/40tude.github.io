@@ -13,8 +13,16 @@ last_modified_date : 2025-09-03 14:00:00
 # Rust Traits: Defining Character
 {: .no_toc }
 
-## From basic syntax to building plugins with once_cell and organizing your Rust projects.
-{: .text-muted }
+From basic syntax to building plugins with once_cell and organizing your Rust projects.
+{: .lead }
+
+<!-- <h4>
+<span style="color:grey"><i>From basic syntax to building plugins with once_cell and organizing your Rust projects.</i></span>    
+</h4> -->
+
+
+
+
 
 <h2 align="center">
 <span style="color:orange"><b>This post is still under construction.</b></span>    
@@ -22,6 +30,8 @@ last_modified_date : 2025-09-03 14:00:00
 
 
 ## TL;DR
+{: .no_toc }
+
 * For beginners
 
 <div align="center">
