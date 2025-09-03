@@ -6,15 +6,15 @@ title: "VO2Max, l'essentiel"
 parent: "Divers"
 math: mathjax
 date               : 2025-09-02 18:30:00
-last_modified_date : 2025-09-02 18:50:00
+last_modified_date : 2025-09-03 10:00:00
 ---
 
 # VO2Max, l'essentiel
 {: .no_toc }
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b>Almost finished</b></span>    
-</h2>
+</h2> -->
 
 
 ## TL;DR
@@ -124,6 +124,11 @@ Il est possible **d’estimer** sa [VO2Max][2] en conditions de running, sans pa
 
 Faut juste se calmer et toujours garder en tête que ta Garmin ne mesure pas directement la VO2Max comme le ferait un test en labo avec un masque et en meuserant les volumes de gaz qui rentrent et qui sortent. Elle **l'estime** et ce qui va compter pour toi c'est pas tant sa valeur à l'instant `t` mais **son évolution dans le temps**. Sur les 6 derniers mois, ta VO2Max monte ou descend?
 
+<div align="center">
+<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
+</div>
+
+
 
 
 
@@ -203,6 +208,11 @@ On l'a dit aussi, la VO2Max a une composante génétique et tend à plafonner à
 
 Mais bon, un entraînement régulier permet de retarder et de réduire cette baisse liée à l’âge, et même d’améliorer la VO2Max jusqu’à un certain point.
 
+<div align="center">
+<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
+</div>
+
+
 ### Principes généraux 
 
 Pour faire progresser la VO2Max, l’objectif est de stimuler au maximum le système cardio-respiratoire et musculaire sur des intensités élevées. 
@@ -219,11 +229,21 @@ Enfin, le volume d’endurance fondamentale (allures faciles) constitue la base 
 
 1. **HIIT court** – Des intervalles très rapides de **15 s à 1 min**, alternant avec des récupérations équivalentes ou légèrement plus longues. Par exemple, les classiques **30-30** (30 secondes à haute intensité ≈ 100 % VMA, suivies de 30 s de récupération, répétées en séries). Ces efforts **brefs et violents** sollicitent le cœur à des fréquences proches de la FCmax et engagent un grand volume musculaire, ce qui stimule l’augmentation du débit cardiaque et la capacité enzymatique des muscles. Ils permettent d’accumuler plusieurs minutes à intensité VO2max sur une séance.
 
+<div align="center">
+<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
+</div>
+
+
 1. **Fractionné long** – Des intervalles de 2 à 5 minutes à une intensité élevée (typiquement ~90 % de la VMA ou **~90-95 % de la FCmax**), entrecoupés de récupérations incomplètes de 1 à 3 minutes. Exemples : 5 × 1000 m à allure 95 % vVO2max (récup 2’) ou **4 × 4 minutes intense avec 2 minutes de trot de récupération**. Ce format d’entraînement est connu pour améliorer efficacement la VO2Max et est largement utilisé y compris chez les coureurs de haut niveau. Il impose au système cardio-respiratoire de travailler quasiment à pleine capacité pendant plusieurs minutes d’affilée, ce qui stimule des adaptations centrales importantes (augmentation du volume d’éjection systolique du cœur, meilleure contractilité) et des adaptations périphériques (plus de mitochondries et de capillaires dans les [fibres musculaires][4]).
 
 1. **Séances au seuil** – Courir à allure seuil (environ l’allure que l’on peut tenir ~1h, correspond souvent à ~85-90 % de la FCmax) sur des durées de 10 à 30 minutes en continu, ou en fractions longues (ex : **2 × 15 min au seuil avec 5 min de récup**). Ce travail améliore le lactate threshold (seuil lactique), c’est-à-dire la capacité à maintenir une fraction élevée de votre VO2Max sur la durée sans accumuler de déchets métaboliques excessifs. Indirectement, en repoussant ce seuil, on peut soutenir des intensités plus proches de la VO2Max plus longtemps en course, ce qui améliore la performance. Le seuil n’augmente pas forcément la VO2Max elle-même autant que le fractionné, mais il optimise l’utilisation qu’on en fait.
 
 1. **VMA et côtes** - VMA = Vitesse Maximale Aérobie. C'est la vitesse atteinte lorsque tu consommes ta VO2Max lors d’un test progressif. Travailler à des vitesses proches de la VMA revient à travailler à VO2Max. Les séances de VMA sont donc généralement des fractions intenses comme décrites ci-dessus (30/30, 400 m répétitions, etc.) et sont très efficaces pour développer la VO2Max. Par ailleurs, intégrer du travail en côte (sprints en montée sur 100 à 200 m, ou **côtes de 30 s à 1 min**) peut être un excellent moyen d’augmenter l’intensité tout en te [renforçant musculairement][1]. Les montées font rapidement grimper le cardio et la puissance développée, participant aux mêmes adaptations bénéfiques.
+
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
+</div>
+
 
 1. **Entraînement croisé et renforcement** – Bien que la course à pied doive rester prioritaire pour améliorer spécifiquement la VO2Max en course, des activités d’endurance complémentaires (vélo, natation, ski de fond…) peuvent contribuer à augmenter le volume aérobie sans surcharger le système musculo-squelettique du coureur. De même, un renforcement musculaire général peut améliorer l’efficacité de course et le rendement énergétique. Ces facteurs ne font pas monter directement la VO2Max, mais ils soutiennent l’entraînement intense en prévenant les blessures et en améliorant l’économie de mouvement.
 
@@ -296,6 +316,9 @@ Faut pas oublier que le repos fait partie intégrante de l’entraînement : c�
     *   **Cycliste professionnel** : Régulièrement entre 80 et 90+ (Exemple : Greg LeMond ~92.5, Tadej Pogačar ~90+)
     *   **Ski de fond** : Les sports qui sollicitent le plus de groupes musculaires ont souvent les VO2Max les plus élevées (Exemple : Bjørn Dæhlie ~96, record mesuré en labo).
 
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
+</div>
 
 
 
@@ -306,7 +329,7 @@ Faut pas oublier que le repos fait partie intégrante de l’entraînement : c�
 
 *   **Ce n'est qu'un nombre** : Une VO2Max élevée ne fait pas tout. L'efficacité de la foulée (Running Economy en anglais), la force mentale, la technique et la stratégie sont tout aussi importants pour la performance. Un coureur avec une VO2Max "seulement" bonne mais très économe peut battre un coureur avec une VO2Max excellente mais qui gaspille son énergie.
 *   **Contexte de santé** : Pour une personne sédentaire, passer d'une valeur "faible" à "moyenne" est un énorme progrès pour la santé (réduction des risques cardiovasculaires etc.), souvent bien plus significatif que pour un athlète qui cherche à gagner 2-3 points pour performer.
-*   **Les limites de l'estimation** : On l'a dit, les valeurs données par ta Garmin sont des estimations. Elles sont excellentes pour suivre une **tendance** (est-ce que mon chiffre monte ou descend sur plusieurs semaines ?) mais il faut être prudent sur la valeur absolueà l'instant `t`.
+*   **Les limites de l'estimation** : On l'a dit, les valeurs données par ta Garmin sont des estimations. Elles sont excellentes pour suivre une **tendance** (est-ce que mon chiffre monte ou descend sur plusieurs semaines ?) mais il faut être prudent sur la valeur absolue à l'instant `t`.
 
 Il faut donc utiliser les tables précédentes comme une référence générale pour se situer, mais faut pas être obsédé par ce chiffre. L'objectif est de voir une **évolution** dans le temps, se sentir mieux et en meilleure santé.
 
@@ -315,11 +338,11 @@ Il faut donc utiliser les tables précédentes comme une référence générale 
 
 ## Conclusion
 
-La VO2Max est un outil et non une fin en soi : c’est un proxi, une mesure indirecte de ta capacité respiratoire et cardiovasculaire. Améliore-la autant que possible avec un entraînement intelligent (planifié, régulier, diversifié) mais n’oublie pas qu’elle s’inscrit dans un ensemble plus large de qualités (vitesse, endurance spécifique, technique) à développer pour exceller en course à pied. 
+La VO2Max est un outil, pas une fin en soi. C'est un proxi, une mesure indirecte de ta capacité respiratoire et cardiovasculaire. Améliore-la autant que possible avec un entraînement intelligent (planifié, régulier, diversifié) mais n’oublie pas qu’elle s’inscrit dans un ensemble plus large de qualités (vitesse, endurance spécifique, technique) à développer pour exceller en course à pied. 
 
 
 PS : 
-Y a pas mal de liens dans ce billet. N'hésite pas à prendre un peu de temps et de les lire. Notamment les guides et études sur la [VO2Max][4] ([lien][9]), les articles de fond en français sur l’entraînement fractionné et la VMA, ou encore les tableaux de classification de la VO2Max par âge ([Cooper Institute][34]). 
+Y a pas mal de liens dans ce billet. Prends le temps de lire, notamment les guides et études sur la [VO2Max][4] ([lien][9]), les articles de fond sur l’entraînement fractionné et la VMA, ou encore les tableaux de classification de la VO2Max par âge ([Cooper Institute][34]). Après, je suis pas ta mère, Google et YouTube sont tes amis pour la vie.
 
 [1]: https://nutriandco.com/fr/pages/vo2-max "VO2 max homme et femme, âge tableau, calcul et exercices"
 [2]: https://www.wanarun.net/blog/vo2-max-73269.html "Vo2 max en course à pied"
