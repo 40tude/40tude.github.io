@@ -523,7 +523,7 @@ for s in &sensors {
 
 
 ## Default implementation
-When all objects 
+When all objects cannot yet implement all the methods of the trait (interface)
 
 
 
