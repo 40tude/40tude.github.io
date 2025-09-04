@@ -271,7 +271,7 @@ fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {
 ```
 Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<M: Measurable, I: Identifiable>(m: &M, i: &I) {...}`
 
-At this point we have all we need to understand this first code. Read it, read it again. Run it, modify it. Break it. Make it run again.
+At this point we should have all we need to understand this first code. Read it, read it again. Run it, modify it. Break it. Make it run again.
 
 
 
@@ -342,12 +342,15 @@ Where data type are discovered at runtime.
 ### Explanations 1/2 
 {: .no_toc }
 
+In the previous sample code everything is fine but everything is known at compile time. This means that when we arrive in Munich, once the sensors are deployed, we open the source code we list all the sensors, we compile and run the new version of our the monitoring system... This is simply not scalable. Among others because this is not maintenable. What we need is a way to dynamically call the right version of `get_temp()`. What we want to write is something like: `println!("Reading: {}", s.get_temp());` no matter if `s` is a sensor of type `TempSensor1` or `TempSensor2`.
+
+This is where dynamic dispatch comes in. 
+
+
+
+
 ### Show me the code!
 {: .no_toc }
-
-
-
-
 
 ```rust
 trait Measurable {
@@ -398,11 +401,85 @@ fn main() {
         println!("Reading: {}", s.get_temp());
     }
 }
-
 ```
 
 ### Explanations 2/2 
 {: .no_toc }
+
+The beginning of the code is exactly the same. We define the Measurable trait as before. Then we create the 2 temperature sensors and we implement get_temp() for each of them. Nothing new under the sun.  
+
+```rust
+trait Measurable {
+    fn get_temp(&self) -> f64;
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+struct TempSensor02 {
+    label: String,
+    temp: f64,
+}
+impl Measurable for TempSensor02 {
+    fn get_temp(&self) -> f64 {
+        self.temp * 9.0 / 5.0 + 32.0
+    }
+}
+
+
+```
+
+Now the changes are in the `main()` function. First we create a vector of Measurable stuff. However, since Measurable is not a data type looks like this : `let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();`. In plain English this says something like : 
+* Create a mutable vector of boxed trait objects implementing `Measurable`.
+* `Box` puts each object on the heap, ensuring a fixed-size pointer in the vector.
+* `dyn` marks that we are using dynamic dispatch: the exact type implementing so that `Measurable` can vary at runtime, but all can be stored together behind `Box<dyn Measurable>`.  
+
+Once the vector `sensors` is created, in the `for` loop we can invoque with no fear the `get_temp()` method on each element of the vector. The appropriate version of `get_temp()` is called. It does not come for free however. Behind the scene, at runtime, the code use what is called a fat pointer. This pointer points to a table on the heap and in this table (vtable), there is another pointer to the area where the `get_temp()` method is defined. In the first example we had direct call because everything was known at compile time. Here we point to a table then find the address of `get_temp()` in the table then call it. We get much more flexibility but, again, it come with a cost at runtime. Do not assume anything and run benchmarks if you suspect the dynamic dsipatch is killing your application.
+
+
+```rust
+fn main() {
+    let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();
+    sensors.push(make_sensor("celsius"));
+    sensors.push(make_sensor("fahrenheit"));
+
+    for s in &sensors {
+        println!("Reading: {}", s.get_temp());
+    }
+}
+```
+
+***What is the make_sensor() function I see below?*** `sensors` is a vector of boxed trait objects implementing `Measurable`. In this context `make_sensor()` is a kind of factory that create 2 different flavors of sensor based on the argument (`celcius` or the other one that no one used in the universe). Here is the code of `make_sensor()` :
+
+```rust
+fn make_sensor(kind: &str) -> Box<dyn Measurable> {
+    match kind {
+        "celsius" => Box::new(TempSensor01 { temp: 1.0 }),
+        "fahrenheit" => Box::new(TempSensor02 {
+            label: "thermocouple".into(),
+            temp: 25.0, // 77 °F
+        }),
+        _ => Box::new(TempSensor01 { temp: 0.0 }),
+    }
+}
+```
+Using a match expression, based on `kind`, it returns either a box containing a pointer to a `TempSensor01` or a `TempSensor02`. The code is as simple as possible. All sensors of the same type hold the same temperature but this is not the point here.
+
+Again what really matters is the `for` loop because now we can invoque the same method on every object of the vector. No matter its exact data type. Indeed what's important is the fact that each object implement `Measurable` and the `get_temp()` method.
+
+```rust
+for s in &sensors {
+    println!("Reading: {}", s.get_temp());
+}
+
+```
+
 
 ### Summary
 {: .no_toc }
