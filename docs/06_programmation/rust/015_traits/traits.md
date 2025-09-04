@@ -41,7 +41,11 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 
 
 
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 
 ## A gentle start - Static dispatch
@@ -91,7 +95,7 @@ I will not explain how to run the code every time.
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Running code in Rust PlayGround</span>
+<span>Running code in Rust Playground</span>
 </div>
 
 
@@ -268,7 +272,7 @@ fn get_temp_from_any_sensor_static1(t: &impl Measurable) {
 }
 ```
 
-***OK, this sounds great but how does it works?*** In fact, at compile time, when `rustc` (the compiler) see the `impl` keyword it monomorphizes (expand) the code for every concrete type that implements the `Measurable` trait. Imagine that the source code is modified so that it has a definition for `fn get_temp_from_any_sensor_static1_1(t: &TempSensor01) {...}` then another for `fn get_temp_from_any_sensor_static1_2(t: &TempSensor01) {...}`. The compiler "copy and paste" source code, it expands the source, it duplicates function calls... You pick the one that click best for you. 
+***OK, this sounds great but how does it works?*** In fact, at compile time, when `rustc` (the compiler) see the `impl` keyword it [monomorphizes](https://en.wikipedia.org/wiki/Monomorphization) (expand) the code for every concrete type that implements the `Measurable` trait. Imagine that the source code is modified so that it has a definition for `fn get_temp_from_any_sensor_static1_1(t: &TempSensor01) {...}` then another for `fn get_temp_from_any_sensor_static1_2(t: &TempSensor01) {...}`. The compiler "copy and paste" source code, it expands the source, it duplicates function calls... You pick the one that click best for you. 
 
 Keep in mind that everything is static. I mean once the monomorphization (source code expansion) is done, the compiler compiles the expanded code as usual. The source code is longer, the compilation takes more time but there is no penalty at runtime. More important : from the end user standpoint (you, me) everything looks like, with the `get_temp_from_any_sensor_static1()` he can use as an argument, anything that implement the `Measurable` trait.
 
@@ -300,7 +304,7 @@ At this point we should have all we need to understand this first code. Read it,
 * We implement the method of the trait onto the data type of interest
 * We can define a function that take as parameter any variable with the trait Measurable
     * We can either use the `impl` keyword or the generic syntax
-* So far everything is known at compile time. The is no impact at runtime.
+* So far everything is known at compile time. There is no impact at runtime.
 
 
 
@@ -323,6 +327,11 @@ At this point we should have all we need to understand this first code. Read it,
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 
 
@@ -344,7 +353,7 @@ Where data type are discovered at runtime.
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Running code in Rust PlayGround</span>
+<!-- <span>Running code in Rust Playground</span> -->
 </div>
 
 
@@ -481,6 +490,8 @@ fn make_sensor(kind: &str) -> Box<dyn Measurable> {
 ```
 Using a match expression, based on `kind`, it returns either a box containing a pointer to a `TempSensor01` or a `TempSensor02`. The code is as simple as possible. All sensors of the same type hold the same temperature but this is not the point here.
 
+In the signature of the function (`fn make_sensor(kind: &str) -> Box<dyn Measurable>`) we use de `dyn` keyword to mark the dynamic dispatch while in the body we "simply" return a `Box::new(TempSensor01 OR TempSensor02)`.
+
 Again what really matters is the `for` loop in the `main()` function. Indeed it shows how to invoque the same method on every object of the vector because they implement the `Measurable` trait.
 
 ```rust
@@ -493,6 +504,184 @@ for s in &sensors {
 
 ### Summary
 {: .no_toc }
+
+* As before, 2 type of temperature sensor with a trait Measurable
+* Thanks to dynamic dispatch we can invoque `.get_temp()` no matter the kind of sensor
+* The vector definition is : `let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();`
+* The factory returns `Box<dyn Measurable>` (exempli gratia `Box::new(TempSensor01 { temp: 1.0 })`)
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Default implementation
+When all objects 
+
+
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/02_default_implementation`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+
+
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+We arrive in Paris, but — as you can imagine — the team responsible for deploying and calibrating the sensors is still on strike (welcome to France 😁). We’re leaving tomorrow, the customer doesn’t want to cover extra hotel nights or flight changes, and we still need to prove that our software works end-to-end if we want to get paid.
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+This is exactly where a default implementation comes to the rescue. It lets us demonstrate a fully functional system, even if some sensors aren’t providing real measurements yet. Let’s see how.
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+
+pub trait Measurable {
+    fn get_temp(&self) -> f64 {
+        -273.15
+    }
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+struct TempSensor02 {
+    label: String,
+    temp: f64,
+}
+impl Measurable for TempSensor02 {}
+
+fn main() {
+    let sensor100 = TempSensor01 { temp: 100.0 };
+    println!("{}", sensor100.get_temp());
+
+    let sensor200 = TempSensor02 {
+        label: "thermocouple".into(),
+        temp: 200.0,
+    };
+    println!("{}", sensor200.get_temp());
+}
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+You know the story now. 2 temperature sensors define 2 different data types and a trait `Measurable` propose an interface. 
+
+What is new here, is that the trait proposes a default implementation for the `get_temp()` method. 
+
+```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64 {
+        -273.15
+    }
+}
+```
+It says something like : if a data type wants to have the `Measurable` trait but is not yet able to define the `get_temp()` method, don't worry, be happy, I will provide a default version for free.
+
+And this is exactly what happens with TempSensor02 with the line :
+
+```rust
+impl Measurable for TempSensor02 {}
+```
+
+Note that the body is empty. Do you see the `{}`? The `get_temp()` is simply not define for `TempSensor02`. When the monomorphization takes place, the default implementation will be used instead. This is what we can see in the terminal. 
+
+* When `println!("{}", sensor100.get_temp());` is executed the value `100` is displayed 
+* When the line `println!("{}", sensor200.get_temp());` is executed the value `-273.15` is  displayed while one could have expected `200`.
+
+We should also keep in mind that it's not all or nothing. Read the code below. Try to anticipate the outputs. Copy/paste and run the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) (I can't do it for you honey). 
+
+When your tears of joy have dried, take the time to realize how flexible the "default implementation" option is.
+
+```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64 {
+        -273.15
+    }
+
+    fn get_label(&self) -> String {
+        "No Label".into()
+    }
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+    // `get_label` is not implemented
+}
+
+#[allow(dead_code)]
+struct TempSensor02 {
+    label: String,
+    temp: f64,
+}
+
+impl Measurable for TempSensor02 {
+    // `get_temp` is not implemented
+    
+    fn get_label(&self) -> String {
+        self.label.clone().into()
+    }
+}
+
+fn main() {
+    let sensor100 = TempSensor01 { temp: 100.0 };
+    let sensor200 = TempSensor02 { label: "thermocouple".into(), temp: 200.0 };
+
+    println!("{}°C, label: {}", sensor100.get_temp(), sensor100.get_label());
+    println!("{}°C, label: {}", sensor200.get_temp(), sensor200.get_label());
+}
+```
+
+### Summary
+{: .no_toc }
+
+* A trait can propose default implementation for its methods
+* Data type willing to implement the trait can cherry pick the methods they want to define
+* This is not all or nothing and you can have much more than 52 shades of grey
+* As a end user, in the rest of the application nothing change for us  
+
+
+
 
 
 
@@ -514,6 +703,13 @@ for s in &sensors {
 
 
 ---
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 
 ## Template
 
