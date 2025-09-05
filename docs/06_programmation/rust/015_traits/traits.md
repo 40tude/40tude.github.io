@@ -891,7 +891,10 @@ Where the compiler write for us the code to implement certain traits.
 
 **Warning:** This section is lengthy because I experiment and play with many different ideas. 
 
-### Running the demo code
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Implementation for Display
 {: .no_toc }
 
 Pay attention... The source code is in the `examples/` subdirectory.
@@ -1003,6 +1006,25 @@ Ok... Let's see if a blanket implementation can answer our question.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Blanket Implementation 
+{: .no_toc }
 
 
 ### Running the demo code
@@ -1190,6 +1212,21 @@ Before to move one, **keep in mind** :
 
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Blanket Implementation II 
+{: .no_toc }
+
+
+
 ### Running the demo code
 {: .no_toc }
 
@@ -1262,7 +1299,6 @@ trait PrettyFmt {
     fn pretty(&self) -> String;
 }
 
-// Blanket impl for any T: Identifiable + Measurable
 impl<T> PrettyFmt for T
 where
     T: Identifiable + Measurable,
@@ -1294,7 +1330,251 @@ This is not yet perfect. In the main() function we write
 To be honest, this is a trick that may be useful in other situations. Here, it's really a last resort. Let's not spend to much time on it you already have all the information to understand the code.
 
 
-***So you are saying there is no solution?*** Did I say that? Before to go further let's study a source code that **does not compile**. This will help us to underline an important point.
+***So you are saying there is no solution?*** Did I say that? No, but before to go further let's study a source code that **does not compile**. This will help us to underline an important point about the blanket implementation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Orphan/coherence rules 
+{: .no_toc }
+
+
+
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/04_blanket_implementation`
+* Select the option "Open in Integrated Terminal"
+* `cargo run --example ex03`
+
+Remember the Alamo but remember this code **DOES NOT** compile.
+
+<div align="center">
+<img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+### Explanations 1/2
+{: .no_toc }
+
+Earlier we learnt how to implement the `Display` trait for `TempSensor01`. It worked like a charm. We just learnt about the generalized trait implementation. Let's mixt both and get the best of both worlds!
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64;
+}
+
+pub trait Identifiable {
+    fn get_id(&self) -> String;
+}
+
+struct TempSensor01 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor01 {
+    fn get_id(&self) -> String {
+        self.id.clone()
+    }
+}
+
+impl<T> std::fmt::Display for T
+where
+    T: Measurable + Identifiable,
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "id={}, temp={}", self.id, self.temp)
+    }
+}
+
+fn main() {
+    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+    println!("{}", sensor1);
+}
+```
+
+### Explanations 2/2
+We have 2 traits (`Measurable` and `Identifiable`). Then we define a `TempSensor01` data type which implements both traits.
+
+In the `main()` function we write `println!("{}", sensor1);` hoping that it will work because we have been brave and smart.
+
+Indeed we use the generic syntax to define the implementation of the trait `std::fmt::Display`. Since we are very smart we do not forget to add some trait bounds because we want to make sure that only the data types having the `Measurable` and `Identifiable` traits will be allowed to use it. 
+
+So beautiful, so well written, so smart... Look below :
+
+```rust
+impl<T> std::fmt::Display for T
+where
+    T: Measurable + Identifiable,
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "id={}, temp={}", self.id, self.temp)
+    }
+}
+```
+
+
+Nice try but NO. This does not work. To make a long story short 
+* This does not compile because of Rust's **orphan/coherence rules**
+* Indeed, ``Display`` is a foreign trait (defined in `std::fmt`).
+* We are not allowed to implement a **foreign trait** for a **foreign type**.
+* Indeed in the code above `impl<T> Display for T where T: ...`, the target type `T` is a generic 'any' type (not a local type that we own) → prohibited.
+
+The idiomatic solution is the **newtype pattern** where we wrap your `T` in a local type (that we own), then we implement `Display` for that wrapper. Additionally we can offer a helper to make it easier to use.
+
+Let's see how the newtype pattern can be used in our case.
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Newtype pattern
+{: .no_toc }
+
+
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/04_blanket_implementation`
+* Select the option "Open in Integrated Terminal"
+* `cargo run --example ex04`
+
+<div align="center">
+<img src="./assets/img13.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+use std::fmt::{Display, Formatter, Result as FmtResult};
+
+pub trait Measurable {
+    fn get_temp(&self) -> f64;
+}
+
+pub trait Identifiable {
+    fn get_id(&self) -> String;
+}
+
+struct TempSensor01 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor01 {
+    fn get_id(&self) -> String {
+        self.id.clone()
+    }
+}
+
+// struct AsDisplay<T: Measurable + Identifiable>(&T); // Try it. Does NOT compile
+struct AsDisplay<'a, T: Measurable + Identifiable>(&'a T);
+
+impl<T> Display for AsDisplay<'_, T>
+where
+    T: Measurable + Identifiable,
+{
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+        write!(f, "id={}, temp={}", self.0.get_id(), self.0.get_temp())
+    }
+}
+
+fn main() {
+    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+    println!("{}", AsDisplay(&sensor1));
+}
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+<!-- You know the song... Two traits (`Measurable` and `Identifiable`). Then we define a `TempSensor01` data type which implements both traits.
+
+
+// Local wrapper (newtype) that we own.
+// This lets us implement foreign traits (like Display) safely.
+// Our wrapper stores a reference (&T).
+// Any struct that contains a reference must name the lifetime of that reference.
+// Lifetime elision works in function signatures but not in struct definitions, so the compiler forces us to add one.
+// struct AsDisplay<T>( &T ); says: “I contain a borrowed T,” but we didn’t say how long that borrow must live.
+// Hence E0106: missing lifetime specifier and the helpful suggestion to introduce '<a>.
+
+
+
+/// Implement Display for the local wrapper, not for T directly.
+/// This is allowed by the orphan rules.
+// '_ : indicates an anonymous lifetime
+
+
+        // Use trait methods. We don't know concrete fields of T -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
