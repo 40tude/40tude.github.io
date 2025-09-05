@@ -18,7 +18,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 
 
 <h2 align="center">
-<span style="color:orange"><b>This post is still under construction.</b></span>    
+<span style="color:orange"><b>This post is under construction.</b></span>    
 </h2>
 
 
@@ -48,7 +48,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <!-- ###################################################################### -->
 
 
-## A gentle start - Static dispatch
+## A Gentle Start - Static Dispatch
 Where data type are known at compile time.
 
 ### Running the demo code
@@ -283,7 +283,7 @@ fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {
     println!("{}", t.get_temp());
 }
 ```
-Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<M: Measurable, I: Identifiable>(m: &M, i: &I) {...}`
+Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<T: Measurable + Identifiable>(sensor: &T) {...}` (see multiple traits below)
 
 At this point we should have all we need to understand this first code. Read it, read it again. Run it, modify it. Break it. Make it run again.
 
@@ -338,7 +338,7 @@ At this point we should have all we need to understand this first code. Read it,
 
 
 
-## Dynamic dispatch
+## Dynamic Dispatch
 Where data type are discovered at runtime.
 
 
@@ -522,8 +522,8 @@ for s in &sensors {
 <!-- ###################################################################### -->
 
 
-## Default implementation
-When all objects cannot yet implement all the methods of the trait (interface)
+## Default Implementation
+When a data type cannot yet implement all the methods of the trait (interface)
 
 
 
@@ -599,7 +599,7 @@ fn main() {
 ### Explanations 2/2 
 {: .no_toc }
 
-You know the story now. 2 temperature sensors define 2 different data types and a trait `Measurable` propose an interface. 
+By now you should know the story. 2 temperature sensors define 2 different data types and a trait `Measurable` propose an interface. 
 
 What is new here, is that the trait proposes a default implementation for the `get_temp()` method. 
 
@@ -699,6 +699,253 @@ fn main() {
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Multiple Traits
+Where using the generic syntax allow to add more than one bound to the parameter of a function
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/03_multiple_traits`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+
+
+<div align="center">
+<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+You have played with the last sample code in Rust Playground. It is simple, easy to understand and everything looks like we are running a kind of inventory. However, the point was to demonstrate the default implementation and so, in the main() function we have line similar to : `println!("{}°C, label: {}", sensor100.get_temp(), sensor100.get_label());`
+
+Now let's say we want to write a kind of Inventory function. One of the constraint we want to have is to make sure that the parameters implement the methods we need. Here we needed `get_temp()` and `get_label()`. 
+
+This is where multiple traits and bounds come into the game since they do exactly that. In the function signature using the generic syntax, we specify which traits must be available (no matter if it is via a default implementation or not)
+
+Let's read some code.
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+// ----------------------------
+pub trait Measurable {
+    fn get_temp(&self) -> f64 {
+        -273.15
+    }
+}
+
+pub trait Identifiable {
+    fn get_id(&self) -> String {
+        "NA".into()
+    }
+}
+
+// ----------------------------
+struct TempSensor01 {
+    temp: f64,
+}
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+impl Identifiable for TempSensor01 {}
+
+
+// ----------------------------
+struct TempSensor02 {
+    label: String,
+    temp: f64,
+}
+impl Measurable for TempSensor02 {}
+impl Identifiable for TempSensor02 {
+    fn get_id(&self) -> String {
+        self.label.clone()
+    }
+}
+
+// ----------------------------
+struct TempSensor03 {
+    temp: f64,
+}
+impl Measurable for TempSensor03 {}
+
+// Static dispatch, generic syntax
+fn inventory<T: Measurable + Identifiable>(sensor: &T) {
+    println!("Sensor : {} ({} °C)", sensor.get_id(), sensor.get_temp());
+}
+
+fn main() {
+    let sensor1 = TempSensor01 { temp: 100.0 };
+
+    let sensor2 = TempSensor02 {
+        label: "thermo-8086".into(),
+        temp: 200.0,
+    };
+
+    inventory(&sensor1);
+    inventory(&sensor2);
+
+    // let sensor3 = TempSensor03 { temp: 300.0 };
+    // inventory(&sensor3); // ! Does not compile : Identifiable is required by this bound in `inventory`
+}
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+At the top of the code we define 2 traits : Measurable and Identifiable. They both have a unique methode and they both propose a default implementation of their respective method : `get_temp()` that we know by heart and `get_id()` which returns the Id of the temperature sensor.
+
+Then we define our two friends `TempSensor01` and `TempSensor02`. The implementation is not yet complete and they use the default implementations. There is a last data type, named `TempSensor03`. It has the Measurable trait (and leverages the default implementation) but it does not have the Identifiable trait.
+
+In the `main()` function we create two sensors and we pass them as argument to the `inventory()` function.
+
+What did you expect? The most interesting part is the definition of the inventory() function.
+
+```rust
+fn inventory<T: Measurable + Identifiable>(sensor: &T) {
+    println!("Sensor : {} ({} °C)", sensor.get_id(), sensor.get_temp());
+}
+```
+
+In plain French it says: My name is `inventory`. I use the generic syntax <T: Measurable + Identifiable> to declare that I work with any type `T` that implements both the `Measurable` and `Identifiable` traits.
+When someone calls me, they must pass me a `sensor`, which is a reference to such a type. Because of the trait bounds, I know that this sensor will always provide the methods `get_id()` and `get_temp()`, so I can safely print its identifier and temperature.
+
+**Note:** Between you and me I would prefer to write `fn inventory<T: Measurable x Identifiable>(sensor: &T) {...}` because, for me, `x` is associated to `AND` while `+` is associated to `OR`.      
+
+**Note:** The syntax may become hard to read if we have many bounds. This is where the `where` clause can help. In our case it does not make a big difference however :
+
+```rust
+fn inventory<T>(sensor: &T)
+where
+    T: Measurable + Identifiable,
+{
+    println!("Sensor : {} ({} °C)", sensor.get_id(), sensor.get_temp());
+}
+```
+But it helps with the code below :
+
+```rust
+fn combine<A, B, C>(a: &A, b: &B) -> C
+where
+    A: Measurable + Identifiable,
+    B: Identifiable,
+    C: From<(String, f64)>,
+{
+    C::from((a.get_id(), b.get_id().len() as f64))
+}
+```
+
+
+
+
+### Summary
+{: .no_toc }
+
+* Using the generic syntax
+* We can express the fact that a function requires 
+    * A type implementing more than one trait  
+    * Multiple types implementing various traits 
+* The `where` helps to keep function definition clean and lean
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Blanket Implementation
+
+One sentence
+
+### Running the demo code
+{: .no_toc }
+
+Pay attention... The source code is in the `examples/` subdirectory.
+
+* click on `assets/04_blanket_implementation/examples`
+* right click on `assets/04_blanket_implementation`
+* Select the option "Open in Integrated Terminal"
+* `cargo run --example ex00`
+
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+### Summary
+{: .no_toc }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -721,6 +968,12 @@ One sentence
 * right click on `assets/?????`
 * Select the option "Open in Integrated Terminal"
 * `cargo run`
+
+<div align="center">
+<img src="./assets/imgXX.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
 
 
 ### Explanations 1/2 
