@@ -807,6 +807,7 @@ fn main() {
 
 ### Explanations 2/2 
 {: .no_toc }
+
 At the top of the code we define 2 traits : Measurable and Identifiable. They both have a unique methode and they both propose a default implementation of their respective method : `get_temp()` that we know by heart and `get_id()` which returns the Id of the temperature sensor.
 
 Then we define our two friends `TempSensor01` and `TempSensor02`. The implementation is not yet complete and they use the default implementations. There is a last data type, named `TempSensor03`. It has the Measurable trait (and leverages the default implementation) but it does not have the Identifiable trait.
@@ -886,15 +887,16 @@ where
 
 
 ## Blanket Implementation
+Where the compiler write for us the code to implement certain traits.
 
-One sentence
+**Warning:** This section is lengthy because I experiment and play with many different ideas. 
 
 ### Running the demo code
 {: .no_toc }
 
 Pay attention... The source code is in the `examples/` subdirectory.
 
-* click on `assets/04_blanket_implementation/examples`
+* click on `assets/04_blanket_implementation/examples` to see the list of source code.
 * right click on `assets/04_blanket_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex00`
@@ -906,8 +908,12 @@ Pay attention... The source code is in the `examples/` subdirectory.
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
+
+With the previous sample code, the way we used the `inventory()` function call in the `main()` was OK but not great. What I would like to write is something like : `println!("{}", sensor1);`
+
+This is possible if we implement the `Display` trait for `TempSensor01`. Let's see how.
 
 
 
@@ -916,12 +922,402 @@ Pay attention... The source code is in the `examples/` subdirectory.
 {: .no_toc }
 
 ```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64;
+}
 
+pub trait Identifiable {
+    fn get_id(&self) -> String;
+}
+
+struct TempSensor01 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor01 {
+    fn get_id(&self) -> String {
+        self.id.clone()
+    }
+}
+
+impl std::fmt::Display for TempSensor01 {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Sensor type : TempSensor01\n\tId = {}\n\tCurrent temp = {}", self.id, self.temp)
+    }
+}
+
+fn main() {
+    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+    println!("{}", sensor1);
+}
 ```
 
 
 ### Explanations 2/2 
 {: .no_toc }
+
+What is cool is that, at the end, in the main function we can write
+
+```rust
+    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+    println!("{}", sensor1);
+```
+This is cool because we print `sensor1` the same way we print an integer or a double. To get this result we "only have to" implement the trait `std::fmt::Display`. I say `std::fmt::Display` and not `Display` because, I want to underline the fact that the Display trait is external. It belong to `std::fmt` we do not own it. Keep this in mind we will come back to the ownership issue later.
+
+Now the question is : how do I write the implementation of `std::fmt::Display` for the `TempSensor01` data type?
+
+This might be obvious but nowhere in the code above we define the trait `Display`. We don't own it so we don't write soemething like :
+
+```rust
+pub trait Display {
+   ...
+}
+```
+
+However we can write the implementation `std::fmt::Display` for `TempSensor01`. We write : 
+
+```rust
+impl std::fmt::Display for TempSensor01 {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Sensor type : TempSensor01\n\tId = {}\n\tCurrent temp = {}", self.id, self.temp)
+    }
+}
+```
+
+Compared to what we already know when we deal with our own traits, fundamentally there is nothing new. The trait `std::fmt::Display` have in its interface one function named `fmt` which have a specific signature. Don't turst me. Double [check the documentation](https://doc.rust-lang.org/std/fmt/trait.Display.html). 
+
+In our code, we copy paste the signature and write the definition of the `fmt` method for the data type `TempSensor01`. In the signature the `<'_>` is a lifetime specifier which is not used here. Note that we use `self.id` and `self.temp` directly. Life is easy.   
+
+
+
+***But the compiler did'nt write anything for us! Did it?*** No it did'nt. You are right, this first sample code shows how we can implement `std::fmt::Display`, an external trait, on a local data type (that we own).  
+
+Ok... Let's see if a blanket implementation can answer our question.
+
+
+
+
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/04_blanket_implementation`
+* Select the option "Open in Integrated Terminal"
+* `cargo run --example ex01`
+
+<div align="center">
+<img src="./assets/img10.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+### Explanations 1/2
+{: .no_toc }
+
+In the previous sample code we had to write the method. See below : 
+
+```rust
+impl std::fmt::Display for TempSensor01 {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Sensor type : TempSensor01\n\tId = {}\n\tCurrent temp = {}", self.id, self.temp)
+    }
+}
+```
+
+This means that if we continue that way we have to implement the method `std::fmt::Display` for TempSensor02, TempSensor03... TempSensorNN. This is a waste of time and error prone. This is where Rust blanket implementation can help because it can write implementation code for us.   
+
+
+
+
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64;
+}
+
+pub trait Identifiable {
+    fn get_id(&self) -> String;
+}
+
+struct TempSensor01 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor01 {
+    fn get_id(&self) -> String {
+        self.id.clone()
+    }
+}
+
+struct TempSensor02 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor02 {
+    fn get_temp(&self) -> f64 {
+        self.temp * 9.0 / 5.0 + 32.0
+    }
+}
+
+impl Identifiable for TempSensor02 {
+    fn get_id(&self) -> String {
+        "TempSensor02 - ".to_owned() + &self.id
+    }
+}
+
+trait Printable {
+    fn print(&self);
+}
+
+impl<T> Printable for T
+where
+    T: Identifiable + Measurable,
+{
+    fn print(&self) {
+        println!("Sensor : \n\tId = {}\n\tCurrent temp = {}", self.get_id(), self.get_temp())
+    }
+}
+
+fn main() {
+    let sensor1 = TempSensor01 { temp: 25.0, id: "Zoubida".into() };
+    let sensor2 = TempSensor02 { temp: 25.0, id: "Roberta".into() };
+
+    sensor1.print();
+    sensor2.print();
+
+    struct Nimbus2000 {}
+    let bob = Nimbus2000 {};
+    // bob.print();
+}
+```
+
+### Explanations 2/2
+{: .no_toc }
+
+I guess I can save some time here because you know the context : 2 TempSensor data types, 2 traits blablabla.
+
+In the `main()` function we write
+
+```rust
+fn main() {
+    let sensor1 = TempSensor01 { temp: 25.0, id: "Zoubida".into() };
+    let sensor2 = TempSensor02 { temp: 25.0, id: "Roberta".into() };
+
+    sensor1.print();
+    sensor2.print();
+}
+```
+
+This is not yet perfect because ideally we would like to write something similar to :
+
+```rust
+fn main() {
+    let sensors: Vec<Box<dyn TempSensor>> = vec![
+        Box::new(TempSensor01 { temp: 25.0 }),
+        Box::new(TempSensor02 { temp: 25.0 }), // 77 °F
+    ];
+
+    for sensor in sensors {
+        println!("{}", sensor);
+    }
+}
+```
+
+Nonetheless we make significant progress because we no longer have to write each implementation of `.print()`.
+
+First we define a Printable trait and this interface have one `print()` method.
+
+```rust
+trait Printable {
+    fn print(&self);
+}
+```
+Next we use the generic syntax to define the implementation of the trait `Printable` for any type having the `Identifiable` and `Measurable` traits. 
+
+```rust
+impl<T> Printable for T
+where
+    T: Identifiable + Measurable,
+{
+    fn print(&self) {
+        println!("Sensor : \n\tId = {}\n\tCurrent temp = {}", self.get_id(), self.get_temp())
+    }
+}
+```
+
+**It took me some time to realize:** 
+* The code above is a generalized implementation for any type implementing `Identifiable` and `Measurable`
+* At compile time, Rust monomorphizes the "template" **for each concrete type** that satisfies the traits bounds (`Identifiable + Measurable`).
+* Since `TempSensor01` implements `Identifiable` and `Measurable`, it gets the `Printable` implementation for "free", and `sensor1.print()` compiles and works like a charm.
+* The same apply to `TempSensor02`.
+* In the `main()` function, the code looks like a kind a polymorphism working on `sensor1` and `sensor1` but no, no, and no. Behind the scene each version of `.print()` have been monomorphized for each concrete type.
+* The trait bounds checks are done at compile time → no runtime cost, no surprises.
+
+
+***In the source code it is written that bob.print() does not compile. Can you explain?*** No, read the last line above, read the source code and tell me what you think. 
+
+Ok... On the last line of the bullet list, it is said that the trait bounds checks are done at compile time. Now in the source code I understand that `Nimbus200` is a datatype (I thought it was a magic broom). It is empty but before all this data type does not implement `Measurable` nor `Identifiable`. When the compiler sees the `bob.print()` invocation it asks the monomorphization system to generate (expand) the `Printable` trait so that `.print()` can be called. However, this is not possible because `Printable` is monomorphizable if and only if `T` implements the traits `Identifiable` and `Measurable`. This is not the case with `Nimbus2000` data type and the compiler reports errors and suggest options. 
+
+
+***OK... But I in the `main()` function would like to read `println!("{}", blablabla);` rather than `sensor1.print();`. What can we do ?***
+
+Before to move one, **keep in mind** :
+* Blanket implementation (generalized implementation) use the generic syntax
+* It generates (monomorphizes) for us code for certain traits
+* Trait bounds checking occurs at compile time, not runtime 
+
+
+
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/04_blanket_implementation`
+* Select the option "Open in Integrated Terminal"
+* `cargo run --example ex02`
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+<!-- ### Explanations 1/2
+{: .no_toc } -->
+
+
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64;
+}
+
+pub trait Identifiable {
+    fn get_id(&self) -> String;
+}
+
+struct TempSensor01 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor01 {
+    fn get_id(&self) -> String {
+        self.id.clone()
+    }
+}
+
+struct TempSensor02 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor02 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor02 {
+    fn get_id(&self) -> String {
+        "TempSensor02 - ".to_owned() + &self.id
+    }
+}
+
+trait PrettyFmt {
+    fn pretty(&self) -> String;
+}
+
+// Blanket impl for any T: Identifiable + Measurable
+impl<T> PrettyFmt for T
+where
+    T: Identifiable + Measurable,
+{
+    fn pretty(&self) -> String {
+        format!("Sensor : \n\tId = {}\n\tCurrent temp = {}", self.get_id(), self.get_temp())
+    }
+}
+
+fn main() {
+    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+    let sensor2 = TempSensor02 { temp: 200.0, id: "Roberta".into() };
+
+    println!("{}", sensor1.pretty());
+    println!("{}", sensor2.pretty());
+}
+```
+
+### Explanations 
+{: .no_toc }
+
+This is not yet perfect. In the main() function we write
+
+```rust
+    println!("{}", sensor1.pretty());
+    println!("{}", sensor2.pretty());
+```
+
+To be honest, this is a trick that may be useful in other situations. Here, it's really a last resort. Let's not spend to much time on it you already have all the information to understand the code.
+
+
+***So you are saying there is no solution?*** Did I say that? Before to go further let's study a source code that **does not compile**. This will help us to underline an important point.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Summary
 {: .no_toc }
