@@ -1087,6 +1087,8 @@ This means that if we continue that way we have to implement the method `std::fm
 {: .no_toc }
 
 ```rust
+use std::fmt::{Display, Formatter, Result as FmtResult};
+
 pub trait Measurable {
     fn get_temp(&self) -> f64;
 }
@@ -1684,8 +1686,7 @@ However, this is not yet perfect because we create a temporary variable in the `
 ### Newtype pattern II
 <!-- {: .no_toc } -->
 
-This one will be short because we will apply the trick we ued earlier in the `Blanket Implementation II `.
-
+This one will be short and easy because we will apply the trick we used earlier in the `Blanket Implementation II `.
 
 
 #### Running the demo code
@@ -1702,8 +1703,8 @@ This one will be short because we will apply the trick we ued earlier in the `Bl
 
 
 
-#### Explanations 1/2 
-{: .no_toc }
+<!-- #### Explanations 1/2 
+{: .no_toc } -->
 
 
 
@@ -1780,12 +1781,32 @@ fn main() {
 ```
 
 
-#### Explanations 2/2 
+#### Explanations 
 {: .no_toc }
 
+Not much to say. The code is mostly the same. Two traits (`Identifiable` and `Measurable`), two data type (`TempSensor01` and `TempSensor02`). The same newtype pattern. 
 
-#### Summary
-{: .no_toc }
+We only add a convenient `as_display()` function to build the wrapper without naming the type (`AsDisplay`) at call site.
+
+```rust
+fn as_display<T: Measurable + Identifiable>(t: &T) -> AsDisplay<'_, T> {
+    AsDisplay(t)
+}
+```
+
+One thing to keep in mind. In the `main()` function, `as_display()` looks polymorphic but no. There are 2 monomorphized implementations created at compile time. One per data type.
+
+```rust
+fn main() {
+    ...
+    println!("{}", as_display(&sensor1));
+    println!("{}", as_display(&sensor2));
+}
+```
+
+Again, nothing fancy here. 
+<!-- #### Summary
+{: .no_toc } -->
 
 
 
@@ -1816,6 +1837,111 @@ fn main() {
 
 ### Summary
 {: .no_toc }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Trait Bounds Inheritance
+
+One sentence
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/05_trait_bounds_inheritance`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+
+<div align="center">
+<img src="./assets/img15.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+use std::fmt::{Display, Formatter, Result as FmtResult};
+
+trait TempSensor: Display {
+    fn get_temp(&self) -> f64;
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+
+impl TempSensor for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Display for TempSensor01 {
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+        write!(f, "{:.2} °C", self.temp)
+    }
+}
+
+struct TempSensor02 {
+    temp: f64,
+}
+
+impl TempSensor for TempSensor02 {
+    fn get_temp(&self) -> f64 {
+        self.temp * 9.0 / 5.0 + 32.0
+    }
+}
+
+impl Display for TempSensor02 {
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+        write!(f, "{:.2} °F", self.get_temp())
+    }
+}
+
+fn main() {
+    let sensors: Vec<Box<dyn TempSensor>> = vec![
+        Box::new(TempSensor01 { temp: 25.0 }),
+        Box::new(TempSensor02 { temp: 25.0 }), // 77 °F
+        Box::new(TempSensor01 { temp: 42.0 }),
+    ];
+
+    for sensor in sensors {
+        println!("{}", sensor);
+    }
+}
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+### Summary
+{: .no_toc }
+
 
 
 
