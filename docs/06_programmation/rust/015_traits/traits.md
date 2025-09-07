@@ -1057,7 +1057,7 @@ Where the compiler writes the code of the trait implementation for us.
 * `cargo run --example ex01`
 
 <div align="center">
-<img src="./assets/img10.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Running code in Rust Playground</span> -->
 </div>
 
@@ -1268,7 +1268,7 @@ Where the compiler writes again the code of the trait implementation for us.
 * `cargo run --example ex02`
 
 <div align="center">
-<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img11.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Running code in Rust Playground</span> -->
 </div>
 
@@ -1701,7 +1701,7 @@ Where we use a convenient function call to hide the use of the ad how data type.
 * `cargo run --example ex05`
 
 <div align="center">
-<img src="./assets/img14.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img14.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Running code in Rust Playground</span> -->
 </div>
 
@@ -1999,7 +1999,7 @@ impl Display for TempSensor01 {
 In the rest of the code the same apply for TempSensor02. Now, tadaaa! 
 
 <div align="center">
-<img src="./assets/img16.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img16.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Running code in Rust Playground</span> -->
 </div>
 
@@ -2018,7 +2018,13 @@ fn main() {
     }
 }
 ```
-We define a vector of sensors. Then we go through all of the vector's values and we print them on the console using the sensor variable's name. No function call, no method. Just `println!`. Smoking!
+We define a vector of sensors. Then we go through all of the vector's values and we print them on the console using the sensor variable's name. No function call, no method invoked. Just `println!`. Smoking!
+
+<div align="center">
+<img src="./assets/img18.webp" alt="" width="225" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
 
 Yes... Almost. I say almost because... Yes the `main()` function looks great. Yes, it is impossible to forget to implement the `Display` trait, but we still have to implement it ourselves. Wouldn't it be great if we could delegate this task to the compiler?
 
