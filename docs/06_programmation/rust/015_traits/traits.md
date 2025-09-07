@@ -576,7 +576,6 @@ This is exactly where a default implementation comes to the rescue. It lets us d
 {: .no_toc }
 
 ```rust
-
 pub trait Measurable {
     fn get_temp(&self) -> f64 {
         -273.15
@@ -1594,7 +1593,6 @@ Then we define an intermediate data type named `AsDisplay`. The line below does'
 
 ```rust
 struct AsDisplay<T: Measurable + Identifiable>(&T)
-
 ```
 
 **Note**
@@ -2155,7 +2153,6 @@ fn main() {
 
 SensorDisplay (the actual extension trait)
 ```rust
-
 trait SensorDisplay: TempSensor {
     fn format(&self) -> String {
         format!(“{:.2} {}”, self.get_temp(), self.unit())
