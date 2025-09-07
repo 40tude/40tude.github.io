@@ -912,6 +912,8 @@ Where the compiler write for us the code to implement certain traits.
 <!-- ###################################################################### -->
 ### Implementation for Display
 
+Where we first learn to implement an external trait on one of our own data types; 
+
 #### Running the demo code
 {: .no_toc }
 
@@ -1045,8 +1047,8 @@ Ok... Let's see if a blanket implementation can answer our question.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Blanket Implementation for Real 
-{: .no_toc }
 
+Where the compiler writes the code of the trait implementation for us.
 
 #### Running the demo code
 {: .no_toc }
@@ -1255,6 +1257,8 @@ Before to move one, **keep in mind** :
 <!-- ###################################################################### -->
 ### Blanket Implementation II 
 
+Where the compiler writes again the code of the trait implementation for us.
+
 
 
 #### Running the demo code
@@ -1382,8 +1386,8 @@ To be honest, this is a trick that may be useful in other situations. Here, it's
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Orphan/coherence rules 
-<!-- {: .no_toc } -->
 
+Where the compiler warns us before we shoot ourselves in the foot.
 
 
 
@@ -1459,6 +1463,8 @@ fn main() {
 
 
 #### Explanations 2/2
+{: .no_toc }
+
 We have 2 traits (`Measurable` and `Identifiable`). Then we define a `TempSensor01` data type which implements both traits.
 
 In the `main()` function we write `println!("{}", sensor1);` hoping that it will work because we have been brave and smart.
@@ -1505,7 +1511,7 @@ Let's see how the newtype pattern can be used in our case.
 ### Newtype pattern I
 <!-- {: .no_toc } -->
 
-
+Where the compiler write implementation code for an intermediate data type.
 
 #### Running the demo code
 {: .no_toc }
@@ -1684,9 +1690,9 @@ However, this is not yet perfect because we create a temporary variable in the `
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Newtype pattern II
-<!-- {: .no_toc } -->
 
-This one will be short and easy because we will apply the trick we used earlier in the `Blanket Implementation II `.
+Where we use a convenient function call to hide the use of the ad how data type.  
+
 
 
 #### Running the demo code
@@ -1703,8 +1709,10 @@ This one will be short and easy because we will apply the trick we used earlier 
 
 
 
-<!-- #### Explanations 1/2 
+#### Explanations 1/2
 {: .no_toc } -->
+
+This section will be short and easy because we will apply the trick we used earlier in the `Blanket Implementation II `.
 
 
 
@@ -1794,7 +1802,7 @@ fn as_display<T: Measurable + Identifiable>(t: &T) -> AsDisplay<'_, T> {
 }
 ```
 
-One thing to keep in mind. In the `main()` function, `as_display()` looks polymorphic but no. There are 2 monomorphized implementations created at compile time. One per data type.
+One thing to keep in mind. In the `main()` function, `as_display()` looks polymorphic but no, no, no. There are 2 monomorphized implementations created at compile time. One per data type.
 
 ```rust
 fn main() {
@@ -1854,11 +1862,12 @@ Again, nothing fancy here.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## Trait Bounds Inheritance
-
-One sentence
+Where we force a data type to implement a trait.
 
 ### Running the demo code
 {: .no_toc }
@@ -1877,6 +1886,11 @@ One sentence
 ### Explanations 1/2 
 {: .no_toc }
 
+So far, in most of the sample code we have implemented the trait Display because we want to print to the console. Would'nt be great if we could sign an agreement with the compiler saying something like : The data type that implements this trait must also implement this trait.   
+
+This could be helpful because if one day we forget, then the compiler will gently remind us. Oh...Calm down! I said gently. Ok?. Ok.
+
+Let see how this works.
 
 
 
@@ -1939,6 +1953,79 @@ fn main() {
 ### Explanations 2/2 
 {: .no_toc }
 
+A long time ago, in a galaxy far, far away we wrote :
+
+```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64;
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+```
+It was in our very first sample code. Now the story begins like this :
+
+```rust
+trait TempSensor: Display {
+    fn get_temp(&self) -> f64;
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+
+impl TempSensor for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+```
+It is almost the same thing... Except one char, the `:` in the `TempSensor` trait's signature. Do you see it in `trait TempSensor: Display {...}`. In plain english this says : any data type who want to implement `TempSensor` must also implement `Display`.
+
+This is why once `TempSensor01` is defined, we first implement TempSensor for TempSensor01 and then... We must implement implement Display fro TempSensor01. See below :
+
+```rust
+impl Display for TempSensor01 {
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+        write!(f, "{:.2} °C", self.temp)
+    }
+}
+```
+
+In the rest of the code the same apply for TempSensor02. Now, tadaaa! 
+
+<div align="center">
+<img src="./assets/img16.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+Look how beautiful the body main() function is : 
+
+```rust
+fn main() {
+    let sensors: Vec<Box<dyn TempSensor>> = vec![
+        Box::new(TempSensor01 { temp: 25.0 }),
+        Box::new(TempSensor02 { temp: 25.0 }), // 77 °F
+        Box::new(TempSensor01 { temp: 42.0 }),
+    ];
+
+    for sensor in sensors {
+        println!("{}", sensor);
+    }
+}
+```
+We define a vector of sensors. Then we go through all of the vector's values and we print them on the console using the sensor variable's name. No function call, no method. Just `println!`. Smoking!
+
+Yes... Almost. I say almost because... Yes the `main()` function looks great. Yes, it is impossible to forget to implement the `Display` trait, but we still have to implement it ourselves. Wouldn't it be great if we could delegate this task to the compiler?
+
+This is possible and you already know how : we need a mixt of trait bounds inheritance and blanket implementation so that the code of the Display implementation is generated by the compiler.  
+
 ### Summary
 {: .no_toc }
 
@@ -1949,6 +2036,140 @@ fn main() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Extension trait
+
+Where the compiler generates the implementation code of the traits from which we inherit. 
+
+### Running the demo code
+{: .no_toc }
+
+* right click on `assets/06_extension_trait`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+
+<div align="center">
+<img src="./assets/img17.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+use std::fmt::{Display, Formatter, Result as FmtResult};
+
+trait TempSensor {
+    fn get_temp(&self) -> f64;
+    fn unit(&self) -> &'static str;
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+
+impl TempSensor for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+
+    fn unit(&self) -> &'static str {
+        "°C"
+    }
+}
+
+struct TempSensor02 {
+    temp: f64,
+}
+
+impl TempSensor for TempSensor02 {
+    fn get_temp(&self) -> f64 {
+        self.temp * 9.0 / 5.0 + 32.0
+    }
+
+    fn unit(&self) -> &'static str {
+        "°F"
+    }
+}
+
+trait SensorDisplay: TempSensor {
+    fn format(&self) -> String {
+        format!("{:.2} {}", self.get_temp(), self.unit())
+    }
+}
+
+impl<T: TempSensor> SensorDisplay for T {}
+
+impl Display for Box<dyn TempSensor> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+        write!(f, "{:.2} {}", self.get_temp(), self.unit())
+    }
+}
+
+fn main() {
+    let sensors: Vec<Box<dyn TempSensor>> = vec![
+        Box::new(TempSensor01 { temp: 25.0 }),
+        Box::new(TempSensor02 { temp: 25.0 }), // 77°F
+        Box::new(TempSensor01 { temp: 42.0 }),
+    ];
+
+    for sensor in sensors {
+        println!("{}", sensor);
+    }
+}
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+SensorDisplay (the actual extension trait)
+```rust
+
+trait SensorDisplay: TempSensor {
+    fn format(&self) -> String {
+        format!(“{:.2} {}”, self.get_temp(), self.unit())
+    }
+}
+
+// Automatic implementation for all types that implement TempSensor
+impl<T: TempSensor> SensorDisplay for T {}
+```
+
+SensorDisplay is a local extension trait. We implement it for any type `T` that implements `TempSensor`. This is valid because the trait is local (defined in our crate).
+
+### Summary
+{: .no_toc }
 
 
 
