@@ -16,11 +16,11 @@ pre code {
 }
 
 /* Reset inside numbered code blocks produced by Rouge (rouge-table) */
-.rouge-table pre,
-.rouge-table pre code,
-.rouge-table td,
-.rouge-table .lineno {
-    /* use a consistent (and larger) line height to match both columns */
-    line-height: 1.1;
-    /* or 'normal' */
-}
+/* .rouge-table pre, */
+/* .rouge-table pre code, */
+/* .rouge-table td, */
+/* .rouge-table .lineno { */
+/* use a consistent (and larger) line height to match both columns */
+/* line-height: 1.1; */
+/* or 'normal' */
+/* } */
