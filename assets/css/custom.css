@@ -21,6 +21,6 @@ pre code {
 .rouge-table td,
 .rouge-table .lineno {
     /* use a consistent (and larger) line height to match both columns */
-    line-height: 1.3;
+    line-height: 1.1;
     /* or 'normal' */
 }
