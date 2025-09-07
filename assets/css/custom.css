@@ -6,3 +6,11 @@ main a {
     /* au lieu de bold */
     font-weight: 600;
 }
+
+/* Tighten line height for code blocks */
+.highlight pre,
+pre.highlight,
+pre code {
+    line-height: 1.15;
+    /* try 1.15–1.30 to taste */
+}
