@@ -18,15 +18,20 @@ defaults:
 
 # Read https://just-the-docs.com/docs/ui-components/code/line-numbers/
 # Turn on line numbers for fenced code blocks globally
-# kramdown:
-#   syntax_highlighter_opts:
-#     block:
-#       line_numbers: true
+# I don't use it because it does not work when I try to reduce the high of src code line 
+# See assets/css/custom.css
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
 
 # Disable the HTML minifier that breaks linenos markup
-# compress_html:
-#   ignore:
-#     envs: all
+compress_html:
+  ignore:
+    envs: all
+
+
+
 
 # Footer last edited timestamp
 last_edit_timestamp: false # It is set to false because I have my own footer show or hide edit time - page must have `last_modified_date` defined in the frontmatter

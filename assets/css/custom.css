@@ -14,3 +14,13 @@ pre code {
     /* try 1.15–1.30 to taste */
     line-height: 1.1;
 }
+
+/* Reset inside numbered code blocks produced by Rouge (rouge-table) */
+.rouge-table pre,
+.rouge-table pre code,
+.rouge-table td,
+.rouge-table .lineno {
+    /* use a consistent (and larger) line height to match both columns */
+    line-height: 1.3;
+    /* or 'normal' */
+}
