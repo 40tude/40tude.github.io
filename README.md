@@ -87,14 +87,14 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ## IDEES DE BILLETS
 * Pareto et 50%-1%
-* Revenir sur Codingame
 * SOS Chapitres IV et suivants
 * IA et ML 
     * Relire les notes OneNote de préparation certification Architect IA et voir ce que je peux rapatrier
 * 52 nuances de physique (faut vraiment que je l'écrive un jour)
+~~* Revenir sur Codingame~~
 
 
-## Snippets
+## VSCode Snippets
 Roue Crantée en bas à gauche
 Snippets
 Choisir markdown.json

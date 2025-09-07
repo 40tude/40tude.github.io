@@ -10,6 +10,17 @@ date               : 2025-09-03 14:00:00
 last_modified_date : 2025-09-03 14:00:00
 ---
 
+<!-- 
+TODO :
+* Ajouter des liens sur le vocabulaire : 
+    * paramètre, argument, 
+    * level of indirection
+    * statement
+    * expression
+* ???
+-->
+
+
 # Rust Traits: Defining Character
 {: .no_toc }
 
@@ -32,6 +43,11 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>In space, no one can hear you scream.</span> -->
 </div>
+
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
 
 
@@ -295,7 +311,7 @@ At this point we should have all we need to understand this first code. Read it,
 
 
 
-#### Summary
+### Summary
 {: .no_toc }
 
 * We have 2 types of temperature sensor
@@ -895,6 +911,8 @@ Where the compiler write for us the code to implement certain traits.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Implementation for Display
+
+#### Running the demo code
 {: .no_toc }
 
 Pay attention... The source code is in the `examples/` subdirectory.
@@ -911,7 +929,7 @@ Pay attention... The source code is in the `examples/` subdirectory.
 
 
 
-### Explanations 1/2
+#### Explanations 1/2
 {: .no_toc }
 
 With the previous sample code, the way we used the `inventory()` function call in the `main()` was OK but not great. What I would like to write is something like : `println!("{}", sensor1);`
@@ -921,7 +939,7 @@ This is possible if we implement the `Display` trait for `TempSensor01`. Let's s
 
 
 
-### Show me the code!
+#### Show me the code!
 {: .no_toc }
 
 ```rust
@@ -963,7 +981,7 @@ fn main() {
 ```
 
 
-### Explanations 2/2 
+#### Explanations 2/2 
 {: .no_toc }
 
 What is cool is that, at the end, in the main function we can write
@@ -1000,6 +1018,9 @@ In our code, we copy paste the signature and write the definition of the `fmt` m
 
 
 
+<!-- #### Summary
+{: .no_toc } -->
+
 ***But the compiler did'nt write anything for us! Did it?*** No it did'nt. You are right, this first sample code shows how we can implement `std::fmt::Display`, an external trait, on a local data type (that we own).  
 
 Ok... Let's see if a blanket implementation can answer our question.
@@ -1023,11 +1044,11 @@ Ok... Let's see if a blanket implementation can answer our question.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Blanket Implementation 
+### Blanket Implementation for Real 
 {: .no_toc }
 
 
-### Running the demo code
+#### Running the demo code
 {: .no_toc }
 
 * right click on `assets/04_blanket_implementation`
@@ -1040,7 +1061,7 @@ Ok... Let's see if a blanket implementation can answer our question.
 </div>
 
 
-### Explanations 1/2
+#### Explanations 1/2
 {: .no_toc }
 
 In the previous sample code we had to write the method. See below : 
@@ -1062,7 +1083,7 @@ This means that if we continue that way we have to implement the method `std::fm
 
 
 
-### Show me the code!
+#### Show me the code!
 {: .no_toc }
 
 ```rust
@@ -1134,7 +1155,12 @@ fn main() {
 }
 ```
 
-### Explanations 2/2
+
+
+
+
+
+#### Explanations 2/2
 {: .no_toc }
 
 I guess I can save some time here because you know the context : 2 TempSensor data types, 2 traits blablabla.
@@ -1212,6 +1238,9 @@ Before to move one, **keep in mind** :
 
 
 
+<!-- #### Summary
+{: .no_toc } -->
+
 
 
 
@@ -1223,11 +1252,10 @@ Before to move one, **keep in mind** :
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Blanket Implementation II 
-{: .no_toc }
 
 
 
-### Running the demo code
+#### Running the demo code
 {: .no_toc }
 
 * right click on `assets/04_blanket_implementation`
@@ -1249,7 +1277,7 @@ Before to move one, **keep in mind** :
 
 
 
-### Show me the code!
+#### Show me the code!
 {: .no_toc }
 
 ```rust
@@ -1317,7 +1345,7 @@ fn main() {
 }
 ```
 
-### Explanations 
+#### Explanations 
 {: .no_toc }
 
 This is not yet perfect. In the main() function we write
@@ -1352,12 +1380,12 @@ To be honest, this is a trick that may be useful in other situations. Here, it's
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Orphan/coherence rules 
-{: .no_toc }
+<!-- {: .no_toc } -->
 
 
 
 
-### Running the demo code
+#### Running the demo code
 {: .no_toc }
 
 * right click on `assets/04_blanket_implementation`
@@ -1372,13 +1400,15 @@ Remember the Alamo but remember this code **DOES NOT** compile.
 </div>
 
 
-### Explanations 1/2
+
+
+#### Explanations 1/2
 {: .no_toc }
 
 Earlier we learnt how to implement the `Display` trait for `TempSensor01`. It worked like a charm. We just learnt about the generalized trait implementation. Let's mixt both and get the best of both worlds!
 
 
-### Show me the code!
+#### Show me the code!
 {: .no_toc }
 
 ```rust
@@ -1422,7 +1452,11 @@ fn main() {
 }
 ```
 
-### Explanations 2/2
+
+
+
+
+#### Explanations 2/2
 We have 2 traits (`Measurable` and `Identifiable`). Then we define a `TempSensor01` data type which implements both traits.
 
 In the `main()` function we write `println!("{}", sensor1);` hoping that it will work because we have been brave and smart.
@@ -1455,17 +1489,23 @@ Let's see how the newtype pattern can be used in our case.
 
 
 
+<!-- #### Summary
+{: .no_toc } -->
+
+
+
+
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Newtype pattern
-{: .no_toc }
+### Newtype pattern I
+<!-- {: .no_toc } -->
 
 
 
-### Running the demo code
+#### Running the demo code
 {: .no_toc }
 
 * right click on `assets/04_blanket_implementation`
@@ -1479,14 +1519,16 @@ Let's see how the newtype pattern can be used in our case.
 
 
 
-### Explanations 1/2 
+#### Explanations 1/2 
 {: .no_toc }
 
+In the previous sample code we learnt that we cannot write `impl<T> std::fmt::Display for T...`. This is because we do not own the trait `std::fmt::Display` nor the generic type `T`. As often, the trick is to add a level on indirection by defining a intermediate data type that we own and on which we implement `Display`. Let's see how it works.
 
 
 
 
-### Show me the code!
+
+#### Show me the code!
 {: .no_toc }
 
 ```rust
@@ -1517,7 +1559,6 @@ impl Identifiable for TempSensor01 {
     }
 }
 
-// struct AsDisplay<T: Measurable + Identifiable>(&T); // Try it. Does NOT compile
 struct AsDisplay<'a, T: Measurable + Identifiable>(&'a T);
 
 impl<T> Display for AsDisplay<'_, T>
@@ -1536,28 +1577,80 @@ fn main() {
 ```
 
 
-### Explanations 2/2 
+#### Explanations 2/2 
 {: .no_toc }
 
-<!-- You know the song... Two traits (`Measurable` and `Identifiable`). Then we define a `TempSensor01` data type which implements both traits.
+You know the song... Two traits (`Measurable` and `Identifiable`). Then we define a `TempSensor01` data type which implements both traits.
+
+Then we define an intermediate data type named `AsDisplay`. The line below does'nt compile but this is good enough for now because I want to underline that this defines a **tuple struct** with a single field.
+
+```rust
+struct AsDisplay<T: Measurable + Identifiable>(&T)
+
+```
+
+**Note**
+* A tuple struct looks like : `struct Point(i32, i32);`
+* It has unnamed fields, accessed by index (p.0, p.1)
+* It’s syntactically close to a tuple but defines a new distinct type
+* Often used to define our new type adding a thin wrapper around an existing type : `struct Temperature(f64); // different type from plain f64`
+
+In addition, the tuple struct, the wrapper stores a reference (&T). Any struct that contains a reference must name the lifetime of that reference. Lifetime elision works in function signatures but not in struct definitions, so the compiler forces us to add one. Finally the working line of code is :
+
+```rust
+struct AsDisplay<'a, T: Measurable + Identifiable>(&'a T);
+```
+
+Now we have our intermediate data type and we can implement Display on it. It goods like this :
+
+```rust
+impl<T> Display for AsDisplay<'_, T>
+where
+    T: Measurable + Identifiable,
+{
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+        write!(f, "id={}, temp={}", self.0.get_id(), self.0.get_temp())
+    }
+}
+```
+
+The only point of attention is the weird syntax `self.0.get_id()`. However if we remember that `AsDisplay` is a `tuple struct` with a single, unnamed field then this way of writing should clearer. `self.0` points to the first and unique field. `.get_id()` or `.get_temp()` invoke the method.
+
+With this way of expressing things, in the `main()` function we write :
+
+```rust
+println!("{}", AsDisplay(&sensor1));
+```
+Here is what happens : We temporarily wrap a borrow of sensor1 into `AsDisplay`, `println!` detects that `AsDisplay` implements `Display`, it calls our custom `fmt`, which in turn delegates to the `Measurable` and `Identifiable` methods of the underlying sensor, and the resulting string is printed.
+
+**Long version:**
+1. **Borrowing the sensor**
+   * `&sensor1` creates a shared reference to `sensor1`.
+   * The type of that expression is `&TempSensor01`.
+
+2. **Constructing the wrapper**
+   * `AsDisplay(&sensor1)` calls the tuple struct constructor for `AsDisplay`.
+   * This produces a temporary value of type `AsDisplay<'_, TempSensor01>`.
+   * The lifetime `'_` is inferred to be “the lifetime of `&sensor1`,” i.e. the borrow is tied to the scope of the `println!` call.
+
+3. **Macro expansion**
+   * The `println!` macro expands roughly into a call to `std::fmt::Arguments::new_v1()` and eventually a call to `std::io::stdout().write_fmt(...)`.
+   * Inside this machinery, Rust sees the `{}` placeholder and asks: *Does the type `AsDisplay<'_, TempSensor01>` implement `Display`?*
+
+4. **Trait resolution**
+   * The compiler finds our `impl<'a, T> Display for AsDisplay<'a, T>` where `T: Measurable + Identifiable`.
+   * Since `TempSensor01` implements both `Measurable` and `Identifiable`, the blanket impl applies.
+
+5. **Calling `fmt`**
+   * The formatting machinery calls `AsDisplay::fmt(&wrapper, f)`.
+   * Inside our `fmt` implementation, `self.0` gives access to the inner `&TempSensor01`.
+   * Then `get_id()` and `get_temp()` are called on the inner sensor to build the string.
+
+6. **Printing to stdout**
+   * The result of `write!(...)` inside `fmt` is passed back up through the formatting machinery.
+   * `println!` finally writes the formatted string (`id=Zoubida, temp=100`) followed by a newline to standard output.
 
 
-// Local wrapper (newtype) that we own.
-// This lets us implement foreign traits (like Display) safely.
-// Our wrapper stores a reference (&T).
-// Any struct that contains a reference must name the lifetime of that reference.
-// Lifetime elision works in function signatures but not in struct definitions, so the compiler forces us to add one.
-// struct AsDisplay<T>( &T ); says: “I contain a borrowed T,” but we didn’t say how long that borrow must live.
-// Hence E0106: missing lifetime specifier and the helpful suggestion to introduce '<a>.
-
-
-
-/// Implement Display for the local wrapper, not for T directly.
-/// This is allowed by the orphan rules.
-// '_ : indicates an anonymous lifetime
-
-
-        // Use trait methods. We don't know concrete fields of T -->
 
 
 
@@ -1571,6 +1664,128 @@ fn main() {
 
 
 
+<!-- #### Summary
+{: .no_toc } -->
+
+However, this is not yet perfect because we create a temporary variable in the `println!` macro. Let's see if we can improve things. 
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Newtype pattern II
+<!-- {: .no_toc } -->
+
+This one will be short because we will apply the trick we ued earlier in the `Blanket Implementation II `.
+
+
+
+#### Running the demo code
+{: .no_toc }
+
+* right click on `assets/04_blanket_implementation`
+* Select the option "Open in Integrated Terminal"
+* `cargo run --example ex05`
+
+<div align="center">
+<img src="./assets/img14.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+#### Explanations 1/2 
+{: .no_toc }
+
+
+
+#### Show me the code!
+{: .no_toc }
+
+```rust
+use std::fmt::{Display, Formatter, Result as FmtResult};
+
+pub trait Measurable {
+    fn get_temp(&self) -> f64;
+}
+
+pub trait Identifiable {
+    fn get_id(&self) -> String;
+}
+
+struct TempSensor01 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor01 {
+    fn get_id(&self) -> String {
+        self.id.clone()
+    }
+}
+
+struct TempSensor02 {
+    temp: f64,
+    id: String,
+}
+
+impl Measurable for TempSensor02 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+impl Identifiable for TempSensor02 {
+    fn get_id(&self) -> String {
+        "TempSensor02 - ".to_owned() + &self.id
+    }
+}
+
+struct AsDisplay<'a, T: Measurable + Identifiable>(&'a T);
+
+impl<'a, T> Display for AsDisplay<'a, T>
+where
+    T: Measurable + Identifiable,
+{
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
+        write!(f, "id={}, temp={}", self.0.get_id(), self.0.get_temp())
+    }
+}
+
+fn as_display<T: Measurable + Identifiable>(t: &T) -> AsDisplay<'_, T> {
+    AsDisplay(t)
+}
+
+fn main() {
+    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+    let sensor2 = TempSensor02 { temp: 200.0, id: "Roberta".into() };
+
+    println!("{}", as_display(&sensor1));
+    println!("{}", as_display(&sensor2));
+}
+```
+
+
+#### Explanations 2/2 
+{: .no_toc }
+
+
+#### Summary
+{: .no_toc }
 
 
 
