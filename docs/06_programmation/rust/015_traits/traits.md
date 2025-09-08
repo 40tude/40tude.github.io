@@ -12,11 +12,14 @@ last_modified_date : 2025-09-03 14:00:00
 
 <!-- 
 TODO :
+* Avant le résumer, donner des exrcices des trucs à faire
+* Ajouter des question du lecteur. Entre autres pour passe d'une section à l'autre
 * Ajouter des liens sur le vocabulaire : 
-    * paramètre, argument, 
-    * level of indirection
-    * statement
+    * ~~paramètre~~, ~~argument~~, 
+    * ~~level of indirection~~
+    * ~~statement~~
     * expression
+    * fat pointer + vtable
 * ???
 -->
 
@@ -30,6 +33,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 
 <h2 align="center">
 <span style="color:orange"><b>This post is under construction.</b></span>    
+<span><b>It will be split in 2 or 3</b></span>    
 </h2>
 
 
@@ -96,18 +100,18 @@ I will not explain how to run the code every time.
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Results in the Integrated Terminal</span>
+<span>Click the images to zoom in</span>
 </div>
 
 
 
-* If you don't want to run the code locally, until the chapter about Modules & Crates, you should be able to copy and paste the code in the excellent [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d2d109f3055e1780562c8e7a97279470). 
+* If you don't want to run the code locally, until the section about **Modules & Crates**, you should be able to copy and paste the code in the excellent [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d2d109f3055e1780562c8e7a97279470). 
     * For this time, and for this time only, you can click the previous link. The source code is already in Rust Playground and so you can press CTRL+ENTER once the web page is open
-    * Or... You can select and copy the code below 
+    * Otherwise... Select and copy the code below. 
     * Paste it in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024)
     * Press CTRL + ENTER
 
-
+Make sure the code compiles and runs otherwise this is less fun.
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
@@ -128,9 +132,9 @@ Imagine... Imagine that we work in industry. We deploy control systems at variou
 </div>
 
 
-But we have to anticipate... Sure, we're so efficient and so bright that we'll be asked to deploy other types of sensors: pressure sensors, torsion sensors, flow meters, cameras... And while we're at it, we'll be asked to install actuators to close valves, unlock doors, turn on alarms... 
+But we have to anticipate... Sure, we're so efficient and so bright that we'll be asked to deploy other types of sensors: pressure sensors, strain gauges, flow meters, cameras... And while we're at it, we'll be asked to install actuators to close valves, unlock doors, turn on alarms... 
 
-First thing first, let's focus on the temperature sensors. Depending on the region of the world, we are asked to support both °C and °F (nobody's perfect...). On the other hand not all sensors are the same. Some of them may be already in place... Some of them may have different communication link (serial, EtherCAT...). So we can imagine that we have different types of temperature sensors, but this should be transparent from the software stand point.
+First thing first, let's focus on the temperature sensors. Depending on the region of the world, we are asked to support both °C and °F (nobody's perfect...). On the other hand, not all sensors are the same. Some of them may be already in place... Some of them may have different communication link (serial, EtherCAT...). So we can imagine that we have different types of temperature sensors, but this should be transparent from the software stand point.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LgrXd0NM2y8?si=11oJOk0zxRrH9Dsr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -138,11 +142,11 @@ First thing first, let's focus on the temperature sensors. Depending on the regi
 
 OK... Then what? 
 
-What I just described exists under other forms in many other situations. So there are some people who are smarter than others, who took a step back from all this and said to themselves: what you actually want is for all thermocouples to be measurable. It's a bit like describing people's characters. Some are touchy, others are cheerful, and still others are very intelligent. They are all different people, men, women, young, old... But they all have certain character traits. Well, we're going to give Rust a way to add character traits to existing types. 
+What I just described exists under other forms in many other situations. So there are some people who are smarter than others, who took a step back from all this and said to themselves: what you actually want is for all thermocouples to be measurable. It's a bit like describing people's characters. Some are touchy, others are cheerful, and still others are candid. They are all different people, men, women, young, old... But they all have certain character traits. Well, you know what, we're going to give Rust a way to add character traits to existing data types. 
 
-For example, I create a `Dog` type with a `struct{}`. Then I create a `Cat` type with another `struct{}`. Next, I describe what the Deceitful character trait is. Finally, I can then enrich the Dog and Cat types with the trait Deceitful. If I decide to say that all Cats are deceitful but not Dogs, I only add the trait Deceitful to Cats. Anyway, you get the idea.
+For example, I create a `Dog` type with a `struct{}`. Then I create a `Cat` type with another `struct{}`. Next, I describe what the `Deceitful` character trait is. Finally, I can then enrich the `Dog` and `Cat` types with the trait `Deceitful`. If I decide to say that all Cats are deceitful but not Dogs, I only add the trait `Deceitful` to `Cats`. I guess, you get the idea.
 
-Before we look at the first code example, there is one last point to keep in mind. Given that Rust is quite strict (to say the least) when it comes to type-related issues, we can write functions that take, as parameters, only data type we certain traits. For example, I can write a function that takes as a parameter any animal that has the trait Deceitful. It will then be able to treat Cats, Parrots, etc. in the same way. Similarly, I can create vectors that only contain animals with the trait Deceitful. This is pretty cool, because I can also rely on the compiler's rigor to warn me during compilation if I accidentally call the function with an argument whose type does not have the Deceitful character trait. You know the story : *Compilers makes sure the good things happen — the logical errors are on you.*       
+Before we look at the first code example, there is one last point to keep in mind. Given that Rust is quite strict (to say the least) when it comes to type-related issues, we can write functions that take, as parameters, only data type with certain traits. For example, I can write a function that takes as a parameter any animal that has the trait `Deceitful`. It will then be able to deal with `Cats`, `Parrots` and all sorts of animal owning the `Deceitful` trait. Similarly, I can create vectors that only contain animals with the trait `Deceitful`. This is pretty cool, because I can also rely on the compiler's rigor to warn me during compilation if I accidentally call the function with an  [argument]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) whose type does not have the `Deceitful` character trait. You know the story : *Compilers makes sure the good things happen — the logical errors are on you.*       
 
 Okay, let's move on to studying the first source code and see how all this apply to our thermocouples.
 
@@ -211,7 +215,7 @@ fn main() {
 ### Explanations 2/2
 {: .no_toc }
 
-Here I will go very slowly. Reading the source code out of order, telling you a story and making sure we all have the same basic understanding.
+Here, I will go very slowly. Reading the source code out of order, telling you a story and making sure we all have the same basic understanding.
 
 I first create a data type `TempSensor01`. It is very basic and it only have a float field representing the current temperature.
 
@@ -230,9 +234,9 @@ struct TempSensor02 {
 }
 ```
 
-At this point we have 2 temperature sensors, which are of 2 different data type. They are 2 different beasts, and we cannot use a `TempSensor01` in place of `TempSensor02`. This is a very good thing most of the time but ideally we would like to be able to read temperature measurements from all of them using a single function.
+At this point we have 2 temperature sensors, which are of 2 different data type. They are 2 different beasts, and we cannot use a `TempSensor01` in place of `TempSensor02`. This is a very good thing most of the time but ideally we would like to be able to read temperature measurements from all of them using the same function.
 
-This is where Traits comes into play. First, I create a trait named `Measurable`. Below we are saying something like : If a data type wants to be `Measurable` it must provide a `get_temp()` method which returns a `f64` (We could be stricter here and define our own data type for the temperatures to be returned but this is not the most important point here). A trait is a kind of contract or interface. We define what is need without defining the implementation.
+This is where traits comes into play. First, I create a trait named `Measurable`. Below we are saying something like : If a data type wants to be `Measurable` it must provide a `get_temp()` method which returns an `f64`. We could be stricter here and define our own data type for the temperatures to be returned (think at `type Temp = f64;` or `struct Temp(f64);` but this is not the point here. 
 
 ```rust
 pub trait Measurable {
@@ -240,7 +244,11 @@ pub trait Measurable {
 }
 ```
 
-That is fine but now, if we want `TempSensor01` and `TempSensor02` to be `Measurable`, we must define the `get_temp()` method for each of them. This is done using the `impl` (implement, implementation) keyword and then defining the `get_temp()` method. Both methods are not the same and `get_temp()` for `TempSensor02` return °F (what a pity...). Additionally if the trait requires other methods we could define them here. There is no restriction but I find it useful to define everything in a single `impl` block (one per data type).  
+As we can see, a trait is a kind of contract or a kind of interface. We define what is needed without defining the implementation.
+
+That is fine but now, if we want `TempSensor01` and `TempSensor02` to be `Measurable`, we must define the `get_temp()` method **for each of them**. This is done using the `impl` (implement, implementation) keyword and then defining the `get_temp()` method. Both methods are not the same and for example, the `get_temp()` methode from `TempSensor02` returns °F (what a pity...). 
+
+Additionally if the trait requires other methods we could define them here. There is no restriction but I find it useful to define everything in a single `impl` block (one per data type).  
 
 ```rust
 impl Measurable for TempSensor01 {
@@ -258,7 +266,7 @@ impl Measurable for TempSensor02 {
 
 Now let's look how it works in the `main()` function. Below I first create `my_sensor` which is of type `TempSensor01`. Since I have implemented the trait `Measurable` for the data type `TempSensor01` this means I added the `get_temp()` to the data type `TempSensor01`. This means I can invoque `.get_temp()` on `my_sensor`.
 
-Next I create 2 sensors of respective type `TempSensor01` and `TempSensor02`. And now, this is really cool. Indeed I can use `TempSensor01` or `TempSensor02` as argument of the function `get_temp_from_any_sensor_static1()`.
+Next I create 2 sensors of respective type `TempSensor01` and `TempSensor02`. And now, this is really cool. Indeed I can use reference to either `TempSensor01` or `TempSensor02` as argument of the function `get_temp_from_any_sensor_static1()`.
 
 ```rust
 fn main() {
@@ -280,26 +288,29 @@ Now the question is : how the `get_temp_from_any_sensor_static1()` function is d
 
 The most remarkable point is that the parameter `t` is of type `&impl Measurable`. This is not true, but this is good enough for now. The code below says something like : My name is `get_temp_from_any_sensor_static1()` and I take a reference to any parameter which implements the `Measurable` trait.
 
-The good thing is that since I know `t` has the trait `Measurable`, then I can invoque the method `get_temp()` on `t` in the body of `get_temp_from_any_sensor_static1()`.
 
 ```rust
 fn get_temp_from_any_sensor_static1(t: &impl Measurable) {
     println!("{}", t.get_temp());
 }
 ```
+The good thing is that since I know `t` has the trait `Measurable`, then I can invoque the method `get_temp()` on `t` in the body of `get_temp_from_any_sensor_static1()`.
 
-***OK, this sounds great but how does it works?*** In fact, at compile time, when `rustc` (the compiler) see the `impl` keyword it [monomorphizes](https://en.wikipedia.org/wiki/Monomorphization) (expand) the code for every concrete type that implements the `Measurable` trait. Imagine that the source code is modified so that it has a definition for `fn get_temp_from_any_sensor_static1_1(t: &TempSensor01) {...}` then another for `fn get_temp_from_any_sensor_static1_2(t: &TempSensor01) {...}`. The compiler "copy and paste" source code, it expands the source, it duplicates function calls... You pick the one that click best for you. 
 
-Keep in mind that everything is static. I mean once the monomorphization (source code expansion) is done, the compiler compiles the expanded code as usual. The source code is longer, the compilation takes more time but there is no penalty at runtime. More important : from the end user standpoint (you, me) everything looks like, with the `get_temp_from_any_sensor_static1()` he can use as an argument, anything that implement the `Measurable` trait.
+***OK, this sounds great but how does it works?*** In fact, at compile time, when `rustc` (our best friend, the compiler) see the `impl` keyword it [monomorphizes](https://en.wikipedia.org/wiki/Monomorphization) (expand) the code for every concrete type that implements the `Measurable` trait. 
 
-***I see get_temp_from_any_sensor_static2() function calls in main(). What is that?*** In fact when I write `fn get_temp_from_any_sensor_static1(t: &impl Measurable) {...}`, the keyword `impl` is a syntactic sugar. We can use the generic way of doing and write `fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {...}`
+Imagine that the source code is modified so that it has a definition for `fn get_temp_from_any_sensor_static1_1(t: &TempSensor01) {...}` then another for `fn get_temp_from_any_sensor_static1_2(t: &TempSensor01) {...}`. The compiler "copy and paste" source code, it expands the source, it duplicates function calls... Pick the one that click best for you. 
+
+Keep in mind that here, everything is static. I mean once the monomorphization (source code expansion) is done, the compiler compiles the expanded code as usual. The source code is longer, the compilation takes more time but there is no penalty at runtime. More important : from the end user standpoint (you, me, your young sister) everything looks like if the function `get_temp_from_any_sensor_static1()` could accept any type of argument as long as it implements the trait `Measurable`.
+
+***I see `get_temp_from_any_sensor_static2()` function calls in `main()`. What is that?*** In fact when I write `fn get_temp_from_any_sensor_static1(t: &impl Measurable) {...}`, the keyword `impl` is a syntactic sugar. We can use the generic way of doing and write `fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {...}`
 
 ```rust
 fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {
     println!("{}", t.get_temp());
 }
 ```
-Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<T: Measurable + Identifiable>(sensor: &T) {...}` (see multiple traits below)
+Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<T: Measurable + Identifiable>(sensor: &T) {...}`. We will use this syntax in the Multiple Traits section later.
 
 At this point we should have all we need to understand this first code. Read it, read it again. Run it, modify it. Break it. Make it run again.
 
@@ -317,7 +328,7 @@ At this point we should have all we need to understand this first code. Read it,
 * We have 2 types of temperature sensor
 * We define a trait Measurable 
     * Kind of contract/interface with a set of methods, functions, variables to be implemented
-* We implement the method of the trait onto the data type of interest
+* We implement the method of the trait for the data type of interest
 * We can define a function that take as parameter any variable with the trait Measurable
     * We can either use the `impl` keyword or the generic syntax
 * So far everything is known at compile time. There is no impact at runtime.
@@ -355,7 +366,7 @@ At this point we should have all we need to understand this first code. Read it,
 
 
 ## Dynamic Dispatch
-Where data type are discovered at runtime.
+Where the data types are discovered at runtime.
 
 
 
@@ -377,7 +388,9 @@ Where data type are discovered at runtime.
 ### Explanations 1/2 
 {: .no_toc }
 
-In the previous sample code everything is fine but everything is known at compile time. This means that when we arrive in Munich at the factory, once the sensors are deployed, we open the source code we list all the sensors, we compile and run the new version of the monitoring system... This is simply not scalable. Among others because this is not maintenable (we will end up with a custom version per plant). What we need is a way to dynamically call the right version of `get_temp()`. What we want to write is something like: `println!("Reading: {}", s.get_temp());` no matter if `s` is a sensor of type `TempSensor1` or `TempSensor2`.
+In the previous sample code everything is fine but everything is known at compile time. This means that when we arrive in Munich at the factory, once the sensors are deployed, we open the source code, we list all the sensors, we compile and run the new version of the monitoring system... This is simply not scalable. Among others because this is not maintenable (we will end up with a custom version per plant). 
+
+What we need is a way to dynamically call the right version of `get_temp()`. What we want to write is something like: `println!("Reading: {}", s.get_temp());` no matter if `s` is a sensor of type `TempSensor1` or `TempSensor2`.
 
 This is where dynamic dispatch comes in. 
 
@@ -468,15 +481,10 @@ impl Measurable for TempSensor02 {
 }
 ```
 
-Now, the changes are in the `main()` function. First we create a vector of Measurable stuff. However, since Measurable is not a data type, the statement  looks like this : `let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();`. In plain English this says something like : 
+Now, the changes are in the `main()` function. First we create a vector of Measurable stuff. However, since Measurable is not a data type, the [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) looks like this : `let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();`. In plain English this says something like : 
 * Create a mutable vector (`sensors` with an 's') of boxed trait objects implementing `Measurable`.
 * `Box` puts each object on the heap, ensuring a fixed-size pointer is stored in the vector.
-* `dyn` marks that we are using dynamic dispatch: the exact type implementing so that `Measurable` can vary at runtime, but all can be stored together behind `Box<dyn Measurable>`.  
-
-Once the vector `sensors` is created, in the `for` loop we can invoque, with no fear, the `get_temp()` method on each element of the vector. The appropriate version of `get_temp()` is called. It does not come for free however. Behind the scene, at runtime, the code uses what is called a **fat pointer**. This pointer points to a table on the heap and in this table (**vtable**), there is another pointer to the area where the `get_temp()` method is defined. 
-
-In the first example we had direct call because everything was known at compile time. Here we point to a table, then we find in the table the address of `get_temp()` and then we call it. We get much more flexibility but, again, it come with a cost at runtime. Do not assume anything and run benchmarks if you suspect the dynamic dispatch is killing your application.
-
+* The `dyn` keyword indicates dynamic dispatch, meaning the specific method to call is determined at runtime based on the actual type inside the box. 
 
 ```rust
 fn main() {
@@ -490,7 +498,13 @@ fn main() {
 }
 ```
 
-***What is the make_sensor() function I see above?*** `sensors` is a vector of boxed trait objects implementing `Measurable`. In this context `make_sensor()` is a kind of factory that create 2 different flavors of sensor based on the argument (`celcius` or the other one that no one used in the universe). Here is the code of `make_sensor()` :
+Once the vector `sensors` is created, in the `for` loop we can invoque, with no fear, the `get_temp()` method on each element of the vector. The appropriate version of `get_temp()` is called. It does not come for free however. Behind the scene, at runtime, the code uses what is called a **fat pointer**. This pointer points to a table on the heap and in this table (**vtable**), there is another pointer to the area where the `get_temp()` method is defined. 
+
+In the first sample code we had direct calls because everything was known at compile time. Here we point to a table, then we find in the table the address of `get_temp()` and then we call it. We get much more flexibility but, again, it comes with a cost at runtime. Please don't start grumbling, don't assume but run benchmarks if you suspect the dynamic dispatch is killing your application.
+
+
+
+***What is the `make_sensor()` function call I can see above?*** `sensors` is a vector of boxed trait objects implementing `Measurable`. In this context `make_sensor()` is a kind of factory that create 2 different flavors of sensor based on the argument (`celcius` or the other, the He-Who-Must-Not-Be-Named). Here is the code of `make_sensor()` :
 
 ```rust
 fn make_sensor(kind: &str) -> Box<dyn Measurable> {
@@ -504,7 +518,8 @@ fn make_sensor(kind: &str) -> Box<dyn Measurable> {
     }
 }
 ```
-Using a match expression, based on `kind`, it returns either a box containing a pointer to a `TempSensor01` or a `TempSensor02`. The code is as simple as possible. All sensors of the same type hold the same temperature but this is not the point here.
+
+Using a match [expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}), based on `kind`, it returns either a box containing a pointer to a `TempSensor01` or to a `TempSensor02`. The code is as simple as possible. All sensors of the same type hold the same temperature but this is not the point here.
 
 In the signature of the function (`fn make_sensor(kind: &str) -> Box<dyn Measurable>`) we use de `dyn` keyword to mark the dynamic dispatch while in the body we "simply" return a `Box::new(TempSensor01 OR TempSensor02)`.
 
@@ -521,7 +536,7 @@ for s in &sensors {
 ### Summary
 {: .no_toc }
 
-* As before, 2 type of temperature sensor with a trait Measurable
+* As before, 2 types of temperature sensor with a trait `Measurable`
 * Thanks to dynamic dispatch we can invoque `.get_temp()` no matter the kind of sensor
 * The vector definition is : `let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();`
 * The factory returns `Box<dyn Measurable>` (exempli gratia `Box::new(TempSensor01 { temp: 1.0 })`)
@@ -539,14 +554,14 @@ for s in &sensors {
 
 
 ## Default Implementation
-When a data type cannot yet implement all the methods of the trait (interface)
+When a data type cannot yet implement a method from the trait (interface)
 
 
 
 ### Running the demo code
 {: .no_toc }
 
-* right click on `assets/02_default_implementation`
+* Right click on `assets/02_default_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run`
 
@@ -633,14 +648,13 @@ And this is exactly what happens with TempSensor02 with the line :
 impl Measurable for TempSensor02 {}
 ```
 
-Note that the body is empty. Do you see the `{}`? The `get_temp()` is simply not define for `TempSensor02`. When the monomorphization takes place, the default implementation will be used instead. This is what we can see in the terminal. 
+Note that the body is empty. Do you see the `{}`? The `get_temp()` is simply not yet defined for `TempSensor02`. When the monomorphization takes place, the default implementation will be used instead. This is what we can see in the terminal. 
 
 * When `println!("{}", sensor100.get_temp());` is executed the value `100` is displayed 
 * When the line `println!("{}", sensor200.get_temp());` is executed the value `-273.15` is  displayed while one could have expected `200`.
 
 We should also keep in mind that it's not all or nothing. Read the code below. Try to anticipate the outputs. Copy/paste and run the code below in the [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) (I can't do it for you honey). 
 
-When your tears of joy have dried, take the time to realize how flexible the "default implementation" option is.
 
 ```rust
 pub trait Measurable {
@@ -687,13 +701,16 @@ fn main() {
 }
 ```
 
+Now, when your tears of joy have dried, step back and take the time to realize how flexible the "default implementation" option is. For example think about a `Measurable` trait in a lib. The consumers of the lib can use it immediately. The values they obtain may seem strange at first, but at least they can develop the software component they are in charge of. Later, when you are able to replace the default implementation with the real implementation, nothing will change from their point of view. API users will simply obtain more realistic values.
+
+
 ### Summary
 {: .no_toc }
 
-* A trait can propose default implementation for its methods
+* A trait can propose default implementations for its methods
 * Data type willing to implement the trait can cherry pick the methods they want to define
 * This is not all or nothing and you can have much more than 52 shades of grey
-* As a end user, in the rest of the application nothing change for us  
+* From the consumer of the interface everything seems OK. 
 
 
 
@@ -722,12 +739,12 @@ fn main() {
 
 
 ## Multiple Traits
-Where using the generic syntax allow to add more than one bound to the parameter of a function
+Where using the generic syntax allow to add more than one trait bounds to the parameters of a function
 
 ### Running the demo code
 {: .no_toc }
 
-* right click on `assets/03_multiple_traits`
+* Right click on `assets/03_multiple_traits`
 * Select the option "Open in Integrated Terminal"
 * `cargo run`
 
@@ -742,11 +759,11 @@ Where using the generic syntax allow to add more than one bound to the parameter
 ### Explanations 1/2 
 {: .no_toc }
 
-You have played with the last sample code in Rust Playground. It is simple, easy to understand and everything looks like we are running a kind of inventory. However, the point was to demonstrate the default implementation and so, in the main() function we have line similar to : `println!("{}°C, label: {}", sensor100.get_temp(), sensor100.get_label());`
+You have played with the last sample code in Rust Playground. Don't you? It is simple, easy to understand and everything looks like we are running a kind of inventory. However, the point was to demonstrate the default implementation and so, in the `main()` function we have a line similar to : `println!("{}°C, label: {}", sensor100.get_temp(), sensor100.get_label());`
 
-Now let's say we want to write a kind of Inventory function. One of the constraint we want to have is to make sure that the parameters implement the methods we need. Here we needed `get_temp()` and `get_label()`. 
+Now let's say we want to write a kind of `inventory()` function. One of the constraint we want to have is to make sure that the parameters implement the methods we need. Here we needed to be able to invoke `.get_temp()` and `.get_label()`. 
 
-This is where multiple traits and bounds come into the game since they do exactly that. In the function signature using the generic syntax, we specify which traits must be available (no matter if it is via a default implementation or not)
+This is where multiple traits and bounds come into the game since they do exactly that. In the function signature using the generic syntax, we can specify which traits must be available (no matter if it is via a default implementation or not)
 
 Let's read some code.
 
@@ -823,13 +840,48 @@ fn main() {
 ### Explanations 2/2 
 {: .no_toc }
 
-At the top of the code we define 2 traits : Measurable and Identifiable. They both have a unique methode and they both propose a default implementation of their respective method : `get_temp()` that we know by heart and `get_id()` which returns the Id of the temperature sensor.
+At the top of the code we define 2 traits : Measurable and Identifiable. They both have a unique method and they both propose a default implementation of their respective method : `get_temp()` that we know by heart and `get_id()` which returns the Id of the temperature sensor.
 
-Then we define our two friends `TempSensor01` and `TempSensor02`. The implementation is not yet complete and they use the default implementations. There is a last data type, named `TempSensor03`. It has the Measurable trait (and leverages the default implementation) but it does not have the Identifiable trait.
+```rust
+pub trait Measurable {
+    fn get_temp(&self) -> f64 {
+        -273.15
+    }
+}
+
+pub trait Identifiable {
+    fn get_id(&self) -> String {
+        "NA".into()
+    }
+}
+```
+
+Then we define our two friends `TempSensor01` and `TempSensor02`. Their respective implementation is not yet complete and they use the default implementations of the trait when needed. For example here is how it is written for `TempSensor01` ;
+
+```rust
+struct TempSensor01 {
+    temp: f64,
+}
+impl Measurable for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+impl Identifiable for TempSensor01 {}
+```
+
+There is a last data type, named `TempSensor03`. It has the `Measurable` trait (and leverages the default implementation) but it does not have the `Identifiable` trait.
+
+```rust
+struct TempSensor03 {
+    temp: f64,
+}
+impl Measurable for TempSensor03 {}
+```
 
 In the `main()` function we create two sensors and we pass them as argument to the `inventory()` function.
 
-What did you expect? The most interesting part is the definition of the inventory() function.
+What did you expect? The most interesting part is the definition of the `inventory()` function.
 
 ```rust
 fn inventory<T: Measurable + Identifiable>(sensor: &T) {
@@ -838,6 +890,7 @@ fn inventory<T: Measurable + Identifiable>(sensor: &T) {
 ```
 
 In plain French it says: My name is `inventory`. I use the generic syntax <T: Measurable + Identifiable> to declare that I work with any type `T` that implements both the `Measurable` and `Identifiable` traits.
+
 When someone calls me, they must pass me a `sensor`, which is a reference to such a type. Because of the trait bounds, I know that this sensor will always provide the methods `get_id()` and `get_temp()`, so I can safely print its identifier and temperature.
 
 **Note:** Between you and me I would prefer to write `fn inventory<T: Measurable x Identifiable>(sensor: &T) {...}` because, for me, `x` is associated to `AND` while `+` is associated to `OR`.      
@@ -911,15 +964,15 @@ Where the compiler write for us the code to implement certain traits.
 <!-- ###################################################################### -->
 ### Implementation for Display
 
-Where we first learn to implement an external trait on one of our own data types; 
+Where we learn to implement an external trait on one of our own data types.
 
 #### Running the demo code
 {: .no_toc }
 
-Pay attention... The source code is in the `examples/` subdirectory.
+**Pay attention...** The source code is in the `examples/` subdirectory.
 
-* click on `assets/04_blanket_implementation/examples` to see the list of source code.
-* right click on `assets/04_blanket_implementation`
+* Click on `assets/04_blanket_implementation/examples` to see the list of source code.
+* Right click on `assets/04_blanket_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex00`
 
@@ -935,7 +988,7 @@ Pay attention... The source code is in the `examples/` subdirectory.
 
 With the previous sample code, the way we used the `inventory()` function call in the `main()` was OK but not great. What I would like to write is something like : `println!("{}", sensor1);`
 
-This is possible if we implement the `Display` trait for `TempSensor01`. Let's see how.
+This is possible if we implement the `Display` trait for `TempSensor01`. Let's see how this can be done.
 
 
 
@@ -988,14 +1041,15 @@ fn main() {
 What is cool is that, at the end, in the main function we can write
 
 ```rust
-    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
-    println!("{}", sensor1);
+let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+println!("{}", sensor1);
 ```
-This is cool because we print `sensor1` the same way we print an integer or a double. To get this result we "only have to" implement the trait `std::fmt::Display`. I say `std::fmt::Display` and not `Display` because, I want to underline the fact that the Display trait is external. It belong to `std::fmt` we do not own it. Keep this in mind we will come back to the ownership issue later.
 
-Now the question is : how do I write the implementation of `std::fmt::Display` for the `TempSensor01` data type?
+This is cool because we print `sensor1` the same way we print an integer or a double. To get this result we "only have to" implement the trait `std::fmt::Display`. I say `std::fmt::Display` and not `Display` because, I want to underline the fact that the `std::fmt::Display` trait is external. It belongs to `std::fmt`, we do not own it. Keep this in mind as we will come back to the ownership issue later.
 
-This might be obvious but nowhere in the code above we define the trait `Display`. We don't own it so we don't write soemething like :
+***OK... But how do you write the implementation of a trait that you do not own `std::fmt::Display` for trait that you own `TempSensor01`?*** 
+
+This might be obvious but nowhere in the code above we define the trait `Display`. We don't own it so we don't write something like :
 
 ```rust
 pub trait Display {
@@ -1013,18 +1067,18 @@ impl std::fmt::Display for TempSensor01 {
 }
 ```
 
-Compared to what we already know when we deal with our own traits, fundamentally there is nothing new. The trait `std::fmt::Display` have in its interface one function named `fmt` which have a specific signature. Don't turst me. Double [check the documentation](https://doc.rust-lang.org/std/fmt/trait.Display.html). 
+Compared to what we already know when we deal with our own traits, fundamentally there is nothing new. The trait `std::fmt::Display` have in its interface one function named `fmt` which have a specific signature. Don't trust me. Double check in your [bedside book](https://doc.rust-lang.org/std/fmt/trait.Display.html) and make sure you can find it again if I don't give you the link (start from https://doc.rust-lang.org/stable/std/, Crates `std` on the left hand side, `fmt` module at the bottom of the page, `Display` trait at the bottom of the page...)
 
 In our code, we copy paste the signature and write the definition of the `fmt` method for the data type `TempSensor01`. In the signature the `<'_>` is a lifetime specifier which is not used here. Note that we use `self.id` and `self.temp` directly. Life is easy.   
 
 
 
-<!-- #### Summary
-{: .no_toc } -->
+#### Summary
+{: .no_toc }
 
-***But the compiler did'nt write anything for us! Did it?*** No it did'nt. You are right, this first sample code shows how we can implement `std::fmt::Display`, an external trait, on a local data type (that we own).  
+***But the compiler did'nt write anything for us! Did it?*** No it did'nt. You are right, this first sample code shows how we can implement `std::fmt::Display`, an external trait, on a local data type that we own.  
 
-Ok... Let's see if a blanket implementation can answer our question.
+Ok... Now let's see if a blanket implementation can answer our question.
 
 
 
@@ -1052,7 +1106,7 @@ Where the compiler writes the code of the trait implementation for us.
 #### Running the demo code
 {: .no_toc }
 
-* right click on `assets/04_blanket_implementation`
+* Right click on `assets/04_blanket_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex01`
 
@@ -1075,7 +1129,7 @@ impl std::fmt::Display for TempSensor01 {
 }
 ```
 
-This means that if we continue that way we have to implement the method `std::fmt::Display` for TempSensor02, TempSensor03... TempSensorNN. This is a waste of time and error prone. This is where Rust blanket implementation can help because it can write implementation code for us.   
+This means that if we continue that way we have to implement the method `std::fmt::Display` for `TempSensor02`, `TempSensor03`... `TempSensorNN`. This is a waste of time and error prone. This is where Rust blanket implementation can help because it can write implementation code for us.   
 
 
 
@@ -1195,9 +1249,11 @@ fn main() {
 }
 ```
 
-Nonetheless we make significant progress because we no longer have to write each implementation of `.print()`.
+Nonetheless we make significant progress because we no longer have to write each implementation of the `.print()` method.
 
-First we define a Printable trait and this interface have one `print()` method.
+***Did you stumble upon a secret incantation in some ancient grimoire, or did you just sacrifice a few chickens? Tell me your secret!***
+
+First we define a `Printable` trait and its interface have one `print()` method.
 
 ```rust
 trait Printable {
@@ -1219,31 +1275,43 @@ where
 
 **It took me some time to realize:** 
 * The code above is a generalized implementation for any type implementing `Identifiable` and `Measurable`
-* At compile time, Rust monomorphizes the "template" **for each concrete type** that satisfies the traits bounds (`Identifiable + Measurable`).
+* At compile time, Rust monomorphizes the "template" **for each concrete type** that satisfies the traits bounds (`Identifiable + Measurable`). To tell the truth, I can easily forget this point when reading code.
 * Since `TempSensor01` implements `Identifiable` and `Measurable`, it gets the `Printable` implementation for "free", and `sensor1.print()` compiles and works like a charm.
 * The same apply to `TempSensor02`.
 * In the `main()` function, the code looks like a kind a polymorphism working on `sensor1` and `sensor1` but no, no, and no. Behind the scene each version of `.print()` have been monomorphized for each concrete type.
-* The trait bounds checks are done at compile time → no runtime cost, no surprises.
+* The trait bounds checks are done at compile time → no runtime cost, no surprises since everything is checked at compile time.
 
 
-***In the source code it is written that bob.print() does not compile. Can you explain?*** No, read the last line above, read the source code and tell me what you think. 
+***In the source code it is written that bob.print() does not compile. Can you explain?*** No, read the source code and tell me what you think. Here is a copy of the code fragment :
 
-Ok... On the last line of the bullet list, it is said that the trait bounds checks are done at compile time. Now in the source code I understand that `Nimbus200` is a datatype (I thought it was a magic broom). It is empty but before all this data type does not implement `Measurable` nor `Identifiable`. When the compiler sees the `bob.print()` invocation it asks the monomorphization system to generate (expand) the `Printable` trait so that `.print()` can be called. However, this is not possible because `Printable` is monomorphizable if and only if `T` implements the traits `Identifiable` and `Measurable`. This is not the case with `Nimbus2000` data type and the compiler reports errors and suggest options. 
+```rust
+    struct Nimbus2000 {}
+    let bob = Nimbus2000 {};
+    // bob.print();
+```
+
+*Ok... On the last line of the bullet list, it is said that the trait bounds checks are done at compile time. Now in the code fragment I understand that `Nimbus200` is a datatype (I thought it was a magic broom). It is empty but before all this data type does not implement `Measurable` nor `Identifiable`. When the compiler sees the `bob.print()` call it asks the monomorphization system to generate (expand) the `Printable` trait so that `.print()` can be called. However, this is not possible because `Printable` is monomorphizable if and only if `T` implements the traits `Identifiable` and `Measurable`. This is not the case with `Nimbus2000` data type and the compiler reports errors and suggest options. Did I get it right?*
+
+You're a grand master!
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PobrSpMwKk4?si=tAiOW_xG7Xii33PE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
-***OK... But I in the `main()` function would like to read `println!("{}", blablabla);` rather than `sensor1.print();`. What can we do ?***
+***OK... But I in the `main()` function I would like to read `println!("{}", blablabla);` rather than `sensor1.print();`. What can we do ?***
 
-Before to move one, **keep in mind** :
+
+
+
+
+#### Summary
+{: .no_toc }
+
+Before to move on, **keep in mind** :
 * Blanket implementation (generalized implementation) use the generic syntax
 * It generates (monomorphizes) for us code for certain traits
 * Trait bounds checking occurs at compile time, not runtime 
-
-
-
-
-<!-- #### Summary
-{: .no_toc } -->
-
 
 
 
@@ -1256,14 +1324,14 @@ Before to move one, **keep in mind** :
 <!-- ###################################################################### -->
 ### Blanket Implementation II 
 
-Where the compiler writes again the code of the trait implementation for us.
+Where the compiler writes, once again, the code of the trait implementation for us.
 
 
 
 #### Running the demo code
 {: .no_toc }
 
-* right click on `assets/04_blanket_implementation`
+* Right click on `assets/04_blanket_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex02`
 
@@ -1353,14 +1421,30 @@ fn main() {
 #### Explanations 
 {: .no_toc }
 
-This is not yet perfect. In the main() function we write
+This is not yet perfect. In the `main()` function we had :
 
 ```rust
-    println!("{}", sensor1.pretty());
-    println!("{}", sensor2.pretty());
+fn main() {
+    let sensor1 = TempSensor01 { temp: 25.0, id: "Zoubida".into() };
+    let sensor2 = TempSensor02 { temp: 25.0, id: "Roberta".into() };
+
+    sensor1.print();
+    sensor2.print();
+}
 ```
 
-To be honest, this is a trick that may be useful in other situations. Here, it's really a last resort. Let's not spend to much time on it you already have all the information to understand the code.
+Now we have 
+
+```rust
+fn main() {
+    let sensor1 = TempSensor01 { temp: 100.0, id: "Zoubida".into() };
+    let sensor2 = TempSensor02 { temp: 200.0, id: "Roberta".into() };
+
+    println!("{}", sensor1.pretty());
+    println!("{}", sensor2.pretty());
+}
+```
+It is really a matter of taste. Let's not spend to much time on it you already have all the information to understand the code. Read it, read it again.
 
 
 ***So you are saying there is no solution?*** Did I say that? No, but before to go further let's study a source code that **does not compile**. This will help us to underline an important point about the blanket implementation.
@@ -1393,11 +1477,11 @@ Where the compiler warns us before we shoot ourselves in the foot.
 #### Running the demo code
 {: .no_toc }
 
-* right click on `assets/04_blanket_implementation`
+* Right click on `assets/04_blanket_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex03`
 
-Remember the Alamo but remember this code **DOES NOT** compile.
+Remember the Alamo — but also remember, this code **won’t compile**.
 
 <div align="center">
 <img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
@@ -1484,20 +1568,20 @@ where
 ```
 
 
-Nice try but NO. This does not work. To make a long story short 
+Nice try but **NO**. This does not work. To make a long story short 
 * This does not compile because of Rust's **orphan/coherence rules**
 * Indeed, ``Display`` is a foreign trait (defined in `std::fmt`).
 * We are not allowed to implement a **foreign trait** for a **foreign type**.
 * Indeed in the code above `impl<T> Display for T where T: ...`, the target type `T` is a generic 'any' type (not a local type that we own) → prohibited.
 
-The idiomatic solution is the **newtype pattern** where we wrap your `T` in a local type (that we own), then we implement `Display` for that wrapper. Additionally we can offer a helper to make it easier to use.
+The idiomatic solution is the **newtype pattern** where we wrap your `T` in a local type (that we own), then we implement `std::fmt::Display` for that wrapper. Additionally we can offer a helper to make it easier to use.
 
 Let's see how the newtype pattern can be used in our case.
 
 
 
-<!-- #### Summary
-{: .no_toc } -->
+#### Summary
+{: .no_toc }
 
 
 
@@ -1510,12 +1594,12 @@ Let's see how the newtype pattern can be used in our case.
 ### Newtype pattern I
 <!-- {: .no_toc } -->
 
-Where the compiler write implementation code for an intermediate data type.
+Where the compiler writes implementation code for an intermediate data type.
 
 #### Running the demo code
 {: .no_toc }
 
-* right click on `assets/04_blanket_implementation`
+* Right click on `assets/04_blanket_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex04`
 
@@ -1529,7 +1613,7 @@ Where the compiler write implementation code for an intermediate data type.
 #### Explanations 1/2 
 {: .no_toc }
 
-In the previous sample code we learnt that we cannot write `impl<T> std::fmt::Display for T...`. This is because we do not own the trait `std::fmt::Display` nor the generic type `T`. As often, the trick is to add a level on indirection by defining a intermediate data type that we own and on which we implement `Display`. Let's see how it works.
+In the previous sample code we learnt that we cannot write `impl<T> std::fmt::Display for T...`. This is because we do not own the trait `std::fmt::Display` nor the generic type `T`. As often, the trick is to add a [level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) by defining a intermediate data type that we own and on which we implement `std::fmt::Display`. Let's see how it works.
 
 
 
@@ -1595,19 +1679,19 @@ Then we define an intermediate data type named `AsDisplay`. The line below does'
 struct AsDisplay<T: Measurable + Identifiable>(&T)
 ```
 
-**Note**
+**Note:** Just to make sure, don't take it personally.
 * A tuple struct looks like : `struct Point(i32, i32);`
-* It has unnamed fields, accessed by index (p.0, p.1)
+* It has unnamed fields, accessed by index (`p.0`, `p.1`)
 * It’s syntactically close to a tuple but defines a new distinct type
-* Often used to define our new type adding a thin wrapper around an existing type : `struct Temperature(f64); // different type from plain f64`
+* Can be used to define our new type adding a thin wrapper around an existing type : `struct Temperature(f64); // different type from plain f64`
 
-In addition, the tuple struct, the wrapper stores a reference (&T). Any struct that contains a reference must name the lifetime of that reference. Lifetime elision works in function signatures but not in struct definitions, so the compiler forces us to add one. Finally the working line of code is :
+In addition, the tuple struct, the wrapper stores a reference (&T). Any struct that contains a reference **must** name the lifetime of that reference. [Lifetime elision](https://doc.rust-lang.org/reference/lifetime-elision.html) works in function signatures but **not** in struct definitions, so the compiler forces us to add one. Finally the working line of code is :
 
 ```rust
 struct AsDisplay<'a, T: Measurable + Identifiable>(&'a T);
 ```
 
-Now we have our intermediate data type and we can implement Display on it. It goods like this :
+Now we have our intermediate data type and we can implement `Display` on it. It looks like this :
 
 ```rust
 impl<T> Display for AsDisplay<'_, T>
@@ -1620,14 +1704,15 @@ where
 }
 ```
 
-The only point of attention is the weird syntax `self.0.get_id()`. However if we remember that `AsDisplay` is a `tuple struct` with a single, unnamed field then this way of writing should clearer. `self.0` points to the first and unique field. `.get_id()` or `.get_temp()` invoke the method.
+The only point of attention is the weird syntax `self.0.get_id()`. However if we remember that `AsDisplay` is a `tuple struct` with a single, unnamed field then this way of writing should be clearer. `self.0` points to the first and unique field. `.get_id()` or `.get_temp()` invoke the method.
 
-With this way of expressing things, in the `main()` function we write :
+With this way of expressing things, in the `main()` function we can write :
 
 ```rust
 println!("{}", AsDisplay(&sensor1));
 ```
-Here is what happens : We temporarily wrap a borrow of sensor1 into `AsDisplay`, `println!` detects that `AsDisplay` implements `Display`, it calls our custom `fmt`, which in turn delegates to the `Measurable` and `Identifiable` methods of the underlying sensor, and the resulting string is printed.
+
+Here is what happens : We temporarily wrap a borrow of sensor1 into `AsDisplay`, `println!` detects that `AsDisplay` data type implements `Display`. It calls our custom `fmt`, which in turn delegates to the `Measurable` and `Identifiable` methods of the underlying sensor, and the resulting string is printed.
 
 **Long version:**
 1. **Borrowing the sensor**
@@ -1645,7 +1730,7 @@ Here is what happens : We temporarily wrap a borrow of sensor1 into `AsDisplay`,
 
 4. **Trait resolution**
    * The compiler finds our `impl<'a, T> Display for AsDisplay<'a, T>` where `T: Measurable + Identifiable`.
-   * Since `TempSensor01` implements both `Measurable` and `Identifiable`, the blanket impl applies.
+   * Since `TempSensor01` implements both `Measurable` and `Identifiable`, the blanket implementation applies.
 
 5. **Calling `fmt`**
    * The formatting machinery calls `AsDisplay::fmt(&wrapper, f)`.
@@ -1670,8 +1755,8 @@ Here is what happens : We temporarily wrap a borrow of sensor1 into `AsDisplay`,
 
 
 
-<!-- #### Summary
-{: .no_toc } -->
+#### Summary
+{: .no_toc }
 
 However, this is not yet perfect because we create a temporary variable in the `println!` macro. Let's see if we can improve things. 
 
@@ -1689,14 +1774,14 @@ However, this is not yet perfect because we create a temporary variable in the `
 <!-- ###################################################################### -->
 ### Newtype pattern II
 
-Where we use a convenient function call to hide the use of the ad how data type.  
+Where we use a convenient function call to hide the use of the ad hoc data type.  
 
 
 
 #### Running the demo code
 {: .no_toc }
 
-* right click on `assets/04_blanket_implementation`
+* Right click on `assets/04_blanket_implementation`
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex05`
 
@@ -1810,10 +1895,12 @@ fn main() {
 }
 ```
 
-Again, nothing fancy here. 
-<!-- #### Summary
-{: .no_toc } -->
 
+
+#### Summary
+{: .no_toc }
+
+Again, nothing fancy here. 
 
 
 
@@ -1870,7 +1957,7 @@ Where we force a data type to implement a trait.
 ### Running the demo code
 {: .no_toc }
 
-* right click on `assets/05_trait_bounds_inheritance`
+* Right click on `assets/05_trait_bounds_inheritance`
 * Select the option "Open in Integrated Terminal"
 * `cargo run`
 
@@ -1884,9 +1971,14 @@ Where we force a data type to implement a trait.
 ### Explanations 1/2 
 {: .no_toc }
 
-So far, in most of the sample code we have implemented the trait Display because we want to print to the console. Would'nt be great if we could sign an agreement with the compiler saying something like : The data type that implements this trait must also implement this trait.   
+In most of the sample code so far, we have implemented the trait `Display` because we want to print to the console. Would'nt be great if we could sign an agreement with the compiler saying something like : The data type that implements this trait must also implement this trait.   
 
 This could be helpful because if one day we forget, then the compiler will gently remind us. Oh...Calm down! I said gently. Ok?. Ok.
+
+<div align="center">
+<img src="./assets/img20.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
 
 Let see how this works.
 
@@ -1984,9 +2076,9 @@ impl TempSensor for TempSensor01 {
     }
 }
 ```
-It is almost the same thing... Except one char, the `:` in the `TempSensor` trait's signature. Do you see it in `trait TempSensor: Display {...}`. In plain english this says : any data type who want to implement `TempSensor` must also implement `Display`.
+It is almost the same thing... Except one char, the `:` in the `TempSensor` trait's signature. Do you see it in `trait TempSensor: Display {...}`. In plain english this says : any data type who wants to implement `TempSensor` must also implement `Display`.
 
-This is why once `TempSensor01` is defined, we first implement TempSensor for TempSensor01 and then... We must implement implement Display fro TempSensor01. See below :
+This is why, once `TempSensor01` is defined, we first implement `TempSensor` for `TempSensor01` and then... We must implement implement `Display` for `TempSensor01`. See below :
 
 ```rust
 impl Display for TempSensor01 {
@@ -1996,14 +2088,14 @@ impl Display for TempSensor01 {
 }
 ```
 
-In the rest of the code the same apply for TempSensor02. Now, tadaaa! 
+In the rest of the code the same apply for `TempSensor02`. And now... Tadaaa! 
 
 <div align="center">
 <img src="./assets/img16.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Running code in Rust Playground</span> -->
 </div>
 
-And look how beautiful the body `main()` function is : 
+And look the beautiful body of... The `main()` function: 
 
 ```rust
 fn main() {
@@ -2018,9 +2110,10 @@ fn main() {
     }
 }
 ```
+
 We define a vector of sensors. Then we go through all of the vector's values and we print them on the console using the sensor variable's name. 
 
-Just to make sure... In the `main()` function, the code below works like a charm. Make a try in Rust Playground
+Just to make sure... In the `main()` function, the code below works like a charm. Make a try in Rust Playground.
 
 ```rust
     let sensor1 = TempSensor01 { temp: 25.0 };
@@ -2032,13 +2125,19 @@ Just to make sure... In the `main()` function, the code below works like a charm
 So... There is no function call, no method invoked. Just `println!`. Smoking!
 
 <div align="center">
-<img src="./assets/img18.webp" alt="" width="225" loading="lazy"/><br/>
+<img src="./assets/img18_1.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Running code in Rust Playground</span> -->
 </div>
 
 
 
-Yes... Almost. I say almost because... Yes the `main()` function looks great. Yes, it is impossible to forget to implement the `Display` trait, but we still have to implement it ourselves. Wouldn't it be great if we could delegate this task to the compiler?
+Yes... Almost. I say almost because... 
+* Yes the `main()` function looks great. 
+* Yes, it is impossible to forget to implement the `Display` trait
+* But... But we still have to implement the Display trait ourselves. 
+
+
+***You're right. Wouldn't it be great if we could delegate this task to the compiler?***
 
 This is possible and you already know how : we need a mixt of trait bounds inheritance and blanket implementation so that the code of the Display implementation is generated by the compiler.  
 
@@ -2082,7 +2181,7 @@ Where the compiler generates the implementation code of the traits from which we
 ### Running the demo code
 {: .no_toc }
 
-* right click on `assets/06_extension_trait`
+* Right click on `assets/06_extension_trait`
 * Select the option "Open in Integrated Terminal"
 * `cargo run`
 
@@ -2262,7 +2361,7 @@ One sentence
 ### Running the demo code
 {: .no_toc }
 
-* right click on `assets/06_traits_and_dyn_dispatch`
+* Right click on `assets/06_traits_and_dyn_dispatch`
 * Select the option "Open in Integrated Terminal"
 * `cargo run`
 
@@ -2406,7 +2505,7 @@ One sentence
 ### Running the demo code
 {: .no_toc }
 
-* right click on `assets/?????`
+* Right click on `assets/?????`
 * Select the option "Open in Integrated Terminal"
 * `cargo run`
 
