@@ -1708,7 +1708,7 @@ Where we use a convenient function call to hide the use of the ad how data type.
 
 
 #### Explanations 1/2
-{: .no_toc } -->
+{: .no_toc }
 
 This section will be short and easy because we will apply the trick we used earlier in the `Blanket Implementation II `.
 
@@ -2399,7 +2399,7 @@ impl Display for Box<dyn TempSensor> {
 <!-- ###################################################################### -->
 
 
-## Template
+<!-- ## Template
 
 One sentence
 
@@ -2412,7 +2412,7 @@ One sentence
 
 <div align="center">
 <img src="./assets/imgXX.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Running code in Rust Playground</span> -->
+<span>Comment about the picture above</span>
 </div>
 
 
@@ -2435,4 +2435,4 @@ One sentence
 {: .no_toc }
 
 ### Summary
-{: .no_toc }
+{: .no_toc } -->
