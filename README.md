@@ -121,6 +121,28 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 ## À garder sous le coude
 * Ç = ALT + 128 (du pavé numérique)
 
+* ❶ U+2776
+* ❷ U+2777
+* ❸ U+2778
+* ❹ U+2779
+* ❺ U+277A
+* ❻ U+277B
+* ❼ U+277C
+* ❽ U+277D
+* ❾ U+277E
+
+Sans Serif
+* ➊ U+278A
+* ➋ U+278B
+* ➌ U+278C
+* ➍ U+278D
+* ➎ U+278E
+* ➏ U+278F
+* ➐ U+2790
+* ➑ U+2791
+* ➒ U+2792
+* ➓ U+2793
+
 * ` NOT YET TRANSFERED `
 
 ```
