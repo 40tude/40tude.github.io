@@ -55,7 +55,8 @@ Will be split in 2 or 3     -->
 
 * [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
 * [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
-
+* [Episode 2]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
+* [Episode 3]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
 
 
 
@@ -757,10 +758,13 @@ Now, when your tears of joy have dried, step back and take the time to realize h
 
 
 
-## Posts 
+#### Posts 
+{: .no_toc }
+
 * [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
 * [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
-
+* [Episode 2]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
+* [Episode 3]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
 
 
 
