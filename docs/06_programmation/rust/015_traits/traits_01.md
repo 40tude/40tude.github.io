@@ -50,7 +50,9 @@ Will be split in 2 or 3
 </div>
 
 
-## Posts 
+#### Posts 
+{: .no_toc }
+
 * [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
 * [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
 
