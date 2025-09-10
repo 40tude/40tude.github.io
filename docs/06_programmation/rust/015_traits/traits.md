@@ -3300,7 +3300,7 @@ Hey guys. I just got out of the MMB (Monday Morning Briefing) with the sales and
 
 In other words it is time to reorganize the project and the project's directory.  
 
-**Note:** I will not spend to much time on the subject. Indeed I already have a dedicated short post that you can read [here]({%link docs\06_programmation\rust\013_no_more_mod_rs\no_more_mod_rs.md%}).
+**Note:** I will not spend to much time on the subject. Indeed I already have a dedicated short post that you can read [here]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
 #### Good to know
 * The project had a `main.rs` it will have `main.rs` and `lib.rs`
