@@ -3073,7 +3073,18 @@ fn main() {
 ### Explanations 3/3 
 {: .no_toc }
 
-The `TempSensor` trait now propose a new method signature
+In the code above, we can now create sensor instances and whose value is reset to 0. Here is how this is expressed in the `main()` function :
+
+```rust
+fn main() {
+    let s1 = TempSensor01::new_set_to_zero();
+    let s2 = TempSensor02::new_set_to_zero();
+    ...
+}
+```
+The point is that `new_set_to_zero()` does not apply to an instance (how could it be?) but to the trait (`TempSensor01` or `TempSensor02`). `new_set_to_zero()` returns an instance (see `s1` or `s2`). It is a factory function that does not have a `&self` parameter like `fn get_temp(&self) -> f64 {...}` that we know by heart now.
+
+That being said, if we look at the `TempSensor` trait we can see that it now proposes a new method `new_set_to_zero()` :
 
 ```rust
 fn new_set_to_zero() -> Self
@@ -3081,15 +3092,16 @@ where
     Self: Sized;
 ```
 
-What make this function a **trait associated function** is the fact that des not get `&self` as parameter. Instead here it return Self. 
 
-The method `.new_set_to_zero()` is a factory. It returns a ready to use instance of "we don't know what yet", this is why it returns Self (with a capital `S`) the type that implements the trait. 
+What make this function a **trait associated function** is the fact that des not get `&self` as parameter. Instead it returns `Self`. 
 
-Once this is understood it is time to study the `where` clause. To make a long story short, `Sized` a built-in marker trait automatically implemented by all types whose size is known at compile time. So `Self: Sized` is a trait bound saying something like : "this method is only available when the implementing type has a known size at compile time."
+Again, the method `.new_set_to_zero()` is a factory. It returns a ready to use instance of "we don't know what yet", this is why it returns `Self` (with a capital `S`) the type that implements the trait. 
 
-Known at compile time... Yes you are right, this also means that this method can only be called on concrete types that implement the trait, not on trait objects.
+Ok... Now it is time to study the `where` clause. To make a long story short, `Sized` a built-in marker trait automatically implemented by all types whose size is known at compile time. So `Self: Sized` is a trait bound saying something like : "this method is only available when the implementing type has a known size at compile time."
 
-Just to make sure...
+Known at compile time? Yes, you are right, this also means that this method can only be called on concrete types that implement the trait, not on trait objects.
+
+***Um... Would you mind giving me a very simple example? Just to make sure.***
 
 ```rust
 trait Factory {
@@ -3113,8 +3125,20 @@ fn main() {
                 // no method named `new` found for struct `Box<dyn Factory>` in the current scope
 }
 ```
+Again, associated function apply to concrete type that apply the trait (`Foo::new()`) NOT on traits objects (`y.new()`).
 
+Now, regarding the implementation of `TempSensor` for `TempSensor01` let's focus on `new_set_to_zero()` method definition (`UNIT` and `get_temp()` are known). It comes :
 
+```rust
+impl TempSensor for TempSensor01 {
+
+    fn new_set_to_zero() -> Self {
+        TempSensor01 { temp: 0.0 }
+    }
+}
+```
+
+Simpler than expected. Is'nt it? The method create and return a `TempSensor01`. Period.
 
 
 
@@ -3134,6 +3158,7 @@ fn main() {
 ### Exercise
 {: .no_toc }
 
+1. In `ex00.rs`. About trait associated constants. What if one developer writes `const UNIT: &'static str = "Fahrenheit";` and the other writes `const UNIT: &'static str = "°C";`. Modify the code so that the developers has no choice and must pick in a set of predefined unit strings. One possible solution is in `ex02.rs`. 
 
 
 
