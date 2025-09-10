@@ -3262,6 +3262,115 @@ Simpler than expected. Is'nt it? The method create and return a `TempSensor01`. 
 
 
 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Modules and crates
+
+Where we organize our project with crates and clean up the project directory
+
+### Running the demo code
+{: .no_toc }
+
+* Right click on `assets/09_modules_crates`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+* `cargo run --example ex00`
+
+<div align="center">
+<img src="./assets/img24.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Comment about the picture above</span>
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+Hey guys. I just got out of the MMB (Monday Morning Briefing) with the sales and marketing teams... Yes, I know... But anyway, good news. It looks like there are opportunities if our monitoring system can work with other types of sensors : strain gauge, flow meter, ph meter... you name it. And if later it can work with actuators. I was asked to produce a POC (proof of concept) by the end of the week. I said no, no way. But I had to give them something. So we agreed to run a demo version of our application with 2 kinds of temperature sensors but dealing with each of them as if they were different kind of sensors. Before to discuss budget they want to be sure the application can scale.
+
+In other words it is time to reorganize the project and the project's directory.  
+
+### Show me the code!
+{: .no_toc }
+
+```
+.
+│   Cargo.lock
+│   Cargo.toml
+│   
+├───examples
+│       ex00.rs
+│       
+├───src
+│   │   lib.rs
+│   │   main.rs
+│   │   sensors.rs
+│   │
+│   └───sensors
+│       │   temp.rs
+│       │
+│       └───temp
+│           │   temp_sensor.rs
+│           │   temp_sensor1.rs
+│           │   temp_sensor2.rs
+│           │
+│           ├───temp_sensor1
+│           │       my_sensor1.rs
+│           │
+│           └───temp_sensor2
+│                   your_sensor2.rs
+│
+└───target
+
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+
+
+
+### Exercise
+{: .no_toc }
+
+
+
+
+### Summary
+{: .no_toc }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <!-- ###################################################################### -->
