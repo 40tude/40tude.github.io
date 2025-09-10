@@ -465,7 +465,7 @@ src/
 ```
 
 Questions:
-1. For each directory/file, explain what it is , what is it content...
+1. For each directory/file, explain what it is , what it contains and why...
 1. Draw the module tree 
 
 
