@@ -324,6 +324,10 @@ At this point we should have all we need to understand this first code. Read it,
 ### Exercise
 {: .no_toc }
 
+1. Add a `get_label()` method to the `Measurable` trait
+1. Implement it for `TempSensor01` and `TempSensor02`
+1. Use it in `get_temp_from_any_sensor_static1` to display the label (if any) 
+
 
 
 
@@ -543,6 +547,9 @@ for s in &sensors {
 ### Exercise
 {: .no_toc }
 
+1. In `main()`, add a line `sensors.push(make_sensor("kelvin"));` and make it work 
+
+
 
 ### Summary
 {: .no_toc }
@@ -725,6 +732,9 @@ Now, when your tears of joy have dried, step back and take the time to realize h
 ### Exercise
 {: .no_toc }
 
+1. Add `get_label()` method with default implementation to `Measurable`
+1. Call it on `sensor100` and `sensor200` in `main()`
+
 
 
 ### Summary
@@ -812,13 +822,12 @@ pub trait Identifiable {
 struct TempSensor01 {
     temp: f64,
 }
+impl Identifiable for TempSensor01 {}
 impl Measurable for TempSensor01 {
     fn get_temp(&self) -> f64 {
         self.temp
     }
 }
-impl Identifiable for TempSensor01 {}
-
 
 // ----------------------------
 struct TempSensor02 {
@@ -948,6 +957,10 @@ where
 
 ### Exercise
 {: .no_toc }
+
+1. Uncomment the lines at the end of `main()`
+1. Build and make sure the code does not compile
+1. Make the code working with `sensor3`
 
 
 
@@ -1112,6 +1125,11 @@ In our code, we copy paste the signature and write the definition of the `fmt` m
 
 #### Exercise
 {: .no_toc }
+
+1. Starting from `https://doc.rust-lang.org/stable/std/`, find your way to `std::fmt::Display` in the documentation. 
+1. Read the page
+1. In `std::fmt::Display`, use the formatter so that the temperature is displayed with only one digit (27.9, not 27.94) and the label in uppercase.
+
 
 
 
@@ -1355,6 +1373,8 @@ You're a grand master!
 #### Exercise
 {: .no_toc }
 
+1. Make the code work with `Nimbus200`
+
 
 
 #### Summary
@@ -1500,16 +1520,20 @@ fn main() {
     println!("{}", sensor2.pretty());
 }
 ```
+
 It is really a matter of taste. Let's not spend to much time on it you already have all the information to understand the code. Read it, read it again.
 
 
-***So you are saying there is no solution?*** Did I say that? No, but before to go further let's study a source code that **does not compile**. This will help us to underline an important point about the blanket implementation.
 
 
 
 
 #### Exercise
 {: .no_toc }
+
+1. Talk to yourself out loud and explain the difference between both versions of the code. Why in one case we use `sensor1.print();` while in the other we write `println!("{}", sensor1.pretty());`
+1. Which one do you prefer and provide 3 reasons
+1. Check your arguments with ChatGPT or another LLM  
 
 
 
@@ -1521,6 +1545,7 @@ It is really a matter of taste. Let's not spend to much time on it you already h
 
 
 
+***So you are saying there is no solution?*** Did I say that? No, but before to go further let's study a source code that **does not compile**. This will help us to underline an important point about the blanket implementation.
 
 
 
@@ -1641,12 +1666,17 @@ Nice try but **NO**. This does not work. To make a long story short
 
 The idiomatic solution is the **newtype pattern** where we wrap your `T` in a local type (that we own), then we implement `std::fmt::Display` for that wrapper. Additionally we can offer a helper to make it easier to use.
 
-Let's see how the newtype pattern can be used in our case.
+In the next section we will see how the newtype pattern can be used in our case.
 
 
 
 #### Exercise
 {: .no_toc }
+
+1. Compile the code once again
+1. Read the compiler messages. Did you? Really? Line by line from the beginning to the end? Read it again... Just to make sure...
+1. Does it make more sense?
+1. Will you be able to interpret it the next time it appears?
 
 
 #### Summary
@@ -1682,7 +1712,7 @@ Where the compiler writes implementation code for an intermediate data type.
 #### Explanations 1/2 
 {: .no_toc }
 
-In the previous sample code we learnt that we cannot write `impl<T> std::fmt::Display for T...`. This is because we do not own the trait `std::fmt::Display` nor the generic type `T`. As often, the trick is to add a [level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) by defining a intermediate data type that we own and on which we implement `std::fmt::Display`. Let's see how it works.
+In the previous sample code we learnt that we cannot write `impl<T> std::fmt::Display for T...`. This is because we do not own the trait `std::fmt::Display` nor the generic type `T`. As often, the trick is to add a [level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) by defining an intermediate data type that we own and on which we can implement `std::fmt::Display`. Let's see how.
 
 
 
@@ -1748,7 +1778,7 @@ Then we define an intermediate data type named `AsDisplay`. The line below does'
 struct AsDisplay<T: Measurable + Identifiable>(&T)
 ```
 
-**Note:** Just to make sure, don't take it personally.
+**Note:** Just to make sure, don't take it personally if you already know all this:
 * A tuple struct looks like : `struct Point(i32, i32);`
 * It has unnamed fields, accessed by index (`p.0`, `p.1`)
 * It’s syntactically close to a tuple but defines a new distinct type
@@ -1821,6 +1851,13 @@ Here is what happens : We temporarily wrap a borrow of sensor1 into `AsDisplay`,
 #### Exercise
 {: .no_toc }
 
+1. Why, in the newtype pattern, we use a tuple struct and not a simple tuple? 
+1. When you write `let bob = (18, &sensor1);`. What is love? Oops, what is `bob`? Is it a value, a data type, something else ?
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HEXWRTEbj1I?si=BNdfSwzvtKeduEur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 
 
 
@@ -1828,6 +1865,13 @@ Here is what happens : We temporarily wrap a borrow of sensor1 into `AsDisplay`,
 
 #### Summary
 {: .no_toc }
+
+
+
+
+
+
+
 
 However, this is not yet perfect because we create a temporary variable in the `println!` macro. Let's see if we can improve things. 
 
@@ -1973,6 +2017,12 @@ fn main() {
 
 #### Exercise
 {: .no_toc }
+
+1. Compare source code of the sections `Newtype pattern I` and `Newtype pattern II`
+1. Which one do you prefer ?
+1. Why ?
+1. Double check with your preferred LLM the pros and cons
+
 
 
 
@@ -2138,7 +2188,10 @@ impl Measurable for TempSensor01 {
     }
 }
 ```
-It was in our very first sample code. Now the story begins like this :
+
+
+Remember, it was in our very first sample code. Now the story begins like this :
+
 
 ```rust
 trait TempSensor: Display {
@@ -2155,6 +2208,8 @@ impl TempSensor for TempSensor01 {
     }
 }
 ```
+
+
 It is almost the same thing... Except one char, the `:` in the `TempSensor` trait's signature. Do you see it in `trait TempSensor: Display {...}`. In plain english this says : any data type who wants to implement `TempSensor` must also implement `Display`.
 
 This is why, once `TempSensor01` is defined, we first implement `TempSensor` for `TempSensor01` and then... We must implement implement `Display` for `TempSensor01`. See below :
@@ -2226,6 +2281,11 @@ This is possible and you already know how : we need a mixt of trait bounds inher
 
 ### Exercise
 {: .no_toc }
+
+1. Create a new struct called `TempSensor03` that stores its temperature in Kelvin. 
+1. Implement the TempSensor trait for it. Make sure that `get_temp()` returns the temperature in Kelvin.
+1. Implement the Display trait for it, so that printing the sensor shows the temperature followed by "°K".
+1.Add an instance of `TempSensor03` into the sensors vector in `main()` and check that the loop correctly prints all sensors, including your new one.
 
 
 
@@ -2371,11 +2431,12 @@ trait SensorDisplay: TempSensor {
     }
 }
 ```
+
 We know trait bound inheritance so we understand that, with the lines above, any type that implements `SensorDisplay` must also implement `TempSensor`.
 
 We know about default trait implementation. So we understand that `.pretty()` has a default implementation that relies on the TempSensor methods (`.get_temp()` and `.get_id()`).
 
-The code above is called extension traits. This a way to add methods to an existing trait (`TempSensor` here) without impacting the original type definitions.
+The code above is called **extension traits**. This is a way to add methods to an existing trait (`TempSensor` here) without impacting the original type definitions.
 
 The next line is important
 
@@ -2402,6 +2463,9 @@ In the `main()` function we simply have :
 
 ### Exercise
 {: .no_toc }
+
+1. Can you give a definition of extension trait in one line?
+1. Do you feel brave enough to add `TempSensor03` that works in Kelvin?
 
 
 
@@ -2564,6 +2628,12 @@ impl Display for Box<dyn TempSensor> {
 
 ### Exercise
 {: .no_toc }
+
+1. Add `get_label()` method to the `TempSensor` trait
+1. Implement it for `TempSensor01` and `TempSensor02`
+1. Make sure the label is displayed while `sensor` walk through `sensors`
+
+
 
 
 ### Summary
@@ -2866,6 +2936,9 @@ I first indicate the data type of the returned value (see `type Output = f64;`).
 
 ### Exercise
 {: .no_toc }
+
+1. Add `TempSensor03` working with Kelvin and f32
+1. Create `sensor3` in `main()` and log it.
 
 
 
