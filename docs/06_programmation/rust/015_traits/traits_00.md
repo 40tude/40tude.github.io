@@ -7,7 +7,7 @@ description: "From basic syntax to building plugins with once_cell and organizin
 parent: "Rust"
 #math: mathjax
 date               : 2025-09-03 14:00:00
-last_modified_date : 2025-09-10 07:00:00
+last_modified_date : 2025-09-10 18:00:00
 ---
 
 <!-- 
