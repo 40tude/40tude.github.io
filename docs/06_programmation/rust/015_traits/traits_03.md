@@ -315,6 +315,138 @@ Once this is understood the body of `main()` should be a piece of cake for you n
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Make Sensors
+
+Where we dynamically create sensors then used them in our new architecture.
+
+### Running the demo code
+{: .no_toc }
+
+* Right click on `assets/10_make_sensors`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+* `cargo run --example ex00`
+
+
+<div align="center">
+<img src="./assets/img26.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Comment about the picture above</span>
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+Morning! The POC went pretty well. Even the marketing guys understood the demo and my explanations. They are all confident in the scalability of the architecture of the app. I got two feedbacks however:
+1. The first one is known and easy to fix : `temp` whatever is a wrong name. I told them that this was known and that we had planned to use “temperature” instead in order to be very explicit.
+1. They understood I was focusing on the organization of the sensors directories and files. They were not surprised when I explained how the `main()` function was working. However they want me to come back to the next meeting with a new version of where sensors are created dynamically. 
+
+
+new_set_to_zero() qui retourne Self dans la section Associated Functions and Constants
+Mais c'était associé au capteur
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+Now the hierarchy of directories and files look like this :
+
+```
+.
+│   .gitignore
+│   Cargo.lock
+│   Cargo.toml
+│
+├───examples
+│       ex00.rs
+│
+├───src
+│   │   lib.rs
+│   │   main.rs
+│   │   sensors.rs
+│   │
+│   └───sensors
+│       │   temperature.rs
+│       │
+│       └───temperature
+│           │   temperature_sensor.rs
+│           │   temperature_sensor1.rs
+│           │   temperature_sensor2.rs
+│           │
+│           ├───temperature_sensor1
+│           │       my_sensor1.rs
+│           │
+│           └───temperature_sensor2
+│                   your_sensor2.rs
+│
+└───target
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+#### Files and Directories
+I already changed `temp` to `temperature`. Obviously I also updated the `use` statements. For example, in `main()`, now I have:
+
+```rust
+use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
+```
+
+While we used to have : 
+
+```rust
+use traits_for_plugins::sensors::temp::temp_sensor::TempSensor;
+use traits_for_plugins::sensors::temp::temp_sensor1::my_sensor1; 
+```
+
+Note that from now on, I combine the two lines in one using `::{self, TempSensor}`
+
+
+
+
+
+#### Changes in source code
+
+
+
+
+### Exercise
+{: .no_toc }
+
+
+
+
+### Summary
+{: .no_toc }
+
+
+
+
+
+
+
+
+
 #### Posts 
 {: .no_toc }
 
@@ -322,6 +454,24 @@ Once this is understood the body of `main()` should be a piece of cake for you n
 * [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
 * [Episode 2]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
 * [Episode 3]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
