@@ -354,13 +354,11 @@ Where we dynamically create sensors then used them in our new architecture.
 ### Explanations 1/2 
 {: .no_toc }
 
-Morning! The POC went pretty well. Even the marketing guys understood the demo and my explanations. They are all confident in the scalability of the architecture of the app. I got two feedbacks however:
+Morning! The POC went pretty well. Even the marketing guys understood the demo and the explanations. They are all confident about the scalability of the architecture of the app. I got two feedbacks however:
 1. The first one is known and easy to fix : `temp` whatever is a wrong name. I told them that this was known and that we had planned to use “temperature” instead in order to be very explicit.
 1. They understood I was focusing on the organization of the sensors directories and files. They were not surprised when I explained how the `main()` function was working. However they want me to come back to the next meeting with a new version of where sensors are created dynamically. 
 
 
-new_set_to_zero() qui retourne Self dans la section Associated Functions and Constants
-Mais c'était associé au capteur
 
 
 
@@ -406,7 +404,7 @@ Now the hierarchy of directories and files look like this :
 {: .no_toc }
 
 #### Files and Directories
-I already changed `temp` to `temperature`. Obviously I also updated the `use` statements. For example, in `main()`, now I have:
+I already changed `temp` to `temperature`. Obviously I updated the `use` statements. For example, in `main.rs`, now I have:
 
 ```rust
 use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
@@ -427,7 +425,28 @@ Note that from now on, I combine the two lines in one using `::{self, TempSensor
 
 #### Changes in source code
 
+If you agree (but don't take it bad, you have no choice, you have to agree) since the hierarchy is very similar with the previous project I will focus on what make the dynamic sensors possible. Let's start with `main.rs`
 
+```rust
+use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
+
+fn main() {
+    let my_sensor: Box<dyn TempSensor> = temperature_sensor::make_sensor(2);
+    println!("{}", my_sensor.get_temp());
+
+    let my_sensor: Box<dyn TempSensor> = temperature_sensor::make_sensor(1);
+    println!("{}", my_sensor.get_temp());
+}
+```
+As we learnt in Episode 0, dynamic blablabla, means create stuff, put it on the heap and making sure a pointer points to with a Box . This is exactly what happens here.  `my_sensor` is a `Box<dyn TempSensor>`. This is a pointer to a data type which have a TempSensor trait 
+
+
+<!-- 
+Factory
+new_set_to_zero() qui retourne Self 
+dans la section Associated Functions and Constants 
+Mais c’était associé au capteur
+-->
 
 
 ### Exercise

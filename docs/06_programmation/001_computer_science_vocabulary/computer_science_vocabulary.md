@@ -6,7 +6,7 @@ parent: "Programmation"
 # nav_order: 4
 math: mathjax
 date: 2015-09-27 21:42:50
-last_modified_date: 2025-08-18 17:00:00
+last_modified_date: 2025-09-11 18:00:00
 ---
 
 # My Computer Science Vocabulary Page
@@ -117,7 +117,93 @@ For example, if a program needs 20 hours using a single processor core, and a pa
 <!-- ###################################################################### -->
 ## Call vs Invoke
 
-* ?
+### TL;DR
+* **Call** → The concrete act of executing a function directly.
+* **Invoke** → Broader term that means “cause the function to execute”. Used when the function is executed indirectly (pointer, closure, trait object, reflection). **In**voke - **In**direct
+* **All calls are invocations but not all invocations are simple calls**
+
+
+
+### 1. **Call**
+
+* **Meaning:** We explicitly tell the compiler/runtime to execute a function by name (or by reference).
+* **Usage:** This is the normal way you execute a function in almost all languages.
+* **Examples:**
+
+**Rust:**
+
+```rust
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fn main() {
+    let result = add(2, 3); // function call
+    println!("Result = {}", result);
+}
+```
+
+
+### 2. **Invoke**
+
+* **Meaning:** To "invoke" a function means to cause the function to run, but it doesn’t necessarily specify *how*. This can include:
+  * Direct calls (calling the function)
+  * Indirect calls through function pointers (C/C++) or closures (Rust, Python)
+  * Reflection or dynamic dispatch (Python)
+* **Connotation:** Invoke is used when the mechanism is indirect - invoking via an object, pointer, or reflection.
+* **Examples:**
+
+**Rust (closure / trait object):**
+
+```rust
+fn main() {
+    let f: fn(i32, i32) -> i32 = |a, b| a + b;
+
+    // We can "invoke" the function object through the variable
+    let result = f(2, 3); // Technically still a call, but invoked through a pointer
+    println!("Result = {}", result);
+}
+```
+
+**C++ (function pointer):**
+
+```cpp
+#include <iostream>
+
+int add(int a, int b) { return a + b; }
+
+int main() {
+    int (*func_ptr)(int, int) = &add;
+    
+    // Direct call
+    int x = add(2, 3);
+
+    // Indirect invoke through pointer
+    int y = func_ptr(2, 3);
+
+    std::cout << "x=" << x << ", y=" << y << std::endl;
+}
+```
+
+**Python (reflection via `getattr`):**
+
+```python
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+calc = Calculator()
+
+# Normal call
+print(calc.add(2, 3))
+
+# Invoke dynamically by name
+method = getattr(calc, "add")
+print(method(2, 3))
+```
+
+
+
 
 
 <!-- ###################################################################### -->
@@ -224,10 +310,118 @@ Don't repeat yourself
 
 
 
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Fat pointer and vtable
-* 
+
+A **fat pointer** is a pointer bundled with extra metadata needed to use the thing it points to. The extra words make the pointer “fat”.
+* **Rust**
+  * `&[T]` and `&str`: pointer + length
+  * `&dyn Trait`: pointer vtable pointer
+
+```
+Thin pointer (1 word)
++--------------------+
+| ptr                |
++--------------------+
+
+Slice fat pointer (2 words)
++--------------------+--------------------+
+| data ptr           | length             |
++--------------------+--------------------+
+
+Trait-object fat pointer (2 words)
++--------------------+--------------------+
+| data ptr           | vtable ptr         |
++--------------------+--------------------+
+```
+
+A **vtable** (virtual method table) is a table of function pointers used to implement **dynamic dispatch**: call the right function based on the runtime data type.
+* **Rust**: for trait objects (`&dyn Trait`, `Box<dyn Trait>`) the second word is a vtable pointer.
+* **C++**: for classes with `virtual` functions, each object stores a hidden vptr (a pointer to that class’s vtable). 
+
+
+```
+Object in memory
++--------------------+
+| vptr  ----------+  |   vtable for Derived
++--------------------+    +-----------------------------+
+| fields...          |--->| &Derived::foo (slot 0)      |
++--------------------+    | &Derived::bar (slot 1)      |
+                          | &RTTI/typeinfo ...          |
+                          +-----------------------------+
+```
+
+Rust sample code
+
+```rust
+use std::mem::size_of;
+
+trait Area {
+    fn area(&self) -> f64; // dynamic dispatch when called via &dyn Area
+}
+
+struct Circle { r: f64 }
+impl Area for Circle {
+    fn area(&self) -> f64 { std::f64::consts::PI * self.r * self.r }
+}
+
+fn main() {
+    println!("size_of<&i32>        = {}", size_of::<&i32>());        // 1 machine word (4 bytes on 32-bit DWORD, 8 bytes on 64-bit QWORD)
+    println!("size_of<&[i32]>      = {}", size_of::<&[i32]>());      // 2 machine words (ptr + len)
+    println!("size_of<&str>        = {}", size_of::<&str>());        // 2 machine words (ptr + len)
+    println!("size_of<&dyn Area>   = {}", size_of::<&dyn Area>());   // 2 machine words (ptr + vtable)
+
+    let c = Circle { r: 2.0 };
+    let obj: &dyn Area = &c; // trait object: fat pointer
+
+    // We can't see the vtable directly in safe Rust, but we can invoke through `obj` (dynamic dispatch)
+    println!("area = {}", obj.area()); // runtime call via vtable
+}
+```
+Expected output (WIN11) :
+
+```
+size_of<&i32>        = 8
+size_of<&[i32]>      = 16
+size_of<&str>        = 16
+size_of<&dyn Area>   = 16
+area = 12.566370614359172
+```
+
+
+**Key takeaways (Rust):**
+
+* `&T` is **thin**.
+* `&[T]`, `&str` carry **(ptr, len)**.
+* `&dyn Trait` carries **(data ptr, vtable ptr)** where the vtable holds function pointers (for the trait methods), a drop function, size, alignment, and some metadata (layout is compiler-defined, not a stable ABI).
+* Generic code with **monomorphization** (e.g., `fn f<T: Area>(t: &T)`) often compiles down to **static dispatch** (no vtable). Using `dyn Trait` opts into **dynamic dispatch**.
+
+### ASCII: Rust trait object at callsite
+
+```
+&dyn Area (fat)
++--------------------+--------------------+
+| data ptr -> Circle | vtable ptr --------+----+
++--------------------+                         |
+                                               v
+                                           +---------+---------+---------+
+                                           | drop fn | size    | align   |  impl details
+                                           +---------+---------+---------+
+                                           | fn area |  ...             |
+                                           +----------------------------+
+```
+
+
 
 
 <!-- ###################################################################### -->
@@ -246,7 +440,7 @@ Don't repeat yourself
 
 **Method :** Function associated with an object (or class). It is called via an instance or the class. Acts on the object's internal data or interacts with its attributes.
 
-**Precedure :** Reusable block of code that returns no value (or implicitly returns void or None). Performs an action (e.g. display a message, modify a file, etc.).
+**Procedure :** Reusable block of code that returns no value (or implicitly returns void or None). Performs an action (e.g. display a message, modify a file, etc.).
 
 ```rust
 // Rust sample code
