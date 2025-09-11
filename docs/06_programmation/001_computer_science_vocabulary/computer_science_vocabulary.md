@@ -111,6 +111,15 @@ For example, if a program needs 20 hours using a single processor core, and a pa
 * Assignment : update the value of an existing variable
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Call vs Invoke
+
+* ?
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Concurrency
@@ -213,6 +222,12 @@ Don't repeat yourself
 | Statement        | Instruction         | exécute une action sans renvoyer nécessairement une valeur |
 | Expression       | Expression          | évaluée pour donner une valeur             |
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Fat pointer and vtable
+* 
 
 
 <!-- ###################################################################### -->

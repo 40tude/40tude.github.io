@@ -10,18 +10,6 @@ date               : 2025-09-03 14:00:00
 last_modified_date : 2025-09-10 19:00:00
 ---
 
-<!-- 
-TODO :
-* Avant le résumer, donner des exercices des trucs à faire
-* Ajouter des question du lecteur. Entre autres pour passer d'une section à l'autre
-* Ajouter des liens sur le vocabulaire : 
-    * ~~paramètre~~, ~~argument~~, 
-    * ~~level of indirection~~
-    * ~~statement~~
-    * expression
-    * fat pointer + vtable
-* ???
--->
 
 
 # Rust Traits: Defining Character
@@ -62,11 +50,6 @@ Will be split in 2 or 3     -->
 {: .no_toc .text-delta}
 - TOC
 {:toc}
-
-
-
-
-
 
 
 
