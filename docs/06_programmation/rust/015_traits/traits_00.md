@@ -134,7 +134,7 @@ Make sure the code compiles and runs otherwise this is less fun.
 ### Explanations 1/2
 {: .no_toc }
 
-In this first part, I suggest approaching the problem from the end user standpoint. Rather than explaining what a Trait is and then looking at how it is used in source code, we will start with a problem to be solved, see how the Traits respond to the questions, and then study their implementation in the code.
+In this section, I suggest approaching the problem from the end user standpoint. Instead of explaining what a trait is and then looking at its use in source code, we will start with a problem. We'll see how traits provide a solution and then study how they are implemented in the code.
 
 Imagine... Imagine that we work in industry. We deploy control systems at various sites around the world. Don't worry about it. Our task is simple: we install temperature sensors in the factory and we want to read them. Once we have the values, we can display them, store them...  
 
@@ -156,9 +156,11 @@ OK... Then what?
 
 What I just described exists under other forms in many other situations. So there are some people who are smarter than others, who took a step back from all this and said to themselves: what you actually want is for all thermocouples to be measurable. It's a bit like describing people's characters. Some are touchy, others are cheerful, and still others are candid. They are all different people, men, women, young, old... But they all have certain character traits. Well, you know what, we're going to give Rust a way to add character traits to existing data types. 
 
-For example, I create a `Dog` type with a `struct{}`. Then I create a `Cat` type with another `struct{}`. Next, I describe what the `Deceitful` character trait is. Finally, I can then enrich the `Dog` and `Cat` types with the trait `Deceitful`. If I decide to say that all Cats are deceitful but not Dogs, I only add the trait `Deceitful` to `Cats`. I guess, you get the idea.
+For example, I create a `Dog` type with a `struct{}`. Then I create a `Cat` type with another `struct{}`. Next, I describe what the `Deceitful` character trait is. Finally, I can then enrich the `Dog` and `Cat` types with the trait `Deceitful`. If I decide that all the cats are deceitful but not the dogs, I only add the trait `Deceitful` to `Cats`. I guess, you get the idea.
 
-Before we look at the first code example, there is one last point to keep in mind. Given that Rust is quite strict (to say the least) when it comes to type-related issues, we can write functions that take, as parameters, only data type with certain traits. For example, I can write a function that takes as a parameter any animal that has the trait `Deceitful`. It will then be able to deal with `Cats`, `Parrots` and all sorts of animal owning the `Deceitful` trait. Similarly, I can create vectors that only contain animals with the trait `Deceitful`. This is pretty cool, because I can also rely on the compiler's rigor to warn me during compilation if I accidentally call the function with an  [argument]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) whose type does not have the `Deceitful` character trait. You know the story : *Compilers makes sure the good things happen — the logical errors are on you.*       
+I would like to underline the fact that from the developer point of view you "extend" existing data type with traits. This can be traits that already exist or some traits that you decide to create because you realized this and this features are present in more than one of your data type and so it makes sense to refactor the code and create a trait. Many traits are already available in [Rust std](https://doc.rust-lang.org/std/all.html#traits).  
+
+Before we look at the first source code example, there is one last point to keep in mind. Given that Rust is quite strict (to say the least) when it comes to type-related issues, we can write functions that take, as parameters, only data type with certain traits. For example, I can write a function that takes, as a parameter, any animal that has the trait `Deceitful`. It will then be able to deal with `Cats`, `Parrots` and all sorts of animal owning the `Deceitful` trait. Similarly, I can create vectors that only contain animals with the trait `Deceitful`. This is pretty cool, because I can also rely on the compiler's rigor to warn me during compilation if I accidentally call the function with an  [argument]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) whose type does not have the `Deceitful` character trait. You know the story : *Compilers makes sure the good things happen — the logical errors are on you.*       
 
 Okay, let's move on to studying the first source code and see how all this apply to our thermocouples.
 
@@ -248,7 +250,7 @@ struct TempSensor02 {
 
 At this point we have 2 temperature sensors, which are of 2 different data type. They are 2 different beasts, and we cannot use a `TempSensor01` in place of `TempSensor02`. This is a very good thing most of the time but ideally we would like to be able to read temperature measurements from all of them using the same function.
 
-This is where traits comes into play. First, I create a trait named `Measurable`. Below we are saying something like : If a data type wants to be `Measurable` it must provide a `get_temp()` method which returns an `f64`. We could be stricter here and define our own data type for the temperatures to be returned (think at `type Temp = f64;` or `struct Temp(f64);` but this is not the point here. 
+This is where traits comes into play. First, I create a trait named `Measurable`. Below we are saying something like : If a data type wants to be `Measurable` it must provide a `get_temp()` method which returns an `f64`. We could be stricter here and define our own data type for the temperatures to be returned (think at `type Temp = f64;` or `struct Temp(f64);` but this is not the point here). 
 
 ```rust
 pub trait Measurable {
@@ -258,7 +260,7 @@ pub trait Measurable {
 
 As we can see, a trait is a kind of contract or a kind of interface. We define what is needed without defining the implementation.
 
-That is fine but now, if we want `TempSensor01` and `TempSensor02` to be `Measurable`, we must define the `get_temp()` method **for each of them**. This is done using the `impl` (implement, implementation) keyword and then defining the `get_temp()` method. Both methods are not the same and for example, the `get_temp()` methode from `TempSensor02` returns °F (what a pity...). 
+That is fine but now, if we want `TempSensor01` and `TempSensor02` to be `Measurable`, we must define the `get_temp()` method **for each of them**. This is done using the `impl` (implement, implementation) keyword and then defining the `get_temp()` method. Both methods are not the same and for example, the `get_temp()` method from `TempSensor02` returns °F (what a pity...). 
 
 Additionally if the trait requires other methods we could define them here. There is no restriction but I find it useful to define everything in a single `impl` block (one per data type).  
 
@@ -276,7 +278,7 @@ impl Measurable for TempSensor02 {
 }
 ```
 
-Now let's look how it works in the `main()` function. Below I first create `my_sensor` which is of type `TempSensor01`. Since I have implemented the trait `Measurable` for the data type `TempSensor01` this means I added the `get_temp()` to the data type `TempSensor01`. This means I can invoque `.get_temp()` on `my_sensor`.
+Now let's look how it works in the `main()` function. Below I first create `my_sensor` which is of type `TempSensor01`. Since I have implemented the trait `Measurable` for the data type `TempSensor01` this means I added the `get_temp()` method to the data type `TempSensor01`. This means I can invoke `.get_temp()` on `my_sensor`.
 
 Next I create 2 sensors of respective type `TempSensor01` and `TempSensor02`. And now, this is really cool. Indeed I can use reference to either `TempSensor01` or `TempSensor02` as argument of the function `get_temp_from_any_sensor_static1()`.
 
@@ -298,7 +300,7 @@ fn main() {
 
 Now the question is : how the `get_temp_from_any_sensor_static1()` function is defined? See below. 
 
-The most remarkable point is that the parameter `t` is of type `&impl Measurable`. This is not true, but this is good enough for now. The code below says something like : My name is `get_temp_from_any_sensor_static1()` and I take a reference to any parameter which implements the `Measurable` trait.
+The most remarkable point is that the parameter `t` is of type `&impl Measurable`. This is not true, but this is good enough for now. The code below says something like : My name is `get_temp_from_any_sensor_static1()` and I take a reference to any parameter which implements the `Measurable` trait (this is true).
 
 
 ```rust
@@ -306,14 +308,14 @@ fn get_temp_from_any_sensor_static1(t: &impl Measurable) {
     println!("{}", t.get_temp());
 }
 ```
-The good thing is that since I know `t` has the trait `Measurable`, then I can invoque the method `get_temp()` on `t` in the body of `get_temp_from_any_sensor_static1()`.
+The good thing is that since I know that `t` has the trait `Measurable`, then I can call the method `get_temp()` on `t` in the body of `get_temp_from_any_sensor_static1()`.
 
 
 ***OK, this sounds great but how does it works?*** In fact, at compile time, when `rustc` (our best friend, the compiler) see the `impl` keyword it [monomorphizes](https://en.wikipedia.org/wiki/Monomorphization) (expand) the code for every concrete type that implements the `Measurable` trait. 
 
-Imagine that the source code is modified so that it has a definition for `fn get_temp_from_any_sensor_static1_1(t: &TempSensor01) {...}` then another for `fn get_temp_from_any_sensor_static1_2(t: &TempSensor01) {...}`. The compiler "copy and paste" source code, it expands the source, it duplicates function calls... Pick the one that click best for you. 
+Imagine that the source code is modified so that it has a definition for `fn get_temp_from_any_sensor_static1_1(t: &TempSensor01) {...}` then another for `fn get_temp_from_any_sensor_static1_2(t: &TempSensor02) {...}`. The compiler "copy and paste" source code, it expands the source, it duplicates function calls... Pick the one that click best for you. 
 
-Keep in mind that here, everything is static. I mean once the monomorphization (source code expansion) is done, the compiler compiles the expanded code as usual. The source code is longer, the compilation takes more time but there is no penalty at runtime. More important : from the end user standpoint (you, me, your young sister) everything looks like if the function `get_temp_from_any_sensor_static1()` could accept any type of argument as long as it implements the trait `Measurable`.
+Keep in mind that, here, everything is static. I mean once the monomorphization (source code expansion) is done, the compiler compiles the expanded code as usual. The source code is longer, the compilation takes more time but there is no penalty at runtime. More important : from the end user standpoint (you, me, your young sister) everything looks like if the function `get_temp_from_any_sensor_static1()` could accept any type of argument as long as it implements the trait `Measurable`. However, you, me, not your young sister must understand that `fn get_temp_from_any_sensor_static1_1(t: &TempSensor01) {...}` and `fn get_temp_from_any_sensor_static1_2(t: &TempSensor02) {...}` are two different functions that has nothing to do one with the other. Indeed, their signatures are completly different. One has a paramater of type `&TempSensor01` while the other has a parameter of type `&TempSensor02`. Again, 2 totally different signatures and so 2 totally different methods.
 
 ***I see `get_temp_from_any_sensor_static2()` function calls in `main()`. What is that?*** In fact when I write `fn get_temp_from_any_sensor_static1(t: &impl Measurable) {...}`, the keyword `impl` is a syntactic sugar. We can use the generic way of doing and write `fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {...}`
 
@@ -324,7 +326,7 @@ fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {
 ```
 Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<T: Measurable + Identifiable>(sensor: &T) {...}`. We will use this syntax in the Multiple Traits section later.
 
-At this point we should have all we need to understand this first code. Read it, read it again. Run it, modify it. Break it. Make it run again.
+At this point we should have everything we need to understand this first sample code. Read it, read it again. Run it, modify it. Break it. Make it run again. I can't do it for you.
 
 
 
@@ -445,8 +447,6 @@ impl Measurable for TempSensor02 {
     }
 }
 
-// Factory that decides at runtime
-// Returning a trait object hides the concrete type
 fn make_sensor(kind: &str) -> Box<dyn Measurable> {
     match kind {
         "celsius" => Box::new(TempSensor01 { temp: 1.0 }),
@@ -459,13 +459,11 @@ fn make_sensor(kind: &str) -> Box<dyn Measurable> {
 }
 
 fn main() {
-    // A vector of Measurable
     let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();
     sensors.push(make_sensor("celsius"));
     sensors.push(make_sensor("fahrenheit"));
 
     for s in &sensors {
-        // Virtual call through a vtable (dynamic dispatch, fat vector)
         println!("Reading: {}", s.get_temp());
     }
 }
@@ -501,7 +499,7 @@ impl Measurable for TempSensor02 {
 }
 ```
 
-Now, the changes are in the `main()` function. First we create a vector of Measurable stuff. However, since Measurable is not a data type, the [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) looks like this : `let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();`. In plain English this says something like : 
+Now, the changes are in the `main()` function. First we create a vector of `Measurable` stuff. However, since `Measurable` is not a data type, the [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) looks like this : `let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();`. In plain English this says something like : 
 * Create a mutable vector (`sensors` with an 's') of boxed trait objects implementing `Measurable`.
 * `Box` puts each object on the heap, ensuring a fixed-size pointer is stored in the vector.
 * The `dyn` keyword indicates dynamic dispatch, meaning the specific method to call is determined at runtime based on the actual type inside the box. 
@@ -518,13 +516,13 @@ fn main() {
 }
 ```
 
-Once the vector `sensors` is created, in the `for` loop we can invoque, with no fear, the `get_temp()` method on each element of the vector. The appropriate version of `get_temp()` is called. It does not come for free however. Behind the scene, at runtime, the code uses what is called a **fat pointer**. This pointer points to a table on the heap and in this table (**vtable**), there is another pointer to the area where the `get_temp()` method is defined. 
+Once the vector `sensors` is created, in the `for` loop we can call, with no fear, the `get_temp()` method on each element of the vector. The appropriate version of `get_temp()` is called. It does not come for free however. Behind the scene, at runtime, the code uses what is called a **fat pointer**. This pointer points to a table on the heap and in this table (**vtable**), there is another pointer to the area where the `get_temp()` method is defined. 
 
 In the first sample code we had direct calls because everything was known at compile time. Here we point to a table, then we find in the table the address of `get_temp()` and then we call it. We get much more flexibility but, again, it comes with a cost at runtime. Please don't start grumbling, don't assume but run benchmarks if you suspect the dynamic dispatch is killing your application.
 
 
 
-***What is the `make_sensor()` function call I can see above?*** `sensors` is a vector of boxed trait objects implementing `Measurable`. In this context `make_sensor()` is a kind of factory that create 2 different flavors of sensor based on the argument (`celcius` or the other, the He-Who-Must-Not-Be-Named). Here is the code of `make_sensor()` :
+***What is the `make_sensor()` function call I can see above?*** `sensors` is a vector of boxed trait objects implementing `Measurable`. In this context `make_sensor()` is a kind of factory that creates 2 different flavors of sensor based on the argument (`celcius` or the other, the He-Who-Must-Not-Be-Named). Here is the code of `make_sensor()` :
 
 ```rust
 fn make_sensor(kind: &str) -> Box<dyn Measurable> {
