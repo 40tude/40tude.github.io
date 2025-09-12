@@ -1035,7 +1035,14 @@ trait TempSensor {
 }
 ```
 
-Think about it this way. After the compilation, the compiler knows the "blocks of of UTF-8 encoded bytes". I don't want to say strings here, but you can think about chars if this help. They are used in the code to describe this `UNIT` of temperatures or this other one. These blocks of chars will be embedded in the final executable (if you open the executable file with a text editor you can find them). To be precise, those string literals are part of the read-only data section (`.rodata`) of the binary. When we run the application, it is loaded in memory and the different implementations of `UNIT` point to their respective memory cell, the first char of the block of chars. What I just say is a lie. Indeed, `&'static str` is a fat pointer that stores a pointer to the first byte of the literal, and the length of the slice. But you can keep the first image if this helps.
+Think about it this way. After the compilation, the compiler knows the "blocks of of UTF-8 encoded bytes". I don't want to say strings here, but you can think about chars if this help. They are used in the code to describe this `UNIT` of temperatures or this other one. These blocks of chars will be embedded in the final executable. If you open the executable file with a text editor you can find them with others like : "This program cannot be run in DOS mode".  
+
+<div align="center">
+<img src="./assets/img28.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Open ex00.exe with VScode and search for "°F"</span>
+</div>
+
+To be precise, those string literals are part of the read-only data section (`.rodata`) of the binary. When we run the application, it is loaded in memory and the different implementations of `UNIT` point to their respective memory cell, the first char of the block of chars. What I just say is a lie. Indeed, `&'static str` is a fat pointer that stores a pointer to the first byte of the literal, and the length of the slice. But you can keep the first image if this helps.
 
 Once these "requirements" are defined in the interface (trait) we can look at the implementation. Here it's easy, we just fill in the holes.
 

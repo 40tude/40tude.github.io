@@ -416,7 +416,7 @@ println!("{}", <TempSensor01 as TempSensor>::get_temp(&my_sensor));
 #### 3. Two questions, just to make sure
 {: .no_toc }
 
-**1. In Rust Playground, what happens if you modify `main()` as below?** 
+*1. In Rust Playground, what happens if you modify `main()` as below?*
 
 ```rust
 fn main() {
@@ -431,7 +431,7 @@ It works apparently and 25 is printed. We can imagine that we helped the compile
 
 
 
-**2. In Rust Playground, what happens if you modify `main()` as below?** 
+*2. In Rust Playground, what happens if you modify `main()` as below?*
 
 ```rust
 fn main() {
