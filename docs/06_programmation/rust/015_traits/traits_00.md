@@ -329,6 +329,118 @@ fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {
 ```
 Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<T: Measurable + Identifiable>(sensor: &T) {...}`. We will use this syntax in the Multiple Traits section later.
 
+
+### Optional - The evil is in the details
+Copy and paste the code fragment below in Rust Playground
+
+```rust
+pub trait TempSensor {
+    fn get_temp(&self) -> f64;
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+impl TempSensor for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+fn main() {
+    let my_sensor = TempSensor01 { temp: 25.0 };
+    println!("{}", my_sensor.get_temp());
+}
+```
+
+<div align="center">
+<img src="./assets/img27.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Running code in Rust Playground</span> -->
+</div>
+
+
+
+
+Do you fully understand what happens here?
+
+#### 1.On the side of the trait `TempSensor`
+
+```rust
+pub trait TempSensor {
+    fn get_temp(&self) -> f64;
+}
+```
+* I don't want `self` as an parameter because `get_temp()` would take ownership of object on which `get_temp()` is called and would not be able to use it afterwards. That would be silly. It is much better to expect a `&self` as first parameter.  
+
+#### 2. On the side of the caller
+
+```rust
+println!("{}", my_sensor.get_temp());
+```
+
+* Because the method’s receiver (see `fn get_temp(&self) -> f64 {...}`) is `&self`, the call site needs a shared borrow. 
+* Rust’s method-call sugar applies auto-borrow (and auto-deref when needed), so we don’t have to write the `&` ourself.
+* `my_sensor.get_temp()` is "desugared" to something like : 
+
+```rust
+println!("{}", <TempSensor01 as TempSensor>::get_temp(&my_sensor));
+```
+
+This is called the **UFCS** (Uniform Function Call Syntax) form. Again, if the normal method call is :
+
+```rust
+let my_sensor = TempSensor01 { temp: 25.0 };
+println!("{}", my_sensor.get_temp());
+```
+Then the UFCS form (desugared equivalent) is:
+
+```rust
+println!("{}", TempSensor::get_temp(&my_sensor));
+```
+And if there could be ambiguity (multiple traits with `get_temp()` for example), it can be disambiguate with the concrete type:
+
+```rust
+println!("{}", <TempSensor01 as TempSensor>::get_temp(&my_sensor));
+```
+
+#### 3. Two questions to make sure
+
+1. In Rust Playground, what happens if you modify `main()` as below? 
+
+```rust
+fn main() {
+    let my_sensor = TempSensor01 { temp: 25.0 };
+    println!("{}", &my_sensor.get_temp());
+}
+```
+
+It works apparently and 25 is printed. We can imagine that we help the compiler, showing that we know the call is desugared as: `<TempSensor01 as TempSensor>::get_temp(&my_sensor)`. But due to precedence, instead it means something like "call `get_temp()`, then take a reference to the return value". In other words: `& (my_sensor.get_temp())` which is a `&f64`.
+
+
+
+
+
+2. In Rust Playground, what happens if you modify `main()` as below? 
+
+```rust
+fn main() {
+    let my_sensor = TempSensor01 { temp: 25.0 };
+    println!("{}", (&my_sensor).get_temp());
+}
+```
+It works, 25 is printed and it corresponds to our intend. Indeed `(&my_sensor)` is an explicit borrow of `my_sensor`. The method `.get_temp(&self)` expects `&self`, so the types match perfectly. It’s redundant and unnecessary however because the compiler would have inserted the `&` automatically in `my_sensor.get_temp()`.
+
+
+
+
+
+
+
+
+
+
+
+
 At this point we should have everything we need to understand this first sample code. Read it, read it again. Run it, modify it. Break it. Make it run again. I can't do it for you.
 
 
@@ -343,7 +455,33 @@ At this point we should have everything we need to understand this first sample 
 1. Add a `get_label()` method to the `Measurable` trait
 1. Implement it for `TempSensor01` and `TempSensor02`
 1. Use it in `get_temp_from_any_sensor_static1` to display the label (if any) 
+1. Copy and paste the code below in Rust Playground. Make sure you understand each line
 
+```rust
+pub trait TempSensor {
+    fn get_temp(&self) -> f64;
+}
+
+struct TempSensor01 {
+    temp: f64,
+}
+impl TempSensor for TempSensor01 {
+    fn get_temp(&self) -> f64 {
+        self.temp
+    }
+}
+
+fn main() {
+    let my_sensor = TempSensor01 { temp: 25.0 };
+
+    let t1 = my_sensor.get_temp();                                  // auto-borrow
+    let t2 = (&my_sensor).get_temp();                               // explicit borrow
+    let t3 = TempSensor::get_temp(&my_sensor);                      // UFCS form
+    let t4 = <TempSensor01 as TempSensor>::get_temp(&my_sensor);    // fully explicit UFCS
+
+    println!("{} {} {} {}", t1, t2, t3, t4);
+}
+```
 
 
 

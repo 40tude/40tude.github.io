@@ -359,7 +359,7 @@ Where we dynamically create sensors then used them in our new architecture.
 
 Morning! The POC went pretty well. Even the marketing guys understood the demo and the explanations. They are all confident about the scalability of the architecture of the app. I got two feedbacks however:
 1. The first one is known and easy to fix : `temp` whatever is a wrong name. I told them that this was known and that we had planned to use “temperature” instead in order to be very explicit.
-1. They understood I was focusing on the organization of the sensors directories and files. They were not surprised when I explained how the `main()` function was working. However they want me to come back to the next meeting with a new version of where sensors are created dynamically. 
+1. They understood I was focusing on the organization of the sensors directories and files. They were not surprised when I explained how the `main()` function was working. However they want me to come back to the next meeting with a new version of where sensors are created dynamically and they are right.
 
 
 
@@ -428,7 +428,10 @@ Note that from now on, I combine the two lines in one using `::{self, TempSensor
 
 #### Changes in source code
 
-If you agree (but don't take it bad, you have no choice, you have to agree) since the hierarchy is very similar with the previous project I will focus on what make the dynamic sensors possible. Let's start with `main.rs`
+If you agree (but don't take it bad, I'm the writer so you have no choice, you have to agree...) I will focus on what makes the dynamic sensors possible. In fact, the file and directory hierarchy is very similar to that of the previous project and does not require any special comments. 
+
+
+
 
 ```rust
 use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
@@ -441,7 +444,6 @@ fn main() {
     println!("{}", my_sensor.get_temp());
 }
 ```
-As we learnt in Episode 0, dynamic blablabla, means create stuff, put it on the heap and making sure a pointer points to with a Box . This is exactly what happens here.  `my_sensor` is a `Box<dyn TempSensor>`. This is a pointer to a data type which have a TempSensor trait 
 
 
 <!-- 
