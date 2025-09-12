@@ -330,7 +330,7 @@ fn get_temp_from_any_sensor_static2<T: Measurable>(t: &T) {
 Nothing sexy here. Before the list of parameters, we declare the trait `T` as `Measurable` (do you see the `<T: Measurable>`?). At the end of the day the monomorphized code is similar to the previous one. However this syntax allow us to define functions with multiple traits : `fn get_temp_from_any_sensor_static3<T: Measurable + Identifiable>(sensor: &T) {...}`. We will use this syntax in the Multiple Traits section later.
 
 
-### Optional - The evil is in the details
+### Optional - Because the evil is in the details
 Copy and paste the code fragment below in Rust Playground
 
 ```rust
@@ -370,40 +370,44 @@ pub trait TempSensor {
     fn get_temp(&self) -> f64;
 }
 ```
-* I don't want `self` as an parameter because `get_temp()` would take ownership of object on which `get_temp()` is called and would not be able to use it afterwards. That would be silly. It is much better to expect a `&self` as first parameter.  
+* I don't want `self` as an parameter because `get_temp()` would take ownership of the object on which `get_temp()` is called and then the caller would not be able to use the object afterwards. That would be silly. It is much better to expect a `&self` as a first parameter.  
 
-#### 2. On the side of the caller
+#### 2. On the side of the caller `main()`
 
 ```rust
 println!("{}", my_sensor.get_temp());
 ```
 
-* Because the method’s receiver (see `fn get_temp(&self) -> f64 {...}`) is `&self`, the call site needs a shared borrow. 
+* Because the method’s receiver (see `fn get_temp(&self) -> f64 {...}`) expect `&self` as a fist parameter, the call site needs a shared borrow as first argument. 
 * Rust’s method-call sugar applies auto-borrow (and auto-deref when needed), so we don’t have to write the `&` ourself.
 * `my_sensor.get_temp()` is "desugared" to something like : 
 
 ```rust
 println!("{}", <TempSensor01 as TempSensor>::get_temp(&my_sensor));
 ```
+Do you see the `&` in front of `my_sensor` in `::get_temp(&my_sensor)`? `<TempSensor01 as TempSensor>::get_temp(&my_sensor)` is called the **UFCS** (Uniform Function Call Syntax) form. 
 
-This is called the **UFCS** (Uniform Function Call Syntax) form. Again, if the normal method call is :
+Again, if the normal method call is :
 
 ```rust
 let my_sensor = TempSensor01 { temp: 25.0 };
 println!("{}", my_sensor.get_temp());
 ```
+
 Then the UFCS form (desugared equivalent) is:
 
 ```rust
 println!("{}", TempSensor::get_temp(&my_sensor));
 ```
+
 And if there could be ambiguity (multiple traits with `get_temp()` for example), it can be disambiguate with the concrete type:
 
 ```rust
 println!("{}", <TempSensor01 as TempSensor>::get_temp(&my_sensor));
 ```
 
-#### 3. Two questions to make sure
+
+#### 3. Two questions, just to make sure
 
 1. In Rust Playground, what happens if you modify `main()` as below? 
 
@@ -414,7 +418,7 @@ fn main() {
 }
 ```
 
-It works apparently and 25 is printed. We can imagine that we help the compiler, showing that we know the call is desugared as: `<TempSensor01 as TempSensor>::get_temp(&my_sensor)`. But due to precedence, instead it means something like "call `get_temp()`, then take a reference to the return value". In other words: `& (my_sensor.get_temp())` which is a `&f64`.
+It works apparently and 25 is printed. We can imagine that we helped the compiler, showing that we know the call is desugared as: `<TempSensor01 as TempSensor>::get_temp(&my_sensor)`. But **NO**. In fact, due to precedence of the operators, instead it means something like "call `get_temp()`, *then* take a reference to the return value". In other words: `& (my_sensor.get_temp())` which is a `&f64`.
 
 
 
@@ -428,16 +432,7 @@ fn main() {
     println!("{}", (&my_sensor).get_temp());
 }
 ```
-It works, 25 is printed and it corresponds to our intend. Indeed `(&my_sensor)` is an explicit borrow of `my_sensor`. The method `.get_temp(&self)` expects `&self`, so the types match perfectly. It’s redundant and unnecessary however because the compiler would have inserted the `&` automatically in `my_sensor.get_temp()`.
-
-
-
-
-
-
-
-
-
+It works, 25 is printed and it corresponds to our intend. Indeed `(&my_sensor)` is an explicit borrow of `my_sensor`. The method `.get_temp(&self)` expects `&self`, so the types match perfectly. However, it’s redundant and unnecessary because the compiler would have inserted the `&` automatically in `my_sensor.get_temp()`.
 
 
 
