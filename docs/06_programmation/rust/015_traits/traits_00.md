@@ -370,7 +370,9 @@ pub trait TempSensor {
     fn get_temp(&self) -> f64;
 }
 ```
-* I don't want `self` as an parameter because `get_temp()` would take ownership of the object on which `get_temp()` is called and then the caller would not be able to use the object afterwards. That would be silly. It is much better to expect a `&self` as a first parameter.  
+* I don't want `self` as an parameter because `get_temp()` would take ownership of the object on which `get_temp()` is called 
+* Then the caller would not be able to use the object afterwards. 
+* That would be silly. It is much better to expect a `&self` as a first parameter.  
 
 #### 2. On the side of the caller `main()`
 
@@ -378,7 +380,7 @@ pub trait TempSensor {
 println!("{}", my_sensor.get_temp());
 ```
 
-* Because the method’s receiver (see `fn get_temp(&self) -> f64 {...}`) expect `&self` as a fist parameter, the call site needs a shared borrow as first argument. 
+* Because the method’s receiver (see `fn get_temp(&self) -> f64 {...}`) expect `&self` as a first parameter, the call site needs a shared borrow as a first argument. 
 * Rust’s method-call sugar applies auto-borrow (and auto-deref when needed), so we don’t have to write the `&` ourself.
 * `my_sensor.get_temp()` is "desugared" to something like : 
 
@@ -409,7 +411,7 @@ println!("{}", <TempSensor01 as TempSensor>::get_temp(&my_sensor));
 
 #### 3. Two questions, just to make sure
 
-1. In Rust Playground, what happens if you modify `main()` as below? 
+**1. In Rust Playground, what happens if you modify `main()` as below?** 
 
 ```rust
 fn main() {
@@ -424,7 +426,7 @@ It works apparently and 25 is printed. We can imagine that we helped the compile
 
 
 
-2. In Rust Playground, what happens if you modify `main()` as below? 
+**2. In Rust Playground, what happens if you modify `main()` as below?** 
 
 ```rust
 fn main() {
