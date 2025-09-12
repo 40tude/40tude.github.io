@@ -1125,7 +1125,7 @@ In practice, many applications combine both threads and taks. Threads provide pa
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Wadler law
+## Wadler's law
 
 In any language design, the total time spent discussing a feature in this list is proportional to two raised to the power of its position.
 1. Semantics ($$2^0$$)
