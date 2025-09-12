@@ -373,7 +373,7 @@ pub trait TempSensor {
     fn get_temp(&self) -> f64;
 }
 ```
-* I don't want `self` as an parameter because `get_temp()` would take ownership of the object on which `get_temp()` is called 
+* I don't want `self` as a parameter because `get_temp()` would take ownership of the object on which `get_temp()` is called.
 * Then the caller would not be able to use the object afterwards. 
 * That would be silly. It is much better to expect a `&self` as a first parameter.  
 
