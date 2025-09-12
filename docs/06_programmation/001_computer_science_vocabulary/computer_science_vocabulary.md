@@ -29,7 +29,7 @@ last_modified_date: 2025-09-11 18:00:00
 
 Too often I have "problems" with computer science vocabulary. In addition, there is always something new I learn along my readings/viewings on the Web. So, I decided to start this page.
 
-Usually Googling helps a lot to get an "answer" at the speed of light. On the other hand, working on this page, adding words, taking the time to read, copy/paste, write, summarize what I understood help me a lot.
+Usually Googling helps a lot to get an "answer" at the speed of light. On the other hand, working on this page, adding words, taking the time to read, copy/paste, write, summarize what I understood helps me a lot.
 
 ### How does it works?
 {: .no_toc }
@@ -124,7 +124,7 @@ For example, if a program needs 20 hours using a single processor core, and a pa
 
 
 
-### 1. **Call**
+### Call
 
 * **Meaning:** We explicitly tell the compiler/runtime to execute a function by name (or by reference).
 * **Usage:** This is the normal way you execute a function in almost all languages.
@@ -144,7 +144,7 @@ fn main() {
 ```
 
 
-### 2. **Invoke**
+### Invoke
 
 * **Meaning:** To "invoke" a function means to cause the function to run, but it doesn’t necessarily specify *how*. This can include:
   * Direct calls (calling the function)

@@ -12,14 +12,18 @@ last_modified_date : 2025-09-10 18:00:00
 
 <!-- 
 TODO :
-* Ajouter des question du lecteur. Entre autres pour passer d'une section à l'autre
+* Ecrire une introduction
+* Vérifier tous les summary
+* Ajouter des questions du lecteur. Entre autres pour passer d'une section à l'autre
 * DONE : Avant le résumer, donner des exercices des trucs à faire
 * Ajouter des liens sur le vocabulaire : 
     * DONE paramètre, argument, 
     * DONE level of indirection
     * DONE statement
-    * expression
-    * fat pointer + vtable
+    * DONE expression
+    * DONE fat pointer + vtable
+    * DONE Walder's law
+    * DONE call vs invoke
 * ???
 -->
 
@@ -31,10 +35,10 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 {: .lead }
 
 
-<!-- <h2 align="center">
+<h2 align="center">
 <span style="color:orange"><b>This post is under construction.</b></span>    
 </h2>
-Will be split in 2 or 3     -->
+Will be split in 2 or 3    
 
 
 
@@ -76,6 +80,8 @@ Will be split in 2 or 3     -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
+## Introduction
+* To be written
 
 ## A Gentle Start - Static Dispatch
 Where data type are known at compile time.
@@ -275,7 +281,7 @@ impl Measurable for TempSensor02 {
 }
 ```
 
-Now let's look how it works in the `main()` function. Below I first create `my_sensor` which is of type `TempSensor01`. Since I have implemented the trait `Measurable` for the data type `TempSensor01` this means I added the `get_temp()` method to the data type `TempSensor01`. This means I can invoke `.get_temp()` on `my_sensor`.
+Now let's look how it works in the `main()` function. Below I first create `my_sensor` which is of type `TempSensor01`. Since I have implemented the trait `Measurable` for the data type `TempSensor01` this means I added the `get_temp()` method to the data type `TempSensor01`. This means I can [call]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})`.get_temp()` on `my_sensor`.
 
 Next I create 2 sensors of respective type `TempSensor01` and `TempSensor02`. And now, this is really cool. Indeed I can use reference to either `TempSensor01` or `TempSensor02` as argument of the function `get_temp_from_any_sensor_static1()`.
 
@@ -513,9 +519,9 @@ fn main() {
 }
 ```
 
-Once the vector `sensors` is created, in the `for` loop we can call, with no fear, the `get_temp()` method on each element of the vector. The appropriate version of `get_temp()` is called. It does not come for free however. Behind the scene, at runtime, the code uses what is called a **fat pointer**. This pointer points to a table on the heap and in this table (**vtable**), there is another pointer to the area where the `get_temp()` method is defined. 
+Once the vector `sensors` is created, in the `for` loop we can [invoke]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) the `get_temp()` method on each element of the vector. The appropriate version of `get_temp()` is called. It does not come for free however. Behind the scene, at runtime, the code uses what is called a [**fat pointer**]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}). This pointer includes a pointer pointing to the data and a second pointer pointing to a table on the heap. In the table (**vtable**), there is a pointer pointing to the memory address were the `get_temp()` method is located.
 
-In the first sample code we had direct calls because everything was known at compile time. Here we point to a table, then we find in the table the address of `get_temp()` and then we call it. We get much more flexibility but, again, it comes with a cost at runtime. Please don't start grumbling, don't assume but run benchmarks if you suspect the dynamic dispatch is killing your application.
+In the first sample code we had direct calls because everything was known at compile time. Here we point to a table, then we find in the table the address of `get_temp()` and then we invoke it. We get much more flexibility but, again, it comes with a cost at runtime. Please don't start grumbling, don't assume but run benchmarks if you suspect the dynamic dispatch is killing your application.
 
 
 
@@ -554,6 +560,8 @@ for s in &sensors {
 {: .no_toc }
 
 1. In `main()`, add a line `sensors.push(make_sensor("kelvin"));` and make it work 
+1. Can you explain the difference between `call` and `invoke` to your little sister?
+1. Can you explain the difference between `expression` and `statement` to your beloved grandma?
 
 
 
