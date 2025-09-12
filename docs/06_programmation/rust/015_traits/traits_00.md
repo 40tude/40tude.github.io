@@ -331,6 +331,8 @@ Nothing sexy here. Before the list of parameters, we declare the trait `T` as `M
 
 
 ### Optional - Because the evil is in the details
+{: .no_toc }
+
 Copy and paste the code fragment below in Rust Playground
 
 ```rust
@@ -364,6 +366,7 @@ fn main() {
 Do you fully understand what happens here?
 
 #### 1.On the side of the trait `TempSensor`
+{: .no_toc }
 
 ```rust
 pub trait TempSensor {
@@ -375,6 +378,7 @@ pub trait TempSensor {
 * That would be silly. It is much better to expect a `&self` as a first parameter.  
 
 #### 2. On the side of the caller `main()`
+{: .no_toc }
 
 ```rust
 println!("{}", my_sensor.get_temp());
@@ -410,6 +414,7 @@ println!("{}", <TempSensor01 as TempSensor>::get_temp(&my_sensor));
 
 
 #### 3. Two questions, just to make sure
+{: .no_toc }
 
 **1. In Rust Playground, what happens if you modify `main()` as below?** 
 
