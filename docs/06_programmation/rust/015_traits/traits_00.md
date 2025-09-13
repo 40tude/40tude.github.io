@@ -40,7 +40,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 </h2>
 Will be split in 2 or 3    
 
-## This is Episode 00
+### This is Episode 00
 {: .no_toc }
 
 
@@ -59,10 +59,10 @@ Will be split in 2 or 3
 #### Posts 
 {: .no_toc }
 
-* [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
-* [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
-* [Episode 2]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
-* [Episode 3]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
+* [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
+* [Episode 01]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
+* [Episode 02]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
+* [Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
 
 
 
@@ -906,10 +906,10 @@ Now, when your tears of joy have dried, step back and take the time to realize h
 #### Posts 
 {: .no_toc }
 
-* [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
-* [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
-* [Episode 2]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
-* [Episode 3]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
+* [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
+* [Episode 01]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
+* [Episode 02]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
+* [Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
 
 
 

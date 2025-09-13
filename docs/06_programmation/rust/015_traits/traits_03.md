@@ -23,7 +23,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <span style="color:orange"><b>This post is under construction.</b></span>    
 </h2>
 
-## This is Episode 03
+### This is Episode 03
 {: .no_toc }
 
 ## TL;DR
@@ -41,10 +41,10 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 #### Posts 
 {: .no_toc }
 
-* [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
-* [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
-* [Episode 2]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
-* [Episode 3]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
+* [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
+* [Episode 01]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
+* [Episode 02]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
+* [Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
 
 ## Table of Contents
 {: .no_toc .text-delta}
@@ -555,7 +555,7 @@ fn main() {
     * Auto-deref: `*s` dereferences the `Box` to get the inner `dyn TempSensor`.
     * Borrow to match the receiver: the method’s receiver is `&self`, so Rust borrows that inner object: `&(*my_sensor)` → `&dyn TempSensor`
 * As in the first "The evil is in the details" of [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}) it is important to understand why `&self` matters in the trait signature (`fn get_temp(&self) -> f64`)       
-* All we know on how the actual `.get_temp()` method is chosen still apply here. Read again the **Dynamic Dispatch** section from [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
+* All we know on how the actual `.get_temp()` method is chosen still apply here. Read again the Dynamic Dispatch section from [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
 
 
 Summary of the summary: `s.get_temp()` works with `fn get_temp(&self)` because the dot call autodereferences the `Box` and borrows it, producing an `&dyn TempSensor`. The vtable then dynamically dispatches to the correct concrete `.get_temp()` implementation, without transferring ownership of the `Box`.
@@ -674,10 +674,10 @@ One sentence
 #### Posts 
 {: .no_toc }
 
-* [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
-* [Episode 1]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
-* [Episode 2]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
-* [Episode 3]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
+* [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
+* [Episode 01]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
+* [Episode 02]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
+* [Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
 
 
 
