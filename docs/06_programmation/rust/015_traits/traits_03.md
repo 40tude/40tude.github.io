@@ -430,32 +430,106 @@ Note that from now on, I combine the two lines in one using `::{self, TempSensor
 
 If you agree (but don't take it bad, I'm the writer so you have no choice, you have to agree...) I will focus on what makes the dynamic sensors possible. In fact, the file and directory hierarchy is very similar to that of the previous project and does not require any special comments. 
 
+Take few minutes to read the `main()` function we wrote in [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}) in the section "Dynamic Dispatch". The code was similar to :
 
+```rust
+fn main() {
+    let mut sensors: Vec<Box<dyn Measurable>> = Vec::new();
+    sensors.push(make_sensor("celsius"));
+    sensors.push(make_sensor("fahrenheit"));
 
+    for s in &sensors {
+        println!("Reading: {}", s.get_temp());
+    }
+}
+
+fn make_sensor(kind: &str) -> Box<dyn Measurable> {
+    match kind {
+        "celsius" => Box::new(TempSensor01 { temp: 1.0 }),
+        "fahrenheit" => Box::new(TempSensor02 {
+            label: "thermocouple".into(),
+            temp: 25.0, // 77 °F
+        }),
+        _ => Box::new(TempSensor01 { temp: 0.0 }),
+    }
+}
+```
+
+Here we do exactly the same thing and the `main()` function looks like: 
 
 ```rust
 use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
 
 fn main() {
-    let my_sensor: Box<dyn TempSensor> = temperature_sensor::make_sensor(2);
-    println!("{}", my_sensor.get_temp());
+    let mut sensors: Vec<Box<dyn TempSensor>> = Vec::new();
+    sensors.push(temperature_sensor::make_sensor(2));
+    sensors.push(temperature_sensor::make_sensor(1));
+    sensors.push(temperature_sensor::make_sensor(2));
 
-    let my_sensor: Box<dyn TempSensor> = temperature_sensor::make_sensor(1);
-    println!("{}", my_sensor.get_temp());
+    for s in sensors {
+        println!("{}", s.get_temp());
+    }
+}
+```
+The difference is that the `make_sensor()` has been moved to the `temperature_sensor` module. Here is the content of `temperature_sensor.rs`:
+
+```rust
+use crate::sensors::temperature::temperature_sensor1::my_sensor1;
+use crate::sensors::temperature::temperature_sensor2::your_sensor2;
+
+pub trait TempSensor {
+    fn get_temp(&self) -> f64;
+}
+
+pub fn make_sensor(kind: usize) -> Box<dyn TempSensor> {
+    match kind {
+        1 => Box::new(my_sensor1::TempSensor01),
+        2 => Box::new(your_sensor2::TempSensor02),
+        other => {
+            // in production return a Result
+            eprintln!("Unknown SENSOR_KIND='{other}', falling back to temp1.");
+            Box::new(my_sensor1::TempSensor01)
+        }
+    }
 }
 ```
 
+The latest version of `make_sensor()` is almost a copy/paste of the previous one. Let's review it again. Just to make sure we are on the same page:
+* `make_sensor()` is a factory function
+* It returns `Box<dyn TempSensor>`
+    * Box<T> is a owning smart pointer to a value of type `T` stored on the heap.
+    * It is a smart pointer because when the Box is dropped, it deallocates the heap memory for us.
+    * `dyn TempSensor` is a trait object. 
+    * "some type that implements TempSensor, but we don’t know which one at compile time"
+    * A `dyn Trait` value is unsized. We can’t put it directly on the stack by value. We need a pointer/indirection like `&dyn Trait`, `Box<dyn Trait>`...
+* Based on the `kind` parameter and the arms of the match expression
+* `make_sensor()` either constructs a concrete `TempSensor1` or `TempSensor2` data type and boxes it
+* The caller owns the sensor via the `Box`, and it can call `my_sensor.get_temp()`. The dynamic dispatch picks the right method at runtime.
 
-<!-- 
-Factory
-new_set_to_zero() qui retourne Self 
-dans la section Associated Functions and Constants 
-Mais c’était associé au capteur
--->
+
+
+### Optional - Because the evil is in the details
+{: .no_toc }
+
+***How does the `s.get_temp()` call works? I'm talking about the one in the for loop that iterates over the collection of sensors in `main()`?***
+
+This is a 1 million dollars question. 
+
+<div align="center">
+<img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
+
+Before answering this question it would be wise to read "The evil is in the details" section in [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
+
+
+
 
 
 ### Exercise
 {: .no_toc }
+
+1. Modify the `temperature_sensor::make_sensor()` function so that it takes "celsius" or "fahrenheit" as parameters rather than the values 1 or 2.
 
 
 
