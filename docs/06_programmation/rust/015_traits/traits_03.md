@@ -7,7 +7,7 @@ description: "From basic syntax to building plugins with once_cell and organizin
 parent: "Rust"
 #math: mathjax
 date               : 2025-09-03 14:00:00
-last_modified_date : 2025-09-12 08:00:00
+last_modified_date : 2025-09-13 14:00:00
 ---
 
 
@@ -23,7 +23,8 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <span style="color:orange"><b>This post is under construction.</b></span>    
 </h2>
 
-
+## This is Episode 03
+{: .no_toc }
 
 ## TL;DR
 {: .no_toc }
@@ -521,6 +522,35 @@ This is a 1 million dollars question.
 </div>
 
 Before answering this question it would be wise to read "The evil is in the details" section in [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
+
+Ok, first let's read again the `main()` function:
+
+```rust
+fn main() {
+    let mut sensors: Vec<Box<dyn TempSensor>> = Vec::new();
+    sensors.push(temperature_sensor::make_sensor(2));
+    sensors.push(temperature_sensor::make_sensor(1));
+    sensors.push(temperature_sensor::make_sensor(2));
+
+    for s in sensors {
+        println!("{}", s.get_temp());
+    }
+}
+```
+
+* `sensors` is a vector of `Box<dyn TempSensor>`. That means a vector of heap-allocated concrete sensor (`TempSensor01` or `TempSensor02`), accessed through a trait object (`TempSensor`) handle (fat pointer = data ptr + vtable ptr).
+* `s.get_temp()` desugars to `TempSensor::get_temp(&*s)` and here’s what happens to produce that `&*s`:
+    * Auto-deref: `*s` dereferences the `Box` to get the inner `dyn TempSensor`.
+    * Borrow to match the receiver: the method’s receiver is `&self`, so Rust borrows that inner object: `&(*my_sensor)` → `&dyn TempSensor`
+* As in the first "The evil is in the details" of [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}) it is important to understand why `&self` matters in the trait signature (`fn get_temp(&self) -> f64`)       
+* All we know on how the actual `.get_temp()` method is chosen still apply here. Read again the **Dynamic Dispatch** section from [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
+
+
+Summary of the summary: `s.get_temp()` works with `fn get_temp(&self)` because the dot call autodereferences the `Box` and borrows it, producing an `&dyn TempSensor`. The vtable then dynamically dispatches to the correct concrete `.get_temp()` implementation, without transferring ownership of the `Box`.
+
+
+
+
 
 
 

@@ -24,6 +24,8 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 </h2>
 Will be split in 2 or 3     -->
 
+## This is Episode 01
+{: .no_toc }
 
 
 ## TL;DR

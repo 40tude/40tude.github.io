@@ -7,7 +7,7 @@ description: "From basic syntax to building plugins with once_cell and organizin
 parent: "Rust"
 #math: mathjax
 date               : 2025-09-03 14:00:00
-last_modified_date : 2025-09-10 18:00:00
+last_modified_date : 2025-09-12 18:00:00
 ---
 
 <!-- 
@@ -40,6 +40,8 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 </h2>
 Will be split in 2 or 3    
 
+## This is Episode 00
+{: .no_toc }
 
 
 ## TL;DR

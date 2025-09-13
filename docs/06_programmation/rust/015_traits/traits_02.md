@@ -23,6 +23,8 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 </h2>
 
 
+## This is Episode 02
+{: .no_toc }
 
 ## TL;DR
 {: .no_toc }
