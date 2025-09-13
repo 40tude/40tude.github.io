@@ -335,7 +335,7 @@ I could modify the first shortcut to be able to write `let my_sensor = TempSenso
 <!-- ###################################################################### -->
 
 
-## Make Sensors
+## Dynamic sensor creation
 
 Where we dynamically create sensors then used them in our new architecture.
 
@@ -358,10 +358,9 @@ Where we dynamically create sensors then used them in our new architecture.
 ### Explanations 1/2 
 {: .no_toc }
 
-Morning! The POC went pretty well. Even the marketing guys understood the demo and the explanations. They are all confident about the scalability of the architecture of the app. I got two feedbacks however:
-1. The first one is known and easy to fix : `temp` whatever is a wrong name. I told them that this was known and that we had planned to use “temperature” instead in order to be very explicit.
-1. They understood I was focusing on the organization of the sensors directories and files. They were not surprised when I explained how the `main()` function was working. However they want me to come back to the next meeting with a new version of where sensors are created dynamically and they are right.
-
+Morning! The POC went pretty well. Even the marketing guys understood the demo and the explanations. They are all confident about the scalability of the app. I got two feedbacks however:
+1. The first one is known and easy to fix : `temp[_whatever]` is a wrong name. I told them that this was known and that we had planned to use “temperature” instead in order to be very explicit.
+1. They understood I was focusing on the organization of the sensors directories and files. They were not surprised when I explained how the `main()` function was working in this demo. However they want me to come back to the next meeting with a new version where the sensors are created dynamically. To tell the truth, I believe they are right.
 
 
 
@@ -370,7 +369,7 @@ Morning! The POC went pretty well. Even the marketing guys understood the demo a
 ### Show me the code!
 {: .no_toc }
 
-Now the hierarchy of directories and files look like this :
+Now the hierarchy of directories and files looks like this :
 
 ```
 .
@@ -408,6 +407,8 @@ Now the hierarchy of directories and files look like this :
 {: .no_toc }
 
 #### Files and Directories
+{: .no_toc }
+
 I already changed `temp` to `temperature`. Obviously I updated the `use` statements. For example, in `main.rs`, now I have:
 
 ```rust
@@ -428,8 +429,9 @@ Note that from now on, I combine the two lines in one using `::{self, TempSensor
 
 
 #### Changes in source code
+{: .no_toc }
 
-If you agree (but don't take it bad, I'm the writer so you have no choice, you have to agree...) I will focus on what makes the dynamic sensors possible. In fact, the file and directory hierarchy is very similar to that of the previous project and does not require any special comments. 
+If you agree (but don't take it bad, I'm the writer of this post so you have no choice, you have to agree...) I will focus on what makes the dynamic sensors creation possible. In fact, the file and directory hierarchy is very similar to that of the previous project and does not require any special comments. 
 
 Take few minutes to read the `main()` function we wrote in [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}) in the section "Dynamic Dispatch". The code was similar to :
 
@@ -456,7 +458,7 @@ fn make_sensor(kind: &str) -> Box<dyn Measurable> {
 }
 ```
 
-Here we do exactly the same thing and the `main()` function looks like: 
+In this version of the project we do exactly the same thing and the `main()` function looks like: 
 
 ```rust
 use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
@@ -472,7 +474,9 @@ fn main() {
     }
 }
 ```
-The difference is that the `make_sensor()` has been moved to the `temperature_sensor` module. Here is the content of `temperature_sensor.rs`:
+The difference is that the `make_sensor()` has been moved to the `temperature_sensor` module. Please note that at the top of the source code there is the `use` statement and then, lower in the body of main() I can write `temperature_sensor::make_sensor(2)`. In six months, I think this will make the source code easier to read, and we'll be happy to understand right away that `make_sensor()` is defined in the `temperature_sensor` module.
+
+Here is the content of `temperature_sensor.rs`:
 
 ```rust
 use crate::sensors::temperature::temperature_sensor1::my_sensor1;
@@ -497,15 +501,23 @@ pub fn make_sensor(kind: usize) -> Box<dyn TempSensor> {
 
 The latest version of `make_sensor()` is almost a copy/paste of the previous one. Let's review it again. Just to make sure we are on the same page:
 * `make_sensor()` is a factory function
-* It returns `Box<dyn TempSensor>`
-    * Box<T> is a owning smart pointer to a value of type `T` stored on the heap.
-    * It is a smart pointer because when the Box is dropped, it deallocates the heap memory for us.
+* It returns a `Box<dyn TempSensor>`
+    * `Box<T>` is a owning smart pointer to a value of type `T` stored on the heap.
+    * It is a smart pointer because when the `Box` is dropped, it deallocates the heap memory for us.
     * `dyn TempSensor` is a trait object. 
-    * "some type that implements TempSensor, but we don’t know which one at compile time"
-    * A `dyn Trait` value is unsized. We can’t put it directly on the stack by value. We need a pointer/indirection like `&dyn Trait`, `Box<dyn Trait>`...
-* Based on the `kind` parameter and the arms of the match expression
+    * This can be understood as : "some type that implements TempSensor, but we don’t know which one at compile time"
+    * A `dyn Trait` value is unsized. We can’t put it directly on the stack by value. We need a pointer (level of indirection) like `&dyn Trait`, `Box<dyn Trait>`...
+* Based on the `kind` parameter and with the help of the arms of the `match` expression
 * `make_sensor()` either constructs a concrete `TempSensor1` or `TempSensor2` data type and boxes it
 * The caller owns the sensor via the `Box`, and it can call `my_sensor.get_temp()`. The dynamic dispatch picks the right method at runtime.
+
+
+That's all for the modifications. So what has been done is a *mix* between the previous version (the one with source code reorganized within subdirectories) and the code from the Dynamic Dispatch section of [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}). An easy win...
+
+<div align="center">
+<img src="./assets/img31.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
 
 
 
@@ -566,6 +578,90 @@ Summary of the summary: `s.get_temp()` works with `fn get_temp(&self)` because t
 
 ### Summary
 {: .no_toc }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Once Cell
+
+One sentence
+
+### Running the demo code
+{: .no_toc }
+
+* Right click on `assets/?????`
+* Select the option "Open in Integrated Terminal"
+* `cargo add once_cell`
+* `cargo run`
+* `cargo run --example ex00`
+
+<div align="center">
+<img src="./assets/img30.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+
+
+
+### Exercise
+{: .no_toc }
+
+
+
+
+### Summary
+{: .no_toc }
+
+
+
+
+
+
 
 
 

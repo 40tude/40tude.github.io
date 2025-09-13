@@ -654,6 +654,7 @@ Where the type subsystem allow us to have type placeholder associated with a tra
 
 * Right click on `assets/07_associated_type`
 * Select the option "Open in Integrated Terminal"
+* `cargo add rand`
 * `cargo run --example ex00`
 * `cargo run --example ex01`
 
