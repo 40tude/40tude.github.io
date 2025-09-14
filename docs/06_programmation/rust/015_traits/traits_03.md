@@ -7,7 +7,7 @@ description: "From basic syntax to building plugins with once_cell and organizin
 parent: "Rust"
 #math: mathjax
 date               : 2025-09-03 14:00:00
-last_modified_date : 2025-09-14 08:00:00
+last_modified_date : 2025-09-14 16:00:00
 ---
 
 
@@ -615,8 +615,9 @@ One sentence
 ### Running the demo code
 {: .no_toc }
 
-* Right click on `assets/?????`
+* Right click on `assets/11_once_cell_0`
 * Select the option "Open in Integrated Terminal"
+* `cargo add rand`
 * `cargo add once_cell`
 * `cargo run`
 * `cargo run --example ex00`
@@ -631,20 +632,109 @@ One sentence
 ### Explanations 1/2 
 {: .no_toc }
 
+Houston, we have a problem. The POC works but I'm not sure it will still work with 10_000 thermocouples, different kind of sensors, different kinds of actuators. Do you 
+remember, in the previous version of the application, in `temperature_sensor.rs` we had a young and innocent `make_sensor()` function. It looked like this :
 
+```rust
+pub fn make_sensor(kind: usize) -> Box<dyn TempSensor> {
+    match kind {
+        1 => Box::new(my_sensor1::TempSensor01),
+        2 => Box::new(your_sensor2::TempSensor02),
+        other => {
+            // in production return a Result
+            eprintln!("Unknown SENSOR_KIND='{other}', falling back to temp1.");
+            Box::new(my_sensor1::TempSensor01)
+        }
+    }
+}
+```
+
+Pretty young thing, no? No! What will happen with 250 different kind of sensors. We will need a huge match statement. On the other hand, we need to make sure to bloat the application with many sensors while in fact only a dozen is in use... But again, the most critical point is that the match statement above is not scalable and ideally the available sensors should register by themselves.
+
+And this is we the Rust crate once cell come to the rescue. In this first case we will keep everything as close as possible from the previous version. One noticeable point is the fact that instead of `temperature_sensor1` and `temperature_sensor2` the code now have `thermocouple` and `rtd` which are 2 different kinds of temperature sensor. Other than that the hub files are still present and the hierarchy is exactly the same. See below :
 
 
 ### Show me the code!
 {: .no_toc }
 
 ```rust
-
+C:.
+│   .gitignore
+│   Cargo.lock
+│   Cargo.toml
+│   
+├───examples
+│       ex00.rs
+│       
+├───src
+│   │   lib.rs
+│   │   main.rs
+│   │   sensors.rs
+│   │
+│   └───sensors
+│       │   temperature.rs
+│       │
+│       └───temperature
+│           │   rtd.rs
+│           │   temperature_sensor.rs
+│           │   thermocouple.rs
+│           │
+│           ├───rtd
+│           │       rtd_512.rs
+│           │
+│           └───thermocouple
+│                   thermocouple_128.rs
+│
+└───target
 ```
 
 
 ### Explanations 2/2 
 {: .no_toc }
 
+Let's start with `main.rs`
+
+```rust
+use demo_registry_0::sensors::{self, temperature::temperature_sensor};
+
+fn main() {
+    sensors::register();
+
+    let thermo_01 = temperature_sensor::make_sensor("Thermocouple_type_128").expect("Unknown sensor");
+    println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
+
+    let rtd_01 = temperature_sensor::make_sensor("Rtd_type_512").expect("Unknown sensor");
+    println!("RTD 01         : {:6.2}", rtd_01.get_temp());
+}
+```
+
+At a high level the code should be easy to understand. 
+1. First, the sensors (we don't really know what this covers, or how it works) register themselves. 
+1. The sensors are not yet initialized, they just told us that we can instantiate them if we need
+1. Using its name (`Thermocouple_type_128`) we create an instance of a temperature sensor and use it   
+1. With the same function call we create another temperature sensor named `Rtd_type_512` and make a temperature measurement.
+
+The source code `ex00.rs` simulates if the names of the sensors would have been read from a database or a file.
+
+```rust
+fn main() {
+    sensors::register();
+
+    for sensor_name in ["Thermocouple_type_128", "Rtd_type_512", "temp42"] {
+        match temperature_sensor::make_sensor(sensor_name) {
+            Some(sensor) => {
+                let temp = sensor.get_temp();
+                println!("Sensor {sensor_name}: {:6.2} °C", temp);
+            }
+            None => {
+                println!("Sensor '{sensor_name}': not found in registry!");
+            }
+        }
+    }
+}
+```
+
+`sensors::register();` may still seem a little magical 
 
 
 
