@@ -155,12 +155,12 @@ In other words it is time to reorganize the project and the project's directory.
 You may not agree with me but here above is how I see the organization. 
 
 * `main.rs` is a consumer of the "features/capabilities" exposed in `lib.rs`
-* `ex00.rs` is another shorter consumer of `lib.rs`
-* The `sensors` directory contains... The `sensors`. 
+* `ex00.rs` is another shorter consumer of `lib.rs` (think about tests for example)
+* The `sensors` directory contains... The sensors. 
 * Later an `actuators` directory will contains the different kinds of actuators
 * So far we only have temperature sensors so there is a wrongly named `temp` subdirectory. It is badly named because it can be confused with a `temporary` directory. Ideally it should be named `temperature`. It is important to detect and fix upfront this class of issues.
 * For the POC 2 kinds of temperature sensors are needed. Their respective implementation files are stored in 2 specific directories (`temp_sensor1/` and `temp_sensor2/`).
-* Each directory contains the files needed to define each capture.
+* Each directory contains the files needed to define each sensor.
 
 
 
@@ -168,12 +168,12 @@ You may not agree with me but here above is how I see the organization.
 {: .no_toc }
 
 
-Naming things is an Art and we could debate all day long about the filenames I use (see [Wadler's law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})). This is not the point. My point is : name the files the way YOU want and learn about the build system so that it will work with your file hierarchy and naming convention.
+Naming things is an Art and we could debate all day long about the filenames I use (see [Wadler's law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})). This is not the point. My point is : name the files the way YOU want and learn about the build system so that it works with your file hierarchy and naming convention.
 
 In case of doubt, create a side project. Break everything, then come back to your main project.
 
 
-***All of this seems like good advice, but you haven't provided much information about some of the new files I see in the tree above. Could we go through the list of files, read the code, and understand exactly how the “module tree” will be built?***
+***All of this seems like good advice, but you haven't provided much information about some of the new files I see in the tree above. Could we go through the list of files, read the code, and understand how the “module tree” is built?***
 
 
 
@@ -294,7 +294,7 @@ Again it is important to understand the first 2 lines
 
 Once this is understood the body of `main()` should be a piece of cake for you now. 
 
-I could modify the first shortcut to be able to write `let my_sensor = TempSensor01;` but, 6 months from now, when the source code will be much larger, I'll be happy to read `let my_sensor = my_sensor1::TempSensor01;` and know that `TempSensor01` data type belong to `my_sensor1` module. 
+I could modify the first shortcut to be able to write `let my_sensor = TempSensor01;` but, six months from now, when the source code will be much larger, I'll be happy to read `let my_sensor = my_sensor1::TempSensor01;` and know that `TempSensor01` data type belong to `my_sensor1` module. 
 
 
 
@@ -337,7 +337,7 @@ I could modify the first shortcut to be able to write `let my_sensor = TempSenso
 
 ## Dynamic sensor creation
 
-Where we dynamically create sensors then used them in our new architecture.
+Where we dynamically create and use sensors in the new architecture.
 
 ### Running the demo code
 {: .no_toc }
@@ -474,7 +474,7 @@ fn main() {
     }
 }
 ```
-The difference is that the `make_sensor()` has been moved to the `temperature_sensor` module. Please note that at the top of the source code there is the `use` statement and then, lower in the body of main() I can write `temperature_sensor::make_sensor(2)`. In six months, I think this will make the source code easier to read, and we'll be happy to understand right away that `make_sensor()` is defined in the `temperature_sensor` module.
+The difference is that the `make_sensor()` has been moved to the `temperature_sensor` module. Please note the `use` statement (shortcut) at the top of the source code. In the body of the `main()` function I can write `temperature_sensor::make_sensor(2)`. We already mention it but it is important. In six months, I think this will make the source code easier to read, and we'll be happy to understand right away that `make_sensor()` is defined in the `temperature_sensor` module.
 
 Here is the content of `temperature_sensor.rs`:
 
@@ -512,7 +512,7 @@ The latest version of `make_sensor()` is almost a copy/paste of the previous one
 * The caller owns the sensor via the `Box`, and it can call `my_sensor.get_temp()`. The dynamic dispatch picks the right method at runtime.
 
 
-That's all for the modifications. So what has been done is a *mix* between the previous version (the one with source code reorganized within subdirectories) and the code from the Dynamic Dispatch section of [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}). An easy win...
+That's all for the modifications. What has been done is a *mix* between the previous version (the one with the source code reorganized within subdirectories) and the code from the Dynamic Dispatch section of [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}). A quick win...
 
 <div align="center">
 <img src="./assets/img31.webp" alt="" width="450" loading="lazy"/><br/>
@@ -571,7 +571,7 @@ Summary of the summary: `s.get_temp()` works with `fn get_temp(&self)` because t
 ### Exercise
 {: .no_toc }
 
-1. Modify the `temperature_sensor::make_sensor()` function so that it takes "celsius" or "fahrenheit" as parameters rather than the values 1 or 2.
+1. Modify the `temperature_sensor::make_sensor()` function so that it takes "Celsius" or "Fahrenheit" as parameters rather than the values 1 or 2.
 
 
 

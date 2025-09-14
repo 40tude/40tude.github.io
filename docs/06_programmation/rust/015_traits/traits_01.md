@@ -22,7 +22,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <!-- <h2 align="center">
 <span style="color:orange"><b>This post is under construction.</b></span>    
 </h2>
-Will be split in 2 or 3     -->
+-->
 
 ### This is Episode 01
 {: .no_toc }
