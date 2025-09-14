@@ -7,7 +7,7 @@ description: "From basic syntax to building plugins with once_cell and organizin
 parent: "Rust"
 #math: mathjax
 date               : 2025-09-03 14:00:00
-last_modified_date : 2025-09-13 14:00:00
+last_modified_date : 2025-09-14 08:00:00
 ---
 
 
@@ -84,7 +84,7 @@ Where we organize the project around crates and a new directory hierarchy
 ### Explanations 1/2 
 {: .no_toc }
 
-Hey guys. I just got out of the MMB (Monday Morning Briefing) with the sales and marketing teams... Yes, I know... But, anyway, good news... It looks like there are opportunities if our monitoring system can work with other types of sensors (strain gauge, flow meter, ph meter...) as well as actuators. I was asked to produce a POC (proof of concept) by the end of the week. I said no, no way. But I had to give them something. So we agreed to run a demo version of our application with 2 kinds of temperature sensors but dealing with each of them as if they were different kind of sensors. Before to discuss budget they want to be sure the application can scale.
+Hey guys. I just got out of the MMB (Monday Morning Briefing) with the sales and marketing teams... Yes, I know... But, anyway, good news... It looks like there are opportunities if our monitoring system can work with other types of sensors (strain gauge, flow meter, ph meter...) as well as actuators. I was asked to produce a POC (proof of concept) by the end of the week. I said no, no way. But I had to give them something. So we agreed to run a demo version of the application with 2 kinds of temperature sensors but dealing with each of them as if they were different kind of sensors. Before to discuss budget they want to be sure the application can scale.
 
 In other words it is time to reorganize the project and the project's directory.  
 
@@ -93,10 +93,10 @@ In other words it is time to reorganize the project and the project's directory.
 #### Good to know
 {: .no_toc }
 
-* The project had a `main.rs` it will have `main.rs` and `lib.rs`
-    * `main.rs` is a consumer of `lib.rs`
-* Because the project has both `lib.rs` and `main.rs`, `Cargo` treats the project as a **library crate** plus a **binary crate**.
-* The compiler first builds the library crate, then the binary crate (using the library’s content).
+* The project had a unique `main.rs` file. From now on it will have `main.rs` and `lib.rs`
+    * `main.rs` is a consumer of API exposed by `lib.rs`
+* Because the project has both `lib.rs` and `main.rs`, `Cargo` considers the project as a **library crate** plus a **binary crate**.
+* The build system (rustc and friends) first builds the library crate, then the binary crate (using the library’s content).
 * The build system doesn’t care about files and directories — it only cares about the module tree it builds in memory
 
 #### Methodology
@@ -105,10 +105,10 @@ In other words it is time to reorganize the project and the project's directory.
 1. Organize the directories however I like
 1. Name the files however I like
 1. Use **hub files** to connect everything into a clean module tree
-    1. One directory → one hub file in its parent
-    1. Hub file name = directory name + .rs
+    1. One directory → one hub file in its parent directory
+    1. Hub file name = directory name + `.rs`
     1. Hub file content = `pub mod ...;` for every child module (files **AND** subdirectories)
-    1. Leaf files don’t need hubs
+    1. Leaf files don’t need hub files
 
 ### Show me the code!
 {: .no_toc }
@@ -154,10 +154,10 @@ In other words it is time to reorganize the project and the project's directory.
 
 You may not agree with me but here above is how I see the organization. 
 
-* `main.rs` is a consumer of the "features/capabilities" exposed in `lib.rs`
-* `ex00.rs` is another shorter consumer of `lib.rs` (think about tests for example)
+* `main.rs` is a consumer of the "features/capabilities" exposed by `lib.rs`
+* `ex00.rs` is another consumer of `lib.rs` (think about some tests for example)
 * The `sensors` directory contains... The sensors. 
-* Later an `actuators` directory will contains the different kinds of actuators
+* Later an `actuators` directory will contains... Tadaa! You're right, the different kinds of actuators
 * So far we only have temperature sensors so there is a wrongly named `temp` subdirectory. It is badly named because it can be confused with a `temporary` directory. Ideally it should be named `temperature`. It is important to detect and fix upfront this class of issues.
 * For the POC 2 kinds of temperature sensors are needed. Their respective implementation files are stored in 2 specific directories (`temp_sensor1/` and `temp_sensor2/`).
 * Each directory contains the files needed to define each sensor.
@@ -168,7 +168,7 @@ You may not agree with me but here above is how I see the organization.
 {: .no_toc }
 
 
-Naming things is an Art and we could debate all day long about the filenames I use (see [Wadler's law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})). This is not the point. My point is : name the files the way YOU want and learn about the build system so that it works with your file hierarchy and naming convention.
+Naming things is an Art and we could debate all day long about the filenames I use (see [Wadler's law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})). This is not the point. My point is : name the files the way *you* want and learn about the build system so that it works with your file hierarchy and naming convention.
 
 In case of doubt, create a side project. Break everything, then come back to your main project.
 
@@ -192,7 +192,7 @@ edition = "2024"
 [dependencies]
 ```
 
-I just want to underline that the name is `traits_for_plugins`. Next, we already said that since the directory have a `lib.rs` and a `main.rs` at the root, the compiler will build the lib crate then the binary crate. They will be respectively named `target/debug/libtraits_for_plugins.rlib`and `target/debug/traits_for_plugins.exe`.
+I just want to underline that the name is `traits_for_plugins`. Next, we already said that since the directory have a `lib.rs` and a `main.rs` in the root, the compiler will build the lib crate then the binary crate. They will be respectively named `target/debug/libtraits_for_plugins.rlib` (`.rlib` like Rust lib, a static library plus some metadata. Cannot be linked with C/C++) and `target/debug/traits_for_plugins.exe`.
 
 To build the library crate, the build system reads the content of `lib.rs` (the crate root file). Here it is in all its glory :
 
