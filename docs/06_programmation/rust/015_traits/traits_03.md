@@ -62,7 +62,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <!-- ###################################################################### -->
 
 
-## Modules and crates
+## Modules and Crates
 
 Where we organize the project around crates and a new directory hierarchy
 
@@ -335,7 +335,7 @@ I could modify the first shortcut to be able to write `let my_sensor = TempSenso
 <!-- ###################################################################### -->
 
 
-## Dynamic sensor creation
+## Dynamic Sensor Creation
 
 Where we dynamically create and use sensors in the new architecture.
 
@@ -632,7 +632,7 @@ One sentence
 ### Explanations 1/2 
 {: .no_toc }
 
-Houston, we have a problem. The POC works but I'm not sure it will still work with 10_000 thermocouples, different kind of sensors, different kinds of actuators. Do you 
+Houston, we have a problem. The POC works but I'm not sure it will work with 10_000 thermocouples, different kind of sensors, different kinds of actuators. Do you 
 remember, in the previous version of the application, in `temperature_sensor.rs` we had a young and innocent `make_sensor()` function. It looked like this :
 
 ```rust
@@ -649,16 +649,16 @@ pub fn make_sensor(kind: usize) -> Box<dyn TempSensor> {
 }
 ```
 
-Pretty young thing, no? No! What will happen with 250 different kind of sensors. We will need a huge match statement. On the other hand, we need to make sure to bloat the application with many sensors while in fact only a dozen is in use... But again, the most critical point is that the match statement above is not scalable and ideally the available sensors should register by themselves.
+Pretty young thing, no? No! What will happen with 250 different kind of sensors. We will need a huge match statement. On the other hand, we need to make sure to not overload the application with many sensors while only a dozen is in use... But again, the most critical point is that the match statement above is not scalable and ideally the available sensors should register by themselves.
 
-And this is we the Rust crate once cell come to the rescue. In this first case we will keep everything as close as possible from the previous version. One noticeable point is the fact that instead of `temperature_sensor1` and `temperature_sensor2` the code now have `thermocouple` and `rtd` which are 2 different kinds of temperature sensor. Other than that the hub files are still present and the hierarchy is exactly the same. See below :
+And this is where the Rust crate [once cell](https://crates.io/crates/once_cell) come to the rescue. In this first version we will keep the file organization as close as possible from the previous version (see the section Dynamic Sensor Creation above). One thing however. Instead of `temperature_sensor1` and `temperature_sensor2` we now use `thermocouple` and `rtd` which are 2 different kinds of technologies for temperature sensors. Other than that the hub files are still present and the hierarchy is exactly the same. See below :
 
 
 ### Show me the code!
 {: .no_toc }
 
-```rust
-C:.
+```
+.
 │   .gitignore
 │   Cargo.lock
 │   Cargo.toml
@@ -708,13 +708,13 @@ fn main() {
 }
 ```
 
-At a high level the code should be easy to understand. 
-1. First, the sensors (we don't really know what this covers, or how it works) register themselves. 
-1. The sensors are not yet initialized, they just told us that we can instantiate them if we need
-1. Using its name (`Thermocouple_type_128`) we create an instance of a temperature sensor and use it   
-1. With the same function call we create another temperature sensor named `Rtd_type_512` and make a temperature measurement.
+At a high level the code should be easy to understand
+1. First, the sensors (we don't really know what this covers, or how it works) register themselves 
+1. The sensors are not yet initialized, they just confirm we can instantiate the one the app need
+1. Using its name (`Thermocouple_type_128`) we create an instance of a temperature sensor and print a temperature measurement   
+1. We do the smae with `Rtd_type_512`
 
-The source code `ex00.rs` simulates if the names of the sensors would have been read from a database or a file.
+The source code `ex00.rs` simulates the case where the names of the sensors would have been read from a database or a file.
 
 ```rust
 fn main() {
