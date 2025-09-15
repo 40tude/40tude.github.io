@@ -651,7 +651,7 @@ pub fn make_sensor(kind: usize) -> Box<dyn TempSensor> {
 
 Pretty young thing, no? No! What will happen with 250 different kind of sensors. We will need a huge match statement. On the other hand, we need to make sure to not overload the application with many sensors while only a dozen is in use... But again, the most critical point is that the match statement above is not scalable and ideally the available sensors should register by themselves.
 
-And this is where the Rust crate [once cell](https://crates.io/crates/once_cell) come to the rescue. In this first version we will keep the file organization as close as possible from the previous version (see the section Dynamic Sensor Creation above). One thing however. Instead of `temperature_sensor1` and `temperature_sensor2` we now use `thermocouple` and `rtd` which are 2 different kinds of technologies for temperature sensors. Other than that the hub files are still present and the hierarchy is exactly the same. See below :
+And this is where the Rust crate [once cell](https://crates.io/crates/once_cell) comes to the rescue. In this first version we will keep the file organization as close as possible from the previous one (see the section Dynamic Sensor Creation above). One thing however. Instead of `temperature_sensor1` and `temperature_sensor2` we now use `thermocouple` and `rtd` which are 2 different kinds of technologies for temperature sensors. Other than that the hub files are still present and the hierarchy is exactly the same. See below :
 
 
 ### Show me the code!
@@ -710,11 +710,11 @@ fn main() {
 
 At a high level the code should be easy to understand
 1. First, the sensors (we don't really know what this covers, or how it works) register themselves 
-1. The sensors are not yet initialized, they just confirm we can instantiate the one the app need
+1. The sensors are not yet initialized, they just confirm we can instantiate the ones that the app need
 1. Using its name (`Thermocouple_type_128`) we create an instance of a temperature sensor and print a temperature measurement   
-1. We do the smae with `Rtd_type_512`
+1. We do the same with `Rtd_type_512`
 
-The source code `ex00.rs` simulates the case where the names of the sensors would have been read from a database or a file.
+On the other hand, `ex00.rs` simulates the case where the names of the sensors come from a database and when one reference cannot be instantiated.
 
 ```rust
 fn main() {
@@ -734,8 +734,103 @@ fn main() {
 }
 ```
 
-`sensors::register();` may still seem a little magical 
+Let's start with `sensors::register();`. If you use VSCode I recommend to :
 
+* Right click on `assets/11_once_cell_0`
+* Select the option "Reveal in File Explorer"
+
+<div align="center">
+<img src="./assets/img32.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
+
+Once in File Explorer
+
+* Right click on `11_once_cell_0`
+* Select the option "Open with VSCode"
+
+<div align="center">
+<img src="./assets/img33.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
+
+Once in the new instance of VSCode, open `main.rs` click on the word `register` of `sensors::register`. You can either press `F12` or right click and select the option "Go to Definition" 
+
+<div align="center">
+<img src="./assets/img34.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
+
+The file `sensors.rs` opens and we see :
+
+```rust
+// sensors.rs
+pub mod temperature;
+
+pub fn register() {
+    temperature::register();
+}
+```
+
+Let's step back and make sure we are on the same page. In the application I know I have some sensors and no actuators. I don't care about the details, I call `sensors::register()` and I do not call `actuators::register()`. Now at `sensors.rs` level, I know I only have temperature sensors so I call `temperature::register()`. This may change later. If we add other kind of sensors (stain gauge, pH meter...) I will then call `strain_gauge:register()`. This is my responsibility, and strain gauges registration remains transparent to the `main()` function. 
+
+Ok, let's press `F12` once the cursor is on `temperature::register()`. This opens `temperature.rs`.
+
+```rust
+// temperature.rs
+pub mod rtd; 
+pub mod temperature_sensor; 
+pub mod thermocouple; 
+
+pub fn register() {
+    thermocouple::register();
+    rtd::register();
+}
+```
+
+At `temperature.rs` level, I know I only have only 2 types of temperature sensors : thermocouples and rtd. I call `thermocouple::register()` and `rtd::register()`. Let's press `F12` once the cursor is on `thermocouple::register()`. This opens `thermocouple.rs`.
+
+```rust
+// thermocouple.rs
+pub mod thermocouple_128;
+
+pub fn register() {
+    thermocouple_128::register();
+}
+```
+
+At `thermocouple.rs` level, I know I only have one kind of thermocouple so I call `thermocouple_128::register()`. Let's press F12. This opens `thermocouple_128.rs` :
+
+```rust
+// thermocouple_128.rs
+use crate::sensors::temperature::temperature_sensor::{self, TemperatureSensor};
+
+pub struct Thermocouple128; // camel case => no _
+
+impl TemperatureSensor for Thermocouple128 {
+    fn get_temp(&self) -> f64 {
+        let temp: f64 = rand::random_range(0.0..128.0);
+        temp
+    }
+}
+pub fn register() {
+    temperature_sensor::register_sensor("Thermocouple_type_128", || Box::new(Thermocouple128));
+}
+```
+The upper part of the source code is well known. We have a `Thermocouple128` data type and we implement the `TemperatureSensor` trait. Nothing new under the sun and as before the `TemperatureSensor` trait is defined in `temperature_sensor.rs` but do not press F12 if the cursor is on the word `TemperatureSensor`.
+
+Obviously, the most interesting part is the `register()` function definition; however, the line syntax looks a bit odd, or at least not that easy to grasp the first time. 
+
+
+
+<!-- // Explicit registration function with the followings arguments
+//
+// A name                 : "Thermocouple_type_128" — the key we will use later to look for the sensor
+// A constructor function : || Box::new(TempSensor01) — a closure that builds a new instance of this sensor
+// temperature_sensor::register_sensor() stores this name and constructor in the global registry TEMPERATURE_SENSOR_REGISTRY
+// Read temperature_sensor.rs
+//      pub static SENSOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = ...
+//      The registry is a HashMap inside a Mutex (thread-safe). -->
 
 
 ### Exercise
