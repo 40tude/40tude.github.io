@@ -819,22 +819,177 @@ pub fn register() {
 ```
 The upper part of the source code is well known. We have a `Thermocouple128` data type and we implement the `TemperatureSensor` trait. Nothing new under the sun and as before the `TemperatureSensor` trait is defined in `temperature_sensor.rs` but do not press F12 if the cursor is on the word `TemperatureSensor`.
 
-Obviously, the most interesting part is the `register()` function definition; however, the line syntax looks a bit odd, or at least not that easy to grasp the first time. 
+Obviously, the most interesting part is the `register()` function definition; however, the line syntax looks a bit odd, or at least not that easy to grasp the first time. Click on `temperature_sensor::register_sensor` then press F12. This opens the file `temperature_sensor.rs`. The code below is not complete but it is good enough to understand what is going on :
+
+```rust
+// temperature_sensor.rs
+
+use once_cell::sync::Lazy;
+use std::collections::HashMap;
+use std::sync::Mutex;
+
+pub trait TemperatureSensor {
+    fn get_temp(&self) -> f64;
+}
+
+type Constructor = fn() -> Box<dyn TemperatureSensor>;
+
+pub static TEMPERATURE_SENSOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+
+pub fn register_sensor(name: &'static str, constructor: Constructor) {
+    let mut map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("registry mutex poisoned");
+    map.insert(name, constructor);
+}
+
+```
+
+In the upper part part of the file we found the `TemperatureSensor` trait declaration. No change compared to what we already know. Then few lines below there is the definition of `register_sensor()`, the function we want to understand.
+
+```rust
+pub fn register_sensor(name: &'static str, constructor: Constructor) {
+    let mut map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("registry mutex poisoned");
+    map.insert(name, constructor);
+}
+```
+
+It expects 2 parameters. The first one is the name that identify the kind of temperature sensor in the application (thermocouple, rtd... `Thermocouple_type_128`, `Rtd_512`...). Note that it is a `&str` with a `static` lifetime where `static` must be understood as "valid as long as the program runs". This is usually a string literal (e.g. `"Thermocouple_type_128"`). The second parameter is of type `Constructor`. `Constructor`. This a type alias (a synonym) declared just before `register_sensor()`. 
+
+```rust
+type Constructor = fn() -> Box<dyn TemperatureSensor>;
+```
+
+Now, when we read `Constructor`, we should read `fn() -> Box<dyn TemperatureSensor>`, meaning "a function returning a `Box<dyn TemperatureSensor>`". We already talked about `Box<dyn T>`, you know what this is, I do not have to explain it again: 
+
+In fact, the really weird thing in `register_sensor()` definition is the `TEMPERATURE_SENSOR_REGISTRY`. It is declared this way :
+
+```rust
+pub static TEMPERATURE_SENSOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+```
+
+Stay here, don't run away and don't panic. The line above just says something like :
+* `TEMPERATURE_SENSOR_REGISTRY` is a global static variable (it lives as long as the application)
+    * Its data type is `Lazy<Mutex<HashMap<&'static str, Constructor>>>`
+    * It is initialized with the value `once_cell::sync::Lazy::new(|| Mutex::new(HashMap::new()))`
+
+Regarding `TEMPERATURE_SENSOR_REGISTRY` we see that:
+* This is a `HashMap` where the keys are the literal of the sensors and the values are the `Constructor()` of the respective sensor
+* The `HashMap` is protected by a `Mutex` but keep that a static cannot be mut, so we need **interior mutability** to modify the map at runtime. `Mutex` provides that and thread safety.
+* Then the `Mutex<HashMap<...>>` is then wrapped into a `Lazy` layer.
+    * A `once_cell::sync::Lazy<T>` is a wrapper type
+    * It says something like : "Here is a static that will be initialized the first time it’s used."
+    * "It uses a closure `(|| …)` to specify how to build the value.
+    * It guarantees that initialization happens once and only once, even if multiple threads race to access it.
+    * That’s why the crate is named "once_cell". It’s like a "memory cell" that can be written exactly once. 
+
+Regarding the initialization value `once_cell::sync::Lazy::new(|| Mutex::new(HashMap::new()))`
+* A Lazy value says something like : "When somebody first touches this static, run the closure to build the real value."
+    * The closure `|| Mutex::new(HashMap::new())` creates an empty HashMap wrapped in a `Mutex`.
+    * So the very first time we call `register_sensor()` the Lazy runs the closure and it builds the `Mutex<HashMap<&'static str, Constructor>>`
+
+After that, everyone just reuses the same initialized `TEMPERATURE_SENSOR_REGISTRY` value and we don't have to pass it around as a paramter in all the functions of the application.
+
+Now that we understand what is behind the `TEMPERATURE_SENSOR_REGISTRY` variable we can understand what the `register_sensor()` does :
+
+```rust
+pub fn register_sensor(name: &'static str, constructor: Constructor) {
+    let mut map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("registry mutex poisoned");
+    map.insert(name, constructor);
+}
+```
+
+If the `TEMPERATURE_SENSOR_REGISTRY` is not yet created, it creates the HashMap (lazy implementation). 
+Then we call `.lock().expect("registry mutex poisoned")`. If a panic ever occurs while the registry is being updated, the mutex becomes poisoned. In that case, `.expect()` will panic with our custom message. Remember, a `Mutex` gets poisoned if a thread panics while holding the lock.
+To finish we insert the name of the sensor and its constructor in the HashMap.
+
+**Could we recover instead of panicking?** Yes we can, see below one way but I wanted to keep the POC short :
+
+```rust
+match TEMPERATURE_SENSOR_REGISTRY.lock() {
+    Ok(mut map) => {
+        map.insert(name, constructor);
+    }
+    Err(poisoned) => {
+        let mut map = poisoned.into_inner();
+        map.insert(name, constructor);
+    }
+}
+```
+
+***I'm lost! Where are we? What should I keep in mind?*** Remember, starting from `main()`, pressing F12, we followed the `register()` functions. Finally we reach `thermocouple_128::register()` which call `temperature_sensor::register_sensor()`. On the first call, `once_cell::sync::Lazy` initializes the registry (a global static variable that holds a HashMap of sensor constructors). Each call then locks the map and inserts `(name, constructor)`. From then on, any code can look up the name and call the stored constructor to obtain a `Box<dyn TemperatureSensor>`.
+
+Let's see how and for that let's go back to `main()`. Below is a shortened version with one sensor created. After the line `sensors::register();` all sensors vaialable are in the global registry with their name and constructor. No constructor have been called. No sensor have been created. Then comes the call `temperature_sensor::make_sensor()` :
+
+```rust
+// main.rs
+use demo_registry_0::sensors::{self, temperature::temperature_sensor};
+
+fn main() {
+    sensors::register();
+
+    let thermo_01 = temperature_sensor::make_sensor("Thermocouple_type_128").expect("Unknown sensor");
+    println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
+}
+```
+
+You know what to do. Set the cursor and press F12. Below is its definition :
+
+```rust
+pub fn make_sensor(name: &str) -> Option<Box<dyn TemperatureSensor>> {
+    let map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("TEMPERATURE_SENSOR_REGISTRY mutex poisoned");
+    map.get(name).map(|ctor| ctor())
+}
+```
+It first we get acess to the global registry. As before if the Mutex is poisoned expect panics and prints a custom message. Otherwise we find the sensor by its name (the key) and we call the constructor (the value). The returned value of the constructor is the returned value of `make_sensor()`. 
+
+***What is `ctor` again ?*** Previously, we stored in the static global HashMap (`TEMPERATURE_SENSOR_REGISTRY`) the name of the sensor (`"Thermocouple_type_128"`) as a key and a closure that builds a new instance of this sensor as a value (`|| Box::new(Thermocouple128)`). Here, with `map(|ctor| ctor()`, `|| Box::new(Thermocouple128)` is called and its output becomes the returned value of `make_sensor()`. Look at the signature of `make_sensor()`. It returns an `Option` to a boxed data type which implements the `TemperatureSensor` trait (could be a `Thermocouple128`, `Rtd512`...) 
 
 
 
-<!-- // Explicit registration function with the followings arguments
-//
-// A name                 : "Thermocouple_type_128" — the key we will use later to look for the sensor
-// A constructor function : || Box::new(TempSensor01) — a closure that builds a new instance of this sensor
-// temperature_sensor::register_sensor() stores this name and constructor in the global registry TEMPERATURE_SENSOR_REGISTRY
-// Read temperature_sensor.rs
-//      pub static SENSOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = ...
-//      The registry is a HashMap inside a Mutex (thread-safe). -->
+**Could we recover instead of panicking?** Yes we can. See below one idea :
+
+```rust
+pub fn make_sensor(name: &str) -> Option<Box<dyn TemperatureSensor>> {
+    match TEMPERATURE_SENSOR_REGISTRY.lock() {
+        Ok(map) => map.get(name).map(|ctor| ctor()),
+        Err(poisoned) => {
+            eprintln!("[warn] TEMPERATURE_SENSOR_REGISTRY mutex poisoned — recovering.");
+            let map = poisoned.into_inner(); // take the inner HashMap anyway
+            map.get(name).map(|ctor| ctor())
+        }
+    }
+}
+```
+
+
+Anyway... At the end of the day from the caller point of view, in `main()`, we have : 
+
+```rust
+let thermo_01 = temperature_sensor::make_sensor("Thermocouple_type_128").expect("Unknown sensor");
+```
+
+`thermo_01` is a ready to use instance of the `Thermocouple_type_128` thermocouple. It implements the `TemperatureSensor` trait so we can call `.get_temp()` on it :
+
+```rust
+println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
+```
+
+
+
+
+
+
+
+
+
+
 
 
 ### Exercise
 {: .no_toc }
+
+1. Starting from `main()`, follow the white rabbit, press F12 and retrieve the `register_sensor()` of the rtd.
+
+
 
 
 
@@ -842,7 +997,18 @@ Obviously, the most interesting part is the `register()` function definition; ho
 ### Summary
 {: .no_toc }
 
-
+* We wanted to avoid the potentially huge `match` statement of the previous version of the `make_sensor()` function.
+* The solution is to let each sensor register itself in a global registry.
+* In Rust, plain global variables must be initialized at compile time, which doesn’t work here since the registry must be built dynamically.
+* We therefore need a global variable that is created at runtime.
+* `once_cell::sync::Lazy` lets us define such a global: it ensures the registry is initialized safely on first access.
+* The registry is a `HashMap` where:
+    * the key is a sensor identifier (usually a string literal),
+    * the value is a constructor function returning a `Box<dyn TemperatureSensor>`.
+* The `HashMap` is wrapped in a `Mutex` to provide interior mutability and thread safety.
+* Sensors register themselves by inserting their constructor into the registry.
+* Later, sensors can be instantiated on demand by looking them up in the registry.
+* Smoking!
 
 
 
