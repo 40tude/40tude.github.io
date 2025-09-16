@@ -446,6 +446,14 @@ println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
 {: .no_toc }
 
 1. Starting from `main()`, follow the white rabbit, press F12 and retrieve the `register_sensor()` of the rtd.
+1. Do you feel brave enough to add a new category of temperature sensor?
+    * Add `optical` in addition to `rtd` and `temperature` and the kind of optical sensor could be `camera_007`.   
+1. It seems the registry is written once per kind of sensor and read once per sensor. We may end up with much more read than write operations. Any idea on how we could improve performances?
+    * **Solution:** 
+        * Rename `temperature_sensor.rs` as `temperature_sensor.rs.mutex` 
+        * Rename `temperature_sensor.rs.rwlock` as `temperature_sensor.rs`
+        * `Cargo run`
+        * `Mutex` is replaced by `RwLock`
 
 
 
@@ -470,6 +478,160 @@ println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Once Cell 2/3
+
+Where we have 2 registries. One for temperature sensors and another for pH
+
+### Running the demo code
+{: .no_toc }
+
+* Right click on `assets/12_once_cell_1`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+
+<div align="center">
+<img src="./assets/img35.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+
+
+
+### Exercise
+{: .no_toc }
+
+
+
+
+### Summary
+{: .no_toc }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Once Cell 3/3
+
+One sentence
+
+### Running the demo code
+{: .no_toc }
+
+* Right click on `assets/?????`
+* Select the option "Open in Integrated Terminal"
+* `cargo run`
+
+<div align="center">
+<img src="./assets/imgXX.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Comment about the picture above</span>
+</div>
+
+
+
+### Explanations 1/2 
+{: .no_toc }
+
+
+
+
+### Show me the code!
+{: .no_toc }
+
+```rust
+
+```
+
+
+### Explanations 2/2 
+{: .no_toc }
+
+
+
+
+### Exercise
+{: .no_toc }
+
+
+
+
+### Summary
+{: .no_toc }
 
 
 
