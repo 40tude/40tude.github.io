@@ -62,6 +62,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 * [Episode 01]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
+* [Episode 04]({%link docs/06_programmation/rust/015_traits/traits_04.md%})
 
 
 
@@ -909,6 +910,7 @@ Now, when your tears of joy have dried, step back and take the time to realize h
 * [Episode 01]({%link docs/06_programmation/rust/015_traits/traits_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/015_traits/traits_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
+* [Episode 04]({%link docs/06_programmation/rust/015_traits/traits_04.md%})
 
 
 
