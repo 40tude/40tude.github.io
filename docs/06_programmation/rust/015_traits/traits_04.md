@@ -537,7 +537,7 @@ Below, think about the `ph` directory as a copy/paste/rename of the temperature 
 
 Note that in the thermocouple directory we now have `thermocouple_128` adn `thermocouple_256`. Two different thermocouple references. This is to answer point 2 above.
 
-See below the file hierarchy of the project :    
+See below the file hierarchy of the project. 
 
 
 ### Show me the code!
@@ -746,7 +746,7 @@ Other than that, I think we're done.
 
 ## Once Cell - Sensors and actuators
 
-Where 
+Where the application finally uses sensors and actuators. 
 
 ### Running the demo code
 {: .no_toc }
@@ -767,7 +767,15 @@ Where
 ### Explanations 1/2 
 {: .no_toc }
 
+As you can imagine, people now want to see a POC of the complete application where sensors and actuators are used. 
 
+This section should be even shorter because, again, we already know all we need to know : traits, hub files, once_cell, REGISTRY... 
+
+For demo purpose I created an actuators directory (stuffs that act on the real world to lock doors, heat, cool, turn on alarms). I only created electrical category of actuators but add to kind of electrical motors : servo motor and solenoid. 
+
+Again if you don't know or don't care about sensors and actuators this is OK. Imagine that the application must handle different kinds of file format, different kinds of communication protocols... They are organized in directories, subdirectories and files.
+
+See below the files hierarchy of the project.    
 
 
 ### Show me the code!
@@ -833,13 +841,108 @@ Where
 ### Explanations 2/2 
 {: .no_toc }
 
+In `main.rs` we still have the `sensors::register();` function call followed by `actuators::register();`. Then, as before, we instantiate the sensors. Finally we instantiate actuators (`motor_01` and `solenoid_01`) with `electric_actuator::make_actuator`. We can act on actuators to turn the on and we can also read their status : this is done with the functions `.get_state()` and `.set_state(true)`. This explain why at the bottom of the terminal we see `motor_01   : Stopped` when it is created then `motor_01   : Running` when it is turned on.
+
+Here is `main.rs` :
+
+```rust
+use demo_registry_2::actuators;
+use demo_registry_2::actuators::electric::electric_actuator;
+
+use demo_registry_2::sensors;
+use demo_registry_2::sensors::ph::ph_sensor;
+use demo_registry_2::sensors::temperature::temperature_sensor;
+
+fn main() {
+    sensors::register();
+    actuators::register();
+
+    let thermo_01 = temperature_sensor::make_sensor("Thermocouple_type_128").expect("Unknown sensor");
+    let thermo_02 = temperature_sensor::make_sensor("Thermocouple_type_256").expect("Unknown sensor");
+
+    println!("\nSensors:");
+    println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
+    println!("Thermocouple 02: {:6.2}", thermo_02.get_temp());
+
+    let rtd_01 = temperature_sensor::make_sensor("Rtd_type_512").expect("Unknown sensor");
+    println!("RTD 01         : {:6.2}", rtd_01.get_temp());
+
+    let isfet_01 = ph_sensor::make_sensor("IsFET_type_1024").expect("Unknown sensor");
+    println!("IsFET_01       : {:6.2}", isfet_01.get_ph());
+
+    let probe_42 = ph_sensor::make_sensor("Probe_type_2048").expect("Unknown sensor");
+    println!("Probe_42       : {:6.2}", probe_42.get_ph());
+
+    println!("\nActuators:");
+    let mut motor_01 = electric_actuator::make_actuator("Servo_Motor_type_01").expect("Unknown sensor");
+    println!("motor_01   : {}", if motor_01.get_state() { "Running" } else { "Stopped" });
+    motor_01.set_state(true);
+    println!("motor_01   : {}", if motor_01.get_state() { "Running" } else { "Stopped" });
+
+    let mut solenoid_01 = electric_actuator::make_actuator("Solenoid_type_101").expect("Unknown sensor");
+    println!("solenoid_01: {}", if solenoid_01.get_state() { "Running" } else { "Stopped" });
+    solenoid_01.set_state(true);
+    println!("solenoid_01: {}", if solenoid_01.get_state() { "Running" } else { "Stopped" });
+}
+```
+
+You are able to navigate into the project. For example here is the content of `electric_actuator.rs` where we can see that a `ELEC_ACTUATOR_REGISTRY` global registry is created.
+
+```rust
+use once_cell::sync::Lazy;
+use std::collections::HashMap;
+use std::sync::Mutex;
+
+pub trait ElectricActuator {
+    fn set_state(&mut self, state: bool);
+    fn get_state(&self) -> bool;
+}
+
+type Constructor = fn() -> Box<dyn ElectricActuator>;
+
+pub static ELEC_ACTUATOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+
+pub fn register_actuator(name: &'static str, constructor: Constructor) {
+    ELEC_ACTUATOR_REGISTRY.lock().unwrap().insert(name, constructor);
+}
+
+pub fn make_actuator(name: &str) -> Option<Box<dyn ElectricActuator>> {
+    ELEC_ACTUATOR_REGISTRY.lock().unwrap().get(name).map(|ctor| ctor())
+}
+```
+
+And here is the content of `servo_motor_01.rs`. Without surprise, we find a `register()` function. More interestingly, an actuator needs to store its `state`. Here in a motor we store a boolean to indicate if the engine is running or not. Below we can see the implementation of the `.set_state()` and `.get_state()` methods.  
+
+```rust
+// servo_motor_01.rs
+use crate::actuators::electric::electric_actuator::{self, ElectricActuator};
+
+pub struct ServoMotor01 {
+    state: bool,
+}
+
+impl ElectricActuator for ServoMotor01 {
+    fn set_state(&mut self, new_state: bool) {
+        self.state = new_state;
+    }
+
+    fn get_state(&self) -> bool {
+        self.state
+    }
+}
+
+pub fn register() {
+    electric_actuator::register_actuator("Servo_Motor_type_01", || Box::new(ServoMotor01 { state: false }));
+}
+```
 
 
 
 ### Exercise
 {: .no_toc }
 
-1. ???
+1. In the actuators, add a `Heater` category and a `gaz` kind of heater. Name the reference `gaz_3852`. In `main()` create an instance `my_gaz_heater`, set it on and off. Read it status after each new setting.
+1. Can you easily modify your heater actuator so that the `.set_state()` expect a `f64` parameter representing the percentage of heat to be used (from 0.0 to 100.0). Modify `.get_state()` so that the returned value represents the current percentage of heat.   
 
 
 
