@@ -46,13 +46,13 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 ## TL;DR
 {: .no_toc }
 
-* Traits define shared behavior across different data types
-* Static dispatch: compiler knows all concrete types at compile time (fast, zero runtime cost)
+* **Traits** define shared behavior across different data types
+* **Static dispatch**: compiler knows all concrete types at compile time (fast, zero runtime cost)
 * Functions can accept any type implementing a trait (impl Trait or generics with bounds)
-* Dynamic dispatch: use `Box<dyn Trait>` to handle different concrete types at runtime
+* **Dynamic dispatch**: use `Box<dyn Trait>` to handle different concrete types at runtime
 * Requires indirection via fat pointers + vtable lookup (slower, but more flexible)
 * Useful for collections of heterogeneous objects (`Vec<Box<dyn Trait>>`)
-* Default implementations: traits can provide fallback behavior
+* **Default implementations**: traits can provide fallback behavior
 * A type can override only what it needs, and rely on defaults for the rest
 * This flexibility allows quick prototyping and gradual refinement
 
