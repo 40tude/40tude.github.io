@@ -2,12 +2,12 @@
 published: true
 lang: en-US
 layout: default
-title: "Rust Traits: Defining Character - 03"
+title: "Rust Traits: Defining Character - 04"
 description: "From basic syntax to building plugins with once_cell and organizing Rust projects."
 parent: "Rust"
 #math: mathjax
 date               : 2025-09-14 14:00:00
-last_modified_date : 2025-09-16 15:00:00
+last_modified_date : 2025-09-17 07:00:00
 ---
 
 
@@ -503,13 +503,15 @@ println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
 
 ## Once Cell 2/3
 
-Where we have 2 registries. One for temperature sensors and another for pH
+Where we have 2 registries. One for temperature sensors and another for pH sensors.
 
 ### Running the demo code
 {: .no_toc }
 
 * Right click on `assets/12_once_cell_1`
 * Select the option "Open in Integrated Terminal"
+* `cargo add rand`
+* `cargo add once_cell`
 * `cargo run`
 
 <div align="center">
@@ -522,14 +524,62 @@ Where we have 2 registries. One for temperature sensors and another for pH
 ### Explanations 1/2 
 {: .no_toc }
 
+People were so pleased with the previous POC that they ask us a new version   
+1. with not only temperature sensors but also, other kinds of sensors : the mentioned pH meter, strain gauges, flow meter... 
+1. with multiple references under a kind of sensor. The idea is to show that under sensor/temperature/thermocouple we can have termocoupleX, termocoupleY...      
+1. with multiple instances of the same sensor reference because in a plant you can easily have 100 temperature sensors of the same reference.
 
+No worry. This section is short and easy because we already know all we need to know. 
+
+If you know nothing about sensors, below I added pH sensors in a specific directory. pH sensors help to measure the acidity of a solution. I added 2 kinds of pH meters : probe and ISFET. The idea is to answer point 1 above. Below, think about the `ph` directory as a copy/paste/rename of the temperature directory. Nothing more. The hub files, traits and implementation are used exactly the same way.  
+
+Note that in the thermocouple directory we now have `thermocouple_128` adn `thermocouple_256`. Two different thermocouple references. This is to answer point 2 above.
+
+See below the file hierarchy of the project :    
 
 
 ### Show me the code!
 {: .no_toc }
 
-```rust
-
+```
+.
+│   .gitignore
+│   Cargo.lock
+│   Cargo.toml
+│
+├───src
+│   │   lib.rs
+│   │   main.rs
+│   │   sensors.rs
+│   │
+│   └───sensors
+│       │   ph.rs
+│       │   temperature.rs
+│       │
+│       ├───ph
+│       │   │   isfet.rs
+│       │   │   ph_sensor.rs
+│       │   │   probe.rs
+│       │   │
+│       │   ├───isfet
+│       │   │       isfet_1024.rs
+│       │   │
+│       │   └───probe
+│       │           probe_2048.rs
+│       │
+│       └───temperature
+│           │   rtd.rs
+│           │   temperature_sensor.rs
+│           │   thermocouple.rs
+│           │
+│           ├───rtd
+│           │       rtd_512.rs
+│           │
+│           └───thermocouple
+│                   thermocouple_128.rs
+│                   thermocouple_256.rs
+│
+└───target
 ```
 
 
@@ -538,9 +588,113 @@ Where we have 2 registries. One for temperature sensors and another for pH
 
 
 
+In `main.rs` we still have the `sensors::register();` function call. The creation of 
+* `thermo_01` and `thermo_02` demonstratess point 2
+* `thermo_02` and `thermo_03` demonstrates point 3
+* `isfet_01` and `probe_42` demonstrates point1  
+
+```rust
+use demo_registry_1::sensors;
+use demo_registry_1::sensors::ph::ph_sensor;
+use demo_registry_1::sensors::temperature::temperature_sensor;
+
+fn main() {
+    sensors::register();
+
+    let thermo_01 = temperature_sensor::make_sensor("Thermocouple_type_128").expect("Unknown sensor");
+    let thermo_02 = temperature_sensor::make_sensor("Thermocouple_type_256").expect("Unknown sensor");
+    let thermo_03 = temperature_sensor::make_sensor("Thermocouple_type_256").expect("Unknown sensor");
+
+    println!("\nSensors:");
+    println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
+    println!("Thermocouple 02: {:6.2}", thermo_02.get_temp());
+    println!("Thermocouple 03: {:6.2}", thermo_03.get_temp());
+
+    let rtd_01 = temperature_sensor::make_sensor("Rtd_type_512").expect("Unknown sensor");
+    println!("RTD 01         : {:6.2}", rtd_01.get_temp());
+
+    let isfet_01 = ph_sensor::make_sensor("IsFET_type_1024").expect("Unknown sensor");
+    println!("IsFET_01       : {:6.2}", isfet_01.get_ph());
+
+    let probe_42 = ph_sensor::make_sensor("Probe_type_2048").expect("Unknown sensor");
+    println!("Probe_42       : {:6.2}", probe_42.get_ph());
+}
+```
+
+You should be able to navigate withing the project as we did before.
+
+One thing however. In `src/sensors/temperature/temperature_sensor.rs` we have :
+
+```rust
+// temperature_sensor.rs
+use once_cell::sync::Lazy;
+use std::collections::HashMap;
+use std::sync::Mutex;
+
+pub trait TemperatureSensor {
+    fn get_temp(&self) -> f64;
+}
+
+// Type alias for a constructor function returning a boxed sensor
+type Constructor = fn() -> Box<dyn TemperatureSensor>;
+
+// Global registry of sensor constructors
+pub static TEMPERATURE_SENSOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+
+// Called by sensors
+pub fn register_sensor(name: &'static str, constructor: Constructor) {
+    let mut map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("TEMPERATURE_SENSOR_REGISTRY mutex poisoned");
+    map.insert(name, constructor);
+}
+
+// Called by binaries (main.rs, examples, tests...) to creates a sensor by name
+pub fn make_sensor(name: &str) -> Option<Box<dyn TemperatureSensor>> {
+    let map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("TEMPERATURE_SENSOR_REGISTRY mutex poisoned");
+    map.get(name).map(|ctor| ctor())
+}
+
+```
+While in `src/sensors/ph/ph_sensor.rs` we have :
+
+```rust
+// ph_sensor.rs
+use once_cell::sync::Lazy;
+use std::collections::HashMap;
+use std::sync::Mutex;
+
+pub trait PhSensor {
+    fn get_ph(&self) -> f64;
+}
+
+// Type alias for a constructor function returning a boxed sensor
+type Constructor = fn() -> Box<dyn PhSensor>;
+
+// Global registry of sensor constructors
+pub static PH_SENSOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+
+// Called by sensors
+pub fn register_sensor(name: &'static str, constructor: Constructor) {
+    let mut map = PH_SENSOR_REGISTRY.lock().expect("PH_SENSOR_REGISTRY mutex poisoned");
+    map.insert(name, constructor);
+}
+
+// Called by binaries (main.rs, examples, tests...) to creates a sensor by name
+pub fn make_sensor(name: &str) -> Option<Box<dyn PhSensor>> {
+    let map = PH_SENSOR_REGISTRY.lock().expect("PH_SENSOR_REGISTRY mutex poisoned");
+    map.get(name).map(|ctor| ctor())
+}
+```
+
+Both used `Mutex` and not `RwLock` but this is not the point. No, the point I want to underline is that one create a static global `TEMPERATURE_SENSOR_REGISTRY` while the other one create `PH_SENSOR_REGISTRY`. This means that the application ends up with 2 registries in memory. This might be smart if we have lot of temperature sensors and pH sensors and if we want to shorten look up time. If the look up time is not an issue we could create a unique `SENSOR_REGISTRY`. Obviously this one should be created in `src/sensors.rs` (the common ancestor of all the sensors).
+
+Other than that, I think we're done.
+
+
 
 ### Exercise
 {: .no_toc }
+
+1. Copy and paste the project directory. Modify the code so that it uses a unique `SENSOR_REGISTRY` global registry for all sensors.
 
 
 
@@ -588,18 +742,20 @@ Where we have 2 registries. One for temperature sensors and another for pH
 
 ## Once Cell 3/3
 
-One sentence
+Where 
 
 ### Running the demo code
 {: .no_toc }
 
-* Right click on `assets/?????`
+* Right click on `assets/13_once_cell_2`
 * Select the option "Open in Integrated Terminal"
+* `cargo add rand`
+* `cargo add once_cell`
 * `cargo run`
 
 <div align="center">
-<img src="./assets/imgXX.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Comment about the picture above</span>
+<img src="./assets/img36.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
 </div>
 
 
@@ -614,7 +770,59 @@ One sentence
 {: .no_toc }
 
 ```rust
-
+C:.
+│   .gitignore
+│   Cargo.lock
+│   Cargo.toml
+│
+├───src
+│   │   actuators.rs
+│   │   lib.rs
+│   │   main.rs
+│   │   sensors.rs
+│   │
+│   ├───actuators
+│   │   │   electric.rs
+│   │   │
+│   │   └───electric
+│   │       │   electric_actuator.rs
+│   │       │   servo_motor.rs
+│   │       │   solenoid.rs
+│   │       │
+│   │       ├───servo_motor
+│   │       │       servo_motor_01.rs
+│   │       │
+│   │       └───solenoid
+│   │               solenoid_101.rs
+│   │
+│   └───sensors
+│       │   ph.rs
+│       │   temperature.rs
+│       │
+│       ├───ph
+│       │   │   isfet.rs
+│       │   │   ph_sensor.rs
+│       │   │   probe.rs
+│       │   │
+│       │   ├───isfet
+│       │   │       isfet_1024.rs
+│       │   │
+│       │   └───probe
+│       │           probe_2048.rs
+│       │
+│       └───temperature
+│           │   rtd.rs
+│           │   temperature_sensor.rs
+│           │   thermocouple.rs
+│           │
+│           ├───rtd
+│           │       rtd_512.rs
+│           │
+│           └───thermocouple
+│                   thermocouple_128.rs
+│                   thermocouple_256.rs
+│
+└───target
 ```
 
 
