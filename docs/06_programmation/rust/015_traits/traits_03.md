@@ -29,8 +29,14 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 ## TL;DR
 {: .no_toc }
 
-* For beginners
-* The code is on [GitHub](https://github.com/40tude/traits_as_plugins)
+* Rust splits projects into a **binary crate** (`main.rs`) and a **library crate** (`lib.rs`)
+* Use **hub files** (`pub mod ...;`) to keep a clean, explicit module tree
+* In `main.rs`, `crate::` refers to the binary crate → use the crate name from `Cargo.toml` to access library modules
+* `make_sensor()` works as a **factory**, returning `Box<dyn TempSensor>`
+* `Vec<Box<dyn Trait>>` allows storing different sensor types and calling methods via **dynamic dispatch**
+* `s.get_temp()` works through auto-deref + borrow, turning the `Box` into `&dyn TempSensor` and dispatching through the vtable
+* The result: a modular, extensible architecture, ready to scale with more sensors and actuators
+
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>

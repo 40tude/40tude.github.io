@@ -46,8 +46,15 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 ## TL;DR
 {: .no_toc }
 
-* For beginners
-* The code is on [GitHub](https://github.com/40tude/traits_as_plugins)
+* Traits define shared behavior across different data types
+* Static dispatch: compiler knows all concrete types at compile time (fast, zero runtime cost)
+* Functions can accept any type implementing a trait (impl Trait or generics with bounds)
+* Dynamic dispatch: use `Box<dyn Trait>` to handle different concrete types at runtime
+* Requires indirection via fat pointers + vtable lookup (slower, but more flexible)
+* Useful for collections of heterogeneous objects (`Vec<Box<dyn Trait>>`)
+* Default implementations: traits can provide fallback behavior
+* A type can override only what it needs, and rely on defaults for the rest
+* This flexibility allows quick prototyping and gradual refinement
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
@@ -83,7 +90,40 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <!-- ###################################################################### -->
 
 ## Introduction
-* To be written
+
+In Rust, traits are an elegant way to define behavior that can be shared across different data types. What I really like is that I can first focus on defining my data types. Later, if I notice they share some common ground, I can extract that into a trait (think of it like a personality trait several people might share). Once the trait exists, I can enrich my data types with it—without touching their original definition. And if an external library already provides a trait, I can still implement it for my own types.
+
+For example, imagine a trait called `Loggable`. If I have a type `Dog`, I can make it implement `Loggable` and suddenly it gains the ability to integrate with logging.
+
+That may sound a bit abstract, so I started experimenting with a very simple project: measuring temperature with sensors that all share a `Measurable` trait. From there, I wondered whether traits could be used to structure an application around the idea of plugins. Think of an app that needs to support different file formats for reading and writing. Or one that can read data from Ethernet, serial, or Bluetooth connections. In every case, you find commonalities that can be expressed as traits.
+
+Step by step, I experimented and discovered more and more aspects of traits. The result is this series of five posts, each taking about 30 minutes to read. By the end, my hope is not just that you’ll understand how traits work and what they can do, but that you’ll have built the reflex to actually use them. I’m convinced that sometimes all it takes is hearing the same concept explained slightly differently for the “click” to happen—that *aha moment*.
+
+### What’s inside the series?
+{: .no_toc }
+
+* **Post 0:** A gentle start with static vs. dynamic dispatch, and default implementations.
+* **Post 1:** Multiple traits, blanket implementations, orphan rules, and the newtype pattern.
+* **Post 2:** Trait bound inheritance, extension traits, associated types, constants, and functions.
+* **Post 3:** Organizing with modules and crates, and creating sensors dynamically.
+* **Post 4:** Using `once_cell` to manage dynamic sensor and actuator registries.
+
+### How to read
+{: .no_toc }
+
+On the technical side, I assume you’re a beginner. I don’t take anything for granted except that you have Rust and VS Code installed. I start from zero—or almost—and take the time to explain everything line by line. I show how to run code examples, encourage you to experiment, break things, and fix them again.
+
+Each post is self-contained but meant to be read in order. They’re long—sorry!—but I wanted to take the time to explain things thoroughly. Each episode has its own table of contents and links to the others. At the beginning of every section, I show a working example along with its output. When I comment on code, I always include the full listing for clarity. And of course, everything is available in a single [GitHub repo](https://github.com/40tude/traits_as_plugins).
+
+So here we go. Imagine you’re chatting with a friend or a colleague. I don’t claim to know everything—I’m still learning Rust myself. There will probably be mistakes or things that could be improved. But hey, two heads are better than one, and I’m confident we’ll figure things out together.
+
+
+
+
+
+
+
+
 
 ## A Gentle Start - Static Dispatch
 Where data type are known at compile time.

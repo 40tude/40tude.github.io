@@ -31,8 +31,16 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 ## TL;DR
 {: .no_toc }
 
-* For beginners
-* The code is on [GitHub](https://github.com/40tude/traits_as_plugins)
+* Functions can require **multiple traits** using generic bounds (`T: Measurable + Identifiable`)
+* `where` clauses make complex bounds easier to read
+* **Blanket implementation**: define a trait once for *all* types that meet certain bounds → compiler generates concrete implementations
+* Everything happens at compile time → zero runtime cost
+* Rust’s **orphan/coherence rules**: you cannot implement a foreign trait for a foreign type
+* **Newtype pattern**: wrap a type in a local tuple struct to regain ownership and implement foreign traits safely
+* Helper functions (`as_display`) can hide boilerplate when using newtypes
+* Choosing between `println!("{}", wrapper.pretty())` vs. `wrapper.print()` is mostly a matter of taste
+
+
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>

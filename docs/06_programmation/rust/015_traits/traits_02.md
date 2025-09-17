@@ -29,8 +29,15 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 ## TL;DR
 {: .no_toc }
 
-* For beginners
-* The code is on [GitHub](https://github.com/40tude/traits_as_plugins)
+* **Trait bound inheritance**: a trait can require another (`trait TempSensor: Display`) → compiler enforces consistency
+* **Extension traits**: add new methods to existing traits without touching their original definition
+* Blanket `impl<T: TempSensor> SensorDisplay for T {}` → all sensors gain `.pretty()` for free
+* **Dynamic dispatch + Display**: implement `Display` directly for `Box<dyn TempSensor>` → allows `println!("{}", sensor)` in loops
+* **Associated types**: simplify generic traits, avoid verbose `<T>` everywhere, enforce one output type per trait impl
+* **Associated constants**: embed fixed data like units (`°C`, `°F`) directly in the trait, tied to the type not the instance
+* **Associated functions**: factory-like methods defined at the trait level (`fn new_set_to_zero() -> Self`)
+* `Self: Sized` ensures these functions work only on concrete types, not on trait objects
+
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>

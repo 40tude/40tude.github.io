@@ -29,8 +29,15 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 ## TL;DR
 {: .no_toc }
 
-* For beginners
-* The code is on [GitHub](https://github.com/40tude/traits_as_plugins)
+* A huge `match` in `make_sensor()` doesn’t scale → let sensors **self-register**
+* Use **`once_cell::sync::Lazy`** to build a global registry at runtime
+* Registry = `HashMap<&'static str, Constructor>` wrapped in `Mutex` (or `RwLock` for read-heavy use cases)
+* Each sensor calls `register_sensor(name, constructor)` → adds itself to the registry
+* Later, `make_sensor(name)` looks up the constructor and instantiates the right sensor
+* Multiple registries can coexist (temperature, pH, etc.) or be unified if needed
+* Same approach works for **actuators**: register themselves, instantiate on demand, expose methods (`get_state`, `set_state`)
+* Result: a modular, extensible plugin-like architecture for sensors and actuators
+
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
