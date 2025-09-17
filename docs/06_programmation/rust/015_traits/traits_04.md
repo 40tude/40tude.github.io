@@ -61,7 +61,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 <!-- ###################################################################### -->
 
 
-## Once Cell 1/3
+## Once Cell - First-time use
 
 Where the `once_cell` crate lets us define a global list of sensors dynamically initialized at runtime.
 
@@ -501,7 +501,7 @@ println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
 <!-- ###################################################################### -->
 
 
-## Once Cell 2/3
+## Once Cell - Different types of sensors
 
 Where we have 2 registries. One for temperature sensors and another for pH sensors.
 
@@ -744,7 +744,7 @@ Other than that, I think we're done.
 <!-- ###################################################################### -->
 
 
-## Once Cell 3/3
+## Once Cell - Sensors and actuators
 
 Where 
 
