@@ -953,20 +953,3 @@ Now, when your tears of joy have dried, step back and take the time to realize h
 * [Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})
 * [Episode 04]({%link docs/06_programmation/rust/015_traits/traits_04.md%})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
