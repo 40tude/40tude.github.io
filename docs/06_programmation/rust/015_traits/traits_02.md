@@ -517,7 +517,12 @@ fn main() {
 }
 ```
 
-Know the answer, you do, young Padawan.
+<div align="center">
+<img src="./assets/img37.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Know the answer, you do, young Padawan.</span>
+</div>
+
+
 
 
 
@@ -531,7 +536,7 @@ Know the answer, you do, young Padawan.
 
 ## Traits and dynamic dispatch
 
-One sentence
+Where we implement `Display` on a `Vec<T>` and not `T` as before.
 
 ### Running the demo code
 {: .no_toc }
@@ -619,7 +624,7 @@ As in the previous sample code we first create a trait `TempSensor` with 2 funct
 
 So any variable of type `TempSensor01` has the `.get_temp()` and `.unit()` methods (and we do the same thing for the data type `TempSensor02`).
 
-The key to the answer your question is in data types available in the `main()` function. What is the type of `sensor` in the `for` loop? Exact! This is a `Box<dyn TempSensor>` (it was easy to answer because above you can see that `sensors` is a `Vec<Box<dyn TempSensor>>`, a vector of `Box<dyn TempSensor>`).
+The key to answer your question is in data types available in the `main()` function. What is the type of `sensor` in the `for` loop? Exact! This is a `Box<dyn TempSensor>` (it was easy to answer because on the line above you can see that `sensors` is a `Vec<Box<dyn TempSensor>>`, a vector of `Box<dyn TempSensor>`).
 
 So, if you want to write `println!("{}", sensor);` what do you need? I need `Display` for `sensor`... Right? In other words I need to implement the trait `Display` for the data type of `sensor`, I need to implement the trait `Display` for the `Box<dyn TempSensor>` data type.
 
