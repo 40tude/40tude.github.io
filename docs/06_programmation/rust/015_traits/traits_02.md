@@ -18,9 +18,9 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 {: .lead }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b>This post is under construction.</b></span>    
-</h2>
+</h2> -->
 
 
 ### This is Episode 02
@@ -285,6 +285,16 @@ This is possible and you already know how : we need a mixt of trait bounds inher
 ### Summary
 {: .no_toc }
 
+* **Trait bounds inheritance** lets us require that a type implementing one trait must also implement another trait.
+<!-- * Example: `trait TempSensor: Display` enforces that any `TempSensor` must also implement `Display`. -->
+<!-- * This ensures the compiler reminds you if you forget to implement the required trait. -->
+* `TempSensor01` and `TempSensor02` both implement `TempSensor` and `Display`.
+<!-- * The `main()` function demonstrates creating a vector of different sensors and printing them directly with `println!`. -->
+* Because of the `Display` implementation, sensors can be printed without explicitly calling methods.
+* The benefit: consistency and compile-time safety—no risk of forgetting necessary implementations.
+* The limitation: we need to manually implement `Display` (though compiler-generated code via blanket implementations can help).
+<!-- * Exercise: add a `TempSensor03` that stores values in Kelvin, implements `TempSensor` and `Display`, and test it in the loop. -->
+
 
 
 
@@ -427,7 +437,7 @@ We know about default trait implementation. So we understand that `.pretty()` ha
 
 The code above is called **extension traits**. This is a way to add methods to an existing trait (`TempSensor` here) without impacting the original type definitions.
 
-The next line is important
+The next line is **important**:
 
 ```rust
 impl<T: TempSensor> SensorDisplay for T {}
@@ -462,6 +472,16 @@ In the `main()` function we simply have :
 
 ### Summary
 {: .no_toc }
+
+
+* **Problem with trait inheritance**: forcing `TempSensor` to also implement `Display` still required copy-pasting `Display` code in each type.
+* **Solution with extension traits**: define a new trait (`SensorDisplay`) that depends on `TempSensor` and provides default implementations.
+* `SensorDisplay` adds a `.pretty()` method that reuses `get_temp()` and `get_id()` from `TempSensor`.
+* The blanket implementation `impl<T: TempSensor> SensorDisplay for T {}` gives **all TempSensors the `.pretty()` method automatically**.
+* This avoids boilerplate and lets the compiler generate consistent code for all sensor types.
+<!-- * Result: `TempSensor01` and `TempSensor02` both gain `.pretty()` for free, used directly in `main()`. -->
+
+
 
 
 
@@ -627,6 +647,12 @@ impl Display for Box<dyn TempSensor> {
 
 ### Summary
 {: .no_toc }
+
+* `TempSensor` trait defines a common interface (`get_temp()` and `unit()`) for different sensor types.
+* `TempSensor01` and `TempSensor02` implement the trait with their own logic (Celsius vs. Fahrenheit).
+* In `main()`, sensors are stored as `Vec<Box<dyn TempSensor>>`, enabling **dynamic dispatch** across different types.
+* To use `println!`, `Display` is implemented directly for `Box<dyn TempSensor>`, formatting output with `get_temp()` and `unit()`.
+* Result: heterogeneous sensor types can coexist in one collection and be printed uniformly.
 
 
 
@@ -937,6 +963,18 @@ I first indicate the data type of the returned value (see `type Output = f64;`).
 ### Summary
 {: .no_toc }
 
+* Using generic traits with type parameters (`trait TempSensor<T>`) allows sensors to return different types (e.g., `f64`, `i16`), but it makes function signatures verbose and can lead to confusing multiple implementations.
+* Associated types simplify this by letting a trait declare a type placeholder inside its definition:
+
+  ```rust
+  trait TempSensor {
+      type Output;
+      fn get_temp(&self) -> Self::Output;
+  }
+  ```
+* Each implementation specifies what `Output` is (e.g., `f64`, `i16`), making the trait cleaner and avoiding repeated type parameters in every function.
+* Functions like `log_temperature<S: TempSensor>` become much simpler, since `S::Output` is tied directly to the sensor type.
+* Associated types improve readability, reduce boilerplate, and prevent inconsistent implementations compared to generic type parameters.
 
 
 
@@ -1237,11 +1275,17 @@ Simpler than expected. Is'nt it? The method create and return a `TempSensor01`. 
 ### Summary
 {: .no_toc }
 
+* Traits can define **associated constants**, like `UNIT`, to enforce fixed, unchangeable values (e.g., °C, °F) tied to the type, not the instance.
+* These constants are stored as `'static str` references in the binary’s read-only section, ensuring immutability and consistency.
+* Traits can also define **associated functions** (no `&self`), which act as factory methods returning `Self`.
+* The `where Self: Sized` bound ensures these functions only work on concrete types, not trait objects.
+* Combined, associated constants and functions expand traits beyond methods, enabling safer, cleaner, and more expressive designs.
+
+
+Good to keep in mind :
 * Methods → depend on `&self` (behavior of the instance).
-* Associated constants → fixed data that belongs to the type (like “this sensor speaks °C”).
-* Associated functions → helper/static functions defined at the trait level (like factories, converters, validators).
-
-
+* **Associated constants** → fixed data that belongs to the type (like “this sensor speaks °C”).
+* **Associated functions** → helper/static functions defined at the trait level (like factories, converters, validators).
 
 
 

@@ -19,9 +19,9 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 {: .lead }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b>This post is under construction.</b></span>    
-</h2>
+</h2> -->
 
 ### This is Episode 03
 {: .no_toc }
@@ -320,6 +320,12 @@ I could modify the first shortcut to be able to write `let my_sensor = TempSenso
 ### Summary
 {: .no_toc }
 
+* A Rust project can contain both a **library crate** (`lib.rs`) and a **binary crate** (`main.rs`), with the binary consuming the API exposed by the library.
+* The compiler builds a **module tree** in memory, independent of file and directory names; hub files (`pub mod ...;`) are used to connect directories and submodules.
+* Organizing code into modules and submodules (e.g., sensors, temperature sensors) keeps the project scalable and maintainable.
+* In `lib.rs`, paths we use `crate::...` because it is the crate root, while in `main.rs` paths must start from the crate name defined in `Cargo.toml`.
+* Traits must be explicitly brought into scope (`use ...::TempSensor;`) before their methods can be called, ensuring clarity and safety.
+
 
 
 
@@ -585,6 +591,12 @@ Summary of the summary: `s.get_temp()` works with `fn get_temp(&self)` because t
 
 ### Summary
 {: .no_toc }
+
+* The project is reorganized (`temp` renamed to `temperature`) while keeping the same modular structure.
+* Sensor creation is moved into a **factory function** `make_sensor()` inside the `temperature_sensor` module.
+* `make_sensor()` returns a `Box<dyn TempSensor>`, enabling dynamic dispatch over multiple sensor types.
+* The `main()` function builds a vector of sensors dynamically and iterates over them, calling `get_temp()` at runtime.
+* Dynamic dispatch works through trait objects: `Box<dyn TempSensor>` dereferences and borrows automatically, with the vtable selecting the right method implementation.
 
 
 

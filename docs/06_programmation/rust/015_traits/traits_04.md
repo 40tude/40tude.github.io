@@ -19,9 +19,9 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 {: .lead }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b>This post is under construction.</b></span>    
-</h2>
+</h2> -->
 
 ### This is Episode 04
 {: .no_toc }
@@ -30,7 +30,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 {: .no_toc }
 
 * A huge `match` in `make_sensor()` doesn’t scale → let sensors **self-register**
-* Use **`once_cell::sync::Lazy`** to build a global registry at runtime
+* Use `once_cell::sync::Lazy` to build a global registry at runtime
 * Registry = `HashMap<&'static str, Constructor>` wrapped in `Mutex` (or `RwLock` for read-heavy use cases)
 * Each sensor calls `register_sensor(name, constructor)` → adds itself to the registry
 * Later, `make_sensor(name)` looks up the constructor and instantiates the right sensor
@@ -470,18 +470,16 @@ println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
 ### Summary
 {: .no_toc }
 
-* We wanted to avoid the potentially huge `match` statement of the previous version of the `make_sensor()` function.
-* The solution is to let each sensor register itself in a global registry.
-* In Rust, plain global variables must be initialized at compile time, which doesn’t work here since the registry must be built dynamically.
-* We therefore need a global variable that is created at runtime.
-* `once_cell::sync::Lazy` lets us define such a global variable: it ensures the registry is initialized safely on first access.
-* The registry is a `HashMap` where:
-    * the key is a sensor identifier (usually a string literal),
-    * the value is a constructor function returning a `Box<dyn TemperatureSensor>`.
-* The `HashMap` is wrapped in a `Mutex` to provide interior mutability and thread safety.
-* Sensors register themselves by inserting their constructor into the registry.
+* We want to avoid the potentially huge `match` statement of the previous version of the `make_sensor()` function.
+* The solution is to let each sensor **registers itself** into a global registry keyed by a `&'static str` and storing a **constructor** (`fn() -> Box<dyn TemperatureSensor>`).
+* Plain globals must be compile-time initialized, so we use **`once_cell::sync::Lazy`** to create the registry **at first access** safely and exactly once.
+* The registry is a `HashMap<&'static str, Constructor>` providing **name → constructor** lookups.
+* Because statics can’t be `mut`, we wrap the map in a **`Mutex` for interior mutability and thread safety** (consider `RwLock` when reads dominate).
+* Sensors call `register_sensor(name, constructor)` during startup to populate the registry.
+* At runtime, `make_sensor(name)` **locks, looks up, and invokes** the stored constructor to return `Box<dyn TemperatureSensor>`.
 * Later, sensors can be instantiated on demand by looking them up in the registry.
-* Smoking!
+* Result: scalable, decoupled sensor creation without growing `match` statements. Smoking!
+
 
 
 
@@ -705,15 +703,23 @@ Other than that, I think we're done.
 ### Exercise
 {: .no_toc }
 
-1. ??? 
-
+1. Can you extend the application with weight sensors returning f64 in Newton (mass in kg *9.1)?
+    * copy paste pH directory
+    * Rename files and hub files
+    * Review the trait
+    * Don't forget to register
+    * Instantiate and make measurements in `main()`
 
 
 
 ### Summary
 {: .no_toc }
 
-* ???
+* The previous file organization is reused for adding **pH sensors** alongside temperature sensors.
+* Each sensor family (`temperature`, `ph`) has its **own registry** implemented with `once_cell::Lazy<Mutex<HashMap<...>>>`.
+* `main()` registers all sensors, then instantiates them by name via `make_sensor()`.
+* Having **two registries** allows faster lookups per family; alternatively, a single unified registry could be used.
+
 
 
 
@@ -957,7 +963,13 @@ pub fn register() {
 ### Summary
 {: .no_toc }
 
-* ???
+* The project now includes **actuators** in addition to sensors, organized in their own directory structure.
+* Actuators implement a trait (`ElectricActuator`) with `.set_state()` and `.get_state()` methods to control and read their status.
+* A global **actuator registry** (`ELEC_ACTUATOR_REGISTRY`) is defined with `once_cell::Lazy`, similar to the sensor registries.
+* Each actuator type (e.g., **servo motor**, **solenoid**) registers itself with a name and a constructor.
+* In `main()`, sensors and actuators are both registered and then instantiated dynamically via `make_sensor()` / `make_actuator()`.
+
+
 
 
 

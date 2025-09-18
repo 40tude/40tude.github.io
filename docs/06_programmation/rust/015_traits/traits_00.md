@@ -35,9 +35,9 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 {: .lead }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b>This post is under construction.</b></span>    
-</h2>
+</h2> -->
 
 ### This is Episode 00
 {: .no_toc }
@@ -95,7 +95,7 @@ In Rust, traits are an elegant way to define behavior that can be shared across 
 
 For example, imagine a trait called `Loggable`. If I have a type `Dog`, I can make it implement `Loggable` and suddenly it gains the ability to integrate with logging.
 
-That may sound a bit abstract, so I started experimenting with a very simple project: measuring temperature with sensors that all share a `Measurable` trait. From there, I wondered whether traits could be used to structure an application around the idea of plugins. Think of an app that needs to support different file formats for reading and writing. Or one that can read data from Ethernet, serial, or Bluetooth connections. In every case, you find commonalities that can be expressed as traits.
+That may sound a bit abstract, so I started experimenting with a very simple project: measuring temperature with sensors that all share a `Measurable` trait. From there, I wondered whether traits could be used to structure an application around the idea of plugins. Think of an app that needs to support different file formats for reading and writing. Or one that can read data from Ethernet, serial, or Bluetooth connections. In every case, you discover at runtime which protocols/files format/sensor you need to support but they all have commonalities that can be expressed as traits.
 
 Step by step, I experimented and discovered more and more aspects of traits. The result is this series of five posts, each taking about 30 minutes to read. By the end, my hope is not just that you’ll understand how traits work and what they can do, but that you’ll have built the reflex to actually use them. I’m convinced that sometimes all it takes is hearing the same concept explained slightly differently for the “click” to happen—that *aha moment*.
 
@@ -131,7 +131,8 @@ Where data type are known at compile time.
 ### Running the demo code
 {: .no_toc }
 
-I will not explain how to run the code every time.
+I'm not going to explain how to run the code every time, so stay with me and pay attention.
+
 * Get the projet from [GitHub](https://github.com/40tude/traits_as_plugins)
 * Open the folder with VSCode
 * Once in VSCcode, right click on `assets/00_static_dispatch`
@@ -162,7 +163,7 @@ I will not explain how to run the code every time.
 
 
 
-* If you don't want to run the code locally, until the section about **Modules & Crates**, you should be able to copy and paste the code in the excellent [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d2d109f3055e1780562c8e7a97279470). 
+* If you don't want to run the code locally, until the section about **Modules & Crates** ([Episode 03]({%link docs/06_programmation/rust/015_traits/traits_03.md%})), you should be able to copy and paste the code in the excellent [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d2d109f3055e1780562c8e7a97279470). 
     * For this time, and for this time only, you can click the previous link. The source code is already in Rust Playground and so you can press CTRL+ENTER once the web page is open
     * Otherwise... Select and copy the code below. 
     * Paste it in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024)
@@ -181,7 +182,7 @@ Make sure the code compiles and runs otherwise this is less fun.
 
 In this section, I suggest approaching the problem from the end user standpoint. Instead of explaining what a trait is and then looking at its use in source code, we will start with a problem. We'll see how traits provide a solution and then study how they are implemented in the code.
 
-Imagine... Imagine that we work in industry. We deploy control systems at various sites around the world. Don't worry about it. Our task is simple: we install temperature sensors in the factory and we want to read them. Once we have the values, we can display them, store them...  
+Imagine... Imagine that we work in industry. We deploy monitoring and control systems at various sites around the world. Don't worry about it. Our task is simple: we install temperature sensors in the factory and we want to read them. Once we have the values, we can display them, store them...  
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
@@ -293,9 +294,9 @@ struct TempSensor02 {
 }
 ```
 
-At this point we have 2 temperature sensors, which are of 2 different data type. They are 2 different beasts, and we cannot use a `TempSensor01` in place of `TempSensor02`. This is a very good thing most of the time but ideally we would like to be able to read temperature measurements from all of them using the same function.
+At this point we have 2 temperature sensors, which are of 2 different data types. They are 2 different beasts, and we cannot use a `TempSensor01` in place of `TempSensor02`. This is a very good thing most of the time but ideally we would like to be able to read temperature measurements from all of them using the same function.
 
-This is where traits comes into play. First, I create a trait named `Measurable`. Below we are saying something like : If a data type wants to be `Measurable` it must provide a `get_temp()` method which returns an `f64`. We could be stricter here and define our own data type for the temperatures to be returned (think at `type Temp = f64;` or `struct Temp(f64);` but this is not the point here). 
+This is where traits comes into play. First, I create a trait named `Measurable`. Below we are saying something like : If a data type wants to be `Measurable` it must provide a `get_temp()` method which returns an `f64`. We could be stricter here and define our own data type for the temperatures to be returned (think at `type Temp = f64;` or `struct Temp(f64);`) but this is not the point here. 
 
 ```rust
 pub trait Measurable {
@@ -303,7 +304,7 @@ pub trait Measurable {
 }
 ```
 
-As we can see, a trait is a kind of contract or a kind of interface. We define what is needed without defining the implementation.
+As we can see, a trait is a kind of **contract** or a kind of **interface**. We define what is needed without defining the implementation.
 
 That is fine but now, if we want `TempSensor01` and `TempSensor02` to be `Measurable`, we must define the `get_temp()` method **for each of them**. This is done using the `impl` (implement, implementation) keyword and then defining the `get_temp()` method. Both methods are not the same and for example, the `get_temp()` method from `TempSensor02` returns °F (what a pity...). 
 
