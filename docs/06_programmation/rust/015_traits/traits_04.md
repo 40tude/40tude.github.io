@@ -709,6 +709,50 @@ Other than that, I think we're done.
     * Review the trait
     * Don't forget to register
     * Instantiate and make measurements in `main()`
+1. This one is **hard** and it takes time
+    * Code in `src/sensors/temperature/temperature_sensor.rs` and `src/sensors/ph/ph_sensor.rs` identical. It looks like this :
+
+    ```rust
+    // temperature_sensor.rs
+
+    use once_cell::sync::Lazy;
+    use std::collections::HashMap;
+    use std::sync::Mutex;
+
+    pub trait TemperatureSensor {
+        fn get_temp(&self) -> f64;
+    }
+
+    // Type alias for a constructor function returning a boxed sensor
+    type Constructor = fn() -> Box<dyn TemperatureSensor>;
+
+    // Global registry of sensor constructors
+    pub static TEMPERATURE_SENSOR_REGISTRY: Lazy<Mutex<HashMap<&'static str, Constructor>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+
+    // Called by sensors
+    pub fn register_sensor(name: &'static str, constructor: Constructor) {
+        let mut map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("TEMPERATURE_SENSOR_REGISTRY mutex poisoned");
+        map.insert(name, constructor);
+    }
+
+    // Called by binaries (main.rs, examples, tests...) to creates a sensor by name
+    pub fn make_sensor(name: &str) -> Option<Box<dyn TemperatureSensor>> {
+        let map = TEMPERATURE_SENSOR_REGISTRY.lock().expect("TEMPERATURE_SENSOR_REGISTRY mutex poisoned");
+        map.get(name).map(|ctor| ctor())
+    }
+    ```
+    * Copy-paste `assets/12_once_cell_1` directory
+    * Reorganize the project so that the code of the registries is monomorphized
+    * If you did'nt yet, replace `Mutex` with `RwLock`
+    * **One solution** : 
+        * Right click on `assets/12_once_cell_1_bis`
+        * Select the option "Open in Integrated Terminal"
+        * `cargo run`
+
+<div align="center">
+<img src="./assets/img38.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Comment about the picture above</span> -->
+</div>
 
 
 
