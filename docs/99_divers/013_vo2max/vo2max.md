@@ -170,7 +170,7 @@ Pour que l’estimation soit pertinente, certaines conditions d’enregistrement
 
 ### Précision et limites de l’estimation 
 
-Encore une fois, ta montre fournit une estimation (un proxy) de ta VO2Max et non une mesure directe – il faut donc l’interpréter avec prudence. Le calcul repose sur des données indirectes (fréquence cardiaque, vitesse + modèle d'une base de données) et ne peut égaler la précision d’un test d’effort avec analyse des [gaz respiratoires][2]. 
+Encore une fois, ta montre fournit une estimation (via un proxy) de ta VO2Max et non une mesure directe – il faut donc l’interpréter avec prudence. Le calcul repose sur des données indirectes (fréquence cardiaque, vitesse + modèle d'une base de données) et ne peut égaler la précision d’un test d’effort avec analyse des [gaz respiratoires][2]. 
 
 Évidement, ta montre ignore complètement la quantité réelle d’oxygène que tu consommes, puisqu’elle ne fait que déduire un VO2 à partir de la corrélation cardiaque/allure/modèle BDD. Il y a donc une marge d’erreur inévitable. 
 
@@ -186,7 +186,7 @@ En pratique, l’intérêt de l’estimation de la VO2Max sur montre c'est de **
 
 Inversement, une baisse graduelle peut révéler un creux de forme, du surmenage ou l’effet de l’âge (tisane de tisane). 
 
-Il convient donc de surveiller la tendance, tout en gardant du recul : faut se calmer suite à une légère fluctuation (à la hausse ou à la baisse) et ne pas baser pas toute sa préparation uniquement sur ce [chiffre][2]. 
+Il convient donc de surveiller la tendance, tout en gardant du recul : faut se calmer suite à une légère fluctuation (à la hausse ou à la baisse) et ne pas baser toute sa préparation uniquement sur ce [chiffre][2]. 
 
 Pour une mesure scientifique et individualisée, y a pas photo, un test en laboratoire restera la référence.
 
