@@ -51,7 +51,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * **`?` operator for propagation:**  To propagate errors upwards without heavy syntax, use the `?` operator. It returns the error to the caller if an operation fails. Only works in functions returning a compatible `Result<T, E>` (or `Option<T>` ). The `main()` function can return a `Result<T, E>` and use `?` 
 
 * **`Option<T>` vs `Result<T, E>`:**  
-    * Use **`Option<T>`** when the absence of a value isn’t an error (e.g. no search result) and no error info is needed. 
+    * Use **`Option<T>`** when the absence of a value isn’t an error (e.g.[exempli gratia], no search result) and no error info is needed. 
     * Use **`Result<T, E>`** when an operation can fail in an exceptional way and we need to convey an error message or reason [5](https://users.rust-lang.org/t/option-vs-results/113549). 
     <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
 
@@ -177,18 +177,18 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 
 **Alice:** This is may be too early but how can I opt to abort immediately?
 
-**Bob:** Your're right, it's too early but your wish is my command. In Cargo.toml add the following section:
+**Bob:** Your're right, it's too early but your wish is my command. In `Cargo.toml` add the following section:
 
 ```toml
 [profile.release]
 panic = "abort"
 ```
-The default is `unwind`. With `abort` opted in
+The default is `unwind`. With `abort` opted in:
 * No cleanup: at the first panic, the program terminates immediately with an abort().
 * No destructor (Drop) is invoked.
 * This reduces:
-    * the binary size (several tens of KB or more, depending on the project).
-    * the build time (fewer symbols to generate).
+    * the binary size
+    * the build time (fewer symbols to generate)
 
 
 
@@ -230,9 +230,9 @@ The default is `unwind`. With `abort` opted in
 
 ### Optional - Setting Up our Development Environment 
 
-**Requirements:** I expect either `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed.Both can be installed if you wish or need.
+**Requirements:** I expect either the `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed. Both can be installed if you wish or need.
 
-I use VSCode under Windows 11 and I already wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). I don't know yet if I will need more than one project accompanying this post but I already know the first project does'nt have `main.rs` file but multiple short sample code in the `examples/` directory instead. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code. 
+I use VSCode under Windows 11 and I already wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). I don't know yet if I will need more than one project accompanying this post. However, I already know the first project does'nt have `main.rs` file. Instead there are multiple short sample code in the `examples/` directory. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code. 
 
 Now, having this in mind here is what I do and why.
 
@@ -245,11 +245,12 @@ At the time of writing here is what I see :
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-* Just for testing purpose, delete the `target/` directory if it exists
+* Just for testing purpose, delete the `target/` directory if it exists (at this point it should'nt)
+
 * Press `CTRL+SHIFT+B`. This should build a debug version of the code
     * Check `target/debug/examples/`. It should contains `ex00.exe`
 * Set the cursor on line 5 then press `F9` 
-    * This set a breakpoint on line 5. See below :
+    * This set a breakpoint on line 5. See below:
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
@@ -257,7 +258,7 @@ At the time of writing here is what I see :
 
 
 * Open de `Run & Debug` tab on the side (`CTRL+SHIFT+D`)
-* In the list box, select the option corresponding to our configuration (LLDB or MSVC). See below :
+* In the list box, select the option corresponding to our configuration (LLDB or MSVC). See below:
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="450" loading="lazy"/>
@@ -267,7 +268,7 @@ At the time of writing here is what I see :
 
 * Press `F5`
     * This starts the debug session
-    * If needed the application is built (not the case here) 
+    * If needed the application is built (not the case here because it is already built) 
     * The execution stops on line 5. See below :
 
 <div align="center">
@@ -276,7 +277,7 @@ At the time of writing here is what I see :
 
 * Press `F10` to move forward
     * Line 5 is executed
-    * On the left hand side, in the Local subset, we can chack that `bob` is now equal to 5. 
+    * On the left hand side, in the Local subset, we can check that `bob` is now equal to 5. See below:
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
@@ -284,9 +285,9 @@ At the time of writing here is what I see :
 
 * Press `F5` to continue and reach the end  of the code
 
-Let's make a last test.
+Let's make a last test. Just to make sure...
 * Delete the `target/` directory
-* `exe00.rs` should be in the editor with a breakpoint on line 5
+* `exe00.rs` should be in the editor with a breakpoint set on line 5
 * Press `F5`
     * The `ex00.exe` is built
     * The debug session starts
@@ -334,9 +335,9 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
     ]
 }
 ```
-* In `cargo-build-debug`, `group` helps to make the `cargo-build-debug` task the default one. This explains how `CTRL+SHIFT+B` worked. 
-* Note that since the source code to compile is in the `examples/` directory we pass `--example` and the name of the file (e.g. `ex00`) as arguments.
-* To see the list of tasks use `ALT+T` the press `R`
+* In the first object of the array tasks, the key named `group` helps to make the task the one by default. This explains how `CTRL+SHIFT+B` worked. 
+* Note that since the source code to compile is in the `examples/` directory, we pass `--example` and the name of the file (e.g. `ex00`) in the `args` array.
+* To see the list of tasks, in VSCode, press `ALT+T` then press `R`
     * Below we can see both tasks : `cargo-build-debug` and `cargo-build-release`
 
 <div align="center">
@@ -393,7 +394,7 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 }
 ```
 * The path in the `program` key, points to the executable created at the end of the build (do you see `${fileBasenameNoExtension}`?)
-* Note the `preLaunchTask`. This explains why we can press F5 (debug) even if the file is not built. In such case, the task `cargo-build-debug` is executed then the debug session starts.
+* Note the `preLaunchTask` key. This explains why we can press F5 (debug) even if the executable is not yet built. In such case, the task `cargo-build-debug` is executed then the debug session starts.
 
 
 
