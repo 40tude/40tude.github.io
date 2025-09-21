@@ -17,6 +17,12 @@ last_modified_date : 2025-09-20 18:00:00
 A beginner-friendly conversation on Errors, Results, Options, and beyond.
 {: .lead }
 
+<div align=center>
+<img src=./assets/img00.webp alt= width=450 loading=lazy/><br/>
+<span>Let's have a beginner-friendly conversation on Errors, Results, Options, and beyond.</span>
+</div>
+
+
 
 <h2 align=center>
 <span style=color:orange><b>This post is under construction.</b></span>    
@@ -58,10 +64,6 @@ fn main() -> Result<()> {
 ``` -->
 
 
-<div align=center>
-<img src=./assets/img00.webp alt= width=450 loading=lazy/><br/>
-<span>Let's have a beginner-friendly conversation on Errors, Results, Options, and beyond.</span>
-</div>
 
 
 <!-- 
