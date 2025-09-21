@@ -10,13 +10,6 @@ date               : 2025-09-20 18:00:00
 last_modified_date : 2025-09-20 18:00:00
 ---
 
-<!-- 
-TODO :
-* ???
--->
-
-
-
 
 # Rust Errors, Without the Drama
 {: .no_toc }
@@ -37,22 +30,17 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 {: .no_toc }
 
 * **Rust has no exceptions:** It distinguishes **recoverable** errors (handled with the `Result<T, E>` type) and **unrecoverable** errors (handled by panicking using ``panic!``) [1](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Most%20languages%20don%E2%80%99t%20distinguish%20between,an%20error%20or%20to%20stop). This means we must explicitly handle errors [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
-
 * **`Result<T, E>` enum:**  Represents either success (`Ok(T)`) or error (`Err(E)`). Use pattern matching ( `match` ), or methods like `.unwrap()/.expect()` (which panic on error) to handle these. Prefer `.expect()` with a custom message [3](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20production,information%20to%20use%20in%20debugging)
-
 * **`?` operator for propagation:**  To propagate errors upwards without heavy syntax, use the `?` operator. It returns the error to the caller if an operation fails. Only works in functions returning a compatible `Result` (or `Option` ). `main()` can return a `Result` and use `?` 
-
 * **`Option<T>` vs `Result<T, E>`:**  
     * Use **`Option<T>`** when the absence of a value isn’t an error (e.g. no search result) and no error info is needed. 
     * Use **`Result<T, E>`** when an operation can fail in an exceptional way and we need to convey an error message or reason [5](https://users.rust-lang.org/t/option-vs-results/113549). 
     
     <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
-
 * **When to panic:** Reserve **`panic!`** for truly unrecoverable bugs or invalid states (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})). If failure is expected or possible in normal operation (e.g. file not found, invalid user input...), return a `Result` instead [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an). Library code should avoid panicking on recoverable errors to let the caller decide how to handle them.
-
 * **Custom error types:** For complex programs or libraries, define your own custom error types (often as `enums`) to represent various error kinds in one type. Implementing `std::error::Error` (via `Display` and `Debug` ) for these types or using `Box<dyn std::error::Error>` can help integrate with the `?` operator and allow different error kinds to propagate seamlessly [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons)
 
-* **Keep in mind**
+<!-- * **Keep in mind**
 
 ```rust
 use std::fs::File; // shortcut
@@ -67,7 +55,7 @@ fn main() -> Result<()> {
     f.File.read_to_end(&mut data)?;
     Ok(())
 }
-```
+``` -->
 
 
 <div align=center>
@@ -167,7 +155,7 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 
 #### Good to know
 * The code is on Github
-* I expect either `CodeLLDB` extension or `Build Tools for Visual Studio` is  installed.
+* I expect either `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed.
     * Both can be installed
 
 I use VSCode under Windows 11 and I already wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). I don't know yet if I will need more than one project accompanying this post but I already know the first project does'nt have `main.rs` file but multiple short sample code in the `examples/` directory instead. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code. 
