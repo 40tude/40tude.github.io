@@ -25,8 +25,8 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 
 
-<h2 align=center>
-<span style=color:orange><b>This post is under construction.</b></span>    
+<h2 align="center">
+<span style="color:orange"><b>This post is under construction.</b></span>    
 </h2>
 
 <!-- ### This is Episode 00
@@ -65,9 +65,10 @@ fn main() -> Result<()> {
 ```
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
 <span>Let's have a beginner-friendly conversation on Errors, Results, Options, and beyond.</span>
 </div>
+
 
 
 
@@ -1160,7 +1161,7 @@ loudly when they must)!
 
 
 ## Webliography
-* https://doc.rust-lang.org/book/ch09-00-error-handling.html
+* [THE book](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
 
 <!-- 
 [1](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Most%20languages%20don%E2%80%99t%20distinguish%20between,an%20error%20or%20to%20stop)
