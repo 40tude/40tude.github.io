@@ -52,22 +52,22 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 * **Custom error types:** For complex programs or libraries, define your own custom error types (often as `enums`) to represent various error kinds in one type. Implementing `std::error::Error` (via `Display` and `Debug` ) for these types or using `Box<dyn std::error::Error>` can help integrate with the `?` operator and allow different error kinds to propagate seamlessly [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons)
 
-* Keep in mind
+* **Keep in mind**
 
-    ```rust
-    use std::fs::File; // shortcut
-    use std::io::Read;
+```rust
+use std::fs::File; // shortcut
+use std::io::Read;
 
-    pub type Result<T> = std::result::Result<T, Error>; // alias
-    pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>; // alias
+pub type Error = Box<dyn std::error::Error>;
 
-    fn main() -> Result<()> {
-        let f = File::open("foo.txt")?;
-        let mut data = vec![];
-        f.File.read_to_end(&mut data)?;
-        Ok(())
-    }
-    ```
+fn main() -> Result<()> {
+    let f = File::open("foo.txt")?;
+    let mut data = vec![];
+    f.File.read_to_end(&mut data)?;
+    Ok(())
+}
+```
 
 
 <div align=center>
@@ -163,9 +163,9 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 
 
 
-## Optional - Setting Up your Development Environment 
+### Optional - Setting Up your Development Environment 
 
-### Good to know
+#### Good to know
 * The code is on Github
 * I expect either `CodeLLDB` extension or `Build Tools for Visual Studio` is  installed.
     * Both can be installed
@@ -229,7 +229,7 @@ Let's make a last test
     * The debug session starts
     * Execution is stopped on line 5 as before
 
-### The making of:
+#### The making of:
 
 The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
@@ -336,6 +336,7 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
 
 
+### Solution to question #2 above
 
 
 
