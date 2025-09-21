@@ -6,7 +6,7 @@ title: "VO2Max, l'essentiel"
 parent: "Divers"
 math: mathjax
 date               : 2025-09-02 18:30:00
-last_modified_date : 2025-09-03 10:00:00
+last_modified_date : 2025-09-20 10:00:00
 ---
 
 # VO2Max, l'essentiel
