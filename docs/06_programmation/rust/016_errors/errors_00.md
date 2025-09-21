@@ -36,9 +36,17 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 ## TL;DR
 {: .no_toc }
 
-* **Rust has no exceptions:** It distinguishes **recoverable** errors (handled with the `Result<T, E>` type) and **unrecoverable** errors (handled by panicking using `panic!()`) [1](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Most%20languages%20don%E2%80%99t%20distinguish%20between,an%20error%20or%20to%20stop). This means we must explicitly handle errors [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
+* For beginners
 
-* **`Result<T, E>` enum:**  Represents either success (`Ok(T)`) or error (`Err(E)`). Use pattern matching ( `match` ), or methods like `.unwrap()/.expect()` (which panic on error) to handle these. Prefer `.expect()` with a custom message [3](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20production,information%20to%20use%20in%20debugging)
+* The code is on GitHub
+
+* **Rust has no exceptions:** It distinguishes 
+    * **recoverable** errors (handled with the `Result<T, E>` type) 
+    * **unrecoverable** errors (handled by panicking using `panic!()`) [1](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Most%20languages%20don%E2%80%99t%20distinguish%20between,an%20error%20or%20to%20stop). 
+
+    This means we must explicitly handle errors [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
+
+* **`Result<T, E>` enum:**  Represents either success (`Ok(T)`) or error (`Err(E)`). Use pattern matching ( `match` expression), or methods like `.unwrap()/.expect()` (which `panic!()` on error) to handle these. Prefer `.expect()` with a custom message [3](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20production,information%20to%20use%20in%20debugging)
 
 * **`?` operator for propagation:**  To propagate errors upwards without heavy syntax, use the `?` operator. It returns the error to the caller if an operation fails. Only works in functions returning a compatible `Result<T, E>` (or `Option<T>` ). `main()` can return a `Result<T, E>` and use `?` 
 
@@ -105,8 +113,8 @@ fn main() -> Result<()> {
 <!-- ###################################################################### -->
 
 
-## Why Alice and Bob?
-A long time ago (2010, may be) I read a `.pdf` about the N-Body Simulations. Too bad I can't find it on the web but here is a copy of [volume 1]({%link docs/06_programmation/rust/016_errors/assets/volume1.pdf%}). It was based on Ruby but it was great, easy to follow etc. One thing was that it was written as a conversation between **Bob** and **Alice**. Later the code was re-written in Python and the set of `.pdf` was converted into an expensive book (55$ when I bought my copy). Today (sept 2025) you can find it on [AMZN](https://www.amazon.fr/Moving-Planets-Around-Introduction-Exoplanetary/dp/0262539349) for 28€.
+## Why Alice and Bob are here?
+A long time ago (2010, may be) I read a `.pdf` about the N-Body Simulations. Too bad, I can't find it on the web anymore, but here's a copy of [volume 1]({%link docs/06_programmation/rust/016_errors/assets/volume1.pdf%}). It was based on Ruby but it was great, easy to follow etc. One thing was that it was written as a conversation between **Bob** and **Alice**. Later the code was re-written in Python and the set of `.pdf` was converted into an expensive printed book (55$ when I bought my copy). Today (sept 2025) you can find it on [AMZN](https://www.amazon.fr/Moving-Planets-Around-Introduction-Exoplanetary/dp/0262539349) for 28€.
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="225" loading="lazy"/><br/>
@@ -121,7 +129,7 @@ Last week I start reading `The Basics of Bitcoins and Blockchains` ([link to AMZ
 </div>
 
 
-In part 3 there is a section `Why Alice and Bob`. Believe it or not, I then discovered where [they came from](https://en.wikipedia.org/wiki/Alice_and_Bob). 
+In Part 3 there is a section `Why Alice and Bob`. Believe it or not, I then discovered where [they came from](https://en.wikipedia.org/wiki/Alice_and_Bob). 
 
 I like to write in a conversational tone, so let's imagine a discussion between Bob and Alice and let's see how it goes...
 
@@ -137,34 +145,43 @@ I like to write in a conversational tone, so let's imagine a discussion between 
 
 ## Introduction: Why Rust Cares About Errors
 
-**Alice:** I ran my Rust code snippet and it **forced** me to handle an error – it wouldn’t even compile until I did! What’s going here?
-
+**Alice:** I ran a Rust code snippet and it **forced** me to handle an error – it wouldn’t even compile until I did! What’s going here?
 **Bob:** The compiler (`rustc`) makes sure we acknowledge and handle errors properly before our code even runs. This helps prevent crashes in production [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
 
 
 **Alice:** There are no exceptions at all?
-
 **Bob:** Exactly. Rust doesn’t have exceptions. Instead, it has a different model for errors. Essentially, Rust groups errors into two categories: **recoverable** and **unrecoverable** [9](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Rust%20groups%20errors%20into%20two,to%20immediately%20stop%20the%20program). 
 * **Recoverable** errors are things we expect might happen and can be dealt with (like a file not found – we might just create the file or use a default). These are handled with the `Result<T, E>` type. 
-* **Unrecoverable** errors are bugs on our side or unexpected conditions (like indexing past the end of an array – something’s really wrong if that happens). For these cases Rust provides the `panic!()` macro to stop the program [1](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Most%20languages%20don%E2%80%99t%20distinguish%20between,an%20error%20or%20to%20stop).
+* **Unrecoverable** errors are bugs on our side or unexpected conditions (like indexing past the end of an array – something’s really bad if that happens). For these cases Rust provides the `panic!()` macro to stop the program [1](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Most%20languages%20don%E2%80%99t%20distinguish%20between,an%20error%20or%20to%20stop).
 
 
 **Alice:** So `Result<T, E>` is for errors I can handle, and `panic!()` is for the program-halting ones?
-
 **Bob:** Yes! 
 * Think of `Result<T, E>` as Rust’s way of saying "operation might succeed or fail". We then decide what to do if it fails.
-* Whereas a `panic!()` is Rust saying "I can’t deal with this,I must crash now". 
+* Whereas a `panic!()` is Rust saying "I can’t deal with this, I must crash now". 
 
-By making error handling explicit with `Result`, Rust ensures we don’t just ignore errors. It won’t let us compile unless we either handle the `Result<T, E>` (e.g., check for an error) or explicitly choose to crash (like using `.unwrap()` which triggers a panic if there’s an error). This leads to more robust programs because we're less likely to have an error go unnoticed.
+By making error handling explicit with `Result`, Rust ensures we don’t just ignore errors. It won’t let us compile unless we either handle the `Result<T, E>` (e.g., check for an error) or explicitly choose to crash (like using `.unwrap()` which triggers a `panic!()` if there’s an error). This leads to more robust programs because we're less likely to have an error go unnoticed.
 
 
 **Alice:** It’s a bit scary that the program can just crash with `panic!()` though. 
+**Bob:** Again, `panic!()` is for cases that are **not supposed to happen** like an invariant being broken. And even when a `panic!()` occurs, Rust will unwind the stack and cleanup (or we can opt to abort immediately). But most of the time, you’ll use `Result<T, E>` for possible errors and only `panic!()` on bugs. We’ll talk more about choosing between them later [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an).
 
-**Bob:** Again, `panic!()` is for cases that are **not supposed to happen** like an invariant being broken.And even when a `panic!()` occurs, Rust will unwind the stack and cleanup (or we can opt to abort immediately). But most of the time, you’ll use `Result<T, E>` for possible errors and only `panic!()` on bugs. We’ll talk more about choosing between them later [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an).
 
+**Alice:** This is may be too early but how can I opt to abort immediately?
+**Bob:** Your're right, it's too early but your wish is my command. In Cargo.toml add the following section:
 
-**Alice:** Ok... So Rust wants me to handle every error. This will not be fun... How do I actually do that with `Result`? What does a `Result<T, E>` look like?
+```toml
+[profile.release]
+panic = "abort"
+```
+The default is `unwind`. With `abort` opted in
+* No cleanup: at the first panic, the program terminates immediately with an abort().
+* No destructor (Drop) is invoked.
+* This reduces:
+    * the binary size (several tens of KB or more, depending on the project).
+    * the build time (fewer symbols to generate).
 
+**Alice:** Ok... So Rust wants me to handle every error. This will be a pain... How do I actually do that with `Result<T, E>`? What does a `Result<T, E>` look like?
 **Bob:** That's a good question. We'll answer it by examining how `Result<T, E>` works and how to use it, but before that, it's time to recap and practice a little.
 
 
@@ -176,7 +193,9 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 ### Summary – Introduction
 
 * Rust requires we handle errors explicitly. Code that can fail must return a `Result<T, E>` (or `Option<T>`   ), forcing the caller to address the possibility of failure [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
-* Rust distinguishes **recoverable errors** (e.g. file not found, invalid input – handled with `Result`) from **unrecoverable errors** (bugs like out-of-bounds access – handled with `panic!()` ) [9](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Rust%20groups%20errors%20into%20two,to%20immediately%20stop%20the%20program).
+* Rust distinguishes 
+    * **recoverable errors** (e.g. file not found, invalid input – handled with `Result`)
+    * **unrecoverable errors** (bugs like out-of-bounds access – handled with `panic!()`) [9](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Rust%20groups%20errors%20into%20two,to%20immediately%20stop%20the%20program).
 * No exceptions are used. This language design decision helps prevent unchecked errors. We either deal with the error or deliberately choose to `panic!()`/`.unwrap()`, making error handling clear in the code.
 
 
@@ -191,7 +210,7 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 
     For each scenario, explain whether we would use Rust’s `Result<T, E>` or a `panic!()`, and why.
 
-2. **Compile-time Check:** Write a Rust program that attempts to open a non-existent file with `std::fs::File::open(foo.txt)` without handling the `Result`. Observe the compiler error or warning. Then, fix it by handling the `Result<T, E>` (for now, we can just use a simple `panic!()` or print an error message in case of `Err`). One can read [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt)
+2. **Compile-time Check:** Write a Rust code that attempts to open a non-existent file with `std::fs::File::open(foo.txt)` without handling the returned `Result<T, E>`. Observe the compiler error or warning. Then, fix it by handling the `Result<T, E>` (for now, we can just use a simple `panic!()` or print an error message in case of `Err`). One can read [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt)
 
 
 
@@ -199,18 +218,16 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 
 ### Optional - Setting Up our Development Environment 
 
-#### Good to know
-* The code is on Github
-* I expect either `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed.
-    * Both can be installed
+**Requirements:** I expect either `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed.Both can be installed if you wish or need.
 
 I use VSCode under Windows 11 and I already wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). I don't know yet if I will need more than one project accompanying this post but I already know the first project does'nt have `main.rs` file but multiple short sample code in the `examples/` directory instead. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code. 
 
 Now, having this in mind here is what I do and why.
 
-* Get the project from GitHub
-* Open `/examples/ex00.rs` in the editor
-* At the time of writing here is what I see :
+* Get a copy of the project from GitHub
+* Open `/examples/ex00.rs` in the VSCode editor
+
+At the time of writing here is what I see :
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
@@ -220,15 +237,15 @@ Now, having this in mind here is what I do and why.
 * Press `CTRL+SHIFT+B`. This should build a debug version of the code
     * Check `target/debug/examples/`. It should contains `ex00.exe`
 * Set the cursor on line 5 then press `F9` 
-    * This set a breakpoint on line 5. 
+    * This set a breakpoint on line 5. See below :
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
-* Open de `Run & Debug` tab on the side (`CTRL+SIFT+D`)
-* In the list select the option corresponding to our configuration (LLDB or MSVC). See below :
+* Open de `Run & Debug` tab on the side (`CTRL+SHIFT+D`)
+* In the list box, select the option corresponding to our configuration (LLDB or MSVC). See below :
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="450" loading="lazy"/>
@@ -255,19 +272,19 @@ Now, having this in mind here is what I do and why.
 
 * Press `F5` to continue and reach the end  of the code
 
-Let's make a last test
+Let's make a last test.
 * Delete the `target/` directory
 * `exe00.rs` should be in the editor with a breakpoint on line 5
 * Press `F5`
-    * The ex00.exe is built
+    * The `ex00.exe` is built
     * The debug session starts
     * Execution is stopped on line 5 as before
 
-#### The making of:
+**The making of:**
 
 The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
-**.vscode/tasks.json:**
+**1. `.vscode/tasks.json`:**
 ```json
 {
     "version": "2.0.0",
@@ -305,8 +322,8 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
     ]
 }
 ```
-* In `cargo-build-debug`, `group` helps to make the `cargo-build-debug` task the default one (CTRL+SHIFT+B). 
-* Note that since the source code to compile is in `examples/` directory we pass `--example` and the name of the file (e.g. `ex00`) as arguments.
+* In `cargo-build-debug`, `group` helps to make the `cargo-build-debug` task the default one. This explains how `CTRL+SHIFT+B` worked. 
+* Note that since the source code to compile is in the `examples/` directory we pass `--example` and the name of the file (e.g. `ex00`) as arguments.
 * To see the list of tasks use `ALT+T` the press `R`
     * Below we can see both tasks : `cargo-build-debug` and `cargo-build-release`
 
@@ -314,7 +331,7 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 <img src="./assets/img06.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-**.vscode/launch.json:**
+**2. `.vscode/launch.json`:**
 
 ```json
 {
@@ -363,8 +380,8 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
     ]
 }
 ```
-* The path in `program` key points to the executable created at the end of the build (do you see `${fileBasenameNoExtension}`?)
-* Note the `preLaunchTask`. This explains why we can press F5 (debug) even if the file is not built. In such case, the task `cargo-build-debug` is run then the debug session starts.
+* The path in the `program` key, points to the executable created at the end of the build (do you see `${fileBasenameNoExtension}`?)
+* Note the `preLaunchTask`. This explains why we can press F5 (debug) even if the file is not built. In such case, the task `cargo-build-debug` is executed then the debug session starts.
 
 
 
