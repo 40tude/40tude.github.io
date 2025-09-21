@@ -64,10 +64,11 @@ fn main() -> Result<()> {
 }
 ```
 
-<div align=center>
-<img src="./assets/img00.webp" alt= width="450" loading=lazy/><br/>
+<div align="center">
+<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/>
 <span>Let's have a beginner-friendly conversation on Errors, Results, Options, and beyond.</span>
 </div>
+
 
 
 
