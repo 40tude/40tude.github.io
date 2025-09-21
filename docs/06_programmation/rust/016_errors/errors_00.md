@@ -17,10 +17,6 @@ last_modified_date : 2025-09-20 18:00:00
 A beginner-friendly conversation on Errors, Results, Options, and beyond.
 {: .lead }
 
-<div align=center>
-<img src=./assets/img00.webp alt= width=450 loading=lazy/><br/>
-<span>Let's have a beginner-friendly conversation on Errors, Results, Options, and beyond.</span>
-</div>
 
 
 
@@ -41,12 +37,10 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * **`Option<T>` vs `Result<T, E>`:**  
     * Use **`Option<T>`** when the absence of a value isn’t an error (e.g. no search result) and no error info is needed. 
     * Use **`Result<T, E>`** when an operation can fail in an exceptional way and we need to convey an error message or reason [5](https://users.rust-lang.org/t/option-vs-results/113549). 
-    
     <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
 * **When to panic:** Reserve **`panic!`** for truly unrecoverable bugs or invalid states (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})). If failure is expected or possible in normal operation (e.g. file not found, invalid user input...), return a `Result` instead [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an). Library code should avoid panicking on recoverable errors to let the caller decide how to handle them.
 * **Custom error types:** For complex programs or libraries, define your own custom error types (often as `enums`) to represent various error kinds in one type. Implementing `std::error::Error` (via `Display` and `Debug` ) for these types or using `Box<dyn std::error::Error>` can help integrate with the `?` operator and allow different error kinds to propagate seamlessly [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons)
-
-<!-- * **Keep in mind**
+* **Keep in mind**
 
 ```rust
 use std::fs::File; // shortcut
@@ -61,8 +55,12 @@ fn main() -> Result<()> {
     f.File.read_to_end(&mut data)?;
     Ok(())
 }
-``` -->
+```
 
+<div align=center>
+<img src="./assets/img00.webp" alt= width=450 loading=lazy/><br/>
+<span>Let's have a beginner-friendly conversation on Errors, Results, Options, and beyond.</span>
+</div>
 
 
 
