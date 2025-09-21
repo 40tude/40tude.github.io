@@ -99,6 +99,35 @@ fn main() -> Result<()> {
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+
+
+## Why Alice and Bob?
+A long time ago (2010, may be) I read a `.pdf` about the N-Body Simulation. Too bad I can't find it on the web but here is a copy of [volume 1]({%link docs\06_programmation\rust\016_errors\assets\volume1.pdf%}). It was based on Ruby but it was great, easy to follow etc. One thing was that it was written as a conversation between **Bob** and **Alice**. Later the code was re-written in Python and the set of `.pdf` was converted into an expensive book (55$ when I bought my copy). Today (sept 2025) you can find it on [Amazon](https://www.amazon.fr/Moving-Planets-Around-Introduction-Exoplanetary/dp/0262539349) for 28€.
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="225" loading="lazy"/><br/>
+<span>Moving Planets Around</span>
+</div>
+
+Last week I start reading `The Basics of Bitcoins and Blockchains` ([link to AMZN](https://www.amazon.fr/dp/1642506737?ref=ppx_yo2ov_dt_b_fed_asin_title)). 
+
+<div align="center">
+<img src="./assets/img08.webp" alt="" width="225" loading="lazy"/><br/>
+<span>The Basics of Bitcoins and Blockchains: An Introduction to Cryptocurrencies and the Technology That Powers Them</span>
+</div>
+
+
+In part 3 there is a section `Why Alice and Bob`. Believe it or not, I then discovered where [they came from](https://en.wikipedia.org/wiki/Alice_and_Bob). 
+
+I like to write in a conversational tone, so let's imagine a discussion between Bob and Alice and let's see how it goes...
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
@@ -134,6 +163,11 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 **Alice:** Ok... So Rust wants me to handle every error. This will not be fun... How do I actually do that with `Result`? What does a `Result` look like?
 
 **Bob:** That's a good question. We'll answer it by examining how `Result` works and how to use it, but before that, it's time to recap and practice a little.
+
+
+
+
+
 
 
 ### Summary – Introduction
@@ -1159,6 +1193,18 @@ loudly when they must)!
  -->
 
 
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## Webliography
 * [THE book](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
