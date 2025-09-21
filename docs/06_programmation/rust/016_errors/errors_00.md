@@ -47,7 +47,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * **Custom error types:** For complex programs or libraries, define your own custom error types (often as `enums`) to represent various error kinds in one type. Implementing `std::error::Error` (via `Display` and `Debug` ) for these types or using `Box<dyn std::error::Error>` can help integrate with the `?` operator and allow different error kinds to propagate seamlessly [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons)
 
 
-<!-- * **Keep in mind**
+* **Keep in mind**
 
 ```rust
 use std::fs::File; // shortcut
@@ -62,10 +62,10 @@ fn main() -> Result<()> {
     f.File.read_to_end(&mut data)?;
     Ok(())
 }
-``` -->
+```
 
 <div align=center>
-<img src="./assets/img00.webp" alt= width=450 loading=lazy/><br/>
+<img src="./assets/img00.webp" alt= width="450" loading=lazy/><br/>
 <span>Let's have a beginner-friendly conversation on Errors, Results, Options, and beyond.</span>
 </div>
 
