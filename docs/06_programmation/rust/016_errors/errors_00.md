@@ -102,7 +102,7 @@ fn main() -> Result<()> {
 
 
 ## Why Alice and Bob?
-A long time ago (2010, may be) I read a `.pdf` about the N-Body Simulation. Too bad I can't find it on the web but here is a copy of [volume 1]({%link docs\06_programmation\rust\016_errors\assets\volume1.pdf%}). It was based on Ruby but it was great, easy to follow etc. One thing was that it was written as a conversation between **Bob** and **Alice**. Later the code was re-written in Python and the set of `.pdf` was converted into an expensive book (55$ when I bought my copy). Today (sept 2025) you can find it on [Amazon](https://www.amazon.fr/Moving-Planets-Around-Introduction-Exoplanetary/dp/0262539349) for 28€.
+A long time ago (2010, may be) I read a `.pdf` about the N-Body Simulations. Too bad I can't find it on the web but here is a copy of [volume 1]({%link docs/06_programmation/rust/016_errors/assets/volume1.pdf%}). It was based on Ruby but it was great, easy to follow etc. One thing was that it was written as a conversation between **Bob** and **Alice**. Later the code was re-written in Python and the set of `.pdf` was converted into an expensive book (55$ when I bought my copy). Today (sept 2025) you can find it on [Amazon](https://www.amazon.fr/Moving-Planets-Around-Introduction-Exoplanetary/dp/0262539349) for 28€.
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="225" loading="lazy"/><br/>
