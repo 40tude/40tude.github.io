@@ -147,7 +147,7 @@ I like to write in a conversational tone, so let's imagine a discussion between 
 
 **Alice:** I ran a Rust code snippet and it **forced** me to handle an error – it wouldn’t even compile until I did! What’s going here?
 
-**Bob:** The compiler (`rustc`) makes sure we acknowledge and handle errors properly before our code even runs. This helps prevent crashes in production [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
+**Bob:** The compiler (`rustc`) makes sure we acknowledge and handle errors properly before our code even runs. This helps prevent crashes at runtime [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
 
 
 
@@ -168,27 +168,33 @@ I like to write in a conversational tone, so let's imagine a discussion between 
 By making error handling explicit with `Result`, Rust ensures we don’t just ignore errors. It won’t let us compile unless we either handle the `Result<T, E>` (e.g., check for an error) or explicitly choose to crash (like using `.unwrap()` which triggers a `panic!()` if there’s an error). This leads to more robust programs because we're less likely to have an error go unnoticed.
 
 
+**Alice:** Um... This is may be a silly question but, if I know my function can succeed or fail, can it returns `Result<T, E>`.
+
+**Bob:** Yes, absolutely! Even `main()` can return `Result<T, E>`. It is a very good practice. Before writing any code, ask yourselves "can this function fail? Should it return `Option<T>` or `Result<T, E>`?". Then work on the rest of the function or method signature.
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nLSm3Haxz0I?si=k8Xtc_AofCBs3H_T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 
 **Alice:** It’s a bit scary that the program can just crash with `panic!()` though. 
 
-**Bob:** Again, `panic!()` is for cases that are **not supposed to happen** like an invariant being broken. And even when a `panic!()` occurs, Rust will unwind the stack and cleanup (or we can opt to abort immediately). But most of the time, you’ll use `Result<T, E>` for possible errors and only `panic!()` on bugs. We’ll talk more about choosing between them later [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an).
+**Bob:** Again, `panic!()` is for cases that are **not supposed to happen** like an invariant being broken. And even when a `panic!()` occurs, Rust will unwind the stack and cleanup (or we can opt to abort immediately). Most of the time, you’ll use `Result<T, E>` for possible errors and only `panic!()` on bugs that are your responsibility. We’ll talk more about choosing between them later [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an).
 
 
 
 **Alice:** This is may be too early but how can I opt to abort immediately?
 
-**Bob:** Your're right, it's too early but your wish is my command. In `Cargo.toml` add the following section:
+**Bob:** Your're right, it's too early but your wishes are my commands. In `Cargo.toml` add the following section:
 
 ```toml
 [profile.release]
 panic = "abort"
 ```
 The default is `unwind`. With `abort` opted in:
-* No cleanup: at the first panic, the program terminates immediately with an abort().
+* No cleanup: at the first panic, the program terminates immediately with an `abort()`.
 * No destructor (Drop) is invoked.
-* This reduces:
-    * the binary size
-    * the build time (fewer symbols to generate)
+* This reduces the binary size and the build time (fewer symbols to generate)
 
 
 
@@ -230,7 +236,9 @@ The default is `unwind`. With `abort` opted in:
 
 ### Optional - Setting Up our Development Environment 
 
-**Requirements:** I expect either the `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed. Both can be installed if you wish or need.
+Let's make sure we can Debug the code.
+
+**Requirements:** I expect either the `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed. `CodeLLDB` might be faster and easier to install (it is "just" a VSCode extension). Both can be installed if you wish or need (this is my case). We will see how to use or the other.
 
 I use VSCode under Windows 11 and I already wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). I don't know yet if I will need more than one project accompanying this post. However, I already know the first project does'nt have `main.rs` file. Instead there are multiple short sample code in the `examples/` directory. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code. 
 
@@ -245,7 +253,7 @@ At the time of writing here is what I see :
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-* Just for testing purpose, delete the `target/` directory if it exists (at this point it should'nt)
+* Just for testing purpose, delete the `target/` directory if it exists (at this point it should'nt exist yet)
 
 * Press `CTRL+SHIFT+B`. This should build a debug version of the code
     * Check `target/debug/examples/`. It should contains `ex00.exe`
@@ -277,7 +285,7 @@ At the time of writing here is what I see :
 
 * Press `F10` to move forward
     * Line 5 is executed
-    * On the left hand side, in the Local subset, we can check that `bob` is now equal to 5. See below:
+    * On the left hand side, in the Local subset of variables, we can check that `bob` is now equal to 5. See below:
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
@@ -287,11 +295,12 @@ At the time of writing here is what I see :
 
 Let's make a last test. Just to make sure...
 * Delete the `target/` directory
-* `exe00.rs` should be in the editor with a breakpoint set on line 5
+    * Select it then press `DELETE`
+* `exe00.rs` should still be open in the editor with a breakpoint set on line 5
 * Press `F5`
     * The `ex00.exe` is built
     * The debug session starts
-    * Execution is stopped on line 5 as before
+    * Execution stops on line 5 as before
 
 **The making of:**
 
@@ -335,9 +344,9 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
     ]
 }
 ```
-* In the first object of the array tasks, the key named `group` helps to make the task the one by default. This explains how `CTRL+SHIFT+B` worked. 
+* In the first object of the array `tasks`, the key named `group` helps to make the task the one by default. This explains how and why `CTRL+SHIFT+B` worked. 
 * Note that since the source code to compile is in the `examples/` directory, we pass `--example` and the name of the file (e.g. `ex00`) in the `args` array.
-* To see the list of tasks, in VSCode, press `ALT+T` then press `R`
+* To see the list of `tasks`, in VSCode, press `ALT+T` then press `R`
     * Below we can see both tasks : `cargo-build-debug` and `cargo-build-release`
 
 <div align="center">
@@ -400,9 +409,216 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
 
 
-### Solution to question #2 above
+### Solution to Exercice #2 above
+
+Let's take some time and see how one could answer the second exercice. If I search "Rust open txt file" on Google, one of the links drive me to the excellent [Rust By Example](https://doc.rust-lang.org/rust-by-example/std_misc/file/open.html). See below :
+
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+This is great because on line 11 it use `std::fs::File::open()` but it is a little bit too complex for me and it seems it handles errors while I want the compiler to complains then fix the errors.
 
 
+
+Copy/paste/save the file as `ex01.rs`. I can open a terminal then enter `cargo run --example ex01` or just press F5 just to make sure the code works as expected. Here is what I see in the Debug Console. 
+
+<div align="center">
+<img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+The code cannot find `hello.txt` and `panic!()`.
+
+
+
+
+
+
+
+
+Copy/paste/save the file as `ex02.rs`. From the previous code, I just keep what I need :
+
+```rust
+// ex02.rs
+fn main() {
+    let f = std::fs::File::open("foo.txt");
+    println!("'f' after std::fs::File::open() =  {:?}", f);
+}
+```
+
+Surprisingly if I press F5, it builds and runs in a debug session without complain.
+
+```
+------------------------------------------------------------------------------
+You may only use the C/C++ Extension for Visual Studio Code with Visual Studio
+Code, Visual Studio or Visual Studio for Mac software to help you develop and
+test your applications.
+------------------------------------------------------------------------------
+ex02.exe (30708): Loaded 'C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\018_err_for_blog_post\u_are_errors\target\debug\examples\ex02.exe'. Symbols loaded.
+ex02.exe (30708): Loaded 'C:\Windows\System32\ntdll.dll'. 
+ex02.exe (30708): Loaded 'C:\Windows\System32\kernel32.dll'. 
+ex02.exe (30708): Loaded 'C:\Windows\System32\KernelBase.dll'. 
+ex02.exe (30708): Loaded 'C:\Windows\System32\ucrtbase.dll'. 
+ex02.exe (30708): Loaded 'C:\Windows\System32\vcruntime140.dll'. 
+'f' after std::fs::File::open() =  Err(Os { code: 2, kind: NotFound, message: "Le fichier sp├®cifi├® est introuvable." })
+ex02.exe (30708): Loaded 'C:\Windows\System32\kernel.appcore.dll'. 
+ex02.exe (30708): Loaded 'C:\Windows\System32\msvcrt.dll'. 
+The program '[30708] ex02.exe' has exited with code 0 (0x0).
+```
+
+In fact, with my setup, if I press `CTRL+ALT` I can reveal the datatype.
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+`f` is a `Result<File, Error>`. It is a `Result<T, E>` but what happens, it that when I asked to print it with `{:?}`, Rust displays the content of the `Result<T, E>` and this is why we see :
+
+```
+'f' after std::fs::File::open() =  Err(Os { code: 2, kind: NotFound, message: "Le fichier sp├®cifi├® est introuvable." })
+```
+
+In fact despite ourselves, we cheat. We call a function returning `Result<T, E>` in a context that expects a file `f` without using it (e.g. trying to read something).
+
+
+
+
+
+
+
+
+Copy/paste/save the file as `ex03.rs`. Let's make sure the build system complain. Modify the previous code with the one below :
+
+```rust
+// ex03.rs
+fn main() {
+    let f: std::fs::File = std::fs::File::open("foo.txt");
+    println!("{:?}", f);
+}
+```
+On the lhs of the `=`, I express my expectation. I expect a `File`. Obviously this does not fly very well. We don't even need to try to build. Indeed the red squiggles warn us and if we hover them with the cursor we get a clear explanation and some advises. See below : 
+
+<div align="center">
+<img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
+
+
+
+
+Copy/paste/save the file as `ex04.rs`. Let's find a solution. Modify the previous code with the one below :
+
+```rust
+// ex04.rs
+use std::fs::File; 
+
+fn main() {
+    let result_file = File::open("foo.txt");
+
+    match result_file {
+        Ok(file) => println!("Successfully opened file: {:?}", file),
+        Err(why) => panic!("Panic! opening the file: {:?}", why),
+    }
+}
+```
+
+* `result_file` is a Result<T, E>. It is NOT a File
+* `match` is an expression NOT a statement
+    * If the difference between expression and statement is not crystal clear read this [page]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) 
+* The `match` expression forces us to handle all possible cases
+
+
+
+
+
+
+
+
+Copy/paste/save the file as `ex05.rs`. Let's take advantage of the fact that `match` is an expression. Modify the previous code with the one below :
+
+```rust
+// ex05.rs
+use std::fs::File; // shortcut
+use std::io::Read;
+
+fn main() {
+    let result_file = File::open("foo.txt");
+    let mut bob = match result_file {
+        Ok(alice) => alice,
+        Err(why) => panic!("Panic! opening the file: {:?}", why),
+    };
+    println!("{:?}", bob);
+
+    let mut s = String::new();
+    match bob.read_to_string(&mut s) {
+        Ok(_) => print!("Content:\n{}", s),
+        Err(why) => panic!("Panic! reading the file: {:?}", why),
+    }
+}
+```
+
+* It is important to understand that `match` destructures the `Result<T, E>`. So the body of the `match` says something like:
+    * When the `Result<File, io::Error>` stored in `result_file` matches the pattern `Ok(alice)`, the inner File value is bound to the variable `alice`. Doing so `bob` receive the value of `alice`.
+    * If the value of `result_file` matches `Err(why)`, bind the inner File to `alice` and use it
+    * If `result_file` is `Ok(alice)` then return `alice` (a File). 
+    * If `result_file` is `Err(why)` then do not return anything, 
+
+
+
+
+
+
+* As before, `std::fs::File::open()` returns a `Result<File, io::Error>`, which we store in `result_file`.
+* Since `match` is an expression, it evaluates to a value, and we assign that value to `bob`.
+* The body of the `match` can be read as:
+
+  * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
+  * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`), so this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "Don't press the red button on the joystick, abort! abort! abort!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div align="center">
+<img src="./assets/img13.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Don't push the little button on the joystick</span>
+</div>
+
+Run the code (F5) to see it in `panic!()`
+
+<div align="center">
+<img src="./assets/img14.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+Now let's create a file named `foo.txt` at the root of the project. Run again the code (F5)
+
+<div align="center">
+<img src="./assets/img15.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+* When the code doesn’t `panic!` on `open()`, we first `println!()` the `Debug` representation of `bob`.
+* Then we call `read_to_string()` on `bob`. The method returns an `io::Result<usize>`, which is just a type alias for `Result<usize, io::Error>`. On success, the `usize` is the number of bytes read.
+* In the second `match` we don’t care about this number, so we use `_` to ignore it. Instead, we just `println!()` the contents of the `String s`.
+* On `Err`, the code calls `panic!` again, prints a message, and the program aborts.
 
 
 
