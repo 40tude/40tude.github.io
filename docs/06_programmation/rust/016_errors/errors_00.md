@@ -738,6 +738,8 @@ For example, when we try to open a file, the success type `T` is a file handle (
 
 
 
+
+
 **Alice:** How do I use it? Let’s say I call a function that returns a `Result`. What do I do with that?
 
 **Bob:** We have to check which variant it is. Typically, we use a `match` expression or one of many helper methods. Let’s do a simple example. Suppose we try to parse an integer from a string – this can fail if the string isn’t a number.
@@ -759,6 +761,9 @@ In this code, `text.parse::<i32>()` will return an `Ok(42)` if the string is a v
 * in the `Err` arm, we get an error `e` (of type `std::num::ParseIntError` in this case) and print an error message. 
 
 This way we’ve handled both outcomes explicitly. Using `match` is the standard way to handle a `Result<T, E>` because it forces us to consider both success and error cases.
+
+
+
 
 
 
@@ -814,7 +819,62 @@ One more thing: `Result<T, E>` has other handy methods:
 * `.unwrap_or_default()` will `.unwrap()` the value or give a default if it's an error (no panic). 
 * `.unwrap_or_else(f)` where we can run a closure to generate a fallback value or do some other handling for the error. 
 
-These can sometimes be more convenient than writing a full `match` if we want a quick fallback.
+
+To show how to use `.unwrap_or_default()`, here below is a code you can copy/paste in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). Note that the default is the default of the current data type (0 for `i32`, "" for a `String`...)
+
+```rust
+fn main() {
+    // Option<i32>
+    let some_number: Option<i32> = Some(42);
+    let none_number: Option<i32> = None;
+
+    // unwrap_or_default() gives the value if Some, or the default (0 for i32) if None
+    println!("Some(42).unwrap_or_default() = {}", some_number.unwrap_or_default());
+    println!("None::<i32>.unwrap_or_default() = {}", none_number.unwrap_or_default());
+
+    // Option<String>
+    let some_text: Option<String> = Some("Hello".to_string());
+    let none_text: Option<String> = None;
+
+    // Default for String is empty string ""
+    println!("Some(\"Hello\").unwrap_or_default() = '{}'", some_text.unwrap_or_default());
+    println!("None::<String>.unwrap_or_default() = '{}'", none_text.unwrap_or_default());
+}
+
+```
+
+The code below shows how to use `.unwrap_or_else(f)`. The tricky part might be the source code layout
+
+```rust
+fn main() {
+    let some_number: Option<i32> = Some(42);
+    let none_number: Option<i32> = None;
+
+    // unwrap_or_else takes a closure that computes a fallback value
+    println!(
+        "Some(42).unwrap_or_else(...) = {}",
+        some_number.unwrap_or_else(|| {
+            println!("Closure not called, since we had Some");
+            0
+        })
+    );
+
+    println!(
+        "None::<i32>.unwrap_or_else(...) = {}",
+        none_number.unwrap_or_else(|| {
+            println!("Closure called, computing fallback value...");
+            100
+        })
+    );
+}
+```
+
+With this code it might be a good idea to open `ex06.rs` in the project, set a breakpoint on line 5, press F5, click on the `DEBUG CONSOLE` tab when the execution is paused and then to press F10 to step over line by line.
+
+<div align="center">
+<img src="./assets/img18.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
