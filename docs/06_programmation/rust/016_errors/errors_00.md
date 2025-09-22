@@ -598,7 +598,7 @@ This said, let's go back to the source code :
 * Since `match` is an expression, it evaluates to a value, and with the first `match` we assign that value to `bob`.
 * It is important to understand that `match` **destructures** the `Result<T, E>`. So that the body of the `match` can be read as:
     * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
-    * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`), so this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "Don't press the red button on the joystick, abort! abort! abort!"
+    * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`) which never resolve to any value at all. So this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "Don't press the red button on the joystick, abort! abort! abort!"
 
 
 
@@ -629,7 +629,7 @@ Now rename the file `foo.txt.bak` at the root of the project to `foo.txt` and ru
 * On `Err`, the code calls `panic!` again, prints a message, and the program aborts.
 
 
-**Um... And how do I know `io::Result<usize>` is a type alias for `Result<usize, io::Error>`?** 
+***Um... And how do I know `io::Result<usize>` is a type alias for `Result<usize, io::Error>`?*** 
 
 **Green Slope:**
 1. Set the cursor on `read_to_string`
@@ -667,13 +667,13 @@ Now rename the file `foo.txt.bak` at the root of the project to `foo.txt` and ru
 <!-- <span>Optional comment</span> -->
 </div>
 
-1. Click on **Read**
-1. At the top you see the function signature. `  fn read_to_string(&mut self, buf: &mut String) -> Result<usize> { ... }`
+6. Click on **Read**
+1. At the top you see the function signature: `fn read_to_string(&mut self, buf: &mut String) -> Result<usize> { ... }`
 1. At the very end click on `Result<usize>`
 1. The page Type Alias Result page explains what is going on : `pub type Result<T> = Result<T, Error>;`
 
 
-I know what you think. But we need to invest time in learning how to navigate and read the documentation. For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in Rust by Example then search for the function signature in the std documentation... Read the documentation. 
+I know what you think. But we need to invest time in learning how to navigate and read the documentation. For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in Rust by Example then search for the function signature in the std documentation... Read and navigate the documentation no one can do it for you.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=tQ9bd1UiqDBiWW-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
