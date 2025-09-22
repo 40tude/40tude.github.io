@@ -250,7 +250,9 @@ Now, having this in mind here is what I do and why.
 At the time of writing here is what I see :
 
 <div align="center">
-<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Click the image to zoom in</span>
+
 </div>
 
 * Just for testing purpose, delete the `target/` directory if it exists (at this point it should'nt exist yet)
@@ -418,11 +420,11 @@ Let's take some time and see how one could answer the second exercice. If I sear
 <!-- <span>Optional comment</span> -->
 </div>
 
-This is great because on line 11 it use `std::fs::File::open()` but it is a little bit too complex for me and it seems it handles errors while I want the compiler to complains then fix the errors.
+This is great because on line 11 it uses `std::fs::File::open()` but it is a little bit too complex for me and it seems it handles errors while I want the compiler to complains then fix the errors.
 
 
 
-Copy/paste/save the file as `ex01.rs`. I can open a terminal then enter `cargo run --example ex01` or just press F5 just to make sure the code works as expected. Here is what I see in the Debug Console. 
+Copy/paste/save the file as `ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run --example ex01`. Here is what I see in the Debug Console once I pressed F5 :
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
@@ -528,8 +530,8 @@ fn main() {
 }
 ```
 
-* `result_file` is a Result<T, E>. It is NOT a File
-* `match` is an expression NOT a statement
+* `result_file` is a `Result<T, E>`. It is NOT a `File`
+* `match` is an expression. It is NOT a statement
     * If the difference between expression and statement is not crystal clear read this [page]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) 
 * The `match` expression forces us to handle all possible cases
 
@@ -564,33 +566,38 @@ fn main() {
 ```
 
 * It is important to understand that `match` destructures the `Result<T, E>`. So the body of the `match` says something like:
-    * When the `Result<File, io::Error>` stored in `result_file` matches the pattern `Ok(alice)`, the inner File value is bound to the variable `alice`. Doing so `bob` receive the value of `alice`.
-    * If the value of `result_file` matches `Err(why)`, bind the inner File to `alice` and use it
-    * If `result_file` is `Ok(alice)` then return `alice` (a File). 
+    * When the `Result<File, io::Error>` stored in `result_file` matches the pattern `Ok(alice)`, the inner `File` value is bound to the variable `alice`. Doing so `bob` receive the value of `alice`.
+    * If the value of `result_file` matches `Err(why)`, bind the inner `File` to `alice` and use it
+    * If `result_file` is `Ok(alice)` then return `alice` (a `File`). 
     * If `result_file` is `Err(why)` then do not return anything, 
 
+**Note:** I know `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
+
+```rust
+let mut file = match File::open(&path) {
+    Err(why) => panic!("couldn't open {}: {}", display, why),
+    Ok(file) => file,
+};
+```
+
+* The outer `let mut file = …;` declares a new variable `file` in the current scope.
+* Inside the `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok` variant.
+* That inner `file` shadows the outer one *just for the right-hand side of the assignment*.
+* Once the match expression finishes evaluating, the *inner* `file` is moved out of the `Ok(file)` pattern and becomes the value assigned to the *outer* `file`.
+* This is a case of variable shadowing.
+* The `file` in the match pattern and the `file` bound by the `let` are two distinct variables with the same name, in different scopes.
 
 
 
 
+Let's go back to the source code :
 
 * As before, `std::fs::File::open()` returns a `Result<File, io::Error>`, which we store in `result_file`.
 * Since `match` is an expression, it evaluates to a value, and we assign that value to `bob`.
 * The body of the `match` can be read as:
 
-  * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
-  * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`), so this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "Don't press the red button on the joystick, abort! abort! abort!"
-
-
-
-
-
-
-
-
-
-
-
+    * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
+    * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`), so this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "Don't press the red button on the joystick, abort! abort! abort!"
 
 
 
