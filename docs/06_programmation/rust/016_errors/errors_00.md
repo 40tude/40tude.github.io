@@ -705,15 +705,23 @@ It is time to move on and to dive in `Result<T, E>`.
 
 
 
-<!-- 
 
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## The `Result<T, E>` Type: Handling Recoverable Errors
 
+
+
 **Alice:** So, `Result<T, E>`... What exactly is it?
 
-**Bob:**  `Result<T, E>` is an *enum* (like a tagged union) defined roughly like this:
+**Bob:**  `Result<T, E>` is an `enum` (like a tagged union) defined roughly like this:
 
 ```rust
 enum Result<T, E> {
@@ -722,8 +730,11 @@ enum Result<T, E> {
 }
 ```
 
-It’s a generic enum with two variants. `Ok(T)` means the operation succeeded and yielded a value of type `T` , and `Err(E)` means it failed, yielding an error of type `E` describing what went wrong [10](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=,) [11](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=The%20return%20type%20of%20,This). For example, when we try to open a file, the success type `T` is a file handle ( `std::fs::File` ), and the error type `E` is `std::io::Error` [11](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=The%20return%20type%20of%20,This).
+It’s a generic `enum` with two variants. 
+* `Ok(T)` means the operation succeeded and yielded a value of type `T` 
+* `Err(E)` means it failed, yielding an error of type `E` describing what went wrong [10](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=,) [11](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=The%20return%20type%20of%20,This). 
 
+For example, when we try to open a file, the success type `T` is a file handle ( `std::fs::File` ), and the error type `E` is `std::io::Error`.
 
 
 
@@ -736,59 +747,81 @@ fn main() {
     let text = 42;
     let number_result = text.parse::<i32>();  // parse() returns Result<i32, ParseIntError>
     
-    `match` number_result {
+    match number_result {
         Ok(n) => println!(The number is {n}),              // If parsing succeeds, use the number.
-        `Err(E)` => println!(Could not parse number: {e}),   // If it fails, handle the error.
+        Err(e) => println!(Could not parse number: {e}),   // If it fails, handle the error.
     }
 }
 ```
 
-In this code, `text.parse::<i32>()` will return an `Ok(42)` if the string is a valid integer, or an `Err(e)` if it isn’t (for example, if `text = hello` ). We then `match` on the result: in the `Ok` arm, we get the parsed number n and print it; in the `Err` arm, we get an error `e` (of type `std::num::ParseIntError` in this case) and print an error message. This way we’ve handled both outcomes explicitly. Using `match` is the standard way to handle a `Result<T, E>` because it forces us to consider both success and error cases.
+In this code, `text.parse::<i32>()` will return an `Ok(42)` if the string is a valid integer, or an `Err(e)` if it isn’t (for example, if `text = hello` ). We then `match` on the result: 
+* in the `Ok` arm, we get the parsed number `n` and print it
+* in the `Err` arm, we get an error `e` (of type `std::num::ParseIntError` in this case) and print an error message. 
 
-**Alice:** That makes sense. But matching on every `Result<T, E>` could get verbose.
-
-**Bob:** True. Rust provides a lot of utility methods on `Result<T, E>` to make life easier. For example, if we just want to crash on error (perhaps in a quick prototype), we can use `.unwrap()` or `.expect(...)`. These will check the `Result<T, E>` for we. `.unwrap()` returns the success value if it’s `Ok`, but if it’s an `Err`, it will **panic** (crash) right there [12](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=on%20it%20to%20do%20various%2C,in%20action) [13](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,unwrap%28%29%3B). `.expect(msg)` does the same but lets we provide a custom panic error message [14](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=Similarly%2C%20the%20,looks%20like%20this) [15](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,).
-
-
+This way we’ve handled both outcomes explicitly. Using `match` is the standard way to handle a `Result<T, E>` because it forces us to consider both success and error cases.
 
 
 
-**Alice:** So `.unwrap()` is basically a shortcut for ‘give me the value or panic’? 
+**Alice:** Cool, but matching on every `Result<T, E>` could get verbose. No?
+
+**Bob:** True. Rust provides a lot of utility methods on `Result<T, E>` to make life easier. For example, if we just want to crash on error (perhaps in a quick prototype), we can use `.unwrap()` or `.expect(...)`. These will check the `Result<T, E>` for us. 
+
+* `.unwrap()` returns the success value if it’s `Ok`, but if it’s an `Err`, it will **panic** (crash) right there [12](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=on%20it%20to%20do%20various%2C,in%20action) [13](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,unwrap%28%29%3B). 
+* `.expect(msg)` does the same but lets us provide a custom panic error message [14](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=Similarly%2C%20the%20,looks%20like%20this) [15](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,).
+
+
+
+**Alice:** So `.unwrap()` is basically a shortcut for "give me the value or panic"? 
 
 **Bob:** Exactly. For example:
 
 ```rust
 fn main() {
-    let text = not a number;
+    let text = "not a number";
     // This will panic because the string can't be parsed as i32
     let number = text.parse::<i32>().unwrap();
 }
 ```
 
-If we run this, it will panic with a message like: `thread 'main' panicked at 'called Result::`unwrap()` on an Err value: ParseIntError{ kind: InvalidDigit }'`
+If we run this, it will panic with a message like: `thread 'main' panicked at src/main.rs:4:38: called 'Result::unwrap()' on an 'Err' value: ParseIntError { kind: InvalidDigit }`
 
-Because not a number can’t be parsed, parse returns an Err , and `.unwrap()` triggers a panic.
+Because not a number can’t be parsed, parse returns an `Err`, and `.unwrap()` triggers a panic.
 
-By contrast, `if text = 42`, `.unwrap()` would succeed and give we the `i32` value 42 without any panic.
+By contrast, `if text = 42`, `.unwrap()` would succeed and give us the `i32` value 42 without any panic.
 
 
 
 **Alice:** Got it. And `.expect()` is similar but with my own message?
+
 **Bob:** Right. We might do:
 
 ```rust
-let number = text.parse::<i32>().expect(Expected a number in the string);
+let number = text.parse::<i32>().expect("Expected a number in the string");
 ```
 
-If it fails, you’d get a panic with our message: `'Expected a number in the string: ParseIntError { ... }'`. Using `expect` with a clear message is considered better style in production code compared to `unwrap`,because if a panic happens, the message helps we track down the source and reason [16](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=message%3A%20,). In fact, **most Rustaceans prefer `expect` over `unwrap` in production** so that there's more context in case of a crash [3](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20production,information%20to%20use%20in%20debugging).
+If it fails, you’d get a panic with our message: `'Expected a number in the string: ParseIntError { ... }'`. Using `.expect()` with a clear message is considered better style in production code compared to `.unwrap()`, because if a panic happens, the message helps us track down the source and reason [16](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=message%3A%20,). 
+
+In fact, developper should prefer `.expect()` over `.unwrap()` in production so that there's more context in case of a crash [3](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20production,information%20to%20use%20in%20debugging).
+
+
+
 
 **Alice:** So I should avoid `.unwrap()` and use `expect()` with a good message if I must panic on an error?
 
-**Bob:** Yes, that’s a good rule of thumb. Even better, where possible, handle the error gracefully instead of panicking. `unwrap` / `expect` should be used sparingly – basically in scenarios where we are very sure `Err` won’t happen, or in examples and tests for brevity.
+**Bob:** Yes, that’s a good rule of thumb. Even better, where possible, handle the error gracefully instead of panicking. `.unwrap()`/`.expect()` should be used sparingly – basically in scenarios where we are very sure `Err` won’t happen, or in code snippet, sample code and tests for brevity.
 
-One more thing: `Result<T, E>` has other handy methods. For example, `unwrap_or(default)` will `.unwrap()` the value or give a default if it's an error (no panic). There’s also `unwrap_or_else(f)` where we can run a closure to generate a fallback value or do some other handling for the error. These can sometimes be more convenient than writing a full `match` if we want a quick fallback.
+One more thing: `Result<T, E>` has other handy methods:
+* `unwrap_or(default)` will `.unwrap()` the value or give a default if it's an error (no panic). 
+* `unwrap_or_else(f)` where we can run a closure to generate a fallback value or do some other handling for the error. 
 
-**Alice:** Nice. And earlier, we mentioned opening files… is that similar with `Result<T, E>` ?
+These can sometimes be more convenient than writing a full `match` if we want a quick fallback.
+
+
+
+
+
+
+**Alice:** Earlier, we mentioned opening files... Is that similar with `Result<T, E>` ?
 
 **Bob:** Yes. Opening a file is a classic example of a function returning `Result`. Let’s briefly look at that:
 
@@ -816,40 +849,48 @@ fn main() {
 }
 ```
 
-Here, `File::open` returns a `Result<File, Error>` – it could be `Ok(file_handle)` if the file exists and was opened, or `Err(error)` if something went wrong (file missing, no permission, etc.). We `match` on it. If the error kind is `NotFound` , we attempt to create the file (which itself could error, so we use `.expect()` to crash if even creation fails). For any other kind of error, we just panic immediately. This way, we handle the file not found case by recovering (creating a new file) and let other errors bubble up as a panic. This example shows how we might handle different error scenarios differently by inspecting the error (here using `error.kind()`).
+Here, `File::open` returns a `Result<File, Error>` – it could be `Ok(file_handle)` if the file exists and was opened, or `Err(error)` if something went wrong (file missing, no permission, etc.). 
+
+We `match` on it. 
+* If the error kind is `NotFound` , we attempt to create the file (which itself could error, so we use `.expect()` to crash if even creation fails). 
+* For any other kind of error, we just panic immediately. 
+
+This way, we handle the file not found case by recovering (creating a new file) and let other errors bubble up as a panic. This example shows how we might handle different error scenarios differently by inspecting the error (here using `error.kind()`).
 
 
 
 
 
-**Alice:** I see. We could also handle it differently, like notify the
-user or retry, depending on the context. 
+**Alice:** I see. We could also handle it differently, like notify the user or retry, depending on the context. 
 
-**Bob:** Exactly – the point is that with `Result`, we *decide* how to handle it. We could propagate
-it up, log it, ignore it (not recommended without justification), or crash – but we have to choose one. That’s the power: we won’t accidentally ignore an error.
+**Bob:** Exactly – the point is that with `Result`, we **decide** how to handle it. We could propagate
+it up, log it, ignore it (not recommended without justification), or crash – but **we have to choose** one. That’s the power: we won’t accidentally ignore an error.
 
 
 
 
 ### Summary – The `Result<T, E>` Type Basics
 
- *`Result<T, E>` is an enum** with variants `Ok(T)` (success) and `Err(E)` (error). We can pattern `match` on it to handle each case [10](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=,).
+ * **`Result<T, E>` is an enum:** with variants `Ok(T)` (success) and `Err(E)` (error). We can pattern `match` on it to handle each case [10](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=,).
 
- *Handle with `match` or methods:** Using `match` on a `Result<T, E>` forces explicit handling of success and error. Alternatively, use helper methods like `.unwrap()`/`.expect() `to get the value or panic on error, and `.unwrap_or(default)` , `.unwrap_or_else(func)` to provide fallbacks instead of panicking.
+ * **Handle with `match` or methods:** 
+    * Using `match` on a `Result<T, E>` forces explicit handling of success and error. 
+    * Alternatively, use helper methods like `.unwrap()`/`.expect()` to get the value or panic on error.
+    * Use `.unwrap_or(default)`/`.unwrap_or_else(func)` to provide fallbacks instead of panicking.
 
-**Use expect in production:** If we choose to panic on an error, prefer `expect(useful message)` over plain `.unwrap()` . It gives a clearer error message for debugging when the unexpected
+**Use `.expect()` in production:** If we choose to panic on an error, prefer `.expect("custom message")` over plain `.unwrap()`. It gives a clearer error message for debugging when the unexpected
 happens [3](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20production,information%20to%20use%20in%20debugging).
 
- *Example:** Opening a file returns `Result<File, Error>`. In an error case, we can choose to create the file if it was not found or panic for other errors, demonstrating custom handling for different error causes [17](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=Most%20errors%20aren%E2%80%99t%20serious%20enough,instead%20of%20terminating%20the%20process) [11](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#listing-9-3#:~:text=The%20return%20type%20of%20,This).
+
 
 
 
 
 ### Exercises – `Result<T, E>` Basics
 
-1. **Match Practice:** Write a function `parse_number(text: &str) -> i32` that tries to convert a string to an integer. Use `match` on `text.parse::<i32>()` (which gives a `Result<i32,std::num::ParseIntError>`) and return the number if successful, or print an error and return 0 if not. Test it with both a numeric string and a non-numeric string.
+1. **Match Practice:** Write a function `parse_number(text: &str) -> i32` that tries to convert a string to an integer. Use `match` on `text.parse::<i32>()` (which gives a `Result<i32,std::num::ParseIntError>`) and return the number if successful, or print an error and return `0` if not. Test it with both a numeric string and a non-numeric string.
 
-2. **Unwrap vs. Expect:** Using the same `parse_number` logic, create another function `parse_number_expect(text: &str) -> i32` that does the parsing but uses `.expect()` instead of `match` to crash on error (with a custom message like `Failed to parse number` ). Call this function with a bad input to see the panic message. Then replace `.expect()` with `.unwrap()` to see the default panic message. Note the difference in the panic outputs.
+2. **.unwrap() vs .expect():** Using the same `parse_number` logic, create another function `parse_number_expect(text: &str) -> i32` that does the parsing but uses `.expect()` instead of `match` to crash on error (with a custom message like `Failed to parse number`). Call this function with a bad input to see the panic message. Then replace `.expect()` with `.unwrap()` to see the default panic message. Note the difference in the panic outputs.
 
 3. **File Open Challenge:** Write a small program that attempts to open a file (e.g., `config.txt` ). If it fails because the file is missing, have the program create the file and write a default configuration to it (we can just write a simple string). If it fails for any other reason, have it print a graceful error message (instead of panicking). Use pattern matching on the `Err(e)` and `e.kind()` as shown above to distinguish the cases.
 
@@ -870,8 +911,12 @@ happens [3](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-resul
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 
+<!-- 
 
 
 ## Propagating Errors with `?` Operator
@@ -982,6 +1027,7 @@ One thing to remember: we can’t mix return types with `?` . For example, if ou
 
 
 
+-->
 
 
 
@@ -991,11 +1037,19 @@ One thing to remember: we can’t mix return types with `?` . For example, if ou
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 
 
 
 
+
+
+
+
+<!--
 
 
 ## Option<T> vs. `Result<T, E>`: Choosing the Right Type
@@ -1111,6 +1165,29 @@ and briefly explain why:
 
 
 
+-->
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+
+
+
+
+
+
+
+<!--
 
 
 
@@ -1208,6 +1285,29 @@ And of course, remember that panicking will unwind the stack by default, which c
 
 
 
+-->
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+
+
+
+
+
+
+
+<!--
 
 
 
@@ -1389,6 +1489,29 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
+-->
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+
+
+
+
+
+
+
+<!--
 
 
 
@@ -1489,6 +1612,29 @@ Notice how adding `.context(...)` makes error messages much more actionable if s
 
 
 
+-->
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+
+
+
+
+
+
+
+<!--
 
 
 
