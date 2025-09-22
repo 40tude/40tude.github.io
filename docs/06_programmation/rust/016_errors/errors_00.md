@@ -36,9 +36,9 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 ## TL;DR
 {: .no_toc }
 
-* For beginners
+* For beginners.
 
-* The code is on GitHub
+* The code is on GitHub.
 
 * **Rust has no exceptions:** It distinguishes 
     * **recoverable** errors (handled with the `Result<T, E>` type) 
@@ -477,7 +477,7 @@ In fact, with my setup, if I press `CTRL+ALT` I can reveal the datatype.
 <!-- <span>Optional comment</span> -->
 </div>
 
-`f` is a `Result<File, Error>`. It is a `Result<T, E>` but what happens, it that when I asked to print it with `{:?}`, Rust displays the content of the `Result<T, E>` and this is why we see :
+`f` is a `Result<File, Error>`. It is a `Result<T, E>` but what happens, is that when I asked to print it with `{:?}`, Rust displays the content of the `Result<T, E>` and this is why we can see :
 
 ```
 'f' after std::fs::File::open() =  Err(Os { code: 2, kind: NotFound, message: "Le fichier sp├®cifi├® est introuvable." })
@@ -501,7 +501,7 @@ fn main() {
     println!("{:?}", f);
 }
 ```
-On the lhs of the `=`, I express my expectation. I expect a `File`. Obviously this does not fly very well. We don't even need to try to build. Indeed the red squiggles warn us and if we hover them with the cursor we get a clear explanation and some advises. See below : 
+On the lhs of the equal sign, I express my expectation. I expect a `std::fs::File`. Obviously this does not fly very well. We don't even need to try to build. Indeed, the red squiggles warn us and if we hover them with the cursor we get a clear explanation and some advises. See below : 
 
 <div align="center">
 <img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
@@ -534,6 +534,8 @@ fn main() {
 * `match` is an expression. It is NOT a statement
     * If the difference between expression and statement is not crystal clear read this [page]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) 
 * The `match` expression forces us to handle all possible cases
+* Set a break point on the line with `match` expression (F9)
+* Press F5 and step forward with F10 
 
 
 
@@ -565,11 +567,11 @@ fn main() {
 }
 ```
 
-* It is important to understand that `match` destructures the `Result<T, E>`. So the body of the `match` says something like:
+<!-- * It is important to understand that `match` destructures the `Result<T, E>`. So the body of the first `match` says something like:
     * When the `Result<File, io::Error>` stored in `result_file` matches the pattern `Ok(alice)`, the inner `File` value is bound to the variable `alice`. Doing so `bob` receive the value of `alice`.
     * If the value of `result_file` matches `Err(why)`, bind the inner `File` to `alice` and use it
     * If `result_file` is `Ok(alice)` then return `alice` (a `File`). 
-    * If `result_file` is `Err(why)` then do not return anything, 
+    * If `result_file` is `Err(why)` then do not return anything,  -->
 
 **Note:** I know `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
 
@@ -590,12 +592,11 @@ let mut file = match File::open(&path) {
 
 
 
-Let's go back to the source code :
+This said, let's go back to the source code :
 
 * As before, `std::fs::File::open()` returns a `Result<File, io::Error>`, which we store in `result_file`.
-* Since `match` is an expression, it evaluates to a value, and we assign that value to `bob`.
-* The body of the `match` can be read as:
-
+* Since `match` is an expression, it evaluates to a value, and with the first `match` we assign that value to `bob`.
+* It is important to understand that `match` **destructures** the `Result<T, E>`. So that the body of the `match` can be read as:
     * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
     * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`), so this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "Don't press the red button on the joystick, abort! abort! abort!"
 
@@ -614,7 +615,7 @@ Run the code (F5) to see it in `panic!()`
 <!-- <span>Optional comment</span> -->
 </div>
 
-Now let's create a file named `foo.txt` at the root of the project. Run again the code (F5)
+Now rename the file `foo.txt.bak` at the root of the project to `foo.txt` and run the code (F5)
 
 <div align="center">
 <img src="./assets/img15.webp" alt="" width="450" loading="lazy"/><br/>
@@ -626,6 +627,68 @@ Now let's create a file named `foo.txt` at the root of the project. Run again th
 * Then we call `read_to_string()` on `bob`. The method returns an `io::Result<usize>`, which is just a type alias for `Result<usize, io::Error>`. On success, the `usize` is the number of bytes read.
 * In the second `match` we don’t care about this number, so we use `_` to ignore it. Instead, we just `println!()` the contents of the `String s`.
 * On `Err`, the code calls `panic!` again, prints a message, and the program aborts.
+
+
+**Um... And how do I know `io::Result<usize>` is a type alias for `Result<usize, io::Error>`?** 
+
+**Green Slope:**
+1. Set the cursor on `read_to_string`
+1. Press F12 (Go To Definition)
+1. We can see the function signature : `fn read_to_string(&mut self, buf: &mut String) -> io::Result<usize>`
+1. Hover `io::Result<usize>`
+1. We get access to the type alias `pub type Result<T> = result::Result<T, Error>` 
+
+<div align="center">
+<img src="./assets/img16.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+**North Face:**
+1. Open the [std web page](https://doc.rust-lang.org/std/index.html)
+1. On the left, find the **Crates** section
+1. Click on **std**
+1. Look for and click on **io**
+1. On the right, go down to the **Type Aliases** section
+1. Click on **Result**
+1. The page Type Alias Result page explains what is going on : `pub type Result<T> = Result<T, Error>;`
+
+
+**K12**
+1. Open the [std web page](https://doc.rust-lang.org/std/index.html)
+1. On the left, find the **Crates** section
+1. Click on **std**
+1. Look for and click on **io**
+1. On the right side, go down and find the **Traits** section
+    * I know I must reach the **Traits** section and not the **Functions** section (where there is a `read_to_string`) 
+    * Because at the top of the source code if I hover the line `use std::io::Read;` I'm told `Read` is a trait. 
+
+<div align="center">
+<img src="./assets/img17.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+1. Click on **Read**
+1. At the top you see the function signature. `  fn read_to_string(&mut self, buf: &mut String) -> Result<usize> { ... }`
+1. At the very end click on `Result<usize>`
+1. The page Type Alias Result page explains what is going on : `pub type Result<T> = Result<T, Error>;`
+
+
+I know what you think. But we need to invest time in learning how to navigate and read the documentation. For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in Rust by Example then search for the function signature in the std documentation... Read the documentation. 
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=tQ9bd1UiqDBiWW-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+It took us some time to reach that point but from now on I consider we know : 
+* how to play with code in the project
+* how to build (CTRL+SHIFT+B)
+* how to set breakpoint (F9) and how to debug (F5)
+* how to navigate the documentation (good luck!)
+
+It is time to move on and to dive in `Result<T, E>`.
+
+
 
 
 
@@ -643,9 +706,12 @@ Now let's create a file named `foo.txt` at the root of the project. Run again th
 
 
 <!-- 
+
+
+
 ## The `Result<T, E>` Type: Handling Recoverable Errors
 
-**Alice:** So, `Result<T, E>` … what exactly is it?
+**Alice:** So, `Result<T, E>`... What exactly is it?
 
 **Bob:**  `Result<T, E>` is an *enum* (like a tagged union) defined roughly like this:
 
