@@ -1431,7 +1431,7 @@ The key question to ask: **Is the absence of a value an error condition, or is i
 
 **Alice:** Crystal clear, thanks. And I assume we can use the `?` operator with `Option<T>` similarly, as long as our function returns an `Option<T>`?
 
-**Bob:** Yes, and we already touched on that. If we use `?` on an `Option<T>` and it’s `None`, it will return `None` from our function early. It’s handy when chaining multiple things that might produce no value. 
+**Bob:** Yes, and we already touched on that (see `ex11.rs`). If we use `?` on an `Option<T>` and it’s `None`, it will return `None` from our function early. It’s handy when chaining multiple things that might produce no value. 
 
 But remember, we can’t directly mix `Result<T, E>` and `Option<T>` with `?` without converting. For example, if we have a `Result<T, E>` and we want to use `?` in a function returning `Option<T>`, we would need to convert that `Result<T, E>` into an `Option<T>` (perhaps by ignoring the error or converting error to `None`). Usually, though, we keep to one or the other in a given function.
 
@@ -1486,7 +1486,7 @@ None: could not read _definitely_missing_.txt
 
 **Alice:** I don't get the point, we loose the reason the failure occurs!
 
-**Bon:** You are right. We may be asked to design an API acting that way (drop the error and return `None` on failure). It is a choice. Now if it is really a concern we can **observability**. We keep the `Option<T>` API for the caller (so failures collapse to `None`), but we emit/log diagnostics so that the failures are not invisible. See below an example:
+**Bob:** You are right. We may be asked to design an API acting that way (drop the error and return `None` on failure). It is a choice. Now, if it is really a concern we can add some **observability**. We keep the `Option<T>` API for the caller (so failures collapse to `None`), but we emit/log diagnostics so that the failures are not invisible. See below an example:
 
 ```rust
 // ex16.rs
