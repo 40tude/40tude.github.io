@@ -2,7 +2,7 @@
 published: true
 lang: en-US
 layout: default
-title: Rust Errors, Without the Drama 
+title: Rust Error Handling, Demystified 
 description: A beginner-friendly conversation on Errors, Results, Options, and beyond.
 parent: Rust
 #math: mathjax
@@ -16,7 +16,7 @@ TODO :
 -->
 
 
-# Rust Errors, Without the Drama
+# Rust Error Handling, Demystified
 {: .no_toc }
 
 A beginner-friendly conversation on Errors, Results, Options, and beyond.
@@ -62,10 +62,9 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * **Keep in mind**
 
 ```rust
-use std::fs::File; // shortcut
+use std::fs::File; 
 use std::io::Read;
 
-pub type Result<T> = std::result::Result<T, Error>; // alias
 pub type Error = Box<dyn std::error::Error>;
 
 fn main() -> Result<()> {
@@ -411,7 +410,7 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
 
 
-### Solution to Exercice #2 above
+### Solution to Exercice #2
 
 Let's take some time and see how one could answer the second exercice. If I search "Rust open txt file" on Google, one of the links drive me to the excellent [Rust By Example](https://doc.rust-lang.org/rust-by-example/std_misc/file/open.html). See below :
 
@@ -972,89 +971,279 @@ This way, we handle the "file not found" case by recovering (creating a new file
 <!-- ###################################################################### -->
 
 
-<!-- 
 
 
 ## Propagating Errors with `?` Operator
 
-**Alice:** This `match` stuff is okay, but if I have to propagate errors up multiple functions, writing a `match` in each function sounds painful.
+**Alice:** This `match` stuff is okay, but if I have to propagate errors up multiple functions, writing a `match` expression in each function sounds painful.
 
 **Bob:** You’re in luck – Rust has a convenience for that: the `?` operator. It’s a little piece of syntax that makes propagating errors much nicer.
 
 
 
-**Alice:** I think I saw something like ? in some Rust code. How does it work?
 
-**Bob:** The `?` operator is essentially a shortcut for the kind of match-and-return-on-Err logic we’ve been writing. When we append ? to a `Result<T, E>` (or an `Option<T>`), it will check the result: if it’s Ok , it *unwraps* the value inside and lets our code continue. If it’s an Err, it **returns that error from the current**
-**function** immediately, *bubbling* it up to the caller [18](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,propagated%20to%20the%20calling%20code)
-[19](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20the%20context%20of%20Listing,call). This means we don’t have to write the `match` yourself – ? does it for we.
+**Alice:** I think I already saw ? here and there in some Rust code. How does it work?
+
+**Bob:** The `?` operator is essentially a shortcut for the kind of match-and-return-on-Err logic we’ve been writing. When we append `?` to a `Result<T, E>` (or an `Option<T>`), it will check the result: 
+* If it’s Ok , it *unwraps* the value inside and lets our code continue
+* If it’s an Err, it **returns that error from the current function** immediately, *bubbling* it up to the caller. This means we don’t have to write the `match` ourself, `?` does it for us.
+
+<!-- [18](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,propagated%20to%20the%20calling%20code) -->
+
+<!-- [19](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20the%20context%20of%20Listing,call).  -->
+
 
 
 
 
 **Alice:** So it returns early on error? Nice, that’s like exceptions but checked at compile time.
-**Bob:**Right,it’s analogous to exception propagation but explicitly done via return values. Let’s refactor a
-previous example using `?`. We’ll write a function to read a username from a file. Without `?` , it would look like a lot of nested matches; with `?` it becomes straightforward:
+**Bob:** Right,it’s analogous to exception propagation but explicitly done via return values. Let’s refactor a previous example using `?`. We’ll write a function to read a username from a file. Without `?`, it would look like a lot of nested `match`, while with `?` it becomes straightforward:
 
 
 ```rust
+// ex07.rs
 use std::fs::File;
 use std::io::{self, Read};
 
 fn read_username_from_file() -> Result<String, io::Error> {
-    let mut file = File::open(username.txt)?;       // if Err, returns Err up
+    let mut file = File::open("username.txt")?; // if Err, returns Err up
     let mut username = String::new();
-    file.read_to_string(&mut username)?;              // if Err, returns Err up
-    Ok(username)                                      // if we got here, all good
+    file.read_to_string(&mut username)?; // if Err, returns Err up
+    Ok(username) // if we got here, all good
 }
 
 fn main() {
     // Use the function and handle any error here
-    `match` read_username_from_file() {
-        Ok(name) => println!(Username: {name}),
-        `Err(E)` => eprintln!(Error reading username: {e}),
+    match read_username_from_file() {
+        Ok(name) => println!("Username: {name}"),
+        Err(e) => eprintln!("Error reading username: {e}"),
     }
 }
 ```
+**Side Note:** 
+* Open `ex07.rs`
+* Set breakpointq on lines 7 and 15 
+* Run the code (F5) 
+* There is a file named `username.txt.bak` at the root of the project. 
+    * Rename it `username.txt`. Empty it...
 
-See those `?` after `File::open` and `read_to_string`? If either operation fails, the function `read_username_from_file()` will immediately return a `Err(io::Error)` back to the caller, so the error is propagated upward [18](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,propagated%20to%20the%20calling%20code) [19](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20the%20context%20of%20Listing,call). If they succeed, the code continues, and at the end we return `Ok(username)` normally. This pattern is so common that using ? is
-idiomatic Rust. It makes the code much cleaner by avoiding all the boilerplate of matching and returning errors manually [20](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,8).
+
+<div align="center">
+<img src="./assets/img19.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+**Bob:** First thing first. Do you see the return type in the signature of `read_username_from_file()`. This is obvious but yes, you can return `Result<T, E>` from your onw function.
+
+Now, do you see those `?` after `File::open` and `read_to_string`? If either operation fails, the function `read_username_from_file()` will immediately return a `Err(io::Error)` back to the caller, so the error is propagated upward. If they succeed, the code continues, and at the end we return `Ok(username)` normally. 
+
+<!-- [18](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,propagated%20to%20the%20calling%20code)  -->
+<!-- [19](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20the%20context%20of%20Listing,call).  -->
+
+This pattern is so common that using `?` is idiomatic Rust. It makes the code much cleaner by avoiding all the boilerplate of matching and returning errors manually. 
+
+<!-- [20](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,8). -->
+
+
+
 
 
 
 
 **Alice:** That’s much shorter! And in `main()` we decided to handle the error with a `match` . Could I propagate the error from `main()` as well?
 
-**Bob:** Good point. In fact, we can! In modern Rust, the `main()` function itself can return a `Result<T, E>` (or any type that implements the `Termination` trait, like `Result<T, E>` does). This is a feature that lets we use `?` even in `main()` . For example:
+**Bob:** This is a very good point. In fact, yes we can! In "modern" Rust, the `main()` function itself can return a `Result<T, E>` (or any type that implements the `Termination` trait, like `Result<T, E>` does). 
+
+This is a feature that let us use `?` even in `main()` . For example:
 
 ```rust
+// ex08.rs
 use std::error::Error;
 use std::fs::File;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let file = File::open(data.txt)?;  // if this errors, `main()` will return Err
-    println!(File opened successfully: {:?}, file);
+    let file = File::open("username.txt")?; // if this errors, `main()` will return Err
+    println!("File opened successfully: {:?}", file);
     Ok(())
 }
 ```
 
-By writing `fn main() -> Result<(), Box<dyn Error>>`, we indicate that `main()` might return an error (the `Box<dyn Error>` is just a trait object to mean any kind of error – it’s a convenient way to say our error could be of any type that implements the Error trait). Now, using `?` in `main()` is allowed because the error can be returned from `main()` [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt) [21](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20%60Box,main). If an error occurs, the runtime will print the error and exit with a non-zero status code. If `main()` returns `Ok(())` , the program exits
-normally with code 0 [22](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=When%20a%20,be%20compatible%20with%20this%20convention). This is really nice for quick scripts – we can just propagate errors out of `main()` and let the program crash gracefully with an error message,
+<div align="center">
+<img src="./assets/img20.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+By writing `fn main() -> Result<(), Box<dyn Error>>`, we indicate that `main()` might return an error. The `Box<dyn Error>` is a trait object to mean any kind of error – it’s a convenient way to say our error could be of any type that implements the Error trait. 
+
+Now, using `?` in `main()` is allowed because the error can be returned from `main()`. If an error occurs, the runtime will print the error and exit with a non-zero status code. If `main()` returns `Ok(())` , the program exits normally with code 0. 
+
+This is really nice for quick scripts – we can just propagate errors out of `main()` and let the program crash gracefully with an error message,
 rather than writing a lot of error handling in `main()`.
 
 
 
+<!-- [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt)  -->
 
-**Alice:** That makes sense. So `?` can be used in any function that returns a `Result<T, E>` (or even an `Option<T>`   for `Option<T>`   return types, similarly)?
+<!-- [21](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20%60Box,main).  -->
 
-**Bob:** Correct.The rule is: we can use `?` in a function if the return type of that function can absorb the error. Typically, that means if our function returns a `Result<..., E>` , we can use `?` on another `Result<..., E2>` as long as `E2` can convert into `E`. Usually they’re the same E or there’s an implementation of the `From` trait to convert one error into the other [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons). Rust does this conversion automatically in many cases. And as we noted, if our function returns `Option<T>` , we can use `?` on another `Option<T>`   – if it’s `None`, our function returns None early [23](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20error%20message%20also%20mentioned,line%20in%20the%20given%20text)
-[24](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=function%20that%20returns%20an%20,line%20in%20the%20given%20text).
 
-One thing to remember: we can’t mix return types with `?` . For example, if our function returns a `Result`, we can’t directly use `?` on an `Option<T>`   without converting it (and vice versa) [25](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=Note%20that%20you%20can%20use,method%20on). There are helper methods like `.ok_or()` to turn an `Option<T>`   into a `Result<T, E>` if needed.
+<!-- [22](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=When%20a%20,be%20compatible%20with%20this%20convention).  -->
+
+
+We can go one step further with the code below:
+
+```rust
+// ex09.rs
+use std::fs::File;
+
+pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>; // Type Alias
+
+fn main() -> Result<()> {
+    let file = File::open("username.txt")?;
+    println!("File opened successfully: {:?}", file);
+    Ok(())
+}
+```
+
+It does exactly the same thing but thanks to type aliases, we lighten the signature of `main()`. Note that the line `use std::error::Error;` is no longer necessary.
+
+
+
+
+
+
+**Alice:** So `?` can be used in any function that returns a `Result<T, E>` or `Option<T>` right?
+
+**Bob:** Correct. The rule is: we can use `?` in a function if the return type of that function can absorb the error. Typically, that means if our function returns a `Result<..., E>`. We can use `?` on another `Result<..., E2>` as long as `E2` can convert into `E`. Usually they’re the same `E` or there’s an implementation of the `From` trait to convert one error into the other. Rust does this conversion automatically in many cases. 
+
+For example, below, the main() returns a `Result<T, Box<dyn Error>>`, but calls `parse::<i32>()`, which returns a `ParseIntError`. Rust performs the conversion automatically using `From<ParseIntError>` for `Box<dyn Error>`.
+
+```rust
+// ex10.rs
+pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+fn parse_number(s: &str) -> Result<i32> {
+    // `parse::<i32>()` returns Result<i32, ParseIntError>
+    // The `?` operator works here because ParseIntError implements
+    // the `Error` trait, and Rust knows how to convert it into Box<dyn Error>.
+    let n: i32 = s.parse()?;
+    Ok(n)
+}
+
+fn main() -> Result<()> {
+    let value = parse_number("123sdfsdf")?;
+    println!("Parsed value: {value}");
+    Ok(())
+}
+
+```
+
+If our function returns `Option<T>` , we can use `?` on another `Option<T>`. If it’s `None`, our function returns `None` early. Play with the code below : 
+
+```rust
+// ex11.rs
+
+fn first_char_upper(s: &str) -> Option<char> {
+    // `first_char_upper()` returns Option<char>
+    // `chars().next()` returns Option<char>
+    // => we can use `?` at the end of s.chars().next()
+    // If it's None, the function returns None early
+    let c = s.chars().next()?;
+    Some(c.to_ascii_uppercase())
+}
+
+fn main() {
+    println!("{:?}", first_char_upper("hello")); // Some('H')
+    println!("{:?}", first_char_upper("")); // None
+}
+```
+
+Please note that the code below would work as well.
+
+```rust
+fn first_char_upper(s: &str) -> Option<f64> {
+    let c = s.chars().next()?; // c: char
+    Some(42.0)
+}
+```
+
+It compiles without any problems because the `?` always outputs a char but the compiler doesn't care that our function returns an `Option<f64>`. It just checks that the `?` “absorbs” the `Option<char>` by returning `None` when necessary. Then it's up to us to transform the char into whatever we need want (in this case, an `f64`).
+
+
+One thing to remember: **we can’t mix** return types with `?`. For example, if our function returns a `Result`, we can’t directly use `?` on an `Option<T>` without converting it (and vice versa). For example the code below does not compile : 
+
+```rust
+
+// ex12.rs
+// ! DOES NOT COMPILE
+
+use std::fs::File;
+
+fn bad_example() -> Option<File> {
+    // `File::open` returns Result<File, io::Error>
+    // But our function returns Option<File>.
+    // The compiler rejects this because it cannot convert Result into Option automatically.
+    let file = File::open("username.txt")?;
+    Some(file)
+}
+
+fn main() {
+    let f = bad_example();
+    println!("{:?}", f);
+}
+```
+
+See part of the message from the compiler on build :
+
+```
+error[E0277]: the `?` operator can only be used on `Option`s, not `Result`s, in a function that returns `Option`
+   |
+ 8 | fn bad_example() -> Option<File> {
+   | -------------------------------- this function returns an `Option`
+...
+12 |     let file = File::open("username.txt")?;
+   |                                          ^ use `.ok()?` if you want to discard the `Result<Infallible, std::io::Error>` error information
+```
+
+
+
+
+There are helper methods like `.ok_or()` to turn an `Option<T>` into a `Result<T, E>` if needed. See below :
+
+```rust
+// ex13.rs
+// CTRL+SHIFT+B to build | F5 to build and Debug | cargo run --example ex13
+
+pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+fn get_first_char(s: &str) -> Result<char> {
+    // Convert Option<char> into Result<char, String>
+    s.chars().next().ok_or("String was empty".into())
+}
+
+fn main() -> Result<()> {
+    let c1 = get_first_char("hello")?;
+    println!("First char: {c1}");
+
+    let c2 = get_first_char("")?; // This will return Err
+    println!("First char: {c2}");
+
+    Ok(())
+}
+```
+
+
+
+
+
+
+
+
 
 **Alice:** Understood. I really like how `?` reduces the clutter. It reads almost like normal linear code, but errors just get propagated automatically.
 
-**Bob:** Exactly. It’s one of the features that make Rust’s error handling ergonomic. Just be sure that when we use ? , we know what error type our function is returning and that it’s appropriate to let it bubble up to the caller.
+**Bob:** Exactly. It’s one of the features that make Rust’s error handling ergonomic. Just be sure that when we use `?`, we know what error type our function is returning and that it’s appropriate to let it bubble up to the caller.
 
 
 
@@ -1068,22 +1257,49 @@ One thing to remember: we can’t mix return types with `?` . For example, if ou
 
 3. **Converting error types:** When using `?`, if the error type of the `Result<T, E>` you’re handling doesn’t exactly `match` our function’s error type, it will attempt to convert it via the `From` trait. This allows different error types to be mapped into one error type for our function [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons) (for example, converting a `std::io::Error` into our custom error type). If no conversion is possible, you’ll get a type mismatch compile error, which we can resolve by using methods like `.map_err()` or implementing `From` for our error.
 
-4. **`main()` can return Result:** To use `?` at the top level, we can have `main()` return `Result<(), E>`. This way, any `Err` that propagates to `main()` will cause the program to exit with a non-zero status and print the error. For example, `main() -> Result<(), Box<dyn std::error::Error>>` is a common choice to allow using `?` in `main()` [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt) [22](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=When%20a%20,be%20compatible%20with%20this%20convention).
+4. **`main()` can return `Result<T, E>`:** To use `?` at the top level, we can have `main()` return `Result<(), E>`. This way, any `Err` that propagates to `main()` will cause the program to exit with a non-zero status and print the error. For example, `main() -> Result<(), Box<dyn std::error::Error>>` is a common choice to allow using `?` in `main()` 
 
+<!-- [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt)  -->
+<!-- [22](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=When%20a%20,be%20compatible%20with%20this%20convention). -->
+
+5. Keep this in mind
+
+    ```rust
+    pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+    fn main() -> Result<()> {
+        // ...
+        Ok(())
+    }
+    ```
 
 
 
 ### Exercises – Propagating Errors
 
-1. **Refactor with `?` :** Take one of our functions from the previous exercises (for instance, a file-reading function or the number-parsing function) that handled errors with `match` . Change it to return a `Result<T, E>` instead of, say, defaulting to a value, and use the ? operator to propagate errors to the caller. For example, change a `parse_number` that returned 0 on error to instead return `Result<i32, std::num::ParseIntError>` and use `?` inside. Then handle the error at the top level (maybe in `main()`) by printing an error.
-
-2. **Chain calls with `?`:** Write two small functions: `fn get_file_contents(path: &str) -> Result<String, std::io::Error>` that opens and reads a file (using `?` ), and `fn count_lines(path: &str) -> Result<usize, std::io::Error>` that calls `get_file_contents` (using `?` ) and then returns the number of lines in the file. In `main()`, call `count_lines(somefile.txt)` and handle the error with a `match` or by returning a `Result<T, E>` from `main()` using `?`. This will give we practice in propagating errors through multiple levels.
-
-3. **Using ? with Option:** Write a function `last_char_of_first_line(text: &str) -> Option<char>` that returns the last character of the first line of a string, or `None` if the string is empty or has no lines. (Hint: We can use `text.lines().next()?` to get the first line, and then `chars().last()` on that line. The `?` will return early with `None` if there is no first line [23](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20error%20message%20also%20mentioned,line%20in%20the%20given%20text) [26](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20last_char_of_first_line%28text%3A%20%26str%29%20,last%28%29).) Test it with an empty string, a single-line string, and a multi-line string.
-
+1. **Refactor with `?` :** 
+* Take one of our functions from the previous exercises (for instance, a file-reading function or the number-parsing function) that handled errors with `match`. 
+* Change it to return a `Result<T, E>` instead of, say, defaulting to a value, and use the `?` operator to propagate errors to the caller. For example, change a `parse_number` that returned 0 on error to instead return `Result<i32, std::num::ParseIntError>` and use `?` inside. 
+* Then handle the error at the top level (maybe in `main()`) by printing an error.
 
 
--->
+2. **Chain calls with `?`:** 
+* Write two short functions: `fn get_file_contents(path: &str) -> Result<String, std::io::Error>` that opens and reads a file (using `?`), and `fn count_lines(path: &str) -> Result<usize, std::io::Error>` that calls `get_file_contents` (using `?`) and then returns the number of lines in the file. 
+* In `main()`, call `count_lines(somefile.txt)` and handle the error with a `match` or by returning a `Result<T, E>` from `main()` using `?`. 
+* This will give us practice in propagating errors through multiple levels.
+
+3. **Using ? with Option:** 
+* Write a function `last_char_of_first_line(text: &str) -> Option<char>` that returns the last character of the first line of a string, or `None` if the string is empty or has no lines. 
+* Hint: We can use `text.lines().next()?` to get the first line, and then `chars().last()` on that line.
+* The `?` will return early with `None` if there is no first line 
+* Test it with an empty string, a single-line string, and a multi-line string.
+
+<!-- * [23](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20error%20message%20also%20mentioned,line%20in%20the%20given%20text)  -->
+
+<!-- * [26](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20last_char_of_first_line%28text%3A%20%26str%29%20,last%28%29). -->
+
+
+
 
 
 
