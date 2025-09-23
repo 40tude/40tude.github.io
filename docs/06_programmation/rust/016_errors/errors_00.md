@@ -12,7 +12,7 @@ last_modified_date : 2025-09-23 10:00:00
 
 <!-- 
 TODO :
-* ???
+* Fournir tous les codes de toutes les solutions
 -->
 
 
@@ -592,7 +592,7 @@ fn main() {
     * If `result_file` is `Ok(alice)` then return `alice` (a `File`). 
     * If `result_file` is `Err(why)` then do not return anything,  -->
 
-**Note:** I know `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
+**Side Note:** I know `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
 
 ```rust
 let mut file = match File::open(&path) {
@@ -1769,27 +1769,14 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 <!-- ###################################################################### -->
 
 
-
-
-
-
-
-
-
-<!--
-
-
-
-
-
-
 ## Custom Error Types and Error Handling in Larger Programs
 
 
-**Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about in bigger programs where different parts can error in different ways? How do I design my own error types?
+**Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about in bigger programs where different parts can error in different ways? How should I think about and then design my own error data types, if necessary?
 
-**Bob:** Great question. As our Rust program grows, we might call many operations that can fail, potentially with different error types. We have a few choices:
-* Use one catch-all error type everywhere (like `Box<dyn std::error::Error>` or a crate like `anyhow` in applications) to simplify things, * Or define our own **custom error type** (usually an `enum` ) that enumerates all possible errors in our context, and convert other errors into our type.
+**Bob:** As our Rust program grows, we might call many operations that can fail, potentially with different error types. We have a few choices:
+* Use one catch-all error type everywhere (like `Box<dyn std::error::Error>` or a crate like `anyhow` in applications) to simplify things
+* Define our own **custom error type** (usually an `enum` ) that enumerates all possible errors in our context, and convert other errors into our type.
 
 Defining a custom error type is common in libraries, so that the library returns one consistent error type that our users can handle, instead of many disparate types.
 
@@ -1797,144 +1784,395 @@ Defining a custom error type is common in libraries, so that the library returns
 
 **Alice:** How would a custom error look?
 
-**Bob:** Usually as an enum. For example,imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from std or crates (IO errors and parse errors). We might create an enum like:
-
+**Bob:** Usually as an `enum`. For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from std or crates (IO errors and parse errors). We might create an `enum` like:
 
 
 ```rust
-use std::fmt;
+// ex17.rs
+use serde::Deserialize;
 use std::error::Error;
+use std::fmt;
+use std::fs::{read_to_string, write};
+
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 #[derive(Debug)]
 enum ConfigError {
     Io(std::io::Error),
-    Parse(json::Error),  // assuming some JSON library's error type
+    Parse(serde_json::Error),
 }
 
 // Implement Display for our error to satisfy Error trait.
 impl fmt::Display for ConfigError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result{
-        `match` self {
-            ConfigError::Io(e) => write!(f, IO error: {}, e),
-            ConfigError::Parse(e) => write!(f, Parse error: {}, e),
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+            ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
         }
     }
 }
 
-// Implement the std::error::Error trait for ConfigError.
+// Implement the standard Error trait for integration with other error tooling.
 impl Error for ConfigError {}
 ```
 
 
-*(Note: In real code, we might use the `thiserror` crate to derive these implementations, but here it’s shown manually.)*
+<!-- **Side Note:** In real code, we might use the `thiserror` crate to derive these implementations, but here it’s shown manually. -->
 
-Now `ConfigError` can represent either kind of error. Next, when we write functions, we make them return `Result<T, ConfigError>`. Inside those functions, we can convert errors into `ConfigError`. For example:
+* Now `ConfigError` can represent either kind of error (`Io(std::io::Error)` or `Parse(serde_json::Error)`). 
+* Next, when we write functions, we make them return `Result<T>` and NOT `Result<T, ConfigError>`. Indeed, at the top of the code we have the type alias : `type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;` 
+* Inside those functions, we can convert errors into `ConfigError` with `.map_err()`
+
+See below :
 
 ```rust
-fn load_config(path: &str) -> Result<Config, ConfigError> {
-    let data = std::fs::read_to_string(path).map_err(ConfigError::Io)?;
-    let config = json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
-    Ok(config)
+fn load_config(path: &str) -> Result<Config> {
+    let data = read_to_string(path).map_err(ConfigError::Io)?;
+    let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+    Ok(cfg)
 }
 ```
 
-Here, `std::fs::read_to_string` returns a `Result<String, std::io::Error>`. We use `.map_err(ConfigError::Io)` to convert an `io::Error` into our `ConfigError::Io` variant if it fails. Similarly, the JSON parse returns a `Result<Config, json::Error>`, and we map that error to `ConfigError::Parse`. By using `?`, any error will be converted and bubbled up as our `ConfigError`. The caller of `load_config` now only has to handle `ConfigError` and can match on whether it was Io or Parse if they want to distinguish. 
+* `std::fs::read_to_string` returns a `Result<String, std::io::Error>`. We use `.map_err(ConfigError::Io)` to convert an `io::Error` into our `ConfigError::Io` variant if it fails
+* The JSON parse returns a `Result<Config, json::Error>`, and we map that error to `ConfigError::Parse`. 
+* With `?`, any error will be converted and bubbled up as our `ConfigError`. 
+* The caller of `load_config` now only has to handle `ConfigError` and can match on whether it was `Io()` or `Parse()` if they want to distinguish. 
 
-Also note how implementing the `Error` trait (which mainly requires `Display` and `Debug`) makes our `ConfigError` interoperable with other error handling (and we could combine it with trait objects, etc.). The `?` operator was able to work because we provided a conversion via `map_err`. Alternatively, we could implement `From<std::io::Error> for ConfigError` and `From<json::Error> for ConfigError` and then `?` would automatically convert the errors using those `From` implementations [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons). That’s another neat trick: implementing `From<OtherError>` for our error type lets `?` do the conversion implicitly.”
-
-
-**Alice:** That’s cool. It is a bit of work to set up, but it results in clean error handling for the caller.
-
-**Bob:** Yes. In larger applications, we might have a few layers of these. Sometimes, to avoid too many different error types, people use `Box<dyn Error>` as a kind of unified error type. For example, our `main()` could just use `Result<(), Box<dyn std::error::Error>>` so it can return any error without needing to define a new type for it [21](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20%60Box,main) . This is fine for applications where we just want to print the error and quit, but in library code or more structured error handling, having specific error types (or at least error *kinds*) is useful.
-
-Also, error traits allow chaining and context, but that’s beyond a beginner-intermediate discussion. Just know that custom error types are how we represent domain-specific errors in Rust.
-
-
-
-**Alice:** Got it. So if I had a module that does some operation, I should define an error type in that module representing things that can go wrong there, and use `?` to convert sub-errors into it, then bubble up to `main`. That way, `main` just sees my module’s error type (or I convert it further to something else or to `Box<dyn Error>` at the final boundary).
-
-**Bob:** Exactly. Let’s do a quick mini-example of propagating an error from a module to `main`. Suppose we have a module `math_utils` with a function that can fail:
-
+Below we show a part of the `main()` function to focus on how this works from the caller point of view. 
 
 ```rust
-// In math_utils.rs
-#[derive(Debug)]
-pub enum MathError {
-    DivisionByZero,
-    NegativeLogarithm,
-}
-
-impl std::fmt::Display for MathError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result{
-        `match` self {
-            MathError::DivisionByZero => write!(f, division by zero),
-            MathError::NegativeLogarithm => write!(f, logarithm of negative number),
-        }
+fn main() -> Result<()> {
+    ...
+    match load_config("bad_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
     }
-}
-impl std::error::Error for MathError {}
-
-// Some functions that return Result<_, MathError>
-pub fn divide(a: f64, b: f64) -> Result<f64, MathError> {
-    if b == 0.0 {
-        Err(MathError::DivisionByZero)
-    } else {
-        Ok(a / b)
-    }
-}
-
-pub fn log10(x: f64) -> Result<f64, MathError> {
-    if x < 0.0 {
-        Err(MathError::NegativeLogarithm)
-    } else {
-        Ok(x.log10())
-    }
-}
-```
-
-Now in our `main.rs` , we use these:
-
-```rust
-// In main.rs
-mod math_utils;
-use math_utils::{divide, log10, MathError};
-
-fn main() -> Result<(), MathError> {
-    let ratio = divide(10.0, 2.0)?;      // uses MathError if fails
-    println!(Ratio is {}, ratio);
-    let bad_ratio = divide(5.0, 0.0)?;   // this will trigger an error -> propagate
-    println!(This won't run because of error above);
+    ...
     Ok(())
 }
 ```
 
-If we run this, when it tries to divide by 0, it will return `Err(MathError::DivisionByZero)`, the `?` will make `main` return that error, and the program will end with an error. Since we made `main` return `Result<(), MathError>`, the runtime will print the error (via the `Display` impl) for us. You’d see output like: `Error: division by zero` (depending on how Rust formats the `MathError`). 
-
-We could also catch the error in `main` with a `match` instead, and print something custom. But this illustrates bubbling the error from a module up to `main`. The key was defining `MathError` and using it consistently. Each function in the module returns `MathError` on failure, and `main` knows about `MathError` too.
+Spend some time in the code above to see where `cfg.app_name` and `cfg.port` have been initialized. Try to imagine what will be printed in the console if, as we can imagine, `bad_config.json` is not parsed successfully. Confirm your thoughts with the ouput below :  
 
 
+Expected output of the `ex17.rs`: 
+
+```
+-- Loading good_config.json
+OK  -> app_name='Demo', port=8080
+
+-- Loading bad_config.json (should parse-fail)
+ERR -> Parse error: invalid type: string "not a number", expected u16 at line 1 column 44 (debug: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44)))        
+
+-- Loading missing.json (should I/O-fail)
+ERR -> I/O error: Le fichier spécifié est introuvable. (os error 2) (debug: Io(Os { code: 2, kind: NotFound, message: "Le fichier spécifié est introuvable." }))
+```
+
+Also note how implementing the `Error` trait (which mainly requires `Display` and `Debug`) makes our `ConfigError` interoperable with other error handling (and we could combine it with trait objects, etc.). The `?` operator was able to work because we provided a conversion via `map_err`. Alternatively, we could implement `From<std::io::Error> for ConfigError` and `From<json::Error> for ConfigError` and then `?` would automatically convert the errors using those `From` implementations. That’s another neat trick: implementing `From<OtherError>` for our error type lets `?` do the conversion implicitly.”
+
+<!-- [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons) -->
+
+Find below `ex17.rs` complete source code because I hate partial source code in blog posts that never works. 
+* Feel free to copy/paste in Rust Playground
+* In VSCode, set a breakpoint and take the time to go through the code line by line (F10). 
+
+<div align="center">
+<img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+```rust
+// ex17.rs
+use serde::Deserialize;
+use std::error::Error;
+use std::fmt;
+use std::fs::{read_to_string, write};
+
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+#[derive(Debug, Deserialize)]
+struct Config {
+    app_name: String,
+    port: u16,
+}
+
+#[derive(Debug)]
+enum ConfigError {
+    Io(std::io::Error),
+    Parse(serde_json::Error),
+}
+
+// Implement Display for our error to satisfy Error trait.
+impl fmt::Display for ConfigError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+            ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+        }
+    }
+}
+
+// Implement the standard Error trait for integration with other error tooling.
+impl Error for ConfigError {}
+
+// Map the inner errors explicitly (uses map_err).
+fn load_config(path: &str) -> Result<Config> {
+    let data = read_to_string(path).map_err(ConfigError::Io)?;
+    let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+    Ok(cfg)
+}
+
+fn main() -> Result<()> {
+    // Create demo files
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    // 1) Happy path
+    println!("-- Loading good_config.json");
+    match load_config("good_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // 2) JSON parse failure
+    println!("\n-- Loading bad_config.json (should parse-fail)");
+    match load_config("bad_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // 3) I/O failure (file does not exist)
+    println!("\n-- Loading missing.json (should I/O-fail)");
+    match load_config("missing.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    Ok(())
+}
+```
 
 
 
 
-**Alice:** “This is really thorough. I think I have a solid grasp of error handling in Rust now!”  
 
-**Bob:** “Excellent. It’s a lot to take in at first, but once we get comfortable, you’ll appreciate how Rust’s approach makes we think about errors up front. No more runtime surprises from unhandled exceptions – we decide what to do in each case. And remember, for larger projects, there are crates like `thiserror` to reduce error boilerplate, and `anyhow` for quick-and-easy error handling in applications. Those can be handy, but the fundamentals of `Result<T, E>` and `?` we covered are the building blocks of it all.”
+**Alice:** I'm not a big fan of the `.map_err()` in `load_config()`. You know what? I miss shorter lines of code ending with `?`. 
+
+**Bob:** Again, your wishes are my commands. I let you play with this version in VSCode.
+
+```rust
+// ex18.rs
+use serde::Deserialize;
+use std::error::Error;
+use std::fmt;
+use std::fs::{read_to_string, write};
+
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+#[derive(Debug, Deserialize)]
+struct Config {
+    app_name: String,
+    port: u16,
+}
+
+#[derive(Debug)]
+#[allow(dead_code)]
+enum ConfigError {
+    Io(std::io::Error),
+    Parse(serde_json::Error),
+}
+
+impl fmt::Display for ConfigError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+            ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+        }
+    }
+}
+
+impl Error for ConfigError {}
+
+// To use `?` rather than .map_err() in load_config() we need the 2 impl below
+impl From<std::io::Error> for ConfigError {
+    fn from(e: std::io::Error) -> Self {
+        ConfigError::Io(e)
+    }
+}
+
+impl From<serde_json::Error> for ConfigError {
+    fn from(e: serde_json::Error) -> Self {
+        ConfigError::Parse(e)
+    }
+}
+
+fn load_config(path: &str) -> Result<Config> {
+    let data = read_to_string(path)?; // automatically converts to ConfigError
+    let cfg = serde_json::from_str::<Config>(&data)?; // same here
+    Ok(cfg)
+}
+
+fn main() -> Result<()> {
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    println!("-- Loading good_config.json");
+    match load_config("good_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    println!("\n-- Loading bad_config.json (should parse-fail)");
+    match load_config("bad_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    println!("\n-- Loading missing.json (should I/O-fail)");
+    match load_config("missing.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    Ok(())
+}
+```
+
+
+
+
+
+
+
+
+
+<!-- **Alice:** That’s cool. It is a bit of work to set up, but it results in clean error handling for the caller.
+
+**Bob:** Yes. In larger applications, we might have a few layers of these. Sometimes, to avoid too many different error types, people use `Box<dyn Error>` as a kind of unified error type. For example, our `main()` could just use `Result<(), Box<dyn std::error::Error>>` so it can return any error without needing to define a new type for it. This is fine for applications where we just want to print the error and quit, but in library code or more structured error handling, having specific error types (or at least error *kinds*) is useful.
+
+
+Also, error traits allow chaining and context, but that’s beyond a beginner-intermediate discussion. Just know that custom error types are how we represent domain-specific errors in Rust. -->
+
+<!-- [21](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20%60Box,main)  -->
+
+
+
+
+
+**Alice:** Got it. So if I had a module that does some operation, I should define an error type in that module representing things that can go wrong there, and use `?` to convert sub-errors into it, then bubble up to `main()`. That way, `main()` just sees my module’s error type (or I convert it further to something else or to `Box<dyn Error>` at the final boundary).
+
+**Bob:** Exactly. Let’s do a quick mini-example of propagating an error from a module to `main()`. Suppose we have a module `math_utils` with a function that can fail:
+
+
+```rust
+// ex19.rs
+// CTRL+SHIFT+B to build | F5 to build and Debug | cargo run --example ex19
+
+mod math_utils {
+    // This module could be in a file math_utils.rs
+    #[derive(Debug)]
+    pub enum MathError {
+        DivisionByZero { numerator: f64 },
+        NegativeLogarithm { value: f64 },
+    }
+
+    impl std::fmt::Display for MathError {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                MathError::DivisionByZero { numerator } => write!(f, "Cannot divide {} by zero", numerator),
+                MathError::NegativeLogarithm { value } => write!(f, "Logarithm of negative number ({})", value),
+            }
+        }
+    }
+    impl std::error::Error for MathError {}
+
+    // Functions that return Result<_, MathError>
+    pub fn divide(a: f64, b: f64) -> Result<f64, MathError> {
+        if b == f64::EPSILON { Err(MathError::DivisionByZero { numerator: a }) } else { Ok(a / b) }
+    }
+
+    pub fn log10(x: f64) -> Result<f64, MathError> {
+        if x < 0.0 { Err(MathError::NegativeLogarithm { value: x }) } else { Ok(x.log10()) }
+    }
+}
+
+use math_utils::{divide, log10};
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+fn run() -> Result<()> {
+    let my_log = log10(1024.0)?;
+    println!("Log10 is {:.3}", my_log);
+
+    let ratio = divide(10.0, 3.0)?;
+    println!("Ratio is {:.3}", ratio);
+
+    let bad_ratio = divide(5.0, 0.0)?;
+    println!("This won't print because of error above ({})", bad_ratio);
+    Ok(())
+}
+
+fn main() -> Result<()> {
+    if let Err(e) = run() {
+        eprintln!("Error: {}", e);
+        std::process::exit(42);
+    }
+    Ok(())
+}
+```
+
+Expected output:
+
+```
+Log10 is 3.010
+Ratio is 3.333
+Error: Cannot divide 5 by zero
+error: process didn't exit successfully: `target\debug\examples\ex19.exe` (exit code: 42)
+```
+
+If we run this :
+* `main()` calls the `run()` function
+* There is no problem with `log10()`
+* There is no problem with the first `divide()`
+* The second `divide()` returns an `Err(MathError::DivisionByZero)` and the `?` bubbles up the error to the caller
+* The `println!()` with `bad_ratio` is never executed 
+* Back in `main()`, "Ooops, division by zero" is printed, thanks to `Display` implementation for `MathError`   
+* Just for the fun, at this point, we return 42 and exit.
+
+
+
+We could also catch the error in `main` with a `match` instead, and print something custom. But the point was to illustrate bubbling the error from a module up to `main()`. The key was to define `MathError` and to use it consistently. Each function in the module returns `MathError` on failure, and `run()` and `main()` can deal with `MathError`.
+
+
+
+
+
+
+**Alice:** I think I have a much better understanding error handling in Rust now. Thanks.  
+
+**Bob:** It’s a lot to take in at first, but once we get comfortable, we appreciate how Rust’s approach makes us think about errors up front. No more runtime surprises from unhandled exceptions. We decide what to do in each case. And keep in mind, for larger projects, there are crates like `thiserror` to reduce error boilerplate, and `anyhow` for quick-and-easy error handling in applications. Those can be handy, but the fundamentals of `Result<T, E>` and `?` we covered are the building blocks of it all.
+
 
 
 
 ### Summary – Custom Errors and Advanced Topics
 
-### Summary – Custom Errors and Advanced Topics
-- **Custom error types:** We can define our own error type (often an enum) to represent errors in our application or library. This allows we to consolidate different error sources (IO, parsing, etc.) into one type and make our functions return that. It improves API clarity — callers deal with one error type and can match on its variants.  
-- **Implementing Error trait:** By implementing `std::error::Error` (which usually means implementing `fmt::Display` and having `Debug`), our error type becomes interoperable with the standard ecosystem. It lets we use trait objects (`Box<dyn Error>`) if needed and makes our errors printable and convertible.  
-- **Converting errors:** Use pattern matching or helper methods like `.map_err()` or the `From` trait implementations to convert underlying errors into our custom error variants [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons). The `?` operator will automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.  
-- **Example:** Suppose we have an error enum `ConfigError { Io(io::Error), Parse(ParseError) }`. If a function reading a config file encounters an `io::Error`, we can do `.map_err(ConfigError::Io)?` to turn it into our error type and return it. The same for parse errors. Now the function returns `Result<Config, ConfigError>`, and the caller only has to handle `ConfigError`.  
-- **Using `Box<dyn Error>`:** In application code, if we don’t want to define lots of error types, we can use `Box<dyn Error>` as a catch-all error type (since most errors in std implement `Error`). For example, `fn main() -> Result<(), Box<dyn std::error::Error>>` allows we to use `?` with any error that implements `Error` and just propagate it. This is convenient, but in library code you’d usually favor a concrete error type so that the API is self-documented.  
-- **Crates for error handling:** While not the focus here, be aware that community libraries like **`thiserror`** (for deriving Error implementations) and **`anyhow`** (for easy dynamic error handling with context) can significantly simplify error handling in larger projects. These build on the same principles we discussed.  
-- **Big picture:** Error handling in Rust might require a bit more thought and code compared to languages with exceptions, but it leads to explicit, robust code. By deciding how to handle each error case (propagate, default, retry, or crash), we make our program’s behavior in failure cases predictable and clear.
+* **Custom error types:** We can define our own error type (often an `enum`) to represent errors in our application or library. This allows we to consolidate different error sources (IO, parsing, etc.) into one type and make our functions return that. It improves API clarity — callers deal with one error type and can match on its variants.  
+
+* **Implementing Error trait:** By implementing `std::error::Error` (which usually means implementing `fmt::Display` and having `Debug`), our error type becomes interoperable with the standard ecosystem. It lets us use trait objects (`Box<dyn Error>`) if needed and makes our errors printable and convertible.  
+
+* **Converting errors:** Use pattern matching or helper methods like `.map_err()` or the `From` trait implementations to convert underlying errors into our custom error variants. The `?` operator will automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.  
+
+    * Suppose we have an error `enum` `ConfigError { Io(io::Error), Parse(ParseError) }`. If a function reading a config file encounters an `io::Error`, we can do `.map_err(ConfigError::Io)?` to turn it into our error type and return it. The same for parse errors. Now the function returns `Result<Config, ConfigError>`, and the caller only has to handle `ConfigError`.  
+
+* **Using `Box<dyn Error>`:** In application code, if we don’t want to define lots of error types, we can use `Box<dyn Error>` as a catch-all error type (since most errors in std implement `Error`). For example, `fn main() -> Result<(), Box<dyn std::error::Error>>` allows us to use `?` with any error that implements `Error` and just propagate it. This is convenient, but in library code you’d usually favor a concrete error type so that the API is self-documented.  
+
+<!-- * **Crates for error handling:** While not the focus here, be aware that community libraries like **`thiserror`** (for deriving Error implementations) and **`anyhow`** (for easy dynamic error handling with context) can significantly simplify error handling in larger projects. These build on the same principles we discussed.   -->
+
+<!-- * **Big picture:** Error handling in Rust might require a bit more thought and code compared to languages with exceptions, but it leads to explicit, robust code. By deciding how to handle each error case (propagate, default, retry, or crash), we make our program’s behavior in failure cases predictable and clear. -->
 
 
+<!-- [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons) -->
 
 
 
@@ -1958,7 +2196,6 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
--->
 
 
 
