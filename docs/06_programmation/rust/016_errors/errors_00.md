@@ -602,7 +602,7 @@ let mut file = match File::open(&path) {
 ```
 
 * The outer `let mut file = …;` declares a new variable `file` in the current scope.
-* Inside the `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok` variant.
+* Inside the `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok()` variant.
 * That inner `file` shadows the outer one just for the right-hand side of the assignment.
 * Once the match expression finishes evaluating, the *inner* `file` is moved out of the `Ok(file)` pattern and becomes the value assigned to the *outer* `file`.
 * This is a case of variable shadowing.
@@ -963,7 +963,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
     * `match`
         * Using `match` on a `Result<T, E>` forces explicit handling of success and error. 
         * `match` **destructures** the `Result<T, E>`
-        * Inside an `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok` variant of the `Result<T, E>` enum.
+        * Inside an `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok()` variant of the enum `Result<T, E>`.
     * Methods
         * Use `.unwrap()`/`.expect()` to get the value or `panic!()` on error.
         * Use `.unwrap_or_default()`/`.unwrap_or_else(func)` to provide fallbacks instead of panicking.
@@ -1615,45 +1615,49 @@ None: could not read _definitely_missing_.txt
 <!-- ###################################################################### -->
 
 
-
-
-
-
-
-
-
-<!--
-
-
-
-
 ## To `panic!()` or Not to `panic!()`
 
 **Alice:** Alright, now I understand recoverable errors. But what about unrecoverable ones? When should I actually use `panic!()` intentionally?
 
-**Bob:** Good question. Panicking is basically saying *this is a fatal problem, abort the mission!* We should use `panic!()` for situations where continuing the program could lead to incorrect results, security vulnerabilities, or when the error is totally unexpected and we don’t have a meaningful way to handle it.
+**Bob:** Panicking is basically saying *this is a fatal problem, abort the mission!* We should use `panic!()` for situations where continuing the program could lead to incorrect results, security vulnerabilities, or when the error is totally unexpected and we don’t have a meaningful way to handle it.
 
-Think of it this way: if failure is something we *expect might happen* occasionally (like a file might not be found, user input might be bad, etc.), we should **not** panic — use `Result<T, E>` and handle it. But if something happening indicates a bug in our code or an impossible situation (like *this array index should never be out of bounds, something is really wrong*), then panicking is acceptable [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an).
+Think of it this way: 
+* If failure is something we *expect might happen* occasionally (like a file might not be found, user input might be bad, etc.), we should **not** panic — use `Result<T, E>` and handle it. 
+* If something happening indicates a bug in our code or an impossible situation (like *this array index should never be out of bounds, something is really wrong*), then panicking is acceptable.
+
+<!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
+
+
 
 
 
 **Alice:** So mostly in cases of logic errors or impossible states?
 
-**Bob:** Exactly. For instance, the standard library panics if we attempt out-of-bounds array access, because that’s a bug in our code (we miscalculated an index) and there’s no way to recover or proceed sensibly — the program is in a bad state, so it stops [28](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=When%20your%20code%20performs%20an,it%E2%80%99s%20not%20a%20kind%20of). Another example: if we have a function that absolutely requires a valid, non-null pointer (perhaps we constructed something unsafely), we might panic if it gets a null because that should never happen if our code is correct.
+**Bob:** Exactly. For instance, the standard library panics if we attempt out-of-bounds array access, because that’s a bug in our code (we miscalculated an index) and there’s no way to recover or proceed sensibly. The program is in a bad state, so it stops. Another example: if we have a function that absolutely requires a valid, non-null pointer (perhaps we constructed something unsafely), we might panic if it gets a null because that should never happen if our code is correct.
 
-Panic is also often used to indicate *programmer errors* (violating function contracts). If we document that a function must be called with, say, a positive number, we might choose to panic if someone passes a negative, because the caller violated the API contract — this is not something we want to handle at runtime; it should be fixed in the code. The Rust Book discusses that: when a function’s contractisviolated,apanic(withaclearmessage)isappropriatesinceit’sthecaller’sbug,andyouwant them to notice and fix it [29](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=This%20is%20the%20main%20reason,a%20violation%20will%20cause%20a).
+<!-- [28](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=When%20your%20code%20performs%20an,it%E2%80%99s%20not%20a%20kind%20of) -->
 
-**Alice:** And in testing, panics are fine because a failed `assert!` or `.unwrap()` will just fail the test, right?
+Panic is also often used to indicate *programmer errors* (violating function contracts). If we document that a function must be called with, say, a positive number, we might choose to panic if someone passes a negative, because the caller violated the API contract — this is not something we want to handle at runtime; it should be fixed in the code. [The Rust Book](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#guidelines-for-error-handling) discusses that: when a function’s contract is violated, a panic(with a clear message) is appropriate since it’s the caller’s bug, and we want them to notice and fix it.
 
-**Bob:**Yes,exactly.Intests,weoftenusepanics(e.g., `assert!` macros or `.unwrap()`)toimmediatelyfaila test when an invariant isn’t met. That’s a valid use of panic – we *want* to stop if something unexpected happens in a test.
+<!-- [29](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=This%20is%20the%20main%20reason,a%20violation%20will%20cause%20a) -->
 
-Also, small quick-and-dirty scripts might sprinkle `.unwrap()` for brevity if you’re okay with them crashing on error. But in a robust application or library, you’d use panic very sparingly.
 
-There’s also the consideration of library vs binary (application) code. If you’re writing a library, we should almost never panic on a recoverable error — because that takes the decision away from the library user (the programmer using our library). Instead, return a `Result<T, E>` and let them decide. We only panic in a library if it’s a severe internal invariant violation or we literally can’t do anything (and ideally, document that it might panic in that case). In application (binary) code, we control the whole program, so we might choose to panic on certain errors if it simplifies things, but even then only when it’s truly unrecoverable or you’re okay with the program terminating.
+
+
+**Alice:** And in testing, panics are fine because a failed `assert!()` or `.unwrap()` will just fail the test, right?
+
+**Bob:** Yes, exactly.In tests, we often use panics (e.g., `assert!()` macros or `.unwrap()`) to immediately fail a test when an invariant isn’t met. That’s a valid use of panic. We *want* to stop if something unexpected happens in a test.
+
+Also, small quick-and-dirty scripts might sprinkle `.unwrap()` for brevity if you’re OK with them crashing on error. But in a robust application or library, you’d use panic very sparingly.
+
+There’s also the consideration of library vs binary (application) code. If you’re writing a library, we should almost never panic on a recoverable error. Indeed, that takes the decision away from the library user (the programmer using our library). Instead, return a `Result<T, E>` and let them decide. We only panic in a library if it’s a severe internal invariant violation or we literally can’t do anything (and ideally, document that it might panic in that case). In application (binary) code, we control the whole program, so we might choose to `panic!()` on certain errors if it simplifies things, but even then only when it’s truly unrecoverable or we are OK with the program terminating.
+
+
+
 
 **Alice:** What about using a lot of `.unwrap()` in my code? Is that considered bad?
 
-**Bob:** Frequent use of `.unwrap()` is usually a code smell (except in examples or tests). Each `.unwrap()` is a potential panic point. It’s fine if you’re 100% sure it can’t fail (like we just checked a condition that guarantees it, or it’s in a context where a crash is acceptable). But if an `Err` is possible and we `.unwrap()`, you’re basically ignoring the error and will crash instead of handling it. Often it’s better to handle the error or propagate it. If we find yourself writing many `unwrap`s, think about using `?` to propagate or handle errors more gracefully.
+**Bob:** Frequent use of `.unwrap()` is usually a code smell (except in examples or tests). Each `.unwrap()` is a potential `panic!()` point. It’s fine if we are 100% sure it can’t fail (like we just checked a condition that guarantees it, or it’s in a context where a crash is acceptable). But if an `Err` is possible and we `.unwrap()`, we are basically ignoring the error and we will crash instead of handling it. Often it’s better to handle the error or to propagate it. If we find ourself writing many `unwrap`s, we should think about using `?` to propagate or handle errors more gracefully.
 
 
 
@@ -1661,8 +1665,8 @@ There’s also the consideration of library vs binary (application) code. If you
 
 
 To sum up:
-* Use `panic!()` (or `.unwrap()` , etc.) for **bugs** and **unexpected** **conditions** – things that should never happen if our code is correct.
-* Use `Result<T, E>` for errors that we *expect could happen* in normal usage(and thus might want to recover from).
+* Use `panic!()` (or `.unwrap()`, etc.) for **bugs** and **unexpected** **conditions**. Things that should never happen if our code is correct.
+* Use `Result<T, E>` for errors that we *expect could happen* in normal usage (and thus might want to recover from).
 
 
 
@@ -1671,30 +1675,59 @@ To sum up:
 
 
 
-**Alice:** That’s clear. Rust even has a section title ‘to panic or not to panic’ I think.
+**Alice:** That’s clear. Rust even has a section title 'To panic! or Not to panic!' I think.
 
-**Bob:** Yes, and the summary is pretty much what we discussed. One line from it: *'when failure is expected, it’s more appropriate to return a `Result<T, E>` than to make a `panic!()` call’* [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an). Only `panic!()` when failure indicates a bug or something so bad that there’s no point in continuing.
+**Bob:** Yes, and the summary is pretty much what we discussed. One line [from it](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html): *"when failure is expected, it’s more appropriate to return a `Result<T, E>` than to make a `panic!()` call"*. Only `panic!()` when failure indicates a bug or something so bad that there’s no point in continuing.
 
-One more tip: if we do panic, do it with a helpful message. For example, if a function shouldn’t get a negative number, do: `panic!(Negative value provided: {}, value)`. This beats a cryptic panic or (worse) a silent misbehavior. It makes debugging easier by clearly pointing out what went wrong.
+<!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
 
-And of course, remember that panicking will unwind the stack by default, which cleans up but takes some overhead. In performance-critical or embedded scenarios, sometimes Rust programs are configured to abort immediately on panic (no unwind). But that’s an advanced detail. The key point is: panic = crash. Use with care.
+One more tip: if we do `panic!()`, do it with a helpful message. For example, if a function shouldn’t get a negative number, do: 
+
+```rust
+panic!("Negative value provided: {}", value);
+```
+
+This beats a cryptic panic or (worse) a silent misbehavior. It makes debugging easier by clearly pointing out what went wrong.
+
+And of course, remember that panicking will unwind the stack by default, which cleans up but takes some overhead. In performance-critical or embedded scenarios, sometimes Rust programs are configured to abort immediately on panic (no unwind). Remember what we said earlier. If needed, in `Cargo.toml` add the following section:
+
+```toml
+[profile.release]
+panic = "abort"
+```
+
+But that’s an advanced detail. The key point is: `panic!()` = crash. Use with care.
+
+
+
 
 
 ### Summary – Using (or Avoiding) `panic!()`
 
-1. **Expected errors -> `Result`, Unexpected** **errors -> `panic!()`:** If an error condition is something we can anticipate and might want to handle (file not found, invalid input, network timeout), **do not panic** – use `Result<T, E>` and propagate or handle it [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) . If something is truly unexpected or a bug (index out of bounds, violated invariant), a `panic!()` with a clear message is appropriate to immediately stop the program.
+1. **Expected errors -> `Result<T, E>`, Unexpected errors -> `panic!()`:** If an error condition is something we can anticipate and might want to handle (file not found, invalid input, network timeout), **do not panic**. Use `Result<T, E>` and propagate or handle it. If something is truly unexpected or a bug (index out of bounds, violated invariant), a `panic!("msg")` with a clear message is appropriate to immediately stop the program.
 
-1. **Library vs Application code:** Libraries should prefer `Result<T, E>` for errors and avoid panicking, except for internal bugs, because panics in a library will crash the user’s application [29](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=This%20is%20the%20main%20reason,a%20violation%20will%20cause%20a) . Applications (especially small ones or prototypes) might use panic in places where it’s acceptable for the program to crash (or during development to catch bugs).
+<!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
 
-1. **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `expect(config file missing, please create one)` is better than a blank panic. This aids debugging by indicating why the panic happened [16](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=message%3A%20,) .
 
-1. **Minimize `.unwrap()` in production code:** Every `.unwrap()` is a potential crash. Use it only when we're sure there's no error (or in test code). Prefer to handle or propagate errors instead. Replacing `.unwrap()` with `?` or proper error handling will make our code more robust.
+1. **Library vs Application code:** 
+    * **Libraries** should prefer `Result<T, E>` for errors and avoid panicking, except for internal bugs, because panics in a library will crash the user’s application. 
+    * **Applications** (especially small ones or prototypes) might use panic in places where it’s acceptable for the program to crash (or during development to catch bugs).
+
+<!-- [29](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=This%20is%20the%20main%20reason,a%20violation%20will%20cause%20a) -->
+
+1. **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `expect("config file missing, please create one")` is better than a blank panic. This helps debugging by indicating why the panic happened.
+
+<!-- [16](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=message%3A%20,)  -->
+
+1. **Minimize `.unwrap()` in code:** Every `.unwrap()` is a potential crash. We use it only when we're sure there's no error (or in test code). Prefer to handle or propagate errors instead. Replacing `.unwrap()` with `?` or proper error handling will make our code more robust.
 
 1. **Examples of when to panic:**
-* Out-of-range indexing (bug in code) -> standard library panics (cannot recover safely) [28](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=When%20your%20code%20performs%20an,it%E2%80%99s%20not%20a%20kind%20of) .
+* Out-of-range indexing (bug in code) -> standard library panics (cannot recover safely).
 * Asserting a condition in code ( `assert!()` macro) -> panics if the condition is false, useful in tests or to validate internal invariants.
-* Contract violations -> e.g., our function got an invalid argument that should have been prevented by earlier checks; we panic to signal programmer error, after possibly using Rust’s type system to avoid such cases where possible.
+* Contract violations -> e.g., our function got an invalid argument that should have been prevented by earlier checks. We panic to signal programmer error, after possibly using Rust’s type system to avoid such cases where possible.
 
+
+<!-- [28](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=When%20your%20code%20performs%20an,it%E2%80%99s%20not%20a%20kind%20of)  -->
 
 
 
@@ -1704,15 +1737,13 @@ And of course, remember that panicking will unwind the stack by default, which c
 
 ### Exercises – Panic vs Result
 
-1. **Spot the Panic:** Take a piece of code (perhaps one of our previous exercise solutions) where we used `.unwrap()` or `expect()` . Consider: what would happen if that line did encounter an error? Is it truly a scenario that should crash the program? Modify the code to handle the error with a `Result<T, E>` if appropriate. If we decide to keep the `.unwrap()` , justify why it would be okay (for example, if it’s in a test or if logic guarantees the `Result<T, E>` is Ok).
+1. **Spot the Panic:** Take a piece of code (perhaps one of our previous exercise solutions) where we used `.unwrap()` or `.expect()`. Consider: what would happen if that line did encounter an error? Is it truly a scenario that should crash the program? Modify the code to handle the error with a `Result<T, E>` if appropriate. If you decide to keep the `.unwrap()`, justify why it is OK (for example, if it’s in a test or if logic guarantees the `Result<T, E>` is `Ok()`).
 
-2. **Design a Robust Function:** Imagine you’re writing a library function `fn send_email(address: &str, body: &str) -> Result<(), SendError>`. Come up with two or three different reasons it might fail (e.g., invalid address format, network outage). For each, decide if it should return an error ( `Result::Err` ) or panic. Explain our reasoning. (Hint: as a library function, it should likely return errors for anything that can go wrong due to external factors or bad input, rather than panicking – panics would be reserved for something like an invariant violation inside the library.)
+2. **Design a Robust Function:** Imagine you’re writing a library function `fn send_email(address: &str, body: &str) -> Result<(), SendError>`. 
+* Come up with two or three different reasons it might fail (e.g., invalid address format, network outage). 
+* For each, decide if it should return an error (`Result::Err`) or panic. Explain our reasoning. Hint: as a library function, it should likely return errors for anything that can go wrong due to external factors or bad input, rather than panicking – panics would be reserved for something like an invariant violation inside the library.
 
-3. **Deliberate Panic:** Write a small program that deliberately panics (for example, by indexing an array out of bounds or using `panic!()` directly with a message). Run it to see what the panic message and backtrace look like (enable backtrace by running the program with `RUST_BACKTRACE=1` environment variable). This exercise helps we recognize what a panic error looks like and what information it provides.
-
-
-
-
+3. **Deliberate Panic:** Write a small program that deliberately panics (for example, by indexing an array out of bounds or using `panic!()` directly with a message). Run it to see what the panic message and backtrace look like. Enable backtrace by running the program with `RUST_BACKTRACE=1` environment variable (under WIN11 you can use `$env:RUST_BACKTRACE=1; cargo run --example my_panic_code` in a terminal).
 
 
 
@@ -1720,7 +1751,10 @@ And of course, remember that panicking will unwind the stack by default, which c
 
 
 
--->
+
+
+
+
 
 
 
