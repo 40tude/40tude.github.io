@@ -603,7 +603,7 @@ let mut file = match File::open(&path) {
 
 * The outer `let mut file = …;` declares a new variable `file` in the current scope.
 * Inside the `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok` variant.
-* That inner `file` shadows the outer one *just for the right-hand side of the assignment*.
+* That inner `file` shadows the outer one just for the right-hand side of the assignment.
 * Once the match expression finishes evaluating, the *inner* `file` is moved out of the `Ok(file)` pattern and becomes the value assigned to the *outer* `file`.
 * This is a case of variable shadowing.
 * The `file` in the match pattern and the `file` bound by the `let` are two distinct variables with the same name, in different scopes.
@@ -740,7 +740,7 @@ It is time to move on and to dive in `Result<T, E>`.
 
 **Alice:** So, `Result<T, E>`... What exactly is it?
 
-**Bob:**  `Result<T, E>` is an `enum` (like a tagged union) defined roughly like this:
+**Bob:**  [`Result<T, E>`](https://doc.rust-lang.org/std/result/enum.Result.html) is an `enum` (like a tagged union) defined roughly like this:
 
 ```rust
 enum Result<T, E> {
@@ -957,11 +957,15 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 ### Summary – The `Result<T, E>` Type Basics
 
- * **`Result<T, E>` is an enum:** with variants `Ok(T)` (success) and `Err(E)` (error). We can pattern `match` on it to handle each case.
- * **Handle with `match` or methods:** 
-    * Using `match` on a `Result<T, E>` forces explicit handling of success and error. 
-    * Alternatively, use helper methods like `.unwrap()`/`.expect()` to get the value or `panic!()` on error.
-    * Use `.unwrap_or_default()`/`.unwrap_or_else(func)` to provide fallbacks instead of panicking.
+* **`Result<T, E>` is an enum:** with variants `Ok(T)` (success) and `Err(E)` (error). 
+* **Handle with `match` or methods:** 
+    * `match`
+        * Using `match` on a `Result<T, E>` forces explicit handling of success and error. 
+        * `match` **destructures** the `Result<T, E>`
+        * Inside an `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok` variant of the `Result<T, E>` enum.
+    * Methods
+        * Use `.unwrap()`/`.expect()` to get the value or `panic!()` on error.
+        * Use `.unwrap_or_default()`/`.unwrap_or_else(func)` to provide fallbacks instead of panicking.
 **Prefer `.expect()`:** If we choose to `panic!()` on an error, prefer `.expect("custom message")` over plain `.unwrap()`. It gives a clearer error message for debugging when the unexpected happens.
 
 
@@ -971,11 +975,13 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 ### Exercises – `Result<T, E>` Basics
 
+1. Can you find `Result<T, E>` in std documentation?
+
 1. **Match Practice:** Write a function `parse_number(text: &str) -> i32` that tries to convert a string to an integer. Use `match` on `text.parse::<i32>()` (which gives a `Result<i32,std::num::ParseIntError>`) and return the number if successful, or print an error and return `0` if not. Test it with both a numeric string and a non-numeric string.
 
-2. **.unwrap() vs .expect():** Using the same `parse_number` logic, create another function `parse_number_expect(text: &str) -> i32` that does the parsing but uses `.expect()` instead of `match` to crash on error (with a custom message like `Failed to parse number`). Call this function with a bad input to see the panic message. Then replace `.expect()` with `.unwrap()` to see the default panic message. Note the difference in the panic outputs.
+1. **.unwrap() vs .expect():** Using the same `parse_number` logic, create another function `parse_number_expect(text: &str) -> i32` that does the parsing but uses `.expect()` instead of `match` to crash on error (with a custom message like `Failed to parse number`). Call this function with a bad input to see the panic message. Then replace `.expect()` with `.unwrap()` to see the default panic message. Note the difference in the panic outputs.
 
-3. **File Open Challenge:** Write a small program that attempts to open a file (e.g., `config.txt` ). If it fails because the file is missing, have the program create the file and write a default configuration to it (we can just write a simple string). If it fails for any other reason, have it print a graceful error message (instead of panicking). Use pattern matching on the `Err(e)` and `e.kind()` as shown above to distinguish the cases.
+1. **File Open Challenge:** Write a small program that attempts to open a file (e.g., `config.txt` ). If it fails because the file is missing, have the program create the file and write a default configuration to it (we can just write a simple string). If it fails for any other reason, have it print a graceful error message (instead of panicking). Use pattern matching on the `Err(e)` and `e.kind()` as shown above to distinguish the cases.
 
 
 
@@ -1349,19 +1355,19 @@ fn main() -> Result<()> {
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Option<T> vs. `Result<T, E>`: Choosing the Right Type
+## `Option<T>` vs. `Result<T, E>`: Choosing the Right Type
 
 
 
-**Alice:** OK... I think I get `Result`. But what about `Option<T>`? I’ve seen that too. Is `Option<T>` also for error handling?
+**Alice:** OK... I think I get `Result<T, E>`. But what about `Option<T>`? I’ve seen that too. Is `Option<T>` also for error handling?
 
-**Bob:** `Option<T>` is a sibling to `Result<T, E>` in a way. It’s an enum that can be `Some(T)` or `None`. It doesn’t carry an error value like `Result<T, E>` does. `None` just means **absence of a value**. We usually use `Option<T>` when an outcome isn’t an error, but just ‘no value found’ or ‘not applicable’. For example, a function that searches for a substring in a string might return an `Option<usize>` – `Some(index)` if found, or `None` if not found. Not finding the substring isn’t really an *error*, it’s an expected possibility.
+**Bob:** [`Option<T>`](https://doc.rust-lang.org/std/option/enum.Option.html) is a sibling to `Result<T, E>` in a way. It’s an `enum` that can be `Some(T)` or `None`. It doesn’t carry an error value like `Result<T, E>` does. `None` just means **absence of a value**. We usually use `Option<T>` when an outcome isn’t an error, but just "no value found" or "not applicable". For example, a function that searches for a substring in a string might return an `Option<usize>` – `Some(index)` if found, or `None` if not found. Not finding the substring isn’t really an "error", it’s an expected possibility.
 
 
 
-**Alice:** So the difference is that `Result<T, E>` gives an error *reason* (`E`), whereas `Option<T>` just gives we nothing on failure.
+**Alice:** So the difference is that `Result<T, E>` gives an error reason (`E`), whereas `Option<T>` just gives we nothing on failure.
 
-**Bob:** Exactly. If we need to know **why** something went wrong, we must use `Result<T, E>` because `Option::None` carries no data. If we call a function and get a `None`, we only know that there was no `Result<T, E>` – not why. With `Result::Err`, we usually get an error type or message explaining the issue.
+**Bob:** Exactly. If we need to know **why** something went wrong, we must use `Result<T, E>` because `Option::None` carries no data. If we call a function and get a `None`, we only know that there was no `Result<T, E>`, not why. With `Result::Err`, we usually get an error type or message explaining the issue.
 
 <!-- [5](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=paramagnetic%20%20June%2027%2C%202024%2C,11%3A41am%20%204)  -->
 <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
@@ -1370,16 +1376,16 @@ Also, there’s a **semantic difference**. Other developers reading our code wil
 
 <!-- [27](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=There%27s%20also%20a%20semantic%20difference,Result) -->
 
-Sometimes we even see combinations, like `Result<Option<T>, E>` (which means the operation itself could error, *or* succeed with an optional `Result<T, E>` – e.g., a search that could fail due to I/O error *or* succeed but find nothing). But that’s an advanced usage.
+Sometimes we even see combinations, like `Result<Option<T>, E>` (which means the operation itself could error, *or* succeed with an optional `Result<T, E>` – e.g., a search that could fail due to I/O error or succeed but find nothing). But that’s an advanced usage.
 
 
 
 
 
 
-**Alice:** Can we show a simple comparison?
+**Alice:** Can you show me a simple comparison?
 
-**Bob:** Sure. Let’s take a trivial scenario: safe division. Suppose we want to divide two numbers, but if the divisor is zero, that’s not a valid operation. We have two design choices: return an `Option<f64>` (where `None` means division by zero was not possible), or return a `Result<f64, String>` (or a custom error) to explicitly signify an error. Here’s what both might look like:
+**Bob:** Sure. Let’s take a trivial scenario: safe division. Suppose we want to divide two numbers, but if the divisor is zero, that’s not a valid operation. We have two design choices: return an `Option<f64>` (where `None` means division by zero was not possible), or return a `Result<f64, String>` (or a custom error, more on this later) to explicitly signify an error. Here’s what both might look like:
 
 
 ```rust
@@ -1415,18 +1421,123 @@ fn main() {
 * In `safe_divide_option`, if `b` is zero we return `None`. The caller must check for `None` but doesn’t get an automatic reason; they just know it didn’t produce a result. 
 * In `safe_divide_result`, if `b` is zero we return an `Err` with a message (here a `&'static str` slice, but it could be a more complex error type). The caller on receiving an `Err` knows it was an exceptional case and has a message to work with.
 
-Neither approach is wrong here – it depends on how we view division by zero. If we consider it an error (I would vote for), `Result<T, E>` is suitable. If we treat it like just no valid answer and move on without an error context, `Option<T>` could suffice.
+Neither approach is wrong here. It depends on how we view division by zero. If we consider it an error (I would vote for), `Result<T, E>` is suitable. If we treat it like just no valid answer and move on without an error context, `Option<T>` could suffice.
 
-The key question to ask: **Is the absence of a value an error condition, or is it a normal, expected case?** If it’s normal/expected (like searching in a map for a key that might not be there), use `Option<T>`. If it’s an error (like couldn’t parse config file), use `Result<T, E>` so we can report what went wrong.
+The key question to ask: **Is the absence of a value an error condition, or is it an expected case?** If it’s normal/expected (like searching in a map for a key that might not be there), use `Option<T>`. If it’s an error (like couldn’t parse config file), use `Result<T, E>` so we can report what went wrong.
 
 
 
-**Alice:** That clarifies it. And I assume we can use the `?` operator with `Option<T>` similarly, as long as our function returns an `Option<T>`?
+**Alice:** Crystal clear, thanks. And I assume we can use the `?` operator with `Option<T>` similarly, as long as our function returns an `Option<T>`?
 
-**Bob:** Yes, we touched on that. If we use `?` on an `Option<T>` and it’s `None`, it will return `None` from our function early. It’s handy when chaining multiple things that might produce no value. But remember, we can’t directly mix `Result<T, E>` and `Option<T>` with `?` without converting. For example, if we have a `Result<T, E>` and we want to use `?` in a function returning `Option<T>`, we would need to convert that `Result<T, E>` into an `Option<T>` (perhaps by ignoring the error or converting error to `None`). Usually, though, we keep to one or the other in a given function.
+**Bob:** Yes, and we already touched on that. If we use `?` on an `Option<T>` and it’s `None`, it will return `None` from our function early. It’s handy when chaining multiple things that might produce no value. 
+
+But remember, we can’t directly mix `Result<T, E>` and `Option<T>` with `?` without converting. For example, if we have a `Result<T, E>` and we want to use `?` in a function returning `Option<T>`, we would need to convert that `Result<T, E>` into an `Option<T>` (perhaps by ignoring the error or converting error to `None`). Usually, though, we keep to one or the other in a given function.
 
 <!-- [23](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20error%20message%20also%20mentioned,line%20in%20the%20given%20text)  -->
 <!-- [26](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20last_char_of_first_line%28text%3A%20%26str%29%20,last%28%29) -->
+
+You can review `ex13.rs` but here is an additional sample code where the function returns an `Option<T>` to `main()`:
+
+```rust
+// ex15.rs
+
+use std::fs::File;
+use std::io::Read;
+
+fn read_file_to_string_as_option(path: &str) -> Option<String> {
+    let mut file = File::open(path).ok()?;
+    let mut buf = String::new();
+    file.read_to_string(&mut buf).ok()?;
+    Some(buf)
+}
+
+fn main() {
+    let existing = "Cargo.toml";
+    let missing = "_definitely_missing_.txt";
+
+    println!("--- read_file_to_string_as_option ---");
+    match read_file_to_string_as_option(existing) {
+        Some(s) => println!("OK: read {} bytes from {existing}", s.len()),
+        None => println!("None: could not read {existing}"),
+    }
+    match read_file_to_string_as_option(missing) {
+        Some(s) => println!("OK: read {} bytes from {missing}", s.len()),
+        None => println!("None: could not read {missing}"),
+    }
+}
+```
+
+
+Here is what you should see in the terminal
+
+```
+OK: read 167 bytes from Cargo.toml
+None: could not read _definitely_missing_.txt
+```
+
+* `read_file_to_string_as_option()` read the whole file if possible, otherwise it returns `None`. 
+* We decided (don't ask me why) to "intentionally" ignore the error details by converting `Result<T, E>` to `Option<T>` via `.ok()`, so that `?` can be used in the function. Double check:
+    * `open()` returns `Result<File, io::Error>`. So we convert to `Option<File>` with `.ok()`, then `?` works with `Option`
+    * Same strategy with `read_to_string()` which returns `Result<usize, io::Error>`
+
+
+
+**Alice:** I don't get the point, we loose the reason the failure occurs!
+
+**Bon:** You are right. We may be asked to design an API acting that way (drop the error and return `None` on failure). It is a choice. Now if it is really a concern we can **observability**. We keep the `Option<T>` API for the caller (so failures collapse to `None`), but we emit/log diagnostics so that the failures are not invisible. See below an example:
+
+```rust
+// ex16.rs
+// CTRL+SHIFT+B to build | F5 to build and Debug | cargo run --example ex16
+
+use std::fs::File;
+use std::io::Read;
+
+fn read_with_logging(path: &str) -> Option<String> {
+    let mut file = File::open(path)
+        .map_err(|e| {
+            eprintln!("[read_with_logging] open error: {e}");
+            e
+        })
+        .ok()?; // Result<File, io::Error> -> Option<File>
+
+    let mut buf = String::new();
+    file.read_to_string(&mut buf)
+        .map_err(|e| {
+            eprintln!("[read_with_logging] read error: {e}");
+            e
+        })
+        .ok()?; // Result<usize, io::Error> -> Option<usize>
+
+    Some(buf)
+}
+
+fn main() {
+    let existing = "Cargo.toml";
+    let missing = "_definitely_missing_.txt";
+
+    match read_with_logging(existing) {
+        Some(s) => println!("OK: read {} bytes from {existing}", s.len()),
+        None => println!("None: could not read {existing}"),
+    }
+    match read_with_logging(missing) {
+        Some(s) => println!("OK: read {} bytes from {missing}", s.len()),
+        None => println!("None: could not read {missing}"),
+    }
+}
+```
+
+You should read the following in the terminal: 
+
+```
+OK: read 167 bytes from Cargo.toml
+[read_with_logging] open error: Le fichier spécifié est introuvable. (os error 2)
+None: could not read _definitely_missing_.txt
+```
+
+* With `existing` file, everything works smoothly. At the end, in `main()` we print the number of bytes in the file. Nothing is logged because there is no error.
+* With `missing`, `read_with_logging()` log a message then returns immediately. Note how `.map_err()` is used and how the calls `read_to_string().map_err().ok()` are daisy chained. 
+
 
 
 
@@ -1456,6 +1567,7 @@ The key question to ask: **Is the absence of a value an error condition, or is i
 
 
 ### Exercises – Option<T> vs `Result<T, E>`
+1. Can you find `Option<T>` in std documentation?
 
 1. **Design Decisions:** For each of the following scenarios, decide whether `Option<T>` or `Result<T, E>` is more appropriate as a return type and briefly explain why:
 * A function `find_user(username: &str) -> ???` that searches a database for a user and either returns a User object or indicates the user was not found.
