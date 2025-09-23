@@ -958,6 +958,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 ### Summary – The `Result<T, E>` Type Basics
 
 * **`Result<T, E>` is an enum:** with variants `Ok(T)` (success) and `Err(E)` (error). 
+
 * **Handle with `match` or methods:** 
     * `match`
         * Using `match` on a `Result<T, E>` forces explicit handling of success and error. 
@@ -966,7 +967,8 @@ This way, we handle the "file not found" case by recovering (creating a new file
     * Methods
         * Use `.unwrap()`/`.expect()` to get the value or `panic!()` on error.
         * Use `.unwrap_or_default()`/`.unwrap_or_else(func)` to provide fallbacks instead of panicking.
-**Prefer `.expect()`:** If we choose to `panic!()` on an error, prefer `.expect("custom message")` over plain `.unwrap()`. It gives a clearer error message for debugging when the unexpected happens.
+
+* **Prefer `.expect()`:** If we choose to `panic!()` on an error, prefer `.expect("custom message")` over plain `.unwrap()`. It gives a clearer error message for debugging when the unexpected happens.
 
 
 
@@ -1285,26 +1287,26 @@ fn main() -> Result<()> {
 
 ### Summary – Propagating Errors with `?`
 
-1. **`?` operator:** A shorthand for propagating errors. It unwraps the `Ok()` value or returns the error to the caller if it’s an `Err()`, effectively doing the `match` + `return Err(...)` for us. This simplifies error handling in functions that just want to pass errors up the chain.
+* **`?` operator:** A shorthand for propagating errors. It unwraps the `Ok()` value or returns the error to the caller if it’s an `Err()`, effectively doing the `match` + `return Err(...)` for us. This simplifies error handling in functions that just want to pass errors up the chain.
 
 <!-- [18](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,propagated%20to%20the%20calling%20code) 
 [19](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20the%20context%20of%20Listing,call).  
 -->
 
-2. **Usage requirements:** We can only use `?` in a function that returns a compatible type (e.g., if the function returns `Result<T, E>` or `Option<T>`). Using `?` on a `Result<T, E>` in a function returning `Result<T, E>` will propagate the error; using it in `main()` requires `main()` to return a `Result<T, E>` as well. If we try to use `?` in a function that returns `()` (unit type) or another type that can’t represent an error, the code won’t compile – the compiler will remind we to change the return type or handle the error another way.
+* **Usage requirements:** We can only use `?` in a function that returns a compatible type (e.g., if the function returns `Result<T, E>` or `Option<T>`). Using `?` on a `Result<T, E>` in a function returning `Result<T, E>` will propagate the error; using it in `main()` requires `main()` to return a `Result<T, E>` as well. If we try to use `?` in a function that returns `()` (unit type) or another type that can’t represent an error, the code won’t compile – the compiler will remind we to change the return type or handle the error another way.
 
 <!-- [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt) -->
 
-3. **Converting error types:** When using `?`, if the error type of the `Result<T, E>` you’re handling doesn’t exactly `match` our function’s error type, it will attempt to convert it via the `From` trait. This allows different error types to be mapped into one error type for our function (for example, converting a `std::io::Error` into our custom error type). If no conversion is possible, you’ll get a type mismatch compile error, which we can resolve by using methods like `.map_err()` or implementing `From` for our error.
+* **Converting error types:** When using `?`, if the error type of the `Result<T, E>` you’re handling doesn’t exactly `match` our function’s error type, it will attempt to convert it via the `From` trait. This allows different error types to be mapped into one error type for our function (for example, converting a `std::io::Error` into our custom error type). If no conversion is possible, you’ll get a type mismatch compile error, which we can resolve by using methods like `.map_err()` or implementing `From` for our error.
 
 <!-- [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons)  -->
 
-4. **`main()` can return `Result<T, E>`:** To use `?` at the top level, we can have `main()` return `Result<(), E>`. This way, any `Err` that propagates to `main()` will cause the program to exit with a non-zero status and print the error. For example, `main() -> Result<(), Box<dyn std::error::Error>>` is a common choice to allow using `?` in `main()` 
+* **`main()` can return `Result<T, E>`:** To use `?` at the top level, we can have `main()` return `Result<(), E>`. This way, any `Err` that propagates to `main()` will cause the program to exit with a non-zero status and print the error. For example, `main() -> Result<(), Box<dyn std::error::Error>>` is a common choice to allow using `?` in `main()` 
 
 <!-- [4](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20main%28%29%20,hello.txt)  -->
 <!-- [22](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=When%20a%20,be%20compatible%20with%20this%20convention). -->
 
-5. Keep this in mind
+* Keep this in mind
 
     ```rust
     type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
@@ -1545,21 +1547,21 @@ None: could not read _definitely_missing_.txt
 
 ### Summary – `Option<T>` vs `Result<T, E>`
 
-1. **Use `Option<T>` for expected no value scenarios:** If not finding or not having a value is a normal possibility (not an error), `Option<T>` **communicates** that clearly. `None` carries no error info – it just means no result.
+* **Use `Option<T>` for expected no value scenarios:** If not finding or not having a value is a normal possibility (not an error), `Option<T>` **communicates** that clearly. `None` carries no error info – it just means no result.
 
-1. **Use `Result<T, E>` for error scenarios:** If an operation can fail in a way that is considered an error (and especially if we need to know *why* it failed), use `Result<T, E>` so we can provide an error message or error type. `Err(E)` can hold information about what went wrong.
+* **Use `Result<T, E>` for error scenarios:** If an operation can fail in a way that is considered an error (and especially if we need to know *why* it failed), use `Result<T, E>` so we can provide an error message or error type. `Err(E)` can hold information about what went wrong.
 
 <!-- [5](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=paramagnetic%20%20June%2027%2C%202024%2C,11%3A41am%20%204)  -->
 <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
 
 
-1. **Semantic clarity:** Other developers will interpret `Option<T>` vs `Result<T, E>` in our APIs as a signal. `Option<T>` implies the caller should expect the nothing case and it’s not an exceptional error. `Result<T, E>` implies the caller should expect the possibility of an error condition that should be handled or propagated. Examples:
+* **Semantic clarity:** Other developers will interpret `Option<T>` vs `Result<T, E>` in our APIs as a signal. `Option<T>` implies the caller should expect the nothing case and it’s not an exceptional error. `Result<T, E>` implies the caller should expect the possibility of an error condition that should be handled or propagated. Examples:
 * A lookup in a map (key might be missing) -> return `Option<Value>` (absence is normal if key not present)
 * Parsing input (could fail due to external conditions or bad format) -> return `Result<T, E>` with an error explaining the failure
 
 <!-- [27](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=There%27s%20also%20a%20semantic%20difference,Result) -->
 
-1. **`?` works with both:** We can propagate `None` early from a function returning `Option<T>` using `?` just like we propagate errors from `Result<T, E>` with `?`. Just ensure the function’s return type matches ( `Option<T>`   with `Option<T>`   , `Result<T, E>` with `Result`).
+* **`?` works with both:** We can propagate `None` early from a function returning `Option<T>` using `?` just like we propagate errors from `Result<T, E>` with `?`. Just ensure the function’s return type matches ( `Option<T>`   with `Option<T>`   , `Result<T, E>` with `Result`).
 
 <!-- [23](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20error%20message%20also%20mentioned,line%20in%20the%20given%20text)  -->
 <!-- [26](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20last_char_of_first_line%28text%3A%20%26str%29%20,last%28%29) -->
@@ -1574,12 +1576,12 @@ None: could not read _definitely_missing_.txt
 * A function `read_config(path: &str) -> ???` that reads a configuration file and returns a configuration object. (What if the file is missing or has invalid contents?)
 * A function `index_of(text: &str, ch: char) -> ???` that returns the index of a character in a string, or something if the char isn’t present.
 
-2. **Converting `Option<T>` to `Result<T,E>`:** Write a function `get_env_var(name: &str) -> Result<String, String>` that tries to read an environment variable and returns an error message if it’s not set. 
+1. **Converting `Option<T>` to `Result<T,E>`:** Write a function `get_env_var(name: &str) -> Result<String, String>` that tries to read an environment variable and returns an error message if it’s not set. 
 * `std::env::var(name)` actually returns a `Result`, but pretend it gave us an `Option<String>` 
 * How would we convert that `Option<T>` to a `Result<T, E>`? 
 * We can use `.ok_or(error message)` on the `Option<T>` to turn a `None` into an `Err`
 
-3. **Mixing `Option<T>` and `Result<T,E>`:** Sometimes we have to deal with both. Imagine a function that tries to get a configuration value from either an environment variable or a config file: `fn get_config_value(key: &str) -> Result<Option<String>, ConfigError>`. This returns `Ok(Some(val))` if found, `Ok(None)` if not found in either place, or `Err(e)` if an error occurred (like file read error). 
+1. **Mixing `Option<T>` and `Result<T,E>`:** Sometimes we have to deal with both. Imagine a function that tries to get a configuration value from either an environment variable or a config file: `fn get_config_value(key: &str) -> Result<Option<String>, ConfigError>`. This returns `Ok(Some(val))` if found, `Ok(None)` if not found in either place, or `Err(e)` if an error occurred (like file read error). 
 * Outline how we would implement this: we might first try env var (which gives `Option`), then file (`Result`), and combine them
 * Don’t worry about full code. Focus on how you’d handle the types
 * This is to think about how to combine `Option<T>` and `Result` logically
