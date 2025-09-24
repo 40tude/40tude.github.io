@@ -270,7 +270,7 @@ At the time of writing here is what I see :
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
-<span>You can click the image to zoom in</span>
+<span>Click the image to zoom in</span>
 
 </div>
 
@@ -1877,8 +1877,8 @@ Find below `ex17.rs` complete source code because I hate partial source code in 
 * In VSCode, set a breakpoint and take the time to go through the code line by line (F10). 
 
 <div align="center">
-<img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
+<img src="./assets/img21.webp" alt="" width="560" loading="lazy"/><br/>
+<span>Click the image to zoom in</span>
 </div>
 
 
@@ -2210,34 +2210,146 @@ We could also catch the error in `main` with a `match` instead, and print someth
 <!-- ###################################################################### -->
 
 
+## When and Why to Use `anyhow` and `thiserror` crates
 
 
 
+**Alice:** “You mentioned external crates like `anyhow` and `thiserror`. When should I reach for them?”
 
-
-
-
-<!--
-
-
-
-
-
-
-
-
-
-
-
-
-## When to Use `anyhow` and `thiserror` (and why)
-
-**Alice:** “You mentioned external crates like `anyhow` and `thiserror`. When should I reach for them?”  
 **Bob:** “Short version:  
-- Use **`thiserror`** to quickly define ergonomic custom error types (especially in libraries) without writing all the boilerplate for `Display`, `Error`, and conversions.  
-- Use **`anyhow`** in **applications** (binaries) when we don’t need a public, fine-grained error type and just want easy error propagation with context.
+- **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with context.
+- **`thiserror`** in **libraries** when we need ergonomic custom error types without writing all `impl` for `Display`, `Error`, and conversions.  
 
-**`thiserror`** is a derive macro crate. Instead of manually implementing `Display` and `Error` and writing `From` conversions, we can do something concise like:
+
+
+
+
+
+### anyhow - binaries (mnemonic: A, B, C...)
+
+`anyhow` provides a type called `anyhow::Error` which is basically a convenient, dynamic error type (like `Box<dyn Error>` but with extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
+
+```rust
+// ex20.rs
+use anyhow::{Context, Result};
+use std::fs;
+
+// Result alias = Result<T, anyhow::Error>
+fn run() -> Result<()> {
+    let data = fs::read_to_string("config.json").context("While reading config.json")?; // adds context if it fails
+    let cfg: serde_json::Value = serde_json::from_str(&data).context("While parsing JSON")?;
+    println!("Config loaded: {cfg}");
+    Ok(())
+}
+
+fn main() -> Result<()> {
+    run()
+}
+```
+
+Expected output:
+
+```
+Error: While reading config.json
+
+Caused by:
+    Le fichier spécifié est introuvable. (os error 2)
+```
+
+Notice how adding `.context(...)` makes error messages much more actionable if something fails.
+
+
+
+
+**Alice:** OK... But could you show me how we should modify one of the previous code, you know, the one where we were reading JSON config file.
+
+**Bon:** This is indeed
+
+```rust
+// ex21.rs
+use anyhow::{Context, Result};
+use serde::Deserialize;
+use std::fs::{read_to_string, write};
+
+#[derive(Debug, Deserialize)]
+struct Config {
+    app_name: String,
+    port: u16,
+}
+
+fn load_config(path: &str) -> Result<Config> {
+    let data = read_to_string(path).with_context(|| format!("failed to read config file: {path}"))?;
+    let cfg = serde_json::from_str::<Config>(&data).with_context(|| format!("failed to parse JSON in: {path}"))?;
+    Ok(cfg)
+}
+
+fn main() -> Result<()> {
+    // Create demo files
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#).context("writing good_config.json")?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#).context("writing bad_config.json")?;
+
+    // Happy path
+    println!("-- Loading good_config.json");
+    match load_config("good_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // JSON parse failure
+    println!("\n-- Loading bad_config.json (should parse-fail)");
+    match load_config("bad_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // I/O failure (file does not exist)
+    println!("\n-- Loading missing.json (should I/O-fail)");
+    match load_config("missing.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    Ok(())
+}
+```
+Expected output:
+
+```
+-- Loading good_config.json
+OK  -> app_name='Demo', port=8080
+
+-- Loading bad_config.json (should parse-fail)
+ERR -> failed to parse JSON in: bad_config.json (debug: failed to parse JSON in: bad_config.json
+
+Caused by:
+    invalid type: string "not a number", expected u16 at line 1 column 44)
+
+-- Loading missing.json (should I/O-fail)
+ERR -> failed to read config file: missing.json (debug: failed to read config file: missing.json
+
+Caused by:
+    Le fichier spécifié est introuvable. (os error 2))
+```
+
+In VSCode, open `ex21.rs` and `ex17.rs` side by side and compare both contents. If you do so and rearrange the source code layout, here is what you can see:
+
+<div align="center">
+<img src="./assets/img22.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+`ex21.rs` is shorter but this is NOT the point. `ConfigError` and its implementations has disappear. And, again, notice how the `.context(...)` makes error messages much more actionable. This is ideal in binaries. 
+
+In libraries, we should avoid `anyhow::Error` in our public API and prefer a concrete error type (possibly made with `thiserror`) so downstream users can `match` on variants. Let's talk about it now.
+
+
+
+
+
+
+### thiserror
+
+`thiserror` is a derive macro crate. Instead of manually implementing `Display` and `Error` and writing `From` conversions, we can do something concise like:
 
 
 ```rust
@@ -2252,51 +2364,364 @@ pub enum ConfigError {
 }
 ```
 
-Now our `load_config` function can just use `?` and the `#[from]` will convert sub-errors automatically. This is excellent for **libraries**, where we want to expose a stable and descriptive error type to users.
+Now our `load_config` function can just use `?` and the `#[from]` will convert sub-errors automatically. This is excellent for libraries, where we want to expose a stable and descriptive error type to users.
 
-**`anyhow`** provides a type called `anyhow::Error` which is basically a convenient, dynamic error type (like `Box<dyn Error>` but with extras such as easy context via `.context(...)`). It’s great for **applications** where we just want to bubble errors up to `main`, print a nice message with context, and exit. Example:
+
+**Alice:** I really don't like code snippet. I like to see all the code. I remember `ex17.rs` was a standalone binary. Show me step by step how would you split it as a library serving a binary.
+
+**Bob:** Great idea. It is a good opportunity to see code refactoring in practice. Since you want to see all code, I'll need some space but this should not be a problem here. 
+
+First, let's review `ex17.rs`:
 
 ```rust
-use anyhow::{Context, Result};
-use std::fs;
+// ex17.rs
 
-fn run() -> Result<()> {            // Result alias = Result<T, anyhow::Error>
-    let data = fs::read_to_string(config.json)
-        .context(While reading config.json)?;  // adds context if it fails
-    let cfg: serde_json::Value = serde_json::from_str(&data)
-        .context(While parsing JSON)?;
-    println!(Config loaded: {cfg});
-    Ok(())
+use serde::Deserialize;
+use std::error::Error;
+use std::fmt;
+use std::fs::{read_to_string, write};
+
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+#[derive(Debug, Deserialize)]
+struct Config {
+    app_name: String,
+    port: u16,
+}
+
+#[derive(Debug)]
+enum ConfigError {
+    Io(std::io::Error),
+    Parse(serde_json::Error),
+}
+
+// Implement Display for our error to satisfy Error trait.
+impl fmt::Display for ConfigError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+            ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+        }
+    }
+}
+
+// Implement the standard Error trait for integration with other error tooling.
+impl Error for ConfigError {}
+
+// Map the inner errors explicitly (uses map_err).
+fn load_config(path: &str) -> Result<Config> {
+    let data = read_to_string(path).map_err(ConfigError::Io)?;
+    let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+    Ok(cfg)
 }
 
 fn main() -> Result<()> {
-    run()
+    // Create demo files
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    // Happy path
+    println!("-- Loading good_config.json");
+    match load_config("good_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // JSON parse failure
+    println!("\n-- Loading bad_config.json (should parse-fail)");
+    match load_config("bad_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // I/O failure (file does not exist)
+    println!("\n-- Loading missing.json (should I/O-fail)");
+    match load_config("missing.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    Ok(())
 }
 ```
 
-Notice how adding `.context(...)` makes error messages much more actionable if something fails (you’ll see a chain of contexts). This is ideal in binaries. In libraries, avoid `anyhow::Error` in our public API — prefer a concrete error type (possibly made with `thiserror`) so downstream users can `match` on variants. 
+Here is the content of the terminal
 
-**Rule of thumb:**  
+```
+-- Loading good_config.json
+OK  -> app_name='Demo', port=8080
+
+-- Loading bad_config.json (should parse-fail)
+ERR -> Parse error: invalid type: string "not a number", expected u16 at line 1 column 44 (debug: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44)))        
+
+-- Loading missing.json (should I/O-fail)
+ERR -> I/O error: Le fichier spécifié est introuvable. (os error 2) (debug: Io(Os { code: 2, kind: NotFound, message: "Le fichier spécifié est introuvable." }))
+```
+
+As you say, it is a standalone, all-included, kind of binary. So as a first step let's split it into a library and a binary. We can do this with a single file `ex22.rs` if we define a module inside the source code. If needed, review what we did in `ex19.rs` (the code with `log10()`, do you remember?). Here a a first version of the code:
+
+```rust
+// ex22.rs
+
+mod my_api {
+    use serde::Deserialize;
+    use std::error::Error;
+    use std::fmt;
+    use std::fs::read_to_string;
+
+    type Result<T> = std::result::Result<T, ConfigError>;
+
+    #[derive(Debug, Deserialize)]
+    pub struct Config {
+        pub app_name: String,
+        pub port: u16,
+    }
+
+    #[derive(Debug)]
+    pub enum ConfigError {
+        Io(std::io::Error),
+        Parse(serde_json::Error),
+    }
+
+    // Implement Display for our error to satisfy Error trait.
+    impl fmt::Display for ConfigError {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            match self {
+                ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+                ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+            }
+        }
+    }
+
+    // Implement the standard Error trait for integration with other error tooling.
+    impl Error for ConfigError {}
+
+    // Map the inner errors explicitly (uses map_err).
+    pub fn load_config(path: &str) -> Result<Config> {
+        let data = read_to_string(path).map_err(ConfigError::Io)?;
+        let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+        Ok(cfg)
+    }
+}
+
+use my_api::load_config;
+use std::fs::write;
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+fn main() -> Result<()> {
+    // Create demo files
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    // Happy path
+    println!("-- Loading good_config.json");
+    match load_config("good_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // JSON parse failure
+    println!("\n-- Loading bad_config.json (should parse-fail)");
+    match load_config("bad_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // I/O failure (file does not exist)
+    println!("\n-- Loading missing.json (should I/O-fail)");
+    match load_config("missing.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    Ok(())
+}
+```
+
+Hopefully the output is exactly the same:
+
+```
+-- Loading good_config.json
+OK  -> app_name='Demo', port=8080
+
+-- Loading bad_config.json (should parse-fail)
+ERR -> Parse error: invalid type: string "not a number", expected u16 at line 1 column 44 (debug: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44)))        
+
+-- Loading missing.json (should I/O-fail)
+ERR -> I/O error: Le fichier spécifié est introuvable. (os error 2) (debug: Io(Os { code: 2, kind: NotFound, message: "Le fichier spécifié est introuvable." }))
+
+```
+Now, concerning the refactoring:
+* Obviously we now have a `mod my_api` at the top of the code
+* Think about it as a file in a file. This is why there are some `use ...` statements at the beginning of the module.
+* In `ex17.rs` we had a unique type alias
+    ```rust
+    type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+    ``` 
+* Now in `ex22.rs` we have one in the `my_api` module
+    ```rust
+    type Result<T> = std::result::Result<T, ConfigError>;
+    ```
+* And `ConfigError` is now public.
+* This is cool because the caller could match on `::Io` versus `::Parse` and react differently. See below a code fragment from `ex23.rs`. I know, you don't like that but the `my_api` module is the same, only the code of the client differs. Feel free to open and run `ex23.rs`. Anyway here is the code of a client demonstrating how to react differently on Io or Parse errors:
+
+```rust
+use my_api::{Config, ConfigError, load_config};
+use std::fs::write;
+use std::io::ErrorKind;
+
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+fn load_or_init(path: &str) -> Result<Config> {
+    match load_config(path) {
+        Ok(cfg) => Ok(cfg),
+
+        // I/O: file missing → create a default one and continue
+        Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+            let default = Config { app_name: "Demo".into(), port: 8080 };
+            // Keep it simple: write a literal rather than serializing
+            write(path, r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+            Ok(default)
+        }
+
+        // I/O: other I/O errors → report and bubble up
+        Err(ConfigError::Io(e)) => {
+            eprintln!("I/O error accessing {path}: {e}");
+            Err(e.into())
+        }
+
+        // Parse error: the file exists but JSON is invalid → give a helpful message
+        Err(ConfigError::Parse(e)) => {
+            eprintln!("Invalid JSON in {path}: {e}");
+            Err(e.into())
+        }
+    }
+}
+
+fn main() -> Result<()> {
+    let cfg = load_or_init("config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
+    Ok(())
+}
+```
+
+In this first step of the refactoring the main idea was to split the code in 2: my_api module on one end and a consumer of the API on the other. Now we have a library crate in place, let's see how to leverage `thiserror` crate.
+
+So we refactor `ex22.rs` into `ex24.rs`. Here it is:
+
+```rust
+// ex24.rs
+
+mod my_api {
+    use serde::Deserialize;
+    use std::fs::read_to_string;
+    use thiserror::Error;
+
+    type Result<T> = std::result::Result<T, ConfigError>;
+
+    #[derive(Debug, Deserialize)]
+    pub struct Config {
+        pub app_name: String,
+        pub port: u16,
+    }
+
+    #[derive(Debug, Error)]
+    pub enum ConfigError {
+        #[error("I/O error: {0}")]
+        Io(#[from] std::io::Error),
+
+        #[error("JSON parse error: {0}")]
+        Json(#[from] serde_json::Error),
+    }
+
+    // Thanks to `#[from]`, both I/O and JSON errors automatically convert into `ConfigError` so that `?` works.
+    pub fn load_config(path: &str) -> Result<Config> {
+        let data = read_to_string(path)?; // -> ConfigError::Io
+        let cfg = serde_json::from_str::<Config>(&data)?; // -> ConfigError::Json
+        Ok(cfg)
+    }
+}
+
+use my_api::load_config;
+use std::fs::write;
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+fn main() -> Result<()> {
+    // Create demo files
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    // Happy path
+    println!("-- Loading good_config.json");
+    match load_config("good_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // JSON parse failure
+    println!("\n-- Loading bad_config.json (should parse-fail)");
+    match load_config("bad_config.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    // I/O failure (file does not exist)
+    println!("\n-- Loading missing.json (should I/O-fail)");
+    match load_config("missing.json") {
+        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
+        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+    }
+
+    Ok(())
+}
+```
+
+* The code of the client (`main()`) of the API is the same.
+* Changes occurs in the API and the biggest 
+
+```rust
+    #[derive(Debug, Error)]
+    pub enum ConfigError {
+        #[error("I/O error: {0}")]
+        Io(#[from] std::io::Error),
+
+        #[error("JSON parse error: {0}")]
+        Json(#[from] serde_json::Error),
+    }
+```
+* The attributes `#[error...` and `#[from...` make the macro generate concrete implementation at compile time, and then the `?` in `load_config()` uses those implementations via static conversions.
+* This is why we no longer need the `impl fmt::Display for ConfigError{...}` nor the `impl Error for ConfigError {}`.  
+* `load_config()` can be simplified and `map_err()` removed.
+
+At the end we have an API and a consumer. In the API, we delegate to `thiserror` the writing of the implementations. I hope your understand the refactoring process that bring us from `ex17.rs` to `ex24.rs` one step after the other. I hope you enjoyed to read complete code at each step.  
+
+<!-- **Rule of thumb:**  
 - **Library/public API** → concrete error types (e.g., enum) with `thiserror` to keep it ergonomic.  
-- **Application/binary** → `anyhow` (or `Box<dyn Error>`) for quick, flexible error propagation and rich context messages.
+- **Application/binary** → `anyhow` (or `Box<dyn Error>`) for quick, flexible error propagation and rich context messages. -->
 
 
 
 
 
-### Summary – `thiserror` vs `anyhow`
-- **`thiserror`**: derive-based crate to build clear, typed error enums with minimal boilerplate. Best for libraries and public APIs where the caller needs to inspect error kinds.  
-- **`anyhow`**: flexible, dynamic error type with great ergonomics and `.context(...)` for adding messages. Best for applications where we just want to bubble errors up and print them, not pattern-`match` on them.  
-- **Don’t mix them blindly**: We can use both in the same project (e.g., library crates with `thiserror` exposed, binary crate using `anyhow` internally), but try to keep public APIs typed and internal app code ergonomic.
+### Summary – `anyhow` vs `thiserror`
+* **`anyhow`**: Binaries. Dynamic error type with great ergonomics and `.context(...)` for adding messages. Best for applications where we just want to bubble errors up and print them, not pattern-`match` on them.  
+
+* **`thiserror`**: Libraries. Derive-based crate to build clear, typed error enums with minimal boilerplate. Best for libraries and public APIs where the caller needs to inspect error kinds.  
+
+* **Don’t mix them blindly**: We can use both in the same project (e.g., library crates with `thiserror` exposed, binary crate using `anyhow` internally), but try to keep public APIs typed and internal app code ergonomic.
 
 
 
 
 
 ### Exercises – `thiserror` & `anyhow`
+1. Can you explain why in the API of `ex24.rs` we found `type Result<T> = std::result::Result<T, ConfigError>;` while in the client's code we have `type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;`  
+
 1. **Refactor to `thiserror`:** Take our custom error enum from the previous exercise and replace the manual `Display`/`Error` implementations with a `#[derive(Error)]` and `#[error(...)]` attributes from `thiserror`. If we had conversions from `io::Error` or `serde_json::Error`, add `#[from]` to those variants and remove our manual `From` impls.  
-2. **Add Context with `anyhow`:** Write a small binary that reads a file and parses JSON, returning `anyhow::Result<()>`. Add `.context(reading file)` and `.context(parsing JSON)` to the respective fallible operations. Run it with a missing file and with invalid JSON to see the difference in error messages with the added context.  
-3. **Design Choice:** Given a project that has both a library crate (`my_lib`) and a binary crate (`my_cli`) in a Cargo workspace, decide how we would structure error handling across both. Hint: `my_lib` exposes typed errors with `thiserror`, while `my_cli` depends on `my_lib` and uses `anyhow` in `main` to convert `my_lib::Error` into `anyhow::Error` using `?` and print user-friendly messages.
+
+1. **Add Context with `anyhow`:** Write a small binary that reads a file and parses JSON, returning `anyhow::Result<()>`. Add `.context(reading file)` and `.context(parsing JSON)` to the respective fallible operations. Run it with a missing file and with invalid JSON to see the difference in error messages with the added context.  
+
+1. **Design Choice:** Given a project that has both a library crate (`my_lib`) and a binary crate (`my_cli`) in a Cargo workspace, decide how we would structure error handling across both. Hint: `my_lib` exposes typed errors with `thiserror`, while `my_cli` depends on `my_lib` and uses `anyhow` in `main` to convert `my_lib::Error` into `anyhow::Error` using `?` and print user-friendly messages.
 
 
 
@@ -2318,7 +2743,6 @@ Notice how adding `.context(...)` makes error messages much more actionable if s
 
 
 
--->
 
 
 
