@@ -1790,11 +1790,9 @@ Defining a custom error type is common in libraries, so that the library returns
 ```rust
 // ex17.rs
 use serde::Deserialize;
-use std::error::Error;
 use std::fmt;
 use std::fs::{read_to_string, write};
-
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+use std::io::ErrorKind;
 
 #[derive(Debug)]
 enum ConfigError {
@@ -1813,62 +1811,90 @@ impl fmt::Display for ConfigError {
 }
 
 // Implement the standard Error trait for integration with other error tooling.
-impl Error for ConfigError {}
+impl std::error::Error for ConfigError {}
 ```
 
+* `ConfigError` is an enum (a sum type). A value of this type is exactly one of its variants at a time. Here it has two possible variants:
+    * `Io(...)` — a variant that carries one payload of type `std::io::Error`
+    * `Parse(...)` — a variant that carries one payload of type `serde_json::Error`
+* It is **important** to keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
+    * Think about : `fn Io(e: std::io::Error) -> ConfigError{...}`
 
-<!-- **Side Note:** In real code, we might use the `thiserror` crate to derive these implementations, but here it’s shown manually. -->
+* Then we implement the `Display` trait for the data type `ConfigError`. To make a long story short, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely. 
 
-* Now `ConfigError` can represent either kind of error (`Io(std::io::Error)` or `Parse(serde_json::Error)`). 
-* Next, when we write functions, we make them return `Result<T>` and NOT `Result<T, ConfigError>`. Indeed, at the top of the code we have the type alias : `type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;` 
-* Inside those functions, we can convert errors into `ConfigError` with `.map_err()`
-
-See below :
+* Next, when we write the function `load_config()` we make sure it returns `Result<Config, ConfigError>`. See below :
 
 ```rust
-fn load_config(path: &str) -> Result<Config> {
+fn load_config(path: &str) -> Result<Config, ConfigError> {
     let data = read_to_string(path).map_err(ConfigError::Io)?;
     let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
     Ok(cfg)
 }
 ```
 
-* `std::fs::read_to_string` returns a `Result<String, std::io::Error>`. We use `.map_err(ConfigError::Io)` to convert an `io::Error` into our `ConfigError::Io` variant if it fails
-* The JSON parse returns a `Result<Config, json::Error>`, and we map that error to `ConfigError::Parse`. 
-* With `?`, any error will be converted and bubbled up as our `ConfigError`. 
-* The caller of `load_config` now only has to handle `ConfigError` and can match on whether it was `Io()` or `Parse()` if they want to distinguish. 
+Now, stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current errors into `ConfigError` with the help of `.map_err()`. Here is how :
 
-Below we show a part of the `main()` function to focus on how this works from the caller point of view. 
+* If it fails, `std::fs::read_to_string` returns a `Result<String, std::io::Error>`
+    * `.map_err(ConfigError::Io)` is then executed
+    * However, since you remember (you confirm, you remember) that each enum variant of `ConfigError` is also an initializer, when `.map_err(ConfigError::Io)` is executed, it calls the function `ConfigError::Io(e: std::io::Error) -> ConfigError` which construct and return a `ConfigError`
+    * At then end of the line the `?` operator bubbles up the `ConfigError` immediately
+* The same mechanics is at work on the next line 
+
+
+* The caller of `load_config()` now only has to handle `ConfigError` and can match on whether it was `Io()` or `Parse()` if they want to distinguish. Below we show a part of the `load_or_init()` function to focus on how this works from the caller point of view :
 
 ```rust
-fn main() -> Result<()> {
-    ...
-    match load_config("bad_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
+fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+    match load_config(path) {
+        ...
+        Err(ConfigError::Parse(e)) => {
+            eprintln!("Invalid JSON in {path}: {e}");
+            Err(ConfigError::Parse(e))
+        }
+        ...
     }
-    ...
+}
+```
+
+* This is a `match` on the value returned by `load_config()`
+* If the pattern matches `Err(ConfigError::Parse(e))`, the `.json` in invalid
+* The function bubbles up the error to the caller (`main()` here)
+
+Let's have a look on `main()`
+
+```rust
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
 ```
 
-Spend some time in the code above to see where `cfg.app_name` and `cfg.port` have been initialized. Try to imagine what will be printed in the console if, as we can imagine, `bad_config.json` is not parsed successfully. Confirm your thoughts with the ouput below :  
+* Note that `main()` returns `Result<(), Box<dyn std::error::Error>>`
+* This means we can use the `?` operator at the end of the lines
+* Even if the error data type from ``write()`` and `load_or_init()` are different. 
 
 
-Expected output of the `ex17.rs`: 
+Expected output of the `ex17.rs` with ``bad_config.json``: 
 
 ```
--- Loading good_config.json
-OK  -> app_name='Demo', port=8080
-
--- Loading bad_config.json (should parse-fail)
-ERR -> Parse error: invalid type: string "not a number", expected u16 at line 1 column 44 (debug: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44)))        
-
--- Loading missing.json (should I/O-fail)
-ERR -> I/O error: Le fichier spécifié est introuvable. (os error 2) (debug: Io(Os { code: 2, kind: NotFound, message: "Le fichier spécifié est introuvable." }))
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44))
+error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit code: 1)
 ```
 
-Also note how implementing the `Error` trait (which mainly requires `Display` and `Debug`) makes our `ConfigError` interoperable with other error handling (and we could combine it with trait objects, etc.). The `?` operator was able to work because we provided a conversion via `map_err`. Alternatively, we could implement `From<std::io::Error> for ConfigError` and `From<json::Error> for ConfigError` and then `?` would automatically convert the errors using those `From` implementations. That’s another neat trick: implementing `From<OtherError>` for our error type lets `?` do the conversion implicitly.”
+
+
+
+
+
+
+
+
+<!-- Also note how implementing the `Error` trait (which mainly requires `Display` and `Debug`) makes our `ConfigError` interoperable with other error handling (and we could combine it with trait objects, etc.). The `?` operator was able to work because we provided a conversion via `map_err`. Alternatively, we could implement `From<std::io::Error> for ConfigError` and `From<json::Error> for ConfigError` and then `?` would automatically convert the errors using those `From` implementations. That’s another neat trick: implementing `From<OtherError>` for our error type lets `?` do the conversion implicitly.” -->
 
 <!-- [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons) -->
 
@@ -1885,11 +1911,9 @@ Find below `ex17.rs` complete source code because I hate partial source code in 
 ```rust
 // ex17.rs
 use serde::Deserialize;
-use std::error::Error;
 use std::fmt;
 use std::fs::{read_to_string, write};
-
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+use std::io::ErrorKind;
 
 #[derive(Debug, Deserialize)]
 struct Config {
@@ -1903,7 +1927,6 @@ enum ConfigError {
     Parse(serde_json::Error),
 }
 
-// Implement Display for our error to satisfy Error trait.
 impl fmt::Display for ConfigError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
@@ -1913,42 +1936,44 @@ impl fmt::Display for ConfigError {
     }
 }
 
-// Implement the standard Error trait for integration with other error tooling.
-impl Error for ConfigError {}
+impl std::error::Error for ConfigError {}
 
-// Map the inner errors explicitly (uses map_err).
-fn load_config(path: &str) -> Result<Config> {
+fn load_config(path: &str) -> Result<Config, ConfigError> {
     let data = read_to_string(path).map_err(ConfigError::Io)?;
     let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
     Ok(cfg)
 }
 
-fn main() -> Result<()> {
-    // Create demo files
+fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+    match load_config(path) {
+        Ok(cfg) => Ok(cfg),
+
+        Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+            let default = Config { app_name: "Demo".into(), port: 8086 };
+            // Map the write error to ConfigError so `?` compiles.
+            write(path, r#"{ "app_name": "Demo", "port": 8086 }"#).map_err(ConfigError::Io)?;
+            eprintln!("{path} not found, created with default config");
+            Ok(default)
+        }
+
+        Err(ConfigError::Io(e)) => {
+            eprintln!("I/O error accessing {path}: {e}");
+            Err(ConfigError::Io(e))
+        }
+
+        Err(ConfigError::Parse(e)) => {
+            eprintln!("Invalid JSON in {path}: {e}");
+            Err(ConfigError::Parse(e))
+        }
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
     write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
 
-    // 1) Happy path
-    println!("-- Loading good_config.json");
-    match load_config("good_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // 2) JSON parse failure
-    println!("\n-- Loading bad_config.json (should parse-fail)");
-    match load_config("bad_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // 3) I/O failure (file does not exist)
-    println!("\n-- Loading missing.json (should I/O-fail)");
-    match load_config("missing.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
 ```
@@ -1957,6 +1982,7 @@ fn main() -> Result<()> {
 
 
 
+<!-- 
 **Alice:** I'm not a big fan of the `.map_err()` in `load_config()`. You know what? I miss shorter lines of code ending with `?`. 
 
 **Bob:** Again, your wishes are my commands. I let you play with this version in VSCode.
@@ -2038,7 +2064,7 @@ fn main() -> Result<()> {
     Ok(())
 }
 ```
-
+ -->
 
 
 
@@ -2227,7 +2253,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 ### anyhow - binaries (mnemonic: A, B, C...)
 
-`anyhow` provides a type called `anyhow::Error` which is basically a convenient, dynamic error type (like `Box<dyn Error>` but with extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
+`anyhow` provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
 
 ```rust
 // ex20.rs
@@ -2263,13 +2289,14 @@ Notice how adding `.context(...)` makes error messages much more actionable if s
 
 **Alice:** OK... But could you show me how we should modify one of the previous code, you know, the one where we were reading JSON config file.
 
-**Bon:** This is indeed
+**Bob:** Yes, you're right. Let's work on an complete code to see the impact and benefices.
 
 ```rust
 // ex21.rs
 use anyhow::{Context, Result};
 use serde::Deserialize;
 use std::fs::{read_to_string, write};
+use std::io::{self, ErrorKind};
 
 #[derive(Debug, Deserialize)]
 struct Config {
@@ -2283,62 +2310,78 @@ fn load_config(path: &str) -> Result<Config> {
     Ok(cfg)
 }
 
+fn load_or_init(path: &str) -> Result<Config> {
+    match load_config(path) {
+        Ok(cfg) => Ok(cfg),
+        Err(err) => {
+            if let Some(ioe) = err.downcast_ref::<io::Error>() {
+                if ioe.kind() == ErrorKind::NotFound {
+                    let default = Config { app_name: "Demo".into(), port: 8086 };
+                    let default_json = r#"{ "app_name": "Demo", "port": 8086 }"#;
+                    write(path, default_json).with_context(|| format!("failed to write default config to {path}"))?;
+                    eprintln!("{path} not found, created with default config");
+                    return Ok(default);
+                } else {
+                    eprintln!("I/O error accessing {path}: {ioe}");
+                    return Err(err);
+                }
+            }
+            if let Some(parsee) = err.downcast_ref::<serde_json::Error>() {
+                eprintln!("Invalid JSON in {path}: {parsee}");
+                return Err(err);
+            }
+            Err(err)
+        }
+    }
+}
+
 fn main() -> Result<()> {
-    // Create demo files
     write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#).context("writing good_config.json")?;
     write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#).context("writing bad_config.json")?;
 
-    // Happy path
-    println!("-- Loading good_config.json");
-    match load_config("good_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // JSON parse failure
-    println!("\n-- Loading bad_config.json (should parse-fail)");
-    match load_config("bad_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // I/O failure (file does not exist)
-    println!("\n-- Loading missing.json (should I/O-fail)");
-    match load_config("missing.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
 ```
-Expected output:
+
+Expected output of the `ex21.rs` with ``bad_config.json``: 
 
 ```
--- Loading good_config.json
-OK  -> app_name='Demo', port=8080
-
--- Loading bad_config.json (should parse-fail)
-ERR -> failed to parse JSON in: bad_config.json (debug: failed to parse JSON in: bad_config.json
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: failed to parse JSON in: bad_config.json
 
 Caused by:
-    invalid type: string "not a number", expected u16 at line 1 column 44)
-
--- Loading missing.json (should I/O-fail)
-ERR -> failed to read config file: missing.json (debug: failed to read config file: missing.json
-
-Caused by:
-    Le fichier spécifié est introuvable. (os error 2))
+    invalid type: string "not a number", expected u16 at line 1 column 44
+error: process didn't exit successfully: `target\debug\examples\ex21.exe` (exit code: 1)
 ```
 
-In VSCode, open `ex21.rs` and `ex17.rs` side by side and compare both contents. If you do so and rearrange the source code layout, here is what you can see:
+
+
+In VSCode, open `ex21.rs` and `ex17.rs` side by side and compare both contents. If you do so and rearrange the source code layout, here is what you should see:
 
 <div align="center">
 <img src="./assets/img22.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
+<span>ex17.rs on lhs, ex21.rs on rhs</span>
 </div>
 
-`ex21.rs` is shorter but this is NOT the point. `ConfigError` and its implementations has disappear. And, again, notice how the `.context(...)` makes error messages much more actionable. This is ideal in binaries. 
+`ex21.rs` is shorter but this is not the point. `ConfigError` and its implementations has disappear. And, again, notice how the `.context(...)` makes error messages much more actionable. This is exactly what we need in binaries. 
+
+Now, let's read the code :
+
+* In the initial version `ex17.rs` we had `fn load_config(path: &str) -> Result<Config, ConfigError> {...}`
+* Now we have `fn load_or_init(path: &str) -> Result<Config> {...}` where `Result` is a type alias so that the signature should be understood as `fn load_config(path: &str) -> std::result::Result<Config, anyhow::Error>`
+* anyhow implement `From<E>` for all `E` that implement `std::error::Error + Send + Sync + 'static`
+* If any error happen during `read_to_string()` then the `?` Rust convert the error from `std::io::Error` to `anyhow::Error` (idem for `serde_json::Error` from `serde_json::from_str`) 
+
+Now the tricky part is in `load_or_init()`:
+* Its signature should be read `fn load_or_init(path: &str) -> Result<Config, , anyhow::Error>`
+* On error, we must downcast the `anyhow::Error` and check if it is an `io::Error` if so check if it is an `ErrorKind::NotFound`...
+* This is not really fun, I agree. In fact I wanted to keep the logic of `load_or_init()` the same. Since it now receives  `Result<Config, , anyhow::Error>` and not a `Result<Config, ConfigError>` we have some work to do to retrieve the 3 kind of error (not found, access, invalid json).
+* Concerning `main()` except the signature there is no change.
+
+
+
 
 In libraries, we should avoid `anyhow::Error` in our public API and prefer a concrete error type (possibly made with `thiserror`) so downstream users can `match` on variants. Let's talk about it now.
 
@@ -2347,7 +2390,7 @@ In libraries, we should avoid `anyhow::Error` in our public API and prefer a con
 
 
 
-### thiserror
+### thiserror - libraries
 
 `thiserror` is a derive macro crate. Instead of manually implementing `Display` and `Error` and writing `From` conversions, we can do something concise like:
 
@@ -2375,13 +2418,10 @@ First, let's review `ex17.rs`:
 
 ```rust
 // ex17.rs
-
 use serde::Deserialize;
-use std::error::Error;
 use std::fmt;
 use std::fs::{read_to_string, write};
-
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+use std::io::ErrorKind;
 
 #[derive(Debug, Deserialize)]
 struct Config {
@@ -2395,7 +2435,6 @@ enum ConfigError {
     Parse(serde_json::Error),
 }
 
-// Implement Display for our error to satisfy Error trait.
 impl fmt::Display for ConfigError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
@@ -2405,42 +2444,43 @@ impl fmt::Display for ConfigError {
     }
 }
 
-// Implement the standard Error trait for integration with other error tooling.
-impl Error for ConfigError {}
+impl std::error::Error for ConfigError {}
 
-// Map the inner errors explicitly (uses map_err).
-fn load_config(path: &str) -> Result<Config> {
+fn load_config(path: &str) -> Result<Config, ConfigError> {
     let data = read_to_string(path).map_err(ConfigError::Io)?;
     let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
     Ok(cfg)
 }
 
-fn main() -> Result<()> {
-    // Create demo files
+fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+    match load_config(path) {
+        Ok(cfg) => Ok(cfg),
+
+        Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+            let default = Config { app_name: "Demo".into(), port: 8086 };
+            write(path, r#"{ "app_name": "Demo", "port": 8086 }"#).map_err(ConfigError::Io)?;
+            eprintln!("{path} not found, created with default config");
+            Ok(default)
+        }
+
+        Err(ConfigError::Io(e)) => {
+            eprintln!("I/O error accessing {path}: {e}");
+            Err(ConfigError::Io(e))
+        }
+
+        Err(ConfigError::Parse(e)) => {
+            eprintln!("Invalid JSON in {path}: {e}");
+            Err(ConfigError::Parse(e))
+        }
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
     write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
 
-    // Happy path
-    println!("-- Loading good_config.json");
-    match load_config("good_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // JSON parse failure
-    println!("\n-- Loading bad_config.json (should parse-fail)");
-    match load_config("bad_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // I/O failure (file does not exist)
-    println!("\n-- Loading missing.json (should I/O-fail)");
-    match load_config("missing.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
 ```
@@ -2448,28 +2488,23 @@ fn main() -> Result<()> {
 Here is the content of the terminal
 
 ```
--- Loading good_config.json
-OK  -> app_name='Demo', port=8080
-
--- Loading bad_config.json (should parse-fail)
-ERR -> Parse error: invalid type: string "not a number", expected u16 at line 1 column 44 (debug: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44)))        
-
--- Loading missing.json (should I/O-fail)
-ERR -> I/O error: Le fichier spécifié est introuvable. (os error 2) (debug: Io(Os { code: 2, kind: NotFound, message: "Le fichier spécifié est introuvable." }))
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44))
+error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit code: 1)
 ```
+
+
+
 
 As you say, it is a standalone, all-included, kind of binary. So as a first step let's split it into a library and a binary. We can do this with a single file `ex22.rs` if we define a module inside the source code. If needed, review what we did in `ex19.rs` (the code with `log10()`, do you remember?). Here a a first version of the code:
 
 ```rust
 // ex22.rs
-
 mod my_api {
     use serde::Deserialize;
-    use std::error::Error;
     use std::fmt;
-    use std::fs::read_to_string;
-
-    type Result<T> = std::result::Result<T, ConfigError>;
+    use std::fs::{read_to_string, write};
+    use std::io::ErrorKind;
 
     #[derive(Debug, Deserialize)]
     pub struct Config {
@@ -2483,7 +2518,6 @@ mod my_api {
         Parse(serde_json::Error),
     }
 
-    // Implement Display for our error to satisfy Error trait.
     impl fmt::Display for ConfigError {
         fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
             match self {
@@ -2493,47 +2527,47 @@ mod my_api {
         }
     }
 
-    // Implement the standard Error trait for integration with other error tooling.
-    impl Error for ConfigError {}
+    impl std::error::Error for ConfigError {}
 
-    // Map the inner errors explicitly (uses map_err).
-    pub fn load_config(path: &str) -> Result<Config> {
+    fn load_config(path: &str) -> Result<Config, ConfigError> {
         let data = read_to_string(path).map_err(ConfigError::Io)?;
         let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
         Ok(cfg)
     }
+
+    pub fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+        match load_config(path) {
+            Ok(cfg) => Ok(cfg),
+
+            Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+                let default = Config { app_name: "Demo".into(), port: 8086 };
+                write(path, r#"{ "app_name": "Demo", "port": 8086 }"#).map_err(ConfigError::Io)?;
+                eprintln!("{path} not found, created with default config");
+                Ok(default)
+            }
+
+            Err(ConfigError::Io(e)) => {
+                eprintln!("I/O error accessing {path}: {e}");
+                Err(ConfigError::Io(e))
+            }
+
+            Err(ConfigError::Parse(e)) => {
+                eprintln!("Invalid JSON in {path}: {e}");
+                Err(ConfigError::Parse(e))
+            }
+        }
+    }
 }
 
-use my_api::load_config;
+use my_api::load_or_init;
 use std::fs::write;
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
-fn main() -> Result<()> {
-    // Create demo files
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
     write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
 
-    // Happy path
-    println!("-- Loading good_config.json");
-    match load_config("good_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // JSON parse failure
-    println!("\n-- Loading bad_config.json (should parse-fail)");
-    match load_config("bad_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // I/O failure (file does not exist)
-    println!("\n-- Loading missing.json (should I/O-fail)");
-    match load_config("missing.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
 ```
@@ -2541,28 +2575,31 @@ fn main() -> Result<()> {
 Hopefully the output is exactly the same:
 
 ```
--- Loading good_config.json
-OK  -> app_name='Demo', port=8080
-
--- Loading bad_config.json (should parse-fail)
-ERR -> Parse error: invalid type: string "not a number", expected u16 at line 1 column 44 (debug: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44)))        
-
--- Loading missing.json (should I/O-fail)
-ERR -> I/O error: Le fichier spécifié est introuvable. (os error 2) (debug: Io(Os { code: 2, kind: NotFound, message: "Le fichier spécifié est introuvable." }))
-
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44))
+error: process didn't exit successfully: `target\debug\examples\ex22.exe` (exit code: 1)
 ```
-Now, concerning the refactoring:
+
+
+
+
+
+Now, concerning the refactoring we can observe: 
+
 * Obviously we now have a `mod my_api` at the top of the code
-* Think about it as a file in a file. This is why there are some `use ...` statements at the beginning of the module.
-* In `ex17.rs` we had a unique type alias
+* Think about it as "a file in a file". This is not true but this can help. 
+* This explain why there are some `use ...` statements at the beginning of the module.
+<!-- * In `ex17.rs` we had a unique type alias
     ```rust
     type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
     ``` 
 * Now in `ex22.rs` we have one in the `my_api` module
     ```rust
     type Result<T> = std::result::Result<T, ConfigError>;
-    ```
-* And `ConfigError` is now public.
+    ``` -->
+* `ConfigError` is now public because it is part of `load_or_init()` which is public
+
+<!-- 
 * This is cool because the caller could match on `::Io` versus `::Parse` and react differently. See below a code fragment from `ex23.rs`. I know, you don't like that but the `my_api` module is the same, only the code of the client differs. Feel free to open and run `ex23.rs`. Anyway here is the code of a client demonstrating how to react differently on Io or Parse errors:
 
 ```rust
@@ -2603,18 +2640,18 @@ fn main() -> Result<()> {
     println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
-```
+``` -->
 
-In this first step of the refactoring the main idea was to split the code in 2: my_api module on one end and a consumer of the API on the other. Now we have a library crate in place, let's see how to leverage `thiserror` crate.
+In this first step of the refactoring the main idea was to split the code in 2: `my_api` module on one end and a consumer of the API on the other. Now we have a library crate in place, let's see how to leverage `thiserror` crate.
 
-So we refactor `ex22.rs` into `ex24.rs`. Here it is:
+So now, we refactor `ex22.rs` into `ex24.rs`. Here it is:
 
 ```rust
 // ex24.rs
-
 mod my_api {
     use serde::Deserialize;
-    use std::fs::read_to_string;
+    use std::fs::{read_to_string, write};
+    use std::io::ErrorKind;
     use thiserror::Error;
 
     type Result<T> = std::result::Result<T, ConfigError>;
@@ -2631,53 +2668,55 @@ mod my_api {
         Io(#[from] std::io::Error),
 
         #[error("JSON parse error: {0}")]
-        Json(#[from] serde_json::Error),
+        Parse(#[from] serde_json::Error),
     }
 
-    // Thanks to `#[from]`, both I/O and JSON errors automatically convert into `ConfigError` so that `?` works.
-    pub fn load_config(path: &str) -> Result<Config> {
-        let data = read_to_string(path)?; // -> ConfigError::Io
-        let cfg = serde_json::from_str::<Config>(&data)?; // -> ConfigError::Json
+    fn load_config(path: &str) -> Result<Config> {
+        let data = read_to_string(path).map_err(ConfigError::Io)?;
+        let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
         Ok(cfg)
+    }
+
+    pub fn load_or_init(path: &str) -> Result<Config> {
+        match load_config(path) {
+            Ok(cfg) => Ok(cfg),
+
+            Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+                let default = Config { app_name: "Demo".into(), port: 8086 };
+                write(path, r#"{ "app_name": "Demo", "port": 8086 }"#)?;
+                eprintln!("{path} not found, created with default config");
+                Ok(default)
+            }
+
+            Err(ConfigError::Io(e)) => {
+                eprintln!("I/O error accessing {path}: {e}");
+                Err(ConfigError::Io(e))
+            }
+
+            Err(ConfigError::Parse(e)) => {
+                eprintln!("Invalid JSON in {path}: {e}");
+                Err(ConfigError::Parse(e))
+            }
+        }
     }
 }
 
-use my_api::load_config;
+use my_api::load_or_init;
 use std::fs::write;
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn main() -> Result<()> {
-    // Create demo files
     write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
     write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
 
-    // Happy path
-    println!("-- Loading good_config.json");
-    match load_config("good_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // JSON parse failure
-    println!("\n-- Loading bad_config.json (should parse-fail)");
-    match load_config("bad_config.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
-    // I/O failure (file does not exist)
-    println!("\n-- Loading missing.json (should I/O-fail)");
-    match load_config("missing.json") {
-        Ok(cfg) => println!("OK  -> app_name='{}', port={}", cfg.app_name, cfg.port),
-        Err(e) => println!("ERR -> {e} (debug: {e:?})"),
-    }
-
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
 ```
 
 * The code of the client (`main()`) of the API is the same.
-* Changes occurs in the API and the biggest 
+* Changes occurs in the API and the biggest one is in `ConfigError` declaration.
 
 ```rust
     #[derive(Debug, Error)]
@@ -2686,12 +2725,12 @@ fn main() -> Result<()> {
         Io(#[from] std::io::Error),
 
         #[error("JSON parse error: {0}")]
-        Json(#[from] serde_json::Error),
+        Parse(#[from] serde_json::Error),
     }
 ```
-* The attributes `#[error...` and `#[from...` make the macro generate concrete implementation at compile time, and then the `?` in `load_config()` uses those implementations via static conversions.
+* The attributes `#[error...` and `#[from...` make the macro generate concrete implementations at compile time, and then the `?` in `load_config()` uses those implementations via static conversions.
 * This is why we no longer need the `impl fmt::Display for ConfigError{...}` nor the `impl Error for ConfigError {}`.  
-* `load_config()` can be simplified and `map_err()` removed.
+* `load_config()` can be simplified and the can be `map_err()` removed.
 
 At the end we have an API and a consumer. In the API, we delegate to `thiserror` the writing of the implementations. I hope your understand the refactoring process that bring us from `ex17.rs` to `ex24.rs` one step after the other. I hope you enjoyed to read complete code at each step.  
 
@@ -2703,7 +2742,7 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 
 
 
-### Summary – `anyhow` vs `thiserror`
+### Summary – `anyhow` & `thiserror`
 * **`anyhow`**: Binaries. Dynamic error type with great ergonomics and `.context(...)` for adding messages. Best for applications where we just want to bubble errors up and print them, not pattern-`match` on them.  
 
 * **`thiserror`**: Libraries. Derive-based crate to build clear, typed error enums with minimal boilerplate. Best for libraries and public APIs where the caller needs to inspect error kinds.  
@@ -2714,7 +2753,7 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 
 
 
-### Exercises – `thiserror` & `anyhow`
+### Exercises – `anyhow` & `thiserror` 
 1. Can you explain why in the API of `ex24.rs` we found `type Result<T> = std::result::Result<T, ConfigError>;` while in the client's code we have `type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;`  
 
 1. **Refactor to `thiserror`:** Take our custom error enum from the previous exercise and replace the manual `Display`/`Error` implementations with a `#[derive(Error)]` and `#[error(...)]` attributes from `thiserror`. If we had conversions from `io::Error` or `serde_json::Error`, add `#[from]` to those variants and remove our manual `From` impls.  
