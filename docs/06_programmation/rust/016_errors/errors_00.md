@@ -2775,10 +2775,43 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Errors from Experimentation to Production
+
+**Alice:** dgf
+
+**Bob:** hjk
+
+### Key Concepts
+* The fewer the better
+* The sooner the better
+* Gall’s law
+    * A complex system that works is invariably found to have evolved from a simple system that worked.
+    * A complex system designed from scratch never works and cannot be patched up to make it work. You have to start over with a working simple system.
+* Error management must be able to scale while we transition from Experimentation to Production
+* `?` for experimentation
+* Custom Error Type for production
+
+### Experimentation
+
+### Production
+
+
+### Summary – Experimentation to Production
+
+* **`derive_more`**: sdfsdf  
 
 
 
 
+
+
+### Exercises – Experimentation to Production 
+
+1. xfghfgh cvxcv
 
 
 
