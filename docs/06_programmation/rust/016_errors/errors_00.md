@@ -13,6 +13,10 @@ last_modified_date : 2025-09-23 10:00:00
 <!-- 
 TODO :
 * Fournir tous les codes de toutes les solutions
+* Rajouter des images 
+* Rajouter des vidéos
+* Rajouter des liens
+* Expliquer, mettre un lien sur "unwind the stack"
 -->
 
 
@@ -1011,7 +1015,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 ## Propagating Errors with `?` Operator
 
-**Alice:** This `match` stuff is okay, but if I have to propagate errors up multiple functions, writing a `match` expression in each function sounds painful.
+**Alice:** This `match` stuff is okay, but if I have to bubble up errors from multiple functions, writing a `match` expression in each function sounds painful.
 
 **Bob:** You’re in luck – Rust has a convenience for that: the `?` operator. It’s a little piece of syntax that makes propagating errors much nicer.
 
@@ -1367,14 +1371,16 @@ fn main() -> Result<()> {
 
 
 
-**Alice:** So the difference is that `Result<T, E>` gives an error reason (`E`), whereas `Option<T>` just gives we nothing on failure.
+**Alice:** So the difference is that 
+* `Result<T, E>` provides the reason for the error (`E`)
+* `Option<T>` gives us nothing on failure
 
-**Bob:** Exactly. If we need to know **why** something went wrong, we must use `Result<T, E>` because `Option::None` carries no data. If we call a function and get a `None`, we only know that there was no `Result<T, E>`, not why. With `Result::Err`, we usually get an error type or message explaining the issue.
+**Bob:** Exactly. If we need to know **why** something went wrong, we must use `Result<T, E>` because `Option::None` carries no data. If we call a function and get a `None`, we only know that there was no result, not why. With `Result::Err`, we usually get an error type or message explaining the issue.
 
 <!-- [5](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=paramagnetic%20%20June%2027%2C%202024%2C,11%3A41am%20%204)  -->
 <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
 
-Also, there’s a **semantic difference**. Other developers reading our code will usually interpret a return type of `Option<T>` as "`None` means not found or not present, which might be normal", whereas `Result<T, E>` means "`Err` means an error occurred during the operation". It’s about expectation. So using the right type is a form of communication.
+Also, there’s a **semantic difference**. Other developers reading our code will usually interpret a return type of `Option<T>` as "`None` means not found or not present, which might be normal", whereas `Result<T, E>` means "`Err` means an error occurred during the operation". It’s about expectation. So, using the right return type is a form of communication.
 
 <!-- [27](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=There%27s%20also%20a%20semantic%20difference,Result) -->
 
@@ -1387,7 +1393,9 @@ Sometimes we even see combinations, like `Result<Option<T>, E>` (which means the
 
 **Alice:** Can you show me a simple comparison?
 
-**Bob:** Sure. Let’s take a trivial scenario: safe division. Suppose we want to divide two numbers, but if the divisor is zero, that’s not a valid operation. We have two design choices: return an `Option<f64>` (where `None` means division by zero was not possible), or return a `Result<f64, String>` (or a custom error, more on this later) to explicitly signify an error. Here’s what both might look like:
+**Bob:** Sure. Let’s take a trivial scenario: safe division. Suppose we want to divide two numbers, but if the divisor is zero, that’s not a valid operation. We have two design choices: return an `Option<f64>` (where `None` means division by zero was not possible), or return a `Result<f64, String>` to explicitly signify an error. Here’s what both might look like:
+
+
 
 
 ```rust
@@ -1415,15 +1423,15 @@ fn main() {
     let x = safe_divide_option(10.0, 0.0);
     let y = safe_divide_result(10.0, 0.0);
     println!("Option version: {:?}", x); // None
-    println!("Result version: {:?}", y); // Err(Division by zero)
+    println!("Result version: {:?}", y); // Err("Division by zero")
 }
 ```
 
 
-* In `safe_divide_option`, if `b` is zero we return `None`. The caller must check for `None` but doesn’t get an automatic reason; they just know it didn’t produce a result. 
-* In `safe_divide_result`, if `b` is zero we return an `Err` with a message (here a `&'static str` slice, but it could be a more complex error type). The caller on receiving an `Err` knows it was an exceptional case and has a message to work with.
+* In `safe_divide_option`, if `b` is zero we return `None`. The caller must check for `None` but doesn’t get an automatic reason. They just know it didn’t produce a result. 
+* In `safe_divide_result`, if `b` is zero we return an `Err` with a message (here a static `&str` slice, but it could be a more complex error type). The caller on receiving an `Err` knows it was an exceptional case and has a message to work with.
 
-Neither approach is wrong here. It depends on how we view division by zero. If we consider it an error (I would vote for), `Result<T, E>` is suitable. If we treat it like just no valid answer and move on without an error context, `Option<T>` could suffice.
+Neither approach is wrong here. It depends on how we view division by zero. If we consider it an error (I would vote for), `Result<T, E>` is suitable. If we treat it like "just no valid answer" and move on without an error context, `Option<T>` could suffice.
 
 The key question to ask: **Is the absence of a value an error condition, or is it an expected case?** If it’s normal/expected (like searching in a map for a key that might not be there), use `Option<T>`. If it’s an error (like couldn’t parse config file), use `Result<T, E>` so we can report what went wrong.
 
@@ -1433,12 +1441,12 @@ The key question to ask: **Is the absence of a value an error condition, or is i
 
 **Bob:** Yes, and we already touched on that (see `ex11.rs`). If we use `?` on an `Option<T>` and it’s `None`, it will return `None` from our function early. It’s handy when chaining multiple things that might produce no value. 
 
-But remember, we can’t directly mix `Result<T, E>` and `Option<T>` with `?` without converting. For example, if we have a `Result<T, E>` and we want to use `?` in a function returning `Option<T>`, we would need to convert that `Result<T, E>` into an `Option<T>` (perhaps by ignoring the error or converting error to `None`). Usually, though, we keep to one or the other in a given function.
+But remember, we can’t mix `Result<T, E>` and `Option<T>` with `?` without converting. For example, if we have a `Result<T, E>` and we want to use `?` in a function returning `Option<T>`, we would need to convert that `Result<T, E>` into an `Option<T>` (perhaps by ignoring the error or converting error to `None`). Usually, though, we keep to one or the other in a given function.
 
 <!-- [23](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20error%20message%20also%20mentioned,line%20in%20the%20given%20text)  -->
 <!-- [26](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20last_char_of_first_line%28text%3A%20%26str%29%20,last%28%29) -->
 
-You can review `ex13.rs` but here is an additional sample code where the function returns an `Option<T>` to `main()`:
+You can review `ex13.rs` above where we converted `Option<char>` into `Result<char, String>` but here is an additional sample code where the function returns an `Option<T>` to `main()`:
 
 ```rust
 // ex15.rs
@@ -1478,13 +1486,13 @@ None: could not read _definitely_missing_.txt
 ```
 
 * `read_file_to_string_as_option()` read the whole file if possible, otherwise it returns `None`. 
-* We decided (don't ask me why) to "intentionally" ignore the error details by converting `Result<T, E>` to `Option<T>` via `.ok()`, so that `?` can be used in the function. Double check:
-    * `open()` returns `Result<File, io::Error>`. So we convert to `Option<File>` with `.ok()`, then `?` works with `Option`
+* We decided (don't ask me why) to "intentionally" ignore the error details by converting `Result<T, E>` to `Option<T>` with `.ok()`, so that the `?` operator can be used in the function. Double check:
+    * `open()` returns `Result<File, io::Error>`. We convert it to `Option<File>` with `.ok()`, then `?` works with `Option`
     * Same strategy with `read_to_string()` which returns `Result<usize, io::Error>`
 
 
 
-**Alice:** I don't get the point, we loose the reason the failure occurs!
+**Alice:** I don't get the point, we're losing sight of why the failure is happening!
 
 **Bob:** You are right. We may be asked to design an API acting that way (drop the error and return `None` on failure). It is a choice. Now, if it is really a concern we can add some **observability**. We keep the `Option<T>` API for the caller (so failures collapse to `None`), but we emit/log diagnostics so that the failures are not invisible. See below an example:
 
@@ -1540,7 +1548,7 @@ None: could not read _definitely_missing_.txt
 * With `existing` file, everything works smoothly. At the end, in `main()` we print the number of bytes in the file. Nothing is logged because there is no error.
 * With `missing`, `read_with_logging()` log a message then returns immediately. Note how `.map_err()` is used and how the calls `read_to_string().map_err().ok()` are daisy chained. 
 
-
+**Side Note:** Do not start grumbling... We will discuss `.map_err()` in detail in the Custom Error Types section, later. For now keep in mind that on error, `.map_err()` we log an explanation and propagate (not early return) the error (`e`) to `.ok()?`.
 
 
 
@@ -1555,13 +1563,23 @@ None: could not read _definitely_missing_.txt
 <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
 
 
-* **Semantic clarity:** Other developers will interpret `Option<T>` vs `Result<T, E>` in our APIs as a signal. `Option<T>` implies the caller should expect the nothing case and it’s not an exceptional error. `Result<T, E>` implies the caller should expect the possibility of an error condition that should be handled or propagated. Examples:
-* A lookup in a map (key might be missing) -> return `Option<Value>` (absence is normal if key not present)
+* **Semantic clarity:** Other developers will interpret `Option<T>` and `Result<T, E>` in our APIs as triggers. 
+    * `Option<T>` implies the caller should expect the nothing case and it’s not an exceptional error
+    * `Result<T, E>` implies the caller should expect the possibility of an error condition that should be handled or propagated. 
+
+Examples:
+* A lookup in a map (key might be missing) -> return `Option<T>` (absence is normal if key not present)
 * Parsing input (could fail due to external conditions or bad format) -> return `Result<T, E>` with an error explaining the failure
+
+* **Failure is not an option:** It's must be clear in your mind when choosing between `Option<T>` vs `Result<T, E>`
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Tid44iy6Rjs?si=eJfnsc8fjGXTqwhq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 <!-- [27](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=There%27s%20also%20a%20semantic%20difference,Result) -->
 
-* **`?` works with both:** We can propagate `None` early from a function returning `Option<T>` using `?` just like we propagate errors from `Result<T, E>` with `?`. Just ensure the function’s return type matches ( `Option<T>`   with `Option<T>`   , `Result<T, E>` with `Result`).
+* **`?` works with both:** We can propagate `None` early from a function returning `Option<T>` using `?` just like we can propagate errors from `Result<T, E>` with `?`. Just ensure the function’s return type matches (`Option<T>` with `Option<T>`, `Result<T, E>` with `Result<T, E>`).
 
 <!-- [23](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20error%20message%20also%20mentioned,line%20in%20the%20given%20text)  -->
 <!-- [26](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=fn%20last_char_of_first_line%28text%3A%20%26str%29%20,last%28%29) -->
@@ -1569,7 +1587,7 @@ None: could not read _definitely_missing_.txt
 
 
 ### Exercises – Option<T> vs `Result<T, E>`
-1. Can you find `Option<T>` in std documentation?
+1. Can you find `Option<T>` in the std lib documentation?
 
 1. **Design Decisions:** For each of the following scenarios, decide whether `Option<T>` or `Result<T, E>` is more appropriate as a return type and briefly explain why:
 * A function `find_user(username: &str) -> ???` that searches a database for a user and either returns a User object or indicates the user was not found.
@@ -1617,13 +1635,13 @@ None: could not read _definitely_missing_.txt
 
 ## To `panic!()` or Not to `panic!()`
 
-**Alice:** Alright, now I understand recoverable errors. But what about unrecoverable ones? When should I actually use `panic!()` intentionally?
+**Alice:** Alright... Now I understand recoverable errors. But what about unrecoverable ones? When should I actually use `panic!()` intentionally?
 
 **Bob:** Panicking is basically saying *this is a fatal problem, abort the mission!* We should use `panic!()` for situations where continuing the program could lead to incorrect results, security vulnerabilities, or when the error is totally unexpected and we don’t have a meaningful way to handle it.
 
 Think of it this way: 
 * If failure is something we *expect might happen* occasionally (like a file might not be found, user input might be bad, etc.), we should **not** panic — use `Result<T, E>` and handle it. 
-* If something happening indicates a bug in our code or an impossible situation (like *this array index should never be out of bounds, something is really wrong*), then panicking is acceptable.
+* If something happening indicates a bug in our code or an impossible situation (like *this array index should never be out of bounds, something is really wrong*), then jumping thru the window (panicking IOW) is acceptable.
 
 <!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
 
@@ -1631,13 +1649,13 @@ Think of it this way:
 
 
 
-**Alice:** So mostly in cases of logic errors or impossible states?
+**Alice:** So this happen mostly in cases of logic errors or impossible states. Right?
 
-**Bob:** Exactly. For instance, the standard library panics if we attempt out-of-bounds array access, because that’s a bug in our code (we miscalculated an index) and there’s no way to recover or proceed sensibly. The program is in a bad state, so it stops. Another example: if we have a function that absolutely requires a valid, non-null pointer (perhaps we constructed something unsafely), we might panic if it gets a null because that should never happen if our code is correct.
+**Bob:** Exactly. For instance, the standard library panics if we attempt out-of-bounds array access, because that’s a bug in **our code** (we miscalculated an index) and there’s no way to recover or proceed sensibly. The program is in a bad state, so it stops. Another example: if we have a function that absolutely requires a valid, non-null pointer (say, something we built using unsafe code), we might panic if it receives a null pointer. Indeed, that situation should never occur if **our code** is correct.
 
 <!-- [28](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=When%20your%20code%20performs%20an,it%E2%80%99s%20not%20a%20kind%20of) -->
 
-Panic is also often used to indicate *programmer errors* (violating function contracts). If we document that a function must be called with, say, a positive number, we might choose to panic if someone passes a negative, because the caller violated the API contract — this is not something we want to handle at runtime; it should be fixed in the code. [The Rust Book](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#guidelines-for-error-handling) discusses that: when a function’s contract is violated, a panic(with a clear message) is appropriate since it’s the caller’s bug, and we want them to notice and fix it.
+Panic is also often used to indicate *programmer errors* (violating function contracts). If we document that a function must be called with, say, a positive number, we might choose to panic if someone passes a negative, because the caller violated the API contract. This is not something we want to handle at runtime; it should be fixed in the code. [The Rust Book](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#guidelines-for-error-handling) discusses that: when a function’s contract is violated, a panic(with a clear message) is appropriate since it’s the **caller’s bug**, and we want them to notice and fix it.
 
 <!-- [29](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=This%20is%20the%20main%20reason,a%20violation%20will%20cause%20a) -->
 
@@ -1646,18 +1664,20 @@ Panic is also often used to indicate *programmer errors* (violating function con
 
 **Alice:** And in testing, panics are fine because a failed `assert!()` or `.unwrap()` will just fail the test, right?
 
-**Bob:** Yes, exactly.In tests, we often use panics (e.g., `assert!()` macros or `.unwrap()`) to immediately fail a test when an invariant isn’t met. That’s a valid use of panic. We *want* to stop if something unexpected happens in a test.
+**Bob:** Yes, exactly. In tests, we often use panics (e.g., `assert!()` macros or `.unwrap()`) to immediately fail a test when an invariant isn’t met. That’s a valid use of panic. We *want* to stop if something unexpected happens in a test.
 
-Also, small quick-and-dirty scripts might sprinkle `.unwrap()` for brevity if you’re OK with them crashing on error. But in a robust application or library, you’d use panic very sparingly.
+Also, small quick-and-dirty code snippets might sprinkle `.unwrap()` for brevity if you’re OK with them crashing on error. But in a robust application or library, you’d use panic very sparingly.
 
-There’s also the consideration of library vs binary (application) code. If you’re writing a library, we should almost never panic on a recoverable error. Indeed, that takes the decision away from the library user (the programmer using our library). Instead, return a `Result<T, E>` and let them decide. We only panic in a library if it’s a severe internal invariant violation or we literally can’t do anything (and ideally, document that it might panic in that case). In application (binary) code, we control the whole program, so we might choose to `panic!()` on certain errors if it simplifies things, but even then only when it’s truly unrecoverable or we are OK with the program terminating.
+There’s also the consideration of library vs binary (application) code. 
+* If you’re writing a library, we should almost never panic on a recoverable error. Indeed, that takes the decision away from the library user (the programmer using our library, the consumer). Instead, return a `Result<T, E>` and let them decide. We only panic in a library if it’s a severe internal invariant violation or we literally can’t do anything (and ideally, document that it might panic in that case). 
+* In application (binary) code, we control the whole program. We might choose to `panic!()` on certain errors if it simplifies things. Even then we should `panic!()` only when it’s truly unrecoverable or we are OK with the program terminating.
 
 
 
 
 **Alice:** What about using a lot of `.unwrap()` in my code? Is that considered bad?
 
-**Bob:** Frequent use of `.unwrap()` is usually a code smell (except in examples or tests). Each `.unwrap()` is a potential `panic!()` point. It’s fine if we are 100% sure it can’t fail (like we just checked a condition that guarantees it, or it’s in a context where a crash is acceptable). But if an `Err` is possible and we `.unwrap()`, we are basically ignoring the error and we will crash instead of handling it. Often it’s better to handle the error or to propagate it. If we find ourself writing many `unwrap`s, we should think about using `?` to propagate or handle errors more gracefully.
+**Bob:** Frequent use of `.unwrap()` is usually a code smell (except in code examples or tests). Each `.unwrap()` is a potential `panic!()` point. It’s fine if we are 100% sure it can’t fail (like we just checked a condition that guarantees it, or it’s in a context where a crash is acceptable). But if an error is possible and we `.unwrap()`, we are basically ignoring the error and we crash instead of handling it. Often it’s better to handle the error or to propagate it. If we find ourself writing many `.unwrap()`s, we should think about using `?` to propagate or handle errors more gracefully.
 
 
 
@@ -1665,7 +1685,7 @@ There’s also the consideration of library vs binary (application) code. If you
 
 
 To sum up:
-* Use `panic!()` (or `.unwrap()`, etc.) for **bugs** and **unexpected** **conditions**. Things that should never happen if our code is correct.
+* Use `panic!()` (or `.unwrap()`, etc.) for **bugs** and **unexpected** **conditions**. Things that should never happen if **our code** is correct.
 * Use `Result<T, E>` for errors that we *expect could happen* in normal usage (and thus might want to recover from).
 
 
@@ -1675,13 +1695,13 @@ To sum up:
 
 
 
-**Alice:** That’s clear. Rust even has a section title 'To panic! or Not to panic!' I think.
+**Alice:** That’s clear. The Rust Book even has a section title "To panic! or Not to panic!" I think.
 
 **Bob:** Yes, and the summary is pretty much what we discussed. One line [from it](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html): *"when failure is expected, it’s more appropriate to return a `Result<T, E>` than to make a `panic!()` call"*. Only `panic!()` when failure indicates a bug or something so bad that there’s no point in continuing.
 
 <!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
 
-One more tip: if we do `panic!()`, do it with a helpful message. For example, if a function shouldn’t get a negative number, do: 
+One more tip: if we do `panic!()`, let's do it with a helpful message. For example, if a function shouldn’t get a negative number, let's code: 
 
 ```rust
 panic!("Negative value provided: {}", value);
@@ -1689,7 +1709,7 @@ panic!("Negative value provided: {}", value);
 
 This beats a cryptic panic or (worse) a silent misbehavior. It makes debugging easier by clearly pointing out what went wrong.
 
-And of course, remember that panicking will unwind the stack by default, which cleans up but takes some overhead. In performance-critical or embedded scenarios, sometimes Rust programs are configured to abort immediately on panic (no unwind). Remember what we said earlier. If needed, in `Cargo.toml` add the following section:
+And of course, remember that panicking will unwind the stack by default, which cleans up but takes some overhead. In performance-critical or embedded scenarios, sometimes Rust programs are configured to abort immediately on panic!() (no unwind). Remember what we said earlier. If needed, in `Cargo.toml` add the following section:
 
 ```toml
 [profile.release]
@@ -1704,26 +1724,26 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 
 ### Summary – Using (or Avoiding) `panic!()`
 
-1. **Expected errors -> `Result<T, E>`, Unexpected errors -> `panic!()`:** If an error condition is something we can anticipate and might want to handle (file not found, invalid input, network timeout), **do not panic**. Use `Result<T, E>` and propagate or handle it. If something is truly unexpected or a bug (index out of bounds, violated invariant), a `panic!("msg")` with a clear message is appropriate to immediately stop the program.
+1. **Expected errors -> `Result<T, E>`, Unexpected errors -> `panic!()`:** If an error condition is something we can anticipate and might want to handle (file not found, invalid input, network timeout), **do not panic**. Use `Result<T, E>` and propagate or handle it. If something is truly unexpected or a bug in **our code** (index out of bounds, violated invariant), a `panic!("msg")` is appropriate to immediately stop the program.
 
 <!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
 
 
-1. **Library vs Application code:** 
+2. **Library vs Application code:** 
     * **Libraries** should prefer `Result<T, E>` for errors and avoid panicking, except for internal bugs, because panics in a library will crash the user’s application. 
-    * **Applications** (especially small ones or prototypes) might use panic in places where it’s acceptable for the program to crash (or during development to catch bugs).
+    * **Applications** (especially very small ones) might use `panic!()`, `.unwrap()`, `.expect()` in places where it’s acceptable for the program to crash (or during development to catch bugs). But even here I'm so no convinced. Indeed we should investigate bugs with a Debugger. For the rest, you will understand my point of view reading the section "Errors from Experimentation to Production". 
 
 <!-- [29](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=This%20is%20the%20main%20reason,a%20violation%20will%20cause%20a) -->
 
-1. **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `expect("config file missing, please create one")` is better than a blank panic. This helps debugging by indicating why the panic happened.
+3. **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `expect("config file missing, please create one")` is better than a blank panic. This helps debugging by indicating why the panic happened.
 
 <!-- [16](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=message%3A%20,)  -->
 
-1. **Minimize `.unwrap()` in code:** Every `.unwrap()` is a potential crash. We use it only when we're sure there's no error (or in test code). Prefer to handle or propagate errors instead. Replacing `.unwrap()` with `?` or proper error handling will make our code more robust.
+4. **Minimize `.unwrap()` in code:** Every `.unwrap()` is a potential crash. We use it only when we're sure there's no error (or in test code). Prefer to handle or propagate errors instead. Replacing `.unwrap()` with `?` or proper error handling will make our code more robust.
 
-1. **Examples of when to panic:**
-* Out-of-range indexing (bug in code) -> standard library panics (cannot recover safely).
-* Asserting a condition in code ( `assert!()` macro) -> panics if the condition is false, useful in tests or to validate internal invariants.
+5. **Examples of when to panic:**
+* Out-of-range indexing (bug in **our code**) -> standard library panics (cannot recover safely).
+* Asserting a condition in code (`assert!()` macro) -> panics if the condition is false, useful in tests or to validate internal invariants.
 * Contract violations -> e.g., our function got an invalid argument that should have been prevented by earlier checks. We panic to signal programmer error, after possibly using Rust’s type system to avoid such cases where possible.
 
 
@@ -1737,11 +1757,11 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 
 ### Exercises – Panic vs Result
 
-1. **Spot the Panic:** Take a piece of code (perhaps one of our previous exercise solutions) where we used `.unwrap()` or `.expect()`. Consider: what would happen if that line did encounter an error? Is it truly a scenario that should crash the program? Modify the code to handle the error with a `Result<T, E>` if appropriate. If you decide to keep the `.unwrap()`, justify why it is OK (for example, if it’s in a test or if logic guarantees the `Result<T, E>` is `Ok()`).
+1. **Spot the Panic:** Take a piece of code (perhaps one of our previous exercise solutions) where we used `.unwrap()` or `.expect()`. What would happen if that line did encounter an error? Is it truly a scenario that should crash the program? Modify the code to handle the error with a `Result<T, E>` if appropriate. If you decide to keep the `.unwrap()`, justify why it is OK (for example, if it’s in a test or if logic guarantees the `Result<T, E>` is `Ok()`).
 
 2. **Design a Robust Function:** Imagine you’re writing a library function `fn send_email(address: &str, body: &str) -> Result<(), SendError>`. 
 * Come up with two or three different reasons it might fail (e.g., invalid address format, network outage). 
-* For each, decide if it should return an error (`Result::Err`) or panic. Explain our reasoning. Hint: as a library function, it should likely return errors for anything that can go wrong due to external factors or bad input, rather than panicking – panics would be reserved for something like an invariant violation inside the library.
+* For each, decide if it should return an error (`Result::Err`) or panic. Explain your reasoning. Hint: as a library function, it should likely return errors for anything that can go wrong due to external factors or bad input, rather than panicking. Panics should be reserved for something like an invariant violation **inside** the library.
 
 3. **Deliberate Panic:** Write a small program that deliberately panics (for example, by indexing an array out of bounds or using `panic!()` directly with a message). Run it to see what the panic message and backtrace look like. Enable backtrace by running the program with `RUST_BACKTRACE=1` environment variable (under WIN11 you can use `$env:RUST_BACKTRACE=1; cargo run --example my_panic_code` in a terminal).
 
@@ -1784,7 +1804,7 @@ Defining a custom error type is common in libraries, so that the library returns
 
 **Alice:** How would a custom error look?
 
-**Bob:** Usually as an `enum`. For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from std or crates (IO errors and parse errors). We might create an `enum` like:
+**Bob:** Usually as an `enum`, you know, the Rust's jewel of the crown. For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from std or crates (IO errors and parse errors). We might create an `enum` type definition like this:
 
 
 ```rust
@@ -1817,10 +1837,19 @@ impl std::error::Error for ConfigError {}
 * `ConfigError` is an enum (a sum type). A value of this type is exactly one of its variants at a time. Here it has two possible variants:
     * `Io(...)` — a variant that carries one payload of type `std::io::Error`
     * `Parse(...)` — a variant that carries one payload of type `serde_json::Error`
-* It is **important** to keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
+* **Important**. Keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
     * Think about : `fn Io(e: std::io::Error) -> ConfigError{...}`
 
-* Then we implement the `Display` trait for the data type `ConfigError`. To make a long story short, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely. 
+* Then we implement the `Display` trait for the data type `ConfigError`. 
+    * This is mandatory. In VSCode, if we hover the word `Error` from `impl std::error::Error` we learn that to implement the `Error` trait for `ConfigError`, the later must implement `Debug` and `Display`. `Debug` is easy. It is implemented automatically thanks to the directive `#[derive(Debug)]`. Now, regarding `Display`, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely. 
+
+* Finally comes the empty implementation of `Error` for `ConfigError`. It is empty because the trait only have default methods which is the case here. In other words, the line officially registers our data type as a standard error, without any additional customization.
+
+
+
+**Side Note:** If you don't feel confident with traits you can read this [series of posts]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
+
+
 
 * Next, when we write the function `load_config()` we make sure it returns `Result<Config, ConfigError>`. See below :
 
@@ -1832,16 +1861,19 @@ fn load_config(path: &str) -> Result<Config, ConfigError> {
 }
 ```
 
-Now, stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current errors into `ConfigError` with the help of `.map_err()`. Here is how :
+Now, fasten your seat belt and stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current errors into `ConfigError` with the help of `.map_err()`. Here is how :
 
 * If it fails, `std::fs::read_to_string` returns a `Result<String, std::io::Error>`
     * `.map_err(ConfigError::Io)` is then executed
     * However, since you remember (you confirm, you remember) that each enum variant of `ConfigError` is also an initializer, when `.map_err(ConfigError::Io)` is executed, it calls the function `ConfigError::Io(e: std::io::Error) -> ConfigError` which construct and return a `ConfigError`
-    * At then end of the line the `?` operator bubbles up the `ConfigError` immediately
+    * The `ConfigError` (which have the trait `std::error::Error`) is presented in front of the `?` operator
+    * The `?` operator bubbles up the `ConfigError` immediately since in our case we said `std::fs::read_to_string` failed
 * The same mechanics is at work on the next line 
 
 
-* The caller of `load_config()` now only has to handle `ConfigError` and can match on whether it was `Io()` or `Parse()` if they want to distinguish. Below we show a part of the `load_or_init()` function to focus on how this works from the caller point of view :
+* The caller of `load_config()` only have to handle `ConfigError`. Below we show a part of the `load_or_init()` function. The idea is to focus on how this works from the caller point of view :
+
+<!-- It can `match` on whether it is `Io()` or `Parse()` if it wants to distinguish.  -->
 
 ```rust
 fn load_or_init(path: &str) -> Result<Config, ConfigError> {
@@ -1858,9 +1890,9 @@ fn load_or_init(path: &str) -> Result<Config, ConfigError> {
 
 * This is a `match` on the value returned by `load_config()`
 * If the pattern matches `Err(ConfigError::Parse(e))`, the `.json` in invalid
-* The function bubbles up the error to the caller (`main()` here)
+* The function bubbles up (`Err(...)`) the error to the caller (`main()` here)
 
-Let's have a look on `main()`
+Let's have a look at the `main()` function.
 
 ```rust
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -1874,8 +1906,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```
 
 * Note that `main()` returns `Result<(), Box<dyn std::error::Error>>`
-* This means we can use the `?` operator at the end of the lines
-* Even if the error data type from ``write()`` and `load_or_init()` are different. 
+* This is cool because now we can use the `?` operator in the body of the `main()` at the end of certain lines
+* Thanks to `Box<dyn std::error::Error>>`, it works even if the error data type from ``write()`` and `load_or_init()` are different. 
 
 
 Expected output of the `ex17.rs` with ``bad_config.json``: 
@@ -1898,7 +1930,7 @@ error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit 
 
 <!-- [8](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=There%20is%20a%20difference%20between,fail%20for%20many%20different%20reasons) -->
 
-Find below `ex17.rs` complete source code because I hate partial source code in blog posts that never works. 
+Find below `ex17.rs` complete source code because **I hate** partial source code in blog posts that usually never works. 
 * Feel free to copy/paste in Rust Playground
 * In VSCode, set a breakpoint and take the time to go through the code line by line (F10). 
 
@@ -2111,6 +2143,7 @@ mod math_utils {
             }
         }
     }
+
     impl std::error::Error for MathError {}
 
     // Functions that return Result<_, MathError>
@@ -2135,6 +2168,7 @@ fn run() -> Result<()> {
 
     let bad_ratio = divide(5.0, 0.0)?;
     println!("This won't print because of error above ({})", bad_ratio);
+    
     Ok(())
 }
 
@@ -2181,17 +2215,17 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
-### Summary – Custom Errors and Advanced Topics
+### Summary – Custom Errors
 
-* **Custom error types:** We can define our own error type (often an `enum`) to represent errors in our application or library. This allows we to consolidate different error sources (IO, parsing, etc.) into one type and make our functions return that. It improves API clarity — callers deal with one error type and can match on its variants.  
+* **Custom error types:** We can define our own error type (often an `enum` because our error can only have a value at a time) to represent errors in our application or library. This allows us to consolidate different error sources (IO, parsing, etc.) into one type and make our functions return that. It improves API clarity. Callers deal with one error type and can match on its variants.  
 
-* **Implementing Error trait:** By implementing `std::error::Error` (which usually means implementing `fmt::Display` and having `Debug`), our error type becomes interoperable with the standard ecosystem. It lets us use trait objects (`Box<dyn Error>`) if needed and makes our errors printable and convertible.  
+* **Implementing Error trait:** By implementing `std::error::Error` (which means implementing `fmt::Display` and having `#[derive(Debug)]`), our error type becomes interoperable with the standard ecosystem. It lets us use trait objects (`Box<dyn Error>`) if needed and makes our errors printable and convertible.  
 
-* **Converting errors:** Use pattern matching or helper methods like `.map_err()` or the `From` trait implementations to convert underlying errors into our custom error variants. The `?` operator will automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.  
+* **Converting errors:** We use pattern matching or helper methods like `.map_err()` or the `From` trait implementations to convert underlying errors into our custom error variants. The `?` operator automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.  
 
     * Suppose we have an error `enum` `ConfigError { Io(io::Error), Parse(ParseError) }`. If a function reading a config file encounters an `io::Error`, we can do `.map_err(ConfigError::Io)?` to turn it into our error type and return it. The same for parse errors. Now the function returns `Result<Config, ConfigError>`, and the caller only has to handle `ConfigError`.  
 
-* **Using `Box<dyn Error>`:** In application code, if we don’t want to define lots of error types, we can use `Box<dyn Error>` as a catch-all error type (since most errors in std implement `Error`). For example, `fn main() -> Result<(), Box<dyn std::error::Error>>` allows us to use `?` with any error that implements `Error` and just propagate it. This is convenient, but in library code you’d usually favor a concrete error type so that the API is self-documented.  
+* **Using `Box<dyn Error>`:** In application code, if we don’t want to define lots of error types, we can use `Box<dyn Error>` as a catch-all error type (since most errors in std lib implement `Error`). For example, `fn main() -> Result<(), Box<dyn std::error::Error>>` allows us to use `?` with any error that implements `Error` and just propagate it. This is convenient, but in library code you’d usually favor a concrete error type so that the API is self-documented.  
 
 <!-- * **Crates for error handling:** While not the focus here, be aware that community libraries like **`thiserror`** (for deriving Error implementations) and **`anyhow`** (for easy dynamic error handling with context) can significantly simplify error handling in larger projects. These build on the same principles we discussed.   -->
 
@@ -2240,9 +2274,9 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
-**Alice:** “You mentioned external crates like `anyhow` and `thiserror`. When should I reach for them?”
+**Alice:** You mentioned external crates like `anyhow` and `thiserror`. When should I reach for them?
 
-**Bob:** “Short version:  
+**Bob:** Short version:  
 - **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with context.
 - **`thiserror`** in **libraries** when we need ergonomic custom error types without writing all `impl` for `Display`, `Error`, and conversions.  
 
@@ -2251,7 +2285,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
-### anyhow - binaries (mnemonic: A, B, C...)
+### anyhow - binaries (mnemonic: A, B, C...**A**nyhow, **B**inaries)
 
 `anyhow` provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
 
@@ -2282,14 +2316,15 @@ Caused by:
     Le fichier spécifié est introuvable. (os error 2)
 ```
 
-Notice how adding `.context(...)` makes error messages much more actionable if something fails.
+* Notice how adding `.context(...)` makes error messages much more actionable if something fails.
+* Otherwise, the key point to understand the previous code is to realize that `Result` is a type alias for `Result<T, anyhow::Error>`.
 
 
 
 
 **Alice:** OK... But could you show me how we should modify one of the previous code, you know, the one where we were reading JSON config file.
 
-**Bob:** Yes, you're right. Let's work on an complete code to see the impact and benefices.
+**Bob:** Ah, yes, you're right. Let's rework `ex17.rs` to see the impact and benefices. Tadaa!:
 
 ```rust
 // ex21.rs
@@ -2365,25 +2400,32 @@ In VSCode, open `ex21.rs` and `ex17.rs` side by side and compare both contents. 
 <span>ex17.rs on lhs, ex21.rs on rhs</span>
 </div>
 
-`ex21.rs` is shorter but this is not the point. `ConfigError` and its implementations has disappear. And, again, notice how the `.context(...)` makes error messages much more actionable. This is exactly what we need in binaries. 
+* `ex21.rs` is shorter but this is not the point. `ConfigError` and its implementations has disappear. 
+* Pay attention to `.with_context()` in `load_or_init`. Similar to `.context()` and string literals, `.with_context()` takes a closure that returns a String. It is used here to dynamically `format!()` string with the value of a variable (`path`).
+* Also note how the `.context(...)` in `main()` makes error messages much more actionable. 
 
-Now, let's read the code :
+This is exactly what we need in binaries. Ok, let's read some code:
 
 * In the initial version `ex17.rs` we had `fn load_config(path: &str) -> Result<Config, ConfigError> {...}`
 * Now we have `fn load_or_init(path: &str) -> Result<Config> {...}` where `Result` is a type alias so that the signature should be understood as `fn load_config(path: &str) -> std::result::Result<Config, anyhow::Error>`
-* anyhow implement `From<E>` for all `E` that implement `std::error::Error + Send + Sync + 'static`
-* If any error happen during `read_to_string()` then the `?` Rust convert the error from `std::io::Error` to `anyhow::Error` (idem for `serde_json::Error` from `serde_json::from_str`) 
+* `anyhow` implement `From<E>` for all `E` that implement `std::error::Error + Send + Sync + 'static`
+* If any error happen during `read_to_string()` then the `?` operator converts the error from `std::io::Error` to `anyhow::Error` (idem for `serde_json::Error` from `serde_json::from_str`) 
+
+
+
 
 Now the tricky part is in `load_or_init()`:
-* Its signature should be read `fn load_or_init(path: &str) -> Result<Config, , anyhow::Error>`
-* On error, we must downcast the `anyhow::Error` and check if it is an `io::Error` if so check if it is an `ErrorKind::NotFound`...
-* This is not really fun, I agree. In fact I wanted to keep the logic of `load_or_init()` the same. Since it now receives  `Result<Config, , anyhow::Error>` and not a `Result<Config, ConfigError>` we have some work to do to retrieve the 3 kind of error (not found, access, invalid json).
+
+* Its signature should be read as `fn load_or_init(path: &str) -> Result<Config, , anyhow::Error>`
+* On error, we must downcast the `anyhow::Error` and check if it is an `io::Error`. If it is the case we check if it is an `ErrorKind::NotFound`...
+* This is not really fun, I agree. 
+* In fact I wanted to keep the logic of `load_or_init()` the same. Since it now receives  `Result<Config, , anyhow::Error>` and not a `Result<Config, ConfigError>` we have some work to do to retrieve the 3 kinds of error (not found, access, invalid json).
 * Concerning `main()` except the signature there is no change.
 
 
 
 
-In libraries, we should avoid `anyhow::Error` in our public API and prefer a concrete error type (possibly made with `thiserror`) so downstream users can `match` on variants. Let's talk about it now.
+For libraries, we should avoid `anyhow::Error` in our public API and prefer a concrete error type (possibly made with `thiserror`) so downstream users can `match` on variants. Let's talk about it now.
 
 
 
@@ -2392,7 +2434,7 @@ In libraries, we should avoid `anyhow::Error` in our public API and prefer a con
 
 ### thiserror - libraries
 
-`thiserror` is a derive macro crate. Instead of manually implementing `Display` and `Error` and writing `From` conversions, we can do something concise like:
+`thiserror` is a derive macro crate. Instead of manually implementing by hand `Display` and `Error` and writing `From` conversions (remember `Debug` comes with the directive #[derive(Debug)]), we can do something concise like:
 
 
 ```rust
@@ -2400,19 +2442,20 @@ use thiserror::Error;
 
 #[derive(Debug, Error)]
 pub enum ConfigError {
-    #[error(IO error: {0})]
+    #[error("IO error: {0}")]
     Io(#[from] std::io::Error),   // #[from] automatically implements From
-    #[error(JSON parse error: {0})]
+    
+    #[error("JSON parse error: {0}")]
     Json(#[from] serde_json::Error),
 }
 ```
 
-Now our `load_config` function can just use `?` and the `#[from]` will convert sub-errors automatically. This is excellent for libraries, where we want to expose a stable and descriptive error type to users.
+Now our `load_config` function can just use the `?` operator and the `#[from]` converts sub-errors automatically. This is excellent for libraries, where we want to expose a stable and descriptive error type to users.
 
 
-**Alice:** I really don't like code snippet. I like to see all the code. I remember `ex17.rs` was a standalone binary. Show me step by step how would you split it as a library serving a binary.
+**Alice:** I really don't like code snippet. I like to see all the code. I remember `ex17.rs` was a standalone binary. Could you show me, step by step, how you would split it as a library serving a binary.
 
-**Bob:** Great idea. It is a good opportunity to see code refactoring in practice. Since you want to see all code, I'll need some space but this should not be a problem here. 
+**Bob:** Great idea. It is a good opportunity to see code refactoring in practice. Since you want to see all the code, I'll need some space but this should not be a problem here. 
 
 First, let's review `ex17.rs`:
 
@@ -2496,7 +2539,9 @@ error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit 
 
 
 
-As you say, it is a standalone, all-included, kind of binary. So as a first step let's split it into a library and a binary. We can do this with a single file `ex22.rs` if we define a module inside the source code. If needed, review what we did in `ex19.rs` (the code with `log10()`, do you remember?). Here a a first version of the code:
+As you say, it is a standalone, all-included, kind of binary. So, as a first step, let's split it into a library and a binary. We can do this with a single file. In `ex22.rs` (see below) we just define a module inside the source code. If needed, review what we did in `ex19.rs` (the code with `log10()`, do you remember?). 
+
+Here is the code after the first step of refactorization:
 
 ```rust
 // ex22.rs
@@ -2588,7 +2633,12 @@ Now, concerning the refactoring we can observe:
 
 * Obviously we now have a `mod my_api` at the top of the code
 * Think about it as "a file in a file". This is not true but this can help. 
-* This explain why there are some `use ...` statements at the beginning of the module.
+* The `use my_api::load_or_init;` statement is a shortcut that helps to write `load_or_init("bad_config.json")` rather than `my_api::load_or_init("bad_config.json")`.
+
+
+**Side Note:** If you don't feel 100% confident with modules, crates, files... You can [read this post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) 
+
+
 <!-- * In `ex17.rs` we had a unique type alias
     ```rust
     type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
@@ -2599,52 +2649,12 @@ Now, concerning the refactoring we can observe:
     ``` -->
 * `ConfigError` is now public because it is part of `load_or_init()` which is public
 
-<!-- 
-* This is cool because the caller could match on `::Io` versus `::Parse` and react differently. See below a code fragment from `ex23.rs`. I know, you don't like that but the `my_api` module is the same, only the code of the client differs. Feel free to open and run `ex23.rs`. Anyway here is the code of a client demonstrating how to react differently on Io or Parse errors:
 
-```rust
-use my_api::{Config, ConfigError, load_config};
-use std::fs::write;
-use std::io::ErrorKind;
+In this first step of the refactoring the main idea was to split the code in 2: 
+* `my_api` module on one end 
+* and a consumer of the API on the other. 
 
-type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
-
-fn load_or_init(path: &str) -> Result<Config> {
-    match load_config(path) {
-        Ok(cfg) => Ok(cfg),
-
-        // I/O: file missing → create a default one and continue
-        Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
-            let default = Config { app_name: "Demo".into(), port: 8080 };
-            // Keep it simple: write a literal rather than serializing
-            write(path, r#"{ "app_name": "Demo", "port": 8080 }"#)?;
-            Ok(default)
-        }
-
-        // I/O: other I/O errors → report and bubble up
-        Err(ConfigError::Io(e)) => {
-            eprintln!("I/O error accessing {path}: {e}");
-            Err(e.into())
-        }
-
-        // Parse error: the file exists but JSON is invalid → give a helpful message
-        Err(ConfigError::Parse(e)) => {
-            eprintln!("Invalid JSON in {path}: {e}");
-            Err(e.into())
-        }
-    }
-}
-
-fn main() -> Result<()> {
-    let cfg = load_or_init("config.json")?;
-    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
-    Ok(())
-}
-``` -->
-
-In this first step of the refactoring the main idea was to split the code in 2: `my_api` module on one end and a consumer of the API on the other. Now we have a library crate in place, let's see how to leverage `thiserror` crate.
-
-So now, we refactor `ex22.rs` into `ex24.rs`. Here it is:
+Now that we have a library crate in place, let's see how to leverage `thiserror` crate. So now, we refactor `ex22.rs` into `ex24.rs`. Here it is:
 
 ```rust
 // ex24.rs
@@ -2715,8 +2725,8 @@ fn main() -> Result<()> {
 }
 ```
 
-* The code of the client (`main()`) of the API is the same.
-* Changes occurs in the API and the biggest one is in `ConfigError` declaration.
+* The code of the client (`main()`) remains unchanged.
+* Changes occurs in the API and the biggest one is in `ConfigError` `enum` definition.
 
 ```rust
     #[derive(Debug, Error)]
@@ -2728,9 +2738,10 @@ fn main() -> Result<()> {
         Parse(#[from] serde_json::Error),
     }
 ```
-* The attributes `#[error...` and `#[from...` make the macro generate concrete implementations at compile time, and then the `?` in `load_config()` uses those implementations via static conversions.
+* The directive `#[error...` and `#[from...` make the macro generates concrete implementations at compile time, and then the `?` in `load_config()` uses those implementations via static conversions.
 * This is why we no longer need the `impl fmt::Display for ConfigError{...}` nor the `impl Error for ConfigError {}`.  
-* `load_config()` can be simplified and the can be `map_err()` removed.
+* The signature of `load_config()` can be simplified 
+* Idem for the signature of `load_or_init()`. In addition the `map_err()` can be removed.
 
 At the end we have an API and a consumer. In the API, we delegate to `thiserror` the writing of the implementations. I hope your understand the refactoring process that bring us from `ex17.rs` to `ex24.rs` one step after the other. I hope you enjoyed to read complete code at each step.  
 
@@ -2791,7 +2802,7 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 * Gall’s law
     * A complex system that works is invariably found to have evolved from a simple system that worked.
     * A complex system designed from scratch never works and cannot be patched up to make it work. You have to start over with a working simple system.
-* Error management must be able to scale while we transition from Experimentation to Production
+* Errors management must be able to scale while we transition from Experimentation to Production
 * `?` for experimentation
 * Custom Error Type for production
 
@@ -2828,7 +2839,7 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-
+## Conclusion
 
 
 
