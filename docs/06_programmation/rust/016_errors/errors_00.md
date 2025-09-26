@@ -258,32 +258,49 @@ The default is `unwind`. With `abort` opted in:
 
 Let's make sure we can Debug the code.
 
-**Requirements:** I expect either the `CodeLLDB` extension or the `Build Tools for Visual Studio` to be installed. `CodeLLDB` might be faster and easier to install (it is "just" a VSCode extension). Both can be installed if you wish or need (this is my case). We will see how to use or the other.
+**Requirements:** 
+* I expect either 
+    1. `CodeLLDB` extension (`code --install-extension vadimcn.vscode-lldb`)
+    2. **or** the `Build Tools for Visual Studio` to be installed. 
 
-I use VSCode under Windows 11 and I already wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). I don't know yet if I will need more than one project accompanying this post. However, I already know the first project does'nt have `main.rs` file. Instead there are multiple short sample code in the `examples/` directory. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code. 
+`CodeLLDB` might be faster and easier to install (after all, it is "just" a VSCode extension). Both can be installed on your PC if you wish or need (this is my case). We will see how to use one or the other. We need them to debug our code.
+
+* I also expect the `command-variable` extension to be installed. We need it also to debug our code.
+    * `code --install-extension rioj7.command-variable`
+
+This said, I use VSCode under Windows 11 and I already wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). 
+
+<!-- I don't know yet if I will need more than one project accompanying this post. However, I already know the first project does'nt have `main.rs` file. Instead there are multiple short sample code in the `examples/` directory. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code.  -->
+
+I use a Rust workspace because I can have more than a Rust project in a single space. 
 
 Now, having this in mind here is what I do and why.
 
-* Get a copy of the project from [GitHub](https://github.com/40tude/err_for_blog_post)
-* The project contains multiple projects
-    * Right click on `u_are_errors` directory name
-    * Select `Open with Code`
-* Once in VSCode, select and open `/examples/ex00.rs` in the VSCode editor
+* Get a copy of the repo from [GitHub](https://github.com/40tude/err_for_blog_post)
+* Right click  the directory name then select `Open with Code`
+* Once in VSCode, click on `00_u_are_errors/examples/ex00.rs` in the VSCode editor
 
 At the time of writing here is what I see :
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Click the image to zoom in</span>
-
+<span>Click on the image to zoom in</span>
 </div>
 
-* Just for testing purpose, delete the `target/` directory if it exists (at this point it should'nt exist yet)
+* Just for testing purpose, delete the `target/` directory if it exists (at this point it should'nt exist yet since you just got the workspace from GitHub)
 
 * Press `CTRL+SHIFT+B`. This should build a debug version of the code
     * Check `target/debug/examples/`. It should contains `ex00.exe`
+    * If `CTRL+SHIFT+B` does not work, open a terminal (CTRL+ù on a French keyboard) and use this command : `cargo build -p u_are_errors --example ex00`
+    * You need `-p u_are_errors` because in a workspace we need to indicate the name of the package (which you find in `Cargo.toml`)
+
+
+
+
+**If and only if** `(LLDB || Build Tools for Visual Studio) && command-variable` are installed 
+
 * Set the cursor on line 5 then press `F9` 
-    * This set a breakpoint on line 5. See below:
+* This set a breakpoint on line 5. See below:
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
@@ -291,7 +308,7 @@ At the time of writing here is what I see :
 
 
 * Open de `Run & Debug` tab on the side (`CTRL+SHIFT+D`)
-* In the list box, select the option corresponding to our configuration (LLDB or MSVC). See below:
+* In the list box, select the option corresponding to your configuration (LLDB or MSVC). See below:
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="450" loading="lazy"/>
@@ -329,49 +346,67 @@ Let's make a last test. Just to make sure...
 
 **The making of:**
 
+In a first reading you can bypass this section and come back later if you really need to understand how the build and debug tasks work.
+
 The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
 **1. `.vscode/tasks.json`:**
 ```json
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "cargo-build-debug",
-            "type": "cargo",
-            "command": "build",
-            "args": [
-                "--example",
-                "${fileBasenameNoExtension}",
-            ],
-            "problemMatcher": [
-                "$rustc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "label": "cargo-build-release",
-            "type": "cargo",
-            "command": "build",
-            "args": [
-                "--release",
-                "--example",
-                "${fileBasenameNoExtension}",
-
-            ],
-            "problemMatcher": [
-                "$rustc"
-            ]
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "cargo-build-debug",
+      "type": "cargo",
+      "command": "build",
+      "args": [
+        "-p",
+        "${input:packageName}",
+        "--example",
+        "${fileBasenameNoExtension}"
+      ],
+      "problemMatcher": ["$rustc"],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "cargo-build-release",
+      "type": "cargo",
+      "command": "build",
+      "args": [
+        "--release",
+        "-p",
+        "${input:packageName}",
+        "--example",
+        "${fileBasenameNoExtension}"
+      ],
+      "problemMatcher": ["$rustc"]
+    },
+  ],
+  "inputs": [
+    {
+      "id": "packageName",
+      "type": "command",
+      "command": "extension.commandvariable.transform",
+      "args": {
+        "text": "${relativeFileDirname}",
+        "find": "^(.{3})([^\\\\/]+)(?:[\\\\/].*)?$",
+        "replace": "$2"
+      }
+    }
+  ]
 }
 ```
 * In the first object of the array `tasks`, the key named `group` helps to make the task the one by default. This explains how and why `CTRL+SHIFT+B` worked. 
-* Note that since the source code to compile is in the `examples/` directory, we pass `--example` and the name of the file (e.g. `ex00`) in the `args` array.
-* To see the list of `tasks`, in VSCode, press `ALT+T` then press `R`
+* Note that since the source code to compile is in the `examples/` directory, we pass `--example` and the name of the file (see `${fileBasenameNoExtension}`, e.g. `ex00`) in the `args` array.
+* Since we are in a workspace we need `-p` followed by the name of the package (`input:packageName`)
+* If you get lost, just review the build command you enter in the terminal before. What we do here is exactly the same : `cargo build -p u_are_errors --example ex00`. Except that we want to discover the name of the package dynamically. Indeed not all the source code are in the `u_are_errors` package. You may have seen the 2 other projects: `01_experimentation` and `02_production` for example.
+* Finding out the name of the package is done in the `inputs` array and this is how the `command-variable` extension shine. Indeed we create a variable `packageName` which is initialized with the output of a command which is a regular expression applied to the `${relativeFileDirname}` of the source code opened in the editor.
+* Then the `${input:packageName}` variable can be used in the build tasks.     
+
+
+
+
+To see the list of `tasks`, in VSCode, press `ALT+T` then press `R`
     * Below we can see both tasks : `cargo-build-debug` and `cargo-build-release`
 
 <div align="center">
@@ -427,6 +462,7 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
     ]
 }
 ```
+
 * The path in the `program` key, points to the executable created at the end of the build (do you see `${fileBasenameNoExtension}`?)
 * Note the `preLaunchTask` key. This explains why we can press F5 (debug) even if the executable is not yet built. In such case, the task `cargo-build-debug` is executed then the debug session starts.
 
@@ -493,7 +529,7 @@ ex02.exe (30708): Loaded 'C:\Windows\System32\msvcrt.dll'.
 The program '[30708] ex02.exe' has exited with code 0 (0x0).
 ```
 
-In fact, with my setup, if I press `CTRL+ALT` I can reveal the datatype.
+In fact, with [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}), if I press `CTRL+ALT` I can reveal the datatype.
 
 <div align="center">
 <img src="./assets/img11.webp" alt="" width="450" loading="lazy"/><br/>
