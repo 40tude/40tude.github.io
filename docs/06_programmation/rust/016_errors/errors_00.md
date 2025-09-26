@@ -79,6 +79,7 @@ use std::fs::File;
 use std::io::Read;
 
 pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
     let f = File::open("foo.txt")?;
@@ -346,7 +347,7 @@ Let's make a last test. Just to make sure...
 
 **The making of:**
 
-In a first reading you can bypass this section and come back later if you really need to understand how the build and debug tasks work.
+When reading for the first time, you can skip this section and come back to it later if you really need to understand how compilation and debugging tasks work.
 
 The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
@@ -1191,7 +1192,7 @@ It does exactly the same thing but thanks to type aliases, we lighten the signat
 
 **Alice:** So `?` can be used in any function that returns a `Result<T, E>` or `Option<T>` right?
 
-**Bob:** Correct. The rule is: we can use `?` in a function if the return type of that function can absorb the error. Typically, that means if our function returns a `Result<..., E>`. We can use `?` on another `Result<..., E2>` as long as `E2` can convert into `E`. Usually they’re the same `E` or there’s an implementation of the `From` trait to convert one error into the other. Rust does this conversion automatically in many cases. 
+**Bob:** Correct. The rule is: we can use `?` in a function if the return type of that function can absorb the error. Typically, that means if our function returns a `Result<T, E>`. We can use `?` on another `Result<T, E2>` as long as `E2` can convert into `E`. Usually they’re the same `E` or there’s an implementation of the `From` trait to convert one error into the other. Rust does this conversion automatically in many cases. 
 
 For example, below, the `main()` returns a `Result<T, Box<dyn Error>>`, but calls `parse::<i32>()`, which returns a `ParseIntError`. Rust performs the conversion automatically using `From<ParseIntError>` for `Box<dyn Error>`.
 
