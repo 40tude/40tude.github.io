@@ -64,7 +64,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
     * Use **`Result<T, E>`** when an operation can fail in an exceptional way and we need to convey an error message or reason [5](https://users.rust-lang.org/t/option-vs-results/113549). 
     <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
 
-* **When to panic:** Reserve **`panic!()`** for truly unrecoverable bugs or invalid states (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%})). If failure is expected or possible in normal operation (e.g. file not found, invalid user input...), return a `Result<T, E>` instead. Library code should avoid panicking on recoverable errors to let the caller decide how to handle them.
+* **When to panic:** Reserve **`panic!()`** for truly unrecoverable bugs or invalid states (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)). If failure is expected or possible in normal operation (e.g. file not found, invalid user input...), return a `Result<T, E>` instead. Library code should avoid panicking on recoverable errors to let the caller decide how to handle them.
 
 <!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
 
@@ -273,7 +273,7 @@ This said, I use VSCode under Windows 11 and I already wrote a post about [my se
 
 <!-- I don't know yet if I will need more than one project accompanying this post. However, I already know the first project does'nt have `main.rs` file. Instead there are multiple short sample code in the `examples/` directory. This is fine but I want to make sure we can quickly modify, build, debug and go step by step in the source code.  -->
 
-I use a Rust workspace because I can have more than a Rust project in a single space. 
+I use a [Wworkspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) because I can have more than a Project in a single space. Think of Workspaces as Meta-Project. 
 
 Now, having this in mind here is what I do and why.
 
@@ -400,8 +400,10 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 * In the first object of the array `tasks`, the key named `group` helps to make the task the one by default. This explains how and why `CTRL+SHIFT+B` worked. 
 * Note that since the source code to compile is in the `examples/` directory, we pass `--example` and the name of the file (see `${fileBasenameNoExtension}`, e.g. `ex00`) in the `args` array.
 * Since we are in a workspace we need `-p` followed by the name of the package (`input:packageName`)
-* If you get lost, just review the build command you enter in the terminal before. What we do here is exactly the same : `cargo build -p u_are_errors --example ex00`. Except that we want to discover the name of the package dynamically. Indeed not all the source code are in the `u_are_errors` package. You may have seen the 2 other projects: `01_experimentation` and `02_production` for example.
-* Finding out the name of the package is done in the `inputs` array and this is how the `command-variable` extension shine. Indeed we create a variable `packageName` which is initialized with the output of a command which is a regular expression applied to the `${relativeFileDirname}` of the source code opened in the editor.
+* If you get lost, just review the build command you enter in the terminal before. What we do here is exactly the same thing : `cargo build -p u_are_errors --example ex00`. Except that we want to discover the name of the package dynamically. Indeed not all the source code are in the `u_are_errors` package. You may have seen the 2 other projects: `01_experimentation` and `02_production` for example. 
+    * In `01_experimentation/`, in `Cargo.toml` the name of the package in `experimentation` for example
+* Finding out the name of the package is done in the `inputs` array and this is where the `command-variable` extension shines. Indeed we create a variable `packageName` which is initialized with the output of a command which is a regular expression applied to the `${relativeFileDirname}` of the source code opened in the editor.
+    * To make a long story short from `01_experimentation/examples/` it extract `experimentation`
 * Then the `${input:packageName}` variable can be used in the build tasks.     
 
 
@@ -480,11 +482,11 @@ Let's take some time and see how one could answer the second exercice. If I sear
 <!-- <span>Optional comment</span> -->
 </div>
 
-This is great because on line 11 it uses `std::fs::File::open()` but it is a little bit too complex for me and it seems it handles errors while I want the compiler to complains then fix the errors.
+This is great because on line 11 it uses `std::fs::File::open()` but it is a little bit too complex for me and it seems it handles errors while I want the compiler to complain then fix the errors.
 
 
 
-Copy/paste/save the file as `ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run --example ex01`. Here is what I see in the Debug Console once I pressed F5 :
+Copy/paste/save the file as `ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run -p u_are_errors --example ex01`. Here is what I see in the Debug Console once I pressed F5 :
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
@@ -581,7 +583,7 @@ Copy/paste/save the file as `ex04.rs`. Let's find a solution. Modify the previou
 use std::fs::File; 
 
 fn main() {
-    let result_file = File::open("foo.txt");
+    let result_file = File::open("00_u_are_errors/foo.txt");
 
     match result_file {
         Ok(file) => println!("Successfully opened file: {:?}", file),
@@ -590,12 +592,13 @@ fn main() {
 }
 ```
 
-* `result_file` is a `Result<T, E>`. It is NOT a `File`
-* `match` is an expression. It is NOT a statement
+* `result_file` is a `Result<T, E>`. It is **NOT** a `File`. **It took me a while** to read it and understand it that way.
+* `match` is an expression. It is NOT a statement. This one is easy because almost everything is an expression in Rust.
     * If the difference between expression and statement is not crystal clear read this [page]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) 
 * The `match` expression forces us to handle all possible cases
 * Set a break point on the line with `match` expression (F9)
 * Press F5 and step forward with F10 
+* The code starts from the directory at the root of the workspace. This explains why I need to specify `00_u_are_errors/foo.txt` to test the `OK()` arm (with `foo.txt` in `../workspace_directory/00_u_are_errors/foo.txt`) 
 
 
 
@@ -608,11 +611,11 @@ Copy/paste/save the file as `ex05.rs`. Let's take advantage of the fact that `ma
 
 ```rust
 // ex05.rs
-use std::fs::File; // shortcut
+use std::fs::File; 
 use std::io::Read;
 
 fn main() {
-    let result_file = File::open("foo.txt");
+    let result_file = File::open("00_u_are_errors/foo.txt");
     let mut bob = match result_file {
         Ok(alice) => alice,
         Err(why) => panic!("Panic! opening the file: {:?}", why),
@@ -644,7 +647,7 @@ let mut file = match File::open(&path) {
 
 * The outer `let mut file = …;` declares a new variable `file` in the current scope.
 * Inside the `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok()` variant.
-* That inner `file` shadows the outer one just for the right-hand side of the assignment.
+* That inner `file` variable is [shadowing](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html?highlight=shadowing#shadowing) the outer one just for the right-hand side of the assignment.
 * Once the match expression finishes evaluating, the *inner* `file` is moved out of the `Ok(file)` pattern and becomes the value assigned to the *outer* `file`.
 * This is a case of variable shadowing.
 * The `file` in the match pattern and the `file` bound by the `let` are two distinct variables with the same name, in different scopes.
@@ -658,7 +661,7 @@ This said, let's go back to the source code :
 * Since `match` is an expression, it evaluates to a value, and with the first `match` we assign that value to `bob`.
 * It is important to understand that `match` **destructures** the `Result<T, E>`. So that the body of the `match` can be read as:
     * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
-    * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`) which never resolve to any value at all. So this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "Don't press the red button on the joystick, abort! abort! abort!"
+    * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`) which never resolve to any value at all. So this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "[Don't press the little button on the joystick](https://www.youtube.com/watch?v=yG0vY5lT9yE), abort! abort! abort!"
 
 
 
@@ -675,7 +678,7 @@ Run the code (F5) to see it in `panic!()`
 <!-- <span>Optional comment</span> -->
 </div>
 
-Now rename the file `foo.txt.bak` at the root of the project to `foo.txt` and run the code (F5)
+Now rename the file `foo.txt.bak` at the root of the project (`00_u_are_errors/`) to `foo.txt` and run the code (F5)
 
 <div align="center">
 <img src="./assets/img15.webp" alt="" width="450" loading="lazy"/><br/>
@@ -728,9 +731,9 @@ Now rename the file `foo.txt.bak` at the root of the project to `foo.txt` and ru
 </div>
 
 6. Click on **Read**
-1. At the top you see the function signature: `fn read_to_string(&mut self, buf: &mut String) -> Result<usize> { ... }`
-1. At the very end click on `Result<usize>`
-1. The page Type Alias Result page explains what is going on : `pub type Result<T> = Result<T, Error>;`
+7. At the top you see the function signature: `fn read_to_string(&mut self, buf: &mut String) -> Result<usize> { ... }`
+8. At the very end click on `Result<usize>`
+9. The page Type Alias Result page explains what is going on : `pub type Result<T> = Result<T, Error>;`
 
 
 I know what you think. But we need to invest time in learning how to navigate and read the documentation. For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in Rust by Example then search for the function signature in the std documentation... Read and navigate the documentation no one can do it for you.
@@ -804,7 +807,8 @@ For example, when we try to open a file, the success type `T` is a file handle (
 
 **Alice:** How do I use it? Let’s say I call a function that returns a `Result`. What do I do with that?
 
-**Bob:** We have to check which variant it is. Typically, we use a `match` expression or one of many helper methods. Let’s do a simple example. Suppose we try to parse an integer from a string – this can fail if the string isn’t a number.
+**Bob:** We have to check which variant it is. Typically, we use a `match` expression or one of many helper methods. Let’s do a simple example. Suppose we try to parse an integer from a string – this can fail if the string isn’t a number. Copy/paste/try this code in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024):
+
 
 ```rust
 fn main() {
@@ -833,8 +837,8 @@ This way we’ve handled both outcomes explicitly. Using `match` is the standard
 
 **Bob:** True and this is why Rust provides utility methods on `Result<T, E>` to make life easier. For example, if we just want to crash on error (perhaps in a quick prototype), we can use `.unwrap()` or `.expect(...)`. These will check the `Result<T, E>` for us: 
 
-* `.unwrap()` returns the success value if it’s `Ok`, but if it’s an `Err`, it will `panic!()` right there. 
-* `.expect(msg)` does the same but lets us provide a custom panic error message.
+* [`.unwrap()`](https://doc.rust-lang.org/std/result/enum.Result.html#method.unwrap) returns the success value if it’s `Ok`, but if it’s an `Err`, it will `panic!()` right there. 
+* [`.expect(msg)`](https://doc.rust-lang.org/std/result/enum.Result.html#method.expect) does the same but lets us provide a custom panic error message.
 
 <!-- [12](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=on%20it%20to%20do%20various%2C,in%20action) -->
 <!-- [14](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=Similarly%2C%20the%20,looks%20like%20this) -->
@@ -843,7 +847,7 @@ This way we’ve handled both outcomes explicitly. Using `match` is the standard
 
 **Alice:** So `.unwrap()` is basically a shortcut for "give me the value or panic"? 
 
-**Bob:** Exactly. For example:
+**Bob:** Exactly. For example copy/paste/try this code in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024):
 
 ```rust
 fn main() {
@@ -869,7 +873,7 @@ By contrast, `if text = "42"`, `.unwrap()` would succeed and give us the `i32` v
 let number = text.parse::<i32>().expect("Expected a number in the string");
 ```
 
-If it fails, we would get a `panic!()` with our message: `'Expected a number in the string: ParseIntError { ... }'`. Using `.expect()` with a clear message is considered better style in production code compared to `.unwrap()`, because if a panic happens, the message helps us track down the source and reason.
+If it fails, we would get a `panic!()` with our message: `'Expected a number in the string: ParseIntError { ... }'`. Using `.expect()` with a clear message is considered better style code compared to `.unwrap()`, because if a panic happens, the message helps us track down the source and reason.
 
 <!-- [16](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=message%3A%20,) -->
 
@@ -884,8 +888,8 @@ In fact, developers should prefer `.expect()` over `.unwrap()` so that there's m
 **Bob:** Yes, that’s a good rule of thumb. Even better, where possible, handle the error gracefully instead of panicking. `.unwrap()`/`.expect()` should be used sparingly – basically in scenarios where we are very sure `Err` won’t happen or in code snippet, sample code for brevity.
 
 One more thing: `Result<T, E>` has other handy methods:
-* `.unwrap_or_default()` will `.unwrap()` the value or give a default if it's an error (no panic). 
-* `.unwrap_or_else(f)` where we can run a closure to generate a fallback value or do some other handling for the error. 
+* [`.unwrap_or_default()`](https://doc.rust-lang.org/std/result/enum.Result.html#method.unwrap_or_default) will `.unwrap()` the value or give a default if it's an error (no panic). 
+* [`.unwrap_or_else(f)`](https://doc.rust-lang.org/std/result/enum.Result.html#method.unwrap_or_else) where we can run a [closure](https://doc.rust-lang.org/book/ch13-01-closures.html) to generate a fallback value or do some other handling for the error. 
 
 
 To show how to use `.unwrap_or_default()`, here below is a code you can copy/paste in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). Note that the default is the default of the current data type (0 for `i32`, "" for a `String`...)
@@ -914,6 +918,7 @@ fn main() {
 The code below shows how to use `.unwrap_or_else(f)`. The tricky part might be the source code layout
 
 ```rust
+// ex06.rs
 fn main() {
     let some_number: Option<i32> = Some(42);
     let none_number: Option<i32> = None;
@@ -951,7 +956,7 @@ With this code it might be a good idea to open `ex06.rs` in the project, set a b
 
 **Alice:** Earlier, we mentioned opening files... Is that similar with `Result<T, E>` ?
 
-**Bob:** Yes. Opening a file is a classic example of a function returning `Result`. Let’s briefly look at that:
+**Bob:** Yes. Opening a file is a classic example of a function returning `Result`. Let’s look the code below in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024):
 
 ```rust
 use std::fs::File;
@@ -1003,7 +1008,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 * **Handle with `match` or methods:** 
     * `match`
         * Using `match` on a `Result<T, E>` forces explicit handling of success and error. 
-        * `match` **destructures** the `Result<T, E>`
+        * `match` **[destructures](https://doc.rust-lang.org/book/ch19-03-pattern-syntax.html?highlight=destructure#destructuring-to-break-apart-values)** the `Result<T, E>`
         * Inside an `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok()` variant of the enum `Result<T, E>`.
     * Methods
         * Use `.unwrap()`/`.expect()` to get the value or `panic!()` on error.
@@ -1059,7 +1064,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 
 
-**Alice:** I think I already saw ? here and there in some Rust code. How does it work?
+**Alice:** I think I already saw `?` here and there in some Rust code. How does it work?
 
 **Bob:** The `?` operator is essentially a shortcut for the kind of match-and-return-on-Err logic we’ve been writing. When we append `?` to a `Result<T, E>` (or an `Option<T>`), it will check the result: 
 * If it’s Ok , it *unwraps* the value inside and lets our code continue
@@ -1074,6 +1079,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 
 **Alice:** So it returns early on error? Nice, that’s like exceptions but checked at compile time.
+
 **Bob:** Right,it’s analogous to exception propagation but explicitly done via return values. Let’s refactor a previous example using `?`. We’ll write a function to read a username from a file. Without `?`, it would look like a lot of nested `match`, while with `?` it becomes straightforward:
 
 
@@ -1101,7 +1107,7 @@ fn main() {
 * Open `ex07.rs`
 * Set breakpointq on lines 7 and 15 
 * Run the code (F5) 
-* There is a file named `username.txt.bak` at the root of the project. 
+* There is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`). 
     * Rename it `username.txt`. Empty it...
 
 
@@ -1113,7 +1119,7 @@ fn main() {
 
 **Bob:** First thing first. Do you see the return type in the signature of `read_username_from_file()`. This is obvious but yes, you can return `Result<T, E>` from your onw function.
 
-Now, do you see those `?` after `File::open` and `read_to_string`? If either operation fails, the function `read_username_from_file()` will immediately return a `Err(io::Error)` back to the caller, so the error is propagated upward. If they succeed, the code continues, and at the end we return `Ok(username)` normally. 
+Now, do you see those `?` after `File::open` and `read_to_string`? If either operation fails, the function `read_username_from_file()` returns a `Err(io::Error)` back to the caller, so the error is propagated upward. If they succeed, the code continues, and at the end we return `Ok(username)` normally. 
 
 <!-- [18](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=The%20,propagated%20to%20the%20calling%20code)  -->
 <!-- [19](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=In%20the%20context%20of%20Listing,call).  -->
@@ -1245,13 +1251,12 @@ fn first_char_upper(s: &str) -> Option<f64> {
 }
 ```
 
-It compiles without any problems because the `?` always outputs a char but the compiler doesn't care that our function returns an `Option<f64>`. It just checks that the `?` “absorbs” the `Option<char>` by returning `None` when necessary. Then it's up to us to transform the char into whatever we need want (in this case, an `f64`).
+It compiles without any problems because the `?` always outputs a char but the compiler doesn't care that our function returns an `Option<f64>`. It just checks that the `?` “absorbs” the `Option<char>` by returning `None` when necessary. Then it's up to us to transform the char into whatever we want (in this case, an `f64`).
 
 
 One thing to remember: **we can’t mix** return types with `?`. For example, if our function returns a `Result`, we can’t directly use `?` on an `Option<T>` without converting it (and vice versa). For example the code below does not compile : 
 
 ```rust
-
 // ex12.rs
 // ! DOES NOT COMPILE
 
@@ -1286,12 +1291,10 @@ error[E0277]: the `?` operator can only be used on `Option`s, not `Result`s, in 
 
 
 
-There are helper methods like `.ok_or()` to turn an `Option<T>` into a `Result<T, E>` if needed. See below :
+There are helper methods like [`.ok_or()`](https://doc.rust-lang.org/std/option/enum.Option.html#method.ok_or) to turn an `Option<T>` into a `Result<T, E>` if needed. See below :
 
 ```rust
 // ex13.rs
-// CTRL+SHIFT+B to build | F5 to build and Debug | cargo run --example ex13
-
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn get_first_char(s: &str) -> Result<char> {
@@ -1402,7 +1405,7 @@ fn main() -> Result<()> {
 
 
 
-**Alice:** OK... I think I get `Result<T, E>`. But what about `Option<T>`? I’ve seen that too. Is `Option<T>` also for error handling?
+**Alice:** OK... I think I get `Result<T, E>`. But what about [`Option<T>`](https://doc.rust-lang.org/std/option/enum.Option.html)? I’ve seen that too. Is `Option<T>` also for error handling?
 
 **Bob:** [`Option<T>`](https://doc.rust-lang.org/std/option/enum.Option.html) is a sibling to `Result<T, E>` in a way. It’s an `enum` that can be `Some(T)` or `None`. It doesn’t carry an error value like `Result<T, E>` does. `None` just means **absence of a value**. We usually use `Option<T>` when an outcome isn’t an error, but just "no value found" or "not applicable". For example, a function that searches for a substring in a string might return an `Option<usize>` – `Some(index)` if found, or `None` if not found. Not finding the substring isn’t really an "error", it’s an expected possibility.
 
@@ -1412,7 +1415,7 @@ fn main() -> Result<()> {
 * `Result<T, E>` provides the reason for the error (`E`)
 * `Option<T>` gives us nothing on failure
 
-**Bob:** Exactly. If we need to know **why** something went wrong, we must use `Result<T, E>` because `Option::None` carries no data. If we call a function and get a `None`, we only know that there was no result, not why. With `Result::Err`, we usually get an error type or message explaining the issue.
+**Bob:** In the case on `Option<T>` I would not say "on failure" because "we don't know". Again, if we need to know **why** something went wrong, we must use `Result<T, E>` because `Option::None` carries no data. If we call a function and get a `None`, we only know that there was no result, not why. With `Result::Err`, we usually get an error type or message explaining the issue.
 
 <!-- [5](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=paramagnetic%20%20June%2027%2C%202024%2C,11%3A41am%20%204)  -->
 <!-- [6](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=For%20example%2C%20an%20arbitrary%20error,function%20where%20the%20error%20occurred) -->
@@ -1421,7 +1424,7 @@ Also, there’s a **semantic difference**. Other developers reading our code wil
 
 <!-- [27](https://users.rust-lang.org/t/option-vs-results/113549#:~:text=There%27s%20also%20a%20semantic%20difference,Result) -->
 
-Sometimes we even see combinations, like `Result<Option<T>, E>` (which means the operation itself could error, *or* succeed with an optional `Result<T, E>` – e.g., a search that could fail due to I/O error or succeed but find nothing). But that’s an advanced usage.
+Sometimes we even see combinations, like `Result<Option<T>, E>`. This means the operation itself can fail with an error `E`, or it can succeed and return either `Some(T)` (a value was found) or `None` (no value was found). But that’s an advanced usage.
 
 
 
@@ -1535,8 +1538,6 @@ None: could not read _definitely_missing_.txt
 
 ```rust
 // ex16.rs
-// CTRL+SHIFT+B to build | F5 to build and Debug | cargo run --example ex16
-
 use std::fs::File;
 use std::io::Read;
 
@@ -1583,7 +1584,7 @@ None: could not read _definitely_missing_.txt
 ```
 
 * With `existing` file, everything works smoothly. At the end, in `main()` we print the number of bytes in the file. Nothing is logged because there is no error.
-* With `missing`, `read_with_logging()` log a message then returns immediately. Note how `.map_err()` is used and how the calls `read_to_string().map_err().ok()` are daisy chained. 
+* With `missing`, `read_with_logging()` log a message then returns immediately. Note how [`.map_err()`](https://doc.rust-lang.org/std/result/enum.Result.html#method.map_err) is used on a `Result<T, E>` and how the calls `read_to_string().map_err().ok()` are daisy chained. 
 
 **Side Note:** Do not start grumbling... We will discuss `.map_err()` in detail in the Custom Error Types section, later. For now keep in mind that on error, `.map_err()` we log an explanation and propagate (not early return) the error (`e`) to `.ok()?`.
 
@@ -1672,13 +1673,13 @@ Examples:
 
 ## To `panic!()` or Not to `panic!()`
 
-**Alice:** Alright... Now I understand recoverable errors. But what about unrecoverable ones? When should I actually use `panic!()` intentionally?
+**Alice:** Alright... Now I understand recoverable errors. But what about unrecoverable ones? When should I actually use [`panic!()`](https://doc.rust-lang.org/std/macro.panic.html) intentionally?
 
 **Bob:** Panicking is basically saying *this is a fatal problem, abort the mission!* We should use `panic!()` for situations where continuing the program could lead to incorrect results, security vulnerabilities, or when the error is totally unexpected and we don’t have a meaningful way to handle it.
 
 Think of it this way: 
 * If failure is something we *expect might happen* occasionally (like a file might not be found, user input might be bad, etc.), we should **not** panic — use `Result<T, E>` and handle it. 
-* If something happening indicates a bug in our code or an impossible situation (like *this array index should never be out of bounds, something is really wrong*), then jumping thru the window (panicking IOW) is acceptable.
+* If something happening indicates a bug in **our code** or an impossible situation (like *this array index should never be out of bounds, something is really wrong*), then jumping thru the window (panicking IOW) is acceptable.
 
 <!-- [7](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=However%2C%20when%20failure%20is%20expected%2C,indicates%20that%20failure%20is%20an) -->
 
@@ -1706,7 +1707,7 @@ Panic is also often used to indicate *programmer errors* (violating function con
 Also, small quick-and-dirty code snippets might sprinkle `.unwrap()` for brevity if you’re OK with them crashing on error. But in a robust application or library, you’d use panic very sparingly.
 
 There’s also the consideration of library vs binary (application) code. 
-* If you’re writing a library, we should almost never panic on a recoverable error. Indeed, that takes the decision away from the library user (the programmer using our library, the consumer). Instead, return a `Result<T, E>` and let them decide. We only panic in a library if it’s a severe internal invariant violation or we literally can’t do anything (and ideally, document that it might panic in that case). 
+* If you’re writing a library, we should almost never panic on a recoverable error. Indeed, that takes the decision away from the library user (the programmer using our library, the consumer). Instead, return a `Result<T, E>` and let them decide. We only panic in a library if it’s a severe **internal** invariant violation or we literally can’t do anything (and ideally, document that it might panic in that case). 
 * In application (binary) code, we control the whole program. We might choose to `panic!()` on certain errors if it simplifies things. Even then we should `panic!()` only when it’s truly unrecoverable or we are OK with the program terminating.
 
 
@@ -1772,16 +1773,16 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 
 <!-- [29](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=This%20is%20the%20main%20reason,a%20violation%20will%20cause%20a) -->
 
-3. **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `expect("config file missing, please create one")` is better than a blank panic. This helps debugging by indicating why the panic happened.
+3. **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `panic!("Negative value provided: {}", value)` is better than a blank panic. This helps debugging by indicating why the panic happened.
 
 <!-- [16](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#:~:text=message%3A%20,)  -->
 
 4. **Minimize `.unwrap()` in code:** Every `.unwrap()` is a potential crash. We use it only when we're sure there's no error (or in test code). Prefer to handle or propagate errors instead. Replacing `.unwrap()` with `?` or proper error handling will make our code more robust.
 
 5. **Examples of when to panic:**
-* Out-of-range indexing (bug in **our code**) -> standard library panics (cannot recover safely).
-* Asserting a condition in code (`assert!()` macro) -> panics if the condition is false, useful in tests or to validate internal invariants.
-* Contract violations -> e.g., our function got an invalid argument that should have been prevented by earlier checks. We panic to signal programmer error, after possibly using Rust’s type system to avoid such cases where possible.
+    * Out-of-range indexing (bug in **our code**) -> standard library panics (cannot recover safely).
+    * Asserting a condition in code (`assert!()` macro) -> panics if the condition is false, useful in tests or to validate internal invariants.
+    * Contract violations -> e.g., our function got an invalid argument that should have been prevented by earlier checks. We panic to signal programmer error, after possibly using Rust’s type system to avoid such cases where possible.
 
 
 <!-- [28](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#:~:text=When%20your%20code%20performs%20an,it%E2%80%99s%20not%20a%20kind%20of)  -->
@@ -1800,8 +1801,7 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 * Come up with two or three different reasons it might fail (e.g., invalid address format, network outage). 
 * For each, decide if it should return an error (`Result::Err`) or panic. Explain your reasoning. Hint: as a library function, it should likely return errors for anything that can go wrong due to external factors or bad input, rather than panicking. Panics should be reserved for something like an invariant violation **inside** the library.
 
-3. **Deliberate Panic:** Write a small program that deliberately panics (for example, by indexing an array out of bounds or using `panic!()` directly with a message). Run it to see what the panic message and backtrace look like. Enable backtrace by running the program with `RUST_BACKTRACE=1` environment variable (under WIN11 you can use `$env:RUST_BACKTRACE=1; cargo run --example my_panic_code` in a terminal).
-
+3. **Deliberate Panic:** Write a small program that deliberately panics (for example, by indexing an array out of bounds or using `panic!()` directly with a message). Run it to see what the panic message and backtrace look like. Enable backtrace by running the program with `RUST_BACKTRACE=1` environment variable (under WIN11 you can use `$env:RUST_BACKTRACE=1; cargo run -p u_are_errors --example my_panic_code` in a terminal).
 
 
 
@@ -2155,15 +2155,13 @@ Also, error traits allow chaining and context, but that’s beyond a beginner-in
 
 
 
-**Alice:** Got it. So if I had a module that does some operation, I should define an error type in that module representing things that can go wrong there, and use `?` to convert sub-errors into it, then bubble up to `main()`. That way, `main()` just sees my module’s error type (or I convert it further to something else or to `Box<dyn Error>` at the final boundary).
+**Alice:** Got it. So if I have a module that does some operation, I should define an error type in that module representing things that can go wrong there, and use `?` to convert sub-errors into it, then bubble up to `main()`. That way, `main()` just sees my module’s error type (or I convert it further to something else or to `Box<dyn Error>` at the final boundary).
 
 **Bob:** Exactly. Let’s do a quick mini-example of propagating an error from a module to `main()`. Suppose we have a module `math_utils` with a function that can fail:
 
 
 ```rust
 // ex19.rs
-// CTRL+SHIFT+B to build | F5 to build and Debug | cargo run --example ex19
-
 mod math_utils {
     // This module could be in a file math_utils.rs
     #[derive(Debug)]
@@ -2324,7 +2322,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 ### anyhow - binaries (mnemonic: A, B, C...**A**nyhow, **B**inaries)
 
-`anyhow` provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
+[`anyhow`](https://docs.rs/anyhow/latest/anyhow/) provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
 
 ```rust
 // ex20.rs
@@ -2437,14 +2435,18 @@ In VSCode, open `ex21.rs` and `ex17.rs` side by side and compare both contents. 
 <span>ex17.rs on lhs, ex21.rs on rhs</span>
 </div>
 
-* `ex21.rs` is shorter but this is not the point. `ConfigError` and its implementations has disappear. 
-* Pay attention to `.with_context()` in `load_or_init`. Similar to `.context()` and string literals, `.with_context()` takes a closure that returns a String. It is used here to dynamically `format!()` string with the value of a variable (`path`).
+* `ex21.rs` is shorter but this is not the point. 
+* `ConfigError` and its implementations has disappear because it is no longer needed. 
+* Pay attention to `.with_context()` in `load_or_init()`. 
+    * It is similar to `.context()` and the string literals. 
+    * It takes a closure that returns a String. 
+    * It is used here to dynamically `format!()` string with the value of a variable (`path`).
 * Also note how the `.context(...)` in `main()` makes error messages much more actionable. 
 
-This is exactly what we need in binaries. Ok, let's read some code:
+This is typically what we need in binaries. Ok, let's read the code:
 
 * In the initial version `ex17.rs` we had `fn load_config(path: &str) -> Result<Config, ConfigError> {...}`
-* Now we have `fn load_or_init(path: &str) -> Result<Config> {...}` where `Result` is a type alias so that the signature should be understood as `fn load_config(path: &str) -> std::result::Result<Config, anyhow::Error>`
+* Now we have `fn load_or_init(path: &str) -> Result<Config> {...}` where `Result` is a type alias so that the signature should be read as `fn load_config(path: &str) -> std::result::Result<Config, anyhow::Error>`
 * `anyhow` implement `From<E>` for all `E` that implement `std::error::Error + Send + Sync + 'static`
 * If any error happen during `read_to_string()` then the `?` operator converts the error from `std::io::Error` to `anyhow::Error` (idem for `serde_json::Error` from `serde_json::from_str`) 
 
@@ -2462,7 +2464,7 @@ Now the tricky part is in `load_or_init()`:
 
 
 
-For libraries, we should avoid `anyhow::Error` in our public API and prefer a concrete error type (possibly made with `thiserror`) so downstream users can `match` on variants. Let's talk about it now.
+For libraries, we should avoid `anyhow::Error` in our public API and prefer a concrete error type (possibly made with `thiserror`) so that downstream users can `match` on variants. Let's talk about it now.
 
 
 
@@ -2471,7 +2473,7 @@ For libraries, we should avoid `anyhow::Error` in our public API and prefer a co
 
 ### thiserror - libraries
 
-`thiserror` is a derive macro crate. Instead of manually implementing by hand `Display` and `Error` and writing `From` conversions (remember `Debug` comes with the directive #[derive(Debug)]), we can do something concise like:
+[`thiserror`](https://docs.rs/thiserror/latest/thiserror/) is a derive macro crate. Instead of manually implementing by hand `Display` and `Error` and writing `From` conversions (remember `Debug` comes with the directive `#[derive(Debug)]`), we can do something concise like:
 
 
 ```rust
@@ -2576,7 +2578,11 @@ error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit 
 
 
 
-As you say, it is a standalone, all-included, kind of binary. So, as a first step, let's split it into a library and a binary. We can do this with a single file. In `ex22.rs` (see below) we just define a module inside the source code. If needed, review what we did in `ex19.rs` (the code with `log10()`, do you remember?). 
+As you say, it is a standalone, all-included, kind of binary. So, as a first step, let's split it into a library and a binary. For demo purpose, we can do this with a single file. In `ex22.rs` (see below) we just define a module inside the source code. If needed, review what we did in `ex19.rs` (the code with `log10()`, do you remember?, September?).
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D5XmUnYW5Ks?si=pqdrPrKvEFD3phoV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 Here is the code after the first step of refactorization:
 
@@ -2670,7 +2676,7 @@ Now, concerning the refactoring we can observe:
 
 * Obviously we now have a `mod my_api` at the top of the code
 * Think about it as "a file in a file". This is not true but this can help. 
-* The `use my_api::load_or_init;` statement is a shortcut that helps to write `load_or_init("bad_config.json")` rather than `my_api::load_or_init("bad_config.json")`.
+* The `use my_api::load_or_init;` statement is a "shortcut" that helps to write `load_or_init("bad_config.json")` rather than `my_api::load_or_init("bad_config.json")`.
 
 
 **Side Note:** If you don't feel 100% confident with modules, crates, files... You can [read this post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) 
@@ -2691,7 +2697,7 @@ In this first step of the refactoring the main idea was to split the code in 2:
 * `my_api` module on one end 
 * and a consumer of the API on the other. 
 
-Now that we have a library crate in place, let's see how to leverage `thiserror` crate. So now, we refactor `ex22.rs` into `ex24.rs`. Here it is:
+Now that we have our library crate set up, let's explore how to make use of the `thiserror` crate.  So now, we refactor `ex22.rs` into `ex24.rs`. Here it is:
 
 ```rust
 // ex24.rs

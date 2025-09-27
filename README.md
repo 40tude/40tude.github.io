@@ -172,6 +172,11 @@ Callouts : https://just-the-docs.com/docs/ui-components/callouts/
 [Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%})
 
 
+
+
+
+
+
 ### Note de bas de page
 
 Dans le texte : 
@@ -202,6 +207,34 @@ Pour les images sur les pages où il y a un permalink
 
 
 ```
+
+
+
+
+
+
+
+### Ancre sur une autre une page du site
+
+```
+<!--post-a.md -->
+## My Important Section
+This is the content I want to link to.
+```
+
+```
+<!--post-b.md -->
+See [this section]({% post_url 2025-09-01-post-a %}#my-important-section).
+
+```
+
+
+
+
+
+
+
+
 
 ### Ancre
 Sur un paragraphe dans une autre page
