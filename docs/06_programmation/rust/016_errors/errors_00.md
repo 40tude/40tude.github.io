@@ -576,7 +576,7 @@ fn main() {
 
 * `result_file` is a `Result<T, E>`. It is **NOT** a `File`. **It took me a while** to read it and understand it that way.
 * `match` is an expression. It is NOT a statement. This one is easy because almost everything is an expression in Rust.
-    * If the difference between expression and statement is not crystal clear read this [page]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions) 
+    * If the difference between [expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions) and [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement) is not crystal clear follow and read the 2 previous links.  
 * The `match` expression forces us to handle all possible cases
 * Set a break point on the line with `match` expression (F9)
 * Press F5 and step forward with F10 
@@ -775,7 +775,10 @@ It’s a generic `enum` with two variants:
 
 For example, when we try to open a file, the success type `T` is a file handle ( `std::fs::File` ), and the error type `E` is `std::io::Error`.
 
-
+<div align="center">
+<img src="./assets/img23.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
@@ -2603,11 +2606,50 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 
 
 ### Summary – `anyhow` & `thiserror`
+
 * **`anyhow`**: Binaries. Dynamic error type with great ergonomics and `.context(...)` for adding messages. Best for applications where we just want to bubble errors up and print them, not pattern-`match` on them.  
+
+```rust
+use anyhow::{Context, Result};
+use std::fs;
+
+fn run() -> Result<String> {
+    let data = fs::read_to_string("Cargo.toml").context("while reading Cargo.toml")?; 
+    Ok(data)
+}
+
+fn main() -> Result<()> {
+    let data = run()?;
+    println!("Config loaded: {}", data);
+    Ok(())
+}
+```
 
 * **`thiserror`**: Libraries. Derive-based crate to build clear, typed error enums with minimal boilerplate. Best for libraries and public APIs where the caller needs to inspect error kinds.  
 
+```rust
+use thiserror::Error;
+
+#[derive(Debug, Error)]
+enum ConfigError {
+    #[error("I/O error: {0}")]
+    Io(#[from] std::io::Error),
+}
+
+fn load(path: &str) -> Result<String, ConfigError> {
+    Ok(std::fs::read_to_string(path)?) // auto-converts into ConfigError::Io
+}
+
+fn main() -> Result<(), ConfigError> {
+    let content = load("Cargo.toml")?;
+    println!("Loaded: {}", content);
+    Ok(())
+}
+```
+
 * **Don’t mix them blindly**: We can use both in the same project (e.g., library crates with `thiserror` exposed, binary crate using `anyhow` internally), but try to keep public APIs typed and internal app code ergonomic.
+
+
 
 
 
