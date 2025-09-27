@@ -225,6 +225,7 @@ This is the content I want to link to.
 ```
 <!--post-b.md -->
 See [this section]({% post_url 2025-09-01-post-a %}#my-important-section).
+[invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)
 
 ```
 

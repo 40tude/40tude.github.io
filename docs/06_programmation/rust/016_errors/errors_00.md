@@ -594,7 +594,7 @@ fn main() {
 
 * `result_file` is a `Result<T, E>`. It is **NOT** a `File`. **It took me a while** to read it and understand it that way.
 * `match` is an expression. It is NOT a statement. This one is easy because almost everything is an expression in Rust.
-    * If the difference between expression and statement is not crystal clear read this [page]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) 
+    * If the difference between expression and statement is not crystal clear read this [page]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions) 
 * The `match` expression forces us to handle all possible cases
 * Set a break point on the line with `match` expression (F9)
 * Press F5 and step forward with F10 
