@@ -615,7 +615,7 @@ fn main() {
 
 
 {: .note-title }
-> Side Note:
+> Side Note
 >
 > I know, `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
 >
@@ -1305,16 +1305,16 @@ fn main() -> Result<()> {
 {: .warning-title }
 > Summary
 >
-> Blablabla
+>Blablabla
 ```rust
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
-
 fn main() -> Result<()> {
     // ...
     Ok(())
 }
 ```
-> Last paragraph
+> 
+>Last paragraph
 
 
 
@@ -1559,7 +1559,7 @@ None: could not read _definitely_missing_.txt
 * With `missing`, `read_with_logging()` log a message then returns immediately. Note how [`.map_err()`](https://doc.rust-lang.org/std/result/enum.Result.html#method.map_err) is used on a `Result<T, E>` and how the calls `read_to_string().map_err().ok()` are daisy chained. 
 
 {: .note-title }
-> Side Note:
+> Side Note
 >
 > Do not start grumbling... We will discuss `.map_err()` in detail in the Custom Error Types section, later. For now keep in mind that on error, `.map_err()` we log an explanation and propagate (not early return) the error (`e`) to `.ok()?`.
 
@@ -1844,7 +1844,7 @@ impl std::error::Error for ConfigError {}
 
 
 {: .note-title }
-> Side Note:
+> Side Note
 >
 > If you don't feel confident with traits you can read this [series of posts]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
 
@@ -2533,7 +2533,7 @@ Now, concerning the refactoring we can observe:
 
 
 {: .note-title }
-> Side Note:
+> Side Note
 >
 > If you don't feel 100% confident with modules, crates, files... You can [read this post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
