@@ -1077,8 +1077,34 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 **Alice:** So it returns early on error? Nice, that’s like exceptions but checked at compile time.
 
-**Bob:** Right, it’s analogous to exception propagation but explicitly done via return values. Let’s refactor a previous example using `?`. We’ll write a function to read a username from a file. Without `?`, it would look like a lot of nested `match`, while with `?` it becomes straightforward:
+**Bob:** Right, it’s analogous to exception propagation but explicitly done via return values. Let’s refactor a source code that use `match` expressions into one using `?` operator. First copy/paste and execute (CTRL+ENTER) the code below in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024). It works but... Too much `match` everywhere... 
 
+```rust
+use std::fs::File;
+use std::io::{self, Read};
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut file = match File::open("username.txt") {
+        Ok(file) => file,           // success, variable shadowing on file, continue
+        Err(e) => return Err(e),    // early return
+    };
+    
+    let mut username = String::new();
+    
+    match file.read_to_string(&mut username) {
+        Ok(_) => Ok(username),      // success, returns
+        Err(e) => Err(e),           // returns the error e
+    }                               // no ; here
+}
+
+fn main() {
+    match read_username_from_file() {
+        Ok(name) => println!("Username: {name}"),
+        Err(e) => eprintln!("Error reading username: {e}"),
+    }
+}
+```
+Now, modify the code above in Rust Playground and when it is working paste it, locally in `ex07.rs`.
 
 ```rust
 // ex07.rs
@@ -1101,7 +1127,8 @@ fn main() {
 }
 ```
 
-Open `ex07.rs`
+While `ex07.rs` is open in VSCode:
+
 * Set breakpoints on lines 7 and 15 
 * Run the code (F5) 
 * When the application is done, there is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`), rename it `username.txt`. 
