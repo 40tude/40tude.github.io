@@ -1860,6 +1860,12 @@ impl std::error::Error for ConfigError {}
 * **Important**. Keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
     * Think about : `fn Io(e: std::io::Error) -> ConfigError{...}`
 
+{: .warning-title}
+> This is key
+>
+Each enum variant is also a constructor of an instance of the enum.
+
+
 * Then we implement the `Display` trait for the data type `ConfigError`. 
     * This is mandatory. In VSCode, if we hover the word `Error` from `impl std::error::Error` we learn that to implement the `Error` trait for `ConfigError`, the later must implement `Debug` and `Display`. `Debug` is easy. It is implemented automatically thanks to the directive `#[derive(Debug)]`. Now, regarding `Display`, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely. 
 
@@ -1884,11 +1890,11 @@ fn load_config(path: &str) -> Result<Config, ConfigError> {
 }
 ```
 
-Now, fasten your seat belt and stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current errors into `ConfigError` with the help of `.map_err()`. Here is how :
+Now, fasten your seat belt and stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current error into `ConfigError` with the help of `.map_err()`. Here is how :
 
 * If it fails, `std::fs::read_to_string` returns a `Result<String, std::io::Error>`
     * `.map_err(ConfigError::Io)` is then executed
-    * However, since you remember (you confirm, you remember) that each enum variant of `ConfigError` is also an initializer, when `.map_err(ConfigError::Io)` is executed, it calls the function `ConfigError::Io(e: std::io::Error) -> ConfigError` which construct and return a `ConfigError`
+    * However, since you remember (you confirm, you remember) that each enum variant of `ConfigError` is also an initializer of the enum, when `.map_err(ConfigError::Io)` is executed, it calls the function `ConfigError::Io(e: std::io::Error) -> ConfigError` which constructs and returns a `ConfigError`
     * The `ConfigError` (which have the trait `std::error::Error`) is presented in front of the `?` operator
     * The `?` operator bubbles up the `ConfigError` immediately since in our case we said `std::fs::read_to_string` failed
 * The same mechanics is at work on the next line 
@@ -2365,14 +2371,14 @@ pub enum ConfigError {
 }
 ```
 
-Now our `load_config` function can just use the `?` operator and the `#[from]` converts sub-errors automatically. This is excellent for libraries, where we want to expose a stable and descriptive error type to users.
+Now our `load_config()` function can just use the `?` operator and the `#[from]` converts sub-errors automatically. This is excellent for libraries, where we want to expose a stable and descriptive error type to users.
 
 
-**Alice:** I really don't like code snippet. I like to see all the code. I remember `ex17.rs` was a standalone binary. Could you show me, step by step, how you would split it as a library serving a binary.
+**Alice:** I really don't like code snippet. I like to see all the code. `ex17.rs` is a standalone binary. Could you show me, step by step, how you would split it as a library serving a binary?
 
-**Bob:** Great idea. It is a good opportunity to see code refactoring in practice. Since you want to see all the code, I'll need some space but this should not be a problem here. 
+**Bob:** Great idea. It is a good opportunity to see code refactoring in practice. Since you want to see all the code each time, I'll need some space but this should not be a problem here. 
 
-First, let's review `ex17.rs`:
+First, let's review `ex17.rs` once again:
 
 ```rust
 // ex17.rs
@@ -2744,6 +2750,7 @@ fn main() -> Result<(), ConfigError> {
 
 ### Key Concepts
 * [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)
+* David Wheeler. [Indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)
 * The fewer the better
 * The sooner the better
 * ...
