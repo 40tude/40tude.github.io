@@ -1309,15 +1309,15 @@ fn main() -> Result<()> {
 >
 >* Keep this in mind
 >
-    ```rust
-    type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+```rust
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
-    fn main() -> Result<()> {
-        // ...
-        Ok(())
-    }
-    ```
-
+fn main() -> Result<()> {
+    // ...
+    Ok(())
+}
+```
+>
 
 ### Exercises – Propagating Errors
 
