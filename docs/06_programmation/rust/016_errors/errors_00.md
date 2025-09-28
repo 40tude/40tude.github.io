@@ -626,13 +626,13 @@ let mut file = match File::open(&path) {
     Ok(file) => file,
 };
 ```
-
-* The outer `let mut file = …;` declares a new variable `file` in the current scope.
-* Inside the `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok()` variant.
-* That inner `file` variable is [shadowing](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html?highlight=shadowing#shadowing) the outer one just for the right-hand side of the assignment.
-* Once the match expression finishes evaluating, the *inner* `file` is moved out of the `Ok(file)` pattern and becomes the value assigned to the *outer* `file`.
-* This is a case of variable shadowing.
-* The `file` in the match pattern and the `file` bound by the `let` are two distinct variables with the same name, in different scopes.
+>
+>* The outer `let mut file = …;` declares a new variable `file` in the current scope.
+>* Inside the `Ok(file)` match arm, the name `file` is a **pattern variable** that temporarily binds the `File` object contained in the `Ok()` variant.
+>* That inner `file` variable is [shadowing](https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html?highlight=shadowing#shadowing) the outer one just for the right-hand side of the assignment.
+>* Once the match expression finishes evaluating, the *inner* `file` is moved out of the `Ok(file)` pattern and becomes the value assigned to the *outer* `file`.
+>* This is a case of variable shadowing.
+>* The `file` in the match pattern and the `file` bound by the `let` are two distinct variables with the same name, in different scopes.
 
 
 
@@ -1078,21 +1078,13 @@ fn main() {
 }
 ```
 
-
-<!-- **Side Note:** 
-* Open `ex07.rs`
+Open `ex07.rs`
 * Set breakpoints on lines 7 and 15 
 * Run the code (F5) 
-* There is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`). 
-    * Rename it `username.txt`. Empty it... -->
-
-{: .note-title }
-> Side Note:
->
-> * Set breakpoints on lines 7 and 15 
-> * Run the code (F5) 
-> * There is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`). 
->    * Rename it `username.txt`. Empty it... 
+* When the application is done, there is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`), rename it `username.txt`. 
+* Restart the code (F5) 
+* When the application is done, open and delete the content of `username.txt`
+* Run the code (F5)
 
 
 <div align="center">
