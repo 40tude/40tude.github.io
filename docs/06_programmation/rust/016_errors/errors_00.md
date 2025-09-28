@@ -1297,11 +1297,22 @@ fn main() -> Result<()> {
 
 ### Summary – Propagating Errors with `?`
 
-<!-- {: .highlight } -->
-{: .new-title }
+{: .important-title }
+> My important title
+>
+> A paragraph
+>
+> Another paragraph
+>
+> The last paragraph
+
+
+{: .warning-title }
 > Summary
 >
 > Blablabla
+
+
 
 
 
