@@ -213,8 +213,10 @@ The default is `unwind`. With `abort` opted in:
 
 
 
-### Summary – Introduction
-
+<!-- ### Summary – Introduction -->
+{: .new-title }
+> Summary – Introduction
+>
 * Rust requires we handle errors explicitly. Code that can fail must return a `Result<T, E>` (or `Option<T>`   ), forcing the caller to address the possibility of failure [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
 * Rust distinguishes 
     * **recoverable errors** (e.g. file not found, invalid input – handled with `Result`)
@@ -978,10 +980,11 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 
 
-### Summary – The `Result<T, E>` Type Basics
-
+<!-- ### Summary – The `Result<T, E>` Type Basics -->
+{: .new-title }
+> Summary – The `Result<T, E>` Type Basics
+>
 * **`Result<T, E>` is an enum:** with variants `Ok(T)` (success) and `Err(E)` (error). 
-
 * **Handle with `match` or methods:** 
     * `match`
         * Using `match` on a `Result<T, E>` forces explicit handling of success and error. 
@@ -990,7 +993,6 @@ This way, we handle the "file not found" case by recovering (creating a new file
     * Methods
         * Use `.unwrap()`/`.expect()` to get the value or `panic!()` on error.
         * Use `.unwrap_or_default()`/`.unwrap_or_else(func)` to provide fallbacks instead of panicking.
-
 * **Prefer `.expect()`:** If we choose to `panic!()` on an error, prefer `.expect("custom message")` over plain `.unwrap()`. It gives a clearer error message for debugging when the unexpected happens.
 
 
@@ -1295,7 +1297,7 @@ fn main() -> Result<()> {
 
 
 {: .new-title }
-> Summary
+> Summary – Propagating Errors with `?`
 >
 * **`?` operator:** A shorthand for propagating errors. It unwraps the `Ok()` value or returns the error to the caller if it’s an `Err()`, effectively doing the `match` + `return Err(...)` for us. This simplifies error handling in functions that just want to pass errors up the chain.
 * **Usage requirements:** We can only use `?` in a function that returns a compatible type (e.g., if the function returns `Result<T, E>` or `Option<T>`). Using `?` on a `Result<T, E>` in a function returning `Result<T, E>` will propagate the error; using it in `main()` requires `main()` to return a `Result<T, E>` as well. If we try to use `?` in a function that returns `()` (unit type) or another type that can’t represent an error, the code won’t compile – the compiler will remind we to change the return type or handle the error another way.
@@ -1312,7 +1314,7 @@ fn main() -> Result<()> {
 
 
 
-### Summary – Propagating Errors with `?`
+<!-- ### Summary – Propagating Errors with `?`
 
 * **`?` operator:** A shorthand for propagating errors. It unwraps the `Ok()` value or returns the error to the caller if it’s an `Err()`, effectively doing the `match` + `return Err(...)` for us. This simplifies error handling in functions that just want to pass errors up the chain.
 * **Usage requirements:** We can only use `?` in a function that returns a compatible type (e.g., if the function returns `Result<T, E>` or `Option<T>`). Using `?` on a `Result<T, E>` in a function returning `Result<T, E>` will propagate the error; using it in `main()` requires `main()` to return a `Result<T, E>` as well. If we try to use `?` in a function that returns `()` (unit type) or another type that can’t represent an error, the code won’t compile – the compiler will remind we to change the return type or handle the error another way.
@@ -1325,7 +1327,7 @@ fn main() -> Result<()> {
         // ...
         Ok(())
     }
-    ```
+    ``` -->
 
 
 
@@ -1558,21 +1560,22 @@ None: could not read _definitely_missing_.txt
 
 
 
-### Summary – `Option<T>` vs `Result<T, E>`
-
+<!-- ### Summary – `Option<T>` vs `Result<T, E>` -->
+{: .new-title }
+> Summary – `Option<T>` vs `Result<T, E>`
+>
 * **Use `Option<T>` for expected no value scenarios:** If not finding or not having a value is a normal possibility (not an error), `Option<T>` **communicates** that clearly. `None` carries no error info – it just means no result.
-
 * **Use `Result<T, E>` for error scenarios:** If an operation can fail in a way that is considered an error (and especially if we need to know *why* it failed), use `Result<T, E>` so we can provide an error message or error type. `Err(E)` can hold information about what went wrong.
-
 * **Semantic clarity:** Other developers will interpret `Option<T>` and `Result<T, E>` in our APIs as triggers. 
     * `Option<T>` implies the caller should expect the nothing case and it’s not an exceptional error
     * `Result<T, E>` implies the caller should expect the possibility of an error condition that should be handled or propagated. 
-
 Examples:
 * A lookup in a map (key might be missing) -> return `Option<T>` (absence is normal if key not present)
 * Parsing input (could fail due to external conditions or bad format) -> return `Result<T, E>` with an error explaining the failure
-
 * **Failure is not an option:** It's must be clear in your mind when choosing between `Option<T>` vs `Result<T, E>`
+
+
+
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Tid44iy6Rjs?si=eJfnsc8fjGXTqwhq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -1716,21 +1719,16 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 
 
 
-### Summary – Using (or Avoiding) `panic!()`
-
+<!-- ### Summary – Using (or Avoiding) `panic!()` -->
+{: .new-title }
+> Summary – Using (or Avoiding) `panic!()
+>
 * **Expected errors -> `Result<T, E>`, Unexpected errors -> `panic!()`:** If an error condition is something we can anticipate and might want to handle (file not found, invalid input, network timeout), **do not panic**. Use `Result<T, E>` and propagate or handle it. If something is truly unexpected or a bug in **our code** (index out of bounds, violated invariant), a `panic!("msg")` is appropriate to immediately stop the program.
-
-
 * **Library vs Application code:** 
     * **Libraries** should prefer `Result<T, E>` for errors and avoid panicking, except for internal bugs, because panics in a library will crash the user’s application. 
     * **Applications** (especially very small ones) might use `panic!()`, `.unwrap()`, `.expect()` in places where it’s acceptable for the program to crash (or during development to catch bugs). But even here I'm so no convinced. Indeed we should investigate bugs with a Debugger. For the rest, you will understand my point of view reading the section "Errors from Experimentation to Production". 
-
-
 * **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `panic!("Negative value provided: {}", value)` is better than a blank panic. This helps debugging by indicating why the panic happened.
-
-
 * **Minimize `.unwrap()` in code:** Every `.unwrap()` is a potential crash. We use it only when we're sure there's no error (or in test code). Prefer to handle or propagate errors instead. Replacing `.unwrap()` with `?` or proper error handling will make our code more robust.
-
 * **Examples of when to panic:**
     * Out-of-range indexing (bug in **our code**) -> standard library panics (cannot recover safely).
     * Asserting a condition in code (`assert!()` macro) -> panics if the condition is false, useful in tests or to validate internal invariants.
@@ -2101,16 +2099,14 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
-### Summary – Custom Errors
-
+<!-- ### Summary – Custom Errors -->
+{: .new-title }
+> Summary – Custom Errors
+>
 * **Custom error types:** We can define our own error type (often an `enum` because our error can only have a value at a time) to represent errors in our application or library. This allows us to consolidate different error sources (IO, parsing, etc.) into one type and make our functions return that. It improves API clarity. Callers deal with one error type and can match on its variants.  
-
 * **Implementing Error trait:** By implementing `std::error::Error` (which means implementing `fmt::Display` and having `#[derive(Debug)]`), our error type becomes interoperable with the standard ecosystem. It lets us use trait objects (`Box<dyn Error>`) if needed and makes our errors printable and convertible.  
-
 * **Converting errors:** We use pattern matching or helper methods like `.map_err()` or the `From` trait implementations to convert underlying errors into our custom error variants. The `?` operator automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.  
-
     * Suppose we have an error `enum` `ConfigError { Io(io::Error), Parse(ParseError) }`. If a function reading a config file encounters an `io::Error`, we can do `.map_err(ConfigError::Io)?` to turn it into our error type and return it. The same for parse errors. Now the function returns `Result<Config, ConfigError>`, and the caller only has to handle `ConfigError`.  
-
 * **Using `Box<dyn Error>`:** In application code, if we don’t want to define lots of error types, we can use `Box<dyn Error>` as a catch-all error type (since most errors in std lib implement `Error`). For example, `fn main() -> Result<(), Box<dyn std::error::Error>>` allows us to use `?` with any error that implements `Error` and just propagate it. This is convenient, but in library code you’d usually favor a concrete error type so that the API is self-documented.  
 
 
@@ -2635,48 +2631,41 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 
 
 
-### Summary – `anyhow` & `thiserror`
-
+<!-- ### Summary – `anyhow` & `thiserror` -->
+{: .new-title }
+> Summary – `anyhow` & `thiserror`
+>
 * **`anyhow`**: Binaries. Dynamic error type with great ergonomics and `.context(...)` for adding messages. Best for applications where we just want to bubble errors up and print them, not pattern-`match` on them.  
-
 ```rust
 use anyhow::{Context, Result};
 use std::fs;
-
 fn run() -> Result<String> {
     let data = fs::read_to_string("Cargo.toml").context("while reading Cargo.toml")?; 
     Ok(data)
 }
-
 fn main() -> Result<()> {
     let data = run()?;
     println!("Config loaded: {}", data);
     Ok(())
 }
 ```
-
 * **`thiserror`**: Libraries. Derive-based crate to build clear, typed error enums with minimal boilerplate. Best for libraries and public APIs where the caller needs to inspect error kinds.  
-
 ```rust
 use thiserror::Error;
-
 #[derive(Debug, Error)]
 enum ConfigError {
     #[error("I/O error: {0}")]
     Io(#[from] std::io::Error),
 }
-
 fn load(path: &str) -> Result<String, ConfigError> {
     Ok(std::fs::read_to_string(path)?) // auto-converts into ConfigError::Io
 }
-
 fn main() -> Result<(), ConfigError> {
     let content = load("Cargo.toml")?;
     println!("Loaded: {}", content);
     Ok(())
 }
 ```
-
 * **Don’t mix them blindly**: We can use both in the same project (e.g., library crates with `thiserror` exposed, binary crate using `anyhow` internally), but try to keep public APIs typed and internal app code ergonomic.
 
 
@@ -2737,8 +2726,10 @@ fn main() -> Result<(), ConfigError> {
 ### Production
 
 
-### Summary – Experimentation to Production
-
+<!-- ### Summary – Experimentation to Production -->
+{: .new-title }
+> Summary – Experimentation to Production
+>
 * **`derive_more`:** ...  
 * **...:** ...  
 
