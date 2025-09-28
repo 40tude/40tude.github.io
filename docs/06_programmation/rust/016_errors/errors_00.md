@@ -254,7 +254,7 @@ Let's make sure we can Debug the code.
 * I also expect the `command-variable` extension to be installed. We need it also to debug our code.
     * `code --install-extension rioj7.command-variable`
 
-This said, I use VSCode under Windows 11 and I wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Here I use a [Wworkspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) because I can have more than a Project in a single space. Think of Workspaces as Meta-Project. 
+This said, I use VSCode under Windows 11 and I wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Here I use a [workspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) because I can have more than one project (packages) in a single "space". Think of workspaces as meta-project. 
 
 Now, having this in mind here is what I do and why.
 
@@ -385,7 +385,7 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 * If you get lost, just review the build command you enter in the terminal before. What we do here is exactly the same thing : `cargo build -p u_are_errors --example ex00`. Except that we want to discover the name of the package dynamically. Indeed not all the source code are in the `u_are_errors` package. You may have seen the 2 other projects: `01_experimentation` and `02_production` for example. 
     * In `01_experimentation/`, in `Cargo.toml` the name of the package in `experimentation` for example
 * Finding out the name of the package is done in the `inputs` array and this is where the `command-variable` extension shines. Indeed we create a variable `packageName` which is initialized with the output of a command which is a regular expression applied to the `${relativeFileDirname}` of the source code opened in the editor.
-    * To make a long story short from `01_experimentation/examples/` it extract `experimentation`
+    * To make a long story short from `01_experimentation/examples/` it extracts `experimentation`
 * Then the `${input:packageName}` variable can be used in the build tasks.     
 
 
@@ -448,8 +448,9 @@ To see the list of `tasks`, in VSCode, press `ALT+T` then press `R`
 }
 ```
 
-* The path in the `program` key, points to the executable created at the end of the build (do you see `${fileBasenameNoExtension}`?)
-* Note the `preLaunchTask` key. This explains why we can press F5 (debug) even if the executable is not yet built. In such case, the task `cargo-build-debug` is executed then the debug session starts.
+* There are 3 objects in the array `configurations`. This is why we can debug code with LLDB or MSVC. The third helps to launch the release version.
+* In each object of the array `configurations`, the path in the `program` key, points to the executable created at the end of the build (do you see `${fileBasenameNoExtension}`?)
+* Note the `preLaunchTask` key. It explains why we can press F5 (debug) even if the executable is not yet built. In such case, the task `cargo-build-debug` is executed then the debug session starts.
 
 
 
@@ -468,7 +469,7 @@ This is great because on line 11 it uses `std::fs::File::open()` but it is a lit
 
 
 
-Copy/paste/save the file as `ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run -p u_are_errors --example ex01`. Here is what I see in the Debug Console once I pressed F5 :
+Copy/paste/save the file as `ex01.rs` or open your eyes : the code is already in `00_u_are_errors/examples/ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run -p u_are_errors --example ex01`. Here is what I see in the Debug Console once I pressed F5 :
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
@@ -612,8 +613,13 @@ fn main() {
 }
 ```
 
-**Side Note:** I know `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
+<!-- **Side Note:** I know `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had:  -->
 
+{: .note-title }
+> Side Note:
+>
+> I know `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
+>
 ```rust
 let mut file = match File::open(&path) {
     Err(why) => panic!("couldn't open {}: {}", display, why),
@@ -1071,12 +1077,22 @@ fn main() {
     }
 }
 ```
-**Side Note:** 
+
+
+<!-- **Side Note:** 
 * Open `ex07.rs`
 * Set breakpoints on lines 7 and 15 
 * Run the code (F5) 
 * There is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`). 
-    * Rename it `username.txt`. Empty it...
+    * Rename it `username.txt`. Empty it... -->
+
+{: .note-title }
+> Side Note:
+>
+> * Set breakpoints on lines 7 and 15 
+> * Run the code (F5) 
+> * There is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`). 
+>    * Rename it `username.txt`. Empty it... 
 
 
 <div align="center">
@@ -1530,8 +1546,12 @@ None: could not read _definitely_missing_.txt
 * With `existing` file, everything works smoothly. At the end, in `main()` we print the number of bytes in the file. Nothing is logged because there is no error.
 * With `missing`, `read_with_logging()` log a message then returns immediately. Note how [`.map_err()`](https://doc.rust-lang.org/std/result/enum.Result.html#method.map_err) is used on a `Result<T, E>` and how the calls `read_to_string().map_err().ok()` are daisy chained. 
 
-**Side Note:** Do not start grumbling... We will discuss `.map_err()` in detail in the Custom Error Types section, later. For now keep in mind that on error, `.map_err()` we log an explanation and propagate (not early return) the error (`e`) to `.ok()?`.
+<!-- **Side Note:** Do not start grumbling... We will discuss `.map_err()` in detail in the Custom Error Types section, later. For now keep in mind that on error, `.map_err()` we log an explanation and propagate (not early return) the error (`e`) to `.ok()?`. -->
 
+{: .note-title }
+> Side Note:
+>
+> Do not start grumbling... We will discuss `.map_err()` in detail in the Custom Error Types section, later. For now keep in mind that on error, `.map_err()` we log an explanation and propagate (not early return) the error (`e`) to `.ok()?`.
 
 
 
@@ -1812,8 +1832,12 @@ impl std::error::Error for ConfigError {}
 
 
 
-**Side Note:** If you don't feel confident with traits you can read this [series of posts]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
+<!-- **Side Note:** If you don't feel confident with traits you can read this [series of posts]({%link docs/06_programmation/rust/015_traits/traits_00.md%}). -->
 
+{: .note-title }
+> Side Note:
+>
+> If you don't feel confident with traits you can read this [series of posts]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
 
 
 * Next, when we write the function `load_config()` we make sure it returns `Result<Config, ConfigError>`. See below :
@@ -2498,7 +2522,12 @@ Now, concerning the refactoring we can observe:
 * The `use my_api::load_or_init;` statement is a "shortcut" that helps to write `load_or_init("bad_config.json")` rather than `my_api::load_or_init("bad_config.json")`.
 
 
-**Side Note:** If you don't feel 100% confident with modules, crates, files... You can [read this post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) 
+<!-- **Side Note:** If you don't feel 100% confident with modules, crates, files... You can [read this post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})  -->
+
+{: .note-title }
+> Side Note:
+>
+> If you don't feel 100% confident with modules, crates, files... You can [read this post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
 
 * `ConfigError` is now public because it is part of `load_or_init()` which is public

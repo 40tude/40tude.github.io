@@ -158,7 +158,19 @@ Sans Serif
 > The last paragraph
 
 ```
+
+```
+{: .note-title }
+> Side Note:
+>
+> A paragraph with a custom title callout
+
+```
+
 Callouts : https://just-the-docs.com/docs/ui-components/callouts/
+
+
+
 
 
 ### Image avec commentaire
