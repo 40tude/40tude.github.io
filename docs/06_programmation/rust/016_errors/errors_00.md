@@ -213,7 +213,8 @@ The default is `unwind`. With `abort` opted in:
 
 
 
-<!-- ### Summary – Introduction -->
+### Summary – Introduction -->
+
 {: .new-title }
 > Summary – Introduction
 >
@@ -980,7 +981,8 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 
 
-<!-- ### Summary – The `Result<T, E>` Type Basics -->
+### Summary – The `Result<T, E>` Type Basics
+
 {: .new-title }
 > Summary – The `Result<T, E>` Type Basics
 >
@@ -1295,6 +1297,7 @@ fn main() -> Result<()> {
 
 
 
+### Summary – Propagating Errors with `?`
 
 {: .new-title }
 > Summary – Propagating Errors with `?`
@@ -1311,24 +1314,6 @@ fn main() -> Result<()> {
         Ok(())
     }
     ```
-
-
-
-<!-- ### Summary – Propagating Errors with `?`
-
-* **`?` operator:** A shorthand for propagating errors. It unwraps the `Ok()` value or returns the error to the caller if it’s an `Err()`, effectively doing the `match` + `return Err(...)` for us. This simplifies error handling in functions that just want to pass errors up the chain.
-* **Usage requirements:** We can only use `?` in a function that returns a compatible type (e.g., if the function returns `Result<T, E>` or `Option<T>`). Using `?` on a `Result<T, E>` in a function returning `Result<T, E>` will propagate the error; using it in `main()` requires `main()` to return a `Result<T, E>` as well. If we try to use `?` in a function that returns `()` (unit type) or another type that can’t represent an error, the code won’t compile – the compiler will remind we to change the return type or handle the error another way.
-* **Converting error types:** When using `?`, if the error type of the `Result<T, E>` you’re handling doesn’t exactly `match` our function’s error type, it will attempt to convert it via the `From` trait. This allows different error types to be mapped into one error type for our function (for example, converting a `std::io::Error` into our custom error type). If no conversion is possible, you’ll get a type mismatch compile error, which we can resolve by using methods like `.map_err()` or implementing `From` for our error.
-* **`main()` can return `Result<T, E>`:** To use `?` at the top level, we can have `main()` return `Result<(), E>`. This way, any `Err` that propagates to `main()` will cause the program to exit with a non-zero status and print the error. For example, `main() -> Result<(), Box<dyn std::error::Error>>` is a common choice to allow using `?` in `main()` 
-* Let's keep this snippet in mind
-    ```rust
-    type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
-    fn main() -> Result<()> {
-        // ...
-        Ok(())
-    }
-    ``` -->
-
 
 
 
@@ -1560,7 +1545,8 @@ None: could not read _definitely_missing_.txt
 
 
 
-<!-- ### Summary – `Option<T>` vs `Result<T, E>` -->
+### Summary – `Option<T>` vs `Result<T, E>`
+
 {: .new-title }
 > Summary – `Option<T>` vs `Result<T, E>`
 >
@@ -1719,7 +1705,8 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 
 
 
-<!-- ### Summary – Using (or Avoiding) `panic!()` -->
+### Summary – Using (or Avoiding) `panic!()`
+
 {: .new-title }
 > Summary – Using (or Avoiding) `panic!()
 >
@@ -2099,7 +2086,8 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
-<!-- ### Summary – Custom Errors -->
+### Summary – Custom Errors
+
 {: .new-title }
 > Summary – Custom Errors
 >
@@ -2631,7 +2619,8 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 
 
 
-<!-- ### Summary – `anyhow` & `thiserror` -->
+### Summary – `anyhow` & `thiserror`
+
 {: .new-title }
 > Summary – `anyhow` & `thiserror`
 >
@@ -2726,7 +2715,8 @@ fn main() -> Result<(), ConfigError> {
 ### Production
 
 
-<!-- ### Summary – Experimentation to Production -->
+### Summary – Experimentation to Production
+
 {: .new-title }
 > Summary – Experimentation to Production
 >
