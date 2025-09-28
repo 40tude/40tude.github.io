@@ -1298,11 +1298,16 @@ fn main() -> Result<()> {
 ### Summary – Propagating Errors with `?`
 
 <!-- {: .highlight } -->
-{: .note-title }
-> Summary:
+{: .new-title }
+> Summary
 >
->* Let's keep this snippet in mind
->
+> Blablabla
+
+
+
+
+Let's keep this snippet in mind
+
 ```rust
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
@@ -1311,7 +1316,7 @@ fn main() -> Result<()> {
     Ok(())
 }
 ```
->
+
 
 
 

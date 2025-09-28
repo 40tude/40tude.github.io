@@ -145,6 +145,10 @@ Sans Serif
 
 * ` NOT YET TRANSFERED `
 
+
+### Callout
+* Voir _config.yml
+
 ```
     purple        red              blue               green        yellow     
 {: .note }    {: .warning }    {: .important }    {: .new }    {: .highlight }
