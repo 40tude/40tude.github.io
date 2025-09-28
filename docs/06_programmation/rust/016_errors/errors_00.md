@@ -28,7 +28,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 
 <h2 align="center">
-<span style="color:orange"><b>This post is under construction.</b></span>    
+<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
 </h2>
 
 <!-- ### This is Episode 00
@@ -42,26 +42,46 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 * The code is on [GitHub](https://github.com/40tude/err_for_blog_post).
 
-* **Rust has no exceptions:** It distinguishes 
+* **Rust has no exceptions:**  
     * **recoverable** errors (handled with the `Result<T, E>` type) 
     * **unrecoverable** errors (handled by panicking using `panic!()`) 
     
-    This means we must explicitly handle errors.
+    We must explicitly handle errors.
 
-* **`Result<T, E>` enum:**  Represents either success (`Ok(T)`) or error (`Err(E)`). Use pattern matching ( `match` expression), or methods like `.unwrap()/.expect()` (which `panic!()` on error) to handle these. Prefer `.expect()` with a custom message.
+* **`Result<T, E>` enum:**  
+    * Represents either success (`Ok(T)`) or error (`Err(E)`). 
+    * Use `match` expression or methods like `.unwrap()/.expect()` (which `panic!()` on error). 
+    * Prefer `.expect()` with a meaningful message.
 
-* **`?` operator for propagation:**  To propagate errors upwards without heavy syntax, use the `?` operator. It returns the error to the caller if an operation fails. Only works in functions returning a compatible `Result<T, E>` (or `Option<T>` ). The `main()` function can return a `Result<T, E>` and use `?` 
+* **`?` operator for propagation:**  
+    * To propagate errors upward with a lite syntax.
+    * Only works in functions returning a compatible `Result<T, E>` (or `Option<T>` ). 
+    * When `main()` returns `Result<T, E>` we can use `?` here 
 
 * **`Option<T>` vs `Result<T, E>`:**  
-    * Use **`Option<T>`** when the absence of a value isn’t an error (e.g.[exempli gratia], no search result) and no error info is needed. 
-    * Use **`Result<T, E>`** when an operation can fail in an exceptional way and we need to convey an error message or reason [5](https://users.rust-lang.org/t/option-vs-results/113549). 
+    * Use **`Option<T>`** when the **absence** of a value is not an error (e.g., no search result) and no error info is needed. 
+    * Use **`Result<T, E>`** when an operation **can fail** in an exceptional way and we need to convey an error message or reason.
 
-* **When to panic:** Reserve **`panic!()`** for truly unrecoverable bugs or invalid states (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)). If failure is expected or possible in normal operation (e.g. file not found, invalid user input...), return a `Result<T, E>` instead. Library code should avoid panicking on recoverable errors to let the caller decide how to handle them.
+* **When to panic:** 
+    * On bugs or invalid states in **our code** (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)). 
+    * If failure is possible in normal operation (e.g. file not found, invalid user input...), return a `Result<T, E>`. 
+    * Library code should avoid panicking on recoverable errors, bubbles them up and let the caller decide.
 
-* **Custom error types:** As part of a sophisticated programs or libraries, define our own custom error types (often as `enums`) to represent various error kinds in one type. Implementing `std::error::Error` (via `Display` and `Debug` ) for these types or using `Box<dyn std::error::Error>` can help integrate with the `?` operator and allow different error kinds to propagate seamlessly.
+* **Custom error types:** 
+    * For sophisticated libraries or binaries.
+    * Define our own error types to represent various error kinds in one type. 
+    * Implementing `std::error::Error` (=> impl `fmt::Display` and `#[derive(Debug)]`)
+    * Use pattern matching or helper methods like `.map_err()` (or the `From` trait implementations) to convert std lib errors into our custom error and return it with `?`
 
+* **`anyhow` and `thiserror`**
+    * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blablabla")`.
+    * **`thiserror`** in **libraries** when we need custom error types without writing all implementations for `Display`, `Debug`, `From` trait and `Error`. 
+    * Don’t mix them blindly (anyhow inside the lib, thiserror API of the lib) 
 
-* **Keep in mind**
+* **From Experimentation to Production:**
+    * ...
+
+<!-- * **Keep in mind**
 
 ```rust
 use std::fs::File; 
@@ -76,7 +96,7 @@ fn main() -> Result<()> {
     f.File.read_to_end(&mut data)?;
     Ok(())
 }
-```
+``` -->
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
@@ -167,13 +187,13 @@ I like to write in a conversational tone, so let's imagine a discussion between 
 * Think of `Result<T, E>` as Rust’s way of saying "operation might succeed or fail". We then decide what to do if it fails.
 * Whereas a `panic!()` is Rust saying "I can’t deal with this, I must crash now". 
 
-By making error handling explicit with `Result`, Rust ensures we don’t just ignore errors. It won’t let us compile unless we either handle the `Result<T, E>` (e.g., check for an error) or explicitly choose to crash (like using `.unwrap()` which triggers a `panic!()` if there’s an error). This leads to more robust programs because we're less likely to have an error go unnoticed.
+By making error handling explicit with `Result`, Rust ensures we don’t just ignore errors. It won’t let us compile unless we either handle the `Result<T, E>` (e.g. [exempli gratia],check for an error) or explicitly choose to crash (like using `.unwrap()` which triggers a `panic!()` if there’s an error). This leads to more robust programs because we're less likely to have an error go unnoticed.
 
 
 
 **Alice:** Um... This is may be a silly question but, if I know my function can succeed or fail, can it returns `Result<T, E>`.
 
-**Bob:** Yes, absolutely! Even `main()` can return `Result<T, E>`. It is a very good practice. Before writing any code, ask yourselves "can this function fail? Should it return `Option<T>` or `Result<T, E>`?". Then work on the rest of the function or method signature.
+**Bob:** Yes, absolutely! Returning a `Result<T, E>` is not limited to functions in the std library. All your function, even `main()` can return `Result<T, E>` and it is a very good practice. Before writing any function code, ask yourselves "can this function fail? Should it return `Result<T, E>` (or `Option<T>`)?". Then work on the rest of the function's signature.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nLSm3Haxz0I?si=k8Xtc_AofCBs3H_T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -218,7 +238,7 @@ The default is `unwind`. With `abort` opted in:
 {: .new-title }
 > Summary – Introduction
 >
-* Rust requires we handle errors explicitly. Code that can fail must return a `Result<T, E>` (or `Option<T>`   ), forcing the caller to address the possibility of failure [2](https://doc.rust-lang.org/book/ch09-00-error-handling.html#:~:text=Errors%20are%20a%20fact%20of,deploying%20your%20code%20to%20production).
+* Rust requires we handle errors explicitly. Code that can fail must return a `Result<T, E>` (or `Option<T>`), forcing the caller to address the possibility of failure.
 * Rust distinguishes 
     * **recoverable errors** (e.g. file not found, invalid input – handled with `Result`)
     * **unrecoverable errors** (bugs like out-of-bounds access – handled with `panic!()`).
@@ -2093,7 +2113,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 >
 * **Custom error types:** We can define our own error type (often an `enum` because our error can only have a value at a time) to represent errors in our application or library. This allows us to consolidate different error sources (IO, parsing, etc.) into one type and make our functions return that. It improves API clarity. Callers deal with one error type and can match on its variants.  
 * **Implementing Error trait:** By implementing `std::error::Error` (which means implementing `fmt::Display` and having `#[derive(Debug)]`), our error type becomes interoperable with the standard ecosystem. It lets us use trait objects (`Box<dyn Error>`) if needed and makes our errors printable and convertible.  
-* **Converting errors:** We use pattern matching or helper methods like `.map_err()` or the `From` trait implementations to convert underlying errors into our custom error variants. The `?` operator automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.  
+* **Converting errors:** We use pattern matching or helper methods like `.map_err()` (or the `From` trait implementations) to convert underlying errors into our custom error variants. The `?` operator automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.  
     * Suppose we have an error `enum` `ConfigError { Io(io::Error), Parse(ParseError) }`. If a function reading a config file encounters an `io::Error`, we can do `.map_err(ConfigError::Io)?` to turn it into our error type and return it. The same for parse errors. Now the function returns `Result<Config, ConfigError>`, and the caller only has to handle `ConfigError`.  
 * **Using `Box<dyn Error>`:** In application code, if we don’t want to define lots of error types, we can use `Box<dyn Error>` as a catch-all error type (since most errors in std lib implement `Error`). For example, `fn main() -> Result<(), Box<dyn std::error::Error>>` allows us to use `?` with any error that implements `Error` and just propagate it. This is convenient, but in library code you’d usually favor a concrete error type so that the API is self-documented.  
 
