@@ -2744,17 +2744,19 @@ fn main() -> Result<(), ConfigError> {
 
 ## Errors from Experimentation to Production
 
-**Alice:** It was a lot... Many, many thanks because it really helps to organized my thoughts about errors management. There is may one last thing I would like to discuss with you. I know I'm a young Padawan and that my code are mostly experimentation I work on during week-end. Ok, but I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be lost while reading code from others on GitHub and more importantly, put the good practices in place, up front, so that I can transition happily to production code.
+**Alice:** It was a lot... Again, many, many thanks because it really helps to organized my thoughts about errors management. 
+
+There is may one thing I would like to discuss with you. I know I'm a young Padawan and that my projecs are mostly experimentations I work on during week-end. Ok, but I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily my project to production code.
 
 <div align="center">
 <img src="./assets/img24.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-**Bob:** ***Help you in this quest, I can.*** And since you already know almost everything you need I propose to follow this path. 
-1. First we will recap what we would like. I have nothing to say because you have the answers
-2. Then we will we will put ourself in a situation were you start a brand new experimental code.
-3. Finally you will transition your code in production ready state. At least we will put in place what we need from the error management point of view.
+**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need I propose to follow this path. 
+1. First we will recap what we would like to see and live with in terms of error managment. A kind of wish list if you will. I have nothing to say because you have the answers
+2. Then we will put ourself in a situation were you start few brand new experimental projects. It will be a good opportunity to write some code, check our knowledges and put in place good practices.
+3. Finally you will transition your projects in production ready state. At least we will put in place what we need from the error management point of view.
 
 Do you agree?
 
@@ -2763,23 +2765,30 @@ Do you agree?
 
 ### Key Concepts
 
-**Bob** : Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice...): "A complex system that works is invariably found to have evolved from a simple system that worked..."
+**Bob** : Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments...): "A complex system that works is invariably found to have evolved from a simple system that worked..."
+
+<div align="center">
+<img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 So, good news, you are right. You must start with an experimental code that works and which will evolve (may be) in a million dollar class of application.
 
 I can also confirm you are right when you say that you want to put it place, up front, an error management system that scales with your app.
 
-Now, I have a question for you. Without entering technical details, what do you want from the error management standpoint?
+Now, I have a question for you. Without entering in the technical details, what do *you* want from the error management standpoint?
 
 **Alice:** Um... I would say...
 * The sooner the better. I mean, get help from the rust type and build systems to detect most of errors at compile time...
 * The fewer the better. This is obvious. Ideally I don't want error in my code.
 * I told you, I really like the `?` operator. It makes the code easy to read. Its my friend. I would like to keep it from proto to prod.
-* I would like to have the means to write quickly the experimentation code and to use what we saw with the custom error type in production. `enum` and friends are great but I'm no sure I want to see them in my experimentation.
+* I would like to have the means to write quickly the experimentation code and to use what we saw with the custom error type in production. `enum` and friends are great but I'm no sure I want to see them in my experimentations.
+* I also remember what we say. If I write a library it should return the errors to the consumer and let it decide. It should almost never `panic!()`.
+* Library should expose one error data type in the API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...  
 * What else? An expresso? More seriously I don't see much to say except the fact I want to avoid to rewrite my code when I transitioning to production. 
 
 <div align="center">
-<img src="./assets/img25.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img25.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -2794,7 +2803,7 @@ Now, I have a question for you. Without entering technical details, what do you 
 {: .note-title }
 > Side Note
 >
-> In the workspace, the code used below is in `01_experimentation/examples/` directory. 
+> In the workspace, the code is now in the `01_experimentation/examples/` directory. 
 
 
 **Bob:** It is Saturday night. The house is silent, your young sister is out (you don't want to kow where nor with who). This is the best time to play with Rust.
@@ -2814,11 +2823,11 @@ fn main() {
 }
 ```
 
-Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what can of std lib and crate function I will call, I will make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blablabla...
+Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what kind of std lib and crate functions I will call, I make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blablabla...
 
 **Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` for example.
 
-**Alice:** Thanks for the nudge. So I would write this:
+**Alice:** Thanks for the nudge. So I would the code like this:
 
 ```rust
 use std::error::Error;
@@ -2852,7 +2861,6 @@ Indeed I rewrite your code like this:
 
 ```rust
 // ex001.rs
-
 pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 
@@ -2862,7 +2870,9 @@ fn main() -> Result<()> {
 }
 ```
 
-No big change. In fact since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` separated. Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
+No big change. In fact since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` type aliases on 2 separated statements. 
+
+Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
 
 By the way do you have any idea of what I just did?
 
@@ -2878,11 +2888,11 @@ By the way do you have any idea of what I just did?
 
 
 
-**Bob:** I just added a level of [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection) which, according to David Wheeler is the way to solve most of problems in software.
+**Bob:** I just added a level of [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection) which, according to [David Wheeler](https://en.wikipedia.org/wiki/David_Wheeler_(computer_scientist)) is the way to solve most of problems in computer science.
 
 So, at this point, we agree to say that `ex001.rs` is by now your official code template. Ok? Ok. 
 
-Do you know what is the BMI?
+Do you know what BMI is?
 
 **Alice:** Yes I do. My sister is always talking about it. I learnt this a statistical value which is more valuable for population than for individual. It indicates if the group is overweight or not. Basically you take a weight (in kg) and divide it by the square of the height (in meters). This give a result in number of kilograms per square meter. If the group is between 18.5 and 24.9 it is OK.
 
@@ -2892,7 +2902,6 @@ Do you know what is the BMI?
 
 ```rust
 // ex100.rs
-
 pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 
@@ -2910,12 +2919,23 @@ fn bmi(w: f64, h: f64) -> Result<f64> {
 }
 ```
 
-While writing the code, the most difficult part was the line `return Err("Height cannot be 0.0".into());`. I lost some time because initially I wanted to `return Err("Height cannot be 0.0");` but it does'nt work. Indeed `bmi()` returns a `Result<f64>`, this means a `Result<f64, Box<dyn Error>>`. So I have to convert the `&'static str` into a `Box<dyn std::error::Error>` first. I hope I will remember the `.into()`.
+While writing the code, the most difficult part was the line 
+```rust
+return Err("Height cannot be 0.0".into());
+```
+
+I lost some time because initially I wanted to write
+
+```rust
+return Err("Height cannot be 0.0"); 
+```
+ 
+But this does'nt work. Indeed `bmi()` returns a `Result<f64>`, this means a `Result<f64, Box<dyn Error>>`. So I have to convert the `&'static str` into a `Box<dyn std::error::Error>` first. I hope that now on, I will remember the `.into()`.
 
 
 **Bob:** Don't worry this will come with practice. Now, in a new experimentation,  I want you to write function that receive a vector of integers written as strings and returns their sum.
 
-**Alice:** If we look from the `main()` standpoint is it what you want to see?
+**Alice:** If we look at it from the perspective of the `main()` function, is this what you want to see?
 
 ```rust
 // ex200.rs
@@ -2946,8 +2966,8 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 ```
 
 * It returns a `Result<32>` so that I can use `?` in `main()`
-* `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array of static strings (`&str`). 
-* Then there is a for loop which traverses the vector `values`
+* `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`). 
+* Then there is a `for` loop which traverses the vector `values`
 * I remembered we used `.parse()` at the beginning of the section "The `Result<T, E>` Type: Handling Recoverable Errors" 
 * Pressing `CTRL+ALT`, I see `.parse::<i32>()` returns a `Result<i32, ParseIntError>`
 * If `current_val` is Ok I add its value to the running `sum`, otherwise... With the help of `.unwrap()` the code `panic!()`
@@ -2961,7 +2981,7 @@ The code work, but to tell the truth, I'm not really proud of the `.unwrap()` an
 
 **Bob:** Then?
 
-**Alice:** Now I have this version of `sum_strings()` without any raw loop
+**Alice:** Now, I have this version of `sum_strings()` without any raw loop
 
 ```rust
 fn sum_strings(values: &[&str]) -> Result<i32> {
@@ -3017,13 +3037,13 @@ pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
-    let files = list_files(".")?; // see the ? here
+    let files = list_files(".")?; 
     println!("{files:#?}");
     Ok(())
 }
 ```
 
-**Bob:** Yes. Now show me the `list_files()` function please.
+**Bob:** Yes. Now, show me the `list_files()` function please.
 
 **Alice:** Here is what I have so far
 
@@ -3036,14 +3056,12 @@ fn list_files(path: &str) -> Result<Vec<String>> {
         .collect();
     Ok(files)
 }
-
-
 ```
 * I looked around in the documentation and on the web how to list files in a directory with Rust.
 * Then I met [`read_dir()`](https://doc.rust-lang.org/std/fs/fn.read_dir.html) which returns an `io::Result<ReadDir>`
 * When OK this is an iterator over the entries within the directory
-* If it is an iterator I can daisy chained multiple filter and keep the files of interest
-* `.filter_map()`, `.filter()` and `.collect()` operate on an `Iterator<Item = DirEntry>` once the `Result` has been unwrapped by `?`
+* If it is an iterator I can daisy chained multiple filters and keep the files of interest
+* `.filter_map()`, `.filter()` and `.collect()` operate on an `Iterator<Item = DirEntry>` once the `Result` has been unwrapped by `?` right after `read_dir()`
 * These iterator methods do not return a `Result`. They cannot fail in a way that would require error propagation.
 * They simply transform the data from one form to another 
 * This is why there is no `?` at the end of the steps
@@ -3054,13 +3072,13 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 * Finally the function returns the vector to `main()` with `Ok(files)`        
 
 
-**Bob:** Did you notice how your template worked fine in 3 different experimentation? I guess we can keep it in our toolbox.
+**Bob:** Did you notice how your template worked fine in 3 different experimentations? I guess we can keep it in our toolbox.
 
-Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` here and return a custom message to `main()` explaining what's going here?  
+Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` and return a custom message to `main()` explaining what's happened?  
 
-**Alice:** Ok... I start by removing the `?` then... I don't know.
+**Alice:** Ok... I start by removing the `?` then... I don't know!
 
-**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type"? We were discussing about the `Option<T>` and the fact we were using the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I use .map_err(). Do you remember now? Review `ex16.rs` if needed.
+**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type"? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` and come back.
 
 **Alice:** I get it. Here is my new version of the code
 
