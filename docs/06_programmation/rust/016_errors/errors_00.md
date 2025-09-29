@@ -43,10 +43,9 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * The code is on [GitHub](https://github.com/40tude/err_for_blog_post).
 
 * **Rust has no exceptions:**  
-    * **recoverable** errors (handled with the `Result<T, E>` type) 
-    * **unrecoverable** errors (handled by panicking using `panic!()`) 
-    
-    We must explicitly handle errors.
+    * **recoverable** errors (handled with the `Result<T, E>` type). 
+    * **unrecoverable** errors (handled by panicking using `panic!()`). 
+    * We must explicitly handle errors.
 
 * **`Result<T, E>` enum:**  
     * Represents either success (`Ok(T)`) or error (`Err(E)`). 
@@ -64,14 +63,14 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 * **When to panic:** 
     * On bugs or invalid states in **our code** (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)). 
-    * If failure is possible in normal operation (e.g. file not found, invalid user input...), return a `Result<T, E>`. 
+    * If failure is possible in normal operation (e.g. invalid user input...), return a `Result<T, E>`. 
     * Library code should avoid panicking on recoverable errors, bubbles them up and let the caller decide.
 
 * **Custom error types:** 
     * For sophisticated libraries or binaries.
     * Define our own error types to represent various error kinds in one type. 
     * Implementing `std::error::Error` (=> impl `fmt::Display` and `#[derive(Debug)]`)
-    * Use pattern matching or helper methods like `.map_err()` (or the `From` trait implementations) to convert std lib errors into our custom error and return it with `?`
+    * Use pattern matching or helper methods like `.map_err()` (or the `From` trait implementation) to convert std lib errors into our custom error and return it with `?`
 
 * **`anyhow` and `thiserror`**
     * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blablabla")`.
@@ -1857,7 +1856,7 @@ impl std::error::Error for ConfigError {}
 * `ConfigError` is an enum (a sum type). A value of this type is exactly one of its variants at a time. Here it has two possible variants:
     * `Io(...)` — a variant that carries one payload of type `std::io::Error`
     * `Parse(...)` — a variant that carries one payload of type `serde_json::Error`
-* **Important**. Keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
+* Keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
     * Think about : `fn Io(e: std::io::Error) -> ConfigError{...}`
 
 {: .warning-title}
