@@ -1160,7 +1160,7 @@ But then I can imagine that other functions in `main.rs` will need to return the
 
 ```rust
 // ex000.rs
-pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+ype Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn main() -> Result<()> {
     println!("Hello, world!");
@@ -1188,9 +1188,9 @@ fn main() -> Result<()> {
 }
 ```
 
-No big change. In fact since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` type aliases on 2 type alias declarations. 
-
-Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
+No big change. 
+1. Since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` type aliases on 2 type alias declarations. Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
+1. Do you see the `pub` word? Here it does not really matter because the code is monolithic. Tomorrow, if you want to make sure `Result<T>` (and `Error`) can be used elsewhere it is better to anticipate and to give them a public access modifier upfront.  
 
 By the way do you have any idea of what I did?
 
@@ -1600,10 +1600,7 @@ What would you do?
 
 **Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according the responsibilities.
 
-**Bob:** Ok, this is your task. Create a new project which does exactly the same thing but organized around a `main()` function using an API exposed by a library. Create the project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do, step by step...
-
-
-
+**Bob:** Ok, this is your task. But I would like to be very cautious and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works as before. You could create a project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do, step by step...
 
 
 
@@ -1612,9 +1609,6 @@ What would you do?
 > Side Note
 >
 > From now on, in the workspace, the projects discussed below are in the `02_production/` directory.  
-
-
-
 
 
 
@@ -1631,10 +1625,10 @@ What would you do?
 ├───empty
 └───src
     │   main.rs
-    │   tooling.rs
+    │   files.rs
     │
-    └───tooling
-            my_lib.rs
+    └───files
+            listing.rs
 
 ```
 * I create a directory named `empty` to make some test 
@@ -1649,7 +1643,8 @@ edition = "2024"
 
 [dependencies]
 ```
-
+* Since I can't create a library there is no `lib.rs` in the project directory just a `main.rs`
+* Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary (`step_00.exe`)
 * In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below: 
 
 ```rust
@@ -1657,30 +1652,36 @@ edition = "2024"
 pub type Result<T> = std::result::Result<T, Error>;
 pub type Error = Box<dyn std::error::Error>;
 
-mod tooling;
+mod files;
 
-use crate::tooling::my_lib;
+use crate::files::listing;
 
 fn main() -> Result<()> {
-    let files = my_lib::list_files("./02_production/00_project/empty")?; // see the ? here
+    let files = listing::list_files("./02_production/00_project/empty")?; // see the ? here
     println!("{files:#?}");
     Ok(())
 }
+
 ```
 * The type alias declaration for `Result` and `Error` remains the same
-* The line `mod tooling` declares the existence of a module named `tooling` in the crate. It includes the contents of the module from the external file `tooling.rs`
-* `use crate::tooling::my_lib` is a shortcut. It imports the `my_lib` into the current scope.
-    * Rather than writing `tooling::my_lib::list_files()`, I can write `my_lib::list_files()`. 
-    * Alternatively I could write `use crate::tooling::my_lib::list_files` and call `list_files()` directly but I prefer to write `my_lib::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember where `list_files()` is defined.  
+* The line `mod files` declares the existence of a module named `files` in the crate. It includes the contents of the module from the external file `files.rs`
+* It is important to understand that the module tree is the only thing that matters for the build system. At the top of the tree is the root crate. Then underneath a tree where on each branch and leaf we have module (not a file). Modules are namespaces which organize code inside a crate. We can have multiple modules in one file. File does not matter. They are just containers of modules. Here the module tree will look like this:
 
-
+```
+crate (main.rs)
+└─ files        (files.rs)
+   └─ listing      (files/listing.rs)
+```
+* `use crate::files::listing` is a shortcut. It imports the module `listing` into the current scope.
+    * Rather than writing `files::listing::list_files()`, I can write `listing::list_files()`. 
+    * Alternatively I could write `use crate::files::listing::list_files` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember in which module `list_files()` is defined (I will read that `list_files` is defined in the module named `listing`)  
 
 
 
 {: .note-title }
 > Side Note
 >
-> If you don't feel 100% confident with files, crates, modules... Before reading what follows, you should read this short [dedicated post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
+> If you don't feel 100% confident with crates, modules, files... You should read this short [dedicated post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
 
 
@@ -1688,17 +1689,17 @@ fn main() -> Result<()> {
 
 
 
-* In the directory tree, `tooling.rs` is a hub file. I mean it is a short file that declares which modules exist at a given level (here it declares `my_lib` one level lower)
+* In the directory tree, `files.rs` is a hub file. I mean it is a short file that declares which modules exist at a given level (here it declares the module `listing` one level below)
 
 ```rust
-// tooling.rs
-pub mod my_lib;
+// files.rs
+pub mod listing;
 ```
 
-* And now here is the content of `tooling/my_lib.rs`
+* And now here is the content of the file `files/listing.rs`
 
 ```rust
-// my_lib.rs
+// listing.rs
 use crate::Result; 
 
 pub fn list_files(path: &str) -> Result<Vec<String>> {
@@ -1715,7 +1716,8 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 ```
 
 * At the top of the file the line `use crate::Result;` imports the `Result` type from the crate root into the current scope. This is what allows `list_files()` to return a `Result<T>`
-* I add `pub` at the beginning of `list_files()` signature and there is no other change
+* I had to add `pub` at the beginning of `list_files()` signature 
+* There is no other change
 
 Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace (or the root of the current project) and run it with :
 
@@ -1734,11 +1736,32 @@ Here is what I can see in VSCode:
 
 
 
+<!-- **Bob:** The second step should be easy. Create an `error.rs` file then copy/paste Result and Error defintion. Make sure the project work as before.
+
+**Alice:** You know what, I copy/paste/rename the project  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Summary – Experimentation to Production
 
 {: .new-title }
 > Summary – Experimentation to Production
 >
+* Split monolitic code into 1 or more libraries and 1 consumer
+* 
 * **`derive_more`:** ...  
 * **...:** ...  
 
