@@ -1063,26 +1063,27 @@ fn main() -> Result<(), ConfigError> {
 
 **Alice:** It was a lot... Again, many, many thanks because it really helps to organized my thoughts about errors management. 
 
-There is may one last thing I would like to discuss with you. I know, I'm still a young Padawan, and most of my projects are just experiments I tinker with on weekends. Ok, but I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily my project to production code.
+There is, may be, one last thing I would like to discuss with you. I know, I'm still a young Padawan, and most of my projects are just experiments I tinker with on weekends. Ok, but I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily my project to production code.
 
 <div align="center">
 <img src="./assets/img24.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need I propose we follow this path. 
+**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need ti know, I propose we follow this path:
+
 1. First, we’ll recap what we’d like to see — and actually live with — when it comes to error management. Kind of like a wish list, if you will. I don’t have much to add here, since you already have the answers.
 2. Then we will put ourself in a situation were you start few experimental projects. It will be a good opportunity to write some code, check our knowledge and put in place good practices.
 3. Finally you will transition your projects in production ready state. At least we will put in place what we need from the error management point of view.
 
 Do you agree?
 
-**Alice:** This would be perfect. Let's go
+**Alice:** This would be perfect. Let's go.
 
 
 ### Key Concepts
 
-**Bob** : Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments...): "A complex system that works is invariably found to have evolved from a simple system that worked..."
+**Bob** : Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments): "A complex system that works is invariably found to have evolved from a simple system that worked..."
 
 <div align="center">
 <img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1096,20 +1097,20 @@ I can also confirm you are right when you say that you want to put it place, up 
 Now, I have a question for you. Without entering in the technical details, what do *you* want from the error management standpoint?
 
 **Alice:** Um... I would say...
-* The sooner the better. I mean, get help from the rust type and build systems to detect most of errors at compile time...
+* The sooner the better. I mean, get help from the rust type and build systems to detect most of errors at compile time. You know what I mean.
 * The fewer the better. This is obvious. Ideally I don't want error in my code.
-* I told you, I really like the `?` operator. It makes the code easy to read. Its my friend. I would like to keep it from proto to prod.
-* I’d like to be able to write experimentation code quickly, while still using what we learned with the custom error type in production. `enum` and its friends are great, but I’m not sure I want to deal with them in my experiments.
+* I told you, I really like the `?` operator. It makes the code easy to read. It is my friend. I would like to keep it in the transition from prototype to production.
+* I want to be able to prototype experimentation code quickly, while still applying the lessons we learned with the custom error type in production. `enum` and related features are powerful, but I’m not sure I want to bother with them in my experimental code.
 * I also remember what we say. If I write a library it should return the errors to the consumer and let him decide. It should almost never `panic!()`.
 * Library should expose one error data type in their API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...  
-* What else? An expresso? More seriously I don't see much to say except the fact I want to avoid to rewrite my code when I transitioning to production. 
+* What else? An espresso? More seriously, I don’t have much to add, except that I’d like to avoid rewriting my code when transitioning to production.
 
 <div align="center">
 <img src="./assets/img25.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-**Bob:** It is really good. You are definitively on the right track. Let's keep all this in mind and let's move to the experimentation phase.
+**Bob:** It's really good. You are definitively on the right track. Let's keep all this in mind and let's move to the experimentation phase.
 
 
 
@@ -1120,7 +1121,7 @@ Now, I have a question for you. Without entering in the technical details, what 
 {: .note-title }
 > Side Note
 >
-> In the workspace, the source code discussed below are in the `01_experimentation/examples/` directory. 
+> In the [workspace](https://github.com/40tude/err_for_blog_post), the source code discussed below are in the `01_experimentation/examples/` directory. 
 
 
 **Bob:** It is Saturday night. The house is silent, your young sister is out (you don't want to kow where nor with who). This is the best time to play with Rust. No?
@@ -1142,9 +1143,9 @@ fn main() {
 
 Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what kind of std lib and crate functions I will call, I make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blablabla...
 
-**Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` for example.
+**Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` in [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%}) for example.
 
-**Alice:** Thanks for the nudge. So I would the code like this:
+**Alice:** Thanks for the nudge. So I would write the code like this:
 
 ```rust
 use std::error::Error;
@@ -1191,7 +1192,7 @@ No big change. In fact since we want to use the same code from experimentation t
 
 Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
 
-By the way do you have any idea of what I just did?
+By the way do you have any idea of what I did?
 
 **Alice:** No. You split my line in two and you explained that later if the `Error` type becomes very complicated, this will have no impact on `Result<T>` 
 
@@ -1274,10 +1275,15 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 }
 ```
 
+
+
+
+
+
 * It returns a `Result<32>` so that I can use `?` in `main()`
 * `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`). 
 * Then, there is a `for` loop which traverses the vector `values`
-* I remembered we used `.parse()` at the beginning of the section "The `Result<T, E>` Type: Handling Recoverable Errors" 
+* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_01.md%}#the-resultt-e-type-handling-recoverable-errors) 
 * Pressing `CTRL+ALT`, I see `.parse::<i32>()` returns a `Result<i32, ParseIntError>`
 * If `current_val` is Ok I add its value to the running `sum`, otherwise... With the help of `.unwrap()` the code `panic!()`
 * At the end of the loop, `sum` is a valid number and I return it with `Ok(sum)`
@@ -1354,7 +1360,7 @@ fn main() -> Result<()> {
 
 **Bob:** Yes. Now, show me the `list_files()` function please.
 
-**Alice:** Here is what I have so far
+**Alice:** Here is what I have so far (no raw loop):
 
 ```rust
 fn list_files(path: &str) -> Result<Vec<String>> {
@@ -1368,7 +1374,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 ```
 * I looked around in the documentation and on the web how to list files in a directory with Rust.
 * Then I met [`read_dir()`](https://doc.rust-lang.org/std/fs/fn.read_dir.html) which returns an `io::Result<ReadDir>`
-* When OK it can beused as an iterator over the entries within the directory (there is an impl Iterator for ReadDir)
+* When OK it can be used as an iterator over the entries within the directory (there is an `impl Iterator for ReadDir`)
 * If it is an iterator I can daisy chain multiple filters and keep the files of interest
 * `.filter_map()`, `.filter()` and `.collect()` operate on an `Iterator<Item = DirEntry>` once the `Result` has been unwrapped by `?` right after `read_dir()`
 * These iterator methods do not return a `Result`. They cannot fail in a way that would require error propagation.
@@ -1376,7 +1382,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 * This is why there is no `?` at the end of the steps
     * the first `.filter_map()` silently drops entries that errored
     * the second `.filter()` ask the filesystem whether the entry is a file. If that check errors because it is a directory, it is treated as false and not kept in the list of files.
-    * the last `filter_map()` only keeps filenames that are valid UTF-8 and the others are dropped
+    * the last `filter_map()` only keeps filenames that are valid UTF-8 while the others are dropped
 * The last step is `.collect()` which creates a vector with the filtered filenames
 * Finally the function returns the vector to `main()` with `Ok(files)`        
 
@@ -1387,7 +1393,7 @@ Now in the last sample code, rather than panicking on error after the call to `r
 
 **Alice:** Ok... I start by removing the `?` then... I don't know!
 
-**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type" in Episode 01? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` then come back here.
+**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type" in [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` then come back here.
 
 **Alice:** I get it. Here is my new version of the code
 
@@ -1413,28 +1419,28 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 }
 ```
 
-* You are right. The key is to remember `.map_err()` and how it works. Let me rephrase my understanding...
-* At the exit of `read_dir()`
+* You are right. The key is to remember `.map_err()` and how it works. Let me rephrase my understanding... At the exit of `read_dir()`
     * If the `Result` is an `Ok(value)`, `.map_err()` does nothing. The `?` operator evaluates to `value` and the execution continues
     * If the `Result` is `Err(e)`, `.map_err()` applies the closure to `e` and returns `Err(closure(e))`
-* Here the closure ignore the actual `io::Error` (`|_|` discards it) and replace it with a static string slice `"Error while reading dir."`
-* The `?` operator immediately returns that error from the current function.
+        * Here the closure ignores the actual `io::Error` (`|_|` discards it) and replaces it with a static string slice `"Error while reading dir."`
+        * The `?` operator immediately returns that error from the current function.
 
 
 
 
-Now, let me repeat the detail of the operations
+Now, let me repeat the details of the operations. Just to make sure...
+
 * The return type of the `list_files()` function is `Result<Vec<String>, Box<dyn std::error::Error>>`
 * So when the `Err(&str)` need to be bubbled up, Rust needs to find a way to transform the `&str` into a `Box<dyn std::error::Error>`
 * The promotion from `&str` to `Box<dyn std::error::Error>` is possible because std lib includes `impl<'a> From<&str> for Box<dyn Error + 'a>`. I took the time to [read this page](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
-* This explain why we can return a bare "`Error while reading dir.`" and how it gets "promoted" into a proper `Box<dyn Error>`.
+* This explains why we can return a bare "`Error while reading dir.`" and how it gets "promoted" into a proper `Box<dyn Error>`.
 
 {: .warning-title}
 > This is key
 >
 The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes an implementation of the `From` trait which does exactly that. See `impl<'a> From<&str> for Box<dyn Error + 'a>`.  
 
-**Bob:** I'm truly impressed. Now, even if it is a little bit overkill because we are supposed to be in an experiment, I guess that if I ask you to return *also* the reason *why* the error occurs it is a matter of seconds. No?
+**Bob:** I'm truly impressed. Now, even if it is a little bit overkill because we are supposed to be in an experiment, if I ask you to return *also* the reason *why* the error occurs I guess it is a matter of seconds. No?
 
 **Alice:** You're right. Now it is much easier. Here is the new version of the code
 
@@ -1465,7 +1471,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 
 
 
-**Bob:** *A Padawan no more, you are. Prove a Jedi Knight you have become...* Let's go back on the first experiment and show me how you would return an meaningful error message if the directory is empty.
+**Bob:** *A Padawan no more, you are. Prove a Jedi Knight you have become...* Let's go back to the first experiment and show me how you would return an meaningful error message if the directory is empty.
 
 **Alice:** Here is my code
 
@@ -1496,10 +1502,10 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 * This time it's easier because I remember about `.into()`
 * I keep the initial code but once the `files` vector is collected, I check if it is empty.
 * If it is I return an ad hoc message.
-* Otherwise, as before, we reach the end of the body of `list_files()` the `files` vector is Ok and I return `Ok(files)`
+* Otherwise, as before, we reach the end of the body of `list_files()`, the `files` vector is Ok and I return `Ok(files)`
 
 
-**Bob:** We are still in the experimentation phase where we can take the time to learn, discover, crash and repair things. Can you tell me, in detail, why and how the `.into()` works. Take your time, read the documentation before to anser.
+**Bob:** We are still in the experimentation phase where we can take the time to learn, discover, crash and repair things. Can you tell me, in detail, why and how the `.into()` works? Take your time, read the documentation before to anser.
 
 **Alice:** It turned out to be a real caving expedition, and it took me more time than I had anticipated. Sorry about that. 
 
@@ -1515,21 +1521,22 @@ I focus on the lines below:
         return Err("Cannot list empty folder.".into()); 
     }
 ```
-* The `.into()` works because std lib includes [`impl<'a> From<&str> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
+The `.into()` works because std lib includes [`impl<'a> From<&str> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E) and here is why:
 * When I write `"Cannot list empty folder.".into();`
 * It starts as a `&'static str`
 * The compiler knows that the expected type is `Box<dyn Error>`
 * It founds `impl<'a> From<&str> for Box<dyn Error + 'a>` in the std lib
-* But in Rust if we have `From<A> to B` we get `Into<B> for A` for free
+* But in Rust if we have `From<A> to B` then we get `Into<B> for A` for free
 * Here this means `Into<Box<dyn Error> for &str` exists
 * Then the `static &str` is automatically converted to `Box<dyn Error>`
-* The story has a happy ending: they got married and lived happily ever after.
+
+The story has a happy ending: they got married and lived happily ever after.
 
 
 {: .warning-title}
 > This is key
 >
-In Rust if the trait `From<A> for B` exists, we get the trait `Into<B> for A` for free.  
+In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for A` for free.  
 
 
 <div align="center">
@@ -1563,7 +1570,7 @@ In Rust if the trait `From<A> for B` exists, we get the trait `Into<B> for A` fo
 </div>
 
 
-**Bob:** You know what? We will use the last experiment as a starting point. Again the objective is to transition to a production ready code (from the error management standpoint). Today it is monolithic and it looks like this.  
+**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (from the error management standpoint). Today it is monolithic and it looks like this.  
 
 ```rust
 // ex303.rs
@@ -1591,9 +1598,9 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 ```
 What would you do?
 
-**Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, split according the responsibilities.
+**Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according the responsibilities.
 
-**Bob:** Ok, this is your task. Create a new project which does exactly the same thing but organized around a `main()` function using the API exposed by library. Create the project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do, step by step...
+**Bob:** Ok, this is your task. Create a new project which does exactly the same thing but organized around a `main()` function using an API exposed by a library. Create the project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do, step by step...
 
 
 
@@ -1631,9 +1638,10 @@ What would you do?
 
 ```
 * I create a directory named `empty` to make some test 
-* In the `Cargo.toml` the project is named `step_00` because I suppose we will have more than one step on our path the the Valhalla (production code here). Here it is:
+* In the `Cargo.toml` the project is named `step_00` because I suppose we will have more than one step on our path to the Valhalla (production code). Here is `Cargo.toml`:
 
 ```toml
+# Cargo.toml
 [package]
 name = "step_00"
 version = "0.1.0"
@@ -1642,12 +1650,7 @@ edition = "2024"
 [dependencies]
 ```
 
-* In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()` 
-* The type alias declaration for `Result` and `Error` remains here
-* The line `mod tooling` declares the existence of a module named `tooling` in the crate. It includes the contents of the module from the external file `tooling.rs`
-* `use crate::tooling::my_lib` is a shortcut. It imports the `my_lib` into the current scope.
-    * Rather than writing `tooling::my_lib::list_files()` now I can write `my_lib::list_files()`. 
-    * Alternatively I could write `use crate::tooling::my_lib::list_files` and use `list_files()` but I prefer to write `my_lib::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember where `list_files()` is defined.  
+* In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below: 
 
 ```rust
 // main.rs
@@ -1664,6 +1667,11 @@ fn main() -> Result<()> {
     Ok(())
 }
 ```
+* The type alias declaration for `Result` and `Error` remains the same
+* The line `mod tooling` declares the existence of a module named `tooling` in the crate. It includes the contents of the module from the external file `tooling.rs`
+* `use crate::tooling::my_lib` is a shortcut. It imports the `my_lib` into the current scope.
+    * Rather than writing `tooling::my_lib::list_files()`, I can write `my_lib::list_files()`. 
+    * Alternatively I could write `use crate::tooling::my_lib::list_files` and call `list_files()` directly but I prefer to write `my_lib::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember where `list_files()` is defined.  
 
 
 
@@ -1672,7 +1680,7 @@ fn main() -> Result<()> {
 {: .note-title }
 > Side Note
 >
-> If you don't feel 100% confident with files, crates, modules... Before reading what follow, you should read this short [dedicated post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
+> If you don't feel 100% confident with files, crates, modules... Before reading what follows, you should read this short [dedicated post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
 
 
@@ -1687,7 +1695,7 @@ fn main() -> Result<()> {
 pub mod my_lib;
 ```
 
-* And now here is the content of `my_lib.rs`
+* And now here is the content of `tooling/my_lib.rs`
 
 ```rust
 // my_lib.rs
@@ -1706,20 +1714,23 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 }
 ```
 
-* I add `pub` at the beginning of `list_files()` signature and there is no other change
 * At the top of the file the line `use crate::Result;` imports the `Result` type from the crate root into the current scope. This is what allows `list_files()` to return a `Result<T>`
+* I add `pub` at the beginning of `list_files()` signature and there is no other change
 
-Once the code is dispatched as explained I can open a terminal (CTRL+ù on FR keyboard) at the root of the workspace (or the root of the current project) and run it with :
+Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace (or the root of the current project) and run it with :
 
 ```powerhsell
 cargo run -p step_00
 ```
+
+Here is what I can see in VSCode:
 
 <div align="center">
 <img src="./assets/img31.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
+* In `main()`, `my_lib::list_files()` is called with an argument which is a path to an empty directory. No surprise, we print a message and the application exit.
 
 
 
