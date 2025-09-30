@@ -105,7 +105,6 @@ fn main() -> Result<()> {
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
-<!-- * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%}) -->
 
 
 
@@ -1650,7 +1649,6 @@ In Rust if the trait `From<A> to B` exists, we get the trait `Into<B> for A` for
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
-<!-- * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%}) -->
 
 
 
