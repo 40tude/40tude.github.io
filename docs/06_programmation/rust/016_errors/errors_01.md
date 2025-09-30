@@ -29,7 +29,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 {: .no_toc }
 
 
-## TL;DR
+<!-- ## TL;DR
 {: .no_toc }
 
 * For beginners.
@@ -72,7 +72,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
     * Don’t mix them blindly (anyhow inside the lib, thiserror API of the lib) 
 
 * **From Experimentation to Production:**
-    * ...
+    * ... -->
 
 <!-- * **Keep in mind**
 
