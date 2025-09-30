@@ -7,7 +7,7 @@ description: A beginner-friendly conversation on Errors, Results, Options, and b
 parent: Rust
 #math: mathjax
 date               : 2025-09-20 18:00:00
-last_modified_date : 2025-09-29 10:00:00
+last_modified_date : 2025-09-30 10:00:00
 ---
 
 
@@ -1063,16 +1063,16 @@ fn main() -> Result<(), ConfigError> {
 
 **Alice:** It was a lot... Again, many, many thanks because it really helps to organized my thoughts about errors management. 
 
-There is may one thing I would like to discuss with you. I know I'm a young Padawan and that my projecs are mostly experimentations I work on during week-end. Ok, but I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily my project to production code.
+There is may one last thing I would like to discuss with you. I know, I'm still a young Padawan, and most of my projects are just experiments I tinker with on weekends. Ok, but I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily my project to production code.
 
 <div align="center">
 <img src="./assets/img24.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need I propose to follow this path. 
-1. First we will recap what we would like to see and live with in terms of error managment. A kind of wish list if you will. I have nothing to say because you have the answers
-2. Then we will put ourself in a situation were you start few brand new experimental projects. It will be a good opportunity to write some code, check our knowledges and put in place good practices.
+**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need I propose we follow this path. 
+1. First, we’ll recap what we’d like to see — and actually live with — when it comes to error management. Kind of like a wish list, if you will. I don’t have much to add here, since you already have the answers.
+2. Then we will put ourself in a situation were you start few experimental projects. It will be a good opportunity to write some code, check our knowledge and put in place good practices.
 3. Finally you will transition your projects in production ready state. At least we will put in place what we need from the error management point of view.
 
 Do you agree?
@@ -1099,9 +1099,9 @@ Now, I have a question for you. Without entering in the technical details, what 
 * The sooner the better. I mean, get help from the rust type and build systems to detect most of errors at compile time...
 * The fewer the better. This is obvious. Ideally I don't want error in my code.
 * I told you, I really like the `?` operator. It makes the code easy to read. Its my friend. I would like to keep it from proto to prod.
-* I would like to have the means to write quickly the experimentation code and to use what we saw with the custom error type in production. `enum` and friends are great but I'm no sure I want to see them in my experimentations.
-* I also remember what we say. If I write a library it should return the errors to the consumer and let it decide. It should almost never `panic!()`.
-* Library should expose one error data type in the API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...  
+* I’d like to be able to write experimentation code quickly, while still using what we learned with the custom error type in production. `enum` and its friends are great, but I’m not sure I want to deal with them in my experiments.
+* I also remember what we say. If I write a library it should return the errors to the consumer and let him decide. It should almost never `panic!()`.
+* Library should expose one error data type in their API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...  
 * What else? An expresso? More seriously I don't see much to say except the fact I want to avoid to rewrite my code when I transitioning to production. 
 
 <div align="center">
@@ -1120,10 +1120,10 @@ Now, I have a question for you. Without entering in the technical details, what 
 {: .note-title }
 > Side Note
 >
-> In the workspace, the code is now in the `01_experimentation/examples/` directory. 
+> In the workspace, the code is now in the `01_experimentation/examples/` project. 
 
 
-**Bob:** It is Saturday night. The house is silent, your young sister is out (you don't want to kow where nor with who). This is the best time to play with Rust.
+**Bob:** It is Saturday night. The house is silent, your young sister is out (you don't want to kow where nor with who). This is the best time to play with Rust. No?
 
 <div align="center">
 <img src="./assets/img26.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1174,7 +1174,7 @@ fn main() -> Result<()> {
 <!-- <span>Optional comment</span> -->
 </div>
 
-Indeed I rewrite your code like this:
+Let me rewrite your code like this:
 
 ```rust
 // ex001.rs
@@ -1187,33 +1187,25 @@ fn main() -> Result<()> {
 }
 ```
 
-No big change. In fact since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` type aliases on 2 separated statements. 
+No big change. In fact since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` type aliases on 2 type alias declarations. 
 
 Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
 
 By the way do you have any idea of what I just did?
 
-**Alice:** No. You split my line in two and you explained that later if the `Error` type becomes very complicated, this will have no impact of `Result<T>` 
+**Alice:** No. You split my line in two and you explained that later if the `Error` type becomes very complicated, this will have no impact on `Result<T>` 
 
 
 
+**Bob:** I just add what we call a level of [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection) which, according to [David Wheeler](https://en.wikipedia.org/wiki/David_Wheeler_(computer_scientist)), is THE way to solve most of problems in computer science.
 
-
-
-
-
-
-
-
-**Bob:** I just added a level of [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection) which, according to [David Wheeler](https://en.wikipedia.org/wiki/David_Wheeler_(computer_scientist)) is the way to solve most of problems in computer science.
-
-So, at this point, we agree to say that `ex001.rs` is by now your official code template. Ok? Ok. 
+So, at this point, we agree to say that `ex001.rs` is by now your official code template. Ok? Ok, let's move on.
 
 Do you know what BMI is?
 
-**Alice:** Yes I do. My sister is always talking about it. I learnt this a statistical value which is more valuable for population than for individual. It indicates if the group is overweight or not. Basically you take a weight (in kg) and divide it by the square of the height (in meters). This give a result in number of kilograms per square meter. If the group is between 18.5 and 24.9 it is OK.
+**Alice:** Yes I do. My young sister is always talking about it. I read this a statistical value which is more valuable for population than for individuals. It indicates if the group is overweight or not. Basically you take a weight (in kg) and divide it by the square of the height (in meters). This give a result in number of kilograms per square meter. If the group is between 18.5 and 24.9 it is OK.
 
-**Bob:** Using your template write a prototype to calculate the BMI.
+**Bob:** Using your code template write a prototype to calculate the BMI.
 
 **Alice:** Here is what I have so far. 
 
@@ -1250,9 +1242,9 @@ return Err("Height cannot be 0.0");
 But this does'nt work. Indeed `bmi()` returns a `Result<f64>`, this means a `Result<f64, Box<dyn Error>>`. So I have to convert the `&'static str` into a `Box<dyn std::error::Error>` first. I hope that now on, I will remember the `.into()`.
 
 
-**Bob:** Don't worry this will come with practice. Now, in a new experimentation,  I want you to write function that receive a vector of integers written as strings and returns their sum.
+**Bob:** Don't worry this will come with practice. Now, for a new experiment, I want you to write a function that receives a vector of integers written as strings and returns their sum as an `i32`.
 
-**Alice:** If we look at it from the perspective of the `main()` function, is this what you want to see?
+**Alice:** If we look at it from the perspective of the `main()` function, is the code below  what you have in mind?
 
 ```rust
 // ex200.rs
@@ -1284,7 +1276,7 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 
 * It returns a `Result<32>` so that I can use `?` in `main()`
 * `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`). 
-* Then there is a `for` loop which traverses the vector `values`
+* Then, there is a `for` loop which traverses the vector `values`
 * I remembered we used `.parse()` at the beginning of the section "The `Result<T, E>` Type: Handling Recoverable Errors" 
 * Pressing `CTRL+ALT`, I see `.parse::<i32>()` returns a `Result<i32, ParseIntError>`
 * If `current_val` is Ok I add its value to the running `sum`, otherwise... With the help of `.unwrap()` the code `panic!()`
@@ -1310,7 +1302,7 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 }
 ```
 
-But I remember what we said about `.unwrap()`, and `.expect()`. For now I have this version which prints a custom message on error. See below : 
+But I remember what we said about `.unwrap()`, and `.expect()`. Finally I have this version which prints a custom message on error. See below : 
 
 ```rust
 // ex200.rs
@@ -1334,7 +1326,7 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 }
 ```
 
-Here is what I can see in the terminal
+Here is what I can see in the terminal when "oops" is in the initial vector.
 
 ```
 thread 'main' panicked at 01_experimentation\examples\ex200.rs:19:59:
@@ -1376,8 +1368,8 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 ```
 * I looked around in the documentation and on the web how to list files in a directory with Rust.
 * Then I met [`read_dir()`](https://doc.rust-lang.org/std/fs/fn.read_dir.html) which returns an `io::Result<ReadDir>`
-* When OK this is an iterator over the entries within the directory
-* If it is an iterator I can daisy chained multiple filters and keep the files of interest
+* When OK it can beused as an iterator over the entries within the directory (there is an impl Iterator for ReadDir)
+* If it is an iterator I can daisy chain multiple filters and keep the files of interest
 * `.filter_map()`, `.filter()` and `.collect()` operate on an `Iterator<Item = DirEntry>` once the `Result` has been unwrapped by `?` right after `read_dir()`
 * These iterator methods do not return a `Result`. They cannot fail in a way that would require error propagation.
 * They simply transform the data from one form to another 
@@ -1385,17 +1377,17 @@ fn list_files(path: &str) -> Result<Vec<String>> {
     * the first `.filter_map()` silently drops entries that errored
     * the second `.filter()` ask the filesystem whether the entry is a file. If that check errors because it is a directory, it is treated as false and not kept in the list of files.
     * the last `filter_map()` only keeps filenames that are valid UTF-8 and the others are dropped
-* The last step is `.collect()` which creates a vector with the filtered names
+* The last step is `.collect()` which creates a vector with the filtered filenames
 * Finally the function returns the vector to `main()` with `Ok(files)`        
 
 
-**Bob:** Did you notice how your template worked fine in 3 different experimentations? I guess we can keep it in our toolbox.
+**Bob:** Did you notice how your template worked fine in 3 different experiments? I guess we can keep it in our toolbox.
 
-Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` and return a custom message to `main()` explaining what's happened?  
+Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` and return a custom message to `main()` explaining what's happen?  
 
 **Alice:** Ok... I start by removing the `?` then... I don't know!
 
-**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type"? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` and come back.
+**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type" in Episode 01? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` then come back here.
 
 **Alice:** I get it. Here is my new version of the code
 
@@ -1412,7 +1404,7 @@ fn main() -> Result<()> {
 
 fn list_files(path: &str) -> Result<Vec<String>> {
     let files: Vec<String> = std::fs::read_dir(path) // no `?` here
-        .map_err(|_| "❗Error while reading dir.")? // but `?` is here. We return custom error as static string
+        .map_err(|_| "❗Error while reading dir.")? // but `?` is here. On error, return a static string
         .filter_map(|re| re.ok())
         .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
         .filter_map(|e| e.file_name().into_string().ok())
@@ -1421,28 +1413,30 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 }
 ```
 
-* The key is to remember `.map_err()` and how it works
+* You are right. The key is to remember `.map_err()` and how it works. Let me rephrase my understanding...
 * At the exit of `read_dir()`
-    * If the Result is an `Ok(value)`, `.map_err()` does nothing. The `?` operator evaluates to `value` and the execution continues
-    * If the Result is `Err(e)`, .map_err() applies the closure to `e` and returns `Err(closure(e))`
+    * If the `Result` is an `Ok(value)`, `.map_err()` does nothing. The `?` operator evaluates to `value` and the execution continues
+    * If the `Result` is `Err(e)`, `.map_err()` applies the closure to `e` and returns `Err(closure(e))`
 * Here the closure ignore the actual `io::Error` (`|_|` discards it) and replace it with a static string slice `"Error while reading dir."`
 * The `?` operator immediately returns that error from the current function.
 
-Now, let me repeat what happens. Just to make sure my understanding is correct
-* The return type of the `list_files()` function is `Result<Vec<String>, Box<dyn std::error::Error>>`
-* So when the `Err(&str)` need to be bubbled up, Rust automatically applies `From<&str> for Box<dyn Error>` which is implemented by boxing the `&str` as a string error.
-* That’s why we can return a bare "`Error while reading dir.`" and it gets "promoted" into a proper `Box<dyn Error>`.
-* The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes `impl<'a> From<&str> for Box<dyn Error + 'a>`. I took the time to [read this page](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
 
+
+
+Now, let me repeat the detail of the operations
+* The return type of the `list_files()` function is `Result<Vec<String>, Box<dyn std::error::Error>>`
+* So when the `Err(&str)` need to be bubbled up, Rust needs to find a way to transform the `&str` into a `Box<dyn std::error::Error>`
+* The promotion from `&str` to `Box<dyn std::error::Error>` is possible because std lib includes `impl<'a> From<&str> for Box<dyn Error + 'a>`. I took the time to [read this page](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
+* This explain why we can return a bare "`Error while reading dir.`" and how it gets "promoted" into a proper `Box<dyn Error>`.
 
 {: .warning-title}
 > This is key
 >
-The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes an implementation of the From trait which does exactly that. See `impl<'a> From<&str> for Box<dyn Error + 'a>`.  
+The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes an implementation of the `From` trait which does exactly that. See `impl<'a> From<&str> for Box<dyn Error + 'a>`.  
 
-**Bob:** I'm impressed. Even if it is a little bit overkill because we are supposed to be in an experimentation, I guess that if I ask you to return *also* the reason *why* the error occurred it is a matter of seconds. No?
+**Bob:** I'm truly impressed. Now, even if it is a little bit overkill because we are supposed to be in an experiment, I guess that if I ask you to return *also* the reason *why* the error occurs it is a matter of seconds. No?
 
-**Alice:** Now it is easy. Here is the new version of the code
+**Alice:** You're right. Now it is much easier. Here is the new version of the code
 
 ```rust
 // ex302.rs
@@ -1465,11 +1459,13 @@ fn list_files(path: &str) -> Result<Vec<String>> {
     Ok(files)
 }
 ```
-* Above, `.map_err()` returns a custom error as formatted `String`.
-* * The promotion from `String` to `Box<dyn std::error::Error>` works because std lib includes [`impl<'a> From<String> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C&str%3E-for-Box%3Cdyn+Error%3E:~:str%3E%20for%20Box%3Cdyn%20Error%20+%20'a%3E&text=impl%3C%27a%3E%20From%3CString%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E). 
+* Above, `.map_err()` now returns a custom error as formatted `String`.
+* The promotion from `String` to `Box<dyn std::error::Error>` works because std lib includes [`impl<'a> From<String> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C&str%3E-for-Box%3Cdyn+Error%3E:~:str%3E%20for%20Box%3Cdyn%20Error%20+%20'a%3E&text=impl%3C%27a%3E%20From%3CString%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E). 
 
 
-**Bob:** A Padawan no more, you are. Prove a Jedi Knight you have become... Let's stay on the last example and show me how, in addition to the first version you would return an meaningful error message if the directory is empty.
+
+
+**Bob:** *A Padawan no more, you are. Prove a Jedi Knight you have become...* Let's go back on the first experiment and show me how you would return an meaningful error message if the directory is empty.
 
 **Alice:** Here is my code
 
@@ -1497,20 +1493,33 @@ fn list_files(path: &str) -> Result<Vec<String>> {
     Ok(files)
 }
 ```
-* This one was easier because I remembered about `.into()`
-* The code is the same but once the `files` Vector is collected, I check if it is empty
-* If it is the case I return an ad hoc message.
+* This time it's easier because I remember about `.into()`
+* I keep the initial code but once the `files` vector is collected, I check if it is empty.
+* If it is I return an ad hoc message.
 * Otherwise, as before, we reach the end of the body of `list_files()` the `files` vector is Ok and I return `Ok(files)`
 
 
-**Bob:** We are still in the experimentation phase were we take the time to learn, discover, crash and repair things. Can you tell me in detail why and how the .into() works. Take your time, read the documentation...
+**Bob:** We are still in the experimentation phase where we can take the time to learn, discover, crash and repair things. Can you tell me, in detail, why and how the `.into()` works. Take your time, read the documentation before to anser.
 
 **Alice:** It turned out to be a real caving expedition, and it took me more time than I had anticipated. Sorry about that. 
+
+<div align="center">
+<img src="./assets/img30.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+I focus on the lines below:
+
+```rust
+    if files.is_empty() {
+        return Err("Cannot list empty folder.".into()); 
+    }
+```
 * The `.into()` works because std lib includes [`impl<'a> From<&str> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
 * When I write `"Cannot list empty folder.".into();`
 * It starts as a `&'static str`
-* Rust sees that the expected type is `Box<dyn Error>`
-* It found `impl<'a> From<&str> for Box<dyn Error + 'a>` in the std lib
+* The compiler knows that the expected type is `Box<dyn Error>`
+* It founds `impl<'a> From<&str> for Box<dyn Error + 'a>` in the std lib
 * But in Rust if we have `From<A> to B` we get `Into<B> for A` for free
 * Here this means `Into<Box<dyn Error> for &str` exists
 * Then the `static &str` is automatically converted to `Box<dyn Error>`
