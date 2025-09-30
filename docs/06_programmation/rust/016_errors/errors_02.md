@@ -1591,9 +1591,15 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 ```
 What would you do?
 
-**Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` act as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, split according the responsibilities.
+**Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, split according the responsibilities.
 
-**Bob:** Ok, this is your task. Create a new project which does exactly the same thing but organized around a `main()` function using the API exposed by library. Create the project in the `00_project` directory and since you read THE book, use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do, step by step...
+**Bob:** Ok, this is your task. Create a new project which does exactly the same thing but organized around a `main()` function using the API exposed by library. Create the project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do, step by step...
+
+
+
+
+
+
 
 {: .note-title }
 > Side Note
@@ -1603,15 +1609,11 @@ What would you do?
 
 
 
-{: .note-title }
-> Side Note
->
-> If you don't feel 100% confident with files, crates, modules... Before reading what follow, you should read this [dedicated post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
 
 
 **Alice :** OK... 
-* I first create a project in the `02_production/00_project/` directory
+* I create a project in the `02_production/00_project/` directory
 * Below you can see how files and directories are organized
 
 ```
@@ -1640,10 +1642,12 @@ edition = "2024"
 [dependencies]
 ```
 
-* In `main.rs` I basically keep the minimum, a `main()` function with a a call to `list_files()` 
+* In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()` 
 * The type alias declaration for `Result` and `Error` remains here
 * The line `mod tooling` declares the existence of a module named `tooling` in the crate. It includes the contents of the module from the external file `tooling.rs`
-* `use crate::tooling::my_lib` is a shortcut. Rather than writing `tooling::my_lib::list_files()` I can write `my_lib::list_files()`. Alternatively I could write `use crate::tooling::my_lib::list_files` and use `list_files()` but I prefer to write `my_lib::list_files()`. Indeed, 6 months from know, the code will be easier to read and I will not have to remember where `list_files()` is defined.  
+* `use crate::tooling::my_lib` is a shortcut. It imports the `my_lib` into the current scope.
+    * Rather than writing `tooling::my_lib::list_files()` now I can write `my_lib::list_files()`. 
+    * Alternatively I could write `use crate::tooling::my_lib::list_files` and use `list_files()` but I prefer to write `my_lib::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember where `list_files()` is defined.  
 
 ```rust
 // main.rs
@@ -1661,7 +1665,22 @@ fn main() -> Result<()> {
 }
 ```
 
-* In the directory tree, `tooling.rs` is a hub file. I mean a short file that declares which modules exist at a given level (here it declares `my_lib` one level lower)
+
+
+
+
+{: .note-title }
+> Side Note
+>
+> If you don't feel 100% confident with files, crates, modules... Before reading what follow, you should read this short [dedicated post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
+
+
+
+
+
+
+
+* In the directory tree, `tooling.rs` is a hub file. I mean it is a short file that declares which modules exist at a given level (here it declares `my_lib` one level lower)
 
 ```rust
 // tooling.rs
@@ -1690,14 +1709,14 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 * I add `pub` at the beginning of `list_files()` signature and there is no other change
 * At the top of the file the line `use crate::Result;` imports the `Result` type from the crate root into the current scope. This is what allows `list_files()` to return a `Result<T>`
 
-Once the code is dispatched as explained I can open a terminal at the root of the workspace (or the root of the current project) and run it with
+Once the code is dispatched as explained I can open a terminal (CTRL+ù on FR keyboard) at the root of the workspace (or the root of the current project) and run it with :
 
 ```powerhsell
 cargo run -p step_00
 ```
 
 <div align="center">
-<img src="./assets/img31.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img31.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
