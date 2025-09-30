@@ -1570,7 +1570,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 </div>
 
 
-**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (from the error management standpoint). Today it is monolithic and it looks like this.  
+**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (from the error management standpoint). Today the code is monolithic and it looks like this.  
 
 ```rust
 // ex303.rs
@@ -1596,11 +1596,18 @@ fn list_files(path: &str) -> Result<Vec<String>> {
     Ok(files)
 }
 ```
+The output is :
+
+```
+Error: "Cannot list empty folder."
+error: process didn't exit successfully: `target\debug\examples\ex303.exe` (exit code: 1)
+```
+
 What would you do?
 
 **Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according the responsibilities.
 
-**Bob:** Ok, this is your task. But I would like to be very cautious and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works as before. You could create a project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do, step by step...
+**Bob:** Ok, but I would like to be very cautious here and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works as before. You could create a project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do as you move forward.
 
 
 
@@ -1631,7 +1638,6 @@ What would you do?
             listing.rs
 
 ```
-* I create a directory named `empty` to make some test 
 * In the `Cargo.toml` the project is named `step_00` because I suppose we will have more than one step on our path to the Valhalla (production code). Here is `Cargo.toml`:
 
 ```toml
@@ -1643,6 +1649,7 @@ edition = "2024"
 
 [dependencies]
 ```
+* I create a directory named `empty` to make some test 
 * Since I can't create a library there is no `lib.rs` in the project directory just a `main.rs`
 * Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary (`step_00.exe`)
 * In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below: 
@@ -1663,18 +1670,19 @@ fn main() -> Result<()> {
 }
 
 ```
-* The type alias declaration for `Result` and `Error` remains the same
-* The line `mod files` declares the existence of a module named `files` in the crate. It includes the contents of the module from the external file `files.rs`
-* It is important to understand that the module tree is the only thing that matters for the build system. At the top of the tree is the root crate. Then underneath a tree where on each branch and leaf we have module (not a file). Modules are namespaces which organize code inside a crate. We can have multiple modules in one file. File does not matter. They are just containers of modules. Here the module tree will look like this:
+* The type alias declarations for `Result` and `Error` are untouched
+* The line `mod files:` declares the existence of a module named `files` in the binary crate. It includes the content of the module found in the external file `files.rs`
+* It is important to understand that the module tree is the only thing that matters for the build system. At the top of the tree is the root crate (binary crate here). Then, underneath there is a tree where on each branch and each leaf we have modules (not files). Modules are namespaces which organize code inside the crate. Files do not matter and this is why we can have multiple modules in one file. Files are just containers of modules. Here the module tree will look like this:
 
 ```
 crate (main.rs)
 └─ files        (files.rs)
    └─ listing      (files/listing.rs)
 ```
-* `use crate::files::listing` is a shortcut. It imports the module `listing` into the current scope.
+
+* `use crate::files::listing;` is a shortcut. It imports the module `listing` into the current scope.
     * Rather than writing `files::listing::list_files()`, I can write `listing::list_files()`. 
-    * Alternatively I could write `use crate::files::listing::list_files` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember in which module `list_files()` is defined (I will read that `list_files` is defined in the module named `listing`)  
+    * Alternatively I could write `use crate::files::listing::list_files;` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember in which module `list_files()` is defined (I will "read" that `list_files` is defined in the module named `listing`)  
 
 
 
@@ -1689,7 +1697,7 @@ crate (main.rs)
 
 
 
-* In the directory tree, `files.rs` is a hub file. I mean it is a short file that declares which modules exist at a given level (here it declares the module `listing` one level below)
+* In the directory tree, `files.rs` is a hub file. I mean it is a short file that declares which modules exist at a given level (here it declares the module `listing` one level below).
 
 ```rust
 // files.rs
@@ -1715,9 +1723,13 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 }
 ```
 
-* At the top of the file the line `use crate::Result;` imports the `Result` type from the crate root into the current scope. This is what allows `list_files()` to return a `Result<T>`
-* I had to add `pub` at the beginning of `list_files()` signature 
-* There is no other change
+* At the top of the file the line `use crate::Result;` imports the `Result` type from the root crate into the current scope. This is what allows the local function `list_files()` to return a `Result<T>`
+    * It is important to note that the `listing` module is a child of the root crate (look again the module tree). 
+    * As such, the visibility rule which says that a privatie item is visible in the curent module as in all its child modules
+    * So `crate::Result` is visible from the listing module
+    * 🦀I did a test. In `main.rs`, in front of the `Result` and `Error` type alias declaration I removed the `pub` access specifier and I was still able to build the the project. Then I put them back because they seems important for you. 
+* I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can be visible from the outside 
+* Other than that, there is no change
 
 Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace (or the root of the current project) and run it with :
 
