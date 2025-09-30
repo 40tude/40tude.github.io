@@ -7,7 +7,7 @@ description: A beginner-friendly conversation on Errors, Results, Options, and b
 parent: Rust
 #math: mathjax
 date               : 2025-09-20 18:00:00
-last_modified_date : 2025-09-29 10:00:00
+last_modified_date : 2025-09-23 10:00:00
 ---
 
 <!-- 
@@ -27,9 +27,12 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
-</h2>
+</h2> -->
+
+
+
 
 ### This is Episode 00
 {: .no_toc }

@@ -7,7 +7,7 @@ description: A beginner-friendly conversation on Errors, Results, Options, and b
 parent: Rust
 #math: mathjax
 date               : 2025-09-20 18:00:00
-last_modified_date : 2025-09-27 10:00:00
+last_modified_date : 2025-09-29 10:00:00
 ---
 
 
