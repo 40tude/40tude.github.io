@@ -1544,7 +1544,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 <!-- <span>Optional comment</span> -->
 </div>
 
-**Bob:** It's showtime! Let's move to production phase.
+**Bob:** It's showtime! Let's transition to production.
 
 
 
@@ -1570,7 +1570,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 </div>
 
 
-**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (from the error management standpoint). Today the code is monolithic and it looks like this.  
+**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (at least from the error management standpoint). As it is, the code is monolithic and it looks like this:  
 
 ```rust
 // ex303.rs
@@ -1605,7 +1605,7 @@ error: process didn't exit successfully: `target\debug\examples\ex303.exe` (exit
 
 What would you do?
 
-**Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according the responsibilities.
+**Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a lib so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according to the responsibilities.
 
 **Bob:** Ok, but I would like to be very cautious here and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works as before. You could create a project in the `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do as you move forward.
 
@@ -1727,7 +1727,7 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
     * It is important to note that the `listing` module is a child of the root crate (look again the module tree). 
     * As such, the visibility rule which says that a privatie item is visible in the curent module as in all its child modules
     * So `crate::Result` is visible from the listing module
-    * 🦀I did a test. In `main.rs`, in front of the `Result` and `Error` type alias declaration I removed the `pub` access specifier and I was still able to build the the project. Then I put them back because they seems important for you. 
+    * 🦀 I did a test. In `main.rs`, in front of the `Result` and `Error` type alias declaration I removed the `pub` access specifier and I was still able to build the the project. Then I put them back because they seems important for you. 
 * I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can be visible from the outside 
 * Other than that, there is no change
 
@@ -1748,7 +1748,7 @@ Here is what I can see in VSCode:
 
 
 
-<!-- **Bob:** The second step should be easy. Create an `error.rs` file then copy/paste Result and Error defintion. Make sure the project work as before.
+<!-- **Bob:** The second step should be easy. Create an `error.rs` file then copy/paste Result and Error definition. Make sure the project work as before.
 
 **Alice:** You know what, I copy/paste/rename the project  -->
 
@@ -1811,8 +1811,9 @@ Here is what I can see in VSCode:
 
 
 
-
-
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v22YbORzDD0?si=coC-2aQAbL0PTIwa&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
