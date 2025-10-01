@@ -1649,9 +1649,9 @@ edition = "2024"
 
 [dependencies]
 ```
-* I create a directory named `empty` to make some test 
-* Since I can't create a library there is no `lib.rs` in the project directory just a `main.rs`
-* Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary (`step_00.exe`)
+* I create a directory named `empty` to perform some tests 
+* Since I can't yet create a library, there is no `lib.rs` in the project directory just a `main.rs`
+* Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary crate, an application (`step_00.exe`)
 * In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below: 
 
 ```rust
@@ -1670,19 +1670,19 @@ fn main() -> Result<()> {
 }
 
 ```
-* The type alias declarations for `Result` and `Error` are untouched
-* The line `mod files:` declares the existence of a module named `files` in the binary crate. It includes the content of the module found in the external file `files.rs`
-* It is important to understand that the module tree is the only thing that matters for the build system. At the top of the tree is the root crate (binary crate here). Then, underneath there is a tree where on each branch and each leaf we have modules (not files). Modules are namespaces which organize code inside the crate. Files do not matter and this is why we can have multiple modules in one file. Files are just containers of modules. Here the module tree will look like this:
+* The type alias declarations for `Result` and `Error` remain unchanged.
+* The line `mod files;` declares the existence of a module named `files` in the binary crate. It includes the content of the module found in the external file `files.rs`
+* It is important to understand that the module tree that we start building with the `mod files;` declaration is the only thing that matters for the build system. At the top of the tree is the root crate (binary crate here). Then, underneath there is a tree where on each branch and each leaf we have modules (not files). Modules are namespaces which organize code inside the crate. Files do not matter and this is why we can have multiple modules in one file (check what we did in `ex19.rs` with the `math_utils` module). Files are just containers of modules. Here the module tree will look like this:
 
 ```
-crate (main.rs)
-└─ files        (files.rs)
-   └─ listing      (files/listing.rs)
+crate           The root crate module is stored in main.rs
+└─ files        The `files`    module is stored in files.rs
+   └─ listing   The `listing`  module is stored in files/listing.rs
 ```
 
-* `use crate::files::listing;` is a shortcut. It imports the module `listing` into the current scope.
+* `use crate::files::listing;` is a shortcut. It imports the module `listing` into the current **scope**.
     * Rather than writing `files::listing::list_files()`, I can write `listing::list_files()`. 
-    * Alternatively I could write `use crate::files::listing::list_files;` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will be easier to read and I will not have to remember in which module `list_files()` is defined (I will "read" that `list_files` is defined in the module named `listing`)  
+    * Alternatively I could write `use crate::files::listing::list_files;` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will auto documented and be easier to read. I will not have to remember in which module `list_files()` is defined, instead I will "read" that `list_files` is defined in the module named `listing`.  
 
 
 
@@ -1697,7 +1697,7 @@ crate (main.rs)
 
 
 
-* In the directory tree, `files.rs` is a hub file. I mean it is a short file that declares which modules exist at a given level (here it declares the module `listing` one level below).
+* In the directory tree, `files.rs` is a hub file. I mean it is a short file that declares which modules exist at a given level (here it declares the module `listing` one level below). Review the module tree above, make sure this make sens.
 
 ```rust
 // files.rs
@@ -1723,17 +1723,38 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 }
 ```
 
-* At the top of the file the line `use crate::Result;` imports the `Result` type from the root crate into the current scope. This is what allows the local function `list_files()` to return a `Result<T>`
-    * It is important to note that the `listing` module is a child of the root crate (look again the module tree). 
-    * As such, the visibility rule which says that a privatie item is visible in the curent module as in all its child modules
-    * So `crate::Result` is visible from the listing module
-    * 🦀 I did a test. In `main.rs`, in front of the `Result` and `Error` type alias declaration I removed the `pub` access specifier and I was still able to build the the project. Then I put them back because they seems important for you. 
-* I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can be visible from the outside 
+* At the top of the file the line `use crate::Result;` is a shortcut. I can write `Result<T>` rather than `crate::Result<T>`.
+    * It is important to note that the module `listing` is a child of the root crate (check the module tree). 
+    * This said, if we recall that the visibility rule says that a private item is visible in the curent module and in all its child modules 
+    * Then this explain why `crate::Result` is visible in the module `listing`
+    * 🦀 To check my understanding, I did a quick test.
+        * In `listing.rs` above, comment the line `use crate::Result;`
+        * Modify the signature of `list_files()`
+
+        ```rust
+        pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
+        ``` 
+        * Build the the project
+        * Then I deleted my modifications
+    * 🦀 I did a second test. 
+        * In `main.rs`, in front of the `Result` and `Error` type alias declarations I remove the `pub` access specifier 
+        * I can build the the project. 
+        * Indeed, we build a binary crate so nothing is accessible from the outside and so, in this context, `pub` does'nt hurt but is useless  
+        * Then I put the `pub` back in place because they seem important to you. 
+
+
+<!-- imports the `Result` type from the root crate into the current scope. This is what allows the local function `list_files()` to return a `Result<T>` -->
+
+
+
+
+
+* I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can call from the parent module (root crate in `main.rs`) 
 * Other than that, there is no change
 
-Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace (or the root of the current project) and run it with :
+Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace and run it with :
 
-```powerhsell
+```powershell
 cargo run -p step_00
 ```
 
@@ -1748,12 +1769,95 @@ Here is what I can see in VSCode:
 
 
 
-<!-- **Bob:** The second step should be easy. Create an `error.rs` file then copy/paste Result and Error definition. Make sure the project work as before.
-
-**Alice:** You know what, I copy/paste/rename the project  -->
 
 
+**Bob:** The second step should be easy. Create an `error.rs` file then copy/paste `Result` and `Error` definitions. Explain what you do when you make sure the project works as before.
 
+**Alice:** You know what? I copy/paste/rename the previous project in a directory named `01_project`. 
+
+* I update the package name in `Cargo.toml` (`name = "step_01"`)
+* I create an `error.rs` with this content
+
+```rust
+// error.rs
+pub type Result<T> = std::result::Result<T, Error>;
+pub type Error = Box<dyn std::error::Error>;
+```
+<!-- * I make sure that both declarations have a `pub` access modifier. Otherwise we would not be able to use them from the root crate (`main.rs`) -->
+* I update `main.rs` content 
+
+```rust
+// main.rs
+mod error;
+mod files;
+
+use crate::files::listing;
+use crate::error::Result;
+
+fn main() -> Result<()> {
+    let files = listing::list_files(".")?;
+    println!("{files:#?}");
+
+    let files = listing::list_files("./02_production/01_project/empty")?;
+    println!("{files:#?}");
+    Ok(())
+}
+```
+
+* The line `mod error;` declares the existence of a module named `error` in the binary crate. It includes the content of the module found in the external file `error.rs`
+* The `error` module is a child of the root crate. Now, the module tree looks like this:
+
+```
+crate           The root crate module is stored in main.rs
+|  error        The `error`    module is stored in error.rs  
+└─ files        The `files`    module is stored in files.rs
+   └─ listing   The `listing`  module is stored in files/listing.rs
+```
+* I also add `use crate::error::Result;` so that I can write `fn main() -> Result<()> {...}` rather than `fn main() -> error::Result<()> {...}`
+
+* For the "fun", now in `main()` we inspect 2 different directories. 
+
+
+Here is what I can see in the terminal
+
+<div align="center">
+<img src="./assets/img32.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+Again I spend some time to check my understanding about what is possible and what is not with the modules and the module tree.
+
+**Test 1:** The module `error` is a child of the root crate (in `main.rs`). Within `error` I can "see" what is in the root crate but root crate cannot "see" what is in `error` if I don't make it public. 
+
+So in `error.rs` I remove the `pub` access modifier in front of `Result`. Then I check I'm no longer able to build the project.
+
+**Test 2:** 
+* In `main.rs` I comment the line `use crate::error::Result;` and I write `fn main() -> crate::error::Result<()> {`. 
+* I cannot build the project because there is a problem with `use crate::Result;` in `listing.rs` (`unresolved import 'crate::Result'`). 
+* Obviously, if I replace the line with `use crate::error::Result;` then I can build again because in `error`, `Result` is public.
+
+The 1 million $ question is: "why it worked in the initial version?" The answer is this:
+* `Result` is public in `error`
+* In the root crate we have `mod error` and `use crate::error::Result;` which bring `Result` is in the current scope, the scope of the root crate.
+* If `Result` is in the scope of the root crate, it becomes visible from its children
+* So  `crate::Result` is available in the scope of `listing` (child visibility rule) where I can write
+    * `pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...`
+    * or `use crate::Result;` then `pub fn list_files(path: &str) -> Result<Vec<String>> {...`
+
+It took me a while, it's harder to write/explain than to make the changes in the code, but honestly, it's worth it. I realize it is critical to "see" the module tree and to know the rule of visibility withing child module.
+
+Who's next?
+
+
+**Bob:** I'm really impressed by your understanding and your ability to test ideas in in order to confirm you understanding.
+
+You will be happy to learn that in the next step, you will create a library and expose an API... Welcome to the real world
+
+<div align="center">
+<img src="./assets/img33.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
