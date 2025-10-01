@@ -1668,7 +1668,6 @@ fn main() -> Result<()> {
     println!("{files:#?}");
     Ok(())
 }
-
 ```
 * The type alias declarations for `Result` and `Error` remain unchanged.
 * The line `mod files;` declares the existence and load a module named `files` in the binary crate. It includes the content of the module found in the external file `files.rs`. A module is a namespace. The line brings its content to local scope (crate root).
