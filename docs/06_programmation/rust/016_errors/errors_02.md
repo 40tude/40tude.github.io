@@ -1909,7 +1909,7 @@ Create a `lib.rs` file at the root of the project, put the `pub mod error;` and 
     * Ideally I want to keep `main()` as short as possible. It should validate some stuff then call a `run()` function from the library. 
     * Here I will keep `list_file()` in main as before.
 
-This said:    
+Once the copy is done:    
 * I update the package name in `Cargo.toml` (`name = "step_02"`)
 * I create an `lib.rs` file with this content:
 
@@ -1923,20 +1923,20 @@ pub use self::error::{Error, Result};
 ```
 
 * Since I want to call `list_files()` from `main()` I "put" the `files` module in the `lib`
-* `main()` returns a `Result<()>` so I "put" the error module in the `lib` 
+* `main()` returns a `Result<()>` so I "put" the error module in the `lib` as well
 * So far there is no need to copy/paste the code from `files/listings.rs` into `lib.rs`. Indeed if tomorrow the app grows, I will write more code in more modules and I will simply list the modules in `lib.rs`.
 
-* At this ppoint, if I compare V2 on the left versus V1 of the file `main.rs` here is what I can see:
+* At this point, if I compare V2 on the left versus V1 of the file `main.rs` here is what I can see:
 
 <div align="center">
 <img src="./assets/img35.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-* The modules `error` and `files` are now in the lib namespace (the lines `mod error;` and `mode files;` are no longer needed)
-* **One point of attention:** In the previous version the code was monolithic, every symbols were in the same namespace, the one from the binary crate. This is why, in `main.rs`, a line like this `use crate::files::listing;` allowed us to call `listing::list_files()`. 
-* But this is no longer possible. Indeed `list_files()` is now in the library namespace.
-* This is why, since the library is linked to the binary I need to write `use step_02::files::listing;` where `step_02` is the name of the library (which is the same as the name of the binary. I know, this does'nt help much)
+* The lines `mod error;` and `mode files;` have been moved to `lib.rs`. The modules `error` and `files` are now in the lib namespace.
+* One **point of attention:** In previous version, the code was monolithic, all the modules were children of the same root, all symbols were accessible within the same namespace. This is why, in `main.rs`, a line like `use crate::files::listing;` allowed us to call `listing::list_files()`. `crate` was pointing to the crate being built, the binary crate. 
+* But this is no longer the case. Indeed `list_files()` is now in the library namespace.
+* This is why, since the library is linked to the binary I need to write `use step_02::files::listing;` where `step_02` is the name of the library (which is the same as the name of the binary. I know, this does'nt help much...)
 
 And that's it. It builds and run like a charm...
 
@@ -1945,7 +1945,7 @@ And that's it. It builds and run like a charm...
 
 **Alice:** We can modify `Cargo.toml` as shown below:
 
-```
+```toml
 [package]
 name = "step_02"
 version = "0.1.0"
@@ -1989,13 +1989,76 @@ Here is the output in the console
 <!-- <span>Optional comment</span> -->
 </div>
 
-The runtime says something like: `process didn't exit successfully: target\debug\my_app.exe` while in `main.rs` we write `use my_super_lib::files::listing;`. 
+The runtime mention **my_app.exe** when it says something like: `process didn't exit successfully: target\debug\my_app.exe` while in `main.rs` we write `use my_super_lib::files::listing;`. 
 
-One last point of attention if I can... The command to build and run the application was : `cargo run -p step_02`. This is because this is the name of the package in `Cargo.toml`. Review the content of `Cargo.toml` if this is not crystal clear.
+One last **point of attention** if I can... The command to build and run the application remains : `cargo run -p step_02`. This is because `step_02` is the name of the package in `Cargo.toml`. Review the content of `Cargo.toml` if this is not crystal clear.
 
 What is your second question?
 
 
+**Bob:** Easy, Padawan, I think the Force is making your head a little bigger... My second question is about the last line of the `lib.rs`:
+
+```rust
+pub use self::error::{Error, Result};
+```
+
+You did'nt say a word about it while in the screenshot I see the following comment:
+
+```rust
+use step_02::Result; // uses the re-export from the lib.rs
+```
+
+Would you be so kind as to explain to an 800-year-old Jedi why you wrote these lines of code and these comments?
+
+
+
+**Alice:** You're right it took me a while so they deserve some explanations. 
+
+* In `lib.rs` 
+    * I load the modules tree the`error` and `files`. 
+    * If the line `pub use self::error::{Error, Result};` is commented I can't build the package. I get an error from `listing.rs` saying : 
+
+    ```
+    use crate::Result; 
+        ^^^^^^^^^^^^^ no `Result` in the root
+    ``` 
+    * I'm not impressed. I know the module tree of the library crate, I can fix the problem and build the library. In `listing.rs` I write `use crate::error::Result;` rather than `use crate::Result;`
+    * However, if building the library seems OK, I can't build the binary crate. I see an error in `main.rs`:
+    
+    ```
+    use step_02::Result; 
+        ^^^^^^^^^^^^^^^ no `Result` in the root
+    ```
+    * Again, I know the module tree of the binary crate. In `main.rs` I write `use step_02::error::Result;` rather than `use step_02::Result;`
+    * Then I can build the package (the library crate and the binary crate)
+    * However... 
+        * This work here because I have few modules. What if I have hundreds? 
+        * On the other hand, I don't like the idea of not being able to reuse most of the source code from the previous version without modifying it.
+    * This is where the **re-export** "trick" enters the game.
+        * In `lib.rs` I load the modules I need (`errors`, `files`)
+        * Then I create, at the top of the module tree of the library crate, the shortcut I need
+        ```rust
+        pub use self::error::{Error, Result};
+        ```
+        * With this, 2 things happens
+            1. With `use self::error::{Error, Result};` all child modules of the library crate can use `Result` as if it was declared at the top of the module tree (I write `crate::Result` instead of `crate::error::Result`). This is what is done in `listing.rs`
+            1. With the `pub` access specifier, `Result` and `Error` are accessible from code linked with the library. The binary crate of the package for example. This is why in `main.rs` I first create a shorcut to Result in the library (see `use step_02::Result;`)  and then use it locally (see `write fn main() -> Result<()> {...}`).
+
+**Bob:** Not to split hairs here, but if the shortcut lives in `lib.rs`, why duplicate it in `main.rs`?
+
+**Alice:** This is exactly what I did but it does'nt work. Indeed without the shortcut `use step_02::Result;` in `main.rs`, this is the `Result<T,E>` from the std lib which is used and the compiler is not happy. See by yourself : 
+
+```
+fn main() -> Result<()> {
+             ^^^^^^ -- supplied 1 generic argument
+             |
+             expected 2 generic arguments
+```
+
+So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
+
+
+**Bob:** Splendid!
 
 
 
@@ -2015,7 +2078,7 @@ What is your second question?
 
 ### Exercises – Experimentation to Production 
 
-1. ...
+1. View theses videos
 1. ...
 
 
