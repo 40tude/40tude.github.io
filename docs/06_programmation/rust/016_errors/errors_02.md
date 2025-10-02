@@ -2015,7 +2015,7 @@ Would you be so kind as to explain to an 800-year-old Jedi why you wrote these l
 **Alice:** You're right it took me a while so they deserve some explanations. 
 
 * In `lib.rs` 
-    * I load the modules tree the`error` and `files`. 
+    * I load the modules `error` and `files` in the module tree 
     * If the line `pub use self::error::{Error, Result};` is commented I can't build the package. I get an error from `listing.rs` saying : 
 
     ```
@@ -2041,7 +2041,7 @@ Would you be so kind as to explain to an 800-year-old Jedi why you wrote these l
         pub use self::error::{Error, Result};
         ```
         * With this, 2 things happens
-            1. With `use self::error::{Error, Result};` all child modules of the library crate can use `Result` as if it was declared at the top of the module tree (I write `crate::Result` instead of `crate::error::Result`). This is what is done in `listing.rs`
+            1. With `use self::error::{Error, Result};` all child modules of the library crate can use `Result` as if it was declared at the top of the module tree (I can write `crate::Result` instead of `crate::error::Result`). This is what is done in `listing.rs`
             1. With the `pub` access specifier, `Result` and `Error` are accessible from code linked with the library. The binary crate of the package for example. This is why in `main.rs` I first create a shorcut to Result in the library (see `use step_02::Result;`)  and then use it locally (see `write fn main() -> Result<()> {...}`).
 
 **Bob:** Not to split hairs here, but if the shortcut lives in `lib.rs`, why duplicate it in `main.rs`?
@@ -2056,6 +2056,14 @@ fn main() -> Result<()> {
 ```
 
 So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
+
+
+**Bob:** One last question. In `lib.rs` you write `pub use self::error::{Error, Result};` while until now you have been using `use crate` quite a lot. Is there any specific reason.
+
+**Alice:** Absolutely none. 
+* In a path like `self::error::Error`, `self` refers to the current module. This allows to use paths relative to the current module. Since we are in `lib.rs`, `self` refers to the crate root. 
+* In a path like `crate::error::Error`, `crate` refers to the crate root. This allow to use absolute path, always starting from the root. 
+* So here both paths are equivalent. I'll keep the absolute version. 
 
 
 **Bob:** Splendid!
