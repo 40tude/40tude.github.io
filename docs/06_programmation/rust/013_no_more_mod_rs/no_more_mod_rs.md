@@ -6,7 +6,7 @@ title: "From Folders to Crates: A Practical Guide to Modern Rust Module Trees (N
 parent: "Rust"
 #math: mathjax
 date               : 2025-08-22 17:45:00
-last_modified_date : 2025-08-22 17:45:00
+last_modified_date : 2025-10-02 10:45:00
 ---
 
 # From Folders to Crates: A Practical Guide to Modern Rust Module Trees (No mod.rs, No Tears)
@@ -110,7 +110,7 @@ We want to:
 
 * Because the project has both `lib.rs` and `main.rs`, Cargo treats it as a library crate plus a binary.
 * The compiler first builds the library, then the binary (using the library’s contents).
-* The build system doesn’t really care about files or directories — it only cares about the **module tree**.
+* The build system doesn’t care about files or directories — it only cares about the **module tree**.
 
 
 ## 1. Building the library (src/lib.rs)
@@ -140,60 +140,65 @@ Don’t worry — this isn’t rocket science. Let’s go step by step.
 
 ### Step 1: Starting from `lib.rs`
 
-Right now, `lib.rs` contains just one line:
+Right now, `lib.rs` contains one line:
 
 ```rust
 pub mod sensors;
 ```
 
-This declares a top-level module called `sensors`.
+The line `pub mod sensors;` declares the existence and loads a module named `sensors` in the module tree of the current crate (the library crate). The `pub` access specifier make sure that shared symbols of the `sensors` module can be accessed from the current crate using the namespace notation (`sensors::...`)
 
-By convention, the compiler will first look for `src/sensors.rs`. Since we want a directory instead (`src/sensors/`), we create a *hub file* named `sensors.rs` next to `lib.rs`.
+A module is a namespace and the line brings its content to the local scope (crate root).
 
-`sensors.rs` contains:
+<!-- This declares and loads a module called `sensors` in the library crate. -->
+
+By convention, the compiler will first look for `src/sensors.rs`. Since we want a directory instead (`src/sensors/`), we create a *hub file* named `sensors.rs` next to `lib.rs`. `sensors.rs` contains:
 
 ```rust
 pub mod input;
 ```
 
-
+The line declares and loads a module `input` in the module tree under construction. Since the line take place in the module `sensors`, the module `input` is a child of `sensor` and a grand child of crate under construction (library crate).
 
 ### Step 2: Going deeper
 
-Inside the `sensors/` directory, we add another hub file, `input.rs`, because there is an `input/` subdirectory.
-
-`input.rs` contains:
+Inside the `sensors/` directory, we add another hub file, `input.rs`, because there is an `input/` subdirectory. `input.rs` contains:
 
 ```rust
 pub mod temp;
 ```
 
-Inside the `input/` directory, we create a hub file named `temp.rs` next to the `temp/` directory.
+I guess you know the song... The line declares and loads a module `temp` in the module tree under construction. Since the line take place in the module `input`, the module `temp` is a child of `input`. Check the module tree below.
 
-`temp.rs` contains three lines:
+
+Inside the `input/` directory, we create a hub file named `temp.rs` next to the `temp/` directory. `temp.rs` contains three lines:
 
 ```rust
 pub mod temp_sensor;  // The trait lives here
 pub mod temp_sensor1; // Concrete sensor #1 (folder-backed)
 pub mod temp_sensor2; // Concrete sensor #2 (folder-backed)
 ```
+The 3 lines above declares and loads 3 different modules (`temp_sensor`, `temp_sensor1` and `temp_sensor2`). They are children of the `temp` module.
 
-In the `temp/` directory:
+In the `temp/` directory we find:
 
 * `temp_sensor.rs` defines the `TempSensor` trait.
 * We also create hub files `temp_sensor1.rs` and `temp_sensor2.rs` because there are subdirectories `temp_sensor1/` and `temp_sensor2/`.
 
-Content of `temp_sensor1.rs`
+Content of `temp_sensor1.rs`:
 
 ```rust
 pub mod my_sensor1;
 ```
 
-Content of `temp_sensor2.rs`
+The line declares and loads a module `my_sensor1` in the module tree under construction. Since the line take place in the module `temp_sensor1`, the module `my_sensor1` is a child of `temp_sensor1`.
+
+Content of `temp_sensor2.rs`:
 
 ```rust
 pub mod your_sensor2;
 ```
+Same reasoning apply here, the module `your_sensor2` is a child of `temp_sensor2`.
 
 When the compiler reads `temp_sensor1.rs`, it looks inside the `temp_sensor1/` directory and finds `my_sensor1.rs`, which defines `TempSensor01` and implements `TempSensor` for it (same logic for `TempSensor02`).
 
@@ -215,8 +220,7 @@ Inside `my_sensor1.rs`, we can bring the trait into scope like this:
 use crate::sensors::input::temp::temp_sensor::TempSensor;
 ```
 
-Notice: we don’t write `use crate_name::...` where `crate_name` comes from `Cargo.toml`.
-Instead, we use `crate::...` to refer to the current crate under construction (the library).
+Notice: we don’t write `use CRATE_NAME::...` where `CRATE_NAME` would come from `Cargo.toml`. Instead, we use `crate::...` to refer to the current crate under construction (the library crate).
 
 
 ### Wrapping up
@@ -225,10 +229,9 @@ At this point:
 
 * The module tree is fully built.
 * The compiler and linker can happily do their work.
-* The library is compiled and stored on disk.
-* Finally, Cargo builds the binary crate (`main.rs`) using that library.
+* The library is compiled and stored on disk(`target/debug/libtraits_for_plugins.rlib`)
 
-The final directory structure looks like this:
+At the end, once hub files are added, the directory looks like this:
 
 ```
 .
@@ -282,9 +285,23 @@ crate (lib.rs)
 
 
 ### Tips'n Tools
+* `CTRL+ù` (FR keyboard) to open a terminal in VSCode
 * `cargo install cargo-modules`
+* [Read the documentation](https://crates.io/crates/cargo-modules)
+* `cargo-modules structure --lib`
+
+<div align="center">
+<img src="./assets/img_04.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+**What does it show?**
+* This is the complete module tree of the lib (see the `--lib` in the command) in technicolor!
+* Should be enough most of the time
+
+You can also try this:
 * `cargo-modules dependencies --lib`
-* Copy the output
+* Copy the output text from the console 
 * Paste it in [this page](https://dreampuf.github.io/GraphvizOnline/)  
 
 
@@ -311,15 +328,29 @@ The graph is a full semantic map of the crate.
 
 
 ## 2. Building the binary (`src/main.rs`)
-* It should be clear by now that the binary and the lib are 2 different beasts and this is why, in `main.rs`, we **cannot** write `use crate::...`. Instead we write `use crate_name::...` where `crate_name` is defined in `[package] name = "..."` in `Cargo.toml` (in our case `traits_for_plugins`).
+* It should be clear by now that the binary and the lib are 2 different beasts 
+* This is why, in `main.rs`, we **cannot** write `use crate::...`. Instead we write `use CRATE_NAME::...` where `CRATE_NAME` is defined by the line `[package] name = "..."` in `Cargo.toml` (in our case `traits_for_plugins`).
+
+
+```rust
+// main.rs
+use traits_for_plugins::sensors::input::temp::temp_sensor::TempSensor;
+use traits_for_plugins::sensors::input::temp::temp_sensor1::my_sensor1;
+
+fn main() {
+    let my_sensor = my_sensor1::TempSensor01;
+    let my_temp = my_sensor.get_temp();
+    println!("{my_temp}");
+}
+```
 
 Indeed, `main.rs` is a *client* of `lib.rs` and it does not see the internal modules via `crate::...` directly. In `main.rs`, `crate::...`  refers to the binary crate itself, **not** to the library defined in `lib.rs`. 
 
 To make a long story short:
 * Since there a `main.rs` next to `lib.rs` 
-* In `main.rs` we write the `use` statements considering `main` is an external crate
+* In `main.rs` we write the `use` statements considering `main` as an external module/namespace
 * We use the crate name (the one defined in `[package] name = "..."` in `Cargo.toml`). 
-* And yes, by default, if both `lib.rs` and `main.rs` exist, the library and the binary crates share the same name (this can be overriden in `Cargo.toml`)
+* And yes, by default, if both `lib.rs` and `main.rs` exist, the library and the binary crates share the same name (`libtraits_for_plugins.rlib` and `traits_for_plugins.exe`). This can be overridden in `Cargo.toml`.
 
 ```toml
 [[bin]]
