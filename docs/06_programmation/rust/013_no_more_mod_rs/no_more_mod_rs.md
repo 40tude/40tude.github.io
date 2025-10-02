@@ -15,8 +15,8 @@ last_modified_date : 2025-10-02 10:45:00
 * For beginners
 * Starting with a hierarchy of directories and files already in place
 * A process to make sure the compiler and the linker can build the lib and the app
-* Explain the `use ...` statements that satisfy the compiler and make your code easier to read 
-* As proposed since 2018+, `mod.rs` files are not used
+* Explain the `use ...` statements that help to write easy to read code 
+* As proposed since 2018+, `mod.rs` files are not used here
 * Process
     * You have a sub-directory named `my_dir/`
     * Next to `my_dir/`, create a file `my_dir.rs`
@@ -36,7 +36,7 @@ last_modified_date : 2025-10-02 10:45:00
 ## Introduction
 * August 2025
 * [p 139 of the Rust Prog Language book](https://doc.rust-lang.org/book/ch07-05-separating-modules-into-different-files.html#alternate-file-paths) they say that using `mod.rs` everywhere is old style, confusing, blablabla...
-* What?!!! Old style... No way, not for me. I'm a fashion victim and I want to go to Milan, Paris etc.
+* What?!!! Old style... No way, not for me. I'm a fashion victim and I want to visit Milan, Paris etc.
     * Surprisingly I just `git clone` [Microsoft Edit](https://github.com/microsoft/edit) and it seems they use `mod.rs` everywhere...
 
 <div align="center">
@@ -44,7 +44,7 @@ last_modified_date : 2025-10-02 10:45:00
 </div>
 
 * More seriously, this side project is the first step of a larger one. Here, once and for all, I want to figure out how to properly build my module tree (at least in a way that works and that I can clearly understand).
-* So, below, don't start complaining. The project hierarchy is complicated for good reasons.
+* So, below, don't start complaining. The project hierarchy is over complicated for good reasons.
 * The project is on [GitHub](https://github.com/40tude/traits_for_plugins_01)
 
 
@@ -100,16 +100,16 @@ Here’s the initial structure:
 
 ## The objective
 
-We want to:
+I want to:
 
 * Use the *modern* style of Rust module organization (no more `mod.rs` files).
-* Build a proper module tree so we can call temperature sensors from both `src/main.rs` and `examples/ex_01.rs`.
+* Build a module tree so that we can make temperature sensors measurement from both `src/main.rs` and `examples/ex_01.rs`.
 
 
 ## What to keep in mind
 
 * Because the project has both `lib.rs` and `main.rs`, Cargo treats it as a library crate plus a binary.
-* The compiler first builds the library, then the binary (using the library’s contents).
+* The compiler first builds the library, then the binary (using the library’s content).
 * The build system doesn’t care about files or directories — it only cares about the **module tree**.
 
 
@@ -123,7 +123,7 @@ My approach is:
 
 This way, the build process doesn’t force me into rigid naming conventions — I have flexibility.
 
-The key point: the `sensors/`, `input/`, and `temp/` directories already exist *before* I add *hub files*.
+The key point: Here I suppose the `sensors/`, `input/`, and `temp/` directories already exist *before* I start working on the build and add the *hub files*.
 
 
 ### Using hub files
@@ -158,7 +158,7 @@ By convention, the compiler will first look for `src/sensors.rs`. Since we want 
 pub mod input;
 ```
 
-The line declares and loads a module `input` in the module tree under construction. Since the line take place in the module `sensors`, the module `input` is a child of `sensor` and a grand child of crate under construction (library crate).
+The line declares and loads a module `input` in the module tree under construction. Since the line take place in the module `sensors`, the module `input` is a child of `sensors` and a grand child of crate under construction (library crate).
 
 ### Step 2: Going deeper
 
@@ -200,9 +200,9 @@ pub mod your_sensor2;
 ```
 Same reasoning apply here, the module `your_sensor2` is a child of `temp_sensor2`.
 
-When the compiler reads `temp_sensor1.rs`, it looks inside the `temp_sensor1/` directory and finds `my_sensor1.rs`, which defines `TempSensor01` and implements `TempSensor` for it (same logic for `TempSensor02`).
+When the compiler reads `temp_sensor1.rs`, it looks inside the `temp_sensor1/` directory and finds `my_sensor1.rs`, which defines `TempSensor01` and implements the trait `TempSensor` for it (same logic for `TempSensor02`).
 
-At the leaves of the tree, the directories contain the actual sensor implementations:
+At the end of the tree, the directories contain the actual sensor implementations:
 
 ```
 temp_sensor1/
@@ -214,7 +214,20 @@ temp_sensor2/
 
 ### Step 3: Using the trait
 
-Inside `my_sensor1.rs`, we can bring the trait into scope like this:
+Inside `my_sensor1.rs`
+
+```rust
+use crate::sensors::input::temp::temp_sensor::TempSensor;
+pub struct TempSensor01;
+
+impl TempSensor for TempSensor01 {
+    fn get_temp(self) -> f64 {
+        142.0
+    }
+}
+```
+
+We can bring the trait `TempSensor` into scope like this:
 
 ```rust
 use crate::sensors::input::temp::temp_sensor::TempSensor;
@@ -229,7 +242,7 @@ At this point:
 
 * The module tree is fully built.
 * The compiler and linker can happily do their work.
-* The library is compiled and stored on disk(`target/debug/libtraits_for_plugins.rlib`)
+* The library is compiled and stored on disk (`target/debug/libtraits_for_plugins.rlib`)
 
 At the end, once hub files are added, the directory looks like this:
 
@@ -328,7 +341,7 @@ The graph is a full semantic map of the crate.
 
 
 ## 2. Building the binary (`src/main.rs`)
-* It should be clear by now that the binary and the lib are 2 different beasts 
+* It should be clear by now that the binary and the library are 2 different beasts 
 * This is why, in `main.rs`, we **cannot** write `use crate::...`. Instead we write `use CRATE_NAME::...` where `CRATE_NAME` is defined by the line `[package] name = "..."` in `Cargo.toml` (in our case `traits_for_plugins`).
 
 
@@ -428,7 +441,7 @@ src/
     pub mod bar;   
     ```
 
-Final structure:
+Final module tree:
 
 ```
 src/
