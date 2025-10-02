@@ -1897,12 +1897,19 @@ You will be happy to learn that in the next step, you will create a library and 
 <!-- <span>Optional comment</span> -->
 </div>
 
-Create a `lib.rs` file at the root of the project, put the `pub mod error;` and `pub mod files;`. Make the application run again and explain what you do.
+Create a `lib.rs` file at the root of the project, put the `pub mod error;` and `pub mod files;`. Make the application run again and, as before, explain what you do.
 
 
 
 **Alice:** Um... Ok... I start with a copy/paste/rename of the previous project
 
+* I recall that if in the project directory there is a `lib.rs` and a `main.rs` 
+    * The build system builds the library crate then the binary crate. 
+    * The lib is automatically linked to the binary.
+    * Ideally I want to keep `main()` as short as possible. It should validate some stuff then call a `run()` function from the library. 
+    * Here I will keep `list_file()` in main as before.
+
+This said:    
 * I update the package name in `Cargo.toml` (`name = "step_02"`)
 * I create an `lib.rs` file with this content:
 
@@ -1913,12 +1920,80 @@ pub mod files;
 
 // re-export lib from crate root
 pub use self::error::{Error, Result};
-
-
 ```
 
+* Since I want to call `list_files()` from `main()` I "put" the `files` module in the `lib`
+* `main()` returns a `Result<()>` so I "put" the error module in the `lib` 
+* So far there is no need to copy/paste the code from `files/listings.rs` into `lib.rs`. Indeed if tomorrow the app grows, I will write more code in more modules and I will simply list the modules in `lib.rs`.
+
+* At this ppoint, if I compare V2 on the left versus V1 of the file `main.rs` here is what I can see:
+
+<div align="center">
+<img src="./assets/img35.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+* The modules `error` and `files` are now in the lib namespace (the lines `mod error;` and `mode files;` are no longer needed)
+* **One point of attention:** In the previous version the code was monolithic, every symbols were in the same namespace, the one from the binary crate. This is why, in `main.rs`, a line like this `use crate::files::listing;` allowed us to call `listing::list_files()`. 
+* But this is no longer possible. Indeed `list_files()` is now in the library namespace.
+* This is why, since the library is linked to the binary I need to write `use step_02::files::listing;` where `step_02` is the name of the library (which is the same as the name of the binary. I know, this does'nt help much)
+
+And that's it. It builds and run like a charm...
 
 
+**Bob:** This is cool but I have 2 questions for you. First question : are you sure when you say that in `use step_02::files::listing;`, `step_02` is the name of the library. I believe you, but how can we remove any doubt?
+
+**Alice:** We can modify `Cargo.toml` as shown below:
+
+```
+[package]
+name = "step_02"
+version = "0.1.0"
+
+edition = "2024"
+
+[dependencies]
+
+
+[[bin]]
+name = "my_app"      # name of the executable (my_app.exe under WIN11)
+path = "src/main.rs"
+
+[lib]
+name = "my_super_lib" # name of the lib (libmy_super_lib.rlib under WIN11)
+path = "src/lib.rs"
+```
+
+Then we can modify `main.rs`:
+
+```rust
+// main.rs
+use my_super_lib::Result; 
+use my_super_lib::files::listing;
+
+fn main() -> Result<()> {
+    let files = listing::list_files(".")?;
+    println!("{files:#?}");
+
+    let files = listing::list_files("./02_production/01_project/empty")?;
+    println!("{files:#?}");
+
+    Ok(())
+}
+```
+
+Here is the output in the console
+
+<div align="center">
+<img src="./assets/img36.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+The runtime says something like: `process didn't exit successfully: target\debug\my_app.exe` while in `main.rs` we write `use my_super_lib::files::listing;`. 
+
+One last point of attention if I can... The command to build and run the application was : `cargo run -p step_02`. This is because this is the name of the package in `Cargo.toml`. Review the content of `Cargo.toml` if this is not crystal clear.
+
+What is your second question?
 
 
 
