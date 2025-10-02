@@ -2066,12 +2066,42 @@ So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
 * So here both paths are equivalent. I'll keep the absolute version. 
 
 
-**Bob:** Splendid!
+**Bob:** Splendid! Did you notice we did yet talk about error handling? Let's set the problem and modify the `main()` as below then run the code and tell me what you think.
 
+```rust
+fn main() -> Result<()> {
+    let files = listing::list_files(".")?;
+    println!("{files:#?}");
 
+    // let files = listing::list_files("./02_production/02_project/empty")?;
+    // println!("{files:#?}");
 
+    let files = listing::list_files("./non_existent_folder")?;
+    println!("{files:#?}");
 
+    Ok(())
+}
+```
 
+**Alice:** Here is what I see
+
+<div align="center">
+<img src="./assets/img37.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+* We use to read `Error: "Cannot list empty folder."`. This message comes from `listing.rs` when the code detect there is no file to list.
+* The code is not ready to handle cases were the directory does not exists. In `list_files()`, when `read_dir()` returns the `?` operator propagate the error to `main()`
+* Back in `main()`, `Err(...)` is returned as `Box<dyn std::error::Error>`
+* Finally, the Rust runtime prints the last 2 messages. 
+
+**Bob:** Any comment?
+
+**Alice:** The app is not ready to handle all kinds of errors. In the experimentation phase it was acceptable but no longer in the production pase. We need to put in place a a scalable errors management but I have no idea how to do that...
+
+**Bob:** You're right. The app is not yet ready but don't worry solutions based on custom errors (do you remember the `enum` etc.?). We will keep our methodology and make one step at a time. As a first step we will make sure the app can handle all kind of Io errors as well as most of custom error message base on string. Let me show you how...
+
+* ...
 
 ### Summary – Experimentation to Production
 
