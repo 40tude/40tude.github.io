@@ -2225,7 +2225,14 @@ Do not pay yet too much attention to the code but realize that since:
 We can now change the implementation of `Error` without impacting the rest of the project thanks to the level of indirection.
 
 
-If needed, open a console and add `thiserror` crate to `Cargo.toml` with th command below: 
+Now, in the code above, only **pay attention** to `Error`. 
+* So far it was `Box<dyn std::error::Error>`
+* Now it is an enum. Reported errors can only have 2 flavors : `Error:Custom` or `Error::Io`
+* It is a totally different story
+* We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).  
+
+
+If needed, open a console and add `thiserror` crate to `Cargo.toml` with the command below: 
 
 ```
 cargo add thiserror --package step_03
@@ -2270,7 +2277,7 @@ Error: Io(Os { code: 3, kind: NotFound, message: "Le chemin d’accès spécifi�
 error: process didn't exit successfully: `target\debug\step_03.exe` (exit code: 1)
 ```
 
-The difference is that now it print `Error: Io(Os...` instead of `Error: Os...`. Not sure it make the app more production ready.
+The difference is... Now it prints `Error: Io(Os...` instead of `Error: Os...`. Not sure it makes the app more production ready.
 
 
 
@@ -2315,9 +2322,15 @@ fn main() -> Result<()> {
 }
 ```
 
-The `non_existent_folder` is back in town but the `?` has disappeared. We use `match` after each call instead. If you run the code now you will not see big changes however. 
+The `non_existent_folder` is "back in town"
 
-Open `error.rs` and replace the line `#[error(transparent)]` with `#[error("**** I/O error: {0}")]`. See below the extract:
+<div align="center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hQo1HIcSVtg?si=tSkFmxpGfVozzhFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+In addition the `?` operator has disappeared. We use `match` after each call instead. Don't but if you run the code now you should not see big changes. 
+
+Open `error.rs` and replace the line `#[error(transparent)]` with `#[error("**** I/O error: {0}")]`. See below the code fragment:
 
 ```rust
 pub enum Error {
@@ -2346,10 +2359,17 @@ Error detected: Custom error - ⛔ Cannot list empty folder.
 Error detected: **** I/O error: Le chemin d’accès spécifié est introuvable. (os error 3)
 ```
 
-And now I understand what happen. 
-1. First call: No problemo, files are listed
-1. Second call: The code report a custom message because the directory is empty
-1. Third call: This is an unhandled IO error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the IO error into Error. I don't know yet all the detail but I remember thiserror will generate the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
+And now I understand what happen!
+
+1. First call: No problemo! Files are listed as before.
+
+<div align="center">
+<img src="./assets/img39.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+2. Second call: The code report a custom message because the directory is empty. This is business as usual.
+3. Third call: This is an unhandled IO error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the IO error into Error. I don't know yet all the detail but I remember thiserror will generate the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
 
 To make a long story short : Now, when the app encounter un unknown IO error it report it as an Error::Io.
 
