@@ -128,21 +128,21 @@ fn main() -> Result<()> {
 ## Custom Error Types and Error Handling in Larger Programs
 
 
-**Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about in bigger programs where different parts can error in different ways? How should I think about it and then design my own error data types, if necessary?
+**Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about bigger programs where different parts can error in different ways? How should I think about it and then design my own error data types, if necessary?
 
-**Bob:** For me, the key point is that we need to ensure that our custom error type behaves as much like `std::error::Error` as possible. If we can do that, our error can be handled like any standard error, which is pretty cool. As you will see luckily the `std::error::Error` trait is here to help.  
+**Bob:** For me, the key point is that we need to ensure that our custom error type behaves as much like `std::error::Error` as possible. If we can do that, our error can be handled like any standard error, which is pretty cool. As you will see, luckily the `std::error::Error` trait is here to help.  
 
 This said, as our Rust program grows, we might call many operations that can fail, potentially with different error types. We have a few choices:
-* Use one catch-all error type everywhere (like our `Box<dyn std::error::Error>` or a crate like `anyhow` in applications) to simplify things
-* Define our own **custom error type** (usually an `enum` ) that implements `std::error::Error` where we enumerate all possible errors in our context and which is able to convert other errors into our type.
+* Use one catch-all error type everywhere to simplify things. Think to our good old `Box<dyn std::error::Error>` or a crate like `anyhow` in applications. 
+* Define our own **custom error type** (usually an `enum` ) that implements `std::error::Error` where we enumerate all possible errors in our context and which is able to convert other errors into our custom type.
 
-Defining a custom error type is common in libraries because, once this is done, that the library returns one consistent error type that our users can handle, instead of many disparate types.
+Defining a custom error type is common in libraries because, once this is done, the library returns one consistent error type that the users can handle, instead of many disparate types.
 
 
 
-**Alice:** How would a custom error looks like?
+**Alice:** How would a custom error type looks like?
 
-**Bob:** Usually as an `enum`, you know, the Rust's jewel of the crown... 
+**Bob:** As I said, usually it is an `enum`, you know, the Rust's jewel of the crown... 
 
 <div align="center">
 <img src="./assets/img40.webp" alt="" width="225" loading="lazy"/><br/>
