@@ -2324,7 +2324,7 @@ fn main() -> Result<()> {
 
 The `non_existent_folder` is "back in town"
 
-<div align="center>
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hQo1HIcSVtg?si=tSkFmxpGfVozzhFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
@@ -2363,10 +2363,10 @@ And now I understand what happen!
 
 1. First call: No problemo! Files are listed as before.
 
-<div align="center">
-<img src="./assets/img39.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
+    <div align="center">
+    <img src="./assets/img39.webp" alt="" width="450" loading="lazy"/><br/>
+    <!-- <span>Optional comment</span> -->
+    </div>
 
 2. Second call: The code report a custom message because the directory is empty. This is business as usual.
 3. Third call: This is an unhandled IO error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the IO error into Error. I don't know yet all the detail but I remember thiserror will generate the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
