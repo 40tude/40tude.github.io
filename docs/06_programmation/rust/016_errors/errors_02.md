@@ -2140,7 +2140,7 @@ fn main() -> Result<()> {
 <!-- <span>Optional comment</span> -->
 </div>
 
-* We use to read `Error: "Cannot list empty folder."`. This message was coming from `listing.rs` when the code detect there is no file to list. See below:
+* We use to read `Error: "Cannot list empty folder."`. This message was coming from `listing.rs` when the code detects that there is no file to list. See below:
 
     ```rust
     // listing.rs
@@ -2160,7 +2160,7 @@ fn main() -> Result<()> {
     ```
 
 
-* `list_files()` is not ready to handle cases were the directory does not exists. In such case, when `read_dir()` returns the `?` operator bubbles up the error to `main()`
+* `list_files()` is not ready to handle cases were the directory does not exists. In such case, when `read_dir()` returns, the `?` operator bubbles up the error to `main()`
 * Back in `main()`, the error is returned as `Box<dyn std::error::Error>`
 * Finally, the Rust runtime prints the last 2 messages. 
 
@@ -2176,7 +2176,7 @@ fn main() -> Result<()> {
 
 **Bob:** You're right. The app is not yet ready but don't worry, solutions based on custom errors exist (do you remember the `enum` etc.?). 
 
-We will keep our methodology and make one step at a time. Based on our experience in `list_files()`, in a first step we will make sure the app can report all kind of Io errors as well custom error messages base on strings of char (String or string literal). Let me show you how...
+We will keep our methodology and make one step at a time. Based on our experience in `list_files()`, in a first step we will make sure the app can report all kind of Io errors as well custom error messages based on strings of chars (String or string literal). Let me show you how...
 
 So far `errors.rs` look like this:
 
@@ -2226,8 +2226,8 @@ We can now change the implementation of `Error` without impacting the rest of th
 
 
 Now, in the code above, only **pay attention** to `Error`. 
-* So far it was `Box<dyn std::error::Error>`
-* Now it is an enum. Reported errors can only have 2 flavors : `Error:Custom` or `Error::Io`
+* So far its datatype was `Box<dyn std::error::Error>`
+* Now it is an `enum`. This means the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
 * It is a totally different story
 * We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).  
 
@@ -2237,7 +2237,9 @@ If needed, open a console and add `thiserror` crate to `Cargo.toml` with the com
 ```
 cargo add thiserror --package step_03
 ```
-It should look like:
+
+Cargo.toml should look like:
+
 ```toml
 [package]
 name = "step_03"
@@ -2249,7 +2251,11 @@ thiserror = "2.0.17"
 ```
 
 
-Now, run the application (`cargo run -p step_03`) and tell me
+Now, run the application (`cargo run -p step_03`) and "tell me why" you get this output.
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H3LbzjFJdSA?si=swM00wplNuHeLbL9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 **Alice:** Good news, it works. Bad news, I don't see big difference in the output. With `step_02` I had:
 
@@ -2359,7 +2365,7 @@ Error detected: Custom error - ⛔ Cannot list empty folder.
 Error detected: **** I/O error: Le chemin d’accès spécifié est introuvable. (os error 3)
 ```
 
-And now I understand what happen!
+And now I understand what happens!
 
 1. First call: No problemo! Files are listed as before.
 
@@ -2368,12 +2374,12 @@ And now I understand what happen!
     <!-- <span>Optional comment</span> -->
     </div>
 
-2. Second call: The code report a custom message because the directory is empty. This is business as usual.
-3. Third call: This is an unhandled IO error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the IO error into Error. I don't know yet all the detail but I remember thiserror will generate the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
+2. Second call: The code reports a custom error with a message because the directory is empty. This is business as usual.
+3. Third call: This is an unhandled IO error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the IO error into an `Error`. I don't know yet all the details but I remember `thiserror` generates the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
 
-To make a long story short : Now, when the app encounter un unknown IO error it report it as an Error::Io.
+To make a long story short : Now, when the app encounter an unknown IO error it reports it as an `Error::Io`.
 
-Cool, it works. Now I can uncomment the line with `transparent` and run the app again.
+Cool, it works. Now I can uncomment the line with `transparent` and run the application again. Here is what I see:
 
 <div align="center">
 <img src="./assets/img38.webp" alt="" width="450" loading="lazy"/><br/>
@@ -2474,9 +2480,8 @@ cargo add derive_more --features from --package step_03
 {: .new-title }
 > Summary – Experimentation to Production
 >
-* Split monolitic code into 1 or more libraries and 1 consumer
+* Split monolithic code into 1 or more libraries and 1 consumer
 * 
-* **`derive_more`:** ...  
 * **...:** ...  
 
 
