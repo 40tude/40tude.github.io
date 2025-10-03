@@ -128,19 +128,29 @@ fn main() -> Result<()> {
 ## Custom Error Types and Error Handling in Larger Programs
 
 
-**Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about in bigger programs where different parts can error in different ways? How should I think about and then design my own error data types, if necessary?
+**Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about in bigger programs where different parts can error in different ways? How should I think about it and then design my own error data types, if necessary?
 
-**Bob:** As our Rust program grows, we might call many operations that can fail, potentially with different error types. We have a few choices:
+**Bob:** For me, the key point is that we need to ensure that our custom error behaves as much like `std::error::Error` as possible. If we can do that, our error can be handled like any standard error, which is pretty cool.
+
+This said, as our Rust program grows, we might call many operations that can fail, potentially with different error types. We have a few choices:
 * Use one catch-all error type everywhere (like `Box<dyn std::error::Error>` or a crate like `anyhow` in applications) to simplify things
-* Define our own **custom error type** (usually an `enum` ) that enumerates all possible errors in our context, and convert other errors into our type.
+* Define our own **custom error type** (usually an `enum` ) that implement `std::error::Error` and enumerates all possible errors in our context, and convert other errors into our type.
 
-Defining a custom error type is common in libraries, so that the library returns one consistent error type that our users can handle, instead of many disparate types.
+Defining a custom error type is common in libraries because, once this is done, that the library returns one consistent error type that our users can handle, instead of many disparate types.
 
 
 
 **Alice:** How would a custom error look?
 
-**Bob:** Usually as an `enum`, you know, the Rust's jewel of the crown. For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from std or crates (IO errors and parse errors). We might create an `enum` type definition like this:
+**Bob:** Usually as an `enum`, you know, the Rust's jewel of the crown... 
+
+<div align="center">
+<img src="./assets/img40.webp" alt="" width="225" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from std or crates (IO errors and parse errors). We might create an `enum` type definition like this:
 
 
 ```rust
@@ -167,6 +177,7 @@ impl fmt::Display for ConfigError {
 }
 
 // Implement the standard Error trait for integration with other error tooling.
+// To implement the std::error::Error trait for ConfigError, ConfigError must implement Debug and Display
 impl std::error::Error for ConfigError {}
 ```
 
@@ -183,7 +194,17 @@ Each enum variant is also a constructor of an instance of the enum.
 
 
 * Then we implement the `Display` trait for the data type `ConfigError`. 
-    * This is mandatory. In VSCode, if we hover the word `Error` from `impl std::error::Error` we learn that to implement the `Error` trait for `ConfigError`, the later must implement `Debug` and `Display`. `Debug` is easy. It is implemented automatically thanks to the directive `#[derive(Debug)]`. Now, regarding `Display`, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely. 
+    * This is mandatory. In VSCode, if we hover the word `Error` from `impl std::error::Error` we learn that 
+        * to implement the `Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`. 
+        * `Debug` is easy. It is implemented automatically thanks to the directive `#[derive(Debug)]`. 
+        * Now, regarding `Display`, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely. 
+
+
+{: .warning-title}
+> This is key
+>
+To implement the `Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`
+
 
 * Finally comes the empty implementation of `Error` for `ConfigError`. It is empty because the trait only have default methods which is the case here. In other words, the line officially registers our data type as a standard error, without any additional customization.
 
@@ -518,7 +539,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
-### anyhow - binaries (mnemonic: A, B, C...**A**nyhow, **B**inaries)
+### anyhow - for binaries (mnemonic: A, B, C...**A**nyhow, **B**inaries)
 
 [`anyhow`](https://docs.rs/anyhow/latest/anyhow/) provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
 
@@ -669,7 +690,7 @@ For libraries, we should avoid `anyhow::Error` in our public API and prefer a co
 
 
 
-### thiserror - libraries
+### thiserror - for libraries
 
 [`thiserror`](https://docs.rs/thiserror/latest/thiserror/) is a derive macro crate. Instead of manually implementing by hand `Display` and `Error` and writing `From` conversions (remember `Debug` comes with the directive `#[derive(Debug)]`), we can do something concise like:
 
