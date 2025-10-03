@@ -130,17 +130,17 @@ fn main() -> Result<()> {
 
 **Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about in bigger programs where different parts can error in different ways? How should I think about it and then design my own error data types, if necessary?
 
-**Bob:** For me, the key point is that we need to ensure that our custom error behaves as much like `std::error::Error` as possible. If we can do that, our error can be handled like any standard error, which is pretty cool.
+**Bob:** For me, the key point is that we need to ensure that our custom error type behaves as much like `std::error::Error` as possible. If we can do that, our error can be handled like any standard error, which is pretty cool. As you will see luckily the `std::error::Error` trait is here to help.  
 
 This said, as our Rust program grows, we might call many operations that can fail, potentially with different error types. We have a few choices:
-* Use one catch-all error type everywhere (like `Box<dyn std::error::Error>` or a crate like `anyhow` in applications) to simplify things
-* Define our own **custom error type** (usually an `enum` ) that implement `std::error::Error` and enumerates all possible errors in our context, and convert other errors into our type.
+* Use one catch-all error type everywhere (like our `Box<dyn std::error::Error>` or a crate like `anyhow` in applications) to simplify things
+* Define our own **custom error type** (usually an `enum` ) that implements `std::error::Error` where we enumerate all possible errors in our context and which is able to convert other errors into our type.
 
 Defining a custom error type is common in libraries because, once this is done, that the library returns one consistent error type that our users can handle, instead of many disparate types.
 
 
 
-**Alice:** How would a custom error look?
+**Alice:** How would a custom error looks like?
 
 **Bob:** Usually as an `enum`, you know, the Rust's jewel of the crown... 
 
@@ -150,7 +150,7 @@ Defining a custom error type is common in libraries because, once this is done, 
 </div>
 
 
-For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from std or crates (IO errors and parse errors). We might create an `enum` type definition like this:
+For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from the std lib or the crate (IO errors and parse errors). We might create an `enum` type definition like this:
 
 
 ```rust
@@ -193,9 +193,9 @@ impl std::error::Error for ConfigError {}
 Each enum variant is also a constructor of an instance of the enum.
 
 
-* Then we implement the `Display` trait for the data type `ConfigError`. 
+* Then in the code above we implement the `Display` trait for the data type `ConfigError`. 
     * This is mandatory. In VSCode, if we hover the word `Error` from `impl std::error::Error` we learn that 
-        * to implement the `Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`. 
+        * to implement the `std::error::Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`. 
         * `Debug` is easy. It is implemented automatically thanks to the directive `#[derive(Debug)]`. 
         * Now, regarding `Display`, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely. 
 
@@ -203,7 +203,7 @@ Each enum variant is also a constructor of an instance of the enum.
 {: .warning-title}
 > This is key
 >
-To implement the `Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`
+To implement the `std::error::Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`
 
 
 * Finally comes the empty implementation of `Error` for `ConfigError`. It is empty because the trait only have default methods which is the case here. In other words, the line officially registers our data type as a standard error, without any additional customization.
