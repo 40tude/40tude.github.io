@@ -1564,7 +1564,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 
 
 
-### Production
+### Path to Production - Step_00
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LUapZhcsdx8?si=cxsAd5AjKMZfTm1x&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -1785,6 +1785,20 @@ pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+### Path to Production - Step_01
+
+
 **Bob:** The second step should be easy. Create an `error.rs` file then copy/paste `Result` and `Error` definitions there. Explain what you do when you make the project works as before.
 
 **Alice:** You know what? I copy/paste/rename the previous project in a directory named `01_project`. 
@@ -1899,6 +1913,19 @@ You will be happy to learn that in the next step, you will create a library and 
 
 Create a `lib.rs` file at the root of the project, put the `pub mod error;` and `pub mod files;`. Make the application run again and, as before, explain what you do.
 
+
+
+
+
+
+
+
+
+
+
+
+
+### Path to Production - Step_02
 
 
 **Alice:** Um... Ok... I start with a copy/paste/rename of the previous project
@@ -2066,7 +2093,30 @@ So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
 * So here both paths are equivalent. I'll keep the absolute version. 
 
 
-**Bob:** Splendid! Did you notice we did yet talk about error handling? Let's set the problem and modify the `main()` as below then run the code and tell me what you think.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Path to Production - Step_03
+
+
+
+**Bob:** Splendid! Did you notice we did'nt yet talk about error handling? First, let's set the problem then we will work on one possible option. 
+
+* I let you copy/paste/rename of the previous project
+* Think to update the package name in `Cargo.toml` (`name = "step_03"`)
+
+Once this is done, to "feel" the problem, please modify the `main()` function as below then run the code and tell me what you think.
 
 ```rust
 fn main() -> Result<()> {
@@ -2090,18 +2140,314 @@ fn main() -> Result<()> {
 <!-- <span>Optional comment</span> -->
 </div>
 
-* We use to read `Error: "Cannot list empty folder."`. This message comes from `listing.rs` when the code detect there is no file to list.
-* The code is not ready to handle cases were the directory does not exists. In `list_files()`, when `read_dir()` returns the `?` operator propagate the error to `main()`
-* Back in `main()`, `Err(...)` is returned as `Box<dyn std::error::Error>`
+* We use to read `Error: "Cannot list empty folder."`. This message was coming from `listing.rs` when the code detect there is no file to list. See below:
+
+    ```rust
+    // listing.rs
+    use crate::Result;
+
+    pub fn list_files(path: &str) -> Result<Vec<String>> {
+        let files: Vec<String> = std::fs::read_dir(path)?
+            .filter_map(|re| re.ok())
+            .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
+            .filter_map(|e| e.file_name().into_string().ok())
+            .collect();
+        if files.is_empty() {
+            return Err("Cannot list empty folder.".into());
+        }
+        Ok(files)
+    }
+    ```
+
+
+* `list_files()` is not ready to handle cases were the directory does not exists. In such case, when `read_dir()` returns the `?` operator bubbles up the error to `main()`
+* Back in `main()`, the error is returned as `Box<dyn std::error::Error>`
 * Finally, the Rust runtime prints the last 2 messages. 
+
+
+
 
 **Bob:** Any comment?
 
-**Alice:** The app is not ready to handle all kinds of errors. In the experimentation phase it was acceptable but no longer in the production pase. We need to put in place a a scalable errors management but I have no idea how to do that...
+**Alice:** The app is not ready to handle all possible kinds of errors it may encounter. In the experimentation phase it was acceptable but, in production phase it is no longer the case. We need to put in place a scalable errors management but I have no idea how to do that...
 
-**Bob:** You're right. The app is not yet ready but don't worry solutions based on custom errors (do you remember the `enum` etc.?). We will keep our methodology and make one step at a time. As a first step we will make sure the app can handle all kind of Io errors as well as most of custom error message base on string. Let me show you how...
 
-* ...
+
+
+**Bob:** You're right. The app is not yet ready but don't worry, solutions based on custom errors exist (do you remember the `enum` etc.?). 
+
+We will keep our methodology and make one step at a time. Based on our experience in `list_files()`, in a first step we will make sure the app can report all kind of Io errors as well custom error messages base on strings of char (String or string literal). Let me show you how...
+
+So far `errors.rs` look like this:
+
+```rust
+// error.rs
+pub type Result<T> = std::result::Result<T, Error>;
+pub type Error = Box<dyn std::error::Error>;
+```
+
+Modify it so that it looks like that:
+
+```rust
+// error.rs
+use thiserror::Error;
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug, Error)]
+pub enum Error {
+    #[error("custom error: {0}")]
+    Custom(String),
+
+    #[error(transparent)]
+    Io(#[from] std::io::Error),
+}
+
+impl Error {
+    pub fn custom(val: impl std::fmt::Display) -> Self {
+        Self::Custom(val.to_string())
+    }
+}
+
+impl From<&str> for Error {
+    fn from(val: &str) -> Self {
+        Self::Custom(val.to_string())
+    }
+}
+```
+
+
+
+Do not pay yet too much attention to the code but realize that since: 
+1. the `error.rs` file is standalone 
+2. `pub type Error = Box<dyn std::error::Error>;` was on its own line 
+
+We can now change the implementation of `Error` without impacting the rest of the project thanks to the level of indirection.
+
+
+If needed, open a console and add `thiserror` crate to `Cargo.toml` with th command below: 
+
+```
+cargo add thiserror --package step_03
+```
+It should look like:
+```toml
+[package]
+name = "step_03"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+thiserror = "2.0.17"
+```
+
+
+Now, run the application (`cargo run -p step_03`) and tell me
+
+**Alice:** Good news, it works. Bad news, I don't see big difference in the output. With `step_02` I had:
+
+```
+[
+    ".gitignore",
+    "Cargo.lock",
+    "Cargo.toml",
+    "README.md",
+]
+Error: Os { code: 3, kind: NotFound, message: "Le chemin d’accès spécifié est introuvable." }
+error: process didn't exit successfully: `target\debug\step_02.exe` (exit code: 1)
+```
+
+Now with `step_03` I see:
+
+```
+[
+    ".gitignore",
+    "Cargo.lock",
+    "Cargo.toml",
+    "README.md",
+]
+Error: Io(Os { code: 3, kind: NotFound, message: "Le chemin d’accès spécifié est introuvable." })
+error: process didn't exit successfully: `target\debug\step_03.exe` (exit code: 1)
+```
+
+The difference is that now it print `Error: Io(Os...` instead of `Error: Os...`. Not sure it make the app more production ready.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Path to Production - Step_04
+
+**Bob:** This is OK. It is part of our journey... Copy/paste/rename the project as `step_04` and modify `main.rs` as below
+
+```rust
+// main.rs
+use step_04::Result; 
+use step_04::files::listing;
+
+fn main() -> Result<()> {
+    match listing::list_files(".") {
+        Ok(files) => println!("Files found   : {files:#?}"),
+        Err(e) => println!("Error: {e}"),
+    }
+
+    match listing::list_files("./02_production/04_project/empty") {
+        Ok(files) => println!("Files found   : {files:#?}"),
+        Err(e) => println!("Error detected: {e}"),
+    }
+
+    match listing::list_files("./non_existent_folder") {
+        Ok(files) => println!("Files found   : {files:#?}"),
+        Err(e) => println!("Error detected: {e}"),
+    }
+
+    Ok(())
+}
+```
+
+The `non_existent_folder` is back in town but the `?` has disappeared. We use `match` after each call instead. If you run the code now you will not see big changes however. 
+
+Open `error.rs` and replace the line `#[error(transparent)]` with `#[error("**** I/O error: {0}")]`. See below the extract:
+
+```rust
+pub enum Error {
+    #[error("Custom error - {0}")]
+    Custom(String),
+
+    // #[error(transparent)]
+    #[error("**** I/O error: {0}")]
+    Io(#[from] std::io::Error),
+}
+```
+
+Now run the code (`cargo run -p step_04`). What do you see. What is you understanding?
+
+
+**Alice:** Here is what I get in the terminal:
+
+```
+Files found   : [
+    ".gitignore",
+    "Cargo.lock",
+    "Cargo.toml",
+    "README.md",
+]
+Error detected: Custom error - ⛔ Cannot list empty folder.
+Error detected: **** I/O error: Le chemin d’accès spécifié est introuvable. (os error 3)
+```
+
+And now I understand what happen. 
+1. First call: No problemo, files are listed
+1. Second call: The code report a custom message because the directory is empty
+1. Third call: This is an unhandled IO error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the IO error into Error. I don't know yet all the detail but I remember thiserror will generate the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
+
+To make a long story short : Now, when the app encounter un unknown IO error it report it as an Error::Io.
+
+Cool, it works. Now I can uncomment the line with `transparent` and run the app again.
+
+<div align="center">
+<img src="./assets/img38.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+One question however. Could you read `error.rs` and tell me exactly what is going on here?
+
+
+<!-- thiserror is a derive macro crate. Instead of manually implementing by hand Display and Error and writing From conversions (remember Debug comes with the directive #[derive(Debug)]), we can do something concise like:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```rust
+// error.rs
+use derive_more::From;
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug, From)]
+pub enum Error {
+    #[from]
+    Custom(String), 
+
+    #[from]
+    Io(std::io::Error), 
+}
+
+impl Error {
+    pub fn custom(val: impl std::fmt::Display) -> Self {
+        Self::Custom(val.to_string())
+    }
+}
+
+impl From<&str> for Error {
+    fn from(val: &str) -> Self {
+        Self::Custom(val.to_string())
+    }
+}
+
+impl std::fmt::Display for Error {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::result::Result<(), core::fmt::Error> {
+        write!(fmt, "🔎 {self:?}") 
+    }
+}
+
+impl std::error::Error for Error {}
+```
+
+
+
+
+If needed, make sure to open a console at the root of the 
+```
+cargo add derive_more --features from --package step_03
+```
+ -->
+
+
+<!-- cargo add thiserror --package step_03 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Summary – Experimentation to Production
 
