@@ -181,7 +181,8 @@ impl fmt::Display for ConfigError {
 impl std::error::Error for ConfigError {}
 ```
 
-* `ConfigError` is an enum (a sum type). A value of this type is exactly one of its variants at a time. Here it has two possible variants:
+* `ConfigError` is our custom error type
+* It is an enum (a sum type). A value of this type is exactly one of its variants at a time. Here it has two possible variants:
     * `Io(...)` — a variant that carries one payload of type `std::io::Error`
     * `Parse(...)` — a variant that carries one payload of type `serde_json::Error`
 * Keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
@@ -193,7 +194,7 @@ impl std::error::Error for ConfigError {}
 Each enum variant is also a constructor of an instance of the enum.
 
 
-* Then in the code above we implement the `Display` trait for the data type `ConfigError`. 
+* Then in the code above we implement the `Display` trait for our data type `ConfigError`. 
     * This is mandatory. In VSCode, if we hover the word `Error` from `impl std::error::Error` we learn that 
         * to implement the `std::error::Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`. 
         * `Debug` is easy. It is implemented automatically thanks to the directive `#[derive(Debug)]`. 
@@ -233,7 +234,7 @@ Now, fasten your seat belt and stay with me because what follows is a bit rock �
     * `.map_err(ConfigError::Io)` is then executed
     * However, since you remember (you confirm, you remember) that each enum variant of `ConfigError` is also an initializer of the enum, when `.map_err(ConfigError::Io)` is executed, it calls the function `ConfigError::Io(e: std::io::Error) -> ConfigError` which constructs and returns a `ConfigError`
     * The `ConfigError` (which have the trait `std::error::Error`) is presented in front of the `?` operator
-    * The `?` operator bubbles up the `ConfigError` immediately since in our case we said `std::fs::read_to_string` failed
+    * The `?` operator bubbles up the `ConfigError` immediately since in our explanations we said that `std::fs::read_to_string` just failed
 * The same mechanics is at work on the next line 
 
 
@@ -273,7 +274,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 * Note that `main()` returns `Result<(), Box<dyn std::error::Error>>`
 * This is cool because now we can use the `?` operator in the body of the `main()` at the end of certain lines
-* Thanks to `Box<dyn std::error::Error>>`, it works even if the error data type from ``write()`` and `load_or_init()` are different. 
+* Thanks to `Box<dyn std::error::Error>>`, it works even if the error type from ``write()`` and `load_or_init()` are different (they both implement the `std::error::Error` trait)
 
 
 Expected output of the `ex17.rs` with ``bad_config.json``: 
@@ -381,7 +382,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 
 
-**Alice:** Got it. So if I have a module that does some operation, I should define an error type in that module representing things that can go wrong there, and use `?` to convert sub-errors into it, then bubble up to `main()`. That way, `main()` just sees my module’s error type (or I convert it further to something else or to `Box<dyn Error>` at the final boundary).
+**Alice:** Got it. So if I have a module—or more likely, a library—that performs some operations, I should define a custom error type in that module to represent everything that can go wrong. Then I can use `?` to convert sub-errors into my custom error and let them bubble up to `main()`. That way, `main()` only deals with my module’s error type. 
+
+<!-- (or I convert it further to something else or to `Box<dyn Error>` at the final boundary). -->
 
 **Bob:** Exactly. Let’s do a quick mini-example of propagating an error from a module to `main()`. Suppose we have a module `math_utils` with a function that can fail:
 
@@ -1092,7 +1095,7 @@ There is, may be, one last thing I would like to discuss with you. I know, I'm s
 <!-- <span>Optional comment</span> -->
 </div>
 
-**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need ti know, I propose we follow this path:
+**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need to know, I propose we follow this path:
 
 1. First, we’ll recap what we’d like to see — and actually live with — when it comes to error management. Kind of like a wish list, if you will. I don’t have much to add here, since you already have the answers.
 2. Then we will put ourself in a situation were you start few experimental projects. It will be a good opportunity to write some code, check our knowledge and put in place good practices.
@@ -1114,7 +1117,7 @@ Do you agree?
 
 So, good news, you are right. You must start with an experimental code that works and which will evolve (may be) in a million dollar class of application.
 
-I can also confirm you are right when you say that you want to put it place, up front, an error management system that scales with your app.
+I can also confirm you are right when you say that you want to put it in place, up front, an error management system that scales with your app.
 
 Now, I have a question for you. Without entering in the technical details, what do *you* want from the error management standpoint?
 
@@ -1123,7 +1126,7 @@ Now, I have a question for you. Without entering in the technical details, what 
 * The fewer the better. This is obvious. Ideally I don't want error in my code.
 * I told you, I really like the `?` operator. It makes the code easy to read. It is my friend. I would like to keep it in the transition from prototype to production.
 * I want to be able to prototype experimentation code quickly, while still applying the lessons we learned with the custom error type in production. `enum` and related features are powerful, but I’m not sure I want to bother with them in my experimental code.
-* I also remember what we say. If I write a library it should return the errors to the consumer and let him decide. It should almost never `panic!()`.
+* I also remember what we said. If I write a library it should return the errors to the consumer and let him decide. It should almost never `panic!()`.
 * Library should expose one error data type in their API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...  
 * What else? An espresso? More seriously, I don’t have much to add, except that I’d like to avoid rewriting my code when transitioning to production.
 
