@@ -1569,13 +1569,43 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 <!-- <span>Optional comment</span> -->
 </div>
 
+
 **Bob:** It's showtime! Let's transition to production.
 
 
 
 
+#### Summary – Experimentation
 
+{: .new-title }
+> Summary – Experimentation
+>
+* `main()` return any kind of error that implements the `Error` trait
+* `?` can be used in `main()`
+* In our functions we return custom messages (`.into()`, `.map_err()`...)
+* Let's keep this code fragment in mind
+    ```rust
+    pub type Error = Box<dyn std::error::Error>;
+    pub type Result<T> = std::result::Result<T, Error>;
 
+    fn main() -> Result<()> {
+        let files = list_files("")?;
+        println!("{files:#?}");
+        Ok(())
+    }
+
+    fn list_files(path: &str) -> Result<Vec<String>> {
+        let files: Vec<String> = std::fs::read_dir(path)
+            .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))? 
+            // REST OF THE CODE
+            .collect();
+        
+        if files.is_empty() {
+            return Err("Cannot list empty folder.".into()); 
+        }    
+        Ok(files)
+    }
+    ```
 
 
 
@@ -2251,7 +2281,7 @@ We can now change the implementation of `Error` without impacting the rest of th
 
 Now, in the code above, only **pay attention** to `Error`. 
 * So far its datatype was `Box<dyn std::error::Error>`
-* Now it is an `enum`. This means the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
+* **IMPORTANT:** Now it is an `enum`. This means the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
 * It is a totally different story
 * We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).  
 
@@ -2325,7 +2355,9 @@ The difference is... Now it prints `Error: Io(Os...` instead of `Error: Os...`. 
 
 ### Path to Production - Step_04
 
-**Bob:** This is OK. It is part of our journey... Copy/paste/rename the project as `step_04` and modify `main.rs` as below
+**Bob:** This is OK. It is part of our journey... Copy/paste/rename the project directory as `04_project` and rename the package in Cargo.toml as `step_04`. 
+
+Now modify `main.rs` as below:
 
 ```rust
 // main.rs
@@ -2413,42 +2445,61 @@ Cool, it works. Now I can uncomment the line with `transparent` and run the appl
 One question however. Could you read `error.rs` and tell me exactly what is going on here?
 
 
-<!-- thiserror is a derive macro crate. Instead of manually implementing by hand Display and Error and writing From conversions (remember Debug comes with the directive #[derive(Debug)]), we can do something concise like:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Alice:** We already used `thiserror`, but, Ok, let me start from the beginning... Until `Step_03` we had :  
 
 ```rust
 // error.rs
-use derive_more::From;
+pub type Result<T> = std::result::Result<T, Error>;
+pub type Error = Box<dyn std::error::Error>;
+```
+
+
+
+Now we want our Error being able to cover system-level I/O errors or send back custom error messages. We would like to write something like:
+
+```rust
+// error.rs
+pub type Result<T> = std::result::Result<T, Error>;
+
+pub enum Error {
+    Custom(String),
+    Io(std::io::Error),
+}
+```
+
+This cannot work but `thiserror` can help. And below is equivalent to what we had within `ex24.rs`
+
+```rust
+// error.rs
+use thiserror::Error;
 
 pub type Result<T> = std::result::Result<T, Error>;
 
-#[derive(Debug, From)]
+#[derive(Debug, Error)]
 pub enum Error {
-    #[from]
-    Custom(String), 
+    #[error("Custom error - {0}")]
+    Custom(String),
 
-    #[from]
-    Io(std::io::Error), 
+    #[error(transparent)]
+    Io(#[from] std::io::Error),
+}
+```
+However here few lines of code have been added
+
+```rust
+// error.rs
+use thiserror::Error;
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug, Error)]
+pub enum Error {
+    #[error("Custom error - {0}")]
+    Custom(String),
+
+    #[error(transparent)]
+    Io(#[from] std::io::Error),
 }
 
 impl Error {
@@ -2462,27 +2513,226 @@ impl From<&str> for Error {
         Self::Custom(val.to_string())
     }
 }
+```
 
-impl std::fmt::Display for Error {
-    fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::result::Result<(), core::fmt::Error> {
-        write!(fmt, "🔎 {self:?}") 
+
+Then in the implementation section of `Error` we define a "convenience" constructor (see `custom(param)`). This constructor accepts anything implementing `Display` (string literals, numbers...) and converts the parameter into a `Error::Custom` variant. This is provide more flexibility because we can write `Error::custom("foo")` instead of manually allocating a `String`.
+
+The last implementation is here to help us to write `return Err("something went wrong".into())`. Indeed, since we remember that in Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for A` for free,  we define `From<&str> for Error` so that we get `Into<Error> for &str`.
+
+
+
+
+
+
+
+### Path to Production - Step_05
+
+**Bob:** You know... We could go one step further... Indeed if we want to be more strick we should remove the `Custom` variant of the `Error` enum and only list the errors we deal with.
+
+I let you copy/paste/rename the project directory as `05_project` and rename the package in `Cargo.toml` as `step_05`.
+
+Now I propose to use this `error.rs` file
+
+```rust
+// error.rs
+use thiserror::Error;
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug, Error)]
+pub enum Error {
+    #[error("⛔ Cannot list an empty folder")]
+    CantListEmptyFolder,
+
+    #[error(transparent)]
+    Io(#[from] std::io::Error),
+}
+```
+
+For comparison, please find below the previous version :
+
+
+```rust
+// error.rs
+use thiserror::Error;
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug, Error)]
+pub enum Error {
+    #[error("Custom error - {0}")]
+    Custom(String),
+
+    #[error(transparent)]
+    Io(#[from] std::io::Error),
+}
+
+impl Error {
+    pub fn custom(val: impl std::fmt::Display) -> Self {
+        Self::Custom(val.to_string())
     }
 }
 
-impl std::error::Error for Error {}
+impl From<&str> for Error {
+    fn from(val: &str) -> Self {
+        Self::Custom(val.to_string())
+    }
+}
+```
+
+1. The `Custom` variant has been removed. This allow us to remove the convenient constructor `custom()` and the `From` trait implementation for `Error`.
+1. More **important**. We now have `CantListEmptyFolder` which is a variant without associated data, unlike the `Io(std::io::Error)` variant, which contains a `std::io::Error` object. So `CantListEmptyFolder` act as a constant of type `Error`.
+
+
+With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` error code instead. See below : 
+
+```rust
+// listing.rs
+
+use crate::{Error, Result};
+
+pub fn list_files(path: &str) -> Result<Vec<String>> {
+    let files: Vec<String> = std::fs::read_dir(path)?
+        .filter_map(|re| re.ok())
+        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
+        .filter_map(|e| e.file_name().into_string().ok())
+        .collect();
+    if files.is_empty() {
+        // return Err("⛔ Cannot list empty folder.".into());
+        return Err(Error::CantListEmptyFolder);
+    }
+    Ok(files)
+}
+```
+In the code above, you we want to return `Err(Error::CantListEmptyFolder)` we need bring into the scope the Error. This is why we now need `use crate::{Error, Result};` instead of `use crate::Result;`.
+
+If you run the project (`cargo run -p step_05`), here is what you should see :
+
+<div align="center">
+<img src="./assets/img41.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
+Now if you modify the match in charge of the empty folder as below :
+
+```rust
+match listing::list_files("./02_production/05_project/empty") {
+    Ok(files) => println!("Files found   : {files:#?}"),
+    // Err(e) => println!("Error detected: {e}"),
+    Err(e) => println!("Error detected: {e:?}"),
+}
+```
+
+You should get this output in the console. The `:?` debug specifier helps to see the `CantListEmptyFolder` error code in plain English.
+
+```
+Files found   : [
+    ".gitignore",
+    "Cargo.lock",
+    "Cargo.toml",
+    "README.md",
+]
+Error detected: CantListEmptyFolder
+Error detected: Le chemin d’accès spécifié est introuvable. (os error 3)
 ```
 
 
 
 
-If needed, make sure to open a console at the root of the 
-```
-cargo add derive_more --features from --package step_03
-```
- -->
 
 
-<!-- cargo add thiserror --package step_03 -->
+### Path to Production - Step_06
+
+**Alice:** Could you show me how to add testing to my "production" code ?
+
+**Bob:** Yes I can but I wil only show you the code. Indeed testing is an other subject and it is time to end this conversation. 
+
+The code below is in `step_06/listing.rs` directory.
+
+```rust
+// listing.rs
+use crate::{Error, Result};
+
+pub fn list_files(path: &str) -> Result<Vec<String>> {
+    let files: Vec<String> = std::fs::read_dir(path)?
+        .filter_map(|re| re.ok())
+        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
+        .filter_map(|e| e.file_name().into_string().ok())
+        .collect();
+    if files.is_empty() {
+        return Err(Error::CantListEmptyFolder);
+    }
+    Ok(files)
+}
+
+#[cfg(test)]
+mod test {
+
+    use super::*;
+
+    // ! cwd is 06_project/ NOT 018_err_for_blog_post/ (workspace)
+    #[test]
+    fn test_empty_folder() {
+        let result = list_files("./empty");
+        assert!(matches!(result, Err(Error::CantListEmptyFolder)));
+    }
+
+    #[test]
+    fn test_non_existing_folder() {
+        let result = list_files("./non_existent_folder");
+        match result {
+            Err(Error::Io(_)) => {} // ok, this is an I/O error
+            other => panic!("Expected Error::Io, got {:?}", other),
+        }
+    }
+
+    #[test]
+    fn test_current_folder_contains_expected_files_v1() {
+        let result = list_files(".").expect("Should list current directory");
+        assert_eq!(result, vec!["Cargo.lock", "Cargo.toml"]);
+    }
+
+    // Cannot be sure of the order => sort
+    #[test]
+    fn test_current_folder_contains_expected_files_v2() {
+        let mut files = list_files(".").expect("Should list current directory");
+        files.sort();
+        let mut expected = vec!["Cargo.lock".to_string(), "Cargo.toml".to_string()];
+        expected.sort();
+        assert_eq!(files, expected);
+    }
+
+    // Cannot be sure of the order
+    // Cannot be sure other files are not added
+    // Just checks both files are present
+    #[test]
+    fn test_current_folder_contains_expected_files_v3() {
+        let files = list_files(".").expect("Should list current directory");
+        assert!(files.contains(&"Cargo.toml".to_string()));
+        assert!(files.contains(&"Cargo.lock".to_string()));
+    }
+}
+```
+
+
+
+
+
+
+<div align="center">
+<img src="./assets/img42.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
+
+
+
+
 
 
 
@@ -2511,9 +2761,15 @@ cargo add derive_more --features from --package step_03
 
 ### Exercises – Experimentation to Production 
 
-1. View theses videos
 1. ...
-
+1. Read this video
+    <div align="center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/KrZ0nmpNVOw?si=4XTRH4Ek-dDyqDfv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+1. and this one
+    <div align="center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-VQCYP7wyw?si=GUo1WT26ECX8erGW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 
 
 
