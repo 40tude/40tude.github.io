@@ -548,7 +548,6 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 </div>
 
 
-**Bob:** It's showtime! Let's transition to production.
 
 
 
@@ -561,7 +560,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 * `main()` return any kind of error that implements the `Error` trait
 * `?` can be used in `main()`
 * In our functions we return custom messages (`.into()`, `.map_err()`...)
-* Let's keep this code fragment in mind
+* Let's keep this code fragment in mind:
     ```rust
     pub type Error = Box<dyn std::error::Error>;
     pub type Result<T> = std::result::Result<T, Error>;
@@ -583,6 +582,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 
 
 
+**Bob:** It's showtime! Let's transition to production.
 
 
 
@@ -636,7 +636,7 @@ What would you do?
 
 **Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a library so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according to the responsibilities.
 
-**Bob:** Ok, but I would like to be very cautious here and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works again. You could create a project in a `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do as you move forward.
+**Bob:** Ok, but I would like to be very conservative here and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works again. You could create a project in a `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do as you move forward.
 
 
 
@@ -699,8 +699,8 @@ fn main() -> Result<()> {
 }
 ```
 * The type alias declarations for `Result` and `Error` remain unchanged.
-* The line `mod files;` declares the existence and loads a module named `files` in the binary crate. It includes the content of the module found in the external file `files.rs`. A module is a namespace. The line brings its content the to local scope (crate root).
-* It is important to understand that the module tree that we start building with the `mod files;` declaration is the only thing that matters for the build system. At the top of the tree is the crate root (binary crate here). Then, underneath there is a tree where on each branch and each leaf we have modules (not files). Modules are namespaces which organize code inside the crate. Files do not matter and this is why we can have multiple modules in one file (check what we did in `ex19.rs` with the `math_utils` module). Files are just containers of modules. Here, the module tree will look like this:
+* The line `mod files;` declares the existence and loads a module named `files` in the binary crate. It includes the content of the module found in the external file `files.rs`. A module is a namespace. The line brings its content to the local scope (crate root).
+* It is **important** to understand that the module tree that we start building with the `mod files;` declaration is the only thing that matters for the build system. At the top of the tree is the crate root (binary crate here). Then, underneath there is a tree where on each branch and each leaf we have modules (not files). Modules are namespaces which organize code inside the crate. Files do not matter and this is why we can have multiple modules in one file (check what we did in `ex19.rs` with the `math_utils` module). Files are just containers of modules. Here, the module tree will look like this:
 
 ```
 crate           The crate root module is stored in main.rs
@@ -725,7 +725,7 @@ crate           The crate root module is stored in main.rs
 
 
 
-* In the directory tree, `files.rs` is a **hub file**. I mean it is a short file that declares and loads one or more modules at a given level. Here it declares and loads the module `listing` one level below in the module tree. In other words, since de `pub mod listing;` take place in the `files` module then the `listing` module is a child of the `files` module. Review the module tree above (not the directory tree), confirm sure it makes sense.
+* In the directory tree, `files.rs` is a **hub file**. I mean it is a short file that declares and loads one or more modules at a given level. Here it declares and loads the module `listing` one level below in the module tree. In other words, since de `pub mod listing;` take place in the `files` module then the `listing` module is a child of the `files` module. Review the module tree above (not the directory tree), confirm it makes sense.
 
 ```rust
 // files.rs
@@ -753,7 +753,7 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 
 * At the top of the file the line `use crate::Result;` is a shortcut. I can write `Result<T>` rather than `crate::Result<T>`.
     * We know that the module `listing` is a grand-child of the crate root (check the module tree). 
-    * This said, if we recall that the visibility rule says that a private item is visible in the curent module and in all its children modules 
+    * This said, if we recall that the **visibility rule** says that a private item is visible in the curent module and in all its children modules 
     * This explains why `crate::Result` is accessible in the module `listing`
 
 
@@ -794,7 +794,7 @@ pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
 ``` 
 * I can build the project
 * This confirms that `use crate::Result;` is nothing more than a shortcut
-* I delete my modifications
+* I delete the modifications
 
 
 **🦀 Test 2:** 
@@ -925,9 +925,14 @@ The answer goes like this:
     * `pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...`
     * or `use crate::Result;` then `pub fn list_files(path: &str) -> Result<Vec<String>> {...`
 
-It took me a while. Believe me, it's harder to write and explain than to make the changes in the code, but honestly, it's worth it. I realize it is critical to have the module tree in mind and to know the rule of visibility.
 
-Tadaa!
+<div align="center">
+<img src="./assets/img43.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Tadaa!</span>
+</div>
+
+It took me a while. Believe me, it's harder to write and explain than to make the changes in the code, but honestly, it's worth it. I realize how **important** it is to have the module tree in mind (or to print it as shown before) and to know the rule of visibility.
+
 
 
 **Bob:** I'm really impressed by your understanding and your ability to test ideas in order to check your understanding. Well done!
