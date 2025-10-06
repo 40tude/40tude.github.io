@@ -7,7 +7,7 @@ description: A beginner-friendly conversation on Errors, Results, Options, and b
 parent: Rust
 #math: mathjax
 date               : 2025-09-20 18:00:00
-last_modified_date : 2025-10-02 09:00:00
+last_modified_date : 2025-10-06 15:00:00
 ---
 
 
@@ -29,67 +29,6 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 {: .no_toc }
 
 
-<!-- ## TL;DR
-{: .no_toc }
-
-* For beginners.
-
-* The code is on [GitHub](https://github.com/40tude/err_for_blog_post).
-
-* **Rust has no exceptions:**  
-    * **recoverable** errors (handled with the `Result<T, E>` type). 
-    * **unrecoverable** errors (handled by panicking using `panic!()`). 
-    * We must explicitly handle errors.
-
-* **`Result<T, E>` enum:**  
-    * Represents either success (`Ok(T)`) or error (`Err(E)`). 
-    * Use `match` expression or methods like `.unwrap()/.expect()` (which `panic!()` on error). 
-    * Prefer `.expect()` with a meaningful message.
-
-* **`?` operator for propagation:**  
-    * To propagate errors upward with a lite syntax.
-    * Only works in functions returning a compatible `Result<T, E>` (or `Option<T>` ). 
-    * When `main()` returns `Result<T, E>` we can use `?` here 
-
-* **`Option<T>` vs `Result<T, E>`:**  
-    * Use **`Option<T>`** when the **absence** of a value is not an error (e.g., no search result) and no error info is needed. 
-    * Use **`Result<T, E>`** when an operation **can fail** in an exceptional way and we need to convey an error message or reason.
-
-* **When to panic:** 
-    * On bugs or invalid states in **our code** (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)). 
-    * If failure is possible in normal operation (e.g. invalid user input...), return a `Result<T, E>`. 
-    * Library code should avoid panicking on recoverable errors, bubbles them up and let the caller decide.
-
-* **Custom error types:** 
-    * For sophisticated libraries or binaries.
-    * Define our own error types to represent various error kinds in one type. 
-    * Implementing `std::error::Error` (=> impl `fmt::Display` and `#[derive(Debug)]`)
-    * Use pattern matching or helper methods like `.map_err()` (or the `From` trait implementation) to convert std lib errors into our custom error and return it with `?`
-
-* **`anyhow` and `thiserror`**
-    * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blablabla")`.
-    * **`thiserror`** in **libraries** when we need custom error types without writing all implementations for `Display`, `Debug`, `From` trait and `Error`. 
-    * Don’t mix them blindly (anyhow inside the lib, thiserror API of the lib) 
-
-* **From Experimentation to Production:**
-    * ... -->
-
-<!-- * **Keep in mind**
-
-```rust
-use std::fs::File; 
-use std::io::Read;
-
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let f = File::open("foo.txt")?;
-    let mut data = vec![];
-    f.File.read_to_end(&mut data)?;
-    Ok(())
-}
-``` -->
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
@@ -112,41 +51,6 @@ fn main() -> Result<()> {
 {: .no_toc .text-delta}
 - TOC
 {:toc}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -242,7 +146,7 @@ fn main() {
 
 Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what kind of std lib and crate functions I will call, I make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blablabla...
 
-**Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` in [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%}) for example.
+**Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` in [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) for example.
 
 **Alice:** Thanks for the nudge. So I would write the code like this:
 
@@ -382,7 +286,7 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 * It returns a `Result<32>` so that I can use `?` in `main()`
 * `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`). 
 * Then, there is a `for` loop which traverses the vector `values`
-* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_01.md%}#the-resultt-e-type-handling-recoverable-errors) 
+* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#the-resultt-e-type-handling-recoverable-errors) 
 * Pressing `CTRL+ALT`, I see `.parse::<i32>()` returns a `Result<i32, ParseIntError>`
 * If `current_val` is Ok I add its value to the running `sum`, otherwise... With the help of `.unwrap()` the code `panic!()`
 * At the end of the loop, `sum` is a valid number and I return it with `Ok(sum)`
@@ -486,7 +390,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 * Finally the function returns the vector to `main()` with `Ok(files)`        
 
 
-**Bob:** Did you notice how your template worked fine in 3 different experiments? I guess we can keep it in our toolbox.
+**Bob:** Did you notice how your template worked fine in 3 different experiments? I guess we can **keep it in our toolbox**.
 
 Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` and return a custom message to `main()` explaining what's happen?  
 
@@ -1834,36 +1738,56 @@ mod test {
 >
 * We now have a good code template for our experimentation 
     * See the summary of [Experimentation](#summary--experimentation)
-* We learn how to split monolithic experimentation code into 1 or more file, including a `lib.rs` and `main.rs`
+* We learn how to split monolithic experimentation code into one or more files, including a `lib.rs` and a `main.rs`
 * We know much more about the module tree
-    * hub files which help to build the module tree
+    * "Hub files" which help to build the module tree and avoid `mod.rs` files
     * `mod files;` : declares the existence and loads a module named `files` in the crate under construction
     * Shortcuts like: `use crate::files::listing;`
-    * The visibility rule
+    * The visibility rule (if in parent then visible in child)
     * `crate` vs `self` in the `use` statements
 * Create an independent `error.rs`
-* The re-export "trick" that help to share Result and Error from the lib to the binary
-* `thiserror` and re-write of `error.rs` to provide a custom error type to the lib.
-* Move from custom error message to strick error code 
-* Testing
-
+* The re-export "trick" in `lib.rs` to share `Result` and `Error` from the lib crate to the binary crate
+* `thiserror` and the re-write of `error.rs` to provide a custom error type to the lib.
+* Move from custom error messages to strick error codes 
+* Testing with our library error codes
+ 
 
 
 ### Exercises – Experimentation to Production 
 
-1. ...
-1. Read this video
-    <div align="center">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/KrZ0nmpNVOw?si=4XTRH4Ek-dDyqDfv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-1. and this one
-    <div align="center">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-VQCYP7wyw?si=GUo1WT26ECX8erGW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+1. You have this code
+    ```rust
+    use std::fs;
 
+    fn main()  {
+        let content = fs::read_to_string("config.txt");
+        println!("{:?}", content);
+    }
+    ```
+    Apply what we discussed in the section Experimentation and use the "template" of our toolbox.
 
+1. You have this code
+    ```rust
+    fn main() -> Result<(), Box<dyn std::error::Error>> {
+        let mut input = String::new();
+        std::io::stdin().read_line(&mut input)?;
+        let n: u32 = input.trim().parse()?;
+        println!("Factorial : {}", factorial(n));
+        Ok(())
+    }
 
-
+    fn factorial(n: u32) -> u32 {
+        match n {
+            0 | 1 => 1,
+            _ => n * factorial(n - 1),
+        }
+    }
+    ``` 
+    * Structure this project by creating:
+    * `lib.rs` file with a math module.
+    * A `math.rs` file containing the `factorial()` function.
+    * An `error.rs` file with a custom `Result` type.
+    * Ensure that `main.rs` uses the library and handles errors via the custom `Result` type.
 
 
 
@@ -1910,6 +1834,15 @@ Then come back to this serie of posts, one at a time and try to make the exercic
 
 ## Webliography
 * [THE book](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
+* Read this video
+    <div align="center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/KrZ0nmpNVOw?si=4XTRH4Ek-dDyqDfv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+* Read this video
+    <div align="center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-VQCYP7wyw?si=GUo1WT26ECX8erGW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
 
 
 

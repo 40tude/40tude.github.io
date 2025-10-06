@@ -58,7 +58,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
     * Prefer `.expect()` with a meaningful message.
 
 * **`?` operator for propagation:**  
-    * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
+    * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
     * To propagate errors upward with a lite syntax.
     * Only works in functions returning a compatible `Result<T, E>` (or `Option<T>` ). 
     * When `main()` returns `Result<T, E>` we can use `?` here 
@@ -75,21 +75,23 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
     * Library code should avoid panicking on recoverable errors, bubbles them up and let the caller decide.
 
 * **Custom error types:** 
-    * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
+    * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
     * For sophisticated libraries or binaries.
     * Define our own error types to represent various error kinds in one type. 
     * Implementing `std::error::Error` (=> impl `fmt::Display` and `#[derive(Debug)]`)
     * Use pattern matching or helper methods like `.map_err()` (or the `From` trait implementation) to convert std lib errors into our custom error and return it with `?`
 
 * **`anyhow` and `thiserror`**
-    * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
+    * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
     * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blablabla")`.
     * **`thiserror`** in **libraries** when we need custom error types without writing all implementations for `Display`, `Debug`, `From` trait and `Error`. 
     * Don’t mix them blindly (anyhow inside the lib, thiserror API of the lib) 
 
 * **From Experimentation to Production:**
     * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
-    * ...
+    * Key Concepts
+    * 3 Experimentation projects, 1 template
+    * From Experimentation to Production (including testing) in 7 steps
 
 <!-- * **Keep in mind**
 

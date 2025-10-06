@@ -32,67 +32,6 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 {: .no_toc }
 
 
-<!-- ## TL;DR
-{: .no_toc }
-
-* For beginners.
-
-* The code is on [GitHub](https://github.com/40tude/err_for_blog_post).
-
-* **Rust has no exceptions:**  
-    * **recoverable** errors (handled with the `Result<T, E>` type). 
-    * **unrecoverable** errors (handled by panicking using `panic!()`). 
-    * We must explicitly handle errors.
-
-* **`Result<T, E>` enum:**  
-    * Represents either success (`Ok(T)`) or error (`Err(E)`). 
-    * Use `match` expression or methods like `.unwrap()/.expect()` (which `panic!()` on error). 
-    * Prefer `.expect()` with a meaningful message.
-
-* **`?` operator for propagation:**  
-    * To propagate errors upward with a lite syntax.
-    * Only works in functions returning a compatible `Result<T, E>` (or `Option<T>` ). 
-    * When `main()` returns `Result<T, E>` we can use `?` here 
-
-* **`Option<T>` vs `Result<T, E>`:**  
-    * Use **`Option<T>`** when the **absence** of a value is not an error (e.g., no search result) and no error info is needed. 
-    * Use **`Result<T, E>`** when an operation **can fail** in an exceptional way and we need to convey an error message or reason.
-
-* **When to panic:** 
-    * On bugs or invalid states in **our code** (e.g. asserting [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)). 
-    * If failure is possible in normal operation (e.g. invalid user input...), return a `Result<T, E>`. 
-    * Library code should avoid panicking on recoverable errors, bubbles them up and let the caller decide.
-
-* **Custom error types:** 
-    * For sophisticated libraries or binaries.
-    * Define our own error types to represent various error kinds in one type. 
-    * Implementing `std::error::Error` (=> impl `fmt::Display` and `#[derive(Debug)]`)
-    * Use pattern matching or helper methods like `.map_err()` (or the `From` trait implementation) to convert std lib errors into our custom error and return it with `?`
-
-* **`anyhow` and `thiserror`**
-    * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blablabla")`.
-    * **`thiserror`** in **libraries** when we need custom error types without writing all implementations for `Display`, `Debug`, `From` trait and `Error`. 
-    * Don’t mix them blindly (anyhow inside the lib, thiserror API of the lib) 
-
-* **From Experimentation to Production:**
-    * ... -->
-
-<!-- * **Keep in mind**
-
-```rust
-use std::fs::File; 
-use std::io::Read;
-
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let f = File::open("foo.txt")?;
-    let mut data = vec![];
-    f.File.read_to_end(&mut data)?;
-    Ok(())
-}
-``` -->
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
@@ -115,18 +54,6 @@ fn main() -> Result<()> {
 {: .no_toc .text-delta}
 - TOC
 {:toc}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
