@@ -927,7 +927,7 @@ The answer goes like this:
 
 
 <div align="center">
-<img src="./assets/img43.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img43.webp" alt="" width="225" loading="lazy"/><br/>
 <span>Tadaa!</span>
 </div>
 
@@ -935,7 +935,7 @@ It took me a while. Believe me, it's harder to write and explain than to make th
 
 
 
-**Bob:** I'm really impressed by your understanding and your ability to test ideas in order to check your understanding. Well done!
+**Bob:** I’m genuinely impressed by your insight and your willingness to test ideas to strengthen your understanding. Keep it up!
 
 You will be happy to learn that in the next step, you will create a library and expose an API... Welcome to the real world
 
@@ -961,7 +961,7 @@ Create a `lib.rs` file at the root of the project, put the `pub mod error;` and 
 ### Path to Production - Step_02
 
 
-**Alice:** Um... Ok... I start with a copy/paste/rename of the previous project
+**Alice:** Um... Ok... I start with a copy/paste/rename of the previous project (`02_project/`)
 
 * I recall that if in the project directory there is a `lib.rs` and a `main.rs` 
     * The build system builds the library crate then the binary crate. 
@@ -969,7 +969,7 @@ Create a `lib.rs` file at the root of the project, put the `pub mod error;` and 
     * Ideally I want to keep `main()` as short as possible. It should validate some stuff then call a `run()` function from the library. 
     * Here I will keep `list_file()` in main as before.
 
-Once the copy is done:    
+Once the copy of the directory is done:    
 * I update the package name in `Cargo.toml` (`name = "step_02"`)
 * I create an `lib.rs` file with this content:
 
@@ -1062,7 +1062,7 @@ What is your second question?
 pub use self::error::{Error, Result};
 ```
 
-You did'nt say a word about it while in the screenshot I see the following comment:
+You did'nt say a word about it while in the last screenshot above I see the following comment:
 
 ```rust
 use step_02::Result; // uses the re-export from the lib.rs
@@ -1146,7 +1146,7 @@ So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
 
 **Bob:** Splendid! Did you notice we did'nt yet talk about error handling? First, let's set the problem then we will work on one possible option. 
 
-* I let you copy/paste/rename of the previous project
+* I let you copy/paste/rename of the previous project directory (`03_project`)
 * Think to update the package name in `Cargo.toml` (`name = "step_03"`)
 
 Once this is done, to "feel" the problem, please modify the `main()` function as below then run the code and tell me what you think.
@@ -1156,7 +1156,7 @@ fn main() -> Result<()> {
     let files = listing::list_files(".")?;
     println!("{files:#?}");
 
-    // let files = listing::list_files("./02_production/02_project/empty")?;
+    // let files = listing::list_files("./02_production/03_project/empty")?;
     // println!("{files:#?}");
 
     let files = listing::list_files("./non_existent_folder")?;
@@ -1209,7 +1209,7 @@ fn main() -> Result<()> {
 
 **Bob:** You're right. The app is not yet ready but don't worry, solutions based on custom errors exist (do you remember the `enum` etc.?). 
 
-We will keep our methodology and make one step at a time. Based on our experience in `list_files()`, in a first step we will make sure the app can report all kind of Io errors as well custom error messages based on strings of chars (String or string literal). Let me show you how...
+We will keep our methodology and make one step at a time. Based on our experience in `list_files()`, in a first step we will make sure the app can report all kind of I/O errors as well as custom error messages based on strings of chars (String or string literal). Let me show you how...
 
 So far `errors.rs` look like this:
 
@@ -1251,16 +1251,16 @@ impl From<&str> for Error {
 
 
 
-Do not pay yet too much attention to the code but realize that since: 
+Do not look at the code yet but realize that since: 
 1. the `error.rs` file is standalone 
-2. `pub type Error = Box<dyn std::error::Error>;` was on its own line 
+2. `pub type Error = Box<dyn std::error::Error>;` is on its own line 
 
-We can now change the implementation of `Error` without impacting the rest of the project thanks to the level of indirection.
+We can now change the implementation of `Error` **without impacting the rest of the project** thanks to the level of indirection.
 
 
-Now, in the code above, only **pay attention** to `Error`. 
+Now, in the code above, only pay **attention** to `Error`. 
 * So far its datatype was `Box<dyn std::error::Error>`
-* **IMPORTANT:** Now it is an `enum`. This means the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
+* **IMPORTANT:** Now it is an `enum`. This means that the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
 * It is a totally different story
 * We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).  
 
@@ -1334,9 +1334,9 @@ The difference is... Now it prints `Error: Io(Os...` instead of `Error: Os...`. 
 
 ### Path to Production - Step_04
 
-**Bob:** This is OK. It is part of our journey... Copy/paste/rename the project directory as `04_project` and rename the package in Cargo.toml as `step_04`. 
+**Bob:** This is OK. It is part of our journey... Copy/paste/rename the project directory as `04_project` and rename the package in `Cargo.toml` as `step_04`. 
 
-Now modify `main.rs` as below:
+Now, modify `main.rs` as below:
 
 ```rust
 // main.rs
@@ -1369,7 +1369,7 @@ The `non_existent_folder` is "back in town"
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hQo1HIcSVtg?si=tSkFmxpGfVozzhFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-In addition the `?` operator has disappeared. We use `match` after each call instead. Don't but if you run the code now you should not see big changes. 
+In addition, the `?` operator has disappeared. We use `match` after each call instead. Don't, but if you run the code at this point you should not see big changes. 
 
 Open `error.rs` and replace the line `#[error(transparent)]` with `#[error("**** I/O error: {0}")]`. See below the code fragment:
 
@@ -1410,9 +1410,9 @@ And now I understand what happens!
     </div>
 
 2. Second call: The code reports a custom error with a message because the directory is empty. This is business as usual.
-3. Third call: This is an unhandled IO error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the IO error into an `Error`. I don't know yet all the details but I remember `thiserror` generates the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
+3. Third call: This is an unhandled I/O error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the I/O error into an `Error`. I don't know yet all the details but I remember `thiserror` generates the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
 
-To make a long story short : Now, when the app encounter an unknown IO error it reports it as an `Error::Io`.
+To make a long story short : Now, when the app encounter an unknown I/O error it reports it as an `Error::Io`.
 
 Cool, it works. Now I can uncomment the line with `transparent` and run the application again. Here is what I see:
 
@@ -1435,7 +1435,7 @@ pub type Error = Box<dyn std::error::Error>;
 
 
 
-Now we want our Error being able to cover system-level I/O errors or send back custom error messages. We would like to write something like:
+Now we want our `Error` being able to cover system-level I/O errors or send back custom error messages. We would like to write something like:
 
 ```rust
 // error.rs
@@ -1464,7 +1464,7 @@ pub enum Error {
     Io(#[from] std::io::Error),
 }
 ```
-However here few lines of code have been added
+However, here few lines of code have been added:
 
 ```rust
 // error.rs
@@ -1495,7 +1495,7 @@ impl From<&str> for Error {
 ```
 
 
-Then in the implementation section of `Error` we define a "convenience" constructor (see `custom(param)`). This constructor accepts anything implementing `Display` (string literals, numbers...) and converts the parameter into a `Error::Custom` variant. This is provide more flexibility because we can write `Error::custom("foo")` instead of manually allocating a `String`.
+In the implementation section of `Error` we define a "convenience" constructor (see `custom(param)`). This constructor accepts anything implementing `Display` (string literals, numbers...) and converts the parameter into a `Error::Custom` variant. This provides more flexibility because we can write `Error::custom("foo")` instead of manually allocating a `String`.
 
 The last implementation is here to help us to write `return Err("something went wrong".into())`. Indeed, since we remember that in Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for A` for free,  we define `From<&str> for Error` so that we get `Into<Error> for &str`.
 
@@ -1519,7 +1519,7 @@ The last implementation is here to help us to write `return Err("something went 
 
 I let you copy/paste/rename the project directory as `05_project` and rename the package in `Cargo.toml` as `step_05`.
 
-Now I propose to use this `error.rs` file
+Now I propose to use this version of the `error.rs` file
 
 ```rust
 // error.rs
@@ -1568,11 +1568,11 @@ impl From<&str> for Error {
 }
 ```
 
-1. The `Custom` variant has been removed. This allow us to remove the convenient constructor `custom()` and the `From` trait implementation for `Error`.
-1. More **important**. We now have `CantListEmptyFolder` which is a variant without associated data, unlike the `Io(std::io::Error)` variant, which contains a `std::io::Error` object. So `CantListEmptyFolder` act as a constant of type `Error`.
+1. The `Custom` variant has been removed. This allow us to remove the constructor `custom()` and the `From` trait implementation for `Error`.
+1. More **important**. We now have `CantListEmptyFolder` which is a variant without associated data, unlike the `Io(std::io::Error)` variant, which contains a `std::io::Error` object. So `CantListEmptyFolder` acts as a constant of type `Error`.
 
 
-With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` error code instead. See below : 
+With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` custom error code instead. See below : 
 
 ```rust
 // listing.rs
@@ -1592,7 +1592,7 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
     Ok(files)
 }
 ```
-In the code above, you we want to return `Err(Error::CantListEmptyFolder)` we need bring into the scope the Error. This is why we now need `use crate::{Error, Result};` instead of `use crate::Result;`.
+In the code above, if we want to return `Err(Error::CantListEmptyFolder)` we need bring into the scope `Error`. This is why we need `use crate::{Error, Result};` instead of `use crate::Result;`.
 
 If you run the project (`cargo run -p step_05`), here is what you should see :
 
@@ -1603,7 +1603,7 @@ If you run the project (`cargo run -p step_05`), here is what you should see :
 
 
 
-Now if you modify the match in charge of the empty folder as below :
+Now, if in `main()` you modify the `match` in charge of the empty folder as below :
 
 ```rust
 match listing::list_files("./02_production/05_project/empty") {
@@ -1613,7 +1613,7 @@ match listing::list_files("./02_production/05_project/empty") {
 }
 ```
 
-You should get this output in the console. The `:?` debug specifier helps to see the `CantListEmptyFolder` error code in plain English.
+You should get the following output in the console. The `:?` debug specifier helps to see the `CantListEmptyFolder` error code in plain English.
 
 ```
 Files found   : [
@@ -1635,9 +1635,9 @@ Error detected: Le chemin d’accès spécifié est introuvable. (os error 3)
 
 **Alice:** Could you show me how to add testing to my "production" code ?
 
-**Bob:** Yes I can but I wil only show you the code. Indeed testing is an other subject and it is time to end this conversation. 
+**Bob:** Yes I can but I will only show you the code. To tell the truth I'm getting tired, testing is an subject on itself and it is time to end this conversation. 
 
-The code below is in `step_06/listing.rs` directory.
+The code below is in `02_production/06_project/src/files/listing.rs`.
 
 ```rust
 // listing.rs
@@ -1705,8 +1705,7 @@ mod test {
 ```
 
 
-
-
+Here is what you should see after: `cargo test -p step_06`
 
 
 <div align="center">
@@ -1753,7 +1752,7 @@ mod test {
 * Create an independent `error.rs`
 * The re-export "trick" in `lib.rs` to share `Result` and `Error` from the lib crate to the binary crate
 * `thiserror` and the re-write of `error.rs` to provide a custom error type to the lib.
-* Move from custom error messages to strick error codes 
+* Move from custom error messages to strick custom error codes 
 * Testing with our library error codes
  
 
@@ -1820,9 +1819,18 @@ mod test {
 </div>
 
 
-It's 6AM. Your sister is coming back home. You are "dead" but happy because you learn a lot even if you are not sure you will keep everything in your mind. It is also time for you to go to bed. You know what? Don't touch your PC for at least one day. If you want to watch kitten's videos use your phone. 
+It's 6AM. Your sister is coming back home. You are "dead" but happy because you learnt a lot even if you are not sure you will keep everything in your mind. It is also time for you to go to bed... 
 
-Then come back to this serie of posts, one at a time and try to make the exercices. You can also take one of your previous code, copy/paste/rename the project dir and add some error management. If the code is a "toy" stick to what we saw in Experimentation section. Once this is done, play the game and use what we learnt about errors management in Production code and split one of your project in multiple files and add your own custom error type to it.
+You know what? Don't touch your PC for, at least, one day. And if you want to watch kitten's videos use your phone. 
+
+<div align="center">
+<img src="./assets/img44.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+Then come back to theses posts, one at a time and try to make the exercices. You can also take one of your previous code, copy/paste/rename the project directory and add some error management. If the code is a "toy" stick to what we saw in Experimentation section. Once this is done, play the game and use what we learnt about errors management in the Production section, split one of your project in multiple files and add your own custom error type to it.
+
+Enjoy!
 
 
 
