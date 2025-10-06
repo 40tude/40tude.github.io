@@ -1595,9 +1595,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
     fn list_files(path: &str) -> Result<Vec<String>> {
         let files: Vec<String> = std::fs::read_dir(path)
             .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))? 
-            // REST OF THE CODE
-            .collect();
-        
+            // REST OF THE CODE ;
         if files.is_empty() {
             return Err("Cannot list empty folder.".into()); 
         }    
@@ -2752,8 +2750,13 @@ mod test {
 {: .new-title }
 > Summary – Experimentation to Production
 >
-* Split monolithic code into 1 or more libraries and 1 consumer
-* 
+* We now have a good code template for our experimentation 
+    * See the summary of [Experimentation](#summary--experimentation)
+* We learn how to split monolithic experimentation code into 1 or more file, including a `lib.rs` and `main.rs`
+* We know much more about the module tree
+    * `mod files;` : declares the existence and loads a module named `files` in the crate under construction
+    * Shortcuts like: `use crate::files::listing;`
+
 * **...:** ...  
 
 
