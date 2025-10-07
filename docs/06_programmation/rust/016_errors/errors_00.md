@@ -11,10 +11,8 @@ last_modified_date : 2025-09-23 10:00:00
 ---
 
 <!-- 
-TODO :
+TODO:
 * Fournir tous les codes de toutes les solutions
-* Rajouter des images 
-* Rajouter des vidéos
 -->
 
 
@@ -90,7 +88,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * **From Experimentation to Production:**
     * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
     * Key Concepts
-    * 3 Experimentation projects, 1 template
+    * 3 experimental prototypes, 1 template
     * From Experimentation to Production (including testing) in 7 steps
 
 <!-- * **Keep in mind**
@@ -212,7 +210,7 @@ By making error handling explicit with `Result`, Rust ensures we don’t just ig
 
 **Alice:** It’s a bit scary that the program can just crash with `panic!()` though. 
 
-**Bob:** Again, `panic!()` is for cases that are **not supposed to happen** like an invariant being broken. And even when a `panic!()` occurs, Rust will unwind the stack and cleanup (or we can opt to abort immediately). Most of the time, you’ll use `Result<T, E>` for possible errors and only `panic!()` on bugs that are your responsibility. We’ll talk more about choosing between them later.
+**Bob:** Again, `panic!()` is for cases that are **not supposed to happen** like an [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant) being broken. And even when a `panic!()` occurs, Rust will unwind the stack and cleanup (or we can opt to abort immediately). Most of the time, you’ll use `Result<T, E>` for possible errors and only `panic!()` on bugs that are your responsibility. We’ll talk more about choosing between them later.
 
 
 
@@ -286,7 +284,7 @@ Let's make sure we can Debug the code.
 * I also expect the `command-variable` extension to be installed. We need it also to debug our code.
     * `code --install-extension rioj7.command-variable`
 
-This said, I use VSCode under Windows 11 and I wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Here I use a [workspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) because I can have more than one project (packages) in a single "space". Think of workspaces as meta-project. 
+This said, I use VSCode under Windows 11 and I wrote a post about [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). Here I use a [workspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) because I can have more than one package in a single "space". Think of workspaces as meta-package. 
 
 Now, having this in mind here is what I do and why.
 
@@ -294,7 +292,7 @@ Now, having this in mind here is what I do and why.
 * Right click  the directory name then select `Open with Code`
 * Once in VSCode, click on `00_u_are_errors/examples/ex00.rs` in the VSCode editor
 
-At the time of writing here is what I see :
+At the time of writing here is what I see:
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
@@ -305,7 +303,7 @@ At the time of writing here is what I see :
 
 * Press `CTRL+SHIFT+B`. This should build a debug version of the code
     * Check `target/debug/examples/`. It should contains `ex00.exe`
-    * If `CTRL+SHIFT+B` does not work, open a terminal (CTRL+ù on a French keyboard) and use this command : `cargo build -p u_are_errors --example ex00`
+    * If `CTRL+SHIFT+B` does not work, open a terminal (CTRL+ù on a French keyboard) and use this command: `cargo build -p u_are_errors --example ex00`
     * You need `-p u_are_errors` because in a workspace we need to indicate the name of the package (which you find in `Cargo.toml`)
 
 
@@ -333,7 +331,7 @@ At the time of writing here is what I see :
 * Press `F5`
     * This starts the debug session
     * If needed the application is built (not the case here because it is already built) 
-    * The execution stops on line 5. See below :
+    * The execution stops on line 5. See below:
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/>
@@ -360,7 +358,7 @@ Let's make a last test. Just to make sure...
 
 **The making of:**
 
-When reading for the first time, you can skip this section and come back to it later if you really need to understand how compilation and debugging tasks work.
+If you read this post for the first time, you can skip this section and come back to it later when you really need to understand how compilation and debugging tasks work.
 
 The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
@@ -414,8 +412,8 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 * In the first object of the array `tasks`, the key named `group` helps to make the task the one by default. This explains how and why `CTRL+SHIFT+B` worked. 
 * Note that since the source code to compile is in the `examples/` directory, we pass `--example` and the name of the file (see `${fileBasenameNoExtension}`, e.g. `ex00`) in the `args` array.
 * Since we are in a workspace we need `-p` followed by the name of the package (`input:packageName`)
-* If you get lost, just review the build command you enter in the terminal before. What we do here is exactly the same thing : `cargo build -p u_are_errors --example ex00`. Except that we want to discover the name of the package dynamically. Indeed not all the source code are in the `u_are_errors` package. You may have seen the 2 other projects: `01_experimentation` and `02_production` for example. 
-    * In `01_experimentation/`, in `Cargo.toml` the name of the package in `experimentation` for example
+* If you get lost, just review the build command you enter in the terminal before. What we do here is exactly the same thing: `cargo build -p u_are_errors --example ex00`. Except that we want to discover the name of the package dynamically. Indeed not all the source code are in the `u_are_errors` package. You may have seen the 2 other directories: `01_experimentation` and `02_production` for example. 
+    * In `01_experimentation/`, in `Cargo.toml`, the name of the package is `experimentation` for example
 * Finding out the name of the package is done in the `inputs` array and this is where the `command-variable` extension shines. Indeed we create a variable `packageName` which is initialized with the output of a command which is a regular expression applied to the `${relativeFileDirname}` of the source code opened in the editor.
     * To make a long story short from `01_experimentation/examples/` it extracts `experimentation`
 * Then the `${input:packageName}` variable can be used in the build tasks.     
@@ -423,8 +421,11 @@ The secret ingredient lies in `./vscode/task.json` and `./vscode/launch.json`
 
 
 
-To see the list of `tasks`, in VSCode, press `ALT+T` then press `R`
-    * Below we can see both tasks : `cargo-build-debug` and `cargo-build-release`
+To see the list of `tasks`, in VSCode, press `ALT+T` then press `R`. Below we can see both tasks: 
+* `cargo-build-debug` 
+* and `cargo-build-release`
+
+
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="450" loading="lazy"/>
@@ -490,7 +491,7 @@ To see the list of `tasks`, in VSCode, press `ALT+T` then press `R`
 
 ### Solution to Exercice #2
 
-Let's take some time and see how one could answer the second exercice. If I search "Rust open txt file" on Google, one of the links drive me to the excellent [Rust By Example](https://doc.rust-lang.org/rust-by-example/std_misc/file/open.html). See below :
+Let's take some time and see how one could work on the second exercice. If I search "Rust open txt file" on Google, one of the links drive me to the excellent [Rust By Example](https://doc.rust-lang.org/rust-by-example/std_misc/file/open.html). See below:
 
 <div align="center">
 <img src="./assets/img09.webp" alt="" width="450" loading="lazy"/><br/>
@@ -501,7 +502,7 @@ This is great because on line 11 it uses `std::fs::File::open()` but it is a lit
 
 
 
-Copy/paste/save the file as `ex01.rs` or open your eyes : the code is already in `00_u_are_errors/examples/ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run -p u_are_errors --example ex01`. Here is what I see in the Debug Console once I pressed F5 :
+Copy/paste/save the file as `ex01.rs` or open your eyes: the code is already in `00_u_are_errors/examples/ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run -p u_are_errors --example ex01`. Here is what I see in the Debug Console once I pressed F5:
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
@@ -517,7 +518,7 @@ The code cannot find `hello.txt` and `panic!()`.
 
 
 
-Copy/paste/save the file as `ex02.rs`. From the previous code, I just keep what I need :
+Copy/paste/save the file as `ex02.rs`. From the previous code, I just keep what I need:
 
 ```rust
 // ex02.rs
@@ -547,14 +548,14 @@ ex02.exe (30708): Loaded 'C:\Windows\System32\msvcrt.dll'.
 The program '[30708] ex02.exe' has exited with code 0 (0x0).
 ```
 
-In fact, with [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}), if I press `CTRL+ALT` I can reveal the datatype.
+In fact, with [my setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}), if I press `CTRL+ALT` I can reveal the datatype. Click on the screen capture below and look for the data type in gray:
 
 <div align="center">
 <img src="./assets/img11.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-`f` is a `Result<File, Error>`. It is a `Result<T, E>` but what happens, is that when I asked to print it with `{:?}`, Rust displays the content of the `Result<T, E>` and this is why we can see :
+We can see that `f` is a `Result<File, Error>`. It is a `Result<T, E>` but what happens, is that when I asked to print it with `{:?}`, Rust displays the content of the `Result<T, E>` and this is why we can see:
 
 ```
 'f' after std::fs::File::open() =  Err(Os { code: 2, kind: NotFound, message: "Le fichier sp├®cifi├® est introuvable." })
@@ -569,7 +570,7 @@ In fact despite ourselves, we cheat. We call a function returning `Result<T, E>`
 
 
 
-Copy/paste/save the file as `ex03.rs`. Let's make sure the build system complain. Modify the previous code with the one below :
+Copy/paste/save the file as `ex03.rs`. Let's make sure the build system complains. Modify the previous code with the one below:
 
 ```rust
 // ex03.rs
@@ -578,7 +579,7 @@ fn main() {
     println!("{:?}", f);
 }
 ```
-On the lhs of the equal sign, I express my expectation. I expect a `std::fs::File`. Obviously this does not fly very well. We don't even need to try to build. Indeed, the red squiggles warn us and if we hover them with the cursor we get a clear explanation and some advises. See below : 
+On the lhs of the equal sign, I express my expectation. I expect a `std::fs::File`. Obviously this does not fly very well. We don't even need to try to build. Indeed, the red squiggles warn us and if we hover them with the cursor we get a clear explanation and some advises. See below: 
 
 <div align="center">
 <img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
@@ -591,7 +592,7 @@ On the lhs of the equal sign, I express my expectation. I expect a `std::fs::Fil
 
 
 
-Copy/paste/save the file as `ex04.rs`. Let's find a solution. Modify the previous code with the one below :
+Copy/paste/save the file as `ex04.rs`. Let's find a solution. Modify the previous code with the one below:
 
 ```rust
 // ex04.rs
@@ -607,8 +608,8 @@ fn main() {
 }
 ```
 
-* `result_file` is a `Result<T, E>`. It is **NOT** a `File`. **It took me a while** to read it and understand it that way.
-* `match` is an expression. It is NOT a statement. This one is easy because almost everything is an expression in Rust.
+* `result_file` is a `Result<T, E>`, it is **not** a `File`. It took me a moment to realize that when reading the code.
+* `match` is an expression. It is not a statement. This one is easy because almost everything is an expression in Rust.
     * If the difference between [expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions) and [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement) is not crystal clear follow and read the 2 previous links.  
 * The `match` expression forces us to handle all possible cases
 * Set a break point on the line with `match` expression (F9)
@@ -622,7 +623,7 @@ fn main() {
 
 
 
-Copy/paste/save the file as `ex05.rs`. Let's take advantage of the fact that `match` is an expression. Modify the previous code with the one below :
+Copy/paste/save the file as `ex05.rs`. Let's take advantage of the fact that `match` is an expression. Modify the previous code with the one below:
 
 ```rust
 // ex05.rs
@@ -649,7 +650,7 @@ fn main() {
 {: .note-title }
 > Side Note
 >
-> I know, `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the Rust by Example we had **variable shadowing** on the `file` variable. We had: 
+> I know, `bob` and `alice` are weird variable names in this context. I just want to make clear that `alice` exists only inside the body of `match` while `bob` exists outside the `match`. Remember from the [Rust By Example](https://doc.rust-lang.org/rust-by-example/) we had **variable shadowing** on the `file` variable. We had: 
 >
 ```rust
 let mut file = match File::open(&path) {
@@ -668,9 +669,9 @@ let mut file = match File::open(&path) {
 
 
 
-This said, let's go back to the source code :
+This said, let's go back to the source code:
 
-* As before, `std::fs::File::open()` returns a `Result<File, io::Error>`, which we store in `result_file`.
+* As before, `std::fs::File::open()` returns a `Result<File, io::Error>`, that we store in `result_file`.
 * Since `match` is an expression, it evaluates to a value, and with the first `match` we assign that value to `bob`.
 * It is **important** to understand that `match` **destructures** the `Result<T, E>`. So that the body of the `match` can be read as:
     * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
@@ -691,7 +692,7 @@ Run the code (F5) to see it in `panic!()`
 <!-- <span>Optional comment</span> -->
 </div>
 
-Now rename the file `foo.txt.bak` at the root of the project (`00_u_are_errors/`) to `foo.txt` and run the code (F5)
+Now rename the file `foo.txt.bak` at the root of the directory (`00_u_are_errors/`) to `foo.txt` and run the code (F5)
 
 <div align="center">
 <img src="./assets/img15.webp" alt="" width="450" loading="lazy"/><br/>
@@ -710,7 +711,7 @@ Now rename the file `foo.txt.bak` at the root of the project (`00_u_are_errors/`
 **Green Slope:**
 1. Set the cursor on `read_to_string`
 1. Press F12 (Go To Definition)
-1. We can see the function signature : `fn read_to_string(&mut self, buf: &mut String) -> io::Result<usize>`
+1. We can see the function signature: `fn read_to_string(&mut self, buf: &mut String) -> io::Result<usize>`
 1. Hover `io::Result<usize>`
 1. We get access to the type alias `pub type Result<T> = result::Result<T, Error>` 
 
@@ -726,7 +727,7 @@ Now rename the file `foo.txt.bak` at the root of the project (`00_u_are_errors/`
 1. Look for and click on **io**
 1. On the right, go down to the **Type Aliases** section
 1. Click on **Result**
-1. The page Type Alias Result page explains what is going on : `pub type Result<T> = Result<T, Error>;`
+1. The page Type Alias Result page explains what is going on: `pub type Result<T> = Result<T, Error>;`
 
 
 **K12**
@@ -746,21 +747,21 @@ Now rename the file `foo.txt.bak` at the root of the project (`00_u_are_errors/`
 6. Click on **Read**
 7. At the top you see the function signature: `fn read_to_string(&mut self, buf: &mut String) -> Result<usize> { ... }`
 8. At the very end click on `Result<usize>`
-9. The page Type Alias Result page explains what is going on : `pub type Result<T> = Result<T, Error>;`
+9. The page Type Alias Result page explains what is going on: `pub type Result<T> = Result<T, Error>;`
 
 
-I know what you think. But we need to invest time in learning how to navigate and read the documentation. For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in Rust by Example then search for the function signature in the std documentation... Read and navigate the documentation no one can do it for you.
+I know what you think. But we need to invest time in learning how to navigate and read the documentation. For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in [Rust By Example](https://doc.rust-lang.org/rust-by-example/) then search for the function signature in the std documentation... Read and navigate the documentation no one can do it for you.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=tQ9bd1UiqDBiWW-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 
-It took us some time to reach that point but from now on I consider we know : 
-* how to play with code in the project
-* how to build (CTRL+SHIFT+B)
-* how to set breakpoint (F9) and how to debug (F5)
-* how to navigate the documentation (good luck!)
+It took us some time to reach that point but from now on I consider we know: 
+* How to play with code in the package
+* How to build (CTRL+SHIFT+B)
+* How to set breakpoint (F9) and how to debug (F5)
+* How to navigate the documentation (good luck!)
 
 It is time to move on and to dive in `Result<T, E>`.
 
@@ -849,7 +850,7 @@ This way we’ve handled both outcomes explicitly. Using `match` is the standard
 
 **Alice:** Cool, but matching on every `Result<T, E>` is verbose. No?
 
-**Bob:** True and this is why Rust provides utility methods on `Result<T, E>` to make life easier. For example, if we just want to crash on error (perhaps in a quick prototype), we can use `.unwrap()` or `.expect(...)`. These will check the `Result<T, E>` for us: 
+**Bob:** True and this is why Rust provides utility methods on `Result<T, E>` to make life easier. For example, if we just want to crash on error (perhaps in an experimentation), we can use `.unwrap()` or `.expect(...)`. These will check the `Result<T, E>` for us: 
 
 * [`.unwrap()`](https://doc.rust-lang.org/std/result/enum.Result.html#method.unwrap) returns the success value if it’s `Ok`, but if it’s an `Err`, it will `panic!()` right there. 
 * [`.expect(msg)`](https://doc.rust-lang.org/std/result/enum.Result.html#method.expect) does the same but lets us provide a custom panic error message.
@@ -951,7 +952,7 @@ fn main() {
 }
 ```
 
-With this code it might be a good idea to open `ex06.rs` in the project, set a breakpoint on line 5, press F5, click on the `DEBUG CONSOLE` tab when the execution is paused and then to press F10 to step over line by line.
+With this code it might be a good idea to open `ex06.rs` in the editor, set a breakpoint on line 5, press F5, click on the `DEBUG CONSOLE` tab when the execution is paused and then to press F10 to step over line by line.
 
 <div align="center">
 <img src="./assets/img18.webp" alt="" width="450" loading="lazy"/><br/>
@@ -993,7 +994,7 @@ fn main() {
 
 Here, `File::open` returns a `Result<File, Error>` – it could be `Ok(file_handle)` if the file exists and was opened, or `Err(error)` if something went wrong (file missing, no permission, etc.). 
 
-We then `match` on it. 
+We then `match` on it:
 * If the error kind is `NotFound` , we attempt to create the file (which itself could error, so we use `.expect()` to crash if even creation fails). 
 * For any other kind of error, we just panic immediately. 
 
@@ -1005,7 +1006,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 **Alice:** I see. We could also handle it differently, like notify the user or retry, depending on the context. 
 
-**Bob:** Exactly. The point is that with `Result<T, E>`, we **decide** how to handle it. We could propagate it up, log it, ignore it (not recommended without justification), or crash. But **we have to choose**. That’s the strength of the deign : we won’t accidentally ignore an error.
+**Bob:** Exactly. The point is that with `Result<T, E>`, we **decide** how to handle it. We could propagate it up, log it, ignore it (not recommended without justification), or crash. But **we have to choose**. That’s the strength of the design: we won’t accidentally ignore an error.
 
 
 
@@ -1116,7 +1117,7 @@ fn main() {
     }
 }
 ```
-Now, modify the code above in Rust Playground and when it is working paste it, locally in `ex07.rs`.
+Now, modify the code above in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024) and when it is working paste it, locally in `ex07.rs`.
 
 ```rust
 // ex07.rs
@@ -1143,7 +1144,7 @@ While `ex07.rs` is open in VSCode:
 
 * Set breakpoints on lines 7 and 15 
 * Run the code (F5) 
-* When the application is done, there is a file named `username.txt.bak` at the root of the project (`00_u_are_errors/`), rename it `username.txt`. 
+* When the application is done, there is a file named `username.txt.bak` at the root of the directory (`00_u_are_errors/`), rename it `username.txt`. 
 * Restart the code (F5) 
 * When the application is done, open and delete the content of `username.txt`
 * Run the code (F5)
@@ -1155,7 +1156,7 @@ While `ex07.rs` is open in VSCode:
 </div>
 
 
-**Bob:** First thing first. Do you see the return type in the signature of `read_username_from_file()`. I confirm, hopefully we can return `Result<T, E>` from our functions.
+**Bob:** First thing first. Do you see the return type in the signature of `read_username_from_file()`. This confirms, and this  is a very good thing, that we can return `Result<T, E>` from our functions:
 * At the end of the function, if everything went well we return `OK(username)`
 * Otherwise we bubble up the errors with the help of the `?` operator. Do you see those `?` after `File::open` and `read_to_string`? If either operation fails, the function returns a `Err(io::Error)` back to the caller.  
 
@@ -1192,12 +1193,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 <!-- <span>Optional comment</span> -->
 </div>
 
-By writing `fn main() -> Result<(), Box<dyn Error>>`, we indicate that `main()` might return an error. The `Box<dyn Error>` is a trait object to mean any kind of error – it’s a convenient way to say our error could be of any type that implements the Error trait. 
+By writing `fn main() -> Result<(), Box<dyn Error>>`, we indicate that `main()` might return an error. The `Box<dyn Error>` is a convenient way to say that the returned error could be of any type that implements the `std::error::Error` trait. 
 
-Now, using `?` in `main()` is allowed because the error can be returned from `main()`. If an error occurs, the runtime will print the error and exit with a non-zero status code. If `main()` returns `Ok(())` , the program exits normally with code 0. 
+Now, using `?` in `main()` is allowed because the error can be returned from `main()`. If an error occurs, the runtime will print the error and exit with a non-zero status code. If `main()` returns `Ok(())` , the program exits normally with code `0`. 
 
-This is really nice for quick scripts – we can just propagate errors out of `main()` and let the program crash gracefully with an error message,
-rather than writing a lot of error handling in `main()`.
+This is really nice for quick scripts – we can just propagate errors out of `main()` and let the program crash gracefully with an error message, rather than writing a lot of error handling in `main()`.
 
 
 
@@ -1251,7 +1251,7 @@ fn main() -> Result<()> {
 
 ```
 
-If our function returns `Option<T>` , we can use `?` on another `Option<T>`. If it’s `None`, our function returns `None` early. Play with the code below : 
+If our function returns `Option<T>` , we can use `?` on another `Option<T>`. If it’s `None`, our function returns `None` early. Play with the code below: 
 
 ```rust
 // ex11.rs
@@ -1283,7 +1283,7 @@ fn first_char_upper(s: &str) -> Option<f64> {
 It compiles without any problems because the `?` always outputs a char but the compiler doesn't care that our function returns an `Option<f64>`. It just checks that the `?` “absorbs” the `Option<char>` by returning `None` when necessary. Then it's up to us to transform the char into whatever we want (in this case, an `f64`).
 
 
-One thing to remember: **we can’t mix** return types with `?`. For example, if our function returns a `Result`, we can’t directly use `?` on an `Option<T>` without converting it (and vice versa). For example the code below does not compile : 
+One thing to remember: **we can’t mix** return types with `?`. For example, if our function returns a `Result`, we can’t directly use `?` on an `Option<T>` without converting it (and vice versa). For example the code below does not compile: 
 
 ```rust
 // ex12.rs
@@ -1305,7 +1305,7 @@ fn main() {
 }
 ```
 
-See part of the message from the compiler on build :
+See part of the message from the compiler on build:
 
 ```
 error[E0277]: the `?` operator can only be used on `Option`s, not `Result`s, in a function that returns `Option`
@@ -1320,7 +1320,7 @@ error[E0277]: the `?` operator can only be used on `Option`s, not `Result`s, in 
 
 
 
-There are helper methods like [`.ok_or()`](https://doc.rust-lang.org/std/option/enum.Option.html#method.ok_or) to turn an `Option<T>` into a `Result<T, E>` if needed. See below :
+There are helper methods like [`.ok_or()`](https://doc.rust-lang.org/std/option/enum.Option.html#method.ok_or) to turn an `Option<T>` into a `Result<T, E>` if needed. See below:
 
 ```rust
 // ex13.rs
@@ -1384,7 +1384,7 @@ fn main() -> Result<()> {
 
 ### Exercises – Propagating Errors
 
-1. **Refactor with `?` :** 
+1. **Refactor with `?`:** 
 * Take one of our functions from the previous exercises (for instance, a file-reading function or the number-parsing function) that handled errors with `match`. 
 * Change it to return a `Result<T, E>` instead of, say, defaulting to a value, and use the `?` operator to propagate errors to the caller. For example, change a `parse_number` that returned 0 on error to instead return `Result<i32, std::num::ParseIntError>` and use `?` inside. 
 * Then handle the error at the top level (maybe in `main()`) by printing an error.

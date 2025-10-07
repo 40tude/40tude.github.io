@@ -534,7 +534,7 @@ impl std::error::Error for ConfigError {}
     * `Io(...)` — a variant that carries one payload of type `std::io::Error`
     * `Parse(...)` — a variant that carries one payload of type `serde_json::Error`
 * Keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
-    * Think about : `fn Io(e: std::io::Error) -> ConfigError{...}`
+    * Think about: `fn Io(e: std::io::Error) -> ConfigError{...}`
 
 {: .warning-title}
 > This is key
@@ -566,7 +566,7 @@ To implement the `std::error::Error` trait for `ConfigError`, `ConfigError` must
 > If you don't feel confident with traits you can read this [series of posts]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
 
 
-* Next, when we write the function `load_config()` we make sure it returns `Result<Config, ConfigError>`. See below :
+* Next, when we write the function `load_config()` we make sure it returns `Result<Config, ConfigError>`. See below:
 
 ```rust
 fn load_config(path: &str) -> Result<Config, ConfigError> {
@@ -576,7 +576,7 @@ fn load_config(path: &str) -> Result<Config, ConfigError> {
 }
 ```
 
-Now, fasten your seat belt and stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current error into `ConfigError` with the help of `.map_err()`. Here is how :
+Now, fasten your seat belt and stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current error into `ConfigError` with the help of `.map_err()`. Here is how:
 
 * If it fails, `std::fs::read_to_string` returns a `Result<String, std::io::Error>`
     * `.map_err(ConfigError::Io)` is then executed
@@ -586,7 +586,7 @@ Now, fasten your seat belt and stay with me because what follows is a bit rock �
 * The same mechanics is at work on the next line 
 
 
-* The caller of `load_config()` only have to handle `ConfigError`. Below we show a part of the `load_or_init()` function. The idea is to focus on how this works from the caller point of view :
+* The caller of `load_config()` only have to handle `ConfigError`. Below we show a part of the `load_or_init()` function. The idea is to focus on how this works from the caller point of view:
 
 <!-- It can `match` on whether it is `Io()` or `Parse()` if it wants to distinguish.  -->
 
@@ -643,7 +643,7 @@ error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit 
 
 
 Find below `ex17.rs` complete source code because **I hate** partial source code in blog posts that usually never works. 
-* Feel free to copy/paste in Rust Playground
+* Feel free to copy/paste in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024)
 * In VSCode, set a breakpoint and take the time to go through the code line by line (F10). 
 
 <div align="center">
@@ -802,7 +802,7 @@ Error: Cannot divide 5 by zero
 error: process didn't exit successfully: `target\debug\examples\ex19.exe` (exit code: 42)
 ```
 
-If we run this :
+If we run this:
 * `main()` calls the `run()` function
 * There is no problem with `log10()`
 * There is no problem with the first `divide()`
@@ -822,7 +822,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 **Alice:** I think I have a much better understanding error handling in Rust now. Thanks.  
 
-**Bob:** It’s a lot to take in at first, but once we get comfortable, we appreciate how Rust’s approach makes us think about errors up front. No more runtime surprises from unhandled exceptions. We decide what to do in each case. And keep in mind, for larger projects, there are crates like `thiserror` to reduce error boilerplate, and `anyhow` for quick-and-easy error handling in applications. Those can be handy, but the fundamentals of `Result<T, E>` and `?` we covered are the building blocks of it all.
+**Bob:** It’s a lot to take in at first, but once we get comfortable, we appreciate how Rust’s approach makes us think about errors up front. No more runtime surprises from unhandled exceptions. We decide what to do in each case. And keep in mind, for larger packages, there are crates like `thiserror` to reduce error boilerplate, and `anyhow` for quick-and-easy error handling in applications. Those can be handy, but the fundamentals of `Result<T, E>` and `?` we covered are the building blocks of it all.
 
 
 
@@ -847,7 +847,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 2. **Combine Two Error Types:** Suppose we have two functions `fn get_data() -> Result<String, io::Error>` and `fn parse_data(data: &str) -> Result<Data, ParseError>`. Write a new function `fn load_data() -> Result<Data, LoadError>` where `LoadError` is our custom enum that has variants for IO and Parse errors. In `load_data`, call `get_data()` and `parse_data()` using `?`, converting their errors into `LoadError` (we can implement `From<io::Error>` and `From<ParseError>` for `LoadError` or use `map_err`). Then try using `load_data()` in a `main` that prints different messages depending on which error occurred (hint: use `match e { LoadError::Io(e) => ..., LoadError::Parse(e) => ... }`).  
 
-3. **Error Propagation in Modules:** Organize a small project with two modules: `network` and `database`. In `network`, create a function `fetch_data()` that might return a network-related error (we can simulate by just returning an `Err` variant like `NetworkError::Offline`). In `database`, create a function `save_data()` that might return a DB-related error (e.g., `DbError::ConnectionLost`). Then in `main`, write a function `run()` that calls `fetch_data` then `save_data`, propagating errors using `?`. Define a combined error type (enum with `Network(NetworkError), Database(DbError)`) to unify them for `run()`. Have `main` call `run()` and handle the unified error. This exercise will give we practice in designing error types and propagating across module boundaries.
+3. **Error Propagation in Modules:** Organize a small package with two modules: `network` and `database`. In `network`, create a function `fetch_data()` that might return a network-related error (we can simulate by just returning an `Err` variant like `NetworkError::Offline`). In `database`, create a function `save_data()` that might return a DB-related error (e.g., `DbError::ConnectionLost`). Then in `main`, write a function `run()` that calls `fetch_data` then `save_data`, propagating errors using `?`. Define a combined error type (enum with `Network(NetworkError), Database(DbError)`) to unify them for `run()`. Have `main` call `run()` and handle the unified error. This exercise will give we practice in designing error types and propagating across module boundaries.
 
 
 
@@ -1403,7 +1403,7 @@ fn main() -> Result<(), ConfigError> {
     Ok(())
 }
 ```
-* **Don’t mix them blindly**: We can use both in the same project (e.g., library crates with `thiserror` exposed, binary crate using `anyhow` internally), but try to keep public APIs typed and internal app code ergonomic.
+* **Don’t mix them blindly**: We can use both in the same package (e.g., library crates with `thiserror` exposed, binary crate using `anyhow` internally), but try to keep public APIs typed and internal app code ergonomic.
 
 
 
@@ -1418,7 +1418,7 @@ fn main() -> Result<(), ConfigError> {
 
 1. **Add Context with `anyhow`:** Write a small binary that reads a file and parses JSON, returning `anyhow::Result<()>`. Add `.context(reading file)` and `.context(parsing JSON)` to the respective fallible operations. Run it with a missing file and with invalid JSON to see the difference in error messages with the added context.  
 
-1. **Design Choice:** Given a project that has both a library crate (`my_lib`) and a binary crate (`my_cli`) in a Cargo workspace, decide how we would structure error handling across both. Hint: `my_lib` exposes typed errors with `thiserror`, while `my_cli` depends on `my_lib` and uses `anyhow` in `main` to convert `my_lib::Error` into `anyhow::Error` using `?` and print user-friendly messages.
+1. **Design Choice:** Given a package that has both a library crate (`my_lib`) and a binary crate (`my_cli`) in a Cargo workspace, decide how we would structure error handling across both. Hint: `my_lib` exposes typed errors with `thiserror`, while `my_cli` depends on `my_lib` and uses `anyhow` in `main` to convert `my_lib::Error` into `anyhow::Error` using `?` and print user-friendly messages.
 
 
 

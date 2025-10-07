@@ -21,9 +21,11 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
-</h2>
+</h2> -->
+
+
 
 ### This is Episode 02
 {: .no_toc }
@@ -66,7 +68,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 **Alice:** It was a lot... Again, many, many thanks because it really helps to organized my thoughts about errors management. 
 
-There is, may be, one last thing I would like to discuss with you. I know, I'm still a young Padawan, and most of my projects are just experiments I tinker with on weekends. Ok, ok, ok... But I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily my project to production code.
+There is, may be, one last thing I would like to discuss with you. I know, I'm still a young Padawan, and most of my projects are just experiments I tinker with on weekends. Ok, ok, ok... But I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily to production.
 
 <div align="center">
 <img src="./assets/img24.webp" alt="" width="450" loading="lazy"/><br/>
@@ -86,7 +88,7 @@ Do you agree?
 
 ### Key Concepts
 
-**Bob** : Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments): "A complex system that works is invariably found to have evolved from a simple system that worked..."
+**Bob:** Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments): "A complex system that works is invariably found to have evolved from a simple system that worked..."
 
 <div align="center">
 <img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
@@ -311,7 +313,7 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 }
 ```
 
-But I remember what we said about `.unwrap()`, and `.expect()`. Finally I have this version which prints a custom message on error. See below : 
+But I remember what we said about `.unwrap()`, and `.expect()`. Finally I have this version which prints a custom message on error. See below: 
 
 ```rust
 // ex200.rs
@@ -625,7 +627,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
     Ok(files)
 }
 ```
-The output is :
+The output is:
 
 ```
 Error: "Cannot list empty folder."
@@ -636,7 +638,7 @@ What would you do?
 
 **Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a library so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according to the responsibilities.
 
-**Bob:** Ok, but I would like to be very conservative here and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works again. You could create a project in a `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do as you move forward.
+**Bob:** Ok, but I would like to be very conservative here and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works again. You could create a package in a `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do as you move forward.
 
 
 
@@ -649,8 +651,8 @@ What would you do?
 
 
 
-**Alice :** OK... 
-* I create a project in the `02_production/00_project/` directory
+**Alice:** OK... 
+* I create a package in the `02_production/00_project/` directory
 * Below you can see how files and directories are organized
 
 ```
@@ -679,7 +681,7 @@ edition = "2024"
 [dependencies]
 ```
 * I create a directory named `empty` to perform some tests 
-* Since I can't yet create a library, there is no `lib.rs` in the project directory, just a `main.rs`
+* Since I can't yet create a library, there is no `lib.rs` in the directory, just a `main.rs`
 * Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary crate, an application (`step_00.exe`)
 * In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below: 
 
@@ -766,7 +768,7 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 * I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can be called from the grand-parent module (crate root in `main.rs`) 
 * Other than that, there is no change
 
-Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace and run it with :
+Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace and run it with:
 
 ```powershell
 cargo run -p step_00
@@ -827,9 +829,9 @@ pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
 ### Path to Production - Step_01
 
 
-**Bob:** The second step should be easy. Create an `error.rs` file then copy/paste `Result` and `Error` definitions there. Explain what you do when you make the project works as before.
+**Bob:** The second step should be easy. Create an `error.rs` file then copy/paste `Result` and `Error` definitions there. Explain what you do when you make the code runs as before.
 
-**Alice:** You know what? I copy/paste/rename the previous project in a directory named `01_project`. 
+**Alice:** You know what? I copy/paste/rename the previous package in a directory named `01_project`. 
 
 * I update the package name in `Cargo.toml` (`name = "step_01"`)
 * I create an `error.rs` file with this content:
@@ -911,7 +913,7 @@ Again I check my understanding about what is possible and what is not with the m
 
 **🦀 Test 4:** 
 * In `main.rs` I comment the line `use crate::error::Result;` and I write `fn main() -> crate::error::Result<()> {`. 
-* I cannot build the project because there is a problem with `use crate::Result;` in `listing.rs` (`unresolved import 'crate::Result'`). 
+* I cannot build the crate because there is a problem with `use crate::Result;` in `listing.rs` (`unresolved import 'crate::Result'`). 
 * Obviously, if in `listing.rs` I replace the line `use crate::Result;` with `use crate::error::Result;` then I can build again because in `error`, `Result` is public.
 
 Now, the 1 million $ question is: "why it worked in the initial version?" 
@@ -921,7 +923,7 @@ The answer goes like this:
 * In the crate root we have `mod error` which brings `error::Result` is in the current scope, the scope of the crate root.
 * If `Result` is in the scope of the crate root, it becomes visible from its children
 * So  `crate::Result` is available in the scope of `listing` module (child visibility rule) 
-* In the `listing` namespace I can write :
+* In the `listing` namespace I can write:
     * `pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...`
     * or `use crate::Result;` then `pub fn list_files(path: &str) -> Result<Vec<String>> {...`
 
@@ -961,9 +963,9 @@ Create a `lib.rs` file at the root of the project, put the `pub mod error;` and 
 ### Path to Production - Step_02
 
 
-**Alice:** Um... Ok... I start with a copy/paste/rename of the previous project (`02_project/`)
+**Alice:** Um... Ok... I start with a copy/paste/rename of the previous directory (`02_project/`)
 
-* I recall that if in the project directory there is a `lib.rs` and a `main.rs` 
+* I recall that if in the directory there is a `lib.rs` and a `main.rs` 
     * The build system builds the library crate then the binary crate. 
     * The lib is automatically linked to the binary.
     * Ideally I want to keep `main()` as short as possible. It should validate some stuff then call a `run()` function from the library. 
@@ -1001,7 +1003,7 @@ pub use self::error::{Error, Result};
 And that's it. It builds and run like a charm...
 
 
-**Bob:** This is cool but I have 2 questions for you. First question : are you sure when you say that in `use step_02::files::listing;`, `step_02` is the name of the library. I believe you, but how can we remove any doubt?
+**Bob:** This is cool but I have 2 questions for you. First question: are you sure when you say that in `use step_02::files::listing;`, `step_02` is the name of the library. I believe you, but how can we remove any doubt?
 
 **Alice:** We can modify `Cargo.toml` as shown below:
 
@@ -1051,7 +1053,7 @@ Here is the output in the console
 
 The runtime mention **my_app.exe** when it says something like: `process didn't exit successfully: target\debug\my_app.exe` while in `main.rs` we write `use my_super_lib::files::listing;`. 
 
-One last **point of attention** if I can... The command to build and run the application remains : `cargo run -p step_02`. This is because `step_02` is the name of the package in `Cargo.toml`. Review the content of `Cargo.toml` if this is not crystal clear.
+One last **point of attention** if I can... The command to build and run the application remains: `cargo run -p step_02`. This is because `step_02` is the name of the package in `Cargo.toml`. Review the content of `Cargo.toml` if this is not crystal clear.
 
 What is your second question?
 
@@ -1076,7 +1078,7 @@ Would you be so kind as to explain to an 800-year-old Jedi why you wrote these l
 
 * In `lib.rs` 
     * I load the modules `error` and `files` in the module tree 
-    * If the line `pub use self::error::{Error, Result};` is commented I can't build the package. I get an error from `listing.rs` saying : 
+    * If the line `pub use self::error::{Error, Result};` is commented I can't build the package. I get an error from `listing.rs` saying: 
 
     ```
     use crate::Result; 
@@ -1106,7 +1108,7 @@ Would you be so kind as to explain to an 800-year-old Jedi why you wrote these l
 
 **Bob:** Not to split hairs here, but if the shortcut lives in `lib.rs`, why duplicate it in `main.rs`?
 
-**Alice:** This is exactly what I did but it does'nt work. Indeed without the shortcut `use step_02::Result;` in `main.rs`, this is the `Result<T,E>` from the std lib which is used and the compiler is not happy. See by yourself : 
+**Alice:** This is exactly what I did but it does'nt work. Indeed without the shortcut `use step_02::Result;` in `main.rs`, this is the `Result<T,E>` from the std lib which is used and the compiler is not happy. See by yourself: 
 
 ```
 fn main() -> Result<()> {
@@ -1146,7 +1148,7 @@ So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
 
 **Bob:** Splendid! Did you notice we did'nt yet talk about error handling? First, let's set the problem then we will work on one possible option. 
 
-* I let you copy/paste/rename of the previous project directory (`03_project`)
+* I let you copy/paste/rename of the previous directory (`03_project`)
 * Think to update the package name in `Cargo.toml` (`name = "step_03"`)
 
 Once this is done, to "feel" the problem, please modify the `main()` function as below then run the code and tell me what you think.
@@ -1260,7 +1262,7 @@ We can now change the implementation of `Error` **without impacting the rest of 
 
 Now, in the code above, only pay **attention** to `Error`. 
 * So far its datatype was `Box<dyn std::error::Error>`
-* **Important:** Now it is an `enum`. This means that the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
+* **Important:** Now it is an `enum`. This means that the lib restrict itself to only 2 flavors: `Error:Custom` or `Error::Io`
 * It is a totally different story
 * We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).  
 
@@ -1334,7 +1336,7 @@ The difference is... Now it prints `Error: Io(Os...` instead of `Error: Os...`. 
 
 ### Path to Production - Step_04
 
-**Bob:** This is OK. It is part of our journey... Copy/paste/rename the project directory as `04_project` and rename the package in `Cargo.toml` as `step_04`. 
+**Bob:** This is OK. It is part of our journey... Copy/paste/rename the directory as `04_project` and rename the package in `Cargo.toml` as `step_04`. 
 
 Now, modify `main.rs` as below:
 
@@ -1412,7 +1414,7 @@ And now I understand what happens!
 2. Second call: The code reports a custom error with a message because the directory is empty. This is business as usual.
 3. Third call: This is an unhandled I/O error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the I/O error into an `Error`. I don't know yet all the details but I remember `thiserror` generates the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
 
-To make a long story short : Now, when the app encounter an unknown I/O error it reports it as an `Error::Io`.
+To make a long story short: Now, when the app encounter an unknown I/O error it reports it as an `Error::Io`.
 
 Cool, it works. Now I can uncomment the line with `transparent` and run the application again. Here is what I see:
 
@@ -1427,7 +1429,7 @@ Cool, it works. Now I can uncomment the line with `transparent` and run the appl
 
 
 
-**Alice:** We already used `thiserror`, but, Ok, let me start from the beginning... Until `Step_03` we had :  
+**Alice:** We already used `thiserror`, but, Ok, let me start from the beginning... Until `Step_03` we had:  
 
 ```rust
 // error.rs
@@ -1519,7 +1521,7 @@ The last implementation is here to help us to write `return Err("something went 
 
 **Bob:** You know... We could go one step further... Indeed if we want to be more strick we should remove the `Custom` variant of the `Error` enum and only list the errors we deal with.
 
-I let you copy/paste/rename the project directory as `05_project` and rename the package in `Cargo.toml` as `step_05`.
+I let you copy/paste/rename the directory as `05_project` and rename the package in `Cargo.toml` as `step_05`.
 
 Now I propose to use this version of the `error.rs` file
 
@@ -1539,7 +1541,7 @@ pub enum Error {
 }
 ```
 
-For comparison, please find below the previous version :
+For comparison, find below the previous version:
 
 
 ```rust
@@ -1574,7 +1576,7 @@ impl From<&str> for Error {
 1. More **important**. We now have `CantListEmptyFolder` which is a variant without associated data, unlike the `Io(std::io::Error)` variant, which contains a `std::io::Error` object. So `CantListEmptyFolder` acts as a constant of type `Error`.
 
 
-With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` custom error code instead. See below : 
+With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` custom error code instead. See below: 
 
 ```rust
 // listing.rs
@@ -1594,9 +1596,9 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
     Ok(files)
 }
 ```
-In the code above, if we want to return `Err(Error::CantListEmptyFolder)` we need bring into the scope `Error`. This is why we need `use crate::{Error, Result};` instead of `use crate::Result;`.
+In the code above, if we want to return `Err(Error::CantListEmptyFolder)` we need to bring `crate::Error` into the local scope. This is why we now have `use crate::{Error, Result};` (vs `use crate::Result;`) at the beginning of the source code.
 
-If you run the project (`cargo run -p step_05`), here is what you should see :
+If you run the app (`cargo run -p step_05`), here is what you should see:
 
 <div align="center">
 <img src="./assets/img41.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1615,7 +1617,7 @@ match listing::list_files("./02_production/05_project/empty") {
 }
 ```
 
-You should get the following output in the console. The `:?` debug specifier helps to see the `CantListEmptyFolder` error code in plain English.
+You should get the following output in the console. The `:?` format specifier helps to see the `CantListEmptyFolder` error code in plain English.
 
 ```
 Files found   : [
@@ -1637,7 +1639,7 @@ Error detected: Le chemin d’accès spécifié est introuvable. (os error 3)
 
 **Alice:** Could you show me how to add testing to my "production" code ?
 
-**Bob:** Yes I can but I will only show you the code. To tell the truth I'm getting tired, testing is an subject on itself and it is time to end this conversation. 
+**Bob:** Yes I can but I will only show you the code. To tell the truth I'm getting tired, testing is an subject on itself and I believe it is time to end this conversation. 
 
 The code below is in `02_production/06_project/src/files/listing.rs`.
 
@@ -1747,7 +1749,7 @@ Here is what you should see after: `cargo test -p step_06`
 * We learn how to split monolithic experimentation code into one or more files, including a `lib.rs` and a `main.rs`
 * We know much more about the module tree
     * "Hub files" which help to build the module tree and avoid `mod.rs` files
-    * `mod files;` : declares the existence and loads a module named `files` in the crate under construction
+    * `mod files;`: declares the existence and loads a module named `files` in the crate under construction
     * Shortcuts like: `use crate::files::listing;`
     * The visibility rule (if in parent then visible in child)
     * `crate` vs `self` in the `use` statements
@@ -1789,7 +1791,7 @@ Here is what you should see after: `cargo test -p step_06`
         }
     }
     ``` 
-    * Structure this project by creating:
+    * Structure this package by creating:
     * `lib.rs` file with a math module.
     * A `math.rs` file containing the `factorial()` function.
     * An `error.rs` file with a custom `Result` type.
@@ -1830,7 +1832,7 @@ You know what? Don't touch your PC for, at least, one day. And if you want to wa
 <!-- <span>Optional comment</span> -->
 </div>
 
-Then come back to theses posts, one at a time and try to make the exercices. You can also take one of your previous code, copy/paste/rename the project directory and add some error management. If the code is a "toy" stick to what we saw in Experimentation section. Once this is done, play the game and use what we learnt about errors management in the Production section, split one of your project in multiple files and add your own custom error type to it.
+Then come back to theses posts, one at a time and try to make the exercices. You can also take one of your previous code, copy/paste/rename the directory and add some error management. If the code is a "toy" stick to what we saw in Experimentation section. Once this is done, play the game and use what we learnt about errors management in the Production section, split one of your package in multiple files and add your own custom error type to it.
 
 Enjoy!
 
