@@ -672,7 +672,7 @@ This said, let's go back to the source code :
 
 * As before, `std::fs::File::open()` returns a `Result<File, io::Error>`, which we store in `result_file`.
 * Since `match` is an expression, it evaluates to a value, and with the first `match` we assign that value to `bob`.
-* It is important to understand that `match` **destructures** the `Result<T, E>`. So that the body of the `match` can be read as:
+* It is **important** to understand that `match` **destructures** the `Result<T, E>`. So that the body of the `match` can be read as:
     * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
     * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`) which never resolve to any value at all. So this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "[Don't press the little button on the joystick](https://www.youtube.com/watch?v=yG0vY5lT9yE), abort! abort! abort!"
 

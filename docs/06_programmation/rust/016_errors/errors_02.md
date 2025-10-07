@@ -679,7 +679,7 @@ edition = "2024"
 [dependencies]
 ```
 * I create a directory named `empty` to perform some tests 
-* Since I can't yet create a library, there is no `lib.rs` in the project directory just a `main.rs`
+* Since I can't yet create a library, there is no `lib.rs` in the project directory, just a `main.rs`
 * Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary crate, an application (`step_00.exe`)
 * In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below: 
 
@@ -971,7 +971,7 @@ Create a `lib.rs` file at the root of the project, put the `pub mod error;` and 
 
 Once the copy of the directory is done:    
 * I update the package name in `Cargo.toml` (`name = "step_02"`)
-* I create an `lib.rs` file with this content:
+* I create a `lib.rs` file with this content:
 
 ```rust
 // lib.rs
@@ -994,7 +994,7 @@ pub use self::error::{Error, Result};
 </div>
 
 * The lines `mod error;` and `mode files;` have been moved to `lib.rs`. The modules `error` and `files` are now in the lib namespace.
-* One **point of attention:** In previous version, the code was monolithic, all the modules were children of the same root, all symbols were accessible within the same namespace. This is why, in `main.rs`, a line like `use crate::files::listing;` allowed us to call `listing::list_files()`. `crate` was pointing to the crate being built, the binary crate. 
+* One **point of attention:** In previous versions, the code was monolithic, all the modules were children of the same root, all symbols were accessible within the same namespace. This is why, in `main.rs`, a line like `use crate::files::listing;` allowed us to call `listing::list_files()`. `crate` was pointing to the crate being built, the binary crate. 
 * But this is no longer the case. Indeed `list_files()` is now in the library namespace.
 * This is why, since the library is linked to the binary I need to write `use step_02::files::listing;` where `step_02` is the name of the library (which is the same as the name of the binary. I know, this does'nt help much...)
 
@@ -1096,7 +1096,7 @@ Would you be so kind as to explain to an 800-year-old Jedi why you wrote these l
         * On the other hand, I don't like the idea of not being able to reuse most of the source code from the previous version without modifying it.
     * This is where the **re-export** "trick" enters the game.
         * In `lib.rs` I load the modules I need (`errors`, `files`)
-        * Then I create, at the top of the module tree of the library crate, the shortcut I need
+        * Then I create, at the top of the module tree of the library crate, the shortcuts I need:
         ```rust
         pub use self::error::{Error, Result};
         ```
@@ -1260,7 +1260,7 @@ We can now change the implementation of `Error` **without impacting the rest of 
 
 Now, in the code above, only pay **attention** to `Error`. 
 * So far its datatype was `Box<dyn std::error::Error>`
-* **IMPORTANT:** Now it is an `enum`. This means that the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
+* **Important:** Now it is an `enum`. This means that the lib restrict itself to only 2 flavors : `Error:Custom` or `Error::Io`
 * It is a totally different story
 * We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).  
 
@@ -1421,7 +1421,9 @@ Cool, it works. Now I can uncomment the line with `transparent` and run the appl
 <!-- <span>Optional comment</span> -->
 </div>
 
-One question however. Could you read `error.rs` and tell me exactly what is going on here?
+
+
+**Bob:** One question however. Could you read `error.rs` and tell me exactly what is going on here?
 
 
 
