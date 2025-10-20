@@ -253,7 +253,7 @@ Then the event loop will run until `elwt.exit()` (`elwt` stands for Event Loop W
 <iframe width="560" height="315" src="https://www.youtube.com/embed/avMX-Zft7K4?si=s7n8lhAexcTKtDlG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-In order to paint our universe, we start by getting the `pixels` object (no panic, I did'nt talk about this guy yet). Then, with `frame`,  we get a mutable byte slice from the pixels object. Then we travers the content of the frame, 4 bytes at a type since the spots of our universe are RGBA encoded with 3 bytes for Red, Green and Blue component. The last byte is for transparency.
+In order to paint our universe, we start by getting the `pixels` object (no panic, I did'nt talk about this guy yet). Then, with `frame`,  we get a mutable byte slice from the pixels object. Then we traverse the content of the frame, 4 bytes at a time since the spots of our universe are RGBA encoded with 3 bytes for Red, Green and Blue components while the last byte is for transparency.
 
 Once all the spots of our universe are repainted in blue, we ask the `pixels` object to draw itself. The key point is that I don't care how this will happen. With the level of indirection provided by Pixes and Winit I can stay focus on my universe. For the rest, Pixels and Winit will discuss between them about the most efficient way to render it on the final screen(s). Not my problem and this is pretty cool. Thanks to them.
 
@@ -270,12 +270,13 @@ I know, this seems over complicated especially to display a blue window... So le
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="900" loading="lazy"/><br/>
-<span>Winit and Pixele rendering pipeline</span>
+<span>Winit and Pixels rendering pipeline</span>
 </div>
 
-* In front of our eyes we have a screen where, may be, there is more than one window on the screen. Think about your cell phone with one app at a time on screen or to your 4 screens configuration at home... To fix the idea I suppose we are on a WIN11 configuration with a 800x600 window on screen. The green rectangle above represents the inside of the window and does not include the border nor the title bar. These are managed by the operating system.
-* Pixels proposes to use a texture to fill efficiently the content of the window. The texture may not have the same size than the window. It can be stretched to fit the content. Applying the texture to the window content is done by the GPU. The size of the Surface are in pixels. If the ratio is 1:1 with the inside of the displayed window there is no distorsion otherwise the content may become compressed, 
-* To link the texture to our universe Pixels propose to use a Pixels buffer
+* In front of our eyes we have a screen where, may be, there is more than one window on the screen. Think about your cell phone with one app at a time on screen or to your 4 screens configuration at home... To fix the idea I suppose we are on a WIN11 configuration with a 800x600 pixels window on screen. The green rectangle above represents the inside of the window and does not include the border nor the title bar. Those are managed by the operating system.
+* Pixels proposes to use a surface texture to fill efficiently the content of the window. The size of the texture are in pixels. The texture may not have the same size than the window. It can be stretched or compressed to fit the content. Applying the texture to the window content is done by the GPU. If the ratio is 1:1 with the inside of the displayed window there is no distorsion otherwise the content may become weird, 
+* To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 byte (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio.   
+* Finally we have to provide our universe. Its size are whatever we want but they should match the one of the Pixels RGBA buffer.
 
 More information about the ControlFlow: https://docs.rs/winit/0.29.15/winit/event_loop/enum.ControlFlow.html
 
