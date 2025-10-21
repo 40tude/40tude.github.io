@@ -280,15 +280,15 @@ Once all the spots of our universe are repainted in blue, we ask the `pixels` ob
 We first make sure the `window` has not yet been initialized. Do you see the `if window.is_none()`? This also explains why, above, `window` is an `Option<T>`. 
 
 Now, focus your attention on the 3 function calls:
-    * `WindowBuilder::new()`
-    * `SurfaceTexture::new()`
-    * `Pixels::new()`
+* **`WindowBuilder::new()`**
+* **`SurfaceTexture::new()`**
+* **`Pixels::new()`**
 
 At this point it is important to understand the distinctions between `elwt` and the `window`. `elwt` abstracts platform-specific details (Win64, Wayland, Browser DOM...). `elwt` can create windows (do you see the `.build(elwt)`). `elwt` can control the event loop (do you remember the `elwt.exit()`). On the other hand, `window` is a product that `elwt` creates.
 
 This said, we pass the `elwt` to the Winit `WindowBuilder::new()` factory function and get a `built_window` in return. Then we pass a reference to the `built_window` to the Pixels `SurfaceTexture::new()` factory function and we get a `surface` object in return. Finally we pass the `surface` to the Pixels `Pixels::new()` factory function and we get a Pixels object in return.
 
-I know, this seems over complicated especially to display a blue window... So let's draw how it works.
+I know, this seems over complicated especially if you want to display a blue window... So let's draw how it works:
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="900" loading="lazy"/><br/>
@@ -337,12 +337,13 @@ This is where the `Box::leak()` come into action. It converts a `Box<T>` into a 
 
 **Point2**: When all the function calls are done, at the end of the `Event::Resumed` arm, we update the 2 variables `window` (the reference to the window) and `pixels` (the RGBA buffer) because we need them we we handle the other events. At this point, `built_window` has been moved into Box, then leaked. `window_ref` points to heap memory that will never be freed. I know, I'm not very proud...
 
-**Point3**: In addition to all the level of indirection there is a last one. Indeed on high resolution screens (HiDPI) the logical size of the window may be 800x600 while the physical size is 1000x750. For example this is what happens on my system. On WIN11 you can right click on the screen and select `Display settings`. Here is what I can see:
+**Point3**: In addition to all the level of indirection there is a last one. Indeed on high resolution screens (HiDPI) the logical size of the window may be 800x600 while the physical size is 1000x750. For example this is what happens on my system. On WIN11 you can right click on the screen and select `Display settings`. Here is what I can see on my system:
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
+
 
 
 
