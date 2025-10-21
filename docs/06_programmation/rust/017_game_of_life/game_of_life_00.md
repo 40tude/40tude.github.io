@@ -257,12 +257,34 @@ In order to paint our universe, we start by getting the `pixels` object (no pani
 
 Once all the spots of our universe are repainted in blue, we ask the `pixels` object to draw itself. The key point is that I don't care how this will happen. With the level of indirection provided by Pixes and Winit I can stay focus on my universe. For the rest, Pixels and Winit will discuss between them about the most efficient way to render it on the final screen(s). Not my problem and this is pretty cool. Thanks to them.
 
-* **Event::Resumed**: This event is emitted when the application starts or wake up. It is **important** because this is where the magic happens. IOW, this is where all the pipes are connected... We first make sure the `window` has not yet been initialized. Do you see the `if window.is_none()`? This also explains why, above, `window` is an `Option<T>`. Then focus your attention on the 3 function calls below:
+* **Event::Resumed**: This event is emitted when the application starts or wake up. It is **important** because this is where the magic happens. IOW, this is where all the pipes are connected... Here is a copy of the code fragment:
+
+    ```rust
+    if window.is_none() {
+        let built_window = WindowBuilder::new().with_title("Step_00_winit_029: First try").build(elwt).unwrap();
+        
+        let size = built_window.inner_size();
+        let window_ref: &'static Window = Box::leak(Box::new(built_window));
+        let surface = SurfaceTexture::new(size.width, size.height, window_ref);
+
+        let built_pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
+
+        window = Some(window_ref);
+        pixels = Some(built_pixels);
+
+        let scale_factor = window_ref.scale_factor();
+        println!("Scale factor : {}", scale_factor);
+    }
+    ```
+
+We first make sure the `window` has not yet been initialized. Do you see the `if window.is_none()`? This also explains why, above, `window` is an `Option<T>`. 
+
+Now, focus your attention on the 3 function calls:
     * `WindowBuilder::new()`
     * `SurfaceTexture::new()`
     * `Pixels::new()`
 
-At this point it is important to understand the distinctions between `elwt` and the `window`. `elwt` abstracts platform-specific details (Win64, Wayland, Browser DOM...). `elwt` can create windows (do you see the `.build(elwt)`). `elwt` can control the event loop (do you remember the `elwt.exit()`). On the other heand, `window` is a product that `elwt` creates.
+At this point it is important to understand the distinctions between `elwt` and the `window`. `elwt` abstracts platform-specific details (Win64, Wayland, Browser DOM...). `elwt` can create windows (do you see the `.build(elwt)`). `elwt` can control the event loop (do you remember the `elwt.exit()`). On the other hand, `window` is a product that `elwt` creates.
 
 This said, we pass the `elwt` to the Winit `WindowBuilder::new()` factory function and get a `built_window` in return. Then we pass a reference to the `built_window` to the Pixels `SurfaceTexture::new()` factory function and we get a `surface` object in return. Finally we pass the `surface` to the Pixels `Pixels::new()` factory function and we get a Pixels object in return.
 
@@ -273,16 +295,64 @@ I know, this seems over complicated especially to display a blue window... So le
 <span>Winit and Pixels rendering pipeline</span>
 </div>
 
-* In front of our eyes we have a screen where, may be, there is more than one window on the screen. Think about your cell phone with one app at a time on screen or to your 4 screens configuration at home... To fix the idea I suppose we are on a WIN11 configuration with a 800x600 pixels window on screen. The green rectangle above represents the inside of the window and does not include the border nor the title bar. Those are managed by the operating system.
-* Pixels proposes to use a surface texture to fill efficiently the content of the window. The size of the texture are in pixels. The texture may not have the same size than the window. It can be stretched or compressed to fit the content. Applying the texture to the window content is done by the GPU. If the ratio is 1:1 with the inside of the displayed window there is no distorsion otherwise the content may become weird, 
-* To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 byte (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio.   
-* Finally we have to provide our universe. Its size are whatever we want but they should match the one of the Pixels RGBA buffer.
+* In front of our eyes we have a screen where, may be, there is more than one window on the screen. Think about your cell phone with one app at a time on screen or to your 4 screens configuration at home... To fix the idea I suppose we are on a WIN11 configuration with a 800x600 pixels window on screen. The green rectangle above represents the inside of the window and does not include the border nor the title bar. Those are managed by the operating system. We use `WindowBuilder::new()` to create this window.
+* Pixels proposes to use a surface texture to fill efficiently the content of the window. The size of the texture are in pixels. The texture may not have the same size than the window. It can be stretched or compressed to fit the content. Applying the texture to the window content is done by the GPU. If the ratio is 1:1 with the inside of the displayed window there is no distorsion otherwise the content may become weird. This is where we use `SurfaceTexture::new()`.
+* To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 byte (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio. This is where we use `Pixels::new()`.   
+* Finally we have to provide our universe. Its size are whatever we want but they should match the one of the Pixels RGBA buffer. In the loop, we get access to the RGB Pixels buffer with `pixels.frame_mut()` and when it is updated we call `pixels.render()`
 
-More information about the ControlFlow: https://docs.rs/winit/0.29.15/winit/event_loop/enum.ControlFlow.html
+Ok... Let's go back to the code fragment and let's pay attention to 3 points:
+
+```rust
+event_loop.run(move |event, elwt| {
+match event {
+    Event::Resumed => {
+        if window.is_none() {
+            let built_window = WindowBuilder::new().with_title("Step_00_winit_029: First try").build(elwt).unwrap();
+            
+            let size = built_window.inner_size();
+            let window_ref: &'static Window = Box::leak(Box::new(built_window));
+            let surface = SurfaceTexture::new(size.width, size.height, window_ref);
+
+            let built_pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
+
+            window = Some(window_ref);
+            pixels = Some(built_pixels);
+
+            let scale_factor = window_ref.scale_factor();
+            println!("Scale factor : {}", scale_factor);
+        }
+    }
+...
+```
+
+**Point 1**: If you hover `SurfaceTexture::new()` then you can see that it expects a static reference. See below:
+
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+This is where the `Box::leak()` come into action. It converts a `Box<T>` into a `&'static T` reference intentionally creating a memory leak. It transfers ownership of the heap-allocated value (`Box::new(built_window)`) to "nobody," making it live forever (until the program ends).
+
+
+**Point2**: When all the function calls are done, at the end of the `Event::Resumed` arm, we update the 2 variables `window` (the reference to the window) and `pixels` (the RGBA buffer) because we need them we we handle the other events. At this point, `built_window` has been moved into Box, then leaked. `window_ref` points to heap memory that will never be freed. I know, I'm not very proud...
+
+**Point3**: In addition to all the level of indirection there is a last one. Indeed on high resolution screens (HiDPI) the logical size of the window may be 800x600 while the physical size is 1000x750. For example this is what happens on my system. On WIN11 you can right click on the screen and select `Display settings`. Here is what I can see:
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
-https://docs.rs/winit/0.29.15/winit/event/enum.Event.html#variant.AboutToWait
+
+
+
+<!-- More information about the ControlFlow: https://docs.rs/winit/0.29.15/winit/event_loop/enum.ControlFlow.html -->
+
+
+
 
 
 
