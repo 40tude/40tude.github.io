@@ -375,8 +375,171 @@ On my system, in the terminal I can see:
 
 
 
-
 <!-- More information about the ControlFlow: https://docs.rs/winit/0.29.15/winit/event_loop/enum.ControlFlow.html -->
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## A gentle start II
+
+Here, the end result is the same but we use Winit 0.30. In a terminal, in VSCode enter the command :
+
+`cargo run -p step_00_winit_030`
+
+No surprise. Same result:
+
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Blue Screen of Birth: A first window using Rust, Winit and Pixels</span>
+</div>
+
+Here is `Cargo.toml`
+
+```toml
+[package]
+name = "step_00_winit_030"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+pixels = "0.15.0"
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
+We are effectively using Winit 0.30 with pixels 0.15. However starting with Winit 0.30 we must specify the feature `rwh`. `rwh` stands for Raw Window Handle. With Winit 0.29 `rwh_05` is activated by default since it does not support `rwh_06`. Since I like to use latest versions I write `rwh_06`. 
+
+Here is the code. The components are the same (the end result is the same). However the organization of the code is different.
+
+
+
+
+```rust
+use pixels::{Pixels, SurfaceTexture};
+use winit::{
+    application::ApplicationHandler,
+    event::WindowEvent,
+    event_loop::{ActiveEventLoop, /*ControlFlow,*/ EventLoop},
+    window::Window,
+};
+
+const WIDTH: u32 = 200;
+const HEIGHT: u32 = 150;
+
+type Error = Box<dyn std::error::Error>;
+type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Default)]
+struct App {
+    window: Option<&'static Window>,
+    pixels: Option<Pixels<'static>>,
+}
+
+fn main() -> Result<()> {
+    let event_loop = EventLoop::new()?;
+    let mut app = App::default();
+    event_loop.run_app(&mut app)?;
+
+    Ok(())
+}
+
+impl ApplicationHandler for App {
+    fn resumed(&mut self, event_loop: &ActiveEventLoop) {
+        
+        let window = event_loop.create_window(Window::default_attributes().with_title("Step_00_winit_030: First try")).unwrap();
+
+        let size = window.inner_size();
+        let window_ref: &'static Window = Box::leak(Box::new(window));
+        let surface = SurfaceTexture::new(size.width, size.height, window_ref);
+
+        let pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
+
+        self.window = Some(window_ref);
+        self.pixels = Some(pixels);
+
+        let scale_factor = window_ref.scale_factor();
+        println!("Scale factor : {}", scale_factor);
+    }
+
+    fn window_event(&mut self, event_loop: &ActiveEventLoop, _: winit::window::WindowId, event: WindowEvent) {
+        match event {
+            WindowEvent::CloseRequested => {
+                event_loop.exit();
+            }
+
+            WindowEvent::RedrawRequested => {
+                if let Some(pixels) = &mut self.pixels {
+                    let frame = pixels.frame_mut();
+
+                    // Remplir tout en bleu
+                    for spot in frame.chunks_exact_mut(4) {
+                        spot[0] = 0x20; // R
+                        spot[1] = 0x40; // G
+                        spot[2] = 0xFF; // B
+                        spot[3] = 0xFF; // A
+                    }
+
+                    pixels.render().unwrap();
+                }
+
+                if let Some(window) = &self.window {
+                    window.request_redraw();
+                }
+            }
+
+            _ => {}
+        }
+    }
+
+    fn about_to_wait(&mut self, _: &ActiveEventLoop) {
+        self.window.expect("Bug - Window should exist").request_redraw();
+    }
+}
+```
+
+### Comments
+
+Winit now provide an `ApplicationHandler` trait that we implement. [As explained here](https://docs.rs/winit/latest/winit/application/trait.ApplicationHandler.html), it requires 2 methods : `resumed` and `window_event`. 
+
+Having this in mind, commenting the code is easy. At the beginning we define our App as a struct which host `window` and `pixels`. Then in the main loop once the event_loop is created and the App defaulted we run the app with the event loop (see the `event_loop.run_app(&mut app)`)
+
+In the implementation of the trait `ApplicationHandler` for our `App` we respond to the event as we did before.
+
+One point of attention. Make sure to understand that when we call `event_loop.create_window()` this creates window we see on screen but its initial dimensions are not WIDTH x HEIGHT. Do not hesitate to review the previous pipeline.
+
+I really prefer this way of writing the code and starting with `Step_02` I will use Winit 0.30 everywhere.
+
+Let's see how we can animate our universe with both versions of code (using `winit 0.29` and `winit 0.30`)
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Action !
+
+Int the terminal enter the commande : `cargo run -p step_01_winit_029`
+
+<div align="center">
+<img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
 
 
 
