@@ -80,10 +80,29 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 
 ## Introduction
 * The project consist of a Rust workspace with 25 different packages
+* ...
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## Objectives
-* 
+* ...
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## A gentle start
 
@@ -117,7 +136,7 @@ There has been, and this is really great, a huge effort made in terms of documen
 <span>Blue Screen of Birth: A first window using Rust, Winit and Pixels</span>
 </div>
 
-Now open the package (project) named `step_00_winit_029`. It consists of a `Cargo.toml` and a `main.rs` files
+Now, open the package (project) named `step_00_winit_029`. It consists of a `Cargo.toml` and a `main.rs` files
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
@@ -141,14 +160,14 @@ The issue I have is that it seems `Pixels` requires `winit` 0.29 but this is not
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
+<span>Dependi helps to confirm if we use the last version</span>
 </div>
 
 This is an issue because when you go to [the WinIt GitHub page](https://github.com/rust-windowing/winit/tree/master) you must make sure you pick the version 0.29 **before** looking at the examples source code.  
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
+<span>Make sure to pick the select the correct version of Winit</span>
 </div>
 
 Indeed, but I discovered it much later, between 0.29 and 0.30 there are breaking changes in the API. We will address them with the next sample code. For now, let's study the code below:
@@ -177,6 +196,7 @@ fn main() -> Result<()> {
         match event {
             Event::Resumed => {
                 if window.is_none() {
+                    // elwt.set_control_flow(ControlFlow::Poll); // Never sleep and call the closure ASAP
                     let built_window = WindowBuilder::new().with_title("Step_00_winit_029: First try").build(elwt).unwrap();
                     
                     let size = built_window.inner_size();
@@ -300,7 +320,7 @@ I know, this seems over complicated especially if you want to display a blue win
 * To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 byte (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio. This is where we use `Pixels::new()`.   
 * Finally we have to provide our universe. Its size are whatever we want but they should match the one of the Pixels RGBA buffer. In the loop, we get access to the RGB Pixels buffer with `pixels.frame_mut()` and when it is updated we call `pixels.render()`
 
-Ok... Let's go back to the code fragment and let's pay attention to 3 points:
+Ok... Let's go back to the code fragment and let's pay attention to the next 3 points:
 
 ```rust
 event_loop.run(move |event, elwt| {
@@ -329,7 +349,7 @@ match event {
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
+<span><code>SurfaceTexture::new()</code> expects a <code>&'static Window</code></span>
 </div>
 
 This is where the `Box::leak()` come into action. It converts a `Box<T>` into a `&'static T` reference intentionally creating a memory leak. It transfers ownership of the heap-allocated value (`Box::new(built_window)`) to "nobody," making it live forever (until the program ends).
@@ -344,6 +364,12 @@ This is where the `Box::leak()` come into action. It converts a `Box<T>` into a 
 <!-- <span>Optional comment</span> -->
 </div>
 
+On my system, in the terminal I can see:
+
+<div align="center">
+<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
+<span>HiDPI Scale Factor</span>
+</div>
 
 
 
