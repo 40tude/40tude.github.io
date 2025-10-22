@@ -503,17 +503,17 @@ impl ApplicationHandler for App {
 
 ### Comments
 
-Winit now provide an `ApplicationHandler` trait that we implement. [As explained here](https://docs.rs/winit/latest/winit/application/trait.ApplicationHandler.html), it requires 2 methods : `resumed` and `window_event`. 
+With 0.30, Winit provides an `ApplicationHandler` trait that we implement. [As explained here](https://docs.rs/winit/latest/winit/application/trait.ApplicationHandler.html), it requires 2 methods : `resumed` and `window_event`. 
 
-Having this in mind, commenting the code is easy. At the beginning we define our App as a struct which host `window` and `pixels`. Then in the main loop once the event_loop is created and the App defaulted we run the app with the event loop (see the `event_loop.run_app(&mut app)`)
+Having this in mind, commenting the code is easy because we just need to move around all the pieces we already explained in the previous sample code. At the beginning we define our App as a struct which host `window` and `pixels`. Then in the `main()` function once the `event_loop` is created and the `app` is defaulted, we run the application with the event loop (do you see the line `event_loop.run_app(&mut app)`)
 
-In the implementation of the trait `ApplicationHandler` for our `App` we respond to the event as we did before.
+In the implementation of the trait `ApplicationHandler` for our `App` we respond to the events as we did before.
 
-One point of attention. Make sure to understand that when we call `event_loop.create_window()` this creates window we see on screen but its initial dimensions are not WIDTH x HEIGHT. Do not hesitate to review the previous pipeline.
+One point of attention. Make sure to understand that in `resumed()`, when we call `event_loop.create_window()`, this creates the window that we see on screen but its initial dimensions are not `WIDTH x HEIGHT`. Do not hesitate to review the previous pipeline.
 
 I really prefer this way of writing the code and starting with `Step_02` I will use Winit 0.30 everywhere.
 
-Let's see how we can animate our universe with both versions of code (using `winit 0.29` and `winit 0.30`)
+Before that, let's see how we can "animate" the content of our universe with both versions Winit (`winit 0.29` and `winit 0.30`).
 
 
 
@@ -531,7 +531,7 @@ Let's see how we can animate our universe with both versions of code (using `win
 
 ## Action !
 
-Int the terminal enter the commande : `cargo run -p step_01_winit_029`
+In the terminal enter the command : `cargo run -p step_01_winit_029`
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
