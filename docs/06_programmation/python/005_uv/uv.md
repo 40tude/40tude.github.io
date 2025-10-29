@@ -20,12 +20,14 @@ last_modified_date : 2025-10-29 17:00:00
 
 # UV Python Package Manager: The Essentials
 
+I just get rid of `Conda` and switch to `uv`.
+
 
 
 ## TL;DR
 
 ```powershell
-uv init prj_51
+uv init prj_51 --python 3.12
 cd prj_51
 code .
 uv add numpy
@@ -50,6 +52,7 @@ deactivate # Deactivate
 
 * I use Windows 11 and VSCode
 * [Read the doc](https://docs.astral.sh/uv/)
+
 
 
 
@@ -126,7 +129,7 @@ uv self update
 
 ## PowerShell function for quick activation
 
-Add this to the `Documents/PowerShell/Microsoft.PowerShell_profile.ps1` profile:
+Add this function to your `Documents/PowerShell/Microsoft.PowerShell_profile.ps1` profile:
 
 ```powershell
 # Function to activate a venv
@@ -270,7 +273,7 @@ uv run main.py
 
 
 
-Now, let's leave VSCode and let's go back in Powershell
+Let's leave VSCode and let's go back in Powershell
 
 ```powershell
 uv run main.py
@@ -281,7 +284,7 @@ uv run main.py
 <!-- <span>Optional comment</span> -->
 </div>
 
-Now, if you don't want to use `uv run main.py` but call `python main.py` the `.env` must be activated manually.
+Now, if you don't want to use `uv run main.py` but you prefer to call `python main.py` the `.env` must be activated manually.
 
 ```powershell
 .venv\Scripts\activate
@@ -300,7 +303,7 @@ Let's deactivate the environment (just for the next test)
 deactivate
 ```
 
-Let's reactivate `.env` with our `Set-Env` function
+Let's reactivate `.env` manually with our `Set-Env` function
 
 ```powershell
 Set-Env .
@@ -360,6 +363,23 @@ Optional because it should ask the question when the project is loaded
 1. Press `Ctrl+Shift+P` → “Python: Select Interpreter”
 1. Choose the interpreter inside the `.\Scripts\python.exe` folder
 
+
+
+
+
+
+<!-- ## What if
+I have a directory, few `.py` files
+
+```powershell
+
+cd my_project
+uv venv
+.venv\Scripts\activate
+code .
+uv pip install -r requirements.txt # or uv pip install numpy
+```
+-->
 
 
 
@@ -534,20 +554,6 @@ print("Mean value:", np.mean(arr))
 
 
 
-
-
-<!-- ## What if
-I have a directory, few `.py` files
-
-```powershell
-
-cd my_project
-uv venv
-.venv\Scripts\activate
-code .
-uv pip install -r requirements.txt # or uv pip install numpy
-```
- -->
 
 
 
