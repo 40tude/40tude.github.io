@@ -2,7 +2,7 @@
 published: true
 lang: en-US
 layout: default
-title: Powershell and Windows PowerShell 
+title: PowerShell and Windows PowerShell 
 description: Understanding the differences between PowerShell and Windows PowerShell
 parent: Windows
 #math: mathjax
@@ -12,18 +12,61 @@ last_modified_date : 2025-10-29 09:00:00
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Powershell and Windows PowerShell</span>
+<span>PowerShell and Windows PowerShell</span>
 </div>
 
-# Powershell and Windows PowerShell
+# PowerShell and Windows PowerShell
+
+
+
+## Quickstart
+
+```powershell
+# Check your version
+$PSVersionTable.PSVersion
+
+# Install or update PowerShell
+winget install --id Microsoft.PowerShell --source winget
+winget upgrade Microsoft.PowerShell
+
+# Launch PowerShell 7
+pwsh
+```
+
+
+**Above, where `pwsh` comes from?**
+
+`pwsh` is the executable name for PowerShell 7 and later. It stands for: 
+> **P**ower**Sh**ell → **pwsh**
+
+On Windows PowerShell 5.1, the executable was `powershell.exe`
+
+But since PowerShell 7 is cross-platform (Windows, Linux, macOS), the new, shorter command works everywhere:
+
+```powershell
+pwsh
+```
+
+So when you see `pwsh`, just remember:
+* It is the **modern**, **open-source**, **cross-platform** version of PowerShell.
+* It’s the one you should launch for any new script or automation.
+
+
+
+
+
+
+
+
+
 
 ## Current situation
-Here I suppose you have a recent Windows 11 (version above 22H2 that comes with Terminal Windows) 
+Here I suppose you have a recent Windows 11 (version above 22H2 that comes with Windows Terminal) 
 
 There are 2 versions of PowerShell available
 
 1. **Windows PowerShell** (5.1 for example) 
-- Windows Powershell is specific to Windows, it is NOT portable, hence the name: **Windows** Powershell
+- Windows PowerShell is specific to Windows, it is NOT portable, hence the name: **Windows** PowerShell
 - Comes with Windows
 - See the folders : 
     * `%USERPROFILE%/Documents/WindowsPowerShell`
@@ -31,7 +74,7 @@ There are 2 versions of PowerShell available
 - Path to the app: `%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe`
 
 2. **PowerShell** (7.5.3 for example) 
-- Powershell is portable (Linux...)
+- PowerShell is portable (Linux...)
 - Open source: [GitHub repo](https://github.com/PowerShell/PowerShell)
 - Does not come (yet) automatically with Windows. You must install it
 - See the folders : 
@@ -39,7 +82,9 @@ There are 2 versions of PowerShell available
     * or `%USERPROFILE%/OneDrive/Documents/PowerShell`
 - Path to the app: `C:\Program Files\PowerShell\7\pwsh.exe`
 
-Powershell (not Windows Powershell) is **the one you should use**.
+PowerShell (not Windows PowerShell) is **the one you should use**.
+
+
 
 
 
@@ -52,21 +97,32 @@ $PSVersionTable
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
-<span>One way to get Powershell current version with $PSVersionTable</span>
+<span>One way to get PowerShell current version with $PSVersionTable</span>
 </div>
 
 
 
 
 
-## Installing Powershell
+## Installing PowerShell
 
-If Powershell is not yet installed, shame on you. You can however either run one of the 2 commands below:
+If PowerShell is not yet installed, shame on you 😁. You can however either run one of the 2 commands below:
 
 ```
 winget install --id Microsoft.PowerShell --source winget
 choco install powershell -y
 ```
+
+
+## Once PowerShell is installed
+
+If you want to execute local script run the following command:
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+
 
 
 ## Updating PowerShell
@@ -79,18 +135,38 @@ winget upgrade Microsoft.PowerShell
 choco upgrade powershell-core
 ```
 
+### Why prefer PowerShell?
 
 
-## Define Powershell as your default in Terminal Windows
+| Feature        | Windows PowerShell 5.1 | PowerShell 7          |
+| -------------- | ---------------------- | --------------------- |
+| Cross-platform | ❌                      | ✅ Win/Linux/mac       |
+| Performance    | 🐢                     | ⚡ Faster (CoreCLR)    |
+| Support        | Finishing              | ✅ Fully supported     |
+| New modules    | Rare                   | 🚀 Continuous updates |
 
 
-1. Open Windows Terminal (`WIN+X I`)
+Windows PowerShell is legacy — PowerShell 7 is the future.
+
+
+
+
+
+
+
+
+
+
+## Set PowerShell as your default in Terminal Windows
+
+
+1. Open Windows Terminal (`WIN+X the I`)
 1. Settings → Startup → Default profile
 1. Select PowerShell
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Define Powershell as your default in Terminal Windows</span>
+<span>Define PowerShell as your default in Terminal Windows</span>
 </div>
 
 
@@ -102,7 +178,7 @@ choco upgrade powershell-core
 
 ## Checking your profile
 
-Open Window Terminal (`WIN+X I`)
+Open Window Terminal (`WIN+X the I`)
 
 ```powershell
 $PROFILE
@@ -190,7 +266,7 @@ $Profile | Get-Member -MemberType NoteProperty | Select-Object Name
 
 
 
-## Configuring Powershell in VSCode
+## Configuring PowerShell in VSCode
 
 * `CTRL,`
 * Look for: `terminal.integrated.defaultProfile.windows`
@@ -199,7 +275,7 @@ $Profile | Get-Member -MemberType NoteProperty | Select-Object Name
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Configuring Powershell in VSCode</span>
+<span>Configuring PowerShell in VSCode</span>
 </div>
 
 
@@ -248,4 +324,98 @@ function venv {
 # Redirect to the main profile
 . "$PSScriptRoot\Microsoft.PowerShell_profile.ps1"
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## FAQ
+
+### Does Windows Terminal = PowerShell ? 
+* No
+* Windows Terminal is just a modern “host” app.
+* PowerShell is the shell that runs inside it.
+* Inside Windows Terminal you have Ubuntu, cmd, Windows PowerShell, PowerShell...
+
+
+### What’s the difference between PowerShell and Command Prompt?
+
+**Command Prompt (cmd.exe)** is the traditional Windows command-line tool.
+It can run basic commands and batch scripts, but it works mostly with plain text.
+
+**PowerShell**, on the other hand, is a **modern automation and scripting shell** based on .NET.
+It doesn’t just output text — it works with **objects**, which makes automation, data processing, and tool integration far more powerful.
+
+➡️ *Cmd is for simple commands. PowerShell is for scripting, automation, and modern system management.*
+
+
+### Why does Windows PowerShell still exist?
+
+Windows PowerShell (version 5.1) comes **preinstalled** with Windows for compatibility.
+Many enterprise tools and admin scripts created in the past **still rely on it**.
+
+It stays for **legacy support**, but development has shifted to PowerShell 7.
+
+
+### Can I uninstall Windows PowerShell?
+
+**Not recommended.**
+Some Windows features and management tools still depend on Windows PowerShell 5.1.
+
+You *can* uninstall it using advanced tools, but it may **break** parts of Windows.
+Better approach:
+
+* Set **PowerShell 7** as your default
+* Keep Windows PowerShell for older scripts
+
+
+### How do I start PowerShell 7? ("pwsh"??)
+
+* After installing PowerShell 7
+* In any terminal (Windows Terminal, cmd, Run dialog, etc.) 
+* You can launch PowerShell by typing:
+
+```powershell
+pwsh
+```
+
+
+
+* **pwsh** is the executable for the modern version of PowerShell.
+
+
+You can also:
+
+* Search for **PowerShell 7** in the Start menu
+    * Just type the 3 letters `pow`. It will be listed
+* Set PowerShell 7 as your **default shell** in Windows Terminal settings
+
+
+## Bibliography
+- [Learn Powershell in a Month of Lunches](https://amzn.eu/d/gIeAd7w)
+<div align="center">
+<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+## Webliography
+- [PowerShell](https://learn.microsoft.com/powershell/)
+- [Install PowerShell](https://learn.microsoft.com/powershell/scripting/install/installing-powershell)
+- [PowerShell GitHub repository](https://github.com/PowerShell/PowerShell)
+- I know, this playlist is very old BUT I really enjoy the tone of the talk and you can see the [father of Powershell](https://en.wikipedia.org/wiki/Jeffrey_Snover)... Respect. For what I know he left Microsoft since then.
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=b0P_Wpe5JMUg-FmA&amp;list=PLyJiOytEPs4etH7Ujq7PU7jlOlHL-9RmV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 
