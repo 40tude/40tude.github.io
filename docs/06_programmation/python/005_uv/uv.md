@@ -25,21 +25,31 @@ last_modified_date : 2025-10-29 17:00:00
 ## TL;DR
 
 ```powershell
-# Create  
-uv venv my_project
+uv init prj_51
+cd prj_51
+code .
+uv add numpy
+# write code...
+uv run main.py
 
-# Activate
-./my_project/Scripts\Activate.ps1
+# Out of VScode - Option I
+uv run main.py
 
-# Install 
-uv pip install pandas numpy scikit-learn matplotlib
-
-# Deactivate
-deactivate
+# Out of VScode - Option II
+Set-Env . # or .venv\Scripts\activate
+python main.py
 ```
 
-[Read the doc](https://docs.astral.sh/uv/)
 
+<!-- ```powershell
+uv venv my_project # Create  
+./my_project/Scripts/Activate.ps1 # Activate
+uv pip install pandas numpy scikit-learn matplotlib # Install 
+deactivate # Deactivate
+``` -->
+
+* I use Windows 11 and VSCode
+* [Read the doc](https://docs.astral.sh/uv/)
 
 
 
@@ -49,6 +59,9 @@ deactivate
 winget install astral-sh.uv
 uv --version
 ```
+
+
+<!-- 
 
 ## Create a new virtual environment
 
@@ -106,17 +119,12 @@ uv pip sync requirements.txt
 
 # Update
 uv self update
-```
+``` -->
 
 
-## VSCode setup
-
-1. Open a Python project in VSCode
-1. Press `Ctrl+Shift+P` → “Python: Select Interpreter”
-1. Choose the interpreter inside the `.\Scripts\python.exe` folder
 
 
-### Bonus: PowerShell function for quick activation
+## PowerShell function for quick activation
 
 Add this to the `Documents/PowerShell/Microsoft.PowerShell_profile.ps1` profile:
 
@@ -161,171 +169,22 @@ function Set-Env {
 }
 ```
 
-### Check list before take off
 
-1. **Create a new project named `my_project`, in a new directory and a new environment**
 
-   ```powershell
-   uv venv my_project --python 3.12
-   ```
-
-   <div align="center">
-   <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
-   <!-- <span>Optional comment</span> -->
-   </div>
-
-2. **Move into the project directory**
-
-   ```powershell
-   cd my_project
-   ```
-
-3. **Activate the virtual environment (using our PowerShell helper)**
-
-   ```powershell
-   Set-Env .
-   ```
-
-   The prompt should now show `(my_project_312)` at the beginning.
-
-<div align="center">
-<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-4. **Open the project in VSCode**
-
-   ```powershell
-   code .
-   ```
-
-5. **In VSCode:**
-
-   * Press **Ctrl + Shift + P** → type **“Python: Select Interpreter”**
-   * Choose the one located in
-     `Python 3.12.12 (my_project) .\Scripts\python.exe`
-
-<div align="center">
-<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-
-
-6. **Install required packages (example: NumPy)**
-
-Open a terminal in VSCode (CTRL + ù with FR keyboard)
-
-   ```powershell
-   uv pip install numpy
-   ```
-
-<div align="center">
-<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-
-
-7. **Verify installation**
-
-   ```powershell
-   python -c "import numpy; print(numpy.__version__)"
-   ```
-
-<div align="center">
-<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-
-
-8. **Start coding**
-
-```python
-# main.py
-
-import numpy as np
-
-# Create a simple 2D NumPy array
-# (Think of it as a small matrix)
-arr = np.array([[1, 2, 3],
-                [4, 5, 6]])
-
-# Print the array
-print("Hello NumPy!")
-print("Here is your array:")
-print(arr)
-
-# Compute and print the sum of all elements
-print("Sum of all elements:", np.sum(arr))
-
-# Compute the mean (average) value
-print("Mean value:", np.mean(arr))
-```
-
-9. **Run**
-
-<div align="center">
-<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-
-
-9. **(Optional) Deactivate the environment when done**
-
-   ```powershell
-   deactivate
-   ```
-
-
-## What if
-I have a directory, few `.py` files
-
-```powershell
-
-cd my_project
-uv venv
-.venv\Scripts\activate
-code .
-uv pip install -r requirements.txt # or uv pip install numpy
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## What if Episode IV: A New Hope
+## Episode IV: A New Hope
 
 
 ```powershell
 uv init prj_51
 cd prj_51
 code .
-
-
 ```
+
 CTRL + ù
 
+
 ```powershell
-uv run python main.py
+uv run main.py
 ```
 
 A `.venv` is created
@@ -363,7 +222,7 @@ dependencies = [
 
 
 
-A the code like that:
+And the code like that:
 
 
 
@@ -393,12 +252,12 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 ```
 
+In VSCode console
 
 ```powershell
-uv run python main.py
+uv run main.py
 ```
 
 
@@ -411,10 +270,10 @@ uv run python main.py
 
 
 
-Leave VSCode and go back in Powershell
+Now, let's leave VSCode and let's go back in Powershell
 
 ```powershell
-uv run python main.py
+uv run main.py
 ```
 
 <div align="center">
@@ -422,6 +281,7 @@ uv run python main.py
 <!-- <span>Optional comment</span> -->
 </div>
 
+Now, if you don't want to use `uv run main.py` but call `python main.py` the `.env` must be activated manually.
 
 ```powershell
 .venv\Scripts\activate
@@ -440,7 +300,7 @@ Let's deactivate the environment (just for the next test)
 deactivate
 ```
 
-Let's reactivate it with our function
+Let's reactivate `.env` with our `Set-Env` function
 
 ```powershell
 Set-Env .
@@ -449,9 +309,9 @@ python main.py
 
 
 <div align="center">
-   <img src="./assets/img13.webp" alt="" width="450" loading="lazy"/><br/>
-   <!-- <span>Optional comment</span> -->
-   </div>
+<img src="./assets/img13.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
@@ -485,3 +345,221 @@ Before `uv`, we had:
 #### The difference
 
 Unlike Rust, where Cargo is the official tool, `uv` is a third-party tool that aims to modernize the Python ecosystem. 
+
+
+
+
+
+
+
+
+## VSCode setup
+Optional because it should ask the question when the project is loaded
+
+1. Open a Python project in VSCode
+1. Press `Ctrl+Shift+P` → “Python: Select Interpreter”
+1. Choose the interpreter inside the `.\Scripts\python.exe` folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+## Check list to take off
+
+1. **Create a new project named `my_project`, in a new directory and a new environment**
+
+   ```powershell
+   uv venv my_project --python 3.12
+   ```
+
+   <div align="center">
+   <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
+   <span>Optional comment</span>
+   </div>
+
+2. **Move into the project directory**
+
+   ```powershell
+   cd my_project
+   ```
+
+3. **Activate the virtual environment (using our PowerShell helper)**
+
+   ```powershell
+   Set-Env .
+   ```
+
+   The prompt should now show `(my_project_312)` at the beginning.
+
+<div align="center">
+<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Optional comment</span>
+</div>
+
+
+4. **Open the project in VSCode**
+
+   ```powershell
+   code .
+   ```
+
+5. **In VSCode:**
+
+   * Press **Ctrl + Shift + P** → type **“Python: Select Interpreter”**
+   * Choose the one located in
+     `Python 3.12.12 (my_project) .\Scripts\python.exe`
+
+<div align="center">
+<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Optional comment</span>
+</div>
+
+
+
+
+6. **Install required packages (example: NumPy)**
+
+Open a terminal in VSCode (CTRL + ù with FR keyboard)
+
+   ```powershell
+   uv pip install numpy
+   ```
+
+<div align="center">
+<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Optional comment</span>
+</div>
+
+
+
+
+7. **Verify installation**
+
+   ```powershell
+   python -c "import numpy; print(numpy.__version__)"
+   ```
+
+<div align="center">
+<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Optional comment</span>
+</div>
+
+
+
+
+8. **Start coding**
+
+```python
+# main.py
+
+import numpy as np
+
+# Create a simple 2D NumPy array
+# (Think of it as a small matrix)
+arr = np.array([[1, 2, 3],
+                [4, 5, 6]])
+
+# Print the array
+print("Hello NumPy!")
+print("Here is your array:")
+print(arr)
+
+# Compute and print the sum of all elements
+print("Sum of all elements:", np.sum(arr))
+
+# Compute the mean (average) value
+print("Mean value:", np.mean(arr))
+```
+
+9. **Run**
+
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Optional comment</span>
+</div>
+
+
+
+
+9. **(Optional) Deactivate the environment when done**
+
+   ```powershell
+   deactivate
+   ```
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ## What if
+I have a directory, few `.py` files
+
+```powershell
+
+cd my_project
+uv venv
+.venv\Scripts\activate
+code .
+uv pip install -r requirements.txt # or uv pip install numpy
+```
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
