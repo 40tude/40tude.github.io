@@ -34,7 +34,7 @@ pwsh
 ```
 
 
-**Above, where `pwsh` comes from?**
+**Above, from where does `pwsh` comes from?**
 
 `pwsh` is the executable name for PowerShell 7 and later. It stands for: 
 > **P**ower**Sh**ell → **pwsh**
@@ -61,7 +61,7 @@ So when you see `pwsh`, just remember:
 
 
 ## Current situation
-Here I suppose you have a recent Windows 11 (version above 22H2 that comes with Windows Terminal) 
+Here I suppose you have a recent Windows 11 (version above 22H2 that comes with [Terminal Windows](https://learn.microsoft.com/fr-fr/windows/terminal/)) 
 
 There are 2 versions of PowerShell available
 
@@ -160,7 +160,7 @@ choco upgrade powershell-core
 ## Set PowerShell as your default in Terminal Windows
 
 
-1. Open Windows Terminal (`WIN+X the I`)
+1. Open Terminal Windows (`WIN+X the I`)
 1. Settings → Startup → Default profile
 1. Select PowerShell
 
@@ -344,11 +344,11 @@ function venv {
 
 ## FAQ
 
-### Does Windows Terminal == PowerShell ? 
+### Does Terminal Windows == PowerShell ? 
 * No
-* Windows Terminal is "just" a modern "host" app.
+* Terminal Windows is "just" a modern "host" app.
 * PowerShell is the shell that runs inside it.
-* Inside Windows Terminal you have Ubuntu, cmd, Windows PowerShell, PowerShell...
+* Inside Terminal Windows you have Ubuntu, cmd, Windows PowerShell, PowerShell...
 
 
 ### What’s the difference between PowerShell and Command Prompt?
@@ -393,7 +393,7 @@ Better approach:
 ### How do I start PowerShell 7? ("pwsh"??)
 
 * After installing PowerShell 7
-* In any terminal (Windows Terminal, cmd, Run dialog, etc.) 
+* In any terminal (Terminal Windows, cmd, Run dialog, etc.) 
 * You can launch PowerShell by typing:
 
 ```powershell
@@ -406,7 +406,7 @@ You can also:
 
 * Search for **PowerShell 7** in the Start menu
     * Just type the 3 letters `pow`. It will be listed
-* Set PowerShell 7 as your **default shell** in Windows Terminal settings
+* Set PowerShell 7 as your **default shell** in Terminal Windows settings
 
 
 
