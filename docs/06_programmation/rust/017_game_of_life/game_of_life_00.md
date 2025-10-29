@@ -7,7 +7,7 @@ description: A beginner-friendly guide to using the Pixels and Winit crates to c
 parent: Rust
 #math: mathjax
 date               : 2025-10-20 07:00:00
-last_modified_date : 2025-10-23 10:00:00
+last_modified_date : 2025-10-22 09:00:00
 ---
 
 <!-- 
