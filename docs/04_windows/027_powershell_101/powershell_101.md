@@ -7,7 +7,7 @@ description: Understanding the differences between PowerShell and Windows PowerS
 parent: Windows
 #math: mathjax
 date               : 2025-10-29 07:00:00
-last_modified_date : 2025-10-29 09:00:00
+last_modified_date : 2025-10-29 13:00:00
 ---
 
 <div align="center">
@@ -68,21 +68,34 @@ There are 2 versions of PowerShell available
 1. **Windows PowerShell** (5.1 for example) 
 - Windows PowerShell is specific to Windows, it is NOT portable, hence the name: **Windows** PowerShell
 - Comes with Windows
+- Path to the app: `%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe`
 - See the folders : 
     * `%USERPROFILE%/Documents/WindowsPowerShell`
     * or `%USERPROFILE%/OneDrive/Documents/WindowsPowerShell`
-- Path to the app: `%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe`
 
 2. **PowerShell** (7.5.3 for example) 
 - PowerShell is portable (Linux...)
 - Open source: [GitHub repo](https://github.com/PowerShell/PowerShell)
 - Does not come (yet) automatically with Windows. You must install it
+- Path to the app: `C:\Program Files\PowerShell\7\pwsh.exe`
 - See the folders : 
     * `%USERPROFILE%/Documents/PowerShell`
     * or `%USERPROFILE%/OneDrive/Documents/PowerShell`
-- Path to the app: `C:\Program Files\PowerShell\7\pwsh.exe`
 
 PowerShell (not Windows PowerShell) is **the one you should use**.
+
+### Why should I prefer PowerShell?
+
+
+| Feature        | Windows PowerShell 5.1 | PowerShell 7          |
+| -------------- | ---------------------- | --------------------- |
+| Cross-platform | ❌                      | ✅ Win/Linux/mac       |
+| Performance    | 🐢                     | ⚡ Faster (CoreCLR)    |
+| Support        | Finishing              | ✅ Fully supported     |
+| New modules    | Rare                   | 🚀 Continuous updates |
+
+
+Windows PowerShell is legacy — PowerShell 7 is the future.
 
 
 
@@ -135,19 +148,6 @@ winget upgrade Microsoft.PowerShell
 choco upgrade powershell-core
 ```
 
-### Why prefer PowerShell?
-
-
-| Feature        | Windows PowerShell 5.1 | PowerShell 7          |
-| -------------- | ---------------------- | --------------------- |
-| Cross-platform | ❌                      | ✅ Win/Linux/mac       |
-| Performance    | 🐢                     | ⚡ Faster (CoreCLR)    |
-| Support        | Finishing              | ✅ Fully supported     |
-| New modules    | Rare                   | 🚀 Continuous updates |
-
-
-Windows PowerShell is legacy — PowerShell 7 is the future.
-
 
 
 
@@ -167,6 +167,22 @@ Windows PowerShell is legacy — PowerShell 7 is the future.
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
 <span>Define PowerShell as your default in Terminal Windows</span>
+</div>
+
+
+
+
+
+## Configuring PowerShell in VSCode
+
+* `CTRL,`
+* Look for: `terminal.integrated.defaultProfile.windows`
+* Select: `PowerShell 7`
+
+
+<div align="center">
+<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Configuring PowerShell in VSCode</span>
 </div>
 
 
@@ -266,18 +282,6 @@ $Profile | Get-Member -MemberType NoteProperty | Select-Object Name
 
 
 
-## Configuring PowerShell in VSCode
-
-* `CTRL,`
-* Look for: `terminal.integrated.defaultProfile.windows`
-* Select: `PowerShell 7`
-
-
-<div align="center">
-<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Configuring PowerShell in VSCode</span>
-</div>
-
 
 
 
@@ -340,9 +344,9 @@ function venv {
 
 ## FAQ
 
-### Does Windows Terminal = PowerShell ? 
+### Does Windows Terminal == PowerShell ? 
 * No
-* Windows Terminal is just a modern “host” app.
+* Windows Terminal is "just" a modern "host" app.
 * PowerShell is the shell that runs inside it.
 * Inside Windows Terminal you have Ubuntu, cmd, Windows PowerShell, PowerShell...
 
@@ -355,7 +359,9 @@ It can run basic commands and batch scripts, but it works mostly with plain text
 **PowerShell**, on the other hand, is a **modern automation and scripting shell** based on .NET.
 It doesn’t just output text — it works with **objects**, which makes automation, data processing, and tool integration far more powerful.
 
-➡️ *Cmd is for simple commands. PowerShell is for scripting, automation, and modern system management.*
+Cmd is for simple commands. PowerShell is for scripting, automation, and modern system management.
+
+
 
 
 ### Why does Windows PowerShell still exist?
@@ -364,6 +370,9 @@ Windows PowerShell (version 5.1) comes **preinstalled** with Windows for compati
 Many enterprise tools and admin scripts created in the past **still rely on it**.
 
 It stays for **legacy support**, but development has shifted to PowerShell 7.
+
+
+
 
 
 ### Can I uninstall Windows PowerShell?
@@ -378,6 +387,9 @@ Better approach:
 * Keep Windows PowerShell for older scripts
 
 
+
+
+
 ### How do I start PowerShell 7? ("pwsh"??)
 
 * After installing PowerShell 7
@@ -387,9 +399,6 @@ Better approach:
 ```powershell
 pwsh
 ```
-
-
-
 * **pwsh** is the executable for the modern version of PowerShell.
 
 
@@ -399,6 +408,9 @@ You can also:
     * Just type the 3 letters `pow`. It will be listed
 * Set PowerShell 7 as your **default shell** in Windows Terminal settings
 
+
+
+ 
 
 ## Bibliography
 - [Learn Powershell in a Month of Lunches](https://amzn.eu/d/gIeAd7w)
