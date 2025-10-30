@@ -6,8 +6,8 @@ title: Building Conway’s Game of Life in Rust with Pixels and Winit
 description: A beginner-friendly guide to using the Pixels and Winit crates to create a graphical version of Conway’s Game of Life in Rust.
 parent: Rust
 #math: mathjax
-date               : 2025-10-20 07:00:00
-last_modified_date : 2025-10-22 09:00:00
+date               : 2025-10-29 07:00:00
+last_modified_date : 2025-10-30 21:00:00
 ---
 
 <!-- 
@@ -40,8 +40,10 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 {: .no_toc }
 
 * For beginners
+* Uses Winit and Pixels
+* ...
 * The Rust workspace is on GitHub
-* Use VSCode + Win11 (not tested elsewhere)
+* Uses VSCode + Win11 (not tested elsewhere)
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="900" loading="lazy"/><br/>
@@ -49,17 +51,6 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 </div>
 
 
-
-
-
-
-<!-- 
-#### Posts 
-{: .no_toc }
-* [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
-* [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
-* [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%}) 
--->
 
 
 
@@ -79,19 +70,15 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 <!-- ###################################################################### -->
 
 ## Introduction
-* The project consist of a Rust workspace with 25 different packages
-* ...
 
+This project started with a simple idea: build something fun with a graphical output — starting from scratch (or almost), and improving it step by step without making it unnecessarily complex. Along the way, we’ll modularize the code, add logging, handle errors, write tests, measure progress, and support configuration parameters. In short, we’ll evolve from a quick prototype to something we can show off.
 
+If you’re new to the **Game of Life**, check out [this page](https://conwaylife.com/wiki/Main_Page) (which also includes downloadable patterns), then explore [this one](https://conwaylife.com/) and [this one](https://copy.sh/life/).
 
+The journey will take around 25 steps. At first, I’ll go slowly to make sure we’re fully aligned. I’ll take the time to explain what I’ve learned about the **Winit** and **Pixels** crates, and I’ll add plenty of comments in the source code. Later on, we’ll gradually pick up the pace.
 
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-## Objectives
-* ...
+Now then — it’s almost 11 a.m., and the train is waiting on platform 9¾.
+Ready to hop on? 
 
 
 
@@ -979,7 +966,7 @@ This will distort the image
 <!-- ###################################################################### -->
 
 
-## Step 03 : Resize the universe according the size of the window
+## Step 03 : Resize the universe I
 
 Here the idea is to and to display more or less cells according to the size of the window on screen.
 
@@ -1064,11 +1051,11 @@ It seems that even before displaying any content, the `recreate_buffer()` functi
 <!-- ###################################################################### -->
 
 
-## Step 04 : Resize the universe according the size of the window
+## Step 04 : Resize the universe II
 
 Here we just draw 4 larger cells (16x16) in the corner of the universe
 
-`cargo run -p step_03`
+`cargo run -p step_04`
 
 
 <div align="center">
@@ -1114,6 +1101,7 @@ Now we only have one draw of the universe at startup
 </div>
 
 ### Comments
+{: .no_toc }
 
 The `App` structure has been extended. It now include a "cache" (`pending_resize`) with the expected new with and height. I also added the dimensions of the surface texture.
 
