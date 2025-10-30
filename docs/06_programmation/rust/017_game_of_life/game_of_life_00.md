@@ -77,6 +77,25 @@ If you’re new to the **Game of Life**, check out [this page](https://conwaylif
 
 The journey will take around 25 steps. At first, I’ll go slowly to make sure we’re fully aligned. I’ll take the time to explain what I’ve learned about the **Winit** and **Pixels** crates, and I’ll add plenty of comments in the source code. Later on, we’ll gradually pick up the pace.
 
+This is how the application looks like at the end:
+
+* Zooming, panning, GPU support, full screen, 5000+ patterns available...
+
+<div align="center">
+<img src="./assets/img98.webp" alt="" width="900" loading="lazy"/><br/>
+<span>Clikc to zoom </span>
+</div>
+
+<div align="center">
+<img src="./assets/img99.webp" alt="" width="900" loading="lazy"/><br/>
+<span>Same as above but I zoomed on the right part</span>
+</div>
+
+<div align="center">
+<img src="./assets/img97.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
 Now then — it’s almost 11 a.m., and the train is waiting on platform 9¾.
 Ready to hop on? 
 
@@ -791,7 +810,7 @@ It is really a matter of code re-organization.
 <!-- ###################################################################### -->
 
 
-## Step 02 : Handle keystroke an resize
+## Step 02 : Handle keystroke and resize
 
 Now we have a better understanding of the loop and a code structure that we can use. Let's see how we can manage window resizing. In addition, pressing `F11` will allow us to set the window full screen.
 
@@ -1059,7 +1078,7 @@ Here we just draw 4 larger cells (16x16) in the corner of the universe
 
 
 <div align="center">
-<img src="./assets/img17.webp" alt=""  loading="lazy"/><br/>
+<img src="./assets/img17.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -1322,22 +1341,28 @@ This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It i
 * `cargo run -p step_08`
 * `cargo test -p step_08`
 
+Below you can see how, between step 06 and 08 the project organization has evolved.
 
 <div align="center">
-<img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img21.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
+
+If opening the files you are not sure to understand 110% of what you see... No worry. Take a break the read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which is dedicated to the "modern" way of modularizing projects.
+
+If you enter `cargo test -p step_08` you should the results below
 
 <div align="center">
 <img src="./assets/img22.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
+Again, the goal of this project isn't to be exhaustive, but to add features incrementally. Testing is definitely an important one. If I can test one module, I should be able to write tests for the others. That's the idea.
 
 ### Comments
 {: .no_toc }
 
-* Nothing sexy here. It is just source code reorganization. At the end main.rs() is only few line of code
+* Nothing sexy here. It is just source code reorganization. At the end `main.rs()` is only few line of code
 
 ```rust
 use step_08::{Result, app::state::App};
