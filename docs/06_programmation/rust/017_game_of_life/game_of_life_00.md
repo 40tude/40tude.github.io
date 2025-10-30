@@ -109,11 +109,15 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 When I discussed the idea with ChatGPT and explained that, for teaching purposes, I wanted to build a Game of Life application in Rust and was looking for a helpful library, it kindly pointed me to the Winit and Pixels crates. I then checked out the links below (this is a lie but this what I should have done):   
 
 ### winit
+{: .no_toc }
+
 * crate: https://crates.io/crates/winit
 * doc: https://docs.rs/winit/0.30.12/winit/
 * examples: https://github.com/rust-windowing/winit/tree/master/winit/examples
 
 ### Pixels
+{: .no_toc }
+
 * crate: https://crates.io/crates/pixels
 * doc: https://docs.rs/pixels/0.15.0/pixels/
 * examples: https://github.com/parasyte/pixels/tree/main/examples
@@ -253,6 +257,8 @@ fn main() -> Result<()> {
 
 
 ### Comments
+{: .no_toc }
+
 This is **NOT** the code I had at the very beginning but since I try to tell you a "gentle" story I'm lying... In fact, at the beginning, I spent too much time mixing Winit 0.30 with its 0.29 API. Nothing was really working. I did'nt read the documentation nor checked the dependencies... A nightmare...
 
 Anyway... The code above is around 80 lines, it consists of one `main()` function, it is partially based on [the code available here](https://github.com/rust-windowing/winit/blob/v0.29.x/examples/window.rs) and it should be working. Right? Do you confirm? Ok, let's move on. 
@@ -502,6 +508,7 @@ impl ApplicationHandler for App {
 ```
 
 ### Comments
+{: .no_toc }
 
 With 0.30, Winit provides an `ApplicationHandler` trait that we implement. [As explained here](https://docs.rs/winit/latest/winit/application/trait.ApplicationHandler.html), it requires 2 methods : `resumed` and `window_event`. 
 
@@ -531,7 +538,7 @@ Before that, let's see how we can "animate" the content of our universe with bot
 
 ## Action !
 
-### winit 0.29
+### winit 0.29 version
 In the terminal enter the command : `cargo run -p step_01_winit_029`
 
 <div align="center">
@@ -654,7 +661,9 @@ fn main() -> Result<()> {
 }
 ```
 
-### Comments
+#### Comments
+{: .no_toc }
+
 * The code has been reorganized around a `struct App {...}`
 * In the `main()` we still have the `match` expression. Note how the limit to 60 frames per second is achieved. I simply measure the time between now and the instant of the last call. If needed, `app.request_redraw()` is called which does nothing else than calling `.request_redraw()` as in the previous sample code. 
 * At one point the event `WindowEvent::RedrawRequested` happens and `self.render()` get called. 
@@ -663,7 +672,7 @@ fn main() -> Result<()> {
 
 
 
-### winit 0.30
+### winit 0.30 version
 In the terminal enter the command : `cargo run -p step_01_winit_030`
 
 <div align="center">
@@ -777,7 +786,9 @@ fn main() -> Result<()> {
 }
 ```
 
-### Comments
+#### Comments
+{: .no_toc }
+
 The structure of the code is very similar to one of the first winit 0.30 sample code.
 
 The FPS speed limitation use the same method as in the 0.29 version. Same comment concerning the animation of the shape.
@@ -808,6 +819,7 @@ Press `F11` (or `f` key).
 
 
 ### Comments
+{: .no_toc }
 
 The `App` structure has been updated according to our need. It now have a `fullscreen` boolean for example. In addition it no longer derive the Default trait but has it own `Default` implementation.
 
@@ -876,6 +888,8 @@ WindowEvent::KeyboardInput {
 
 
 ### Tell me why 🎹
+{: .no_toc }
+
 Can you tell me why there are black borders around our universe? 
 
 The black frame around our gradient appears because the **window’s aspect ratio** doesn’t match the **texture (buffer) aspect ratio** defined by:
@@ -888,6 +902,7 @@ const HEIGHT: u32 = 240;
 Our `Pixels` instance creates a fixed-size buffer (320×240) but the window can have any size (for example, 1920×1080). When `pixels.render()` scales our buffer to fit the window, it keeps the correct aspect ratio and it centers the image, filling any "border" in black. This is to prevent distortion.
 
 #### How can I to verify it?
+{: .no_toc }
 
 We can print both the window and buffer sizes (and their ratios) directly inside the `RedrawRequested` event handler. Find the `WindowEvent::RedrawRequested`, uncomment the code below and re-run the code with `cargo run -p step_02`.
 
@@ -933,7 +948,8 @@ Once the window is on screen resize it:
 </div>
 
 
-### How to remove the black borders?
+#### How to remove the black borders?
+{: .no_toc }
 
 1. **Stretch the image to fill the window:**
 This will distort the image
@@ -988,6 +1004,7 @@ Than when the window is narrow.
 This is an exercice. Just to make sure when understand really what we are doing.
 
 ### Comments
+{: .no_toc }
 
 Once again the App structure is adapted to our need. Here it has field to keeep track of the width, the heigh and it contains a vector of cells.
 
@@ -1061,6 +1078,7 @@ Here we just draw 4 larger cells (16x16) in the corner of the universe
 
 
 ### Comments
+{: .no_toc }
 
 The code has been refactored. The `App` have `create_buffer()` and `handle_resize()`.
 * `create_buffer()` is called once when the application `ApplicationHandler::resumed()`
@@ -1205,6 +1223,7 @@ Let's animate some cells.
 
 
 ### Comments
+{: .no_toc }
 
 The `App` structure has been extended. It now include a the current state of the board (`board_current`) and the next one (`board_next`)
 
@@ -1328,6 +1347,7 @@ This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It i
 
 
 ### Comments
+{: .no_toc }
 
 * Nothing sexy here. It is just source code reorganization. At the end main.rs() is only few line of code
 
@@ -1387,6 +1407,7 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o
 `cargo run -p step_09`
 
 ### Comments
+{: .no_toc }
 
 While reading patterns file for example, errors can happen and this is why we added testing. You can search for the code fragment below at the end of `read_rle()`
 
@@ -1484,7 +1505,7 @@ Cool but let see how we could pass a filename containing a pattern as an argumen
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 09 : Better asynchronous error management
+## Step 10 : Handling CLI arguments
 
 Try this:
 
@@ -1505,6 +1526,8 @@ Try this:
 
 
 ### Comments
+{: .no_toc }
+
 Oh by the way... The project now have a `README.md`
 
 The easiest way to manage arguments is to use CLAP
