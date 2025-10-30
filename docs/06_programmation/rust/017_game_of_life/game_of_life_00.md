@@ -531,10 +531,844 @@ Before that, let's see how we can "animate" the content of our universe with bot
 
 ## Action !
 
+### winit 0.29
 In the terminal enter the command : `cargo run -p step_01_winit_029`
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+Let's see how it works but again, do not spend too much time on it because I'll use mostly winit `.030`
+
+```rust
+use pixels::{Pixels, SurfaceTexture};
+use std::time::{Duration, Instant};
+use winit::{
+    event::{Event, WindowEvent},
+    event_loop::{/*ControlFlow,*/ EventLoop},
+    window::{Window, WindowBuilder},
+};
+
+const WIDTH: u32 = 320;
+const HEIGHT: u32 = 240;
+const FPS: u64 = 60;
+const FRAME_DURATION: Duration = Duration::from_micros(1_000_000 / FPS);
+
+type Error = Box<dyn std::error::Error>;
+type Result<T> = std::result::Result<T, Error>;
+
+struct App {
+    window: &'static Window, // This is not an Option
+    pixels: Pixels<'static>, // This is not an Option
+    last_frame: Instant,
+    x_pos: i32,
+    x_dir: i32,
+}
+
+impl App {
+    fn new(event_loop: &EventLoop<()>) -> Result<Self> {
+        let window = WindowBuilder::new().with_title("Step_01_winit_029: Animation").build(event_loop)?;
+
+        let size = window.inner_size();
+        let window_ref: &'static Window = Box::leak(Box::new(window));
+        let surface = SurfaceTexture::new(size.width, size.height, window_ref);
+        let pixels = Pixels::new(WIDTH, HEIGHT, surface)?;
+
+        Ok(Self {
+            window: window_ref,
+            pixels,
+            last_frame: Instant::now(),
+            x_pos: 0,
+            x_dir: 2,
+        })
+    }
+
+    fn handle_window_event(&mut self, event: WindowEvent) -> bool {
+        match event {
+            WindowEvent::CloseRequested => true, // Signal pour quitter
+            WindowEvent::RedrawRequested => {
+                self.render();
+                false
+            }
+            _ => false,
+        }
+    }
+
+    fn render(&mut self) {
+        // Animation
+        self.x_pos += self.x_dir;
+        if self.x_pos > WIDTH as i32 - 40 || self.x_pos < 0 {
+            self.x_dir = -self.x_dir;
+        }
+
+        // Render
+        let frame = self.pixels.frame_mut();
+        frame.fill(0);
+        for y in 100..140 {
+            for x in self.x_pos..(self.x_pos + 40) {
+                if x >= 0 && x < WIDTH as i32 {
+                    let idx = ((y * WIDTH as i32 + x) * 4) as usize;
+                    frame[idx] = 0xFF;
+                    frame[idx + 1] = 0xFF;
+                    frame[idx + 2] = 0xFF;
+                    frame[idx + 3] = 0xFF;
+                }
+            }
+        }
+        self.pixels.render().unwrap();
+    }
+
+    fn request_redraw(&self) {
+        self.window.request_redraw();
+    }
+}
+
+fn main() -> Result<()> {
+    let event_loop = EventLoop::new()?;
+    let mut app = App::new(&event_loop)?;
+
+    event_loop.run(move |event, elwt| {
+        // elwt.set_control_flow(ControlFlow::Poll);
+
+        match event {
+            Event::WindowEvent { event, .. } => {
+                let should_exit = app.handle_window_event(event);
+                if should_exit {
+                    elwt.exit();
+                }
+            }
+            Event::AboutToWait => {
+                let now = Instant::now();
+                // Limit to 60 FPS
+                if now - app.last_frame >= FRAME_DURATION {
+                    app.last_frame = now;
+                    app.request_redraw();
+                }
+            }
+            _ => {}
+        }
+    })?;
+
+    Ok(())
+}
+```
+
+### Comments
+* The code has been reorganized around a `struct App {...}`
+* In the `main()` we still have the `match` expression. Note how the limit to 60 frames per second is achieved. I simply measure the time between now and the instant of the last call. If needed, `app.request_redraw()` is called which does nothing else than calling `.request_redraw()` as in the previous sample code. 
+* At one point the event `WindowEvent::RedrawRequested` happens and `self.render()` get called. 
+* `App.render()` includes 2 sections. One to animate the shape and another to draw our universe.
+
+
+
+
+### winit 0.30
+In the terminal enter the command : `cargo run -p step_01_winit_030`
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+```rust
+use pixels::{Pixels, SurfaceTexture};
+use std::time::{Duration, Instant};
+use winit::{
+    application::ApplicationHandler,
+    event::WindowEvent,
+    event_loop::{ActiveEventLoop, ControlFlow, EventLoop},
+    window::Window,
+};
+
+const WIDTH: u32 = 320;
+const HEIGHT: u32 = 240;
+const FPS: u64 = 60;
+const FRAME_DURATION: Duration = Duration::from_micros(1_000_000 / FPS);
+
+pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
+
+struct App {
+    window: Option<&'static Window>,
+    pixels: Option<Pixels<'static>>,
+    last_frame: Instant,
+    x_pos: i32,
+    x_dir: i32,
+}
+
+impl Default for App {
+    fn default() -> Self {
+        Self {
+            window: None,
+            pixels: None,
+            last_frame: Instant::now(),
+            x_pos: 0,
+            x_dir: 2,
+        }
+    }
+}
+
+impl ApplicationHandler for App {
+    fn resumed(&mut self, event_loop: &ActiveEventLoop) {
+        let window = event_loop.create_window(Window::default_attributes().with_title("Step_01_winit_030: Animation")).unwrap();
+
+        let size = window.inner_size();
+        let window_ref: &'static Window = Box::leak(Box::new(window));
+        let surface = SurfaceTexture::new(size.width, size.height, window_ref);
+
+        let pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
+
+        self.window = Some(window_ref);
+        self.pixels = Some(pixels);
+    }
+
+    fn window_event(&mut self, event_loop: &ActiveEventLoop, _: winit::window::WindowId, event: WindowEvent) {
+        match event {
+            WindowEvent::CloseRequested => {
+                event_loop.exit();
+            }
+            WindowEvent::RedrawRequested => {
+                self.x_pos += self.x_dir;
+                if self.x_pos > WIDTH as i32 - 40 || self.x_pos < 0 {
+                    self.x_dir = -self.x_dir;
+                }
+
+                if let Some(pixels) = &mut self.pixels {
+                    let frame = pixels.frame_mut();
+                    frame.fill(0);
+                    for y in 100..140 {
+                        for x in self.x_pos..(self.x_pos + 40) {
+                            if x >= 0 && x < WIDTH as i32 {
+                                let idx = ((y * WIDTH as i32 + x) * 4) as usize;
+                                frame[idx] = 0xFF;
+                                frame[idx + 1] = 0xFF;
+                                frame[idx + 2] = 0xFF;
+                                frame[idx + 3] = 0xFF;
+                            }
+                        }
+                    }
+
+                    pixels.render().unwrap();
+                }
+            }
+            _ => {}
+        }
+    }
+
+    fn about_to_wait(&mut self, _: &ActiveEventLoop) {
+        let now = Instant::now();
+        // Limit to 60 FPS
+        if now - self.last_frame >= FRAME_DURATION {
+            self.last_frame = now;
+            self.window.expect("Bug - Window should exist").request_redraw();
+        }
+    }
+}
+
+fn main() -> Result<()> {
+    let event_loop = EventLoop::new()?;
+    event_loop.set_control_flow(ControlFlow::Poll);
+
+    let mut app = App::default();
+    event_loop.run_app(&mut app)?;
+
+    Ok(())
+}
+```
+
+### Comments
+The structure of the code is very similar to one of the first winit 0.30 sample code.
+
+The FPS speed limitation use the same method as in the 0.29 version. Same comment concerning the animation of the shape.
+
+It is really a matter of code re-organization. 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Step 02 : Handle keystroke an resize
+
+Now we have a better understanding of the loop and a code structure that we can use. Let's see how we can manage window resizing. In addition, pressing `F11` will allow us to set the window full screen.
+
+`cargo run -p step_02`
+
+Press `F11` (or `f` key).
+
+<div align="center">
+<img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+### Comments
+
+The `App` structure has been updated according to our need. It now have a `fullscreen` boolean for example. In addition it no longer derive the Default trait but has it own `Default` implementation.
+
+```rust
+// #[derive(Default)]
+struct App {
+    window: Option<&'static Window>,
+    pixels: Option<Pixels<'static>>,
+    last_frame: Instant,
+    frame_count: u32,
+    fullscreen: bool,
+}
+
+impl Default for App {
+    fn default() -> Self {
+        Self {
+            window: None,
+            pixels: None,
+            last_frame: Instant::now(),
+            frame_count: 0,
+            fullscreen: false,
+        }
+    }
+}
+```
+
+
+The handler now responds to `WindowEvent::Resized`. This is important because if the window is resized it make sense to update the size of the surface texture. Do not hesitate to review the figure "Winit and Pixels rendering pipeline".
+
+```rust
+WindowEvent::Resized(size) => {
+    if let Some(pixels) = &mut self.pixels {
+        pixels.resize_surface(size.width, size.height).unwrap();
+    }
+}
+```
+
+The handler also responds to the keystrokes. To tell the truth I'm not a big fan of the way it is written. See below:
+
+```rust
+WindowEvent::KeyboardInput {
+    event: KeyEvent {
+        logical_key,
+        state: ElementState::Pressed,
+        repeat: false,
+        ..
+    },
+    ..
+} => {
+    // F11 or F to toggle fullscreen
+    let is_fullscreen_key = matches!(logical_key, Key::Named(NamedKey::F11)) || matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("f"));
+
+    if is_fullscreen_key {
+        self.fullscreen = !self.fullscreen;
+
+        if let Some(window) = &self.window {
+            if self.fullscreen {
+                window.set_fullscreen(Some(Fullscreen::Borderless(None)));
+            } else {
+                window.set_fullscreen(None);
+            }
+        }
+    }
+}
+```
+
+
+### Tell me why 🎹
+Can you tell me why there are black borders around our universe? 
+
+The black frame around our gradient appears because the **window’s aspect ratio** doesn’t match the **texture (buffer) aspect ratio** defined by:
+
+```rust
+const WIDTH: u32 = 320;
+const HEIGHT: u32 = 240;
+```
+
+Our `Pixels` instance creates a fixed-size buffer (320×240) but the window can have any size (for example, 1920×1080). When `pixels.render()` scales our buffer to fit the window, it keeps the correct aspect ratio and it centers the image, filling any "border" in black. This is to prevent distortion.
+
+#### How can I to verify it?
+
+We can print both the window and buffer sizes (and their ratios) directly inside the `RedrawRequested` event handler. Find the `WindowEvent::RedrawRequested`, uncomment the code below and re-run the code with `cargo run -p step_02`.
+
+```rust
+// -------------------------------------------------------------------------
+// Uncomment this block to display buffer/window ratios once per second.
+// It helps visualize why black borders appear when aspect ratios differ.
+// -------------------------------------------------------------------------
+{
+    use std::sync::OnceLock;
+    use std::time::{Duration, Instant};
+
+    // A static timestamp that persists between redraws (safe & simple)
+    static LAST_LOG: OnceLock<std::sync::Mutex<Instant>> = OnceLock::new();
+
+    let now = Instant::now();
+    let last_lock = LAST_LOG.get_or_init(|| std::sync::Mutex::new(Instant::now()));
+    let mut last = last_lock.lock().unwrap();
+
+    if now.duration_since(*last) >= Duration::from_secs(1) {
+        *last = now;
+
+        let window = self.window.unwrap();
+        let size = window.inner_size();
+        let win_ratio = size.width as f32 / size.height as f32;
+        let buf_ratio = WIDTH as f32 / HEIGHT as f32;
+
+        println!(
+            "Buffer = {}x{}, Surface = {}x{}, Window ratio = {:.3}, Buffer ratio = {:.3}",
+            WIDTH, HEIGHT, size.width, size.height, win_ratio, buf_ratio
+        );
+    }
+}
+```
+Once the window is on screen resize it:
+* When the two ratios differ we should  see black borders.
+* Otherwise the gradient fills the entire window.
+
+
+<div align="center">
+<img src="./assets/img13.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+### How to remove the black borders?
+
+1. **Stretch the image to fill the window:**
+This will distort the image
+
+   ```rust
+   pixels.set_resize_behavior(pixels::ResizeBehavior::Stretch);
+   ```
+
+2. **Resize the buffer itself** when the window changes size:
+
+   ```rust
+   let size = window.inner_size();
+   let pixels = Pixels::new(size.width, size.height, surface).unwrap();
+   ```
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Step 03 : Resize the universe according the size of the window
+
+Here the idea is to and to display more or less cells according to the size of the window on screen.
+
+
+`cargo run -p step_03`
+
+The dimensions of the cells are fixed (4x4 pixels for example, see `CELL_SIZE`). So when the window is large there are more cells on screen... 
+
+<div align="center">
+<img src="./assets/img14.webp" alt=""  loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+Than when the window is narrow.
+
+<div align="center">
+<img src="./assets/img15.webp" alt=""  loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+This is an exercice. Just to make sure when understand really what we are doing.
+
+### Comments
+
+Once again the App structure is adapted to our need. Here it has field to keeep track of the width, the heigh and it contains a vector of cells.
+
+Now in addition to the implementation of the `ApplicationHandler` trait for `App` we have an implementation for the `App` with only one function so far : `recreate_buffer()`. 
+
+
+`recreate_buffer()` is called from `ApplicationHandler::resumed()` and from `ApplicationHandler::window_event()` when handling `WindowEvent::Resized`.
+
+```rust
+impl App {
+    fn recreate_buffer(&mut self, window_size: PhysicalSize<u32>) {
+        // Calculate the size of the buffer according to the size of the window
+        // Cells are of dimension CELL_SIZE x CELL_SIZE pixels
+        let buffer_width = (window_size.width / CELL_SIZE).max(10);
+        let buffer_height = (window_size.height / CELL_SIZE).max(10);
+
+        // Take the &'static Window (not &&Window)
+        if let Some(window) = self.window {
+            let surface = SurfaceTexture::new(window_size.width, window_size.height, window);
+            let pixels = Pixels::new(buffer_width, buffer_height, surface).unwrap();
+
+            self.pixels = Some(pixels);
+            self.buffer_width = buffer_width;
+            self.buffer_height = buffer_height;
+
+            // Create the universe (grid of cells)
+            let total_cells = (buffer_width * buffer_height) as usize;
+            self.cells = vec![false; total_cells];
+
+            // Scatter some cells
+            for i in 0..total_cells / 10 {
+                let idx = (i * 7) % total_cells;
+                self.cells[idx] = true;
+            }
+
+            println!("Buffer resized: {}x{} cells ({}x{} pixels)", buffer_width, buffer_height, window_size.width, window_size.height);
+        }
+    }
+}
+
+```
+
+One point of attention. Run the code again, do not touch anything. Look the terminal. You should see:
+
+<div align="center">
+<img src="./assets/img16.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+It seems that even before displaying any content, the `recreate_buffer()` function get called 4 times. Let's keep this in mind.
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Step 04 : Resize the universe according the size of the window
+
+Here we just draw 4 larger cells (16x16) in the corner of the universe
+
+`cargo run -p step_03`
+
+
+<div align="center">
+<img src="./assets/img17.webp" alt=""  loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+### Comments
+
+The code has been refactored. The `App` have `create_buffer()` and `handle_resize()`.
+* `create_buffer()` is called once when the application `ApplicationHandler::resumed()`
+* `handle_resize()` is call... Yes, you are right, on `WindowEvent::Resized()`
+
+Now we can better understand what's happen on start up. Initially the buffer is created once but the window is resized 3 times before we can see anything thing. 
+
+<div align="center">
+<img src="./assets/img18.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+Let's try to fix that
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 05 : Avoid too many redraw at startup
+
+Here we just draw 4 larger cells (16x16) in the corner of the universe
+
+`cargo run -p step_05`
+
+Now we only have one draw of the universe at startup
+
+<div align="center">
+<img src="./assets/img19.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+
+The `App` structure has been extended. It now include a "cache" (`pending_resize`) with the expected new with and height. I also added the dimensions of the surface texture.
+
+```rust
+struct App {
+    window: Option<&'static Window>,
+    pixels: Option<Pixels<'static>>,
+    last_frame: Instant,
+    buffer_width: u32,
+    buffer_height: u32,
+    cells: Vec<bool>, // Grille de cellules (pour Game of Life plus tard)
+    full_screen: bool,
+    pending_resize: Option<(u32, u32)>,
+    surface_width: u32,
+    surface_height: u32,
+}
+```
+
+In the code, both functions `create_buffer()` and `handle_resize()` have been merge into `handle_resize()` because we consider that creating the buffer is like changing it size from nothing to something.
+
+In addition, `handle_resize()` becomes smarter and is able to do nothing if none of the dimensions has changed. In order to detect changes, it stores in the `App` the current sizes of the buffer and surface texture when they have been modified.
+
+```rust
+fn handle_resize(&mut self, w: u32, h: u32) {
+    let bw = (w / CELL_SIZE).max(10);
+    let bh = (h / CELL_SIZE).max(10);
+
+    // Do nothing if nothing has changed
+    if self.surface_width == w && self.surface_height == h && self.buffer_width == bw && self.buffer_height == bh {
+        return;
+    }
+
+    // Create or resize Pixels buffer
+    if let Some(pixels) = &mut self.pixels {
+        let _ = pixels.resize_surface(w, h);
+        let _ = pixels.resize_buffer(bw, bh);
+    } else if let Some(window) = self.window {
+        // This only happen on creation when self.pixels is not yet Some()
+        let surface = SurfaceTexture::new(w, h, window);
+        self.pixels = Some(Pixels::new(bw, bh, surface).expect("pixels"));
+    }
+
+    // Update known sizes
+    self.surface_width = w;
+    self.surface_height = h;
+    self.buffer_width = bw;
+    self.buffer_height = bh;
+
+    // Create the universe (grid of cells)
+    self.cells = vec![false; (bw * bh) as usize];
+    self.cells_in_corners();
+
+    println!("Buffer resized: {}x{} cells ({}x{} pixels)", bw, bh, w, h);
+}
+```
+In the rest of the code, the new field `pending_resize` is simply updated on resize. 
+
+```rust
+WindowEvent::Resized(size) => {
+    self.pending_resize = Some((size.width, size.height));
+}
+
+WindowEvent::ScaleFactorChanged { .. } => {
+    if let Some(w) = self.window {
+        let s = w.inner_size();
+        self.pending_resize = Some((s.width, s.height));
+    }
+}
+
+```
+
+
+Finally in the `about_to_wait()` I check the content of the "cache" `pending_resize`. If it contains something I take it (`pending_resize` is now empty) and I call `handle_resize()`. Otherwise, as before I call `request_redraw()`.
+
+```rust
+fn about_to_wait(&mut self, _: &ActiveEventLoop) {
+    let now = Instant::now();
+    if now - self.last_frame >= FRAME_DURATION {
+        self.last_frame = now;
+        if let Some((w, h)) = self.pending_resize.take() {
+            self.handle_resize(w, h); // create/resize pixels + (re)initialize the cells
+        }
+        self.window.expect("Bug - Window should exist").request_redraw();
+    }
+}
+
+```
+
+
+Let's animate some cells.
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 06 : First Game Of Life pattern living
+
+
+`cargo run -p step_06`
+
+<div align="center">
+<img src="./assets/img20.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+### Comments
+
+The `App` structure has been extended. It now include a the current state of the board (`board_current`) and the next one (`board_next`)
+
+```rust
+struct App {
+    window: Option<&'static Window>,
+    pixels: Option<Pixels<'static>>,
+    last_frame: Instant,
+    buffer_width: u32,
+    buffer_height: u32,
+    board_current: Vec<bool>, // current grid of cells
+    board_next: Vec<bool>,    // next grid of cells
+    full_screen: bool,
+    pending_resize: Option<(u32, u32)>,
+    surface_w: u32, // size
+    surface_h: u32,
+}
+```
+There are new functions. 
+* `read_rle()` reads a file containing a pattern. At one point it calls `parse_rle_data()` that parse a string describing the pattern and return a grid as a vector.
+* Once the pattern as been read then `place_pattern_centered()` place it in the center of the board.
+* Then we come into the "game loop". 
+    * 60 times per second, `about_to_wait()` request the window to be redrawn.
+    * In the `WindowEvent::RedrawRequested` we calculate the content of `board_next` using the content of `board_current`, we swap both board and display `board_current`.
+
+```rust
+WindowEvent::RedrawRequested => {
+    // Update the board
+    self.step_life();
+    std::mem::swap(&mut self.board_current, &mut self.board_next);
+    ...
+``` 
+* Here is the code of `step_life()`
+
+```rust
+pub fn step_life(&mut self) {
+    debug_assert_eq!(self.board_current.len(), self.board_next.len());
+
+    let get = |x: isize, y: isize| -> u8 {
+        if x < 0 || y < 0 {
+            return 0;
+        }
+        let (x, y) = (x as usize, y as usize);
+        if x >= self.buffer_width as usize || y >= self.buffer_height as usize {
+            return 0;
+        }
+        self.board_current[y * self.buffer_width as usize + x] as u8
+    };
+
+    for y in 0..self.buffer_height {
+        for x in 0..self.buffer_width {
+            let xi = x as isize;
+            let yi = y as isize;
+
+            let mut n = 0u8;
+            n += get(xi - 1, yi - 1);
+            n += get(xi, yi - 1);
+            n += get(xi + 1, yi - 1);
+            n += get(xi - 1, yi);
+            n += get(xi + 1, yi);
+            n += get(xi - 1, yi + 1);
+            n += get(xi, yi + 1);
+            n += get(xi + 1, yi + 1);
+
+            let idx: usize = (y * self.buffer_width + x) as usize;
+            let alive = self.board_current[idx];
+
+            self.board_next[idx] = match (alive, n) {
+                (true, 2) | (_, 3) => true, // survive with 2; birth/survive with 3
+                _ => false,
+            };
+        }
+    }
+}
+```
+
+
+This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It is time to split the project inf components. I will us the method explain in this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 07 and Step 08 : Modularization + Testing in gol/utils.rs + Open pattern file
+
+
+* `cargo run -p step_07`
+* `cargo test -p step_08`
+* `cargo run -p step_08`
+* `cargo test -p step_08`
+
+
+<div align="center">
+<img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+<div align="center">
+<img src="./assets/img22.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+### Comments
+
+* Nothing sexy here. It is just source code reorganization. At the end main.rs() is only few line of code
+
+```rust
+use step_08::{Result, app::state::App};
+use winit::event_loop::{ControlFlow, EventLoop};
+
+fn main() -> Result<()> {
+    let event_loop = EventLoop::new()?;
+    event_loop.set_control_flow(ControlFlow::Poll);
+
+    let mut app = App::try_new()?;
+    event_loop.run_app(&mut app)?;
+
+    Ok(())
+}
+```
+
+* `src/gol/utils.rs` now includes some tests.
+* Now if you press `o` you can load a new pattern. See `src/app/event.rs`
+
+```rust
+if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o"))
+    && let Some(path) = FileDialog::new().add_filter("RLE files", &["rle"]).set_directory("rle/").pick_file()
+{
+    println!("File selected: {:?}", path);
+    // TODO call read_rle(&path) ...
+    let _ = self.load_pattern(&path);
+}
+
+```
+
+
+<div align="center">
+<img src="./assets/img23.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+<div align="center">
+<img src="./assets/img24.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -544,10 +1378,232 @@ In the terminal enter the command : `cargo run -p step_01_winit_029`
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 09 : Better asynchronous error management
+
+`cargo run -p step_09`
+
+### Comments
+
+While reading patterns file for example, errors can happen and this is why we added testing. You can search for the code fragment below at the end of `read_rle()`
+
+```rust
+if data_lines.is_empty() {
+    return Err("No RLE data found in file.".into());
+}
+```
+OK, but rather than printing the message on the console would'nt it be better to notice the end user in the window for few seconds. This is where `render::draw_error_overlay()` can help. It display an overlay for few second on the window content.
+
+```rust
+pub fn draw_error_overlay(pixels: &mut Pixels, error_message: &str, buffer_width: u32, buffer_height: u32) {
+    let frame = pixels.frame_mut();
+
+    // Draw a semi-transparent red bar at the top (20 pixels height)
+    let bar_height = 20.min(buffer_height);
+
+    for y in 0..bar_height {
+        for x in 0..buffer_width {
+            let pixel_idx = ((y * buffer_width + x) * 4) as usize;
+
+            // Semi-transparent red background
+            frame[pixel_idx] = 0xCC; // R
+            frame[pixel_idx + 1] = 0x33; // G
+            frame[pixel_idx + 2] = 0x33; // B
+            frame[pixel_idx + 3] = 0xDD; // A (semi-transparent)
+        }
+    }
+
+    // For text rendering we need a font rendering library like `fontdue`
+    // For now, we just show a colored bar.
+}
+
+```
+
+`render::draw_error_overlay()` is called once the board have been redrawn. See `WindowEvent::RedrawRequested` in `events.rs`.
+
+```rust
+WindowEvent::RedrawRequested => {
+    // Update the board
+    life::step_life(&self.board_current, &mut self.board_next, self.board_width, self.board_height);
+    std::mem::swap(&mut self.board_current, &mut self.board_next);
+
+    // Draw the current board
+    if let Some(pixels) = &mut self.pixels {
+        render::draw_board(pixels, &self.board_current, self.board_width, self.board_height);
+
+        // Draw error overlay if there's an error
+        if let Some(error_msg) = &self.last_error {
+            render::draw_error_overlay(pixels, error_msg, self.board_width, self.board_height);
+        }
+    }
+}
+
+```
+
+It will not bee a big surprise but App has been extended. It now include the error message (`last_error`) to display (if any) and for how long it should be on screen (`error_display_until`)
+
+```rust
+pub struct App {
+    pub window: Option<&'static Window>,
+    pub pixels: Option<Pixels<'static>>,
+    pub last_frame: Instant,
+    pub board_width: u32,
+    pub board_height: u32,
+    pub board_current: Vec<bool>, // current grid of cells
+    pub board_next: Vec<bool>,    // next grid of cells
+    pub full_screen: bool,
+    pub pending_resize: Option<(u32, u32)>,
+    pub surface_w: u32, // size
+    pub surface_h: u32,
+    pub last_error: Option<String>,           // Error message to display
+    pub error_display_until: Option<Instant>, // When to clear the error
+}
+```
+
+Cool but let see how we could pass a filename containing a pattern as an argument to the application
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 09 : Better asynchronous error management
+
+Try this:
+
+* `cargo run -p step_10 -- -p rle/spaceships`
+* `cargo run -p step_10 -- --pattern rle/spaceships`
+
+* `cargo run -p step_10 -- --pattern do_not_exist`
+* `cargo run -p step_10 -- -p do_not_exist`
+
+* `cargo run -p step_10 -- -help`
+* `cargo run -p step_10 -- --version`
+
+
+<div align="center">
+<img src="./assets/img25.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+### Comments
+Oh by the way... The project now have a `README.md`
+
+The easiest way to manage arguments is to use CLAP
+* In main() I call handle_parameters() and I take advantage of the fact that match is an expression (not a statement) so `pattern_path` is updated.
+
+
+
+```rust
+fn main() -> Result<()> {
+    // Handle parameters and exit gracefully on error
+    let pattern_path = match handle_parameters() {
+        Ok(p) => {
+            // println!("Using pattern file: {}", p.display());
+            p
+        }
+        Err(_) => std::process::exit(1),
+    };
+
+    let event_loop = EventLoop::new()?;
+    ... 
+
+```
+
+Next comes `handle_parameters()`. Here I'm only interested in "playing" with the patterns so only the `p/pattern` argument is supported. The `is_valid_file_path()` helps to confirms the path is a file that we can open.  
+
+```rust
+
+// Handle CLI parameters and return parsed values if valid
+fn handle_parameters() -> Result<PathBuf> {
+    let cli = Command::new("step_10")
+        .version("0.1.0")
+        .author("Philippe <philippe@gmail.com>")
+        .about("Simple Game of Life")
+        .arg(
+            Arg::new("pattern")
+                .short('p')
+                .long("pattern")
+                .value_name("PATTERN")
+                .value_parser(clap::value_parser!(PathBuf)) // specify the PathBuf type
+                .help("Path to the pattern file without .rle extension (e.g. \"rle/gosperglidergun\")")
+                .required(false),
+        )
+        .after_help("Example: step_10 --pattern rle/canadagoose");
+
+    let matches = cli.clone().get_matches();
+
+    // Try to get and parse the path to .rle
+    let path_to_pattern = match matches.get_one::<PathBuf>("pattern") {
+        Some(p) => {
+            let mut path = p.clone(); // Clone to get an owned PathBuf
+            path.set_extension("rle");
+            if !is_valid_file_path(&path) {
+                let err_msg = format!("Invalid path to pattern file: {:?}", path);
+                eprintln!("{err_msg}");
+                return Err(err_msg.into());
+            }
+            path
+        }
+        None => {
+            // Use default pattern from config if no argument provided
+            let path = PathBuf::from(step_10::config::DEFAULT_PATTERN_PATH);
+            if !is_valid_file_path(&path) {
+                let err_msg = format!("Default pattern file not found: {:?}", path);
+                eprintln!("{err_msg}");
+                return Err(err_msg.into());
+            }
+            println!("No pattern specified, using default: {:?}", path);
+            path
+        }
+    };
+
+    Ok(path_to_pattern)
+}
+
+// Check if the path points to a valid file
+fn is_valid_file_path(path: &Path) -> bool {
+    // Check if path exists and is a file
+    if !path.exists() || !path.is_file() {
+        return false;
+    }
+
+    // Try opening the file to ensure it's accessible (permissions OK)
+    File::open(path).is_ok()
+}
+
+
+```
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 
 ## Conclusion
