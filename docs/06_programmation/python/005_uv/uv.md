@@ -225,7 +225,7 @@ dependencies = [
 
 
 
-And the code like that:
+And the code looks like that:
 
 
 
@@ -320,7 +320,7 @@ python main.py
 
 ### There is a smell of rust in the air...
 
-`uv` was created by the same team that made Ruff, and they clearly drew inspiration from the Rust ecosystem:
+`uv` was created by the same team that made Ruff, and they clearly drew inspiration from the [Rust]({%link docs/06_programmation/rust/index.md%}) ecosystem:
 
 | Rust (Cargo) | Python (uv) |
 |--------------|-------------|
@@ -333,7 +333,7 @@ python main.py
 
 #### Why this inspiration?
 
-The Rust ecosystem is renowned for having **one of the best package manager** among modern languages. Python has needed this for a long time!
+The Rust ecosystem is renowned for having one of the best package manager among modern languages. Python has needed this for a long time!
 
 Before `uv`, we had:
 - `pip` (installer)
@@ -357,7 +357,7 @@ Unlike Rust, where Cargo is the official tool, `uv` is a third-party tool that a
 
 
 ## VSCode setup
-Optional because it should ask the question when the project is loaded
+Optional because VSCode may ask you the question when the project is loaded.
 
 1. Open a Python project in VSCode
 1. Press `Ctrl+Shift+P` → “Python: Select Interpreter”
