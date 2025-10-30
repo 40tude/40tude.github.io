@@ -91,7 +91,7 @@ Ready to hop on?
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## A gentle start
+## Step 00: A gentle start
 
 When I discussed the idea with ChatGPT and explained that, for teaching purposes, I wanted to build a Game of Life application in Rust and was looking for a helpful library, it kindly pointed me to the Winit and Pixels crates. I then checked out the links below (this is a lie but this what I should have done):   
 
@@ -378,7 +378,7 @@ On my system, in the terminal I can see:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## A gentle start II
+## Step 00: A gentle start II
 
 Here, the end result is the same but we use Winit 0.30. In a terminal, in VSCode enter the command :
 
@@ -523,7 +523,7 @@ Before that, let's see how we can "animate" the content of our universe with bot
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Action !
+## Step 01: Action !
 
 ### winit 0.29 version
 In the terminal enter the command : `cargo run -p step_01_winit_029`
