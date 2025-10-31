@@ -88,7 +88,7 @@ This is how the application looks like at the end:
 
 <div align="center">
 <img src="./assets/img99.webp" alt="" width="900" loading="lazy"/><br/>
-<span>Same as above but I zoomed on the right part</span>
+<span>Same as above but I moved and zoomed on the right angle</span>
 </div>
 
 <div align="center">
@@ -117,27 +117,28 @@ When I discussed the idea with ChatGPT and explained that, for teaching purposes
 ### winit
 {: .no_toc }
 
-* crate: https://crates.io/crates/winit
-* doc: https://docs.rs/winit/0.30.12/winit/
-* examples: https://github.com/rust-windowing/winit/tree/master/winit/examples
+* [crate](https://crates.io/crates/winit): 
+* [doc](https://docs.rs/winit/0.30.12/winit/): 
+* [examples](https://github.com/rust-windowing/winit/tree/master/winit/examples): 
 
 ### Pixels
 {: .no_toc }
 
-* crate: https://crates.io/crates/pixels
-* doc: https://docs.rs/pixels/0.15.0/pixels/
-* examples: https://github.com/parasyte/pixels/tree/main/examples
+* [crate](https://crates.io/crates/pixels): 
+* [doc](https://docs.rs/pixels/0.15.0/pixels/): 
+* [examples](https://github.com/parasyte/pixels/tree/main/examples): 
 
 
 **What I learnt:** Generally speaking, there's quite a bit of documentation, the code is available, but, most of the time, there are no tutorials. Furthermore—and it took me a while to figure this out—if you're looking for an example, you need to go to the GitHub site and check out the `examples/` directory.
 
 There has been, and this is really great, a huge effort made in terms of documentation. However, I don't understand why, unlike the canonical `README.md` file, there isn't a `GETTING_STARTED.md` file that would explain the key concepts behind the API, the important points to keep in mind, the mindset needed when approaching the crate... We could, of course, also have some diagrams and additional explanations around the code samples in the `examples/` directory.
 
-1. Get the code from GitHub 
+Ok, this said:
+1. Get the code of this project from GitHub 
 1. Open the workspace with VSCode
 1. Open a terminal (CTRL + ù on a FR keyboard)
 1. `cargo run -p step_00_winit_029`
-    * You must use -p because I use a Rust workspace with multiple packages inside
+    * You must use `-p` because I use a Rust's workspace with multiple packages inside and `step_00_winit_029` is one of them
     * Compare to the other packages (02, 03...) the name of this first package is long because it expresses the fact that it depends on the Winit 0.29 version. 
 
 
@@ -166,14 +167,14 @@ pixels = "0.15.0"
 winit = "0.29"
 ```
 
-The issue I have is that it seems `Pixels` requires `winit` 0.29 but this is not the last version. See below what I see: 
+The issue I have is that it seems `Pixels` requires `winit` 0.29 but this is not the latest version. See below what I see: 
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Dependi helps to confirm if we use the last version</span>
+<span>Dependi helps to confirm if we use the latest version (or not)</span>
 </div>
 
-This is an issue because when you go to [the WinIt GitHub page](https://github.com/rust-windowing/winit/tree/master) you must make sure you pick the version 0.29 **before** looking at the examples source code.  
+This is an issue because when you go to [the WinIt GitHub page](https://github.com/rust-windowing/winit/tree/master) you must make sure you pick the version 0.29 **before** looking at the source code of the examples.  
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
@@ -269,6 +270,15 @@ This is **NOT** the code I had at the very beginning but since I try to tell you
 
 Anyway... The code above is around 80 lines, it consists of one `main()` function, it is partially based on [the code available here](https://github.com/rust-windowing/winit/blob/v0.29.x/examples/window.rs) and it should be working. Right? Do you confirm? Ok, let's move on. 
 
+
+```rust
+type Error = Box<dyn std::error::Error>;
+type Result<T> = std::result::Result<T, Error>;
+
+fn main() -> Result<()> {
+    let event_loop = EventLoop::new()?;
+    ...
+```
 If you don't understand the signature of `main()` this is not a problem. Feel free to read this series of post about [errors]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) during a rainy day. For the moment keep in mind that `main()` can return errors (do you see `Result` and `Error` type aliases). For example if during the call to `EventLoop::new()`, instead of panicking and stop here, the `?` operator returns the error to `main()` which propagates the error message, if any, in the terminal.
 
 Once in the `main()` function, one of the first thing to do is to create an event loop. Then I propose to forget `window` and `pixels` for the moment and reach the `event_loop.run()` function call. This one is interesting. The closure (`|event, elwt|{...}`) is **moved** into the event loop which now, owns it. 
@@ -311,7 +321,7 @@ Once all the spots of our universe are repainted in blue, we ask the `pixels` ob
 
 We first make sure the `window` has not yet been initialized. Do you see the `if window.is_none()`? This also explains why, above, `window` is an `Option<T>`. 
 
-Now, focus your attention on the 3 function calls:
+Now, focus on the 3 function calls:
 * **`WindowBuilder::new()`**
 * **`SurfaceTexture::new()`**
 * **`Pixels::new()`**
@@ -332,7 +342,7 @@ I know, this seems over complicated especially if you want to display a blue win
 * To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 byte (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio. This is where we use `Pixels::new()`.   
 * Finally we have to provide our universe. Its size are whatever we want but they should match the one of the Pixels RGBA buffer. In the loop, we get access to the RGB Pixels buffer with `pixels.frame_mut()` and when it is updated we call `pixels.render()`
 
-Ok... Let's go back to the code fragment and let's pay attention to the next 3 points:
+Ok... Let's examine to the code fragment below and note to following three points:
 
 ```rust
 event_loop.run(move |event, elwt| {
@@ -522,7 +532,7 @@ Having this in mind, commenting the code is easy because we just need to move ar
 
 In the implementation of the trait `ApplicationHandler` for our `App` we respond to the events as we did before.
 
-One point of attention. Make sure to understand that in `resumed()`, when we call `event_loop.create_window()`, this creates the window that we see on screen but its initial dimensions are not `WIDTH x HEIGHT`. Do not hesitate to review the previous pipeline.
+One point of **attention**. Make sure to understand that in `resumed()`, when we call `event_loop.create_window()`, this creates the window that we see on screen but its initial dimensions are not `WIDTH x HEIGHT`. Do not hesitate to review the previous pipeline.
 
 I really prefer this way of writing the code and starting with `Step_02` I will use Winit 0.30 everywhere.
 
@@ -827,7 +837,7 @@ Press `F11` (or `f` key).
 ### Comments
 {: .no_toc }
 
-The `App` structure has been updated according to our need. It now have a `fullscreen` boolean for example. In addition it no longer derive the Default trait but has it own `Default` implementation.
+The `App` structure has been updated according to our need. It now have a `fullscreen` boolean for example. In addition it no longer derive the `Default` trait but has it own `Default` implementation.
 
 ```rust
 // #[derive(Default)]
@@ -995,7 +1005,7 @@ Here the idea is to and to display more or less cells according to the size of t
 The dimensions of the cells are fixed (4x4 pixels for example, see `CELL_SIZE`). So when the window is large there are more cells on screen... 
 
 <div align="center">
-<img src="./assets/img14.webp" alt=""  loading="lazy"/><br/>
+<img src="./assets/img14.webp" alt=""  width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -1003,7 +1013,7 @@ The dimensions of the cells are fixed (4x4 pixels for example, see `CELL_SIZE`).
 Than when the window is narrow.
 
 <div align="center">
-<img src="./assets/img15.webp" alt=""  loading="lazy"/><br/>
+<img src="./assets/img15.webp" alt=""  width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -1012,9 +1022,9 @@ This is an exercice. Just to make sure when understand really what we are doing.
 ### Comments
 {: .no_toc }
 
-Once again the App structure is adapted to our need. Here it has field to keeep track of the width, the heigh and it contains a vector of cells.
+Once again the App structure is adapted to our need. Here it has fields to keep track of the width, the heigh and it contains a vector of cells.
 
-Now in addition to the implementation of the `ApplicationHandler` trait for `App` we have an implementation for the `App` with only one function so far : `recreate_buffer()`. 
+Now, in addition to the implementation of the `ApplicationHandler` trait for `App`, we also have an implementation for the `App` with only one function so far : `recreate_buffer()`. 
 
 
 `recreate_buffer()` is called from `ApplicationHandler::resumed()` and from `ApplicationHandler::window_event()` when handling `WindowEvent::Resized`.
@@ -1053,7 +1063,7 @@ impl App {
 
 ```
 
-One point of attention. Run the code again, do not touch anything. Look the terminal. You should see:
+One point of **attention** however. Run the code again, do not touch anything. Look the terminal. You should see:
 
 <div align="center">
 <img src="./assets/img16.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1072,7 +1082,7 @@ It seems that even before displaying any content, the `recreate_buffer()` functi
 
 ## Step 04 : Resize the universe II
 
-Here we just draw 4 larger cells (16x16) in the corner of the universe
+Here we just draw 4 larger cells (16x16) in each corners of our universe
 
 `cargo run -p step_04`
 
@@ -1088,7 +1098,7 @@ Here we just draw 4 larger cells (16x16) in the corner of the universe
 
 The code has been refactored. The `App` have `create_buffer()` and `handle_resize()`.
 * `create_buffer()` is called once when the application `ApplicationHandler::resumed()`
-* `handle_resize()` is call... Yes, you are right, on `WindowEvent::Resized()`
+* `handle_resize()` is called... Yes, you are right, on `WindowEvent::Resized()`
 
 Now we can better understand what's happen on start up. Initially the buffer is created once but the window is resized 3 times before we can see anything thing. 
 
@@ -1106,13 +1116,13 @@ Let's try to fix that
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 05 : Avoid too many redraw at startup
+## Step 05 : Avoid too many redraws at startup
 
-Here we just draw 4 larger cells (16x16) in the corner of the universe
+Here too we draw 4 larger cells (16x16) in the corners of the universe.
 
 `cargo run -p step_05`
 
-Now we only have one draw of the universe at startup
+However only one draw occurs when the universe starts.
 
 <div align="center">
 <img src="./assets/img19.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1122,7 +1132,7 @@ Now we only have one draw of the universe at startup
 ### Comments
 {: .no_toc }
 
-The `App` structure has been extended. It now include a "cache" (`pending_resize`) with the expected new with and height. I also added the dimensions of the surface texture.
+The `App` structure has been extended. It now includes a "cache" (`pending_resize`) with the expected new width and height. I also added the dimensions of the surface texture.
 
 ```rust
 struct App {
@@ -1141,7 +1151,7 @@ struct App {
 
 In the code, both functions `create_buffer()` and `handle_resize()` have been merge into `handle_resize()` because we consider that creating the buffer is like changing it size from nothing to something.
 
-In addition, `handle_resize()` becomes smarter and is able to do nothing if none of the dimensions has changed. In order to detect changes, it stores in the `App` the current sizes of the buffer and surface texture when they have been modified.
+In addition, `handle_resize()` becomes smarter and is able to do nothing if none of the dimensions has changed. In order to detect changes, it stores in the `App` structure the current sizes of the buffer and of the surface texture when they have been modified.
 
 ```rust
 fn handle_resize(&mut self, w: u32, h: u32) {
@@ -1210,7 +1220,7 @@ fn about_to_wait(&mut self, _: &ActiveEventLoop) {
 ```
 
 
-Let's animate some cells.
+Ok, I guess we are ready to animate some cells.
 
 
 
@@ -1250,7 +1260,7 @@ struct App {
 }
 ```
 There are new functions. 
-* `read_rle()` reads a file containing a pattern. At one point it calls `parse_rle_data()` that parse a string describing the pattern and return a grid as a vector.
+* `read_rle()` reads a file containing a pattern. The format of the file is explained [on this page](https://conwaylife.com/wiki/Run_Length_Encoded). At one point it calls `parse_rle_data()` that parse a string describing the pattern and return a grid as a vector.
 * Once the pattern as been read then `place_pattern_centered()` place it in the center of the board.
 * Then we come into the "game loop". 
     * 60 times per second, `about_to_wait()` request the window to be redrawn.
@@ -1308,7 +1318,7 @@ pub fn step_life(&mut self) {
 ```
 
 
-This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It is time to split the project inf components. I will us the method explain in this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}). 
+This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It is time to split the project into components. I will use the method explained in this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}). 
 
 
 
@@ -1348,7 +1358,7 @@ Below you can see how, between step 06 and 08 the project organization has evolv
 <!-- <span>Optional comment</span> -->
 </div>
 
-If opening the files you are not sure to understand 110% of what you see... No worry. Take a break the read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which is dedicated to the "modern" way of modularizing projects.
+If opening the files you are not sure to understand 110% of what you see... No worry. Take a break then read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which is dedicated to the "modern" way of modularizing projects.
 
 If you enter `cargo test -p step_08` you should the results below
 
@@ -1361,6 +1371,21 @@ Again, the goal of this project isn't to be exhaustive, but to add features incr
 
 ### Comments
 {: .no_toc }
+
+In order to select a pattern we need to display a dialog box. We need to add the crate `rfd` (Rust File Dialog?) in our project.
+
+```toml
+[package]
+name = "step_08"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+pixels = "0.15"
+rfd = "0.15.4"
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
 
 * Nothing sexy here. It is just source code reorganization. At the end `main.rs()` is only few line of code
 
@@ -1419,17 +1444,18 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o
 
 `cargo run -p step_09`
 
+
 ### Comments
 {: .no_toc }
 
-While reading patterns file for example, errors can happen and this is why we added testing. You can search for the code fragment below at the end of `read_rle()`
+While reading patterns file for example, errors can happen and this is why we added testing. You can search for the code fragment below at the end of `src/gol/utils/read_rle()`
 
 ```rust
 if data_lines.is_empty() {
     return Err("No RLE data found in file.".into());
 }
 ```
-OK, but rather than printing the message on the console would'nt it be better to notice the end user in the window for few seconds. This is where `render::draw_error_overlay()` can help. It display an overlay for few second on the window content.
+OK, but rather than printing the message in the console would'nt it be better to notice the end user in the window for few seconds. This is where `render::draw_error_overlay()` can help. It display an overlay for few second on the window content.
 
 ```rust
 pub fn draw_error_overlay(pixels: &mut Pixels, error_message: &str, buffer_width: u32, buffer_height: u32) {
@@ -1477,7 +1503,7 @@ WindowEvent::RedrawRequested => {
 
 ```
 
-It will not bee a big surprise but App has been extended. It now include the error message (`last_error`) to display (if any) and for how long it should be on screen (`error_display_until`)
+It will not be a big surprise but `App` has been extended once again. It now includes the error message (`last_error`) to display (if any, this is an `Option<T>`) and for how long it should be on screen (`error_display_until`)
 
 ```rust
 pub struct App {
@@ -1497,7 +1523,7 @@ pub struct App {
 }
 ```
 
-Cool but let see how we could pass a filename containing a pattern as an argument to the application
+Cool... Let see how we could pass a filename containing a pattern as an argument to the application
 
 
 
@@ -1541,10 +1567,24 @@ Try this:
 ### Comments
 {: .no_toc }
 
-Oh by the way... The project now have a `README.md`
+Oh by the way... The project now have a `README.md`. Yeah!
 
-The easiest way to manage arguments is to use CLAP
-* In main() I call handle_parameters() and I take advantage of the fact that match is an expression (not a statement) so `pattern_path` is updated.
+The easiest way to manage arguments is to use CLAP and to do so we need to extend `Cargo.toml`.
+
+```toml
+[package]
+name = "step_10"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.48"
+pixels = "0.15"
+rfd = "0.15.4"
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
+In `main()` I call `handle_parameters()` and I take advantage of the fact that match is an expression (not a statement) so `pattern_path` is updated.
 
 
 
@@ -1564,7 +1604,7 @@ fn main() -> Result<()> {
 
 ```
 
-Next comes `handle_parameters()`. Here I'm only interested in "playing" with the patterns so only the `p/pattern` argument is supported. The `is_valid_file_path()` helps to confirms the path is a file that we can open.  
+Next comes `handle_parameters()`. Here I'm only interested in "playing" with the patterns so only the `p/pattern` argument is supported. The `is_valid_file_path()` helps to confirms the path is a file that we can open. 
 
 ```rust
 
@@ -1625,6 +1665,343 @@ fn is_valid_file_path(path: &Path) -> bool {
     // Try opening the file to ensure it's accessible (permissions OK)
     File::open(path).is_ok()
 }
+```
+Again, like for testing, I learn how to implement one argument. I don't want to be exhaustive here but I know I can add others argument if I need to.  
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 11  : Testing GPU
+
+Try this:
+* `cargo run -p step_11`
+
+<div align="center">
+<img src="./assets/img26.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+We need to log messages from the GPU so let's add `env_logger` to `Cargo.toml`
+
+```toml
+[package]
+name = "step_11"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+env_logger = "0.11.8"
+pixels = "0.15"
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 12  : Using GPU
+
+Try this:
+* `cargo run -p step_12`
+
+<div align="center">
+<img src="./assets/img27.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+We extend the `Cargo.toml` we had in step 10 with `env_logger`
+
+```toml
+[package]
+name = "step_12"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.48"
+env_logger = "0.11.8"
+pixels = "0.15"
+rfd = "0.15.4"
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 13 : Add logging
+
+Try this:
+* `cargo run -p step_13`
+
+<div align="center">
+<img src="./assets/img28.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+We add the `log` crate.
+
+```toml
+[package]
+name = "step_13"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.48"
+env_logger = "0.11.8"
+log = "0.4.28"
+pixels = "0.15"
+rfd = "0.15.4"
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 14  : Logging in files
+
+Try this:
+* `cargo run -p step_14`
+
+<div align="center">
+<img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+We replace the `env_logger` crate with `flexi_logger`.
+
+```toml
+[package]
+name = "step_14"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.48"
+flexi_logger = "0.31.7"
+log = "0.4.28"
+pixels = "0.15"
+rfd = "0.15.4"
+winit = { version = "0.30", features = ["rwh_06"] }
+```
+
+
+
+Content of `./logs/step_14_rCURRENT.log`
+
+```
+INFO [step_14] This is an INFO message
+WARN [step_14] This is a WARNING message
+ERROR [step_14] This is an ERROR message
+INFO [step_14] Logger initialized.
+INFO [step_14] No pattern specified, using default: "rle/linepuffer.rle"
+INFO [step_14] Using pattern file: rle/linepuffer.rle
+INFO [step_14::gol::utils] place_pattern_centered(): Pattern (156x32) centered in buffer (178x100).
+INFO [step_14] App initialized successfully, starting event loop...
+WARN [wgpu_hal::dx12::instance] Unable to enable D3D12 debug interface: 0x887A002D
+WARN [wgpu_hal::auxil::dxgi::factory] Unable to enable DXGI debug interface: 0x887A002D
+WARN [wgpu_core::instance] Missing downlevel flags: DownlevelFlags(VERTEX_AND_INSTANCE_INDEX_RESPECTS_RESPECTIVE_FIRST_VALUE_IN_INDIRECT_DRAW)
+The underlying API or device in use does not support enough features to be a fully compliant implementation of WebGPU. A subset of the features can still be used. If you are running this program on native and not in a browser and wish to limit the features you use to the supported subset, call Adapter::downlevel_properties or Device::downlevel_properties to get a listing of the features the current platform supports.
+WARN [wgpu_core::instance] DownlevelCapabilities {
+    flags: DownlevelFlags(
+        COMPUTE_SHADERS | FRAGMENT_WRITABLE_STORAGE | INDIRECT_EXECUTION | BASE_VERTEX | READ_ONLY_DEPTH_STENCIL | NON_POWER_OF_TWO_MIPMAPPED_TEXTURES | CUBE_ARRAY_TEXTURES | COMPARISON_SAMPLERS | INDEPENDENT_BLEND | VERTEX_STORAGE | ANISOTROPIC_FILTERING | FRAGMENT_STORAGE | MULTISAMPLED_SHADING | DEPTH_TEXTURE_AND_BUFFER_COPIES | WEBGPU_TEXTURE_FORMAT_SUPPORT | BUFFER_BINDINGS_NOT_16_BYTE_ALIGNED | UNRESTRICTED_INDEX_BUFFER | FULL_DRAW_INDEX_UINT32 | DEPTH_BIAS_CLAMP | VIEW_FORMATS | UNRESTRICTED_EXTERNAL_TEXTURE_COPIES | SURFACE_VIEW_FORMATS | NONBLOCKING_QUERY_RESOLVE,
+    ),
+    limits: DownlevelLimits,
+    shader_model: Sm5,
+}
+INFO [step_14::gol::utils] place_pattern_centered(): Pattern (178x100) centered in buffer (178x100).
+INFO [step_14::app::state] handle_resize(): Window new size = 712x400 pixels and buffer new size = 178x100.
+INFO [step_14] Application terminated.
+```
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 15  : More testing in src/gol/utils.rs
+
+Try this:
+* `cargo test -p step_15`
+
+<div align="center">
+<img src="./assets/img30.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 16  : Check the invariants, improve error management
+
+Try this:
+* `cargo run -p step_16`
+
+<div align="center">
+<img src="./assets/img31.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 17  : Measure performances (winit_30 only)
+
+
+Try this:
+* `cargo run --release -p step_17_winit_030 -- --pattern rle/glider`
+* `cargo run --release -p step_17_winit_030 -- --pattern rle/112P51_synth`
+
+
+<div align="center">
+<img src="./assets/img32.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+
+### TODO
+{: .no_toc }
+
+Try this:
+* `cargo run --release -p step_17_winit_029 -- --pattern rle/112P51_synth`
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 18  : Add an icon
+
+Try this:
+* `cargo run -p step_18`
+
+<div align="center">
+<img src="./assets/img33.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+```toml
+[package]
+name = "step_18"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.48"
+flexi_logger = "0.31.7"
+image = "0.25"
+log = "0.4.28"
+pixels = "0.15"
+rfd = "0.15.4"
+winit = { version = "0.30", features = ["rwh_06"] }
+
+[build-dependencies]
+winres = "0.1"
 
 
 ```
@@ -1632,6 +2009,89 @@ fn is_valid_file_path(path: &Path) -> bool {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 19  : Add a Zoom
+
+Try this:
+* `cargo run -p step_19`
+
+<div align="center">
+<img src="./assets/img34.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Step 20 : Panning and Random load
+
+Try this:
+* `cargo run -p step_20`
+
+<div align="center">
+<img src="./assets/img35.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+### Comments
+{: .no_toc }
+
+
+Add `rand` to Cargo.toml
+
+```toml
+[package]
+name = "step_20"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.48"
+flexi_logger = "0.31.7"
+image = "0.25"
+log = "0.4.28"
+pixels = "0.15"
+rand = "0.9.2"
+rfd = "0.15.4"
+winit = { version = "0.30", features = ["rwh_06"] }
+
+[build-dependencies]
+winres = "0.1"
+```
 
 
 
@@ -1657,8 +2117,23 @@ fn is_valid_file_path(path: &Path) -> bool {
 
 
 
+## Webbliography
+* [Life Wiki](https://conwaylife.com/wiki/Main_Page). Where you can download pattern collection. 
+* [conwaylife.com](https://conwaylife.com/) 
+* [Conway's Game of Life viewer](https://copy.sh/life/) I really like
+* [RLE file format](https://conwaylife.com/wiki/Run_Length_Encoded)
 
 
+
+## Videos
+
+<div align=center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PlzV4aJ7iMI?si=g3ZipX16w5sUbyZm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<div align=center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S-W0NX97DB0?si=tTe9YI-W1XWLVIoC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 
 
