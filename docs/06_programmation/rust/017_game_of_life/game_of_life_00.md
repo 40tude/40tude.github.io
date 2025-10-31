@@ -10,10 +10,6 @@ date               : 2025-10-29 07:00:00
 last_modified_date : 2025-10-30 21:00:00
 ---
 
-<!-- 
-TODO:
-* 
--->
 
 
 # Building Conway’s Game of Life in Rust with Pixels and Winit
@@ -26,7 +22,7 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 
 
 <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
+<span style="color:orange"><b> 🚧 This post is still under construction 🚧</b></span>    
 </h2>
 
 
@@ -2093,7 +2089,8 @@ winit = { version = "0.30", features = ["rwh_06"] }
 winres = "0.1"
 ```
 
-
+### TODO
+* Improve the code so that pressing `CTRL+R`, load a randomly selected pattern file 
 
 
 
@@ -2120,8 +2117,9 @@ winres = "0.1"
 ## Webbliography
 * [Life Wiki](https://conwaylife.com/wiki/Main_Page). Where you can download pattern collection. 
 * [conwaylife.com](https://conwaylife.com/) 
-* [Conway's Game of Life viewer](https://copy.sh/life/) I really like
+* [Conway's Game of Life viewer](https://copy.sh/life/). I really like it
 * [RLE file format](https://conwaylife.com/wiki/Run_Length_Encoded)
+* Advanced. Detailed explainations about the [Hashlife algorithm](https://johnhw.github.io/hashlife/index.md.html)
 
 
 
@@ -2136,20 +2134,3 @@ winres = "0.1"
 </div>
 
 
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-
-<!-- 
-#### Posts 
-{: .no_toc }
-* [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
-* [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
-* [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%}) 
--->
