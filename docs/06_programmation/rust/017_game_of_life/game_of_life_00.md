@@ -79,17 +79,17 @@ This is how the application looks like at the end:
 
 <div align="center">
 <img src="./assets/img98.webp" alt="" width="900" loading="lazy"/><br/>
-<span>Clikc to zoom </span>
+<span>Click to zoom in</span>
 </div>
 
 <div align="center">
 <img src="./assets/img99.webp" alt="" width="900" loading="lazy"/><br/>
-<span>Same as above but I moved and zoomed on the right angle</span>
+<span>Same as above but I moved to the right and zoomed on the gliders</span>
 </div>
 
 <div align="center">
 <img src="./assets/img97.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
+<span>A larger pattern loaded. I zoomed out so that we see the boarders of our universe</span>
 </div>
 
 Now then — it’s almost 11 a.m., and the train is waiting on platform 9¾.
@@ -125,22 +125,21 @@ When I discussed the idea with ChatGPT and explained that, for teaching purposes
 * [examples](https://github.com/parasyte/pixels/tree/main/examples): 
 
 
-**What I learnt:** Generally speaking, there's quite a bit of documentation, the code is available, but, most of the time, there are no tutorials. Furthermore—and it took me a while to figure this out—if you're looking for an example, you need to go to the GitHub site and check out the `examples/` directory.
+**What I learnt:** Generally speaking, there's quite a bit of documentation, the code is available, but, most of the time, there are no tutorials. Furthermore—and it took me a while to figure this out—if you're looking for an example, you need to go to the GitHub repo and check out the `examples/` directory.
 
-There has been, and this is really great, a huge effort made in terms of documentation. However, I don't understand why, unlike the canonical `README.md` file, there isn't a `GETTING_STARTED.md` file that would explain the key concepts behind the API, the important points to keep in mind, the mindset needed when approaching the crate... We could, of course, also have some diagrams and additional explanations around the code samples in the `examples/` directory.
+There has been, and this is really great, a huge effort made in terms of documentation. However, I don't understand why, unlike the canonical `README.md` file, there isn't a `PHILOSOPHY.md` or `ETHOS.md` file that would explain the key concepts behind the API, the important points to keep in mind, the mindset needed when approaching the crate... This file would, of course, include diagrams and additional explanations around some of the key sample code available in the `examples/` directory.
 
 Ok, this said:
 1. Get the code of this project from GitHub 
 1. Open the workspace with VSCode
-1. Open a terminal (CTRL + ù on a FR keyboard)
+1. Once in VSCode, open a terminal (CTRL + ù on a FR keyboard)
 1. `cargo run -p step_00_winit_029`
-    * You must use `-p` because I use a Rust's workspace with multiple packages inside and `step_00_winit_029` is one of them
-    * Compare to the other packages (02, 03...) the name of this first package is long because it expresses the fact that it depends on the Winit 0.29 version. 
-
+    * You must use `-p` because I use a Rust's workspace with multiple packages and `step_00_winit_029` is one of them
+    * Compare to the other packages (02, 03...) the name of this first package is long because it expresses the fact that it depends on the Winit version 0.29. 
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Blue Screen of Birth: A first window using Rust, Winit and Pixels</span>
+<span>Blue Screen of Birth: a first window using Rust, Winit and Pixels</span>
 </div>
 
 Now, open the package (project) named `step_00_winit_029`. It consists of a `Cargo.toml` and a `main.rs` files
@@ -2090,7 +2089,9 @@ winres = "0.1"
 ```
 
 ### TODO
-* Improve the code so that pressing `CTRL+R`, load a randomly selected pattern file 
+{: .no_toc }
+
+* Improve the code so that pressing `CTRL+R`, it loads a randomly selected pattern file 
 
 
 
@@ -2114,7 +2115,9 @@ winres = "0.1"
 
 
 
-## Webbliography
+## Webliography
+`CTRL+click` to open the link in a new tab.
+
 * [Life Wiki](https://conwaylife.com/wiki/Main_Page). Where you can download pattern collection. 
 * [conwaylife.com](https://conwaylife.com/) 
 * [Conway's Game of Life viewer](https://copy.sh/life/). I really like it
@@ -2125,6 +2128,7 @@ winres = "0.1"
 
 ## Videos
 
+No matter if you speak french or not watch the first video and add caption if neede. It is about an **analogic version of the game of life**. Smoking!
 <div align=center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PlzV4aJ7iMI?si=g3ZipX16w5sUbyZm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

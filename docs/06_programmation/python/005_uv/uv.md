@@ -20,7 +20,13 @@ last_modified_date : 2025-10-29 17:00:00
 
 # UV Python Package Manager: The Essentials
 
-I just get rid of `Conda` and switch to `uv`.
+I just get rid of `Conda` and switch to `uv`. Conda was great at the beginning because it's an all in one solution. I recommend it to beginners who just want to quickly write `data = pd.read_csv...`. You know the song. However conda is huge, heavy and slow. In addition while learning Rust I discovered the Cargo way of doing and I like it a lot. For example I was never using Anaconda application (not even sure of its name) but only the CLI. I should have use mini conda more often. I don't know. 
+
+You can read these posts here:
+* [Install Under Linux]({%link docs/05_linux/012_install_config_mint/install_config.md%}#install-anaconda)
+* [Anaconda prompt in Terminal Windows]({%link docs/04_windows/002_prompt_anaconda_win_term/prompt_anaconda_win_term.md%})
+
+
 
 
 
