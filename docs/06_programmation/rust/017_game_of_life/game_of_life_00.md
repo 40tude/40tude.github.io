@@ -69,9 +69,9 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 
 This project started with a simple idea: build something fun with a graphical output — starting from scratch (or almost), and improving it step by step without making it unnecessarily complex. Along the way, we’ll modularize the code, add logging, handle errors, write tests, measure progress, and support configuration parameters. In short, we’ll evolve from a quick prototype to something we can show off.
 
-If you’re new to the **Game of Life**, check out [this page](https://conwaylife.com/wiki/Main_Page) (which also includes downloadable patterns), then explore [this one](https://conwaylife.com/) and [this one](https://copy.sh/life/).
+If you’re new to the **Game of Life**, check out [this page](https://conwaylife.com/wiki/Main_Page) (which also includes downloadable patterns that you can use with Step 08 and above), then explore [this one](https://conwaylife.com/) and [this one](https://copy.sh/life/).
 
-The journey will take around 25 steps. At first, I’ll go slowly to make sure we’re fully aligned. I’ll take the time to explain what I’ve learned about the **Winit** and **Pixels** crates, and I’ll add plenty of comments in the source code. Later on, we’ll gradually pick up the pace.
+The journey will take around 25 steps. At first, I’ll go sloooowly to make sure we’re fully aligned. I’ll take the time to explain what I’ve learned about the **Winit** and **Pixels** crates, and I’ll add plenty of comments in the source code. Later on, we’ll gradually pick up the pace.
 
 This is how the application looks like at the end:
 
@@ -1677,20 +1677,88 @@ Again, like for testing, I learn how to implement one argument. I don't want to 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 11  : Testing GPU
+## Step 11  : Testing the GPU
+
+⚠️ Sorry, I know, this section in way too loooong. Feel free to bypass it in a first reading.
 
 Try this:
-* `cargo run -p step_11`
+* `cargo run -p step_11 --example demo_00`
+* `cargo run -p step_11 --example demo_01`
+* `cargo run -p step_11 --example demo_02`
+* `cargo run -p step_11 --example demo_03`
+
+* You can also test this command: `$env:RUST_LOG='wgpu_core=trace'; cargo run -p step_11 --example demo_00; Remove-Item env:RUST_LOG`
+
+
+Before we dive into the subject (and believe me, we are going to dive into it) let's get in synch about **my** configuration
+* I use a [laptop]({%link docs/04_windows/007_choix_de_mon_prochain_pc_2023/choix_de_mon_prochain_pc_2023.md%}) with 2 video boards
+* To check your hardware config you can `WIN+X` then select `Device manager` then select `Video boards` in the tree
+
 
 <div align="center">
-<img src="./assets/img26.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img26_4.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>cargo run -p step_11 --example demo_00</span> -->
+</div>
+
+
+Now let's check DirectX. To do so you can use the commands below:
+
+```powershell
+dxdiag
+dxdiag /t "./dxdiag.txt" 
+# DON'T use Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\DirectX" | Select-Object Version
+```
+
+<div align="center">
+<img src="./assets/img36.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
+
+
+Now, having this in mind let's see what happen on **my** system. The results may differ on yours
+
+**`cargo run -p step_11 --example demo_00`**
+<div align="center">
+<img src="./assets/img26_0.webp" alt="" width="450" loading="lazy"/><br/>
+<span>cargo run -p step_11 --example demo_00</span>
+</div>
+
+I moved the window so that we can read the log.
+
+
+**`cargo run -p step_11 --example demo_01`**
+<div align="center">
+<img src="./assets/img26_1.webp" alt="" width="450" loading="lazy"/><br/>
+<span>cargo run -p step_11 --example demo_01</span>
+</div>
+
+Cool, I'm able to select my NVIDIA board
+
+<div align="center">
+<img src="./assets/img26_2.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Ooops... Try to resize demo_01</span>
+</div>
+
+Not so cool. When I resize the window, the blue background seems to be "freezed in place".
+
+
+
+**`cargo run -p step_11 --example demo_02`**
+
+<div align="center">
+<img src="./assets/img26_3.webp" alt="" width="450" loading="lazy"/><br/>
+<span>cargo run -p step_11 --example demo_02</span>
+</div>
+
+I selected the NVIDIA board and the backend—Dx12 now vs Vulkan before.
+    
 
 ### Comments
 {: .no_toc }
 
-We need to log messages from the GPU so let's add `env_logger` to `Cargo.toml`
+The idea here is to make a break and to take the time to better understand how the GPUs are used. For example which board is used? How the selection is made? Can I force one board to be used? What are the backend? Who is `wgpu`?  
+
+OK, in our experiment we need to log messages from `wgpu` so we need to add the `env_logger` crate to `Cargo.toml`.
 
 ```toml
 [package]
@@ -1705,9 +1773,829 @@ winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
 
+#### Test 00
+{: .no_toc }
+
+`cargo run -p step_11 --example demo_00`
+
+To make the ests I reuse the first code I had with `winit 0.30` and I simply add the call `env_logger::Builder::from_env(...)` at the very begining of the `main()` function. If you open the source (`11/examples/demo_00.rs`) don't be surprised if there are many empty lines of comments. This will help us later.
+
+```rust
+fn main() -> Result<()> {
+    env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("wgpu_core=info,wgpu_hal=warn,wgpu=warn")).init();
+
+    let event_loop = EventLoop::new()?;
+    event_loop.set_control_flow(ControlFlow::Poll);
+
+    let mut app = App::default();
+    event_loop.run_app(&mut app)?;
+
+    Ok(())
+}
+```
+
+In addition, since I plan to make more than one test, I use **a feature I really like** in Rust package. I put the different source code in the `examples/` direcory. And look, there is not even a `src/` directory in the package. This also explain why we need the command below to run the first code:
+
+```powershell
+cargo run -p step_11 --example demo_00
+```
+
+I do not show nor comment once again the code because this is `00_winit_030\src\main.rs` plus logging. 
+
+This is what I can read in the terminal on my configuration
+
+```powershell
+[2025-10-31T16:56:19Z WARN  wgpu_hal::vulkan::instance] InstanceFlags::VALIDATION requested, but unable to find layer: VK_LAYER_KHRONOS_validation
+[2025-10-31T16:56:19Z WARN  wgpu_hal::dx12::instance] Unable to enable D3D12 debug interface: 0x887A002D
+[2025-10-31T16:56:19Z WARN  wgpu_hal::auxil::dxgi::factory] Unable to enable DXGI debug interface: 0x887A002D
+[2025-10-31T16:56:19Z INFO  wgpu_core::instance] Adapter Vulkan AdapterInfo { name: "Intel(R) Iris(R) Xe Graphics", vendor: 32902, device: 18086, device_type: IntegratedGpu, driver: "Intel Corporation", driver_info: "Intel driver", backend: Vulkan }
+```
+
+The warnings from `wgpu` are expected when debug layers are not installed (my case). They indicate that Vulkan or DirectX validation layers are missing, not that something is wrong. By default, `wgpu` selected the integrated Intel GPU ("Iris Xe") as the rendering device. This is normal behavior on systems with multiple GPUs.
+
+OK... My laptop cost 2M$ and I'm not able to use the NVIDIA board? Interresting. Let's try something else.
 
 
 
+
+
+#### Test 01
+{: .no_toc }
+
+`cargo run -p step_11 --example demo_01`
+
+```powershell
+[2025-10-31T17:27:53Z WARN  wgpu_hal::vulkan::instance] InstanceFlags::VALIDATION requested, but unable to find layer: VK_LAYER_KHRONOS_validation
+[2025-10-31T17:27:53Z WARN  wgpu_hal::dx12::instance] Unable to enable D3D12 debug interface: 0x887A002D
+[2025-10-31T17:27:53Z WARN  wgpu_hal::auxil::dxgi::factory] Unable to enable DXGI debug interface: 0x887A002D
+[2025-10-31T17:27:54Z INFO  wgpu_core::instance] Adapter Vulkan AdapterInfo { name: "NVIDIA GeForce RTX 3070 Ti Laptop GPU", vendor: 4318, device: 9440, device_type: DiscreteGpu, driver: "NVIDIA", driver_info: "566.14", backend: Vulkan }
+```
+
+Now the final `INFO` line confirms that `wgpu` now chose the `NVIDIA GeForce RTX 3070 Ti` hardware and is using the `Vulkan` backend.
+
+
+
+
+
+
+
+
+
+#### Test 02
+{: .no_toc }
+
+`cargo run -p step_11 --example demo_02`
+
+
+```powershell
+[2025-10-31T17:46:54Z WARN  wgpu_hal::dx12::instance] Unable to enable D3D12 debug interface: 0x887A002D
+[2025-10-31T17:46:54Z WARN  wgpu_hal::auxil::dxgi::factory] Unable to enable DXGI debug interface: 0x887A002D
+[2025-10-31T17:46:55Z INFO  wgpu_core::instance] Adapter Dx12 AdapterInfo { name: "NVIDIA GeForce RTX 3070 Ti Laptop GPU", vendor: 4318, device: 9440, device_type: DiscreteGpu, driver: "", driver_info: "", backend: Dx12 }
+[2025-10-31T17:46:55Z WARN  wgpu_core::instance] Missing downlevel flags: DownlevelFlags(VERTEX_AND_INSTANCE_INDEX_RESPECTS_RESPECTIVE_FIRST_VALUE_IN_INDIRECT_DRAW)
+    The underlying API or device in use does not support enough features to be a fully compliant implementation of WebGPU. A subset of the features can still be used. If you are running this program on native and not in a browser and wish to limit the features you use to the supported subset, call Adapter::downlevel_properties or Device::downlevel_properties to get a listing of the features the current platform supports.      
+[2025-10-31T17:46:55Z WARN  wgpu_core::instance] DownlevelCapabilities {
+        flags: DownlevelFlags(
+            COMPUTE_SHADERS | FRAGMENT_WRITABLE_STORAGE | INDIRECT_EXECUTION | BASE_VERTEX | READ_ONLY_DEPTH_STENCIL | NON_POWER_OF_TWO_MIPMAPPED_TEXTURES | CUBE_ARRAY_TEXTURES | COMPARISON_SAMPLERS | INDEPENDENT_BLEND | VERTEX_STORAGE | ANISOTROPIC_FILTERING | FRAGMENT_STORAGE | MULTISAMPLED_SHADING | DEPTH_TEXTURE_AND_BUFFER_COPIES | WEBGPU_TEXTURE_FORMAT_SUPPORT | BUFFER_BINDINGS_NOT_16_BYTE_ALIGNED | UNRESTRICTED_INDEX_BUFFER | FULL_DRAW_INDEX_UINT32 | DEPTH_BIAS_CLAMP | VIEW_FORMATS | UNRESTRICTED_EXTERNAL_TEXTURE_COPIES | SURFACE_VIEW_FORMATS | NONBLOCKING_QUERY_RESOLVE,
+        ),
+        limits: DownlevelLimits,
+        shader_model: Sm5,
+    }
+```
+
+
+Read the third line. `wgpu` is successfully initialized with the `DirectX 12` backend. The selected adapter is the `NVIDIA GeForce RTX 3070 Ti` (see `DiscreteGpu`). Dx12 debug layers are not installed, which only affects developer diagnostics. "Downlevel" warnings indicate that some optional WebGPU features are not fully supported by the DX12 backend, but this does not affect normal rendering or compute shader usage.
+
+
+
+
+
+
+
+**Looks like I’m the ruler of the world… Mwahahaha! I control everything...** OK, calm down and let's look at the MOF (making of). For what I understand, when working with `wgpu` and the `pixels` crates, there are multiple layers of control over which GPU and graphics backend our application uses. It is similar to what I learn a looooong time ago with OpenGL.
+
+
+
+
+
+<!-- ###################################################################### -->
+***Wait, wait wait... Can you say a word about `wgpu` and `backend`?***
+
+#### 0. `wgpu` and `backend`
+A backend is the native graphics API that `wgpu` uses to communicate with the GPU. It looks like:
+
+```
+Your Rust code (Rust + wgpu)
+         ↓
+     [Translation]
+         ↓
+Backend (DX12 or Vulkan)
+         ↓
+     GPU driver
+         ↓
+Physical GPU (Intel Iris or NVIDIA)
+```
+
+The GPU doesn’t understand Rust nor `wgpu` directly. It understands specific graphics APIs. Choosing a backend doesn’t change **which GPU** is used (Intel vs NVIDIA) — it changes **how** `wgpu` communicates with it. `wgpu` is an **abstraction layer**:
+
+* We write `wgpu` code (identical for all platforms)
+* `wgpu` translates it to the chosen backend (DX12, Vulkan, Metal…)
+* The backend talks to the GPU driver
+* The driver controls the physical GPU
+
+
+**The 2 main backends on Windows (my case)**
+
+1. **DirectX 12 (DX12)**
+   * Developed by Microsoft for Windows
+   * Native and optimized for the Windows ecosystem
+   * The GPU understands DirectX 12 commands
+   * NVIDIA/Intel drivers are heavily tuned for DX12 on Windows
+
+2. **Vulkan**
+   * Graphics API from the Khronos Group
+   * Open, cross-platform (Windows, Linux, Android)
+   * Same code runs on Windows, Linux, Android
+   * Potentially offers more control and performance
+   * The GPU understands Vulkan commands
+   * Requires Vulkan drivers to be installed
+
+**backends on other platforms**
+
+* **Metal** (macOS, iOS) – Apple’s graphics API
+* **OpenGL** – old cross-platform standard
+* **WebGPU** – for web browsers
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+#### 1. Three Levels of Control
+{: .no_toc }
+
+
+<!-- ###################################################################### -->
+
+##### Level 1: `Pixels::new()` - Automatic (`demo_00.rs`)
+{: .no_toc }
+
+
+```rust
+let pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
+```
+
+**What happens:**
+- `wgpu` automatically selects the "best" backend for our platform
+- `wgpu` automatically selects the "best" GPU adapter
+- Default presentation mode (Fifo/vsync)
+- Automatic surface resize handling (works well in most cases)
+
+**Backend priority on Windows:**
+1. Vulkan (if available and working)
+2. DX12 (fallback)
+3. DX11 (last resort)
+
+**GPU priority:**
+- Prefers integrated GPU (lower power consumption)
+- Intel Iris Xe in my case
+
+**Pros:**
+- Simple, works out of the box
+- Less code to write
+- Handles resize events automatically with Vulkan
+
+**Cons:**
+- No control over which GPU or backend
+- Does not use my expensive and high-performance GPU (NVIDIA)
+
+
+
+
+
+
+<!-- ###################################################################### -->
+
+##### Level 2: `PixelsBuilder` with `request_adapter_options()` (`demo_01.rs`)
+
+```rust
+let mut builder = PixelsBuilder::new(WIDTH, HEIGHT, surface);
+builder = builder.request_adapter_options(wgpu::RequestAdapterOptions {
+    power_preference: wgpu::PowerPreference::HighPerformance,
+    compatible_surface: None,
+    force_fallback_adapter: false,
+});
+
+let mut pixels = builder.build().expect("create pixels");
+pixels.set_present_mode(wgpu::PresentMode::Fifo);
+```
+
+Play the game. In VSCode open `demo_00.rs` and `demo_01.rs` side by side and check the modifications.
+
+<div align="center">
+<img src="./assets/img26_5.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+Alternatively you can right click on `demo_00.rs` and select `Select For Compare`. Then right click on `demo_01.rs` and select `Compare with Selected`. However in this particular case I prefer the first method.
+
+**What happens:**
+- Backend selection: still automatic (Vulkan or DX12). Here Vulkan.
+- The GPU selection is **influenced** by `power_preference`
+  - `HighPerformance` → prefers discrete GPU (NVIDIA)
+  - `LowPower` → prefers integrated GPU (Intel Iris)
+
+**Important notes:**
+- `power_preference` is a **hint**, not a guarantee
+- `wgpu` may still choose the integrated GPU if:
+  - The discrete GPU driver has issues
+  - The backend doesn't support it properly
+  - Compatibility requirements override the preference
+
+**Resize behavior:**
+- Based on the tests, it seems I need to manually handle `WindowEvent::Resized`
+- Indeed, with this combination (Vulkan/NVIDIA) the blue area won't resize
+
+
+
+
+
+<!-- ###################################################################### -->
+
+##### Level 3: `PixelsBuilder` with `wgpu_backend()` (`demo_02.rs`)
+
+```rust
+let mut builder = PixelsBuilder::new(WIDTH, HEIGHT, surface);
+builder = builder.request_adapter_options(wgpu::RequestAdapterOptions {
+    power_preference: wgpu::PowerPreference::HighPerformance,
+    compatible_surface: None, 
+    force_fallback_adapter: false,
+});
+
+builder = builder.wgpu_backend(wgpu::Backends::DX12); // wgpu::Backends::VULKAN
+
+let mut pixels = builder.build().expect("create pixels");
+pixels.set_present_mode(wgpu::PresentMode::Fifo);
+```
+
+**What happens:**
+- GPU: still influenced by `power_preference`
+- Backend: **explicitly forced** (DX12 or Vulkan)
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+#### 2. About `wgpu::PresentMode`
+{: .no_toc }
+
+```rust
+pixels.set_present_mode(wgpu::PresentMode::Fifo);
+```
+
+**Fifo (Default - VSync ON)**
+{: .no_toc }
+
+- Syncs with screen refresh rate (60Hz typically)
+- No tearing
+- FPS capped at refresh rate
+- Lower power consumption
+- **Best for:** Normal applications, games, visual stability
+
+**Immediate (VSync OFF)**
+{: .no_toc }
+
+- No synchronization, maximum FPS
+- May cause tearing
+- Higher GPU usage
+- **Best for:** Benchmarks, performance testing
+
+**Mailbox (Triple buffering)**
+{: .no_toc }
+
+- Low latency with reduced tearing
+- Higher GPU usage than Fifo
+- **Best for:** Competitive games, low-latency apps
+
+**AutoVsync / AutoNoVsync**
+{: .no_toc }
+
+- Platform-specific automatic selection
+
+
+<!-- 
+When we call pixels.render(), wgpu sends our image to the graphics card, which displays it via the swap chain 
+The swap chain is a queue of images between the GPU and the screen.
+The `wgpu::PresentMode` controls when these images are sent to the screen, and whether to wait for vertical synchronization (vsync).
+Fifo — default mode (vsync activated)
+Behavior: each image is displayed at the screen refresh rate, often 60 Hz.
+The GPU renders to a buffer while the screen displays the previous image.
+When the screen is ready (new “vertical blank”), the new image is presented.
+Advantages:
+     No tearing (no visual distortion).
+     Stable and compatible everywhere (WebGPU requires Fifo at a minimum).
+Disadvantages:
+     FPS is limited to the screen refresh rate.
+     Low latency (~1 frame).
+Ideal for stable “visual” apps, games, and to save GPU power.
+
+ -->
+
+
+<!-- 
+Immediate — no vsync, frequence max
+Behavior: the GPU displays each frame immediately, without waiting for the next screen refresh.
+Advantages:
+     Allows you to measure the actual performance of the GPU pipeline (maximum frames per second).
+     Reduction in perceived latency (useful for benchmarking or ultra-fast interactive rendering).
+Disadvantages:
+     Risk of tearing (the screen displays two frames partially).
+     Higher GPU consumption (since it runs without pause).
+     Not always supported depending on the backend or card (wgpu then automatically switches to Fifo).
+Excellent for benchmarks or performance tests (such as checking that your 3070 is running at full capacity).
+ -->
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+#### 3. About the Resize Problem 
+{: .no_toc }
+
+##### Why demo_00 works without resize handling:
+{: .no_toc }
+
+```rust
+let pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
+```
+
+* It uses Vulkan with default configuration
+* In this case it seems automatic resize handling is enabled
+
+
+##### Why demo_01 require resize handling and not demo_02 ?
+
+```rust
+let pixels = PixelsBuilder::new(...)
+    .request_adapter_options(...) // Custom options
+    .build().unwrap();
+```
+* With Vulkan Custom configuration disables some automatic behaviors
+* We must explicitly handle resizes
+* With Dx12 no need to handle resizes BUT we have to check 
+* **Rule of thumb:** If you use `PixelsBuilder` with custom options, always handle `WindowEvent::Resized`.
+
+
+<!-- ##### The solution for all PixelsBuilder cases:
+```rust
+fn window_event(&mut self, event_loop: &ActiveEventLoop, _: winit::window::WindowId, event: WindowEvent) {
+    match event {
+        WindowEvent::Resized(new_size) => {
+            if let Some(pixels) = &mut self.pixels {
+                if new_size.width > 0 && new_size.height > 0 {
+                    pixels.resize_surface(new_size.width, new_size.height).unwrap();
+                }
+            }
+        }
+        WindowEvent::RedrawRequested => {
+            // ... rendering code
+        }
+        // ...
+    }
+}
+``` -->
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+#### 4. Benchmarks ? 
+{: .no_toc }
+
+
+**Without shaders**
+
+* `cargo run -p step_11 --release --example demo_04`
+* 100 FPS
+* In fact as it is, the code only use the CPU except when the texture us copied
+
+<div align="center">
+<img src="./assets/img26_7.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
+**With shaders**
+
+* `cargo run -p step_11 --release --example demo_05`
+* 3_000 FPS
+* In this version of the code shaders are used. They run on the GPU.
+* Yes the code is available. No I will not explain shaders, comment the code etc.
+
+<div align="center">
+<img src="./assets/img26_6.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<!-- #### 4. How to Force NVIDIA GPU Usage
+{: .no_toc }
+
+**Method 1: Power preference (soft hint)**
+{: .no_toc }
+
+
+```rust
+.request_adapter_options(wgpu::RequestAdapterOptions {
+    power_preference: wgpu::PowerPreference::HighPerformance,
+    // ...
+})
+```
+
+**Method 2: Manual adapter selection (most reliable)**
+{: .no_toc }
+
+```rust
+use wgpu::Instance;
+
+let instance = Instance::new(wgpu::InstanceDescriptor {
+    backends: wgpu::Backends::DX12,
+    ..Default::default()
+});
+
+let adapters: Vec<_> = instance.enumerate_adapters(wgpu::Backends::DX12).collect();
+
+// Print all available adapters
+for (i, adapter) in adapters.iter().enumerate() {
+    let info = adapter.get_info();
+    println!("[{}] {} - {:?}", i, info.name, info.device_type);
+}
+
+// Select NVIDIA adapter
+let nvidia_adapter = adapters.iter()
+    .find(|a| {
+        let info = a.get_info();
+        info.name.contains("NVIDIA") || info.device_type == wgpu::DeviceType::DiscreteGpu
+    })
+    .expect("NVIDIA GPU not found");
+```
+
+
+**Method 3: Environment variable**
+{: .no_toc }
+
+```powershell
+# Force discrete GPU on Windows
+$env:WGPU_POWER_PREF='high'
+cargo run
+```
+
+**Method 4: Windows Graphics Settings**
+{: .no_toc }
+
+- Not sure it works 100% of the time
+- Windows Settings → System → Display → Graphics Settings
+- Add your .exe as "Desktop app"
+- Set to "High performance"
+
+**Method 5: NVIDIA Control Panel**
+{: .no_toc }
+
+- Not sure it works 100% of the time
+- 3D Settings → Manage 3D Settings → Program Settings
+- Add your application
+- Select "High-performance NVIDIA processor"
+ -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<!-- #### 6. Which Method to Use?
+{: .no_toc }
+
+```
+Are we building a cross-platform app?
+├─ YES → Use Vulkan explicitly + handle resize
+│        .wgpu_backend(wgpu::Backends::VULKAN)
+│
+└─ NO (Windows-only)
+   │
+   Do you need high-performance GPU?
+   ├─ YES → Use PixelsBuilder + HighPerformance
+   │        + verify with logs that NVIDIA is selected
+   │        + handle WindowEvent::Resized
+   │
+   └─ NO (integrated GPU is fine)
+      │
+      Just want it to work?
+      └─ Use Pixels::new()
+``` -->
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<!-- #### 7. Complete Working Example (Best Practices)
+{: .no_toc }
+
+```rust
+use pixels::{Pixels, PixelsBuilder, SurfaceTexture, wgpu};
+use winit::{
+    application::ApplicationHandler,
+    event::WindowEvent,
+    event_loop::{ActiveEventLoop, ControlFlow, EventLoop},
+    window::Window,
+};
+
+const WIDTH: u32 = 200;
+const HEIGHT: u32 = 150;
+
+#[derive(Default)]
+struct App {
+    window: Option<&'static Window>,
+    pixels: Option<Pixels<'static>>,
+}
+
+impl ApplicationHandler for App {
+    fn resumed(&mut self, event_loop: &ActiveEventLoop) {
+        let window = event_loop
+            .create_window(Window::default_attributes()
+                .with_title("GPU Demo - Best Practices"))
+            .unwrap();
+        let window_ref: &'static Window = Box::leak(Box::new(window));
+        let size = window_ref.inner_size();
+        let surface = SurfaceTexture::new(size.width, size.height, window_ref);
+
+        // Method: Use PixelsBuilder with explicit backend and GPU preference
+        let mut pixels = PixelsBuilder::new(WIDTH, HEIGHT, surface)
+            .wgpu_backend(wgpu::Backends::DX12)  // Force DX12 for Windows
+            .request_adapter_options(wgpu::RequestAdapterOptions {
+                power_preference: wgpu::PowerPreference::HighPerformance,
+                compatible_surface: None,
+                force_fallback_adapter: false,
+            })
+            .build()
+            .expect("Failed to create Pixels");
+
+        // Set presentation mode
+        pixels.set_present_mode(wgpu::PresentMode::Fifo);
+
+        self.window = Some(window_ref);
+        self.pixels = Some(pixels);
+    }
+
+    fn window_event(&mut self, event_loop: &ActiveEventLoop, 
+                    _: winit::window::WindowId, event: WindowEvent) {
+        match event {
+            WindowEvent::CloseRequested => event_loop.exit(),
+            
+            // CRITICAL: Handle resize events
+            WindowEvent::Resized(new_size) => {
+                if let Some(pixels) = &mut self.pixels {
+                    if new_size.width > 0 && new_size.height > 0 {
+                        pixels.resize_surface(new_size.width, new_size.height)
+                            .expect("Failed to resize surface");
+                    }
+                }
+            }
+            
+            WindowEvent::RedrawRequested => {
+                if let Some(pixels) = &mut self.pixels {
+                    let frame = pixels.frame_mut();
+                    for pixel in frame.chunks_exact_mut(4) {
+                        pixel[0] = 0x20; // R
+                        pixel[1] = 0x40; // G
+                        pixel[2] = 0xFF; // B
+                        pixel[3] = 0xFF; // A
+                    }
+                    pixels.render().expect("Failed to render");
+                }
+                
+                if let Some(window) = &self.window {
+                    window.request_redraw();
+                }
+            }
+            _ => {}
+        }
+    }
+
+    fn about_to_wait(&mut self, _: &ActiveEventLoop) {
+        self.window.expect("Window should exist").request_redraw();
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Enable logging to see which GPU/backend is selected
+    env_logger::Builder::from_env(
+        env_logger::Env::default()
+            .default_filter_or("wgpu_core=info,wgpu_hal=warn,wgpu=warn")
+    ).init();
+
+    let event_loop = EventLoop::new()?;
+    event_loop.set_control_flow(ControlFlow::Poll);
+
+    let mut app = App::default();
+    event_loop.run_app(&mut app)?;
+
+    Ok(())
+}
+``` -->
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<!-- 
+#### 8. Summary Table
+{: .no_toc }
+
+| Feature | `Pixels::new()` | `PixelsBuilder` + options | `PixelsBuilder` + backend |
+|---------|----------------|---------------------------|---------------------------|
+| **Simplicity** | ⭐⭐⭐ | ⭐⭐ | ⭐ |
+| **GPU Control** | ❌ None | ⚠️ Hint only | ⚠️ Hint only |
+| **Backend Control** | ❌ None | ❌ None | ✅ Full |
+| **Auto Resize** | ✅ Yes (Vulkan) | ❌ No | ❌ No |
+| **Cross-platform** | ✅ Yes | ✅ Yes | ⚠️ Backend-dependent |
+| **Best for** | Prototypes | Production apps | Debugging/Optimization |
+ -->
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<!-- 
+#### 9. Common Issues & Solutions
+{: .no_toc }
+
+##### Issue: "Intel Iris selected instead of NVIDIA"
+{: .no_toc }
+
+**Solutions:**
+1. Check NVIDIA drivers are installed
+2. Use `HighPerformance` power preference
+3. Check Windows Graphics Settings
+4. Try different backend (DX12 vs Vulkan)
+5. Manual adapter selection (Method 5 above)
+
+##### Issue: "Blue area doesn't resize"
+{: .no_toc }
+
+**Solution:** Add `WindowEvent::Resized` handler with `resize_surface()`
+
+##### Issue: "Validation errors with Vulkan"
+{: .no_toc }
+
+**Solutions:**
+1. Install Vulkan SDK for validation layers
+2. Or use DX12 instead
+3. Or ignore warnings (they're not critical)
+
+##### Issue: "Screen tearing"
+{: .no_toc }
+
+**Solution:** Use `PresentMode::Fifo` (VSync)
+
+##### Issue: "Low FPS on high-end GPU"
+{: .no_toc }
+
+**Check:**
+1. Is the correct GPU selected? (check logs)
+2. Is VSync enabled? (try `Immediate` mode)
+3. Is your render loop efficient?
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+<!-- 
+#### 10. Key Takeaways
+{: .no_toc }
+
+1. **`Pixels::new()` is great for prototypes** - it just works
+2. **`PixelsBuilder` gives you control** - but requires more responsibility
+3. **Always handle `WindowEvent::Resized`** when using `PixelsBuilder`
+4. **Backend choice matters:**
+   - DX12: More forgiving, Windows-only
+   - Vulkan: Stricter, cross-platform, better performance
+5. **GPU selection is a hint, not a command** - verify with logs
+6. **Enable logging** to debug GPU/backend selection
+7. **When in doubt:** Start simple (`Pixels::new()`), optimize later
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+### Minimal GPU mental model 
+* Pixels uses **wgpu** under the hood. On Windows with a 3070, it will typically pick DX12 (or Vulkan if forced).
+* `SurfaceTexture::new(window_w, window_h, window)` binds your logical buffer (WIDTH×HEIGHT) to the window’s swapchain surface.
+* Pixels::new(WIDTH, HEIGHT, surface) means your logical buffer is WIDTH×HEIGHT (here 200×150). You write RGBA into pixels.frame_mut(); wgpu scales it to the window.
+* Scaling is handled by pixels (nearest by default). If window and buffer aspect ratios differ, it will stretch. (You can change scaling/shader later if you want pixel-perfect with letterboxing.)
+
+ -->
 
 
 
@@ -2123,12 +3011,17 @@ winres = "0.1"
 * [Conway's Game of Life viewer](https://copy.sh/life/). I really like it
 * [RLE file format](https://conwaylife.com/wiki/Run_Length_Encoded)
 * Advanced. Detailed explainations about the [Hashlife algorithm](https://johnhw.github.io/hashlife/index.md.html)
+* [wgpu Documentation](https://docs.rs/wgpu)
+* [Pixels Documentation](https://docs.rs/pixels)
+* [Vulkan vs DirectX Comparison](https://www.khronos.org/vulkan/)
+* [WGPU Best Practices](https://github.com/gfx-rs/wgpu/wiki)
+
 
 
 
 ## Videos
 
-No matter if you speak french or not watch the first video and add caption if neede. It is about an **analogic version of the game of life**. Smoking!
+No matter if you speak french or not watch the first video and add caption if needed. It is about an **analogic version of the game of life**. Smoking!
 <div align=center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PlzV4aJ7iMI?si=g3ZipX16w5sUbyZm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

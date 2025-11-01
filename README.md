@@ -120,6 +120,16 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 
 ## À garder sous le coude
 * Ç = ALT + 128 (du pavé numérique)
+* — = ALT + 0150 (tiret long, em dash, tiret cadratin, pas d'espace autour en anglais)
+
+```json
+
+"em dash": {
+    "prefix": "---",
+    "body": ["—"],
+    "description": "Insert em dash"
+}
+```
 
 * ❶ U+2776
 * ❷ U+2777
