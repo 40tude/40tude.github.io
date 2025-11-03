@@ -2,8 +2,8 @@
 published: true
 lang: en-US
 layout: default
-title: Building Conway’s Game of Life in Rust with Pixels and Winit 
-description: A beginner-friendly guide to using the Pixels and Winit crates to create a graphical version of Conway’s Game of Life in Rust.
+title: "Rust, Winit & Pixels: Understanding GPU Selection and Performance"
+description: A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit, and wgpu.
 parent: Rust
 #math: mathjax
 date               : 2025-11-02 07:00:00
@@ -12,10 +12,10 @@ last_modified_date : 2025-11-03 02:00:00
 
 
 
-# Building Conway’s Game of Life in Rust with Pixels and Winit
+# Rust, Winit & Pixels: Understanding GPU Selection and Performance
 {: .no_toc }
 
-A beginner-friendly guide to using the Pixels and Winit crates to create a graphical version of Conway’s Game of Life in Rust.
+A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit, and wgpu.
 {: .lead }
 
 
@@ -50,10 +50,10 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 * The Rust workspace is on GitHub
 * Uses VSCode + Win11 (not tested elsewhere)
 
-<!-- <div align="center">
-<img src="./assets/img00.webp" alt="" width="900" loading="lazy"/><br/>
+<div align="center">
+<img src="./assets/img00_gpu.webp" alt="" width="900" loading="lazy"/><br/>
 <span>Game of Life in Rust using Winit and Pixels crates.</span>
-</div> -->
+</div>
 
 
 
