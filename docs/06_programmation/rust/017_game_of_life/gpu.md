@@ -331,6 +331,12 @@ The GPU doesn’t understand Rust nor `wgpu` directly. It understands specific g
 * The driver controls the physical GPU
 
 
+<div align="center">
+<img src="./assets/img26_11.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Do you remember OpenGL?</span>
+</div>
+
+
 ### The 2 main `backends` on Windows 11 (my case)
 
 1. **DirectX 12 (DX12)**
@@ -885,6 +891,7 @@ Here are the results I get when I run `demo_03` then `demo_03bis`
 
 <div align="center">
 <img src="./assets/img26_10.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Asynchronous and synchronous versions of the benchmark compared</span>
 </div>
 
 In the code of `demo_03bis.rs` the main changes are:
@@ -942,7 +949,7 @@ Average FPS:   100
 Frame Time:    10.04ms
 ```
 
-What? How is it possible? In fact, as it is, the code only use the CPU except when the texture is sent to the screen. This is confirmed when I look at the ressource manager. There is no activity on the GPU. The main limiting factor here is the processing on the CPU. Check the code, while animating the waves I use `sin()`, `cos()` on `f32` then convert everything as `u8`.
+What? How is it possible? In fact, as it is, the code only use the CPU except when the texture is sent to the screen. This is confirmed when I look at the ressource manager. There is no activity on the GPU. The main limiting factor here is the processing on the CPU. Check the code, while animating the waves I use `sin()`, `cos()` on `f32` then convert everything as `u8`. To be exact there are 480_000 `sin()` and 480_000 `cos()` calculated per frame...
 
 ```rust
 // Render complex animation 
