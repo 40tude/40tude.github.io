@@ -7,7 +7,7 @@ description: A beginner-friendly guide to exploring GPU backends in Rust using P
 parent: Rust
 #math: mathjax
 date               : 2025-11-02 07:00:00
-last_modified_date : 2025-11-03 09:00:00
+last_modified_date : 2025-11-03 11:00:00
 ---
 
 
@@ -37,7 +37,7 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
 
 <!-- * For beginners -->
 <!-- * GPU, Winit and Pixels -->
-* `Pixels::new()` is great for prototypes** - it just works
+* `Pixels::new()` is great for prototypes - it just works
 * `PixelsBuilder` gives us power with more responsibility
 * Always handle `WindowEvent::Resized` when using `PixelsBuilder`
 * Backend choice matters:
@@ -45,7 +45,6 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
     * Vulkan: cross-platform
 * GPU selection is a hint, not a command 
 * Enable logging to debug GPU/backend selection
-
 <!-- * The Rust workspace is on GitHub -->
 * I use VSCode + Win11 (not tested elsewhere)
 
@@ -783,6 +782,7 @@ fn window_event(&mut self, event_loop: &ActiveEventLoop, _: winit::window::Windo
 ## Benchmarks ? 
 
 One word of caution. For example with my system I must make sure 
+* Run the Release version of the code
 * To plug the 300W power supply and not the much smaller Ugreen 140W I use to have on the USB PD port
 * To check that the PC is not in quiet mode
 * For the last benchmark, make sure the pipeline goes directly to the board. See below:
@@ -1022,8 +1022,10 @@ Are we building a cross-platform app?
       Just want it to work?
       └─ Use Pixels::new()
 ```
-
-
+* In any case, never assume. Double check! 
+* If needed, write or reuse on of the benches. 
+* If you don't plan to use shaders, today my belief is that you should start with `Pixels::new()`
+* The level of complexity of the code will grow exponentially if we want to use `PixelsBuilder::new()` while detecting and supporting multiple GPU and backend.
 
 
 
@@ -1037,14 +1039,14 @@ Are we building a cross-platform app?
 
 ## Summary 
 
-| Feature               | `Pixels::new()`      | `PixelsBuilder` + options | `PixelsBuilder` + options + backend |
-|-----------------------|----------------------|---------------------------|-------------------------------------|
-| **Simplicity**        | ⭐⭐⭐              | ⭐⭐                      | ⭐                                 |
-| **GPU Control**       | ❌ None, Integrated  | ⚠️ Hint only             | ⚠️ Hint only                        |
-| **Backend Control**   | ❌ None (Vulkan)     | ❌ None (Vulkan)         | ✅ Full                             |
-| **Auto Resize**       | ✅ Yes               | ❌ No                    | ❌ No                               |
-| **Cross-platform**    | ✅ Yes               | ✅ Yes                   | ⚠️ Backend-dependent                |
-| **Best for**          | Prototypes           | Production apps           | Debugging/Optimization              |
+| Feature               | `Pixels::new()`      | `PixelsBuilder::new()` + options | `PixelsBuilder::new()` + options + backend |
+|-----------------------|----------------------|----------------------------------|--------------------------------------------|
+| **Simplicity**        | ⭐⭐⭐              | ⭐⭐                            | ⭐                                         |
+| **GPU Control**       | ❌ None, Integrated  | ⚠️ Hint only                    | ⚠️ Hint only                               |
+| **Backend Control**   | ❌ None (Vulkan)     | ❌ None (Vulkan)                | ✅ Full                                    |
+| **Auto Resize**       | ✅ Yes               | ❌ No                           | ❌ No                                      |
+| **Cross-platform**    | ✅ Yes               | ✅ Yes                          | ⚠️ Backend-dependent                       |
+| **Best for**          | Prototypes           | Production apps                 | Debugging/Optimization                      |
 
 
 
