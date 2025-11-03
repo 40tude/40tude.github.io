@@ -7,7 +7,7 @@ description: A beginner-friendly guide to using the Pixels and Winit crates to c
 parent: Rust
 #math: mathjax
 date               : 2025-10-29 07:00:00
-last_modified_date : 2025-10-30 21:00:00
+last_modified_date : 2025-11-03 18:00:00
 ---
 
 
@@ -1680,15 +1680,13 @@ Again, like for testing, I learn how to implement one argument. I don't want to 
 ## Step 11  : Understanding GPU
 
 Read this [dedicated post]({%link docs/06_programmation/rust/017_game_of_life/gpu.md%})
+The conclusion is : 
+* In the current code of our Game Of Life all the processing is done on the CPU (not the GPU).
+* It is better to know what we talk about when we talk about backend, integrated/discrete GPU and presentation mode 
+* Since we do not use shaders we could use `Pixels::new()` and its default values (integrated GPU, Vulkan backend and Fifo presentation mode) and we should be good to go
 
-<!-- 
-### Minimal GPU mental model 
-* Pixels uses **wgpu** under the hood. On Windows with a 3070, it will typically pick DX12 (or Vulkan if forced).
-* `SurfaceTexture::new(window_w, window_h, window)` binds your logical buffer (WIDTH×HEIGHT) to the window’s swapchain surface.
-* Pixels::new(WIDTH, HEIGHT, surface) means your logical buffer is WIDTH×HEIGHT (here 200×150). You write RGBA into pixels.frame_mut(); wgpu scales it to the window.
-* Scaling is handled by pixels (nearest by default). If window and buffer aspect ratios differ, it will stretch. (You can change scaling/shader later if you want pixel-perfect with letterboxing.)
 
- -->
+
 
 
 
@@ -1701,7 +1699,7 @@ Read this [dedicated post]({%link docs/06_programmation/rust/017_game_of_life/gp
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 12  : Using GPU
+## Step 12  : Selecting GPU and backend
 
 Try this:
 * `cargo run -p step_12`
@@ -1715,7 +1713,7 @@ Try this:
 {: .no_toc }
 
 
-We extend the `Cargo.toml` we had in step 10 with `env_logger`
+We extend the `Cargo.toml` we had in Step 10 to include `env_logger`. This crate helps to display messages from `wgpu` in the console (see Step 11)
 
 ```toml
 [package]
@@ -1731,6 +1729,61 @@ rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
+Based on what we learn in Step 11, I decided to implement the flexibility to ask for a specific GPU, set the backend and the presentation mode BUT I put these values to their default values. The main change is in `src/app/state.rs`. In the `handle_resize()` function, the code change from this:
+
+```rust
+// Create or resize pixels
+if let Some(pixels) = &mut self.pixels {
+    ...
+} else if let Some(window) = self.window {
+    // Create pixels
+    // self.window is an Option<T> created in App::resumed() with event_loop.create_window()
+    // Create a surface texture attached to the window
+    let surface = SurfaceTexture::new(win_w, win_h, window);
+    // Create a Pixels with a rendering buffer (buffer_w, buffer_h)
+    self.pixels = Some(Pixels::new(buffer_w, buffer_h, surface).expect("pixels"));
+}
+```
+
+In the code above we were basically calling `Pixels::new()`. Now the code looks like that:
+
+```rust
+// Create or resize pixels
+if let Some(pixels) = &mut self.pixels {
+    ...
+} else if let Some(window) = self.window {
+    // Create pixels
+    // self.window is an Option<T> created in App::resumed() with event_loop.create_window()
+    // Create a surface texture attached to the window
+    let surface = SurfaceTexture::new(win_w, win_h, window);
+
+    // Create a Pixels with a rendering buffer (buffer_w, buffer_h)
+    let mut pixels = PixelsBuilder::new(buffer_w, buffer_h, surface)
+        .request_adapter_options(wgpu::RequestAdapterOptions {
+            // 1 - GPU: Pick one or the other
+            power_preference: wgpu::PowerPreference::::LowPower,
+            // power_preference: wgpu::PowerPreference::HighPerformance,
+
+            compatible_surface: None, 
+            force_fallback_adapter: false,
+        })
+        // 2 - Backend: Pick one or the other
+        .wgpu_backend(wgpu::Backends::VULKAN)
+        // .wgpu_backend(wgpu::Backends::DX12) 
+        
+        .build() // or .build_async().await
+        .expect("Failed to create Pixels with high-performance GPU");
+
+    // 3 - PresentationMode: Pick one or the other
+    pixels.set_present_mode(wgpu::PresentMode::Fifo);
+    // pixels.set_present_mode(wgpu::PresentMode::Immediate);
+    
+    println!("Present mode: {:?}", pixels.present_mode());
+
+    self.pixels = Some(pixels);
+}
+```
+Later, if needed we will be able to make changes.
 
 
 
@@ -1757,7 +1810,7 @@ Try this:
 ### Comments
 {: .no_toc }
 
-We add the `log` crate.
+We add the `log` crate to `Cargo.toml` and yes it come in addition to the `env_logger` we already have. See below :
 
 ```toml
 [package]
@@ -1773,6 +1826,80 @@ pixels = "0.15"
 rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
+
+Now, instead of `println!()` we can `info!()` or `error!()` and all we laready know about formating can be used.
+
+Since we want to be able to log from any source code one option is modify `lib.rs` so that it include a `prelude` module. See below:
+
+```rust
+// src/lib.rs
+
+pub mod app;
+pub mod config;
+pub mod error;
+pub mod gol;
+
+// re-export lib from crate root
+pub use self::error::{Error, Result};
+
+// help to have them everywhere
+pub mod prelude {
+    pub use log::{debug, error, info, trace, warn};
+}
+```
+
+Next, if in `src/app/render.rs` I want `info!()` a message we just need add the line `use crate::prelude::*;` at the top of the code. See below:
+
+```rust
+// src/app/render.rs
+
+use crate::prelude::*; // see lib.rs
+use pixels::Pixels;
+```
+
+Later in the code I can write : `error!("Error displayed: {}", error_message);`
+
+That is fine but personnaly I have an issue with that. Indeed I like to be explicit and to write `log::error!()`. Six months from now, reviewing the code I want to "read" that the `error!()` comes from the `log` crate and not from one of my module.
+
+Let's make a test and we will see how it goes. 
+1. I create a prelude in `lib.rs`
+1. In `main.rs` I use `log::info!()` 
+1. While in `src/app/state.rs` I use `info!()`
+
+One last point of **attention**. Now in `main()`, when we setup `env_logger`, if we want to see our own messages we have to add the name of the package to the filter. Remember in Step 11 when we were only interrested in the log messages from `wgpu` we had:
+
+```rust
+env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("wgpu_core=info,wgpu_hal=warn,wgpu=warn")).init();
+```
+Now I have:
+
+```rust
+env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("step_13=info, wgpu_core=info, wgpu_hal=warn, wgpu=off, naga=off")).init();
+```
+
+Having this in mind we could define some logging profiles:
+* Very discrete (clean prod/dev): `step_13=info, wgpu_core=off, wgpu_hal=off, wgpu=off, naga=off`
+* Light WGPU debugging: `step_13=info, wgpu_core=warn, wgpu_hal=warn, wgpu=warn`
+* Verbal WGPU debugging: `step_13=info, wgpu_core=info, wgpu_hal=info, wgpu=info`
+
+Now, the following arrays are mostly **for me**. Believe it or not I **CANNOT** remember the priority between `trace`, `debug`... and so I'm never sure to use the right one.
+
+| Level     | Macro      | When to use it                                                                | Example                                                       |
+| --------- | ---------- | ------------------------------------------------------------------------------| ------------------------------------------------------------- |
+| **trace** | `trace!()` | Ultra-fine details, often in loops, calculations, or very low-level debugging | `trace!(“Cell updated at ({}, {})”, x, y);`                   |
+| **debug** | `debug!()` | To understand the behavior of the program, useful during development.         | `debug!(“Loaded {} cells”, cell_count);`                      |
+| **info**  | `info!()`  | Normal information, useful to the user or for monitoring the program.         | `info!(“Pattern loaded successfully”);`                       |
+| **warn**  | `warn!()`  | Something abnormal or unexpected, but not blocking.                           | `warn!(“Pattern size exceeds viewport, scaling down”);`       |
+| **error** | `error!()` | Serious errors that prevent the current task from completing.                 | `error!(“Failed to open pattern file: {}”, path. Display());` |
+
+**A level includes higher levels**. For example, if I choose `info`, I will see `info`, `warn`, and `error` logs, but not `debug` or `trace` logs.
+
+| Use case   | Level              | Command                              |
+| -----------| ------------------ | ------------------------------------ |
+| Dev        | `info`             | `$env:RUST_LOG = "info"; cargo run`  |
+| Debug      | `debug` or `trace` | `$env:RUST_LOG = "trace"; cargo run` |
+| Production | `warn` or `error`  | `$env:RUST_LOG = "warn"; cargo run`  |
+
 
 
 
@@ -1801,7 +1928,7 @@ Try this:
 {: .no_toc }
 
 
-We replace the `env_logger` crate with `flexi_logger`.
+We replace the `env_logger` crate with `flexi_logger` in `Cargo.toml`.
 
 ```toml
 [package]
@@ -1831,23 +1958,14 @@ INFO [step_14] No pattern specified, using default: "rle/linepuffer.rle"
 INFO [step_14] Using pattern file: rle/linepuffer.rle
 INFO [step_14::gol::utils] place_pattern_centered(): Pattern (156x32) centered in buffer (178x100).
 INFO [step_14] App initialized successfully, starting event loop...
-WARN [wgpu_hal::dx12::instance] Unable to enable D3D12 debug interface: 0x887A002D
-WARN [wgpu_hal::auxil::dxgi::factory] Unable to enable DXGI debug interface: 0x887A002D
-WARN [wgpu_core::instance] Missing downlevel flags: DownlevelFlags(VERTEX_AND_INSTANCE_INDEX_RESPECTS_RESPECTIVE_FIRST_VALUE_IN_INDIRECT_DRAW)
-The underlying API or device in use does not support enough features to be a fully compliant implementation of WebGPU. A subset of the features can still be used. If you are running this program on native and not in a browser and wish to limit the features you use to the supported subset, call Adapter::downlevel_properties or Device::downlevel_properties to get a listing of the features the current platform supports.
-WARN [wgpu_core::instance] DownlevelCapabilities {
-    flags: DownlevelFlags(
-        COMPUTE_SHADERS | FRAGMENT_WRITABLE_STORAGE | INDIRECT_EXECUTION | BASE_VERTEX | READ_ONLY_DEPTH_STENCIL | NON_POWER_OF_TWO_MIPMAPPED_TEXTURES | CUBE_ARRAY_TEXTURES | COMPARISON_SAMPLERS | INDEPENDENT_BLEND | VERTEX_STORAGE | ANISOTROPIC_FILTERING | FRAGMENT_STORAGE | MULTISAMPLED_SHADING | DEPTH_TEXTURE_AND_BUFFER_COPIES | WEBGPU_TEXTURE_FORMAT_SUPPORT | BUFFER_BINDINGS_NOT_16_BYTE_ALIGNED | UNRESTRICTED_INDEX_BUFFER | FULL_DRAW_INDEX_UINT32 | DEPTH_BIAS_CLAMP | VIEW_FORMATS | UNRESTRICTED_EXTERNAL_TEXTURE_COPIES | SURFACE_VIEW_FORMATS | NONBLOCKING_QUERY_RESOLVE,
-    ),
-    limits: DownlevelLimits,
-    shader_model: Sm5,
-}
+WARN [wgpu_hal::vulkan::instance] InstanceFlags::VALIDATION requested, but unable to find layer: VK_LAYER_KHRONOS_validation
+INFO [step_14::app::state] Present mode: Fifo
 INFO [step_14::gol::utils] place_pattern_centered(): Pattern (178x100) centered in buffer (178x100).
 INFO [step_14::app::state] handle_resize(): Window new size = 712x400 pixels and buffer new size = 178x100.
 INFO [step_14] Application terminated.
 ```
 
-
+Finally I decided to comment the `prelude` in `lib.rs` and to be explicit. The good news is that error!(), info!() and others have the same syntax. Replacing This is an easy win
 
 
 
