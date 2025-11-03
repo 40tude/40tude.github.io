@@ -1677,7 +1677,7 @@ Again, like for testing, I learn how to implement one argument. I don't want to 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 11  : Testing the GPU
+## Step 11  : Understanding GPU
 
 ⚠️ Sorry, I know, this section in way too loooong. Feel free to bypass it in a first reading.
 
@@ -1750,7 +1750,7 @@ Not so cool. When I resize the window, the blue background seems to be "freezed 
 <span>cargo run -p step_11 --example demo_02</span>
 </div>
 
-I selected the NVIDIA board and the backend—Dx12 now vs Vulkan before.
+I selected the NVIDIA board and the backend—Dx12 now vs Vulkan before. Resiszing the window seems to work.
     
 
 ### Comments
@@ -1773,7 +1773,7 @@ winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
 
-#### Test 00
+#### **Test 00**
 {: .no_toc }
 
 `cargo run -p step_11 --example demo_00`
@@ -1819,7 +1819,7 @@ OK... My laptop cost 2M$ and I'm not able to use the NVIDIA board? Interresting.
 
 
 
-#### Test 01
+#### **Test 01**
 {: .no_toc }
 
 `cargo run -p step_11 --example demo_01`
@@ -1841,7 +1841,7 @@ Now the final `INFO` line confirms that `wgpu` now chose the `NVIDIA GeForce RTX
 
 
 
-#### Test 02
+#### **Test 02**
 {: .no_toc }
 
 `cargo run -p step_11 --example demo_02`
@@ -1880,7 +1880,9 @@ Read the third line. `wgpu` is successfully initialized with the `DirectX 12` ba
 <!-- ###################################################################### -->
 ***Wait, wait wait... Can you say a word about `wgpu` and `backend`?***
 
-#### 0. `wgpu` and `backend`
+#### **0. `wgpu` and `backend`**
+{: .no_toc }
+
 A backend is the native graphics API that `wgpu` uses to communicate with the GPU. It looks like:
 
 ```
@@ -1919,7 +1921,7 @@ The GPU doesn’t understand Rust nor `wgpu` directly. It understands specific g
    * The GPU understands Vulkan commands
    * Requires Vulkan drivers to be installed
 
-**backends on other platforms**
+**Backends on other platforms**
 
 * **Metal** (macOS, iOS) – Apple’s graphics API
 * **OpenGL** – old cross-platform standard
@@ -1936,7 +1938,7 @@ The GPU doesn’t understand Rust nor `wgpu` directly. It understands specific g
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-#### 1. Three Levels of Control
+#### **1. Three Levels of Control**
 {: .no_toc }
 
 
@@ -1982,6 +1984,7 @@ let pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
 <!-- ###################################################################### -->
 
 ##### Level 2: `PixelsBuilder` with `request_adapter_options()` (`demo_01.rs`)
+{: .no_toc }
 
 ```rust
 let mut builder = PixelsBuilder::new(WIDTH, HEIGHT, surface);
@@ -2028,6 +2031,7 @@ Alternatively you can right click on `demo_00.rs` and select `Select For Compare
 <!-- ###################################################################### -->
 
 ##### Level 3: `PixelsBuilder` with `wgpu_backend()` (`demo_02.rs`)
+{: .no_toc }
 
 ```rust
 let mut builder = PixelsBuilder::new(WIDTH, HEIGHT, surface);
@@ -2154,6 +2158,7 @@ let pixels = Pixels::new(WIDTH, HEIGHT, surface).unwrap();
 
 
 ##### Why demo_01 require resize handling and not demo_02 ?
+{: .no_toc }
 
 ```rust
 let pixels = PixelsBuilder::new(...)
@@ -2163,7 +2168,7 @@ let pixels = PixelsBuilder::new(...)
 * With Vulkan Custom configuration disables some automatic behaviors
 * We must explicitly handle resizes
 * With Dx12 no need to handle resizes BUT we have to check 
-* **Rule of thumb:** If you use `PixelsBuilder` with custom options, always handle `WindowEvent::Resized`.
+* **Rule of thumb:** When we use `PixelsBuilder` with custom options, always handle `WindowEvent::Resized`.
 
 
 <!-- ##### The solution for all PixelsBuilder cases:
