@@ -783,16 +783,16 @@ fn window_event(&mut self, event_loop: &ActiveEventLoop, _: winit::window::Windo
 ## Benchmarks ? 
 
 One word of caution. For example with my system I must make sure 
-* to plug the 300W power supply and not the much smaller Ugreen 140W I use to have on the USB PD port
-* check that the PC is not in quiet mode
-* for the last benchmark, make sure the pipeline goes directly to the board. See below:
+* To plug the 300W power supply and not the much smaller Ugreen 140W I use to have on the USB PD port
+* To check that the PC is not in quiet mode
+* For the last benchmark, make sure the pipeline goes directly to the board. See below:
 
 <div align="center">
 <img src="./assets/img26_8.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-You can learn more about how Optimus works in the video below and Jarrod'sTech channel.
+You can learn more about how Optimus works in the video below and [Jarrod'sTech channel](https://www.youtube.com/@JarrodsTech).
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/h73dFLZgfh4?si=8jAs89dxCwvxyQmm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -830,14 +830,14 @@ FPS (Fifo): 241.1
 FPS (Fifo): 240.1
 FPS (Fifo): 222.8
 ```
-This should not be a surprise since my screen frequency is 240Hz. 
+This should not be a surprise since my screen frequency is 240Hz. This means that if the code is able to do what it has to do in less than 1/240 second then the maximum FPS will be 240 Hz. Remember here the code is basic: it uses a for loop to fill the background of the window with blue cells. It could be optimized but I want to keep the code of the [initial article]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}).  
 
 <div align="center">
 <img src="./assets/img26_9.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-The code is similar to the previous ones but I added FPS counting capabilities and some comments to easily change the GPU, the backend and the presentation mode.
+The code is similar to the previous ones but I added FPS counting capabilities and some comments to easily change the GPU, the backend and the presentation mode. In addition, when creating the window, I use `.with_resizable(false)` to make sure the window cannot be resized while the test is running. This will help to compare apples with apples. 
 
 The log above can be summarized in one line: 
 
@@ -877,7 +877,7 @@ FPS (Fifo): 3736.8
 NVIDIA   DX12    Immediate   Average FPS = 3700
 ```
 
-OK, but let's try something more intensive where the cache is updated each time. 
+OK, but let's try something more intensive and where we are sure the cache is updated each time. 
 
 
 
@@ -1037,14 +1037,14 @@ Are we building a cross-platform app?
 
 ## Summary 
 
-| Feature               | `Pixels::new()` | `PixelsBuilder` + options | `PixelsBuilder` + backend |
-|-----------------------|-----------------|---------------------------|---------------------------|
-| **Simplicity**        | ⭐⭐⭐         | ⭐⭐                      | ⭐                |
-| **GPU Control**       | ❌ None         | ⚠️ Hint only             | ⚠️ Hint only |
-| **Backend Control**   | ❌ None         | ❌ None                  | ✅ Full |
-| **Auto Resize**       | ✅ Yes (Vulkan) | ❌ No                    | ❌ No |
-| **Cross-platform**    | ✅ Yes          | ✅ Yes                   | ⚠️ Backend-dependent |
-| **Best for**          | Prototypes      | Production apps           | Debugging/Optimization |
+| Feature               | `Pixels::new()`      | `PixelsBuilder` + options | `PixelsBuilder` + options + backend |
+|-----------------------|----------------------|---------------------------|-------------------------------------|
+| **Simplicity**        | ⭐⭐⭐              | ⭐⭐                      | ⭐                                 |
+| **GPU Control**       | ❌ None, Integrated  | ⚠️ Hint only             | ⚠️ Hint only                        |
+| **Backend Control**   | ❌ None (Vulkan)     | ❌ None (Vulkan)         | ✅ Full                             |
+| **Auto Resize**       | ✅ Yes               | ❌ No                    | ❌ No                               |
+| **Cross-platform**    | ✅ Yes               | ✅ Yes                   | ⚠️ Backend-dependent                |
+| **Best for**          | Prototypes           | Production apps           | Debugging/Optimization              |
 
 
 
