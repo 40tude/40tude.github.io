@@ -1679,6 +1679,19 @@ Again, like for testing, I learn how to implement one argument. I don't want to 
 
 ## Step 11  : Understanding GPU
 
+<!-- 
+
+### Minimal GPU mental model 
+* Pixels uses **wgpu** under the hood. On Windows with a 3070, it will typically pick DX12 (or Vulkan if forced).
+* `SurfaceTexture::new(window_w, window_h, window)` binds your logical buffer (WIDTH×HEIGHT) to the window’s swapchain surface.
+* Pixels::new(WIDTH, HEIGHT, surface) means your logical buffer is WIDTH×HEIGHT (here 200×150). You write RGBA into pixels.frame_mut(); wgpu scales it to the window.
+* Scaling is handled by pixels (nearest by default). If window and buffer aspect ratios differ, it will stretch. (You can change scaling/shader later if you want pixel-perfect with letterboxing.)
+
+ -->
+
+
+
+
 ⚠️ Sorry, I know, this section in way too loooong. Feel free to bypass it in a first reading.
 
 Try this:
