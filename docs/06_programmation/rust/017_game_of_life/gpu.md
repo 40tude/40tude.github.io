@@ -52,11 +52,8 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
 
 <div align="center">
 <img src="./assets/img00_gpu.webp" alt="" width="900" loading="lazy"/><br/>
-<span>Game of Life in Rust using Winit and Pixels crates.</span>
+<span>Rust, Winit & Pixels: Understanding GPU Selection and Performance.</span>
 </div>
-
-
-
 
 
 
@@ -64,16 +61,6 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
 {: .no_toc .text-delta}
 - TOC
 {:toc}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -795,7 +782,6 @@ fn window_event(&mut self, event_loop: &ActiveEventLoop, _: winit::window::Windo
 <!-- ###################################################################### -->
 
 ## Benchmarks ? 
-{: .no_toc }
 
 One word of caution. For example with my system I must make sure 
 * to plug the 300W power supply and not the 140 USB PD
@@ -808,6 +794,8 @@ One word of caution. For example with my system I must make sure
 </div>
 
 ### First attempt
+{: .no_toc }
+
 * `cargo run -p step_11 --release --example demo_03`
 
 Here are the log I get
@@ -881,7 +869,8 @@ OK, but let's try something more intensive where the cache is updated each time.
 
 
 
-**Second attempt**
+### Second attempt
+{: .no_toc }
 
 * `cargo run -p step_11 --release --example demo_04`
 
@@ -920,7 +909,9 @@ What? How is it possible? In fact as it is, the code only use the CPU except whe
 
 
 
-**Third attempt**
+### Third attempt
+{: .no_toc }
+
 
 
 * `cargo run -p step_11 --release --example demo_05`
@@ -948,7 +939,9 @@ Frame Time:    0.35ms
 
 
 
-**Conclusion**
+### Conclusion about the benchmarks
+{: .no_toc }
+
 As it is the Game Of Life does not use shader. All the processing will be done on the CPU (not the GPU).
 
 
@@ -1180,7 +1173,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 <!-- ###################################################################### -->
 
 ## Summary 
-{: .no_toc }
 
 | Feature               | `Pixels::new()` | `PixelsBuilder` + options | `PixelsBuilder` + backend |
 |-----------------------|-----------------|---------------------------|---------------------------|
@@ -1337,6 +1329,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 <!-- ###################################################################### -->
 
 ## Webliography
+
 `CTRL+click` to open the link in a new tab.
 
 * [wgpu Documentation](https://docs.rs/wgpu)
