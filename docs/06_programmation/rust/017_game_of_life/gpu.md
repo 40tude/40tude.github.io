@@ -877,7 +877,29 @@ FPS (Fifo): 3736.8
 NVIDIA   DX12    Immediate   Average FPS = 3700
 ```
 
-OK, but let's try something more intensive and where we are sure the cache is updated each time. 
+One could argue that the `println!()` in the console "break" the bench. Indeed the print is not asynchronous. This is why I wrote a smarter version of the initial bench but the results, at this point, are not significantly different. To give it a try run the command below: 
+
+* `cargo run -p step_11 --release --example demo_03bis`
+
+Here are the results I get when I run `demo_03` then `demo_03bis`
+
+<div align="center">
+<img src="./assets/img26_10.webp" alt="" width="450" loading="lazy"/><br/>
+</div>
+
+In the code of `demo_03bis.rs` the main changes are:
+
+* Import added: `std::sync::mpsc` and `std::thread`
+* New field in `App`. See `log_sender: mpsc::Sender<String>` to send messages
+* In the `main()` function:
+    * A channel is created: `mpsc::channel()`
+    * Create a dedicated thread that receives and displays messages asynchronously
+* The `println!()` are replaced with asynchronous sends:
+    * See `self.log_sender.send(message)` 
+    * They are non-blocking for the rendering thread
+
+
+This said, let's try something more intensive and where we are sure the cache is updated each time. 
 
 
 
