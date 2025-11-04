@@ -2172,20 +2172,20 @@ INFO [step_17_winit_030] Application terminated.
 {: .no_toc }
 
 1. **CPU (step_life) = 0.28ms** 
-   - Grid 356×200 = **71,200 cells**
-   - **Fast** (~285_000 cells/ms)
-   - We could have a **17x larger** grid and still maintain 60 FPS
+   - Grid 356×200 = 71_200 cells
+   - Fast (~285_000 cells/ms)
+   - We could have a 17x larger grid and still maintain 60 FPS
 
 2. **GPU (render) = 0.25ms** 
    - But still widely acceptable
 
 3. **Total = 0.54ms** 
    - Frame budget @ 60 FPS = 16.67ms
-   - We're only using **3%** of our budget!
+   - We're only using 3% of our budget!
    - Huge margin: 15.85ms available (~97% idle)
 
 4. **Theoretical FPS = 1900** 
-   - Without VSync, we could run at **>1000 FPS**!
+   - Without VSync, we could run at >1000 FPS
    - VSync limits us to 60 FPS (hence the gap)
 
 5. **p95 = 0.28-0.31ms** 
@@ -2208,7 +2208,7 @@ INFO [step_17_winit_030] Application terminated.
 {: .no_toc }
 
 **After stabilization**:
-- Render stabilizes around **0.21-0.51ms**
+- Render stabilizes around 0.21-0.51ms
 - Complex pattern (187×187) does not significantly impact the CPU
 - GPU remains the relative bottleneck because we *know* (see step 11) it could be much faster with shaders
 
@@ -2219,14 +2219,14 @@ INFO [step_17_winit_030] Application terminated.
 
 
 
-### Impact of grid size — Board = 712×400 (284,800 cells)
+### Impact of grid size — Board = 712×400 (284_800 cells)
 {: .no_toc }
 
 Prediction:
 - `step ≈ 1.13ms` (4x more cells)
 - `render ≈ 0.6ms` (4x more pixels)
-- Total ≈ 1.73ms → **580 theoretical FPS**
-- **Still well above 60 FPS!**
+- Total ≈ 1.73ms → 580 theoretical FPS
+- Still well above 60 FPS
 
 `cargo run --release -p step_17_winit_030 -- --pattern rle/112P51_synth` when W=712 and H=400
 
@@ -2248,16 +2248,16 @@ INFO [step_17_winit_030::app::events] Perf: step=  1.12ms (p95=  1.18ms) | rende
 ### Possible optimizations to improve `render` (current bottleneck?)
 {: .no_toc }
 
-1. **Compute shaders** (GPU calculates + draws)
-2. **Dirty rectangles** (only redraw modified areas)
-3. **Pixel scale** (1 cell = 2×2 pixels instead of 4×4)
+1. Compute shaders (GPU calculates + draws)
+2. Dirty rectangles (only redraw modified areas)
+3. Pixel scale (1 cell = 2×2 pixels instead of 4×4)
 
 ### Possible optimizations to improve `step` (already fast)
 {: .no_toc }
 
-1. **Parallelization with Rayon**
-2. **SIMD with std::simd** (nightly)
-3. **HashLife algorithm** (repetitive patterns)
+1. Parallelization with Rayon**
+2. SIMD with std::simd (nightly)
+3. HashLife algorithm (repetitive patterns)
    - Exploits repetition
    - Exponential gains on stable patterns
    - Complex to implement
@@ -2275,7 +2275,7 @@ It is not yet time to optimize anything
 **When to optimize?**
 - If we want grids >3000×2000 (6M cells)
 - If we want >240 FPS (high-frequency monitor)
-- If we want to implement **HashLife** (may be...)
+- If we want to implement **HashLife** (may be, I like the idea...)
 
 
 
@@ -2404,9 +2404,16 @@ Try this:
 
 It took me more time than anticipated. 
 
-* create `.ico` (https://www.icoconverter.com/, all resolutions)
+You need a ressource compiler installed on your system. Go to this [page](https://visualstudio.microsoft.com/fr/downloads/). At the bottom of the page click "Tools for Visual Studio" then "Build Tools for Visual Studio 2022". Download and Install.
+
+<div align="center">
+<img src="./assets/img33_1.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+* Create an `.ico` file. You can go on this [page](https://www.icoconverter.com/), generate all resolutions
 * `cargo add winres`
-* create a file named `build.rs` at the root of the package. See below: 
+* Create a file named `build.rs` at the root of the package. See below: 
 
 ```rust
 // build.rs
@@ -2421,8 +2428,7 @@ fn main() {
 ```
 * `build.rs` is built and executed at build time. If the target OS is Windows it uses `winres::WindowsResource` to add the `.ico` file to the ressources, compile them (using a ressource compiler). When this is done, it update `cargo:rustc-link-lib=` and `cargo:rustc-link-search` on the console, so that the cargo build script can link the compiled resource file to the final executable.
 
-
-Next we need to make sure the icon appear in the task bar
+Next we need to make sure the icon appears in the task bar.
 
 * `cargo add image`
 * See below `Cargo.toml`:
@@ -2529,7 +2535,7 @@ Step 19 introduces zoom functionality by decoupling the simulation grid from the
 - The simulation board stays fixed at 1280×800 cells
 - The window can be any size and content is scaled using zoom
 - Users can zoom in and out to see different levels of detail
-- The simulation is not impacted by zoom operations. This allow to zoom in then zoom out and observe the 
+- The simulation is not impacted by zoom operations. This allow to zoom in then zoom out and continue to observe the simulation 
 
 
 
@@ -2537,15 +2543,14 @@ Step 19 introduces zoom functionality by decoupling the simulation grid from the
 ### Architecture Change
 {: .no_toc }
 
-From: Variable board size that resizes with zoom/window
-To: Fixed board size with **camera viewpor**t system 
+* From: Variable board size that resizes with zoom/window
+* To: Fixed board size with **camera viewpor**t system 
 
 
 ### How Zoom Works?
 {: .no_toc }
 
-At this stage the camera viewport is fixed (see Step 20 for panning)
-When we zoom, the rendering calculates how many board cells are visible in the window.
+At this stage the camera viewport is fixed (see Step 20 for panning). When we zoom, the rendering calculates how many board cells are visible in the window. Let's see in action with some numerical applications.
 
 **Initialization:**
 - Window: 1280×800 pixels
@@ -2582,6 +2587,7 @@ cells_visible_height =  800 / (4 * 2.0) = 100 cells
 ```
 * We only see half as many cells. 
 * Each cell appears twice as large.
+* The viewport remains centered
 
 ```
 Board
@@ -2628,7 +2634,7 @@ cells_visible_height =  800 / (4 * 0.5) = 400 cells
   (0,0)                     (1280,800)
 ```
 
-To keep in mind: The rendering buffer stays the same size as the board (1280×800 cells), but we sample a potentially smaller or larger region of the board based on the camera position and zoom level.
+The point to keep in mind: the rendering buffer stays the same size as the board (1280×800 cells), but we sample a potentially smaller or larger region of the board based on the camera position and zoom level.
 
 
 
@@ -2648,20 +2654,20 @@ Screen Display
 ```
 
 
-When we will add panning, only Camera Viewport Extraction should be impacted. The extraction will take into account zoom_level and camera position. For now the camera is fixed on the center of the board.
+When we will add panning, only Camera Viewport Extraction should be impacted. The extraction will take into account `zoom_level` and camera position. For now the camera is fixed on the center of the board.
 
 
 
 ### Benefits of the Fixed Board Approach
 {: .no_toc }
 
-✅ No data loss when zooming out then back in
-✅ Consistent simulation (all cells always updated)
-✅ Natural zoom behavior (like copy.sh/life)
-✅ Simpler memory management (no reallocation)
-✅ Adding panning should be easy
-❌ Higher memory usage (3M cells always in RAM)
-❌ Lower FPS with large boards (always calculating all cells)
+* ✅ No data loss when zooming out then back in
+* ✅ Consistent simulation (all cells always updated)
+* ✅ Natural zoom behavior (like copy.sh/life)
+* ✅ Simpler memory management (no reallocation)
+* ✅ Adding panning should be easy
+* ❌ Higher memory usage (3M cells always in RAM)
+* ❌ Lower FPS with large boards (always calculating all cells)
 
 
 ### Change in `config.rs`
@@ -2705,32 +2711,32 @@ pub struct App {
     ...
 }
 ```
-**`try_new()`**:
+**The function `try_new()`**:
 - Initialize board with fixed size: `BOARD_WIDTH × BOARD_HEIGHT`
 - Set `zoom_level = 1.0`
 - Set `camera_x/y` to board center: `(BOARD_WIDTH/2, BOARD_HEIGHT/2)`
 - Calculate initial `zoom_max`
 
-**`handle_resize(win_w, win_h)`**:
+**The function `handle_resize(win_w, win_h)`**:
 - Only updates window size (`surface_w/h`), board stays fixed
 - Recalculates `zoom_max` based on new window size
 - Pixels buffer size = board size (unchanged)
 - Only calls `pixels.resize_surface()`, NOT `resize_buffer()`
 
-**`handle_zoom(delta)`**:
+**The function `handle_zoom(delta)`**:
 - Applies exponential zoom: `zoom_level *= ZOOM_FACTOR` (zoom in) or `/= ZOOM_FACTOR` (zoom out)
 - Clamps to `[ZOOM_MIN, ZOOM_MAX]`
 - **Does NOT resize board** (only logs the change)
 - Viewport calculation happens in render phase
 
-**`recalculate_board_size()`**: 
+**The function `recalculate_board_size()`**: 
 - Has been removed (board size is now fixed)
 
 
 ### Change in `render.rs`
 {: .no_toc }
 
-**`draw_board_with_camera()`**:
+**The function `draw_board_with_camera()`**:
 1. Calculate visible area in board cells:
 2. Calculate viewport top-left corner:
 3. For each pixel in rendering buffer:
@@ -2775,7 +2781,7 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s == "-" || s == "_") {
 ```
 
 **RedrawRequested**:
-- Now calls `render::draw_board_with_camera()` with camera and zoom parameters
+- Now it calls `render::draw_board_with_camera()` with camera and zoom parameters
    
 **Performance Logging**:
 - Added `zoom={:.2}` to performance output format
@@ -2803,7 +2809,7 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s == "-" || s == "_") {
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 20 : Panning and Random load
+## Step 20 : Panning and Random Pattern Load
 
 Try this:
 * `cargo run -p step_20`
