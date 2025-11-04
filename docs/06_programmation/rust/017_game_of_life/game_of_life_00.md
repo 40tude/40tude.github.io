@@ -1680,10 +1680,11 @@ Again, like for testing, I learn how to implement one argument. I don't want to 
 ## Step 11  : Understanding GPU
 
 Read this [dedicated post]({%link docs/06_programmation/rust/017_game_of_life/gpu.md%})
+
 The conclusion is : 
 * In the current code of our Game Of Life all the processing is done on the CPU (not the GPU).
-* It is better to know what we talk about when we talk about backend, integrated/discrete GPU and presentation mode 
-* Since we do not use shaders we could use `Pixels::new()` and its default values (integrated GPU, Vulkan backend and Fifo presentation mode) and we should be good to go
+* Nonetheless, it is better to know what we talk about when we talk about backend, integrated/discrete GPU and presentation mode 
+* And understand that, since we do not use shaders we could use `Pixels::new()` and its default values (integrated GPU, Vulkan backend and Fifo presentation mode) and we should be good to go
 
 
 
@@ -1699,7 +1700,7 @@ The conclusion is :
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 12  : Selecting GPU and backend
+## Step 12  : Asking for GPU, setting backend and presentation mode
 
 Try this:
 * `cargo run -p step_12`
@@ -1810,7 +1811,7 @@ Try this:
 ### Comments
 {: .no_toc }
 
-We add the `log` crate to `Cargo.toml` and yes it come in addition to the `env_logger` we already have. See below :
+We add the `log` crate to `Cargo.toml` and yes it comes in addition to the `env_logger` we already have. See below :
 
 ```toml
 [package]
@@ -1848,7 +1849,7 @@ pub mod prelude {
 }
 ```
 
-Next, if in `src/app/render.rs` I want `info!()` a message we just need add the line `use crate::prelude::*;` at the top of the code. See below:
+Next, if in `src/app/render.rs` I want `info!()` a message I just need to add the line `use crate::prelude::*;` at the top of the code. See below:
 
 ```rust
 // src/app/render.rs
@@ -1857,12 +1858,12 @@ use crate::prelude::*; // see lib.rs
 use pixels::Pixels;
 ```
 
-Later in the code I can write : `error!("Error displayed: {}", error_message);`
+Then in the code I can write : `error!("Error displayed: {}", error_message);`
 
 That is fine but personnaly I have an issue with that. Indeed I like to be explicit and to write `log::error!()`. Six months from now, reviewing the code I want to "read" that the `error!()` comes from the `log` crate and not from one of my module.
 
 Let's make a test and we will see how it goes. 
-1. I create a prelude in `lib.rs`
+1. I create a `prelude` module in `lib.rs`
 1. In `main.rs` I use `log::info!()` 
 1. While in `src/app/state.rs` I use `info!()`
 
@@ -1877,12 +1878,14 @@ Now I have:
 env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("step_13=info, wgpu_core=info, wgpu_hal=warn, wgpu=off, naga=off")).init();
 ```
 
-Having this in mind we could define some logging profiles:
+Did you see the `step_13=info`? 
+
+Now, knowing how it works we could define some logging profiles:
 * Very discrete (clean prod/dev): `step_13=info, wgpu_core=off, wgpu_hal=off, wgpu=off, naga=off`
 * Light WGPU debugging: `step_13=info, wgpu_core=warn, wgpu_hal=warn, wgpu=warn`
 * Verbal WGPU debugging: `step_13=info, wgpu_core=info, wgpu_hal=info, wgpu=info`
 
-Now, the following arrays are mostly **for me**. Believe it or not I **CANNOT** remember the priority between `trace`, `debug`... and so I'm never sure to use the right one.
+To conclude this section, the following arrays are mostly **for me**. Believe it or not I **CANNOT** remember the priority between `trace`, `debug`... and so I'm never sure to use the right one.
 
 | Level     | Macro      | When to use it                                                                | Example                                                       |
 | --------- | ---------- | ------------------------------------------------------------------------------| ------------------------------------------------------------- |
@@ -1914,13 +1917,13 @@ Now, the following arrays are mostly **for me**. Believe it or not I **CANNOT** 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 14  : Logging in files
+## Step 14  : Add logging in files
 
 Try this:
 * `cargo run -p step_14`
 
 <div align="center">
-<img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img29.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -1928,7 +1931,7 @@ Try this:
 {: .no_toc }
 
 
-We replace the `env_logger` crate with `flexi_logger` in `Cargo.toml`.
+We replace the `env_logger` crate with `flexi_logger` in `Cargo.toml`. See below:
 
 ```toml
 [package]
@@ -1945,9 +1948,21 @@ rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
+<div align="center">
+<img src="./assets/img29_2.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Display of "Compare with selected" in VSCode</span>
+</div>
 
 
-Content of `./logs/step_14_rCURRENT.log`
+Content of the console:
+
+<div align="center">
+<img src="./assets/img29_1.webp" alt="" width="225" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+Content of the file `./logs/step_14_rCURRENT.log`:
 
 ```
 INFO [step_14] This is an INFO message
@@ -1959,14 +1974,47 @@ INFO [step_14] Using pattern file: rle/linepuffer.rle
 INFO [step_14::gol::utils] place_pattern_centered(): Pattern (156x32) centered in buffer (178x100).
 INFO [step_14] App initialized successfully, starting event loop...
 WARN [wgpu_hal::vulkan::instance] InstanceFlags::VALIDATION requested, but unable to find layer: VK_LAYER_KHRONOS_validation
+INFO [wgpu_core::instance] Adapter Vulkan AdapterInfo { name: "Intel(R) Iris(R) Xe Graphics", vendor: 32902, device: 18086, device_type: IntegratedGpu, driver: "Intel Corporation", driver_info: "Intel driver", backend: Vulkan }
 INFO [step_14::app::state] Present mode: Fifo
 INFO [step_14::gol::utils] place_pattern_centered(): Pattern (178x100) centered in buffer (178x100).
 INFO [step_14::app::state] handle_resize(): Window new size = 712x400 pixels and buffer new size = 178x100.
 INFO [step_14] Application terminated.
 ```
 
-Finally I decided to comment the `prelude` in `lib.rs` and to be explicit. The good news is that error!(), info!() and others have the same syntax. Replacing This is an easy win
+Finally I decided to comment out the `prelude` module in `lib.rs` and to be explicit everywhere. The good news is that `error!()`, `info!()` and others have the same syntax. Replacing `env_logger` with `flexi_logger` is an easy win.
+I create a setup_logging() function in main.rs. Here it is:
 
+```rust
+fn setup_logging() -> Result<()> {
+    // See logger::try_with_env_or_str(...)
+    Logger::try_with_str("step_14=info, wgpu_core=info, wgpu_hal=warn, wgpu=off, naga=off")?
+        // Folder ./logs (here workspace)
+        .log_to_file(FileSpec::default().basename("step_14").directory("./logs"))
+        .rotate(
+            // Criterion::Size(10_000_000), // 10 MB
+            // Criterion::Age(Age::Day),  // create a new file every day
+            Criterion::AgeOrSize(Age::Day, 1_000_000),
+            Naming::Numbers,          // app.log, app.r001.log, app.r002.log, ...
+            Cleanup::KeepLogFiles(2), // keep the last 2 + current
+        )
+        // Duplicate on console
+        .duplicate_to_stderr(Duplicate::Info)
+        .start()?;
+
+    log::trace!("This is a TRACE message"); // should not be displayed
+    log::debug!("This is a DEBUG message"); // should not be displayed
+    log::info!("This is an INFO message"); // should be displayed
+    log::warn!("This is a WARNING message"); // should be displayed
+    log::error!("This is an ERROR message"); // should be displayed
+
+    Ok(())
+}
+```
+There are many options possible. Here I decide to store the logs files in a `logs/` directory (check out the basename `step_14`). In the code I indicate I want to create log files per day, not beggir than 10MB and keep the last two... Again many options are available and I'm very happy to have found this crate.
+
+It is a good opportunity to look for `println!` and other `eprintln!` and to replace them. 
+
+Last comment: make sur to add `logs/` to `.gitignore`
 
 
 
@@ -1990,6 +2038,8 @@ Try this:
 ### Comments
 {: .no_toc }
 
+Read the code in `src/gol/utils.rs`
+
 
 
 
@@ -2012,11 +2062,43 @@ Try this:
 ### Comments
 {: .no_toc }
 
+For a while now, I’ve known I needed to revisit those questions about error handling and invariants — but you know how it goes… we keep putting it off, because those are the kinds of things that take time and thought, while what we *really* want is to see cells live and die.
 
+And yet… here’s an example. Open the file `16/src/gol/utils.rs` and look at the code for the function `place_pattern_centered()`. Right now, it returns a `Result<()>`. But is that really necessary, given that there’s no actual error being generated inside the function body?
+If not, we should change the function’s signature and, of course, update all the places where it’s called. Fortunately, VSCode makes this easy: just press **SHIFT+F12** while the cursor is on the name `place_pattern_centered`.
 
+Well, you won — we need to ask ourselves the same kind of question for the other functions too.
 
+Here’s another example. Take the `step_life()` function in `gol/life.rs`. Right now, it has this signature and starts like this:
 
+```rust
+pub fn step_life(board_current: &[bool], board_next: &mut [bool], buffer_width: u32, buffer_height: u32) -> Result<()> {
+    if board_current.len() != board_next.len() {
+        return Err("Current and next board must have the same size.".into());
+    }
+    ...
+```
 
+Here again, we can remove the `Result<()>`, since it doesn’t add any real value.
+More importantly, it’s kind of silly to have that `if` statement breaking the flow. Better to remove it altogether.
+If we really want to keep the check, we can replace it with a `debug_assert_eq!()`, which will only run in **debug mode** (not in release mode). The code then becomes:
+
+```rust
+pub fn step_life(board_current: &[bool], board_next: &mut [bool], buffer_width: u32, buffer_height: u32) {
+
+    debug_assert_eq!(board_current.len(), board_next.len());
+    ...
+```
+
+Once that’s decided, we have to make sure that before calling `step_life()`, the program logic guarantees that `board_current` and `board_next` always have the same size. That’s actually an **invariant** of our program. At any moment, `board_current` and `board_next` must have the same length — period.
+
+So, we should search through the code for the places where the size of `board_current` or `board_next` changes and verify that they stay in sync. Again, **SHIFT+F12** on `board_current` helps confirm that every time we modify it, we also adjust `board_next` (see `try_new()` and `handle_resize()`).
+
+In short, this kind of code review:
+
+* Identifies the invariants
+* Checks that the code actually guarantees them
+* Cleans up unnecessary `if` statements
 
 
 
@@ -2033,10 +2115,13 @@ Try this:
 
 ## Step 17  : Measure performances (winit_30 only)
 
+Because if we measure, we can track and see whether performance is improving or deteriorating.
 
 Try this:
 * `cargo run --release -p step_17_winit_030 -- --pattern rle/glider`
 * `cargo run --release -p step_17_winit_030 -- --pattern rle/112P51_synth`
+* `cargo run --release -p step_17_winit_029 -- --pattern rle/112P51_synth`
+
 
 
 <div align="center">
@@ -2044,16 +2129,252 @@ Try this:
 <!-- <span>Optional comment</span> -->
 </div>
 
-### Comments
+
+Here is what I can read with
+* Pattern: `112P51_synth`
+* Power supply: 140 W 
+* Release 
+* Integrated GPU: Intel
+* Backend: Vulkan
+* Prensation mode: Fifo
+
+```
+cargo run --release -p step_17_winit_030 -- --pattern rle/112P51_synth
+    Finished `release` profile [optimized] target(s) in 0.25s
+     Running `target\release\step_17_winit_030.exe --pattern rle/112P51_synth`
+INFO [step_17_winit_030] Logger initialized.
+INFO [step_17_winit_030] Using pattern file: rle/112P51_synth.rle
+INFO [step_17_winit_030] App initialized successfully, starting event loop...
+INFO [wgpu_core::instance] Adapter Vulkan AdapterInfo { name: "Intel(R) Iris(R) Xe Graphics", vendor: 32902, device: 18086, device_type: IntegratedGpu, driver: "Intel Corporation", driver_info: "Intel driver", backend: Vulkan }
+INFO [step_17_winit_030::app::state] Present mode: Fifo
+INFO [step_17_winit_030::app::events] Perf: step=  0.30ms (p95=  0.30ms) | render=  1.56ms | total=  1.86ms | theo_fps= 538 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.30ms) | render=  0.50ms | total=  0.78ms | theo_fps=1285 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.32ms) | render=  0.51ms | total=  0.79ms | theo_fps=1261 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.29ms) | render=  0.50ms | total=  0.78ms | theo_fps=1290 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.28ms) | render=  0.25ms | total=  0.53ms | theo_fps=1904 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.28ms) | render=  0.21ms | total=  0.49ms | theo_fps=2040 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.29ms) | render=  0.23ms | total=  0.51ms | theo_fps=1980 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.28ms) | render=  0.24ms | total=  0.52ms | theo_fps=1926 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.28ms) | render=  0.23ms | total=  0.51ms | theo_fps=1968 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.28ms) | render=  0.25ms | total=  0.53ms | theo_fps=1879 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.31ms) | render=  0.28ms | total=  0.56ms | theo_fps=1785 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.29ms) | render=  0.26ms | total=  0.54ms | theo_fps=1865 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.28ms) | render=  0.23ms | total=  0.51ms | theo_fps=1960 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.30ms) | render=  0.25ms | total=  0.53ms | theo_fps=1886 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.30ms) | render=  0.25ms | total=  0.54ms | theo_fps=1869 | board=356x200
+INFO [step_17_winit_030::app::events] Perf: step=  0.28ms (p95=  0.30ms) | render=  0.26ms | total=  0.54ms | theo_fps=1862 | board=356x200
+INFO [step_17_winit_030] Application terminated.
+
+```
+
+
+### Observations
+{: .no_toc }
+
+1. **CPU (step_life) = 0.28ms** 
+   - Grid 356×200 = **71,200 cells**
+   - **Fast** (~285_000 cells/ms)
+   - We could have a **17x larger** grid and still maintain 60 FPS
+
+2. **GPU (render) = 0.25ms** 
+   - But still widely acceptable
+
+3. **Total = 0.54ms** 
+   - Frame budget @ 60 FPS = 16.67ms
+   - We're only using **3%** of our budget!
+   - Huge margin: 15.85ms available (~97% idle)
+
+4. **Theoretical FPS = 1900** 
+   - Without VSync, we could run at **>1000 FPS**!
+   - VSync limits us to 60 FPS (hence the gap)
+
+5. **p95 = 0.28-0.31ms** 
+   - Very stable, few spikes
+   - Good frame-to-frame consistency
+
+
+
+
+
+### First log usually slower
+{: .no_toc }
+
+**Why?** 
+- Probable GPU warmup (first frame)
+- GPU buffer allocation ?
+- Normal, ignorable
+
+### Stabilization: 
+{: .no_toc }
+
+**After stabilization**:
+- Render stabilizes around **0.21-0.51ms**
+- Complex pattern (187×187) does not significantly impact the CPU
+- GPU remains the relative bottleneck because we *know* (see step 11) it could be much faster with shaders
+
+
+
+
+
+
+
+
+### Impact of grid size — Board = 712×400 (284,800 cells)
+{: .no_toc }
+
+Prediction:
+- `step ≈ 1.13ms` (4x more cells)
+- `render ≈ 0.6ms` (4x more pixels)
+- Total ≈ 1.73ms → **580 theoretical FPS**
+- **Still well above 60 FPS!**
+
+`cargo run --release -p step_17_winit_030 -- --pattern rle/112P51_synth` when W=712 and H=400
+
+```
+INFO [step_17_winit_030::app::events] Perf: step=  1.13ms (p95=  1.13ms) | render=  1.24ms | total=  2.37ms | theo_fps= 421 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.13ms (p95=  1.15ms) | render=  0.88ms | total=  2.01ms | theo_fps= 497 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.12ms (p95=  1.19ms) | render=  0.87ms | total=  1.99ms | theo_fps= 501 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.12ms (p95=  1.17ms) | render=  0.91ms | total=  2.02ms | theo_fps= 494 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.12ms (p95=  1.20ms) | render=  0.60ms | total=  1.72ms | theo_fps= 581 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.13ms (p95=  1.21ms) | render=  0.60ms | total=  1.73ms | theo_fps= 579 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.12ms (p95=  1.21ms) | render=  0.59ms | total=  1.71ms | theo_fps= 583 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.14ms (p95=  1.23ms) | render=  0.60ms | total=  1.74ms | theo_fps= 575 | board=712x400
+INFO [step_17_winit_030::app::events] Perf: step=  1.12ms (p95=  1.18ms) | render=  0.60ms | total=  1.72ms | theo_fps= 582 | board=712x400
+```
+
+
+
+
+### Possible optimizations to improve `render` (current bottleneck?)
+{: .no_toc }
+
+1. **Compute shaders** (GPU calculates + draws)
+2. **Dirty rectangles** (only redraw modified areas)
+3. **Pixel scale** (1 cell = 2×2 pixels instead of 4×4)
+
+### Possible optimizations to improve `step` (already fast)
+{: .no_toc }
+
+1. **Parallelization with Rayon**
+2. **SIMD with std::simd** (nightly)
+3. **HashLife algorithm** (repetitive patterns)
+   - Exploits repetition
+   - Exponential gains on stable patterns
+   - Complex to implement
+
+### Decision regarding optimization
+{: .no_toc }
+
+It is not yet time to optimize anything
+
+**Why?**
+- We are at 3% of the CPU budget
+- We could display 17x more cells
+- **"Premature optimization is the root of all evil"**
+
+**When to optimize?**
+- If we want grids >3000×2000 (6M cells)
+- If we want >240 FPS (high-frequency monitor)
+- If we want to implement **HashLife** (may be...)
+
+
+
+
+### Comments about the code
 {: .no_toc }
 
 
+* `App` structure is extended and receive a `perf_metrics` field of type `perfs::PerformanceMetrics`
+* `PerformanceMetrics` is defined in `src/app/perfs.rs`
 
-### TODO
-{: .no_toc }
+```rust
+use std::time::{Duration, Instant};
+pub struct PerformanceMetrics {
+    step_times: Vec<Duration>,   // N last measurements of step_life()
+    render_times: Vec<Duration>, // N last measurements of render()
+    last_log: Instant,           // Time of the last display
+    sample_size: usize,          // How many frame to average (ex: 60)
+}
 
-Try this:
-* `cargo run --release -p step_17_winit_029 -- --pattern rle/112P51_synth`
+impl PerformanceMetrics {
+    pub fn new(sample_size: usize) -> Self {
+        Self {
+            step_times: Vec::with_capacity(sample_size),
+            render_times: Vec::with_capacity(sample_size),
+            last_log: Instant::now(),
+            sample_size,
+        }
+    }
+
+    pub fn record_step(&mut self, duration: Duration) {
+        if self.step_times.len() >= self.sample_size {
+            self.step_times.remove(0);
+        }
+        self.step_times.push(duration);
+    }
+
+    pub fn record_render(&mut self, duration: Duration) {
+        if self.render_times.len() >= self.sample_size {
+            self.render_times.remove(0);
+        }
+        self.render_times.push(duration);
+    }
+
+    pub fn avg_step_time(&self) -> Option<Duration> {
+        if self.step_times.is_empty() {
+            return None;
+        }
+        let sum: Duration = self.step_times.iter().sum();
+        Some(sum / self.step_times.len() as u32)
+    }
+
+    pub fn avg_render_time(&self) -> Option<Duration> {
+        if self.render_times.is_empty() {
+            return None;
+        }
+        let sum: Duration = self.render_times.iter().sum();
+        Some(sum / self.render_times.len() as u32)
+    }
+
+    pub fn should_log(&mut self, interval: Duration) -> bool {
+        let now = Instant::now();
+        if now - self.last_log >= interval {
+            self.last_log = now;
+            true
+        } else {
+            false
+        }
+    }
+
+    pub fn percentile_95_step(&self) -> Option<Duration> {
+        if self.step_times.is_empty() {
+            return None;
+        }
+        let mut sorted = self.step_times.clone();
+        sorted.sort();
+        let idx = (sorted.len() as f64 * 0.95) as usize;
+        Some(sorted[idx])
+    }
+}
+```
+In the rest of the code `app.perf_metrics` is initialized in `App::try_new()`. Then the recording and the display every 60 frames (see `PERF_LOG_INTERVAL_SECS` and `PERF_SAMPLE_SIZE` in `17_winit_030/src/config.rs`) occurs in `WindowEvent::RedrawRequested` (see `17_winit_030/src/app/events.rs`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2081,6 +2402,30 @@ Try this:
 ### Comments
 {: .no_toc }
 
+It took me more time than anticipated. 
+
+* create `.ico` (https://www.icoconverter.com/, all resolutions)
+* `cargo add winres`
+* create a file named `build.rs` at the root of the package. See below: 
+
+```rust
+// build.rs
+
+fn main() {
+    if cfg!(target_os = "windows") {
+        let mut res = winres::WindowsResource::new();
+        res.set_icon("../assets/40tude.ico"); // .ico + relative path
+        res.compile().unwrap();
+    }
+}
+```
+* `build.rs` is built and executed at build time. If the target OS is Windows it uses `winres::WindowsResource` to add the `.ico` file to the ressources, compile them (using a ressource compiler). When this is done, it update `cargo:rustc-link-lib=` and `cargo:rustc-link-search` on the console, so that the cargo build script can link the compiled resource file to the final executable.
+
+
+Next we need to make sure the icon appear in the task bar
+
+* `cargo add image`
+* See below `Cargo.toml`:
 
 ```toml
 [package]
@@ -2099,9 +2444,37 @@ winit = { version = "0.30", features = ["rwh_06"] }
 
 [build-dependencies]
 winres = "0.1"
+```
 
+* In `src/app/events` add `fn load_icon() -> Option<Icon> {...}`
+
+```rust
+fn load_icon() -> Option<Icon> {
+    const ICON_DATA: &[u8] = include_bytes!("../../../assets/40tude.ico");
+    let image = image::load_from_memory(ICON_DATA).ok()?.to_rgba8();
+    let (width, height) = image.dimensions();
+    let rgba = image.into_raw();
+    Icon::from_rgba(rgba, width, height).ok()
+}
+```
+
+* At the begining of `resumed()` in `src/app/events.rs`, once the attributes for the window are created, if `load_icon()` returns an `icon`, then we add it to the attributes. See below:
+
+```rust
+fn resumed(&mut self, event_loop: &ActiveEventLoop) {
+    let mut window_attributes = Window::default_attributes()
+        .with_title(config::TITLE)
+        .with_inner_size(winit::dpi::PhysicalSize::new(config::WINDOW_WIDTH, config::WINDOW_HEIGHT));
+
+    if let Some(icon) = load_icon() {
+            window_attributes = window_attributes.with_window_icon(Some(icon));
+    }
+    ...
 
 ```
+
+
+
 
 
 
@@ -2126,14 +2499,290 @@ winres = "0.1"
 
 Try this:
 * `cargo run -p step_19`
+* `cargo run --release -p step_19`
+
+**Keyboard Controls**
+
+| Action | Effect |
+|--------|--------|
+| **Mouse Wheel Up** | Zoom in (see fewer, larger cells) |
+| **Mouse Wheel Down** | Zoom out (see more, smaller cells) |
+| **`+` key** | Zoom in |
+| **`-` key** | Zoom out |
+| **`F` or `F11`** | Toggle fullscreen |
+| **`O`** | Open pattern file dialog |
+
 
 <div align="center">
 <img src="./assets/img34.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
+
 ### Comments
 {: .no_toc }
+
+
+Until Step 18, the board was directly tied to the window size. If we resized the window, the simulation grid would change. This approach was simple but limited because the size of the windows was impacting life in our universe.
+
+Step 19 introduces zoom functionality by decoupling the simulation grid from the display window. Now:
+- The simulation board stays fixed at 1280×800 cells
+- The window can be any size and content is scaled using zoom
+- Users can zoom in and out to see different levels of detail
+- The simulation is not impacted by zoom operations. This allow to zoom in then zoom out and observe the 
+
+
+
+
+### Architecture Change
+{: .no_toc }
+
+From: Variable board size that resizes with zoom/window
+To: Fixed board size with **camera viewpor**t system 
+
+
+### How Zoom Works?
+{: .no_toc }
+
+At this stage the camera viewport is fixed (see Step 20 for panning)
+When we zoom, the rendering calculates how many board cells are visible in the window.
+
+**Initialization:**
+- Window: 1280×800 pixels
+- Cell size: 4 pixels 
+- Default zoom: 1.0
+
+```
+cells_visible_width  = 1280 / (4 * 1.0) = 320 cells
+cells_visible_height =  800 / (4 * 1.0) = 200 cells
+```
+
+```
+Board
+┌─────────────────────────────────────┐
+│         Viewport Camera             │
+│          ┌───────────┐              │
+│          │  320      │              │ 
+│          │           │              │   
+│          │           │200           │
+│          │           │              │
+│          └───────────┘              │
+│                                     │
+└─────────────────────────────────────┘
+↑                                    ↑
+  (0,0)                     (1280,800)
+```
+I know, the figure above is not at scale but you get the idea...
+
+**Zoom in to 2.0:**
+
+```
+cells_visible_width  = 1280 / (4 * 2.0) = 160 cells
+cells_visible_height =  800 / (4 * 2.0) = 100 cells
+```
+* We only see half as many cells. 
+* Each cell appears twice as large.
+
+```
+Board
+┌─────────────────────────────────────┐
+│                                     │
+│                                     │   
+│          Viewport Camera            │
+│           ┌────────┐                │
+│           │  160   │100             │ 
+│           └────────┘                │
+│                                     │
+│                                     │
+└─────────────────────────────────────┘
+↑                                    ↑
+  (0,0)                     (1280,800)
+```
+
+
+
+
+
+
+
+**Zoom out to 0.5**:
+```
+cells_visible_width  = 1280 / (4 * 0.5) = 640 cells
+cells_visible_height =  800 / (4 * 0.5) = 400 cells
+```
+* We see four times as many cells. 
+* Each cell appears half as large.
+
+```
+┌─────────────────────────────────────┐
+│          ┌────────────────┐         │
+│          │Viewport Camera │         │ 
+│          │                │         │   
+│          │                │400      │   
+│          │                │         │   
+│          │                │         │
+│          │     640        │         │
+│          └────────────────┘         │
+└─────────────────────────────────────┘
+↑                                    ↑
+  (0,0)                     (1280,800)
+```
+
+To keep in mind: The rendering buffer stays the same size as the board (1280×800 cells), but we sample a potentially smaller or larger region of the board based on the camera position and zoom level.
+
+
+
+### Rendering Pipeline
+{: .no_toc }
+
+```
+Fixed Board (1280×800)
+    ↓
+Camera Viewport Extraction (based on zoom_level)
+    ↓
+Pixels Buffer (same as board)
+    ↓
+GPU Scaling to Window Size (any size)
+    ↓
+Screen Display
+```
+
+
+When we will add panning, only Camera Viewport Extraction should be impacted. The extraction will take into account zoom_level and camera position. For now the camera is fixed on the center of the board.
+
+
+
+### Benefits of the Fixed Board Approach
+{: .no_toc }
+
+✅ No data loss when zooming out then back in
+✅ Consistent simulation (all cells always updated)
+✅ Natural zoom behavior (like copy.sh/life)
+✅ Simpler memory management (no reallocation)
+✅ Adding panning should be easy
+❌ Higher memory usage (3M cells always in RAM)
+❌ Lower FPS with large boards (always calculating all cells)
+
+
+### Change in `config.rs`
+{: .no_toc }
+
+```rust
+pub const CELL_SIZE: u32 = 4;  // at zoom 1.0
+pub const BOARD_WIDTH: u32 = 1280;    // FIXED - simulation grid
+pub const BOARD_HEIGHT: u32 = 800;    // FIXED - simulation grid
+pub const WINDOW_WIDTH: u32 = 1280;   // startup window size (can change)
+pub const WINDOW_HEIGHT: u32 = 800;   // startup window size (can change)
+
+// New zoom constants:
+pub const ZOOM_FACTOR: f32 = 1.15;    // Each zoom notch = +15%
+pub const ZOOM_MIN: f32 = 0.1;        // Can zoom out 10x
+
+```
+
+Zoom is limited between `ZOOM_MIN` and `ZOOM_MAX`. The later is computed dynamically based when the window is resized. It prevents zooming in so far that we see less than one cell. 
+
+
+
+
+
+
+### Change is `state.rs`
+{: .no_toc }
+
+The `App` structure is extended with new fields related to the zoom, camera and to express that the board dimensions are now fixed.
+
+```rust
+pub struct App {
+    pub board_width: u32,       // FIXED at BOARD_WIDTH (1280)
+    pub board_height: u32,      // FIXED at BOARD_HEIGHT (800)
+    pub surface_w: u32,         // Window width (can change)
+    pub surface_h: u32,         // Window height (can change)
+    pub zoom_level: f32,        // NEW: Current zoom (1.0 = default)
+    pub zoom_max: f32,          // NEW: Max zoom for this window size
+    pub camera_x: f32,          // NEW: View center X in board coords
+    pub camera_y: f32,          // NEW: View center Y in board coords
+    ...
+}
+```
+**`try_new()`**:
+- Initialize board with fixed size: `BOARD_WIDTH × BOARD_HEIGHT`
+- Set `zoom_level = 1.0`
+- Set `camera_x/y` to board center: `(BOARD_WIDTH/2, BOARD_HEIGHT/2)`
+- Calculate initial `zoom_max`
+
+**`handle_resize(win_w, win_h)`**:
+- Only updates window size (`surface_w/h`), board stays fixed
+- Recalculates `zoom_max` based on new window size
+- Pixels buffer size = board size (unchanged)
+- Only calls `pixels.resize_surface()`, NOT `resize_buffer()`
+
+**`handle_zoom(delta)`**:
+- Applies exponential zoom: `zoom_level *= ZOOM_FACTOR` (zoom in) or `/= ZOOM_FACTOR` (zoom out)
+- Clamps to `[ZOOM_MIN, ZOOM_MAX]`
+- **Does NOT resize board** (only logs the change)
+- Viewport calculation happens in render phase
+
+**`recalculate_board_size()`**: 
+- Has been removed (board size is now fixed)
+
+
+### Change in `render.rs`
+{: .no_toc }
+
+**`draw_board_with_camera()`**:
+1. Calculate visible area in board cells:
+2. Calculate viewport top-left corner:
+3. For each pixel in rendering buffer:
+   - Map pixel to board cell coordinate
+   - Sample cell state from fixed board
+   - Handle out-of-bounds as dead cells
+   - Draw to frame buffer
+
+
+
+
+### Changes in `events.rs`
+{: .no_toc }
+
+**Mouse Wheel Event**:
+```rust
+WindowEvent::MouseWheel { delta, .. } => {
+    let zoom_delta = match delta {
+        MouseScrollDelta::LineDelta(_x, y) => y,  // y > 0 = scroll up
+        MouseScrollDelta::PixelDelta(pos) => pos.y / 100.0,
+    };
+    
+    if zoom_delta.abs() > f32::EPSILON {
+        self.handle_zoom(zoom_delta);
+    }
+}
+```
+
+**Keyboard Zoom**:
+```rust
+// Zoom in: +, =
+if matches!(logical_key.as_ref(), Key::Character(s) if s == "+" || s == "=") {
+    self.handle_zoom(1.0);
+    return;
+}
+
+// Zoom out: -, _
+if matches!(logical_key.as_ref(), Key::Character(s) if s == "-" || s == "_") {
+    self.handle_zoom(-1.0);
+    return;
+}
+```
+
+**RedrawRequested**:
+- Now calls `render::draw_board_with_camera()` with camera and zoom parameters
+   
+**Performance Logging**:
+- Added `zoom={:.2}` to performance output format
+
+
+
+
 
 
 
