@@ -6,7 +6,7 @@ parent: "Programmation"
 # nav_order: 4
 math: mathjax
 date: 2015-09-27 21:42:50
-last_modified_date: 2025-09-11 18:00:00
+last_modified_date: 2025-11-05 23:00:00
 ---
 
 # My Computer Science Vocabulary Page
@@ -806,6 +806,17 @@ The ability of some programming languages to inspect type and code information a
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Semantic Versioning
+
+
+* Format : `MAJOR.MINOR.PATCH`
+* Increment:
+    * `MAJOR` version when you make incompatible API changes
+    * `MINOR` version when you add functionality in a backward compatible manner
+    * `PATCH` version when you make backward compatible bug fixes
+* Read this [page](https://semver.org/spec/v2.0.0.html) 
 
 
 
