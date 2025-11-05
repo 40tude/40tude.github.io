@@ -1829,10 +1829,17 @@ rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
-Just to make sure we are in sync... Logging is a 2 stages process. We need a frontend (`log`) which provides an interface (a set of standardized macros like `info!()`, `error!()`...). On the other end we also need a backend, the guy who do the real job and implemenat the behavior of `info!()`, `error!()`... If in my program I only have `log` then when I use `info!()` nothing happens. I my program use a module, let's say `wgpu` (which already use `log` and some macros). If my program does'nt not use `log_env` (or any other logging backend) then I will not see any message from `wgpu` in the terminal. Now, if I want to see the messages from `wgpu` and to log my own messages with `info!()` and al. in my application, it must use `log` and `log_env`. It is always a question of flexibility ([level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)in fact). If my application use `red_log` as a backend, all log messages are in red and `wgpu` just don't care. On its side it always use the good old macros provided by the frontend `log` (on its side, it use logging macros like `error!()` but it does not initialze anything, my app will). Now if my application use the brand new `avatar_log` all the log messages are blue and this require no change in my code nor in `wgpu`.
+Just to make sure we are in sync... Logging is a 2 stages process. We need a frontend (`log`) which provides an interface (a set of standardized macros like `info!()`, `error!()`...). On the other hand we need a backend, the guy who do the real job and implemenat the behavior of `info!()`, `error!()`... 
 
+If in my program I only have `log` then when I use `info!()` nothing happens. 
 
-Now, instead of `println!()` we can `info!()` or `error!()` and all we laready know about formating can be used.
+If my program uses a module, let's say `wgpu` (which already use `log` and some macros). Then if my program does'nt not use `log_env` (or any other logging backend) then I will not see any message from `wgpu` in the terminal. 
+
+Now, if I want to see the messages from `wgpu` and to log my own messages with `info!()` and al. in my application, it must use `log` and `log_env`. 
+
+It is always a question of flexibility ([level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)in fact). If my application use `red_log` as a backend, all log messages are in red and `wgpu` just don't care. On its side it always use the good old macros provided by the frontend `log` (on its side, it uses logging macros like `error!()` but it does not initialze anything, my app will). Now if my application use the brand new `avatar_log` all the log messages are blue and this requires no change in my code nor in `wgpu`. Cool, no?
+
+This said, instead of `println!()` we can `info!()` or `error!()` and all we know about formating can be used.
 
 Since we want to be able to log from any source code one option is modify `lib.rs` so that it include a `prelude` module. See below:
 
@@ -1987,8 +1994,7 @@ INFO [step_14::app::state] handle_resize(): Window new size = 712x400 pixels and
 INFO [step_14] Application terminated.
 ```
 
-Finally I decided to comment out the `prelude` module in `lib.rs` and to be explicit everywhere. The good news is that `error!()`, `info!()` and others have the same syntax. Replacing `env_logger` with `flexi_logger` is an easy win.
-I create a setup_logging() function in `main.rs`. Here it is:
+Finally I decided to comment out the `prelude` module in `lib.rs` and to be explicit everywhere. I also created a `setup_logging()` function in `main.rs`. Here it is:
 
 ```rust
 fn setup_logging() -> Result<()> {
@@ -2014,11 +2020,12 @@ fn setup_logging() -> Result<()> {
     Ok(())
 }
 ```
-There are many options possible. Here I decide to store the logs files in a `logs/` directory (check out the basename `step_14`). In the code I indicate I want to create log files per day, not bigger than 10MB and to keep the last two... Again many options are available and I'm very happy (except fot `WriteMode::Async` that does not work) to have found this crate.
+
+There are many options possible. Here I decide to store the logs files in a `logs/` directory (check out the basename `step_14`). In the code I indicate I want to create log files per day, not bigger than 10MB and to keep the last two... Again many options are available and I'm very happy (except for the `WriteMode::Async` that does not work) to have found this crate.
 
 It is a good opportunity to look for `println!` and other `eprintln!` and to replace them. 
 
-Last comment: make sure to add `logs/` to `.gitignore`
+Last point. Make sure to add `logs/` to `.gitignore`
 
 
 
