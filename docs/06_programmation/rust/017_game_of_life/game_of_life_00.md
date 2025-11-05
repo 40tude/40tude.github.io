@@ -35,11 +35,12 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 ## TL;DR
 {: .no_toc }
 
-* For beginners
-* Uses Winit and Pixels
-* ...
+* For Rust beginners
+* Winit, Pixels and wgpu
+* Start from scratch (single file, basic window)
+* Build incrementally (modularization, logging, error management, performance metrics...)
 * The Rust workspace is on GitHub
-* Uses VSCode + Win11 (not tested elsewhere)
+* VSCode + Win11 (not tested elsewhere)
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="900" loading="lazy"/><br/>
@@ -2830,21 +2831,21 @@ Try this:
 
 **Keyboard Controls**
 
-| Action               | Effect                             |
-|----------------------|------------------------------------|
-| **`CTRL+Q`**         | Exit                               |
-| **`CTRL+O`**         | Open pattern file dialog           |
-| **`CTRL+R`**         | Load random pattern                |
-| **`F11`**            | Toggle full screen                 |
-| **`ESC`**            | Full screen -> Window -> Exit      |
-| **Mouse Wheel Up**   | Zoom in (see fewer, larger cells)  |
-| **Mouse Wheel Down** | Zoom out (see more, smaller cells) |
-| **`+` key**          | Zoom in (see fewer, larger cells)  |
-| **`-` key**          | Zoom out (see more, smaller cells) |
-| ➡️                   | Move the camera left               |
-| ⬅️                   | Move the camera right              |
-| ⬆️                   | Move the camera up                 |
-| ⬇️                   | Move the camera down               |
+| Action           | Effect                             |
+|------------------|------------------------------------|
+| `CTRL+Q`         | Exit                               |
+| `CTRL+O`         | Open pattern file dialog           |
+| `CTRL+R`         | Load random pattern                |
+| `F11`            | Toggle full screen                 |
+| `ESC`            | Full screen -> Window -> Exit      |
+| Mouse Wheel Up   | Zoom in (see fewer, larger cells)  |
+| Mouse Wheel Down | Zoom out (see more, smaller cells) |
+| `+` key          | Zoom in (see fewer, larger cells)  |
+| `-` key          | Zoom out (see more, smaller cells) |
+| ➡️               | Move the camera left               |
+| ⬅️               | Move the camera right              |
+| ⬆️               | Move the camera up                 |
+| ⬇️               | Move the camera down               |
 
 
 
