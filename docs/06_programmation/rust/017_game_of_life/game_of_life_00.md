@@ -22,7 +22,7 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 
 
 <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is still under construction 🚧</b></span>    
+<span style="color:orange"><b> 🚧 This post is almost done 🚧</b></span>    
 </h2>
 
 
@@ -49,7 +49,7 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 
 
 
-
+I know the post is pretty long, so feel free to check out the table of contents and click on the topic that interests you the most.
 
 ## Table of Contents
 {: .no_toc .text-delta}
@@ -1828,6 +1828,9 @@ rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
+Just to make sure we are in sync... Logging is a 2 stages process. We need a frontend (`log`) which provides an interface (a set of standardized macros like `info!()`, `error!()`...). On the other end we also need a backend, the guy who do the real job and implemenat the behavior of `info!()`, `error!()`... If in my program I only have `log` then when I use `info!()` nothing happens. I my program use a module, let's say `wgpu` (which already use `log` and some macros). If my program does'nt not use `log_env` (or any other logging backend) then I will not see any message from `wgpu` in the terminal. Now, if I want to see the messages from `wgpu` and to log my own messages with `info!()` and al. in my application, it must use `log` and `log_env`. It is always a question of flexibility ([level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)in fact). If my application use `red_log` as a backend, all log messages are in red and `wgpu` just don't care. On its side it always use the good old macros provided by the frontend `log` (on its side, it use logging macros like `error!()` but it does not initialze anything, my app will). Now if my application use the brand new `avatar_log` all the log messages are blue and this require no change in my code nor in `wgpu`.
+
+
 Now, instead of `println!()` we can `info!()` or `error!()` and all we laready know about formating can be used.
 
 Since we want to be able to log from any source code one option is modify `lib.rs` so that it include a `prelude` module. See below:
@@ -1941,12 +1944,14 @@ edition = "2024"
 
 [dependencies]
 clap = "4.5.48"
-flexi_logger = "0.31.7"
+flexi_logger = { version = "0.31.7", features = ["async"] }
 log = "0.4.28"
 pixels = "0.15"
 rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
+
+I keep the feature `async` here. It does'nt hurt but it does'nt work under Windows 11. One may want to give it a try if using Linux or other. See the code below.
 
 <div align="center">
 <img src="./assets/img29_2.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1982,39 +1987,37 @@ INFO [step_14] Application terminated.
 ```
 
 Finally I decided to comment out the `prelude` module in `lib.rs` and to be explicit everywhere. The good news is that `error!()`, `info!()` and others have the same syntax. Replacing `env_logger` with `flexi_logger` is an easy win.
-I create a setup_logging() function in main.rs. Here it is:
+I create a setup_logging() function in `main.rs`. Here it is:
 
 ```rust
 fn setup_logging() -> Result<()> {
-    // See logger::try_with_env_or_str(...)
-    Logger::try_with_str("step_14=info, wgpu_core=info, wgpu_hal=warn, wgpu=off, naga=off")?
-        // Folder ./logs (here workspace)
+    Logger::try_with_str("step_14=trace, wgpu_core=info, wgpu_hal=warn, wgpu=off, naga=off")?
         .log_to_file(FileSpec::default().basename("step_14").directory("./logs"))
         .rotate(
-            // Criterion::Size(10_000_000), // 10 MB
-            // Criterion::Age(Age::Day),  // create a new file every day
             Criterion::AgeOrSize(Age::Day, 1_000_000),
             Naming::Numbers,          // app.log, app.r001.log, app.r002.log, ...
             Cleanup::KeepLogFiles(2), // keep the last 2 + current
         )
-        // Duplicate on console
-        .duplicate_to_stderr(Duplicate::Info)
+        .duplicate_to_stdout(Duplicate::All) // try `Duplicate::Info` to display Info and above
+        // .write_mode(WriteMode::Async) // async does NOT work under WIN 11
+        .write_mode(WriteMode::BufferAndFlush) // kind of compromise between async and sync
         .start()?;
 
-    log::trace!("This is a TRACE message"); // should not be displayed
-    log::debug!("This is a DEBUG message"); // should not be displayed
-    log::info!("This is an INFO message"); // should be displayed
-    log::warn!("This is a WARNING message"); // should be displayed
-    log::error!("This is an ERROR message"); // should be displayed
+    // TRACE DEBUG INFO WARN ERROR
+    log::trace!("This is a TRACE message");
+    log::debug!("This is a DEBUG message");
+    log::info!("This is an INFO message");
+    log::warn!("This is a WARNING message");
+    log::error!("This is an ERROR message");
 
     Ok(())
 }
 ```
-There are many options possible. Here I decide to store the logs files in a `logs/` directory (check out the basename `step_14`). In the code I indicate I want to create log files per day, not beggir than 10MB and keep the last two... Again many options are available and I'm very happy to have found this crate.
+There are many options possible. Here I decide to store the logs files in a `logs/` directory (check out the basename `step_14`). In the code I indicate I want to create log files per day, not bigger than 10MB and to keep the last two... Again many options are available and I'm very happy (except fot `WriteMode::Async` that does not work) to have found this crate.
 
 It is a good opportunity to look for `println!` and other `eprintln!` and to replace them. 
 
-Last comment: make sur to add `logs/` to `.gitignore`
+Last comment: make sure to add `logs/` to `.gitignore`
 
 
 
@@ -2113,7 +2116,7 @@ In short, this kind of code review:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 17  : Measure performances (winit_30 only)
+## Step 17  : Measure performances 
 
 Because if we measure, we can track and see whether performance is improving or deteriorating.
 
@@ -2412,8 +2415,10 @@ You need a ressource compiler installed on your system. Go to this [page](https:
 </div>
 
 * Create an `.ico` file. You can go on this [page](https://www.icoconverter.com/), generate all resolutions
-* `cargo add winres`
-* Create a file named `build.rs` at the root of the package. See below: 
+* `cargo add winres --build`. ⚠️ Don't mess with Texas and don't forget `--build`
+* Take few minutes to read the [winres crates](https://crates.io/crates/winres) page on [crates.io](https://crates.io/)
+* Create a file named `build.rs` at the root of the package. See below its content: 
+
 
 ```rust
 // build.rs
@@ -2812,18 +2817,43 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s == "-" || s == "_") {
 ## Step 20 : Panning and Random Pattern Load
 
 Try this:
+* `cargo run --release -p step_20`
 * `cargo run -p step_20`
+
+
 
 <div align="center">
 <img src="./assets/img35.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
+
+**Keyboard Controls**
+
+| Action               | Effect                             |
+|----------------------|------------------------------------|
+| **`CTRL+Q`**         | Exit                               |
+| **`CTRL+O`**         | Open pattern file dialog           |
+| **`CTRL+R`**         | Load random pattern                |
+| **`F11`**            | Toggle full screen                 |
+| **`ESC`**            | Full screen -> Window -> Exit      |
+| **Mouse Wheel Up**   | Zoom in (see fewer, larger cells)  |
+| **Mouse Wheel Down** | Zoom out (see more, smaller cells) |
+| **`+` key**          | Zoom in (see fewer, larger cells)  |
+| **`-` key**          | Zoom out (see more, smaller cells) |
+| ➡️                   | Move the camera left               |
+| ⬅️                   | Move the camera right              |
+| ⬆️                   | Move the camera up                 |
+| ⬇️                   | Move the camera down               |
+
+
+
+
 ### Comments
 {: .no_toc }
 
 
-Add `rand` to Cargo.toml
+I add `rand` to `Cargo.toml` because i want to be able to load a random pattern file when pressing CTRL+R.
 
 ```toml
 [package]
@@ -2833,7 +2863,7 @@ edition = "2024"
 
 [dependencies]
 clap = "4.5.48"
-flexi_logger = "0.31.7"
+flexi_logger = { version = "0.31.7", features = ["async"] }
 image = "0.25"
 log = "0.4.28"
 pixels = "0.15"
@@ -2845,19 +2875,38 @@ winit = { version = "0.30", features = ["rwh_06"] }
 winres = "0.1"
 ```
 
-### TODO
-{: .no_toc }
 
-* Improve the code so that pressing `CTRL+R`, it loads a randomly selected pattern file 
+
+
+
+
+
+
+
+
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-
 
 ## Conclusion
+
+This project was never just about coding *Conway’s Game of Life* in Rust — it was about using it as a playground to explore real-world development concepts. Step by step, we moved from a minimal prototype (do you remember the Blue Screen of Birth?) to a modular, tested, logged, GPU-accelerated, and visually interactive application.
+
+Along the way, we learned how to:
+
+* Structure a Rust workspace and modularize cleanly
+* Use **Winit** and **Pixels** to manage windows, buffers, and rendering
+* Handle events, resizing, fullscreen, and input elegantly
+* Add logging, error management, and performance metrics
+* Understand GPU backends, presentation modes, and resource icons
+* Build incrementally — test, measure, and refactor continuously
+
+The real value lies in the journey: understanding how small, focused improvements lead to maintainable and scalable code. From here, the door is open to experiment with shaders, [Hashlife](https://johnhw.github.io/hashlife/index.md.html){:target="_blank"}, or, why not WebAssembly — but the core lessons remain the same: **clarity, modularity, and iteration**.
+
+
 
 
 
@@ -2873,24 +2922,25 @@ winres = "0.1"
 
 
 ## Webliography
-`CTRL+click` to open the link in a new tab.
+<!-- `CTRL+click` to open the link in a new tab. -->
 
-* [Life Wiki](https://conwaylife.com/wiki/Main_Page). Where you can download pattern collection. 
-* [conwaylife.com](https://conwaylife.com/) 
-* [Conway's Game of Life viewer](https://copy.sh/life/). I really like it
-* [RLE file format](https://conwaylife.com/wiki/Run_Length_Encoded)
-* Advanced. Detailed explainations about the [Hashlife algorithm](https://johnhw.github.io/hashlife/index.md.html)
-* [wgpu Documentation](https://docs.rs/wgpu)
-* [Pixels Documentation](https://docs.rs/pixels)
-* [Vulkan vs DirectX Comparison](https://www.khronos.org/vulkan/)
-* [WGPU Best Practices](https://github.com/gfx-rs/wgpu/wiki)
+* [Life Wiki](https://conwaylife.com/wiki/Main_Page){:target="_blank"}. Where you can download pattern collection. 
+* [conwaylife.com](https://conwaylife.com/){:target="_blank"} 
+* [Conway's Game of Life viewer](https://copy.sh/life/){:target="_blank"}. I really like it
+* [RLE file format](https://conwaylife.com/wiki/Run_Length_Encoded){:target="_blank"}
+* Advanced. Detailed explainations about the [Hashlife algorithm](https://johnhw.github.io/hashlife/index.md.html){:target="_blank"}
+* [wgpu Documentation](https://docs.rs/wgpu){:target="_blank"}
+* [Pixels Documentation](https://docs.rs/pixels){:target="_blank"}
+* [Vulkan vs DirectX Comparison](https://www.khronos.org/vulkan/){:target="_blank"}
+* [WGPU Best Practices](https://github.com/gfx-rs/wgpu/wiki){:target="_blank"}
 
 
 
 
 ## Videos
 
-No matter if you speak french or not watch the first video and add caption if needed. It is about an **analogic version of the game of life**. Smoking!
+No matter if you speak french or not, watch the first video and add caption if needed. It is about an **analogic version of the game of life**. Smoking!
+
 <div align=center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PlzV4aJ7iMI?si=g3ZipX16w5sUbyZm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

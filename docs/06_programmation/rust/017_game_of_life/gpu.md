@@ -149,7 +149,7 @@ pixels = "0.15"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
-In our experiments we need to log messages from the `wgpu` crate so we need to have the `env_logger` crate in `Cargo.toml`.
+In our experiments we need to see the log messages from the `wgpu` crate so we need to have the `env_logger` crate in `Cargo.toml`.
 In addition, as explained in the [initial post]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}) I use `Pixels 0.15` and `Winit 0.30` — both in their latest version (in Nov 2025).
 
 OK... Now, having all this in mind let's see what happens on **my** system and don't be surprised if the results differ on yours.
