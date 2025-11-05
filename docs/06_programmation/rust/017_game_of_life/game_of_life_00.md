@@ -2579,7 +2579,7 @@ cells_visible_width  = 1280 / (4 * 1.0) = 320 cells
 cells_visible_height =  800 / (4 * 1.0) = 200 cells
 ```
 
-```
+<!-- ```
 Board
 ┌─────────────────────────────────────┐
 │         Viewport Camera             │
@@ -2594,7 +2594,12 @@ Board
 ↑                                    ↑
   (0,0)                     (1280,800)
 ```
-I know, the figure above is not at scale but you get the idea...
+I know, the figure above is not at scale but you get the idea... -->
+
+<div align="center">
+<img src="./assets/img34_1.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 **Zoom in to 2.0:**
 
@@ -2606,7 +2611,7 @@ cells_visible_height =  800 / (4 * 2.0) = 100 cells
 * Each cell appears twice as large.
 * The viewport remains centered
 
-```
+<!-- ```
 Board
 ┌─────────────────────────────────────┐
 │                                     │
@@ -2620,8 +2625,12 @@ Board
 └─────────────────────────────────────┘
 ↑                                    ↑
   (0,0)                     (1280,800)
-```
+``` -->
 
+<div align="center">
+<img src="./assets/img34_2.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
@@ -2636,7 +2645,7 @@ cells_visible_height =  800 / (4 * 0.5) = 400 cells
 * We see four times as many cells. 
 * Each cell appears half as large.
 
-```
+<!-- ```
 ┌─────────────────────────────────────┐
 │          ┌────────────────┐         │
 │          │Viewport Camera │         │ 
@@ -2649,7 +2658,14 @@ cells_visible_height =  800 / (4 * 0.5) = 400 cells
 └─────────────────────────────────────┘
 ↑                                    ↑
   (0,0)                     (1280,800)
-```
+``` -->
+
+<div align="center">
+<img src="./assets/img34_3.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
 
 The point to keep in mind: the rendering buffer stays the same size as the board (1280×800 cells), but we sample a potentially smaller or larger region of the board based on the camera position and zoom level.
 
