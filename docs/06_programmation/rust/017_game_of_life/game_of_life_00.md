@@ -7,7 +7,7 @@ description: A beginner-friendly guide to using the Pixels and Winit crates to c
 parent: Rust
 #math: mathjax
 date               : 2025-10-29 07:00:00
-last_modified_date : 2025-11-03 18:00:00
+last_modified_date : 2025-11-05 17:00:00
 ---
 
 
@@ -21,9 +21,9 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is almost done 🚧</b></span>    
-</h2>
+</h2> -->
 
 
 
@@ -2864,7 +2864,7 @@ Try this:
 
 
 
-### Comments
+### Changes in `Cargo.toml`
 {: .no_toc }
 
 
@@ -2892,6 +2892,7 @@ winres = "0.1"
 
 
 ### Changes in `config.rs`
+{: .no_toc }
 
 The colors are now define in `config.rs` the dark blue help to identify the area outside the border. See below:
 
@@ -2907,6 +2908,7 @@ pub const COLOR_OUT_OF_BOUNDS: u32 = 0x1A1A2EFF; // Blue-gray - area outside boa
 
 
 ### Changes in `state.rs`
+{: .no_toc }
 
 **Added to `App` struct**:
 ```rust
@@ -2931,6 +2933,7 @@ pub last_mouse_pos: Option<(f32, f32)>, // Previous mouse position for delta
 
 
 ### Changes in `events.rs`
+{: .no_toc }
 
 Add `MouseButton` from winit and new event Handlers
 
@@ -2949,6 +2952,7 @@ Add `MouseButton` from winit and new event Handlers
 
 
 ### Changes in `render.rs`
+{: .no_toc }
 
 - Color Extraction from config (RGBA format: `0xRRGGBBAA`). See:
     ```rust
