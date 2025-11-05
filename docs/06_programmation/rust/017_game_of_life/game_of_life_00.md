@@ -39,7 +39,7 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 * Winit, Pixels and wgpu
 * Start from scratch (single file, basic window)
 * Build incrementally (modularization, arguments, logging, error management, performance metrics...)
-* The Rust workspace is on GitHub
+* The Rust workspace is on [GitHub](https://github.com/40tude/rust_game_of_life)
 * VSCode + Win11 (not tested elsewhere)
 
 <div align="center">
@@ -131,7 +131,7 @@ When I discussed the idea with ChatGPT and explained that, for teaching purposes
 There has been, and this is really great, a huge effort made in terms of documentation. However, I don't understand why, unlike the canonical `README.md` file, there isn't a `PHILOSOPHY.md` or `ETHOS.md` file that would explain the key concepts behind the API, the important points to keep in mind, the mindset needed when approaching the crate... This file would, of course, include diagrams and additional explanations around some of the key sample code available in the `examples/` directory.
 
 Ok, this said:
-1. Get the code of this project from GitHub 
+1. Get the code of this project from [GitHub](https://github.com/40tude/rust_game_of_life) 
 1. Open the workspace with VSCode
 1. Once in VSCode, open a terminal (CTRL + ù on a FR keyboard)
 1. `cargo run -p step_00_winit_029`

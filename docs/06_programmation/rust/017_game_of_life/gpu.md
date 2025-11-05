@@ -45,7 +45,7 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
     * Vulkan: cross-platform
 * GPU selection is a hint, not a command 
 * Enable logging to debug GPU/backend selection
-<!-- * The Rust workspace is on GitHub -->
+* The Rust workspace is on [GitHub](https://github.com/40tude/rust_game_of_life)
 * I use VSCode + Win11 (not tested elsewhere)
 
 <div align="center">
@@ -101,7 +101,7 @@ dxdiag /t "./dxdiag.txt"
 * It reports obsolete information.
 
 
-It is time to get the project from GitHub, open it in VSCode and let's check everything is in place.
+It is time to get the project from [GitHub](https://github.com/40tude/rust_game_of_life), open it in VSCode and let's check everything is in place.
 
 To do so, follow me blindly and once in VSCode, open a terminal (CTRL+ù on FR keyboard) then enter the command : `cargo run -p step_11 --example demo_00`
 
