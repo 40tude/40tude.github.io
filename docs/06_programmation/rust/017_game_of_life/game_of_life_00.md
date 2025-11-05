@@ -551,6 +551,8 @@ Before that, let's see how we can "animate" the content of our universe with bot
 ## Step 01: Action !
 
 ### winit 0.29 version
+{: .no_toc }
+
 In the terminal enter the command : `cargo run -p step_01_winit_029`
 
 <div align="center">
@@ -685,6 +687,8 @@ fn main() -> Result<()> {
 
 
 ### winit 0.30 version
+{: .no_toc }
+
 In the terminal enter the command : `cargo run -p step_01_winit_030`
 
 <div align="center">
@@ -1563,7 +1567,7 @@ Try this:
 ### Comments
 {: .no_toc }
 
-Oh by the way... The project now have a `README.md`. Yeah!
+Oh by the way... The project now have a `README.md`. Yeah! Calm down... In fact, in this context, the `README.md` are for me, mainly places where to store notes, ideas, TODO, copy and pasts console outputs... Do not expect to much from them.
 
 The easiest way to manage arguments is to use CLAP and to do so we need to extend `Cargo.toml`.
 
@@ -1829,7 +1833,7 @@ rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
-Just to make sure we are in sync... Logging is a 2 stages process. We need a frontend (`log`) which provides an interface (a set of standardized macros like `info!()`, `error!()`...). On the other hand we need a backend, the guy who do the real job and implemenat the behavior of `info!()`, `error!()`... 
+Just to make sure we are in sync... Logging is a 2 stages process. We need a frontend (`log`) which provides an interface (a kind of trait, an abstract class in C++ if you will, a set of standardized macros like `info!()`, `error!()`...). On the other hand we need a backend, the guy who do the real job and implemenat the behavior of `info!()`, `error!()`... 
 
 If in my program I only have `log` then when I use `info!()` nothing happens. 
 
@@ -2073,7 +2077,7 @@ Try this:
 ### Comments
 {: .no_toc }
 
-For a while now, I’ve known I needed to revisit those questions about error handling and invariants — but you know how it goes… we keep putting it off, because those are the kinds of things that take time and thought, while what we *really* want is to see cells live and die.
+For a while now, I’ve known I needed to revisit those questions about error handling and [invariants]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant) — but you know how it goes… we keep putting it off, because those are the kinds of things that take time and thought, while what we *really* want is to see cells live and die.
 
 And yet… here’s an example. Open the file `16/src/gol/utils.rs` and look at the code for the function `place_pattern_centered()`. Right now, it returns a `Result<()>`. But is that really necessary, given that there’s no actual error being generated inside the function body?
 If not, we should change the function’s signature and, of course, update all the places where it’s called. Fortunately, VSCode makes this easy: just press **SHIFT+F12** while the cursor is on the name `place_pattern_centered`.
@@ -2522,14 +2526,14 @@ Try this:
 
 **Keyboard Controls**
 
-| Action | Effect |
-|--------|--------|
-| **Mouse Wheel Up** | Zoom in (see fewer, larger cells) |
-| **Mouse Wheel Down** | Zoom out (see more, smaller cells) |
-| **`+` key** | Zoom in |
-| **`-` key** | Zoom out |
-| **`F` or `F11`** | Toggle fullscreen |
-| **`O`** | Open pattern file dialog |
+| Action             | Effect                             |
+|--------------------|------------------------------------|
+| Mouse Wheel Up     | Zoom in (see fewer, larger cells)  |
+| Mouse Wheel Down   | Zoom out (see more, smaller cells) |
+| `+` key            | Zoom in                            |
+| `-` key            | Zoom out                           |
+| `F` or `F11`       | Toggle fullscreen                  |
+| `O`                | Open pattern file dialog           |
 
 
 <div align="center">
@@ -2838,6 +2842,8 @@ Try this:
 
 **Keyboard Controls**
 
+
+
 | Action           | Effect                             |
 |------------------|------------------------------------|
 | `CTRL+Q`         | Exit                               |
@@ -2847,6 +2853,7 @@ Try this:
 | `ESC`            | Full screen -> Window -> Exit      |
 | Mouse Wheel Up   | Zoom in (see fewer, larger cells)  |
 | Mouse Wheel Down | Zoom out (see more, smaller cells) |
+| Click left + move| Panning                            |
 | `+` key          | Zoom in (see fewer, larger cells)  |
 | `-` key          | Zoom out (see more, smaller cells) |
 | ➡️               | Move the camera left               |
@@ -2861,7 +2868,7 @@ Try this:
 {: .no_toc }
 
 
-I add `rand` to `Cargo.toml` because i want to be able to load a random pattern file when pressing CTRL+R.
+I add `rand` to `Cargo.toml` because I want to be able to load a random pattern file when pressing `CTRL+R` and when the application starts.
 
 ```toml
 [package]
@@ -2884,8 +2891,86 @@ winres = "0.1"
 ```
 
 
+### Changes in `config.rs`
+
+The colors are now define in `config.rs` the dark blue help to identify the area outside the border. See below:
+
+```rust
+pub const PAN_STEP: f32 = 20.0;                  // Number of cells to move per arrow key press
+pub const COLOR_CELL_ALIVE: u32 = 0xFFFFFFFF;    // White - living cells
+pub const COLOR_CELL_DEAD: u32 = 0x101010FF;     // Dark gray - dead cells in board
+pub const COLOR_OUT_OF_BOUNDS: u32 = 0x1A1A2EFF; // Blue-gray - area outside board
+``` 
 
 
+
+
+
+### Changes in `state.rs`
+
+**Added to `App` struct**:
+```rust
+pub is_panning: bool,                   // Left mouse button held?
+pub last_mouse_pos: Option<(f32, f32)>, // Previous mouse position for delta
+```
+
+**The function `pan_camera(delta_x, delta_y)`**:
+- Moves camera by delta in board coordinates
+- Calls `clamp_camera()` to enforce boundaries
+- Logs new camera position
+
+**The function `clamp_camera()`**:
+- Calculates visible area based on `zoom_level` and window size
+- Prevents camera from showing area outside board
+- Special case: if viewport > board, centers and locks camera
+
+**The function `handle_zoom()`**:
+- Added `clamp_camera()` call after zoom change
+- Viewport size changes with zoom → camera limits must update
+
+
+
+### Changes in `events.rs`
+
+Add `MouseButton` from winit and new event Handlers
+
+**Mouse Panning** (`WindowEvent::MouseInput`, `CursorMoved`)
+- MouseInput detects the start of the panning on left click
+- CursorMoved calculate delta while dragging
+- MouseInput detects the stop of panning on release
+- Note that the delta is inverted while dragging. Indeed, dragging right moves board left => camera moves right
+
+**Keyboard Panning** (`WindowEvent::KeyboardInput`)
+- See the calls `pan_camera(-PAN_STEP, 0)`
+
+<!-- The new keyboard controls are supported in the `src/app/events/ApplicationHandler::window_event::WindowEvent::KeyboardInput`. I know the way to point to the function is weird but I like it. To handle the arrow (left, up...) there is a call to `pan_camera()`. Use `F12` on the function to find the defintion. It does nothing except to update the camera position. In `events.rs` look for the call to `pan_camera()`. You will discover that panning is smarter whene done with the mouse than when done with the arrows of the keyboard. -->
+
+
+
+
+### Changes in `render.rs`
+
+- Color Extraction from config (RGBA format: `0xRRGGBBAA`). See:
+    ```rust
+    let color_alive = extract_rgba(COLOR_CELL_ALIVE);
+    let color_dead = extract_rgba(COLOR_CELL_DEAD);
+    let color_out_of_bounds = extract_rgba(COLOR_OUT_OF_BOUNDS);
+    ```
+- Rendering Logic:
+    ```rust
+    for each pixel in viewport:
+        // Map pixel → board cell coordinate
+        board_cell_x = view_left + (pixel_x / buffer_width) * visible_width
+        
+        // Check bounds
+        if cell inside board:
+            is_alive = board[cell_idx]
+            color = is_alive ? color_alive : color_dead
+        else:
+            color = color_out_of_bounds  // Visual feedback at edges!
+        
+        draw(pixel, color)
+    ```
 
 
 
@@ -2914,6 +2999,12 @@ Along the way, we learned how to:
 
 The real value lies in the journey: understanding how small, focused improvements lead to maintainable and scalable code. From here, the door is open to experiment with shaders, [Hashlife](https://johnhw.github.io/hashlife/index.md.html){:target="_blank"}, or, why not WebAssembly — but the core lessons remain the same: **clarity, modularity, and iteration**.
 
+Other ideas include but are not limited to:
+* Include multithreading so that I can move the window on the screen without blocking the application and the life in our universe  
+* Support the largest pattern files
+* Code refactoring. In `App` struct, define and use a type `cam_position(x, y)` instead of `camera_x` and `camera_y`. Same thing with `board_dim(w, h)` rather than `board_width` anf `board_height`...
+* Systematic testing
+* More documentation
 
 
 
