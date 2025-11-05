@@ -38,7 +38,7 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 * For Rust beginners
 * Winit, Pixels and wgpu
 * Start from scratch (single file, basic window)
-* Build incrementally (modularization, logging, error management, performance metrics...)
+* Build incrementally (modularization, arguments, logging, error management, performance metrics...)
 * The Rust workspace is on GitHub
 * VSCode + Win11 (not tested elsewhere)
 
@@ -107,7 +107,7 @@ Ready to hop on?
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 00: A gentle start
+## Step 00: A Gentle Start
 
 When I discussed the idea with ChatGPT and explained that, for teaching purposes, I wanted to build a Game of Life application in Rust and was looking for a helpful library, it kindly pointed me to the Winit and Pixels crates. I then checked out the links below (this is a lie but this what I should have done):   
 
@@ -403,7 +403,7 @@ On my system, in the terminal I can see:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 00: A gentle start II
+## Step 00: A Gentle Start II
 
 Here, the end result is the same but we use Winit 0.30. In a terminal, in VSCode enter the command :
 
@@ -816,7 +816,7 @@ It is really a matter of code re-organization.
 <!-- ###################################################################### -->
 
 
-## Step 02 : Handle keystroke and resize
+## Step 02 : Handle Keystroke and Resize
 
 Now we have a better understanding of the loop and a code structure that we can use. Let's see how we can manage window resizing. In addition, pressing `F11` will allow us to set the window full screen.
 
@@ -991,7 +991,7 @@ This will distort the image
 <!-- ###################################################################### -->
 
 
-## Step 03 : Resize the universe I
+## Step 03 : Resize the Universe I
 
 Here the idea is to and to display more or less cells according to the size of the window on screen.
 
@@ -1076,7 +1076,7 @@ It seems that even before displaying any content, the `recreate_buffer()` functi
 <!-- ###################################################################### -->
 
 
-## Step 04 : Resize the universe II
+## Step 04 : Resize the Universe II
 
 Here we just draw 4 larger cells (16x16) in each corners of our universe
 
@@ -1112,7 +1112,7 @@ Let's try to fix that
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 05 : Avoid too many redraws at startup
+## Step 05 : Avoid Too Many Redraws at Startup
 
 Here too we draw 4 larger cells (16x16) in the corners of the universe.
 
@@ -1224,7 +1224,7 @@ Ok, I guess we are ready to animate some cells.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 06 : First Game Of Life pattern living
+## Step 06 : First Living Pattern in the Game of Life
 
 
 `cargo run -p step_06`
@@ -1339,7 +1339,7 @@ This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It i
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 07 and Step 08 : Modularization + Testing in gol/utils.rs + Open pattern file
+## Step 07 and Step 08 : Modularization + Testing in `gol/utils.rs` + Open Pattern File
 
 
 * `cargo run -p step_07`
@@ -1436,7 +1436,7 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 09 : Better asynchronous error management
+## Step 09 : Better Asynchronous Error Management
 
 `cargo run -p step_09`
 
@@ -1540,7 +1540,7 @@ Cool... Let see how we could pass a filename containing a pattern as an argument
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 10 : Handling CLI arguments
+## Step 10 : Handling CLI Arguments
 
 Try this:
 
@@ -1701,7 +1701,7 @@ The conclusion is :
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 12  : Asking for GPU, setting backend and presentation mode
+## Step 12  : Asking for GPU, Setting Backend and Presentation Mode
 
 Try this:
 * `cargo run -p step_12`
@@ -1799,7 +1799,7 @@ Later, if needed we will be able to make changes.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 13 : Add logging
+## Step 13 : Add Logging
 
 Try this:
 * `cargo run -p step_13`
@@ -1921,7 +1921,7 @@ To conclude this section, the following arrays are mostly **for me**. Believe it
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 14  : Add logging in files
+## Step 14  : Add Logging in Files
 
 Try this:
 * `cargo run -p step_14`
@@ -2029,7 +2029,7 @@ Last comment: make sure to add `logs/` to `.gitignore`
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 15  : More testing in src/gol/utils.rs
+## Step 15  : More Testing in `src/gol/utils.rs`
 
 Try this:
 * `cargo test -p step_15`
@@ -2053,7 +2053,7 @@ Read the code in `src/gol/utils.rs`
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 16  : Check the invariants, improve error management
+## Step 16  : Check the Invariants, Improve Error Management
 
 Try this:
 * `cargo run -p step_16`
@@ -2117,7 +2117,7 @@ In short, this kind of code review:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 17  : Measure performances 
+## Step 17  : Measure Performances 
 
 Because if we measure, we can track and see whether performance is improving or deteriorating.
 
@@ -2393,7 +2393,7 @@ In the rest of the code `app.perf_metrics` is initialized in `App::try_new()`. T
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 18  : Add an icon
+## Step 18  : Add an Icon
 
 Try this:
 * `cargo run -p step_18`
