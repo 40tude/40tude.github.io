@@ -6,7 +6,7 @@ parent: "Programmation"
 nav_order: 1
 #math: mathjax
 date:               2024-11-29 15:00:00
-last_modified_date: 2025-08-18 14:00:00
+last_modified_date: 2025-11-06 17:00:00
 ---
 
 
@@ -612,43 +612,77 @@ Bien voir le ``-r`` de la commande ``git rm``
 <!-- ####################################################################### -->
 ## Pull Request (PR pour les intimes)
 
-Aller sur : `https://github.com/firstcontributions/first-contributions`  
+### 1. Forker le projet
 
-### Forker le projet
-* On va avoir une copie du projet dans notre propre repo  
-* Sur le host local  
-    * Ouvrir un terminal dans un répertoire où on veut créer le clone  
-    * Cloner le projet : ``git clone https://github.com/40tude/first-contributions.git``  
+* Avec un browser web, aller sur : `https://github.com/firstcontributions/first-contributions` ou un autre projet, mais bon, celui là est justement pour qu'on s’entraîne.
 
-### Créer une branche
-``git switch -c b1``  
+* Cliquer sur le bouton **Fork** (rectangle rouge ci-dessous)
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+* On va récupérer une copie du projet dans notre repo GitHub  
+* Sur notre PC, ouvrir un terminal dans un répertoire où on veut créer le clone  
+* Cloner le projet à partir de notre repo Github
+    * ``git clone https://github.com/40tude/first-contributions.git``  
+    * `git remote -v`  
+* Si dans la liste affichée on ne voit pas le repo du projet initial 
+    * `git remote add upstream <URL-du-projet-original>` 
+    * C'est à faire qu'une seule fois
+
+        
+
+### 2. Créer et basculer sur une branche
+* `git switch -c b1`
+
+C'est équivalent à: 
+* `git branch b1`      # créer la branche
+* `git switch b1`      # basculer vers la branche
 
 
-Ensuite...  
 
+### 3. Business as usual
+
+* Pas d'embrouille... On est bien sur la branche `b1`. 
 * Lire : `https://github.com/firstcontributions/first-contributions/blob/main/gui-tool-tutorials/github-windows-vs-code-tutorial.md`  
-* Faire des modifs proposées (ajouter son nom à ``contributors.md``)
+* Faire les modifs proposées (ajouter son nom à ``contributors.md``)
 * Sauver  
-* Faire un commit de la branche `b1` sur le fork de notre repo  
-* GitHub détecte une différence entre mon fork et le projet original  
+* Faire un commit de la branche `b1` de notre repo Github 
+
+
+
+### 4. Pull Request 
+* Avec un browser web aller sur la page du projet sur **notre** repo Github
+* GitHub a détecté une différence entre le fork et le projet original  
 * Il propose de faire un pull request  
 * Quand c'est fait, le PR est alors une proposition de merge de la branche `b1` du fork vers la branche `main` du projet original  
 
 Ensuite...  
 
-* Les mainteneurs examinent la PR.  
+* Les mainteneurs examinent la PR, réunion du conseil d'état, tout ça, tout ça...
 * Il l’acceptent ou demandent des changements (via des commentaires sur GitHub).  
-* Je fais les changements dans la branche `b1` sur le host puis je commite sur mon fork   
+* Je fais les changements dans la branche `b1` sur mon PC puis je commite sur mon repo GitHub   
 * Les modifs seront automatiquement ajoutées à la PR
-* Ensuite quand la PR a été acceptée et fusionnée il faut :
 
-`git remote add upstream <URL-du-projet-original>` (à faire une seule fois)  
-``git switch main``  
-``git fetch upstream``  
-``git merge upstream/main``  
 
-Supprimer la branche ``b1``  
+### 5. Se maintenir à jour
 
+C'est important avec les "vrais" projets mais bon par exemple ici on peut imaginer que les mainteneurs prennent un peu de temps pour répondre. On va donc jouer le jeu et maintenir notre copie du projet synchronisée avec le projet. En effet lui de son côté, il continue a évoluer.
+
+* Du coup tous les matins il faut:
+    * `git switch main          `   # laisser la branche sur laquelle on est et aller sur main
+    * `git fetch upstream       `   # récupérer les updates 
+    * `git merge upstream/main  `   # fusionner les updates
+    * `git push origin main     `   # pousser sur notre repo
+    * `git switch my_branch     `   # revenir sur notre branche
+    * `git rebase main          `   # intégrer les derniers changements sur notre branche
+    * `git push origin my_branch`   # travailler puis pousser sur notre repo
+
+
+Quand nos merges sont acceptés faut penser à supprimer la branche ``b1``  
+Ne pas hésiter à créer de nouvelles branches pour des PR différentes 
 
 
 **Que faire si la branche b1 est affectée par les changements ?**
@@ -687,9 +721,27 @@ On va voir les fichiers qui ont changé dans ``main`` mais pas dans ``b1``.
 Si on voit des fichiers sur lesquels on travaille dans ``b1``, alors faut rebaser  
 
 
+#### Comment nommer les branches?
+
+* feature/ ou feat/ → new features
+* fix/ ou bugfix/ → bug fixes
+* docs/ → documentation
+* refactor/ → refactoring (sans nouvelle feature)
+* test/ → adding tests
+* chore/ → taches diverses (config, dépendances...)
+* hotfix/ → correction urgente
+
+**Exemples:**
+* feature/add-syntax-highlighting
+* fix/menu-crash-on-resize
+* docs/improve-readme
+* refactor/cleanup-event-handling
+* test/add-unit-tests-dialog
 
 
-### Le lendemain matin...
+
+
+### La routine du matin...
 ```powershell
 # Ajouter le projet original comme remote (une seule fois, si ce n'a pas déjà été fait)
 git remote add upstream <URL-du-projet-original>
@@ -704,10 +756,23 @@ git merge upstream/main
 
 # Pousser les mises à jour de la branche ``main`` sur mon fork sur GitHub
 git push origin main
+
+
+# Revenir sur la branche où on était
+git switch my_branch        
+
+# Lntégrer les derniers changement sur notre branche
+git rebase main             
+
+# Travailler puis pousser sur notre repo et PR comme vu au dessus
+git push origin my_branch   
 ```
 
+
+
+
 ### Combien de fois par jour ?
-Combien de fois par jour faut il synchroniser avec le main ? 
+Combien de fois par jour faut il synchroniser avec le main du projet initial? 
 
 **Une à deux fois par jour**  
 1. Synchroniser une fois au **début de la journée** (ou avant de commencer une nouvelle tâche) 
@@ -729,7 +794,7 @@ Combien de fois par jour faut il synchroniser avec le main ?
 <!-- ####################################################################### -->
 ## Bonnes pratiques pour les merges sur `main` ?
 
-C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politique **stricte** des merges et de la **discipline**.
+C'est peut être pas cool ni dans l'air du temps, mais ça passe par une politique **stricte** des merges ainsi que par de la **discipline**.
 
 ### Utiliser des `feature branches`
 - Toute idée doit être développée dans une branche (ex. : `feature/ticket-123`) 
@@ -737,7 +802,7 @@ C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politiq
 
 ### Passer par des pull requests
 - Les merges dans `main` doivent être effectués via des PR
-    * Bien sûr, entre temps, il y a eu une revue de code, tous les test passent etc.
+- Bien sûr, entre temps, il y a eu une revue de code, tous les test passent etc.
 
 ### Limiter le nombre de merges par jour
 - Limiter les merges dans `main` à 1 ou 2 moments précis par jour

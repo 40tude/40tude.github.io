@@ -37,7 +37,7 @@ pwsh
 **Above, from where does `pwsh` comes from?**
 
 `pwsh` is the executable name for PowerShell 7 and later. It stands for: 
-> **P**ower**Sh**ell → **pwsh**
+> **P**o**w**er**Sh**ell → **pwsh**
 
 On Windows PowerShell 5.1, the executable was `powershell.exe`
 
@@ -160,7 +160,7 @@ choco upgrade powershell-core
 ## Set PowerShell as your default in Terminal Windows
 
 
-1. Open Terminal Windows (`WIN+X the I`)
+1. Open Terminal Windows (`WIN+X then I`)
 1. Settings → Startup → Default profile
 1. Select PowerShell
 
