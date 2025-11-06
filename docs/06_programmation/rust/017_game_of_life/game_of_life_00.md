@@ -136,14 +136,14 @@ Ok, this said:
 1. Once in VSCode, open a terminal (CTRL + ù on a FR keyboard)
 1. `cargo run -p step_00_winit_029`
     * You must use `-p` because I use a Rust's workspace with multiple packages and `step_00_winit_029` is one of them
-    * Compare to the other packages (02, 03...) the name of this first package is long because it expresses the fact that it depends on the Winit version 0.29. 
+    * Compare to the other packages (02, 03...) the name of this first package is long because it expresses the fact that it depends on Winit version 0.29. 
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
 <span>Blue Screen of Birth: a first window using Rust, Winit and Pixels</span>
 </div>
 
-Now, open the package (project) named `step_00_winit_029`. It consists of a `Cargo.toml` and a `main.rs` files
+Now, open the package named `step_00_winit_029`. It consists of a `Cargo.toml` and a `main.rs` files
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
@@ -167,10 +167,10 @@ The issue I have is that it seems `Pixels` requires `winit` 0.29 but this is not
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Dependi helps to confirm if we use the latest version (or not)</span>
+<span><code>Dependi</code> VSCode extension helps to confirm if we use the latest version (or not)</span>
 </div>
 
-This is an issue because when you go to [the WinIt GitHub page](https://github.com/rust-windowing/winit/tree/master) you must make sure you pick the version 0.29 **before** looking at the source code of the examples.  
+This is an issue because when you go to [the Winit GitHub page](https://github.com/rust-windowing/winit/tree/master) you must make sure you pick the version 0.29 **before** looking at the source code of the examples.  
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
@@ -275,7 +275,7 @@ fn main() -> Result<()> {
     let event_loop = EventLoop::new()?;
     ...
 ```
-If you don't understand the signature of `main()` this is not a problem. Feel free to read this series of post about [errors]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) during a rainy day. For the moment keep in mind that `main()` can return errors (do you see `Result` and `Error` type aliases). For example if during the call to `EventLoop::new()`, instead of panicking and stop here, the `?` operator returns the error to `main()` which propagates the error message, if any, in the terminal.
+If you don't understand the signature of `main()` this is not a problem. During a rainy day, read this series of post about [errors]({%link docs/06_programmation/rust/016_errors/errors_00.md%}). For the moment keep in mind that `main()` can return errors (do you see `Result` and `Error` type aliases). For example if during the call to `EventLoop::new()`, instead of panicking and stop here, the `?` operator returns the error to `main()` which propagates the error message, if any, in the terminal.
 
 Once in the `main()` function, one of the first thing to do is to create an event loop. Then I propose to forget `window` and `pixels` for the moment and reach the `event_loop.run()` function call. This one is interesting. The closure (`|event, elwt|{...}`) is **moved** into the event loop which now, owns it. 
 
@@ -291,7 +291,7 @@ Then the event loop will run until `elwt.exit()` (`elwt` stands for Event Loop W
 <iframe width="560" height="315" src="https://www.youtube.com/embed/avMX-Zft7K4?si=s7n8lhAexcTKtDlG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-In order to paint our universe, we start by getting the `pixels` object (no panic, I did'nt talk about this guy yet). Then, with `frame`,  we get a mutable byte slice from the pixels object. Then we traverse the content of the frame, 4 bytes at a time since the spots of our universe are RGBA encoded with 3 bytes for Red, Green and Blue components while the last byte is for transparency.
+In order to paint our universe, we start by getting the `pixels` object (no panic, I know I did'nt talk about this guy yet). Then, with `frame`,  we get a mutable byte slice from the pixels object. Then we traverse the content of the frame, 4 bytes at a time since the spots of our universe are RGBA encoded with 3 bytes for Red, Green and Blue components while the last byte is for transparency.
 
 Once all the spots of our universe are repainted in blue, we ask the `pixels` object to draw itself. The key point is that I don't care how this will happen. With the level of indirection provided by Pixes and Winit I can stay focus on my universe. For the rest, Pixels and Winit will discuss between them about the most efficient way to render it on the final screen(s). Not my problem and this is pretty cool. Thanks to them.
 
@@ -330,15 +330,15 @@ I know, this seems over complicated especially if you want to display a blue win
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="900" loading="lazy"/><br/>
-<span>Winit and Pixels rendering pipeline</span>
+<span>Pixels and winit rendering pipeline</span>
 </div>
 
 * In front of our eyes we have a screen where, may be, there is more than one window on the screen. Think about your cell phone with one app at a time on screen or to your 4 screens configuration at home... To fix the idea I suppose we are on a WIN11 configuration with a 800x600 pixels window on screen. The green rectangle above represents the inside of the window and does not include the border nor the title bar. Those are managed by the operating system. We use `WindowBuilder::new()` to create this window.
 * Pixels proposes to use a surface texture to fill efficiently the content of the window. The size of the texture are in pixels. The texture may not have the same size than the window. It can be stretched or compressed to fit the content. Applying the texture to the window content is done by the GPU. If the ratio is 1:1 with the inside of the displayed window there is no distorsion otherwise the content may become weird. This is where we use `SurfaceTexture::new()`.
-* To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 byte (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio. This is where we use `Pixels::new()`.   
-* Finally we have to provide our universe. Its size are whatever we want but they should match the one of the Pixels RGBA buffer. In the loop, we get access to the RGB Pixels buffer with `pixels.frame_mut()` and when it is updated we call `pixels.render()`
+* To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 bytes (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio. This is where we use `Pixels::new()`.   
+* Finally we have to provide our universe. Its dimensions are whatever we want but they should match the one of the Pixels RGBA buffer. In the loop, we get access to the RGBA Pixels buffer with `pixels.frame_mut()` and when it is updated we call `pixels.render()`
 
-Ok... Let's examine to the code fragment below and note to following three points:
+Ok... Let's examine the code fragment below and note to following three points:
 
 ```rust
 event_loop.run(move |event, elwt| {
@@ -370,19 +370,19 @@ match event {
 <span><code>SurfaceTexture::new()</code> expects a <code>&'static Window</code></span>
 </div>
 
-This is where the `Box::leak()` come into action. It converts a `Box<T>` into a `&'static T` reference intentionally creating a memory leak. It transfers ownership of the heap-allocated value (`Box::new(built_window)`) to "nobody," making it live forever (until the program ends).
+This is where the `Box::leak()` comes into action. It converts a `Box<T>` into a `&'static T` reference intentionally creating a memory leak. It transfers ownership of the heap-allocated value (`Box::new(built_window)`) to "nobody," making it live forever (until the program ends).
 
 
-**Point2**: When all the function calls are done, at the end of the `Event::Resumed` arm, we update the 2 variables `window` (the reference to the window) and `pixels` (the RGBA buffer) because we need them we we handle the other events. At this point, `built_window` has been moved into Box, then leaked. `window_ref` points to heap memory that will never be freed. I know, I'm not very proud...
+**Point2**: When all the function calls are done, at the end of the `Event::Resumed` arm, we update the 2 variables `window` (the reference to the window) and `pixels` (the RGBA buffer) because we need them when we handle the other events. At this point, `built_window` has been moved into `Box`, then leaked. `window_ref` points to heap memory that will never be freed. I know, I'm not very proud...
 
-**Point3**: In addition to all the level of indirection there is a last one. Indeed on high resolution screens (HiDPI) the logical size of the window may be 800x600 while the physical size is 1000x750. For example this is what happens on my system. On WIN11 you can right click on the screen and select `Display settings`. Here is what I can see on my system:
+**Point3**: In addition to all the levels of indirection between screen, buffer, universe... There is a last one. Indeed on high resolution screens (HiDPI) the logical size of the window may be 800x600 while the physical size is 1000x750. For example this is what happens on my system. On WIN11 you can right click on the screen and select `Display settings`. Here is what I can see on my system:
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-On my system, in the terminal I can see:
+Do you see the 125% scale factor. Now, when I run the sample code I read the following in the terminal:
 
 <div align="center">
 <img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
@@ -405,9 +405,11 @@ On my system, in the terminal I can see:
 
 ## Step 00: A Gentle Start II
 
-Here, the end result is the same but we use Winit 0.30. In a terminal, in VSCode enter the command :
+Here, the end result is the same but we use Winit 0.30. 
 
-`cargo run -p step_00_winit_030`
+Try this:
+
+* `cargo run -p step_00_winit_030`
 
 No surprise. Same result:
 
@@ -524,15 +526,15 @@ impl ApplicationHandler for App {
 
 With 0.30, Winit provides an `ApplicationHandler` trait that we implement. [As explained here](https://docs.rs/winit/latest/winit/application/trait.ApplicationHandler.html), it requires 2 methods : `resumed` and `window_event`. 
 
-Having this in mind, commenting the code is easy because we just need to move around all the pieces we already explained in the previous sample code. At the beginning we define our App as a struct which host `window` and `pixels`. Then in the `main()` function once the `event_loop` is created and the `app` is defaulted, we run the application with the event loop (do you see the line `event_loop.run_app(&mut app)`)
+Having this in mind, commenting the code is easy because we just need to move around all the pieces we already explained in the previous sample code. At the beginning we define our App as a struct which host the `window` and `pixels` fields. Then in the `main()` function once the `event_loop` is created and the `app` is defaulted, we run the application with the event loop (do you see the line `event_loop.run_app(&mut app)`?)
 
-In the implementation of the trait `ApplicationHandler` for our `App` we respond to the events as we did before.
+In the implementation of the trait `ApplicationHandler` for our `App` we respond to the events of interest (as we did before).
 
-One point of **attention**. Make sure to understand that in `resumed()`, when we call `event_loop.create_window()`, this creates the window that we see on screen but its initial dimensions are not `WIDTH x HEIGHT`. Do not hesitate to review the previous pipeline.
+One point of **attention**. Make sure to understand that in `resumed()`, when we call `event_loop.create_window()`, this creates the window that we see on screen but its initial dimensions are not `WIDTH x HEIGHT`. If needed, do not hesitate to review the previous pipeline.
 
-I really prefer this way of writing the code and starting with `Step_02` I will use Winit 0.30 everywhere.
+I really prefer this way of writing the code and starting with `Step_02` I will use Winit 0.30 most of the time.
 
-Before that, let's see how we can "animate" the content of our universe with both versions Winit (`winit 0.29` and `winit 0.30`).
+Before that, let's see how we can "animate" the content of our universe with both versions of Winit (`winit 0.29` and `winit 0.30`).
 
 
 
@@ -553,14 +555,16 @@ Before that, let's see how we can "animate" the content of our universe with bot
 ### winit 0.29 version
 {: .no_toc }
 
-In the terminal enter the command : `cargo run -p step_01_winit_029`
+Try this:
+
+* `cargo run -p step_01_winit_029`
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-Let's see how it works but again, do not spend too much time on it because I'll use mostly winit `.030`
+Let's see how it works but again, do not spend too much time on it because I'll use mostly winit `0.30`
 
 ```rust
 use pixels::{Pixels, SurfaceTexture};
@@ -822,9 +826,10 @@ It is really a matter of code re-organization.
 
 ## Step 02 : Handle Keystroke and Resize
 
-Now we have a better understanding of the loop and a code structure that we can use. Let's see how we can manage window resizing. In addition, pressing `F11` will allow us to set the window full screen.
+Cool... Now we have a better understanding of the loop and a code structure we can extend. Let's see how we can manage window resizing. In addition, pressing `F11` will allow us to set the window full screen.
 
-`cargo run -p step_02`
+Try this:
+* `cargo run -p step_02`
 
 Press `F11` (or `f` key).
 
@@ -873,7 +878,7 @@ WindowEvent::Resized(size) => {
 }
 ```
 
-The handler also responds to the keystrokes. To tell the truth I'm not a big fan of the way it is written. See below:
+The handler also responds to the keystrokes. To tell the truth I'm not a big fan of the way the code is written. I'm afraid I will not be able to "read" it easily 6 months from now. See below:
 
 ```rust
 WindowEvent::KeyboardInput {
@@ -902,6 +907,24 @@ WindowEvent::KeyboardInput {
 }
 ```
 
+**11/06/25:** I realize I could have written something like this:
+
+```rust
+fn is_fullscreen_toggle_key(event: &KeyEvent) -> bool {
+    event.state == ElementState::Pressed
+        && !event.repeat
+        && (matches!(event.logical_key, Key::Named(NamedKey::F11))
+            || matches!(event.logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("f")))
+}
+
+WindowEvent::KeyboardInput { event, .. } => {
+    if is_fullscreen_toggle_key(&event) {
+        self.fullscreen = !self.fullscreen;
+        // ...
+    }
+}
+
+```
 
 ### Tell me why 🎹
 {: .no_toc }
@@ -917,7 +940,7 @@ const HEIGHT: u32 = 240;
 
 Our `Pixels` instance creates a fixed-size buffer (320×240) but the window can have any size (for example, 1920×1080). When `pixels.render()` scales our buffer to fit the window, it keeps the correct aspect ratio and it centers the image, filling any "border" in black. This is to prevent distortion.
 
-#### How can I to verify it?
+#### How can I verify it?
 {: .no_toc }
 
 We can print both the window and buffer sizes (and their ratios) directly inside the `RedrawRequested` event handler. Find the `WindowEvent::RedrawRequested`, uncomment the code below and re-run the code with `cargo run -p step_02`.
@@ -953,8 +976,8 @@ We can print both the window and buffer sizes (and their ratios) directly inside
     }
 }
 ```
-Once the window is on screen resize it:
-* When the two ratios differ we should  see black borders.
+Run the demo code and once the window is on screen, resize it:
+* When the two ratios differ you should see black borders.
 * Otherwise the gradient fills the entire window.
 
 
@@ -999,8 +1022,9 @@ This will distort the image
 
 Here the idea is to and to display more or less cells according to the size of the window on screen.
 
+Try this:
 
-`cargo run -p step_03`
+* `cargo run -p step_03`
 
 The dimensions of the cells are fixed (4x4 pixels for example, see `CELL_SIZE`). So when the window is large there are more cells on screen... 
 
@@ -1022,7 +1046,7 @@ This is an exercice. Just to make sure when understand really what we are doing.
 ### Comments
 {: .no_toc }
 
-Once again the App structure is adapted to our need. Here it has fields to keep track of the width, the heigh and it contains a vector of cells.
+Once again the App structure is adapted to our need. Here, it has fields to keep track of the width, the heigh and it contains a vector of cells.
 
 Now, in addition to the implementation of the `ApplicationHandler` trait for `App`, we also have an implementation for the `App` with only one function so far : `recreate_buffer()`. 
 
@@ -1084,7 +1108,9 @@ It seems that even before displaying any content, the `recreate_buffer()` functi
 
 Here we just draw 4 larger cells (16x16) in each corners of our universe
 
-`cargo run -p step_04`
+Try this:
+
+* `cargo run -p step_04`
 
 
 <div align="center">
@@ -1100,14 +1126,14 @@ The code has been refactored. The `App` have `create_buffer()` and `handle_resiz
 * `create_buffer()` is called once when the application `ApplicationHandler::resumed()`
 * `handle_resize()` is called... Yes, you are right, on `WindowEvent::Resized()`
 
-Now we can better understand what's happen on start up. Initially the buffer is created once but the window is resized 3 times before we can see anything thing. 
+Now we can better understand what's happen at start up. Initially the buffer is created once but the window is resized 3 times before we can see anything. 
 
 <div align="center">
 <img src="./assets/img18.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-Let's try to fix that
+Let's try to fix that.
 
 
 
@@ -1120,7 +1146,9 @@ Let's try to fix that
 
 Here too we draw 4 larger cells (16x16) in the corners of the universe.
 
-`cargo run -p step_05`
+Try this:
+
+* `cargo run -p step_05`
 
 However only one draw occurs when the universe starts.
 
@@ -1149,7 +1177,7 @@ struct App {
 }
 ```
 
-In the code, both functions `create_buffer()` and `handle_resize()` have been merge into `handle_resize()` because we consider that creating the buffer is like changing it size from nothing to something.
+In the code, both functions `create_buffer()` and `handle_resize()` have been merged into `handle_resize()` because I consider that creating the buffer is like changing it size from nothing to something.
 
 In addition, `handle_resize()` becomes smarter and is able to do nothing if none of the dimensions has changed. In order to detect changes, it stores in the `App` structure the current sizes of the buffer and of the surface texture when they have been modified.
 
@@ -1230,8 +1258,9 @@ Ok, I guess we are ready to animate some cells.
 
 ## Step 06 : First Living Pattern in the Game of Life
 
+Try this:
 
-`cargo run -p step_06`
+* `cargo run -p step_06`
 
 <div align="center">
 <img src="./assets/img20.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1242,7 +1271,7 @@ Ok, I guess we are ready to animate some cells.
 ### Comments
 {: .no_toc }
 
-The `App` structure has been extended. It now include a the current state of the board (`board_current`) and the next one (`board_next`)
+The `App` structure has been extended. It now include the current state of the board (`board_current`) and the next one (`board_next`)
 
 ```rust
 struct App {
@@ -1261,10 +1290,10 @@ struct App {
 ```
 There are new functions. 
 * `read_rle()` reads a file containing a pattern. The format of the file is explained [on this page](https://conwaylife.com/wiki/Run_Length_Encoded). At one point it calls `parse_rle_data()` that parse a string describing the pattern and return a grid as a vector.
-* Once the pattern as been read then `place_pattern_centered()` place it in the center of the board.
+* Once the pattern as been read, `place_pattern_centered()` places it at the center of the board.
 * Then we come into the "game loop". 
     * 60 times per second, `about_to_wait()` request the window to be redrawn.
-    * In the `WindowEvent::RedrawRequested` we calculate the content of `board_next` using the content of `board_current`, we swap both board and display `board_current`.
+    * In the `WindowEvent::RedrawRequested` we calculate the content of `board_next` using the content of `board_current`, we swap both boards and display `board_current`.
 
 ```rust
 WindowEvent::RedrawRequested => {
@@ -1345,6 +1374,7 @@ This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It i
 
 ## Step 07 and Step 08 : Modularization + Testing in `gol/utils.rs` + Open Pattern File
 
+Try this:
 
 * `cargo run -p step_07`
 * `cargo test -p step_08`
@@ -1358,7 +1388,7 @@ Below you can see how, between step 06 and 08 the project organization has evolv
 <!-- <span>Optional comment</span> -->
 </div>
 
-If opening the files you are not sure to understand 110% of what you see... No worry. Take a break then read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which is dedicated to the "modern" way of modularizing projects.
+If opening the different files in the `07` and `08` directories you do not understand 110% of what you read... No worry. Take a break then read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which is dedicated to the "modern" way of modularizing projects.
 
 If you enter `cargo test -p step_08` you should the results below
 
@@ -1367,7 +1397,7 @@ If you enter `cargo test -p step_08` you should the results below
 <!-- <span>Optional comment</span> -->
 </div>
 
-Again, the goal of this project isn't to be exhaustive, but to add features incrementally. Testing is definitely an important one. If I can test one module, I should be able to write tests for the others. That's the idea.
+The goal here isn't to be exhaustive, but to add features step by step. Testing is a key milestone—if I can test one module, I should be able to replicate that process for the others. That's the idea here.
 
 ### Comments
 {: .no_toc }
@@ -1387,7 +1417,7 @@ winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
 
-* Nothing sexy here. It is just source code reorganization. At the end `main.rs()` is only few line of code
+* Nothing sexy here. It is just source code reorganization. At the end `main.rs()` is only few lines of code
 
 ```rust
 use step_08::{Result, app::state::App};
@@ -1405,7 +1435,7 @@ fn main() -> Result<()> {
 ```
 
 * `src/gol/utils.rs` now includes some tests.
-* Now if you press `o` you can load a new pattern. See `src/app/event.rs`
+* While the code is running, if you press `o`, you can load a new pattern. See `src/app/event.rs`
 
 ```rust
 if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o"))
@@ -1415,7 +1445,6 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o
     // TODO call read_rle(&path) ...
     let _ = self.load_pattern(&path);
 }
-
 ```
 
 
@@ -1430,6 +1459,7 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o
 <!-- <span>Optional comment</span> -->
 </div>
 
+The workspace comes with a small set of patterns. If you want more, visit [this page](https://conwaylife.com/wiki/Main_Page) and put the new patterns in the rle/ directory.
 
 
 
@@ -1442,7 +1472,9 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s.eq_ignore_ascii_case("o
 
 ## Step 09 : Better Asynchronous Error Management
 
-`cargo run -p step_09`
+Try this:
+
+* `cargo run -p step_09`
 
 
 ### Comments
@@ -1455,7 +1487,7 @@ if data_lines.is_empty() {
     return Err("No RLE data found in file.".into());
 }
 ```
-OK, but rather than printing the message in the console would'nt it be better to notice the end user in the window for few seconds. This is where `render::draw_error_overlay()` can help. It display an overlay for few second on the window content.
+OK, but rather than printing the message in the console would'nt it be better to notice the end user in the window for few seconds. This is where `render::draw_error_overlay()` can help. It displays an overlay for few second on the window content.
 
 ```rust
 pub fn draw_error_overlay(pixels: &mut Pixels, error_message: &str, buffer_width: u32, buffer_height: u32) {
@@ -1479,7 +1511,6 @@ pub fn draw_error_overlay(pixels: &mut Pixels, error_message: &str, buffer_width
     // For text rendering we need a font rendering library like `fontdue`
     // For now, we just show a colored bar.
 }
-
 ```
 
 `render::draw_error_overlay()` is called once the board have been redrawn. See `WindowEvent::RedrawRequested` in `events.rs`.
@@ -1500,10 +1531,9 @@ WindowEvent::RedrawRequested => {
         }
     }
 }
-
 ```
 
-It will not be a big surprise but `App` has been extended once again. It now includes the error message (`last_error`) to display (if any, this is an `Option<T>`) and for how long it should be on screen (`error_display_until`)
+It will not be a big surprise but the `App` structure has been extended once again. It now includes the error message (`last_error`) to display (if any, this is an `Option<T>`) and for how long it should be on screen (`error_display_until`)
 
 ```rust
 pub struct App {
@@ -1550,13 +1580,10 @@ Try this:
 
 * `cargo run -p step_10 -- -p rle/spaceships`
 * `cargo run -p step_10 -- --pattern rle/spaceships`
-
 * `cargo run -p step_10 -- --pattern do_not_exist`
 * `cargo run -p step_10 -- -p do_not_exist`
-
 * `cargo run -p step_10 -- -help`
 * `cargo run -p step_10 -- --version`
-
 
 <div align="center">
 <img src="./assets/img25.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1567,7 +1594,7 @@ Try this:
 ### Comments
 {: .no_toc }
 
-Oh by the way... The project now have a `README.md`. Yeah! Calm down... In fact, in this context, the `README.md` are for me, mainly places where to store notes, ideas, TODO, copy and pasts console outputs... Do not expect to much from them.
+Oh by the way... The project now have a `README.md`. Yeah! Calm down... In fact, in this context, the `README.md` are mainly places where I store notes, ideas, TODO, copy and pasts console outputs... Do not expect to much from them.
 
 The easiest way to manage arguments is to use CLAP and to do so we need to extend `Cargo.toml`.
 
@@ -1584,7 +1611,7 @@ rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
-In `main()` I call `handle_parameters()` and I take advantage of the fact that match is an expression (not a statement) so `pattern_path` is updated.
+In `main()` I call `handle_parameters()` and I take advantage of the fact that `match` is an [expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions) (not a [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement)) so that `pattern_path` is updated.
 
 
 
@@ -1604,7 +1631,7 @@ fn main() -> Result<()> {
 
 ```
 
-Next comes `handle_parameters()`. Here I'm only interested in "playing" with the patterns so only the `p/pattern` argument is supported. The `is_valid_file_path()` helps to confirms the path is a file that we can open. 
+Next comes `handle_parameters()`. Here I'm only interested in "playing" with the patterns so only the `p/pattern` argument is supported. The `is_valid_file_path()` helps to confirms that the path is a file that we can open. 
 
 ```rust
 
@@ -1666,7 +1693,7 @@ fn is_valid_file_path(path: &Path) -> bool {
     File::open(path).is_ok()
 }
 ```
-Again, like for testing, I learn how to implement one argument. I don't want to be exhaustive here but I know I can add others argument if I need to.  
+Again, like for testing, I learn how to implement one argument. I don't want to be exhaustive here but I know I can add arguments if I want to.  
 
 
 
@@ -1689,7 +1716,7 @@ Read this [dedicated post]({%link docs/06_programmation/rust/017_game_of_life/gp
 The conclusion is : 
 * In the current code of our Game Of Life all the processing is done on the CPU (not the GPU).
 * Nonetheless, it is better to know what we talk about when we talk about backend, integrated/discrete GPU and presentation mode 
-* And understand that, since we do not use shaders we could use `Pixels::new()` and its default values (integrated GPU, Vulkan backend and Fifo presentation mode) and we should be good to go
+* Keep in mind, that, since we do not use shaders we could use `Pixels::new()` and its default values (integrated GPU, Vulkan backend and Fifo presentation mode) and we should be good to go
 
 
 
@@ -1807,6 +1834,7 @@ Later, if needed we will be able to make changes.
 
 Try this:
 * `cargo run -p step_13`
+* `$env:RUST_LOG='warn'; cargo run -p step_13; Remove-Item env:RUST_LOG`. Display only warning and above
 
 <div align="center">
 <img src="./assets/img28.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1833,19 +1861,25 @@ rfd = "0.15.4"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
-Just to make sure we are in sync... Logging is a 2 stages process. We need a frontend (`log`) which provides an interface (a kind of trait, an abstract class in C++ if you will, a set of standardized macros like `info!()`, `error!()`...). On the other hand we need a backend, the guy who do the real job and implemenat the behavior of `info!()`, `error!()`... 
+Just to make sure we’re on the same page… Logging is a two-stage process. We need a frontend (`log`), which provides an interface — think of it as a *trait* or an abstract class in C++. It defines a set of standardized macros like `info!()`, `error!()`, and so on.
+On the other hand, we also need a backend — the component that does the real work and implements the behavior behind `info!()`, `error!()`, etc.
 
-If in my program I only have `log` then when I use `info!()` nothing happens. 
+If my code only `use`s the `log` crate, then when I call `info!()`, nothing actually happens (because there’s no backend).
 
-If my program uses a module, let's say `wgpu` (which already use `log` and some macros). Then if my program does'nt not use `log_env` (or any other logging backend) then I will not see any message from `wgpu` in the terminal. 
+Now, suppose my program `use`s a module like `wgpu`, which itself depends on the `log` crate. If my code doesn’t use a backend such as `env_logger` (or any other logging backend), then I won’t see any messages from `wgpu` printed in the terminal.
 
-Now, if I want to see the messages from `wgpu` and to log my own messages with `info!()` and al. in my application, it must use `log` and `log_env`. 
+If I want to see log messages from `wgpu` *and* log my own messages using macros like `info!()` in my source code, then my program must depend on both the `log` and `env_logger` crates.
 
-It is always a question of flexibility ([level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)in fact). If my application use `red_log` as a backend, all log messages are in red and `wgpu` just don't care. On its side it always use the good old macros provided by the frontend `log` (on its side, it uses logging macros like `error!()` but it does not initialze anything, my app will). Now if my application use the brand new `avatar_log` all the log messages are blue and this requires no change in my code nor in `wgpu`. Cool, no?
+It’s all a matter of flexibility — or, more precisely, a matter of [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection). For instance, if my application uses `red_log` as a backend, all log messages will appear in red, and `wgpu` won’t need to know anything about it.
 
-This said, instead of `println!()` we can `info!()` or `error!()` and all we know about formating can be used.
+`wgpu` simply uses the familiar macros provided by the `log` frontend. Note that while `wgpu` calls `error!()`, it doesn’t initialize any logger — my application does.
 
-Since we want to be able to log from any source code one option is modify `lib.rs` so that it include a `prelude` module. See below:
+The key point is that if my code switches to a new backend like `avatar_log`, all log messages become blue without any modification to my own code or to `wgpu`. Pretty cool, right?
+
+So, instead of calling `println!()`, we can use `info!()` or `error!()`, while still applying everything we know about formatting.
+
+Since we want to be able to log from anywhere in the codebase, one option is to modify `lib.rs` to include a `prelude` module. See below:
+
 
 ```rust
 // src/lib.rs
@@ -1998,7 +2032,7 @@ INFO [step_14::app::state] handle_resize(): Window new size = 712x400 pixels and
 INFO [step_14] Application terminated.
 ```
 
-Finally I decided to comment out the `prelude` module in `lib.rs` and to be explicit everywhere. I also created a `setup_logging()` function in `main.rs`. Here it is:
+Just to let you know. I decided to comment out the `prelude` module in `lib.rs` and to be explicit everywhere. I also created a `setup_logging()` function in `main.rs`. Here it is:
 
 ```rust
 fn setup_logging() -> Result<()> {
@@ -2027,7 +2061,7 @@ fn setup_logging() -> Result<()> {
 
 There are many options possible. Here I decide to store the logs files in a `logs/` directory (check out the basename `step_14`). In the code I indicate I want to create log files per day, not bigger than 10MB and to keep the last two... Again many options are available and I'm very happy (except for the `WriteMode::Async` that does not work) to have found this crate.
 
-It is a good opportunity to look for `println!` and other `eprintln!` and to replace them. 
+It is a good opportunity to look for `println!()` and other `eprintln!()` and to replace them. 
 
 Last point. Make sure to add `logs/` to `.gitignore`
 
@@ -2077,14 +2111,14 @@ Try this:
 ### Comments
 {: .no_toc }
 
-For a while now, I’ve known I needed to revisit those questions about error handling and [invariants]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant) — but you know how it goes… we keep putting it off, because those are the kinds of things that take time and thought, while what we *really* want is to see cells live and die.
+For a while now, I’ve known I needed to revisit those questions about error handling and [invariants]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant) — but you know how it goes… We keep putting it off, because those are the kinds of things that take time and thought, while what we *really* want is to see cells live and die.
 
 And yet… here’s an example. Open the file `16/src/gol/utils.rs` and look at the code for the function `place_pattern_centered()`. Right now, it returns a `Result<()>`. But is that really necessary, given that there’s no actual error being generated inside the function body?
 If not, we should change the function’s signature and, of course, update all the places where it’s called. Fortunately, VSCode makes this easy: just press **SHIFT+F12** while the cursor is on the name `place_pattern_centered`.
 
 Well, you won — we need to ask ourselves the same kind of question for the other functions too.
 
-Here’s another example. Take the `step_life()` function in `gol/life.rs`. Right now, it has this signature and starts like this:
+Here’s another example. Take the `step_life()` function in `gol/life.rs`. Right now, it has this signature and it starts like this:
 
 ```rust
 pub fn step_life(board_current: &[bool], board_next: &mut [bool], buffer_width: u32, buffer_height: u32) -> Result<()> {
@@ -2116,9 +2150,10 @@ In short, this kind of code review:
 * Cleans up unnecessary `if` statements
 
 
-
-
-
+Things to look for:
+* `if` statements that break the flow
+* Defensive programming
+* ...
 
 
 
@@ -2130,7 +2165,7 @@ In short, this kind of code review:
 
 ## Step 17  : Measure Performances 
 
-Because if we measure, we can track and see whether performance is improving or deteriorating.
+Because if we measure, we can track and see whether performances are improving or deteriorating.
 
 Try this:
 * `cargo run --release -p step_17_winit_030 -- --pattern rle/glider`
@@ -2151,7 +2186,7 @@ Here is what I can read with
 * Release 
 * Integrated GPU: Intel
 * Backend: Vulkan
-* Prensation mode: Fifo
+* Presentation mode: Fifo
 
 ```
 cargo run --release -p step_17_winit_030 -- --pattern rle/112P51_synth
@@ -2196,7 +2231,7 @@ INFO [step_17_winit_030] Application terminated.
 
 3. **Total = 0.54ms** 
    - Frame budget @ 60 FPS = 16.67ms
-   - We're only using 3% of our budget!
+   - We're only using 3% of our time budget
    - Huge margin: 15.85ms available (~97% idle)
 
 4. **Theoretical FPS = 1900** 
@@ -2280,7 +2315,7 @@ INFO [step_17_winit_030::app::events] Perf: step=  1.12ms (p95=  1.18ms) | rende
 ### Decision regarding optimization
 {: .no_toc }
 
-It is not yet time to optimize anything
+It is **not** yet time to optimize anything.
 
 **Why?**
 - We are at 3% of the CPU budget
@@ -2290,7 +2325,7 @@ It is not yet time to optimize anything
 **When to optimize?**
 - If we want grids >3000×2000 (6M cells)
 - If we want >240 FPS (high-frequency monitor)
-- If we want to implement **HashLife** (may be, I like the idea...)
+- If we want to implement **HashLife** (may be, I like this idea...)
 
 
 
@@ -2427,7 +2462,7 @@ You need a ressource compiler installed on your system. Go to this [page](https:
 </div>
 
 * Create an `.ico` file. You can go on this [page](https://www.icoconverter.com/), generate all resolutions
-* `cargo add winres --build`. ⚠️ Don't mess with Texas and don't forget `--build`
+* `cargo add winres --build`. ⚠️ Don't mess with Texas and don't forget the `--build`
 * Take few minutes to read the [winres crates](https://crates.io/crates/winres) page on [crates.io](https://crates.io/)
 * Create a file named `build.rs` at the root of the package. See below its content: 
 
@@ -2443,7 +2478,7 @@ fn main() {
     }
 }
 ```
-* `build.rs` is built and executed at build time. If the target OS is Windows it uses `winres::WindowsResource` to add the `.ico` file to the ressources, compile them (using a ressource compiler). When this is done, it update `cargo:rustc-link-lib=` and `cargo:rustc-link-search` on the console, so that the cargo build script can link the compiled resource file to the final executable.
+* `build.rs` is built and executed at build time. If the target OS is Windows it uses `winres::WindowsResource` to add the `.ico` file to the ressources, compile them (using a ressource compiler). When this is done, it update `cargo:rustc-link-lib` and `cargo:rustc-link-search` on the console, so that the cargo build script can link the compiled resource file to the final executable.
 
 Next we need to make sure the icon appears in the task bar.
 
@@ -2561,13 +2596,13 @@ Step 19 introduces zoom functionality by decoupling the simulation grid from the
 {: .no_toc }
 
 * From: Variable board size that resizes with zoom/window
-* To: Fixed board size with **camera viewpor**t system 
+* To: Fixed board size with **camera viewport** system 
 
 
 ### How Zoom Works?
 {: .no_toc }
 
-At this stage the camera viewport is fixed (see Step 20 for panning). When we zoom, the rendering calculates how many board cells are visible in the window. Let's see in action with some numerical applications.
+At this stage the camera viewport position is fixed (see Step 20 for panning). When we zoom, the rendering calculates how many board cells are visible in the window. Let's see in action with some numerical applications.
 
 **Initialization:**
 - Window: 1280×800 pixels
@@ -2687,7 +2722,7 @@ Screen Display
 ```
 
 
-When we will add panning, only Camera Viewport Extraction should be impacted. The extraction will take into account `zoom_level` and camera position. For now the camera is fixed on the center of the board.
+When we will add panning, only Camera Viewport Extraction should be impacted. The extraction will take into account `zoom_level` and camera position. For now the camera position is fixed and on the center of the board.
 
 
 
@@ -2719,7 +2754,7 @@ pub const ZOOM_MIN: f32 = 0.1;        // Can zoom out 10x
 
 ```
 
-Zoom is limited between `ZOOM_MIN` and `ZOOM_MAX`. The later is computed dynamically based when the window is resized. It prevents zooming in so far that we see less than one cell. 
+Zoom is limited between `ZOOM_MIN` and `ZOOM_MAX`. The later is computed when the window is resized. It prevents zooming in so far that we see less than one cell. 
 
 
 
@@ -2759,7 +2794,7 @@ pub struct App {
 **The function `handle_zoom(delta)`**:
 - Applies exponential zoom: `zoom_level *= ZOOM_FACTOR` (zoom in) or `/= ZOOM_FACTOR` (zoom out)
 - Clamps to `[ZOOM_MIN, ZOOM_MAX]`
-- **Does NOT resize board** (only logs the change)
+- Does NOT resize board (only logs the change)
 - Viewport calculation happens in render phase
 
 **The function `recalculate_board_size()`**: 
@@ -2910,7 +2945,7 @@ winres = "0.1"
 ### Changes in `config.rs`
 {: .no_toc }
 
-The colors are now define in `config.rs` the dark blue help to identify the area outside the border. See below:
+The colors are now define in `config.rs`. The dark blue help to identify the area outside the border. See below:
 
 ```rust
 pub const PAN_STEP: f32 = 20.0;                  // Number of cells to move per arrow key press
@@ -3006,25 +3041,27 @@ Add `MouseButton` from winit and new event Handlers
 
 ## Conclusion
 
-This project was never just about coding *Conway’s Game of Life* in Rust — it was about using it as a playground to explore real-world development concepts. Step by step, we moved from a minimal prototype (do you remember the Blue Screen of Birth?) to a modular, tested, logged, GPU-accelerated, and visually interactive application.
+This project was never just about coding *Conway’s Game of Life* in Rust — it was about using it as a playground to explore real-world development concepts. Step by step, we moved from a minimal prototype (do you remember the Blue Screen of Birth?) to a modular, tested, logged and visually interactive application.
 
 Along the way, we learned how to:
 
 * Structure a Rust workspace and modularize cleanly
-* Use **Winit** and **Pixels** to manage windows, buffers, and rendering
+* Use winit and Pixels to manage windows, buffers, and rendering
 * Handle events, resizing, fullscreen, and input elegantly
 * Add logging, error management, and performance metrics
 * Understand GPU backends, presentation modes, and resource icons
 * Build incrementally — test, measure, and refactor continuously
 
-The real value lies in the journey: understanding how small, focused improvements lead to maintainable and scalable code. From here, the door is open to experiment with shaders, [Hashlife](https://johnhw.github.io/hashlife/index.md.html){:target="_blank"}, or, why not WebAssembly — but the core lessons remain the same: **clarity, modularity, and iteration**.
+The real value lies in the journey: understanding how small, focused improvements lead to maintainable and scalable code. From here, the door is open to experiment with shaders, [Hashlife](https://johnhw.github.io/hashlife/index.md.html){:target="_blank"}, or, why not WebAssembly — but the core lessons remain the same: start simple, keep things modular, iterate often.
 
 Other ideas include but are not limited to:
-* Include multithreading so that I can move the window on the screen without blocking the application and the life in our universe  
+* Multithreading so that I can move the window without blocking life in our universe  
+* Display messages in the overlay
 * Support the largest pattern files
 * Code refactoring. In `App` struct, define and use a type `cam_position(x, y)` instead of `camera_x` and `camera_y`. Same thing with `board_dim(w, h)` rather than `board_width` anf `board_height`...
 * Systematic testing
 * More documentation
+* Optimize code 
 
 
 
