@@ -769,6 +769,62 @@ git push origin my_branch
 ```
 
 
+### Automate with a Powershell Script?
+
+```powershell
+# Update Fork Script with working branch name as parameter
+# Drop this script at the root of the project
+# Add it to .gitignore
+# Usage: .\update-branch.ps1 -BranchName "my_branch"
+# Usage: .\update-branch.ps1 my_branch
+# Usage: Get-Help .\update-branch.ps1 
+
+
+param(
+    [Parameter(Mandatory=$true, HelpMessage="Enter the branch name to work with")]
+    [string]$BranchName
+)
+
+# Set variables - customize these
+$upstreamUrl = "https://github.com/aovestdipaperino/turbo-vision-4-rust.git"  # Change me!
+
+Write-Host "`n--- Git Update Script ---`n" -ForegroundColor Cyan
+
+# Ensure you're on main
+Write-Host "Checking out main..." -ForegroundColor Cyan
+git switch main
+
+# Check if upstream exists
+$remotes = git remote
+if ($remotes -notcontains "upstream") {
+    Write-Host "Adding upstream remote..." -ForegroundColor Yellow
+    git remote add upstream $upstreamUrl
+} else {
+    Write-Host "Upstream already exists. Skipping add." -ForegroundColor Green
+}
+
+# Fetch and merge upstream changes
+Write-Host "`nFetching from upstream..." -ForegroundColor Cyan
+git fetch upstream
+
+Write-Host "Merging upstream/main into local main..." -ForegroundColor Cyan
+git merge upstream/main
+
+# Push to your fork
+Write-Host "`nPushing updated main to origin..." -ForegroundColor Cyan
+git push origin main
+
+# Switch to working branch
+Write-Host "`nSwitching to branch '$BranchName'..." -ForegroundColor Cyan
+git switch $BranchName
+
+# Rebase on updated main
+Write-Host "Rebasing '$BranchName' on main..." -ForegroundColor Cyan
+git rebase main
+
+Write-Host "`n✅ Done! Review changes and resolve any conflicts if prompted." -ForegroundColor Green
+```
+
 
 
 ### Combien de fois par jour ?
