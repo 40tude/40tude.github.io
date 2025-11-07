@@ -459,18 +459,21 @@ Normally we plan to behave like visitors, in read-only mode and we have no inten
 
 
 ### If we break everything
+{: .no_toc }
 
 No panic, `git` is our friend.
 
 ```powershell
-git checkout main                 # return to a clean state
-git branch -D bcr_docs/discover   # delete the branch
-git checkout -b bcr_docs/discover # start over
+git switch main                 # return to a clean state
+git branch -D bcr_docs/discover # delete the branch
+git switch -c bcr_docs/discover # start over
 ```
 
 
-**If you want to make any modifications**
-Think twice **BEFORE**. I strongly recommend to create another branch (see below).
+### If you want to make any modifications
+{: .no_toc }
+
+Think twice **BEFORE**. I strongly recommend to create another branch.
 
 ```powershell
 git switch main
@@ -483,7 +486,7 @@ git switch -c other_branch_name main # pay attention to the `main` at the end
 If at the end we don't want to keep the branch
 
 ```powershell
-git checkout main               # return to clean state
+git switch main                 # return to clean state
 git branch -D other_branch_name # delete the branch
 ```
 
@@ -603,47 +606,13 @@ arena, buffer, simd, sys, unicode...
 
 
 
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 10. Study error handling 
-
-This is an example.
-
-1. **Search in the code:**
-
-With VSCode, select `src/` then `SHIFT+ALT+F`
-
-* `Result<`
-* `unwrap`
-* `expect`
-* `enum.*Error` Activate regular expression (ALT+R)
-* `struct.*Error` Activate regular expression (ALT+R)
-
-`F12` (Go to Definition), `SHIFT+F12` (Go to Reference) and `CTRL+F12` (Go to Implementation) are our best friends here.
-
-
-
-2. **Interesting files for errors:**
-* `src/sys/unix.rs` and `src/sys/windows.rs`: System errors (I/O, terminal)
-* Look for `Result<T, E>` in function signatures
-* See how they use `.unwrap()`, `.expect()`, or the `?` operator
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-## 11. Points of attention
+## 10. Points of attention
 
 ### Modular architecture
 {: .no_toc }
@@ -694,30 +663,181 @@ Fuzzy search and other algorithms
 
 
 
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 12. Debugging tips
+## 11. Study error handling 
 
+This is an example of topic to study.
 
-### Use the debugger
+### 1. Search in the code
 {: .no_toc }
+
+With VSCode, select `src/` then `SHIFT+ALT+F`
+
+* `Result<`
+* `unwrap`
+* `expect`
+* `enum.*Error` Activate regular expression (ALT+R)
+* `struct.*Error` Activate regular expression (ALT+R)
+
+In VSCode, `F12` (Go to Definition), `SHIFT+F12` (Go to Reference) and `CTRL+F12` (Go to Implementation) are our best friends here.
+
+
+
+
+
+### 2. Interesting files for errors
+{: .no_toc }
+
+* `src/sys/unix.rs` and `src/sys/windows.rs`: System errors (I/O, terminal)
+* Look for `Result<T, E>` in function signatures
+* See how they use `.unwrap()`, `.expect()`, or the `?` operator
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## 12. Debugging 
 
 * Install `CodeLLDB` extension
 * Set a breakpoint
 * Start Debugging (`F5`)
 
 
+<div align="center">
+<img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
-### Enable logs with `env_logger`
+
+
+Enable logs with `env_logger`
 
 ```powershell
 $env:RUST_LOG='debug'; cargo run; Remove-Item env:RUST_LOG
 ```
 Does it work? Do you know why?
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## 12. Create a Pull Request
+
+No, the plan is NOT to spam the team but to study a scenario.
+It is Sunday morning. It is raining... Ok, let's open a terminal in VSCode
+
+<!-- 
+```powershell
+rustup update nightly           # you remember why. Don't you?
+git switch main                 # leave the branch where we are and go to main and local::main = A B C
+git fetch upstream              # fetch the updates from upstream where upstream::main = A B C D E  
+git merge upstream/main         # merge the updates. local::main = A B C D E 
+git push origin main            # push to our repo. origin::main = A B C D E
+
+git switch -c xyz_docs/typos    # create a new local::xyz_docs/typos = A B C D E
+```
+
+Then we read the documentation and correct some typos (nothing more) 
+
+```powershell
+cargo build                     # Yes I know we only modify the doc
+cargo test                      # We will be able to confirm the test still work
+```
+
+Let's update our repo
+
+
+```powershell
+git status
+git add .
+git commit -m "docs: Fix typos in documentation"  # local::xyz_docs/typos = A B C D E X Y
+git push origin xyz_docs/typos  # push the branch to the repo. origin::xyz_docs/typos = A B C D E X Y
+```
+
+⚠️ Other dev sent commit on the original project where `upstream::main = A B C D E F G H` 
+
+
+```powershell
+git fetch upstream # to get the latest commit for original project (upstream)
+git rebase upstream/main        # rejoue X et Y par-dessus F, G, H
+git push origin xyz_docs/typos --force-with-lease
+```
+
+ -->
+
+
+
+
+
+
+
+
+With a browser we visit our repo
+GitHub detect a difference between our fork and the project
+It propose to create a pull request 
+Press the Green button
+Read carefully then press OK
+When that's done, the PR is then a proposal to merge branch xyz_docs/typos of the fork into the main branch of the original project
+Then...the maintainers review the PR, hold a council meeting blablabla
+They either accept it or request changes (via comments on GitHub)
+We make the changes in the branch xyz_docs/typos and then commit to our repo
+The changes will be automatically added to the PR
+The PR is accepted (or rejected)
+We can then delete the branch
+
+```powershell
+git switch main                 
+git branch -D xyz_docs/typos    # delete the branch
+```
+
+
+Finally we can make either wait tomorrow morning or sync our fork now:
+
+```powershell
+git switch main                 
+git fetch upstream 
+git merge upstream/main 
+git push origin main
+```
+
+
 
 
 
@@ -730,11 +850,13 @@ Does it work? Do you know why?
 
 ## 13. Webliography
 
-- **Official Rust documentation:** https://doc.rust-lang.org/book/
-- **Cargo Book:** https://doc.rust-lang.org/cargo/
-- **Rust by Example:** https://doc.rust-lang.org/rust-by-example/
-- **Project Issues:** https://github.com/microsoft/edit/issues
-- **Discussions:** https://github.com/microsoft/edit/discussions
+- [Official Rust documentation](https://doc.rust-lang.org/book/)
+- [Cargo Book](https://doc.rust-lang.org/cargo/)
+- [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
+- [Project Issues](https://github.com/microsoft/edit/issues)
+- [Discussions](https://github.com/microsoft/edit/discussions)
+- [Commit Messages](https://www.conventionalcommits.org/en/v1.0.0/)
+- [Commit Messages](https://medium.com/@iambonitheuri/the-art-of-writing-meaningful-git-commit-messages-a56887a4cb49)
 
 
 
