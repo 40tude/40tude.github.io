@@ -153,7 +153,7 @@ rustc --version # just to make sure everything is OK.
 #       rustc 1.90.0 (1159e78c4 2025-09-14)
 ```
 
-Regarding setting up Rust on Windows, you can read [dedicated post]({%link docs\06_programmation\rust\005_my_rust_setup_win11\my_rust_setup_win11.md%}#install-rust)
+Regarding setting up Rust on Windows, you can read [dedicated post]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}#install-rust)
 
 
 
