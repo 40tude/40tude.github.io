@@ -2,8 +2,8 @@
 published: true
 lang: en-US
 layout: default
-title: "From Zero to Contributor: Illustrated with Microsoft Edit"
-description: A beginner-friendly guide from your first fork to your first pull request.
+title: "From Zero to Ready to Contribute: Illustrated with Microsoft Edit"
+description: A beginner-friendly guide from our first fork to our first pull request.
 parent: Rust
 #math: mathjax
 date               : 2025-11-07 13:00:00
@@ -15,14 +15,14 @@ last_modified_date : 2025-11-07 13:00:00
 # From Zero to Contributor: Illustrated with Microsoft Edit
 {: .no_toc }
 
-A beginner-friendly guide from your first fork to your first pull request.
+A beginner-friendly guide from our first fork to our first pull request.
 {: .lead }
 
 
 
 
 <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is under construction done 🚧</b></span>    
+<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
 </h2>
 
 
@@ -37,7 +37,7 @@ A beginner-friendly guide from your first fork to your first pull request.
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="900" loading="lazy"/><br/>
-<span>From Zero to Contributor: Illustrated with Microsoft Edit.</span>
+<span>From Zero to Ready to Contribute: Illustrated with Microsoft Edit.</span>
 </div>
 
 
@@ -66,14 +66,14 @@ A beginner-friendly guide from your first fork to your first pull request.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 00. My Progress Checklist
+## 00. Progress Checklist
 
 - [ ] I forked the project
 - [ ] I read `README.md` carefully
 - [ ] I successfully compiled the project
-- [ ] I ran the editor with and without debug traces
+- [ ] I ran the editor in debug and release mode
 - [ ] I ran the tests
-- [ ] I created a branch named docs/discover
+- [ ] I created a branch named xyz_docs/discover
 - [ ] I read `main.rs`
 - [ ] I explored at least 3 other modules
 - [ ] I understood the general structure
@@ -95,26 +95,37 @@ A beginner-friendly guide from your first fork to your first pull request.
 ## 01. Exercises
 
 ### Level 00: Reading
+{: .no_toc }
+
 1. Read `src/main.rs` entirely
 2. Understand the program flow (from `main()` to the main loop)
 3. Identify all functions called from `main()`
 
 ### Level 01: Exploration
+{: .no_toc }
+
 1. Choose a module file (ex: `fuzzy.rs`)
 2. Read all functions
 3. Document what each function does (with comments)
 
 ### Level 02: Modification
+{: .no_toc }
+
 1. Add a debug message when opening a file
 2. Compile and test
 3. Submit a PR to fix a typo in a comment
 
 ### Level 03: Contribution
+{: .no_toc }
+
 1. Look at the [Issues](https://github.com/microsoft/edit/issues) with the `E-help-wanted` label
 2. Choose a simple issue (ex: improve documentation)
 3. Create a branch, make modifications, and submit a PR
 
-
+<div align="center">
+<img src="./assets/img01.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -126,7 +137,7 @@ A beginner-friendly guide from your first fork to your first pull request.
 
 I suppose: 
 * You run Windows 11
-* [VSCode](https://code.visualstudio.com/) is already installed
+* [VSCode](https://code.visualstudio.com/) is installed
 * [Git](https://git-scm.com/install/windows) is installed
 * You have a GitHub account
 
@@ -142,6 +153,11 @@ rustc --version # just to make sure everything is OK.
 #       rustc 1.90.0 (1159e78c4 2025-09-14)
 ```
 
+Regarding setting up Rust on Windows, you can read [dedicated post]({%link docs\06_programmation\rust\005_my_rust_setup_win11\my_rust_setup_win11.md%}#install-rust)
+
+
+
+
 
 
 <!-- ###################################################################### -->
@@ -151,27 +167,43 @@ rustc --version # just to make sure everything is OK.
 <!-- ###################################################################### -->
 
 ## 03. Creating a FORK
+
 * On `https://github.com/microsoft/edit.git`, click the "Fork" button at the top right
 * This creates a copy of the project on **YOUR** GitHub account.
 
 <div align="center">
-<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img03.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-* Clone your fork. Again...You clone your forked version (not the original)
+* Clone **YOUR** fork on your local disk. Repeat after me...I clone **MY** forked version, not the original.
 
 ```powershell
 git clone https://github.com/YOUR_NAME/edit.git
 ```
 
+
+
+
 **The first time**
+
 ```powershell
-git switch main # normally you are already on the main branch
+git switch main # normally we are on the main branch
 git remote -v # to check
 git remote add upstream https://github.com/microsoft/edit.git
 git remote -v # to check again
 ```
+
+The before last command adds a new "remote" to our local Git repository:
+- `git remote add`: adds a new reference to the distant repo
+- `upstream`: the name we're giving to this remote 
+- `https://github.com/microsoft/edit.git`: the URL of the distant repo
+
+This will help to keep our repo in sync with the original.
+
+
+
+
 
 
 
@@ -184,7 +216,7 @@ git remote -v # to check again
 
 ## 04. Installing the Rust nightly toolchain
 
-You can have both toolchains (stable and nightly) installed side by side on the same PC
+We need it to compile Microsoft Edit. We can have both Rust toolchains (stable and nightly) installed side by side on the same PC.
 
 ```powershell
 rustup install nightly
@@ -192,7 +224,8 @@ rustup install nightly
 
 
 
-Check what is installed
+### Check what is installed
+{: .no_toc }
 
 ```powershell
 rustup toolchain list
@@ -202,7 +235,7 @@ rustup toolchain list
 ```
 
 
-Move to the microsoft/edit directory then verify that `rust-toolchain.toml` exists and that it specifies "nightly"
+Move to the microsoft_edit directory then verify that `rust-toolchain.toml` exists and that it specifies "nightly"
 
 ```powershell
 Get-Content rust-toolchain.toml
@@ -212,16 +245,17 @@ Get-Content rust-toolchain.toml
 ```
 
 
-* When you will run `cargo build` in the microsoft/edit folder, `Cargo` will automatically use nightly
-* When you run `cargo build` in **YOUR** folders (without `rust-toolchain.toml`), `Cargo` will use stable (your default Rust version)
+* When we will run `cargo build` in the microsoft_edit folder, `Cargo` will automatically use the "nightly" version of the compiler
+* When we run `cargo build` in one of our folders (one without `rust-toolchain.toml`), `Cargo` will use the "stable" version (our default Rust compiler version)
 
 
 
-Display the active Rust version
+### What is the active Rust version?
+{: .no_toc }
 
 ```powershell
 rustc --version
-# In the microsoft/edit folder:
+# In the microsoft_edit folder:
 #       rustc 1.93.0-nightly (c90bcb957 2025-11-06)
 
 # In another folder:
@@ -229,12 +263,13 @@ rustc --version
 ```
 
 
-Display which toolchain will be used
+### Display which toolchain will be used
+{: .no_toc }
 
 ```powershell
 rustup show
 
-# Result in microsoft/edit with nightly override:
+# Result in microsoft_edit with nightly override:
 #       Default host: x86_64-pc-windows-msvc
 #       rustup home:  C:\Users\phili\.rustup
 #       
@@ -251,7 +286,7 @@ rustup show
 #         x86_64-pc-windows-msvc
 
 
-# Result in one of your projects:
+# Result in one of our projects:
 #       Default host: x86_64-pc-windows-msvc
 #       rustup home:  C:\Users\phili\.rustup
 #       
@@ -268,6 +303,22 @@ rustup show
 #         x86_64-pc-windows-msvc
 ```
 
+### How to get the up to date version? 
+{: .no_toc }
+
+Indeed, three days from now, before to "touch" Microsoft Edit, we need to get the latest version:  
+
+```powershell
+rustup update nightly
+```
+
+
+
+
+
+
+
+
 
 
 <!-- ###################################################################### -->
@@ -278,6 +329,16 @@ rustup show
 
 ## 05. Read `README.md`
 
+* No one can do it for you
+* Then take 2 minutes to read `CONTRIBUTING.md`
+
+
+
+
+
+
+
+
 
 
 
@@ -287,16 +348,20 @@ rustup show
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 06. Compile for the first time on the `main` branch to verify
+## 06. Compile for the first time on the `main` branch (just to check)
 
-Move to the microsoft/edit directory
+Move to the microsoft_edit directory
 
 ### Check the code without compiling
+{: .no_toc }
+
 ```powershell
 cargo check
 ```
 
-### Development build and run 
+### Compile (development build) and run 
+{: .no_toc }
+
 ```powershell
 cargo build
 # Increase the height of the terminal in VSCode
@@ -304,7 +369,7 @@ cargo run
 ```
 
 <div align="center">
-<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img06.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -326,7 +391,7 @@ cargo run -- do_not_exist.md
 ```
 
 <div align="center">
-<img src="./assets/img06_01.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img06_01.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -341,7 +406,9 @@ cargo test
 
 
 
-### Compile (optimized release build)
+### Compile (optimized release build) and run
+{: .no_toc }
+
 
 Since you read the `README.md` you know that you have to use this command:
 
@@ -367,6 +434,7 @@ cargo run -- release -- do_not_exist.md
 
 
 
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -375,32 +443,34 @@ cargo run -- release -- do_not_exist.md
 
 ## 07. Create a branch and discover the project
 
-You are in VSCode
+We are in VSCode
 One terminal is open (the tests are done)
-You can either create the branch from the console or with the GUI
+We can either create the branch from the console or with the GUI
 
 **Note:** Below, the 3 letters "bcr" is my trigram, use your own.
 
 ```powershell
 git switch -c bcr_docs/discover # creates and switches to the `bcr_docs/discover` branch
 
-# Then you can use git switch brr_docs/discover
+# Then we can use git switch bcr_docs/discover
 ```
 
-Normally we are visitors in read-only mode since we have no intention to make modifications.
+Normally we plan to behave like visitors, in read-only mode and we have no intention to make any modification.
 
 
-**If you break everything. No panic**
+### If we break everything
+
+No panic, `git` is our friend.
 
 ```powershell
-git checkout main                 # return to clean state
+git checkout main                 # return to a clean state
 git branch -D bcr_docs/discover   # delete the branch
 git checkout -b bcr_docs/discover # start over
 ```
 
 
 **If you want to make any modifications**
-Think twice **BEFORE**. I strongly recommend to create another branch.
+Think twice **BEFORE**. I strongly recommend to create another branch (see below).
 
 ```powershell
 git switch main
@@ -410,11 +480,11 @@ git switch -c other_branch_name
 git switch -c other_branch_name main # pay attention to the `main` at the end
 ```
 
-If at the end you don't want to keep the branch
+If at the end we don't want to keep the branch
 
 ```powershell
-git checkout main  # return to clean state
-git branch -D other_branch_name  # delete the branch
+git checkout main               # return to clean state
+git branch -D other_branch_name # delete the branch
 ```
 
 
@@ -427,20 +497,21 @@ git branch -D other_branch_name  # delete the branch
 
 ## 08. Stay in sync with the original project
 
-Tomorrow morning for example. Move to the microsoft/edit directory.
+Tomorrow morning for example. Move to the microsoft_edit directory.
 
 ```powershell
-git switch main # leave the branch you're on and go to main
-git fetch upstream # fetch the updates
+rustup update nightly   # do you remember why?
+git switch main         # leave the branch where we are and go to main
+git fetch upstream      # fetch the updates
 git merge upstream/main # merge the updates
-git push origin main # push to your repo
+git push origin main    # push to our repo
 ```
 
 
 ```powershell
-git switch my_branch # return to your branch
-git rebase main # integrate the latest changes into your branch
-git push origin my_branch # work then push to your repo
+git switch my_branch        # return to our branch
+git rebase main             # integrate the latest changes into our branch
+git push origin my_branch   # work then push to our repo
 ```
 
 
@@ -454,7 +525,7 @@ git push origin my_branch # work then push to your repo
 
 ## 09. Project Structure
 
-Move to the microsoft/edit directory
+Move to the microsoft_edit directory
 
 ```powershell
 code .
@@ -496,7 +567,7 @@ Here is the simplified structure of the Rust project:
 └───tools
 ```
 
-Build your own tree and your comments
+Build your own tree and add your comments
 
 ```powershell
 cargo clean
@@ -505,6 +576,8 @@ tree /F
 
 
 ### Explore `main.rs`
+{: .no_toc }
+
 
 This is the entry point of the application. Look at:
 - The `fn main()` function
@@ -512,6 +585,8 @@ This is the entry point of the application. Look at:
 - How the editor is initialized
 
 ### Identify key modules
+{: .no_toc }
+
 arena, buffer, simd, sys, unicode...
 
 
@@ -549,7 +624,7 @@ With VSCode, select `src/` then `SHIFT+ALT+F`
 * `enum.*Error` Activate regular expression (ALT+R)
 * `struct.*Error` Activate regular expression (ALT+R)
 
-`F12` (Go to Definition), `SHIFT+F12` (Go to Reference) and `CTRL+F12` (Go to Implementation) are your best friends here.
+`F12` (Go to Definition), `SHIFT+F12` (Go to Reference) and `CTRL+F12` (Go to Implementation) are our best friends here.
 
 
 
@@ -571,6 +646,8 @@ With VSCode, select `src/` then `SHIFT+ALT+F`
 ## 11. Points of attention
 
 ### Modular architecture
+{: .no_toc }
+
 How the project is organized into modules?
 
 Checkout the `mod` and `use` in the code
@@ -600,11 +677,15 @@ The project uses a lot of `unsafe` to interact with system APIs (C). This is a g
 
 
 ### Terminal management
+{: .no_toc }
+
 How do they manipulate the terminal?
 Look for color for example.
 
 
 ### Algorithms
+{: .no_toc }
+
 Fuzzy search and other algorithms
 
 **File to look at:**
@@ -623,6 +704,8 @@ Fuzzy search and other algorithms
 
 
 ### Use the debugger
+{: .no_toc }
+
 * Install `CodeLLDB` extension
 * Set a breakpoint
 * Start Debugging (`F5`)
@@ -634,7 +717,7 @@ Fuzzy search and other algorithms
 ```powershell
 $env:RUST_LOG='debug'; cargo run; Remove-Item env:RUST_LOG
 ```
-Does it work? Why?
+Does it work? Do you know why?
 
 
 
