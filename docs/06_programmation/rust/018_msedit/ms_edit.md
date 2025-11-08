@@ -69,11 +69,13 @@ A beginner-friendly guide from our first fork to our first pull request.
 ## 00. Progress Checklist
 
 - [ ] I forked the project
+- [ ] I installed the nightly Rust toolchain
 - [ ] I read `README.md` carefully
 - [ ] I successfully compiled the project
-- [ ] I ran the editor in debug and release mode
+- [ ] I ran the application in debug and release mode
 - [ ] I ran the tests
-- [ ] I created a branch named xyz_docs/discover
+- [ ] I created a branch `xyz_docs/discover`
+- [ ] I know the "morning routine" to stay in sync with the original project
 - [ ] I read `main.rs`
 - [ ] I explored at least 3 other modules
 - [ ] I understood the general structure
@@ -168,7 +170,7 @@ rustc --version # just to make sure everything is OK.
 Regarding setting up Rust on Windows, you can read [dedicated post]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}#install-rust)
 
 
-And if you dont know it yet here is edit:
+And if you dont know it yet, here how edit looks like:
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="900" loading="lazy"/><br/>
@@ -183,7 +185,7 @@ And if you dont know it yet here is edit:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 03. Creating a FORK
+## 03. Creating a fork
 
 * On `https://github.com/microsoft/edit.git`, click the "Fork" button at the top right
 * This creates a copy of the project on **YOUR** GitHub account.
@@ -196,10 +198,17 @@ And if you dont know it yet here is edit:
 * Clone **YOUR** fork on your local disk. Repeat after me...I clone **MY** forked version, not the original.
 
 ```powershell
+# The terminal should still be open
 git clone https://github.com/YOUR_NAME/edit.git
 ```
 
+At this point it might be a good idea to move to `microsoft_edit/` directory, open code and open a terminal in VSCode.
 
+```powershell
+cd microsoft_edit/
+code .
+# CTRL + ù to open an integrated terminal
+```
 
 
 **The first time**
@@ -211,6 +220,7 @@ git remote add upstream https://github.com/microsoft/edit.git
 git remote -v # to check again
 ```
 
+
 The before last command adds a new "remote" to our local Git repository:
 - `git remote add`: adds a new reference to the distant repo
 - `upstream`: the name we're giving to this remote 
@@ -219,6 +229,10 @@ The before last command adds a new "remote" to our local Git repository:
 This will help to keep our repo in sync with the original.
 
 
+<div align="center">
+<img src="./assets/img03_01.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
@@ -252,7 +266,7 @@ rustup toolchain list
 ```
 
 
-Move to the microsoft_edit directory then verify that `rust-toolchain.toml` exists and that it specifies "nightly"
+Move to the `microsoft_edit/` directory then verify that `rust-toolchain.toml` exists and that it specifies "nightly"
 
 ```powershell
 Get-Content rust-toolchain.toml
@@ -262,7 +276,7 @@ Get-Content rust-toolchain.toml
 ```
 
 
-* When we will run `cargo build` in the microsoft_edit folder, `Cargo` will automatically use the "nightly" version of the compiler
+* When we will run `cargo build` in the `microsoft_edit/` folder, `Cargo` will automatically use the "nightly" version of the compiler
 * When we run `cargo build` in one of our folders (one without `rust-toolchain.toml`), `Cargo` will use the "stable" version (our default Rust compiler version)
 
 
@@ -272,7 +286,7 @@ Get-Content rust-toolchain.toml
 
 ```powershell
 rustc --version
-# In the microsoft_edit folder:
+# In the `microsoft_edit/` folder:
 #       rustc 1.93.0-nightly (c90bcb957 2025-11-06)
 
 # In another folder:
@@ -286,7 +300,7 @@ rustc --version
 ```powershell
 rustup show
 
-# Result in microsoft_edit with nightly override:
+# Result in `microsoft_edit/` with nightly override:
 #       Default host: x86_64-pc-windows-msvc
 #       rustup home:  C:\Users\phili\.rustup
 #       
@@ -367,7 +381,7 @@ rustup update nightly
 
 ## 06. Compile for the first time on the `main` branch (just to check)
 
-Move to the microsoft_edit directory
+If you are not yet in VSCode, move to the `microsoft_edit/` directory otherwise use the integrated terminal which is already open or open a new one. 
 
 ### Check the code without compiling
 {: .no_toc }
@@ -464,7 +478,7 @@ We are in VSCode
 One terminal is open (the tests are done)
 We can either create the branch from the console or with the GUI
 
-**Note:** Below, the 3 letters "bcr" is my trigram, use your own.
+**Side Note:** Below, the 3 letters "bcr" is the trigram for my last name. Use your own.
 
 ```powershell
 git switch -c bcr_docs/discover # creates and switches to the `bcr_docs/discover` branch
@@ -517,23 +531,29 @@ git branch -D other_branch_name # delete the branch
 
 ## 08. Stay in sync with the original project
 
-Tomorrow morning for example. Move to the microsoft_edit directory.
+Tomorrow morning for example. Move to the `microsoft_edit/` directory.
 
 ```powershell
 rustup update nightly   # do you remember why?
-git switch main         # leave the branch where we are and go to main
+
 git fetch upstream      # fetch the updates
+git switch main         # leave the branch where we are and go to main
 git merge upstream/main # merge the updates
 git push origin main    # push to our repo
+
+git switch my_branch                         # return to our branch
+git rebase main                              # integrate the latest changes into our branch
+git push --force-with-lease origin my_branch # the work then push to our repo
 ```
 
+Most of the git command can be executed using the GUI. See below an example with `git fetch upstream`:
 
-```powershell
-git switch my_branch        # return to our branch
-git rebase main             # integrate the latest changes into our branch
-git push origin my_branch   # work then push to our repo
-```
+<div align="center">
+<img src="./assets/fetch.gif" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
+**Side Note:** Regarding `--force-with-lease` I'll give much more detail with wonderful drawings (😡) later in this [section](#3-pull-request).
 
 
 
@@ -545,7 +565,7 @@ git push origin my_branch   # work then push to our repo
 
 ## 09. Project Structure
 
-Move to the microsoft_edit directory
+Move to the `microsoft_edit/` directory
 
 ```powershell
 code .
@@ -788,13 +808,13 @@ Below I call:
 |--------------------|------------------------------------------|
 | upstream           | Original project on GitHub (source)      |
 | origin             | The fork in my personal GitHub repo      |
-| local              | My local repository on my PC             |
+| local              | The local repository on the PC           |
 | A, B, C...         | Commits in Git history                   |
 | main               | Main branch                              |
 | xyz_docs/typos     | The branch for documentation             |
 | main@local         | main branch in local repository          |
-| main@origin        | main branch in fork (origin)             |
-| main@upstream      | main branch in original project          |
+| main@origin        | main branch in the fork                  |
+| main@upstream      | main branch in the original project      |
 | xyz_docs/typos@local | Feature branch in local repository     |
 | xyz_docs/typos@origin| Feature branch in fork (origin)        |
 
@@ -813,10 +833,10 @@ A --- B --- C
 Before to work on a branch let's make sure `local` and `origin` are in sync with `upstream`.
 
 ```powershell
-git fetch upstream              # fetch the updates from upstream where main@upstream = A B C D E 
-                                # Does NOT change the current branch
-                                # Saves the new items locally in remote branches such as upstream/main
-git switch main                 # main@local = A B C
+git fetch upstream # fetch the updates from upstream where main@upstream = A B C D E 
+                   # Does NOT change the current branch
+                   # Saves the new items locally in remote branches such as upstream/main
+git switch main    # main@local = A B C
 ```
 
 The 2 lines above could be replaced with: 
@@ -828,8 +848,8 @@ git pull upstream main
 Now we merge the commits and we update `origin`. 
 
 ```powershell
-git merge upstream/main         # main@local = A B C D E 
-git push origin main            # main@origin = A B C D E
+git merge upstream/main # main@local = A B C D E 
+git push origin main    # main@origin = A B C D E
 ```
 
 
@@ -849,10 +869,10 @@ A --- B --- C --- D --- E
 
 
 ```powershell
-git switch -c xyz_docs/typos    # create & switch to the local branch. xyz_docs/typos@local = A B C D E
+git switch -c xyz_docs/typos # create & switch to the branch. xyz_docs/typos@local = A B C D E
 ```
 
-When the job is done on the branch I may have multiple commits on it. The situation looks like this:
+When the job is done on the branch we may have multiple commits on it. The situation looks like this:
 
 
 ```
@@ -874,13 +894,12 @@ Now we push the branch to origin.
 git status
 git add .
 git commit -m "docs: Fix typos in documentation"  # xyz_docs/typos@local = A B C D E X Y
-git push origin xyz_docs/typos                    # push the branch to my repo. xyz_docs/typos@origin = A B C D E X Y
+git push origin xyz_docs/typos                    # push the branch to the repo. xyz_docs/typos@origin = A B C D E X Y
 ```
 
 Here is the situation. There is a branch `xyz_docs/typos@local` and a branch `xyz_docs/typos@origin`.
 
 ```
-
                       main@origin
                       main@local
                         │
@@ -939,7 +958,7 @@ git switch xyz_docs/typos
 git rebase main
 ```
 
-The branch `xyz_docs/typos@local` is moved to the end of the history. The history has been re-written but it is linear and easier to understand. The `xyz_docs/typos@origin` did'nt move yet. Note `X'` and `Y'` notation because they are copy of `X` and `Y` but not `X` and `Y`.  
+The branch `xyz_docs/typos@local` is moved to the end of the history. The history has been re-written but it is linear and easier to understand. The `xyz_docs/typos@origin` did'nt move yet. Note `X'` and `Y'` notation because they are copies of `X` and `Y` but not `X` and `Y` themselves.  
 
 ```
                                       main@local
@@ -952,7 +971,7 @@ A --- B --- C --- D --- E --- F --- G --- H
                   xyz_docs/typos@origin   xyz_docs/typos@local
 ```
 
-It is time to synchronize `xyz_docs/typos@local` and `xyz_docs/typos@origin`. To do so we must use `--force-with-lease`. Indeed locally we have `A-B-C-D-E-F-G-H-X'-Y'` while we have `A-B-C-D-E-X-Y` on `origin`. With `--force-with-lease` we simply "overwrite" one by the other.
+It is time to synchronize `xyz_docs/typos@local` and `xyz_docs/typos@origin` because locally we have `A-B-C-D-E-F-G-H-X'-Y'` while we have `A-B-C-D-E-X-Y` on `origin`. To do the sync we use `--force-with-lease` because before forcing the push, Git will check that the remote branch is exactly in the state we last retrieved. If someone else (me from another PC) has pushed commits in the meantime, the command will fail and warn us. This is a security. You can [read this post](https://stackoverflow.com/questions/52823692/git-push-force-with-lease-vs-force).
 
 ```powershell
 git push --force-with-lease origin xyz_docs/typos
@@ -973,7 +992,7 @@ A --- B --- C --- D --- E --- F --- G --- H
 ```
 
 
-**Tadaa!** It is time to go to the GitHub web page of our repo and to open a **pull request**. Press the green button. We review carefully then we press OK. When this is done, the PR is then a proposal to merge branch `xyz_docs/typos@origin` of the fork into the main branch of the original project `main@upstream`.
+**Tadaa!** It is time to go to the GitHub web page of our repo and to open a **pull request**. Press the green button. We review carefully what will be sent then we press OK. When this is done, the PR is then a proposal to merge branch `xyz_docs/typos@origin` of the fork into the main branch of the original project `main@upstream`.
 
 
 
@@ -987,17 +1006,15 @@ A --- B --- C --- D --- E --- F --- G --- H
 <!-- <span>Optional comment</span> -->
 </div>
 
-**Task 1:** While waiting our PR to be accepted/rejected we can synchronize and update `main@local` and `main@origin` which may becomes late otherwise. Indeed `main@uptream` continue to evolve.
+**Task 1:** While waiting our PR to be accepted/rejected, every morning we should continue to synchronize and update `main@local` and `main@origin` which may becomes late otherwise. Indeed `main@uptream` continue to evolve.
 
 
 ```powershell
-git fetch upstream              # fetch the updates from upstream where main@upstream = A B C D E F G H
-                                # Does not change the current branch
-                                # Downloads new items from upstream and saves them locally (in remote branches such as upstream/main).
+git fetch upstream              # fetch the updates from upstream where main@upstream = A B C D E F G H I J K
 git switch main                 # main@local = A B C D E
 
-git merge upstream/main         # main@local = A B C D E F G H 
-git push origin main            # main@origin = A B C D E F G H
+git merge upstream/main         # main@local = A B C D E F G H I J K
+git push origin main            # main@origin = A B C D E F G H I J K
 ```
 
 Here is the situation:
@@ -1015,18 +1032,20 @@ A --- B --- C --- D --- E --- F --- G --- H --- I --- J --- K
                                    xyz_docs/typos@origin
 ```
 
+And yes, we leave the branch where it is connected because what matters for the reviewers is the diff between `H` and `Y`. If we move forward the branch and connect `X` to `K` this is a very bad idea.
 
-**Task 2:** If the maintainers ask questions, request more modifications before acceptance... We go back to `xyz_docs/typos@local`, do what need to be done then commit and push onto `xyz_docs/typos@origin`. Our new commits are added to your branch. The PR automatically updates with the new commits. Reviewers see the changes directly in the PR. No manual action required on GitHub—everything is synchronized.
+**Side Note:** Yup, confirmed — I hate ASCII art. 😡
+
+**Task 2:** If reviewers request more modifications before acceptance... We go back to `xyz_docs/typos@local`, do what need to be done then commit and push onto `xyz_docs/typos@origin`. Our new commits are added to your branch. The PR automatically updates with the new commits. Reviewers see the changes directly in the PR. No manual action required on GitHub—everything is synchronized.
 
 ```powershell
 git switch xyz_docs/typos 
-# Add the modifications
 git status
 git add .
-git commit -m "docs: Address maintainers comments"
+git commit -m "docs: Address reviewers comments"
 git push origin xyz_docs/typos
 ```
-
+If the PR is accepted, `Y` will be merged with `H`.
 
 
 
@@ -1048,7 +1067,7 @@ git branch -D xyz_docs/typos    # delete the branch
 ```
 
 
-### 5. Summary
+### 6. Summary
 {: .no_toc }
 
 ```powershell
@@ -1078,7 +1097,7 @@ git push --force-with-lease origin xyz_docs/typos
 git switch xyz_docs/typos 
 git status
 git add .
-git commit -m "docs: Address maintainers comments"
+git commit -m "docs: Address reviewers comments"
 git push origin xyz_docs/typos
 
 # sync main@local & main@origin with upstream
@@ -1105,13 +1124,11 @@ git branch -D xyz_docs/typos
 
 ## 14. Webliography
 
-- [Official Rust documentation](https://doc.rust-lang.org/book/)
-- [Cargo Book](https://doc.rust-lang.org/cargo/)
-- [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
 - [Project Issues](https://github.com/microsoft/edit/issues)
 - [Discussions](https://github.com/microsoft/edit/discussions)
 - [Commit Messages](https://www.conventionalcommits.org/en/v1.0.0/)
 - [Commit Messages](https://medium.com/@iambonitheuri/the-art-of-writing-meaningful-git-commit-messages-a56887a4cb49)
+- [Cargo Book](https://doc.rust-lang.org/cargo/)
 
 
 
