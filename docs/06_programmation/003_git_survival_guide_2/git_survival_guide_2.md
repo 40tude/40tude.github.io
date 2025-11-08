@@ -638,8 +638,8 @@ Bien voir le ``-r`` de la commande ``git rm``
 * `git switch -c b1`
 
 C'est équivalent à: 
-* `git branch b1`      # créer la branche
-* `git switch b1`      # basculer vers la branche
+* `git branch b1 # créer la branche`
+* `git switch b1 # basculer vers la branche`
 
 
 
@@ -672,13 +672,15 @@ Ensuite...
 C'est important avec les "vrais" projets mais bon par exemple ici on peut imaginer que les mainteneurs prennent un peu de temps pour répondre. On va donc jouer le jeu et maintenir notre copie du projet synchronisée avec le projet. En effet lui de son côté, il continue a évoluer.
 
 * Du coup tous les matins il faut:
-    * `git switch main          `   # laisser la branche sur laquelle on est et aller sur main
-    * `git fetch upstream       `   # récupérer les updates 
-    * `git merge upstream/main  `   # fusionner les updates
-    * `git push origin main     `   # pousser sur notre repo
-    * `git switch my_branch     `   # revenir sur notre branche
-    * `git rebase main          `   # intégrer les derniers changements sur notre branche
-    * `git push origin my_branch`   # travailler puis pousser sur notre repo
+```powershell
+git fetch upstream                           # récupérer les updates 
+git switch main                              # laisser la branche sur laquelle on est et aller sur main
+git merge upstream/main                      # fusionner les updates
+git push origin main                         # pousser sur notre repo
+git switch my_branch                         # revenir sur notre branche
+git rebase main                              # intégrer les derniers changements sur notre branche
+git push --force-with-lease origin my_branch # travailler puis pousser sur notre repo
+```
 
 
 Quand nos merges sont acceptés faut penser à supprimer la branche ``b1``  
@@ -699,8 +701,8 @@ Si il y a des conflits, les résoudre. À la fin :
 
 
 Après le rebase, il faut forcer le push de la branche ``b1`` vers le fork (car l’historique a changé)  
-
-``git push origin b1 --force``
+* `git push --force-with-lease origin my_branch`
+* `git push origin b1 --force` mais là attention si on est en équipe ou si on a fait des commits depuis une autre machine
 
 
 
@@ -765,34 +767,60 @@ git switch my_branch
 git rebase main             
 
 # Travailler puis pousser sur notre repo et PR comme vu au dessus
-git push origin my_branch   
+git push --force-with-lease origin my_branch
 ```
 
 
-### Automate with a Powershell Script?
+### Un ptit script Powershell pour la route?
 
 ```powershell
-# Update Fork Script with working branch name as parameter
-# Drop this script at the root of the project
-# Add it to .gitignore
-# Usage: .\update-branch.ps1 -BranchName "my_branch"
-# Usage: .\update-branch.ps1 my_branch
-# Usage: Get-Help .\update-branch.ps1 
+<#
+.SYNOPSIS
+    Update Fork Script - Synchronizes a Git fork with upstream repository
 
+.DESCRIPTION
+    This script automates synchronizing a Git fork with the upstream repository.
+    It performs the following operations:
+    - Adds upstream remote if missing
+    - Fetches latest changes from upstream
+    - Updates local main branch
+    - Rebases working branch on main
+    - Pushes changes to your fork
+
+    Drop this script at the root of the project and add it to .gitignore.
+
+.PARAMETER BranchName
+    The name of the working branch to update.
+
+.EXAMPLE
+    .\update-branch.ps1 -BranchName "my_branch"
+    Updates the "my_branch" branch with latest upstream changes.
+
+.EXAMPLE
+    .\update-branch.ps1 "feature/new-feature"
+    Updates the "feature/new-feature" branch.
+
+.EXAMPLE
+    Get-Help .\update-branch.ps1 -Full
+    Displays complete help for this script.
+
+.NOTES
+    Author: 40tude
+    Version: 1.0
+    Required: PowerShell 5.1+
+#>
 
 param(
-    [Parameter(Mandatory=$true, HelpMessage="Enter the branch name to work with")]
+    [Parameter(
+        Mandatory=$true,
+        Position=0,
+        HelpMessage="Enter the branch name to work with"
+    )]
     [string]$BranchName
 )
 
 # Set variables - customize these
-$upstreamUrl = "https://github.com/aovestdipaperino/turbo-vision-4-rust.git"  # Change me!
-
-Write-Host "`n--- Git Update Script ---`n" -ForegroundColor Cyan
-
-# Ensure you're on main
-Write-Host "Checking out main..." -ForegroundColor Cyan
-git switch main
+$upstreamUrl = "https://github.com/<NAME>/<PROJECT>.git"  # Change me!
 
 # Check if upstream exists
 $remotes = git remote
@@ -800,21 +828,26 @@ if ($remotes -notcontains "upstream") {
     Write-Host "Adding upstream remote..." -ForegroundColor Yellow
     git remote add upstream $upstreamUrl
 } else {
-    Write-Host "Upstream already exists. Skipping add." -ForegroundColor Green
+    # Write-Host "Upstream already exists. Skipping add." -ForegroundColor Green
+    $null  # Do nothing
 }
 
 # Fetch and merge upstream changes
 Write-Host "`nFetching from upstream..." -ForegroundColor Cyan
 git fetch upstream
 
+# Move on main
+Write-Host "Checking out main..." -ForegroundColor Cyan
+git switch main
+
 Write-Host "Merging upstream/main into local main..." -ForegroundColor Cyan
 git merge upstream/main
 
-# Push to your fork
+# Push to our fork (origin)
 Write-Host "`nPushing updated main to origin..." -ForegroundColor Cyan
 git push origin main
 
-# Switch to working branch
+# Switch to the working branch
 Write-Host "`nSwitching to branch '$BranchName'..." -ForegroundColor Cyan
 git switch $BranchName
 
@@ -822,7 +855,11 @@ git switch $BranchName
 Write-Host "Rebasing '$BranchName' on main..." -ForegroundColor Cyan
 git rebase main
 
-Write-Host "`n✅ Done! Review changes and resolve any conflicts if prompted." -ForegroundColor Green
+# Push the branch of our fork
+git push --force-with-lease origin $BranchName
+
+Write-Host "`nDone! Review changes and resolve any conflicts if prompted." -ForegroundColor Green
+
 ```
 
 
@@ -884,11 +921,11 @@ C'est peut être pas cool ni dans l'air du temps, mais ça passe par une politiq
 {: .no_toc }
 
 - Synchroniser avec `main` pour partir d'une base de code propre :
-     ```bash
-     git switch main
+     ```powershell
      git fetch upstream
+     git switch main
      git merge upstream/main
-     git switch -c <ma_tache>
+     git switch -c <ma_tache> # -c pour créer
      ```
 
 #### Pendant le développement
@@ -902,7 +939,7 @@ C'est peut être pas cool ni dans l'air du temps, mais ça passe par une politiq
 #### Avant de soumettre une PR
 {: .no_toc }
 
-   - Synchroniser avec `main` une dernière fois pour résoudre les éventuels conflits en amont.
+- Synchroniser avec `main` une dernière fois pour résoudre les éventuels conflits en amont.
 
 
 
