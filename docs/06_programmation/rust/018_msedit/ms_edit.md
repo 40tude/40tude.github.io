@@ -7,7 +7,7 @@ description: A beginner-friendly guide from our first fork to our first pull req
 parent: Rust
 #math: mathjax
 date               : 2025-11-07 13:00:00
-last_modified_date : 2025-11-07 13:00:00
+last_modified_date : 2025-11-08 02:00:00
 ---
 
 
@@ -763,64 +763,246 @@ Does it work? Do you know why?
 No, the plan is NOT to spam the team but to study a scenario.
 It is Sunday morning. It is raining... Ok, let's open a terminal in VSCode
 
-<!-- 
-```powershell
-rustup update nightly           # you remember why. Don't you?
-git switch main                 # leave the branch where we are and go to main and local::main = A B C
-git fetch upstream              # fetch the updates from upstream where upstream::main = A B C D E  
-git merge upstream/main         # merge the updates. local::main = A B C D E 
-git push origin main            # push to our repo. origin::main = A B C D E
 
-git switch -c xyz_docs/typos    # create a new local::xyz_docs/typos = A B C D E
+
+Below I call:
+
+| Term               | Description                              |
+|--------------------|------------------------------------------|
+| upstream           | Original project on GitHub (source)      |
+| origin             | The fork in my personal GitHub repo      |
+| local              | My local repository on my PC             |
+| A, B, C...         | Commits in Git history                   |
+| main               | Main branch                              |
+| xyz_docs/typos     | The branch for documentation             |
+| main@local         | main branch in local repository          |
+| main@origin        | main branch in fork (origin)             |
+| main@upstream      | main branch in original project          |
+| xyz_docs/typos@local | Feature branch in local repository     |
+| xyz_docs/typos@origin| Feature branch in fork (origin)        |
+
+
+
+### Starting point
+
+```
+A --- B --- C
+            │
+          main@local
+          main@origin
 ```
 
-Then we read the documentation and correct some typos (nothing more) 
+Before to work on a branch let's make sure `local` and `origin` are in sync with `upstream`.
 
 ```powershell
-cargo build                     # Yes I know we only modify the doc
-cargo test                      # We will be able to confirm the test still work
+git switch main                 # main@local = A B C
+git fetch upstream              # fetch the updates from upstream where main@upstream = A B C D E 
+                                # Does NOT change the current branch
+                                # Saves the new items locally in remote branches such as upstream/main
 ```
 
-Let's update our repo
+The 2 lines above could be replaced with: 
+
+```powershell
+git pull upstream main
+```
+
+Now we merge the commits and we update `origin`. 
+
+```powershell
+git merge upstream/main         # main@local = A B C D E 
+git push origin main            # main@origin = A B C D E
+```
+
+
+The situation becomes:
+
+```
+A --- B --- C --- D --- E
+                        │
+                      main@local
+                      main@origin
+                      main@upstream
+```
+
+
+### Working on the branch
+
+
+```powershell
+git switch -c xyz_docs/typos    # create & switch to the local branch. xyz_docs/typos@local = A B C D E
+```
+
+When the job is done on the branch I may have multiple commits on it. The situation looks like this:
+
+
+```
+                      main@origin
+                      main@local
+                        │
+A --- B --- C --- D --- E    
+                         \
+                          X --- Y         
+                                │
+                          xyz_docs/typos@local
+```
+
+
+Now we push the branch to origin.
 
 
 ```powershell
 git status
 git add .
-git commit -m "docs: Fix typos in documentation"  # local::xyz_docs/typos = A B C D E X Y
-git push origin xyz_docs/typos  # push the branch to the repo. origin::xyz_docs/typos = A B C D E X Y
+git commit -m "docs: Fix typos in documentation"  # xyz_docs/typos@local = A B C D E X Y
+git push origin xyz_docs/typos                    # push the branch to my repo. xyz_docs/typos@origin = A B C D E X Y
 ```
 
-⚠️ Other dev sent commit on the original project where `upstream::main = A B C D E F G H` 
+Here is the situation. There is a branch `xyz_docs/typos@local` and a branch `xyz_docs/typos@origin`.
+
+```
+
+                      main@origin
+                      main@local
+                        │
+A --- B --- C --- D --- E    
+                         \
+                          X --- Y         
+                                │
+                          xyz_docs/typos@local
+                          xyz_docs/typos@origin
+```
+
+
+Other developers have sent commits to the project so `main@upstream = A - B - C - D - E - F - G - H` 
+
+Before merging `main@upstream` into the branch, it is **strongly recommended** to: 
+* switch to `main@local`
+* update it
+* rebase the feature branch onto this new `main@local`
 
 
 ```powershell
-git fetch upstream # to get the latest commit for original project (upstream)
-git rebase upstream/main        # rejoue X et Y par-dessus F, G, H
-git push origin xyz_docs/typos --force-with-lease
+git switch main
+git fetch upstream 
+git merge upstream/main
 ```
 
- -->
+
+The branches are dispatched this way:
 
 
+```
+
+                                      main@local
+                    main@origin       main@upstream
+                        │                 │
+A --- B --- C --- D --- E --- F --- G --- H    
+                         \
+                          X --- Y         
+                                │
+                          xyz_docs/typos@local
+                          xyz_docs/typos@origin
+```
+
+Now we can switch to the branch and `rebase` it:
+
+```powershell
+git switch xyz_docs/typos 
+git rebase main
+```
+
+The `xyz_docs/typos@local` is moved to the end of the history. The history has been re-written but it is linear and easier to understand. The `xyz_docs/typos@origin` did'nt move yet. 
+
+```
+
+                      main@origin
+                      main@local      main@upstream
+                        │                 │
+A --- B --- C --- D --- E --- F --- G --- H    
+                         \                 \
+                          X --- Y           X' --- Y'         
+                                │                 │
+                  xyz_docs/typos@origin   xyz_docs/typos@local
+```
+
+It is time to synchronize `xyz_docs/typos@local` and `xyz_docs/typos@origin`. To do so we must use `--force-with-lease`. Indeed locally we have `A-B-C-D-E-F-G-H-X'-Y'` while we have `A-B-C-D-E-X-Y` on `origin`. With `--force-with-lease` we simply "overwrite" one by the other.
+
+```powershell
+git push --force-with-lease origin xyz_docs/typos
+```
+
+Finally we have:
+
+```
+
+                      main@origin
+                      main@local      main@upstream
+                        │                 │
+A --- B --- C --- D --- E --- F --- G --- H    
+                                           \
+                                           X --- Y         
+                                                 │
+                                   xyz_docs/typos@local
+                                   xyz_docs/typos@origin
+```
 
 
+Now it is time to go to the GitHub web page of our repo and to open a **pull request**. Press the green button. We review carefully then press OK. When this is done, the PR is then a proposal to merge branch `xyz_docs/typos@origin` of the fork into the main branch of the original project `main@upstream`.
 
-
-
-
-With a browser we visit our repo
-GitHub detect a difference between our fork and the project
-It propose to create a pull request 
-Press the Green button
-Read carefully then press OK
-When that's done, the PR is then a proposal to merge branch xyz_docs/typos of the fork into the main branch of the original project
-Then...the maintainers review the PR, hold a council meeting blablabla
+<!-- If we need to make additional modifications to answers the requests from the maintainers, we do that in the branch. If the maintainers ask for more modificationreview the PR, hold a council meeting blablabla
 They either accept it or request changes (via comments on GitHub)
 We make the changes in the branch xyz_docs/typos and then commit to our repo
-The changes will be automatically added to the PR
-The PR is accepted (or rejected)
-We can then delete the branch
+The changes will be automatically added to the PR -->
+
+
+
+
+Waiting for the PR to be accepted/rejected we can update `main@local` and `main@origin` which are late.
+
+
+```powershell
+git switch main                 # main@local = A B C D E
+git fetch upstream              # fetch the updates from upstream where main@upstream = A B C D E F G H
+                                # Does not change the current branch
+                                # Downloads new items from upstream and saves them locally (in remote branches such as upstream/main).
+
+git merge upstream/main         # main@local = A B C D E F G H 
+git push origin main            # main@origin = A B C D E F G H
+```
+
+Here is the situation:
+
+```
+
+                                      main@local
+                                      main@origin
+                                      main@upstream
+                                          │
+A --- B --- C --- D --- E --- F --- G --- H    
+                                           \
+                                           X --- Y         
+                                                 │
+                                   xyz_docs/typos@local
+                                   xyz_docs/typos@origin
+```
+
+
+If the maintainers ask questions etc. We go back to `xyz_docs/typos@local`, do the job then commit and push onto `xyz_docs/typos@origin`. Our new commits are added to your branch. The PR automatically updates with the new commits. Reviewers see the changes directly in the PR. No manual action required on GitHub—everything is synchronized.
+
+```powershell
+git switch xyz_docs/typos 
+# Add the modification
+git status
+git add .
+git commit -m "docs: Address maintainers comments"
+git push origin xyz_docs/typos
+```
+
+
+
+
+When the PR is definitively accepted (or rejected) we can delete the branch.
 
 ```powershell
 git switch main                 
@@ -828,14 +1010,6 @@ git branch -D xyz_docs/typos    # delete the branch
 ```
 
 
-Finally we can make either wait tomorrow morning or sync our fork now:
-
-```powershell
-git switch main                 
-git fetch upstream 
-git merge upstream/main 
-git push origin main
-```
 
 
 
