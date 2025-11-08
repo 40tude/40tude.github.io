@@ -793,16 +793,16 @@ git push --force-with-lease origin my_branch
     The name of the working branch to update.
 
 .EXAMPLE
+    Get-Help .\update-branch.ps1 -Full
+    Displays complete help for this script.
+
+.EXAMPLE
     .\update-branch.ps1 -BranchName "my_branch"
     Updates the "my_branch" branch with latest upstream changes.
 
 .EXAMPLE
     .\update-branch.ps1 "feature/new-feature"
     Updates the "feature/new-feature" branch.
-
-.EXAMPLE
-    Get-Help .\update-branch.ps1 -Full
-    Displays complete help for this script.
 
 .NOTES
     Author: 40tude
