@@ -1052,13 +1052,13 @@ git branch -D xyz_docs/typos    # delete the branch
 {: .no_toc }
 
 ```powershell
-# synchronize with upstream
+# sync main@local & main@origin with upstream
 git fetch upstream
 git switch main
 git merge upstream/main
 git push origin main
 
-# work on and push hte branch
+# work on and push the branch
 git switch -c xyz_docs/typos
 git status
 git add .
@@ -1074,14 +1074,14 @@ git rebase main
 git push --force-with-lease origin xyz_docs/typos
 # open a PR via GitHub
 
-# add modifications
+# add modifications to the PR
 git switch xyz_docs/typos 
 git status
 git add .
 git commit -m "docs: Address maintainers comments"
 git push origin xyz_docs/typos
 
-# sync main@local & main@origin
+# sync main@local & main@origin with upstream
 git fetch upstream
 git switch main
 git merge upstream/main
