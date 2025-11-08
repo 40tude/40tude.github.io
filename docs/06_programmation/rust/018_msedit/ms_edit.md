@@ -673,6 +673,8 @@ mod sys;        // Import the sys/ folder
 
 
 ### `unsafe` code
+{: .no_toc }
+
 The project uses a lot of `unsafe` to interact with system APIs (C). This is a good example of FFI (Foreign Function Interface) in Rust.
 
 `CTRL+SHIFT+F` then search for `unsafe`
