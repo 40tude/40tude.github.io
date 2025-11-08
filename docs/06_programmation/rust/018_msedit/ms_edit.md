@@ -82,6 +82,7 @@ A beginner-friendly guide from our first fork to our first pull request.
 - [ ] I identified where error handling is located
 - [ ] I found an example of `Result<>`
 - [ ] I found an example of `unsafe`
+- [ ] I installed `CodeLLDB`, set a breakpoint and moved 
 - [ ] I read an issue on GitHub
 - [ ] I created a test branch
 - [ ] I'm ready to contribute!
@@ -474,9 +475,9 @@ cargo run -- release -- do_not_exist.md
 
 ## 07. Create a branch and discover the project
 
-We are in VSCode
-One terminal is open (the tests are done)
-We can either create the branch from the console or with the GUI
+* We are in VSCode
+* One terminal is open (the tests are done)
+* We can either create the branch from the console or with the GUI
 
 **Side Note:** Below, the 3 letters "bcr" is the trigram for my last name. Use your own.
 
@@ -486,7 +487,7 @@ git switch -c bcr_docs/discover # creates and switches to the `bcr_docs/discover
 # Then we can use git switch bcr_docs/discover
 ```
 
-Normally we plan to behave like visitors, in read-only mode and we have no intention to make any modification.
+Normally we plan to behave like visitors, in read-only-ninja mode and we have no intention to make any modification.
 
 
 ### If we break everything
@@ -761,9 +762,10 @@ In VSCode, `F12` (Go to Definition), `SHIFT+F12` (Go to Reference) and `CTRL+F12
 ## 12. Debugging 
 
 * Install `CodeLLDB` extension
-* Set a breakpoint
+* Set a breakpoint (`F9`) in `src/bin/edit/main.rs` for example
 * Start Debugging (`F5`)
-
+* Move forward line by line (`F10`)
+* Inspect variables values on the left hand side
 
 <div align="center">
 <img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
@@ -798,7 +800,8 @@ Does it work? Do you know why?
 ## 13. Create a Pull Request
 
 No, the plan is NOT to spam the team but to study a scenario.
-It is Sunday morning. It is raining... Ok, let's open a terminal in VSCode
+
+It is Sunday morning. It is raining... Ok, let's open a terminal in VSCode.
 
 
 
