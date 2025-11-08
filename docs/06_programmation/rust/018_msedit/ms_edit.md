@@ -12,7 +12,7 @@ last_modified_date : 2025-11-08 02:00:00
 
 
 
-# From Zero to Contributor: Illustrated with Microsoft Edit
+# From Zero to Ready to Contribute: Illustrated with Microsoft Edit
 {: .no_toc }
 
 A beginner-friendly guide from our first fork to our first pull request.
@@ -21,9 +21,9 @@ A beginner-friendly guide from our first fork to our first pull request.
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
-</h2>
+</h2> -->
 
 
 
@@ -127,6 +127,18 @@ A beginner-friendly guide from our first fork to our first pull request.
 <!-- <span>Optional comment</span> -->
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -156,7 +168,12 @@ rustc --version # just to make sure everything is OK.
 Regarding setting up Rust on Windows, you can read [dedicated post]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}#install-rust)
 
 
+And if you dont know it yet here is edit:
 
+<div align="center">
+<img src="./assets/img02.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
@@ -729,7 +746,7 @@ In VSCode, `F12` (Go to Definition), `SHIFT+F12` (Go to Reference) and `CTRL+F12
 
 
 <div align="center">
-<img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -758,7 +775,7 @@ Does it work? Do you know why?
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 12. Create a Pull Request
+## 13. Create a Pull Request
 
 No, the plan is NOT to spam the team but to study a scenario.
 It is Sunday morning. It is raining... Ok, let's open a terminal in VSCode
@@ -783,7 +800,8 @@ Below I call:
 
 
 
-### Starting point
+### 1. Starting point
+{: .no_toc }
 
 ```
 A --- B --- C
@@ -795,10 +813,10 @@ A --- B --- C
 Before to work on a branch let's make sure `local` and `origin` are in sync with `upstream`.
 
 ```powershell
-git switch main                 # main@local = A B C
 git fetch upstream              # fetch the updates from upstream where main@upstream = A B C D E 
                                 # Does NOT change the current branch
                                 # Saves the new items locally in remote branches such as upstream/main
+git switch main                 # main@local = A B C
 ```
 
 The 2 lines above could be replaced with: 
@@ -826,7 +844,8 @@ A --- B --- C --- D --- E
 ```
 
 
-### Working on the branch
+### 2. Working on the branch
+{: .no_toc }
 
 
 ```powershell
@@ -874,7 +893,15 @@ A --- B --- C --- D --- E
 ```
 
 
-Other developers have sent commits to the project so `main@upstream = A - B - C - D - E - F - G - H` 
+
+
+
+
+### 3. Pull Request
+{: .no_toc }
+
+
+`main@upstream` has evolved, commits have been pulled and it looks like `A - B - C - D - E - F - G - H` 
 
 Before merging `main@upstream` into the branch, it is **strongly recommended** to: 
 * switch to `main@local`
@@ -883,13 +910,13 @@ Before merging `main@upstream` into the branch, it is **strongly recommended** t
 
 
 ```powershell
-git switch main
 git fetch upstream 
+git switch main
 git merge upstream/main
 ```
 
 
-The branches are dispatched this way:
+The branches are now dispatched this way:
 
 
 ```
@@ -905,19 +932,18 @@ A --- B --- C --- D --- E --- F --- G --- H
                           xyz_docs/typos@origin
 ```
 
-Now we can switch to the branch and `rebase` it:
+We can switch to `xyz_docs/typos` and `rebase` it:
 
 ```powershell
 git switch xyz_docs/typos 
 git rebase main
 ```
 
-The `xyz_docs/typos@local` is moved to the end of the history. The history has been re-written but it is linear and easier to understand. The `xyz_docs/typos@origin` did'nt move yet. 
+The branch `xyz_docs/typos@local` is moved to the end of the history. The history has been re-written but it is linear and easier to understand. The `xyz_docs/typos@origin` did'nt move yet. Note `X'` and `Y'` notation because they are copy of `X` and `Y` but not `X` and `Y`.  
 
 ```
-
-                      main@origin
-                      main@local      main@upstream
+                                      main@local
+                    main@origin       main@upstream
                         │                 │
 A --- B --- C --- D --- E --- F --- G --- H    
                          \                 \
@@ -935,9 +961,8 @@ git push --force-with-lease origin xyz_docs/typos
 Finally we have:
 
 ```
-
-                      main@origin
-                      main@local      main@upstream
+                                      main@local
+                    main@origin       main@upstream
                         │                 │
 A --- B --- C --- D --- E --- F --- G --- H    
                                            \
@@ -948,24 +973,28 @@ A --- B --- C --- D --- E --- F --- G --- H
 ```
 
 
-Now it is time to go to the GitHub web page of our repo and to open a **pull request**. Press the green button. We review carefully then press OK. When this is done, the PR is then a proposal to merge branch `xyz_docs/typos@origin` of the fork into the main branch of the original project `main@upstream`.
-
-<!-- If we need to make additional modifications to answers the requests from the maintainers, we do that in the branch. If the maintainers ask for more modificationreview the PR, hold a council meeting blablabla
-They either accept it or request changes (via comments on GitHub)
-We make the changes in the branch xyz_docs/typos and then commit to our repo
-The changes will be automatically added to the PR -->
+**Tadaa!** It is time to go to the GitHub web page of our repo and to open a **pull request**. Press the green button. We review carefully then we press OK. When this is done, the PR is then a proposal to merge branch `xyz_docs/typos@origin` of the fork into the main branch of the original project `main@upstream`.
 
 
 
 
-Waiting for the PR to be accepted/rejected we can update `main@local` and `main@origin` which are late.
+
+### 4. The days after
+{: .no_toc }
+
+<div align="center">
+<img src="./assets/img13_01.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+**Task 1:** While waiting our PR to be accepted/rejected we can synchronize and update `main@local` and `main@origin` which may becomes late otherwise. Indeed `main@uptream` continue to evolve.
 
 
 ```powershell
-git switch main                 # main@local = A B C D E
 git fetch upstream              # fetch the updates from upstream where main@upstream = A B C D E F G H
                                 # Does not change the current branch
                                 # Downloads new items from upstream and saves them locally (in remote branches such as upstream/main).
+git switch main                 # main@local = A B C D E
 
 git merge upstream/main         # main@local = A B C D E F G H 
 git push origin main            # main@origin = A B C D E F G H
@@ -974,12 +1003,11 @@ git push origin main            # main@origin = A B C D E F G H
 Here is the situation:
 
 ```
-
-                                      main@local
-                                      main@origin
-                                      main@upstream
-                                          │
-A --- B --- C --- D --- E --- F --- G --- H    
+                                                        main@local
+                                                        main@origin
+                                                        main@upstream
+                                                            │
+A --- B --- C --- D --- E --- F --- G --- H --- I --- J --- K    
                                            \
                                            X --- Y         
                                                  │
@@ -988,11 +1016,11 @@ A --- B --- C --- D --- E --- F --- G --- H
 ```
 
 
-If the maintainers ask questions etc. We go back to `xyz_docs/typos@local`, do the job then commit and push onto `xyz_docs/typos@origin`. Our new commits are added to your branch. The PR automatically updates with the new commits. Reviewers see the changes directly in the PR. No manual action required on GitHub—everything is synchronized.
+**Task 2:** If the maintainers ask questions, request more modifications before acceptance... We go back to `xyz_docs/typos@local`, do what need to be done then commit and push onto `xyz_docs/typos@origin`. Our new commits are added to your branch. The PR automatically updates with the new commits. Reviewers see the changes directly in the PR. No manual action required on GitHub—everything is synchronized.
 
 ```powershell
 git switch xyz_docs/typos 
-# Add the modification
+# Add the modifications
 git status
 git add .
 git commit -m "docs: Address maintainers comments"
@@ -1000,6 +1028,16 @@ git push origin xyz_docs/typos
 ```
 
 
+
+
+### 5. This is the end
+{: .no_toc }
+
+
+<div align="center">
+<img src="./assets/img13_02.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 When the PR is definitively accepted (or rejected) we can delete the branch.
@@ -1010,6 +1048,49 @@ git branch -D xyz_docs/typos    # delete the branch
 ```
 
 
+### 5. Summary
+{: .no_toc }
+
+```powershell
+# synchronize with upstream
+git fetch upstream
+git switch main
+git merge upstream/main
+git push origin main
+
+# work on and push hte branch
+git switch -c xyz_docs/typos
+git status
+git add .
+git commit -m "docs: Fix typos in documentation"
+git push origin xyz_docs/typos
+
+# PR
+git fetch upstream 
+git switch main
+git merge upstream/main
+git switch xyz_docs/typos 
+git rebase main
+git push --force-with-lease origin xyz_docs/typos
+# open a PR via GitHub
+
+# add modifications
+git switch xyz_docs/typos 
+git status
+git add .
+git commit -m "docs: Address maintainers comments"
+git push origin xyz_docs/typos
+
+# sync main@local & main@origin
+git fetch upstream
+git switch main
+git merge upstream/main
+git push origin main
+
+# delete the branch
+git switch main                 
+git branch -D xyz_docs/typos    
+```
 
 
 
@@ -1022,7 +1103,7 @@ git branch -D xyz_docs/typos    # delete the branch
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 13. Webliography
+## 14. Webliography
 
 - [Official Rust documentation](https://doc.rust-lang.org/book/)
 - [Cargo Book](https://doc.rust-lang.org/cargo/)
