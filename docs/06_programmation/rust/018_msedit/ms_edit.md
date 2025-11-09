@@ -22,7 +22,7 @@ A beginner-friendly guide from our first fork to our first pull request.
 
 
 <!-- <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
+<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2> -->
 
 
@@ -82,7 +82,7 @@ A beginner-friendly guide from our first fork to our first pull request.
 - [ ] I identified where error handling is located
 - [ ] I found an example of `Result<>`
 - [ ] I found an example of `unsafe`
-- [ ] I installed `CodeLLDB`, set a breakpoint and moved 
+- [ ] I installed `CodeLLDB`, set a breakpoint and moved
 - [ ] I read an issue on GitHub
 - [ ] I created a test branch
 - [ ] I'm ready to contribute!
@@ -150,7 +150,7 @@ A beginner-friendly guide from our first fork to our first pull request.
 
 ## 02. Prerequisites
 
-I suppose: 
+I suppose:
 * You run Windows 11
 * [VSCode](https://code.visualstudio.com/) is installed
 * [Git](https://git-scm.com/install/windows) is installed
@@ -224,7 +224,7 @@ git remote -v # to check again
 
 The before last command adds a new "remote" to our local Git repository:
 - `git remote add`: adds a new reference to the distant repo
-- `upstream`: the name we're giving to this remote 
+- `upstream`: the name we're giving to this remote
 - `https://github.com/microsoft/edit.git`: the URL of the distant repo
 
 This will help to keep our repo in sync with the original.
@@ -304,12 +304,12 @@ rustup show
 # Result in `microsoft_edit/` with nightly override:
 #       Default host: x86_64-pc-windows-msvc
 #       rustup home:  C:\Users\phili\.rustup
-#       
+#
 #       installed toolchains
 #       --------------------
 #       stable-x86_64-pc-windows-msvc (default)
 #       nightly-x86_64-pc-windows-msvc (active)
-#       
+#
 #       active toolchain
 #       ----------------
 #       name: nightly-x86_64-pc-windows-msvc
@@ -321,12 +321,12 @@ rustup show
 # Result in one of our projects:
 #       Default host: x86_64-pc-windows-msvc
 #       rustup home:  C:\Users\phili\.rustup
-#       
+#
 #       installed toolchains
 #       --------------------
 #       stable-x86_64-pc-windows-msvc (active, default)
 #       nightly-x86_64-pc-windows-msvc
-#       
+#
 #       active toolchain
 #       ----------------
 #       name: stable-x86_64-pc-windows-msvc
@@ -335,10 +335,10 @@ rustup show
 #         x86_64-pc-windows-msvc
 ```
 
-### How to get the up to date version? 
+### How to get the up to date version?
 {: .no_toc }
 
-Indeed, three days from now, before to "touch" Microsoft Edit, we need to get the latest version:  
+Indeed, three days from now, before to "touch" Microsoft Edit, we need to get the latest version:
 
 ```powershell
 rustup update nightly
@@ -382,7 +382,7 @@ rustup update nightly
 
 ## 06. Compile for the first time on the `main` branch (just to check)
 
-If you are not yet in VSCode, move to the `microsoft_edit/` directory otherwise use the integrated terminal which is already open or open a new one. 
+If you are not yet in VSCode, move to the `microsoft_edit/` directory otherwise use the integrated terminal which is already open or open a new one.
 
 ### Check the code without compiling
 {: .no_toc }
@@ -391,7 +391,7 @@ If you are not yet in VSCode, move to the `microsoft_edit/` directory otherwise 
 cargo check
 ```
 
-### Compile (development build) and run 
+### Compile (development build) and run
 {: .no_toc }
 
 ```powershell
@@ -415,7 +415,7 @@ cargo run
 **Launch with a file**
 ```powershell
 cargo run -- README.md # README.md is at the root of the Edit project
-cargo run -- do_not_exist.md 
+cargo run -- do_not_exist.md
 
 # or directly
 ./target/debug/edit README.md
@@ -456,7 +456,7 @@ cargo build --config .cargo/release-nightly.toml --release
 **Launch it with a file**
 ```powershell
 cargo run -- release -- README.md # README.md is at the root of the Edit project
-cargo run -- release -- do_not_exist.md 
+cargo run -- release -- do_not_exist.md
 
 # or directly
 ./target/release/edit README.md
@@ -662,7 +662,7 @@ Checkout the `mod` and `use` in the code
 ```rust
 // In src/bin/edit/main.rs
 mod draw_editor;
-mod state;       
+mod state;
 
 
 // In src/lib.rs
@@ -716,7 +716,7 @@ Fuzzy search and other algorithms
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 11. Study error handling 
+## 11. Study error handling
 
 This is an example of topic to study.
 
@@ -759,7 +759,7 @@ In VSCode, `F12` (Go to Definition), `SHIFT+F12` (Go to Reference) and `CTRL+F12
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## 12. Debugging 
+## 12. Debugging
 
 * Install `CodeLLDB` extension
 * Set a breakpoint (`F9`) in `src/bin/edit/main.rs` for example
@@ -836,22 +836,22 @@ A --- B --- C
 Before to work on a branch let's make sure `local` and `origin` are in sync with `upstream`.
 
 ```powershell
-git fetch upstream # fetch the updates from upstream where main@upstream = A B C D E 
+git fetch upstream # fetch the updates from upstream where main@upstream = A B C D E
                    # Does NOT change the current branch
                    # Saves the new items locally in remote branches such as upstream/main
 git switch main    # main@local = A B C
 ```
 
-The 2 lines above could be replaced with: 
+The 2 lines above could be replaced with:
 
 ```powershell
 git pull upstream main
 ```
 
-Now we merge the commits and we update `origin`. 
+Now we merge the commits and we update `origin`.
 
 ```powershell
-git merge upstream/main # main@local = A B C D E 
+git merge upstream/main # main@local = A B C D E
 git push origin main    # main@origin = A B C D E
 ```
 
@@ -882,9 +882,9 @@ When the job is done on the branch we may have multiple commits on it. The situa
                       main@origin
                       main@local
                         │
-A --- B --- C --- D --- E    
+A --- B --- C --- D --- E
                          \
-                          X --- Y         
+                          X --- Y
                                 │
                           xyz_docs/typos@local
 ```
@@ -906,9 +906,9 @@ Here is the situation. There is a branch `xyz_docs/typos@local` and a branch `xy
                       main@origin
                       main@local
                         │
-A --- B --- C --- D --- E    
+A --- B --- C --- D --- E
                          \
-                          X --- Y         
+                          X --- Y
                                 │
                           xyz_docs/typos@local
                           xyz_docs/typos@origin
@@ -923,16 +923,16 @@ A --- B --- C --- D --- E
 {: .no_toc }
 
 
-`main@upstream` has evolved, commits have been pulled and it looks like `A - B - C - D - E - F - G - H` 
+`main@upstream` has evolved, commits have been pulled and it looks like `A - B - C - D - E - F - G - H`
 
-Before merging `main@upstream` into the branch, it is **strongly recommended** to: 
+Before merging `main@upstream` into the branch, it is **strongly recommended** to:
 * switch to `main@local`
 * update it
 * rebase the feature branch onto this new `main@local`
 
 
 ```powershell
-git fetch upstream 
+git fetch upstream
 git switch main
 git merge upstream/main
 ```
@@ -946,9 +946,9 @@ The branches are now dispatched this way:
                                       main@local
                     main@origin       main@upstream
                         │                 │
-A --- B --- C --- D --- E --- F --- G --- H    
+A --- B --- C --- D --- E --- F --- G --- H
                          \
-                          X --- Y         
+                          X --- Y
                                 │
                           xyz_docs/typos@local
                           xyz_docs/typos@origin
@@ -957,19 +957,19 @@ A --- B --- C --- D --- E --- F --- G --- H
 We can switch to `xyz_docs/typos` and `rebase` it:
 
 ```powershell
-git switch xyz_docs/typos 
+git switch xyz_docs/typos
 git rebase main
 ```
 
-The branch `xyz_docs/typos@local` is moved to the end of the history. The history has been re-written but it is linear and easier to understand. The `xyz_docs/typos@origin` did'nt move yet. Note `X'` and `Y'` notation because they are copies of `X` and `Y` but not `X` and `Y` themselves.  
+The branch `xyz_docs/typos@local` is moved to the end of the history. The history has been re-written but it is linear and easier to understand. The `xyz_docs/typos@origin` did'nt move yet. Note `X'` and `Y'` notation because they are copies of `X` and `Y` but not `X` and `Y` themselves.
 
 ```
                                       main@local
                     main@origin       main@upstream
                         │                 │
-A --- B --- C --- D --- E --- F --- G --- H    
+A --- B --- C --- D --- E --- F --- G --- H
                          \                 \
-                          X --- Y           X' --- Y'         
+                          X --- Y           X' --- Y'
                                 │                 │
                   xyz_docs/typos@origin   xyz_docs/typos@local
 ```
@@ -986,9 +986,9 @@ Finally we have:
                                       main@local
                     main@origin       main@upstream
                         │                 │
-A --- B --- C --- D --- E --- F --- G --- H    
+A --- B --- C --- D --- E --- F --- G --- H
                                            \
-                                           X --- Y         
+                                           X --- Y
                                                  │
                                    xyz_docs/typos@local
                                    xyz_docs/typos@origin
@@ -1027,9 +1027,9 @@ Here is the situation:
                                                         main@origin
                                                         main@upstream
                                                             │
-A --- B --- C --- D --- E --- F --- G --- H --- I --- J --- K    
+A --- B --- C --- D --- E --- F --- G --- H --- I --- J --- K
                                            \
-                                           X --- Y         
+                                           X --- Y
                                                  │
                                    xyz_docs/typos@local
                                    xyz_docs/typos@origin
@@ -1042,7 +1042,7 @@ And yes, we leave the branch where it is connected because what matters for the 
 **Task 2:** If reviewers request more modifications before acceptance... We go back to `xyz_docs/typos@local`, do what need to be done then commit and push onto `xyz_docs/typos@origin`. Our new commits are added to your branch. The PR automatically updates with the new commits. Reviewers see the changes directly in the PR. No manual action required on GitHub—everything is synchronized.
 
 ```powershell
-git switch xyz_docs/typos 
+git switch xyz_docs/typos
 git status
 git add .
 git commit -m "docs: Address reviewers comments"
@@ -1062,11 +1062,13 @@ If the PR is accepted, `Y` will be merged with `H`.
 </div>
 
 
-When the PR is definitively accepted (or rejected) we can delete the branch.
+If the PR is accepted, you all good. Otherwise, if PR is definitively rejected you may decide to delete the branch.
 
 ```powershell
-git switch main                 
-git branch -D xyz_docs/typos    # delete the branch
+git switch main
+git branch -D xyz_docs/typos            # delete the branch locally
+git push origin --delete xyz_docs/typos # delete the branch on origin
+git fetch --prune origin                # clean no longer used references
 ```
 
 
@@ -1088,16 +1090,16 @@ git commit -m "docs: Fix typos in documentation"
 git push origin xyz_docs/typos
 
 # PR
-git fetch upstream 
+git fetch upstream
 git switch main
 git merge upstream/main
-git switch xyz_docs/typos 
+git switch xyz_docs/typos
 git rebase main
 git push --force-with-lease origin xyz_docs/typos
 # open a PR via GitHub
 
 # add modifications to the PR
-git switch xyz_docs/typos 
+git switch xyz_docs/typos
 git status
 git add .
 git commit -m "docs: Address reviewers comments"
@@ -1109,9 +1111,11 @@ git switch main
 git merge upstream/main
 git push origin main
 
-# delete the branch
-git switch main                 
-git branch -D xyz_docs/typos    
+# if rejected delete the branch
+git switch main
+git branch -D xyz_docs/typos
+git push origin --delete xyz_docs/typos
+git fetch --prune origin
 ```
 
 

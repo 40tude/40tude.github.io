@@ -8,13 +8,13 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * Voir ces histoires de balise rel="canonical"
 * Voir ces histoires de plugins
     * Va être chaud
-    * Faut installer ruby même si on a un plugin sous forme de gem 
+    * Faut installer ruby même si on a un plugin sous forme de gem
     * Faut l'installer avec Bundle etc.
-* SEO? 
+* SEO?
     * Pas sûr de comprendre grand chose au sujet
     * En plus je suis pas intéressé par le sujet
 * Optimization
-    * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire 
+    * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire
     * F12 ou Ctrl+Shift+I pour ouvrir les DevTools.
     * Onglet Lighthouse
     * Performance, Accessibility, SEO, Best Practices, cliquer sur "Generate report".
@@ -24,7 +24,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 * ~~Pages en anglais? avec lang=en avant le Head~~
     * ~~À mon avis c'est mort mais bon je vais continuer à chercher~~
     * ~~Y a peut être une option avec les collections mais je sais pas si y a lang="en" avant le head~~
-<span style="color:red"><b>IMPORTANT:</b></span>  
+<span style="color:red"><b>IMPORTANT:</b></span>
     * Voir `_layouts\default.html`. Si jamais just the docs le modifie faudra aller chercher la nouvelle version
     * Voir `https://github.com/just-the-docs/just-the-docs/blob/main/_layouts/default.html`
 
@@ -43,7 +43,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
     * On va partir comme ça pour l'instant
 * ~~Ajouter un espace pour les discussions~~
 * ~~Rapatrier la page Git Survival de GitHub ici~~
-* ~~Rapatrier la page install Linux Mint qui est sur GitHub~~ 
+* ~~Rapatrier la page install Linux Mint qui est sur GitHub~~
 * ~~Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md~~
 * ~~Faire une checklist.pdf~~
 * ~~implement 404 page~~
@@ -88,7 +88,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 ## IDEES DE BILLETS
 * Pareto et 50%-1%
 * SOS Chapitres IV et suivants
-* IA et ML 
+* IA et ML
     * Relire les notes OneNote de préparation certification Architect IA et voir ce que je peux rapatrier
 * 52 nuances de physique (faut vraiment que je l'écrive un jour)
 ~~* Revenir sur Codingame~~
@@ -110,17 +110,19 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 
 
 <h2 align="center">
-<span style="color:red"><b>This post is still being written.</b></span>    
+<span style="color:red"><b>This post is still being written.</b></span>
 </h2>
 
 <h2 align="center">
-<span style="color:orange"><b>This post is still being reviewed.</b></span>    
+<span style="color:orange"><b>This post is still being reviewed.</b></span>
 </h2>
 
 
 ## À garder sous le coude
 * Ç = ALT + 128 (du pavé numérique)
 * — = ALT + 0150 (tiret long, em dash, tiret cadratin, pas d'espace autour en anglais)
+* Supprimer les espaces vides en fin de ligne : `[ \t]+$`
+    * Voir aussi settings.json et `"files.trimTrailingWhitespace": true,`
 
 ```json
 
@@ -160,7 +162,7 @@ Sans Serif
 * Voir _config.yml
 
 ```
-    purple        red              blue               green        yellow     
+    purple        red              blue               green        yellow
 {: .note }    {: .warning }    {: .important }    {: .new }    {: .highlight }
 ```
 
@@ -205,7 +207,7 @@ Callouts : https://just-the-docs.com/docs/ui-components/callouts/
 
 ### Note de bas de page
 
-Dans le texte : 
+Dans le texte :
 ```
 une valeur entière[^1]
 ```
@@ -377,7 +379,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 
 
 
-### Enlever le gras des titres 
+### Enlever le gras des titres
 ```
 CTRL + H + Exp Reg
 (#+)\s\*\*(.*?)\*\*
@@ -392,10 +394,10 @@ CTRL + H + Exp Reg
 <div align="center">\n$1\n</div>
 ```
 
-### Remplacer les $ seuls par $$ 
+### Remplacer les $ seuls par $$
 ```
 CTRL + H + Exp Reg
-(?<!\$)\$(?!\$) 
+(?<!\$)\$(?!\$)
 $$$
 ```
 
@@ -425,7 +427,7 @@ $$
 ```
 
 
-### Lister les 10 plus longs articles : 
+### Lister les 10 plus longs articles :
 
 ```powershell
 cd C:\Users\phili\OneDrive\Documents\40tude_to_repair\converted_to_markdown\docs
@@ -460,7 +462,7 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
     {% assign image = page.content | split: '<img src="' | last | split: '"' | first %}
     {% assign image = image | slice: 2, image.size %}
     <pre>image = {{ image }}</pre>
-    {% if image == page.content %} 
+    {% if image == page.content %}
         {% assign image = '/assets/images/40tude_307.webp' %}
     {% endif %}
 
@@ -470,34 +472,34 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
     {% for page in articles_sorted limit: nb_articles %}
         <tr>
             <td>
-                <!-- Extract image if it exists --> 
-                {% assign image = '' %} 
-                {% capture page_content %}{{ page.content }}{% endcapture %} 
-                {% assign img_tag_start = '<img src="' %} 
-                {% assign img_tag_end = '"' %} 
-                {% assign img_start_index = page_content | index: img_tag_start %} 
-                {% if img_start_index %} 
-                    {% assign img_start_index = img_start_index | plus: img_tag_start.size %} 
-                    {% assign img_end_index = page_content | slice: img_start_index | index: img_tag_end %} 
-                    {% assign image = page_content | slice: img_start_index, img_end_index %} 
-                {% endif %} 
-                <pre>image before slice = {{ image }}</pre> 
-                {% if image == '' %} 
-                    {% assign image = '/assets/images/40tude_307.webp' %} 
-                {% else %} 
-                    {% assign image = image | slice: 2, image.size %} 
+                <!-- Extract image if it exists -->
+                {% assign image = '' %}
+                {% capture page_content %}{{ page.content }}{% endcapture %}
+                {% assign img_tag_start = '<img src="' %}
+                {% assign img_tag_end = '"' %}
+                {% assign img_start_index = page_content | index: img_tag_start %}
+                {% if img_start_index %}
+                    {% assign img_start_index = img_start_index | plus: img_tag_start.size %}
+                    {% assign img_end_index = page_content | slice: img_start_index | index: img_tag_end %}
+                    {% assign image = page_content | slice: img_start_index, img_end_index %}
+                {% endif %}
+                <pre>image before slice = {{ image }}</pre>
+                {% if image == '' %}
+                    {% assign image = '/assets/images/40tude_307.webp' %}
+                {% else %}
+                    {% assign image = image | slice: 2, image.size %}
                 {% endif %}
                 <pre>image after extract = {{ image }}</pre>
 
                 <pre>page.url = {{ page.url }}</pre>
-                
-                <!-- Extract the directory from page.url --> 
-                {% assign page_dir = '' %} 
-                {% assign parts = page.url | split: '/' %} 
-                {% for part in parts %} 
-                    {% unless forloop.last %} 
-                        {% assign page_dir = page_dir | append: part | append: '/' %} 
-                    {% endunless %} 
+
+                <!-- Extract the directory from page.url -->
+                {% assign page_dir = '' %}
+                {% assign parts = page.url | split: '/' %}
+                {% for part in parts %}
+                    {% unless forloop.last %}
+                        {% assign page_dir = page_dir | append: part | append: '/' %}
+                    {% endunless %}
                 {% endfor %}
                 <pre>page_dir = {{ page_dir }}</pre>
                 <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="100" loading="lazy"/>
@@ -520,37 +522,37 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
     {% for page in articles_sorted limit: nb_articles %}
         <tr>
             <td>
-                <!-- Extract image if it exists --> 
-                {% assign image = '' %} 
-                {% capture page_content %}{{ page.content }}{% endcapture %} 
-                {% assign img_tag_start = '<img src="' %} 
-                {% assign img_tag_end = '"' %} 
-                {% assign img_start_index = page_content | index: img_tag_start %} 
+                <!-- Extract image if it exists -->
+                {% assign image = '' %}
+                {% capture page_content %}{{ page.content }}{% endcapture %}
+                {% assign img_tag_start = '<img src="' %}
+                {% assign img_tag_end = '"' %}
+                {% assign img_start_index = page_content | index: img_tag_start %}
                 {% if img_start_index != nil %}
                     {% assign img_start_index = img_start_index | plus: img_tag_start.size %}
-                    {% assign img_substring = page_content | slice: img_start_index %} 
+                    {% assign img_substring = page_content | slice: img_start_index %}
                     {% assign img_end_index = img_substring | index: img_tag_end %}
                     {% if img_end_index != nil %}
-                        {% assign image = img_substring | slice: 0, img_end_index %} 
+                        {% assign image = img_substring | slice: 0, img_end_index %}
                     {% endif %}
-                {% endif %} 
-                <pre>image before slice = {{ image }}</pre> 
-                {% if image == '' %} 
-                    {% assign image = '/assets/images/40tude_307.webp' %} 
-                {% else %} 
+                {% endif %}
+                <pre>image before slice = {{ image }}</pre>
+                {% if image == '' %}
+                    {% assign image = '/assets/images/40tude_307.webp' %}
+                {% else %}
                     {% assign image = image | slice: 2, image.size %}
                 {% endif %}
                 <pre>image after extract = {{ image }}</pre>
 
                 <pre>page.url = {{ page.url }}</pre>
 
-                <!-- Extract the directory from page.url --> 
-                {% assign page_dir = '' %} 
-                {% assign parts = page.url | split: '/' %} 
-                {% for part in parts %} 
-                    {% unless forloop.last %} 
-                        {% assign page_dir = page_dir | append: part | append: '/' %} 
-                    {% endunless %} 
+                <!-- Extract the directory from page.url -->
+                {% assign page_dir = '' %}
+                {% assign parts = page.url | split: '/' %}
+                {% for part in parts %}
+                    {% unless forloop.last %}
+                        {% assign page_dir = page_dir | append: part | append: '/' %}
+                    {% endunless %}
                 {% endfor %}
                 <pre>page_dir = {{ page_dir }}</pre>
                 <img src="{{ page_dir }}{{ image }}" alt="Illustration de {{ page.title }}" width="100" loading="lazy"/>
