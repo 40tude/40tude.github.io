@@ -502,6 +502,14 @@ git switch -c bcr_docs/discover # start over
 ```
 
 
+
+### I would like to rename the branch
+```powershell
+git branch -m fix-menu-demo
+```
+
+
+
 ### If you want to make any modifications
 {: .no_toc }
 
@@ -544,7 +552,7 @@ git push origin main    # push to our repo
 
 git switch my_branch                         # return to our branch
 git rebase main                              # integrate the latest changes into our branch
-git push --force-with-lease origin my_branch # the work then push to our repo
+git push --force-with-lease origin my_branch # work then push to our repo
 ```
 
 Most of the git command can be executed using the GUI. See below an example with `git fetch upstream`:
@@ -1064,7 +1072,7 @@ If the PR is accepted, `Y` will be merged with `H`.
 </div>
 
 
-If the PR is accepted, you all good. Otherwise, if PR is definitively rejected you may decide to delete the branch.
+If the PR is accepted, we are all good. Otherwise, if the PR is definitively rejected we may decide to delete the branch.
 
 ```powershell
 git switch main
