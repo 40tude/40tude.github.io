@@ -7,7 +7,7 @@ description: A beginner-friendly guide from our first fork to our first pull req
 parent: Rust
 #math: mathjax
 date               : 2025-11-07 13:00:00
-last_modified_date : 2025-11-08 02:00:00
+last_modified_date : 2025-11-11 23:00:00
 ---
 
 
@@ -1131,6 +1131,139 @@ git fetch --prune origin
 
 
 
+### 7. This script may help
+{: .no_toc }
+
+We can name it `sync-fork.ps1`.
+
+```powershell
+<#
+.SYNOPSIS
+    Fork Synchronization Script - Keeps your fork and branches in sync with upstream
+
+.DESCRIPTION
+    1. Drop this script at the root of the project and add it to `.gitignore`
+    2. Edit the variable `$upstreamUrl` in the code
+
+    The idea behind this script is to have a Swiss Army knife usable in the following 4 scenarios:
+
+    1. I've created a fork. I just want to synchronize `main@local` and `main@origin` with `main@upstream`. I invoke the script without a branch name parameter. Example: ./sync-fork.ps1
+
+    2. I want to test some things and start a new branch. I invoke the script with a branch name parameter. `main@local` and `main@origin` are first synchronized with `main@upstream`. The branch is then created. At the end, I've switched to the branch and can start working. Example: ./sync-fork.ps1 -BranchName feature/new_feature
+
+    3. I've started working on the branch and probably made commits on `my_branch@origin`. I want to stay in sync with `upstream`. I invoke the script with my branch name parameter. `main@local` and `main@origin` are first synchronized with `main@upstream`. Then my branch is rebased on top of `main@local`. At the end of the script, I've switched to the branch and can continue working. Example: ./sync-fork.ps1 -BranchName feature/new_feature
+
+    4. I think my branch is ready. I've made commits on `my_branch@origin`. I want to create a PR. I invoke the script with my branch name parameter. `main@local` and `main@origin` are first synchronized with `main@upstream`. Then my branch is rebased on top of `main@local`. At the end of the script, I've switched to the branch and can confidently proceed to create my PR on GitHub (or in VSCode). Example: ./sync-fork.ps1 -BranchName feature/new_feature
+
+    This script automates synchronizing a Git fork with the upstream repository.
+    It performs the following operations:
+    - Adds upstream remote if missing
+    - Fetches latest changes from upstream
+    - Updates local main branch
+    - Optionally creates or updates a working branch and rebases it on local main
+
+
+.PARAMETER BranchName
+    (Optional) The name of the working branch to update or create.
+    If omitted, only the main branch and origin are synchronized.
+
+.PARAMETER DryRun
+    When specified, no Git commands are executed — they are only displayed.
+
+.EXAMPLE
+    Get-Help ./sync-fork.ps1 -Full
+    Displays complete help for this script.
+
+.EXAMPLE
+    ./sync-fork.ps1
+    Synchronizes only main@local and main@origin with main@upstream.
+
+.EXAMPLE
+    ./sync-fork.ps1 -BranchName feature/new_feature
+    Synchronizes main@local and main@origin with main@upstream.
+    Then updates or creates the feature/new_feature branch with the latest upstream changes.
+
+.EXAMPLE
+    ./sync-fork.ps1 -BranchName fix/typos -DryRun
+    Simulates all operations without executing any Git commands.
+
+.NOTES
+    Author: 40tude
+    Version: 1.4
+    Required: PowerShell 5.1+
+#>
+
+param(
+    [Parameter(Position = 0)]
+    [string]$BranchName,
+
+    [switch]$DryRun
+)
+
+# --- CONFIGURATION ---
+$upstreamUrl = "https://github.com/<NAME>/<PROJECT>.git"  # Change this URL to your upstream repo
+
+# --- HELPER FUNCTION ---
+function Run-Git {
+    param([string]$Command, [string]$Step)
+
+    if ($DryRun) {
+        Write-Host "[DryRun] git $Command" -ForegroundColor DarkGray
+    } else {
+        Write-Host "$Step..." -ForegroundColor Cyan
+        git $Command
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "Error during step: $Step" -ForegroundColor Red
+            exit 1
+        }
+    }
+}
+
+# --- STEP 1: Ensure origin and upstream remotes exist ---
+$remotes = git remote
+if ($remotes -notcontains "origin") {
+    Write-Host "Error: 'origin' remote is missing. Please check your repository setup." -ForegroundColor Red
+    exit 1
+}
+
+if ($remotes -notcontains "upstream") {
+    Write-Host "Adding upstream remote..." -ForegroundColor Yellow
+    Run-Git "remote add upstream $upstreamUrl" "Add upstream remote"
+} else {
+    Write-Host "Upstream remote already exists." -ForegroundColor Green
+}
+
+# --- STEP 2: Sync local main and origin with upstream ---
+Run-Git "fetch upstream" "Fetching from upstream"
+Run-Git "switch main" "Switching to main branch"
+Run-Git "merge upstream/main" "Merging upstream/main into local main"
+Run-Git "push origin main" "Pushing updated main to origin"
+
+# --- CONDITIONAL: only continue if a branch name was provided ---
+if (-not [string]::IsNullOrEmpty($BranchName)) {
+    Write-Host "`nProcessing branch '$BranchName'..." -ForegroundColor Cyan
+
+    $branchExists = git branch --list $BranchName
+
+    if (-not $branchExists) {
+        Run-Git "switch -c $BranchName" "Creating new branch '$BranchName'"
+    } else {
+        Run-Git "switch $BranchName" "Switching to existing branch '$BranchName'"
+    }
+
+    Run-Git "rebase main" "Rebasing '$BranchName' on main"
+    Run-Git "push --force-with-lease origin $BranchName" "Pushing '$BranchName' to origin"
+
+    Write-Host "`nBranch '$BranchName' is now up to date and ready for a Pull Request." -ForegroundColor Green
+}
+else {
+    Write-Host "`nNo branch name provided. Only main and origin were synchronized with upstream." -ForegroundColor Green
+}
+```
+
+
+
+
 
 
 <!-- ###################################################################### -->
@@ -1143,6 +1276,7 @@ git fetch --prune origin
 
 - [Project Issues](https://github.com/microsoft/edit/issues)
 - [Discussions](https://github.com/microsoft/edit/discussions)
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 - [Commit Messages](https://www.conventionalcommits.org/en/v1.0.0/)
 - [Commit Messages](https://medium.com/@iambonitheuri/the-art-of-writing-meaningful-git-commit-messages-a56887a4cb49)
 - [Cargo Book](https://doc.rust-lang.org/cargo/)

@@ -6,7 +6,7 @@ parent: "Programmation"
 nav_order: 1
 #math: mathjax
 date:               2024-11-29 15:00:00
-last_modified_date: 2025-11-06 17:00:00
+last_modified_date: 2025-11-11 22:00:00
 ---
 
 
@@ -785,7 +785,7 @@ git push origin main
 # Revenir sur la branche où on était
 git switch my_branch
 
-# Lntégrer les derniers changement sur notre branche
+# Intégrer les derniers changements sur notre branche
 git rebase main
 
 # Travailler puis pousser sur notre repo et PR comme vu au dessus
@@ -795,94 +795,139 @@ git push --force-with-lease origin my_branch
 
 ### Un ptit script Powershell pour la route?
 
+Je propose : `sync-fork.ps1`
+
+L'idée de ce script est d'avoir un espèce de couteau Suisse utilisable dans les 4 scénarios suivants:
+1. J'ai fait un fork. Je veux juste synchroniser `main@local` et `main@origin` avec `main@uptstream`. J'invoque le script sans nom de branche en paramètre
+2. Je veux tester des trucs et débuter une branche. J'invoque le script avec un nom de branche en paramètre. `main@local` et `main@origin` sont d'abord synchronisées avec `main@uptstream`. La branche est ensuite créée. À la fin j'ai switché sur la branche et je peux commencer à travailler
+3. J'ai commencé à travaillé sur la branche et j'ai sans doute fait des commits sur `my_branch@origin`. Je souahite je veux rester synchro avec `upstream`. J'invoque le script avec le nom de ma branche en paramètre. `main@local` et `main@origin` sont d'abord synchronisées avec `main@uptstream`. Ensuite ma branche est "repoussée" au bout de `main@local`. À la fin du script j'ai switché sur la branche et je peux continuer à travailler
+4. Je pense que ma branche est prête. J'ai fait des commits sur `my_branch@origin`. Je veux faire un PR. J'invoque le script avec le nom de ma branche en paramètre. `main@local` et `main@origin` sont d'abord synchronisées avec `main@uptstream`. Ensuite ma branche est "repoussée" au bout de `main@local`. À la fin du script j'ai "switché" sur la branche et je peux en toute sérénité aller faire mon PR sur GitHub (ou dans VSCode).
+
 ```powershell
 <#
 .SYNOPSIS
-    Update Fork Script - Synchronizes a Git fork with upstream repository
+    Fork Synchronization Script - Keeps your fork and branches in sync with upstream
 
 .DESCRIPTION
+    1. Drop this script at the root of the project and add it to `.gitignore`
+    2. Edit the variable `$upstreamUrl` in the code
+
+    The idea behind this script is to have a Swiss Army knife usable in the following 4 scenarios:
+
+    1. I've created a fork. I just want to synchronize `main@local` and `main@origin` with `main@upstream`. I invoke the script without a branch name parameter. Example: ./sync-fork.ps1
+
+    2. I want to test some things and start a new branch. I invoke the script with a branch name parameter. `main@local` and `main@origin` are first synchronized with `main@upstream`. The branch is then created. At the end, I've switched to the branch and can start working. Example: ./sync-fork.ps1 -BranchName feature/new_feature
+
+    3. I've started working on the branch and probably made commits on `my_branch@origin`. I want to stay in sync with `upstream`. I invoke the script with my branch name parameter. `main@local` and `main@origin` are first synchronized with `main@upstream`. Then my branch is rebased on top of `main@local`. At the end of the script, I've switched to the branch and can continue working. Example: ./sync-fork.ps1 -BranchName feature/new_feature
+
+    4. I think my branch is ready. I've made commits on `my_branch@origin`. I want to create a PR. I invoke the script with my branch name parameter. `main@local` and `main@origin` are first synchronized with `main@upstream`. Then my branch is rebased on top of `main@local`. At the end of the script, I've switched to the branch and can confidently proceed to create my PR on GitHub (or in VSCode). Example: ./sync-fork.ps1 -BranchName feature/new_feature
+
     This script automates synchronizing a Git fork with the upstream repository.
     It performs the following operations:
     - Adds upstream remote if missing
     - Fetches latest changes from upstream
     - Updates local main branch
-    - Rebases working branch on main
-    - Pushes changes to your fork
+    - Optionally creates or updates a working branch and rebases it on local main
 
-    Drop this script at the root of the project and add it to .gitignore.
 
 .PARAMETER BranchName
-    The name of the working branch to update.
+    (Optional) The name of the working branch to update or create.
+    If omitted, only the main branch and origin are synchronized.
+
+.PARAMETER DryRun
+    When specified, no Git commands are executed — they are only displayed.
 
 .EXAMPLE
-    Get-Help .\update-branch.ps1 -Full
+    Get-Help ./sync-fork.ps1 -Full
     Displays complete help for this script.
 
 .EXAMPLE
-    .\update-branch.ps1 -BranchName "my_branch"
-    Updates the "my_branch" branch with latest upstream changes.
+    ./sync-fork.ps1
+    Synchronizes only main@local and main@origin with main@upstream.
 
 .EXAMPLE
-    .\update-branch.ps1 "feature/new-feature"
-    Updates the "feature/new-feature" branch.
+    ./sync-fork.ps1 -BranchName feature/new_feature
+    Synchronizes main@local and main@origin with main@upstream.
+    Then updates or creates the feature/new_feature branch with the latest upstream changes.
+
+.EXAMPLE
+    ./sync-fork.ps1 -BranchName fix/typos -DryRun
+    Simulates all operations without executing any Git commands.
 
 .NOTES
     Author: 40tude
-    Version: 1.0
+    Version: 1.4
     Required: PowerShell 5.1+
 #>
 
 param(
-    [Parameter(
-        Mandatory=$true,
-        Position=0,
-        HelpMessage="Enter the branch name to work with"
-    )]
-    [string]$BranchName
+    [Parameter(Position = 0)]
+    [string]$BranchName,
+
+    [switch]$DryRun
 )
 
-# Set variables - customize these
-$upstreamUrl = "https://github.com/<NAME>/<PROJECT>.git"  # Change me!
+# --- CONFIGURATION ---
+$upstreamUrl = "https://github.com/<NAME>/<PROJECT>.git"  # Change this URL to your upstream repo
 
-# Check if upstream exists
-$remotes = git remote
-if ($remotes -notcontains "upstream") {
-    Write-Host "Adding upstream remote..." -ForegroundColor Yellow
-    git remote add upstream $upstreamUrl
-} else {
-    # Write-Host "Upstream already exists. Skipping add." -ForegroundColor Green
-    $null  # Do nothing
+# --- HELPER FUNCTION ---
+function Run-Git {
+    param([string]$Command, [string]$Step)
+
+    if ($DryRun) {
+        Write-Host "[DryRun] git $Command" -ForegroundColor DarkGray
+    } else {
+        Write-Host "$Step..." -ForegroundColor Cyan
+        git $Command
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "Error during step: $Step" -ForegroundColor Red
+            exit 1
+        }
+    }
 }
 
-# Fetch and merge upstream changes
-Write-Host "`nFetching from upstream..." -ForegroundColor Cyan
-git fetch upstream
+# --- STEP 1: Ensure origin and upstream remotes exist ---
+$remotes = git remote
+if ($remotes -notcontains "origin") {
+    Write-Host "Error: 'origin' remote is missing. Please check your repository setup." -ForegroundColor Red
+    exit 1
+}
 
-# Move on main
-Write-Host "Checking out main..." -ForegroundColor Cyan
-git switch main
+if ($remotes -notcontains "upstream") {
+    Write-Host "Adding upstream remote..." -ForegroundColor Yellow
+    Run-Git "remote add upstream $upstreamUrl" "Add upstream remote"
+} else {
+    Write-Host "Upstream remote already exists." -ForegroundColor Green
+}
 
-Write-Host "Merging upstream/main into local main..." -ForegroundColor Cyan
-git merge upstream/main
+# --- STEP 2: Sync local main and origin with upstream ---
+Run-Git "fetch upstream" "Fetching from upstream"
+Run-Git "switch main" "Switching to main branch"
+Run-Git "merge upstream/main" "Merging upstream/main into local main"
+Run-Git "push origin main" "Pushing updated main to origin"
 
-# Push to our fork (origin)
-Write-Host "`nPushing updated main to origin..." -ForegroundColor Cyan
-git push origin main
+# --- CONDITIONAL: only continue if a branch name was provided ---
+if (-not [string]::IsNullOrEmpty($BranchName)) {
+    Write-Host "`nProcessing branch '$BranchName'..." -ForegroundColor Cyan
 
-# Switch to the working branch
-Write-Host "`nSwitching to branch '$BranchName'..." -ForegroundColor Cyan
-git switch $BranchName
+    $branchExists = git branch --list $BranchName
 
-# Rebase on updated main
-Write-Host "Rebasing '$BranchName' on main..." -ForegroundColor Cyan
-git rebase main
+    if (-not $branchExists) {
+        Run-Git "switch -c $BranchName" "Creating new branch '$BranchName'"
+    } else {
+        Run-Git "switch $BranchName" "Switching to existing branch '$BranchName'"
+    }
 
-# Push the branch of our fork
-git push --force-with-lease origin $BranchName
+    Run-Git "rebase main" "Rebasing '$BranchName' on main"
+    Run-Git "push --force-with-lease origin $BranchName" "Pushing '$BranchName' to origin"
 
-Write-Host "`nDone! Review changes and resolve any conflicts if prompted." -ForegroundColor Green
-
+    Write-Host "`nBranch '$BranchName' is now up to date and ready for a Pull Request." -ForegroundColor Green
+}
+else {
+    Write-Host "`nNo branch name provided. Only main and origin were synchronized with upstream." -ForegroundColor Green
+}
 ```
+
 
 
 
@@ -1004,3 +1049,4 @@ C'est peut être pas cool ni dans l'air du temps, mais ça passe par une politiq
 * Learn Git branching <http://learngitbranching.js.org/>
 * Voir [Using Git with Visual Studio 2013 Jump Start](https://mva.microsoft.com/en-us/training-courses/using-git-with-visual-studio-2013-jump-start-8306?l=ABt74sYy_404984382)
 * Voir : <https://www.youtube.com/watch?list=PL8jcXf-CLpxrw3ipflS7mujA-hM7m2YnH&v=1ieJbCFgXQs>
+* [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
