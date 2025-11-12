@@ -7,7 +7,7 @@ description: A beginner-friendly guide from our first fork to our first pull req
 parent: Rust
 #math: mathjax
 date               : 2025-11-07 13:00:00
-last_modified_date : 2025-11-11 23:00:00
+last_modified_date : 2025-11-12 17:00:00
 ---
 
 
@@ -1189,7 +1189,7 @@ We can name it `sync-fork.ps1`.
 
 .NOTES
     Author: 40tude
-    Version: 1.4
+    Version: 1.5
     Required: PowerShell 5.1+
 #>
 
@@ -1211,7 +1211,7 @@ function Run-Git {
         Write-Host "[DryRun] git $Command" -ForegroundColor DarkGray
     } else {
         Write-Host "$Step..." -ForegroundColor Cyan
-        git $Command
+        Invoke-Expression "git $Command"
         if ($LASTEXITCODE -ne 0) {
             Write-Host "Error during step: $Step" -ForegroundColor Red
             exit 1

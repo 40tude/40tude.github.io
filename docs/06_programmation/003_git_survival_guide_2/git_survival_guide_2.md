@@ -6,7 +6,7 @@ parent: "Programmation"
 nav_order: 1
 #math: mathjax
 date:               2024-11-29 15:00:00
-last_modified_date: 2025-11-11 22:00:00
+last_modified_date: 2025-11-12 16:00:00
 ---
 
 
@@ -856,7 +856,7 @@ L'idée de ce script est d'avoir un espèce de couteau Suisse utilisable dans le
 
 .NOTES
     Author: 40tude
-    Version: 1.4
+    Version: 1.5
     Required: PowerShell 5.1+
 #>
 
@@ -878,7 +878,7 @@ function Run-Git {
         Write-Host "[DryRun] git $Command" -ForegroundColor DarkGray
     } else {
         Write-Host "$Step..." -ForegroundColor Cyan
-        git $Command
+        Invoke-Expression "git $Command"
         if ($LASTEXITCODE -ne 0) {
             Write-Host "Error during step: $Step" -ForegroundColor Red
             exit 1
