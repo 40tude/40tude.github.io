@@ -6,7 +6,7 @@ parent: "Programmation"
 nav_order: 1
 #math: mathjax
 date:               2024-11-29 15:00:00
-last_modified_date: 2025-11-12 16:00:00
+last_modified_date: 2025-11-18 11:00:00
 ---
 
 
@@ -220,87 +220,6 @@ git push master origin
 ```powershell
 git fetch origin
 ```
-
-
-
-<!-- ####################################################################### -->
-<!-- ####################################################################### -->
-<!-- ####################################################################### -->
-## Branch & Merge
-
-Clairement je n'ai pas encore le réflexe... Je promets, je vais faire un effort...
-
-* Je me met dans le cas où :
-    * J'ai un projet avec un repo GitHub
-    * J'ai une idée transcendantale...
-
-
-### Mode VSCode
-* En bas à gauche je clique sur ``main``
-* Je choisis `Create New Branch` (``b1`` par exemple)
-* Je modifie, j'ajoute des fichiers, je teste...
-* Je commit plusieurs fois
-* Quand j'ai terminé sur ``b1``
-
-
-
-#### Si je ne suis pas content
-{: .no_toc }
-
-* Je reviens sur ``main`` en cliquant en bas à gauche
-* Je supprime ensuite la branche ``b1``
-
-
-#### Si je veux intégrer mes modifications
-{: .no_toc }
-
-* Je reviens sur ``main`` en cliquant en bas à gauche
-* Je choisis Branch/Merge/b1
-
-<div align="center">
-<img src="./assets/img04.png" alt="drawing" width="400"/>
-</div>
-
-Quand le merge est fait, je commit `main`
-Je peux alors supprimer la branche ``b1``
-
-
-
-#### Si au moment du merge il y a un conflit
-{: .no_toc }
-
-<div align="center">
-<img src="./assets/img05.png" alt="drawing" width="400"/>
-</div>
-
-
-Ensuite on fait un commit de ``main``
-Voir le graphe en bas à gauche
-
-<div align="center">
-<img src="./assets/img06.png" alt="drawing" width="400"/>
-</div>
-
-
-
-### Mode CLI
-
-* Si on a un terminal ouvert dans le répertoire du projet (CTRL+SHIFT+ù sous VScode)
-* On peut mélanger les clicks dans VSCode et les commandes dans le terminal
-
-
-| Action                          | Commande                                   |
-|---------------------------------|--------------------------------------------|
-| Initialiser un dépôt Git        | `git init`                                 |
-| Ajouter des fichiers            | `git add <file>` `git add .`               |
-| Faire un commit                 | `git commit -m "message"`                  |
-| Créer une branche               | `git checkout -b <branch-name>`            |
-| Basculer entre branches         | `git checkout <branch-name>`               |
-| Ou créer/basculer sur la branche| `git switch -c <branch-name>`              |
-| Fusionner une branche           | `git merge <branch-name>`                  |
-| Résoudre un conflit             | Résoudre le conflit, puis `git add <file>` |
-| Supprimer une branche           | `git branch -d <branch-name>`              |
-| Historique des commits          | `git log --oneline --graph --all`          |
 
 
 
@@ -616,6 +535,87 @@ Bien voir le ``-r`` de la commande ``git rm``
 
 
 
+
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+## Branch & Merge
+
+Clairement je n'ai pas encore le réflexe... Je promets, je vais faire un effort...
+
+* Je me met dans le cas où :
+    * J'ai un projet avec un repo GitHub
+    * J'ai une idée transcendantale...
+
+
+### Mode VSCode
+* En bas à gauche je clique sur ``main``
+* Je choisis `Create New Branch` (``b1`` par exemple)
+* Je modifie, j'ajoute des fichiers, je teste...
+* Je commit plusieurs fois
+* Quand j'ai terminé sur ``b1``
+
+
+
+#### Si je ne suis pas content
+{: .no_toc }
+
+* Je reviens sur ``main`` en cliquant en bas à gauche
+* Je supprime ensuite la branche ``b1``
+
+
+#### Si je veux intégrer mes modifications
+{: .no_toc }
+
+* Je reviens sur ``main`` en cliquant en bas à gauche
+* Je choisis Branch/Merge/b1
+
+<div align="center">
+<img src="./assets/img04.png" alt="drawing" width="400"/>
+</div>
+
+Quand le merge est fait, je commit `main`
+Je peux alors supprimer la branche ``b1``
+
+
+
+#### Si au moment du merge il y a un conflit
+{: .no_toc }
+
+<div align="center">
+<img src="./assets/img05.png" alt="drawing" width="400"/>
+</div>
+
+
+Ensuite on fait un commit de ``main``
+Voir le graphe en bas à gauche
+
+<div align="center">
+<img src="./assets/img06.png" alt="drawing" width="400"/>
+</div>
+
+
+
+### Mode CLI
+
+* Si on a un terminal ouvert dans le répertoire du projet (CTRL+SHIFT+ù sous VScode)
+* On peut mélanger les clicks dans VSCode et les commandes dans le terminal
+
+
+| Action                          | Commande                                   |
+|---------------------------------|--------------------------------------------|
+| Initialiser un dépôt Git        | `git init`                                 |
+| Ajouter des fichiers            | `git add <file>` `git add .`               |
+| Faire un commit                 | `git commit -m "message"`                  |
+| Créer une branche               | `git checkout -b <branch-name>`            |
+| Basculer entre branches         | `git checkout <branch-name>`               |
+| Ou créer/basculer sur la branche| `git switch -c <branch-name>`              |
+| Fusionner une branche           | `git merge <branch-name>`                  |
+| Résoudre un conflit             | Résoudre le conflit, puis `git add <file>` |
+| Supprimer une branche           | `git branch -d <branch-name>`              |
+| Historique des commits          | `git log --oneline --graph --all`          |
 
 
 
@@ -939,6 +939,85 @@ Combien de fois par jour faut il synchroniser avec le main du projet initial?
     * Travailler avec une base de code à jour.
 1. Synchroniser une deuxième fois en **fin de journée** (ou avant un pull request)
     * S'assurer que les modifications qu'on soumet sont compatibles avec les changements récents sur main
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+
+## Comment gérer mes branches?
+
+Imagines, tu commences a tester des trucs, tu a pris le réflexe, tu créer régulièrement des branches... En plus tu as "forké" un projet, tu as fais quelques PR qui ont été acceptés et fusionnés. Super, bravo. Mais bon, du coup, tu te retrouve avec pas mal de branches locales et tu sais pas trop quoi en faire. En plus tu commences à manquer d'imagination pour les nommer. Supprimer, pas supprimer?
+
+**PANIQUE!** 😡
+
+Je propose la règle suivante:
+- Quand ta branche a été fusionnée dans `main`, tu peux la supprimer. Du coup, quand c'est fait tu peux créer une nouvelle branche qui porte le même nom que l'ancienne. Y aura pas de problème. Exemple : `fix/source_tout_moisi`
+
+OK... Mais combien de mes branches ont été "mergées", comment les supprimer proprement? On voit ça dans la "recette de cuisine" ci-dessous où j'imagine qu'on a "forké un projet" (`upstream`). Si c'est pas le cas oublies les lignes où je parle de `upstream`. Oui, bien sûr, vu comment c'est écrit, l'idée c'est de mettre tout ça dans un script mais bon au départ vaut mieux tester à la main une ou 2 fois puis créer le script ensuite.
+
+**Note:** Si en cours de route Git affiche un truc du style `Deletion of directory '.git/logs/refs/remotes/origin/blablabla' failed. Should I try again? (y/n)` réponds `n`
+
+
+```powershell
+# 1. Se mettre sur main et sync
+git switch main
+git fetch upstream
+git merge upstream/main
+git push origin main
+
+# 2. Voir ce qui sera supprimé
+Write-Host "`n=== Local branches to be deletede ===" -ForegroundColor Yellow
+git branch --merged main | Where-Object { $_ -notmatch '\*?\s*main' }
+
+# 3. Supprimer localement
+git branch --merged main | Where-Object { $_ -notmatch '\*?\s*main' } | ForEach-Object {
+    $branch = $_.Trim()
+    Write-Host "Local delete: $branch" -ForegroundColor Green
+    git branch -d $branch
+}
+
+# 4. PAUSE - Voir ce qui serait supprimé sur origin SANS le faire
+Write-Host "`n=== Remote branches on origin (merged) ===" -ForegroundColor Yellow
+git branch -r --merged main | Where-Object { $_ -match 'origin/' -and $_ -notmatch 'HEAD|main' }
+
+Write-Host "`n⚠️  Voulez-vous supprimer ces branches sur origin ? (O/N)" -ForegroundColor Red
+$response = Read-Host
+if ($response -eq 'O' -or $response -eq 'o') {
+    # 5. Supprimer sur origin
+    git branch -r --merged main | Where-Object { $_ -match 'origin/' -and $_ -notmatch 'HEAD|main' } | ForEach-Object {
+        $branch = ($_.Trim() -replace 'origin/', '')
+        Write-Host "Remote delete on origin: $branch" -ForegroundColor Red
+        git push origin --delete $branch
+    }
+}
+
+
+# 6. Nettoyer
+git remote prune origin
+
+# 7. Vérifier
+git branch -r
+
+```
+
+**PLUS de PANIQUE...** 😁
+
+Après, ça doit pas empêcher de faire le ménage en local parmi les anciens "trucs qu'on a essayé, qu'on sait même plus à quoi ça servait".
+
+
+
 
 
 
