@@ -32,7 +32,7 @@ A step-by-step guide to leveraging Claude and Microsoft's Rust Guidelines in VSC
 ## TL;DR
 {: .no_toc }
 * Automatically enforces Microsoft Rust coding standards through Claude skills
-* Simple 3-step setup: download guidelines, create SKILL.md, test with a Rust project
+* Simple 3-step setup: download guidelines, create/tune `SKILL.md`, test with a Rust project
 * Claude will automatically apply guidelines to all future `.rs` files
 * VSCode + Win11 (not tested elsewhere)
 
@@ -56,12 +56,14 @@ A step-by-step guide to leveraging Claude and Microsoft's Rust Guidelines in VSC
 
 
 ## 0. Prerequisites
+In the folowing I suppose:
 - Windows 11
 - Rust installed
 - VSCode installed
 - "Claude Code for VSCode" extension installed
-- VSCode closed
+- VSCode is closed
 
+If you run Linux or MacOS, the procedure should be similar except may be, the name of the directories.
 
 ## 1. Create the Skill Structure
 
@@ -81,6 +83,13 @@ Invoke-WebRequest -Uri "https://microsoft.github.io/rust-guidelines/agents/all.t
 ls
 ```
 
+If you are not sure where Claude is you can use
+
+```powershell
+Test-Path "$env:USERPROFILE\.claude"
+```
+And try differents directories.
+
 
 ## 2. Create the `SKILL.md` File
 
@@ -92,7 +101,7 @@ CTRL+ALT+B to close the chat panel on the right
 
 **IMPORTANT**: Do not use Notepad as it will modify the file without your knowledge.
 
-In VSCode, create a file named **SKILL.md** (the UPPERCASE letters are important) with the following content from the first 3 dashes to the last 3 dashes inclusive:
+In VSCode, create a file named **SKILL.md** (the UPPERCASE letters are important) with the following content from the first 3 dashes to the last 3 dashes inclusive (YAML Frontmatter):
 
 
 
@@ -131,10 +140,36 @@ This skill automatically enforces Rust coding standards and best practices when 
 
 * **⚠️ Warning**: The `name` field must contain only lowercase letters and hyphens (no underscores).
 * Based on my experience... I **strongly** recommend to use the same name for the directory and the skill (`ms-rust` in our case.)
-* The description is important because this is what helps Claude to decide to apply such or such skill. For example here we make clear that the skill apply to "ANY Rust code"
+* The `description` is important because this is what helps Claude to decide to apply such or such skill. For example here we make clear that the skill apply to "ANY Rust code"
 * It seems uppercase matters
 * Be specific. See point 5 for example
 * Don't be surprised if you have to iterate few times
+
+
+
+### Side Note
+{: .no_toc }
+
+For what I understood, here is what happen when starting a conversation
+1. The skills are already indexed - Claude do NOT browse the `.claude/skills` directory at the beginning of each conversation. The Claude Code System has already scanned this directory and provided Claude with a list of available skills.
+2. Claude receive a prepared list - In its system instructions, there is a <available_skills> section that lists the available skills with their name and description (extracted from `SKILL.md`). For example:
+    ```xml
+    <available_skills>
+    <skill>
+        <name>ms-rust</name>
+        <description>ALWAYS use this skill BEFORE writing or modifying ANY Rust code...</description>
+    </skill>
+    </available_skills>
+    ```
+3. Claude don't read `SKILL.md` at startup - It never reads the entire contents of `SKILL.md` files before we  ask something. It just see the short description. This is why it is important.
+4. Invoking the skill - When Claude decide to use a skill (based on its description), it use the Skill tool with the name of the skill. That's when the entire contents of `SKILL.md` are injected into the conversation.
+5. Applying the instructions - Once the skill is invoked, Claude sees all the detailed instructions from `SKILL.md` and have to follow them for the task at hand.
+
+The flow looks like:
+* Start of conversation → Claude knows the names/descriptions of the available skills.
+* Rust task requested → Claude sees that ms-rust corresponds → It invokes the skill.
+* Skill invoked → The complete content of `SKILL.md` appears → It reads and apply the instructions.
+
 
 
 
@@ -172,8 +207,8 @@ In VSCode:
 2. Open the `src/main.rs` file
 3. Open Claude and ask to modify the code, for example:
    - "Modify `main.rs` to display the first 10 Fibonacci numbers"
-4. Claude will ask permission to read the guideline and automatically apply the Microsoft Rust guidelines while generating the code
-5. Comments are in English as expected
+4. Claude will ask permission to read the `SKILL.md` then `rust-guidelines.txt` and automatically apply the Microsoft Rust guidelines while generating the code.
+
 
 
 
@@ -188,6 +223,7 @@ After a modification, the code should:
 - Comply with Microsoft Rust conventions
 - Have a `// Rust guideline compliant X.X` comment if fully compliant
 - Include appropriate documentation for public functions
+- Comments be in English
 
 
 ```rust
@@ -256,3 +292,4 @@ fn print_fibonacci(n: usize) {
 
 ## 5. Webliography
 * On Claude Code Docs, read this [page](https://code.claude.com/docs/en/skills)
+* About SKILL, read this [page](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
