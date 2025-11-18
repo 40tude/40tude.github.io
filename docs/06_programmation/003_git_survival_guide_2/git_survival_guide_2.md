@@ -677,7 +677,7 @@ LE truc à se rappeler
 
 
 
-### 3. À propose des marqueurs
+### 3. À propos des marqueurs
 {: .no_toc }
 
 * `<<<<<<< HEAD `: Début de **NOTRE** version (branche actuelle)
@@ -754,6 +754,192 @@ Successfully rebased and updated refs/heads/fix/showcase.
 * Elle rend la gestion des conflits encore plus visuelle avec un éditeur 3-voies (3-way merge editor).
 
 
+
+### Un ptit script Powershell pour la route?
+
+Je propose : `clean-merged.ps1`
+
+```powershell
+<#
+.SYNOPSIS
+    Merged Branches Cleanup Script - Removes local and remote branches that have been merged into main
+
+.DESCRIPTION
+    1. Drop this script at the root of the project and add it to `.gitignore`
+    2. Run the script to clean up branches that have been merged into main
+
+    This script automates the cleanup of merged Git branches.
+    It performs the following operations:
+    - Synchronizes local main with upstream
+    - Lists local branches that have been merged
+    - Deletes local merged branches
+    - Lists remote branches on origin that have been merged
+    - Optionally deletes remote merged branches (with confirmation)
+    - Cleans up stale remote references
+
+    Main use cases for using --SkipSync with `clean-merged.ps1`
+    1. Save time on frequent cleanups
+        # You just ran sync-fork.ps1, then you want to clean up
+        ./sync-fork.ps1
+        ./clean-merged.ps1 -SkipSync  # No need to re-sync
+    2. You are working on a repo without upstream If you don't have a fork but just origin, syncing with upstream doesn't make sense. -SkipSync avoids the error.
+    3. You just want to clean up locally without touching the network
+        # Offline work or slow connection
+        ./clean-merged.ps1 -SkipSync
+    4. You have already manually synced main
+        git switch main
+        git pull upstream main
+        git push origin main
+        # Now just the cleanup
+        ./clean-merged.ps1 -SkipSync
+
+
+.PARAMETER DryRun
+    When specified, no Git commands are executed — they are only displayed.
+
+.PARAMETER SkipSync
+    When specified, skips the synchronization of main with upstream.
+
+.EXAMPLE
+    Get-Help ./clean-merged.ps1 -Full
+    Displays complete help for this script.
+
+.EXAMPLE
+    ./clean-merged.ps1
+    Synchronizes main with upstream, then cleans up merged branches.
+
+.EXAMPLE
+    ./clean-merged.ps1 -SkipSync
+    Cleans up merged branches without syncing main first.
+
+.EXAMPLE
+    ./clean-merged.ps1 -DryRun
+    Simulates all operations without executing any Git commands.
+
+.NOTES
+    Author: 40tude
+    Version: 1.0
+    Required: PowerShell 5.1+
+#>
+
+param(
+    [switch]$DryRun,
+    [switch]$SkipSync
+)
+
+# --- CONFIGURATION ---
+$upstreamUrl = "https://github.com/<NAME>/<PROJECT>.git"  # Change this URL to your upstream repo
+
+# --- HELPER FUNCTION ---
+function Run-Git {
+    param([string]$Command, [string]$Step)
+
+    if ($DryRun) {
+        Write-Host "[DryRun] git $Command" -ForegroundColor DarkGray
+    } else {
+        Write-Host "$Step..." -ForegroundColor Cyan
+        Invoke-Expression "git $Command"
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "Error during step: $Step" -ForegroundColor Red
+            exit 1
+        }
+    }
+}
+
+# --- STEP 1: Sync main with upstream (unless -SkipSync is specified) ---
+if (-not $SkipSync) {
+    Write-Host "`n=== Syncing main with upstream ===" -ForegroundColor Yellow
+
+    $remotes = git remote
+    if ($remotes -notcontains "upstream") {
+        Write-Host "Adding upstream remote..." -ForegroundColor Yellow
+        Run-Git "remote add upstream $upstreamUrl" "Add upstream remote"
+    }
+
+    Run-Git "switch main" "Switching to main branch"
+    Run-Git "fetch upstream" "Fetching from upstream"
+    Run-Git "merge upstream/main" "Merging upstream/main into local main"
+    Run-Git "push origin main" "Pushing updated main to origin"
+} else {
+    Write-Host "`n=== Skipping sync (using current main state) ===" -ForegroundColor Yellow
+    git switch main 2>$null
+}
+
+# --- STEP 2: List local branches to be deleted ---
+Write-Host "`n=== Local branches to be deleted ===" -ForegroundColor Yellow
+
+$localBranchesToDelete = git branch --merged main | Where-Object { $_ -notmatch '\*?\s*main' }
+
+if ($localBranchesToDelete) {
+    $localBranchesToDelete | ForEach-Object { Write-Host "  $($_.Trim())" -ForegroundColor DarkGray }
+} else {
+    Write-Host "  No local merged branches to delete." -ForegroundColor Green
+}
+
+# --- STEP 3: Delete local branches ---
+if ($localBranchesToDelete) {
+    Write-Host "`n=== Deleting local branches ===" -ForegroundColor Yellow
+
+    $localBranchesToDelete | ForEach-Object {
+        $branch = $_.Trim()
+        if ($DryRun) {
+            Write-Host "[DryRun] git branch -d $branch" -ForegroundColor DarkGray
+        } else {
+            Write-Host "Deleting local branch: $branch" -ForegroundColor Green
+            git branch -d $branch
+        }
+    }
+}
+
+# --- STEP 4: List remote branches on origin (merged) ---
+Write-Host "`n=== Remote branches on origin (merged) ===" -ForegroundColor Yellow
+
+$remoteBranchesToDelete = git branch -r --merged main | Where-Object { $_ -match 'origin/' -and $_ -notmatch 'HEAD|main' }
+
+if ($remoteBranchesToDelete) {
+    $remoteBranchesToDelete | ForEach-Object { Write-Host "  $($_.Trim())" -ForegroundColor DarkGray }
+} else {
+    Write-Host "  No remote merged branches to delete." -ForegroundColor Green
+}
+
+# --- STEP 5: Ask for confirmation before deleting remote branches ---
+if ($remoteBranchesToDelete) {
+    if ($DryRun) {
+        Write-Host "`n[DryRun] Would delete these remote branches on origin" -ForegroundColor DarkGray
+    } else {
+        Write-Host "`n⚠️  Do you want to delete these branches on origin? (Y/N)" -ForegroundColor Red
+        $response = Read-Host
+
+        if ($response -eq 'Y' -or $response -eq 'y') {
+            Write-Host "`n=== Deleting remote branches ===" -ForegroundColor Yellow
+
+            $remoteBranchesToDelete | ForEach-Object {
+                $branch = ($_.Trim() -replace 'origin/', '')
+                Write-Host "Deleting remote branch on origin: $branch" -ForegroundColor Red
+                # Auto-answer "n" to Git's retry prompts for locked reflog files
+                "n" | git push origin --delete $branch
+            }
+        } else {
+            Write-Host "Remote branch deletion cancelled." -ForegroundColor Yellow
+        }
+    }
+}
+
+# --- STEP 6: Clean up stale remote references ---
+Write-Host "`n=== Cleaning up stale remote references ===" -ForegroundColor Yellow
+Run-Git "remote prune origin" "Pruning origin"
+
+# --- STEP 7: Display final status ---
+Write-Host "`n=== Final status ===" -ForegroundColor Green
+Write-Host "`nLocal branches:" -ForegroundColor Cyan
+git branch
+
+Write-Host "`nRemote branches:" -ForegroundColor Cyan
+git branch -r
+
+Write-Host "`nCleanup completed successfully!" -ForegroundColor Green
+
+```
 
 
 
@@ -903,6 +1089,7 @@ Si on voit des fichiers sur lesquels on travaille dans ``b1``, alors faut rebase
 
 
 ### La routine du matin...
+
 ```powershell
 # Ajouter le projet original comme remote (une seule fois, si ce n'a pas déjà été fait)
 git remote add upstream <URL-du-projet-original>
