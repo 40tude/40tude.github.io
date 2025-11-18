@@ -6,7 +6,7 @@ parent: "Programmation"
 nav_order: 1
 #math: mathjax
 date:               2024-11-29 15:00:00
-last_modified_date: 2025-11-18 11:00:00
+last_modified_date: 2025-11-18 15:00:00
 ---
 
 
@@ -581,7 +581,7 @@ Je peux alors supprimer la branche ``b1``
 
 
 
-#### Si au moment du merge il y a un conflit
+#### Si au moment du merge il y a un conflit - I
 {: .no_toc }
 
 <div align="center">
@@ -595,6 +595,10 @@ Voir le graphe en bas à gauche
 <div align="center">
 <img src="./assets/img06.png" alt="drawing" width="400"/>
 </div>
+
+
+
+
 
 
 
@@ -616,6 +620,139 @@ Voir le graphe en bas à gauche
 | Résoudre un conflit             | Résoudre le conflit, puis `git add <file>` |
 | Supprimer une branche           | `git branch -d <branch-name>`              |
 | Historique des commits          | `git log --oneline --graph --all`          |
+
+
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+## Résoudre un conflit de merge dans VSCode - II
+
+Je me rends compte que ce que j'ai dit précédemment est un peu court car en réalité... Perso, pour moi, à chaque fois c'est:
+
+**PANIQUE!** 😡
+
+Bon, alors on y va gentiment, étape par étape en s’appuyant sur un des derniers conflits que j'ai vécu (mal).
+
+
+### 1. Identifier le problème
+{: .no_toc }
+
+Quand Git dit :
+
+```
+CONFLICT (content): Merge conflict in examples/showcase.rs
+error: could not apply fc2380c...
+```
+
+Cela signifie que Git ne peut pas fusionner automatiquement les changements car **deux versions** différentes modifient **les mêmes lignes** de code.
+
+
+
+### 2.Dans VSCode : Repérer les marqueurs de conflit
+{: .no_toc }
+
+Faut alors ouvrir le fichier en conflit dans VSCode. Tu vas voir des marqueurs spéciaux du style :
+
+```
+<<<<<<< HEAD
+// TA VERSION (ta branche actuelle)
+fn create_menu_bar(width: i16) -> MenuBar {
+    let mut menu_bar = MenuBar::new(Rect::new(0, 0, width, 1));
+=======
+// LEUR VERSION (la branche qu'on essaie de fusionner)
+fn handle_global_shortcuts(event: &mut Event) {
+    // nouveau code...
+}
+
+fn create_menu_bar(width: u16) -> MenuBar {
+    let mut menu_bar = MenuBar::new(Rect::new(0, 0, width as i16, 1));
+>>>>>>> fc2380c (Add global handler => F6 works as expected)
+```
+
+LE truc à se rappeler
+* **JE = HEAD**
+* EUX c'est incoming
+
+
+
+### 3. À propose des marqueurs
+{: .no_toc }
+
+* `<<<<<<< HEAD `: Début de **NOTRE** version (branche actuelle)
+* `======= `: Séparateur entre les deux versions
+* `>>>>>>> fc2380c `: Fin de **LEUR** version (branche à fusionner)
+
+
+
+### 4. Utiliser l'interface graphique de VSCode
+{: .no_toc }
+
+VSCode détecte automatiquement les conflits et affiche des boutons d'action au-dessus du conflit. Il va afficher un truc du style:
+
+`Accept Current Change | Accept Incoming Change | Accept Both Changes | Compare Changes`
+
+**Les options disponibles :**
+* **Accept Current Change** : Garder **NOTRE** version (HEAD)
+* **Accept Incoming Change** : Garder **LEUR** version (upstream)
+* **Accept Both Changes** : Garder les deux versions
+* **Compare Changes** : Voir les différences côte à côte
+
+
+
+### 5. Résolution manuelle
+{: .no_toc }
+
+Actions manuelles à faire dans n'importe quel éditeur:
+1. Supprimer les marqueurs (`<<<<<<<`, `=======`, `>>>>>>>`)
+1. Conserver le code souhaité. Par exemple:
+    * Je garde telle ou telle nouvelle fonction
+    * Je garde plutôt telle ou telle de mes modifications
+
+
+### 6. Sauvegarder et marquer comme résolu
+{: .no_toc }
+
+Dans le terminal intégré de VSCode (CTRL+ù) :
+
+```powershell
+# Marquer le fichier comme résolu
+git add examples/showcase.rs
+
+# Continuer le rebase
+git rebase --continue
+```
+
+
+### 7. Si d'autres conflits apparaissent
+{: .no_toc }
+Faut répéter les étapes 2-6 jusqu'à ce que Git dise :
+
+```
+Successfully rebased and updated refs/heads/fix/showcase.
+```
+
+**PLUS de PANIQUE...** 😁
+
+
+
+### Checklist pour la prochaine fois
+
+1. Identifier le(s) fichier(s) en conflit => bien **lire** le message d'erreur
+2. Ouvrir le fichier dans VSCode et repérer les marqueurs `<<<<<<<`, `=======` et `>>>>>>>`
+3. Décider quelle version garder :
+    * Cliquez sur les options de VSCode
+    * **OU** éditez manuellement
+1. Supprimer **TOUS** les marqueurs (`<<<<<<<`, `=======` et `>>>>>>>`)
+1. Sauvegarder le fichier `(Ctrl + S)`
+1. Dans le terminal : `git add <fichier>` puis `git rebase --continue`
+1. Répéter si nécessaire
+
+**Note VSCode**
+* Installer l'extension **GitLens**
+* Elle rend la gestion des conflits encore plus visuelle avec un éditeur 3-voies (3-way merge editor).
+
 
 
 
