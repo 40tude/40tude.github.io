@@ -7,7 +7,7 @@ description: A beginner-friendly guide from our first fork to our first pull req
 parent: Rust
 #math: mathjax
 date               : 2025-11-07 13:00:00
-last_modified_date : 2025-11-19 10:00:00
+last_modified_date : 2025-11-19 11:00:00
 ---
 
 
@@ -825,19 +825,19 @@ It is Sunday morning. It is raining... Ok, let's open a terminal in VSCode.
 
 Below I call:
 
-| Term               | Description                              |
-|--------------------|------------------------------------------|
-| upstream           | Original project on GitHub (source)      |
-| origin             | The fork in my personal GitHub repo      |
-| local              | The local repository on the PC           |
-| A, B, C...         | Commits in Git history                   |
-| main               | Main branch                              |
-| xyz_docs/typos     | The branch for documentation             |
-| main@local         | main branch in local repository          |
-| main@origin        | main branch in the fork                  |
-| main@upstream      | main branch in the original project      |
-| xyz_docs/typos@local | Feature branch in local repository     |
-| xyz_docs/typos@origin| Feature branch in fork (origin)        |
+| Term                 | Description                                             |
+|----------------------|---------------------------------------------------------|
+| upstream             | Original project on GitHub (source)                     |
+| origin               | The fork in my personal GitHub repo                     |
+| local                | The local repository on the PC                          |
+| A, B, C...           | Commits in Git history                                  |
+| main                 | Main branch                                             |
+| xyz_docs/typos       | The branch for documentation                            |
+| main@local           | main branch in local repository (my hard disk)          |
+| main@origin          | main branch in the fork (my GitHub repo)                |
+| main@upstream        | main branch in the original project (their GitHub repo) |
+| xyz_docs/typos@local | Feature branch in local repository                      |
+| xyz_docs/typos@origin| Feature branch in fork (origin)                         |
 
 
 
@@ -1080,15 +1080,19 @@ If the PR is accepted, `Y` will be merged with `H`.
 </div>
 
 
-If the PR is accepted, we are all good. Otherwise, if the PR is definitively rejected we may decide to delete the branch.
+If the PR is accepted, we are all good we can delete the branch and get in sync with origine. Otherwise, if the PR is definitively rejected we may decide to keep the branch because it contains some code we would like to reuse, blablabla.
+
+To delete the branch `xyz_docs/typos` you can do:
 
 ```powershell
 git switch main
 git branch -D xyz_docs/typos            # delete the branch locally
 git push origin --delete xyz_docs/typos # delete the branch on origin
 git fetch --prune origin                # clean no longer used references
+git branch                              # check
+git branch -r                           # check on origin
 ```
-
+Once deleted, you can reuse the name `xyz_docs/typos` to create a new branch tomorrow morning if you want to correct typos.
 
 ### 6. Summary
 {: .no_toc }
@@ -1129,11 +1133,13 @@ git switch main
 git merge upstream/main
 git push origin main
 
-# if rejected delete the branch
+# delete the branch
 git switch main
 git branch -D xyz_docs/typos
 git push origin --delete xyz_docs/typos
 git fetch --prune origin
+git branch
+git branch -r
 ```
 
 
@@ -1142,7 +1148,11 @@ git fetch --prune origin
 ### 7. This script may help
 {: .no_toc }
 
-We can name it `sync-fork.ps1`.
+Name it `sync-fork.ps1`, use this command and read (again, I can't do it for you)
+
+```powershell
+Get-Help ./sync-fork.ps1 -Full
+```
 
 ```powershell
 <#
