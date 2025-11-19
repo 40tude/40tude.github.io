@@ -6,8 +6,8 @@ title: Implementing Microsoft’s Rust Guidelines within VSCode with Claude
 description: A step-by-step guide to leveraging Claude and Microsoft's Rust Guidelines in VSCode
 parent: Rust
 #math: mathjax
-date               : 2025-11-19 00:00:00
-last_modified_date : 2025-11-19 00:00:00
+date               : 2025-11-19 01:00:00
+last_modified_date : 2025-11-19 09:00:00
 ---
 
 
@@ -56,14 +56,14 @@ A step-by-step guide to leveraging Claude and Microsoft's Rust Guidelines in VSC
 
 
 ## 0. Prerequisites
-In the folowing I suppose:
+In the following I suppose:
 - Windows 11
 - Rust installed
 - VSCode installed
 - "Claude Code for VSCode" extension installed
 - VSCode is closed
 
-If you run Linux or MacOS, the procedure should be similar except may be, the name of the directories.
+If you run Linux or MacOS, the procedure should be similar except may be, the names of the directories.
 
 ## 1. Create the Skill Structure
 
@@ -83,12 +83,18 @@ Invoke-WebRequest -Uri "https://microsoft.github.io/rust-guidelines/agents/all.t
 ls
 ```
 
-If you are not sure where Claude is you can use
+If you are not sure of the path to Claude you can use:
 
 ```powershell
 Test-Path "$env:USERPROFILE\.claude"
 ```
-And try differents directories.
+Read the doc, and try different directories. Indeed Claude Code (CLI) and Claude Desktop (GUI) are 2 different beasts.
+
+**Side Note**
+A long time ago, when C++11 was introduced, there was a need to help developers transition from “old” to “modern” C++. In addition, there were so many ways to accomplish the same thing in C++ that some form of guidance became necessary. Finally, it was crucial to explain what should be avoided, what should be promoted, and why. This is why the C++ Core Guidelines were created at that time (Bjarne Stroustrup, [CppCon 2015](https://isocpp.org/blog/2015/09/bjarne-stroustrup-announces-cpp-core-guidelines?utm_source=chatgpt.com)).
+
+If you’re interested, you can [read this page](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
+
 
 
 ## 2. Create the `SKILL.md` File
@@ -140,8 +146,8 @@ This skill automatically enforces Rust coding standards and best practices when 
 
 * **⚠️ Warning**: The `name` field must contain only lowercase letters and hyphens (no underscores).
 * Based on my experience... I **strongly** recommend to use the same name for the directory and the skill (`ms-rust` in our case.)
-* The `description` is important because this is what helps Claude to decide to apply such or such skill. For example here we make clear that the skill apply to "ANY Rust code"
-* It seems uppercase matters
+* The `description` is important (see the Side Note below) because this is what helps Claude to decide to apply such or such skill. For example here we make clear that the skill apply to "ANY Rust code"
+* It seems uppercase matters. I did some tests to confirm it. See ALWAYS, ANY and **CRITICAL** above.
 * Be specific. See point 5 for example
 * Don't be surprised if you have to iterate few times
 
@@ -151,8 +157,8 @@ This skill automatically enforces Rust coding standards and best practices when 
 {: .no_toc }
 
 For what I understood, here is what happen when starting a conversation
-1. The skills are already indexed - Claude do NOT browse the `.claude/skills` directory at the beginning of each conversation. The Claude Code System has already scanned this directory and provided Claude with a list of available skills.
-2. Claude receive a prepared list - In its system instructions, there is a <available_skills> section that lists the available skills with their name and description (extracted from `SKILL.md`). For example:
+1. The skills are already indexed - Claude does NOT browse the `.claude/skills` directory at the beginning of each conversation. The Claude Code System has already scanned this directory and provided Claude with a list of available skills.
+2. Claude receives a prepared list - In its system instructions, there is a <available_skills> section that lists the available skills with their name and description (extracted from `SKILL.md` ). For example:
     ```xml
     <available_skills>
     <skill>
@@ -162,7 +168,7 @@ For what I understood, here is what happen when starting a conversation
     </available_skills>
     ```
 3. Claude don't read `SKILL.md` at startup - It never reads the entire contents of `SKILL.md` files before we  ask something. It just see the short description. This is why it is important.
-4. Invoking the skill - When Claude decide to use a skill (based on its description), it use the Skill tool with the name of the skill. That's when the entire contents of `SKILL.md` are injected into the conversation.
+4. Invoking the skill - When Claude decides to use a skill (based on its description), it use the Skill tool with the name of the skill. That's when the entire contents of `SKILL.md` are injected into the conversation.
 5. Applying the instructions - Once the skill is invoked, Claude sees all the detailed instructions from `SKILL.md` and have to follow them for the task at hand.
 
 The flow looks like:
@@ -219,9 +225,9 @@ In VSCode:
 
 ## 4. Verification
 
-After a modification, the code should:
+After the modifications have been made, the code should:
 - Comply with Microsoft Rust conventions
-- Have a `// Rust guideline compliant X.X` comment if fully compliant
+- Have a `// Rust guideline compliant <date>` comment if fully compliant
 - Include appropriate documentation for public functions
 - Comments be in English
 
@@ -291,5 +297,7 @@ fn print_fibonacci(n: usize) {
 
 
 ## 5. Webliography
+* [The Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html)
 * On Claude Code Docs, read this [page](https://code.claude.com/docs/en/skills)
 * About SKILL, read this [page](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
+* [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
