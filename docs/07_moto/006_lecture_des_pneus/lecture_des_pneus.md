@@ -86,7 +86,7 @@ Ci-dessous, c'est un extrait de la documentation du RSV4. Positions des différe
 </div>
 
 
-* Retrouvez sur le web ou dans la documentation les réglages recommandés. 
+* Retrouvez sur le web ou dans la documentation les réglages recommandés.
 
 Ci-dessous, c'est un extrait de la documentation du RSV4. Réglages piste de la fourche.
 <div align="center">
@@ -161,7 +161,7 @@ Il ne faut pas négliger le point 1. Il peut nous éviter de perdre du temps à 
 
 Tu notes que je ne parle pas de vérifier la température des pneus. En fait, un peu plus loin dans la section [Recommandations](#recommandations), je propose de vérifier cette dernière à chaque fin de session.
 
-*Heu... Pourquoi tu dis que c'est normal de prendre 250 gr de pression au cours d'une session ?* 
+*Heu... Pourquoi tu dis que c'est normal de prendre 250 gr de pression au cours d'une session ?*
 
 En fait, en physique il y a une loi (loi des [gaz parfaits](https://fr.wikipedia.org/wiki/Loi_des_gaz_parfaits)) qui dit qu'à volume constant, le rapport de la pression sur la température est constant (autrement dit ils varient dans les mêmes proportions). Si on dit que l'air est un gaz parfait (ce qui n'est pas vrai), ça donne un truc comme ça :
 
@@ -280,7 +280,7 @@ Il faut laisser complètement refroidir le pneu et la jante puis vérifier la pr
 
 ## Recommandations
 
-*C'est bien gentil tout ça mais, moi, demain je fais quoi de toutes ces informations?* 
+*C'est bien gentil tout ça mais, moi, demain je fais quoi de toutes ces informations?*
 
 Ok, ok, on va faire une petite synthèse qui se divise en deux parties selon que l'on est avant la saison des roulages ou pendant une journée de roulage.
 
@@ -386,7 +386,7 @@ Pour une introduction rapide en anglais sur le réglage des suspensions et sur c
 
 
 
-Il y a enfin cette vidéo de l'excellente chaine anglaise [**Life at Lean**](https://www.youtube.com/c/LifeatLean) qui est pour le coup, inspirée du travail de Dave Moss et pile-poil sur le sujet. Je suis un peu inquiet, cela fait longtemps qu'il n'y a rien eu de publié sur la chaine en question. Je crois que [Dan Netting](https://www.youtube.com/channel/UCY9gbD_LrCoBCMzSiV0I1kg) est passé à autre chose. En tout cas, cela n'enlève rien à la vidéo ci-dessous.
+Il y a enfin cette vidéo de l'excellente chaine anglaise [Life at Lean](https://www.youtube.com/c/LifeatLean) qui est pour le coup, inspirée du travail de Dave Moss et pile-poil sur le sujet. Je suis un peu inquiet, cela fait longtemps qu'il n'y a rien eu de publié sur la chaine en question. Je crois que [Dan Netting](https://www.youtube.com/channel/UCY9gbD_LrCoBCMzSiV0I1kg) est passé à autre chose. En tout cas, cela n'enlève rien à la vidéo ci-dessous.
 
 <!-- https://youtu.be/Cqq5dEiADJY -->
 

@@ -5,15 +5,15 @@ title: "Coding Interview Patterns in Rust"
 parent: "Rust"
 # math: mathjax
 date:               2025-06-22 15:00:00 +0000
-last_modified_date: 1964-06-22 15:00:00 +0000   # Ne tient pas compte de cette page dans les pages récemment mises à jour
-#last_modified_date: 2025-01-05 15:00:00 +0000
+# last_modified_date: 1964-06-22 15:00:00 +0000   # Ne tient pas compte de cette page dans les pages récemment mises à jour
+last_modified_date: 2025-11-19 11:00:00 +0000
 nav_order: 0
 # permalink: /programmation/
 ---
 
 # Coding Interview Patterns in Rust
 
-My solutions in **Rust** for all the problems in the book : ISBN-10: [**1736049135**](https://amzn.eu/d/e3MFYEf) 
+My solutions in **Rust** for all the problems in the book : ISBN-10: [1736049135](https://amzn.eu/d/e3MFYEf)
 * Including Bonus.pdf
 
 <div align="center">
@@ -26,9 +26,9 @@ My solutions in **Rust** for all the problems in the book : ISBN-10: [**17360491
 * Everything is on [Github](https://github.com/40tude/rust_coding_interview)
 * One directory per chapter (01_two_pointers ... 19_math_and_geometry)
 * In the directories, the number at the beginning of the filename (e.g., ``10_xxx.ipynb``, ``14_yyy.ipynb``) corresponds to the page number in the book.
-* When the filename starts with `bonus_` the exercice is one of the ``bonus.pdf`` 
+* When the filename starts with `bonus_` the exercice is one of the ``bonus.pdf``
 * A copy of ``bonus.pdf`` is available in the ``/assets`` directory
- 
+
 
 
 
@@ -45,9 +45,9 @@ My solutions in **Rust** for all the problems in the book : ISBN-10: [**17360491
         * There is no order, no priority
         * This is mostly for me since I'm learning Rust
         * I can repeat some items from one solution to another if I have trouble to keep them in mind
-        * I usually confirm if the code of the cell has been executed in the [**Rust Playground**](https://play.rust-lang.org/)
+        * I usually confirm if the code of the cell has been executed in the [Rust Playground](https://play.rust-lang.org/)
     * There may be cells with code that doesn't work and I explain why
-    * If there are multiple versions of the same solution 
+    * If there are multiple versions of the same solution
         * I explain the changes from one version to the next.
         * If it make sense, I highlight if one of the versions is my <span style="color:lime"><b>Preferred solution</b></span>
         * When we come back to a notebook with several versions, the lime color makes it easy to find the one I prefer (this is purely personal)
@@ -59,8 +59,8 @@ This how the beginning of a notebook may look like :
 </div>
 
 ## About the sample code
-* All code examples are self-contained. By that, I mean that, unlike the code presented in the book or in the associated [**GitHub repository**](https://github.com/ByteByteGoHq/coding-interview-patterns), they are not just isolated functions; instead, each example includes a ``main()`` function where I demonstrate how to invoke the function and how to initialize any required data structures. 
-* For example, in [**Chapter 11**](https://github.com/40tude/rust_coding_interview/tree/main/11_trees), which covers binary trees, all the solutions I provide create the trees used in the chapter and display the results. The idea is really that each piece of code should be self-sufficient and easy to run.
+* All code examples are self-contained. By that, I mean that, unlike the code presented in the book or in the associated [GitHub repository](https://github.com/ByteByteGoHq/coding-interview-patterns), they are not just isolated functions; instead, each example includes a ``main()`` function where I demonstrate how to invoke the function and how to initialize any required data structures.
+* For example, in [Chapter 11](https://github.com/40tude/rust_coding_interview/tree/main/11_trees), which covers binary trees, all the solutions I provide create the trees used in the chapter and display the results. The idea is really that each piece of code should be self-sufficient and easy to run.
 * Yes, it results in more code, but I find it much more practical.
 * In most of the code examples, I try to keep the names of functions, variables... identical to those in the book.
 
@@ -71,18 +71,18 @@ This how the beginning of a notebook may look like :
 
 
 ## What if you don't run Rust code in Jupyter Notebook
-* Shame on you 😁. Read this [**README**](https://github.com/40tude/py_coding_interview/blob/main/README.md).
+* Shame on you 😁. Read this [README](https://github.com/40tude/py_coding_interview/blob/main/README.md).
 * You can copy and paste the code of the cell of interest either :
-    1. In a local project on your PC. Read this page where I share [**my setup on Windows 11**](https://www.40tude.fr/docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.html).
-    1. A better solution is to start by using the [**Rust Playground**](https://play.rust-lang.org/). 
-    1. In both cases, you may have to **uncomment** the line : ``fn main(){`` 
+    1. In a local project on your PC. Read this page where I share [my setup on Windows 11](https://www.40tude.fr/docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.html).
+    1. A better solution is to start by using the [Rust Playground](https://play.rust-lang.org/).
+    1. In both cases, you may have to **uncomment** the line : ``fn main(){``
 
 
 ## This may help
-* The page where I explain how to [**Use Rust in Jupyter Notebooks on Windows**](https://www.40tude.fr/docs/06_programmation/rust/001_rust_jupyter/rust_jupyter.html)
-* [**My repo with code in Python**](https://github.com/40tude/py_coding_interview). 
-    * In the [**README**](https://github.com/40tude/py_coding_interview/blob/main/README.md) I explain why I believe it is better to use Jupyter Notebooks in this learning context.
-* The [**repo of the book**](https://github.com/ByteByteGoHq/coding-interview-patterns)
+* The page where I explain how to [Use Rust in Jupyter Notebooks on Windows](https://www.40tude.fr/docs/06_programmation/rust/001_rust_jupyter/rust_jupyter.html)
+* [My repo with code in Python](https://github.com/40tude/py_coding_interview).
+    * In the [README](https://github.com/40tude/py_coding_interview/blob/main/README.md) I explain why I believe it is better to use Jupyter Notebooks in this learning context.
+* The [repo of the book](https://github.com/ByteByteGoHq/coding-interview-patterns)
 
 <!-- ## About contributions
 This project is developed for personal and educational purposes. Feel free to explore and use it to enhance your own learning in Rust and algorithm.

@@ -49,7 +49,7 @@ Quand c'est fait faut laisser VMWare télécharger les VMWare Tools for Linux. Q
 3. Choisir ``Extraire dans...``
 4. Choisir un truc du style ``~/Téléchargements``
 
-Ouvrir un terminal 
+Ouvrir un terminal
 
 1. Aller dans ``~/Téléchargements/vmware-tools-distrib``
 2. ``sudo ./vmware-install.pl``
@@ -67,7 +67,7 @@ Sur le Surface Pro, je ne vois rien car on est à 215 points par pouce au niveau
 
  En se rappelant que j'ai déjà installé build-essentail, j'installe maintenant :
 
-1. La dernière version de [**clang**](https://www.40tude.fr/installer-la-derniere-version-de-llvm-clang-sous-debian/) (3.9.1 en Fev 2017)
+1. La dernière version de [clang](https://www.40tude.fr/installer-la-derniere-version-de-llvm-clang-sous-debian/) (3.9.1 en Fev 2017)
 2. **cmake** (``sudo apt-get install cmake``)
 3. **git** (``sudo apt-get install git``)
 4. **catch** (dans ``~/Documents/C++/`` taper un truc du style git clone https://github.com/philsquared/Catch.git)
@@ -81,8 +81,8 @@ sudo apt-get install p7zip
 cd ~/Téléchargements
 7z x boost_1_63_0.7z
 cd boost_1_63_0
-./bootstrap.sh --prefix=/usr 
-./b2 stage threading=multi link=shared 
+./bootstrap.sh --prefix=/usr
+./b2 stage threading=multi link=shared
 sudo ./b2 install threading=multi link=shared (voir /usr/include/boost et /usr/lib)
 ```
 

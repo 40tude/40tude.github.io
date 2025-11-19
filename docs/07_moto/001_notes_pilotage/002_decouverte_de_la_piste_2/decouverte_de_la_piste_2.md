@@ -28,8 +28,8 @@ last_modified_date: 2023-09-09 00:08:32
 <!-- ###################################################################### -->
 ## Objectifs de la session
 
-1. Continuer à découvrir la piste en roulant à 75% de nos capacités. 
-1. Ouvrir les gaz à 100%, **en butée** 
+1. Continuer à découvrir la piste en roulant à 75% de nos capacités.
+1. Ouvrir les gaz à 100%, **en butée**
 <!-- 1. Faire passer ses pneus sur les **points de corde** -->
 
 
@@ -40,7 +40,7 @@ last_modified_date: 2023-09-09 00:08:32
 
 ## Prérequis
 1. Avoir fait la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})
-1. Se coucher dans les lignes droite 
+1. Se coucher dans les lignes droite
 
 
 Si tu ne te couches pas encore bien sur la moto, ce n'est pas grave. Identifie une ligne droite du circuit où tu t'engages à le faire lors de cette session. Indique-le, fais une marque sur ton plan de la piste.
@@ -83,7 +83,7 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 * Utilise toute la piste, roule à 1 cm de la bande blanche
 * Pense à te coucher dans les lignes droites et les grands virages (casque sur le réservoir)
 
-Vu que tout ça c'est trop facile et déjà acquis, tu vas t'appliquer à mettre la poignée de gaz **en butée** dans la plus grande ligne droite du circuit ainsi que dans une autre portion, idéalement à l'autre bout du circuit. L'idée c'est d'espacer c'est 2 instants "magiques". 
+Vu que tout ça c'est trop facile et déjà acquis, tu vas t'appliquer à mettre la poignée de gaz **en butée** dans la plus grande ligne droite du circuit ainsi que dans une autre portion, idéalement à l'autre bout du circuit. L'idée c'est d'espacer c'est 2 instants "magiques".
 
 Ensuite on ne change pas une formule qui gagne. À l'instar de la première session, dès que tu es butée dans une des deux sections, tu en rajoute une troisième etc. Tu connais la méthode.
 
@@ -110,7 +110,7 @@ Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en but�
 * Il faut bien retenir que si dans un virage on est constant sur la poignée de gaz alors on n'est PAS sur la ligne idéale (car on ne respecte pas la **Throttle Rule**)
 
 ### PAS de filet de gaz dans le virage
-* La poignée est soit fermée soit on l'enroule. 
+* La poignée est soit fermée soit on l'enroule.
 * Il n'y a **PAS** de phase dans laquelle dans le virage on a un filet de gaz.
 * Je répète. **PAS** de filet de gaz.
 * Quand la poignée de gaz est à 0%, **si** on y touche **alors** c'est la **Throttle Rule** qui s'applique
@@ -152,13 +152,13 @@ On en parle dans cette vidéo :
 ## À la fin de la session
 
 ### Est-ce que tu t'es couché dans la ligne droite que tu avais choisie ?
-Si oui bravo ! Bon ben reprends ton plan. Identifie le prochain endroit où tu vas te coucher sur la moto (ça peut être une ligne droite ou un grand virage) lors de la prochaine session. En faisant ainsi, étape par étape, en fin de journée tu auras tout couvert. En tout cas, bravo ! 
+Si oui bravo ! Bon ben reprends ton plan. Identifie le prochain endroit où tu vas te coucher sur la moto (ça peut être une ligne droite ou un grand virage) lors de la prochaine session. En faisant ainsi, étape par étape, en fin de journée tu auras tout couvert. En tout cas, bravo !
 
-Si tu as "oublié" de te coucher sur la moto ce n'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre-toi uniquement sur cet objectif. 
+Si tu as "oublié" de te coucher sur la moto ce n'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre-toi uniquement sur cet objectif.
 
-Quand tu arriveras à inclure un exercice dans une session tu vas voir, faire d'autres exercices sera beaucoup plus facile.  
+Quand tu arriveras à inclure un exercice dans une session tu vas voir, faire d'autres exercices sera beaucoup plus facile.
 
-Là, le truc c'est qu'il y a tellement de choses qui se passent que tu "oublies" et que malheureusement ça va être difficile de passer à la suite. Bref, **CTRL + ALT + SUPP** et on reprend depuis le début. Crois-moi, c'est préférable.   
+Là, le truc c'est qu'il y a tellement de choses qui se passent que tu "oublies" et que malheureusement ça va être difficile de passer à la suite. Bref, **CTRL + ALT + SUPP** et on reprend depuis le début. Crois-moi, c'est préférable.
 
 
 
@@ -188,10 +188,10 @@ Pour le reste, tu peux te raconter tout ce que tu veux... Tant que tu n'as pas s
 ### Est-ce que je prends l'habitude de la vitesse ?
 Il n'y a pas de honte... C'est vrai qu'à rouler quotidiennement à 80 km/h on n'a tout simplement pas l'habitude de voir la piste défiler si vite. Bref, il ne faut pas hésiter à prendre son temps et s'il faut une, deux ou trois sessions de découverte de la piste pour accoutumer notre cerveau à la vitesse et bien... On va prendre le temps qui faut.
 
-### Est-ce que je n'ai pas peur quand je vois le bord de piste "me sauter à la gueule" ? 
+### Est-ce que je n'ai pas peur quand je vois le bord de piste "me sauter à la gueule" ?
 Je ne souhaite pas être grossier pour être grossier mais c'est vrai que la première fois que je me suis trouvé dans un grand gauche, la moto anglée, la tête pas trop loin du guidon et que j'ai vu les vibreurs blancs et rouge me foncer dessus... J'ai coupé. Ensuite j'ai arrêté d'accélérer... Ensuite je continuais à enrouler. Là aussi, je pense qu'il faut laisser du temps au temps afin que les muscles, la vision et le cerveau s'habituent à ces nouvelles positions, ces nouveaux points de vue etc. Là aussi, Rossi ce n'est pas fait un jour, il est normal que plusieurs sessions soient nécessaires.
 
-Il ne faut pas mettre la charrue avant les bœufs et tant qu'on n'est pas à l'aise avec la vitesse, les vibreurs qui jaillissent etc... Mieux vaut rester en mode découverte de la piste et se dire que le temps qu'on passe là, à se forcer à ouvrir en grand dès qu'on en a l'occasion est un investissement pour plus tard. 
+Il ne faut pas mettre la charrue avant les bœufs et tant qu'on n'est pas à l'aise avec la vitesse, les vibreurs qui jaillissent etc... Mieux vaut rester en mode découverte de la piste et se dire que le temps qu'on passe là, à se forcer à ouvrir en grand dès qu'on en a l'occasion est un investissement pour plus tard.
 
 Heu... Ne me faites pas dire ce que je n'ai pas dit. Il faut se forcer à **sortir de sa zone de confort**, faut de l'engagement, faut mettre la poignée en butée... Et faut pas se leurrer, pour habituer notre cerveau à la vitesse, ce n'est pas suffisant de regarder des vidéos sur YouTube, faut se donner un coup de pied aux fesses et rouler plus vite que d'habitude. Point.
 
@@ -213,7 +213,7 @@ Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
 ### Progressif on te dit
 
-Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [**Throttle Rule**] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
+Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
 
 <!-- https://youtu.be/rPlp_SvbLLE?t=160 -->
 

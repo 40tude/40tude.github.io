@@ -18,14 +18,14 @@ I run WIN11 and I want to do some tests in C++ in Jupyter Notebooks. I cannot ea
 
 I could use a Docker image but here I will use WSL
 
-## 1. Check 
+## 1. Check
 
 Open a win terminal with Powerhell
 
 ```powershell
 wsl --list --verbose
 ```
-You should see something similar to 
+You should see something similar to
 
 <div align="center">
 <img src="./assets/img_01.webp" alt="" width="900" loading="lazy"/>
@@ -76,13 +76,13 @@ You can undo this by running `conda init --reverse $SHELL`
 
 
 
-## 4. Check conda 
+## 4. Check conda
 
 ```bash
 conda --version
 ```
 
-If needed 
+If needed
 
 ```bash
 export PATH="$HOME/miniconda3/bin:$PATH"
@@ -108,8 +108,8 @@ conda activate cpp_jupyter
 conda install -c conda-forge jupyterlab
 ```
 For what I can remember
-* I used ``conda init`` at one point 
-* I may have had to restart the terminal 
+* I used ``conda init`` at one point
+* I may have had to restart the terminal
 
 
 
@@ -164,7 +164,7 @@ In the notebook above I first make a simple test (Hello...) then run the Dijkstr
 
 I want to keep the Notebook on the WIN11 host ?
 
-From the WIN11 host I can access my Ubuntu home directory via : `\\wsl.localhost\Ubuntu\home\philippe` 
+From the WIN11 host I can access my Ubuntu home directory via : `\\wsl.localhost\Ubuntu\home\philippe`
 
 <div align="center">
 <img src="./assets/img_07.webp" alt="" width="900" loading="lazy"/>
@@ -195,7 +195,7 @@ So, I move to the directory ``cd /mnt/c/Users/phili/OneDrive/Documents/Programma
 This is exactly exactly what I want :
 
 * On the left hand side I see the directories and below I clicked on ``dijkstra`` to show the files
-* I can edit/copy/debug/create... 
+* I can edit/copy/debug/create...
 * Thsi is similar to the Docker experience
 
 <div align="center">
@@ -205,8 +205,8 @@ This is exactly exactly what I want :
 
 ### Idea
 * From the home directory on Ubuntu launch VSCode (``code .``)
-* Open the ``.bashrc`` file 
-* Add the line below 
+* Open the ``.bashrc`` file
+* Add the line below
     * ``alias jupytercpp='cd "/mnt/c/Users/phili/OneDrive/Documents/Programmation/cpp_jupyter" && jupyter lab --no-browser --ip=0.0.0.0'``
 * Save and exit from VSCode
 * `source ~/.bashrc`
@@ -221,7 +221,7 @@ This is exactly exactly what I want :
 ## What is next ?
 * I'm starting to learn Rust (👍)
 * Obviously the next step is to follow a similar process the kernel `evcxr_jupyter`
-* Find here [**checklist for Rust**]({%link docs/06_programmation/rust/001_rust_jupyter/rust_jupyter.md%})  
+* Find here [checklist for Rust]({%link docs/06_programmation/rust/001_rust_jupyter/rust_jupyter.md%})
 
 
 

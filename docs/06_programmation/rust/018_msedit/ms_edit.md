@@ -837,7 +837,7 @@ Below I call:
 | main@origin          | main branch in the fork (my GitHub repo)                |
 | main@upstream        | main branch in the original project (their GitHub repo) |
 | xyz_docs/typos@local | Feature branch in local repository                      |
-| xyz_docs/typos@origin| Feature branch in fork (origin)                         |
+| xyz_docs/typos@origin| Feature branch in the fork (origin)                     |
 
 
 
