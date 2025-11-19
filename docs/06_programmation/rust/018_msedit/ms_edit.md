@@ -7,7 +7,7 @@ description: A beginner-friendly guide from our first fork to our first pull req
 parent: Rust
 #math: mathjax
 date               : 2025-11-07 13:00:00
-last_modified_date : 2025-11-12 17:00:00
+last_modified_date : 2025-11-19 10:00:00
 ---
 
 
@@ -31,9 +31,17 @@ A beginner-friendly guide from our first fork to our first pull request.
 
 ## TL;DR
 {: .no_toc }
-* ...
-* For Rust beginners
-* VSCode + Win11 (not tested elsewhere)
+
+* A step-by-step guide to go from *zero* to your first open-source contribution using **Microsoft Edit** as a practical example.
+* You install Rust (stable + nightly), clone **your own fork**, build the project, explore the codebase, debug, and understand the overall structure.
+* You learn the daily workflow: keeping your fork in sync, creating clean branches, making changes, and preparing a proper PR.
+* The exercises take you from simply reading code to submitting an actual contribution.
+* Environment used: **Windows 11 + VSCode + GitHub**.
+
+
+
+
+
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="900" loading="lazy"/><br/>
@@ -1274,6 +1282,7 @@ else {
 
 ## 14. Webliography
 
+- [edit GitHub page](https://github.com/microsoft/edit/)
 - [Project Issues](https://github.com/microsoft/edit/issues)
 - [Discussions](https://github.com/microsoft/edit/discussions)
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
