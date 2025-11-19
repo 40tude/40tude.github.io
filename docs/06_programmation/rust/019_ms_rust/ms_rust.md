@@ -110,7 +110,6 @@ If you’re interested, you can [read this page](https://isocpp.github.io/CppCor
 ```powershell
 # Open VSCode in this directory
 code .
-CTRL+ALT+B to close the chat panel on the right
 ```
 
 **IMPORTANT**: Do not use Notepad as it will modify the file without your knowledge.
@@ -218,11 +217,10 @@ code .
 ```
 
 In VSCode:
-1. Close the chat panel that takes up space (CTRL+ALT+B)
-2. Open the `src/main.rs` file
-3. Open Claude and ask to modify the code, for example:
+1. Open the `src/main.rs` file
+2. Open Claude and ask to modify the code, for example:
    - "Modify `main.rs` to display the first 10 Fibonacci numbers"
-4. Claude will ask permission to read the `SKILL.md` then `rust-guidelines.txt` and automatically apply the Microsoft Rust guidelines while generating the code.
+3. Claude will ask permission to read the `SKILL.md` then `rust-guidelines.txt` and automatically apply the Microsoft Rust guidelines while generating the code.
 
 
 
