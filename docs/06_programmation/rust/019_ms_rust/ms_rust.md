@@ -91,11 +91,15 @@ Test-Path "$env:USERPROFILE\.claude"
 Read the doc, and try different directories. Indeed Claude Code (CLI) and Claude Desktop (GUI) are 2 different beasts.
 
 
-**Side Note**
+### Side Note
+{: .no_toc }
+
 Read the [Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html). Before becoming a set of recommendations for AI, the Pragmatic Rust Guidelines are first a collection of well-structured, readable guidelines presented as a Rustdoc-generated book.
 
-**Side Note**
-A long time ago, when C++11 was introduced, there was a need to help developers transition from"old" to "modern" C++. In addition, there were so many ways to accomplish the same thing in C++ that some form of guidance became necessary. Finally, it was crucial to explain what should be avoided (raw pointer), what should be promoted (RAII), and why. This is why the C++ Core Guidelines were created at that time (Bjarne Stroustrup, [CppCon 2015](https://isocpp.org/blog/2015/09/bjarne-stroustrup-announces-cpp-core-guidelines?utm_source=chatgpt.com)).
+### Side Note
+{: .no_toc }
+
+A long time ago, when C++11 was introduced, there was a need to help developers transition from "old" to "modern" C++. In addition, there were so many ways to accomplish the same thing in C++ that some form of guidance became necessary. Finally, it was crucial to explain what should be avoided (raw pointers...), what should be promoted (RAII...), and why. This is why the C++ Core Guidelines were created at that time (Bjarne Stroustrup, [CppCon 2015](https://isocpp.org/blog/2015/09/bjarne-stroustrup-announces-cpp-core-guidelines?utm_source=chatgpt.com)).
 
 If you’re interested, you can [read this page](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
 
@@ -149,11 +153,11 @@ This skill automatically enforces Rust coding standards and best practices when 
 
 
 * **⚠️ Warning**: The `name` field must contain only lowercase letters and hyphens (no underscores).
-* Based on my experience... I **strongly** recommend to use the same name for the directory and the skill (`ms-rust` in our case.)
-* The `description` is important (see the Side Note below) because this is what helps Claude to decide to apply such or such skill. For example here we make clear that the skill apply to "ANY Rust code"
+* Based on my experience... I **strongly** recommend to use the same name for the directory and the skill (`ms-rust` here, in our case).
+* The `description` is important (see the Side Note below) because this is what helps Claude to decide to apply such or such skill. For example here we make clear that the skill apply to "ANY Rust code".
 * It seems uppercase matters. I did some tests to confirm it. See ALWAYS, ANY and **CRITICAL** above.
-* Be specific. See point 5 for example
-* Don't be surprised if you have to iterate few times
+* Be specific. See point 5 for example.
+* Don't be surprised if you have to iterate few times.
 
 
 
@@ -175,7 +179,8 @@ For what I understood, here is what happen when starting a conversation
 4. Invoking the skill - When Claude decides to use a skill (based on its description), it use the Skill tool with the name of the skill. That's when the entire contents of `SKILL.md` are injected into the conversation.
 5. Applying the instructions - Once the skill is invoked, Claude sees all the detailed instructions from `SKILL.md` and have to follow them for the task at hand.
 
-The flow looks like:
+
+So the flow looks like:
 * Start of conversation → Claude knows the names/descriptions of the available skills.
 * Rust task requested → Claude sees that ms-rust corresponds → It invokes the skill.
 * Skill invoked → The complete content of `SKILL.md` appears → It reads and apply the instructions.
