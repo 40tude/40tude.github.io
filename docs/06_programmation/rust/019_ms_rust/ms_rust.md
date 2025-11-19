@@ -90,6 +90,10 @@ Test-Path "$env:USERPROFILE\.claude"
 ```
 Read the doc, and try different directories. Indeed Claude Code (CLI) and Claude Desktop (GUI) are 2 different beasts.
 
+
+**Side Note**
+Read the [Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html). Before becoming a set of recommendations for AI, the Pragmatic Rust Guidelines are first a collection of well-structured, readable guidelines presented as a Rustdoc-generated book.
+
 **Side Note**
 A long time ago, when C++11 was introduced, there was a need to help developers transition from"old" to "modern" C++. In addition, there were so many ways to accomplish the same thing in C++ that some form of guidance became necessary. Finally, it was crucial to explain what should be avoided (raw pointer), what should be promoted (RAII), and why. This is why the C++ Core Guidelines were created at that time (Bjarne Stroustrup, [CppCon 2015](https://isocpp.org/blog/2015/09/bjarne-stroustrup-announces-cpp-core-guidelines?utm_source=chatgpt.com)).
 
