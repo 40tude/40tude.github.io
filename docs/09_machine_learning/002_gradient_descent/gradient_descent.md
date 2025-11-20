@@ -195,27 +195,27 @@ In practice, you usually won't hit the target perfectly in one try. Let's say th
 Again, we got lucky! But let's see what happens if we use a smaller learning rate of 0.005:
 
 **Iteration 1:**
-- a = 0, y = 0, error = -47
-- Adjustment: -0.005 × 10 × (-47) = 2.35
-- New a = 2.35, new y = 23.5 inches
+- $$a = 0, y = 0, error = -47$$
+- Adjustment: $$-0.005 × 10 × (-47) = 2.35$$
+- New angle: $$a = 2.35, new y = 23.5$$ inches
 - Friend says: "23.5 inches too low!"
 
 **Iteration 2:**
-- a = 2.35, y = 23.5, error = -23.5
-- Adjustment: -0.005 × 10 × (-23.5) = 1.175
-- New a = 3.525, new y = 35.25 inches
+- $$a = 2.35, y = 23.5, error = -23.5$$
+- Adjustment: $$-0.005 × 10 × (-23.5) = 1.175$$
+- New angle: $$a  = 3.525, new y = 35.25$$ inches
 - Friend says: "11.75 inches too low!"
 
 **Iteration 3:**
-- a = 3.525, y = 35.25, error = -11.75
-- Adjustment: -0.005 × 10 × (-11.75) = 0.5875
-- New a = 4.1125, new y = 41.125 inches
+- $$a = 3.525, y = 35.25, error = -11.75$$
+- Adjustment: $$-0.005 × 10 × (-11.75) = 0.5875$$
+- New angle: $$a = 4.1125, new y = 41.125 inches$$
 - Friend says: "5.875 inches too low!"
 
 **Iteration 4:**
-- a = 4.1125, y = 41.125, error = -5.875
-- Adjustment: -0.005 × 10 × (-5.875) = 0.29375
-- New a = 4.40625, new y = 44.0625 inches
+- $$a = 4.1125, y = 41.125, error = -5.875$$
+- Adjustment: $$-0.005 × 10 × (-5.875) = 0.29375$$
+- New angle: $$a = 4.40625, new y = 44.0625$$ inches
 - Friend says: "2.9375 inches too low!"
 
 You can see the pattern: each time, we get closer to the target, and the adjustments get smaller as the error decreases. After about 10 iterations, we'd be within a fraction of an inch!
@@ -229,9 +229,23 @@ This simple laser pointer game reveals the core principles of gradient descent:
 
 **2. The Gradient Guides Us**: The gradient ($$\frac{\partial y}{\partial a} = 10$$) tells us the relationship between our adjustable parameter and the outcome.
 
-**3. Learning Rate is Critical**: Too large, and we overshoot. Too small, and we take forever to converge. It's a Goldilocks problem.
+**3. Learning Rate is Critical**: Too large, and we overshoot. Too small, and we take forever to converge. It's a [Goldilocks problem](https://en.wikipedia.org/wiki/Goldilocks_principle).
 
 **4. Errors Shrink Over Time**: As we get closer to the target, the error gets smaller, which naturally makes our adjustments smaller too.
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 
 ## From Lasers to Machine Learning
 
