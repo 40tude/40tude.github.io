@@ -79,7 +79,13 @@ Imagine you're holding a laser pointer, aiming at a white sheet hung on the oppo
 
 Your goal? Adjust the angle of your laser until you hit the target perfectly.
 
-This simple game is actually one of the best ways to understand **gradient descent** - the fundamental algorithm that powers modern machine learning.
+<div align="center">
+<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
+<span>Gradient Descent.</span>
+</div>
+
+
+Let's use this simple game to understand gradient descent - the fundamental algorithm that powers modern machine learning.
 
 ### The Setup
 {: .no_toc }
@@ -121,18 +127,20 @@ Here's where gradient descent comes in. The algorithm has three key components:
 
 Your friend said "20 inches too low", so:
 
-$$Error = -20 inches$$
+$$Error = -20$$ (
 
-(Negative because you're below the target)
+The error is in inches and it is negative because you're below the target.
 
 #### Step 2: Understanding the Gradient
 {: .no_toc }
 
 The gradient tells us how changing the angle $$a$$ affects the height $$y$$. Looking at our equation $$y = a × 10$$, we can see that:
+* If we increase $$a$$ by 1, then $$y$$ increases by 10.
 
-**If we increase a by 1, then y increases by 10**
-
-Mathematically, we write this as:
+We can also say:
+* If the variation of $$a$$ is 1, then the variation of $$y$$ is 10
+* The variation of $$y$$ is 10 times larger than the variation of $$a$$
+* If rather using $$\Delta$$ wich is use to note large variations, we use $$\partial$$, then we can write this as:
 
 $$\frac{\partial y}{\partial a} = 10$$
 
@@ -143,28 +151,28 @@ This is called the "partial derivative" - it's just the rate of change. In our c
 
 The gradient descent formula is:
 
-$$new_a = old_a - learning_rate × gradient × error$$
+$$new_a = old_a - \text{learning-rate} × \text{gradient} × \text{error}$$
 
 Let's pick a learning rate of 0.1 (we'll explain why shortly).
 
 $$
 \begin{align*}
-new_a = 0 - 0.1 × 10 × (-20) \\
-new_a = 0 + 20 \\
-new_a = 20
-\end{align}
+new_a & = 0 - 0.1 × 10 × (-20) \\
+new_a & = 0 + 20 \\
+new_a & = 20
+\end{align*}
 $$
 
 Wait, that seems huge! Let's check: with $$a = 20$$, the height would be $$y = 20 × 10 = 200$$ inches. We'd overshoot dramatically!
 
-This is why choosing the learning rate matters. Let's try **learning_rate = 0.01**:
+This is why choosing the learning rate matters. Let's try $$learning-rate = 0.01$$:
 
 $$
 \begin{align*}
-new_a = 0 - 0.01 × 10 × (-20) \\
-new_a = 0 + 2 \\
-new_a = 2
-\end{align}
+new_a & = 0 - 0.01 × 10 × (-20) \\
+new_a & = 0 + 2 \\
+new_a & = 2
+\end{align*}
 $$
 
 Now with $$a = 2: y = 2 × 10 = 20$$ inches. Perfect! We hit the target in one shot!
@@ -174,15 +182,15 @@ Now with $$a = 2: y = 2 × 10 = 20$$ inches. Perfect! We hit the target in one s
 ### A More Realistic Scenario
 {: .no_toc }
 
-In practice, you usually won't hit the target perfectly in one try. Let's say the target is at 47 inches, and we use learning_rate = 0.01.
+In practice, you usually won't hit the target perfectly in one try. Let's say the target is at 47 inches, and we use $$learning-rate = 0.01$$.
 
 **Iteration 1:**
-- Current angle: a = 0
-- Current height: y = 0 × 10 = 0 inches
-- Error: 0 - 47 = -47 inches
-- Adjustment: -0.01 × 10 × (-47) = 4.7
-- New angle: a = 0 + 4.7 = 4.7
-- New height: y = 4.7 × 10 = 47 inches
+- Current angle: $$a = 0$$
+- Current height: $$y = 0 × 10 = 0$$ inches
+- Error: $$0 - 47 = -47$$ inches
+- Adjustment: $$-0.01 × 10 × (-47) = 4.7$$
+- New angle: $$a = 0 + 4.7 = 4.7$$
+- New height: $$y = 4.7 × 10 = 47$$ inches
 
 Again, we got lucky! But let's see what happens if we use a smaller learning rate of 0.005:
 
@@ -227,7 +235,7 @@ This simple laser pointer game reveals the core principles of gradient descent:
 
 ## From Lasers to Machine Learning
 
-In machine learning, instead of a laser angle, we're adjusting weights in a neural network. Instead of hitting a target on a wall, we're trying to minimize prediction errors across thousands or millions of data points. Instead of one parameter **a**, we might have millions of parameters.
+In machine learning, instead of a laser angle, we're adjusting weights in a neural network. Instead of hitting a target on a wall, we're trying to minimize prediction errors across thousands or millions of data points. Instead of one parameter $$a$$, we might have millions of parameters.
 
 But the fundamental principle remains exactly the same: calculate the error, find the gradient, make a small adjustment, repeat.
 
