@@ -140,7 +140,8 @@ The gradient tells us how changing the angle $$a$$ affects the height $$y$$. Loo
 We can also say:
 * If the variation of $$a$$ is 1, then the variation of $$y$$ is 10
 * The variation of $$y$$ is 10 times larger than the variation of $$a$$
-* If rather using $$\Delta$$ wich is use to note large variations, we use $$\partial$$, then we can write this as:
+* In other words: $$\frac{\text{variation-in-y}}{\text{variation-in-a}} = 10$$
+* Now, if rather than using $$\Delta$$ which is used to note large variations, we use $$\partial$$ to denote small variations, then we can write:
 
 $$\frac{\partial y}{\partial a} = 10$$
 
