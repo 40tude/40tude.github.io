@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 lang: en-US
 layout: default
 title: Understanding Gradient Descent
@@ -75,7 +75,7 @@ The key hyperparameter is the learning rate: too large, we risk diverging; too s
 
 
 ## The Laser Pointer Game
-Imagine you're holding a laser pointer, aiming at a white sheet hung on the opposite wall. Behind that sheet, there's a target at a specific height - but you can't see it. Your friend standing behind the sheet can see both your laser dot and the target, and they shout feedback: "3 inches too high!" or "5 inches below!"
+Imagine you're holding a laser pointer, aiming at a white sheet hung on the opposite wall. Behind that sheet, there's a target at a specific height - but you can't see it. Your friend standing behind the sheet can see both your laser dot and the target, and they shout feedback: "3 centimeters too high!" or "5 centimeters below!".
 
 Your goal? Adjust the angle of your laser until you hit the target perfectly.
 
@@ -97,7 +97,7 @@ The laser beam follows a straight line that we can describe mathematically as:
 $$y = a × x + b$$
 
 Where:
-- $$x$$ is the horizontal distance (10 feet to the wall)
+- $$x$$ is the horizontal distance (200 cm to the wall)
 - $$y$$ is the height where the laser hits
 - $$a$$ is the angle (technically the slope/tangent of the angle)
 - $$b$$ is your starting height (0 inches in our case)
@@ -127,7 +127,7 @@ Here's where gradient descent comes in. The algorithm has three key components:
 
 Your friend said "20 inches too low", so:
 
-$$Error = -20$$ (
+$$Error = -20$$
 
 The error is in inches and it is negative because you're below the target.
 
