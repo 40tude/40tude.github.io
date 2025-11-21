@@ -36,7 +36,7 @@ last_modified_date: 2025-11-21 16:00:00 +0000
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
 <span>Gradient Descent.</span>
 </div>
 
@@ -376,7 +376,7 @@ You talk about this one: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdo
 OK, let'm simplify the notation and "redraw" the previous parabola. You were snowboarding on the left part of the curve so let me sketch the situation as below:
 
 <div align="center">
-<img src="./assets/img07.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Drawing the cost function.</span> -->
 </div>
 
@@ -386,7 +386,7 @@ Let's zoon in and it comes:
 
 
 <div align="center">
-<img src="./assets/img08.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Drawing the cost function.</span> -->
 </div>
 
