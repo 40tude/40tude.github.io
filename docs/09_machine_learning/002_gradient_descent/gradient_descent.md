@@ -25,10 +25,13 @@ last_modified_date: 2025-11-20 15:00:00 +0000
 ## TL;DR
 {: .no_toc }
 
-* error
-* cost function in NOT error
-* slope, gradient, derivative
-* learning rate
+* a variable $$y$$
+* error between $$y$$ and $$y-true$$
+* cost function in NOT error (it is a function of the error $$cost(error)$$)
+* slope, gradient, derivative of the cost function with respect to the variable $$y$$
+* learning rate ($$\alpha$$)
+* error ➡️ cost(error) ➡️ derivative ➡️ $$y_2 = y_1 - \alpha \cdot \text{grad}$$
+*
 
 
 
@@ -168,7 +171,9 @@ What's more, I'm a bit stuck here because I only have one dimension, but imagine
 * If it's 3 cm too high and 3 cm too far to the left, what's the error? 3 + 3 = 6?
 * If it's 3 cm too high and 3 cm too far to the right, what's the error? 3 + (-3) = 0?
 
-To prevent sign errors from canceling each other out, with more than one dimension, we make them all positive and we sum them up. An easy way to make them positive is to square them. We could also decide to raise them to the power of 4, the power of 6... We could also decide to add up their absolute values.
+To prevent sign errors from canceling each other out, with more than one dimension, we make them all positive and we sum them up. An easy way to make them positive is to square them. We could also decide to raise them to the power of 4, the power of 6... Or to add up their absolute values.
+
+Do you get why we talk about an error and a cost function? Right — on one side we have a value, the error. On the other, we apply a function to that value, and we call it the cost function because it basically tells us that larger errors 'cost' more.
 
 **Problem #2:** The "How Wrong Am I, Really?" Problem
 
@@ -254,7 +259,7 @@ J = (y_laser - y_target)**2
 
 # Create graph
 plt.figure(figsize=(10, 6))
-plt.plot(y_laser, J, 'b-', linewidth=2, label='Coût $J = (y_{laser} - y_{target})^2$')
+plt.plot(y_laser, J, 'b-', linewidth=2, label='Cost $J = (y_{laser} - y_{target})^2$')
 plt.axvline(x=y_target, color='red', linestyle='--', alpha=0.7, label=f'Target ($y_{{target}} = {y_target}$ cm)')
 
 # Spot the minimum
@@ -355,7 +360,50 @@ Let's break this down:
 *   $$\text{gradient}$$ : $$2 \cdot (\text{y-laser-old} - \text{y-target})$$
 *   $$\text{y-laser-new}$$: Your new, improved aim position.
 
-**Why subtract?** Because the gradient points *uphill*. To minimize cost (to go *downhill*), we move in the *opposite* direction of the gradient.
+
+***Where does the previous formula comes from?***
+
+You talk about this one: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{gradient}$$. Right?
+
+OK, let'm simplify the notation and "redraw" the previous parabola. You were snowboarding on the left part of the curve so let me sketch the situation as below:
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Drawing the cost function.</span> -->
+</div>
+
+You are spted on the upper point and you want to reach the second, lower point. One "good" approximation (and trust me the closer the 2 points the better the approximation) is to use the yellow line. The yellow line is the tangente at the first point.
+
+Let's zoon in and it comes:
+
+
+<div align="center">
+<img src="./assets/img08.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Drawing the cost function.</span> -->
+</div>
+
+x1 and y1 are the coordinates of the first point (where you are) and (x2, y2) are the coordinate where you want to go. With the information available on the fantastic figure how would you do? What do you know... Do not overthink. Make it simple...
+
+Yes! From the kinder garden you remember that: $$tan(angle) = \frac{\Delta{y}}{\Delta{x}}$$
+Now, let's keep in mind that the tangent is the slope, the gradient. Finally we also know that $$x_2 = x_1 + \alpha$$ where $$\alpha$$ is the learning rate (the step by which we want to progress along the x-axis).
+
+At the end of the day it comes:
+
+$$\begin{aligned}
+tan(angle) & = \frac{\Delta{y}}{\Delta{x}} \\
+\text{gradient} & = \frac{\Delta{y}}{\Delta{x}} \\
+\text{gradient} & = \frac{y_2-y_1}{x_2 - x_1} \\
+\text{gradient} &= \frac{y_1 - y_2}{\alpha} \\
+\alpha \cdot \text{gradient} & = y_1 - y_2 \\
+\alpha \cdot \text{gradient} - y_1 & =  - y_2 \\
+-\alpha \cdot \text{gradient} + y_1 & =  y_2 \\
+y_2 & =  y_1 -\alpha \cdot \text{gradient}  \\
+\end{aligned}
+$$
+
+Note that above I make sure to use the index in the same order: $$y_2-y1$$ then $$x_2-x1$$. At the end, this the formula used earlier.
+
+
 
 #### **Let's Run the Simulation**
 {: .no_toc }
@@ -530,6 +578,10 @@ print(f"Number of steps to converge: {steps}")
 
 
 
+
+#### **Q&A - Checking understanding**
+* Why the cost function does not raise the error to the power of 3?
+* Why is a cost function that raises the error to the power of 2 said to punish large errors more than a cost function that uses the absolute value of the error?
 
 
 <!-- In real machine learning, there aren't just two parameters (like $$x$$ and $$y$$); there can be millions! But the core principle remains the same: calculate the gradient (the multi-directional "shout" for each parameter) and take a small step in the opposite direction to minimize the total cost.
