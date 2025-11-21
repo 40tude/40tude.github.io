@@ -339,6 +339,7 @@ This gradient is our mathematical "friend's shout." It gives us both the **direc
 *   **Magnitude:** A larger absolute value means you're further from the target, so you need a bigger adjustment.
 
 #### **The Descent: Taking a Step Towards the Target**
+{: .no_toc }
 
 Now, how much should you adjust your aim? If you move your wrist too much, you might overshoot the target and oscillate around it forever. If you move it too little, it will take forever to get there.
 
@@ -357,6 +358,7 @@ Let's break this down:
 **Why subtract?** Because the gradient points *uphill*. To minimize cost (to go *downhill*), we move in the *opposite* direction of the gradient.
 
 #### **Let's Run the Simulation**
+{: .no_toc }
 
 Let's say:
 *   The target is at $$\text{y-target} = 100$$ cm
@@ -390,6 +392,7 @@ You can see how each step gets you closer and closer to the target of 100 cm. Th
 
 
 #### **Let's play with Python**
+{: .no_toc }
 
 ```python
 import numpy as np
@@ -516,6 +519,7 @@ print(f"Number of steps to converge: {steps}")
 
 
 #### **The Big Picture**
+{: .no_toc }
 
 *   **Laser Dot Position** ($$\text{y-laser-new}$$) is the **parameter** the model is trying to optimize
 *   **Your Friend's Shout** is the **gradient** of the cost function
@@ -616,3 +620,4 @@ That's the beauty of gradient descent - it's a simple idea that scales to solve 
 
 ## Webliography
 * [If Anyone Builds It, Everyone Dies.](https://www.amazon.fr/Anyone-Builds-Everyone-Dies-Superhuman/dp/0316595640)
+* [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can past the scripts above.
