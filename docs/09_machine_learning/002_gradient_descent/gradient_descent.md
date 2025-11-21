@@ -7,7 +7,7 @@ description:
 parent: "Machine Learning"
 math: mathjax
 date:               2025-11-20 15:00:00 +0000
-last_modified_date: 2025-11-20 15:00:00 +0000
+last_modified_date: 2025-11-21 16:00:00 +0000
 # nav_order: 9
 # permalink: /machine_learning/
 ---
@@ -16,9 +16,9 @@ last_modified_date: 2025-11-20 15:00:00 +0000
 {: .no_toc }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -26,12 +26,12 @@ last_modified_date: 2025-11-20 15:00:00 +0000
 {: .no_toc }
 
 * a variable $$y$$
-* error between $$y$$ and $$y-true$$
+* error between $$y$$ and $$y_{true}$$
 * cost function in NOT error (it is a function of the error $$cost(error)$$)
 * slope, gradient, derivative of the cost function with respect to the variable $$y$$
-* learning rate ($$\alpha$$)
+* learning rate ($$\alpha$$, the step by which we progress along the x-axis)
 * error ➡️ cost(error) ➡️ derivative ➡️ $$y_2 = y_1 - \alpha \cdot \text{grad}$$
-*
+* Gradient descent = Taking a step towards the target (where the cost=0)
 
 
 
@@ -125,7 +125,7 @@ Where:
 - $$x$$ is the horizontal distance (300 cm to the wall)
 - $$y$$ is the height where the laser hits
 - $$a$$ is the angle (technically the slope/tangent of the angle)
-- $$b$$ is your starting height (0 inches in our case)
+- $$b$$ is your starting height (0 cm in our case)
 
 Since you're holding the laser steady at chest height, $$b = 0$$, and you can only adjust the angle $$a$$. So our equation simplifies to:
 
@@ -238,7 +238,10 @@ Ok, you're right... Let's talk about the slope, our mathematical "Tilt-O-Meter".
 
 So, we have our cost function, $$J = (\text{y-laser} - \text{y-target})^2$$. Imagine we graph this. Since the only thing changing is `y-laser`, we get a simple U-shaped curve because $$J = (\text{y-laser} - \text{y-target})^2 \approx (x - k)^2 \approx x^2$$. This is nothing else than a parabola where the bottom of the "U" is right where `y-laser` equals `y-target`— that's our bullseye, where the cost is zero.
 
-Let's play with Python and draw the curve:
+#### **Let's play with Python**
+{: .no_toc }
+
+Paste the code below in [JupyterLab](https://jupyter.org/try-jupyter/lab/).
 
 ```python
 import numpy as np
@@ -254,7 +257,7 @@ y_target = 100
 # Create an array of value for y_laser
 y_laser = np.linspace(70, 130, 100)  # from 70cm to 130cm
 
-# Calcultat the cost function J = (y_laser - y_target)²
+# Calculate the cost function J = (y_laser - y_target)²
 J = (y_laser - y_target)**2
 
 # Create graph
@@ -269,7 +272,7 @@ plt.plot(y_laser[min_index], J[min_index], 'ro', markersize=8, label='Minimum (c
 # Personnalisation du graphique
 plt.xlabel('Laser Position $y_{laser}$ (cm)', fontsize=12)
 plt.ylabel('Cost $J$', fontsize=12)
-plt.title('Cost Function: Suared Error', fontsize=14)
+plt.title('Cost Function: Squared Error', fontsize=14)
 plt.grid(True, alpha=0.3)
 plt.legend(fontsize=11)
 
@@ -291,7 +294,7 @@ plt.show()
 <span>Drawing the cost function.</span>
 </div>
 
-Put your index on the horizontal axis (`Laser position ylaser`) and move it slowly from left to right. Reach the point $$y-laser=80$$ and say it load : "when `y_laser` is 80 centimeters, the cost is 400". Continue and reach the point where $$y-laser=100$$ and say it load : "when `y_laser` is 100 centimeters, the cost is 0". One more time, just to make sure... Put your finger on point $$y-laser=110$$ and say it load : "when `y_laser` is 110 centimeters, the cost is 100".
+Now, put your index on the horizontal axis (`Laser position ylaser`) and move it slowly from left to right. Reach the point $$y-laser=80$$ and say it load : "when `y_laser` is 80 centimeters, the cost is 400". Continue and reach the point where $$y-laser=100$$ and say it load : "when `y_laser` is 100 centimeters, the cost is 0". One more time, just to make sure... Put your finger on point $$y-laser=110$$ and say it load : "when `y_laser` is 110 centimeters, the cost is 100".
 
 It is important to realize and understand that positioning the laser at 80 cm is just as wrong as positioning it at 120 cm. In both cases, the cost is the same (400).
 
@@ -372,7 +375,7 @@ OK, let'm simplify the notation and "redraw" the previous parabola. You were sno
 <!-- <span>Drawing the cost function.</span> -->
 </div>
 
-You are spted on the upper point and you want to reach the second, lower point. One "good" approximation (and trust me the closer the 2 points the better the approximation) is to use the yellow line. The yellow line is the tangente at the first point.
+You are on the upper point and you want to reach the second, lower point. One "good" approximation (and trust me the closer the 2 points the better the approximation) is to use the yellow line. The yellow line is the tangente at the first point.
 
 Let's zoon in and it comes:
 
@@ -382,9 +385,10 @@ Let's zoon in and it comes:
 <!-- <span>Drawing the cost function.</span> -->
 </div>
 
-x1 and y1 are the coordinates of the first point (where you are) and (x2, y2) are the coordinate where you want to go. With the information available on the fantastic figure how would you do? What do you know... Do not overthink. Make it simple...
+$$x_1$$ and $$y_1$$ are the coordinates of the first point (where you are) and ($$x_2$$, $$y_2$$) are the coordinates where you want to go. With the information available on the "fantastic" figure above, how would you do? What do you know? Do not overthink. Make it simple...
 
-Yes! From the kinder garden you remember that: $$tan(angle) = \frac{\Delta{y}}{\Delta{x}}$$
+Yes! From the kinder garden you remember that: $$tan(angle) = \frac{\Delta{y}}{\Delta{x}}$$.
+
 Now, let's keep in mind that the tangent is the slope, the gradient. Finally we also know that $$x_2 = x_1 + \alpha$$ where $$\alpha$$ is the learning rate (the step by which we want to progress along the x-axis).
 
 At the end of the day it comes:
@@ -392,20 +396,20 @@ At the end of the day it comes:
 $$\begin{aligned}
 tan(angle) & = \frac{\Delta{y}}{\Delta{x}} \\
 \text{gradient} & = \frac{\Delta{y}}{\Delta{x}} \\
-\text{gradient} & = \frac{y_2-y_1}{x_2 - x_1} \\
+\text{gradient} & = \frac{y_1 -y_2}{x_2 - x_1} \\
 \text{gradient} &= \frac{y_1 - y_2}{\alpha} \\
 \alpha \cdot \text{gradient} & = y_1 - y_2 \\
-\alpha \cdot \text{gradient} - y_1 & =  - y_2 \\
+-\alpha \cdot \text{gradient} - y_1 & =  - y_2 \\
 -\alpha \cdot \text{gradient} + y_1 & =  y_2 \\
 y_2 & =  y_1 -\alpha \cdot \text{gradient}  \\
 \end{aligned}
 $$
 
-Note that above I make sure to use the index in the same order: $$y_2-y1$$ then $$x_2-x1$$. At the end, this the formula used earlier.
+Note that above, since you are going downhill while sliding to the right, $$y$$ is decreasing while $$x$$ is increasing. This explains why we have $$y_1-y_2$$ on the numerator and $$x_2-x_1$$ on the denominator.
 
 
 
-#### **Let's Run the Simulation**
+#### **Let's Run the Simulation by hand**
 {: .no_toc }
 
 Let's say:
@@ -579,10 +583,13 @@ print(f"Number of steps to converge: {steps}")
 
 
 
-#### **Q&A - Checking understanding**
+#### **Q&A - Checking for understanding**
 * Why the cost function does not raise the error to the power of 3?
 * Why is a cost function that raises the error to the power of 2 said to punish large errors more than a cost function that uses the absolute value of the error?
-
+* What happens if the learning rate is 10 times smaller?
+* If you start with y_laser = 97 cm (below the target at 100 cm), will the gradient be positive or negative? In which direction will the laser move after the update?
+* What happens if the learning rate α is too large (for example α = 1.5)? Will the system still converge to the target?
+* Why is the gradient multiplied by 2 in the derivative formula (gradient = 2 × error)? Does this factor of 2 fundamentally change the behavior of the algorithm?
 
 <!-- In real machine learning, there aren't just two parameters (like $$x$$ and $$y$$); there can be millions! But the core principle remains the same: calculate the gradient (the multi-directional "shout" for each parameter) and take a small step in the opposite direction to minimize the total cost.
 
@@ -663,7 +670,10 @@ That's the beauty of gradient descent - it's a simple idea that scales to solve 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Conclusion
+## What is Next?
+
+* Part 2: where we will do gradient descent in 2D
+* Part 3: where we will generalize to N dimensions
 
 
 <!-- ###################################################################### -->
