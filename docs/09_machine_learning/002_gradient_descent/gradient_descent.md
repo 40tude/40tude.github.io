@@ -588,7 +588,7 @@ print(f"Number of steps to converge: {steps}")
 
 
 
-## **Q&A - Checking for understanding**
+## Q&A - Checking for understanding
 
 * Why the cost function does not raise the error to the power of 3?
 * Why is a cost function that raises the error to the power of 2 said to punish large errors more than a cost function that uses the absolute value of the error?
