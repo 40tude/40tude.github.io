@@ -225,7 +225,7 @@ Ok, you're right... Let's talk about the slope, our mathematical "Tilt-O-Meter".
 <!-- <span>Drawing the Cost Function.</span> -->
 </div>
 
-So, we have our cost function, \( J = (\text{y-laser} - \text{y-target})^2 \). Imagine we graph this. Since the only thing changing is `y-laser`, we get a simple U-shaped curve. The bottom of the "U" is right where `y-laser` equals `y-target`— that's our bullseye, where the cost is zero. Let's play with Python and draw the curve:
+So, we have our cost function, $$J = (\text{y-laser} - \text{y-target})^2$$. Imagine we graph this. Since the only thing changing is `y-laser`, we get a simple U-shaped curve. The bottom of the "U" is right where `y-laser` equals `y-target`— that's our bullseye, where the cost is zero. Let's play with Python and draw the curve:
 
 ```python
 import numpy as np
@@ -280,7 +280,7 @@ plt.show()
 
 
 
-Now, picture yourself standing on the left hand side of this curve, like you're on a snowboard in a half-pipe. Your position on the x-axis is your current `y-laser` guess, and the height of the curve beneath you is your current cost \( J \).
+Now, picture yourself standing on the left hand side of this curve, like you're on a snowboard in a half-pipe. Your position on the x-axis is your current `y-laser` guess, and the height of the curve beneath you is your current cost $$J$$.
 
 Your goal is to get to the bottom of the half-pipe.
 
@@ -298,7 +298,7 @@ This "tilt" is what mathematicians call the **slope** or the **gradient**. In ou
 
 The slope gives us both the **direction** to move and the **intensity** of the correction needed. A steep slope means we're far from the bottom and should take a big step. A gentle slope means we're close and should make a fine adjustment.
 
-Ok, now let's calculate this all-important slope. We find the derivative of our cost function \( J \) with respect to our laser's position, `y-laser`.
+Ok, now let's calculate this all-important slope. We find the derivative of our cost function $$J$$ with respect to our laser's position, `y-laser`.
 
 
 
@@ -309,7 +309,7 @@ The derivative, $$\frac{\mathrm{d}J}{\mathrm{d}\text{y-laser}}$$, tells us the s
 $$\frac{\mathrm{d}J}{\mathrm{d}\text{y-laser}} = 2 \cdot (\text{y-laser} - \text{y-target})$$
 
 
-**Side Note:** If you get lost, rewrite \(J\) this way
+**Side Note:** If you get lost, rewrite $$J$$ this way
 
 $$\begin{aligned}
 J & = (\text{y-laser} - \text{y-target})^2 \\
@@ -322,7 +322,7 @@ y^{\prime} & = 2 \cdot (\text{y-laser} - \text{y-target})
 $$
 
 
-Notice that $$(\text{y-laser} - \text{y-target})$$ is just our original \(error\). So here: $$\text{Gradient} = 2 * \text{error}$$
+Notice that $$(\text{y-laser} - \text{y-target})$$ is just our original $$error$$. So here: $$\text{Gradient} = 2 * \text{error}$$
 
 This gradient is our mathematical "friend's shout." It gives us both the **direction** and the **magnitude** of our error.
 *   **Sign:** A positive gradient (e.g., `+3`) means you're too high, so you need to aim lower (move *down* the slope).
