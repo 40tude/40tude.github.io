@@ -322,7 +322,7 @@ y^{\prime} & = 2 \cdot (\text{y-laser} - \text{y-target})
 $$
 
 
-Notice that $$(\text{y-laser} - \text{y-target})$$ is just our original $$error$$. So here: $$\text{Gradient} = 2 * \text{error}$$
+Notice that $$(\text{y-laser} - \text{y-target})$$ is just our original $$error$$. So here: $$\text{gradient} = 2 * \text{error}$$
 
 This gradient is our mathematical "friend's shout." It gives us both the **direction** and the **magnitude** of our error.
 *   **Sign:** A positive gradient (e.g., `+3`) means you're too high, so you need to aim lower (move *down* the slope).
@@ -336,12 +336,12 @@ The amount you adjust is controlled by a crucial parameter: the **Learning Rate*
 
 The update rule, the very heart of gradient descent, is this:
 
-$$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{Gradient}$$
+$$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{gradient}$$
 
 Let's break this down:
 *   $$\text{y-laser-old}$$: Your current (wrong) aim position.
 *   $$\alpha$$: The learning rate (a small, positive number, e.g., `0.1`).
-*   $$\text{Gradient}$$ : $$2 \cdot (\text{y-laser-old} - \text{y-target})$$
+*   $$\text{gradient}$$ : $$2 \cdot (\text{y-laser-old} - \text{y-target})$$
 *   $$\text{y-laser-new}$$: Your new, improved aim position.
 
 **Why subtract?** Because the gradient points *uphill*. To minimize cost (to go *downhill*), we move in the *opposite* direction of the gradient.
@@ -354,21 +354,21 @@ Let's say:
 *   We choose a learning rate $$\alpha = 0.1$$.
 
 **Step 1:**
-*   Error = 103 - 100 = 3 cm (you're 3 cm too high).
-*   Gradient = 2 * Error = 2 * 3 = 6
-*   Update: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{Gradient} = 103 - 0.1 \cdot 6 = 103 - 0.6 = 102.4$$ cm
-*   Your friend shouts: "Still too high, but better! Error is now +2.4 cm."
+*   error = 103 - 100 = 3 cm (you're 3 cm too high).
+*   gradient = 2 * error = 2 * 3 = 6
+*   Update: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{gradient} = 103 - 0.1 \cdot 6 = 103 - 0.6 = 102.4$$ cm
+*   Your friend shouts: "Still too high, but better! error is now +2.4 cm."
 
 **Step 2:**
-*   Error = 102.4 - 100 = 2.4 cm
-*   Gradient = 2 * Error = 2 * (2.4) = 4.8
-*   Update: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{Gradient} = 102.4 - 0.1 \cdot 4.8 = 102.4 - 0.48 = 101.92$$ cm
-*   Shout: "Getting closer! Error = +1.92 cm."
+*   error = 102.4 - 100 = 2.4 cm
+*   gradient = 2 * error = 2 * (2.4) = 4.8
+*   Update: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{gradient} = 102.4 - 0.1 \cdot 4.8 = 102.4 - 0.48 = 101.92$$ cm
+*   Shout: "Getting closer! error = +1.92 cm."
 
 **Step 3:**
-*   Error = 101.92 - 100 = 1.92 cm
-*   Gradient = 2 * Error = 2 * 1.92 = 3.84
-*   Update: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{Gradient} = 101.92 - 0.1 \cdot 3.84 = 101.92 - 0.384 = 101.536$$ cm
+*   error = 101.92 - 100 = 1.92 cm
+*   gradient = 2 * error = 2 * 1.92 = 3.84
+*   Update: $$\text{y-laser-new} = \text{y-laser-old} - \alpha \cdot \text{gradient} = 101.92 - 0.1 \cdot 3.84 = 101.92 - 0.384 = 101.536$$ cm
 
 If we continue this process:
 *   **Step 4:** $$\text{y-laser-new} \approx 101.23$$ cm
