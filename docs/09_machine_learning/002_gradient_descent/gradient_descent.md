@@ -98,7 +98,7 @@ The key hyperparameter is the learning rate: too large, we risk diverging; too s
 
 
 
-## The Laser Pointer Game
+## Setup the Laser Pointer Game
 Imagine you're holding a laser pointer, aiming at a white sheet hung on the opposite wall. Behind that sheet, there's a target at a specific height - but you can't see it.
 
 Your friend standing behind the sheet can see both your laser dot and the target, and they shout feedback: "3 centimeters too high!" or "5 centimeters below!". Hum... Just to make sure...You confirm that you use the metric system, like 95% of humanity, and NOT... *That Which Must Not Be Named*. Right?
@@ -110,10 +110,9 @@ Your goal? Adjust the angle of your laser until you hit the target perfectly.
 <!-- <span>Gradient Descent.</span> -->
 </div>
 
-<!-- Let's use this simple game to understand gradient descent - the fundamental algorithm that powers modern machine learning. -->
 
-### The Setup
-{: .no_toc }
+<!-- ### The Setup
+{: .no_toc } -->
 
 Let's make this concrete with numbers. Say you're standing 3 meters (300 cm) away from the wall, and your laser starts at chest height (let's call that 0 centimeters for simplicity).
 
@@ -215,8 +214,7 @@ OK? Let's move on...
 
 
 
-#### **The Core Idea: Learning from the Slope**
-{: .no_toc }
+## The Core Idea: Learning from the Slope
 
 You take your first shot. Your laser dot appears at some random height $$y$$. Your friend shouts: "error = 3 cm" (too high).
 
@@ -238,7 +236,11 @@ Ok, you're right... Let's talk about the slope, our mathematical "Tilt-O-Meter".
 
 So, we have our cost function, $$J = (\text{y-laser} - \text{y-target})^2$$. Imagine we graph this. Since the only thing changing is `y-laser`, we get a simple U-shaped curve because $$J = (\text{y-laser} - \text{y-target})^2 \approx (x - k)^2 \approx x^2$$. This is nothing else than a parabola where the bottom of the "U" is right where `y-laser` equals `y-target`— that's our bullseye, where the cost is zero.
 
-#### **Let's play with Python**
+
+
+
+
+### Let's play with Python
 {: .no_toc }
 
 Paste the code below in [JupyterLab](https://jupyter.org/try-jupyter/lab/).
@@ -346,7 +348,10 @@ This gradient is our mathematical "friend's shout." It gives us both the **direc
 *   **Sign:** A positive gradient (e.g., `+3`) means you're too high, so you need to aim lower (move *down* the slope).
 *   **Magnitude:** A larger absolute value means you're further from the target, so you need a bigger adjustment.
 
-#### **The Descent: Taking a Step Towards the Target**
+
+
+
+## The Descent: Taking a Step Towards the Target
 {: .no_toc }
 
 Now, how much should you adjust your aim? If you move your wrist too much, you might overshoot the target and oscillate around it forever. If you move it too little, it will take forever to get there.
@@ -409,7 +414,7 @@ Note that above, since you are going downhill while sliding to the right, $$y$$ 
 
 
 
-#### **Let's Run the Simulation by hand**
+### Let's Run the Simulation by hand
 {: .no_toc }
 
 Let's say:
@@ -443,7 +448,7 @@ If we continue this process:
 You can see how each step gets you closer and closer to the target of 100 cm. The adjustments become smaller as the error gets smaller, allowing you to smoothly converge on the bullseye without overshooting.
 
 
-#### **Let's play with Python**
+### Let's play with Python
 {: .no_toc }
 
 ```python
@@ -570,7 +575,7 @@ print(f"Number of steps to converge: {steps}")
 </div>
 
 
-#### **The Big Picture**
+## The Big Picture
 {: .no_toc }
 
 *   **Laser Dot Position** ($$\text{y-laser-new}$$) is the **parameter** the model is trying to optimize
@@ -583,7 +588,8 @@ print(f"Number of steps to converge: {steps}")
 
 
 
-#### **Q&A - Checking for understanding**
+## **Q&A - Checking for understanding**
+
 * Why the cost function does not raise the error to the power of 3?
 * Why is a cost function that raises the error to the power of 2 said to punish large errors more than a cost function that uses the absolute value of the error?
 * What happens if the learning rate is 10 times smaller?
@@ -672,8 +678,15 @@ That's the beauty of gradient descent - it's a simple idea that scales to solve 
 
 ## What is Next?
 
-* Part 2: where we will do gradient descent in 2D
-* Part 3: where we will generalize to N dimensions
+* Part 2: where we will discuss the gradient descent in 2D
+* Part 3: where we will generalize the gradient descent to N dimensions
+
+
+
+
+
+
+
 
 
 <!-- ###################################################################### -->
