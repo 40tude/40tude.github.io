@@ -114,7 +114,7 @@ Your goal? Adjust the angle of your laser until it hits the target perfectly. No
 <!-- ### The Setup
 {: .no_toc } -->
 
-Let's make this concrete with numbers. Say you're standing 3 meters (300 cm) away from the wall, and your laser starts at chest height (let's call that 0 centimeters for simplicity).
+Let's translate this with equations. Say you're standing few meters away from the wall, and your laser starts at chest height (let's call that 0 centimeters for simplicity).
 
 The laser beam follows a straight line that we can describe mathematically as:
 
@@ -135,7 +135,9 @@ $$y = a × x$$
 <!-- <span>Gradient Descent in 2D.</span> -->
 </div>
 
+The **key point** here is : you **don't know the distance** between you and the target. Otherwise the "problem" is solved in one step once your friend tells you the error.
 
+<!-- $$\alpha = arctan(frac{}{distance})$$ -->
 
 
 
