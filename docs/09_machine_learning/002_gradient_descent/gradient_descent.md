@@ -60,7 +60,7 @@ I just finish [this book](https://www.amazon.fr/Anyone-Builds-Everyone-Dies-Supe
 <span>If Anyone Builds It, Everyone Dies.</span>
 </div>
 
-And I realized that the authors were using the term “gradient descent” as if it were self-explanatory. There is a very brief explanation at one point, but still... From their perspective, the term is as commonplace as "hot", "high", or "low".
+And I realized that the authors were using the term “gradient descent” as if it were self-explanatory. There is a brief explanation at one point, but still... From their perspective, the term is as commonplace as "hot", "high", or "low".
 
 I therefore think it is important to clarify our ideas on the subject so that we know exactly what we are talking about.
 
@@ -684,6 +684,12 @@ That's the beauty of gradient descent - it's a simple idea that scales to solve 
 
 
 
+In the mean time you can read [this book](https://www.amazon.fr/dp/1786494337). It mention "stochastic gradient descent" in chapter one if I remember well.
+
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="225" loading="lazy"/><br/>
+<span>The Alignment Problem</span>
+</div>
 
 
 
