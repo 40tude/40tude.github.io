@@ -684,7 +684,7 @@ That's the beauty of gradient descent - it's a simple idea that scales to solve 
 
 
 
-In the mean time you can read [this book](https://www.amazon.fr/dp/1786494337). It mention "stochastic gradient descent" in chapter one if I remember well.
+In the mean time you can read [this book](https://www.amazon.fr/dp/1786494337). It mentions "stochastic gradient descent" in chapter one if I remember well.
 
 <div align="center">
 <img src="./assets/img09.webp" alt="" width="225" loading="lazy"/><br/>
@@ -701,5 +701,7 @@ In the mean time you can read [this book](https://www.amazon.fr/dp/1786494337). 
 <!-- ###################################################################### -->
 
 ## Webliography
-* [If Anyone Builds It, Everyone Dies.](https://www.amazon.fr/Anyone-Builds-Everyone-Dies-Superhuman/dp/0316595640)
 * [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can past the scripts above.
+* [Yet Another Intro to Linear Regression and R²]({%link docs/09_machine_learning/000_r_squared/000_r_sqared.md%}) where squaring the errors is used, again.
+* [If Anyone Builds It, Everyone Dies.](https://www.amazon.fr/Anyone-Builds-Everyone-Dies-Superhuman/dp/0316595640)
+* [The Alignment Problem](https://www.amazon.fr/dp/1786494337)
