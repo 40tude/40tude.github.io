@@ -15,10 +15,6 @@ last_modified_date: 2025-11-21 16:00:00 +0000
 # Understanding Gradient Descent
 {: .no_toc }
 
-$$\text{y_target}$$
-$$\text{y\_target}$$
-$$y\_target$$
-
 
 <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
@@ -144,9 +140,9 @@ $$y = a × x$$
 
 
 
-Now, let's define our "mistake" mathematically. Let’s call the vertical position of the target $$\text{y_target}$$. The current vertical position of your laser dot is $$\text{y_laser}$$.
+Now, let's define our "mistake" mathematically. Let’s call the vertical position of the target $$y\_target$$. The current vertical position of your laser dot is $$y\_laser$$.
 
-The $$\text{error}$$ is the difference between where you are and where you want to be: $$\text{error} = \text{y_laser} - \text{y_target}$$
+The $$\text{error}$$ is the difference between where you are and where you want to be: $$\text{error} = y\_laser - y\_target$$
 
 Your friend's shout, "3 cm too high," means the error is `+3 cm`. If they shout "5 cm below," the error is `-5 cm`. But a negative error for "below" can be a little confusing. A more common way is to define a **cost function** (this term is important).
 
@@ -155,7 +151,7 @@ Let's square the error. This does two great things:
 2.  It penalizes larger errors more severely.
 
 Our **cost function**, let's call it $$J$$, becomes:
-$$J = (\text{y_laser} - \text{y_target})^2$$
+$$J = (y\_laser - y\_target)^2$$
 
 Now, our goal is no longer just to minimize the **error**, but to minimize this **cost**. The point where the cost is zero is the bullseye!
 
@@ -223,7 +219,7 @@ You take your first shot. Your laser dot appears at some random height $$y$$. Yo
 
 What does this tell you? You need to aim **lower**. The feedback not only tells you that you're wrong, but also **in which direction** you are wrong. This "direction" is the **slope** or the **gradient**.
 
-In this 1-dimensional case (only moving up and down), the gradient is just the derivative of the cost function with respect to your laser's position, $$\text{y_laser}$$.
+In this 1-dimensional case (only moving up and down), the gradient is just the derivative of the cost function with respect to your laser's position, $$y\_laser$$.
 
 
 
@@ -237,7 +233,7 @@ Ok, you're right... Let's talk about the slope, our mathematical "Tilt-O-Meter".
 <span>Tilt-O-Meter</span>
 </div>
 
-So, we have our cost function, $$J = (\text{y_laser} - \text{y_target})^2$$. Imagine we graph this. Since the only thing changing is `y_laser`, we get a simple U-shaped curve because $$J = (\text{y_laser} - \text{y_target})^2 \approx (x - k)^2 \approx x^2$$. This is nothing else than a parabola where the bottom of the "U" is right where `y_laser` equals `y_target`— that's our bullseye, where the cost is zero.
+So, we have our cost function, $$J = (y\_laser - y\_target)^2$$. Imagine we graph this. Since the only thing changing is `y_laser`, we get a simple U-shaped curve because $$J = (y\_laser - y\_target)^2 \approx (x - k)^2 \approx x^2$$. This is nothing else than a parabola where the bottom of the "U" is right where `y_laser` equals `y_target`— that's our bullseye, where the cost is zero.
 
 
 
@@ -325,27 +321,27 @@ Ok, now let's calculate this all-important slope. We find the derivative of our 
 
 
 
-$$J = (\text{y_laser} - \text{y_target})^2$$
+$$J = (y\_laser - y\_target)^2$$
 
-The derivative, $$\frac{\mathrm{d}J}{\mathrm{d}\text{y_laser}}$$, tells us the slope of the cost function at our current position.
+The derivative, $$\frac{\mathrm{d}J}{\mathrm{d}y\_laser}$$, tells us the slope of the cost function at our current position.
 
-$$\frac{\mathrm{d}J}{\mathrm{d}\text{y_laser}} = 2 \cdot (\text{y_laser} - \text{y_target})$$
+$$\frac{\mathrm{d}J}{\mathrm{d}y\_laser} = 2 \cdot (y\_laser - y\_target)$$
 
 
 **Side Note:** If you get lost, rewrite $$J$$ this way
 
 $$\begin{aligned}
-J & = (\text{y_laser} - \text{y_target})^2 \\
+J & = (y\_laser - y\_target)^2 \\
 y & = (x - k)^2 \\
 y & = x^2 -2 \cdot k \cdot x + k^2 \\
 y^{\prime} & = 2 \cdot x - 2 \cdot k \\
 y^{\prime} & = 2 \cdot (x - k) \\
-y^{\prime} & = 2 \cdot (\text{y_laser} - \text{y_target})
+y^{\prime} & = 2 \cdot (y\_laser - y\_target)
 \end{aligned}
 $$
 
 
-Notice that $$(\text{y_laser} - \text{y_target})$$ is just our original $$error$$. So here: $$\text{gradient} = 2 * \text{error}$$
+Notice that $$(y\_laser - y\_target)$$ is just our original $$error$$. So here: $$\text{gradient} = 2 * \text{error}$$
 
 This gradient is our mathematical "friend's shout." It gives us both the **direction** and the **magnitude** of our error.
 *   **Sign:** A positive gradient (e.g., `+3`) means you're too high, so you need to aim lower (move *down* the slope).
@@ -363,18 +359,18 @@ The amount you adjust is controlled by a crucial parameter: the **Learning Rate*
 
 The update rule, the very heart of gradient descent, is this:
 
-$$\text{y_laser_new} = \text{y_laser_old} - \alpha \cdot \text{gradient}$$
+$$y\_laser\_new = y\_laser\_old - \alpha \cdot \text{gradient}$$
 
 Let's break this down:
-*   $$\text{y_laser_old}$$: Your current (wrong) aim position.
+*   $$y\_laser\_old$$: Your current (wrong) aim position.
 *   $$\alpha$$: The learning rate (a small, positive number, e.g., `0.1`).
-*   $$\text{gradient}$$ : $$2 \cdot (\text{y_laser_old} - \text{y_target})$$
-*   $$\text{y_laser_new}$$: Your new, improved aim position.
+*   $$\text{gradient}$$ : $$2 \cdot (y\_laser\_old - y\_target)$$
+*   $$y\_laser\_new$$: Your new, improved aim position.
 
 
 ***Where does the previous formula comes from?***
 
-You talk about this one: $$\text{y_laser_new} = \text{y_laser_old} - \alpha \cdot \text{gradient}$$. Right?
+You talk about this one: $$y\_laser\_new = y\_laser\_old - \alpha \cdot \text{gradient}$$. Right?
 
 OK, let'm simplify the notation and "redraw" the previous parabola. You were snowboarding on the left part of the curve so let me sketch the situation as below:
 
@@ -421,32 +417,32 @@ Note that above, since you are going downhill while sliding to the right, $$y$$ 
 {: .no_toc }
 
 Let's say:
-*   The target is at $$\text{y_target} = 100$$ cm
-*   Your first guess is $$\text{y_laser} = 103$$ cm
+*   The target is at $$y\_target = 100$$ cm
+*   Your first guess is $$y\_laser = 103$$ cm
 *   We choose a learning rate $$\alpha = 0.1$$.
 
 **Step 1:**
 *   error = 103 - 100 = 3 cm (you're 3 cm too high).
 *   gradient = 2 * error = 2 * 3 = 6
-*   Update: $$\text{y_laser_new} = \text{y_laser_old} - \alpha \cdot \text{gradient} = 103 - 0.1 \cdot 6 = 103 - 0.6 = 102.4$$ cm
+*   Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot \text{gradient} = 103 - 0.1 \cdot 6 = 103 - 0.6 = 102.4$$ cm
 *   Your friend shouts: "Still too high, but better! error is now +2.4 cm."
 
 **Step 2:**
 *   error = 102.4 - 100 = 2.4 cm
 *   gradient = 2 * error = 2 * (2.4) = 4.8
-*   Update: $$\text{y_laser_new} = \text{y_laser_old} - \alpha \cdot \text{gradient} = 102.4 - 0.1 \cdot 4.8 = 102.4 - 0.48 = 101.92$$ cm
+*   Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot \text{gradient} = 102.4 - 0.1 \cdot 4.8 = 102.4 - 0.48 = 101.92$$ cm
 *   Shout: "Getting closer! error = +1.92 cm."
 
 **Step 3:**
 *   error = 101.92 - 100 = 1.92 cm
 *   gradient = 2 * error = 2 * 1.92 = 3.84
-*   Update: $$\text{y_laser_new} = \text{y_laser_old} - \alpha \cdot \text{gradient} = 101.92 - 0.1 \cdot 3.84 = 101.92 - 0.384 = 101.536$$ cm
+*   Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot \text{gradient} = 101.92 - 0.1 \cdot 3.84 = 101.92 - 0.384 = 101.536$$ cm
 
 If we continue this process:
-*   **Step 4:** $$\text{y_laser_new} \approx 101.23$$ cm
-*   **Step 10:** $$\text{y_laser_new} \approx 100.07$$ cm
+*   **Step 4:** $$y\_laser_new \approx 101.23$$ cm
+*   **Step 10:** $$y\_laser_new \approx 100.07$$ cm
 *   ...
-*   **Step 15:** $$\text{y_laser_new} \approx 100.003$$ cm
+*   **Step 15:** $$y\_laser_new \approx 100.003$$ cm
 
 You can see how each step gets you closer and closer to the target of 100 cm. The adjustments become smaller as the error gets smaller, allowing you to smoothly converge on the bullseye without overshooting.
 
@@ -581,7 +577,7 @@ print(f"Number of steps to converge: {steps}")
 ## The Big Picture
 {: .no_toc }
 
-*   **Laser Dot Position** ($$\text{y_laser_new}$$) is the **parameter** the model is trying to optimize
+*   **Laser Dot Position** ($$y\_laser_new$$) is the **parameter** the model is trying to optimize
 *   **Your Friend's Shout** is the **gradient** of the cost function
 *   **The "3 cm" part of the shout** is the **magnitude** of the gradient
 *   **How much you move your wrist** is the **learning rate** ($$\alpha$$)

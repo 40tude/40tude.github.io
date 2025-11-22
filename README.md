@@ -400,6 +400,12 @@ CTRL + H + Exp Reg
 (?<!\$)\$(?!\$)
 $$$
 ```
+```
+$$y\_target$$           WORKS in both
+$$\text{y_target}$$     Does NOT work in VSCode
+$$\text{y\_target}$$    Does NOT work in rendering
+```
+
 
 ```
 d droit ``\mathrm{d}``
