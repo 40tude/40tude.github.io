@@ -374,7 +374,7 @@ Let's break this down:
 
 You talk about this one: $$y\_laser\_new = y\_laser\_old - \alpha \cdot \text{gradient}$$. Right?
 
-OK, let'm simplify the notation and "redraw" the previous parabola. You were snowboarding on the left part of the curve so let me sketch the situation as below:
+OK, let me simplify the notation and "redraw" the previous parabola. You were snowboarding on the left part of the curve so let me sketch the situation as below:
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
