@@ -16,9 +16,9 @@ last_modified_date: 2025-11-21 16:00:00 +0000
 {: .no_toc }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -439,10 +439,10 @@ Let's say:
 *   Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot \text{gradient} = 101.92 - 0.1 \cdot 3.84 = 101.92 - 0.384 = 101.536$$ cm
 
 If we continue this process:
-*   **Step 4:** $$y\_laser_new \approx 101.23$$ cm
-*   **Step 10:** $$y\_laser_new \approx 100.07$$ cm
+*   **Step 4:** $$y\_laser\_new \approx 101.23$$ cm
+*   **Step 10:** $$y\_laser\_new \approx 100.07$$ cm
 *   ...
-*   **Step 15:** $$y\_laser_new \approx 100.003$$ cm
+*   **Step 15:** $$y\_laser\_new \approx 100.003$$ cm
 
 You can see how each step gets you closer and closer to the target of 100 cm. The adjustments become smaller as the error gets smaller, allowing you to smoothly converge on the bullseye without overshooting.
 
@@ -577,7 +577,7 @@ print(f"Number of steps to converge: {steps}")
 ## The Big Picture
 {: .no_toc }
 
-*   **Laser Dot Position** ($$y\_laser_new$$) is the **parameter** the model is trying to optimize
+*   **Laser Dot Position** ($$y\_laser\_new$$) is the **parameter** the model is trying to optimize
 *   **Your Friend's Shout** is the **gradient** of the cost function
 *   **The "3 cm" part of the shout** is the **magnitude** of the gradient
 *   **How much you move your wrist** is the **learning rate** ($$\alpha$$)
