@@ -637,7 +637,7 @@ print(f"Number of steps to converge: {steps}")
 * Why is a cost function that raises the error to the power of 2 said to punish large errors more than a cost function that uses the absolute value of the error?
 * What happens if the learning rate is 10 times smaller?
 * If you start with y_laser = 97 cm (below the target at 100 cm), will the gradient be positive or negative? In which direction will the laser move after the update?
-* What happens if the learning rate α is too large (for example α = 1.5)? Will the system still converge to the target?
+* What happens if the learning rate $$\alpha$$ is too large (for example $$\alpha$$ = 1.5)? Will the system still converge to the target?
 * Why is the gradient multiplied by 2 in the derivative formula (gradient = 2 × error)? Does this factor of 2 fundamentally change the behavior of the algorithm?
 
 
