@@ -314,7 +314,7 @@ plt.show()
 <span>Drawing the cost function.</span>
 </div>
 
-Now, put your index on the horizontal axis (`Laser position ylaser`) and move it slowly from left to right. Reach the point $$y\_laser=80$$ and say it load : "when `y_laser` is 80 centimeters, the cost is 400". Continue and reach the point where $$y\_laser=100$$ and say it load : "when `y_laser` is 100 centimeters, the cost is 0". One more time, just to make sure... Put your finger on point $$y\_laser=110$$ and say it load : "when `y_laser` is 110 centimeters, the cost is 100".
+Now, put one of your fingers on the horizontal axis (`Laser position ylaser`) and move it slowly from left to right. Reach the point $$y\_laser=80$$ go up, vertically and when your finger meet the curve, say it loud : "when `y_laser` is 80 centimeters, the cost is 400". Continue and reach the point where $$y\_laser=100$$ on the x-axis and say it loud : "when `y_laser` is 100 centimeters, the cost is 0". One more time, just to make sure... Put your finger on point $$y\_laser=110$$ and say it loud : "when `y_laser` is 110 centimeters, the cost is 100".
 
 It is important to realize and understand that positioning the laser at 80 cm is just as wrong as positioning it at 120 cm. In both cases, the cost is the same (400).
 
