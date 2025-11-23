@@ -78,9 +78,9 @@ I just finish [this book](https://www.amazon.fr/Anyone-Builds-Everyone-Dies-Supe
 <span>If Anyone Builds It, Everyone Dies.</span>
 </div>
 
-And I realized that the authors were using the term “gradient descent” as if it were self-explanatory. There is a brief explanation at one point, but still... From their perspective, the term is as commonplace as "hot", "high", or "low".
+And I realized that the authors were using the term “gradient descent” as if it were self-explanatory. There is a brief explanation at one point, but still... From their perspective, the term is as commonplace as "hot", "high", or "low". And they're right. In the age of AI, the term gradient descent is ubiquitous, and we'd rather have strong foundations and a deep understanding of what it means.
 
-I therefore think it is important to clarify our ideas on the subject so that we know exactly what we are talking about.
+Therefore I think it is important to clarify our ideas on the subject so that we know exactly what we are talking about.
 
 Don't panic, as usual I will start very slowly, assuming little or nothing about your level of mathematics.
 
