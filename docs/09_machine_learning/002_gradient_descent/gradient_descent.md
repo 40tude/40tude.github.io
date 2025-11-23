@@ -3,17 +3,24 @@ published: true
 lang: en-US
 layout: default
 title: Understanding Gradient Descent
-description:
+description: An introduction with a 1D model
 parent: "Machine Learning"
 math: mathjax
 date:               2025-11-20 15:00:00 +0000
-last_modified_date: 2025-11-21 16:00:00 +0000
+last_modified_date: 2025-11-23 11:00:00 +0000
 # nav_order: 9
 # permalink: /machine_learning/
 ---
 
+
+
+
 # Understanding Gradient Descent
 {: .no_toc }
+
+An introduction with a 1D model
+{: .lead }
+
 
 
 <!-- <h2 align="center">
@@ -21,6 +28,9 @@ last_modified_date: 2025-11-21 16:00:00 +0000
 </h2> -->
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## TL;DR
 {: .no_toc }
@@ -41,6 +51,11 @@ last_modified_date: 2025-11-21 16:00:00 +0000
 </div>
 
 
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 ## Table of Contents
 {: .no_toc .text-delta}
 - TOC
@@ -50,6 +65,9 @@ last_modified_date: 2025-11-21 16:00:00 +0000
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## Introduction
 
@@ -69,21 +87,6 @@ Don't panic, as usual I will start very slowly, assuming little or nothing about
 I'll also take the time to review key terms, make summaries, etc. You'll see, it'll be fine...
 
 
-<!-- Gradient descent is a fundamental optimization method in machine learning used to minimize a cost (or loss) function.
-
-**Why do we use it?**
-
-The principle is simple: we search for model parameters that minimize the error between predictions and true values. Gradient descent achieves this by iteratively adjusting parameters in the opposite direction of the gradient (the slope) of the cost function. It's like descending a mountain by always following the steepest slope downward.
-
-**Main use cases:**
-
-The algorithm is ubiquitous in ML. It's used to train linear and logistic regressions, where we minimize squared error or cross-entropy. It's also at the core of neural network training via backpropagation, where we compute gradients layer by layer. We also find it in SVMs, recommendation algorithms, and practically every parametric model requiring optimization.
-
-**Common variants:**
-
-Several versions exist: batch gradient descent (uses all data at each iteration, accurate but slow), stochastic gradient descent or SGD (one data point per iteration, fast but noisy), and mini-batch gradient descent (a compromise with a small batch of data). More advanced optimizers like Adam, RMSprop, or AdaGrad improve convergence by dynamically adjusting the learning rate.
-
-The key hyperparameter is the learning rate: too large, we risk diverging; too small, convergence will be very slow. -->
 
 
 
@@ -95,10 +98,12 @@ The key hyperparameter is the learning rate: too large, we risk diverging; too s
 
 
 
-
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## Configure a Laser Pointer Game
+
 Imagine that you are holding a laser pointer, pointed at a white sheet hanging in front of you. Behind that sheet, there's a target at a specific height - but you can't see it.
 
 Your friend standing behind the sheet can see both your laser dot and the target, and they shout feedback: "3 centimeters too high!" or "5 centimeters below!". Hum... Just to make sure...You confirm that you use the metric system, like 95% of humanity, and NOT... *That Which Must Not Be Named*. Right?
@@ -111,8 +116,6 @@ Your goal? Adjust the angle of your laser until it hits the target perfectly. No
 </div>
 
 
-<!-- ### The Setup
-{: .no_toc } -->
 
 Let's translate this with equations. Say you're standing few meters away from the wall, and your laser starts at chest height (let's call that 0 centimeters for simplicity).
 
@@ -215,6 +218,17 @@ OK? Let's move on...
 
 
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 ## The Core Idea: Learning from the Slope
 
 You take your first shot. Your laser dot appears at some random height $$y$$. Your friend shouts: "error = 3 cm" (too high).
@@ -240,6 +254,9 @@ So, we have our cost function, $$J = (y\_laser - y\_target)^2$$. Imagine we grap
 
 
 
+
+
+<!-- ###################################################################### -->
 
 ### Let's play with Python
 {: .no_toc }
@@ -352,8 +369,14 @@ This gradient is our mathematical "friend's shout." It gives us both the **direc
 
 
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 ## The Descent: Taking a Step Towards the Target
-{: .no_toc }
 
 Now, how much should you adjust your aim? If you move your wrist too much, you might overshoot the target and oscillate around it forever. If you move it too little, it will take forever to get there.
 
@@ -415,6 +438,10 @@ Note that above, since you are going downhill while sliding to the right, $$y$$ 
 
 
 
+
+
+<!-- ###################################################################### -->
+
 ### Let's Run the Simulation by hand
 {: .no_toc }
 
@@ -448,6 +475,9 @@ If we continue this process:
 
 You can see how each step gets you closer and closer to the target of 100 cm. The adjustments become smaller as the error gets smaller, allowing you to smoothly converge on the bullseye without overshooting.
 
+
+
+<!-- ###################################################################### -->
 
 ### Let's play with Python
 {: .no_toc }
@@ -576,18 +606,30 @@ print(f"Number of steps to converge: {steps}")
 </div>
 
 
-## The Big Picture
-{: .no_toc }
-
-*   **Laser Dot Position** ($$y\_laser\_new$$) is the **parameter** the model is trying to optimize
-*   **Your Friend's Shout** is the **gradient** of the cost function
-*   **The "3 cm" part of the shout** is the **magnitude** of the gradient
-*   **How much you move your wrist** is the **learning rate** ($$\alpha$$)
-*   **The process of adjusting your aim** is the **gradient descent algorithm**
 
 
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Summary
+
+* **Laser Dot Position** ($$y\_laser\_new$$) is the **parameter** the model is trying to optimize => 1D
+* **Your Friend's Shout** is the **gradient** of the cost function
+* **The "3 cm" part of the shout** is the **magnitude** of the gradient
+* **How much you move your wrist** is the **learning rate** ($$\alpha$$)
+* **The process of adjusting your aim** is the **gradient descent algorithm**
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## Q&A - Checking for understanding
 
@@ -598,71 +640,7 @@ print(f"Number of steps to converge: {steps}")
 * What happens if the learning rate α is too large (for example α = 1.5)? Will the system still converge to the target?
 * Why is the gradient multiplied by 2 in the derivative formula (gradient = 2 × error)? Does this factor of 2 fundamentally change the behavior of the algorithm?
 
-<!-- In real machine learning, there aren't just two parameters (like $$x$$ and $$y$$); there can be millions! But the core principle remains the same: calculate the gradient (the multi-directional "shout" for each parameter) and take a small step in the opposite direction to minimize the total cost.
 
-So next time you hear "gradient descent," just think of yourself in a dark room, patiently adjusting a laser pointer, guided only by a friend's voice, until you finally find the light. -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-
-<!-- ## From Lasers to Machine Learning
-
-In machine learning, instead of a laser angle, we're adjusting weights in a neural network. Instead of hitting a target on a wall, we're trying to minimize prediction errors across thousands or millions of data points. Instead of one parameter $$a$$, we might have millions of parameters.
-
-But the fundamental principle remains exactly the same: calculate the error, find the gradient, make a small adjustment, repeat.
-
-That's the beauty of gradient descent - it's a simple idea that scales to solve incredibly complex problems.
- -->
 
 
 
@@ -679,8 +657,9 @@ That's the beauty of gradient descent - it's a simple idea that scales to solve 
 
 ## What is Next?
 
-* Part 2: where we will discuss the gradient descent in 2D
-* Part 3: where we will generalize the gradient descent to N dimensions
+* [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
+<!-- * [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D -->
+<!-- * [Part 3]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions -->
 
 
 
