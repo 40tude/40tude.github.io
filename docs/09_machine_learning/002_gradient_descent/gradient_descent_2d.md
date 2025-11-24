@@ -123,23 +123,23 @@ Furthermore, we can change the intensity of one of the two variables independent
 
 Why is it so important? Simply because we can then divide and conquer. We can say that the variation of the cost function $$C$$ is equal to the sum of cost function when $$error\_x$$ vary while $$error\_y$$ remains constant, plus the variation of the cost function when $$error\_y$$ vary and $$error\_x$$ remains constant.
 
-We had : $$C = \sqrt{{error\_x}^2 + {error\_y}^2}$$
+We had : $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
 **Case 1:** $$error\_x$$ vary and $$error\_y$$ remains constant
 
 $$\begin{aligned}
-C & = \sqrt{{error\_x}^2 + {error\_y}^2} \\
-C & = \sqrt{{error\_x}^2 + k} \\
-\frac{\partial C}{\partial error\_x} & = \frac{1}{2} \cdot  ({error\_x}^2 + k)^{-\frac{1}{2}} (2 \cdot error\_x) \\
-\frac{\partial C}{\partial error\_x} & = \frac{error\_x}{\sqrt{{error\_x}^2 + k}} \\
-\frac{\partial C}{\partial error\_x} & = \frac{error\_x}{\sqrt{{error\_x}^2 + {error\_y}^2}} \\
+C & = \sqrt{error\_x^2 + error\_y^2} \\
+C & = \sqrt{error\_x^2 + k} \\
+\frac{\partial C}{\partial error\_x} & = \frac{1}{2} \cdot  (error\_x^2 + k)^{-\frac{1}{2}} (2 \cdot error\_x) \\
+\frac{\partial C}{\partial error\_x} & = \frac{error\_x}{\sqrt{error\_x^2 + k}} \\
+\frac{\partial C}{\partial error\_x} & = \frac{error\_x}{\sqrt{error\_x^2 + {error\_y}^2}} \\
 \frac{\partial C}{\partial error\_x} & = \frac{error\_x}{C}
 \end{aligned}$$
 
 
 * Line 2: if $$error\_y$$ is constant, then $${error\_y}^2$$ is constant and I call it $$k$$.
 * Line 3: when a variable function ($$C$$, the cost function here) is made of more thant one variable, mathematicians prefer to use the partial derivative notation $$\frac{\partial f}{\partial x}$$ to express the fact that we look at the variation of $$f$$ when $$x$$ is the sole variable that change and all the others variables remains constant. This is the rate of change of $$f$$ when only $$x$$ vary.
-* Line 6: Remember that $$C = \sqrt{{error\_x}^2 + {error\_y}^2}$$
+* Line 6: Remember that $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
 
 **Case 2:** $$error\_y$$ vary and $$error\_x$$ remains constant
@@ -152,7 +152,7 @@ $$
 
 ***Could we simplify the previous calculations?*** Yes we can. Remember, what we said in Episode 1: *The cost function is NOT just a fancy name for error. It's our carefully designed measure of "wrongness" that is perfectly tailored for an algorithm to efficiently minimize it.* So here instead of:
 
-$$C = \sqrt{{error\_x}^2 + {error\_y}^2}$$
+$$C = \sqrt{error\_x^2 + error\_y^2}$$
 
 We can decide that:
 
@@ -401,7 +401,7 @@ The 3D map is very symmetric. Indeed, if we only speak about the initial altitud
 
 * **Divide and conquer**: The key insight is that we can treat each dimension independently - we calculate the gradient for each variable separately and update them using the same rule: $$new\_value = old\_value - \alpha \cdot gradient$$.
 
-* **Simplified cost function**: Instead of using $$C = \sqrt{{error\_x}^2 + {error\_y}^2}$$, we choose $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$ because it yields much simpler derivatives: $$\frac{\partial C}{\partial error\_x} = error\_x$$ and $$\frac{\partial C}{\partial error\_y} = error\_y$$.
+* **Simplified cost function**: Instead of using $$C = \sqrt{error\_x^2 + error\_y^2}$$, we choose $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$ because it yields much simpler derivatives: $$\frac{\partial C}{\partial error\_x} = error\_x$$ and $$\frac{\partial C}{\partial error\_y} = error\_y$$.
 
 * **Simultaneous convergence**: Both dimensions converge toward the target simultaneously but at their own pace, with each step moving the laser pointer closer to the target in a diagonal trajectory through the 2D space.
 
