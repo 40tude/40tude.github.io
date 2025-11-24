@@ -6,8 +6,8 @@ title: Understanding Gradient Descent in N Dimensions
 description: Generalizing to real-world machine learning problems
 parent: "Machine Learning"
 math: mathjax
-date:               2025-11-24 12:00:00 +0000
-last_modified_date: 2025-11-24 12:00:00 +0000
+date:               2025-11-24 16:00:00 +0000
+last_modified_date: 2025-11-24 21:00:00 +0000
 # nav_order: 9
 # permalink: /machine_learning/
 ---
@@ -83,7 +83,7 @@ Let's recap what we learned so far:
 - One variable: $$y\_laser$$
 - One error: $$error = y\_laser - y\_target$$
 - Cost function: $$C = error^2$$
-- One gradient: $$\frac{dJ}{dy\_laser} = 2 \cdot error$$
+- One gradient: $$\frac{dC}{dy\_laser} = 2 \cdot error$$
 - Update rule: $$y\_new = y\_old - \alpha \cdot \text{gradient}$$
 
 **In Episode 2 (2D)**, we had:
@@ -856,14 +856,14 @@ Now that you understand the fundamentals of gradient descent, you're ready to ex
 - Regularization techniques (L1, L2)
 - Gradient descent in neural networks (backpropagation)
 
-I recommend this book for your next steps:
+I recommend [this book](https://www.amazon.fr/dp/2100847686) (39€, Nov 2025) for your next steps:
 
 <div align="center">
-<img src="./assets/img39.webp" alt="" width="225" loading="lazy"/><br/>
+<img src="./assets/img38.webp" alt="" width="225" loading="lazy"/><br/>
 <span>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</span>
 </div>
 
-Aurélien Géron's book is the perfect continuation. It covers all the topics above with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version. There other books but then the cost might be a problem.
+Aurélien Géron's book is the perfect continuation. It covers all the topics above with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version. There are other books but then the cost is a problem (72€, 60€... They are crazy...).
 
 
 
@@ -875,4 +875,4 @@ Aurélien Géron's book is the perfect continuation. It covers all the topics ab
 ## Webliography
 
 * [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can paste the scripts above.
-* [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3rd Edition)](https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125967/) by Aurélien Géron
+* [Machine Learning avec Scikit-Learn](https://www.amazon.fr/dp/2100847686)
