@@ -20,9 +20,9 @@ We continue our introduction to the gradient descent but with a 2D model.
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -64,7 +64,7 @@ We continue our introduction to the gradient descent but with a 2D model.
 
 This Episode follows [this one]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) and I strongly recommend you read it before to read this one.
 
-The setup is similar to the previous one. Again, you do not know where is the target on the screen and you do not know the distance between you and the target. This time you can modify the $$y$$ and the $$x$$ of the laser point on the screen. Finally your friend tells you the tow errors : "x centimeters too high and y centimeters on the left"
+The setup is similar to the previous one. Again, you do not know where is the target on the screen and you do not know the distance between you and the target. This time you can modify the $$y$$ and the $$x$$ of the laser point on the screen. Finally your friend tells you the two errors : "x centimeters too high and y centimeters on the left"
 
 <div align="center">
 <img src="./assets/img20.webp" alt="" width="900" loading="lazy"/><br/>
