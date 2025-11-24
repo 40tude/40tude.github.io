@@ -191,7 +191,7 @@ See? It's exactly what we did in 1D and 2D. Just... repeated N times.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## But There's a Catch: The Scale Problem
+## The Scale Problem
 
 Now, here's where things get tricky. And this is **crucial** for real-world applications.
 
@@ -508,7 +508,7 @@ Feature normalization.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## The Fix: Feature Normalization
+## Feature Normalization
 
 The idea is simple: **put all features on the same scale** before training.
 
@@ -541,6 +541,7 @@ Standardization is generally preferred because it handles outliers. Outliers are
 <!-- ###################################################################### -->
 
 ### Let's play with Python
+{: .no_toc }
 
 Let's build a complete example with real code to predicting student exam scores. We'll predict final exam scores based on four features, and we'll compare gradient descent **with** and **without** feature normalization.
 
@@ -872,7 +873,7 @@ I recommend [this book](https://www.amazon.fr/dp/2100847686) (39€, Nov 2025) f
 <span>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</span>
 </div>
 
-It covers all the topics above (and more) with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version. There are other books but then the cost is a problem (72€, 60€... They are crazy...).
+It covers all the topics above (and much more) with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version because you read the words used by the community. There are other books but then the cost is clearly a problem (72€, 60€... They are crazy...).
 
 
 
