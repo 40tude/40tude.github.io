@@ -29,11 +29,10 @@ We continue our introduction to the gradient descent but with a 2D model.
 ## TL;DR
 {: .no_toc }
 
-* The cost function is now a function of 2 independent variables
-* $$C= f(error\_x, error\_y)$$
+* The cost function is now a function of 2 independent variables: $$C= f(error\_x, error\_y)$$
 * Independence of the variables is crucial
 * This is what allow us to evaluate the total variation of the cost function as the sum of each variation of the cost function along each dimension
-* Along each dimension we apply what we learnt in Episode 1
+* Along each dimension we apply what we learnt in [Episode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
 
 
 
@@ -72,6 +71,18 @@ The setup is similar to the previous one. Again, you do not know where is the ta
 <span>Gradient Descent in 2D.</span>
 </div>
 
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## The Cost Function
 
 In this context, one way to evaluate the cost function could be:
 
@@ -150,7 +161,22 @@ $$
 $$
 
 
-***Could we simplify the previous calculations?*** Yes we can. Remember, what we said in Episode 1: *The cost function is NOT just a fancy name for error. It's our carefully designed measure of "wrongness" that is perfectly tailored for an algorithm to efficiently minimize it.* So here instead of:
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Simpler Cost Function
+
+
+***Could we simplify the previous calculations?***
+
+Yes we can. Remember, what we said in Episode 1: *The cost function is NOT just a fancy name for error. It's our carefully designed measure of "wrongness" that is perfectly tailored for an algorithm to efficiently minimize it.* So here instead of:
 
 $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
@@ -164,6 +190,16 @@ $$\begin{aligned}
 \frac{\partial C}{\partial error\_x} = {error\_x} \\
 \frac{\partial C}{\partial error\_y} = {error\_y}
 \end{aligned}$$
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -197,6 +233,34 @@ Let's say:
 * error_y = 102.7 - 100 = 2.7 cm
 * gradient_y = error_y = 2.7
 * Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot gradient\_y = 102.7 - 0.1 \cdot (2.7) = 102.7 - 0.27 = 102.43$$ cm
+
+
+
+
+
+
+<!-- ###################################################################### -->
+
+### Let's Play with Excel
+{: .no_toc }
+
+
+<div align="center">
+<img src="./assets/img25.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Gradient Descent in 2D.</span> -->
+</div>
+
+
+The Excel sheet is [here]({%link docs/09_machine_learning/002_gradient_descent/assets/gradient_descent.xlsx%})
+
+
+
+
+
+
+
+
+
 
 
 
