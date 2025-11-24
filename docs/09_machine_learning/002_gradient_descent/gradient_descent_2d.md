@@ -37,8 +37,8 @@ We continue our introduction to the gradient descent but with a 2D model.
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Gradient Descent.</span>
+<img src="./assets/img00.webp" alt="" width="225" loading="lazy"/><br/>
+<span>Gradient Descent in 2D.</span>
 </div>
 
 

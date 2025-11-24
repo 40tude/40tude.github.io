@@ -19,9 +19,9 @@ Generalizing to real-world machine learning problems
 {: .lead }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 ## TL;DR
@@ -35,8 +35,8 @@ Generalizing to real-world machine learning problems
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Gradient Descent in N Dimensions.</span>
+<img src="./assets/img00.webp" alt="" width="225" loading="lazy"/><br/>
+<span>Gradient Descent in ND.</span>
 </div>
 
 
@@ -50,19 +50,158 @@ Generalizing to real-world machine learning problems
 {:toc}
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
 
+<!--
 ## Introduction
-
-You know what is cool with maths? Sometimes, when you don't understand somtehing in high dimensions, just go back to 2 or even 1D. Then, when you feel OK, when you truely understand what is going on, be convinced that you've understood everything. Going from 2D to 42D is just... more of the same.
 
 In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we adjusted a single laser pointer position. In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled both $$x$$ and $$y$$ coordinates. Now? We're going to control as many parameters as we want.
 
 Again, here's the point: **if you understood the 2D case, you've already understood the N-dimensional case**. The principle is identical. The only difference? More variables to track, and one critical new problem we need to address: **scale** between the dimensions.
 
 But don't worry. As usual, we'll start gently, build intuition, and by the end you'll see that high-dimensional gradient descent is just "rinse and repeat" with a few important tweaks.
+
+ -->
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Introduction
+
+You know what is cool with maths? Sometimes, when you don't understand something in high dimensions, just go back to 2 or even 1D. Then, when you feel OK, when you truly understand what is going on, be convinced that you've understood everything. Going from 2D to 42D is just... more of the same.
+
+Let's see if it is true in this post but first, let's take a step back and look at what we've accomplished so far.
+
+
+<!-- ###################################################################### -->
+
+### What We've Been Doing Until Now
+{: .no_toc }
+
+In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we pointed a laser at a target. We had **one parameter** to adjust: the vertical position $$y_{laser}$$. Our goal? Make the error $$error = y_{laser} - y_{target}$$ equal to zero.
+
+In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled the laser in **two dimensions**: both $$x_{laser}$$ and $$y_{laser}$$. Same principle, just more parameters to adjust.
+
+In both cases, we were **directly adjusting what we wanted to fix**. The laser position was wrong, so we adjusted... the laser position. Simple.
+
+
+
+
+
+<!-- ###################################################################### -->
+
+### The Shift: From Adjusting Positions to Building Models
+{: .no_toc }
+
+But now, we're going to make a quantum leap. We're going to use gradient descent for what it was really designed for: **machine learning**.
+
+Here's the key difference:
+
+**Before (laser pointer):**
+- We adjusted the **thing itself** (laser position)
+- To match a **known target** (bullseye on the wall)
+- Direct relationship: move laser → reduce error
+
+**Now (machine learning):**
+- We adjust **model parameters** (weights $$w\_1, w\_2, ..., w\_N$$)
+- To predict **unknown targets** from **known inputs**
+- Indirect relationship: adjust weights → change predictions → reduce error
+
+Let's make this concrete with an example.
+
+Imagine we want to predict a student's final exam score. We don't directly adjust the exam score—that would be cheating! Instead, we build a **model**:
+
+$$\text{predicted\_score} = w_1 \times \text{study\_hours} + w_2 \times \text{sleep\_hours} + w_3 \times \text{classes\_missed} + w_4 \times \text{previous\_score}$$
+
+The **inputs** (study hours, sleep hours, etc.) are what we observe. The **weights** ($$w_1, w_2, w_3, w_4$$) are what we adjust. The **prediction** is what our model outputs.
+
+Now, for a student who studied 10 hours, slept 7 hours, missed 2 classes, and scored 75 on the previous exam, our model might predict 82. But the actual score was 85. There's an error: $$error = 82 - 85 = -3$$.
+
+**Here's the magic**: Wou don't adjust the student's sleep or study hours—those are fixed, observed facts. Instead, we adjust the **weights** of our model to make better predictions next time.
+
+This is what machine learning is: **finding the right weights** so your model makes accurate predictions.
+
+
+
+
+
+
+<!-- ###################################################################### -->
+
+### Same Math, Different Interpretation
+
+The beautiful thing? The mathematics we learned in Episodes 1 and 2 **apply exactly the same way**:
+
+- In the laser game, we adjusted $$y_{laser}$$ to minimize $$(y_{laser} - y_{target})^2$$
+- In machine learning, we adjust $$w_1, w_2, ..., w_N$$ to minimize $$(prediction - actual)^2$$
+
+Same gradient descent algorithm. Same update rule: $$parameter_{new} = parameter_{old} - \alpha \times gradient$$.
+
+The only difference? Now we have **many parameters** (weights) instead of just one or two positions. And that's exactly what this episode is about: scaling gradient descent to N dimensions.
+
+
+
+
+
+<!-- ###################################################################### -->
+
+### What we'll Learn
+
+In this third Episode, we'll cover:
+
+1. How the gradient becomes a **vector** in N-dimensional space
+2. Why **feature scaling** is absolutely critical (spoiler: without it, everything breaks)
+3. A complete example: predicting student exam scores with real Python code
+4. The "zigzag problem" and how normalization solves it
+5. Clean vector notation that prepares you for advanced books
+
+By the end, you'll understand how gradient descent powers everything from linear regression to deep neural networks. Same principle, just more dimensions.
+
+<!-- This post will give you the solid foundations you need before diving into more advanced books like Aurélien Géron's "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow." Think of this as your launchpad into real machine learning. -->
+
+Ready? Let's go.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ###################################################################### -->

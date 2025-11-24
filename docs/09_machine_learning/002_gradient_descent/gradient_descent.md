@@ -47,7 +47,7 @@ An introduction with a 1D model
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="225" loading="lazy"/><br/>
-<span>Gradient Descent.</span>
+<span>Gradient Descent in 1D.</span>
 </div>
 
 
