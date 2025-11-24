@@ -84,28 +84,28 @@ The setup is similar to the previous one. Again, you do not know where is the ta
 
 ## The Cost Function
 
-In this context, one way to evaluate the cost function could be:
-
-$$C = \sqrt{error\_x^2 + error\_y^2}$$
+In this context, one way to evaluate the cost function could be: $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
 Where:
 
-* $$error\_y = y\_laser - y\_target$$
-* $$error\_x = x\_laser - x\_target$$
+- On the y-axis we have $$error\_y = y\_laser - y\_target$$
+- And on the x-axis we have $$error\_x = x\_laser - x\_target$$
 
-Why? In fact when one think about the situation he could imagine that a laser dot is a dot in a Cartesian coordinates system:
+Why? In fact, when one think about the situation he could imagine that a laser dot is a dot in a Cartesian coordinates system:
 
 <div align="center">
 <img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Gradient Descent in 2D.</span> -->
 </div>
 
-Based on what we learnt in Epsiode 1, the lost funcion use square so that errors are always cumulated. It use a square root so I'm not sure large error yield larger penalties but this is what we have so far, we will see later that this cost function is way much too complicated but let's start with what we have...
+Based on what we learnt in [Epsiode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), the lost function uses square so that errors are always cumulated. Here it also uses a square root so I'm not sure large errors yield larger penalties but this is what we have so far.
+
+As we will see later this cost function is way much too complicated but let's start with what we have...
 
 Do you remember the song?
  * error ➡️ cost(error) ➡️ derivative ➡️ $$y_2 = y_1 - \alpha \cdot \text{grad}$$
 
-We have a cost function we need the expression of the derivative...
+We have a cost function so, now, we need the expression of the derivative...
 
 ***Wait, wait, wait… Now things are getting way more complicated — we’ve got two variables! Before, it was easy. It even takes me back to when I was in high school and I met Cindy… but here, 2 variables...***
 
@@ -120,19 +120,27 @@ But if you *do* have both variables — blue and red — you can create an infin
 
 <div align="center">
 <img src="./assets/img22.webp" alt="" width="450" loading="lazy"/><br/>
-<span>Gradient Descent in 2D.</span>
+<span>Above the scales in blue and red go from 0 to 255.</span>
 </div>
 
-Now we can draw/specify and infinite number of cost in the plan using the two independent $$error_x$$ and $$error_y$$
+Now we can draw/specify an infinite number of cost in the plan using the two independent variables: $$err\_x$$ and $$err\_y$$
 
 <div align="center">
 <img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Gradient Descent in 2D.</span> -->
 </div>
 
-Furthermore, we can change the intensity of one of the two variables independently of the other and see the effect on the cost error. In the "figure" above, imagine $$err\_x$$ remains constant while $$err\_y$$ increase. The red vector would be horizontal at the beginning when $$err_y$$ equal 0 and at 45°, at the end, when the magnitude or $$err\_y$$ is equal to the magnitude of $$err\_x$$. This is exactly what happens when you mixt more and more red in a fixed quantity of blue.
+Furthermore, we can change the intensity of one of the two variables independently of the other and see the effect on the cost error. In the "figure" above, imagine $$err\_x$$ remains constant while $$err\_y$$ increase. The red vector would be horizontal at the beginning when $$err\_y$$ equal 0 and at 45°, at the end, when the magnitude or $$err\_y$$ is equal to the magnitude of $$err\_x$$. This is exactly what happens when you mixt more and more red in a fixed quantity of blue.
 
 Why is it so important? Simply because we can then divide and conquer. We can say that the variation of the cost function $$C$$ is equal to the sum of cost function when $$error\_x$$ vary while $$error\_y$$ remains constant, plus the variation of the cost function when $$error\_y$$ vary and $$error\_x$$ remains constant.
+
+This is similar to say to go from from A to D I can go from A to B then from B to D or from A to C then from C to D.
+
+<div align="center">
+<img src="./assets/img26.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Gradient Descent in 2D.</span> -->
+</div>
+
 
 We had : $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
@@ -150,7 +158,7 @@ C & = \sqrt{error\_x^2 + k} \\
 
 * Line 2: if $$error\_y$$ is constant, then $${error\_y}^2$$ is constant and I call it $$k$$.
 * Line 3: when a variable function ($$C$$, the cost function here) is made of more thant one variable, mathematicians prefer to use the partial derivative notation $$\frac{\partial f}{\partial x}$$ to express the fact that we look at the variation of $$f$$ when $$x$$ is the sole variable that change and all the others variables remains constant. This is the rate of change of $$f$$ when only $$x$$ vary.
-* Line 6: Remember that $$C = \sqrt{error\_x^2 + error\_y^2}$$
+* Line 6: remember that $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
 
 **Case 2:** $$error\_y$$ vary and $$error\_x$$ remains constant
@@ -176,7 +184,7 @@ $$
 
 ***Could we simplify the previous calculations?***
 
-Yes we can. Remember, what we said in Episode 1: *The cost function is NOT just a fancy name for error. It's our carefully designed measure of "wrongness" that is perfectly tailored for an algorithm to efficiently minimize it.* So here instead of:
+Yes we can. Remember, what we said in [Episode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): *The cost function is NOT just a fancy name for error. It's our carefully designed measure of "wrongness" that is perfectly tailored for an algorithm to efficiently minimize it.* So here, instead of:
 
 $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
@@ -208,7 +216,7 @@ $$\begin{aligned}
 ### Let's Run the Simulation by hand
 {: .no_toc }
 
-As you will see, the process is similar to what we did in Episode 1 but here we run the calculation for each independent dimension.
+As you will see, the process is similar to what we did in [Episode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) but here we run the calculation for each independent dimension.
 
 Let's say:
 * The target is at $$x\_target = 100$$ cm and $$y\_target = 100$$ cm
@@ -219,7 +227,6 @@ Let's say:
 * error_x = 95 - 100 = -5 cm
 * gradient_x = error_x = -5
 * Update: $$x\_laser\_new = x\_laser\_old - \alpha \cdot gradient\_x = 95 - 0.1 \cdot (-5) = 95 + 0.5 = 95.5$$ cm
-
 * error_y = 103 - 100 = 3 cm
 * gradient_y = error_y = 3
 * Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot gradient\_y = 103 - 0.1 \cdot (3) = 103 - 0.3 = 102.7$$ cm
@@ -230,7 +237,6 @@ Let's say:
 * error_x = 95.5 - 100 = -4.5 cm
 * gradient_x = error_x = -4.5
 * Update: $$x\_laser\_new = x\_laser\_old - \alpha \cdot gradient\_x = 95.5 - 0.1 \cdot (-4.5) = 95.5 + 0.45 = 95.95$$ cm
-
 * error_y = 102.7 - 100 = 2.7 cm
 * gradient_y = error_y = 2.7
 * Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot gradient\_y = 102.7 - 0.1 \cdot (2.7) = 102.7 - 0.27 = 102.43$$ cm
@@ -272,7 +278,6 @@ The Excel sheet is [here]({%link docs/09_machine_learning/002_gradient_descent/a
 {: .no_toc }
 
 ```python
-
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -434,10 +439,9 @@ print(f"Initial distance from target: {np.sqrt((x_history[0]-x_target)**2 + (y_h
 print(f"Final distance from target: {np.sqrt((x_history[-1]-x_target)**2 + (y_history[-1]-y_target)**2):.4f} cm")
 print(f"Cost reduction: {cost_history[0]:.4f} → {cost_history[-1]:.6f}")
 print(f"Cost reduction percentage: {(1 - cost_history[-1]/cost_history[0])*100:.2f}%")
-
 ```
 
-When looking at the first plot, keep in mind that on the x-axis we move from 95 to 100 in 50 steps while on the y-axis we are moving from 103 to 100 is 50 step as well.
+When looking at the first plot on the left hand side below, keep in mind that on the x-axis we move from 95 to 100 in 50 steps while on the y-axis we are moving from 103 to 100 is 50 step as well. This explain the "slope" of the blue line.
 
 <div align="center">
 <img src="./assets/img23.webp" alt="" width="900" loading="lazy"/><br/>
@@ -484,7 +488,7 @@ The 3D map is very symmetric. Indeed, if we only speak about the initial altitud
 
 * In the cost function $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$, what would happen if we removed the $$\frac{1}{2}$$ factor? Would gradient descent still work? Why or why not?
 
-* If your laser pointer starts at position (95, 103) and the target is at (100, 100) with a learning rate $$\alpha = 0.2$$, what would be the position after the first iteration? Show your calculations.
+* If your laser pointer starts at position (95, 103) and the target is at (100, 100) with a learning rate $$\alpha = 0.2$$, what would be the position after the first iteration? Play with the Excel sheet.
 
 * Explain in your own words what a partial derivative ($$\frac{\partial C}{\partial error\_x}$$) represents. How is it different from a regular derivative?
 
