@@ -75,7 +75,7 @@ The setup is similar to the previous one. Again, you do not know where is the ta
 
 In this context, one way to evaluate the cost function could be:
 
-$$C = \sqrt{{error\_x}^2 + {error\_y}^2}$$
+$$C = \sqrt{error\_x^2 + error\_y^2}$$
 
 Where:
 
