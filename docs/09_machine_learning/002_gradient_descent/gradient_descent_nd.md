@@ -29,7 +29,7 @@ Generalizing to real-world machine learning problems
 
 * The gradient is a vector pointing "uphill" in N-dimensional space
 * Each dimension is updated independently using partial derivatives
-* **Critical point**: Features must be on similar scales or one will dominate
+* **Important.** Features must be on similar scales or one will dominate
 * Feature normalization ensures all parameters contribute fairly
 * The math generalizes beautifully: same principle, just more dimensions
 
@@ -56,28 +56,22 @@ Generalizing to real-world machine learning problems
 
 ## Introduction
 
-You know what's beautiful about mathematics? Sometimes, when you understand something in one dimension, and then in two dimensions, you've already understood everything. Going from 2D to 42D is just... more of the same.
-
-Let me show you why.
+You know what is cool with maths? Sometimes, when you don't understand somtehing in high dimensions, just go back to 2 or even 1D. Then, when you feel OK, when you truely understand what is going on, be convinced that you've understood everything. Going from 2D to 42D is just... more of the same.
 
 In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we adjusted a single laser pointer position. In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled both $$x$$ and $$y$$ coordinates. Now? We're going to control as many parameters as we want.
 
-And here's the secret: **if you understood the 2D case, you've already understood the N-dimensional case**. The principle is identical. The only difference? More variables to track, and one critical new problem we need to address: **scale** between the dimensions.
+Again, here's the point: **if you understood the 2D case, you've already understood the N-dimensional case**. The principle is identical. The only difference? More variables to track, and one critical new problem we need to address: **scale** between the dimensions.
 
 But don't worry. As usual, we'll start gently, build intuition, and by the end you'll see that high-dimensional gradient descent is just "rinse and repeat" with a few important tweaks.
 
-<!-- This post will give you the solid foundations you need before diving into more advanced books like Aurélien Géron's "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow." Think of this as your launchpad. -->
-
-
-
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## The Pattern We've Discovered
+## The Pattern We've Learnt
 
-Let's recap what we learned so far:
+Let's recap the previous Episodes:
 
 **In Episode 1 (1D)**, we had:
 - One variable: $$y\_laser$$
@@ -95,7 +89,7 @@ Let's recap what we learned so far:
 
 Do you see the pattern? **Each dimension is independent.** We calculate the gradient for each variable separately, and we update each one using the exact same formula.
 
-In N dimensions? Same thing. Just... more of them.
+In N dimensions? Same thing. Just... more of them but again, trust you and don't try to draw a 42D spaces on a 2D sheet of paper.
 
 
 
@@ -106,7 +100,7 @@ In N dimensions? Same thing. Just... more of them.
 
 ## What Really Is a Gradient?
 
-Before we jump to N dimensions, let's clarify one crucial concept: **what is a gradient?**
+Before we jump to N dimensions, let's clarify this key concept.
 
 In 1D, the gradient was just a number telling us "how steep is the slope?" Positive means the function goes up, negative means it goes down.
 
@@ -114,11 +108,11 @@ In 2D, the gradient became a **vector** with two components:
 
 $$\nabla C = \begin{bmatrix} \frac{\partial C}{\partial x} \\ \frac{\partial C}{\partial y} \end{bmatrix}$$
 
-This vector points in the direction of **steepest ascent**. It's like a compass that always points "uphill."
+This vector points in the direction of **steepest ascent**. It's like a compass that always points "uphill". Do you remember the 1D Tilt-O-Meter? Here is an example of a 2D version:
 
 <div align="center">
-<img src="./assets/img30.webp" alt="" width="450" loading="lazy"/><br/>
-<span>The gradient vector points uphill.</span>
+<img src="./assets/img34.webp" alt="" width="450" loading="lazy"/><br/>
+<span>A 2D version of the Tilt-O_Meter.</span>
 </div>
 
 Since we want to go **downhill** (minimize the cost), we move in the **opposite direction**: $$-\nabla C$$.
@@ -134,7 +128,7 @@ Where $$w\_1, w\_2, ..., w\_N$$ are our N parameters (weights).
 
 Imagine... Imagine you're in the Alps, in Serre-Chevalier. The name of the resort is important—otherwise this example doesn't work. You and your snowboard are at the top of the "Cucumelle" slope (a red run). Don't ask me why, but you're looking for the path with the steepest descent. Believe it or not, you're mentally computing the gradient at the spot where you're sitting. You won't traverse the slope from left to right because in that case you'd be almost perpendicular to the fall line and your speed would be limited. No—instead, you plan to point the nose of your board straight downhill, go like that for 200 meters, then carve to the right... You get the idea.
 
-Have you ever watched a drop of water in a sink? It always follows the path where the gradient is strongest. Your are doing exactly the same thing (and may be, visit the local hospital later today) but on the snow.
+Have you ever watched a drop of water in a sink? It always follows the path where the gradient is strongest. Your are doing exactly the same thing but on the snow. Additional you may visit the local hospital but this is a bonus.
 
 
 <!-- ###################################################################### -->
@@ -167,18 +161,18 @@ The error is now:
 
 $$error = \hat{y} - y\_true$$
 
-And our cost function (using the squared error):
+And our cost function using the squared error we already used becomes:
 
 $$C = \frac{1}{2} \cdot error^2 = \frac{1}{2} \left( \sum_{i=1}^{N} w\_i \cdot x\_i - y\_true \right)^2$$
 
-Do not start tp grumble. Remember the Alamo and remember what we had in 2D. It looks like that:
+Do not start to grumble. Remember the Alamo and remember what we had in 2D. It looked like that:
 
 <div align="center">
 <img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>N independent parameters to optimize.</span> -->
 </div>
 
-Then we said the expression of $$C$$ was to complicated and we wrote : $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$. What you see above is nothing more than the same expression but in N rather than 2 dimensions. Again, don't look at, read and said it loud as if you were exampling it the formula to your invisible friend (good luck if you mother or wife rush into the room and ask you what's going on here!)
+Then we said the expression of $$C$$ was to complicated and we wrote : $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$. What you see above is nothing more than the same expression but in N rather than 2 dimensions. Again, don't look at, read the math formula and said it loud as if you were explaining it to your invisible friend (good luck if your mother or wife rush into the room and ask you "what's going on here!")
 
 To minimize this cost in N dimensions, we need to compute the gradient with respect to **each** parameter $$w\_i$$:
 
@@ -219,7 +213,7 @@ $$\hat{y} = 1 \cdot 10 + 1 \cdot 7 + 1 \cdot 2 + 1 \cdot 75 = 94$$
 
 **Do you see the problem?** The "previous exam score" contributes 75 to the prediction, while "study hours" only contributes 10. The gradient will be dominated by $$w\_4$$ because $$x\_4$$ is so much larger!
 
-Let me show you what happens to the gradients:
+Let's see what happens to the gradients:
 
 $$\frac{\partial C}{\partial w\_1} = error \cdot 10$$
 
@@ -234,236 +228,25 @@ This causes a nasty problem: gradient descent will spend most of its effort adju
 <span>Without normalization, one dimension dominates.</span>
 </div> -->
 
-Visually, imagine trying to navigate down a long, narrow valley. If the scales are different, gradient descent will "zigzag" down the valley instead of taking the direct path. It's inefficient and slow.
-
-**The solution?** Feature normalization.
+Visually, imagine trying to navigate down a long, narrow valley. If the scales are different, gradient descent will "**zigzag**" down the valley instead of taking the direct path. It's inefficient and slow.
 
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-## The Fix: Feature Normalization
-
-The idea is simple: **put all features on the same scale** before training.
-
-The most common method is called **standardization** (also known as z-score normalization):
-
-$$x\_i\_normalized = \frac{x\_i - \mu\_i}{\sigma\_i}$$
-
-Where:
-- $$\mu\_i$$ is the mean of feature $$i$$
-- $$\sigma\_i$$ is the standard deviation of feature $$i$$
-
-After standardization, each feature has:
-- Mean = 0
-- Standard deviation = 1
-
-This puts all features on equal footing. Now the gradients reflect the **true importance** of each feature, not just their arbitrary scales.
-
-**Side Note:** Another popular method is min-max scaling where we write
-
-$$x\_i\_normalized = \frac{x\_i - \min(x\_i)}{\max(x\_i) - \min(x\_i)}$$
-
-Sorry to insist. Do NOT look at the formula. Read it, understand it, explain it to yourself and say it loud. It scales all features to the range [0, 1].
-
-**Which one to use?** Standardization is generally preferred because it handles outliers. Outliers are the guys that are very far from average. Think of Victor Wembanyama, 2.24m, in a bus of supporters. Anyway, standardization is better because it is less sensitive to the exact min/max values in your dataset.
 
 
 
 
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-## Let's play with Python
-
-Let's build a complete example with real code to predicting student exam scores. We'll predict final exam scores based on four features, and we'll compare gradient descent **with** and **without** feature normalization.
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Set random seed for reproducibility
-np.random.seed(42)
-
-# Generate synthetic student data
-n_students = 100
-
-# Features with different scales
-study_hours = np.random.uniform(0, 20, n_students)          # 0-20 range
-sleep_hours = np.random.uniform(4, 10, n_students)          # 4-10 range
-classes_missed = np.random.randint(0, 15, n_students)       # 0-15 range
-previous_score = np.random.uniform(40, 100, n_students)     # 40-100 range
-
-# True relationship (with some noise)
-# exam_score = 2*study + 5*sleep - 3*missed + 0.3*previous + noise
-exam_score = (2 * study_hours +
-              5 * sleep_hours -
-              3 * classes_missed +
-              0.3 * previous_score +
-              np.random.normal(0, 5, n_students))
-
-# Combine features into a matrix
-X = np.column_stack([study_hours, sleep_hours, classes_missed, previous_score])
-y = exam_score
-
-# Add bias term (column of ones)
-X = np.column_stack([np.ones(n_students), X])
-
-print("Feature ranges (before normalization):")
-print(f"Study hours: [{study_hours.min():.1f}, {study_hours.max():.1f}]")
-print(f"Sleep hours: [{sleep_hours.min():.1f}, {sleep_hours.max():.1f}]")
-print(f"Classes missed: [{classes_missed.min()}, {classes_missed.max()}]")
-print(f"Previous score: [{previous_score.min():.1f}, {previous_score.max():.1f}]")
-print()
-
-# Function to perform gradient descent
-def gradient_descent(X, y, learning_rate, n_iterations):
-    """
-    Perform gradient descent on the dataset.
-
-    Args:
-        X: Feature matrix (n_samples, n_features)
-        y: Target vector (n_samples,)
-        learning_rate: Step size alpha
-        n_iterations: Number of iterations
-
-    Returns:
-        weights: Final weight vector
-        cost_history: Cost at each iteration
-    """
-    n_samples, n_features = X.shape
-    weights = np.zeros(n_features)
-    cost_history = []
-
-    for iteration in range(n_iterations):
-        # Make predictions
-        predictions = X @ weights
-
-        # Calculate error
-        errors = predictions - y
-
-        # Calculate cost (MSE)
-        cost = (1 / (2 * n_samples)) * np.sum(errors ** 2)
-        cost_history.append(cost)
-
-        # Calculate gradient
-        gradient = (1 / n_samples) * (X.T @ errors)
-
-        # Update weights
-        weights = weights - learning_rate * gradient
-
-    return weights, cost_history
-
-
-# Train WITHOUT normalization
-print("=" * 60)
-print("GRADIENT DESCENT WITHOUT NORMALIZATION")
-print("=" * 60)
-
-learning_rate_unnorm = 0.0001  # Need very small LR!
-n_iterations = 1000
-
-weights_unnorm, cost_unnorm = gradient_descent(
-    X, y, learning_rate_unnorm, n_iterations
-)
-
-print(f"\nLearning rate: {learning_rate_unnorm}")
-print(f"Final weights: {weights_unnorm}")
-print(f"Initial cost: {cost_unnorm[0]:.2f}")
-print(f"Final cost: {cost_unnorm[-1]:.2f}")
-
-
-# Normalize features (except bias term)
-X_normalized = X.copy()
-X_normalized[:, 1:] = (X[:, 1:] - X[:, 1:].mean(axis=0)) / X[:, 1:].std(axis=0)
-
-print("\n" + "=" * 60)
-print("GRADIENT DESCENT WITH NORMALIZATION")
-print("=" * 60)
-
-learning_rate_norm = 0.1  # Can use much larger LR!
-weights_norm, cost_norm = gradient_descent(
-    X_normalized, y, learning_rate_norm, n_iterations
-)
-
-print(f"\nLearning rate: {learning_rate_norm}")
-print(f"Final weights: {weights_norm}")
-print(f"Initial cost: {cost_norm[0]:.2f}")
-print(f"Final cost: {cost_norm[-1]:.2f}")
-
-
-# Visualization
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-
-# Plot 1: Cost convergence
-axes[0].plot(cost_unnorm, 'r-', linewidth=2, label='Without normalization')
-axes[0].plot(cost_norm, 'g-', linewidth=2, label='With normalization')
-axes[0].set_xlabel('Iteration', fontsize=12)
-axes[0].set_ylabel('Cost (MSE)', fontsize=12)
-axes[0].set_title('Cost Function Convergence', fontsize=14, fontweight='bold')
-axes[0].legend()
-axes[0].grid(True, alpha=0.3)
-
-# Plot 2: Cost convergence (log scale)
-axes[1].semilogy(cost_unnorm, 'r-', linewidth=2, label='Without normalization')
-axes[1].semilogy(cost_norm, 'g-', linewidth=2, label='With normalization')
-axes[1].set_xlabel('Iteration', fontsize=12)
-axes[1].set_ylabel('Cost (MSE) - Log Scale', fontsize=12)
-axes[1].set_title('Cost Convergence (Log Scale)', fontsize=14, fontweight='bold')
-axes[1].legend()
-axes[1].grid(True, alpha=0.3)
-
-plt.tight_layout()
-plt.show()
-
-print("\n" + "=" * 60)
-print("KEY OBSERVATIONS")
-print("=" * 60)
-print(f"Without normalization - needed LR={learning_rate_unnorm}")
-print(f"With normalization - could use LR={learning_rate_norm} (1000x larger!)")
-print(f"\nCost reduction without normalization: {cost_unnorm[0]:.2f} → {cost_unnorm[-1]:.2f}")
-print(f"Cost reduction with normalization: {cost_norm[0]:.2f} → {cost_norm[-1]:.2f}")
-print("\nConclusion: Normalization allows faster convergence and larger learning rates!")
-```
-
-<div align="center">
-<img src="./assets/img32.webp" alt="" width="900" loading="lazy"/><br/>
-<span>Gradient descent with and without normalization.</span>
-</div>
-
-
-### What This Code Shows
-{: .no_toc }
-
-The code demonstrates three critical points:
-
-1. **Without normalization**, we need a tiny learning rate (0.0001) because the gradients are on wildly different scales. Use a larger learning rate and the algorithm explodes.
-
-2. **With normalization**, we can use a learning rate 1000x larger (0.1) because all gradients are on the same scale.
-
-3. **Convergence is much faster** with normalization. The cost drops smoothly and quickly, while without normalization it struggles to find the right direction.
-
-Notice how in the log-scale plot, the green line (normalized) drops like a stone, while the red line (unnormalized) barely moves.
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-## The Zigzag Problem
-
-Let me show you another visualization that really drives home why normalization matters.
-
-Imagine you have just two features, but one ranges from 0 to 100 and the other from 0 to 10. Your cost function forms a long, narrow valley:
-
 
 ### Let's Play with Python
+{: .no_toc }
+
+<!-- Let me show share another visualization that really drives home why normalization matters. -->
+
+Imagine we have just two features, but one ranges from 0 to 100 and the other from 0 to 10. Our cost function forms a long, narrow valley:
+
+
 
 ```python
 import numpy as np
@@ -715,6 +498,231 @@ print(f"  Iterations to converge: {len(x_norm)}")
 
 
 
+***OK but what is the solution to the zigzag problem?***
+Feature normalization.
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## The Fix: Feature Normalization
+
+The idea is simple: **put all features on the same scale** before training.
+
+The most common method is called **standardization** (also known as z-score normalization):
+
+$$x\_i\_normalized = \frac{x\_i - \mu\_i}{\sigma\_i}$$
+
+Where:
+- $$\mu\_i$$ is the mean of feature $$i$$
+- $$\sigma\_i$$ is the standard deviation of feature $$i$$
+
+After standardization, each feature has:
+- Mean = 0
+- Standard deviation = 1
+
+This puts all features on equal footing. Now the gradients reflect the **true importance** of each feature, not just their relatives scales.
+
+**Side Note:** Another popular method is min-max scaling where we write
+
+$$x\_i\_normalized = \frac{x\_i - \min(x\_i)}{\max(x\_i) - \min(x\_i)}$$
+
+Sorry to insist. Do **NOT** look at the formula. Read it, explain it to yourself and say it loud. Formulas tell story that we must learn to appreciate. Here it explains that it scales all features to the range [0, 1].
+
+***Which one to use?***
+Standardization is generally preferred because it handles outliers. Outliers are the guys that are very far from average. Think of Victor Wembanyama, 2.24m, in a bus of supporters. Anyway, standardization is better because it is less sensitive to the exact min/max values in our dataset.
+
+
+
+
+<!-- ###################################################################### -->
+
+### Let's play with Python
+
+Let's build a complete example with real code to predicting student exam scores. We'll predict final exam scores based on four features, and we'll compare gradient descent **with** and **without** feature normalization.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Generate synthetic student data
+n_students = 100
+
+# Features with different scales
+study_hours = np.random.uniform(0, 20, n_students)          # 0-20 range
+sleep_hours = np.random.uniform(4, 10, n_students)          # 4-10 range
+classes_missed = np.random.randint(0, 15, n_students)       # 0-15 range
+previous_score = np.random.uniform(40, 100, n_students)     # 40-100 range
+
+# True relationship (with some noise)
+# exam_score = 2*study + 5*sleep - 3*missed + 0.3*previous + noise
+exam_score = (2 * study_hours +
+              5 * sleep_hours -
+              3 * classes_missed +
+              0.3 * previous_score +
+              np.random.normal(0, 5, n_students))
+
+# Combine features into a matrix
+X = np.column_stack([study_hours, sleep_hours, classes_missed, previous_score])
+y = exam_score
+
+# Add bias term (column of ones)
+X = np.column_stack([np.ones(n_students), X])
+
+print("Feature ranges (before normalization):")
+print(f"Study hours: [{study_hours.min():.1f}, {study_hours.max():.1f}]")
+print(f"Sleep hours: [{sleep_hours.min():.1f}, {sleep_hours.max():.1f}]")
+print(f"Classes missed: [{classes_missed.min()}, {classes_missed.max()}]")
+print(f"Previous score: [{previous_score.min():.1f}, {previous_score.max():.1f}]")
+print()
+
+# Function to perform gradient descent
+def gradient_descent(X, y, learning_rate, n_iterations):
+    """
+    Perform gradient descent on the dataset.
+
+    Args:
+        X: Feature matrix (n_samples, n_features)
+        y: Target vector (n_samples,)
+        learning_rate: Step size alpha
+        n_iterations: Number of iterations
+
+    Returns:
+        weights: Final weight vector
+        cost_history: Cost at each iteration
+    """
+    n_samples, n_features = X.shape
+    weights = np.zeros(n_features)
+    cost_history = []
+
+    for iteration in range(n_iterations):
+        # Make predictions
+        predictions = X @ weights
+
+        # Calculate error
+        errors = predictions - y
+
+        # Calculate cost (MSE)
+        cost = (1 / (2 * n_samples)) * np.sum(errors ** 2)
+        cost_history.append(cost)
+
+        # Calculate gradient
+        gradient = (1 / n_samples) * (X.T @ errors)
+
+        # Update weights
+        weights = weights - learning_rate * gradient
+
+    return weights, cost_history
+
+
+# Train WITHOUT normalization
+print("=" * 60)
+print("GRADIENT DESCENT WITHOUT NORMALIZATION")
+print("=" * 60)
+
+learning_rate_unnorm = 0.0001  # Need very small LR!
+n_iterations = 1000
+
+weights_unnorm, cost_unnorm = gradient_descent(
+    X, y, learning_rate_unnorm, n_iterations
+)
+
+print(f"\nLearning rate: {learning_rate_unnorm}")
+print(f"Final weights: {weights_unnorm}")
+print(f"Initial cost: {cost_unnorm[0]:.2f}")
+print(f"Final cost: {cost_unnorm[-1]:.2f}")
+
+
+# Normalize features (except bias term)
+X_normalized = X.copy()
+X_normalized[:, 1:] = (X[:, 1:] - X[:, 1:].mean(axis=0)) / X[:, 1:].std(axis=0)
+
+print("\n" + "=" * 60)
+print("GRADIENT DESCENT WITH NORMALIZATION")
+print("=" * 60)
+
+learning_rate_norm = 0.1  # Can use much larger LR!
+weights_norm, cost_norm = gradient_descent(
+    X_normalized, y, learning_rate_norm, n_iterations
+)
+
+print(f"\nLearning rate: {learning_rate_norm}")
+print(f"Final weights: {weights_norm}")
+print(f"Initial cost: {cost_norm[0]:.2f}")
+print(f"Final cost: {cost_norm[-1]:.2f}")
+
+
+# Visualization
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Plot 1: Cost convergence
+axes[0].plot(cost_unnorm, 'r-', linewidth=2, label='Without normalization')
+axes[0].plot(cost_norm, 'g-', linewidth=2, label='With normalization')
+axes[0].set_xlabel('Iteration', fontsize=12)
+axes[0].set_ylabel('Cost (MSE)', fontsize=12)
+axes[0].set_title('Cost Function Convergence', fontsize=14, fontweight='bold')
+axes[0].legend()
+axes[0].grid(True, alpha=0.3)
+
+# Plot 2: Cost convergence (log scale)
+axes[1].semilogy(cost_unnorm, 'r-', linewidth=2, label='Without normalization')
+axes[1].semilogy(cost_norm, 'g-', linewidth=2, label='With normalization')
+axes[1].set_xlabel('Iteration', fontsize=12)
+axes[1].set_ylabel('Cost (MSE) - Log Scale', fontsize=12)
+axes[1].set_title('Cost Convergence (Log Scale)', fontsize=14, fontweight='bold')
+axes[1].legend()
+axes[1].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print("\n" + "=" * 60)
+print("KEY OBSERVATIONS")
+print("=" * 60)
+print(f"Without normalization - needed LR={learning_rate_unnorm}")
+print(f"With normalization - could use LR={learning_rate_norm} (1000x larger!)")
+print(f"\nCost reduction without normalization: {cost_unnorm[0]:.2f} → {cost_unnorm[-1]:.2f}")
+print(f"Cost reduction with normalization: {cost_norm[0]:.2f} → {cost_norm[-1]:.2f}")
+print("\nConclusion: Normalization allows faster convergence and larger learning rates!")
+```
+
+<div align="center">
+<img src="./assets/img32.webp" alt="" width="900" loading="lazy"/><br/>
+<span>Gradient descent with and without normalization.</span>
+</div>
+
+
+
+
+
+
+<!-- ###################################################################### -->
+
+### What This Code Shows
+{: .no_toc }
+
+The code demonstrates three critical points:
+
+1. **Without normalization**, we need a tiny learning rate (0.0001) because the gradients are on wildly different scales. Use a larger learning rate and the algorithm explodes.
+
+2. **With normalization**, we can use a learning rate 1000x larger (0.1) because all gradients are on the same scale.
+
+3. **Convergence is much faster** with normalization. The cost drops smoothly and quickly, while without normalization it struggles to find the right direction.
+
+Notice how in the log-scale plot, the green line (normalized) drops like a stone, while the red line (unnormalized) barely moves.
+
+
+
+
+
+
+
 
 
 
@@ -789,6 +797,8 @@ But the core idea—compute the gradient, take a step downhill—remains unchang
 
 
 
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -847,7 +857,6 @@ But the core idea—compute the gradient, take a step downhill—remains unchang
 * [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
 * [Part 3]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions
 
-**Ready to go deeper?**
 
 Now that you understand the fundamentals of gradient descent, you're ready to explore more advanced topics:
 - Stochastic Gradient Descent (SGD) and mini-batch variants
@@ -856,14 +865,14 @@ Now that you understand the fundamentals of gradient descent, you're ready to ex
 - Regularization techniques (L1, L2)
 - Gradient descent in neural networks (backpropagation)
 
-I recommend [this book](https://www.amazon.fr/dp/2100847686) (39€, Nov 2025) for your next steps:
+I recommend [this book](https://www.amazon.fr/dp/2100847686) (39€, Nov 2025) for your next steps.
 
 <div align="center">
 <img src="./assets/img38.webp" alt="" width="225" loading="lazy"/><br/>
 <span>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</span>
 </div>
 
-Aurélien Géron's book is the perfect continuation. It covers all the topics above with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version. There are other books but then the cost is a problem (72€, 60€... They are crazy...).
+It covers all the topics above (and more) with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version. There are other books but then the cost is a problem (72€, 60€... They are crazy...).
 
 
 
