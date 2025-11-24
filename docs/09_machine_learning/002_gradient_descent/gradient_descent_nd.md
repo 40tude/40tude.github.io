@@ -51,18 +51,6 @@ Generalizing to real-world machine learning problems
 
 
 
-<!--
-## Introduction
-
-In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we adjusted a single laser pointer position. In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled both $$x$$ and $$y$$ coordinates. Now? We're going to control as many parameters as we want.
-
-Again, here's the point: **if you understood the 2D case, you've already understood the N-dimensional case**. The principle is identical. The only difference? More variables to track, and one critical new problem we need to address: **scale** between the dimensions.
-
-But don't worry. As usual, we'll start gently, build intuition, and by the end you'll see that high-dimensional gradient descent is just "rinse and repeat" with a few important tweaks.
-
- -->
-
-
 
 
 
@@ -83,9 +71,9 @@ Let's see if it is true in this post but first, let's take a step back and look 
 ### What We've Been Doing Until Now
 {: .no_toc }
 
-In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we pointed a laser at a target. We had **one parameter** to adjust: the vertical position $$y_{laser}$$. Our goal? Make the error $$error = y_{laser} - y_{target}$$ equal to zero.
+In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we pointed a laser at a target. We had **one parameter** to adjust: the vertical position $$y_{laser}$$. Our goal? Make the error $$error = y\_laser - y\_target$$ equal to zero.
 
-In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled the laser in **two dimensions**: both $$x_{laser}$$ and $$y_{laser}$$. Same principle, just more parameters to adjust.
+In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled the laser in **two dimensions**: both $$x\_laser$$ and $$y\_laser$$. Same principle, just more parameters to adjust.
 
 In both cases, we were **directly adjusting what we wanted to fix**. The laser position was wrong, so we adjusted... the laser position. Simple.
 
@@ -98,17 +86,15 @@ In both cases, we were **directly adjusting what we wanted to fix**. The laser p
 ### The Shift: From Adjusting Positions to Building Models
 {: .no_toc }
 
-But now, we're going to make a quantum leap. We're going to use gradient descent for what it was really designed for: **machine learning**.
+But now, we're going to make a quantum leap. We're going to use gradient descent for what it was really designed for: **machine learning**. Here's the key difference:
 
-Here's the key difference:
-
-**Before (laser pointer):**
+**Before (laser pointer)**
 - We adjusted the **thing itself** (laser position)
 - To match a **known target** (bullseye on the wall)
 - Direct relationship: move laser → reduce error
 
-**Now (machine learning):**
-- We adjust **model parameters** (weights $$w\_1, w\_2, ..., w\_N$$)
+**Now (machine learning)**
+- We adjust **model parameters** (weights $$w_1, w_2, ..., w_N$$)
 - To predict **unknown targets** from **known inputs**
 - Indirect relationship: adjust weights → change predictions → reduce error
 
@@ -116,13 +102,13 @@ Let's make this concrete with an example.
 
 Imagine we want to predict a student's final exam score. We don't directly adjust the exam score—that would be cheating! Instead, we build a **model**:
 
-$$\text{predicted\_score} = w_1 \times \text{study\_hours} + w_2 \times \text{sleep\_hours} + w_3 \times \text{classes\_missed} + w_4 \times \text{previous\_score}$$
+$$predicted\_score = w_1 \times study\_hours + w_2 \times sleep\_hours + w_3 \times classes\_missed + w_4 \times previous\_score$$
 
-The **inputs** (study hours, sleep hours, etc.) are what we observe. The **weights** ($$w_1, w_2, w_3, w_4$$) are what we adjust. The **prediction** is what our model outputs.
+The **inputs** (study_hours, sleep_hours, etc.) are what we observe. The **weights** ($$w_1, w_2, w_3, w_4$$) are what we adjust. The **prediction** is what our model outputs.
 
 Now, for a student who studied 10 hours, slept 7 hours, missed 2 classes, and scored 75 on the previous exam, our model might predict 82. But the actual score was 85. There's an error: $$error = 82 - 85 = -3$$.
 
-**Here's the magic**: Wou don't adjust the student's sleep or study hours—those are fixed, observed facts. Instead, we adjust the **weights** of our model to make better predictions next time.
+**Here's the magic**: We don't adjust the student's sleep or study hours—those are fixed, observed facts. Instead, we adjust the **weights** of our model to make better predictions next time.
 
 This is what machine learning is: **finding the right weights** so your model makes accurate predictions.
 
@@ -134,13 +120,14 @@ This is what machine learning is: **finding the right weights** so your model ma
 <!-- ###################################################################### -->
 
 ### Same Math, Different Interpretation
+{: .no_toc }
 
 The beautiful thing? The mathematics we learned in Episodes 1 and 2 **apply exactly the same way**:
 
-- In the laser game, we adjusted $$y_{laser}$$ to minimize $$(y_{laser} - y_{target})^2$$
+- In the laser game, we adjusted $$y\_laser$$ to minimize $$(y\_laser - y\_target)^2$$
 - In machine learning, we adjust $$w_1, w_2, ..., w_N$$ to minimize $$(prediction - actual)^2$$
 
-Same gradient descent algorithm. Same update rule: $$parameter_{new} = parameter_{old} - \alpha \times gradient$$.
+Same gradient descent algorithm. Same update rule: $$parameter\_new = parameter\_old - \alpha \times gradient$$.
 
 The only difference? Now we have **many parameters** (weights) instead of just one or two positions. And that's exactly what this episode is about: scaling gradient descent to N dimensions.
 
@@ -151,6 +138,7 @@ The only difference? Now we have **many parameters** (weights) instead of just o
 <!-- ###################################################################### -->
 
 ### What we'll Learn
+{: .no_toc }
 
 In this third Episode, we'll cover:
 
