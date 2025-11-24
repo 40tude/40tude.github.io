@@ -130,7 +130,7 @@ We had : $$C = \sqrt{{error\_x}^2 + {error\_y}^2}$$
 $$\begin{aligned}
 C & = \sqrt{{error\_x}^2 + {error\_y}^2} \\
 C & = \sqrt{{error\_x}^2 + k} \\
-\frac{\partial C}{\partial error\_x} & = \frac{1}{2} \cdot  ({{error\_x}^2 + k})^{-\frac{1}{2}} (2 \cdot error\_x) \\
+\frac{\partial C}{\partial error\_x} & = \frac{1}{2} \cdot  ({error\_x}^2 + k)^{-\frac{1}{2}} (2 \cdot error\_x) \\
 \frac{\partial C}{\partial error\_x} & = \frac{error\_x}{\sqrt{{error\_x}^2 + k}} \\
 \frac{\partial C}{\partial error\_x} & = \frac{error\_x}{\sqrt{{error\_x}^2 + {error\_y}^2}} \\
 \frac{\partial C}{\partial error\_x} & = \frac{error\_x}{C}
