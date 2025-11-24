@@ -123,7 +123,7 @@ Where we generalize what we learnt to N dimensions
 
 ## Webliography
 
-* Link 1
+* [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can past the scripts above.
 
 
 

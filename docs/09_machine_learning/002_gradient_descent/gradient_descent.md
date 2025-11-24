@@ -658,7 +658,7 @@ print(f"Number of steps to converge: {steps}")
 ## What is Next?
 
 * [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
-* Part 2: where we discuss the gradient descent in 2D
+* [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
 * Part 3: where we generalize the gradient descent to N dimensions
 
 
