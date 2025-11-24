@@ -225,6 +225,7 @@ Let's say:
 * Update: $$y\_laser\_new = y\_laser\_old - \alpha \cdot gradient\_y = 103 - 0.1 \cdot (3) = 103 - 0.3 = 102.7$$ cm
 
 
+
 **Step 2:**
 * error_x = 95.5 - 100 = -4.5 cm
 * gradient_x = error_x = -4.5
