@@ -61,9 +61,15 @@ Generalizing to real-world machine learning problems
 
 ## Introduction
 
-You know what is cool with maths? Sometimes, when you don't understand something in high dimensions, just go back to 2 or even 1D. Then, when you feel OK, when you truly understand what is going on, be convinced that you've understood everything. Going from 2D to 42D is just... more of the same.
+You know what is cool with maths? Sometimes, when you don't understand something in high dimensions, let's say 3 or 4... Just go back to 2 or even 1D. Then, when you feel OK, when you truly understand what is going on, be convinced that you've understood everything. Going from 2D to 42D is just... more of the same.
 
-Let's see if it is true in this post but first, let's take a step back and look at what we've accomplished so far.
+Have you ever wondered what life would be like in 2D? Watch this:
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/avMX-Zft7K4?si=v2l0VbpP00yiE0zl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div>
+
+Let's see if we can generalize to N dimensions in this post but first, let's take a step back and look at what we've accomplished so far.
 
 
 <!-- ###################################################################### -->
@@ -71,7 +77,10 @@ Let's see if it is true in this post but first, let's take a step back and look 
 ### What We've Been Doing Until Now
 {: .no_toc }
 
-In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we pointed a laser at a target. We had **one parameter** to adjust: the vertical position $$y_{laser}$$. Our goal? Make the error $$error = y\_laser - y\_target$$ equal to zero.
+In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we pointed a laser at a target. We had **one parameter** to adjust: the vertical position $$y\_laser$$. Our goal? Make the error $$error = y\_laser - y\_target$$ equal to zero.
+
+
+
 
 In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled the laser in **two dimensions**: both $$x\_laser$$ and $$y\_laser$$. Same principle, just more parameters to adjust.
 
@@ -96,21 +105,25 @@ But now, we're going to make a quantum leap. We're going to use gradient descent
 **Now (machine learning)**
 - We adjust **model parameters** (weights $$w_1, w_2, ..., w_N$$)
 - To predict **unknown targets** from **known inputs**
-- Indirect relationship: adjust weights → change predictions → reduce error
+- Indirect relationship: adjust weights ➡️ change predictions ➡️ reduce error
 
-Let's make this concrete with an example.
-
-Imagine we want to predict a student's final exam score. We don't directly adjust the exam score—that would be cheating! Instead, we build a **model**:
+Let's make this concrete with an example. Imagine... Imagine we want to predict a student's final exam score. We don't directly adjust the exam score—that would be cheating. Instead, we build a **model**:
 
 $$predicted\_score = w_1 \times study\_hours + w_2 \times sleep\_hours + w_3 \times classes\_missed + w_4 \times previous\_score$$
 
 The **inputs** (study_hours, sleep_hours, etc.) are what we observe. The **weights** ($$w_1, w_2, w_3, w_4$$) are what we adjust. The **prediction** is what our model outputs.
 
-Now, for a student who studied 10 hours, slept 7 hours, missed 2 classes, and scored 75 on the previous exam, our model might predict 82. But the actual score was 85. There's an error: $$error = 82 - 85 = -3$$.
+Now, for a student who studied 10 hours, slept 7 hours, missed 2 classes, and scored 75 on the previous exam, our model might predict 82. But the actual score, the observation, was 85. There's an error: $$error = 82 - 85 = -3$$.
 
 **Here's the magic**: We don't adjust the student's sleep or study hours—those are fixed, observed facts. Instead, we adjust the **weights** of our model to make better predictions next time.
 
-This is what machine learning is: **finding the right weights** so your model makes accurate predictions.
+This is what machine learning is: **finding the right weights** so your model makes accurate predictions. More precisely:
+* Fix your target in term of model's performance first
+* Get a set of observations (this may involve cleaning, deduplicating, features engineering...)
+* Select the number of features. You may keep all the features (large number of dimensions) or keep only the most relevant (study_hours, sleep_hours, etc.)
+* Train the model = adjust the weights of each feature to make accurate predictions on 80% of the observations
+* Check the behavior of the model on unseen observations (the remaining 20%)
+
 
 
 
@@ -122,7 +135,7 @@ This is what machine learning is: **finding the right weights** so your model ma
 ### Same Math, Different Interpretation
 {: .no_toc }
 
-The beautiful thing? The mathematics we learned in Episodes 1 and 2 **apply exactly the same way**:
+The beautiful thing? The mathematics we learned in Episodes [1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) and [2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}) **apply exactly the same way**:
 
 - In the laser game, we adjusted $$y\_laser$$ to minimize $$(y\_laser - y\_target)^2$$
 - In machine learning, we adjust $$w_1, w_2, ..., w_N$$ to minimize $$(prediction - actual)^2$$
@@ -140,7 +153,7 @@ The only difference? Now we have **many parameters** (weights) instead of just o
 ### What we'll Learn
 {: .no_toc }
 
-In this third Episode, we'll cover:
+In this third, and last, Episode, we'll cover:
 
 1. How the gradient becomes a **vector** in N-dimensional space
 2. Why **feature scaling** is absolutely critical (spoiler: without it, everything breaks)
@@ -216,7 +229,7 @@ Let's recap the previous Episodes:
 
 Do you see the pattern? **Each dimension is independent.** We calculate the gradient for each variable separately, and we update each one using the exact same formula.
 
-In N dimensions? Same thing. Just... more of them but again, trust you and don't try to draw a 42D spaces on a 2D sheet of paper.
+In N dimensions? Same thing. Just... more of them but again, trust in you and don't try to draw a 42D spaces on a 2D sheet of paper.
 
 
 
@@ -235,27 +248,32 @@ In 2D, the gradient became a **vector** with two components:
 
 $$\nabla C = \begin{bmatrix} \frac{\partial C}{\partial x} \\ \frac{\partial C}{\partial y} \end{bmatrix}$$
 
-This vector points in the direction of **steepest ascent**. It's like a compass that always points "uphill". Do you remember the 1D Tilt-O-Meter? Here is an example of a 2D version:
+Don't start to grumble. You already know the word gradient. So now, when you read $$\nabla C$$ you say "gradient of C" or "grad C". And yes, vectors are written vertically. Each line correspond to one dimension. This vector points in the direction of **steepest ascent**. It's like a compass that always points "uphill". Do you remember the 1D Tilt-O-Meter? Here is an example of a 2D version:
 
 <div align="center">
 <img src="./assets/img34.webp" alt="" width="450" loading="lazy"/><br/>
 <span>A 2D version of the Tilt-O_Meter.</span>
 </div>
 
-Since we want to go **downhill** (minimize the cost), we move in the **opposite direction**: $$-\nabla C$$.
+Since we want to go **downhill** (to minimize the cost function), we move in the **opposite direction**: $$-\nabla C$$.
 
 In N dimensions? The gradient is still a vector but it has N components:
 
-$$\nabla C = \begin{bmatrix} \frac{\partial C}{\partial w\_1} \\ \frac{\partial C}{\partial w\_2} \\ \vdots \\ \frac{\partial C}{\partial w\_N} \end{bmatrix}$$
+$$\nabla C = \begin{bmatrix} \frac{\partial C}{\partial w_1} \\ \frac{\partial C}{\partial w_2} \\ \vdots \\ \frac{\partial C}{\partial w_N} \end{bmatrix}$$
 
-Where $$w\_1, w\_2, ..., w\_N$$ are our N parameters (weights).
+Where $$w_1, w_2, ..., w_N$$ are our N parameters (weights).
 
 **Key insight**: The gradient is a **direction** in N-dimensional space. It tells us which way to adjust all N parameters simultaneously to reduce the cost most effectively.
 
 
-Imagine... Imagine you're in the Alps, in Serre-Chevalier. The name of the resort is important—otherwise this example doesn't work. You and your snowboard are at the top of the "Cucumelle" slope (a red run). Don't ask me why, but you're looking for the path with the steepest descent. Believe it or not, you're mentally computing the gradient at the spot where you're sitting. You won't traverse the slope from left to right because in that case you'd be almost perpendicular to the fall line and your speed would be limited. No—instead, you plan to point the nose of your board straight downhill, go like that for 200 meters, then carve to the right... You get the idea.
+Imagine... Imagine you're in the Alps, in Serre Chevalier. The name of the resort is important—otherwise this example doesn't work. You and your snowboard are at the top of the "Cucumelle" slope (a red run). Don't ask me why, but you're looking for the path with the steepest descent. Believe it or not, you're mentally computing the gradient at the spot where you're sitting. You won't traverse the slope from left to right because in that case you'd be almost perpendicular to the fall line and your speed would be limited. No—instead, you plan to point the nose of your board straight downhill, go like that for 200 meters, then carve to the right... You get the idea.
 
-Have you ever watched a drop of water in a sink? It always follows the path where the gradient is strongest. Your are doing exactly the same thing but on the snow. Additional you may visit the local hospital but this is a bonus.
+Have you ever watched a drop of water in a sink? It always follows the path where the gradient is strongest. Your are doing exactly the same thing but on the snow. Additionally you may visit the local hospital later today but this is a bonus.
+
+<div align="center">
+<img src="./assets/img35.webp" alt="" width="450" loading="lazy"/><br/>
+<span>The start of Cucumelle (on the right) at Serre Chevalier ski resort.</span>
+</div>
 
 
 <!-- ###################################################################### -->
@@ -278,36 +296,38 @@ Mathematically, if we have N parameters $$w\_1, w\_2, ..., w\_N$$, our predictio
 
 $$\hat{y} = w\_1 \cdot x\_1 + w\_2 \cdot x\_2 + ... + w\_N \cdot x\_N$$
 
-Or in more compact notation:
+There is a "hat" and you read "y-hat" to distinguish the prediction ($$\hat{y}$$) from the observation ($$y$$)
+
+In a more compact notation we write:
 
 $$\hat{y} = \sum_{i=1}^{N} w\_i \cdot x\_i$$
 
-**STOP!**. Did you *look at* the previous formula or did you read it? Nothing personal but I don't trust you. Could you please, give ma a favor? Say it loud : "$$y$$ hat, the predicted value, is the sum for $$i$$ equal one to $$i$$ equal $$N$$ of each observation $$x_i$$ multiplied by the value of ith knob.
+**STOP!**. Did you *look at* the previous formula or did you *read it*? Nothing personal but I don't trust you. Could you please, give ma a favor? Say it loud : "$$y$$ hat, the value predicted by our model, is the sum for $$i$$ equal 1 to $$N$$ of each feature's value $$x_i$$ multiplied by the value of the ith knob".
 
 The error is now:
 
 $$error = \hat{y} - y\_true$$
 
-And our cost function using the squared error we already used becomes:
+And our cost function, using the squared error we already used, becomes:
 
-$$C = \frac{1}{2} \cdot error^2 = \frac{1}{2} \left( \sum_{i=1}^{N} w\_i \cdot x\_i - y\_true \right)^2$$
+$$C = \frac{1}{2} \cdot error^2 = \frac{1}{2} \left( \sum_{i=1}^{N} w_i \cdot x_i - y\_true \right)^2$$
 
-Do not start to grumble. Remember the Alamo and remember what we had in 2D. It looked like that:
+Again... Do not start to grumble. Remember the Alamo and remember what we had in 2D. It looked like that:
 
 <div align="center">
 <img src="./assets/img21.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>N independent parameters to optimize.</span> -->
 </div>
 
-Then we said the expression of $$C$$ was to complicated and we wrote : $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$. What you see above is nothing more than the same expression but in N rather than 2 dimensions. Again, don't look at, read the math formula and said it loud as if you were explaining it to your invisible friend (good luck if your mother or wife rush into the room and ask you "what's going on here!")
+Then we said the expression of $$C$$ was too complicated and we wrote : $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$. What you see above is nothing more than the same expression but in N rather than 2 dimensions. Again, don't look at, read the math formula and said it loud as if you were explaining it to your invisible friend (good luck if your mother or wife rush into the room and ask you "what's going on here!")
 
-To minimize this cost in N dimensions, we need to compute the gradient with respect to **each** parameter $$w\_i$$:
+To minimize this cost in N dimensions, we need to compute the gradient with respect to **each** parameter $$w_i$$:
 
-$$\frac{\partial C}{\partial w\_i} = error \cdot x\_i$$
+$$\frac{\partial C}{\partial w_i} = error \cdot x_i$$
 
 And then update each parameter:
 
-$$w\_i\_new = w\_i\_old - \alpha \cdot \frac{\partial C}{\partial w\_i}$$
+$$w_i\_new = w_i\_old - \alpha \cdot \frac{\partial C}{\partial w_i}$$
 
 See? It's exactly what we did in 1D and 2D. Just... repeated N times.
 
@@ -322,15 +342,15 @@ See? It's exactly what we did in 1D and 2D. Just... repeated N times.
 
 Now, here's where things get tricky. And this is **crucial** for real-world applications.
 
-Imagine you have these four features:
+Imagine we have these four features:
 - Study hours: values between 0 and 20
 - Sleep hours: values between 4 and 10
 - Classes missed: values between 0 and 15
 - Previous exam score: values between 0 and 100
 
-Let's say you're trying to predict a student's final exam score using this equation:
+Let's say we are trying to predict a student's final exam score using this equation:
 
-$$\text{exam\_score} = w\_1 \cdot \text{study} + w\_2 \cdot \text{sleep} + w\_3 \cdot \text{missed} + w\_4 \cdot \text{previous}$$
+$$\text{exam\_score} = w_1 \cdot \text{study} + w_2 \cdot \text{sleep} + w_3 \cdot \text{missed} + w_4 \cdot \text{previous}$$
 
 Now, suppose the student studied 10 hours, slept 7 hours, missed 2 classes, and scored 75 on the previous exam.
 
@@ -338,15 +358,15 @@ If all weights start at 1.0, the prediction is:
 
 $$\hat{y} = 1 \cdot 10 + 1 \cdot 7 + 1 \cdot 2 + 1 \cdot 75 = 94$$
 
-**Do you see the problem?** The "previous exam score" contributes 75 to the prediction, while "study hours" only contributes 10. The gradient will be dominated by $$w\_4$$ because $$x\_4$$ is so much larger!
+**Do you see the problem?** The "previous exam score" contributes 75 to the prediction, while "study hours" only contributes 10. The gradient will be dominated by $$w_4$$ because $$x_4$$ is so much larger!
 
 Let's see what happens to the gradients:
 
-$$\frac{\partial C}{\partial w\_1} = error \cdot 10$$
+$$\frac{\partial C}{\partial w_1} = error \cdot 10$$
 
-$$\frac{\partial C}{\partial w\_4} = error \cdot 75$$
+$$\frac{\partial C}{\partial w_4} = error \cdot 75$$
 
-The gradient for $$w\_4$$ is **7.5 times larger** than for $$w\_1$$, not because $$w\_4$$ is more important, but simply because the feature values are on different scales.
+The gradient for $$w_4$$ is **7.5 times larger** than for $$w_1$$, not because $$w_4$$ is more important, but simply because the feature values are on **different scales**.
 
 This causes a nasty problem: gradient descent will spend most of its effort adjusting $$w\_4$$ and will barely touch $$w\_1$$, $$w\_2$$, and $$w\_3$$.
 
@@ -641,7 +661,7 @@ The idea is simple: **put all features on the same scale** before training.
 
 The most common method is called **standardization** (also known as z-score normalization):
 
-$$x\_i\_normalized = \frac{x\_i - \mu\_i}{\sigma\_i}$$
+$$x_i\_normalized = \frac{x_i - \mu_i}{\sigma_i}$$
 
 Where:
 - $$\mu\_i$$ is the mean of feature $$i$$
@@ -1013,3 +1033,4 @@ It covers all the topics above (and much more) with clear explanations and pract
 
 * [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can paste the scripts above.
 * [Machine Learning avec Scikit-Learn](https://www.amazon.fr/dp/2100847686)
+* [Flatland: A Romance of Many Dimensions by Edwin A. Abbott](https://www.amazon.fr/Flatland-Romance-Dimensions-Edwin-Abbott/dp/B0875SRH84)
