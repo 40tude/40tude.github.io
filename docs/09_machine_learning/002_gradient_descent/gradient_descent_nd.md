@@ -890,15 +890,15 @@ The Elegant Way. Now that we understand the concept, let's write it in clean vec
 
 **Weight vector**:
 
-$$\mathbf{w} = \begin{bmatrix} w\_0 \\ w\_1 \\ w\_2 \\ \vdots \\ w\_N \end{bmatrix}$$
+$$\mathbf{w} = \begin{bmatrix} w_0 \\ w_1 \\ w_2 \\ \vdots \\ w_N \end{bmatrix}$$
 
 **Feature vector** (for one sample):
 
-$$\mathbf{x} = \begin{bmatrix} 1 \\ x\_1 \\ x\_2 \\ \vdots \\ x\_N \end{bmatrix}$$
+$$\mathbf{x} = \begin{bmatrix} 1 \\ x_1 \\ x_2 \\ \vdots \\ x_N \end{bmatrix}$$
 
 **Prediction**:
 
-$$\hat{y} = \mathbf{w}^T \mathbf{x} = \sum_{i=0}^{N} w\_i \cdot x\_i$$
+$$\hat{y} = \mathbf{w}^T \mathbf{x} = \sum_{i=0}^{N} w_i \cdot x_i$$
 
 **Cost function** (for all M samples):
 
@@ -961,7 +961,7 @@ But the core idea—compute the gradient, take a step downhill—remains unchang
 
 * **Normalization fixes the scale problem**: Standardization (z-score) or min-max scaling puts all features on equal footing. This allows faster convergence and larger learning rates.
 
-* **Vectorized notation is elegant and fast**: Writing gradient descent in matrix form ($$\mathbf{w} := \mathbf{w} - \alpha \cdot \nabla C(\mathbf{w})$$) is not only cleaner but also much faster to compute.
+* **Vectorized notation is elegant and fast**: Writing gradient descent in matrix form ($$\mathbf{w} := \mathbf{w} - \alpha \cdot \nabla C(\mathbf{w})$$ is not only cleaner but also much faster to compute.
 
 * **The zigzag problem**: Without normalization, gradient descent zigzags through long, narrow valleys. With normalization, it takes the direct path.
 
@@ -988,7 +988,7 @@ But the core idea—compute the gradient, take a step downhill—remains unchang
 
 * Look at the vectorized update rule: $$\mathbf{w} := \mathbf{w} - \alpha \cdot \nabla C(\mathbf{w})$$. This single line updates all N weights simultaneously. How does this compare to writing N separate update equations?
 
-* In the code example, why do we add a column of ones to the feature matrix $$X$$? What does the corresponding weight $$w\_0$$ represent?
+* In the code example, why do we add a column of ones to the feature matrix $$X$$? What does the corresponding weight $$w_0$$ represent?
 
 * The cost function for M samples is $$C(\mathbf{w}) = \frac{1}{2M} \sum_{i=1}^{M} (\mathbf{w}^T \mathbf{x}^{(i)} - y^{(i)})^2$$. Why do we divide by M? Why do we divide by 2?
 
