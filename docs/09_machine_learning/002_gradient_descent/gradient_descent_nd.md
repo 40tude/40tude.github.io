@@ -67,7 +67,7 @@ Have you ever wondered what life would be like in 2D? Watch this:
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/avMX-Zft7K4?si=v2l0VbpP00yiE0zl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<div>
+</div>
 
 Let's see if we can generalize to N dimensions in this post but first, let's take a step back and look at what we've accomplished so far.
 
@@ -664,8 +664,8 @@ The most common method is called **standardization** (also known as z-score norm
 $$x_i\_normalized = \frac{x_i - \mu_i}{\sigma_i}$$
 
 Where:
-- $$\mu\_i$$ is the mean of feature $$i$$
-- $$\sigma\_i$$ is the standard deviation of feature $$i$$
+- $$\mu_i$$ is the mean of feature $$i$$
+- $$\sigma_i$$ is the standard deviation of feature $$i$$
 
 After standardization, each feature has:
 - Mean = 0
@@ -675,9 +675,9 @@ This puts all features on equal footing. Now the gradients reflect the **true im
 
 **Side Note:** Another popular method is min-max scaling where we write
 
-$$x\_i\_normalized = \frac{x\_i - \min(x\_i)}{\max(x\_i) - \min(x\_i)}$$
+$$x_i\_normalized = \frac{x_i - \min(x_i)}{\max(x_i) - \min(x_i)}$$
 
-Sorry to insist. Do **NOT** look at the formula. Read it, explain it to yourself and say it loud. Formulas tell story that we must learn to appreciate. Here it explains that it scales all features to the range [0, 1].
+Sorry to insist. Do **NOT** look at the formula. Read it, explain it to yourself and say it loud. Formulas tell storIES that we must learn to appreciate. Here the formula explains that it scales all features to the range [0, 1].
 
 ***Which one to use?***
 Standardization is generally preferred because it handles outliers. Outliers are the guys that are very far from average. Think of Victor Wembanyama, 2.24m, in a bus of supporters. Anyway, standardization is better because it is less sensitive to the exact min/max values in our dataset.
