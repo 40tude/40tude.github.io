@@ -965,7 +965,7 @@ $$
 
 **The vector of weights:**
 
-The vector has 4 dimensions because we have 4 features.
+The vector has 4 dimensions because we have 1 weight per feature and 4 features. The more important the feature, the greater its weight.
 
 $$
 \mathbf{w} =
@@ -982,7 +982,7 @@ $$
 
 **The target vector $$\mathbf{y}$$:**
 
-The vector has 3 dimensions because, with 3 observations, we can calculate 3 predictions.
+The vector has 3 dimensions because there are 3 observations.
 
 $$
 \mathbf{y} =
@@ -1001,12 +1001,12 @@ We use the formula:
 $$ \hat{y} = \mathbf{X}\mathbf{w}$$
 
 It comes:
+
 $$\begin{aligned}
 \hat{y} & = \mathbf{X}\mathbf{w} \\
 \hat{y} &  = \begin{bmatrix} 1 & 2 & 1 & 0 \\ 1 & 0 & 3 & 1 \\ 1 & -1 & 2 & 2 \end{bmatrix} \cdot \begin{bmatrix} 0.5 \\ -1.0 \\ 2.0 \\ 0.5 \end{bmatrix} \\
 \hat{\mathbf{y}} & = \begin{bmatrix} 0.5 \\ 7 \\ 6.5 \end{bmatrix}
 \end{aligned}$$
-
 
 
 Let's compute the matrix/vector product by hand. Note how we take a line in the matrix $$\mathbf{X}$$ and multiply each of its components with the respective component in the vector $$\mathbf{w}$$ and sum them up. It comes:
@@ -1034,7 +1034,7 @@ $$
 
 
 
-**Compute the Error Vector:**
+**Compute the error vector:**
 
 We use the formula:
 
@@ -1059,21 +1059,21 @@ $$\begin{aligned}
 
 
 
-**Gradient:**
+**Compute the gradient:**
 
 We use the formula:
 
-$$
+$$\begin{aligned}
 \nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y}) \\
 \nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\hat{\mathbf{y}} - \mathbf{y}) \\
 \nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{e}) \\
-$$
+\end{aligned}$$
 
 
 
 Let's first compute $$\mathbf{X}^T \mathbf{e}$$:
 
-Pay attention. $$\mathbf{X}^T$$ is the transposed matrix. Lines become columns and columns become lines. It comes:
+* Pay attention. $$\mathbf{X}^T$$ is the transposed matrix (lines become columns and columns become lines)
 
 $$\begin{aligned}
 \mathbf{X}^T \mathbf{e} & = \begin{bmatrix}1 & 1 & 1 \\ 2 & 0 & -1 \\ 1 & 3 & 2 \\ 0 & 1 & 2 \end{bmatrix} \cdot \begin{bmatrix} -3.5\\ 6\\ 3.5 \end{bmatrix} \\
@@ -1131,7 +1131,7 @@ $$
 \mathbf{w}_{\text{new}} := \mathbf{w} - \alpha \nabla C(\mathbf{w})
 $$
 
-Here we choose a learning rate $$\alpha$$ is 0.1. So we can write:
+Here we choose a learning rate $$\alpha=0.1$$. We can write:
 
 
 
