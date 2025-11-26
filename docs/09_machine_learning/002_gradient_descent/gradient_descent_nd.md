@@ -140,7 +140,7 @@ The beautiful thing? The mathematics we learned in Episodes [1]({%link docs/09_m
 - In the laser game, we adjusted $$y\_laser$$ to minimize $$(y\_laser - y\_target)^2$$
 - In machine learning, we adjust $$w_1, w_2, ..., w_N$$ to minimize $$(prediction - actual)^2$$
 
-Same gradient descent algorithm. Same update rule: $$parameter\_new = parameter\_old - \alpha \times gradient$$.
+Same gradient descent algorithm. Same update rule: $$param\_new = param\_old - \alpha \times gradient$$.
 
 The only difference? Now we have **many parameters** (weights) instead of just one or two positions. And that's exactly what this episode is about: scaling gradient descent to N dimensions.
 
@@ -292,17 +292,17 @@ Now, imagine you're standing in front of a complex control panel with N dials. E
 
 Here's the beautiful part: **each dial is independent**. Turning dial #3 doesn't magically change what dial #7 does. They all contribute to the final output independently.
 
-Mathematically, if we have N parameters $$w\_1, w\_2, ..., w\_N$$, our prediction is:
+Mathematically, if we have N parameters $$w_1, w_2, ..., w_N$$, our prediction is:
 
-$$\hat{y} = w\_1 \cdot x\_1 + w\_2 \cdot x\_2 + ... + w\_N \cdot x\_N$$
+$$\hat{y} = w_1 \cdot x_1 + w_2 \cdot x_2 + ... + w_N \cdot x_N$$
 
 There is a "hat" and you read "y-hat" to distinguish the prediction ($$\hat{y}$$) from the observation ($$y$$)
 
 In a more compact notation we write:
 
-$$\hat{y} = \sum_{i=1}^{N} w\_i \cdot x\_i$$
+$$\hat{y} = \sum_{i=1}^{N} w_i \cdot x_i$$
 
-**STOP!**. Did you *look at* the previous formula or did you *read it*? Nothing personal but I don't trust you. Could you please, give ma a favor? Say it loud : "$$y$$ hat, the value predicted by our model, is the sum for $$i$$ equal 1 to $$N$$ of each feature's value $$x_i$$ multiplied by the value of the ith knob".
+**STOP!**. Did you *look at* the previous formula or did you *read it*? Nothing personal but I don't trust you. Could you please, give ma a favor? Say it loud : "$$y$$ hat, the value predicted by our model, is the sum for $$i$$ equal 1 to $$N$$ of each feature's value $$x_i$$ multiplied by the value of the ith knob $$w_i$$".
 
 The error is now:
 
@@ -319,9 +319,11 @@ Again... Do not start to grumble. Remember the Alamo and remember what we had in
 <!-- <span>N independent parameters to optimize.</span> -->
 </div>
 
-Then we said the expression of $$C$$ was too complicated and we wrote : $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$. What you see above is nothing more than the same expression but in N rather than 2 dimensions. Again, don't look at, read the math formula and said it loud as if you were explaining it to your invisible friend (good luck if your mother or wife rush into the room and ask you "what's going on here!")
+Then we said that expression of $$C$$ with the square root was too complicated and we wrote : $$C = \frac{1}{2} \cdot ({error\_x}^2 + {error\_y}^2)$$. What you see above is nothing more than the same expression but in N rather than 2 dimensions.
 
-To minimize this cost in N dimensions, we need to compute the gradient with respect to **each** parameter $$w_i$$:
+Again, don't look at, read the math formula and said it loud as if you were explaining it to your invisible friend (good luck if your mother or wife rush into the room and ask you "what's going on here!")
+
+To minimize this cost in N dimensions, we need to compute the gradient with respect to **each** parameter $$w_i$$ :
 
 $$\frac{\partial C}{\partial w_i} = error \cdot x_i$$
 
@@ -350,7 +352,7 @@ Imagine we have these four features:
 
 Let's say we are trying to predict a student's final exam score using this equation:
 
-$$\text{exam\_score} = w_1 \cdot \text{study} + w_2 \cdot \text{sleep} + w_3 \cdot \text{missed} + w_4 \cdot \text{previous}$$
+$$\text{exam_score} = w_1 \cdot \text{study} + w_2 \cdot \text{sleep} + w_3 \cdot \text{missed} + w_4 \cdot \text{previous}$$
 
 Now, suppose the student studied 10 hours, slept 7 hours, missed 2 classes, and scored 75 on the previous exam.
 
@@ -358,7 +360,7 @@ If all weights start at 1.0, the prediction is:
 
 $$\hat{y} = 1 \cdot 10 + 1 \cdot 7 + 1 \cdot 2 + 1 \cdot 75 = 94$$
 
-**Do you see the problem?** The "previous exam score" contributes 75 to the prediction, while "study hours" only contributes 10. The gradient will be dominated by $$w_4$$ because $$x_4$$ is so much larger!
+**Do you see the problem?** The "previous exam score" contributes $$\frac{75}{94}$$ to the prediction, while "study hours" only contributes for $$\frac{10}{94}$$. The gradient will be dominated by $$w_4$$ because $$x_4$$ is so much larger!
 
 Let's see what happens to the gradients:
 
@@ -677,7 +679,7 @@ This puts all features on equal footing. Now the gradients reflect the **true im
 
 $$x_i\_normalized = \frac{x_i - \min(x_i)}{\max(x_i) - \min(x_i)}$$
 
-Sorry to insist. Do **NOT** look at the formula. Read it, explain it to yourself and say it loud. Formulas tell storIES that we must learn to appreciate. Here the formula explains that it scales all features to the range [0, 1].
+Sorry to insist. Do **NOT** look at the formula. Read it, explain it to yourself and say it loud. Formulas tell stories that we must learn to appreciate. Here the formula explains that it scales all features to the range [0, 1].
 
 ***Which one to use?***
 Standardization is generally preferred because it handles outliers. Outliers are the guys that are very far from average. Think of Victor Wembanyama, 2.24m, in a bus of supporters. Anyway, standardization is better because it is less sensitive to the exact min/max values in our dataset.
@@ -886,7 +888,7 @@ Notice how in the log-scale plot, the green line (normalized) drops like a stone
 
 ## Few Words About the Vector Notation
 
-The Elegant Way. Now that we understand the concept, let's write it in clean vector notation. This is how you'll see gradient descent written in textbooks and papers.
+The elegant way. Now that we understand the concept, let's write it in clean vector notation. This is how you'll see gradient descent written in textbooks and papers.
 
 **Weight vector**:
 * A vector is in lower case and bold.
@@ -909,9 +911,16 @@ $$\mathbf{x} = \begin{bmatrix} 1 \\ x_1 \\ x_2 \\ \vdots \\ x_N \end{bmatrix}$$
 
 $$\hat{y} = \mathbf{w}^T \mathbf{x} = \sum_{i=0}^{N} w_i \cdot x_i$$
 
-**Cost function** (for all M samples):
+
+
+
+
+**Cost function** (for all M observations):
 
 $$C(\mathbf{w}) = \frac{1}{2M} \sum_{i=1}^{M} (\mathbf{w}^T \mathbf{x}^{(i)} - y^{(i)})^2$$
+
+
+
 
 **Gradient**:
 
@@ -1009,7 +1018,7 @@ $$\begin{aligned}
 \end{aligned}$$
 
 
-Let's compute the matrix/vector product by hand. Note how we take a line in the matrix $$\mathbf{X}$$ and multiply each of its components with the respective component in the vector $$\mathbf{w}$$ and sum them up. It comes:
+Let's compute the matrix/vector product by hand. Below, note how we take a line in the matrix $$\mathbf{X}$$ and multiply each of its components with the respective component in the vector $$\mathbf{w}$$ and sum them up. It comes:
 
 *Observation 1*
 
@@ -1128,10 +1137,10 @@ $$
 We use the formula:
 
 $$
-\mathbf{w}_{\text{new}} := \mathbf{w} - \alpha \nabla C(\mathbf{w})
+\mathbf{w} := \mathbf{w} - \alpha \nabla C(\mathbf{w})
 $$
 
-Here we choose a learning rate $$\alpha=0.1$$. We can write:
+If we choose a learning rate $$\alpha=0.1$$ we can write:
 
 
 
@@ -1169,13 +1178,13 @@ Yes, with a caveat however... The principle is exactly the same. But a few thing
 
 2. **You need more data**: The "[curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)" means that high-dimensional spaces are sparse. You need more training examples to learn reliable patterns.
 
-3. **Local minima become common**: In high dimensions, especially with non-linear models (neural networks), there are many valleys. Gradient descent might get stuck in a local minimum instead of finding the global one. But modern techniques (momentum, adaptive learning rates) help a lot.
+3. **Local minima become common**: In high dimensions, especially with non-linear models (neural networks), there are many valleys. Gradient descent might get stuck in a **local minimum** instead of finding the global one. But modern techniques (momentum, adaptive learning rates) help a lot.
 
 4. **You might use variants**: For very large datasets, "batch" gradient descent (what we've been doing) is slow. Stochastic Gradient Descent (SGD) uses one example at a time, and mini-batch SGD uses small batches. These are faster and often work better.
 
 But the core idea—compute the gradient, take a step downhill—remains unchanged.
 
-**Side Note:** More dimentions (more features) is not means better model. Here like in many other places "Perfect is the enemy of good". Next rainy Saturday morning look for **PCA**. Basically the idea is that most of the time Paretto is right and 20% of the dimensions explains 80% of the model and it is most of the time better to work with smaller number of dimmensions. Then, if it is still raining Sunday morning look for **features engineering**. Here the idea is that, quite often, it is smart to compose a new dimension with 3 dimensions and to get ride of the latters.
+**Side Note:** More dimentions (more features) is not means better model. Here like in many other places "Perfect is the enemy of good". Next rainy Saturday morning look for **PCA**. Basically the idea is that most of the time Paretto is right and 20% of the dimensions explains 80% of the model and it is most of the time better to work with smaller number of dimmensions. Then, if it is still raining Sunday morning look for **features engineering**. Here the idea is that, quite often, it is smart to compose a new dimension with 3 dimensions and to get rid of the latters.
 
 
 
@@ -1254,7 +1263,7 @@ I recommend [this book](https://www.amazon.fr/dp/2100847686) (39€, Nov 2025) f
 <span>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</span>
 </div>
 
-It covers all the topics above (and much more) with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version because you read the words used by the community. There are other books but then the cost is clearly a problem (72€, 60€... They are crazy...).
+It covers all the topics above (and much more) with clear explanations and practical code examples. You now have the foundations to understand everything in that book. Pay attention to the Edition number. Personally I prefer the English version because you read the words used by the ML community. There are other books but then the cost is clearly a problem (72€, 60€... They are crazy...).
 
 
 
