@@ -921,6 +921,265 @@ This vectorized form is not only elegant—it's also **much faster** to compute 
 
 
 
+
+
+
+
+### Numerical Application
+
+* 3 observations
+* 4 features (including bias = 1)
+
+
+**Weight Vector 4 dimensions:**
+
+$$
+\mathbf{w} =
+\begin{bmatrix}
+0.5 \\
+-1.0 \\
+2.0 \\
+0.5
+\end{bmatrix}
+$$
+
+
+**Feature Matrix $$\mathbf{X}$$:**
+
+Each line is an observation. The first column is bias (set to 1).
+
+$$
+\mathbf{X} =
+\begin{bmatrix}
+1 & 2 & 1 & 0 \\
+1 & 0 & 3 & 1 \\
+1 & -1 & 2 & 2
+\end{bmatrix}
+$$
+
+* Observation 1 : $$ x^{(1)} = [1, 2, 1, 0]^T$$
+* Observation 2 : $$ x^{(2)} = [1, 0, 3, 1]^T$$
+* Observation 3 : $$ x^{(3)} = [1, -1, 2, 2]^T$$
+
+
+**Target Vector $$\mathbf{y}$$:**
+
+$$
+\mathbf{y} =
+\begin{bmatrix}
+4 \\
+1 \\
+3
+\end{bmatrix}
+$$
+
+
+**Predictions for Each Observation:**
+
+We use:
+
+$$
+\hat{y} = \mathbf{X}\mathbf{w}
+$$
+
+Let's compute the matrix product = the 3 predictions
+
+*With observation 1:*
+
+$$
+\hat{y}^{(1)} = 1 \cdot 0.5 + 2 \cdot (-1.0) + 1 \cdot 2.0 + 0 \cdot 0.5 = 0.5 - 2 + 2 = 0.5
+$$
+
+*With observation 2:*
+
+$$
+\hat{y}^{(2)} = 1 \cdot 0.5 + 0 \cdot (-1.0) + 3 \cdot 2.0 + 1 \cdot 0.5
+= 0.5 + 0 + 6 + 0.5 = 7
+$$
+
+*With observation 3:*
+
+$$
+\hat{y}^{(3)} = 1 \cdot 0.5 + (-1) \cdot (-1.0) + 2 \cdot 2.0 + 2 \cdot 0.5
+= 0.5 + 1 + 4 + 1 = 6.5
+$$
+
+
+Finally, the predictions vector is:
+
+$$
+\hat{\mathbf{y}} =
+\begin{bmatrix}
+0.5 \\
+7 \\
+6.5
+\end{bmatrix}
+$$
+
+
+**Compute the Error Vector:**
+
+$$
+\mathbf{e} = \hat{\mathbf{y}} - \mathbf{y}
+==========================================
+
+\begin{bmatrix}
+0.5 - 4 \
+7 - 1 \
+6.5 - 3
+\end{bmatrix}
+=============
+
+\begin{bmatrix}
+-3.5 \
+6 \
+3.5
+\end{bmatrix}
+$$
+
+
+**Gradient:**
+
+Formula:
+
+$$
+\nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y})
+$$
+
+Here ( M = 3 ).
+
+Compute ( \mathbf{X}^T \mathbf{e} ):
+
+$$
+\mathbf{X}^T =
+\begin{bmatrix}
+1 & 1 & 1 \\
+2 & 0 & -1 \\
+1 & 3 & 2 \\
+0 & 1 & 2
+\end{bmatrix}
+$$
+
+Multiply:
+
+* First component:
+
+$$
+1(-3.5) + 1(6) + 1(3.5) = 6
+$$
+
+* Second component:
+
+$$
+2(-3.5) + 0(6) + (-1)(3.5) = -10.5
+$$
+
+* Third component:
+
+$$
+1(-3.5) + 3(6) + 2(3.5) = 18
+$$
+
+* Fourth component:
+
+$$
+0(-3.5) + 1(6) + 2(3.5) = 13
+$$
+
+Thus:
+
+$$
+\mathbf{X}^T\mathbf{e} =
+\begin{bmatrix}
+6 \
+-10.5 \
+18 \
+13
+\end{bmatrix}
+$$
+
+Now divide by ( M = 3 ):
+
+$$
+\nabla C(\mathbf{w}) =
+\begin{bmatrix}
+2 \
+-3.5 \
+6 \
+4.333
+\end{bmatrix}
+$$
+
+---
+
+## Update Rule
+
+Using:
+
+$$
+\mathbf{w}_{\text{new}} = \mathbf{w} - \alpha \nabla C(\mathbf{w})
+$$
+
+Choose a learning rate (example):
+
+$$
+\alpha = 0.1
+$$
+
+Then:
+
+$$
+\mathbf{w}_{\text{new}} =
+\begin{bmatrix}
+0.5 \
+-1.0 \
+2.0 \
+0.5
+\end{bmatrix}
+-------------
+
+0.1 \cdot
+\begin{bmatrix}
+2 \
+-3.5 \
+6 \
+4.333
+\end{bmatrix}
+=============
+
+\begin{bmatrix}
+0.5 - 0.2 \
+-1.0 + 0.35 \
+2.0 - 0.6 \
+0.5 - 0.4333
+\end{bmatrix}
+=============
+
+\begin{bmatrix}
+0.3 \
+-0.65 \
+1.4 \
+0.0667
+\end{bmatrix}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
