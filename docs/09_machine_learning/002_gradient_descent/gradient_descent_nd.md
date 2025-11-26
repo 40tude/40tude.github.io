@@ -889,14 +889,23 @@ Notice how in the log-scale plot, the green line (normalized) drops like a stone
 The Elegant Way. Now that we understand the concept, let's write it in clean vector notation. This is how you'll see gradient descent written in textbooks and papers.
 
 **Weight vector**:
+* A vector is in lower case and bold.
+* A vector is a column
 
 $$\mathbf{w} = \begin{bmatrix} w_0 \\ w_1 \\ w_2 \\ \vdots \\ w_N \end{bmatrix}$$
+
+
 
 **Feature vector** (for one sample):
 
 $$\mathbf{x} = \begin{bmatrix} 1 \\ x_1 \\ x_2 \\ \vdots \\ x_N \end{bmatrix}$$
 
+
+
 **Prediction**:
+* $$\mathbf{w}^T$$ means that the vector is transposed
+* In a transposition, the first column becomes the first line, the second col the second line...
+* Here the column vector becomes a line vector
 
 $$\hat{y} = \mathbf{w}^T \mathbf{x} = \sum_{i=0}^{N} w_i \cdot x_i$$
 
@@ -946,7 +955,8 @@ $$
 
 **Feature Matrix $$\mathbf{X}$$:**
 
-Each line is an observation. The first column is bias (set to 1).
+* Each line is an observation.
+* The first column is a bias, set to 1 here.
 
 $$
 \mathbf{X} =
@@ -976,28 +986,34 @@ $$
 
 **Predictions for Each Observation:**
 
-We use:
+Formula:
+$$ \hat{y} = \mathbf{X}\mathbf{w}$$
 
-$$
-\hat{y} = \mathbf{X}\mathbf{w}
-$$
+It comes:
+$$\begin{aligned}
+\hat{y} & = \mathbf{X}\mathbf{w} \\
+\hat{y} &  = \begin{bmatrix} 1 & 2 & 1 & 0 \\ 1 & 0 & 3 & 1 \\ 1 & -1 & 2 & 2 \end{bmatrix} \cdot \begin{bmatrix} 0.5 \\ -1.0 \\ 2.0 \\ 0.5 \end{bmatrix} \\
+\hat{\mathbf{y}} & = \begin{bmatrix} 0.5 \\ 7 \\ 6.5 \end{bmatrix}
+\end{aligned}$$
 
-Let's compute the matrix product = the 3 predictions
 
-*With observation 1:*
+
+Let's compute the matrix/vector product by hand. Note how we take a line in the matrix $$\mathbf{X}$$ and multiply each of its components with the respective component in the vector $$\mathbf{w}$$ and sum them up. It comes:
+
+*Observation 1*
 
 $$
 \hat{y}^{(1)} = 1 \cdot 0.5 + 2 \cdot (-1.0) + 1 \cdot 2.0 + 0 \cdot 0.5 = 0.5 - 2 + 2 = 0.5
 $$
 
-*With observation 2:*
+*Observation 2*
 
 $$
 \hat{y}^{(2)} = 1 \cdot 0.5 + 0 \cdot (-1.0) + 3 \cdot 2.0 + 1 \cdot 0.5
 = 0.5 + 0 + 6 + 0.5 = 7
 $$
 
-*With observation 3:*
+*Observation 3*
 
 $$
 \hat{y}^{(3)} = 1 \cdot 0.5 + (-1) \cdot (-1.0) + 2 \cdot 2.0 + 2 \cdot 0.5
@@ -1005,37 +1021,30 @@ $$
 $$
 
 
-Finally, the predictions vector is:
-
-$$
-\hat{\mathbf{y}} =
-\begin{bmatrix}
-0.5 \\
-7 \\
-6.5
-\end{bmatrix}
-$$
 
 
 **Compute the Error Vector:**
 
-$$
-\mathbf{e} = \hat{\mathbf{y}} - \mathbf{y}
-==========================================
+Formula:
+$$ \mathbf{e} = \hat{\mathbf{y}} - \mathbf{y}$$
 
-\begin{bmatrix}
-0.5 - 4 \
-7 - 1 \
-6.5 - 3
-\end{bmatrix}
-=============
+It comes:
 
-\begin{bmatrix}
--3.5 \
-6 \
-3.5
-\end{bmatrix}
-$$
+$$\begin{aligned}
+\mathbf{e} & = \hat{\mathbf{y}} - \mathbf{y} \\
+\mathbf{e} & = \begin{bmatrix}0.5\\ 7\\ 6.5 \end{bmatrix} - \begin{bmatrix}4 \\1 \\3 \\\end{bmatrix} \\
+\mathbf{e} & = \begin{bmatrix} -3.5\\ 6\\ 3.5 \end{bmatrix}
+\end{aligned}$$
+
+
+
+
+
+
+
+
+
+
 
 
 **Gradient:**
@@ -1043,78 +1052,66 @@ $$
 Formula:
 
 $$
-\nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y})
+\nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y}) \\
+\nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\hat{\mathbf{y}} - \mathbf{y}) \\
+\nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{e}) \\
 $$
 
-Here ( M = 3 ).
+Here M = 3.
 
-Compute ( \mathbf{X}^T \mathbf{e} ):
+Compute $$\mathbf{X}^T \mathbf{e}$$:
 
-$$
-\mathbf{X}^T =
-\begin{bmatrix}
-1 & 1 & 1 \\
-2 & 0 & -1 \\
-1 & 3 & 2 \\
-0 & 1 & 2
-\end{bmatrix}
-$$
+$$\begin{aligned}
+\mathbf{X}^T \mathbf{e} & = \begin{bmatrix}1 & 1 & 1 \\ 2 & 0 & -1 \\ 1 & 3 & 2 \\ 0 & 1 & 2 \end{bmatrix} \cdot \begin{bmatrix} -3.5\\ 6\\ 3.5 \end{bmatrix} \\
+\mathbf{X}^T \mathbf{e} & = \begin{bmatrix} 6 \\ -10.5 \\ 18 \\ 13 \end{bmatrix}
+\end{aligned}$$
 
-Multiply:
 
-* First component:
+
+
+Multiplication "by hand":
+
+*First component*
 
 $$
 1(-3.5) + 1(6) + 1(3.5) = 6
 $$
 
-* Second component:
+*Second component*
 
 $$
 2(-3.5) + 0(6) + (-1)(3.5) = -10.5
 $$
 
-* Third component:
+*Third component*
 
 $$
 1(-3.5) + 3(6) + 2(3.5) = 18
 $$
 
-* Fourth component:
+*Fourth component*
 
 $$
 0(-3.5) + 1(6) + 2(3.5) = 13
 $$
 
-Thus:
 
-$$
-\mathbf{X}^T\mathbf{e} =
-\begin{bmatrix}
-6 \
--10.5 \
-18 \
-13
-\end{bmatrix}
-$$
-
-Now divide by ( M = 3 ):
+Now divide by $$M=3$$
 
 $$
 \nabla C(\mathbf{w}) =
 \begin{bmatrix}
-2 \
--3.5 \
-6 \
+2 \\
+-3.5 \\
+6 \\
 4.333
 \end{bmatrix}
 $$
 
----
 
-## Update Rule
+**Update Rule**
 
-Using:
+Formula:
 
 $$
 \mathbf{w}_{\text{new}} = \mathbf{w} - \alpha \nabla C(\mathbf{w})
@@ -1126,44 +1123,15 @@ $$
 \alpha = 0.1
 $$
 
-Then:
-
-$$
-\mathbf{w}_{\text{new}} =
-\begin{bmatrix}
-0.5 \
--1.0 \
-2.0 \
-0.5
-\end{bmatrix}
--------------
-
-0.1 \cdot
-\begin{bmatrix}
-2 \
--3.5 \
-6 \
-4.333
-\end{bmatrix}
-=============
-
-\begin{bmatrix}
-0.5 - 0.2 \
--1.0 + 0.35 \
-2.0 - 0.6 \
-0.5 - 0.4333
-\end{bmatrix}
-=============
-
-\begin{bmatrix}
-0.3 \
--0.65 \
-1.4 \
-0.0667
-\end{bmatrix}
-$$
+Then it comes:
 
 
+
+$$\begin{aligned}
+\mathbf{w}_{\text{new}} & = \begin{bmatrix} 0.5 \\ -1.0 \\ 2.0 \\ 0.5 \end{bmatrix} - 0.1 \cdot \begin{bmatrix} 2 \\ -3.5 \\ 6 \\ 4.333 \end{bmatrix} \\
+\mathbf{w}_{\text{new}} & = \begin{bmatrix} 0.5 - 0.2 \\ -1.0 + 0.35 \\ 2.0 - 0.6 \\ 0.5 - 0.4333 \end{bmatrix} \\
+\mathbf{w}_{\text{new}} & = \begin{bmatrix}0.3 \\ -0.65 \\ 1.4 \\ 0.0667 \end{bmatrix}
+\end{aligned}$$
 
 
 
