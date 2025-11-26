@@ -1137,7 +1137,7 @@ $$
 We use the formula:
 
 $$
-\mathbf{w} := \mathbf{w} - \alpha \nabla C(\mathbf{w})
+\mathbf{w} := \mathbf{w} - \alpha \cdot \nabla C(\mathbf{w})
 $$
 
 If we choose a learning rate $$\alpha=0.1$$ we can write:
