@@ -903,7 +903,7 @@ $$\mathbf{x} = \begin{bmatrix} 1 \\ x_1 \\ x_2 \\ \vdots \\ x_N \end{bmatrix}$$
 
 
 **Prediction**:
-* $$\mathbf{w}^T$$ means that the vector is transposed
+* Below, $$\mathbf{w}^T$$ means that the vector is transposed
 * In a transposition, the first column becomes the first line, the second col the second line...
 * Here the column vector becomes a line vector
 
@@ -935,12 +935,37 @@ This vectorized form is not only elegant—it's also **much faster** to compute 
 
 
 ### Numerical Application
+Let's make one update by hand. Just to make sure we understand how the previous formulas are translated with values. Let's take a case where we have :
+* 3 observations. $$M = 3$$.
+* 4 features (including bias = 1). $$N = 4$$
 
-* 3 observations
-* 4 features (including bias = 1)
 
 
-**Weight Vector 4 dimensions:**
+**The feature matrix $$\mathbf{X}$$:**
+
+* There are 3 lines because we have 3 observations
+* There are 4 columns because each observation has 4 features (study_hours, sleep_hours, ...)
+* The first column is a bias, set to 1 here.
+* The other columns correspond to feature_1, feature_2, feature_3.
+
+$$
+\mathbf{X} =
+\begin{bmatrix}
+1 & 2 & 1 & 0 \\
+1 & 0 & 3 & 1 \\
+1 & -1 & 2 & 2
+\end{bmatrix}
+$$
+
+<!-- * Observation 1 : $$ x^{(1)} = [1, 2, 1, 0]^T$$
+* Observation 2 : $$ x^{(2)} = [1, 0, 3, 1]^T$$
+* Observation 3 : $$ x^{(3)} = [1, -1, 2, 2]^T$$ -->
+
+
+
+**The vector of weights:**
+
+The vector has 4 dimensions because we have 4 features.
 
 $$
 \mathbf{w} =
@@ -953,26 +978,11 @@ $$
 $$
 
 
-**Feature Matrix $$\mathbf{X}$$:**
-
-* Each line is an observation.
-* The first column is a bias, set to 1 here.
-
-$$
-\mathbf{X} =
-\begin{bmatrix}
-1 & 2 & 1 & 0 \\
-1 & 0 & 3 & 1 \\
-1 & -1 & 2 & 2
-\end{bmatrix}
-$$
-
-* Observation 1 : $$ x^{(1)} = [1, 2, 1, 0]^T$$
-* Observation 2 : $$ x^{(2)} = [1, 0, 3, 1]^T$$
-* Observation 3 : $$ x^{(3)} = [1, -1, 2, 2]^T$$
 
 
-**Target Vector $$\mathbf{y}$$:**
+**The target vector $$\mathbf{y}$$:**
+
+The vector has 3 dimensions because, with 3 observations, we can calculate 3 predictions.
 
 $$
 \mathbf{y} =
@@ -984,9 +994,10 @@ $$
 $$
 
 
-**Predictions for Each Observation:**
+**Predictions for each observation:**
 
-Formula:
+We use the formula:
+
 $$ \hat{y} = \mathbf{X}\mathbf{w}$$
 
 It comes:
@@ -1025,7 +1036,8 @@ $$
 
 **Compute the Error Vector:**
 
-Formula:
+We use the formula:
+
 $$ \mathbf{e} = \hat{\mathbf{y}} - \mathbf{y}$$
 
 It comes:
@@ -1049,7 +1061,7 @@ $$\begin{aligned}
 
 **Gradient:**
 
-Formula:
+We use the formula:
 
 $$
 \nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{X}\mathbf{w} - \mathbf{y}) \\
@@ -1057,9 +1069,11 @@ $$
 \nabla C(\mathbf{w}) = \frac{1}{M} \mathbf{X}^T (\mathbf{e}) \\
 $$
 
-Here M = 3.
 
-Compute $$\mathbf{X}^T \mathbf{e}$$:
+
+Let's first compute $$\mathbf{X}^T \mathbf{e}$$:
+
+Pay attention. $$\mathbf{X}^T$$ is the transposed matrix. Lines become columns and columns become lines. It comes:
 
 $$\begin{aligned}
 \mathbf{X}^T \mathbf{e} & = \begin{bmatrix}1 & 1 & 1 \\ 2 & 0 & -1 \\ 1 & 3 & 2 \\ 0 & 1 & 2 \end{bmatrix} \cdot \begin{bmatrix} -3.5\\ 6\\ 3.5 \end{bmatrix} \\
@@ -1069,7 +1083,7 @@ $$\begin{aligned}
 
 
 
-Multiplication "by hand":
+<!-- Multiplication "by hand":
 
 *First component*
 
@@ -1093,10 +1107,10 @@ $$
 
 $$
 0(-3.5) + 1(6) + 2(3.5) = 13
-$$
+$$ -->
 
 
-Now divide by $$M=3$$
+Now, let's divide by $$M=3$$ and we get:
 
 $$
 \nabla C(\mathbf{w}) =
@@ -1109,21 +1123,15 @@ $$
 $$
 
 
-**Update Rule**
+**Let's apply the update Rule**
 
-Formula:
-
-$$
-\mathbf{w}_{\text{new}} = \mathbf{w} - \alpha \nabla C(\mathbf{w})
-$$
-
-Choose a learning rate (example):
+We use the formula:
 
 $$
-\alpha = 0.1
+\mathbf{w}_{\text{new}} := \mathbf{w} - \alpha \nabla C(\mathbf{w})
 $$
 
-Then it comes:
+Here we choose a learning rate $$\alpha$$ is 0.1. So we can write:
 
 
 
@@ -1132,7 +1140,6 @@ $$\begin{aligned}
 \mathbf{w}_{\text{new}} & = \begin{bmatrix} 0.5 - 0.2 \\ -1.0 + 0.35 \\ 2.0 - 0.6 \\ 0.5 - 0.4333 \end{bmatrix} \\
 \mathbf{w}_{\text{new}} & = \begin{bmatrix}0.3 \\ -0.65 \\ 1.4 \\ 0.0667 \end{bmatrix}
 \end{aligned}$$
-
 
 
 
