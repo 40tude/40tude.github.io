@@ -7,7 +7,7 @@ description: How to transform the Pragmatic Rust Guidelines into a Claude skill,
 parent: Rust
 #math: mathjax
 date               : 2025-11-19 01:00:00
-last_modified_date : 2025-11-18 17:00:00
+last_modified_date : 2025-11-28 17:00:00
 ---
 
 
