@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Directory -Depth 0)",
+      "Bash(Select-Object -First 20 Name)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

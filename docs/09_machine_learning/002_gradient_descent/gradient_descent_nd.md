@@ -7,7 +7,7 @@ description: Generalizing to real-world machine learning problems
 parent: "Machine Learning"
 math: mathjax
 date:               2025-11-24 16:00:00 +0000
-last_modified_date: 2025-11-24 21:00:00 +0000
+last_modified_date: 2025-11-29 18:00:00 +0000
 # nav_order: 9
 # permalink: /machine_learning/
 ---
@@ -947,6 +947,10 @@ This vectorized form is not only elegant—it's also **much faster** to compute 
 Let's make one update by hand. Just to make sure we understand how the previous formulas are translated with values. Let's take a case where we have :
 * 3 observations. $$M = 3$$.
 * 4 features (including bias = 1). $$N = 4$$
+
+
+***Excuse me... Including bias blablabla? Never heard about this guy... Can you tell me more?***
+Do you remember, September... Do you remember Episode 1 when we translated mathematically the setup. In order to simplify we said that the source of the laser was at your chest and so the equation of the line was not $$y = a \cdot x + b$$ but simply $$y = a \cdot x$$ with a bias equal to 0. Here this is similar, we just make sure bias values are taken into account and will be adjusted.
 
 
 
