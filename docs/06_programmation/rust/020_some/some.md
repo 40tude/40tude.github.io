@@ -2,7 +2,7 @@
 published: true
 lang: en-US
 layout: default
-title: Mastering `Option<T>` in Rust: 15 Patterns from Beginner to Advanced
+title: "Mastering Option in Rust: 15 Patterns from Beginner to Advanced"
 description: "Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from if let to advanced combinators"
 parent: "Rust"
 date:               2025-11-29 01:00:00
