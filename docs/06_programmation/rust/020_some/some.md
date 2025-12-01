@@ -2,14 +2,14 @@
 published: true
 lang: en-US
 layout: default
-title: "Mastering Option in Rust: 15 Patterns from Beginner to Advanced"
+title: "Option in Rust: 15 Examples from Beginner to Advanced"
 description: "Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from if let to advanced combinators"
 parent: "Rust"
 date:               2025-11-29 01:00:00
 last_modified_date: 2025-12-01 23:00:00
 ---
 
-# Mastering `Option<T>` in Rust: 15 Patterns from Beginner to Advanced
+# `Option<T>` in Rust: 15 Examples from Beginner to Advanced
 {: .no_toc }
 
 A Code-First Guide with Runnable Examples
@@ -37,6 +37,9 @@ A Code-First Guide with Runnable Examples
 
 
 
+<div align="center">
+<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+</div>
 
 
 
@@ -48,6 +51,8 @@ A Code-First Guide with Runnable Examples
 {: .no_toc .text-delta}
 - TOC
 {:toc}
+
+
 
 
 
@@ -74,7 +79,7 @@ In short, this post is a kind of therapy during which I will try to heal myself 
 <!-- ###################################################################### -->
 ## How to Use This Guide?
 
-I want to try something new here so this article uses a sort of **inverted pedagogy**: code first, explanation second and cherry on the cake... You don't have to read it all. Indeed the post is split in 3 different levels:
+I want to try something new here so this article uses a sort of **inverted pedagogy**: code first, explanation second and cherry on the cake... You don't have to read it all all at once since the post is split in 3 different levels:
 
 - 🟢 **Beginner**: Basic patterns (`if let`, `match`)
 - 🔵 **Intermediate**: Combinators and chaining (`map`, `and_then`, `?`)
@@ -181,7 +186,10 @@ This said... Let's dive in!
 <!-- ###################################################################### -->
 ### Example 01 - `Option<T>` as a Return Value
 
-**Context**: For me, this one is the easiest. Indeed we can explain in plain English that a function may look for a file and if it does'nt find it, it then returns "nothing". On success the function returns a the file. Returning an Option is applicable to all functions which may not succeed (without crashing) and do not have any value to return (e.g., searching, parsing, optional configuration).
+#### **Real-world context**
+{: .no_toc }
+
+For me, this one is the easiest. Indeed we can explain in plain English that a function may look for a file and if it does'nt find it, it then returns "nothing". On success the function returns a the file. Returning an Option is applicable to all functions which may not succeed (without crashing) and do not have any value to return (e.g., searching, parsing, optional configuration).
 
 Easy to explain, easy to translate. The easiest, I told you.
 
@@ -242,7 +250,10 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\)$`
 <!-- ###################################################################### -->
 ### Example 02 - `if let Some(...)` - Setting Values Conditionally
 
-**Real-world context**: Updating configuration, processing optional user input, conditional initialization.
+#### **Real-world context**
+{: .no_toc }
+
+Updating configuration, processing optional user input, conditional initialization.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -335,7 +346,10 @@ Regular expression to use either in VSCode ou Powershell: `if let Some\(.+\) = `
 
 ### Example 03 - `match` Expression with Early Return
 
-**Real-world context**: File operations, network requests, database queries - anything that might fail and requires early exit.
+#### **Real-world context**
+{: .no_toc }
+
+File operations, network requests, database queries - anything that might fail and requires early exit.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -409,7 +423,10 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 
 ### ### Example 04 - `let...else` - Modern Early Return (Rust 1.65+)
 
-**Real-world context**: Same as match early return, but more concise (modern Rust style).
+#### **Real-world context**
+{: .no_toc }
+
+Same as match early return, but more concise (modern Rust style).
 
 #### **Runnable Example**
 {: .no_toc }
@@ -576,7 +593,10 @@ Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(`
 
 ### Example 06 - The `?` Operator - Early Return Propagation
 
-**Real-world context**: Chaining optional operations, parsing pipelines, database query chains.
+#### **Real-world context**
+{: .no_toc }
+
+Chaining optional operations, parsing pipelines, database query chains.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -649,7 +669,10 @@ Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+
 
 ### Example 07 - `map()` - Transforming Values Inside `Option<T>`
 
-**Real-world context**: Processing data that might not exist, transforming configurations, sanitizing user input.
+#### **Real-world context**
+{: .no_toc }
+
+Processing data that might not exist, transforming configurations, sanitizing user input.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -712,7 +735,10 @@ Regular expression to use either in VSCode ou Powershell: `\.map\(|.+|\s*.+\)`
 
 ### Example 08 - `and_then()` - Chaining `Option<T>` - Returning Functions
 
-**Real-world context**: Validation chains, nested optional lookups (config sections), parsing pipelines.
+#### **Real-world context**
+{: .no_toc }
+
+Validation chains, nested optional lookups (config sections), parsing pipelines.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -780,7 +806,10 @@ Regular expression to use either in VSCode ou Powershell: `\.and_then\(`
 
 ### Example 09 - Pattern Matching with Guards
 
-**Real-world context**: Conditional logic based on value properties, filtering with conditions, validation.
+#### **Real-world context**
+{: .no_toc }
+
+Conditional logic based on value properties, filtering with conditions, validation.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -860,7 +889,10 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
 <!--
 ### Example 10 - `as_ref()` and `as_mut()` - Borrowing Instead of Moving
 
-**Real-world context**: Inspecting `Option<T>` without consuming it, modifying in-place, reusing `Option<T>` after checking.
+#### **Real-world context**
+{: .no_toc }
+
+Inspecting `Option<T>` without consuming it, modifying in-place, reusing `Option<T>` after checking.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -937,7 +969,10 @@ Regular expression to use either in VSCode ou Powershell: `\.as_ref\(\)\.map` or
 
 ### Example 11 - `take()` - Extracting Value and Leaving `None`
 
-**Real-world context**: Consuming resources (files, connections), state machines, cleanup operations.
+#### **Real-world context**
+{: .no_toc }
+
+Consuming resources (files, connections), state machines, cleanup operations.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -1021,7 +1056,10 @@ Regular expression to use either in VSCode ou Powershell: `\.take\(\)`
 ### Example 12 - `filter()` - Conditional Mapping
 {: .no_toc }
 
-**Real-world context**: Validation, keeping only values that meet criteria, sanitization.
+#### **Real-world context**
+{: .no_toc }
+
+Validation, keeping only values that meet criteria, sanitization.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -1090,7 +1128,10 @@ Regular expression to use either in VSCode ou Powershell: `\.filter\(|.+|\s*.+\)
 
 ### Example 13 - `flatten()` and `filter_map()` - Working with Collections of Options
 
-**Real-world context**: Processing results where some operations fail, removing `None` values, transforming + filtering.
+#### **Real-world context**
+{: .no_toc }
+
+Processing results where some operations fail, removing `None` values, transforming + filtering.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -1171,7 +1212,10 @@ Regular expression to use either in VSCode ou Powershell: `\.flatten\(\)` or `\.
 
 ### Example 14 - Combining Multiple Options
 
-**Real-world context**: Validation requiring multiple fields, coordinate systems, multi-factor authentication.
+#### **Real-world context**
+{: .no_toc }
+
+Validation requiring multiple fields, coordinate systems, multi-factor authentication.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -1257,7 +1301,10 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\?\s*[+\-*/].
 
 ### Example 15 -  `copied()` and `cloned()` - Converting `Option<&T>` to `Option<T>`
 
-**Real-world context**: Working with references from collections, avoiding lifetime issues, simplifying ownership.
+#### **Real-world context**
+{: .no_toc }
+
+Working with references from collections, avoiding lifetime issues, simplifying ownership.
 
 #### **Runnable Example**
 {: .no_toc }
