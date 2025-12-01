@@ -81,7 +81,7 @@ In short, this post is a kind of therapy during which I will try to heal myself 
 
 I want to try something new here so this article uses a sort of **inverted pedagogy**: code first, explanation second and cherry on the cake... You don't have to read it all all at once since the post is split in 3 different levels:
 
-- 🟢 **Beginner**: Basic patterns (`if let`, `match`)
+- 🟢 **Beginner**: Basic examples (`if let`, `match`)
 - 🔵 **Intermediate**: Combinators and chaining (`map`, `and_then`, `?`)
 - 🔴 **Advanced**: Ownership tricks (`as_ref`, `take`, `flatten`)
 
@@ -92,7 +92,7 @@ Each Example section is organized as follow:
     1. Copy the complete code snippet
     1. Paste it into [Rust Playground](https://play.rust-lang.org/)
     1. Click "Run" (or press Ctrl+S)
-    1. Experiment by modifying the code. break everything, spend some time in the Playground. Play!
+    1. Experiment by modifying the code. Break everything, spend some time in the Playground. Play!
 1. **Read it Aloud:** This section is more important than you may think in first approximation. Indeed, I'm convinced that too often, in programming (like in Maths) people look at the code (at the formula) but they don't **read** the code (nor the formula). However the code tells us a story and this is this story that I try to tell in the section.
 1. **Comments:** my comments about the code, my understanding or some stuff I may have in mind.
 1. **Key Points:** what to keep in mind
@@ -119,13 +119,13 @@ git clone https://github.com/aovestdipaperino/turbo-vision-4-rust
 ```
 Other ideas include but are not limited to : [`bat`](https://github.com/sharkdp/bat), [`fd`](https://github.com/sharkdp/fd), [`tokei`](https://github.com/XAMPPRocky/tokei), [`hyperfine`](https://github.com/sharkdp/hyperfine)... Stay away from projects that are either too large or too complex.
 
-At the end of each Example, I will share the regular expression to use to find line of code corresponding to the example. Once you have this regular expression in hands (let's say `Some\(.+\)$`) you can either:
+At the end of each Example, I will share the regular expression to use to find the lines of code corresponding to the example. Once you have this regular expression in hands (let's say `Some\(.+\)$`) you can either:
 
 **In VSCode:**
 * Open the project of interest
 * `CTRL+SHIFT+F`, enable regex (`ALT+R`), type: `Some\(.+\)$`
 
-**In Powershell:** copy'n paste the lines below in a terminal at the root of a Rust project.
+**In Powershell:** copy'n paste the lines below in a terminal.
 
 ```Powershell
 Get-ChildItem -Path "$env:TMP/hexyl/src" -Filter *.rs -Recurse |
@@ -143,7 +143,7 @@ Get-ChildItem -Path "$env:TMP/hexyl/src" -Filter *.rs -Recurse |
     }
 ```
 
-Above we look into the codebase of `hexyl`. This wok the same way for `zoxyde/src` or `turbo-vision-4-rust/src`.
+Above we look into the codebase of `hexyl`. This work the same way for `zoxyde/src` or `turbo-vision-4-rust/src`.
 
 In the case of:
 * `edit` use the path: `$env:TMP/edit/crates/edit/src`
@@ -177,7 +177,7 @@ This said... Let's dive in!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🟢 Beginner Patterns (1-4)
+## 🟢 Beginner Examples (1-4)
 
 
 
@@ -517,7 +517,7 @@ Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ e
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔵 Intermediate Patterns (5-9)
+## 🔵 Intermediate Examples (5-9)
 
 <!--
 ### Example 05 - `unwrap_or` vs `unwrap_or_else` - Providing Defaults
@@ -883,7 +883,7 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔴 Advanced Patterns (10-15)
+## 🔴 Advanced Examples (10-15)
 
 
 <!--
