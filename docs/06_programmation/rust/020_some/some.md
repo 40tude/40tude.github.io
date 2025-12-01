@@ -2,7 +2,7 @@
 published: true
 lang: en-US
 layout: default
-title: "Mastering `Option<T>` in Rust: 15 Patterns from Beginner to Advanced"
+title: Mastering `Option<T>` in Rust: 15 Patterns from Beginner to Advanced
 description: "Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from if let to advanced combinators"
 parent: "Rust"
 date:               2025-11-29 01:00:00
@@ -69,6 +69,9 @@ enum Option<T> {
 
 
 ## Introduction
+Personnellement, j'ai toujours un peu de mal avec la syntaxe de Rust. Oui je comprends ce que lis mais il n'empêche que le lendemain quand je dois écrire une ligne de code
+
+
 
 <!--
 
