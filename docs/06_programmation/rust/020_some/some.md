@@ -1136,12 +1136,10 @@ fn main() {
 
 
 ## Quick Reference Cheat Sheet
- -->
-
-<!-- TODO: Consider creating this as an image (cheat_sheet.webp) for better readability -->
+-->
 
 
- <!--
+<!--
 ### Extraction Methods
 
 | Method | Returns on Some | Returns on `None` | Panics? |
@@ -1184,7 +1182,7 @@ fn main() {
 - **Zero-cost**: `as_ref()`, `as_mut()`, `is_some()`, `is_none()` - compile to no-ops or simple checks
 
 
- -->
+-->
 
 
 
