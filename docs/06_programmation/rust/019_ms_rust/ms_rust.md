@@ -37,7 +37,7 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 * VSCode + Win11 (not tested elsewhere)
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
 <span>A step-by-step guide to leveraging Claude and Microsoft's Rust Guidelines in VSCode.</span>
 </div>
 

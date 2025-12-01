@@ -1,12 +1,12 @@
 ---
-published: false
+published: true
 lang: en-US
 layout: default
-title: "Mastering Option<T> in Rust: 15 Patterns from Beginner to Advanced"
-description: "Learn Rust's Option<T> through runnable Playground examples - progressive guide from if let to advanced combinators"
+title: "Mastering `Option<T>` in Rust: 15 Patterns from Beginner to Advanced"
+description: "Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from if let to advanced combinators"
 parent: "Rust"
 date:               2025-11-29 01:00:00
-last_modified_date: 2025-11-29 01:00:00
+last_modified_date: 2025-12-01 16:00:00
 ---
 
 # Mastering `Option<T>` in Rust: 15 Patterns from Beginner to Advanced
@@ -22,10 +22,15 @@ A Code-First Guide with Runnable Examples
 
 
 
+<h2 align="center">
+<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
+</h2>
+
 
 
 ## TL;DR
 
+<!--
 Rust's `Option<T>` replaces null references with a type-safe enum that forces you to handle the "no value" case explicitly.
 
 ```rust
@@ -40,19 +45,34 @@ enum Option<T> {
 - Safe unwrapping: `unwrap_or()`, `unwrap_or_else()`
 - Chaining: `map()`, `and_then()`, `filter()`
 - Advanced: `as_ref()`, `take()`, `flatten()`, combining Options
+ -->
+
 
 <!-- TODO: Add Option<T> diagram image here -->
 <!-- <div align="center">
 <img src="./assets/option_diagram.webp" alt="Option<T> enum diagram" width="450" loading="lazy"/>
 </div> -->
 
-**Quick start**: Copy any example → Paste in [Rust Playground](https://play.rust-lang.org/) → CTRL+ENTER → Read the code, don't look at it → Come back here.
+<!-- **Quick start**: Copy any example → Paste in [Rust Playground](https://play.rust-lang.org/) → CTRL+ENTER → Read the code, don't look at it → Come back here. -->
+
+
+
+<div align="center">
+<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>A step-by-step guide to leveraging Claude and Microsoft's Rust Guidelines in VSCode.</span> -->
+</div>
+
+
 
 
 
 
 
 ## Introduction
+
+<!--
+
+
 
 ### Why Option<T> Instead of Null?
 
@@ -85,6 +105,8 @@ match get_name() {
 ### How to Use This Guide
 
 This article uses **inverted pedagogy**: code first, explanation second.
+ -->
+
 
 <!-- TODO: Add Playground screenshot here -->
 <!-- <div align="center">
@@ -93,6 +115,9 @@ This article uses **inverted pedagogy**: code first, explanation second.
 <span>The Rust Playground - your sandbox for learning</span>
 </div> -->
 
+
+
+<!--
 **For each example**:
 1. **Copy** the complete code snippet
 2. **Paste** into [Rust Playground](https://play.rust-lang.org/)
@@ -107,7 +132,7 @@ This article uses **inverted pedagogy**: code first, explanation second.
 
 Let's dive in!
 
-
+ -->
 
 
 
@@ -146,23 +171,43 @@ fn main() {
 ```
 
 #### Read it Aloud
+{: .no_toc }
 
 `get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if let` pattern checks: "If there is Some text, bind it to `my_txt` and execute the block. Otherwise, execute the else branch."
 
 #### Key Points
+{: .no_toc }
 
 1. **Pattern**: `if let Some(variable) = option_value` unwraps only when `Some`, avoids verbose `match`
 2. **When to use**: You only care about the `Some` case and want a simple else fallback
 3. **Pitfall**: Don't confuse with `if option_value.is_some()` - that doesn't extract the value
 
+
 #### Find More Examples
+{: .no_toc }
 
 VSCode search: `CTRL+SHIFT+F`, enable regex (`ALT+R`), type: `Some\(.+\)$`
 
+In Powershell, copy', paste the lines below
+```powershell
+Get-ChildItem -Path "./src" -Filter *.rs -Recurse |
+    ForEach-Object {
+        # Read file content with line numbers
+        Select-String -Path $_.FullName -Pattern 'Some\(.+\)$' -SimpleMatch:$false |
+            ForEach-Object {
+                # Output file path and line number
+                [PSCustomObject]@{
+                    File      = $_.Path
+                    LineNumber = $_.LineNumber
+                    LineText   = $_.Line.Trim()
+                }
+            }
+    }
+```
 
 
 
-
+<!--
 ### 2. if let Some(...) - Setting Values Conditionally
 
 **Real-world context**: Updating configuration, processing optional user input, conditional initialization.
@@ -1064,9 +1109,12 @@ fn main() {
 
 
 ## Quick Reference Cheat Sheet
+ -->
 
 <!-- TODO: Consider creating this as an image (cheat_sheet.webp) for better readability -->
 
+
+ <!--
 ### Extraction Methods
 
 | Method | Returns on Some | Returns on `None` | Panics? |
@@ -1109,10 +1157,11 @@ fn main() {
 - **Zero-cost**: `as_ref()`, `as_mut()`, `is_some()`, `is_none()` - compile to no-ops or simple checks
 
 
+ -->
 
 
 
-## Resources and Next Steps
+## Webliography
 
 ### Official Documentation
 
@@ -1120,6 +1169,7 @@ fn main() {
 - [Rust Book Chapter 6.1](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values) - Option fundamentals
 - [Rust by Example: Option](https://doc.rust-lang.org/rust-by-example/std/option.html) - Practical examples
 
+<!--
 ### Related Articles on This Blog
 
 - [Bindings in Rust: More Than Simple Variables]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}) - Understanding ownership and borrowing
@@ -1149,4 +1199,6 @@ This article covered `Option<T>` for representing "maybe absent" values. Next st
 
 ### Questions?
 
-If you found this guide helpful or have suggestions, feel free to open an issue on [GitHub](https://github.com/40tude/40tude.github.io/issues).
+If you found this guide helpful or have suggestions to improve it, feel free to open an issue on [GitHub](https://github.com/40tude/40tude.github.io/issues).
+ -->
+
