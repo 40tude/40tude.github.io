@@ -189,7 +189,7 @@ This said... Let's dive in!
 #### **Real-world context**
 {: .no_toc }
 
-For me, this one is the easiest. Indeed we can explain in plain English that a function may look for a file and if it does'nt find it, it then returns "nothing". On success the function returns a the file. Returning an Option is applicable to all functions which may not succeed (without crashing) and do not have any value to return (e.g., searching, parsing, optional configuration).
+For me, this one is the easiest to implement. Indeed we can explain in plain English that a function may look for a file and if it does'nt find it, it then returns "nothing". On success the function returns, let's say the first line of text. Returning an Option is applicable to all functions which may not succeed (without erroring or crashing) but do not have any value to return (e.g., searching, parsing, optional configuration).
 
 Easy to explain, easy to translate. The easiest, I told you.
 
@@ -225,18 +225,60 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-`get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if let` pattern checks: "If there is Some text, bind it to `my_txt` and execute the block. Otherwise, execute the else branch."
+`get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if selection.is_some()` checks if the return value contains something and if so, executes the first block. Otherwise, it executes the else branch."
 
 ### **Comments**
 {: .no_toc }
+* It is important to realize that `get_selection()` returns an `Option<String>` NOT a `String`
+* In the playground, replace `Some("lorem ipsum".to_string())` with `Some("lorem ipsum".into())`. Does it still work? Why?
+* Do you agree on the fact that `selection.is_some()` does NOT extract the value from the Option but just check if there is a value?
+* Take someting and read the [documentation](https://doc.rust-lang.org/std/option/enum.Option.html)
+* Is it clear that once we checked the `Option<T>` contains something then `unwrap()` extract this thing?
+* With this example, we are more interested by `get_selection()` than by `main()` which is quite verbose for the moment. Note that it could be even worst. Copy and paste the code below in the playground and uncomment alternatively one `match` expression or the other. Is it clear why `match` is an expression?
 
+```rust
+struct Editor {
+}
+
+impl Editor {
+    fn get_selection(&self) -> Option<String> {
+        // Simulate selection: uncomment one to test both cases
+        //Some("lorem ipsum".to_string())
+        Some("lorem ipsum".into())
+        // None
+    }
+}
+
+fn main() {
+    let my_editor = Editor {};
+
+    // The if let pattern: unwrap and use the selection only if Some
+    // if let Some(my_txt) = my_editor.get_selection() {
+    //     println!("Selection: {my_txt}");
+    // } else {
+    //     println!("No text selected");
+    // }
+
+    // match my_editor.get_selection() {
+    //     Some(my_txt) => println!("Selection: {my_txt}"),
+    //     None => println!("No text selected")
+    // }
+
+    let msg = match my_editor.get_selection() {
+        Some(my_txt) => format!("Selection: {my_txt}"),
+        None => format!("No text selected")
+    };
+    println!("{msg}");
+
+}
+```
 
 #### **Key Points**
 {: .no_toc }
 
-1. **Pattern**: `if let Some(variable) = option_value` unwraps only when `Some`, avoids verbose `match`
-2. **When to use**: You only care about the `Some` case and want a simple else fallback
-3. **Pitfall**: Don't confuse with `if option_value.is_some()` - that doesn't extract the value
+1. **Pattern**: The function either returns `None` of `Some<T>`.
+2. **When to use**: When we need to express the fat that a function or a method can return nothing or something
+3. **Pitfall**: None
 
 
 #### **Find More Examples**
@@ -244,6 +286,7 @@ fn main() {
 
 Regular expression to use either in VSCode ou Powershell: `Some\(.+\)$`
 
+Again... Open `edit` project with VSCode and search for `Some\(.+\)$` (`CTRL+SHIFT+F` then `Alt+R`).
 
 
 
@@ -320,11 +363,16 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
+
+
+
 "If `new_path` contains a value, bind it to `path` and call `set_path()` with it. Otherwise, skip the block entirely."
 
 
 ### **Comments**
 {: .no_toc }
+
+* `get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if let Some(my_txt)` "If there is Some text, bind it to `my_txt` and execute the block. Otherwise, execute the else branch."
 
 
 #### **Key Points**
