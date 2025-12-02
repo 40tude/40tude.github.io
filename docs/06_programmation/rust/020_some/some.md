@@ -527,7 +527,7 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 
 
 
-### ### Example 04 - `let...else` - "Modern" Early Return
+### Example 04 - `let...else` - "Modern" Early Return
 
 #### **Real-world context**
 {: .no_toc }
