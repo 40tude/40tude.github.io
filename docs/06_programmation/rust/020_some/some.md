@@ -184,6 +184,7 @@ This said... Let's dive in!
 
 
 <!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 01 - `Option<T>` as a Return Value
 
 #### **Real-world context**
@@ -225,16 +226,62 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-`get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if selection.is_some()` checks if the return value contains something and if so, executes the first block. Otherwise, it executes the else branch."
+In `main()`, the code says : "`get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if selection.is_some()` checks if the return value contains something and if so, executes the first block. Otherwise, it executes the else branch."
+
 
 ### **Comments**
 {: .no_toc }
-* It is important to realize that `get_selection()` returns an `Option<String>` NOT a `String`
-* In the playground, replace `Some("lorem ipsum".to_string())` with `Some("lorem ipsum".into())`. Does it still work? Why?
-* Do you agree on the fact that `selection.is_some()` does NOT extract the value from the Option but just check if there is a value?
-* Take someting and read the [documentation](https://doc.rust-lang.org/std/option/enum.Option.html)
+* It is important to realize that `get_selection()` returns an `Option<String>` **NOT** a `String`
+* In the playground, replace `Some("lorem ipsum".to_string())` with `Some("lorem ipsum".into())`. Does it work? Why?
+* Do you agree on the fact that `selection.is_some()` does **NOT** extract the value from the `Option<T>` but just check if there is a value in the `Option<T>`?
+* Take your time and read the [documentation](https://doc.rust-lang.org/std/option/enum.Option.html)
 * Is it clear that once we checked the `Option<T>` contains something then `unwrap()` extract this thing?
-* With this example, we are more interested by `get_selection()` than by `main()` which is quite verbose for the moment. Note that it could be even worst. Copy and paste the code below in the playground and uncomment alternatively one `match` expression or the other. Is it clear why `match` is an expression?
+* Copy `println!("Selection: {}", selection.unwrap());`at the end of `main()`. Does it works? Why?
+
+
+#### **Key Points**
+{: .no_toc }
+
+1. **Pattern**: The function returns an `Option<T>` (here `Option<String>`). It can be `None` or `Some`.
+2. **When to use**: When we need to express the fact that a function or a method can return nothing or something.
+3. **Pitfall**: None
+
+
+#### **Find More Examples**
+{: .no_toc }
+
+* Regular expression to use either in VSCode ou Powershell: `Some\(.+\)$`
+* Make the test. Open `edit` project in VSCode and search for `Some\(.+\)$` (`CTRL+SHIFT+F` then `Alt+R`).
+
+<div align="center">
+<img src="./assets/img02.webp" alt="" width="900" loading="lazy"/><br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Example 02 - `if let Some(...) = Option<T>` - Setting Values Conditionally
+
+#### **Real-world context**
+{: .no_toc }
+
+Updating configuration, processing optional user input, conditional initialization.
+
+#### **Runnable Example**
+{: .no_toc }
+
+
+Copy and paste in [Rust Playground](https://play.rust-lang.org/). In this version of the previous code, in the `main()` function, before to use the `if let Some(...) = Option<T>` we explore various alternatives. Comment/uncomment the code of interest in `main()`.
 
 ```rust
 struct Editor {
@@ -243,7 +290,6 @@ struct Editor {
 impl Editor {
     fn get_selection(&self) -> Option<String> {
         // Simulate selection: uncomment one to test both cases
-        //Some("lorem ipsum".to_string())
         Some("lorem ipsum".into())
         // None
     }
@@ -251,13 +297,6 @@ impl Editor {
 
 fn main() {
     let my_editor = Editor {};
-
-    // The if let pattern: unwrap and use the selection only if Some
-    // if let Some(my_txt) = my_editor.get_selection() {
-    //     println!("Selection: {my_txt}");
-    // } else {
-    //     println!("No text selected");
-    // }
 
     // match my_editor.get_selection() {
     //     Some(my_txt) => println!("Selection: {my_txt}"),
@@ -273,35 +312,7 @@ fn main() {
 }
 ```
 
-#### **Key Points**
-{: .no_toc }
-
-1. **Pattern**: The function either returns `None` of `Some<T>`.
-2. **When to use**: When we need to express the fat that a function or a method can return nothing or something
-3. **Pitfall**: None
-
-
-#### **Find More Examples**
-{: .no_toc }
-
-Regular expression to use either in VSCode ou Powershell: `Some\(.+\)$`
-
-Again... Open `edit` project with VSCode and search for `Some\(.+\)$` (`CTRL+SHIFT+F` then `Alt+R`).
-
-
-
-<!-- ###################################################################### -->
-### Example 02 - `if let Some(...)` - Setting Values Conditionally
-
-#### **Real-world context**
-{: .no_toc }
-
-Updating configuration, processing optional user input, conditional initialization.
-
-#### **Runnable Example**
-{: .no_toc }
-
-Copy and paste in [Rust Playground](https://play.rust-lang.org/)
+Copy and paste in [Rust Playground](https://play.rust-lang.org/). In this version of the previous code we use `if let Some()`.
 
 ```rust
 struct Editor {
@@ -310,7 +321,7 @@ struct Editor {
 impl Editor {
     fn get_selection(&self) -> Option<String> {
         // Simulate selection: uncomment one to test both cases
-        Some("lorem ipsum".to_string())
+        Some("lorem ipsum".into())
         // None
     }
 }
@@ -318,7 +329,7 @@ impl Editor {
 fn main() {
     let my_editor = Editor {};
 
-    // The if let pattern: unwrap and use the selection only if Some
+    // The `if let Some(...) = Option<T>` pattern: unwrap and use the selection only if Some
     if let Some(my_txt) = my_editor.get_selection() {
         println!("Selection: {my_txt}");
     } else {
@@ -327,6 +338,9 @@ fn main() {
 
 }
 ```
+
+
+
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
@@ -363,23 +377,34 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
+**Code snippet 00:** The code says: "In `main()` function, I do not use `if let Some() = Option<T>`, instead I use a `match` expression to cover explicitly all the possible values returned by `my_editor.get_selection()`".
+
+**Code snippet 01:**
+* "In `main()` function, the `if let Some(...) = Option<T>` pattern unwrap and use the selection only if `Some()`."
+* "In `main()` function, if the `Option<String>` contains a value, **bind it** to `my_txt` and execute the first block otherwise execute the `else` block."
+
+**Code snippet 02:**
+* The `Editor` may have a path to a file (or not). This explains why the field `path_to_file` is of type `Option<PathBuf>`.
+* When created, `my_editor` does not point to any particular file (`None`).
+* Then a `new_path` variable is created. It is an `Option<PathBuf>` containing a path to a file.
+
+Then the code tell us "If `new_path` contains a value, **bind it** to `path` and call `set_path()` with it. Otherwise, skip the block entirely."
 
 
 
-"If `new_path` contains a value, bind it to `path` and call `set_path()` with it. Otherwise, skip the block entirely."
 
 
 ### **Comments**
 {: .no_toc }
 
-* `get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if let Some(my_txt)` "If there is Some text, bind it to `my_txt` and execute the block. Otherwise, execute the else branch."
+* Each time one of your data type have a field which may contain something or nothing use an `Option<T>`.
 
 
 #### **Key Points**
 {: .no_toc }
 
 1. **Pattern**: Conditionally execute code only when `Option<T>` has a value
-2. **Ownership**: The value inside Some is **moved** into `path` (not a reference)
+2. **Ownership**: As with the `unwrap()`, the value inside Some is **moved** into `path` (not a reference)
 3. **Alternative**: Could use `if new_path.is_some() { ... }` but wouldn't extract the value cleanly
 
 #### **Find More Examples**
