@@ -1,4 +1,4 @@
-// cargo run --example 00ex
+// cargo run --example 02_2ex
 use std::path::PathBuf;
 
 struct Editor {
@@ -23,8 +23,4 @@ fn main() {
     }
 
     println!("The file: {:?}", my_editor.path_to_file);
-
-    if let Some(path) = new_path {
-        my_editor.set_path(path);
-    }
 }

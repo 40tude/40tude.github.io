@@ -415,8 +415,12 @@ Regular expression to use either in VSCode ou Powershell: `if let Some\(.+\) = `
 
 
 
-<!--
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 03 - `match` Expression with Early Return
 
 #### **Real-world context**
@@ -429,52 +433,74 @@ File operations, network requests, database queries - anything that might fail a
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
+
 ```rust
-struct Application;
-struct FileEditor {
-    name: String,
+use std::path::PathBuf;
+
+struct Editor {
+    path_to_file: Option<PathBuf>,
 }
 
-fn get_file_editor_mut(app: &mut Application) -> Option<&mut FileEditor> {
-    // Simulate: uncomment one case
-    Some(&mut FileEditor { name: "document.txt".to_string() })
-    // None
-}
-
-fn show_message(app: &Application, title: &str, msg: &str) {
-    println!("[{}] {}", title, msg);
-}
-
-fn show_error(app: &Application, title: &str, msg: &str) {
-    eprintln!("[ERROR - {}] {}", title, msg);
-}
-
-fn save_file(app: &mut Application) {
-    let file_editor = match get_file_editor_mut(app) {
-        Some(fe) => fe,
-        None => return,  // Early return if no editor
+fn save_file(editor: &Editor) {
+    let my_file_name = match &editor.path_to_file {
+        Some(path) => path.file_name(),
+        None => return,
     };
 
-    // Only reached if Some - we have &mut FileEditor here
-    println!("Saving file: {}", file_editor.name);
-    show_message(app, "Save", "File saved successfully");
+    if let Some(name) = my_file_name {
+        println!("Saving file: {:?}", name);
+    }
 }
 
 fn main() {
-    let mut app = Application;
-    save_file(&mut app);
+    let editor = Editor {
+        // Uncomment one to test both cases
+        path_to_file: Some(PathBuf::from(r"tmp/my_file.txt")),
+        // path_to_file: None,
+    };
+    save_file(&editor);
 }
 ```
+
 
 #### **Read it Aloud**
 {: .no_toc }
 
-"Match on `get_file_editor_mut(app)`: if it's Some, extract the editor into `fe` and continue. If `None`, return early from the function."
+* In `save_file()` the code says: "Match on `&editor.path_to_file`. If it contains a value, **bind a reference to that value** to `path`, then call `file_name()` which returns an `Option<&OsStr>`, convert it to an `Option<String>` and bind the result to `my_file_name`. If `None`, return early from the function."
+
+
 
 
 
 ### **Comments**
 {: .no_toc }
+
+* `save_file()` has a reference to the Editor as a parameter (borrow)
+* In the Playground, remove the reference in front of `&editor.path_to_file`. What happens? Why?
+* It is important to understand that we don't directly “bind” the file name, we bind the result of the extraction, which is itself an Option (because a path might not have a file name, for example / or ).
+* Ideally we should write `save_file()` as below:
+
+    ```rust
+    fn save_file(editor: &Editor) {
+        // Extract file name from path, converting OsStr to String
+        let file_name = match &editor.path_to_file {
+            Some(path) => path.file_name().map(|s| s.to_string_lossy().to_string()),
+            None => return,
+        };
+
+        if let Some(name) = file_name {
+            println!("Saving file: {:?}", name);
+            show_message("Save", "File saved successfully");
+        }
+    }
+    ```
+
+
+* At the end of `main()` add the 2 lines below. What do need to do to compile. Why?
+    ```rust
+    editor.path_to_file = Some(PathBuf::from(r"tmp/my_file2.txt"));
+    save_file(&editor);
+    ```
 
 
 
@@ -494,7 +520,14 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 
 
 
-### ### Example 04 - `let...else` - Modern Early Return (Rust 1.65+)
+
+
+
+
+
+
+
+### ### Example 04 - `let...else` - "Modern" Early Return
 
 #### **Real-world context**
 {: .no_toc }
@@ -507,49 +540,50 @@ Same as match early return, but more concise (modern Rust style).
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
 ```rust
-struct Application;
-struct FileEditor {
-    name: String,
+use std::path::PathBuf;
+
+struct Editor {
+    path_to_file: Option<PathBuf>,
 }
 
-fn get_file_editor_mut(app: &mut Application) -> Option<&mut FileEditor> {
-    Some(&mut FileEditor { name: "notes.md".to_string() })
-    // None
-}
-
-fn show_message(app: &Application, title: &str, msg: &str) {
-    println!("[{}] {}", title, msg);
-}
-
-fn save_file_modern(app: &mut Application) {
-    // If get_file_editor_mut returns None, execute else block (early return)
-    let Some(file_editor) = get_file_editor_mut(app) else {
-        eprintln!("No editor available");
+fn save_file(editor: &Editor) {
+    let Some(my_path) = &editor.path_to_file else {
+        eprintln!("No path to file available");
         return;
     };
 
-    // Only reached if Some - file_editor is now &mut FileEditor
-    println!("Saving file: {}", file_editor.name);
-    show_message(app, "Save", "File saved successfully");
+    if let Some(name) = my_path
+        .file_name()
+        .map(|s| s.to_string_lossy().to_string())
+    {
+        println!("Saving file: {}", name);
+    }
 }
 
 fn main() {
-    let mut app = Application;
-    save_file_modern(&mut app);
+    let mut editor = Editor {
+        // Uncomment one to test both cases
+        // path_to_file: Some(PathBuf::from(r"tmp/my_file.txt")),
+        path_to_file: None,
+    };
+    save_file(&editor);
+
+    editor.path_to_file = Some(PathBuf::from(r"tmp/my_file2.txt"));
+    save_file(&editor);
 }
 ```
 
 #### **Read it Aloud**
 {: .no_toc }
 
-"Let the pattern `Some(file_editor)` match the result. If it doesn't match (i.e., it's `None`), execute the else block which returns early."
+* At the begining of `save_file()` the code says: "Let the pattern `Some(my_path)` match on `&editor.path_to_file`. If it doesn't match (i.e., it's `None`), execute the else block which returns early."
 
 
 
 
 ### **Comments**
 {: .no_toc }
-
+* Compare the end of `save_file()` in Example 03 with Example 04. In the latter we extract file name from path, converting OsStr to String. It was mentioned in the comments of Example 03.
 
 
 
@@ -566,8 +600,9 @@ fn main() {
 
 Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ else`
 
+Try it with `ripgrep` for example.
 
- -->
+
 
 
 
