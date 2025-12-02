@@ -627,7 +627,6 @@ Try it with `ripgrep` for example.
 <!-- ###################################################################### -->
 ## 🔵 Intermediate Examples (5-9)
 
-<!--
 ### Example 05 - `unwrap_or` vs `unwrap_or_else` - Providing Defaults
 
 **Real-world context**: Configuration with fallback values, user preferences, optional parameters.
@@ -644,27 +643,35 @@ fn expensive_computation() -> String {
 }
 
 fn main() {
-    let opt_name: Option<String> = None;
+    // ----------------------------------------------------
+    // ----------------------------------------------------
+    let none_name: Option<String> = None;
 
-    // ❌ unwrap_or: value computed ALWAYS (even if Some!)
-    let name1 = opt_name.clone().unwrap_or(expensive_computation());
+    // unwrap_or: value is ALWAYS computed (eager evaluation)
+    let name1 = none_name.clone().unwrap_or(expensive_computation());
     // Output: "Computing default value..."
 
-    // ✅ unwrap_or_else: closure called ONLY if None (lazy evaluation)
-    let name2 = opt_name.unwrap_or_else(|| expensive_computation());
+    // unwrap_or_else: closure called ONLY if None (lazy evaluation)
+    let name2 = none_name.unwrap_or_else(|| expensive_computation());
     // Output: "Computing default value..."
 
-    // Compare with Some case
-    let opt_some: Option<String> = Some("Alice".to_string());
+    // ----------------------------------------------------
+    // ----------------------------------------------------
+    // Compare with Some
+    let some_name: Option<String> = Some("Alice".to_string());
 
-    let name3 = opt_some.clone().unwrap_or(expensive_computation());
-    // Still prints "Computing default value..." - wasteful!
+    // unwrap_or: value is ALWAYS computed (eager evaluation)
+    let name3 = some_name.clone().unwrap_or(expensive_computation());
+    // Still prints "Computing default value..." => Waste of time
 
-    let name4 = opt_some.unwrap_or_else(|| expensive_computation());
-    // Does NOT print - closure not called
+    // unwrap_or_else: closure called ONLY if None (lazy evaluation)
+    let name4 = some_name.unwrap_or_else(|| expensive_computation());
+
+    // The closure not called
 
     println!("Results: {name1}, {name2}, {name3}, {name4}");
 }
+
 ```
 
 #### **Read it Aloud**
@@ -677,7 +684,16 @@ fn main() {
 
 ### **Comments**
 {: .no_toc }
+* `.unwrap_or()`, eager evaluation (upfront) and call a function
+* `.unwrap_or_else()`, lazy evaluation (last minute) and call a closure
 
+* Clippy will want us to write:
+    ```rust
+    let name2 = expensive_computation();
+    let name4 = "Alice".to_string();
+    ```
+    Indeed the compiler knows `none_name` is `None` and so `.unwrap_or_else()` will ALWAYS be called, so let's call it directly
+    The same way, the compiler knows that `some_name` is `Some`, so the closure will NEVER be called, so let's simplify code
 
 
 
@@ -692,10 +708,24 @@ fn main() {
 #### **Find More Examples**
 {: .no_toc }
 
-Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(`
+Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `unwrap_or\(`
+`ripgrep` project is a good candidate.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 
 
 
