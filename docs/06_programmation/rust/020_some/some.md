@@ -527,6 +527,8 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 04 - `let...else` - "Modern" Early Return
 
 #### **Real-world context**
@@ -627,6 +629,11 @@ Try it with `ripgrep` for example.
 <!-- ###################################################################### -->
 ## 🔵 Intermediate Examples (5-9)
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 05 - `unwrap_or` vs `unwrap_or_else` - Providing Defaults
 
 **Real-world context**: Configuration with fallback values, user preferences, optional parameters.
@@ -725,10 +732,11 @@ Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `un
 
 
 
-<!--
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 06 - The `?` Operator - Early Return Propagation
 
 #### **Real-world context**
@@ -764,12 +772,16 @@ fn get_second_char(s: Option<&str>) -> Option<char> {
 }
 
 fn main() {
-    println!("{:?}", get_first_char(Some("hello")));  // Some('h')
-    println!("{:?}", get_first_char(None));            // None
 
-    println!("{:?}", get_second_char(Some("hi")));     // Some('i')
-    println!("{:?}", get_second_char(Some("x")));      // None (only 1 char)
-    println!("{:?}", get_second_char(None));           // None
+    println!("{:?}", get_first_char_verbose(Some("hello")));    // Some('h')
+    println!("{:?}\n", get_first_char_verbose(None));           // None
+
+    println!("{:?}", get_first_char(Some("hello")));    // Some('h')
+    println!("{:?}\n", get_first_char(None));           // None
+
+    println!("{:?}", get_second_char(Some("hi")));      // Some('i')
+    println!("{:?}", get_second_char(Some("x")));       // None (only 1 char)
+    println!("{:?}", get_second_char(None));            // None
 }
 ```
 
@@ -784,6 +796,11 @@ fn main() {
 ### **Comments**
 {: .no_toc }
 
+In addition to the Playground it is useful to debug the code in VSCode. This really help to visualize what happens.
+
+<div align="center">
+<img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
+</div>
 
 
 
@@ -793,7 +810,7 @@ fn main() {
 
 1. **Return type requirement**: Function must return `Option<T>` to use `?`
 2. **Chaining**: Enables clean sequential operations without nested matches
-3. **Not just `Option<T>`**: Also works with `Result<T, E>` (we'll cover in a future article)
+3. **Not just `Option<T>`**: Also works with `Result<T, E>` (should be covered one day...)
 4. **Pattern**: `Some(value?)` combines - try to get value, wrap in Some if successful
 
 #### **Find More Examples**
@@ -805,6 +822,18 @@ Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+
 
 
 
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 07 - `map()` - Transforming Values Inside `Option<T>`
 
 #### **Real-world context**
@@ -819,15 +848,15 @@ Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
 ```rust
 fn main() {
-    let name: Option<String> = Some("  Philippe  ".to_string());
+    let name: Option<String> = Some("  Zoubida  ".to_string());
 
     // Chain transformations - only applied if Some
     let result = name
-        .map(|n| n.trim().to_string())           // Some("Philippe")
-        .map(|n| n.to_uppercase())               // Some("PHILIPPE")
+        .map(|n| n.trim().to_string())           // Some("Zoubida")
+        .map(|n| n.to_uppercase())               // Some("ZOUBIDA")
         .unwrap_or_else(|| "ANONYMOUS".to_string());
 
-    println!("{}", result); // "PHILIPPE"
+    println!("{}", result); // "ZOUBIDA"
 
     // With None - transformations skipped, default used
     let no_name: Option<String> = None;
@@ -866,11 +895,26 @@ fn main() {
 #### **Find More Examples**
 {: .no_toc }
 
-Regular expression to use either in VSCode ou Powershell: `\.map\(|.+|\s*.+\)`
+Regular expression to use either in VSCode ou Powershell: `\.map\(\s*\|[^|]+\|[^)]*\)`
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 08 - `and_then()` - Chaining `Option<T>` - Returning Functions
 
 #### **Real-world context**
@@ -891,11 +935,11 @@ fn parse_positive(s: &str) -> Option<i32> {
 fn main() {
     let input = Some("42");
 
-    // ❌ map creates nested Option<Option<i32>>
+    // map creates nested Option<Option<i32>>
     let bad = input.map(|s| parse_positive(s));
     println!("{:?}", bad); // Some(Some(42)) - awkward!
 
-    // ✅ and_then flattens automatically
+    // and_then flattens automatically
     let good = input.and_then(|s| parse_positive(s));
     println!("{:?}", good); // Some(42) - clean!
 
@@ -920,17 +964,21 @@ fn main() {
 ### **Comments**
 {: .no_toc }
 
-
-
+* Let's read, piece by piece the line `let good = input.and_then(|s| parse_positive(s));`:
+    1. Takes `input` (an `Option<&str>`)
+    1. If `input` is `Some(s)`, it calls `parse_positive(s)` and returns that result directly
+    1. If `input` is `None`, it short-circuits and returns `None` immediately
+* Double check and **read** the `let chain_result = ...`
+    1. The first closure has a string as parameter (`|s|`)
+    1. While the second closure receive an `i32` (`|n|`)
 
 
 #### **Key Points**
 {: .no_toc }
 
-1. **Flattening**: Prevents `Option<Option<T>>` - crucial for chaining
-2. **Also called**: `flatMap` in other languages (Scala, Haskell)
-3. **When to use**: When the transformation itself might fail (returns `Option<T>`)
-4. **vs map**: Use `map` for always-succeeds transforms, `and_then` for fallible ones
+1. **Flattening**: Prevents `Option<Option<T>>` - chaining is impossible otherwise
+1. **When to use**: When the transformation itself might fail (returns `Option<T>`)
+1. **vs map**: Use `map` for always-succeeds transforms, `and_then` for fallible ones
 
 #### **Find More Examples**
 {: .no_toc }
@@ -942,6 +990,16 @@ Regular expression to use either in VSCode ou Powershell: `\.and_then\(`
 
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 09 - Pattern Matching with Guards
 
 #### **Real-world context**
@@ -959,7 +1017,7 @@ fn categorize_age(age: Option<i32>) -> &'static str {
     match age {
         Some(a) if a < 18 => "Minor",
         Some(a) if a < 65 => "Adult",
-        Some(a) => "Senior",  // a >= 65
+        Some(_a) => "Senior",  // a >= 65 but a not used => _a
         None => "Unknown",
     }
 }
@@ -1012,7 +1070,6 @@ fn main() {
 Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
 
 
- -->
 
 
 
@@ -1024,7 +1081,10 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
 ## 🔴 Advanced Examples (10-15)
 
 
-<!--
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 10 - `as_ref()` and `as_mut()` - Borrowing Instead of Moving
 
 #### **Real-world context**
@@ -1041,29 +1101,38 @@ Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 use std::path::PathBuf;
 
 fn main() {
-    // ❌ Moving consumes the Option
+    // Moving consumes the Option
     let opt = Some(String::from("hello"));
     if let Some(s) = opt {
         println!("Length: {}", s.len());
     }
     // println!("{:?}", opt); // ERROR: opt was moved
 
-    // ✅ Borrowing with as_ref - Option remains usable
+    // Borrowing with as_ref - Option remains usable
     let opt = Some(String::from("hello"));
-    if let Some(s) = opt.as_ref() {  // s is &String
+
+    if let Some(s) = opt.as_ref() {
+        // s is &String
         println!("Length: {}", s.len());
     }
-    println!("{:?}", opt); // Works! opt is still Some("hello")
+    println!("{:?}", opt); // Ah, ha, ha, ha, opt stayin' alive, stayin' alive (Some("hello")
 
-    // Useful with map - read without consuming
+    if let Some(my_str) = &opt {
+        // my_str is &String
+        println!("Length: {}", my_str.len());
+    }
+    println!("{:?}", opt); // Ah, ha, ha, ha, opt stayin' alive, stayin' alive (Some("hello")
+
+    // as_ref() is useful with map - read without consuming
     let mut path = Some(PathBuf::from("/home"));
     let len = path.as_ref().map(|p| p.as_os_str().len());
     println!("Path length: {:?}", len); // Some(5)
 
-    // as_mut - modify in place
+    // as_mut is useful with map - modify in place
     path.as_mut().map(|p| p.push("user"));
     println!("{:?}", path); // Some("/home/user")
 }
+
 ```
 
 #### **Read it Aloud**
@@ -1079,7 +1148,15 @@ fn main() {
 {: .no_toc }
 
 
-
+* As with `.unwrap()`, the value inside `Some()` is **moved** (see Example 01 and 02).
+* The second `println!` cannot work.
+* An alternative to `if let Some(s) = opt.as_ref() {...` is `if let Some(s) = &opt.{...`
+* The line `path.as_mut().map(|p| p.push("user"));` generates a warning. Try the code below:
+    ```rust
+    if let Some(p) = path.as_mut() {
+        p.push("user");
+    }
+    ```
 
 
 #### **Key Points**
@@ -1087,14 +1164,13 @@ fn main() {
 
 1. **Signature**: `as_ref(&self) -> Option<&T>`, `as_mut(&mut self) -> Option<&mut T>`
 2. **When to use**: Reading Option multiple times, modifying without replacing
-3. **With map**: `opt.as_ref().map(|val| ...)` lets you transform without moving
+3. **With map**: `opt.as_ref().map(|val| ...)` lets us transform without moving
 4. **Ownership**: Original Option keeps ownership - crucial for reuse
 
 #### **Find More Examples**
 {: .no_toc }
 
-VSCode search:  (regex)
-Regular expression to use either in VSCode ou Powershell: `\.as_ref\(\)\.map` or `\.as_mut\(\)`
+Regular expressions to use either in VSCode ou Powershell: `\.as_ref\(\)\.map` or `\.as_mut\(\)`
 
 
 
@@ -1105,12 +1181,27 @@ Regular expression to use either in VSCode ou Powershell: `\.as_ref\(\)\.map` or
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 11 - `take()` - Extracting Value and Leaving `None`
 
 #### **Real-world context**
 {: .no_toc }
 
-Consuming resources (files, connections), state machines, cleanup operations.
+Consuming resources (files, connections), state machines, cleanup operations, RAII.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -1118,13 +1209,17 @@ Consuming resources (files, connections), state machines, cleanup operations.
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
 ```rust
-use std::fs::File;
+use std::fs::{self, File};
 
 struct Editor {
     file: Option<File>,
 }
 
 impl Editor {
+    fn is_open(&self) -> bool {
+        self.file.is_some()
+    }
+
     fn close(&mut self) {
         if let Some(f) = self.file.take() {
             // f is File (owned), self.file is now None automatically
@@ -1132,32 +1227,104 @@ impl Editor {
             drop(f); // Explicit close
         }
     }
+}
 
-    fn is_open(&self) -> bool {
-        self.file.is_some()
+fn main() {
+    let mut editor = Editor {
+        file: Some(File::create("temp.txt").unwrap()),
+    };
+    println!("Is open: {}", editor.is_open()); // true
+    editor.close();
+    println!("Is open: {}", editor.is_open()); // false
+
+    // Clean up: remove temp.txt if it exists
+    if fs::metadata("temp.txt").is_ok() {
+        fs::remove_file("temp.txt").expect("Failed to delete temp.txt");
+        println!("temp.txt deleted");
+    }
+}
+```
+
+
+Copy and paste in [Rust Playground](https://play.rust-lang.org/). This example demonstrate how to implement RAII (resource acquisition is initialization) with the help of `take()`
+
+```rust
+struct Resource {
+    name: String,
+}
+
+impl Resource {
+    fn new(name: &str) -> Self {
+        println!("  [{}] Acquired", name);
+        Self {
+            name: name.to_string(),
+        }
+    }
+}
+
+impl Drop for Resource {
+    fn drop(&mut self) {
+        println!("  [{}] Released", self.name);
+    }
+}
+
+struct Guard {
+    resource: Option<Resource>,
+}
+
+impl Guard {
+    fn new(name: &str) -> Self {
+        Self {
+            resource: Some(Resource::new(name)),
+        }
+    }
+
+    // Manually release before scope ends
+    fn release(&mut self) {
+        if let Some(r) = self.resource.take() {
+            println!("  [{}] Early release", r.name);
+            // r is dropped here
+        }
+    }
+}
+
+impl Drop for Guard {
+    fn drop(&mut self) {
+        if self.resource.is_some() {
+            println!("  Guard dropped with resource still held");
+        }
+        // resource.take() not needed - Option<Resource> drops automatically
     }
 }
 
 fn main() {
-    let mut opt = Some(42);
-    println!("Before: {:?}", opt); // Some(42)
+    println!("Example 1: Auto release at scope end");
+    {
+        let _guard = Guard::new("DB Connection");
+        println!("  Doing work...");
+    } // Guard dropped here, Resource released
 
-    let value = opt.take();
-    println!("Taken: {:?}", value);  // Some(42)
-    println!("After: {:?}", opt);    // None - automatically set
-
-    // Practical example
-    // let mut editor = Editor { file: Some(File::create("temp.txt").unwrap()) };
-    // println!("Is open: {}", editor.is_open()); // true
-    // editor.close();
-    // println!("Is open: {}", editor.is_open()); // false
+    println!("\nExample 2: Early release with take()");
+    {
+        let mut guard = Guard::new("File Handle");
+        println!("  Doing work...");
+        guard.release(); // Release early via take()
+        println!("  More work after release...");
+    } // Guard dropped, but resource already gone
 }
+
+
 ```
+
+
+
+
+
 
 #### **Read it Aloud**
 {: .no_toc }
 
-"`take()` says: 'Give me the value inside Some, replace the Option with `None`, and return the value as Option.' It's move + automatic `None` assignment in one operation."
+"`take()` says: 'Give me the value inside `Some`, replace the `Option` with `None`, and return the value as `Option`.' It's move + automatic `None` assignment in one operation."
 
 
 
@@ -1165,6 +1332,11 @@ fn main() {
 ### **Comments**
 {: .no_toc }
 
+**First example**
+* The end of `main()` is here to make sur the file is deleted if it exist. This may be the case if you debug and leave the session.
+
+**RAII**
+* The `Option<Resource> + take()` pattern is idiomatic for managing resources that we may want to release manually while maintaining RAII safety.
 
 
 
@@ -1191,6 +1363,20 @@ Regular expression to use either in VSCode ou Powershell: `\.take\(\)`
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 12 - `filter()` - Conditional Mapping
 {: .no_toc }
 
@@ -1217,13 +1403,13 @@ fn main() {
     println!("{:?}", filtered); // [None, Some(15), Some(25), None, None]
 
     // Combining with map
-    let name = Some("  Philippe  ");
+    let name = Some("  Zoubida  ");
     let result = name
         .map(|n| n.trim())
         .filter(|n| !n.is_empty())  // Keep only if not empty after trim
         .map(|n| n.to_uppercase());
 
-    println!("{:?}", result); // Some("PHILIPPE")
+    println!("{:?}", result); // Some("ZOUBIDA")
 
     // Filter out invalid values
     let maybe_age = Some(-5);
@@ -1235,7 +1421,7 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-"`filter(|val| condition)` says: 'If `Option<T>` is Some and the condition is true, keep it as Some. Otherwise, return `None`.' It's like map but can remove values."
+"`filter(|val| condition)` says: 'If `Option<T>` is `Some` and the condition is true, keep it as `Some`. Otherwise, return `None`.' It's like `map()` but can remove values."
 
 
 
@@ -1251,19 +1437,35 @@ fn main() {
 #### **Key Points**
 
 1. **Signature**: `filter<P>(self, predicate: P) -> Option<T>` where `P: FnOnce(&T) -> bool`
-2. **Chainable**: Combine with map for "transform then validate"
+2. **Chainable**: Combine with `map` for "transform then validate"
 3. **None handling**: `None` stays `None` (predicate never called)
 4. **vs if**: More functional, composable with other `Option<T>` methods
 
 #### **Find More Examples**
 {: .no_toc }
 
-Regular expression to use either in VSCode ou Powershell: `\.filter\(|.+|\s*.+\)`
+Regular expression to use either in VSCode ou Powershell: `\.filter\(\s*\|[^|]+\|[^)]*\)`
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 13 - `flatten()` and `filter_map()` - Working with Collections of Options
 
 #### **Real-world context**
@@ -1288,10 +1490,10 @@ fn main() {
     let numbers: Vec<i32> = inputs
         .iter()
         .map(|&s| parse_number(s))  // Vec<Option<i32>>
-        .flatten()                   // Remove None, unwrap Some
+        .flatten()                  // Remove None, unwrap Some
         .collect();
 
-    println!("{:?}", numbers); // [42, 100, 7]
+    println!("{:?}", numbers);      // [42, 100, 7]
 
     // Method 2: filter_map (more efficient)
     let numbers2: Vec<i32> = inputs
@@ -1299,7 +1501,7 @@ fn main() {
         .filter_map(|&s| parse_number(s))
         .collect();
 
-    println!("{:?}", numbers2); // [42, 100, 7]
+    println!("{:?}", numbers2);     // [42, 100, 7]
 
     // With transformation
     let doubled: Vec<i32> = inputs
@@ -1307,7 +1509,7 @@ fn main() {
         .filter_map(|&s| parse_number(s).map(|n| n * 2))
         .collect();
 
-    println!("{:?}", doubled); // [84, 200, 14]
+    println!("{:?}", doubled);      // [84, 200, 14]
 }
 ```
 
@@ -1322,6 +1524,8 @@ fn main() {
 
 ### **Comments**
 {: .no_toc }
+
+* More efficient for large collections
 
 
 
@@ -1347,7 +1551,8 @@ Regular expression to use either in VSCode ou Powershell: `\.flatten\(\)` or `\.
 
 
 
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 14 - Combining Multiple Options
 
 #### **Real-world context**
@@ -1361,21 +1566,21 @@ Validation requiring multiple fields, coordinate systems, multi-factor authentic
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
 ```rust
+// Method 1: Using ? operator
 fn add_options(a: Option<i32>, b: Option<i32>) -> Option<i32> {
-    // Method 1: Using ? operator
     Some(a? + b?)  // If either is None, return None immediately
 }
 
+// Method 2: Explicit match
 fn add_options_match(a: Option<i32>, b: Option<i32>) -> Option<i32> {
-    // Method 2: Explicit match
     match (a, b) {
         (Some(x), Some(y)) => Some(x + y),
         _ => None,  // If either is None
     }
 }
 
+// Method 3: Chaining
 fn add_options_and_then(a: Option<i32>, b: Option<i32>) -> Option<i32> {
-    // Method 3: Chaining
     a.and_then(|x| b.map(|y| x + y))
 }
 
@@ -1426,7 +1631,7 @@ fn main() {
 #### **Find More Examples**
 {: .no_toc }
 
-Regular expression to use either in VSCode ou Powershell: `Some\(.+\?\s*[+\-*/].+\?\)`
+Regular expression to use either in VSCode ou Powershell: `Some\(.+?\?\s*[+\-*/]\s*.+?\?\)`
 
 
 
@@ -1434,9 +1639,8 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\?\s*[+\-*/].
 
 
 
-
-
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Example 15 -  `copied()` and `cloned()` - Converting `Option<&T>` to `Option<T>`
 
 #### **Real-world context**
@@ -1499,31 +1703,49 @@ fn main() {
 1. **When to use**: Converting `Option<&T>` from collections to owned `Option<T>`
 2. **copied()**: For `Copy` types (i32, f64, char, etc.) - cheap bitwise copy
 3. **cloned()**: For `Clone` types (String, Vec, etc.) - potentially expensive
-4. **Lifetime escape**: Lets you return `Option<T>` without lifetime parameters
+4. **Lifetime escape**: Lets us return `Option<T>` without lifetime parameters
 
 #### **Find More Examples**
 {: .no_toc }
 
-Regular expression to use either in VSCode ou Powershell: `\.first\(\)\.copied\(\)` or `\.cloned\(\)`
+Regular expression to use either in VSCode ou Powershell: `\.copied\(\)`, `\.cloned\(\)` or `\.first\(\)\.copied\(\)`.
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Common Pitfalls and How to Avoid Them
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Pitfall 1: unwrap() vs expect() vs unwrap_or()
 
 ```rust
 let opt: Option<i32> = None;
 
-// ❌ unwrap() - panics on None with generic message
+// NOK unwrap() - panics on None with generic message
 // let val = opt.unwrap(); // panics: "called `Option::unwrap()` on a `None` value"
 
-// ⚠️ expect() - panics with custom message (better for debugging)
+// WARN expect() - panics with custom message (better for debugging)
 // let val = opt.expect("Expected a value here!"); // panics: "Expected a value here!"
 
-// ✅ unwrap_or() - provides fallback, never panics
+// OK unwrap_or() - provides fallback, never panics
 let val = opt.unwrap_or(42);
 println!("{}", val); // 42
 ```
@@ -1532,21 +1754,22 @@ println!("{}", val); // 42
 
 
 
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Pitfall 2: copied() vs cloned() Confusion
 
 ```rust
 let numbers = vec![1, 2, 3];
 
-// ✅ copied() for Copy types (i32)
+// OK copied() for Copy types (i32)
 let first: Option<i32> = numbers.first().copied();
 
 let strings = vec!["a".to_string()];
 
-// ❌ copied() doesn't work on String (not Copy)
+// NOK copied() doesn't work on String (not Copy)
 // let s: Option<String> = strings.first().copied(); // ERROR
 
-// ✅ cloned() for Clone types
+// OK cloned() for Clone types
 let s: Option<String> = strings.first().cloned();
 ```
 
@@ -1555,19 +1778,21 @@ let s: Option<String> = strings.first().cloned();
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Pitfall 3: Moving vs Borrowing
 
 ```rust
 let opt = Some(String::from("hello"));
 
-// ❌ This moves opt
+// NOK This moves opt
 // match opt {
 //     Some(s) => println!("{}", s),
 //     None => {}
 // }
 // println!("{:?}", opt); // ERROR: opt was moved
 
-// ✅ Borrow with as_ref()
+// OK Borrow with as_ref()
 match opt.as_ref() {
     Some(s) => println!("{}", s),
     None => {}
@@ -1579,16 +1804,18 @@ println!("{:?}", opt); // Works!
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Pitfall 4: Understanding Some(x?)
 
 ```rust
 fn parse_and_wrap(s: &str) -> Option<Option<i32>> {
-    // ❌ Confusing nested Option
+    // NOK Confusing nested Option
     Some(s.parse().ok())
 }
 
 fn parse_correctly(s: &str) -> Option<i32> {
-    // ✅ Flatten with ?
+    // OK Flatten with ?
     Some(s.parse().ok()?)
 }
 
@@ -1605,11 +1832,28 @@ fn main() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Quick Reference Cheat Sheet
--->
 
 
-<!--
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Extraction Methods
 
 | Method | Returns on Some | Returns on `None` | Panics? |
@@ -1620,6 +1864,10 @@ fn main() {
 | `unwrap_or_else(f)` | `T` | `f()` | ❌ No (lazy) |
 | `unwrap_or_default()` | `T` | `T::default()` | ❌ No |
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Transformation Methods
 
 | Method | Type Transform | Lazy? | Use When |
@@ -1629,6 +1877,11 @@ fn main() {
 | `filter(p)` | `Option<T>` → `Option<T>` | ✅ Yes | Conditional keeping |
 | `flatten()` | `Option<Option<T>>` → `Option<T>` | ✅ Yes | Remove nesting |
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Borrowing Methods
 
 | Method | Converts | Mutates Original? |
@@ -1637,6 +1890,12 @@ fn main() {
 | `as_mut()` | `Option<T>` → `Option<&mut T>` | ✅ Yes (value inside) |
 | `take()` | `Option<T>` → `Option<T>` | ✅ Yes (sets to `None`) |
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Checking Methods
 
 | Method | Returns | Use When |
@@ -1645,19 +1904,28 @@ fn main() {
 | `is_none()` | `bool` | Only need to know if `None` |
 | `is_some_and(f)` | `bool` | Check Some + condition |
 
-### Performance Notes
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### Note About the Performances
 
 - **Lazy evaluation**: `unwrap_or_else`, `map`, `and_then`, `filter` - closures only run when needed
 - **Eager evaluation**: `unwrap_or` - argument always evaluated
 - **Zero-cost**: `as_ref()`, `as_mut()`, `is_some()`, `is_none()` - compile to no-ops or simple checks
 
 
--->
 
 
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Webliography
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### Official Documentation
 
 - [std::option::Option](https://doc.rust-lang.org/std/option/enum.Option.html) - Complete API reference

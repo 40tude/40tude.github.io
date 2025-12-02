@@ -28,8 +28,7 @@ fn main() {
 
     // unwrap_or_else: closure called ONLY if None (lazy evaluation)
     let name4 = some_name.unwrap_or_else(|| expensive_computation());
-    // let name4 = expensive_computation();
-
+    // let name4 = "Alice".to_string();
     // The closure not called
 
     println!("Results: {name1}, {name2}, {name3}, {name4}");
