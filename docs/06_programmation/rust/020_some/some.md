@@ -1434,6 +1434,7 @@ fn main() {
 
 
 #### **Key Points**
+{: .no_toc }
 
 1. **Signature**: `filter<P>(self, predicate: P) -> Option<T>` where `P: FnOnce(&T) -> bool`
 2. **Chainable**: Combine with `map` for "transform then validate"
