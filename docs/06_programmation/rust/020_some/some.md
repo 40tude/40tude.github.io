@@ -1333,7 +1333,7 @@ fn main() {
 {: .no_toc }
 
 **First example**
-* The end of `main()` is here to make sur the file is deleted if it exist. This may be the case if you debug and leave the session.
+* The end of `main()` is here to make sur the file is deleted if it exist. This may be the case if we debug and leave the session once the file is created.
 
 **RAII**
 * The `Option<Resource> + take()` pattern is idiomatic for managing resources that we may want to release manually while maintaining RAII safety.
@@ -1378,7 +1378,6 @@ Regular expression to use either in VSCode ou Powershell: `\.take\(\)`
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Example 12 - `filter()` - Conditional Mapping
-{: .no_toc }
 
 #### **Real-world context**
 {: .no_toc }
@@ -1728,13 +1727,16 @@ Regular expression to use either in VSCode ou Powershell: `\.copied\(\)`, `\.clo
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Common Pitfalls and How to Avoid Them
+## Some Pitfalls and How to Avoid Them
+
+
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### Pitfall 1: unwrap() vs expect() vs unwrap_or()
+
 
 ```rust
 let opt: Option<i32> = None;
@@ -1750,7 +1752,7 @@ let val = opt.unwrap_or(42);
 println!("{}", val); // 42
 ```
 
-**Guideline**: Never use `unwrap()` in production. Use `expect()` only when `None` is truly impossible (with good message). Prefer `unwrap_or()` or proper matching.
+We should never use `unwrap()` in production. Use `expect()` only when `None` is truly impossible (with good message). Prefer `unwrap_or()` or proper matching.
 
 
 
@@ -1773,7 +1775,7 @@ let strings = vec!["a".to_string()];
 let s: Option<String> = strings.first().cloned();
 ```
 
-**Guideline**: Use `copied()` for primitive types, `cloned()` for heap-allocated types (String, Vec, etc.).
+We should use `copied()` for primitive types, `cloned()` for heap-allocated types (String, Vec, etc.).
 
 
 
@@ -1800,7 +1802,9 @@ match opt.as_ref() {
 println!("{:?}", opt); // Works!
 ```
 
-**Guideline**: Use `as_ref()` when you need to inspect `Option<T>` without consuming it.
+We should use `as_ref()` when we need to inspect `Option<T>` without consuming it.
+
+
 
 
 
@@ -1826,10 +1830,7 @@ fn main() {
 }
 ```
 
-**Guideline**: `Some(x?)` means "try to get x, if `None` short-circuit. Otherwise wrap in Some". Avoids nested Options.
-
-
-
+`Some(x?)` means "try to get x, if `None` short-circuit. Otherwise wrap in Some". Avoids nested Options.
 
 
 
@@ -1848,7 +1849,7 @@ fn main() {
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Quick Reference Cheat Sheet
+## Quick Reference & Cheat Sheet
 
 
 
@@ -1856,13 +1857,13 @@ fn main() {
 <!-- ###################################################################### -->
 ### Extraction Methods
 
-| Method | Returns on Some | Returns on `None` | Panics? |
-|--------|----------------|-----------------|---------|
-| `unwrap()` | `T` | - | ✅ Yes |
-| `expect(msg)` | `T` | - | ✅ Yes (with msg) |
-| `unwrap_or(default)` | `T` | `default` | ❌ No |
-| `unwrap_or_else(f)` | `T` | `f()` | ❌ No (lazy) |
-| `unwrap_or_default()` | `T` | `T::default()` | ❌ No |
+| Method               | Returns on Some | Returns on `None` | Panics?           | Example |
+|----------------------|-----------------|-------------------|-------------------|---------|
+| `unwrap()`           | `T`             | -                 | ✅ Yes            | 01      |
+| `expect(msg)`        | `T`             | -                 | ✅ Yes (with msg) | 11      |
+| `unwrap_or(default)` | `T`             | `default`         | ❌ No             | 05      |
+| `unwrap_or_else(f)`  | `T`             | `f()`             | ❌ No (lazy)      | 05      |
+| `unwrap_or_default()`| `T`             | `T::default()`    | ❌ No             | 05      |
 
 
 
@@ -1870,12 +1871,12 @@ fn main() {
 <!-- ###################################################################### -->
 ### Transformation Methods
 
-| Method | Type Transform | Lazy? | Use When |
-|--------|---------------|-------|----------|
-| `map(f)` | `Option<T>` → `Option<U>` | ✅ Yes | Transform always succeeds |
-| `and_then(f)` | `Option<T>` → `Option<U>` | ✅ Yes | Transform returns Option |
-| `filter(p)` | `Option<T>` → `Option<T>` | ✅ Yes | Conditional keeping |
-| `flatten()` | `Option<Option<T>>` → `Option<T>` | ✅ Yes | Remove nesting |
+| Method        | Type Transform                    | Lazy?  | Use When                  | Example |
+|---------------|-----------------------------------|--------|---------------------------| --------|
+| `map(f)`      | `Option<T>` → `Option<U>`         | Yes    | Transform always succeeds | 07      |
+| `and_then(f)` | `Option<T>` → `Option<U>`         | Yes    | Transform returns Option  | 08      |
+| `filter(p)`   | `Option<T>` → `Option<T>`         | Yes    | Conditional keeping       | 12      |
+| `flatten()`   | `Option<Option<T>>` → `Option<T>` | Yes    | Remove nesting            | 13      |
 
 
 
@@ -1884,11 +1885,11 @@ fn main() {
 <!-- ###################################################################### -->
 ### Borrowing Methods
 
-| Method | Converts | Mutates Original? |
-|--------|----------|------------------|
-| `as_ref()` | `Option<T>` → `Option<&T>` | ❌ No |
-| `as_mut()` | `Option<T>` → `Option<&mut T>` | ✅ Yes (value inside) |
-| `take()` | `Option<T>` → `Option<T>` | ✅ Yes (sets to `None`) |
+| Method     | Converts                       | Mutates Original?       | Example |
+|------------|--------------------------------|-------------------------| ------- |
+| `as_ref()` | `Option<T>` → `Option<&T>`     | ❌ No                   | 10      |
+| `as_mut()` | `Option<T>` → `Option<&mut T>` | ✅ Yes (value inside)   | 10      |
+| `take()`   | `Option<T>` → `Option<T>`      | ✅ Yes (sets to `None`) | 11      |
 
 
 
@@ -1898,11 +1899,11 @@ fn main() {
 <!-- ###################################################################### -->
 ### Checking Methods
 
-| Method | Returns | Use When |
-|--------|---------|----------|
-| `is_some()` | `bool` | Only need to know if Some |
-| `is_none()` | `bool` | Only need to know if `None` |
-| `is_some_and(f)` | `bool` | Check Some + condition |
+| Method           | Returns | Use When                    | Example |
+|------------------|---------|-----------------------------|---------|
+| `is_some()`      | `bool`  | Only need to know if Some   | 01      |
+| `is_none()`      | `bool`  | Only need to know if `None` | NA      |
+| `is_some_and(f)` | `bool`  | Check Some + condition      | NA      |
 
 
 
@@ -1932,36 +1933,8 @@ fn main() {
 - [Rust Book Chapter 6.1](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values) - Option fundamentals
 - [Rust by Example: Option](https://doc.rust-lang.org/rust-by-example/std/option.html) - Practical examples
 
-<!--
 ### Related Articles on This Blog
 
 - [Bindings in Rust: More Than Simple Variables]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}) - Understanding ownership and borrowing
 - [Rust and Functional Programming: Top 10 Functions]({%link docs/06_programmation/rust/006_rust_fp_top_10_functions/rust_fp_top_10_functions.md%}) - Iterator patterns (map, filter, etc.)
-
-### Practice Exercises
-
-1. **Rustlings**: Work through the `move_semantics` and `options` exercises
-   ```bash
-   rustlings watch
-   ```
-
-2. **Playground challenges**:
-   - Parse user input and handle errors with `Option<T>`
-   - Implement a configuration system with optional fields
-   - Build a linked list using `Option<Box<Node>>`
-
-### What's Next?
-
-This article covered `Option<T>` for representing "maybe absent" values. Next steps:
-
-1. **`Result<T, E>`**: For operations that can fail with error information
-2. **Error Handling Patterns**: Combining `?`, `Option<T>`, and `Result<T, E>`
-3. **Advanced Ownership**: Lifetimes, `Cow<T>`, smart pointers
-
-**Coming soon**: "Mastering `Result<T, E>` in Rust" using the same code-first approach.
-
-### Questions?
-
-If you found this guide helpful or have suggestions to improve it, feel free to open an issue on [GitHub](https://github.com/40tude/40tude.github.io/issues).
- -->
 
