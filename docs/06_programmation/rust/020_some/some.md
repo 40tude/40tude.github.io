@@ -274,14 +274,16 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 
 Updating configuration, processing optional user input, conditional initialization.
 
-#### **Runnable Example**
+#### **Runnable Examples**
 {: .no_toc }
 
 
 
 
 **Code snippet 00**
-Copy and paste in [Rust Playground](https://play.rust-lang.org/). In the 3 first versions of the previous code, in `main()`, before to use the `if let Some(...) = Option<T>` pattern, we explore various alternatives.
+
+Copy and paste in [Rust Playground](https://play.rust-lang.org/). In the first three versions of the earlier code, within `main()`, we review several alternative approaches before using the `if let Some(...) = Option<T>` pattern.
+
 
 ```rust
 struct Editor {
@@ -367,7 +369,8 @@ fn main() {
 
 
 **Code snippet 03**
-Copy and paste in [Rust Playground](https://play.rust-lang.org/). In this version of the previous code we use `if let Some()`.
+
+Copy and paste in [Rust Playground](https://play.rust-lang.org/). In this version of the previous code we use `if let Some()` pattern.
 
 ```rust
 struct Editor {
@@ -384,7 +387,8 @@ impl Editor {
 fn main() {
     let my_editor = Editor {};
 
-    // The `if let Some(...) = Option<T>` conditional pattern matching = unwrap and use the selection only if Some()
+    // The `if let Some(...) = Option<T>` conditional pattern matching
+    // => unwrap and use the selection only if Some()
     if let Some(my_txt) = my_editor.get_selection() {
         println!("Selection: {my_txt}");
     } else {
@@ -398,6 +402,7 @@ fn main() {
 
 
 **Code snippet 04**
+
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
 ```rust
@@ -447,6 +452,7 @@ fn main() {
     * The `Editor` may have a path to a file (or not). This explains why the field `path_to_file` is of type `Option<PathBuf>`.
     * When created, `my_editor` does not point to any particular file (se the `path_to_file: None`).
     * Then a `new_path` variable is created. It is an `Option<PathBuf>` containing a path to a file.
+
 That being said, the story goes like this: "If `new_path` contains a value, **bind it** to `path` and call the method `set_path()` with it as an argument. Otherwise, skip the block entirely."
 
 
@@ -473,6 +479,8 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 
 * Code snippet 04. Uncomment the line `let new_path = None;` (comment the line above). Is the behavior of the code crystal clear?
 
+* Code snippet 04. Add this line `println!("{}", new_path.is_some());` at the very end of the code. What happens? Why?.
+
 * Each time one of our data type have a field which may contain something or nothing we should use an `Option<T>`. See Example 01.
 
 
@@ -481,7 +489,7 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 
 1. **Pattern**: `if let Some(x) = expression` is **NOT** a boolean expression, it is a **conditional pattern matching**
 1. **Pattern**: Conditionally execute code only when `Option<T>` has a value
-1. **Ownership**: As with the `unwrap()`, the value inside Some is **moved** into `path` (not a reference)
+1. **Ownership**: As with the `unwrap()` (see Example 01), the value inside `Some()` is **moved** into `path` (not a reference)
 <!-- 1. **Alternative**: Could use `if new_path.is_some() { ... }` but wouldn't extract the value cleanly -->
 
 #### **Find More Examples**
@@ -503,7 +511,7 @@ Regular expression to use either in VSCode ou Powershell: `if let Some\(.+\) = `
 #### **Real-world context**
 {: .no_toc }
 
-File operations, network requests, database queries - anything that might fail and requires early exit.
+Anything that might fail and requires early exit: File operations, network requests, database queries...
 
 #### **Runnable Example**
 {: .no_toc }
@@ -543,8 +551,7 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-* In `save_file()` the code says: "Match on `&editor.path_to_file`. If it contains a value, **bind a reference to that value** to `path`, then call `file_name()` which returns an `Option<&OsStr>`, convert it to an `Option<String>` and bind the result to `my_file_name`. If `None`, return early from the function."
-
+* In `save_file()` the code says: "Match on `&editor.path_to_file`. If it contains a value, **bind a reference to that value** to `path`, then call the method `file_name()` on `path` and bind the result to `my_file_name`. If `None`, return early."
 
 
 
@@ -554,30 +561,32 @@ fn main() {
 
 * `save_file()` has a reference to the Editor as a parameter (borrow)
 * In the Playground, remove the reference in front of `&editor.path_to_file`. What happens? Why?
-* It is important to understand that we don't directly “bind” the file name, we bind the result of the extraction, which is itself an Option (because a path might not have a file name, for example / or ).
+* It is important to understand that we don't directly “bind” the file name, we bind the result of the extraction, which is itself an `Option<T>` (because a path might not have a file name, for example `/` or `.` ).
 * Ideally we should write `save_file()` as below:
 
     ```rust
     fn save_file(editor: &Editor) {
-        // Extract file name from path, converting OsStr to String
+        // Extract file name from path, converting OsStr to String (Option<String>)
         let file_name = match &editor.path_to_file {
             Some(path) => path.file_name().map(|s| s.to_string_lossy().to_string()),
             None => return,
         };
 
         if let Some(name) = file_name {
-            println!("Saving file: {:?}", name);
-            show_message("Save", "File saved successfully");
+            println!("Saving file: {}", name); // No :?
         }
     }
     ```
-
-
 * At the end of `main()` add the 2 lines below. What do need to do to compile. Why?
     ```rust
     editor.path_to_file = Some(PathBuf::from(r"tmp/my_file2.txt"));
     save_file(&editor);
     ```
+
+
+<div align="center">
+<img src="./assets/img04.webp" alt="" width="600" loading="lazy"/><br/>
+</div>
 
 
 
