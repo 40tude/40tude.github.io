@@ -1,3 +1,5 @@
+// cargo run --example 08ex
+
 fn parse_positive(s: &str) -> Option<i32> {
     s.parse::<i32>().ok().filter(|&n| n > 0)
 }

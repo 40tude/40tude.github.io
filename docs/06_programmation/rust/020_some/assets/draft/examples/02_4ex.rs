@@ -1,4 +1,5 @@
-// cargo run --example 02_2ex
+// cargo run --example 02_4ex
+
 use std::path::PathBuf;
 
 struct Editor {

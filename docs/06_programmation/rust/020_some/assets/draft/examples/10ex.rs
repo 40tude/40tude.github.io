@@ -1,3 +1,5 @@
+// cargo run --example 10ex
+
 use std::path::PathBuf;
 
 fn main() {

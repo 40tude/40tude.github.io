@@ -36,6 +36,60 @@ A Code-First Guide with Runnable Examples
 
 
 
+<!--
+
+Example 01: `Option<T>` as a Return Value
+```rust
+fn get_selection(&self) -> Option<String> {
+    Some("lorem ipsum".to_string())
+    // None
+}
+```
+
+Example 02: Conditional Pattern Matching
+```rust
+if let Some(my_txt) = my_editor.get_selection() {
+    println!("Selection: {my_txt}");
+} else {
+    println!("No text selected");
+}
+```
+If the pattern `Some(my_txt)` successfully matches the `Option<T>` returned by `my_editor.get_selection()`, then **bind its contents** to `my_txt` and run the first block; otherwise, run the `else` block."
+
+
+Example 03: `match` Expression with Early Return
+```rust
+let my_file_name = match &editor.path_to_file {
+    Some(path) => path.file_name(),
+    None => return,
+};
+```
+"Match on `&editor.path_to_file`. If it contains a value, **bind a reference to that value** to `path`, then call the method `file_name()` on `path` and bind the result to `my_file_name`. If `None`, return early."
+
+
+Example 04: "Modern" Early Return
+```rust
+let Some(my_path) = &editor.path_to_file else {
+    return;
+};
+```
+"Let the pattern `Some(my_path)` match on `&editor.path_to_file`. If it doesn't match (i.e., it's `None`), execute the `else` block which returns early."
+
+
+
+
+
+
+
+
+Example XX: TITLE
+```rust
+
+```
+"SAY IT LOUD"
+
+-->
+
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
@@ -664,7 +718,7 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-* At the begining of `save_file()` the code says: "Let the pattern `Some(my_path)` match on `&editor.path_to_file`. If it doesn't match (i.e., it's `None`), execute the else block which returns early."
+* At the begining of `save_file()` the code says: "Let the pattern `Some(my_path)` match on `&editor.path_to_file`. If it doesn't match (i.e., it's `None`), execute the `else` block which returns early."
 
 
 
@@ -686,9 +740,7 @@ fn main() {
 #### **Find More Examples**
 {: .no_toc }
 
-Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ else`
-
-Try it with `ripgrep` for example.
+Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ else`. Try it with `ripgrep` for example.
 
 
 
@@ -722,7 +774,7 @@ Try it with `ripgrep` for example.
 <!-- ###################################################################### -->
 ### Example 05 - `unwrap_or` vs `unwrap_or_else` - Providing Defaults
 
-**Real-world context**: Configuration with fallback values, user preferences, optional parameters.
+**Real-world context**: Setup configurations with fallback values, set user preferences with default values if not specified, set optional parameters... It is smart to check if getting the default values is fast (a constant) or slow (read a database). If so 2 options are available.
 
 #### **Runnable Example**
 {: .no_toc }
@@ -731,62 +783,96 @@ Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
 ```rust
 fn expensive_computation() -> String {
-    println!("Computing default value...");
+    println!("\tComputing a default value for 10 seconds...");
     "DEFAULT_NAME".to_string()
 }
 
 fn main() {
-    // ----------------------------------------------------
-    // ----------------------------------------------------
+    println!("\n--- PART 1: Where default is NOT needed");
+    let some_name: Option<String> = Some("Zoubida".into());
+
+    // 1.1: .unwrap_or_else() (LAZY Evaluation)
+    // The closure '|| expensive_computation()' is called ONLY IF 'some_name' is None (not the case here)
+    // This avoids the expensive operation.
+    // NO "Computing..." message is printed.
+    // This is the correct, efficient approach when dealing with Some.
+    println!("About to call .unwrap_or_else():");
+    let _name4 = some_name.clone().unwrap_or_else(|| expensive_computation());
+    println!("\tResult after .unwrap_or_else() on Some: {_name4}");
+
+    // 1.2: .unwrap_or() (EAGER Evaluation)
+    // The argument 'expensive_computation()' is calculated first, regardless of whether 'some_name' is None or Some.
+    // The "Computing..." message is printed, the returned value is thrown away
+    // This is a wasted computation
+    println!("About to call .unwrap_or():");
+    let _name3 = some_name.unwrap_or(expensive_computation());
+    println!("\tResult after .unwrap_or() on Some     : {_name3}");
+
+    println!("\n\n--- PART 2: Where default is NEEDED");
     let none_name: Option<String> = None;
 
-    // unwrap_or: value is ALWAYS computed (eager evaluation)
-    let name1 = none_name.clone().unwrap_or(expensive_computation());
-    // Output: "Computing default value..."
+    // 2.1: .unwrap_or_else() (LAZY Evaluation)
+    // The closure '|| expensive_computation()' is called ONLY IF 'none_name' is None (the case here)
+    // The "Computing..." message is printed and the DEFAULT_NAME is used
+    println!("About to call .unwrap_or_else():");
+    let _name2 = none_name.clone().unwrap_or_else(|| expensive_computation());
+    println!("\tResult after .unwrap_or_else() on None: {_name2}");
 
-    // unwrap_or_else: closure called ONLY if None (lazy evaluation)
-    let name2 = none_name.unwrap_or_else(|| expensive_computation());
-    // Output: "Computing default value..."
-
-    // ----------------------------------------------------
-    // ----------------------------------------------------
-    // Compare with Some
-    let some_name: Option<String> = Some("Alice".to_string());
-
-    // unwrap_or: value is ALWAYS computed (eager evaluation)
-    let name3 = some_name.clone().unwrap_or(expensive_computation());
-    // Still prints "Computing default value..." => Waste of time
-
-    // unwrap_or_else: closure called ONLY if None (lazy evaluation)
-    let name4 = some_name.unwrap_or_else(|| expensive_computation());
-
-    // The closure not called
-
-    println!("Results: {name1}, {name2}, {name3}, {name4}");
+    // 2.2: .unwrap_or() (EAGER Evaluation)
+    // The argument 'expensive_computation()' is calculated first, regardless of whether 'none_name' is None or Some.
+    // The "Computing..." message is printed.
+    println!("About to call .unwrap_or():");
+    let _name1 = none_name.unwrap_or(expensive_computation());
+    println!("\tResult after .unwrap_or() on None     : {_name1}");
 }
-
 ```
 
 #### **Read it Aloud**
 {: .no_toc }
 
-"`unwrap_or(value)` always evaluates `value`, even if the `Option<T>` is Some. Use `unwrap_or_else(|| compute_value())` for expensive defaults - the closure only runs when needed."
+In the code, `.unwrap_or(v)` and `.unwrap_or_else(||my_closure())` should be read as follow:
+* `.unwrap_or(v)` = "Give me the value inside the `Option<T>` **OR** if the option is empty (`None`), give me the value `v` (where `v` can be the result of a function)."
+* `.unwrap_or_else(||my_closure())` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is empty (`None`), call the closure and give its returned value."
+
 
 
 
 
 ### **Comments**
 {: .no_toc }
-* `.unwrap_or()`, eager evaluation (upfront) and call a function
-* `.unwrap_or_else()`, lazy evaluation (last minute) and call a closure
 
-* Clippy will want us to write:
+<!-- * `.unwrap_or()`, eager evaluation (upfront) and call a function -->
+<!-- * `.unwrap_or_else()`, lazy evaluation (last minute) and call a closure -->
+
+* "`Option<T>.unwrap_or(v)` always evaluates `v`, even if the `Option<T>` is `Some()`"
+* "`Option<T>.unwrap_or_else(F)` the closure `F` is called if if the `Option<T>` is `Some()`"
+
+
+* What makes the laziness possible?
+    * In one case (`.unwrap_or()`) the argument is a value or the result of a function which have been already evaluated while on the other (`.unwrap_or_else()`) we pass a function pointer, a callable, a closure, a recipe which can be invoked.
+    * With `Option<T>.unwrap_or(my_function())`: `my_function()` is called first. It produces a return value `v` of type `T` which becomes the argument of `.unwrap_or(v)`. If `Option<T>` is `Some()` this is a waste of time.
+    * With `Option<T>.unwrap_or_else(||my_closure())`: `.unwrap_or_else()` first checks if `Option<T>` is `Some(v)`. If so it returns `v` immediately. If `Option<T>` is `None`, then `.unwrap_or_else()` executes the "recipe" by calling the closure. The closure in charge of setting the default value is called only when needed.
+
+
+
+<!--
+we cannot pass a function to  `.unwrap_or_else` we must pass a closure object (that takes no argument and return `T`).
+Now that we understand what `.unwrap_or()` means, the difference between it and `.unwrap_or_else()` becomes clearer based on when the fallback value is calculated:
+1. .unwrap_or(default_value) (Eager)
+The default_value is calculated before the method is even called. It's ready to go immediately, whether it's needed or not.
+2. .unwrap_or_else(|| calculate_default()) (Lazy)
+The fallback is provided as a closure (the || ... part). This closure is only executed ("else") if the Option is None. This makes it more efficient for expensive default calculations.
+`unwrap_or` for cheap literals, `unwrap_or_else` for function calls
+-->
+
+
+* Clippy will generate some warnings. It wants us to write:
     ```rust
     let name2 = expensive_computation();
     let name4 = "Alice".to_string();
     ```
-    Indeed the compiler knows `none_name` is `None` and so `.unwrap_or_else()` will ALWAYS be called, so let's call it directly
-    The same way, the compiler knows that `some_name` is `Some`, so the closure will NEVER be called, so let's simplify code
+    - Indeed the compiler knows `none_name` is `None` and so `.unwrap_or_else()` will ALWAYS be called, so let's call it directly.
+    - The same way, the compiler knows that `some_name` is `Some`, so the closure will NEVER be called, so let's simplify code.
 
 
 
@@ -794,15 +880,22 @@ fn main() {
 #### **Key Points**
 {: .no_toc }
 
-1. **Performance**: `unwrap_or_else` is lazy - crucial for expensive defaults
+1. **Performance**: `.unwrap_or_else()` is lazy. Important for expensive defaults
 2. **Related**: `unwrap_or_default()` uses `Default::default()` (e.g., `""` for String, `0` for i32)
-3. **When to use**: `unwrap_or` for cheap literals, `unwrap_or_else` for function calls
+3. **When to use**:
+    * If the default value is a simple constant or literal, use `.unwrap_or()`, which is straightforward.
+    * If the default value is the result of an expensive function call (I/O, network, heavy computation, etc.), use `.unwrap_or_else()` to avoid wasting computation.
+4. Read the signatures of both method: [`Option<T>.unwrap_or(v)`](https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap_or), [`Option<T>.unwrap_or_else(F)`](https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap_or_else)
+
+
+
 
 #### **Find More Examples**
 {: .no_toc }
 
-Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `unwrap_or\(`
-`ripgrep` project is a good candidate.
+Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `unwrap_or\(`. `ripgrep` project is again a good candidate.
+
+
 
 
 

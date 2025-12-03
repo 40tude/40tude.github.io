@@ -1,3 +1,5 @@
+// cargo run --example 06ex
+
 fn get_first_char(s: Option<&str>) -> Option<char> {
     let text = s?; // If None, return None immediately
     text.chars().next()
