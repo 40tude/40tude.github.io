@@ -284,7 +284,7 @@ Based I what I saw, it seems `ripgrep` is the project that cover most if not all
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🟢 Beginner Examples (1-4)
+<!-- ## 🟢 Beginner Examples (1-4) -->
 
 
 
@@ -292,16 +292,16 @@ Based I what I saw, it seems `ripgrep` is the project that cover most if not all
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 01 - `Option<T>` as a Return Value
+## 🟢 - Example 01 - `Option<T>` as a Return Value
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Indeed, we can explain that a function might search for a file and, if it can’t find it, simply returns “nothing.” If it succeeds, it returns something—like the first line of the file. Using Option makes sense for any function that might not succeed (without throwing an error or crashing) but also doesn’t always have a meaningful value to return. This pattern is common for operations like searching, parsing, or handling optional configuration.
 
 Easy to explain, easy to translate. The easiest, I told you.
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -330,13 +330,13 @@ fn main() {
 }
 ```
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 In `main()`, the code says : "`get_selection()` returns an `Option<String>` which contains the selected text as a `String` or `None`. The `if selection.is_some()` checks if the return value contains something and if so, executes the first block. Otherwise, it executes the else branch."
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 * It is important to realize that `get_selection()` returns a type `Option<String>` **NOT** a type `String`
 * In the playground, replace `Some("lorem ipsum".to_string())` with `Some("lorem ipsum".into())`. Does it work? Why?
@@ -346,7 +346,7 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 * Duplicate the `println!("Selection: {}", selection.unwrap());`at the very end of `main()`. Does it works? Why?
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Pattern**: The function returns an `Option<T>` (here `Option<String>`). It can be `None` or `Some(v)`.
@@ -354,7 +354,7 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 3. **Usage**: When a struct, an application, a function has an optional parameter or return value, `Option<T>` should be used.
 
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 * Regular expression to use either in VSCode ou Powershell: `Some\(.+\)$`
@@ -377,14 +377,14 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 02 - Conditional Pattern Matching - `if let Some(v) = Option<T>`
+## 🟢 - Example 02 - Conditional Pattern Matching - `if let Some(v) = Option<T>`
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Updating configuration, processing optional user input, conditional initialization.
 
-#### **Runnable Examples**
+### Runnable Examples
 {: .no_toc }
 
 
@@ -545,7 +545,7 @@ fn main() {
 
 
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 **Code snippet 00:** The code says: "In `main()`, `msg` is an `Option<String>` and we use a `match` expression to cover explicitly all the possible values returned by `my_editor.get_selection()`."
@@ -573,7 +573,7 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 * Code snippet 03. `if let Some(x) = expression` is **NOT** a boolean expression. This is a **conditional pattern matching**. Rust try to match the pattern `Some(...)` with the value on the right. If the match succeeds, the `if` block is executed; otherwise, it is ignored.
@@ -594,7 +594,7 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 * Each time one of our data type have a field which may contain something or nothing we should use an `Option<T>`. See Example 01.
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Pattern**: `if let Some(x) = expression` is **NOT** a boolean expression, it is a **conditional pattern matching**
@@ -602,7 +602,7 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 1. **Ownership**: As with the `unwrap()` (see Example 01), the value inside `Some()` is **moved** into `path` (not a reference)
 <!-- 1. **Alternative**: Could use `if new_path.is_some() { ... }` but wouldn't extract the value cleanly -->
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `if let Some\(.+\) = `
@@ -616,14 +616,14 @@ Regular expression to use either in VSCode ou Powershell: `if let Some\(.+\) = `
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 03 - `match` Expression with Early Return
+## 🟢 - Example 03 - `match` Expression with Early Return
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Anything that might fail and requires early exit: File operations, network requests, database queries...
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -658,7 +658,7 @@ fn main() {
 ```
 
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 * In `save_file()` the code says: "Match on `&editor.path_to_file`. If it contains a value, **bind a reference to that value** to `path`, then call the method `file_name()` on `path` and bind the result to `my_file_name`. If `None`, return early."
@@ -666,7 +666,7 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 * `save_file()` has a reference to the Editor as a parameter (borrow)
@@ -700,14 +700,14 @@ fn main() {
 
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Pattern**: `match` with early return avoids deep nesting
 2. **When to use**: When `None` means "abort this operation"
 3. **Modern alternative**: See next example with `let...else`
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.+\) => .+,\s*None => return`
@@ -725,14 +725,14 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 04 - "Modern" Early Return - `let...else`
+## 🟢 - Example 04 - "Modern" Early Return - `let...else`
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Same as match early return, but more concise (modern Rust style).
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -771,7 +771,7 @@ fn main() {
 }
 ```
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 * At the begining of `save_file()` the code says: "Let the pattern `Some(my_path)` match on `&editor.path_to_file`. If it doesn't match (i.e., it's `None`), execute the `else` block which returns early."
@@ -779,13 +779,13 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 * Compare the end of `save_file()` in Example 03 with Example 04. In the latter we extract file name from path, converting OsStr to String. It was mentioned in the comments of Example 03.
 
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Pattern**: `let Some(var) = expr else { ... }` replaces match with early return
@@ -793,7 +793,7 @@ fn main() {
 3. **Requirement**: The else block must diverge (return, break, continue, panic)
 4. **Modern**: Introduced in Rust 1.65 (2022) - idiomatic for new code
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ else`. Try it with `ripgrep` for example.
@@ -821,7 +821,7 @@ Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ e
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔵 Intermediate Examples (5-9)
+<!-- ## 🔵 Intermediate Examples (5-9) -->
 
 
 
@@ -831,14 +831,14 @@ Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ e
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 05 - Early Return Propagation - The `?` Operator
+## 🔵 - Example 05 - Early Return Propagation - The `?` Operator
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Chaining optional operations, parsing pipelines, database query chains.
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -878,7 +878,7 @@ fn main() {
 }
 ```
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 The `?` operator says: "If this `Option<T>` is `None`, immediately return `None` from the function. Otherwise, unwrap the `Some(v)` value and continue."
@@ -886,7 +886,7 @@ The `?` operator says: "If this `Option<T>` is `None`, immediately return `None`
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 In addition to the Playground it is useful to debug the code in VSCode. This really helps to visualize what happens.
@@ -898,7 +898,7 @@ In addition to the Playground it is useful to debug the code in VSCode. This rea
 
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Return type requirement**: Function must return `Option<T>` to use `?`
@@ -906,7 +906,7 @@ In addition to the Playground it is useful to debug the code in VSCode. This rea
 3. **Not just `Option<T>`**: Also works with `Result<T, E>`
 4. **Pattern**: `Some(value?)` combines - try to get value, wrap in `Some(v)` if successful
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+\?`
@@ -926,11 +926,11 @@ Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 06 - Providing Defaults Values - `.unwrap_or(v)` vs `.unwrap_or_else(||C())`
+## 🔵 - Example 06 - Providing Defaults Values - `.unwrap_or(v)` vs `.unwrap_or_else(||C())`
 
 **Real-world context**: Setup configurations with fallback values, set user preferences with default values if not specified, set optional parameters... It is smart to check if getting the default values is fast (a constant) or slow (read a database). If so 2 options are available.
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -981,7 +981,7 @@ fn main() {
 }
 ```
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 In the code above, `.unwrap_or(v)` and `.unwrap_or_else(||my_closure())` should be read as follow:
@@ -992,7 +992,7 @@ In the code above, `.unwrap_or(v)` and `.unwrap_or_else(||my_closure())` should 
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 * "`Option<T>.unwrap_or(v)` always evaluates `v`, even if the `Option<T>` is `Some(v)`"
@@ -1029,7 +1029,7 @@ The fallback is provided as a closure (the || ... part). This closure is only ex
 
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Performance**: `.unwrap_or_else()` is lazy. Important for expensive defaults
@@ -1042,7 +1042,7 @@ The fallback is provided as a closure (the || ... part). This closure is only ex
 
 
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `unwrap_or\(`. `ripgrep` project is again a good candidate.
@@ -1083,14 +1083,14 @@ Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `un
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 07 - Transforming Values Inside `Option<T>` - `Option<T>.map(|v| transform(v))`
+## 🔵 - Example 07 - Transforming Values Inside `Option<T>` - `Option<T>.map(|v| transform(v))`
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Processing data that might not exist, transforming configurations, sanitizing user input.
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1116,7 +1116,7 @@ fn main() {
 }
 ```
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 `Option<T>.map(|v| transform(v))` says: "If the `Option<T>` is `Some(v)`, apply this transformation to the inner value and wrap the result in `Some(w)`. If `None`, skip the transformation and return `None`."
@@ -1124,7 +1124,7 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 * If applicable `Option<T>.map(|v| transform(v))` returns `Some(w)`
@@ -1133,7 +1133,7 @@ fn main() {
 * At the end of the pipeline `.unwrap_or_else(|| C())` returns a `String` to print
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Chainable**: Multiple `.map()` calls compose cleanly
@@ -1142,7 +1142,7 @@ fn main() {
 4. **Functional programming**: Avoids explicit if/match - more declarative
 5. **When**: Use `.map(|v| transform(v))` for always-succeeds transformations.
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `\.map\(\s*\|[^|]+\|[^)]*\)`
@@ -1165,14 +1165,14 @@ Regular expression to use either in VSCode ou Powershell: `\.map\(\s*\|[^|]+\|[^
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 08 - Chaining `Option<T>` - `Option<T>.and_then(|v| C(v)`
+## 🔵 - Example 08 - Chaining `Option<T>` - `Option<T>.and_then(|v| C(v)`
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Validation chains, nested optional lookups (config sections), parsing pipelines.
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1205,7 +1205,7 @@ fn main() {
 }
 ```
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 `Option<T>.and_then(|v| C(v))` says: "If the `Option<T>` is `Some(v)`, apply the transformation that returns an `Option<U>` and **flatten the result**. If `None`, skip and return `None`."
@@ -1214,7 +1214,7 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 * With `input.map()`, `parse_positive()` returns an `Option<i32>` which is wrapped into an `Option<T>` container => `Option<Option<i32>> `
@@ -1227,14 +1227,14 @@ fn main() {
     1. While the second closure receive an `i32` (`|n|`)
 * Aka `flatmap`
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Flattening**: Prevents `Option<Option<T>>`. Chaining is impossible otherwise
 1. **When to use**: When the transformation itself might fail (returns `Option<T>`)
 1. **vs .map()**: Use `.map()` for always-succeeds transforms, `and_then` for fallible ones
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `\.and_then\(`
@@ -1254,14 +1254,14 @@ Regular expression to use either in VSCode ou Powershell: `\.and_then\(`
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 09 - Pattern Matching with Guards
+## 🔵 - Example 09 - Pattern Matching with Guards
 
-#### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Conditional logic based on value properties, filtering with conditions, validation.
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1295,13 +1295,13 @@ fn main() {
 }
 ```
 
-#### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 In each match arm, `Some(v) if predicate` says: "If the `Option<T>` (`age`) is `Some(a)` **AND** if the extracted value (`a`) satisfies this predicate then execute the code after the `=>`."
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 * Pay attention to the lifetime of the value returned by `categorize_age()`. Remove `'static` and build the code. What the compiler says? Why?
 
@@ -1309,7 +1309,7 @@ In each match arm, `Some(v) if predicate` says: "If the `Option<T>` (`age`) is `
 
 
 
-#### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Guard syntax**: `if` after pattern - tested only if pattern matches
@@ -1318,7 +1318,7 @@ In each match arm, `Some(v) if predicate` says: "If the `Option<T>` (`age`) is `
 2. **Alternative with let-chains**: `if let Some(x) = opt && x > 10` combines pattern + condition. [Read this](https://doc.rust-lang.org/edition-guide/rust-2024/let-chains.html).
 
 
-#### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
@@ -1341,12 +1341,12 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
 <!-- ###################################################################### -->
 ## 🔴 - Example 10 - Borrowing Instead of Moving - `as_ref()` and `as_mut()`
 
-### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Inspecting `Option<T>` without consuming it, modifying in-place, reusing `Option<T>` after checking.
 
-### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1389,7 +1389,7 @@ fn main() {
 
 ```
 
-### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 "`as_ref()` converts `Option<T>` to `Option<&T>`, letting you peek inside without consuming. `as_mut()` gives `Option<&mut T>` for in-place modifications. Both leave the original `Option<T>` intact."
@@ -1398,7 +1398,7 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 
@@ -1413,7 +1413,7 @@ fn main() {
     ```
 
 
-### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Signature**: `as_ref(&self) -> Option<&T>`, `as_mut(&mut self) -> Option<&mut T>`
@@ -1421,7 +1421,7 @@ fn main() {
 3. **With map**: `opt.as_ref().map(|val| ...)` lets us transform without moving
 4. **Ownership**: Original Option keeps ownership - crucial for reuse
 
-### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expressions to use either in VSCode ou Powershell: `\.as_ref\(\)\.map` or `\.as_mut\(\)`
@@ -1452,12 +1452,12 @@ Regular expressions to use either in VSCode ou Powershell: `\.as_ref\(\)\.map` o
 <!-- ###################################################################### -->
 ## 🔴 - Example 11 - `take()` - Extracting Value and Leaving `None`
 
-### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Consuming resources (files, connections), state machines, cleanup operations, RAII.
 
-### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1575,7 +1575,7 @@ fn main() {
 
 
 
-### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 "`take()` says: 'Give me the value inside `Some(v)`, replace the `Option` with `None`, and return the value as `Option`.' It's move + automatic `None` assignment in one operation."
@@ -1583,7 +1583,7 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 **First example**
@@ -1595,7 +1595,7 @@ fn main() {
 
 
 
-### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Signature**: `take(&mut self) -> Option<T>` - requires mutable reference
@@ -1605,7 +1605,7 @@ fn main() {
 
 
 
-### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 VSCode search: `\.take\(\)` (regex)
@@ -1635,12 +1635,12 @@ Regular expression to use either in VSCode ou Powershell: `\.take\(\)`
 <!-- ###################################################################### -->
 ## 🔴 - Example 12 - `filter()` - Conditional Mapping
 
-### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Validation, keeping only values that meet criteria, sanitization.
 
-### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1673,7 +1673,7 @@ fn main() {
 }
 ```
 
-### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 "`filter(|val| condition)` says: 'If `Option<T>` is `Some(v)` and the condition is true, keep it as `Some(v)`. Otherwise, return `None`.' It's like `map()` but can remove values."
@@ -1682,14 +1682,14 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 
 
 
 
-### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **Signature**: `filter<P>(self, predicate: P) -> Option<T>` where `P: FnOnce(&T) -> bool`
@@ -1697,7 +1697,7 @@ fn main() {
 3. **None handling**: `None` stays `None` (predicate never called)
 4. **vs if**: More functional, composable with other `Option<T>` methods
 
-### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `\.filter\(\s*\|[^|]+\|[^)]*\)`
@@ -1724,12 +1724,12 @@ Regular expression to use either in VSCode ou Powershell: `\.filter\(\s*\|[^|]+\
 <!-- ###################################################################### -->
 ## 🔴 - Example 13 - `flatten()` and `filter_map()` - Working with Collections of Options
 
-### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Processing results where some operations fail, removing `None` values, transforming + filtering.
 
-#### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1769,7 +1769,7 @@ fn main() {
 }
 ```
 
-### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 "`flatten()` converts `Vec<Option<T>>` to `Vec<T>` by discarding `None`. `filter_map(|x| optional_transform(x))` combines map and flatten in one step - more efficient for large collections."
@@ -1778,7 +1778,7 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 * More efficient for large collections
@@ -1787,7 +1787,7 @@ fn main() {
 
 
 
-### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **flatten**: `Iterator<Item = Option<T>>` → `Iterator<Item = T>`
@@ -1795,7 +1795,7 @@ fn main() {
 3. **Performance**: `filter_map` avoids intermediate allocation
 4. **Common pattern**: Processing lists where operations might fail
 
-### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `\.flatten\(\)` or `\.filter_map\(`
@@ -1811,12 +1811,12 @@ Regular expression to use either in VSCode ou Powershell: `\.flatten\(\)` or `\.
 <!-- ###################################################################### -->
 ## 🔴 - Example 14 - Combining Multiple Options
 
-### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Validation requiring multiple fields, coordinate systems, multi-factor authentication.
 
-### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1860,7 +1860,7 @@ fn main() {
 }
 ```
 
-### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 "When combining Options, use `Some(a? + b?)` for concise early-return logic: 'If all Options are Some, compute. If any is `None`, short-circuit to `None`.'"
@@ -1869,14 +1869,14 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 
 
 
 
-### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **? operator method**: Cleanest for 2+ Options - reads left to right
@@ -1884,7 +1884,7 @@ fn main() {
 3. **and_then method**: Functional style - harder to read for multiple values
 4. **All-or-nothing**: Result is `Some(v)` only if ALL inputs are `Some(v)`
 
-### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `Some\(.+?\?\s*[+\-*/]\s*.+?\?\)`
@@ -1899,12 +1899,12 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+?\?\s*[+\-*/]
 <!-- ###################################################################### -->
 ## 🔴 - Example 15 -  `copied()` and `cloned()` - Converting `Option<&T>` to `Option<T>`
 
-### **Real-world context**
+### Real-world context
 {: .no_toc }
 
 Working with references from collections, avoiding lifetime issues, simplifying ownership.
 
-### **Runnable Example**
+### Runnable Example
 {: .no_toc }
 
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
@@ -1938,7 +1938,7 @@ fn main() {
 }
 ```
 
-### **Read it Aloud**
+### Read it Aloud
 {: .no_toc }
 
 "`copied()` duplicates the value inside `Option<&T>` to produce `Option<T>` (requires `Copy` trait). `cloned()` does the same but uses `Clone` trait instead - works for non-Copy types like String."
@@ -1946,14 +1946,14 @@ fn main() {
 
 
 
-### **Comments**
+### Comments
 {: .no_toc }
 
 
 
 
 
-### **Key Points**
+### Key Points
 {: .no_toc }
 
 1. **When to use**: Converting `Option<&T>` from collections to owned `Option<T>`
@@ -1961,7 +1961,7 @@ fn main() {
 3. **cloned()**: For `Clone` types (String, Vec, etc.) - potentially expensive
 4. **Lifetime escape**: Lets us return `Option<T>` without lifetime parameters
 
-### **Find More Examples**
+### Find More Examples
 {: .no_toc }
 
 Regular expression to use either in VSCode ou Powershell: `\.copied\(\)`, `\.cloned\(\)` or `\.first\(\)\.copied\(\)`.
