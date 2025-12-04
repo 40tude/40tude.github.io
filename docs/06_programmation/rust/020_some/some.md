@@ -162,7 +162,7 @@ if let Some(_f) = self.file.take() {...}
 
 Example 12: Conditional Mapping
 ```rust
-
+let result = name.map(|n| n.trim()).filter(|n| !n.is_empty()).map(|n| n.to_uppercase());
 ```
 "If `Option<T>` is `Some(v)` and the condition is true, keep it as `Some(v)`. Otherwise, return `None`. It's like `map()` but it can remove values."
 
@@ -172,17 +172,23 @@ Example 12: Conditional Mapping
 
 Example 13: Working with Collections of Options
 ```rust
+let out: Vec<i32> = in
+    .iter()
+    .filter_map(|&s| parse_number(s))
+    .collect();
 
 ```
-"SAY IT LOUD"
+"`.flatten()` converts `Vec<Option<T>>` to `Vec<T>` by discarding `None` while `.filter_map(|x| optional_transform(x))` combines `.map()` and `.flatten()` in one step"
 
 
 
 Example 14: Combining Multiple Options
 ```rust
-
+fn add_options(a: Option<i32>, b: Option<i32>) -> Option<i32> {
+    Some(a? + b?)
+}
 ```
-"SAY IT LOUD"
+"`Some(a? + b?)` offers a concise early-return logic to `Options<T>` 2 or more option. If all `Options<T>` are `Some(v)` the processing takes place, otherwise, if any is `None`, early reply `None`."
 
 
 
@@ -191,7 +197,7 @@ Example 15: Converting `Option<&T>` to `Option<T>`
 ```rust
 
 ```
-"SAY IT LOUD"
+"`.copied()` duplicates the value inside `Option<&T>` to produce `Option<T>` (requires the `Copy` trait). `.cloned()` does the same but uses the `Clone` trait instead - works for non-Copy types like `String`."
 
 -->
 
@@ -1762,9 +1768,9 @@ where
     P: FnOnce(&T) -> bool + Destruct,
     T: Destruct,
 ```
-I know what you think but this is like riding under the rain on track. No one like that but... This is an investment with large ROI, especially the next week-end in Belgium where it rains 370 days/year. Ok... Above we learn that, on an `Option<T>` the predicate `P` acts on `&T` (did you see the `P: FnOnce(&T)`?). The predicate borrows the tested values it does'nt consume them.
+I know what you think but this is like riding under the rain on track. No one like that but... This is an investment with large ROI, especially the next week-end in Belgium where it rains 370 days/year. Ok... Above we learn that, on an `Option<T>`, the predicate `P` acts on `&T` (did you notice the `P: FnOnce(&T)`?). The predicate borrows the tested values it does'nt consume them.
 
-And what about `.map()`. Let's play the game and we read:
+And what about `.map()`? Let's play the game and we read:
 
 ```rust
 core::iter::traits::iterator::Iterator
@@ -1778,7 +1784,7 @@ where
 
 
 
-Just to make sure we know what we are talking about while talking about the first filter... Copy and paste in [Rust Playground](https://play.rust-lang.org/) the code below:
+Now, just to make sure we know what we are talking about while talking about the first filter... Copy and paste in [Rust Playground](https://play.rust-lang.org/) the code below:
 
 ```rust
 // cargo run --example 12_2ex
@@ -1811,6 +1817,34 @@ If you use VSCode, feel free to press CTRL+ALT to reveal the types and you shoul
 
 All three versions above compile and produce identical results, but they differ in how they handle references in the closure parameters. Let me break down each one:
 
+They all start with `numbers.iter()`. Reading the help of `.iter()` we learn the following:
+
+```rust
+core::slice
+impl<T> [T]
+pub const fn iter(&self) -> Iter<'_, T>
+T = Option<i32>
+```
+1. Note that rust-analyzer is smart enough to recall us that in our case, `T = Option<i32>`.
+2. We should also note that even if we call `.iter()` on a vector, the documentation explains that it will be considered as a slice (`[T]`).
+3. The return type is `Iter<'_, T>`. The first element is a lifetime specifier. It indicates that the iterator is “bound” to the lifetime of the object on which we call `iter()` (here, `numbers`, the vector/slide of `Option<T>`). Indeed, slice iterators borrow elements instead of moving them.
+
+So at this point we know we will get a `core::slice::Iter<'_, T>` but what is precisely the returned type? We have to go on the [Rust documentation](https://doc.rust-lang.org/stable/std/index.html) and look for the **`struct`** `core::slice::Iter`
+
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="600" loading="lazy"/><br/>
+</div>
+
+Once on the page of the `Struct Iter`, in the section `Trait Implementations` we look, in alphabetical order, for the implementation of the **Iterator** trait:
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="600" loading="lazy"/><br/>
+</div>
+
+This is where we learn that the implementation define an associated type Item: `type Item = &'a T`. This means that the iterator of a slice of elements of type `T` produces references (`&`) to these elements, with the same lifetime (`'a`) as the iterator itself. To make a long story short, the iterator produces `&Option<i32>`
+
+Now let's analyze the 3 different versions of the line:
+
 **Version 1:** `|&opt| opt.filter(|&n| n > 10)`
 * Here we destructure the reference in the closure parameter. Since `numbers.iter()` yields `&Option<i32>`, using `|&opt|` gives us `opt: Option<i32>` (a copy, since `i32` is `Copy`). Then `|&n|` destructures the `&i32` from `filter`'s closure to get `n: i32`.
 
@@ -1821,13 +1855,13 @@ All three versions above compile and produce identical results, but they differ 
     * Here we keep the reference and explicitly dereference with `*n` when comparing.
 
 Which one to prefer?
-* Keep `numbers.iter().map(|opt| ...)`
+* We should keep the first part: `numbers.iter().map(|opt| ...)`
 * For integers or other `Copy` types:
     * `|&n| n > 10` is concise and idiomatic.
 * For general types (non-Copy):
     * Use `|n| *n > 10` to avoid forcing a copy or clone.
 
-V2 is better but type specific. Personally I would vote for V3 since it can be generalized
+V2 is better but type specific. Personally I would vote for V3 since it can be generalized.
 
 
 
@@ -1925,7 +1959,7 @@ fn main() {
 ### Read it Aloud
 {: .no_toc }
 
-"`flatten()` converts `Vec<Option<T>>` to `Vec<T>` by discarding `None`. `filter_map(|x| optional_transform(x))` combines map and flatten in one step - more efficient for large collections."
+"`.flatten()` converts `Vec<Option<T>>` to `Vec<T>` by discarding `None` while `.filter_map(|x| optional_transform(x))` combines `.map()` and `.flatten()` in one step."
 
 
 
@@ -1934,7 +1968,7 @@ fn main() {
 ### Comments
 {: .no_toc }
 
-* More efficient for large collections
+* `.filter_map(|x| optional_transform(x))` is more efficient for large collections
 
 
 
@@ -1998,7 +2032,7 @@ fn main() {
     println!("{:?}", add_options(Some(5), None));      // None
     println!("{:?}", add_options(None, Some(10)));     // None
 
-    // All three methods equivalent
+    // All three methods are equivalent
     assert_eq!(add_options(Some(2), Some(3)), Some(5));
     assert_eq!(add_options_match(Some(2), Some(3)), Some(5));
     assert_eq!(add_options_and_then(Some(2), Some(3)), Some(5));
@@ -2016,7 +2050,7 @@ fn main() {
 ### Read it Aloud
 {: .no_toc }
 
-"When combining Options, use `Some(a? + b?)` for concise early-return logic: 'If all Options are Some, compute. If any is `None`, short-circuit to `None`.'"
+"`Some(a? + b?)` offers a concise early-return logic to `Options<T>` 2 or more option. If all `Options<T>` are `Some(v)` the processing takes place, otherwise, if any is `None`, early reply `None`."
 
 
 
@@ -2024,8 +2058,6 @@ fn main() {
 
 ### Comments
 {: .no_toc }
-
-
 
 
 
@@ -2094,7 +2126,7 @@ fn main() {
 ### Read it Aloud
 {: .no_toc }
 
-"`copied()` duplicates the value inside `Option<&T>` to produce `Option<T>` (requires `Copy` trait). `cloned()` does the same but uses `Clone` trait instead - works for non-Copy types like String."
+"`.copied()` duplicates the value inside `Option<&T>` to produce `Option<T>` (requires the `Copy` trait). `.cloned()` does the same but uses the `Clone` trait instead - works for non-Copy types like `String`."
 
 
 
