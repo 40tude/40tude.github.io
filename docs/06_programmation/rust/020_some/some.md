@@ -141,7 +141,7 @@ match age {
 
 
 
-Example 10: TITLE
+Example 10: Borrowing Instead of Moving
 ```rust
 let len = path.as_ref().map(|p| p.as_os_str().len());
 path.as_mut().map(|p| p.push("documents"));
@@ -150,7 +150,35 @@ path.as_mut().map(|p| p.push("documents"));
 
 
 
-Example 11: TITLE
+Example 11: Extracting Value and Leaving `None`
+```rust
+if let Some(_f) = self.file.take() {...}
+```
+"Give me the value inside `Some(v)` + replace the `Option<T>` with `None` + and return the value as `Option<T>`"
+
+
+
+
+
+Example 12: Conditional Mapping
+```rust
+
+```
+"If `Option<T>` is `Some(v)` and the condition is true, keep it as `Some(v)`. Otherwise, return `None`. It's like `map()` but it can remove values."
+
+
+
+
+
+Example 13: Working with Collections of Options
+```rust
+
+```
+"SAY IT LOUD"
+
+
+
+Example 14: Combining Multiple Options
 ```rust
 
 ```
@@ -159,35 +187,7 @@ Example 11: TITLE
 
 
 
-
-Example 12: TITLE
-```rust
-
-```
-"SAY IT LOUD"
-
-
-
-
-
-Example 13: TITLE
-```rust
-
-```
-"SAY IT LOUD"
-
-
-
-Example 14: TITLE
-```rust
-
-```
-"SAY IT LOUD"
-
-
-
-
-Example 15: TITLE
+Example 15: Converting `Option<&T>` to `Option<T>`
 ```rust
 
 ```
@@ -1388,7 +1388,7 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔴 - Example 10 - Borrowing Instead of Moving - `as_ref()` and `as_mut()`
+## 🔴 - Example 10 - Borrowing Instead of Moving - `.as_ref()` and `.as_mut()`
 
 ### Real-world context
 {: .no_toc }
@@ -1525,7 +1525,7 @@ Regular expressions to use either in VSCode ou Powershell: `\.as_ref\(\)\.map` o
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔴 - Example 11 - `take()` - Extracting Value and Leaving `None`
+## 🔴 - Example 11 - Extracting Value and Leaving `None` - `.take()`
 
 ### Real-world context
 {: .no_toc }
@@ -1550,17 +1550,17 @@ impl Editor {
     }
 
     fn close(&mut self) {
-        if let Some(f) = self.file.take() {
-            // f is File (owned), self.file is now None automatically
+        if let Some(_f) = self.file.take() {
+            // _f is File, self.file is now None automatically
             println!("Closing file");
-            drop(f); // Explicit close
+            // _f is dropped and the file is automatically closed at the end of the block
         }
     }
 }
 
 fn main() {
     let mut editor = Editor {
-        file: Some(File::create("temp.txt").unwrap()),
+        file: Some(File::create("temp.txt").expect("Failed to create temp.txt")),
     };
     println!("Is open: {}", editor.is_open()); // true
     editor.close();
@@ -1575,7 +1575,7 @@ fn main() {
 ```
 
 
-Copy and paste in [Rust Playground](https://play.rust-lang.org/). This example demonstrate how to implement RAII (resource acquisition is initialization) with the help of `take()`
+Copy and paste in [Rust Playground](https://play.rust-lang.org/). This example demonstrates how to implement RAII (resource acquisition is initialization) with the help of `take()` even if early release are allowed.
 
 ```rust
 struct Resource {
@@ -1584,7 +1584,7 @@ struct Resource {
 
 impl Resource {
     fn new(name: &str) -> Self {
-        println!("  [{}] Acquired", name);
+        println!("\t[{}] Acquired", name);
         Self {
             name: name.to_string(),
         }
@@ -1593,7 +1593,7 @@ impl Resource {
 
 impl Drop for Resource {
     fn drop(&mut self) {
-        println!("  [{}] Released", self.name);
+        println!("\t[{}] Released", self.name);
     }
 }
 
@@ -1611,18 +1611,17 @@ impl Guard {
     // Manually release before scope ends
     fn release(&mut self) {
         if let Some(r) = self.resource.take() {
-            println!("  [{}] Early release", r.name);
-            // r is dropped here
-        }
+            println!("\t[{}] Early release", r.name);
+        } // r is dropped here
     }
 }
 
 impl Drop for Guard {
     fn drop(&mut self) {
         if self.resource.is_some() {
-            println!("  Guard dropped with resource still held");
+            println!("\tGuard dropped with resource still held");
         }
-        // resource.take() not needed - Option<Resource> drops automatically
+        // resource.take() not needed here - Option<T> drops automatically
     }
 }
 
@@ -1630,19 +1629,17 @@ fn main() {
     println!("Example 1: Auto release at scope end");
     {
         let _guard = Guard::new("DB Connection");
-        println!("  Doing work...");
-    } // Guard dropped here, Resource released
+        println!("\tDoing some work...");
+    } // _guard dropped here, Resource released
 
     println!("\nExample 2: Early release with take()");
     {
         let mut guard = Guard::new("File Handle");
-        println!("  Doing work...");
+        println!("\tDoing work...");
         guard.release(); // Release early via take()
-        println!("  More work after release...");
-    } // Guard dropped, but resource already gone
+        println!("\tMore work after release...");
+    } // guard dropped, but resource already gone
 }
-
-
 ```
 
 
@@ -1653,19 +1650,18 @@ fn main() {
 ### Read it Aloud
 {: .no_toc }
 
-"`take()` says: 'Give me the value inside `Some(v)`, replace the `Option` with `None`, and return the value as `Option`.' It's move + automatic `None` assignment in one operation."
+`Option<T>.take()` says: "Give me the value inside `Some(v)` + replace the `Option<T>` with `None` + and return the value as `Option<T>`."
 
 
 
 
 ### Comments
 {: .no_toc }
-
-**First example**
-* The end of `main()` is here to make sur the file is deleted if it exist. This may be the case if we debug and leave the session once the file is created.
-
-**RAII**
-* The `Option<Resource> + take()` pattern is idiomatic for managing resources that we may want to release manually while maintaining RAII safety.
+* `Option<T>.take()` is a move + automatic `None` assignment in one operation.
+* First example
+    * The code at the end of `main()` is here to make sure the file is deleted if it exists.
+* RAII
+    * The `Option<Resource> + take()` pattern is idiomatic for managing resources that we may want to release manually while maintaining RAII safety.
 
 
 
@@ -1708,7 +1704,7 @@ Regular expression to use either in VSCode ou Powershell: `\.take\(\)`
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔴 - Example 12 - `filter()` - Conditional Mapping
+## 🔴 - Example 12 - Conditional Mapping - `.filter()`
 
 ### Real-world context
 {: .no_toc }
@@ -1724,13 +1720,10 @@ Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 fn main() {
     let numbers = vec![Some(1), Some(15), Some(25), None, Some(5)];
 
-    // Filter keeps only Some values where predicate is true
-    let filtered: Vec<Option<i32>> = numbers
-        .iter()
-        .map(|&opt| opt.filter(|&n| n > 10))
-        .collect();
-
-    println!("{:?}", filtered); // [None, Some(15), Some(25), None, None]
+    // Filter keeps only Some(v) where the predicate is true
+    let filtered: Vec<Option<i32>> = numbers.iter().map(|opt| opt.filter(|&n| n > 10)).collect();
+    println!("Raw numbers: {:?}", numbers);  // [Some(1), Some(15), Some(25), None, Some(5)]
+    println!("Filtered   : {:?}", filtered); // [None,    Some(15), Some(25), None, None]
 
     // Combining with map
     let name = Some("  Zoubida  ");
@@ -1738,7 +1731,6 @@ fn main() {
         .map(|n| n.trim())
         .filter(|n| !n.is_empty())  // Keep only if not empty after trim
         .map(|n| n.to_uppercase());
-
     println!("{:?}", result); // Some("ZOUBIDA")
 
     // Filter out invalid values
@@ -1751,7 +1743,7 @@ fn main() {
 ### Read it Aloud
 {: .no_toc }
 
-"`filter(|val| condition)` says: 'If `Option<T>` is `Some(v)` and the condition is true, keep it as `Some(v)`. Otherwise, return `None`.' It's like `map()` but can remove values."
+`filter(|val| condition)` says: "If `Option<T>` is `Some(v)` and the condition is true, keep it as `Some(v)`. Otherwise, return `None`. It's like `map()` but it can remove values."
 
 
 
@@ -1759,6 +1751,92 @@ fn main() {
 
 ### Comments
 {: .no_toc }
+
+* At this point it is important to **read** the story that the signatures tell us. In VSCode if we hover `.filter` we can read :
+
+```rust
+core::option::Option
+impl<T> Option<T>
+pub const fn filter<P>(self, predicate: P) -> Self
+where
+    P: FnOnce(&T) -> bool + Destruct,
+    T: Destruct,
+```
+I know what you think but this is like riding under the rain on track. No one like that but... This is an investment with large ROI, especially the next week-end in Belgium where it rains 370 days/year. Ok... Above we learn that, on an `Option<T>` the predicate `P` acts on `&T` (did you see the `P: FnOnce(&T)`?). The predicate borrows the tested values it does'nt consume them.
+
+And what about `.map()`. Let's play the game and we read:
+
+```rust
+core::iter::traits::iterator::Iterator
+pub trait Iterator
+pub fn map<B, F>(self, f: F) -> Map<Self, F>
+where
+    Self: Sized,
+    F: FnMut(Self::Item) -> B,
+
+```
+
+
+
+Just to make sure we know what we are talking about while talking about the first filter... Copy and paste in [Rust Playground](https://play.rust-lang.org/) the code below:
+
+```rust
+// cargo run --example 12_2ex
+
+fn main() {
+    let numbers = vec![Some(1), Some(15), Some(25), None, Some(5)];
+
+    // Filter keeps only Some(v) where the predicate is true
+    let filtered: Vec<Option<i32>> = numbers.iter().map(|&opt| opt.filter(|&n| n > 10)).collect();
+    println!("Raw numbers: {:?}", numbers); // [Some(1), Some(15), Some(25), None, Some(5)]
+    println!("Filtered   : {:?}", filtered); // [None,   Some(15), Some(25), None, None]
+
+    // Filter keeps only Some(v) where the predicate is true
+    let filtered: Vec<Option<i32>> = numbers.iter().map(|opt| opt.filter(|&n| n > 10)).collect();
+    println!("Raw numbers: {:?}", numbers); // [Some(1), Some(15), Some(25), None, Some(5)]
+    println!("Filtered   : {:?}", filtered); // [None,   Some(15), Some(25), None, None]
+
+    // Filter keeps only Some(v) where the predicate is true
+    let filtered: Vec<Option<i32>> = numbers.iter().map(|opt| opt.filter(|n| *n > 10)).collect();
+    println!("Raw numbers: {:?}", numbers); // [Some(1), Some(15), Some(25), None, Some(5)]
+    println!("Filtered   : {:?}", filtered); // [None,   Some(15), Some(25), None, None]
+}
+```
+
+If you use VSCode, feel free to press CTRL+ALT to reveal the types and you should see:
+
+<div align="center">
+<img src="./assets/img05.webp" alt="" width="600" loading="lazy"/><br/>
+</div>
+
+All three versions above compile and produce identical results, but they differ in how they handle references in the closure parameters. Let me break down each one:
+
+**Version 1:** `|&opt| opt.filter(|&n| n > 10)`
+* Here we destructure the reference in the closure parameter. Since `numbers.iter()` yields `&Option<i32>`, using `|&opt|` gives us `opt: Option<i32>` (a copy, since `i32` is `Copy`). Then `|&n|` destructures the `&i32` from `filter`'s closure to get `n: i32`.
+
+**Version 2:** `|opt| opt.filter(|&n| n > 10)`
+ * Here `opt` is `&Option<i32>`, but thanks to Rust's auto-deref, calling `.filter()` works seamlessly. The `|&n|` pattern still destructures the reference inside.
+
+**Version 3:** `|opt| opt.filter(|n| *n > 10)`
+    * Here we keep the reference and explicitly dereference with `*n` when comparing.
+
+Which one to prefer?
+* Keep `numbers.iter().map(|opt| ...)`
+* For integers or other `Copy` types:
+    * `|&n| n > 10` is concise and idiomatic.
+* For general types (non-Copy):
+    * Use `|n| *n > 10` to avoid forcing a copy or clone.
+
+V2 is better but type specific. Personally I would vote for V3 since it can be generalized
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1797,7 +1875,7 @@ Regular expression to use either in VSCode ou Powershell: `\.filter\(\s*\|[^|]+\
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔴 - Example 13 - `flatten()` and `filter_map()` - Working with Collections of Options
+## 🔴 - Example 13 - Working with Collections of Options - `.flatten()` and `.filter_map()`
 
 ### Real-world context
 {: .no_toc }
@@ -1972,7 +2050,7 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+?\?\s*[+\-*/]
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 🔴 - Example 15 -  `copied()` and `cloned()` - Converting `Option<&T>` to `Option<T>`
+## 🔴 - Example 15 -  Converting `Option<&T>` to `Option<T>` - `.copied()` and `.cloned()`
 
 ### Real-world context
 {: .no_toc }

@@ -1,5 +1,3 @@
-// cargo run --example 11ex
-
 use std::fs::{self, File};
 
 struct Editor {
@@ -12,17 +10,17 @@ impl Editor {
     }
 
     fn close(&mut self) {
-        if let Some(f) = self.file.take() {
-            // f is File (owned), self.file is now None automatically
+        if let Some(_f) = self.file.take() {
+            // _f is File, self.file is now None automatically
             println!("Closing file");
-            drop(f); // Explicit close
+            // _f is dropped and the file is automatically closed at the end of the block
         }
     }
 }
 
 fn main() {
     let mut editor = Editor {
-        file: Some(File::create("temp.txt").unwrap()),
+        file: Some(File::create("temp.txt").expect("Failed to create temp.txt")),
     };
     println!("Is open: {}", editor.is_open()); // true
     editor.close();

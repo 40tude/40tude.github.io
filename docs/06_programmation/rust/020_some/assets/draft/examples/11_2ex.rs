@@ -7,7 +7,7 @@ struct Resource {
 
 impl Resource {
     fn new(name: &str) -> Self {
-        println!("  [{}] Acquired", name);
+        println!("\t[{}] Acquired", name);
         Self {
             name: name.to_string(),
         }
@@ -16,7 +16,7 @@ impl Resource {
 
 impl Drop for Resource {
     fn drop(&mut self) {
-        println!("  [{}] Released", self.name);
+        println!("\t[{}] Released", self.name);
     }
 }
 
@@ -34,18 +34,17 @@ impl Guard {
     // Manually release before scope ends
     fn release(&mut self) {
         if let Some(r) = self.resource.take() {
-            println!("  [{}] Early release", r.name);
-            // r is dropped here
-        }
+            println!("\t[{}] Early release", r.name);
+        } // r is dropped here
     }
 }
 
 impl Drop for Guard {
     fn drop(&mut self) {
         if self.resource.is_some() {
-            println!("  Guard dropped with resource still held");
+            println!("\tGuard dropped with resource still held");
         }
-        // resource.take() not needed - Option<Resource> drops automatically
+        // resource.take() not needed here - Option<T> drops automatically
     }
 }
 
@@ -53,14 +52,14 @@ fn main() {
     println!("Example 1: Auto release at scope end");
     {
         let _guard = Guard::new("DB Connection");
-        println!("  Doing work...");
-    } // Guard dropped here, Resource released
+        println!("\tDoing some work...");
+    } // _guard dropped here, Resource released
 
     println!("\nExample 2: Early release with take()");
     {
         let mut guard = Guard::new("File Handle");
-        println!("  Doing work...");
+        println!("\tDoing work...");
         guard.release(); // Release early via take()
-        println!("  More work after release...");
+        println!("\tMore work after release...");
     } // Guard dropped, but resource already gone
 }
