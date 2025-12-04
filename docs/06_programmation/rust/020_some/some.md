@@ -77,18 +77,61 @@ let Some(my_path) = &editor.path_to_file else {
 
 
 
+Example 05: Early Return Propagation
+```rust
+let text = s?;
+chars.next()?;
+```
+"If this `Option<T>` is `None`, immediately return `None` from the function. Otherwise, unwrap the `Some(v)` value and continue."
 
 
-Example 05: Providing Defaults
+
+
+Example 06: Providing Defaults
 ```rust
 Option<T>.unwrap_or(v) or Option<T>.unwrap_or(my_function())
 Option<T>.unwrap_or_else(||my_closure())
-
 ```
-* `.unwrap_or(v)` = "Give me the value inside the `Option<T>` **OR** if the option is empty (`None`), give me the value `v` (where `v` can be the result of a function)."
-* `.unwrap_or_else(||my_closure())` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is empty (`None`), call the closure and give its returned value."
+
+* `Option<T>.unwrap_or(v)` = "Give me the value inside the `Option<T>` **OR** if the option is `None`, give me the value `v` (where `v` can be the result of a function)."
+* `Option<T>.unwrap_or_else(||my_closure())` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is `None`, call the closure and give me its returned value."
 
 
+
+Example 07: Transforming Values Inside `Option<T>`
+
+```rust
+let result = name.map(|n| n.trim().to_string())
+```
+
+"If the `Option<T>` is `Some(v)`, apply the transformation to the inner value and wrap the result in `Some(w)`. If `None`, skip the transformation and return `None`."
+
+
+
+
+
+
+
+Example 08: Chaining `Option<T>`
+
+```rust
+let chain_result = Some("49")
+    .and_then(|s| parse_positive(s)) // Some(49)
+    .and_then(|n| if n < 50 { Some(n * 2) } else { None });
+```
+"If the `Option<T>` is `Some(v)`, apply the transformation that returns an `Option<U>` and **flatten the result**. If `None`, skip and return `None`."
+
+
+
+
+
+Example 09: Pattern Matching with Guards
+```rust
+match age {
+    Some(a) if a < 18 => "Minor",
+    ...
+```
+"If the `Option<T>` is `Some(v)` **AND** if the extracted value (`v`) satisfies this predicate then execute the code after the `=>`."
 
 
 
@@ -334,7 +377,7 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 02 - `if let Some(...) = Option<T>` - Conditional Pattern Matching
+### Example 02 - Conditional Pattern Matching - `if let Some(v) = Option<T>`
 
 #### **Real-world context**
 {: .no_toc }
@@ -682,7 +725,7 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 04 - `let...else` - "Modern" Early Return
+### Example 04 - "Modern" Early Return - `let...else`
 
 #### **Real-world context**
 {: .no_toc }
@@ -838,7 +881,7 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-"The `?` operator says: 'If this `Option<T>` is `None`, immediately return `None` from the function. Otherwise, unwrap the `Some(v)` value and continue.'"
+The `?` operator says: "If this `Option<T>` is `None`, immediately return `None` from the function. Otherwise, unwrap the `Some(v)` value and continue."
 
 
 
@@ -883,7 +926,7 @@ Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 06 - Providing Defaults Values - `.unwrap_or(v)` vs `.unwrap_or_else(F)`
+### Example 06 - Providing Defaults Values - `.unwrap_or(v)` vs `.unwrap_or_else(||C())`
 
 **Real-world context**: Setup configurations with fallback values, set user preferences with default values if not specified, set optional parameters... It is smart to check if getting the default values is fast (a constant) or slow (read a database). If so 2 options are available.
 
@@ -943,7 +986,7 @@ fn main() {
 
 In the code above, `.unwrap_or(v)` and `.unwrap_or_else(||my_closure())` should be read as follow:
 * `.unwrap_or(v)` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is empty (`None`), give me the value `v` (where `v` can be the result of a function)."
-* `.unwrap_or_else(||my_closure())` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is empty (`None`), call the closure and give its returned value."
+* `.unwrap_or_else(||my_closure())` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is empty (`None`), call the closure and give me its returned value."
 
 
 
@@ -1040,7 +1083,7 @@ Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `un
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 07 - `map()` - Transforming Values Inside `Option<T>`
+### Example 07 - Transforming Values Inside `Option<T>` - `Option<T>.map(|v| transform(v))`
 
 #### **Real-world context**
 {: .no_toc }
@@ -1061,7 +1104,6 @@ fn main() {
         .map(|n| n.trim().to_string())           // Some("Zoubida")
         .map(|n| n.to_uppercase())               // Some("ZOUBIDA")
         .unwrap_or_else(|| "ANONYMOUS".to_string());
-
     println!("{}", result); // "ZOUBIDA"
 
     // With None - transformations skipped, default used
@@ -1070,7 +1112,6 @@ fn main() {
         .map(|n| n.trim().to_string())
         .map(|n| n.to_uppercase())
         .unwrap_or_else(|| "ANONYMOUS".to_string());
-
     println!("{}", result2); // "ANONYMOUS"
 }
 ```
@@ -1078,7 +1119,7 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-"`map(|value| transform(value))` says: 'If the `Option<T>` is Some, apply this transformation to the inner value and wrap the result in Some. If `None`, skip the transformation and return `None`.'"
+`Option<T>.map(|v| transform(v))` says: "If the `Option<T>` is `Some(v)`, apply this transformation to the inner value and wrap the result in `Some(w)`. If `None`, skip the transformation and return `None`."
 
 
 
@@ -1086,17 +1127,20 @@ fn main() {
 ### **Comments**
 {: .no_toc }
 
-
-
+* If applicable `Option<T>.map(|v| transform(v))` returns `Some(w)`
+* `.to_string()` or `.to_uppercase()` return `String` which is wrapped into an `Option<T>` container.
+* The purpose of the `.map()` method is to wrap the result of its closure inside a new `Option<T>` container, regardless of what the closure itself returns.
+* At the end of the pipeline `.unwrap_or_else(|| C())` returns a `String` to print
 
 
 #### **Key Points**
 {: .no_toc }
 
 1. **Chainable**: Multiple `.map()` calls compose cleanly
-2. **Lazy**: If the original `Option<T>` is `None`, transformations don't execute
-3. **Type change**: `Option<T>` → `Option<U>` (T and U can differ)
+2. **Lazy**: Thanks to the closures, if the original `Option<T>` is `None`, transformations don't execute
+3. **Type change**: `Option<T>` → `Option<U>` (`T` and `U` can differ)
 4. **Functional programming**: Avoids explicit if/match - more declarative
+5. **When**: Use `.map(|v| transform(v))` for always-succeeds transformations.
 
 #### **Find More Examples**
 {: .no_toc }
@@ -1121,7 +1165,7 @@ Regular expression to use either in VSCode ou Powershell: `\.map\(\s*\|[^|]+\|[^
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Example 08 - `and_then()` - Chaining `Option<T>` - Returning Functions
+### Example 08 - Chaining `Option<T>` - `Option<T>.and_then(|v| C(v)`
 
 #### **Real-world context**
 {: .no_toc }
@@ -1143,25 +1187,28 @@ fn main() {
 
     // map creates nested Option<Option<i32>>
     let bad = input.map(|s| parse_positive(s));
-    println!("{:?}", bad); // Some(Some(42)) - awkward!
+    println!("{:?}", bad); // Some(Some(42)) - awkward
 
     // and_then flattens automatically
     let good = input.and_then(|s| parse_positive(s));
-    println!("{:?}", good); // Some(42) - clean!
+    println!("{:?}", good); // Some(42) - clean
+
+    let input = Some("-56");
+    let neg = input.and_then(|s| parse_positive(s));
+    println!("{:?}", neg); // None
 
     // Chaining multiple and_then
-    let chain_result = Some("100")
-        .and_then(|s| parse_positive(s))          // Some(100)
+    let chain_result = Some("49")
+        .and_then(|s| parse_positive(s)) // Some(49)
         .and_then(|n| if n < 50 { Some(n * 2) } else { None });
-
-    println!("{:?}", chain_result); // None (100 >= 50)
+    println!("{:?}", chain_result); // Some(98)
 }
 ```
 
 #### **Read it Aloud**
 {: .no_toc }
 
-"`and_then(|val| optional_operation(val))` says: 'If Some, apply this function that returns `Option<T>` and flatten the result. If `None`, skip and return `None`.'"
+`Option<T>.and_then(|v| C(v))` says: "If the `Option<T>` is `Some(v)`, apply the transformation that returns an `Option<U>` and **flatten the result**. If `None`, skip and return `None`."
 
 
 
@@ -1170,21 +1217,22 @@ fn main() {
 ### **Comments**
 {: .no_toc }
 
-* Let's read, piece by piece the line `let good = input.and_then(|s| parse_positive(s));`:
+* With `input.map()`, `parse_positive()` returns an `Option<i32>` which is wrapped into an `Option<T>` container => `Option<Option<i32>> `
+* Let's **read**, piece by piece the line `let good = input.and_then(|s| parse_positive(s));`:
     1. Takes `input` (an `Option<&str>`)
     1. If `input` is `Some(s)`, it calls `parse_positive(s)` and returns that result directly
     1. If `input` is `None`, it short-circuits and returns `None` immediately
 * Double check and **read** the `let chain_result = ...`
     1. The first closure has a string as parameter (`|s|`)
     1. While the second closure receive an `i32` (`|n|`)
-
+* Aka `flatmap`
 
 #### **Key Points**
 {: .no_toc }
 
-1. **Flattening**: Prevents `Option<Option<T>>` - chaining is impossible otherwise
+1. **Flattening**: Prevents `Option<Option<T>>`. Chaining is impossible otherwise
 1. **When to use**: When the transformation itself might fail (returns `Option<T>`)
-1. **vs map**: Use `map` for always-succeeds transforms, `and_then` for fallible ones
+1. **vs .map()**: Use `.map()` for always-succeeds transforms, `and_then` for fallible ones
 
 #### **Find More Examples**
 {: .no_toc }
@@ -1232,7 +1280,7 @@ fn main() {
     println!("{}", categorize_age(Some(10)));  // "Minor"
     println!("{}", categorize_age(Some(30)));  // "Adult"
     println!("{}", categorize_age(Some(70)));  // "Senior"
-    println!("{}", categorize_age(None));      // "Unknown"
+    println!("{}\n\n", categorize_age(None));      // "Unknown"
 
     // Alternative with if let and guards
     let score = Some(85);
@@ -1250,13 +1298,12 @@ fn main() {
 #### **Read it Aloud**
 {: .no_toc }
 
-"`Some(v) if condition` says: 'Match if `Option<T>` is `Some(v)` AND the extracted value satisfies this condition.' Guards enable complex pattern matching with runtime checks."
-
-
+In each match arm, `Some(v) if predicate` says: "If the `Option<T>` (`age`) is `Some(a)` **AND** if the extracted value (`a`) satisfies this predicate then execute the code after the `=>`."
 
 
 ### **Comments**
 {: .no_toc }
+* Pay attention to the lifetime of the value returned by `categorize_age()`. Remove `'static` and build the code. What the compiler says? Why?
 
 
 
@@ -1266,9 +1313,10 @@ fn main() {
 {: .no_toc }
 
 1. **Guard syntax**: `if` after pattern - tested only if pattern matches
-2. **Let-chains**: `if let Some(x) = opt && x > 10` (Rust 1.64+) combines pattern + condition
 3. **Order matters**: Earlier guards are checked first - be specific before general
 4. **Readability**: Sometimes clearer than nested if statements
+2. **Alternative with let-chains**: `if let Some(x) = opt && x > 10` combines pattern + condition. [Read this](https://doc.rust-lang.org/edition-guide/rust-2024/let-chains.html).
+
 
 #### **Find More Examples**
 {: .no_toc }
