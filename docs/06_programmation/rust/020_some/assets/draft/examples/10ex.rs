@@ -1,6 +1,4 @@
-// cargo run --example 10ex
-
-use std::path::PathBuf;
+// use std::path::PathBuf;
 
 fn main() {
     // Moving consumes the Option
@@ -10,30 +8,31 @@ fn main() {
     }
     // println!("{:?}", opt); // ERROR: opt was moved
 
-    // Borrowing with as_ref - Option remains usable
+    // Borrowing with as_ref => Option<T> remains usable
+    println!();
     let opt = Some(String::from("hello"));
-
     if let Some(s) = opt.as_ref() {
-        // s is &String
         println!("Length: {}", s.len());
     }
-    println!("{:?}", opt); // Ah, ha, ha, ha, opt stayin' alive, stayin' alive (Some("hello")
+    println!("{:?}", opt); // Ah, ha, ha, ha, stayin' alive, stayin' alive
 
+    println!();
+    // this express the same intention as `as_ref`
     if let Some(my_str) = &opt {
-        // my_str is &String
         println!("Length: {}", my_str.len());
     }
-    println!("{:?}", opt); // Ah, ha, ha, ha, opt stayin' alive, stayin' alive (Some("hello")
+    println!("{:?}", opt); // Ah, ha, ha, ha, stayin' alive, stayin' alive
+
+    println!();
+    let mut path = Some(std::env::current_dir().expect("Cannot read current dir"));
 
     // as_ref() is useful with map - read without consuming
-    let mut path = Some(PathBuf::from("/home"));
     let len = path.as_ref().map(|p| p.as_os_str().len());
-    println!("Path length: {:?}", len); // Some(5)
+    println!("The path {:?} has a length of {:?}", path, len);
 
     // as_mut is useful with map - modify in place
-    path.as_mut().map(|p| p.push("user"));
-    // if let Some(p) = path.as_mut() {
-    //     p.push("user");
-    // }
-    println!("{:?}", path); // Some("/home/user")
+    path.as_mut().map(|p| p.push("documents"));
+    path.as_mut().map(|p| p.push("top_secret"));
+
+    println!("The path is now: {:?}", path);
 }

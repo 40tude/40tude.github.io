@@ -138,7 +138,56 @@ match age {
 
 
 
-Example XX: TITLE
+
+
+
+Example 10: TITLE
+```rust
+let len = path.as_ref().map(|p| p.as_os_str().len());
+path.as_mut().map(|p| p.push("documents"));
+```
+"`as_ref()` converts `Option<T>` to `Option<&T>`, so that we can peek inside without consuming. `as_mut()` gives `Option<&mut T>` for peek and poke. Both leave the original `Option<T>` intact."
+
+
+
+Example 11: TITLE
+```rust
+
+```
+"SAY IT LOUD"
+
+
+
+
+
+Example 12: TITLE
+```rust
+
+```
+"SAY IT LOUD"
+
+
+
+
+
+Example 13: TITLE
+```rust
+
+```
+"SAY IT LOUD"
+
+
+
+Example 14: TITLE
+```rust
+
+```
+"SAY IT LOUD"
+
+
+
+
+Example 15: TITLE
 ```rust
 
 ```
@@ -1352,47 +1401,63 @@ Inspecting `Option<T>` without consuming it, modifying in-place, reusing `Option
 Copy and paste in [Rust Playground](https://play.rust-lang.org/)
 
 ```rust
-use std::path::PathBuf;
+// cargo run --example 10ex
 
 fn main() {
-    // Moving consumes the Option
+    // i32 implements Copy, so Option<i32> also implements Copy
+    let opt = Some(42);
+
+    // Pattern matching copies opt instead of moving it
+    if let Some(n) = opt {
+        println!("{n}"); // n is copied from the Option
+    }
+    println!("{:?}", opt); // OK: opt was copied, not moved
+
+    println!();
+    // String does NOT implement Copy, so Option<String> does not implement Copy either
     let opt = Some(String::from("hello"));
+
+    // Pattern matching moves opt and its inner String
     if let Some(s) = opt {
+        // s is moved out of opt
         println!("Length: {}", s.len());
     }
-    // println!("{:?}", opt); // ERROR: opt was moved
+    // println!("{:?}", opt); // ERROR: opt was moved and cannot be used here
 
-    // Borrowing with as_ref - Option remains usable
+    // Borrowing with as_ref => Option<T> remains usable afterwards
+    println!();
     let opt = Some(String::from("hello"));
-
     if let Some(s) = opt.as_ref() {
-        // s is &String
         println!("Length: {}", s.len());
     }
-    println!("{:?}", opt); // Ah, ha, ha, ha, opt stayin' alive, stayin' alive (Some("hello")
+    println!("{:?}", opt); // Ah, ha, ha, ha, stayin' alive, stayin' alive
 
+    println!();
+    // this express the same intention as `as_ref`
     if let Some(my_str) = &opt {
-        // my_str is &String
         println!("Length: {}", my_str.len());
     }
-    println!("{:?}", opt); // Ah, ha, ha, ha, opt stayin' alive, stayin' alive (Some("hello")
+    println!("{:?}", opt); // Ah, ha, ha, ha, stayin' alive, stayin' alive
+
+    println!();
+    let mut path = Some(std::env::current_dir().expect("Cannot read current dir"));
 
     // as_ref() is useful with map - read without consuming
-    let mut path = Some(PathBuf::from("/home"));
     let len = path.as_ref().map(|p| p.as_os_str().len());
-    println!("Path length: {:?}", len); // Some(5)
+    println!("The path {:?} has a length of {:?}", path, len);
 
     // as_mut is useful with map - modify in place
-    path.as_mut().map(|p| p.push("user"));
-    println!("{:?}", path); // Some("/home/user")
-}
+    path.as_mut().map(|p| p.push("documents"));
+    path.as_mut().map(|p| p.push("top_secret"));
 
+    println!("The path is now: {:?}", path);
+}
 ```
 
 ### Read it Aloud
 {: .no_toc }
 
-"`as_ref()` converts `Option<T>` to `Option<&T>`, letting you peek inside without consuming. `as_mut()` gives `Option<&mut T>` for in-place modifications. Both leave the original `Option<T>` intact."
+"`as_ref()` converts `Option<T>` to `Option<&T>`, so that we can peek inside without consuming. `as_mut()` gives `Option<&mut T>` for peek and poke. Both leave the original `Option<T>` intact."
 
 
 
@@ -1401,16 +1466,26 @@ fn main() {
 ### Comments
 {: .no_toc }
 
+**IMPORTANT** The `Option<T>` is considered moved unless it implements `Copy` trait, which only happens if `T` implements `Copy`. Review Example 02 now that you have that in mind.
 
-* As with `.unwrap()`, the value inside `Some(v)` is **moved** (see Example 01 and 02).
-* The second `println!` cannot work.
-* An alternative to `if let Some(s) = opt.as_ref() {...` is `if let Some(s) = &opt.{...`
-* The line `path.as_mut().map(|p| p.push("user"));` generates a warning. Try the code below:
-    ```rust
-    if let Some(p) = path.as_mut() {
-        p.push("user");
-    }
-    ```
+* With the first `if let Some(n) = opt`, the `Option<T>` on the right-hand side is copied and `opt` remains available.
+    * `i32` implements the `Copy` trait
+    * so `Option<i32>` also implements Copy
+    * so using `opt` in a pattern match copies the `Option<T>` instead of moving it
+    * `opt` remains valid.
+
+* With the second `if let Some(s) = opt`, the `Option<T>` on the right-hand side is moved, which means `opt` is no longer available afterward.
+    * `Option<String>` does not implement the `Copy` trait
+    * so `opt` is moved into the `if let Some(s)`
+    * we cannot use `opt` afterward
+
+This explains the need for tools to "read" and to "read/write" inside `Option<T>`
+
+* `Option<T>.as_ref()` provides an immutable reference to the value inside the `Option<T>`
+* `Option<T>.as_mut()` provides a mutable reference to the value inside the `Option<T>`.
+* In both cases, the `Option<T>` itself is not consumed, but any changes made through the mutable reference do modify the underlying value.
+* An alternative to `if let Some(s) = opt.as_ref() {...` is `if let Some(s) = &opt {...`
+* The line `path.as_mut().map(|p| p.push("documents"));` generates a warning. Do you know why? How can you simplify the code?
 
 
 ### Key Points
