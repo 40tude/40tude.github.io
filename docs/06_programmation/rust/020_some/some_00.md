@@ -18,21 +18,10 @@ A Code-First Guide with Runnable Examples
 
 
 
-
 <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2>
 
-
-### This is Episode 00
-{: .no_toc }
-
-
-#### The Posts Of The Saga
-{: .no_toc }
-* [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
-* [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
-* [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%})
 
 
 
@@ -213,12 +202,30 @@ Example 15: Converting `Option<&T>` to `Option<T>`
 -->
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### This is Episode 00
+{: .no_toc }
+
+#### The Posts Of The Saga
+{: .no_toc }
+* 🟢 [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%}): Intro + Beginner Examples
+* 🔵 [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%}): Intermediate Examples
+* 🔴 [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%}): Advanced Examples + Advises + Cheat Sheet...
+
+
+
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="300" loading="lazy"/><br/>
 </div>
-
-
-
 
 
 
@@ -230,6 +237,9 @@ Example 15: Converting `Option<&T>` to `Option<T>`
 {: .no_toc .text-delta}
 - TOC
 {:toc}
+
+
+
 
 
 
@@ -343,22 +353,7 @@ Based on what I saw, it seems `ripgrep` is the project that cover most if not al
 
 
 
-
-
-
-
-
-
-
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ## 🟢 Beginner Examples (1-4) -->
-
-
-
-
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🟢 - Example 01 - `Option<T>` as a Return Value
@@ -444,6 +439,7 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 
 
 
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🟢 - Example 02 - Conditional Pattern Matching - `if let Some(v) = Option<T>`
@@ -678,6 +674,7 @@ Regular expression to use either in VSCode ou Powershell: `if let Some\(.+\) = `
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 🟢 - Example 03 - `match` Expression with Early Return
 
 ### Real-world context
@@ -785,6 +782,7 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 
 
 
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🟢 - Example 04 - "Modern" Early Return - `let...else`

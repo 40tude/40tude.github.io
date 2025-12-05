@@ -23,6 +23,8 @@ A Code-First Guide with Runnable Examples
 </h2>
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ### This is Episode 01
 {: .no_toc }
 
@@ -34,190 +36,9 @@ A Code-First Guide with Runnable Examples
 
 
 
-
-<!-- ## TL;DR
-{: .no_toc }
-
-* 3 ski slopes: 🟢 Beginner, 🔵 Intermediate, 🔴 Advanced
-* Basic extraction: `if let`, `match`, `let...else`
-* Safe unwrapping: `unwrap_or()`, `unwrap_or_else()`
-* Chaining: `map()`, `and_then()`, `filter()`
-* Advanced: `as_ref()`, `take()`, `flatten()`, combining Options -->
-
-
-
-<!--
-
-Example 01: `Option<T>` as a Return Value
-```rust
-fn get_selection(&self) -> Option<String> {
-    Some("lorem ipsum".to_string())
-    // None
-}
-```
-
-Example 02: Conditional Pattern Matching
-```rust
-if let Some(my_txt) = my_editor.get_selection() {
-    println!("Selection: {my_txt}");
-} else {
-    println!("No text selected");
-}
-```
-If the pattern `Some(my_txt)` successfully matches the `Option<T>` returned by `my_editor.get_selection()`, then **bind its contents** to `my_txt` and run the first block; otherwise, run the `else` block."
-
-
-Example 03: `match` Expression with Early Return
-```rust
-let my_file_name = match &editor.path_to_file {
-    Some(path) => path.file_name(),
-    None => return,
-};
-```
-"Match on `&editor.path_to_file`. If it contains a value, **bind a reference to that value** to `path`, then call the method `file_name()` on `path` and bind the result to `my_file_name`. If `None`, return early."
-
-
-Example 04: "Modern" Early Return
-```rust
-let Some(my_path) = &editor.path_to_file else {
-    return;
-};
-```
-"Let the pattern `Some(my_path)` match on `&editor.path_to_file`. If it doesn't match (i.e., it's `None`), execute the `else` block which returns early."
-
-
-
-Example 05: Early Return Propagation
-```rust
-let text = s?;
-chars.next()?;
-```
-"If this `Option<T>` is `None`, immediately return `None` from the function. Otherwise, unwrap the `Some(v)` value and continue."
-
-
-
-
-Example 06: Providing Defaults
-```rust
-Option<T>.unwrap_or(v) or Option<T>.unwrap_or(my_function())
-Option<T>.unwrap_or_else(||my_closure())
-```
-
-* `Option<T>.unwrap_or(v)` = "Give me the value inside the `Option<T>` **OR** if the option is `None`, give me the value `v` (where `v` can be the result of a function)."
-* `Option<T>.unwrap_or_else(||my_closure())` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is `None`, call the closure and give me its returned value."
-
-
-
-Example 07: Transforming Values Inside `Option<T>`
-
-```rust
-let result = name.map(|n| n.trim().to_string())
-```
-
-"If the `Option<T>` is `Some(v)`, apply the transformation to the inner value and wrap the result in `Some(w)`. If `None`, skip the transformation and return `None`."
-
-
-
-
-
-
-
-Example 08: Chaining `Option<T>`
-
-```rust
-let chain_result = Some("49")
-    .and_then(|s| parse_positive(s)) // Some(49)
-    .and_then(|n| if n < 50 { Some(n * 2) } else { None });
-```
-"If the `Option<T>` is `Some(v)`, apply the transformation that returns an `Option<U>` and **flatten the result**. If `None`, skip and return `None`."
-
-
-
-
-
-Example 09: Pattern Matching with Guards
-```rust
-match age {
-    Some(a) if a < 18 => "Minor",
-    ...
-```
-"If the `Option<T>` is `Some(v)` **AND** if the extracted value (`v`) satisfies this predicate then execute the code after the `=>`."
-
-
-
-
-
-
-
-
-
-Example 10: Borrowing Instead of Moving
-```rust
-let len = path.as_ref().map(|p| p.as_os_str().len());
-path.as_mut().map(|p| p.push("documents"));
-```
-"`as_ref()` converts `Option<T>` to `Option<&T>`, so that we can peek inside without consuming. `as_mut()` gives `Option<&mut T>` for peek and poke. Both leave the original `Option<T>` intact."
-
-
-
-Example 11: Extracting Value and Leaving `None`
-```rust
-if let Some(_f) = self.file.take() {...}
-```
-"Give me the value inside `Some(v)` + replace the `Option<T>` with `None` + and return the value as `Option<T>`"
-
-
-
-
-
-Example 12: Conditional Mapping
-```rust
-let result = name.map(|n| n.trim()).filter(|n| !n.is_empty()).map(|n| n.to_uppercase());
-```
-"If `Option<T>` is `Some(v)` and the condition is true, keep it as `Some(v)`. Otherwise, return `None`. It's like `map()` but it can remove values."
-
-
-
-
-
-Example 13: Working with Collections of Options
-```rust
-let out: Vec<i32> = in
-    .iter()
-    .filter_map(|&s| parse_number(s))
-    .collect();
-
-```
-"`.flatten()` converts `Vec<Option<T>>` to `Vec<T>` by discarding `None` while `.filter_map(|x| optional_transform(x))` combines `.map()` and `.flatten()` in one step"
-
-
-
-Example 14: Combining Multiple Options
-```rust
-fn add_options(a: Option<i32>, b: Option<i32>) -> Option<i32> {
-    Some(a? + b?)
-}
-```
-"`Some(a? + b?)` offers a concise early-return logic to `Options<T>` 2 or more option. If all `Options<T>` are `Some(v)` the processing takes place, otherwise, if any is `None`, early reply `None`."
-
-
-
-
-Example 15: Converting `Option<&T>` to `Option<T>`
-```rust
-
-```
-"`.copied()` duplicates the value inside `Option<&T>` to produce `Option<T>` (requires the `Copy` trait). `.cloned()` does the same but uses the `Clone` trait instead - works for non-Copy types like `String`."
-
--->
-
-
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="300" loading="lazy"/><br/>
 </div>
-
-
-
 
 
 
@@ -236,7 +57,7 @@ Example 15: Converting `Option<&T>` to `Option<T>`
 
 
 
-
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🔵 - Example 05 - Early Return Propagation - The `?` Operator
@@ -332,6 +153,7 @@ Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+
 
 
 
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🔵 - Example 06 - Providing Defaults Values - `.unwrap_or(v)` vs `.unwrap_or_else(||C())`
@@ -491,6 +313,7 @@ Regular expression to use either in VSCode ou Powershell: `unwrap_or_else\(` `un
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 🔵 - Example 07 - Transforming Values Inside `Option<T>` - `Option<T>.map(|v| transform(v))`
 
 ### Real-world context
@@ -571,6 +394,7 @@ Regular expression to use either in VSCode ou Powershell: `\.map\(\s*\|[^|]+\|[^
 
 
 
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🔵 - Example 08 - Chaining `Option<T>` - `Option<T>.and_then(|v| C(v)`
@@ -660,6 +484,7 @@ Regular expression to use either in VSCode ou Powershell: `\.and_then\(`
 
 
 
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🔵 - Example 09 - Pattern Matching with Guards
