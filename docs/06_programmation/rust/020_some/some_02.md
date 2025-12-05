@@ -30,9 +30,9 @@ A Code-First Guide with Runnable Examples
 
 #### The Posts Of The Saga
 {: .no_toc }
-* [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
-* [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
-* [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%})
+* 🟢 [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%}): Intro + Beginner Examples
+* 🔵 [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%}): Intermediate Examples
+* 🔴 [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%}): Advanced Examples + Advises + Cheat Sheet...
 
 
 

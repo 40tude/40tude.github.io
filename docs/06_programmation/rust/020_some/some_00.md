@@ -296,7 +296,7 @@ Each Example section is organized as follow:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Learning from existing code
-The idea is to learn from others and to "see" how do they do. I propose to clone the projects below. Copy the line below. Yes, you can copy more than one line at a time in Powershell.
+The idea is to learn from others and to "see" how do they do. I propose to clone the projects below. Copy the block below from `cd` to `4-rust` and paste it in your terminal. And, yes, you can copy more than one line at a time in Powershell.
 
 ```powershell
 cd $env:TMP
@@ -361,7 +361,7 @@ Based on what I saw, it seems `ripgrep` is the project that cover most if not al
 ### Real-world context
 {: .no_toc }
 
-I want to start with this use case because, for me, this is, by far, the easiest. Indeed, we can easily explain in plain English that a function might search for a file and, if it can’t find it, simply returns "nothing". If it succeeds, it returns something—like the first line of the file. Using `Option<T>` makes sense for any function that might not succeed (without throwing an error or crashing) but also doesn’t always have a meaningful value to return. This pattern is common for operations like searching, parsing, or handling optional configuration. On the other hand it is not too complicated to imagine a `struct` where some of its fields may, at one point, contain nothing. Think about an editor with no file loaded (see Example 02 and Code snippet 04)
+I want to start with this use case because, for me, this is, by far, the easiest. Indeed, we can easily explain in plain English that a [function]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#function-method-procedure) might search for a file and, if it can’t find it, simply returns "nothing". If it succeeds, it returns something—like the first line of the file. Using `Option<T>` makes sense for any function that might not succeed (without throwing an error or crashing) but also doesn’t always have a meaningful value to return. This pattern is common for operations like searching, parsing, or handling optional configuration. On the other hand it is not too complicated to imagine a `struct` where some of its fields may, at one point, contain nothing. Think about an editor with no file loaded (see Example 02 and Code snippet 04)
 
 Easy to explain, easy to translate. The easiest, I told you.
 
@@ -414,7 +414,7 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 {: .no_toc }
 
 1. **Pattern**: The function returns an `Option<T>` (here `Option<String>`). It can be `None` or `Some(v)`.
-2. **When to use**: When we need to express the fact that a function or a method can return nothing or something.
+2. **When to use**: When we need to express the fact that a function or a [method]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#function-method-procedure) can return nothing or something.
 3. **Usage**: When a struct, an application, a function has an optional parameter or return value, `Option<T>` should be used.
 
 
@@ -613,7 +613,7 @@ fn main() {
 ### Read it Aloud
 {: .no_toc }
 
-**Code snippet 00:** The code says: "In `main()`, `msg` is an `Option<String>` and we use a `match` expression to cover explicitly all the possible values returned by `my_editor.get_selection()`."
+**Code snippet 00:** The code says: "In `main()`, `msg` is an `Option<String>` and we use a `match` [expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions) to cover explicitly all the possible values returned by `my_editor.get_selection()`."
 
 **Code snippet 01:** The code says: "In `main()`, on the return of `my_editor.get_selection()` we use a `match` expression to cover explicitly all the possible values."
 
@@ -646,7 +646,7 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 * Code snippet 03. `if let Some(x) = expression` is **NOT** a boolean expression, see it is as a shortened version of a `match`.
 * Code snippet 03. When we **read** a line like `if let Some(...) = Option<T>{...}` we should **say** "If the pattern `Some(...)` successfully matches the `Option<T>` then blablabla..."
 * Code snippet 02. `match` is an expression. It evaluates to a single value. Look, there is a `;` at the end of the line `let msg = ...`
-* Code snippet 02. Do you see the difference between the second and third code snippet? In the latter, `msg` receive the result of `format!` and then it is printed. Again `match` is an expression, **NOT** a statement.
+* Code snippet 02. Do you see the difference between the second and third code snippet? In the latter, `msg` receive the result of `format!` and then it is printed. Again `match` is an expression, **NOT** a [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement).
 * Code snippet 04. Uncomment the line `let new_path = None;` (comment the line above). Is the behavior of the code crystal clear?
 * Code snippet 04. Add this line `println!("{}", new_path.is_some());` at the very end of the code. What happens? Why?.
 * Each time one of our data type have a field which may contain something or nothing we should use an `Option<T>`. See Example 01.

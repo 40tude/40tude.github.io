@@ -105,7 +105,7 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 ## Longueur des posts
 * 3_000 mots
 * Découper en série le cas échéant
-* Utiliser `word2read` ./blablabla.md (voir src dans C:\Users\phili\OneDrive\Documents\Programmation\rust\00_cli\words2read)
+* Utiliser `word2read` ./blablabla.md (voir dans assets\wordcount)
 
 
 
@@ -253,11 +253,13 @@ This is the content I want to link to.
 ```
 <!--post-b.md -->
 See [this section]({% post_url 2025-09-01-post-a %}#my-important-section).
+[expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions)
+[statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement)
+[function]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#function-method-procedure)
 [invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)
 [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)
 
 ```
-
 
 
 
