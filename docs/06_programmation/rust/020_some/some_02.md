@@ -1232,8 +1232,9 @@ fn main() {
 
 ### Related Articles on This Blog
 
-- [Bindings in Rust: More Than Simple Variables]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}) - Understanding ownership and borrowing
-- [Rust and Functional Programming: Top 10 Functions]({%link docs/06_programmation/rust/006_rust_fp_top_10_functions/rust_fp_top_10_functions.md%}) - Iterator patterns (map, filter, etc.)
+- [Bindings in Rust: More Than Simple Variables]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}) - Understanding ownership and borrowing.
+- [Rust and Functional Programming: Top 10 Functions]({%link docs/06_programmation/rust/006_rust_fp_top_10_functions/rust_fp_top_10_functions.md%}) - Iterator patterns (map, filter, etc.).
+-  [Error Handling, Demystified]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) - A beginner-friendly conversation on Errors.
 
 
 

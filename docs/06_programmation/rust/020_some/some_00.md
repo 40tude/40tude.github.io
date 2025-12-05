@@ -880,101 +880,6 @@ Regular expression to use either in VSCode ou Powershell: `let Some\(.+\) = .+ e
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ## 🔵 Intermediate Examples (5-9) -->
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## 🔵 - Example 05 - Early Return Propagation - The `?` Operator
-
-### Real-world context
-{: .no_toc }
-
-Chaining optional operations, parsing pipelines, database query chains.
-
-### Runnable Example
-{: .no_toc }
-
-Copy and paste in [Rust Playground](https://play.rust-lang.org/)
-
-```rust
-// Without ? - verbose equivalent
-fn get_first_char_verbose(s: Option<&str>) -> Option<char> {
-    match s {
-        Some(text) => text.chars().next(),
-        None => None,
-    }
-}
-
-fn get_first_char(s: Option<&str>) -> Option<char> {
-    let text = s?; // If None, return None immediately
-    text.chars().next()
-}
-
-// Chaining multiple ?
-fn get_second_char(s: Option<&str>) -> Option<char> {
-    let text = s?;
-    let mut chars = text.chars();
-    chars.next()?; // Skip first
-    chars.next() // Return second
-}
-
-fn main() {
-    println!("{:?}", get_first_char_verbose(Some("hello"))); // Some('h')
-    println!("{:?}\n", get_first_char_verbose(None)); // None
-
-    println!("{:?}", get_first_char(Some("hello"))); // Some('h')
-    println!("{:?}\n", get_first_char(None)); // None
-
-    println!("{:?}", get_second_char(Some("hi"))); // Some('i')
-    println!("{:?}", get_second_char(Some("x"))); // None (only 1 char)
-    println!("{:?}", get_second_char(None)); // None
-}
-```
-
-### Read it Aloud
-{: .no_toc }
-
-The `?` operator says: "If this `Option<T>` is `None`, immediately return `None` from the function. Otherwise, unwrap the `Some(v)` value and continue."
-
-
-
-
-### Comments
-{: .no_toc }
-
-In addition to the Playground it is useful to debug the code in VSCode. This really helps to visualize what happens.
-
-<div align="center">
-<img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
-</div>
-
-
-
-
-### Key Points
-{: .no_toc }
-
-1. **Return type requirement**: Function must return `Option<T>` to use `?`
-2. **Chaining**: Enables clean sequential operations without nested matches
-3. **Not just `Option<T>`**: Also works with `Result<T, E>`
-4. **Pattern**: `Some(value?)` combines - try to get value, wrap in `Some(v)` if successful
-
-### Find More Examples
-{: .no_toc }
-
-Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+\?`
-
-
-
 
 
 
@@ -987,7 +892,7 @@ Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-#### The Posts Of The Saga
+## The Posts Of The Saga
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
