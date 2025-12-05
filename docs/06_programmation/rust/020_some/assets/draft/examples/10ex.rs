@@ -1,14 +1,26 @@
-// use std::path::PathBuf;
+// cargo run --example 10ex
 
 fn main() {
-    // Moving consumes the Option
+    // i32 implements Copy, so Option<i32> also implements Copy
+    let opt = Some(42);
+
+    // Pattern matching copies opt instead of moving it
+    if let Some(n) = opt {
+        println!("{n}"); // n is copied from the Option
+    }
+    println!("{:?}", opt); // OK: opt was copied, not moved
+
+    println!();
+    // String does NOT implement Copy, so Option<String> does not implement Copy either
     let opt = Some(String::from("hello"));
+    // Pattern matching moves opt and its inner String
     if let Some(s) = opt {
+        // s is moved out of opt
         println!("Length: {}", s.len());
     }
-    // println!("{:?}", opt); // ERROR: opt was moved
+    // println!("{:?}", opt); // ERROR: opt was moved and cannot be used here
 
-    // Borrowing with as_ref => Option<T> remains usable
+    // Borrowing with as_ref => Option<T> remains usable afterwards
     println!();
     let opt = Some(String::from("hello"));
     if let Some(s) = opt.as_ref() {

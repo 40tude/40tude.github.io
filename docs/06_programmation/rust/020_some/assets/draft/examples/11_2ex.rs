@@ -61,5 +61,5 @@ fn main() {
         println!("\tDoing work...");
         guard.release(); // Release early via take()
         println!("\tMore work after release...");
-    } // Guard dropped, but resource already gone
+    } // guard dropped, but resource already gone
 }

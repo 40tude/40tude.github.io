@@ -1,4 +1,4 @@
-// cargo run --example 05ex
+// cargo run --example 06ex
 
 // Simulates a costly function (time/CPU/network) to generate a default value
 // Prints a trace to show when it is executed

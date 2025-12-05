@@ -1,3 +1,5 @@
+// cargo run --example 11ex
+
 use std::fs::{self, File};
 
 struct Editor {
