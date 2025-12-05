@@ -28,6 +28,14 @@ A Code-First Guide with Runnable Examples
 {: .no_toc }
 
 
+#### The Posts Of The Saga
+{: .no_toc }
+* [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
+* [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
+* [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%})
+
+
+
 ## TL;DR
 {: .no_toc }
 
@@ -210,14 +218,6 @@ Example 15: Converting `Option<&T>` to `Option<T>`
 </div>
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Posts
-{: .no_toc }
-* [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
-* [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
-* [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%})
 
 
 
@@ -987,7 +987,7 @@ Regular expression to use either in VSCode ou Powershell: `\w+\?;` or `return .+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Posts
+#### The Posts Of The Saga
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})

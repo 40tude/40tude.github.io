@@ -26,16 +26,23 @@ A Code-First Guide with Runnable Examples
 ### This is Episode 01
 {: .no_toc }
 
+#### The Posts Of The Saga
+{: .no_toc }
+* [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
+* [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
+* [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%})
 
 
-## TL;DR
+
+
+<!-- ## TL;DR
 {: .no_toc }
 
 * 3 ski slopes: 🟢 Beginner, 🔵 Intermediate, 🔴 Advanced
 * Basic extraction: `if let`, `match`, `let...else`
 * Safe unwrapping: `unwrap_or()`, `unwrap_or_else()`
 * Chaining: `map()`, `and_then()`, `filter()`
-* Advanced: `as_ref()`, `take()`, `flatten()`, combining Options
+* Advanced: `as_ref()`, `take()`, `flatten()`, combining Options -->
 
 
 
@@ -210,14 +217,6 @@ Example 15: Converting `Option<&T>` to `Option<T>`
 </div>
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Posts
-{: .no_toc }
-* [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
-* [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
-* [Episode 02]({%link docs/06_programmation/rust/020_some/some_02.md%})
 
 
 
@@ -741,7 +740,7 @@ Regular expression to use either in VSCode ou Powershell: `Some\(.+\) if `
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Posts
+## The Posts Of The Saga
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/020_some/some_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/020_some/some_01.md%})
