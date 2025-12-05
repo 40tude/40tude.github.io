@@ -2,8 +2,8 @@
 published: true
 lang: en-US
 layout: default
-title: Option in Rust: 15 Examples from Beginner to Advanced - 02
-description: Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from `if let` to advanced combinators
+title: "Option in Rust: 15 Examples from Beginner to Advanced - 02"
+description: "Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from `if let` to advanced combinators"
 parent: "Rust"
 date:               2025-12-05 10:00:00
 last_modified_date: 2025-12-05 10:00:00
