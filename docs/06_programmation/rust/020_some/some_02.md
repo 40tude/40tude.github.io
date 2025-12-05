@@ -23,6 +23,91 @@ A Code-First Guide with Runnable Examples
 </h2>
 
 
+
+
+## TL;DR
+{: .no_toc }
+
+* `as_ref()` converts `Option<T>` to `Option<&T>`, so that we can peek inside without consuming. `as_mut()` gives `Option<&mut T>` for peek and poke. Both leave the original `Option<T>` intact.
+
+    ```rust
+    // Example 10: Borrowing Instead of Moving
+    let len = path.as_ref().map(|p| p.as_os_str().len());
+    path.as_mut().map(|p| p.push("documents"));
+    ```
+
+
+
+
+
+
+* Give me the value inside `Some(v)` + replace the `Option<T>` with `None` + and return the value as `Option<T>`
+
+    ```rust
+    // Example 11: Extracting Value and Leaving `None`
+    if let Some(_f) = self.file.take() {...}
+    ```
+
+
+
+
+
+
+
+* If `Option<T>` is `Some(v)` and the condition is true, keep it as `Some(v)`. Otherwise, return `None`. It's like `map()` but it can remove values.
+
+    ```rust
+    // Example 12: Conditional Mapping - .filter()
+    let result = name.map(|n| n.trim()).filter(|n| !n.is_empty()).map(|n| n.to_uppercase());
+    ```
+
+
+
+* `.flatten()` converts `Vec<Option<T>>` to `Vec<T>` by discarding `None` while `.filter_map(|x| optional_transform(x))` combines `.map()` and `.flatten()` in one step.
+
+
+    ```rust
+    // Example 13: Working with Collections of Options
+    let out: Vec<i32> = in
+        .iter()
+        .filter_map(|&s| parse_number(s))
+        .collect();
+
+    ```
+
+
+
+
+
+
+
+
+
+
+
+
+* `Some(a? + b?)` offers a concise early-return logic to `Options<T>` 2 or more options. If all `Options<T>` are `Some(v)` the processing takes place, otherwise, if any is `None`, early reply `None`.
+
+    ```rust
+    // Example 14: Combining Multiple Options
+    fn add_options(a: Option<i32>, b: Option<i32>) -> Option<i32> {
+        Some(a? + b?)
+    }
+    ```
+
+
+
+* `.copied()` duplicates the value inside `Option<&T>` to produce `Option<T>` (requires the `Copy` trait). `.cloned()` does the same but uses the `Clone` trait instead - works for non-Copy types like `String`.
+
+    ```rust
+        // Example 15: Converting `Option<&T>` to `Option<T>`
+
+    ```
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### This is Episode 02

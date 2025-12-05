@@ -23,6 +23,56 @@ A Code-First Guide with Runnable Examples
 </h2>
 
 
+
+
+## TL;DR
+{: .no_toc }
+
+* If this `Option<T>` is `None`, immediately return `None` from the function. Otherwise, unwrap the `Some(v)` value and continue.
+
+    ```rust
+    // Example 05: Early Return Propagation
+    let text = s?;
+    chars.next()?;
+    ```
+
+* `Option<T>.unwrap_or(v)` = "Give me the value inside the `Option<T>` **OR** if the option is `None`, give me the value `v` (where `v` can be the result of a function)."
+* `Option<T>.unwrap_or_else(||my_closure())` = "Give me the value inside the `Option<T>` **OR** if the `Option<T>` is `None`, call the closure and give me its returned value."
+
+    ```rust
+    // Example 06: Providing Defaults
+    Option<T>.unwrap_or(v) or Option<T>.unwrap_or(my_function())
+    Option<T>.unwrap_or_else(||my_closure())
+    ```
+
+* If the `Option<T>` is `Some(v)`, apply the transformation to the inner value and wrap the result in `Some(w)`. If `None`, skip the transformation and return `None`.
+
+    ```rust
+    // Example 07: Transforming Values Inside `Option<T>`
+    let result = name.map(|n| n.trim().to_string())
+    ```
+
+* If the `Option<T>` is `Some(v)`, apply the transformation that returns an `Option<U>` and **flatten the result**. If `None`, skip and return `None`.
+
+    ```rust
+    // Example 08: Chaining `Option<T>`
+    let chain_result = Some("49")
+        .and_then(|s| parse_positive(s)) // Some(49)
+        .and_then(|n| if n < 50 { Some(n * 2) } else { None });
+    ```
+
+* If the `Option<T>` is `Some(v)` **AND** if the extracted value (`v`) satisfies this predicate then execute the code after the `=>`.
+
+    ```rust
+    // Example 09: Pattern Matching with Guards
+    match age {
+        Some(a) if a < 18 => "Minor",
+        ...
+    ```
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### This is Episode 01
