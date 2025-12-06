@@ -81,14 +81,14 @@ where
 ## The Setup
 
 Before we start, let's make sure we're on the same page:
-- You already wrote some code and tried to find your way in the Standard Library documentation.
+- You already wrote some code and tried to find your way in the Standard Library documentation. Your are not an expert but your are not a beginner either.
 - You have read at least half of **THE** book, [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html).
 
 <div align="center">
 <img src="./assets/img15.webp" alt="" width="300" loading="lazy"/><br/>
 </div>
 
-- **OS:** Windows 11
+- **OS:** Windows 11 (but the topic is OS agnostic)
 - **Editor:** VS Code with [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) installed
 - **Rust:** A working installation (run `rustc --version` to check)
     ```powershell
