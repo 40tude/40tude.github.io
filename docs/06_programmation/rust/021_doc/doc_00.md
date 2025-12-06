@@ -622,7 +622,11 @@ The Rust compiler is incredibly helpful here. All three work because of:
 <!-- ###################################################################### -->
 ## 🔴 Part 3: Difficult — Advanced Patterns
 
+
+
+<!-- ###################################################################### -->
 ### Associated Types vs. Generic Type Parameters
+{: .no_toc }
 
 **Marty:** You mentioned `Self::Item` earlier (see "Understanding `where` Clauses"). How is that different from just using a generic parameter `<T>`?
 
@@ -668,7 +672,12 @@ impl Container for MyStruct {
 
 
 
+
+
+
+<!-- ###################################################################### -->
 ### Reading Associated Types in Docs
+{: .no_toc }
 
 **Marty:** How do I find out what the associated types are for a given type?
 
@@ -726,6 +735,7 @@ That `type Item;` line declares the associated type. Every iterator **must** spe
 
 
 
+<!-- ###################################################################### -->
 ### Lifetimes in Signatures
 
 **Marty:** I've been avoiding this, but... what about those `'a` things I see everywhere?
@@ -789,6 +799,7 @@ You need to really understand lifetimes when **writing** complex data structures
 
 
 
+<!-- ###################################################################### -->
 ### The Mysterious `?Sized` Bound
 
 **Marty:** I sometimes see `T: ?Sized`. What's that question mark about?
@@ -858,6 +869,7 @@ Without `?Sized`, you couldn't pass `&str` because `str` doesn't have a known si
 
 
 
+<!-- ###################################################################### -->
 ### Deref Coercion Deep Dive
 
 **Marty:** Earlier you mentioned `Deref` lets `Vec` use slice methods. Can you explain more?
@@ -888,6 +900,14 @@ This cascades! `String` derefs to `str`, `Box<T>` derefs to `T`, `Rc<T>` derefs 
 
 In VS Code, if you can't find a method, try going to definition on the type and looking for `Deref`.
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Reading Complex Trait Hierarchies
 
 **Marty:** Sometimes I see things like `Iterator + Clone + Send`. What's going on there?
@@ -917,6 +937,14 @@ This means "anything implementing `Copy` must also implement `Clone`." You can't
 
 **Emmett:** Exactly!
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Marker Traits and Auto Traits
 
 **Marty:** What about `Send`, `Sync`, `Sized`, `Unpin`? I see these but they seem... empty?
