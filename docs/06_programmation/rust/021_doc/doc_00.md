@@ -32,7 +32,7 @@ A survival guide for developers who stare at type signatures and feel lost
 {: .no_toc }
 * `read != look at`
 * [docs.rust-lang.org/std](https://doc.rust-lang.org/std/)
-*
+
 
 
 <div align="center">
@@ -58,9 +58,11 @@ A survival guide for developers who stare at type signatures and feel lost
 
 You know that feeling when you're **reading** someone else's Rust code, you hit a method you don't recognize, you open the docs, and... you're greeted by something that looks like it was written in an alien language? Yeah, we're going to fix that today.
 
-This guide is a conversation between two developers: **Marty**, who's learning Rust and constantly frustrated by the documentation, and **Emmett**, a senior developer who's going to show him how to actually **read** those intimidating type signatures.
+This guide is a conversation between two developers: **Marty**, who's "speaking" Rust but is constantly frustrated by the documentation, and **Emmett** (aka Doc), a senior developer who's going to show him how to actually **read** those intimidating type signatures.
 
-By the end of this article, you'll be able to look at something like this:
+The key word here is **read**. See, too often we just glance, we skim, we decode the words—kinda like when we were kids staring at a math formula in a textbook. We didn't really *get* what it meant. The formula didn't speak to us, didn't tell us a story. Well actually, it *did* tell its story, but we weren't ready to hear it or appreciate it. So we'd rush past it and cross our fingers that eventually, through sheer repetition, we'd somehow survive. The idea here is to fight that bad habit and invest the time needed to learn a new language: the language of Rust's Standard Library documentation. And besides, "Great Scott!", the Rust documentation folks didn't spend all that time writing this stuff just for us to ignore it. That'd be like wasting 1.21 gigawatts. 1.21 gigawatts!!!
+
+By the end of this article, we should be able to read something like this:
 
 ```rust
 pub const fn filter<P>(self, predicate: P) -> Self
@@ -89,7 +91,7 @@ Before we start, let's make sure we're on the same page:
 <span>The Rust Programming Book</span>
 </div>
 
-- **OS:** Windows 11 (but the topic is OS agnostic)
+- **OS:** Windows 11 (but the post is OS agnostic)
 - **Editor:** VS Code with [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) installed
 - **Rust:** A working installation (run `rustc --version` to check)
     ```powershell
@@ -101,7 +103,7 @@ Before we start, let's make sure we're on the same page:
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="600" loading="lazy"/><br/>
-<span>The Standard Library Documentation Home Page</span>
+<span>Click the images to zoom in. The Standard Library Documentation Home Page</span>
 </div>
 
 Here's the code we'll be dissecting throughout this guide. Copy it into the [Rust Playground](https://play.rust-lang.org/) or a local file:
@@ -160,7 +162,7 @@ Fewer than 15 lines, but there's *so much* going on here. Let's unpack it all.
 
 **Marty:** Okay, I'm looking at this code and I already have questions. What even is `vec!`? Is it a function? Why the exclamation mark? A `not` operator?
 
-**Emmett:** Great first question! The `!` tells you it's a **macro**, not a function. In Rust, macros have that **trailing bang**. Let's find it in the docs.
+**Emmett:** Great first question! The `!` tells you it's a [**macro**](https://doc.rust-lang.org/book/ch20-05-macros.html), not a function. In Rust, [macros](https://doc.rust-lang.org/stable/reference/macros.html) have that **trailing bang**. Let's find it in the docs.
 
 **Marty:** Hey Doc, how do I even search for that?
 
@@ -168,7 +170,7 @@ Fewer than 15 lines, but there's *so much* going on here. Let's unpack it all.
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
-<span>Run the code in VScode</span>
+<span>Getting help in VScode</span>
 </div>
 
 Hover over `vec!` and you'll see a tooltip from rust-analyzer. It'll show you something like:
@@ -207,31 +209,203 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 ### Anatomy of a Documentation Page
 {: .no_toc }
 
-**Emmett:** Every item in the standard library has a doc page with a consistent structure. Let's look at [`Vec<T>`](https://doc.rust-lang.org/std/vec/struct.Vec.html) as an example.
+**Emmett:** Every item in the Standard Library has a doc page with a consistent structure. Let's look at [`Vec<T>`](https://doc.rust-lang.org/std/vec/struct.Vec.html) as an example.
 
 {: .important-title }
 > Side Note:
 >
 > * On the previous page you can click on the word `Vec`.
-> * Or you can go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), search for `vec` and click on the second item in the list : `struct std::vec::Vec`
+> * Or better yet, go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), search for `vec` and click on the second item in the list : `struct std::vec::Vec`
 
 
-
+The top of the page looks like:
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="600" loading="lazy"/><br/>
 <span>The Rust documentation page for <code>Struct Vec</code></span>
 </div>
 
-1. **The path** at the top: `std::vec` — this tells you **where** the item lives
+At a high level we can easily identify:
+
+1. **The path** at the top: `std::vec` — this tells you **where** the item lives.
 2. **The declaration**: `pub struct Vec<T, A = Global>` — the actual type definition
 3. **Description**: A short description of what it does
-4. **Implementations**: The `impl` blocks showing all methods
+4. **Implementations**: The `impl` blocks showing all the methods available. Note that on the page, the Implementation block starts with the `.new()` method while on left of the page, in the Methods section the methods are ordered alphabetically.
 5. **Trait Implementations**: What traits this type implements (`Clone`, `Debug`, etc.)
 
-**Marty:** What's that `A = Global` thing?
 
-**Emmett:** That's a *default type parameter*. It means "if you don't specify an allocator, use `Global`." You can ignore it 99% of the time. Most people just write `Vec<T>` and never think about custom allocators.
+This said, since we will use the pages of the documentation extensively, it is **IMPORTANT** to feel "at home". So let's take some time to explain with much more details how a typical Rust standard-library documentation page is designed, and how to navigate it effectively.
+
+
+<!-- ---------------------------------------------------------------------- -->
+#### **Overall Architecture of a Standard Library Documentation Page**
+{: .no_toc }
+
+A standard library documentation page generated by *rustdoc* follows a consistent layout designed to make it easy to explore a type, module, trait, or function. While the visual style has evolved over time, the core structure remains stable and predictable.
+
+
+
+
+
+**1. Sidebar Navigation (Left Panel)**
+
+<div align="center">
+<img src="./assets/img16.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Sidebar Navigation</span>
+</div>
+
+
+The left sidebar acts as a quick-access navigation menu for the entire page. It lists the major groups of items related to the entity being documented. For a struct like `Vec<T>`, the sidebar typically includes entries such as:
+
+* **Sections** – Links to general page anchors like the description or examples
+* **Methods** – All inherent methods and associated functions
+* **Methods from Deref<Target = [...]>** – Methods inherited through the `Deref` trait
+* **Trait Implementations** – All traits implemented by the type
+* **Auto Trait Implementations** – Auto traits automatically derived by the compiler
+* **Blanket Implementations** – Traits implemented for all types meeting certain bounds
+
+The sidebar allows us to jump directly to the part of the page you’re interested in, without scrolling through complex or long sections. It functions as a table of contents tailored for the type you're viewing.
+
+
+
+
+
+
+
+
+
+
+**2. Main Header and Description**
+
+<div align="center">
+<img src="./assets/img17.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Main content</span>
+</div>
+
+At the top of the main content area (on the right), again, but it does'nt hurt to repeat ourselves, you’ll find:
+
+
+1. **The path** at the top: `std::vec` — this tells you **where** the item lives.
+    * Here it is in the module `std::vec`.
+    * Click on the word `vec` in `std::vec` at the very top
+    * You will land in the  module `vec` page which belongs to the `std` crate
+1. The **type or item name** (e.g., `struct Vec<T>`)
+1. **The declaration**: `pub struct Vec<T, A = Global>` — the actual type definition
+1. **Description**: A short description of what it does
+
+
+
+
+<!-- 1. **Implementations**: The `impl` blocks showing all the methods available. Note that on the page, the Implementation block starts with the `.new()` method while on left of the page, in the Methods section the methods are ordered alphabetically.
+1. **Trait Implementations**: What traits this type implements (`Clone`, `Debug`, etc.) -->
+
+
+
+
+**3. Detailed Description and Examples**
+
+<div align="center">
+<img src="./assets/img18.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Main content</span>
+</div>
+
+
+Below the header, many items include a more detailed explanation, design notes, and carefully crafted usage examples. These examples often demonstrate idiomatic ways to use the type and highlight common patterns or pitfalls.
+
+This section can be unfold or fold to quickly access to the Implementations section.
+
+**4. Implementations Section**
+
+<div align="center">
+<img src="./assets/img19.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Implementations section - The description is collapsed</span>
+</div>
+
+This is one of the most important parts of the page. The documentation groups methods and associated items by their **impl blocks**, not strictly alphabetically or by category. This section includes:
+
+* **Inherent implementations** (`impl Vec<T>`) – where the core behavior of the type is defined
+* **Trait implementations** (`impl<T> SomeTrait for Vec<T>`) – grouped separately from inherent methods
+* **Associated constants**, **methods**, **types**, or **functions** within those `impls`
+
+This structure reflects the internal organization of actual Rust code and helps readers explore how behaviors are defined.
+
+
+
+
+**5. Methods from Deref**
+
+<div align="center">
+<img src="./assets/img26.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Methods from Deref for <code>Struct Vec</code></span>
+</div>
+
+
+Some types implement the `Deref` trait to behave like another underlying type. When this is the case, the documentation includes a dedicated section listing all methods inherited through dereferencing. These methods are not defined on the type itself but come from the deref target, such as slice methods for `Vec<T>` or string slice methods for `String`. This section is useful when a method cannot be found among the inherent methods, since it may originate from the type’s deref target instead.
+
+
+
+
+**6. Trait, Auto-Trait, and Blanket Implementations**
+
+<div align="center">
+<img src="./assets/img20.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Trait, Auto-Trait, and Blanket Implementations</span>
+</div>
+
+These sections explain:
+
+* **Which traits the type implements**, such as `Clone`, `Debug`, or `Deref`
+* **Which auto traits apply**, like `Send` or `Sync`
+* **Which blanket implementations exist**, such as `impl<T> FromIterator<T> for Vec<T>`
+
+These sections really help to understand how the type interacts with Rust’s trait system and what behaviors it gains automatically.
+
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------------- -->
+#### **How to Make the Best Use of These Sections**
+{: .no_toc }
+
+* **Use the sidebar for quick navigation** when you already know what you’re looking for (e.g., a specific method).
+* **Use the Implementations section** to understand *why* a method exists and which impl block provides it. This is especially helpful when generic bounds or trait implementations matter.
+* **Check the Methods from Deref section** when a method doesn’t appear among the inherent ones. Many types inherit behavior from their deref target, so useful operations may come from another type such as slices or string slices.
+* **Use the Trait Implementations section** to discover what extra capabilities a type has, such as formatting, iteration, conversions, or concurrency support.
+* **Use examples and descriptions** to learn idiomatic usage rather than just API details.
+* **Use search (`CTRL+F`)** on the page to quickly find method names or trait names when the page is long.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Marty:** Waouh... This is a lot of information. I did'nt know all that. Hm... Can we go back to the top of the page? What's that `A = Global` thing?
+
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="600" loading="lazy"/><br/>
+<span>The Rust documentation page for <code>Struct Vec</code></span>
+</div>
+
+
+**Emmett:** That's a **default type parameter**. It means "if you don't specify an allocator, use `Global`." You can ignore it 99% of the time. Most people just write `Vec<T>` and never think about custom allocators.
 
 **Marty:** Okay, noted. So when I see extra type parameters with `= Something`, I can usually ignore them?
 
@@ -244,32 +418,159 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 
 <!-- ###################################################################### -->
-### Your First Real Investigation: What Does `.iter()` Return?
+### Our First Investigation: What Does `.iter()` Return?
 {: .no_toc }
 
 **Marty:** Alright, in the code we have `numbers.iter()`. What does that return? How do I find out?
 
-**Emmett:** Let's use VS Code first. Put your cursor on `.iter()` and press **F12** (Go to Definition). Or just hover over it.
+**Emmett:** Let's use VS Code first. Put your cursor on `.iter()` and hover over it. Alternatively you can right click on `.iter()` then select **F12** (Go to Definition), or click on it and press **F12** directly .
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="600" loading="lazy"/><br/>
-<span>Hovering over <code>.iter()</code></span>
+<span>Right click on <code>.iter()</code></span>
+</div>
+
+**Marty:** If hover over `.iter()` and read the content of the IntelliTooltip
+
+<div align="center">
+<img src="./assets/img21.webp" alt="" width="600" loading="lazy"/><br/>
+<span>IntelliTooltip, Intellisense or Hover Information</span>
 </div>
 
 
-**Marty:** It says... `pub fn iter(&self) -> Iter<'_, T>`. What's `Iter<'_, T>`?
+It says... `pub const fn iter(&self) -> Iter<'_, T>`. It is always the same thing. It does'nt help at all. What is the `Iter<'_, T>`?
+
+
+
+**Emmett:** No! **Read** the content! Do **NOT** look at it. Say it aloud from the very beginning. This usually help.
+
+**Marty:** Ok... I **read** `core::slice` then `impl<T> [T]` then `pub const fn iter(&self) -> Iter<'_, T>` and finally `T = Option<i32>`. I guess there is a bug somewhere: we lost the vector and we get a slice instead...
+
+**Emmett:** Ah! That's much better. No, this is not a bug, this is a feature and great feature of the Language. You heard about it when you read the book in Chapters 4, 8 and 15. Anyway, let me explain what you read:
+* Line 1: `core::slice`
+    * Module location: The method `.iter()` is defined in the module `core::slice`. The Rust standard library's slice implementation.
+* Line 2: `impl<T> [T]`
+    * Implementation block. This is an implementation of methods for the slice `[]` of type `T`, in other words `[T]`.
+    * Read it as: "implementation of generic type parameter `T` for slice of `T`". This means the `.iter()` method is defined on the slice type itself, not on `Vec!`.
+* Line 3: `pub const fn iter(&self) -> Iter<'_, T>`
+    * This is the method signature
+    * `pub`: publicly accessible
+    * `const fn`: can be called in constant contexts (more on this later)
+    * `&self`: takes a **reference** to the slice
+    * `-> Iter<'_, T>`: returns an iterator over type `T` with an elided lifetime
+* Line 4: `T = Option<i32>`
+    * Type substitution. In our specific case, the generic `T` has been substituted with `Option<i32>`
+    * This shows what concrete type is being used in our particular call
+
+The story told in these four lines is as follows: "This is the `iter()` method from the `core::slice` module, implemented on the slice type [T]. In your code, `T` is `Option<i32>`, so you're calling `.iter()` on a slice of `Option<i32>` (i.e., `[Option<i32>]`), which returns an `Iter<'_, Option<i32>>` iterator."
+
+
+
+**Marty:** And this is exactly what usually happens. It does'nt help at all because at the end of the day the question remains: What is `Iter<'_, T>`?
+
+**Emmett:** I disagree. On the contrary, you've made enormous progress. At least now you can **read**, which isn't so bad... In addition now you know that the `.iter()` is NOT applied of a vector but over a slice. Do you remember what you learn in THE book about `&String` and `&str`? No? Now you know what to read tonight in your bed...
+
+
+
+**Marty:** Ok... But, sorry to insist, what is `Iter<'_, T>`?
+
+
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+
+
+
+
+
+
+
+
+
+
+
+**Emmett:** That's the return type. It's a struct called `Iter`. The `'_` is an **elided lifetime** — the compiler figures it out for you. For now, just **read** it as "an iterator that borrows from the original collection."
+
+Now, **Ctrl+Click** (or **F12**) on `.iter()` and VS Code will take you to its definition. Or search for "slice Iter" in the docs.
 
 <div align="center">
-<img src="./assets/img08.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img24.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Click the link <code>Iter</code> at the bottom of the tooltip</span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Marty:** OK... When I CTRL+Click on `.iter()`, here is what I see in the file `mod.rs`
+
+<div align="center">
+<img src="./assets/img22.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Source code of <code>.iter()</code></span>
+</div>
+
+Hopefull I see the same return type since the signature is: `pub const fn iter(&self) -> Iter<'_, T>`. The source code **tells** me that the returned type is created using `Iter::new()`. If I hover over `.new()` I **read** the following :
+
+
+<div align="center">
+<img src="./assets/img25.webp" alt="" width="600" loading="lazy"/><br/>
+<span></code></span>
+</div>
+
+This is not clear. It says that `.new()` takes as a parameter a slice (?)
+
+
+Now if I CTRL+Click on `Iter<'_, T>` VS Code open `iter.rs`
+
+<div align="center">
+<img src="./assets/img23.webp" alt="" width="600" loading="lazy"/><br/>
 <span>Source code of <code>.iter()</code></span>
 </div>
 
 
-**Emmett:** That's the return type! It's a struct called `Iter`. The `'_` is an *elided lifetime* — the compiler figures it out for you. For now, just **read** it as "an iterator that borrows from the original collection."
+But wait, why did you said "Or search for 'slice Iter' in the docs"? Our `numbers` is a `Vec`, not a slice.
 
-Now, **Ctrl+Click** (or **F12**) on `Iter` (on the line `Iter::new(self)`), and VS Code will take you to its definition. Or search for "slice Iter" in the docs.
 
-**Marty:** Wait, why "slice"? Our `numbers` is a `Vec`, not a slice.
 
 **Emmett:** Excellent! Here's a key insight: `Vec<T>` implements a trait called [`Deref`](https://doc.rust-lang.org/std/ops/trait.Deref.html) that lets it behave like a slice (`[T]`). When you call `.iter()` on a `Vec`, you're actually calling the slice's `.iter()` method.
 
@@ -285,6 +586,23 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 **Marty:** Oh! So `Vec` "inherits" methods from `[T]` through `Deref`?
 
 **Emmett:** Exactly. This is called **deref coercion**. We'll dig deeper into this later, but for now, just know: if you can't find a method directly on a type, check what it `Deref`s to.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -703,7 +1021,7 @@ Let's look at the [`Iterator` trait](https://doc.rust-lang.org/std/iter/trait.It
 
 <div align="center">
 <img src="./assets/img11.webp" alt="" width="600" loading="lazy"/><br/>
-<span>Search for "Iterator" in the Rust standard library documentation</span>
+<span>Search for "Iterator" in the Rust Standard Library documentation</span>
 </div>
 
 Then
@@ -826,7 +1144,7 @@ Welcome home!
 
 <div align="center">
 <img src="./assets/img13.webp" alt="" width="600" loading="lazy"/><br/>
-<span>Search for "pathbuf" in the Rust standard library documentation</span>
+<span>Search for "pathbuf" in the Rust Standard Library documentation</span>
 </div>
 
 
@@ -1146,7 +1464,7 @@ Every type, every trait, every method — we can trace it all through the docume
 4. Look at the examples in the docs — every page has them
 5. When you see scary bounds like `Destruct`, check if you can ignore them for your use case
 
-The standard library docs are incredibly thorough. Once you know how to **read** them, they become your most valuable resource. And the best part? Every crate follows the same patterns. Learn to **read** `std`, and you can **read** `tokio`, `axum`, `serde`, or anything else.
+The Standard Library docs are incredibly thorough. Once you know how to **read** them, they become your most valuable resource. And the best part? Every crate follows the same patterns. Learn to **read** `std`, and you can **read** `tokio`, `axum`, `serde`, or anything else.
 
 
 
@@ -1163,10 +1481,12 @@ The standard library docs are incredibly thorough. Once you know how to **read**
 <!-- ###################################################################### -->
 ## Webliography
 
+- [Standard Library documentation home](https://doc.rust-lang.org/std/)
+- [The Rust Reference](https://doc.rust-lang.org/stable/reference/)
 - [The Rust Book — Chapter 10: Generic Types, Traits, and Lifetimes](https://doc.rust-lang.org/book/ch10-00-generics.html)
 - [The Rustonomicon — Advanced Topics](https://doc.rust-lang.org/nomicon/) (when you're ready for deep dives)
 - [Rust by Example](https://doc.rust-lang.org/rust-by-example/) — Learn through code
-- [std documentation home](https://doc.rust-lang.org/std/)
+- [Rust on Windows 11, My Complete Setup Guide]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%})
 - Watch this video:
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=SAss1APdTHPIcvNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
