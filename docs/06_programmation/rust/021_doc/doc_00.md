@@ -93,7 +93,7 @@ Before we start, let's make sure we're on the same page:
     rustc --version
     rustc 1.91.1 (ed61e7d7e 2025-11-07)
     ```
-    If needed, check [my Rust setup under WIN11]({%link docs\06_programmation\rust\005_my_rust_setup_win11\my_rust_setup_win11.md%})
+    If needed, check [my Rust setup under WIN11]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%})
 - **Browser:** Any browser with [docs.rust-lang.org](https://doc.rust-lang.org/std/) open
 
 <div align="center">
