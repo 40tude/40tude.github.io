@@ -30,9 +30,9 @@ A survival guide for developers who stare at type signatures and feel lost
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
-* Point 00
-* Point 01
-
+* `read != look at`
+* [docs.rust-lang.org/std](https://doc.rust-lang.org/std/)
+*
 
 
 <div align="center">
@@ -86,6 +86,7 @@ Before we start, let's make sure we're on the same page:
 
 <div align="center">
 <img src="./assets/img15.webp" alt="" width="300" loading="lazy"/><br/>
+<span>The Rust Programming Book</span>
 </div>
 
 - **OS:** Windows 11 (but the topic is OS agnostic)
@@ -96,10 +97,11 @@ Before we start, let's make sure we're on the same page:
     rustc 1.91.1 (ed61e7d7e 2025-11-07)
     ```
     If needed, check [my Rust setup under WIN11]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%})
-- **Browser:** Any browser with [docs.rust-lang.org](https://doc.rust-lang.org/std/) open
+- **Browser:** Any browser with [docs.rust-lang.org/std](https://doc.rust-lang.org/std/) open
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="600" loading="lazy"/><br/>
+<span>The Standard Library Documentation Home Page</span>
 </div>
 
 Here's the code we'll be dissecting throughout this guide. Copy it into the [Rust Playground](https://play.rust-lang.org/) or a local file:
@@ -127,6 +129,7 @@ Filtered   : [None, Some(15), Some(25), None, None]
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Run the code in Rust Playground</span>
 </div>
 
 
@@ -165,6 +168,7 @@ Fewer than 15 lines, but there's *so much* going on here. Let's unpack it all.
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Run the code in VScode</span>
 </div>
 
 Hover over `vec!` and you'll see a tooltip from rust-analyzer. It'll show you something like:
@@ -179,6 +183,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Searching in the Standard Library</span>
 </div>
 
 
@@ -186,6 +191,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="600" loading="lazy"/><br/>
+<span>The Rust documentation page for <code>Macro vec</code></span>
 </div>
 
 
@@ -199,6 +205,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 <!-- ###################################################################### -->
 ### Anatomy of a Documentation Page
+{: .no_toc }
 
 **Emmett:** Every item in the standard library has a doc page with a consistent structure. Let's look at [`Vec<T>`](https://doc.rust-lang.org/std/vec/struct.Vec.html) as an example.
 
@@ -213,6 +220,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="600" loading="lazy"/><br/>
+<span>The Rust documentation page for <code>Struct Vec</code></span>
 </div>
 
 1. **The path** at the top: `std::vec` — this tells you **where** the item lives
@@ -237,6 +245,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 <!-- ###################################################################### -->
 ### Your First Real Investigation: What Does `.iter()` Return?
+{: .no_toc }
 
 **Marty:** Alright, in the code we have `numbers.iter()`. What does that return? How do I find out?
 
@@ -244,6 +253,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Hovering over <code>.iter()</code></span>
 </div>
 
 
@@ -251,6 +261,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 <div align="center">
 <img src="./assets/img08.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Source code of <code>.iter()</code></span>
 </div>
 
 
@@ -266,6 +277,7 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 
 <div align="center">
 <img src="./assets/img09.webp" alt="" width="600" loading="lazy"/><br/>
+<span>List of Methods from <code>Deref<Target = [T]></code></span>
 </div>
 
 
@@ -279,6 +291,7 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 
 <!-- ###################################################################### -->
 ### Quick Reference: Your Toolbox So Far
+{: .no_toc }
 
 | Tool | What It Does | Shortcut |
 |------|--------------|----------|
@@ -292,14 +305,17 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 
 <!-- ###################################################################### -->
 ### Exercice 00
+{: .no_toc }
 
 
 <!-- ###################################################################### -->
 ### Exercice 01
+{: .no_toc }
 
 
 <!-- ###################################################################### -->
 ### Exercice 02
+{: .no_toc }
 
 
 
@@ -322,6 +338,7 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 
 <!-- ###################################################################### -->
 ### The Map Method: Our First Generic Signature
+{: .no_toc }
 
 **Marty:** Okay, next up is `.map()`. Let me hover over it...
 
@@ -373,6 +390,7 @@ But they're just names. What matters is the **constraints** on them.
 
 <!-- ###################################################################### -->
 ### Understanding `where` Clauses
+{: .no_toc }
 
 **Emmett:** Now look at the `where` clause:
 
@@ -423,6 +441,7 @@ The `|&opt|` uses *pattern matching* in the closure parameter. It says "take the
 
 <!-- ###################################################################### -->
 ### The Three Fn Traits: `Fn`, `FnMut`, `FnOnce`
+{: .no_toc }
 
 **Marty:** You mentioned `FnMut`. On the other hand I also read about `Fn` and `FnMut`. What's the difference between `Fn`, `FnMut`, and `FnOnce`?
 
@@ -450,6 +469,7 @@ There's a hierarchy: `Fn` implies `FnMut`, which implies `FnOnce`. So if somethi
 
 <!-- ###################################################################### -->
 ### Reading the `Option::filter` Signature
+{: .no_toc }
 
 **Marty:** Now let's tackle the scary one. The `filter` method on `Option`. Here's what the docs show:
 
@@ -530,6 +550,7 @@ When you see bounds like `Destruct`, `Sized`, or `Unpin`, and you're not doing a
 
 <!-- ###################################################################### -->
 ### The Three Versions Explained
+{: .no_toc }
 
 **Marty:** The original code has three "same thing" versions:
 
@@ -568,15 +589,18 @@ The Rust compiler is incredibly helpful here. All three work because of:
 
 <!-- ###################################################################### -->
 ### Exercice 00
+{: .no_toc }
 
 
 
 <!-- ###################################################################### -->
 ### Exercice 01
+{: .no_toc }
 
 
 <!-- ###################################################################### -->
 ### Exercice 02
+{: .no_toc }
 
 
 
@@ -662,6 +686,7 @@ You can also find them in VS Code. Hover over or go to definition of the trait, 
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Click on the <code>Iterator</code> link</span>
 </div>
 
 
@@ -669,12 +694,14 @@ Let's look at the [`Iterator` trait](https://doc.rust-lang.org/std/iter/trait.It
 
 <div align="center">
 <img src="./assets/img11.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Search for "Iterator" in the Rust standard library documentation</span>
 </div>
 
 Then
 
 <div align="center">
 <img src="./assets/img11.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Click on <code>std::iter::Iterator</code></span>
 </div>
 
 We see
@@ -786,6 +813,7 @@ Welcome home!
 
 <div align="center">
 <img src="./assets/img13.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Search for "pathbuf" in the Rust standard library documentation</span>
 </div>
 
 
@@ -793,6 +821,7 @@ Scroll down on the left
 
 <div align="center">
 <img src="./assets/img14.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Trait Implementations</span>
 </div>
 
 Finally you read
@@ -997,6 +1026,7 @@ Every type, every trait, every method — we can trace it all through the docume
 
 <!-- ###################################################################### -->
 ### Navigation Shortcuts (VS Code + rust-analyzer)
+{: .no_toc }
 
 | Action | Shortcut |
 |--------|----------|
@@ -1010,6 +1040,7 @@ Every type, every trait, every method — we can trace it all through the docume
 
 <!-- ###################################################################### -->
 ### Common Generic Names
+{: .no_toc }
 
 | Letter | Usually Means |
 |--------|---------------|
@@ -1027,6 +1058,7 @@ Every type, every trait, every method — we can trace it all through the docume
 
 <!-- ###################################################################### -->
 ### Trait Bound Patterns
+{: .no_toc }
 
 | Pattern | Meaning |
 |---------|---------|
@@ -1042,6 +1074,7 @@ Every type, every trait, every method — we can trace it all through the docume
 
 <!-- ###################################################################### -->
 ### Bounds You Can Often Ignore
+{: .no_toc }
 
 - `Destruct` — const evaluation detail
 - `Allocator` parameters — use default
@@ -1099,7 +1132,6 @@ The standard library docs are incredibly thorough. Once you know how to **read**
 - [Rust by Example](https://doc.rust-lang.org/rust-by-example/) — Learn through code
 - [std documentation home](https://doc.rust-lang.org/std/)
 - Watch this video:
-
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=SAss1APdTHPIcvNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
