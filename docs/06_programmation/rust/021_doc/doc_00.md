@@ -30,6 +30,8 @@ A survival guide for developers who stare at type signatures and feel lost
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
+* Point 00
+* Point 01
 
 
 
@@ -200,12 +202,11 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 **Emmett:** Every item in the standard library has a doc page with a consistent structure. Let's look at [`Vec<T>`](https://doc.rust-lang.org/std/vec/struct.Vec.html) as an example.
 
-{: .note-title }
+{: .important-title }
 > Side Note:
 >
-> On the previous page you can click on the word `Vec`.
->
-> Or you can go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), search for `vec` and click on the second item in the list : `struct std::vec::Vec`
+> * On the previous page you can click on the word `Vec`.
+> * Or you can go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), search for `vec` and click on the second item in the list : `struct std::vec::Vec`
 
 
 
@@ -289,7 +290,16 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 
 
 
+<!-- ###################################################################### -->
+### Exercice 00
 
+
+<!-- ###################################################################### -->
+### Exercice 01
+
+
+<!-- ###################################################################### -->
+### Exercice 02
 
 
 
@@ -556,7 +566,17 @@ The Rust compiler is incredibly helpful here. All three work because of:
 
 
 
+<!-- ###################################################################### -->
+### Exercice 00
 
+
+
+<!-- ###################################################################### -->
+### Exercice 01
+
+
+<!-- ###################################################################### -->
+### Exercice 02
 
 
 
@@ -755,12 +775,11 @@ The `?Sized` says "T might not be `Sized`." It **removes** the default `Sized` r
 Look at [`From` for `PathBuf`](https://doc.rust-lang.org/std/path/struct.PathBuf.html#impl-From%3C%26T%3E-for-PathBuf):
 
 
-{: .note-title }
+{: .important-title }
 > Side Note:
 >
-> Go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), press `/`, search for `pathbuf` and click on the first item in the list : `struct std::path::PathBuf`
->
->On the left hand side, scroll down and find the Trait Implementations section. Click `From<&T>`
+1. Go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), press `/`, search for `pathbuf` and click on the first item in the list : `struct std::path::PathBuf`
+2. On the left hand side of the page, scroll down, find the Trait Implementations section and click on `From<&T>`
 
 
 Welcome home!
@@ -892,6 +911,19 @@ When you see them in bounds, they're usually ensuring thread safety or other gua
 **Emmett:** Exactly! Unless you're doing unsafe code, advanced async, or FFI, you can usually trust that if your code compiles, these bounds are satisfied.
 
 
+
+
+
+<!-- ###################################################################### -->
+### Exercice 00
+
+
+<!-- ###################################################################### -->
+### Exercice 01
+
+
+<!-- ###################################################################### -->
+### Exercice 02
 
 
 
