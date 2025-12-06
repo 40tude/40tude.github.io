@@ -737,6 +737,7 @@ That `type Item;` line declares the associated type. Every iterator **must** spe
 
 <!-- ###################################################################### -->
 ### Lifetimes in Signatures
+{: .no_toc }
 
 **Marty:** I've been avoiding this, but... what about those `'a` things I see everywhere?
 
@@ -801,6 +802,7 @@ You need to really understand lifetimes when **writing** complex data structures
 
 <!-- ###################################################################### -->
 ### The Mysterious `?Sized` Bound
+{: .no_toc }
 
 **Marty:** I sometimes see `T: ?Sized`. What's that question mark about?
 
@@ -871,6 +873,7 @@ Without `?Sized`, you couldn't pass `&str` because `str` doesn't have a known si
 
 <!-- ###################################################################### -->
 ### Deref Coercion Deep Dive
+{: .no_toc }
 
 **Marty:** Earlier you mentioned `Deref` lets `Vec` use slice methods. Can you explain more?
 
@@ -909,6 +912,7 @@ In VS Code, if you can't find a method, try going to definition on the type and 
 
 <!-- ###################################################################### -->
 ### Reading Complex Trait Hierarchies
+{: .no_toc }
 
 **Marty:** Sometimes I see things like `Iterator + Clone + Send`. What's going on there?
 
@@ -946,6 +950,7 @@ This means "anything implementing `Copy` must also implement `Clone`." You can't
 
 <!-- ###################################################################### -->
 ### Marker Traits and Auto Traits
+{: .no_toc }
 
 **Marty:** What about `Send`, `Sync`, `Sized`, `Unpin`? I see these but they seem... empty?
 
@@ -973,14 +978,17 @@ When you see them in bounds, they're usually ensuring thread safety or other gua
 
 <!-- ###################################################################### -->
 ### Exercice 00
+{: .no_toc }
 
 
 <!-- ###################################################################### -->
 ### Exercice 01
+{: .no_toc }
 
 
 <!-- ###################################################################### -->
 ### Exercice 02
+{: .no_toc }
 
 
 
