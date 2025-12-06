@@ -58,7 +58,7 @@ A survival guide for developers who stare at type signatures and feel lost
 
 You know that feeling when you're **reading** someone else's Rust code, you hit a method you don't recognize, you open the docs, and... you're greeted by something that looks like it was written in an alien language? Yeah, we're going to fix that today.
 
-This guide is a conversation between two developers: **Marty**, who's "speaking" Rust but is constantly frustrated by the documentation, and **Emmett** (aka Doc), a senior developer who's going to show him how to actually **read** those intimidating type signatures.
+This guide is a conversation between two developers: **Marty**, who's "speaking" Rust but is constantly frustrated by the documentation, and **Emmett** (aka Doc), a senior developer who's going to show him how to actually **read** those type, module, trait, or function signatures.
 
 The key word here is **read**. See, too often we just glance, we skim, we decode the words—kinda like when we were kids staring at a math formula in a textbook. We didn't really *get* what it meant. The formula didn't speak to us, didn't tell us a story. Well actually, it *did* tell its story, but we weren't ready to hear it or appreciate it. So we'd rush past it and cross our fingers that eventually, through sheer repetition, we'd somehow survive. The idea here is to fight that bad habit and invest the time needed to learn a new language: the language of Rust's Standard Library documentation. And besides, "Great Scott!", the Rust documentation folks didn't spend all that time writing this stuff just for us to ignore it. That'd be like wasting 1.21 gigawatts. 1.21 gigawatts!!!
 
@@ -162,7 +162,7 @@ Fewer than 15 lines, but there's *so much* going on here. Let's unpack it all.
 
 **Marty:** Okay, I'm looking at this code and I already have questions. What even is `vec!`? Is it a function? Why the exclamation mark? A `not` operator?
 
-**Emmett:** Great first question! The `!` tells you it's a [**macro**](https://doc.rust-lang.org/book/ch20-05-macros.html), not a function. In Rust, [macros](https://doc.rust-lang.org/stable/reference/macros.html) have that **trailing bang**. Let's find it in the docs.
+**Emmett:** Great first question! The `!` tells you it's a [macro](https://doc.rust-lang.org/book/ch20-05-macros.html), not a function. In Rust, [macros](https://doc.rust-lang.org/stable/reference/macros.html) have that **trailing bang**. Let's find it in the documentation.
 
 **Marty:** Hey Doc, how do I even search for that?
 
@@ -181,7 +181,7 @@ macro_rules! vec // matched arm #2
 Creates a [Vec] containing the arguments.
 ```
 
-But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/) and use the search bar at the top. Type "vec" and you'll see results. Look for `vec` in the `std` module — it's the macro.
+But let's also learn to use the official documents. Go to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/) and use the search bar at the top. Type "vec" and you'll see results. Look for `vec` in the `std` module (aka `std::vec`) — it's the macro.
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="600" loading="lazy"/><br/>
@@ -214,8 +214,8 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 {: .important-title }
 > Side Note:
 >
-> * On the previous page you can click on the word `Vec`.
-> * Or better yet, go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), search for `vec` and click on the second item in the list : `struct std::vec::Vec`
+>* On the previous page you can click on any of the links `Vec`.
+>* Or better yet, go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), search for `vec` and click on the second item in the list : `struct std::vec::Vec`
 
 
 The top of the page looks like:
@@ -225,13 +225,16 @@ The top of the page looks like:
 <span>The Rust documentation page for <code>Struct Vec</code></span>
 </div>
 
-At a high level we can easily identify:
+At a high level we can identify:
 
-1. **The path** at the top: `std::vec` — this tells you **where** the item lives.
+1. **The path** at the top: `std::vec` — this tells us **where** the item lives.
 2. **The declaration**: `pub struct Vec<T, A = Global>` — the actual type definition
 3. **Description**: A short description of what it does
-4. **Implementations**: The `impl` blocks showing all the methods available. Note that on the page, the Implementation block starts with the `.new()` method while on left of the page, in the Methods section the methods are ordered alphabetically.
-5. **Trait Implementations**: What traits this type implements (`Clone`, `Debug`, etc.)
+4. **Implementations**: The `impl` blocks shows all the methods available.
+5. **Methods from Deref`<Target = [T]>`**: Often, types inherit behavior from their deref target. This block shows the methods provided by the dereferenced target types
+6. **Trait Implementations**: What traits this type implements (`Clone`, `Debug`, etc.)
+7. **Auto Trait Implementations**: Auto traits automatically derived by the compiler
+8. **Blanket Implementations**: Traits implemented for all types meeting certain bounds
 
 
 This said, since we will use the pages of the documentation extensively, it is **IMPORTANT** to feel "at home". So let's take some time to explain with much more details how a typical Rust standard-library documentation page is designed, and how to navigate it effectively.
@@ -241,7 +244,7 @@ This said, since we will use the pages of the documentation extensively, it is *
 #### **Overall Architecture of a Standard Library Documentation Page**
 {: .no_toc }
 
-A standard library documentation page generated by *rustdoc* follows a consistent layout designed to make it easy to explore a type, module, trait, or function. While the visual style has evolved over time, the core structure remains stable and predictable.
+A standard library documentation page generated by [rustdoc](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html) follows a consistent layout designed to make it easy to explore a type, module, trait, or function. While the visual style has evolved over time, the core structure remains stable and predictable.
 
 
 
@@ -258,13 +261,13 @@ A standard library documentation page generated by *rustdoc* follows a consisten
 The left sidebar acts as a quick-access navigation menu for the entire page. It lists the major groups of items related to the entity being documented. For a struct like `Vec<T>`, the sidebar typically includes entries such as:
 
 * **Sections** – Links to general page anchors like the description or examples
-* **Methods** – All inherent methods and associated functions
+* **Methods** – All inherent methods and associated functions. Note that on the page, the Implementations block starts with the `.new()` method while on left of the page, in the Methods section the methods are ordered alphabetically.
 * **Methods from Deref<Target = [...]>** – Methods inherited through the `Deref` trait
 * **Trait Implementations** – All traits implemented by the type
 * **Auto Trait Implementations** – Auto traits automatically derived by the compiler
 * **Blanket Implementations** – Traits implemented for all types meeting certain bounds
 
-The sidebar allows us to jump directly to the part of the page you’re interested in, without scrolling through complex or long sections. It functions as a table of contents tailored for the type you're viewing.
+The sidebar allows us to jump directly to the part of the page we’re interested in, without scrolling through complex or long sections. It functions as a table of contents tailored for the type we are viewing.
 
 
 
@@ -291,7 +294,6 @@ At the top of the main content area (on the right), again, but it does'nt hurt t
     * You will land in the  module `vec` page which belongs to the `std` crate
 1. The **type or item name** (e.g., `struct Vec<T>`)
 1. **The declaration**: `pub struct Vec<T, A = Global>` — the actual type definition
-1. **Description**: A short description of what it does
 
 
 
@@ -314,6 +316,14 @@ Below the header, many items include a more detailed explanation, design notes, 
 
 This section can be unfold or fold to quickly access to the Implementations section.
 
+
+
+
+
+
+
+
+
 **4. Implementations Section**
 
 <div align="center">
@@ -321,13 +331,13 @@ This section can be unfold or fold to quickly access to the Implementations sect
 <span>Implementations section - The description is collapsed</span>
 </div>
 
-This is one of the most important parts of the page. The documentation groups methods and associated items by their **impl blocks**, not strictly alphabetically or by category. This section includes:
+This is one of the most important parts of the page. The documentation groups methods and associated items by their **impl blocks**, not strictly alphabetically or by category. This section includes. Take your time to visit your new home... Scroll down and find out `impl<T> Vec<T>` then continue and find `impl<T, A> Vec<T, A>`... Usually, the first implementation  (`impl<T> Vec<T>` here) is where the core behavior of the type is defined.
 
-* **Inherent implementations** (`impl Vec<T>`) – where the core behavior of the type is defined
-* **Trait implementations** (`impl<T> SomeTrait for Vec<T>`) – grouped separately from inherent methods
-* **Associated constants**, **methods**, **types**, or **functions** within those `impls`
 
-This structure reflects the internal organization of actual Rust code and helps readers explore how behaviors are defined.
+<!-- * **Trait implementations** (`impl<T> SomeTrait for Vec<T>`) – grouped separately from inherent methods
+* **Associated constants**, **methods**, **types**, or **functions** within those `impls` -->
+
+<!-- This structure reflects the internal organization of actual Rust code and helps readers explore how behaviors are defined. -->
 
 
 
@@ -372,7 +382,7 @@ These sections really help to understand how the type interacts with Rust’s tr
 
 * **Use the sidebar for quick navigation** when you already know what you’re looking for (e.g., a specific method).
 * **Use the Implementations section** to understand *why* a method exists and which impl block provides it. This is especially helpful when generic bounds or trait implementations matter.
-* **Check the Methods from Deref section** when a method doesn’t appear among the inherent ones. Many types inherit behavior from their deref target, so useful operations may come from another type such as slices or string slices.
+* **Check the Methods from Deref section** when a method doesn’t appear among the inherent ones. Again types can inherit behaviors from their deref target, so many methods come from other types such as slices or string slices.
 * **Use the Trait Implementations section** to discover what extra capabilities a type has, such as formatting, iteration, conversions, or concurrency support.
 * **Use examples and descriptions** to learn idiomatic usage rather than just API details.
 * **Use search (`CTRL+F`)** on the page to quickly find method names or trait names when the page is long.
@@ -405,7 +415,9 @@ These sections really help to understand how the type interacts with Rust’s tr
 </div>
 
 
-**Emmett:** That's a **default type parameter**. It means "if you don't specify an allocator, use `Global`." You can ignore it 99% of the time. Most people just write `Vec<T>` and never think about custom allocators.
+**Emmett:** That's a **default type parameter**. It means "if you don't specify an allocator, use `Global`." In everyday code you only write `Vec<T>`, and Rust silently expands it to Vec<T, Global>. You can ignore it 99% of the time. Most people just write `Vec<T>` and never think about custom allocators. However, if a project decides to use a different allocator — for example the `mimalloc` crate — then `Vec` would not use `Global` anymore but `MiMalloc` instead. You can forget it for now and continue as usual.
+
+
 
 **Marty:** Okay, noted. So when I see extra type parameters with `= Something`, I can usually ignore them?
 
