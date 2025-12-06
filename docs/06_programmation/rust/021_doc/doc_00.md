@@ -26,6 +26,8 @@ A survival guide for developers who stare at type signatures and feel lost
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
 
@@ -33,10 +35,23 @@ A survival guide for developers who stare at type signatures and feel lost
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Great Scott!</span>
 </div>
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Introduction
 
 You know that feeling when you're **reading** someone else's Rust code, you hit a method you don't recognize, you open the docs, and... you're greeted by something that looks like it was written in an alien language? Yeah, we're going to fix that today.
@@ -56,9 +71,20 @@ where
 
 
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## The Setup
 
 Before we start, let's make sure we're on the same page:
+- You already wrote some code and tried to find your way in the Standard Library documentation.
+- You have read at least half of **THE** book, [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html).
+
+<div align="center">
+<img src="./assets/img15.webp" alt="" width="300" loading="lazy"/><br/>
+</div>
 
 - **OS:** Windows 11
 - **Editor:** VS Code with [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) installed
@@ -67,6 +93,7 @@ Before we start, let's make sure we're on the same page:
     rustc --version
     rustc 1.91.1 (ed61e7d7e 2025-11-07)
     ```
+    If needed, check [my Rust setup under WIN11]({%link docs\06_programmation\rust\005_my_rust_setup_win11\my_rust_setup_win11.md%})
 - **Browser:** Any browser with [docs.rust-lang.org](https://doc.rust-lang.org/std/) open
 
 <div align="center">
@@ -120,18 +147,19 @@ Fewer than 15 lines, but there's *so much* going on here. Let's unpack it all.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
 ## 🟢 Part 1: Easy — Finding Your Way Around
 
-### Scene: Marty's First Question
 
-**Marty:** Okay, I'm looking at this code and I already have questions. What even is `vec!`? Is it a function? Why the exclamation mark?
 
-**Emmett:** Great first question! The `!` tells you it's a *macro*, not a function. In Rust, macros have that trailing bang. Let's find it in the docs.
 
-**Marty:** How do I even search for that?
 
-**Emmett:** Two ways. First, the easy way: in VS Code.
+**Marty:** Okay, I'm looking at this code and I already have questions. What even is `vec!`? Is it a function? Why the exclamation mark? A `not` operator?
+
+**Emmett:** Great first question! The `!` tells you it's a **macro**, not a function. In Rust, macros have that **trailing bang**. Let's find it in the docs.
+
+**Marty:** Hey Doc, how do I even search for that?
+
+**Emmett:** Two ways. First, the easy way, directly in VS Code.
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
@@ -167,6 +195,7 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 
 
+<!-- ###################################################################### -->
 ### Anatomy of a Documentation Page
 
 **Emmett:** Every item in the standard library has a doc page with a consistent structure. Let's look at [`Vec<T>`](https://doc.rust-lang.org/std/vec/struct.Vec.html) as an example.
@@ -199,6 +228,13 @@ But let's also learn to use the official docs. Go to [doc.rust-lang.org/std](htt
 
 **Emmett:** Exactly. They're there for advanced use cases. Focus on the main type parameter first.
 
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Your First Real Investigation: What Does `.iter()` Return?
 
 **Marty:** Alright, in the code we have `numbers.iter()`. What does that return? How do I find out?
@@ -237,6 +273,10 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 
 **Emmett:** Exactly. This is called **deref coercion**. We'll dig deeper into this later, but for now, just know: if you can't find a method directly on a type, check what it `Deref`s to.
 
+
+
+
+<!-- ###################################################################### -->
 ### Quick Reference: Your Toolbox So Far
 
 | Tool | What It Does | Shortcut |
@@ -265,9 +305,12 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
 ## 🔵 Part 2: Intermediate — Generics and Trait Bounds
 
+
+
+
+<!-- ###################################################################### -->
 ### The Map Method: Our First Generic Signature
 
 **Marty:** Okay, next up is `.map()`. Let me hover over it...
@@ -315,6 +358,10 @@ But they're just names. What matters is the **constraints** on them.
 
 
 
+
+
+
+<!-- ###################################################################### -->
 ### Understanding `where` Clauses
 
 **Emmett:** Now look at the `where` clause:
@@ -360,6 +407,11 @@ The `|&opt|` uses *pattern matching* in the closure parameter. It says "take the
 
 
 
+
+
+
+
+<!-- ###################################################################### -->
 ### The Three Fn Traits: `Fn`, `FnMut`, `FnOnce`
 
 **Marty:** You mentioned `FnMut`. On the other hand I also read about `Fn` and `FnMut`. What's the difference between `Fn`, `FnMut`, and `FnOnce`?
@@ -382,6 +434,11 @@ There's a hierarchy: `Fn` implies `FnMut`, which implies `FnOnce`. So if somethi
 
 
 
+
+
+
+
+<!-- ###################################################################### -->
 ### Reading the `Option::filter` Signature
 
 **Marty:** Now let's tackle the scary one. The `filter` method on `Option`. Here's what the docs show:
@@ -461,6 +518,7 @@ When you see bounds like `Destruct`, `Sized`, or `Unpin`, and you're not doing a
 
 
 
+<!-- ###################################################################### -->
 ### The Three Versions Explained
 
 **Marty:** The original code has three "same thing" versions:
@@ -516,7 +574,6 @@ The Rust compiler is incredibly helpful here. All three work because of:
 
 
 
-<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## 🔴 Part 3: Difficult — Advanced Patterns
@@ -836,6 +893,16 @@ When you see them in bounds, they're usually ensuring thread safety or other gua
 
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Putting It All Together: Complete Analysis of Our Code
 
 Let's trace through our code one more time, now with full understanding:
@@ -874,8 +941,29 @@ Every type, every trait, every method — we can trace it all through the docume
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Quick Reference: Doc-Reading Cheat Sheet
 
+
+
+
+
+<!-- ###################################################################### -->
 ### Navigation Shortcuts (VS Code + rust-analyzer)
 
 | Action | Shortcut |
@@ -886,6 +974,9 @@ Every type, every trait, every method — we can trace it all through the docume
 | Find all references | Shift+F12 |
 | Show hover permanently | Ctrl+K, Ctrl+I |
 
+
+
+<!-- ###################################################################### -->
 ### Common Generic Names
 
 | Letter | Usually Means |
@@ -900,6 +991,9 @@ Every type, every trait, every method — we can trace it all through the docume
 | `S` | State / String-like |
 | `A` | Allocator |
 
+
+
+<!-- ###################################################################### -->
 ### Trait Bound Patterns
 
 | Pattern | Meaning |
@@ -912,6 +1006,9 @@ Every type, every trait, every method — we can trace it all through the docume
 | `T: 'a` | T is valid for lifetime 'a |
 | `'b: 'a` | Lifetime 'b outlives 'a |
 
+
+
+<!-- ###################################################################### -->
 ### Bounds You Can Often Ignore
 
 - `Destruct` — const evaluation detail
@@ -921,6 +1018,14 @@ Every type, every trait, every method — we can trace it all through the docume
 
 
 
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Conclusion
 
 **Marty:** I feel like I can actually **read** these docs now. The signatures that terrified me before are just... information.
@@ -942,7 +1047,6 @@ Every type, every trait, every method — we can trace it all through the docume
 
 The standard library docs are incredibly thorough. Once you know how to **read** them, they become your most valuable resource. And the best part? Every crate follows the same patterns. Learn to **read** `std`, and you can **read** `tokio`, `axum`, `serde`, or anything else.
 
-Happy exploring!
 
 
 
@@ -950,9 +1054,20 @@ Happy exploring!
 
 
 
-## Further Reading
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Webliography
 
 - [The Rust Book — Chapter 10: Generic Types, Traits, and Lifetimes](https://doc.rust-lang.org/book/ch10-00-generics.html)
 - [The Rustonomicon — Advanced Topics](https://doc.rust-lang.org/nomicon/) (when you're ready for deep dives)
 - [Rust by Example](https://doc.rust-lang.org/rust-by-example/) — Learn through code
 - [std documentation home](https://doc.rust-lang.org/std/)
+- Watch this video:
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=SAss1APdTHPIcvNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
