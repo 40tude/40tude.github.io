@@ -808,8 +808,8 @@ Think of it like two people building a bridge from opposite sides of a river:
 - **Middle pieces** (method chains): Must connect both sides properly
 - **Compiler**: The engineer checking that all pieces align perfectly
 
-
-
+#### Do you remember the time (MJ, 1992)
+Remember math tests in school? In the problem set there was always one or two questions that were easier than the others. Typically you'd be asked: Verify that `x=42`. That was cool because you knew that as soon as you found that result you could move on to the next question. In fact, what really helped us was that, like here, we already knew the answer. You had to figure it out however you wanted, but you had to find `x=42`. Here, checking what `.map()` expects plays a similar role. We then know the result. All we have to do is figure out how we want (deref coercion) to get there. Anyway, you get the idea...
 
 
 
