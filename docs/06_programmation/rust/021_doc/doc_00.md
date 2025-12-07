@@ -6,7 +6,7 @@ title: "How to Actually Read Rust's Standard Library Documentation"
 description: "A survival guide for developers who stare at type signatures and feel lost"
 parent: "Rust"
 date:               2025-11-05 17:00:00
-last_modified_date: 2025-12-07 13:00:00
+last_modified_date: 2025-12-07 17:00:00
 ---
 
 
@@ -22,6 +22,8 @@ A survival guide for developers who stare at type signatures and feel lost
 <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2>
+
+*Part 1 is done (need review) - Part 2 & 3 are really under construction*
 
 
 
@@ -62,7 +64,7 @@ This guide is a conversation between two developers: **Marty**, who's "speaking"
 
 The key word here is **read**. See, too often we just glance, we skim, we decode the words—kinda like when we were kids staring at a math formula in a textbook. We didn't really *get* what it meant. The formula didn't speak to us, didn't tell us a story. Well actually, it *did* tell its story, but we weren't ready to hear it or appreciate it. So we'd rush past it and cross our fingers that eventually, through sheer repetition, we'd somehow survive. The idea here is to fight that bad habit and invest the time needed to learn a new language: the language of Rust's Standard Library documentation. And besides, "Great Scott!", the Rust documentation folks didn't spend all that time writing this stuff just for us to ignore it. That'd be like wasting 1.21 gigawatts. 1.21 gigawatts!!!
 
-By the end of this article, we should be able to read something like this:
+By the end of this article, we should be able to **read** something like this:
 
 ```rust
 pub const fn filter<P>(self, predicate: P) -> Self
@@ -84,7 +86,7 @@ where
 
 Before we start, let's make sure we're on the same page:
 - You already wrote some code and tried to find your way in the Standard Library documentation. Your are not an expert but your are not a beginner either.
-- You have read at least half of **THE** book, [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html) (aka TRPL book).
+- You have **read** at least half of **THE** book, [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html) (aka TRPL book).
 
 <div align="center">
 <img src="./assets/img15.webp" alt="" width="300" loading="lazy"/><br/>
@@ -251,7 +253,7 @@ This is important because once we are comfortable with the documentation of the 
 
 **0. Buttons**
 
-To often forgotten, 4 buttons are at our disposal on every page of the documentation.
+Too often forgotten, 4 buttons are at our disposal on every page of the documentation.
 
 <div align="center">
 <img src="./assets/img34.webp" alt="" width="600" loading="lazy"/><br/>
@@ -272,7 +274,7 @@ Press `ESC` to close the Help window then press the `Summary` button (or your ne
 <span>Summary of the page</span>
 </div>
 
-As with beloved code editor it is important to be able to use the keyboard rather than the mouse if you want to save time, lot of time.
+As with your beloved code editor it is important to be able to use the keyboard rather than the mouse if you want to save time, lot of time.
 
 
 
@@ -388,7 +390,7 @@ Some types implement the `Deref` trait to behave like another underlying type. W
 
 **Marty:** And, to take your metaphor, what is the story that the documentation is telling me?
 
-**Emmett:** In the second case it tells you that a `&String` can be used where a `&str` is used. Don't you remember what you read in Chap 15 about the implicit Deref coercions: "*Deref coercion* convert a reference to a type that implements the Deref trait into a reference to another type." For example the `String` type does **NOT** have any `.is_ascii()` method but `str` has one. While the tab for `std::String::string` is still available, scroll down the sidebar. Check that there is no `.is_ascii()` method for `String` but one in the section `Methods from Deref<Target = str>`:
+**Emmett:** In the second case it tells you that a `&String` can be used where a `&str` is used. Don't you remember what you **read** in Chap 15 of the TRPL book about the implicit deref coercions: "*Deref coercion* convert a reference to a type that implements the Deref trait into a reference to another type." For example the `String` type does **NOT** have any `.is_ascii()` method but `str` has one. While the tab for `std::String::string` is still available, scroll down the sidebar. Check that there is no `.is_ascii()` method for `String` but one in the section `Methods from Deref<Target = str>`:
 
 <div align="center">
 <img src="./assets/img28.webp" alt="" width="600" loading="lazy"/><br/>
@@ -435,7 +437,7 @@ I get it! The key point here is, again, in the method signature which tells us t
 
 Last point before we come back to the documentation of `std::vec::Vec`. The deref coercion is **transitive**. This means that if `str` had a section `Methods from Deref<Target = Xyz> ` (which is not the case) then the methods of the type `Xyz` would have been available for `String` type.
 
-You know what? Copy'n past the code below in Rust Playground then press `CTRL+ENTER`.
+You know what? Copy'n paste the code below in Rust Playground then press `CTRL+ENTER`.
 
 ```rust
 fn main() {
@@ -458,7 +460,7 @@ Now, Marty, give me a favor. Show me how you would trace the deref chain using o
     <!-- <span>Trait, Auto-Trait, and Blanket Implementations</span> -->
     </div>
 1. Navigate with the down arrow ⬇️ and highlight the line `struct std::boxed::Box` then press `ENTER` to land on the page `std::boxed::Box`.
-1. I scroll down the sidebar and I Look for the section **"Trait Implementations"** and find `Deref`. I **read** that `Box<T>` implements `impl<T, A> Deref for Box<T, A>`.
+1. I scroll down the sidebar and I Look for the section "Trait Implementations" and find `Deref`. I **read** that `Box<T>` implements `impl<T, A> Deref for Box<T, A>`.
     <div align="center">
     <img src="./assets/img31.webp" alt="" width="600" loading="lazy"/><br/>
     <!-- <span>Trait, Auto-Trait, and Blanket Implementations</span> -->
@@ -471,7 +473,7 @@ Now, Marty, give me a favor. Show me how you would trace the deref chain using o
     <img src="./assets/img32.webp" alt="" width="600" loading="lazy"/><br/>
     <!-- <span>Trait, Auto-Trait, and Blanket Implementations</span> -->
     </div>
-    1. Or, I can scroll down the sidebar and look for the section "Trait Implementations" and find `Deref`.Again, find the "Trait Implementations" section and look for `Deref`. I **read** that that `String` implements `Deref<Target = str>`.
+    1. Or, I can scroll down the sidebar and look for the section "Trait Implementations" and find `Deref`. Again, I find the "Trait Implementations" section and look for `Deref`. I **read** that that `String` implements `Deref<Target = str>`.
     <div align="center">
     <img src="./assets/img33.webp" alt="" width="600" loading="lazy"/><br/>
     <!-- <span>Trait, Auto-Trait, and Blanket Implementations</span> -->
@@ -480,7 +482,7 @@ Now, Marty, give me a favor. Show me how you would trace the deref chain using o
 
 That's it, and I guess the summary is: `Box<String>` → `String` → `str` → `is_ascii()`.
 
-Now
+Hey Doc, you know what?
 1. I feel much more confortable navigating and **reading** the documentation. I know I must **read** from the beginning, check if the parameters are references or not, click here and there and follow the white rabbit, use the keyboard to navigate quickly... Thank you.
 2. I understand why you said before that, for you, the section `Methods from Deref<Target = ???>` is so **IMPORTANT**. I guess this is because deref coercion is a key element of the Rust programming language.
 
@@ -561,11 +563,35 @@ These sections really help to understand how the type interacts with Rust’s tr
 
 
 
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 ### Our First Investigation: What Does `.iter()` Returns?
 {: .no_toc }
 
+
 **Marty:** Alright, in the code we have `numbers.iter()`. What does that return? How do I find out?
+
+```rust
+fn main() {
+    let numbers = vec![Some(1), Some(15), Some(25), None, Some(5)];
+
+    // Filter keeps only Some(v) where the predicate is true
+    let filtered: Vec<Option<i32>> = numbers
+        .iter()
+        .map(|&opt| opt.filter(|&n| n > 10))
+        .collect();
+
+    println!("Raw numbers: {:?}", numbers);
+    println!("Filtered   : {:?}", filtered);
+}
+```
 
 **Emmett:** Let's use VS Code first. Put your cursor on `.iter()` and hover over it. Alternatively you can right click on `.iter()` then select **F12** (Go to Definition), or click on it and press **F12** directly.
 
@@ -574,7 +600,7 @@ These sections really help to understand how the type interacts with Rust’s tr
 <span>Right click on <code>.iter()</code></span>
 </div>
 
-**Marty:** If I hover over `.iter()` and read the content of the IntelliTooltip
+**Marty:** If I hover over `.iter()` and **read** the content of the IntelliTooltip
 
 <div align="center">
 <img src="./assets/img21.webp" alt="" width="600" loading="lazy"/><br/>
@@ -600,7 +626,7 @@ It says... `pub const fn iter(&self) -> Iter<'_, T>`. It is always the same thin
     * Module location: The method `.iter()` which will be invoked is defined in the module `core::slice`. The Rust standard library's slice implementation.
 * Line 2: `impl<T> [T]`
     * Implementation block. This is an implementation of methods for the slice `[]` containing things of type `T`, aka `[T]`.
-    * Read it as: "implementation of generic type parameter `T` for slice of `T`". This means the `.iter()` method is defined on the slice type itself, not on `Vec!`.
+    * **Read** it as: "implementation of generic type parameter `T` for slice of `T`". This means the `.iter()` method is defined on the slice type itself, not on `Vec!`.
 * Line 3: `pub const fn iter(&self) -> Iter<'_, T>`
     * This is the method signature
     * `pub`: publicly accessible
@@ -617,11 +643,12 @@ The story told in these four lines is as follows: "This is the `iter()` method f
 
 **Marty:** And this is exactly what usually happens. It does'nt help at all because at the end of the day the question remains: What is `Iter<'_, T>`?
 
-**Emmett:** I disagree, you've made progress since now you know that the `.iter()` is **NOT** applied over a vector but over a slice and you understand that you will get `Iter<'_, Option<i32>>`. Not that bad I you realize that, so far, you just move the mouve over `.iter()`.
+**Emmett:** I disagree, you've made progress since now you know that the `.iter()` is **NOT** applied over a vector but over a slice and you understand that you will get `Iter<'_, Option<i32>>`. Not that bad I you realize that, so far, you just moved the mouve over `.iter()`.
 
 
 
 **Marty:** Ok... But, sorry to insist, what is `Iter<'_, T>` and what I'm suppose to do now?
+
 **Emmett:** Here is <span style="color:orange"><b>THE trick of the day</b></span>. Move the cursor over `.map()` and **read** the tooltip.
 
 <div align="center">
@@ -630,15 +657,14 @@ The story told in these four lines is as follows: "This is the `iter()` method f
 </div>
 
 
-**Marty:** I **read**
+**Marty:** Your wish is my command. I **read**
+
 * **Line 1:** `core::iter::traits::iterator::Iterator`. This tells us we're looking at documentation for the `map` method from the `Iterator` "I don't know yet what". The full path shows it's in the core library, under iter, then traits, then iterator.
-
-**Line 2:** `pub trait Iterator`. Now I now. `Iterator` is a trait, not a struct or a concrete type. This is the actual trait declaration. It's public, meaning I can use it in my code. All types that implement this trait get access to its methods, including `map`.
-
-**Line 3:** `pub fn map<B, F>(self, f: F) -> Map<Self, F>`. This is the method signature. Breaking it down it comes:
+* **Line 2:** `pub trait Iterator`. Now I now. `Iterator` is a trait, not a struct or a concrete type. This is the actual trait declaration. It's public, meaning I can use it in my code. All types that implement this trait get access to its methods, including `map`.
+* **Line 3:** `pub fn map<B, F>(self, f: F) -> Map<Self, F>`. This is the method signature. Breaking it down it comes:
     - `pub fn map` means it's a public function called `map`
 
-At this point the rest looks to me like Klingon.
+At this point, the rest looks to me like Klingon.
 
 
 
@@ -675,7 +701,7 @@ At this point the rest looks to me like Klingon.
 
 **Marty:** I understand `.map()` act on a iterator. According to the text it even transforms one iterator into another one. Ah OK, I get it. Since `.map()` expect an `Iterator` I need to check that the `Iter<'_, Option<i32>>` implement the Iterator trait and if so, **read** what it yields.
 
-So I go one the page with the std lib documentation, press `/`, type `Iter`, select the `std::slice::Iter`, press `ENTER`
+So I go on the page with the std lib documentation, press `/`, type `Iter`, select the `std::slice::Iter`, press `ENTER`
 
 <div align="center">
 <img src="./assets/img38.webp" alt="" width="600" loading="lazy"/><br/>
@@ -683,7 +709,7 @@ So I go one the page with the std lib documentation, press `/`, type `Iter`, sel
 </div>
 
 
-In the side bar of the `std::slice::Iter`, I find the `Trait Implementations`. Tadaa! The struct implement the `Iterator` trait and the type of the item it iterate over is `&a' T`. So in my case it will return `&Option<i32>`.
+In the side bar of the `std::slice::Iter`, I find the `Trait Implementations` section. Tadaa! The struct implement the `Iterator` trait and the type of the item it iterates over is `&a' T`. So in my case it will return `&Option<i32>`.
 
 <div align="center">
 <img src="./assets/img39.webp" alt="" width="600" loading="lazy"/><br/>
@@ -693,7 +719,7 @@ In the side bar of the `std::slice::Iter`, I find the `Trait Implementations`. T
 
 
 
-**Emmett:** Well done Sherlock! This conclude our first investigation. Yes, `.iter()` yields `&Option<i32>`
+**Emmett:** Well done Sherlock! This concludes our first investigation. Yes, in our code `.iter()` yields `&Option<i32>`.
 
 
 
@@ -810,7 +836,7 @@ Check the [`Vec` documentation](https://doc.rust-lang.org/std/vec/struct.Vec.htm
 ### Exercise 00 — Basic Navigation
 {: .no_toc }
 
-**Objective:** Get comfortable with basic documentation navigation
+<!-- **Objective:** Get comfortable with basic documentation navigation -->
 
 Given the following code:
 ```rust
@@ -823,7 +849,7 @@ fn main() {
 
 **Tasks:**
 1. Use the std documentation to find the `.to_uppercase()` method. On which type is it actually defined? (Hint: check which section it appears in for `String`)
-2. Read its complete signature. What type does it return?
+2. **Read** its complete signature. What type does it return?
 3. Does this method take `self`, `&self`, or `&mut self`? What does this mean for `text` after the call?
 
 <!-- **What you'll learn:** Basic navigation, understanding "Methods from Deref" sections, reading simple signatures -->
@@ -833,7 +859,7 @@ fn main() {
 ### Exercise 01 — Following Deref Chains and Traits
 {: .no_toc }
 
-**Objective:** Follow Deref chains and understand traits
+<!-- **Objective:** Follow Deref chains and understand traits -->
 
 Given the following code:
 ```rust
@@ -859,7 +885,7 @@ fn main() {
 ### Exercise 02 — Complex Signatures with Where Clauses
 {: .no_toc }
 
-**Objective:** Dissect complex signatures with where clauses and closures
+<!-- **Objective:** Dissect complex signatures with where clauses and closures -->
 
 Given the following code:
 ```rust
@@ -874,7 +900,7 @@ fn main() {
 ```
 
 **Tasks:**
-1. Read the complete signature of `.map()` in the documentation (including the where clause)
+1. **Read** the complete signature of `.map()` in the documentation (including the where clause)
    - How many generic parameters does it have?
    - What does `FnMut(Self::Item) -> B` mean?
    - Why does it take `self` and not `&self`?
@@ -883,7 +909,7 @@ fn main() {
    - Type of `Self::Item` for this iterator: ______
    - Type `B` in our case (what the closure returns): ______
    - Type returned by `.map()`: ______
-3. Read the signature of `.collect()`. Why do we sometimes need to explicitly annotate the type `Vec<usize>`?
+3. **Read** the signature of `.collect()`. Why do we sometimes need to explicitly annotate the type `Vec<usize>`?
 
 <!-- **What you'll learn:** Reading complex signatures, understanding closure traits (FnMut), following type transformations -->
 
@@ -892,7 +918,7 @@ fn main() {
 ### Exercise 03 — Autonomous Investigation (Bonus)
 {: .no_toc }
 
-**Objective:** Put everything together with autonomous investigation
+<!-- **Objective:** Put everything together with autonomous investigation -->
 
 Here's some code that doesn't compile:
 ```rust
@@ -1038,7 +1064,7 @@ The `|&opt|` uses *pattern matching* in the closure parameter. It says "take the
 ### The Three Fn Traits: `Fn`, `FnMut`, `FnOnce`
 {: .no_toc }
 
-**Marty:** You mentioned `FnMut`. On the other hand I also read about `Fn` and `FnMut`. What's the difference between `Fn`, `FnMut`, and `FnOnce`?
+**Marty:** You mentioned `FnMut`. On the other hand I also **read** about `Fn` and `FnMut`. What's the difference between `Fn`, `FnMut`, and `FnOnce`?
 
 **Emmett:** Great question. These are the three closure traits:
 
@@ -1276,7 +1302,7 @@ impl Container for MyStruct {
 
 **Marty:** How do I find out what the associated types are for a given type?
 
-**Emmett:** In the docs, when you look at a type's trait implementations, you'll see lines like:
+**Emmett:** In the docs, when you look at a type's "Trait implementations", you'll see lines like:
 
 ```rust
 impl<T, A: Allocator> IntoIterator for Vec<T, A>
@@ -1414,7 +1440,7 @@ Look at [`From` for `PathBuf`](https://doc.rust-lang.org/std/path/struct.PathBuf
 > Side Note:
 >
 1. Go back to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), press `/`, search for `pathbuf` and click on the first item in the list : `struct std::path::PathBuf`
-2. On the left hand side of the page, scroll down, find the Trait Implementations section and click on `From<&T>`
+2. On the left hand side of the page, scroll down, find the "Trait Implementations" section and click on `From<&T>`
 
 
 Welcome home!
@@ -1432,7 +1458,7 @@ Scroll down on the left
 <span>Trait Implementations</span>
 </div>
 
-Finally you read
+Finally you **read**
 
 ```rust
 impl<T> From<&T> for PathBuf
@@ -1494,7 +1520,7 @@ This cascades! `String` derefs to `str`, `Box<T>` derefs to `T`, `Rc<T>` derefs 
 
 **Marty:** How do I see what a type derefs to?
 
-**Emmett:** In the docs, look for the "Methods from `Deref<Target = X>`" section. Or look for `impl Deref for ...` in the trait implementations.
+**Emmett:** In the docs, look for the "Methods from `Deref<Target = X>`" section. Or look for `impl Deref for ...` in the "Trait Implementations".
 
 In VS Code, if you can't find a method, try going to definition on the type and looking for `Deref`.
 
