@@ -733,13 +733,13 @@ numbers.iter().map(|&opt| ...)
 
 We might wonder: does the compiler read left-to-right or right-to-left? The answer is **it performs a sophisticated dance between both directions**, and understanding this can help us debug type errors.
 
-#### The Two-Phase Analysis
+#### **The Two-Phase Analysis**
 {: .no_toc }
 
 **Phase 1: Left-to-right type propagation (the "what do we have?")**
 
 ```rust
-numbers.iter() → returns Iter<'_, Option<i32>>
+numbers.iter() -> returns Iter<'_, Option<i32>>
 ```
 
 At this point, the compiler knows:
@@ -749,14 +749,21 @@ At this point, the compiler knows:
 
 **Phase 2: Right-to-left constraint checking (the "what do we need?")**
 ```rust
-.map(|&opt| ...) ← needs an Iterator
+.map(|&opt| ...) <- needs an Iterator
 ```
 Now the compiler checks:
 - `.map()` is a method of the `Iterator` trait
 - Does `Iter<'_, Option<i32>>` implement `Iterator`?
 - Yes! Because `Iter` has `impl<'a, T> Iterator for Iter<'a, T>`
 
-#### A Mental Model for Compiler Thinking
+
+
+
+
+
+
+
+#### **A Mental Model for Compiler Thinking**
 {: .no_toc }
 
 I like to imagine the compiler having an internal conversation: "I see `.map()` being called. `.map()` requires an `Iterator`. Let me check what's to the left... Ah, it's `numbers.iter()` which returns `Iter`. Does `Iter` implement `Iterator`? *Checks trait implementations* Yes! Perfect match."
@@ -771,7 +778,12 @@ Or in flowchart form:
          [Trait constraint] ← matches → [Trait implementation]
 ```
 
-#### A Concrete Example of This Dance
+
+
+
+
+
+#### **A Concrete Example of This Dance**
 {: .no_toc }
 
 Consider this slightly problematic code:
@@ -793,7 +805,11 @@ The fix requires either:
 - Left-to-right clue: Add type annotation
 - Right-to-left clue: Use **turbofish**: `.collect::<Vec<_>>()`
 
-#### Why This Matters for Learning
+
+
+
+
+#### **Why This Matters for Learning**
 {: .no_toc }
 
 Understanding this bidirectional analysis helps you:
@@ -806,7 +822,9 @@ Understanding this bidirectional analysis helps you:
    ```
 3. **Appreciate Rust's type inference**: It's not just "guess what I mean" – it's a systematic process of matching constraints.
 
-#### Visual Metaphor
+
+
+#### **Visual Metaphor**
 {: .no_toc }
 
 Think of it like two people building a bridge from opposite sides of a river:
@@ -815,7 +833,9 @@ Think of it like two people building a bridge from opposite sides of a river:
 - **Middle pieces** (method chains): Must connect both sides properly
 - **Compiler**: The engineer checking that all pieces align perfectly
 
-#### Do you remember the time (MJ, 1992)
+
+
+#### **Do you remember the time (MJ, 1992)**
 {: .no_toc }
 
 Remember math tests in school? In the problem set there was always one or two questions that were easier than the others. Typically you'd be asked: Verify that `x=42`. That was cool because you knew that as soon as you found that result you could move on to the next question. In fact, what really helped us was that, like here, we already knew the answer. You had to figure it out however you wanted, but you had to find `x=42`. Here, checking what `.map()` expects plays a similar role. We then know the result. All we have to do is figure out how we want (deref coercion) to get there. Anyway, you get the idea...
