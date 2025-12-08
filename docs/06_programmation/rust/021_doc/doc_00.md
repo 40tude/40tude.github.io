@@ -1017,6 +1017,12 @@ fn main() {
 
 **Marty:** Okay, next up is `.map()`. Let me hover over it...
 
+<div align="center">
+<img src="./assets/img43.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>Click the link <code>Iter</code> at the bottom of the tooltip</span> -->
+</div>
+
+
 ```rust
 core::iter::traits::iterator::Iterator
 pub trait Iterator
@@ -1024,14 +1030,14 @@ pub fn map<B, F>(self, f: F) -> Map<Self, F>
 where
     Self: Sized,
     F: FnMut(Self::Item) -> B,
-Self = Iter<'_, Option<i32>>, B = Option<i32>, F = impl FnMut(&Option<i32>) -> …
+Self = Iter<'_, Option<i32>>, B = Option<i32>, F = impl FnMut(&Option<i32>) -> ...
 ```
 
 
 Hmm, Emmett... What is all this?
 
 
-**Emmett:** Now we're getting somewhere! You already commented the first 2 lines. I will not repeat what you said. Now let's break down the signature piece by piece.
+**Emmett:** Now we're getting somewhere! You already commented the first 2 lines. I will not repeat what you said. Let's break down the signature piece by piece.
 
 ```rust
 pub fn map<B, F>(self, f: F) -> Map<Self, F>
@@ -1055,7 +1061,12 @@ This declares a method called `map` with:
 - `E` = "Error"
 - `K`, `V` = "Key", "Value" (for maps)
 
-But they're just names. What matters is the **constraints** on them.
+
+**Marty:** And why `B` and `F` are between brakets? What do they do there?
+
+**Emmett:** In you own code, when you use a variable you need to declare it, you need to introduce it. Here, this is the same thing but at a higher level. Before to use a type parameter we need to declare it before we can use it.
+
+This is important but you know what? What really matters is the **constraints** that the `where` clause put on the type parameters.
 
 
 
@@ -1149,6 +1160,12 @@ There's a hierarchy: `Fn` implies `FnMut`, which implies `FnOnce`. So if somethi
 
 **Marty:** Now let's tackle the scary one. The `filter` method on `Option`. Here's what the docs show:
 
+<div align="center">
+<img src="./assets/img42.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>Click the link <code>Iter</code> at the bottom of the tooltip</span> -->
+</div>
+
+
 ```rust
 core::option::Option
 impl<T> Option<T>
@@ -1159,17 +1176,33 @@ where
     T: Destruct,
 ```
 
+Using the Standard Library documentation web page I make sure to filter the results and to restrict them to the crate `core`
 
+<div align="center">
+<img src="./assets/img44.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>Click the link <code>Iter</code> at the bottom of the tooltip</span> -->
+</div>
 
-**Emmett:** Let's go line by line.
+If I click, I realize that the documentation slightly differs from what I can see int the code. For example `const` had been lost.
+
+<div align="center">
+<img src="./assets/img45.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>Click the link <code>Iter</code> at the bottom of the tooltip</span> -->
+</div>
+
+Hey doc, do you know why?
+
+**Emmett:** You are right and this is OK. In fact, Rust’s standard documentation often displays simplified function signatures, which is why `Option::filter` in the docs appears as a regular `fn` even though the source code defines it as a `const fn`. When browsing Rust’s source code (for example through an IDE with “Go to Definition”), you see the full internal version, including `pub const fn`, compiler attributes like `rustc_const_unstable`, and `[const]` trait bounds such as `[const] FnOnce`. These details are intentionally hidden in the public documentation because they are implementation-specific, may still be unstable, and would make the API harder to read. In short: the web documentation shows the stable, user-facing API, while the source reveals the full compiler-level definition.
+
+Now, let's go line by line.
 
 **Line 0: `core::option::Option`**
-Easy. You already know. This is **where** the item lives, in the crate `core::option::Option`.
+Easy. You already know. This is **where** the item lives, in the crate `core` in the module `option::Option`.
 
 
 **Line 1: `impl<T> Option<T>`**
 
-This tells you **where** this method is **defined**. It's in an `impl` block for `Option<T>`. The `<T>` means this works for any type `T` inside the Option.
+This tells you **where** this method is **defined**. It's in an `impl` block for `Option<T>`. As you know, now, the `<T>` means this works for any type `T` inside the `Option`.
 
 **Line 2: `pub const fn filter<P>(self, predicate: P) -> Self`**
 
@@ -1179,7 +1212,7 @@ This tells you **where** this method is **defined**. It's in an `impl` block for
 - `(self, predicate: P)`: Takes ownership of `self` and a  [`predicate`]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#predicates) of type `P`
 - `-> Self`: Returns the same type (`Option<T>`)
 
-**Marty:** Wait, it takes `self` not `&self`? So it **consumes** the Option?
+**Marty:** Wait, it takes `self` not `&self`? So it **consumes** the `Option`?
 
 **Emmett:** Yes! Check the signature. When a method takes `self`, it takes ownership. That's why this works:
 
@@ -1187,7 +1220,7 @@ This tells you **where** this method is **defined**. It's in an `impl` block for
 opt.filter(|&n| n > 10)  // opt is moved into filter
 ```
 
-If `opt` were `&Option<i32>`, you couldn't call `filter` directly — you'd need to clone or copy first. But since `Option<i32>` is `Copy` (because `i32` is `Copy`), the compiler handles this automatically.
+If `opt` were `&Option<i32>`, you couldn't call `filter` directly. You would need to clone or copy first. But since `Option<i32>` is `Copy` (because `i32` is `Copy`), the compiler handles this automatically for you.
 
 **Lines 3-4: The `where` clause**
 
@@ -1206,9 +1239,9 @@ Let's parse `P: FnOnce(&T) -> bool + Destruct`:
 
 **Emmett:** `Destruct` is a trait used for **const evaluation**. It basically means "this type can be dropped in a const context." For normal runtime code, **you can completely ignore it**. It's automatically implemented for pretty much everything.
 
-When you see bounds like `Destruct`, `Sized`, or `Unpin`, and you're not doing advanced stuff (const generics, custom DSTs, async), you can usually skip over them.
+When you see bounds like `Destruct`, `Sized`, or `Unpin`, and you're not doing advanced stuff (`const generics`, `custom DSTs`, `async`...), you can usually skip over them.
 
-**Marty:** So practically speaking, the signature just means "give me a function that takes a reference to the inner value and returns bool"?
+**Marty:** So practically speaking, the signature just tells "give me a function that takes a reference to the inner value and returns bool"?
 
 **Emmett:** Exactly and this is one way to describe a predicate. Now, the `filter` method:
 1. If `self` is `None`, returns `None`
@@ -1245,11 +1278,11 @@ What's the difference?
 
 **Emmett:** They're all equivalent! Let me explain:
 
-**V1:** `|&opt|` — Destructure the reference immediately. `opt` is `Option<i32>`.
+**V1:** `|&opt|`. We already talked about it. Destructure the reference immediately. `opt` is `Option<i32>`.
 
 **V2:** `|opt|` — `opt` is `&Option<i32>`, but thanks to `Deref` coercion and the fact that `Option<i32>` is `Copy`, calling `.filter()` works seamlessly. Rust is smart enough to copy the value when needed.
 
-Actually, wait — let me be more precise. In V2, `opt` is `&Option<i32>`. When you call `opt.filter(...)`, Rust sees that `filter` takes `self` (ownership), but you have a reference. Since `Option<i32>` is `Copy`, Rust automatically copies it. This is called *auto-deref* combined with *implicit copying*.
+Actually, wait, let me be more precise. In V2, `opt` is `&Option<i32>`. When you call `opt.filter(...)`, Rust sees that `filter` takes `self` (ownership), but you have a reference. Since `Option<i32>` is `Copy`, Rust automatically copies it. This is called **auto-deref** combined with **implicit copying**.
 
 **V3:** `|opt|` same as V2, but inside the inner closure: `|n|` where `n` is `&i32`, and you manually dereference with `*n > 10`.
 
@@ -1263,23 +1296,133 @@ The Rust compiler is incredibly helpful here. All three work because of:
 
 
 
-<!-- ###################################################################### -->
-### Exercice 00
-{: .no_toc }
+
+
+
+
+
+
 
 
 
 <!-- ###################################################################### -->
-### Exercice 01
+### Exercise 00 - Reading and Understanding a Generic Function Signature
 {: .no_toc }
+
+Consider the code below:
+
+```rust
+fn apply_twice<T, F>(value: T, func: F) -> T
+where
+    F: Fn(T) -> T,
+{
+    // Apply the function twice
+    func(func(value))
+}
+
+fn main() {
+    // Example 1: Double a number twice (x4)
+    let result = apply_twice(5, |x| x * 2);
+    println!("5 doubled twice: {}", result); // 20
+
+    // Example 2: Add 10 twice
+    let result = apply_twice(100, |x| x + 10);
+    println!("100 + 10 + 10: {}", result); // 120
+
+    // Example 3: With a String
+    let result = apply_twice(String::from("Hello"), |s| s + "!");
+    println!("String result: {}", result); // Hello!!
+}
+```
+
+1. **Read the signature** (use hover in VS Code or the std docs) and explain:
+   * The role of `T`
+   * The role of `F`
+   * Why the constraint `F: Fn(T) -> T` is required
+2. Why is the function `func` allowed to be called twice?
+3. Write two example calls:
+   * one with an `i32`
+   * one with a `String` (note: `String` does not implement `Copy`)
+
+
 
 
 <!-- ###################################################################### -->
-### Exercice 02
+### Exercise 01 - Understanding the Predicate in `Option::filter`
 {: .no_toc }
 
 
+```rust
+fn keep_even(opt: Option<i32>) -> Option<i32> {
+    opt.filter(|n| n % 2 == 0)
+}
 
+fn main() {
+    // Test with an even number
+    let even = Some(42);
+    println!("keep_even(Some(42)): {:?}", keep_even(even)); // Some(42)
+
+    // Test with an odd number
+    let odd = Some(7);
+    println!("keep_even(Some(7)): {:?}", keep_even(odd)); // None
+
+    // Test with None
+    let none: Option<i32> = None;
+    println!("keep_even(None): {:?}", keep_even(none)); // None
+
+    // Test with zero (even)
+    let zero = Some(0);
+    println!("keep_even(Some(0)): {:?}", keep_even(zero)); // Some(0)
+
+    // Test with negative even
+    let neg_even = Some(-4);
+    println!("keep_even(Some(-4)): {:?}", keep_even(neg_even)); // Some(-4)
+}
+```
+
+1. **Read and explain the `Option::filter` signature**:
+   * Why does it take **self** (not `&self`)?
+   * What does `P: FnOnce(&T) -> bool` mean?
+2. Why does the closure `|n| n % 2 == 0` match the required type (`&i32 → bool`)?
+3. Predict the result of each call:
+   * `keep_even(Some(4))`
+   * `keep_even(Some(5))`
+   * `keep_even(None)`
+
+
+
+<!-- ###################################################################### -->
+### Exercise 02
+{: .no_toc }
+
+Tracking Type Transformations in an Iterator Chain
+
+
+```rust
+fn main() {
+    let data = vec!["rust", "rocks", "hard"];
+    let result = data
+        .iter()
+        .map(|w| w.len())
+        .filter(|l| *l > 3)
+        .collect::<Vec<_>>();
+
+    println!("{:?}", result);
+}
+```
+
+1. For each step (`iter` → `map` → `filter` → `collect`), write down the **exact type** produced:
+   * Type returned by `.iter()`
+   * Type of `Self::Item`
+   * Type returned by `.map()`
+   * Type expected by `.filter()`
+   * Final type after `.collect()`
+2. Why does `.map()` require an `FnMut` while `.filter()` also takes an `FnMut`, but acting on a reference?
+3. Explain whether this version compiles, and why:
+
+```rust
+.map(|mut w| { w = "test"; w.len() })
+```
 
 
 
@@ -1652,21 +1795,276 @@ When you see them in bounds, they're usually ensuring thread safety or other gua
 
 
 
-<!-- ###################################################################### -->
-### Exercice 00
-{: .no_toc }
+
+
+
+
+
+
 
 
 <!-- ###################################################################### -->
-### Exercice 01
+### Exercise 00 - Associated Types vs Generic Parameters
 {: .no_toc }
+
+
+```rust
+trait WithGeneric<T> {
+    fn get(&self) -> T;
+}
+
+trait WithAssoc {
+    type Item;
+
+    fn get(&self) -> Self::Item;
+}
+
+// Implementation using generic trait
+struct ContainerGeneric<T> {
+    value: T,
+}
+
+impl<T: Clone> WithGeneric<T> for ContainerGeneric<T> {
+    fn get(&self) -> T {
+        self.value.clone()
+    }
+}
+
+// Implementation using associated type
+struct ContainerAssoc {
+    value: i32,
+}
+
+impl WithAssoc for ContainerAssoc {
+    type Item = i32;
+
+    fn get(&self) -> Self::Item {
+        self.value
+    }
+}
+
+fn main() {
+    // Using the generic trait
+    let gen_container = ContainerGeneric { value: 42 };
+    let val: i32 = WithGeneric::get(&gen_container);
+    println!("WithGeneric: {}", val);
+
+    // Same struct can implement WithGeneric for multiple types
+    let str_container = ContainerGeneric { value: String::from("Hello") };
+    let val: String = WithGeneric::get(&str_container);
+    println!("WithGeneric (String): {}", val);
+
+    // Using the associated type trait
+    let assoc_container = ContainerAssoc { value: 100 };
+    let val = assoc_container.get(); // Type is inferred from associated type
+    println!("WithAssoc: {}", val);
+}
+```
+
+
+1. Why can a type implement `WithGeneric<T>` multiple times, but only implement `WithAssoc` once?
+2. Which model does the `Iterator` trait use? Why is it the best choice here?
+3. Implement `WithAssoc` for the following type:
+
+```rust
+struct Boxed<T>(T);
+```
+
+Specify the associated type, and write a function that uses `Boxed` and retrieves the item using `get`.
+
+
+
+
+
 
 
 <!-- ###################################################################### -->
-### Exercice 02
+### Exercise 01 - Analyzing a Deref Implementation
 {: .no_toc }
 
 
+```rust
+use std::ops::Deref;
+
+struct Wrapper<T>(T);
+
+impl<T> Deref for Wrapper<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+fn main() {
+    // Wrapper around an i32
+    let wrapped_int = Wrapper(42);
+    println!("Wrapped int: {}", *wrapped_int); // Explicit deref
+
+    // Deref coercion in action: calling a method on the inner type
+    let wrapped_string = Wrapper(String::from("Hello, Rust!"));
+    println!("Length: {}", wrapped_string.len()); // Deref coercion to &String
+
+    // Deref coercion: &Wrapper<String> -> &String -> &str
+    fn print_str(s: &str) {
+        println!("print_str: {}", s);
+    }
+    print_str(&wrapped_string); // Automatic coercion chain
+
+    // Wrapper around a Vec
+    let wrapped_vec = Wrapper(vec![1, 2, 3, 4, 5]);
+    println!("First element: {:?}", wrapped_vec.first()); // Deref to &Vec<i32>
+    println!("Vec length: {}", wrapped_vec.len());
+
+    // Nested wrapper (double deref)
+    let nested = Wrapper(Wrapper(100));
+    println!("Nested value: {}", **nested);
+}
+```
+
+
+1. What does `Deref` allow in this implementation?
+2. Explain why this code works:
+
+```rust
+let w = Wrapper(String::from("Hello"));
+println!("{}", w.len()); // uses Deref
+```
+
+3. Identify **which method** is actually being called (`String::len`) and why Rust is able to resolve it.
+4. Give an example where `Deref` alone is **not enough**, and `DerefMut` would be required.
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### Exercise 02 - Understanding a Function with Multiple Lifetimes
+{: .no_toc }
+
+
+Given the following code:
+
+```rust
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+
+fn main() {
+    // Basic usage with string literals (static lifetime)
+    let result = longest("short", "much longer string");
+    println!("Longest: {}", result);
+
+    // With String references of same scope
+    let s1 = String::from("hello");
+    let s2 = String::from("hi");
+    let result = longest(&s1, &s2);
+    println!("Longest: {}", result);
+
+    // Demonstrating lifetime constraint
+    let s3 = String::from("long string");
+    {
+        let s4 = String::from("tiny");
+        let result = longest(&s3, &s4);
+        println!("Longest (nested scope): {}", result);
+        // result is valid here because both s3 and s4 are still alive
+    }
+
+    // Equal length case (returns second one)
+    let equal1 = "abc";
+    let equal2 = "xyz";
+    let result = longest(equal1, equal2);
+    println!("Longest (equal length): {}", result);
+
+    // Empty string comparison
+    let empty = "";
+    let non_empty = "something";
+    let result = longest(empty, non_empty);
+    println!("Longest (with empty): {}", result);
+}
+```
+
+1. Why must both parameters and the return type use the **same lifetime** `'a`?
+2. Provide:
+   * one example that compiles,
+   * one example that does not compile, and explain why.
+3. Rewrite a more restrictive version:
+   * where each parameter has its own lifetime,
+   * but Rust prevents returning an invalid borrow.
+4. Explain how Rust prevents **dangling references** in this situation.
+
+
+
+
+<!-- ###################################################################### -->
+### Exercise 03 - Reading a Signature Using `?Sized`
+{: .no_toc }
+
+Consider:
+
+```rust
+fn print_any<T: ?Sized + ToString>(val: &T) {
+    println!("{}", val.to_string());
+}
+
+fn main() {
+    // With a sized type: i32
+    let num = 42;
+    print_any(&num);
+
+    // With a sized type: String
+    let s = String::from("Hello, world!");
+    print_any(&s);
+
+    // With an unsized type: str (thanks to ?Sized)
+    let slice: &str = "I'm a string slice!";
+    print_any(slice);
+
+    // With a sized type: f64
+    let pi = 3.14159;
+    print_any(&pi);
+
+    // With a sized type: bool
+    let flag = true;
+    print_any(&flag);
+
+    // Demonstrating why ?Sized matters:
+    // Without ?Sized, this wouldn't compile because str is unsized
+    fn print_str(s: &str) {
+        print_any(s); // Works because of ?Sized bound
+    }
+    print_str("Direct str slice");
+
+    // With a custom type implementing ToString (via Display)
+    use std::fmt;
+
+    struct Point {
+        x: i32,
+        y: i32,
+    }
+
+    impl fmt::Display for Point {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            write!(f, "({}, {})", self.x, self.y)
+        }
+    }
+
+    let point = Point { x: 10, y: 20 };
+    print_any(&point);
+}
+```
+
+1. Why is `?Sized` necessary to support types like `str`?
+2. Why must `val` be passed by reference?
+3. Provide three valid calls (e.g., `&str`, `&String`, `&[u8]`).
+4. Find another example in the Standard Library that uses `?Sized`
+   (hint: `From<&T>` for `PathBuf`).
 
 
 
