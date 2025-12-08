@@ -28,7 +28,7 @@ A survival guide for developers who stare at type signatures and feel lost
 
 <!--
 TODO
-* talk about capitalization, naming covention. String vs string vs my_syting_function vs STRING_CONST
+* talk about capitalization, naming convention. String vs string vs my_string_function vs STRING_CONST
 * Self vs self
 -->
 
@@ -65,13 +65,24 @@ TODO
 <!-- ###################################################################### -->
 ## Introduction
 
-You know that feeling when you're **reading** someone else's Rust code, you hit a method you don't recognize, you open the docs, and... you're greeted by something that looks like it was written in an alien language? Yeah, we're going to fix that today.
+You know that feeling when you're **reading** someone else's Rust code, you hit a method you don't recognize, you open the docs, and... you're greeted by something that looks like it was written in an alien language?
+
+Yeah, we're going to fix that today.
 
 This guide is a conversation between two developers: **Marty**, who's "speaking" Rust but is constantly frustrated by the documentation, and **Emmett** (aka Doc), a senior developer who's going to show him how to actually **read** those type, module, trait, or function signatures.
 
 The key word here is **read**. See, too often we just glance, we skim, we decode the words—kinda like when we were kids staring at a math formula in a textbook. We didn't really *get* what it meant. The formula didn't speak to us, didn't tell us a story. Well actually, it *did* tell its story, but we weren't ready to hear it or appreciate it. So we'd rush past it and cross our fingers that eventually, through sheer repetition, we'd somehow survive.
 
-The idea here is to fight that bad habit and invest the time needed to learn a new language: **the language of Rust's Standard Library documentation**. And besides, "Great Scott!", the Rust documentation folks didn't spend all that time writing this stuff just for us to ignore it. That'd be like wasting 1.21 gigawatts. **1.21 gigawatts!!!**
+The idea here is to fight that bad habit and invest the time needed to learn a new language: **the language of Rust's Standard Library documentation**. Why? Because there's a real disconnect between the code we write and how it's documented:
+- **Method calls hide the receiver** — We write `my_string.is_ascii()`, but the docs show `pub fn is_ascii(&self) -> bool`. That `&self` parameter? It's the thing *before* the dot, but you'd never guess that from looking at the signature.
+- **We think in concrete types; docs speak in generics** — Our code says `Vec<i32>` or `Option<String>`. The docs say `Vec<T, A>` or `Option<T>`. Mapping one to the other requires a mental translation step that takes practice.
+- **Extra type parameters add noise** — That `A` in `Vec<T, A>`? It's the allocator—something most of us never touch. But there it is, making the signature look more complex than it needs to be for everyday use.
+- **Trait bounds can overwhelm** — Seeing `where P: FnOnce(&T) -> bool + Destruct` feels like reading a legal contract when all you wanted was "pass a closure that returns true or false."
+- **Lifetimes appear out of nowhere** — The docs show `<'a>` annotations that our code often omits thanks to lifetime elision rules.
+
+The good news? Once you learn to "speak documentation," these signatures become readable—even helpful. That's what this guide is about: bridging the gap between the Rust you write and the Rust you read in the docs.
+
+And besides, "Great Scott!", the Rust documentation folks didn't spend all that time and energy writing this stuff just for us to ignore it. That'd be like wasting 1.21 gigawatts. **1.21 gigawatts!!!**
 
 By the end of this article, we should be able to **read** something like this:
 
@@ -81,7 +92,6 @@ where
     P: FnOnce(&T) -> bool + Destruct,
     T: Destruct,
 ```
-
 ...and actually hear the story it tells us. Let's dive in.
 
 
