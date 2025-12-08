@@ -18,9 +18,9 @@ A Code-First Guide with Runnable Examples
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -224,7 +224,14 @@ fn main() {
 ### Comments
 {: .no_toc }
 
-**IMPORTANT** The `Option<T>` is considered moved unless it implements `Copy` trait, which only happens if `T` implements `Copy`. Review Example 02 now that you have that in mind.
+{: .highlight-title }
+> **IMPORTANT**
+>
+> The `Option<T>` is considered moved unless it implements `Copy` trait, which only happens if `T` implements `Copy`.
+
+Review Example 02 now that you have that in mind.
+
+<!-- **IMPORTANT** The `Option<T>` is considered moved unless it implements `Copy` trait, which only happens if `T` implements `Copy`. Review Example 02 now that you have that in mind. -->
 
 * With the first `if let Some(n) = opt`, the `Option<T>` on the right-hand side is copied and `opt` remains available.
     * `i32` implements the `Copy` trait

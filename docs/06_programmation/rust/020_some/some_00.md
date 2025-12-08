@@ -6,7 +6,7 @@ title: "Option in Rust: 15 Examples from Beginner to Advanced - 00"
 description: "Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from `if let` to advanced combinators"
 parent: "Rust"
 date:               2025-11-29 01:00:00
-last_modified_date: 2025-12-05 10:00:00
+last_modified_date: 2025-12-08 17:00:00
 ---
 
 # `Option<T>` in Rust: 15 Examples from Beginner to Advanced
@@ -18,9 +18,9 @@ A Code-First Guide with Runnable Examples
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -236,7 +236,9 @@ Based on what I saw, it seems `ripgrep` is the project that cover most if not al
 ### Real-world context
 {: .no_toc }
 
-I want to start with this use case because, for me, this is, by far, the easiest. Indeed, we can easily explain in plain English that a [function]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#function-method-procedure) might search for a file and, if it can’t find it, simply returns "nothing". If it succeeds, it returns something—like the first line of the file. Using `Option<T>` makes sense for any function that might not succeed (without throwing an error or crashing) but also doesn’t always have a meaningful value to return. This pattern is common for operations like searching, parsing, or handling optional configuration. On the other hand it is not too complicated to imagine a `struct` where some of its fields may, at one point, contain nothing. Think about an editor with no file loaded (see Example 02 and Code snippet 04)
+I want to start with this use case because, for me, this is, by far, the easiest. Indeed, we can easily explain in plain English that a [function]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#function-method-procedure) might search for a file and, if it can’t find it, simply returns "nothing". If it succeeds, it returns something—like the first line of the file. Using `Option<T>` makes sense for any function that might not succeed (without throwing an error or crashing) but also doesn’t always have a meaningful value to return. This pattern is common for operations like searching, parsing, or handling optional configuration.
+
+On the other hand it is not too complicated to imagine a `struct` where some of its fields may, at one point, contain nothing. Think about an editor with no file loaded (see Example 02 and Code snippet 04). In this cas it really make sense to give to these field a type `Option<T>`.
 
 Easy to explain, easy to translate. The easiest, I told you.
 
@@ -280,7 +282,7 @@ In `main()`, the code says : "`get_selection()` returns an `Option<String>` whic
 * It is important to realize that `get_selection()` returns a type `Option<String>` **NOT** a type `String`
 * In the playground, replace `Some("lorem ipsum".to_string())` with `Some("lorem ipsum".into())`. Does it work? Why?
 * Do you agree on the fact that `selection.is_some()` does **NOT** extract the value from the `Option<T>` but just check if there is a value in the `Option<T>`?
-* Take your time and **read** the [documentation](https://doc.rust-lang.org/std/option/enum.Option.html).
+* Take your time and **read** the [documentation](https://doc.rust-lang.org/std/option/enum.Option.html) and don't forget to click the link [Module Level Documentation](https://doc.rust-lang.org/std/option/index.html) and **read** the page.
 * Is it clear that once we checked the `Option<T>` contains something then `unwrap()` extract this thing?
 * Duplicate the `println!("Selection: {}", selection.unwrap());`at the very end of `main()`. Does it works? Why?
 
@@ -531,9 +533,9 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 {: .no_toc }
 
 1. **Pattern**: `if let Some(x) = expression` is **NOT** a boolean expression, it is a **conditional pattern matching**
+1. **Storytelling**: If the pattern `Some(x)` successfully matches the `Option<T>` then **bind its contents** to `x` and run the first block; otherwise, run the `else` block."
 1. **Pattern**: Conditionally execute code only when `Option<T>` has a value
-1. **Ownership**: As with the `unwrap()` (see Example 01), the value inside `Some()` is **moved** into `path` (not a reference)
-<!-- 1. **Alternative**: Could use `if new_path.is_some() { ... }` but wouldn't extract the value cleanly -->
+1. **Ownership**: As with the `.unwrap()` (see Example 01), if the pattern `Some(x)` matches the `Option<T> ` then the value inside the `Option<T>` is **moved** into `x`
 
 ### Find More Examples
 {: .no_toc }
@@ -621,7 +623,7 @@ fn main() {
         }
     }
     ```
-* At the end of `main()` add the 2 lines below. What do need to do to compile. Why?
+* At the end of `main()` add the 2 lines below. What do we need to do to compile. Why?
     ```rust
     editor.path_to_file = Some(PathBuf::from(r"tmp/my_file2.txt"));
     save_file(&editor);
@@ -665,7 +667,7 @@ Regular expression to use either in VSCode ou Powershell: `match .+ \{\s*Some\(.
 ### Real-world context
 {: .no_toc }
 
-Same as match early return, but more concise (modern Rust style).
+Same as match early return, but more concise.
 
 ### Runnable Example
 {: .no_toc }
