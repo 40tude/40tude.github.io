@@ -19,17 +19,15 @@ A survival guide for developers who stare at type signatures and feel lost
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
-*Part 1 is done (need review) - Part 2 & 3 are really under construction*
 
 
 <!--
 TODO
-* talk about capitalization, naming convention. String vs string vs my_string_function vs STRING_CONST
-* Self vs self
+* Comment lire les messages d'erreur du compilateur en lien avec la doc. Quand rustc dit "expected X, found Y", comment naviguer vers la doc pour comprendre le problème.
 -->
 
 
@@ -37,12 +35,28 @@ TODO
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
-* `read != look at`
-* [docs.rust-lang.org/std](https://doc.rust-lang.org/std/)
 
-<!-- We call my_string.is_ascii() while it is documented .is_ascii(&self) -->
-<!-- We use concrete type most of the time while they use ... -->
-<!-- We write Vec<i32> they write Vec<T, A> -->
+- **`read != look at`** — Learn to actually **read** documentation signatures, not just glance at them
+- Once you learn to "speak documentation," every crate (`std`, `tokio`, `axum`, `serde`...) follows the same patterns
+- **🟢 Part 1 — Navigation basics:**
+  - Use VS Code hover (mouse) and F12 (Go to Definition)
+  - Every doc page has the same structure: path, declaration, description, implementations, trait impls
+  - **The trick:** hover over the *next* method in the chain to understand what the *previous* one must return
+  - **Methods from `Deref<Target = ???>`** is your best friend — many methods come from deref coercion
+  - Deref coercion is transitive: `Box<String>` → `String` → `str` → `.is_ascii()`
+
+- **🔵 Part 2 — Generics & trait bounds:**
+  - `<T, F, B>` are type parameters (placeholders); `where` clauses constrain them
+  - `Fn` / `FnMut` / `FnOnce` — closure traits (can call multiple times? can mutate? can consume?)
+  - `Self::Item` — associated type; the type an iterator yields
+  - Bounds like `Destruct`, `Sized` can often be ignored for everyday code
+
+- **🔴 Part 3 — Advanced patterns:**
+  - **Associated types** (`type Item`) vs **generics** (`<T>`): associated = one impl per type, generics = multiple impls possible
+  - **Lifetimes** (`'a`, `'_`): "references have scopes"; `'_` = "compiler tracks it", `'static` = "lives forever"
+  - **`?Sized`**: removes the default `Sized` bound, allows DSTs like `str` or `[T]`
+  - **Marker traits** (`Send`, `Sync`, `Copy`, `Unpin`): no methods, just compile-time guarantees
+
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
@@ -104,7 +118,7 @@ where
 ## The Setup
 
 Before we start, let's make sure we're on the same page:
-- You already wrote some code and tried to find your way in the Standard Library documentation. Your are not an expert but your are not a beginner either.
+- You already wrote some code and tried to find your way in the Standard Library documentation. You are not an expert but you are not a beginner either.
 - You have **read** at least half of **THE** book, [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html) (aka TRPL book).
 
 <div align="center">
@@ -112,7 +126,7 @@ Before we start, let's make sure we're on the same page:
 <span>The Rust Programming Book</span>
 </div>
 - You are somewhat frustrated because you tried but, most of the time you don't understand what you see in the Standard Library documentation.
-- You are motivated and ready to **read** a lot knowing that your are investing for the future (walk before run)
+- You are motivated and ready to **read** a lot knowing that you are investing for the future (walk before run)
 - **OS:** Windows 11 (but the post is OS agnostic)
 - **Editor:** VS Code with [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) installed
 - **Rust:** A working installation (run `rustc --version` to check)
@@ -128,7 +142,32 @@ Before we start, let's make sure we're on the same page:
 <span>Click the images to zoom in. The Standard Library Documentation Home Page</span>
 </div>
 
-Here's the code we'll be dissecting throughout this guide. Copy it into the [Rust Playground](https://play.rust-lang.org/) or a local file:
+
+
+
+**About Naming Conventions**
+Before we dive in, let's talk about how Rust names things. This matters because when you're scanning documentation, the capitalization alone tells you what you're looking at:
+
+| Pattern | What It Is | Example |
+|---------|------------|---------|
+| `PascalCase` | Types, traits, enums | `String`, `Vec`, `Option`, `Iterator` |
+| `snake_case` | Functions, methods, variables, modules | `to_uppercase()`, `my_string`, `std::vec` |
+| `SCREAMING_SNAKE_CASE` | Constants and statics | `MAX_VALUE`, `MAIN_SEPARATOR` |
+| `self` | The current instance (like `this` in other languages) | `fn len(&self)` |
+| `Self` | The current *type* (an alias for the implementing type) | `fn new() -> Self` |
+
+The `self` vs `Self` distinction trips up many newcomers. When you see `&self` in a method signature, it means "a reference to this instance." When you see `-> Self`, it means "returns the same type as the one we're implementing this for."
+
+For example, in `impl Vec<T>`, a method returning `Self` returns a `Vec<T>`. In `impl String`, that same `Self` means `String`. The actual type depends on context.
+
+Keep this table in mind as you read signatures — it will help you parse them faster.
+
+
+
+
+
+
+Finally, here's the code we'll be dissecting throughout this guide. As part of your setup, copy it into the [Rust Playground](https://play.rust-lang.org/) or a local rust project:
 
 ```rust
 fn main() {
@@ -333,7 +372,7 @@ The sidebar allows us to jump directly to the part of the page we’re intereste
 <span>Main content</span>
 </div>
 
-At the top of the main content area (on the right), again, but it does'nt hurt to repeat ourselves, you’ll find:
+At the top of the main content area (on the right), again, but it doesn't hurt to repeat ourselves, you’ll find:
 
 
 1. **The path** at the top: `std::vec` — this tells you **where** the item lives.
@@ -362,7 +401,7 @@ At the top of the main content area (on the right), again, but it does'nt hurt t
 
 Below the header, many items include a more detailed explanation, design notes, and carefully crafted usage examples. These examples often demonstrate idiomatic ways to use the type and highlight common patterns or pitfalls.
 
-This section can be unfold or fold to quickly access to the Implementations section.
+This section can be expanded or collapsed to quickly access to the Implementations section.
 
 
 
@@ -566,7 +605,7 @@ These sections really help to understand how the type interacts with Rust’s tr
 
 
 
-**Marty:** Waouh... This is a lot of information. I did'nt know all that. Hm... Can we go back to the top of the page? What's that `A = Global` thing? I met it already when I checked that `Box<T>` implements `impl<T, A> Deref for Box<T, A>`. Last time I ignored it but here, it comes again...
+**Marty:** Waouh... This is a lot of information. I didn't know all that. Hm... Can we go back to the top of the page? What's that `A = Global` thing? I met it already when I checked that `Box<T>` implements `impl<T, A> Deref for Box<T, A>`. Last time I ignored it but here, it comes again...
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="600" loading="lazy"/><br/>
@@ -633,7 +672,7 @@ fn main() {
 </div>
 
 
-It says... `pub const fn iter(&self) -> Iter<'_, T>`. It is always the same thing. It does'nt help at all. What is the `Iter<'_, T>`?
+It says... `pub const fn iter(&self) -> Iter<'_, T>`. It is always the same thing. It doesn't help at all. What is the `Iter<'_, T>`?
 
 
 
@@ -666,9 +705,9 @@ The story told in these four lines is as follows: "This is the `iter()` method f
 
 
 
-**Marty:** And this is exactly what usually happens. It does'nt help at all because at the end of the day the question remains: What is `Iter<'_, T>`?
+**Marty:** And this is exactly what usually happens. It doesn't help at all because at the end of the day the question remains: What is `Iter<'_, T>`?
 
-**Emmett:** I disagree, you've made progress since now you know that the `.iter()` is **NOT** applied over a vector but over a slice and you understand that you will get `Iter<'_, Option<i32>>`. Not that bad I you realize that, so far, you just moved the mouve over `.iter()`.
+**Emmett:** I disagree, you've made progress since now you know that the `.iter()` is **NOT** applied over a vector but over a slice and you understand that you will get `Iter<'_, Option<i32>>`. Not that bad I you realize that, so far, you just moved the mouse over `.iter()`.
 
 
 
@@ -865,6 +904,12 @@ Think of it like two people building a bridge from opposite sides of a river:
 - **Right side builder** (your code's end): "I need to end with something collectible into `Vec<Option<i32>>`"
 - **Middle pieces** (method chains): Must connect both sides properly
 - **Compiler**: The engineer checking that all pieces align perfectly
+
+
+<div align="center">
+<img src="./assets/img46.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>Click the link <code>Iter</code> at the bottom of the tooltip</span> -->
+</div>
 
 
 
