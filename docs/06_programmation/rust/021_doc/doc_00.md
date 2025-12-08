@@ -6,7 +6,7 @@ title: "How to Actually Read Rust's Standard Library Documentation"
 description: "A survival guide for developers who stare at type signatures and feel lost"
 parent: "Rust"
 date:               2025-11-05 17:00:00
-last_modified_date: 2025-12-07 17:00:00
+last_modified_date: 2025-12-08 14:00:00
 ---
 
 
@@ -1046,6 +1046,202 @@ fn main() {
 3. For each solution, explain the type transformations at each step
 
 <!-- **What you'll learn:** Autonomous investigation, solving real problems, mastering documentation navigation -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## 🟢 Part 1.5 : Fixing a Compilation Error Using the Documentation
+
+**Marty:** Hey Doc, I was following a tutrial last day, I wrote this code and it doesn't compile. I'm trying to convert a list of words to uppercase and then print the original list. Sounds simple enough, right?
+
+```rust
+fn main() {
+    let words = vec!["hello", "world", "rust"];
+
+    let result: Vec<String> = words
+        .into_iter()
+        .map(|word| word.to_uppercase())
+        .collect();
+
+    println!("Uppercase: {:?}", result);
+
+    // Now let's try to use the original vector
+    for word in words {
+        println!("Original: {}", word);
+    }
+}
+```
+
+The compiler is yelling at me:
+
+```
+error[E0382]: use of moved value: `words`
+  --> src/main.rs:12:17
+   |
+2  |     let words = vec!["hello", "world", "rust"];
+   |         ----- move occurs because `words` has type `Vec<&str>`,
+   |               which does not implement the `Copy` trait
+...
+4  |     let result: Vec<String> = words
+   |                               ----- value moved here
+...
+12 |     for word in words {
+   |                 ^^^^^ value used here after move
+```
+
+I don't get it. Why is `words` "moved"? I just wanted to iterate over it!
+
+**Emmett:** This a perfect opportunity to use the Standard Library documentation to understand what's happening. Let's be methodical. The compiler says "value moved here" and points to line 4 where you call `.into_iter()`. Let's investigate that method.
+
+**Marty:** Okay, I'll hover over `.into_iter()` in VS Code...
+
+<div align="center">
+<img src="./assets/img47.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Hovering over <code>.into_iter()</code></span>
+</div>
+
+I **read**
+
+```rust
+alloc::vec::Vec
+impl<T, A> IntoIterator for Vec<T, A>
+fn into_iter(self) -> Self::IntoIter
+where
+    // Bounds from impl:
+    A: Allocator,
+T = &str, A = Global
+```
+
+
+
+**Emmett:** Stop right there! What do you see in the signature? Look at the parameter.
+
+**Marty:** It says `fn into_iter(self)`. Oh! It takes `self`, not `&self`. That means...
+
+**Emmett:** Exactly! It takes **ownership** of `self`. When you call `words.into_iter()`, you're giving away ownership of `words`. After that line, `words` no longer exists — it has been consumed to create the iterator.
+
+**Marty:** So that's why I can't use `words` in the `for` loop later. It's gone!
+
+**Emmett:** Precisely. By the way you did **read** all the tooltip. You forgot the example and the line of text right before it. Can you read it now?
+
+**Marty:** You are right. The line says... "Creates a consuming iterator, that is, one that moves each value out of the vector (from start to end). The vector cannot be used after calling this." Oops, they could not be more specific. I must slow down and take the time to **read** what is written. It reminds me of math exams where I used to skim the instructions, rush into solving the equations, and then realize ten minutes later that I was completely off track because I had missed a key detail that was right there in the text.
+
+**Emmett:** Can you show me how you would find out the method`.into_iter()` in the Standard Library documentation?
+
+**Marty:** In the browser, on any tab where a page of the Standard Library is display, I press `/`, enter `into_iter`. Wow! It’s packed tonight at the club entrance.
+
+<div align="center">
+<img src="./assets/img48.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Searching for <code>into_iter</code></span>
+</div>
+
+I use the down arrow ⬇️, highlight the line `method std::vec::Vec::into_iter`, press ENTER, land on the page
+
+<div align="center">
+<img src="./assets/img49.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>Searching for <code>into_iter</code></span> -->
+</div>
+
+
+{: .warning-title }
+> `alloc::` vs `std::` — Don't Panic!
+>
+> When hovering over types like `Vec` or `String` in VS Code, you might see paths starting with `alloc::` (e.g., `alloc::vec::Vec`), while the online documentation shows `std::vec::Vec`. Don't worry — they're the same type!
+>
+> Rust's standard library is organized in layers:
+> - **`core`** — Minimal, no memory allocation (primitives, `Option`, `Result`, `Iterator`...)
+> - **`alloc`** — Adds heap allocation (`Vec`, `String`, `Box`...)
+> - **`std`** — Full standard library, re-exports everything from `core` and `alloc`
+>
+> VS Code shows the *source location* (`alloc::`), while the docs show the *public API path* (`std::`). When searching the documentation, always use `std::`. Both refer to exactly the same code.
+
+
+
+
+
+
+
+**Emmett:** Now, let's find an alternative. You want to iterate over the vector **without** consuming it. What method did we use earlier in this guide?
+
+**Marty:** We used `.iter()`! Let me check its signature in the documentation. I'll go to [doc.rust-lang.org/std](https://doc.rust-lang.org/std/), search for `Vec`, and look for the `iter` method.
+
+<div align="center">
+<img src="./assets/img50.webp" alt="" width="600" loading="lazy"/><br/>
+<span>Finding <code>.iter()</code> in the Vec documentation</span>
+</div>
+
+I find it in the "Methods from `Deref<Target = [T]>`" section. The signature is:
+
+```rust
+pub fn iter(&self) -> Iter<'_, T>
+```
+
+It takes `&self`! A **reference**. So it just borrows the vector instead of consuming it.
+
+**Emmett:** Now you're reading the docs like a pro! So what's the fix?
+
+**Marty:** I replace `.into_iter()` with `.iter()`:
+
+```rust
+fn main() {
+    let words = vec!["hello", "world", "rust"];
+
+    let result: Vec<String> = words
+        .iter()
+        .map(|word| word.to_uppercase())
+        .collect();
+
+    println!("Uppercase: {:?}", result);
+
+    // Now this works!
+    for word in words {
+        println!("Original: {}", word);
+    }
+}
+```
+
+Let me run it... It compiles! Output:
+
+```
+Uppercase: ["HELLO", "WORLD", "RUST"]
+Original: hello
+Original: world
+Original: rust
+```
+
+**Emmett:** Perfect. Let's recap what we just learned:
+
+| Method | Signature | What it does |
+|--------|-----------|--------------|
+| `.into_iter()` | `fn into_iter(self)` | **Consumes** the collection, yields owned items |
+| `.iter()` | `fn iter(&self)` | **Borrows** the collection, yields references |
+| `.iter_mut()` | `fn iter_mut(&mut self)` | **Mutably borrows**, yields mutable references |
+
+The key insight is that **the signature tells you everything**. When you see `self` — ownership is transferred. When you see `&self` — it's just a borrow. When you see `&mut self` — it's a mutable borrow.
+
+**Marty:** So every time I get a "use of moved value" error, I should check whether the method I'm calling takes `self` or `&self`?
+
+**Emmett:** Exactly! And now you know how to find that information in the documentation. This pattern will save you countless hours of confusion. The compiler error told you **what** happened ("value moved here"), and the documentation told you **why** (`.into_iter()` takes `self`).
+
+**Marty:** This is actually really helpful. The error message suddenly makes much more sense when I understand the method signatures.
+
+**Emmett:** That's the power of **reading** the Standard Library documentation. The compiler and the docs work together — the compiler tells you something's wrong, and the docs explain the underlying design that caused it. Once you connect those dots, Rust becomes much less mysterious.
+
+
+
 
 
 
