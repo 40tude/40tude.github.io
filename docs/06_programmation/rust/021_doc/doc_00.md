@@ -730,7 +730,7 @@ The story told in these four lines is as follows: "This is the `iter()` method f
 <!-- <span>Click the link <code>Iter</code> at the bottom of the tooltip</span> -->
 </div>
 
-* **Line 2:** `pub trait Iterator`. Now I now. `Iterator` is a trait, not a struct or a concrete type. This is the actual trait declaration. It's public, meaning I can use it in my code. All types that implement this trait get access to its methods, including `map`.
+* **Line 2:** `pub trait Iterator`. Now I know. `Iterator` is a trait, not a struct or a concrete type. This is the actual trait declaration. It's public, meaning I can use it in my code. All types that implement this trait get access to its methods, including `map`.
 * **Line 3:** `pub fn map<B, F>(self, f: F) -> Map<Self, F>`. This is the method signature. Breaking it down it comes:
     - `pub fn map` means it's a public function called `map`
 
@@ -1135,7 +1135,7 @@ T = &str, A = Global
 
 **Marty:** So that's why I can't use `words` in the `for` loop later. It's gone!
 
-**Emmett:** Precisely. By the way you did **read** all the tooltip. You forgot the example and the line of text right before it. Can you read it now?
+**Emmett:** Precisely. By the way you didn't **read** all the tooltip. You forgot the example and the line of text right before it. Can you read it now?
 
 **Marty:** You are right. The line says... "Creates a consuming iterator, that is, one that moves each value out of the vector (from start to end). The vector cannot be used after calling this." Oops, they could not be more specific. I must slow down and take the time to **read** what is written. It reminds me of math exams where I used to skim the instructions, rush into solving the equations, and then realize ten minutes later that I was completely off track because I had missed a key detail that was right there in the text.
 
@@ -1266,7 +1266,26 @@ The key insight is that **the signature tells you everything**. When you see `se
 ### The Map Method: Our First Generic Signature
 {: .no_toc }
 
-**Marty:** Okay, next up is `.map()`. Let me hover over it...
+**Marty:** Okay, next up is `.map()`.
+
+```rust
+fn main() {
+    let numbers = vec![Some(1), Some(15), Some(25), None, Some(5)];
+
+    // Filter keeps only Some(v) where the predicate is true
+    let filtered: Vec<Option<i32>> = numbers
+        .iter()
+        .map(|&opt| opt.filter(|&n| n > 10))
+        .collect();
+
+    println!("Raw numbers: {:?}", numbers);
+    println!("Filtered   : {:?}", filtered);
+}
+```
+
+
+
+Let me hover over it...
 
 <div align="center">
 <img src="./assets/img43.webp" alt="" width="600" loading="lazy"/><br/>
@@ -1315,7 +1334,7 @@ This declares a method called `map` with:
 
 **Marty:** And why `B` and `F` are between brakets? What do they do there?
 
-**Emmett:** In you own code, when you use a variable you need to declare it, you need to introduce it. Here, this is the same thing but at a higher level. Before to use a type parameter we need to declare it before we can use it.
+**Emmett:** In your own code, when you use a variable you need to declare it, you need to introduce it. Here, this is the same thing but at a higher level. Before to use a type parameter we need to declare it before we can use it.
 
 This is important but you know what? What really matters is the **constraints** that the `where` clause put on the type parameters.
 
@@ -1409,7 +1428,24 @@ There's a hierarchy: `Fn` implies `FnMut`, which implies `FnOnce`. So if somethi
 ### Reading the `Option::filter` Signature
 {: .no_toc }
 
-**Marty:** Now let's tackle the scary one. The `filter` method on `Option`. Here's what the docs show:
+**Marty:** Now let's tackle the scary one. The `filter` method on `Option`.
+
+```rust
+fn main() {
+    let numbers = vec![Some(1), Some(15), Some(25), None, Some(5)];
+
+    // Filter keeps only Some(v) where the predicate is true
+    let filtered: Vec<Option<i32>> = numbers
+        .iter()
+        .map(|&opt| opt.filter(|&n| n > 10))
+        .collect();
+
+    println!("Raw numbers: {:?}", numbers);
+    println!("Filtered   : {:?}", filtered);
+}
+```
+
+Here's what the docs show:
 
 <div align="center">
 <img src="./assets/img42.webp" alt="" width="600" loading="lazy"/><br/>
@@ -1446,6 +1482,16 @@ Hey doc, do you know why?
 **Emmett:** You are right and this is OK. In fact, Rust’s standard documentation often displays simplified function signatures, which is why `Option::filter` in the docs appears as a regular `fn` even though the source code defines it as a `const fn`. When browsing Rust’s source code (for example through an IDE with “Go to Definition”), you see the full internal version, including `pub const fn`, compiler attributes like `rustc_const_unstable`, and `[const]` trait bounds such as `[const] FnOnce`. These details are intentionally hidden in the public documentation because they are implementation-specific, may still be unstable, and would make the API harder to read. In short: the web documentation shows the stable, user-facing API, while the source reveals the full compiler-level definition.
 
 Now, let's go line by line.
+
+```rust
+core::option::Option
+impl<T> Option<T>
+
+pub const fn filter<P>(self, predicate: P) -> Self
+where
+    P: FnOnce(&T) -> bool + Destruct,
+    T: Destruct,
+```
 
 **Line 0: `core::option::Option`**
 Easy. You already know. This is **where** the item lives, in the crate `core` in the module `option::Option`.
@@ -1643,10 +1689,8 @@ fn main() {
 
 
 <!-- ###################################################################### -->
-### Exercise 02
+### Exercise 02 - Tracking Type Transformations in an Iterator Chain
 {: .no_toc }
-
-Tracking Type Transformations in an Iterator Chain
 
 
 ```rust
@@ -1679,6 +1723,78 @@ fn main() {
 
 
 
+
+
+<!-- ###################################################################### -->
+### Exercise 03
+{: .no_toc }
+
+1. Copy, paste and run the code below in Rust Playground
+1. Review what we said about the 3 different ways to filter a vector of `Option<i32>`
+
+```rust
+
+#[derive(Debug, Clone)]
+struct HeavyData {
+    name: String,
+    value: i32,
+}
+
+fn main() {
+    let heavy_data = [
+        Some(HeavyData {
+            name: "Alice".to_string(),
+            value: 10,
+        }),
+        Some(HeavyData {
+            name: "Bob".to_string(),
+            value: 50,
+        }),
+        None,
+        Some(HeavyData {
+            name: "Charlie".to_string(),
+            value: 100,
+        }),
+        Some(HeavyData {
+            name: "Diana".to_string(),
+            value: 30,
+        }),
+    ];
+
+    // INEFFICIENT: clones all structures just to filter
+    // .iter(): yields &Option<HeavyData>
+    // .map():  opt.clone() creates Option<HeavyData> (clones EVERY structure!)
+    // .filter: checks data.value > 42, but already cloned everything
+    let filtered_cloned: Vec<Option<HeavyData>> = heavy_data
+        .iter()
+        .map(|opt| opt.clone().filter(|data| data.value > 42))
+        .collect();
+    println!();
+    println!("Inefficient (clone all): {:?}", filtered_cloned);
+
+    // EFFICIENT: filter first with references, clone only what passes
+    // .iter():    yields &Option<HeavyData>
+    // .filter():  checks condition on reference, no cloning yet
+    // .map():     only clones items that passed the filter
+    let filtered_smart: Vec<Option<HeavyData>> = heavy_data
+        .iter()
+        .filter(|opt| opt.as_ref().map_or(false, |data| data.value > 42))
+        .map(|opt| opt.clone())
+        .collect();
+    println!("Efficient (filter first): {:?}", filtered_smart);
+
+    // ALTERNATIVE: work with references only (no cloning at all)
+    // Returns Vec<Option<&HeavyData>> instead of owned data
+    let filtered_refs: Vec<Option<&HeavyData>> = heavy_data
+        .iter()
+        .map(|opt| opt.as_ref().filter(|data| data.value > 42))
+        .collect();
+    println!("Zero-clone (references): {:?}", filtered_refs);
+}
+```
+1. **Read** the Standard Library documentation for `.as_ref()` and `.map_or()`
+1. For the 3 different ways above, are you able to name the type of data along the pipeline?
+1. Do you understand why the first is less efficient than the last 2?
 
 
 
