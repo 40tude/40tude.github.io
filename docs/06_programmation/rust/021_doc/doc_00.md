@@ -6,7 +6,7 @@ title: "How to Actually Read Rust's Standard Library Documentation"
 description: "A survival guide for developers who stare at type signatures and feel lost"
 parent: "Rust"
 date:               2025-11-05 17:00:00
-last_modified_date: 2025-12-08 17:05:00
+last_modified_date: 2025-12-09 08:00:00
 ---
 
 
