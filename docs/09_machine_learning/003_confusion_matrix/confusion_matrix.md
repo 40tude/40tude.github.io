@@ -39,6 +39,7 @@ A gentle, story-driven introduction so you’ll never be confused again.
 {: .no_toc }
 * For beginners
 * In a ML context but applicable elsewhere
+* We indicate whether the prediction was correct (T/F) + what kind of prediction (P/N)
 
 
 
@@ -86,7 +87,7 @@ When I say “choose a metric,” right away you start hearing words like *Recal
 
 Let’s be clear: I have no problem with the F1 score itself, or with formulas in general. No, no, it is even worst than that. The real issue was that for a very long time, I just couldn’t wrap my head around how the *labels* in the confusion matrix were written: `TP`, `FP`, `TN`, and `FN`.
 
-Which made it… somewhat awkward to properly explain my choices. But that was before. Since then, I went to Lourdes, [saw the light](https://en.wikipedia.org/wiki/Lourdes_apparitions), and now I *almost* understand everything.
+Which made it… somewhat awkward to properly explain my choices. But that was before. Since then, I went to Lourdes, I [saw the light](https://en.wikipedia.org/wiki/Lourdes_apparitions), and now I *almost* understand everything.
 
 So yeah — that’s exactly what we’re going to talk about in this post. As usual, I’ll start very slowly, without assuming anything about your math background (okay, you still need to know how to add and divide), but by the end — pinky swear — your ideas will be crystal clear. You’ll be able to choose and explain the metric for your ML project… and also to legitimately worry if a test tells you that you may have caught this or that disease.
 
@@ -122,14 +123,12 @@ Anyway, in the previous paragraph, the key phrase is “**evaluate the accuracy 
 
 What we’re going to do now is make a two-way table: on one side, you put the predictions, and on the other, you put reality. So it’s a “Reality vs. Predictions” matrix, and for now, don’t worry about which is the row and which is the column.
 
-Now, **THE REALLY IMPORTANT THING** is that in each cell of the table, we’ll indicate whether the prediction was correct and what kind of prediction it was.
+Now, **THE REALLY IMPORTANT THING** is that in each cell of the table, we’ll indicate whether **the prediction was correct** and what **kind of prediction** it was.
 
 Let’s clarify the vocabulary:
-* The prediction is **NEGATIVE** or **POSITIVE**. Here, a **POSITIVE** prediction means “I left with a girl.”
-* Reality is **NEGATIVE** or **POSITIVE**. These are the same “units” as the predictions so we can compare them.
-* The **accuracy of the prediction** compared to reality is **TRUE** or **FALSE**.
-
-Du coup je te propose cette première matrice vide :
+* The prediction is **NEGATIVE** or **POSITIVE**. Here, a **POSITIVE** prediction could mean "I left with a girl".
+* Reality is **NEGATIVE** or **POSITIVE**. These are the same "units" as the predictions so we can compare them.
+* The **correctness of the prediction** compared to reality is **TRUE** or **FALSE**.
 
 So I suggest this first empty matrix:
 
@@ -173,11 +172,11 @@ REALITY       ├──────────┼──────────
 ```
 
 **Notes:**
-* You can see that it doesn’t really matter what is shown in rows or columns. Here I followed what Scikit-Learn displays, a library used with Python, but that’s really not the most important part. In this case we have:
+* You can see that it doesn’t really matter what is shown in rows or columns. Here I followed what Scikit-Learn (a library used with Python) displays, but that’s really not the most important part. In this case we have:
   * **X-axis (columns)**: what the model predicted (Negative then Positive)
   * **Y-axis (rows)**: the ground truth (Positive at the bottom, Negative at the top)
 * Obviously, the sum of all the cells is 104, the total number of nights out.
-* In the same way, the sums of the different columns correspond to my predictions (going home alone 24 times, being a charmer 80 times).
+* In the same way, with this matrix, the sums of the different columns correspond to my predictions (going home alone 24 times, being a charmer 80 times).
 * The sum along the main diagonal (top-left, bottom-right) corresponds to the number of correct predictions (with either positive or negative outcomes, but the predictions were correct: 28).
 * The sum along the anti-diagonal (bottom-left, top-right) is the number of times the predictions were wrong (76).
 
