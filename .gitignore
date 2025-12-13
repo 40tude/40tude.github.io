@@ -27,6 +27,9 @@ Debug/
 # for some of the Rust sample code
 target/
 
+# for some of the uv Python sample code
+.venv/
+
 
 # **/raw_assets/" ignore all directories no matters where they are
 **/raw_assets/
@@ -49,7 +52,7 @@ target/
 ###############################################################################
 # This may help
 
-# Project stats : 
+# Project stats :
 #   Total number of files
 #   Get-ChildItem -Recurse -File | Measure-Object | Select-Object -ExpandProperty Count
 
@@ -63,7 +66,7 @@ target/
 
 
 # Display all files secret*.*
-# Get-ChildItem -Path . -Recurse -Force -Filter "secret*.*" | ForEach-Object { $_.FullName } 
+# Get-ChildItem -Path . -Recurse -Force -Filter "secret*.*" | ForEach-Object { $_.FullName }
 
 # Find the project directory size - GitHub 5GB max
 # (Get-ChildItem . -Recurse | Measure-Object -Property Length -sum).sum/1GB
@@ -92,5 +95,5 @@ target/
 
 # Docker Compose environment variables
 # See https://app.jedha.co/course/docker-reminders-l/docker-compose-l
-# *.env 
+# *.env
 # *.pyc
