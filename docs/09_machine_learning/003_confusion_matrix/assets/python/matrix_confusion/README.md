@@ -10,3 +10,12 @@ uv add pandas
 uv add scikit-learn
 uv add matplotlib
 ```
+
+Edit the jupyter notebook
+Run cells etc.
+
+Wirtie Python code
+```powershell
+uv run titanic.py
+```
+

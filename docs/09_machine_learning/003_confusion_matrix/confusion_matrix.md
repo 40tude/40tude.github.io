@@ -40,12 +40,12 @@ A gentle, story-driven introduction so you’ll never be confused again.
 * For beginners
 * In a ML context but applicable elsewhere
 * We indicate whether the prediction was correct (T/F) + what kind of prediction (P/N)
-
+* For binary classification and beyond
 
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
-<span>Clcik the images to zoom in.</span>
+<span>Click the images to zoom in.</span>
 </div>
 
 
@@ -55,6 +55,8 @@ A gentle, story-driven introduction so you’ll never be confused again.
 {: .no_toc .text-delta}
 - TOC
 {:toc}
+
+
 
 
 
@@ -81,7 +83,7 @@ One day, a great Machine Learning philosopher once whispered to me: “Listen, k
 | Deployment & Monitoring   | Serve the dish, maintain quality |
 
 
-At one of the very early steps of the process — before jumping into modeling, optimization, and all that fun stuff with SkLearn — it’s absolutely crucial to choose a metric, to be able to explain *why* you chose it, to set yourself a goal, and to stick to it. And honestly, that’s usually the hardest part. Because when we don’t get the results we want, we all have a tendency to “bend the data” until it says what we want to hear — and that is a **very, very bad idea**.
+At one of the very early steps of the process — before jumping into modeling, optimization, and all that fun stuff with Scikit-Learn — it’s absolutely crucial to choose a metric, to be able to explain *why* you chose it, to set yourself a goal, and to stick to it. And honestly, that’s usually the hardest part. Because when we don’t get the results we want, we all have a tendency to “bend the data” until it says what we want to hear — and that is a **very, very bad idea**.
 
 When I say “choose a metric,” right away you start hearing words like *Recall*, *Precision*, *F1 score*, *Accuracy*… On top of that, people start talking about the confusion matrix. And that’s usually where I completely lose my footing.
 
@@ -102,13 +104,13 @@ Alright. Let’s get started.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## The Matrix
+## Drawing The Matrix
 
 To kick things off, I want to finally put to rest this whole “how do I draw a confusion matrix?” question.
 
 Let’s imagine we have some “thing” that makes predictions. It could be a ML model, a pregnancy test, a fortune teller… whatever you want, it’s your story.
 
-Now, this predictor will sometimes get things right and sometimes get things wrong. If you look closer, you can actually split its predictions into four categories:
+Now, this binary predictor will sometimes get things right and sometimes get things wrong. If you look closer, you can actually split its predictions into four categories:
 
 1. I said before going into the club that I was going to leave with a girl, and sure enough, I left with the one who became my wife (poor thing, for better or for worse, as they say…)
 1. I said before going into the club that I was going to leave with a girl, but no luck, I went home alone.
@@ -158,8 +160,12 @@ Let's continue, and now I say:
 4. Prediction **N** and Reality **P**: bottom left. The prediction is incorrect. I said that I would behave seriously and go home alone, but on those nights I met the girl of my life (at least that’s what I thought at the time). I write **F** (the prediction was false) and then **N** (because the prediction was **N**). The value is 06 (24–18).
 
 
+<div align="center">
+<img src="./assets/img02.webp" alt="" width="300" loading="lazy"/><br/>
+<span><b>Tadaa!</b></span>
+</div>
 
-Tadaa!
+
 
 ```
               ┌──────────┬──────────┐
@@ -221,7 +227,107 @@ Building the Matrix Step by Step
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+## Intuitive Understanding
+
+* A Visual/Intuitive Section Before the Formulas
+* Explain the four quadrants with intuitive names:
+    * "Hits,"
+    * "False Alarms,"
+    * "Misses,"
+    * "Correct Rejections."
+* To bridge the gap before diving into formulas
+
+
+
+<!-- ###################################################################### -->
+### Exercices
+{: .no_toc }
+
+
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## The Class Imbalance Problem
+
+### Ideas
+* To motivate the metrics
+* Critical for beginners, often overlooked.
+* Explain why accuracy can be misleading with imbalanced datasets (the classic "99% accuracy on fraud detection" trap).
+* This explains why we need Precision/Recall.
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### Exercices
+{: .no_toc }
+
+
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## The Metrics
+
+### Ideas
+- A concrete example using the clubbing scenario (consistency)
+- When to prioritize this metric (which you partially cover later)
+- Common pitfalls or misinterpretations
+
+
+
+
+
 
 <!-- ###################################################################### -->
 ### Precision
@@ -257,27 +363,9 @@ Building the Matrix Step by Step
 
 
 <!-- ###################################################################### -->
-### Exercices
-{: .no_toc }
+### Metrics in a Tree
 
-
-**Exercice 00**
-
-**Exercice 01**
-
-**Exercice 02**
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## The Metrics in a tree
+#### Ideas
 * Prevalence
 * Sensitivity
 * Specificity
@@ -287,6 +375,66 @@ Building the Matrix Step by Step
 
 
 
+<!-- ###################################################################### -->
+### Exercices
+{: .no_toc }
+
+
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## The Threshold Concept
+
+### Ideas
+* Before "How to Select a Metric,"
+* Explains that changing the threshold shifts the trade-off between FP and FN.
+* Finish with the ROC curve.
+
+
 
 <!-- ###################################################################### -->
 ### Exercices
@@ -298,6 +446,54 @@ Building the Matrix Step by Step
 **Exercice 01**
 
 **Exercice 02**
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## ROC Curve and AUC
+
+
+### Ideas
+* A standard topic
+* Encountered by beginners after confusion matrices
+
+
+
+
+<!-- ###################################################################### -->
+### Exercices
+{: .no_toc }
+
+
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -319,10 +515,61 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ## How to select a Metric?
 
+### Ideas
+* Sex films among cartoons for kids
 * CB
-* Sex films among cartoon for kids
 * Spam
+* Find more weird examples 😁
 
+
+
+<!-- ###################################################################### -->
+### Exercices
+{: .no_toc }
+
+
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Confusion Matrix in code
+
+
+
+
+<!-- ###################################################################### -->
+### Python
+{: .no_toc }
+
+- Don' forget to interpret the results in context
+
+
+
+<!-- ###################################################################### -->
+### Rust
+{: .no_toc }
+
+- Don' forget to interpret the results in context
 
 
 
@@ -357,29 +604,37 @@ Building the Matrix Step by Step
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Multi-class Confusion Matrices
 
-
-
-
-
-
-
-
-
-
-
+* One word
+* the concept extends beyond binary classification.
+* don't need to go deep, show an example with some explanation/interpretation
 
 
 
 
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ## Section -->
+### Exercices
+{: .no_toc }
 
 
-<!-- ###################################################################### -->
-<!-- ### Sub-section
-{: .no_toc } -->
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02**
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -391,8 +646,12 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ## Conclusion
 
+* With a Bayes teaser
+
+
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
+
