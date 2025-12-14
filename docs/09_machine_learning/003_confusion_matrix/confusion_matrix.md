@@ -69,7 +69,7 @@ A gentle, story-driven introduction so you’ll never be confused again.
 One day, a great Machine Learning philosopher once whispered to me: “Listen, kid. A Machine Learning project is just like a dish in a fine restaurant. Every step matters, especially the first ones. You can plate it beautifully, serve it with elegance, even impress the critics… but if the recipe is bad, the dish will never be good. And trust me — no amount of fancy deployment can save a rotten model. Capiche?”
 
 <div align="center">
-<img src="./assets/img01.webp" alt="" width="300" loading="lazy"/><br/>
+<img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
 <span>Rémy, the ML philosopher</span>
 </div>
 
@@ -432,14 +432,14 @@ If you remember your physics classes, the harmonic mean shows up in two classic 
 
 
 <div align="center">
-<img src="./assets/img04.webp" alt="" width="300" loading="lazy"/><br/>
+<img src="./assets/img04.webp" alt="" width="600" loading="lazy"/><br/>
 <!-- <span><b>Tadaa!</b></span> -->
 </div>
 
 2. **A car traveling the same distance at two different speeds**
 
 <div align="center">
-<img src="./assets/img05.webp" alt="" width="300" loading="lazy"/><br/>
+<img src="./assets/img05.webp" alt="" width="600" loading="lazy"/><br/>
 <!-- <span><b>Tadaa!</b></span> -->
 </div>
 
@@ -463,14 +463,14 @@ $$\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{Total}}$$
 At this point, it is important to make the distinction between [`Accuracy` and `Precision`](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
 <div align="center">
-<img src="./assets/img07.webp" alt="" width="300" loading="lazy"/><br/>
+<img src="./assets/img07.webp" alt="" width="600" loading="lazy"/><br/>
 <span><b>Accuracy & Precision</b></span>
 </div>
 
 Indeed, you can have low accuracy even with a high precision. See the top-left example below:
 
 <div align="center">
-<img src="./assets/img06.webp" alt="" width="300" loading="lazy"/><br/>
+<img src="./assets/img06.webp" alt="" width="600" loading="lazy"/><br/>
 <!-- <span><b>Tadaa!</b></span> -->
 </div>
 
@@ -482,7 +482,7 @@ Indeed, you can have low accuracy even with a high precision. See the top-left e
 Finally (*CeCe Peniston, 91*) you may want to keep in mind the figure below:
 
 <div align="center">
-<img src="./assets/img03.webp" alt="" width="300" loading="lazy"/><br/>
+<img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
 <span><b>Tadaa!</b></span>
 </div>
 
@@ -819,7 +819,7 @@ Let's dig deeper and look at the full confusion matrix of the test set (the unse
 
 <div align="center">
 <img src="./assets/img10.webp" alt="" width="600" loading="lazy"/><br/>
-<span><b>Running the code in VSCode in a Jupyter notebook</b></span>
+<span><b>Confusion matrix of the test set</b></span>
 </div>
 
 
