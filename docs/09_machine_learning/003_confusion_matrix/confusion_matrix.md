@@ -39,12 +39,12 @@ A gentle, story-driven introduction so you’ll never be confused again.
 {: .no_toc }
 * For beginners
 * In a ML context but applicable elsewhere
-* We indicate whether the prediction was correct (T/F) + what kind of prediction (P/N)
-* For binary classification and beyond
+* In the confusion matrix we indicate whether the prediction is correct (T/F) + the kind of prediction (P/N)
+* For binary classifiers and beyond
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="300" loading="lazy"/><br/>
 <span>Click the images to zoom in.</span>
 </div>
 
@@ -69,7 +69,7 @@ A gentle, story-driven introduction so you’ll never be confused again.
 One day, a great Machine Learning philosopher once whispered to me: “Listen, kid. A Machine Learning project is just like a dish in a fine restaurant. Every step matters, especially the first ones. You can plate it beautifully, serve it with elegance, even impress the critics… but if the recipe is bad, the dish will never be good. And trust me — no amount of fancy deployment can save a rotten model. Capiche?”
 
 <div align="center">
-<img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img01.webp" alt="" width="300" loading="lazy"/><br/>
 <span>Rémy, the ML philosopher</span>
 </div>
 
@@ -274,7 +274,9 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ## The Class Imbalance Problem
 
-### Ideas
+### Ideas to explore
+{: .no_toc }
+
 * To motivate the metrics
 * Critical for beginners, often overlooked.
 * Explain why accuracy can be misleading with imbalanced datasets (the classic "99% accuracy on fraud detection" trap).
@@ -319,7 +321,9 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ## The Metrics
 
-### Ideas
+### Ideas to explore
+{: .no_toc }
+
 - A concrete example using the clubbing scenario (consistency)
 - When to prioritize this metric (which you partially cover later)
 - Common pitfalls or misinterpretations
@@ -365,7 +369,9 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ### Metrics in a Tree
 
-#### Ideas
+#### Ideas to explore
+{: .no_toc }
+
 * Prevalence
 * Sensitivity
 * Specificity
@@ -429,7 +435,9 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ## The Threshold Concept
 
-### Ideas
+### Ideas to explore
+{: .no_toc }
+
 * Before "How to Select a Metric,"
 * Explains that changing the threshold shifts the trade-off between FP and FN.
 * Finish with the ROC curve.
@@ -463,7 +471,9 @@ Building the Matrix Step by Step
 ## ROC Curve and AUC
 
 
-### Ideas
+### Ideas to explore
+{: .no_toc }
+
 * A standard topic
 * Encountered by beginners after confusion matrices
 
@@ -515,7 +525,9 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ## How to select a Metric?
 
-### Ideas
+### Ideas to explore
+{: .no_toc }
+
 * Sex films among cartoons for kids
 * CB
 * Spam
