@@ -125,7 +125,9 @@ Anyway, in the previous paragraph, the key word is “**evaluate the accuracy of
 
 What we’re going to do now is make a two-way table: on one side, you put the predictions, and on the other, you put reality. So it’s a “Reality vs. Predictions” matrix, and for now, don’t worry about which is the row and which is the column.
 
-Now, **THE REALLY IMPORTANT THING** is that in each cell of the table, we’ll indicate whether **the prediction was correct** and what **kind of prediction** it was.
+Now, **THE REALLY IMPORTANT THING** is that in each cell of the table, we will indicate:
+1. whether **the prediction was correct**
+2. *AND* what **kind of prediction** it was.
 
 Let’s clarify the vocabulary:
 * The prediction is **NEGATIVE** or **POSITIVE**. Here, a **POSITIVE** prediction could mean "I left with a girl".
@@ -380,7 +382,7 @@ $$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
 ### F1 Score
 {: .no_toc }
 
-$$\text{F1} = \frac{2}{\frac{1}{\text{Precision}} + \frac{1}{\text{Recall}}}$$
+$$\text{F1 Score} = \frac{2}{\frac{1}{\text{Precision}} + \frac{1}{\text{Recall}}}$$
 
 * The `F1 score` is the harmonic mean of `Precision` and `Recall`
 * The `F1 score` looks for a compromise between `Precision` and `Recall`
@@ -425,7 +427,7 @@ In both cases, we can't just average the values. Indeed, the smaller one "drags 
 $$\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{Total}}$$
 
 * What "matters" for us, is the number of good predictions (`TN+TP`)
-* First Diagonal over `Total`
+* First Diagonal over the `Total`
 * **Storytelling:** "The Accuracy of a predictor is the percentage of correct predictions among all predictions made."
 
 At this point, it is important to make the distinction between [`Accuracy` and `Precision`](https://en.wikipedia.org/wiki/Accuracy_and_precision)
@@ -481,7 +483,7 @@ You know what? We can find the Confusion Matrix labels in the tree you used to d
 <span><b>Confusion Matrix metrics in a Tree</b></span>
 </div>
 
-We assume that the probability of being sick, called the **prevalence**, is a certain percentage of the population. Each person is therefore either sick or healthy.
+We assume that the probability of being sick, called the **Prevalence**, is a certain percentage of the population. Each person is therefore either sick or healthy.
 
 Then, everyone takes a medical test that has two key characteristics:
 * **Sensitivity**, which is the percentage of sick people who are correctly identified as sick by the test.
@@ -535,19 +537,166 @@ REALITY       ├──────────┼──────────
 <!-- ###################################################################### -->
 ## The Imbalance Problem
 
-### Ideas to explore
-{: .no_toc }
+One of the most critical and often overlooked issues in machine learning is **class imbalance**. This problem appears whenever one class is much rarer than the other. [Fraud detection](https://github.com/40tude/fraud_detection_2) is a textbook example.
 
-* Eclair 1 sur 1_000_000 CB frauduleuses FR = 0.015%
-    * https://www.cchst.ca/oshanswers/safety_haz/weather/lightning.html
-    * https://www.banque-france.fr/en/press-release/ecb-and-eba-publish-joint-report-payment-fraud?utm_source=chatgpt.com
+### How rare is fraud, really?
 
-* To motivate the metrics
-* Critical often overlooked.
-* Explain why accuracy can be misleading with imbalanced datasets (the classic "99% accuracy on fraud detection" trap).
-* This explains why we need Precision/Recall.
+To build intuition, let’s look at real-world orders of magnitude.
+
+* In France, credit card fraud represents about [0.015%](https://www.banque-france.fr/en/press-release/ecb-and-eba-publish-joint-report-payment-fraud) of transactions. This means 15 frauds for 100_000 transactions, let's say roughly 1 for 1_000_000.
+* On the other hand, the probability of being struck by lightning in a given year is often quoted around [1 in 1_000_000](https://www.cchst.ca/oshanswers/safety_haz/weather/lightning.html).
+
+Fraud is exceptionally rare and this rarity is the root cause of many evaluation mistakes.
 
 
+### A simple thought experiment
+
+Assume we have 100_000 transactions.
+
+**Fraudulent transactions:**
+  $$
+  100{\_}000 \times 0.015\% = 15
+  $$
+**Legitimate transactions:**
+  $$
+  100{\_}000 - 15 = 99{\_}985
+  $$
+
+So the dataset looks like this:
+
+| Class        | Count   |
+|--------------|--------:|
+| Legitimate   | 99_985  |
+| Fraud        | 15      |
+| **Total**    | 100_000 |
+
+
+### The "dummy" predictor
+
+Now consider a very naïve model which predicts **"Fraud" 99%** of the time, no matter what. This sounds terrible… but let’s play the game and let's compute its accuracy.
+
+**Step 1: Predictions made**
+
+Out of 100_000 transactions
+* Predicted **Fraud**:
+  $$
+  99\% \times 100{\_}000 = 99{\_}000
+  $$
+* Predicted **Legitimate**:
+  $$
+  1\% \times 100{\_}000 = 1{\_}000
+  $$
+
+**Step 2: Correct predictions**
+
+Since only 15 transactions are actually fraud, at most 15 fraud predictions can be correct. All other fraud predictions are false alarms.
+
+Let’s assume the best-case scenario for the dummy model:
+
+- True Positives (Fraud correctly detected): 15
+- False Positives (Legitimate flagged as fraud):
+  $$
+  99{\_}000 - 15 = 98{\_}985
+  $$
+
+Now for legitimate predictions:
+
+* True Negatives: at most 1_000 (since there are many legitimate transactions)
+
+The corresponding confusion matrix looks like this:
+
+```
+              ┌────────────┬─────────────┐
+   Negative   │  TN 1_000  │  FP 98_985  │
+REALITY       ├────────────┼─────────────┤
+   Positive   │  FN     0  │  TP     15  │
+              └────────────┴─────────────┘
+                 Negative      Positive
+                       PREDICTION
+```
+
+#### Step 3 — Accuracy calculation
+
+Accuracy is defined as:
+
+$$
+\text{Accuracy} = \frac{\text{Correct predictions}}{\text{Total predictions}}
+$$
+
+Correct predictions:
+
+$$
+15 \text{ (fraud)} + 1{\_}000 \text{ (legitimate)} = 1{\_}015
+$$
+
+So:
+
+$$
+\text{Accuracy} = \frac{1{\_}015}{100{\_}000} = 1.015\%
+$$
+
+This model is **almost always wrong**, despite predicting fraud constantly.
+
+
+### Now the opposite dummy (the real trap)
+
+Let’s flip the strategy and predict "Legitimate" 100% of the time.
+
+* Correct legitimate predictions: 99_985
+* Missed frauds: 15
+
+The corresponding confusion matrix looks like this:
+
+```
+              ┌────────────┬─────────────┐
+   Negative   │  TN     0  │  FP      0  │
+REALITY       ├────────────┼─────────────┤
+   Positive   │  FN    15  │  TP 99_985  │
+              └────────────┴─────────────┘
+                 Negative      Positive
+                       PREDICTION
+```
+
+Accuracy becomes:
+
+$$
+\text{Accuracy} = \frac{99{\_}985}{100{\_}000} = 99.985\%
+$$
+
+99.985% accuracy without detecting a single fraud. This is the famous "99% accuracy fraud detector" trap.
+
+
+### Why Accuracy is misleading?
+
+Accuracy answers the question "How often is the model correct overall?". However with imbalanced datasets, this question is almost meaningless, because:
+
+* The majority class dominates the metric
+* A model can ignore the minority class completely and still look “excellent”
+
+In fraud detection, missing fraud is far more costly than mislabeling a legitimate transaction but Accuracy treats all errors equally.
+
+
+### Why we need Precision and Recall?
+
+To properly evaluate models under imbalance, we need metrics that focus on the rare class:
+
+* **Recall (Sensitivity):** "Out of all real frauds, how many did we catch?"
+* **Precision:** "Out of all transactions flagged as fraud, how many were actually fraud?"
+
+These metrics force us to confront the real trade-offs:
+* Catching more fraud vs. triggering too many false alarms
+* Business cost vs. customer friction
+
+
+### To keep in mind
+
+* Is the dataset imbalanced? If yes => blinking red LED
+* In highly imbalanced problems, accuracy can lie
+
+Understanding this helps us to:
+- Choose the right metrics
+- Designing meaningful models
+- Avoiding dangerously misleading conclusions
 
 
 
@@ -843,7 +992,7 @@ print(f"Accuracy-score on test set : {classifier.score(X_test, y_test):.3f}")
 
 
 
-There is also a Jupyter notebook. The code is the same at 99% and we get the same result.
+There is also a Jupyter notebook. The code is the same at 99% and we get the same results.
 
 <div align="center">
 <img src="./assets/img09.webp" alt="" width="900" loading="lazy"/><br/>
@@ -971,9 +1120,12 @@ Is that a problem? It depends on the context and this brings us to our next sect
 <!-- ###################################################################### -->
 ## Multi-class Confusion Matrices
 
+### Ideas to explore
+{: .no_toc }
+
 * One word
-* the concept extends beyond binary classification.
-* don't need to go deep, show an example with some explanation/interpretation
+* The concept extends beyond binary classification.
+* Don't need to go deep, show an example with some explanation/interpretation
 
 
 
@@ -1020,3 +1172,4 @@ It is time to conclude.
 <!-- ###################################################################### -->
 ## Webliography
 
+* [Fraud Detection 2](https://github.com/40tude/fraud_detection_2)
