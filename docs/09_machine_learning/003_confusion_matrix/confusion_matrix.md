@@ -540,6 +540,7 @@ REALITY       ├──────────┼──────────
 One of the most critical and often overlooked issues in machine learning is **class imbalance**. This problem appears whenever one class is much rarer than the other. [Fraud detection](https://github.com/40tude/fraud_detection_2) is a textbook example.
 
 ### How rare is fraud, really?
+{: .no_toc }
 
 To build intuition, let’s look at real-world orders of magnitude.
 
@@ -550,6 +551,7 @@ Fraud is exceptionally rare and this rarity is the root cause of many evaluation
 
 
 ### A simple thought experiment
+{: .no_toc }
 
 Assume we have 100_000 transactions.
 
@@ -572,6 +574,7 @@ So the dataset looks like this:
 
 
 ### The "dummy" predictor
+{: .no_toc }
 
 Now consider a very naïve model which predicts **"Fraud" 99%** of the time, no matter what. This sounds terrible… but let’s play the game and let's compute its accuracy.
 
@@ -616,6 +619,7 @@ REALITY       ├────────────┼────────
 ```
 
 #### Step 3 — Accuracy calculation
+{: .no_toc }
 
 Accuracy is defined as:
 
@@ -639,6 +643,7 @@ This model is **almost always wrong**, despite predicting fraud constantly.
 
 
 ### Now the opposite dummy (the real trap)
+{: .no_toc }
 
 Let’s flip the strategy and predict "Legitimate" 100% of the time.
 
@@ -667,6 +672,7 @@ $$
 
 
 ### Why Accuracy is misleading?
+{: .no_toc }
 
 Accuracy answers the question "How often is the model correct overall?". However with imbalanced datasets, this question is almost meaningless, because:
 
@@ -677,6 +683,7 @@ In fraud detection, missing fraud is far more costly than mislabeling a legitima
 
 
 ### Why we need Precision and Recall?
+{: .no_toc }
 
 To properly evaluate models under imbalance, we need metrics that focus on the rare class:
 
@@ -688,14 +695,15 @@ These metrics force us to confront the real trade-offs:
 * Business cost vs. customer friction
 
 
-### To keep in mind
+### Things to keep in mind
+{: .no_toc }
 
-* Is the dataset imbalanced? If yes => blinking red LED
+* Is the dataset imbalanced? If yes => Blinking red LED 🔴
 * In highly imbalanced problems, accuracy can lie
 
 Understanding this helps us to:
-- Choose the right metrics
-- Designing meaningful models
+- Choose the right metrics to monitor
+- Design meaningful models
 - Avoiding dangerously misleading conclusions
 
 
