@@ -121,7 +121,7 @@ Yeah, I know, the example is silly, but that’s the point—it sticks in your m
 
 So, we can sum all this up in a table to evaluate how good the predictions are. If you go clubbing twice a week on average, by the end of the year you’ve made 104 predictions… and now it’s starting to look legit.
 
-Anyway, in the previous paragraph, the key phrase is “**evaluate the accuracy of the predictions**”. Yeah, I know, that’s more than one word.
+Anyway, in the previous paragraph, the key word is “**evaluate the accuracy of the predictions**”. Yeah, I know, that’s more than one word.
 
 What we’re going to do now is make a two-way table: on one side, you put the predictions, and on the other, you put reality. So it’s a “Reality vs. Predictions” matrix, and for now, don’t worry about which is the row and which is the column.
 
@@ -129,7 +129,7 @@ Now, **THE REALLY IMPORTANT THING** is that in each cell of the table, we’ll i
 
 Let’s clarify the vocabulary:
 * The prediction is **NEGATIVE** or **POSITIVE**. Here, a **POSITIVE** prediction could mean "I left with a girl".
-* Reality is **NEGATIVE** or **POSITIVE**. These are the same "units" as the predictions so we can compare them.
+* Reality is **NEGATIVE** or **POSITIVE**. These are in the same "units" as the predictions so we can compare them.
 * The **correctness of the prediction** compared to reality is **TRUE** or **FALSE**.
 
 So I suggest this first empty matrix:
@@ -229,7 +229,7 @@ Building the Matrix Step by Step
 <!-- ###################################################################### -->
 ## Intuitive Understanding
 
-Before we dive into a bit of algebra, let's step back and appreciate the matrix we just built. First off, we can be proud of ourselves. More importantly, tomorrow morning you should be able to read it "out loud",I really mean it, without any trouble. Then, as a bonus challenge, try swapping the rows and columns, or flipping the two rows and/or the two columns around. The results stay the same, only the layout changes. Here, I'm using the format that the excellent Scikit-Learn library uses, but we don't want our understanding to depend on any particular arrangement.
+Before we dive into a bit of algebra, let's step back and appreciate the matrix we just built. First off, we can be proud of ourselves. More importantly, tomorrow morning you should be able to read it "out loud", I really mean it, without any trouble. Then, as a bonus challenge, try swapping the rows and columns, or flipping the two rows and/or the two columns around. The results stay the same, only the layout changes. Here, I'm using the format that the excellent Scikit-Learn library uses, but we don't want our understanding to depend on any particular arrangement.
 
 Speaking of understanding... Let's try replacing TP and friends with everyday words. Starting from our original matrix:
 
@@ -243,7 +243,7 @@ REALITY       ├──────────┼──────────
                     PREDICTION
 ```
 
-ANd I propose the following matrix:
+And I propose the following matrix:
 
 ```
               ┌────────────────────┬───────────────┐
@@ -297,38 +297,6 @@ Alright, let's do some math. Don't panic—it's going to be fine, you'll see.
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## The Imbalance Problem
-
-### Ideas to explore
-{: .no_toc }
-
-* To motivate the metrics
-* Critical for beginners, often overlooked.
-* Explain why accuracy can be misleading with imbalanced datasets (the classic "99% accuracy on fraud detection" trap).
-* This explains why we need Precision/Recall.
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-### Exercices
-{: .no_toc }
-
-
-**Exercice 00**
-
-**Exercice 01**
-
-**Exercice 02**
-
-
-
 
 
 
@@ -358,7 +326,7 @@ Alright, let's do some math. Don't panic—it's going to be fine, you'll see.
 - Common pitfalls or misinterpretations -->
 
 
-We've mastered the confusion matrix and we understand the "story" it tells us. That's great, but there's a small problem. There's still too much information. How are you going to walk up to your favorite CFO and ask for an extra 2 million dollars in new GPUs because the numbers in your matrix aren't looking great? That's not going to fly. Plus, as I mentioned earlier, at the start of any ML project you need to pick a metric and stick with it. A confusion matrix isn't a metric, it's a table with 4 numbers. So yeah, that's not going to work...
+We've mastered the confusion matrix and we understand the "story" it tells us. That's great, but there's a small problem. There's still too much information. How are you going to walk up to your favorite CFO and ask for an extra 2 million dollars in new GPUs because the numbers in your matrix aren't looking great? That's not going to fly. Plus, as I mentioned earlier, at the start of any ML project you need to pick one metric and stick with it. A confusion matrix isn't a metric, it's a table with 4 numbers. So yeah, that's not going to work...
 
 In what follows, I'll use **our** confusion matrix, which looks like this:
 
@@ -422,7 +390,7 @@ Let's go back to the nightclub. I could adopt two extreme strategies:
 
 1. **The overconfident guy:** Every single night, I announce "Tonight, I'm leaving with someone!" This way, I never miss an opportunity (if there's a chance). I've predicted it (Recall = 100%). But my hit rate is abysmal because most nights I go home alone despite my bold claims (Precision in the gutter).
 
-2. **The overcautious guy:** I only predict success when I'm absolutely certain (say, when a girl has already written her phone number on my forehead). Sure, when I make a prediction, I'm almost always right (Precision ≈ 100%). But I miss tons of opportunities I didn't dare call (Recall in the gutter).
+2. **The overcautious guy:** I only predict success when I'm absolutely certain (say, when a girl has already shared her phone number while we were queuing outside the nightclub). Sure, when I make a prediction, I'm almost always right (Precision ≈ 100%). But I miss tons of opportunities I didn't dare call (Recall in the gutter).
 
 The F1 score tells us "Pick a lane, buddy, but not an extreme one." It forces us to find a balance. And here's the key property of the harmonic mean: it punishes imbalance harshly. If one metric is great but the other is terrible, the F1 score stays low. You can't hide a weakness by excelling elsewhere.
 
@@ -490,10 +458,10 @@ Finally (*CeCe Peniston, 91*) you may want to keep in mind the figure below:
 
 
 <!-- ###################################################################### -->
-### Metrics in a Tree
+### Confusion Matrix Labels in a Tree
 {: .no_toc }
 
-#### Ideas to explore
+<!-- #### Ideas to explore
 {: .no_toc }
 
 * Prevalence
@@ -501,6 +469,87 @@ Finally (*CeCe Peniston, 91*) you may want to keep in mind the figure below:
 * Specificity
 * Example and Numerical Application
 * One word about Bayes? Intro a new post ?
+
+-->
+
+Do you remember when you were young and innocent. You start learning probabilities and you used to draw trees to simulate, for example, that you toss a coin twice and get 4 possible results (HH, HT, TH, TT).
+
+You know what? We can find the Confusion Matrix labels in the tree you used to draw. See below:
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="600" loading="lazy"/><br/>
+<span><b>Confusion Matrix metrics in a Tree</b></span>
+</div>
+
+We assume that the probability of being sick, called the **prevalence**, is a certain percentage of the population. Each person is therefore either sick or healthy.
+
+Then, everyone takes a medical test that has two key characteristics:
+* **Sensitivity**, which is the percentage of sick people who are correctly identified as sick by the test.
+* **Specificity**, which is the percentage of healthy people who are correctly identified as not sick by the test.
+
+Look, at the end of the top branch of the tree for example. We found our friend `TP`. Indeed, the guy is affected, so the reality is POSITIVE. Then the prediction is "he is affected", "he is `POSITIVE`". So, in this case, the prediction is correct, it is `TRUE` and so the leaf is labeled `TRUE-POSITIVE`, aka `TP`.
+
+Check for yourself but the same reasoning applied to the three other branches and you get: `FN`, `FP` and `TN`.
+
+Now, if we stay focused on the top branch, you may remember that our teacher was talking about the "probability to be tested sick knowing that the patient is sick". Does the word conditional probability resonate? No? Have you ever heard about Bayes statistics, the statistic of the causes? This is not the topic of this post but believe or not TP its friends not only appears in the kind of binary tree but also in Bayes statistics.
+
+
+
+Now, if we stay focused on the top branch, you may recall that our teacher mentioned the "probability of testing positive given that the patient is sick". Does the term "conditional probability" ring a bell? No? What about "Bayesian statistics", often described as the statistics of causes?
+
+While this is not the main topic here, it is worth noting that `TP` and its friends appear not only in this type of binary tree, but also play a central role in Bayesian statistics.
+
+
+
+<!-- ###################################################################### -->
+### Exercices
+{: .no_toc }
+
+
+**Exercice 00:** Draw the same kind of binary tree but in the case of me and my friends clubbing. Calculate Prevalence, Sensitivity and Specificity in percentage using the numbers of the table below.
+
+```
+              ┌──────────┬──────────┐
+   Negative   │  TN 18   │  FP 70   │
+REALITY       ├──────────┼──────────┤
+   Positive   │  FN 06   │  TP 10   │
+              └──────────┴──────────┘
+                Negative   Positive
+                    PREDICTION
+```
+
+**Exercice 01:**
+
+**Exercice 02:**
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## The Imbalance Problem
+
+### Ideas to explore
+{: .no_toc }
+
+* Eclair 1 sur 1_000_000 CB frauduleuses FR = 0.015%
+    * https://www.cchst.ca/oshanswers/safety_haz/weather/lightning.html
+    * https://www.banque-france.fr/en/press-release/ecb-and-eba-publish-joint-report-payment-fraud?utm_source=chatgpt.com
+
+* To motivate the metrics
+* Critical often overlooked.
+* Explain why accuracy can be misleading with imbalanced datasets (the classic "99% accuracy on fraud detection" trap).
+* This explains why we need Precision/Recall.
+
+
+
+
 
 
 
@@ -515,13 +564,6 @@ Finally (*CeCe Peniston, 91*) you may want to keep in mind the figure below:
 **Exercice 01**
 
 **Exercice 02**
-
-
-
-
-
-
-
 
 
 
@@ -665,7 +707,7 @@ Finally (*CeCe Peniston, 91*) you may want to keep in mind the figure below:
 ## Confusion Matrix in Code
 
 
-You thought we were in the Matrix? Nah, instead the confusion matrix is in the code. Below you'll find two complete sample code because I hate partial code in Medium that never works. One is in Python, the other is in Rust. Both use the Titanic dataset.
+You thought we were in the Matrix? Nah, instead the confusion matrix is in the code. Below you'll find two complete sample code because I hate partial code you can find in [Medium](https://medium.com/@philippe.baucour/yet-another-linear-regression-introduction-0835e333508b) that never works. One is in Python, the other is in Rust. Both use the Titanic dataset.
 
 
 <!-- ###################################################################### -->
@@ -823,13 +865,13 @@ Let's dig deeper and look at the full confusion matrix of the test set (the unse
 </div>
 
 
-On the captures above we can see:
+On the capture above we can read:
 - **TN = 96:** We correctly predicted 96 passengers would not survive (Correct Rejections)
 - **FP = 14:** We predicted 14 passengers would survive, but they didn't (False Alarms)
 - **FN = 24:** We predicted 24 passengers wouldn't survive, but they actually did (Misses)
 - **TP = 45:** We correctly predicted 45 survivors (Hits)
 
-Total: 96 + 14 + 24 + 45 = 179 passengers in the test set(20% of the data set).
+Total: 96 + 14 + 24 + 45 = 179 passengers in the test set (20% of the data set).
 
 Now let's compute "by hands" our metrics:
 
@@ -840,7 +882,7 @@ Now let's compute "by hands" our metrics:
 
 What does this tell us? Our model is more cautious than aggressive. It's better at not crying wolf (decent `Precision`) than at finding all survivors (lower `Recall`). In other words, when it predicts someone will survive, it's fairly reliable. But it misses about a third of the actual survivors.
 
-Is that a problem? It depends on the context—which brings us to our next section...
+Is that a problem? It depends on the context and this brings us to our next section...
 
 
 
