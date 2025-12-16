@@ -1401,7 +1401,9 @@ Else
     predict Negative
 ```
 
-That’s it. No learning. No AI wisdom. Just a decision boundary we choose. By moving this Threshold up and down, we decide how brave (or paranoid) we want to be.
+
+
+
 
 
 
@@ -1604,6 +1606,31 @@ That would require:
 * a world without noise, ambiguity, or measurement error
 
 In other words a toy dataset or a miracle. For real-world problems, Precision and Recall are not targets to maximize simultaneously, they are constraints to balance.
+
+
+### And yes, we can have both at 100%
+{: .no_toc }
+
+Yes, it is absolutely possible to have **100% Recall and 100% Precision** at the same time. We could have:
+
+```
+              ┌──────────┬──────────┐
+   Negative   │  TN 80   │  FP  0   │
+REALITY       ├──────────┼──────────┤
+   Positive   │  FN  0   │  TP 24   │
+              └──────────┴──────────┘
+                Negative   Positive
+                    PREDICTION
+```
+
+
+If a confusion matrix has false positives and no false negatives** (only value on the first diagonal TN and TP), then there is **no Recall–Precision trade-off**.
+
+The trade-off is not a mathematical rule. It appears **only when classes overlap** and the model makes errors. In a **perfectly separable problem**, both metrics can be maximized simultaneously. But in real life, perfect models simply don't exist.
+
+I might decide to come back alone, but this Friday night, don’t ask me why, a whole group of nursing school students decided to celebrate the end of their exams at the same place. And, of course, what had to happen… happened. I couldn’t keep my promise.
+
+Or maybe it’s the other way around: tonight, for sure, I’m going to go wild... Except I twist my ankle getting out of the car, and once inside the club, I spend the entire night whining on a couch. Perfection is definitively NOT of this world.
 
 
 
