@@ -620,7 +620,7 @@ REALITY       ├────────────┼────────
                        PREDICTION
 ```
 
-#### Step 3 — Accuracy calculation
+**Step 3 — Accuracy calculation**
 {: .no_toc }
 
 Accuracy is defined as:
@@ -644,7 +644,7 @@ $$
 This model is **almost always wrong**, despite predicting fraud constantly.
 
 
-#### The Real Trap (the opposite dummy)
+### **The Real Trap (the opposite dummy)**
 {: .no_toc }
 
 Let’s flip the strategy and predict "Legitimate" 100% of the time.
@@ -1530,12 +1530,10 @@ Now let’s translate that into metrics.
 
 
 
-#### Recall cares about **missed positives**
+#### **Recall cares about missed positives**
 {: .no_toc }
 
-```
-Recall = TP / (TP + FN)
-```
+$$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
 
 When we raise the Threshold:
 
@@ -1546,12 +1544,10 @@ When we raise the Threshold:
 
 
 
-#### Precision cares about **mistaken positives**
+#### **Precision cares about mistaken positives**
 {: .no_toc }
 
-```
-Precision = TP / (TP + FP)
-```
+$$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$
 
 When we raise the Threshold:
 
@@ -1561,7 +1557,7 @@ When we raise the Threshold:
 
 
 
-#### Same action, opposite effects
+#### **Same action, opposite effects**
 {: .no_toc }
 
 ```
@@ -1574,7 +1570,7 @@ This is why Precision and Recall feel like they fighting political parties. But 
 
 
 
-#### Why this is fundamentally a trade-off
+#### **Why this is fundamentally a trade-off**
 {: .no_toc }
 
 Here is the part worth remembering: "Asking for a given Recall value implicitly fixes the best Precision we can hope for (and vice versa)."
