@@ -93,9 +93,9 @@ One day, a great Machine Learning philosopher once whispered to me: "Listen, kid
 
 At one of the very early steps of the process, before jumping into modeling, optimization, and all that fun stuff with Scikit-Learn, it’s absolutely crucial to choose a metric, to be able to explain *why* you chose it, to set yourself a goal, and to stick to it. And honestly, that’s usually the hardest part. Because when we don’t get the results we want, we all have a tendency to "bend the data" until it says what we want to hear, and that is a **very, very bad idea**.
 
-When I say "choose a metric," right away you start hearing words like *Recall*, *Precision*, *F1 Score*, *Accuracy*… On top of that, people start talking about the confusion matrix. And that’s usually where I completely lose my footing.
+When I say "choose a metric," right away you start hearing words like *Recall*, *Precision*, *F1-score*, *Accuracy*… On top of that, people start talking about the confusion matrix. And that’s usually where I completely lose my footing.
 
-Let’s be clear: I have no problem with the F1 Score itself, or with formulas in general. No, no, it is even worst than that. The real issue was that for a very long time, I just couldn’t wrap my head around how the *labels* in the confusion matrix were written: `TP`, `FP`, `TN`, and `FN`.
+Let’s be clear: I have no problem with the F1-score itself, or with formulas in general. No, no, it is even worst than that. The real issue was that for a very long time, I just couldn’t wrap my head around how the *labels* in the confusion matrix were written: `TP`, `FP`, `TN`, and `FN`.
 
 Which made it… somewhat awkward to properly explain my choices. But that was before. Since then, I went to Lourdes, I [saw the light](https://en.wikipedia.org/wiki/Lourdes_apparitions), and now I *almost* understand everything.
 
@@ -387,13 +387,13 @@ $$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
 
 
 <!-- ###################################################################### -->
-### F1 Score
+### F1-score
 {: .no_toc }
 
-$$\text{F1 Score} = \frac{2}{\frac{1}{\text{Precision}} + \frac{1}{\text{Recall}}}$$
+$$\text{F1-score} = \frac{2}{\frac{1}{\text{Precision}} + \frac{1}{\text{Recall}}}$$
 
-* The `F1 Score` is the harmonic mean of `Precision` and `Recall`
-* The `F1 Score` looks for a compromise between `Precision` and `Recall`
+* The `F1-score` is the harmonic mean of `Precision` and `Recall`
+* The `F1-score` looks for a compromise between `Precision` and `Recall`
 * **Storytelling:** "How well am I balancing finding all the positives with not crying wolf?"
 
 Let's go back to the nightclub. I could adopt two extreme strategies:
@@ -402,7 +402,7 @@ Let's go back to the nightclub. I could adopt two extreme strategies:
 
 2. **The overcautious guy:** I only predict success when I'm absolutely certain (say, when a girl has already shared her phone number while we were queuing outside the nightclub). Sure, when I make a prediction, I'm almost always right (Precision ≈ 100%). But I miss tons of opportunities I didn't dare call (Recall in the gutter).
 
-The F1 Score tells us "Pick a lane, buddy, but not an extreme one." It forces us to find a balance. And here's the key property of the harmonic mean: it punishes imbalance harshly. If one metric is great but the other is terrible, the F1 Score stays low. You can't hide a weakness by excelling elsewhere.
+The F1-score tells us "Pick a lane, buddy, but not an extreme one." It forces us to find a balance. And here's the key property of the harmonic mean: it punishes imbalance harshly. If one metric is great but the other is terrible, the F1-score stays low. You can't hide a weakness by excelling elsewhere.
 
 If you remember your physics classes, the harmonic mean shows up in two classic situations:
 
@@ -975,7 +975,7 @@ Now let's compute "by hands" our metrics:
 - **Accuracy** = (96 + 45) / 179 = 141 / 179 ≈ **0.788** This matches what sklearn reported
 - **Precision** = 45 / (45 + 14) = 45 / 59 ≈ **0.763** "When I predict survival, I'm right 76% of the time"
 - **Recall** = 45 / (45 + 24) = 45 / 69 ≈ **0.652** "I found 65% of the actual survivors"
-- **F1 Score** = 2 × (0.763 × 0.652) / (0.763 + 0.652) ≈ **0.703**
+- **F1-score** = 2 × (0.763 × 0.652) / (0.763 + 0.652) ≈ **0.703**
 
 What does this tell us? Our model is more cautious than aggressive. It's better at not crying wolf (decent `Precision`) than at finding all survivors (lower `Recall`). In other words, when it predicts someone will survive, it's fairly reliable. But it misses about a third of the actual survivors.
 
@@ -1913,12 +1913,12 @@ If there’s one thing this long detour through confusion matrices, metrics, thr
 
 Looking back at my personal confusion matrix, the verdict is brutal but fair:
 
-* My **Recall** was phenomenal. I *never* missed an opportunity to predict success.
-* My **Precision**, on the other hand… Let’s say it was more "optimistic" than "scientific".
-* My **Accuracy**? Technically measurable, emotionally questionable.
-* And the **F1-score** politely suggests I should maybe have spent more time calibrating my threshold instead of rehearsing dance moves.
+* My Recall was phenomenal. I *never* missed an opportunity to predict success.
+* My Precision, on the other hand… Let’s say it was more "optimistic" than "scientific".
+* My Accuracy? Technically measurable, emotionally questionable.
+* And the F1-score politely suggests I should have spent more time calibrating my Threshold instead of rehearsing dance moves.
 
-In other words, I was an overconfident classifier operating with a catastrophically low decision threshold. Every weak signal was interpreted as a strong positive. A smile? Positive. Eye contact? Definitely positive. Standing within a 3-meter radius? Highly positive. The model was clearly overfitting on noise.
+In other words, I was an overconfident classifier operating with a catastrophically low decision Threshold. Every weak signal was interpreted as a strong positive. A smile? Positive. Eye contact? Definitely positive. Standing within a 3-meter radius? Highly positive. The model was clearly overfitting on noise.
 
 And that’s exactly the point. The confusion matrix is not about math for the sake of math. It’s a mirror. It forces us to confront *how* we are wrong, not just *how often*. It tells we whether we cry wolf too much, miss real signals, or proudly achieve 99% accuracy while being completely useless.
 
@@ -1927,13 +1927,12 @@ Once we understand that:
 * Thresholds stop being "technical details"
 * And metric selection stops being an afterthought
 
-They become **explicit choices about the mistakes we are willing to make**.
+They become explicit choices about the mistakes we are willing to make.
 
 So whether we are building a fraud detector, a medical test, a recommender system, or just trying to predict how our Friday night will end, we should remember this:
 **the world doesn’t reward confidence, it rewards calibrated confidence**.
 
-As for me? I eventually adjusted my model, raised my threshold, improved my precision… and married my best True Positive.
-Not bad for a guy who started with 70 false alarms.
+As for me? I eventually adjusted my model, raised my threshold, improved my precision… and married my best True Positive. Not bad for a guy who started with 70 false alarms.
 
 
 
