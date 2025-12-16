@@ -1692,44 +1692,44 @@ In other words a toy dataset or a miracle. For real-world problems, Precision an
 <!-- ###################################################################### -->
 ## How to select a Metric?
 
-### Ideas to explore
+
+<!-- ###################################################################### -->
+### When Precision is King: "The Guillotine of Innocence"
 {: .no_toc }
 
-* Sex films among cartoons for kids
-* CB
-* Spam
-* Find really weird examples 😁
-
-
-
-
-
-
-
-<!--
-
-
-### **1. When PRECISION is King: "The Guillotine of Innocence"**
 **Context:** A system that predicts who is a secret vampire to be executed.
-*   **Scenario:** The town's ancient law states: "If the predictor says 'VAMPIRE,' execution is immediate and irreversible." A false positive means killing an innocent human.
-*   **Ridiculous Outcome:** The predictor, to be "safe," only labels 1 person as a vampire every decade. It's almost always the eccentric old historian who collects garlic. **Precision is 100%** (when it predicts vampire, it's correct), but **Recall is terrible** (99% of vampires roam free). The town feels "accurate," but is actually overrun by vampires.
-*   **Why Precision Matters:** The cost of a false positive (executing an innocent) is catastrophically high and unethical. You must be *certain* when you trigger the positive action.
+*   **Scenario:** The town's ancient law states: "If the predictor says `VAMPIRE` execution is immediate and irreversible." A false positive means killing an innocent human.
+*   **Ridiculous Outcome:** The predictor, to be "safe" only labels 1 person as a vampire every decade. It's almost always the eccentric old historian who collects garlic. **Precision is 100%** (when it predicts vampire, it's correct), but **Recall is terrible** (99% of vampires roam free). The town feels "accurate" but is actually overrun by vampires.
+*   **Why Precision Matters:** The cost of a false positive (executing an innocent) is catastrophically high and unethical. We must be *certain* when we trigger the positive action.
 
 **Other Examples:**
 *   **Spam Filter for Your Wedding RSVPs:** If it flags a genuine guest's "Yes" as spam, they might not get a seat. You'd rather let some spam through (lower Recall) than miss Aunt Martha's reply.
 *   **Targeted Gold Bar Delivery:** A drone system identifies houses for gold bar delivery. Sending a bar to the wrong house (false positive) is a massive financial loss. Better to deliver to fewer, absolutely sure houses.
+*   **Buck Rogers’ auto-fire laser:** Buck Rogers’ ship auto-fires when it detects "enemy spacecraft". False Positive = vaporizing Princess Ardala’s limousine. False Negative = letting enemy fighters escape. Buck would rather miss than accidentally start an interplanetary war. Extreme Precision required.
 
-### **2. When RECALL is Critical: "The Missed Meteor"**
+
+
+
+<!-- ###################################################################### -->
+### When Recall is Critical: "The Missed Meteor"
+{: .no_toc }
+
 **Context:** A global early-warning system for civilization-ending asteroid impacts.
 *   **Scenario:** The AI scans the sky. A false negative means the system says "all clear" when a deadly asteroid is inbound (doom for humanity). A false positive means a costly global alarm and panic for no reason.
-*   **Ridiculous Outcome:** The system is calibrated to avoid false alarms. **Accuracy is 99.99%** because impacts are rare. But it has **poor Recall**—it misses 1 in 10 real killer asteroids. Humanity is wiped out because we optimized for a quiet, "accurate" system.
+*   **Ridiculous Outcome:** The system is calibrated to avoid false alarms. **Accuracy is 99.99%** because impacts are rare. But it has **poor Recall**. It misses 1 in 10 real killer asteroids. Humanity is wiped out because we optimized for a quiet, "accurate" system. Too bad...
 *   **Why Recall Matters:** The cost of missing a positive instance (a real threat) is existential. You must catch *almost all* threats, even if it means frequent false alarms.
 
 **Other Examples:**
 *   **HIV Blood Test:** Telling someone they are HIV-negative when they are positive (false negative) prevents life-saving treatment and leads to further transmissions. You want the test to catch *every single* positive case, even if it means some false scares.
 *   **Search & Rescue Drone:** Looking for a lost child in a forest. Flagging a log as the child (false positive) wastes time. *Not* flagging the actual child (false negative) is an unthinkable tragedy. Maximize finding the child at all costs.
+*   **Predator cloaking detection:** A human AI tries to detect "invisible Predators". False Negative = Predator eats you. False Positive = shooting at trees. Shooting at trees is acceptable while being eaten is not. => Maximize Recall
 
-### **3. When the F1-Score (Balance) is Essential: "The Psychic Friend Recommender"**
+
+
+<!-- ###################################################################### -->
+### When the F1-Score is Essential: "The Psychic Friend Recommender"
+{: .no_toc }
+
 **Context:** An algorithm for a social app that identifies and recommends potential "best friends" to users.
 *   **Scenario:** If it's too strict (high Precision), you get very few, maybe perfect matches, but you miss out on many other great friends (low Recall). If it's too lax (high Recall), it recommends everyone, including terrible matches, flooding you with spam "friendship" requests (low Precision).
 *   **Ridiculous Outcome:** **Optimizing only for Accuracy** leads to a useless app: it's easy to be "accurate" by just saying "NO" to everyone (since true friends are rare). You need the **F1-Score** to balance between being a lonely hermit (high Precision) and a desperate networker flooded with incompatible pals (high Recall).
@@ -1739,7 +1739,14 @@ In other words a toy dataset or a miracle. For real-world problems, Precision an
 *   **Factory QA for Expensive Gadgets:** Flagging too many good gadgets as defective (false positives) wastes money. Letting too many defective gadgets through (false negatives) ruins your brand. Both are costly; you need a balance.
 *   **Document Triage for Legal Discovery:** Finding "smoking gun" emails in a million documents. Missing a key email (false negative) loses the case. Flagging too many irrelevant emails (false positive) buries lawyers in wasted time. Balance is key.
 
-### **4. When ACCURACY is Actually Meaningful: "The Potato-Chip Sorting Oracle"**
+
+
+
+
+<!-- ###################################################################### -->
+### When Accuracy is Meaningful: "The Potato-Chip Sorting Oracle"
+{: .no_toc }
+
 **Context:** An automated optical sorter in a chip factory separating perfect chips from broken bits (burned, too small, etc.).
 *   **Scenario:** The process is binary: keep (good) or reject (bad). The pieces look very different. A false positive (sending a broken bit to the bag) angers one customer. A false negative (throwing away a perfect chip) costs a tiny fraction of a cent.
 *   **Ridiculous Outcome:** Focusing only on **Recall** (catch all broken bits) might lead to rejecting 30% of perfect chips, destroying profit. Focusing only on **Precision** (ensure every rejected item is truly bad) might let too many broken bits through. Here, **Overall Accuracy** is a fantastic simple metric because the classes are roughly balanced and the costs of both errors are similar and *low*.
@@ -1748,359 +1755,21 @@ In other words a toy dataset or a miracle. For real-world problems, Precision an
 **Other Examples:**
 *   **Broadcast Weather (Rain/No Rain):** For most people, the cost of carrying an umbrella on a sunny day is similar to the cost of getting wet. A false positive and a false negative are equally annoying. Being correct most of the time (accuracy) is what builds trust.
 *   **Trivia Bot Answer Classification (Right/Wrong):** You're gauging its general knowledge. Neither type of error (calling a right answer wrong or vice versa) is more costly than the other. You just want it to be correct as often as possible.
+*   **Predator's "Should I Attack Earth?" Decision Model** Training data: 999,999 days of "Earth not worth attacking", 1 day of "Schwarzenegger is here!". Model: "Never attack Earth" → 99.9999% accuracy! Predator elders: "Our model has six nines of accuracy!". Predator warriors: "But we never get to hunt anything...". Dies of boredom with perfect accuracy scores.
 
-Choosing a metric isn't a technical afterthought—it's a **value judgment** about what kind of mistakes you're willing to make. These shocking examples force that point home.
 
 
 
--->
 
+<!-- ###################################################################### -->
+### Things to keep in mind
+{: .no_toc }
 
-
-
-
-
-
-<!--
-
-
-CHAT GPT Test 2
-
-Parfait Philippe — là on est exactement dans le **pédagogique mémorable**, celui que le cerveau n’oublie jamais 😄
-Voici donc des **exemples volontairement idiots, absurdes, pop-culture**, mais **techniquement justes**, chacun illustrant **POURQUOI un metric précis est le seul raisonnable à suivre**.
-Tout est en **US English**, avec un ton léger que tu peux assumer sur un site web.
-
-
-
-## 1️⃣ Precision is the metric that matters
-
-👉 *"When a false positive is deeply, profoundly embarrassing (or fatal)"*
-
-### Example 1 — Predator hunting license
-
-> A Predator’s helmet AI detects *"acceptable prey"*.
-
-* **Positive prediction** = *"Shoot immediately"*
-* False Positive = shooting a kindergarten teacher by mistake
-* False Negative = letting Arnold Schwarzenegger escape again
-
-➡️ Predators don’t care if prey escapes
-➡️ They **do care** about hunting the wrong species
-➡️ **Precision over Recall**
-
-
-
-### Example 2 — Alien facehugger deployment system
-
-> The Alien ship launches facehuggers at *"viable hosts"*.
-
-* False Positive = facehugger jumps on a cat 🐱
-* False Negative = missing a perfectly good human
-
-➡️ Once a facehugger launches, there is **no undo button**
-➡️ The system must be right *when it says YES*
-➡️ **Precision matters**
-
-
-
-### Example 3 — Buck Rogers’ auto-fire laser
-
-> Buck Rogers’ ship auto-fires when it detects *"enemy spacecraft"*.
-
-* False Positive = vaporizing Princess Ardala’s limousine 🚀💥
-* False Negative = letting enemy fighters escape
-
-➡️ Buck would rather miss than accidentally start an interplanetary war
-➡️ **Extreme Precision required**
-
-
-
-## 2️⃣ Recall is the metric that matters
-
-👉 *"Missing a positive is worse than looking ridiculous"*
-
-### Example 1 — Motion detector on LV-426
-
-> A Colonial Marines sensor detects *"life forms"*.
-
-* False Negative = *"They’re in the walls."*
-* False Positive = beeping at a coffee mug ☕
-
-➡️ Nobody complains about false alarms
-➡️ Missing **one Alien** is game over
-➡️ **Recall above all**
-
-
-
-### Example 2 — Predator cloaking detection
-
-> A human AI tries to detect *"invisible Predators"*.
-
-* False Negative = Predator eats you
-* False Positive = shooting at trees 🌳
-
-➡️ Shooting at trees is acceptable
-➡️ Being eaten is not
-➡️ **Maximize Recall**
-
-
-
-### Example 3 — Princess Ardala’s betrayal detector
-
-> An AI predicts whether someone is *"about to betray Buck Rogers"*.
-
-* False Negative = Buck gets betrayed
-* False Positive = awkward trust issues
-
-➡️ Better paranoid than stabbed
-➡️ **Recall wins**
-
-
-
-## 3️⃣ F1-score is the metric that matters
-
-👉 *"Both kinds of mistakes are equally painful"*
-
-### Example 1 — Dating app for humans and aliens
-
-> Your matching app predicts *"potential romantic match"*.
-
-* False Positive = you date a **three-headed Blue Venusian covered in spikes**
-* False Negative = you miss your actual soulmate
-
-➡️ Too many false positives = emotional trauma
-➡️ Too many false negatives = eternal loneliness
-➡️ **Precision AND Recall must be balanced → F1-score**
-
-
-
-### Example 2 — Predator prey selection assistant
-
-> An AI selects *"worth hunting"* targets.
-
-* False Positive = humiliating hunt
-* False Negative = boring hunt
-
-➡️ Predators want **quality and quantity**
-➡️ Balanced performance matters
-➡️ **F1-score**
-
-
-
-### Example 3 — Sci-Fi convention cosplay detector
-
-> An AI flags *"real aliens vs humans in costumes"*.
-
-* False Positive = tasering a cosplayer 👽
-* False Negative = letting a real Alien roam free
-
-➡️ Neither outcome is good
-➡️ **Balance is required**
-
-
-
-## 4️⃣ Accuracy is the metric that matters
-
-👉 *"When the universe is fair and nothing really matters"*
-
-### Example 1 — Buck Rogers coin-flip AI
-
-> An AI predicts whether Buck’s catchphrase will be *"Yes"* or *"Absolutely"*.
-
-* Balanced outcomes
-* No consequences whatsoever
-
-➡️ Accuracy is perfectly fine
-
-
-
-### Example 2 — Random robot insult generator
-
-> A robot predicts which insult will annoy humans more.
-
-* All classes equally likely
-* All mistakes equally funny
-
-➡️ Accuracy is enough
-
-
-
-### Example 3 — Space bar jukebox
-
-> A machine predicts which 80s sci-fi song someone will choose.
-
-* No catastrophic errors
-* Balanced preferences
-
-➡️ **Accuracy works**
-
-
-
-## ✨ Why this works so well in an article
-
-These examples:
-
-* trigger **visual imagination**
-* create **emotional asymmetry** (embarrassment vs death vs loneliness)
-* naturally map to **confusion matrix logic**
-
-If you want next:
-
-* I can **turn each example into a confusion matrix**
-* or **add one-sentence "metric moral" captions**
-* or help you **thread them into a narrative flow**
-
-Just say the word 🚀
-
-
-
-
-
-
-
-
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-<!--
-CLAUDE TESt 2
-
-
-Ah, parfait ! Je vois exactement ce que tu veux - des exemples mémorables par l'absurde plutôt que par le drame. Voici une nouvelle version beaucoup plus fun :
-
-## **PRECISION** (minimizing false positives)
-
-**Example 1: Alien Xenomorph's Prey Detection System**
-- The xenomorph's neural implant flags "DELICIOUS HUMAN!" for literally everything
-- 99% false positives: attacks space rocks, coffee machines, its own tail
-- Perfect Recall (never misses a human), but spends all day humping furniture
-- Dies of exhaustion before actually catching anyone
-
-**Example 2: My Dating App's "Perfect Match" Algorithm**
-- I'm looking for a nice Earthling who enjoys Netflix and pizza
-- App keeps matching me with three-headed blue Venusians covered in poisonous spikes
-- "You have 847 new matches! They're ALL Venusians!"
-- Everyone knows what Venusians look like in 2024, come on algorithm!
-- Sure, it never misses an actual match, but 99.9% are completely undatable (literally)
-
-**Example 3: Predator's Thermal Vision "Worthy Opponent" Detector**
-- Flags every mammal with body heat as "WORTHY PREY FOR GLORIOUS COMBAT"
-- Predator spends weeks stalking a particularly aggressive squirrel
-- "This 200g rodent shall bring honor to my clan!"
-- Meanwhile, Arnold Schwarzenegger escapes because Predator was busy with hamsters
-
-
-
-## **RECALL** (minimizing false negatives)
-
-**Example 1: Buck Rogers' "Is This Princess Ardala in Disguise?" Scanner**
-- Ultra-conservative model: "Eh, probably not Ardala" for literally everyone
-- Misses Ardala 8 times out of 10 because she changed her lipstick shade
-- Buck keeps getting seduced and betrayed: "How was I supposed to know?!"
-- Meanwhile his scanner confidently reports "All clear, no evil space princesses detected"
-
-**Example 2: Robot Butler's "Is This Food Poisoned?" Detector**
-- Trained to only flag something as poisoned if it's literally glowing green and smoking
-- "Well, it doesn't match my training data exactly, so probably fine!"
-- Misses 40% of actually poisoned meals because they're too subtle
-- Your obituary: "Death by overly precise food safety model"
-
-**Example 3: Spaceship's "Asteroid Ahead" Warning System**
-- Only triggers for asteroids that look EXACTLY like the training images
-- Misses the space iceberg because "it's technically a comet, not an asteroid"
-- Ship's computer: "No asteroids detected" *CRASH*
-- Captain's last words: "But the Recall was so good in testing!"
-
-
-
-## **F1-SCORE** (when both mistakes are equally ridiculous)
-
-**Example 1: Alien's "Is This Thing Trying to Mate with Me?" Classifier**
-- False positives: Alien aggressively courts the spaceship's air conditioning unit for three weeks
-- False negatives: Completely ignores actual mating signals from compatible species
-- Both scenarios end with lonely aliens and very confused machinery
-- Species goes extinct because the model couldn't balance Precision and Recall
-
-**Example 2: Space Station's "Is This Person a Hologram or Real?" Detector**
-- False positives: Shoots real visitors with "hologram disruptor" rays (oops, murder)
-- False negatives: Serves dinner to holograms, wastes all the food
-- Both errors are equally embarrassing at the intergalactic diplomatic summit
-- Need perfect F1-score or you're either a murderer or the galaxy's biggest fool
-
-**Example 3: My Roomba's "Is This Cat Poop or Chocolate?" Vision System**
-- False positives: Throws away my expensive artisanal chocolate (I cry)
-- False negatives: Spreads cat poop across the entire apartment in perfect circles (I die inside)
-- Both mistakes result in me screaming at a robot vacuum
-- This is why F1-score matters, people!
-
-
-
-## **ACCURACY** (the hilariously useless metric)
-
-**Example 1: Predator's "Should I Attack Earth?" Decision Model**
-- Training data: 999,999 days of "Earth not worth attacking", 1 day of "Schwarzenegger is here!"
-- Model: "Never attack Earth" → 99.9999% accuracy! 🎉
-- Predator elders: "Our model has six nines of accuracy!"
-- Predator warriors: "But we never get to hunt anything..."
-- Dies of boredom with perfect accuracy scores
-
-**Example 2: Dating App's "Is This a Bot?" Detector**
-- Dataset: 99.99% real humans, 0.01% bots
-- Model strategy: "Everything is human" → Amazing accuracy!
-- Me: Married to a spam bot that only talks about cryptocurrency
-- App proudly displays: "99.99% accurate bot detection!"
-- My wedding vows: "I love you and your 15 daily NFT recommendations"
-
-**Example 3: Buck Rogers' "Is the Ship Going to Explode Today?" Alarm**
-- 40 years of flight logs: 99.999% "no explosion"
-- Model learns: "Ship never explodes" → Incredible accuracy!
-- One day: *actual critical failure starts*
-- Ship's computer: "Everything is fine! My accuracy is 99.999%!"
-- Buck's last thought: "At least the model was accurate... right up until it wasn't"
-
-
-
-Voilà ! Des exemples beaucoup plus légers qui devraient faire sourire tout en faisant passer le message. 😄 Le principe reste le même mais avec des Venusiennes, des Predators confus, et des robots aspirateurs traumatisés !
-
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Choosing a metric isn't a technical afterthought—it's a **value judgment** about what kind of mistakes you're willing to make. These shocking examples force that point home.
+* Think in terms of cost
+    * What is the cost of missing a positive instance => Recall high => Precision low
+* Think in term of strictness
+    * Strict = Precision high = Recall low
 
 
 
