@@ -39,7 +39,9 @@ A gentle, story-driven introduction so you’ll never be confused again.
 {: .no_toc }
 * For beginners
 * In a ML context but applicable elsewhere
-* In the confusion matrix we indicate whether the prediction is correct (T/F) + the kind of prediction (P/N)
+* In the confusion matrix we indicate whether the prediction was correct (T/F) + the kind of prediction (P/N)
+* **Pre**cision cares about mistaken **po**sitives
+* Recall cares about missed positives
 * For binary classifiers and beyond
 
 
@@ -66,7 +68,7 @@ A gentle, story-driven introduction so you’ll never be confused again.
 <!-- ###################################################################### -->
 ## Introduction
 
-One day, a great Machine Learning philosopher once whispered to me: “Listen, kid. A Machine Learning project is just like a dish in a fine restaurant. Every step matters, especially the first ones. You can plate it beautifully, serve it with elegance, even impress the critics… but if the recipe is bad, the dish will never be good. And trust me — no amount of fancy deployment can save a rotten model. Capiche?”
+One day, a great Machine Learning philosopher once whispered to me: "Listen, kid. A Machine Learning project is just like a dish in a fine restaurant. Every step matters, especially the first ones. You can plate it beautifully, serve it with elegance, even impress the critics… but if the recipe is bad, the dish will never be good. And trust me, no amount of fancy deployment can save a rotten model. Capiche?"
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
@@ -83,15 +85,15 @@ One day, a great Machine Learning philosopher once whispered to me: “Listen, k
 | Deployment & Monitoring   | Serve the dish, maintain quality |
 
 
-At one of the very early steps of the process — before jumping into modeling, optimization, and all that fun stuff with Scikit-Learn — it’s absolutely crucial to choose a metric, to be able to explain *why* you chose it, to set yourself a goal, and to stick to it. And honestly, that’s usually the hardest part. Because when we don’t get the results we want, we all have a tendency to “bend the data” until it says what we want to hear — and that is a **very, very bad idea**.
+At one of the very early steps of the process, before jumping into modeling, optimization, and all that fun stuff with Scikit-Learn, it’s absolutely crucial to choose a metric, to be able to explain *why* you chose it, to set yourself a goal, and to stick to it. And honestly, that’s usually the hardest part. Because when we don’t get the results we want, we all have a tendency to "bend the data" until it says what we want to hear, and that is a **very, very bad idea**.
 
-When I say “choose a metric,” right away you start hearing words like *Recall*, *Precision*, *F1 score*, *Accuracy*… On top of that, people start talking about the confusion matrix. And that’s usually where I completely lose my footing.
+When I say "choose a metric," right away you start hearing words like *Recall*, *Precision*, *F1 Score*, *Accuracy*… On top of that, people start talking about the confusion matrix. And that’s usually where I completely lose my footing.
 
-Let’s be clear: I have no problem with the F1 score itself, or with formulas in general. No, no, it is even worst than that. The real issue was that for a very long time, I just couldn’t wrap my head around how the *labels* in the confusion matrix were written: `TP`, `FP`, `TN`, and `FN`.
+Let’s be clear: I have no problem with the F1 Score itself, or with formulas in general. No, no, it is even worst than that. The real issue was that for a very long time, I just couldn’t wrap my head around how the *labels* in the confusion matrix were written: `TP`, `FP`, `TN`, and `FN`.
 
 Which made it… somewhat awkward to properly explain my choices. But that was before. Since then, I went to Lourdes, I [saw the light](https://en.wikipedia.org/wiki/Lourdes_apparitions), and now I *almost* understand everything.
 
-So yeah — that’s exactly what we’re going to talk about in this post. As usual, I’ll start very slowly, without assuming anything about your math background (okay, you still need to know how to add and divide), but by the end — pinky swear — your ideas will be crystal clear. You’ll be able to choose and explain the metric for your ML project… and also to legitimately worry if a test tells you that you may have caught this or that disease.
+So yeah, that’s exactly what we’re going to talk about in this post. As usual, I’ll start very slowly, without assuming anything about your math background (okay, you still need to know how to add and divide), but by the end, pinky swear, your ideas will be crystal clear. You’ll be able to choose and explain the metric for your ML project… and also to legitimately worry if a test tells you that you may have caught this or that disease.
 
 Alright. Let’s get started.
 
@@ -106,24 +108,24 @@ Alright. Let’s get started.
 <!-- ###################################################################### -->
 ## Drawing The Matrix
 
-To kick things off, I want to finally put to rest this whole “how do I draw a confusion matrix?” question.
+To kick things off, I want to finally put to rest this whole "how do I draw a confusion matrix?" question.
 
-Let’s imagine we have some “thing” that makes predictions. It could be a ML model, a pregnancy test, a fortune teller… whatever you want, it’s your story.
+Let’s imagine we have some "thing" that makes predictions. It could be a ML model, a pregnancy test, a fortune teller… whatever you want, it’s your story.
 
 Now, this binary predictor will sometimes get things right and sometimes get things wrong. If you look closer, you can actually split its predictions into four categories:
 
-1. I said before going into the club that I was going to leave with a girl, and sure enough, I left with the one who became my wife (poor thing, for better or for worse, as they say…)
-1. I said before going into the club that I was going to leave with a girl, but no luck, I went home alone.
-1. I said before going into the club that I wasn’t going to leave with a girl, and… I went home alone.
-1. I said before going into the club that I wasn’t going to leave with a girl, but the way I danced to those wild beats… I ended up leaving with the most beautiful girl of the night.
+1. I said, before going into the club, that I was going to leave with a girl, and sure enough, I left with the one who became my wife (poor thing, for better or for worse, as they say…)
+1. I said, before going into the club, that I was going to leave with a girl, but no luck, I went home alone.
+1. I said, before going into the club, that I wasn’t going to leave with a girl, and… I went home alone.
+1. I said, before going into the club, that I wasn’t going to leave with a girl, but the way I danced to those wild beats… I ended up leaving with the most beautiful girl of the night.
 
 Yeah, I know, the example is silly, but that’s the point—it sticks in your mind. And trust me, when it comes to ridiculous examples, you haven’t seen anything yet. The worst is yet to come…
 
-So, we can sum all this up in a table to evaluate how good the predictions are. If you go clubbing twice a week on average, by the end of the year you’ve made 104 predictions… and now it’s starting to look legit.
+So, we can sum all this up in a table to evaluate how good the predictions are. If you go clubbing twice a week on average, by the end of the year you’ve made 104 predictions… and now it’s starting to look credible.
 
-Anyway, in the previous paragraph, the key word is “**evaluate the accuracy of the predictions**”. Yeah, I know, that’s more than one word.
+Anyway, in the previous paragraph, the key word is "**evaluate the accuracy of the predictions**". Yeah, I know, that’s more than one word.
 
-What we’re going to do now is make a two-way table: on one side, you put the predictions, and on the other, you put reality. So it’s a “Reality vs. Predictions” matrix, and for now, don’t worry about which is the row and which is the column.
+What we’re going to do now is make a two-way table: on one side, you put the predictions, and on the other, you put reality. So it’s a "Reality vs. Predictions" matrix, and for now, don’t worry about which is the row and which is the column.
 
 Now, **THE REALLY IMPORTANT THING** is that in each cell of the table, we will indicate:
 1. whether **the prediction was correct**
@@ -146,7 +148,7 @@ REALITY       ├──────────┼──────────
                     PREDICTION
 ```
 
-Which we will fill in together by announcing what we do “out loud.”
+Which we will fill in together by announcing what we do "out loud."
 
 **The data:**
 At the end of the year, out of 104 outings, I said I was going to go out with a girl 80 times, but in fact I came home alone 70 times. On the other 24 outings where I said I was going to be serious, I only kept my word 18 times.
@@ -384,8 +386,8 @@ $$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
 
 $$\text{F1 Score} = \frac{2}{\frac{1}{\text{Precision}} + \frac{1}{\text{Recall}}}$$
 
-* The `F1 score` is the harmonic mean of `Precision` and `Recall`
-* The `F1 score` looks for a compromise between `Precision` and `Recall`
+* The `F1 Score` is the harmonic mean of `Precision` and `Recall`
+* The `F1 Score` looks for a compromise between `Precision` and `Recall`
 * **Storytelling:** "How well am I balancing finding all the positives with not crying wolf?"
 
 Let's go back to the nightclub. I could adopt two extreme strategies:
@@ -394,7 +396,7 @@ Let's go back to the nightclub. I could adopt two extreme strategies:
 
 2. **The overcautious guy:** I only predict success when I'm absolutely certain (say, when a girl has already shared her phone number while we were queuing outside the nightclub). Sure, when I make a prediction, I'm almost always right (Precision ≈ 100%). But I miss tons of opportunities I didn't dare call (Recall in the gutter).
 
-The F1 score tells us "Pick a lane, buddy, but not an extreme one." It forces us to find a balance. And here's the key property of the harmonic mean: it punishes imbalance harshly. If one metric is great but the other is terrible, the F1 score stays low. You can't hide a weakness by excelling elsewhere.
+The F1 Score tells us "Pick a lane, buddy, but not an extreme one." It forces us to find a balance. And here's the key property of the harmonic mean: it punishes imbalance harshly. If one metric is great but the other is terrible, the F1 Score stays low. You can't hide a weakness by excelling elsewhere.
 
 If you remember your physics classes, the harmonic mean shows up in two classic situations:
 
@@ -437,7 +439,7 @@ At this point, it is important to make the distinction between [`Accuracy` and `
 <span><b>Accuracy & Precision</b></span>
 </div>
 
-Indeed, you can have low accuracy even with a high precision. See the top-left example below:
+Indeed, you can have low accuracy even with a high Precision. See the top-left example below:
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="600" loading="lazy"/><br/>
@@ -547,7 +549,7 @@ To build intuition, let’s look at real-world orders of magnitude.
 * In France, credit card fraud represents about [0.015%](https://www.banque-france.fr/en/press-release/ecb-and-eba-publish-joint-report-payment-fraud) of transactions. This means 15 frauds for 100_000 transactions, let's say roughly 1 for 1_000_000.
 * On the other hand, the probability of being struck by lightning in a given year is often quoted around [1 in 1_000_000](https://www.cchst.ca/oshanswers/safety_haz/weather/lightning.html).
 
-Fraud is exceptionally rare and this rarity is the root cause of many evaluation mistakes.
+So fraud is exceptionally rare and this rarity is the root cause of many evaluation mistakes.
 
 
 ### A simple thought experiment
@@ -642,7 +644,7 @@ $$
 This model is **almost always wrong**, despite predicting fraud constantly.
 
 
-### Now the opposite dummy (the real trap)
+#### The Real Trap (the opposite dummy)
 {: .no_toc }
 
 Let’s flip the strategy and predict "Legitimate" 100% of the time.
@@ -677,18 +679,18 @@ $$
 Accuracy answers the question "How often is the model correct overall?". However with imbalanced datasets, this question is almost meaningless, because:
 
 * The majority class dominates the metric
-* A model can ignore the minority class completely and still look “excellent”
+* A model can ignore the minority class completely and still look "excellent"
 
 In fraud detection, missing fraud is far more costly than mislabeling a legitimate transaction but Accuracy treats all errors equally.
 
 
-### Why we need Precision and Recall?
+### Why do we need Precision and Recall?
 {: .no_toc }
 
 To properly evaluate models under imbalance, we need metrics that focus on the rare class:
 
-* **Recall (Sensitivity):** "Out of all real frauds, how many did we catch?"
-* **Precision:** "Out of all transactions flagged as fraud, how many were actually fraud?"
+* **Recall (Sensitivity):** "Out of all real frauds, how many did we catch?" (do you see the bottom line in your mind?)
+* **Precision:** "Out of all transactions flagged as fraud, how many were actually fraud?" (do you see the right column in your mind?)
 
 These metrics force us to confront the real trade-offs:
 * Catching more fraud vs. triggering too many false alarms
@@ -745,74 +747,6 @@ Understanding this helps us to:
 
 
 
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## The Threshold Concept
-
-### Ideas to explore
-{: .no_toc }
-
-* Before "How to Select a Metric,"
-* Explains that changing the threshold shifts the trade-off between FP and FN.
-* Finish with the ROC curve.
-
-
-
-<!-- ###################################################################### -->
-### Exercices
-{: .no_toc }
-
-
-**Exercice 00**
-
-**Exercice 01**
-
-**Exercice 02**
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## ROC Curve and AUC
-
-
-### Ideas to explore
-{: .no_toc }
-
-* A standard topic
-* Encountered by beginners after confusion matrices
-
-
-
-
-<!-- ###################################################################### -->
-### Exercices
-{: .no_toc }
-
-
-**Exercice 00**
-
-**Exercice 01**
-
-**Exercice 02**
 
 
 
@@ -1022,7 +956,7 @@ Let's dig deeper and look at the full confusion matrix of the test set (the unse
 </div>
 
 
-On the capture above we can read:
+On the screen capture above we can read:
 - **TN = 96:** We correctly predicted 96 passengers would not survive (Correct Rejections)
 - **FP = 14:** We predicted 14 passengers would survive, but they didn't (False Alarms)
 - **FN = 24:** We predicted 24 passengers wouldn't survive, but they actually did (Misses)
@@ -1039,7 +973,7 @@ Now let's compute "by hands" our metrics:
 
 What does this tell us? Our model is more cautious than aggressive. It's better at not crying wolf (decent `Precision`) than at finding all survivors (lower `Recall`). In other words, when it predicts someone will survive, it's fairly reliable. But it misses about a third of the actual survivors.
 
-Is that a problem? It depends on the context and this brings us to our next section...
+Is that a problem? It depends on the context and this brings us to our next sections...
 
 
 
@@ -1053,6 +987,631 @@ Is that a problem? It depends on the context and this brings us to our next sect
 <!-- ###################################################################### -->
 ### Rust
 {: .no_toc }
+
+```rust
+// Rust guideline compliant 2025-12-15
+
+use csv::Reader;
+use linfa::prelude::*;
+use linfa_logistic::LogisticRegression;
+use ndarray::{s, Array1, Array2, Axis};
+use serde::Deserialize;
+
+/// Passenger record from Titanic dataset
+#[derive(Debug, Deserialize)]
+#[allow(dead_code)]
+struct Passenger {
+    #[serde(rename = "PassengerId")]
+    passenger_id: u32,
+
+    #[serde(rename = "Survived")]
+    survived: u8,
+
+    #[serde(rename = "Pclass")]
+    pclass: u8,
+
+    #[serde(rename = "Name")]
+    name: String,
+
+    #[serde(rename = "Sex")]
+    sex: String,
+
+    #[serde(rename = "Age")]
+    age: Option<f64>,
+
+    #[serde(rename = "SibSp")]
+    sibsp: Option<u8>,
+
+    #[serde(rename = "Parch")]
+    parch: Option<u8>,
+
+    #[serde(rename = "Ticket")]
+    ticket: String,
+
+    #[serde(rename = "Fare")]
+    fare: f64,
+
+    #[serde(rename = "Cabin")]
+    cabin: Option<String>,
+
+    #[serde(rename = "Embarked")]
+    embarked: Option<String>,
+}
+
+/// Loads Titanic dataset and returns features matrix X and labels y.
+///
+/// Features: Pclass, Sex, Age, SibSp, Parch, Fare, Embarked (encoded)
+///
+/// This function mimics the Python preprocessing:
+/// - Drops PassengerId, Name, Ticket, Cabin columns
+/// - Keeps rows with missing values (imputation done separately)
+fn load_titanic(path: &str) -> (Vec<Passenger>, Array1<u8>) {
+    let mut rdr = Reader::from_path(path).expect("Failed to read CSV file");
+
+    let mut passengers = Vec::new();
+    let mut labels = Vec::new();
+
+    for result in rdr.deserialize::<Passenger>() {
+        let p = result.expect("Failed to deserialize passenger");
+        labels.push(p.survived);
+        passengers.push(p);
+    }
+
+    let y = Array1::from(labels);
+    (passengers, y)
+}
+
+/// Computes mean of non-missing Age values.
+fn compute_age_mean(passengers: &[Passenger]) -> f64 {
+    let ages: Vec<f64> = passengers.iter().filter_map(|p| p.age).collect();
+    let sum: f64 = ages.iter().sum();
+    sum / ages.len() as f64
+}
+
+/// Imputes missing Age values with mean and missing Embarked with "Unknown".
+fn impute_missing(passengers: &mut [Passenger], age_mean: f64) {
+    for p in passengers.iter_mut() {
+        if p.age.is_none() {
+            p.age = Some(age_mean);
+        }
+        if p.sibsp.is_none() {
+            p.sibsp = Some(0);
+        }
+        if p.parch.is_none() {
+            p.parch = Some(0);
+        }
+        if p.embarked.is_none() {
+            p.embarked = Some(String::from("Unknown"));
+        }
+    }
+}
+
+/// One-hot encodes categorical variable.
+///
+/// Returns (encoded_features, categories) where categories maps index to category name.
+fn one_hot_encode(values: &[String]) -> (Array2<f64>, Vec<String>) {
+    let mut categories: Vec<String> = values.iter().cloned().collect();
+    categories.sort();
+    categories.dedup();
+
+    let n_samples = values.len();
+    let n_categories = categories.len();
+    let mut encoded = Array2::zeros((n_samples, n_categories));
+
+    for (i, val) in values.iter().enumerate() {
+        let cat_idx = categories.iter().position(|c| c == val).unwrap();
+        encoded[[i, cat_idx]] = 1.0;
+    }
+
+    (encoded, categories)
+}
+
+/// Converts passengers to feature matrix with preprocessing.
+///
+/// Features order: Pclass, Sex (one-hot), Age, SibSp, Parch, Fare, Embarked (one-hot)
+fn passengers_to_features(passengers: &[Passenger]) -> Array2<f64> {
+    // Extract categorical features
+    let sex_values: Vec<String> = passengers.iter().map(|p| p.sex.clone()).collect();
+    let embarked_values: Vec<String> = passengers
+        .iter()
+        .map(|p| {
+            p.embarked
+                .clone()
+                .unwrap_or_else(|| String::from("Unknown"))
+        })
+        .collect();
+
+    // One-hot encode
+    let (sex_encoded, _) = one_hot_encode(&sex_values);
+    let (embarked_encoded, _) = one_hot_encode(&embarked_values);
+
+    // Extract numeric features
+    let n_samples = passengers.len();
+    let mut numeric_features = Array2::zeros((n_samples, 5)); // Pclass, Age, SibSp, Parch, Fare
+
+    for (i, p) in passengers.iter().enumerate() {
+        numeric_features[[i, 0]] = f64::from(p.pclass);
+        numeric_features[[i, 1]] = p.age.unwrap_or(0.0);
+        numeric_features[[i, 2]] = f64::from(p.sibsp.unwrap_or(0));
+        numeric_features[[i, 3]] = f64::from(p.parch.unwrap_or(0));
+        numeric_features[[i, 4]] = p.fare;
+    }
+
+    // Concatenate: Sex (one-hot) + numeric + Embarked (one-hot)
+    // This matches Python's ColumnTransformer order: cat, num
+    let mut features = Array2::zeros((
+        n_samples,
+        sex_encoded.ncols() + numeric_features.ncols() + embarked_encoded.ncols(),
+    ));
+
+    let mut col_idx = 0;
+
+    // Add sex one-hot
+    for col in 0..sex_encoded.ncols() {
+        features
+            .slice_mut(s![.., col_idx])
+            .assign(&sex_encoded.column(col));
+        col_idx += 1;
+    }
+
+    // Add embarked one-hot
+    for col in 0..embarked_encoded.ncols() {
+        features
+            .slice_mut(s![.., col_idx])
+            .assign(&embarked_encoded.column(col));
+        col_idx += 1;
+    }
+
+    // Add numeric features
+    for col in 0..numeric_features.ncols() {
+        features
+            .slice_mut(s![.., col_idx])
+            .assign(&numeric_features.column(col));
+        col_idx += 1;
+    }
+
+    features
+}
+
+/// Standardizes features (zero mean, unit variance).
+///
+/// Returns (standardized_features, mean, std) for later use on test set.
+fn standardize_features(x: &Array2<f64>) -> (Array2<f64>, Array1<f64>, Array1<f64>) {
+    let mean = x.mean_axis(Axis(0)).unwrap();
+    let std = x.std_axis(Axis(0), 0.0);
+
+    let mut x_scaled = x.clone();
+    for i in 0..x.ncols() {
+        let std_val = if std[i] > 1e-10 { std[i] } else { 1.0 };
+        x_scaled
+            .column_mut(i)
+            .mapv_inplace(|v| (v - mean[i]) / std_val);
+    }
+
+    (x_scaled, mean, std)
+}
+
+/// Applies standardization using pre-computed mean and std.
+fn apply_standardization(x: &Array2<f64>, mean: &Array1<f64>, std: &Array1<f64>) -> Array2<f64> {
+    let mut x_scaled = x.clone();
+    for i in 0..x.ncols() {
+        let std_val = if std[i] > 1e-10 { std[i] } else { 1.0 };
+        x_scaled
+            .column_mut(i)
+            .mapv_inplace(|v| (v - mean[i]) / std_val);
+    }
+    x_scaled
+}
+
+/// Splits data into train and test sets.
+///
+/// Uses simple 80/20 split (random_state=0 equivalent: first 80% train, last 20% test).
+fn train_test_split<T: Clone>(
+    x: Array2<f64>,
+    y: Array1<T>,
+    test_size: f64,
+) -> (Array2<f64>, Array2<f64>, Array1<T>, Array1<T>) {
+    let n_samples = x.nrows();
+    let n_test = (n_samples as f64 * test_size).round() as usize;
+    let n_train = n_samples - n_test;
+
+    let x_train = x.slice(s![0..n_train, ..]).to_owned();
+    let x_test = x.slice(s![n_train.., ..]).to_owned();
+    let y_train = y.slice(s![0..n_train]).to_owned();
+    let y_test = y.slice(s![n_train..]).to_owned();
+
+    (x_train, x_test, y_train, y_test)
+}
+
+/// Computes confusion matrix.
+///
+/// Returns [[TN, FP], [FN, TP]]
+fn confusion_matrix(y_true: &Array1<u8>, y_pred: &Array1<u8>) -> [[usize; 2]; 2] {
+    let mut cm = [[0usize; 2]; 2];
+
+    for (t, p) in y_true.iter().zip(y_pred.iter()) {
+        cm[*t as usize][*p as usize] += 1;
+    }
+
+    cm
+}
+
+/// Computes accuracy score.
+fn accuracy_score(y_true: &Array1<u8>, y_pred: &Array1<u8>) -> f64 {
+    let correct = y_true
+        .iter()
+        .zip(y_pred.iter())
+        .filter(|(t, p)| t == p)
+        .count();
+    correct as f64 / y_true.len() as f64
+}
+
+fn main() {
+    println!("Loading Titanic dataset...\n");
+
+    // Load dataset
+    let (mut passengers, y) = load_titanic("data/titanic.csv");
+
+    println!("Dataset shape: {} passengers\n", passengers.len());
+    println!("First 5 passengers (before preprocessing):");
+    for (i, p) in passengers.iter().take(5).enumerate() {
+        println!("{}: {:?}", i, p);
+    }
+
+    // Remove useless columns (already done by not including them in features)
+    // Columns removed: PassengerId, Name, Ticket, Cabin
+
+    // Preprocessing: impute missing values
+    let age_mean = compute_age_mean(&passengers);
+    println!("\n\nAge mean for imputation: {:.2}", age_mean);
+
+    impute_missing(&mut passengers, age_mean);
+
+    // Convert to feature matrix
+    let x = passengers_to_features(&passengers);
+    println!("\nFeature matrix shape: {:?}", x.dim());
+    println!("First 5 rows (after encoding):");
+    println!("{:.2}", x.slice(s![0..5, ..]));
+
+    // Split into train and test sets (80/20)
+    let (x_train, x_test, y_train, y_test) = train_test_split(x, y, 0.2);
+
+    println!(
+        "\n\nTrain set: {} samples, Test set: {} samples",
+        x_train.nrows(),
+        x_test.nrows()
+    );
+
+    // Standardize features (fit on train, apply on test)
+    let (x_train_scaled, mean, std) = standardize_features(&x_train);
+    let x_test_scaled = apply_standardization(&x_test, &mean, &std);
+
+    println!("\nStandardized train set (first 5 rows):");
+    println!("{:.2}", x_train_scaled.slice(s![0..5, ..]));
+
+    // Build and train Logistic Regression model
+    println!("\n\nTraining Logistic Regression model...");
+    let dataset = Dataset::new(x_train_scaled.clone(), y_train.clone());
+
+    let model = LogisticRegression::default()
+        .max_iterations(100)
+        .fit(&dataset)
+        .expect("Failed to fit model");
+
+    // Predictions on train set
+    let y_train_pred = model.predict(&x_train_scaled);
+    println!(
+        "\nTrain predictions (first 5): {:?}",
+        y_train_pred.slice(s![0..5])
+    );
+
+    // Confusion matrix on train set
+    let cm_train = confusion_matrix(&y_train, &y_train_pred);
+    println!("\n\nConfusion Matrix on train set:");
+    println!("TN: {}  FP: {}", cm_train[0][0], cm_train[0][1]);
+    println!("FN: {}  TP: {}", cm_train[1][0], cm_train[1][1]);
+
+    let acc_train = accuracy_score(&y_train, &y_train_pred);
+    println!("Accuracy on train set: {:.3}", acc_train);
+
+    // Predictions on test set
+    let y_test_pred = model.predict(&x_test_scaled);
+    println!(
+        "\n\nTest predictions (first 5): {:?}",
+        y_test_pred.slice(s![0..5])
+    );
+
+    // Confusion matrix on test set
+    let cm_test = confusion_matrix(&y_test, &y_test_pred);
+    println!("\nConfusion Matrix on test set:");
+    println!("TN: {}  FP: {}", cm_test[0][0], cm_test[0][1]);
+    println!("FN: {}  TP: {}", cm_test[1][0], cm_test[1][1]);
+
+    let acc_test = accuracy_score(&y_test, &y_test_pred);
+    println!("Accuracy on test set: {:.3}", acc_test);
+}
+
+
+```
+
+
+<div align="center">
+<img src="./assets/img12.webp" alt="" width="600" loading="lazy"/><br/>
+<span><b>Confusion matrix of the test set</b></span>
+</div>
+
+With the Python version we had 0.803 on the train set and 0.788 on the test set. Now we have 0.792 and 0.843. Not so different and to tell the truth I did'nt spend too much time on the differences.
+
+
+
+<!-- ###################################################################### -->
+### Exercices
+{: .no_toc }
+
+
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02**
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## The Threshold Concept
+
+Let’s take a two-minute breather before moving on…
+
+At this point in the story, we know how to draw a confusion matrix and we understand the nature of the labels it uses (TP, FN, and friends). We’ve also picked up some new vocabulary along the way: Precision, Recall, F1-score, and Accuracy. And the cherry on top? We know what they actually mean. We understand them, they tell a story, and, pure bliss, we even know how to compute them. Finally, we’ve confirmed that when dealing with imbalanced datasets, Accuracy alone isn’t going to be much help. Fantastic! If we look back for a moment, we can be justifiably proud of how far we’ve come.
+
+That said, remember what I explained right at the beginning of this post: *before* diving head-first into optimizing our machine learning model, we need to choose a metric and stick with it. Which means we must give ourselves the tools to choose, for example, between Recall, Precision, F1-score, and Accuracy. And for that, we need to take the time to truly understand how Recall and Precision work and understand the thing that actually causes the fight: the Threshold
+
+So I suggest we leave nightclubs behind for a moment and do a bit of politics instead and imagine that these two metrics are actually two political parties.
+
+
+### The Threshold is a continuous value
+{: .no_toc }
+
+Most classifiers don’t say *"this is positive"* or *"this is negative"*. Instead they say something closer to "Hmm… this looks 73% suspicious to me". That number is continuous. It lives somewhere between 0% and 100%. The Threshold is simply the rule we apply afterward:
+
+```
+If the score is above this value Then
+    predict Positive
+Else
+    predict Negative
+```
+
+That’s it. No learning. No AI wisdom. Just a decision boundary we choose. By moving this Threshold up and down, we decide how brave (or paranoid) we want to be.
+
+
+
+### Watching Precision and Recall move when the Threshold moves
+{: .no_toc }
+
+Let’s make this concrete. Same model. Same scores. Only the Threshold will change.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Ground truth: 1 = positive, 0 = negative
+y_true = np.array([1, 1, 1, 1, 0, 0, 0, 0, 0, 0])
+
+# Continuous scores produced by the model
+y_score = np.array([0.95, 0.85, 0.70, 0.40, 0.60, 0.50, 0.30, 0.20, 0.10, 0.05])
+
+def precision_recall(threshold):
+    # Convert scores into binary predictions
+    y_pred = (y_score >= threshold).astype(int)
+
+    tp = np.sum((y_pred == 1) & (y_true == 1))
+    fp = np.sum((y_pred == 1) & (y_true == 0))
+    fn = np.sum((y_pred == 0) & (y_true == 1))
+
+    precision = tp / (tp + fp) if tp + fp > 0 else 0.0
+    recall = tp / (tp + fn) if tp + fn > 0 else 0.0
+
+    return precision, recall
+
+# Sweep thresholds from 0% to 100%
+thresholds = np.linspace(0, 1, 101)
+precisions = []
+recalls = []
+
+for t in thresholds:
+    p, r = precision_recall(t)
+    precisions.append(p)
+    recalls.append(r)
+
+# Plot
+plt.figure()
+plt.plot(thresholds, precisions, label="Precision")
+plt.plot(thresholds, recalls, label="Recall")
+plt.xlabel("Threshold")
+plt.ylabel("Metric value")
+plt.title("Precision and Recall vs Threshold")
+plt.legend()
+plt.show()
+
+```
+
+<div align="center">
+<img src="./assets/img13.webp" alt="" width="600" loading="lazy"/><br/>
+<span><b>Precision and Recall vs Treshold</b></span>
+</div>
+
+#### Why the curves look like "stairs"?
+{: .no_toc }
+
+You might expect smooth curves but, this is not what we get and the curves are step-shaped because:
+1. the Threshold varies continuously
+1. but the model’s decisions only change when the Threshold crosses an actual score produced by the model.
+
+Between two consecutive score values:
+* `TP`, `FP`, and `FN` do not change
+* therefore Precision and Recall remain constant
+
+Remember the Alamo but remember that "*The model outputs a finite set of scores; the Threshold only reacts to those.*"
+
+#### What the plot tells us
+{: .no_toc }
+
+* **Recall** starts high and decreases as the Threshold increases
+    * We miss more and more true positives
+* **Precision** starts low and increases
+    * We progressively filter out false positives
+
+Same model, same data, just one slider moving from 0 to 1.
+
+
+#### What about the "weird” point when `Threshold == 1`
+{: .no_toc }
+
+* The model predicts no positive samples at all
+* Recall is 0 (we miss everything)
+* Precision is undefined and is displayed here as 0 by convention
+
+
+#### How to use this plot?
+{: .no_toc }
+
+This figure allows us to make a strong statement: "Choosing a Threshold is not about improving the model. It’s about deciding where WE want to sit on this curve."
+
+Or, even more bluntly: "Asking for a Recall of 90% means accepting a certain Precision, whether we like it or not".
+
+So next time the Marketing manager ask for a Precision of 90% you can answer "No problemo but are YOU OK with a Recall of 30%?".
+* Draw a vertical line on the plot
+* Explain what happen at **this point**
+* Educate people, even marketing manager can learn something
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Explaining the Threshold "with hands"
+{: .no_toc }
+
+Think of the Threshold as a **gate**.
+* Lower the gate → more people get through
+* Raise the gate → fewer people get through
+
+Now let’s translate that into metrics.
+
+
+
+#### Recall cares about **missed positives**
+{: .no_toc }
+
+```
+Recall = TP / (TP + FN)
+```
+
+When we raise the Threshold:
+
+* fewer samples are predicted positive
+* some true positives fall below the gate
+* FN increases
+* Recall goes down
+
+
+
+#### Precision cares about **mistaken positives**
+{: .no_toc }
+
+```
+Precision = TP / (TP + FP)
+```
+
+When we raise the Threshold:
+
+* Fewer negatives sneak through
+* FP decreases
+* Precision goes up ⬆️
+
+
+
+#### Same action, opposite effects
+{: .no_toc }
+
+```
+Threshold ⬆️
+  FP ⬇️  → Precision ⬆️
+  TP ⬇️  → Recall ⬇️
+```
+
+This is why Precision and Recall feel like they fighting political parties. But in fact they are not true enemies, they are more like brothers and sisters fighting for the same toys. They are "negotiating" over the same decision rule.
+
+
+
+#### Why this is fundamentally a trade-off
+{: .no_toc }
+
+Here is the part worth remembering: "Asking for a given Recall value implicitly fixes the best Precision we can hope for (and vice versa)."
+
+If someone says "I want at least 95% Recall", what they are really saying is "I accept more false positives". Now if someone says "I want 99% Precision" they are also saying "I accept missing real positives."
+
+We can't optimize both independently. Wou choose where to stand on the curve.
+
+
+### And no, we cannot have both at 100%
+{: .no_toc }
+
+* Precision = 100% means zero false positives
+* Recall = 100% means zero false negatives
+
+That would require:
+* perfect separation
+* zero overlap between classes
+* a world without noise, ambiguity, or measurement error
+
+In other words a toy dataset or a miracle. For real-world problems, Precision and Recall are not targets to maximize simultaneously, they are constraints to balance.
+
+### Things to keep in mind
+
+* Precision vs Recall is NOT a technical issue or a limitation of models.
+* It is a decision problem.
+* Move the Threshold, and you choose which mistakes you are willing to live with.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1070,6 +1629,39 @@ Is that a problem? It depends on the context and this brings us to our next sect
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ## ROC Curve and AUC
+
+
+### Ideas to explore
+{: .no_toc }
+
+* A standard topic
+* Encountered by beginners after confusion matrices -->
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ### Exercices
+{: .no_toc }
+
+
+**Exercice 00**
+
+**Exercice 01**
+
+**Exercice 02** -->
 
 
 
@@ -1101,7 +1693,417 @@ Is that a problem? It depends on the context and this brings us to our next sect
 * Sex films among cartoons for kids
 * CB
 * Spam
-* Find more weird examples 😁
+* Find really weird examples 😁
+
+
+
+
+
+
+
+<!--
+
+
+### **1. When PRECISION is King: "The Guillotine of Innocence"**
+**Context:** A system that predicts who is a secret vampire to be executed.
+*   **Scenario:** The town's ancient law states: "If the predictor says 'VAMPIRE,' execution is immediate and irreversible." A false positive means killing an innocent human.
+*   **Ridiculous Outcome:** The predictor, to be "safe," only labels 1 person as a vampire every decade. It's almost always the eccentric old historian who collects garlic. **Precision is 100%** (when it predicts vampire, it's correct), but **Recall is terrible** (99% of vampires roam free). The town feels "accurate," but is actually overrun by vampires.
+*   **Why Precision Matters:** The cost of a false positive (executing an innocent) is catastrophically high and unethical. You must be *certain* when you trigger the positive action.
+
+**Other Examples:**
+*   **Spam Filter for Your Wedding RSVPs:** If it flags a genuine guest's "Yes" as spam, they might not get a seat. You'd rather let some spam through (lower Recall) than miss Aunt Martha's reply.
+*   **Targeted Gold Bar Delivery:** A drone system identifies houses for gold bar delivery. Sending a bar to the wrong house (false positive) is a massive financial loss. Better to deliver to fewer, absolutely sure houses.
+
+### **2. When RECALL is Critical: "The Missed Meteor"**
+**Context:** A global early-warning system for civilization-ending asteroid impacts.
+*   **Scenario:** The AI scans the sky. A false negative means the system says "all clear" when a deadly asteroid is inbound (doom for humanity). A false positive means a costly global alarm and panic for no reason.
+*   **Ridiculous Outcome:** The system is calibrated to avoid false alarms. **Accuracy is 99.99%** because impacts are rare. But it has **poor Recall**—it misses 1 in 10 real killer asteroids. Humanity is wiped out because we optimized for a quiet, "accurate" system.
+*   **Why Recall Matters:** The cost of missing a positive instance (a real threat) is existential. You must catch *almost all* threats, even if it means frequent false alarms.
+
+**Other Examples:**
+*   **HIV Blood Test:** Telling someone they are HIV-negative when they are positive (false negative) prevents life-saving treatment and leads to further transmissions. You want the test to catch *every single* positive case, even if it means some false scares.
+*   **Search & Rescue Drone:** Looking for a lost child in a forest. Flagging a log as the child (false positive) wastes time. *Not* flagging the actual child (false negative) is an unthinkable tragedy. Maximize finding the child at all costs.
+
+### **3. When the F1-Score (Balance) is Essential: "The Psychic Friend Recommender"**
+**Context:** An algorithm for a social app that identifies and recommends potential "best friends" to users.
+*   **Scenario:** If it's too strict (high Precision), you get very few, maybe perfect matches, but you miss out on many other great friends (low Recall). If it's too lax (high Recall), it recommends everyone, including terrible matches, flooding you with spam "friendship" requests (low Precision).
+*   **Ridiculous Outcome:** **Optimizing only for Accuracy** leads to a useless app: it's easy to be "accurate" by just saying "NO" to everyone (since true friends are rare). You need the **F1-Score** to balance between being a lonely hermit (high Precision) and a desperate networker flooded with incompatible pals (high Recall).
+*   **Why F1-Score Matters:** Both false positives (annoying, irrelevant recommendations) and false negatives (missed opportunities) carry significant but *balanced* costs. You need a harmonic mean of both concerns.
+
+**Other Examples:**
+*   **Factory QA for Expensive Gadgets:** Flagging too many good gadgets as defective (false positives) wastes money. Letting too many defective gadgets through (false negatives) ruins your brand. Both are costly; you need a balance.
+*   **Document Triage for Legal Discovery:** Finding "smoking gun" emails in a million documents. Missing a key email (false negative) loses the case. Flagging too many irrelevant emails (false positive) buries lawyers in wasted time. Balance is key.
+
+### **4. When ACCURACY is Actually Meaningful: "The Potato-Chip Sorting Oracle"**
+**Context:** An automated optical sorter in a chip factory separating perfect chips from broken bits (burned, too small, etc.).
+*   **Scenario:** The process is binary: keep (good) or reject (bad). The pieces look very different. A false positive (sending a broken bit to the bag) angers one customer. A false negative (throwing away a perfect chip) costs a tiny fraction of a cent.
+*   **Ridiculous Outcome:** Focusing only on **Recall** (catch all broken bits) might lead to rejecting 30% of perfect chips, destroying profit. Focusing only on **Precision** (ensure every rejected item is truly bad) might let too many broken bits through. Here, **Overall Accuracy** is a fantastic simple metric because the classes are roughly balanced and the costs of both errors are similar and *low*.
+*   **Why Accuracy Matters:** When the dataset is balanced and the cost of both types of errors is roughly symmetrical and acceptable, accuracy gives a clear, intuitive measure of total correctness.
+
+**Other Examples:**
+*   **Broadcast Weather (Rain/No Rain):** For most people, the cost of carrying an umbrella on a sunny day is similar to the cost of getting wet. A false positive and a false negative are equally annoying. Being correct most of the time (accuracy) is what builds trust.
+*   **Trivia Bot Answer Classification (Right/Wrong):** You're gauging its general knowledge. Neither type of error (calling a right answer wrong or vice versa) is more costly than the other. You just want it to be correct as often as possible.
+
+Choosing a metric isn't a technical afterthought—it's a **value judgment** about what kind of mistakes you're willing to make. These shocking examples force that point home.
+
+
+
+-->
+
+
+
+
+
+
+
+<!--
+
+
+CHAT GPT Test 2
+
+Parfait Philippe — là on est exactement dans le **pédagogique mémorable**, celui que le cerveau n’oublie jamais 😄
+Voici donc des **exemples volontairement idiots, absurdes, pop-culture**, mais **techniquement justes**, chacun illustrant **POURQUOI un metric précis est le seul raisonnable à suivre**.
+Tout est en **US English**, avec un ton léger que tu peux assumer sur un site web.
+
+
+
+## 1️⃣ Precision is the metric that matters
+
+👉 *"When a false positive is deeply, profoundly embarrassing (or fatal)"*
+
+### Example 1 — Predator hunting license
+
+> A Predator’s helmet AI detects *"acceptable prey"*.
+
+* **Positive prediction** = *"Shoot immediately"*
+* False Positive = shooting a kindergarten teacher by mistake
+* False Negative = letting Arnold Schwarzenegger escape again
+
+➡️ Predators don’t care if prey escapes
+➡️ They **do care** about hunting the wrong species
+➡️ **Precision over Recall**
+
+
+
+### Example 2 — Alien facehugger deployment system
+
+> The Alien ship launches facehuggers at *"viable hosts"*.
+
+* False Positive = facehugger jumps on a cat 🐱
+* False Negative = missing a perfectly good human
+
+➡️ Once a facehugger launches, there is **no undo button**
+➡️ The system must be right *when it says YES*
+➡️ **Precision matters**
+
+
+
+### Example 3 — Buck Rogers’ auto-fire laser
+
+> Buck Rogers’ ship auto-fires when it detects *"enemy spacecraft"*.
+
+* False Positive = vaporizing Princess Ardala’s limousine 🚀💥
+* False Negative = letting enemy fighters escape
+
+➡️ Buck would rather miss than accidentally start an interplanetary war
+➡️ **Extreme Precision required**
+
+
+
+## 2️⃣ Recall is the metric that matters
+
+👉 *"Missing a positive is worse than looking ridiculous"*
+
+### Example 1 — Motion detector on LV-426
+
+> A Colonial Marines sensor detects *"life forms"*.
+
+* False Negative = *"They’re in the walls."*
+* False Positive = beeping at a coffee mug ☕
+
+➡️ Nobody complains about false alarms
+➡️ Missing **one Alien** is game over
+➡️ **Recall above all**
+
+
+
+### Example 2 — Predator cloaking detection
+
+> A human AI tries to detect *"invisible Predators"*.
+
+* False Negative = Predator eats you
+* False Positive = shooting at trees 🌳
+
+➡️ Shooting at trees is acceptable
+➡️ Being eaten is not
+➡️ **Maximize Recall**
+
+
+
+### Example 3 — Princess Ardala’s betrayal detector
+
+> An AI predicts whether someone is *"about to betray Buck Rogers"*.
+
+* False Negative = Buck gets betrayed
+* False Positive = awkward trust issues
+
+➡️ Better paranoid than stabbed
+➡️ **Recall wins**
+
+
+
+## 3️⃣ F1-score is the metric that matters
+
+👉 *"Both kinds of mistakes are equally painful"*
+
+### Example 1 — Dating app for humans and aliens
+
+> Your matching app predicts *"potential romantic match"*.
+
+* False Positive = you date a **three-headed Blue Venusian covered in spikes**
+* False Negative = you miss your actual soulmate
+
+➡️ Too many false positives = emotional trauma
+➡️ Too many false negatives = eternal loneliness
+➡️ **Precision AND Recall must be balanced → F1-score**
+
+
+
+### Example 2 — Predator prey selection assistant
+
+> An AI selects *"worth hunting"* targets.
+
+* False Positive = humiliating hunt
+* False Negative = boring hunt
+
+➡️ Predators want **quality and quantity**
+➡️ Balanced performance matters
+➡️ **F1-score**
+
+
+
+### Example 3 — Sci-Fi convention cosplay detector
+
+> An AI flags *"real aliens vs humans in costumes"*.
+
+* False Positive = tasering a cosplayer 👽
+* False Negative = letting a real Alien roam free
+
+➡️ Neither outcome is good
+➡️ **Balance is required**
+
+
+
+## 4️⃣ Accuracy is the metric that matters
+
+👉 *"When the universe is fair and nothing really matters"*
+
+### Example 1 — Buck Rogers coin-flip AI
+
+> An AI predicts whether Buck’s catchphrase will be *"Yes"* or *"Absolutely"*.
+
+* Balanced outcomes
+* No consequences whatsoever
+
+➡️ Accuracy is perfectly fine
+
+
+
+### Example 2 — Random robot insult generator
+
+> A robot predicts which insult will annoy humans more.
+
+* All classes equally likely
+* All mistakes equally funny
+
+➡️ Accuracy is enough
+
+
+
+### Example 3 — Space bar jukebox
+
+> A machine predicts which 80s sci-fi song someone will choose.
+
+* No catastrophic errors
+* Balanced preferences
+
+➡️ **Accuracy works**
+
+
+
+## ✨ Why this works so well in an article
+
+These examples:
+
+* trigger **visual imagination**
+* create **emotional asymmetry** (embarrassment vs death vs loneliness)
+* naturally map to **confusion matrix logic**
+
+If you want next:
+
+* I can **turn each example into a confusion matrix**
+* or **add one-sentence "metric moral" captions**
+* or help you **thread them into a narrative flow**
+
+Just say the word 🚀
+
+
+
+
+
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+<!--
+CLAUDE TESt 2
+
+
+Ah, parfait ! Je vois exactement ce que tu veux - des exemples mémorables par l'absurde plutôt que par le drame. Voici une nouvelle version beaucoup plus fun :
+
+## **PRECISION** (minimizing false positives)
+
+**Example 1: Alien Xenomorph's Prey Detection System**
+- The xenomorph's neural implant flags "DELICIOUS HUMAN!" for literally everything
+- 99% false positives: attacks space rocks, coffee machines, its own tail
+- Perfect Recall (never misses a human), but spends all day humping furniture
+- Dies of exhaustion before actually catching anyone
+
+**Example 2: My Dating App's "Perfect Match" Algorithm**
+- I'm looking for a nice Earthling who enjoys Netflix and pizza
+- App keeps matching me with three-headed blue Venusians covered in poisonous spikes
+- "You have 847 new matches! They're ALL Venusians!"
+- Everyone knows what Venusians look like in 2024, come on algorithm!
+- Sure, it never misses an actual match, but 99.9% are completely undatable (literally)
+
+**Example 3: Predator's Thermal Vision "Worthy Opponent" Detector**
+- Flags every mammal with body heat as "WORTHY PREY FOR GLORIOUS COMBAT"
+- Predator spends weeks stalking a particularly aggressive squirrel
+- "This 200g rodent shall bring honor to my clan!"
+- Meanwhile, Arnold Schwarzenegger escapes because Predator was busy with hamsters
+
+
+
+## **RECALL** (minimizing false negatives)
+
+**Example 1: Buck Rogers' "Is This Princess Ardala in Disguise?" Scanner**
+- Ultra-conservative model: "Eh, probably not Ardala" for literally everyone
+- Misses Ardala 8 times out of 10 because she changed her lipstick shade
+- Buck keeps getting seduced and betrayed: "How was I supposed to know?!"
+- Meanwhile his scanner confidently reports "All clear, no evil space princesses detected"
+
+**Example 2: Robot Butler's "Is This Food Poisoned?" Detector**
+- Trained to only flag something as poisoned if it's literally glowing green and smoking
+- "Well, it doesn't match my training data exactly, so probably fine!"
+- Misses 40% of actually poisoned meals because they're too subtle
+- Your obituary: "Death by overly precise food safety model"
+
+**Example 3: Spaceship's "Asteroid Ahead" Warning System**
+- Only triggers for asteroids that look EXACTLY like the training images
+- Misses the space iceberg because "it's technically a comet, not an asteroid"
+- Ship's computer: "No asteroids detected" *CRASH*
+- Captain's last words: "But the Recall was so good in testing!"
+
+
+
+## **F1-SCORE** (when both mistakes are equally ridiculous)
+
+**Example 1: Alien's "Is This Thing Trying to Mate with Me?" Classifier**
+- False positives: Alien aggressively courts the spaceship's air conditioning unit for three weeks
+- False negatives: Completely ignores actual mating signals from compatible species
+- Both scenarios end with lonely aliens and very confused machinery
+- Species goes extinct because the model couldn't balance Precision and Recall
+
+**Example 2: Space Station's "Is This Person a Hologram or Real?" Detector**
+- False positives: Shoots real visitors with "hologram disruptor" rays (oops, murder)
+- False negatives: Serves dinner to holograms, wastes all the food
+- Both errors are equally embarrassing at the intergalactic diplomatic summit
+- Need perfect F1-score or you're either a murderer or the galaxy's biggest fool
+
+**Example 3: My Roomba's "Is This Cat Poop or Chocolate?" Vision System**
+- False positives: Throws away my expensive artisanal chocolate (I cry)
+- False negatives: Spreads cat poop across the entire apartment in perfect circles (I die inside)
+- Both mistakes result in me screaming at a robot vacuum
+- This is why F1-score matters, people!
+
+
+
+## **ACCURACY** (the hilariously useless metric)
+
+**Example 1: Predator's "Should I Attack Earth?" Decision Model**
+- Training data: 999,999 days of "Earth not worth attacking", 1 day of "Schwarzenegger is here!"
+- Model: "Never attack Earth" → 99.9999% accuracy! 🎉
+- Predator elders: "Our model has six nines of accuracy!"
+- Predator warriors: "But we never get to hunt anything..."
+- Dies of boredom with perfect accuracy scores
+
+**Example 2: Dating App's "Is This a Bot?" Detector**
+- Dataset: 99.99% real humans, 0.01% bots
+- Model strategy: "Everything is human" → Amazing accuracy!
+- Me: Married to a spam bot that only talks about cryptocurrency
+- App proudly displays: "99.99% accurate bot detection!"
+- My wedding vows: "I love you and your 15 daily NFT recommendations"
+
+**Example 3: Buck Rogers' "Is the Ship Going to Explode Today?" Alarm**
+- 40 years of flight logs: 99.999% "no explosion"
+- Model learns: "Ship never explodes" → Incredible accuracy!
+- One day: *actual critical failure starts*
+- Ship's computer: "Everything is fine! My accuracy is 99.999%!"
+- Buck's last thought: "At least the model was accurate... right up until it wasn't"
+
+
+
+Voilà ! Des exemples beaucoup plus légers qui devraient faire sourire tout en faisant passer le message. 😄 Le principe reste le même mais avec des Venusiennes, des Predators confus, et des robots aspirateurs traumatisés !
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
