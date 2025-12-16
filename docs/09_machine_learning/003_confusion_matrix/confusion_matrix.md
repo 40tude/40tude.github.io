@@ -1450,7 +1450,7 @@ plt.show()
 <span><b>Precision and Recall vs Treshold</b></span>
 </div>
 
-#### Why the curves look like "stairs"?
+#### **Why the curves look like "stairs"?**
 {: .no_toc }
 
 You might expect smooth curves but, this is not what we get and the curves are step-shaped because:
@@ -1463,7 +1463,7 @@ Between two consecutive score values:
 
 Remember the Alamo but remember that "*The model outputs a finite set of scores; the Threshold only reacts to those.*"
 
-#### What the plot tells us
+#### **What the plot tells us**
 {: .no_toc }
 
 * **Recall** starts high and decreases as the Threshold increases
@@ -1474,7 +1474,7 @@ Remember the Alamo but remember that "*The model outputs a finite set of scores;
 Same model, same data, just one slider moving from 0 to 1.
 
 
-#### What about the "weird” point when `Threshold == 1`
+#### **What about the "weird” point when `Threshold == 1`**
 {: .no_toc }
 
 * The model predicts no positive samples at all
@@ -1482,7 +1482,7 @@ Same model, same data, just one slider moving from 0 to 1.
 * Precision is undefined and is displayed here as 0 by convention
 
 
-#### How to use this plot?
+#### **How to use this kind of plot?**
 {: .no_toc }
 
 This figure allows us to make a strong statement: "Choosing a Threshold is not about improving the model. It’s about deciding where WE want to sit on this curve."
@@ -1580,6 +1580,8 @@ If someone says "I want at least 95% Recall", what they are really saying is "I 
 We can't optimize both independently. Wou choose where to stand on the curve.
 
 
+
+
 ### And no, we cannot have both at 100%
 {: .no_toc }
 
@@ -1593,7 +1595,14 @@ That would require:
 
 In other words a toy dataset or a miracle. For real-world problems, Precision and Recall are not targets to maximize simultaneously, they are constraints to balance.
 
+
+
+
+
+
+
 ### Things to keep in mind
+{: .no_toc }
 
 * Precision vs Recall is NOT a technical issue or a limitation of models.
 * It is a decision problem.
