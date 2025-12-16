@@ -40,9 +40,15 @@ A gentle, story-driven introduction so you’ll never be confused again.
 * For beginners
 * In a ML context but applicable elsewhere
 * In the confusion matrix we indicate whether the prediction was correct (T/F) + the kind of prediction (P/N)
-* **Pre**cision cares about mistaken **po**sitives
-* Recall cares about missed positives
-* For binary classifiers and beyond
+
+* "Which mistake would hurt me the most?"
+    * If **missing a real positive** is catastrophic → **Recall** (bottom line)
+    * If **accusing something innocent** is catastrophic → **Precision** (right col)
+
+* Recall (bottom line) cares about missed positives (we want FN=0)
+* **Pre**cision (right col) cares about mistaken **po**sitives (we want FP=0)
+
+* Confusion matrix concept extends to multi-class problems when we need to choose among more than 2 classes
 
 
 <div align="center">
@@ -451,7 +457,7 @@ Indeed, you can have low accuracy even with a high Precision. See the top-left e
 
 
 
-Finally (*CeCe Peniston, 91*) you may want to keep in mind the figure below:
+Finally (*CeCe Peniston, '91*) you may want to keep in mind the figure below:
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
@@ -988,6 +994,11 @@ Is that a problem? It depends on the context and this brings us to our next sect
 ### Rust
 {: .no_toc }
 
+The code below is much longer because
+1. I wanted to make sure it "looks like" the code written in Python: imputer, one hot encoding, split test and train datasets...
+1. In Python, Scikit-Learn is doing all the hard work for us
+
+
 ```rust
 // Rust guideline compliant 2025-12-15
 
@@ -1474,7 +1485,7 @@ Remember the Alamo but remember that "*The model outputs a finite set of scores;
 Same model, same data, just one slider moving from 0 to 1.
 
 
-#### **What about the "weird” point when `Threshold == 1`**
+#### **What about the "weird" point when `Threshold == 1`**
 {: .no_toc }
 
 * The model predicts no positive samples at all
@@ -1690,7 +1701,7 @@ In other words a toy dataset or a miracle. For real-world problems, Precision an
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## How to select a Metric?
+## How to select a Metric of the Confusion Matrix?
 
 
 <!-- ###################################################################### -->
@@ -1723,6 +1734,18 @@ In other words a toy dataset or a miracle. For real-world problems, Precision an
 *   **HIV Blood Test:** Telling someone they are HIV-negative when they are positive (false negative) prevents life-saving treatment and leads to further transmissions. You want the test to catch *every single* positive case, even if it means some false scares.
 *   **Search & Rescue Drone:** Looking for a lost child in a forest. Flagging a log as the child (false positive) wastes time. *Not* flagging the actual child (false negative) is an unthinkable tragedy. Maximize finding the child at all costs.
 *   **Predator cloaking detection:** A human AI tries to detect "invisible Predators". False Negative = Predator eats you. False Positive = shooting at trees. Shooting at trees is acceptable while being eaten is not. => Maximize Recall
+
+
+<!-- ###################################################################### -->
+### Side note
+{: .no_toc }
+
+When you have to decide between Precision and Recall try this. **"Which mistake would hurt me the most?"**
+* If **missing a real positive** is catastrophic → **Recall**
+* If **accusing something innocent** is catastrophic → **Precision**
+
+That’s it. No metrics. No formulas. Just pain.
+
 
 
 
@@ -1804,12 +1827,51 @@ In other words a toy dataset or a miracle. For real-world problems, Precision an
 <!-- ###################################################################### -->
 ## Multi-class Confusion Matrices
 
-### Ideas to explore
-{: .no_toc }
 
-* One word
-* The concept extends beyond binary classification.
-* Don't need to go deep, show an example with some explanation/interpretation
+The concept of a confusion matrix naturally extends beyond binary classification to **multi-class problems**, where the model must choose between more than two classes.
+
+In a multi-class confusion matrix
+* **Rows** represent the true classes
+* **Columns** represent the predicted classes
+* Each cell indicates how many samples of a given true class were predicted as another class
+
+The first diagonal still represents **correct predictions**, while anti-diagonal values highlight **confusions between classes**. This makes the matrix especially useful to understand which classes the model tends to mix up.
+
+### Example
+
+Imagine a classifier that recognizes handwritten digits (`0` to `9`).
+A multi-class confusion matrix can quickly show that the model often confuses **3 and 5**, but almost never mistakes **1 for 8**.
+
+
+### Minimal Python example
+
+Thanks to Scikit-Learn we call the same functions: `confusion_matrix()` and `ConfusionMatrixDisplay()`.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
+
+# Example ground truth and predictions for a 3-class problem
+y_true = np.array([0, 1, 2, 2, 1, 0])
+y_pred = np.array([0, 2, 1, 2, 1, 0])
+
+# Compute confusion matrix
+cm = confusion_matrix(y_true, y_pred)
+
+# Display confusion matrix
+disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+disp.plot()
+plt.show()
+```
+
+
+<div align="center">
+<img src="./assets/img14.webp" alt="" width="600" loading="lazy"/><br/>
+<span><b>Multi-class Confusion Matrix</b></span>
+</div>
+
+This provides an intuitive overview of model performance across the classes.
 
 
 
@@ -1843,11 +1905,35 @@ In other words a toy dataset or a miracle. For real-world problems, Precision an
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Last Dance (*Donna Summer, 79*)
+## Last Dance (*Donna Summer, ’79*)
 
-It is time to conclude.
+So here we are. The lights are coming back on, the DJ is packing up, and it’s time to face reality, both in machine learning *and* on the dance floor.
 
-* Add a Bayes teaser
+If there’s one thing this long detour through confusion matrices, metrics, thresholds, vampires, asteroids, and Titanic passengers should have taught us, it’s this: **being confident is not the same thing as being right**. And sadly, my nightclub career was a textbook example of that distinction.
+
+Looking back at my personal confusion matrix, the verdict is brutal but fair:
+
+* My **Recall** was phenomenal. I *never* missed an opportunity to predict success.
+* My **Precision**, on the other hand… Let’s say it was more "optimistic" than "scientific".
+* My **Accuracy**? Technically measurable, emotionally questionable.
+* And the **F1-score** politely suggests I should maybe have spent more time calibrating my threshold instead of rehearsing dance moves.
+
+In other words, I was an overconfident classifier operating with a catastrophically low decision threshold. Every weak signal was interpreted as a strong positive. A smile? Positive. Eye contact? Definitely positive. Standing within a 3-meter radius? Highly positive. The model was clearly overfitting on noise.
+
+And that’s exactly the point. The confusion matrix is not about math for the sake of math. It’s a mirror. It forces us to confront *how* we are wrong, not just *how often*. It tells we whether we cry wolf too much, miss real signals, or proudly achieve 99% accuracy while being completely useless.
+
+Once we understand that:
+* Precision and Recall stop being abstract formulas
+* Thresholds stop being "technical details"
+* And metric selection stops being an afterthought
+
+They become **explicit choices about the mistakes we are willing to make**.
+
+So whether we are building a fraud detector, a medical test, a recommender system, or just trying to predict how our Friday night will end, we should remember this:
+**the world doesn’t reward confidence, it rewards calibrated confidence**.
+
+As for me? I eventually adjusted my model, raised my threshold, improved my precision… and married my best True Positive.
+Not bad for a guy who started with 70 false alarms.
 
 
 
