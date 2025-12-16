@@ -37,15 +37,16 @@ A gentle, story-driven introduction so you’ll never be confused again.
 ## TL;DR
 {: .no_toc }
 * For beginners
-* In a ML context but applicable elsewhere
-* In the confusion matrix we indicate whether the prediction was correct (T/F) + the kind of prediction (P/N)
-
-* "Which mistake would hurt me the most?"
-    * If **missing a real positive** is catastrophic → **Recall** (bottom line)
-    * If **accusing something innocent** is catastrophic → **Precision** (right col)
-
-* Recall (bottom line) cares about missed positives (we want FN=0)
-* **Pre**cision (right col) cares about mistaken **po**sitives (we want FP=0)
+* We indicate whether the prediction was correct (T/F) + the nature of prediction (P/N)
+* Version 0
+    * Recall is important when false negatives are costly (cancer screening).
+    * Precision is important when false positives are costly (spam detection).
+* Version 1
+    * Recall (bottom line) cares about missed positives (we want FN=0)
+    * Precision (right col) cares about mistaken positives (we want FP=0)
+* Version 2
+    * If missing a real positive is catastrophic → Recall (bottom line)
+    * If accusing something innocent is catastrophic → Precision (right col)
 
 * Confusion matrix concept extends to multi-class problems when we need to choose among more than 2 classes
 
