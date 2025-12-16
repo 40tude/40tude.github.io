@@ -14,8 +14,7 @@ last_modified_date: 2025-12-13 18:00:00 +0000
 
 <!--
 TODO
-* Do this
-* Do that
+* Create a Zip with code
 -->
 
 
@@ -1838,12 +1837,14 @@ In a multi-class confusion matrix
 The first diagonal still represents **correct predictions**, while anti-diagonal values highlight **confusions between classes**. This makes the matrix especially useful to understand which classes the model tends to mix up.
 
 ### Example
+{: .no_toc }
 
 Imagine a classifier that recognizes handwritten digits (`0` to `9`).
 A multi-class confusion matrix can quickly show that the model often confuses **3 and 5**, but almost never mistakes **1 for 8**.
 
 
 ### Minimal Python example
+{: .no_toc }
 
 Thanks to Scikit-Learn we call the same functions: `confusion_matrix()` and `ConfusionMatrixDisplay()`.
 
