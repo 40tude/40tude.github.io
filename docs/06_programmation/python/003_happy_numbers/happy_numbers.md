@@ -7,7 +7,7 @@ description: "A practical and performance-oriented exploration of Happy Numbers,
 parent: "Python"
 #math: mathjax
 date:               2025-01-31 01:00:00
-last_modified_date: 2025-12-17 15:00:00
+last_modified_date: 2025-12-17 17:00:00
 ---
 
 # Happy Numbers
@@ -17,7 +17,7 @@ A practical and performance-oriented exploration of **Happy Numbers**, from clea
 
 
 <div align="center">
-<img src="./assets/img_01.webp" alt="" width="560" loading="lazy"/>
+<img src="./assets/img_01.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 Image from [Wikipedia](https://en.wikipedia.org/wiki/Happy_number)
@@ -39,19 +39,12 @@ This simple definition makes Happy Numbers a great playground to:
 * Measure real performance instead of guessing
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?start=31" title="Happy Numbers explanation" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?start=31" frameborder="0" allowfullscreen></iframe>
 </div>
 
+<!-- title="Happy Numbers explanation" -->
+
 By the end of this article, you will also be ready to solve your first algorithmic puzzle on [CodinGame](https://www.codingame.com/training/easy/happy-numbers).
-
-
-<!-- <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?si=ITRvyc5epa5XaNW6&amp;start=31" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div> -->
-
-<!-- This give me the opportunity to "play" with 2 different code in Python and check which one is faster. I then compare timings with a C++ implementation.
-
-At the end you should be able to solve your first puzzle on [CodinGame](https://www.codingame.com/training/easy/happy-numbers). If you never did before, make a try. This is really fun. -->
 
 
 ## A First Python Implementation
@@ -281,11 +274,11 @@ int main() {
 Execution time: ~0.08 seconds
 ```
 
-That’s roughly **6× faster than Python**, with very similar algorithmic structure.
+**80 ms** that’s roughly **6x** faster than Python, with very similar algorithmic structure.
 
 * For such a simple algorithm, the syntax is very similar across languages. So, even if Python is the only programming language you know, you should understand what is happening here. Additionally, I kept the variable names the same.
 * 34 lines in C++ vs 24 in Python
-* 0.08 sec in C++ vs 0.48 sec in Python
+* 80 ms sec in C++ vs 480 ms in Python
 * 6 times faster
 
 
@@ -341,7 +334,6 @@ int main() {
     std::cout << "Execution time: " << elapsed_seconds.count() << " seconds\n";
     return 0;
 }
-
 ```
 The timing is similar.
 
@@ -350,7 +342,7 @@ I suspect the optimizer is doing a great job. I did'nt look at assembly language
 Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C++ 20 or later otherwise the ``n_set.contains(n_current)`` function call is not be available.
 
 <div align="center">
-<img src="./assets/img_03.webp" alt="" width="560" loading="lazy"/>
+<img src="./assets/img_03.webp" alt="" width="600" loading="lazy"/>
 </div>
 
 
@@ -405,6 +397,59 @@ fn main(){
 ```
 ```
 Execution time: 62 ms
+```
+* 62 ms, this is 25% faster than C++.
+* Then using the [crate rayon](https://crates.io/crates/rayon) the code runs in **6 ms**
+    * **13 times** faster than C++
+    * **80 times** faster than Python
+    * 40 LOC
+
+<div align="center">
+<img src="./assets/img_04.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+```rust
+use rayon::prelude::*;
+use std::hint::black_box;
+use std::time::Instant;
+
+fn get_next_number(mut x: u32) -> u32 {
+    let mut next_num: u32 = 0;
+    while x > 0 {
+        let digit = x % 10;
+        x /= 10;
+        next_num += digit.pow(2);
+    }
+    next_num
+}
+
+fn happy_number(n: u32) -> bool {
+    let mut slow = n;
+    let mut fast = n;
+    loop {
+        slow = get_next_number(slow);
+        fast = get_next_number(get_next_number(fast));
+
+        if fast == 1 {
+            return true;
+        }
+
+        if slow == fast {
+            return false;
+        }
+    }
+}
+
+fn main() {
+    const K_MAX: u32 = 1_000_000;
+    let start = Instant::now();
+    (1..=K_MAX).into_par_iter().for_each(|i| {
+        black_box(happy_number(i));
+    });
+    let duration = start.elapsed();
+    println!("Execution time: {} ms", duration.as_millis());
+}
 ```
 
 ## Conclusion
