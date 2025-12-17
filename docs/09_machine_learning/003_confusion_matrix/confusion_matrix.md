@@ -15,6 +15,7 @@ last_modified_date: 2025-12-13 18:00:00 +0000
 <!--
 TODO
 * Create a Zip with code
+* Add a foot note about the second most import. A skewed distribution. Right-skewed. https://en.wikipedia.org/wiki/Skewness
 -->
 
 
@@ -38,6 +39,12 @@ A gentle, story-driven introduction so you’ll never be confused again.
 {: .no_toc }
 * For beginners
 * We indicate whether the prediction was correct (T/F) + the nature of prediction (P/N)
+* `FN=Misses`, `FP=False Alarm`
+* If the confusion matrix is about `X`, say:
+    * We miss `X` - `<DANGER>` => Recall
+    * We miss NOT `X` - `<DANGER>` => Precision
+
+<!--
 * Version 0
     * Recall is important when false negatives are costly (cancer screening).
     * Precision is important when false positives are costly (spam detection).
@@ -47,6 +54,7 @@ A gentle, story-driven introduction so you’ll never be confused again.
 * Version 2
     * If missing a real positive is catastrophic → Recall (bottom line)
     * If accusing something innocent is catastrophic → Precision (right col)
+-->
 
 * Confusion matrix concept extends to multi-class problems when we need to choose among more than 2 classes
 
@@ -91,11 +99,12 @@ One day, a great Machine Learning philosopher once whispered to me: "Listen, kid
 | Deployment & Monitoring   | Serve the dish, maintain quality |
 
 
-At one of the very early steps of the process, before jumping into modeling, optimization, and all that fun stuff with Scikit-Learn, it’s absolutely crucial to choose a metric, to be able to explain *why* you chose it, to set yourself a goal, and to stick to it. And honestly, that’s usually the hardest part. Because when we don’t get the results we want, we all have a tendency to "bend the data" until it says what we want to hear, and that is a **very, very bad idea**.
+At one of the very early steps of the process, before jumping into modeling, optimization, and all that fun stuff with Scikit-Learn, it’s absolutely crucial to choose a metric.
+You also need to be able to explain why you chose it, set yourself a clear goal, and stick to it. And honestly, that’s usually the hardest part. Because when we don’t get the results we want, we all have a tendency to "bend the data" until it says what we want to hear, and that is a **very, very bad idea**.
 
 When I say "choose a metric," right away you start hearing words like *Recall*, *Precision*, *F1-score*, *Accuracy*… On top of that, people start talking about the confusion matrix. And that’s usually where I completely lose my footing.
 
-Let’s be clear: I have no problem with the F1-score itself, or with formulas in general. No, no, it is even worst than that. The real issue was that for a very long time, I just couldn’t wrap my head around how the *labels* in the confusion matrix were written: `TP`, `FP`, `TN`, and `FN`.
+Let’s be clear. I have no problem with Recall and its friends nor with the formulas in general. No, no, it is even worst than that. The real issue was that for a very long time, I just couldn’t wrap my head around how the *labels* in the confusion matrix were written: `TP`, `FP`, `TN`, and `FN`.
 
 Which made it… somewhat awkward to properly explain my choices. But that was before. Since then, I went to Lourdes, I [saw the light](https://en.wikipedia.org/wiki/Lourdes_apparitions), and now I *almost* understand everything.
 
@@ -125,7 +134,7 @@ Now, this binary predictor will sometimes get things right and sometimes get thi
 1. I said, before going into the club, that I wasn’t going to leave with a girl, and… I went home alone.
 1. I said, before going into the club, that I wasn’t going to leave with a girl, but the way I danced to those wild beats… I ended up leaving with the most beautiful girl of the night.
 
-Yeah, I know, the example is silly, but that’s the point—it sticks in your mind. And trust me, when it comes to ridiculous examples, you haven’t seen anything yet. The worst is yet to come…
+Yeah, I know, the example is silly, but that’s the point, it sticks in your mind. And trust me, when it comes to ridiculous examples, you haven’t seen anything yet. The worst is yet to come…
 
 So, we can sum all this up in a table to evaluate how good the predictions are. If you go clubbing twice a week on average, by the end of the year you’ve made 104 predictions… and now it’s starting to look credible.
 
@@ -159,7 +168,7 @@ Which we will fill in together by announcing what we do "out loud."
 **The data:**
 At the end of the year, out of 104 outings, I said I was going to go out with a girl 80 times, but in fact I came home alone 70 times. On the other 24 outings where I said I was going to be serious, I only kept my word 18 times.
 
-Let's continue, and now I say:
+Let's continue, and now I say "loud and clear":
 
 1. Prediction **P** and Reality **P**: bottom right. The prediction is correct. I said that I would meet a girl and that’s what happened (what a charmer!). I write **T** (the prediction was true) and then **P** (because the prediction was **P**). The value is 10 (80–70).
 
@@ -198,7 +207,7 @@ REALITY       ├──────────┼──────────
 
 
 
-**Summary:**
+**Thins to keep in mind:**
 Each cell contains a two-letter code:
 - **First letter**: whether the prediction was correct (**T** for True) or wrong (**F** for False)
 - **Second letter**: the prediction itself (**P** or **N**)
@@ -221,7 +230,7 @@ Building the Matrix Step by Step
 {: .no_toc }
 
 
-**Exercice 00**
+**Exercice 00:** Take your cell phone. Now! Set an alarm for next week and the week after and name them "Redraw Confusion Matrix". The aim is for you to redraw the matrix, label it, and explain out loud (as if you were talking to an invisible friend) what you understand. If it does'nt work as expected, set another alarm in 2 weeks.
 
 **Exercice 01**
 
@@ -273,7 +282,7 @@ REALITY       ├────────────────────┼
 There's really nothing new here compared to what we've already covered, but I think it's **important** to be able to put words to math formulas, lines of code, or confusion matrices. It lets you verify that you've actually understood, and it confirms that you can explain to a friend what the matrix, formula, or line of code is trying to tell us. Plus, I'm convinced it helps anchor these concepts in our heads.
 
 
-Alright, let's do some math. Don't panic—it's going to be fine, you'll see.
+Alright, let's do some math. Don't panic, it's going to be fine, you'll see.
 
 
 
@@ -361,9 +370,12 @@ REALITY       ├──────────┼──────────
 $$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$
 
 * What matters to us is the number of hits (`TP`)
-* We start with `TP`
+* We start with `TP`, put your index on it in the matrix
 * In the last column, we compare `TP` to the sum of that column
 * **Storytelling:** "Among everything I predicted as Positive, how many were actually Positive?"
+
+#### **Side Note**
+I just said: "we compare `TP` to the sum of that column". I hope it is clear that in order to compare 2 values it is better to divide one by the other than to subtract one by the other. In addition remember we are more sensitive to the proportion than to the absolute magnitudes. See the [law of Weber](https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law) if needed.
 
 <!-- ###################################################################### -->
 ### Recall
@@ -482,7 +494,7 @@ Finally (*CeCe Peniston, '91*) you may want to keep in mind the figure below:
 
 -->
 
-Do you remember when you were young and innocent. You start learning probabilities and you used to draw trees to simulate, for example, that you toss a coin twice and get 4 possible results (HH, HT, TH, TT).
+Do you remember when you were young and innocent (MJ, '92, Remember the Time). You start learning probabilities and you used to draw trees to simulate, for example, that you toss a coin twice and get 4 possible results (HH, HT, TH, TT).
 
 You know what? We can find the Confusion Matrix labels in the tree you used to draw. See below:
 
@@ -500,10 +512,6 @@ Then, everyone takes a medical test that has two key characteristics:
 Look, at the end of the top branch of the tree for example. We found our friend `TP`. Indeed, the guy is affected, so the reality is POSITIVE. Then the prediction is "he is affected", "he is `POSITIVE`". So, in this case, the prediction is correct, it is `TRUE` and so the leaf is labeled `TRUE-POSITIVE`, aka `TP`.
 
 Check for yourself but the same reasoning applied to the three other branches and you get: `FN`, `FP` and `TN`.
-
-Now, if we stay focused on the top branch, you may remember that our teacher was talking about the "probability to be tested sick knowing that the patient is sick". Does the word conditional probability resonate? No? Have you ever heard about Bayes statistics, the statistic of the causes? This is not the topic of this post but believe or not TP its friends not only appears in the kind of binary tree but also in Bayes statistics.
-
-
 
 Now, if we stay focused on the top branch, you may recall that our teacher mentioned the "probability of testing positive given that the patient is sick". Does the term "conditional probability" ring a bell? No? What about "Bayesian statistics", often described as the statistics of causes?
 
@@ -626,7 +634,7 @@ REALITY       ├────────────┼────────
                        PREDICTION
 ```
 
-**Step 3 — Accuracy calculation**
+**Step 3: Accuracy calculation**
 {: .no_toc }
 
 Accuracy is defined as:
@@ -695,8 +703,8 @@ In fraud detection, missing fraud is far more costly than mislabeling a legitima
 
 To properly evaluate models under imbalance, we need metrics that focus on the rare class:
 
-* **Recall (Sensitivity):** "Out of all real frauds, how many did we catch?" (do you see the bottom line in your mind?)
-* **Precision:** "Out of all transactions flagged as fraud, how many were actually fraud?" (do you see the right column in your mind?)
+* **Recall (Sensitivity):** "Out of all real frauds, how many did we catch?" (do you visualize the bottom line of *our* matrix in your mind?)
+* **Precision:** "Out of all transactions flagged as fraud, how many were actually fraud?" (do you see the right column?)
 
 These metrics force us to confront the real trade-offs:
 * Catching more fraud vs. triggering too many false alarms
@@ -706,7 +714,7 @@ These metrics force us to confront the real trade-offs:
 ### Things to keep in mind
 {: .no_toc }
 
-* Is the dataset imbalanced? If yes => Blinking red LED 🔴
+* Is the dataset imbalanced? If yes => Blinking LED 🔴
 * In highly imbalanced problems, accuracy can lie
 
 Understanding this helps us to:
@@ -1387,9 +1395,8 @@ At this point in the story, we know how to draw a confusion matrix and we unders
 
 That said, remember what I explained right at the beginning of this post: *before* diving head-first into optimizing our machine learning model, we need to choose a metric and stick with it. Which means we must give ourselves the tools to choose, for example, between Recall, Precision, F1-score, and Accuracy. And for that, we need to take the time to truly understand how Recall and Precision work and understand the thing that actually causes the fight: the Threshold
 
-So I suggest we leave nightclubs behind for a moment and do a bit of politics instead and imagine that these two metrics are actually two political parties.
-
-
+So I suggest we leave nightclubs behind for a moment and do a bit of politics instead. Let’s imagine that these two metrics are actually two political parties, each doing their best to get more votes than the other, fighting like dogs over a single bone.
+FF
 ### The Threshold is a continuous value
 {: .no_toc }
 
@@ -1625,7 +1632,7 @@ REALITY       ├──────────┼──────────
 ```
 
 
-If a confusion matrix has false positives and no false negatives** (only value on the first diagonal TN and TP), then there is **no Recall–Precision trade-off**.
+If a confusion matrix has false positives and no false negatives (only value on the first diagonal TN and TP), then there is **no Recall–Precision trade-off**.
 
 The trade-off is not a mathematical rule. It appears **only when classes overlap** and the model makes errors. In a **perfectly separable problem**, both metrics can be maximized simultaneously. But in real life, perfect models simply don't exist.
 
@@ -1815,7 +1822,7 @@ That’s it. No metrics. No formulas. Just pain.
 ### Things to keep in mind
 {: .no_toc }
 
-* Choosing a metric isn't a technical afterthought—it's a **value judgment** about what kind of mistakes you're willing to make. These shocking examples force that point home.
+* Choosing a metric isn't a technical afterthought, it's a **value judgment** about what kind of mistakes you're willing to make. These shocking examples force that point home.
 * Think in terms of cost
     * What is the cost of missing a positive instance => Recall high => Precision low
 * Think in term of strictness

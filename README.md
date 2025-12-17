@@ -133,6 +133,15 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 }
 ```
 
+### The name of these dashes
+* The character — is called an em dash (tiret cadratin)
+* Not to be confused with:
+    * `-` → hyphen
+    * `–` → en dash (tiret demi-cadratin)
+* What is the em dash used for?
+    * The em dash is used to insert a parenthetical remark or clarification into a sentence, in a more expressive way than commas.
+
+
 * ❶ U+2776
 * ❷ U+2777
 * ❸ U+2778
@@ -156,6 +165,8 @@ Sans Serif
 * ➓ U+2793
 
 * ` NOT YET TRANSFERED `
+
+
 
 
 ### Callout
