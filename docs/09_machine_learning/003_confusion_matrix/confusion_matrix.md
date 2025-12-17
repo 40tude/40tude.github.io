@@ -415,7 +415,16 @@ $$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}$$
 
 
 
+If this help, we can also picture the situation in 3D. In a perfect world, all my predictions would have been correct and I would have gone out 80 times with girls over the year (`TP = 80`). But in reality, it’s more like there are sliding doors that are more or less open, and by the end of the year only 10 dates are left.
 
+Out of the 80 dates announced at the beginning, some, not all, leaked into the `FP` bucket (false alarms), and others slipped under the yellow door and ended up in the `FN` bucket (misses). I can’t be definitive about these leaks, because `FP` and FN also contain predictions that originally came from `TN`.
+
+That said, since there are more elements in `FP` than in `FN`, we can reasonably assume that the space under the red door is larger than the one under the yellow door… but hey, that’s still just an assumption.
+
+<div align="center">
+<img src="./assets/img15.webp" alt="" width="600" loading="lazy"/><br/>
+<span><b>Confusion Matrix in 3D</b></span>
+</div>
 
 
 

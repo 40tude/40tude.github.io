@@ -407,6 +407,16 @@ CTRL + H + Exp Reg
 <div align="center">\n$1\n</div>
 ```
 
+
+```
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?start=31" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+```
+
+
 ### Remplacer les $ seuls par $$
 ```
 CTRL + H + Exp Reg
