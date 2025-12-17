@@ -52,23 +52,12 @@ A gentle, story-driven introduction so you’ll never be confused again.
 * For beginners
 * We indicate whether the prediction was correct (T/F) + the nature of prediction (P/N)
 * `FN=Misses`, `FP=False Alarm`
-* If the confusion matrix is about `X`, say:
+* When the confusion matrix is about `X`, say aloud:
     * We miss `X` - `<DANGER>` => Recall
     * We miss NOT `X` - `<DANGER>` => Precision
+* Confusion matrix concept extends to multi-class problems
 
-<!--
-* Version 0
-    * Recall is important when false negatives are costly (cancer screening).
-    * Precision is important when false positives are costly (spam detection).
-* Version 1
-    * Recall (bottom line) cares about missed positives (we want FN=0)
-    * Precision (right col) cares about mistaken positives (we want FP=0)
-* Version 2
-    * If missing a real positive is catastrophic → Recall (bottom line)
-    * If accusing something innocent is catastrophic → Precision (right col)
--->
 
-* Confusion matrix concept extends to multi-class problems when we need to choose among more than 2 classes
 
 
 <div align="center">
@@ -127,6 +116,8 @@ Alright. Let’s get started.
 
 <!-- ###################################################################### -->
 ### Side note
+{: .no_toc }
+
 [Ancel Keys](https://en.wikipedia.org/wiki/Ancel_Keys), the father of the [K-ration](https://en.wikipedia.org/wiki/K-ration), is a foundational figure in nutritional epidemiology but remains controversial due to his history of data manipulation. In the 1950s, he presented a correlation between saturated fats and heart disease using only six countries despite having data for 22. This "cherry-picking" tactic was identified as biased as early as 1957 (see Yerushalmy and Hilleboe). Indeed, when the full dataset is considered, the "strong" link Keys claimed largely vanishes.
 
 Any consequence? This skewed "science" (plus a lot of politic) became the foundation for global dietary guidelines, leading the food industry to replace fats with sugar, additives, and ultra-processed ingredients to maintain palatability. This shift has fueled overconsumption and the modern obesity epidemic. By 2025, for the first time in history, [childhood obesity rates](https://data.unicef.org/resources/feeding-profit-2025-child-nutrition-report/) have overtaken undernutrition globally, signaling a profound crisis in industrial food environments.
@@ -405,6 +396,8 @@ $$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$
 * **Storytelling:** "Among everything I predicted as Positive, how many were actually Positive?"
 
 #### **Side Note**
+{: .no_toc }
+
 I just said: "we compare `TP` to the sum of that column". I hope it is clear that in order to compare 2 values it is better to divide one by the other than to subtract one by the other. In addition remember we are more sensitive to the proportion than to the absolute magnitudes. See the [law of Weber](https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law) if needed.
 
 <!-- ###################################################################### -->

@@ -601,5 +601,39 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 
 
 
+### Verifier qu'une page est bien indexée
+`site:https://www.40tude.fr/docs/06_programmation/rust/016_errors/errors_02.html`
 
+
+
+
+
+### How to reach your goal: Indexing all pages
+
+To ensure all your technical documentation is indexed, follow these steps:
+
+#### Step A: Identify the "Reason"
+
+Scroll down below the graph in the **Pages** menu. Google lists the specific reasons why those 111 pages aren't indexed. Common ones include:
+
+* **Crawled - currently not indexed:** Google knows the page exists but hasn't decided to put it in the index yet. This is often a "quality" or "authority" signal.
+* **Discovered - currently not indexed:** Google knows the URL exists but hasn't even crawled it yet because it doesn't want to overload your server.
+* **Excluded by ‘noindex’ tag:** Check if your documentation generator (like Hugo, Docusaurus, or MkDocs) accidentally added a noindex tag.
+
+#### Step B: Optimize Internal Linking
+
+Documentation sites often have "orphan pages" (pages with no links pointing to them).
+
+* Ensure every page is linked from a sidebar, a table of contents, or a "Next/Previous" button.
+* Google prioritizes pages that are well-connected.
+
+#### Step C: Update and Re-submit your Sitemap
+
+1. Go to the **Sitemaps** menu in GSC.
+2. Ensure the sitemap URL is correct and showing "Success."
+3. If it hasn't been read in weeks, you can re-enter the URL and click **Submit** to ping Google.
+
+#### Step D: "Validate Fix"
+
+Once you have identified the reason (e.g., "Crawled - currently not indexed"), click on that specific row and click the **Validate Fix** button. This tells Google to prioritize re-evaluating those 111 pages.
 
