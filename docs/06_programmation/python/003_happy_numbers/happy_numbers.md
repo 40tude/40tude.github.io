@@ -347,7 +347,7 @@ Again, even on [Compiler Explorer](https://godbolt.org/), make sure to select C+
 
 
 
-## Rust Version (Fast & Slow Pointers)
+## Benchmarking Rust (Fast & Slow Pointers)
 
 * This one use fast and slow pointers
 * With many others, it is available on this [dedicated page]({%link docs/06_programmation/rust/007_coding_interview_patterns/index.md%}#ANCHOR)
@@ -399,10 +399,15 @@ fn main(){
 Execution time: 62 ms
 ```
 * 62 ms, this is 25% faster than C++.
-* Then using the [crate rayon](https://crates.io/crates/rayon) the code runs in **6 ms**
-    * **13 times** faster than C++
-    * **80 times** faster than Python
-    * 40 LOC
+
+
+
+## Benchmarking Rust (using rayon)
+
+Then using the [crate rayon](https://crates.io/crates/rayon) the code runs in **6 ms**
+* **13 times** faster than C++
+* **80 times** faster than Python
+* 40 LOC
 
 <div align="center">
 <img src="./assets/img_04.webp" alt="" width="600" loading="lazy"/><br/>
@@ -452,26 +457,7 @@ fn main() {
 }
 ```
 
-## Conclusion
-* Yes, we could have used numpy and see what happen when vectorizing the algorithm.
-* Yes, we could do a better job with some multithreading etc.
-* But... It is always a tradeoff between the time spent vs speed improvement
-* Regarding speed improvement vs time spent, feel free to read this post about [Sieve of Eratosthenes]({%link docs/06_programmation/c/000_crible_eratosthene/crible_eratosthene.md%})
 
-* Happy Numbers are deceptively simple and perfect for benchmarking
-* Readability and performance often pull in opposite directions
-* Python is expressive, C++ is brutally fast, Rust offers a great middle ground
-
-* Most importantly: **Measure first. Optimize second.**
-
-
-* Now you should be able to solve this puzzle on [CodinGame](https://www.codingame.com/training/easy/happy-numbers)
-
-
-Bien sûr Philippe.
-Voici une **conclusion réécrite**, plus structurée, filtrée et fluide, prête à remplacer l’existante. Le ton reste conversationnel et orienté pratique, avec une incitation claire à passer à l’action sur CodinGame.
-
----
 
 ## Conclusion
 
@@ -482,7 +468,7 @@ Along the way, we’ve seen that:
 * **Readability and performance often pull in opposite directions**
 * **Python is expressive and quick to iterate**
 * **C++ delivers raw performance**
-* **Rust offers an elegant middle ground with strong guarantees**
+* **Rust offers an elegance, speed and strong guarantees**
 
 Of course, this algorithm could be pushed further. We could experiment with vectorization using NumPy, introduce multithreading, or explore other optimizations. But in practice, performance work is always a **tradeoff between the time invested and the gains achieved**. Optimizing for the sake of optimizing rarely pays off.
 
