@@ -113,6 +113,13 @@ So yeah, that’s exactly what we’re going to talk about in this post. As usua
 Alright. Let’s get started.
 
 
+<!-- ###################################################################### -->
+### Side note
+[Ancel Keys](https://en.wikipedia.org/wiki/Ancel_Keys), the father of the [K-ration](https://en.wikipedia.org/wiki/K-ration), is a foundational figure in nutritional epidemiology but remains controversial due to his history of data manipulation. In the 1950s, he presented a correlation between saturated fats and heart disease using only six countries despite having data for 22. This "cherry-picking" tactic was identified as biased as early as 1957 (see Yerushalmy and Hilleboe). Indeed, when the full dataset is considered, the "strong" link Keys claimed largely vanishes.
+
+Any consequence? This skewed "science" (plus a lot of politic) became the foundation for global dietary guidelines, leading the food industry to replace fats with sugar, additives, and ultra-processed ingredients to maintain palatability. This shift has fueled overconsumption and the modern obesity epidemic. By 2025, for the first time in history, [childhood obesity rates](https://data.unicef.org/resources/feeding-profit-2025-child-nutrition-report/) have overtaken undernutrition globally, signaling a profound crisis in industrial food environments.
+
+So when I say that "bending the data" is a very, very bad idea. I really mean it.
 
 
 
@@ -232,10 +239,17 @@ Building the Matrix Step by Step
 
 **Exercice 00:** Take your cell phone. Now! Set an alarm for next week and the week after and name them "Redraw Confusion Matrix". The aim is for you to redraw the matrix, label it, and explain out loud (as if you were talking to an invisible friend) what you understand. If it does'nt work as expected, set another alarm in 2 weeks.
 
-**Exercice 01**
+**Exercise 01: The Martian "To Probe or Not to Probe" Detector.** Imagine you are a Martian scout ship commander using a "Human-O-Meter" to decide if a creature on Earth is a Human (Positive) or just a very tall Garden Gnome (Negative). Out of 100 scans:
 
-**Exercice 02**
+* Your radar screamed "HUMAN DETECTED!" 60 times. Upon closer inspection, 45 were actual humans, but 15 were just gnomes in trench coats.
+* Your radar stayed silent 40 times. However, you later found out that 10 sneaky humans were hiding behind bushes and weren't detected.
+* **Task:** Draw the confusion matrix and label the TP, FP, TN, and FN counts. Explain to your Martian crew what a "False Alarm" means in this context.
 
+**Exercise 02: Batman’s "Joker-Lookalike" Filte.r** Batman has a new AI filter for his Bat-Goggles to identify the Joker (Positive) among Gotham's street performers (Negative).
+
+* In a crowd of 200 people, the filter identified 20 individuals as "The Joker." In reality, only 2 of them were the real Joker (the other 18 were just really good cosplayers).
+* The goggles showed "Harmless Performer" for 180 people. Sadly, the Joker had one more twin brother in that group that the AI missed.
+* **Task:** Build the "Reality vs. Prediction" matrix. If Batman punches a "False Positive," who is he hitting?
 
 
 
@@ -290,14 +304,18 @@ Alright, let's do some math. Don't panic, it's going to be fine, you'll see.
 {: .no_toc }
 
 
-**Exercice 00**
+**Exercise 00: The Cursed Treasure Map.** You are a treasure hunter with a magical compass that spins when it thinks there is a Treasure Chest (Positive) buried nearby.
 
-**Exercice 01**
+* **Hit or Miss?** The compass spins wildly. You dig and find a chest full of gold. What is the technical term for this?
+* **False Alarm?** The compass spins, you dig for 5 hours, and you only find a dirty old boot. Is this a "Miss" or a "False Alarm"?
+* **Correct Rejection?** You walk over a patch of sand, the compass stays still, and indeed, there is nothing but sand underneath. What label does this get?
 
-**Exercice 02**
 
 
+**Exercise 01: The "She’s Into You" Classifier.** You’re at a party and you use an experimental "Crush-Detector" app to see if a girl is "Interested" (Positive) or "Not Interested" (Negative).
 
+* **The Heartbreak Miss:** The app says "Not Interested," so you stay in the corner eating chips. Later, you find out she was actually waiting for you to say hi all night. Is this a **False Negative** or a **False Positive**?
+* **The Public Embarrassment:** The app flashes "INTERESTED!" You walk up with your best pick-up line about Martians, and she immediately calls security. In the language of the matrix, what just happened?
 
 
 
@@ -536,9 +554,19 @@ REALITY       ├──────────┼──────────
                     PREDICTION
 ```
 
-**Exercice 01:**
+**Exercise 01: The Monster-Under-The-Bed Security System.** You are building a security system for kids to detect Monsters (Positive).
 
-**Exercice 02:**
+* If your priority is that **no child ever wakes up to a monster** (meaning you want ZERO Misses), which metric should you maximize: **Recall** or **Precision**?
+* If parents are complaining because the alarm goes off every time a cat walks by (too many False Alarms), which metric needs to be improved?
+
+
+
+
+**Exercise 02: The Batman "F1-Score" Dilemma.** Batman is evaluating two Bat-Computer algorithms to catch Catwoman.
+
+* **Algorithm A** has a Precision of 0.9 (when it says it's her, it's almost always her) but a Recall of 0.1 (it misses her 90% of the time).
+* **Algorithm B** has a Precision of 0.5 and a Recall of 0.5.
+* **Task:** Calculate the F1-score for both. Why does the F1-score "punish" Algorithm A so severely? What does this tell Batman about his "calibration"?
 
 
 
@@ -732,12 +760,15 @@ Understanding this helps us to:
 {: .no_toc }
 
 
-**Exercice 00**
+**Exercise 00: The Martian Spy Stealth Challenge.** Martian spies are very rare. In a city of 1,000,000 people, only 10 are actually Martians.
 
-**Exercice 01**
+* If you build a "Lazy Earthling" model that predicts "Not a Martian" for **everyone**, what will your **Accuracy** be?
+* Why is this "Accuracy" completely useless for the Men In Black?
 
-**Exercice 02**
+**Exercise 01: Finding the "One Piece" Treasure.** There is only 1 "Legendary Treasure" (Positive) in an ocean of 1,000,000 "Empty Barrels" (Negative).
 
+* Your "Treasure Finder 3000" identifies 100 objects as treasure. One of them is the actual Legendary Treasure.
+* **Task:** Compute the **Precision**. Then, explain why your boss (the Pirate King) cares more about **Recall** than Accuracy in this specific scenario.
 
 
 
@@ -1364,7 +1395,7 @@ With the Python version we had 0.803 on the train set and 0.788 on the test set.
 
 
 <!-- ###################################################################### -->
-### Exercices
+<!-- ### Exercices
 {: .no_toc }
 
 
@@ -1372,7 +1403,7 @@ With the Python version we had 0.803 on the train set and 0.788 on the test set.
 
 **Exercice 01**
 
-**Exercice 02**
+**Exercice 02** -->
 
 
 
@@ -1671,11 +1702,35 @@ Or maybe it’s the other way around: tonight, for sure, I’m going to go wild.
 {: .no_toc }
 
 
-**Exercice 00**
+**Exercise 00 — Austin Powers’ Evil Detector.** Dr. Evil has built a machine that assigns a *“villain probability”* to everyone entering his lair.
+Unfortunately, it can’t tell the difference between actual evil geniuses and slightly weird interns.
 
-**Exercice 01**
+You can choose the Threshold that decides who gets thrown into the shark tank.
 
-**Exercice 02**
+- What happens to **Recall** if you lower the Threshold to catch *all* potential villains?
+- What happens to **Precision** if you raise it to avoid throwing innocent interns to the sharks?
+- Where would you set the Threshold if releasing a real villain is worse than sacrificing a few interns?
+
+
+**Exercise 01 — Martian Invasion Alarm System.** Earth has deployed a radar system that outputs a probability that a flying object is a Martian ship. Most objects are… just pigeons.
+
+- Low Threshold: the alarm rings all the time, even for pigeons.
+- High Threshold: the alarm almost never rings… including when Martians actually land.
+
+For each scenario below, decide which metric you prioritize and why:
+- Missing a real Martian invasion.
+- Launching nuclear defense because of a pigeon.
+- Convincing politicians that your choice of Threshold makes sense.
+
+
+**Exercise 02 — Batman’s Night Patrol.** Batman uses a model to decide whether someone in an alley is a criminal. The model outputs a *“crime likelihood score”*.
+
+- A false positive means Batman punches an innocent person.
+- A false negative means a criminal escapes.
+
+- Which metric does Batman care about more: Precision or Recall?
+- How does raising or lowering the Threshold change Gotham’s nightly crime statistics?
+- At what point does Batman become more of a menace than the criminals themselves?
 
 
 
@@ -1843,11 +1898,38 @@ That’s it. No metrics. No formulas. Just pain.
 {: .no_toc }
 
 
-**Exercice 00**
+**Exercise 00 — Dracula’s Dating App.** A dating app tries to detect *actual vampires* hiding among normal humans. If the app labels someone as `VAMPIRE`, they are instantly banned and staked.
 
-**Exercice 01**
+- False Positive: you stake a perfectly normal human looking for love.
+- False Negative: you match an actual vampire who drinks your blood on the first date.
 
-**Exercice 02**
+Questions:
+- Which metric should the app optimize first: Precision or Recall?
+- What kind of Threshold would you choose?
+- Describe the absurd outcome of pushing this metric to the extreme.
+
+
+**Exercise 01 — Indiana Jones and the Temple of Traps.** Indiana Jones uses an AI to detect deadly traps in ancient temples. The model flags tiles as `TRAP` or `SAFE`.
+
+- False Positive: the AI flags a safe tile as dangerous → Indy avoids it and wastes time.
+- False Negative: the AI misses a real trap → Indy falls, screams, and the movie ends early.
+
+Questions:
+- Which mistake is more acceptable?
+- Which metric dominates the decision?
+- Why would optimizing Accuracy alone be a terrible idea here?
+
+
+**Exercise 02 — Alien Nightclub Bouncer.** An intergalactic nightclub has a bouncer AI deciding who gets in. The goal: admit cool aliens, reject monsters that eat other guests.
+
+- False Positive: a monster gets in and eats three DJs.
+- False Negative: a cool alien is rejected and leaves a bad Yelp review.
+
+Questions:
+- Would you prioritize Precision, Recall, F1-score, or Accuracy?
+- What happens if the bouncer optimizes only for Precision?
+- What happens if it optimizes only for Recall?
+- Explain why a *balanced metric* might actually save the club.
 
 
 
@@ -1912,7 +1994,7 @@ This provides an intuitive overview of model performance across the classes.
 
 
 
-<!-- ###################################################################### -->
+<!-- ######################################################################
 ### Exercices
 {: .no_toc }
 
@@ -1921,7 +2003,7 @@ This provides an intuitive overview of model performance across the classes.
 
 **Exercice 01**
 
-**Exercice 02**
+**Exercice 02** -->
 
 
 
@@ -1978,3 +2060,24 @@ As for me? I eventually adjusted my model, raised my threshold, improved my prec
 ## Webliography
 
 * [Fraud Detection 2](https://github.com/40tude/fraud_detection_2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
