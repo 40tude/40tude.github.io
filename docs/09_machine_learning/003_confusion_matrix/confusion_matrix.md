@@ -26,9 +26,9 @@ A gentle, story-driven introduction so you’ll never be confused again.
 {: .lead }
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -41,6 +41,7 @@ A gentle, story-driven introduction so you’ll never be confused again.
 {: .no_toc }
 * [Episode 00]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix.md%})
 * [Episode 01]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_01.md%})
+* [Episode 02]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_02.md%})
 
 
 
@@ -582,10 +583,13 @@ REALITY       ├──────────┼──────────
 
 
 
-#### The Posts Of The Saga
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## The Posts Of The Saga
 {: .no_toc }
 * [Episode 00]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix.md%})
 * [Episode 01]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_01.md%})
+* [Episode 02]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_02.md%})
 
 
 
