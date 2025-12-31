@@ -5,6 +5,7 @@ layout: default
 title: "From Source File to Executable: A Gentle Walk Through the Rust Build System"
 parent: "Rust"
 #math: mathjax
+nav_order: 13
 date               : 2025-08-25 14:45:00
 last_modified_date : 2025-08-26 09:00:00
 ---
@@ -12,7 +13,7 @@ last_modified_date : 2025-08-26 09:00:00
 # From Source File to Executable: A Gentle Walk Through the Rust Build System
 
 <!-- <h2 align="center">
-<span style="color:orange"><b>This post is still under construction.</b></span>    
+<span style="color:orange"><b>This post is still under construction.</b></span>
 </h2> -->
 
 
@@ -28,7 +29,7 @@ last_modified_date : 2025-08-26 09:00:00
 
 
 ## Introduction
-In this [post]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}) and this [one]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) I had the opportunity to say few words about the Rust build system. I mean the process by which source files are compiled into object code, linked, and turned into executables or libraries. During this process, Cargo, `rustc` and the linker are working together. 
+In this [post]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}) and this [one]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) I had the opportunity to say few words about the Rust build system. I mean the process by which source files are compiled into object code, linked, and turned into executables or libraries. During this process, Cargo, `rustc` and the linker are working together.
 
 Understanding how this pipeline works is more than just trivia. It helps explain why Rust feels different from languages like Python, C#, or Java, and why certain patterns in Rust make sense only when you know what happens under the hood.
 
@@ -68,7 +69,7 @@ When you run a Python program with:
 python my_app.py
 ```
 
-you are not actually *executing the source code directly*. What happens instead is that the **Python interpreter** reads your code line by line, parses it, understands it, and executes it on the fly. Double check the line above. We pass the source code `my_app.py` as an argument to `python.exe`, the interpreter. In plain English we are saying : "Hey, mister Python, please open and load my source file `my_app.py` then execute the lines one by one. 
+you are not actually *executing the source code directly*. What happens instead is that the **Python interpreter** reads your code line by line, parses it, understands it, and executes it on the fly. Double check the line above. We pass the source code `my_app.py` as an argument to `python.exe`, the interpreter. In plain English we are saying : "Hey, mister Python, please open and load my source file `my_app.py` then execute the lines one by one.
 
 This design has key advantages:
 
@@ -82,7 +83,7 @@ But it also comes with downsides:
 
 Other ecosystems have taken different approaches to balance these trade-offs. For example, in TypeScript the source code is *transpiled* into JavaScript. This allows type errors to be caught early, but at the end of the day the output is still JavaScript source code. And even though modern JavaScript engines are extremely fast, the code is still interpreted. By contrast, in **C#** or **Java**, the source code is compiled into an **intermediate language** (bytecode). The compiler verifies the code up front (so many errors are caught earlier), and at runtime a virtual machine executes this bytecode, often with just-in-time optimizations. This is much faster than pure interpretation, but the CPU still isn’t running the instructions directly.
 
-In languages like **C** (78) and **C++** (85), the model is different again. The compiler translates the source code straight into **machine instructions** that the processor can run directly. This is not assembly language (`push rbp`) this is machine code (48 89 E5). The build step takes more time, but the payoff is speed at runtime. 
+In languages like **C** (78) and **C++** (85), the model is different again. The compiler translates the source code straight into **machine instructions** that the processor can run directly. This is not assembly language (`push rbp`) this is machine code (48 89 E5). The build step takes more time, but the payoff is speed at runtime.
 
 This is where **Rust** (06) comes in. Like C and C++, Rust compiles down to native machine code, so execution is fast. But Rust adds something unique: **a compiler that enforces strong guarantees** about memory safety, lifetimes, and concurrency. That means many classes of bugs (dangling pointers, data races, invalid memory accesses) are caught at compile time, before your program ever runs. Of course, dividing by zero will still be an error — but with Rust you get both:
 
@@ -113,7 +114,7 @@ PS : In Rust if you divide an int by 0, you get an error from rustc (``attempt t
 
 ## A project with 1 file
 
-Suppose we have a Rust project with only one `src/main.rs` file. No other files. There aren't even any modules defined in `main.rs` or any external crates such as `uuid`. 
+Suppose we have a Rust project with only one `src/main.rs` file. No other files. There aren't even any modules defined in `main.rs` or any external crates such as `uuid`.
 
 In that case the process is "straightforward":
 
@@ -131,7 +132,7 @@ In that case the process is "straightforward":
 
 
 ### Note - Build pipeline
-When I say "straightforward" it is a lie. Here is the Rust build pipeline and its main steps and tools involved. 
+When I say "straightforward" it is a lie. Here is the Rust build pipeline and its main steps and tools involved.
 
 |Stage	                         | Quick description  |
 |:-------------------------------|:-------------------|
@@ -149,7 +150,7 @@ When I say "straightforward" it is a lie. Here is the Rust build pipeline and it
 | LLVM Optimizations	         | LLVM optimizes even more |
 | Machine Code	                 | The binary code is produced |
 
-### More info about the Build pipeline 
+### More info about the Build pipeline
 
 **Lexing / Parsing**
 
@@ -228,7 +229,7 @@ When we say “Machine Code” in the compiler pipeline, we usually mean **raw i
   * The linker doesn’t generate object files — it consumes them.
 
 
-#### Timeline 
+#### Timeline
 
 From the previous table:
 
@@ -274,7 +275,7 @@ From the previous table:
 
 ## A project with 2 files
 
-What happens if the project is made of a `src/main.rs` and `src/file01.rs` ? 
+What happens if the project is made of a `src/main.rs` and `src/file01.rs` ?
 
 In fact the situation remains very similar. Indeed, when we add another file like `file01.rs` and declare it in `main.rs` with
 
@@ -305,7 +306,7 @@ The compiler does the following:
    * Just like before, the linker sees *one* object file for our crate + the precompiled standard library crates.
    * Nothing extra is added because we haven’t introduced an external crate yet.
 
-From the build system point of view, the only thing that matters is the **module tree**. Can I build a tree with all the modules, all the functions, traits, structures...? If yes, then I know who is who, who call who and I can try to compile/link the code. 
+From the build system point of view, the only thing that matters is the **module tree**. Can I build a tree with all the modules, all the functions, traits, structures...? If yes, then I know who is who, who call who and I can try to compile/link the code.
 
 It is important to understand that on one hand, as a developer, I can use many different files, libraries... Organize these files in a hierarchy of directories and sub-directories BUT... At the end of the day, the only thing that matters for the build system is the module tree. So as a developer I must understand what a module tree is and I must provide the information required by the build system so that it can create the module tree in memory. If needed read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) which talks more specifically of the module tree.
 
@@ -337,10 +338,10 @@ Anyway, even with 2 source code files, the life is easy, we are still in the “
 
 ## Adding an external crate
 
-What happens when I add an external crate like `uuid` in `Cargo.toml`? 
+What happens when I add an external crate like `uuid` in `Cargo.toml`?
 
 ```rust
-cargo add uuid --features "v4"    
+cargo add uuid --features "v4"
 ```
 
 If you don't know yet, [uuid](https://crates.io/crates/uuid) is an easy to use crates which generates 128 bits unique Id (`67e55044-10b1-426f-9247-bb680e5fe0c8` is an example).
@@ -405,7 +406,7 @@ let id = uuid::Uuid::new_v4();
 use uuid::Uuid;
 let id = Uuid::new_v4();
 ```
-Most developers still prefer the `use` form because it shortens the function calls and improves readability. 
+Most developers still prefer the `use` form because it shortens the function calls and improves readability.
 
 
 
@@ -500,7 +501,7 @@ So selecting only `v4` is the cleanest way to keep things lean, but **having `v7
 As a starting point, in `Cargo.toml` add a `[profile.release]` section with the following options  :
 
    * `[profile.release]` options:
-     * `lto = "thin"` (great default), 
+     * `lto = "thin"` (great default),
      * `codegen-units = 1` (smaller, slower build),
      * `panic = "abort"` (smaller, removes unwinding),
      * `strip = "symbols"` (newer Cargo; or use platform tools).
@@ -568,7 +569,7 @@ Yes—two flavors of dynamic libraries:
    * This is what we choose to provide a plugin or shared lib to C/C++/Python/… via FFI.
    * Again we save few bytes in the executable, win some flexibility in the maintenance but we must be sure the dll is available on the target machine
 
-### Note - Which crate-type should I use? 
+### Note - Which crate-type should I use?
 
 * **Rust library used by other Rust crates:** `lib` → **`.rlib`** (default).
 * **Static library for C/C++ consumers:** `staticlib` → **`.a`/`.lib`**.
@@ -661,7 +662,7 @@ So yes — `use crate::...` is the canonical way to reference items from *within
 
 * **Inside our lib’s own code**, we write `use crate::...`.
 * **Outside consumers** (another crate that depends on our lib, a client...) we write `use the_lib::...`.
-* Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) 
+* Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
 
 
@@ -683,9 +684,9 @@ So yes — `use crate::...` is the canonical way to reference items from *within
 
 I don't know. What do *you* think ? Take your time... And, by the way, think twice about the `use` statements in the `main.rs` file... I wait for you...
 
-I will create an application (`.exe` under WIN11 for example) with `main.rs` but even if I can compile the code I will not be able to link the code until the library is built. Indeed the application invoque some of the functions which are defined in the library (`my_addition()`, `my_division()`...). 
+I will create an application (`.exe` under WIN11 for example) with `main.rs` but even if I can compile the code I will not be able to link the code until the library is built. Indeed the application invoque some of the functions which are defined in the library (`my_addition()`, `my_division()`...).
 
-My belief is that the project is then a library crate that contains a binary crate. When we do `cargo build`, we start by building the lib, and everything happens as in the previous section (see "Simple case - `src/lib.rs` only"). Then the build system creates the binary crate, which needs the lib it just build. 
+My belief is that the project is then a library crate that contains a binary crate. When we do `cargo build`, we start by building the lib, and everything happens as in the previous section (see "Simple case - `src/lib.rs` only"). Then the build system creates the binary crate, which needs the lib it just build.
 
 Additionally in the `main.rs` file, I can't write `use crate...` because `crate` refers to the lib, not the bin. I have to specify the crate name that is in `cargo.toml`. Either it has the same name as the library crate by default, or we have to specify something else in `cargo.toml`. Is that right?
 
@@ -913,7 +914,7 @@ cargo build --bin cli_b --features "feat-b"
 
 **One more nuance (workspaces)**
 
-* Feature unification happens **within a single build plan**. 
+* Feature unification happens **within a single build plan**.
 
 * In a workspace, each member is its own crate graph root; features unify **per dependency graph**, not globally across the whole workspace—but `cargo build` may still unify for the set of targets being built together. Subtle behavior; worth a deep dive if we split clients into separate packages.
 

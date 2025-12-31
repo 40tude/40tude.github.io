@@ -5,6 +5,7 @@ layout: default
 title: "From Folders to Crates: A Practical Guide to Modern Rust Module Trees (No mod.rs, No Tears)"
 parent: "Rust"
 #math: mathjax
+nav_order: 6
 date               : 2025-08-22 17:45:00
 last_modified_date : 2025-10-02 10:45:00
 ---
@@ -15,15 +16,15 @@ last_modified_date : 2025-10-02 10:45:00
 * For beginners
 * Starting with a hierarchy of directories and files already in place
 * A process to make sure the compiler and the linker can build the lib and the app
-* Explain the `use ...` statements that help to write easy to read code 
+* Explain the `use ...` statements that help to write easy to read code
 * As proposed since 2018+, `mod.rs` files are not used here
 * Process
     * You have a sub-directory named `my_dir/`
     * Next to `my_dir/`, create a file `my_dir.rs`
     * Inside `my_dir.rs` declare the modules to add to the module tree (`pub mod zoubida;`)
         * `zoubida` refers to the module defined in `my_dir/zoubida.rs`
-        * `my_dir/zoubida.rs` can be either : 
-            * a regular module file containing code, or 
+        * `my_dir/zoubida.rs` can be either :
+            * a regular module file containing code, or
             * a *hub* file that declares further submodules
     * The process starts at the crate root (`lib.rs`)
 
@@ -51,7 +52,7 @@ last_modified_date : 2025-10-02 10:45:00
 
 ## The context
 
-Imagine... 
+Imagine...
 
 * Imagine you’re building an application that uses sensors to collect measurements. That’s why there’s a `sensors/` directory.
 * All sensors are *input* sensors (not actuators), so you add an `input/` directory.
@@ -314,8 +315,8 @@ crate (lib.rs)
 
 You can also try this:
 * `cargo-modules dependencies --lib`
-* Copy the output text from the console 
-* Paste it in [this page](https://dreampuf.github.io/GraphvizOnline/)  
+* Copy the output text from the console
+* Paste it in [this page](https://dreampuf.github.io/GraphvizOnline/)
 
 
 <div align="center">
@@ -341,7 +342,7 @@ The graph is a full semantic map of the crate.
 
 
 ## 2. Building the binary (`src/main.rs`)
-* It should be clear by now that the binary and the library are 2 different beasts 
+* It should be clear by now that the binary and the library are 2 different beasts
 * This is why, in `main.rs`, we **cannot** write `use crate::...`. Instead we write `use CRATE_NAME::...` where `CRATE_NAME` is defined by the line `[package] name = "..."` in `Cargo.toml` (in our case `traits_for_plugins`).
 
 
@@ -357,12 +358,12 @@ fn main() {
 }
 ```
 
-Indeed, `main.rs` is a *client* of `lib.rs` and it does not see the internal modules via `crate::...` directly. In `main.rs`, `crate::...`  refers to the binary crate itself, **not** to the library defined in `lib.rs`. 
+Indeed, `main.rs` is a *client* of `lib.rs` and it does not see the internal modules via `crate::...` directly. In `main.rs`, `crate::...`  refers to the binary crate itself, **not** to the library defined in `lib.rs`.
 
 To make a long story short:
-* Since there a `main.rs` next to `lib.rs` 
+* Since there a `main.rs` next to `lib.rs`
 * In `main.rs` we write the `use` statements considering `main` as an external module/namespace
-* We use the crate name (the one defined in `[package] name = "..."` in `Cargo.toml`). 
+* We use the crate name (the one defined in `[package] name = "..."` in `Cargo.toml`).
 * And yes, by default, if both `lib.rs` and `main.rs` exist, the library and the binary crates share the same name (`libtraits_for_plugins.rlib` and `traits_for_plugins.exe`). This can be overridden in `Cargo.toml`.
 
 ```toml
@@ -382,7 +383,7 @@ path = "src/lib.rs"
 
 ## 3. Building the example (`examples/ex_01.rs`)
 * The example is clearly a *client* of the lib
-* All that we already know about `src/main.rs` apply to `examples/ex_01.rs`   
+* All that we already know about `src/main.rs` apply to `examples/ex_01.rs`
 * This includes the line `use crate_name::...`
 
 
@@ -416,7 +417,7 @@ You start with:
 
 ```
 src/
-├── lib.rs                
+├── lib.rs
 └── parent_dir/
     └── child_dir/
         └── grandchild/
@@ -435,10 +436,10 @@ src/
 
 ### Expose leaf level `grandchild/`
 * Create a hub file `src/parent_dir/child_dir/grandchild.rs`.
-* Content of `grandchild.rs` = 
+* Content of `grandchild.rs` =
     ```rust
-    pub mod foo;  
-    pub mod bar;   
+    pub mod foo;
+    pub mod bar;
     ```
 
 Final module tree:
@@ -510,7 +511,7 @@ src/
 
 Questions:
 1. For each directory/file, explain what it is , what it contains and why...
-1. Draw the module tree 
+1. Draw the module tree
 
 
 * `lib.rs` → `pub mod animals;`
@@ -547,7 +548,7 @@ crate
 
 
 
-<!-- 
+<!--
 ---
 ## How to name a trait ? (by Chat GPT)
 

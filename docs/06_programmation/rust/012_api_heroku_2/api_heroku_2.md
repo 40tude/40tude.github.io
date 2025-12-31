@@ -5,6 +5,7 @@ layout: default
 title: "CI/CD for Rust: Automating Tests and Heroku Deployment of Your API"
 parent: "Rust"
 #math: mathjax
+nav_order: 8
 date               : 2025-08-02 16:00:00
 last_modified_date : 2025-08-02 16:00:00
 ---
@@ -24,8 +25,8 @@ last_modified_date : 2025-08-02 16:00:00
 </div>
 
 
-<!-- 
-git push heroku main 
+<!--
+git push heroku main
 -->
 
 <!-- Find the [blog post here](https://www.40tude.fr/docs/06_programmation/rust/011_api_heroku/api_heroku.html). -->
@@ -174,9 +175,9 @@ At this point, the project directory looks like :
 ```
 .
 ├── examples/
-│   └── client.rs      
+│   └── client.rs
 └── src/
-    └── main.rs       
+    └── main.rs
 ```
 
 Everything is in the `main.rs` file and this does not facilitate testing. Below is the new organization
@@ -184,7 +185,7 @@ Everything is in the `main.rs` file and this does not facilitate testing. Below 
 ```
 .
 ├── examples/
-│   └── client.rs      
+│   └── client.rs
 ├── src/
 │   ├── main.rs      ⟵ code to launch the app
 │   ├── lib.rs       ⟵ where we declare the modules (ex: api)
@@ -310,7 +311,7 @@ pub struct BmiRequest {
 
 // Structure for response body
 // Now it derive Deserialize. This is for the tests
-#[derive(Serialize, Deserialize)] 
+#[derive(Serialize, Deserialize)]
 pub struct BmiResponse {
     pub bmi: f32,
 }
@@ -346,7 +347,7 @@ pub async fn calculate_bmi(Json(payload): Json<BmiRequest>) -> Result<Json<BmiRe
 
 ## Step 6 : Create `tests/api.rs`
 
-Run the command below to extend `Cargo.toml` 
+Run the command below to extend `Cargo.toml`
 
 ```
 cargo add tower
@@ -441,7 +442,7 @@ curl -X POST http://localhost:8080/bmi  -H "Content-Type: application/json" -d '
 Now run the tests manually and locally. Again, just to make sure...
 
 ```
-cargo test  
+cargo test
 
 ```
 
@@ -533,7 +534,7 @@ HRKU-AAYLneWaZt-hqJ7cqwH3Ou_...
 
 
 
-## Step 9 : Check that its works when we push on GitHub 
+## Step 9 : Check that its works when we push on GitHub
 
 Commit on GitHub and check `Actions` in the repo
 
@@ -632,7 +633,7 @@ If one day we have a release we can add the line below
 This requires at least one “release” created in GitHub, via the repo's “Releases” tab.
 
 
-Now on GitHub the `README.md` should be displayed as below 
+Now on GitHub the `README.md` should be displayed as below
 <div align="center">
 <img src="./assets/img_10.webp" alt="" width="900" loading="lazy"/>
 </div>

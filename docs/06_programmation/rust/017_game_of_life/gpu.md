@@ -6,6 +6,7 @@ title: "Rust, Winit & Pixels: Understanding GPU Selection and Performance"
 description: A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit, and wgpu.
 parent: Rust
 #math: mathjax
+nav_order: 10
 date               : 2025-11-02 07:00:00
 last_modified_date : 2025-11-03 11:00:00
 ---
@@ -22,7 +23,7 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
 
 
 <!-- <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is still under construction 🚧</b></span>    
+<span style="color:orange"><b> 🚧 This post is still under construction 🚧</b></span>
 </h2> -->
 
 
@@ -43,7 +44,7 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
 * Backend choice matters:
     * DX12: Windows-only
     * Vulkan: cross-platform
-* GPU selection is a hint, not a command 
+* GPU selection is a hint, not a command
 * Enable logging to debug GPU/backend selection
 * The Rust workspace is on [GitHub](https://github.com/40tude/rust_game_of_life)
 * I use VSCode + Win11 (not tested elsewhere)
@@ -71,7 +72,7 @@ A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit,
 <!-- ###################################################################### -->
 
 ## Introduction
-Initially, this post was "Step 11" of the post about [Game of Life, Winit and Pixels]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}) but the section became way too long so I made a dedicated post. To give you some context, imagine you're writing a Rust+Winit+Pixels application and you want to better understand what's going on with the GPU. 
+Initially, this post was "Step 11" of the post about [Game of Life, Winit and Pixels]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}) but the section became way too long so I made a dedicated post. To give you some context, imagine you're writing a Rust+Winit+Pixels application and you want to better understand what's going on with the GPU.
 
 For example, which board is used? How the selection is made? Can I force one board to be used? What is a backend? What is the `wgpu` crate? What can I expect in terms of performances?
 
@@ -88,7 +89,7 @@ Now, let's check the status of DirectX. To do so you can use one of the 2 comman
 
 ```powershell
 dxdiag
-dxdiag /t "./dxdiag.txt" 
+dxdiag /t "./dxdiag.txt"
 ```
 
 <div align="center">
@@ -96,8 +97,8 @@ dxdiag /t "./dxdiag.txt"
 <span>dxdiag</span>
 </div>
 
-**Don't use** this command: 
-* `Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\DirectX" | Select-Object Version` 
+**Don't use** this command:
+* `Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\DirectX" | Select-Object Version`
 * It reports obsolete information.
 
 
@@ -115,7 +116,7 @@ You should see a blue window like the one below and some logging messages in the
 
 If it is the case, welcome on board, everything seems to be in place. Now we can talk...
 
-The Rust workspace includes many different packages : `00_winit_029`, `05`, `15`... `99_rle_downloader` 
+The Rust workspace includes many different packages : `00_winit_029`, `05`, `15`... `99_rle_downloader`
 * **Optional:** If you know how to manage a Rust workspace you can delete all the subdirectories except the one named **`11`**. Don't forget to edit the `Cargo.toml` at the root of the directory tree.
 
 Open the directory `11`. It should look like this:
@@ -132,7 +133,7 @@ Since I plan to have more than one test, I use a feature I really like in Rust p
 cargo run -p step_11 --example demo_00
 ```
 * `-p`: indicates that we run the code from the package named `step_11`. The directory name is `11` but the name of the package is`step_11`.
-* `--example demo_00`: points the source code to build and run 
+* `--example demo_00`: points the source code to build and run
 
 
 Last point to check before we take off. Open `11/Cargo.toml`. It should look like:
@@ -250,9 +251,9 @@ fn main() -> Result<()> {
     Ok(())
 }
 ```
-The explanations are available in this [page]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}#step-00-a-gentle-start-ii) 
+The explanations are available in this [page]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}#step-00-a-gentle-start-ii)
 
-Here, I just add the call `env_logger::Builder::from_env(...)` at the very beginning of the `main()` function. 
+Here, I just add the call `env_logger::Builder::from_env(...)` at the very beginning of the `main()` function.
 
 
 ```rust
@@ -282,7 +283,7 @@ Below are the messages I can read in the VSCode's terminal.
 
 The `WARN`ings from `wgpu` are expected when debug layers are not installed (my case). They indicate that Vulkan or DirectX validation layers are missing, not that something is wrong. By default, `wgpu` selected the integrated Intel GPU ("Intel Iris Xe") as the rendering device. This is normal behavior on systems with multiple GPUs. At the end of the last line we can read that the `backend` used is Vulkan.
 
-OK... My laptop cost 2M$ and I'm not able to use the NVIDIA GPU? Interesting... 
+OK... My laptop cost 2M$ and I'm not able to use the NVIDIA GPU? Interesting...
 
 
 
@@ -314,16 +315,16 @@ Your Rust code (Rust + wgpu) <-- see wgpu
          ↓
      [Translation]
          ↓
-Backend (DX12 or Vulkan) <-- see backend  
+Backend (DX12 or Vulkan) <-- see backend
          ↓
      GPU driver
          ↓
 Physical GPU (Intel Iris or NVIDIA)
 ```
 
-The GPU doesn’t understand Rust nor `wgpu` directly. It understands specific graphics APIs. Choosing a `backend` doesn’t change **which GPU** is used (Intel vs NVIDIA) — it changes **how** `wgpu` communicates with it. 
+The GPU doesn’t understand Rust nor `wgpu` directly. It understands specific graphics APIs. Choosing a `backend` doesn’t change **which GPU** is used (Intel vs NVIDIA) — it changes **how** `wgpu` communicates with it.
 
-`wgpu` is an **abstraction layer**. Go back to the last logging messages and read again. Do you see `[2025-10-31T16:56:19Z WARN  wgpu_hal::vulkan::instance]` where `wgpu_hal` has nothing to do with "2001: a space odyssey" but stands for "**H**ardware **A**bstraction **L**ayer" 
+`wgpu` is an **abstraction layer**. Go back to the last logging messages and read again. Do you see `[2025-10-31T16:56:19Z WARN  wgpu_hal::vulkan::instance]` where `wgpu_hal` has nothing to do with "2001: a space odyssey" but stands for "**H**ardware **A**bstraction **L**ayer"
 
 * We write `wgpu` code (identical for all platforms)
 * `wgpu` translates it to the chosen `backend` (DX12, Vulkan, Metal, OpenGL…)
@@ -376,7 +377,7 @@ The GPU doesn’t understand Rust nor `wgpu` directly. It understands specific g
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Back to `demo_00.rs`, the first level of control 
+## Back to `demo_00.rs`, the first level of control
 
 Here we are in **automatic mode** and in a context where we want to learn more about the GPU, the line of code of interest is this one (check the `resumed()` method):
 
@@ -472,13 +473,13 @@ fn resumed(&mut self, event_loop: &ActiveEventLoop) {
         // Prefer the high-perf discrete GPU
         builder = builder.request_adapter_options(wgpu::RequestAdapterOptions {
             power_preference: wgpu::PowerPreference::HighPerformance,
-            compatible_surface: None, 
+            compatible_surface: None,
             force_fallback_adapter: false,
         });
 
         let mut pixels = builder.build().expect("create pixels");
 
-        pixels.set_present_mode(wgpu::PresentMode::Fifo); 
+        pixels.set_present_mode(wgpu::PresentMode::Fifo);
 
         self.window = Some(window_ref);
         self.pixels = Some(pixels);
@@ -491,12 +492,12 @@ More specifically the changes are concentrated in these 3 lines of code:
 let mut builder = PixelsBuilder::new(WIDTH, HEIGHT, surface);
 builder = builder.request_adapter_options(wgpu::RequestAdapterOptions {
     power_preference: wgpu::PowerPreference::HighPerformance,
-    compatible_surface: None, 
+    compatible_surface: None,
     force_fallback_adapter: false,
 });
 let mut pixels = builder.build().expect("create pixels");
 ```
-* With `PixelsBuilder::new()` we instantiate "something" which helps us to create the customized pixel buffer we need. 
+* With `PixelsBuilder::new()` we instantiate "something" which helps us to create the customized pixel buffer we need.
 * Then we set the options we want. One of interest here is `power_preference`. When set to `wgpu::PowerPreference::HighPerformance` the builder will try to use the discrete GPU rather than the integrated one (`wgpu::PowerPreference::LowPower`)
 * Once the attributes are set, we ask the factory method to give us the customized pixel we want
 * The pixel buffer is then used in the rest of the code as it was in `demo_00.rs`.
@@ -511,7 +512,7 @@ let mut pixels = builder.build().expect("create pixels");
 
 ## Explaining `wgpu::PresentMode`
 
-The penultimate line of the `resume()` method above is new. It is not necessary here because I use the default value (`wgpu::PresentMode::Fifo`). However it is a good opportunity to talk about the different `wgpu::PresentMode` available. 
+The penultimate line of the `resume()` method above is new. It is not necessary here because I use the default value (`wgpu::PresentMode::Fifo`). However it is a good opportunity to talk about the different `wgpu::PresentMode` available.
 
 First, find the line in the previous source code.
 
@@ -519,7 +520,7 @@ First, find the line in the previous source code.
 pixels.set_present_mode(wgpu::PresentMode::Fifo);
 ```
 
-When we call `pixels.render()`, `wgpu` sends our image to the GPU, which displays it via the **swap chain**. 
+When we call `pixels.render()`, `wgpu` sends our image to the GPU, which displays it via the **swap chain**.
 The swap chain is a queue of images between the GPU and the screen.
 The `wgpu::PresentMode` controls when these images are sent to the screen, and whether to wait for vertical synchronization (vsync).
 
@@ -560,7 +561,7 @@ The GPU displays each frame immediately, without waiting for the next screen ref
 Excellent for benchmarks or performance tests.
 
 
-Can I use the `Immediate` presentation mode once I called `let pixels = Pixels::new()`, the first automatic and easy way of doing? Yes you can. 
+Can I use the `Immediate` presentation mode once I called `let pixels = Pixels::new()`, the first automatic and easy way of doing? Yes you can.
 
 * Run the experiment with this command: `cargo run -p step_11 --example demo_00bis`
 * Check out the log. You should see : "Present mode: Immediate"
@@ -596,7 +597,7 @@ Can I use the `Immediate` presentation mode once I called `let pixels = Pixels::
 let mut builder = PixelsBuilder::new(WIDTH, HEIGHT, surface);
 builder = builder.request_adapter_options(wgpu::RequestAdapterOptions {
     power_preference: wgpu::PowerPreference::HighPerformance,
-    compatible_surface: None, 
+    compatible_surface: None,
     force_fallback_adapter: false,
 });
 let mut pixels = builder.build().expect("create pixels");
@@ -664,7 +665,7 @@ I selected the `NVIDIA` board and the `backend`. Now it is `Dx12` while is was `
 [2025-10-31T17:46:54Z WARN  wgpu_hal::auxil::dxgi::factory] Unable to enable DXGI debug interface: 0x887A002D
 [2025-10-31T17:46:55Z INFO  wgpu_core::instance] Adapter Dx12 AdapterInfo { name: "NVIDIA GeForce RTX 3070 Ti Laptop GPU", vendor: 4318, device: 9440, device_type: DiscreteGpu, driver: "", driver_info: "", backend: Dx12 }
 [2025-10-31T17:46:55Z WARN  wgpu_core::instance] Missing downlevel flags: DownlevelFlags(VERTEX_AND_INSTANCE_INDEX_RESPECTS_RESPECTIVE_FIRST_VALUE_IN_INDIRECT_DRAW)
-    The underlying API or device in use does not support enough features to be a fully compliant implementation of WebGPU. A subset of the features can still be used. If you are running this program on native and not in a browser and wish to limit the features you use to the supported subset, call Adapter::downlevel_properties or Device::downlevel_properties to get a listing of the features the current platform supports.      
+    The underlying API or device in use does not support enough features to be a fully compliant implementation of WebGPU. A subset of the features can still be used. If you are running this program on native and not in a browser and wish to limit the features you use to the supported subset, call Adapter::downlevel_properties or Device::downlevel_properties to get a listing of the features the current platform supports.
 [2025-10-31T17:46:55Z WARN  wgpu_core::instance] DownlevelCapabilities {
         flags: DownlevelFlags(
             COMPUTE_SHADERS | FRAGMENT_WRITABLE_STORAGE | INDIRECT_EXECUTION | BASE_VERTEX | READ_ONLY_DEPTH_STENCIL | NON_POWER_OF_TWO_MIPMAPPED_TEXTURES | CUBE_ARRAY_TEXTURES | COMPARISON_SAMPLERS | INDEPENDENT_BLEND | VERTEX_STORAGE | ANISOTROPIC_FILTERING | FRAGMENT_STORAGE | MULTISAMPLED_SHADING | DEPTH_TEXTURE_AND_BUFFER_COPIES | WEBGPU_TEXTURE_FORMAT_SUPPORT | BUFFER_BINDINGS_NOT_16_BYTE_ALIGNED | UNRESTRICTED_INDEX_BUFFER | FULL_DRAW_INDEX_UINT32 | DEPTH_BIAS_CLAMP | VIEW_FORMATS | UNRESTRICTED_EXTERNAL_TEXTURE_COPIES | SURFACE_VIEW_FORMATS | NONBLOCKING_QUERY_RESOLVE,
@@ -687,7 +688,7 @@ In `resumed()`, the line of code of interest are the ones below:
 let mut builder = PixelsBuilder::new(WIDTH, HEIGHT, surface);
 builder = builder.request_adapter_options(wgpu::RequestAdapterOptions {
     power_preference: wgpu::PowerPreference::HighPerformance,
-    compatible_surface: None, 
+    compatible_surface: None,
     force_fallback_adapter: false,
 });
 
@@ -726,7 +727,7 @@ builder = builder.wgpu_backend(wgpu::Backends::DX12); // wgpu::Backends::VULKAN
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## About the Resize Problem 
+## About the Resize Problem
 To tell the truth I'm NOT 110% sure...
 
 ### Why demo_00 works without resize handling:
@@ -755,7 +756,7 @@ let pixels = PixelsBuilder::new(...)
 ```
 * With Vulkan Custom configuration *seems* to disable some automatic behaviors
 * We now must explicitly handle resizes
-* With Dx12 it *seems* there is no need to handle the resizes but I recommend to double check if the window content behaves as expected 
+* With Dx12 it *seems* there is no need to handle the resizes but I recommend to double check if the window content behaves as expected
 
 I would like to propose this **rule of thumb:** If the window can be resized, when we use `PixelsBuilder` with custom options, always handle `WindowEvent::Resized`.
 
@@ -785,9 +786,9 @@ fn window_event(&mut self, event_loop: &ActiveEventLoop, _: winit::window::Windo
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Benchmarks ? 
+## Benchmarks ?
 
-One word of caution. For example with my system I must make sure 
+One word of caution. For example with my system I must make sure
 * Run the Release version of the code
 * To plug the 300W power supply and not the much smaller Ugreen 140W I use to have on the USB PD port
 * To check that the PC is not in quiet mode
@@ -836,16 +837,16 @@ FPS (Fifo): 241.1
 FPS (Fifo): 240.1
 FPS (Fifo): 222.8
 ```
-This should not be a surprise since my screen frequency is 240Hz. This means that if the code is able to do what it has to do in less than 1/240 second then the maximum FPS will be 240 Hz. Remember here the code is basic: it uses a for loop to fill the background of the window with blue cells. It could be optimized but I want to keep the code of the [initial article]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}).  
+This should not be a surprise since my screen frequency is 240Hz. This means that if the code is able to do what it has to do in less than 1/240 second then the maximum FPS will be 240 Hz. Remember here the code is basic: it uses a for loop to fill the background of the window with blue cells. It could be optimized but I want to keep the code of the [initial article]({%link docs/06_programmation/rust/017_game_of_life/game_of_life_00.md%}).
 
 <div align="center">
 <img src="./assets/img26_9.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-The code is similar to the previous ones but I added FPS counting capabilities and some comments to easily change the GPU, the backend and the presentation mode. In addition, when creating the window, I use `.with_resizable(false)` to make sure the window cannot be resized while the test is running. This will help to compare apples with apples. 
+The code is similar to the previous ones but I added FPS counting capabilities and some comments to easily change the GPU, the backend and the presentation mode. In addition, when creating the window, I use `.with_resizable(false)` to make sure the window cannot be resized while the test is running. This will help to compare apples with apples.
 
-The log above can be summarized in one line: 
+The log above can be summarized in one line:
 
 ```
 NVIDIA   DX12    Immediate   Average FPS = 240
@@ -883,7 +884,7 @@ FPS (Fifo): 3736.8
 NVIDIA   DX12    Immediate   Average FPS = 3700
 ```
 
-One could argue that the `println!()` in the console "break" the bench. Indeed the print is not asynchronous. This is why I wrote a smarter version of the initial bench but the results, at this point, are not significantly different. To give it a try run the command below: 
+One could argue that the `println!()` in the console "break" the bench. Indeed the print is not asynchronous. This is why I wrote a smarter version of the initial bench but the results, at this point, are not significantly different. To give it a try run the command below:
 
 * `cargo run -p step_11 --release --example demo_03bis`
 
@@ -902,11 +903,11 @@ In the code of `demo_03bis.rs` the main changes are:
     * A channel is created: `mpsc::channel()`
     * Create a dedicated thread that receives and displays messages asynchronously
 * The `println!()` are replaced with asynchronous sends:
-    * See `self.log_sender.send(message)` 
+    * See `self.log_sender.send(message)`
     * They are non-blocking for the rendering thread
 
 
-This said, let's try something more intensive and where we are sure the cache is updated each time. 
+This said, let's try something more intensive and where we are sure the cache is updated each time.
 
 
 
@@ -924,7 +925,7 @@ This said, let's try something more intensive and where we are sure the cache is
 <!-- <span>Optional comment</span> -->
 </div>
 
-If I select Integrated GPU, Vulkan backend and Fifo presentation mode here is what I get:  
+If I select Integrated GPU, Vulkan backend and Fifo presentation mode here is what I get:
 
 ```
 ==================================================
@@ -952,12 +953,12 @@ Frame Time:    10.04ms
 What? How is it possible? In fact, as it is, the code only use the CPU except when the texture is sent to the screen. This is confirmed when I look at the ressource manager. There is no activity on the GPU. The main limiting factor here is the processing on the CPU. Check the code, while animating the waves I use `sin()`, `cos()` on `f32` then convert everything as `u8`. To be exact there are 480_000 `sin()` and 480_000 `cos()` calculated per frame...
 
 ```rust
-// Render complex animation 
+// Render complex animation
 if let Some(pixels) = &mut self.pixels {
     let frame = pixels.frame_mut();
     let time = self.frame_count as f32 * 0.05;
 
-    // Draw animated pattern 
+    // Draw animated pattern
     for (i, pixel) in frame.chunks_exact_mut(4).enumerate() {
         let x = (i % WIDTH as usize) as f32;
         let y = (i / WIDTH as usize) as f32;
@@ -1051,8 +1052,8 @@ Are we building a cross-platform app?
       Just want it to work?
       └─ Use Pixels::new()
 ```
-* In any case, never assume. Double check! 
-* If needed, write or reuse on of the benches. 
+* In any case, never assume. Double check!
+* If needed, write or reuse on of the benches.
 * If you don't plan to use shaders, today my belief is that you should start with `Pixels::new()`
 * The level of complexity of the code will grow exponentially if we want to use `PixelsBuilder::new()` while detecting and supporting multiple GPU and backend.
 
@@ -1066,7 +1067,7 @@ Are we building a cross-platform app?
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Summary 
+## Summary
 
 | Feature               | `Pixels::new()`      | `PixelsBuilder::new()` + options | `PixelsBuilder::new()` + options + backend |
 |-----------------------|----------------------|----------------------------------|--------------------------------------------|

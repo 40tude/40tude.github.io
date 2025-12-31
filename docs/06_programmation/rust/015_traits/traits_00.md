@@ -6,6 +6,7 @@ title: "Rust Traits: Defining Character - 00"
 description: "From basic syntax to building plugins with once_cell and organizing Rust projects."
 parent: "Rust"
 #math: mathjax
+nav_order: 23
 date               : 2025-09-03 14:00:00
 last_modified_date : 2025-09-12 18:00:00
 ---

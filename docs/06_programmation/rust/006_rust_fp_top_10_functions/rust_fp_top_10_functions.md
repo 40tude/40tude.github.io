@@ -5,6 +5,7 @@ lang: en-US
 title: "Rust and Functional Programming: A Beginner’s Top 10 Functions"
 parent: "Rust"
 #math: mathjax
+nav_order: 11
 date               : 2025-06-05 09:00:00
 last_modified_date : 2025-06-24 23:00:00
 ---
@@ -18,7 +19,7 @@ These functions come from the [`Iterator`](https://doc.rust-lang.org/std/iter/tr
 * Transformations without mutation
 * Operation compositions (chaining is done using dot `.`)
 * Immutability
-* Expressions (returns values) rather than statements 
+* Expressions (returns values) rather than statements
     * In Rust if is an expression
 
 <div align="center">
@@ -57,7 +58,7 @@ fn main() {
 ```rust
 fn main() {
     let even: Vec<_> = (3..10).filter(|x| *x % 2 == 0).collect();
-    println!("{:?}", even); // [4, 6, 8] 
+    println!("{:?}", even); // [4, 6, 8]
 }
 ```
 
@@ -77,7 +78,7 @@ fn main() {
 ```
 
 
-## 4. `reduce` 
+## 4. `reduce`
 
 Like `.fold()`, but without init value (it uses the first element as initial value).
 
@@ -97,7 +98,7 @@ Applies a function immediately (not lazy like `.map()`) to each element, mainly 
 ```rust
 fn main() {
     let numbers = vec![1, 2, 3];
-    numbers.iter().for_each(|x| print!("{} - ", x * 10)); // 10 - 20 - 30 - 
+    numbers.iter().for_each(|x| print!("{} - ", x * 10)); // 10 - 20 - 30 -
 }
 ```
 
@@ -202,9 +203,9 @@ fn main() {
 }
 ```
 
-In the second version it is important to note that **we must create a mutable** variable `doubled`. 
+In the second version it is important to note that **we must create a mutable** variable `doubled`.
 
-This is **NOT** the case with the functional version where :  
+This is **NOT** the case with the functional version where :
 * `.iter()` creates an iterator on numbers
 * `.map(|x| x * 2)` applies the function to each element: this creates a new, transformed iterator
 * `.collect()` consumes the iterator and creates a new `Vec` directly filled with the results
@@ -237,15 +238,15 @@ This means there is no need for mutability. So? Here are some of the arguments f
 
 
 ## How ?
-How do I do tomorow in the real life? If you did'nt yet, read that book ISBN-10: [1736049135](https://amzn.eu/d/e3MFYEf) 
+How do I do tomorow in the real life? If you did'nt yet, read that book ISBN-10: [1736049135](https://amzn.eu/d/e3MFYEf)
 
 <div align="center">
 <img src="./assets/book_cover.png" alt="" width="225" loading="lazy"/>
 </div>
 
-You can "read" [my solutions in Rust](https://github.com/40tude/rust_coding_interview) on this GitHub repo. 
+You can "read" [my solutions in Rust](https://github.com/40tude/rust_coding_interview) on this GitHub repo.
 
-In chapter 16 (about Greedy algorithms) you are given an array. Each cell contains a positive value which represents the maximum jump distance from the current index. You are asked to determine if, starting at index 0, it is possible to reach the end of the array. 
+In chapter 16 (about Greedy algorithms) you are given an array. Each cell contains a positive value which represents the maximum jump distance from the current index. You are asked to determine if, starting at index 0, it is possible to reach the end of the array.
 
 If it is not crystal clear yet, don't worry too much. Just keep in mind that in few minutes we will get a ``for`` loop and we will see how to get rid of it using some functional programming.
 
@@ -254,7 +255,7 @@ Below is an iterative solution. Read the comments and feel free to copy and past
 ```rust
 fn jump_to_the_end(nums: &[usize]) -> bool {
     if nums.is_empty() {
-        return false; 
+        return false;
     }
     // Set initial destination to the last index
     let mut destination = nums.len() - 1;
@@ -276,12 +277,12 @@ fn main() {
 
     let nums = vec![2, 1, 0, 3];
     println!("{:?}", jump_to_the_end(&nums)); // false
-} 
+}
 ```
 
 
 
-Now here is a first version using functional programming 
+Now here is a first version using functional programming
 * In the code above, focus on the ``for`` loop in the function `jump_to_the_end()`
 * Again, read the comments
 * We first set the `destination` index as the last index of the array (`destination = nums.len() - 1`)
@@ -300,7 +301,7 @@ fn jump_to_the_end(nums: &[usize]) -> bool {
     if nums.is_empty() {
         return false;
     }
-    
+
     (0..nums.len()) // a range
         .rev() // transforms the range into an iterator reading values in reverse order
         .fold(nums.len() - 1, |destination, i| { // destination is the accumulator, i is the current item
@@ -312,26 +313,26 @@ fn jump_to_the_end(nums: &[usize]) -> bool {
         }) == 0
 }
 
-fn main() { 
+fn main() {
     let nums = vec![3, 2, 0, 2, 5];
     println!("{:?}", jump_to_the_end(&nums)); // true
 
     let nums = vec![2, 1, 0, 3];
     println!("{:?}", jump_to_the_end(&nums)); // false
-} 
+}
 ```
 
-Again, let's focus on the ``for`` loop. 
+Again, let's focus on the ``for`` loop.
 * We want to traverse each element in reverse order
 * Easy... Let's create a range from 0 to the last index : ``(0..nums.len())``
 * And reverse it : `(0..nums.len()).rev()`
     * To ease the reading let's spread the pipeline over 2 lines
-* Now comes the tricky part... 
+* Now comes the tricky part...
     * We want to read the value of the cell at the current index (``nums[i]``), add it to the current index `i` and compare the sum with ``destination``
     * In addition, we need an if expression to take a decision
 * This is where `.fold()` comes in action. Again, this is a Swiss army knife and you will love it.
     * Like in the first version of the code we set the initial value of the `destination` to `num.len()-1`. See the beginning of the line `.fold(nums.len() - 1,....`
-    * Then, the second parameter of `.fold()` is a closure 
+    * Then, the second parameter of `.fold()` is a closure
         * Think about a kind of function if you have no idea of what a closure is
         * If you get lost, take 2 minutes and review the point 3 of the top 10 list above
     * Like any function, a closure accepts parameters. Here, the closure uses 2 parameters : an accumulator and an index. In our case, they are respectively named `destination` and `i`. See the `|destination, i|`
@@ -345,7 +346,7 @@ if i + nums[i] >= destination {
     destination // otherwise destination stays the same
 }
 ```
-* Weird? In fact the key is that in Rust, ``if`` are expressions. They return values. In the code above, the return value of the ``if`` expression is the output of the closure and it is used to update the accumulator (``destination``) of the ``.fold()`` . 
+* Weird? In fact the key is that in Rust, ``if`` are expressions. They return values. In the code above, the return value of the ``if`` expression is the output of the closure and it is used to update the accumulator (``destination``) of the ``.fold()`` .
     * So in plain English, the code above says : `destination` equals `i` if `i+nums[i]` is greater than `destination`. Otherwise `destination` equals `destination`.
     * At the very end of the pipeline there is a comparaison sign (`==`). Indeed like in the first version of the code, at the end of the traversal of the array `nums` we want to compare if the ``destination`` (the accumulator) is 0 or not and return ``true`` or ``false`` respectively. If needed, check the line `destination == 0` in the first vesion of the code. We do the same thing here.
 
@@ -360,7 +361,7 @@ if i + nums[i] >= destination {
 
 
 
-Can we go one step further? Yes we can ! See below. 
+Can we go one step further? Yes we can ! See below.
 
 The tricky part (`.fold()`) remains the same. However at the beginning, rather than create a range from scratch, we "transform" the array `nums` as an iterator. In fact ``.iter()`` returns an iterator over a slice and nothing is "transformed". Then we `.enumerate()` so that we receive a pair (index, value). Once there, we can use our new friend `.fold()` as before.
 
@@ -380,13 +381,13 @@ fn jump_to_the_end(nums: &[usize]) -> bool {
         }) == 0
 }
 
-fn main() { 
+fn main() {
     let nums = vec![3, 2, 0, 2, 5];
     println!("{:?}", jump_to_the_end(&nums)); // true
 
     let nums = vec![2, 1, 0, 3];
     println!("{:?}", jump_to_the_end(&nums)); // false
-} 
+}
 ```
 
 

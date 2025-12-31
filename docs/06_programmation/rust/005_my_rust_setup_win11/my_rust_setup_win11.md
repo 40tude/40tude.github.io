@@ -4,6 +4,7 @@ lang: en-US
 title: "Rust on Windows 11, My Complete Setup Guide"
 parent: "Rust"
 #math: mathjax
+nav_order: 1
 date               : 2025-06-02 09:00:00
 last_modified_date : 2025-12-31 10:00:00
 ---

@@ -6,6 +6,7 @@ title: "From Zero to Ready to Contribute: Illustrated with Microsoft Edit"
 description: A beginner-friendly guide from our first fork to our first pull request.
 parent: Rust
 #math: mathjax
+nav_order: 5
 date               : 2025-11-07 13:00:00
 last_modified_date : 2025-11-19 11:00:00
 ---

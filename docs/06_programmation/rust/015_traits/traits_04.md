@@ -6,6 +6,7 @@ title: "Rust Traits: Defining Character - 04"
 description: "From basic syntax to building plugins with once_cell and organizing Rust projects."
 parent: "Rust"
 #math: mathjax
+nav_order: 27
 date               : 2025-09-14 14:00:00
 last_modified_date : 2025-09-17 07:00:00
 ---
@@ -20,7 +21,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 
 
 <!-- <h2 align="center">
-<span style="color:orange"><b>This post is under construction.</b></span>    
+<span style="color:orange"><b>This post is under construction.</b></span>
 </h2> -->
 
 ### This is Episode 04
@@ -45,7 +46,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 </div>
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
@@ -89,10 +90,10 @@ Where the `once_cell` crate lets us define a global list of sensors dynamically 
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
-Houston, we have a problem. The POC works but I'm not sure it will work with 10_000 thermocouples, different kind of sensors, different kinds of actuators. Do you 
+Houston, we have a problem. The POC works but I'm not sure it will work with 10_000 thermocouples, different kind of sensors, different kinds of actuators. Do you
 remember, in the previous version of the application, in `temperature_sensor.rs` we had a young and innocent `make_sensor()` function. It looked like this :
 
 ```rust
@@ -122,10 +123,10 @@ And this is where the Rust crate [once_cell](https://crates.io/crates/once_cell)
 │   .gitignore
 │   Cargo.lock
 │   Cargo.toml
-│   
+│
 ├───examples
 │       ex00.rs
-│       
+│
 ├───src
 │   │   lib.rs
 │   │   main.rs
@@ -149,7 +150,7 @@ And this is where the Rust crate [once_cell](https://crates.io/crates/once_cell)
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 Let's start with `main.rs`
@@ -169,9 +170,9 @@ fn main() {
 ```
 
 At a high level the code should be easy to understand
-1. First, the sensors (we don't really know yet what this covers nor how it works) register themselves 
+1. First, the sensors (we don't really know yet what this covers nor how it works) register themselves
 1. On return, the sensors are not yet initialized, they just confirm we can instantiate the ones the app need
-1. Using its name (`Thermocouple_type_128`) we create an instance of a temperature sensor and print a temperature measurement   
+1. Using its name (`Thermocouple_type_128`) we create an instance of a temperature sensor and print a temperature measurement
 1. We do the same with `Rtd_type_512`
 
 On the other hand, `ex00.rs` simulates the case where the names of the sensors come from a database and when one reference (`temp_42`) cannot be instantiated.
@@ -214,7 +215,7 @@ Once in File Explorer
 <!-- <span>Comment about the picture above</span> -->
 </div>
 
-Once in the new instance of VSCode, open `main.rs` click on the word `register` of `sensors::register`. You can either press `F12` or right click and select the option "Go to Definition" 
+Once in the new instance of VSCode, open `main.rs` click on the word `register` of `sensors::register`. You can either press `F12` or right click and select the option "Go to Definition"
 
 <div align="center">
 <img src="./assets/img34.webp" alt="" width="450" loading="lazy"/><br/>
@@ -234,15 +235,15 @@ pub fn register() {
 
 Let's step back and make sure we are on the same page. In `main()` function I know I have some sensors and no actuators. I don't care about the details, I just call `sensors::register()` and I do not call `actuators::register()`. I my mind, calling `sensors::register()` means I delegate to someone else the registrations of the sensors.
 
-Now at `sensors.rs` level, I know I only have temperature sensors so I call `temperature::register()`. This may change later. If we add other kind of sensors (strain gauge, pH meter...) I will then add a call to `strain_gauge:register()`. This is my responsibility, and strain gauges registration will remain transparent to the `main()` function. 
+Now at `sensors.rs` level, I know I only have temperature sensors so I call `temperature::register()`. This may change later. If we add other kind of sensors (strain gauge, pH meter...) I will then add a call to `strain_gauge:register()`. This is my responsibility, and strain gauges registration will remain transparent to the `main()` function.
 
 Ok, let's press `F12` once the cursor is on `temperature::register()`. This opens `temperature.rs`.
 
 ```rust
 // temperature.rs
-pub mod rtd; 
-pub mod temperature_sensor; 
-pub mod thermocouple; 
+pub mod rtd;
+pub mod temperature_sensor;
+pub mod thermocouple;
 
 pub fn register() {
     thermocouple::register();
@@ -313,15 +314,15 @@ pub fn register_sensor(name: &'static str, constructor: Constructor) {
 }
 ```
 
-The `register_sensor()` function expects 2 parameters. The first one is a name that identify the kind of temperature sensor in the application (thermocouple, rtd... `Thermocouple_type_128`, `Rtd_512`...). Note that it is a `&str` with a `static` lifetime where `static` must be understood as "valid as long as the program runs". This is usually a string literal (e.g. `"Thermocouple_type_128"`). The second parameter is of type `Constructor`. 
+The `register_sensor()` function expects 2 parameters. The first one is a name that identify the kind of temperature sensor in the application (thermocouple, rtd... `Thermocouple_type_128`, `Rtd_512`...). Note that it is a `&str` with a `static` lifetime where `static` must be understood as "valid as long as the program runs". This is usually a string literal (e.g. `"Thermocouple_type_128"`). The second parameter is of type `Constructor`.
 
-`Constructor` is a type alias (a synonym) declared above the `register_sensor()` function : 
+`Constructor` is a type alias (a synonym) declared above the `register_sensor()` function :
 
 ```rust
 type Constructor = fn() -> Box<dyn TemperatureSensor>;
 ```
 
-Now, when we read `Constructor`, we should read `fn() -> Box<dyn TemperatureSensor>`, meaning "a function returning a `Box<dyn TemperatureSensor>`". We already talked about `Box<dyn T>`, you know what this is, I do not have to explain it again: 
+Now, when we read `Constructor`, we should read `fn() -> Box<dyn TemperatureSensor>`, meaning "a function returning a `Box<dyn TemperatureSensor>`". We already talked about `Box<dyn T>`, you know what this is, I do not have to explain it again:
 
 Finally  the really weird thing in `register_sensor()` definition is the `TEMPERATURE_SENSOR_REGISTRY`. It is declared this way :
 
@@ -336,14 +337,14 @@ Stay here, don't run away and don't panic... The line above just says something 
 
 Regarding `TEMPERATURE_SENSOR_REGISTRY` we see that:
 * This is a `HashMap` where the keys are the literal of the sensors and the values are the `Constructor()` of the respective sensor
-* The `HashMap` is protected by a `Mutex`. 
+* The `HashMap` is protected by a `Mutex`.
 * **Important:** A static variable cannot be `mut`, so we need **interior mutability** to modify the HashMap at runtime. `Mutex` provides that interior mutability and thread safety.
 * Then the `Mutex<HashMap<...>>` is wrapped into a `Lazy` layer.
     * A `once_cell::sync::Lazy<T>` is a wrapper type
     * It says something like : "Here is a static that will be initialized the first time it’s used."
     * "It uses a closure `(|| Mutex::new(HashMap::new()))` to specify how to build the value.
     * It guarantees that initialization happens once and only once, even if multiple threads race to access it.
-    * That’s why the crate is named "once_cell": it’s like a "memory cell" that can be written exactly once. 
+    * That’s why the crate is named "once_cell": it’s like a "memory cell" that can be written exactly once.
 
 Regarding the initialization value `once_cell::sync::Lazy::new(|| Mutex::new(HashMap::new()))`
 * A Lazy value says something like : "When somebody first touches this static, run the closure to build the real value."
@@ -360,7 +361,7 @@ pub fn register_sensor(name: &'static str, constructor: Constructor) {
 ```
 
 
-* If the `TEMPERATURE_SENSOR_REGISTRY` is not yet created, it creates the `HashMap` (lazy implementation). 
+* If the `TEMPERATURE_SENSOR_REGISTRY` is not yet created, it creates the `HashMap` (lazy implementation).
 * Then we call `.lock().expect("registry mutex poisoned")`. If a panic ever occurs while the registry is being updated, the mutex becomes poisoned. In that case, `.expect()` will panic and print a custom message. Remember, a `Mutex` gets poisoned if a thread panics while holding the lock.
 * To finish we insert the name of the sensor and its constructor in the HashMap.
 
@@ -405,9 +406,9 @@ pub fn make_sensor(name: &str) -> Option<Box<dyn TemperatureSensor>> {
 }
 ```
 
-First we get access to the global registry and try to lock it. As before, if the `Mutex` is poisoned `.expect()` panics and prints a custom message. Otherwise we find the sensor by its name (the key) and we call the constructor (the value). The returned value of the constructor is the returned value of `make_sensor()`. 
+First we get access to the global registry and try to lock it. As before, if the `Mutex` is poisoned `.expect()` panics and prints a custom message. Otherwise we find the sensor by its name (the key) and we call the constructor (the value). The returned value of the constructor is the returned value of `make_sensor()`.
 
-***What is `ctor` again ?*** Previously, we stored in the static global HashMap (`TEMPERATURE_SENSOR_REGISTRY`) the name of the sensor (`"Thermocouple_type_128"`) as a key and a closure that builds a new instance of this sensor as a value (`|| Box::new(Thermocouple128)`). Here, with `map(|ctor| ctor()`, `|| Box::new(Thermocouple128)` is called and its output becomes the returned value of `make_sensor()`. Look at the signature of `make_sensor()`. It returns an `Option` to a boxed data type which implements the `TemperatureSensor` trait (could be a `Thermocouple128`, `Rtd512`...) 
+***What is `ctor` again ?*** Previously, we stored in the static global HashMap (`TEMPERATURE_SENSOR_REGISTRY`) the name of the sensor (`"Thermocouple_type_128"`) as a key and a closure that builds a new instance of this sensor as a value (`|| Box::new(Thermocouple128)`). Here, with `map(|ctor| ctor()`, `|| Box::new(Thermocouple128)` is called and its output becomes the returned value of `make_sensor()`. Look at the signature of `make_sensor()`. It returns an `Option` to a boxed data type which implements the `TemperatureSensor` trait (could be a `Thermocouple128`, `Rtd512`...)
 
 
 **OK... Could we recover instead of panicking?** Yes we can. See below one idea :
@@ -426,7 +427,7 @@ pub fn make_sensor(name: &str) -> Option<Box<dyn TemperatureSensor>> {
 ```
 
 
-Let's move on. At the end of the day from the caller point of view, in `main()`, we have : 
+Let's move on. At the end of the day from the caller point of view, in `main()`, we have :
 
 ```rust
 let thermo_01 = temperature_sensor::make_sensor("Thermocouple_type_128").expect("Unknown sensor");
@@ -454,10 +455,10 @@ println!("Thermocouple 01: {:6.2}", thermo_01.get_temp());
 
 1. Starting from `main()`, follow the white rabbit, press F12 and retrieve the `register_sensor()` of the rtd.
 1. Do you feel brave enough to add a new category of temperature sensor?
-    * Add `optical` in addition to `rtd` and `temperature` and the kind of optical sensor could be `camera_007`.   
+    * Add `optical` in addition to `rtd` and `temperature` and the kind of optical sensor could be `camera_007`.
 1. It seems the registry is written once per kind of sensor and read once per sensor. We may end up with much more read than write operations. Any idea on how we could improve performances?
-    * **Solution:** 
-        * Rename `temperature_sensor.rs` as `temperature_sensor.rs.mutex` 
+    * **Solution:**
+        * Rename `temperature_sensor.rs` as `temperature_sensor.rs.mutex`
         * Rename `temperature_sensor.rs.rwlock` as `temperature_sensor.rs`
         * `Cargo run`
         * `Mutex` is replaced by `RwLock`
@@ -526,23 +527,23 @@ Where we have 2 registries. One for temperature sensors and another for pH senso
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
-People were so pleased with the previous POC that they ask us a new version :  
-1. with not only temperature sensors but also, other kinds of sensors : they mentioned pH meter, strain gauges, flow meter... 
-1. with multiple references under a kind of sensor. The idea is to show that under `sensor/temperature/thermocouple` we can have `termocoupleX`, `termocoupleY`...      
+People were so pleased with the previous POC that they ask us a new version :
+1. with not only temperature sensors but also, other kinds of sensors : they mentioned pH meter, strain gauges, flow meter...
+1. with multiple references under a kind of sensor. The idea is to show that under `sensor/temperature/thermocouple` we can have `termocoupleX`, `termocoupleY`...
 1. with multiple instances of the same sensor reference because in a plant you can easily have 100 temperature sensors of the same reference.
 
-No worry. This section is short and easy because we already know all we need to know : traits, hub files, once_cell... 
+No worry. This section is short and easy because we already know all we need to know : traits, hub files, once_cell...
 
-If you know nothing about sensors, below I added pH sensors in a dedicated directory. pH sensors help to measure the acidity of a solution. I added 2 kinds of pH meters : probe and ISFET. The idea is to answer point 1 above. 
+If you know nothing about sensors, below I added pH sensors in a dedicated directory. pH sensors help to measure the acidity of a solution. I added 2 kinds of pH meters : probe and ISFET. The idea is to answer point 1 above.
 
-Below, think about the `ph` directory as a copy/paste/rename of the temperature directory. Nothing more. The hub files, traits and implementation are used exactly the same way.  
+Below, think about the `ph` directory as a copy/paste/rename of the temperature directory. Nothing more. The hub files, traits and implementation are used exactly the same way.
 
 Note that in the thermocouple directory we now have `thermocouple_128` adn `thermocouple_256`. Two different thermocouple references. This is to answer point 2 above.
 
-See below the file hierarchy of the project. 
+See below the file hierarchy of the project.
 
 
 ### Show me the code!
@@ -590,15 +591,15 @@ See below the file hierarchy of the project.
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 
 
-In `main.rs` we still have the `sensors::register();` function call followed by the creation of : 
+In `main.rs` we still have the `sensors::register();` function call followed by the creation of :
 * `thermo_01` and `thermo_02` to address point 2
 * `thermo_02` and `thermo_03` to address point 3
-* `isfet_01` and `probe_42` to address point 1  
+* `isfet_01` and `probe_42` to address point 1
 
 Here is `main.rs` :
 
@@ -744,7 +745,7 @@ Other than that, I think we're done.
     * Copy-paste `assets/12_once_cell_1` directory
     * Reorganize the project so that the code of the registries is monomorphized
     * If you did'nt yet, replace `Mutex` with `RwLock`
-    * **One solution** : 
+    * **One solution** :
         * Right click on `assets/12_once_cell_1_bis`
         * Select the option "Open in Integrated Terminal"
         * `cargo run`
@@ -803,7 +804,7 @@ Other than that, I think we're done.
 
 ## Once Cell - Sensors and actuators
 
-Where the application finally uses sensors and actuators. 
+Where the application finally uses sensors and actuators.
 
 ### Running the demo code
 {: .no_toc }
@@ -821,18 +822,18 @@ Where the application finally uses sensors and actuators.
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
-As you can imagine, people now want to see a POC of the complete application where sensors and actuators are used. 
+As you can imagine, people now want to see a POC of the complete application where sensors and actuators are used.
 
-This section should be even shorter because, again, we already know all we need to know : traits, hub files, once_cell, REGISTRY... 
+This section should be even shorter because, again, we already know all we need to know : traits, hub files, once_cell, REGISTRY...
 
-For demo purpose I created an actuators directory (stuffs that act on the real world to lock doors, heat, cool, turn on alarms). I only created electrical category of actuators but add to kind of electrical motors : servo motor and solenoid. 
+For demo purpose I created an actuators directory (stuffs that act on the real world to lock doors, heat, cool, turn on alarms). I only created electrical category of actuators but add to kind of electrical motors : servo motor and solenoid.
 
 Again if you don't know or don't care about sensors and actuators this is OK. Imagine that the application must handle different kinds of file format, different kinds of communication protocols... They are organized in directories, subdirectories and files.
 
-See below the files hierarchy of the project.    
+See below the files hierarchy of the project.
 
 
 ### Show me the code!
@@ -895,7 +896,7 @@ See below the files hierarchy of the project.
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 In `main.rs` we still have the `sensors::register();` function call followed by `actuators::register();`. Then, as before, we instantiate the sensors. Finally we instantiate actuators (`motor_01` and `solenoid_01`) with `electric_actuator::make_actuator`. We can act on actuators to turn the on and we can also read their status : this is done with the functions `.get_state()` and `.set_state(true)`. This explain why at the bottom of the terminal we see `motor_01   : Stopped` when it is created then `motor_01   : Running` when it is turned on.
@@ -968,7 +969,7 @@ pub fn make_actuator(name: &str) -> Option<Box<dyn ElectricActuator>> {
 }
 ```
 
-And here is the content of `servo_motor_01.rs`. Without surprise, we find a `register()` function. More interestingly, an actuator needs to store its `state`. Here in a motor we store a boolean to indicate if the engine is running or not. Below we can see the implementation of the `.set_state()` and `.get_state()` methods.  
+And here is the content of `servo_motor_01.rs`. Without surprise, we find a `register()` function. More interestingly, an actuator needs to store its `state`. Here in a motor we store a boolean to indicate if the engine is running or not. Below we can see the implementation of the `.set_state()` and `.get_state()` methods.
 
 ```rust
 // servo_motor_01.rs
@@ -999,7 +1000,7 @@ pub fn register() {
 {: .no_toc }
 
 1. In the actuators, add a `Heater` category and a `gaz` kind of heater. Name the reference `gaz_3852`. In `main()` create an instance `my_gaz_heater`, set it on and off. Read it status after each new setting.
-1. Can you easily modify your heater actuator so that the `.set_state()` expect a `f64` parameter representing the percentage of heat to be used (from 0.0 to 100.0). Modify `.get_state()` so that the returned value represents the current percentage of heat.   
+1. Can you easily modify your heater actuator so that the `.set_state()` expect a `f64` parameter representing the percentage of heat to be used (from 0.0 to 100.0). Modify `.get_state()` so that the returned value represents the current percentage of heat.
 
 
 
@@ -1022,7 +1023,7 @@ pub fn register() {
 
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
@@ -1092,7 +1093,7 @@ One sentence
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
 
@@ -1106,7 +1107,7 @@ One sentence
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 

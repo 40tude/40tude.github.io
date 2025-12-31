@@ -6,6 +6,7 @@ title: "Rust Traits: Defining Character - 03"
 description: "From basic syntax to building plugins with once_cell and organizing Rust projects."
 parent: "Rust"
 #math: mathjax
+nav_order: 26
 date               : 2025-09-03 14:00:00
 last_modified_date : 2025-09-14 16:00:00
 ---
@@ -20,7 +21,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 
 
 <!-- <h2 align="center">
-<span style="color:orange"><b>This post is under construction.</b></span>    
+<span style="color:orange"><b>This post is under construction.</b></span>
 </h2> -->
 
 ### This is Episode 03
@@ -44,7 +45,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 </div>
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
@@ -88,12 +89,12 @@ Where we organize the project around crates and a new directory hierarchy
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
 Hey guys. I just got out of the MMB (Monday Morning Briefing) with the sales and marketing teams... Yes, I know... But, anyway, good news... It looks like there are opportunities if our monitoring system can work with other types of sensors (strain gauge, flow meter, ph meter...) as well as actuators. I was asked to produce a POC (proof of concept) by the end of the week. I said no, no way. But I had to give them something. So we agreed to run a demo version of the application with 2 kinds of temperature sensors but dealing with each of them as if they were different kind of sensors. Before to discuss budget they want to be sure the application can scale.
 
-In other words it is time to reorganize the project and the project's directory.  
+In other words it is time to reorganize the project and the project's directory.
 
 **Note:** I will not spend to much time on the subject. Indeed I already have a dedicated short post that you can read [here]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
@@ -125,10 +126,10 @@ In other words it is time to reorganize the project and the project's directory.
 .
 │   Cargo.lock
 │   Cargo.toml
-│   
+│
 ├───examples
 │       ex00.rs
-│       
+│
 ├───src
 │   │   lib.rs
 │   │   main.rs
@@ -153,17 +154,17 @@ In other words it is time to reorganize the project and the project's directory.
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 #### 1. Files and directories organization
 {: .no_toc }
 
-You may not agree with me but here above is how I see the organization. 
+You may not agree with me but here above is how I see the organization.
 
 * `main.rs` is a consumer of the "features/capabilities" exposed by `lib.rs`
 * `ex00.rs` is another consumer of `lib.rs` (think about some tests for example)
-* The `sensors` directory contains... The sensors. 
+* The `sensors` directory contains... The sensors.
 * Later an `actuators` directory will contains... Tadaa! You're right, the different kinds of actuators
 * So far we only have temperature sensors so there is a wrongly named `temp` subdirectory. It is badly named because it can be confused with a `temporary` directory. Ideally it should be named `temperature`. It is important to detect and fix upfront this class of issues.
 * For the POC 2 kinds of temperature sensors are needed. Their respective implementation files are stored in 2 specific directories (`temp_sensor1/` and `temp_sensor2/`).
@@ -261,13 +262,13 @@ impl TempSensor for TempSensor01 {
 ```
 
 It is important to understand the meaning of the 2 first lines in the source code above :
-1. The first line is nothing more than a **shortcut**. 
+1. The first line is nothing more than a **shortcut**.
     * Rather than writing `crate::sensors::temp::temp_sensor::TempSensor` we can write `TempSensor`
-    * **IMPORTANT** : when the build system builds the library crate, the `lib.rs` file is the crate root file. `my_sensor1` is part of the module tree and so, when we need to create a shortcut to point to `TempSensor` we must use `crate::sensors...`. Keep this in mind when we will talk about `main.rs`. 
-1. The second line make sure that the data type `TempSensor01` is visible from outside the module where it is defined. 
-    * This allow us to declare a variable of type `TempSensor01` in the `main()` function for example. 
+    * **IMPORTANT** : when the build system builds the library crate, the `lib.rs` file is the crate root file. `my_sensor1` is part of the module tree and so, when we need to create a shortcut to point to `TempSensor` we must use `crate::sensors...`. Keep this in mind when we will talk about `main.rs`.
+1. The second line make sure that the data type `TempSensor01` is visible from outside the module where it is defined.
+    * This allow us to declare a variable of type `TempSensor01` in the `main()` function for example.
 
-Here is the module tree 
+Here is the module tree
 
 ```
 crate (lib.rs)
@@ -295,13 +296,13 @@ fn main() {
 ```
 
 Again it is important to understand the first 2 lines
-1. Since we create a variable `my_sensor` of type `TempSensor1` we create a **shortcut** in the module tree so that we can write `my_sensor1::TempSensor01` rather than `traits_for_plugins::sensors::temp::temp_sensor1::my_sensor1::TempSensor01` 
+1. Since we create a variable `my_sensor` of type `TempSensor1` we create a **shortcut** in the module tree so that we can write `my_sensor1::TempSensor01` rather than `traits_for_plugins::sensors::temp::temp_sensor1::my_sensor1::TempSensor01`
     * **IMPORTANT** : when the build system builds the binary crate (the application) the code in `main.rs` does not see the internal modules via `crate::...` directly. Indeed, `crate::` in `main.rs` refers to the binary crate itself, not to the library crate defined in `lib.rs`. So we have to build the path as if it were an external crate, using the crate name (the name defined in [package] name = “...” in `Cargo.toml`). Hence the `use traits_for_plugins::...`
 1. The second line is required because items from traits can only be used if the trait is in scope. Don't trust me, comment the line and try to build the project.
 
-Once this is understood the body of `main()` should be a piece of cake for you now. 
+Once this is understood the body of `main()` should be a piece of cake for you now.
 
-I could modify the first shortcut to be able to write `let my_sensor = TempSensor01;` but, six months from now, when the source code will be much larger, I'll be happy to read `let my_sensor = my_sensor1::TempSensor01;` and know that `TempSensor01` data type belong to `my_sensor1` module. 
+I could modify the first shortcut to be able to write `let my_sensor = TempSensor01;` but, six months from now, when the source code will be much larger, I'll be happy to read `let my_sensor = my_sensor1::TempSensor01;` and know that `TempSensor01` data type belong to `my_sensor1` module.
 
 
 
@@ -311,8 +312,8 @@ I could modify the first shortcut to be able to write `let my_sensor = TempSenso
 ### Exercise
 {: .no_toc }
 
-1. Make sur the code run as it is. 
-1. Once this is checked, rename and reorganize files and directories the way you want. Make sure it no longer build. Fix everything and make it run again. 
+1. Make sur the code run as it is.
+1. Once this is checked, rename and reorganize files and directories the way you want. Make sure it no longer build. Fix everything and make it run again.
 1. In `main.rs` comment the line `use traits_for_plugins::sensors::temp::temp_sensor::TempSensor;`, build the project and read the help messages from the build system.
 
 
@@ -368,7 +369,7 @@ Where we dynamically create and use sensors in the new architecture.
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
 Morning! The POC went pretty well. Even the marketing guys understood the demo and the explanations. They are all confident about the scalability of the app. I got two feedbacks however:
@@ -416,7 +417,7 @@ Now the hierarchy of directories and files looks like this :
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 #### Files and Directories
@@ -428,11 +429,11 @@ I already changed `temp` to `temperature`. Obviously I updated the `use` stateme
 use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
 ```
 
-While we used to have : 
+While we used to have :
 
 ```rust
 use traits_for_plugins::sensors::temp::temp_sensor::TempSensor;
-use traits_for_plugins::sensors::temp::temp_sensor1::my_sensor1; 
+use traits_for_plugins::sensors::temp::temp_sensor1::my_sensor1;
 ```
 
 Note that from now on, I combine the two lines in one using `::{self, TempSensor}`
@@ -444,7 +445,7 @@ Note that from now on, I combine the two lines in one using `::{self, TempSensor
 #### Changes in source code
 {: .no_toc }
 
-If you agree (but don't take it bad, I'm the writer of this post so you have no choice, you have to agree...) I will focus on what makes the dynamic sensors creation possible. In fact, the file and directory hierarchy is very similar to that of the previous project and does not require any special comments. 
+If you agree (but don't take it bad, I'm the writer of this post so you have no choice, you have to agree...) I will focus on what makes the dynamic sensors creation possible. In fact, the file and directory hierarchy is very similar to that of the previous project and does not require any special comments.
 
 Take few minutes to read the `main()` function we wrote in [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}) in the section "Dynamic Dispatch". The code was similar to :
 
@@ -471,7 +472,7 @@ fn make_sensor(kind: &str) -> Box<dyn Measurable> {
 }
 ```
 
-In this version of the project we do exactly the same thing and the `main()` function looks like: 
+In this version of the project we do exactly the same thing and the `main()` function looks like:
 
 ```rust
 use traits_for_plugins::sensors::temperature::temperature_sensor::{self, TempSensor};
@@ -517,7 +518,7 @@ The latest version of `make_sensor()` is almost a copy/paste of the previous one
 * It returns a `Box<dyn TempSensor>`
     * `Box<T>` is a owning smart pointer to a value of type `T` stored on the heap.
     * It is a smart pointer because when the `Box` is dropped, it deallocates the heap memory for us.
-    * `dyn TempSensor` is a trait object. 
+    * `dyn TempSensor` is a trait object.
     * This can be understood as : "some type that implements TempSensor, but we don’t know which one at compile time"
     * A `dyn Trait` value is unsized. We can’t put it directly on the stack by value. We need a pointer (level of indirection) like `&dyn Trait`, `Box<dyn Trait>`...
 * Based on the `kind` parameter and with the help of the arms of the `match` expression
@@ -539,7 +540,7 @@ That's all for the modifications. What has been done is a *mix* between the prev
 
 ***How does the `s.get_temp()` call works? I'm talking about the one in the for loop that iterates over the collection of sensors in `main()`?***
 
-This is a 1 million dollars question. 
+This is a 1 million dollars question.
 
 <div align="center">
 <img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
@@ -567,7 +568,7 @@ fn main() {
 * `s.get_temp()` desugars to `TempSensor::get_temp(&*s)` and here’s what happens to produce that `&*s`:
     * Auto-deref: `*s` dereferences the `Box` to get the inner `dyn TempSensor`.
     * Borrow to match the receiver: the method’s receiver is `&self`, so Rust borrows that inner object: `&(*my_sensor)` → `&dyn TempSensor`
-* As in the first "The evil is in the details" of [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}) it is important to understand why `&self` matters in the trait signature (`fn get_temp(&self) -> f64`)       
+* As in the first "The evil is in the details" of [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}) it is important to understand why `&self` matters in the trait signature (`fn get_temp(&self) -> f64`)
 * All we know on how the actual `.get_temp()` method is chosen still apply here. Read again the Dynamic Dispatch section from [Episode 0]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
 
 
@@ -609,7 +610,7 @@ Summary of the summary: `s.get_temp()` works with `fn get_temp(&self)` because t
 
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
@@ -679,7 +680,7 @@ One sentence
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
 
@@ -693,7 +694,7 @@ One sentence
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 

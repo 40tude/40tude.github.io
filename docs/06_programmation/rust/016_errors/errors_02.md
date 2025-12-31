@@ -6,6 +6,7 @@ title: Rust Error Handling, Demystified - 02
 description: A beginner-friendly conversation on Errors, Results, Options, and beyond.
 parent: Rust
 #math: mathjax
+nav_order: 22
 date               : 2025-09-20 18:00:00
 last_modified_date : 2025-10-06 15:00:00
 ---
@@ -22,7 +23,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 
 <!-- <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>    
+<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2> -->
 
 
@@ -41,7 +42,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
@@ -66,7 +67,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 ## Errors from Experimentation to Production
 
-**Alice:** It was a lot... Again, many, many thanks because it really helps to organized my thoughts about errors management. 
+**Alice:** It was a lot... Again, many, many thanks because it really helps to organized my thoughts about errors management.
 
 There is, may be, one last thing I would like to discuss with you. I know, I'm still a young Padawan, and most of my projects are just experiments I tinker with on weekends. Ok, ok, ok... But I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily to production.
 
@@ -107,7 +108,7 @@ Now, I have a question for you. Without entering in the technical details, what 
 * I told you, I really like the `?` operator. It makes the code easy to read. It is my friend. I would like to keep it in the transition from prototype to production.
 * I want to be able to prototype experimentation code quickly, while still applying the lessons we learned with the custom error type in production. `enum` and related features are powerful, but I’m not sure I want to bother with them in my experimental code.
 * I also remember what we said. If I write a library it should return the errors to the consumer and let him decide. It should almost never `panic!()`.
-* Library should expose one error data type in their API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...  
+* Library should expose one error data type in their API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...
 * What else? An espresso? More seriously, I don’t have much to add, except that I’d like to avoid rewriting my code when transitioning to production.
 
 <div align="center">
@@ -126,7 +127,7 @@ Now, I have a question for you. Without entering in the technical details, what 
 {: .note-title }
 > Side Note
 >
-> In the [workspace](https://github.com/40tude/err_for_blog_post), the source code discussed below are in the `01_experimentation/examples/` directory. 
+> In the [workspace](https://github.com/40tude/err_for_blog_post), the source code discussed below are in the `01_experimentation/examples/` directory.
 
 
 **Bob:** It is Saturday night. The house is silent, your young sister is out (you don't want to kow where nor with who). This is the best time to play with Rust. No?
@@ -169,11 +170,11 @@ ype Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn main() -> Result<()> {
     println!("Hello, world!");
-    Ok(()) 
+    Ok(())
 }
 ```
 
-**Bob:** Pretty cool. Now, I want you to *trust in me, just in me...*. 
+**Bob:** Pretty cool. Now, I want you to *trust in me, just in me...*.
 
 <div align="center">
 <img src="./assets/img27.webp" alt="" width="450" loading="lazy"/><br/>
@@ -189,17 +190,17 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
     println!("Hello, world!");
-    Ok(()) 
+    Ok(())
 }
 ```
 
-No big change. 
+No big change.
 1. Since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` type aliases on 2 type alias declarations. Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
-1. Do you see the `pub` word? Here it does not really matter because the code is monolithic. Tomorrow, if you want to make sure `Result<T>` (and `Error`) can be used elsewhere it is better to anticipate and to give them a public access modifier upfront.  
+1. Do you see the `pub` word? Here it does not really matter because the code is monolithic. Tomorrow, if you want to make sure `Result<T>` (and `Error`) can be used elsewhere it is better to anticipate and to give them a public access modifier upfront.
 
 By the way do you have any idea of what I did?
 
-**Alice:** No. You split my line in two and you explained that later if the `Error` type becomes very complicated, this will have no impact on `Result<T>` 
+**Alice:** No. You split my line in two and you explained that later if the `Error` type becomes very complicated, this will have no impact on `Result<T>`
 
 
 
@@ -213,7 +214,7 @@ Do you know what BMI is?
 
 **Bob:** Using your code template write a prototype to calculate the BMI.
 
-**Alice:** Here is what I have so far. 
+**Alice:** Here is what I have so far.
 
 ```rust
 // ex100.rs
@@ -223,7 +224,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 fn main() -> Result<()> {
     let my_bmi = bmi(70.0, 1.7)?;
     println!("BMI: {my_bmi:.2}");
-    Ok(()) 
+    Ok(())
 }
 
 fn bmi(w: f64, h: f64) -> Result<f64> {
@@ -234,7 +235,7 @@ fn bmi(w: f64, h: f64) -> Result<f64> {
 }
 ```
 
-While writing the code, the most difficult part was the line 
+While writing the code, the most difficult part was the line
 ```rust
 return Err("Height cannot be 0.0".into());
 ```
@@ -242,9 +243,9 @@ return Err("Height cannot be 0.0".into());
 I lost some time because initially I wanted to write
 
 ```rust
-return Err("Height cannot be 0.0"); 
+return Err("Height cannot be 0.0");
 ```
- 
+
 But this does'nt work. Indeed `bmi()` returns a `Result<f64>`, this means a `Result<f64, Box<dyn Error>>`. So I have to convert the `&'static str` into a `Box<dyn std::error::Error>` first. I hope that now on, I will remember the `.into()`.
 
 
@@ -286,9 +287,9 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 
 
 * It returns a `Result<32>` so that I can use `?` in `main()`
-* `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`). 
+* `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`).
 * Then, there is a `for` loop which traverses the vector `values`
-* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#the-resultt-e-type-handling-recoverable-errors) 
+* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#the-resultt-e-type-handling-recoverable-errors)
 * Pressing `CTRL+ALT`, I see `.parse::<i32>()` returns a `Result<i32, ParseIntError>`
 * If `current_val` is Ok I add its value to the running `sum`, otherwise... With the help of `.unwrap()` the code `panic!()`
 * At the end of the loop, `sum` is a valid number and I return it with `Ok(sum)`
@@ -313,7 +314,7 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 }
 ```
 
-But I remember what we said about `.unwrap()`, and `.expect()`. Finally I have this version which prints a custom message on error. See below: 
+But I remember what we said about `.unwrap()`, and `.expect()`. Finally I have this version which prints a custom message on error. See below:
 
 ```rust
 // ex200.rs
@@ -357,7 +358,7 @@ pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
-    let files = list_files(".")?; 
+    let files = list_files(".")?;
     println!("{files:#?}");
     Ok(())
 }
@@ -369,10 +370,10 @@ fn main() -> Result<()> {
 
 ```rust
 fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)? 
-        .filter_map(|re| re.ok()) 
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false)) 
-        .filter_map(|e| e.file_name().into_string().ok()) 
+    let files: Vec<String> = std::fs::read_dir(path)?
+        .filter_map(|re| re.ok())
+        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
+        .filter_map(|e| e.file_name().into_string().ok())
         .collect();
     Ok(files)
 }
@@ -383,18 +384,18 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 * If it is an iterator I can daisy chain multiple filters and keep the files of interest
 * `.filter_map()`, `.filter()` and `.collect()` operate on an `Iterator<Item = DirEntry>` once the `Result` has been unwrapped by `?` right after `read_dir()`
 * These iterator methods do not return a `Result`. They cannot fail in a way that would require error propagation.
-* They simply transform the data from one form to another 
+* They simply transform the data from one form to another
 * This is why there is no `?` at the end of the steps
     * the first `.filter_map()` silently drops entries that errored
     * the second `.filter()` ask the filesystem whether the entry is a file. If that check errors because it is a directory, it is treated as false and not kept in the list of files.
     * the last `filter_map()` only keeps filenames that are valid UTF-8 while the others are dropped
 * The last step is `.collect()` which creates a vector with the filtered filenames
-* Finally the function returns the vector to `main()` with `Ok(files)`        
+* Finally the function returns the vector to `main()` with `Ok(files)`
 
 
 **Bob:** Did you notice how your template worked fine in 3 different experiments? I guess we can **keep it in our toolbox**.
 
-Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` and return a custom message to `main()` explaining what's happen?  
+Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` and return a custom message to `main()` explaining what's happen?
 
 **Alice:** Ok... I start by removing the `?` then... I don't know!
 
@@ -443,7 +444,7 @@ Now, let me repeat the details of the operations. Just to make sure...
 {: .warning-title}
 > This is key
 >
-The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes an implementation of the `From` trait which does exactly that. See `impl<'a> From<&str> for Box<dyn Error + 'a>`.  
+The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes an implementation of the `From` trait which does exactly that. See `impl<'a> From<&str> for Box<dyn Error + 'a>`.
 
 **Bob:** I'm truly impressed. Now, even if it is a little bit overkill because we are supposed to be in an experiment, if I ask you to return *also* the reason *why* the error occurs I guess it is a matter of seconds. No?
 
@@ -462,7 +463,7 @@ fn main() -> Result<()> {
 
 fn list_files(path: &str) -> Result<Vec<String>> {
     let files: Vec<String> = std::fs::read_dir(path)
-        .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))? 
+        .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))?
         .filter_map(|re| re.ok())
         .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
         .filter_map(|e| e.file_name().into_string().ok())
@@ -471,7 +472,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 }
 ```
 * Above, `.map_err()` now returns a custom error as formatted `String`.
-* The promotion from `String` to `Box<dyn std::error::Error>` works because std lib includes [`impl<'a> From<String> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C&str%3E-for-Box%3Cdyn+Error%3E:~:str%3E%20for%20Box%3Cdyn%20Error%20+%20'a%3E&text=impl%3C%27a%3E%20From%3CString%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E). 
+* The promotion from `String` to `Box<dyn std::error::Error>` works because std lib includes [`impl<'a> From<String> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C&str%3E-for-Box%3Cdyn+Error%3E:~:str%3E%20for%20Box%3Cdyn%20Error%20+%20'a%3E&text=impl%3C%27a%3E%20From%3CString%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
 
 
 
@@ -486,7 +487,7 @@ pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
-    let files = list_files("./01_experimentation/empty")?; 
+    let files = list_files("./01_experimentation/empty")?;
     println!("{files:#?}");
     Ok(())
 }
@@ -499,7 +500,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
         .collect();
 
     if files.is_empty() {
-        return Err("Cannot list empty folder.".into()); 
+        return Err("Cannot list empty folder.".into());
     }
     Ok(files)
 }
@@ -512,7 +513,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 
 **Bob:** We are still in the experimentation phase where we can take the time to learn, discover, crash and repair things. Can you tell me, in detail, why and how the `.into()` works? Take your time, read the documentation before to anser.
 
-**Alice:** It turned out to be a real caving expedition, and it took me more time than I had anticipated. Sorry about that. 
+**Alice:** It turned out to be a real caving expedition, and it took me more time than I had anticipated. Sorry about that.
 
 <div align="center">
 <img src="./assets/img30.webp" alt="" width="450" loading="lazy"/><br/>
@@ -523,7 +524,7 @@ I focus on the lines below:
 
 ```rust
     if files.is_empty() {
-        return Err("Cannot list empty folder.".into()); 
+        return Err("Cannot list empty folder.".into());
     }
 ```
 The `.into()` works because std lib includes [`impl<'a> From<&str> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E) and here is why:
@@ -541,7 +542,7 @@ The story has a happy ending: they got married and lived happily ever after.
 {: .warning-title}
 > This is key
 >
-In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for A` for free.  
+In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for A` for free.
 
 
 <div align="center">
@@ -573,11 +574,11 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
     }
     fn list_files(path: &str) -> Result<Vec<String>> {
         let files: Vec<String> = std::fs::read_dir(path)
-            .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))? 
+            .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))?
             // REST OF THE CODE ;
         if files.is_empty() {
-            return Err("Cannot list empty folder.".into()); 
-        }    
+            return Err("Cannot list empty folder.".into());
+        }
         Ok(files)
     }
     ```
@@ -601,7 +602,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 </div>
 
 
-**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (at least from the error management standpoint). As it is, the code is monolithic and it looks like this:  
+**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (at least from the error management standpoint). As it is, the code is monolithic and it looks like this:
 
 ```rust
 // ex303.rs
@@ -609,7 +610,7 @@ pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 
 fn main() -> Result<()> {
-    let files = list_files("./01_experimentation/empty")?; 
+    let files = list_files("./01_experimentation/empty")?;
     println!("{files:#?}");
     Ok(())
 }
@@ -622,7 +623,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
         .collect();
 
     if files.is_empty() {
-        return Err("Cannot list empty folder.".into()); 
+        return Err("Cannot list empty folder.".into());
     }
     Ok(files)
 }
@@ -646,12 +647,12 @@ What would you do?
 {: .note-title }
 > Side Note
 >
-> From now on, in the workspace, the projects discussed below are in the `02_production/` directory.  
+> From now on, in the workspace, the projects discussed below are in the `02_production/` directory.
 
 
 
 
-**Alice:** OK... 
+**Alice:** OK...
 * I create a package in the `02_production/00_project/` directory
 * Below you can see how files and directories are organized
 
@@ -659,7 +660,7 @@ What would you do?
 .
 │   Cargo.lock
 │   Cargo.toml
-│   
+│
 ├───empty
 └───src
     │   main.rs
@@ -680,10 +681,10 @@ edition = "2024"
 
 [dependencies]
 ```
-* I create a directory named `empty` to perform some tests 
+* I create a directory named `empty` to perform some tests
 * Since I can't yet create a library, there is no `lib.rs` in the directory, just a `main.rs`
 * Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary crate, an application (`step_00.exe`)
-* In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below: 
+* In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below:
 
 ```rust
 // main.rs
@@ -711,8 +712,8 @@ crate           The crate root module is stored in main.rs
 ```
 
 * `use crate::files::listing;` is a shortcut, nothing more.
-    * Rather than writing `files::listing::list_files()`, I can write `listing::list_files()`. 
-    * Alternatively I could write `use crate::files::listing::list_files;` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will be auto documented and easier to read. I will not have to remember in which module `list_files()` is defined, instead I will "read" that `list_files` is defined in the module named `listing`.  
+    * Rather than writing `files::listing::list_files()`, I can write `listing::list_files()`.
+    * Alternatively I could write `use crate::files::listing::list_files;` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will be auto documented and easier to read. I will not have to remember in which module `list_files()` is defined, instead I will "read" that `list_files` is defined in the module named `listing`.
 
 
 
@@ -738,7 +739,7 @@ pub mod listing;
 
 ```rust
 // listing.rs
-use crate::Result; 
+use crate::Result;
 
 pub fn list_files(path: &str) -> Result<Vec<String>> {
     let files: Vec<String> = std::fs::read_dir(path)?
@@ -754,8 +755,8 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 ```
 
 * At the top of the file the line `use crate::Result;` is a shortcut. I can write `Result<T>` rather than `crate::Result<T>`.
-    * We know that the module `listing` is a grand-child of the crate root (check the module tree). 
-    * This said, if we recall that the **visibility rule** says that a private item is visible in the curent module and in all its children modules 
+    * We know that the module `listing` is a grand-child of the crate root (check the module tree).
+    * This said, if we recall that the **visibility rule** says that a private item is visible in the curent module and in all its children modules
     * This explains why `crate::Result` is accessible in the module `listing`
 
 
@@ -765,7 +766,7 @@ pub fn list_files(path: &str) -> Result<Vec<String>> {
 
 
 
-* I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can be called from the grand-parent module (crate root in `main.rs`) 
+* I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can be called from the grand-parent module (crate root in `main.rs`)
 * Other than that, there is no change
 
 Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace and run it with:
@@ -787,23 +788,23 @@ Here is what I can see in VSCode:
 
 To confirm my understanding, I did some tests.
 
-**🦀 Test 1:** 
+**🦀 Test 1:**
 * In `listing.rs` above, I comment the line `use crate::Result;`
 * I modify the signature of `list_files()`
 
 ```rust
 pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
-``` 
+```
 * I can build the project
 * This confirms that `use crate::Result;` is nothing more than a shortcut
 * I delete the modifications
 
 
-**🦀 Test 2:** 
-* In `main.rs`, in front of the `Result` and `Error` type alias declarations I remove the `pub` access specifier 
-* I can build the project. 
+**🦀 Test 2:**
+* In `main.rs`, in front of the `Result` and `Error` type alias declarations I remove the `pub` access specifier
+* I can build the project.
 * Why? Because we are building a binary crate, nothing is accessed from the outside and so, in this context, `pub` does'nt hurt but is useless.
-* Then I put the `pub` back in place because they seem important to you. 
+* Then I put the `pub` back in place because they seem important to you.
 
 
 
@@ -831,7 +832,7 @@ pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
 
 **Bob:** The second step should be easy. Create an `error.rs` file then copy/paste `Result` and `Error` definitions there. Explain what you do when you make the code runs as before.
 
-**Alice:** You know what? I copy/paste/rename the previous package in a directory named `01_project`. 
+**Alice:** You know what? I copy/paste/rename the previous package in a directory named `01_project`.
 
 * I update the package name in `Cargo.toml` (`name = "step_01"`)
 * I create an `error.rs` file with this content:
@@ -842,7 +843,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 pub type Error = Box<dyn std::error::Error>;
 ```
 <!-- * I make sure that both declarations have a `pub` access modifier. Otherwise we would not be able to use them from the crate root (`main.rs`) -->
-* I update the content of `main.rs`  
+* I update the content of `main.rs`
 
 ```rust
 // main.rs
@@ -867,7 +868,7 @@ fn main() -> Result<()> {
 
 ```
 crate           The crate root module is stored in main.rs
-|  error        The `error`    module is stored in error.rs  
+|  error        The `error`    module is stored in error.rs
 └─ files        The `files`    module is stored in files.rs
    └─ listing   The `listing`  module is stored in files/listing.rs
 ```
@@ -891,7 +892,7 @@ crate           The crate root module is stored in main.rs
 
 * I also add `use crate::error::Result;` so that I can write `fn main() -> Result<()> {...}` rather than `fn main() -> error::Result<()> {...}`
 
-* For the "fun", now in `main()` we inspect 2 different directories. 
+* For the "fun", now in `main()` we inspect 2 different directories.
 
 
 Here is what I can see in the terminal
@@ -904,25 +905,25 @@ Here is what I can see in the terminal
 
 Again I check my understanding about what is possible and what is not with the modules and the module tree.
 
-**🦀 Test 3:** 
-* The module `error` is a child of the crate root (in `main.rs`). 
-* Within `error` I can "see" what is in the crate root but the crate root cannot "see" what is in `error` if I don't make it public. 
-* So in `error.rs` I remove the `pub` access modifier in front of `Result`. 
+**🦀 Test 3:**
+* The module `error` is a child of the crate root (in `main.rs`).
+* Within `error` I can "see" what is in the crate root but the crate root cannot "see" what is in `error` if I don't make it public.
+* So in `error.rs` I remove the `pub` access modifier in front of `Result`.
 * Then I check I'm no longer able to build the project.
 * I undo my modifications
 
-**🦀 Test 4:** 
-* In `main.rs` I comment the line `use crate::error::Result;` and I write `fn main() -> crate::error::Result<()> {`. 
-* I cannot build the crate because there is a problem with `use crate::Result;` in `listing.rs` (`unresolved import 'crate::Result'`). 
+**🦀 Test 4:**
+* In `main.rs` I comment the line `use crate::error::Result;` and I write `fn main() -> crate::error::Result<()> {`.
+* I cannot build the crate because there is a problem with `use crate::Result;` in `listing.rs` (`unresolved import 'crate::Result'`).
 * Obviously, if in `listing.rs` I replace the line `use crate::Result;` with `use crate::error::Result;` then I can build again because in `error`, `Result` is public.
 
-Now, the 1 million $ question is: "why it worked in the initial version?" 
+Now, the 1 million $ question is: "why it worked in the initial version?"
 
 The answer goes like this:
 * `Result` is public in the `error` module
 * In the crate root we have `mod error` which brings `error::Result` is in the current scope, the scope of the crate root.
 * If `Result` is in the scope of the crate root, it becomes visible from its children
-* So  `crate::Result` is available in the scope of `listing` module (child visibility rule) 
+* So  `crate::Result` is available in the scope of `listing` module (child visibility rule)
 * In the `listing` namespace I can write:
     * `pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...`
     * or `use crate::Result;` then `pub fn list_files(path: &str) -> Result<Vec<String>> {...`
@@ -965,13 +966,13 @@ Create a `lib.rs` file at the root of the project, put the `pub mod error;` and 
 
 **Alice:** Um... Ok... I start with a copy/paste/rename of the previous directory (`02_project/`)
 
-* I recall that if in the directory there is a `lib.rs` and a `main.rs` 
-    * The build system builds the library crate then the binary crate. 
+* I recall that if in the directory there is a `lib.rs` and a `main.rs`
+    * The build system builds the library crate then the binary crate.
     * The lib is automatically linked to the binary.
-    * Ideally I want to keep `main()` as short as possible. It should validate some stuff then call a `run()` function from the library. 
+    * Ideally I want to keep `main()` as short as possible. It should validate some stuff then call a `run()` function from the library.
     * Here I will keep `list_file()` in main as before.
 
-Once the copy of the directory is done:    
+Once the copy of the directory is done:
 * I update the package name in `Cargo.toml` (`name = "step_02"`)
 * I create a `lib.rs` file with this content:
 
@@ -996,7 +997,7 @@ pub use self::error::{Error, Result};
 </div>
 
 * The lines `mod error;` and `mode files;` have been moved to `lib.rs`. The modules `error` and `files` are now in the lib namespace.
-* One **point of attention:** In previous versions, the code was monolithic, all the modules were children of the same root, all symbols were accessible within the same namespace. This is why, in `main.rs`, a line like `use crate::files::listing;` allowed us to call `listing::list_files()`. `crate` was pointing to the crate being built, the binary crate. 
+* One **point of attention:** In previous versions, the code was monolithic, all the modules were children of the same root, all symbols were accessible within the same namespace. This is why, in `main.rs`, a line like `use crate::files::listing;` allowed us to call `listing::list_files()`. `crate` was pointing to the crate being built, the binary crate.
 * But this is no longer the case. Indeed `list_files()` is now in the library namespace.
 * This is why, since the library is linked to the binary I need to write `use step_02::files::listing;` where `step_02` is the name of the library (which is the same as the name of the binary. I know, this does'nt help much...)
 
@@ -1030,7 +1031,7 @@ Then we can modify `main.rs`:
 
 ```rust
 // main.rs
-use my_super_lib::Result; 
+use my_super_lib::Result;
 use my_super_lib::files::listing;
 
 fn main() -> Result<()> {
@@ -1051,7 +1052,7 @@ Here is the output in the console
 <!-- <span>Optional comment</span> -->
 </div>
 
-The runtime mention **my_app.exe** when it says something like: `process didn't exit successfully: target\debug\my_app.exe` while in `main.rs` we write `use my_super_lib::files::listing;`. 
+The runtime mention **my_app.exe** when it says something like: `process didn't exit successfully: target\debug\my_app.exe` while in `main.rs` we write `use my_super_lib::files::listing;`.
 
 One last **point of attention** if I can... The command to build and run the application remains: `cargo run -p step_02`. This is because `step_02` is the name of the package in `Cargo.toml`. Review the content of `Cargo.toml` if this is not crystal clear.
 
@@ -1074,27 +1075,27 @@ Would you be so kind as to explain to an 800-year-old Jedi why you wrote these l
 
 
 
-**Alice:** You're right it took me a while so they deserve some explanations. 
+**Alice:** You're right it took me a while so they deserve some explanations.
 
-* In `lib.rs` 
-    * I load the modules `error` and `files` in the module tree 
-    * If the line `pub use self::error::{Error, Result};` is commented I can't build the package. I get an error from `listing.rs` saying: 
+* In `lib.rs`
+    * I load the modules `error` and `files` in the module tree
+    * If the line `pub use self::error::{Error, Result};` is commented I can't build the package. I get an error from `listing.rs` saying:
 
     ```
-    use crate::Result; 
+    use crate::Result;
         ^^^^^^^^^^^^^ no `Result` in the root
-    ``` 
+    ```
     * I'm not impressed. I know the module tree of the library crate, I can fix the problem and build the library. In `listing.rs` I write `use crate::error::Result;` rather than `use crate::Result;`
     * However, if building the library seems OK, I can't build the binary crate. I see an error in `main.rs`:
-    
+
     ```
-    use step_02::Result; 
+    use step_02::Result;
         ^^^^^^^^^^^^^^^ no `Result` in the root
     ```
     * Again, I know the module tree of the binary crate. In `main.rs` I write `use step_02::error::Result;` rather than `use step_02::Result;`
     * Then I can build the package (the library crate and the binary crate)
-    * However... 
-        * This work here because I have few modules. What if I have hundreds? 
+    * However...
+        * This work here because I have few modules. What if I have hundreds?
         * On the other hand, I don't like the idea of not being able to reuse most of the source code from the previous version without modifying it.
     * This is where the **re-export** "trick" enters the game.
         * In `lib.rs` I load the modules I need (`errors`, `files`)
@@ -1108,7 +1109,7 @@ Would you be so kind as to explain to an 800-year-old Jedi why you wrote these l
 
 **Bob:** Not to split hairs here, but if the shortcut lives in `lib.rs`, why duplicate it in `main.rs`?
 
-**Alice:** This is exactly what I did but it does'nt work. Indeed without the shortcut `use step_02::Result;` in `main.rs`, this is the `Result<T,E>` from the std lib which is used and the compiler is not happy. See by yourself: 
+**Alice:** This is exactly what I did but it does'nt work. Indeed without the shortcut `use step_02::Result;` in `main.rs`, this is the `Result<T,E>` from the std lib which is used and the compiler is not happy. See by yourself:
 
 ```
 fn main() -> Result<()> {
@@ -1122,10 +1123,10 @@ So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
 
 **Bob:** One last question. In `lib.rs` you write `pub use self::error::{Error, Result};` while until now you have been using `use crate` quite a lot. Is there any specific reason.
 
-**Alice:** Absolutely none. 
-* In a path like `self::error::Error`, `self` refers to the current module. This allows to use paths relative to the current module. Since we are in `lib.rs`, `self` refers to the crate root. 
-* In a path like `crate::error::Error`, `crate` refers to the crate root. This allow to use absolute path, always starting from the root. 
-* So here both paths are equivalent. I'll keep the absolute version. 
+**Alice:** Absolutely none.
+* In a path like `self::error::Error`, `self` refers to the current module. This allows to use paths relative to the current module. Since we are in `lib.rs`, `self` refers to the crate root.
+* In a path like `crate::error::Error`, `crate` refers to the crate root. This allow to use absolute path, always starting from the root.
+* So here both paths are equivalent. I'll keep the absolute version.
 
 
 
@@ -1146,7 +1147,7 @@ So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
 
 
 
-**Bob:** Splendid! Did you notice we did'nt yet talk about error handling? First, let's set the problem then we will work on one possible option. 
+**Bob:** Splendid! Did you notice we did'nt yet talk about error handling? First, let's set the problem then we will work on one possible option.
 
 * I let you copy/paste/rename of the previous directory (`03_project`)
 * Think to update the package name in `Cargo.toml` (`name = "step_03"`)
@@ -1197,7 +1198,7 @@ fn main() -> Result<()> {
 
 * `list_files()` is not ready to handle cases were the directory does not exists. In such case, when `read_dir()` returns, the `?` operator bubbles up the error to `main()`
 * Back in `main()`, the error is returned as `Box<dyn std::error::Error>`
-* Finally, the Rust runtime prints the last 2 messages. 
+* Finally, the Rust runtime prints the last 2 messages.
 
 
 
@@ -1209,7 +1210,7 @@ fn main() -> Result<()> {
 
 
 
-**Bob:** You're right. The app is not yet ready but don't worry, solutions based on custom errors exist (do you remember the `enum` etc.?). 
+**Bob:** You're right. The app is not yet ready but don't worry, solutions based on custom errors exist (do you remember the `enum` etc.?).
 
 We will keep our methodology and make one step at a time. Based on our experience in `list_files()`, in a first step we will make sure the app can report all kind of I/O errors as well as custom error messages based on strings of chars (String or string literal). Let me show you how...
 
@@ -1253,21 +1254,21 @@ impl From<&str> for Error {
 
 
 
-Do not look at the code yet but realize that since: 
-1. the `error.rs` file is standalone 
-2. `pub type Error = Box<dyn std::error::Error>;` is on its own line 
+Do not look at the code yet but realize that since:
+1. the `error.rs` file is standalone
+2. `pub type Error = Box<dyn std::error::Error>;` is on its own line
 
 We can now change the implementation of `Error` **without impacting the rest of the project** thanks to the level of indirection.
 
 
-Now, in the code above, only pay **attention** to `Error`. 
+Now, in the code above, only pay **attention** to `Error`.
 * So far its datatype was `Box<dyn std::error::Error>`
 * **Important:** Now it is an `enum`. This means that the lib restrict itself to only 2 flavors: `Error:Custom` or `Error::Io`
 * It is a totally different story
-* We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).  
+* We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).
 
 
-If needed, open a console and add `thiserror` crate to `Cargo.toml` with the command below: 
+If needed, open a console and add `thiserror` crate to `Cargo.toml` with the command below:
 
 ```
 cargo add thiserror --package step_03
@@ -1336,13 +1337,13 @@ The difference is... Now it prints `Error: Io(Os...` instead of `Error: Os...`. 
 
 ### Path to Production - Step_04
 
-**Bob:** This is OK. It is part of our journey... Copy/paste/rename the directory as `04_project` and rename the package in `Cargo.toml` as `step_04`. 
+**Bob:** This is OK. It is part of our journey... Copy/paste/rename the directory as `04_project` and rename the package in `Cargo.toml` as `step_04`.
 
 Now, modify `main.rs` as below:
 
 ```rust
 // main.rs
-use step_04::Result; 
+use step_04::Result;
 use step_04::files::listing;
 
 fn main() -> Result<()> {
@@ -1371,7 +1372,7 @@ The `non_existent_folder` is "back in town"
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hQo1HIcSVtg?si=tSkFmxpGfVozzhFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-In addition, the `?` operator has disappeared. We use `match` after each call instead. Don't, but if you run the code at this point you should not see big changes. 
+In addition, the `?` operator has disappeared. We use `match` after each call instead. Don't, but if you run the code at this point you should not see big changes.
 
 Open `error.rs` and replace the line `#[error(transparent)]` with `#[error("**** I/O error: {0}")]`. See below the code fragment:
 
@@ -1412,7 +1413,7 @@ And now I understand what happens!
     </div>
 
 2. Second call: The code reports a custom error with a message because the directory is empty. This is business as usual.
-3. Third call: This is an unhandled I/O error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the I/O error into an `Error`. I don't know yet all the details but I remember `thiserror` generates the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console. 
+3. Third call: This is an unhandled I/O error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the I/O error into an `Error`. I don't know yet all the details but I remember `thiserror` generates the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console.
 
 To make a long story short: Now, when the app encounter an unknown I/O error it reports it as an `Error::Io`.
 
@@ -1429,7 +1430,7 @@ Cool, it works. Now I can uncomment the line with `transparent` and run the appl
 
 
 
-**Alice:** We already used `thiserror`, but, Ok, let me start from the beginning... Until `Step_03` we had:  
+**Alice:** We already used `thiserror`, but, Ok, let me start from the beginning... Until `Step_03` we had:
 
 ```rust
 // error.rs
@@ -1576,7 +1577,7 @@ impl From<&str> for Error {
 1. More **important**. We now have `CantListEmptyFolder` which is a variant without associated data, unlike the `Io(std::io::Error)` variant, which contains a `std::io::Error` object. So `CantListEmptyFolder` acts as a constant of type `Error`.
 
 
-With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` custom error code instead. See below: 
+With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` custom error code instead. See below:
 
 ```rust
 // listing.rs
@@ -1639,7 +1640,7 @@ Error detected: Le chemin d’accès spécifié est introuvable. (os error 3)
 
 **Alice:** Could you show me how to add testing to my "production" code ?
 
-**Bob:** Yes I can but I will only show you the code. To tell the truth I'm getting tired, testing is an subject on itself and I believe it is time to end this conversation. 
+**Bob:** Yes I can but I will only show you the code. To tell the truth I'm getting tired, testing is an subject on itself and I believe it is time to end this conversation.
 
 The code below is in `02_production/06_project/src/files/listing.rs`.
 
@@ -1744,7 +1745,7 @@ Here is what you should see after: `cargo test -p step_06`
 {: .new-title }
 > Summary – Experimentation to Production
 >
-* We now have a good code template for our experimentation 
+* We now have a good code template for our experimentation
     * See the summary of [Experimentation](#summary--experimentation)
 * We learn how to split monolithic experimentation code into one or more files, including a `lib.rs` and a `main.rs`
 * We know much more about the module tree
@@ -1756,12 +1757,12 @@ Here is what you should see after: `cargo test -p step_06`
 * Create an independent `error.rs`
 * The re-export "trick" in `lib.rs` to share `Result` and `Error` from the lib crate to the binary crate
 * `thiserror` and the re-write of `error.rs` to provide a custom error type to the lib.
-* Move from custom error messages to strick custom error codes 
+* Move from custom error messages to strick custom error codes
 * Testing with our library error codes
- 
 
 
-### Exercises – Experimentation to Production 
+
+### Exercises – Experimentation to Production
 
 1. You have this code
     ```rust
@@ -1790,7 +1791,7 @@ Here is what you should see after: `cargo test -p step_06`
             _ => n * factorial(n - 1),
         }
     }
-    ``` 
+    ```
     * Structure this package by creating:
     * `lib.rs` file with a math module.
     * A `math.rs` file containing the `factorial()` function.
@@ -1823,9 +1824,9 @@ Here is what you should see after: `cargo test -p step_06`
 </div>
 
 
-It's 6AM. Your sister is coming back home. You are "dead" but happy because you learnt a lot even if you are not sure you will keep everything in your mind. It is also time for you to go to bed... 
+It's 6AM. Your sister is coming back home. You are "dead" but happy because you learnt a lot even if you are not sure you will keep everything in your mind. It is also time for you to go to bed...
 
-You know what? Don't touch your PC for, at least, one day. And if you want to watch kitten's videos use your phone. 
+You know what? Don't touch your PC for, at least, one day. And if you want to watch kitten's videos use your phone.
 
 <div align="center">
 <img src="./assets/img44.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1877,7 +1878,7 @@ Enjoy!
 
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})

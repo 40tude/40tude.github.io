@@ -2,10 +2,11 @@
 published: true
 lang: en-US
 layout: default
-title: Building Conway’s Game of Life in Rust with Pixels and Winit 
+title: Building Conway’s Game of Life in Rust with Pixels and Winit
 description: A beginner-friendly guide to using the Pixels and Winit crates to create a graphical version of Conway’s Game of Life in Rust.
 parent: Rust
 #math: mathjax
+nav_order: 9
 date               : 2025-10-29 07:00:00
 last_modified_date : 2025-11-05 17:00:00
 ---
@@ -22,7 +23,7 @@ A beginner-friendly guide to using the Pixels and Winit crates to create a graph
 
 
 <!-- <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is almost done 🚧</b></span>    
+<span style="color:orange"><b> 🚧 This post is almost done 🚧</b></span>
 </h2> -->
 
 
@@ -94,7 +95,7 @@ This is how the application looks like at the end:
 </div>
 
 Now then — it’s almost 11 a.m., and the train is waiting on platform 9¾.
-Ready to hop on? 
+Ready to hop on?
 
 
 
@@ -109,21 +110,21 @@ Ready to hop on?
 
 ## Step 00: A Gentle Start
 
-When I discussed the idea with ChatGPT and explained that, for teaching purposes, I wanted to build a Game of Life application in Rust and was looking for a helpful library, it kindly pointed me to the Winit and Pixels crates. I then checked out the links below (this is a lie but this what I should have done):   
+When I discussed the idea with ChatGPT and explained that, for teaching purposes, I wanted to build a Game of Life application in Rust and was looking for a helpful library, it kindly pointed me to the Winit and Pixels crates. I then checked out the links below (this is a lie but this what I should have done):
 
 ### winit
 {: .no_toc }
 
-* [crate](https://crates.io/crates/winit): 
-* [doc](https://docs.rs/winit/0.30.12/winit/): 
-* [examples](https://github.com/rust-windowing/winit/tree/master/winit/examples): 
+* [crate](https://crates.io/crates/winit):
+* [doc](https://docs.rs/winit/0.30.12/winit/):
+* [examples](https://github.com/rust-windowing/winit/tree/master/winit/examples):
 
 ### Pixels
 {: .no_toc }
 
-* [crate](https://crates.io/crates/pixels): 
-* [doc](https://docs.rs/pixels/0.15.0/pixels/): 
-* [examples](https://github.com/parasyte/pixels/tree/main/examples): 
+* [crate](https://crates.io/crates/pixels):
+* [doc](https://docs.rs/pixels/0.15.0/pixels/):
+* [examples](https://github.com/parasyte/pixels/tree/main/examples):
 
 
 **What I learnt:** Generally speaking, there's quite a bit of documentation, the code is available, but, most of the time, there are no tutorials. Furthermore—and it took me a while to figure this out—if you're looking for an example, you need to go to the GitHub repo and check out the `examples/` directory.
@@ -131,12 +132,12 @@ When I discussed the idea with ChatGPT and explained that, for teaching purposes
 There has been, and this is really great, a huge effort made in terms of documentation. However, I don't understand why, unlike the canonical `README.md` file, there isn't a `PHILOSOPHY.md` or `ETHOS.md` file that would explain the key concepts behind the API, the important points to keep in mind, the mindset needed when approaching the crate... This file would, of course, include diagrams and additional explanations around some of the key sample code available in the `examples/` directory.
 
 Ok, this said:
-1. Get the code of this project from [GitHub](https://github.com/40tude/rust_game_of_life) 
+1. Get the code of this project from [GitHub](https://github.com/40tude/rust_game_of_life)
 1. Open the workspace with VSCode
 1. Once in VSCode, open a terminal (CTRL + ù on a FR keyboard)
 1. `cargo run -p step_00_winit_029`
     * You must use `-p` because I use a Rust's workspace with multiple packages and `step_00_winit_029` is one of them
-    * Compare to the other packages (02, 03...) the name of this first package is long because it expresses the fact that it depends on Winit version 0.29. 
+    * Compare to the other packages (02, 03...) the name of this first package is long because it expresses the fact that it depends on Winit version 0.29.
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
@@ -163,14 +164,14 @@ pixels = "0.15.0"
 winit = "0.29"
 ```
 
-The issue I have is that it seems `Pixels` requires `winit` 0.29 but this is not the latest version. See below what I see: 
+The issue I have is that it seems `Pixels` requires `winit` 0.29 but this is not the latest version. See below what I see:
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
 <span><code>Dependi</code> VSCode extension helps to confirm if we use the latest version (or not)</span>
 </div>
 
-This is an issue because when you go to [the Winit GitHub page](https://github.com/rust-windowing/winit/tree/master) you must make sure you pick the version 0.29 **before** looking at the source code of the examples.  
+This is an issue because when you go to [the Winit GitHub page](https://github.com/rust-windowing/winit/tree/master) you must make sure you pick the version 0.29 **before** looking at the source code of the examples.
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
@@ -205,7 +206,7 @@ fn main() -> Result<()> {
                 if window.is_none() {
                     // elwt.set_control_flow(ControlFlow::Poll); // Never sleep and call the closure ASAP
                     let built_window = WindowBuilder::new().with_title("Step_00_winit_029: First try").build(elwt).unwrap();
-                    
+
                     let size = built_window.inner_size();
                     let window_ref: &'static Window = Box::leak(Box::new(built_window));
                     let surface = SurfaceTexture::new(size.width, size.height, window_ref);
@@ -264,7 +265,7 @@ fn main() -> Result<()> {
 
 This is **NOT** the code I had at the very beginning but since I try to tell you a "gentle" story I'm lying... In fact, at the beginning, I spent too much time mixing Winit 0.30 with its 0.29 API. Nothing was really working. I did'nt read the documentation nor checked the dependencies... A nightmare...
 
-Anyway... The code above is around 80 lines, it consists of one `main()` function, it is partially based on [the code available here](https://github.com/rust-windowing/winit/blob/v0.29.x/examples/window.rs) and it should be working. Right? Do you confirm? Ok, let's move on. 
+Anyway... The code above is around 80 lines, it consists of one `main()` function, it is partially based on [the code available here](https://github.com/rust-windowing/winit/blob/v0.29.x/examples/window.rs) and it should be working. Right? Do you confirm? Ok, let's move on.
 
 
 ```rust
@@ -277,15 +278,15 @@ fn main() -> Result<()> {
 ```
 If you don't understand the signature of `main()` this is not a problem. During a rainy day, read this series of post about [errors]({%link docs/06_programmation/rust/016_errors/errors_00.md%}). For the moment keep in mind that `main()` can return errors (do you see `Result` and `Error` type aliases). For example if during the call to `EventLoop::new()`, instead of panicking and stop here, the `?` operator returns the error to `main()` which propagates the error message, if any, in the terminal.
 
-Once in the `main()` function, one of the first thing to do is to create an event loop. Then I propose to forget `window` and `pixels` for the moment and reach the `event_loop.run()` function call. This one is interesting. The closure (`|event, elwt|{...}`) is **moved** into the event loop which now, owns it. 
+Once in the `main()` function, one of the first thing to do is to create an event loop. Then I propose to forget `window` and `pixels` for the moment and reach the `event_loop.run()` function call. This one is interesting. The closure (`|event, elwt|{...}`) is **moved** into the event loop which now, owns it.
 
 Then the event loop will run until `elwt.exit()` (`elwt` stands for Event Loop Window Target). The loop is mostly a `match` expression where we respond to the different type of events. In this first try we respond to the events : Resumed, RedrawRequested, AboutToWait, CloseRequested
 
-* **WindowEvent::CloseRequested**: as explained, when this event happens, we call the `.exit()` of the event loop window target. Then Winit closes the window, release the resources, the event loops ends and the `main()` function as well.  
+* **WindowEvent::CloseRequested**: as explained, when this event happens, we call the `.exit()` of the event loop window target. Then Winit closes the window, release the resources, the event loops ends and the `main()` function as well.
 
-* **Event::AboutToWait**: This event is emitted by the winit's event loop just before it goes idle waiting for new events. It says: "I've finished processing all pending events, and I'm about to sleep until something else happens. Is there anything I can do for you before?" ([more info](https://docs.rs/winit/0.29.15/winit/event/enum.Event.html#variant.AboutToWait)). Here I decided to call `window.request_redraw()` to create a continuous rendering loop. This is not smart, this is brutal. Indeed we are constantly asking to redraw the content of the window. There are smarter options but let start with this one because it mimics somehow the behavior of a game loop where we want to draw N frames per second for example.  
+* **Event::AboutToWait**: This event is emitted by the winit's event loop just before it goes idle waiting for new events. It says: "I've finished processing all pending events, and I'm about to sleep until something else happens. Is there anything I can do for you before?" ([more info](https://docs.rs/winit/0.29.15/winit/event/enum.Event.html#variant.AboutToWait)). Here I decided to call `window.request_redraw()` to create a continuous rendering loop. This is not smart, this is brutal. Indeed we are constantly asking to redraw the content of the window. There are smarter options but let start with this one because it mimics somehow the behavior of a game loop where we want to draw N frames per second for example.
 
-* **WindowEvent::RedrawRequested**: In response to this event we must redraw the content of the window. However, in the case of a Game of Life (or game, simulation...) what I know is: which cells are dead and which ones are alive. My universe, my world is a grid of cells. I don't know anything about the number of screens, the size of the window, the resolution...This is where Pixels comes into the play providing multiple levels of indirection which help me to stay in my universe. We will dig into the details soon but for the moment imagine that our world is a Flatland that we want to paint in blue. 
+* **WindowEvent::RedrawRequested**: In response to this event we must redraw the content of the window. However, in the case of a Game of Life (or game, simulation...) what I know is: which cells are dead and which ones are alive. My universe, my world is a grid of cells. I don't know anything about the number of screens, the size of the window, the resolution...This is where Pixels comes into the play providing multiple levels of indirection which help me to stay in my universe. We will dig into the details soon but for the moment imagine that our world is a Flatland that we want to paint in blue.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/avMX-Zft7K4?si=s7n8lhAexcTKtDlG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -300,7 +301,7 @@ Once all the spots of our universe are repainted in blue, we ask the `pixels` ob
     ```rust
     if window.is_none() {
         let built_window = WindowBuilder::new().with_title("Step_00_winit_029: First try").build(elwt).unwrap();
-        
+
         let size = built_window.inner_size();
         let window_ref: &'static Window = Box::leak(Box::new(built_window));
         let surface = SurfaceTexture::new(size.width, size.height, window_ref);
@@ -315,7 +316,7 @@ Once all the spots of our universe are repainted in blue, we ask the `pixels` ob
     }
     ```
 
-We first make sure the `window` has not yet been initialized. Do you see the `if window.is_none()`? This also explains why, above, `window` is an `Option<T>`. 
+We first make sure the `window` has not yet been initialized. Do you see the `if window.is_none()`? This also explains why, above, `window` is an `Option<T>`.
 
 Now, focus on the 3 function calls:
 * **`WindowBuilder::new()`**
@@ -335,7 +336,7 @@ I know, this seems over complicated especially if you want to display a blue win
 
 * In front of our eyes we have a screen where, may be, there is more than one window on the screen. Think about your cell phone with one app at a time on screen or to your 4 screens configuration at home... To fix the idea I suppose we are on a WIN11 configuration with a 800x600 pixels window on screen. The green rectangle above represents the inside of the window and does not include the border nor the title bar. Those are managed by the operating system. We use `WindowBuilder::new()` to create this window.
 * Pixels proposes to use a surface texture to fill efficiently the content of the window. The size of the texture are in pixels. The texture may not have the same size than the window. It can be stretched or compressed to fit the content. Applying the texture to the window content is done by the GPU. If the ratio is 1:1 with the inside of the displayed window there is no distorsion otherwise the content may become weird. This is where we use `SurfaceTexture::new()`.
-* To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 bytes (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio. This is where we use `Pixels::new()`.   
+* To link the texture to our universe the Pixels crate proposes to use a Pixels buffer. Its units are the same as our universe. Each spot is encode on 4 bytes (RGBA). In the example above, the Pixels RGBA buffer is 400x300. It is best to ensure that the dimensions of the surface and the RGBA buffer are in a whole number ratio. This is where we use `Pixels::new()`.
 * Finally we have to provide our universe. Its dimensions are whatever we want but they should match the one of the Pixels RGBA buffer. In the loop, we get access to the RGBA Pixels buffer with `pixels.frame_mut()` and when it is updated we call `pixels.render()`
 
 Ok... Let's examine the code fragment below and note to following three points:
@@ -346,7 +347,7 @@ match event {
     Event::Resumed => {
         if window.is_none() {
             let built_window = WindowBuilder::new().with_title("Step_00_winit_029: First try").build(elwt).unwrap();
-            
+
             let size = built_window.inner_size();
             let window_ref: &'static Window = Box::leak(Box::new(built_window));
             let surface = SurfaceTexture::new(size.width, size.height, window_ref);
@@ -405,7 +406,7 @@ Do you see the 125% scale factor. Now, when I run the sample code I read the fol
 
 ## Step 00: A Gentle Start II
 
-Here, the end result is the same but we use Winit 0.30. 
+Here, the end result is the same but we use Winit 0.30.
 
 Try this:
 
@@ -431,7 +432,7 @@ pixels = "0.15.0"
 winit = { version = "0.30", features = ["rwh_06"] }
 ```
 
-We are effectively using Winit 0.30 with pixels 0.15. However starting with Winit 0.30 we must specify the feature `rwh`. `rwh` stands for Raw Window Handle. With Winit 0.29 `rwh_05` is activated by default since it does not support `rwh_06`. Since I like to use latest versions I write `rwh_06`. 
+We are effectively using Winit 0.30 with pixels 0.15. However starting with Winit 0.30 we must specify the feature `rwh`. `rwh` stands for Raw Window Handle. With Winit 0.29 `rwh_05` is activated by default since it does not support `rwh_06`. Since I like to use latest versions I write `rwh_06`.
 
 Here is the code. The components are the same (the end result is the same). However the organization of the code is different.
 
@@ -469,7 +470,7 @@ fn main() -> Result<()> {
 
 impl ApplicationHandler for App {
     fn resumed(&mut self, event_loop: &ActiveEventLoop) {
-        
+
         let window = event_loop.create_window(Window::default_attributes().with_title("Step_00_winit_030: First try")).unwrap();
 
         let size = window.inner_size();
@@ -524,7 +525,7 @@ impl ApplicationHandler for App {
 ### Comments
 {: .no_toc }
 
-With 0.30, Winit provides an `ApplicationHandler` trait that we implement. [As explained here](https://docs.rs/winit/latest/winit/application/trait.ApplicationHandler.html), it requires 2 methods : `resumed` and `window_event`. 
+With 0.30, Winit provides an `ApplicationHandler` trait that we implement. [As explained here](https://docs.rs/winit/latest/winit/application/trait.ApplicationHandler.html), it requires 2 methods : `resumed` and `window_event`.
 
 Having this in mind, commenting the code is easy because we just need to move around all the pieces we already explained in the previous sample code. At the beginning we define our App as a struct which host the `window` and `pixels` fields. Then in the `main()` function once the `event_loop` is created and the `app` is defaulted, we run the application with the event loop (do you see the line `event_loop.run_app(&mut app)`?)
 
@@ -683,8 +684,8 @@ fn main() -> Result<()> {
 {: .no_toc }
 
 * The code has been reorganized around a `struct App {...}`
-* In the `main()` we still have the `match` expression. Note how the limit to 60 frames per second is achieved. I simply measure the time between now and the instant of the last call. If needed, `app.request_redraw()` is called which does nothing else than calling `.request_redraw()` as in the previous sample code. 
-* At one point the event `WindowEvent::RedrawRequested` happens and `self.render()` get called. 
+* In the `main()` we still have the `match` expression. Note how the limit to 60 frames per second is achieved. I simply measure the time between now and the instant of the last call. If needed, `app.request_redraw()` is called which does nothing else than calling `.request_redraw()` as in the previous sample code.
+* At one point the event `WindowEvent::RedrawRequested` happens and `self.render()` get called.
 * `App.render()` includes 2 sections. One to animate the shape and another to draw our universe.
 
 
@@ -813,7 +814,7 @@ The structure of the code is very similar to one of the first winit 0.30 sample 
 
 The FPS speed limitation use the same method as in the 0.29 version. Same comment concerning the animation of the shape.
 
-It is really a matter of code re-organization. 
+It is really a matter of code re-organization.
 
 
 
@@ -929,7 +930,7 @@ WindowEvent::KeyboardInput { event, .. } => {
 ### Tell me why 🎹
 {: .no_toc }
 
-Can you tell me why there are black borders around our universe? 
+Can you tell me why there are black borders around our universe?
 
 The black frame around our gradient appears because the **window’s aspect ratio** doesn’t match the **texture (buffer) aspect ratio** defined by:
 
@@ -1026,7 +1027,7 @@ Try this:
 
 * `cargo run -p step_03`
 
-The dimensions of the cells are fixed (4x4 pixels for example, see `CELL_SIZE`). So when the window is large there are more cells on screen... 
+The dimensions of the cells are fixed (4x4 pixels for example, see `CELL_SIZE`). So when the window is large there are more cells on screen...
 
 <div align="center">
 <img src="./assets/img14.webp" alt=""  width="450" loading="lazy"/><br/>
@@ -1048,7 +1049,7 @@ This is an exercice. Just to make sure when understand really what we are doing.
 
 Once again the App structure is adapted to our need. Here, it has fields to keep track of the width, the heigh and it contains a vector of cells.
 
-Now, in addition to the implementation of the `ApplicationHandler` trait for `App`, we also have an implementation for the `App` with only one function so far : `recreate_buffer()`. 
+Now, in addition to the implementation of the `ApplicationHandler` trait for `App`, we also have an implementation for the `App` with only one function so far : `recreate_buffer()`.
 
 
 `recreate_buffer()` is called from `ApplicationHandler::resumed()` and from `ApplicationHandler::window_event()` when handling `WindowEvent::Resized`.
@@ -1126,7 +1127,7 @@ The code has been refactored. The `App` have `create_buffer()` and `handle_resiz
 * `create_buffer()` is called once when the application `ApplicationHandler::resumed()`
 * `handle_resize()` is called... Yes, you are right, on `WindowEvent::Resized()`
 
-Now we can better understand what's happen at start up. Initially the buffer is created once but the window is resized 3 times before we can see anything. 
+Now we can better understand what's happen at start up. Initially the buffer is created once but the window is resized 3 times before we can see anything.
 
 <div align="center">
 <img src="./assets/img18.webp" alt="" width="450" loading="lazy"/><br/>
@@ -1214,7 +1215,7 @@ fn handle_resize(&mut self, w: u32, h: u32) {
     println!("Buffer resized: {}x{} cells ({}x{} pixels)", bw, bh, w, h);
 }
 ```
-In the rest of the code, the new field `pending_resize` is simply updated on resize. 
+In the rest of the code, the new field `pending_resize` is simply updated on resize.
 
 ```rust
 WindowEvent::Resized(size) => {
@@ -1288,10 +1289,10 @@ struct App {
     surface_h: u32,
 }
 ```
-There are new functions. 
+There are new functions.
 * `read_rle()` reads a file containing a pattern. The format of the file is explained [on this page](https://conwaylife.com/wiki/Run_Length_Encoded). At one point it calls `parse_rle_data()` that parse a string describing the pattern and return a grid as a vector.
 * Once the pattern as been read, `place_pattern_centered()` places it at the center of the board.
-* Then we come into the "game loop". 
+* Then we come into the "game loop".
     * 60 times per second, `about_to_wait()` request the window to be redrawn.
     * In the `WindowEvent::RedrawRequested` we calculate the content of `board_next` using the content of `board_current`, we swap both boards and display `board_current`.
 
@@ -1301,7 +1302,7 @@ WindowEvent::RedrawRequested => {
     self.step_life();
     std::mem::swap(&mut self.board_current, &mut self.board_next);
     ...
-``` 
+```
 * Here is the code of `step_life()`
 
 ```rust
@@ -1347,7 +1348,7 @@ pub fn step_life(&mut self) {
 ```
 
 
-This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It is time to split the project into components. I will use the method explained in this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}). 
+This is all fine but the code in `main.rs` is monolithic and it is 400 LOC. It is time to split the project into components. I will use the method explained in this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
 
 
@@ -1627,11 +1628,11 @@ fn main() -> Result<()> {
     };
 
     let event_loop = EventLoop::new()?;
-    ... 
+    ...
 
 ```
 
-Next comes `handle_parameters()`. Here I'm only interested in "playing" with the patterns so only the `p/pattern` argument is supported. The `is_valid_file_path()` helps to confirms that the path is a file that we can open. 
+Next comes `handle_parameters()`. Here I'm only interested in "playing" with the patterns so only the `p/pattern` argument is supported. The `is_valid_file_path()` helps to confirms that the path is a file that we can open.
 
 ```rust
 
@@ -1693,7 +1694,7 @@ fn is_valid_file_path(path: &Path) -> bool {
     File::open(path).is_ok()
 }
 ```
-Again, like for testing, I learn how to implement one argument. I don't want to be exhaustive here but I know I can add arguments if I want to.  
+Again, like for testing, I learn how to implement one argument. I don't want to be exhaustive here but I know I can add arguments if I want to.
 
 
 
@@ -1713,9 +1714,9 @@ Again, like for testing, I learn how to implement one argument. I don't want to 
 
 Read this [dedicated post]({%link docs/06_programmation/rust/017_game_of_life/gpu.md%})
 
-The conclusion is : 
+The conclusion is :
 * In the current code of our Game Of Life all the processing is done on the CPU (not the GPU).
-* Nonetheless, it is better to know what we talk about when we talk about backend, integrated/discrete GPU and presentation mode 
+* Nonetheless, it is better to know what we talk about when we talk about backend, integrated/discrete GPU and presentation mode
 * Keep in mind, that, since we do not use shaders we could use `Pixels::new()` and its default values (integrated GPU, Vulkan backend and Fifo presentation mode) and we should be good to go
 
 
@@ -1797,20 +1798,20 @@ if let Some(pixels) = &mut self.pixels {
             power_preference: wgpu::PowerPreference::::LowPower,
             // power_preference: wgpu::PowerPreference::HighPerformance,
 
-            compatible_surface: None, 
+            compatible_surface: None,
             force_fallback_adapter: false,
         })
         // 2 - Backend: Pick one or the other
         .wgpu_backend(wgpu::Backends::VULKAN)
-        // .wgpu_backend(wgpu::Backends::DX12) 
-        
+        // .wgpu_backend(wgpu::Backends::DX12)
+
         .build() // or .build_async().await
         .expect("Failed to create Pixels with high-performance GPU");
 
     // 3 - PresentationMode: Pick one or the other
     pixels.set_present_mode(wgpu::PresentMode::Fifo);
     // pixels.set_present_mode(wgpu::PresentMode::Immediate);
-    
+
     println!("Present mode: {:?}", pixels.present_mode());
 
     self.pixels = Some(pixels);
@@ -1911,9 +1912,9 @@ Then in the code I can write : `error!("Error displayed: {}", error_message);`
 
 That is fine but personnaly I have an issue with that. Indeed I like to be explicit and to write `log::error!()`. Six months from now, reviewing the code I want to "read" that the `error!()` comes from the `log` crate and not from one of my module.
 
-Let's make a test and we will see how it goes. 
+Let's make a test and we will see how it goes.
 1. I create a `prelude` module in `lib.rs`
-1. In `main.rs` I use `log::info!()` 
+1. In `main.rs` I use `log::info!()`
 1. While in `src/app/state.rs` I use `info!()`
 
 One last point of **attention**. Now in `main()`, when we setup `env_logger`, if we want to see our own messages we have to add the name of the package to the filter. Remember in Step 11 when we were only interrested in the log messages from `wgpu` we had:
@@ -1927,7 +1928,7 @@ Now I have:
 env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("step_13=info, wgpu_core=info, wgpu_hal=warn, wgpu=off, naga=off")).init();
 ```
 
-Did you see the `step_13=info`? 
+Did you see the `step_13=info`?
 
 Now, knowing how it works we could define some logging profiles:
 * Very discrete (clean prod/dev): `step_13=info, wgpu_core=off, wgpu_hal=off, wgpu=off, naga=off`
@@ -2061,7 +2062,7 @@ fn setup_logging() -> Result<()> {
 
 There are many options possible. Here I decide to store the logs files in a `logs/` directory (check out the basename `step_14`). In the code I indicate I want to create log files per day, not bigger than 10MB and to keep the last two... Again many options are available and I'm very happy (except for the `WriteMode::Async` that does not work) to have found this crate.
 
-It is a good opportunity to look for `println!()` and other `eprintln!()` and to replace them. 
+It is a good opportunity to look for `println!()` and other `eprintln!()` and to replace them.
 
 Last point. Make sure to add `logs/` to `.gitignore`
 
@@ -2163,7 +2164,7 @@ Things to look for:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Step 17  : Measure Performances 
+## Step 17  : Measure Performances
 
 Because if we measure, we can track and see whether performances are improving or deteriorating.
 
@@ -2182,8 +2183,8 @@ Try this:
 
 Here is what I can read with
 * Pattern: `112P51_synth`
-* Power supply: 140 W 
-* Release 
+* Power supply: 140 W
+* Release
 * Integrated GPU: Intel
 * Backend: Vulkan
 * Presentation mode: Fifo
@@ -2221,24 +2222,24 @@ INFO [step_17_winit_030] Application terminated.
 ### Observations
 {: .no_toc }
 
-1. **CPU (step_life) = 0.28ms** 
+1. **CPU (step_life) = 0.28ms**
    - Grid 356×200 = 71_200 cells
    - Fast (~285_000 cells/ms)
    - We could have a 17x larger grid and still maintain 60 FPS
 
-2. **GPU (render) = 0.25ms** 
+2. **GPU (render) = 0.25ms**
    - But still widely acceptable
 
-3. **Total = 0.54ms** 
+3. **Total = 0.54ms**
    - Frame budget @ 60 FPS = 16.67ms
    - We're only using 3% of our time budget
    - Huge margin: 15.85ms available (~97% idle)
 
-4. **Theoretical FPS = 1900** 
+4. **Theoretical FPS = 1900**
    - Without VSync, we could run at >1000 FPS
    - VSync limits us to 60 FPS (hence the gap)
 
-5. **p95 = 0.28-0.31ms** 
+5. **p95 = 0.28-0.31ms**
    - Very stable, few spikes
    - Good frame-to-frame consistency
 
@@ -2249,12 +2250,12 @@ INFO [step_17_winit_030] Application terminated.
 ### First log usually slower
 {: .no_toc }
 
-**Why?** 
+**Why?**
 - Probable GPU warmup (first frame)
 - GPU buffer allocation ?
 - Normal, ignorable
 
-### Stabilization: 
+### Stabilization:
 {: .no_toc }
 
 **After stabilization**:
@@ -2452,7 +2453,7 @@ Try this:
 ### Comments
 {: .no_toc }
 
-It took me more time than anticipated. 
+It took me more time than anticipated.
 
 You need a ressource compiler installed on your system. Go to this [page](https://visualstudio.microsoft.com/fr/downloads/). At the bottom of the page click "Tools for Visual Studio" then "Build Tools for Visual Studio 2022". Download and Install.
 
@@ -2464,7 +2465,7 @@ You need a ressource compiler installed on your system. Go to this [page](https:
 * Create an `.ico` file. You can go on this [page](https://www.icoconverter.com/), generate all resolutions
 * `cargo add winres --build`. ⚠️ Don't mess with Texas and don't forget the `--build`
 * Take few minutes to read the [winres crates](https://crates.io/crates/winres) page on [crates.io](https://crates.io/)
-* Create a file named `build.rs` at the root of the package. See below its content: 
+* Create a file named `build.rs` at the root of the package. See below its content:
 
 
 ```rust
@@ -2587,7 +2588,7 @@ Step 19 introduces zoom functionality by decoupling the simulation grid from the
 - The simulation board stays fixed at 1280×800 cells
 - The window can be any size and content is scaled using zoom
 - Users can zoom in and out to see different levels of detail
-- The simulation is not impacted by zoom operations. This allow to zoom in then zoom out and continue to observe the simulation 
+- The simulation is not impacted by zoom operations. This allow to zoom in then zoom out and continue to observe the simulation
 
 
 
@@ -2596,7 +2597,7 @@ Step 19 introduces zoom functionality by decoupling the simulation grid from the
 {: .no_toc }
 
 * From: Variable board size that resizes with zoom/window
-* To: Fixed board size with **camera viewport** system 
+* To: Fixed board size with **camera viewport** system
 
 
 ### How Zoom Works?
@@ -2606,7 +2607,7 @@ At this stage the camera viewport position is fixed (see Step 20 for panning). W
 
 **Initialization:**
 - Window: 1280×800 pixels
-- Cell size: 4 pixels 
+- Cell size: 4 pixels
 - Default zoom: 1.0
 
 ```
@@ -2619,8 +2620,8 @@ Board
 ┌─────────────────────────────────────┐
 │         Viewport Camera             │
 │          ┌───────────┐              │
-│          │  320      │              │ 
-│          │           │              │   
+│          │  320      │              │
+│          │           │              │
 │          │           │200           │
 │          │           │              │
 │          └───────────┘              │
@@ -2642,7 +2643,7 @@ I know, the figure above is not at scale but you get the idea... -->
 cells_visible_width  = 1280 / (4 * 2.0) = 160 cells
 cells_visible_height =  800 / (4 * 2.0) = 100 cells
 ```
-* We only see half as many cells. 
+* We only see half as many cells.
 * Each cell appears twice as large.
 * The viewport remains centered
 
@@ -2650,10 +2651,10 @@ cells_visible_height =  800 / (4 * 2.0) = 100 cells
 Board
 ┌─────────────────────────────────────┐
 │                                     │
-│                                     │   
+│                                     │
 │          Viewport Camera            │
 │           ┌────────┐                │
-│           │  160   │100             │ 
+│           │  160   │100             │
 │           └────────┘                │
 │                                     │
 │                                     │
@@ -2677,16 +2678,16 @@ Board
 cells_visible_width  = 1280 / (4 * 0.5) = 640 cells
 cells_visible_height =  800 / (4 * 0.5) = 400 cells
 ```
-* We see four times as many cells. 
+* We see four times as many cells.
 * Each cell appears half as large.
 
 <!-- ```
 ┌─────────────────────────────────────┐
 │          ┌────────────────┐         │
-│          │Viewport Camera │         │ 
-│          │                │         │   
-│          │                │400      │   
-│          │                │         │   
+│          │Viewport Camera │         │
+│          │                │         │
+│          │                │400      │
+│          │                │         │
 │          │                │         │
 │          │     640        │         │
 │          └────────────────┘         │
@@ -2754,7 +2755,7 @@ pub const ZOOM_MIN: f32 = 0.1;        // Can zoom out 10x
 
 ```
 
-Zoom is limited between `ZOOM_MIN` and `ZOOM_MAX`. The later is computed when the window is resized. It prevents zooming in so far that we see less than one cell. 
+Zoom is limited between `ZOOM_MIN` and `ZOOM_MAX`. The later is computed when the window is resized. It prevents zooming in so far that we see less than one cell.
 
 
 
@@ -2797,7 +2798,7 @@ pub struct App {
 - Does NOT resize board (only logs the change)
 - Viewport calculation happens in render phase
 
-**The function `recalculate_board_size()`**: 
+**The function `recalculate_board_size()`**:
 - Has been removed (board size is now fixed)
 
 
@@ -2826,7 +2827,7 @@ WindowEvent::MouseWheel { delta, .. } => {
         MouseScrollDelta::LineDelta(_x, y) => y,  // y > 0 = scroll up
         MouseScrollDelta::PixelDelta(pos) => pos.y / 100.0,
     };
-    
+
     if zoom_delta.abs() > f32::EPSILON {
         self.handle_zoom(zoom_delta);
     }
@@ -2850,7 +2851,7 @@ if matches!(logical_key.as_ref(), Key::Character(s) if s == "-" || s == "_") {
 
 **RedrawRequested**:
 - Now it calls `render::draw_board_with_camera()` with camera and zoom parameters
-   
+
 **Performance Logging**:
 - Added `zoom={:.2}` to performance output format
 
@@ -2952,7 +2953,7 @@ pub const PAN_STEP: f32 = 20.0;                  // Number of cells to move per 
 pub const COLOR_CELL_ALIVE: u32 = 0xFFFFFFFF;    // White - living cells
 pub const COLOR_CELL_DEAD: u32 = 0x101010FF;     // Dark gray - dead cells in board
 pub const COLOR_OUT_OF_BOUNDS: u32 = 0x1A1A2EFF; // Blue-gray - area outside board
-``` 
+```
 
 
 
@@ -3016,14 +3017,14 @@ Add `MouseButton` from winit and new event Handlers
     for each pixel in viewport:
         // Map pixel → board cell coordinate
         board_cell_x = view_left + (pixel_x / buffer_width) * visible_width
-        
+
         // Check bounds
         if cell inside board:
             is_alive = board[cell_idx]
             color = is_alive ? color_alive : color_dead
         else:
             color = color_out_of_bounds  // Visual feedback at edges!
-        
+
         draw(pixel, color)
     ```
 
@@ -3055,13 +3056,13 @@ Along the way, we learned how to:
 The real value lies in the journey: understanding how small, focused improvements lead to maintainable and scalable code. From here, the door is open to experiment with shaders, [Hashlife](https://johnhw.github.io/hashlife/index.md.html){:target="_blank"}, or, why not WebAssembly — but the core lessons remain the same: start simple, keep things modular, iterate often.
 
 Other ideas include but are not limited to:
-* Multithreading so that I can move the window without blocking life in our universe  
+* Multithreading so that I can move the window without blocking life in our universe
 * Display messages in the overlay
 * Support the largest pattern files
 * Code refactoring. In `App` struct, define and use a type `cam_position(x, y)` instead of `camera_x` and `camera_y`. Same thing with `board_dim(w, h)` rather than `board_width` anf `board_height`...
 * Systematic testing
 * More documentation
-* Optimize code 
+* Optimize code
 
 
 
@@ -3072,7 +3073,7 @@ Other ideas include but are not limited to:
 
 <!-- ### Exercises
 
-1. **Exo 1:** 
+1. **Exo 1:**
 * ... -->
 
 
@@ -3080,8 +3081,8 @@ Other ideas include but are not limited to:
 ## Webliography
 <!-- `CTRL+click` to open the link in a new tab. -->
 
-* [Life Wiki](https://conwaylife.com/wiki/Main_Page){:target="_blank"}. Where you can download pattern collection. 
-* [conwaylife.com](https://conwaylife.com/){:target="_blank"} 
+* [Life Wiki](https://conwaylife.com/wiki/Main_Page){:target="_blank"}. Where you can download pattern collection.
+* [conwaylife.com](https://conwaylife.com/){:target="_blank"}
 * [Conway's Game of Life viewer](https://copy.sh/life/){:target="_blank"}. I really like it
 * [RLE file format](https://conwaylife.com/wiki/Run_Length_Encoded){:target="_blank"}
 * Advanced. Detailed explainations about the [Hashlife algorithm](https://johnhw.github.io/hashlife/index.md.html){:target="_blank"}

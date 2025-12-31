@@ -5,6 +5,7 @@ layout: default
 title: "Rust Dereferencing vs Destructuring — For the Kids 2/2"
 parent: "Rust"
 #math: mathjax
+nav_order: 19
 date               : 2025-06-27 09:00:00
 last_modified_date : 2025-07-01 18:00:00
 ---
@@ -91,7 +92,7 @@ If you already know the answers, maybe this article isn’t for you. But if you�
 This article won’t just define dereferencing and destructuring — it will show you how Rust treats them, how the compiler helps (or confuses) you, and when the distinction truly matters.
 
 
-### What This Post in 2 Parts Covers   
+### What This Post in 2 Parts Covers
 1. **Dereferencing**: [Part 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%}). How to access values through references and smart pointers (Box, Rc, RefCell), and how mutability affects this.
 1. **Destructuring**: [Part 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%}). How to unpack values in let, match, and function or closure parameters — including when working with references.
 
@@ -119,7 +120,7 @@ Now that we’ve seen in [Part 1 ]({%link docs/06_programmation/rust/009_derefer
 
 ## Patterns and Destructuring Patterns in Rust
 
-***What is Destructuring?*** **Destructuring** is the act of using a pattern to **break a value apart** and extract its inner pieces. As we will see, we are not just assigning a value, we are **unpacking** it. However before diving into **destructuring**, it’s important to understand what a **pattern** is. 
+***What is Destructuring?*** **Destructuring** is the act of using a pattern to **break a value apart** and extract its inner pieces. As we will see, we are not just assigning a value, we are **unpacking** it. However before diving into **destructuring**, it’s important to understand what a **pattern** is.
 
 In Rust, a **pattern** is a syntax that **matches the shape of a value**. You’ve probably already seen patterns in `match` statements, `if let`, or `while let` — but patterns are **everywhere**: in `let` bindings, function and closure parameters, and `for` loops.
 
@@ -155,7 +156,7 @@ fn main(){
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 01 : 101
@@ -171,14 +172,14 @@ Destructuring 01 : 101
 
 * As I said, destructuring is the act of using a pattern to break a value apart and extract its inner pieces. In this context, a pattern is a syntax that matches the shape of a value. I like to compare it to regular expressions. Does the sequence of digits look like a phone number? If yes, extract the relevant parts.
 * The first `let` statement matches `(x, y)` to `(1, 2)`. Once the shapes match, the value 1 is assigned to `x` and 2 to `y`. I told you. A smooth start.
-    * I hope you know why `let` is a statement and not an expression. If you're not sure, you can start with this [Computer Science Vocabulary page ]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) then this [page](https://doc.rust-lang.org/stable/reference/statements.html?highlight=statement#statements). 
+    * I hope you know why `let` is a statement and not an expression. If you're not sure, you can start with this [Computer Science Vocabulary page ]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) then this [page](https://doc.rust-lang.org/stable/reference/statements.html?highlight=statement#statements).
 * Let's talk again about the first `let ` but with other words. Just to make sure... When destructuring, the pattern, the left-hand side must match the shape of the value on the right hand side. In this case, a 2-element tuple is matched by a 2-element pattern.
-    * We are not surprised with a line like `let x = 1;`. We understand that the Rust compiler infer the data type of `x`. This also happens here. After all, with or without destructuring, the statement is a `let` statement. 
-* The second `let` statement is similar to the first one except that `x` and `y` have different data type. Nothing magic here. Tuples can hold values of different datatype. The more important question is: "Does the shape on the left-hand side match the shape on the right-hand side?" This must be checked first, because even if both sides are tuples, they might have different numbers of elements. Once the shape is validated, one could imagine that the `let` statement is unfold as a set of 2 "regular" `let` statements (`let x=1;` and `let y=2;`)   
-* The third `let` is similar to the first one but since we are matching two arrays, `a`, `b` and `c` will all have the same data type (the type of the element in the rhs array). Again one coud imagine that once the shape is checked, the let statement is unfold as a set of 3 lines similar to : `let a:i32 = 10;`. You get the idea. 
-* The fourth might be surprising, but first, if the notion of **binding** is not crystal clear, you can read this  
-[post (US)]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}). Here, the pattern on the left (`x`) is a simple binding — it matches any value and assigns it to `x`.  
-* The last `let` statement shows nested destructuring, where like with Russian Dolls, match act at different levels. Again think at the regular expression where we can define sub-patterns (also called groups). 
+    * We are not surprised with a line like `let x = 1;`. We understand that the Rust compiler infer the data type of `x`. This also happens here. After all, with or without destructuring, the statement is a `let` statement.
+* The second `let` statement is similar to the first one except that `x` and `y` have different data type. Nothing magic here. Tuples can hold values of different datatype. The more important question is: "Does the shape on the left-hand side match the shape on the right-hand side?" This must be checked first, because even if both sides are tuples, they might have different numbers of elements. Once the shape is validated, one could imagine that the `let` statement is unfold as a set of 2 "regular" `let` statements (`let x=1;` and `let y=2;`)
+* The third `let` is similar to the first one but since we are matching two arrays, `a`, `b` and `c` will all have the same data type (the type of the element in the rhs array). Again one coud imagine that once the shape is checked, the let statement is unfold as a set of 3 lines similar to : `let a:i32 = 10;`. You get the idea.
+* The fourth might be surprising, but first, if the notion of **binding** is not crystal clear, you can read this
+[post (US)]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}). Here, the pattern on the left (`x`) is a simple binding — it matches any value and assigns it to `x`.
+* The last `let` statement shows nested destructuring, where like with Russian Dolls, match act at different levels. Again think at the regular expression where we can define sub-patterns (also called groups).
 
 At this point I would like to decompose the "process" in 2 steps. Indeed, everything looks like :
 1. Matching : Check if the left-hand side has the same shape as the right-hand side (think regular expressions).
@@ -203,9 +204,9 @@ Let's keep all this in mind for the moment and let's look at some of syntactic o
 ---
 ## Destructuring: Partial and Range Destructuring
 
-As explained, destructuring can be seen as a 2 steps process : matching then unfolding. As a developer we can imagine that during the matching part, it is useful to enhance the syntax of the left-hand side so that it can describe the set of items with some wildcards. Think about what we can do when we want to list the files of the current directory : `ls my_file.*`, or `ls my_?ile.*` for example.  
+As explained, destructuring can be seen as a 2 steps process : matching then unfolding. As a developer we can imagine that during the matching part, it is useful to enhance the syntax of the left-hand side so that it can describe the set of items with some wildcards. Think about what we can do when we want to list the files of the current directory : `ls my_file.*`, or `ls my_?ile.*` for example.
 
-Run the code below : 
+Run the code below :
 
 ```rust
 fn destructuring02() {
@@ -237,7 +238,7 @@ fn destructuring02() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -264,8 +265,8 @@ This post is not a reference so I just show few of the "facilities" available in
 * The last example (`Some(n @ 1..=10) => println!(...`) : shows binding with subpattern (aka @ binding pattern). It brings filtering and binding at the same time.
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > Destructuring is a 2 steps process (matching, unfolding) and in the matching step we have means to describe the components we want to extract (think at `ls *.rs`)
 
 
@@ -300,7 +301,7 @@ fn destructuring02_bis() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -324,7 +325,7 @@ What can we do ?
 * We must re-create `data` as a mutable tuple (`let mut data = (String::from("Obi-Wan"), 42);`)
 * Then we use `ref` in the pattern to create an immutable reference instead of moving the value
 
-If we need to be able to modify the extracted sub component 
+If we need to be able to modify the extracted sub component
 * We use `ref mut` which allows mutating the original value via a mutable reference.
 
 
@@ -350,11 +351,11 @@ fn destructuring02_ter() {
         Some(x) => println!("Moved from Some: {}", x),
         None => println!("Still nothing"),
     }
-    // println!("{:?}", val); // does not compile: `val` was moved 
+    // println!("{:?}", val); // does not compile: `val` was moved
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -369,11 +370,11 @@ Moved from Some: Kenobi
 * `val` is an `Option` on a non primitive data type (a `String` here)
 * In the first `match` expression
     * We write `Some(ref x)` (rather than `Some(x)`) because, as in the previous code snippet, we don't want to move (and loose) `val`
-    * `x` is of type `&String` so we should `println!` `*x` but thanks to deref coercion we can use `x` 
+    * `x` is of type `&String` so we should `println!` `*x` but thanks to deref coercion we can use `x`
 * In the second `match expression`
     * We can use `val` because it was not moved
     * However, here, we consume `val` (`match val {...`)
-* After this second match, `val` is no longer accessible 
+* After this second match, `val` is no longer accessible
 * The commented-out `println!` does not compile
 
 
@@ -402,11 +403,11 @@ fn main() {
     * Rust compiler implicitly dereferences ``&42`` (`*(&42)`) to extract 42, and assigns it to `x`.
 * `let x = &42;`
     * Right : `&42` is a reference to an integer (`&i32`)
-    * Left : `x` is a binding whose value is a reference to the value 
+    * Left : `x` is a binding whose value is a reference to the value
 * `let ref x = 42;`
     * Right: 42 is an `i32`.
     * Left: `ref x` means: "Instead of getting the value, I want a reference to the value"
-    
+
 The second and third lines are functionally equivalent but the context differs
 * `&` is an operator, used in expression, on the right hand side (rhs)
 * `ref` is keyword, used in patterns (`let`, `match`, `if let`...) to create a reference.
@@ -435,14 +436,14 @@ fn destructuring03() {
         t: i32,
     }
     let pt = Point4D { x: 1, y: 2, z: 3, t: 2054 };
-    let Point4D { x, t, .. } = pt; // copy 
+    let Point4D { x, t, .. } = pt; // copy
     println!("x: {x} and time: {t}");
     println!("{:?}", pt); // pt is available
 }
 
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 03 : struct of i32 with let
@@ -460,7 +461,7 @@ This one is easy.
 * The pattern "wants" a variable of type `Point4D` that it will break apart (`let Point4D { x, t, .. } = pt; `)
     * Note that no matter the order, we only extract `x` and `t`
     * Since the components are primitive type (`i32`), `pt` is copied before the components are extracted
-* At the end, the 2 `println!` show how to use the extracted components and demonstrate that `pt` remains available after the `let` statement.    
+* At the end, the 2 `println!` show how to use the extracted components and demonstrate that `pt` remains available after the `let` statement.
 
 
 
@@ -476,9 +477,9 @@ fn destructuring03_bis() {
         last_name: String,
         first_name: String,
     }
-    let luke = Person { 
+    let luke = Person {
         last_name: "Skywalker".to_string(),
-        first_name: "Luke".to_string() 
+        first_name: "Luke".to_string()
     };
     let Person {last_name, first_name } = luke; // move because String does'nt have Copy trait
     println!("{}-{}", last_name, first_name);
@@ -486,7 +487,7 @@ fn destructuring03_bis() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 03 bis : struct of String with let
@@ -499,7 +500,7 @@ Skywalker-Luke
 This is the same code except that the `struct` is now a `struct` of non-primitive datatype (part of the String in on the stack but the "chars" (the buffer) are on the heap). They are not primitive datatype like `i32` or `&str`...
 * We create a new type named `Person`. This is a `struct` with 2 fields of type `String`.
 * Then we create and initialize a variable `luke` of that type (`let luke = Person { ...`)
-* The `let` statement (`let Person {last_name, first_name } = luke;`) uses pattern destructuring to extract the fields 
+* The `let` statement (`let Person {last_name, first_name } = luke;`) uses pattern destructuring to extract the fields
 * The patterns "wants" a variable of type `Person` that it will break apart (`let Person {last_name, first_name } = luke;`)
     * Since the components are String `luke` is **moved** before the components are extracted
 * The `println!` show how to use the extracted components
@@ -521,13 +522,13 @@ fn destructuring03_ter() {
         last_name: &str,
         first_name: &str,
     }
-    let luke = Person { 
+    let luke = Person {
         last_name: "Skywalker",
-        first_name: "Luke" 
+        first_name: "Luke"
     };
-    let Person {last_name, first_name } = luke; 
+    let Person {last_name, first_name } = luke;
     println!("{}-{}", last_name, first_name);
-    println!("{:?}", luke); 
+    println!("{:?}", luke);
 }
 ```
 The compiler complains because it wants to get, from us, the confirmation that the string slices will live long enough (it says : "expected named lifetime parameter" on each of the struct Person fields)
@@ -542,9 +543,9 @@ fn destructuring03_ter() {
         last_name: &'t str,
         first_name: &'t str,
     }
-    let luke = Person { 
+    let luke = Person {
         last_name: "Skywalker",
-        first_name: "Luke" 
+        first_name: "Luke"
     };
     let Person {last_name, first_name } = luke; // copy of &str
     println!("{}-{}", last_name, first_name);
@@ -555,7 +556,7 @@ fn destructuring03_ter() {
 ```
 
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 03 ter : struct of &str with let
@@ -568,7 +569,7 @@ Pointer { addr: 0x5bb07cc760d7, metadata: 9 } - Pointer { addr: 0x5bb07cc76057, 
 ### Explanations
 {: .no_toc }
 
-Basically, it's the same code as the one that used String. We use `&str` instead and we had to indicate the lifetime 
+Basically, it's the same code as the one that used String. We use `&str` instead and we had to indicate the lifetime
 * We create a new type named `Person`. This is a `struct` with 2 fields of type `&'t str` `(&str` + lifetime annotation)
 * Then we create and initialize a variable `luke` of that type (`let luke = Person { ...`)
 * The `let` statement (`let Person {last_name, first_name } = luke;`) uses pattern destructuring to extract the fields
@@ -608,23 +609,23 @@ fn destructuring03_qua() {
         last_name: &'t str,
         first_name: &'t str,
     }
-    let luke = Person { 
+    let luke = Person {
         last_name: "Skywalker",
-        first_name: "Luke" 
+        first_name: "Luke"
     };
-    let &Person {last_name, first_name} = &luke; 
+    let &Person {last_name, first_name} = &luke;
     // The line above is similar to the 2 lines below
     // let ref = &luke;
     // let Person {last_name, first_name} = ref;
     println!("{} - {}", last_name, first_name);
     println!("{:p} - {:p}", last_name, first_name);
-    println!("{:?}", luke); 
+    println!("{:?}", luke);
     println!("{:p} - {:p}", luke.last_name, luke.first_name);
 }
 ```
 
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 03 qua : struct of &str with let
@@ -689,7 +690,7 @@ fn destructuring04() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -712,7 +713,7 @@ The first part of the sample code shows how one could build and print a collecti
     * The collection have 3 members
     * Each element is defined and  initialized
 * Now comes the interesting part where we print the content of the collection using a `for` loop and a `match`
-    * At each iteration the current role is matched with **all** the possible variants 
+    * At each iteration the current role is matched with **all** the possible variants
     * Depending the role, more or less information are printed
 
 **Important** : We must realize that in the `for` loop, `role` is of type `Role`. Indeed, we pass `characters` to the for loop, so behind the scene, the `for` loop calls `.into_iter()` which consume the vector and return a `Role`.
@@ -770,7 +771,7 @@ fn destructuring04_bis() {
 
 
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -786,7 +787,7 @@ x: 5
 {: .no_toc }
 * The key difference is the way we pass `characters` to the `for` loop.
 * By reference (`for role in &characters {...`)
-* In the `match` expression, this time `role` is of type `&Role` 
+* In the `match` expression, this time `role` is of type `&Role`
 
 **Hep, hep, hep! Break! OK, but the rest of the code is the same. How can this work ?** You are right. Strictly speaking we should write something like :
 
@@ -797,24 +798,24 @@ match role {
     &Role::Scientist { ref name, ref field } => ...
 }
 ```
-Indeed, in the for loop `role` is of type `&Role` so the match can be done with values of type `&Role`. 
+Indeed, in the for loop `role` is of type `&Role` so the match can be done with values of type `&Role`.
 
-However, behind the scene, Rust compiler will do an implicit dereferencing of the pattern (see this [page](https://doc.rust-lang.org/reference/patterns.html#r-patterns.ident.binding.auto-deref)). 
+However, behind the scene, Rust compiler will do an implicit dereferencing of the pattern (see this [page](https://doc.rust-lang.org/reference/patterns.html#r-patterns.ident.binding.auto-deref)).
 
-In plain English : 
+In plain English :
 1. The compiler detects `&Role` on the `match` side and `Role` on the variant side
-1. The compiler automatically does a `*(role)`. In terms of data type it is similar to do a `*(&Role)`. Tadaa! Now, on the match side, the compiler have a `Role` in hands it can match with `Role` values on the variant side. 
+1. The compiler automatically does a `*(role)`. In terms of data type it is similar to do a `*(&Role)`. Tadaa! Now, on the match side, the compiler have a `Role` in hands it can match with `Role` values on the variant side.
 
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > In a `match` expression, Rust automatically applies a series of `*(references)` as long as this allows the pattern on the `match` side to match the values type on the variants side.
 
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > Pass reference to `for` loop (`for val in &array {...`)
 
 
@@ -860,7 +861,7 @@ fn destructuring05() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 05 : function & closure parameters
@@ -882,7 +883,7 @@ Point: [(1, 2), (3, 4), (5, 6)]
 * Since the data types of `point` are primitive (implement Copy trait), `point` is passed by value (it is copied)
 * `point` is still available after the call to `print_coordinates` and it can be printed
 
-As we can expect, this is another story when the components are not primitive. To illustrate the point we: 
+As we can expect, this is another story when the components are not primitive. To illustrate the point we:
 * Define a function `print_full_name`
 * `chief` is a tuple with 2 String. String do no implement Copy
 * We call `print_full_name` with `chief` as an argument
@@ -921,7 +922,7 @@ fn destructuring06() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Character #0 is Hari
@@ -937,8 +938,8 @@ Character #2 is Ron
 The key point here is that in a `for` loop, the variable immediately after the `for` keyword is a pattern. That’s why we can destructure tuples directly inside the loop. Once we have this in mind, understanding the code is easier.
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > The variable immediately after the `for` keyword is a pattern.
 
 
@@ -960,7 +961,7 @@ The key point here is that in a `for` loop, the variable immediately after the `
 <img src="./assets/debug_01.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Under VSCode, with my [setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}), if I hit CTRL + ALT I can see the data type as overlays. Can you see the content of the red rectangle? 
+Under VSCode, with my [setup]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}), if I hit CTRL + ALT I can see the data type as overlays. Can you see the content of the red rectangle?
 
 <div align="center">
 <img src="./assets/debug_02.webp" alt="" width="900" loading="lazy"/>
@@ -1009,7 +1010,7 @@ for (index, name) in characters.iter().enumerate() {
         * The compiler will apply implicit deref coercion
         * It will do something like `*(&String)` = `String` => A type which can be printed as usual.
 
-In other words, we should have written the first line of the loop (`*name`), but, thanks to deref coercion we can write the second. 
+In other words, we should have written the first line of the loop (`*name`), but, thanks to deref coercion we can write the second.
 
 ```rust
 for (index, name) in characters.iter().enumerate() {
@@ -1028,7 +1029,7 @@ for (index, name) in characters.iter().enumerate() {
 
 ---
 
-<!-- 
+<!--
 ### Destructuring in `for` loops
 {: .no_toc }
 
@@ -1083,7 +1084,7 @@ fn destructuring07() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 07 : for loop over array slices
@@ -1102,11 +1103,11 @@ coord[0]: 5, coord[1]: 6
 `for &[x, y] in &coordinates` may look like we're referencing, but `&[x, y]` is a pattern. Indeed, it is placed after the `for` keyword. This said, let's read the code :
 
 * we create a vector of 2-element arrays of `i32` (`let coordinates = vec![[1, 2]...`)
-* `coordinates` is passed by reference to the `for` loop. 
+* `coordinates` is passed by reference to the `for` loop.
 * We are borrowing `coordinates` not consuming it
-* At each iteration, the `for` loop handles references to `[i32, 2]` (`&[i32; 2]`) 
+* At each iteration, the `for` loop handles references to `[i32, 2]` (`&[i32; 2]`)
 * `&[x, y]` is a destructuring pattern that matches a reference to a 2-element array
-* The compiler matches `&[x, y]` with each `&[i32; 2]`  
+* The compiler matches `&[x, y]` with each `&[i32; 2]`
 * Since `i32` is primitive, it has the Copy trait, the values are copied into `x` and `y` (no ownership issues).
 * The second for loop shows how we can survive without destructuring
 
@@ -1154,7 +1155,7 @@ fn destructuring08() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -1166,7 +1167,7 @@ String is : The Mule
 ```
 
 
-    
+
 
 ### Explanations
 {: .no_toc }
@@ -1181,7 +1182,7 @@ String is : The Mule
     * This would only work if `s` would be of type `String`
     * String type does not implement the Copy trait and and implicit cloning is not allowed
     * So it does not complie
-* The working `for` (`for s in &foundation {`) 
+* The working `for` (`for s in &foundation {`)
     * It matches `&String` with the destructuring pattern `s`
     * This can work because a reference (an address) is a primitve type which can be copied
     * `s` is of type `&String`
@@ -1193,15 +1194,15 @@ String is : The Mule
 
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > In a for loop, if we write `&s`, we are telling the compiler: "I want to destructure a reference and bind the value inside it." It’s not the same as taking a reference.
 
 
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > This may not be the canonical way of doing but... Here is how I design the destructuring pattern. I read the for loop backward
 > 1. What is the type of the iterated element (ex: `String`)
 > 1. Is it primitive or not (Copy or not, ex: No)
@@ -1249,7 +1250,7 @@ fn destructuring09() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Destructuring 09 : filter and destructuring pattern in a for loop
@@ -1273,13 +1274,13 @@ Score via flatten: 30
 
 First loop (`for &opt in &maybe_scores {...`)
 * It matches `&Option<i32>` with the destructuring pattern `&opt`
-* `opt` is an `Option<i32>` 
+* `opt` is an `Option<i32>`
 * It is used in the body of the `for` loop in a `match` expression
 * All variants of the options are listed
 
 Second `for` loop (`for score in maybe_scores.iter().filter_map(|opt| opt.as_ref()) {...`)
 * This one is smart
-* `maybe_scores.iter()` creates an iterator on `maybe_scores` elements 
+* `maybe_scores.iter()` creates an iterator on `maybe_scores` elements
 * `.filter_map(|opt| opt.as_ref())` applies a filtering and transformation operation
     * `opt` is the output ot the previous iterator
     * `filter_map` takes a closure which must return `Option<T>`
@@ -1298,8 +1299,8 @@ Third loop (`for maybe in &maybe_scores {...`)
 * The score is printed
 
 Fourth loop (`for score in maybe_scores.iter().flatten() {...`)
-* `.flatten()` is use to remove 1 level of nesting on an iterator of iterators. 
-* When called on an iterator of Option values, `.flatten()` automatically filters out all None variants and unwraps the Some variants. 
+* `.flatten()` is use to remove 1 level of nesting on an iterator of iterators.
+* When called on an iterator of Option values, `.flatten()` automatically filters out all None variants and unwraps the Some variants.
 * Here this means we iterate over the actual score values that exist, completely skipping any None entries
 
 
@@ -1353,7 +1354,7 @@ let x = MyEnum::C;
 match x {
     MyEnum::A(n) => println!("A({n})"),
     MyEnum::B(_) => println!("B"),
-    // MyEnum::C not covered! 
+    // MyEnum::C not covered!
 }
 ```
 
@@ -1421,7 +1422,7 @@ The question is whether we can now either find the answerS ourselves or, at the 
 
 ```rust
 fn main() {
-    
+
     let r = &Some(5);
 
     // `if let Some(val) = r` works even if r is a reference to an Option
@@ -1567,7 +1568,7 @@ I hope you've had as much fun reading these posts as I've had writing them. From
 {: .no_toc }
 * Patterns and Matching in [RPL](https://doc.rust-lang.org/book/ch19-00-patterns.html)
 * Patterns in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html#grammar-PatternNoTopAlt)
-* let statement in the [Rust Reference](https://doc.rust-lang.org/stable/reference/statements.html#grammar-LetStatement) 
+* let statement in the [Rust Reference](https://doc.rust-lang.org/stable/reference/statements.html#grammar-LetStatement)
 * Destructuring in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html?highlight=destructuring#destructuring)
 
 

@@ -4,6 +4,7 @@ lang: en-US
 title: "Using Rust in Jupyter Notebooks on Windows"
 parent: "Rust"
 #math: mathjax
+nav_order: 3
 date: 2025-03-27 13:00:00
 last_modified_date: 2025-06-23 22:00:00
 ---
@@ -44,7 +45,7 @@ jupyter lab --no-browser --ip=0.0.0.0
 <img src="./assets/img_02.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-* 5 - Exit the server using the ``File/Shut Down`` option in Jupyter Lab UI 
+* 5 - Exit the server using the ``File/Shut Down`` option in Jupyter Lab UI
 
 <div align="center">
 <img src="./assets/img_03.webp" alt="" width="900" loading="lazy"/>
@@ -54,11 +55,11 @@ jupyter lab --no-browser --ip=0.0.0.0
 
 
 
-## Note about the name of the virtual environment 
+## Note about the name of the virtual environment
 In the previous [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) the virtual environment was named ``cpp_jupyter``. Since I will use it with C++ and Rust I renamed it with the following 2 commands :
 
 ```bash
-conda create --name multi_jupyter --clone cpp_jupyter 
+conda create --name multi_jupyter --clone cpp_jupyter
 conda remove --name cpp_jupyter --all
 ```
 
@@ -71,7 +72,7 @@ conda remove --name cpp_jupyter --all
 * Jupyter Lab : the frontend. Launched with `jupyter lab --no-browser --ip=0.0.0.0` for example
 * Jupyter Server : the backend, manage the kernels, the notebooks... Used by Jupyter Lab
     * jupyter lab = jupyter server + frontend (lab typically)
-* Kernels : 
+* Kernels :
     * ipykernel for Python
     * xeus-cling for C++
     * evcxr_jupyter for Rust
@@ -80,7 +81,7 @@ conda remove --name cpp_jupyter --all
 
 
 
-Obviously, at this stage, Rust kernel is not yet installed but we should be on the same page. If not, **do not read further** until you can get the Jupyter Lab in your browser. Again, feel free to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%}) 
+Obviously, at this stage, Rust kernel is not yet installed but we should be on the same page. If not, **do not read further** until you can get the Jupyter Lab in your browser. Again, feel free to read this [checklist]({%link docs/06_programmation/cpp/026_cpp_jupyter/cpp_jupyter.md%})
 
 
 
@@ -143,7 +144,7 @@ Above I see the Python kernel, 3 C++ kernels and the Rust kernel.
 
 
 
-## 3. Run Jupyter Lab 
+## 3. Run Jupyter Lab
 
 In the Ubuntu terminal
 
@@ -181,7 +182,7 @@ Let's write some code
 * **IMPORTANT**. It seems that in a Notebook, every cell and every block ('{' ... '}') are compiled separately so even if I know the code was working (on [Compiler Explorer](https://compiler-explorer.com/) for example) I had to add 2 curly braces : one at the top and another at the bottom
 * As one can see in the comments, I tried to add some lifetime in the signature of the `linked_list_midpoint()` function but it did'nt really help.
 
-Just to make sure, here is the original code: 
+Just to make sure, here is the original code:
 
 ```rust
 // Define a struct to represent a singly linked list node
@@ -200,7 +201,7 @@ impl ListNode {
 
 // Function to find the midpoint of the linked list
 fn linked_list_midpoint(head: &Option<Box<ListNode>>) -> &ListNode {
-// fn linked_list_midpoint<'a>(head: &'a Option<Box<ListNode>>) -> &'a ListNode {     
+// fn linked_list_midpoint<'a>(head: &'a Option<Box<ListNode>>) -> &'a ListNode {
     let mut slow = head;
     let mut fast = head;
 
@@ -236,7 +237,7 @@ fn main() {
 }
 ```
 
-Now, here is the code of the cell. Adding the curly braces is **NOT** optimal, I know, but at least I can check that the toolchain is in place, the compiler working etc.    
+Now, here is the code of the cell. Adding the curly braces is **NOT** optimal, I know, but at least I can check that the toolchain is in place, the compiler working etc.
 
 ```rust
 {
@@ -298,12 +299,12 @@ fn linked_list_midpoint(head: &Option<Box<ListNode>>) -> &ListNode {
 
 ## What is next ?
 
-* I can easily write Rust code snippets and add some documentation using Jupyter Notebooks 
+* I can easily write Rust code snippets and add some documentation using Jupyter Notebooks
 * The process is :
-    1. Run Ubuntu 
+    1. Run Ubuntu
     1. `conda activate multi_jupyter`
     1. `cd /mnt/c/Users/phili/OneDrive/Documents/Programmation/rust_jupyter`
-    1. ``jupyter lab --no-browser --ip=0.0.0.0`` 
+    1. ``jupyter lab --no-browser --ip=0.0.0.0``
 
 To speed up things, I created a script (`run_rust_jupyter.sh` saved in my home) and an alias so that I just have to type `rustnb`. Below, read the comments :
 

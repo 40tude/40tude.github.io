@@ -5,6 +5,7 @@ layout: default
 title: "Option in Rust: 15 Examples from Beginner to Advanced - 00"
 description: "Learn Rust's `Option<T>` through runnable Playground examples - progressive guide from `if let` to advanced combinators"
 parent: "Rust"
+nav_order: 28
 date:               2025-11-29 01:00:00
 last_modified_date: 2025-12-08 17:00:00
 ---

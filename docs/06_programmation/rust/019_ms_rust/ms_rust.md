@@ -6,6 +6,7 @@ title: Microsoft Pragmatic Rust Guidelines with Claude
 description: How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 parent: Rust
 #math: mathjax
+nav_order: 2
 date               : 2025-11-19 01:00:00
 last_modified_date : 2025-11-28 17:00:00
 ---

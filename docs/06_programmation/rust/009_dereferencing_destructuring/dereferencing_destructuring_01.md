@@ -5,12 +5,13 @@ layout: default
 title: "Rust Dereferencing vs Destructuring — For the Kids 1/2"
 parent: "Rust"
 #math: mathjax
+nav_order: 18
 date               : 2025-06-27 09:00:00
 last_modified_date : 2025-06-30 12:00:00
 ---
 
 <!-- <h2 align="center">
-<span style="color:red"><b>This post is still being written.</b></span>    
+<span style="color:red"><b>This post is still being written.</b></span>
 </h2> -->
 
 # Rust Dereferencing vs Destructuring — For the Kids 1/2
@@ -68,7 +69,7 @@ No explicit `*r` — yet the pattern matches. How?
 
 
 
-<!-- 
+<!--
 ```rust
 // r is of type &Option<i32>, so if let Some(val) = r works because Rust automatically matches &Some(5) with Some(val) when using pattern matching on references.
 // val is a reference to the inner value (&5), but Rust lets you use it directly in the println! macro.
@@ -86,7 +87,7 @@ fn main() {
     }
 }
 
-``` 
+```
 -->
 
 
@@ -97,7 +98,7 @@ let Some(x) = &Some(42);
 ```
 Is this dereferencing, destructuring, or both?
 
-<!-- 
+<!--
 ```rust
 // let Some(x) = &opt else { ... }; is a new syntax available in the 2023 edition of Rust
 // allowing you to destructure with a guard for the None case.
@@ -134,7 +135,7 @@ let (x, y) = b; // Doesn't compile
 <!-- ```rust
 // let b = Box::new(...) allocates a tuple on the heap and returns a Box<(i32, &str)>.
 // *b dereferences the box to get the tuple (42, "hello"), which is then destructured.
-// The line let (x, y) = b; doesn't compile because Rust does not apply Deref coercion in let destructuring 
+// The line let (x, y) = b; doesn't compile because Rust does not apply Deref coercion in let destructuring
 // — unlike when calling methods or indexing.
 
 fn main() {
@@ -164,7 +165,7 @@ If you already know the answers, maybe this article isn’t for you. But if you�
 This article won’t just define dereferencing and destructuring — it will show you how Rust treats them, how the compiler helps (or confuses) you, and when the distinction truly matters.
 
 
-### What This Post in 2 Parts Covers  
+### What This Post in 2 Parts Covers
 1. **Dereferencing**: [Part 1/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%}). How to access values through references and smart pointers (Box, Rc, RefCell), and how mutability affects this.
 1. **Destructuring**: [Part 2/2]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_02.md%}). How to unpack values in let, match, and function or closure parameters — including when working with references.
 
@@ -209,7 +210,7 @@ fn main(){
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 {: .no_toc }
 
@@ -225,7 +226,7 @@ content_at_addr_of_my_value : 5
 {: .no_toc }
 * `my_value` is a **binding** (a variable) of type `i32` and initialized with the value 5. If the difference between initialization and assignment is not clear, read this [page (US)]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}). Same thing... If you are not sure about the difference between binding and variable keep the term variable in mind for now, **but**, stand up, put your right hand on your heart and swear you will read this [page (US)]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
 * Next come the interesting part. `addr_of_my_value` is a binding whose value is a **reference** to `my_value`, that is, it holds the memory address of `my_value`. Its type is `&i32` because `my_value` is of type `i32`. You should already know that every variable, data structure, code... Are somewhere in the memory of the PC. So, they all have a memory address. The syntax is what it is and the `&my_value` means, in plain English : "address of `my_value`".
-* `content_at_addr_of_my_value` is a binding of type `i32`. It is initialized by **dereferencing** the reference `addr_of_my_value`, i.e., accessing the value stored at the memory address it points to. 
+* `content_at_addr_of_my_value` is a binding of type `i32`. It is initialized by **dereferencing** the reference `addr_of_my_value`, i.e., accessing the value stored at the memory address it points to.
 
 
 
@@ -239,7 +240,7 @@ Just to make sure...
 
 
 
-***Ah OK. So a reference is a pointer. Right?*** Almost because they are both used to indirectly access and manipulate objects but **no** because they have key differences. Since there is no pointer in Rust (yes, I know `*const T` and `*mut T` exist but let's avoid them for today), let's illustrate de differences between pointers and references using C++. No worries, the syntax is very similar.  
+***Ah OK. So a reference is a pointer. Right?*** Almost because they are both used to indirectly access and manipulate objects but **no** because they have key differences. Since there is no pointer in Rust (yes, I know `*const T` and `*mut T` exist but let's avoid them for today), let's illustrate de differences between pointers and references using C++. No worries, the syntax is very similar.
 
 ### References and Pointers comparaison in C++
 {: .no_toc }
@@ -260,7 +261,7 @@ Just to make sure...
   int x = 10;
   int& ref = x; // ref is an alias, another name, for x
   int y = 20;
-  ref = y;      // Doesn't make ref point to y; instead, assigns y's value to x 
+  ref = y;      // Doesn't make ref point to y; instead, assigns y's value to x
                 // because ref is an alias of x
   ```
 
@@ -301,13 +302,13 @@ Just to make sure...
   ```cpp
   int x = 10;
   int& ref = x;
-  cout << ref;  // no * needed. ref acts as an alias 
+  cout << ref;  // no * needed. ref acts as an alias
   ```
 
 #### **5. Safety**
 {: .no_toc }
-- **Pointer**: Risk of dangling pointers (pointing to freed memory).  
-- **Reference**: Safer (cannot be null, always bound to an object).  
+- **Pointer**: Risk of dangling pointers (pointing to freed memory).
+- **Reference**: Safer (cannot be null, always bound to an object).
 
 #### **Summary Table**
 {: .no_toc }
@@ -326,17 +327,17 @@ Just to make sure...
 
 
 {: .note-title }
-> To keep in mind 
-> 
-> * Syntax 
->   * `let ref_to_value = &my_value;` 
+> To keep in mind
+>
+> * Syntax
+>   * `let ref_to_value = &my_value;`
 >   * `let content      = *ref_to_value;`
 > * Where
 >    * `&my_value` is a reference to `my_value`
 >    * `ref_to_value` is a binding (immutable here) initialized with the reference to `my_value`. AKA a "reference" to `my_value`.
 >    * `content` is a binding (immutable here) initialized by dereferencing `ref_to_value`.
 > * Not dangling. A "reference" is always bound to a variable (`&variable`)
-> * Mutable. If the binding which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned another reference (of same datatype) 
+> * Mutable. If the binding which receive the reference is mutable (`let mut ref_to_value...`), it can be assigned another reference (of same datatype)
 > * No arithmetic on a "reference" (binding whose value is a reference to a variable)
 
 
@@ -347,7 +348,7 @@ Just to make sure...
 
 
 
---- 
+---
 ## Dereferencing: Mutability
 
 Just to make sure we are on the same page. There are 2 kinds of mutability to consider here :
@@ -358,39 +359,39 @@ If you don't feel confident enough to explain this concept to your kids, read th
 
 In the the code below we focus on the mutability of the reference. Let's run the code!
 
-<!-- 
+<!--
 ```rust
 fn main(){
-    // In Rust, the term “mutable reference” (&mut) refers only to the right to modify the pointed data, 
+    // In Rust, the term “mutable reference” (&mut) refers only to the right to modify the pointed data,
     // not to the possibility of reassigning the reference itself.
     // The mutability of the binding (let vs let mut) is a distinct and independent notion.
 
-    let my_value = 5; 
+    let my_value = 5;
     let ref_to_my_value = &my_value; // immutable reference to an immutable variable
     // my_value +=1; // does not compile because my_value is not mut
     // *ref_to_my_value += 1; // does not compile because it refers to &my_value not to &mut my_value
     println!("{}", ref_to_my_value); // 5
 
-    let my_value = 5; 
+    let my_value = 5;
     // let ref_to_my_value = &mut my_value; // does not compile because my_value in not mut
     println!("{}", my_value); // 5
 
-    let mut my_value = 5; 
-    my_value +=1; 
+    let mut my_value = 5;
+    my_value +=1;
     let ref_to_my_value = &my_value; // immutable reference to a mutable variable
     // my_value +=1; // does not compile compile because my_value is borrowed
     // *ref_to_my_value += 1; // does not compile because it refers to &my_value not &mut my_value
     println!("{}", ref_to_my_value); // 6
     // my_value +=1; // possible as soon as ref_to_my_value goes out of scope (end of borrowing)
-    
-    let mut my_value = 5; 
-    my_value +=1; 
+
+    let mut my_value = 5;
+    my_value +=1;
     let ref_to_my_value = &mut my_value; // mutable reference to a mutable variable
                                          // &mut my_value creates a mutable reference (&mut T), which can be used to modify the pointed value.
-    *ref_to_my_value += 1; // the 
+    *ref_to_my_value += 1; // the
     println!("{}", ref_to_my_value); // 7
 }
-``` 
+```
 -->
 
 
@@ -422,7 +423,7 @@ fn dereferencing02_1() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -447,7 +448,7 @@ my_mutable_value : 56
 
 Here's how we can address this issue
 * We create and print a mutable variable (`let mut my_mutable_value = 55;`)
-* Then we create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable. The point I did'nt get at the beginning is that this is the `&mut my_mutable_value` that creates a mutable reference which is assigned to a non mutable variable named `ref_to_my_mutable_value` (`let ref_to_my_mutable_value...`). 
+* Then we create (`let ref_to_my_mutable_value = &mut my_mutable_value;`) and print the content of a mutable reference to a mutable variable. The point I did'nt get at the beginning is that this is the `&mut my_mutable_value` that creates a mutable reference which is assigned to a non mutable variable named `ref_to_my_mutable_value` (`let ref_to_my_mutable_value...`).
 * We mutate the content of the reference (`*ref_to_my_mutable_value += 1;`)
 * Finally we print both, the content of the reference and the variable
 
@@ -468,7 +469,7 @@ fn dereferencing02_2() {
 
     // ref_to_my_value = &other_value; // => does not compile
                                        // cannot assign twice to immutable variable `ref_to_my_value`
-    
+
     let ref_to_my_value = &other_value; // => shadowing. Does compile
     println!("ref_to_my_value : {}", ref_to_my_value); // => ref_to_my_value: &i32
     println!();
@@ -483,7 +484,7 @@ fn dereferencing02_2() {
 }
 ```
 
-### Expected output 
+### Expected output
 {: .no_toc }
 
 ```
@@ -499,7 +500,7 @@ other_value : 3.141592653589793
 ### Explanations
 {: .no_toc }
 
-In the code we look at the mutability of the binding. We want the "reference" being able to "point to" different variables. 
+In the code we look at the mutability of the binding. We want the "reference" being able to "point to" different variables.
 
 Just to make sure... It must be clear that there is no "reference" pointing to a different variable. There will be mutable binding which links a name (`mut_ref_to_my_value`) to a reference (`&my_value`) at one time then to another (`&other_value`) in a second time. It is really like a mutable binding linking a name to an `i32` value, then to another `i32` value. Here instead of `i32` we deal with `&i32`. Nothing more.
 
@@ -513,7 +514,7 @@ Here's what we can do
 * We could "write over" (shadowing) the previous reference (`let ref_to_my_value = &other_value;`)
 
 Here's another option
-* We create a mutable binding to an immutable variable (`let mut mut_ref_to_my_value = &my_value;`).  
+* We create a mutable binding to an immutable variable (`let mut mut_ref_to_my_value = &my_value;`).
 * The binding `mut_ref_to_my_value` can then be mutated and "point to" another variable (`let mut mut_ref_to_my_value = &my_value;` first then `mut_ref_to_my_value = &other_value;`)
 * Like a binding to an `i32` can only host `i32`, our mutable binding can only points to variable of the same type. The first version of `other_value` was an `i32`. Now if we create an `f64` version of `other_value` (`let other_value = std::f64::consts::PI;`), `mut_ref_to_my_value` cannot point to it. The very last line does not compile.
 
@@ -524,11 +525,11 @@ Here's another option
 
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > There are 2 kinds of mutability:
 > 1. Mutability of the reference target controls whether we can modify the value through the reference. `let ref = &mut my_mutable_val;`. This is the `&mut my_mutable_value` that creates a mutable reference which is assigned to a non mutable variable (`ref`).
-> 1. Mutability of the binding controls whether we can assign a new reference to the variable. `let mut mut_ref = &my_val;`. There is no “reference” pointing to a different variable. There will be mutable binding which links a name (`mut_ref`) to a reference (`&my_val`) at one time then to another (`&other_value`) in a second time. 
+> 1. Mutability of the binding controls whether we can assign a new reference to the variable. `let mut mut_ref = &my_val;`. There is no “reference” pointing to a different variable. There will be mutable binding which links a name (`mut_ref`) to a reference (`&my_val`) at one time then to another (`&other_value`) in a second time.
 
 
 
@@ -556,9 +557,9 @@ fn dereferencing03() {
         println!("{:?}", v); // deref coercion in action
     }
     fn my_function03(v: &[i32]) {   // accept reference to vectors or arrays
-        // println!("{:?}", *v);    // Does not compile because *v is of type [i32] with no Sized trait 
+        // println!("{:?}", *v);    // Does not compile because *v is of type [i32] with no Sized trait
                                     // Sized trait expected by println!()
-                                    // Only references like `&[i32]` implement the `Debug` trait; 
+                                    // Only references like `&[i32]` implement the `Debug` trait;
                                     // `[i32]` alone doesn't, as it's dynamically sized)
         println!("{:?}", &*v);      // Overkill ?
         println!("{:?}", v);
@@ -577,7 +578,7 @@ fn dereferencing03() {
 ```
 
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Dereferencing 03 : ref as argument
@@ -596,8 +597,8 @@ Dereferencing 03 : ref as argument
 * Yes we can! Yes we can have function definitions inside function definition
 * `my_function01` has a unique parameter of type vector of `i32`
 * `my_function02` has a unique parameter of type reference to a vector of `i32`
-* `my_function03` has a unique parameter of type slice (`&[T]`) of `i32`. 
-    * It is the preferred function signature because the function can be called with arrays or vector as argument (more flexibility) 
+* `my_function03` has a unique parameter of type slice (`&[T]`) of `i32`.
+    * It is the preferred function signature because the function can be called with arrays or vector as argument (more flexibility)
 
 #### Pass by value
 {: .no_toc }
@@ -620,20 +621,20 @@ The 2 calls to `my_function02` and `my_function03` are much more interesting
 
 
 
-***This is all good... But why do we do this?*** 
-What I will say here is not 100% accurate but stick with me because the idea is to get the concept first, then I'll tell you the truth. I promise. 
+***This is all good... But why do we do this?***
+What I will say here is not 100% accurate but stick with me because the idea is to get the concept first, then I'll tell you the truth. I promise.
 
-* In the call to `my_function01` we passed the vector by value. It is like passing the 3 values. We push them on the stack. Call the function. In the function, we pop the values from the stack, then work on them. It was OK because we only had 3 `i32`. What if we had 1_000_000? This would be inefficient. 
-* In the calls to `my_function02` and `my_function03` we pass a reference, the address of the `my_vector`. No matter the length of the vector we will always use 8 bytes (on a 64 bit OS, a memory address is on 8 bytes). This is much smarter and much faster.  
-
-
+* In the call to `my_function01` we passed the vector by value. It is like passing the 3 values. We push them on the stack. Call the function. In the function, we pop the values from the stack, then work on them. It was OK because we only had 3 `i32`. What if we had 1_000_000? This would be inefficient.
+* In the calls to `my_function02` and `my_function03` we pass a reference, the address of the `my_vector`. No matter the length of the vector we will always use 8 bytes (on a 64 bit OS, a memory address is on 8 bytes). This is much smarter and much faster.
 
 
 
-***OK... But what is going on in `my_function02`?*** 
+
+
+***OK... But what is going on in `my_function02`?***
 * In `my_function02`, `v` is a parameter of type reference to a vector of `i32` (`&Vec<i32>`). If we want to get access to its content, we must dereference it. This is why the first `println!` has `*v` as an argument (`println!("{:?}", *v);`).
 * However, like in C++, in the second call to `println!` we can use `v` as a parameter (`println!("{:?}", v);`). The Rust compiler will then apply **deref coercion**, to transform, at compile time, the `&Vec<i32>` (`v`) into a `Vec<i32>` (`*v`). How does this work here ?
-    * `println!` expects a type which implement Debug trait but `&Vec<i32>` doesn’t 
+    * `println!` expects a type which implement Debug trait but `&Vec<i32>` doesn’t
     * The compiler looks for Deref trait implementations on `&Vec<i32>`
     * `Vec<T>` implements `Deref<Target = [T]>`, meaning `&Vec<i32>` can auto-convert to `&[i32]` (a slice of `i32`)
     * And `&[i32]` implements the Debug trait, so the reference to a vector of `i32` is printed as a slice of `i32`.
@@ -649,12 +650,12 @@ What I will say here is not 100% accurate but stick with me because the idea is 
 
 
 * Last but not least, we create an array (`my_array`) and pass a reference to it as an argument to `my_function03` (`my_function03(&my_array);`)
-    * This demonstrates that `my_function03` works fine when it receives as a parameter either a reference to vector or an array (thanks to deref coercion). 
+    * This demonstrates that `my_function03` works fine when it receives as a parameter either a reference to vector or an array (thanks to deref coercion).
 
 
 
-***You promised to tell the truth about what happens when you pass a vector by value...*** 
-In fact, the content (the buffer) of a vector `vec0` is allocated on the heap (let's say `[22, 44, 66]`) and you can view a vector as a kind of "`struct`" with 3 fields (PLC) : 
+***You promised to tell the truth about what happens when you pass a vector by value...***
+In fact, the content (the buffer) of a vector `vec0` is allocated on the heap (let's say `[22, 44, 66]`) and you can view a vector as a kind of "`struct`" with 3 fields (PLC) :
 1. address of the data on the heap (P, pointer)
 1. the len of the vector (L, len)
 1. the capacity of the vector (C, capacity >=len)
@@ -665,9 +666,9 @@ Here is how it looks in memory:
 <img src="./assets/stack_heap.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-We can interpret the situation as follows: 
+We can interpret the situation as follows:
 
-* The local variable `vec0` is on the stack. 
+* The local variable `vec0` is on the stack.
 * The field P of the "`struct`" is a pointer that holds the address, on the heap, where the buffer part of the vector is.
 
 So, yes, I lied. When we pass by value a vector of 100 `i32` we do not pass 100 values. We only pass 3 `i64`(address, len and capacity). Nevertheless what is false for a vector is true for an array. An array is just a set of contiguous memory addresses on the stack and if we pass an array by value we pass its content by value.
@@ -714,7 +715,7 @@ fn main() {
 ```
 
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Dereferencing 04 : Box, Rc and Deref
@@ -749,9 +750,9 @@ Here is how it looks in memory:
 * Just to make sure we understand that the address of `b` (data type `Box<i32>`) on the stack has nothing to do with the address in the boxe (pointing to the heap) we print the address of `b` so that we can compare (`println!("Address of b on the stack      : {:p}", &b);`).
 * Next we dereference the boxe `b` and print the value it points to (`println!("Dereferenced Box: {}", *b);`). This is really cool because once the boxe is created, we use `b` has a regular reference to an `i32`.
 * Even cooler and more idiomatic we can print the value pointed to with `println!("Dereferenced Box: {}", b);`
-* In the call to `print_ref` we pass a reference to the box (`print_ref(&b);`). The box is borrowed and it remains available after the call. 
+* In the call to `print_ref` we pass a reference to the box (`print_ref(&b);`). The box is borrowed and it remains available after the call.
 * In the `print_ref` function the first `println!("Value: {}", *v);` is what we should write but the deref coercion allow us to write the second (`println!("Value: {}", v);`)
-* In the last call, make sure to understand that `b` (a variable on the stack) is moved and no longer available right after the call to `print_box`. This is at this point that RAII mechanism will work behind the scene and deallocate the memory on the heap. 
+* In the last call, make sure to understand that `b` (a variable on the stack) is moved and no longer available right after the call to `print_box`. This is at this point that RAII mechanism will work behind the scene and deallocate the memory on the heap.
 
 
 **Side Note** : Rust compiler is optimized (thanks to LLVM) and it may decide to NOT allocate memory on the heap if this is not absolutely necessary. This is what is called : **allocation elision**. For example if you allocate memory on the heap in a function but do not return the pointer. It is smarter to allocate locally. Same thing if you allocate 1 i32? Why not store it in a local variable. OK, you get the point.
@@ -775,7 +776,7 @@ fn dereferencing05() {
     }
     // Create an Rc pointing to a value on the heap
     let rc1 = Rc::new(999);
-    println!("Initial value: {}", rc1); 
+    println!("Initial value: {}", rc1);
     println!("Address in Rc: {:p}", Rc::as_ptr(&rc1));
     println!("Reference count after creation: {}", Rc::strong_count(&rc1)); // 1
     print_rc(&rc1);
@@ -799,7 +800,7 @@ fn dereferencing05() {
 ```
 
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Dereferencing 05 : Rc<T> and Reference Count
@@ -840,10 +841,10 @@ fn main(){
     println!("Dereferenced Box: {}", *b); // 999
     println!("Address in the Box : {:p}", b); // 0x5eca24b8eb10
     // Does'nt compile use of unstable library feature `box_as_ptr`
-    // println!("Address in the Box : {:p}", Box::as_ptr(&b)); 
+    // println!("Address in the Box : {:p}", Box::as_ptr(&b));
 
     println!();
-    
+
     let rc1 = Rc::new(999);
     println!("Initial value: {}", rc1); // 999
     println!("Initial value: {}", *rc1); // 999
@@ -857,7 +858,7 @@ Then it becomes interesting...
 
 * We print the value of the counter of the smart pointer (`println!("Reference count after creation: {}", Rc::strong_count(&rc1)); // 1`). At this point, only one pointer is pointing to area where `999` is stored
 
-Then it becomes *really* interesting... 
+Then it becomes *really* interesting...
 
 * Indeed we `.clone()` the smart pointer we had (`let rc2 = Rc::clone(&rc1);`). It is important to keep in mind that no copy or worst, no deep copy happens. When applied to a reference-counted smart pointer, `.clone()` simply add 1 to the counter. The `.clone()` operation is atomic, fast and cheap.
 * Once rc2 is created we print the value it points to and the current value of the counter (`println!("Reference count (rc2): {}", Rc::strong_count(&rc2)); // 2`). This should not be a surprise but the counter of `rc1` and `rc2` are equal (otherwise we would be in be trouble)
@@ -868,7 +869,7 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 
 
 {: .note-title }
-> To keep in mind 
+> To keep in mind
 >
 > * `Rc`, reference-counted smart pointer
 > * With `let rc2 = Rc::clone(&rc1);` **NO copy** takes place
@@ -887,7 +888,7 @@ In a last experiment we create a scope (`{` and `}`) where we create another clo
 
 ## Dereferencing: `Rc<RefCell<T>>` for Shared Mutation (single-threaded)
 
-However, the good news it that instead of learning a new smart pointer, we will reuse what we already know about `Rc` (reference-counted smart pointer) and add interior mutability to the heap allocated memory. This is done using ``RefCell``. First thing first, let's run the code below :  
+However, the good news it that instead of learning a new smart pointer, we will reuse what we already know about `Rc` (reference-counted smart pointer) and add interior mutability to the heap allocated memory. This is done using ``RefCell``. First thing first, let's run the code below :
 
 ```rust
 use std::cell::RefCell;
@@ -924,7 +925,7 @@ fn dereferencing06() {
 ```
 
 
-### Expected output 
+### Expected output
 {: .no_toc }
 ```
 Dereferencing 06 : Rc<RefCell<T>> for shared mutation (single-thread)
@@ -947,7 +948,7 @@ Reference count: 3
 * This is true but ``shared_vec`` is a `Rc<RefCell<Vec<i32>>>` and this is what allow us to mutate the heap allocated memory safely (almost)
 
 Then we create the first scope (more on this in few lines)
-* Inside the scope, we create `vec_ref` (`let mut vec_ref = a.borrow_mut();`). To make a long story short it borrow the wrapped object (`vec![1, 2, 3]`) with the ability to mutate it (`.borrow_mut()`). 
+* Inside the scope, we create `vec_ref` (`let mut vec_ref = a.borrow_mut();`). To make a long story short it borrow the wrapped object (`vec![1, 2, 3]`) with the ability to mutate it (`.borrow_mut()`).
 * Then we push a value in the borrowed vector (`vec_ref.push(4);`) and print it
 * And the scope ends right after the `}`, `vec_ref` goes out of scope and no one is borrowing the heap allocated vector
 
@@ -956,21 +957,21 @@ We then create a second scope
 * The print shows that the mutably shared vector has been mutated
 
 ***Why do we need scopes here ?***
-This is the one million dollars question baby! And you should know the answer. Make a test. Remove the scope and the code will panic on line `let vec_ref = b.borrow();`. Can you say why? 
+This is the one million dollars question baby! And you should know the answer. Make a test. Remove the scope and the code will panic on line `let vec_ref = b.borrow();`. Can you say why?
 
-Without the scopes, when we reach the line `let vec_ref = b.borrow();`, on stage we have one borrower with mutability capabilities and we would like to add a borrower with read-only capabilities. No way. You know the rule : Only one writer or multiple readers. 
+Without the scopes, when we reach the line `let vec_ref = b.borrow();`, on stage we have one borrower with mutability capabilities and we would like to add a borrower with read-only capabilities. No way. You know the rule : Only one writer or multiple readers.
 
 One thing to keep in mind however. The conflict among borrowers happen at runtime **not** at compile time.
 
-This is what is demonstrated in the last scope. 
+This is what is demonstrated in the last scope.
 * If you uncomment the second line `// let _second = shared_vec...`
 * The code panic at runtime
 
 
 
 {: .note-title }
-> To keep in mind 
-> 
+> To keep in mind
+>
 > * `Rc<RefCell<T>>` for shared mutation in a single-threaded context
 > * Checking happens at **runtime** NOT compile time
 
@@ -982,33 +983,33 @@ This is what is demonstrated in the last scope.
 
 ## Rust Gotchas: Dereferencing Edition
 
-**1. References are not pointers (exactly)**  
+**1. References are not pointers (exactly)**
 
 They behave similarly but are *not* the same. You can't do pointer arithmetic, and they must always be valid and non-null.
 
-**2. `&mut` vs `mut`**  
+**2. `&mut` vs `mut`**
 
-* `mut x`: you're allowed to modify `x`.  
+* `mut x`: you're allowed to modify `x`.
 * `&mut x`: you're allowed to modify the *value* `x` points to (&mut is a compound operator in Rust, it is a single “logical keyword”, which reads "mutable reference to")
 * But `let mut x = &y;` only means that `x` (the reference) can change to point elsewhere — not that `y` is mutable!
 
-**3. Shadowing vs reassignment**  
+**3. Shadowing vs reassignment**
 
 You can "reassign" an immutable reference via *shadowing* (`let x = &y;` again), but trying to reassign without `let` won’t compile.
 
-**4. Boxing isn't cloning**  
+**4. Boxing isn't cloning**
 
 `Box::new(value)` allocates `value` on the heap. It does *not* create a deep copy when passed by value — it moves ownership unless you explicitly `.clone()` the inner value.
 
-**5. `Rc<T>` cloning doesn’t clone the value**  
+**5. `Rc<T>` cloning doesn’t clone the value**
 
 It just increments the reference counter. Great for sharing read-only access — but not safe across threads or for mutation without `RefCell`.
 
-**6. Deref coercion looks like magic**  
+**6. Deref coercion looks like magic**
 
 But it's not: it follows well-defined `Deref` rules. Still, don’t rely on it blindly — sometimes explicit `*` helps readability and prevents surprises.
 
-**7. Borrow checker checks borrows at compile time... until `RefCell` enters the game**  
+**7. Borrow checker checks borrows at compile time... until `RefCell` enters the game**
 
 `RefCell<T>` defers checks to *runtime*. That means your code compiles, but can still panic if you violate borrow rules (e.g., two mutable borrows).
 

@@ -5,6 +5,7 @@ lang: en-US
 title: "Bindings in Rust: Much More Than Just Variables"
 parent: "Rust"
 #math: mathjax
+nav_order: 16
 date               : 2025-05-15 11:00:00
 last_modified_date : 2025-06-30 11:00:00
 ---
@@ -209,9 +210,9 @@ const int y = 42; // a constant
 In Rust, it's the opposite:
 
 ```rust
-let mut x               = 42; // mutable binding 
+let mut x               = 42; // mutable binding
 let     y               = 42; // immutable binding by default
-const   MAX_SCORE: u32  = 42; // a constant 
+const   MAX_SCORE: u32  = 42; // a constant
                               // to show constants exist in Rust
 ```
 
@@ -225,7 +226,7 @@ const   MAX_SCORE: u32  = 42; // a constant
 >
 >`let` creates a **binding**, which links a name to a value. By default, this binding is **immutable**.
 >
->Using `mut` allows to change the value that the binding refers to. 
+>Using `mut` allows to change the value that the binding refers to.
 >
 >This is different from declaring a **constant**, which uses the `const` keyword.
 >
@@ -494,7 +495,7 @@ And if I simplify further, here is what we need to remember:
 <img src="./assets/virtual_memory_space.webp" alt="Rust stack heap" width="900" loading="lazy"/>
 </div>
 
-* The executable program (the process) believes that it is alone 
+* The executable program (the process) believes that it is alone
 * This idiot thinks he has access to a 64-bit memory space with addresses from 0x00.. to 0xFF.. In fact, it's the OS that makes him believe that, but no, of course, he's in a virtualized memory space.
 * The code that is executed is located in the “Code Segment" section.
 * Then there are 2 areas which contain the initialized and uninitialized global variables respectively.
@@ -652,23 +653,23 @@ use std::hash::{Hash, Hasher};
 
 fn main() {
     let vec0 = vec![22, 44, 66];
-    
+
     // Create a new hasher
     let mut hasher = DefaultHasher::new();
-    
+
     // Feed the vector into the hasher
     vec0.hash(&mut hasher);
-    
+
     // Finalize the hash and get the result as a u64
     let hash_code = hasher.finish();
-    
+
     // Print the hash code
     println!("{}", hash_code); //2786706741450235691
 }
 ```
 
 
-It was becoming clearer to me and I could say to myself: ``vec0`` is a immutable binding that links the name ``vec0`` to the hash code of the vector instance. And there "[Bingo, here is DNA dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)". No, not quite but "Bingo, now I understand that if I modify one of the PLC values ​​or one of the table values ​​I will take one because that will modify the hash code value." 
+It was becoming clearer to me and I could say to myself: ``vec0`` is a immutable binding that links the name ``vec0`` to the hash code of the vector instance. And there "[Bingo, here is DNA dyno...](https://www.youtube.com/watch?v=uGKRYYgCPjY)". No, not quite but "Bingo, now I understand that if I modify one of the PLC values ​​or one of the table values ​​I will take one because that will modify the hash code value."
 
 But if you think about it, the hash code captures and synthesizes, in a single value, the state at a given time ``t`` of the instance I have in my hands. In other words, if I now talk about **state** rather than hash code, it amounts to the same thing.
 
@@ -893,7 +894,7 @@ fn main() {
     let my_int2 = my_int1;
     my_int1+=1;
     let my_int3 = my_int1;
-    
+
     assert_eq!(my_int1, 43);
     assert_eq!(my_int2, 42);
     assert_eq!(my_int3, 43);
@@ -998,14 +999,14 @@ Seriously, we're almost reaching Nirvana. Apart from the word ``borrow``, he's g
 ***So what do we do then?*** Read, I tell you... The compiler gave us the solution. We need to re-qualify the binding ``vec``. Remember, by default everything is immutable. So in the signature:
 
 ```rust
-fn fill_vec(vec: Vec<i32>) -> Vec<i32> 
+fn fill_vec(vec: Vec<i32>) -> Vec<i32>
 ```
-    
+
 
 The parameter ``vec`` is immutable. We must therefore modify the signature as the compiler suggests:
 
 ```rust
-fn fill_vec(mut vec: Vec<i32>) -> Vec<i32> 
+fn fill_vec(mut vec: Vec<i32>) -> Vec<i32>
 ```
 
 
@@ -1043,10 +1044,10 @@ Again, these mutability stories are a property of the binding, not the binding d
 fn fill_vec(mut vec_in: Vec<i32>) -> Vec<i32> {
     vec_in.push(88); // the state is modified because the data are modified
     vec_in           // vec_in is moved to the caller
-} 
+}
 
 // fn main() {
-    // vec0 is a immutable binding 
+    // vec0 is a immutable binding
     // A binding associates a name to a value + rules of ownership & borrowing
     // mutability is a property of the binding NOT a property of the value (nor the name)
     // The term binding in Rust represents a strong contract with the compiler, not just a “classic" variable.
@@ -1113,12 +1114,12 @@ Below is a solution in Rust
 
 ```rust
 fn main(){
-    let mut vec0 = vec![1, 0, 5, 0, 3, 12]; 
-    shift_zeros_to_the_end(&mut vec0);      
-    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]);  
+    let mut vec0 = vec![1, 0, 5, 0, 3, 12];
+    shift_zeros_to_the_end(&mut vec0);
+    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]);
 }
 
-fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>){ 
+fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>){
     let mut left = 0;
     for right in 0..nums_in.len(){
         if nums_in[right] != 0 {
@@ -1150,7 +1151,7 @@ As a reminder, in the first code, ``main()`` we had a line like
 Here we have a line like this
 
 ```rust
-    shift_zeros_to_the_end(&mut vec0);      
+    shift_zeros_to_the_end(&mut vec0);
 ```
 
 It's not better or worse. The thing is, when the function returns, we don't have a new binding. We continue to use the original binding ( ``vec0``). However, we must give the function ``shift_zeros_to_the_end()`` the means to be able to modify the state of the concrete instance of the type. In other words, I lent you my Ferrari and I give you permission to clean it.
@@ -1170,7 +1171,7 @@ From a syntax point of view, to pass a reference to a binding rather than a bind
 ***Well then why do I see it written in the code ``&mut vec0``?*** You're a big boy... I'll let you think about it... Done? No? Still not? Okay, what happens if in the function ``main()`` we write a line like:
 
 ```rust
-    shift_zeros_to_the_end(&vec0);      
+    shift_zeros_to_the_end(&vec0);
 ```
 
 What is the philosophy, the mindset of Rust (compared to C++ for example)? A bit like what we do... We talked about it at the beginning. Yes, very well...
@@ -1232,12 +1233,12 @@ The binding is not mutable but the state of ``Vec<i32>`` is mutable through the 
 ### The solution with associated comments
 ```rust
 
-// the function use a immutable binding that links the name nums_in to the state of an instance of type ``&mut Vect<i32>`` 
+// the function use a immutable binding that links the name nums_in to the state of an instance of type ``&mut Vect<i32>``
 // The binding nums_in is immutable, but it holds a mutable reference
 // This means we can mutate the Vec it points to, but we cannot reassign nums_in itself
 // nums_in cannot be reassigned to point to another Vec
 // but the Vec it refers to can be mutated (e.g. via push, swap, etc.)
-fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>){ 
+fn shift_zeros_to_the_end(nums_in: &mut Vec<i32>){
     let mut left = 0;
     for right in 0..nums_in.len(){
         if nums_in[right] != 0 {
@@ -1265,9 +1266,9 @@ What if the function ``main()`` looks like this:
 
 ```rust
 fn main(){
-    let vec0 = vec![1, 0, 5, 0, 3, 12]; 
-    shift_zeros_to_the_end(&mut vec0);      
-    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]);  
+    let vec0 = vec![1, 0, 5, 0, 3, 12];
+    shift_zeros_to_the_end(&mut vec0);
+    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]);
 }
 ```
 
@@ -1332,7 +1333,7 @@ If the function needs to be called many times per second, it is probably better 
 Otherwise, personally I prefer the version ``_byref`` because I find that it is the one that best expresses my intention.
 
 ```rust
-fn shift_zeros_to_the_end_byref(nums_in: &mut Vec<i32>){ 
+fn shift_zeros_to_the_end_byref(nums_in: &mut Vec<i32>){
     let mut left = 0;
     for right in 0..nums_in.len(){
         if nums_in[right] != 0 {
@@ -1342,7 +1343,7 @@ fn shift_zeros_to_the_end_byref(nums_in: &mut Vec<i32>){
     }
 }
 
-fn shift_zeros_to_the_end_bymove(mut nums_in: Vec<i32>) -> Vec<i32>{ 
+fn shift_zeros_to_the_end_bymove(mut nums_in: Vec<i32>) -> Vec<i32>{
     let mut left = 0;
     for right in 0..nums_in.len(){
         if nums_in[right] != 0 {
@@ -1354,13 +1355,13 @@ fn shift_zeros_to_the_end_bymove(mut nums_in: Vec<i32>) -> Vec<i32>{
 }
 
 fn main(){
-    let mut vec0 = vec![1, 0, 5, 0, 3, 12]; 
+    let mut vec0 = vec![1, 0, 5, 0, 3, 12];
     shift_zeros_to_the_end_byref(&mut vec0);
-    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]); 
+    assert_eq!(vec0, [1, 5, 3, 12, 0, 0]);
 
-    let vec1 = vec![1, 0, 5, 0, 3, 12]; 
-    let vec2 = shift_zeros_to_the_end_bymove(vec1); 
-    assert_eq!(vec2, [1, 5, 3, 12, 0, 0]);  
+    let vec1 = vec![1, 0, 5, 0, 3, 12];
+    let vec2 = shift_zeros_to_the_end_bymove(vec1);
+    assert_eq!(vec2, [1, 5, 3, 12, 0, 0]);
 }
 ```
 
@@ -1407,7 +1408,7 @@ fn dont_change(str_in: &String){
 
 // The binding str_in associates the name str_in with the state of a concrete instance of type mutable reference to a String.
 // str_in is a not table binding; it cannot be reassigned to another &mut String.
-// The reference to the String is mutable. The content of the string can be modified using this reference 
+// The reference to the String is mutable. The content of the string can be modified using this reference
 fn change(str_in: &mut String){
     str_in.push_str(" power!"); // Appends text to the original String
 }
@@ -1447,10 +1448,10 @@ fn change_and_reassign<'a>(mut str_in: &'a mut String, other: &'a mut String) {
 fn main() {
     // Create a mutable String binding
     let mut my_str = String::from("Banana");
-    
+
     // Pass an immutable reference to a function that reads the string
     dont_change(&my_str);
-    
+
     // Pass a mutable reference to allow the function to modify the String
     change(&mut my_str);
     println!("{}", my_str); // Print my_str once modified String
@@ -1509,10 +1510,10 @@ fn main() {
 
     {
         let s2 = String::from(", and beyond!");
-        result = longest(s1, s2);  
+        result = longest(s1, s2);
         println!("Longest: {}", result);
-    }                               
-    println!("Longest: {}", result);       
+    }
+    println!("Longest: {}", result);
 }
 ```
 
@@ -1554,13 +1555,13 @@ fn longest(s1: &str, s2: &str) -> &str {
 fn main() {
     let s1 = String::from("to infinity");
     let result;
-    
+
     {
         let s2 = String::from(", and beyond!");
-        result = longest(&s1, &s2);  
+        result = longest(&s1, &s2);
         println!("Longest: {}", result);
-    }                               
-    println!("Longest: {}", result);       
+    }
+    println!("Longest: {}", result);
 }
 ```
 
@@ -1600,13 +1601,13 @@ fn longest<'t>(s1: &'t str, s2: &'t str) -> &'t str {
 fn main() {
     let s1 = String::from("to infinity");
     let result;
-    
+
     {
         let s2 = String::from(", and beyond!");
         result = longest(&s1, &s2);  // OK s1 and s2 are still living
         println!("Longest: {}", result);
     }                               // <- s2 goes out of scope
-    
+
     // println!("Longest: {}", result);       // NOK result is s2 dependant
 }
 ```
@@ -1634,7 +1635,7 @@ error[E0597]: `s2` does not live long enough
 12 |         println!("Longest: {}", result);
 13 |     }                               // <- s2 goes out of scope
    |     - `s2` dropped here while still borrowed
-14 |     
+14 |
 15 |     println!("Longest: {}", result);       // NOK result is s2 dependant
    |                             ------ borrow later used here
 

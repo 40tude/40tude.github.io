@@ -5,6 +5,7 @@ layout: default
 title: "Who Owns What in Rust Loops? (And Why It Matters)"
 parent: "Rust"
 #math: mathjax
+nav_order: 14
 date               : 2025-06-26 17:00:00
 last_modified_date : 2025-07-29 09:00:00
 ---
@@ -41,8 +42,8 @@ fn main() {
     println!();
 
     for s in &the_3_body_problem {
-        println!("String is : {}", *s); 
-        println!("String is : {}", s); 
+        println!("String is : {}", *s);
+        println!("String is : {}", s);
     }
 }
 ```
@@ -81,15 +82,15 @@ The array `the_3_body_problem[]` is an array of string slices (`&str`). This is 
 
 Next, there is the line `for s in the_3_body_problem {...`. Here my recommendation is to view the `for` loop like a function call and to imagine something like : `for(s, the_3_body_problem);`. Having this model in mind we can now apply everything we know about passing arguments in function calls. Here for example, since the array is on the stack (not on the heap) and since the elements it hold are primitive, we "know" that the argument is passed by value. The argument is copied.
 
-Note that `s` is of type string slice (`&str`). This should not be a surprise since the `the_3_body_problem[]` array is an array of `&str`. Every value of the array is copied in `s` and in the body of the loop we pass `s` as an argument to the `println!()` macro.  
+Note that `s` is of type string slice (`&str`). This should not be a surprise since the `the_3_body_problem[]` array is an array of `&str`. Every value of the array is copied in `s` and in the body of the loop we pass `s` as an argument to the `println!()` macro.
 
 ### Why the second loop works?
 Then we reach the second `for` loop. You may ask why should I bother? The point is to demonstrate that the `the_3_body_problem[]` array is still there, and that it can be used a second loop. Exactly as if after passing it by value in a first function call we would pass it again by value in a second function call.
 
-In the last `for` loop, we become smarter and we pass the `the_3_body_problem[]` array by reference (`&the_3_body_problem`). This is smart because now we do not copy the content of the array (let's say 1MB), we just provide the address of its first element (let's say 8 bytes). 
+In the last `for` loop, we become smarter and we pass the `the_3_body_problem[]` array by reference (`&the_3_body_problem`). This is smart because now we do not copy the content of the array (let's say 1MB), we just provide the address of its first element (let's say 8 bytes).
 
 ### Smarter iteration: passing by reference
-But... In this case the `s` variable is of type "address of the element in the collection". So here, `s` is of type address of a `&str`, that is `&&str`. And yes, the two ampersands may look weird — but don't panic, it's perfectly normal Rust. Knowing this, if we want to print the actual string value pointed to by `s`, we need to dereference it using `*s`. That’s why the first `println!` uses explicit dereferencing: `*s` turns our `&&str` into a `&str`. However, Rust compiler is smart enough to apply what it calls "deref coercion" and to print something even if we pass an `s` (of type `&&str`)  
+But... In this case the `s` variable is of type "address of the element in the collection". So here, `s` is of type address of a `&str`, that is `&&str`. And yes, the two ampersands may look weird — but don't panic, it's perfectly normal Rust. Knowing this, if we want to print the actual string value pointed to by `s`, we need to dereference it using `*s`. That’s why the first `println!` uses explicit dereferencing: `*s` turns our `&&str` into a `&str`. However, Rust compiler is smart enough to apply what it calls "deref coercion" and to print something even if we pass an `s` (of type `&&str`)
 
 
 The code below is the same as the previous one, but with additional comments
@@ -240,7 +241,7 @@ Since `dune` has disappeared, we first re-create it. Then we apply the same tech
 
 ## What if I have a vector of primitive type?
 
-Haha! Looks like you become addict to Rust Playground... Welcome to the club. You know the song now : copy, paste, CTRL+ENTER 
+Haha! Looks like you become addict to Rust Playground... Welcome to the club. You know the song now : copy, paste, CTRL+ENTER
 
 
 
@@ -310,9 +311,9 @@ String is : Rocinante
 ```
 
 
-I guess we can, now, start to speed up while commenting the code 
+I guess we can, now, start to speed up while commenting the code
 * `the_expanse` is a vector of string slice (`&str`). "Remember Barbara", unlike arrays, which are on the stack, vectors are allocated on the heap.
-* A vector does not have a Copy trait. So when we pass `the_expanse` to the `for` loop, it is not copied, it is moved into the loop. 
+* A vector does not have a Copy trait. So when we pass `the_expanse` to the `for` loop, it is not copied, it is moved into the loop.
 * The first loop works like a charm
 * If we uncomment the second one the code does'nt compile because the vector is no longer accessible
 * Before going further, we must recreate a `the_expanse` vector
@@ -337,7 +338,7 @@ I guess we can, now, start to speed up while commenting the code
 
 Let's use the code below to illustrate the point.
 
-<!-- 
+<!--
 /*
 fn main() {
     let s1 = String::from("Trisolaris");
@@ -347,7 +348,7 @@ fn main() {
         &s => {println!("s: {}", s);} // pattern `&s` veut dire : dé-référencer `item`, stocker le contenu (de type `String`) dans `s`
     }
 }
-*/ 
+*/
 -->
 
 
@@ -364,7 +365,7 @@ fn main() {
 
     // The vector is moved into the loop and no longer accessible afterward
     for s in foundation {
-        println!("String is : {}", s); 
+        println!("String is : {}", s);
     }
     println!();
 
@@ -430,7 +431,7 @@ String is : Bayta Darell
 * And we pass it by reference to the `for` loop
 * We print the string slice using `*s` or `s`
 
-As explained in the comments, the last `for` loop does'nt compile. 
+As explained in the comments, the last `for` loop does'nt compile.
 
 ```rust
 for &s in &foundation {
@@ -464,7 +465,7 @@ fn main() {
     }
 }
 ```
-The compiler says : 
+The compiler says :
 
 ```
 9 |     for &s in &foundation {
@@ -474,7 +475,7 @@ The compiler says :
   |          move occurs because `s` has type `String`, which does not implement the `Copy` trait
 ```
 
-At first glance, you might think: “I know `foundation` holds `String`, so iterating over `&foundation` gives me `&String`, right? So using `&s` should just give me a reference to that reference.” 
+At first glance, you might think: “I know `foundation` holds `String`, so iterating over `&foundation` gives me `&String`, right? So using `&s` should just give me a reference to that reference.”
 
 But remember — Rust is not just looking at types, it's also deeply concerned with ownership semantics. So let’s follow the white rabbit and really understand what’s happening here.
 
@@ -487,12 +488,12 @@ But remember — Rust is not just looking at types, it's also deeply concerned w
 
 ### Step 2 - Brand new stuff
 * What does `for &s in ...` really means?
-* You can read this section in [The Rust Programming Language](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html#for-loops) book. 
+* You can read this section in [The Rust Programming Language](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html#for-loops) book.
 * It is said : "In a `for` loop, the value that directly follows the keyword `for` is a **pattern**..."
 * Again `i`, `x`, `s`, `(dr, dc)`... That we use to see in our `for` loops are NOT variables, they are patterns
 * So `&s` is a pattern - specifically, a **destructuring pattern**.
 * In plain English it says : "I expect to receive a `&T`. Then I will unstructure it to become the owner of the `T` value itself."
-* But here, the `&String` is a shared reference. We can't extract the `String` from a simple reference. Indeed the `String` is already owned by someone else. 
+* But here, the `&String` is a shared reference. We can't extract the `String` from a simple reference. Indeed the `String` is already owned by someone else.
 * So the Rust compiler says: “You're trying to make a move from a reference - but this type (String) isn't Copy, so I refuse”.
 
 
@@ -538,7 +539,7 @@ Rust allows the first (read), but forbids the second (move from a reference) unl
 
 So next time you write `for &x in ...`, remember: you're not just accessing the data — you're asking to own it. And Rust will only say yes if it's Copy.
 
-Feel free to read this 2 parts article dedicated to [dereferencing versus destructuring.]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%}) 
+Feel free to read this 2 parts article dedicated to [dereferencing versus destructuring.]({%link docs/06_programmation/rust/009_dereferencing_destructuring/dereferencing_destructuring_01.md%})
 
 
 
@@ -567,7 +568,7 @@ Feel free to read this 2 parts article dedicated to [dereferencing versus destru
 
 ## Can we "play" with a vector of even more complex elements ?
 
-No problem, your wish is my command. But before to read further takes 2 minutes and think about what will happen... 
+No problem, your wish is my command. But before to read further takes 2 minutes and think about what will happen...
 
 If this is a vector... Where will it be stored? Does the vector implement the Copy trait. Can it be passed by value? Will it be given or borrowed? If the vector is borrowed to the `for` loop, what will be the type of the `for` loop variable ? Will it be a plain value or a reference to ?
 
@@ -602,7 +603,7 @@ fn main() {
     // Using references
     for (i, s) in &the_night_s_dawn {
         // i is &usize, s is &String
-        println!("String {} is : {}", *i, *s); 
+        println!("String {} is : {}", *i, *s);
         println!("String {} is : {}", i, s); // Works due to deref coercion
     }
     println!();
@@ -671,8 +672,8 @@ Let's comment the code but I'm pretty sure you could do it by yourself...
 
 ## A last experiment, just to make sure
 OK. This one comes from one solution to the [Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%})
- 
-Copy, paste and CTRL+ENTER the code below. 
+
+Copy, paste and CTRL+ENTER the code below.
 
 ```rust
 fn main() {
@@ -696,10 +697,10 @@ fn main() {
 
         let (new_r, new_c) = (r as isize + *dr, c as isize + *dc);
         println!("{} - {}", new_r, new_c);
-        
+
         let (new_r, new_c) = (r as isize + dr, c as isize + dc);
         println!("{} - {}", new_r, new_c);
-        
+
     }
     println!();
 
@@ -804,7 +805,7 @@ String is : Montgomery Scott (Scotty)
 
 ### Explanation
 * Comment/uncoment the line you want to either use an array of a vector
-* `.iter()` returns an iterator (`&T`) over the slice and the iterator yields all items from start to end 
+* `.iter()` returns an iterator (`&T`) over the slice and the iterator yields all items from start to end
 * Here the iterable contains string slices (&str) so the type of `s` is `&&str`
 * We print the string slice using `*s` or `s`
 * So, now, we can either write `for s in &collection` or `for s in collection.iter()`
@@ -882,7 +883,7 @@ Updated string : Alan Carter 💥
 * As the name suggest, `.iter_mut()` returns an iterator (`&mut T`) that allows modifying the values of the mutable iterable
 * Again, the iterator yields all items from start to end
 * In the loop we modify each String by adding another string (" 💥")
-* Once this is done we print the content of `space_1999` vector using 2 strictly equivalent variations : `for s in collection.iter()` and `for s in &collection` 
+* Once this is done we print the content of `space_1999` vector using 2 strictly equivalent variations : `for s in collection.iter()` and `for s in &collection`
 
 
 
@@ -933,7 +934,7 @@ String is : WOPR
 
 ### What would be the use case ?
 
-OK, the previous code snippet looks somewhat artificial and you want to speak to my supervsior... Look at the code below : 
+OK, the previous code snippet looks somewhat artificial and you want to speak to my supervsior... Look at the code below :
 
 ```rust
 fn main() {
@@ -1065,12 +1066,12 @@ fn main() {
 
     // The for loop in Rust is an expression that evaluates to the unit type ().
     // This means we can assign it to a variable — although it's not very useful.
-    // This compiles and runs just fine. 
+    // This compiles and runs just fine.
     // The compiler might issue a warning if you don’t use it — but that’s all.
 
     let result = for x in [1, 2, 3] {
         println!("{x}");
-    }; 
+    };
 
     // `result` hold the unit value ()
     println!("The result of the for loop is: {:?}", result);

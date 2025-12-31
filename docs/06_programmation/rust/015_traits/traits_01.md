@@ -6,6 +6,7 @@ title: "Rust Traits: Defining Character - 01"
 description: "From basic syntax to building plugins with once_cell and organizing Rust projects."
 parent: "Rust"
 #math: mathjax
+nav_order: 24
 date               : 2025-09-03 14:00:00
 last_modified_date : 2025-09-10 19:00:00
 ---
@@ -20,7 +21,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 
 
 <!-- <h2 align="center">
-<span style="color:orange"><b>This post is under construction.</b></span>    
+<span style="color:orange"><b>This post is under construction.</b></span>
 </h2>
 -->
 
@@ -48,7 +49,7 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 </div>
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
@@ -92,12 +93,12 @@ Where using the generic syntax allow to add more than one trait bounds to the pa
 
 
 
-### Explanations 1/2 
+### Explanations 1/2
 {: .no_toc }
 
 You have played with the last sample code in Rust Playground. Don't you? It is simple, easy to understand and everything looks like we are running a kind of inventory. However, the point was to demonstrate the default implementation and so, in the `main()` function we have a line similar to : `println!("{}°C, label: {}", sensor100.get_temp(), sensor100.get_label());`
 
-Now let's say we want to write a kind of `inventory()` function. One of the constraints *we want to have* is to make sure that the parameters of the function implement the methods we need. Here we needed to be able to invoke `.get_temp()` and `.get_label()`. 
+Now let's say we want to write a kind of `inventory()` function. One of the constraints *we want to have* is to make sure that the parameters of the function implement the methods we need. Here we needed to be able to invoke `.get_temp()` and `.get_label()`.
 
 This is where multiple traits and bounds come into the game since they do exactly that. In the function signature, using the generic syntax, we can specify which trait must be available (no matter if it is via a default implementation or not)
 
@@ -172,7 +173,7 @@ fn main() {
 ```
 
 
-### Explanations 2/2 
+### Explanations 2/2
 {: .no_toc }
 
 At the top of the code we define 2 traits : `Measurable` and `Identifiable`. They both have a unique method and they both propose a default implementation of their respective method : `get_temp()` that we know by heart and `get_id()` which returns the `id` of the temperature sensor.
@@ -228,7 +229,7 @@ In plain French it says: My name is `inventory`. I use the generic syntax <T: Me
 
 When someone calls me, they must pass me a `sensor`, which is a reference to such data type. Because of the trait bounds, I know that this parameter will always provide the methods `get_id()` and `get_temp()`, so I can safely print its identifier and temperature.
 
-**Note:** Between you and me I would prefer to write `fn inventory<T: Measurable x Identifiable>(sensor: &T) {...}` because, for me, `x` is associated with `AND` while `+` is associated with `OR`.      
+**Note:** Between you and me I would prefer to write `fn inventory<T: Measurable x Identifiable>(sensor: &T) {...}` because, for me, `x` is associated with `AND` while `+` is associated with `OR`.
 
 **Note:** The syntax may become hard to read if we have many trait bounds. This is where the `where` clause can help. In our case it does not make a big difference however :
 
@@ -275,9 +276,9 @@ where
 {: .no_toc }
 
 * Using the generic syntax
-* We can express the fact that a function requires 
-    * A type implementing more than one trait  
-    * Multiple types implementing various traits 
+* We can express the fact that a function requires
+    * A type implementing more than one trait
+    * Multiple types implementing various traits
 * The `where` helps to keep function definition clean and lean
 
 
@@ -307,7 +308,7 @@ where
 ## Blanket Implementation
 Where the compiler write for us the code to implement certain traits.
 
-**Warning:** This section is lengthy because I experiment and play with many different ideas. 
+**Warning:** This section is lengthy because I experiment and play with many different ideas.
 
 
 <!-- ###################################################################### -->
@@ -385,7 +386,7 @@ fn main() {
 ```
 
 
-#### Explanations 2/2 
+#### Explanations 2/2
 {: .no_toc }
 
 What I like is that in the `main()` function I can write:
@@ -397,7 +398,7 @@ println!("{}", sensor1);
 
 This is cool because we print `sensor1` the same way we print an integer or a double. To get this result we *only have to* implement the trait `std::fmt::Display`. I say `std::fmt::Display` and not `Display` because, I want to underline that the `std::fmt::Display` trait is external. It belongs to `std::fmt`, we do not own it. Keep this in mind because we will come back to the ownership issue later.
 
-***OK... But how do you write the implementation of a trait that you do not own (here, `std::fmt::Display`) for trait that you own `TempSensor01`?*** 
+***OK... But how do you write the implementation of a trait that you do not own (here, `std::fmt::Display`) for trait that you own `TempSensor01`?***
 
 First. This might be obvious but, nowhere in the code above, we define the trait `Display`. We don't own it so we don't write something like :
 
@@ -407,7 +408,7 @@ pub trait Display {
 }
 ```
 
-However we can write the implementation `std::fmt::Display` for `TempSensor01`. We write : 
+However we can write the implementation `std::fmt::Display` for `TempSensor01`. We write :
 
 ```rust
 impl std::fmt::Display for TempSensor01 {
@@ -417,7 +418,7 @@ impl std::fmt::Display for TempSensor01 {
 }
 ```
 
-Compared to what we already know when we deal with our own traits, fundamentally there is nothing new. The trait `std::fmt::Display` have in its interface one function named `fmt` which have a specific signature. 
+Compared to what we already know when we deal with our own traits, fundamentally there is nothing new. The trait `std::fmt::Display` have in its interface one function named `fmt` which have a specific signature.
 
 Don't trust me. Double check in your [bedside book](https://doc.rust-lang.org/std/fmt/trait.Display.html) and make sure you can find it again if I don't give you the link (start from [https://doc.rust-lang.org/stable/std/](https://doc.rust-lang.org/stable/std/), Crates `std` on the left hand side, `fmt` module at the bottom of the page, `Display` trait at the bottom of the page...). I know what you think. But we need to invest time in learning how to navigate **and read** the documentation. It worth it.
 
@@ -425,7 +426,7 @@ Don't trust me. Double check in your [bedside book](https://doc.rust-lang.org/st
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=tQ9bd1UiqDBiWW-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-From the documentation we copy the signature of `fmt` and we paste it in our code. Then we write the definition of the `fmt` method for the data type `TempSensor01`. In the signature the `<'_>` is a lifetime specifier which is not used here. Note that we use `self.id` and `self.temp` directly. Life is easy.   
+From the documentation we copy the signature of `fmt` and we paste it in our code. Then we write the definition of the `fmt` method for the data type `TempSensor01`. In the signature the `<'_>` is a lifetime specifier which is not used here. Note that we use `self.id` and `self.temp` directly. Life is easy.
 
 
 
@@ -435,7 +436,7 @@ From the documentation we copy the signature of `fmt` and we paste it in our cod
 #### Exercise
 {: .no_toc }
 
-1. Starting from `https://doc.rust-lang.org/stable/std/`, find your way to `std::fmt::Display` in the documentation. 
+1. Starting from `https://doc.rust-lang.org/stable/std/`, find your way to `std::fmt::Display` in the documentation.
 1. Read the page
 1. In `std::fmt::Display`, use the formatter so that the temperature is displayed with only one digit (27.9, not 27.94) and the label in uppercase.
 1. Search on YouTube "Rust traits you should know"
@@ -451,11 +452,11 @@ From the documentation we copy the signature of `fmt` and we paste it in our cod
 * Copy and paste the signature
 * Write our custom version for a data type that we own
 * Now we can `println!` our data
-* This apply to many other traits available in the std lib : `From`, `Into`...  
+* This apply to many other traits available in the std lib : `From`, `Into`...
 
 
 
-***But the compiler did'nt write anything for us! Did it?*** No it did'nt. You are right, this first sample code shows how we can implement `std::fmt::Display`, an external trait, on a local data type that we own.  
+***But the compiler did'nt write anything for us! Did it?*** No it did'nt. You are right, this first sample code shows how we can implement `std::fmt::Display`, an external trait, on a local data type that we own.
 
 But, now, let's see if a blanket implementation can answer our question.
 
@@ -478,7 +479,7 @@ But, now, let's see if a blanket implementation can answer our question.
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Blanket Implementation for Real 
+### Blanket Implementation for Real
 
 Where the compiler writes the code of the trait implementation for us.
 
@@ -498,7 +499,7 @@ Where the compiler writes the code of the trait implementation for us.
 #### Explanations 1/2
 {: .no_toc }
 
-In the previous sample code we had to write the method. See below : 
+In the previous sample code we had to write the method. See below :
 
 ```rust
 impl std::fmt::Display for TempSensor01 {
@@ -508,7 +509,7 @@ impl std::fmt::Display for TempSensor01 {
 }
 ```
 
-This means that if we continue that way we will have to implement the method `std::fmt::Display` for `TempSensor02`, `TempSensor03`... `TempSensorNN`. This is a waste of time and error prone. This is where Rust **blanket implementation** can help because it can write implementation code for us.   
+This means that if we continue that way we will have to implement the method `std::fmt::Display` for `TempSensor02`, `TempSensor03`... `TempSensorNN`. This is a waste of time and error prone. This is where Rust **blanket implementation** can help because it can write implementation code for us.
 
 
 
@@ -639,7 +640,7 @@ trait Printable {
     fn print(&self);
 }
 ```
-Next we use the generic syntax to define the implementation of the trait `Printable` for any type having the `Identifiable` and `Measurable` traits. 
+Next we use the generic syntax to define the implementation of the trait `Printable` for any type having the `Identifiable` and `Measurable` traits.
 
 ```rust
 impl<T> Printable for T
@@ -652,7 +653,7 @@ where
 }
 ```
 
-**It took me some time to realize:** 
+**It took me some time to realize:**
 * The code above is a generalized implementation for any type implementing `Identifiable` and `Measurable`
 * At compile time, Rust monomorphizes the "template" **for each concrete type** that satisfies the traits bounds (`Identifiable + Measurable`). To tell the truth, I can easily forget this point when reading code.
 * Since `TempSensor01` implements `Identifiable` and `Measurable`, it gets the `Printable` implementation for "free", and `sensor1.print()` compiles and works like a charm.
@@ -699,7 +700,7 @@ You're a grand master!
 <!-- Before to move on, keep in mind : -->
 * Blanket implementation (generalized implementation) use the generic syntax
 * It generates (monomorphizes) for us code for certain traits
-* Trait bounds checking occurs at compile time, not runtime 
+* Trait bounds checking occurs at compile time, not runtime
 
 
 
@@ -717,7 +718,7 @@ You're a grand master!
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Blanket Implementation II 
+### Blanket Implementation II
 
 Where the compiler writes, once again, the code of the trait implementation for us.
 
@@ -813,7 +814,7 @@ fn main() {
 }
 ```
 
-#### Explanations 
+#### Explanations
 {: .no_toc }
 
 This is not yet perfect. Indeed, in the previous version, in the `main()` function we had:
@@ -828,7 +829,7 @@ fn main() {
 }
 ```
 
-Now we have: 
+Now we have:
 
 ```rust
 fn main() {
@@ -852,7 +853,7 @@ It is really a matter of taste. Let's not spend to much time on it because you a
 
 1. Talk to yourself out loud and explain the difference between both versions of the code. Why in one case we use `sensor1.print();` while in the other we write `println!("{}", sensor1.pretty());`
 1. Which one do *you* prefer and provide 3 reasons
-1. Check your arguments with ChatGPT or another LLM  
+1. Check your arguments with ChatGPT or another LLM
 
 
 
@@ -880,7 +881,7 @@ It is really a matter of taste. Let's not spend to much time on it because you a
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-### Orphan/coherence rules 
+### Orphan/coherence rules
 
 Where the compiler warns us before we shoot ourselves in the foot.
 
@@ -893,7 +894,7 @@ Where the compiler warns us before we shoot ourselves in the foot.
 * Select the option "Open in Integrated Terminal"
 * `cargo run --example ex03`
 
-Remember the Alamo 
+Remember the Alamo
 
 <div align="center">
 <img src="./assets/img25.webp" alt="" width="450" loading="lazy"/><br/>
@@ -973,7 +974,7 @@ We have 2 traits (`Measurable` and `Identifiable`). Then we define a `TempSensor
 
 In the `main()` function we write `println!("{}", sensor1);` hoping that it will work because we have been brave and smart.
 
-Indeed we use the generic syntax to define the implementation of the trait `std::fmt::Display`. Since we are very smart we do not forget to add some trait bounds because we want to make sure that only the data types having the `Measurable` and `Identifiable` traits will be allowed to use it. 
+Indeed we use the generic syntax to define the implementation of the trait `std::fmt::Display`. Since we are very smart we do not forget to add some trait bounds because we want to make sure that only the data types having the `Measurable` and `Identifiable` traits will be allowed to use it.
 
 So beautiful, so well written, so smart... Look below :
 
@@ -989,7 +990,7 @@ where
 ```
 
 
-Nice try but **NO**. This does not work. To make a long story short 
+Nice try but **NO**. This does not work. To make a long story short
 * This does not compile because of Rust's **orphan/coherence rules**
 * Indeed, ``Display`` is a foreign trait (defined in `std::fmt`).
 * We are not allowed to implement a **foreign trait** for a **foreign type**.
@@ -1045,7 +1046,7 @@ Where the compiler writes implementation code for an *intermediate* data type.
 
 
 
-#### Explanations 1/2 
+#### Explanations 1/2
 {: .no_toc }
 
 In the previous sample code we learnt that we cannot write `impl<T> std::fmt::Display for T...`. This is because we do not own the trait `std::fmt::Display` nor the generic type `T`. As often, the trick is to add a [level of indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}) by defining an intermediate data type that we own and on which we can implement `std::fmt::Display`. Let's see how.
@@ -1103,7 +1104,7 @@ fn main() {
 ```
 
 
-#### Explanations 2/2 
+#### Explanations 2/2
 {: .no_toc }
 
 You know the song... Two traits (`Measurable` and `Identifiable`). Then we define a `TempSensor01` data type which implements both traits.
@@ -1187,7 +1188,7 @@ Here is what happens : we temporarily wrap a borrow of `sensor1` into `AsDisplay
 #### Exercise
 {: .no_toc }
 
-1. Why, in the newtype pattern, we use a tuple struct and not a simple tuple? 
+1. Why, in the newtype pattern, we use a tuple struct and not a simple tuple?
 1. When you write `let bob = (18, &sensor1);`. What is love? Oops, what is `bob`? Is it a value, a data type, something else ?
 
 <div align="center">
@@ -1215,7 +1216,7 @@ Here is what happens : we temporarily wrap a borrow of `sensor1` into `AsDisplay
 
 
 
-**However, this is not yet perfect because we create a temporary variable in the `println!` macro. No?** Let's see if we can improve things. 
+**However, this is not yet perfect because we create a temporary variable in the `println!` macro. No?** Let's see if we can improve things.
 
 
 
@@ -1231,7 +1232,7 @@ Here is what happens : we temporarily wrap a borrow of `sensor1` into `AsDisplay
 <!-- ###################################################################### -->
 ### Newtype pattern II
 
-Where we use a convenient function call to hide the use of the ad hoc data type.  
+Where we use a convenient function call to hide the use of the ad hoc data type.
 
 
 
@@ -1329,10 +1330,10 @@ fn main() {
 ```
 
 
-#### Explanations 
+#### Explanations
 {: .no_toc }
 
-Not much to say. The code is mostly the same. Two traits (`Identifiable` and `Measurable`), two data type (`TempSensor01` and `TempSensor02`). The same newtype pattern. 
+Not much to say. The code is mostly the same. Two traits (`Identifiable` and `Measurable`), two data type (`TempSensor01` and `TempSensor02`). The same newtype pattern.
 
 We only add a convenient `as_display()` function to build the wrapper without naming the type (`AsDisplay`) at call site.
 
@@ -1363,7 +1364,7 @@ fn main() {
 1. Compare source code of the sections `Newtype pattern I` and `Newtype pattern II`
 1. Which one do *you* prefer ?
 1. Why ?
-1. Double check the pros and cons with your preferred LLM 
+1. Double check the pros and cons with your preferred LLM
 
 
 
@@ -1371,7 +1372,7 @@ fn main() {
 #### Summary
 {: .no_toc }
 
-* This is a matter of taste and how you want express things in your code. 
+* This is a matter of taste and how you want express things in your code.
 * `println!("{}", AsDisplay(&sensor1));` VS `println!("{}", as_display(&sensor1));`
 
 
@@ -1409,7 +1410,7 @@ fn main() {
 
 
 
-#### Posts 
+#### Posts
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/015_traits/traits_00.md%})
