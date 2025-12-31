@@ -5,7 +5,7 @@ title: "Rust on Windows 11, My Complete Setup Guide"
 parent: "Rust"
 #math: mathjax
 date               : 2025-06-02 09:00:00
-last_modified_date : 2025-07-02 17:00:00
+last_modified_date : 2025-12-31 10:00:00
 ---
 
 # Rust on Windows 11, My Complete Setup Guide
@@ -31,9 +31,9 @@ last_modified_date : 2025-07-02 17:00:00
 
 
 ## Install rust-analyzer extension for VSCode
-* Open VSCode then from 
-    * The extensions pane, on the left  
-    * Or from this [page](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) 
+* Open VSCode then from
+    * The extensions pane, on the left
+    * Or from this [page](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
 * Install ``rust-analyzer``
 <div align="center">
 <img src="./assets/rust-analyzer.webp" alt="" width="900" loading="lazy"/>
@@ -48,7 +48,7 @@ last_modified_date : 2025-07-02 17:00:00
 * From VSCode
 * `CTRL + ,` to open the ``Settings``
 * Type in `rust-analyzer check`
-* Replace ``check`` by `clippy` in the ``Rust-analyzer > Check : Command`` (see below) 
+* Replace ``check`` by `clippy` in the ``Rust-analyzer > Check : Command`` (see below)
 
 <div align="center">
 <img src="./assets/linting.webp" alt="" width="900" loading="lazy"/>
@@ -110,7 +110,41 @@ max_width = 200
 
 
 
+## OneDrive
 
+* <span style="color:red"><b>IMPORTANT</b></span>
+* In **EVERY** project
+* Add a `.cargo/` directory
+* In the directory add a file named `config.toml` with a content similar to:
+
+```toml
+[build]
+target-dir = "<%USERPROFILE%>rust_builds/Documents/Tmp/042_deleteme"
+```
+
+Here is an example:
+
+<div align="center">
+<img src="./assets/onedrive_00.webp" alt="" width="900" loading="lazy"/><br/>
+<span><code>.cargo/config.toml</code> file</span>
+</div>
+
+* No, you don't have to create the `<%USERPROFILE%>rust_builds/` directory. It will be created for you.
+* Nothing change for you: `cargo run`, `cargo test`...
+
+### Why?
+* You want your project files on OneDrive
+* You don't want the thousands of small files created during the builds to be monitored by OneDrive. To give you an idea my `std_usage_analyzer` project has release and debug builds. The build directory is 3.8 GB and 5340 files.
+* So we just tell the Rust build system where to build the application (lib respectively)
+
+
+### How do I do?
+* If I work on `C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\036_std_usage_analyzer`
+* The `config.toml` contains: `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/036_std_usage_analyzer`
+    * If you don't know where is your "home", open a PowerShell terminal then enter `ls env:USERPROFILE`
+* Doing so I have the same organization in both trees (projects, builds)
+* If your project contains multiple workspaces, only one `.cargo/config.toml` file is needed at the root of the project
+* I created a `New-RustProject.ps1` script to automate all this
 
 
 
@@ -156,7 +190,7 @@ fn main() {
 }
 
 ```
-* Set a breakpoint on line 8 
+* Set a breakpoint on line 8
     * See below the red dot on the left
     * You can either click or strike ``F9`` when the cursor is on the line of interest
 * In the editor click on the "Debug" (see below in the red rectangle)
@@ -165,7 +199,7 @@ fn main() {
 <img src="./assets/debug_02.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-* A `target/debug` directory is created 
+* A `target/debug` directory is created
 * While looking for the outputs, keep in mind they occurs in the ``DEBUG CONSOLE`` **not** in the `TERMINAL`. See below
 
 <div align="center">
@@ -352,7 +386,7 @@ If you want to debug code when you press F5 and have more options (like passing 
 ```
 
 
-Here is how it should look like 
+Here is how it should look like
 
 <div align="center">
 <img src="./assets/debug_05.webp" alt="" width="900" loading="lazy"/>
@@ -372,8 +406,8 @@ Here is how it should look like
 * Switch back to the code
 * Set a breakpoint somewhere
 * Press `F5`
-    * A `target/debug` directory is created 
-    * The debugger stops on the breakpoint 
+    * A `target/debug` directory is created
+    * The debugger stops on the breakpoint
 
 <div align="center">
 <img src="./assets/debug_06.webp" alt="" width="900" loading="lazy"/>
@@ -434,7 +468,7 @@ Make sure the current configuration is still `Debug`
 </div>
 
 * You can either press F5 or CTRL+F5
-* A `target/release` directory is created 
+* A `target/release` directory is created
 
 
 
@@ -450,7 +484,7 @@ Make sure the current configuration is still `Debug`
 
 ## How to build only (either, Debug or Release version)
 
-### Option 1 :  
+### Option 1 :
 * Click on ``Terminal/Run Task...`` option
 * Select ``cargo-build-debug`` or ``cargo-build-release``
 
@@ -458,7 +492,7 @@ Make sure the current configuration is still `Debug`
 <img src="./assets/tasks.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-### Option 2 :  
+### Option 2 :
 * Open a terminal in VSCode
 * Either type `cargo build` or `cargo build --release`
 
