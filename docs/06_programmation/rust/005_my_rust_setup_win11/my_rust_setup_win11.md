@@ -563,7 +563,7 @@ Remove-Item -Path $env:USERPROFILE/OneDrive/Documents/Tmp/042_deleteme -Recurse 
 **DO NOT COPY** the script below as is. Indeed I had lot of difficulties to render it since it contains backticks etc. It is safer to download it. However if you really want to copy and paste the code below, then, modify the `DOCUMENTATION FILES` section and surround the 3 `cargo` instructions with 6 backticks as shown below:
 
 <div align="center">
-<img src="./assets/backticks.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/backticks.webp" alt="" width="450" loading="lazy"/><br/>
 </div>
 
 
