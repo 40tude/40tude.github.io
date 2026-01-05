@@ -6,7 +6,7 @@ parent: "Rust"
 #math: mathjax
 nav_order: 4
 date               : 2025-07-03 16:00:00
-last_modified_date : 2025-01-05 10:00:00
+last_modified_date : 2026-01-05 10:00:00
 ---
 
 # Rust, mon setup pour CodinGame

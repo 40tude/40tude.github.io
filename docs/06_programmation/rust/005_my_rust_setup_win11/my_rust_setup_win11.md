@@ -6,7 +6,7 @@ parent: "Rust"
 #math: mathjax
 nav_order: 1
 date               : 2025-06-02 09:00:00
-last_modified_date : 2025-01-05 09:00:00
+last_modified_date : 2026-01-05 09:00:00
 ---
 
 # Rust on Windows 11, My Complete Setup Guide
