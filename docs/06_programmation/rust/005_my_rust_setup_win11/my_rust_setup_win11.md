@@ -543,7 +543,7 @@ Make sure the current configuration is still `Debug`
 
 ### My PowerShell script to create the projects
 
-0. Get the [script]({%link ./assets/New-RustProject.ps1%})
+0. Get the [script](assets/New-RustProject.ps1)
 1. Copy the script in a folder then add the latter to the PATH.
 2. Follow the instructions below to check
 
