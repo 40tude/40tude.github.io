@@ -310,7 +310,7 @@ crate (lib.rs)
 </div>
 
 **What does it show?**
-* This is the complete module tree of the lib (see the `--lib` in the command) in technicolor!
+* This is the complete module tree of the lib (see the `--lib` in the command) in Technicolor!
 * Should be enough most of the time
 
 You can also try this:

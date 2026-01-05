@@ -373,7 +373,7 @@ You can see which files have been deployed and built on Heroku. In VSCode integr
 heroku run bash
 ```
 
-Once the `$` type `ls -al ./target/release/`. The server is 3MB. Pretty fat...
+Once the `$` sign is available, type `ls -al ./target/release/`. The server is 3MB. Pretty fat...
 
 ```
 $ ls -al ./target/release/
