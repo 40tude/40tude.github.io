@@ -6,7 +6,7 @@ parent: "Rust"
 #math: mathjax
 nav_order: 1
 date               : 2025-06-02 09:00:00
-last_modified_date : 2025-12-31 10:00:00
+last_modified_date : 2025-01-05 09:00:00
 ---
 
 # Rust on Windows 11, My Complete Setup Guide
@@ -560,7 +560,14 @@ Remove-Item -Path $env:USERPROFILE/rust_builds/Documents/Tmp/042_deleteme -Recur
 Remove-Item -Path $env:USERPROFILE/OneDrive/Documents/Tmp/042_deleteme -Recurse -Force
 ```
 
-<code>
+**DO NOT COPY** the script below as is. Indeed I had lot of difficulties to render it since it contains backticks etc. It is safer to download it. However if you really want to copy and paste the code below, then, modify the `DOCUMENTATION FILES` section and surround the 3 `cargo` instructions with 6 backticks as shown below:
+
+<div align="center">
+<img src="./assets/backticks.webp" alt="" width="600" loading="lazy"/><br/>
+</div>
+
+
+```powershell
 # How to:
 # Copy the script in a folder then add the latter to the PATH
 #   $rustDir = "C:\Users\phili\OneDrive\Documents\Programmation\rust"
@@ -733,21 +740,15 @@ $ReadmeContent = @"
 
 ## Installation
 
-``````bash
 cargo build --release
-``````
 
 ## Usage
 
-``````bash
 cargo run
-``````
 
 ## Testing
 
-``````bash
 cargo test
-``````
 
 ## License
 
@@ -932,7 +933,8 @@ Write-Host "  1. Edit README.md with project description" -ForegroundColor White
 Write-Host "  2. Start coding in src/main.rs" -ForegroundColor White
 Write-Host "  3. Run 'cargo run' to test" -ForegroundColor White
 Write-Host "`nHappy coding! 🦀" -ForegroundColor Cyan
-</code>
+
+```
 
 
 

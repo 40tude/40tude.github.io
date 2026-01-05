@@ -6,14 +6,14 @@ parent: "Rust"
 #math: mathjax
 nav_order: 4
 date               : 2025-07-03 16:00:00
-last_modified_date : 2025-07-03 16:00:00
+last_modified_date : 2025-01-05 10:00:00
 ---
 
 # Rust, mon setup pour CodinGame
 
 
 ## TL;DR
-* Mon organisation pour pourvoir développer et déboguer en local mes solutions en Rust aux puzzles de CodinGame
+* Mon organisation pour pouvoir développer et déboguer en local mes solutions en Rust aux puzzles de CodinGame
 
 ## Introduction
 On est en 2025 et je suis toujours en train d'apprendre Rust. Après avoir codé en Rust [les solutions du livre Coding Patterns Interview]({%link docs/06_programmation/rust/007_coding_interview_patterns/index.md%}) je suis parti faire un tour sur [CodinGame](https://www.codingame.com/home). Personnellement, je ne suis pas fan des tournois et autres "Clash Of Code" mais j'adore y retourner et prendre mon temps pour résoudre un puzzle. J'adore ça.
@@ -88,7 +88,7 @@ Allez, c'est bon, on a terminé, je quitte VSCode et je vais faire un tour sur G
 Avec ce setup, il n'y a pas besoin de remonter dans le répertoire `rust_codingame`. On commit depuis le répertoire du puzzle. Moi je trouve ça bien cool.
 
 ## Debug
-Pour être tout à fait complet, j'ai essayé de monter un setup à base de Workspace Rust mais bon, ça n'a pas marché. C'était pas adapté à mon mode de fonctionnement. Quoi qu'il en soit, en faisant comme on a fait jusqu'à présent, ça va être relativement simple.
+Pour être tout à fait complet, j'ai essayé de monter un setup à base de Workspace Rust mais bon, ça n'a pas marché. C'était pas adapté à mon mode de fonctionnement. J'ai sans doute pas encore tout compris non plus. Quoi qu'il en soit, en faisant comme on a fait jusqu'à présent, ça va être relativement simple.
 1. Depuis VSCode
 1. Si ce n'est pas déjà fait, tu installes l'extension LLDB (bien sûr, tu ne devras le faire qu'une seule fois)
 1. Ensuite, tu crées un sous-répertoire `.vscode` dans le répertoire du projet

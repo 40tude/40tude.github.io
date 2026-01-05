@@ -170,19 +170,19 @@ $ReadmeContent = @"
 
 ## Installation
 
-``````bash
+``````powershell
 cargo build --release
 ``````
 
 ## Usage
 
-``````bash
+``````powershell
 cargo run
 ``````
 
 ## Testing
 
-``````bash
+``````powershell
 cargo test
 ``````
 
