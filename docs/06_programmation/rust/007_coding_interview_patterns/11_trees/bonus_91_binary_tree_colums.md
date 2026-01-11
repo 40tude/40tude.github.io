@@ -16,7 +16,7 @@ last_modified_date : 2025-06-22 09:00:00
 </div>
 
 * Given the root of a binary tree
-* Return a list of arrays 
+* Return a list of arrays
 * Where each array represents a vertical column of the tree
 * Nodes in the same column should be ordered from top to bottom
 * Nodes in the same row and column should be ordered from left to right
@@ -36,14 +36,14 @@ last_modified_date : 2025-06-22 09:00:00
 | O(n)        | O(n)  |
 
 * O(n) in time because we process each node once during the level-order traversal
-* O(n) in space because of the size of the queue. Will grow as large as the level with the most nodes (max val around n/2). The output vector is not taken into account in space complexity 
+* O(n) in space because of the size of the queue. Will grow as large as the level with the most nodes (max val around n/2). The output vector is not taken into account in space complexity
 
 
 
 
 
 
-<!-- <span style="color:red"><b>TODO : </b></span> 
+<!-- <span style="color:red"><b>TODO : </b></span>
 * Rust : come back on `.as_mut()`, `.as_deref()`         -->
 
 
@@ -103,7 +103,7 @@ fn preorder_print(link: &Link) {
 fn binary_tree_columns(link : &Link) -> Vec<Vec<i32>> {
     let mut column_map : HashMap<i32, Vec<i32>> = HashMap::new();
     let (mut leftmost_column, mut rightmost_column) = (0, 0);
-    
+
     // if let Some(_) = link {
     if link.is_some(){
         let mut queue: VecDeque<(&Link, i32)> = VecDeque::new(); // link to node, column index
@@ -121,8 +121,8 @@ fn binary_tree_columns(link : &Link) -> Vec<Vec<i32>> {
             }
         }
     }
-    // Construct the output list by collecting values from each column in the hash   
-    // map in the correct order. 
+    // Construct the output list by collecting values from each column in the hash
+    // map in the correct order.
     let mut res: Vec<Vec<i32>> = Vec::new();
     for i in leftmost_column..= rightmost_column {
             res.push(column_map[&i].clone());
@@ -130,14 +130,14 @@ fn binary_tree_columns(link : &Link) -> Vec<Vec<i32>> {
     res
 }
 
-fn main() { // no main() if this code runs in a Jupyter cell 
+fn main() { // no main() if this code runs in a Jupyter cell
     // Build the tree:
     //        5
     //      /   \
     //     9     3
     //    / \   / \
     //   2   1 4   7
-    
+
     let tree = TreeNode::new(5)
         .left(
             TreeNode::new(9)
@@ -159,10 +159,10 @@ fn main() { // no main() if this code runs in a Jupyter cell
         );
 
     let root_link = Some(Box::new(tree));
-    preorder_print(&root_link); // 5 9 2 1 3 4 7 
+    preorder_print(&root_link); // 5 9 2 1 3 4 7
     println!();
-    println!("{:?}", binary_tree_columns(&root_link)); // 5 9 2 1 3 4 7 
-    
+    println!("{:?}", binary_tree_columns(&root_link)); // 5 9 2 1 3 4 7
+
 } // end of local scope OR end of main()
 ```
 
@@ -170,14 +170,14 @@ fn main() { // no main() if this code runs in a Jupyter cell
 
 **About Rust :**
 * Based on V2 (see ``189_intro.ipynb``) for easy tree building
-* I wanted to lower the number of `if let Some(blablabla)...`
+* I wanted to lower the number of `if let Some(blah_blah_blah)...`
 * pay attention on how the return collection is built
 ```rust
 (leftmost_column..=rightmost_column)
         .filter_map(|i| column_map.get(&i).cloned())
         .collect()
 ```
-* <span style="color:lime"><b>Preferred solution?</b></span> 
+* <span style="color:lime"><b>Preferred solution?</b></span>
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
 
@@ -251,20 +251,20 @@ fn binary_tree_columns(link: &Link) -> Vec<Vec<i32>> {
         }
     }
 
-    // Construct the output list by collecting values from each column in the hash map in the correct order. 
+    // Construct the output list by collecting values from each column in the hash map in the correct order.
     (leftmost_column..=rightmost_column)
         .filter_map(|i| column_map.get(&i).cloned())
         .collect()
 }
 
-fn main() { // no main() if this code runs in a Jupyter cell 
+fn main() { // no main() if this code runs in a Jupyter cell
     // Build the tree:
     //        5
     //      /   \
     //     9     3
     //    / \   / \
     //   2   1 4   7
-    
+
     let tree = TreeNode::new(5)
         .left(
             TreeNode::new(9)
@@ -286,9 +286,9 @@ fn main() { // no main() if this code runs in a Jupyter cell
         );
 
     let root_link = Some(Box::new(tree));
-    preorder_print(&root_link); // 5 9 2 1 3 4 7    
+    preorder_print(&root_link); // 5 9 2 1 3 4 7
     println!();
     println!("{:?}", binary_tree_columns(&root_link)); // [[2], [9], [5, 1, 4], [3], [7]]
-    
+
 } // end of local scope OR end of main()
 ```

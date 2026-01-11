@@ -522,7 +522,7 @@ That being said, the story goes like this: "If `new_path` contains a value, **bi
 * Code snippet 03. `if let Some(x) = expression` is **NOT** a boolean expression. This is a **conditional pattern matching**. Rust try to match the pattern `Some(...)` with the value on the right. If the match succeeds, the `if` block is executed; otherwise, it is ignored.
     * Personally, that's what trips me up every time because I can't help reading it as a Boolean expression.
 * Code snippet 03. `if let Some(x) = expression` is **NOT** a boolean expression, see it is as a shortened version of a `match`.
-* Code snippet 03. When we **read** a line like `if let Some(...) = Option<T>{...}` we should **say** "If the pattern `Some(...)` successfully matches the `Option<T>` then blablabla..."
+* Code snippet 03. When we **read** a line like `if let Some(...) = Option<T>{...}` we should **say** "If the pattern `Some(...)` successfully matches the `Option<T>` then blah blah blah..."
 * Code snippet 02. `match` is an expression. It evaluates to a single value. Look, there is a `;` at the end of the line `let msg = ...`
 * Code snippet 02. Do you see the difference between the second and third code snippet? In the latter, `msg` receive the result of `format!` and then it is printed. Again `match` is an expression, **NOT** a [statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement).
 * Code snippet 04. Uncomment the line `let new_path = None;` (comment the line above). Is the behavior of the code crystal clear?

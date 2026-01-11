@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 22
 date               : 2025-09-20 18:00:00
-last_modified_date : 2025-10-06 15:00:00
+last_modified_date : 2026-01-11 11:00:00
 ---
 
 
@@ -147,7 +147,7 @@ fn main() {
 }
 ```
 
-Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what kind of std lib and crate functions I will call, I make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blablabla...
+Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what kind of std lib and crate functions I will call, I make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blah blah blah...
 
 **Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` in [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) for example.
 
@@ -166,7 +166,7 @@ But then I can imagine that other functions in `main.rs` will need to return the
 
 ```rust
 // ex000.rs
-ype Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn main() -> Result<()> {
     println!("Hello, world!");

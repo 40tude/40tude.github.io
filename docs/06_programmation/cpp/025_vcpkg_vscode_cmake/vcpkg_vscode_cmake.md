@@ -51,7 +51,7 @@ April 2021. The following software are installed on my PC
 
 ## Install vcpkg
 
-Open a PowerShell console (**WIN + X, I**)     
+Open a PowerShell console (**WIN + X, I**)
 Move to a directory which will host the vcpkg directory.
 
 ```powershell
@@ -61,7 +61,7 @@ cd vcpkg
 .\bootstrap-vcpkg.bat
 ```
 
-Launch Windows PowerShell as Administrator (**WIN + X, A**)  
+Launch Windows PowerShell as Administrator (**WIN + X, A**)
 Reach the previous directory
 
 ```powershell
@@ -75,9 +75,9 @@ Close the PowerShell Admin console and switch back to the non-admin console. Typ
 .\vcpkg install sqlite3:x64-windows
 ```
 
-On a **non-English configuration** you may have to install the English package for Visual Studio. To do so: 
-* Run Visual Studio Installer. 
-* Check the language tab and add English. 
+On a **non-English configuration** you may have to install the English package for Visual Studio. To do so:
+* Run Visual Studio Installer.
+* Check the language tab and add English.
 * Once the English Pack is installed, restart the ``.\vcpkg install sqlite3:x64-windows`` command
 
 <div align="center">
@@ -239,7 +239,7 @@ Later, if the project needs additional libraries, just add their names after sql
 
 ```
 TARGET_LINK_LIBRARIES(TestSQL
-  sqlite3 mylib blabla_lib
+  sqlite3 mylib blah_blah_blah_lib
 )
 ```
 
@@ -393,5 +393,5 @@ cd .\build\Release\
 
 vcpkg is great. The integration in Visual Studio is even smoother than the one with VSCode. Whatever, vcpkg elegantly solve one of the most annoying developer's tasks: getting libs and making sure they are quickly integrated with our compiling toolchain.
 
-I hope this page will speed up your start with vcpkg and VSCode on Windows. 
+I hope this page will speed up your start with vcpkg and VSCode on Windows.
 

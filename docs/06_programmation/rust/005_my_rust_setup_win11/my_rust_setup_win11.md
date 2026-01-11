@@ -6,7 +6,7 @@ parent: "Rust"
 #math: mathjax
 nav_order: 1
 date               : 2025-06-02 09:00:00
-last_modified_date : 2026-01-05 09:00:00
+last_modified_date : 2026-01-09 19:00:00
 ---
 
 # Rust on Windows 11, My Complete Setup Guide
@@ -120,7 +120,7 @@ max_width = 200
 
 ```toml
 [build]
-target-dir = "<%USERPROFILE%>rust_builds/Documents/Tmp/042_deleteme"
+target-dir = "<%USERPROFILE%>/rust_builds/Documents/Tmp/042_deleteme"
 ```
 
 Here is an example:
@@ -130,8 +130,13 @@ Here is an example:
 <span><code>.cargo/config.toml</code> file</span>
 </div>
 
-* No, you don't have to create the `<%USERPROFILE%>rust_builds/` directory. It will be created for you.
 * Nothing change for you: `cargo run`, `cargo test`...
+* No, you don't have to create the `<%USERPROFILE%>/rust_builds/` directory. It will be created for you.
+* Yes, this can be done afterwards.
+    * I would leave the current projet and close VSCode
+    * Delete the local `target/` folder
+    * Create `.cargo/config.toml` as explained above
+    * Reload the project in VSCode
 
 ### Why?
 * You want your project files on OneDrive

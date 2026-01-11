@@ -82,7 +82,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 * **`anyhow` and `thiserror`**
     * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
-    * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blablabla")`.
+    * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blah blah blah")`.
     * **`thiserror`** in **libraries** when we need custom error types without writing all implementations for `Display`, `Debug`, `From` trait and `Error`.
     * Don’t mix them blindly (anyhow inside the lib, thiserror API of the lib)
 

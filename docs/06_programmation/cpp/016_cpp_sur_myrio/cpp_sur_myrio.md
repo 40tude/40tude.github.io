@@ -265,7 +265,7 @@ S'il y a des problèmes pour circuler sur la cible, lancez **MAX** (Measurement 
 
 A ce niveau on a un fichier exécutable susceptible de tourner sur une cible et on sait se connecter à la cible en question. Il faut désormais configurer l’environnement pour pouvoir déboguer le code à distance.
 
-Dans le code source, poser le curseur sur la ligne 13 : `cout << "Blbablabla...."` puis cliquez sur **CTRL + SHIFT + B** pour y poser un point d'arrêt.
+Dans le code source, poser le curseur sur la ligne 13 : `cout << "blah blah blah..."` puis cliquez sur **CTRL + SHIFT + B** pour y poser un point d'arrêt.
 
 Allez dans le menu **Run/Debug Configuration...** Quand la boîte de dialogue est à l'écran, cliquez sur **C/C++ Remote Application** (liste de gauche). Attention, ne cliquez pas sur **C/C++ Application** mais cliquez sur **C/C++ Remote Application**.  Quand c'est fait, en haut de la liste de gauche, cliquez sur l'icône en forme de listing avec un plus jaune (elle est tout à gauche). Quand la boîte de dialogue apparaît il faut cliquer sur la liste déroulante **Connection** et retrouver la connexion que l'on a paramètré précédemment (ici il faut retrouver MyRIO).
 

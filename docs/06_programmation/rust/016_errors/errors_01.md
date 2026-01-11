@@ -1252,7 +1252,7 @@ Now, concerning the refactoring we can observe:
 
 * We now have a `mod my_api` at the top of the code
 * This line declares and brings the content of the namespace `my_api` into the current crate.
-* Since the content of the module `my_api` is in the crate root, the module `my_api` is its child and its symbols can be accessed with the `my_api::blablablabla` syntax.
+* Since the content of the module `my_api` is in the crate root, the module `my_api` is its child and its symbols can be accessed with the `my_api::blah_blah_blah` syntax.
 * The `use my_api::load_or_init;` statement is a "shortcut" that helps to write `load_or_init("bad_config.json")` rather than the namespace syntax `my_api::load_or_init("bad_config.json")`.
 
 

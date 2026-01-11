@@ -23,7 +23,7 @@ last_modified_date : 2025-06-22 09:00:00
     * This module should be a different file `graph.rs` for example
     * Here the code must be monolithic so the module in defined/scoped (I don't know the term) in `main.rs`
 * About the classes defined
-    * A `GraphNode` is a value/id and a vector of neighbors 
+    * A `GraphNode` is a value/id and a vector of neighbors
     * A `Graph` is a vector of GraphNodes
     * No pointer, nor boxe or whatsoever
     * Indeed, at this point the graph is read only (not mutable) so there is no need for `Rc` nor `RefCell`
@@ -35,7 +35,7 @@ struct GraphNode {
     val: usize,
     neighbors: Vec<usize>,
 }
-``` 
+```
 
 One could write
 
@@ -57,7 +57,7 @@ struct GraphNode<T> {
 
 mod graph {
     use std::collections::{HashSet, VecDeque};
-    
+
     struct GraphNode {
         val: usize,
         neighbors: Vec<usize>,
@@ -145,8 +145,8 @@ mod graph {
 use graph::Graph;
 
 fn main() {
-    
-    //     0    
+
+    //     0
     //   / | \
     //  3  |  1
     //   \ |
@@ -220,7 +220,7 @@ impl Graph {
 fn print_graph(graph: &Graph, start: usize) {
     use std::collections::HashSet;
     let mut visited = HashSet::new();
-    
+
     // This a way to hide the recursive part to the caller who can only call `print_graph()`
     fn deep_copy_recursive_print(graph: &Graph, node: usize, visited: &mut HashSet<usize>) {
         if visited.contains(&node) {
@@ -277,7 +277,7 @@ fn bfs(graph: &Graph, start: usize) {
 }
 
 fn main() {
-    //     0    
+    //     0
     //   / | \
     //  3  |  1
     //   \ |
@@ -310,10 +310,10 @@ fn main() {
 
 ## Third attempt
 
-* In the book, `dfs()` and `bfs()` only have a GraphNode as parameter 
+* In the book, `dfs()` and `bfs()` only have a GraphNode as parameter
 * Here, `my_graph` in encapsulated into a `GRAPH` object
-    * `GRAPH` is a global static variable whose access is transparently synchronized 
-    * In `dfs()` and `bfs()` we need to `let graph = GRAPH.get().expect("blablabla...");` before we can act on it
+    * `GRAPH` is a global static variable whose access is transparently synchronized
+    * In `dfs()` and `bfs()` we need to `let graph = GRAPH.get().expect("blah blah blah...");` before we can act on it
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
 
@@ -452,7 +452,7 @@ fn main() {
 
     let my_graph = Graph::from_adjacency_list(&adjacency_list);
     let start_node = 0;
-    
+
     GRAPH.set(my_graph).expect("GRAPH already initialized");
 
     print_graph(start_node);            // Node 0 has neighbors [1, 2, 3]
@@ -591,7 +591,7 @@ fn bfs(node: &GraphNodeRef) {
 }
 
 fn main() {
-    //     0    
+    //     0
     //   / | \
     //  3  |  1
     //   \ |
@@ -608,14 +608,14 @@ fn main() {
 
     let my_graph = from_adjacency_list(&adjacency_list);
     let start_node = &my_graph[0];
-    
+
     print_graph(start_node);            // Node 0 has neighbors [1, 2, 3]
-                                        // ...        
-    
+                                        // ...
+
     println!("\nDFS from node 0:");     // DFS from node 0:
     dfs(start_node);                    // Processing node 0
                                         // ...
-    
+
     println!("\nBFS from node 0:");     // BFS from node 0:
     bfs(start_node);                    // Processing node 0
                                         // ...
@@ -623,7 +623,7 @@ fn main() {
 
 ```
 
-Same as above but only demonstrate the call to `dfs()` 
+Same as above but only demonstrate the call to `dfs()`
 
 * **YES** : tested on the [Rust Playground](https://play.rust-lang.org/)
 
@@ -659,7 +659,7 @@ fn process(node: &GraphNodeRef) {
 
 fn dfs(node: &GraphNodeRef) {
     let mut visited = HashSet::new();
-    
+
     fn dfs_recursive(node: &GraphNodeRef, visited: &mut HashSet<usize>) {
         match visited.insert(node.borrow().val) {
             false => (), // Already visited
@@ -686,7 +686,7 @@ fn main() {
 
     let my_graph = from_adjacency_list(&adjacency_list);
     let start_node = &my_graph[0];
-    
+
     println!("\nDFS from node 0:");     // DFS from node 0:
     dfs(start_node);                    // Processing node 0
                                         // ...

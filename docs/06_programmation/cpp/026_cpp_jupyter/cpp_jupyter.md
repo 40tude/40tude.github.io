@@ -14,7 +14,7 @@ last_modified_date: 2025-03-27 11:00:00
 <img src="./assets/img_00.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-I run WIN11 and I want to do some tests in C++ in Jupyter Notebooks. I cannot easily install the ``xeus-cling`` kernel with conda under the WIN11 host because it is based on cling + LLVM blablabla...
+I run WIN11 and I want to do some tests in C++ in Jupyter Notebooks. I cannot easily install the ``xeus-cling`` kernel with conda under the WIN11 host because it is based on cling + LLVM blah blah blah...
 
 I could use a Docker image but here I will use WSL
 

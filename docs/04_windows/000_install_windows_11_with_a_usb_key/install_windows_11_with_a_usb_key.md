@@ -186,7 +186,7 @@ I will illustrate the case with my Lenovo laptop (read [this page](NOT YET TRANS
   + Feedback to Microsoft
   + ...
 * When I'm asked about the kind of usage I will have with this PC, I do not select any option.
-* I also answer "No" when I get a proposal for XBox blablabla
+* I also answer "No" when I get a proposal for XBox blah blah blah
 * Since I used OneDrive, I check the option.
   + If you don't use OneDrive, do not select it. There is no need to add useless software on a brand-new PC.
 * Then the installer will check for updates.

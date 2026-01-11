@@ -1291,7 +1291,7 @@ Je propose la règle suivante:
 
 OK... Mais combien de mes branches ont été "mergées", comment les supprimer proprement? On voit ça dans la "recette de cuisine" ci-dessous où j'imagine qu'on a "forké un projet" (`upstream`). Si c'est pas le cas oublies les lignes où je parle de `upstream`. Oui, bien sûr, vu comment c'est écrit, l'idée c'est de mettre tout ça dans un script mais bon au départ vaut mieux tester à la main une ou 2 fois puis créer le script ensuite.
 
-**Note:** Si en cours de route Git affiche un truc du style `Deletion of directory '.git/logs/refs/remotes/origin/blablabla' failed. Should I try again? (y/n)` réponds `n`
+**Note:** Si en cours de route Git affiche un truc du style `Deletion of directory '.git/logs/refs/remotes/origin/blahblahblah' failed. Should I try again? (y/n)` réponds `n`
 
 
 ```powershell

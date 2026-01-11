@@ -1081,7 +1081,7 @@ If the PR is accepted, `Y` will be merged with `H`.
 </div>
 
 
-If the PR is accepted, we are all good we can delete the branch and get in sync with origine. Otherwise, if the PR is definitively rejected we may decide to keep the branch because it contains some code we would like to reuse, blablabla.
+If the PR is accepted, we are all good we can delete the branch and get in sync with origine. Otherwise, if the PR is definitively rejected we may decide to keep the branch because it contains some code we would like to reuse, blah blah blah.
 
 To delete the branch `xyz_docs/typos` you can do:
 

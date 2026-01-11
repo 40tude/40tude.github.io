@@ -32,7 +32,7 @@ In a Rust context, I think it's better to stop talking about variables and inste
 1. Static code analysis ensures that the properties of the bindings are respected.
 
 To keep in mind:
-* ``blablabla`` is a mutable/immutable binding that binds the name to the **state** of a concrete instance of a type ``<T>``.
+* ``blah_blah_blah`` is a mutable/immutable binding that binds the name to the **state** of a concrete instance of a type ``<T>``.
 * **Ownership rule** : Each concrete instance has a single owner at any given time and is automatically dropped when that owner goes out of scope.
 * **Reference rule** : At any given time you can have **either** one mutable reference (writer) or multiple immutable references (readers).
 Compilers make sure the good things happen — the logical errors are on you.
@@ -680,7 +680,7 @@ The description of the first line of code evolves and becomes:
 1. ``vec0`` is a immutable binding that binds the name ``vec0`` to the full state of an instance of ``Vec<i32>``. Yes because in the code I manipulate instances rather than types.
 1. ``vec0`` is an immutable binding that binds the name ``vec0`` to the full state of a concrete instance of a type ``Vec<i32>``. Probably too much. It's just to emphasize that the instance in question is something like ``Vec`` or ``String`` and not really an abstract type (Trait).
 
-Finally, what I keep in mind is: ``blablabla`` is a (im)mutable **binding** that binds the name ``blablabla`` to the **state** of a concrete instance of a type ``<T>``.
+Finally, what I keep in mind is: ``blah blah blah`` is a (im)mutable **binding** that binds the name ``blah blah blah`` to the **state** of a concrete instance of a type ``<T>``.
 
 That being explained, let's go back and about the first line of code
 

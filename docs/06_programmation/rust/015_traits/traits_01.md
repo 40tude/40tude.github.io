@@ -600,7 +600,7 @@ fn main() {
 #### Explanations 2/2
 {: .no_toc }
 
-I guess I can save some time here because you know the context : 2 TempSensor data types, 2 traits blablabla.
+I guess I can save some time here because you know the context : 2 TempSensor data types, 2 traits blah_blah_blah.
 
 In the `main()` function we write
 
@@ -705,7 +705,7 @@ You're a grand master!
 
 
 
-***OK... But I in the `main()` function I would like to read `println!("{}", blablabla);` rather than `sensor1.print();`. What can we do ?***
+***OK... But I in the `main()` function I would like to read `println!("{}", blah_blah_blah);` rather than `sensor1.print();`. What can we do ?***
 
 
 

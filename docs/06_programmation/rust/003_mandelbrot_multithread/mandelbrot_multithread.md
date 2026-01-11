@@ -1409,7 +1409,7 @@ Dans la fonction `mt_build_mandelbrot()`
 * Du coup, au lieu de faire une boucle ``for`` dans laquelle on spawn des threads
 * Je créé un scope nommé ``my_scope`` (voir `crossbeam::thread::scope`) dans lequel j'ai une boucle ``for`` dans laquelle j'utilise `my_scope` pour y lancer un thread qui va éxécuter la fonction `render_zone()`.
 * Comme j'étais pas sûr de mon coup, en haut du code source, j'ai bien sûr commenté la ligne `use std::thread;` car je ne l'utilise plus ici. Cela fait, j'ai pas écris `use crossbeam::thread;`. De cette façon, dans le code cela m'oblige à utiliser le nom complet `crossbeam::thread::scope` et c'est ce que je voulais.
-* Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici il faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ça, en français, ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit se lire `crossbeam::thread::scope(blablabla).unwrap();`
+* Sinon, je suis pas trop fan des fonctions qu'on étale sur 250 lignes mais bon ici il faut bien voir le `.unwrap();` qui traine tout seul comme une âme en peine. Ça, en français, ça veut dire "Panic on Error" et donc si `crossbeam::thread::scope()` part en vrille, tout le programme va s'arrêter. C'est violent mais suffisant ici. Le truc que je veux surtout faire remarquer c'est que la ligne de code doit se lire `crossbeam::thread::scope(blah_blah_blah).unwrap();`
 
 Dans la fonction `render_zone()`
 * Cette fonction remplace l'ancienne `build_mandelbrot` et l'ancienne ``render_stripe()``
