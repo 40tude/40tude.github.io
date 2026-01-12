@@ -105,7 +105,7 @@ SOLID tells us how to organize these pieces so that:
 
 ### Rust's Secret Weapons for SOLID
 
-Rust actually has some incredible features that make SOLID principles easier to apply than in traditional OOP languages:
+Rust actually has some incredible features that make SOLID principles easier to apply than in other languages:
 
 - **Traits**: Perfect abstraction mechanism (interfaces without the baggage)
 - **Ownership system**: Forces us to think about responsibilities and boundaries
@@ -119,7 +119,7 @@ Alright, enough philosophy. Let's dive into each principle with real code.
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
-<span>1984</span>
+<span>1984 - https://www.youtube.com/watch?v=KrLFEHeKNBw</span>
 </div>
 
 
@@ -282,12 +282,12 @@ Now:
 
 ### Rust-Specific Notes
 
-1. **No methods on data structs**: In Rust, we're not forced to put methods on types. we can have "plain old data" structs and separate modules/types for behavior. This naturally encourages SRP.
+1. **No methods on data structs**: In Rust, we're not forced to put methods on types. We can have "plain old data" (POD) structs and separate modules/types for behavior. This naturally encourages SRP.
 
 2. **Module organization**: we can organize our crate like this:
    ```
    src/
-     employee.rs          // Core data type
+     employee.rs         // Core data type
      payroll.rs          // PayrollCalculator
      operations.rs       // OvertimeTracker
      repository.rs       // EmployeeRepository
