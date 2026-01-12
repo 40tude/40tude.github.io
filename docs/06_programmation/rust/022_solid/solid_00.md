@@ -1,9 +1,9 @@
 ---
-published: false
+published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide"
-description: ""
+description: "A gentle introduction and illustration of SOLID principles with Rust"
 parent: "Rust"
 nav_order: 12
 date:               2026-01-12 16:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-01-12 16:00:00
 # SOLID Principles in Rust: A Practical Guide
 {: .no_toc }
 
-A survival guide for developers who stare at type signatures and feel lost
+A gentle introduction and illustration of SOLID principles with Rust
 {: .lead }
 
 
@@ -59,7 +59,7 @@ TODO
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Introduction: Why Should a Rustacean Care About SOLID?
+## Introduction: Why Should I Care About SOLID?
 
 So we're reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) and wondering how these principles, born in the world of Java and C#, apply to Rust. Fair question. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and everything compiles into a single binary. So what gives?
 
@@ -69,7 +69,7 @@ So we're reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) and
 </div>
 
 
-Here's the thing: SOLID isn't about the language features - it's about **organizing our code so it doesn't turn into a tangled mess that makes we want to rage-quit and become a farmer**. The principles are about managing dependencies, separating concerns, and making our code maintainable as it grows.
+Here's the thing: **SOLID** isn't about the language features - it's about **organizing our code so it doesn't turn into a tangled mess that makes we want to rage-quit and become a farmer**. The principles are about managing dependencies, separating concerns, and making our code maintainable as it grows.
 
 ### The "One Binary" Question
 
@@ -108,7 +108,7 @@ SOLID tells us how to organize these pieces so that:
 Rust actually has some incredible features that make SOLID principles easier to apply than in traditional OOP languages:
 
 - **Traits**: Perfect abstraction mechanism (interfaces without the baggage)
-- **Ownership system**: Forces we to think about responsibilities and boundaries
+- **Ownership system**: Forces us to think about responsibilities and boundaries
 - **Type system**: Compile-time enforcement of contracts
 - **Pattern matching**: Extensibility without modification
 - **No null**: Makes interface contracts explicit
