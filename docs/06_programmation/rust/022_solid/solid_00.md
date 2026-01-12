@@ -1643,11 +1643,18 @@ Now go forth and write clean Rust! 🦀
 
 ## References & Further Reading
 
-- *Clean Architecture* by Robert C. Martin - the source material
+- [Clean Architecture](https://amzn.eu/d/9CJWwcy) by Robert C. Martin - the source material
 - [serodriguez68/clean-architecture](https://github.com/serodriguez68/clean-architecture) - excellent summary of the book
 - Rust's trait system: https://doc.rust-lang.org/book/ch10-02-traits.html
 - Hexagonal Architecture: https://alistair.cockburn.us/hexagonal-architecture/
-- "Rust is not a faster horse" - Understanding how Rust's paradigm differs from OOP
+- [Rust is not a faster horse](https://www.youtube.com/watch?v=4YU_r70yGjQ) - Understanding how Rust's paradigm differs from OOP
+- The [companion project](https://github.com/40tude/coffee-shop-solid) on GitHub (Coffee Shop Order System)
+
+<div align="center">
+<img src="./assets/img04.webp" alt="" width="600" loading="lazy"/><br/>
+<!-- <span>1984</span> -->
+</div>
+
 
 ## Appendix: Quick Reference Card
 
