@@ -199,6 +199,7 @@ Every change affects the same type. Merge conflicts galore. Changes for one team
 
 ### The Solution: Separate the Actors
 
+{% raw %}
 ```rust
 // Core data - this is just data, no behavior
 pub struct Employee {
@@ -273,6 +274,7 @@ impl EmployeeReporter {
     }
 }
 ```
+{% endraw %}
 
 Now:
 - If payroll rules change, only `PayrollCalculator` changes
