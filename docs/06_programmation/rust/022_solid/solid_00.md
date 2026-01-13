@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-12 16:00:00
+last_modified_date: 2026-01-13 13:00:00
 ---
 
 
@@ -22,6 +22,7 @@ A gentle introduction to SOLID principles using Rust.
 
 <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
+01/13 : OK up to the end of Single Responsibility Principle (SRP)
 </h2>
 
 
@@ -44,13 +45,15 @@ TODO
     * **L**iskov Substitution Principle:
     * **I**nterface Segregation Principle:
     * **D**ependency Inversion Principle:
-* Play, break, rebuild the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub
 * SOLID help us at the mid level
     - **Module** = a group of related functions and types (`mod`)
     - **Component** = a crate (lib or binary)
     - **Class** = a `struct` with associated functions and trait implementations
+* SOLID principles are not rules to follow, but questions to ask when code starts to feel uncomfortable. See the "When to Apply the ... Principle?" sections.
 
 
+
+Play, break, rebuild the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub
 
 <div align="center">
 <img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
@@ -161,11 +164,12 @@ Rust has features that greatly facilitate the implementation of SOLID principles
 - **No null**: Makes interface contracts explicit
 - **Error handling**: `Result<T, E>` makes failure cases part of the contract
 
-Alright, enough philosophy. Let's dive into each principle with real code.
+Alright, enough philosophy. It is dogfight time! Let's dive into each principle with real code.
 
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<span>I love the opening theme. It gives me goosebumps every time.</span>
 </div>
 
 
@@ -188,9 +192,9 @@ Or, as Uncle Bob refines it:
 
 > "A module should be responsible to one, and only one, actor."
 
-Above, I understand the term "actor" as the thing, the person or the group of persons which can take decisions about the features of the module.
+In my view, above, an “actor” is the person, group, or system that has the authority to make decisions about the module’s features, and to which the module is therefore accountable.
 
-This is **NOT** "do one thing" (that's for functions). Single Responsibility Principle is about **reasons to change**. If our module changes because the accounting department wants something AND because the operations team wants something, we've got two reasons to change - that's a violation.
+The Single Responsibility Principle is **NOT** "do one thing" (that's for functions). It is about **reasons to change**. If our module changes because the accounting department wants something **AND** because the operations team wants something, we've got two reasons to change - that's a violation.
 
 ### The Problem: Accidental Coupling
 
@@ -310,6 +314,7 @@ Pay: $950.00
 2. **Operations** - needs `calculate_overtime_hours()`
 3. **DBAs** - need `save()`
 4. **HR** - needs `generate_report()`
+
 And all theses methods belong to the same object.
 
 Now imagine:
@@ -698,14 +703,14 @@ src/
      db.rs               // Database
    ```
 
-If you hesitate when I talk about, files, crates, modules... Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
+If you hesitate when I talk about, files, crates, modules and module trees... Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
 
 3. **Ownership clarifies responsibility**: When we pass `&Employee` vs `Employee` vs `&mut Employee`, we're being explicit about responsibility. The repository needs mutable access to the DB but not to employees. The calculator needs read-only access to employees.
 
 
 **Note**:
-This is more or less the organization in the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) where we have something similar.
+This is more or less the organization in the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) where we have something similar to:
 
 ```
 src/
@@ -719,16 +724,21 @@ src/
 
 ```
 
-### When to Single Responsibility Principle (SRP)?
+### When to apply the Single Responsibility Principle (SRP)?
 
-Ask ourself: "If I had to change this code, what would be the reason?" If we can think of multiple unrelated reasons (different stakeholders/actors), we probably need to split it.
+Context: It is 8 AM. Coffee in one hand, eyes on the screen, we are reviewing yesterday’s code.
+
+**The question to ask:** *"If this code needs to change, who is requesting the change, and why?"*
+
+* If the answer points to **multiple actors** with different goals (business rules, persistence, presentation, infrastructure), then the code is likely doing too much and should be split.
+* The Single Responsibility Principle is less about counting changes and more about identifying **who has the authority** to demand them.
+* SRP is a thinking tool that helps us say: *"This code makes me nervous because too many people could ask me to change it."*
 
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
-<span><a href="https://www.youtube.com/watch?v=KrLFEHeKNBw" target="_blank">1984</a></span>
+<span><a href="https://youtu.be/KrLFEHeKNBw?si=cpM1aUZl3V5-6yx_&t=28" target="_blank">1984</a></span>
 </div>
-
 
 
 
@@ -982,11 +992,17 @@ The editor is **closed** (we don't modify it) but **open** (we can extend it).
 
 
 
-### When to Apply Open-Closed Principle (OCP)
 
-<!-- TODO -->
-Ask ourself: XXXXXXXXXXXX
 
+### When to Apply the Open-Closed Principle (OCP)?
+
+Context: It is 8:10 AM. Coffee is still hot. A new feature request just arrived.
+
+**The question to ask:** *"If I need to add new behavior, am I forced to modify existing, working code?"*
+
+* If adding a feature requires changing code that already works and is already in production, the design may not be closed for modification.
+* The Open-Closed Principle is not about never changing code, but about **protecting stable code from frequent changes**.
+* OCP is a thinking tool that helps us say: *"I should be able to extend this behavior without reopening code that was already validated."*
 
 
 
@@ -1318,10 +1334,17 @@ Now all implementations have the same contract:
 
 
 
-### When to Apply Liskov Substitution Principle (LSP)?
 
-<!-- TODO -->
-Ask ourself: XXXXXXXXXXXX
+### When to Apply the Liskov Substitution Principle (LSP)?
+
+Context: It is 8:20 AM. You replaced an implementation with another one. Tests start failing.
+
+**The question to ask:** *"Can I replace this type with one of its subtypes without surprising the caller?"*
+
+* If using a subtype forces the caller to add special cases, defensive checks, or different logic, LSP is likely violated.
+* The Liskov Substitution Principle is not about inheritance syntax, but about **behavioral compatibility**.
+* LSP is a thinking tool that helps us say: *"If I have to know the concrete type, then substitution is broken."*
+
 
 
 
@@ -1653,12 +1676,15 @@ If yes to any of these, consider splitting the trait.
 
 
 
-### When to Apply Interface Segregation Principle (ISP)?
+### When to Apply the Interface Segregation Principle (ISP)?
 
-<!-- TODO -->
-Ask ourself: XXXXXXXXXXXX
+Context: It is 7:50 AM. The office is empty and the coffee damn hot. You review the interface implemented yesterday and immediately you feel uncomfortable.
 
+**The question to ask:** *"Am I forced to depend on methods I do not use?"*
 
+* If an interface requires a client to implement or know methods that are irrelevant to its use case, the interface is **too broad**.
+* The Interface Segregation Principle favors **small, role-focused interfaces** over large, generic ones.
+* ISP is a thinking tool that helps us say: *"This interface is making me implement things I don’t care about."*
 
 
 
@@ -2095,10 +2121,17 @@ The beauty: **we can swap any adapter without touching business logic**. Want to
 
 
 
-### When to Apply Dependency Inversion Principle (DIP)?
+### When to Apply the Dependency Inversion Principle (DIP)?
 
-<!-- TODO -->
-Ask ourself: XXXXXXXXXXXX
+Context: It is 8:05 AM. Double espresso. Thank God it’s Friday, but the week is not over yet. You want to test your code, but everything depends on concrete details.
+
+**The question to ask:** *"Does my high-level logic depend on details, or do details depend on my logic?"*
+
+* If business rules directly depend on frameworks, databases, or external services, DIP is likely violated.
+* The Dependency Inversion Principle is not about abstractions everywhere, but about **protecting policy from implementation details**.
+* The Dependency Inversion Principle is a thinking tool that helps us say: *"My core logic should not know how the outside world works."*
+
+
 
 
 
