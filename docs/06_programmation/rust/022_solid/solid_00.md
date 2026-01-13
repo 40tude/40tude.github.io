@@ -189,6 +189,7 @@ Alright, enough philosophy. It is dogfight time! Let's dive into each principle 
 ## 1. Single Responsibility Principle (SRP)
 
 ### The Principle
+{: .no_toc }
 
 > "A module should have one, and only one, reason to change."
 
@@ -201,6 +202,7 @@ In my view, above, an “actor” is the person, group, or system that has the a
 The Single Responsibility Principle is **NOT** "do one thing" (that's for functions). It is about **reasons to change**. If our module changes because the accounting department wants something **AND** because the operations team wants something, we've got two reasons to change - that's a violation.
 
 ### The Problem: Accidental Coupling
+{: .no_toc }
 
 Let's say we're building a payroll system. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/). Here's what violates Single Responsibility Principle:
 
@@ -332,6 +334,7 @@ Every change affects the same data type (`Employee`). Merge conflicts galore. Ch
 
 
 ### The Solution: Separate the Actors
+{: .no_toc }
 
 Below make sure to realize that now the code is dispatched among different files.
 
@@ -672,6 +675,7 @@ members = [
 ```
 
 ### Rust-Specific Notes
+{: .no_toc }
 
 1. **No methods on data structs**: In Rust, we're not forced to put methods on types. We can have "plain old data" (POD) structs and separate modules/types for behavior. This naturally encourages Single Responsibility Principle.
 
@@ -729,6 +733,7 @@ src/
 ```
 
 ### When to apply the Single Responsibility Principle (SRP)?
+{: .no_toc }
 
 Context: It is 8 AM. Coffee in one hand, eyes on the screen, we are reviewing yesterday’s code.
 
@@ -761,6 +766,7 @@ Context: It is 8 AM. Coffee in one hand, eyes on the screen, we are reviewing ye
 ## 2. Open-Closed Principle (OCP)
 
 ### The Principle
+{: .no_toc }
 
 > "Software entities should be open for extension but closed for modification."
 
@@ -769,6 +775,7 @@ In other words: when requirements change, we should be able to add new behavior 
 This sounds like black magic, but it's actually straightforward: **depend on abstractions (traits), not concretions**. When we need new behavior, implement a new type that satisfies the trait.
 
 ### The Problem: Modification Hell
+{: .no_toc }
 
 Let's build a report generator that can output different formats:
 
@@ -821,6 +828,7 @@ impl Report {
 **This violates Open-Closed Principle**: adding a new format requires modifying existing code.
 
 ### The Solution: Trait-Based Extension
+{: .no_toc }
 
 ```rust
 // Define the abstraction
@@ -904,6 +912,7 @@ fn main() {
 Now adding XML (or JSON, or Markdown, or whatever) requires **zero changes** to `Report` or existing formatters. we just add a new type.
 
 ### Taking It Further: Static Dispatch
+{: .no_toc }
 
 If we want to avoid dynamic dispatch overhead:
 
@@ -918,6 +927,7 @@ impl Report {
 This uses monomorphization - the compiler generates a specialized version for each formatter type at compile time. Zero runtime cost, full extensibility.
 
 ### Real-World Example: Plugin System
+{: .no_toc }
 
 Open-Closed Principle shines in plugin architectures. Imagine a text editor with plugins:
 
@@ -969,6 +979,7 @@ impl Plugin for GitPlugin {
 The editor is **closed** (we don't modify it) but **open** (we can extend it).
 
 ### Rust-Specific Notes
+{: .no_toc }
 
 1. **Trait objects vs generics**:
    - Use `&dyn Trait` when we need runtime polymorphism (heterogeneous collections)
@@ -999,6 +1010,7 @@ The editor is **closed** (we don't modify it) but **open** (we can extend it).
 
 
 ### When to Apply the Open-Closed Principle (OCP)?
+{: .no_toc }
 
 Context: It is 8:10 AM. Coffee is still hot. A new feature request just arrived.
 
@@ -1022,6 +1034,7 @@ Context: It is 8:10 AM. Coffee is still hot. A new feature request just arrived.
 ## 3. Liskov Substitution Principle (LSP)
 
 ### The Principle
+{: .no_toc }
 
 > "Functions that use references to base classes must be able to use objects of derived classes without knowing it."
 
@@ -1032,6 +1045,7 @@ In Rust terms:
 LSP is about **keeping promises**. If our trait says "this method returns the sum of two numbers", then every implementation better return the sum - not the difference, not a random number, not a side effect.
 
 ### The Problem: Surprising Substitutions
+{: .no_toc }
 
 Classic example from OOP - the Rectangle/Square problem:
 
@@ -1098,6 +1112,7 @@ fn process_shape(shape: &mut dyn Shape) {
 **The violation**: `Square` doesn't truly substitute for `Shape`. The caller expects setting width and height independently, but `Square` violates that expectation.
 
 ### The Solution: Better Abstractions
+{: .no_toc }
 
 Don't force types into hierarchies they don't belong in. Model what they actually are:
 
@@ -1158,6 +1173,7 @@ fn print_shape_info(shape: &dyn Shape) {
 No mutation, no violated expectations. Each shape upholds the `Shape` contract.
 
 ### Real-World Example: Storage Backends
+{: .no_toc }
 
 Let's say we're building a key-value store with multiple backends:
 
@@ -1238,6 +1254,7 @@ The `FileStorage` violates LSP in multiple ways:
 - Return values don't match semantics (delete returns true for non-existent files)
 
 ### The Fix: Make Contracts Explicit
+{: .no_toc }
 
 ```rust
 use std::path::{Path, PathBuf};
@@ -1310,6 +1327,7 @@ Now all implementations have the same contract:
 - Callers can substitute any `Storage` without surprises
 
 ### Rust-Specific Notes
+{: .no_toc }
 
 1. **Type system enforces LSP**: Unlike dynamic languages, Rust's type system catches many LSP violations at compile time. If our trait method signature is `fn foo(&self) -> i32`, we can't accidentally return a `String`.
 
@@ -1325,6 +1343,7 @@ Now all implementations have the same contract:
 4. **Don't overuse inheritance thinking**: Coming from OOP, we might force types into "is-a" relationships. In Rust, prefer composition and focused traits.
 
 ### Rules of Thumb for LSP
+{: .no_toc }
 
 1. **Preconditions cannot be strengthened**: If the trait accepts any string, implementations can't suddenly require non-empty strings
 2. **Postconditions cannot be weakened**: If the trait promises to return a value, implementations can't return `None` in cases where the trait wouldn't
@@ -1340,6 +1359,7 @@ Now all implementations have the same contract:
 
 
 ### When to Apply the Liskov Substitution Principle (LSP)?
+{: .no_toc }
 
 Context: It is 8:20 AM. You replaced an implementation with another one. Tests start failing.
 
@@ -1364,13 +1384,14 @@ Context: It is 8:20 AM. You replaced an implementation with another one. Tests s
 ## 4. Interface Segregation Principle (ISP)
 
 ### The Principle
+{: .no_toc }
 
 > "No client should be forced to depend on methods it does not use."
 
 In other words: don't create fat traits that do everything. Split them into focused, cohesive traits.
 
 ### The Problem: The God Trait
-
+{: .no_toc }
 Imagine we're building a document management system:
 
 ```rust
@@ -1416,6 +1437,7 @@ pub trait Document {
 5. **Binary bloat** - even if we only use reading, we pay for the whole trait in compile time and binary size
 
 ### The Solution: Role-Based Traits
+{: .no_toc }
 
 Split the god trait into focused interfaces:
 
@@ -1546,6 +1568,7 @@ impl Readable for ArchiveDocument {
 ```
 
 ### Real-World Example: Database Connections
+{: .no_toc }
 
 ```rust
 // BAD: One size fits all
@@ -1611,6 +1634,7 @@ impl Preparable for ReadOnlyConnection {
 ```
 
 ### Combining Traits
+{: .no_toc }
 
 When we need multiple capabilities, Rust makes it easy:
 
@@ -1637,6 +1661,7 @@ where
 ```
 
 ### Rust-Specific Notes
+{: .no_toc }
 
 1. **Trait composition is zero-cost**: When we write `impl Readable + Writable`, there's no runtime overhead. It's just compile-time checking.
 
@@ -1664,6 +1689,7 @@ where
 4. **Auto traits**: Rust has special marker traits like `Send`, `Sync`, `Copy`. These are automatically implemented when applicable, which is perfect ISP - we get the interface only when it makes sense.
 
 ### When to Split Traits
+{: .no_toc }
 
 Ask ourself:
 - Do all implementors support all methods?
@@ -1681,6 +1707,7 @@ If yes to any of these, consider splitting the trait.
 
 
 ### When to Apply the Interface Segregation Principle (ISP)?
+{: .no_toc }
 
 Context: It is 7:50 AM. The office is empty and the coffee damn hot. You review the interface implemented yesterday and immediately you feel uncomfortable.
 
@@ -1703,6 +1730,7 @@ Context: It is 7:50 AM. The office is empty and the coffee damn hot. You review 
 ## 5. Dependency Inversion Principle (DIP)
 
 ### The Principle
+{: .no_toc }
 
 > "High-level modules should not depend on low-level modules. Both should depend on abstractions."
 
@@ -1714,6 +1742,7 @@ This is the **cornerstone of Clean Architecture**. It's what allows we to build 
 In Rust terms: **our high-level business logic should depend on traits, and low-level details (I/O, databases, frameworks) should implement those traits.**
 
 ### The Problem: Direct Dependencies
+{: .no_toc }
 
 Let's build a user registration service:
 
@@ -1790,6 +1819,7 @@ UserRegistrationService --> PostgresUserRepository --> postgres crate
 ```
 
 ### The Solution: Invert the Dependency
+{: .no_toc }
 
 ```rust
 // Define abstraction (owned by high-level module)
@@ -1911,6 +1941,7 @@ UserRegistrationService --> UserRepository <-- PostgresUserRepository
 Both high-level and low-level depend on the abstraction!
 
 ### Testing Becomes Trivial
+{: .no_toc }
 
 ```rust
 #[cfg(test)]
@@ -1953,6 +1984,7 @@ mod tests {
 ```
 
 ### Real-World: Hexagonal Architecture
+{: .no_toc }
 
 DIP is the foundation of Hexagonal/Ports & Adapters architecture:
 
@@ -2082,6 +2114,7 @@ pub mod adapters {
 The beauty: **we can swap any adapter without touching business logic**. Want to switch from Postgres to MongoDB? Implement `OrderRepository` for MongoDB. Want to switch from Stripe to PayPal? Implement `PaymentGateway` for PayPal. The domain is completely isolated.
 
 ### Rust-Specific Notes
+{: .no_toc }
 
 1. **Generic vs Trait Objects**:
    ```rust
@@ -2126,6 +2159,7 @@ The beauty: **we can swap any adapter without touching business logic**. Want to
 
 
 ### When to Apply the Dependency Inversion Principle (DIP)?
+{: .no_toc }
 
 Context: It is 8:05 AM. Double espresso. Thank God it’s Friday, but the week is not over yet. You want to test your code, but everything depends on concrete details.
 
@@ -2162,19 +2196,18 @@ Context: It is 8:05 AM. Double espresso. Thank God it’s Friday, but the week i
 ## Conclusion: SOLID in Rust Context
 
 ### Key Takeaways
+{: .no_toc }
 
 1. **Single Responsibility Principle**: Separate code by the actors that change it. In Rust, this often means separate modules or structs, not cramming everything into methods on one type.
-
 2. **Open-Closed Principle**: Use traits for extension points. Rust's trait system + enums + pattern matching give we powerful tools for open-closed designs.
-
 3. **LSP**: Make sure our trait implementations honor the contract. Rust's type system catches many violations, but we still need to ensure semantic correctness.
-
 4. **ISP**: Don't create god traits. Split them into focused, cohesive interfaces that clients can compose as needed.
-
 5. **DIP**: Depend on traits (abstractions), not concrete types. Structure our crates so high-level business logic doesn't depend on low-level infrastructure.
 
-### SOLID ≠ Architecture
 
+
+### SOLID != Architecture
+{: .no_toc }
 Remember: Uncle Bob is clear that SOLID is about the **mid-level** (modules, classes, functions). It's not the whole story:
 
 - **Component principles** (coming in Part 4 of Clean Architecture) deal with how to organize crates and manage coupling between them
@@ -2183,6 +2216,7 @@ Remember: Uncle Bob is clear that SOLID is about the **mid-level** (modules, cla
 SOLID is the **foundation**. Get these principles right at the class/module level, and we'll have solid components. Get solid components, and we can build solid architectures.
 
 ### Rust Makes SOLID Easier (Mostly)
+{: .no_toc }
 
 Rust's design actually encourages many SOLID principles:
 
@@ -2194,24 +2228,26 @@ Rust's design actually encourages many SOLID principles:
 
 The one challenge: Rust's explicitness can make DIP feel verbose (lots of generics, trait bounds). But that's actually a feature - the compiler is making dependencies explicit and checking them at compile time.
 
+
+
 ### Next Steps
+{: .no_toc }
 
-If we're enjoying Clean Architecture:
+* **Practice**: Let's refactor some of our own code using these principles. Let's start simple, with one principle at a time.
+* Read the rest of the book Clean Architecture:
+    * **Part 4 (Component Principles)**: Learn about organizing crates, managing coupling between components
+    * **Part 5 (Architecture)**: The big picture - layers, boundaries, the famous Dependency Rule
 
-1. **Part 4 (Component Principles)**: Learn about organizing crates, managing coupling between components
-2. **Part 5 (Architecture)**: The big picture - layers, boundaries, the famous Dependency Rule
-3. **Practice**: Refactor some of our own code using these principles. Start with one principle at a time.
+We should remember these are **principles**, not rules. There are times when violating them is the pragmatic choice. The key is to **know** we're violating them and why.
 
-And remember: these are **principles**, not rules. There are times when violating them is the pragmatic choice. The key is to **know** we're violating them and why.
-
-Now go forth and write clean Rust! 🦀
+Now let's write cleaner Rust! 🦀
 
 
 
 ## References & Further Reading
 
 - [Clean Architecture](https://amzn.eu/d/9CJWwcy) by Robert C. Martin - the source material
-- [serodriguez68/clean-architecture](https://github.com/serodriguez68/clean-architecture) - excellent summary of the book
+- [serodriguez68/clean-architecture](https://github.com/serodriguez68/clean-architecture) - detailed summary of the book
 - Rust's trait system: https://doc.rust-lang.org/book/ch10-02-traits.html
 - Hexagonal Architecture: https://alistair.cockburn.us/hexagonal-architecture/
 - [Rust is not a faster horse](https://www.youtube.com/watch?v=4YU_r70yGjQ) - Understanding how Rust's paradigm differs from OOP
@@ -2223,6 +2259,7 @@ Now go forth and write clean Rust! 🦀
 </div>
 
 
+<!--
 ## Appendix: Quick Reference Card
 
 ```rust
@@ -2251,3 +2288,4 @@ trait Writable { fn write(&mut self, data: &str); }
 struct Service<R: Repository> { repo: R }
 // Not: struct Service { repo: PostgresRepo }
 ```
+-->

@@ -198,9 +198,13 @@ Callouts : https://just-the-docs.com/docs/ui-components/callouts/
 
 
 
+### Video avec légende
+<figure style="text-align: center;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <figcaption>I love the opening theme. It gives me goosebumps every time.</figcaption>
+</figure>
 
-
-### Image avec commentaire
+### Image avec légende
 <div align="center">
 <img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/><br/>
 <span>1986...</span>
