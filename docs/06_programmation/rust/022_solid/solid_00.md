@@ -168,12 +168,15 @@ Rust has features that greatly facilitate the implementation of SOLID principles
 Alright, enough philosophy. It is dogfight time! Let's dive into each principle with real code.
 
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br/>
 <span>I love the opening theme. It gives me goosebumps every time.</span>
-</div>
+</div> -->
 
-
+<figure style="text-align: center;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <figcaption>I love the opening theme. It gives me goosebumps every time.</figcaption>
+</figure>
 
 
 
@@ -688,8 +691,8 @@ src/
 │   └── repository.rs        ← save/load
 │   └── db.rs                ← Database, DbError
 │
-└── hr/                      ← HR team's module
-    └── reporting.rs         ← generate_report
+├── hr/                      ← HR team's module
+│   └── reporting.rs         ← generate_report
 ```
 
 2. **Module organization**: we can organize our crate like this:
