@@ -125,6 +125,7 @@ Here's the thing: **SOLID** isn't about the language features - it's about **org
 The principles are about managing dependencies, separating concerns, and making our code maintainable as it grows.
 
 ### The "One Binary" Question
+{: .no_toc }
 
 Let's address the elephant in the room right now: the author talks a lot about "components" that can be independently deployed (JARs, DLLs, Gems). In Rust, we typically compile everything into a single binary. Does this make SOLID irrelevant? Absolutely not and here's why:
 
@@ -141,7 +142,11 @@ Let's address the elephant in the room right now: the author talks a lot about "
 
 Think of it this way: when the Death Star blows up, it doesn't matter that it was one giant structure - what matters is that the exhaust port was poorly isolated from the reactor core. Dependencies matter, even in a monolith.
 
+
+
+
 ### What SOLID Means at the Mid-Level
+{: .no_toc }
 
 Uncle Bob is clear: SOLID operates at the **module/class level**, not at the architectural level (that's coming later in the book) and not at the `for loop` level either. In Rust terms:
 - **Module** = a group of related functions and types (`mod`)
@@ -155,6 +160,7 @@ SOLID tells us how to organize these pieces so that:
 - They don't create ripple effects when modified
 
 ### Rust's Secret Weapons for SOLID
+{: .no_toc }
 
 Rust has features that greatly facilitate the implementation of SOLID principles:
 
