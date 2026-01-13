@@ -3,9 +3,9 @@ published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide"
-description: "A gentle introduction and illustration of SOLID principles with Rust"
+description: "A gentle introduction to SOLID principles using Rust."
 parent: "Rust"
-nav_order: 12
+nav_order: 31
 date:               2026-01-12 16:00:00
 last_modified_date: 2026-01-12 16:00:00
 ---
@@ -14,7 +14,7 @@ last_modified_date: 2026-01-12 16:00:00
 # SOLID Principles in Rust: A Practical Guide
 {: .no_toc }
 
-A gentle introduction and illustration of SOLID principles with Rust
+A gentle introduction to SOLID principles using Rust.
 {: .lead }
 
 
@@ -36,11 +36,23 @@ TODO
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
+* You are not an expert in Rust but you're not a newbie either.
+* SOLID
+    * **S**ingle Responsibility Principle:
+    * **O**pen-Closed Principle:
+    * **L**iskov Substitution Principle:
+    * **I**nterface Segregation Principle:
+    * **D**ependency Inversion Principle:
+* Play, break, rebuild the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub
+* SOLID help us at the mid level
+    - **Module** = a group of related functions and types (`mod`)
+    - **Component** = a crate (lib or binary)
+    - **Class** = a `struct` with associated functions and trait implementations
 
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
 <span>1986</span>
 </div>
 
@@ -61,21 +73,31 @@ TODO
 
 ## Introduction: Why Should I Care About SOLID?
 
-So we're reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) and wondering how these principles, born in the world of Java and C#, apply to Rust. Fair question. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and everything compiles into a single binary. So what gives?
+I'm, by far, not an expert. However, I still have in mind the project to rewrite in Rust my [Fraud Detection project (Python)](https://github.com/40tude/fraud_detection_2) and I would like to make sure it follows the good practices. In addition, the more I read and the more I use Rust, the more I want to learn how to leverage the type system to define the architecture/design of my applications.
+
+In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are not complete and does not work. However, here they are hard to avoid. This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. At the time of writing it is working, not yet perfect but working. And you know what? Regarding the snippets of this article... I did'nt say my last ward and I may decide to rewrite them so that we can copy/paste them in our best friend, aka Rust Playground. We will see...
+
+Anyway, I'm reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) and wondering how these principles, born in the world of Java and C#, apply to Rust. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and everything compiles into a single binary. So what gives?
 
 <div align="center">
-<img src="./assets/img02.webp" alt="" width="600" loading="lazy"/><br/>
-<span>2017 - https://amzn.eu/d/2khTpqS</span>
+<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
+<span>2017 - <a href="https://amzn.eu/d/2khTpqS" target="_blank">Clean Architecture</a></span>
 </div>
 
 
-Here's the thing: **SOLID** isn't about the language features - it's about **organizing our code so it doesn't turn into a tangled mess that makes we want to rage-quit and become a farmer**. The principles are about managing dependencies, separating concerns, and making our code maintainable as it grows.
+
+Here's the thing: **SOLID** isn't about the language features - it's about **organizing our code so it doesn't turn into a tangled mess that makes us want to rage-quit and become a farmer**.
+
+<div align="center">
+<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>2017 - <a href="https://amzn.eu/d/2khTpqS" target="_blank">Clean Architecture</a></span> -->
+</div>
+
+The principles are about managing dependencies, separating concerns, and making our code maintainable as it grows.
 
 ### The "One Binary" Question
 
-Let's address the elephant in the room right now: Uncle Bob talks a lot about "components" that can be independently deployed (JARs, DLLs, Gems). In Rust, we typically compile everything into a single binary. Does this make SOLID irrelevant?
-
-**Absolutely not.** Here's why:
+Let's address the elephant in the room right now: the author talks a lot about "components" that can be independently deployed (JARs, DLLs, Gems). In Rust, we typically compile everything into a single binary. Does this make SOLID irrelevant? Absolutely not and here's why:
 
 1. **Independence is logical, not physical**: When we talk about "independent components" in SOLID, we're really talking about modules/crates that:
    - Have clear boundaries (traits)
@@ -92,7 +114,7 @@ Think of it this way: when the Death Star blows up, it doesn't matter that it wa
 
 ### What SOLID Means at the Mid-Level
 
-Uncle Bob is clear: SOLID operates at the **module/class level**, not at the architectural level (that's coming later in the book). In Rust terms:
+Uncle Bob is clear: SOLID operates at the **module/class level**, not at the architectural level (that's coming later in the book) and not at the `for loop` level either. In Rust terms:
 - **Module** = a group of related functions and types (`mod`)
 - **Component** = a crate (library or binary)
 - **Class** = a `struct` with associated functions and trait implementations
@@ -105,7 +127,7 @@ SOLID tells us how to organize these pieces so that:
 
 ### Rust's Secret Weapons for SOLID
 
-Rust actually has some incredible features that make SOLID principles easier to apply than in other languages:
+Rust has features that greatly facilitate the implementation of SOLID principles:
 
 - **Traits**: Perfect abstraction mechanism (interfaces without the baggage)
 - **Ownership system**: Forces us to think about responsibilities and boundaries
@@ -118,9 +140,9 @@ Alright, enough philosophy. Let's dive into each principle with real code.
 
 
 <div align="center">
-<img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
-<span>1984 - https://www.youtube.com/watch?v=KrLFEHeKNBw</span>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=54" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
 
 
 ## 1. Single Responsibility Principle (SRP)
@@ -133,11 +155,11 @@ Or, as Uncle Bob refines it:
 
 > "A module should be responsible to one, and only one, actor."
 
-This is **NOT** "do one thing" (that's for functions). SRP is about **reasons to change**. If our module changes because the accounting department wants something AND because the operations team wants something, we've got two reasons to change - that's a violation.
+This is **NOT** "do one thing" (that's for functions). Single Responsibility Principle is about **reasons to change**. If our module changes because the accounting department wants something AND because the operations team wants something, we've got two reasons to change - that's a violation.
 
 ### The Problem: Accidental Coupling
 
-Let's say we're building a payroll system. Here's what violates SRP:
+Let's say we're building a payroll system. Here's what violates Single Responsibility Principle:
 
 ```rust
 pub struct Employee {
@@ -195,12 +217,15 @@ Now imagine:
 - DBAs want to switch from SQL to NoSQL
 - HR wants reports in JSON instead of text
 
-Every change affects the same type. Merge conflicts galore. Changes for one team risk breaking functionality for another team.
+Every change affects the same data type. Merge conflicts galore. Changes for one team risk breaking functionality for another team.
 
 ### The Solution: Separate the Actors
 
+Below make sure to realize that now the code is dispatched among different files.
+
 {% raw %}
 ```rust
+// src/domain/employee.rs
 // Core data - this is just data, no behavior
 pub struct Employee {
     pub id: u32,
@@ -208,7 +233,12 @@ pub struct Employee {
     pub hours_worked: f64,
     pub rate: f64,
 }
+```
 
+
+
+```rust
+// src/accounting/payroll.rs
 // Accounting's responsibility
 pub struct PayrollCalculator;
 
@@ -219,8 +249,13 @@ impl PayrollCalculator {
         regular_hours * employee.rate + overtime_hours * employee.rate * 1.5
     }
 }
+```
 
-// Operations' responsibility
+
+
+```rust
+// src/operations/overtime.rs
+// // Operations' responsibility
 pub struct OvertimeTracker;
 
 impl OvertimeTracker {
@@ -228,7 +263,11 @@ impl OvertimeTracker {
         (employee.hours_worked - 40.0).max(0.0)
     }
 }
+```
 
+
+```rust
+// src/infrastructure/repository.rs
 // Infrastructure/DBA's responsibility
 pub struct EmployeeRepository {
     db: Database,
@@ -247,7 +286,12 @@ impl EmployeeRepository {
         todo!()
     }
 }
+```
 
+
+
+```rust
+// src/hr/reporting.rs
 // HR's responsibility
 pub struct EmployeeReporter;
 
@@ -280,11 +324,51 @@ Now:
 - If payroll rules change, only `PayrollCalculator` changes
 - If we switch databases, only `EmployeeRepository` changes
 - If HR wants new report formats, only `EmployeeReporter` changes
-- Each actor owns their own code
+- Each actor owns their own code meaning
+
+**Independant testing**
+```powershell
+
+cargo test --package accounting   # Only accounting tests
+cargo test --package hr           # Only HR tests
+```
+
+**Independant deploiement (if Rust Workspaces)**
+
+```toml
+# Cargo.toml (workspace root)
+[workspace]
+members = [
+    "domain",
+    "accounting",
+    "operations",
+    "infrastructure",
+    "hr",
+]
+```
 
 ### Rust-Specific Notes
 
-1. **No methods on data structs**: In Rust, we're not forced to put methods on types. We can have "plain old data" (POD) structs and separate modules/types for behavior. This naturally encourages SRP.
+1. **No methods on data structs**: In Rust, we're not forced to put methods on types. We can have "plain old data" (POD) structs and separate modules/types for behavior. This naturally encourages Single Responsibility Principle.
+
+2. **Files Organization**
+```
+src/
+├── domain/
+│   └── employee.rs          ← Just data, no behavior
+│
+├── accounting/              ← Accounting team's module
+│   └── payroll.rs           ← calculate_pay
+│
+├── operations/              ← Operations team's module
+│   └── overtime.rs          ← calculate_overtime_hours
+│
+├── infrastructure/          ← DBA team's module
+│   └── repository.rs        ← save/load
+│
+└── hr/                      ← HR team's module
+    └── reporting.rs         ← generate_report
+```
 
 2. **Module organization**: we can organize our crate like this:
    ```
@@ -298,9 +382,30 @@ Now:
 
 3. **Ownership clarifies responsibility**: When we pass `&Employee` vs `Employee` vs `&mut Employee`, we're being explicit about responsibility. The repository needs mutable access to the DB but not to employees. The calculator needs read-only access to employees.
 
-### When to Apply SRP
+**Note**:
+This is more or less the organization in the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) where we have something similar.
+
+```
+src/
+├── domain/          ← Core data (Employee equivalent)
+├── services/        ← Business logic teams
+│   ├── pricing_calculator.rs   ← Accounting team
+│   └── order_service.rs        ← Operations team
+├── adapters/        ← Infrastructure teams
+│   ├── repository.rs           ← DBA team
+│   └── notifier.rs             ← Customer Service team
+
+```
+
+### When to Apply Single Responsibility Principle?
 
 Ask ourself: "If I had to change this code, what would be the reason?" If we can think of multiple unrelated reasons (different stakeholders/actors), we probably need to split it.
+
+
+<div align="center">
+<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
+<span><a href="https://www.youtube.com/watch?v=KrLFEHeKNBw" target="_blank">1984</a></span>
+</div>
 
 
 
@@ -364,7 +469,7 @@ impl Report {
 4. Risk breaking existing formats
 5. Every developer working on reports has merge conflicts
 
-**This violates OCP**: adding a new format requires modifying existing code.
+**This violates Open-Closed Principle**: adding a new format requires modifying existing code.
 
 ### The Solution: Trait-Based Extension
 
@@ -465,7 +570,7 @@ This uses monomorphization - the compiler generates a specialized version for ea
 
 ### Real-World Example: Plugin System
 
-OCP shines in plugin architectures. Imagine a text editor with plugins:
+Open-Closed Principle shines in plugin architectures. Imagine a text editor with plugins:
 
 ```rust
 pub trait Plugin {
@@ -1590,7 +1695,7 @@ The beauty: **we can swap any adapter without touching business logic**. Want to
 
 
 <div align="center">
-<img src="./assets/img03.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>1984</span> -->
 </div>
 
@@ -1598,9 +1703,9 @@ The beauty: **we can swap any adapter without touching business logic**. Want to
 
 ### Key Takeaways
 
-1. **SRP**: Separate code by the actors that change it. In Rust, this often means separate modules or structs, not cramming everything into methods on one type.
+1. **Single Responsibility Principle**: Separate code by the actors that change it. In Rust, this often means separate modules or structs, not cramming everything into methods on one type.
 
-2. **OCP**: Use traits for extension points. Rust's trait system + enums + pattern matching give we powerful tools for open-closed designs.
+2. **Open-Closed Principle**: Use traits for extension points. Rust's trait system + enums + pattern matching give we powerful tools for open-closed designs.
 
 3. **LSP**: Make sure our trait implementations honor the contract. Rust's type system catches many violations, but we still need to ensure semantic correctness.
 
@@ -1650,7 +1755,7 @@ Now go forth and write clean Rust! 🦀
 - Rust's trait system: https://doc.rust-lang.org/book/ch10-02-traits.html
 - Hexagonal Architecture: https://alistair.cockburn.us/hexagonal-architecture/
 - [Rust is not a faster horse](https://www.youtube.com/watch?v=4YU_r70yGjQ) - Understanding how Rust's paradigm differs from OOP
-- The [companion project](https://github.com/40tude/coffee-shop-solid) on GitHub (Coffee Shop Order System)
+- The [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub.
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="600" loading="lazy"/><br/>
@@ -1661,12 +1766,12 @@ Now go forth and write clean Rust! 🦀
 ## Appendix: Quick Reference Card
 
 ```rust
-// SRP: One reason to change
+// Single Responsibility Principle: One reason to change
 struct Employee { /* data */ }
 struct PayrollCalculator; // Accounting's responsibility
 struct EmployeeRepository; // DBA's responsibility
 
-// OCP: Open for extension, closed for modification
+// Open-Closed Principle: Open for extension, closed for modification
 trait ReportFormatter { fn format(&self) -> String; }
 struct PdfFormatter;
 impl ReportFormatter for PdfFormatter { /* ... */ }
