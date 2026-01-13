@@ -34,6 +34,7 @@ TODO
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
 * You are not an expert in Rust but you're not a newbie either.
@@ -57,6 +58,19 @@ TODO
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Table of Contents
@@ -68,14 +82,25 @@ TODO
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
 
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Introduction: Why Should I Care About SOLID?
 
 I'm, by far, not an expert. However, I still have in mind the project to rewrite in Rust my [Fraud Detection project (Python)](https://github.com/40tude/fraud_detection_2) and I would like to make sure it follows the good practices. In addition, the more I read and the more I use Rust, the more I want to learn how to leverage the type system to define the architecture/design of my applications.
 
-In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are not complete and does not work. However, here they are hard to avoid. This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. At the time of writing it is working, not yet perfect but working. And you know what? Regarding the snippets of this article... I did'nt say my last ward and I may decide to rewrite them so that we can copy/paste them in our best friend, aka Rust Playground. We will see...
+In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are not complete and does not work. However, here they are hard to avoid. This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. At the time of writing it is working, not yet perfect but working. And you know what? Regarding the snippets of this article... I did'nt say my last ward and I may decide to rewrite them so that we can copy/paste them in our best friend, aka [Rust Playground](https://play.rust-lang.org/). We will see...
 
 Anyway, I'm reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) and wondering how these principles, born in the world of Java and C#, apply to Rust. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and everything compiles into a single binary. So what gives?
 
@@ -145,6 +170,14 @@ Alright, enough philosophy. Let's dive into each principle with real code.
 
 
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 ## 1. Single Responsibility Principle (SRP)
 
 ### The Principle
@@ -155,11 +188,13 @@ Or, as Uncle Bob refines it:
 
 > "A module should be responsible to one, and only one, actor."
 
+Above, I understand the term "actor" as the thing, the person or the group of persons which can take decisions about the features of the module.
+
 This is **NOT** "do one thing" (that's for functions). Single Responsibility Principle is about **reasons to change**. If our module changes because the accounting department wants something AND because the operations team wants something, we've got two reasons to change - that's a violation.
 
 ### The Problem: Accidental Coupling
 
-Let's say we're building a payroll system. Here's what violates Single Responsibility Principle:
+Let's say we're building a payroll system. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/). Here's what violates Single Responsibility Principle:
 
 ```rust
 use std::fmt;
@@ -270,11 +305,12 @@ Pay: $950.00
 ```
 
 
-**What's wrong here?** This `Employee` type serves **four different actors**:
+**What's wrong here?** This `Employee` data type serves **four different actors**:
 1. **Accounting** - needs `calculate_pay()`
 2. **Operations** - needs `calculate_overtime_hours()`
 3. **DBAs** - need `save()`
 4. **HR** - needs `generate_report()`
+And all theses methods belong to the same object.
 
 Now imagine:
 - Accounting wants to change overtime calculation rules
@@ -282,7 +318,9 @@ Now imagine:
 - DBAs want to switch from SQL to NoSQL
 - HR wants reports in JSON instead of text
 
-Every change affects the same data type. Merge conflicts galore. Changes for one team risk breaking functionality for another team.
+Every change affects the same data type (`Employee`). Merge conflicts galore. Changes for one team risk breaking functionality for another team.
+
+
 
 ### The Solution: Separate the Actors
 
@@ -385,7 +423,7 @@ impl EmployeeReporter {
 ```
 {% endraw %}
 
-Since I hate you code snippets that doesn't work (the evil is in the details), find below a multi modal, yet monolithic version of the previous code that you can copy and paste in Rust Playground. It is not yet perfect. Here we focus on dispatching responsibilities.
+Since I hate you code snippets that doesn't work (the evil is in the details), find below a multi modal, yet monolithic version of the previous code that you can copy and paste in [Rust Playground](https://play.rust-lang.org/). It is not yet perfect but keep in mind we focus on separating the actors.
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="900" loading="lazy"/><br/>
@@ -603,14 +641,14 @@ Now:
 - If HR wants new report formats, only `EmployeeReporter` changes
 - Each actor owns their own code meaning
 
-**Independant testing**
-```powershell
+The teams can run independent testing
 
+```powershell
 cargo test --package accounting   # Only accounting tests
 cargo test --package hr           # Only HR tests
 ```
 
-**Independant deploiement (if Rust Workspaces)**
+We can have independent deployment (if Rust Workspaces)
 
 ```toml
 # Cargo.toml (workspace root)
@@ -649,6 +687,7 @@ src/
 ```
 
 2. **Module organization**: we can organize our crate like this:
+
    ```
    src/
      employee.rs         // Core data type
@@ -659,7 +698,11 @@ src/
      db.rs               // Database
    ```
 
+If you hesitate when I talk about, files, crates, modules... Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
+
+
 3. **Ownership clarifies responsibility**: When we pass `&Employee` vs `Employee` vs `&mut Employee`, we're being explicit about responsibility. The repository needs mutable access to the DB but not to employees. The calculator needs read-only access to employees.
+
 
 **Note**:
 This is more or less the organization in the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) where we have something similar.
@@ -676,7 +719,7 @@ src/
 
 ```
 
-### When to Apply Single Responsibility Principle?
+### When to Single Responsibility Principle (SRP)?
 
 Ask ourself: "If I had to change this code, what would be the reason?" If we can think of multiple unrelated reasons (different stakeholders/actors), we probably need to split it.
 
@@ -688,6 +731,19 @@ Ask ourself: "If I had to change this code, what would be the reason?" If we can
 
 
 
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 2. Open-Closed Principle (OCP)
 
 ### The Principle
@@ -925,6 +981,24 @@ The editor is **closed** (we don't modify it) but **open** (we can extend it).
 
 
 
+
+### When to Apply Open-Closed Principle (OCP)
+
+<!-- TODO -->
+Ask ourself: XXXXXXXXXXXX
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 3. Liskov Substitution Principle (LSP)
 
 ### The Principle
@@ -1239,6 +1313,27 @@ Now all implementations have the same contract:
 
 
 
+
+
+
+
+
+### When to Apply Liskov Substitution Principle (LSP)?
+
+<!-- TODO -->
+Ask ourself: XXXXXXXXXXXX
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 4. Interface Segregation Principle (ISP)
 
 ### The Principle
@@ -1553,6 +1648,28 @@ If yes to any of these, consider splitting the trait.
 
 
 
+
+
+
+
+
+### When to Apply Interface Segregation Principle (ISP)?
+
+<!-- TODO -->
+Ask ourself: XXXXXXXXXXXX
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 5. Dependency Inversion Principle (DIP)
 
 ### The Principle
@@ -1973,9 +2090,36 @@ The beauty: **we can swap any adapter without touching business logic**. Want to
 4. **The "one binary" concern**: Even though Rust compiles to one binary, the crate structure enforces dependency direction at compile time. we **cannot** accidentally import `postgres` in our domain crate if domain doesn't list it in `Cargo.toml`.
 
 
+
+
+
+
+
+### When to Apply Dependency Inversion Principle (DIP)?
+
+<!-- TODO -->
+Ask ourself: XXXXXXXXXXXX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>1984</span> -->
+<span>Let's avoid building this</span>
 </div>
 
 ## Conclusion: SOLID in Rust Context
