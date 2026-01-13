@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-13 13:00:00
+last_modified_date: 2026-01-13 18:00:00
 ---
 
 
