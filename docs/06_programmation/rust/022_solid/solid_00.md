@@ -393,7 +393,7 @@ Since I hate you code snippets that doesn't work (the evil is in the details), f
 </div>
 
 
-
+{% raw %}
 ```rust
 use std::fmt;
 
@@ -575,6 +575,8 @@ fn main() {
     );
 }
 ```
+{% endraw %}
+
 
 Expected output:
 
