@@ -104,9 +104,9 @@ Play, break, rebuild the [Coffee Shop Order System companion project](https://gi
 
 I'm, by far, not an expert. However, I still have in mind the project to rewrite in Rust my [Fraud Detection project (Python)](https://github.com/40tude/fraud_detection_2) and I would like to make sure it follows the good practices. In addition, the more I read and the more I use Rust, the more I want to learn how to leverage the type system to define the architecture/design of my applications.
 
-In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are not complete and does not work. However, here they are hard to avoid. This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. At the time of writing it is working, not yet perfect but working. And you know what? Regarding the snippets of this article... I did'nt say my last ward and I may decide to rewrite them so that we can copy/paste them in our best friend, aka [Rust Playground](https://play.rust-lang.org/). We will see...
+In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are incomplete and does not work. However, here they are hard to avoid. This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. It is a demo where I apply what is discussed her. At the time of writing it is working, not yet perfect but working. And you know what? Regarding the code snippets of this article... I did'nt say my last word and I may decide to rewrite them so that we can copy/paste them in our best friend, aka [Rust Playground](https://play.rust-lang.org/). We will see...
 
-Anyway, I'm reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) and wondering how these principles, born in the world of Java and C#, apply to Rust. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and everything compiles into a single binary. So what gives?
+Anyway, I'm reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) book and wondering how these principles, born in the world of Java and C#, apply to Rust. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and everything compiles into a single binary. So what gives?
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
@@ -173,11 +173,6 @@ Rust has features that greatly facilitate the implementation of SOLID principles
 
 Alright, enough philosophy. It is dogfight time! Let's dive into each principle with real code.
 
-
-<!-- <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br/>
-<span>I love the opening theme. It gives me goosebumps every time.</span>
-</div> -->
 
 <figure style="text-align: center;">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -441,11 +436,11 @@ impl EmployeeReporter {
 ```
 {% endraw %}
 
-Since I hate you code snippets that doesn't work (the evil is in the details), find below a multi modal, yet monolithic version of the previous code that you can copy and paste in [Rust Playground](https://play.rust-lang.org/). It is not yet perfect but keep in mind we focus on separating the actors.
+Again, I hate code snippets we can't "play" with. This is why you can find below a multi modal, yet monolithic version of the previous code that you can copy and paste in [Rust Playground](https://play.rust-lang.org/). It is not yet perfect but we are moving in the right direction and keep in mind we focus on separating the actors.
 
 <div align="center">
 <img src="./assets/img06.webp" alt="" width="900" loading="lazy"/><br/>
-<span>A begining of solution to our Single Responsibility Principle violation working in Rust Playground</span>
+<span>A solution to our SRP violation running in the Rust Playground</span>
 </div>
 
 
@@ -686,6 +681,8 @@ members = [
 1. **No methods on data structs**: In Rust, we're not forced to put methods on types. We can have "plain old data" (POD) structs and separate modules/types for behavior. This naturally encourages Single Responsibility Principle.
 
 2. **Files Organization**
+In the real life we could have something like:
+
 ```
 src/
 ├── domain/
@@ -705,7 +702,9 @@ src/
 │   └── reporting.rs         ← generate_report
 ```
 
-2. **Module organization**: we can organize our crate like this:
+3. **Module organization**:
+
+We can organize our crates like this:
 
    ```
    src/
@@ -719,8 +718,7 @@ src/
 
 If you hesitate when I talk about, files, crates, modules and module trees... Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
-
-3. **Ownership clarifies responsibility**: When we pass `&Employee` vs `Employee` vs `&mut Employee`, we're being explicit about responsibility. The repository needs mutable access to the DB but not to employees. The calculator needs read-only access to employees.
+4. **Ownership clarifies responsibility**: When we pass `&Employee` vs `Employee` vs `&mut Employee`, we're being explicit about responsibility. The repository needs mutable access to the DB but not to employees. The calculator needs read-only access to employees.
 
 
 **Note**:
@@ -746,7 +744,7 @@ Context: It is 8 AM. Coffee in one hand, eyes on the screen, we are reviewing ye
 **The question to ask:** *"If this code needs to change, who is requesting the change, and why?"*
 
 * If the answer points to **multiple actors** with different goals (business rules, persistence, presentation, infrastructure), then the code is likely doing too much and should be split.
-* The Single Responsibility Principle is less about counting changes and more about identifying **who has the authority** to demand them.
+* The Single Responsibility Principle is less about counting changes and more about identifying **who has the authority** to demand them. If that doesn't work for you, you can count the number of people/teams who can "write the specifications" or the number of people/teams "who will validate and accept the new features". If the number is larger than one, you're in trouble.
 * SRP is a thinking tool that helps us say: *"This code makes me nervous because too many people could ask me to change it."*
 
 
