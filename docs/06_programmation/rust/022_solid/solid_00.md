@@ -784,18 +784,23 @@ This sounds like black magic, but it's actually straightforward: **depend on abs
 Let's build a report generator that can output different formats:
 
 ```rust
+// This enum defines all supported report formats.
+// Adding a new format requires modifying this enum.
 pub enum ReportFormat {
     Text,
     Html,
     Pdf,
 }
 
+// This struct represents the report data.
 pub struct Report {
     title: String,
     data: Vec<String>,
 }
 
 impl Report {
+    // This method violates the Open-Closed Principle:
+    // each new format requires modifying this method.
     pub fn generate(&self, format: ReportFormat) -> String {
         match format {
             ReportFormat::Text => {
@@ -820,6 +825,47 @@ impl Report {
         }
     }
 }
+
+fn main() {
+    // Sample report data
+    let report = Report {
+        title: String::from("Monthly Sales"),
+        data: vec![
+            String::from("Product A: 120 units"),
+            String::from("Product B: 98 units"),
+            String::from("Product C: 143 units"),
+        ],
+    };
+
+    // Generate reports in different formats
+    let text_report = report.generate(ReportFormat::Text);
+    let html_report = report.generate(ReportFormat::Html);
+    let pdf_report = report.generate(ReportFormat::Pdf);
+
+    println!("--- TEXT REPORT ---\n{}", text_report);
+    println!("--- HTML REPORT ---\n{}", html_report);
+    println!("--- PDF REPORT ---\n{}", pdf_report);
+}
+```
+
+Expected output
+
+```powershell
+--- TEXT REPORT ---
+=== Monthly Sales ===
+- Product A: 120 units
+- Product B: 98 units
+- Product C: 143 units
+
+--- HTML REPORT ---
+<h1>Monthly Sales</h1>
+<ul>
+  <li>Product A: 120 units</li>
+  <li>Product B: 98 units</li>
+  <li>Product C: 143 units</li>
+</ul>
+--- PDF REPORT ---
+PDF: Monthly Sales [binary data]
 ```
 
 **What happens when we need XML output?** We have to:
@@ -852,7 +898,11 @@ impl Report {
     }
 }
 
-// Each format is a separate implementation - CLOSED for modification
+// =========================
+// Concrete formatters
+// =========================
+
+// Plain text output (same behavior as before)
 pub struct TextFormatter;
 
 impl ReportFormatter for TextFormatter {
@@ -865,6 +915,7 @@ impl ReportFormatter for TextFormatter {
     }
 }
 
+// HTML output (same structure as initial example)
 pub struct HtmlFormatter;
 
 impl ReportFormatter for HtmlFormatter {
@@ -878,47 +929,97 @@ impl ReportFormatter for HtmlFormatter {
     }
 }
 
+// Fake PDF output (same spirit as before)
 pub struct PdfFormatter;
 
 impl ReportFormatter for PdfFormatter {
-    fn format(&self, title: &str, data: &[String]) -> String {
+    fn format(&self, title: &str, _data: &[String]) -> String {
         format!("PDF: {} [binary data]", title)
     }
 }
 
-// Want XML? Just add a new type - NO MODIFICATION of existing code
+// New XML output - extension without modification
 pub struct XmlFormatter;
 
 impl ReportFormatter for XmlFormatter {
     fn format(&self, title: &str, data: &[String]) -> String {
-        let mut output = format!("<report>\n  <title>{}</title>\n  <items>\n", title);
+        let mut output = String::from("<report>\n");
+        output.push_str(&format!("  <title>{}</title>\n", title));
+        output.push_str("  <items>\n");
+
         for item in data {
             output.push_str(&format!("    <item>{}</item>\n", item));
         }
+
         output.push_str("  </items>\n</report>");
         output
     }
 }
 
+// =========================
 // Usage
+// =========================
+
 fn main() {
     let report = Report {
-        title: "Sales Q4".to_string(),
-        data: vec!["Item 1".to_string(), "Item 2".to_string()],
+        title: "Monthly Sales".to_string(),
+        data: vec![
+            "Product A: 120 units".to_string(),
+            "Product B: 98 units".to_string(),
+            "Product C: 143 units".to_string(),
+        ],
     };
 
-    println!("{}", report.generate(&TextFormatter));
-    println!("{}", report.generate(&HtmlFormatter));
-    println!("{}", report.generate(&XmlFormatter)); // New format, zero changes to Report
+    println!("--- TEXT ---\n{}", report.generate(&TextFormatter));
+    println!("--- HTML ---\n{}", report.generate(&HtmlFormatter));
+    println!("--- PDF ---\n{}", report.generate(&PdfFormatter));
+    println!("--- XML ---\n{}", report.generate(&XmlFormatter));
 }
+```
+Expected output
+
+```powershell
+--- TEXT ---
+=== Monthly Sales ===
+- Product A: 120 units
+- Product B: 98 units
+- Product C: 143 units
+
+--- HTML ---
+<h1>Monthly Sales</h1>
+<ul>
+  <li>Product A: 120 units</li>
+  <li>Product B: 98 units</li>
+  <li>Product C: 143 units</li>
+</ul>
+--- PDF ---
+PDF: Monthly Sales [binary data]
+--- XML ---
+<report>
+  <title>Monthly Sales</title>
+  <items>
+    <item>Product A: 120 units</item>
+    <item>Product B: 98 units</item>
+    <item>Product C: 143 units</item>
+  </items>
+</report>
 ```
 
 Now adding XML (or JSON, or Markdown, or whatever) requires **zero changes** to `Report` or existing formatters. we just add a new type.
 
+
+
+
+
+
+
+
+
 ### Taking It Further: Static Dispatch
 {: .no_toc }
 
-If we want to avoid dynamic dispatch overhead:
+
+If we want to avoid dynamic dispatch overhead we could use:
 
 ```rust
 impl Report {
@@ -928,59 +1029,682 @@ impl Report {
 }
 ```
 
-This uses monomorphization - the compiler generates a specialized version for each formatter type at compile time. Zero runtime cost, full extensibility.
+
+
+With the generic version, the compiler monomorphizes `generate()`. The compiler generates a specialized version for each formatter type at compile time.  This removes the vtable indirection at the cost of potentially larger binaries.
+
+
+```rust
+// =========================
+// Abstraction
+// =========================
+
+// Define the formatter abstraction
+pub trait ReportFormatter {
+    fn format(&self, title: &str, data: &[String]) -> String;
+}
+
+// The report doesn't know about specific formats
+pub struct Report {
+    title: String,
+    data: Vec<String>,
+}
+
+impl Report {
+    // Generic version using static dispatch
+    pub fn generate<F: ReportFormatter>(&self, formatter: &F) -> String {
+        formatter.format(&self.title, &self.data)
+    }
+}
+
+// =========================
+// Concrete formatters
+// =========================
+
+// Plain text output
+pub struct TextFormatter;
+
+impl ReportFormatter for TextFormatter {
+    fn format(&self, title: &str, data: &[String]) -> String {
+        let mut output = format!("=== {} ===\n", title);
+        for item in data {
+            output.push_str(&format!("- {}\n", item));
+        }
+        output
+    }
+}
+
+// HTML output
+pub struct HtmlFormatter;
+
+impl ReportFormatter for HtmlFormatter {
+    fn format(&self, title: &str, data: &[String]) -> String {
+        let mut output = format!("<h1>{}</h1>\n<ul>\n", title);
+        for item in data {
+            output.push_str(&format!("  <li>{}</li>\n", item));
+        }
+        output.push_str("</ul>");
+        output
+    }
+}
+
+// Fake PDF output
+pub struct PdfFormatter;
+
+impl ReportFormatter for PdfFormatter {
+    fn format(&self, title: &str, _data: &[String]) -> String {
+        format!("PDF: {} [binary data]", title)
+    }
+}
+
+// XML output (extension without modification)
+pub struct XmlFormatter;
+
+impl ReportFormatter for XmlFormatter {
+    fn format(&self, title: &str, data: &[String]) -> String {
+        let mut output = String::from("<report>\n");
+        output.push_str(&format!("  <title>{}</title>\n", title));
+        output.push_str("  <items>\n");
+
+        for item in data {
+            output.push_str(&format!("    <item>{}</item>\n", item));
+        }
+
+        output.push_str("  </items>\n</report>");
+        output
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+fn main() {
+    let report = Report {
+        title: "Monthly Sales".to_string(),
+        data: vec![
+            "Product A: 120 units".to_string(),
+            "Product B: 98 units".to_string(),
+            "Product C: 143 units".to_string(),
+        ],
+    };
+
+    println!("--- TEXT ---\n{}", report.generate(&TextFormatter));
+    println!("--- HTML ---\n{}", report.generate(&HtmlFormatter));
+    println!("--- PDF ---\n{}", report.generate(&PdfFormatter));
+    println!("--- XML ---\n{}", report.generate(&XmlFormatter));
+}
+
+
+```
+
+Expected output
+```powershell
+--- TEXT ---
+=== Monthly Sales ===
+- Product A: 120 units
+- Product B: 98 units
+- Product C: 143 units
+
+--- HTML ---
+<h1>Monthly Sales</h1>
+<ul>
+  <li>Product A: 120 units</li>
+  <li>Product B: 98 units</li>
+  <li>Product C: 143 units</li>
+</ul>
+--- PDF ---
+PDF: Monthly Sales [binary data]
+--- XML ---
+<report>
+  <title>Monthly Sales</title>
+  <items>
+    <item>Product A: 120 units</item>
+    <item>Product B: 98 units</item>
+    <item>Product C: 143 units</item>
+  </items>
+</report>
+```
+
+
+In both cases OCP is respected: `XmlFormatter` is added without modifying Report.
+
+We have two valid variants:
+* `&dyn ReportFormatter` → maximum flexibility (runtime)
+* `F: ReportFormatter` → maximum performance (compile-time)
+
+The choice of dispatch becomes an implementation detail, not an architectural change.
+
+
+
+
+
 
 ### Real-World Example: Plugin System
 {: .no_toc }
 
-Open-Closed Principle shines in plugin architectures. Imagine a text editor with plugins:
+
+If we do NOT have plugins we could write something similar to the previous traits based solution. The code is open for extension, we can add "plugins" (SpellCheck, Git...) but as before the number of tools is fixed, everything must be known at compile time. In the previous code, in the `main()` function we had a set `report.generate()` function calls. Here, in the `editor.run()` we have a set of of Check this out:
 
 ```rust
-pub trait Plugin {
-    fn name(&self) -> &str;
-    fn execute(&mut self, context: &mut EditorContext);
+// =========================
+// Static dispatch example
+// =========================
+
+// Editor state
+pub struct EditorContext {
+    pub content: String,
 }
 
+// Static behavior abstraction
+pub trait Tool {
+    fn apply(&self, context: &mut EditorContext);
+}
+
+// Concrete tool: spell check
+pub struct SpellCheck;
+
+impl Tool for SpellCheck {
+    fn apply(&self, context: &mut EditorContext) {
+        context.content.push_str("\n[Spell check OK]");
+    }
+}
+
+// Concrete tool: git integration
+pub struct Git;
+
+impl Tool for Git {
+    fn apply(&self, context: &mut EditorContext) {
+        context.content.push_str("\n[Git status clean]");
+    }
+}
+
+// Editor with static dispatch
+pub struct Editor;
+
+impl Editor {
+    pub fn run<T1: Tool, T2: Tool>(
+        &self,
+        tool1: &T1,
+        tool2: &T2,
+        context: &mut EditorContext,
+    ) {
+        tool1.apply(context);
+        tool2.apply(context);
+    }
+}
+
+fn main() {
+    let editor = Editor;
+    let spellcheck = SpellCheck;
+    let git = Git;
+
+    let mut context = EditorContext {
+        content: String::from("Hello world"),
+    };
+
+    editor.run(&spellcheck, &git, &mut context);
+
+    println!("--- FINAL CONTENT ---");
+    println!("{}", context.content);
+}
+```
+
+Expected output:
+
+```powershell
+--- FINAL CONTENT ---
+Hello world
+[Spell check OK]
+[Git status clean]
+
+```
+
+Open-Closed Principle shines in plugin architectures. Imagine a text editor with plugins.
+
+
+In the code below, the editor remains **closed** (we don't modify it) but **open**. We can extend it with plugins.
+
+
+```rust
+// =========================
+// Dynamic dispatch example
+// =========================
+
+// Shared editor state
+pub struct EditorContext {
+    pub content: String,
+}
+
+// Runtime behavior abstraction
+pub trait Tool {
+    fn name(&self) -> &str;
+    fn apply(&mut self, context: &mut EditorContext);
+}
+
+// Editor using dynamic dispatch
 pub struct Editor {
-    plugins: Vec<Box<dyn Plugin>>,
+    tools: Vec<Box<dyn Tool>>,
 }
 
 impl Editor {
-    pub fn register_plugin(&mut self, plugin: Box<dyn Plugin>) {
-        self.plugins.push(plugin);
+    pub fn new() -> Self {
+        Self { tools: Vec::new() }
     }
 
-    pub fn run_plugins(&mut self, context: &mut EditorContext) {
-        for plugin in &mut self.plugins {
-            plugin.execute(context);
+    pub fn register_tool(&mut self, tool: Box<dyn Tool>) {
+        self.tools.push(tool);
+    }
+
+    pub fn run(&mut self, context: &mut EditorContext) {
+        for tool in &mut self.tools {
+            println!("Running tool: {}", tool.name());
+            tool.apply(context); // Apply the tool to the shared context
         }
     }
 }
 
-// Third-party plugin - doesn't require modifying Editor
-pub struct SpellCheckPlugin;
+// Spell check tool
+pub struct SpellCheck;
 
-impl Plugin for SpellCheckPlugin {
-    fn name(&self) -> &str { "Spell Checker" }
+impl Tool for SpellCheck {
+    fn name(&self) -> &str {
+        "Spell Checker"
+    }
 
-    fn execute(&mut self, context: &mut EditorContext) {
-        // Check spelling
+    fn apply(&mut self, context: &mut EditorContext) {
+        // Simulate spell checking by normalizing the text
+        context.content = context.content.to_lowercase();
+        context.content.push_str("\n[Spell check OK]");
     }
 }
 
-// Another third-party plugin
-pub struct GitPlugin;
+// Git integration tool
+pub struct Git;
 
-impl Plugin for GitPlugin {
-    fn name(&self) -> &str { "Git Integration" }
-
-    fn execute(&mut self, context: &mut EditorContext) {
-        // Git operations
+impl Tool for Git {
+    fn name(&self) -> &str {
+        "Git Integration"
     }
+
+    fn apply(&mut self, context: &mut EditorContext) {
+        context.content.push_str("\n[Git status clean]");
+    }
+}
+
+fn main() {
+    let mut editor = Editor::new();
+
+    editor.register_tool(Box::new(SpellCheck));
+    editor.register_tool(Box::new(Git));
+
+    let mut context = EditorContext {
+        content: String::from("HELLO WORLD"),
+    };
+
+    editor.run(&mut context);
+
+    println!("--- FINAL CONTENT ---");
+    println!("{}", context.content);
+}
+```
+Expected output:
+
+```powershell
+Running tool: Spell Checker
+Running tool: Git Integration
+--- FINAL CONTENT ---
+hello world
+[Spell check OK]
+[Git status clean]
+```
+
+This example base on dynamic dispatch works and shows that:
+* Editor is closed to modification.
+* New behaviors are added via Tool implementations.
+* The control flow is invariant.
+* The behavior is extensible at runtime via dyn Tool.
+* Each tool can independently transform the editor state without the editor knowing anything about the concrete behavior.
+
+
+
+Now let's try this static
+
+```rust
+// =========================
+// Static dispatch example
+// =========================
+
+// Shared editor state
+pub struct EditorContext {
+    pub content: String,
+}
+
+// Compile-time behavior abstraction
+pub trait Tool {
+    fn name(&self) -> &str;
+    fn apply(&mut self, context: &mut EditorContext);
+}
+
+// Editor using static dispatch
+pub struct Editor<T: Tool> {
+    tools: Vec<T>,
+}
+
+impl<T: Tool> Editor<T> {
+    pub fn new() -> Self {
+        Self {
+            tools: Vec::new(),
+        }
+    }
+
+    pub fn register_tool(&mut self, tool: T) {
+        self.tools.push(tool);
+    }
+
+    pub fn run(&mut self, context: &mut EditorContext) {
+        for tool in &mut self.tools {
+            println!("Running tool: {}", tool.name());
+            tool.apply(context); // Direct call, no vtable
+        }
+    }
+}
+
+// Spell check tool
+pub struct SpellCheck;
+
+impl Tool for SpellCheck {
+    fn name(&self) -> &str {
+        "Spell Checker"
+    }
+
+    fn apply(&mut self, context: &mut EditorContext) {
+        // Normalize text to simulate spell checking
+        context.content = context.content.to_lowercase();
+        context.content.push_str("\n[Spell check OK]");
+    }
+}
+
+// Git integration tool
+pub struct Git;
+
+impl Tool for Git {
+    fn name(&self) -> &str {
+        "Git Integration"
+    }
+
+    fn apply(&mut self, context: &mut EditorContext) {
+        context.content.push_str("\n[Git status clean]");
+    }
+}
+
+fn main() {
+    let mut editor = Editor::new();
+
+    // Tools must be of the same concrete type T
+    editor.register_tool(SpellCheck);
+    editor.register_tool(Git);
+
+    let mut context = EditorContext {
+        content: String::from("HELLO WORLD"),
+    };
+
+    editor.run(&mut context);
+
+    println!("--- FINAL CONTENT ---");
+    println!("{}", context.content);
+}
+```
+It does'nt work. Expected output
+
+```text
+Compiling playground v0.0.1 (/playground)
+error[E0308]: mismatched types
+  --> src/main.rs:73:26
+   |
+72 |     editor.register_tool(SpellCheck);
+   |     ------               ---------- this argument has type `SpellCheck`...
+   |     |
+   |     ... which causes `editor` to have type `Editor<SpellCheck>`
+73 |     editor.register_tool(Git);
+   |            ------------- ^^^ expected `SpellCheck`, found `Git`
+   |            |
+   |            arguments to this method are incorrect
+   |
+note: method defined here
+  --> src/main.rs:28:12
+   |
+28 |     pub fn register_tool(&mut self, tool: T) {
+   |            ^^^^^^^^^^^^^            -------
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `playground` (bin "playground") due to 1 previous error
+
+```
+
+
+Let's try to understand what happens here and first let's understand why formatters do not have this problem. In the report/formatter example we have:
+
+```rust
+report.generate(&TextFormatter);
+report.generate(&HtmlFormatter);
+```
+
+Even in the "static dispatch" version:
+
+```rust
+pub fn generate<F: ReportFormatter>(&self, formatter: &F) -> String
+```
+
+Everything works because:
+
+* The `Report` **does not store** the formatter
+* The formatter is **passed as a parameter**
+* Each call to `generate()` is **independent**
+
+So the compiler can safely do this:
+
+* Monomorphize `generate::<TextFormatter>`
+* Monomorphize `generate::<HtmlFormatter>`
+* Monomorphize `generate::<PdfFormatter>`
+
+There is **no need for a single common concrete type**, because nothing is being collected or stored. This is why **static dispatch works perfectly** in that scenario.
+
+
+Ok... What changes with the editor + plugins example? In the editor case, this line changes everything:
+
+```rust
+tools: Vec<T>
+```
+
+A `Vec<T>` means:
+
+> "This collection contains elements of **one and only one concrete type**."
+
+When we write:
+
+```rust
+editor.register_tool(SpellCheck);
+```
+
+The the compiler **infers**:
+
+```rust
+editor: Editor<SpellCheck>
+```
+
+From that moment on:
+* `T = SpellCheck`
+* `Vec<T>` becomes `Vec<SpellCheck>`
+* `register_tool()` expects a `SpellCheck`, not *any* `Tool`
+
+So when we later write:
+
+```rust
+editor.register_tool(Git);
+```
+
+We are effectively asking Rust to put a `Git` into a `Vec<SpellCheck>`, which is impossible.
+
+
+OK... Now let's make sure we understand why the dynamic dispatch works here
+
+With this version:
+
+```rust
+Vec<Box<dyn Tool>>
+```
+
+We are no longer storing concrete types, but **trait objects**.
+
+That means:
+* The editor does not know *which* concrete type it is calling
+* Only the **behavioral contract (`Tool`)** matters
+* The actual method implementation is resolved **at runtime**
+
+
+The editor doesn’t even know which trait are stored and that’s exactly what dynamic dispatch is designed for.
+
+
+Summary
+* In the formatter example, both dynamic and static dispatch work because the formatter is passed as a parameter and never stored. Each call to `generate()` can be monomorphized independently.
+* In the editor example, tools are registered and stored in a collection. With static dispatch, this requires a single concrete type, which makes heterogeneous plugins impossible.
+* Dynamic dispatch solves this by erasing the concrete type behind a trait object, allowing runtime extensibility at the cost of indirection.
+* In Rust, choosing between static and dynamic dispatch is not about OCP correctness, but about whether behavior composition happens at compile time or at runtime.
+
+Ok so there is no way
+
+
+```rust
+// =========================
+// Static dispatch example
+// =========================
+
+// Shared editor state
+pub struct EditorContext {
+    pub content: String,
+}
+
+// Compile-time behavior abstraction
+pub trait Tool {
+    fn name(&self) -> &str;
+    fn apply(&mut self, context: &mut EditorContext);
+}
+
+// Apply a tool or a chain of tools
+pub trait ToolChain {
+    fn apply(&mut self, context: &mut EditorContext);
+}
+
+// Implementation for a unique tool
+// A single Tool is also a valid ToolChain
+// If we don't have this implementation there is no way to implement the recusrsive
+impl<T: Tool> ToolChain for T {
+    fn apply(&mut self, context: &mut EditorContext) {
+        // self.apply(context); // CANNOT work: .apply() calls .apply()
+        Tool::apply(self, context);
+    }
+}
+
+// Recusrsive implementation for a tuple
+// A tuple (Head, Tail) is a ToolChain if:
+//      Head is a Tool
+//      Tail is already a ToolChain
+impl<Head, Tail> ToolChain for (Head, Tail)
+where
+    Head: Tool,
+    Tail: ToolChain,
+{
+    fn apply(&mut self, context: &mut EditorContext) {
+        self.0.apply(context);
+        self.1.apply(context);
+    }
+}
+
+// Editor using static dispatch
+pub struct Editor<T> {
+    tools: T,
+}
+
+impl<T: ToolChain> Editor<T> {
+    pub fn new(tools: T) -> Self {
+        Self { tools }
+    }
+
+    pub fn run(&mut self, context: &mut EditorContext) {
+        self.tools.apply(context);
+    }
+}
+
+// Spell check tool
+pub struct SpellCheck;
+
+impl Tool for SpellCheck {
+    fn name(&self) -> &str {
+        "Spell Checker"
+    }
+
+    fn apply(&mut self, context: &mut EditorContext) {
+        // Normalize text to simulate spell checking
+        context.content = context.content.to_lowercase();
+        context.content.push_str("\n[Spell check OK]");
+    }
+}
+
+// Git integration tool
+pub struct Git;
+
+impl Tool for Git {
+    fn name(&self) -> &str {
+        "Git Integration"
+    }
+
+    fn apply(&mut self, context: &mut EditorContext) {
+        context.content.push_str("\n[Git status clean]");
+    }
+}
+
+fn main() {
+    let mut editor = Editor::new((
+        SpellCheck,
+        Git,
+    ));
+
+    // At this point the chain is complete:
+    // Git implements Tool
+    // therefore Git implements ToolChain
+    // therefore (SpellCheck, Git) implements ToolChain
+    // therefore Editor<(SpellCheck, Git)> is valid
+
+    let mut context = EditorContext {
+        content: String::from("HELLO WORLD"),
+    };
+
+    editor.run(&mut context);
+
+    println!("--- FINAL CONTENT ---");
+    println!("{}", context.content);
 }
 ```
 
-The editor is **closed** (we don't modify it) but **open** (we can extend it).
+```text
+--- FINAL CONTENT ---
+hello world
+[Spell check OK]
+[Git status clean]
+```
+
+It is important to note that in the static version, tools form a compile-time pipeline where all steps are always executed in order; selecting or skipping tools at runtime requires dynamic dispatch. This also explains the order of the output in the terminal.
+
+In the case of plugins, I believe dynamic dispatch is the right choice.
+
+
+
+
+
+
+
+
 
 ### Rust-Specific Notes
 {: .no_toc }
@@ -989,9 +1713,9 @@ The editor is **closed** (we don't modify it) but **open** (we can extend it).
    - Use `&dyn Trait` when we need runtime polymorphism (heterogeneous collections)
    - Use `<T: Trait>` when we can do compile-time polymorphism (better performance)
 
-2. **Enums are not always bad**: Rust's enums with pattern matching can be appropriate when:
+2. **Enums can help**: Rust's enums with pattern matching can be appropriate when:
    - The set of variants is truly closed (won't change)
-   - we want exhaustiveness checking
+   - We want exhaustiveness checking
    - Example: `Result<T, E>` is an enum because success/failure is closed
 
 3. **Sealed traits**: If we want a trait that's extensible within our crate but not outside, use the sealed trait pattern:
@@ -1731,6 +2455,118 @@ Context: It is 7:50 AM. The office is empty and the coffee damn hot. You review 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+<!--
+
+
+
+
+
+
+// =========================
+// editor_api module
+// =========================
+mod editor_api {
+    // Public shared state
+    pub struct EditorContext {
+        pub content: String,
+    }
+
+    // Public plugin contract
+    pub trait Plugin {
+        fn name(&self) -> &str;
+        fn execute(&mut self, context: &mut EditorContext);
+    }
+}
+
+// =========================
+// git_plugin module
+// =========================
+mod git_plugin {
+    use crate::editor_api::{EditorContext, Plugin};
+
+    pub struct GitPlugin;
+
+    impl Plugin for GitPlugin {
+        fn name(&self) -> &str {
+            "Git Integration"
+        }
+
+        fn execute(&mut self, context: &mut EditorContext) {
+            // Fake git behavior
+            context.content.push_str("\n[Git status clean]");
+        }
+    }
+}
+
+// =========================
+// spellcheck_plugin module
+// =========================
+mod spellcheck_plugin {
+    use crate::editor_api::{EditorContext, Plugin};
+
+    pub struct SpellCheckPlugin;
+
+    impl Plugin for SpellCheckPlugin {
+        fn name(&self) -> &str {
+            "Spell Checker"
+        }
+
+        fn execute(&mut self, context: &mut EditorContext) {
+            // Fake spell check behavior
+            context.content.push_str("\n[Spell check OK]");
+        }
+    }
+}
+
+
+// =========================
+// application (composition root)
+// =========================
+use editor_api::{EditorContext, Plugin};
+
+// Editor lives at the application boundary
+struct Editor {
+    plugins: Vec<Box<dyn Plugin>>,
+}
+
+impl Editor {
+    fn new() -> Self {
+        Self {
+            plugins: Vec::new(),
+        }
+    }
+
+    fn register_plugin(&mut self, plugin: Box<dyn Plugin>) {
+        self.plugins.push(plugin);
+    }
+
+    fn run_plugins(&mut self, context: &mut EditorContext) {
+        for plugin in &mut self.plugins {
+            println!("Running plugin: {}", plugin.name());
+            plugin.execute(context);
+        }
+    }
+}
+
+fn main() {
+    let mut editor = Editor::new();
+
+    // Plugins are completely independent
+    editor.register_plugin(Box::new(git_plugin::GitPlugin));
+    editor.register_plugin(Box::new(spellcheck_plugin::SpellCheckPlugin));
+
+    let mut context = EditorContext {
+        content: String::from("Hello world"),
+    };
+
+    editor.run_plugins(&mut context);
+
+    println!("--- FINAL CONTENT ---");
+    println!("{}", context.content);
+}
+-->
+
+
 ## 5. Dependency Inversion Principle (DIP)
 
 ### The Principle
