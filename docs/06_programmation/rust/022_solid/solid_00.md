@@ -3,7 +3,7 @@ published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide - 00"
-description: "A gentle introduction to SOLID principles using Rust."
+description: "A gentle introduction to SOLID principles using Rust. Focus is on Single Responsibility Principle."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-01-15 11:00:00
 # SOLID Principles in Rust: A Practical Guide
 {: .no_toc }
 
-A gentle introduction to SOLID principles using Rust.
+A gentle introduction to SOLID principles using Rust. Focus is on Single Responsibility Principle.
 {: .lead }
 
 
@@ -54,8 +54,8 @@ TODO
 
 
 **Note:**
-1. The code of this post are also available in the [solid_test repo on GitHub](https://github.com/40tude/solid_test)
-1. In addition, feel free to play, break, rebuild the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub
+1. The code of this post are available in the [solid_test repo](https://github.com/40tude/solid_test) on GitHub.
+1. In addition, feel free to play, break, rebuild the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub.
 
 
 
@@ -154,7 +154,7 @@ The principles are about managing dependencies, separating concerns, and making 
 
 ### The "One Binary" Question
 
-Let's address the elephant in the room right now: the author talks a lot about "components" that can be independently deployed (JARs, DLLs, Gems). In Rust, we typically compile everything into a single binary. Does this make SOLID irrelevant? Absolutely not and here's why:
+Let's address the elephant in the room right now because it was one of the very first question I had in mind. The author talks a lot about "components" that can be independently deployed (JARs, DLLs, Gems). In Rust, we typically compile everything into a single binary. Does this make SOLID irrelevant? Absolutely not and here's why:
 
 1. **Independence is logical, not physical**: When we talk about "independent components" in SOLID, we're really talking about modules/crates that:
    - Have clear boundaries (traits)
@@ -263,7 +263,7 @@ The Single Responsibility Principle is **NOT** "do one thing" (that's for functi
 
 ### The Problem: Accidental Coupling
 
-Let's say we're building a payroll system. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/). Here's what violates Single Responsibility Principle:
+Let's say we're building a payroll system. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/) but is also available [here](https://github.com/40tude/solid_test). Here's what violates Single Responsibility Principle:
 
 ```rust
 // cargo run -p ex_01_srp
