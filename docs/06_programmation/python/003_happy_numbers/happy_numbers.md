@@ -1,28 +1,34 @@
 ---
 layout: default
 lang: en-US
-title: "Happy Numbers (Python, C++, Rust)"
-description: "A practical and performance-oriented exploration of Happy Numbers, from clean Python implementations to optimized C++ and Rust benchmarks."
-
+title: "Happy Numbers: Python, C++, and Rust Performance Comparison"
+description: "Compare Happy Numbers implementations across Python, C++, and Rust with real benchmarks. Learn optimization techniques and see how Rust achieves 80x faster performance than Python."
+keywords: "happy numbers, python optimization, rust performance, c++ benchmarks, algorithm comparison"
+canonical_url: "https://www.40tude.fr/docs/06_programmation/python/happy_numbers/"
 parent: "Python"
 #math: mathjax
 date:               2025-01-31 01:00:00
-last_modified_date: 2025-12-17 17:00:00
+last_modified_date: 2026-01-15 17:00:00
 ---
 
-# Happy Numbers
+# Happy Numbers: Python, C++, and Rust Performance Comparison
 
-A practical and performance-oriented exploration of **Happy Numbers**, from clean Python implementations to optimized C++ and Rust benchmarks
+Compare Happy Numbers implementations across Python, C++, and Rust with real benchmarks. Learn optimization techniques and see how Rust achieves 80x faster performance than Python.
 {: .lead }
 
 
 <div align="center">
-<img src="./assets/img_01.webp" alt="" width="600" loading="lazy"/>
+<img src="./assets/img_01.webp" alt="Happy number algorithm visualization showing the iterative process of summing squared digits" width="600" loading="lazy"/>
 </div>
 
 Image from [Wikipedia](https://en.wikipedia.org/wiki/Happy_number)
 
 
+
+## Table of Contents
+{: .no_toc }
+- TOC
+{:toc}
 
 
 
@@ -480,6 +486,10 @@ At this point, you should be more than ready to solve the Happy Numbers puzzle o
 [https://www.codingame.com/training/easy/happy-numbers](https://www.codingame.com/training/easy/happy-numbers)
 
 Pick your language of choice, play with different approaches, compare performance, and most importantly, have fun while learning.
+
+
+
+
 
 
 
