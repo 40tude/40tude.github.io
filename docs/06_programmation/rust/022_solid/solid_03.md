@@ -24,41 +24,6 @@ A gentle introduction to SOLID principles using Rust.
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2>
 
-* 01/13 : OK up to the end of Single Responsibility Principle (SRP)
-
-
-
-<!--
-TODO
-* Comment lire les messages d'erreur du compilateur en lien avec la doc. Quand rustc dit "expected X, found Y", comment naviguer vers la doc pour comprendre le problème.
--->
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## TL;DR
-{: .no_toc }
-* You are not an expert in Rust but you're not a newbie either.
-* SOLID
-    * **S**ingle Responsibility Principle:
-    * **O**pen-Closed Principle:
-    * **L**iskov Substitution Principle:
-    * **I**nterface Segregation Principle:
-    * **D**ependency Inversion Principle:
-* SOLID help us at the mid level
-    - **Module** = a group of related functions and types (`mod`)
-    - **Component** = a crate (lib or binary)
-    - **Class** = a `struct` with associated functions and trait implementations
-* SOLID principles are not rules to follow, but questions to ask when code starts to feel uncomfortable. See the "When to Apply the ... Principle?" sections.
-
-
-**Note:**
-1. The code of this post are also available in the [solid_test repo on GitHub](https://github.com/40tude/solid_test)
-1. In addition, feel free to play, break, rebuild the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub
-
-
-
 
 
 

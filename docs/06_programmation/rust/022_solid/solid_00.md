@@ -24,7 +24,7 @@ A gentle introduction to SOLID principles using Rust.
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2>
 
-* 01/13 : OK up to the end of Single Responsibility Principle (SRP)
+<!-- * 01/13 : OK up to the end of Single Responsibility Principle (SRP) -->
 
 
 
