@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. Focus is on 
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-15 11:00:00
+last_modified_date: 2026-01-15 12:00:00
 ---
 
 
@@ -20,9 +20,9 @@ A gentle introduction to SOLID principles using Rust. Focus is on Single Respons
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 <!-- * 01/13 : OK up to the end of Single Responsibility Principle (SRP) -->
 
@@ -263,7 +263,7 @@ The Single Responsibility Principle is **NOT** "do one thing" (that's for functi
 
 ### The Problem: Accidental Coupling
 
-Let's say we're building a payroll system. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/) but is also available [here](https://github.com/40tude/solid_test). Here's what violates Single Responsibility Principle:
+Let's say we're building a payroll system. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/) but it is also available [here](https://github.com/40tude/solid_test/blob/main/srp_01/src/main.rs). Here's what violates Single Responsibility Principle:
 
 ```rust
 // cargo run -p ex_01_srp
@@ -375,6 +375,7 @@ Hours: 45
 Pay: $950.00
 ```
 
+**Note:** In real life the code should be split among different files (this is demonstrated in this [project](https://github.com/40tude/solid_test/tree/main/srp_03) available only on GitHub however). Here I don't even try to use module (this is done in the next sample code). I want to keep things simple, monolithic, easy to understand.
 
 **What's wrong here?** This `Employee` data type serves **four different actors**:
 1. **Accounting** - needs `calculate_pay()`
@@ -727,6 +728,13 @@ HR JSON Report:
 {"name": "Alice", "hours": 45, "pay": 950.00}
 ```
 
+**Note :**
+In this [repo](https://github.com/40tude/solid_test) available on Github you can find in the workspace `ex_03_srp` (in `srp_03/`) a version of the previous code where the modules scattered among different folders and files.
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 Now:
 - If payroll rules change, only `PayrollCalculator` changes
@@ -811,10 +819,11 @@ We can organize our crates like this:
 
 If you hesitate when I talk about, files, crates, modules and module trees... Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
-4. **Ownership clarifies responsibility**: When we pass `&Employee` vs `Employee` vs `&mut Employee`, we're being explicit about responsibility. The repository needs mutable access to the DB but not to employees. The calculator needs read-only access to employees.
+4. **Ownership clarifies responsibility**: When we pass `&Employee` vs `Employee` vs `&mut Employee`, we're explicit about responsibility. The repository needs mutable access to the DB but not to employees. The calculator needs read-only access to employees.
 
 
-**Note**:
+**Note:**
+
 This is more or less the organization in the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) where we have something similar to:
 
 ```
@@ -870,6 +879,14 @@ Context: It is 8 AM. Coffee in one hand, eyes on the screen, we are reviewing ye
 
 
 
+## Next Step
+{: .no_toc }
+
+* [Episode 00]({%link docs/06_programmation/rust/022_solid/solid_00.md%}): Introduction + Single Responsibility Principle
+* [Episode 01]({%link docs/06_programmation/rust/022_solid/solid_01.md%}): Open-Closed Principle
+* [Episode 02]({%link docs/06_programmation/rust/022_solid/solid_02.md%}): Liskov Substitution Principle
+* [Episode 03]({%link docs/06_programmation/rust/022_solid/solid_03.md%}): Interface Segregation Principle
+* [Episode 04]({%link docs/06_programmation/rust/022_solid/solid_04.md%}): Dependency Inversion Principle + Conclusion
 
 
 
