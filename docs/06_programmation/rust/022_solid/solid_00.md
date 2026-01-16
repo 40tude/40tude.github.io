@@ -53,9 +53,11 @@ TODO
 * SOLID principles are not rules to follow, but questions to ask when code starts to feel uncomfortable. See the "When to Apply the ... Principle?" sections.
 
 
-**Note:**
-1. The code of this post are available in the [solid_test repo](https://github.com/40tude/solid_test) on GitHub.
-1. In addition, feel free to play, break, rebuild the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub.
+**Note about the code:**
+
+1. You should be able to copy most of the code from the posts into the [Rust Playground](https://play.rust-lang.org/).
+2. The code from the posts is also available in the [solid_test repository](https://github.com/40tude/solid_test) on GitHub.
+3. In addition, feel free to explore, break, and rebuild the companion project, the [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid), available on GitHub.
 
 
 
@@ -131,8 +133,8 @@ TODO
 I'm, by far, not an expert. However, I still have in mind the project to rewrite in Rust my [Fraud Detection project (Python)](https://github.com/40tude/fraud_detection_2) and I would like to make sure it follows the good practices. In addition, the more I read and the more I use Rust, the more I want to learn how to leverage the type system to define the architecture/design of my applications.
 
 In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are incomplete and does not work. However, here, they are hard to avoid:
-- This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. It is a demo where I apply what is discussed here. At the time of writing it is working, not yet perfect but working.
-- And you know what? Regarding the code snippets of this article... I did'nt say my last word and I may decide to group them all in a [repo on GitHub](https://github.com/40tude/solid_test) or rewrite them so that we can copy/paste them in our best friend, aka [Rust Playground](https://play.rust-lang.org/). We will see...
+- This is why, in addition to this article I created what I call the [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid) companion project which is available on GitHub. It is a demo where I apply what is discussed in the serie of posts. At the time of writing it is working, not yet perfect but working.
+- And you know what? Regarding the code snippets of the articles... I did'nt say my last word and I may decide to group them all in a [repo on GitHub](https://github.com/40tude/solid_test) or rewrite them so that we can copy/paste them in our best friend, aka [Rust Playground](https://play.rust-lang.org/). We will see...
 
 Anyway, I'm reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) book and wondering how these principles, born in the world of Java and C#, apply to Rust. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and most of the time everything compiles into a single binary. So what gives?
 
@@ -173,7 +175,9 @@ Let's address the elephant in the room right now because it was one of the very 
 
 Think of it this way: when the Death Star blows up, it doesn't matter that it was one giant structure - what matters is that the exhaust port was poorly isolated from the reactor core. Dependencies matter, even in a monolith.
 
-**Note:** Just to make sure... In last ressort, if we really need, for sure we can create DLL based plugins with Rust (see crate `libloading`)
+**Note:**
+
+Just to make sure... In last ressort, if we really need, for sure we can create DLL based plugins with Rust (see crate `libloading`). If you are interested, try this [plugin demo](https://github.com/40tude/plugin_demo_2) available on GitHub.
 
 
 
@@ -381,7 +385,9 @@ Hours: 45
 Pay: $950.00
 ```
 
-**Note:** In real life the code should be split among different files (this is demonstrated in this [project](https://github.com/40tude/solid_test/tree/main/srp_03) available only on GitHub however). Here, I don't even try to use modules (this is done in the next sample code). I want to keep things simple, monolithic, easy to follow and understand.
+**Note:**
+
+In real life the code should be split among different files (this is demonstrated in this [project](https://github.com/40tude/solid_test/tree/main/srp_03) available only on GitHub). Here, I don't even try to use modules (this is done in the next sample code). I just want to keep things simple, monolithic, easy to follow and to understand.
 
 **What's wrong here?** This `Employee` data type serves **4 different actors** and look, in the implementation part there are 4 methods.
 1. **Accounting** - needs `calculate_pay()`
@@ -441,6 +447,7 @@ pub struct Employee {
 ```rust
 // src/accounting/payroll.rs
 // Accounting's responsibility
+use crate::domain::employee::Employee;
 pub struct PayrollCalculator;
 
 impl PayrollCalculator {
@@ -457,6 +464,7 @@ impl PayrollCalculator {
 ```rust
 // src/operations/overtime.rs
 // Operations' responsibility
+use crate::domain::employee::Employee;
 pub struct OvertimeTracker;
 
 impl OvertimeTracker {
@@ -470,6 +478,9 @@ impl OvertimeTracker {
 ```rust
 // src/infrastructure/repository.rs
 // Infrastructure/DBA's responsibility
+use super::db::{Database, DbError};
+use crate::domain::employee::Employee;
+
 pub struct EmployeeRepository {
     db: Database,
 }
@@ -494,6 +505,9 @@ impl EmployeeRepository {
 ```rust
 // src/hr/reporting.rs
 // HR's responsibility
+use crate::accounting::payroll::PayrollCalculator;
+use crate::domain::employee::Employee;
+
 pub struct EmployeeReporter;
 
 impl EmployeeReporter {
@@ -533,7 +547,7 @@ Again, I hate code snippets we can't "play" with. This is why you can find below
 ```rust
 // cargo run -p ex_02_srp
 
-use std::fmt;
+// use std::fmt;
 
 // Domain
 // This module should be in: src/domain/employee.rs
@@ -568,11 +582,7 @@ mod infrastructure {
 
         impl Database {
             /// Execute a fake SQL query
-            pub fn execute(
-                &self,
-                query: &str,
-                params: &[&dyn fmt::Debug],
-            ) -> Result<(), DbError> {
+            pub fn execute(&self, query: &str, params: &[&dyn fmt::Debug]) -> Result<(), DbError> {
                 println!("Executing SQL: {}", query);
                 println!("With params: {:?}", params);
                 Ok(())
@@ -582,8 +592,8 @@ mod infrastructure {
 
     // This module should be in: src/infrastructure/repository.rs
     pub mod repository {
-        use crate::domain::Employee;
         use super::db::{Database, DbError};
+        use crate::domain::Employee;
 
         /// Infrastructure / DBA's responsibility
         pub struct EmployeeRepository {
@@ -594,10 +604,16 @@ mod infrastructure {
             pub fn save(&self, employee: &Employee) -> Result<(), DbError> {
                 self.db.execute(
                     "INSERT INTO employees VALUES (?, ?, ?, ?)",
-                    &[&employee.id, &employee.name, &employee.hours_worked, &employee.rate],
+                    &[
+                        &employee.id,
+                        &employee.name,
+                        &employee.hours_worked,
+                        &employee.rate,
+                    ],
                 )
             }
 
+            #[allow(dead_code)]
             pub fn find_by_id(&self, _id: u32) -> Result<Employee, DbError> {
                 // Fake implementation for demo purposes
                 Ok(Employee {
@@ -644,8 +660,8 @@ mod operations {
 // This module should be in: src/hr/reporting.rs
 // HR's responsibility
 mod hr {
-    use crate::domain::Employee;
     use crate::accounting::PayrollCalculator;
+    use crate::domain::Employee;
 
     /// HR's responsibility
     pub struct EmployeeReporter;
@@ -676,12 +692,12 @@ mod hr {
 
 // This should be in: src/main.rs
 fn main() {
-    use domain::Employee;
     use accounting::PayrollCalculator;
-    use operations::OvertimeTracker;
-    use infrastructure::repository::EmployeeRepository;
-    use infrastructure::db::Database;
+    use domain::Employee;
     use hr::EmployeeReporter;
+    use infrastructure::db::Database;
+    use infrastructure::repository::EmployeeRepository;
+    use operations::OvertimeTracker;
 
     let employee = Employee {
         id: 1,
@@ -735,7 +751,8 @@ HR JSON Report:
 ```
 
 **Note :**
-In this [repo](https://github.com/40tude/solid_test) available on Github you can find in the workspace `ex_03_srp` (in `srp_03/` folder) a version of the previous code where the modules are indeed scattered among different folders and files.
+
+In this [GitHub repo](https://github.com/40tude/solid_test) you can find in the workspace `ex_03_srp` (in the `srp_03/` folder) a version of the previous code where the modules are indeed scattered among different folders and files. See below:
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="900" loading="lazy"/><br/>
@@ -755,7 +772,7 @@ cargo test --package accounting   # Only accounting tests
 cargo test --package hr           # Only HR tests
 ```
 
-We can have independent deployment:
+We can have independent deployments:
 
 ```toml
 # Cargo.toml (workspace root)

@@ -115,7 +115,7 @@ This sounds like black magic, but it's actually straightforward: **depend on abs
 
 ### The Problem: Modification Hell
 
-Let's build a report generator that can output different formats:
+Let's build a report generator that can output different formats. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_01_ocp
@@ -227,6 +227,8 @@ PDF: Monthly Sales [binary data]
 
 ### The Solution: Trait-Based Extension
 
+You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/).
+
 ```rust
 // cargo run -p ex_02_ocp
 
@@ -240,15 +242,15 @@ pub struct Report {
     data: Vec<String>,
 }
 
-// However, the report has a generate() method which calls the .format() method of the formatter
-// The call will be resolve at runtime (via a vtable)
+// However, the report has a .generate() method which calls the .format() method of the formatter
+// The call will be resolved at runtime (via a vtable)
 impl Report {
     pub fn generate(&self, formatter: &dyn ReportFormatter) -> String {
         formatter.format(&self.title, &self.data)
     }
 }
 
-// If a type wants to have the ReportFormatter trait it must implement the format method
+// If a type wants to have the ReportFormatter trait it must implement the .format() method
 pub trait ReportFormatter {
     fn format(&self, title: &str, data: &[String]) -> String;
 }
@@ -331,6 +333,7 @@ fn main() {
     println!("--- XML ---\n{}", report.generate(&XmlFormatter));
 }
 ```
+
 Expected output
 
 ```powershell
@@ -360,8 +363,13 @@ PDF: Monthly Sales [binary data]
 </report>
 ```
 
-Now adding XML (or JSON, or Markdown, or whatever) requires **zero changes** to `Report` or existing formatters. we just add a new type.
+Now adding XML (or JSON, or Markdown, or whatever) requires **zero changes** to the `Report` object or formatters already in place. We just add a new type.
 
+**Note:**
+
+How do I read the story that the code tell us?
+* Bonjour, my name is report and I'm a `Report`. I own a bunch of `String` and I have a `.generate()` method that I call when I'm asked to... Generate the report. However, as you can see buddy, I've no idea how this will happen: Written in the stone? Clinging to the legs of an owl? Not my business and I don't care. I just call `.generate()` and I designate the one which does the job (`&dyn ReportFormatter`). This may change, this is dynamic and resolved at runtime (hence the `&dyn`).
+* Hey, hi. My name is `TextFormatter`. I'm a data type (not a variable) and more specifically I'm a `unit struct` (a struct with no fields). I know few things in life but like those of clan have the `ReportFormatter` trait (do you see the `impl ReportFormatter for TextFormatter`?). We are useful because guys of type `Report` can pass us their data and we will print them (in a .txt file). One thing however. When a variable of type `Report` invoke its `.generate()`, it needs variable, it needs to instantiate one of us. In the code, it is implicit. In the `main()` function one could write `report.generate(&TextFormatter {}) // explicit instantiation` instead.
 
 
 
@@ -380,7 +388,7 @@ Now adding XML (or JSON, or Markdown, or whatever) requires **zero changes** to 
 ### Taking It Further: Static Dispatch
 
 
-If we want to avoid dynamic dispatch overhead we could use a generic version of the `generate()` method.
+If we want to avoid dynamic dispatch overhead we could use a **generic** version of the `generate()` method. Something like that:
 
 ```rust
 impl Report {
@@ -390,7 +398,7 @@ impl Report {
 }
 ```
 
-With the generic version, the compiler monomorphizes `generate()`. The compiler generates a specialized version for each `formatter` type **at compile time**. This removes the vtable indirection at the cost of potentially larger binaries.
+With the generic version, the compiler monomorphizes `generate()`. This means taht the compiler generates a specialized version for each `formatter` type **at compile time**. This removes the vtable indirection at the cost of potentially larger binaries.
 
 
 ```rust
@@ -530,14 +538,19 @@ PDF: Monthly Sales [binary data]
 
 Here too, OCP is respected: `XmlFormatter` is added without modifying Report.
 
+
+Now, if we compare both files, except for the signature of the `.generate()` method and some comments they are the same.
+
+<div align="center">
+<img src="./assets/img08.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
 We have two valid variants:
 * `&dyn ReportFormatter` → maximum flexibility (runtime)
 * `F: ReportFormatter` → maximum performance (compile-time)
 
-The choice of dispatch becomes an implementation detail, not an architectural change.
-
-
-
+This is cool because here the choice of dispatch becomes an implementation detail, not an architectural change.
 
 
 
