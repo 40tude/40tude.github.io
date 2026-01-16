@@ -3,7 +3,7 @@ published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide - 00"
-description: "A gentle introduction to SOLID principles using Rust. Focus is on Single Responsibility Principle."
+description: "A gentle introduction to SOLID principles using Rust. Here we focus is on Single Responsibility Principle."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-01-15 12:00:00
 # SOLID Principles in Rust: A Practical Guide
 {: .no_toc }
 
-A gentle introduction to SOLID principles using Rust. Focus is on Single Responsibility Principle.
+A gentle introduction to SOLID principles using Rust. Here we focus is on Single Responsibility Principle.
 {: .lead }
 
 
@@ -130,11 +130,11 @@ TODO
 
 I'm, by far, not an expert. However, I still have in mind the project to rewrite in Rust my [Fraud Detection project (Python)](https://github.com/40tude/fraud_detection_2) and I would like to make sure it follows the good practices. In addition, the more I read and the more I use Rust, the more I want to learn how to leverage the type system to define the architecture/design of my applications.
 
-In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are incomplete and does not work. However, here they are hard to avoid.
-- This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. It is a demo where I apply what is discussed her. At the time of writing it is working, not yet perfect but working.
+In the following, I put black on white what I understand, take the time to confirm with other sources and illustrate the concepts with some code. I hate code snippets that are incomplete and does not work. However, here, they are hard to avoid:
+- This is why, in addition to this article I created what I call the [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) which is available on GitHub. It is a demo where I apply what is discussed here. At the time of writing it is working, not yet perfect but working.
 - And you know what? Regarding the code snippets of this article... I did'nt say my last word and I may decide to group them all in a [repo on GitHub](https://github.com/40tude/solid_test) or rewrite them so that we can copy/paste them in our best friend, aka [Rust Playground](https://play.rust-lang.org/). We will see...
 
-Anyway, I'm reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) book and wondering how these principles, born in the world of Java and C#, apply to Rust. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and everything compiles into a single binary. So what gives?
+Anyway, I'm reading Uncle Bob's [Clean Architecture](https://amzn.eu/d/2khTpqS) book and wondering how these principles, born in the world of Java and C#, apply to Rust. After all, we're not dealing with inheritance hierarchies, we don't have traditional classes, and most of the time everything compiles into a single binary. So what gives?
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
@@ -152,9 +152,13 @@ Here's the thing: **SOLID** isn't about the language features - it's about **org
 
 The principles are about managing dependencies, separating concerns, and making our code maintainable as it grows.
 
+
+
+
+
 ### The "One Binary" Question
 
-Let's address the elephant in the room right now because it was one of the very first question I had in mind. The author talks a lot about "components" that can be independently deployed (JARs, DLLs, Gems). In Rust, we typically compile everything into a single binary. Does this make SOLID irrelevant? Absolutely not and here's why:
+Let's address the elephant in the room right now because it was one of the very first question I had in mind. The author talks a lot about "components" that can be independently deployed (JARs, DLLs, Gems). In Rust, I typically compile everything into a single binary. Does this make SOLID irrelevant? Absolutely not and here's why:
 
 1. **Independence is logical, not physical**: When we talk about "independent components" in SOLID, we're really talking about modules/crates that:
    - Have clear boundaries (traits)
@@ -168,6 +172,8 @@ Let's address the elephant in the room right now because it was one of the very 
 3. **The binary is our deployment unit**: In the JVM world, they talk about deploying individual JARs. In Rust, we deploy the whole binary - but the internal organization still matters enormously for maintainability, testability, and team collaboration.
 
 Think of it this way: when the Death Star blows up, it doesn't matter that it was one giant structure - what matters is that the exhaust port was poorly isolated from the reactor core. Dependencies matter, even in a monolith.
+
+**Note:** Just to make sure... In last ressort, if we really need, for sure we can create DLL based plugins with Rust (see crate `libloading`)
 
 
 
@@ -375,15 +381,15 @@ Hours: 45
 Pay: $950.00
 ```
 
-**Note:** In real life the code should be split among different files (this is demonstrated in this [project](https://github.com/40tude/solid_test/tree/main/srp_03) available only on GitHub however). Here I don't even try to use module (this is done in the next sample code). I want to keep things simple, monolithic, easy to understand.
+**Note:** In real life the code should be split among different files (this is demonstrated in this [project](https://github.com/40tude/solid_test/tree/main/srp_03) available only on GitHub however). Here, I don't even try to use modules (this is done in the next sample code). I want to keep things simple, monolithic, easy to follow and understand.
 
-**What's wrong here?** This `Employee` data type serves **four different actors**:
+**What's wrong here?** This `Employee` data type serves **4 different actors** and look, in the implementation part there are 4 methods.
 1. **Accounting** - needs `calculate_pay()`
 2. **Operations** - needs `calculate_overtime_hours()`
 3. **DBAs** - need `save()`
 4. **HR** - needs `generate_report()`
 
-And all theses methods belong to the same object.
+And having these four methods that meet the needs of four different actors in the same object (`employee`) is really not a good idea.
 
 Now imagine:
 - Accounting wants to change overtime calculation rules
@@ -729,7 +735,7 @@ HR JSON Report:
 ```
 
 **Note :**
-In this [repo](https://github.com/40tude/solid_test) available on Github you can find in the workspace `ex_03_srp` (in `srp_03/`) a version of the previous code where the modules scattered among different folders and files.
+In this [repo](https://github.com/40tude/solid_test) available on Github you can find in the workspace `ex_03_srp` (in `srp_03/` folder) a version of the previous code where the modules are indeed scattered among different folders and files.
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="900" loading="lazy"/><br/>
@@ -742,14 +748,14 @@ Now:
 - If HR wants new report formats, only `EmployeeReporter` changes
 - Each actor owns their own code meaning
 
-The teams can run independent testing
+If the teams use workspaces, they can run independent testing
 
 ```powershell
 cargo test --package accounting   # Only accounting tests
 cargo test --package hr           # Only HR tests
 ```
 
-We can have independent deployment (if Rust Workspaces)
+We can have independent deployment:
 
 ```toml
 # Cargo.toml (workspace root)

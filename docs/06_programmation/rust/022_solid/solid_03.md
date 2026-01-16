@@ -3,7 +3,7 @@ published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide - 03"
-description: "A gentle introduction to SOLID principles using Rust. Focus is on interface Segregation Principle."
+description: "A gentle introduction to SOLID principles using Rust. Here we focus is on interface Segregation Principle."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-01-15 11:00:00
 # SOLID Principles in Rust: A Practical Guide
 {: .no_toc }
 
-A gentle introduction to SOLID principles using Rust. Focus is on Interface Segregation Principle.
+A gentle introduction to SOLID principles using Rust. Here we focus is on Interface Segregation Principle.
 {: .lead }
 
 
