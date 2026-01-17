@@ -20,9 +20,9 @@ A gentle introduction to SOLID principles using Rust. Here we focus is on Open-C
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -217,6 +217,7 @@ PDF: Monthly Sales [binary data]
 
 **This violates Open-Closed Principle** because adding a new format requires modifying existing code.
 
+Let's note that the root cause of the problem here is the same as in the Single Responsibility Principle: all the features are embedded inside the Report data type.
 
 
 
@@ -227,9 +228,7 @@ PDF: Monthly Sales [binary data]
 
 
 
-
-
-### The Solution: Trait-Based Extension
+### The Solution: Dynamic Trait Based Extension
 
 You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/).
 
@@ -377,7 +376,7 @@ Now adding XML (or JSON, or Markdown, or whatever) requires **zero changes** to 
 
 How do I read the story that the code tell us?
 * Bonjour, my name is report and I'm a `Report`. I own a bunch of `String` and I have a `.generate()` method that I call when I'm asked to... Generate the report. However, as you can see buddy, I've no idea how this will happen: Written in the stone? Clinging to the legs of an owl? Not my business and I don't care. I just call `.generate()` and I designate the one which does the job (`&dyn ReportFormatter`). This may change, this is dynamic and resolved at runtime (hence the `&dyn`).
-* Hey, hi. My name is `TextFormatter`. I'm a data type (not a variable) and more specifically I'm a `unit struct` (a struct with no fields). I know few things in life but like those of clan have the `ReportFormatter` trait (do you see the `impl ReportFormatter for TextFormatter`?). We are useful because guys of type `Report` can pass us their data and we will print them (in a .txt file). One thing however. When a variable of type `Report` invoke its `.generate()`, it needs variable, it needs to instantiate one of us. In the code, it is implicit. In the `main()` function one could write `report.generate(&TextFormatter {}) // explicit instantiation` instead.
+* Hey, hi. My name is `TextFormatter`. I'm a data type (not a variable) and more specifically I'm a `unit struct` (a struct with no fields). I know few things in life but like those of clan have the `ReportFormatter` trait (do you see the `impl ReportFormatter for TextFormatter`?). We are useful because guys of type `Report` can pass us their data and we will print them (in a .txt file). One thing however. When a variable of type `Report` invoke its `.generate()`, it needs variable, it needs to instantiate one of us. In the code above, it is implicit. In the `main()` function one could write `report.generate(&TextFormatter {}) // explicit instantiation` instead.
 
 
 
@@ -406,7 +405,7 @@ impl Report {
 }
 ```
 
-With the generic version, the compiler monomorphizes `generate()`. This means taht the compiler generates a specialized version for each `formatter` type **at compile time**. This removes the vtable indirection at the cost of potentially larger binaries. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+With the generic version, the compiler **monomorphizes** `.generate()`. This means that the compiler generates a specialized version for each `formatter` type **at compile time**. This removes the vtable indirection at the cost of potentially larger binaries. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 
 ```rust
