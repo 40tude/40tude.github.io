@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. Here we focu
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-15 11:00:00
+last_modified_date: 2026-01-17 11:00:00
 ---
 
 
@@ -406,7 +406,7 @@ impl Report {
 }
 ```
 
-With the generic version, the compiler monomorphizes `generate()`. This means taht the compiler generates a specialized version for each `formatter` type **at compile time**. This removes the vtable indirection at the cost of potentially larger binaries.
+With the generic version, the compiler monomorphizes `generate()`. This means taht the compiler generates a specialized version for each `formatter` type **at compile time**. This removes the vtable indirection at the cost of potentially larger binaries. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 
 ```rust
@@ -587,7 +587,7 @@ This is cool because here the choice of dispatch becomes an implementation detai
 
 The Open-Closed Principle really shines in plugin-based architectures. For the sake of this example, let’s imagine a text processor that supports plugins. Here a text processor is not a text editor. It is "something" which apply different processing to a text.
 
-First, without plugins, we could implement the following naive solution. Here the `main()` function calls `processor.run()`, which applies the two known processing steps. Yes, we could add new processing like `UpperCase` but this would need to modify the `.run()` method of the `TxTProcessor` and this is not a good idea. See below :
+First, without plugins, we could implement the following naive solution. Here the `main()` function calls `processor.run()`, which applies the two known processing steps. Yes, we could add new processing like `UpperCase` but this would need to modify the `.run()` method of the `TxTProcessor` and this is not a good idea. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_04_ocp
@@ -681,7 +681,7 @@ hello world
 
 
 
-In the code below, the `TxtProcessor` remains **closed** (we don't modify it) but **open**. We can extend it with plugins.
+In the code below, the `TxtProcessor` remains **closed** (we don't modify it) but **open**. We can extend it with plugins. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 
 ```rust
@@ -802,7 +802,7 @@ The example shows that:
 * Each processing can independently transform the state of the content without the `TxtProcessor` knowing anything about the concrete behavior.
 
 
-So far so good. However, a `TxtProcessor` is a `Vec<Box<dyn Processing>>` and we may want to avoid the dynamic dispatch. Now let's try a static dispatch based solution:
+So far so good. However, a `TxtProcessor` is a `Vec<Box<dyn Processing>>` and we may want to avoid the dynamic dispatch. Now let's try a static dispatch based solution. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_06_ocp
@@ -1004,7 +1004,7 @@ The text processor doesn’t even know which trait are stored and that’s exact
 * Dynamic dispatch solves this by erasing the concrete type behind a trait object, allowing runtime extensibility at the cost of indirection.
 * In Rust, choosing between static and dynamic dispatch is not about OCP correctness, but about whether behavior composition happens at compile time or at runtime.
 
-Ok... So there is no solution if I want plugins and avoid runtime overhead of the dynamic dispatch... Really? Based on what we said, we could try something using a collection that accept heterogeneous data type.
+Ok... So there is no solution if I want plugins and avoid runtime overhead of the dynamic dispatch... Really? Based on what we said, we could try something using a collection that accept heterogeneous data type. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 
 ```rust
@@ -1115,10 +1115,10 @@ fn main() {
     let mut processor = TxTProcessor::new((LowerCase, SpellChecker));
 
     // At this point the chain is complete:
-    // Git implements Tool
-    // therefore Git implements ToolChain
-    // therefore (SpellCheck, Git) implements ToolChain
-    // therefore Editor<(SpellCheck, Git)> is valid
+    // LowerCase implements Tool
+    // therefore LowerCase implements ToolChain
+    // therefore (SpellCheck, LowerCase) implements ToolChain
+    // therefore Editor<(SpellCheck, LowerCase)> is valid
 
     let mut ed_context = EditorContent {
         content: String::from("HELLO WORLD"),
@@ -1138,7 +1138,7 @@ hello world
 [SpellChecker OK]
 ```
 
-It is important to note that in the static version, tools form a compile-time pipeline where all steps are always executed in order. Selecting or skipping tools at runtime requires dynamic dispatch. This also explains the order of the output in the terminal.
+It is important to note that in the static version, the processings form a compile-time pipeline where all steps are always executed in order. Selecting or skipping processing at runtime requires dynamic dispatch. This also explains the order of the output in the terminal.
 
 In the case of plugins, I believe dynamic dispatch is the right choice.
 
