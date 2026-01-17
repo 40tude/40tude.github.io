@@ -120,6 +120,10 @@ Let's build a report generator that can output different formats. You can copy a
 ```rust
 // cargo run -p ex_01_ocp
 
+// =========================
+// Naïve Solution - Reporter
+// =========================
+
 // This enum defines all supported report formats
 // Adding a new format requires modifying this enum
 pub enum ReportFormat {
@@ -231,6 +235,10 @@ You can copy and paste the code below in [Rust Playground](https://play.rust-lan
 
 ```rust
 // cargo run -p ex_02_ocp
+
+// =========================
+// Dynamic Traits Based Solution - Reporter
+// =========================
 
 // =========================
 // Abstractions
@@ -405,6 +413,10 @@ With the generic version, the compiler monomorphizes `generate()`. This means ta
 // cargo run -p ex_03_ocp
 
 // =========================
+// Generic Static Dispatch Based Solution - Reporter
+// =========================
+
+// =========================
 // Abstractions
 // =========================
 
@@ -414,7 +426,7 @@ pub struct Report {
     data: Vec<String>,
 }
 
-// However, the report has a generate method which calls the .format() method of the formatter
+// However, the report has a .generate() method which calls the .format() method of the formatter
 // The call will be resolve at compile time
 impl Report {
     // Generic version using static dispatch
@@ -423,7 +435,7 @@ impl Report {
     }
 }
 
-// If a type wants to have the ReportFormatter trait it must implement the format method
+// If a type wants to have the ReportFormatter trait it must implement the .format() method
 pub trait ReportFormatter {
     fn format(&self, title: &str, data: &[String]) -> String;
 }
@@ -432,7 +444,7 @@ pub trait ReportFormatter {
 // Concrete formatters
 // =========================
 
-// Plain text output
+// Plain text output (same behavior as before)
 pub struct TextFormatter;
 
 impl ReportFormatter for TextFormatter {
@@ -445,7 +457,7 @@ impl ReportFormatter for TextFormatter {
     }
 }
 
-// HTML output
+// HTML output (same structure as initial example)
 pub struct HtmlFormatter;
 
 impl ReportFormatter for HtmlFormatter {
@@ -459,7 +471,7 @@ impl ReportFormatter for HtmlFormatter {
     }
 }
 
-// Fake PDF output
+// Fake PDF output (same spirit as before)
 pub struct PdfFormatter;
 
 impl ReportFormatter for PdfFormatter {
@@ -468,7 +480,7 @@ impl ReportFormatter for PdfFormatter {
     }
 }
 
-// XML output
+// New XML output - extension without modification
 pub struct XmlFormatter;
 
 impl ReportFormatter for XmlFormatter {
@@ -539,18 +551,18 @@ PDF: Monthly Sales [binary data]
 Here too, OCP is respected: `XmlFormatter` is added without modifying Report.
 
 
-Now, if we compare both files, except for the signature of the `.generate()` method and some comments they are the same.
+Now, if we compare both files (in VSCode for example), except for the signature of the `.generate()` method and some comments, remarkably, they are the same.
 
 <div align="center">
 <img src="./assets/img08.webp" alt="" width="900" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-We have two valid variants:
+We now have two valid variants in our toolbox:
 * `&dyn ReportFormatter` → maximum flexibility (runtime)
 * `F: ReportFormatter` → maximum performance (compile-time)
 
-This is cool because here the choice of dispatch becomes an implementation detail, not an architectural change.
+This is cool because here the choice of dispatch becomes an implementation detail, NOT an architectural change.
 
 
 
@@ -571,34 +583,35 @@ This is cool because here the choice of dispatch becomes an implementation detai
 
 
 
-### Real-World Example: Plugin System
+### An Application Using Plugins
 
+The Open-Closed Principle really shines in plugin-based architectures. For the sake of this example, let’s imagine a text processor that supports plugins. Here a text processor is not a text editor. It is "something" which apply different processing to a text.
 
-If we do NOT have plugins we could write something similar to the previous traits based solution. The code is open for extension, we can add "plugins" (SpellCheck, Git...) but as before the number of tools is fixed, everything must be known at compile time. In the previous code, in the `main()` function we had a set `report.generate()` function calls. Here, in the `editor.run()` we have a set of of Check this out:
+First, without plugins, we could implement the following naive solution. Here the `main()` function calls `processor.run()`, which applies the two known processing steps. Yes, we could add new processing like `UpperCase` but this would need to modify the `.run()` method of the `TxTProcessor` and this is not a good idea. See below :
 
 ```rust
 // cargo run -p ex_04_ocp
 
 // =========================
-// Static dispatch example
+// Naïve Solution - Txt Processor with Plugins
 // =========================
 
 // =========================
 // Abstractions
 // =========================
 
-// Editor with static dispatch
-pub struct Editor;
+// A TxtProcessor knows nothing about the processing nor the text
+pub struct TxtProcessor;
 
-impl Editor {
-    pub fn run<T1: Tool, T2: Tool>(
+impl TxtProcessor {
+    pub fn run<P1: Processing, P2: Processing>(
         &self,
-        tool1: &T1,
-        tool2: &T2,
-        context: &mut EditorContent,
+        processing1: &P1,
+        processing2: &P2,
+        content: &mut EditorContent,
     ) {
-        tool1.apply(context);
-        tool2.apply(context);
+        processing1.apply(content);
+        processing2.apply(content);
     }
 }
 
@@ -607,48 +620,49 @@ pub struct EditorContent {
     pub content: String,
 }
 
-// If a type wants to have the Tool trait it must implement the apply method
-pub trait Tool {
+// If a type wants to have the Processing trait it must implement the .apply() method
+pub trait Processing {
     fn apply(&self, context: &mut EditorContent);
 }
 
 // =========================
-// Concrete tools
+// Concrete processing
 // =========================
 
-// Spell checker
-pub struct SpellCheck;
+// Lowercase processing
+pub struct LowerCase;
 
-impl Tool for SpellCheck {
+impl Processing for LowerCase {
     fn apply(&self, context: &mut EditorContent) {
-        context.content.push_str("\n[Spell check OK]");
+        context.content = context.content.to_lowercase();
+        context.content.push_str("\n[LowerCase OK]");
     }
 }
 
-// Git integration
-pub struct Git;
+// SpellChecker processing
+pub struct SpellChecker;
 
-impl Tool for Git {
+impl Processing for SpellChecker {
     fn apply(&self, context: &mut EditorContent) {
-        context.content.push_str("\n[Git status clean]");
+        context.content.push_str("\n[SpellChecker OK]");
     }
 }
-
 
 // =========================
 // Usage
 // =========================
 
 fn main() {
-    let editor = Editor;
-    let spellcheck = SpellCheck;
-    let git = Git;
+    let processor = TxtProcessor;
+
+    let lowercase = LowerCase;
+    let spell_checker = SpellChecker;
 
     let mut context = EditorContent {
-        content: String::from("Hello world"),
+        content: String::from("HELLO WORLD"),
     };
 
-    editor.run(&spellcheck, &git, &mut context);
+    processor.run(&lowercase, &spell_checker, &mut context);
 
     println!("--- FINAL CONTENT ---");
     println!("{}", context.content);
@@ -659,23 +673,22 @@ Expected output:
 
 ```powershell
 --- FINAL CONTENT ---
-Hello world
-[Spell check OK]
-[Git status clean]
-
+hello world
+[LowerCase OK]
+[SpellChecker OK]
 ```
 
-Open-Closed Principle shines in plugin architectures. Imagine a text editor with plugins.
 
 
-In the code below, the editor remains **closed** (we don't modify it) but **open**. We can extend it with plugins.
+
+In the code below, the `TxtProcessor` remains **closed** (we don't modify it) but **open**. We can extend it with plugins.
 
 
 ```rust
 // cargo run -p ex_05_ocp
 
 // =========================
-// Dynamic dispatch example
+// Dynamic Dispatch Based Solution - Txt Processor with Plugins
 // =========================
 
 // =========================
@@ -690,10 +703,12 @@ pub struct TxtProcessor {
 
 impl TxtProcessor {
     pub fn new() -> Self {
-        Self { processings: Vec::new() }
+        Self {
+            processings: Vec::new(),
+        }
     }
 
-    pub fn register_tool(&mut self, processing: Box<dyn Processing>) {
+    pub fn register_processing(&mut self, processing: Box<dyn Processing>) {
         self.processings.push(processing);
     }
 
@@ -716,9 +731,8 @@ pub trait Processing {
     fn apply(&mut self, context: &mut EditorContent);
 }
 
-
 // =========================
-// Concrete tools
+// Concrete processing
 // =========================
 
 // Lowercase processing
@@ -754,16 +768,16 @@ impl Processing for SpellChecker {
 // =========================
 
 fn main() {
-    let mut editor = TxtProcessor::new();
+    let mut processor = TxtProcessor::new();
 
-    editor.register_tool(Box::new(LowerCase));
-    editor.register_tool(Box::new(SpellChecker));
+    processor.register_processing(Box::new(LowerCase));
+    processor.register_processing(Box::new(SpellChecker));
 
     let mut ed_context = EditorContent {
         content: String::from("HELLO WORLD"),
     };
 
-    editor.run(&mut ed_context);
+    processor.run(&mut ed_context);
 
     println!("--- FINAL CONTENT ---");
     println!("{}", ed_context.content);
@@ -780,16 +794,15 @@ hello world
 [SpellChecker OK]
 ```
 
-This example base on dynamic dispatch works and shows that:
+The example shows that:
 * Editor is closed to modification.
-* New behaviors are added via Tool implementations.
+* New processing are added via Tool implementations.
 * The control flow is invariant.
-* The behavior is extensible at runtime via dyn Tool.
-* Each tool can independently transform the editor state without the editor knowing anything about the concrete behavior.
+* The behavior is extensible at runtime via `dyn Processing`.
+* Each processing can independently transform the state of the content without the `TxtProcessor` knowing anything about the concrete behavior.
 
 
-
-Now let's try this static
+So far so good. However, a `TxtProcessor` is a `Vec<Box<dyn Processing>>` and we may want to avoid the dynamic dispatch. Now let's try a static dispatch based solution:
 
 ```rust
 // cargo run -p ex_06_ocp
@@ -879,48 +892,43 @@ fn main() {
     println!("{}", context.content);
 }
 ```
-It does'nt work. Expected output
+
+It does'nt work. Expected output:
 
 ```text
 Compiling playground v0.0.1 (/playground)
 error[E0308]: mismatched types
-  --> src/main.rs:73:26
+  --> src/main.rs:89:35
    |
-72 |     editor.register_tool(SpellCheck);
-   |     ------               ---------- this argument has type `SpellCheck`...
+88 |     processor.register_processing(LowerCase);
+   |     ---------                     --------- this argument has type `LowerCase`...
    |     |
-   |     ... which causes `editor` to have type `Editor<SpellCheck>`
-73 |     editor.register_tool(Git);
-   |            ------------- ^^^ expected `SpellCheck`, found `Git`
-   |            |
-   |            arguments to this method are incorrect
+   |     ... which causes `processor` to have type `TxtProcessor<LowerCase>`
+89 |     processor.register_processing(SpellChecker);
+   |               ------------------- ^^^^^^^^^^^^ expected `LowerCase`, found `SpellChecker`
+   |               |
+   |               arguments to this method are incorrect
    |
 note: method defined here
-  --> src/main.rs:28:12
+  --> src/main.rs:25:12
    |
-28 |     pub fn register_tool(&mut self, tool: T) {
-   |            ^^^^^^^^^^^^^            -------
+25 |     pub fn register_processing(&mut self, tool: T) {
+   |            ^^^^^^^^^^^^^^^^^^^            -------
 
 For more information about this error, try `rustc --explain E0308`.
 error: could not compile `playground` (bin "playground") due to 1 previous error
-
 ```
 
 
-Let's try to understand what happens here and first let's understand why formatters do not have this problem. In the report/formatter example we have:
+Let's try to understand what happens here and first let's understand why the formatters of the `ex_03_ocp.rs` sample code do not have this problem. Indeed in the `main()` function we have:
 
 ```rust
 report.generate(&TextFormatter);
 report.generate(&HtmlFormatter);
+...
 ```
 
-Even in the "static dispatch" version:
-
-```rust
-pub fn generate<F: ReportFormatter>(&self, formatter: &F) -> String
-```
-
-Everything works because:
+And everything works because:
 
 * The `Report` **does not store** the formatter
 * The formatter is **passed as a parameter**
@@ -930,171 +938,181 @@ So the compiler can safely do this:
 
 * Monomorphize `generate::<TextFormatter>`
 * Monomorphize `generate::<HtmlFormatter>`
-* Monomorphize `generate::<PdfFormatter>`
 
-There is **no need for a single common concrete type**, because nothing is being collected or stored. This is why **static dispatch works perfectly** in that scenario.
+There is **no need for a single common concrete type**, because nothing is being collected nor stored. This is why **static dispatch works perfectly** in that scenario.
 
 
-Ok... What changes with the editor + plugins example? In the editor case, this line changes everything:
+Ok... What changes with the text processor and the plugins example? In the text processor case (`ex_06_ocp.rs`), these lines change everything:
 
 ```rust
-tools: Vec<T>
+pub struct TxtProcessor<T: Processing> {
+    processings: Vec<T>,
+}
 ```
 
 A `Vec<T>` means:
 
 > "This collection contains elements of **one and only one concrete type**."
 
-When we write:
+When, in the `main()` function we write:
 
 ```rust
-editor.register_tool(SpellCheck);
+processor.register_processing(LowerCase);
 ```
 
 The the compiler **infers**:
 
 ```rust
-editor: Editor<SpellCheck>
+processor: Processor<LowerCase>
 ```
 
 From that moment on:
-* `T = SpellCheck`
-* `Vec<T>` becomes `Vec<SpellCheck>`
-* `register_tool()` expects a `SpellCheck`, not *any* `Tool`
+* `T = LowerCase`
+* `Vec<T>` becomes `Vec<LowerCase>`
+* `register_tool()` expects a `LowerCase`, not *any* `Processing`
 
-So when we later write:
+So, the line after, when we write:
 
 ```rust
-editor.register_tool(Git);
+processor.register_processing(SpellChecker);
 ```
 
-We are effectively asking Rust to put a `Git` into a `Vec<SpellCheck>`, which is impossible.
+We are effectively asking Rust to put a `SpellChecker` into a `Vec<LowerCase>`, which is impossible.
 
 
-OK... Now let's make sure we understand why the dynamic dispatch works here
-
-With this version:
+OK... Now let's make sure we understand why the dynamic dispatch works (see `ex_05_ocp.rs`). In this version of the code we have:
 
 ```rust
-Vec<Box<dyn Tool>>
+pub struct TxtProcessor {
+    processings: Vec<Box<dyn Processing>>,
+}
 ```
 
 We are no longer storing concrete types, but **trait objects**.
 
 That means:
-* The editor does not know *which* concrete type it is calling
-* Only the **behavioral contract (`Tool`)** matters
+* The text processor does not know *which* concrete type it is calling
+* Only the **behavioral contract (`Processing`)** matters
 * The actual method implementation is resolved **at runtime**
 
+The text processor doesn’t even know which trait are stored and that’s exactly what dynamic dispatch is designed for.
 
-The editor doesn’t even know which trait are stored and that’s exactly what dynamic dispatch is designed for.
 
-
-Summary
-* In the formatter example, both dynamic and static dispatch work because the formatter is passed as a parameter and never stored. Each call to `generate()` can be monomorphized independently.
-* In the editor example, tools are registered and stored in a collection. With static dispatch, this requires a single concrete type, which makes heterogeneous plugins impossible.
+**Summary:**
+* In the report generator examples, both dynamic and static dispatch work because the formatter is passed as a parameter and never stored. Each call to `generate()` can be monomorphized independently.
+* In the text processor example, tools are registered and stored in a collection. With static dispatch, this requires a single concrete type, which makes heterogeneous plugins impossible.
 * Dynamic dispatch solves this by erasing the concrete type behind a trait object, allowing runtime extensibility at the cost of indirection.
 * In Rust, choosing between static and dynamic dispatch is not about OCP correctness, but about whether behavior composition happens at compile time or at runtime.
 
-Ok so there is no way... Really?
+Ok... So there is no solution if I want plugins and avoid runtime overhead of the dynamic dispatch... Really? Based on what we said, we could try something using a collection that accept heterogeneous data type.
 
 
 ```rust
 // cargo run -p ex_07_ocp
 
 // =========================
-// Static dispatch example
+// Static Dispatch Based Solution - Txt Processor with Plugins
 // =========================
 
-// Shared editor state
-pub struct EditorContext {
-    pub content: String,
+// =========================
+// Abstractions
+// =========================
+
+// A TxtProcessor is a toolchain of processing to be applied on text
+// It knows nothing about the processing nor the text
+pub struct TxTProcessor<T> {
+    processings: T,
 }
 
-// Compile-time behavior abstraction
-pub trait Tool {
-    fn name(&self) -> &str;
-    fn apply(&mut self, context: &mut EditorContext);
-}
+impl<T: ToolChain> TxTProcessor<T> {
+    pub fn new(tools: T) -> Self {
+        Self { processings: tools }
+    }
 
-// Apply a tool or a chain of tools
-pub trait ToolChain {
-    fn apply(&mut self, context: &mut EditorContext);
-}
-
-// Implementation for a unique tool
-// A single Tool is also a valid ToolChain
-// If we don't have this implementation there is no way to implement the recusrsive
-impl<T: Tool> ToolChain for T {
-    fn apply(&mut self, context: &mut EditorContext) {
-        // self.apply(context); // CANNOT work: .apply() calls .apply()
-        Tool::apply(self, context);
+    pub fn run(&mut self, context: &mut EditorContent) {
+        self.processings.apply(context);
     }
 }
 
-// Recusrsive implementation for a tuple
+// Apply a processing or a chain of processings
+pub trait ToolChain {
+    fn apply(&mut self, context: &mut EditorContent);
+}
+
+// Implementation for a unique processing
+// A single Processing is also a valid ToolChain
+// If we don't have this implementation there is no way to implement the recursive
+impl<T: Processing> ToolChain for T {
+    fn apply(&mut self, context: &mut EditorContent) {
+        // self.apply(context); // ! CANNOT work: .apply() calls .apply()
+        Processing::apply(self, context);
+    }
+}
+
+// Recursive implementation for a tuple
 // A tuple (Head, Tail) is a ToolChain if:
-//      Head is a Tool
+//      Head is a Processing
 //      Tail is already a ToolChain
 impl<Head, Tail> ToolChain for (Head, Tail)
 where
-    Head: Tool,
+    Head: Processing,
     Tail: ToolChain,
 {
-    fn apply(&mut self, context: &mut EditorContext) {
+    fn apply(&mut self, context: &mut EditorContent) {
         self.0.apply(context);
         self.1.apply(context);
     }
 }
 
-// Editor using static dispatch
-pub struct Editor<T> {
-    tools: T,
+// Here the content of the TxtProcessor is just a String
+pub struct EditorContent {
+    pub content: String,
 }
 
-impl<T: ToolChain> Editor<T> {
-    pub fn new(tools: T) -> Self {
-        Self { tools }
-    }
-
-    pub fn run(&mut self, context: &mut EditorContext) {
-        self.tools.apply(context);
-    }
+// If a type wants to have the Processing trait it must implement the 2 methods below
+pub trait Processing {
+    fn name(&self) -> &str;
+    fn apply(&mut self, context: &mut EditorContent);
 }
 
-// Spell check tool
-pub struct SpellCheck;
+// =========================
+// Concrete processing
+// =========================
 
-impl Tool for SpellCheck {
+// Lowercase processing
+pub struct LowerCase;
+
+impl Processing for LowerCase {
     fn name(&self) -> &str {
-        "Spell Checker"
+        "LowerCase"
     }
 
-    fn apply(&mut self, context: &mut EditorContext) {
-        // Normalize text to simulate spell checking
+    fn apply(&mut self, context: &mut EditorContent) {
         context.content = context.content.to_lowercase();
-        context.content.push_str("\n[Spell check OK]");
+        context.content.push_str("\n[LowerCase OK]");
     }
 }
 
-// Git integration tool
-pub struct Git;
+// SpellChecker processing
+pub struct SpellChecker;
 
-impl Tool for Git {
+impl Processing for SpellChecker {
     fn name(&self) -> &str {
         "Git Integration"
     }
 
-    fn apply(&mut self, context: &mut EditorContext) {
-        context.content.push_str("\n[Git status clean]");
+    fn apply(&mut self, context: &mut EditorContent) {
+        // Fake spell checker
+        context.content.push_str("\n[SpellChecker OK]");
     }
 }
 
+// =========================
+// Usage
+// =========================
+
 fn main() {
-    let mut editor = Editor::new((
-        SpellCheck,
-        Git,
-    ));
+    let mut processor = TxTProcessor::new((LowerCase, SpellChecker));
 
     // At this point the chain is complete:
     // Git implements Tool
@@ -1102,25 +1120,25 @@ fn main() {
     // therefore (SpellCheck, Git) implements ToolChain
     // therefore Editor<(SpellCheck, Git)> is valid
 
-    let mut context = EditorContext {
+    let mut ed_context = EditorContent {
         content: String::from("HELLO WORLD"),
     };
 
-    editor.run(&mut context);
+    processor.run(&mut ed_context);
 
     println!("--- FINAL CONTENT ---");
-    println!("{}", context.content);
+    println!("{}", ed_context.content);
 }
 ```
 
 ```text
 --- FINAL CONTENT ---
 hello world
-[Spell check OK]
-[Git status clean]
+[LowerCase OK]
+[SpellChecker OK]
 ```
 
-It is important to note that in the static version, tools form a compile-time pipeline where all steps are always executed in order; selecting or skipping tools at runtime requires dynamic dispatch. This also explains the order of the output in the terminal.
+It is important to note that in the static version, tools form a compile-time pipeline where all steps are always executed in order. Selecting or skipping tools at runtime requires dynamic dispatch. This also explains the order of the output in the terminal.
 
 In the case of plugins, I believe dynamic dispatch is the right choice.
 
@@ -1154,11 +1172,11 @@ In the case of plugins, I believe dynamic dispatch is the right choice.
    - Use `<T: Trait>` when we can do compile-time polymorphism (better performance)
 
 2. **Enums can help**: Rust's enums with pattern matching can be appropriate when:
-   - The set of variants is truly closed (won't change)
+   - The set of variants is truly closed (won't change). Think of a robot where the variants could be: Sense Think Act
    - We want exhaustiveness checking
    - Example: `Result<T, E>` is an enum because success/failure is closed
 
-3. **Sealed traits**: If we want a trait that's extensible within our crate but not outside, use the sealed trait pattern:
+3. **Sealed traits**: If we want a trait that's extensible within our crate but not outside, we can use the sealed trait pattern:
    ```rust
    mod sealed {
        pub trait Sealed {}
