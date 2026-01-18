@@ -39,16 +39,8 @@ TODO
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
+
 * You are not an expert in Rust but you're not a newbie either.
-<!-- * SOLID
-    * **S**ingle Responsibility Principle:
-    * **O**pen-Closed Principle:
-    * **L**iskov Substitution Principle:
-    * **I**nterface Segregation Principle:
-    * **D**ependency Inversion Principle:
--->
-
-
 
 * The **S**ingle Responsibility Principle
     * Is not about counting changes, but about identifying **who has the authority** to demand them.
