@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. Here we focu
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-17 11:00:00
+last_modified_date: 2026-01-17 17:00:00
 ---
 
 
@@ -582,7 +582,7 @@ This is cool because here the choice of dispatch becomes an implementation detai
 
 
 
-### An Application Using Plugins
+### Real-World Example: A Text Processor Using Plugins
 
 The Open-Closed Principle really shines in plugin-based architectures. For the sake of this example, let’s imagine a text processor that supports plugins. Here a text processor is not a text editor. It is "something" which apply different processing to a text.
 
@@ -1136,6 +1136,18 @@ hello world
 [LowerCase OK]
 [SpellChecker OK]
 ```
+
+**How do I read the story that the code tell us?**
+
+Hey, I’m `TxTProcessor`. My job is simple: I run a chain of text transformations. I don’t care what those transformations are, I don’t even know their names. All I know is that someone gave me a *toolchain* and that this toolchain knows how to `apply()` itself on some text.
+
+Now meet my friend `EditorContent`. He’s just a container. He holds a `String`, nothing fancy. He doesn’t transform anything by himself, he just lets others mess with his content.
+
+So who actually does the work? That’s where the `Processing` gang comes in. `LowerCase` shows up and says: "Give me the text, I’ll make it lowercase." Then `SpellChecker` arrives and adds: "Cool, I’ll pretend to check spelling." Each of them knows exactly what to do, but only for their own little task.
+
+The magic happens in the `ToolChain`. Whether it’s a single processing or a tuple like `(LowerCase, SpellChecker)`, the rule is always the same: *apply the first tool, then the next, then the next*. No hard-coded order, no special cases, just a clean recursive chain of responsibility.
+
+And the best part? If tomorrow a new tool like `AutoFormatter` or `GrammarFixer` wants to join the party, nobody has to rewrite the processor. As long as it speaks the `Processing` language, it plugs right in.
 
 It is important to note that in the static version, the processings form a compile-time pipeline where all steps are always executed in order. Selecting or skipping processing at runtime requires dynamic dispatch. This also explains the order of the output in the terminal.
 

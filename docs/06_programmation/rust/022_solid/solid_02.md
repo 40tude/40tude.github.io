@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. Here we focu
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-15 11:00:00
+last_modified_date: 2026-01-18 09:00:00
 ---
 
 
@@ -20,9 +20,9 @@ A gentle introduction to SOLID principles using Rust. Here we focus is on Liskov
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -123,15 +123,30 @@ LSP is about **keeping promises**. If our trait says "this method returns the su
 
 ### The Problem: Surprising Substitutions
 
-Classic example from OOP - the Rectangle/Square problem:
+Classic example from OOP - the Rectangle/Square problem. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
+// cargo run -p ex_01_lsp
+
+// =========================
+// Rectangle/Square problem
+// =========================
+
+// =========================
+// Abstractions
+// =========================
+
 pub trait Shape {
     fn set_width(&mut self, width: f64);
     fn set_height(&mut self, height: f64);
     fn area(&self) -> f64;
 }
 
+// =========================
+// Concrete shapes
+// =========================
+
+// Rectangle
 pub struct Rectangle {
     width: f64,
     height: f64,
@@ -151,6 +166,7 @@ impl Shape for Rectangle {
     }
 }
 
+// Square
 // A square is a rectangle, right? Mathematically yes. In software? Trouble.
 pub struct Square {
     side: f64,
@@ -170,19 +186,32 @@ impl Shape for Square {
     }
 }
 
+// =========================
+// Usage
+// =========================
+
 // This function expects Shape behavior
-fn process_shape(shape: &mut dyn Shape) {
-    shape.set_width(5.0);
-    shape.set_height(10.0);
-    let area = shape.area();
+fn main() {
+    let mut my_square = Square { side: 20.0 };
+    let area = my_square.area();
+    println!("Expected area: 400, Got: {}", area);
 
-    // We expect: width=5, height=10, area=50
-    // With Rectangle: CORRECT (5 * 10 = 50)
-    // With Square: WRONG! (10 * 10 = 100)
-    // The last set_height overwrote the width!
+    my_square.set_width(10.0);
+    my_square.set_height(13.0);
+    let area = my_square.area();
 
-    println!("Expected area: 50, Got: {}", area);
+    // We expect: width=10, height=13, area=130
+    // With Rectangle: CORRECT (10 * 13 = 130)
+    // With Square: WRONG! (13 * 13 = 169)
+    // The last set_height overwrote the width
+    println!("Expected area: 130, Got: {}", area);
 }
+```
+
+Expected output:
+```powershell
+Expected area: 400, Got: 400
+Expected area: 130, Got: 169
 ```
 
 **The violation**: `Square` doesn't truly substitute for `Shape`. The caller expects setting width and height independently, but `Square` violates that expectation.
@@ -202,15 +231,30 @@ fn process_shape(shape: &mut dyn Shape) {
 
 ### The Solution: Better Abstractions
 
-Don't force types into hierarchies they don't belong in. Model what they actually are:
+We should not force types into hierarchies they don't belong to. We should model what they actually are. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
+// cargo run -p ex_02_lsp
+
+// =========================
+// Rectangle/Square solution
+// =========================
+
+// =========================
+// Abstractions
+// =========================
+
 // Immutable shapes with clear contracts
 pub trait Shape {
     fn area(&self) -> f64;
     fn perimeter(&self) -> f64;
 }
 
+// =========================
+// Concrete shapes
+// =========================
+
+// Rectangle
 pub struct Rectangle {
     width: f64,
     height: f64,
@@ -232,6 +276,7 @@ impl Shape for Rectangle {
     }
 }
 
+// Square
 pub struct Square {
     side: f64,
 }
@@ -252,10 +297,35 @@ impl Shape for Square {
     }
 }
 
-// Now this works correctly for ANY Shape
-fn print_shape_info(shape: &dyn Shape) {
-    println!("Area: {}, Perimeter: {}", shape.area(), shape.perimeter());
+// =========================
+// Usage
+// =========================
+
+fn main() {
+    let my_square = Square { side: 20.0 };
+    println!(
+        "Area: {}, Perimeter: {}",
+        my_square.area(),
+        my_square.perimeter()
+    );
+
+    let my_rect = Rectangle {
+        width: 6.0,
+        height: 7.0,
+    };
+    println!(
+        "Area: {}, Perimeter: {}",
+        my_rect.area(),
+        my_rect.perimeter()
+    );
 }
+```
+
+Expected output:
+
+```powershell
+Area: 400, Perimeter: 80
+Area: 42, Perimeter: 26
 ```
 
 No mutation, no violated expectations. Each shape upholds the `Shape` contract.
@@ -277,10 +347,20 @@ No mutation, no violated expectations. Each shape upholds the `Shape` contract.
 
 ### Real-World Example: Storage Backends
 
-Let's say we're building a key-value store with multiple backends:
+Let's say we're building a key-value store with multiple backends. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
+// cargo run -p ex_lsp_03
+
+// =========================
+// Storage Backends - Problem
+// =========================
+
 use std::collections::HashMap;
+
+// =========================
+// Abstractions
+// =========================
 
 pub trait Storage {
     fn get(&self, key: &str) -> Option<String>;
@@ -288,9 +368,36 @@ pub trait Storage {
     fn delete(&mut self, key: &str) -> bool;
 }
 
+// Simple Redis mock so the example compiles
+pub struct RedisClient;
+
+impl RedisClient {
+    fn get(&self, _key: &str) -> Result<String, ()> {
+        Err(())
+    }
+    fn set(&self, _key: &str, _value: &str) -> Result<(), ()> {
+        Ok(())
+    }
+    fn del(&self, _key: &str) -> Result<(), ()> {
+        Ok(())
+    }
+}
+
+// =========================
+// Concrete storages
+// =========================
+
 // In-memory backend
 pub struct MemoryStorage {
     data: HashMap<String, String>,
+}
+
+impl MemoryStorage {
+    fn new() -> Self {
+        Self {
+            data: HashMap::new(),
+        }
+    }
 }
 
 impl Storage for MemoryStorage {
@@ -312,6 +419,14 @@ pub struct RedisStorage {
     client: RedisClient,
 }
 
+impl RedisStorage {
+    fn new() -> Self {
+        Self {
+            client: RedisClient,
+        }
+    }
+}
+
 impl Storage for RedisStorage {
     fn get(&self, key: &str) -> Option<String> {
         self.client.get(key).ok()
@@ -331,33 +446,73 @@ pub struct FileStorage {
     base_path: String,
 }
 
+impl FileStorage {
+    fn new(base_path: &str) -> Self {
+        Self {
+            base_path: base_path.into(),
+        }
+    }
+}
+
 impl Storage for FileStorage {
     fn get(&self, key: &str) -> Option<String> {
-        // What if key contains "../"? Path traversal vulnerability!
-        // What if key is too long? Filename limit exceeded!
+        // Path traversal, filename length, permissions, etc.
         std::fs::read_to_string(format!("{}/{}", self.base_path, key)).ok()
     }
 
     fn set(&mut self, key: String, value: String) {
-        // Fails silently if disk is full - violates caller expectations!
+        // Fails silently if disk is full
         std::fs::write(format!("{}/{}", self.base_path, key), value).ok();
     }
 
     fn delete(&mut self, key: &str) -> bool {
-        // Returns true even if file didn't exist - lies to caller!
+        // Lies if file never existed
         std::fs::remove_file(format!("{}/{}", self.base_path, key)).is_ok()
     }
 }
+
+// =========================
+// Usage
+// =========================
+
+// Generic function using the Storage trait
+fn demo(storage: &mut dyn Storage) {
+    storage.set("key".into(), "value".into());
+    println!("Value = {:?}", storage.get("key"));
+    println!("Deleted = {}", storage.delete("key"));
+}
+
+fn main() {
+    let mut mem = MemoryStorage::new();
+    let mut redis = RedisStorage::new();
+    let mut file = FileStorage::new(".");
+
+    demo(&mut mem);
+    demo(&mut redis);
+    demo(&mut file); // LSP violations hidden behind the trait
+}
+```
+Expected output:
+
+```powershell
+Value = Some("value")
+Deleted = true
+Value = None
+Deleted = true
+Value = Some("value")
+Deleted = true
 ```
 
-The `FileStorage` violates LSP in multiple ways:
-- Key constraints differ from other implementations (no "../", length limits)
-- Error handling is inconsistent (silent failures)
-- Return values don't match semantics (delete returns true for non-existent files)
 
 
 
+`FileStorage` complies with the Storage interface, but violates its implicit contracts:
 
+- `.get()`: Vulnerable to path traversal
+- `.set()`: Fails silently
+- `.delete()`: Lies about the result
+
+The client code (`demo()`) works with all implementations, but its assumptions are false with FileStorage.
 
 
 
@@ -371,81 +526,335 @@ The `FileStorage` violates LSP in multiple ways:
 
 ### The Fix: Make Contracts Explicit
 
+You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+
 ```rust
+// cargo run -p ex_lsp_04
+
+// =========================
+// Storage Backends - Fix
+// =========================
+
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
-pub enum StorageError {
-    InvalidKey,
-    IoError(std::io::Error),
-    ConnectionError,
-}
+// =========================
+// Abstractions
+// =========================
 
 pub trait Storage {
-    fn get(&self, key: &str) -> Result<Option<String>, StorageError>;
-    fn set(&mut self, key: String, value: String) -> Result<(), StorageError>;
-    fn delete(&mut self, key: &str) -> Result<bool, StorageError>; // true if existed
+    fn get(&self, key: &str) -> Option<String>;
+    fn set(&mut self, key: String, value: String);
+    fn delete(&mut self, key: &str) -> bool;
 }
 
-// Now FileStorage can properly handle errors
-impl Storage for FileStorage {
-    fn get(&self, key: &str) -> Result<Option<String>, StorageError> {
-        self.validate_key(key)?;
+// Simple Redis mock so the example compiles
+pub struct RedisClient;
 
-        let path = self.key_to_path(key);
-        match std::fs::read_to_string(&path) {
-            Ok(content) => Ok(Some(content)),
-            Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(None),
-            Err(e) => Err(StorageError::IoError(e)),
+impl RedisClient {
+    fn get(&self, _key: &str) -> Result<String, ()> {
+        Err(())
+    }
+    fn set(&self, _key: &str, _value: &str) -> Result<(), ()> {
+        Ok(())
+    }
+    fn del(&self, _key: &str) -> Result<(), ()> {
+        Ok(())
+    }
+}
+
+// =========================
+// Concrete storages
+// =========================
+
+// In-memory backend
+pub struct MemoryStorage {
+    data: HashMap<String, String>,
+}
+
+impl MemoryStorage {
+    fn new() -> Self {
+        Self {
+            data: HashMap::new(),
         }
     }
+}
 
-    fn set(&mut self, key: String, value: String) -> Result<(), StorageError> {
-        self.validate_key(&key)?;
-
-        let path = self.key_to_path(&key);
-        std::fs::write(&path, value)
-            .map_err(|e| StorageError::IoError(e))
+impl Storage for MemoryStorage {
+    fn get(&self, key: &str) -> Option<String> {
+        self.data.get(key).cloned()
     }
 
-    fn delete(&mut self, key: &str) -> Result<bool, StorageError> {
-        self.validate_key(key)?;
+    fn set(&mut self, key: String, value: String) {
+        self.data.insert(key, value);
+    }
 
-        let path = self.key_to_path(key);
-        match std::fs::remove_file(&path) {
-            Ok(()) => Ok(true),
-            Err(e) if e.kind() == std::io::ErrorKind::NotFound => Ok(false),
-            Err(e) => Err(StorageError::IoError(e)),
+    fn delete(&mut self, key: &str) -> bool {
+        self.data.remove(key).is_some()
+    }
+}
+
+// Redis backend
+pub struct RedisStorage {
+    client: RedisClient,
+}
+
+impl RedisStorage {
+    fn new() -> Self {
+        Self {
+            client: RedisClient,
         }
     }
+}
+
+impl Storage for RedisStorage {
+    fn get(&self, key: &str) -> Option<String> {
+        self.client.get(key).ok()
+    }
+
+    fn set(&mut self, key: String, value: String) {
+        self.client.set(&key, &value).ok();
+    }
+
+    fn delete(&mut self, key: &str) -> bool {
+        self.client.del(key).is_ok()
+    }
+}
+
+// =========================
+// FIXED: LSP-compliant FileStorage
+// =========================
+
+pub struct FileStorage {
+    base_path: String,
 }
 
 impl FileStorage {
-    fn validate_key(&self, key: &str) -> Result<(), StorageError> {
-        if key.contains("..") || key.contains('/') || key.contains('\\') {
-            return Err(StorageError::InvalidKey);
+    fn new(base_path: &str) -> Self {
+        Self {
+            base_path: base_path.into(),
         }
-        if key.len() > 255 {
-            return Err(StorageError::InvalidKey);
-        }
-        Ok(())
+    }
+
+    // Prevent path traversal and invalid filenames
+    fn validate_key(&self, key: &str) -> bool {
+        !key.contains("..") && !key.contains('/') && !key.contains('\\') && key.len() <= 255
     }
 
     fn key_to_path(&self, key: &str) -> PathBuf {
         Path::new(&self.base_path).join(key)
     }
 }
+
+impl Storage for FileStorage {
+    fn get(&self, key: &str) -> Option<String> {
+        // Invalid keys behave like "not found"
+        if !self.validate_key(key) {
+            return None;
+        }
+
+        let path = self.key_to_path(key);
+        // IO errors are mapped to None, just like missing keys
+        std::fs::read_to_string(path).ok()
+    }
+
+    fn set(&mut self, key: String, value: String) {
+        if !self.validate_key(&key) {
+            return;
+        }
+
+        let path = self.key_to_path(&key);
+
+        // Ensure failures are no longer silent
+        if let Err(e) = std::fs::write(path, value) {
+            eprintln!("FileStorage set failed: {}", e);
+        }
+    }
+
+    fn delete(&mut self, key: &str) -> bool {
+        if !self.validate_key(key) {
+            return false;
+        }
+
+        let path = self.key_to_path(key);
+
+        match std::fs::remove_file(path) {
+            Ok(()) => true, // File really existed and was deleted
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => false,
+            Err(e) => {
+                eprintln!("FileStorage delete failed: {}", e);
+                false
+            }
+        }
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+fn demo(storage: &mut dyn Storage) {
+    storage.set("key".into(), "value".into());
+    println!("Value = {:?}", storage.get("key"));
+    println!("Deleted = {}", storage.delete("key"));
+}
+
+fn main() {
+    let mut mem = MemoryStorage::new();
+    let mut redis = RedisStorage::new();
+    let mut file = FileStorage::new(".");
+
+    demo(&mut mem);
+    demo(&mut redis);
+    demo(&mut file);
+}
 ```
 
-Now all implementations have the same contract:
-- Errors are explicit and handled consistently
-- Return values have clear semantics
-- Callers can substitute any `Storage` without surprises
+Expected output:
+
+```powershell
+Value = Some("value")
+Deleted = true
+Value = None
+Deleted = true
+Value = Some("value")
+Deleted = true
+```
 
 
 
+Let's make sure we are in sync. Above, we are running the same `demo()` function on three different implementations:
+
+| Storage      | get("key")    | delete("key") | Why                              |
+| ------------ | ------------- | ------------- | -------------------------------- |
+| Memory       | Some("value") | true          | The key was stored in RAM        |
+| Redis (mock) | None          | true          | `get()` always fails in the mock |
+| File         | Some("value") | true          | File was written and deleted     |
+
+Where:
+
+* **RedisStorage** returns `None` because the mock client always fails on `get()`.
+* That is **not** an LSP violation — it’s just a dummy implementation.
+* The important part is that **no implementation lies or behaves inconsistently anymore**.
 
 
+The Liskov Substitution Principle says: *"Any implementation of an interface must be usable **without breaking the expectations** of the code that depends on that interface."* In our case, the **implicit contract** of `Storage` is:
 
+* `get()`
+    * returns `Some(value)` if the key exists
+    * returns `None` if it doesn’t
+* `set()`
+    * tries to store the value
+* `delete()`
+    * returns `true` **only if something was actually deleted**
+
+The **old FileStorage** violated this:
+
+| Method     | Problem                                        |
+| ---------- | ---------------------------------------------- |
+| `get()`    | Path traversal, invalid keys, OS errors        |
+| `set()`    | Failed silently                                |
+| `delete()` | Returned `true` even if the file never existed |
+
+That means **client code could not trust the behavior**.
+
+
+Now let's read again the comments of the fixed FileStorage because they highlight the **important part**,
+
+```rust
+impl FileStorage {
+    fn new(base_path: &str) -> Self {
+        Self { base_path: base_path.into() }
+    }
+
+    // Prevent path traversal and invalid filenames
+    fn validate_key(&self, key: &str) -> bool {
+        !key.contains("..")
+            && !key.contains('/')
+            && !key.contains('\\')
+            && key.len() <= 255
+    }
+
+    fn key_to_path(&self, key: &str) -> PathBuf {
+        Path::new(&self.base_path).join(key)
+    }
+}
+
+impl Storage for FileStorage {
+    fn get(&self, key: &str) -> Option<String> {
+        // Invalid keys behave like "not found"
+        if !self.validate_key(key) {
+            return None;
+        }
+
+        let path = self.key_to_path(key);
+        // IO errors are mapped to None, just like missing keys
+        std::fs::read_to_string(path).ok()
+    }
+
+    fn set(&mut self, key: String, value: String) {
+        if !self.validate_key(&key) {
+            return;
+        }
+
+        let path = self.key_to_path(&key);
+
+        // Ensure failures are no longer silent
+        if let Err(e) = std::fs::write(path, value) {
+            eprintln!("FileStorage set failed: {}", e);
+        }
+    }
+
+    fn delete(&mut self, key: &str) -> bool {
+        if !self.validate_key(key) {
+            return false;
+        }
+
+        let path = self.key_to_path(key);
+
+        match std::fs::remove_file(path) {
+            Ok(()) => true, // File really existed and was deleted
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => false,
+            Err(e) => {
+                eprintln!("FileStorage delete failed: {}", e);
+                false
+            }
+        }
+    }
+}
+```
+
+This explain why this is now LSP-compliant. The **interface did not change**, but the **behavior now matches the contract**:
+
+| Method     | Now guarantees                               |
+| ---------- | -------------------------------------------- |
+| `get()`    | Returns `None` for invalid or missing keys   |
+| `set()`    | Tries to store, logs errors                  |
+| `delete()` | Returns `true` only if something was deleted |
+
+This means:
+
+* The client code can rely on the return values
+* No hidden side effects
+* No misleading results
+* No extra constraints on the caller
+
+So FileStorage can now replace MemoryStorage or RedisStorage without breaking anything. That is exactly what LSP requires.
+
+**Summary:**
+* The original FileStorage violated LSP because it lied about its behavior and introduced hidden constraints.
+* The fixed version respects the same interface but enforces the same observable behavior as the other implementations.
+
+
+**Note:**
+
+Our abstraction is still very weak because:
+
+* `set()` cannot report failure
+* `get()` hides IO errors
+* `delete()` hides permission issues
+
+So this is LSP-compliant, not robust but OK for a short demo code.
 
 
 
@@ -453,9 +862,9 @@ Now all implementations have the same contract:
 
 ### Rust-Specific Notes
 
-1. **Type system enforces LSP**: Unlike dynamic languages, Rust's type system catches many LSP violations at compile time. If our trait method signature is `fn foo(&self) -> i32`, we can't accidentally return a `String`.
+1. **Type system enforces LSP**: Rust's type system catches many LSP violations at compile time. If our trait method signature is `fn foo(&self) -> i32`, we can't accidentally return a `String`.
 
-2. **Use Result for fallible operations**: Don't silently fail or panic. Make errors part of the contract via `Result<T, E>`.
+2. **Use Result for fallible operations**: We should not silently fail or panic. Instead let's make errors part of the contract via `Result<T, E>`.
 
 3. **Trait bounds make contracts explicit**:
    ```rust
@@ -463,8 +872,7 @@ Now all implementations have the same contract:
        // Now callers know implementations are thread-safe
    }
    ```
-
-4. **Don't overuse inheritance thinking**: Coming from OOP, we might force types into "is-a" relationships. In Rust, prefer composition and focused traits.
+4. **Don't overuse inheritance thinking**: Coming from OOP, we might force types into **"is-a"** relationships. In Rust, we should prefer **composition** and focused traits.
 
 
 
