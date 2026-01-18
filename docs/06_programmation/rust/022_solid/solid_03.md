@@ -477,7 +477,7 @@ Context: It is 7:50 AM. The office is empty and the coffee damn hot. You review 
 **The question to ask:** *"Am I forced to depend on methods I do not use?"*
 
 * If an interface requires a client to implement or know methods that are irrelevant to its use case, the interface is **too broad**.
-* The Interface Segregation Principle favors **small, role-focused interfaces** over large, generic ones.
+* The Interface Segregation Principle is not about creating many interfaces for the sake of it, but about **avoiding forcing clients to depend on things they don’t use**.
 * ISP is a thinking tool that helps us say: *"This interface is making me implement things I don’t care about."*
 
 

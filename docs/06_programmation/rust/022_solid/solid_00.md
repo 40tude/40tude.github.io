@@ -40,17 +40,44 @@ TODO
 ## TL;DR
 {: .no_toc }
 * You are not an expert in Rust but you're not a newbie either.
-* SOLID
+<!-- * SOLID
     * **S**ingle Responsibility Principle:
     * **O**pen-Closed Principle:
     * **L**iskov Substitution Principle:
     * **I**nterface Segregation Principle:
     * **D**ependency Inversion Principle:
-* SOLID help us at the mid level
-    - **Module** = a group of related functions and types (`mod`)
-    - **Component** = a crate (lib or binary)
-    - **Class** = a `struct` with associated functions and trait implementations
+-->
+
+
+
+* The **S**ingle Responsibility Principle
+    * Is not about counting changes, but about identifying **who has the authority** to demand them.
+    * Is a thinking tool that helps us say: *"This code makes me nervous because too many people could ask me to change it."*
+* The **O**pen-Closed Principle
+    * Is not about never changing code, but about **protecting stable code from frequent changes**.
+    * Is a thinking tool that helps us say: *"I should be able to extend this behavior without reopening code that was already validated."*
+
+* The **L**iskov Substitution Principle
+    * Is not about inheritance syntax, but about **behavioral compatibility**.
+    * Is a thinking tool that helps us say: *"If I have to know the concrete type, then substitution is broken."*
+
+* The **I**nterface Segregation Principle
+    * Is not about creating many interfaces for the sake of it, but about **avoiding forcing clients to depend on things they don’t use**.
+    * Is a thinking tool that helps us say: *"This interface is making me implement things I don’t care about."*
+
+* The **D**ependency Inversion Principle
+    * Is not about abstractions everywhere, but about **protecting policy from implementation details**.
+    * Is a thinking tool that helps us say: *"My core logic should not know how the outside world works."*
+
+* SOLID principles help us at the mid level
+    * **Module** = a group of related functions and types (`mod`)
+    * **Component** = a crate (lib or binary)
+    * **Class** = a `struct` with associated functions and trait implementations
+
 * SOLID principles are not rules to follow, but questions to ask when code starts to feel uncomfortable. See the "When to Apply the ... Principle?" sections.
+
+
+
 
 
 **Note about the code:**
