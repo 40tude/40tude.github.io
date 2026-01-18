@@ -3,7 +3,7 @@ published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide - 03"
-description: "A gentle introduction to SOLID principles using Rust. Here we focus is on interface Segregation Principle."
+description: "A gentle introduction to SOLID principles using Rust. Here we focus is on Interface Segregation Principle."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
@@ -160,7 +160,207 @@ pub trait Document {
 5. **Binary bloat** - even if we only use reading, we pay for the whole trait in compile time and binary size
 
 
+Just to make sure we realize the impact, let's create a read-only viewer. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
+```rust
+// cargo run -p ex_01_isp
+
+// =========================
+// God Trait Problem
+// =========================
+
+// =========================
+// Abstractions
+// =========================
+
+mod domain {
+    #[derive(Debug, Clone)]
+    pub struct Metadata {
+        pub title: String,
+    }
+
+    #[derive(Debug, Clone)]
+    pub struct Version {
+        pub id: u32,
+    }
+
+    #[derive(Debug)]
+    pub struct User {
+        pub name: String,
+    }
+
+    #[derive(Debug)]
+    pub struct Comment {
+        pub text: String,
+    }
+
+    #[derive(Debug)]
+    pub enum Permission {
+        Read,
+        Write,
+    }
+}
+
+mod document {
+    use super::domain::*;
+
+    // The "God Trait"
+    pub trait Document {
+        // Reading
+        fn get_content(&self) -> &str;
+        fn get_metadata(&self) -> &Metadata;
+        fn search(&self, query: &str) -> Vec<usize>;
+
+        // Writing
+        fn set_content(&mut self, content: String);
+        fn append(&mut self, text: &str);
+        fn insert(&mut self, pos: usize, text: &str);
+
+        // Formatting
+        fn to_html(&self) -> String;
+        fn to_markdown(&self) -> String;
+        fn to_pdf(&self) -> Vec<u8>;
+
+        // Versioning
+        fn save_version(&mut self) -> Version;
+        fn list_versions(&self) -> Vec<Version>;
+        fn restore_version(&mut self, version: &Version);
+
+        // Permissions
+        fn can_read(&self, user: &User) -> bool;
+        fn can_write(&self, user: &User) -> bool;
+        fn share_with(&mut self, user: &User, permission: Permission);
+
+        // Collaboration
+        fn add_comment(&mut self, comment: Comment);
+        fn list_comments(&self) -> &[Comment];
+        fn notify_watchers(&self);
+    }
+}
+
+// =========================
+// Concrete read-only viewer
+// =========================
+
+mod viewer {
+    use super::document::Document;
+    use super::domain::*;
+
+    pub struct ReadOnlyViewer {
+        content: String,
+        metadata: Metadata,
+        comments: Vec<Comment>,
+    }
+
+    impl ReadOnlyViewer {
+        pub fn new(content: String, title: String) -> Self {
+            Self {
+                content,
+                metadata: Metadata { title },
+                comments: Vec::new(),
+            }
+        }
+    }
+
+    // Forced to implement EVERYTHING, even useless methods
+    impl Document for ReadOnlyViewer {
+        // Reading (the only useful part)
+        fn get_content(&self) -> &str {
+            &self.content
+        }
+
+        fn get_metadata(&self) -> &Metadata {
+            &self.metadata
+        }
+
+        fn search(&self, query: &str) -> Vec<usize> {
+            self.content.match_indices(query).map(|(i, _)| i).collect()
+        }
+
+        // Writing (not supported)
+        fn set_content(&mut self, _content: String) {
+            panic!("Read-only viewer cannot modify content");
+        }
+
+        fn append(&mut self, _text: &str) {
+            panic!("Read-only viewer cannot append text");
+        }
+
+        fn insert(&mut self, _pos: usize, _text: &str) {
+            panic!("Read-only viewer cannot insert text");
+        }
+
+        // Formatting (not supported)
+        fn to_html(&self) -> String {
+            panic!("Read-only viewer cannot export to HTML");
+        }
+
+        fn to_markdown(&self) -> String {
+            panic!("Read-only viewer cannot export to Markdown");
+        }
+
+        fn to_pdf(&self) -> Vec<u8> {
+            panic!("Read-only viewer cannot export to PDF");
+        }
+
+        // Versioning (not supported)
+        fn save_version(&mut self) -> Version {
+            panic!("Read-only viewer does not support versioning");
+        }
+
+        fn list_versions(&self) -> Vec<Version> {
+            Vec::new()
+        }
+
+        fn restore_version(&mut self, _version: &Version) {
+            panic!("Read-only viewer cannot restore versions");
+        }
+
+        // Permissions (hardcoded)
+        fn can_read(&self, _user: &User) -> bool {
+            true
+        }
+
+        fn can_write(&self, _user: &User) -> bool {
+            false
+        }
+
+        fn share_with(&mut self, _user: &User, _permission: Permission) {
+            panic!("Read-only viewer cannot share documents");
+        }
+
+        // Collaboration (mostly useless)
+        fn add_comment(&mut self, comment: Comment) {
+            self.comments.push(comment);
+        }
+
+        fn list_comments(&self) -> &[Comment] {
+            &self.comments
+        }
+
+        fn notify_watchers(&self) {
+            // No-op for a simple viewer
+        }
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+use document::Document;
+use viewer::ReadOnlyViewer;
+
+fn main() {
+    let viewer = ReadOnlyViewer::new("Hello SOLID world!".to_string(), "ISP Example".to_string());
+
+    println!("Title: {}", viewer.get_metadata().title);
+    println!("Content: {}", viewer.get_content());
+    println!("Search 'SOLID': {:?}", viewer.search("SOLID"));
+}
+```
+
+As before, in the code above, the modules would live in separate files but here they are grouped together for Rust Playground convenience.
 
 
 
@@ -302,6 +502,197 @@ impl Readable for ArchiveDocument {
 
 
 
+The impact is important. Let's create a viewer. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+
+```rust
+// cargo run -p ex_02_isp
+
+// =========================
+// God Trait Fix
+// =========================
+
+// =========================
+// Abstractions
+// =========================
+
+mod domain {
+    #[derive(Debug, Clone)]
+    pub struct Metadata {
+        pub title: String,
+    }
+}
+
+mod traits {
+    use super::domain::Metadata;
+
+    // Core reading operations
+    pub trait Readable {
+        fn get_content(&self) -> &str;
+        fn get_metadata(&self) -> &Metadata;
+    }
+
+    // Full-text search
+    pub trait Searchable {
+        fn search(&self, query: &str) -> Vec<usize>;
+    }
+}
+
+// =========================
+// Concrete read-only viewer
+// =========================
+
+mod viewer {
+    use super::domain::Metadata;
+    use super::traits::{Readable, Searchable};
+
+    // A simple read-only viewer
+    pub struct ReadOnlyViewer {
+        content: String,
+        metadata: Metadata,
+    }
+
+    impl ReadOnlyViewer {
+        pub fn new(content: String, title: String) -> Self {
+            Self {
+                content,
+                metadata: Metadata { title },
+            }
+        }
+    }
+
+    impl Readable for ReadOnlyViewer {
+        fn get_content(&self) -> &str {
+            &self.content
+        }
+
+        fn get_metadata(&self) -> &Metadata {
+            &self.metadata
+        }
+    }
+
+    impl Searchable for ReadOnlyViewer {
+        fn search(&self, query: &str) -> Vec<usize> {
+            self.content.match_indices(query).map(|(i, _)| i).collect()
+        }
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+use traits::{Readable, Searchable};
+use viewer::ReadOnlyViewer;
+
+fn main() {
+    let viewer = ReadOnlyViewer::new("Hello SOLID world!".to_string(), "ISP Example".to_string());
+
+    println!("Title: {}", viewer.get_metadata().title);
+    println!("Content: {}", viewer.get_content());
+    println!("Search 'SOLID': {:?}", viewer.search("SOLID"));
+}
+```
+
+* No unnecessary methods
+* No panic!()
+* The type clearly expresses its capabilities
+* The compiler prevents any writing
+
+
+Now let's create an archiver. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+
+```rust
+// cargo run -p ex_03_isp
+
+// =========================
+// God Trait Fix
+// =========================
+
+// =========================
+// Abstractions
+// =========================
+
+mod domain {
+    #[derive(Debug, Clone)]
+    pub struct Metadata {
+        pub title: String,
+    }
+}
+
+mod traits {
+    use super::domain::Metadata;
+
+    // Core reading operations
+    pub trait Readable {
+        fn get_content(&self) -> &str;
+        fn get_metadata(&self) -> &Metadata;
+    }
+}
+
+// =========================
+// Concrete read-only archiver
+// =========================
+
+mod archive {
+    use super::domain::Metadata;
+    use super::traits::Readable;
+
+    // A read-only archive document
+    pub struct ArchiveDocument {
+        content: String,
+        metadata: Metadata,
+    }
+
+    impl ArchiveDocument {
+        pub fn new(content: String, title: String) -> Self {
+            Self {
+                content,
+                metadata: Metadata { title },
+            }
+        }
+    }
+
+    impl Readable for ArchiveDocument {
+        fn get_content(&self) -> &str {
+            &self.content
+        }
+
+        fn get_metadata(&self) -> &Metadata {
+            &self.metadata
+        }
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+use archive::ArchiveDocument;
+use traits::Readable;
+
+fn main() {
+    let archive = ArchiveDocument::new(
+        "This is a historical document.".to_string(),
+        "Company Archive 1998".to_string(),
+    );
+
+    println!("Title: {}", archive.get_metadata().title);
+    println!("Content: {}", archive.get_content());
+}
+```
+
+* The archive cannot be modified
+* It does not require searching, exporting, or versioning
+* The type is simple, clear, and consistent with its role
+
+
+
+
+
+
+
+
+
 
 
 
@@ -411,11 +802,213 @@ where
 ```
 
 
+Let's see in a more complete example how it works when a connection must be queryable + transactional in order to perform a backup. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+
+```rust
+// cargo run -p ex_04_isp
+
+// =========================
+// Combine Traits - Require multiple traits
+// =========================
+
+// =========================
+// Abstractions
+// =========================
+
+mod traits {
+    // Allows querying data
+    pub trait Queryable {
+        fn query(&self, sql: &str) -> Result<Vec<String>, String>;
+    }
+
+    // Allows transaction handling
+    pub trait Transactional {
+        fn begin_transaction(&mut self) -> Result<Transaction, String>;
+    }
+
+    pub struct Transaction;
+
+    impl Transaction {
+        pub fn commit(self) -> Result<(), String> {
+            println!("Transaction committed");
+            Ok(())
+        }
+    }
+}
+
+// =========================
+// Concrete database
+// =========================
+
+mod database {
+    use super::traits::{Queryable, Transaction, Transactional};
+
+    // A database connection supporting both querying and transactions
+    pub struct DatabaseConnection;
+
+    impl Queryable for DatabaseConnection {
+        fn query(&self, sql: &str) -> Result<Vec<String>, String> {
+            println!("Running query: {}", sql);
+            Ok(vec!["row1".to_string(), "row2".to_string()])
+        }
+    }
+
+    impl Transactional for DatabaseConnection {
+        fn begin_transaction(&mut self) -> Result<Transaction, String> {
+            println!("Transaction started");
+            Ok(Transaction)
+        }
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+use database::DatabaseConnection;
+use traits::{Queryable, Transactional};
+
+// Requires multiple traits
+fn backup_data(conn: &mut (impl Queryable + Transactional)) -> Result<(), String> {
+    let tx = conn.begin_transaction()?;
+    let data = conn.query("SELECT * FROM important_table")?;
+
+    for row in data {
+        println!("Backing up: {}", row);
+    }
+
+    tx.commit()
+}
+
+fn main() -> Result<(), String> {
+    let mut db = DatabaseConnection;
+    backup_data(&mut db)?;
+    Ok(())
+}
+```
+
+Expected output:
+
+```powershell
+Transaction started
+Running query: SELECT * FROM important_table
+Backing up: row1
+Backing up: row2
+Transaction committed
+```
+
+
+This demonstrates that:
+* A function may require multiple capabilities
+* The actual type does not matter
+* Only behaviors matter
 
 
 
 
+Now let's see how to combine traits with generic trait bounds. Here we want to replicate data between to systems. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
+
+```rust
+// cargo run -p ex_05_isp
+
+// =========================
+// Combine Traits - Use Trait Bounds
+// =========================
+
+// =========================
+// Abstractions
+// =========================
+mod traits {
+    // Allows reading data
+    pub trait Queryable {
+        fn query(&self, sql: &str) -> Result<Vec<String>, String>;
+    }
+
+    // Allows executing commands
+    pub trait Executable {
+        fn execute(&mut self, command: &str) -> Result<(), String>;
+    }
+}
+
+// =========================
+// Concrete MemoryStorage
+// =========================
+
+mod storage {
+    use super::traits::{Executable, Queryable};
+
+    // A simple in-memory storage
+    pub struct MemoryStorage {
+        pub data: Vec<String>,
+    }
+
+    impl Queryable for MemoryStorage {
+        fn query(&self, _sql: &str) -> Result<Vec<String>, String> {
+            Ok(self.data.clone())
+        }
+    }
+
+    impl Executable for MemoryStorage {
+        fn execute(&mut self, command: &str) -> Result<(), String> {
+            println!("Executing: {}", command);
+            self.data.push(command.to_string());
+            Ok(())
+        }
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+use storage::MemoryStorage;
+use traits::{Executable, Queryable};
+
+// Uses generic trait bounds
+fn replicate<C>(source: &mut C, dest: &mut C) -> Result<(), String>
+where
+    C: Queryable + Executable,
+{
+    let data = source.query("SELECT * FROM table")?;
+
+    for row in data {
+        let cmd = format!("INSERT INTO table VALUES ({})", row);
+        dest.execute(&cmd)?;
+    }
+
+    Ok(())
+}
+
+fn main() -> Result<(), String> {
+    let mut source = MemoryStorage {
+        data: vec!["Alice".into(), "Bob".into()],
+    };
+
+    let mut dest = MemoryStorage { data: Vec::new() };
+
+    replicate(&mut source, &mut dest)?;
+
+    println!("Destination data: {:?}", dest.data);
+    Ok(())
+}
+```
+
+
+
+Expected output:
+
+```powershell
+Executing: INSERT INTO table VALUES (Alice)
+Executing: INSERT INTO table VALUES (Bob)
+Destination data: ["INSERT INTO table VALUES (Alice)", "INSERT INTO table VALUES (Bob)"]
+```
+
+
+What this shows:
+* The types are generic
+* The constraints are explicit
+* The function is reusable and safe
 
 
 
@@ -472,7 +1065,7 @@ If yes to any of these, consider splitting the trait.
 
 ### When to Apply the Interface Segregation Principle (ISP)?
 
-Context: It is 7:50 AM. The office is empty and the coffee damn hot. You review the interface implemented yesterday and immediately you feel uncomfortable.
+Context: It is 7:50 AM. The office is empty and the coffee is damn hot. You review the interface implemented yesterday and immediately you feel uncomfortable.
 
 **The question to ask:** *"Am I forced to depend on methods I do not use?"*
 
