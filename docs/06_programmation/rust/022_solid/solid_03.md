@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. Here we focu
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-15 11:00:00
+last_modified_date: 2026-01-18 18:00:00
 ---
 
 
@@ -362,7 +362,13 @@ fn main() {
 
 As before, in the code above, the modules would live in separate files but here they are grouped together for Rust Playground convenience.
 
+Expected output:
 
+```powershell
+Title: ISP Example
+Content: Hello SOLID world!
+Search 'SOLID': [6]
+```
 
 
 
@@ -593,6 +599,14 @@ fn main() {
 }
 ```
 
+Expected output:
+```powershell
+Title: ISP Example
+Content: Hello SOLID world!
+Search 'SOLID': [6]
+```
+
+This shows:
 * No unnecessary methods
 * No panic!()
 * The type clearly expresses its capabilities
@@ -680,7 +694,14 @@ fn main() {
     println!("Content: {}", archive.get_content());
 }
 ```
+Expected output:
 
+```powershell
+Title: Company Archive 1998
+Content: This is a historical document.
+```
+
+This shows:
 * The archive cannot be modified
 * It does not require searching, exporting, or versioning
 * The type is simple, clear, and consistent with its role
@@ -702,8 +723,9 @@ fn main() {
 
 ### Real-World Example: Database Connections
 
+First let's start with the bad guy: One size fits all
+
 ```rust
-// BAD: One size fits all
 pub trait Connection {
     fn execute(&mut self, sql: &str) -> Result<u64>;
     fn query(&mut self, sql: &str) -> Result<ResultSet>;
@@ -713,8 +735,11 @@ pub trait Connection {
     fn ping(&self) -> bool;
     fn get_server_version(&self) -> String;
 }
+```
 
-// GOOD: Focused traits
+Now, here is how a good set of traits could be written:
+
+```rust
 pub trait Queryable {
     fn query(&mut self, sql: &str) -> Result<ResultSet>;
 }
@@ -765,6 +790,7 @@ impl Preparable for ReadOnlyConnection {
 // No Execute or Transactional traits - the compiler prevents misuse!
 ```
 
+I don't show working code here because this is really similar to what we just dit with the last code.
 
 
 
@@ -779,30 +805,32 @@ impl Preparable for ReadOnlyConnection {
 
 When we need multiple capabilities, Rust makes it easy:
 
-```rust
-// Require multiple traits
-fn backup_data(conn: &mut (impl Queryable + Transactional)) -> Result<()> {
-    let tx = conn.begin_transaction()?;
-    let data = conn.query("SELECT * FROM important_table")?;
-    // Save data...
-    tx.commit()
-}
-
-// Or use trait bounds
-fn replicate<C>(source: &mut C, dest: &mut C) -> Result<()>
-where
-    C: Queryable + Executable,
-{
-    let data = source.query("SELECT * FROM table")?;
-    for row in data {
-        dest.execute(&format!("INSERT INTO table VALUES ({})", row))?;
+1. We can require multiple traits
+    ```rust
+    fn backup_data(conn: &mut (impl Queryable + Transactional)) -> Result<()> {
+        let tx = conn.begin_transaction()?;
+        let data = conn.query("SELECT * FROM important_table")?;
+        // Save data...
+        tx.commit()
     }
-    Ok(())
-}
-```
+    ```
+
+2. Or we can use trait bounds
+    ```rust
+    fn replicate<C>(source: &mut C, dest: &mut C) -> Result<()>
+    where
+        C: Queryable + Executable,
+    {
+        let data = source.query("SELECT * FROM table")?;
+        for row in data {
+            dest.execute(&format!("INSERT INTO table VALUES ({})", row))?;
+        }
+        Ok(())
+    }
+    ```
 
 
-Let's see in a more complete example how it works when a connection must be queryable + transactional in order to perform a backup. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+Let's see in first example how it works when a connection must be queryable + transactional in order to perform a backup. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_04_isp
@@ -906,7 +934,7 @@ This demonstrates that:
 
 
 
-Now let's see how to combine traits with generic trait bounds. Here we want to replicate data between to systems. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+Now, let's see how to combine traits with generic trait bounds. Here we want to replicate data between to systems. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 
 ```rust
