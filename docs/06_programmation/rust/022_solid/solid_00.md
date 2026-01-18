@@ -3,7 +3,7 @@ published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide - 00"
-description: "A gentle introduction to SOLID principles using Rust. Here we focus is on Single Responsibility Principle."
+description: "A gentle introduction to SOLID principles using Rust. The focus is on Single Responsibility Principle."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-01-18 10:00:00
 # SOLID Principles in Rust: A Practical Guide
 {: .no_toc }
 
-A gentle introduction to SOLID principles using Rust. Here we focus is on Single Responsibility Principle.
+A gentle introduction to SOLID principles using Rust. The focus is on Single Responsibility Principle.
 {: .lead }
 
 

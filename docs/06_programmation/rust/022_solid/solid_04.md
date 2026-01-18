@@ -3,7 +3,7 @@ published: true
 lang: en-US
 lawet: default
 title: "SOLID Principles in Rust: A Practical Guide - 04"
-description: "A gentle introduction to SOLID principles using Rust. Here we focus is on Dependency Inversion Principle."
+description: "A gentle introduction to SOLID principles using Rust. The focus is on Dependency Inversion Principle."
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-01-15 11:00:00
 # SOLID Principles in Rust: A Practical Guide
 {: .no_toc }
 
-A gentle introduction to SOLID principles using Rust. Here we focus is on Dependency Inversion Principle.
+A gentle introduction to SOLID principles using Rust. The focus is on Dependency Inversion Principle.
 {: .lead }
 
 
@@ -98,10 +98,13 @@ A gentle introduction to SOLID principles using Rust. Here we focus is on Depend
 
 > "High-level modules should not depend on low-level modules. Both should depend on abstractions."
 
-This is the **cornerstone of Clean Architecture**. It's what allows we to build a system where:
+This is the **cornerstone of Clean Architecture**. It's what allows us to build a system where:
 - Business logic doesn't know about databases
-- our domain doesn't care about HTTP frameworks
+- Our domain doesn't care about HTTP frameworks
 - Core code doesn't depend on external libraries
+
+In the book Database and Web are considered as "details".
+<!-- The author emphasizes that the flow of data goes in the opposite direction of the dependencies, hence the name Dependency Inversion Principle. -->
 
 In Rust terms: **our high-level business logic should depend on traits, and low-level details (I/O, databases, frameworks) should implement those traits.**
 
@@ -111,87 +114,75 @@ In Rust terms: **our high-level business logic should depend on traits, and low-
 
 
 
-
-
-
-
 ### The Problem: Direct Dependencies
 
-Let's build a user registration service:
+Let's start with a Bad implementation. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// Low-level: PostgreSQL repository
-use postgres::{Client, NoTls};
+// cargo run -p ex_01_dip
 
-pub struct PostgresUserRepository {
-    client: Client,
-}
+// =========================
+// Dependency Inversion Principle - Problem
+// =========================
 
-impl PostgresUserRepository {
-    pub fn new(connection_string: &str) -> Result<Self, Error> {
-        let client = Client::connect(connection_string, NoTls)?;
-        Ok(Self { client })
+mod bad_example {
+    // Infrastructure component (low-level)
+    pub struct EmailNotifier;
+
+    impl EmailNotifier {
+        pub fn send(&self, message: &str) {
+            println!("Sending email: {}", message);
+        }
     }
 
-    pub fn save_user(&mut self, user: &User) -> Result<()> {
-        self.client.execute(
-            "INSERT INTO users (id, email, name) VALUES ($1, $2, $3)",
-            &[&user.id, &user.email, &user.name],
-        )?;
-        Ok(())
+    // Business logic (high-level) DEPENDS ON infrastructure
+    pub struct OrderService {
+        notifier: EmailNotifier, // BAD - Direct dependency on concrete class
     }
 
-    pub fn find_by_email(&mut self, email: &str) -> Result<Option<User>> {
-        let rows = self.client.query(
-            "SELECT id, email, name FROM users WHERE email = $1",
-            &[&email],
-        )?;
-        // Parse rows...
-        Ok(None)
-    }
-}
-
-// High-level: Business logic
-pub struct UserRegistrationService {
-    repository: PostgresUserRepository, // Direct dependency on low-level detail!
-}
-
-impl UserRegistrationService {
-    pub fn register_user(&mut self, email: String, name: String) -> Result<User> {
-        // Check if user exists
-        if self.repository.find_by_email(&email)?.is_some() {
-            return Err(Error::UserAlreadyExists);
+    impl OrderService {
+        pub fn new() -> Self {
+            Self {
+                notifier: EmailNotifier, // BAD -  Hardcoded dependency
+            }
         }
 
-        // Create user
-        let user = User {
-            id: Uuid::new_v4(),
-            email,
-            name,
-        };
-
-        // Save
-        self.repository.save_user(&user)?;
-
-        Ok(user)
+        pub fn place_order(&self, order_id: u32) {
+            println!("Order #{} placed", order_id);
+            self.notifier
+                .send(&format!("Order #{} confirmed", order_id));
+        }
     }
 }
+
+
+fn main() {
+    println!("=== Problem: Tight Coupling ===\n");
+    let bad_service = bad_example::OrderService::new();
+    bad_service.place_order(101);
+
+    println!("\nWhat if we want to add SMS notifications?");
+    println!("We'd have to modify OrderService itself!");
+}
+```
+
+Expected output:
+
+```powershell
+=== Problem: Tight Coupling ===
+
+Order #101 placed
+Sending email: Order #101 confirmed
+
+What if we want to add SMS notifications?
+We'd have to modify OrderService itself!
 ```
 
 **What's wrong?**
-
-1. **High-level logic depends on low-level detail**: `UserRegistrationService` directly depends on `PostgresUserRepository`
-2. **Can't test without a database**: Every test needs a real Postgres connection
-3. **Can't swap databases**: Want to try MongoDB? we have to rewrite `UserRegistrationService`
-4. **Business logic is coupled to infrastructure**: our domain code knows about Postgres-specific errors and types
-
-The dependency arrow points the wrong way:
-```
-UserRegistrationService --> PostgresUserRepository --> postgres crate
-   (high-level)                  (low-level)            (external)
-```
-
-
+1. `OrderService` (business logic) is tightly coupled to `EmailNotifier` (infrastructure)
+2. We can't switch to SMS or Slack notifications without modifying `OrderService`
+3. Testing `OrderService` requires a real `EmailNotifier` (no mocking possible)
+4. The dependency arrow points **FROM** business logic **TO** infrastructure (wrong direction!)
 
 
 
@@ -201,124 +192,133 @@ UserRegistrationService --> PostgresUserRepository --> postgres crate
 
 ### The Solution: Invert the Dependency
 
+Now let's see how we can make our high-level business logic should depend on traits, and low-level details (I/O, databases, frameworks, infrastructure) implement those traits. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+
+
 ```rust
-// Define abstraction (owned by high-level module)
-pub trait UserRepository {
-    fn save_user(&mut self, user: &User) -> Result<(), RepositoryError>;
-    fn find_by_email(&self, email: &str) -> Result<Option<User>, RepositoryError>;
-}
+// cargo run -p ex_02_dip
 
-// High-level business logic depends on abstraction
-pub struct UserRegistrationService<R: UserRepository> {
-    repository: R,
-}
+// =========================
+// Dependency Inversion Principle - Fix
+// =========================
 
-impl<R: UserRepository> UserRegistrationService<R> {
-    pub fn new(repository: R) -> Self {
-        Self { repository }
+// DOMAIN layer - defines business logic and the abstractions it needs
+mod domain {
+    // The business logic DEFINES what it needs
+    pub trait Notifier {
+        fn send(&self, message: &str);
     }
 
-    pub fn register_user(&mut self, email: String, name: String)
-        -> Result<User, RegistrationError>
-    {
-        // Business logic doesn't know about Postgres, HTTP, or any implementation detail
-        if self.repository.find_by_email(&email)
-            .map_err(|_| RegistrationError::DatabaseError)?
-            .is_some()
-        {
-            return Err(RegistrationError::UserAlreadyExists);
+    // High-level business logic
+    pub struct OrderService<N: Notifier> {
+        notifier: N,
+    }
+
+    impl<N: Notifier> OrderService<N> {
+        pub fn new(notifier: N) -> Self {
+            Self { notifier }
         }
 
-        let user = User {
-            id: Uuid::new_v4(),
-            email,
-            name,
-        };
-
-        self.repository.save_user(&user)
-            .map_err(|_| RegistrationError::DatabaseError)?;
-
-        Ok(user)
+        pub fn place_order(&self, order_id: u32) {
+            println!("Order #{} placed", order_id);
+            self.notifier
+                .send(&format!("Order #{} confirmed", order_id));
+        }
     }
 }
 
-// Low-level Postgres implementation (in a separate module/crate)
-pub struct PostgresUserRepository {
-    client: postgres::Client,
-}
+// INFRASTRUCTURE layer - adapts to domain requirements
+mod infrastructure {
+    use crate::domain::Notifier;
 
-impl UserRepository for PostgresUserRepository {
-    fn save_user(&mut self, user: &User) -> Result<(), RepositoryError> {
-        self.client.execute(
-            "INSERT INTO users (id, email, name) VALUES ($1, $2, $3)",
-            &[&user.id, &user.email, &user.name],
-        )
-        .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
-        Ok(())
+    pub struct EmailNotifier;
+    pub struct SmsNotifier;
+
+    // Infrastructure IMPLEMENTS what the domain needs
+    impl Notifier for EmailNotifier {
+        fn send(&self, message: &str) {
+            println!("Sending email: {}", message);
+        }
     }
 
-    fn find_by_email(&self, email: &str) -> Result<Option<User>, RepositoryError> {
-        let rows = self.client.query(
-            "SELECT id, email, name FROM users WHERE email = $1",
-            &[&email],
-        )
-        .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
-
-        // Parse and return...
-        Ok(None)
+    impl Notifier for SmsNotifier {
+        fn send(&self, message: &str) {
+            println!("Sending SMS: {}", message);
+        }
     }
 }
 
-// Low-level MongoDB implementation (completely independent)
-pub struct MongoUserRepository {
-    collection: mongodb::Collection<User>,
-}
+fn main() {
+    use domain::OrderService;
+    use infrastructure::{EmailNotifier, SmsNotifier};
 
-impl UserRepository for MongoUserRepository {
-    fn save_user(&mut self, user: &User) -> Result<(), RepositoryError> {
-        self.collection
-            .insert_one(user, None)
-            .map_err(|e| RepositoryError::DatabaseError(e.to_string()))?;
-        Ok(())
-    }
+    println!("=== Dependency Inversion Principle ===\n");
 
-    fn find_by_email(&self, email: &str) -> Result<Option<User>, RepositoryError> {
-        let filter = doc! { "email": email };
-        self.collection
-            .find_one(filter, None)
-            .map_err(|e| RepositoryError::DatabaseError(e.to_string()))
-    }
-}
+    let email_service = OrderService::new(EmailNotifier);
+    email_service.place_order(201);
 
-// In-memory implementation for testing
-pub struct InMemoryUserRepository {
-    users: Vec<User>,
-}
+    println!();
 
-impl UserRepository for InMemoryUserRepository {
-    fn save_user(&mut self, user: &User) -> Result<(), RepositoryError> {
-        self.users.push(user.clone());
-        Ok(())
-    }
-
-    fn find_by_email(&self, email: &str) -> Result<Option<User>, RepositoryError> {
-        Ok(self.users.iter().find(|u| u.email == email).cloned())
-    }
+    let sms_service = OrderService::new(SmsNotifier);
+    sms_service.place_order(202);
 }
 ```
 
-Now the dependency flows correctly:
 
-```
-UserRegistrationService --> UserRepository <-- PostgresUserRepository
-   (high-level)              (abstraction)        (low-level)
-                                  ^
-                                  |
-                          MongoUserRepository
-                             (low-level)
+Expected output:
+
+```powershell
+=== Dependency Inversion Principle ===
+
+Order #201 placed
+Sending email: Order #201 confirmed
+
+Order #202 placed
+Sending SMS: Order #202 confirmed
 ```
 
-Both high-level and low-level depend on the abstraction!
+
+In the second source code:
+1. The `DOMAIN module` defines the business logic (`OrderService`) and declares
+   the abstraction it needs (`Notifier` trait). It doesn't know or care about
+   email, SMS, or any specific implementation.
+2. The `INFRASTRUCTURE module` contains concrete implementations (EmailNotifier,
+   SmsNotifier) that **must adapt** to the interface defined by the domain.
+3. Notice the dependency direction:
+   - infrastructure imports from domain (`use crate::domain::Notifier`)
+   - domain imports **nothing** from infrastructure
+   - This is the "inversion": infrastructure depends on domain, not the reverse
+4. The `main()` function is the composition root where we wire everything together.
+
+Benefits:
+- Business logic is isolated and testable
+- We can add new notifiers (Slack, Push, etc.) without touching the domain
+- Infrastructure components are pluggable and interchangeable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
