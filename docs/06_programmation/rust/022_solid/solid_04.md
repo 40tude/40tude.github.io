@@ -20,9 +20,9 @@ A gentle introduction to SOLID principles using Rust. The focus is on Dependency
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
