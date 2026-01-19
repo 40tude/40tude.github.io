@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. The focus is
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-15 11:00:00
+last_modified_date: 2026-01-19 11:00:00
 ---
 
 
@@ -160,9 +160,6 @@ fn main() {
     println!("=== Problem: Tight Coupling ===\n");
     let bad_service = bad_example::OrderService::new();
     bad_service.place_order(101);
-
-    println!("\nWhat if we want to add SMS notifications?");
-    println!("We'd have to modify OrderService itself!");
 }
 ```
 
@@ -173,9 +170,6 @@ Expected output:
 
 Order #101 placed
 Sending email: Order #101 confirmed
-
-What if we want to add SMS notifications?
-We'd have to modify OrderService itself!
 ```
 
 **What's wrong?**
@@ -199,7 +193,7 @@ Now let's see how we can make our high-level business logic should depend on tra
 // cargo run -p ex_02_dip
 
 // =========================
-// Dependency Inversion Principle - Fix
+// Dependency Inversion Principle - Solution
 // =========================
 
 // DOMAIN layer - defines business logic and the abstractions it needs
@@ -209,14 +203,14 @@ mod domain {
         fn send(&self, message: &str);
     }
 
-    // High-level business logic
+    // Business logic (high-level) DEPENDS ON abstraction
     pub struct OrderService<N: Notifier> {
-        notifier: N,
+        notifier: N, // Depends on trait, not concrete class
     }
 
     impl<N: Notifier> OrderService<N> {
         pub fn new(notifier: N) -> Self {
-            Self { notifier }
+            Self { notifier } // Injected dependency
         }
 
         pub fn place_order(&self, order_id: u32) {
@@ -229,7 +223,7 @@ mod domain {
 
 // INFRASTRUCTURE layer - adapts to domain requirements
 mod infrastructure {
-    use crate::domain::Notifier;
+    use crate::domain::Notifier; // Infrastructure depends on domain
 
     pub struct EmailNotifier;
     pub struct SmsNotifier;
@@ -294,6 +288,7 @@ Benefits:
 - Business logic is isolated and testable
 - We can add new notifiers (Slack, Push, etc.) without touching the domain
 - Infrastructure components are pluggable and interchangeable
+- Easy to test with mock implementations
 
 
 
@@ -331,45 +326,221 @@ Benefits:
 
 ### Testing Becomes Trivial
 
+Thanks to DIP, we can test the business logic without any infrastructure:
+- No email server needed
+- No SMS gateway required
+- No network calls
+- Fast, reliable, isolated tests
+
+We simply create a mock that implements the Notifier trait. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+
 ```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
+// cargo test -p ex_03_dip
+// cargo run -p ex_03_dip
 
-    #[test]
-    fn test_register_user() {
-        // No database needed!
-        let repo = InMemoryUserRepository { users: vec![] };
-        let mut service = UserRegistrationService::new(repo);
+// =========================
+// Dependency Inversion Principle - Solution
+// =========================
 
-        let user = service.register_user(
-            "test@example.com".to_string(),
-            "Test User".to_string(),
-        ).unwrap();
-
-        assert_eq!(user.email, "test@example.com");
+// DOMAIN layer - defines business logic and the abstractions it needs
+mod domain {
+    // The business logic DEFINES what it needs
+    pub trait Notifier {
+        fn send(&self, message: &str);
     }
 
-    #[test]
-    fn test_duplicate_registration() {
-        let mut repo = InMemoryUserRepository { users: vec![] };
-        repo.users.push(User {
-            id: Uuid::new_v4(),
-            email: "existing@example.com".to_string(),
-            name: "Existing".to_string(),
-        });
+    // Business logic (high-level) DEPENDS ON abstraction
+    pub struct OrderService<N: Notifier> {
+        notifier: N, // Depends on trait, not concrete class
+    }
 
-        let mut service = UserRegistrationService::new(repo);
+    impl<N: Notifier> OrderService<N> {
+        pub fn new(notifier: N) -> Self {
+            Self { notifier } // Injected dependency
+        }
 
-        let result = service.register_user(
-            "existing@example.com".to_string(),
-            "Duplicate".to_string(),
-        );
-
-        assert!(matches!(result, Err(RegistrationError::UserAlreadyExists)));
+        pub fn place_order(&self, order_id: u32) {
+            println!("Order #{} placed", order_id);
+            self.notifier
+                .send(&format!("Order #{} confirmed", order_id));
+        }
     }
 }
+
+// INFRASTRUCTURE layer - adapts to domain requirements
+mod infrastructure {
+    use crate::domain::Notifier; // Infrastructure depends on domain
+
+    pub struct EmailNotifier;
+    pub struct SmsNotifier;
+
+    // Infrastructure IMPLEMENTS what the domain needs
+    impl Notifier for EmailNotifier {
+        fn send(&self, message: &str) {
+            println!("Sending email: {}", message);
+        }
+    }
+
+    impl Notifier for SmsNotifier {
+        fn send(&self, message: &str) {
+            println!("Sending SMS: {}", message);
+        }
+    }
+}
+
+fn main() {
+    use domain::OrderService;
+    use infrastructure::{EmailNotifier, SmsNotifier};
+
+    println!("=== Dependency Inversion Principle ===\n");
+
+    let email_service = OrderService::new(EmailNotifier);
+    email_service.place_order(201);
+
+    println!();
+
+    let sms_service = OrderService::new(SmsNotifier);
+    sms_service.place_order(202);
+}
+
+// =========================
+// TESTING - The real benefit of DIP
+// =========================
+
+#[cfg(test)]
+mod tests {
+    use super::domain::*;
+    use std::cell::RefCell;
+    use std::rc::Rc;
+
+    // Mock notifier for testing - no real infrastructure needed!
+    struct MockNotifier {
+        messages: Rc<RefCell<Vec<String>>>, // Shared ownership for verification
+    }
+
+    impl MockNotifier {
+        fn new() -> (Self, Rc<RefCell<Vec<String>>>) {
+            let messages = Rc::new(RefCell::new(Vec::new()));
+            (
+                Self {
+                    messages: Rc::clone(&messages),
+                },
+                messages,
+            )
+        }
+    }
+
+    // Implement the domain's trait - that's all we need!
+    impl Notifier for MockNotifier {
+        fn send(&self, message: &str) {
+            self.messages.borrow_mut().push(message.to_string());
+        }
+    }
+
+    #[test]
+    fn test_order_service_sends_notification() {
+        // Arrange: Create service with mock
+        let (mock, messages) = MockNotifier::new();
+        let service = OrderService::new(mock);
+
+        // Act: Execute business logic
+        service.place_order(42);
+
+        // Assert: Verify the notification was sent
+        let msgs = messages.borrow();
+        assert_eq!(msgs.len(), 1);
+        assert_eq!(msgs[0], "Order #42 confirmed");
+    }
+
+    #[test]
+    fn test_multiple_orders() {
+        // Arrange
+        let (mock, messages) = MockNotifier::new();
+        let service = OrderService::new(mock);
+
+        // Act: Place multiple orders
+        service.place_order(100);
+        service.place_order(101);
+        service.place_order(102);
+
+        // Assert: All notifications were sent
+        let msgs = messages.borrow();
+        assert_eq!(msgs.len(), 3);
+        assert!(msgs[0].contains("Order #100"));
+        assert!(msgs[1].contains("Order #101"));
+        assert!(msgs[2].contains("Order #102"));
+    }
+
+    #[test]
+    fn test_notification_format() {
+        // Arrange
+        let (mock, messages) = MockNotifier::new();
+        let service = OrderService::new(mock);
+
+        // Act
+        service.place_order(999);
+
+        // Assert: Verify exact message format
+        let msgs = messages.borrow();
+        assert_eq!(msgs[0], "Order #999 confirmed");
+    }
+
+    // We could also test error cases, edge cases, etc.
+    // All without touching any real infrastructure!
+}
 ```
+Use the Test button on the left hand side.
+
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="900" loading="lazy"/><br/>
+<span>Running tests in Rust Playground</span>
+</div>
+
+
+Expected output:
+
+```
+running 3 tests
+test tests::test_multiple_orders ... ok
+test tests::test_notification_format ... ok
+test tests::test_order_service_sends_notification ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
+
+
+
+Key benefits :
+
+1. Fast tests: No network, no I/O, no delays
+   - Tests run in milliseconds, not seconds
+2. Reliables tests: No flaky external dependencies
+   - No "email server down" failures
+   - No network timeouts
+   - 100% deterministic
+3. Isolated tests: Focus on business logic only
+   - Test what the service DOES, not HOW it sends notifications
+   - Infrastructure bugs don't break domain tests
+4. Easy to write: Simple mock, implements one trait
+   - No complex mocking framework needed
+   - Clear and readable test code
+
+Let's compare this to the "bad example" where `OrderService` depends on `EmailNotifier`:
+- We would need a real email server or complex mocking
+- Tests would be slow and potentially flaky
+- Hard to test edge cases
+- Coupling business logic tests to infrastructure details
+
+
+
+
+
 
 
 
@@ -382,25 +553,79 @@ mod tests {
 
 ### Real-World: Hexagonal Architecture
 
-DIP is the foundation of Hexagonal/Ports & Adapters architecture:
+DIP is the foundation of **Hexagonal Architecture** (also called Ports & Adapters), a pattern that keeps our business logic completely independent from external systems.
+
+**The key insight**: Our business logic shouldn't know whether it's using PostgreSQL or MongoDB, Stripe or PayPal, SendGrid or AWS SES. It should only know "I need to store orders" or "I need to process payments".
+
+Here's how it works:
+
+1. **Domain (Core):** Pure business logic with zero dependencies on frameworks or external systems
+2. **Ports (Abstractions):** Traits that define what the domain needs (defined BY the domain, not imposed ON it)
+3. **Adapters (Infrastructure):** Concrete implementations that plug into the ports
+
+Think of it like a smartphone: the core device defines the ports it needs (USB-C, Lightning), and different adapters can plug in (chargers, headphones, external drives). The phone doesn't care which adapter are used, as long as it implements the correct interface.
+
+Let's see this in action with a simplified order processing system. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// CORE DOMAIN (inner layer - no dependencies)
-pub mod domain {
+// cargo run -p ex_04_dip
+
+// =========================
+// Hexagonal Architecture - aka Ports & Adapters
+// =========================
+
+// DOMAIN Layer (Core Business Logic)
+mod domain {
+    use std::fmt;
+
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+    pub struct OrderId(pub u32);
+
+    #[derive(Debug, Clone, Copy)]
+    pub struct Money(pub u32); // cents
+
+    #[derive(Debug, Clone)]
+    pub struct LineItem {
+        pub name: String,
+        pub price: Money,
+    }
+
+    #[derive(Debug, Clone)]
     pub struct Order {
         pub id: OrderId,
         pub items: Vec<LineItem>,
         pub total: Money,
     }
 
+    #[derive(Debug)]
     pub enum OrderError {
         InvalidOrder,
         PaymentFailed,
+        StorageFailed,
+        NotificationFailed,
+    }
+
+    impl fmt::Display for OrderError {
+        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+            write!(f, "{:?}", self)
+        }
+    }
+
+    impl Order {
+        pub fn new(id: OrderId, items: Vec<LineItem>) -> Result<Self, OrderError> {
+            if items.is_empty() {
+                return Err(OrderError::InvalidOrder);
+            }
+
+            let total = Money(items.iter().map(|item| item.price.0).sum());
+
+            Ok(Order { id, items, total })
+        }
     }
 }
 
-// PORTS (defined by domain - abstractions)
-pub mod ports {
+// PORTS (Abstractions defined by domain)
+mod ports {
     use crate::domain::*;
 
     // Output port: domain needs to persist orders
@@ -411,17 +636,17 @@ pub mod ports {
 
     // Output port: domain needs to process payments
     pub trait PaymentGateway {
-        fn charge(&self, amount: Money, card: &CreditCard) -> Result<PaymentId, OrderError>;
+        fn charge(&self, amount: Money) -> Result<(), OrderError>;
     }
 
-    // Output port: domain needs to send emails
+    // Output port: domain needs to send notifications
     pub trait NotificationService {
-        fn send_order_confirmation(&self, order: &Order) -> Result<(), OrderError>;
+        fn send_confirmation(&self, order: &Order) -> Result<(), OrderError>;
     }
 }
 
-// APPLICATION SERVICE (uses domain + ports)
-pub mod application {
+// APPLICATION service (Orchestrates domain + ports)
+mod application {
     use crate::domain::*;
     use crate::ports::*;
 
@@ -434,6 +659,7 @@ pub mod application {
         repository: R,
         payment: P,
         notifications: N,
+        next_id: u32,
     }
 
     impl<R, P, N> OrderService<R, P, N>
@@ -442,78 +668,277 @@ pub mod application {
         P: PaymentGateway,
         N: NotificationService,
     {
-        pub fn place_order(
-            &mut self,
-            items: Vec<LineItem>,
-            card: &CreditCard,
-        ) -> Result<Order, OrderError> {
-            // Pure business logic - no infrastructure concerns
-            let order = Order::new(items)?;
+        pub fn new(repository: R, payment: P, notifications: N) -> Self {
+            Self {
+                repository,
+                payment,
+                notifications,
+                next_id: 1,
+            }
+        }
 
-            self.payment.charge(order.total, card)?;
+        pub fn place_order(&mut self, items: Vec<LineItem>) -> Result<Order, OrderError> {
+            // Pure business logic - no infrastructure concerns!
+            let order_id = OrderId(self.next_id);
+            self.next_id += 1;
+
+            let order = Order::new(order_id, items)?;
+
+            // Use abstractions, not concrete implementations
+            self.payment.charge(order.total)?;
             self.repository.save(&order)?;
-            self.notifications.send_order_confirmation(&order)?;
+            self.notifications.send_confirmation(&order)?;
 
             Ok(order)
+        }
+
+        pub fn get_order(&self, id: OrderId) -> Result<Option<Order>, OrderError> {
+            self.repository.find(id)
         }
     }
 }
 
-// ADAPTERS (outer layer - implements ports)
-pub mod adapters {
-    use crate::ports::*;
+// ADAPTERS - Implementation #1 (In-Memory)
+mod in_memory_adapters {
     use crate::domain::*;
+    use crate::ports::*;
+    use std::collections::HashMap;
 
-    // PostgreSQL adapter
-    pub struct PostgresOrderRepository {
-        pool: sqlx::PgPool,
+    pub struct InMemoryOrderRepository {
+        orders: HashMap<OrderId, Order>,
     }
 
-    impl OrderRepository for PostgresOrderRepository {
+    impl InMemoryOrderRepository {
+        pub fn new() -> Self {
+            Self {
+                orders: HashMap::new(),
+            }
+        }
+    }
+
+    impl OrderRepository for InMemoryOrderRepository {
         fn save(&mut self, order: &Order) -> Result<(), OrderError> {
-            // SQL implementation
+            println!("[InMemory] Saving order #{:?}", order.id);
+            self.orders.insert(order.id, order.clone());
             Ok(())
         }
 
         fn find(&self, id: OrderId) -> Result<Option<Order>, OrderError> {
-            // SQL implementation
-            Ok(None)
+            println!("[InMemory] Finding order #{:?}", id);
+            Ok(self.orders.get(&id).cloned())
         }
     }
 
-    // Stripe adapter
-    pub struct StripePaymentGateway {
-        api_key: String,
+    pub struct MockPaymentGateway;
+
+    impl PaymentGateway for MockPaymentGateway {
+        fn charge(&self, amount: Money) -> Result<(), OrderError> {
+            println!("[Mock] Charging ${}.{:02}", amount.0 / 100, amount.0 % 100);
+            Ok(())
+        }
     }
+
+    pub struct ConsoleNotificationService;
+
+    impl NotificationService for ConsoleNotificationService {
+        fn send_confirmation(&self, order: &Order) -> Result<(), OrderError> {
+            println!(
+                "[Console] Order #{:?} confirmed - Total: ${}.{:02}",
+                order.id,
+                order.total.0 / 100,
+                order.total.0 % 100
+            );
+            Ok(())
+        }
+    }
+}
+
+// ADAPTERS - Implementation #2 (Simulated External Services)
+mod external_adapters {
+    use crate::domain::*;
+    use crate::ports::*;
+    use std::collections::HashMap;
+
+    pub struct PostgresOrderRepository {
+        simulated_db: HashMap<OrderId, Order>,
+    }
+
+    impl PostgresOrderRepository {
+        pub fn new() -> Self {
+            Self {
+                simulated_db: HashMap::new(),
+            }
+        }
+    }
+
+    impl OrderRepository for PostgresOrderRepository {
+        fn save(&mut self, order: &Order) -> Result<(), OrderError> {
+            println!("[Postgres] INSERT INTO orders VALUES ({:?}, ...)", order.id);
+            self.simulated_db.insert(order.id, order.clone());
+            Ok(())
+        }
+
+        fn find(&self, id: OrderId) -> Result<Option<Order>, OrderError> {
+            println!("[Postgres] SELECT * FROM orders WHERE id = {:?}", id);
+            Ok(self.simulated_db.get(&id).cloned())
+        }
+    }
+
+    pub struct StripePaymentGateway;
 
     impl PaymentGateway for StripePaymentGateway {
-        fn charge(&self, amount: Money, card: &CreditCard) -> Result<PaymentId, OrderError> {
-            // Stripe API call
-            Ok(PaymentId::new())
+        fn charge(&self, amount: Money) -> Result<(), OrderError> {
+            println!(
+                "[Stripe API] POST /charges amount=${}.{:02}",
+                amount.0 / 100,
+                amount.0 % 100
+            );
+            Ok(())
         }
     }
 
-    // SendGrid adapter
-    pub struct SendGridNotificationService {
-        api_key: String,
-    }
+    pub struct SendGridNotificationService;
 
     impl NotificationService for SendGridNotificationService {
-        fn send_order_confirmation(&self, order: &Order) -> Result<(), OrderError> {
-            // SendGrid API call
+        fn send_confirmation(&self, order: &Order) -> Result<(), OrderError> {
+            println!("[SendGrid API] POST /mail/send to=customer@example.com subject='Order #{:?} Confirmed'",
+                order.id);
             Ok(())
+        }
+    }
+}
+
+// Demonstrating Swappable Adapters
+fn main() {
+    use application::OrderService;
+    use domain::{LineItem, Money, OrderId};
+    use external_adapters::*;
+    use in_memory_adapters::*;
+
+    println!("=== Hexagonal Architecture Demo ===\n");
+
+    // Create test items
+    let items = vec![
+        LineItem {
+            name: "Rust Programming Book".to_string(),
+            price: Money(4999), // $49.99
+        },
+        LineItem {
+            name: "Mechanical Keyboard".to_string(),
+            price: Money(12999), // $129.99
+        },
+    ];
+
+    println!("--- Configuration #1: In-Memory Adapters (Testing) ---\n");
+    {
+        let repo = InMemoryOrderRepository::new();
+        let payment = MockPaymentGateway;
+        let notifications = ConsoleNotificationService;
+
+        let mut service = OrderService::new(repo, payment, notifications);
+
+        match service.place_order(items.clone()) {
+            Ok(order) => println!("Order placed successfully: {:?}\n", order.id),
+            Err(e) => println!("Error: {}\n", e),
+        }
+    }
+
+    println!("--- Configuration #2: External Services (Production) ---\n");
+    {
+        let repo = PostgresOrderRepository::new();
+        let payment = StripePaymentGateway;
+        let notifications = SendGridNotificationService;
+
+        let mut service = OrderService::new(repo, payment, notifications);
+
+        match service.place_order(items.clone()) {
+            Ok(order) => {
+                println!("Order placed successfully: {:?}", order.id);
+
+                // Demonstrate retrieval
+                println!();
+                if let Ok(Some(retrieved)) = service.get_order(order.id) {
+                    println!(
+                        "Retrieved order: {} items, total ${}.{:02}",
+                        retrieved.items.len(),
+                        retrieved.total.0 / 100,
+                        retrieved.total.0 % 100
+                    );
+                }
+            }
+            Err(e) => println!("Error: {}", e),
         }
     }
 }
 ```
 
-The beauty: **we can swap any adapter without touching business logic**. Want to switch from Postgres to MongoDB? Implement `OrderRepository` for MongoDB. Want to switch from Stripe to PayPal? Implement `PaymentGateway` for PayPal. The domain is completely isolated.
+Expected output:
+
+```powershell
+=== Hexagonal Architecture Demo ===
+
+--- Configuration #1: In-Memory Adapters (Testing) ---
+
+[Mock] Charging $179.98
+[InMemory] Saving order #OrderId(1)
+[Console] Order #OrderId(1) confirmed - Total: $179.98
+Order placed successfully: OrderId(1)
+
+--- Configuration #2: External Services (Production) ---
+
+[Stripe API] POST /charges amount=$179.98
+[Postgres] INSERT INTO orders VALUES (OrderId(1), ...)
+[SendGrid API] POST /mail/send to=customer@example.com subject='Order #OrderId(1) Confirmed'
+Order placed successfully: OrderId(1)
+
+[Postgres] SELECT * FROM orders WHERE id = OrderId(1)
+Retrieved order: 2 items, total $179.98
+```
 
 
 
+The beauty of this architecture:
+
+1. **Zero coupling to infrastructure:** The `OrderService` has no idea whether it's using PostgreSQL or MongoDB, Stripe or PayPal, SendGrid or AWS SES. It only knows the abstractions (traits).
+
+2. **Swap implementations instantly:** Want to switch from Postgres to MongoDB? Write a `MongoOrderRepository` that implements `OrderRepository`. Want to test without hitting real APIs? Use mock implementations. The domain code never changes.
+
+3. **Business logic stays pure:** Look at `OrderService::place_order()`. It's just business rules. No SQL queries, no HTTP calls, no JSON parsing. This makes it easy to understand, test, and maintain.
+
+4. **Dependencies flow inward:** Infrastructure (adapters) depends on domain (ports), not the other way around. This is DIP in action:
+   - `PostgresOrderRepository` depends on `OrderRepository` trait (defined in domain)
+   - `StripePaymentGateway` depends on `PaymentGateway` trait (defined in domain)
+   - Domain depends on... nothing.
+
+5. **Testing becomes trivial:** We can test our business logic with simple in-memory implementations (like we did before). No need for test databases, API mocks, or complex setup.
+
+This is why Hexagonal Architecture is so powerful in real-world applications: **our business logic is completely isolated and protected from the chaos of external systems**. When Stripe changes their API, we only touch the `StripePaymentGateway` adapter. When we migrate from Postgres to MongoDB, we only write a new `MongoOrderRepository`. The core of our application - the business logic - remains stable and unchanged.
+
+**Real-world impact**: At scale, this means our core domain can live for years while adapters come and go. You can refactor infrastructure, switch cloud providers, or adopt new technologies without rewriting your business logic.
 
 
 
+**Note:**
+
+In the [solid_test repository](https://github.com/40tude/solid_test) on GitHub the [dip_05](https://github.com/40tude/solid_test/tree/main/dip_05/src) workspace contains a modularized version of the previous sample code. Since we cannot have workspaces in workspace, in this version the different components are distributed among sub directories (adapters, application, domain, port). For example, adapters are split in two groups : in_memory and external.
+
+<div align="center">
+<img src="./assets/img10.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
+**Note:**
+
+A last version of the same code is available in the [hexagonal architecture](https://github.com/40tude/hexagonal_architecture)  repo on GitHub. In this project components are in their own workspace, the project include testing, a readme file. Looks much more like what we should do in real life.
+
+The output in the console are exactly the same. However, in this version, the components are organized by their type: `adapters-notification`, `adapters-payment`...
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
@@ -556,7 +981,7 @@ The beauty: **we can swap any adapter without touching business logic**. Want to
    - Adapters crate: depends on domain (NOT on application)
    - Main binary: depends on all, wires them together
 
-4. **The "one binary" concern**: Even though Rust compiles to one binary, the crate structure enforces dependency direction at compile time. we **cannot** accidentally import `postgres` in our domain crate if domain doesn't list it in `Cargo.toml`.
+4. **The "one binary" concern**: Even though Rust compiles to one binary, the crate structure enforces dependency direction at compile time. We **cannot** accidentally import `postgres` in our domain crate if domain doesn't list it in `Cargo.toml`.
 
 
 
@@ -684,7 +1109,8 @@ Now let's write cleaner Rust! 🦀
 - Hexagonal Architecture: https://alistair.cockburn.us/hexagonal-architecture/
 - [Rust is not a faster horse](https://www.youtube.com/watch?v=4YU_r70yGjQ) - Understanding how Rust's paradigm differs from OOP
 - The code of the posts is available in the [solid_test repo on GitHub](https://github.com/40tude/solid_test)
-- The [Coffee Shop Order System companion project](https://github.com/40tude/coffee-shop-solid) on GitHub.
+- The [hexagonal architecture](https://github.com/40tude/hexagonal_architecture) demo on GitHub.
+- The [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid)  companion project on GitHub.
 
 
 <div align="center">
