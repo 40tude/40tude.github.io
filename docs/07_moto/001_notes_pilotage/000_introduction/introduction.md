@@ -8,7 +8,7 @@ last_modified_date: 2025-06-22 16:00:00 +0000
 ---
 
 <div align="center">
-<img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 # Introduction aux Notes de Pilotage Moto
@@ -16,20 +16,20 @@ last_modified_date: 2025-06-22 16:00:00 +0000
 ## Première fois sur circuit
 Les choses ont évolué depuis la première mise en ligne des Notes de Pilotage Moto (fin 2019). Dorénavant, je vous propose de commencer par lire l'article [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%})
 * Il n'y a qu'une page à lire
-* L'article vous guide tout au long de la journée 
+* L'article vous guide tout au long de la journée
 * Il y a un agenda .pdf à imprimer
 * Le billet a été écrit après les Notes de Pilotage Moto
 * Il est moins complet que les Notes de Pilotage Moto, moins exhaustif, moins technique. Cependant, il y a déjà beaucoup de choses (encore un peu trop à mon goût) et il est très **laaaaargement** suffisant.
 
-Une fois que votre première journée c'est bien déroulé et si vous avez trouvé utile les conseils et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails et revoir certains points. 
+Une fois que votre première journée c'est bien déroulé et si vous avez trouvé utile les conseils et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails et revoir certains points.
 
 
 
 ## Le programme
 
-Ma première journée de roulage... Un bon exemple ici... NOT YET TRANSFERED. Je n'ai pas dormi de la nuit, j'étais excité depuis des semaines, j'avais un peu la trouille de me mettre au tas et de ne pas pouvoir rentrer par mes propres moyens... Cela dit, j'aurai bien aimé qu'on m'explique un peu comment appréhender la piste et le pilotage. Je ne parle pas ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) mais uniquement du pilotage. 
+Ma première journée de roulage... Un bon exemple ici... NOT YET TRANSFERED. Je n'ai pas dormi de la nuit, j'étais excité depuis des semaines, j'avais un peu la trouille de me mettre au tas et de ne pas pouvoir rentrer par mes propres moyens... Cela dit, j'aurai bien aimé qu'on m'explique un peu comment appréhender la piste et le pilotage. Je ne parle pas ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) mais uniquement du pilotage.
 
-Comme son nom l'indique, la section **Basics** s'intéresse aux fondamentaux. C'est grosso-modo le programme abordé dans [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) mais en plus détaillé. De toute façon cela ne fait jamais de mal que de lire ou d'entendre les mêmes explications mais avec un vocabulaire différent. Typiquement, à la fin des **Basics** on possède des bases saines et solides sur lesquelles on peut s'appuyer pour passer à l'étape suivante. 
+Comme son nom l'indique, la section **Basics** s'intéresse aux fondamentaux. C'est grosso-modo le programme abordé dans [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) mais en plus détaillé. De toute façon cela ne fait jamais de mal que de lire ou d'entendre les mêmes explications mais avec un vocabulaire différent. Typiquement, à la fin des **Basics** on possède des bases saines et solides sur lesquelles on peut s'appuyer pour passer à l'étape suivante.
 
 **Advanced** couvre bien entendu des sujets plus avancés. Pas la peine d'aller lire cette section en avance de phase tant que les **Basics** ne sont pas en place. Oui bien sûr, allez-y, lisez les mais ne "gâchez" pas une session à travailler tel ou tel aspect tant que vous passez à 1m du point de corde. L'idée, c'est Basics puis Advanced.
 
@@ -107,7 +107,7 @@ Cliquez sur la vidéo ci-dessous. C'est une playlist d'une centaine de vidéos q
 
 Il y en a dans toutes les langues : Français, Italien, Anglais, Espagnol... Si besoin, mettez les sous-titres et passez la vitesse de lecture à 75% ou moins.
 
-Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous conseille de cliquer sur le "**Regarder sur YouTube**" en bas plutôt que sur le bouton play rouge. 
+Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous conseille de cliquer sur le "**Regarder sur YouTube**" en bas plutôt que sur le bouton play rouge.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n7LHAWWeSbHh5IqF&amp;start=1014&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
