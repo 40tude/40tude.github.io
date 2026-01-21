@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. The focus is
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-19 11:00:00
+last_modified_date: 2026-01-21 12:00:00
 ---
 
 
@@ -208,7 +208,7 @@ Sending email: Order #101 confirmed
 ```
 
 **What's wrong?**
-1. `OrderService` (business logic) is tightly coupled to `Sender` (infrastructure)
+1. `OrderService` (which is part of our business logic) is tightly coupled to `Sender` (which is part of the infrastructure, a detail according Uncle Bob's)
 2. We can't switch to SMS or Slack notifications without modifying `OrderService`
 3. Testing `OrderService` requires a real `Sender` (no mocking possible)
 4. The dependency arrow points **FROM** business logic **TO** infrastructure (wrong direction!)
@@ -221,7 +221,7 @@ Sending email: Order #101 confirmed
 
 ### The Solution: Invert the Dependency
 
-Now let's see how we can make our high-level business logic should depend on traits, and low-level details (I/O, databases, frameworks, infrastructure) implement those traits. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+Now let's see how we can make our high-level business logic should depend on traits, and low-level details (I/O, databases, frameworks, infrastructure) implement those traits. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/). Again, play the game and read the comments:
 
 
 ```rust
@@ -321,19 +321,18 @@ Sending by email: Order #101 confirmed
 
 
 In the second source code:
-1. The `domain module` defines the business logic (`OrderService`) and declares
-   the abstraction it needs (`Sender` trait). It doesn't know or care about
+1. The `domain module` defines the business logic (`OrderService`) and declares the abstraction it needs (the `Sender` trait). It doesn't know or care about
    email, SMS, or any specific implementation.
 2. The `email module` contains concrete implementations (Email) that **must adapt** to the interface defined by the domain.
 3. Notice the dependency direction:
    - `email` imports from domain (`use crate::domain::Sender`)
-   - domain imports **nothing** from `email`
-   - This is the "inversion": `email` depends on domain, not the reverse
+   - `domain` imports **nothing** from `email`
+   - This is the "inversion": `email` depends on `domain`, not the reverse
 4. The `main()` function is the **composition** root where we wire everything together.
 
 Benefits:
 - Business logic is isolated and testable
-- We can add new notifiers (Slack, Push, etc.) without touching the domain
+- We can add new notifiers (Slack, Push, etc.) without touching the `domain`
 - Infrastructure components (email, sms...) are pluggable and interchangeable
 - Easy to test with mock implementations
 
@@ -342,7 +341,9 @@ Benefits:
 
 
 
-### Adding new Services
+### Adding New Services
+
+Adding new services becomes really easy and does not impact the `domain` module which is exactly what we want. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/). There are very few comments so you can focus on the lines of code added.
 
 ```rust
 // cargo run -p ex_03_dip
@@ -708,7 +709,7 @@ Let's see this in action with a simplified order processing system. You can copy
 
 
 **Note:**
-This is where the "can run in Rust Playground" + "Comments in source code" approach reaches a limit. I realize the code below is way too looooong. But this is the last sample code of the saga and again I did my best to make the reading enjoyable.
+This is where the "can run in Rust Playground" + "Comments in source code" approach reaches a limit. I realize the code below is way too looooong. But this is the last sample code of the saga and again I did my best to make the reading enjoyable. Please read the comments.
 
 ```rust
 // cargo run -p ex_05_dip
@@ -723,14 +724,14 @@ This is where the "can run in Rust Playground" + "Comments in source code" appro
 // Let's break it down together.
 
 // =============================================================================
-// DOMAIN Layer - The Heart of Your Application
+// DOMAIN Layer - The Heart of our Application
 // =============================================================================
 // Remember in dip_02, domain contained both our business entity (OrderService)
 // AND our abstraction (the Sender trait)?
 //
 // In Hexagonal, we split things more carefully. The domain module becomes
 // purely about business concepts: What is an Order? What is Money?
-// No traits here - just the core vocabulary of your business.
+// No traits here - just the core vocabulary of our business.
 mod domain {
     use std::fmt;
 
@@ -791,7 +792,7 @@ mod domain {
 }
 
 // =============================================================================
-// PORTS - The Boundaries of Your Domain
+// PORTS - The Boundaries of Our Domain
 // =============================================================================
 // Here's where it gets interesting. Remember the Sender trait from dip_02?
 // It was our way of saying: "I need to send messages, but I don't care how."
@@ -837,7 +838,7 @@ mod ports {
 // It's the conductor: "First charge the payment, then save the order,
 // then send a notification." That's coordination, not business logic.
 //
-// This separation helps when your app grows: domain stays focused on
+// This separation helps when our app grows: domain stays focused on
 // "what things ARE", application handles "what happens when".
 mod application {
     use crate::domain::*;
@@ -845,7 +846,7 @@ mod application {
 
     // Look familiar? It's our OrderService, but now with THREE dependencies!
     // In dip_02, we had: OrderService<S: Sender>
-    // Now we have: OrderService<R: OrderRepository, P: PaymentGateway, N: Sender>
+    // ! Now we have: OrderService<R: OrderRepository, P: PaymentGateway, N: Sender>
     //
     // Same principle, just more ports. Each one is a plug where we can
     // connect different adapters.
@@ -958,7 +959,11 @@ mod in_memory_adapters {
 
     impl PaymentGateway for MockPaymentGateway {
         fn charge(&self, amount: Money) -> Result<(), OrderError> {
-            println!("  [Mock] Charging ${}.{:02}", amount.0 / 100, amount.0 % 100);
+            println!(
+                "  [Mock] Charging ${}.{:02}",
+                amount.0 / 100,
+                amount.0 % 100
+            );
             Ok(())
         }
     }
@@ -982,7 +987,7 @@ mod in_memory_adapters {
 
 // --- Adapter Set #2: External Services (for production) ---
 // Same ports, completely different implementations.
-// Swap these in and your application works with real services!
+// If we swap these and our application works with real services!
 mod external_adapters {
     use crate::domain::*;
     use crate::ports::*;
@@ -1004,7 +1009,10 @@ mod external_adapters {
 
     impl OrderRepository for PostgresOrderRepository {
         fn save(&mut self, order: &Order) -> Result<(), OrderError> {
-            println!("  [Postgres] INSERT INTO orders VALUES ({:?}, ...)", order.id);
+            println!(
+                "  [Postgres] INSERT INTO orders VALUES ({:?}, ...)",
+                order.id
+            );
             self.simulated_db.insert(order.id, order.clone());
             Ok(())
         }
@@ -1391,12 +1399,12 @@ Now let's write cleaner Rust! 🦀
 
 - [Clean Architecture](https://amzn.eu/d/9CJWwcy) by Robert C. Martin - the source material
 - [serodriguez68/clean-architecture](https://github.com/serodriguez68/clean-architecture) - detailed summary of the book
-- Rust's trait system: https://doc.rust-lang.org/book/ch10-02-traits.html
-- Hexagonal Architecture: https://alistair.cockburn.us/hexagonal-architecture/
+- [Rust's trait system](https://doc.rust-lang.org/book/ch10-02-traits.html)
+- [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/)
 <!-- - [Rust is not a faster horse](https://www.youtube.com/watch?v=4YU_r70yGjQ) - Understanding how Rust's paradigm differs from OOP -->
 - The code of the posts is available in the [solid_test repo on GitHub](https://github.com/40tude/solid_test)
-- The [hexagonal architecture](https://github.com/40tude/hexagonal_architecture) demo on GitHub.
-- The [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid)  companion project on GitHub.
+- The dedicated repo for the modularized version of the [hexagonal architecture](https://github.com/40tude/hexagonal_architecture).
+- The [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid) companion project on GitHub.
 
 
 <div align="center">
