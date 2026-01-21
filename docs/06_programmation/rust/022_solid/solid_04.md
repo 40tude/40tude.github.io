@@ -704,7 +704,7 @@ DIP is the foundation of **Hexagonal Architecture** (also called Ports & Adapter
 Here's how it works:
 
 1. **Domain (Core):** Pure business logic with zero dependencies on frameworks or external systems
-2. **Ports (Abstractions):** Traits that define what the domain needs (defined BY the domain, not imposed ON it)
+2. **Ports (Abstractions):** Traits that define what the domain needs (defined by the domain, not imposed on it)
 3. **Adapters (Infrastructure):** Concrete implementations that plug into the ports
 
 Think of it like a smartphone: the core device defines the ports it needs (USB-C, Lightning), and different adapters can plug in (chargers, headphones, external drives). The phone doesn't care which adapter are used, as long as it implements the correct interface.
@@ -718,28 +718,28 @@ This is where the "can run in Rust Playground" + "Comments in source code" appro
 ```rust
 // cargo run -p ex_05_dip
 
-// Welcome back! In dip_02, we saw how to invert dependencies using a trait.
+// Welcome back! In ex_02_dip, we saw how to invert dependencies using a trait.
 // We had one trait (Sender) and one adapter (Email). Simple and clean.
 // But real applications are more complex. They need databases, payment systems,
 // notification services... How do we scale DIP to handle all of that?
 //
 // The answer: Hexagonal Architecture, also known as "Ports & Adapters".
-// Don't let the fancy name scare you - it's just DIP applied systematically.
+// Don't let the fancy name scare you. It's just DIP applied systematically.
 // Let's break it down together.
 
 // =============================================================================
 // DOMAIN Layer - The Heart of our Application
 // =============================================================================
-// Remember in dip_02, domain contained both our business entity (OrderService)
+// Remember in ex_02_dip, domain contained both our business entity (OrderService)
 // AND our abstraction (the Sender trait)?
 //
 // In Hexagonal, we split things more carefully. The domain module becomes
 // purely about business concepts: What is an Order? What is Money?
-// No traits here - just the core vocabulary of our business.
+// No traits here: just the core vocabulary of our business.
 mod domain {
     use std::fmt;
 
-    // These are "Value Objects" - they represent business concepts.
+    // These are "Value Objects": they represent business concepts.
     // OrderId isn't just a u32, it's a meaningful business identifier.
     // This makes our code speak the language of the business.
     #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -754,7 +754,7 @@ mod domain {
         pub price: Money,
     }
 
-    // Our Order entity - this is pure business logic.
+    // Our Order entity: this is pure business logic.
     // Notice: no database stuff, no HTTP, no external dependencies.
     // Just: "What IS an order?"
     #[derive(Debug, Clone)]
@@ -764,7 +764,7 @@ mod domain {
         pub total: Money,
     }
 
-    // Business errors - things that can go wrong in our domain.
+    // Business errors: things that can go wrong in our domain.
     #[derive(Debug)]
     pub enum OrderError {
         InvalidOrder,
@@ -780,7 +780,7 @@ mod domain {
     }
 
     // Business rule: an order must have at least one item.
-    // This validation lives in the domain - it's a business rule,
+    // This validation lives in the domain: it's a business rule,
     // not a database constraint or an API validation.
     impl Order {
         pub fn new(id: OrderId, items: Vec<LineItem>) -> Result<Self, OrderError> {
@@ -798,7 +798,7 @@ mod domain {
 // =============================================================================
 // PORTS - The Boundaries of Our Domain
 // =============================================================================
-// Here's where it gets interesting. Remember the Sender trait from dip_02?
+// Here's where it gets interesting. Remember the Sender trait from ex_02_dip?
 // It was our way of saying: "I need to send messages, but I don't care how."
 //
 // In Hexagonal, we call these abstractions "Ports". They're the plugs
@@ -824,7 +824,7 @@ mod ports {
     }
 
     // Output port: "I need to notify customers"
-    // Hey, look! It's our old friend Sender from dip_02!
+    // Hey, look! It's our old friend Sender from ex_02_dip.
     // Same concept, just living in a dedicated "ports" module now.
     // Could be Email, SMS, push notifications, carrier pigeon...
     pub trait Sender {
@@ -835,10 +835,10 @@ mod ports {
 // =============================================================================
 // APPLICATION Layer - The Orchestrator
 // =============================================================================
-// In dip_02, OrderService was in the domain module.
+// In ex_02_dip, OrderService was in the domain module.
 // Here, we move it to a separate "application" layer. Why?
 //
-// Because OrderService doesn't define business rules - it ORCHESTRATES them.
+// Because OrderService doesn't define business rules: it ORCHESTRATES them.
 // It's the conductor: "First charge the payment, then save the order,
 // then send a notification." That's coordination, not business logic.
 //
@@ -849,7 +849,7 @@ mod application {
     use crate::ports::*;
 
     // Look familiar? It's our OrderService, but now with THREE dependencies!
-    // In dip_02, we had: OrderService<S: Sender>
+    // In ex_02_dip, we had: OrderService<S: Sender>
     // ! Now we have: OrderService<R: OrderRepository, P: PaymentGateway, N: Sender>
     //
     // Same principle, just more ports. Each one is a plug where we can
@@ -872,7 +872,7 @@ mod application {
         P: PaymentGateway,
         N: Sender,
     {
-        // Dependency Injection - same as dip_02, just with more dependencies.
+        // Dependency Injection: same as ex_02_dip, just with more dependencies.
         // The caller decides which implementations to use.
         pub fn new(repository: R, payment: P, sender: N) -> Self {
             Self {
@@ -883,7 +883,7 @@ mod application {
             }
         }
 
-        // This is the "use case" - what happens when a customer places an order.
+        // This is the "use case": what happens when a customer places an order.
         // Notice: we only talk to abstractions (traits), never to concrete types.
         // We don't know if we're using Postgres or an in-memory HashMap.
         // We don't know if we're charging via Stripe or a mock.
@@ -892,10 +892,10 @@ mod application {
             let order_id = OrderId(self.next_id);
             self.next_id += 1;
 
-            // Pure business logic - create the order
+            // Pure business logic: create the order
             let order = Order::new(order_id, items)?;
 
-            // Orchestration - coordinate the external systems
+            // Orchestration: coordinate the external systems
             // Each of these calls goes through a port (trait)
             self.payment.charge(order.total)?;
             self.repository.save(&order)?;
@@ -916,7 +916,7 @@ mod application {
 // Now for the fun part: Adapters!
 // These are the concrete implementations that plug into our ports.
 //
-// In dip_02, Email was our adapter - it implemented the Sender trait.
+// In ex_02_dip, Email was our adapter: it implemented the Sender trait.
 // Here, we have multiple adapters for each port.
 //
 // Key insight: adapters depend on ports, not the other way around.
@@ -929,7 +929,7 @@ mod in_memory_adapters {
     use std::collections::HashMap;
 
     // A simple HashMap-based repository.
-    // Perfect for unit tests - no database needed!
+    // Perfect for unit tests: no database needed!
     pub struct InMemoryOrderRepository {
         orders: HashMap<OrderId, Order>,
     }
@@ -957,7 +957,7 @@ mod in_memory_adapters {
         }
     }
 
-    // A mock payment gateway - always succeeds.
+    // A mock payment gateway: always succeeds.
     // Great for testing the happy path!
     pub struct MockPaymentGateway;
 
@@ -972,8 +972,8 @@ mod in_memory_adapters {
         }
     }
 
-    // Console-based notification - just prints to stdout.
-    // Remember Email from dip_02? Same idea, different output.
+    // Console-based notification: just prints to stdout.
+    // Remember Email from ex_02_dip? Same idea, different output.
     pub struct ConsoleSender;
 
     impl Sender for ConsoleSender {
@@ -1086,7 +1086,7 @@ fn main() {
 
     // --- Configuration #1: In-Memory Adapters ---
     // Perfect for testing! No external dependencies needed.
-    // In dip_02, this is like injecting a MockSender.
+    // In ex_02_dip, this is like injecting a MockSender.
     // Here, we inject mocks for ALL our ports.
     println!("--- Configuration #1: In-Memory Adapters (Testing) ---\n");
     {
@@ -1141,7 +1141,7 @@ fn main() {
 // =============================================================================
 //
 // In dip_01, we had a problem: tight coupling.
-// In dip_02, we solved it with a trait and dependency injection.
+// In ex_02_dip, we solved it with a trait and dependency injection.
 // In dip_05, we scaled that solution to a real application architecture.
 //
 // Hexagonal Architecture is just DIP applied consistently:
