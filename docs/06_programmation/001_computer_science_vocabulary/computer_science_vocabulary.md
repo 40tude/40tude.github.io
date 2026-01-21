@@ -144,6 +144,279 @@ fn main() {
 ```
 
 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Composition vs Inheritance
+
+### TL;DR
+
+| Feature      | Inheritance | Composition |
+| ------------ | ----------- | ----------- |
+| Relationship | IS-A        | HAS-A       |
+| Coupling     | Tight       | Loose       |
+| Refactoring  | Risky       | Safer       |
+| Rust support | ❌          | ✅         |
+| C++ support  | ✅          | ✅         |
+
+
+### When to Use What?
+
+| Situation            | Prefer                     |
+| -------------------- | -------------------------- |
+| Flexible design      | Composition                |
+| Shared behavior only | Traits (Rust)              |
+| Legacy OOP systems   | Inheritance (C++)          |
+| Avoid tight coupling | Composition                |
+| Runtime polymorphism | Traits / Virtual functions |
+
+### Inheritance (IS-A)
+
+A class derives from another class and **inherits behavior**.
+
+Example:
+`Dog IS-A Animal`
+
+**Pros**
+* Code reuse
+* Polymorphism
+* Familiar OOP model
+
+**Cons**
+* Tight coupling
+* Fragile base class problem
+* Harder to refactor
+
+
+### Composition (HAS-A)
+
+A type **contains** another type and delegates behavior.
+
+Example:
+`Car HAS-A Engine`
+
+**Pros**
+* Looser coupling
+* More flexible
+* Easier to test and refactor
+* Preferred in Rust
+
+**Cons**
+* More boilerplate
+* Less implicit behavior
+
+
+### Rust: No Classical Inheritance
+
+* Rust **does not support inheritance** like C++ or Java.
+* Instead, it uses **composition + traits**.
+
+
+### Composition in Rust
+
+```rust
+// Behavior struct
+struct Speaker;
+
+impl Speaker {
+    fn speak(&self) {
+        println!("Woof!");
+    }
+}
+
+// Composed struct
+struct Dog {
+    speaker: Speaker,
+}
+
+impl Dog {
+    fn speak(&self) {
+        self.speaker.speak();
+    }
+}
+
+fn main() {
+    let dog = Dog { speaker: Speaker };
+    dog.speak();
+}
+```
+
+**Key Points**
+* `Dog` has a `Speaker`
+* Behavior is delegated
+* Very flexible design
+
+
+### Rust Traits = Interface-like Inheritance
+
+Traits in Rust provide **behavior contracts**, not state inheritance.
+
+```rust
+// Trait definition
+trait Animal {
+    fn speak(&self);
+}
+
+// Struct implementing the trait
+struct Dog;
+
+impl Animal for Dog {
+    fn speak(&self) {
+        println!("Woof!");
+    }
+}
+
+fn main() {
+    let dog = Dog;
+    dog.speak();
+}
+```
+
+**Key Points:**
+* No shared data
+* Only shared behavior
+* No fragile base class
+
+
+
+### Simulating Polymorphism in Rust
+
+```rust
+trait Animal {
+    fn speak(&self);
+}
+
+struct Dog;
+struct Cat;
+
+impl Animal for Dog {
+    fn speak(&self) {
+        println!("Woof!");
+    }
+}
+
+impl Animal for Cat {
+    fn speak(&self) {
+        println!("Meow!");
+    }
+}
+
+fn main() {
+    let animals: Vec<Box<dyn Animal>> = vec![
+        Box::new(Dog),
+        Box::new(Cat),
+    ];
+
+    for a in animals {
+        a.speak();
+    }
+}
+```
+
+**Key Points:**
+* Uses dynamic dispatch (see the `Box<dyn T>`)
+* Similar to C++ virtual functions
+* Still no inheritance hierarchy
+
+
+### Inheritance in C++
+
+```cpp
+#include <iostream>
+
+// Base class
+class Animal {
+public:
+    virtual void speak() const {
+        std::cout << "Animal sound\n";
+    }
+
+    virtual ~Animal() = default;
+};
+
+// Derived class
+class Dog : public Animal {
+public:
+    void speak() const override {
+        std::cout << "Woof!\n";
+    }
+};
+
+int main() {
+    Animal* a = new Dog();
+    a->speak(); // Polymorphism
+
+    delete a;
+    return 0;
+}
+```
+
+**Key Points:**
+* `Dog` **is an** `Animal`
+* Uses virtual methods
+* Polymorphism via base pointer
+
+
+### Composition in C++
+Same behavior using composition instead.
+
+```cpp
+#include <iostream>
+
+// Behavior class
+class Speaker {
+public:
+    void speak() const {
+        std::cout << "Woof!\n";
+    }
+};
+
+// Composed class
+class Dog {
+private:
+    Speaker speaker;
+
+public:
+    void speak() const {
+        speaker.speak();
+    }
+};
+
+int main() {
+    Dog d;
+    d.speak();
+
+    return 0;
+}
+```
+
+**Key Points:**
+* `Dog` **has a** `Speaker`
+* No inheritance
+* Behavior is delegated
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 ### Invoke
 
 * **Meaning:** To "invoke" a function means to cause the function to run, but it doesn’t necessarily specify *how*. This can include:
