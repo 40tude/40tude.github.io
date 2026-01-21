@@ -6,7 +6,7 @@ parent: "Programmation"
 # nav_order: 4
 math: mathjax
 date: 2015-09-27 21:42:50
-last_modified_date: 2025-11-05 23:00:00
+last_modified_date: 2026-01-21 21:00:00
 ---
 
 # My Computer Science Vocabulary Page
@@ -83,8 +83,8 @@ void main(){
 * `i` and `d` are parameters. They are part of the definition of the function. They are part of the function signature.
 * `MyInt` and `42` are arguments. Let's keep in mind that : "The arguments are given"
 
-Moyen mnémotechnique en Français : 
-* **A**rguments, **A**ppel de la fonction 
+Moyen mnémotechnique en Français :
+* **A**rguments, **A**ppel de la fonction
 * **P**aramètres, **P**rototype de la fonction
 
 Mnemoni in English
@@ -107,7 +107,7 @@ For example, if a program needs 20 hours using a single processor core, and a pa
 <!-- ###################################################################### -->
 ## Assignment vs Initialization
 
-* Initialization : gives a variable an **initial** at creation time. 
+* Initialization : gives a variable an **initial** at creation time.
 * Assignment : update the value of an existing variable
 
 
@@ -174,7 +174,7 @@ int add(int a, int b) { return a + b; }
 
 int main() {
     int (*func_ptr)(int, int) = &add;
-    
+
     // Direct call
     int x = add(2, 3);
 
@@ -230,7 +230,7 @@ See : https://www.youtube.com/watch?v=QIHy8pXbneI at 6:30
 
 See : https://stackoverflow.com/questions/130794/what-is-dependency-injection
 
-### In French 
+### In French
 Design principle qui consiste à fournir à un objet ses dépendances plutôt que de les créer lui-même. Au lieu qu'une classe crée les objets dont elle a besoin, on les lui injecte de l'extérieur. Ça permet :
 * de réduire le couplage entre les classes,
 * de faciliter les tests (ex : en injectant des mocks),
@@ -301,7 +301,7 @@ Don't repeat yourself
 ### In French
 * Une expression est évaluée pour retourner un résultat
 * Une expression est une combinaison de valeurs, de variables, d'opérateurs et de fonctions qui produit une valeur
-* L'ensemble des expressions est inclus dans l'ensemble des instructions (statements)  
+* L'ensemble des expressions est inclus dans l'ensemble des instructions (statements)
 
 | US               | FR                  | Note                                        |
 |------------------|---------------------|---------------------------------------------|
@@ -347,7 +347,7 @@ Trait-object fat pointer (2 words)
 
 A **vtable** (virtual method table) is a table of function pointers used to implement **dynamic dispatch**: call the right function based on the runtime data type.
 * **Rust**: for trait objects (`&dyn Trait`, `Box<dyn Trait>`) the second word is a vtable pointer.
-* **C++**: for classes with `virtual` functions, each object stores a hidden vptr (a pointer to that class’s vtable). 
+* **C++**: for classes with `virtual` functions, each object stores a hidden vptr (a pointer to that class’s vtable).
 
 
 ```
@@ -503,10 +503,20 @@ Frameworks are distinct from libs :
 <!-- ###################################################################### -->
 ## Gall's law
 
-1. A complex system that works is invariably found to have evolved from a simple system that worked. 
+1. A complex system that works is invariably found to have evolved from a simple system that worked.
 1. A complex system designed from scratch never works and cannot be patched up to make it work. You have to start over with a working simple system.
 
-[More info here](https://en.wikipedia.org/wiki/John_Gall_(author)#Gall's_law) 
+[More info here](https://en.wikipedia.org/wiki/John_Gall_(author)#Gall's_law)
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ###################################################################### -->
@@ -518,13 +528,119 @@ Frameworks are distinct from libs :
 *Wikipedia* : refers to experience-based techniques for problem solving, learning, and discovery that find a solution which is not guaranteed to be optimal, but good enough for a given set of goals. More precisely, heuristics are strategies using readily accessible, though loosely applicable, information to control [problem solving](http://en.wikipedia.org/wiki/Problem_solving) in human beings and machines.
 
 
+**Simple definition to remember?**
+
+> A heuristic is a **fast rule of thumb** used to get a *good* solution, not necessarily the *best* one.
+
+
+In programming, a **heuristic** is:
+
+> A practical rule or strategy that gives a *good enough* solution, fast, but **not always the perfect one**.
+
+## Use heuristics when:
+* The exact solution is too slow or complex but performance matters
+* We want a fast approximation and perfect accuracy is not required
+* We don’t need 100% optimal results
+
+
+### Example 1 – Heuristic for choosing a number
+
+Let’s say we want a number close to a target. Instead of checking every possibility, we use a **simple rule**.
+
+```rust
+fn heuristic_guess(target: i32) -> i32 {
+    // Simple heuristic: just divide the target by 2
+    target / 2
+}
+
+fn main() {
+    let target = 100;
+    let guess = heuristic_guess(target);
+
+    println!("Target: {}", target);
+    println!("Heuristic guess: {}", guess);
+}
+```
+
+**Why is this a heuristic?**
+* It’s fast
+* It’s simple
+* It’s **not guaranteed** to be the best answer
+
+
+### Example 2 – Heuristic for path cost (A* style)
+
+In pathfinding, heuristics estimate distance.
+
+```rust
+fn manhattan_distance(x1: i32, y1: i32, x2: i32, y2: i32) -> i32 {
+    // Heuristic: Manhattan distance
+    (x1 - x2).abs() + (y1 - y2).abs()
+}
+
+fn main() {
+    let h = manhattan_distance(1, 2, 5, 6);
+    println!("Estimated distance: {}", h);
+}
+```
+
+**Why is this a heuristic?**
+* It estimates distance
+* It’s fast
+* It’s not the real path length
+
+
+### Example 3 – Heuristic sorting shortcut
+
+Instead of a full sort, we just check the first element.
+
+```rust
+fn is_probably_sorted(data: &Vec<i32>) -> bool {
+    // Heuristic: if first <= last, assume sorted
+    data.first() <= data.last()
+}
+
+fn main() {
+    let data = vec![1, 3, 2, 4];
+
+    if is_probably_sorted(&data) {
+        println!("Looks sorted (heuristic)");
+    } else {
+        println!("Probably not sorted");
+    }
+}
+```
+
+**Why is this a heuristic?**
+* Very fast
+* Very simple
+* Often wrong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Indirection
 
-* "All problems in computer science can be solved by another level of indirection." 
-    * David Wheeler
+* "All problems in computer science can be solved by another level of indirection."
+    * **David Wheeler**
 * Exemple : Passing a reference to a vector rather than passing the vector itself as an argument of a function.
 
 
@@ -550,8 +666,8 @@ Frameworks are distinct from libs :
 void demo_initialization(void){
 
     // Default Initialization
-    int x;                       // x is not initialized 
-    std::cout << x << std::endl; 
+    int x;                       // x is not initialized
+    std::cout << x << std::endl;
 
     int y{}; // y is initialized to 0
 
@@ -584,7 +700,7 @@ void demo_copy(void){
             MyClass(int val) : x(val) {}                   // default constructor
             MyClass(const MyClass &other) : x(other.x) {}  // copy constructor
         };
-        
+
     MyClass obj1(10);
     MyClass obj2(obj1);  // use the copy constructor
     MyClass obj3 = obj1; // implicit call to the copy constructor
@@ -603,10 +719,10 @@ void demo_assignment(void){
                 return *this;
             }
         };
-        
+
     MyClass obj1(10);
     MyClass obj2(20);
-    
+
     obj2 = obj1; // use the assignment (=) operator
 }
 
@@ -816,7 +932,7 @@ The ability of some programming languages to inspect type and code information a
     * `MAJOR` version when you make incompatible API changes
     * `MINOR` version when you add functionality in a backward compatible manner
     * `PATCH` version when you make backward compatible bug fixes
-* Read this [page](https://semver.org/spec/v2.0.0.html) 
+* Read this [page](https://semver.org/spec/v2.0.0.html)
 
 
 
@@ -835,7 +951,7 @@ See Python Pickle
 
 * Substitution failure is not an error
 
-A C++ compiler rule that applies when resolving templates. It allows to exclude certain function overloads or template specializations if type substitution fails, without generating a compiler error. 
+A C++ compiler rule that applies when resolving templates. It allows to exclude certain function overloads or template specializations if type substitution fails, without generating a compiler error.
 
 When one write a function or a template class, the compiler tries to substitute the types passed as parameters. If this substitution fails, instead of crashing with an error, the compiler ignores this version and tries the others (if any). It is this mechanism that enables conditional overloading based on types.
 
@@ -971,7 +1087,7 @@ int main(){
     auto bob = 42;
     if (bob > 1) {
         std::cout << "bob larger than 4\n";
-    }	
+    }
     if (bob > 3) std::cout << "bob larger than 3\n";
 }
 ```
@@ -1004,7 +1120,7 @@ y = (x = 5)  # ❌ Erreur : l'affectation n'est pas une expression en Python !
 ## Strength reduction
 
 * See From Mathematics to Generic Programming p 26
-* ISBN-10: [0321942043](https://amzn.eu/d/fKsXji9) 
+* ISBN-10: [0321942043](https://amzn.eu/d/fKsXji9)
 * Code optimization
 * In loop, replace complex multiplications with "lite" additions
     * Need to evaluate the $$\delta$$ between 2 loops
@@ -1099,19 +1215,19 @@ See : <http://stackoverflow.com/questions/17930267/what-is-the-difference-betwee
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Tasks
-Cooperative multitasking. Think about Windows 3.1 when true parallelism via multithread was not yet available under Windows. However, even with one CPU, we were able, at the same time, to play music, print a document and draw in MSPaint. 
+Cooperative multitasking. Think about Windows 3.1 when true parallelism via multithread was not yet available under Windows. However, even with one CPU, we were able, at the same time, to play music, print a document and draw in MSPaint.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QIHy8pXbneI?si=5fCEHDZu2Va85AyY&amp;start=1098" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-A task is a computation that can potentially be executed **concurrently** with other computations. The keyword here is concurrently. One task is executed until it must wait (I/O or timer). Then a second task resumes from where it stopped, and so on, until the first task can continue again. The first task then runs until it must wait again.  
+A task is a computation that can potentially be executed **concurrently** with other computations. The keyword here is concurrently. One task is executed until it must wait (I/O or timer). Then a second task resumes from where it stopped, and so on, until the first task can continue again. The first task then runs until it must wait again.
 
-The tasks are not executed one after another (sequentially) but interleaved in small portions of work. A runtime manages the scheduling of these tasks (tasks are invisible to the OS). The runtime switches from one task to another whenever the current task has to "wait" (file I/O, network I/O, or a timer).  
+The tasks are not executed one after another (sequentially) but interleaved in small portions of work. A runtime manages the scheduling of these tasks (tasks are invisible to the OS). The runtime switches from one task to another whenever the current task has to "wait" (file I/O, network I/O, or a timer).
 
-Tasks are lightweight (sometimes called green threads) and switching between them is very fast.  
+Tasks are lightweight (sometimes called green threads) and switching between them is very fast.
 
-It makes sense to use tasks when we know they will spend time waiting on I/O. If tasks are instead doing heavy number crunching, it is better to use threads to achieve true parallelism. Indeed, if a task never waits, the runtime will never switch, and only one task will run until completion. The application will look "sequential" instead of concurrent.  
+It makes sense to use tasks when we know they will spend time waiting on I/O. If tasks are instead doing heavy number crunching, it is better to use threads to achieve true parallelism. Indeed, if a task never waits, the runtime will never switch, and only one task will run until completion. The application will look "sequential" instead of concurrent.
 
 
 
@@ -1123,13 +1239,13 @@ It makes sense to use tasks when we know they will spend time waiting on I/O. If
 ## Threads
 Execution environment consisting of a stack and processor state running in parallel with other threads.
 
-A thread is the system-level representation of a unit of execution in a program. Unlike tasks, threads are managed directly by the operating system. They run truly **in parallel** when multiple CPU cores are available.  
+A thread is the system-level representation of a unit of execution in a program. Unlike tasks, threads are managed directly by the operating system. They run truly **in parallel** when multiple CPU cores are available.
 
-Threads of an application share a single address space. This is different from processes, which normally do not share memory directly. Because of this, threads can communicate quickly through shared objects. However, such communication needs to be carefully controlled with synchronization primitives (locks, semaphores, atomics, etc.) to avoid data races or inconsistent states.  
+Threads of an application share a single address space. This is different from processes, which normally do not share memory directly. Because of this, threads can communicate quickly through shared objects. However, such communication needs to be carefully controlled with synchronization primitives (locks, semaphores, atomics, etc.) to avoid data races or inconsistent states.
 
-Creating and switching between threads is more expensive than with tasks, but threads allow heavy computations to scale across multiple cores. This makes them well suited for CPU-bound workloads such as image processing, data analysis, or simulations.  
+Creating and switching between threads is more expensive than with tasks, but threads allow heavy computations to scale across multiple cores. This makes them well suited for CPU-bound workloads such as image processing, data analysis, or simulations.
 
-In practice, many applications combine both threads and taks. Threads provide parallel execution on multiple cores, while tasks inside a thread allow efficient handling of thousands of concurrent I/O operations. This hybrid model leverages the strengths of each approach.  
+In practice, many applications combine both threads and taks. Threads provide parallel execution on multiple cores, while tasks inside a thread allow efficient handling of thousands of concurrent I/O operations. This hybrid model leverages the strengths of each approach.
 
 
 
