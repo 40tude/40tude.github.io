@@ -123,7 +123,7 @@ LSP is about **keeping promises**. If our trait says "this method returns the su
 
 ### The Problem: Surprising Substitutions
 
-Classic example from OOP - the Rectangle/Square problem. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+Historic and classic example from OOP - the Rectangle/Square problem. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_01_lsp
@@ -734,7 +734,7 @@ Let's make sure we are in sync. Above, we are running the same `demo()` function
 Where:
 
 * **RedisStorage** returns `None` because the mock client always fails on `get()`.
-* That is **not** an LSP violation — it’s just a dummy implementation.
+* That is **not** an LSP violation, it’s just a dummy implementation.
 * The important part is that **no implementation lies or behaves inconsistently anymore**.
 
 
@@ -872,7 +872,7 @@ So this is LSP-compliant, not robust but OK for a short demo code.
        // Now callers know implementations are thread-safe
    }
    ```
-4. **Don't overuse inheritance thinking**: Coming from OOP, we might force types into **"is-a"** relationships. In Rust, we should prefer **composition** and focused traits.
+4. **Don't overuse inheritance thinking**: Coming from OOP, we might force types into **"is-a"** relationships. In Rust, we should prefer **composition** (**has-a**) and focused traits.
 
 
 

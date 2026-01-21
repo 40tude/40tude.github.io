@@ -153,11 +153,11 @@ pub trait Document {
 
 **What's wrong?** This trait is massive. Problems:
 
-1. **A simple read-only viewer must implement all 20+ methods** (even though it only needs `get_content` and `get_metadata`)
+1. **A simple read-only viewer must implement all 20+ methods**: even though it only needs `get_content` and `get_metadata`
 2. **A formatter that generates HTML/MD needs to implement versioning and permissions**
-3. **Testing is a nightmare** - mock implementations must implement everything
-4. **Changes ripple** - adding a new export format forces every implementation to change
-5. **Binary bloat** - even if we only use reading, we pay for the whole trait in compile time and binary size
+3. **Testing is a nightmare**: mock implementations must implement everything
+4. **Changes ripple**: adding a new export format forces every implementation to change
+5. **Binary bloat**: even if we only use reading, we pay for the whole trait in compile time and binary size
 
 
 Just to make sure we realize the impact, let's create a read-only viewer. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):

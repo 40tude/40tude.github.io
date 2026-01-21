@@ -41,42 +41,37 @@ TODO
 {: .no_toc }
 
 * You are not an expert in Rust but you're not a newbie either.
-
 * The **S**ingle Responsibility Principle
     * Is not about counting changes, but about identifying **who has the authority** to demand them.
     * Is a thinking tool that helps us say: *"This code makes me nervous because too many people could ask me to change it."*
 * The **O**pen-Closed Principle
     * Is not about never changing code, but about **protecting stable code from frequent changes**.
     * Is a thinking tool that helps us say: *"I should be able to extend this behavior without reopening code that was already validated."*
-
 * The **L**iskov Substitution Principle
     * Is not about inheritance syntax, but about **behavioral compatibility**.
     * Is a thinking tool that helps us say: *"If I have to know the concrete type, then substitution is broken."*
-
 * The **I**nterface Segregation Principle
     * Is not about creating many interfaces for the sake of it, but about **avoiding forcing clients to depend on things they don’t use**.
     * Is a thinking tool that helps us say: *"This interface is making me implement things I don’t care about."*
-
 * The **D**ependency Inversion Principle
     * Is not about abstractions everywhere, but about **protecting policy from implementation details**.
     * Is a thinking tool that helps us say: *"My core logic should not know how the outside world works."*
-
 * SOLID principles help us at the mid level
     * **Module** = a group of related functions and types (`mod`)
     * **Component** = a crate (lib or binary)
     * **Class** = a `struct` with associated functions and trait implementations
-
 * SOLID principles are not rules to follow, but questions to ask when code starts to feel uncomfortable. See the "When to Apply the ... Principle?" sections.
 
 
 
 
 
-**Note about the code:**
-
+**Note:**
+About the code
 1. You should be able to copy most of the code from the posts into the [Rust Playground](https://play.rust-lang.org/).
-2. The code from the posts is also available in the [solid_test repository](https://github.com/40tude/solid_test) on GitHub.
-3. In addition, feel free to explore, break, and rebuild the companion project, the [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid), available on GitHub.
+2. The code from the posts is available in the [solid_test repository](https://github.com/40tude/solid_test) on GitHub.
+3. Specific to the Dependency Inversion Principle episode, one of the sample code is rewritten as a project where each component is in a workspace. The repo of this project is [available on GitHub](https://github.com/40tude/hexagonal_architecture).
+4. In addition, feel free to explore, break, and rebuild the companion project, the [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid), available on GitHub.
 
 
 
@@ -168,7 +163,7 @@ Here's the thing: **SOLID** isn't about the language features - it's about **org
 
 <div align="center">
 <img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>2017 - <a href="https://amzn.eu/d/2khTpqS" target="_blank">Clean Architecture</a></span> -->
+<span>Can you hear the theme music? I do!</span>
 </div>
 
 The principles are about managing dependencies, separating concerns, and making our code maintainable as it grows.

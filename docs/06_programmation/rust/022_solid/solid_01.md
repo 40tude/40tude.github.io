@@ -144,9 +144,9 @@ impl Report {
     pub fn generate(&self, format: ReportFormat) -> String {
         match format {
             ReportFormat::Text => {
-                let mut output = format!("=== {} ===\n", self.title);
+                let mut output = format!("=== {} ===", self.title);
                 for item in &self.data {
-                    output.push_str(&format!("- {}\n", item));
+                    output.push_str(&format!("\n- {}", item));
                 }
                 output
             }
@@ -182,9 +182,9 @@ fn main() {
     let html_report = report.generate(ReportFormat::Html);
     let pdf_report = report.generate(ReportFormat::Pdf);
 
-    println!("--- TEXT REPORT ---\n{}", text_report);
-    println!("--- HTML REPORT ---\n{}", html_report);
-    println!("--- PDF REPORT ---\n{}", pdf_report);
+    println!("\n--- TEXT REPORT ---\n{}", text_report);
+    println!("\n--- HTML REPORT ---\n{}", html_report);
+    println!("\n--- PDF REPORT ---\n{}", pdf_report);
 }
 ```
 
@@ -204,11 +204,12 @@ Expected output
   <li>Product B: 98 units</li>
   <li>Product C: 143 units</li>
 </ul>
+
 --- PDF REPORT ---
 PDF: Monthly Sales [binary data]
 ```
 
-**What happens when we need XML output?** We have to:
+What happens when we need XML output? We have to:
 1. Add `Xml` to the enum
 2. Modify the `generate()` method
 3. Recompile everything
@@ -217,7 +218,7 @@ PDF: Monthly Sales [binary data]
 
 **This violates Open-Closed Principle** because adding a new format requires modifying existing code.
 
-Let's note that the root cause of the problem here is the same as in the Single Responsibility Principle: all the features are embedded inside the Report data type.
+Let's note that the root cause of the problem here, is the same as in the Single Responsibility Principle: all the features are embedded inside the Report data type.
 
 
 
@@ -271,9 +272,9 @@ pub struct TextFormatter;
 
 impl ReportFormatter for TextFormatter {
     fn format(&self, title: &str, data: &[String]) -> String {
-        let mut output = format!("=== {} ===\n", title);
+        let mut output = format!("=== {} ===", title);
         for item in data {
-            output.push_str(&format!("- {}\n", item));
+            output.push_str(&format!("\n- {}", item));
         }
         output
     }
@@ -334,10 +335,10 @@ fn main() {
         ],
     };
 
-    println!("--- TEXT ---\n{}", report.generate(&TextFormatter));
-    println!("--- HTML ---\n{}", report.generate(&HtmlFormatter));
-    println!("--- PDF ---\n{}", report.generate(&PdfFormatter));
-    println!("--- XML ---\n{}", report.generate(&XmlFormatter));
+    println!("\n--- TEXT ---\n{}", report.generate(&TextFormatter));
+    println!("\n--- HTML ---\n{}", report.generate(&HtmlFormatter));
+    println!("\n--- PDF ---\n{}", report.generate(&PdfFormatter));
+    println!("\n--- XML ---\n{}", report.generate(&XmlFormatter));
 }
 ```
 
@@ -357,8 +358,10 @@ Expected output
   <li>Product B: 98 units</li>
   <li>Product C: 143 units</li>
 </ul>
+
 --- PDF ---
 PDF: Monthly Sales [binary data]
+
 --- XML ---
 <report>
   <title>Monthly Sales</title>
@@ -376,7 +379,7 @@ Now adding XML (or JSON, or Markdown, or whatever) requires **zero changes** to 
 
 How do I read the story that the code tell us?
 * Bonjour, my name is report and I'm a `Report`. I own a bunch of `String` and I have a `.generate()` method that I call when I'm asked to... Generate the report. However, as you can see buddy, I've no idea how this will happen: Written in the stone? Clinging to the legs of an owl? Not my business and I don't care. I just call `.generate()` and I designate the one which does the job (`&dyn ReportFormatter`). This may change, this is dynamic and resolved at runtime (hence the `&dyn`).
-* Hey, hi. My name is `TextFormatter`. I'm a data type (not a variable) and more specifically I'm a `unit struct` (a struct with no fields). I know few things in life but like those of clan have the `ReportFormatter` trait (do you see the `impl ReportFormatter for TextFormatter`?). We are useful because guys of type `Report` can pass us their data and we will print them (in a .txt file). One thing however. When a variable of type `Report` invoke its `.generate()`, it needs variable, it needs to instantiate one of us. In the code above, it is implicit. In the `main()` function one could write `report.generate(&TextFormatter {}) // explicit instantiation` instead.
+* Hey, hi. My name is `TextFormatter`. I'm a data type (not a variable) and more specifically I'm a `unit struct` (a struct with no fields). I know few things in life but like those of my clan I have the `ReportFormatter` trait (do you see the `impl ReportFormatter for TextFormatter`?). We are useful because guys of type `Report` can pass us their data and we will print them (in a .txt file in my case). One thing however. When a variable of type `Report` invoke its `.generate()`, it needs variable, it needs to instantiate one of us. In the code above, it is implicit. In the `main()` function one could have write `report.generate(&TextFormatter {})` to make it explicit.
 
 
 
@@ -448,9 +451,9 @@ pub struct TextFormatter;
 
 impl ReportFormatter for TextFormatter {
     fn format(&self, title: &str, data: &[String]) -> String {
-        let mut output = format!("=== {} ===\n", title);
+        let mut output = format!("=== {} ===", title);
         for item in data {
-            output.push_str(&format!("- {}\n", item));
+            output.push_str(&format!("\n- {}", item));
         }
         output
     }
@@ -511,10 +514,10 @@ fn main() {
         ],
     };
 
-    println!("--- TEXT ---\n{}", report.generate(&TextFormatter));
-    println!("--- HTML ---\n{}", report.generate(&HtmlFormatter));
-    println!("--- PDF ---\n{}", report.generate(&PdfFormatter));
-    println!("--- XML ---\n{}", report.generate(&XmlFormatter));
+    println!("\n--- TEXT ---\n{}", report.generate(&TextFormatter));
+    println!("\n--- HTML ---\n{}", report.generate(&HtmlFormatter));
+    println!("\n--- PDF ---\n{}", report.generate(&PdfFormatter));
+    println!("\n--- XML ---\n{}", report.generate(&XmlFormatter));
 }
 ```
 
@@ -533,8 +536,10 @@ Expected output
   <li>Product B: 98 units</li>
   <li>Product C: 143 units</li>
 </ul>
+
 --- PDF ---
 PDF: Monthly Sales [binary data]
+
 --- XML ---
 <report>
   <title>Monthly Sales</title>
@@ -561,7 +566,7 @@ We now have two valid variants in our toolbox:
 * `&dyn ReportFormatter` → maximum flexibility (runtime)
 * `F: ReportFormatter` → maximum performance (compile-time)
 
-This is cool because here the choice of dispatch becomes an implementation detail, NOT an architectural change.
+This is cool because, here, the choice of dispatch becomes an implementation detail, NOT an architectural change.
 
 
 
@@ -801,7 +806,7 @@ The example shows that:
 * Each processing can independently transform the state of the content without the `TxtProcessor` knowing anything about the concrete behavior.
 
 
-So far so good. However, a `TxtProcessor` is a `Vec<Box<dyn Processing>>` and we may want to avoid the dynamic dispatch. Now let's try a static dispatch based solution. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+So far so good. However, a `TxtProcessor` is a `Vec<Box<dyn Processing>>` and we may want to avoid the dynamic dispatch. Now, let's try a static dispatch based solution. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_06_ocp
@@ -1003,7 +1008,9 @@ The text processor doesn’t even know which trait are stored and that’s exact
 * Dynamic dispatch solves this by erasing the concrete type behind a trait object, allowing runtime extensibility at the cost of indirection.
 * In Rust, choosing between static and dynamic dispatch is not about OCP correctness, but about whether behavior composition happens at compile time or at runtime.
 
-Ok... So there is no solution if I want plugins and avoid runtime overhead of the dynamic dispatch... Really? Based on what we said, we could try something using a collection that accept heterogeneous data type. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+Ok... So there is no solution. I just can sit and cry if I want plugins and avoid runtime overhead of the dynamic dispatch... Really?
+
+Based on what we said, we could try something based a collection that accept heterogeneous data type. Fasten your seat belt because because the answer is "Rock'n roll". In the mean time you can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 
 ```rust
@@ -1137,7 +1144,7 @@ hello world
 [SpellChecker OK]
 ```
 
-**How do I read the story that the code tell us?**
+**How do I read the story that the code above tell us?**
 
 Hey, I’m `TxTProcessor`. My job is simple: I run a chain of text transformations. I don’t care what those transformations are, I don’t even know their names. All I know is that someone gave me a *toolchain* and that this toolchain knows how to `apply()` itself on some text.
 
@@ -1183,7 +1190,7 @@ In the case of plugins, I believe dynamic dispatch is the right choice.
    - Use `<T: Trait>` when we can do compile-time polymorphism (better performance)
 
 2. **Enums can help**: Rust's enums with pattern matching can be appropriate when:
-   - The set of variants is truly closed (won't change). Think of a robot where the variants could be: Sense Think Act
+   - The set of variants is truly closed (won't change). Think of a robot where the variants could be: Sense, Think and Act
    - We want exhaustiveness checking
    - Example: `Result<T, E>` is an enum because success/failure is closed
 

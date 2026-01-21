@@ -103,7 +103,7 @@ This is the **cornerstone of Clean Architecture**. It's what allows us to build 
 - Our domain doesn't care about HTTP frameworks
 - Core code doesn't depend on external libraries
 
-In the book Database and Web... Are considered as "details".
+In the book Database and Web are considered as "details".
 <!-- The author emphasizes that the flow of data goes in the opposite direction of the dependencies, hence the name Dependency Inversion Principle. -->
 
 In Rust terms: **our high-level business logic should depend on traits, and low-level details (I/O, databases, frameworks) should implement those traits.**
@@ -116,10 +116,14 @@ In Rust terms: **our high-level business logic should depend on traits, and low-
 
 ### The Problem: Direct Dependencies
 
-Let's start with a Bad implementation. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+Let's start with a bad implementation. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 **Note:**
-This part (DIP) of the sage (SOLID) is based on a previous project I did and which is [available on GitHub](https://github.com/40tude/dip_101). Don't skim over the comments. I wanted to try something different in order to train us to "**read**" the code as a story. For example the code is organized so that we start with the `main()` function. Indeed this is where I want to write the calls like I would like to see them written. Then there are tons of comments on the tone of a dialog between 2 engineers.
+This part (DIP) of the saga (SOLID) is based on a previous project I did and which is [available on GitHub](https://github.com/40tude/dip_101). Don't skim over the comments. I wanted to try something different in order to train us to "**read**" the code as a story. For example the code is organized so that we start reading the `main()` function. Indeed this is where I want to write the calls like I would like to see them written. Then there are tons of comments on the tone of a dialog between 2 engineers.
+
+**Note:**
+Among others, with this set of sample code, I had lot of difficulties naming things and I did multiple test, try and errors. My apologies if among the examples, not all the object names are consistent. It has been a mess.
+
 
 ```rust
 // cargo run -p ex_01_dip
@@ -208,7 +212,7 @@ Sending email: Order #101 confirmed
 ```
 
 **What's wrong?**
-1. `OrderService` (which is part of our business logic) is tightly coupled to `Sender` (which is part of the infrastructure, a detail according Uncle Bob's)
+1. `OrderService` (which is part of our business logic) is tightly coupled to `Sender` (which is part of the infrastructure, a detail in itself according to Uncle Bob's)
 2. We can't switch to SMS or Slack notifications without modifying `OrderService`
 3. Testing `OrderService` requires a real `Sender` (no mocking possible)
 4. The dependency arrow points **FROM** business logic **TO** infrastructure (wrong direction!)
@@ -221,13 +225,13 @@ Sending email: Order #101 confirmed
 
 ### The Solution: Invert the Dependency
 
-Now let's see how we can make our high-level business logic should depend on traits, and low-level details (I/O, databases, frameworks, infrastructure) implement those traits. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/). Again, play the game and read the comments:
+Now let's see how we can make our high-level business logic depends on traits, and the low-level details (I/O, databases, frameworks, infrastructure) implement those traits. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/). Again, play the game and read the comments:
 
 
 ```rust
 // cargo run -p ex_02_dip
 
-// Alright! Now we're going to fix the problem we saw in ex00.
+// Alright! Now we're going to fix the problem we saw in ex_01_dip.
 // The magic word? Dependency Inversion.
 // Instead of business logic depending on infrastructure,
 // we'll make infrastructure depend on business logic. Let's see how!
