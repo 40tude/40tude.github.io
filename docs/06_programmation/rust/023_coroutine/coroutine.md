@@ -7,7 +7,7 @@ description: "A short, practical reminder with working examples."
 parent: "Rust"
 nav_order: 32
 date:               2026-01-22 11:00:00
-last_modified_date: 2026-01-22 11:00:00
+last_modified_date: 2026-01-22 21:00:00
 ---
 
 
@@ -237,7 +237,7 @@ Result: 21
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Associated Function (The "Static" Method)
+## Associated Function ("Static" Method)
 - A function defined inside an `impl` block that does **not** take a `self` parameter
 - Called using the `Type::function()` syntax (namespace syntax)
 - Often used for **constructors** (like `new()`) or factory methods
@@ -624,20 +624,20 @@ Iterator can behaves like a coroutine but but:
 ### Iterator
 {: .no_toc }
 
-- **Pull-based**: The consumer calls `.next()` to get values
-- **Synchronous**: Computation happens immediately when `.next()` is called
-- **State machine**: Implemented as a struct with state fields
-- **No suspension points**: Code doesn't "pause" - each `.next()` runs fresh logic
-- **Simple trait**: Just needs `fn next(&mut self) -> Option<Item>`
+- Pull-based: The consumer calls `.next()` to get values
+- Synchronous: Computation happens immediately when `.next()` is called
+- State machine: Implemented as a struct with state fields
+- No suspension points: Code doesn't "pause" - each `.next()` runs fresh logic
+- Simple trait: Just needs `fn next(&mut self) -> Option<Item>`
 
 ### Coroutine (async/await)
 {: .no_toc }
 
-- **Push-based** (in async context): The runtime drives execution
-- **Asynchronous**: Can wait for I/O, timers, etc.
-- **State machine**: Compiler generates one from async fn
-- **Suspension points**: Can `.await` and resume later
-- **Complex**: Involves `Future`, `Poll`, `Waker`, executors
+- Push-based: (in async context): The runtime drives execution
+- Asynchronous: Can wait for I/O, timers, etc.
+- State machine: Compiler generates one from async fn
+- Suspension points: Can `.await` and resume later
+- Complex: Involves `Future`, `Poll`, `Waker`, executors
 
 
 
