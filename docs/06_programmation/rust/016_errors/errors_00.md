@@ -595,7 +595,8 @@ The code cannot find `hello.txt` and `panic!()`.
 
 
 <!-- ###################################################################### -->
-### Let's make a try something else
+### Let's try something else
+{: .no_toc }
 
 Copy/paste/save the file as `ex02.rs`. From the previous code, I just keep what I need:
 
@@ -676,6 +677,7 @@ On the lhs of the equal sign, I express my expectation. I expect a `std::fs::Fil
 
 <!-- ###################################################################### -->
 ### Let's fix it
+{: .no_toc }
 
 Copy/paste/save the file as `ex04.rs`. Let's find a solution. Modify the previous code with the one below:
 

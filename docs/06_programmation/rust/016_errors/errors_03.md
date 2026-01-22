@@ -558,6 +558,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 
 
 ### Summary – Experimentation
+{: .no_toc }
 
 {: .new-title }
 > Summary – Experimentation
@@ -1766,6 +1767,7 @@ Here is what you should see after: `cargo test -p step_06`
 
 
 ### Exercises – Experimentation to Production
+{: .no_toc }
 
 1. You have this code
     ```rust
