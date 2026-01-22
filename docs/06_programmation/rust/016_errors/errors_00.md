@@ -198,13 +198,16 @@ I like to write in a conversational tone, so let's imagine a discussion between 
 * Think of `Result<T, E>` as Rust’s way of saying "operation might succeed or fail". We then decide what to do if it fails.
 * Whereas a `panic!()` is Rust saying "I can’t deal with this, I must crash now".
 
-By making error handling explicit with `Result`, Rust ensures we don’t just ignore errors. It won’t let us compile unless we either handle the `Result<T, E>` (e.g. [exempli gratia],check for an error) or explicitly choose to crash (like using `.unwrap()` which triggers a `panic!()` if there’s an error). This leads to more robust programs because we're less likely to have an error go unnoticed.
+By making error handling explicit with `Result`, Rust ensures we don’t just ignore errors. It won’t let us compile unless we either handle the `Result<T, E>` (e.g. [exempli gratia], check for an error) or explicitly choose to crash (like using `.unwrap()` which triggers a `panic!()` if there’s an error). This leads to more robust programs because we're less likely to have an error go unnoticed.
 
 
 
 **Alice:** Um... This is may be a silly question but, if I know my function can succeed or fail, can it returns `Result<T, E>`.
 
-**Bob:** Yes, absolutely! Returning a `Result<T, E>` is not limited to functions in the std library. All your function, even `main()` can return `Result<T, E>` and it is a very good practice. Before writing any function code, ask yourselves "can this function fail? Should it return `Result<T, E>` (or `Option<T>`)?". Then work on the rest of the function's signature.
+**Bob:** Yes, absolutely! Returning a `Result<T, E>` is not limited to functions of the std library. Oh, by the way, do you know how to read the [documentation of the std lib?]({%link docs/06_programmation/rust/021_doc/doc_00.md%}). Anyway... All your functions, even `main()` can return `Result<T, E>` and it is a very good practice. Before writing any function code, ask yourselves "can this function fail? Should it return `Result<T, E>` (or `Option<T>`)?". Then work on the rest of the function's signature.
+
+
+
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nLSm3Haxz0I?si=k8Xtc_AofCBs3H_T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -279,7 +282,7 @@ The default is `unwind`. With `abort` opted in:
 
 ## Setting Up our Development Environment
 
-Let's make sure we can Debug our code. If your IDE is already set up, jump over this section and check your [Solution to Exercice #2](#solution-to-exercice-2)
+Let's make sure we can Debug our code. If your IDE is already set up and you know how to execute your code step by step, jump over this section and check your [Solution to Exercice #2](#solution-to-exercice-2)
 
 
 
@@ -557,9 +560,18 @@ Let's take some time and see how one could work on the second exercice. If I sea
 <!-- <span>Optional comment</span> -->
 </div>
 
-This is great because on line 11 it uses `std::fs::File::open()` but it is a little bit too complex for me and it seems it handles errors while I want the compiler to complain then fix the errors.
+This is great because on line 11 it uses `std::fs::File::open()` but the code is a little bit too complex for me and it seems it handles errors while I want the compiler to complain then fix the errors.
 
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### Let's make a fist test
 
 Copy/paste/save the file as `ex01.rs` or open your eyes: the code is already in `00_u_are_errors/examples/ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run -p u_are_errors --example ex01`. Here is what I see in the Debug Console once I pressed F5:
 
@@ -576,6 +588,8 @@ The code cannot find `hello.txt` and `panic!()`.
 
 
 
+<!-- ###################################################################### -->
+### Let's make a try something else
 
 Copy/paste/save the file as `ex02.rs`. From the previous code, I just keep what I need:
 
@@ -627,6 +641,8 @@ In fact despite ourselves, we cheat. We call a function returning `Result<T, E>`
 
 
 
+<!-- ###################################################################### -->
+### Let's make sure the build system complains
 
 
 Copy/paste/save the file as `ex03.rs`. Let's make sure the build system complains. Modify the previous code with the one below:
@@ -650,6 +666,9 @@ On the lhs of the equal sign, I express my expectation. I expect a `std::fs::Fil
 
 
 
+
+<!-- ###################################################################### -->
+### Let's fix it
 
 Copy/paste/save the file as `ex04.rs`. Let's find a solution. Modify the previous code with the one below:
 
@@ -680,6 +699,8 @@ fn main() {
 
 
 
+<!-- ###################################################################### -->
+### `match` is an expression
 
 
 Copy/paste/save the file as `ex05.rs`. Let's take advantage of the fact that `match` is an expression. Modify the previous code with the one below:
@@ -734,7 +755,7 @@ This said, let's go back to the source code:
 * Since `match` is an expression, it evaluates to a value, and with the first `match` we assign that value to `bob`.
 * It is **important** to understand that `match` **destructures** the `Result<T, E>`. So that the body of the `match` can be read as:
     * If the `Result<File, io::Error>` in `result_file` matches the pattern `Ok(alice)`, then the inner `File` is bound to the variable `alice`, and that `File` is returned from the `match`. This means `bob` now owns the file handle.
-    * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`) which never resolve to any value at all. So this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then, "[Don't press the little button on the joystick](https://www.youtube.com/watch?v=yG0vY5lT9yE), abort! abort! abort!"
+    * If it matches `Err(why)`, the program calls `panic!`. The `panic!` macro has the special “never” type (`!`) which never resolve to any value at all. So this arm never returns. This allows the entire `match` expression to still have type `File`. This arm prints a short message then... "[Don't press the little button on the joystick](https://www.youtube.com/watch?v=yG0vY5lT9yE), abort! abort! abort!"
 
 
 
@@ -765,7 +786,19 @@ Now rename the file `foo.txt.bak` at the root of the directory (`00_u_are_errors
 * On `Err`, the code calls `panic!` again, prints a message, and the program aborts.
 
 
-***Um... And how do I know `io::Result<usize>` is a type alias for `Result<usize, io::Error>`?***
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### Um... And how do I know `io::Result<usize>` is a type alias for `Result<usize, io::Error>`?
 
 **Green Slope:**
 1. Set the cursor on `read_to_string`
@@ -859,8 +892,6 @@ It is time to move on and to dive in `Result<T, E>`.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-
-
 
 #### Posts
 {: .no_toc }
