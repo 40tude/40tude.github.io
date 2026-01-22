@@ -287,6 +287,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 
 ### Summary – The `Result<T, E>` Type Basics
+{: .no_toc }
 
 {: .new-title }
 > Summary – The `Result<T, E>` Type Basics
@@ -308,6 +309,7 @@ This way, we handle the "file not found" case by recovering (creating a new file
 
 
 ### Exercises – `Result<T, E>` Basics
+{: .no_toc }
 
 1. Can you find `Result<T, E>` in std documentation?
 
@@ -632,6 +634,7 @@ fn main() -> Result<()> {
 
 
 ### Summary – Propagating Errors with `?`
+{: .no_toc }
 
 {: .new-title }
 > Summary – Propagating Errors with `?`
@@ -658,6 +661,7 @@ fn main() -> Result<()> {
 
 
 ### Exercises – Propagating Errors
+{: .no_toc }
 
 1. **Refactor with `?`:**
 * Take one of our functions from the previous exercises (for instance, a file-reading function or the number-parsing function) that handled errors with `match`.
@@ -695,7 +699,8 @@ fn main() -> Result<()> {
 
 #### Posts
 {: .no_toc }
+
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
-* [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
+* [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})

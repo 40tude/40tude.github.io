@@ -256,6 +256,7 @@ None: could not read _definitely_missing_.txt
 
 
 ### Summary – `Option<T>` vs `Result<T, E>`
+{: .no_toc }
 
 {: .new-title }
 > Summary – `Option<T>` vs `Result<T, E>`
@@ -284,6 +285,8 @@ Examples:
 
 
 ### Exercises – Option<T> vs `Result<T, E>`
+{: .no_toc }
+
 1. Can you find `Option<T>` in the std lib documentation?
 
 1. **Design Decisions:** For each of the following scenarios, decide whether `Option<T>` or `Result<T, E>` is more appropriate as a return type and briefly explain why:
@@ -416,6 +419,7 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 
 
 ### Summary – Using (or Avoiding) `panic!()`
+{: .no_toc }
 
 {: .new-title }
 > Summary – Using (or Avoiding) `panic!()
@@ -440,6 +444,7 @@ But that’s an advanced detail. The key point is: `panic!()` = crash. Use with 
 
 
 ### Exercises – Panic vs Result
+{: .no_toc }
 
 1. **Spot the Panic:** Take a piece of code (perhaps one of our previous exercise solutions) where we used `.unwrap()` or `.expect()`. What would happen if that line did encounter an error? Is it truly a scenario that should crash the program? Modify the code to handle the error with a `Result<T, E>` if appropriate. If you decide to keep the `.unwrap()`, justify why it is OK (for example, if it’s in a test or if logic guarantees the `Result<T, E>` is `Ok()`).
 
@@ -829,6 +834,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 ### Summary – Custom Errors
+{: .no_toc }
 
 {: .new-title }
 > Summary – Custom Errors
@@ -844,6 +850,8 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 ### Exercises – Custom Errors
+{: .no_toc }
+
 1. **Define and Use a Custom Error:** Create an enum `MyError` with variants for two different error scenarios (for example, `MyError::EmptyInput` and `MyError::BadFormat(std::num::ParseIntError)`). Implement `std::fmt::Display` for `MyError` to provide human-readable messages. Then write a function `parse_nonempty_int(s: &str) -> Result<i32, MyError>` that returns an error if the input string is empty (`EmptyInput`) or if parsing to int fails (`BadFormat`). Use `?` and appropriate conversions (`map_err`) inside the function. Test it with various inputs (empty string, non-numeric, numeric).
 
 2. **Combine Two Error Types:** Suppose we have two functions `fn get_data() -> Result<String, io::Error>` and `fn parse_data(data: &str) -> Result<Data, ParseError>`. Write a new function `fn load_data() -> Result<Data, LoadError>` where `LoadError` is our custom enum that has variants for IO and Parse errors. In `load_data`, call `get_data()` and `parse_data()` using `?`, converting their errors into `LoadError` (we can implement `From<io::Error>` and `From<ParseError>` for `LoadError` or use `map_err`). Then try using `load_data()` in a `main` that prints different messages depending on which error occurred (hint: use `match e { LoadError::Io(e) => ..., LoadError::Parse(e) => ... }`).
@@ -897,6 +905,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 ### anyhow - for binaries (mnemonic: **A**nyhow, **A**pplication)
+{: .no_toc }
 
 [`anyhow`](https://docs.rs/anyhow/latest/anyhow/) provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
 
@@ -1048,6 +1057,7 @@ For libraries, we should avoid `anyhow::Error` in our public API and prefer a co
 
 
 ### thiserror - for libraries
+{: .no_toc }
 
 [`thiserror`](https://docs.rs/thiserror/latest/thiserror/) is a derive macro crate. Instead of manually implementing by hand `Display` and `Error` and writing `From` conversions (remember `Debug` comes with the directive `#[derive(Debug)]`), we can do something concise like:
 
@@ -1369,6 +1379,7 @@ At the end we have an API and a consumer. In the API, we delegate to `thiserror`
 
 
 ### Summary – `anyhow` & `thiserror`
+{: .no_toc }
 
 {: .new-title }
 > Summary – `anyhow` & `thiserror`
@@ -1413,6 +1424,8 @@ fn main() -> Result<(), ConfigError> {
 
 
 ### Exercises – `anyhow` & `thiserror`
+{: .no_toc }
+
 1. Can you explain why in the API of `ex24.rs` we found `type Result<T> = std::result::Result<T, ConfigError>;` while in the client's code we have `type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;`
 
 1. **Refactor to `thiserror`:** Take our custom error enum from the previous exercise and replace the manual `Display`/`Error` implementations with a `#[derive(Error)]` and `#[error(...)]` attributes from `thiserror`. If we had conversions from `io::Error` or `serde_json::Error`, add `#[from]` to those variants and remove our manual `From` impls.

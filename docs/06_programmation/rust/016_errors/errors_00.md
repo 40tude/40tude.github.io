@@ -248,6 +248,7 @@ The default is `unwind`. With `abort` opted in:
 
 
 ### Summary – Introduction
+{: .no_toc }
 
 {: .new-title }
 > Summary – Introduction
@@ -264,6 +265,7 @@ The default is `unwind`. With `abort` opted in:
 
 
 ### Exercises – Introduction
+{: .no_toc }
 
 1. **Identify Error Types:** Think of two scenarios in programming:
     * one that would be a ***recoverable error***
@@ -292,6 +294,7 @@ Let's make sure we can Debug our code. If your IDE is already set up and you kno
 
 <!-- ###################################################################### -->
 ### Let's install what we need
+{: .no_toc }
 
 **Requirements:**
 * I expect either
@@ -336,6 +339,7 @@ At the time of writing here is what I see:
 
 <!-- ###################################################################### -->
 ### Using the debugger
+{: .no_toc }
 
 **If and only if** `(LLDB || Build Tools for Visual Studio) && command-variable` are installed
 
@@ -393,6 +397,7 @@ Let's make a last test. Just to make sure...
 
 <!-- ###################################################################### -->
 ### The making of
+{: .no_toc }
 
 If you read this post for the first time, **skip this section** and come back to it later when you really need to understand how compilation and debugging tasks work.
 
@@ -572,6 +577,7 @@ This is great because on line 11 it uses `std::fs::File::open()` but the code is
 
 <!-- ###################################################################### -->
 ### Let's make a fist test
+{: .no_toc }
 
 Copy/paste/save the file as `ex01.rs` or open your eyes: the code is already in `00_u_are_errors/examples/ex01.rs`. To make sure the code works as expected I can press F5 or open a terminal then enter `cargo run -p u_are_errors --example ex01`. Here is what I see in the Debug Console once I pressed F5:
 
@@ -643,6 +649,7 @@ In fact despite ourselves, we cheat. We call a function returning `Result<T, E>`
 
 <!-- ###################################################################### -->
 ### Let's make sure the build system complains
+{: .no_toc }
 
 
 Copy/paste/save the file as `ex03.rs`. Let's make sure the build system complains. Modify the previous code with the one below:
@@ -701,6 +708,7 @@ fn main() {
 
 <!-- ###################################################################### -->
 ### `match` is an expression
+{: .no_toc }
 
 
 Copy/paste/save the file as `ex05.rs`. Let's take advantage of the fact that `match` is an expression. Modify the previous code with the one below:
@@ -799,6 +807,7 @@ Now rename the file `foo.txt.bak` at the root of the directory (`00_u_are_errors
 
 <!-- ###################################################################### -->
 ### Um... And how do I know `io::Result<usize>` is a type alias for `Result<usize, io::Error>`?
+{: .no_toc }
 
 **Green Slope:**
 1. Set the cursor on `read_to_string`
@@ -898,6 +907,6 @@ It is time to move on and to read [Episode 01]({%link docs/06_programmation/rust
 #### Posts
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
-*
+* [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})

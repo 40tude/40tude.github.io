@@ -88,6 +88,7 @@ Do you agree?
 
 
 ### Key Concepts
+{: .no_toc }
 
 **Bob:** Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments): "A complex system that works is invariably found to have evolved from a simple system that worked..."
 
@@ -123,6 +124,7 @@ Now, I have a question for you. Without entering in the technical details, what 
 
 
 ### Experimentation
+{: .no_toc }
 
 {: .note-title }
 > Side Note
@@ -555,7 +557,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 
 
 
-#### Summary – Experimentation
+### Summary – Experimentation
 
 {: .new-title }
 > Summary – Experimentation
@@ -595,7 +597,7 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 
 
 
-### Path to Production - Step_00
+## Path to Production - Step_00
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LUapZhcsdx8?si=cxsAd5AjKMZfTm1x&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -827,7 +829,7 @@ pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
 
 
 
-### Path to Production - Step_01
+## Path to Production - Step_01
 
 
 **Bob:** The second step should be easy. Create an `error.rs` file then copy/paste `Result` and `Error` definitions there. Explain what you do when you make the code runs as before.
@@ -961,7 +963,7 @@ Create a `lib.rs` file at the root of the project, put the `pub mod error;` and 
 
 
 
-### Path to Production - Step_02
+## Path to Production - Step_02
 
 
 **Alice:** Um... Ok... I start with a copy/paste/rename of the previous directory (`02_project/`)
@@ -1143,7 +1145,7 @@ So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
 
 
 
-### Path to Production - Step_03
+## Path to Production - Step_03
 
 
 
@@ -1335,7 +1337,7 @@ The difference is... Now it prints `Error: Io(Os...` instead of `Error: Os...`. 
 
 
 
-### Path to Production - Step_04
+## Path to Production - Step_04
 
 **Bob:** This is OK. It is part of our journey... Copy/paste/rename the directory as `04_project` and rename the package in `Cargo.toml` as `step_04`.
 
@@ -1518,7 +1520,7 @@ The last implementation is here to help us to write `return Err("something went 
 
 
 
-### Path to Production - Step_05
+## Path to Production - Step_05
 
 **Bob:** You know... We could go one step further... Indeed if we want to be more strick we should remove the `Custom` variant of the `Error` enum and only list the errors we deal with.
 
@@ -1636,7 +1638,7 @@ Error detected: Le chemin d’accès spécifié est introuvable. (os error 3)
 
 
 
-### Path to Production - Step_06
+## Path to Production - Step_06
 
 **Alice:** Could you show me how to add testing to my "production" code ?
 
@@ -1741,6 +1743,7 @@ Here is what you should see after: `cargo test -p step_06`
 
 
 ### Summary – Experimentation to Production
+{: .no_toc }
 
 {: .new-title }
 > Summary – Experimentation to Production
@@ -1851,6 +1854,7 @@ Enjoy!
 <!-- ###################################################################### -->
 
 ## Webliography
+
 * [THE book](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
 * You're probably misusing unwrap in Rust
     <div align="center">
@@ -1880,6 +1884,7 @@ Enjoy!
 
 #### Posts
 {: .no_toc }
+
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
