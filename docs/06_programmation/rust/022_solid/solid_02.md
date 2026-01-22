@@ -1,7 +1,7 @@
 ---
 published: true
 lang: en-US
-lawet: default
+layout: default
 title: "SOLID Principles in Rust: A Practical Guide - 02"
 description: "A gentle introduction to SOLID principles using Rust. The focus is on Liskov Substitution Principle."
 parent: "Rust"
