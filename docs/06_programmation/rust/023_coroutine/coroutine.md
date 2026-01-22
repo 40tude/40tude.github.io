@@ -14,7 +14,7 @@ last_modified_date: 2026-01-22 11:00:00
 # Function, Method, Closure, Coroutine and Iterator in Rust
 {: .no_toc }
 
-A quick reminder.
+A short, practical reminder with working examples.
 {: .lead }
 
 
@@ -27,10 +27,6 @@ A quick reminder.
 
 
 
-<!--
-TODO
-*
--->
 
 
 <!-- ###################################################################### -->
@@ -48,37 +44,9 @@ TODO
 
 
 
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ### This is Episode 00
-{: .no_toc }
-
-#### The Posts Of The Saga
-{: .no_toc }
-* [Episode 00]({%link docs/06_programmation/rust/022_solid/solid_00.md%}): Introduction + Single Responsibility Principle
-* [Episode 01]({%link docs/06_programmation/rust/022_solid/solid_01.md%}): Open-Closed Principle
-* [Episode 02]({%link docs/06_programmation/rust/022_solid/solid_02.md%}): Liskov Substitution Principle
-* [Episode 03]({%link docs/06_programmation/rust/022_solid/solid_03.md%}): Interface Segregation Principle
-* [Episode 04]({%link docs/06_programmation/rust/022_solid/solid_04.md%}): Dependency Inversion Principle + Conclusion
- -->
-
-
-
-
-
 <div align="center"> -->
 <img src="./assets/img00.webp" alt="" width="1024" loading="lazy"/><br/>
-<span>1992: When Batman returned and Windows 3.1 relied on cooperative multitasking of the coroutines.</span>
+<span>1992: When Batman returned and Windows 3.1 relied on cooperative multitasking via coroutines.</span>
 </div>
 
 
@@ -97,10 +65,10 @@ TODO
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-<!-- ## Table of Contents
+## Table of Contents
 {: .no_toc .text-delta}
 - TOC
-{:toc} -->
+{:toc}
 
 
 
@@ -110,15 +78,6 @@ TODO
 
 
 
-
-
-<!-- ## Coroutines: Concept and Differences
-
-### What is a Coroutine?
-
-A **coroutine** is a function that can **suspend its execution** and later **resume** from where it left off, preserving its state between suspensions. Unlike regular functions that run to completion, coroutines can yield control back to the caller and be resumed later.
-
-### Key Differences -->
 
 
 
@@ -163,6 +122,68 @@ Result: 10
 
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Function Pointer
+
+* A primitive type (`fn`) that points to the address of a function
+* Does **not** capture any environment variables (unlike closures, see below)
+* Has a fixed size (the size of a pointer)
+* Can be passed to other functions as arguments or stored in data structures
+* Functions that don't capture anything can be coerced to function pointers
+
+
+
+**Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
+
+```rust
+// cargo run --example ex_00_b
+fn add_one(x: i32) -> i32 {
+    x + 1
+}
+
+fn do_math(f: fn(i32) -> i32, arg: i32) -> i32 {
+    f(arg)
+}
+
+fn main() {
+    // Passing a named function as a pointer
+    let result = do_math(add_one, 5);
+    println!("Named function result: {}", result);
+
+    // Closures that don't capture state can also be function pointers
+    let closure_ptr: fn(i32) -> i32 = |x| x * 2;
+    let result_closure = do_math(closure_ptr, 10);
+    println!("Closure pointer result: {}\n", result_closure);
+}
+
+```
+
+**Expected output:**
+
+```powershell
+Named function result: 6
+Closure pointer result: 20
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -170,6 +191,7 @@ Result: 10
 - A function associated with a type/object
 - Same execution model as functions (runs to completion)
 - Can access `self` data
+- Methods take `self` as their first parameter, whereas Associated Functions (see below) do not
 
 
 **Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
@@ -200,6 +222,85 @@ fn main() {
 Method computing 7 * 3
 Result: 21
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Associated Function (The "Static" Method)
+- A function defined inside an `impl` block that does **not** take a `self` parameter
+- Called using the `Type::function()` syntax (namespace syntax)
+- Often used for **constructors** (like `new()`) or factory methods
+- Similar to "static methods" in other programming languages
+
+**Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
+
+```rust
+// cargo run --example ex01_b
+struct User {
+    username: String,
+    active: bool,
+}
+
+impl User {
+    // This is an associated function (no self)
+    fn new(name: &str) -> Self {
+        println!("Associated Function: Creating a new User instance for {}", name);
+        Self {
+            username: name.to_string(),
+            active: true,
+        }
+    }
+}
+
+fn main() {
+    // We call associated functions using the :: operator
+    let user = User::new("Alice");
+    println!("User name: {}\n", user.username);
+}
+
+```
+
+**Expected output:**
+
+```powershell
+Associated Function: Creating a new User instance for Alice
+User name: Alice
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -270,7 +371,10 @@ fn main() {
 [43, 45, 47, 49]
 ```
 
-
+**Note**
+* Rust has three traits for closures: `Fn` (reads), `FnMut` (modifies), and `FnOnce` (consumes).
+* Rust chooses the most restrictive one automatically based on what you do inside the || {}."
+* [Read this page](https://doc.rust-lang.org/book/ch20-04-advanced-functions-and-closures.html?highlight=FnMut#function-pointers)
 
 
 **Example 3:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
@@ -294,6 +398,9 @@ fn main() {
 }
 ```
 
+**Note:**
+`move |i|`? It’s the bridge between a closure and a state machine. Without `move`, the closure only borrows start, which wouldn't work if the iterator outlives the function call.
+
 **Expected output:**
 
 ```powershell
@@ -306,6 +413,11 @@ Third value: Some(102)
 
 ```
 
+
+
+
+**Note:**
+In Rust, the distinction between a [Closure](#closure) and a [Function Pointer](#function-pointer) is purely about state. If we need to pass "logic" to a function without needing any external variables, a function pointer is the most efficient way to do it.
 
 
 
@@ -495,9 +607,12 @@ fn main() {
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 
-## Are Iterator based on Coroutine?
+## Are iterators based on coroutines?
 
 **No, an iterator is not a coroutine** in the traditional sense.
 
@@ -507,6 +622,8 @@ Iterator can behaves like a coroutine but but:
 
 
 ### Iterator
+{: .no_toc }
+
 - **Pull-based**: The consumer calls `.next()` to get values
 - **Synchronous**: Computation happens immediately when `.next()` is called
 - **State machine**: Implemented as a struct with state fields
@@ -514,13 +631,18 @@ Iterator can behaves like a coroutine but but:
 - **Simple trait**: Just needs `fn next(&mut self) -> Option<Item>`
 
 ### Coroutine (async/await)
+{: .no_toc }
+
 - **Push-based** (in async context): The runtime drives execution
 - **Asynchronous**: Can wait for I/O, timers, etc.
 - **State machine**: Compiler generates one from async fn
 - **Suspension points**: Can `.await` and resume later
 - **Complex**: Involves `Future`, `Poll`, `Waker`, executors
 
+
+
 ### Philosophical Difference
+{: .no_toc }
 
 **A mind model for Iterator**
 
@@ -547,6 +669,8 @@ Resume → Compute more → DONE (return)
 
 
 ### Visual Comparison
+{: .no_toc }
+
 
 ```rust
 // Iterator: each next() call executes independently
@@ -581,12 +705,14 @@ async fn async_counter(max: i32) -> Vec<i32> {
 
 
 
-<!-- ### Summary
 
-| Feature | Iterator | Coroutine |
-|---------|----------|-----------|
-| Execution model | Re-enter function each time | Suspend/resume single execution |
-| Async support | No | Yes |
-| Implementation | Manual state in struct | Compiler-generated state machine |
-| Control flow | Pull (caller driven) | Push (runtime driven) |
-| Use case | Sequences, collections | Async I/O, concurrency | -->
+
+
+
+
+
+
+
+
+
+
