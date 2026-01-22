@@ -2,8 +2,8 @@
 published: true
 lang: en-US
 layout: default
-title: "Function, Method, Closure, Coroutine and Iterator in Rust"
-description: "A quick reminder."
+title: "Functions, Methods, Closures, Iterators, and Coroutines in Rust"
+description: "A short, practical reminder with working examples."
 parent: "Rust"
 nav_order: 32
 date:               2026-01-22 11:00:00
@@ -76,10 +76,10 @@ TODO
 
 
 
-<!-- <div align="center">
-<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
-<span>1986</span>
-</div> -->
+<div align="center"> -->
+<img src="./assets/img00.webp" alt="" width="1024" loading="lazy"/><br/>
+<span>1992: When Batman returned and Windows 3.1 relied on cooperative multitasking of the coroutines.</span>
+</div>
 
 
 
