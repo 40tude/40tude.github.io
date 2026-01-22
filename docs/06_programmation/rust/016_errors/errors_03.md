@@ -149,7 +149,7 @@ fn main() {
 
 Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what kind of std lib and crate functions I will call, I make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blah blah blah...
 
-**Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` in [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) for example.
+**Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` in [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%}) for example.
 
 **Alice:** Thanks for the nudge. So I would write the code like this:
 
@@ -289,7 +289,7 @@ fn sum_strings(values: &[&str]) -> Result<i32> {
 * It returns a `Result<32>` so that I can use `?` in `main()`
 * `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`).
 * Then, there is a `for` loop which traverses the vector `values`
-* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#the-resultt-e-type-handling-recoverable-errors)
+* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_01.md%}#the-resultt-e-type-handling-recoverable-errors)
 * Pressing `CTRL+ALT`, I see `.parse::<i32>()` returns a `Result<i32, ParseIntError>`
 * If `current_val` is Ok I add its value to the running `sum`, otherwise... With the help of `.unwrap()` the code `panic!()`
 * At the end of the loop, `sum` is a valid number and I return it with `Ok(sum)`
@@ -399,7 +399,7 @@ Now in the last sample code, rather than panicking on error after the call to `r
 
 **Alice:** Ok... I start by removing the `?` then... I don't know!
 
-**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type" in [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` then come back here.
+**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type" in [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` then come back here.
 
 **Alice:** I get it. Here is my new version of the code
 

@@ -842,7 +842,9 @@ Now rename the file `foo.txt.bak` at the root of the directory (`00_u_are_errors
 9. The page Type Alias Result page explains what is going on: `pub type Result<T> = Result<T, Error>;`
 
 
-I know what you think. But we need to invest time in learning how to navigate and read the documentation. For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in [Rust By Example](https://doc.rust-lang.org/rust-by-example/) then search for the function signature in the std documentation... Read and navigate the documentation no one can do it for you.
+I know what you think. But we need to **invest** time in learning [how to navigate and read the documentation]({%link docs/06_programmation/rust/021_doc/doc_00.md%}). No one can do it for us.
+
+For example instead of asking Google or ChatGPT, I may want to spend time and loose myself in the documentation of std looking for functions to read a `.txt` file. Or I can look for a sample code in [Rust By Example](https://doc.rust-lang.org/rust-by-example/) then search for the function signature in the std documentation... Read and navigate the documentation the ROI is high.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=tQ9bd1UiqDBiWW-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -850,12 +852,12 @@ I know what you think. But we need to invest time in learning how to navigate an
 
 
 It took us some time to reach that point but from now on I consider we know:
-* How to play with code in the package
+* How to play with code of the [repo](https://github.com/40tude/err_for_blog_post)
 * How to build (CTRL+SHIFT+B)
 * How to set breakpoint (F9) and how to debug (F5)
 * How to navigate the documentation (good luck!)
 
-It is time to move on and to dive in `Result<T, E>`.
+It is time to move on and to read [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%}) and to dive in `Result<T, E>`.
 
 
 
@@ -896,6 +898,6 @@ It is time to move on and to dive in `Result<T, E>`.
 #### Posts
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
-* [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
+*
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})

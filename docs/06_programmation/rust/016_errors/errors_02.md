@@ -896,7 +896,7 @@ We could also catch the error in `main` with a `match` instead, and print someth
 
 
 
-### anyhow - for binaries (mnemonic: A, B, C...**A**nyhow, **B**inaries)
+### anyhow - for binaries (mnemonic: **A**nyhow, **A**pplication)
 
 [`anyhow`](https://docs.rs/anyhow/latest/anyhow/) provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
 
