@@ -6,9 +6,9 @@ title: Rust Error Handling, Demystified - 02
 description: A beginner-friendly conversation on Errors, Results, Options, and beyond.
 parent: Rust
 #math: mathjax
-nav_order: 22
+nav_order: 21
 date               : 2025-09-20 18:00:00
-last_modified_date : 2026-01-11 11:00:00
+last_modified_date : 2025-09-26 10:00:00
 ---
 
 
@@ -25,6 +25,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 <!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2> -->
+
 
 
 
@@ -47,7 +48,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
-
+* [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
 
 
 ## Table of Contents
@@ -61,1809 +62,1376 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 
 
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## Errors from Experimentation to Production
-
-**Alice:** It was a lot... Again, many, many thanks because it really helps to organized my thoughts about errors management.
-
-There is, may be, one last thing I would like to discuss with you. I know, I'm still a young Padawan, and most of my projects are just experiments I tinker with on weekends. Ok, ok, ok... But I'm wondering how errors are managed in more "serious" code. I mean, I would like to learn more so that I will not be "lost" while reading code from others on GitHub. More importantly, I would like to put in place the good practices, up front, so that I can transition happily to production.
-
-<div align="center">
-<img src="./assets/img24.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-**Bob:** *Help you in this quest, I can.* And since you already know almost everything you need to know, I propose we follow this path:
-
-1. First, we’ll recap what we’d like to see — and actually live with — when it comes to error management. Kind of like a wish list, if you will. I don’t have much to add here, since you already have the answers.
-2. Then we will put ourself in a situation were you start few experimental projects. It will be a good opportunity to write some code, check our knowledge and put in place good practices.
-3. Finally you will transition your projects in production ready state. At least we will put in place what we need from the error management point of view.
-
-Do you agree?
-
-**Alice:** This would be perfect. Let's go.
+## `Option<T>` vs. `Result<T, E>`: Choosing the Right Type
 
 
-### Key Concepts
 
-**Bob:** Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments): "A complex system that works is invariably found to have evolved from a simple system that worked..."
+**Alice:** OK... I think I get `Result<T, E>`. But what about [`Option<T>`](https://doc.rust-lang.org/std/option/enum.Option.html)? I’ve seen that too. Is `Option<T>` also for error handling?
 
-<div align="center">
-<img src="./assets/img29.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
+**Bob:** [`Option<T>`](https://doc.rust-lang.org/std/option/enum.Option.html) is a sibling to `Result<T, E>` in a way. It’s an `enum` that can be `Some(T)` or `None`. It doesn’t carry an error value like `Result<T, E>` does. `None` just means **absence of a value**. We usually use `Option<T>` when an outcome isn’t an error, but just "no value found" or "not applicable". For example, a function that searches for a substring in a string might return an `Option<usize>` – `Some(index)` if found, or `None` if not found. Not finding the substring isn’t really an "error", it’s an expected possibility.
 
-So, good news, you are right. You must start with an experimental code that works and which will evolve (may be) in a million dollar class of application.
 
-I can also confirm you are right when you say that you want to put it in place, up front, an error management system that scales with your app.
 
-Now, I have a question for you. Without entering in the technical details, what do *you* want from the error management standpoint?
+**Alice:** So the difference is that
+* `Result<T, E>` provides the reason for the error (`E`)
+* `Option<T>` gives us nothing on failure
 
-**Alice:** Um... I would say...
-* The sooner the better. I mean, get help from the rust type and build systems to detect most of errors at compile time. You know what I mean.
-* The fewer the better. This is obvious. Ideally I don't want error in my code.
-* I told you, I really like the `?` operator. It makes the code easy to read. It is my friend. I would like to keep it in the transition from prototype to production.
-* I want to be able to prototype experimentation code quickly, while still applying the lessons we learned with the custom error type in production. `enum` and related features are powerful, but I’m not sure I want to bother with them in my experimental code.
-* I also remember what we said. If I write a library it should return the errors to the consumer and let him decide. It should almost never `panic!()`.
-* Library should expose one error data type in their API even if internally it use `anyhow` and different options. I'm not sure I'm very clear on this point...
-* What else? An espresso? More seriously, I don’t have much to add, except that I’d like to avoid rewriting my code when transitioning to production.
+**Bob:** In the case on `Option<T>` I would not say "on failure" because "we don't know". Again, if we need to know **why** something went wrong, we must use `Result<T, E>` because `Option::None` carries no data. If we call a function and get a `None`, we only know that there was no result, not why. With `Result::Err`, we usually get an error type or message explaining the issue.
 
-<div align="center">
-<img src="./assets/img25.webp" alt="" width="225" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
 
-**Bob:** It's really good. You are definitively on the right track. Let's keep all this in mind and let's move to the experimentation phase.
+Also, there’s a **semantic difference**. Other developers reading our code will usually interpret a return type of `Option<T>` as "`None` means not found or not present, which might be normal", whereas `Result<T, E>` means "`Err` means an error occurred during the operation". It’s about expectation. So, using the right return type is a form of communication.
+
+
+Sometimes we even see combinations, like `Result<Option<T>, E>`. This means the operation itself can fail with an error `E`, or it can succeed and return either `Some(T)` (a value was found) or `None` (no value was found). But that’s an advanced usage.
 
 
 
 
 
-### Experimentation
+
+**Alice:** Can you show me a simple comparison?
+
+**Bob:** Sure. Let’s take a trivial scenario: safe division. Suppose we want to divide two numbers, but if the divisor is zero, that’s not a valid operation. We have two design choices: return an `Option<f64>` (where `None` means division by zero was not possible), or return a `Result<f64, String>` to explicitly signify an error. Here’s what both might look like:
+
+
+
+
+```rust
+// ex14.rs
+
+// Using Option: No error message, just None if invalid
+fn safe_divide_option(a: f64, b: f64) -> Option<f64> {
+    if b == 0.0 {
+        None // indicate failure without detail
+    } else {
+        Some(a / b)
+    }
+}
+
+// Using Result: Provide an error message on failure
+fn safe_divide_result(a: f64, b: f64) -> Result<f64, &'static str> {
+    if b == 0.0 {
+        Err("Division by zero") // error string explaining the issue
+    } else {
+        Ok(a / b)
+    }
+}
+
+fn main() {
+    let x = safe_divide_option(10.0, 0.0);
+    let y = safe_divide_result(10.0, 0.0);
+    println!("Option version: {:?}", x); // None
+    println!("Result version: {:?}", y); // Err("Division by zero")
+}
+```
+
+
+* In `safe_divide_option`, if `b` is zero we return `None`. The caller must check for `None` but doesn’t get an automatic reason. They just know it didn’t produce a result.
+* In `safe_divide_result`, if `b` is zero we return an `Err` with a message (here a static `&str` slice, but it could be a more complex error type). The caller on receiving an `Err` knows it was an exceptional case and has a message to work with.
+
+Neither approach is wrong here. It depends on how we view division by zero. If we consider it an error (I would vote for), `Result<T, E>` is suitable. If we treat it like "just no valid answer" and move on without an error context, `Option<T>` could suffice.
+
+The key question to ask: **Is the absence of a value an error condition, or is it an expected case?** If it’s normal/expected (like searching in a map for a key that might not be there), use `Option<T>`. If it’s an error (like couldn’t parse config file), use `Result<T, E>` so we can report what went wrong.
+
+
+
+**Alice:** Crystal clear, thanks. And I assume we can use the `?` operator with `Option<T>` similarly, as long as our function returns an `Option<T>`?
+
+**Bob:** Yes, and we already touched on that (see `ex11.rs`). If we use `?` on an `Option<T>` and it’s `None`, it will return `None` from our function early. It’s handy when chaining multiple things that might produce no value.
+
+But remember, we can’t mix `Result<T, E>` and `Option<T>` with `?` without converting. For example, if we have a `Result<T, E>` and we want to use `?` in a function returning `Option<T>`, we would need to convert that `Result<T, E>` into an `Option<T>` (perhaps by ignoring the error or converting error to `None`). Usually, though, we keep to one or the other in a given function.
+
+
+You can review `ex13.rs` above where we converted `Option<char>` into `Result<char, String>` but here is an additional sample code where the function returns an `Option<T>` to `main()`:
+
+```rust
+// ex15.rs
+
+use std::fs::File;
+use std::io::Read;
+
+fn read_file_to_string_as_option(path: &str) -> Option<String> {
+    let mut file = File::open(path).ok()?;
+    let mut buf = String::new();
+    file.read_to_string(&mut buf).ok()?;
+    Some(buf)
+}
+
+fn main() {
+    let existing = "Cargo.toml";
+    let missing = "_definitely_missing_.txt";
+
+    println!("--- read_file_to_string_as_option ---");
+    match read_file_to_string_as_option(existing) {
+        Some(s) => println!("OK: read {} bytes from {existing}", s.len()),
+        None => println!("None: could not read {existing}"),
+    }
+    match read_file_to_string_as_option(missing) {
+        Some(s) => println!("OK: read {} bytes from {missing}", s.len()),
+        None => println!("None: could not read {missing}"),
+    }
+}
+```
+
+
+Here is what you should see in the terminal
+
+```
+OK: read 167 bytes from Cargo.toml
+None: could not read _definitely_missing_.txt
+```
+
+* `read_file_to_string_as_option()` read the whole file if possible, otherwise it returns `None`.
+* We decided (don't ask me why) to "intentionally" ignore the error details by converting `Result<T, E>` to `Option<T>` with `.ok()`, so that the `?` operator can be used in the function. Double check:
+    * `open()` returns `Result<File, io::Error>`. We convert it to `Option<File>` with `.ok()`, then `?` works with `Option`
+    * Same strategy with `read_to_string()` which returns `Result<usize, io::Error>`
+
+
+
+**Alice:** I don't get the point, we're losing sight of why the failure is happening!
+
+**Bob:** You are right. We may be asked to design an API acting that way (drop the error and return `None` on failure). It is a choice. Now, if it is really a concern we can add some **observability**. We keep the `Option<T>` API for the caller (so failures collapse to `None`), but we emit/log diagnostics so that the failures are not invisible. See below an example:
+
+```rust
+// ex16.rs
+use std::fs::File;
+use std::io::Read;
+
+fn read_with_logging(path: &str) -> Option<String> {
+    let mut file = File::open(path)
+        .map_err(|e| {
+            eprintln!("[read_with_logging] open error: {e}");
+            e
+        })
+        .ok()?; // Result<File, io::Error> -> Option<File>
+
+    let mut buf = String::new();
+    file.read_to_string(&mut buf)
+        .map_err(|e| {
+            eprintln!("[read_with_logging] read error: {e}");
+            e
+        })
+        .ok()?; // Result<usize, io::Error> -> Option<usize>
+
+    Some(buf)
+}
+
+fn main() {
+    let existing = "Cargo.toml";
+    let missing = "_definitely_missing_.txt";
+
+    match read_with_logging(existing) {
+        Some(s) => println!("OK: read {} bytes from {existing}", s.len()),
+        None => println!("None: could not read {existing}"),
+    }
+    match read_with_logging(missing) {
+        Some(s) => println!("OK: read {} bytes from {missing}", s.len()),
+        None => println!("None: could not read {missing}"),
+    }
+}
+```
+
+You should read the following in the terminal:
+
+```
+OK: read 167 bytes from Cargo.toml
+[read_with_logging] open error: Le fichier spécifié est introuvable. (os error 2)
+None: could not read _definitely_missing_.txt
+```
+
+* With `existing` file, everything works smoothly. At the end, in `main()` we print the number of bytes in the file. Nothing is logged because there is no error.
+* With `missing`, `read_with_logging()` log a message then returns immediately. Note how [`.map_err()`](https://doc.rust-lang.org/std/result/enum.Result.html#method.map_err) is used on a `Result<T, E>` and how the calls `read_to_string().map_err().ok()` are daisy chained.
 
 {: .note-title }
 > Side Note
 >
-> In the [workspace](https://github.com/40tude/err_for_blog_post), the source code discussed below are in the `01_experimentation/examples/` directory.
+> Do not start grumbling... We will discuss `.map_err()` in detail in the Custom Error Types section, later. For now keep in mind that on error, `.map_err()` we log an explanation and propagate (not early return) the error (`e`) to `.ok()?`.
 
 
-**Bob:** It is Saturday night. The house is silent, your young sister is out (you don't want to kow where nor with who). This is the best time to play with Rust. No?
+
+### Summary – `Option<T>` vs `Result<T, E>`
+
+{: .new-title }
+> Summary – `Option<T>` vs `Result<T, E>`
+>
+* **Use `Option<T>` for expected no value scenarios:** If not finding or not having a value is a normal possibility (not an error), `Option<T>` **communicates** that clearly. `None` carries no error info – it just means no result.
+* **Use `Result<T, E>` for error scenarios:** If an operation can fail in a way that is considered an error (and especially if we need to know *why* it failed), use `Result<T, E>` so we can provide an error message or error type. `Err(E)` can hold information about what went wrong.
+* **Semantic clarity:** Other developers will interpret `Option<T>` and `Result<T, E>` in our APIs as triggers.
+    * `Option<T>` implies the caller should expect the nothing case and it’s not an exceptional error
+    * `Result<T, E>` implies the caller should expect the possibility of an error condition that should be handled or propagated.
+Examples:
+* A lookup in a map (key might be missing) -> return `Option<T>` (absence is normal if key not present)
+* Parsing input (could fail due to external conditions or bad format) -> return `Result<T, E>` with an error explaining the failure
+* **Failure is not an option:** It's must be clear in your mind when choosing between `Option<T>` vs `Result<T, E>`
+
+
+
 
 <div align="center">
-<img src="./assets/img26.webp" alt="" width="450" loading="lazy"/><br/>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Tid44iy6Rjs?si=eJfnsc8fjGXTqwhq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+* **`?` works with both:** We can propagate `None` early from a function returning `Option<T>` using `?` just like we can propagate errors from `Result<T, E>` with `?`. Just ensure the function’s return type matches (`Option<T>` with `Option<T>`, `Result<T, E>` with `Result<T, E>`).
+
+
+
+
+### Exercises – Option<T> vs `Result<T, E>`
+1. Can you find `Option<T>` in the std lib documentation?
+
+1. **Design Decisions:** For each of the following scenarios, decide whether `Option<T>` or `Result<T, E>` is more appropriate as a return type and briefly explain why:
+* A function `find_user(username: &str) -> ???` that searches a database for a user and either returns a User object or indicates the user was not found.
+* A function `read_config(path: &str) -> ???` that reads a configuration file and returns a configuration object. (What if the file is missing or has invalid contents?)
+* A function `index_of(text: &str, ch: char) -> ???` that returns the index of a character in a string, or something if the char isn’t present.
+
+1. **Converting `Option<T>` to `Result<T,E>`:** Write a function `get_env_var(name: &str) -> Result<String, String>` that tries to read an environment variable and returns an error message if it’s not set.
+* `std::env::var(name)` actually returns a `Result`, but pretend it gave us an `Option<String>`
+* How would we convert that `Option<T>` to a `Result<T, E>`?
+* We can use `.ok_or(error message)` on the `Option<T>` to turn a `None` into an `Err`
+
+1. **Mixing `Option<T>` and `Result<T,E>`:** Sometimes we have to deal with both. Imagine a function that tries to get a configuration value from either an environment variable or a config file: `fn get_config_value(key: &str) -> Result<Option<String>, ConfigError>`. This returns `Ok(Some(val))` if found, `Ok(None)` if not found in either place, or `Err(e)` if an error occurred (like file read error).
+* Outline how we would implement this: we might first try env var (which gives `Option`), then file (`Result`), and combine them
+* Don’t worry about full code. Focus on how you’d handle the types
+* This is to think about how to combine `Option<T>` and `Result` logically
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## To `panic!()` or Not to `panic!()`
+
+**Alice:** Alright... Now I understand recoverable errors. But what about unrecoverable ones? When should I actually use [`panic!()`](https://doc.rust-lang.org/std/macro.panic.html) intentionally?
+
+**Bob:** Panicking is basically saying *this is a fatal problem, abort the mission!* We should use `panic!()` for situations where continuing the program could lead to incorrect results, security vulnerabilities, or when the error is totally unexpected and we don’t have a meaningful way to handle it.
+
+Think of it this way:
+* If failure is something we *expect might happen* occasionally (like a file might not be found, user input might be bad, etc.), we should **not** panic — use `Result<T, E>` and handle it.
+* If something happening indicates a bug in **our code** or an impossible situation (like *this array index should never be out of bounds, something is really wrong*), then jumping thru the window (panicking IOW) is acceptable.
+
+
+
+
+
+
+**Alice:** So this happen mostly in cases of logic errors or impossible states. Right?
+
+**Bob:** Exactly. For instance, the standard library panics if we attempt out-of-bounds array access, because that’s a bug in **our code** (we miscalculated an index) and there’s no way to recover or proceed sensibly. The program is in a bad state, so it stops. Another example: if we have a function that absolutely requires a valid, non-null pointer (say, something we built using unsafe code), we might panic if it receives a null pointer. Indeed, that situation should never occur if **our code** is correct.
+
+
+Panic is also often used to indicate *programmer errors* (violating function contracts). If we document that a function must be called with, say, a positive number, we might choose to panic if someone passes a negative, because the caller violated the API contract. This is not something we want to handle at runtime; it should be fixed in the code. [The Rust Book](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html#guidelines-for-error-handling) discusses that: when a function’s contract is violated, a panic(with a clear message) is appropriate since it’s the **caller’s bug**, and we want them to notice and fix it.
+
+
+
+
+
+**Alice:** And in testing, panics are fine because a failed `assert!()` or `.unwrap()` will just fail the test, right?
+
+**Bob:** Yes, exactly. In tests, we often use panics (e.g., `assert!()` macros or `.unwrap()`) to immediately fail a test when an invariant isn’t met. That’s a valid use of panic. We *want* to stop if something unexpected happens in a test.
+
+Also, small quick-and-dirty code snippets might sprinkle `.unwrap()` for brevity if you’re OK with them crashing on error. But in a robust application or library, you’d use panic very sparingly.
+
+There’s also the consideration of library vs binary (application) code.
+* If you’re writing a library, we should almost never panic on a recoverable error. Indeed, that takes the decision away from the library user (the programmer using our library, the consumer). Instead, return a `Result<T, E>` and let them decide. We only panic in a library if it’s a severe **internal** invariant violation or we literally can’t do anything (and ideally, document that it might panic in that case).
+* In application (binary) code, we control the whole program. We might choose to `panic!()` on certain errors if it simplifies things. Even then we should `panic!()` only when it’s truly unrecoverable or we are OK with the program terminating.
+
+
+
+
+**Alice:** What about using a lot of `.unwrap()` in my code? Is that considered bad?
+
+**Bob:** Frequent use of `.unwrap()` is usually a code smell (except in code examples or tests). Each `.unwrap()` is a potential `panic!()` point. It’s fine if we are 100% sure it can’t fail (like we just checked a condition that guarantees it, or it’s in a context where a crash is acceptable). But if an error is possible and we `.unwrap()`, we are basically ignoring the error and we crash instead of handling it. Often it’s better to handle the error or to propagate it. If we find ourself writing many `.unwrap()`s, we should think about using `?` to propagate or handle errors more gracefully.
+
+
+
+
+
+
+To sum up:
+* Use `panic!()` (or `.unwrap()`, etc.) for **bugs** and **unexpected** **conditions**. Things that should never happen if **our code** is correct.
+* Use `Result<T, E>` for errors that we *expect could happen* in normal usage (and thus might want to recover from).
+
+
+
+
+
+
+
+
+**Alice:** That’s clear. The Rust Book even has a section title "To panic! or Not to panic!" I think.
+
+**Bob:** Yes, and the summary is pretty much what we discussed. One line [from it](https://doc.rust-lang.org/book/ch09-03-to-panic-or-not-to-panic.html): *"when failure is expected, it’s more appropriate to return a `Result<T, E>` than to make a `panic!()` call"*. Only `panic!()` when failure indicates a bug or something so bad that there’s no point in continuing.
+
+
+One more tip: if we do `panic!()`, let's do it with a helpful message. For example, if a function shouldn’t get a negative number, let's code:
+
+```rust
+panic!("Negative value provided: {}", value);
+```
+
+This beats a cryptic panic or (worse) a silent misbehavior. It makes debugging easier by clearly pointing out what went wrong.
+
+And of course, remember that panicking will [unwind the stack](https://doc.rust-lang.org/nomicon/unwinding.html) by default, which cleans up but takes some overhead. In performance-critical or embedded scenarios, sometimes Rust programs are configured to abort immediately on panic!() (no unwind). Remember what we said earlier. If needed, in `Cargo.toml` add the following section:
+
+```toml
+[profile.release]
+panic = "abort"
+```
+
+But that’s an advanced detail. The key point is: `panic!()` = crash. Use with care.
+
+
+
+
+
+### Summary – Using (or Avoiding) `panic!()`
+
+{: .new-title }
+> Summary – Using (or Avoiding) `panic!()
+>
+* **Expected errors -> `Result<T, E>`, Unexpected errors -> `panic!()`:** If an error condition is something we can anticipate and might want to handle (file not found, invalid input, network timeout), **do not panic**. Use `Result<T, E>` and propagate or handle it. If something is truly unexpected or a bug in **our code** (index out of bounds, violated invariant), a `panic!("msg")` is appropriate to immediately stop the program.
+* **Library vs Application code:**
+    * **Libraries** should prefer `Result<T, E>` for errors and avoid panicking, except for internal bugs, because panics in a library will crash the user’s application.
+    * **Applications** (especially very small ones) might use `panic!()`, `.unwrap()`, `.expect()` in places where it’s acceptable for the program to crash (or during development to catch bugs). But even here I'm so no convinced. Indeed we should investigate bugs with a Debugger. For the rest, you will understand my point of view reading the section "Errors from Experimentation to Production".
+* **Use meaningful panic messages:** If we use `panic!()` or `.expect() `, provide context. E.g., `panic!("Negative value provided: {}", value)` is better than a blank panic. This helps debugging by indicating why the panic happened.
+* **Minimize `.unwrap()` in code:** Every `.unwrap()` is a potential crash. We use it only when we're sure there's no error (or in test code). Prefer to handle or propagate errors instead. Replacing `.unwrap()` with `?` or proper error handling will make our code more robust.
+* **Examples of when to panic:**
+    * Out-of-range indexing (bug in **our code**) -> standard library panics (cannot recover safely).
+    * Asserting a condition in code (`assert!()` macro) -> panics if the condition is false, useful in tests or to validate internal invariants.
+    * Contract violations -> e.g., our function got an invalid argument that should have been prevented by earlier checks. We panic to signal programmer error, after possibly using Rust’s type system to avoid such cases where possible.
+
+
+
+
+
+
+
+
+
+### Exercises – Panic vs Result
+
+1. **Spot the Panic:** Take a piece of code (perhaps one of our previous exercise solutions) where we used `.unwrap()` or `.expect()`. What would happen if that line did encounter an error? Is it truly a scenario that should crash the program? Modify the code to handle the error with a `Result<T, E>` if appropriate. If you decide to keep the `.unwrap()`, justify why it is OK (for example, if it’s in a test or if logic guarantees the `Result<T, E>` is `Ok()`).
+
+2. **Design a Robust Function:** Imagine you’re writing a library function `fn send_email(address: &str, body: &str) -> Result<(), SendError>`.
+* Come up with two or three different reasons it might fail (e.g., invalid address format, network outage).
+* For each, decide if it should return an error (`Result::Err`) or panic. Explain your reasoning. Hint: as a library function, it should likely return errors for anything that can go wrong due to external factors or bad input, rather than panicking. Panics should be reserved for something like an invariant violation **inside** the library.
+
+3. **Deliberate Panic:** Write a small program that deliberately panics (for example, by indexing an array out of bounds or using `panic!()` directly with a message). Run it to see what the panic message and backtrace look like. Enable backtrace by running the program with `RUST_BACKTRACE=1` environment variable (under WIN11 you can use `$env:RUST_BACKTRACE=1; cargo run -p u_are_errors --example my_panic_code` in a terminal).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## Custom Error Types and Error Handling in Larger Programs
+
+
+**Alice:** So far we’ve talked about using the built-in errors (like `std::io::Error` or parsing errors). What about bigger programs where different parts can error in different ways? How should I think about it and then design my own error data types, if necessary?
+
+**Bob:** For me, the key point is that we need to ensure that our custom error type behaves as much like `std::error::Error` as possible. If we can do that, our error can be handled like any standard error, which is pretty cool. As you will see, luckily the `std::error::Error` trait is here to help.
+
+This said, as our Rust program grows, we might call many operations that can fail, potentially with different error types. We have a few choices:
+* Use one catch-all error type everywhere to simplify things. Think to our good old `Box<dyn std::error::Error>` or a crate like `anyhow` in applications.
+* Define our own **custom error type** (usually an `enum` ) that implements `std::error::Error` where we enumerate all possible errors in our context and which is able to convert other errors into our custom type.
+
+Defining a custom error type is common in libraries because, once this is done, the library returns one consistent error type that the users can handle, instead of many disparate types.
+
+
+
+**Alice:** How would a custom error type looks like?
+
+**Bob:** As I said, usually it is an `enum`, you know, the Rust's jewel of the crown...
+
+<div align="center">
+<img src="./assets/img40.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-Based on what you just learnt, can you write your version of "Hello, World!"?
 
-**Alice:** "Hello, World!"... It is a very simple code. I would start with:
+For example, imagine a program that needs to load a configuration file which is in JSON format. Things that could go wrong: file I/O could fail, or JSON parsing could fail. These are two different error types from the std lib or the crate (IO errors and parse errors). We might create an `enum` type definition like this:
+
 
 ```rust
-fn main() {
-    println!("Hello, world!");
+// ex17.rs
+use serde::Deserialize;
+use std::fmt;
+use std::fs::{read_to_string, write};
+use std::io::ErrorKind;
+
+#[derive(Debug)]
+enum ConfigError {
+    Io(std::io::Error),
+    Parse(serde_json::Error),
+}
+
+// Implement Display for our error to satisfy Error trait.
+impl fmt::Display for ConfigError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+            ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+        }
+    }
+}
+
+// Implement the standard Error trait for integration with other error tooling.
+// To implement the std::error::Error trait for ConfigError, ConfigError must implement Debug and Display
+impl std::error::Error for ConfigError {}
+```
+
+* `ConfigError` is our custom error type
+* It is an enum (a sum type). A value of this type is exactly one of its variants at a time. Here it has two possible variants:
+    * `Io(...)` — a variant that carries one payload of type `std::io::Error`
+    * `Parse(...)` — a variant that carries one payload of type `serde_json::Error`
+* Keep in mind that [each enum variant is also a constructor of an instance of the enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#:~:text=each%20enum%20variant%20that%20we%20define%20also%20becomes%20a%20function%20that%20constructs%20an%20instance%20of%20the%20enum).
+    * Think about: `fn Io(e: std::io::Error) -> ConfigError{...}`
+
+{: .warning-title}
+> This is key
+>
+Each enum variant is also a constructor of an instance of the enum.
+
+
+* Then in the code above we implement the `Display` trait for our data type `ConfigError`.
+    * This is mandatory. In VSCode, if we hover the word `Error` from `impl std::error::Error` we learn that
+        * to implement the `std::error::Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`.
+        * `Debug` is easy. It is implemented automatically thanks to the directive `#[derive(Debug)]`.
+        * Now, regarding `Display`, for each variant of the `enum` we explain how to `write!()` it so that they can print nicely.
+
+
+{: .warning-title}
+> This is key
+>
+To implement the `std::error::Error` trait for `ConfigError`, `ConfigError` must implement `Debug` and `Display`
+
+
+* Finally comes the empty implementation of `Error` for `ConfigError`. It is empty because the trait only have default methods which is the case here. In other words, the line officially registers our data type as a standard error, without any additional customization.
+
+
+
+
+{: .note-title }
+> Side Note
+>
+> If you don't feel confident with traits you can read this [series of posts]({%link docs/06_programmation/rust/015_traits/traits_00.md%}).
+
+
+* Next, when we write the function `load_config()` we make sure it returns `Result<Config, ConfigError>`. See below:
+
+```rust
+fn load_config(path: &str) -> Result<Config, ConfigError> {
+    let data = read_to_string(path).map_err(ConfigError::Io)?;
+    let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+    Ok(cfg)
 }
 ```
 
-Then... Yes, I know what you want. Let's make sure I can use my friend `?` in `main()`. Since I don't know yet what kind of std lib and crate functions I will call, I make sure `main()` can handle and returns all of them. I don't really remember, but it was based on `Box`, `dyn`, blah blah blah...
+Now, fasten your seat belt and stay with me because what follows is a bit rock ‘n’ roll... In any case, **it took me a while** to really realize what was happening. Indeed, inside `load_config()`, if something bad happen we convert the current error into `ConfigError` with the help of `.map_err()`. Here is how:
 
-**Bob:** It is not a problem. Go back and review `00_u_are_errors\examples\ex08.rs` in [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) for example.
+* If it fails, `std::fs::read_to_string` returns a `Result<String, std::io::Error>`
+    * `.map_err(ConfigError::Io)` is then executed
+    * However, since you remember (you confirm, you remember) that each enum variant of `ConfigError` is also an initializer of the enum, when `.map_err(ConfigError::Io)` is executed, it calls the function `ConfigError::Io(e: std::io::Error) -> ConfigError` which constructs and returns a `ConfigError`
+    * The `ConfigError` (which have the trait `std::error::Error`) is presented in front of the `?` operator
+    * The `?` operator bubbles up the `ConfigError` immediately since in our explanations we said that `std::fs::read_to_string` just failed
+* The same mechanics is at work on the next line
 
-**Alice:** Thanks for the nudge. So I would write the code like this:
+
+* The caller of `load_config()` only have to handle `ConfigError`. Below we show a part of the `load_or_init()` function. The idea is to focus on how this works from the caller point of view:
+
+<!-- It can `match` on whether it is `Io()` or `Parse()` if it wants to distinguish.  -->
 
 ```rust
-use std::error::Error;
-
-fn main() -> Result<(), Box<dyn Error>> {
-    println!("Hello, world!");
-    Ok(()) // we must return a Result whose value here is Ok(())
+fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+    match load_config(path) {
+        ...
+        Err(ConfigError::Parse(e)) => {
+            eprintln!("Invalid JSON in {path}: {e}");
+            Err(ConfigError::Parse(e))
+        }
+        ...
+    }
 }
 ```
 
-But then I can imagine that other functions in `main.rs` will need to return the same `Result`. So in order to simplify the writing of the functions signature I write:
+* This is a `match` on the value returned by `load_config()`
+* If the pattern matches `Err(ConfigError::Parse(e))`, the `.json` in invalid
+* The function bubbles up (`Err(...)`) the error to the caller (`main()` here)
+
+Let's have a look at the `main()` function.
 
 ```rust
-// ex000.rs
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
+    Ok(())
+}
+```
+
+* Note that `main()` returns `Result<(), Box<dyn std::error::Error>>`
+* This is cool because now we can use the `?` operator in the body of the `main()` at the end of certain lines
+* Thanks to `Box<dyn std::error::Error>>`, it works even if the error type from ``write()`` and `load_or_init()` are different (they both implement the `std::error::Error` trait)
+
+
+Expected output of the `ex17.rs` with ``bad_config.json``:
+
+```
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44))
+error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit code: 1)
+```
+
+
+
+
+
+
+
+
+
+
+Find below `ex17.rs` complete source code because **I hate** partial source code in blog posts that usually never works.
+* Feel free to copy/paste in [Rust Playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2024)
+* In VSCode, set a breakpoint and take the time to go through the code line by line (F10).
+
+<div align="center">
+<img src="./assets/img21.webp" alt="" width="560" loading="lazy"/><br/>
+<span>Click the image to zoom in</span>
+</div>
+
+
+```rust
+// ex17.rs
+use serde::Deserialize;
+use std::fmt;
+use std::fs::{read_to_string, write};
+use std::io::ErrorKind;
+
+#[derive(Debug, Deserialize)]
+struct Config {
+    app_name: String,
+    port: u16,
+}
+
+#[derive(Debug)]
+enum ConfigError {
+    Io(std::io::Error),
+    Parse(serde_json::Error),
+}
+
+impl fmt::Display for ConfigError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+            ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+        }
+    }
+}
+
+impl std::error::Error for ConfigError {}
+
+fn load_config(path: &str) -> Result<Config, ConfigError> {
+    let data = read_to_string(path).map_err(ConfigError::Io)?;
+    let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+    Ok(cfg)
+}
+
+fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+    match load_config(path) {
+        Ok(cfg) => Ok(cfg),
+
+        Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+            let default = Config { app_name: "Demo".into(), port: 8086 };
+            // Map the write error to ConfigError so `?` compiles.
+            write(path, r#"{ "app_name": "Demo", "port": 8086 }"#).map_err(ConfigError::Io)?;
+            eprintln!("{path} not found, created with default config");
+            Ok(default)
+        }
+
+        Err(ConfigError::Io(e)) => {
+            eprintln!("I/O error accessing {path}: {e}");
+            Err(ConfigError::Io(e))
+        }
+
+        Err(ConfigError::Parse(e)) => {
+            eprintln!("Invalid JSON in {path}: {e}");
+            Err(ConfigError::Parse(e))
+        }
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
+    Ok(())
+}
+```
+
+
+
+
+
+
+
+
+
+**Alice:** Got it. So if I have a module—or more likely, a library—that performs some operations, I should define a custom error type in that module to represent everything that can go wrong. Then I can use `?` to convert sub-errors into my custom error and let them bubble up to `main()`. That way, `main()` only deals with my module’s error type.
+
+<!-- (or I convert it further to something else or to `Box<dyn Error>` at the final boundary). -->
+
+**Bob:** Exactly. Let’s do a quick mini-example of propagating an error from a module to `main()`. Suppose we have a module `math_utils` with a function that can fail:
+
+
+```rust
+// ex19.rs
+mod math_utils {
+    // This module could be in a file math_utils.rs
+    #[derive(Debug)]
+    pub enum MathError {
+        DivisionByZero { numerator: f64 },
+        NegativeLogarithm { value: f64 },
+    }
+
+    impl std::fmt::Display for MathError {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            match self {
+                MathError::DivisionByZero { numerator } => write!(f, "Cannot divide {} by zero", numerator),
+                MathError::NegativeLogarithm { value } => write!(f, "Logarithm of negative number ({})", value),
+            }
+        }
+    }
+
+    impl std::error::Error for MathError {}
+
+    // Functions that return Result<_, MathError>
+    pub fn divide(a: f64, b: f64) -> Result<f64, MathError> {
+        if b == f64::EPSILON { Err(MathError::DivisionByZero { numerator: a }) } else { Ok(a / b) }
+    }
+
+    pub fn log10(x: f64) -> Result<f64, MathError> {
+        if x < 0.0 { Err(MathError::NegativeLogarithm { value: x }) } else { Ok(x.log10()) }
+    }
+}
+
+use math_utils::{divide, log10};
+type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
+
+fn run() -> Result<()> {
+    let my_log = log10(1024.0)?;
+    println!("Log10 is {:.3}", my_log);
+
+    let ratio = divide(10.0, 3.0)?;
+    println!("Ratio is {:.3}", ratio);
+
+    let bad_ratio = divide(5.0, 0.0)?;
+    println!("This won't print because of error above ({})", bad_ratio);
+
+    Ok(())
+}
+
+fn main() -> Result<()> {
+    if let Err(e) = run() {
+        eprintln!("Error: {}", e);
+        std::process::exit(42);
+    }
+    Ok(())
+}
+```
+
+Expected output:
+
+```
+Log10 is 3.010
+Ratio is 3.333
+Error: Cannot divide 5 by zero
+error: process didn't exit successfully: `target\debug\examples\ex19.exe` (exit code: 42)
+```
+
+If we run this:
+* `main()` calls the `run()` function
+* There is no problem with `log10()`
+* There is no problem with the first `divide()`
+* The second `divide()` returns an `Err(MathError::DivisionByZero)` and the `?` bubbles up the error to the caller
+* The `println!()` with `bad_ratio` is never executed
+* Back in `main()`, "Ooops, division by zero" is printed, thanks to `Display` implementation for `MathError`
+* Just for the fun, at this point, we return 42 and exit.
+
+
+
+We could also catch the error in `main` with a `match` instead, and print something custom. But the point was to illustrate bubbling the error from a module up to `main()`. The key was to define `MathError` and to use it consistently. Each function in the module returns `MathError` on failure, and `run()` and `main()` can deal with `MathError`.
+
+
+
+
+
+
+**Alice:** I think I have a much better understanding error handling in Rust now. Thanks.
+
+**Bob:** It’s a lot to take in at first, but once we get comfortable, we appreciate how Rust’s approach makes us think about errors up front. No more runtime surprises from unhandled exceptions. We decide what to do in each case. And keep in mind, for larger packages, there are crates like `thiserror` to reduce error boilerplate, and `anyhow` for quick-and-easy error handling in applications. Those can be handy, but the fundamentals of `Result<T, E>` and `?` we covered are the building blocks of it all.
+
+
+
+
+### Summary – Custom Errors
+
+{: .new-title }
+> Summary – Custom Errors
+>
+* **Custom error types:** We can define our own error type (often an `enum` because our error can only have a value at a time) to represent errors in our application or library. This allows us to consolidate different error sources (IO, parsing, etc.) into one type and make our functions return that. It improves API clarity. Callers deal with one error type and can match on its variants.
+* **Implementing Error trait:** By implementing `std::error::Error` (which means implementing `fmt::Display` and having `#[derive(Debug)]`), our error type becomes interoperable with the standard ecosystem. It lets us use trait objects (`Box<dyn Error>`) if needed and makes our errors printable and convertible.
+* **Converting errors:** We use pattern matching or helper methods like `.map_err()` (or the `From` trait implementations) to convert underlying errors into our custom error variants. The `?` operator automatically convert errors if our custom error type implements `From` for the error thrown inside the function. This reduces a lot of manual code in propagating errors upward.
+    * Suppose we have an error `enum` `ConfigError { Io(io::Error), Parse(ParseError) }`. If a function reading a config file encounters an `io::Error`, we can do `.map_err(ConfigError::Io)?` to turn it into our error type and return it. The same for parse errors. Now the function returns `Result<Config, ConfigError>`, and the caller only has to handle `ConfigError`.
+* **Using `Box<dyn Error>`:** In application code, if we don’t want to define lots of error types, we can use `Box<dyn Error>` as a catch-all error type (since most errors in std lib implement `Error`). For example, `fn main() -> Result<(), Box<dyn std::error::Error>>` allows us to use `?` with any error that implements `Error` and just propagate it. This is convenient, but in library code you’d usually favor a concrete error type so that the API is self-documented.
+
+
+
+
+
+### Exercises – Custom Errors
+1. **Define and Use a Custom Error:** Create an enum `MyError` with variants for two different error scenarios (for example, `MyError::EmptyInput` and `MyError::BadFormat(std::num::ParseIntError)`). Implement `std::fmt::Display` for `MyError` to provide human-readable messages. Then write a function `parse_nonempty_int(s: &str) -> Result<i32, MyError>` that returns an error if the input string is empty (`EmptyInput`) or if parsing to int fails (`BadFormat`). Use `?` and appropriate conversions (`map_err`) inside the function. Test it with various inputs (empty string, non-numeric, numeric).
+
+2. **Combine Two Error Types:** Suppose we have two functions `fn get_data() -> Result<String, io::Error>` and `fn parse_data(data: &str) -> Result<Data, ParseError>`. Write a new function `fn load_data() -> Result<Data, LoadError>` where `LoadError` is our custom enum that has variants for IO and Parse errors. In `load_data`, call `get_data()` and `parse_data()` using `?`, converting their errors into `LoadError` (we can implement `From<io::Error>` and `From<ParseError>` for `LoadError` or use `map_err`). Then try using `load_data()` in a `main` that prints different messages depending on which error occurred (hint: use `match e { LoadError::Io(e) => ..., LoadError::Parse(e) => ... }`).
+
+3. **Error Propagation in Modules:** Organize a small package with two modules: `network` and `database`. In `network`, create a function `fetch_data()` that might return a network-related error (we can simulate by just returning an `Err` variant like `NetworkError::Offline`). In `database`, create a function `save_data()` that might return a DB-related error (e.g., `DbError::ConnectionLost`). Then in `main`, write a function `run()` that calls `fetch_data` then `save_data`, propagating errors using `?`. Define a combined error type (enum with `Network(NetworkError), Database(DbError)`) to unify them for `run()`. Have `main` call `run()` and handle the unified error. This exercise will give we practice in designing error types and propagating across module boundaries.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+
+## When and Why to Use `anyhow` and `thiserror` crates
+
+
+
+**Alice:** You mentioned external crates like `anyhow` and `thiserror`. When should I reach for them?
+
+**Bob:** Short version:
+- **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with context.
+- **`thiserror`** in **libraries** when we need ergonomic custom error types without writing all `impl` for `Display`, `Error`, and conversions.
+
+
+
+
+
+
+### anyhow - for binaries (mnemonic: A, B, C...**A**nyhow, **B**inaries)
+
+[`anyhow`](https://docs.rs/anyhow/latest/anyhow/) provides a type called `anyhow::Error` which is a dynamic error type (like `Box<dyn Error>` but with some extras such as easy context via `.context(...)`). It’s great for applications where we just want to bubble errors up to `main()`, print a nice message with context, and exit. Here is an example:
+
+```rust
+// ex20.rs
+use anyhow::{Context, Result};
+use std::fs;
+
+// Result alias = Result<T, anyhow::Error>
+fn run() -> Result<()> {
+    let data = fs::read_to_string("config.json").context("While reading config.json")?; // adds context if it fails
+    let cfg: serde_json::Value = serde_json::from_str(&data).context("While parsing JSON")?;
+    println!("Config loaded: {cfg}");
+    Ok(())
+}
+
+fn main() -> Result<()> {
+    run()
+}
+```
+
+Expected output:
+
+```
+Error: While reading config.json
+
+Caused by:
+    Le fichier spécifié est introuvable. (os error 2)
+```
+
+* Notice how adding `.context(...)` makes error messages much more actionable if something fails.
+* Otherwise, the key point to understand the previous code is to realize that `Result` is a type alias for `Result<T, anyhow::Error>`.
+
+
+
+
+**Alice:** OK... But could you show me how we should modify one of the previous code, you know, the one where we were reading JSON config file.
+
+**Bob:** Ah, yes, you're right. Let's rework `ex17.rs` to see the impact and benefices. Tadaa!:
+
+```rust
+// ex21.rs
+use anyhow::{Context, Result};
+use serde::Deserialize;
+use std::fs::{read_to_string, write};
+use std::io::{self, ErrorKind};
+
+#[derive(Debug, Deserialize)]
+struct Config {
+    app_name: String,
+    port: u16,
+}
+
+fn load_config(path: &str) -> Result<Config> {
+    let data = read_to_string(path).with_context(|| format!("failed to read config file: {path}"))?;
+    let cfg = serde_json::from_str::<Config>(&data).with_context(|| format!("failed to parse JSON in: {path}"))?;
+    Ok(cfg)
+}
+
+fn load_or_init(path: &str) -> Result<Config> {
+    match load_config(path) {
+        Ok(cfg) => Ok(cfg),
+        Err(err) => {
+            if let Some(ioe) = err.downcast_ref::<io::Error>() {
+                if ioe.kind() == ErrorKind::NotFound {
+                    let default = Config { app_name: "Demo".into(), port: 8086 };
+                    let default_json = r#"{ "app_name": "Demo", "port": 8086 }"#;
+                    write(path, default_json).with_context(|| format!("failed to write default config to {path}"))?;
+                    eprintln!("{path} not found, created with default config");
+                    return Ok(default);
+                } else {
+                    eprintln!("I/O error accessing {path}: {ioe}");
+                    return Err(err);
+                }
+            }
+            if let Some(parsee) = err.downcast_ref::<serde_json::Error>() {
+                eprintln!("Invalid JSON in {path}: {parsee}");
+                return Err(err);
+            }
+            Err(err)
+        }
+    }
+}
+
+fn main() -> Result<()> {
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#).context("writing good_config.json")?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#).context("writing bad_config.json")?;
+
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
+    Ok(())
+}
+```
+
+Expected output of the `ex21.rs` with ``bad_config.json``:
+
+```
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: failed to parse JSON in: bad_config.json
+
+Caused by:
+    invalid type: string "not a number", expected u16 at line 1 column 44
+error: process didn't exit successfully: `target\debug\examples\ex21.exe` (exit code: 1)
+```
+
+
+
+In VSCode, open `ex21.rs` and `ex17.rs` side by side and compare both contents. If you do so and rearrange the source code layout, here is what you should see:
+
+<div align="center">
+<img src="./assets/img22.webp" alt="" width="900" loading="lazy"/><br/>
+<span>ex17.rs on lhs, ex21.rs on rhs</span>
+</div>
+
+* `ex21.rs` is shorter but this is not the point.
+* `ConfigError` and its implementations has disappear because it is no longer needed.
+* Pay attention to `.with_context()` in `load_or_init()`.
+    * It is similar to `.context()` and the string literals.
+    * It takes a closure that returns a String.
+    * It is used here to dynamically `format!()` string with the value of a variable (`path`).
+* Also note how the `.context(...)` in `main()` makes error messages much more actionable.
+
+This is typically what we need in binaries. Ok, let's read the code:
+
+* In the initial version `ex17.rs` we had `fn load_config(path: &str) -> Result<Config, ConfigError> {...}`
+* Now we have `fn load_or_init(path: &str) -> Result<Config> {...}` where `Result` is a type alias so that the signature should be read as `fn load_config(path: &str) -> std::result::Result<Config, anyhow::Error>`
+* `anyhow` implement `From<E>` for all `E` that implement `std::error::Error + Send + Sync + 'static`
+* If any error happen during `read_to_string()` then the `?` operator converts the error from `std::io::Error` to `anyhow::Error` (idem for `serde_json::Error` from `serde_json::from_str`)
+
+
+
+
+Now the tricky part is in `load_or_init()`:
+
+* Its signature should be read as `fn load_or_init(path: &str) -> Result<Config, , anyhow::Error>`
+* On error, we must downcast the `anyhow::Error` and check if it is an `io::Error`. If it is the case we check if it is an `ErrorKind::NotFound`...
+* This is not really fun, I agree.
+* In fact I wanted to keep the logic of `load_or_init()` the same. Since it now receives  `Result<Config, , anyhow::Error>` and not a `Result<Config, ConfigError>` we have some work to do to retrieve the 3 kinds of error (not found, access, invalid json).
+* Concerning `main()` except the signature there is no change.
+
+
+
+
+For libraries, we should avoid `anyhow::Error` in our public API and prefer a concrete error type (possibly made with `thiserror`) so that downstream users can `match` on variants. Let's talk about it now.
+
+
+
+
+
+
+### thiserror - for libraries
+
+[`thiserror`](https://docs.rs/thiserror/latest/thiserror/) is a derive macro crate. Instead of manually implementing by hand `Display` and `Error` and writing `From` conversions (remember `Debug` comes with the directive `#[derive(Debug)]`), we can do something concise like:
+
+
+```rust
+use thiserror::Error;
+
+#[derive(Debug, Error)]
+pub enum ConfigError {
+    #[error("IO error: {0}")]
+    Io(#[from] std::io::Error),   // #[from] automatically implements From
+
+    #[error("JSON parse error: {0}")]
+    Json(#[from] serde_json::Error),
+}
+```
+
+Now our `load_config()` function can just use the `?` operator and the `#[from]` converts sub-errors automatically. This is excellent for libraries, where we want to expose a stable and descriptive error type to users.
+
+
+**Alice:** I really don't like code snippet. I like to see all the code. `ex17.rs` is a standalone binary. Could you show me, step by step, how you would split it as a library serving a binary?
+
+**Bob:** Great idea. It is a good opportunity to see code refactoring in practice. Since you want to see all the code each time, I'll need some space but this should not be a problem here.
+
+First, let's review `ex17.rs` once again:
+
+```rust
+// ex17.rs
+use serde::Deserialize;
+use std::fmt;
+use std::fs::{read_to_string, write};
+use std::io::ErrorKind;
+
+#[derive(Debug, Deserialize)]
+struct Config {
+    app_name: String,
+    port: u16,
+}
+
+#[derive(Debug)]
+enum ConfigError {
+    Io(std::io::Error),
+    Parse(serde_json::Error),
+}
+
+impl fmt::Display for ConfigError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+            ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+        }
+    }
+}
+
+impl std::error::Error for ConfigError {}
+
+fn load_config(path: &str) -> Result<Config, ConfigError> {
+    let data = read_to_string(path).map_err(ConfigError::Io)?;
+    let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+    Ok(cfg)
+}
+
+fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+    match load_config(path) {
+        Ok(cfg) => Ok(cfg),
+
+        Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+            let default = Config { app_name: "Demo".into(), port: 8086 };
+            write(path, r#"{ "app_name": "Demo", "port": 8086 }"#).map_err(ConfigError::Io)?;
+            eprintln!("{path} not found, created with default config");
+            Ok(default)
+        }
+
+        Err(ConfigError::Io(e)) => {
+            eprintln!("I/O error accessing {path}: {e}");
+            Err(ConfigError::Io(e))
+        }
+
+        Err(ConfigError::Parse(e)) => {
+            eprintln!("Invalid JSON in {path}: {e}");
+            Err(ConfigError::Parse(e))
+        }
+    }
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
+    Ok(())
+}
+```
+
+Here is the content of the terminal
+
+```
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44))
+error: process didn't exit successfully: `target\debug\examples\ex17.exe` (exit code: 1)
+```
+
+
+
+
+As you say, it is a standalone, all-included, kind of binary. So, as a first step, let's split it into a library and a binary. For demo purpose, we can do this with a single file. In `ex22.rs` (see below) we just define a module inside the source code. If needed, review what we did in `ex19.rs` (the code with `log10()`, do you remember?, September?).
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D5XmUnYW5Ks?si=pqdrPrKvEFD3phoV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+Here is the code after the first step of refactorization:
+
+```rust
+// ex22.rs
+mod my_api {
+    use serde::Deserialize;
+    use std::fmt;
+    use std::fs::{read_to_string, write};
+    use std::io::ErrorKind;
+
+    #[derive(Debug, Deserialize)]
+    pub struct Config {
+        pub app_name: String,
+        pub port: u16,
+    }
+
+    #[derive(Debug)]
+    pub enum ConfigError {
+        Io(std::io::Error),
+        Parse(serde_json::Error),
+    }
+
+    impl fmt::Display for ConfigError {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            match self {
+                ConfigError::Io(e) => write!(f, "I/O error: {e}"),
+                ConfigError::Parse(e) => write!(f, "Parse error: {e}"),
+            }
+        }
+    }
+
+    impl std::error::Error for ConfigError {}
+
+    fn load_config(path: &str) -> Result<Config, ConfigError> {
+        let data = read_to_string(path).map_err(ConfigError::Io)?;
+        let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+        Ok(cfg)
+    }
+
+    pub fn load_or_init(path: &str) -> Result<Config, ConfigError> {
+        match load_config(path) {
+            Ok(cfg) => Ok(cfg),
+
+            Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+                let default = Config { app_name: "Demo".into(), port: 8086 };
+                write(path, r#"{ "app_name": "Demo", "port": 8086 }"#).map_err(ConfigError::Io)?;
+                eprintln!("{path} not found, created with default config");
+                Ok(default)
+            }
+
+            Err(ConfigError::Io(e)) => {
+                eprintln!("I/O error accessing {path}: {e}");
+                Err(ConfigError::Io(e))
+            }
+
+            Err(ConfigError::Parse(e)) => {
+                eprintln!("Invalid JSON in {path}: {e}");
+                Err(ConfigError::Parse(e))
+            }
+        }
+    }
+}
+
+use my_api::load_or_init;
+use std::fs::write;
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
+    Ok(())
+}
+```
+
+Hopefully the output is exactly the same:
+
+```
+Invalid JSON in bad_config.json: invalid type: string "not a number", expected u16 at line 1 column 44
+Error: Parse(Error("invalid type: string \"not a number\", expected u16", line: 1, column: 44))
+error: process didn't exit successfully: `target\debug\examples\ex22.exe` (exit code: 1)
+```
+
+
+
+
+
+Now, concerning the refactoring we can observe:
+
+* We now have a `mod my_api` at the top of the code
+* This line declares and brings the content of the namespace `my_api` into the current crate.
+* Since the content of the module `my_api` is in the crate root, the module `my_api` is its child and its symbols can be accessed with the `my_api::blah_blah_blah` syntax.
+* The `use my_api::load_or_init;` statement is a "shortcut" that helps to write `load_or_init("bad_config.json")` rather than the namespace syntax `my_api::load_or_init("bad_config.json")`.
+
+
+
+{: .note-title }
+> Side Note
+>
+> If you don't feel 100% confident with modules, crates, files... You can [read this post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
+
+
+* `ConfigError` is now public because it is part of `load_or_init()` which is public
+
+
+In this first step of the refactoring the main idea was to split the code in 2:
+* `my_api` module on one end
+* and a consumer of the API on the other.
+
+Now that we have our library crate set up, let's explore how to make use of the `thiserror` crate.  So now, we refactor `ex22.rs` into `ex24.rs`. Here it is:
+
+```rust
+// ex24.rs
+mod my_api {
+    use serde::Deserialize;
+    use std::fs::{read_to_string, write};
+    use std::io::ErrorKind;
+    use thiserror::Error;
+
+    type Result<T> = std::result::Result<T, ConfigError>;
+
+    #[derive(Debug, Deserialize)]
+    pub struct Config {
+        pub app_name: String,
+        pub port: u16,
+    }
+
+    #[derive(Debug, Error)]
+    pub enum ConfigError {
+        #[error("I/O error: {0}")]
+        Io(#[from] std::io::Error),
+
+        #[error("JSON parse error: {0}")]
+        Parse(#[from] serde_json::Error),
+    }
+
+    fn load_config(path: &str) -> Result<Config> {
+        let data = read_to_string(path).map_err(ConfigError::Io)?;
+        let cfg = serde_json::from_str::<Config>(&data).map_err(ConfigError::Parse)?;
+        Ok(cfg)
+    }
+
+    pub fn load_or_init(path: &str) -> Result<Config> {
+        match load_config(path) {
+            Ok(cfg) => Ok(cfg),
+
+            Err(ConfigError::Io(ref e)) if e.kind() == ErrorKind::NotFound => {
+                let default = Config { app_name: "Demo".into(), port: 8086 };
+                write(path, r#"{ "app_name": "Demo", "port": 8086 }"#)?;
+                eprintln!("{path} not found, created with default config");
+                Ok(default)
+            }
+
+            Err(ConfigError::Io(e)) => {
+                eprintln!("I/O error accessing {path}: {e}");
+                Err(ConfigError::Io(e))
+            }
+
+            Err(ConfigError::Parse(e)) => {
+                eprintln!("Invalid JSON in {path}: {e}");
+                Err(ConfigError::Parse(e))
+            }
+        }
+    }
+}
+
+use my_api::load_or_init;
+use std::fs::write;
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn main() -> Result<()> {
-    println!("Hello, world!");
+    write("good_config.json", r#"{ "app_name": "Demo", "port": 8080 }"#)?;
+    write("bad_config.json", r#"{ "app_name": "Oops", "port": "not a number" }"#)?;
+
+    let cfg = load_or_init("bad_config.json")?;
+    println!("Loaded: {} on port {}", cfg.app_name, cfg.port);
     Ok(())
 }
 ```
 
-**Bob:** Pretty cool. Now, I want you to *trust in me, just in me...*.
-
-<div align="center">
-<img src="./assets/img27.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-Let me rewrite your code like this:
+* The code of the client (`main()`) remains unchanged.
+* Changes occurs in the API and the biggest one is in `ConfigError` `enum` definition.
 
 ```rust
-// ex001.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    println!("Hello, world!");
-    Ok(())
-}
-```
-
-No big change.
-1. Since we want to use the same code from experimentation to production it is smarter to keep `Error` and `Result<T>` type aliases on 2 type alias declarations. Doing so, even if in production, the `Error` type evolve to something different (e.g. a custom error type) the `Result` type will not be impacted (it will always refers to `Error`) and this is exactly what we want.
-1. Do you see the `pub` word? Here it does not really matter because the code is monolithic. Tomorrow, if you want to make sure `Result<T>` (and `Error`) can be used elsewhere it is better to anticipate and to give them a public access modifier upfront.
-
-By the way do you have any idea of what I did?
-
-**Alice:** No. You split my line in two and you explained that later if the `Error` type becomes very complicated, this will have no impact on `Result<T>`
-
-
-
-**Bob:** I just add what we call a level of [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection) which, according to [David Wheeler](https://en.wikipedia.org/wiki/David_Wheeler_(computer_scientist)), is THE way to solve most of problems in computer science.
-
-So, at this point, we agree to say that `ex001.rs` is by now your official code template. Ok? Ok, let's move on.
-
-Do you know what BMI is?
-
-**Alice:** Yes I do. My young sister is always talking about it. I read this a statistical value which is more valuable for population than for individuals. It indicates if the group is overweight or not. Basically you take a weight (in kg) and divide it by the square of the height (in meters). This give a result in number of kilograms per square meter. If the group is between 18.5 and 24.9 it is OK.
-
-**Bob:** Using your code template write a prototype to calculate the BMI.
-
-**Alice:** Here is what I have so far.
-
-```rust
-// ex100.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let my_bmi = bmi(70.0, 1.7)?;
-    println!("BMI: {my_bmi:.2}");
-    Ok(())
-}
-
-fn bmi(w: f64, h: f64) -> Result<f64> {
-    if h.abs() < f64::EPSILON {
-        return Err("Height cannot be 0.0".into());
-    }
-    Ok(w / (h * h))
-}
-```
-
-While writing the code, the most difficult part was the line
-```rust
-return Err("Height cannot be 0.0".into());
-```
-
-I lost some time because initially I wanted to write
-
-```rust
-return Err("Height cannot be 0.0");
-```
-
-But this does'nt work. Indeed `bmi()` returns a `Result<f64>`, this means a `Result<f64, Box<dyn Error>>`. So I have to convert the `&'static str` into a `Box<dyn std::error::Error>` first. I hope that now on, I will remember the `.into()`.
-
-
-**Bob:** Don't worry this will come with practice. Now, for a new experiment, I want you to write a function that receives a vector of integers written as strings and returns their sum as an `i32`.
-
-**Alice:** If we look at it from the perspective of the `main()` function, is the code below  what you have in mind?
-
-```rust
-// ex200.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let numbers = vec!["10", "20", "89", "30"];
-
-    let total = sum_strings(&numbers)?;
-    println!("The total is: {total}");
-    Ok(())
-}
-```
-**Bob:** Yes, keep going.
-
-**Alice:** My first idea for `sum_strings()` is the code below
-
-```rust
-fn sum_strings(values: &[&str]) -> Result<i32> {
-    let mut sum = 0;
-    for s in values {
-        let current_val = s.parse::<i32>();
-        sum += current_val.unwrap();
-    }
-    Ok(sum)
-}
-```
-
-
-
-
-
-
-* It returns a `Result<32>` so that I can use `?` in `main()`
-* `values: &[&str]` may look weird but no, it is not. In `main()` I pass the vector `numbers` by reference because I borrow it (I don't want to give it) to `sum_strings()`. Now in `main()`, if I press`CTRL+ALT`, I see the exact type of `numbers` (`Vec<&'static str>`). So `sum_strings()`'s parameter is a reference to an array (`&[...]`) of static strings (`&str`).
-* Then, there is a `for` loop which traverses the vector `values`
-* I remembered we used `.parse()` at the beginning of the section ["The `Result<T, E>` Type: Handling Recoverable Errors"]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#the-resultt-e-type-handling-recoverable-errors)
-* Pressing `CTRL+ALT`, I see `.parse::<i32>()` returns a `Result<i32, ParseIntError>`
-* If `current_val` is Ok I add its value to the running `sum`, otherwise... With the help of `.unwrap()` the code `panic!()`
-* At the end of the loop, `sum` is a valid number and I return it with `Ok(sum)`
-
-The code work, but to tell the truth, I'm not really proud of the `.unwrap()` and I know I should avoid the raw loop.
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/W2tWOdzgXHA?si=eg4uz51KzDt47q2o&amp;start=41" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-**Bob:** Then?
-
-**Alice:** Now, I have this version of `sum_strings()` without any raw loop
-
-```rust
-fn sum_strings(values: &[&str]) -> Result<i32> {
-    let sum: i32 = values
-        .iter()
-        .map(|s| s.parse::<i32>().unwrap())
-        .sum();
-    Ok(sum)
-}
-```
-
-But I remember what we said about `.unwrap()`, and `.expect()`. Finally I have this version which prints a custom message on error. See below:
-
-```rust
-// ex200.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let numbers = vec!["10", "20", "oops", "30"];
-
-    let total = sum_strings(&numbers)?;
-    println!("The total is: {total}");
-    Ok(())
-}
-
-fn sum_strings(values: &[&str]) -> Result<i32> {
-    let sum: i32 = values
-        .iter()
-        .map(|s| s.parse::<i32>().expect(&format!("Failed to parse '{}' as integer", s)))
-        .sum();
-    Ok(sum)
-}
-```
-
-Here is what I can see in the terminal when "oops" is in the initial vector.
-
-```
-thread 'main' panicked at 01_experimentation\examples\ex200.rs:19:59:
-Failed to parse 'oops' as integer: ParseIntError { kind: InvalidDigit }
-note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-error: process didn't exit successfully: `target\debug\examples\ex200.exe` (exit code: 101)
-```
-
-
-**Bob:** This is pretty cool for a young Padawan. Last but not least I would like you to use your template and write an application that print the names of the files in a directory. Easy? No?
-
-**Alice:** Same test. Just to make sure... From the point of view of `main()` is it what you expect?
-
-```rust
-// ex300.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let files = list_files(".")?;
-    println!("{files:#?}");
-    Ok(())
-}
-```
-
-**Bob:** Yes. Now, show me the `list_files()` function please.
-
-**Alice:** Here is what I have so far (no raw loop):
-
-```rust
-fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)?
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-    Ok(files)
-}
-```
-* I looked around in the documentation and on the web how to list files in a directory with Rust.
-* Then I met [`read_dir()`](https://doc.rust-lang.org/std/fs/fn.read_dir.html) which returns an `io::Result<ReadDir>`
-* When OK it can be used as an iterator over the entries within the directory (there is an `impl Iterator for ReadDir`)
-* If it is an iterator I can daisy chain multiple filters and keep the files of interest
-* `.filter_map()`, `.filter()` and `.collect()` operate on an `Iterator<Item = DirEntry>` once the `Result` has been unwrapped by `?` right after `read_dir()`
-* These iterator methods do not return a `Result`. They cannot fail in a way that would require error propagation.
-* They simply transform the data from one form to another
-* This is why there is no `?` at the end of the steps
-    * the first `.filter_map()` silently drops entries that errored
-    * the second `.filter()` ask the filesystem whether the entry is a file. If that check errors because it is a directory, it is treated as false and not kept in the list of files.
-    * the last `filter_map()` only keeps filenames that are valid UTF-8 while the others are dropped
-* The last step is `.collect()` which creates a vector with the filtered filenames
-* Finally the function returns the vector to `main()` with `Ok(files)`
-
-
-**Bob:** Did you notice how your template worked fine in 3 different experiments? I guess we can **keep it in our toolbox**.
-
-Now in the last sample code, rather than panicking on error after the call to `read_dir()`, could you avoid the `?` and return a custom message to `main()` explaining what's happen?
-
-**Alice:** Ok... I start by removing the `?` then... I don't know!
-
-**Bob:** Do you remember the section "`Option<T>` vs. `Result<T, E>`: Choosing the Right Type" in [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})? We were discussing about the `Option<T>` and the fact we were loosing the reason why the failure happened. I told you we can return an `Option<T>` but log the reason of failure. To do so I used `.map_err()`. Do you remember? Review `ex16.rs` then come back here.
-
-**Alice:** I get it. Here is my new version of the code
-
-```rust
-// ex301.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let files = list_files("")?;
-    println!("{files:#?}");
-    Ok(())
-}
-
-fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path) // no `?` here
-        .map_err(|_| "❗Error while reading dir.")? // but `?` is here. On error, return a static string
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-    Ok(files)
-}
-```
-
-* You are right. The key is to remember `.map_err()` and how it works. Let me rephrase my understanding... At the exit of `read_dir()`
-    * If the `Result` is an `Ok(value)`, `.map_err()` does nothing. The `?` operator evaluates to `value` and the execution continues
-    * If the `Result` is `Err(e)`, `.map_err()` applies the closure to `e` and returns `Err(closure(e))`
-        * Here the closure ignores the actual `io::Error` (`|_|` discards it) and replaces it with a static string slice `"Error while reading dir."`
-        * The `?` operator immediately returns that error from the current function.
-
-
-
-
-Now, let me repeat the details of the operations. Just to make sure...
-
-* The return type of the `list_files()` function is `Result<Vec<String>, Box<dyn std::error::Error>>`
-* So when the `Err(&str)` need to be bubbled up, Rust needs to find a way to transform the `&str` into a `Box<dyn std::error::Error>`
-* The promotion from `&str` to `Box<dyn std::error::Error>` is possible because std lib includes `impl<'a> From<&str> for Box<dyn Error + 'a>`. I took the time to [read this page](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
-* This explains why we can return a bare "`Error while reading dir.`" and how it gets "promoted" into a proper `Box<dyn Error>`.
-
-{: .warning-title}
-> This is key
->
-The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes an implementation of the `From` trait which does exactly that. See `impl<'a> From<&str> for Box<dyn Error + 'a>`.
-
-**Bob:** I'm truly impressed. Now, even if it is a little bit overkill because we are supposed to be in an experiment, if I ask you to return *also* the reason *why* the error occurs I guess it is a matter of seconds. No?
-
-**Alice:** You're right. Now it is much easier. Here is the new version of the code
-
-```rust
-// ex302.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let files = list_files("")?;
-    println!("{files:#?}");
-    Ok(())
-}
-
-fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)
-        .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))?
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-    Ok(files)
-}
-```
-* Above, `.map_err()` now returns a custom error as formatted `String`.
-* The promotion from `String` to `Box<dyn std::error::Error>` works because std lib includes [`impl<'a> From<String> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C&str%3E-for-Box%3Cdyn+Error%3E:~:str%3E%20for%20Box%3Cdyn%20Error%20+%20'a%3E&text=impl%3C%27a%3E%20From%3CString%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E).
-
-
-
-
-**Bob:** *A Padawan no more, you are. Prove a Jedi Knight you have become...* Let's go back to the first experiment and show me how you would return an meaningful error message if the directory is empty.
-
-**Alice:** Here is my code
-
-```rust
-// ex303.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let files = list_files("./01_experimentation/empty")?;
-    println!("{files:#?}");
-    Ok(())
-}
-
-fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)?
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-
-    if files.is_empty() {
-        return Err("Cannot list empty folder.".into());
-    }
-    Ok(files)
-}
-```
-* This time it's easier because I remember about `.into()`
-* I keep the initial code but once the `files` vector is collected, I check if it is empty.
-* If it is I return an ad hoc message.
-* Otherwise, as before, we reach the end of the body of `list_files()`, the `files` vector is Ok and I return `Ok(files)`
-
-
-**Bob:** We are still in the experimentation phase where we can take the time to learn, discover, crash and repair things. Can you tell me, in detail, why and how the `.into()` works? Take your time, read the documentation before to anser.
-
-**Alice:** It turned out to be a real caving expedition, and it took me more time than I had anticipated. Sorry about that.
-
-<div align="center">
-<img src="./assets/img30.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-I focus on the lines below:
-
-```rust
-    if files.is_empty() {
-        return Err("Cannot list empty folder.".into());
+    #[derive(Debug, Error)]
+    pub enum ConfigError {
+        #[error("I/O error: {0}")]
+        Io(#[from] std::io::Error),
+
+        #[error("JSON parse error: {0}")]
+        Parse(#[from] serde_json::Error),
     }
 ```
-The `.into()` works because std lib includes [`impl<'a> From<&str> for Box<dyn Error + 'a>`](https://doc.rust-lang.org/stable/std/boxed/struct.Box.html#impl-From%3C%26str%3E-for-Box%3Cdyn+Error%3E:~:text=impl%3C%27a%3E%20From%3C%26str%3E%20for%20Box%3Cdyn%20Error%20%2B%20%27a%3E) and here is why:
-* When I write `"Cannot list empty folder.".into();`
-* It starts as a `&'static str`
-* The compiler knows that the expected type is `Box<dyn Error>`
-* It founds `impl<'a> From<&str> for Box<dyn Error + 'a>` in the std lib
-* But in Rust if we have `From<A> to B` then we get `Into<B> for A` for free
-* Here this means `Into<Box<dyn Error> for &str` exists
-* Then the `static &str` is automatically converted to `Box<dyn Error>`
 
-The story has a happy ending: they got married and lived happily ever after.
+* The directive `#[error...` and `#[from...` make the macro generates concrete implementations at compile time, and then the `?` in `load_config()` uses those implementations via static conversions.
+* This is why we no longer need the `impl fmt::Display for ConfigError{...}` nor the `impl Error for ConfigError {}`.
+* The signature of `load_config()` can be simplified
+* Idem for the signature of `load_or_init()`. In addition the `map_err()` can be removed.
 
-
-{: .warning-title}
-> This is key
->
-In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for A` for free.
-
-
-<div align="center">
-<img src="./assets/img28.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
+At the end we have an API and a consumer. In the API, we delegate to `thiserror` the writing of the implementations. I hope your understand the refactoring process that bring us from `ex17.rs` to `ex24.rs` one step after the other. I hope you enjoyed to read complete code at each step.
 
 
 
 
 
 
-#### Summary – Experimentation
+
+### Summary – `anyhow` & `thiserror`
 
 {: .new-title }
-> Summary – Experimentation
+> Summary – `anyhow` & `thiserror`
 >
-* `main()` return any kind of error that implements the `Error` trait
-* `?` can be used in `main()`
-* In our functions we return custom messages (`.into()`, `.map_err()`...)
-* Let's keep this code fragment in mind:
-    ```rust
-    pub type Error = Box<dyn std::error::Error>;
-    pub type Result<T> = std::result::Result<T, Error>;
-    fn main() -> Result<()> {
-        let files = list_files("")?;
-        println!("{files:#?}");
-        Ok(())
-    }
-    fn list_files(path: &str) -> Result<Vec<String>> {
-        let files: Vec<String> = std::fs::read_dir(path)
-            .map_err(|why| format!("❗Error while reading dir. Reason = {why}"))?
-            // REST OF THE CODE ;
-        if files.is_empty() {
-            return Err("Cannot list empty folder.".into());
-        }
-        Ok(files)
-    }
-    ```
-
-
-
-**Bob:** It's showtime! Let's transition to production.
-
-
-
-
-
-
-
-
-
-### Path to Production - Step_00
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LUapZhcsdx8?si=cxsAd5AjKMZfTm1x&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-
-**Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (at least from the error management standpoint). As it is, the code is monolithic and it looks like this:
-
+* **`anyhow`**: Binaries. Dynamic error type with great ergonomics and `.context(...)` for adding messages. Best for applications where we just want to bubble errors up and print them, not pattern-`match` on them.
 ```rust
-// ex303.rs
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    let files = list_files("./01_experimentation/empty")?;
-    println!("{files:#?}");
-    Ok(())
+use anyhow::{Context, Result};
+use std::fs;
+fn run() -> Result<String> {
+    let data = fs::read_to_string("Cargo.toml").context("while reading Cargo.toml")?;
+    Ok(data)
 }
-
-fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)?
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-
-    if files.is_empty() {
-        return Err("Cannot list empty folder.".into());
-    }
-    Ok(files)
-}
-```
-The output is:
-
-```
-Error: "Cannot list empty folder."
-error: process didn't exit successfully: `target\debug\examples\ex303.exe` (exit code: 1)
-```
-
-What would you do?
-
-**Alice:** As explained in [THE book](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html), I would create a library so that `main()` acts as a consumer of the exposed API. This will also helps, later, when we will need to write tests... So first thing first, we should split the code according to the responsibilities.
-
-**Bob:** Ok, but I would like to be very conservative here and go one step at a time. As a very first step I want you to split the code among modules (not lib) and make sure everything works again. You could create a package in a `00_project` directory and since you read the [Modules Cheat Sheet](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html#modules-cheat-sheet), use the modern way of doing meaning you're not allowed to create any `mod.rs` file. And please, explain what you do as you move forward.
-
-
-
-
-{: .note-title }
-> Side Note
->
-> From now on, in the workspace, the projects discussed below are in the `02_production/` directory.
-
-
-
-
-**Alice:** OK...
-* I create a package in the `02_production/00_project/` directory
-* Below you can see how files and directories are organized
-
-```
-.
-│   Cargo.lock
-│   Cargo.toml
-│
-├───empty
-└───src
-    │   main.rs
-    │   files.rs
-    │
-    └───files
-            listing.rs
-
-```
-* In the `Cargo.toml` the package is named `step_00` because I suppose we will have more than one step on our path to the Valhalla (production code). Here is `Cargo.toml`:
-
-```toml
-# Cargo.toml
-[package]
-name = "step_00"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-```
-* I create a directory named `empty` to perform some tests
-* Since I can't yet create a library, there is no `lib.rs` in the directory, just a `main.rs`
-* Since there is a `main.rs` this means that the crate (the output of the build system) will be a binary crate, an application (`step_00.exe`)
-* In `main.rs` I basically keep the minimum, a `main()` function with a call to `list_files()`. See below:
-
-```rust
-// main.rs
-pub type Result<T> = std::result::Result<T, Error>;
-pub type Error = Box<dyn std::error::Error>;
-
-mod files;
-
-use crate::files::listing;
-
 fn main() -> Result<()> {
-    let files = listing::list_files("./02_production/00_project/empty")?; // see the ? here
-    println!("{files:#?}");
+    let data = run()?;
+    println!("Config loaded: {}", data);
     Ok(())
 }
 ```
-* The type alias declarations for `Result` and `Error` remain unchanged.
-* The line `mod files;` declares the existence and loads a module named `files` in the binary crate. It includes the content of the module found in the external file `files.rs`. A module is a namespace. The line brings its content to the local scope (crate root).
-* It is **important** to understand that the module tree that we start building with the `mod files;` declaration is the only thing that matters for the build system. At the top of the tree is the crate root (binary crate here). Then, underneath there is a tree where on each branch and each leaf we have modules (not files). Modules are namespaces which organize code inside the crate. Files do not matter and this is why we can have multiple modules in one file (check what we did in `ex19.rs` with the `math_utils` module). Files are just containers of modules. Here, the module tree will look like this:
-
-```
-crate           The crate root module is stored in main.rs
-└─ files        The `files`    module is stored in files.rs
-   └─ listing   The `listing`  module is stored in files/listing.rs
-```
-
-* `use crate::files::listing;` is a shortcut, nothing more.
-    * Rather than writing `files::listing::list_files()`, I can write `listing::list_files()`.
-    * Alternatively I could write `use crate::files::listing::list_files;` and call `list_files()` directly but I prefer to write `listing::list_files()`. Indeed, 6 months from now, the code will be auto documented and easier to read. I will not have to remember in which module `list_files()` is defined, instead I will "read" that `list_files` is defined in the module named `listing`.
-
-
-
-{: .note-title }
-> Side Note
->
-> If you don't feel 100% confident with crates, modules, files... You should read this short [dedicated post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
-
-
-
-
-
-
-
-* In the directory tree, `files.rs` is a **hub file**. I mean it is a short file that declares and loads one or more modules at a given level. Here it declares and loads the module `listing` one level below in the module tree. In other words, since de `pub mod listing;` take place in the `files` module then the `listing` module is a child of the `files` module. Review the module tree above (not the directory tree), confirm it makes sense.
-
+* **`thiserror`**: Libraries. Derive-based crate to build clear, typed error enums with minimal boilerplate. Best for libraries and public APIs where the caller needs to inspect error kinds.
 ```rust
-// files.rs
-pub mod listing;
-```
-
-* And now, ladies and gentlemen, here is the content of the file `files/listing.rs`
-
-```rust
-// listing.rs
-use crate::Result;
-
-pub fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)?
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-    if files.is_empty() {
-        return Err("Cannot list empty folder.".into());
-    }
-    Ok(files)
-}
-```
-
-* At the top of the file the line `use crate::Result;` is a shortcut. I can write `Result<T>` rather than `crate::Result<T>`.
-    * We know that the module `listing` is a grand-child of the crate root (check the module tree).
-    * This said, if we recall that the **visibility rule** says that a private item is visible in the curent module and in all its children modules
-    * This explains why `crate::Result` is accessible in the module `listing`
-
-
-
-
-
-
-
-
-* I had to add the `pub` access specifier at the beginning of the line`list_files()` so that the function can be called from the grand-parent module (crate root in `main.rs`)
-* Other than that, there is no change
-
-Once the code is dispatched and organized as explained I can open a terminal (CTRL+ù on a FR keyboard) at the root of the workspace and run it with:
-
-```powershell
-cargo run -p step_00
-```
-
-Here is what I can see in VSCode:
-
-<div align="center">
-<img src="./assets/img31.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-* In `main()`, `my_lib::list_files()` is called with an argument which is a path to an empty directory. No surprise, we print a message and the application exit.
-
-
-
-To confirm my understanding, I did some tests.
-
-**🦀 Test 1:**
-* In `listing.rs` above, I comment the line `use crate::Result;`
-* I modify the signature of `list_files()`
-
-```rust
-pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...}
-```
-* I can build the project
-* This confirms that `use crate::Result;` is nothing more than a shortcut
-* I delete the modifications
-
-
-**🦀 Test 2:**
-* In `main.rs`, in front of the `Result` and `Error` type alias declarations I remove the `pub` access specifier
-* I can build the project.
-* Why? Because we are building a binary crate, nothing is accessed from the outside and so, in this context, `pub` does'nt hurt but is useless.
-* Then I put the `pub` back in place because they seem important to you.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Path to Production - Step_01
-
-
-**Bob:** The second step should be easy. Create an `error.rs` file then copy/paste `Result` and `Error` definitions there. Explain what you do when you make the code runs as before.
-
-**Alice:** You know what? I copy/paste/rename the previous package in a directory named `01_project`.
-
-* I update the package name in `Cargo.toml` (`name = "step_01"`)
-* I create an `error.rs` file with this content:
-
-```rust
-// error.rs
-pub type Result<T> = std::result::Result<T, Error>;
-pub type Error = Box<dyn std::error::Error>;
-```
-<!-- * I make sure that both declarations have a `pub` access modifier. Otherwise we would not be able to use them from the crate root (`main.rs`) -->
-* I update the content of `main.rs`
-
-```rust
-// main.rs
-mod error;
-mod files;
-
-use crate::files::listing;
-use crate::error::Result;
-
-fn main() -> Result<()> {
-    let files = listing::list_files(".")?;
-    println!("{files:#?}");
-
-    let files = listing::list_files("./02_production/01_project/empty")?;
-    println!("{files:#?}");
-    Ok(())
-}
-```
-
-* The line `mod error;` declares the existence and loads a module named `error` in the binary crate. It includes the content of the module found in the external file `error.rs`
-* Since the line `mod error;` appears in the crate root, the `error` module is a child of the latter. Now, the module tree looks like this:
-
-```
-crate           The crate root module is stored in main.rs
-|  error        The `error`    module is stored in error.rs
-└─ files        The `files`    module is stored in files.rs
-   └─ listing   The `listing`  module is stored in files/listing.rs
-```
-
-
-{: .note-title }
-> Side Note
->
-* `cargo install cargo-modules`
-* `cargo-modules structure --package step_01`
-
-
-<div align="center">
-<img src="./assets/img34.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-
-
-
-* I also add `use crate::error::Result;` so that I can write `fn main() -> Result<()> {...}` rather than `fn main() -> error::Result<()> {...}`
-
-* For the "fun", now in `main()` we inspect 2 different directories.
-
-
-Here is what I can see in the terminal
-
-<div align="center">
-<img src="./assets/img32.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-Again I check my understanding about what is possible and what is not with the modules and the module tree.
-
-**🦀 Test 3:**
-* The module `error` is a child of the crate root (in `main.rs`).
-* Within `error` I can "see" what is in the crate root but the crate root cannot "see" what is in `error` if I don't make it public.
-* So in `error.rs` I remove the `pub` access modifier in front of `Result`.
-* Then I check I'm no longer able to build the project.
-* I undo my modifications
-
-**🦀 Test 4:**
-* In `main.rs` I comment the line `use crate::error::Result;` and I write `fn main() -> crate::error::Result<()> {`.
-* I cannot build the crate because there is a problem with `use crate::Result;` in `listing.rs` (`unresolved import 'crate::Result'`).
-* Obviously, if in `listing.rs` I replace the line `use crate::Result;` with `use crate::error::Result;` then I can build again because in `error`, `Result` is public.
-
-Now, the 1 million $ question is: "why it worked in the initial version?"
-
-The answer goes like this:
-* `Result` is public in the `error` module
-* In the crate root we have `mod error` which brings `error::Result` is in the current scope, the scope of the crate root.
-* If `Result` is in the scope of the crate root, it becomes visible from its children
-* So  `crate::Result` is available in the scope of `listing` module (child visibility rule)
-* In the `listing` namespace I can write:
-    * `pub fn list_files(path: &str) -> crate::Result<Vec<String>> {...`
-    * or `use crate::Result;` then `pub fn list_files(path: &str) -> Result<Vec<String>> {...`
-
-
-<div align="center">
-<img src="./assets/img43.webp" alt="" width="225" loading="lazy"/><br/>
-<span>Tadaa!</span>
-</div>
-
-It took me a while. Believe me, it's harder to write and explain than to make the changes in the code, but honestly, it's worth it. I realize how **important** it is to have the module tree in mind (or to print it as shown before) and to know the rule of visibility.
-
-
-
-**Bob:** I’m genuinely impressed by your insight and your willingness to test ideas to strengthen your understanding. Keep it up!
-
-You will be happy to learn that in the next step, you will create a library and expose an API... Welcome to the real world
-
-<div align="center">
-<img src="./assets/img33.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-Create a `lib.rs` file at the root of the project, put the `pub mod error;` and `pub mod files;`. Make the application run again and, as before, explain what you do.
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Path to Production - Step_02
-
-
-**Alice:** Um... Ok... I start with a copy/paste/rename of the previous directory (`02_project/`)
-
-* I recall that if in the directory there is a `lib.rs` and a `main.rs`
-    * The build system builds the library crate then the binary crate.
-    * The lib is automatically linked to the binary.
-    * Ideally I want to keep `main()` as short as possible. It should validate some stuff then call a `run()` function from the library.
-    * Here I will keep `list_file()` in main as before.
-
-Once the copy of the directory is done:
-* I update the package name in `Cargo.toml` (`name = "step_02"`)
-* I create a `lib.rs` file with this content:
-
-```rust
-// lib.rs
-pub mod error;
-pub mod files;
-
-// re-export lib from crate root
-pub use self::error::{Error, Result};
-```
-
-* Since I want to call `list_files()` from `main()` I "put" the `files` module in the `lib`
-* `main()` returns a `Result<()>` so I "put" the error module in the `lib` as well
-* So far there is no need to copy/paste the code from `files/listings.rs` into `lib.rs`. Indeed if tomorrow the app grows, I will write more code in more modules and I will simply list the modules in `lib.rs`.
-
-* At this point, if I compare V2 on the left versus V1 of the file `main.rs` here is what I can see:
-
-<div align="center">
-<img src="./assets/img35.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-* The lines `mod error;` and `mode files;` have been moved to `lib.rs`. The modules `error` and `files` are now in the lib namespace.
-* One **point of attention:** In previous versions, the code was monolithic, all the modules were children of the same root, all symbols were accessible within the same namespace. This is why, in `main.rs`, a line like `use crate::files::listing;` allowed us to call `listing::list_files()`. `crate` was pointing to the crate being built, the binary crate.
-* But this is no longer the case. Indeed `list_files()` is now in the library namespace.
-* This is why, since the library is linked to the binary I need to write `use step_02::files::listing;` where `step_02` is the name of the library (which is the same as the name of the binary. I know, this does'nt help much...)
-
-And that's it. It builds and run like a charm...
-
-
-**Bob:** This is cool but I have 2 questions for you. First question: are you sure when you say that in `use step_02::files::listing;`, `step_02` is the name of the library. I believe you, but how can we remove any doubt?
-
-**Alice:** We can modify `Cargo.toml` as shown below:
-
-```toml
-[package]
-name = "step_02"
-version = "0.1.0"
-
-edition = "2024"
-
-[dependencies]
-
-
-[[bin]]
-name = "my_app"      # name of the executable (my_app.exe under WIN11)
-path = "src/main.rs"
-
-[lib]
-name = "my_super_lib" # name of the lib (libmy_super_lib.rlib under WIN11)
-path = "src/lib.rs"
-```
-
-Then we can modify `main.rs`:
-
-```rust
-// main.rs
-use my_super_lib::Result;
-use my_super_lib::files::listing;
-
-fn main() -> Result<()> {
-    let files = listing::list_files(".")?;
-    println!("{files:#?}");
-
-    let files = listing::list_files("./02_production/01_project/empty")?;
-    println!("{files:#?}");
-
-    Ok(())
-}
-```
-
-Here is the output in the console
-
-<div align="center">
-<img src="./assets/img36.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-The runtime mention **my_app.exe** when it says something like: `process didn't exit successfully: target\debug\my_app.exe` while in `main.rs` we write `use my_super_lib::files::listing;`.
-
-One last **point of attention** if I can... The command to build and run the application remains: `cargo run -p step_02`. This is because `step_02` is the name of the package in `Cargo.toml`. Review the content of `Cargo.toml` if this is not crystal clear.
-
-What is your second question?
-
-
-**Bob:** Easy, Padawan, I think the Force is making your head a little bigger... My second question is about the last line of the `lib.rs`:
-
-```rust
-pub use self::error::{Error, Result};
-```
-
-You did'nt say a word about it while in the last screenshot above I see the following comment:
-
-```rust
-use step_02::Result; // uses the re-export from the lib.rs
-```
-
-Would you be so kind as to explain to an 800-year-old Jedi why you wrote these lines of code and these comments?
-
-
-
-**Alice:** You're right it took me a while so they deserve some explanations.
-
-* In `lib.rs`
-    * I load the modules `error` and `files` in the module tree
-    * If the line `pub use self::error::{Error, Result};` is commented I can't build the package. I get an error from `listing.rs` saying:
-
-    ```
-    use crate::Result;
-        ^^^^^^^^^^^^^ no `Result` in the root
-    ```
-    * I'm not impressed. I know the module tree of the library crate, I can fix the problem and build the library. In `listing.rs` I write `use crate::error::Result;` rather than `use crate::Result;`
-    * However, if building the library seems OK, I can't build the binary crate. I see an error in `main.rs`:
-
-    ```
-    use step_02::Result;
-        ^^^^^^^^^^^^^^^ no `Result` in the root
-    ```
-    * Again, I know the module tree of the binary crate. In `main.rs` I write `use step_02::error::Result;` rather than `use step_02::Result;`
-    * Then I can build the package (the library crate and the binary crate)
-    * However...
-        * This work here because I have few modules. What if I have hundreds?
-        * On the other hand, I don't like the idea of not being able to reuse most of the source code from the previous version without modifying it.
-    * This is where the **re-export** "trick" enters the game.
-        * In `lib.rs` I load the modules I need (`errors`, `files`)
-        * Then I create, at the top of the module tree of the library crate, the shortcuts I need:
-        ```rust
-        pub use self::error::{Error, Result};
-        ```
-        * With this, 2 things happens
-            1. With `use self::error::{Error, Result};` all child modules of the library crate can use `Result` as if it was declared at the top of the module tree (I can write `crate::Result` instead of `crate::error::Result`). This is what is done in `listing.rs`
-            1. With the `pub` access specifier, `Result` and `Error` are accessible from code linked with the library. The binary crate of the package for example. This is why in `main.rs` I first create a shorcut to Result in the library (see `use step_02::Result;`)  and then use it locally (see `write fn main() -> Result<()> {...}`).
-
-**Bob:** Not to split hairs here, but if the shortcut lives in `lib.rs`, why duplicate it in `main.rs`?
-
-**Alice:** This is exactly what I did but it does'nt work. Indeed without the shortcut `use step_02::Result;` in `main.rs`, this is the `Result<T,E>` from the std lib which is used and the compiler is not happy. See by yourself:
-
-```
-fn main() -> Result<()> {
-             ^^^^^^ -- supplied 1 generic argument
-             |
-             expected 2 generic arguments
-```
-
-So in `main.rs` the shortcut "overwrite" the `default Result<T, E>`
-
-
-**Bob:** One last question. In `lib.rs` you write `pub use self::error::{Error, Result};` while until now you have been using `use crate` quite a lot. Is there any specific reason.
-
-**Alice:** Absolutely none.
-* In a path like `self::error::Error`, `self` refers to the current module. This allows to use paths relative to the current module. Since we are in `lib.rs`, `self` refers to the crate root.
-* In a path like `crate::error::Error`, `crate` refers to the crate root. This allow to use absolute path, always starting from the root.
-* So here both paths are equivalent. I'll keep the absolute version.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Path to Production - Step_03
-
-
-
-**Bob:** Splendid! Did you notice we did'nt yet talk about error handling? First, let's set the problem then we will work on one possible option.
-
-* I let you copy/paste/rename of the previous directory (`03_project`)
-* Think to update the package name in `Cargo.toml` (`name = "step_03"`)
-
-Once this is done, to "feel" the problem, please modify the `main()` function as below then run the code and tell me what you think.
-
-```rust
-fn main() -> Result<()> {
-    let files = listing::list_files(".")?;
-    println!("{files:#?}");
-
-    // let files = listing::list_files("./02_production/03_project/empty")?;
-    // println!("{files:#?}");
-
-    let files = listing::list_files("./non_existent_folder")?;
-    println!("{files:#?}");
-
-    Ok(())
-}
-```
-
-**Alice:** Here is what I see
-
-<div align="center">
-<img src="./assets/img37.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-* We use to read `Error: "Cannot list empty folder."`. This message was coming from `listing.rs` when the code detects that there is no file to list. See below:
-
-    ```rust
-    // listing.rs
-    use crate::Result;
-
-    pub fn list_files(path: &str) -> Result<Vec<String>> {
-        let files: Vec<String> = std::fs::read_dir(path)?
-            .filter_map(|re| re.ok())
-            .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-            .filter_map(|e| e.file_name().into_string().ok())
-            .collect();
-        if files.is_empty() {
-            return Err("Cannot list empty folder.".into());
-        }
-        Ok(files)
-    }
-    ```
-
-
-* `list_files()` is not ready to handle cases were the directory does not exists. In such case, when `read_dir()` returns, the `?` operator bubbles up the error to `main()`
-* Back in `main()`, the error is returned as `Box<dyn std::error::Error>`
-* Finally, the Rust runtime prints the last 2 messages.
-
-
-
-
-**Bob:** Any comment?
-
-**Alice:** The app is not ready to handle all possible kinds of errors it may encounter. In the experimentation phase it was acceptable but, in production phase it is no longer the case. We need to put in place a scalable errors management but I have no idea how to do that...
-
-
-
-
-**Bob:** You're right. The app is not yet ready but don't worry, solutions based on custom errors exist (do you remember the `enum` etc.?).
-
-We will keep our methodology and make one step at a time. Based on our experience in `list_files()`, in a first step we will make sure the app can report all kind of I/O errors as well as custom error messages based on strings of chars (String or string literal). Let me show you how...
-
-So far `errors.rs` look like this:
-
-```rust
-// error.rs
-pub type Result<T> = std::result::Result<T, Error>;
-pub type Error = Box<dyn std::error::Error>;
-```
-
-Modify it so that it looks like that:
-
-```rust
-// error.rs
 use thiserror::Error;
-
-pub type Result<T> = std::result::Result<T, Error>;
-
 #[derive(Debug, Error)]
-pub enum Error {
-    #[error("custom error: {0}")]
-    Custom(String),
-
-    #[error(transparent)]
+enum ConfigError {
+    #[error("I/O error: {0}")]
     Io(#[from] std::io::Error),
 }
-
-impl Error {
-    pub fn custom(val: impl std::fmt::Display) -> Self {
-        Self::Custom(val.to_string())
-    }
+fn load(path: &str) -> Result<String, ConfigError> {
+    Ok(std::fs::read_to_string(path)?) // auto-converts into ConfigError::Io
 }
-
-impl From<&str> for Error {
-    fn from(val: &str) -> Self {
-        Self::Custom(val.to_string())
-    }
-}
-```
-
-
-
-Do not look at the code yet but realize that since:
-1. the `error.rs` file is standalone
-2. `pub type Error = Box<dyn std::error::Error>;` is on its own line
-
-We can now change the implementation of `Error` **without impacting the rest of the project** thanks to the level of indirection.
-
-
-Now, in the code above, only pay **attention** to `Error`.
-* So far its datatype was `Box<dyn std::error::Error>`
-* **Important:** Now it is an `enum`. This means that the lib restrict itself to only 2 flavors: `Error:Custom` or `Error::Io`
-* It is a totally different story
-* We used to be more lax, free, and flexible (`Box<dyn std::error::Error>`), but now we're becoming stricter, more specific, and more professional in the way we handle errors (`pub enum Error{...}`).
-
-
-If needed, open a console and add `thiserror` crate to `Cargo.toml` with the command below:
-
-```
-cargo add thiserror --package step_03
-```
-
-Cargo.toml should look like:
-
-```toml
-[package]
-name = "step_03"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-thiserror = "2.0.17"
-```
-
-
-Now, run the application (`cargo run -p step_03`) and "tell me why" you get this output.
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/H3LbzjFJdSA?si=swM00wplNuHeLbL9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-**Alice:** Good news, it works. Bad news, I don't see big difference in the output. With `step_02` I had:
-
-```
-[
-    ".gitignore",
-    "Cargo.lock",
-    "Cargo.toml",
-    "README.md",
-]
-Error: Os { code: 3, kind: NotFound, message: "Le chemin d’accès spécifié est introuvable." }
-error: process didn't exit successfully: `target\debug\step_02.exe` (exit code: 1)
-```
-
-Now with `step_03` I see:
-
-```
-[
-    ".gitignore",
-    "Cargo.lock",
-    "Cargo.toml",
-    "README.md",
-]
-Error: Io(Os { code: 3, kind: NotFound, message: "Le chemin d’accès spécifié est introuvable." })
-error: process didn't exit successfully: `target\debug\step_03.exe` (exit code: 1)
-```
-
-The difference is... Now it prints `Error: Io(Os...` instead of `Error: Os...`. Not sure it makes the app more production ready.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Path to Production - Step_04
-
-**Bob:** This is OK. It is part of our journey... Copy/paste/rename the directory as `04_project` and rename the package in `Cargo.toml` as `step_04`.
-
-Now, modify `main.rs` as below:
-
-```rust
-// main.rs
-use step_04::Result;
-use step_04::files::listing;
-
-fn main() -> Result<()> {
-    match listing::list_files(".") {
-        Ok(files) => println!("Files found   : {files:#?}"),
-        Err(e) => println!("Error: {e}"),
-    }
-
-    match listing::list_files("./02_production/04_project/empty") {
-        Ok(files) => println!("Files found   : {files:#?}"),
-        Err(e) => println!("Error detected: {e}"),
-    }
-
-    match listing::list_files("./non_existent_folder") {
-        Ok(files) => println!("Files found   : {files:#?}"),
-        Err(e) => println!("Error detected: {e}"),
-    }
-
+fn main() -> Result<(), ConfigError> {
+    let content = load("Cargo.toml")?;
+    println!("Loaded: {}", content);
     Ok(())
 }
 ```
+* **Don’t mix them blindly**: We can use both in the same package (e.g., library crates with `thiserror` exposed, binary crate using `anyhow` internally), but try to keep public APIs typed and internal app code ergonomic.
 
-The `non_existent_folder` is "back in town"
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hQo1HIcSVtg?si=tSkFmxpGfVozzhFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
-In addition, the `?` operator has disappeared. We use `match` after each call instead. Don't, but if you run the code at this point you should not see big changes.
 
-Open `error.rs` and replace the line `#[error(transparent)]` with `#[error("**** I/O error: {0}")]`. See below the code fragment:
 
-```rust
-pub enum Error {
-    #[error("Custom error - {0}")]
-    Custom(String),
 
-    // #[error(transparent)]
-    #[error("**** I/O error: {0}")]
-    Io(#[from] std::io::Error),
-}
-```
 
-Now run the code (`cargo run -p step_04`). What do you see. What is you understanding?
+### Exercises – `anyhow` & `thiserror`
+1. Can you explain why in the API of `ex24.rs` we found `type Result<T> = std::result::Result<T, ConfigError>;` while in the client's code we have `type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;`
 
+1. **Refactor to `thiserror`:** Take our custom error enum from the previous exercise and replace the manual `Display`/`Error` implementations with a `#[derive(Error)]` and `#[error(...)]` attributes from `thiserror`. If we had conversions from `io::Error` or `serde_json::Error`, add `#[from]` to those variants and remove our manual `From` impls.
 
-**Alice:** Here is what I get in the terminal:
+1. **Add Context with `anyhow`:** Write a small binary that reads a file and parses JSON, returning `anyhow::Result<()>`. Add `.context(reading file)` and `.context(parsing JSON)` to the respective fallible operations. Run it with a missing file and with invalid JSON to see the difference in error messages with the added context.
 
-```
-Files found   : [
-    ".gitignore",
-    "Cargo.lock",
-    "Cargo.toml",
-    "README.md",
-]
-Error detected: Custom error - ⛔ Cannot list empty folder.
-Error detected: **** I/O error: Le chemin d’accès spécifié est introuvable. (os error 3)
-```
+1. **Design Choice:** Given a package that has both a library crate (`my_lib`) and a binary crate (`my_cli`) in a Cargo workspace, decide how we would structure error handling across both. Hint: `my_lib` exposes typed errors with `thiserror`, while `my_cli` depends on `my_lib` and uses `anyhow` in `main` to convert `my_lib::Error` into `anyhow::Error` using `?` and print user-friendly messages.
 
-And now I understand what happens!
 
-1. First call: No problemo! Files are listed as before.
 
-    <div align="center">
-    <img src="./assets/img39.webp" alt="" width="450" loading="lazy"/><br/>
-    <!-- <span>Optional comment</span> -->
-    </div>
 
-2. Second call: The code reports a custom error with a message because the directory is empty. This is business as usual.
-3. Third call: This is an unhandled I/O error. The directory does not exists. After `read_dir()`, the `?` operator bubbles the error as an `Error`. The code must convert the I/O error into an `Error`. I don't know yet all the details but I remember `thiserror` generates the code for that and it seems it is using templated message `"**** I/O error: {0}"` because I can see the 4 stars in the console.
 
-To make a long story short: Now, when the app encounter an unknown I/O error it reports it as an `Error::Io`.
 
-Cool, it works. Now I can uncomment the line with `transparent` and run the application again. Here is what I see:
 
-<div align="center">
-<img src="./assets/img38.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
 
 
 
-**Bob:** One question however. Could you read `error.rs` and tell me exactly what is going on here?
 
 
-
-**Alice:** We already used `thiserror`, but, Ok, let me start from the beginning... Until `Step_03` we had:
-
-```rust
-// error.rs
-pub type Result<T> = std::result::Result<T, Error>;
-pub type Error = Box<dyn std::error::Error>;
-```
-
-
-
-Now we want our `Error` being able to cover system-level I/O errors or send back custom error messages. We would like to write something like:
-
-```rust
-// error.rs
-pub type Result<T> = std::result::Result<T, Error>;
-
-pub enum Error {
-    Custom(String),
-    Io(std::io::Error),
-}
-```
-
-This cannot work but `thiserror` can help. And below is equivalent to what we had within `ex24.rs`
-
-```rust
-// error.rs
-use thiserror::Error;
-
-pub type Result<T> = std::result::Result<T, Error>;
-
-#[derive(Debug, Error)]
-pub enum Error {
-    #[error("Custom error - {0}")]
-    Custom(String),
-
-    #[error(transparent)]
-    Io(#[from] std::io::Error),
-}
-```
-However, here few lines of code have been added:
-
-```rust
-// error.rs
-use thiserror::Error;
-
-pub type Result<T> = std::result::Result<T, Error>;
-
-#[derive(Debug, Error)]
-pub enum Error {
-    #[error("Custom error - {0}")]
-    Custom(String),
-
-    #[error(transparent)]
-    Io(#[from] std::io::Error),
-}
-
-impl Error {
-    pub fn custom(val: impl std::fmt::Display) -> Self {
-        Self::Custom(val.to_string())
-    }
-}
-
-impl From<&str> for Error {
-    fn from(val: &str) -> Self {
-        Self::Custom(val.to_string())
-    }
-}
-```
-
-
-In the implementation section of `Error` we define a "convenience" constructor (see `custom(param)`). This constructor accepts anything implementing `Display` (string literals, numbers...) and converts the parameter into a `Error::Custom` variant. This provides more flexibility because we can write `Error::custom("foo")` instead of manually allocating a `String`.
-
-The last implementation is here to help us to write `return Err("something went wrong".into())`. Indeed, since we remember that in Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for A` for free,  we define `From<&str> for Error` so that we get `Into<Error> for &str`.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Path to Production - Step_05
-
-**Bob:** You know... We could go one step further... Indeed if we want to be more strick we should remove the `Custom` variant of the `Error` enum and only list the errors we deal with.
-
-I let you copy/paste/rename the directory as `05_project` and rename the package in `Cargo.toml` as `step_05`.
-
-Now I propose to use this version of the `error.rs` file
-
-```rust
-// error.rs
-use thiserror::Error;
-
-pub type Result<T> = std::result::Result<T, Error>;
-
-#[derive(Debug, Error)]
-pub enum Error {
-    #[error("⛔ Cannot list an empty folder")]
-    CantListEmptyFolder,
-
-    #[error(transparent)]
-    Io(#[from] std::io::Error),
-}
-```
-
-For comparison, find below the previous version:
-
-
-```rust
-// error.rs
-use thiserror::Error;
-
-pub type Result<T> = std::result::Result<T, Error>;
-
-#[derive(Debug, Error)]
-pub enum Error {
-    #[error("Custom error - {0}")]
-    Custom(String),
-
-    #[error(transparent)]
-    Io(#[from] std::io::Error),
-}
-
-impl Error {
-    pub fn custom(val: impl std::fmt::Display) -> Self {
-        Self::Custom(val.to_string())
-    }
-}
-
-impl From<&str> for Error {
-    fn from(val: &str) -> Self {
-        Self::Custom(val.to_string())
-    }
-}
-```
-
-1. The `Custom` variant has been removed. This allow us to remove the constructor `custom()` and the `From` trait implementation for `Error`.
-1. More **important**. We now have `CantListEmptyFolder` which is a variant without associated data, unlike the `Io(std::io::Error)` variant, which contains a `std::io::Error` object. So `CantListEmptyFolder` acts as a constant of type `Error`.
-
-
-With this in place we can now modify `listing.rs` so that it no longer returns a custom message when the directory is empty but the `Error::CantListEmptyFolder` custom error code instead. See below:
-
-```rust
-// listing.rs
-
-use crate::{Error, Result};
-
-pub fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)?
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-    if files.is_empty() {
-        // return Err("⛔ Cannot list empty folder.".into());
-        return Err(Error::CantListEmptyFolder);
-    }
-    Ok(files)
-}
-```
-In the code above, if we want to return `Err(Error::CantListEmptyFolder)` we need to bring `crate::Error` into the local scope. This is why we now have `use crate::{Error, Result};` (vs `use crate::Result;`) at the beginning of the source code.
-
-If you run the app (`cargo run -p step_05`), here is what you should see:
-
-<div align="center">
-<img src="./assets/img41.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-
-Now, if in `main()` you modify the `match` in charge of the empty folder as below :
-
-```rust
-match listing::list_files("./02_production/05_project/empty") {
-    Ok(files) => println!("Files found   : {files:#?}"),
-    // Err(e) => println!("Error detected: {e}"),
-    Err(e) => println!("Error detected: {e:?}"),
-}
-```
-
-You should get the following output in the console. The `:?` format specifier helps to see the `CantListEmptyFolder` error code in plain English.
-
-```
-Files found   : [
-    ".gitignore",
-    "Cargo.lock",
-    "Cargo.toml",
-    "README.md",
-]
-Error detected: CantListEmptyFolder
-Error detected: Le chemin d’accès spécifié est introuvable. (os error 3)
-```
-
-
-
-
-
-
-### Path to Production - Step_06
-
-**Alice:** Could you show me how to add testing to my "production" code ?
-
-**Bob:** Yes I can but I will only show you the code. To tell the truth I'm getting tired, testing is an subject on itself and I believe it is time to end this conversation.
-
-The code below is in `02_production/06_project/src/files/listing.rs`.
-
-```rust
-// listing.rs
-use crate::{Error, Result};
-
-pub fn list_files(path: &str) -> Result<Vec<String>> {
-    let files: Vec<String> = std::fs::read_dir(path)?
-        .filter_map(|re| re.ok())
-        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
-        .filter_map(|e| e.file_name().into_string().ok())
-        .collect();
-    if files.is_empty() {
-        return Err(Error::CantListEmptyFolder);
-    }
-    Ok(files)
-}
-
-#[cfg(test)]
-mod test {
-
-    use super::*;
-
-    // ! cwd is 06_project/ NOT 018_err_for_blog_post/ (workspace)
-    #[test]
-    fn test_empty_folder() {
-        let result = list_files("./empty");
-        assert!(matches!(result, Err(Error::CantListEmptyFolder)));
-    }
-
-    #[test]
-    fn test_non_existing_folder() {
-        let result = list_files("./non_existent_folder");
-        match result {
-            Err(Error::Io(_)) => {} // ok, this is an I/O error
-            other => panic!("Expected Error::Io, got {:?}", other),
-        }
-    }
-
-    #[test]
-    fn test_current_folder_contains_expected_files_v1() {
-        let result = list_files(".").expect("Should list current directory");
-        assert_eq!(result, vec!["Cargo.lock", "Cargo.toml"]);
-    }
-
-    // Cannot be sure of the order => sort
-    #[test]
-    fn test_current_folder_contains_expected_files_v2() {
-        let mut files = list_files(".").expect("Should list current directory");
-        files.sort();
-        let mut expected = vec!["Cargo.lock".to_string(), "Cargo.toml".to_string()];
-        expected.sort();
-        assert_eq!(files, expected);
-    }
-
-    // Cannot be sure of the order
-    // Cannot be sure other files are not added
-    // Just checks both files are present
-    #[test]
-    fn test_current_folder_contains_expected_files_v3() {
-        let files = list_files(".").expect("Should list current directory");
-        assert!(files.contains(&"Cargo.toml".to_string()));
-        assert!(files.contains(&"Cargo.lock".to_string()));
-    }
-}
-```
-
-
-Here is what you should see after: `cargo test -p step_06`
-
-
-<div align="center">
-<img src="./assets/img42.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Summary – Experimentation to Production
-
-{: .new-title }
-> Summary – Experimentation to Production
->
-* We now have a good code template for our experimentation
-    * See the summary of [Experimentation](#summary--experimentation)
-* We learn how to split monolithic experimentation code into one or more files, including a `lib.rs` and a `main.rs`
-* We know much more about the module tree
-    * "Hub files" which help to build the module tree and avoid `mod.rs` files
-    * `mod files;`: declares the existence and loads a module named `files` in the crate under construction
-    * Shortcuts like: `use crate::files::listing;`
-    * The visibility rule (if in parent then visible in child)
-    * `crate` vs `self` in the `use` statements
-* Create an independent `error.rs`
-* The re-export "trick" in `lib.rs` to share `Result` and `Error` from the lib crate to the binary crate
-* `thiserror` and the re-write of `error.rs` to provide a custom error type to the lib.
-* Move from custom error messages to strick custom error codes
-* Testing with our library error codes
-
-
-
-### Exercises – Experimentation to Production
-
-1. You have this code
-    ```rust
-    use std::fs;
-
-    fn main()  {
-        let content = fs::read_to_string("config.txt");
-        println!("{:?}", content);
-    }
-    ```
-    Apply what we discussed in the section Experimentation and use the "template" of our toolbox.
-
-1. You have this code
-    ```rust
-    fn main() -> Result<(), Box<dyn std::error::Error>> {
-        let mut input = String::new();
-        std::io::stdin().read_line(&mut input)?;
-        let n: u32 = input.trim().parse()?;
-        println!("Factorial : {}", factorial(n));
-        Ok(())
-    }
-
-    fn factorial(n: u32) -> u32 {
-        match n {
-            0 | 1 => 1,
-            _ => n * factorial(n - 1),
-        }
-    }
-    ```
-    * Structure this package by creating:
-    * `lib.rs` file with a math module.
-    * A `math.rs` file containing the `factorial()` function.
-    * An `error.rs` file with a custom `Result` type.
-    * Ensure that `main.rs` uses the library and handles errors via the custom `Result` type.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-## Conclusion
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v22YbORzDD0?si=coC-2aQAbL0PTIwa&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-
-It's 6AM. Your sister is coming back home. You are "dead" but happy because you learnt a lot even if you are not sure you will keep everything in your mind. It is also time for you to go to bed...
-
-You know what? Don't touch your PC for, at least, one day. And if you want to watch kitten's videos use your phone.
-
-<div align="center">
-<img src="./assets/img44.webp" alt="" width="450" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
-
-Then come back to theses posts, one at a time and try to make the exercices. You can also take one of your previous code, copy/paste/rename the directory and add some error management. If the code is a "toy" stick to what we saw in Experimentation section. Once this is done, play the game and use what we learnt about errors management in the Production section, split one of your package in multiple files and add your own custom error type to it.
-
-Enjoy!
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-
-## Webliography
-* [THE book](https://doc.rust-lang.org/book/ch09-00-error-handling.html)
-* You're probably misusing unwrap in Rust
-    <div align="center">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/k10xtq02nqY?si=htUcBirLf5X7miuX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-* Custom Errors
-    <div align="center">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/KrZ0nmpNVOw?si=4XTRH4Ek-dDyqDfv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-* Error Best Practices
-    <div align="center">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/j-VQCYP7wyw?si=GUo1WT26ECX8erGW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
 
 
 
@@ -1883,6 +1451,4 @@ Enjoy!
 * [Episode 00]({%link docs/06_programmation/rust/016_errors/errors_00.md%})
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
-
-
-
+* [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
