@@ -570,7 +570,7 @@ Total async time: 158.943537ms
 
 
 **Note**
-Here is the `[dependencies]` section of the `Cargo.toml` file of the project (available on Github) I use locally.
+Here is the `[dependencies]` section of the `Cargo.toml` file of the [companion project](https://github.com/40tude/coroutines_and_friends) I use locally.
 
 ```toml
 [dependencies]
@@ -824,10 +824,6 @@ async fn main() {
 ```
 
 
-
-
-
-
 **Expected output:**
 
 ```powershell
@@ -841,3 +837,10 @@ Async coroutine output:
   1
   2
 ```
+
+**Note**
+* Is it crystal clear why both output are different? Do you feel brave enough to play with the code in Rust Playground so that they become similar?
+* This difference is interesting from the learning standpoint:
+    * The iterator encodes its logic in the `next()`
+    * The async coroutine encodes its logic in the code structure (`for`, `.await`)
+    * Same intent, but the "where" of the control is different.
