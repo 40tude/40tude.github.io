@@ -373,7 +373,7 @@ fn main() {
 
 **Note**
 * Rust has three traits for closures: `Fn` (reads), `FnMut` (modifies), and `FnOnce` (consumes).
-* Rust chooses the most restrictive one automatically based on what you do inside the || {}."
+* Rust chooses the most restrictive one automatically based on what you do inside the `|| {}`.
 * [Read this page](https://doc.rust-lang.org/book/ch20-04-advanced-functions-and-closures.html?highlight=FnMut#function-pointers)
 
 
