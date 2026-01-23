@@ -45,7 +45,7 @@ A short, practical reminder with working examples.
 **Note**
 The [companion project](https://github.com/40tude/coroutines_and_friends) with all the examples is available on GitHub.
 
-<div align="center"> -->
+<div align="center">
 <img src="./assets/img00.webp" alt="" width="1024" loading="lazy"/><br/>
 <span>1992: When Batman returned and Windows 3.1 relied on cooperative multitasking via coroutines.</span>
 </div>
@@ -410,7 +410,13 @@ fn main() {
 ```
 
 **Note:**
-`move |i|`? It’s the bridge between a closure and a state machine. Without `move`, the closure only borrows start, which wouldn't work if the iterator outlives the function call.
+* `move |i|`?
+<!-- * It’s the bridge between a closure and a state machine. Without `move`, the closure only borrows start, which wouldn't work if the iterator outlives the function call. -->
+* `(0..count)` create a `Range<i32>` which goes from 0 to  `count-1`.
+* `.map(move |i| { ... })` transforms each element of the range (`i` goes from 0 to 3)
+* `move` force the closure to take the ownership of the variables it captures (otherwise it get the variables by reference and it does not compile. Make a test, remove the `move`)
+    * If `move` is removed the explanation goes like that: The closure attempts to capture `start` by reference (`&start`), but `start` lives in the stack of `generator_style()`. When the function returns, `start` is destroyed, and the closure would contain an invalid reference (dangling reference). Not a good idea, especially for the next time closure will execute.
+* `move` forces the closure to copy `start` (because `i32` implements `Copy`). The closure now has its own copy of `start`, independent of the `generator_style()` function and everybody is happy-happy.
 
 **Expected output:**
 
@@ -543,6 +549,8 @@ Total async time: 116.6558ms
 **Note**
 At the time of writing, the code above runs in Rust Playground but I get the following error messages. Surprisingly the timing are in the correct order of magnitude (300 vs 150, see below).
 
+
+
 ```bash
 Sequential requests:
   https://www.google.com - Error: error sending request for url (https://www.google.com/)
@@ -554,6 +562,11 @@ Async requests:
   https://www.microsoft.com - Error: error sending request for url (https://www.microsoft.com/)
 Total async time: 158.943537ms
 ```
+
+<div align="center">
+<img src="./assets/img01.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 **Note**
