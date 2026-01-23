@@ -839,8 +839,8 @@ Async coroutine output:
 ```
 
 **Note**
-* Is it crystal clear why both output are different? Do you feel brave enough to play with the code in Rust Playground so that they become similar?
-* This difference is interesting from the learning standpoint:
-    * The iterator encodes its logic in the `next()`
-    * The async coroutine encodes its logic in the code structure (`for`, `.await`)
+* Is it crystal clear why both outputs are different? Do you feel brave enough to play with the code in [Rust Playground](https://play.rust-lang.org/) so that they become similar?
+* I find that this difference is interesting from the learning standpoint:
+    * The iterator encodes its logic in the `next()`.
+    * The async coroutine encodes its logic in the code structure (`for`, `.await`).
     * Same intent, but the "where" of the control is different.
