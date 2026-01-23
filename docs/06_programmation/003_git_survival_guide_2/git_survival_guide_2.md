@@ -6,7 +6,7 @@ parent: "Programmation"
 nav_order: 1
 #math: mathjax
 date:               2024-11-29 15:00:00
-last_modified_date: 2025-11-18 15:00:00
+last_modified_date: 2026-01-23 18:00:00
 ---
 
 
@@ -221,6 +221,36 @@ git push master origin
 git fetch origin
 ```
 
+
+
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+
+## Renommer un repo sur Github
+
+J'ai un projet sur lequel je travaille en local et que je synchronise régulièrement avec GitHub. Le truc c'est que finalement le du repo ne correspond plus à ce que je veux. Comment faire?
+
+* Sur mon PC je commit, je quitte VSCode et le projet
+* Sur GitHub je retrouve le repo
+* Je clique sur `Settings` (roue crantée)
+* Je change le `Repository Name` puis j'appuie sur `Rename`
+* Sur mon PC, dans le dossier du projet, j'ouvre un terminal
+
+```powershell
+git remote -v # confirmer qu'on pointe sur repo qui n'existe plus
+origin  https://github.com/40tude/OLD_NAME.git (fetch)
+origin  https://github.com/40tude/OLD_NAME.git (push)
+
+git remote set-url origin https://github.com/40tude/NEW_NAME.git
+
+git remote -v # pour vérifier
+origin  https://github.com/40tude/NEW_NAME.git (fetch)
+origin  https://github.com/40tude/NEW_NAME.git (push)
+```
+Et c'est reparti
 
 
 
