@@ -7,7 +7,7 @@ description: "A short, practical reminder with working examples."
 parent: "Rust"
 nav_order: 32
 date:               2026-01-22 11:00:00
-last_modified_date: 2026-01-22 21:00:00
+last_modified_date: 2026-01-23 10:00:00
 ---
 
 
@@ -19,11 +19,11 @@ A short, practical reminder with working examples.
 
 
 
-
+<!--
 <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2>
-
+ -->
 
 
 
@@ -42,7 +42,8 @@ A short, practical reminder with working examples.
 * **Coroutine**: Function that can suspend and resume, maintaining state across suspension points
 * **Iterator**: Produces a sequence of values lazily, one at a time
 
-
+**Note**
+The [companion project](https://github.com/40tude/coroutines_and_friends) with all the examples is available on GitHub.
 
 <div align="center"> -->
 <img src="./assets/img00.webp" alt="" width="1024" loading="lazy"/><br/>
@@ -99,6 +100,8 @@ A short, practical reminder with working examples.
 
 ```rust
 // cargo run --example ex00
+// Function
+
 fn regular_function(x: i32) -> i32 {
     println!("Regular function computing {} * 2", x);
     x * 2
@@ -141,7 +144,9 @@ Result: 10
 **Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run --example ex_00_b
+// cargo run --example ex_01
+// Function Pointer
+
 fn add_one(x: i32) -> i32 {
     x + 1
 }
@@ -197,7 +202,9 @@ Closure pointer result: 20
 **Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run --example ex01
+// cargo run --example ex02
+// Method
+
 struct Calculator {
     multiplier: i32,
 }
@@ -246,7 +253,9 @@ Result: 21
 **Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run --example ex01_b
+// cargo run --example ex03
+// Associated Function
+
 struct User {
     username: String,
     active: bool,
@@ -268,7 +277,6 @@ fn main() {
     let user = User::new("Alice");
     println!("User name: {}\n", user.username);
 }
-
 ```
 
 **Expected output:**
@@ -276,7 +284,6 @@ fn main() {
 ```powershell
 Associated Function: Creating a new User instance for Alice
 User name: Alice
-
 ```
 
 
@@ -317,7 +324,9 @@ User name: Alice
 **Example 1:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run --example ex02
+// cargo run --example ex04
+// Closure
+
 fn demonstrate_closure() {
     let captured_value = 10;
 
@@ -345,7 +354,9 @@ Closure result: 15
 **Example 2:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run --example ex03
+// cargo run --example ex05
+// Closure
+
 pub fn shift_all<F>(data: &mut [i32], mut mutator: F)
 where
     F: FnMut(i32) -> i32,
@@ -380,7 +391,7 @@ fn main() {
 **Example 3:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run --example ex04
+// cargo run --example ex06
 // Generator-style coroutine (using iterator)
 
 fn generator_style(start: i32, count: i32) -> impl Iterator<Item = i32> {
@@ -410,7 +421,6 @@ Generator: yielding value 101
 Second value: Some(101)
 Generator: yielding value 102
 Third value: Some(102)
-
 ```
 
 
@@ -442,7 +452,7 @@ In Rust, the distinction between a [Closure](#closure) and a [Function Pointer](
 **Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run --example ex05
+// cargo run --example ex07
 // async with tokio & reqwest
 
 use std::time::Instant;
@@ -530,9 +540,34 @@ Async requests:
 Total async time: 116.6558ms
 ```
 
+**Note**
+At the time of writing, the code above runs in Rust Playground but I get the following error messages. Surprisingly the timing are in the correct order of magnitude (300 vs 150, see below).
+
+```bash
+Sequential requests:
+  https://www.google.com - Error: error sending request for url (https://www.google.com/)
+  https://www.microsoft.com - Error: error sending request for url (https://www.microsoft.com/)
+Total sequential time: 329.728754ms
+
+Async requests:
+  https://www.google.com - Error: error sending request for url (https://www.google.com/)
+  https://www.microsoft.com - Error: error sending request for url (https://www.microsoft.com/)
+Total async time: 158.943537ms
+```
 
 
+**Note**
+Here is the `[dependencies]` section of the `Cargo.toml` file of the project (available on Github) I use locally.
 
+```toml
+[dependencies]
+reqwest = "0.13.1"
+tokio = { version = "1.49.0", features = ["macros", "rt-multi-thread"] }
+```
+
+**Note**
+* Don't trust the comment under the first picture above, check by yourself and read the article [Windows Multitasking: A Historical Aside](https://youngmumpster.wordpress.com/2013/10/13/windows-multitasking-a-historical-aside/comment-page-1/)
+* You can also read: [How was Multi-Tasking Possible in Older Versions of Windows?](https://www.howtogeek.com/187631/how-was-multi-tasking-possible-in-older-versions-of-windows/)
 
 
 <!-- ###################################################################### -->
@@ -552,6 +587,8 @@ Total async time: 116.6558ms
 **Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
+// cargo run --example ex08
+// Iterator
 struct Counter {
     current: u64,
 }
@@ -704,15 +741,90 @@ async fn async_counter(max: i32) -> Vec<i32> {
 ```
 
 
+**Example:** You can copy and paste the code below into the [Rust Playground](https://play.rust-lang.org/):
+
+
+```rust
+// cargo run --example ex09
+// Iterator vs coroutine
+
+use tokio::time::{Duration, sleep};
+
+// Iterator: each next() call executes independently
+struct Counter {
+    count: i32,
+    max: i32,
+}
+
+impl Iterator for Counter {
+    type Item = i32;
+
+    fn next(&mut self) -> Option<i32> {
+        // This code runs fresh on every call to next()
+        // No suspension, just state checking and updating
+        if self.count < self.max {
+            self.count += 1;
+            Some(self.count)
+        } else {
+            None
+        }
+    }
+}
+
+// Simulated async operation
+async fn some_async_operation() {
+    // Simulate an async I/O or timer-based operation
+    sleep(Duration::from_millis(200)).await;
+}
+
+// Coroutine: execution can suspend and resume
+async fn async_counter(max: i32) -> Vec<i32> {
+    let mut results = vec![];
+
+    for i in 0..max {
+        // Suspension point: the task can pause here
+        some_async_operation().await;
+        results.push(i);
+    }
+
+    results
+}
+
+#[tokio::main]
+async fn main() {
+    // --- Iterator demo ---
+    let counter = Counter { count: 0, max: 3 };
+
+    println!("Iterator output:");
+    for value in counter {
+        println!("  {}", value);
+    }
+
+    // --- Async coroutine demo ---
+    println!("\nAsync coroutine output:");
+    let values = async_counter(3).await;
+
+    for value in values {
+        println!("  {}", value);
+    }
+}
+```
 
 
 
 
 
 
+**Expected output:**
 
+```powershell
+Iterator output:
+  1
+  2
+  3
 
-
-
-
-
+Async coroutine output:
+  0
+  1
+  2
+```
