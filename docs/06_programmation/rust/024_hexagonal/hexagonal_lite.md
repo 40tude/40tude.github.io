@@ -36,6 +36,7 @@ A gentle introduction with working examples.
 {: .no_toc }
 
 * For beginners
+* All the [examples](https://github.com/40tude/hexagonal_lite) are GitHub
 
 <!-- **Note**
 The [companion project](https://github.com/40tude/coroutines_and_friends) with all the examples is available on GitHub. -->
@@ -873,6 +874,11 @@ IOW, the application orchestrates the **use case**, ports define the contracts a
 
 I believe that one key to understand the Hexagonal Architecture and how the sample code works is to see the `application` as an orchestrator which unroll the steps of some **use case**, asking for things to be done but who is not able (nor willing to) to do those things by itself. Indeed **that knowledge, this knowhow lives outside the application**. Hence the hexagon metaphor. The distinction is not between layers or milestones, no, the distinction is between **inside** and **outside**. The hexagon provide an image with 6 ports where more than one adapter can be plugged.
 
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
 
 
 
@@ -947,3 +953,4 @@ Now open `examples/ex07.rs`. You have all the tools to understand what is going 
 * A set of 5 blog posts about [SOLID in Rust]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
     * Full of examples
     * The last one focus on the  [Dependency Inversion Principle]({%link docs/06_programmation/rust/022_solid/solid_04.md%})
+* The [companion repo](https://github.com/40tude/hexagonal_lite) on GitHub
