@@ -523,7 +523,7 @@ Expected output:
 <!-- ###################################################################### -->
 ## Tea Time! Let's take a break
 
-Let's step back for a while in order to internalize the shape of the architecture, forget the details and avoiding to be distracted by behavior. At this point I want to make sure we remember that:
+Let's step back for a while in order to internalize the shape of the architecture, forget the details and avoid to be distracted by behavior. At this point I want to make sure we remember that:
 * domain contains the entities of the business
 * ports = traits, they are stable contracts
 * adapters = implementation, they are placeholders
@@ -654,18 +654,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 ## Multiple ports, multiple adapters
 
-Why the repository is &mut but the notifier is not
-
-* This is an important teaching moment:
-* OrderRepository modifies state (save)
-* Therefore it requires &mut R
-* OrderNotifier only observes data
-* Therefore &N is enough
-* Rust forces this distinction, and that’s a good thing.
-
-
-
-
+Now everything should be in place in our brain. We can accelerate and study a case where we have multiple ports and multiple adapters. But first, let's make sure it works:
 
 
 ```powershell
@@ -684,27 +673,126 @@ Retrieving order #1...
 Found: Order #1, total: 4999
 ```
 
+Open `ex06.rs` and if you want to compare the changes with a previous example select `ex03.rs`. The `domain` module remains the same but the `ports` module now host a new port, the trait `OrderRepository`:
+
+```rust
+pub trait OrderRepository {
+    fn save(&mut self, order: &Order) -> Result<(), OrderError>;
+    fn find(&self, id: u32) -> Result<Option<Order>, OrderError>;
+}
+```
+
+Now in the `adapters` module we define a new concrete adapter named `InMemoryOrderRepository`. Once this is done we implement the trait `OrderRepository` on it.
+
+
+
+In the application module things become interesting. Indeed we define a generic `OrderService` that depends on two ports, `OrderRepository` and `OrderNotifier`. Then we define a new version of the `process_order` **use case** which:
+* creates an `Order`
+* saves it through the `repository` port
+* notifies through the `notifier` port
+
+It is important to realize that the application does **not** know:
+* how the order is saved
+* how the notification is sent
+
+However we can say that the application:
+* owns the **use case**
+* orchestrates the workflow
+
+* The application:
+* calls the **repository port** to persist data
+* calls the **notifier port** to emit a side effect
+
+The application:
+* never touches adapters
+* never imports infrastructure code
+
+
+At the end, in the `main()` function things become concrete with the lines below:
+
+```rust
+let mut repo = InMemoryOrderRepository::new();
+let notifier = ConsoleNotifier;
+
+let mut service = OrderService::new(&mut repo, &notifier);
+```
+Pay attention, both arguments are references but `&mut repo` is a mutable reference because it will be modified.
+
+
+
+
+If we step back, we should be able to see that:
+* `OrderService` defines **what must happen**
+* Ports define **what the application needs**
+* Adapters define **how it actually happens**
+* `main()` decides **which adapters are used**
+
+IOW: The application orchestrates the **use case**, ports define the contracts and adapters plug concrete behavior into those contracts.
+
+
+I believe that one key to understand the Hexagon Architecture and how the application works is to see the `application` as an orchestrator which unroll the steps of some use case, asking for things to be done but who is not able (nor willing to) to do those things by itself. Indeed **that knowledge, this knowhow lives outside the application**. Hence the hexagon metaphor. The distinction is not between layers or milestones, no, the distinction is between inside and outside. The hexagon provide an image with 6 ports where more than one adapter can be plugged.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## `ex02.rs` code review
+## Optional: `ex07.rs` code review
+
+Does it works?
+```powershell
+cargo run --example ex07
+```
+
+Expected output:
+```text
+--- In-memory configuration ---
+
+  [MockPayment] Charging $179.98
+  [InMemory] Saving order OrderId(1)
+  [Console] Order OrderId(1) confirmed, total $179.98
+
+  Success! Order OrderId(1) placed.
 
 
+--- External services configuration ---
 
+  [Stripe] Charging $179.98
+  [Postgres] INSERT order OrderId(1)
+  [SendGrid] Sending confirmation for order OrderId(1)
 
+  Success! Order OrderId(1) placed.
 
+  [Postgres] SELECT order OrderId(1)
+  Retrieved: 2 items, total $179.98
+```
 
+Now open `examples/ex07.rs`. You have all the tools to understand what is going on and read the comments.
 
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## What should I do tomorrow morning?
