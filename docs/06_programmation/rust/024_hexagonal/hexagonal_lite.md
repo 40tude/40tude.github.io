@@ -7,7 +7,7 @@ description: "A gentle introduction with working examples."
 parent: "Rust"
 nav_order: 33
 date:               2026-01-24 15:00:00
-last_modified_date: 2026-01-24 15:00:00
+last_modified_date: 2026-01-25 17:00:00
 ---
 
 
@@ -83,17 +83,21 @@ The [companion project](https://github.com/40tude/coroutines_and_friends) with a
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 
-## About ex00.rs
-Let's talk with the board: CFO, COO, CEO... They speak "business" they have their own vocabulary, rules, invariants... To tell the truth, they don't care if they received orders via email or by owl. They don't care if orders are tracked in a database or on papyrus... They want to process as many orders as possible, ship products in a matter of minutes and send the invoices within the next second.
+## Introduction
+Don't ask me why but our company want to develop its own Orders Management System. We had a first talk with the board: CFO, COO, CEO... They speak "business" they have their own vocabulary, rules, invariants... To tell the truth, they don't care if they receive orders via email or by owl. They don't care if orders are tracked in a database or on papyrus... They want to process as many orders as possible, ship products in a matter of minutes and send the invoices within the next second.
 
 If we must write an application for these guys one of the idea is to decouple the business from the external concerns like user interfaces, databases... What  "Uncle Bob's" call the "details" in the book [Clean Architecture](https://www.amazon.fr/dp/0134494164).
 
-Do not misinterpret the word "business" here. We could be talking about "how to operate a nuclear plant", "how to operate a cabaret"...
+<div align="center">
+<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
-One option could be to apply the Dependency Inversion Principle. You can read more about DIP on this [page](https://www.40tude.fr/docs/06_programmation/rust/022_solid/solid_04.html).
-However real applications are complex: they need storage, payment systems, notification services... How do we scale DIP to handle all of that?
+Do not misinterpret the word "business" above. We could be talking about "how to operate a nuclear plant" or "how to operate a cabaret"...
 
-This is the purpose of the Hexagonal Architecture which leverages what we already know about SOLID and DIP but go one step further.
+One option could be to apply the Dependency Inversion Principle. You can read more about DIP on this [page]({%link docs/06_programmation/rust/022_solid/solid_04.md%}). However real applications are complex: they need storage, payment systems, notification services... How do we scale DIP to handle all of that?
+
+This is the purpose of the **Hexagonal Architecture** which leverages what we already know about SOLID and DIP but goes one step further.
 
 At the heart of Hexagonal Architecture are the concepts of **Ports** and **Adapters**.
 * Ports are **interfaces** that define contracts for the communications between the business and the components.
@@ -107,7 +111,7 @@ Think of it that way: "Ciao ragazze! I'm the latest Ferrari cell phone and you k
 <span>This is an OBD-II connector</span>
 </div>
 
-I know this is ridiculous... However keep in mind that this is the phone which impose the port. As a supplier, if you want to get the "Ferrari Compatibility Label" you have no choice than to provide an OBD-II compliant connector for your wired earphones. Good luck!
+I know this is ridiculous... However keep in mind that, in this context, this is the phone which impose the port. As a supplier, if you want to get the "Ferrari Compatibility Label" you have no choice than to provide an OBD-II compliant connector for your wired earphones. Good luck!
 
 As on any electronic device there are two types of Ports:
 * Output Ports: Describe the methods the business is ready to use to send "Stuff" outside. Here, "Stuff" may be a invoice, notifications... I say "ready to use" because I want to insist on the fact that this is the business, the core, which defines the means to be used. This is nothing else than DIP in action.
@@ -118,6 +122,12 @@ Things to keep in mind:
 * **Adapters = Implementations** (Rust `impl Xyz for Abc`)
 
 Now... The one million dollar question. Is there a way to demonstrate an Hexagonal Architecture in less than 100 lines of code?
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Show me the code!
 
 ```powershell
 cargo run --example ex00
@@ -130,16 +140,34 @@ Expected output:
 Success! Order #1 processed.
 ```
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## `ex00.rs` code review
 
 I want to make sur "we learn how to walk before we try to run". So let's take some time to review the code of `ex00.rs` and understand how this works at the simplest level.
 
 **Lines 1-20**
-We left the meeting with the board and we now, know their vocabulary. We create a module named `domain` where we recreate the entities we heard about.
+We left the meeting with the board and we now, we know more about their vocabulary. We create a module named `domain` where we recreate the entities we heard about.
 
+```rust
+mod domain {
+    use std::fmt;
+
+    #[derive(Debug, Clone)]
+    pub struct Order {
+        pub id: u32,
+        pub total: u32,
+    }
+
+    #[derive(Debug)]
+    pub enum OrderError {
+        // Failed,
+    }
+
+    impl fmt::Display for OrderError {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            write!(f, "{self:?}")
+        }
+    }
+}
+```
 First we create the type `Order`. What is an `Order`? An `Order` is an `id` associated with a `total`. We may not agree but, if tomorrow morning we cross the CFO at the cafeteria, we can discuss with him using *his* vocabulary. He will not be lost and more than happy to help us. If needed we will be able to add field to the `struct` later.
 
 Second, we create a type `OrderError`. What is an `OrderError`? It is not yet crystal clear but we know for sure that an error is only one kind of error at a time so we create an empty `enum`. Once we know more about the kind of business they encounter in their domain we will be able to add variants. At the end, we implement the Display trait for the `OrderError`.
@@ -147,6 +175,17 @@ Second, we create a type `OrderError`. What is an `OrderError`? It is not yet cr
 
 
 **Lines 22-28**
+
+```rust
+mod ports {
+    use crate::domain::{Order, OrderError};
+
+    pub trait OrderNotifier {
+        fn process(&self, order: &Order) -> Result<(), OrderError>;
+    }
+}
+```
+
 We create a `ports` module. "Remember the Alamo" but remember that **ports = traits**. So we "just" define which methods must be available if something want to be considered as an `OrderNotifier`.
 
 Note that the module `ports` depends on `domain` because the `.process()` method sends a `domain::Order` and return a `Result<(), domain::OrderError>`.
@@ -154,6 +193,26 @@ Note that the module `ports` depends on `domain` because the `.process()` method
 
 
 **Lines 30-45**
+
+```rust
+mod adapters {
+    use crate::domain::{Order, OrderError};
+    use crate::ports::OrderNotifier;
+
+    pub struct ConsoleNotifier;
+
+    impl OrderNotifier for ConsoleNotifier {
+        fn process(&self, order: &Order) -> Result<(), OrderError> {
+            println!(
+                "[Console] Order #{} confirmed! Total: {}",
+                order.id, order.total
+            );
+            Ok(())
+        }
+    }
+}
+```
+
 We said **adapters = implementations**. In this module we define a `ConsoleNotifier`, a concrete data type. Once this is done, since we want that the objects of type `ConsoleNotifier` being used to process orders, we implement the `OrderNotifier` trait for the `ConsoleNotifier`. In our case this consist in defining what will happen when the `.process()` method will be invoked.
 
 Note that in the the module `adapters` we depend on `domain` and `ports` because we implement a trait defined in `ports` which act on objects defined in `domain` (`Order` for example)
@@ -163,27 +222,72 @@ Note that in the the module `adapters` we depend on `domain` and `ports` because
 **Lines 47-74**
 For me, this is where the magic takes place.
 
-Indeed, this is where we define and implement a generic `OrderService` data type over the trait `OrderNotifier`. Realize that this means that *any* concrete type having the `OrderNotifier` trait can be used.
+```rust
+mod application {
+    use crate::domain::{Order, OrderError};
+    use crate::ports::OrderNotifier;
 
-So far, only the `ConsoleNotifier` data type has the trait `OrderNotifier` but, may be tomorrow, we can easily extend the application with a `BellNotifier` (people ring a bell on each order received).
+    pub struct OrderService<N: OrderNotifier> {
+        notifier: N,
+        next_id: u32,
+    }
+
+    impl<N: OrderNotifier> OrderService<N> {
+        pub fn new(notifier: N) -> Self {
+            Self {
+                notifier,
+                next_id: 1,
+            }
+        }
+
+        pub fn process_order(&mut self, total: u32) -> Result<Order, OrderError> {
+            let order = Order {
+                id: self.next_id,
+                total,
+            };
+            self.next_id += 1;
+            self.notifier.process(&order)?;
+            Ok(order)
+        }
+    }
+}
+```
+
+The code of the module `application` is important because this is where we define and implement a generic `OrderService` data type over the trait `OrderNotifier`. Realize that this means that *any* concrete type having the `OrderNotifier` trait can be used. Thanks to Rust, expressing this intent is almost natural.
+
+So far, only the `ConsoleNotifier` data type has the trait `OrderNotifier` but, tomorrow, we can easily extend the application with a `BellNotifier` (people ring a bell on each order received).
 
 Once the generic `OrderService` is defined, then we write its implementation which consist of 2 methods: `new()` and `.process_order()`. The latter use the `.process()` method that any object having the `OrderNotifier` trait has.
 
-Take some time to *read* and understand each line.
+Take some time to *read* and understand each line of the code above. At the end you must be convinced that application is the place were we describe the **use case**: receive an order, ring the bell, send an invoice... And we do this without knowing how this will happens. When `.ring_the_bell()` is invoked, does someone get up to go to the bell and use a hammer, or do they press a button on their desk or screen? I don't know, and that's not the point.
 
 Note that in the the module `application` we depend on `domain` and `ports` because we create a `OrderService` data type which depends on a `OrderNotifier` trait defined in ports which act on object defined in `domain` (`Order` for example)
 
 
 **Lines 76-86**
-Show time! All the pieces fit together. The code involved is very short. This is NOT the problem. My main concerne here is to make sure we all understand is that above, `application` is NOT an executable. For obvious didactic reasons I keep all the modules in one source code, but `application` is NOT an executable but more a lib.
+
+```rust
+fn main() {
+    use adapters::ConsoleNotifier;
+    use application::OrderService;
+
+    let mut service = OrderService::new(ConsoleNotifier);
+
+    match service.process_order(4999) {
+        Ok(order) => println!("Success! Order #{} processed.", order.id),
+        Err(e) => println!("Error: {e}"),
+    }
+}
+```
+Show time! All the pieces fit together. The code involved is very short. This is NOT the problem. My main concern here is to make sure we all understand is that above, the `application` module is **NOT** an executable. For obvious didactic reasons I keep all the modules in one source code, but, repeat after me, `application` is **NOT** an executable but more a lib.
 
 In this context `main()` is:
-* Not part of Hexagonal Architecture*
-* Not part of the application layer
+* Not part of Hexagonal Architecture
+* Not part of the application core
 * Just a delivery mechanism
 * A primary adapter
 
-Think of it as a "client", a proof that the architecture works. `main()` belongs to an adapter and does not include any business logic. From the files and folder organization you can keep this model in mind if this help.
+Think of it as a "client", a proof that the architecture works. `main()` belongs to an adapter and does not include any business logic. From the files and folders stand point you can keep this model in mind if this help:
 
 ```text
 my_app/
@@ -194,21 +298,24 @@ my_app/
 ├── main.rs
 ```
 
-Now, having this in mind we can *read* the code of `main()`. We create a new `OrderService` based on the data type `ConsoleNotifier` which implements the trait `OrderNotifier`. Then we call `.process_order()` and print the results.
+Now, having all this in mind we can *read* the code of `main()`. We create a new `OrderService` based on the data type `ConsoleNotifier` which implements the trait `OrderNotifier`. Then we call `.process_order()` and print the results.
 
 
 
 
 
 
-**Notes:**
+**Note:**
 * Naming is difficult. Order, Invoice, Notifier... I realize things should/could be better. Welcome to the club! Hopefully, intellisense (F2) is our friend.
-* I would suggest to start by "fixing the vocabulary". I mean, first, work on the `domain` module and define the datatype of the business you are modeling. Make sure every body agree.
-* Then write the `main()` function as you would describe, in plain English, what is going on.
-* Then I would work on the `ports`, `adapters` and `application` modules in that order.
-* Finalize the `main()` function adding the needed `use...` statements
-* Sleep on it
-* Review it with a colleague tomorrow morning.
+
+**Note:**
+From a pragmatic point of view I would suggest to:
+1. Start by "fixing the vocabulary". I mean, first, work on the `domain` module and define the data types of the business you are modeling. Make sure everybody agree.
+1. Then write the `main()` function as you would describe, in plain English, what is going on.
+1. Then I would work on the `ports`, `adapters` and `application` modules in that order.
+1. Finalize the `main()` function adding the needed `use...` statements
+1. Sleep on it
+1. Review it with a colleague tomorrow morning.
 
 
 <!-- ###################################################################### -->
@@ -217,7 +324,7 @@ Now, having this in mind we can *read* the code of `main()`. We create a new `Or
 ## `ex00.rs` types organization
 
 * Below I use `Sender` instead of `OrderNotifier`
-* The arrows show the dependencies: ports depends on domain, domain depends on no one.
+* The arrows show the dependencies: `ports` depends on `domain`, `domain` depends on no one.
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="900" loading="lazy"/><br/>
@@ -231,7 +338,7 @@ Now, having this in mind we can *read* the code of `main()`. We create a new `Or
 <!-- ###################################################################### -->
 
 ## About ex01.rs
-The code is the same but the domain is slightly different. I just want to make sure we understand that business/core/domain can be anything.
+The code is the same but the domain is slightly different. I just want to make sure we understand that business/domain can be anything.
 
 ```powershell
 cargo run --example ex01
@@ -260,7 +367,7 @@ Skim over the code because, compared to `ex00.rs` I just renamed some variables.
 <!-- ###################################################################### -->
 ## Testing `application`
 
-Again, the previous `main()` function was, may be, misleading. So let's go extreme and let's remove it completely. And you know what? Let's remove also the `adapter` that `main()` was using. Remember, adapters are replaceable and owned by the caller, not by the application.
+Again, the previous `main()` function was, may be, misleading. So let's go extreme and let's remove it completely. And you know what? Let's remove also the `adapter` that `main()` was using. Remember, adapters are replaceable and owned by the caller, not by the `application`.
 
 Ok... But what can we do next? Easy, let's write some test. Try this:
 
@@ -277,30 +384,56 @@ test tests::process_order_successfully ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
 
-Obviously we cannot `cargo test --example ex02` but this simple experimentation is an attempt to demonstrate some of the key ideas are o the Hexagonal Architecture:
+Obviously, since we removed `main()` we cannot `cargo run --example ex02` but this simple experimentation is an attempt to demonstrate some of the key ideas are of the Hexagonal Architecture:
 
-* The `domain` and `application` core do not depend on infrastructure
+* The `domain` and `application` do not depend on infrastructure
 * The `application` is driven by `ports`, `NOT` by a runtime entry point (`main()`)
-* We can exercise the system without any real `adapters`
+* We can exercise the system without any real `adapters` and this is really smart.
 
 So let's keep in mind that by replacing `main()` with one focused test we prove ourselves that:
-* The application core is usable in isolation
+* The `application` core is usable in isolation
 * Adapters are just plug-ins
 * The system is testable by construction
 
-Let's see the making of and open `ex02.rs`
+Let's see the making of and let's open `ex02.rs`
 
-**Lines 59-82**
+**Lines 62-85**
+
+```rust
+#[cfg(test)]
+mod tests {
+    use crate::application::OrderService;
+    use crate::domain::{Order, OrderError};
+    use crate::ports::OrderNotifier;
+
+    struct TestNotifier;
+
+    impl OrderNotifier for TestNotifier {
+        fn process(&self, _order: &Order) -> Result<(), OrderError> {
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn process_order_successfully() {
+        let mut service = OrderService::new(TestNotifier);
+
+        let order = service.process_order(4999).unwrap();
+
+        assert_eq!(order.id, 1);
+        assert_eq!(order.total, 4999);
+    }
+}
+```
 This is the test module. If you remember, in `ex00.rs`, `main()` was using a `ConsoleNotifier` which was defined and implemented in the `adapters` module (lines 30-45 of `ex00.rs`). Here we no longer have the `adapters` module.
 
 So, first thing first, at the top of the `tests` module we start by creating our own `TestNotifier` and we implement `OrderNotifier` for it. In other words we are creating our test adapter.
 
-When this is done, we can write the test `process_order_successfully()` where, as before in the `main()` function, we create a new `OrderService` based on the data type `TestNotifier` which implements the trait `OrderNotifier`. Then we call `.process_order()` and check the results.
+When this is done, we can write the test `process_order_successfully()` test function, where, as before in the `main()` function, we create a new `OrderService` based on the data type `TestNotifier` which implements the trait `OrderNotifier`. Then we call `.process_order()` and check the results.
 
+Now, it should be clear that in an Hexagonal Architecture the `application` never knows whether it’s being used by a CLI, a web server, a test... The caller decides which adapter to plug in.
 
-Now, it should be clear that in an Hexagonal Architecture the `application` never knows whether it’s being used by a CLI, a web server, a test...
-
-The caller decides which adapter to plug in. Finally, realize that tests are not special. They are just another driving adapter.
+Finally, let's realize that tests are not special. They are just another driving adapter.
 
 
 
@@ -316,6 +449,11 @@ The caller decides which adapter to plug in. Finally, realize that tests are not
 
 In order to keep `ex00.rs` as simple as possible I used a trick and I'm not very proud of. So let's look at it in detail because, as you know... The evil is in the details.
 
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
 To make a long story short, in `ex00.rs` the module application was owning a `Notifier`. Open `ex00.rs`, search the application module. We have:
 
 ```rust
@@ -324,7 +462,7 @@ pub struct OrderService<N: OrderNotifier> {
     next_id: u32,
 }
 ```
-This is NOT wrong. This a choice of design with some advantages:
+This is **NOT** wrong. This a choice of design with some advantages:
 * Simple to understand
 * No lifetimes
 * No references
@@ -333,7 +471,7 @@ This is NOT wrong. This a choice of design with some advantages:
     * the adapter has no observable state
     * we never need to access the adapter again
 
-For a first contact with hexagonal ideas, it was totally fine. However, this becomes a problem as soon as we want to experiment with more advanced, but typical, hexagonal scenarios:
+For a first contact with Hexagonal Architecture ideas, it was totally fine. However, this becomes a problem as soon as we want to experiment with more advanced, but typical, Hexagonal scenarios:
 * Multiples adapters on the same port
 * An adapter with internal state
 * Observing what an adapter did
@@ -363,11 +501,11 @@ pub struct OrderService<'a, N: OrderNotifier> {
     next_id: u32,
 }
 ```
-Now the application has a reference to the `Notifier` (it has a reference to a variable have the trait `OrderNotifier`)
+Now the application now has a reference to the `Notifier` (more accurately, it has a reference to a variable which possess the trait `OrderNotifier`)
 
 The lifetime `'a` is mandatory. It’s a nudge for the compiler and a promise from us that the referenced notifier will live at least as long as the `OrderService` that uses it.
 
-Then the implementation has to be modified. We go from
+Then the implementation has to be modified. We go from:
 
 ```rust
 impl<N: OrderNotifier> OrderService<N> {
@@ -413,8 +551,8 @@ fn main() {
     // Same as before
 }
 ```
+Do you see the reference used as an argument?. Cool, but does this work?
 
-Does this work?
 ```powershell
 cargo run --example ex03
 ```
@@ -523,7 +661,12 @@ Expected output:
 <!-- ###################################################################### -->
 ## Tea Time! Let's take a break
 
-Let's step back for a while in order to internalize the shape of the architecture, forget the details and avoid to be distracted by behavior. At this point I want to make sure we remember that:
+<div align="center">
+<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+Let's step back for a while in order to internalize the shape of the architecture, forget the details and avoid to be distracted by the behaviors. At this point I want to make sure we remember that:
 * domain contains the entities of the business
 * ports = traits, they are stable contracts
 * adapters = implementation, they are placeholders
@@ -610,7 +753,7 @@ mod tests {
 }
 ```
 
-For me the key is in the `application` module when we define (then implement) a generic `StuffService` data type over the trait `StuffHandle`.
+Does this code tells you a story? Do you hear it? For me the key is in the `application` module when we define (then implement) a generic `StuffService` data type over the trait `StuffHandle`.
 
 
 ```rust
@@ -619,8 +762,7 @@ pub struct StuffService<'a, H: StuffHandler> {
 }
 ```
 
-
-You can even use the template as it is:
+You can even use the template. Try this:
 
 ```powershell
 cargo test --example ex05
@@ -673,7 +815,7 @@ Retrieving order #1...
 Found: Order #1, total: 4999
 ```
 
-Open `ex06.rs` and if you want to compare the changes with a previous example select `ex03.rs`. The `domain` module remains the same but the `ports` module now host a new port, the trait `OrderRepository`:
+Open `ex06.rs` and if you want to compare the changes with one of the previous examples, select `ex03.rs`. The `domain` module remains the same but the `ports` module now hosts a new port, the trait `OrderRepository`:
 
 ```rust
 pub trait OrderRepository {
@@ -686,7 +828,7 @@ Now in the `adapters` module we define a new concrete adapter named `InMemoryOrd
 
 
 
-In the application module things become interesting. Indeed we define a generic `OrderService` that depends on two ports, `OrderRepository` and `OrderNotifier`. Then we define a new version of the `process_order` **use case** which:
+In the `application` module things become interesting. Indeed we define a generic `OrderService` that depends on two ports, `OrderRepository` and `OrderNotifier`. Then we define a new version of the `process_order` **use case** which:
 * creates an `Order`
 * saves it through the `repository` port
 * notifies through the `notifier` port
@@ -707,8 +849,7 @@ The application:
 * never touches adapters
 * never imports infrastructure code
 
-
-At the end, in the `main()` function things become concrete with the lines below:
+I know I'm being a pain. I will stop here... At the end, in the `main()` function things become concrete with the lines below:
 
 ```rust
 let mut repo = InMemoryOrderRepository::new();
@@ -723,14 +864,14 @@ Pay attention, both arguments are references but `&mut repo` is a mutable refere
 
 If we step back, we should be able to see that:
 * `OrderService` defines **what must happen**
-* Ports define **what the application needs**
-* Adapters define **how it actually happens**
+* `ports` define **what the application needs**
+* `adapters` define **how it actually happens**
 * `main()` decides **which adapters are used**
 
-IOW: The application orchestrates the **use case**, ports define the contracts and adapters plug concrete behavior into those contracts.
+IOW, the application orchestrates the **use case**, ports define the contracts and adapters plug concrete behavior into those contracts.
 
 
-I believe that one key to understand the Hexagon Architecture and how the application works is to see the `application` as an orchestrator which unroll the steps of some use case, asking for things to be done but who is not able (nor willing to) to do those things by itself. Indeed **that knowledge, this knowhow lives outside the application**. Hence the hexagon metaphor. The distinction is not between layers or milestones, no, the distinction is between inside and outside. The hexagon provide an image with 6 ports where more than one adapter can be plugged.
+I believe that one key to understand the Hexagonal Architecture and how the sample code works is to see the `application` as an orchestrator which unroll the steps of some **use case**, asking for things to be done but who is not able (nor willing to) to do those things by itself. Indeed **that knowledge, this knowhow lives outside the application**. Hence the hexagon metaphor. The distinction is not between layers or milestones, no, the distinction is between **inside** and **outside**. The hexagon provide an image with 6 ports where more than one adapter can be plugged.
 
 
 
@@ -794,5 +935,15 @@ Expected output:
   Retrieved: 2 items, total $179.98
 ```
 
-Now open `examples/ex07.rs`. You have all the tools to understand what is going on and read the comments.
+Now open `examples/ex07.rs`. You have all the tools to understand what is going on. Feel free to read the comments, rename variable, traits... Break everything and make it work again.
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Webliography
+* The [original paper](https://alistair.cockburn.us/hexagonal-architecture) from 2025.
+* A set of 5 blog posts about [SOLID in Rust]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
+    * Full of examples
+    * The last one focus on the  [Dependency Inversion Principle]({%link docs/06_programmation/rust/022_solid/solid_04.md%})
