@@ -2,8 +2,8 @@
 published: true
 lang: en-US
 layout: default
-title: "Hexagonal Architecture in Rust from the Ground Up"
-description: "A gentle introduction with working examples."
+title: "Hexagonal Architecture in Rust: A Beginner’s Guide"
+description: "Learn how to structure your Rust code with ports, adapters, and clean separation of concerns using practical examples."
 parent: "Rust"
 nav_order: 33
 date:               2026-01-24 15:00:00
@@ -11,10 +11,10 @@ last_modified_date: 2026-01-25 17:00:00
 ---
 
 
-# Hexagonal Architecture in Rust from the Ground Up
+# Hexagonal Architecture in Rust: A Beginner’s Guide
 {: .no_toc }
 
-A gentle introduction with working examples.
+Learn how to structure your Rust code with ports, adapters, and clean separation of concerns using practical examples.
 {: .lead }
 
 
@@ -42,6 +42,8 @@ A gentle introduction with working examples.
 * `application` borrows adapters
 * The caller decides which `adapter` to plug in
 * `application` is **NOT** a container for `adapters`, but a consumer of `ports`.
+* `application` orchestrates the **use case**, `ports` define the contracts and `adapters` plug concrete behavior into those contracts
+
 
 All the [examples](https://github.com/40tude/hexagonal_lite) are GitHub
 
@@ -92,7 +94,9 @@ The [companion project](https://github.com/40tude/coroutines_and_friends) with a
 <!-- ###################################################################### -->
 
 ## Introduction
-Don't ask me why but our company wants to develop its own Orders Management System. We had a first meeting with the board: CFO, COO, CEO... They speak "business" they have their own vocabulary, rules, invariants... To tell the truth, they don't care if they receive orders via email or by owl. They don't care if orders are tracked in a database or on papyrus... They want to process orders as fast as possible, ship products in a matter of minutes and send the invoices within the same second.
+Just to make sure you did'nt reach this page in order to learn how to draw an hexagon on screen with Rust... Hexagonal Architecture is a way to structure an application around its use cases rather than its technical details. In this article, we explore how the application layer acts as an orchestrator, coordinating work without owning the implementation. Don’t worry about the fancy terminology: hexagons, architecture, ports, adapters, business rules. At the end of the day, this all boils down to writing traits, implementing structs, and defining a few enums.
+
+This said... Don't ask me why but our company wants to develop its own Orders Management System. We had a first meeting with the board: CFO, COO, CEO... They speak "business" they have their own vocabulary, rules, invariants... To tell the truth, they don't care if they receive orders via email or by owl. They don't care if orders are tracked in a database or on papyrus... They want to process orders as fast as possible, ship products in a matter of minutes and send the invoices within the same second.
 
 If we must write an application for these guys one of the idea is to decouple the business from the external concerns like user interfaces, databases... What  "Uncle Bob's" call the "details" in the book [Clean Architecture](https://www.amazon.fr/dp/0134494164).
 
@@ -448,7 +452,7 @@ So, first thing first, at the top of the `tests` module we start by creating our
 
 When this is done, we can write the test `process_order_successfully()` test function, where, as before in the `main()` function, we create a new `OrderService` based on the data type `TestNotifier` which implements the trait `OrderNotifier`. Then we call `.process_order()` and check the results.
 
-Now, it should be clear that in an Hexagonal Architecture the `application` never knows whether it’s being used by a CLI, a web server, a test... The caller decides which adapter to plug in.
+By now, it should be clear that in an Hexagonal Architecture the `application` never knows whether it’s being used by a CLI, a web server, a test... The caller decides which adapter to plug in.
 
 Finally, let's realize that tests are not special. They are just another driving adapter.
 
@@ -549,7 +553,7 @@ impl<'a, N: OrderNotifier> OrderService<'a, N> {
     // Same as before
 }
 ```
-Last change occurs in `main()` we transition from :
+The last change occurs in `main()` where we transition from:
 
 ```rust
 fn main() {
@@ -597,7 +601,7 @@ In a typical hexagonal architecture
 1. it is OK to have more than one adapter to the same port.
 1. adding a new adapter to an existing port does not require any changes to the `domain`, `ports`, or `application` modules.
 
-In VSCode if you compare `ex03.rs` and `ex04.rs` you will realize that
+In VSCode if you compare `ex03.rs` and `ex04.rs` you should realize that:
 * the `domain` module remains untouched
 * `ports` is not modified
 * `application` is not modified either
@@ -606,7 +610,7 @@ You should see something like this:
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
+<span><code>domain</code>, <code>ports</code> and <code>application</code> modules remain untouched when adding a new adapter.</span>
 </div>
 
 Obviously we must add a new adapter in the `adapters` module. This is done by adding `use std::cell::RefCell;` at the top of the module plus the lines below:
@@ -651,7 +655,7 @@ for message in memory_notifier.messages() {
 }
 ```
 
-That's all. But does it works? Let's test the 2 adapters on the same port.
+That's all. But does it works? Let's test how the 2 adapters work on the same port.
 
 ```powershell
 cargo run --example ex04
@@ -679,18 +683,18 @@ Expected output:
 ## Tea Time! Let's take a break
 
 <div align="center">
-<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img08.webp" alt="" width="225" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
-Let's step back for a while in order to internalize the shape of the architecture, forget the details and avoid to be distracted by the behaviors. At this point I want to make sure we remember that:
-* domain contains the entities of the business
-* ports = traits, they are stable contracts
-* adapters = implementation, they are placeholders
-* application borrows adapters
+Let's step back for a while in order to internalize the shape of the Hexagonal Architecture, forget the details and avoid to be distracted by the behaviors. At this point I want to make sure we remember that:
+* `domain` contains the entities of the business
+* **ports = traits**, they are stable contracts
+* **adapters = implementation**, they are placeholders
+* `application` borrows adapters
 * tests show how the system is driven
 
-Now *read* the template below:
+Now let's *read* the "template" below:
 
 ```rust
 mod domain {
@@ -840,7 +844,7 @@ pub trait OrderRepository {
 }
 ```
 
-Now in the `adapters` module we define a new concrete adapter named `InMemoryOrderRepository`. Once this is done we implement the trait `OrderRepository` on it.
+In the `adapters` module we define a new concrete adapter named `InMemoryOrderRepository`. Once this is done we implement the trait `OrderRepository` on it.
 
 ```rust
 pub struct InMemoryOrderRepository {
@@ -907,7 +911,7 @@ However we can say that the `application`:
 * owns the **use case**
 * orchestrates the workflow
 
-* The `application`:
+The `application`:
 * calls the **repository port** to persist data
 * calls the **notifier port** to emit a side effect
 
@@ -923,9 +927,7 @@ let notifier = ConsoleNotifier;
 
 let mut service = OrderService::new(&mut repo, &notifier);
 ```
-Pay attention, both arguments are references but `&mut repo` is a mutable reference because `repo` will be modified.
-
-
+Pay attention, both arguments are references but `&mut repo` is a mutable reference because... No, you don't win a million but yes, `repo` will be modified.
 
 
 If we step back, we should be able to see that:
@@ -934,12 +936,12 @@ If we step back, we should be able to see that:
 * `adapters` define **how it actually happens**
 * `main()` decides **which adapters are used**
 
-IOW, the `application` orchestrates the **use case**, `ports` define the contracts and `adapters` plug concrete behavior into those contracts.
+In other words, the `application` orchestrates the **use case**, `ports` define the contracts and `adapters` plug concrete behavior into those contracts.
 
 
-One key to understand the Hexagonal Architecture and how the previous sample code works is to see the `application` as an orchestrator which unroll the steps of some **use case**, asking for things to be done but which is not able (nor willing to) to do those things by itself. Indeed **that knowledge, this knowhow lives outside the application**. Hence the hexagon metaphor.
+May be, one key to understand Hexagonal Architecture, as well as the behavior of the preceding sample code, is to consider the `application` as an orchestrator. It drives the execution of a **use case** by coordinating its steps, issuing requests for actions without implementing them directly. **The knowledge and technical know-how needed to fulfill those requests exist outside the application boundary**, which is exactly what the hexagonal model is meant to illustrate.
 
-The distinction is not between layers or milestones, no, the distinction is between **inside** and **outside**. The hexagon provide an image with 6 ports where more than one adapter can be plugged.
+The distinction is not between layers or milestones, no, the distinction is between **inside** and **outside**. The hexagon provides an image with 6 ports where more than one adapter can be plugged.
 
 <div align="center">
 <img src="./assets/img09.webp" alt="" width="900" loading="lazy"/><br/>
