@@ -20,9 +20,9 @@ Learn how to structure your Rust code with ports, adapters, and clean separation
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -94,7 +94,7 @@ The [companion project](https://github.com/40tude/coroutines_and_friends) with a
 <!-- ###################################################################### -->
 
 ## Introduction
-Just to make sure you did'nt reach this page in order to learn how to draw an hexagon on screen with Rust... Hexagonal Architecture is a way to structure an application around its use cases rather than its technical details. In this article, we explore how the application layer acts as an orchestrator, coordinating work without owning the implementation. Don’t worry about the fancy terminology: hexagons, architecture, ports, adapters, business rules. At the end of the day, this all boils down to writing traits, implementing structs, and defining a few enums.
+Just to make sure you did'nt reach this page in order to learn how to draw an hexagon on screen with Rust... Hexagonal Architecture is a way to structure an application around its **use cases** rather than its technical details. In this article, we explore how the application core acts as an orchestrator, coordinating work without owning the implementation. Don’t worry about the fancy terminology: hexagons, architecture, ports, adapters, business rules. At the end of the day, this all boils down to writing traits, implementing structs, and defining a few enums.
 
 This said... Don't ask me why but our company wants to develop its own Orders Management System. We had a first meeting with the board: CFO, COO, CEO... They speak "business" they have their own vocabulary, rules, invariants... To tell the truth, they don't care if they receive orders via email or by owl. They don't care if orders are tracked in a database or on papyrus... They want to process orders as fast as possible, ship products in a matter of minutes and send the invoices within the same second.
 
@@ -115,6 +115,7 @@ At the heart of Hexagonal Architecture are the concepts of **Ports** and **Adapt
 * Ports are **interfaces** that define contracts for the communications between the business and the components.
 * Adapters are **implementations** of these interfaces.
 
+
 **Note:**
 Think of it that way: "Ciao ragazze! I'm the latest Ferrari cell phone and you know what? If you want to reload my battery, connect an external drive or a ledger, like on any car you will have to use an OBD-II port."
 
@@ -126,12 +127,17 @@ Think of it that way: "Ciao ragazze! I'm the latest Ferrari cell phone and you k
 I know this is ridiculous... However keep in mind that, in this context, this is the phone which impose the port. As a supplier, if you want to get the "Ferrari Compatibility Label" you have no choice than to provide an OBD-II compliant connector for your wired earphones. Good luck!
 
 As on any electronic device there are two types of Ports:
-* **Output Ports:** Describe the methods the business is ready to use to send "Stuff" outside. Here, "Stuff" may be a invoice, notifications... I say "ready to use" because I want to insist on the fact that this is the business, the core, which defines the means to be used. This is nothing else than DIP in action.
-* **Input Ports:** Describe how the business is ready to receive "Stuff" from external systems. Here "Stuff" could be a messages, an order... Again, the core define the methods that external systems will have to use to trigger actions in the core. The keyword here is "will have to use". Yes, this is 4 words but the point is that this is mandatory. If you don't use the input port the business will not take your request/call into account.
+* **Output Ports:** aka driven ports (secondary). Describe the methods the business is ready to use to send "Stuff" outside. Here, "Stuff" may be a invoice, notifications... I say "ready to use" because I want to insist on the fact that this is the business, the core, which defines the means to be used. This is nothing else than DIP in action.
+* **Input Ports:** aka driving ports (primary). Describe how the business is ready to receive "Stuff" from external systems. Here "Stuff" could be a messages, an order... Again, the core define the methods that external systems will have to use to trigger actions in the core. The keyword here is "will have to use". Yes, this is 4 words but the point is that this is mandatory. If you don't use the input port the business will not take your request/call into account.
 
 Things to keep in mind:
 * **Ports = Traits** (Interfaces in plain Rust)
 * **Adapters = Implementations** (Rust `impl Xyz for Abc`)
+
+
+**Note:**
+Why DIP alone isn't sufficient? DIP is a principle, it explains what we have to do but not how to organize our architecture. For example DIP doesn't tell us where to place our abstractions (traits), nor how to organize dependencies between layers and what depends on what at the architectural level. On the other hand, the Hexagonal Architecture clearly defines what is the domain (the business logic, the center of the hexagon), what are the ports (interfaces defining how the outside world interacts with our domain) and what are the adapters (concrete implementations of ports, outside the hexagon). Keep in mind: DIP = What | Hexagon Architecture = How.
+
 
 Now... The one million dollar question. Is there a way to demonstrate an Hexagonal Architecture in less than 100 lines of code?
 
