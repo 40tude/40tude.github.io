@@ -44,7 +44,6 @@ Learn how to structure your Rust code with ports, adapters, and clean separation
 * `application` is **NOT** a container for `adapters`, but a consumer of `ports`.
 * `application` orchestrates the **use case**, `ports` define the contracts and `adapters` plug concrete behavior into those contracts
 
-
 All the [examples](https://github.com/40tude/hexagonal_lite) are GitHub
 
 <!-- **Note**
@@ -344,6 +343,16 @@ From a pragmatic point of view I would suggest to:
 1. Review it with a colleague tomorrow morning.
 
 
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -356,6 +365,20 @@ From a pragmatic point of view I would suggest to:
 <img src="./assets/img01.webp" alt="" width="900" loading="lazy"/><br/>
 <span>Visual Representation of our Hexagonal Architecture </span>
 </div>
+
+The graph above helps to understand why, quite often, the ports are defined in the `domain`. Doing so simplify the graph. For example, this is the organization I use in this [project](https://github.com/40tude/hexagonal_architecture).
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1026,7 +1049,8 @@ Now open `examples/ex07.rs`. You have all the tools to understand what is going 
 <!-- ###################################################################### -->
 ## Webliography
 * The [original paper](https://alistair.cockburn.us/hexagonal-architecture) from 2025.
-* A set of 5 blog posts about [SOLID in Rust]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
+* A set of 5 blog posts about [SOLID with Rust]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
     * Full of examples
     * The last one focus on the  [Dependency Inversion Principle]({%link docs/06_programmation/rust/022_solid/solid_04.md%})
-* The [companion repo](https://github.com/40tude/hexagonal_lite) on GitHub
+* The [companion repo](https://github.com/40tude/hexagonal_lite) of this post is on GitHub
+* This [project](https://github.com/40tude/hexagonal_architecture) demonstrates an Hexagonal Architecture where all components are in individual crates (Modular Monolith)
