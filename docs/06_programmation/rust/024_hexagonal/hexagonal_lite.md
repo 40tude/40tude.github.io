@@ -92,7 +92,7 @@ The [companion project](https://github.com/40tude/coroutines_and_friends) with a
 <!-- ###################################################################### -->
 
 ## Introduction
-Don't ask me why but our company want to develop its own Orders Management System. We had a first meeting with the board: CFO, COO, CEO... They speak "business" they have their own vocabulary, rules, invariants... To tell the truth, they don't care if they receive orders via email or by owl. They don't care if orders are tracked in a database or on papyrus... They want to process as many orders as possible, ship products in a matter of minutes and send the invoices within the next second.
+Don't ask me why but our company wants to develop its own Orders Management System. We had a first meeting with the board: CFO, COO, CEO... They speak "business" they have their own vocabulary, rules, invariants... To tell the truth, they don't care if they receive orders via email or by owl. They don't care if orders are tracked in a database or on papyrus... They want to process orders as fast as possible, ship products in a matter of minutes and send the invoices within the same second.
 
 If we must write an application for these guys one of the idea is to decouple the business from the external concerns like user interfaces, databases... What  "Uncle Bob's" call the "details" in the book [Clean Architecture](https://www.amazon.fr/dp/0134494164).
 
@@ -154,7 +154,7 @@ I want to make sure "we learn how to walk before we try to run". So let's take s
 
 **Lines 1-20**
 
-We left the meeting with the board and we now, we know more about their vocabulary. So, we create a module named `domain` where we recreate the entities we heard about.
+We left the meeting with the board and now, we know more about their vocabulary. So, we create a module named `domain` where we recreate the entities we heard about.
 
 ```rust
 mod domain {
@@ -184,7 +184,7 @@ Second, we create a type `OrderError`. What is an `OrderError`? It is not yet cr
 
 **Note:**
 
-Here, all the modules are in the same source file. In a real application each module would be in it own folder.
+Here, all the modules are in the same source file. In a real application each module would be in its own folder.
 
 
 **Lines 22-28**
@@ -269,13 +269,13 @@ mod application {
 
 The code of the module `application` is important because this is where we define and implement a generic `OrderService` data type over the trait `OrderNotifier`. Realize that this means that *any* concrete type having the `OrderNotifier` trait can be used. Thanks to Rust, expressing this intent is almost natural.
 
-So far, only the `ConsoleNotifier` data type has the trait `OrderNotifier` but, tomorrow, we can easily extend the application with a `BellNotifier` (people ring a bell on each order received).
+So far, only the `ConsoleNotifier` data type has the trait `OrderNotifier` but, tomorrow, we can easily extend the application with a `BellNotifier` (people ring a bell when an order is received).
 
 Once the generic `OrderService` is defined, then we write its implementation which consist of 2 methods: `new()` and `.process_order()`. The latter use the `.process()` method that any object having the `OrderNotifier` trait has.
 
 Take some time to *read* and understand each line of the code above. At the end you must be convinced that `application` is the place where we describe the **use case**: receive an order, ring the bell, send an invoice... And we do this without knowing how this will happens. When `.ring_the_bell()` is invoked, does someone get up to go to the bell and use a hammer, or do they press a button on their desk or on their screen? I don't know, and that's not the point.
 
-Note that in the module `application` we depend on `domain` and `ports` because we create a `OrderService` data type which depends on a `OrderNotifier` trait defined in ports which act on object defined in `domain` (`Order` for example)
+Note that in the module `application` we depend on `domain` and `ports` because we create an `OrderService` data type which depends on an `OrderNotifier` trait defined in `ports` which act on object defined in `domain` (`Order` for example)
 
 
 **Lines 76-86**
@@ -414,7 +414,7 @@ Let's see the making of and let's open `ex02.rs`
 
 **Lines 62-85**
 
-The rest of the code is untouched so let's focus our attention to the test module.
+The rest of the code is untouched so we can focus our attention to the test module.
 
 ```rust
 #[cfg(test)]
@@ -502,7 +502,7 @@ With the original design, the adapter is hidden inside the `application`, the ou
 So now that we understand the basic implementation (`ex00.rs`) let's slightly refine the initial design without changing the behavior. No worries, we will go one step at a time.
 
 **Step 1:**
-Most important change. In the `application` module, move from
+Most important change. In the `application` module, we start with:
 
 ```rust
 pub struct OrderService<N: OrderNotifier> {
@@ -510,7 +510,7 @@ pub struct OrderService<N: OrderNotifier> {
     next_id: u32,
 }
 ```
-to
+and we end with:
 
 ```rust
 pub struct OrderService<'a, N: OrderNotifier> {
@@ -520,7 +520,7 @@ pub struct OrderService<'a, N: OrderNotifier> {
 ```
 Now the application has a reference to the `Notifier` (more accurately, it has a reference to a variable which possess the trait `OrderNotifier`)
 
-The lifetime `'a` is mandatory. It’s a nudge for the compiler and a promise from us that the referenced notifier will live at least as long as the `OrderService` that uses it.
+The lifetime specifier `'a` is mandatory. It’s a nudge for the compiler and a promise from us that the referenced notifier will live at least as long as the `OrderService` that uses it.
 
 Then the implementation has to be modified. We go from:
 
