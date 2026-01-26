@@ -1483,3 +1483,4 @@ C'est peut être pas cool ni dans l'air du temps, mais ça passe par une politiq
 * Voir [Using Git with Visual Studio 2013 Jump Start](https://mva.microsoft.com/en-us/training-courses/using-git-with-visual-studio-2013-jump-start-8306?l=ABt74sYy_404984382)
 * Voir : <https://www.youtube.com/watch?list=PL8jcXf-CLpxrw3ipflS7mujA-hM7m2YnH&v=1ieJbCFgXQs>
 * [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+* Je suis assez d'accord avec ce qui est dit dans ce [billet sur Medium](https://medium.com/lets-code-future/git-confused-me-for-years-until-i-found-this-simple-guide-a45223bebb40)
