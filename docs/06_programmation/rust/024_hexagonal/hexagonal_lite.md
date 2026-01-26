@@ -7,7 +7,7 @@ description: "Learn how to structure your Rust code with ports, adapters, and cl
 parent: "Rust"
 nav_order: 33
 date:               2026-01-24 15:00:00
-last_modified_date: 2026-01-25 17:00:00
+last_modified_date: 2026-01-26 08:00:00
 ---
 
 
