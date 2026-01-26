@@ -336,8 +336,9 @@ Now, having all this in mind we can *read* the code of `main()`. We create a new
 
 From a pragmatic point of view I would suggest to:
 1. Start by "fixing the vocabulary". I mean, first, work on the `domain` module and define the data types of the business you are modeling. Make sure everybody agree.
-1. Then write the use case in the `application` module as you would describe, in plain English, what is going on during such or such **use case**.
-1. Then I would work on the `ports` and `adapters` modules in that order.
+1. Then I would work on the `ports` (interface, traits)
+1. Using the ports, write the **use cases** in the `application` module as you would describe, in plain English, what is going on during such or such **use case**.
+1. Write the `adapters` modules and the concrete implementation.
 1. Finalize the `main()` function adding the needed `use...` statements
 1. Sleep on it
 1. Review it with a colleague tomorrow morning.
