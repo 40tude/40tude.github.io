@@ -48,6 +48,8 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
+* [Episode 04]({%link docs/06_programmation/rust/016_errors/errors_04.md%})
+* [Episode 05]({%link docs/06_programmation/rust/016_errors/errors_05.md%})
 
 
 
@@ -704,3 +706,5 @@ fn main() -> Result<()> {
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
+* [Episode 04]({%link docs/06_programmation/rust/016_errors/errors_04.md%})
+* [Episode 05]({%link docs/06_programmation/rust/016_errors/errors_05.md%})

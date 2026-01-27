@@ -74,22 +74,25 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
     * Library code should avoid panicking on recoverable errors, bubbles them up and let the caller decide.
 
 * **Custom error types:**
-    * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
+    * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
     * For sophisticated libraries or binaries.
     * Define our own error types to represent various error kinds in one type.
     * Implementing `std::error::Error` (=> impl `fmt::Display` and `#[derive(Debug)]`)
     * Use pattern matching or helper methods like `.map_err()` (or the `From` trait implementation) to convert std lib errors into our custom error and return it with `?`
 
 * **`anyhow` and `thiserror`**
-    * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
+    * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
     * **`anyhow`** in **binaries** when we don’t need a public, fine-grained error type and just want easy error propagation with `.context("blah blah blah")`.
     * **`thiserror`** in **libraries** when we need custom error types without writing all implementations for `Display`, `Debug`, `From` trait and `Error`.
     * Don’t mix them blindly (anyhow inside the lib, thiserror API of the lib)
 
 * **From Experimentation to Production:**
-    * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
+    * [Episode 04]({%link docs/06_programmation/rust/016_errors/errors_04.md%})
     * Key Concepts
     * 3 experimental prototypes, 1 template
+
+* **Steps to Production:**
+    * [Episode 05]({%link docs/06_programmation/rust/016_errors/errors_05.md%})
     * From Experimentation to Production (including testing) in 7 steps
 
 <!--
@@ -127,6 +130,8 @@ fn main() -> Result<()> {
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
+* [Episode 04]({%link docs/06_programmation/rust/016_errors/errors_04.md%})
+* [Episode 05]({%link docs/06_programmation/rust/016_errors/errors_05.md%})
 
 
 
@@ -912,3 +917,5 @@ It is time to move on and to read [Episode 01]({%link docs/06_programmation/rust
 * [Episode 01]({%link docs/06_programmation/rust/016_errors/errors_01.md%})
 * [Episode 02]({%link docs/06_programmation/rust/016_errors/errors_02.md%})
 * [Episode 03]({%link docs/06_programmation/rust/016_errors/errors_03.md%})
+* [Episode 04]({%link docs/06_programmation/rust/016_errors/errors_04.md%})
+* [Episode 05]({%link docs/06_programmation/rust/016_errors/errors_05.md%})
