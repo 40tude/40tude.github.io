@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 lang: en-US
 layout: default
 title: "Modular Monolith in Rust: A Beginner’s Guide"

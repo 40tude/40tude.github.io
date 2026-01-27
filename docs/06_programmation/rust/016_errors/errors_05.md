@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 22
 date               : 2025-09-20 18:00:00
-last_modified_date : 2026-01-27 11:00:00
+last_modified_date : 2026-01-27 11:30:00
 ---
 
 
@@ -90,7 +90,18 @@ Do you agree?
 **Alice:** This would be perfect. Let's go.
 
 
-### Key Concepts
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
+## Key Concepts
 {: .no_toc }
 
 **Bob:** Have you ever heard about the [Gall’s law]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#galls-law)? No? It translates in words your intuition. Indeed you feel the Force but you also feel that, ideally, your sample code will evolve. The law says (read it with a strong voice like in the film The Ten Commandments): "A complex system that works is invariably found to have evolved from a simple system that worked..."
@@ -124,10 +135,10 @@ Now, I have a question for you. Without entering in the technical details, what 
 
 
 
-
-
-### Experimentation
-{: .no_toc }
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Experimentation 00
 
 {: .note-title }
 > Side Note
@@ -213,6 +224,23 @@ By the way do you have any idea of what I did?
 
 So, at this point, we agree to say that `ex001.rs` is by now your official code template. Ok? Ok, let's move on.
 
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Experimentation 01
+
+
 Do you know what BMI is?
 
 **Alice:** Yes I do. My young sister is always talking about it. I read this a statistical value which is more valuable for population than for individuals. It indicates if the group is overweight or not. Basically you take a weight (in kg) and divide it by the square of the height (in meters). This give a result in number of kilograms per square meter. If the group is between 18.5 and 24.9 it is OK.
@@ -252,6 +280,15 @@ return Err("Height cannot be 0.0");
 ```
 
 But this does'nt work. Indeed `bmi()` returns a `Result<f64>`, this means a `Result<f64, Box<dyn Error>>`. So I have to convert the `&'static str` into a `Box<dyn std::error::Error>` first. I hope that now on, I will remember the `.into()`.
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Experimentation 02
 
 
 **Bob:** Don't worry this will come with practice. Now, for a new experiment, I want you to write a function that receives a vector of integers written as strings and returns their sum as an `i32`.
@@ -353,6 +390,19 @@ error: process didn't exit successfully: `target\debug\examples\ex200.exe` (exit
 ```
 
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Experimentation 03
+
+
 **Bob:** This is pretty cool for a young Padawan. Last but not least I would like you to use your template and write an application that print the names of the files in a directory. Easy? No?
 
 **Alice:** Same test. Just to make sure... From the point of view of `main()` is it what you expect?
@@ -397,6 +447,20 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 * The last step is `.collect()` which creates a vector with the filtered filenames
 * Finally the function returns the vector to `main()` with `Ok(files)`
 
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Experimentation 04
 
 **Bob:** Did you notice how your template worked fine in 3 different experiments? I guess we can **keep it in our toolbox**.
 
@@ -451,6 +515,19 @@ Now, let me repeat the details of the operations. Just to make sure...
 >
 The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib includes an implementation of the `From` trait which does exactly that. See `impl<'a> From<&str> for Box<dyn Error + 'a>`.
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Experimentation 05
+
 **Bob:** I'm truly impressed. Now, even if it is a little bit overkill because we are supposed to be in an experiment, if I ask you to return *also* the reason *why* the error occurs I guess it is a matter of seconds. No?
 
 **Alice:** You're right. Now it is much easier. Here is the new version of the code
@@ -481,6 +558,19 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 
 
 
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Experimentation 06
 
 **Bob:** *A Padawan no more, you are. Prove a Jedi Knight you have become...* Let's go back to the first experiment and show me how you would return an meaningful error message if the directory is empty.
 
@@ -558,9 +648,12 @@ In Rust if the trait `From<A> for B` exists, then we get the trait `Into<B> for 
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 
-### Summary – Experimentation
+## Summary – Experimentation
 {: .no_toc }
 
 {: .new-title }
