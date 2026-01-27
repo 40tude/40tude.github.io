@@ -138,7 +138,7 @@ Now, I have a question for you. Without entering in the technical details, what 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Experimentation 00
+## Experimentation 00 - Hello World with generic error management
 
 {: .note-title }
 > Side Note
@@ -238,7 +238,7 @@ So, at this point, we agree to say that `ex001.rs` is by now your official code 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Experimentation 01
+## Experimentation 01 - Test when returning `Result<f64>`
 
 
 Do you know what BMI is?
@@ -288,7 +288,7 @@ But this does'nt work. Indeed `bmi()` returns a `Result<f64>`, this means a `Res
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Experimentation 02
+## Experimentation 02 - Test when returning `Result<i32>`
 
 
 **Bob:** Don't worry this will come with practice. Now, for a new experiment, I want you to write a function that receives a vector of integers written as strings and returns their sum as an `i32`.
@@ -400,7 +400,7 @@ error: process didn't exit successfully: `target\debug\examples\ex200.exe` (exit
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Experimentation 03
+## Experimentation 03 - Test when returning `Result<Vec<String>>`
 
 
 **Bob:** This is pretty cool for a young Padawan. Last but not least I would like you to use your template and write an application that print the names of the files in a directory. Easy? No?
@@ -460,7 +460,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Experimentation 04
+## Experimentation 04 - Return a custom error message
 
 **Bob:** Did you notice how your template worked fine in 3 different experiments? I guess we can **keep it in our toolbox**.
 
@@ -526,7 +526,7 @@ The promotion from `&str` to `Box<dyn std::error::Error>` works because std lib 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Experimentation 05
+## Experimentation 05 - Return the reason of the error
 
 **Bob:** I'm truly impressed. Now, even if it is a little bit overkill because we are supposed to be in an experiment, if I ask you to return *also* the reason *why* the error occurs I guess it is a matter of seconds. No?
 
@@ -570,9 +570,9 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Experimentation 06
+## Experimentation 06 - Return different error messages
 
-**Bob:** *A Padawan no more, you are. Prove a Jedi Knight you have become...* Let's go back to the first experiment and show me how you would return an meaningful error message if the directory is empty.
+**Bob:** *A Padawan no more, you are. Prove a Jedi Knight you have become...* Let's go back to Experiment 03 and show me how you would return an meaningful error message if the directory is empty.
 
 **Alice:** Here is my code
 
@@ -606,7 +606,7 @@ fn list_files(path: &str) -> Result<Vec<String>> {
 * Otherwise, as before, we reach the end of the body of `list_files()`, the `files` vector is Ok and I return `Ok(files)`
 
 
-**Bob:** We are still in the experimentation phase where we can take the time to learn, discover, crash and repair things. Can you tell me, in detail, why and how the `.into()` works? Take your time, read the documentation before to anser.
+**Bob:** We are still in the experimentation phase where we can take the time to learn, discover, crash and repair things. Can you tell me, *in detail*, why and how the `.into()` works? Take your time, read the documentation before to anser.
 
 **Alice:** It turned out to be a real caving expedition, and it took me more time than I had anticipated. Sorry about that.
 
