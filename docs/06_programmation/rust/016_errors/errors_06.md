@@ -1241,7 +1241,7 @@ Here is what you should see after: `cargo test -p step_06`
 > Summary – Experimentation to Production
 >
 * We now have a good code template for our experimentation
-    * See the summary of [Experimentation](#summary--experimentation)
+    * See the summary of [Experimentation]({%link docs/06_programmation/rust/016_errors/errors_05.md%}#summary--experimentation)
 * We learn how to split monolithic experimentation code into one or more files, including a `lib.rs` and a `main.rs`
 * We know much more about the module tree
     * "Hub files" which help to build the module tree and avoid `mod.rs` files
