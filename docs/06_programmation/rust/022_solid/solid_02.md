@@ -350,44 +350,16 @@ No mutation, no violated expectations. Each shape upholds the `Shape` contract.
 Let's say we're building a key-value store with multiple backends. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run -p ex_lsp_03
-
-// =========================
-// Storage Backends - Problem
-// =========================
-
 use std::collections::HashMap;
 
-// =========================
 // Abstractions
-// =========================
-
 pub trait Storage {
     fn get(&self, key: &str) -> Option<String>;
     fn set(&mut self, key: String, value: String);
     fn delete(&mut self, key: &str) -> bool;
 }
 
-// Simple Redis mock so the example compiles
-pub struct RedisClient;
-
-impl RedisClient {
-    fn get(&self, _key: &str) -> Result<String, ()> {
-        Err(())
-    }
-    fn set(&self, _key: &str, _value: &str) -> Result<(), ()> {
-        Ok(())
-    }
-    fn del(&self, _key: &str) -> Result<(), ()> {
-        Ok(())
-    }
-}
-
-// =========================
-// Concrete storages
-// =========================
-
-// In-memory backend
+// Concrete storage - In-memory backend
 pub struct MemoryStorage {
     data: HashMap<String, String>,
 }
@@ -414,34 +386,7 @@ impl Storage for MemoryStorage {
     }
 }
 
-// Redis backend
-pub struct RedisStorage {
-    client: RedisClient,
-}
-
-impl RedisStorage {
-    fn new() -> Self {
-        Self {
-            client: RedisClient,
-        }
-    }
-}
-
-impl Storage for RedisStorage {
-    fn get(&self, key: &str) -> Option<String> {
-        self.client.get(key).ok()
-    }
-
-    fn set(&mut self, key: String, value: String) {
-        self.client.set(&key, &value).ok();
-    }
-
-    fn delete(&mut self, key: &str) -> bool {
-        self.client.del(key).is_ok()
-    }
-}
-
-// BAD: File storage that violates LSP
+// Concrete storage - File storage - BAD, violates LSP
 pub struct FileStorage {
     base_path: String,
 }
@@ -471,10 +416,6 @@ impl Storage for FileStorage {
     }
 }
 
-// =========================
-// Usage
-// =========================
-
 // Generic function using the Storage trait
 fn demo(storage: &mut dyn Storage) {
     storage.set("key".into(), "value".into());
@@ -484,12 +425,10 @@ fn demo(storage: &mut dyn Storage) {
 
 fn main() {
     let mut mem = MemoryStorage::new();
-    let mut redis = RedisStorage::new();
     let mut file = FileStorage::new(".");
 
     demo(&mut mem);
-    demo(&mut redis);
-    demo(&mut file); // LSP violations hidden behind the trait
+    demo(&mut file);
 }
 ```
 Expected output:
@@ -497,8 +436,6 @@ Expected output:
 ```powershell
 Value = Some("value")
 Deleted = true
-Value = None
-Deleted = true
 Value = Some("value")
 Deleted = true
 ```
@@ -506,8 +443,7 @@ Deleted = true
 
 
 
-`FileStorage` complies with the Storage interface, but violates its implicit contracts:
-
+`FileStorage` complies with the Storage interface, **but** violates its implicit contracts:
 - `.get()`: Vulnerable to path traversal
 - `.set()`: Fails silently
 - `.delete()`: Lies about the result
@@ -529,18 +465,8 @@ The client code (`demo()`) works with all implementations, but its assumptions a
 You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
-// cargo run -p ex_lsp_04
-
-// =========================
-// Storage Backends - Fix
-// =========================
-
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-
-// =========================
-// Abstractions
-// =========================
 
 pub trait Storage {
     fn get(&self, key: &str) -> Option<String>;
@@ -548,26 +474,7 @@ pub trait Storage {
     fn delete(&mut self, key: &str) -> bool;
 }
 
-// Simple Redis mock so the example compiles
-pub struct RedisClient;
-
-impl RedisClient {
-    fn get(&self, _key: &str) -> Result<String, ()> {
-        Err(())
-    }
-    fn set(&self, _key: &str, _value: &str) -> Result<(), ()> {
-        Ok(())
-    }
-    fn del(&self, _key: &str) -> Result<(), ()> {
-        Ok(())
-    }
-}
-
-// =========================
-// Concrete storages
-// =========================
-
-// In-memory backend
+// Concrete storage - In-memory backend
 pub struct MemoryStorage {
     data: HashMap<String, String>,
 }
@@ -594,37 +501,7 @@ impl Storage for MemoryStorage {
     }
 }
 
-// Redis backend
-pub struct RedisStorage {
-    client: RedisClient,
-}
-
-impl RedisStorage {
-    fn new() -> Self {
-        Self {
-            client: RedisClient,
-        }
-    }
-}
-
-impl Storage for RedisStorage {
-    fn get(&self, key: &str) -> Option<String> {
-        self.client.get(key).ok()
-    }
-
-    fn set(&mut self, key: String, value: String) {
-        self.client.set(&key, &value).ok();
-    }
-
-    fn delete(&mut self, key: &str) -> bool {
-        self.client.del(key).is_ok()
-    }
-}
-
-// =========================
-// FIXED: LSP-compliant FileStorage
-// =========================
-
+// Concrete storage - File storage - FIXED: LSP-compliant
 pub struct FileStorage {
     base_path: String,
 }
@@ -689,10 +566,6 @@ impl Storage for FileStorage {
     }
 }
 
-// =========================
-// Usage
-// =========================
-
 fn demo(storage: &mut dyn Storage) {
     storage.set("key".into(), "value".into());
     println!("Value = {:?}", storage.get("key"));
@@ -701,11 +574,9 @@ fn demo(storage: &mut dyn Storage) {
 
 fn main() {
     let mut mem = MemoryStorage::new();
-    let mut redis = RedisStorage::new();
     let mut file = FileStorage::new(".");
 
     demo(&mut mem);
-    demo(&mut redis);
     demo(&mut file);
 }
 ```
@@ -715,15 +586,19 @@ Expected output:
 ```powershell
 Value = Some("value")
 Deleted = true
-Value = None
-Deleted = true
 Value = Some("value")
 Deleted = true
 ```
 
 
 
-Let's make sure we are in sync. Above, we are running the same `demo()` function on three different implementations:
+**Note :**
+
+In the examples ex_lsp_03 and ex_lsp_04 available in the GitHub project there is a Redis mockup.
+Take the time to play with.
+Now let's make sure we are still in sync.
+Indeed the Redis mockup always fail on `.get()` and returns `None`.
+So we have :
 
 | Storage      | get("key")    | delete("key") | Why                              |
 | ------------ | ------------- | ------------- | -------------------------------- |
@@ -732,10 +607,12 @@ Let's make sure we are in sync. Above, we are running the same `demo()` function
 | File         | Some("value") | true          | File was written and deleted     |
 
 Where:
-
 * **RedisStorage** returns `None` because the mock client always fails on `get()`.
 * That is **not** an LSP violation, it’s just a dummy implementation.
 * The important part is that **no implementation lies or behaves inconsistently anymore**.
+
+
+
 
 
 The Liskov Substitution Principle says: *"Any implementation of an interface must be usable **without breaking the expectations** of the code that depends on that interface."* In our case, the **implicit contract** of `Storage` is:
@@ -748,7 +625,7 @@ The Liskov Substitution Principle says: *"Any implementation of an interface mus
 * `delete()`
     * returns `true` **only if something was actually deleted**
 
-The **old FileStorage** violated this:
+The **bad FileStorage** violated this:
 
 | Method     | Problem                                        |
 | ---------- | ---------------------------------------------- |
@@ -758,8 +635,7 @@ The **old FileStorage** violated this:
 
 That means **client code could not trust the behavior**.
 
-
-Now let's read again the comments of the fixed FileStorage because they highlight the **important part**,
+Now let's read again the comments of the **fixed FileStorage** because they highlight the **important part**:
 
 ```rust
 impl FileStorage {
@@ -824,7 +700,7 @@ impl Storage for FileStorage {
 }
 ```
 
-This explain why this is now LSP-compliant. The **interface did not change**, but the **behavior now matches the contract**:
+This explain why the FileStorage is now LSP-compliant. The **interface did not change**, but the **behavior now matches the contract**:
 
 | Method     | Now guarantees                               |
 | ---------- | -------------------------------------------- |
@@ -839,7 +715,7 @@ This means:
 * No misleading results
 * No extra constraints on the caller
 
-So FileStorage can now replace MemoryStorage or RedisStorage without breaking anything. That is exactly what LSP requires.
+So FileStorage can now replace MemoryStorage (or RedisStorage) without breaking anything. That is exactly what LSP requires.
 
 **Summary:**
 * The original FileStorage violated LSP because it lied about its behavior and introduced hidden constraints.
@@ -858,11 +734,106 @@ So this is LSP-compliant, not robust but OK for a short demo code.
 
 
 
+### Quizz
+
+In the code below, iIs LSP violated or not? Explain.
+
+```rust
+// Expected contract: returns >= 0.0
+trait Distance {
+    fn calculate_distance(&self) -> f64;
+}
+
+struct Distance1 {
+    x1: f64,
+    y1: f64,
+    x2: f64,
+    y2: f64,
+}
+
+impl Distance for Distance1 {
+    fn calculate_distance(&self) -> f64 {
+        let dx = self.x2 - self.x1;
+        let dy = self.y2 - self.y1;
+        (dx * dx + dy * dy).sqrt()
+    }
+}
+
+struct Distance2 {
+    value: f64,
+}
+
+impl Distance for Distance2 {
+    fn calculate_distance(&self) -> f64 {
+        self.value
+    }
+}
+
+fn process_distance(dist: &dyn Distance) {
+    let d = dist.calculate_distance();
+    println!("Distance: {} meters", d);
+
+    if d < 100.0 {
+        println!("Short distance");
+    }
+}
+
+fn main() {
+    let val1 = Distance1 { x1: 0.0, y1: 0.0, x2: 3.0, y2: 4.0 };
+    process_distance(&val1);
+
+    let val2 = Distance2 { value: -50.0 };
+    process_distance(&val2);
+}
+```
+
+
+
+
+
+### To keep in mind
+* Design traits with **clear contracts** in documentation
+* **Don't implement traits if you can't honor the contract completely**
+* Prefer **composition over inheritance-like** patterns when contracts differ
+* Test substitutability: any type implementing a trait should **pass the same tests**
+* Use type system to enforce contracts (see below)
+
+
 
 
 ### Rust-Specific Notes
 
-1. **Type system enforces LSP**: Rust's type system catches many LSP violations at compile time. If our trait method signature is `fn foo(&self) -> i32`, we can't accidentally return a `String`.
+1. **Type system enforces LSP**: Rust's type system catches many LSP violations at compile time.
+    * If our trait method signature is `fn foo(&self) -> i32`, we can't accidentally return a `String`.
+    * We can use `assert!()`
+    * We can also define our own type (`struct NonNegativeDistance(f64)` for example) and return such type from `calculate_distance()`
+    * In a module we can use sealed traits to prevent external implementations (`pub trait Distance: private::Sealed {...}`)
+    * We can check properties during tests with `proptest!`
+    ```rust
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+        use proptest::prelude::*;
+
+        // Test that the contract holds for all valid inputs
+        proptest! {
+            #[test]
+            fn rectangle_area_non_negative(width in 0.0f64..1000.0, height in 0.0f64..1000.0) {
+                let rect = Rectangle { width, height };
+                let area = rect.area();
+                prop_assert!(area >= 0.0, "Area must be non-negative, got {}", area);
+            }
+
+            #[test]
+            fn circle_area_non_negative(radius in 0.0f64..1000.0) {
+                let circle = Circle { radius };
+                let area = circle.area();
+                prop_assert!(area >= 0.0, "Area must be non-negative, got {}", area);
+            }
+        }
+    }
+    ```
+    * Never tested but prusti (`cargo install prusti`) can run formal verification
 
 2. **Use Result for fallible operations**: We should not silently fail or panic. Instead let's make errors part of the contract via `Result<T, E>`.
 
