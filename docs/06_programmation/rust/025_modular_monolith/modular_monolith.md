@@ -93,9 +93,12 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 ## Step 00
 
 ### Objective
+{: .no_toc }
+
 We want a working prototype (POC).
 
 ### Setup
+{: .no_toc }
 ```powershell
 mkdir modular_monolith
 cd modular_monolith
@@ -106,6 +109,7 @@ code .
 ```
 
 ### Actions
+{: .no_toc }
 
 ```powershell
 # open an integrated terminal
@@ -122,7 +126,7 @@ cargo run
 Hello, world!
 ```
 
-In the project, create an `examples/` folder. In the folder write `ex00.rs` which uses a function `greet()` to format the message `Hello XYZ` when "XYZ" is used as an argument.
+In the project, create an `examples/` folder. In the folder write a `ex00.rs` code which uses a function `greet()` to format the message `Hello XYZ` when "XYZ" is used as an argument.
 
 ```rust
 fn main() {
@@ -141,7 +145,7 @@ Hello Bob.
 ```
 
 
-There is an exception in our business. If the argument is "Roberto", the application writes "Ciao Roberto!"
+There is an exception in our business. If the argument is "Roberto", the application writes "Ciao Roberto!". Copy `ex00.rs` into `ex01.rs` and modify the code to take this requirement into account:
 
 ```rust
 fn main() {
@@ -171,7 +175,8 @@ Ciao Roberto!
 There are 2 other specific cases in our business.
 1. If the length of the parameter is 0, nothing is displayed and an error is returned
 2. The output cannot exceed 25 chars. If the parameter is too long, the output is truncated and ends with "...".
-Implement both cases and the error management
+
+Copy `ex01.rs` into `ex02.rs`, implement both cases and the error management
 
 
 ```rust
@@ -220,7 +225,7 @@ Hello Alice.
 
 
 
-Add one test
+Copy `ex02.rs` into `ex03.rs` and add one test:
 
 ```rust
 fn main() {
@@ -286,7 +291,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```
 
 
-Add a loop in `main()` and more tests. Make sure `?` operator can be used in `main()`:
+Copy `ex03.rs` into `ex04.rs`, add a loop in `main()` and more tests. Make sure `?` operator can be used in `main()`:
 
 ```rust
 use std::io;
@@ -361,7 +366,8 @@ sdf
 Hello sdf.
 ```
 
-Here are the tests
+Here are the tests:
+
 ```rust
 #[cfg(test)]
 mod tests {
@@ -449,7 +455,7 @@ mod tests {
 
     #[test]
     fn domain_should_truncate_long_unicode_names() {
-        // Note: Unicode characters may have different byte lengths
+        // **Pay attention to:** Unicode characters may have different byte lengths
         let long_unicode_name = "Müller-Öffentlicher-Straßenbahn-Überführung";
         let result = greet(long_unicode_name);
 
@@ -481,11 +487,10 @@ test tests::normal_greeting ... ok
 test tests::greeting_length_limit ... ok
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
 ```
 
 
-Polish the `main()` function so that CTRL+C can be avoided
+Copy `ex04.rs` into `ex05.rs` improve the `main()` function so that CTRL+C can be avoided:
 
 ```rust
 use std::io::{self, Write};
@@ -543,7 +548,7 @@ Hello ert.
 Goodbye!
 ```
 
-Read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}) and modify the code in consequence.
+On this excellent [Web site](https://www.40tude.fr/docs/06_programmation/rust/), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). Then copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
 
 ```rust
 use std::io::{self, Write};
@@ -598,7 +603,7 @@ fn greet(name: &str) -> Result<String> {
 
 ```
 
-The POC is done! Review the code, add comments, run the tests...
+The POC is done! Copy `ex06.rs` into `ex07.rs`, review the code once again, add comments, run the tests and take a break.
 
 ```rust
 //! Greeting service example demonstrating error handling,
@@ -692,7 +697,7 @@ fn greet(name: &str) -> Result<String> {
     let truncated_name = &name[..truncate_length.min(name.len())];
     Ok(format!("Hello {}{}", truncated_name, TRAILER))
 }
-// The rest of the code in unchanged
+// The rest of the code is  unchanged
 ```
 
 Expected output:
@@ -756,12 +761,15 @@ Goodbye!
 ## Step 01
 
 ### Objective
+{: .no_toc }
+
 We want to split the last version of our POC into a `main.rs`, a `lib.rs` and a `domain.rs` files.
 
 ### Setup
+{: .no_toc }
 * Save your work
 * Quit VSCode
-* You should have a terminal open and the path should end in `step_00/`
+* You should have a terminal open and you should be in `step_00/` folder.
 
 ```powershell
 cd ..
@@ -772,6 +780,7 @@ code .
 ```
 
 ### Actions
+{: .no_toc }
 
 * Move `examples/ex07.rs` into `src/main.rs`
 * Delete the `examples/` folder
@@ -836,13 +845,13 @@ pub fn greet(name: &str) -> Result<String> {
 
 #[cfg(test)]
 mod tests {
-    // The test are here
+    // The tests are here
 }
 ```
 
-Note:
-* the `use crate::Result;` at the top of `domain.rs`.
-* that `greet()` is now public.
+**Pay attention to:**
+* `use crate::Result;` statement at the top of `domain.rs`.
+* `greet()` is now public.
 * Since `greet()` is public we could have the tests outside of this file to make sure they behave like any other consumer.
 
 Create a `lib.rs`
@@ -856,9 +865,9 @@ pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 ```
 
-Note:
-* How `greet ()` is re-exported. This allows the functions of the domain module (such as `greet()`) to be used directly via the main crate, without having to write `domain::greet`. This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`. It is therefore a question of ease of use and clarity for the code consumers. I'm not a big fan of this
-* That `Error` and `Result` are part of the lib because they are used by `domain.rs` and `main.rs`
+**Pay attention to:**
+* How `greet ()` is **re-exported**. This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main` crate, without having to write `domain::greet`. This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`. It is therefore a question of ease of use vs clarity for the code consumers. I'm not always a big fan of it and I will explain why later.
+* `Error` and `Result` are part of the lib because they are used by `domain.rs` and `main.rs`
 
 
 
@@ -912,10 +921,10 @@ fn main() -> Result<()> {
     Ok(())
 }
 ```
-Note:
+**Pay attention to:**
 * How `Result` and `greet` are shortcutted with the `use` statements.
 
-Run and test
+Run and test the example.
 
 ```powershell
 cargo run
@@ -992,6 +1001,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ## Step 02
 
 ### Objective
+{: .no_toc }
+
 We want to create a `tests/` folder to host the integration tests and the domain tests (since `greet()` is public). See :
 
 ```text
@@ -1008,9 +1019,11 @@ step_02/
 
 
 ### Setup
+{: .no_toc }
+
 * Save your work
 * Quit VSCode
-* You should have a terminal open and the path should end in `step_01/`
+* You should have a terminal open and you should be in `step_01/` folder
 
 ```powershell
 cd ..
@@ -1022,6 +1035,7 @@ code .
 
 
 ### Actions
+{: .no_toc }
 
 Update `Cargo.toml`
 
@@ -1036,7 +1050,7 @@ name = "step_02"
 path = "src/main.rs
 ```
 
-Optional. I no longer re-export `greet()` from `domain`. I want to have to write `domain::greet()`. This will help me to read the code in 6 months. In main I write `use step_02::domain;` then I call `domain::greet(name)`.
+Optional. I no longer re-export `greet()` from `domain`. I want to have to write `domain::greet()`. This will help me to read the code in 6 months. In `main.rs` I write `use step_02::domain;` then I call `domain::greet(name)`.
 
 ```rust
 /// Step 02: Extracted Domain
@@ -1212,11 +1226,11 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 {: .new-title }
 > Summary
 >
-* Nothing change from the outside
-* domains.rs is now shorter
+* Nothing change from the outside (which is good)
+* `domains.rs` is shorter
 * The tests are at the right place
 * We now have integration tests
-* So far, so good
+* So far, so good...
 
 
 
@@ -1239,12 +1253,16 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ## Step 03
 
 ### Objective
+{: .no_toc }
+
 We want ...
 
 ### Setup
+{: .no_toc }
+
 * Save your work
 * Quit VSCode
-* You should have a terminal open and the path should end in `step_02/`
+* You should have a terminal open and you should be in `step_02/` folder
 
 ```powershell
 cd ..
@@ -1256,6 +1274,7 @@ code .
 
 
 ### Actions
+{: .no_toc }
 
 
 
@@ -1277,12 +1296,16 @@ code .
 
 
 ### Objective
+{: .no_toc }
+
 We want ...
 
 ### Setup
+{: .no_toc }
+
 * Save your work
 * Quit VSCode
-* You should have a terminal open and the path should end in `step_03/`
+* You should have a terminal open and you should be in `step_03/` folder
 
 ```powershell
 cd ..
@@ -1294,6 +1317,7 @@ code .
 
 
 ### Actions
+{: .no_toc }
 
 
 
@@ -1315,12 +1339,16 @@ code .
 
 
 ### Objective
+{: .no_toc }
+
 We want ...
 
 ### Setup
+{: .no_toc }
+
 * Save your work
 * Quit VSCode
-* You should have a terminal open and the path should end in `step_04/`
+* You should have a terminal open and you should be in the `step_04/` folder
 
 ```powershell
 cd ..
@@ -1332,6 +1360,7 @@ code .
 
 
 ### Actions
+{: .no_toc }
 
 
 
@@ -1363,15 +1392,20 @@ code .
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 06
+{: .no_toc }
 
 
 ### Objective
+{: .no_toc }
+
 We want ...
 
 ### Setup
+{: .no_toc }
+
 * Save your work
 * Quit VSCode
-* You should have a terminal open and the path should end in `step_05/`
+* You should have a terminal open and you should be in the `step_05/` folder
 
 ```powershell
 cd ..
@@ -1383,6 +1417,7 @@ code .
 
 
 ### Actions
+{: .no_toc }
 
 
 
@@ -1405,12 +1440,16 @@ code .
 
 
 ### Objective
+{: .no_toc }
+
 We want ...
 
 ### Setup
+{: .no_toc }
+
 * Save your work
 * Quit VSCode
-* You should have a terminal open and the path should end in `step_06/`
+* You should have a terminal open and you should be in the `step_06/` folder
 
 ```powershell
 cd ..
@@ -1422,6 +1461,7 @@ code .
 
 
 ### Actions
+{: .no_toc }
 
 
 
