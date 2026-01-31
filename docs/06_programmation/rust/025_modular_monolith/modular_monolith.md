@@ -739,18 +739,10 @@ Goodbye!
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<div align="center">
+<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 
 
@@ -769,7 +761,7 @@ We want to split the last version of our POC into a `main.rs`, a `lib.rs` and a 
 {: .no_toc }
 * Save your work
 * Quit VSCode
-* You should have a terminal open and you should be in `step_00/` folder.
+* You should have a terminal open and you should be in the `step_00/` folder.
 
 ```powershell
 cd ..
@@ -923,8 +915,9 @@ fn main() -> Result<()> {
 ```
 **Pay attention to:**
 * How `Result` and `greet` are shortcutted with the `use` statements.
+* Make sure to understand why here, we write `use step_01::Result;` while in `domain.rs` we wrote `use crate::Result;`. You can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
-Run and test the example.
+Build, run and test the application. Find below the expected output:
 
 ```powershell
 cargo run
@@ -992,6 +985,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 
+<div align="center">
+<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 
 
@@ -1023,7 +1020,7 @@ step_02/
 
 * Save your work
 * Quit VSCode
-* You should have a terminal open and you should be in `step_01/` folder
+* You should have a terminal open and you should be in the `step_01/` folder
 
 ```powershell
 cd ..
@@ -1050,7 +1047,7 @@ name = "step_02"
 path = "src/main.rs
 ```
 
-Optional. I no longer re-export `greet()` from `domain`. I want to have to write `domain::greet()`. This will help me to read the code in 6 months. In `main.rs` I write `use step_02::domain;` then I call `domain::greet(name)`.
+Optional. I no longer re-export `greet()` from `domain`. I want to have to write `domain::greet()`. This will help me to **read the code** in 6 months. In `main.rs` I write `use step_02::domain;` then I call `domain::greet(name)`.
 
 ```rust
 /// Step 02: Extracted Domain
@@ -1094,8 +1091,8 @@ fn empty_name_returns_error() {
 // the others tests
 
 ```
-Note
-* We are testing `domain`. So at the top of the file there is `use step_02::domain::greet;` and we call `greet()` in the rest of the code.
+**Pay attention to:**
+* We are testing `domain`. So at the top of the file there is `use step_02::domain::greet;` and we call `greet()` in the rest of the code. No confusion is possible.
 
 
 
@@ -1143,13 +1140,13 @@ fn long_name_integration() {
     assert!(greeting.ends_with(TRAILER));
 }
 ```
-Note
-* At this point `domain_test.rs` and `integration_test.rs` look very similar. This is because we only have one component (`domain.rs`)
-* At the top of the file there is `use step_02::domain;` and we call `domain::greet())` in the rest of the code.
+**Pay attention to:**
+* At this point `domain_test.rs` and `integration_test.rs` look very similar. This is because at this point our project have one component (`domain.rs`). Later, at the top of the `integration_test.rs` we will have multiple `use step_NN::component;` lines.
+* At the top of the file there is `use step_02::domain;` and we call `domain::greet())` in the rest of the code. This is because later this will help us to **read the code**.
 
 
 
-Run and test
+Build, run and test the application. Find below the expected output:
 
 ```powershell
 cargo run
@@ -1244,6 +1241,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 
+<div align="center">
+<img src="./assets/img03.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 
 
@@ -1262,7 +1263,7 @@ We want ...
 
 * Save your work
 * Quit VSCode
-* You should have a terminal open and you should be in `step_02/` folder
+* You should have a terminal open and you should be in the `step_02/` folder
 
 ```powershell
 cd ..
@@ -1278,6 +1279,10 @@ code .
 
 
 
+Build, run and test the application. Find below the expected output:
+
+
+
 
 
 {: .new-title }
@@ -1287,6 +1292,17 @@ code .
     * **Blablabla:** ...
     * **Blablabla:** ...
 * ...
+
+
+
+
+
+
+
+<div align="center">
+<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 
 <!-- ###################################################################### -->
@@ -1305,7 +1321,7 @@ We want ...
 
 * Save your work
 * Quit VSCode
-* You should have a terminal open and you should be in `step_03/` folder
+* You should have a terminal open and you should be in the `step_03/` folder
 
 ```powershell
 cd ..
@@ -1324,6 +1340,15 @@ code .
 
 
 
+
+
+Build, run and test the application. Find below the expected output:
+
+
+
+
+
+
 {: .new-title }
 > Summary
 >
@@ -1331,6 +1356,18 @@ code .
     * **Blablabla:** ...
     * **Blablabla:** ...
 * ...
+
+
+
+
+
+
+
+
+<div align="center">
+<img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -1367,6 +1404,15 @@ code .
 
 
 
+
+Build, run and test the application. Find below the expected output:
+
+
+
+
+
+
+
 {: .new-title }
 > Summary
 >
@@ -1386,6 +1432,10 @@ code .
 
 
 
+<div align="center">
+<img src="./assets/img06.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 
 <!-- ###################################################################### -->
@@ -1424,6 +1474,15 @@ code .
 
 
 
+Build, run and test the application. Find below the expected output:
+
+
+
+
+
+
+
+
 {: .new-title }
 > Summary
 >
@@ -1431,6 +1490,16 @@ code .
     * **Blablabla:** ...
     * **Blablabla:** ...
 * ...
+
+
+
+
+
+
+<div align="center">
+<img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 
 <!-- ###################################################################### -->
@@ -1468,6 +1537,15 @@ code .
 
 
 
+Build, run and test the application. Find below the expected output:
+
+
+
+
+
+
+
+
 {: .new-title }
 > Summary
 >
@@ -1483,12 +1561,35 @@ code .
 
 
 
+<div align="center">
+<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Conclusion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/><br/>
+<span></span>
+</div>
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
