@@ -7,7 +7,7 @@ description: "An 8-project progression from Hello World to a fully decoupled, I/
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-01-29 16:30:00
+last_modified_date: 2026-01-31 11:30:00
 ---
 
 
@@ -126,6 +126,15 @@ cargo run
 Hello, world!
 ```
 
+
+
+
+
+<!-- ###################################################################### -->
+#### **example 00**
+{: .no_toc }
+
+
 In the project, create an `examples/` folder. In the folder write a `ex00.rs` code which uses a function `greet()` to format the message `Hello XYZ` when "XYZ" is used as an argument.
 
 ```rust
@@ -144,6 +153,13 @@ Run the application with `cargo run --example ex00`. Expected output:
 Hello Bob.
 ```
 
+
+
+
+
+<!-- ###################################################################### -->
+#### **example 01**
+{: .no_toc }
 
 There is an exception in our business. If the argument is "Roberto", the application writes "Ciao Roberto!". Copy `ex00.rs` into `ex01.rs` and modify the code to take this requirement into account:
 
@@ -170,6 +186,13 @@ cargo run -q --example ex01
 Ciao Roberto!
 ```
 
+
+
+
+
+<!-- ###################################################################### -->
+#### **example 02**
+{: .no_toc }
 
 
 There are 2 other specific cases in our business.
@@ -225,7 +248,18 @@ Hello Alice.
 
 
 
-Copy `ex02.rs` into `ex03.rs` and add one test:
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+#### **example 03**
+{: .no_toc }
+
+Copy `ex02.rs` into `ex03.rs`and add one test :
 
 ```rust
 fn main() {
@@ -277,6 +311,9 @@ mod tests {
     }
 }
 ```
+
+
+
 Run the application and make some experiments:
 
 ```powershell
@@ -290,6 +327,17 @@ test tests::empty_name_returns_error ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 ```
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+#### **example 04**
+{: .no_toc }
 
 Copy `ex03.rs` into `ex04.rs`, add a loop in `main()` and more tests. Make sure `?` operator can be used in `main()`:
 
@@ -490,6 +538,13 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```
 
 
+
+
+
+<!-- ###################################################################### -->
+#### **example 05**
+{: .no_toc }
+
 Copy `ex04.rs` into `ex05.rs` improve the `main()` function so that CTRL+C can be avoided:
 
 ```rust
@@ -548,6 +603,15 @@ Hello ert.
 Goodbye!
 ```
 
+
+
+
+
+
+<!-- ###################################################################### -->
+#### **example 06**
+{: .no_toc }
+
 On this excellent [Web site](https://www.40tude.fr/docs/06_programmation/rust/), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). Then copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
 
 ```rust
@@ -602,6 +666,32 @@ fn greet(name: &str) -> Result<String> {
 // The rest of the code in unchanged
 
 ```
+
+```powershell
+cargo run --example ex06
+   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.57s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex06.exe`
+=== Greeting Service (Step 00) ===
+Enter a name to greet (or 'quit' to exit):
+
+> Zorro
+Hello Zorro.
+
+> exit
+
+Goodbye!
+```
+
+
+
+
+
+
+<!-- ###################################################################### -->
+#### **example 07**
+{: .no_toc }
+
 
 The POC is done! Copy `ex06.rs` into `ex07.rs`, review the code once again, add comments, run the tests and take a break.
 
@@ -703,30 +793,59 @@ fn greet(name: &str) -> Result<String> {
 Expected output:
 
 ```powershell
-cargo run --example ex06
+cargo run --example ex07
    Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.57s
-     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex06.exe`
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.40s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex07.exe`
 === Greeting Service (Step 00) ===
 Enter a name to greet (or 'quit' to exit):
 
-> Zorro
-Hello Zorro.
+> Obiwan
+Hello Obiwan.
 
-> exit
+> Luke
+Hello Luke.
+
+> Exit
 
 Goodbye!
+
 ```
+
+
+
+```powershell
+cargo test --example ex07
+   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.48s
+     Running unittests examples\ex07.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex07-789efb9150878b4d.exe)
+
+running 9 tests
+test tests::boundary_case_nineteen_chars ... ok
+test tests::domain_should_handle_unicode_names ... ok
+test tests::empty_name_returns_error ... ok
+test tests::greeting_length_limit ... ok
+test tests::domain_should_not_use_special_greeting_for_similar_names ... ok
+test tests::roberto_special_case ... ok
+test tests::domain_should_truncate_long_unicode_names ... ok
+test tests::truncation_for_long_names ... ok
+test tests::normal_greeting ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+```
+
+
 
 
 {: .new-title }
 > Summary
 >
 * We have a working proof of concept
-* Business rule (say "Hello") is applied
-* Exceptions are managed ("Roberto", empty parameter)
+* The business rule (say "Hello") is applied
+* Exceptions to the business rule are managed ("Roberto", empty parameter...)
 * Errors are returned
-* Tests are written
+* Tests are written but remember that "*testing can be used to show the presence of bugs, but never to show their absence*" (Edsger W. Dijkstra).
 
 
 
@@ -1142,7 +1261,7 @@ fn long_name_integration() {
 ```
 **Pay attention to:**
 * At this point `domain_test.rs` and `integration_test.rs` look very similar. This is because at this point our project have one component (`domain.rs`). Later, at the top of the `integration_test.rs` we will have multiple `use step_NN::component;` lines.
-* At the top of the file there is `use step_02::domain;` and we call `domain::greet())` in the rest of the code. This is because later this will help us to **read the code**.
+* At the top of the file there is `use step_02::domain;` and we call `domain::greet())` in the rest of the code. Later, this will help us to **read the code**.
 
 
 
