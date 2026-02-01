@@ -1909,7 +1909,7 @@ fn run_greeting_loop(
 
 **Points of attention:**
 * Including the ports into the `domain.rs` file help to express our intent. We want to make sure that the communication with the domain goes trough the ports.
-* *Read* the signature of run_greeting_loop(). We had `fn run_greeting_loop(input: &dyn ports::NameReader...` now we write `fn run_greeting_loop(input: &dyn domain::NameReader...`
+* **Read the code** and the signature of `run_greeting_loop()`. We had `fn run_greeting_loop(input: &dyn ports::NameReader...` now we write `fn run_greeting_loop(input: &dyn domain::NameReader...`
 
 
 
@@ -1982,7 +1982,52 @@ The tests output do not change.
 ### Objective
 {: .no_toc }
 
-We want ...
+We want to have one crate per component. At the end the folder hierarchy should look like:
+
+```text
+step_05/
+│   Cargo.toml
+└───crates
+    ├───adapter_console                  # depends on domain + shared
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       input.rs
+    │   │       lib.rs
+    │   │       output.rs
+    │   └───tests
+    │           adapter_console_test.rs  # tests are part of the crate
+    ├───app
+    │   │   Cargo.toml                   # depends application + adapter_console + shared
+    │   └───src
+    │           main.rs                  # entry point
+    │
+    ├───application                      # depends on domain + shared
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       greeting_service.rs
+    │   │       lib.rs
+    │   └───tests
+    │           application_test.rs      # tests are part of the crate
+    ├───domain                           # depend on shared
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       greeting.rs
+    │   │       lib.rs
+    │   │       ports.rs
+    │   └───tests
+    │           domain_test.rs           # tests are part of the crate
+    ├───integration_tests                # # depends domain + application + adapter_console + shared
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       lib.rs
+    │   └───tests
+    │           integration_test.rs
+    └───shared                           # no dependencies, it shares Error/Result
+        │   Cargo.toml
+        └───src
+                lib.rs
+```
+
 
 ### Setup
 {: .no_toc }
@@ -2013,6 +2058,7 @@ members = [
     "crates/application",
     "crates/adapter_console",
     "crates/app",
+    "crates/integration_tests",
 ]
 resolver = "3"
 
@@ -2022,15 +2068,175 @@ edition = "2024"
 license = "MIT"
 ```
 
-
-
-
-
 **Points of attention:**
-* ...
+* The root `Cargo.toml` defines a workspace with multiple independent crates
+* Each component can be developped and tested independently
+* The `app` crate has a `[[bin]]` section in its `Cargo.toml`, enabling `cargo run -p app` (in addition to `cargo run -p app`)
+* Integration tests have their own crate for separation of concerns and are run with `cargo test -p integration_tests`
+* Error and Resu
 
 
-Build, run and test the application. Find below the expected output:
+
+
+#### **The `adapter_console` crate**
+
+Here is Cargo.toml:
+
+```toml
+[package]
+name = "adapter_console"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+shared = { path = "../shared" }
+domain = { path = "../domain" }
+```
+
+
+
+
+
+
+
+
+
+
+
+#### **The `app` crate**
+
+Here is Cargo.toml:
+```toml
+[package]
+name = "app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "step_05"
+path = "src/main.rs"
+
+[dependencies]
+shared = { path = "../shared" }
+application = { path = "../application" }
+adapter_console = { path = "../adapter_console" }
+```
+
+
+
+
+
+
+
+
+
+#### **The `application` crate**
+
+Here is Cargo.toml:
+```toml
+[package]
+name = "application"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+shared = { path = "../shared" }
+domain = { path = "../domain" }
+```
+
+
+
+
+
+
+
+#### **The `domain` crate**
+
+Here is Cargo.toml:
+```toml
+[package]
+name = "domain"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+shared = { path = "../shared" }
+```
+
+
+
+
+
+
+
+
+#### **The `integration_tests` crate**
+
+Here is Cargo.toml:
+```toml
+[package]
+name = "integration_tests"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+shared = { path = "../shared" }
+domain = { path = "../domain" }
+application = { path = "../application" }
+adapter_console = { path = "../adapter_console" }
+```
+
+
+
+
+
+
+
+
+
+
+#### **The `shared` crate**
+
+Here is Cargo.toml:
+```toml
+[package]
+name = "shared"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+```
+
+
+
+
+
+
+
+
+
+
+Build, run and test the application. Try this:
+
+```powershell
+cargo test -p adapter_console
+cargo test -p adapter_console --test adapter_console_test
+cargo test -p adapter_console --test adapter_console_test console # any test containing "console"
+
+cargo test -p application
+cargo test -p domain --test domain_test
+cargo test -p integration_tests
+
+cargo run -p app
+cargo run
+```
+
+
+Find below the expected output:
 
 
 
