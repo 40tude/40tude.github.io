@@ -2073,31 +2073,27 @@ license = "MIT"
 * Each component can be developped and tested independently
 * The `app` crate has a `[[bin]]` section in its `Cargo.toml`, enabling `cargo run -p app` (in addition to `cargo run -p app`)
 * Integration tests have their own crate for separation of concerns and are run with `cargo test -p integration_tests`
-* Error and Resu
+* `Error` and `Result<T>` are moved in a shared component
 
 
 
+#### **The `shared` crate**
 
-#### **The `adapter_console` crate**
-
-Here is Cargo.toml:
+Here is `Cargo.toml`:
 
 ```toml
 [package]
-name = "adapter_console"
+name = "shared"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-
-[dependencies]
-shared = { path = "../shared" }
-domain = { path = "../domain" }
 ```
+The `src/lib.rs` file host the definition or our friends
 
-
-
-
-
+```rust
+pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
+```
 
 
 
@@ -2106,7 +2102,8 @@ domain = { path = "../domain" }
 
 #### **The `app` crate**
 
-Here is Cargo.toml:
+Here is `Cargo.toml`:
+
 ```toml
 [package]
 name = "app"
@@ -2124,59 +2121,33 @@ application = { path = "../application" }
 adapter_console = { path = "../adapter_console" }
 ```
 
+The `src/amin.rs` is now very short. Indeed the run_greeting_loop() function call in now a method that belongs to a `GreetingService` structure.
 
+```rust
+use adapter_console::{ConsoleInput, ConsoleOutput};
+use application::GreetingService;
+use shared::Result;
 
+fn main() -> Result<()> {
+    println!("=== Greeting Service (Step 05 - Modular Monolith & Hexagonal Architecture) ===");
+    println!("Enter a name to greet (or 'quit' to exit):\n");
 
+    let input = ConsoleInput::new();
+    let output = ConsoleOutput::new();
 
+    let service = GreetingService::new();
+    service.run_greeting_loop(&input, &output)?;
 
-
-
-
-#### **The `application` crate**
-
-Here is Cargo.toml:
-```toml
-[package]
-name = "application"
-version.workspace = true
-edition.workspace = true
-license.workspace = true
-
-[dependencies]
-shared = { path = "../shared" }
-domain = { path = "../domain" }
+    Ok(())
+}
 ```
-
-
-
-
-
-
-
-#### **The `domain` crate**
-
-Here is Cargo.toml:
-```toml
-[package]
-name = "domain"
-version.workspace = true
-edition.workspace = true
-license.workspace = true
-
-[dependencies]
-shared = { path = "../shared" }
-```
-
-
-
-
 
 
 
 
 #### **The `integration_tests` crate**
 
-Here is Cargo.toml:
+Here is `Cargo.toml`:
 ```toml
 [package]
 name = "integration_tests"
@@ -2192,6 +2163,98 @@ adapter_console = { path = "../adapter_console" }
 ```
 
 
+This crate is really a place holder for the tests. Indeed it does contains code which is executed at runtime. Just tests. This is why `src/lib.rs` is empty.
+
+```rust
+use application::GreetingService;
+use domain::{GreetingWriter, NameReader};
+use shared::Result;
+
+struct MockNameReader {
+    names: Vec<String>,
+    index: std::cell::Cell<usize>,
+}
+
+impl MockNameReader {
+    fn new(names: Vec<&str>) -> Self {
+        Self {
+            names: names.into_iter().map(String::from).collect(),
+            index: std::cell::Cell::new(0),
+        }
+    }
+}
+
+impl NameReader for MockNameReader {
+    fn read_name(&self) -> Result<String> {
+        let idx = self.index.get();
+        if idx < self.names.len() {
+            self.index.set(idx + 1);
+            Ok(self.names[idx].clone())
+        } else {
+            Ok("quit".to_owned())
+        }
+    }
+}
+
+struct MockGreetingWriter {
+    greetings: std::cell::RefCell<Vec<String>>,
+}
+
+impl MockGreetingWriter {
+    fn new() -> Self {
+        Self {
+            greetings: std::cell::RefCell::new(Vec::new()),
+        }
+    }
+
+    fn greetings(&self) -> Vec<String> {
+        self.greetings.borrow().clone()
+    }
+}
+
+impl GreetingWriter for MockGreetingWriter {
+    fn write_greeting(&self, greeting: &str) -> Result<()> {
+        self.greetings.borrow_mut().push(greeting.to_owned());
+        Ok(())
+    }
+}
+
+// Integration Tests
+#[test]
+fn domain_greet_function() {
+    // Arrange
+    // let reader = MockNameReader::new(vec!["Alice", "Bob", "exit"]);
+    let reader = MockNameReader::new(vec!["Alice", "Bob"]);
+    let writer = MockGreetingWriter::new();
+    let service = GreetingService::new();
+
+    // Act
+    let result = service.run_greeting_loop(&reader, &writer);
+
+    // Assert
+    assert!(result.is_ok());
+    let greetings = writer.greetings();
+    assert_eq!(greetings.len(), 2);
+    assert!(greetings[0].contains("Alice"));
+    assert!(greetings[1].contains("Bob"));
+}
+
+// Other tests follow here
+```
+**Points of attention:**
+* Why above in the reader, `index` is `std::cell::Cell<usize>`
+* `NameReader` trait declares `fn read_name(&self)`, a shared, immutable reference.
+* Inside `read_name`, we need to increment `index` to return the next name on each call. But `&self` forbids mutating struct fields directly. If `index` is a plain `usize`, the compiler rejects `self.index += 1` because you don't have `&mut self`. Trust me I tried.
+* `Cell<usize>` provides interior mutability. This allows us to modify a value behind a `&self` reference in a safe way (for Copy types like `usize`).
+* The same logic applies to `greetings: RefCell<Vec<String>>` in the writer. Indeed a `Vec<String>` does not have the Copy trait, so it needs `RefCell` instead of `Cell`.
+
+**Points of attention:**
+* The test must run without any adatper. This is why we create reader and writer mockup
+* Since the loop run until it read `quit` (or `exit`) the reader own a vector of words.
+* In the implementation we fasten our seat belt and if we reach the end of the vector then we simulate the reading of the word `quit`
+* Again, because of the loop, the mock writer have a vector of greetings which will be anlazed in the tests
+* Here only on test is shown. As in main.rs we create a `reader`, a `writer`, a `GreetingService` and invoke the `.run_greeting_loop()` method
+* Thanks to the mockup **we don't have to wait the availability of real adapters to test the behavior of the overall application**.
 
 
 
@@ -2200,16 +2263,297 @@ adapter_console = { path = "../adapter_console" }
 
 
 
-#### **The `shared` crate**
 
-Here is Cargo.toml:
+#### **The `application` crate**
+
+Here is `Cargo.toml`:
+
 ```toml
 [package]
-name = "shared"
+name = "application"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
+
+[dependencies]
+shared = { path = "../shared" }
+domain = { path = "../domain" }
 ```
+
+The  code of application/src/greeting_service.rs is almost a copy paste from the `run_greeting_loop()` of `step_04`.
+
+```rust
+use domain;
+use shared::Result;
+
+pub struct GreetingService;
+
+impl GreetingService {
+    pub fn new() -> Self {
+        Self
+    }
+
+    pub fn run_greeting_loop(
+        &self,
+        input: &dyn domain::NameReader,
+        output: &dyn domain::GreetingWriter,
+    ) -> Result<()> {
+        loop {
+            let name = input.read_name()?;
+
+            if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
+                println!("\nGoodbye!");
+                break;
+            }
+
+            if name.is_empty() {
+                continue;
+            }
+
+            match domain::greet(&name) {
+                Ok(greeting) => {
+                    output.write_greeting(&greeting)?;
+                }
+                Err(e) => {
+                    eprintln!("Error: {}\n", e);
+                }
+            }
+            println!(); // Extra newline for readability
+        }
+
+        Ok(())
+    }
+}
+
+impl Default for GreetingService {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+```
+
+**Points of attention:**
+* Did you notice the `&self` as first parameter of `.run_greeting_loop()` ?
+
+`application/src/lib.rs` is minimal:
+
+```rust
+pub mod greeting_service;
+pub use greeting_service::GreetingService;
+```
+
+
+
+
+
+
+
+#### **The `domain` crate**
+
+Here is `Cargo.toml`:
+```toml
+[package]
+name = "domain"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+shared = { path = "../shared" }
+```
+
+`domain/src/greeting.rs` remains unchanged. Yes, the name of the file is changed but `greet()` signature is the same.
+
+```rust
+// greeting.rs
+use shared::Result;
+
+pub fn greet(name: &str) -> Result<String> {
+    if name.is_empty() {
+        return Err("Name cannot be empty".to_string().into());
+    }
+
+    if name == "Roberto" {
+        return Ok("Ciao Roberto!".to_string());
+    }
+
+    const MAX_LENGTH: usize = 25;
+    const GREETING_PREFIX: &str = "Hello ";
+    const GREETING_SUFFIX: &str = ".";
+    const TRAILER: &str = "...";
+
+    let available_for_name = MAX_LENGTH - GREETING_PREFIX.len() - GREETING_SUFFIX.len();
+
+    if name.len() <= available_for_name {
+        return Ok(format!("Hello {}.", name));
+    }
+
+    let truncate_length = MAX_LENGTH - GREETING_PREFIX.len() - TRAILER.len();
+    let truncated_name = &name[..truncate_length.min(name.len())];
+
+    Ok(format!("Hello {}{}", truncated_name, TRAILER))
+}
+```
+The `domain/src/ports.rs` file is back! In the same folder we now have:
+
+```rust
+// ports.rs
+use shared::Result;
+
+pub trait NameReader {
+    fn read_name(&self) -> Result<String>;
+}
+
+pub trait GreetingWriter {
+    fn write_greeting(&self, greeting: &str) -> Result<()>;
+}
+```
+
+Finally here is ``domain/src/lib.rs`:
+
+```rust
+pub mod greeting;
+pub mod ports;
+
+pub use greeting::greet;
+pub use ports::{GreetingWriter, NameReader};
+```
+
+
+
+
+
+
+
+
+
+
+#### **The `adapter_console` crate**
+
+Here is `Cargo.toml`:
+
+```toml
+[package]
+name = "adapter_console"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+shared = { path = "../shared" }
+domain = { path = "../domain" }
+```
+
+The previous `adapters/` folder is renamed `adapter_console` and the crate contains both, intput and output console adpaters modules in the same crate. Below `input.rs` and `output.rs` contain respectively a large part of `console_input.rs` dans `console.output.rs` from the previous project `step_04`.
+
+```rust
+// input.rs
+use std::io::{self, Write};
+use domain::NameReader;
+use shared::Result;
+
+pub struct ConsoleInput;
+
+impl ConsoleInput {
+    pub fn new() -> Self {
+        Self
+    }
+}
+
+impl Default for ConsoleInput {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl NameReader for ConsoleInput {
+    fn read_name(&self) -> Result<String> {
+        print!("> ");
+        io::stdout()
+            .flush()
+            .map_err(|e| format!("Failed to flush stdout: {e}"))?;
+
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .map_err(|e| format!("Failed to read from stdin: {e}"))?;
+
+        let name = input.trim().to_string();
+
+        Ok(name)
+    }
+}
+```
+
+```rust
+// output.rs
+use domain::GreetingWriter;
+use shared::Result;
+
+pub struct ConsoleOutput;
+
+impl ConsoleOutput {
+    pub fn new() -> Self {
+        Self
+    }
+}
+
+impl Default for ConsoleOutput {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl GreetingWriter for ConsoleOutput {
+    fn write_greeting(&self, greeting: &str) -> Result<()> {
+        println!("{greeting}");
+        Ok(())
+    }
+}
+```
+
+```rust
+// lib.rs
+pub mod input;
+pub mod output;
+
+pub use input::ConsoleInput;
+pub use output::ConsoleOutput;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2236,9 +2580,54 @@ cargo run
 ```
 
 
-Find below the expected output:
+Find below 2 examples of expected outputs:
+
+```powershell
+cargo test -p integration_tests
+   Compiling application v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_05\crates\application)
+   Compiling integration_tests v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_05\crates\integration_tests)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.77s
+     Running unittests src\lib.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\deps\integration_tests-df01036f1172a702.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\integration_test.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\deps\integration_test-401ffa95db2f9622.exe)
+
+running 5 tests
+test complete_flow_long_name ... ok
+test empty_name_error_handling ... ok
+test complete_flow_normal_greeting ... ok
+test domain_greet_function ... ok
+test service_with_mocks ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests integration_tests
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
 
 
+
+```powershell
+cargo run
+   Compiling app v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_05\crates\app)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.35s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\step_05.exe`
+=== Greeting Service (Step 05 - Modular Monolith & Hexagonal Architecture) ===
+Enter a name to greet (or 'quit' to exit):
+
+> James HOLDEN
+Hello James HOLDEN.
+
+> exit
+
+Goodbye!
+```
 
 
 
@@ -2247,11 +2636,9 @@ Find below the expected output:
 {: .new-title }
 > Summary
 >
-* Blablabla
-    * **Blablabla:** ...
-    * **Blablabla:** ...
+* Every component is in its own crate
+* Development and testing can be done independantly, per crate, in parallel, at different speed, by different teams...
 * ...
-
 
 
 
