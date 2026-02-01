@@ -84,6 +84,10 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 <!-- ###################################################################### -->
 ## Introduction
 
+<!--
+* Components vs Plugins
+
+-->
 
 
 
@@ -503,7 +507,7 @@ mod tests {
 
     #[test]
     fn domain_should_truncate_long_unicode_names() {
-        // **Pay attention to:** Unicode characters may have different byte lengths
+        // **Points of attention:** Unicode characters may have different byte lengths
         let long_unicode_name = "Müller-Öffentlicher-Straßenbahn-Überführung";
         let result = greet(long_unicode_name);
 
@@ -960,7 +964,7 @@ mod tests {
 }
 ```
 
-**Pay attention to:**
+**Points of attention:**
 * `use crate::Result;` statement at the top of `domain.rs`.
 * `greet()` is now public.
 * Since `greet()` is public we could have the tests outside of this file to make sure they behave like any other consumer.
@@ -976,7 +980,7 @@ pub type Error = Box<dyn std::error::Error>;
 pub type Result<T> = std::result::Result<T, Error>;
 ```
 
-**Pay attention to:**
+**Points of attention:**
 * How `greet ()` is **re-exported**. This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main` crate, without having to write `domain::greet`. This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`. It is therefore a question of ease of use vs clarity for the code consumers. I'm not always a big fan of it and I will explain why later.
 * `Error` and `Result` are part of the lib because they are used by `domain.rs` and `main.rs`
 
@@ -1032,7 +1036,7 @@ fn main() -> Result<()> {
     Ok(())
 }
 ```
-**Pay attention to:**
+**Points of attention:**
 * How `Result` and `greet` are shortcutted with the `use` statements.
 * Make sure to understand why here, we write `use step_01::Result;` while in `domain.rs` we wrote `use crate::Result;`. You can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
 
@@ -1083,7 +1087,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 ```
 
+**Points of attention:**
 
+* We can now test the domain module in isolation
+    ```powershell
+    cargo test domain
+    ```
+* We could develop independently as long as the signature of `greet()` remains stable.
 
 
 {: .new-title }
@@ -1210,7 +1220,7 @@ fn empty_name_returns_error() {
 // the others tests
 
 ```
-**Pay attention to:**
+**Points of attention:**
 * We are testing `domain`. So at the top of the file there is `use step_02::domain::greet;` and we call `greet()` in the rest of the code. No confusion is possible.
 
 
@@ -1259,8 +1269,8 @@ fn long_name_integration() {
     assert!(greeting.ends_with(TRAILER));
 }
 ```
-**Pay attention to:**
-* At this point `domain_test.rs` and `integration_test.rs` look very similar. This is because at this point our project have one component (`domain.rs`). Later, at the top of the `integration_test.rs` we will have multiple `use step_NN::component;` lines.
+**Points of attention:**
+* At this point `domain_test.rs` and `integration_test.rs` look very similar. This is because our project have one component (`domain.rs`). Later, at the top of the `integration_test.rs` we will have multiple `use step_NN::component;` lines.
 * At the top of the file there is `use step_02::domain;` and we call `domain::greet())` in the rest of the code. Later, this will help us to **read the code**.
 
 
@@ -1345,7 +1355,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * Nothing change from the outside (which is good)
 * `domains.rs` is shorter
 * The tests are at the right place
-* We now have integration tests
+* We now have a set of integration tests
 * So far, so good...
 
 
@@ -1375,7 +1385,25 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ### Objective
 {: .no_toc }
 
-We want ...
+We want to start implementing an Hexagonal Architecture. At the end the folder hierarchy should look like:
+
+```text
+step_03
+│   Cargo.toml
+├───src/
+│   │   domain.rs   # Business rules (isolated)
+│   │   lib.rs      # Library re-exports
+│   │   main.rs     # Entry point
+│   │   ports.rs    # Traits definition
+│   └───adapters/
+│           console_input.rs    # Implementations
+│           console_output.rs
+│           mod.rs
+└───tests/
+        adapters_test.rs      # Adapters unit tests
+        domain_test.rs        # Domain unit tests
+        integration_test.rs   # Integration tests
+```
 
 ### Setup
 {: .no_toc }
@@ -1392,25 +1420,328 @@ cd step_03
 code .
 ```
 
+* If you have **ANY** doubt about Hexagonal Architecture, Ports and Adapters, read this [dedicated page]({%link docs\06_programmation\rust\024_hexagonal\hexagonal_lite.md%}).
 
 ### Actions
 {: .no_toc }
+
+Update `Cargo.toml`
+
+```toml
+[package]
+name = "step_03"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "step_03"
+path = "src/main.rs"
+```
+
+
+Create a `ports.rs` file.
+
+```rust
+use crate::Result;
+
+pub trait NameReader {
+    fn read_name(&self) -> Result<String>;
+}
+
+pub trait GreetingWriter {
+    fn write_greeting(&self, greeting: &str) -> Result<()>;
+}
+```
+
+
+**Points of attention:**
+* The idea is to make sure that our application get the names only from objects with the `NameReader` trait while it writes the greeting on objects having the `GreetingWriter` trait.
+
+
+
+
+
+Create an `adapters/` folder and add 2 concrete implementations of the previous traits in the `console_input.rs` and `console_output.rs` files.
+
+```rust
+// console_output.rs
+use crate::Result;
+use crate::ports;
+
+pub struct ConsoleOutput;
+
+impl ConsoleOutput {
+    pub fn new() -> Self {
+        Self
+    }
+}
+
+impl Default for ConsoleOutput {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl ports::GreetingWriter for ConsoleOutput {
+    fn write_greeting(&self, greeting: &str) -> Result<()> {
+        println!("{}", greeting);
+        Ok(())
+    }
+}
+```
+
+**Points of attention:**
+* No surprise, since this is an implementation of the `GreetingWriter` and since it is named `ConsoleOutput` it... Yes, it writes on the console.
+* Did you notice the `use crate::Result;` and `use crate::ports;` at the top of the file?
+* Is it clear why `.new()` and `.default()` returns `Self`?
+
+
+
+```rust
+// console_input.rs
+use std::io::{self, Write};
+
+use crate::Result;
+use crate::ports;
+
+pub struct ConsoleInput;
+
+impl ConsoleInput {
+    pub fn new() -> Self {
+        Self
+    }
+}
+
+impl Default for ConsoleInput {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl ports::NameReader for ConsoleInput {
+    fn read_name(&self) -> Result<String> {
+        print!("> ");
+        io::stdout()
+            .flush()
+            .map_err(|e| format!("Failed to flush stdout: {}", e))?;
+
+        let mut input = String::new();
+        io::stdin()
+            .read_line(&mut input)
+            .map_err(|e| format!("Failed to read from stdin: {}", e))?;
+
+        let name = input.trim().to_string();
+
+        Ok(name)
+    }
+}
+```
+
+**Points of attention:**
+* No surprise here too. It is almost a copy and paste from `step_02/main.rs`.
+
+
+Last but not least, add a file `adapters/mod.rs` that “describes” the modules that make up the `adapters` module and re-export `ConsoleInput` and `ConsoleOutput` names.
+
+
+```rust
+// mode.rs
+pub mod console_input;
+pub mod console_output;
+
+pub use console_input::ConsoleInput;
+pub use console_output::ConsoleOutput;
+```
+
+
+
+At this point, we have the Ports (traits) and the Adapters (implementations). We need to add them to the `lib.rs` file so that the `main.rs` file can use them:
+
+```rust
+// lib.rs
+pub mod adapters;
+pub mod domain;
+pub mod ports;
+
+// Type aliases for error handling
+pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
+```
+
+
+
+
+
+Finally we can rewrite `main.rs` file as follow:
+
+```rust
+// main.rs
+use step_03::adapters;
+use step_03::domain;
+use step_03::ports;
+
+use step_03::Result;
+
+fn main() -> Result<()> {
+    println!("=== Greeting Service (Step 03 - Hexagonal Architecture) ===");
+    println!("Enter a name to greet (or 'quit' to exit):\n");
+
+    // Dependency injection: Create adapters
+    let input = adapters::ConsoleInput::new();
+    let output = adapters::ConsoleOutput::new();
+
+    run_greeting_loop(&input, &output)?;
+
+    Ok(())
+}
+
+fn run_greeting_loop(
+    input: &dyn ports::NameReader,
+    output: &dyn ports::GreetingWriter,
+) -> Result<()> {
+    loop {
+        // Read name from input adapter
+        let name = input.read_name()?;
+
+        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
+            println!("\nGoodbye!");
+            break;
+        }
+
+        if name.is_empty() {
+            continue;
+        }
+
+        // Call domain logic (pure business rules)
+        match domain::greet(&name) {
+            Ok(greeting) => {
+                // Write greeting to output adapter
+                output.write_greeting(&greeting)?;
+            }
+            Err(e) => {
+                eprintln!("Error: {}\n", e);
+            }
+        }
+        println!();
+    }
+    Ok(())
+}
+```
+
+**Points of attention:**
+* Up to now, in `main()` we were calling `domain::greet()` directly.
+* Now, we first instanciate an input and an output data types (`adapters`) which implement the traits defined in `ports.rs` (see the `let input = adapters::ConsoleInput::new();` for example)
+* Then we call `run_greeting_loop()` using references to adapters (see the `&input` for example) as arguments
+* The signature of `run_greeting_loop()` shows that the it accepts **ANY** reference to variable having the right trait (see the `input: &dyn ports::NameReader`).
+* Here we make it works with ConsoleInput and ConsoleOutput but it would work the same way with WebInput and StonesOutput if they had the expected traits.
+* Look for `.read_name()` and `.write_greeting()`
+
+
+
 
 
 
 Build, run and test the application. Find below the expected output:
 
+```powershell
+cargo run
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_03\debug\step_03.exe`
+=== Greeting Service (Step 03 - Hexagonal Architecture) ===
+Enter a name to greet (or 'quit' to exit):
 
+> Roberto
+Ciao Roberto!
+
+> exit
+
+Goodbye!
+```
+
+
+
+```powershell
+cargo test
+   Compiling step_03 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_03)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.82s
+     Running unittests src\lib.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_03\debug\deps\step_03-6353ffb82854041d.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\main.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_03\debug\deps\step_03-e5e90dd1ed39887f.exe)
+
+running 1 test
+test tests::greeting_loop_with_mocks ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\adapters_test.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_03\debug\deps\adapters_test-46d627c56f70ee9b.exe)
+
+running 9 tests
+test error_propagation ... ok
+test failing_input ... ok
+test greeting_flow_with_roberto ... ok
+test multiple_greetings ... ok
+test failing_output ... ok
+test mock_input_reader ... ok
+test greeting_flow_with_long_name ... ok
+test greeting_flow_with_mocks ... ok
+test mock_output_writer ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests\domain_test.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_03\debug\deps\domain_test-73a3c5e5e6aeee7f.exe)
+
+running 9 tests
+test boundary_case_nineteen_chars ... ok
+test domain_should_handle_unicode_names ... ok
+test domain_should_not_use_special_greeting_for_similar_names ... ok
+test greeting_length_limit ... ok
+test normal_greeting ... ok
+test truncation_for_long_names ... ok
+test empty_name_returns_error ... ok
+test domain_should_truncate_long_unicode_names ... ok
+test roberto_special_case ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests\integration_test.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_03\debug\deps\integration_test-16290d5b02f48fa2.exe)
+
+running 6 tests
+test empty_name_integration ... ok
+test long_name_integration ... ok
+test multiple_greetings_integration ... ok
+test end_to_end_with_dependency_injection ... ok
+test greet_integration ... ok
+test roberto_integration ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests step_03
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
+**Points of attention:**
+* There are more tests.
+    * Indeed one test of the `greeting_loop_with_mocks()` function have been added to `main.rs` because `run_greeting_loop()` is not public.
+    * In addition the file `test/adapters_test.rs` host tests for the adapters using Mock implementations.
+    * `tests/integration_test.rs` now use mock adapters
+    * `tests/domain_test.rs` is not modified
 
 
 
 {: .new-title }
 > Summary
 >
-* Blablabla
-    * **Blablabla:** ...
-    * **Blablabla:** ...
-* ...
+* `domain.rs` was **NOT** impacted. We "just" re-arrange the machinery around it
+* ports = traits
+* adapters = implementations
+*
 
 
 
@@ -1433,7 +1764,7 @@ Build, run and test the application. Find below the expected output:
 ### Objective
 {: .no_toc }
 
-We want ...
+We want integrates the traits defintinio of `ports.rs` into the file `domain.rs`.
 
 ### Setup
 {: .no_toc }
@@ -1454,14 +1785,155 @@ code .
 ### Actions
 {: .no_toc }
 
+Update `Cargo.toml`
+
+```toml
+[package]
+name = "step_04"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "step_04"
+path = "src/main.rs"
+```
+
+
+Copy the content of `ports.rs` into `domain.rs`, then delete `ports.rs` :
+
+```rust
+// domain.rs
+use crate::Result;
+
+pub fn greet(name: &str) -> Result<String> {
+    if name.is_empty() {
+        return Err("Name cannot be empty".to_string().into());
+    }
+
+    // Special case for Roberto
+    if name == "Roberto" {
+        return Ok("Ciao Roberto!".to_string());
+    }
+
+    const MAX_LENGTH: usize = 25;
+    const GREETING_PREFIX: &str = "Hello ";
+    const GREETING_SUFFIX: &str = ".";
+    const TRAILER: &str = "...";
+
+    let available_for_name = MAX_LENGTH - GREETING_PREFIX.len() - GREETING_SUFFIX.len();
+
+    // Name fits within the allowed length
+    if name.len() <= available_for_name {
+        return Ok(format!("Hello {}.", name));
+    }
+
+    // Name is too long, truncate and add ellipsis
+    let truncate_length = MAX_LENGTH - GREETING_PREFIX.len() - TRAILER.len();
+
+    let truncated_name = &name[..truncate_length.min(name.len())];
+    Ok(format!("Hello {}{}", truncated_name, TRAILER))
+}
+
+pub trait NameReader {
+    fn read_name(&self) -> Result<String>;
+}
+
+pub trait GreetingWriter {
+    fn write_greeting(&self, greeting: &str) -> Result<()>;
+}
+```
+
+In `lib.rs` remove the line `pub mod ports;`
+
+```rust
+// lib.rs
+pub mod adapters;
+pub mod domain;
+
+pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
+```
 
 
 
+In `main.rs` remove the line `use step_03::ports;`, replace `step_03` by `step_04` and update the signature of run_greeting_loop() so that it use `&dyn domain::NameReader` in place of `&dyn port::NameReader`.
 
+```rust
+// main.rs
+use step_04::adapters;
+use step_04::domain;
+
+use step_04::Result;
+
+fn main() -> Result<()> {
+    println!("=== Greeting Service (Step 04 - Hexagonal Architecture) ===");
+    println!("Enter a name to greet (or 'quit' to exit):\n");
+
+    let input = adapters::ConsoleInput::new();
+    let output = adapters::ConsoleOutput::new();
+
+    run_greeting_loop(&input, &output)?;
+
+    Ok(())
+}
+
+fn run_greeting_loop(
+    input: &dyn domain::NameReader,
+    output: &dyn domain::GreetingWriter,
+) -> Result<()> {
+    loop {
+        let name = input.read_name()?;
+
+        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
+            println!("\nGoodbye!");
+            break;
+        }
+
+        if name.is_empty() {
+            continue;
+        }
+
+        match domain::greet(&name) {
+            Ok(greeting) => {
+                output.write_greeting(&greeting)?;
+            }
+            Err(e) => {
+                eprintln!("Error: {}\n", e);
+            }
+        }
+        println!();
+    }
+    Ok(())
+}
+```
+
+**Points of attention:**
+* Including the ports into the `domain.rs` file help to express our intent. We want to make sure that the communication with the domain goes trough the ports.
+* *Read* the signature of run_greeting_loop(). We had `fn run_greeting_loop(input: &dyn ports::NameReader...` now we write `fn run_greeting_loop(input: &dyn domain::NameReader...`
 
 
 
 Build, run and test the application. Find below the expected output:
+
+```powershell
+=== Greeting Service (Step 04 - Hexagonal Architecture) ===
+Enter a name to greet (or 'quit' to exit):
+
+> sd sdf sd fs df sd f sd fs df sd f sdf s df
+Hello sd sdf sd fs df ...
+
+> quit
+
+Goodbye!
+```
+
+The tests output do not change.
+
+
+
+
+
+
 
 
 
@@ -1471,10 +1943,10 @@ Build, run and test the application. Find below the expected output:
 {: .new-title }
 > Summary
 >
-* Blablabla
-    * **Blablabla:** ...
-    * **Blablabla:** ...
-* ...
+* Nothing change form the outside
+* Ports are now included in the domain. This help to express the intent. The domain comunicate with the rest of the via trough the port.
+* Adpaters which want to be used by the domain must implement those trait
+* The domain does not depend on the adapters. The adapter depends on the domain. This is DIP (dependency inversion principle)
 
 
 
@@ -1487,6 +1959,19 @@ Build, run and test the application. Find below the expected output:
 <img src="./assets/img05.webp" alt="" width="450" loading="lazy"/><br/>
 <span></span>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -1518,10 +2003,31 @@ code .
 ### Actions
 {: .no_toc }
 
+Update `Cargo.toml`
+
+```toml
+[workspace]
+members = [
+    "crates/shared",
+    "crates/domain",
+    "crates/application",
+    "crates/adapter_console",
+    "crates/app",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+```
 
 
 
 
+
+**Points of attention:**
+* ...
 
 
 Build, run and test the application. Find below the expected output:
@@ -1588,9 +2094,32 @@ code .
 ### Actions
 {: .no_toc }
 
+Update `Cargo.toml`
+
+```toml
+[workspace]
+members = [
+    "crates/domain",
+    "crates/application",
+    "crates/adapter_console",
+    "crates/app",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+# Shared dependencies across all crates
+[workspace.dependencies]
+thiserror = "2.0"
+anyhow = "1.0"
+```
 
 
-
+**Points of attention:**
+* ...
 
 
 Build, run and test the application. Find below the expected output:
@@ -1609,6 +2138,19 @@ Build, run and test the application. Find below the expected output:
     * **Blablabla:** ...
     * **Blablabla:** ...
 * ...
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1651,9 +2193,35 @@ code .
 ### Actions
 {: .no_toc }
 
+Update `Cargo.toml`
+
+
+```toml
+[workspace]
+members = [
+    "crates/domain",
+    "crates/application",
+    "crates/adapter_console",
+    "crates/adapter_file",
+    "crates/app",
+]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+# Shared dependencies across all crates
+[workspace.dependencies]
+thiserror = "2.0"
+anyhow = "1.0"
+```
 
 
 
+**Points of attention:**
+* ...
 
 
 Build, run and test the application. Find below the expected output:
@@ -1691,6 +2259,10 @@ Build, run and test the application. Find below the expected output:
 <!-- ###################################################################### -->
 ## Conclusion
 
+<!--
+* Avoid overthinking. Move forward, write code. Then study how to make your code easier to change. Otherwise, the risk is to "conceptualize the concept" and never actually add features to your application.
+-->
+
 
 
 
@@ -1716,6 +2288,12 @@ Build, run and test the application. Find below the expected output:
 ## Webliography
 * link_00
 
+
+<!--
+Clean Architecture
+Pragmatic programmer
+Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
+-->
 
 <!-- <div align="center">
 <img src="./assets/img99.webp" alt="" width="900" loading="lazy"/><br/>
