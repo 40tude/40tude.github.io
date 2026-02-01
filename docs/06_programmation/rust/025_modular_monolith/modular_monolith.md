@@ -1420,7 +1420,7 @@ cd step_03
 code .
 ```
 
-* If you have **ANY** doubt about Hexagonal Architecture, Ports and Adapters, read this [dedicated page]({%link docs\06_programmation\rust\024_hexagonal\hexagonal_lite.md%}).
+* If you have **ANY** doubt about Hexagonal Architecture, Ports and Adapters, read this [dedicated page]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}).
 
 ### Actions
 {: .no_toc }
