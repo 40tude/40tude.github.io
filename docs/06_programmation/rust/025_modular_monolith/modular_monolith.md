@@ -2077,7 +2077,8 @@ license = "MIT"
 
 
 
-#### **The `shared` crate**
+#### **The shared crate**
+{: .no_toc }
 
 Here is `Cargo.toml`:
 
@@ -2100,7 +2101,8 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 
 
-#### **The `app` crate**
+#### **The app crate**
+{: .no_toc }
 
 Here is `Cargo.toml`:
 
@@ -2145,7 +2147,8 @@ fn main() -> Result<()> {
 
 
 
-#### **The `integration_tests` crate**
+#### **The integration_tests crate**
+{: .no_toc }
 
 Here is `Cargo.toml`:
 ```toml
@@ -2264,7 +2267,8 @@ fn domain_greet_function() {
 
 
 
-#### **The `application` crate**
+#### **The application crate**
+{: .no_toc }
 
 Here is `Cargo.toml`:
 
@@ -2348,7 +2352,8 @@ pub use greeting_service::GreetingService;
 
 
 
-#### **The `domain` crate**
+#### **The domain crate**
+{: .no_toc }
 
 Here is `Cargo.toml`:
 ```toml
@@ -2428,7 +2433,8 @@ pub use ports::{GreetingWriter, NameReader};
 
 
 
-#### **The `adapter_console` crate**
+#### **The adapter_console crate**
+{: .no_toc }
 
 Here is `Cargo.toml`:
 
