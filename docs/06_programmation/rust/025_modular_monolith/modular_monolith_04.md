@@ -20,9 +20,9 @@ An 7-project progression from Hello World to a fully decoupled, I/O-agnostic app
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -59,9 +59,9 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
 
 
 
@@ -108,7 +108,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want to have one crate per component. At the end the folder hierarchy should look like this:
+We want to have one crate per component an application in charge of the use cases. At the end of Step 04 folder hierarchy should look like this:
 
 ```text
 step_04
@@ -218,15 +218,15 @@ license = "MIT"
 **Points of attention:**
 * The root `Cargo.toml` defines a workspace with multiple independent crates
 * Each component can be developed and tested independently
-* The `app` crate has a `[[bin]]` section in its `Cargo.toml`, enabling `cargo run` (in addition to `cargo run -p app`)
+* As we will see, the `app` crate has a `[[bin]]` section in its `Cargo.toml`, enabling `cargo run` (in addition to `cargo run -p app`)
 * Integration tests have their own crate for separation of concerns and are run with `cargo test -p integration_tests`
 
 
 **Points of attention:**
 * Up to now it was Ok to share `Error` and `Result<T>` between the modules.
-* This is no longer the case. Indeed each crate will develop its own error code/message
+* This is no longer the case. Indeed each crate must be independent, and we should not be surprised if some of them develop their own error code/message
 * This is why in most of the crates there is an `error.rs` file
-* Now these `error.rs` files all look the same but tomorrow, one crate may start using `thiserror` while the others keep their error schema.
+* As for now, all these `error.rs` files look the same but tomorrow, one crate may start using `thiserror` while the others keep their error schema.
 
 
 
@@ -258,7 +258,12 @@ application = { path = "../application" }
 adapter_console = { path = "../adapter_console" }
 ```
 
-The `src/main.rs` is now very short. Indeed the `run_greeting_loop()` function call in now a method that belongs to a `GreetingService` structure.
+
+
+The `src/main.rs` is now very short. Indeed the `run_greeting_loop()` function call in now a method that belongs to a `GreetingService` structure (hosted in the application crate).
+
+
+
 
 ```rust
 use adapter_console::{ConsoleInput, ConsoleOutput};
@@ -416,16 +421,16 @@ fn domain_greet_function() {
 **Points of attention:**
 * Why above, in `MockNameReader`, `index` is `std::cell::Cell<usize>`?
 * `NameReader` trait declares `fn read_name(&self)`, a shared, immutable reference.
-* Inside `read_name`, we need to increment `index` to return the next name on each call. But `&self` forbids mutating struct fields directly. If `index` is a plain `usize`, the compiler rejects `self.index += 1` because you don't have `&mut self`. Trust me I tried.
+* Inside `read_name`, we need to increment `index` to return the next name on each call. But `&self` forbids mutating struct fields directly. If `index` is a plain `usize`, the compiler rejects `self.index += 1` because you don't have `&mut self`. Trust me, I tried.
 * `Cell<usize>` provides interior mutability. This allows us to modify a value behind a `&self` reference in a safe way (for Copy types like `usize`).
 * The same logic applies to `greetings: RefCell<Vec<String>>` in the writer. Indeed a `Vec<String>` does not have the Copy trait, so it needs `RefCell` instead of `Cell`.
 
 **Points of attention:**
 * The test must run without any adapter. This is why we create reader and writer mockup
 * Since the loop run until it read `quit` (or `exit`) the reader own a vector of words.
-* In the implementation we fasten our seat belt and if we reach the end of the vector then we simulate the reading of the word `quit`
-* Again, because of the loop, the mock writer have a vector of greetings which will be analyzed in the tests
-* Here only on test is shown. As in main.rs we create a `reader`, a `writer`, a `GreetingService` and invoke the `.run_greeting_loop()` method
+* In the implementation we fasten our seat belt and if we reach the end of the vector then we simulate the reading of the word `quit`.
+* Again, because of the loop, the mock writer have a vector of greetings which will be analyzed in the tests.
+* Here, only one test is shown. As in `main.rs` we create a `reader`, a `writer`, a `GreetingService` and invoke the `.run_greeting_loop()` method
 * Thanks to the mockup **we don't have to wait the availability of real adapters to test the behavior of the overall application**.
 
 
@@ -517,7 +522,7 @@ impl Default for GreetingService {
 ```
 
 **Points of attention:**
-* Make sur to understand the line `use crate::error::Result;`
+* Make sure to understand the line `use crate::error::Result;`
 * Did you notice the `&self` as a first parameter of `.run_greeting_loop()`?
 
 
@@ -542,7 +547,7 @@ license.workspace = true
 [dependencies]
 ```
 
-Here is ``domain/src/lib.rs`:
+Here is `domain/src/lib.rs`:
 
 ```rust
 pub mod error;
@@ -555,7 +560,7 @@ pub use ports::{GreetingWriter, NameReader};
 
 
 
-`error.rs`, `domain/src/ports.rs` do not change. `domain/src/greeting.rs` remains unchanged. Yes, for the latter the name of the file is changed but `greet()` signature is the same.
+`error.rs`, `domain/src/ports.rs` do not change. `domain/src/greeting.rs` remains unchanged. Yes, regarding the latter, the name of the file has changed but the signature of the `greet()` function is the same.
 
 
 
@@ -592,7 +597,7 @@ license.workspace = true
 domain = { path = "../domain" }
 ```
 
-Here is ``adapter_console/src/lib.rs`:
+Here is `adapter_console/src/lib.rs`:
 
 ```rust
 // lib.rs
@@ -764,8 +769,8 @@ Goodbye!
 > What have we done so far?
 >
 * Every component is now in its own crate
-* Each crate has its own Result and Error
-* Each crate has its set of tests
+* Each crate has its own `Result` and `Error`
+* Each crate has its own set of tests
 * Development and testing can be done independently, per crate, in parallel, at different speed, by different teams...
 
 
@@ -791,7 +796,7 @@ Goodbye!
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
 

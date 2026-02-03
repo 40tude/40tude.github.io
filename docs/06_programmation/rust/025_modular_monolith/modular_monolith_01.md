@@ -20,9 +20,9 @@ An 7-project progression from Hello World to a fully decoupled, I/O-agnostic app
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -56,9 +56,9 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
 
 
 
@@ -196,7 +196,7 @@ path = "src/main.rs"
 <!-- ###################################################################### -->
 ### error.rs
 
-Create an `error.rs` file and copy the Error and Result type alias in it:
+Create an `error.rs` file and copy the `Error` and `Result` type aliases in it:
 
 ```rust
 pub type Error = Box<dyn std::error::Error>;
@@ -218,7 +218,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 ### domain.rs
 
 
-Extract from `main.rs` the `greet()` function and the tests and copy them in a new file `domain.rs`.
+Extract from `main.rs` the `greet()` function and the tests then copy them in a new `domain.rs` file.
 
 
 ```rust
@@ -257,9 +257,10 @@ mod tests {
 ```
 
 **Points of attention:**
-* `use crate::error::Result;` statement at the top of `domain.rs`.
+* Do you see the `use crate::error::Result;` statement at the top of `domain.rs`.
+* Is the usage of `crate` here OK for you?
 * `greet()` is now public.
-* Since `greet()` is public we could have the tests outside of this file to make sure they behave like any other consumer.
+* Since `greet()` is public we could have stored the tests outside of this file to make sure they behave like any other "consumer".
 
 
 
@@ -283,9 +284,9 @@ pub use domain::greet;
 
 **Points of attention:**
 * See how `greet ()` is **re-exported**.
-    * This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main` crate, without having to write `domain::greet`.
-    * This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`.
-    * It is therefore a question of ease of use vs clarity for the code consumers.
+    * This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main.rs` without having to write `domain::greet`.
+    * This may simplifies the import for the end-user of the lib. They can `use crate::greet;` instead of `use crate::domain::greet;`.
+    * For the code consumers, it is therefore a question of ease of use vs clarity.
     * I'm not always a big fan of it and I will explain why later.
 
 
@@ -413,7 +414,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
     ```powershell
     cargo test domain
     ```
-* We could develop independently as long as the signature of `greet()` remains stable.
+* We can develop it independently as long as the signature of `greet()` remains stable.
 
 
 
@@ -436,8 +437,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 {: .new-title }
 > What have we done so far?
 >
-* Nothing change from the outside
-* We have a more modular project however
+* Nothing change from the outside. That's good news.
+* And we have a more modular project.
 
 
 
@@ -462,6 +463,6 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion

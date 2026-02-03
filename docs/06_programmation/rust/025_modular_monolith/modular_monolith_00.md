@@ -67,9 +67,9 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
 
 
 
@@ -135,7 +135,9 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want a working prototype (POC). At the end the project will look like this:
+We want a working prototype (POC). This prototype is NOT the final application, but if prove that the "concept" is valid. Here the "concept" is rather simple, the idea is to print "Hello XYZ" if you enter "XYZ". We will go one sample code at a time, validating some "business rule", adding some tests...
+
+At the end of this prototyping phase the folders will look like this:
 
 ```text
 step_00/
@@ -170,6 +172,7 @@ step_00/
 <!-- ###################################################################### -->
 ## Setup
 
+You can download the project from [GitHub](https://github.com/40tude/modular_monolith_tuto) (at least you know it works) but I strongly suggest to rebuild it yourself.
 
 ```powershell
 mkdir modular_monolith
@@ -197,7 +200,7 @@ cargo run
 Hello, world!
 ```
 
-At this point we know everything is up and running. We can start to "play".
+At this point we know everything is up and running. Now, we can start to "play".
 
 
 
@@ -950,7 +953,7 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
 

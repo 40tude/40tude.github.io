@@ -19,10 +19,10 @@ An 7-project progression from Hello World to a fully decoupled, I/O-agnostic app
 
 
 
-
+<!--
 <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -59,9 +59,9 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
 
 
 
@@ -115,7 +115,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want to start implementing an Hexagonal Architecture. At the end the folder hierarchy should look like:
+We want to start implementing an Hexagonal Architecture. The implementation will be finished when the `application.rs` and its use cases will be available. Anyway, at the end of Step 03, the folder hierarchy should look like:
 
 ```text
 step_03/
@@ -162,7 +162,8 @@ cd step_03
 code .
 ```
 
-* If you have **ANY** doubt about Hexagonal Architecture, Ports and Adapters, read this [dedicated page]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}).
+* If you have **ANY** doubt about Hexagonal Architecture, Ports and Adapters before you move forward, read this [dedicated page]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}).
+* Indeed since the previous page exists, I do no plan to explain these concepts one more time.
 
 
 
@@ -205,18 +206,6 @@ path = "src/main.rs"
 ```
 
 
-
-<!-- ###################################################################### -->
-### lib.rs
-
-
-
-```rust
-pub mod adapters;
-pub mod domain;
-pub mod error;
-pub mod ports;
-```
 
 
 
@@ -289,7 +278,7 @@ impl ports::GreetingWriter for ConsoleOutput {
 **Points of attention:**
 * No surprise, since this is an implementation of the `GreetingWriter` and since it is named `ConsoleOutput` it... Yes, it writes on the console.
 * Did you notice the `use crate::Result;` and `use crate::ports;` at the top of the file?
-* Did you notice that `.new()` and `.default()` returns `Self`?
+* Did you notice that `.new()` and `.default()` returns `Self` with a capital 'S'?
 
 
 
@@ -339,7 +328,7 @@ impl ports::NameReader for ConsoleInput {
 ```
 
 **Points of attention:**
-* No surprise here too. It is almost a copy and paste from `step_02/main.rs`.
+* It is almost a copy and paste from `step_02/main.rs`.
 
 
 
@@ -441,8 +430,8 @@ fn run_greeting_loop(
 **Points of attention:**
 * Up to now, in `main()` we were calling `domain::greet()` directly.
 * Now, we first instantiate an input and an output data types (`adapters`) which implement the traits defined in `ports.rs` (see the `let input = adapters::ConsoleInput::new();` for example)
-* Then we call `run_greeting_loop()` using references to adapters (see the `&input` for example) as arguments
-* The signature of `run_greeting_loop()` shows that the it accepts **ANY** reference to variable having the right trait (see the `input: &dyn ports::NameReader`).
+* Then we call `run_greeting_loop()` using references to the adapters (see the `&input` for example) as arguments
+* The signature of `run_greeting_loop()` shows that it accepts **ANY** reference to variable having the right trait (see the `input: &dyn ports::NameReader`).
 * Here we make it works with `ConsoleInput` and `ConsoleOutput` but it would work the same way with WebInput and StonesOutput if they had the expected traits.
 * In the code above look for `.read_name()` and `.write_greeting()` and realize we don't really know on who they will be applied.
 
@@ -541,7 +530,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 **Points of attention:**
 * There are more tests.
     * Indeed one test of the `greeting_loop_with_mocks()` function have been added to `main.rs` because `run_greeting_loop()` is not public.
-    * In addition the file `test/adapters_test.rs` host tests for the adapters using Mock implementations.
+    * In addition, the file `test/adapters_test.rs` host tests for the adapters using Mock implementations.
     * `tests/integration_test.rs` now use mock adapters
     * `tests/domain_test.rs` is not modified
 
@@ -565,6 +554,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * `domain.rs` was **NOT** impacted. We "just" re-arrange the machinery around it
 * ports = traits
 * adapters = implementations
+* Hexagonal Architecture is not rocket science but it really helps to name things and to describe the roles.
+
 
 
 
@@ -586,6 +577,6 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion

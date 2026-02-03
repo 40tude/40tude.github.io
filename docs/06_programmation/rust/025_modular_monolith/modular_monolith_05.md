@@ -59,9 +59,9 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
 
 
 
@@ -110,7 +110,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want to include `anyhow` and `thiserror` crates. At the end the folder hierarchy should look like this:
+We want to include `anyhow` and `thiserror` crates. At the end of this episode, the folder hierarchy should look like this:
 
 
 ```text
@@ -269,8 +269,8 @@ pub trait GreetingWriter {
 ```
 
 **Points of attention:**
-* The signatures of the traits are unchanged.
-* **This one is tricky**: Indeed in traits we need to indicate that `read_name` and `read_name` may return errors due to the port, **NOT** the business logic. Locally in the port module we type alias `Result<T>` as `Result<T, PortError>` and we alias `PortError` as a `Box<dyn std::error::Error>`.
+* The signatures of both traits are unchanged.
+* **Pay attention**. Indeed in the traits we need to indicate that `read_name` and `write_greeting` may return errors due to the port, **NOT** to the business logic. Think about the case where you will send a name via RS-232, UDP, carrier pigeon... This is why in the port module we type alias `Result<T>` as `Result<T, PortError>` and we type alias `PortError` as a `Box<dyn std::error::Error>`.
     * Why do we need `Box <dyn>`? Because there are multiple possible source or error that we don't know yet at compile time: I/O, Network...
     * Why do we need `Send + Sync`? For thread safety. Not useful here but we never know.
 * The point to keep in mind is:
@@ -733,6 +733,6 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 * [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Implement Hexagonal Architecture
-* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate par component
+* [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
-* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters
+* [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
