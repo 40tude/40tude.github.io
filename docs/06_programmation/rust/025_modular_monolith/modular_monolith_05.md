@@ -176,6 +176,7 @@ cd step_05
 code .
 ```
 
+* If you have **ANY** doubt about `anyhow` or `thiserror` before you move forward, read this [dedicated page]({%link docs/06_programmation/rust/016_errors/errors_04.md%}).
 
 
 
@@ -279,7 +280,7 @@ pub trait GreetingWriter {
 
 
 
-This is what is shown in `lib.rs` where `Error`, `Result` and `PortError` are exported:
+This is what is shown in `lib.rs` file where `Error`, `Result` and `PortError` are exported:
 
 ```rust
 pub mod error;
@@ -312,7 +313,7 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 
 
-Only the beginning of `greeting.rs` is updated because now it returns a specific error when the `name` is empty:
+Only the beginning of `greeting.rs` is updated because now, it returns a specific error when the `name` is empty:
 
 ```rust
 use crate::error::{Error, Result};
@@ -324,36 +325,6 @@ pub fn greet(name: &str) -> Result<String> {
 // Rest of the code unmodified
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -391,7 +362,9 @@ anyhow.workspace = true
 * `anyhow` is in the dependencies
 
 
-The `error.rs` file is deleted, only remains `main.rs`:
+
+
+The `error.rs` file has been deleted, only remains `main.rs`:
 
 
 ```rust
@@ -460,7 +433,7 @@ thiserror.workspace = true
 
 
 
-As before (see the `error.rs` file of the `domain` crate), in the error.rs file only Error is updated:
+As before (check above, the `error.rs` file of the `domain` crate), in the `error.rs` file only the `Error` is updated:
 
 ```rust
 #[derive(Debug, thiserror::Error)]
@@ -474,6 +447,9 @@ pub enum Error {
 
 pub type Result<T> = std::result::Result<T, Error>;
 ```
+
+
+Now let see the core of the application crate AKA `greeting_service.rs`:
 
 
 ```rust
@@ -556,45 +532,103 @@ thiserror.workspace = true
 ```
 
 **Points of attention:**
+* `thiserror` is added
 
-thiserror is added
 
 
+
+The `error.rs` file has been deleted then in `output.rs` and `input.rs` the line `use crate::error::Result;` has been replaced by `use domain::ports::Result;`. See below `output.rs` for example:
 
 ```rust
-// errors;rs
-/// Errors produced by console I/O adapters.
-#[derive(Debug, thiserror::Error)]
-pub enum Error {
-    /// An I/O error occurred during console interaction.
-    #[error("console I/O error: {0}")]
-    Io(#[from] std::io::Error),
+use domain::GreetingWriter;
+use domain::ports::Result;
 
-    /// A domain rule was violated.
-    #[error(transparent)]
-    Domain(#[from] domain::Error),
+pub struct ConsoleOutput;
+
+impl ConsoleOutput {
+    pub fn new() -> Self {
+        Self
+    }
 }
 
-pub type Result<T> = std::result::Result<T, Error>;
+impl Default for ConsoleOutput {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl GreetingWriter for ConsoleOutput {
+    fn write_greeting(&self, greeting: &str) -> Result<()> {
+        println!("{greeting}");
+        Ok(())
+    }
+}
 ```
 
 
 **Points of attention:**
+* It is important to understand that in the code above `write_greeting()` returns a  `std::result::Result<T, PortError>`.
+* The code becomes easier to read. In step_04 we had
+    ```rust
+        impl NameReader for ConsoleInput {
+            fn read_name(&self) -> Result<String> {
+                // Prompt for input
+                print!("> ");
+                io::stdout()
+                    .flush()
+                    .map_err(|e| format!("Failed to flush stdout: {e}"))?;
 
-* `Result` remains unchanged
-* `Error` is now a custom type
-* See the `#[error(transparent)]`
+                // Read user input
+                let mut input = String::new();
+                io::stdin()
+                    .read_line(&mut input)
+                    .map_err(|e| format!("Failed to read from stdin: {e}"))?;
+
+                let name = input.trim().to_string();
+
+                Ok(name)
+            }
+        }
+    ```
+    Now we can write
+
+    ```rust
+        impl NameReader for ConsoleInput {
+            fn read_name(&self) -> Result<String> {
+                // Prompt for input
+                print!("> ");
+                io::stdout().flush()?;
+
+                // Read user input
+                let mut input = String::new();
+                io::stdin().read_line(&mut input)?;
+
+                let name = input.trim().to_string();
+
+                Ok(name)
+            }
+        }
+    ```
 
 
 
 
 
 
+<!-- ###################################################################### -->
+### The integration_tests crate
 
+Only one change in `integration_test.rs` where the line
 
+```rust
+use domain::{GreetingWriter, NameReader, error::Result};
+```
 
+becomes:
 
-
+```rust
+use domain::{GreetingWriter, NameReader, ports::Result};
+```
 
 
 
@@ -711,7 +745,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 >
 * `anyhow` and `thiserror` are now integrated
 * the impact of the transition is minimal thanks to the way `Result` and `Error` were initially defined
-
+* I suspect, but have no evidence, that a more experienced developer would have integrated `anyhow` and `thiserror` with even fewer modifications.
 
 
 
