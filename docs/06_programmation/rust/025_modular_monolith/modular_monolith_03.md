@@ -464,8 +464,19 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Summary
 {: .new-title }
-> Summary
+> What have we done so far?
 >
 * `domain.rs` was **NOT** impacted. We "just" re-arrange the machinery around it
 * ports = traits
@@ -669,8 +680,12 @@ The tests output do not change.
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Summary
 {: .new-title }
-> Summary
+> What have we done so far?
 >
 * Nothing change form the outside
 * Ports are now included in the domain. This help to express the intent. The domain comunicate with the rest of the via trough the port.
@@ -1381,8 +1396,12 @@ Goodbye!
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Summary
 {: .new-title }
-> Summary
+> What have we done so far?
 >
 * Every component is in its own crate
 * Each crate has its own Result and Error
@@ -1692,8 +1711,12 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Summary
 {: .new-title }
-> Summary
+> What have we done so far?
 >
 * `anyhow` and `thiserror` are now integrated
 * the inmpact of the transition is minimal thanks to the way `Result` and `Error` were initially definde
@@ -1786,9 +1809,12 @@ Build, run and test the application. Find below the expected output:
 
 
 
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Summary
 {: .new-title }
-> Summary
+> What have we done so far?
 >
 * Blablabla
     * **Blablabla:** ...
@@ -1861,7 +1887,7 @@ Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Next Step
+## Next Steps
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working

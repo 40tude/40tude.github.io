@@ -366,8 +366,25 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * We could develop independently as long as the signature of `greet()` remains stable.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Summary
+
 {: .new-title }
-> Summary
+> What have we done so far?
 >
 * Nothing change from the outside
 * We have a more modular project however
@@ -389,7 +406,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Next Step
+## Next Steps
 {: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working

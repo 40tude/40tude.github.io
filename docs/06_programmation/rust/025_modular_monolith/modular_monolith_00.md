@@ -177,21 +177,9 @@ code .
 ```
 
 
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Actions
-{: .no_toc }
+Once in VSCode, open an integrated terminal (CTRL+ù on FR keyboard)
 
 ```powershell
-# open an integrated terminal
 cargo run
 ```
 
@@ -205,13 +193,26 @@ cargo run
 Hello, world!
 ```
 
+At this point we know everything is up and running. We can start to "play".
+
+
+
+
 
 
 
 
 <!-- ###################################################################### -->
-### **example 00**
-{: .no_toc }
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Actions
+
+
+
+
+
+<!-- ###################################################################### -->
+### **Example 00**
 
 
 In the project, create an `examples/` folder. In the folder write a `ex00.rs` code which uses a function `greet()` to format the message `Hello XYZ` when "XYZ" is used as an argument.
@@ -237,10 +238,9 @@ Hello Bob.
 
 
 <!-- ###################################################################### -->
-### **example 01**
-{: .no_toc }
+### **Example 01**
 
-There is an exception in our business. If the argument is "Roberto", the application writes "Ciao Roberto!". Copy `ex00.rs` into `ex01.rs` and modify the code to take this requirement into account:
+There is an exception in our "business". If the argument is "Roberto", the application writes "Ciao Roberto!". Copy `ex00.rs` into `ex01.rs` and modify the code to take this requirement into account:
 
 ```rust
 fn main() {
@@ -269,11 +269,10 @@ Ciao Roberto!
 
 
 <!-- ###################################################################### -->
-### **example 02**
-{: .no_toc }
+### **Example 02**
 
 
-There are 2 other specific cases in our business.
+There are 2 other specific cases in our "business".
 1. If the length of the parameter is 0, nothing is displayed and an error is returned
 2. The output cannot exceed 25 chars. If the parameter is too long, the output is truncated and ends with "...".
 
@@ -334,10 +333,9 @@ Hello Alice.
 
 
 <!-- ###################################################################### -->
-### **example 03**
-{: .no_toc }
+### **Example 03**
 
-Copy `ex02.rs` into `ex03.rs`and add one test :
+Copy `ex02.rs` into `ex03.rs`and add one test just to see how it work:
 
 ```rust
 fn main() {
@@ -414,8 +412,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 <!-- ###################################################################### -->
-### **example 04**
-{: .no_toc }
+### **Example 04**
 
 Copy `ex03.rs` into `ex04.rs`, add a loop in `main()` and more tests. Make sure the `?` operator can be used in the `main()` function:
 
@@ -620,8 +617,7 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 <!-- ###################################################################### -->
-### **example 05**
-{: .no_toc }
+### **Example 05**
 
 Copy `ex04.rs` into `ex05.rs` improve the `main()` function so that CTRL+C can be avoided:
 
@@ -687,8 +683,7 @@ Goodbye!
 
 
 <!-- ###################################################################### -->
-### **example 06**
-{: .no_toc }
+### **Example 06**
 
 On this excellent [Web site](https://www.40tude.fr/docs/06_programmation/rust/), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). When this is done, copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
 
@@ -765,11 +760,10 @@ Goodbye!
 
 
 <!-- ###################################################################### -->
-### **example 07**
-{: .no_toc }
+### **Example 07**
 
 
-The POC is done! Copy `ex06.rs` into `ex07.rs`, review the code once again, add comments, run the tests and take a break.
+The POC is done! Copy `ex06.rs` into `ex07.rs`, review the code once again, add comments, run the tests and take a break. See you tomorrow!
 
 ```rust
 //! Greeting service example demonstrating error handling,
@@ -914,8 +908,13 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Summary
+
 {: .new-title }
-> Summary
+> What have we done so far?
 >
 * We have a working proof of concept
 * The business rule (say "Hello") is applied
@@ -941,8 +940,7 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Next Step
-{: .no_toc }
+## Next Steps
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
