@@ -47,7 +47,7 @@ An 8-project progression from Hello World to a fully decoupled, I/O-agnostic app
 ### This is Episode 01
 {: .no_toc }
 
-All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
+All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHub
 
 
 #### The Posts Of The Saga
@@ -119,7 +119,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 
 ## Objective
 
-We want to split the last version of the POC among multiple files. At the end the project will look like this:
+We want to split the last version of the POC among multiple files. At the end the project folder will look like this:
 
 ```text
 step_01/
@@ -165,7 +165,6 @@ code .
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Actions
-{: .no_toc }
 
 * Move `examples/ex07.rs` into `src/main.rs`
 * Delete the `examples/` folder
@@ -184,27 +183,27 @@ path = "src/main.rs"
 ```
 
 
+Create an `error.rs` file and copy the Error and Result type alias in it:
+
+```rust
+pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
+```
+
+
+
+
 Extract from `main.rs` the `greet()` function and the tests and copy them in a new file `domain.rs`.
 
 
 ```rust
-use crate::Result;
+use crate::error::Result;
 
-/// Business domain for greeting logic
-/// Generates a greeting according to business rules.
-/// Rules:
-/// - Default: "Hello {name}." with a maximum of 25 characters total
-/// - Special case: "Roberto" returns "Ciao Roberto!"
-/// - If the name is too long, it is truncated and suffixed with "..."
-///
-/// # Errors
-/// Returns an error if the name is empty.
 pub fn greet(name: &str) -> Result<String> {
     if name.is_empty() {
         return Err("Name cannot be empty".to_string().into());
     }
 
-    // Special case for Roberto
     if name == "Roberto" {
         return Ok("Ciao Roberto!".to_string());
     }
@@ -216,12 +215,10 @@ pub fn greet(name: &str) -> Result<String> {
 
     let available_for_name = MAX_LENGTH - GREETING_PREFIX.len() - GREETING_SUFFIX.len();
 
-    // Name fits within the allowed length
     if name.len() <= available_for_name {
         return Ok(format!("Hello {}.", name));
     }
 
-    // Name is too long, truncate and add ellipsis
     let truncate_length = MAX_LENGTH - GREETING_PREFIX.len() - TRAILER.len();
 
     let truncated_name = &name[..truncate_length.min(name.len())];
@@ -235,49 +232,53 @@ mod tests {
 ```
 
 **Points of attention:**
-* `use crate::Result;` statement at the top of `domain.rs`.
+* `use crate::error::Result;` statement at the top of `domain.rs`.
 * `greet()` is now public.
 * Since `greet()` is public we could have the tests outside of this file to make sure they behave like any other consumer.
+
+
+
+
+
+
+
+
+
+
 
 Create a `lib.rs`
 
 ```rust
 pub mod domain;
-
+pub mod error;
 pub use domain::greet;
-
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
 ```
 
 **Points of attention:**
-* See how `greet ()` is **re-exported**. This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main` crate, without having to write `domain::greet`. This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`. It is therefore a question of ease of use vs clarity for the code consumers. I'm not always a big fan of it and I will explain why later.
-* `Error` and `Result` are part of the lib because they are used by `domain.rs` and `main.rs`
+* See how `greet ()` is **re-exported**.
+    * This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main` crate, without having to write `domain::greet`.
+    * This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`.
+    * It is therefore a question of ease of use vs clarity for the code consumers.
+    * I'm not always a big fan of it and I will explain why later.
 
 
 
-The remaining of the code is the `main.rs` file.
+The remaining of the code is the `main.rs` file:
+
 
 ```rust
 use std::io::{self, Write};
-
-use step_01::Result;
+use step_01::error::Result;
 use step_01::greet;
 
-// Application entry point.
-//
-// Runs an interactive loop that asks the user for a name,
-// applies greeting rules, and handles errors gracefully.
 fn main() -> Result<()> {
     println!("=== Greeting Service (Step 01) ===");
     println!("Enter a name to greet (or 'quit' to exit):\n");
 
     loop {
-        // Prompt for input
         print!("> ");
         io::stdout().flush().map_err(|e| e.to_string())?;
 
-        // Read user input
         let mut input = String::new();
         io::stdin()
             .read_line(&mut input)
@@ -285,18 +286,15 @@ fn main() -> Result<()> {
 
         let name = input.trim();
 
-        // Exit condition
         if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
             println!("\nGoodbye!");
             break;
         }
 
-        // Skip empty input
         if name.is_empty() {
             continue;
         }
 
-        // Call domain logic
         match greet(name) {
             Ok(greeting) => println!("{}\n", greeting),
             Err(e) => eprintln!("Error: {}\n", e),
@@ -306,9 +304,14 @@ fn main() -> Result<()> {
     Ok(())
 }
 ```
+
+
 **Points of attention:**
-* How `Result` and `greet` are shortcutted with the `use` statements.
-* Make sure to understand why here, we write `use step_01::Result;` while in `domain.rs` we wrote `use crate::Result;`. If needed, you can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
+* See how `Result` and `greet` are shortcutted with the `use` statements.
+* Make sure to understand why here, we write `use step_01::error::Result;` while in `domain.rs` we wrote `use crate::error::Result;`.
+    * If needed, you can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
+
+
 
 Build, run and test the application. Find below the expected output:
 

@@ -50,7 +50,7 @@ An 8-project progression from Hello World to a fully decoupled, I/O-agnostic app
 ### This is Episode 02
 {: .no_toc }
 
-All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
+All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHub
 
 
 #### The Posts Of The Saga
@@ -104,21 +104,22 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 <!-- ###################################################################### -->
 ## Objective
 
-We want to create a `tests/` folder to host the integration tests and the domain tests (since `greet()` is public). See :
+We want to create a `tests/` folder to host the integration tests and the domain tests (since `greet()` is public). At the end the project folder will look like this:
+
 
 ```text
 step_02/
-├── Cargo.toml
-├── src/
-│   ├── main.rs          # Entry point + console I/O
-│   ├── domain.rs        # Business rules (isolated)
-│   └── lib.rs           # Library re-exports
-└── tests/
-    ├── integration_test.rs  # Integration tests
-    └── domain_test.rs       # Domain unit tests
+│   Cargo.toml
+├───src
+│       domain.rs           # Business rules (isolated)
+│       error.rs            # Error and Result type alias
+│       lib.rs              # Library re-exports
+│       main.rs             # Entry point + console I/O
+└───tests
+        domain_test.rs      # Domain unit tests
+        integration_test.rs # Integration tests
+
 ```
-
-
 
 
 
@@ -175,22 +176,37 @@ name = "step_02"
 path = "src/main.rs
 ```
 
-Optional. I no longer re-export `greet()` from `domain`. I want to have to write `domain::greet()`. This will help me to **read the code** in 6 months. In `main.rs` I write `use step_02::domain;` then I call `domain::greet(name)`.
+
+
+
+
+
+Update `lib.rs`
 
 ```rust
-/// Step 02: Extracted Domain
-///
-/// This step demonstrates the separation of business logic from infrastructure.
-/// The domain module contains pure business rules that are independent of I/O.
 pub mod domain;
+pub mod error;
 
 // DO NOT re-export greet() for convenience
 // I want to write domain::greet() in main.rs
 // pub use domain::greet;
-
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
 ```
+
+**Points of attention:**
+* I no longer re-export `greet()` from the `domain` module. I want to have to write `domain::greet()`. This will help me to **read the code** in 6 months. In `main.rs` I write `use step_02::domain;` then I call `domain::greet(name)`.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -198,20 +214,15 @@ pub type Result<T> = std::result::Result<T, Error>;
 Create a `tests/` folder with `domain_test.rs` and `integration_test.rs`. Move the tests from `domain.rs` to `domain_test.rs`.
 
 ```rust
-/// Unit tests specifically for domain logic
-/// These tests verify business rules in isolation
 use step_02::domain::greet;
 
 const MAX_LENGTH: usize = 25;
-// const GREETING_PREFIX: &str = "Hello ";
-// const GREETING_SUFFIX: &str = ".";
 const TRAILER: &str = "...";
 
 #[test]
 fn empty_name_returns_error() {
     let result = greet("");
     assert!(result.is_err());
-    // assert_eq!(result.unwrap_err(), "Name cannot be empty");
     let err = result.unwrap_err();
     assert_eq!(err.to_string(), "Name cannot be empty");
 }
@@ -220,7 +231,16 @@ fn empty_name_returns_error() {
 
 ```
 **Points of attention:**
-* We are testing `domain`. So at the top of the file there is `use step_02::domain::greet;` and we call `greet()` in the rest of the code. No confusion is possible.
+* We are testing `domain`. So at the top of the file there is `use step_02::domain::greet;` and we call `greet()` in the rest of the code.
+* This is Ok for me because no confusion is possible.
+
+
+
+
+
+
+
+
 
 
 
@@ -230,13 +250,10 @@ Write the `integration_test.rs` file
 use step_02::domain;
 
 const MAX_LENGTH: usize = 25;
-// const GREETING_PREFIX: &str = "Hello ";
-// const GREETING_SUFFIX: &str = ".";
 const TRAILER: &str = "...";
 
 #[test]
 fn greet_integration() {
-    // Test normal greeting
     let result = domain::greet("World");
     assert!(result.is_ok());
     assert_eq!(result.unwrap(), "Hello World.");
@@ -244,7 +261,6 @@ fn greet_integration() {
 
 #[test]
 fn roberto_integration() {
-    // Test special case
     let result = domain::greet("Roberto");
     assert!(result.is_ok());
     assert_eq!(result.unwrap(), "Ciao Roberto!");
@@ -252,14 +268,12 @@ fn roberto_integration() {
 
 #[test]
 fn empty_name_integration() {
-    // Test error case
     let result = domain::greet("");
     assert!(result.is_err());
 }
 
 #[test]
 fn long_name_integration() {
-    // Test truncation
     let result = domain::greet("VeryLongNameThatWillBeTruncated");
     assert!(result.is_ok());
 
@@ -268,9 +282,15 @@ fn long_name_integration() {
     assert!(greeting.ends_with(TRAILER));
 }
 ```
+
+
 **Points of attention:**
-* At this point `domain_test.rs` and `integration_test.rs` look very similar. This is because our project have one component (`domain.rs`). Later, at the top of the `integration_test.rs` we will have multiple `use step_NN::component;` lines.
-* At the top of the file there is `use step_02::domain;` and we call `domain::greet())` in the rest of the code. Later, this will help us to **read the code**.
+* At this point `domain_test.rs` and `integration_test.rs` look very similar. This is because our project have only one component (`domain.rs`).
+* Later, at the top of the `integration_test.rs` we will have multiple `use step_NN::component;` lines.
+* At the top of the file there is a `use step_02::domain;` and in the code we call `domain::greet())`. This is Ok for me because some confusion may happen when more modules are `use`.
+
+
+
 
 
 

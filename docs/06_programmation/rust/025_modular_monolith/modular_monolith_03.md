@@ -50,7 +50,7 @@ An 8-project progression from Hello World to a fully decoupled, I/O-agnostic app
 ### This is Episode 03
 {: .no_toc }
 
-All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
+All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHub
 
 
 #### The Posts Of The Saga

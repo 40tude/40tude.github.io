@@ -37,7 +37,7 @@ An 8-project progression from Hello World to a fully decoupled, I/O-agnostic app
 
 * For beginners
 
-All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
+All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHub
 
 
 
@@ -212,10 +212,10 @@ At this point we know everything is up and running. We can start to "play".
 
 
 <!-- ###################################################################### -->
-### **Example 00**
+### Example 00
 
 
-In the project, create an `examples/` folder. In the folder write a `ex00.rs` code which uses a function `greet()` to format the message `Hello XYZ` when "XYZ" is used as an argument.
+In the project folder, create an `examples/` folder. In the folder write a `ex00.rs` code which uses a function `greet()` to format the message `Hello XYZ` when "XYZ" is used as an argument.
 
 ```rust
 fn main() {
@@ -238,7 +238,7 @@ Hello Bob.
 
 
 <!-- ###################################################################### -->
-### **Example 01**
+### Example 01
 
 There is an exception in our "business". If the argument is "Roberto", the application writes "Ciao Roberto!". Copy `ex00.rs` into `ex01.rs` and modify the code to take this requirement into account:
 
@@ -269,7 +269,7 @@ Ciao Roberto!
 
 
 <!-- ###################################################################### -->
-### **Example 02**
+### Example 02
 
 
 There are 2 other specific cases in our "business".
@@ -333,9 +333,9 @@ Hello Alice.
 
 
 <!-- ###################################################################### -->
-### **Example 03**
+### Example 03
 
-Copy `ex02.rs` into `ex03.rs`and add one test just to see how it work:
+Copy `ex02.rs` into `ex03.rs`and add one test just to see how this works:
 
 ```rust
 fn main() {
@@ -390,7 +390,7 @@ mod tests {
 
 
 
-Run the application and make some experiments:
+Run the test and make some experiments:
 
 ```powershell
 cargo test --example ex03
@@ -412,7 +412,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 <!-- ###################################################################### -->
-### **Example 04**
+### Example 04
 
 Copy `ex03.rs` into `ex04.rs`, add a loop in `main()` and more tests. Make sure the `?` operator can be used in the `main()` function:
 
@@ -617,9 +617,9 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 <!-- ###################################################################### -->
-### **Example 05**
+### Example 05
 
-Copy `ex04.rs` into `ex05.rs` improve the `main()` function so that CTRL+C can be avoided:
+Copy `ex04.rs` into `ex05.rs` then improve the `main()` function so that CTRL+C can be avoided:
 
 ```rust
 use std::io::{self, Write};
@@ -683,7 +683,7 @@ Goodbye!
 
 
 <!-- ###################################################################### -->
-### **Example 06**
+### Example 06
 
 On this excellent [Web site](https://www.40tude.fr/docs/06_programmation/rust/), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). When this is done, copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
 
@@ -760,7 +760,7 @@ Goodbye!
 
 
 <!-- ###################################################################### -->
-### **Example 07**
+### Example 07
 
 
 The POC is done! Copy `ex06.rs` into `ex07.rs`, review the code once again, add comments, run the tests and take a break. See you tomorrow!
