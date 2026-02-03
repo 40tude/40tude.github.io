@@ -2,12 +2,12 @@
 published: true
 lang: en-US
 layout: default
-title: "Learning Modular Monolith Architecture with Rust"
+title: "Learning Modular Monolith Architecture with Rust - 01"
 description: "An 8-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-01-31 11:30:00
+last_modified_date: 2026-02-03 08:00:00
 ---
 
 
@@ -29,19 +29,53 @@ An 8-project progression from Hello World to a fully decoupled, I/O-agnostic app
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## TL;DR
-{: .no_toc }
 
-* For beginners
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+### This is Episode 01
+{: .no_toc }
 
 All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 
 
+#### The Posts Of The Saga
+{: .no_toc }
+* [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
+
+<!--
+
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Start Implementing Hexagonal Architecture
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 0X -
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 0X -
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 0X -
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}): Step 0X -
+
+-->
+
+
+
+
+
+
+
+
+
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
 <span></span>
 </div>
 
@@ -79,806 +113,40 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Introduction
-
-<!--
-* Components vs Plugins
-
--->
 
 
 
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 00
+## Step 01 - Split the source code in multiple files
 
 ### Objective
 {: .no_toc }
 
-We want a working prototype (POC).
+We want to split the last version of the POC among multiple files. At the end the project will look like this:
 
-### Setup
-{: .no_toc }
-```powershell
-mkdir modular_monolith
-cd modular_monolith
-git init
-cargo new step_00
-cd step_00
-code .
-```
-
-### Actions
-{: .no_toc }
-
-```powershell
-# open an integrated terminal
-cargo run
-```
-
-Expected output:
-
-```powershell
-cargo run
-   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.48s
-     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\step_00.exe`
-Hello, world!
+```text
+step_01/
+│   Cargo.toml
+└───src
+        domain.rs
+        error.rs
+        lib.rs
+        main.rs
 ```
 
 
-
-
-
-<!-- ###################################################################### -->
-#### **example 00**
-{: .no_toc }
-
-
-In the project, create an `examples/` folder. In the folder write a `ex00.rs` code which uses a function `greet()` to format the message `Hello XYZ` when "XYZ" is used as an argument.
-
-```rust
-fn main() {
-    let greeting = greet("Bob");
-    println!("{}", greeting);
-}
-
-fn greet(name: &str) -> String {
-    format!("Hello {}.", name)
-}
-```
-
-Run the application with `cargo run --example ex00`. Expected output:
-```powershell
-Hello Bob.
-```
-
-
-
-
-
-<!-- ###################################################################### -->
-#### **example 01**
-{: .no_toc }
-
-There is an exception in our business. If the argument is "Roberto", the application writes "Ciao Roberto!". Copy `ex00.rs` into `ex01.rs` and modify the code to take this requirement into account:
-
-```rust
-fn main() {
-    let greeting = greet("Roberto");
-    println!("{}", greeting);
-}
-
-fn greet(name: &str) -> String {
-    // Special case for Roberto
-    if name == "Roberto" {
-        return "Ciao Roberto!".to_string();
-    }
-
-    format!("Hello {}.", name)
-}
-```
-
-Run the application:
-
-```powershell
-cargo run -q --example ex01
-Ciao Roberto!
-```
-
-
-
-
-
-<!-- ###################################################################### -->
-#### **example 02**
-{: .no_toc }
-
-
-There are 2 other specific cases in our business.
-1. If the length of the parameter is 0, nothing is displayed and an error is returned
-2. The output cannot exceed 25 chars. If the parameter is too long, the output is truncated and ends with "...".
-
-Copy `ex01.rs` into `ex02.rs`, implement both cases and the error management
-
-
-```rust
-fn main() {
-    match greet("Alice") {
-        Ok(greeting) => println!("{}\n", greeting),
-        Err(e) => eprintln!("Error: {}\n", e),
-    }
-}
-
-fn greet(name: &str) -> Result<String, String> {
-    if name.is_empty() {
-        return Err("Name cannot be empty".to_string());
-    }
-
-    // Special case for Roberto
-    if name == "Roberto" {
-        return Ok("Ciao Roberto!".to_string());
-    }
-
-    // Calculate greeting length
-    let greeting_prefix = "Hello ";
-    let greeting_suffix = ".";
-    const MAX_LENGTH: usize = 25;
-    let available_for_name = MAX_LENGTH - greeting_prefix.len() - greeting_suffix.len();
-
-    // If name fits within limit
-    if name.len() <= available_for_name {
-        return Ok(format!("Hello {}.", name));
-    }
-
-    // Name is too long, truncate with ellipsis
-    const TRAILER: &str = "...";
-    let truncate_length = MAX_LENGTH - greeting_prefix.len() - TRAILER.len();
-    let truncated_name = &name[..truncate_length.min(name.len())];
-    Ok(format!("Hello {}{}", truncated_name, TRAILER))
-}
-```
-
-Run the application and make some experiments:
-
-```powershell
-cargo run -q --example ex02
-Hello Alice.
-```
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-#### **example 03**
-{: .no_toc }
-
-Copy `ex02.rs` into `ex03.rs`and add one test :
-
-```rust
-fn main() {
-    match greet("Roberto") {
-        Ok(greeting) => println!("{}\n", greeting),
-        Err(e) => eprintln!("Error: {}\n", e),
-    }
-}
-
-// Generates a greeting according to business rules
-fn greet(name: &str) -> Result<String, String> {
-    if name.is_empty() {
-        return Err("Name cannot be empty".to_string());
-    }
-
-    // Special case for Roberto
-    if name == "Roberto" {
-        return Ok("Ciao Roberto!".to_string());
-    }
-
-    // Calculate greeting length
-    let greeting_prefix = "Hello ";
-    let greeting_suffix = ".";
-    const MAX_LENGTH: usize = 25;
-    let available_for_name = MAX_LENGTH - greeting_prefix.len() - greeting_suffix.len();
-
-    // If name fits within limit
-    if name.len() <= available_for_name {
-        return Ok(format!("Hello {}.", name));
-    }
-
-    // Name is too long, truncate with ellipsis
-    const TRAILER: &str = "...";
-    let truncate_length = MAX_LENGTH - greeting_prefix.len() - TRAILER.len();
-    let truncated_name = &name[..truncate_length.min(name.len())];
-    Ok(format!("Hello {}{}", truncated_name, TRAILER))
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn empty_name_returns_error() {
-        let result = greet("");
-        assert!(result.is_err());
-        let err = result.unwrap_err();
-        assert_eq!(err.to_string(), "Name cannot be empty");
-    }
-}
-```
-
-
-
-Run the application and make some experiments:
-
-```powershell
-cargo test --example ex03
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.01s
-     Running unittests examples\ex03.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex03-259cabc647968b82.exe)
-
-running 1 test
-test tests::empty_name_returns_error ... ok
-
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-```
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-#### **example 04**
-{: .no_toc }
-
-Copy `ex03.rs` into `ex04.rs`, add a loop in `main()` and more tests. Make sure `?` operator can be used in `main()`:
-
-```rust
-use std::io;
-fn main() -> Result<(), String> {
-    loop {
-        // Read user input
-        let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .map_err(|e| format!("Failed to read input: {}", e))?;
-
-        let name = input.trim();
-
-        // Exit condition
-        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
-            println!("\nGoodbye!");
-            break;
-        }
-
-        // Skip empty input
-        if name.is_empty() {
-            continue;
-        }
-
-        match greet(name) {
-            Ok(greeting) => println!("{}\n", greeting),
-            Err(e) => eprintln!("Error: {}\n", e),
-        }
-    }
-
-    Ok(())
-}
-
-/// Generates a greeting according to business rules
-fn greet(name: &str) -> Result<String, String> {
-    if name.is_empty() {
-        return Err("Name cannot be empty".to_string());
-    }
-
-    // Special case for Roberto
-    if name == "Roberto" {
-        return Ok("Ciao Roberto!".to_string());
-    }
-
-    // Calculate greeting length
-    let greeting_prefix = "Hello ";
-    let greeting_suffix = ".";
-    const MAX_LENGTH: usize = 25;
-    let available_for_name = MAX_LENGTH - greeting_prefix.len() - greeting_suffix.len();
-
-    // If name fits within limit
-    if name.len() <= available_for_name {
-        return Ok(format!("Hello {}.", name));
-    }
-
-    // Name is too long, truncate with ellipsis
-    const TRAILER: &str = "...";
-    let truncate_length = MAX_LENGTH - greeting_prefix.len() - TRAILER.len();
-    let truncated_name = &name[..truncate_length.min(name.len())];
-    Ok(format!("Hello {}{}", truncated_name, TRAILER))
-}
-```
-
-Expected output (exit with CTRL+C):
-
-```powershell
-cargo run --example ex04
-   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.28s
-     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex04.exe`
-sdf
-Hello sdf.
-```
-
-Here are the tests:
-
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
-    const MAX_LENGTH: usize = 25;
-    const TRAILER: &str = "...";
-
-    #[test]
-    fn empty_name_returns_error() {
-        let result = greet("");
-        assert!(result.is_err());
-        // assert_eq!(result.unwrap_err(), "Name cannot be empty");
-        let err = result.unwrap_err();
-        assert_eq!(err.to_string(), "Name cannot be empty");
-    }
-
-    #[test]
-    fn normal_greeting() {
-        let result = greet("Alice");
-        assert!(result.is_ok());
-        assert_eq!(result.unwrap(), "Hello Alice.");
-    }
-
-    #[test]
-    fn roberto_special_case() {
-        let result = greet("Roberto");
-        assert!(result.is_ok());
-        assert_eq!(result.unwrap(), "Ciao Roberto!");
-    }
-
-    #[test]
-    fn domain_should_not_use_special_greeting_for_similar_names() {
-        // Case sensitive - "roberto" should get normal greeting
-        let result = greet("roberto");
-        assert_eq!(result.unwrap(), "Hello roberto.");
-
-        // Different name
-        let result = greet("Robert");
-        assert_eq!(result.unwrap(), "Hello Robert.");
-    }
-
-    #[test]
-    fn greeting_length_limit() {
-        // "Hello " (6) + "." (1) = 7, so max name is 18 chars for MAX_LENGTH total
-        let result = greet("ExactlyEighteenChr");
-        assert!(result.is_ok());
-
-        let greeting = result.unwrap();
-        assert_eq!(greeting, "Hello ExactlyEighteenChr.");
-        assert_eq!(greeting.len(), MAX_LENGTH);
-    }
-
-    #[test]
-    fn truncation_for_long_names() {
-        let long_name = "ThisIsAVeryLongNameThatExceedsTheLimit";
-        let result = greet(long_name);
-        assert!(result.is_ok());
-
-        let greeting = result.unwrap();
-        assert!(greeting.starts_with("Hello "));
-        assert!(greeting.ends_with(TRAILER));
-        assert_eq!(greeting.len(), MAX_LENGTH);
-    }
-
-    #[test]
-    fn boundary_case_nineteen_chars() {
-        // 19 chars should trigger truncation (6 + 19 + 1 = 26, exceeds MAX_LENGTH)
-        let name = "NineteenCharactersX";
-        let result = greet(name);
-        assert!(result.is_ok());
-
-        let greeting = result.unwrap();
-        assert!(greeting.ends_with(TRAILER));
-        assert_eq!(greeting.len(), MAX_LENGTH);
-    }
-
-    #[test]
-    fn domain_should_handle_unicode_names() {
-        let result = greet("José");
-        assert_eq!(result.unwrap(), "Hello José.");
-
-        let result = greet("François");
-        assert_eq!(result.unwrap(), "Hello François.");
-    }
-
-    #[test]
-    fn domain_should_truncate_long_unicode_names() {
-        // **Points of attention:** Unicode characters may have different byte lengths
-        let long_unicode_name = "Müller-Öffentlicher-Straßenbahn-Überführung";
-        let result = greet(long_unicode_name);
-
-        assert!(result.is_ok());
-        let greeting = result.unwrap();
-        assert_eq!(greeting.len(), MAX_LENGTH);
-        assert!(greeting.ends_with(TRAILER));
-    }
-}
-```
-
-Expected output:
-
-```powershell
- cargo test --example ex04
-   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.33s
-     Running unittests examples\ex04.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex04-b27bcdfa5005af06.exe)
-
-running 9 tests
-test tests::boundary_case_nineteen_chars ... ok
-test tests::domain_should_handle_unicode_names ... ok
-test tests::domain_should_not_use_special_greeting_for_similar_names ... ok
-test tests::empty_name_returns_error ... ok
-test tests::roberto_special_case ... ok
-test tests::truncation_for_long_names ... ok
-test tests::domain_should_truncate_long_unicode_names ... ok
-test tests::normal_greeting ... ok
-test tests::greeting_length_limit ... ok
-
-test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-```
-
-
-
-
-
-<!-- ###################################################################### -->
-#### **example 05**
-{: .no_toc }
-
-Copy `ex04.rs` into `ex05.rs` improve the `main()` function so that CTRL+C can be avoided:
-
-```rust
-use std::io::{self, Write};
-fn main() -> Result<(), String> {
-    println!("=== Greeting Service (Step 00) ===");
-    println!("Enter a name to greet (or 'quit' to exit):\n");
-
-    loop {
-        // Prompt for input
-        print!("> ");
-        io::stdout().flush().map_err(|e| e.to_string())?;
-
-        // Read user input
-        let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .map_err(|e| format!("Failed to read input: {}", e))?;
-
-        let name = input.trim();
-
-        // Exit condition
-        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
-            println!("\nGoodbye!");
-            break;
-        }
-
-        // Skip empty input
-        if name.is_empty() {
-            continue;
-        }
-
-        match greet(name) {
-            Ok(greeting) => println!("{}\n", greeting),
-            Err(e) => eprintln!("Error: {}\n", e),
-        }
-    }
-
-    Ok(())
-}
-// The rest of the code in unchanged
-```
-
-Expected output:
-
-```powershell
-cargo run --example ex05
-=== Greeting Service (Step 00) ===
-Enter a name to greet (or 'quit' to exit):
-
-> ert
-Hello ert.
-
-> quit
-
-Goodbye!
-```
-
-
-
-
-
-
-<!-- ###################################################################### -->
-#### **example 06**
-{: .no_toc }
-
-On this excellent [Web site](https://www.40tude.fr/docs/06_programmation/rust/), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). Then copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
-
-```rust
-use std::io::{self, Write};
-
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-fn main() -> Result<()> {
-    println!("=== Greeting Service (Step 00) ===");
-    println!("Enter a name to greet (or 'quit' to exit):\n");
-
-    loop {
-        // Prompt for input
-        print!("> ");
-        io::stdout().flush().map_err(|e| e.to_string())?;
-
-        // Read user input
-        let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .map_err(|e| format!("Failed to read input: {}", e))?;
-
-        let name = input.trim();
-
-        // Exit condition
-        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
-            println!("\nGoodbye!");
-            break;
-        }
-
-        // Skip empty input
-        if name.is_empty() {
-            continue;
-        }
-
-        // Call domain logic
-        match greet(name) {
-            Ok(greeting) => println!("{}\n", greeting),
-            Err(e) => eprintln!("Error: {}\n", e),
-        }
-    }
-
-    Ok(())
-}
-
-// Generates a greeting according to business rules
-fn greet(name: &str) -> Result<String> {
- ...
-}
-
-// The rest of the code in unchanged
-
-```
-
-```powershell
-cargo run --example ex06
-   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.57s
-     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex06.exe`
-=== Greeting Service (Step 00) ===
-Enter a name to greet (or 'quit' to exit):
-
-> Zorro
-Hello Zorro.
-
-> exit
-
-Goodbye!
-```
-
-
-
-
-
-
-<!-- ###################################################################### -->
-#### **example 07**
-{: .no_toc }
-
-
-The POC is done! Copy `ex06.rs` into `ex07.rs`, review the code once again, add comments, run the tests and take a break.
-
-```rust
-//! Greeting service example demonstrating error handling,
-//! business rules, and basic I/O interaction.
-//!
-//! Run with:
-//! - cargo run --example ex06
-//! - cargo test --example ex06
-
-use std::io::{self, Write};
-
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-
-/// Application entry point.
-///
-/// Runs an interactive loop that asks the user for a name,
-/// applies greeting rules, and handles errors gracefully.
-fn main() -> Result<()> {
-    println!("=== Greeting Service (Step 00) ===");
-    println!("Enter a name to greet (or 'quit' to exit):\n");
-
-    loop {
-        // Prompt for input
-        print!("> ");
-        io::stdout().flush().map_err(|e| e.to_string())?;
-
-        // Read user input
-        let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .map_err(|e| format!("Failed to read input: {}", e))?;
-
-        let name = input.trim();
-
-        // Exit condition
-        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
-            println!("\nGoodbye!");
-            break;
-        }
-
-        // Skip empty input
-        if name.is_empty() {
-            continue;
-        }
-
-        // Call domain logic
-        match greet(name) {
-            Ok(greeting) => println!("{}\n", greeting),
-            Err(e) => eprintln!("Error: {}\n", e),
-        }
-    }
-
-    Ok(())
-}
-
-/// Generates a greeting according to business rules.
-///
-/// Rules:
-/// - Default: "Hello {name}." with a maximum of 25 characters total
-/// - Special case: "Roberto" returns "Ciao Roberto!"
-/// - If the name is too long, it is truncated and suffixed with "..."
-///
-/// # Errors
-/// Returns an error if the name is empty.
-fn greet(name: &str) -> Result<String> {
-    if name.is_empty() {
-        return Err("Name cannot be empty".to_string().into());
-    }
-
-    // Special case for Roberto
-    if name == "Roberto" {
-        return Ok("Ciao Roberto!".to_string());
-    }
-
-    const MAX_LENGTH: usize = 25;
-    const GREETING_PREFIX: &str = "Hello ";
-    const GREETING_SUFFIX: &str = ".";
-    const TRAILER: &str = "...";
-
-    let available_for_name = MAX_LENGTH - GREETING_PREFIX.len() - GREETING_SUFFIX.len();
-
-    // Name fits within the allowed length
-    if name.len() <= available_for_name {
-        return Ok(format!("Hello {}.", name));
-    }
-
-    // Name is too long, truncate and add ellipsis
-    let truncate_length = MAX_LENGTH - GREETING_PREFIX.len() - TRAILER.len();
-
-    let truncated_name = &name[..truncate_length.min(name.len())];
-    Ok(format!("Hello {}{}", truncated_name, TRAILER))
-}
-// The rest of the code is  unchanged
-```
-
-Expected output:
-
-```powershell
-cargo run --example ex07
-   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.40s
-     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex07.exe`
-=== Greeting Service (Step 00) ===
-Enter a name to greet (or 'quit' to exit):
-
-> Obiwan
-Hello Obiwan.
-
-> Luke
-Hello Luke.
-
-> Exit
-
-Goodbye!
-
-```
-
-
-
-```powershell
-cargo test --example ex07
-   Compiling step_00 v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_00)
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.48s
-     Running unittests examples\ex07.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_00\debug\examples\ex07-789efb9150878b4d.exe)
-
-running 9 tests
-test tests::boundary_case_nineteen_chars ... ok
-test tests::domain_should_handle_unicode_names ... ok
-test tests::empty_name_returns_error ... ok
-test tests::greeting_length_limit ... ok
-test tests::domain_should_not_use_special_greeting_for_similar_names ... ok
-test tests::roberto_special_case ... ok
-test tests::domain_should_truncate_long_unicode_names ... ok
-test tests::truncation_for_long_names ... ok
-test tests::normal_greeting ... ok
-
-test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-```
-
-
-
-
-{: .new-title }
-> Summary
->
-* We have a working proof of concept
-* The business rule (say "Hello") is applied
-* Exceptions to the business rule are managed ("Roberto", empty parameter...)
-* Errors are returned
-* Tests are written but remember that "*testing can be used to show the presence of bugs, but never to show their absence*" (Edsger W. Dijkstra).
-
-
-
-
-
-
-
-
-
-
-
-
-<div align="center">
-<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/><br/>
-<span></span>
-</div>
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 01
-
-### Objective
-{: .no_toc }
-
-We want to split the last version of our POC into a `main.rs`, a `lib.rs` and a `domain.rs` files.
 
 ### Setup
 {: .no_toc }
@@ -893,6 +161,12 @@ Copy-Item ./step_00 ./step_01 -Recurse
 cd step_01
 code .
 ```
+
+
+
+
+
+
 
 ### Actions
 {: .no_toc }
@@ -981,12 +255,12 @@ pub type Result<T> = std::result::Result<T, Error>;
 ```
 
 **Points of attention:**
-* How `greet ()` is **re-exported**. This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main` crate, without having to write `domain::greet`. This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`. It is therefore a question of ease of use vs clarity for the code consumers. I'm not always a big fan of it and I will explain why later.
+* See how `greet ()` is **re-exported**. This allows the functions from the `domain` module (such as `greet()`) to be used directly in the `main` crate, without having to write `domain::greet`. This may simplifies importing for crate users. They can `use crate::greet;` instead of `use crate::domain::greet;`. It is therefore a question of ease of use vs clarity for the code consumers. I'm not always a big fan of it and I will explain why later.
 * `Error` and `Result` are part of the lib because they are used by `domain.rs` and `main.rs`
 
 
 
-The remaining of the code is the `main.rs`.
+The remaining of the code is the `main.rs` file.
 
 ```rust
 use std::io::{self, Write};
@@ -1038,7 +312,7 @@ fn main() -> Result<()> {
 ```
 **Points of attention:**
 * How `Result` and `greet` are shortcutted with the `use` statements.
-* Make sure to understand why here, we write `use step_01::Result;` while in `domain.rs` we wrote `use crate::Result;`. You can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%})
+* Make sure to understand why here, we write `use step_01::Result;` while in `domain.rs` we wrote `use crate::Result;`. If needed, you can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
 Build, run and test the application. Find below the expected output:
 
@@ -1124,7 +398,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 02
+## Step 02: Add a test folder
 
 ### Objective
 {: .no_toc }
@@ -1380,7 +654,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 03
+## Step 03 - Start Implementing Haxagonal Architecture
 
 ### Objective
 {: .no_toc }
@@ -1396,7 +670,7 @@ step_03
 │   │   main.rs     # Entry point
 │   │   ports.rs    # Traits definition
 │   └───adapters/
-│           console_input.rs    # Implementations
+│           console_input.rs  # Implementations
 │           console_output.rs
 │           mod.rs
 └───tests/
@@ -1493,7 +767,7 @@ impl ports::GreetingWriter for ConsoleOutput {
 **Points of attention:**
 * No surprise, since this is an implementation of the `GreetingWriter` and since it is named `ConsoleOutput` it... Yes, it writes on the console.
 * Did you notice the `use crate::Result;` and `use crate::ports;` at the top of the file?
-* Is it clear why `.new()` and `.default()` returns `Self`?
+* Did you notice that `.new()` and `.default()` returns `Self`?
 
 
 
@@ -1633,8 +907,8 @@ fn run_greeting_loop(
 * Now, we first instanciate an input and an output data types (`adapters`) which implement the traits defined in `ports.rs` (see the `let input = adapters::ConsoleInput::new();` for example)
 * Then we call `run_greeting_loop()` using references to adapters (see the `&input` for example) as arguments
 * The signature of `run_greeting_loop()` shows that the it accepts **ANY** reference to variable having the right trait (see the `input: &dyn ports::NameReader`).
-* Here we make it works with ConsoleInput and ConsoleOutput but it would work the same way with WebInput and StonesOutput if they had the expected traits.
-* Look for `.read_name()` and `.write_greeting()`
+* Here we make it works with `ConsoleInput` and `ConsoleOutput` but it would work the same way with WebInput and StonesOutput if they had the expected traits.
+* In the code above look for `.read_name()` and `.write_greeting()` and realize we don't really know on who they will be applied.
 
 
 
@@ -1758,13 +1032,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 04
+## Step 04 - Join the ports within the domain
 
 
 ### Objective
 {: .no_toc }
 
-We want integrates the traits defintinio of `ports.rs` into the file `domain.rs`.
+We want integrates the traits defintinion available in `ports.rs` into the file `domain.rs`.
 
 ### Setup
 {: .no_toc }
@@ -1855,8 +1129,8 @@ pub type Result<T> = std::result::Result<T, Error>;
 ```
 
 
-
 In `main.rs` remove the line `use step_03::ports;`, replace `step_03` by `step_04` and update the signature of run_greeting_loop() so that it use `&dyn domain::NameReader` in place of `&dyn port::NameReader`.
+
 
 ```rust
 // main.rs
@@ -1908,7 +1182,7 @@ fn run_greeting_loop(
 ```
 
 **Points of attention:**
-* Including the ports into the `domain.rs` file help to express our intent. We want to make sure that the communication with the domain goes trough the ports.
+* Including the ports into the `domain.rs` file help to express our intent. We want to make sure that the communication with the domain happens via ports.
 * **Read the code** and the signature of `run_greeting_loop()`. We had `fn run_greeting_loop(input: &dyn ports::NameReader...` now we write `fn run_greeting_loop(input: &dyn domain::NameReader...`
 
 
@@ -1976,7 +1250,7 @@ The tests output do not change.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 05
+## Step 05 - One crate par component
 
 
 ### Objective
@@ -1985,48 +1259,49 @@ The tests output do not change.
 We want to have one crate per component. At the end the folder hierarchy should look like:
 
 ```text
-step_05/
+step_05
 │   Cargo.toml
 └───crates
-    ├───adapter_console                  # depends on domain + shared
+    ├───adapter_console                  # depends on domain
     │   │   Cargo.toml
     │   ├───src
+    │   │       error.rs                 # errors are crate specific
     │   │       input.rs
     │   │       lib.rs
     │   │       output.rs
     │   └───tests
-    │           adapter_console_test.rs  # tests are part of the crate
-    ├───app
-    │   │   Cargo.toml                   # depends application + adapter_console + shared
+    │           adapter_console_test.rs  # tests are crate specific
+    ├───app                              # depends application + adapter_console
+    │   │   Cargo.toml
     │   └───src
-    │           main.rs                  # entry point
-    │
-    ├───application                      # depends on domain + shared
+    │           error.rs                 # errors are crate specific
+    │           main.rs
+    ├───application                      # depends on domain
     │   │   Cargo.toml
     │   ├───src
+    │   │       error.rs                 # errors are crate specific
     │   │       greeting_service.rs
     │   │       lib.rs
     │   └───tests
-    │           application_test.rs      # tests are part of the crate
-    ├───domain                           # depend on shared
+    │           application_test.rs      # tests are crate specific
+    ├───domain                           # doesn't depend on anyone
     │   │   Cargo.toml
     │   ├───src
+    │   │       error.rs                 # errors are crate specific
     │   │       greeting.rs
     │   │       lib.rs
     │   │       ports.rs
     │   └───tests
-    │           domain_test.rs           # tests are part of the crate
-    ├───integration_tests                # # depends domain + application + adapter_console + shared
-    │   │   Cargo.toml
-    │   ├───src
-    │   │       lib.rs
-    │   └───tests
-    │           integration_test.rs
-    └───shared                           # no dependencies, it shares Error/Result
-        │   Cargo.toml
-        └───src
-                lib.rs
+    │           domain_test.rs           # tests are crate specific
+    └───integration_tests                # dedicated crate for integration testing
+        │   Cargo.toml                   # depends on domain + application + adapter_console
+        ├───src
+        │       lib.rs
+        └───tests
+                integration_test.rs
 ```
+
+
 
 
 ### Setup
@@ -2053,7 +1328,6 @@ Update `Cargo.toml`
 ```toml
 [workspace]
 members = [
-    "crates/shared",
     "crates/domain",
     "crates/application",
     "crates/adapter_console",
@@ -2071,30 +1345,18 @@ license = "MIT"
 **Points of attention:**
 * The root `Cargo.toml` defines a workspace with multiple independent crates
 * Each component can be developped and tested independently
-* The `app` crate has a `[[bin]]` section in its `Cargo.toml`, enabling `cargo run -p app` (in addition to `cargo run -p app`)
+* The `app` crate has a `[[bin]]` section in its `Cargo.toml`, enabling `cargo run` (in addition to `cargo run -p app`)
 * Integration tests have their own crate for separation of concerns and are run with `cargo test -p integration_tests`
-* `Error` and `Result<T>` are moved in a shared component
+
+
+**Points of attention:**
+* Up to now it was Ok to share `Error` and `Result<T>` between the module.
+* This is no longer thecase. Indeed each crate will developp its own error code/message
+* This is why in most of the crates there is an `error.rs` file
+* Now these `error.rs` files all look the same but tomorow, one crate may start using `thiserror` while the others keep their error schema.
 
 
 
-#### **The shared crate**
-{: .no_toc }
-
-Here is `Cargo.toml`:
-
-```toml
-[package]
-name = "shared"
-version.workspace = true
-edition.workspace = true
-license.workspace = true
-```
-The `src/lib.rs` file host the definition or our friends
-
-```rust
-pub type Error = Box<dyn std::error::Error>;
-pub type Result<T> = std::result::Result<T, Error>;
-```
 
 
 
@@ -2118,31 +1380,62 @@ name = "step_05"
 path = "src/main.rs"
 
 [dependencies]
-shared = { path = "../shared" }
 application = { path = "../application" }
 adapter_console = { path = "../adapter_console" }
 ```
 
-The `src/amin.rs` is now very short. Indeed the run_greeting_loop() function call in now a method that belongs to a `GreetingService` structure.
+The `src/amin.rs` is now very short. Indeed the `run_greeting_loop()` function call in now a method that belongs to a `GreetingService` structure.
 
 ```rust
 use adapter_console::{ConsoleInput, ConsoleOutput};
 use application::GreetingService;
-use shared::Result;
+
+mod error;
+use error::Result;
 
 fn main() -> Result<()> {
     println!("=== Greeting Service (Step 05 - Modular Monolith & Hexagonal Architecture) ===");
     println!("Enter a name to greet (or 'quit' to exit):\n");
 
+    // Dependency injection: Create adapters
     let input = ConsoleInput::new();
     let output = ConsoleOutput::new();
 
+    // Create application service and run
     let service = GreetingService::new();
     service.run_greeting_loop(&input, &output)?;
 
     Ok(())
 }
 ```
+
+**Points of attention:**
+* Above, note the `mod error;` and the `use error::Result;`
+
+
+
+Find below the error.rs file. At this point, no matter the crate, the error.rs file are all similar:
+
+```rust
+pub type Error = Box<dyn std::error::Error>;
+pub type Result<T> = std::result::Result<T, Error>;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2153,13 +1446,13 @@ fn main() -> Result<()> {
 Here is `Cargo.toml`:
 ```toml
 [package]
+[package]
 name = "integration_tests"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 
 [dependencies]
-shared = { path = "../shared" }
 domain = { path = "../domain" }
 application = { path = "../application" }
 adapter_console = { path = "../adapter_console" }
@@ -2170,8 +1463,7 @@ This crate is really a place holder for the tests. Indeed it does contains code 
 
 ```rust
 use application::GreetingService;
-use domain::{GreetingWriter, NameReader};
-use shared::Result;
+use domain::{GreetingWriter, NameReader, error::Result};
 
 struct MockNameReader {
     names: Vec<String>,
@@ -2222,12 +1514,11 @@ impl GreetingWriter for MockGreetingWriter {
     }
 }
 
-// Integration Tests
 #[test]
 fn domain_greet_function() {
     // Arrange
-    // let reader = MockNameReader::new(vec!["Alice", "Bob", "exit"]);
-    let reader = MockNameReader::new(vec!["Alice", "Bob"]);
+    let reader = MockNameReader::new(vec!["Alice", "Bob", "quit"]);
+    // let reader = MockNameReader::new(vec!["Alice", "Bob"]);
     let writer = MockGreetingWriter::new();
     let service = GreetingService::new();
 
@@ -2241,11 +1532,14 @@ fn domain_greet_function() {
     assert!(greetings[0].contains("Alice"));
     assert!(greetings[1].contains("Bob"));
 }
-
 // Other tests follow here
 ```
+
 **Points of attention:**
-* Why above in the reader, `index` is `std::cell::Cell<usize>`
+* Note that `error::Result` is provided by `domain`. Indeed in the implementations of the mock reader (mock writer), the function `read_name()` (`write_greeting`) return a `domain::Result<()>`. If tomorow we change the kind of error in the domain crate, with `thiserror` for example, then the `integration_tests` crate will **NOT** be impacted.
+
+**Points of attention:**
+* Why above, in `MockNameReader`, `index` is `std::cell::Cell<usize>`?
 * `NameReader` trait declares `fn read_name(&self)`, a shared, immutable reference.
 * Inside `read_name`, we need to increment `index` to return the next name on each call. But `&self` forbids mutating struct fields directly. If `index` is a plain `usize`, the compiler rejects `self.index += 1` because you don't have `&mut self`. Trust me I tried.
 * `Cell<usize>` provides interior mutability. This allows us to modify a value behind a `&self` reference in a safe way (for Copy types like `usize`).
@@ -2274,21 +1568,32 @@ Here is `Cargo.toml`:
 
 ```toml
 [package]
+[package]
 name = "application"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 
 [dependencies]
-shared = { path = "../shared" }
 domain = { path = "../domain" }
 ```
 
-The  code of application/src/greeting_service.rs is almost a copy paste from the `run_greeting_loop()` of `step_04`.
+`application/src/error.rs` is the same while `application/src/lib.rs` is minimal:
 
 ```rust
+pub mod error;
+pub mod greeting_service;
+pub use greeting_service::GreetingService;
+```
+
+
+
+
+The  code of `application/src/greeting_service.rs` is almost a copy paste from the `run_greeting_loop()` of `step_04`.
+
+```rust
+use crate::error::Result;
 use domain;
-use shared::Result;
 
 pub struct GreetingService;
 
@@ -2337,14 +1642,9 @@ impl Default for GreetingService {
 ```
 
 **Points of attention:**
-* Did you notice the `&self` as first parameter of `.run_greeting_loop()` ?
+* Make sur to cathc the line `use crate::error::Result;`
+* Did you notice the `&self` as a first parameter of `.run_greeting_loop()`?
 
-`application/src/lib.rs` is minimal:
-
-```rust
-pub mod greeting_service;
-pub use greeting_service::GreetingService;
-```
 
 
 
@@ -2364,14 +1664,42 @@ edition.workspace = true
 license.workspace = true
 
 [dependencies]
-shared = { path = "../shared" }
 ```
+
+Here is ``domain/src/lib.rs`:
+
+```rust
+pub mod error;
+pub mod greeting;
+pub mod ports;
+
+pub use greeting::greet;
+pub use ports::{GreetingWriter, NameReader};
+```
+
+
+
+`error.rs` is the same. The `domain/src/ports.rs` file is back:
+
+```rust
+// ports.rs
+use crate::error::Result;
+
+pub trait NameReader {
+    fn read_name(&self) -> Result<String>;
+}
+
+pub trait GreetingWriter {
+    fn write_greeting(&self, greeting: &str) -> Result<()>;
+}
+```
+
 
 `domain/src/greeting.rs` remains unchanged. Yes, the name of the file is changed but `greet()` signature is the same.
 
 ```rust
 // greeting.rs
-use shared::Result;
+use crate::error::Result;
 
 pub fn greet(name: &str) -> Result<String> {
     if name.is_empty() {
@@ -2399,30 +1727,22 @@ pub fn greet(name: &str) -> Result<String> {
     Ok(format!("Hello {}{}", truncated_name, TRAILER))
 }
 ```
-The `domain/src/ports.rs` file is back! In the same folder we now have:
 
-```rust
-// ports.rs
-use shared::Result;
+**Points of attention:**
+* Make sure to understand `Result` come from the `error` module which is crate dependant.
 
-pub trait NameReader {
-    fn read_name(&self) -> Result<String>;
-}
 
-pub trait GreetingWriter {
-    fn write_greeting(&self, greeting: &str) -> Result<()>;
-}
-```
 
-Finally here is ``domain/src/lib.rs`:
 
-```rust
-pub mod greeting;
-pub mod ports;
 
-pub use greeting::greet;
-pub use ports::{GreetingWriter, NameReader};
-```
+
+
+
+
+
+
+
+
 
 
 
@@ -2446,17 +1766,57 @@ edition.workspace = true
 license.workspace = true
 
 [dependencies]
-shared = { path = "../shared" }
 domain = { path = "../domain" }
 ```
+
+
+```rust
+// lib.rs
+pub mod error;
+pub mod input;
+pub mod output;
+
+pub use input::ConsoleInput;
+pub use output::ConsoleOutput;
+```
+
+
 
 The previous `adapters/` folder is renamed `adapter_console` and the crate contains both, intput and output console adpaters modules in the same crate. Below `input.rs` and `output.rs` contain respectively a large part of `console_input.rs` dans `console.output.rs` from the previous project `step_04`.
 
 ```rust
+// output.rs
+use crate::error::Result;
+use domain::GreetingWriter;
+
+pub struct ConsoleOutput;
+
+impl ConsoleOutput {
+    pub fn new() -> Self {
+        Self
+    }
+}
+
+impl Default for ConsoleOutput {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl GreetingWriter for ConsoleOutput {
+    fn write_greeting(&self, greeting: &str) -> Result<()> {
+        println!("{greeting}");
+        Ok(())
+    }
+}
+```
+
+```rust
 // input.rs
 use std::io::{self, Write};
+
 use domain::NameReader;
-use shared::Result;
+use crate::error::Result;
 
 pub struct ConsoleInput;
 
@@ -2491,79 +1851,6 @@ impl NameReader for ConsoleInput {
 }
 ```
 
-```rust
-// output.rs
-use domain::GreetingWriter;
-use shared::Result;
-
-pub struct ConsoleOutput;
-
-impl ConsoleOutput {
-    pub fn new() -> Self {
-        Self
-    }
-}
-
-impl Default for ConsoleOutput {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
-impl GreetingWriter for ConsoleOutput {
-    fn write_greeting(&self, greeting: &str) -> Result<()> {
-        println!("{greeting}");
-        Ok(())
-    }
-}
-```
-
-```rust
-// lib.rs
-pub mod input;
-pub mod output;
-
-pub use input::ConsoleInput;
-pub use output::ConsoleOutput;
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2592,23 +1879,23 @@ Find below 2 examples of expected outputs:
 cargo test -p integration_tests
    Compiling application v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_05\crates\application)
    Compiling integration_tests v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_05\crates\integration_tests)
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.77s
-     Running unittests src\lib.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\deps\integration_tests-df01036f1172a702.exe)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.86s
+     Running unittests src\lib.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\deps\integration_tests-d9b20696f8963066.exe)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests\integration_test.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\deps\integration_test-401ffa95db2f9622.exe)
+     Running tests\integration_test.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\deps\integration_test-92fdd84cf9e6dd41.exe)
 
 running 5 tests
 test complete_flow_long_name ... ok
-test empty_name_error_handling ... ok
-test complete_flow_normal_greeting ... ok
-test domain_greet_function ... ok
 test service_with_mocks ... ok
+test domain_greet_function ... ok
+test complete_flow_normal_greeting ... ok
+test empty_name_error_handling ... ok
 
-test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
    Doc-tests integration_tests
 
@@ -2622,7 +1909,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```powershell
 cargo run
    Compiling app v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_05\crates\app)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.35s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.53s
      Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\step_05.exe`
 === Greeting Service (Step 05 - Modular Monolith & Hexagonal Architecture) ===
 Enter a name to greet (or 'quit' to exit):
@@ -2630,7 +1917,7 @@ Enter a name to greet (or 'quit' to exit):
 > James HOLDEN
 Hello James HOLDEN.
 
-> exit
+> quit
 
 Goodbye!
 ```
@@ -2643,6 +1930,8 @@ Goodbye!
 > Summary
 >
 * Every component is in its own crate
+* Each crate has its own Result and Error
+* Each crate has its set of tests
 * Development and testing can be done independantly, per crate, in parallel, at different speed, by different teams...
 * ...
 
@@ -2665,14 +1954,13 @@ Goodbye!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 06
-{: .no_toc }
+## Step 06 - Start using `anyhow` and `thiserror` crates
 
 
 ### Objective
 {: .no_toc }
 
-We want ...
+We want to include `anyhow` and `thiserror` crates.
 
 ### Setup
 {: .no_toc }
@@ -2698,10 +1986,12 @@ Update `Cargo.toml`
 ```toml
 [workspace]
 members = [
+    "crates/shared",
     "crates/domain",
     "crates/application",
     "crates/adapter_console",
     "crates/app",
+    "crates/integration_tests",
 ]
 resolver = "3"
 
@@ -2710,18 +2000,235 @@ version = "0.1.0"
 edition = "2024"
 license = "MIT"
 
-# Shared dependencies across all crates
 [workspace.dependencies]
 thiserror = "2.0"
 anyhow = "1.0"
 ```
 
 
+
+#### **The shared crate**
+{: .no_toc }
+
+```rust
+[package]
+name = "shared"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+thiserror.workspace = true
+```
+
+In `crates/shared/src/lib.rs`, comment out the `Error` type alias and modify the code as below.
+
+```rust
+// pub type Error = Box<dyn std::error::Error>;
+
+use thiserror::Error;
+
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(Debug, Error)]
+pub enum Error {
+    #[error("Custom error: {0}")]
+    Custom(String),
+
+    #[error(transparent)]
+    Io(#[from] std::io::Error),
+}
+
+impl Error {
+    pub fn custom(val: impl std::fmt::Display) -> Self {
+        Self::Custom(val.to_string())
+    }
+}
+
+impl From<&str> for Error {
+    fn from(val: &str) -> Self {
+        Self::Custom(val.to_string())
+    }
+}
+```
+
+
+#### **The app crate**
+{: .no_toc }
+
+```toml
+[package]
+name = "app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "step_06"
+path = "src/main.rs"
+
+[dependencies]
+shared = { path = "../shared" }
+application = { path = "../application" }
+adapter_console = { path = "../adapter_console" }
+anyhow.workspace = true
+
+```
+
+```rust
+use adapter_console::{ConsoleInput, ConsoleOutput};
+use application::GreetingService;
+
+// use shared::Result;
+use anyhow::{Context, Result};
+
+fn main() -> Result<()> {
+    println!("=== Greeting Service (Step 06 - Modular Monolith & Hexagonal Architecture) ===");
+    println!("Enter a name to greet (or 'quit' to exit):\n");
+
+    let input = ConsoleInput::new();
+    let output = ConsoleOutput::new();
+
+    // Create application service and run
+    let service = GreetingService::new();
+    service
+        .run_greeting_loop(&input, &output)
+        .context("In the loop")?;
+
+    Ok(())
+}
+```
+
+
+#### **The domain crate**
+{: .no_toc }
+
+Simplify the `Err()` line in `crates/domain/src/greetings.rs` from:
+```rust
+pub fn greet(name: &str) -> Result<String> {
+    if name.is_empty() {
+        return Err("Name cannot be empty".to_string().into());
+    }
+    // Rest of the code unmodified
+}
+```
+
+to:
+
+```rust
+pub fn greet(name: &str) -> Result<String> {
+    if name.is_empty() {
+        return Err("Name cannot be empty".into());
+    }
+    // Rest of the code unmodified
+}
+```
+
+Modify the test `empty_name_returns_error()` as shown below:
+
+```rust
+#[test]
+fn empty_name_returns_error() {
+    let result = greet("");
+    assert!(result.is_err());
+    // assert_eq!(result.unwrap_err(), "Name cannot be empty");
+    let err = result.unwrap_err();
+    // assert_eq!(err.to_string(), "Name cannot be empty");
+    assert_eq!(err.to_string(), "Custom error: Name cannot be empty");
+}
+```
 **Points of attention:**
-* ...
+* Now, on error the message is "Custom error: ...".
+
+
+
+
+
+Build, run and test the application. Try this:
+
+```powershell
+cargo test -p adapter_console
+cargo test -p adapter_console --test adapter_console_test
+cargo test -p adapter_console --test adapter_console_test console # any test containing "console"
+
+cargo test -p application
+cargo test -p domain --test domain_test
+cargo test -p integration_tests
+
+cargo run -p app
+cargo run
+```
 
 
 Build, run and test the application. Find below the expected output:
+
+
+```powershell
+cargo run
+   Compiling shared v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_06\crates\shared)
+   Compiling domain v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_06\crates\domain)
+   Compiling adapter_console v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_06\crates\adapter_console)
+   Compiling application v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_06\crates\application)
+   Compiling integration_tests v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_06\crates\integration_tests)
+   Compiling app v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_06\crates\app)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.20s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_06\debug\step_06.exe`
+=== Greeting Service (Step 06 - Modular Monolith & Hexagonal Architecture) ===
+Enter a name to greet (or 'quit' to exit):
+
+> Marcel
+Hello Marcel.
+
+> quit
+
+Goodbye!
+
+```
+
+
+```powershell
+cargo test -p domain
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src\lib.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_06\debug\deps\domain-41d9db1c7e499853.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\domain_test.rs (C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_06\debug\deps\domain_test-ef809e7bfc49c7bf.exe)
+
+running 9 tests
+test boundary_case_nineteen_chars ... ok
+test domain_should_not_use_special_greeting_for_similar_names ... ok
+test domain_should_truncate_long_unicode_names ... ok
+test greeting_length_limit ... ok
+test empty_name_returns_error ... ok
+test domain_should_handle_unicode_names ... ok
+test normal_greeting ... ok
+test truncation_for_long_names ... ok
+test roberto_special_case ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests domain
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2733,33 +2240,26 @@ Build, run and test the application. Find below the expected output:
 {: .new-title }
 > Summary
 >
-* Blablabla
-    * **Blablabla:** ...
-    * **Blablabla:** ...
-* ...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* `anyhow` and `thiserror` are now integrated
+* the inmpact of the transition is minimal thanks to the way `Result` and `Error` were initially definde
 
 
 <div align="center">
 <img src="./assets/img07.webp" alt="" width="450" loading="lazy"/><br/>
 <span></span>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ###################################################################### -->
@@ -2898,3 +2398,28 @@ Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
 <img src="./assets/img99.webp" alt="" width="900" loading="lazy"/><br/>
 <span></span>
 </div> -->
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Next Step
+{: .no_toc }
+
+* [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
+
+<!--
+
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Start Implementing Hexagonal Architecture
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 0X -
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 0X -
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 0X -
+* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}): Step 0X -
+
+-->
+
