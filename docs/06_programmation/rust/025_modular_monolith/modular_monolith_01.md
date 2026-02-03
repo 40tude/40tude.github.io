@@ -3,7 +3,7 @@ published: true
 lang: en-US
 layout: default
 title: "Learning Modular Monolith Architecture with Rust - 01"
-description: "An 8-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
+description: "An 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
@@ -160,6 +160,8 @@ code .
 ```
 
 
+* Move `examples/ex07.rs` into `src/main.rs`
+* Delete the `examples/` folder
 
 
 
@@ -170,10 +172,11 @@ code .
 <!-- ###################################################################### -->
 ## Actions
 
-* Move `examples/ex07.rs` into `src/main.rs`
-* Delete the `examples/` folder
 
-Update `Cargo.toml`
+
+
+<!-- ###################################################################### -->
+### Cargo.toml
 
 ```toml
 [package]
@@ -187,6 +190,15 @@ path = "src/main.rs"
 ```
 
 
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### error.rs
+
 Create an `error.rs` file and copy the Error and Result type alias in it:
 
 ```rust
@@ -195,6 +207,18 @@ pub type Result<T> = std::result::Result<T, Error>;
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### domain.rs
 
 
 Extract from `main.rs` the `greet()` function and the tests and copy them in a new file `domain.rs`.
@@ -249,6 +273,8 @@ mod tests {
 
 
 
+<!-- ###################################################################### -->
+### lib.rs
 
 Create a `lib.rs`
 
@@ -265,6 +291,17 @@ pub use domain::greet;
     * It is therefore a question of ease of use vs clarity for the code consumers.
     * I'm not always a big fan of it and I will explain why later.
 
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### main.rs
 
 
 The remaining of the code is the `main.rs` file:
@@ -315,6 +352,15 @@ fn main() -> Result<()> {
 * Make sure to understand why here, we write `use step_01::error::Result;` while in `domain.rs` we wrote `use crate::error::Result;`.
     * If needed, you can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### Build, run & test
 
 
 Build, run and test the application. Find below the expected output:

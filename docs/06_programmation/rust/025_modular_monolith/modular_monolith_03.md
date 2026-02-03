@@ -3,7 +3,7 @@ published: true
 lang: en-US
 layout: default
 title: "Learning Modular Monolith Architecture with Rust - 03"
-description: "An 8-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
+description: "An 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
@@ -185,7 +185,13 @@ code .
 <!-- ###################################################################### -->
 ## Actions
 
-Update `Cargo.toml`
+
+
+
+
+<!-- ###################################################################### -->
+### Cargo.toml
+
 
 ```toml
 [package]
@@ -200,7 +206,10 @@ path = "src/main.rs"
 
 
 
-Update `lib.rs`
+<!-- ###################################################################### -->
+### lib.rs
+
+
 
 ```rust
 pub mod adapters;
@@ -217,6 +226,8 @@ pub mod ports;
 
 
 
+<!-- ###################################################################### -->
+### ports.rs
 
 Create a `ports.rs` file.
 
@@ -242,6 +253,8 @@ pub trait GreetingWriter {
 
 
 
+<!-- ###################################################################### -->
+### adapters/console_input.rs
 
 
 Create an `adapters/` folder and add 2 concrete implementations of the previous traits in the `console_input.rs` and `console_output.rs` files.
@@ -278,6 +291,12 @@ impl ports::GreetingWriter for ConsoleOutput {
 * Did you notice the `use crate::Result;` and `use crate::ports;` at the top of the file?
 * Did you notice that `.new()` and `.default()` returns `Self`?
 
+
+
+
+
+<!-- ###################################################################### -->
+### adapters/console_output.rs
 
 
 ```rust
@@ -326,6 +345,8 @@ impl ports::NameReader for ConsoleInput {
 
 
 
+<!-- ###################################################################### -->
+### adapters/mod.rs
 
 
 Last but not least, add a file `adapters/mod.rs` that “describes” the modules that make up the `adapters` module and re-export `ConsoleInput` and `ConsoleOutput` names.
@@ -342,11 +363,14 @@ pub use console_output::ConsoleOutput;
 
 
 
+
+
+<!-- ###################################################################### -->
+### lib.rs
+
 At this point, we have the Ports (traits) and the Adapters (implementations). We need to add them to the `lib.rs` file so that the `main.rs` file can use them:
 
 ```rust
-// lib.rs
-
 pub mod adapters;
 pub mod domain;
 pub mod error;
@@ -356,6 +380,8 @@ pub mod ports;
 
 
 
+<!-- ###################################################################### -->
+### main.rs
 
 Finally we can rewrite `main.rs` file as follow:
 
@@ -424,6 +450,8 @@ fn run_greeting_loop(
 
 
 
+<!-- ###################################################################### -->
+### Build, run & test
 
 Build, run and test the application. Find below the expected output:
 

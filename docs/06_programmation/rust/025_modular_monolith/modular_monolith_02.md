@@ -3,7 +3,7 @@ published: true
 lang: en-US
 layout: default
 title: "Learning Modular Monolith Architecture with Rust - 02"
-description: "An 8-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
+description: "An 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
@@ -167,7 +167,9 @@ code .
 <!-- ###################################################################### -->
 ## Actions
 
-Update `Cargo.toml`
+<!-- ###################################################################### -->
+### Cargo.toml
+
 
 ```toml
 [package]
@@ -184,8 +186,10 @@ path = "src/main.rs
 
 
 
+<!-- ###################################################################### -->
+### Update lib.rs
 
-Update `lib.rs`
+
 
 ```rust
 pub mod domain;
@@ -210,8 +214,8 @@ pub mod error;
 
 
 
-
-
+<!-- ###################################################################### -->
+### domain_test.rs
 
 
 
@@ -245,6 +249,8 @@ fn empty_name_returns_error() {
 
 
 
+<!-- ###################################################################### -->
+### integration_test.rs
 
 
 
@@ -296,6 +302,21 @@ fn long_name_integration() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### Build, run & test
 
 
 Build, run and test the application. Find below the expected output:
