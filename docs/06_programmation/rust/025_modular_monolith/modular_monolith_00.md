@@ -65,7 +65,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
+* [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 
 
 
@@ -129,10 +129,8 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 00 - First prototype working
 
-### Objective
-{: .no_toc }
+## Objective
 
 We want a working prototype (POC). At the end the project will look like this:
 
@@ -152,8 +150,8 @@ step_00/
         main.rs
 ```
 
-### Setup
-{: .no_toc }
+## Setup
+
 ```powershell
 mkdir modular_monolith
 cd modular_monolith
@@ -163,7 +161,7 @@ cd step_00
 code .
 ```
 
-### Actions
+## Actions
 {: .no_toc }
 
 ```powershell
@@ -186,7 +184,7 @@ Hello, world!
 
 
 <!-- ###################################################################### -->
-#### **example 00**
+### **example 00**
 {: .no_toc }
 
 
@@ -213,7 +211,7 @@ Hello Bob.
 
 
 <!-- ###################################################################### -->
-#### **example 01**
+### **example 01**
 {: .no_toc }
 
 There is an exception in our business. If the argument is "Roberto", the application writes "Ciao Roberto!". Copy `ex00.rs` into `ex01.rs` and modify the code to take this requirement into account:
@@ -245,7 +243,7 @@ Ciao Roberto!
 
 
 <!-- ###################################################################### -->
-#### **example 02**
+### **example 02**
 {: .no_toc }
 
 
@@ -310,7 +308,7 @@ Hello Alice.
 
 
 <!-- ###################################################################### -->
-#### **example 03**
+### **example 03**
 {: .no_toc }
 
 Copy `ex02.rs` into `ex03.rs`and add one test :
@@ -390,7 +388,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 <!-- ###################################################################### -->
-#### **example 04**
+### **example 04**
 {: .no_toc }
 
 Copy `ex03.rs` into `ex04.rs`, add a loop in `main()` and more tests. Make sure the `?` operator can be used in the `main()` function:
@@ -596,7 +594,7 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 <!-- ###################################################################### -->
-#### **example 05**
+### **example 05**
 {: .no_toc }
 
 Copy `ex04.rs` into `ex05.rs` improve the `main()` function so that CTRL+C can be avoided:
@@ -663,7 +661,7 @@ Goodbye!
 
 
 <!-- ###################################################################### -->
-#### **example 06**
+### **example 06**
 {: .no_toc }
 
 On this excellent [Web site](https://www.40tude.fr/docs/06_programmation/rust/), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). When this is done, copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
@@ -741,7 +739,7 @@ Goodbye!
 
 
 <!-- ###################################################################### -->
-#### **example 07**
+### **example 07**
 {: .no_toc }
 
 
@@ -922,5 +920,5 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
+* [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
 
