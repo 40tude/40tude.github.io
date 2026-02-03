@@ -679,8 +679,8 @@ impl NameReader for ConsoleInput {
 
 
 
-
-
+<!-- ###################################################################### -->
+### Build, run & test
 
 Build, run and test the application. Try this:
 
@@ -759,6 +759,7 @@ Goodbye!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Summary
+
 {: .new-title }
 > What have we done so far?
 >
@@ -785,7 +786,6 @@ Goodbye!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Next Steps
-{: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files

@@ -611,6 +611,8 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 
 
+<!-- ###################################################################### -->
+### Build, run & test
 
 
 
@@ -703,6 +705,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Summary
+
 {: .new-title }
 > What have we done so far?
 >
@@ -725,7 +728,6 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Next Steps
-{: .no_toc }
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
