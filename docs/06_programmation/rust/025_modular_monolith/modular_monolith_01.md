@@ -54,20 +54,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are GitHub
 {: .no_toc }
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
-
-<!--
-
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Start Implementing Hexagonal Architecture
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 0X -
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 0X -
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 0X -
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}): Step 0X -
-
--->
-
-
-
 
 
 
@@ -2411,15 +2398,4 @@ Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
-
-<!--
-
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}): Step 03 - Start Implementing Hexagonal Architecture
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 0X -
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 0X -
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 0X -
-* [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}): Step 0X -
-
--->
-
