@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 lang: en-US
 layout: default
 title: "Learning Modular Monolith Architecture with Rust - 05"
