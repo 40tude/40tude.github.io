@@ -108,7 +108,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want to have one crate per component an application in charge of the use cases. At the end of Step 04 folder hierarchy should look like this:
+We want to have one crate per component and, among others, an application crate in charge of the use cases. At the end of Step 04 folder hierarchy should look like this:
 
 ```text
 step_04
@@ -219,12 +219,12 @@ license = "MIT"
 * The root `Cargo.toml` defines a workspace with multiple independent crates
 * Each component can be developed and tested independently
 * As we will see, the `app` crate has a `[[bin]]` section in its `Cargo.toml`, enabling `cargo run` (in addition to `cargo run -p app`)
-* Integration tests have their own crate for separation of concerns and are run with `cargo test -p integration_tests`
+* Integration tests have their own crate for separation of concerns and we can run them with `cargo test -p integration_tests`
 
 
 **Points of attention:**
 * Up to now it was Ok to share `Error` and `Result<T>` between the modules.
-* This is no longer the case. Indeed each crate must be independent, and we should not be surprised if some of them develop their own error code/message
+* This is no longer the case. Indeed each crate must be independent, and we should not be surprised if some of our crates develop their own error code/message.
 * This is why in most of the crates there is an `error.rs` file
 * As for now, all these `error.rs` files look the same but tomorrow, one crate may start using `thiserror` while the others keep their error schema.
 
@@ -490,7 +490,10 @@ impl GreetingService {
         loop {
             let name = input.read_name()?;
 
-            if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
+            if name.eq_ignore_ascii_case("quit")
+            || name.eq_ignore_ascii_case("exit")
+            || name.eq_ignore_ascii_case("q!")
+        {
                 println!("\nGoodbye!");
                 break;
             }

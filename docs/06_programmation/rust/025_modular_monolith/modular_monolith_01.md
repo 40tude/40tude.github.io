@@ -325,7 +325,10 @@ fn main() -> Result<()> {
 
         let name = input.trim();
 
-        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
+        if name.eq_ignore_ascii_case("quit")
+            || name.eq_ignore_ascii_case("exit")
+            || name.eq_ignore_ascii_case("q!")
+        {
             println!("\nGoodbye!");
             break;
         }

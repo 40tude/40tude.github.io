@@ -402,7 +402,10 @@ fn run_greeting_loop(
         // Read name from input adapter
         let name = input.read_name()?;
 
-        if name.eq_ignore_ascii_case("quit") || name.eq_ignore_ascii_case("exit") {
+        if name.eq_ignore_ascii_case("quit")
+            || name.eq_ignore_ascii_case("exit")
+            || name.eq_ignore_ascii_case("q!")
+        {
             println!("\nGoodbye!");
             break;
         }
