@@ -332,7 +332,7 @@ pub trait GreetingWriter {
 **Points of attention:**
 
 * **Important**. When an adapter implement a trait from the port we need to make sure it can report not only the domain errors but also the errors from the infrastructure (file missing, network error...). However concerning the latter, we don't know and we cannot know them all at compile time (today the output is on a printer, tomorrow "Hello" will be written on screen). This is why a trait for infrastructure errors (see `InfraError`) is defined.
-* In fact, `InfraError` is a port, not a domain error. It is a contract that the `domain` imposes on `adapters`: "if you want to report an infra error to me, implement this feature."
+* In fact, `InfraError` is a contract that the `domain` imposes on `adapters`: "if you want to report an infra error to me, implement this feature."
 * However we need a way to combine both kind of errors (domain and infra) into one and this is where `NameReaderError` enters in action.
 * `NameReaderError` is an enum which express the fact that it can be either a domain error or an infrastructure error.
 * Right after we found the mandatory implementation to make `NameReaderError` an error "compatible" with the others errors of the type system.
@@ -839,6 +839,12 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 ## Summary
 
+<div align="center">
+<img src="./assets/img10.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
 {: .new-title }
 > What have we done so far?
 >
@@ -852,7 +858,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 
-
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
