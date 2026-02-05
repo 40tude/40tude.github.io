@@ -7,7 +7,7 @@ description: "An 7-project progression from Hello World to a fully decoupled, I/
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-02-03 08:00:00
+last_modified_date: 2026-02-05 10:00:00
 ---
 
 
