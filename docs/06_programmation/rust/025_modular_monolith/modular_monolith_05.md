@@ -270,7 +270,7 @@ pub type Result<T> = std::result::Result<T, DomainError>;
 
 **Points of attention:**
 * Everything here is domain specific
-* With the help of `thiserror`, we define a domain error (see `DomainError`) enum. So far it only have one variant (see `EmptyName`).
+* With the help of `thiserror`, we define a domain error enum (see `DomainError`). So far it only have one variant (see `EmptyName`).
 * The type alias `Result` is updated from `std::result::Result<T, Error>` to `std::result::Result<T, DomainError>`
 
 
@@ -279,7 +279,8 @@ pub type Result<T> = std::result::Result<T, DomainError>;
 
 
 
-Now we can update `port.rs`.
+Now we can update `port.rs`. And believe it or not, the final version of this one took me a while... Why? Simply because initially I put `InfraError` in `error.rs`. I knew it was wrong. I had a red LED blinking somewhere in my mind... But I was not brave (smart) enough to move it here. This plus 2 or 3 other things... It took me a while but I learnt a lot. Ok, here is the code I have today:
+
 
 ```rust
 use crate::errors::DomainError;
@@ -331,8 +332,8 @@ pub trait GreetingWriter {
 
 **Points of attention:**
 
-* **Important**. When an adapter implement a trait from the port we need to make sure it can report not only the domain errors but also the errors from the infrastructure (file missing, network error...). However concerning the latter, we don't know and we cannot know them all at compile time (today the output is on a printer, tomorrow "Hello" will be written on screen). This is why a trait for infrastructure errors (see `InfraError`) is defined.
-* In fact, `InfraError` is a contract that the `domain` imposes on `adapters`: "if you want to report an infra error to me, implement this feature."
+* **Important**. When an adapter implement the `NameReader` trait from the port we need to make sure it can report not only the domain errors but also the errors from the infrastructure (file missing, network error...). However concerning the latter, we don't know and we cannot know them all at compile time (today the input come from UDP, tomorrow it will come from a keyboard). This is why a trait for infrastructure errors is defined (see `InfraError`).
+* In fact, `InfraError` is a contract that the `domain` imposes on `NameReader` adapters: "if you want to report an infra error to me, implement this feature."
 * However we need a way to combine both kind of errors (domain and infra) into one and this is where `NameReaderError` enters in action.
 * `NameReaderError` is an enum which express the fact that it can be either a domain error or an infrastructure error.
 * Right after we found the mandatory implementation to make `NameReaderError` an error "compatible" with the others errors of the type system.
@@ -374,7 +375,7 @@ pub use ports::{GreetingWriter, InfraError, NameReader, NameReaderError};
 ```
 
 **Points of attention:**
-* The reason why `InfraError` and `NameReaderError` are re-exported is to "hide" the name "port" so that in the input module of the adapter_console crate we will write `use domain::{NameReader, NameReaderError}` instead of `use domain::{NameReader, ports::NameReaderError};`
+* The reason why `InfraError` and `NameReaderError` are re-exported is to "hide" the name "port" so that in the input module of the `adapter_console` crate we will write `use domain::{NameReader, NameReaderError}` instead of `use domain::{NameReader, ports::NameReaderError};`. Yes, I know, this somewhat contradict what I said in [Step 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}#librs) but we have to be pragmatic.
 
 
 
@@ -442,7 +443,7 @@ impl InfraError for ConsoleError {
 **Points of attention:**
 * Using `thiserror` we first express what is a `ConsoleError`
 * Thanks to the re-export in the domain's lib we write `use domain::InfraError;` and NOT `use domain::ports::InfraError;` and the implementation details (the ports module) remains hidden.
-* Second we implement `InfraError` for `ConsoleError`
+* Then we implement `InfraError` for `ConsoleError`
 
 
 
@@ -478,7 +479,7 @@ impl GreetingWriter for ConsoleOutput {
 
 **Points of attention:**
 * Check the `use domain::InfraError;`
-* See the `Result<(), Box<dyn InfraError>>`
+* In the signature of `write_greeting`, see the `Result<(), Box<dyn InfraError>>`
 
 
 In `input.rs` we now have:
@@ -698,6 +699,45 @@ impl From<NameReaderError> for ApplicationError {
 
 
 
+One word however about `run_greeting_loop` in `greeting_services.rs`. Indeed, in order to demonstrate how errors bulbe-up I removed the `continue` from the loop and simply the error message. See below:
+
+```rust
+pub fn run_greeting_loop(
+    &self,
+    input: &dyn domain::NameReader,
+    output: &dyn domain::GreetingWriter,
+) -> Result<()> {
+    loop {
+        let name = input.read_name()?;
+
+        if name.eq_ignore_ascii_case("quit")
+            || name.eq_ignore_ascii_case("exit")
+            || name.eq_ignore_ascii_case("q!")
+        {
+            println!("\nGoodbye!");
+            break;
+        }
+
+        // if name.is_empty() {
+        //     continue;
+        // }
+        // let greeting = domain::greet(&name)?;
+
+        let greeting = match domain::greet(&name) {
+            Ok(g) => g,
+            Err(e) => {
+                println!("Error: {e}\n");
+                continue;
+            }
+        };
+        output.write_greeting(&greeting)?;
+
+        println!(); // Extra newline for readability
+    }
+
+    Ok(())
+}
+```
 
 
 
@@ -777,6 +817,9 @@ Enter a name to greet (or 'quit' to exit):
 
 > Marcel
 Hello Marcel.
+
+>
+Error: Name cannot be empty
 
 > q!
 

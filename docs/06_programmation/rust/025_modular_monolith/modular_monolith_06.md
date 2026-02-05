@@ -137,8 +137,8 @@ We want ...
 ```powershell
 cd ..
 # make a copy the folder step_06 and name it step_07
-Copy-Item ./step_06 ./step_07 -Recurse
-cd step_07
+Copy-Item ./step_05 ./step_06 -Recurse
+cd step_06
 code .
 ```
 
@@ -184,8 +184,9 @@ anyhow = "1.0"
 
 
 **Points of attention:**
-* ...
-
+* Copier répertoire adapter_file
+* copier répertoire app/example
+* nouvelle version de main()
 
 
 
