@@ -7,7 +7,7 @@ description: "An 7-project progression from Hello World to a fully decoupled, I/
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-02-05 13:00:00
+last_modified_date: 2026-02-06 21:00:00
 ---
 
 
@@ -20,9 +20,9 @@ An 7-project progression from Hello World to a fully decoupled, I/O-agnostic app
 
 
 
-<!-- <h2 align="center">
+<h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2> -->
+</h2>
 
 
 
@@ -114,7 +114,7 @@ We want to include `anyhow` and `thiserror` crates. At the end of this episode, 
 
 
 ```text
-step_05/
+step_05
 │   Cargo.toml
 └───crates
     ├───adapter_console
@@ -130,7 +130,6 @@ step_05/
     │   │   Cargo.toml
     │   └───src
     │           main.rs
-    │           main_downcast.bak
     ├───application
     │   │   Cargo.toml
     │   ├───src
@@ -279,49 +278,17 @@ pub type Result<T> = std::result::Result<T, DomainError>;
 
 
 
-Now we can update `port.rs`. And believe it or not, the final version of this one took me a while... Why? Simply because initially I put `InfraError` in `error.rs`. I knew it was wrong. I had a red LED blinking somewhere in my mind... But I was not brave (smart) enough to move it here. This plus 2 or 3 other things... It took me a while but I learnt a lot. Ok, here is the code I have today:
-
+Now we can update `port.rs`. And believe it or not, the final version of this one took me a while... Why? Simply because initially I put `InfraError` in `error.rs`. I knew it was wrong. I had a red LED blinking somewhere in my mind... But I was not brave (smart) enough to move it here. Then many things were overcomplicated. Anyway, it took me a while but I learnt a lot. Ok, here is the code I have today:
 
 ```rust
-use crate::errors::DomainError;
 use std::any::Any;
 
 pub trait InfraError: std::error::Error + Send + Sync + 'static {
     fn as_any(&self) -> &dyn Any;
 }
 
-#[derive(Debug)]
-pub enum NameReaderError {
-    Domain(DomainError),
-    Infrastructure(Box<dyn InfraError>),
-}
-
-impl std::fmt::Display for NameReaderError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Self::Domain(e) => write!(f, "Domain error: {e}"),
-            Self::Infrastructure(e) => write!(f, "Infrastructure error: {e}"),
-        }
-    }
-}
-
-impl std::error::Error for NameReaderError {
-    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
-        match self {
-            Self::Domain(e) => Some(e),
-            Self::Infrastructure(e) => Some(e.as_ref()),
-        }
-    }
-}
-
-impl From<DomainError> for NameReaderError {
-    fn from(e: DomainError) -> Self {
-        Self::Domain(e)
-    }
-}
-
 pub trait NameReader {
-    fn read_name(&self) -> Result<String, NameReaderError>;
+    fn read_name(&self) -> Result<String, Box<dyn InfraError>>;
 }
 
 pub trait GreetingWriter {
@@ -332,13 +299,18 @@ pub trait GreetingWriter {
 
 **Points of attention:**
 
-* **Important**. When an adapter implement the `NameReader` trait from the port we need to make sure it can report not only the domain errors but also the errors from the infrastructure (file missing, network error...). However concerning the latter, we don't know and we cannot know them all at compile time (today the input come from UDP, tomorrow it will come from a keyboard). This is why a trait for infrastructure errors is defined (see `InfraError`).
-* In fact, `InfraError` is a contract that the `domain` imposes on `NameReader` adapters: "if you want to report an infra error to me, implement this feature."
-* However we need a way to combine both kind of errors (domain and infra) into one and this is where `NameReaderError` enters in action.
-* `NameReaderError` is an enum which express the fact that it can be either a domain error or an infrastructure error.
-* Right after we found the mandatory implementation to make `NameReaderError` an error "compatible" with the others errors of the type system.
-* Finally, the new signature of `read_name` explains that it can report `NameReaderError`.
-* `write_greeting` changes from `fn write_greeting(&self, greeting: &str) -> Result<()>` to `fn write_greeting(&self, greeting: &str) -> Result<(), Box<dyn InfraError>>`. This express the fact that it will report infrastructure kind of errors (if any)
+* **Important.** Look at the figure below. My understanding is as follow: when an adapter report an error this is an error from the "outside world", the infrastructure (file missing, network error...). We don't know and we cannot know them all at compile time (today the input come from UDP, tomorrow it will come from a keyboard...).
+* This is why a trait for infrastructure errors is defined (see `InfraError`). In fact, `InfraError` is a contract that the `domain` imposes on the adapters: "if you want to report an infra error to me, implement this feature."
+* Once `InfraError` is defined the new signature of `read_name` and `write_greeting` explains that, on error they will return `Box<dyn InfraError>`
+
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+
 
 
 
@@ -369,9 +341,8 @@ pub mod errors;
 pub mod greeting;
 pub mod ports;
 
-// Re-export
 pub use greeting::greet;
-pub use ports::{GreetingWriter, InfraError, NameReader, NameReaderError};
+pub use ports::{GreetingWriter, InfraError, NameReader};
 ```
 
 **Points of attention:**
@@ -426,9 +397,6 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum ConsoleError {
-    #[error("Console output error: {0}")]
-    Output(String),
-
     #[error("Console I/O error: {0}")]
     Io(#[from] std::io::Error),
 }
@@ -438,23 +406,31 @@ impl InfraError for ConsoleError {
         self
     }
 }
+
+pub(crate) fn into_infra(e: impl Into<ConsoleError>) -> Box<dyn InfraError> {
+    Box::new(e.into())
+}
 ```
 
 **Points of attention:**
+* To make a long story short, here, every line is important but we will understand why when we will read `input.rs` and `output.rs`
 * Using `thiserror` we first express what is a `ConsoleError`
-* Thanks to the re-export in the domain's lib we write `use domain::InfraError;` and NOT `use domain::ports::InfraError;` and the implementation details (the ports module) remains hidden.
 * Then we implement `InfraError` for `ConsoleError`
+* At the very bottom of the code there is a utility function which is used in `input.rs` and `output.rs`
 
 
 
-In the `input.rs` file (`output.rs` respectively) the main change is in the `Result` returned by `read_name()` (`write_greeting()`).
 
-In `output.rs` the changes are minimal, we have:
+
+Here is the new version of `output.rs`:
 
 ```rust
+use crate::errors::into_infra;
 use domain::GreetingWriter;
 use domain::InfraError;
+use std::io::{self, Write};
 
+#[derive(Default)]
 pub struct ConsoleOutput;
 
 impl ConsoleOutput {
@@ -463,15 +439,12 @@ impl ConsoleOutput {
     }
 }
 
-impl Default for ConsoleOutput {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
 impl GreetingWriter for ConsoleOutput {
     fn write_greeting(&self, greeting: &str) -> Result<(), Box<dyn InfraError>> {
-        println!("{greeting}");
+        // println!("{greeting}"); is replaced by the next expression to show
+        // how to handle error (e.g., stdout redirected to full disk)
+        writeln!(io::stdout(), "{greeting}").map_err(into_infra)?;
+        //                                  .map_err(|e| Box::new(ConsoleError::from(e)) as Box<dyn InfraError>)?;
         Ok(())
     }
 }
@@ -480,15 +453,55 @@ impl GreetingWriter for ConsoleOutput {
 **Points of attention:**
 * Check the `use domain::InfraError;`
 * In the signature of `write_greeting`, see the `Result<(), Box<dyn InfraError>>`
+* In the implementation of `GreetingWriter` for `ConsoleOutput` I no longer use `println!` but `writeln!`. Indeed the first `panic!` on error while the second return an error.
+* Then we take this error and we map it to an InfraError. This is the purpose of `into_infra` which shorten the closure in comment. How does this work?
+    1. The error, if any is a `std::io::Error` and we want to converti it into a `InfraError`
+    2. `into_infra` calls `e.into()` and this triggers the `#[from]` conversion
+    3. The `#[from]` generates `impl From<std::io::Error> for ConsoleError`, which builds `ConsoleError::Io(e)`
+    4. That `ConsoleError::Io(e)` gets boxed as `Box<dyn InfraError>`
+    5. So `ConsoleError::Io` is constructed every time an I/O error occurs. We don't see it explicitly in the code because `into()` does the job for us.
+
+Ok but why do we need `ConsoleError`?
+
+```rust
+pub enum ConsoleError {
+    #[error("Console I/O error: {0}")]
+    Io(#[from] std::io::Error),
+}
+```
+Because we have
+```rust
+impl InfraError for ConsoleError {...}
+
+```
+
+And the orphan rule say we can't implement `InfraError` for `std::io::Error` in the adapter crate. Indeed, we don't own the trait (it's in `domain`) nor the type (it's in `std`). Finally, `ConsoleError` is the type that makes `impl InfraError for ConsoleError` legal.
+
+I told you, in `errors.rs` every line was important.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 In `input.rs` we now have:
 
 ```rust
-use crate::errors::ConsoleError;
-use domain::{NameReader, NameReaderError};
+use crate::errors::into_infra;
+use domain::{InfraError, NameReader};
 use std::io::{self, Write};
 
+#[derive(Default)]
 pub struct ConsoleInput;
 
 impl ConsoleInput {
@@ -497,63 +510,20 @@ impl ConsoleInput {
     }
 }
 
-impl Default for ConsoleInput {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
 impl NameReader for ConsoleInput {
-    fn read_name(&self) -> Result<String, NameReaderError> {
+    fn read_name(&self) -> Result<String, Box<dyn InfraError>> {
         print!("> ");
-        io::stdout()
-            .flush()
-            .map_err(|e| NameReaderError::Infrastructure(Box::new(ConsoleError::from(e))))?;
+        io::stdout().flush().map_err(into_infra)?;
+        //                  .map_err(|e| Box::new(ConsoleError::from(e)) as Box<dyn InfraError>)?;
 
         let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .map_err(|e| NameReaderError::Infrastructure(Box::new(ConsoleError::from(e))))?;
+        io::stdin().read_line(&mut input).map_err(into_infra)?;
+        //                               .map_err(|e| Box::new(ConsoleError::from(e)) as Box<dyn InfraError>)?;
 
-        let name = input.trim().to_string();
-
-        Ok(name)
+        Ok(input.trim().to_string())
     }
 }
 ```
-
-**Points of attention:**
-* See the `Result<String, NameReaderError>`
-* We had
-    ```rust
-    io::stdout()
-        .flush()
-        .map_err(|e| format!("Failed to flush stdout: {e}"))?;
-    ```
-* Now we must write
-    ```rust
-    io::stdout()
-        .flush()
-        .map_err(|e| NameReaderError::Infrastructure(Box::new(ConsoleError::from(e))))?;
-    ```
-* This is complex because we must returned a `NameReaderError` which is, after the `flush()` an infrastructure kind of error. However, as requested in `port.rs`, the latter is described as `Infrastructure(Box<dyn InfraError>)` so here we  must `Box::new(ConsoleError::from(e))`.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -590,6 +560,8 @@ anyhow.workspace = true
 The `error.rs` file has been deleted, only remains `main.rs`:
 
 
+
+
 ```rust
 use adapter_console::{ConsoleInput, ConsoleOutput};
 use application::GreetingService;
@@ -604,19 +576,25 @@ fn main() -> Result<()> {
     let input = ConsoleInput::new();
     let output = ConsoleOutput::new();
 
-    // Create application service and run
+    // Create application service and run either in a loop or once
     let service = GreetingService::new();
+
+    // service
+    //     .run_greeting_loop(&input, &output)
+    //     .context("Failed to run interactive loop")?;
+
     service
-        .run_greeting_loop(&input, &output)
-        .context("Failed to run interactive loop")?;
+        .run_greeting_once(&input, &output)
+        .context("Failed to run the greeting service once")?;
 
     Ok(())
 }
 ```
 
 **Points of attention:**
-* Check the `.context()` that `anyhow` provides.
-
+* As we will see in the application crate (in charge of orchestrating the use cases) I added a `run_greeting_once()` use case.
+* The code above demonstrate that no matter the use case, from `main()` the calling process is the same.
+* If you want to test the run_greeting_loop again simply uncomment/comment the concerned lines
 
 
 
@@ -654,13 +632,13 @@ thiserror.workspace = true
 **Points of attention:**
 * `thiserror` is added
 
-`lib.rs` and `greeting_service.rs` are not impacted.
+`lib.rs` is not impacted.
 
-Let's see how `errors.rs` helps to keep `greeting_service.rs` intact.
+Let's see how `errors.rs` works:
 
 ```rust
+use domain::InfraError;
 use domain::errors::DomainError;
-use domain::{InfraError, NameReaderError};
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -679,65 +657,79 @@ impl From<Box<dyn InfraError>> for ApplicationError {
         Self::Infrastructure(e)
     }
 }
-
-impl From<NameReaderError> for ApplicationError {
-    fn from(e: NameReaderError) -> Self {
-        match e {
-            NameReaderError::Domain(d) => Self::Domain(d),
-            NameReaderError::Infrastructure(i) => Self::Infrastructure(i),
-        }
-    }
-}
 ```
 
-**Points of attention:**
-* Using `thiserror` we explain what is an error at the application level.
-* Note how the Result type alias changes from `std::result::Result<T, Error>` to `std::result::Result<T, DomainError>`
-* At the end we find the secret elements that help to keep `greeting_service.rs` as it is
-    * The `From<Box<dyn InfraError>> for ApplicationError` is used by the `?` operator at the end of the line `output.write_greeting(&greeting)?;` when an infrastructure error need to be converted into an application error.
-    * Same reasoning with the `From<NameReaderError> for ApplicationError` and the conversion at the end of the line `let name = input.read_name()?;`
+* Remember... A use case in the application crate can receive 2 kinds of error: the ones from the domain (`DomainError`, when `name` is empty) and the ones from the outside world (`InfraError`, after Skynet decided to shutdown all the others networks).
+* So an `ApplicationError` is an enum. It can either be a `DomainError` or an `InfraError`
+* As usually we keep defining an alias for `Result<T>`
+* At the very end we implement `From` in order to convert an `InfraError` into an `ApplicationError`
 
 
 
-One word however about `run_greeting_loop` in `greeting_services.rs`. Indeed, in order to demonstrate how errors bulbe-up I removed the `continue` from the loop and simply the error message. See below:
+
+
+Let's see how the new use case looks like in `greeting_service.rs`:
 
 ```rust
-pub fn run_greeting_loop(
-    &self,
-    input: &dyn domain::NameReader,
-    output: &dyn domain::GreetingWriter,
-) -> Result<()> {
-    loop {
-        let name = input.read_name()?;
+use crate::errors::Result;
 
-        if name.eq_ignore_ascii_case("quit")
-            || name.eq_ignore_ascii_case("exit")
-            || name.eq_ignore_ascii_case("q!")
-        {
-            println!("\nGoodbye!");
-            break;
-        }
+#[derive(Default)]
+pub struct GreetingService;
 
-        // if name.is_empty() {
-        //     continue;
-        // }
-        // let greeting = domain::greet(&name)?;
-
-        let greeting = match domain::greet(&name) {
-            Ok(g) => g,
-            Err(e) => {
-                println!("Error: {e}\n");
-                continue;
-            }
-        };
-        output.write_greeting(&greeting)?;
-
-        println!(); // Extra newline for readability
+impl GreetingService {
+    pub fn new() -> Self {
+        Self
     }
 
-    Ok(())
+    pub fn run_greeting_once(
+        &self,
+        input: &dyn domain::NameReader,
+        output: &dyn domain::GreetingWriter,
+    ) -> Result<()> {
+        let name = input.read_name()?;
+        let greeting = domain::greet(&name)?;
+        output.write_greeting(&greeting)?;
+        println!("\nGoodbye!");
+        Ok(())
+    }
+
+    pub fn run_greeting_loop(
+        &self,
+        input: &dyn domain::NameReader,
+        output: &dyn domain::GreetingWriter,
+    ) -> Result<()> {
+        loop {
+            let name = input.read_name()?;
+
+            if name.eq_ignore_ascii_case("quit")
+                || name.eq_ignore_ascii_case("exit")
+                || name.eq_ignore_ascii_case("q!")
+            {
+                println!("\nGoodbye!");
+                break;
+            }
+
+            let greeting = match domain::greet(&name) {
+                Ok(g) => g,
+                Err(e) => {
+                    println!("Error: {e}\n");
+                    continue;
+                }
+            };
+            output.write_greeting(&greeting)?;
+            println!(); // Extra newline for readability
+        }
+        Ok(())
+    }
 }
 ```
+
+
+**Points of attention:**
+* Thanks to the `?` operator at the end of each line, the `run_greeting_once()` use case is deceptively straightforward. However we should not forget this ease of reading come from all the conversion of error types that take place behind the scene.
+* Note how in order to demonstrate how errors bulbe-up, in `run_greeting_loop` I removed the `if name.is_empty(){...}` block of code and handle the errors returned by `domain::greet()` (here we just print the error and continue)
+
+
 
 
 
@@ -764,7 +756,7 @@ use domain::{GreetingWriter, NameReader, error::Result};
 becomes:
 
 ```rust
-use domain::{GreetingWriter, InfraError, NameReader, NameReaderError};
+use domain::{GreetingWriter, InfraError, NameReader};
 ```
 
 Then `read_name` and `write_greeting` have the signature we already explained when we talked about `input` and `output` modules of the `adapter_console` crate.
@@ -807,6 +799,23 @@ cargo run
 
 Build, run and test the application. Find below the expected output:
 
+If the use case is once here is what you can see:
+
+```powershell
+cargo run
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\step_05.exe`
+=== Greeting Service (Step 05 - Modular Monolith & Hexagonal Architecture) ===
+Enter a name to greet (or 'quit' to exit):
+
+> World
+Hello World.
+
+Goodbye!
+```
+
+
+Below is the output with the loop use case:
 
 ```powershell
 cargo run
@@ -826,6 +835,8 @@ Error: Name cannot be empty
 Goodbye!
 ```
 
+
+And now the test:
 
 ```powershell
  cargo test -p domain
@@ -892,19 +903,14 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 > What have we done so far?
 >
 * `anyhow` and `thiserror` are now integrated.
-* The need to return specific errors forced us to distinguish between `InfraError` and `DomainError` and to find a way to return either one within a single container (`NameReaderError`).
+* The need to return specific errors forced us to distinguish between `InfraError` and `DomainError` and to find a way to return either one within a single container (`ApplicationError`).
 * It was an opportunity to impose an additional port (`InfraError`) to the adapters if they want to report errors from the infrastructure.
-* Implementing the `From` trait for `NameReaderError` or `ApplicationError` helped to keep the `?` in the source code.
-* Yes, in `input.rs` the way to write the `NameReaderError::Infrastructure` error is more complex but later, using downcasting at the end user level we will be able to find out from where exactly the error comes from.
+* Implementing the `From` trait for `InfraError` helped to keep the `?` in the source code.
 
 
 
 
 
-<div align="center">
-<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
 
 
 
