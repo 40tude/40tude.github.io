@@ -7,7 +7,7 @@ description: "An 7-project progression from Hello World to a fully decoupled, I/
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-02-03 08:00:00
+last_modified_date: 2026-02-06 12:00:00
 ---
 
 
@@ -247,7 +247,7 @@ anyhow = "1.0"
 ### application/src/greeting_service.rs file
 <!-- {: .no_toc } -->
 
-We add a new "use case" which reads one name is read at a time. This not only shows that we should have multiple use cases but this will help us to keep the code of the adapter_file at its bare minimum.
+We add a new "use case" which reads one name is read at a time. This not only shows that we should have multiple use cases but this will help us to keep the code of the `adapter_file` at its bare minimum. Below I only show the new use case `run_greeting_once()` beacause the rest of the code is unchanged:
 
 ```rust
 impl GreetingService {
@@ -295,7 +295,6 @@ fn main() -> Result<()> {
         }
     };
 
-
     let service = GreetingService::new();
     service
         .run_greeting_once(&input, &output)
@@ -307,7 +306,7 @@ fn main() -> Result<()> {
 
 
 **Points of attention:**
-* I keep in comment the creation of the console adapters. It will be easy to mix the adapter (read in a file, write on the console for example).
+* I keep in comment the creation of the console adapters. It will be easy to mix the adapters (read in a file, write on the console for example).
 * When `input` is created, if `input.txt` file does not exists we must handle the error.
 * Here, we use the new use case and call `.run_greeting_once()` rather than our old buddy `.run_greeting_loop()`
 
@@ -438,6 +437,11 @@ impl NameReader for FileInput {
 * When `read_name()` is called we simply return `name`'s value.
 
 
+**Points of attention:**
+* In a more elaborated version, we could (I have) a `FileInput` which load the file on the first read, can handle content with multiple lines and behave like an iterator on each reading. internally it has an `index` which is incremented on each read, the names are in a `vector<String>`
+* **IMPORTANT:** I you want to create something similar make sur to mimic the API of the standard and make sure `read_name()` have this signature `fn read_name(&mut self) -> Result<String, NameReaderError>` and not `fn read_name(&self) -> Result<String, NameReaderError>`. Don't trust me and double check the signature of [Iterator::next()](https://doc.rust-lang.org/std/iter/trait.Iterator.html#required-methods). Why is that? Simply because on `read_name()` if I want to increment the index I mutate the object. If I don't have `&mut self`, things become complicated with `RefCell` etc.
+* It was an error from my part in the design of the signature of `read_name()` but at this point I do not feel brave enough to change it in all the projects... I don't know, we will see.
+
 
 <!-- ###################################################################### -->
 ### Build, run & test
@@ -470,8 +474,23 @@ warning: `app` (bin "step_06") generated 1 warning (run `cargo fix --bin "step_0
 Goodbye!
 ```
 
+
 **Points of attention:**
 * Do not worry about the warnings. This is simply because we don't use `ConsoleInput` nor `ConsoleOutput`
+
+
+A new `output.txt` file is created. Here is its content
+
+```text
+Hello Buck.
+```
+
+**Points of attention:**
+* Only one line
+* Create a new `input.txt` file with 2 lines: Roberto and Buck. The new `output.txt` file will have one line again.
+
+
+
 
 
 We can "play" with `app/src/main.rs` and uncomment/comment the adapters we want to mix. For example, reading from a file and writing in the terminal. For example, with this setup in `main.rs`:
@@ -529,10 +548,11 @@ Goodbye!
 {: .new-title }
 > What have we done so far?
 >
-* Blablabla
-    * **Blablabla:** ...
-    * **Blablabla:** ...
-* ...
+* We added a use case
+* Adding a new adapter was easy and we where able to focus only on implementing the methods of the trait. This could have been done (and tested) by someone else independently.
+* Yes we took the new adapter into account in `main.rs` but that's all
+* Tomorrow we can write `adapter_tcp`, `adapter_sql`...
+* `read_name()` should have this signature `fn read_name(&mut self) -> Result<String, NameReaderError>`
 
 
 
