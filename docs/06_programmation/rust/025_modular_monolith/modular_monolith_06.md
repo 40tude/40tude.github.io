@@ -114,7 +114,62 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want ...
+We want to add an `adapter_file` crates so that the application can read names and write greetings into files.
+
+If the architecture is correct we should have no or very few modification in the existing code and focus our attention only on the code of the `adapter_file`.
+
+At the end of this episode, the folder hierarchy should look like this:
+
+```text
+step_06/
+│   Cargo.toml
+└───crates
+    ├───adapter_console
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       errors.rs
+    │   │       input.rs
+    │   │       lib.rs
+    │   │       output.rs
+    │   └───tests
+    │           adapter_console_test.rs
+    ├───adapter_file
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       errors.rs
+    │   │       input.rs
+    │   │       lib.rs
+    │   │       output.rs
+    │   └───tests
+    │           adapter_file_test.rs
+    ├───app
+    │   │   Cargo.toml
+    │   └───src
+    │           main.rs
+    ├───application
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       errors.rs
+    │   │       greeting_service.rs
+    │   │       lib.rs
+    │   └───tests
+    │           application_test.rs
+    ├───domain
+    │   │   Cargo.toml
+    │   ├───src
+    │   │       errors.rs
+    │   │       greeting.rs
+    │   │       lib.rs
+    │   │       ports.rs
+    │   └───tests
+    │           domain_test.rs
+    └───integration_tests
+        │   Cargo.toml
+        ├───src
+        │       lib.rs
+        └───tests
+                integration_test.rs
+```
 
 
 
@@ -132,7 +187,7 @@ We want ...
 
 * Save your work
 * Quit VSCode
-* You should have a terminal open and you should be in the `step_06/` folder
+* You should have a terminal open and you should be in the `step_05/` folder
 
 ```powershell
 cd ..
@@ -167,15 +222,15 @@ members = [
     "crates/adapter_console",
     "crates/adapter_file",
     "crates/app",
+    "crates/integration_tests",
 ]
 resolver = "3"
 
 [workspace.package]
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 license = "MIT"
 
-# Shared dependencies across all crates
 [workspace.dependencies]
 thiserror = "2.0"
 anyhow = "1.0"
@@ -184,18 +239,283 @@ anyhow = "1.0"
 
 
 **Points of attention:**
-* Copier répertoire adapter_file
-* copier répertoire app/example
-* nouvelle version de main()
+* We need to take into account `crates/adapter_file`
+
+
+
+<!-- ###################################################################### -->
+### application/src/greeting_service.rs file
+<!-- {: .no_toc } -->
+
+We add a new "use case" which reads one name is read at a time. This not only shows that we should have multiple use cases but this will help us to keep the code of the adapter_file at its bare minimum.
+
+```rust
+impl GreetingService {
+    // Rest of the code is unchanged
+    pub fn run_greeting_once(
+        &self,
+        input: &dyn domain::NameReader,
+        output: &dyn domain::GreetingWriter,
+    ) -> Result<()> {
+        let name = input.read_name()?;
+        let greeting = domain::greet(&name)?;
+        output.write_greeting(&greeting)?;
+        println!("\nGoodbye!");
+        Ok(())
+    }
+}
+```
+
+
+
+<!-- ###################################################################### -->
+### The app/src/main.rs file
+<!-- {: .no_toc } -->
+
+Let's see how to use the new use case:
+
+```rust
+use adapter_console::{ConsoleInput, ConsoleOutput};
+use adapter_file::{FileInput, FileOutput};
+use application::GreetingService;
+use anyhow::{Context, Result};
+
+fn main() -> Result<()> {
+    println!("=== Greeting Service (Step 06 - File Adapter Demo) ===");
+
+    // let output = ConsoleOutput::new();
+    // let input = ConsoleInput::new();
+
+    let output = FileOutput::new("output.txt");
+    let input = match FileInput::new("input.txt") {
+        Ok(input) => input,
+        Err(e) => {
+            eprintln!("Failed to read input file: {e}");
+            return Ok(());
+        }
+    };
+
+
+    let service = GreetingService::new();
+    service
+        .run_greeting_once(&input, &output)
+        // .run_greeting_loop(&input, &output)
+        .context("Failed to run greeting service")?;
+    Ok(())
+}
+```
+
+
+**Points of attention:**
+* I keep in comment the creation of the console adapters. It will be easy to mix the adapter (read in a file, write on the console for example).
+* When `input` is created, if `input.txt` file does not exists we must handle the error.
+* Here, we use the new use case and call `.run_greeting_once()` rather than our old buddy `.run_greeting_loop()`
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### The adapter_file crate
+<!-- {: .no_toc } -->
+
+Feel free to copy/paste/rename the `adapter_console` folder.
+
+The `Cargo.toml` file does not change.
+
+In `lib.rs` the last 2 lines change and the file looks like that:
+
+```rust
+pub mod errors;
+pub mod input;
+pub mod output;
+
+pub use input::FileInput;
+pub use output::FileOutput;
+```
+
+
+The `errors.rs` looks like this:
+
+```rust
+// errors.rs
+
+use domain::InfraError;
+use std::any::Any;
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum FileError {
+    #[error("File I/O error: {0}")]
+    Io(#[from] std::io::Error),
+}
+
+impl InfraError for FileError {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+}
+```
+
+
+The `output.rs` file
+
+```rust
+// output.rs
+
+use crate::errors::FileError;
+use domain::{GreetingWriter, InfraError};
+use std::path::PathBuf;
+
+pub struct FileOutput {
+    path: PathBuf,
+}
+
+impl FileOutput {
+    pub fn new(path: impl Into<PathBuf>) -> Self {
+        let path = path.into();
+        let _ = std::fs::remove_file(&path);
+        Self { path }
+    }
+}
+
+impl GreetingWriter for FileOutput {
+    fn write_greeting(&self, greeting: &str) -> Result<(), Box<dyn InfraError>> {
+        std::fs::write(&self.path, format!("{greeting}\n"))
+            .map_err(|e| Box::new(FileError::from(e)) as Box<dyn InfraError>)
+    }
+}
+```
+
+**Points of attention:**
+* Note that the error reporting with `.map_err()`
+
+
+
+
+The `input.rs` file:
+
+```rust
+use crate::errors::FileError;
+use domain::{NameReader, NameReaderError};
+use std::fs;
+use std::path::PathBuf;
+
+#[derive(Debug)]
+pub struct FileInput {
+    name: String,
+}
+
+impl FileInput {
+    pub fn new(path: impl Into<PathBuf>) -> Result<Self, FileError> {
+        let path = path.into();
+        let content = fs::read_to_string(&path).map_err(FileError::from)?;
+        let name = content
+            .lines()
+            .next()
+            .unwrap_or_default()
+            .trim()
+            .to_string();
+        Ok(Self { name })
+    }
+}
+
+impl NameReader for FileInput {
+    fn read_name(&self) -> Result<String, NameReaderError> {
+        Ok(self.name.clone())
+    }
+}
+```
+
+**Points of attention:**
+* In this version the content of the input file is loaded when the adapter is created and `name` is initialized with the content of the first line.
+* If the input file does not exist then an error is reported
+* When `read_name()` is called we simply return `name`'s value.
 
 
 
 <!-- ###################################################################### -->
 ### Build, run & test
 
+
+Create an `input.txt` file at the root of the project. Here is an example with one empty line in the middle:
+
+```text
+Buck
+Roberto
+```
+
 Build, run and test the application. Find below the expected output:
 
+```text
+cargo run
+warning: unused imports: `ConsoleInput` and `ConsoleOutput`
+ --> crates\app\src\main.rs:3:23
+  |
+3 | use adapter_console::{ConsoleInput, ConsoleOutput};
+  |                       ^^^^^^^^^^^^  ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
+warning: `app` (bin "step_06") generated 1 warning (run `cargo fix --bin "step_06" -p app` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_06\debug\step_06.exe`
+=== Greeting Service (Step 06 - File Adapter Demo) ===
+
+Goodbye!
+```
+
+**Points of attention:**
+* Do not worry about the warnings. This is simply because we don't use `ConsoleInput` nor `ConsoleOutput`
+
+
+We can "play" with `app/src/main.rs` and uncomment/comment the adapters we want to mix. For example, reading from a file and writing in the terminal. For example, with this setup in `main.rs`:
+
+```rust
+let output = ConsoleOutput::new();
+// let input = ConsoleInput::new();
+
+// let output = FileOutput::new("output.txt");
+let input = match FileInput::new("input.txt") {
+    Ok(input) => input,
+    Err(e) => {
+        eprintln!("Failed to read input file: {e}");
+        return Ok(());
+    }
+};
+```
+
+I get this output on the screen:
+
+```text
+cargo run
+warning: unused import: `ConsoleInput`
+ --> crates\app\src\main.rs:3:23
+  |
+3 | use adapter_console::{ConsoleInput, ConsoleOutput};
+  |                       ^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `FileOutput`
+ --> crates\app\src\main.rs:4:31
+  |
+4 | use adapter_file::{FileInput, FileOutput};
+  |                               ^^^^^^^^^^
+
+warning: `app` (bin "step_06") generated 2 warnings (run `cargo fix --bin "step_06" -p app` to apply 2 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_06\debug\step_06.exe`
+=== Greeting Service (Step 06 - File Adapter Demo) ===
+Hello Buck.
+
+Goodbye!
+```
 
 
 
