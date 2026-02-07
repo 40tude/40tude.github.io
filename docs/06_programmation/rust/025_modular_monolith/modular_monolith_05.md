@@ -3,7 +3,7 @@ published: true
 lang: en-US
 layout: default
 title: "Learning Modular Monolith Architecture with Rust - 05"
-description: "An 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
+description: "A 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-02-06 21:00:00
 # Learning Modular Monolith Architecture with Rust
 {: .no_toc }
 
-An 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates
+A 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates
 {: .lead }
 
 
@@ -62,6 +62,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 * [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
 * [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
+* [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Bonus
 
 
 
@@ -931,3 +932,4 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 * [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
 * [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
+* [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Bonus

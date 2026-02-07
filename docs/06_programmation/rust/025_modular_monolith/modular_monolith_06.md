@@ -3,7 +3,7 @@ published: true
 lang: en-US
 layout: default
 title: "Learning Modular Monolith Architecture with Rust - 06"
-description: "An 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
+description: "A 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
@@ -14,7 +14,7 @@ last_modified_date: 2026-02-07 12:00:00
 # Learning Modular Monolith Architecture with Rust
 {: .no_toc }
 
-An 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates
+A 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates
 {: .lead }
 
 
@@ -62,6 +62,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 * [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
 * [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
+* [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Bonus
 
 
 
@@ -121,7 +122,7 @@ If the architecture is correct we should have no or very few modification in the
 At the end of this episode, the folder hierarchy should look like this:
 
 ```text
-C:.
+step_06/
 │   Cargo.toml
 │   input.txt
 │   output.txt
@@ -175,7 +176,8 @@ C:.
                 integration_test.rs
 ```
 
-
+**Points of attention:**
+* Obviously there is a new folder, see `adapter_file/` whose organization is similar to `adapter_console/`
 
 
 
@@ -195,7 +197,7 @@ C:.
 
 ```powershell
 cd ..
-# make a copy the folder step_06 and name it step_07
+# make a copy the folder step_05 and name it step_06
 Copy-Item ./step_05 ./step_06 -Recurse
 cd step_06
 code .
@@ -248,7 +250,7 @@ anyhow = "1.0"
 
 
 <!-- ###################################################################### -->
-### application/src/greeting_service.rs file
+### The application/src/greeting_service.rs file
 <!-- {: .no_toc } -->
 
 Is not modified.
@@ -261,7 +263,7 @@ Is not modified.
 ### The app/src/main.rs file
 <!-- {: .no_toc } -->
 
-Let's see how to use the new use case:
+Let's see how to use the new adapter:
 
 ```rust
 use adapter_console::{ConsoleInput, ConsoleOutput};
@@ -297,8 +299,8 @@ fn main() -> Result<()> {
 
 
 **Points of attention:**
-* I keep in comment the creation of the console adapters. It will be easy to mix the adapters (read in a file, write on the console for example).
-* When `input` is created, if `input.txt` file does not exists we must handle the error. I don't like it. I would prefer to simply write `let input = FileInput::new("input.txt");` to keep the creation of adapters homogenous.
+* I commented the creation of the console adapters but not the associated `use` statements. It will be easy to mix the adapters (read in a file, write on the console for example).
+* When `input` is created, if `input.txt` file does not exists we must handle the error. **I don't like it**. I would prefer to simply write `let input = FileInput::new("input.txt");` to keep the creation of adapters homogenous. Stop grumbling, a solution exits.
 
 
 
@@ -363,6 +365,7 @@ pub(crate) fn into_infra(e: impl Into<FileError>) -> Box<dyn InfraError> {
 
 
 
+
 The `output.rs` file
 
 ```rust
@@ -392,7 +395,7 @@ impl GreetingWriter for FileOutput {
 
 **Points of attention:**
 * `ConsoleOutput` is replaced by `FileOutput`
-
+* Note that any existing file is deleted when the object is created (see the `::remove_file()` in `.new()`)
 
 
 
@@ -440,14 +443,15 @@ impl NameReader for FileInput {
 
 
 **TODO:**
+
 In a next version:
-* Calling `FileInput::new("input.txt")` should similar to calling `ConsoleOutput::new()`
+* Calling `FileInput::new("input.txt")` should be similar to calling `ConsoleOutput::new()`
 * We should be able to read more than one name in the input file and write more than one greeting in the output file.
 * To do so we will need to modify `FileInput` so that it loads the file on the first read, reports error if needed and behaves like an iterator on each reading.
 * Internally this requires a `vector<String>` where the names are stored and an `index` which is incremented on each read.
 * This means that FileInput object created in `main()` **MUST** be mutable (which is not the case currently, check the signatures).
-* **IMPORTANT:** Lesson learn. We should mimic the API of the standard library and if we want `read_name()` to behave like `Iterator::next()` it should have the same signature : `read_name(&mut self) -> Result<String, Box<dyn InfraError>>` and not `fn read_name(&self) -> Result<String, Box<dyn InfraError>>`. Don't trust me and double check the signature of [Iterator::next()](https://doc.rust-lang.org/std/iter/trait.Iterator.html#required-methods) for example.
-* Why is that? Simply because on `read_name()` if I want to increment the index I **mutate the object**. If I don't have `&mut self`, things become complicated with `RefCell` etc.
+* **IMPORTANT:** Lesson learn: We should mimic the API of the standard library. For example, if we want `read_name()` to behave like `Iterator::next()` it should have the same signature : `read_name(&mut self) -> Result<String, Box<dyn InfraError>>` and not `fn read_name(&self) -> Result<String, Box<dyn InfraError>>`. Don't trust me and double check the signature of [Iterator::next()](https://doc.rust-lang.org/std/iter/trait.Iterator.html#required-methods) for example.
+* Why is that? Simply because in `read_name()`, if I want to increment the `index` I **mutate the object**. If I don't have `&mut self`, things become complicated with `RefCell` etc.
 * If you have any doubt about the mutability of the bindings read this [page]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
 
 
@@ -558,9 +562,10 @@ Goodbye!
 {: .new-title }
 > What have we done so far?
 >
-* Adding a new adapter was easy and we where able to focus mostly on implementing the methods of the trait. This could have been done (and tested) by someone else independently.
-* Yes we took the new adapter into account in `main.rs` and in `Cargo.toml` but that's all.
+* Adding a new adapter is easy and we are able to focus mostly on implementing the methods of the trait. This can be done (and tested) by someone else independently.
+* Yes, we took the new adapter into account in `main.rs` and in `Cargo.toml` but that's all.
 * Tomorrow we can write `adapter_tcp`, `adapter_sql` using the same process.
+
 
 
 
@@ -637,4 +642,5 @@ Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
 * [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}): Step 04 - One crate per component
 * [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}): Step 05 - Anyhow & ThisError
 * [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Step 06 - Add new adapters + Conclusion
+* [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}): Bonus
 
