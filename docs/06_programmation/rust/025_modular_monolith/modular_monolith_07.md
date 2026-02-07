@@ -2,7 +2,7 @@
 published: true
 lang: en-US
 layout: default
-title: "Learning Modular Monolith Architecture with Rust - 07"
+title: "Learning Modular Monolith Architecture with Rust - Bonus"
 description: "A 7-project progression from Hello World to a fully decoupled, I/O-agnostic application using traits and crates"
 parent: "Rust"
 nav_order: 34
@@ -177,7 +177,7 @@ step_07/
 ```
 
 **Points of attention:**
-* Same folders as in `step_06`
+* Same directory tree as in `step_06`
 
 
 
@@ -193,7 +193,7 @@ step_07/
 
 * Save your work
 * Quit VSCode
-* You should have a terminal open and you should be in the `step_05/` folder
+* You should have a terminal open and you should be in the `step_06/` folder
 
 ```powershell
 cd ..
@@ -252,7 +252,7 @@ pub trait GreetingWriter {
 ```
 
 **Points of attention:**
-* Now the parameter in `read_name()` is `&mut self` (it was `&self`)
+* Now the parameter in `read_name()` is `&mut self` (it used to be `&self`)
 
 
 
@@ -264,7 +264,7 @@ pub trait GreetingWriter {
 ### The adapter_console crate
 <!-- {: .no_toc } -->
 
-The others files of the crate do no change but since the contract has changed in `ports.rs`, we must update signature of `read_name()`. See below:
+The others files of the crate do no change but since the contract has changed in `ports.rs`, we must update the signature of `read_name()`. See below:
 
 ```rust
 
@@ -295,9 +295,11 @@ impl NameReader for ConsoleInput {
 
 `errors.rs` and `lib.rs` do not change. However since we want to read and write multiples names `input.rs` and `output.rs` change.
 
-In `crates/adapter_file/src/output.rs` here is the new version of `write_greeting`
+In `output.rs` here is the new version of `write_greeting`
 
 ```rust
+// The rest of the code do not change
+
 impl GreetingWriter for FileOutput {
     fn write_greeting(&self, greeting: &str) -> Result<(), Box<dyn InfraError>> {
         let mut file = std::fs::OpenOptions::new()
@@ -319,7 +321,7 @@ impl GreetingWriter for FileOutput {
 
 
 
-The `input.rs` is impacted but much smarter:
+The `input.rs` is much more impacted but it becomes much smarter:
 
 ```rust
 use crate::errors::into_infra;
@@ -375,7 +377,7 @@ impl NameReader for FileInput {
 ```
 
 **Points of attention:**
-* On `.new()` the `path` to the input file is stored and `Self` is return. This is what ensures, that now, creating a `ConsoleInput` or a `FileInput` looks the same:
+* On `.new()` the `path` to the input file is stored and `Self` is returned. This is what ensures, that now, creating a `ConsoleInput` or a `FileInput` looks the same:
     ```rust
     let mut input = ConsoleInput::new();
     let mut input = FileInput::new("input.txt");
@@ -548,7 +550,7 @@ Hello Alice.
 {: .new-title }
 > What have we done so far?
 >
-* With the correct signature for `read_name()` now the code in main() is shorter and the adapter are used consistently.
+* With the correct signature for `read_name()` the code in `main()` is shorter and the adapter are used consistently (in loop or once)
 
 
 
@@ -558,10 +560,6 @@ Hello Alice.
 
 
 
-<div align="center">
-<img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
-<span></span>
-</div>
 
 
 
