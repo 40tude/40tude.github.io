@@ -552,11 +552,14 @@ Hello Alice.
 >
 * With the correct signature for `read_name()` the adapters are created consistently and used in all use cases (loop or once).
 * If you behave like an `std::XYZ` then copy the `std::XYZ` API.
+* At this point our application can be draw as below:
 
 
 
-
-
+<div align="center">
+<img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
