@@ -136,7 +136,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want a working prototype (POC). This prototype is NOT the final application, but if prove that the "concept" is valid. Here the "concept" is rather simple, the idea is to print "Hello XYZ" if you enter "XYZ". We will go one sample code at a time, validating some "business rule", adding some tests...
+We want a working prototype (POC). This prototype is NOT the final application, but it proves that the "concept" is valid. Here the "concept" is rather simple, the idea is to print "Hello XYZ" if you enter "XYZ". We will go one sample code at a time, validating some "business rule", adding some tests...
 
 At the end of this prototyping phase the folders will look like this:
 
