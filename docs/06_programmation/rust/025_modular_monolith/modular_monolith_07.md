@@ -117,8 +117,6 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 
 We want to improve the `adapter_file` so that, in `main()`, it is used exactly like the `adapter_console`. In addition we want  to be able to read multiple names from the input file and write multiple greetings in the output file.
 
-If the architecture is correct we should have no or very few modification in the existing code and focus our attention only on the code of the `adapter_file`.
-
 At the end of this episode, the folder hierarchy should look like this:
 
 ```text
@@ -177,7 +175,7 @@ step_07/
 ```
 
 **Points of attention:**
-* Same directory tree as in `step_06`
+* No change. This is the same directory tree as in `step_06`
 
 
 
@@ -284,7 +282,9 @@ impl NameReader for ConsoleInput {
 ```
 
 **Points of attention:**
-* Do you see the `&mut self` ?
+* Do you see the `&mut self`?
+* Here we do not use the fact that `self` is `&mut`
+* Apart the signature, the code is the same as in `step_06`
 
 
 
@@ -295,7 +295,7 @@ impl NameReader for ConsoleInput {
 
 `errors.rs` and `lib.rs` do not change. However since we want to read and write multiples names `input.rs` and `output.rs` change.
 
-In `output.rs` here is the new version of `write_greeting`
+In `output.rs` here is the new version of `write_greeting()`
 
 ```rust
 // The rest of the code do not change
@@ -377,15 +377,14 @@ impl NameReader for FileInput {
 ```
 
 **Points of attention:**
-* On `.new()` the `path` to the input file is stored and `Self` is returned. This is what ensures, that now, creating a `ConsoleInput` or a `FileInput` looks the same:
+* In `.new()` the `path` to the input file is stored and `Self` is returned. This is what ensures, that now, creating a `ConsoleInput` or a `FileInput` looks the same:
     ```rust
     let mut input = ConsoleInput::new();
     let mut input = FileInput::new("input.txt");
-
     ```
 * When `.read_name()` is called, only during the the very first call (see `self.names.is_none()`, a kind of lazy implementation) we load the names (see `load_names()`)
 * Then, no matter if it is the first call or not, if the `index` is not at the end of the list of names, the name is returned otherwise we return "quit" as we use to do on the console.
-
+* In `load_names()` we do not filter the empty lines. This is not our job. An input adapter get the names from the outside world and if the [WOPR](https://youtu.be/iRsycWRQrc8) did not kill everybody (no `InfraError`), it returns them, as they are.
 
 
 
@@ -431,7 +430,7 @@ Is not modified.
 ### The app crate
 <!-- {: .no_toc } -->
 
-Let's see the impact of the new signature:
+Let's see the impact of the new signature in `main()`:
 
 ```rust
 use adapter_console::{ConsoleInput, ConsoleOutput};
@@ -463,9 +462,9 @@ fn main() -> Result<()> {
 
 
 **Points of attention:**
-* Creating a `FileInput` is similar to creating a `ConsoleInput`
-* The error handling  disappear
-* The `adapter_file` can be use in a `.run_greeting_loop()` use case to read more than one name et generate more than one greeting
+* Creating a `FileInput` is now similar to creating a `ConsoleInput`.
+* The error handling has disappear.
+* The `adapter_file` can be use in a `.run_greeting_loop()` use case to read more than one name and to generate more than one greeting
 
 
 
@@ -535,9 +534,10 @@ Hello Alice.
 
 
 **Points of attention:**
-* Do not worry about the warnings. This is because we don't use `ConsoleInput` nor `ConsoleOutput`.
+* Do not worry about the warnings. This is because we don't use `ConsoleInput` nor `ConsoleOutput` in this version of `main()`.
 * The error due to the empty line in `input.txt` is reported on screen.
 * The other greetings are stored in the `output.txt` file.
+* As in `step 06` we can mix adapters (file, console) and use case (once, loop).
 
 
 
@@ -550,7 +550,8 @@ Hello Alice.
 {: .new-title }
 > What have we done so far?
 >
-* With the correct signature for `read_name()` the code in `main()` is shorter and the adapter are used consistently (in loop or once)
+* With the correct signature for `read_name()` the adapters are created consistently and used in all use cases (loop or once).
+* If you behave like an `std::XYZ` then copy the `std::XYZ` API.
 
 
 
