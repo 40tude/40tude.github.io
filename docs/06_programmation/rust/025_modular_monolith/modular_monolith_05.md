@@ -278,7 +278,7 @@ pub type Result<T> = std::result::Result<T, DomainError>;
 
 
 
-Now we can update `port.rs`. And believe it or not, the final version of this one took me a while... Why? Simply because initially I put `InfraError` in `error.rs`. I knew it was wrong. I had a red LED blinking somewhere in my mind... But I was not brave (smart) enough to move it here. Then many things were overcomplicated. Anyway, it took me a while but I learnt a lot. Ok, here is the code I have today:
+Now we can update `ports.rs`. And believe it or not, the final version of this one took me a while... Why? Simply because initially I put `InfraError` in `error.rs`. I knew it was wrong. I had a red LED blinking somewhere in my mind... But I was not brave (smart) enough to move it here. Then many things were overcomplicated. Anyway, it took me a while but I learnt a lot. Ok, here is the code I have today:
 
 ```rust
 use std::any::Any;
@@ -346,7 +346,7 @@ pub use ports::{GreetingWriter, InfraError, NameReader};
 ```
 
 **Points of attention:**
-* The reason why `InfraError` and `NameReaderError` are re-exported is to "hide" the name "port" so that in the input module of the `adapter_console` crate we will write `use domain::{NameReader, NameReaderError}` instead of `use domain::{NameReader, ports::NameReaderError};`. Yes, I know, this somewhat contradict what I said in [Step 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}#librs) but we have to be pragmatic.
+* The reason why `InfraError` and `NameReaderError` are re-exported is to "hide" the name "ports" so that in the input module of the `adapter_console` crate we will write `use domain::{NameReader, NameReaderError}` instead of `use domain::{NameReader, ports::NameReaderError};`. Yes, I know, this somewhat contradict what I said in [Step 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}#librs) but we have to be pragmatic.
 
 
 
@@ -903,6 +903,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 > What have we done so far?
 >
 * `anyhow` and `thiserror` are now integrated.
+* We added a use case (`.run_greeting_once()`)
 * The need to return specific errors forced us to distinguish between `InfraError` and `DomainError` and to find a way to return either one within a single container (`ApplicationError`).
 * It was an opportunity to impose an additional port (`InfraError`) to the adapters if they want to report errors from the infrastructure.
 * Implementing the `From` trait for `InfraError` helped to keep the `?` in the source code.

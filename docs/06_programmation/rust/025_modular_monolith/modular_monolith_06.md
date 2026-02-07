@@ -121,8 +121,12 @@ If the architecture is correct we should have no or very few modification in the
 At the end of this episode, the folder hierarchy should look like this:
 
 ```text
-step_06/
+C:.
 │   Cargo.toml
+│   input.txt
+│   output.txt
+├───.cargo
+│       config.toml
 └───crates
     ├───adapter_console
     │   │   Cargo.toml
@@ -247,24 +251,9 @@ anyhow = "1.0"
 ### application/src/greeting_service.rs file
 <!-- {: .no_toc } -->
 
-We add a new "use case" which reads one name is read at a time. This not only shows that we should have multiple use cases but this will help us to keep the code of the `adapter_file` at its bare minimum. Below I only show the new use case `run_greeting_once()` beacause the rest of the code is unchanged:
+Is not modified.
 
-```rust
-impl GreetingService {
-    // Rest of the code is unchanged
-    pub fn run_greeting_once(
-        &self,
-        input: &dyn domain::NameReader,
-        output: &dyn domain::GreetingWriter,
-    ) -> Result<()> {
-        let name = input.read_name()?;
-        let greeting = domain::greet(&name)?;
-        output.write_greeting(&greeting)?;
-        println!("\nGoodbye!");
-        Ok(())
-    }
-}
-```
+
 
 
 
@@ -283,6 +272,7 @@ use anyhow::{Context, Result};
 fn main() -> Result<()> {
     println!("=== Greeting Service (Step 06 - File Adapter Demo) ===");
 
+    // Dependency injection: Create file-based adapters
     // let output = ConsoleOutput::new();
     // let input = ConsoleInput::new();
 
@@ -300,6 +290,7 @@ fn main() -> Result<()> {
         .run_greeting_once(&input, &output)
         // .run_greeting_loop(&input, &output)
         .context("Failed to run greeting service")?;
+
     Ok(())
 }
 ```
@@ -307,8 +298,7 @@ fn main() -> Result<()> {
 
 **Points of attention:**
 * I keep in comment the creation of the console adapters. It will be easy to mix the adapters (read in a file, write on the console for example).
-* When `input` is created, if `input.txt` file does not exists we must handle the error.
-* Here, we use the new use case and call `.run_greeting_once()` rather than our old buddy `.run_greeting_loop()`
+* When `input` is created, if `input.txt` file does not exists we must handle the error. I don't like it. I would prefer to simply write `let input = FileInput::new("input.txt");` to keep the creation of adapters homogenous.
 
 
 
@@ -342,8 +332,6 @@ pub use output::FileOutput;
 The `errors.rs` looks like this:
 
 ```rust
-// errors.rs
-
 use domain::InfraError;
 use std::any::Any;
 use thiserror::Error;
@@ -359,15 +347,26 @@ impl InfraError for FileError {
         self
     }
 }
+
+pub(crate) fn into_infra(e: impl Into<FileError>) -> Box<dyn InfraError> {
+    Box::new(e.into())
+}
 ```
+
+**Points of attention:**
+* `ConsoleError` changes in `FileError`
+
+
+
+
+
+
 
 
 The `output.rs` file
 
 ```rust
-// output.rs
-
-use crate::errors::FileError;
+use crate::errors::into_infra;
 use domain::{GreetingWriter, InfraError};
 use std::path::PathBuf;
 
@@ -385,14 +384,14 @@ impl FileOutput {
 
 impl GreetingWriter for FileOutput {
     fn write_greeting(&self, greeting: &str) -> Result<(), Box<dyn InfraError>> {
-        std::fs::write(&self.path, format!("{greeting}\n"))
-            .map_err(|e| Box::new(FileError::from(e)) as Box<dyn InfraError>)
+        std::fs::write(&self.path, format!("{greeting}\n")).map_err(into_infra)?;
+        Ok(())
     }
 }
 ```
 
 **Points of attention:**
-* Note that the error reporting with `.map_err()`
+* `ConsoleOutput` is replaced by `FileOutput`
 
 
 
@@ -401,7 +400,7 @@ The `input.rs` file:
 
 ```rust
 use crate::errors::FileError;
-use domain::{NameReader, NameReaderError};
+use domain::{InfraError, NameReader};
 use std::fs;
 use std::path::PathBuf;
 
@@ -414,33 +413,44 @@ impl FileInput {
     pub fn new(path: impl Into<PathBuf>) -> Result<Self, FileError> {
         let path = path.into();
         let content = fs::read_to_string(&path).map_err(FileError::from)?;
+
         let name = content
             .lines()
             .next()
             .unwrap_or_default()
             .trim()
             .to_string();
+
         Ok(Self { name })
     }
 }
 
 impl NameReader for FileInput {
-    fn read_name(&self) -> Result<String, NameReaderError> {
+    fn read_name(&self) -> Result<String, Box<dyn InfraError>> {
         Ok(self.name.clone())
     }
 }
 ```
 
 **Points of attention:**
+* `ConsoleInput` is replaced by `FileInput`
 * In this version the content of the input file is loaded when the adapter is created and `name` is initialized with the content of the first line.
 * If the input file does not exist then an error is reported
 * When `read_name()` is called we simply return `name`'s value.
 
 
-**Points of attention:**
-* In a more elaborated version, we could (I have) a `FileInput` which load the file on the first read, can handle content with multiple lines and behave like an iterator on each reading. internally it has an `index` which is incremented on each read, the names are in a `vector<String>`
-* **IMPORTANT:** I you want to create something similar make sur to mimic the API of the standard and make sure `read_name()` have this signature `fn read_name(&mut self) -> Result<String, NameReaderError>` and not `fn read_name(&self) -> Result<String, NameReaderError>`. Don't trust me and double check the signature of [Iterator::next()](https://doc.rust-lang.org/std/iter/trait.Iterator.html#required-methods). Why is that? Simply because on `read_name()` if I want to increment the index I mutate the object. If I don't have `&mut self`, things become complicated with `RefCell` etc.
-* It was an error from my part in the design of the signature of `read_name()` but at this point I do not feel brave enough to change it in all the projects... I don't know, we will see.
+**TODO:**
+In a next version:
+* Calling `FileInput::new("input.txt")` should similar to calling `ConsoleOutput::new()`
+* We should be able to read more than one name in the input file and write more than one greeting in the output file.
+* To do so we will need to modify `FileInput` so that it loads the file on the first read, reports error if needed and behaves like an iterator on each reading.
+* Internally this requires a `vector<String>` where the names are stored and an `index` which is incremented on each read.
+* This means that FileInput object created in `main()` **MUST** be mutable (which is not the case currently, check the signatures).
+* **IMPORTANT:** Lesson learn. We should mimic the API of the standard library and if we want `read_name()` to behave like `Iterator::next()` it should have the same signature : `read_name(&mut self) -> Result<String, Box<dyn InfraError>>` and not `fn read_name(&self) -> Result<String, Box<dyn InfraError>>`. Don't trust me and double check the signature of [Iterator::next()](https://doc.rust-lang.org/std/iter/trait.Iterator.html#required-methods) for example.
+* Why is that? Simply because on `read_name()` if I want to increment the index I **mutate the object**. If I don't have `&mut self`, things become complicated with `RefCell` etc.
+* If you have any doubt about the mutability of the bindings read this [page]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
+
+
 
 
 <!-- ###################################################################### -->
@@ -487,7 +497,7 @@ Hello Buck.
 
 **Points of attention:**
 * Only one line
-* Create a new `input.txt` file with 2 lines: Roberto and Buck. The new `output.txt` file will have one line again.
+* Modify `input.txt` file with 2 lines (Roberto and Buck for example). The new `output.txt` file will have one line again.
 
 
 
@@ -548,11 +558,9 @@ Goodbye!
 {: .new-title }
 > What have we done so far?
 >
-* We added a use case
-* Adding a new adapter was easy and we where able to focus only on implementing the methods of the trait. This could have been done (and tested) by someone else independently.
-* Yes we took the new adapter into account in `main.rs` but that's all
-* Tomorrow we can write `adapter_tcp`, `adapter_sql`...
-* `read_name()` should have this signature `fn read_name(&mut self) -> Result<String, NameReaderError>`
+* Adding a new adapter was easy and we where able to focus mostly on implementing the methods of the trait. This could have been done (and tested) by someone else independently.
+* Yes we took the new adapter into account in `main.rs` and in `Cargo.toml` but that's all.
+* Tomorrow we can write `adapter_tcp`, `adapter_sql` using the same process.
 
 
 
