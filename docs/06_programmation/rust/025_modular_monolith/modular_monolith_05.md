@@ -223,7 +223,7 @@ anyhow = "1.0"
 
 
 **Points of attention:**
-* Obviously, `thiserror` and `anyhow` are listed
+* Obviously, `thiserror` and `anyhow` are listed in the `[workspace.dependencies]`
 
 
 
@@ -269,7 +269,8 @@ pub type Result<T> = std::result::Result<T, DomainError>;
 ```
 
 **Points of attention:**
-* Everything here is domain specific
+* Everything here is domain specific.
+* This is **IMPORTANT**
 * With the help of `thiserror`, we define a domain error enum (see `DomainError`). So far it only have one variant (see `EmptyName`).
 * The type alias `Result` is updated from `std::result::Result<T, Error>` to `std::result::Result<T, DomainError>`
 
@@ -279,7 +280,7 @@ pub type Result<T> = std::result::Result<T, DomainError>;
 
 
 
-Now we can update `ports.rs`. And believe it or not, the final version of this one took me a while... Why? Simply because initially I put `InfraError` in `error.rs`. I knew it was wrong. I had a red LED blinking somewhere in my mind... But I was not brave (smart) enough to move it here. Then many things were overcomplicated. Anyway, it took me a while but I learnt a lot. Ok, here is the code I have today:
+Now we can update `ports.rs`. And believe it or not, the final version of this one took me a while... Why? Simply because initially I put `InfraError` in `error.rs`. I knew it was wrong. I had a red LED blinking somewhere in my mind... But I was not brave (smart) enough to move it here. Then many things were overcomplicated in my first tentatives. Anyway, it took me a while but I learnt a lot. Ok, here is the code I have today:
 
 ```rust
 use std::any::Any;
@@ -300,9 +301,11 @@ pub trait GreetingWriter {
 
 **Points of attention:**
 
-* **Important.** Look at the figure below. My understanding is as follow: when an adapter report an error this is an error from the "outside world", the infrastructure (file missing, network error...). We don't know and we cannot know them all at compile time (today the input come from UDP, tomorrow it will come from a keyboard...).
+**Important.** Look at the figure below. My understanding is as follow:
+* when an adapter report an error this is an error from the "outside world", the infrastructure (file missing, network error...).
+* We don't know and we cannot know them all at compile time (today the input come from UDP, tomorrow it will come from a keyboard...).
 * This is why a trait for infrastructure errors is defined (see `InfraError`). In fact, `InfraError` is a contract that the `domain` imposes on the adapters: "if you want to report an infra error to me, implement this feature."
-* Once `InfraError` is defined the new signature of `read_name` and `write_greeting` explains that, on error they will return `Box<dyn InfraError>`
+* Once `InfraError` is defined the new signature of `read_name` and `write_greeting` explains that, on error, they will return `Box<dyn InfraError>`
 
 
 <div align="center">
@@ -317,7 +320,7 @@ pub trait GreetingWriter {
 
 
 
-In `greeting.rs` only the beginning of the code is updated because now, it can return a domain specific error when the `name` is empty:
+In `greeting.rs`, only the beginning of the code is updated because now, it can return a domain specific error when the `name` is empty:
 
 ```rust
 use crate::errors::{DomainError, Result};
@@ -347,7 +350,7 @@ pub use ports::{GreetingWriter, InfraError, NameReader};
 ```
 
 **Points of attention:**
-* The reason why `InfraError` and `NameReaderError` are re-exported is to "hide" the name "ports" so that in the input module of the `adapter_console` crate we will write `use domain::{NameReader, NameReaderError}` instead of `use domain::{NameReader, ports::NameReaderError};`. Yes, I know, this somewhat contradict what I said in [Step 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}#librs) but we have to be pragmatic.
+* The reason why `InfraError` and `NameReaderError` are re-exported here is to "hide" the name "ports" so that in the input module of the `adapter_console` crate we will write `use domain::{NameReader, NameReaderError}` instead of `use domain::{NameReader, ports::NameReaderError};`. Yes, I know, this somewhat contradict what I said in [Step 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}#librs) but we have to be pragmatic.
 
 
 
@@ -389,7 +392,7 @@ thiserror.workspace = true
 * `thiserror` is added
 
 
-The `errors.rs` now looks like:
+The `errors.rs` file now looks like:
 
 ```rust
 use domain::InfraError;
@@ -456,7 +459,7 @@ impl GreetingWriter for ConsoleOutput {
 * In the signature of `write_greeting`, see the `Result<(), Box<dyn InfraError>>`
 * In the implementation of `GreetingWriter` for `ConsoleOutput` I no longer use `println!` but `writeln!`. Indeed the first `panic!` on error while the second return an error.
 * Then we take this error and we map it to an InfraError. This is the purpose of `into_infra` which shorten the closure in comment. How does this work?
-    1. The error, if any is a `std::io::Error` and we want to converti it into a `InfraError`
+    1. The error, if any, is a `std::io::Error` and we want to convert it into a `InfraError`
     2. `into_infra` calls `e.into()` and this triggers the `#[from]` conversion
     3. The `#[from]` generates `impl From<std::io::Error> for ConsoleError`, which builds `ConsoleError::Io(e)`
     4. That `ConsoleError::Io(e)` gets boxed as `Box<dyn InfraError>`
@@ -475,10 +478,11 @@ Because we have
 impl InfraError for ConsoleError {...}
 
 ```
+The orphan rule says : you can only implement a trait for a type if either the trait or the type is defined in your own crate.
 
-And the orphan rule say we can't implement `InfraError` for `std::io::Error` in the adapter crate. Indeed, we don't own the trait (it's in `domain`) nor the type (it's in `std`). Finally, `ConsoleError` is the type that makes `impl InfraError for ConsoleError` legal.
+In our case, this can be translated into: we can't implement `InfraError` for `std::io::Error` in the adapter crate. Indeed, we don't own the trait (it's in `domain`) nor the type (it's in `std`). Finally, `ConsoleError` is the type that makes `impl InfraError for ConsoleError` legal.
 
-I told you, in `errors.rs` every line was important.
+I told you, in `errors.rs` every line is important.
 
 
 
@@ -594,8 +598,8 @@ fn main() -> Result<()> {
 
 **Points of attention:**
 * As we will see in the application crate (in charge of orchestrating the use cases) I added a `run_greeting_once()` use case.
-* The code above demonstrate that no matter the use case, from `main()` the calling process is the same.
-* If you want to test the run_greeting_loop again simply uncomment/comment the concerned lines
+* The code above demonstrates that, no matter the use case, from `main()` the calling process is the same.
+* If you want to test the `run_greeting_loop()` again, simply uncomment/comment the concerned lines. During your tests, don't be afraid to break everything. Make it works again will be always instructive.
 
 
 
@@ -894,10 +898,6 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 ## Summary
 
-<div align="center">
-<img src="./assets/img10.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
 
 
 {: .new-title }
@@ -925,7 +925,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 ## Next Steps
 
-Next you can read [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}).
+Next you can read [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}) but I would recommend to take a break or sleep on it. Tomorrow will be another day...
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files

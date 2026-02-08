@@ -293,7 +293,7 @@ impl NameReader for ConsoleInput {
 ### The adapter_file crate
 <!-- {: .no_toc } -->
 
-`errors.rs` and `lib.rs` do not change. However since we want to read and write multiples names `input.rs` and `output.rs` change.
+`errors.rs` and `lib.rs` do not change. However, since we want to read and write multiples names, `input.rs` and `output.rs` change.
 
 In `output.rs` here is the new version of `write_greeting()`
 
@@ -382,8 +382,9 @@ impl NameReader for FileInput {
     let mut input = ConsoleInput::new();
     let mut input = FileInput::new("input.txt");
     ```
-* When `.read_name()` is called, only during the the very first call (see `self.names.is_none()`, a kind of lazy implementation) we load the names (see `load_names()`)
-* Then, no matter if it is the first call or not, if the `index` is not at the end of the list of names, the name is returned otherwise we return "quit" as we use to do on the console.
+* When `.read_name()` is called, only during the the very first call (see `self.names.is_none()`) we load the names (see `load_names()`). Think to it as a kind of lazy implementation.
+* Then, no matter if it is the first call or not, if the `index` is not at the end of the list of names, a name build and returned.
+* If the index is at the end of the vector we return "quit" as we used to do on the console.
 * In `load_names()` we do not filter the empty lines. This is not our job. An input adapter get the names from the outside world and if the [WOPR](https://youtu.be/iRsycWRQrc8) did not kill everybody (no `InfraError`), it returns them, as they are.
 
 
@@ -464,7 +465,7 @@ fn main() -> Result<()> {
 **Points of attention:**
 * Creating a `FileInput` is now similar to creating a `ConsoleInput`.
 * The error handling has disappear.
-* The `adapter_file` can be use in a `.run_greeting_loop()` use case to read more than one name and to generate more than one greeting
+* The `adapter_file` can be used in a `.run_greeting_loop()` use case to read more than one name and to generate more than one greeting.
 
 
 
@@ -554,7 +555,7 @@ Hello Alice.
 * If you behave like an `std::XYZ` then copy the `std::XYZ` API.
 * At this point our application can be draw as below:
 
-
+The organization of the application looks like:
 
 <div align="center">
 <img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>

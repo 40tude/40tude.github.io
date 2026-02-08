@@ -428,15 +428,15 @@ fn domain_greet_function() {
 
 **Points of attention:**
 * The fact that `NameReader` trait declares `fn read_name(&self)`, a shared, immutable reference is **an error of design**
-* We will talk about it again in step 06 and fix the problem in step 07.
+* We will talk about it again in [Episode 06]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_06.md%}) and fix the problem in [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}).
 
 **Points of attention:**
-* The test must run without any adapter. This is why we create reader and writer mockup
-* Since the loop run until it read `quit` (or `exit`) the reader own a vector of words.
-* In the implementation we fasten our seat belt and if we reach the end of the vector then we simulate the reading of the word `quit`.
-* Again, because of the loop, the mock writer have a vector of greetings which will be analyzed in the tests.
+* The tests must run without any adapter. This is why we create reader and writer mockups.
+* Since the loop run until it read "quit" (or "exit" or "q!") the reader own a vector of words.
+* In the implementation we fasten our seat belt and if we reach the end of the vector then we simulate the reading of the word "quit".
+* Again, because of the loop, the mock writer have a vector of greetings which will be analyzed later in the tests.
 * Here, only one test is shown. As in `main.rs` we create a `reader`, a `writer`, a `GreetingService` and invoke the `.run_greeting_loop()` method
-* Thanks to the mockup **we don't have to wait the availability of real adapters to test the behavior of the overall application**.
+* Thanks to the mockups **we don't have to wait the availability of real adapters to test the behavior of the overall application**.
 
 
 
@@ -475,7 +475,7 @@ pub use greeting_service::GreetingService;
 
 
 
-The  code of `application/src/greeting_service.rs` is almost a copy paste from the `run_greeting_loop()` of `step_04`.
+The  code of `application/src/greeting_service.rs` is almost a copy paste from the `run_greeting_loop()` we ahd in `main.rs` in `step_03`.
 
 ```rust
 use crate::error::Result;
@@ -767,8 +767,35 @@ Goodbye!
 * Development and testing can be done independently, per crate, in parallel, at different speed, by different teams...
 
 
+At this point, the organization looks like:
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+* Our core business, our domain, is in yellow. It depends on no one. It just do its job.
+* The application crate run one use case (loop). It feeds the domain with some input data and get some output data in returns.
+* 2 ports are imposed by the domain.
+* They explain how the domain is willing to read/write data
+* As an adapter if you do not conform to the ports you cannot pass/receive data to/from the domain. You're useless.
+* The adapter on the left pass the data from the outside world to the input port
+* The second adapter pass the inner data to the outside world through the output port
+* We can have more than 6 ports (here we only have 2)
+* We can have more than one adapter per port.
 
 
+If you read the `Cargo.toml` files of each crate and if you pay attention to the dependencies section you should draw a graph similar to the one below:
+
+<div align="center">
+<img src="./assets/img10.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+* `app` depends on `application` and `adapters`
+* `application` depends on `domain`
+* `adapters` depends on `domain`
+* `domain` depends on nobody
 
 
 

@@ -115,7 +115,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want to add an `adapter_file` crates so that the application can read names and write greetings into files.
+We want to add an `adapter_file` crate so that our application can read names from files and write greetings into files.
 
 If the architecture is correct we should have no or very few modification in the existing code and focus our attention only on the code of the `adapter_file`.
 
@@ -299,8 +299,10 @@ fn main() -> Result<()> {
 
 
 **Points of attention:**
-* I commented the creation of the console adapters but not the associated `use` statements. It will be easy to mix the adapters (read in a file, write on the console for example).
-* When `input` is created, if `input.txt` file does not exists we must handle the error. **I don't like it**. I would prefer to simply write `let input = FileInput::new("input.txt");` to keep the creation of adapters homogenous. Stop grumbling, a solution exits.
+* In `main()` I commented the creation of the console adapters but not the associated `use` statements at the top of the code.
+* This will help us during our tests if we want to mix the adapters (read from a file, write to the terminal for example).
+* When `input` is created, if `input.txt` file does not exists we must handle the error.
+* **I don't like the way it is done here**. I would prefer to simply write `let input = FileInput::new("input.txt");` to keep the creation of adapters homogenous. Stop grumbling, a solution exits (see [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%})).
 
 
 
@@ -315,7 +317,7 @@ fn main() -> Result<()> {
 ### The adapter_file crate
 <!-- {: .no_toc } -->
 
-Feel free to copy/paste/rename the `adapter_console` folder.
+First, copy/paste/rename the `adapter_console` folder.
 
 The `Cargo.toml` file does not change.
 
@@ -447,9 +449,9 @@ impl NameReader for FileInput {
 In a next version:
 * Calling `FileInput::new("input.txt")` should be similar to calling `ConsoleOutput::new()`
 * We should be able to read more than one name in the input file and write more than one greeting in the output file.
-* To do so we will need to modify `FileInput` so that it loads the file on the first read, reports error if needed and behaves like an iterator on each reading.
+* To do so we will need to modify `FileInput` so that it loads the file on the first read, reports error if needed and *behaves like an iterator* on each reading.
 * Internally this requires a `vector<String>` where the names are stored and an `index` which is incremented on each read.
-* This means that FileInput object created in `main()` **MUST** be mutable (which is not the case currently, check the signatures).
+* This means that FileInput object created in `main()` **MUST** be mutable (which is not the case currently, check the signature).
 * **IMPORTANT:** Lesson learn: We should mimic the API of the standard library. For example, if we want `read_name()` to behave like `Iterator::next()` it should have the same signature : `read_name(&mut self) -> Result<String, Box<dyn InfraError>>` and not `fn read_name(&self) -> Result<String, Box<dyn InfraError>>`. Don't trust me and double check the signature of [Iterator::next()](https://doc.rust-lang.org/std/iter/trait.Iterator.html#required-methods) for example.
 * Why is that? Simply because in `read_name()`, if I want to increment the `index` I **mutate the object**. If I don't have `&mut self`, things become complicated with `RefCell` etc.
 * If you have any doubt about the mutability of the bindings read this [page]({%link docs/06_programmation/rust/004_mutability/mutability_us.md%}).
@@ -465,7 +467,6 @@ Create an `input.txt` file at the root of the project. Here is an example with o
 
 ```text
 Buck
-Roberto
 ```
 
 Build, run and test the application. Find below the expected output:
@@ -635,7 +636,7 @@ Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
 <!-- ###################################################################### -->
 ## Next Steps
 
-Next you can read [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}).
+Next you can read [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}) and you should read it now.
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
