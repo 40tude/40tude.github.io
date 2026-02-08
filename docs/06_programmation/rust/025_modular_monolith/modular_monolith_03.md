@@ -439,6 +439,112 @@ fn run_greeting_loop(
 
 
 
+<!-- ###################################################################### -->
+### tests/adapters_test.rs
+
+The mock adapters used for the first time in `tests/adapters_test.rs` deserve some attention. Let's think about it for a second. We just introduced the ports `NameReader` and `GreetingWriter` specifically so that the domain doesn't depend on any concrete I/O. But if we want to test the whole flow (read a name → greet → write the greeting) without actually typing in a console... we need fake implementations of those traits. That's what mocks are.
+
+A mock adapter is just a struct that implements a port trait but does something trivial and predictable instead of real I/O. `MockInput` holds a hardcoded name and returns it when `read_name()` is called. `MockOutput` captures whatever greeting is passed to `write_greeting()` into an internal `Vec<String>` so we can inspect it afterwards.
+
+Here is the beginning of the code:
+
+```rust
+use step_03::domain;
+use step_03::ports::{GreetingWriter, NameReader};
+use step_03::error::Result;
+
+/// Mock input adapter that returns a predefined name.
+struct MockInput {
+    name: String,
+}
+
+impl MockInput {
+    fn new(name: &str) -> Self {
+        Self {
+            name: name.to_string(),
+        }
+    }
+}
+
+impl NameReader for MockInput {
+    fn read_name(&self) -> Result<String> {
+        Ok(self.name.clone())
+    }
+}
+
+/// Mock output adapter that captures written greetings.
+struct MockOutput {
+    written: std::cell::RefCell<Vec<String>>,
+}
+
+impl MockOutput {
+    fn new() -> Self {
+        Self {
+            written: std::cell::RefCell::new(Vec::new()),
+        }
+    }
+    fn get_written(&self) -> Vec<String> {
+        self.written.borrow().clone()
+    }
+}
+
+impl GreetingWriter for MockOutput {
+    fn write_greeting(&self, greeting: &str) -> Result<()> {
+        self.written.borrow_mut().push(greeting.to_string());
+        Ok(())
+    }
+}
+
+#[test]
+fn mock_input_reader() {
+    let input = MockInput::new("Alice");
+    let name = input.read_name().unwrap();
+    assert_eq!(name, "Alice");
+}
+
+// Others test below
+```
+
+**Points of attention:**
+
+* The beautiful thing is that from the test's perspective, there's no difference between a mock and a real adapter. We write:
+
+    ```rust
+    let input = MockInput::new("Alice");
+    let output = MockOutput::new();
+
+    let name = input.read_name().unwrap();
+    let greeting = domain::greet(&name).unwrap();
+    output.write_greeting(&greeting).unwrap();
+
+    let written = output.get_written();
+    assert_eq!(written[0], "Hello Alice.");
+    ```
+
+* This is exactly the same sequence of calls we'd have in `main()` with real `ConsoleInput` and `ConsoleOutput`.
+* The only difference is that nobody is sitting at a keyboard, and the result ends up in a vector instead of on the screen. That's the whole point of hexagonal architecture paying off: the domain and the wiring are testable in complete isolation, no I/O involved.
+* There are not shown in the code fragment above but in `tests/adapters_test.rs` we also define `FailingInput` and `FailingOutput` (mocks that always return an error). These let us verify that our error handling works without needing to unplug a cable or corrupt a file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
 ### Build, run & test
@@ -529,14 +635,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```
 
 **Points of attention:**
-* There are more tests.
-    * Indeed one test of the `greeting_loop_with_mocks()` function have been added to `main.rs` because `run_greeting_loop()` is not public.
-    * In addition, the file `test/adapters_test.rs` host tests for the adapters using Mock implementations.
-    * `tests/integration_test.rs` now use mock adapters
-    * `tests/domain_test.rs` is not modified
-    * The source code of the test is available on [GitHub on this page](https://github.com/40tude/modular_monolith_tuto/tree/main/step_03).
 
-
+There are more tests.
+* Indeed one test of the `greeting_loop_with_mocks()` function have been added to `main.rs` because `run_greeting_loop()` is not public.
+* In addition, the file `test/adapters_test.rs` host tests for the adapters using Mock implementations.
+* `tests/integration_test.rs` now use mock adapters
+* `tests/domain_test.rs` is not modified
+* The source code of the test is available on [GitHub on this page](https://github.com/40tude/modular_monolith_tuto/tree/main/step_03).
 
 
 
