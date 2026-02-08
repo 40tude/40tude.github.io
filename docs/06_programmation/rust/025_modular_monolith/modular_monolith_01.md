@@ -121,7 +121,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 
 ## Objective
 
-We want to split the last version of the POC among multiple files. At the end the project folder will look like this:
+We want to split the last version of the POC among multiple files. At the end the project's folder will look like this:
 
 ```text
 step_01/
@@ -158,7 +158,7 @@ code .
 ```
 
 
-* Move `examples/ex07.rs` into `src/main.rs`
+* Move the content of `examples/ex07.rs` into `src/main.rs`
 * Delete the `examples/` folder
 
 
@@ -197,7 +197,7 @@ path = "src/main.rs"
 <!-- ###################################################################### -->
 ### error.rs
 
-Create an `error.rs` file and copy the `Error` and `Result` type aliases in it:
+Create an `error.rs` file and, from `main.rs` copy the `Error` and `Result` type aliases in it:
 
 ```rust
 pub type Error = Box<dyn std::error::Error>;
@@ -259,7 +259,7 @@ mod tests {
 
 **Points of attention:**
 * Do you see the `use crate::error::Result;` statement at the top of `domain.rs`.
-* Is the usage of `crate` here OK for you?
+* Is the usage of `crate` here OK for you? If you have any doubt, you car  [read again this page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 * `greet()` is now public.
 * Since `greet()` is public we could have stored the tests outside of this file to make sure they behave like any other "consumer".
 
@@ -352,7 +352,7 @@ fn main() -> Result<()> {
 **Points of attention:**
 * See how `Result` and `greet` are shortcutted with the `use` statements.
 * Make sure to understand why here, we write `use step_01::error::Result;` while in `domain.rs` we wrote `use crate::error::Result;`.
-    * If needed, you can read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
+    * As explained, if needed, read again this [page]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}).
 
 
 
@@ -418,7 +418,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
     ```powershell
     cargo test domain
     ```
-* We can develop it independently as long as the signature of `greet()` remains stable.
+* We can develop the module `domain` on its side as long as the signature of `greet()` remains stable.
 
 
 
@@ -462,6 +462,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Next Steps
+
+Next you can read [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}).
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files

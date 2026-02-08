@@ -635,6 +635,8 @@ Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
 <!-- ###################################################################### -->
 ## Next Steps
 
+Next you can read [Episode 07]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}).
+
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
 * [Episode 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}): Step 02 - Add a test folder

@@ -227,7 +227,7 @@ license = "MIT"
 * Up to now it was Ok to share `Error` and `Result<T>` between the modules.
 * This is no longer the case. Indeed each crate must be independent, and we should not be surprised if some of our crates develop their own error code/message.
 * This is why in most of the crates there is an `error.rs` file
-* As for now, all these `error.rs` files look the same but tomorrow, one crate may start using `thiserror` while the others keep their error schema.
+* As for now, all these `error.rs` files look the same but tomorrow, one crate may start using `thiserror` while the others may keep their error schema.
 
 
 
@@ -340,7 +340,7 @@ adapter_console = { path = "../adapter_console" }
 ```
 
 
-This crate is really a place holder for the tests. Indeed it does contains any code which is executed at runtime. Just tests. This is why `src/lib.rs` is empty.
+This crate is really a place holder for the tests. Indeed it does not contain any code which is executed at runtime. Just tests. This is why `src/lib.rs` is empty.
 
 ```rust
 use application::GreetingService;
@@ -427,6 +427,10 @@ fn domain_greet_function() {
 * The same logic applies to `greetings: RefCell<Vec<String>>` in the writer. Indeed a `Vec<String>` does not have the Copy trait, so it needs `RefCell` instead of `Cell`.
 
 **Points of attention:**
+* The fact that `NameReader` trait declares `fn read_name(&self)`, a shared, immutable reference is **an error of design**
+* We will talk about it again in step 06 and fix the problem in step 07.
+
+**Points of attention:**
 * The test must run without any adapter. This is why we create reader and writer mockup
 * Since the loop run until it read `quit` (or `exit`) the reader own a vector of words.
 * In the implementation we fasten our seat belt and if we reach the end of the vector then we simulate the reading of the word `quit`.
@@ -476,6 +480,7 @@ The  code of `application/src/greeting_service.rs` is almost a copy paste from t
 ```rust
 use crate::error::Result;
 
+#[derive(Default)]
 pub struct GreetingService;
 
 impl GreetingService {
@@ -515,12 +520,6 @@ impl GreetingService {
         }
 
         Ok(())
-    }
-}
-
-impl Default for GreetingService {
-    fn default() -> Self {
-        Self::new()
     }
 }
 ```
@@ -623,17 +622,12 @@ The previous `adapters/` folder is renamed `adapter_console` and the crate conta
 use crate::error::Result;
 use domain::GreetingWriter;
 
+#[derive(Default)]
 pub struct ConsoleOutput;
 
 impl ConsoleOutput {
     pub fn new() -> Self {
         Self
-    }
-}
-
-impl Default for ConsoleOutput {
-    fn default() -> Self {
-        Self::new()
     }
 }
 
@@ -652,17 +646,12 @@ use std::io::{self, Write};
 use domain::NameReader;
 use crate::error::Result;
 
+#[derive(Default)]
 pub struct ConsoleInput;
 
 impl ConsoleInput {
     pub fn new() -> Self {
         Self
-    }
-}
-
-impl Default for ConsoleInput {
-    fn default() -> Self {
-        Self::new()
     }
 }
 
@@ -795,6 +784,8 @@ Goodbye!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Next Steps
+
+Next you can read [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}).
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files

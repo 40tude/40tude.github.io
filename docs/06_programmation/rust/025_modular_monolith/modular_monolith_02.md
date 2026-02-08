@@ -109,7 +109,7 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want to create a `tests/` folder to host the integration tests and the domain tests (since `greet()` is public). At the end, the project folder will look like this:
+We want to create a `tests/` folder to host the domain tests (since `greet()` is public) and a set of integration tests. At the end, the project folder will look like this:
 
 
 ```text
@@ -123,7 +123,6 @@ step_02/
 └───tests
         domain_test.rs      # Domain unit tests
         integration_test.rs # Integration tests
-
 ```
 
 
@@ -196,7 +195,7 @@ path = "src/main.rs
 pub mod domain;
 pub mod error;
 
-// DO NOT re-export greet() for convenience
+// I DO NOT re-export greet() for convenience
 // I want to write domain::greet() in main.rs
 // pub use domain::greet;
 ```
@@ -219,8 +218,8 @@ pub mod error;
 ### domain_test.rs
 
 
+Create a `tests/` folder with `domain_test.rs` and `integration_test.rs` files. Extract the tests from `domain.rs` and copy them into `domain_test.rs`.
 
-Create a `tests/` folder with `domain_test.rs` and `integration_test.rs`. Move the tests from `domain.rs` to `domain_test.rs`.
 
 ```rust
 use step_02::domain::greet;
@@ -255,7 +254,9 @@ fn empty_name_returns_error() {
 
 
 
-Write the `integration_test.rs` file
+Write the `integration_test.rs` file:
+
+
 
 ```rust
 use step_02::domain;
@@ -448,6 +449,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Next Steps
+
+Next you can read [Episode 03]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_03.md%}).
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files

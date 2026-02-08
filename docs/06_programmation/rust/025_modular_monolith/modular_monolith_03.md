@@ -116,7 +116,11 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Objective
 
-We want to start implementing an Hexagonal Architecture. The implementation will be finished when the `application.rs` and its use cases will be available. Anyway, at the end of Step 03, the folder hierarchy should look like:
+We want to start implementing an Hexagonal Architecture. The implementation will be finished in [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}) when the `greeting_service.rs` file and its use cases will be available.
+
+If you have **ANY** doubt about Hexagonal Architecture, Ports and Adapters, before you move forward, read this [dedicated page]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}).
+
+Anyway, at the end of Step 03, the folder hierarchy should look like:
 
 ```text
 step_03/
@@ -163,8 +167,8 @@ cd step_03
 code .
 ```
 
-* If you have **ANY** doubt about Hexagonal Architecture, Ports and Adapters before you move forward, read this [dedicated page]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}).
-* Indeed since the previous page exists, I do no plan to explain these concepts one more time.
+* Before to read further,  feel free to read this [page]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}).
+* Indeed since the previous page exists, I do no plan to explain the concepts of the Hexagonal Architecture once again.
 
 
 
@@ -254,17 +258,12 @@ Create an `adapters/` folder and add 2 concrete implementations of the previous 
 use crate::error::Result;
 use crate::ports;
 
+#[derive(Default)]
 pub struct ConsoleOutput;
 
 impl ConsoleOutput {
     pub fn new() -> Self {
         Self
-    }
-}
-
-impl Default for ConsoleOutput {
-    fn default() -> Self {
-        Self::new()
     }
 }
 
@@ -279,7 +278,7 @@ impl ports::GreetingWriter for ConsoleOutput {
 **Points of attention:**
 * No surprise, since this is an implementation of the `GreetingWriter` and since it is named `ConsoleOutput` it... Yes, it writes on the console.
 * Did you notice the `use crate::Result;` and `use crate::ports;` at the top of the file?
-* Did you notice that `.new()` and `.default()` returns `Self` with a capital 'S'?
+* Did you notice that `.new()` returns `Self` with a capital 'S'?
 
 
 
@@ -295,17 +294,12 @@ use std::io::{self, Write};
 use crate::error::Result;
 use crate::ports;
 
+#[derive(Default)]
 pub struct ConsoleInput;
 
 impl ConsoleInput {
     pub fn new() -> Self {
         Self
-    }
-}
-
-impl Default for ConsoleInput {
-    fn default() -> Self {
-        Self::new()
     }
 }
 
@@ -433,10 +427,13 @@ fn run_greeting_loop(
 
 **Points of attention:**
 * Up to now, in `main()` we were calling `domain::greet()` directly.
-* Now, we first instantiate an input and an output data types (`adapters`) which implement the traits defined in `ports.rs` (see the `let input = adapters::ConsoleInput::new();` for example)
-* Then we call `run_greeting_loop()` using references to the adapters (see the `&input` for example) as arguments
-* The signature of `run_greeting_loop()` shows that it accepts **ANY** reference to variable having the right trait (see the `input: &dyn ports::NameReader`).
-* Here we make it works with `ConsoleInput` and `ConsoleOutput` but it would work the same way with WebInput and StonesOutput if they had the expected traits.
+* Now, we first instantiate an input and an output data types (`adapters`) which implement the traits defined in `ports.rs`
+    * See the `let input = adapters::ConsoleInput::new();` for example
+* Then we call `run_greeting_loop()` using references to the adapters as arguments
+    * See the `&input` for example
+* The signature of `run_greeting_loop()` shows that it accepts **ANY** reference to variable having the right trait
+    * See the `input: &dyn ports::NameReader`
+* Here we make it works with `ConsoleInput` and `ConsoleOutput` but it would work the same way with WebInput and StonesOutput if they have the expected traits.
 * In the code above look for `.read_name()` and `.write_greeting()` and realize we don't really know on who they will be applied.
 
 
@@ -537,6 +534,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
     * In addition, the file `test/adapters_test.rs` host tests for the adapters using Mock implementations.
     * `tests/integration_test.rs` now use mock adapters
     * `tests/domain_test.rs` is not modified
+    * The source code of the test is available on [GitHub on this page](https://github.com/40tude/modular_monolith_tuto/tree/main/step_03).
 
 
 
@@ -576,6 +574,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Next Steps
+
+Next you can read [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}) but I would recommend to take a break.
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
