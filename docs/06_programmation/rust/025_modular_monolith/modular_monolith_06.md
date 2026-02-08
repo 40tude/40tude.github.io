@@ -655,11 +655,21 @@ Now go build something real. And if you have time, check out the [Bonus episode]
 </div>
 
 * The original paper about the [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture) from 2025.
-* [SOLID principles]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
-* The [Rust Design Patterns](https://rust-unofficial.github.io/patterns/) Book
 * Read [Clean Architecture](https://amzn.eu/d/069Sfh5P)
+* [SOLID principles]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
+* Read [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.fr/dp/0321503627) (still on my TODO list)
+* The [Rust Design Patterns](https://rust-unofficial.github.io/patterns/) Book
+* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Freely hosted on Heroku, may be slow at startup.
 * Read [Pragmatic programmer](https://amzn.eu/d/05VM572a). It cannot hurt.
-* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)?
+
+
+
+
+<figure style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j-VQCYP7wyw?si=AD7VbUucXEcX3AmV" frameborder="0" allowfullscreen></iframe>
+  <figcaption>Rust Error Handling - Best Practices</figcaption>
+</figure>
+
 
 
 <!--
