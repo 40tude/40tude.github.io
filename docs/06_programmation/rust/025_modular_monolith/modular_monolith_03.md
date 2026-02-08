@@ -680,7 +680,7 @@ There are more tests.
 <!-- ###################################################################### -->
 ## Next Steps
 
-Next you can read [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}) but I would recommend to take a break.
+Next you can read [Episode 04]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_04.md%}) but I would recommend to take a break because there is a kind of quantic jump between Episode 03 and Episode 04. Sleep well, see you tomorrow.
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files

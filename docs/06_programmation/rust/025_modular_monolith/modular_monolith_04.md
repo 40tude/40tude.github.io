@@ -806,7 +806,7 @@ If you read the `Cargo.toml` files of each crate and if you pay attention to the
 <!-- ###################################################################### -->
 ## Next Steps
 
-Next you can read [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}).
+Next you can read [Episode 05]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_05.md%}) but I'd recommend taking a break because Episode 05 is pretty dense. Nighty-night!
 
 * [Episode 00]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}): Introduction + Step 00 - First prototype working
 * [Episode 01]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_01.md%}): Step 01 - Split the source code in multiple files
