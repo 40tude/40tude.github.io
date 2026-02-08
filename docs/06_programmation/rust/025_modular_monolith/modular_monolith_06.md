@@ -609,6 +609,11 @@ Yes, really. And that was the point. I deliberately used the most trivial busine
 And if one day we realize that `adapter_console` needs to become a gRPC service running on its own server? We already have a crate with clean boundaries and a well-defined trait interface. We can extract it, put it behind a network call and the rest of the application doesn't even blink. That's the "best of both worlds" we talked about in the introduction: start as a monolith, scale out only when and *if*, we need to.
 
 
+### When NOT to use this architecture ?
+
+Typically, any kind of "Hello Word" kind of application. A small 200-line utility CLI does not need 6 crates. We are not working ESA nor NASA... To be clear: if the project fits in one file, leave it in one file."
+
+
 ### What Rust brings to the table
 
 We could have done this in any language. But Rust makes some of these patterns feel remarkably natural. Traits *are* ports. Crates *are* module boundaries with enforced visibility. The compiler won't let us accidentally depend on something we shouldn't. Where in other languages we would need discipline and code reviews to enforce architectural boundaries, in Rust (like in C++) the compiler does it for us. For free. Every time. It's like having an extremely picky but always-right architect sitting next to us.
@@ -649,7 +654,9 @@ Now go build something real. And if you have time, check out the [Bonus episode]
 <!-- <span></span> -->
 </div>
 
+* The original paper about the [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture) from 2025.
 * [SOLID principles]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
+* The [Rust Design Patterns](https://rust-unofficial.github.io/patterns/) Book
 * Read [Clean Architecture](https://amzn.eu/d/069Sfh5P)
 * Read [Pragmatic programmer](https://amzn.eu/d/05VM572a). It cannot hurt.
 * (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)?

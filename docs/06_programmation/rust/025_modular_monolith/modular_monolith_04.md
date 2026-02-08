@@ -284,13 +284,14 @@ fn main() -> Result<()> {
     // Create application service and run
     let service = GreetingService::new();
     service.run_greeting_loop(&input, &output)?;
-
+    println!("\nGoodbye!");
     Ok(())
 }
 ```
 
 **Points of attention:**
 * Above, note the `mod error;` and the `use error::Result;`
+* The `println!("\nGoodbye!");`
 
 
 
@@ -499,8 +500,7 @@ impl GreetingService {
             if name.eq_ignore_ascii_case("quit")
             || name.eq_ignore_ascii_case("exit")
             || name.eq_ignore_ascii_case("q!")
-        {
-                println!("\nGoodbye!");
+            {
                 break;
             }
 

@@ -179,7 +179,7 @@ edition = "2024"
 
 [[bin]]
 name = "step_02"
-path = "src/main.rs
+path = "src/main.rs"
 ```
 
 

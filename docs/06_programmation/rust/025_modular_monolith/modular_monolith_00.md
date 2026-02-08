@@ -35,7 +35,17 @@ A 7-project progression from Hello World to a fully decoupled, I/O-agnostic appl
 ## TL;DR
 {: .no_toc }
 
-* For beginners
+* For beginners who already wrote some Rust code
+* We start from a single `main.rs` that prints "Hello Buck." and end with a fully modular workspace where the business logic has no idea how it reads or writes
+* Each step compiles, runs, and passes its tests
+* Step 00: Working proof of concept (one file, everything mixed)
+* Step 01: Split into multiple files
+* Step 02: Proper `tests/` folder
+* Step 03: Hexagonal Architecture — ports (traits) and adapters (implementations)
+* Step 04: One crate per component (Cargo workspace)
+* Step 05: Improved error handling with `anyhow` & `thiserror`
+* Step 06: Add a file adapter to prove it all works. If the architecture is right, the domain doesn't change
+* Bonus: Improve the file adapter
 
 All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHub
 
@@ -137,6 +147,8 @@ By the last episode of this series, we will have built a "Hello World" applicati
 
 Now, before you roll your eyes and think "great, another architecture tutorial that overengineers a Hello World"... Yes. That's exactly what this is. And it's on purpose. The whole idea is to take the simplest possible problem — printing `Hello Buck.` — and use it as a vehicle to understand *why* and *how* we structure real applications. Because if you can't see the pattern on a trivial example, you certainly won't see it on a 50,000-line codebase. It is like physics or in mathematics. Rather than thinking in 13 dimension from start, it can be useful to think the problem in 1 or 2 dimensions first.
 
+In addition, just to make sure we are in sync... If your current project consists of 200 LOC in a single `main.rs` file, yes your app is a monolith but no, you don't need an Hexagonal Architecture this would be ridiculous and overkill.
+
 
 ### Nothing new under the sun
 
@@ -180,7 +192,7 @@ We'll go through 7 steps, each building on the previous one:
 By the end of the series, not only our "Hello World" application will be completely independent from its I/O but, cherry on the cake we will truely and deeply understand what the following diagram means:
 
 <div align="center">
-<img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
