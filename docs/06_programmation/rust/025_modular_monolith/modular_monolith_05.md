@@ -301,17 +301,22 @@ pub trait GreetingWriter {
 
 **Points of attention:**
 
-**Important.** Look at the figure below. My understanding is as follow:
-* when an adapter report an error this is an error from the "outside world", the infrastructure (file missing, network error...).
+**Important.** Look at the figure below:
+
+<div align="center">
+<img src="./assets/img11.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
+My understanding is as follow:
+* when an adapter reports an error this is an error from the "outside world", the infrastructure (file missing, network error...).
 * We don't know and we cannot know them all at compile time (today the input come from UDP, tomorrow it will come from a keyboard...).
 * This is why a trait for infrastructure errors is defined (see `InfraError`). In fact, `InfraError` is a contract that the `domain` imposes on the adapters: "if you want to report an infra error to me, implement this feature."
+* Here in the code `as_any()` returns `self` as `Any`. Later, this will allow downcasting from abstract object to concrete types.
 * Once `InfraError` is defined the new signature of `read_name` and `write_greeting` explains that, on error, they will return `Box<dyn InfraError>`
 
 
-<div align="center">
-<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
-<!-- <span>Optional comment</span> -->
-</div>
 
 
 
