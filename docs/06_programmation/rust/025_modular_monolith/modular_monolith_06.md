@@ -575,22 +575,52 @@ Goodbye!
 
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+
 <div align="center">
 <img src="./assets/img08.webp" alt="" width="450" loading="lazy"/><br/>
 <span></span>
 </div>
 
+## Conclusion of the Series
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Conclusion
+Let's take a step back and look at what just happened.
 
-<!--
-* Avoid overthinking. Move forward, write code. Then study how to make your code easier to change. Otherwise, the risk is to "conceptualize the concept" and never actually add features to your application.
--->
+We started this series with everything in a single `main.rs`: business logic, I/O, error handling, tests... Seven steps later, we have a Cargo workspace with independent crates where the domain doesn't know (and doesn't care) whether it's talking to a console, a file, or anything else. And we just proved it: adding `adapter_file` required zero changes to the domain, zero changes to the application layer, and a couple of lines in `main.rs`. That's the whole promise of hexagonal architecture, delivered.
+
+But here's what I really want us to take away from this series.
 
 
+### The architecture is not the goal
+
+The goal is to write software that is **easy to change**. The hexagonal architecture, the ports, the adapters, the crates are just tools to get there. If we find ourself spending more time drawing diagrams than writing code, something has gone wrong. The risk, especially when we discover these patterns for the first time, is to "conceptualize the concept" and never actually ship features. We should'nt fall into that trap.
+
+My advice: start simple but start. Write code that works. *Then* look at it and ask yourself: "If I need to change the way I read input tomorrow, how much code do I have to touch?" If the answer is "everything," it's time to refactor. If the answer is "just one adapter," you're in good shape. Here [SOLID principles]({%link docs/06_programmation/rust/022_solid/solid_00.md%}) can help.
+
+
+### A "Hello World", really?
+
+Yes, really. And that was the point. I deliberately used the most trivial business logic imaginable so that the architecture itself could be the focus. In a real project, replace `greet()` with your actual domain: pricing calculations, sensor data processing, booking workflows, whatever... The structure holds. The domain crate gets bigger, we might add more ports, more adapters, but the *shape* of the application remains the same.
+
+And if one day we realize that `adapter_console` needs to become a gRPC service running on its own server? We already have a crate with clean boundaries and a well-defined trait interface. We can extract it, put it behind a network call and the rest of the application doesn't even blink. That's the "best of both worlds" we talked about in the introduction: start as a monolith, scale out only when and *if*, we need to.
+
+
+### What Rust brings to the table
+
+We could have done this in any language. But Rust makes some of these patterns feel remarkably natural. Traits *are* ports. Crates *are* module boundaries with enforced visibility. The compiler won't let us accidentally depend on something we shouldn't. Where in other languages we would need discipline and code reviews to enforce architectural boundaries, in Rust (like in C++) the compiler does it for us. For free. Every time. It's like having an extremely picky but always-right architect sitting next to us.
+
+
+### One last thing
+
+If you've followed along and built each step yourself (not just read the code, but actually typed it, ran `cargo test`, fixed the errors) then you should have a mental model that will serve you well far beyond this "Hello World" app. The next time you start a project, you'll instinctively think about where the boundaries should be. And that's worth more than any architecture book.
+
+<!-- Speaking of which — if you want to go deeper, the [Webliography](#webliography) below has some solid starting points. -->
+
+Now go build something real. And if you have time, check out the [Bonus episode]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}) where we improve `adapter_file` to handle multiple names — because there's always one more thing to tweak.
 
 
 
@@ -603,23 +633,30 @@ Goodbye!
 
 
 
-<div align="center">
-<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/><br/>
-<span></span>
-</div>
+
+
+
+
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
-* link_00
+
+<div align="center">
+<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span></span> -->
+</div>
+
+* [SOLID principles]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
+* Read [Clean Architecture](https://amzn.eu/d/069Sfh5P)
+* Read [Pragmatic programmer](https://amzn.eu/d/05VM572a). It cannot hurt.
+* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)?
 
 
 <!--
-Clean Architecture
-Pragmatic programmer
-Lien sur flashcards? https://rust-deck-befcc06ba7fa.herokuapp.com/practice
+
 -->
 
 <!-- <div align="center">

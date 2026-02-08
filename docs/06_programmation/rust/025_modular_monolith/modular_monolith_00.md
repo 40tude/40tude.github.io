@@ -124,10 +124,75 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 <!-- ###################################################################### -->
 ## Introduction
 
-<!--
-* Components vs Plugins
-* More comments in the repo
--->
+<!-- * Components vs Plugins
+* More comments in the repo -->
+
+
+
+
+
+Let me start from the end so you know where we're heading.
+
+By the last episode of this series, we will have built a "Hello World" application that is **completely independent from its I/O**. Read that again. The business logic — the part that decides what greeting to produce — will have absolutely no idea whether it's reading a name from the console, from a file, from a TCP socket, or from a carrier pigeon with a USB stick taped to its leg. It won't know. It won't care. And that's exactly the point.
+
+Now, before you roll your eyes and think "great, another architecture tutorial that overengineers a Hello World"... Yes. That's exactly what this is. And it's on purpose. The whole idea is to take the simplest possible problem — printing `Hello Buck.` — and use it as a vehicle to understand *why* and *how* we structure real applications. Because if you can't see the pattern on a trivial example, you certainly won't see it on a 50,000-line codebase. It is like physics or in mathematics. Rather than thinking in 13 dimension from start, it can be useful to think the problem in 1 or 2 dimensions first.
+
+
+### Nothing new under the sun
+
+Here's the thing: modular monoliths are not a new idea. Not even close. Like fashion, software architecture is an eternal cycle of rediscovery.
+
+Back in the **1990s**, with Turbo C or Borland C++, we were already doing modular development. You'd pick a graphics library here, a math library there, link everything together, and produce a single `.exe`. One binary, multiple components. Sound familiar?
+
+Then came the **2000s** and the era of dynamic loading. DLLs, COM, ActiveX — the idea was to build plugin architectures. Our application was still one process, but it could load and unload components at runtime. Flexibility was the buzzword.
+
+Then we went *distributed*. The application itself was shattered across multiple machines. SOA, then microservices. Each piece running on its own server, communicating over the network. The promise was scalability and independent deployment. The reality was... well, let's just say distributed debugging at 3 AM is a special kind of fun.
+
+In **2005**, Alistair Cockburn formalized [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/) (also known as "Ports and Adapters"). He didn't invent the underlying ideas. Good developers had been separating concerns for decades. However he gave us a clear **vocabulary** and well-defined **responsibilities**. Ports, adapters, domain, application layer... Suddenly we had words to describe what we'd been doing (or should have been doing) all along.
+
+And now, in the **2020s**, the pendulum is swinging back. Modular monoliths are trendy again, and for good reason. The insight is simple: if your application is properly modular from day one, you get the best of both worlds. You start as a monolith: fast to develop, easy to deploy, simple to debug. Later, *if and when you actually need it*, you can extract any module into its own service running on a separate server. The key word being "if". Because most applications never need microservices and because not all of us have to solve the problems that Amazon, Nefilx, Google have. However, all applications need clean boundaries.
+
+So that's what this series is about. We'll take a simple Rust project and, step by step, refactor it into a modular monolith following hexagonal architecture principles. By the end, swapping the console for a file adapter (or anything else) will be a matter of changing a couple of lines in `main.rs`.
+
+
+### What you need before starting
+
+This series is aimed at beginners. That said, you should have:
+* Written some Rust code already (you've been through at least half of [The Rust Programming Language](https://doc.rust-lang.org/book/) aka TRPL)
+* A working Rust toolchain (`cargo`, `rustc`)
+* VSCode (or your editor of choice)
+* A terminal and some basic comfort with the command line (create a folder, copy a file...)
+
+
+### The road ahead
+
+We'll go through 7 steps, each building on the previous one:
+
+* **Step 00** — Build a working proof of concept. Everything in one file. It works, it's ugly, it's fine.
+* **Step 01** — Split the code into multiple files. Same behavior, better organization.
+* **Step 02** — Move the tests into a proper `tests/` folder.
+* **Step 03** — Introduce Hexagonal Architecture: ports (traits) and adapters (implementations).
+* **Step 04** — Promote each component to its own crate within a Cargo workspace.
+* **Step 05** — Replace our homemade error types with `anyhow` and `thiserror`.
+* **Step 06** — Add a file adapter to prove the architecture works. Plus a conclusion.
+* **Bonus** — Extra insights, things to explore next.
+
+By the end of the series, not only our "Hello World" application will be completely independent from its I/O but, cherry on the cake we will truely and deeply understand what the following diagram means:
+
+<div align="center">
+<img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+Again, don't worry, at every step, we keep the application running and the tests passing. No big-bang refactor. No "trust me, it'll work at the end." Each step compiles, runs, and is tested. That's the deal.
+
+Alright, let's get started, let's print "Hello World!" again.
+
+<div align="center">
+<img src="./assets/img14.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
 
 
 
