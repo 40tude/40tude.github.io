@@ -731,19 +731,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 ```powershell
 cargo run
-   Compiling domain v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_04\crates\domain)
-   Compiling adapter_console v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_04\crates\adapter_console)
-   Compiling application v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_04\crates\application)
-   Compiling integration_tests v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_04\crates\integration_tests)
-   Compiling app v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_04\crates\app)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.04s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
      Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_04\debug\step_04.exe`
 === Greeting Service (Step 04 - Modular Monolith & Hexagonal Architecture) ===
 Enter a name to greet (or 'quit' to exit):
 
 > James HOLDEN
 Hello James HOLDEN.
-
 > quit
 
 Goodbye!

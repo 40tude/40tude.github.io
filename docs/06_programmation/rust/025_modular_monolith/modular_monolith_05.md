@@ -824,14 +824,14 @@ Below is the output with the loop use case:
 
 ```powershell
 cargo run
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+   Compiling app v0.1.0 (C:\Users\phili\OneDrive\Documents\Programmation\rust\01_xp\046_modular_monolith\step_05\crates\app)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.42s
      Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_05\debug\step_05.exe`
 === Greeting Service (Step 05 - Modular Monolith & Hexagonal Architecture) ===
 Enter a name to greet (or 'quit' to exit):
 
 > Marcel
 Hello Marcel.
-
 >
 Error: Name cannot be empty
 

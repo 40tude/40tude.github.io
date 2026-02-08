@@ -507,14 +507,10 @@ warning: unused imports: `ConsoleInput` and `ConsoleOutput`
   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 warning: `app` (bin "step_07") generated 1 warning (run `cargo fix --bin "step_07" -p app` to apply 1 suggestion)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
      Running `C:/Users/phili/rust_builds/Documents/Programmation/rust/01_xp/046_modular_monolith/step_07\debug\step_07.exe`
 === Greeting Service (Step 07 - File Adapter Demo) ===
-
-
 Error: Name cannot be empty
-
-
 
 
 Goodbye!
@@ -536,7 +532,7 @@ Hello Alice.
 
 **Points of attention:**
 * Do not worry about the warnings. This is because we don't use `ConsoleInput` nor `ConsoleOutput` in this version of `main()`.
-* The error due to the empty line in `input.txt` is reported on screen.
+* The error due to the empty line in `input.txt` is reported on error console (the screen here).
 * The other greetings are stored in the `output.txt` file.
 * As in `step 06` we can mix adapters (file, console) and use case (once, loop).
 
