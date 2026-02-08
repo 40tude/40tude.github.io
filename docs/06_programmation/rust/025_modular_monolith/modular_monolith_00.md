@@ -20,9 +20,9 @@ A 7-project progression from Hello World to a fully decoupled, I/O-agnostic appl
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
