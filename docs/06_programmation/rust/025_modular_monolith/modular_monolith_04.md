@@ -162,6 +162,12 @@ Think about it. As the application grows, we'd like to compile components indepe
 Creating crates is not difficult per se. We need to be accurate with dependencies, visibility of types and methods, and the wiring in Cargo.toml. Think of it as a game. A game where we're putting the plumbing in place to connect every room of the house. It's not Mario Kart. Just pipes.
 
 
+The figure below illustrates the build process we want to have at the end of this episode. On the left-hand side, we have the ingredients: `app`, whose target is a binary (`[[bin]]`), and then `domain`, `adapter_console`, and `application`, which are all Rust libraries (`.rlib`). The dashed arrows show the dependencies between components: `app` depends on `application` and `adapter_console`, while both `application` and `adapter_console` depend on `domain`. And domain? It depends on no one. On the right-hand side, the build system combines all these ingredients into a single, standalone executable.
+
+<div align="center">
+<img src="./assets/img16.webp" alt="" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 
@@ -793,7 +799,6 @@ If you read the `Cargo.toml` files of each crate and if you pay attention to the
 * `application` depends on `domain`
 * `adapters` depends on `domain`
 * `domain` depends on nobody
-
 
 
 
