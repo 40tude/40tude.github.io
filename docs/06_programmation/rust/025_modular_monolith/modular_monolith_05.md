@@ -355,7 +355,7 @@ pub use ports::{GreetingWriter, InfraError, NameReader};
 ```
 
 **Points of attention:**
-* The reason why `InfraError` and `NameReaderError` are re-exported here is to "hide" the name "ports" so that in the input module of the `adapter_console` crate we will write `use domain::{NameReader, NameReaderError}` instead of `use domain::{NameReader, ports::NameReaderError};`. Yes, I know, this somewhat contradict what I said in [Step 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}#librs) but we have to be pragmatic.
+* The reason why `GreetingWriter`, `InfraError` and `NameReader` are re-exported here is to "hide" the name "ports" so that in the input module of the `adapter_console` crate we will write `use domain::{NameReader, InfraError}` instead of `use domain::{NameReader, ports::InfraError};`. Yes, I know, this somewhat contradict what I said in [Step 02]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_02.md%}#librs) but we have to be pragmatic.
 
 
 
@@ -675,10 +675,17 @@ impl From<Box<dyn InfraError>> for ApplicationError {
 * At the very end we implement `From` in order to convert an `InfraError` into an `ApplicationError`
 
 
+If we focus our attention solely on the flow followed by the different types of errors, we can summarize the situation with the following mental model:
+
+<figure style="text-align: center;">
+<img src="./assets/img17.webp" alt="" width="900" loading="lazy"/>
+<figcaption>Arrows 1 and 3 carry <code>InfraError</code> (from the adapters), arrow 2 carries <code>DomainError</code> (from the business logic), and arrow 4 carries <code>ApplicationError</code> which wraps either one.</figcaption>
+</figure>
 
 
 
-Let's see how the new use case looks like in `greeting_service.rs`:
+
+Now, let's see how the new use case looks like in `greeting_service.rs`:
 
 ```rust
 use crate::errors::Result;
@@ -738,6 +745,7 @@ impl GreetingService {
 **Points of attention:**
 * Thanks to the `?` operator at the end of each line, the `run_greeting_once()` use case is deceptively straightforward. However we should not forget this ease of reading come from all the conversion of error types that take place behind the scene.
 * Note how in order to demonstrate how errors bulbe-up, in `run_greeting_loop` I removed the `if name.is_empty(){...}` block of code and handle the errors returned by `domain::greet()` (here we just print the error and continue)
+
 
 
 
