@@ -656,7 +656,8 @@ Now go build something real. And if you have time, check out the [Bonus episode]
 
 * The original paper about the [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture) from 2025.
 * Read [Clean Architecture](https://amzn.eu/d/069Sfh5P)
-* [SOLID principles]({%link docs/06_programmation/rust/022_solid/solid_00.md%})
+* [SOLID principles in Rust:]({%link docs/06_programmation/rust/022_solid/solid_00.md%}) A Practical Guide
+* [Hexagonal Architecture in Rust:]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) A Beginner’s Guide
 * Read [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.fr/dp/0321503627) (still on my TODO list)
 * The [Rust Design Patterns](https://rust-unofficial.github.io/patterns/) Book
 * (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Freely hosted on Heroku, may be slow at startup.
