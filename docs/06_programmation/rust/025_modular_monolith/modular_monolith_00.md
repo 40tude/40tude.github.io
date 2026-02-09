@@ -145,9 +145,13 @@ Let me start from the end so you know where we're heading.
 
 By the last episode of this series, we will have built a "Hello World" application that is **completely independent from its I/O**. Read that again. The business logic, the part that decides what greeting to produce, will have absolutely no idea whether it's reading a name from the console, from a file, from a TCP socket, or from a carrier pigeon with a USB stick taped to its leg. It won't know. It won't care. And that's exactly the point.
 
-Now, before you roll your eyes and think "great, another architecture tutorial that overengineers a Hello World"... Yes. That's exactly what this is. And it's on purpose. The whole idea is to take the simplest possible problem (printing `Hello Buck.`) and use it as a vehicle to understand *why* and *how* we structure real applications. Because if you can't see the pattern on a trivial example, you certainly won't see it on a 50,000-line codebase. It is like physics or in mathematics. Rather than thinking in 13 dimension from start, it can be useful to think the problem in 1 or 2 dimensions first.
+Now, before you roll your eyes and think "great, another architecture tutorial that overengineers a Hello World"... Yes. That's exactly what this is. And it's on purpose. The whole idea is to take the simplest possible problem (printing `Hello Buck.`) and use it as a vehicle to understand *why* and *how* we structure real applications. Because if you can't see the pattern on a trivial example, you certainly won't see it on a 50_000-line codebase. It is like physics or in mathematics. Rather than thinking in 13 dimensions from start, it can be smart to think the problem in 1 or 2 dimensions first.
 
-In addition, just to make sure we are in sync... If your current project consists of 200 LOC in a single `main.rs` file, yes your app is a monolith but no, you don't need an Hexagonal Architecture this would be ridiculous and overkill.
+
+In addition, just to make sure we’re in sync: if your current project consists of 200 lines of code in a single `main.rs` file, then yes, your app is a monolith, but no, you do *not* need a Hexagonal Architecture. That would be ridiculous and overkill. Tune it, improve it, keep it small and efficient. That’s perfectly fine.
+
+However, if in another project you have more than one file, you start realizing that modifying this impacts that, and you begin to *feel* like your code looks like the Leaning Tower of Pisa… Then it might be a good idea to stop, grab a green tea, read the series, and ideally rewrite, break, and repair the code we’ll be discussing.
+
 
 
 ### Nothing new under the sun
@@ -156,13 +160,19 @@ Here's the thing: modular monoliths are not a new idea. Not even close. Like fas
 
 Back in the **1990s**, with Turbo C or Borland C++, we were already doing modular development. You'd pick a graphics library here, a math library there, link everything together, and produce a single `.exe`. One binary, multiple components. Sound familiar?
 
+<div align="center">
+<img src="./assets/img15.webp" alt="" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+
 Then came the **2000s** and the era of dynamic loading. DLLs, COM, ActiveX... The idea was to build plugin architectures where our application was still one process, but it could load and unload components at runtime. Flexibility was the buzzword.
 
 Then we went *distributed*. The application itself was shattered across multiple machines. SOA, then microservices. Each piece running on its own server, communicating over the network. The promise was scalability and independent deployment. The reality was... well, let's just say distributed debugging at 3 AM is a special kind of fun.
 
 In **2005**, Alistair Cockburn formalized [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/) (also known as "Ports and Adapters"). He didn't invent the underlying ideas. Good developers had been separating concerns for decades. However he gave us a clear **vocabulary** and well-defined **responsibilities**. Ports, adapters, domain, application layer... Suddenly we had words to describe what we'd been doing (or should have been doing) all along.
 
-And now, in the **2020s**, the pendulum is swinging back. Modular monoliths are trendy again, and for good reason. The insight is simple: if your application is properly modular from day one, you get the best of both worlds. You start as a monolith: fast to develop, easy to deploy, simple to debug. Later, *if and when you actually need it*, you can extract any module into its own service running on a separate server. The key word being "if". Because most applications never need microservices and because not all of us have to solve the problems that Amazon, Nefilx, Google have. However, all applications need clean boundaries.
+And now, in the **2020s**, the pendulum is swinging back. Modular monoliths are trendy again, and for good reason. The insight is simple: if our application is properly modular from day one, we get the best of both worlds. We start as a monolith: fast to develop, easy to deploy, simple to debug. Later, *if and when we actually need it*, we can extract any module into its own service running on a separate server. The key word being "if". Because most applications never need microservices because most of us don't have to solve the problems that Amazon, Netflix and firends have. However, all applications need clean boundaries.
 
 So that's what this series is about. We'll take a simple Rust project and, step by step, refactor it into a modular monolith following hexagonal architecture principles. By the end, swapping the console for a file adapter (or anything else) will be a matter of changing a couple of lines in `main.rs`.
 
@@ -173,7 +183,7 @@ This series is aimed at beginners. That said, you should have:
 * Written some Rust code already (you've been through at least half of [The Rust Programming Language](https://doc.rust-lang.org/book/) aka TRPL)
 * A working Rust toolchain (`cargo`, `rustc`)
 * VSCode (or your editor of choice)
-* A terminal and some basic comfort with the command line (create a folder, copy a file...)
+* A terminal and some basic comfort with the command line (create a folder, copy a file. In addition I will provide the Powershell commands)
 
 
 ### The road ahead
@@ -189,7 +199,7 @@ We'll go through 7 steps, each building on the previous one:
 * **Step 06:** Add a file adapter to prove the architecture works
 * **Bonus:** Fix an error in the API design.
 
-By the end of the series, not only our "Hello World" application will be completely independent from its I/O but, cherry on the cake we will truely and deeply understand what the following diagram means:
+By the end of the series, not only our "Hello World" application will be completely independent from its I/O but, cherry on the cake we will truly and deeply understand what the following kind of diagram means:
 
 <div align="center">
 <img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
