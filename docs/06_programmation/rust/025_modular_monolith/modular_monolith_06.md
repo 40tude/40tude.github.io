@@ -625,7 +625,7 @@ If you've followed along and built each step yourself (not just read the code, b
 
 <!-- Speaking of which — if you want to go deeper, the [Webliography](#webliography) below has some solid starting points. -->
 
-Now go build something real. And if you have time, check out the [Bonus episode]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}) where we improve `adapter_file` to handle multiple names — because there's always one more thing to tweak.
+Now go build something real. And if you have time, check out the [Bonus episode]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_07.md%}) where we improve `adapter_file` to handle multiple names (there's always one more thing to tweak).
 
 
 
