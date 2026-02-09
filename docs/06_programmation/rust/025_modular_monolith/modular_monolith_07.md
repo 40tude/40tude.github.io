@@ -554,7 +554,7 @@ Hello Alice.
 The organization of the application looks like:
 
 <div align="center">
-<img src="./assets/img12.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img12.webp" alt="Expanded hexagonal architecture diagram demonstrating modularity by adding FileInput and FileOutput adapters to existing console ports without changing the core domain" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 

@@ -202,7 +202,7 @@ We'll go through 7 steps, each building on the previous one:
 By the end of the series, not only our "Hello World" application will be completely independent from its I/O but, cherry on the cake we will truly and deeply understand what the following kind of diagram means:
 
 <div align="center">
-<img src="./assets/img12.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img12.webp" alt="Expanded hexagonal architecture diagram demonstrating modularity by adding FileInput and FileOutput adapters to existing console ports without changing the core domain" width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 

@@ -165,7 +165,7 @@ Creating crates is not difficult per se. We need to be accurate with dependencie
 The figure below illustrates the build process we want to have at the end of this episode. On the left-hand side, we have the ingredients: `app`, whose target is a binary (`[[bin]]`), and then `domain`, `adapter_console`, and `application`, which are all Rust libraries (`.rlib`). The dashed arrows show the dependencies between components: `app` depends on `application` and `adapter_console`, while both `application` and `adapter_console` depend on `domain`. And domain? It depends on no one. On the right-hand side, the build system combines all these ingredients into a single, standalone executable.
 
 <div align="center">
-<img src="./assets/img16.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img16.webp" alt="Technical workflow showing the compilation of multiple Rust crates (domain, adapters, application) into rlib files, which are then aggregated into a single final executable file." width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -773,7 +773,7 @@ Goodbye!
 At this point, the organization looks like:
 
 <div align="center">
-<img src="./assets/img11.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img11.webp" alt="Hexagonal architecture diagram featuring a central domain and application layer surrounded by ports for ConsoleInput and ConsoleOutput adapters." width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -791,7 +791,7 @@ At this point, the organization looks like:
 If you read the `Cargo.toml` files of each crate and if you pay attention to the dependencies section you should draw a graph similar to the one below:
 
 <div align="center">
-<img src="./assets/img10.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img10.webp" alt="A diagram showing the relationship between the domain, ports, application components, and the main entry point, illustrating how traits define actions on domain objects." width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 

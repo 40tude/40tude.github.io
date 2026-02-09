@@ -678,7 +678,7 @@ Now go build something real. And if you have time, check out the [Bonus episode]
 -->
 
 <!-- <div align="center">
-<img src="./assets/img99.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img99.webp" alt="" width="450" loading="lazy"/><br/>
 <span></span>
 </div> -->
 

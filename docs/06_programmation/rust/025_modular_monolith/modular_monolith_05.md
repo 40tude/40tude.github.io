@@ -304,7 +304,7 @@ pub trait GreetingWriter {
 **Important.** Look at the figure below:
 
 <div align="center">
-<img src="./assets/img11.webp" alt="" width="450" loading="lazy"/><br/>
+<img src="./assets/img11.webp" alt="Hexagonal architecture diagram featuring a central domain and application layer surrounded by ports for ConsoleInput and ConsoleOutput adapters." width="450" loading="lazy"/><br/>
 <!-- <span>Optional comment</span> -->
 </div>
 
@@ -678,7 +678,7 @@ impl From<Box<dyn InfraError>> for ApplicationError {
 If we focus our attention solely on the flow followed by the different types of errors, we can summarize the situation with the following mental model:
 
 <figure style="text-align: center;">
-<img src="./assets/img17.webp" alt="" width="900" loading="lazy"/>
+<img src="./assets/img17.webp" alt="Error handling flow in a modular architecture, showing how specific Infrastructure and Domain errors are mapped and encapsulated into a unified ApplicationError." width="450" loading="lazy"/>
 <figcaption>Arrows 1 and 3 carry <code>InfraError</code> (from the adapters), arrow 2 carries <code>DomainError</code> (from the business logic), and arrow 4 carries <code>ApplicationError</code> which wraps either one.</figcaption>
 </figure>
 
