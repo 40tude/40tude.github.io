@@ -154,9 +154,12 @@ step_04
                 integration_test.rs
 ```
 
+If we were in the Alps, Episode 04 would be rated as a Blue run, and that's not for nothing. So take a step back, breathe, and look at the folder hierarchy we're about to build.
+In Step 03, life was easy: most files lived in the same src/ folder, we had one subfolder for the console adapter, and everything compiled as a single crate. Convenient, sure, but not sustainable in the long run.
 
+Think about it. As the application grows, we'd like to compile components independently: if I'm working on adapter_console, I shouldn't have to recompile the domain every time. Same thing for tests: running `cargo test -p domain` and knowing that only domain tests are executed is a real productivity win. And there's one more reason: promoting modules to crates makes it trivial to reuse them in other projects, or even publish them on crates.io someday.
 
-
+Creating crates is not difficult per se. We need to be accurate with dependencies, visibility of types and methods, and the wiring in Cargo.toml. Think of it as a game. A game where we're putting the plumbing in place to connect every room of the house. It's not Mario Kart. Just pipes.
 
 
 
