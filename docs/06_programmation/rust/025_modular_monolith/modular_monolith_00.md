@@ -41,7 +41,7 @@ A 7-project progression from Hello World to a fully decoupled, I/O-agnostic appl
 * Step 00: Working proof of concept (one file, everything mixed)
 * Step 01: Split into multiple files
 * Step 02: Proper `tests/` folder
-* Step 03: Hexagonal Architecture — ports (traits) and adapters (implementations)
+* Step 03: Hexagonal Architecture: ports (traits) and adapters (implementations)
 * Step 04: One crate per component (Cargo workspace)
 * Step 05: Improved error handling with `anyhow` & `thiserror`
 * Step 06: Add a file adapter to prove it all works. If the architecture is right, the domain doesn't change
@@ -143,9 +143,9 @@ All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHu
 
 Let me start from the end so you know where we're heading.
 
-By the last episode of this series, we will have built a "Hello World" application that is **completely independent from its I/O**. Read that again. The business logic — the part that decides what greeting to produce — will have absolutely no idea whether it's reading a name from the console, from a file, from a TCP socket, or from a carrier pigeon with a USB stick taped to its leg. It won't know. It won't care. And that's exactly the point.
+By the last episode of this series, we will have built a "Hello World" application that is **completely independent from its I/O**. Read that again. The business logic, the part that decides what greeting to produce, will have absolutely no idea whether it's reading a name from the console, from a file, from a TCP socket, or from a carrier pigeon with a USB stick taped to its leg. It won't know. It won't care. And that's exactly the point.
 
-Now, before you roll your eyes and think "great, another architecture tutorial that overengineers a Hello World"... Yes. That's exactly what this is. And it's on purpose. The whole idea is to take the simplest possible problem — printing `Hello Buck.` — and use it as a vehicle to understand *why* and *how* we structure real applications. Because if you can't see the pattern on a trivial example, you certainly won't see it on a 50,000-line codebase. It is like physics or in mathematics. Rather than thinking in 13 dimension from start, it can be useful to think the problem in 1 or 2 dimensions first.
+Now, before you roll your eyes and think "great, another architecture tutorial that overengineers a Hello World"... Yes. That's exactly what this is. And it's on purpose. The whole idea is to take the simplest possible problem (printing `Hello Buck.`) and use it as a vehicle to understand *why* and *how* we structure real applications. Because if you can't see the pattern on a trivial example, you certainly won't see it on a 50,000-line codebase. It is like physics or in mathematics. Rather than thinking in 13 dimension from start, it can be useful to think the problem in 1 or 2 dimensions first.
 
 In addition, just to make sure we are in sync... If your current project consists of 200 LOC in a single `main.rs` file, yes your app is a monolith but no, you don't need an Hexagonal Architecture this would be ridiculous and overkill.
 
@@ -156,7 +156,7 @@ Here's the thing: modular monoliths are not a new idea. Not even close. Like fas
 
 Back in the **1990s**, with Turbo C or Borland C++, we were already doing modular development. You'd pick a graphics library here, a math library there, link everything together, and produce a single `.exe`. One binary, multiple components. Sound familiar?
 
-Then came the **2000s** and the era of dynamic loading. DLLs, COM, ActiveX — the idea was to build plugin architectures. Our application was still one process, but it could load and unload components at runtime. Flexibility was the buzzword.
+Then came the **2000s** and the era of dynamic loading. DLLs, COM, ActiveX... The idea was to build plugin architectures where our application was still one process, but it could load and unload components at runtime. Flexibility was the buzzword.
 
 Then we went *distributed*. The application itself was shattered across multiple machines. SOA, then microservices. Each piece running on its own server, communicating over the network. The promise was scalability and independent deployment. The reality was... well, let's just say distributed debugging at 3 AM is a special kind of fun.
 
@@ -180,14 +180,14 @@ This series is aimed at beginners. That said, you should have:
 
 We'll go through 7 steps, each building on the previous one:
 
-* **Step 00** — Build a working proof of concept. Everything in one file. It works, it's ugly, it's fine.
-* **Step 01** — Split the code into multiple files. Same behavior, better organization.
-* **Step 02** — Move the tests into a proper `tests/` folder.
-* **Step 03** — Introduce Hexagonal Architecture: ports (traits) and adapters (implementations).
-* **Step 04** — Promote each component to its own crate within a Cargo workspace.
-* **Step 05** — Replace our homemade error types with `anyhow` and `thiserror`.
-* **Step 06** — Add a file adapter to prove the architecture works. Plus a conclusion.
-* **Bonus** — Extra insights, things to explore next.
+* **Step 00:** Build a working proof of concept. Everything in one file. It works, it's ugly, it's fine.
+* **Step 01:** Split the code into multiple files. Same behavior, better organization.
+* **Step 02:** Move the tests into a proper `tests/` folder.
+* **Step 03:** Introduce Hexagonal Architecture: ports (traits) and adapters (implementations).
+* **Step 04:** Promote each component to its own crate within a Cargo workspace.
+* **Step 05:** Replace our homemade error types with `anyhow` and `thiserror`.
+* **Step 06:** Add a file adapter to prove the architecture works
+* **Bonus:** Fix an error in the API design.
 
 By the end of the series, not only our "Hello World" application will be completely independent from its I/O but, cherry on the cake we will truely and deeply understand what the following diagram means:
 
