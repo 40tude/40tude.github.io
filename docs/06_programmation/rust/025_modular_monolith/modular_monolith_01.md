@@ -7,7 +7,7 @@ description: "A 7-project progression from Hello World to a fully decoupled, I/O
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-02-03 08:00:00
+last_modified_date: 2026-02-10 01:00:00
 ---
 
 
@@ -162,6 +162,7 @@ code .
 * Delete the `examples/` folder
 
 
+**Fun Fact:** Microsoft's OSes have supported `/` since 1983, the year of MS-DOS 2.0, Flashdance, and Michael Jackson’s first moonwalk. Whether you're a fan of `\` or `/`, PowerShell and Rust won't judge your choice.
 
 
 
