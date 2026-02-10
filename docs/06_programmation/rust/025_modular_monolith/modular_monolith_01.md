@@ -165,6 +165,11 @@ code .
 **Fun Fact:** Microsoft's OSes have supported `/` since 1983, the year of MS-DOS 2.0, Flashdance, and Michael Jackson’s first moonwalk. Whether you're a fan of `\` or `/`, PowerShell and Rust won't judge your choice.
 
 
+<div align="center">
+<img src="./assets/img18.webp" alt="Earth Wind & Fire, 1983, Electric Universe" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
