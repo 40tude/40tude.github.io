@@ -7,7 +7,7 @@ description: "A 7-project progression from Hello World to a fully decoupled, I/O
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-02-03 08:00:00
+last_modified_date: 2026-02-10 08:00:00
 ---
 
 
@@ -786,7 +786,7 @@ Goodbye!
 <!-- ###################################################################### -->
 ### Example 06
 
-On this excellent [Web site](https://www.40tude.fr/docs/06_programmation/rust/), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). When this is done, copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
+On this excellent [Web site](https://www.40tude.fr/rust), read again this page about [errors]({%link docs/06_programmation/rust/016_errors/errors_06.md%}). When this is done, copy `ex05.rs` into `ex06.rs` and modify the code in consequence:
 
 ```rust
 use std::io::{self, Write};
