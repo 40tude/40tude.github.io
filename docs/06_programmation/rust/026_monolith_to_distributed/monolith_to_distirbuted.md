@@ -40,7 +40,7 @@ A hands-on journey through small, working projects to understand whenâ€”and whyâ
 
 
 **Note**
-The [companion project](https://github.com/40tude/mono_to_distributed) with all the workspaces is available on GitHub
+The [companion project](https://github.com/40tude/mono_to_distributed) with is available on GitHub
 
 
 
@@ -113,4 +113,4 @@ The [companion project](https://github.com/40tude/mono_to_distributed) with all 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
-* ...
+* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phone. It is hosted for free on Heroku and may be slow to startup.

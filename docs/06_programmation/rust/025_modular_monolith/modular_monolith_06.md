@@ -660,7 +660,7 @@ Now go build something real. And if you have time, check out the [Bonus episode]
 * [Hexagonal Architecture in Rust:]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) A Beginner’s Guide
 * Read [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.fr/dp/0321503627) (still on my TODO list)
 * The [Rust Design Patterns](https://rust-unofficial.github.io/patterns/) Book
-* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? It is hosted for free on Heroku and may be slow to startup.
+* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phone. It is hosted for free on Heroku and may be slow to startup.
 * Read [Pragmatic programmer](https://amzn.eu/d/05VM572a). It cannot hurt.
 
 
