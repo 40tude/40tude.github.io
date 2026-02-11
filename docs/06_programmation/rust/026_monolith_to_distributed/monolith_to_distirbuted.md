@@ -36,11 +36,14 @@ A hands-on journey through small, working projects to understand whenâ€”and whyâ
 {: .no_toc }
 
 * For beginners
+* ...
 
-All the [examples](https://github.com/40tude/hexagonal_lite) are on GitHub
 
-<!-- **Note**
-The [companion project](https://github.com/40tude/coroutines_and_friends) with all the examples is available on GitHub. -->
+**Note**
+The [companion project](https://github.com/40tude/mono_to_distributed) with all the workspaces is available on GitHub
+
+
+
 
 <figure style="text-align: center;">
 <img src="./assets/img00.webp" alt="A large sci-fi spacecraft splitting into multiple smaller ships flying in formation, connected by light beams, symbolizing the transition from a monolithic application to a distributed system" width="900" loading="lazy"/>
