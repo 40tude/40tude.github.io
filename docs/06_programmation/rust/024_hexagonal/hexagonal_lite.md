@@ -44,7 +44,7 @@ Learn how to structure your Rust code with ports, adapters, and clean separation
 * `application` is **NOT** a container for `adapters`, but a consumer of `ports`.
 * `application` orchestrates the **use case**, `ports` define the contracts and `adapters` plug concrete behavior into those contracts
 
-All the [examples](https://github.com/40tude/hexagonal_lite) are GitHub
+All the [examples](https://github.com/40tude/hexagonal_lite) are on GitHub
 
 <!-- **Note**
 The [companion project](https://github.com/40tude/coroutines_and_friends) with all the examples is available on GitHub. -->
