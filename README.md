@@ -654,3 +654,42 @@ Documentation sites often have "orphan pages" (pages with no links pointing to t
 
 Once you have identified the reason (e.g., "Crawled - currently not indexed"), click on that specific row and click the **Validate Fix** button. This tells Google to prioritize re-evaluating those 111 pages.
 
+
+
+## SEO
+Tester l'affichage sur Facebook/Twitter
+Voir front matter : image: docs/06_programmation/rust/026_monolith_to_distributed/assets/img03.webp Ideal 1200x630px
+https://www.opengraph.xyz/
+https://metatags.io/
+
+Faire une image spécifique: PNG 1200px width x 630px height
+image: docs/06_programmation/rust/026_monolith_to_distributed/assets/og-img.png
+┌───────────────────────────────────────────────────┐
+│                                                   │
+│   🦀                                              │
+│                                                   │
+│   Learning Modular Monolith                       │
+│   Architecture with Rust                          │
+│                                                   │
+│   From Hello World to Hexagonal Architecture      │
+│   7 Steps • Traits • Ports & Adapters             │
+│                                                   │
+│                                  40tude.fr        │
+└───────────────────────────────────────────────────┘
+
+
+ALT sur les images
+
+published: true
+----> author: 40tude
+lang: en-US
+layout: default
+title: "From Monolith to Distributed Systems in Rust: A Practical Introduction"
+description: "A hands-on journey through small, working projects to understand when and why architecture needs to evolve."
+----> image: docs/06_programmation/rust/026_monolith_to_distributed/assets/img03.webp
+----> twitter:
+---->   card: summary_large_image
+parent: "Rust"
+nav_order: 35
+date:               2026-02-11 10:00:00
+last_modified_date: 2026-02-13 00:30:00

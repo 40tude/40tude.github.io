@@ -1114,7 +1114,7 @@ Everything is wrapped in `unsafe` blocks with detailed `// SAFETY` comments. The
 
 
 <div align="center">
-<img src="./assets/img03.webp" alt="" width="900" loading="lazy"/><br/>
+<img src="./assets/img03.webp" alt="Runtime DLL Loading" width="900" loading="lazy"/><br/>
 <span>Dashed lines indicate runtime discovery using LoadLibrary/libloading</span>
 </div>
 
