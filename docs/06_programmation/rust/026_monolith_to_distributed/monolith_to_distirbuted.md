@@ -224,7 +224,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ### Why This Step Matters
 {: .no_toc }
 
-As hobbyists or beginners, we all know this situation. Either the app does what it needs to do and we can manage the 200 lines of code, or there is a little red light blinking in the back of our brain telling us that adding more stuff will eventually break everything.
+As hobbyists or beginners, we all know this situation. Either the `app` does what it needs to do and we can manage the 200 lines of code, or there is a little red light blinking in the back of our brain telling us that adding more stuff will eventually break everything.
 
 Here is what we are dealing with right now:
 
@@ -243,7 +243,7 @@ At this point, honestly, Rust gives us one thing: it compiles. The borrow checke
 ### When to Move On
 {: .no_toc }
 
-If the code does the job and we are done with it, let us not touch a thing. Run `cargo install` and move on with our lives.
+If the code does the job and we are done with it, let us not touch a thing. Let's run `cargo install` and move on.
 
 But if the application is not finished and we keep wanting to add "just one more little feature", then it is time to look up from the keyboard and take advantage of everything Rust's ecosystem and build system can offer.
 
@@ -289,6 +289,15 @@ We wrote code that works. That is awesome and not everyone can do it. But everyt
 
 The biggest change is that after splitting `main.rs`, we now have 3 files in the `src/` directory instead of 1. And here is something reassuring: the `Cargo.toml` did not change at all. We reorganized the code and Rust figured out the rest on its own through the `mod` declarations. Zero config change.
 
+```text
+step01_multifiles_monolith/
+│   Cargo.toml
+└───src
+        component1.rs
+        component2.rs
+        main.rs
+```
+
 
 ### Show Me the Code
 {: .no_toc }
@@ -299,15 +308,32 @@ We keep only the `main()` function in `main.rs`. Then, and here it is pretty str
 
 Next, we go back to `main.rs` and at the very top we bring the `component1` and `component2` modules into scope. This part is important, so let us make sure we have the right mental model here.
 
+```rust
+// main.rs
+mod component1;
+mod component2;
+
+use component1::Component1;
+use component2::Component2;
+
+fn main() {
+  // Rest of the code
+}
+```
+
 By splitting the code into 3 files we created 3 modules. The Rust build system will find them and build a module tree. Once it has a clear picture of how the modules relate to each other, it compiles everything together. This is not like C++ where each `.cpp` file is compiled independently into an `.o` and then linked. In Rust the compilation unit is the **crate**, not the file. With `mod component1;` and `mod component2;` at the top of `main.rs`, we are telling the build system: "in our crate, `main.rs` is the root and right below it sit `component1` and `component2`." There is a whole set of visibility, access, and re-export rules on top of that, but we are not there yet.
 
-> **A word on compilation speed.** We often hear that the Rust compiler is slow. That is partly true for a full rebuild from scratch. But `cargo` does incremental compilation at the crate level: if we only change `component2.rs`, the compiler is smart enough to reuse cached work and not redo everything from zero. Right now with a single crate this does not help us much. But starting from step 02, when we split into multiple crates in a workspace, incremental compilation really kicks in because `cargo` only rebuilds the crates that actually changed. So the "Rust is slow to compile" reputation is mostly a first build problem, and good project structure (which is exactly what we are learning here) is the best remedy.
+Follow the next link to learn much more about the [Rust build system]({%link docs/06_programmation/rust/014_build_system/from_src_to_exe.md%}) and get a better understanding of the module tree.
+
+> **A word on compilation speed.** We often hear that the Rust compiler is slow. That is partly true for a full rebuild from scratch. But `cargo` does incremental compilation at the crate level: if we only change `component2.rs`, the compiler is smart enough to reuse cached work and not redo everything from zero. Right now with a single crate this does not help us much. But starting from Step 02, when we split into multiple crates in a workspace, incremental compilation really kicks in because `cargo` only rebuilds the crates that actually changed.
+
+<!-- So the "Rust is slow to compile" reputation is mostly a first build problem, and good project structure (which is exactly what we are learning here) is the best remedy. -->
 
 Then we shorten method calls using `use component1::Component1;`. Nothing fancy here, it is just a convenience. Try it: comment out the `use component1::Component1;` line and run `cargo build`. It will fail. To fix it we would have to write `let comp1 = component1::Component1::new();` instead of `let comp1 = Component1::new();`. Again, it is purely a shorthand.
 
 As for the contents of `component1.rs` and `component2.rs`, it is really just copy paste from the original `main.rs`.
 
-**Important:** during this kind of exercise, this is **not** the time to refactor. Yes, we just copy pasted the code, it is shorter now, and we immediately spot something we want to improve. No. Not now. Write it down on a piece of paper if we must (adding a `// TODO:` at the top of the file is debatable). At the end of this step we want to be "iso functional" with `step00`. Same behavior, same output, zero surprises.
+**Important:** during this kind of exercise, this is **not** the time to refactor. Yes, we just copy pasted the code, it is shorter now, and we immediately spot something we want to improve. No, no, no my friend. Not now. Write it down on a piece of paper if you really want to (adding a `// TODO:` somewhere in the file is debatable). At the end of this step we want to be "iso functional" with `step00`. Same behavior, same output, zero surprises.
 
 One more thing: let us not go overboard with the splitting either. We do not want to end up with one function per file. At our level, whether we are hobbyists or early career developers, the big blocks to separate are usually pretty obvious.
 
@@ -315,7 +341,7 @@ One more thing: let us not go overboard with the splitting either. We do not wan
 #### **Expected output**
 {: .no_toc }
 
-Do as we say, not as we do: in `main()` we updated the very first `println!` line. That is just for bookkeeping. Other than that, the terminal output is identical to step 00.
+Do as I say, not as I do: in `main()` I updated the very first `println!` line. That is just for bookkeeping. Other than that, the terminal output is identical to Step 00.
 
 ```text
 Phase 01: Multi Files Monolith Application
@@ -335,7 +361,7 @@ Analysis: 84 maps to Value-0084
 Execution complete
 ```
 
-On the testing side, for fun, we added a test in `component2.rs`. Again, do as we say, not as we do. We just want to show that things are already better than before: tests now live in the module they belong to.
+On the testing side, for fun, I added a test in `component2.rs`. Again, do as I say, not as I do. I just want to show that things are already better than before: tests now live in the module they belong to.
 
 ```text
 running 2 tests
@@ -354,7 +380,13 @@ From a day to day perspective, here is what changes:
 1. It is immediately nicer to work with a `main.rs` that has a reasonable size
 1. Reviewing each component in isolation is, oddly enough, way more pleasant
 1. Adding tests inside each component file is easy and natural
-1. If our buddy Buck (yes, Buck Rogers himself) wants to help, he can. We tell him to work on `component1.rs` and things should go smoothly on GitHub. On the build side, as long as the function signatures stay the same, we are good
+1. If our buddy Buck (yes, Buck Rogers himself) wants to help, he can. We tell him to work on `component1.rs` and things should go smoothly on GitHub. On the build side, as long as the function signatures stay the same, we are good.
+
+
+<div align="center">
+<img src="./assets/img02.webp" alt="Buck Rogers and the princess Ardala" width="450" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
 
 
 ### What Rust Gives Us Here
@@ -414,6 +446,25 @@ We split a monolithic file into 3 files and gained readability, easier code revi
 
 Each component (`component1`, `component2`, and `app`) now lives in its own crate. All three crates are grouped together in a single Cargo workspace. Instead of pulling components from `crates.io`, we reference them locally through relative paths.
 
+```text
+step02_modular_monolith/
+│   Cargo.toml
+├───app
+│   │   Cargo.toml
+│   └───src
+│           main.rs
+├───component1_lib
+│   │   Cargo.toml
+│   └───src
+│           lib.rs
+└───component2_lib
+    │   Cargo.toml
+    ├───src
+    │       lib.rs
+    └───tests
+            component2_test.rs
+```
+
 
 ### Show Me the Code
 {: .no_toc }
@@ -453,7 +504,11 @@ component1 = { path = "../component1_lib" }
 component2 = { path = "../component2_lib" }
 ```
 
-In `app/src/main.rs`, we no longer need `mod component1;` declarations because the dependencies are already declared in `Cargo.toml`. This works exactly the same way as when we add `serde` or `tokio` to a project. At the top of `main()` we show how to print the version numbers of the library crates. Other than that, the rest of the code is identical to the previous step.
+In `app/src/main.rs`, we no longer need `mod component1;` declarations because the dependencies are already declared in `Cargo.toml`. This works exactly the same way as when we add `serde` or `tokio` to a project.
+
+At the top of `main()` we show how to print the version numbers of the library crates.
+
+Other than that, the rest of the code is identical to the previous step.
 
 
 #### **The library crates**
@@ -463,7 +518,9 @@ These are now fully independent crates. Everything works as if we pulled them fr
 
 Inside each crate's `src/` directory, the source file is now called `lib.rs` instead of `main.rs`. The code is exactly the same as before, except for a `get_version()` function that returns the crate version using `env!("CARGO_PKG_VERSION")`. And of course, just like in the previous step, if a library crate grows too large we can split it into multiple modules.
 
-Now here is a nice detail about testing. In `component1`, the tests are inside the source file using `#[cfg(test)] mod tests` with `use super::*;`. This is a unit test: it has access to everything in the module, including private items. In `component2`, the tests live in a separate `tests/` directory, which forces them to behave like an external client. The test file has to write `use component2::Component2;` because it can only access the public API. Both approaches have their place, and it is good to know the difference early on.
+Now here is a nice detail about testing.
+* In `component1`, the tests are inside the source file using `#[cfg(test)] mod tests` with `use super::*;`. This is a unit test: it has access to everything in the module, including private items.
+* In `component2`, the tests live in a separate `tests/` directory, which forces them to behave like an external client. The test file has to write `use component2::Component2;` because it can only access the public API. Both approaches have their place, and it is good to know the difference early on.
 
 > **Take the time to break things.** Seriously. Rename crates, mess up paths, swap directory names and package names, let the build system complain. Keep going until the relationship between crates, modules, directory names, package names, and the build system clicks in our head. This is one of those things that is much easier to learn by making mistakes than by reading documentation.
 
@@ -549,11 +606,11 @@ We could honestly stop right here. A huge number of real world applications are 
 
 The crate system is the big win. Each crate is its own little world where we reason locally. We are not polluted by the rest of the application. We have our code, our tests, and we live our life in our corner without bothering anyone.
 
-1. **Independent builds.** We can build each crate on its own with `cargo build -p component1`. Remember the incremental compilation note from step 01? This is where it pays off. Change one line in `component2` and only that crate gets rebuilt
+1. **Independent builds.** We can build each crate on its own with `cargo build -p component1`. Remember the incremental compilation note from Step 01? This is where it pays off. Change one line in `component2` and only that crate gets rebuilt
 1. **Independent tests.** We run `cargo test -p component1` and only that crate's tests execute. No more running the entire test suite every time
 1. **Independent versioning.** Each crate has its own version number in its `Cargo.toml`. When `component2` ships a breaking change, the team working on `component1` can keep using the previous version until they are ready to upgrade
 
-The workspace structure also reflects the architecture of the application. By looking at the directory listing, we can immediately tell what the app is made of. There is no framework imposing a folder structure on us. We organize things the way that makes sense for our project.
+The workspace structure also reflects the architecture of the application. By looking at the directory listing, we can immediately tell what the `app` is made of. There is no framework imposing a folder structure on us. We organize things the way that makes sense for our project.
 
 
 
@@ -570,9 +627,9 @@ There are two main reasons to consider going further: **elasticity** and **scala
 
 Elasticity is about handling temporary spikes in workload. Think of Amazon during Black Friday: the system needs to spin up extra capacity fast and scale back down when the rush is over. If one of our components is the bottleneck during those spikes, we might want to extract it from the monolith so we can duplicate it on demand.
 
-Scalability is about a sustained mismatch between what we planned for and what we actually need. We designed the system for 100 users and it turns out we have 100,000. That might require more processing power, better geographic distribution, or a fundamentally different deployment strategy.
+Scalability is about a sustained mismatch between what we planned for and what we actually need. We designed the system for 100 users and it turns out we have 100_000. That might require more processing power, better geographic distribution, or a fundamentally different deployment strategy.
 
-But let us calm down for a second. We do not all have Netflix's Friday night problems. At our level, as hobbyists or early career developers, a solid architecture (Hexagonal for example) wrapped in a Modular Monolith is more than enough for the vast majority of use cases. Only move forward when we have **measured** a real bottleneck, not because it sounds cool.
+But let us calm down for a second. We do not all have Netflix's Friday night problems. At our level, as hobbyists or early career developers, a solid architecture ([Hexagonal]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) for example) wrapped in a Modular Monolith is more than enough for the vast majority of use cases. We should only move forward when we have **measured** a real bottleneck, not because it sounds cool.
 
 
 
@@ -580,7 +637,7 @@ But let us calm down for a second. We do not all have Netflix's Friday night pro
 ### Summary
 {: .no_toc }
 
-We split our project into a Cargo workspace with 3 independent crates. We still produce a single binary, but each component can now be built, tested, and versioned on its own. This is the Modular Monolith pattern. Most applications never need to go beyond this point. When they do, it is because of measured elasticity or scalability needs, not because of hype.
+We split our project into a Cargo workspace with 3 independent crates. We still produce a single binary, but each component can now be built, tested, and versioned on its own. This is the Modular Monolith pattern. Most of our applications will never need to go beyond this point. When they do, it is because of measured elasticity or scalability needs, not because of hype.
 
 
 
@@ -605,7 +662,8 @@ We split our project into a Cargo workspace with 3 independent crates. We still 
 <!-- ###################################################################### -->
 ## Step 03: Trait-based Decoupling
 
-* If we want to dig deeper into SOLID and the Dependency Inversion Principle in Rust, there is a [dedicated page]({%link docs/06_programmation/rust/022_solid/solid_04.md%}) here.
+Before reading further...
+* If you want to dig deeper into **SOLID** and the **Dependency Inversion Principle** (DIP) in Rust, there is a [dedicated page]({%link docs/06_programmation/rust/022_solid/solid_04.md%}) here.
 * And follow the next link for a primer on  [Hexagonal Architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%})
 
 
@@ -634,16 +692,16 @@ Here is a summary of what changed:
 Download the [project](https://github.com/40tude/mono_to_distributed) and open `step03_trait_interface` or read the code on GitHub withing your browser.
 
 
-In step 02, `app` calls `Component1` and `Component2` methods directly. The app knows every concrete type and every method signature. If we swap an implementation, we have to change the app code too.
+In Step 02, `app` calls `Component1` and `Component2` methods directly. The `app` knows every concrete type and every method signature. If we swap an implementation, we have to change the `app` code too.
 
-Here we introduce a **`traits` crate** that sits between the app and the component libraries. It defines two trait contracts:
+Here we introduce a `traits` crate that sits between the `app` and the component libraries. It defines two trait contracts:
 
 - `Processor` with `process(i32) -> ProcessResult` and `validate(&ProcessResult) -> bool`
 - `Transformer` with `transform(i32) -> TransformResult` and `analyze(&TransformResult) -> String`
 
 The data types (`ProcessResult`, `TransformResult`) also move into `traits` since they are part of the shared contract. The `traits` crate has zero dependencies. It contains no business logic whatsoever, only trait signatures and type definitions.
 
-Notice that `get_version()` is a regular function on each component crate, not part of any trait. It is there purely for informational purposes. Not everything has to go through a trait. Only the methods that define the contract between the app and its components belong in a trait. Utility functions like `get_version()` can stay as plain public functions on the crate.
+Notice that `get_version()` is a regular function on each component crate, not part of any trait. It is there purely for informational purposes. Not everything has to go through a trait. Only the methods that define the contract between the `app` and its components belong in a trait. Utility functions like `get_version()` can stay as plain public functions on the crate.
 
 At the end of `main()` we call `run_pipeline()` which runs the exact same processing using trait references (`&dyn Processor`, `&dyn Transformer`). The idea is to show that the results are identical whether we call methods directly or through traits.
 
@@ -656,7 +714,7 @@ At the end of `main()` we call `run_pipeline()` which runs the exact same proces
 >
 > Fair enough. Now go to `traits/src/lib.rs` and rename `process` to `blahblahblah` in the `Processor` trait definition. Build again. This time it complains in `component1`'s `lib.rs`: we are implementing a `process` method that is not part of `Processor` anymore, and we are missing `blahblahblah`.
 >
-> This little experiment shows something important. The application decides which methods it wants to call. If a component does not implement what the trait requires, the build fails. The component cannot impose anything on the application. And that is exactly what makes the app resilient to changes in the components.
+> This little experiment shows something important. The application **decides** which methods it wants to call. If a component does not implement what the trait requires, the build fails. The component cannot impose anything on the application. And that is exactly what makes the `app` resilient to changes in the components.
 
 
 #### **Expected output**
@@ -691,20 +749,20 @@ Pipeline analysis: Analysis: 84 maps to Value-0084
 Execution complete
 ```
 
-The tests are exactly the same as in step 02.
+The tests are exactly the same as in Step 02.
 
 
 ### Why This Step Matters
 {: .no_toc }
 
 1. **Decoupling.** `app` can now call components through `&dyn Processor` and `&dyn Transformer`. The `run_pipeline()` function depends only on the `traits` crate, not on any concrete component. We could swap `Component1` for a completely different implementation without touching `run_pipeline`
-1. **Dependency inversion.** Components depend on the trait crate (upward), not the other way around. The app also depends on the trait crate. No component depends on another component. The arrows point inward, toward the contracts
+1. **Dependency inversion.** Components depend on the trait crate (upward), not the other way around. The `app` also depends on the trait crate. No component depends on another component. The arrows point inward, toward the contracts
 1. **Prepares for plugins.** Steps 04 and 05 will turn components into DLLs. Having a clean trait boundary now makes that transition natural: the trait crate becomes the plugin interface, and each DLL just provides a different `impl`
 
 #### **Dependency Graph**
 {: .no_toc }
 
-Take a moment to read the `[dependencies]` section of each `Cargo.toml`. The picture looks like this:
+Take a moment to read the `[dependencies]` section of each `Cargo.toml`. At the end you should come with a picture similar to this one:
 
 ```
               traits              (defines Processor, Transformer, data types)
@@ -722,12 +780,12 @@ Everyone depends on `traits`. Nobody depends on each other. That is the whole po
 
 Traits are the key ingredient here. But beyond the language feature itself, there is a method worth remembering:
 
-1. We start in `main.rs` and write the function calls the way we want them to look. For example in `run_pipeline()` we write `processor.process(input)` because that reads well and makes sense
+1. We start in `main.rs` and write the function calls *the way we want* them to look. For example in `run_pipeline()` we write `processor.process(input)` because that reads well and makes sense
 1. Only when we are happy with how things read in `main.rs` do we move on
 1. Then we create the `traits` crate and define the trait signatures that match what we wrote in `main()`. For example the `Processor` trait with its `process()` method
 1. From the application's point of view, we are done. We stated what we need. It is up to the components to fall in line
 
-The crucial thing is that **the application sets the tone**. The app decides it will call `process()` on something that implements `Processor` (see `fn run_pipeline(processor: &dyn Processor, ...` in `main.rs`). It is not a library imposing its API on the application. The roles are reversed, and that is exactly why it is called the **Dependency Inversion Principle**.
+The crucial thing is that **the application sets the tone**. The `app` decides it will call `process()` on something that implements `Processor` (see `fn run_pipeline(processor: &dyn Processor, ...` in `main.rs`). It is not a library imposing its API on the application. The roles are reversed, and that is exactly why it is called the **Dependency Inversion Principle**.
 
 
 ### When to Move On
@@ -735,7 +793,7 @@ The crucial thing is that **the application sets the tone**. The app decides it 
 
 We need to protect the crown jewels. The core business logic of our application should be immune to changes happening in the components that orbit around it. With traits in place, it is.
 
-My personal take? As soon as the crates from step 02 are in place, setting up dependency inversion with traits should be the very next move. Do not wait.
+My personal take? As soon as the crates from Step 02 are in place, setting up dependency inversion with traits should be the very next move. Do not wait.
 
 And if components use sub-components of their own, the same principle applies: create trait boundaries at their level too. Traits all the way down.
 
@@ -743,7 +801,7 @@ And if components use sub-components of their own, the same principle applies: c
 ### Summary
 {: .no_toc }
 
-The business logic is identical to step 02. Same input (42), same output ("Value-0084"). What changed is the architecture: `run_pipeline()` uses dynamic dispatch (`&dyn Trait`) and the `traits` crate has zero dependencies, it is a pure contract definition. The app now decides the API, and components implement it. We are ready for plugins.
+The business logic is identical to Step 02. Same input (42), same output ("Value-0084"). What changed is the architecture: `run_pipeline()` uses dynamic dispatch (`&dyn Trait`) and the `traits` crate has zero dependencies, it is a pure contract definition. The `app` now decides the API, and components implement it. We are ready for plugins.
 
 
 
@@ -794,7 +852,7 @@ And that is it. This tells Cargo to produce **two** artifacts for each component
 | `component1.rlib` | Rust static library | Used by `cargo build` to link into `app.exe` |
 | `component1.dll` | Windows dynamic library | Available for external consumers (C, C++, Python, other Rust binaries...) |
 
-We also simplified `app/src/main.rs` to use only `run_pipeline()`, making our core business logic immune to changes in the components. This is the natural evolution from what we set up in step 03.
+We also simplified `app/src/main.rs` to use only `run_pipeline()`, making our core business logic immune to changes in the components. This is the natural evolution from what we set up in Step 03.
 
 
 ### Show Me the Code
@@ -887,7 +945,7 @@ mv component2.dll component2.dll.bak
 .\app.exe    # runs perfectly
 ```
 
-The `.exe` is **self-contained**. The component code is baked into it, just like in step 03. The DLLs sit in the build folder, unused.
+The `.exe` is **self-contained**. The component code is baked into it, just like in Step 03. The DLLs sit in the build folder, unused.
 
 
 
@@ -919,8 +977,8 @@ The `cdylib` output exists for **foreign consumers** (C, Python, etc.) that load
 To be clear, I did not expect this behavior. So now I consider this step is a **preparation step**. It demonstrates that:
 
 1. We can tell Cargo to produce DLLs alongside the static library
-1. The DLLs are real, loadable dynamic libraries (step 05 will actually use them)
-1. The app code does not change at all. The transition is invisible
+1. The DLLs are real, loadable dynamic libraries (Step 05 will actually use them)
+1. The `app` code does not change at all. The transition is invisible
 
 Think of it as: our components are now *capable* of being DLLs, even though nobody is loading them dynamically yet.
 
@@ -941,7 +999,7 @@ Worth noting that "DLL" here is the Windows terminology. On Linux the equivalent
 ### When to Move On
 {: .no_toc }
 
-Honestly, this step is one to understand but not to linger on. Now that we know how it works, let us move to step 05 where we actually load DLLs at runtime. That is where things get real.
+Honestly, this step is one to understand but not to linger on. Now that we know how it works, let us move to Step 05 where we actually load DLLs at runtime. That is where things get real.
 
 
 
