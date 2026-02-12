@@ -1018,7 +1018,221 @@ We added `crate-type = ["cdylib", "rlib"]` to our component crates. Cargo now pr
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 05: Runtime DLL Loading
-The code is ready, not the comments.
+
+
+### What Changed from Step 04
+{: .no_toc }
+
+In Step 04 we told Cargo to produce DLLs alongside the static libraries. At the end, the DLLs were sitting in the build folder, nice and shiny, but nobody was actually loading them. The `app` was still statically linked through `rlib`. This time, we close the loop.
+
+The `traits` crate is gone. In its place we have a brand new crate called `plugin_interface`. It still defines the trait contracts (`ProcessPlugin`, `TransformPlugin`) and the shared data types (`ProcessResult`, `TransformResult`), but it also defines the C-compatible function pointer types and the symbol names that DLLs must export. Think of it as the previous version of the `traits` crate plus a "DLL protocol" on top.
+
+The component crates now produce **only** `cdylib` (no more `rlib`). The `app` crate no longer lists `component1` or `component2` in its `[dependencies]`. Instead, it depends on `plugin_interface` and on `libloading`, a Rust crate that wraps the OS functions for loading shared libraries at runtime (`LoadLibrary`/`GetProcAddress` on Windows, `dlopen`/`dlsym` on Linux and macOS).
+
+Here is a summary of what changed:
+
+| File | Change |
+|------|--------|
+| `Cargo.toml` (workspace) | `traits` removed, `plugin_interface` added. `component1_dll` and `component2_dll` remain |
+| `plugin_interface/Cargo.toml` | **NEW** crate, `crate-type = ["lib"]`, zero dependencies |
+| `plugin_interface/src/lib.rs` | Traits, data structs, FFI type aliases (`ProcessPluginCreate`, etc.), symbol name constants |
+| `component1_dll/Cargo.toml` | `crate-type` changed from `["cdylib", "rlib"]` to `["cdylib"]` only. Depends on `plugin_interface` |
+| `component1_dll/src/lib.rs` | Implements `ProcessPlugin`. Exports `extern "C"` factory functions: `_plugin_create`, `_plugin_destroy`, `_plugin_version` |
+| `component2_dll/Cargo.toml` | Same as component1: `cdylib` only, depends on `plugin_interface` |
+| `component2_dll/src/lib.rs` | Implements `TransformPlugin`. Same three exported symbols |
+| `app/Cargo.toml` | **No longer depends on component1 or component2.** Depends on `plugin_interface` and `libloading` |
+| `app/src/main.rs` | Loads each DLL at runtime, looks up symbols, creates plugin instances, calls trait methods, destroys instances, unloads DLLs |
+
+
+### Show Me the Code
+{: .no_toc }
+
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step05_dyn_plugins_dll` or read the code on GitHub within your browser.
+
+
+#### **The plugin interface crate**
+{: .no_toc }
+
+This is the contract between the host (`app`) and the plugins (the DLLs). It defines:
+
+1. `ProcessResult` and `TransformResult`, both marked `#[repr(C)]` so their memory layout is fixed and predictable across the DLL boundary
+1. `ProcessPlugin` and `TransformPlugin` traits, same as in Step 03/04, but now with `Send + Sync` bounds
+1. Type aliases for the FFI function pointers: `ProcessPluginCreate`, `ProcessPluginDestroy`, `TransformPluginCreate`, `TransformPluginDestroy`, and `PluginVersion`
+1. Three constants for symbol names: `PLUGIN_CREATE_SYMBOL`, `PLUGIN_DESTROY_SYMBOL`, `PLUGIN_VERSION_SYMBOL`
+
+Notice that the crate has zero external dependencies. It is a pure contract definition, exactly like `traits` was in Step 03. The difference is that it now also describes *how* to cross the DLL boundary.
+
+One detail worth pausing on: the `#[expect(improper_ctypes_definitions)]` attributes on the function pointer types. The Rust compiler warns us that passing trait object pointers (`*mut dyn ProcessPlugin`) through `extern "C"` functions is not standard FFI. And it is right, this is technically unsafe territory. We silence the warning with `#[expect(...)]` because we control both sides of the boundary and we know the trait object layout will be consistent (same compiler, same build). This would absolutely not work if the DLL was compiled with a different Rust version. More on that later.
+
+
+#### **The component DLLs**
+{: .no_toc }
+
+Each component DLL exports exactly three symbols:
+
+1. `_plugin_create()` allocates a new instance of the component on the heap using `Box::into_raw(Box::new(...))` and returns it as a raw pointer to the trait object
+1. `_plugin_destroy(ptr)` takes that pointer back, wraps it in a `Box::from_raw()`, and drops it. This is how we free the memory
+1. `_plugin_version()` returns a pointer to a null-terminated C string containing the crate version, built at compile time with `concat!(env!("CARGO_PKG_VERSION"), "\0")`
+
+All three functions are `extern "C"` and marked `#[unsafe(no_mangle)]` so that `libloading` can find them by name in the DLL's export table.
+
+The `Component1` and `Component2` structs themselves are **private** to their respective crates. The only thing that leaks out is the trait implementation, through the factory functions. From the outside, we never see `Component1` or `Component2`. We only see a `*mut dyn ProcessPlugin` or `*mut dyn TransformPlugin`.
+
+The business logic is identical to all previous steps. `process()` doubles the value, `transform()` formats it as `"Value-0084"`, and so on. No surprises there.
+
+
+#### **The host application**
+{: .no_toc }
+
+`app/Cargo.toml` now looks like this:
+
+```toml
+[dependencies]
+plugin_interface = { path = "../plugin_interface" }
+libloading = "0.9"
+```
+
+Notice what is **missing**: `component1` and `component2`. The `app` does not know about them at compile time. It only knows the plugin interface. The components are discovered and loaded at runtime.
+
+In `main.rs`, the loading sequence for each plugin follows the same pattern:
+
+1. Build the DLL path relative to the running executable using `plugin_path()`. This helper figures out the right extension (`.dll`, `.so`, or `.dylib`) depending on the target OS
+1. Load the DLL with `Library::new(&path)`. This is the equivalent of `LoadLibrary` on Windows
+1. Look up the `_plugin_version` symbol, call it, convert the returned `*const c_char` to a Rust string, and print it
+1. Look up the `_plugin_create` symbol, call it to get a trait object pointer, and dereference it to get a `&dyn ProcessPlugin` (or `&dyn TransformPlugin`)
+1. Call trait methods just like in Step 03. The syntax is exactly the same: `plugin.process(input_value)`, `plugin.validate(&result)`
+1. Look up the `_plugin_destroy` symbol and call it to free the plugin instance
+1. Let `lib` go out of scope, which unloads the DLL
+
+The entire component1 block is wrapped in a `{ ... }` scope so that `lib` (the loaded DLL) is dropped (and thus unloaded) before we move on to component2. We get the `process_result` out of that scope and pass it to component2, exactly as before.
+
+Everything is wrapped in `unsafe` blocks with detailed `// SAFETY` comments. There are a lot of them. That is not sloppy code. That is how FFI works in Rust: every call across the DLL boundary is inherently unsafe, and we are expected to document why we believe each call is sound.
+
+
+### Note About the Address Space
+{: .no_toc }
+
+Since DLLs are loaded *into* the host process, they share the same virtual address space as `app.exe`. A pointer obtained inside the DLL is valid inside the `app` and vice versa. This is fundamentally different from what we will see in Step 06, where each service runs in its own process with its own isolated address space.
+
+```text
++---------------------------------------------------------+
+|              Process Virtual Address Space              |
+|                                                         |
+|  0x00007FF6_00000000   app.exe code + data              |
+|  0x00007FFB_10000000   component1.dll                   |
+|  0x00007FFB_20000000   component2.dll                   |
+|  0x00007FFB_80000000   kernel32.dll, ntdll.dll, ...     |
+|  0x000000A0_00000000   heap                             |
+|  0x000000FF_FFFFFFFF   stack (grows down)               |
+|                                                         |
++---------------------------------------------------------+
+```
+
+This means we can pass raw pointers between the `app` and the DLLs and they just work. The only catch is memory allocation: if the DLL allocates memory, the DLL should free it (and vice versa). Different allocator instances do not play well together even within the same address space. That is exactly why we have `_plugin_create` and `_plugin_destroy` as a matched pair.
+
+| Boundary | Same address space? | Can share pointers? | Communication |
+|----------|---------------------|---------------------|---------------|
+| Function call (Step 02) | Yes | Yes | Direct |
+| DLL in same process (Step 04/05) | Yes | Yes* | Function call via FFI |
+| Separate process (Step 06) | **No** | **No** | Pipes, HTTP, NATS... |
+
+\* *Careful with allocators: if the DLL and the exe use different allocator instances, free memory on the same side that allocated it.*
+
+
+#### **Expected output**
+{: .no_toc }
+
+```text
+Phase 05: Modular Application with Dynamic Plugins (runtime DLL load/unload)
+
+--- Processing Pipeline ---
+Input value: 42
+
+Loading component1 DLL from: <path_to_exe_dir>\component1.dll
+Component1 DLL loaded
+Component1 version: 0.1.0
+        [Component1 DLL] Initialized
+        [Component1 DLL] Processing value: 42
+        [Component1 DLL] Validating data: ProcessResult { value: 84, processed: true }
+Process result: ProcessResult { value: 84, processed: true }, Valid: true
+[Component1 DLL] Destroying plugin instance
+Unloading Component1 DLL...
+
+Loading component2 DLL from: <path_to_exe_dir>\component2.dll
+Component2 DLL loaded
+Component2 version: 0.2.0
+        [Component2 DLL] Initialized
+        [Component2 DLL] Transforming value: 84
+        [Component2 DLL] Analyzing data: TransformResult { original: 84, transformed: "Value-0084" }
+Transform result: TransformResult { original: 84, transformed: "Value-0084" }
+Analysis: 84 maps to Value-0084
+[Component2 DLL] Destroying plugin instance
+Unloading component2 DLL...
+
+Execution complete
+```
+
+The DLL path will of course be different on your machine. The rest is identical to every previous step: 42 goes in, gets doubled to 84, gets formatted as "Value-0084". Business logic has not changed one bit.
+
+On the testing side, each component DLL crate has its own unit tests. We can run `cargo test -p component1` or `cargo test -p component2` as usual. The tests exercise the trait implementations directly, no DLL loading involved. This is one of the nice properties of the design: we test the logic in isolation and only involve FFI when we run the full app.
+
+```text
+running 2 tests
+test tests::test_process ... ok
+test tests::test_validate ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+running 2 tests
+test tests::test_analyze ... ok
+test tests::test_transform ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
+
+### Why This Step Matters
+{: .no_toc }
+
+This is the step where we go from "our components *could* be DLLs" to "our components *are* DLLs and the `app` loads them at runtime."
+
+1. **True decoupling at the binary level.** The `app` crate does not depend on `component1` or `component2` at compile time. We can rebuild a component DLL, drop it next to `app.exe`, and run again without recompiling the app. That is the plugin promise
+1. **Hot-swappable components (in theory).** Because we explicitly load and unload DLLs, nothing prevents us from loading a *different* DLL that exports the same symbols. As long as the new DLL implements the same plugin interface, the `app` will not care. We could even load plugins from a configuration file or a plugin directory
+1. **The cost is `unsafe`.** We are leaving the safe harbor of the Rust type system. Every symbol lookup, every pointer dereference across the DLL boundary is `unsafe`. If we get the types wrong, if we forget to call `_plugin_destroy`, if we use a plugin pointer after the DLL is unloaded, we get undefined behavior with zero compiler help. This is the fundamental tradeoff
+
+> **Worth knowing:** the approach we use here (passing Rust trait object pointers across the DLL boundary) is not standard FFI practice. It works because we compile both sides with the same Rust compiler. If we needed true cross-language compatibility, we would define a C-compatible vtable manually or use a proper C API with opaque handles. What we have here is more of a "Rust-to-Rust plugin system" than a general purpose FFI layer.
+
+
+### What Rust Gives Us Here
+{: .no_toc }
+
+Rust does not make DLL loading *safe*. It makes it *explicit*. Every `unsafe` block screams "something risky is happening here, and I have thought about why it is OK." That might seem like a burden, but compare it to C/C++ where `LoadLibrary` + `GetProcAddress` is just normal code with no special warnings. In Rust, the compiler forces us to acknowledge each danger point.
+
+Beyond that, a few things are really helpful:
+
+1. **`libloading` crate.** Wraps the OS-specific dynamic loading APIs (`LoadLibrary`/`dlopen`) into a single cross-platform interface. We write one codebase and it runs on Windows, Linux, and macOS. The `plugin_path()` helper in `main.rs` handles the file extension differences
+1. **`Box::into_raw` / `Box::from_raw`.** This is how we transfer ownership of heap-allocated objects across the FFI boundary. `Box::into_raw` gives up Rust's ownership tracking and hands us a raw pointer. `Box::from_raw` takes it back. The matched `_plugin_create` / `_plugin_destroy` pattern ensures no memory leaks
+1. **`#[unsafe(no_mangle)]` and `extern "C"`.** These two attributes are what make a Rust function visible and callable from outside. `no_mangle` preserves the symbol name (Rust normally mangles names), and `extern "C"` uses the C calling convention so `libloading` can find and call the function
+1. **`repr(C)` on data structs.** Ensures the struct layout matches what a C compiler would produce. Without this, Rust is free to reorder fields or add padding however it likes, which would break things across the DLL boundary
+
+
+### When to Move On
+{: .no_toc }
+
+Dynamic loading is a powerful tool but it comes with real constraints. The biggest one in our case: **we must compile the DLLs and the host `app` with the same Rust compiler version.** Rust does not have a stable ABI, which means the trait object layout (vtable pointer + data pointer) can change between compiler releases. If we compile the `app` with Rust 1.82 and a DLL with Rust 1.83, we might get silent corruption.
+
+For a plugin system where we control all the pieces and ship everything together, this is fine. For a plugin system where third parties ship DLLs compiled independently, this is a real problem. In that case, we would need a C-based plugin API with a stable ABI.
+
+The other thing to consider is that we are still running everything in a single process. If a DLL crashes (segfault, stack overflow, panic that crosses the FFI boundary), it takes down the whole application. There is no isolation.
+
+If either of these concerns is an issue for you (as it is for me), the next logical step is to move components into their own processes. That is Step 06, where components become standalone executables communicating through pipes. Different address spaces, full crash isolation, and no ABI compatibility worries because data crosses the boundary as serialized JSON, not raw pointers.
+
+
+### Summary
+{: .no_toc }
+
+We replaced static linking with runtime DLL loading using `libloading`. The `plugin_interface` crate defines the contract: traits, data types, FFI function signatures, and symbol names. Each component DLL exports three `extern "C"` functions (`_plugin_create`, `_plugin_destroy`, `_plugin_version`) and the host `app` loads them by name at runtime. The business logic is unchanged (42 in, "Value-0084" out). We gained true binary-level decoupling and the ability to swap plugins without recompiling the host. The price is `unsafe` code at every DLL boundary crossing and the requirement that everything be compiled with the same Rust toolchain.
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
