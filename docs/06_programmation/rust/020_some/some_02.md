@@ -1148,6 +1148,8 @@ fn main() {
 - [std::option::Option](https://doc.rust-lang.org/std/option/enum.Option.html) - Complete API reference
 - [Rust Book Chapter 6.1](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html#the-option-enum-and-its-advantages-over-null-values) - Option fundamentals
 - [Rust by Example: Option](https://doc.rust-lang.org/rust-by-example/std/option.html) - Practical examples
+- (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phones. It is hosted for free on Heroku and may be slow to startup.
+
 
 ### Related Articles on This Blog
 

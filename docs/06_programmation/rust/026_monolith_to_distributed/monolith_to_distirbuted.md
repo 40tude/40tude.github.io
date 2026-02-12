@@ -627,6 +627,7 @@ The tests are exactly the same as in step 02.
 1. **Prepares for plugins.** Steps 04 and 05 will turn components into DLLs. Having a clean trait boundary now makes that transition natural: the trait crate becomes the plugin interface, and each DLL just provides a different `impl`
 
 #### **Dependency Graph**
+{: .no_toc }
 
 Take a moment to read the `[dependencies]` section of each `Cargo.toml`. The picture looks like this:
 
@@ -927,4 +928,4 @@ It is on its way...
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
-* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phone. It is hosted for free on Heroku and may be slow to startup.
+* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phones. It is hosted for free on Heroku and may be slow to startup.

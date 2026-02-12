@@ -1054,3 +1054,5 @@ Now open `examples/ex07.rs`. You have all the tools to understand what is going 
     * The last one focus on the  [Dependency Inversion Principle]({%link docs/06_programmation/rust/022_solid/solid_04.md%})
 * The [companion repo](https://github.com/40tude/hexagonal_lite) of this post is on GitHub
 * This [project](https://github.com/40tude/hexagonal_architecture) demonstrates an Hexagonal Architecture where all components are in individual crates (Modular Monolith)
+* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phones. It is hosted for free on Heroku and may be slow to startup.
+* Read [Pragmatic programmer](https://amzn.eu/d/05VM572a). It cannot hurt.

@@ -1405,10 +1405,12 @@ Now let's write cleaner Rust! 🦀
 - [serodriguez68/clean-architecture](https://github.com/serodriguez68/clean-architecture) - detailed summary of the book
 - [Rust's trait system](https://doc.rust-lang.org/book/ch10-02-traits.html)
 - [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/)
+* (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phones. It is hosted for free on Heroku and may be slow to startup.
+* Read [Pragmatic programmer](https://amzn.eu/d/05VM572a). It cannot hurt.
 <!-- - [Rust is not a faster horse](https://www.youtube.com/watch?v=4YU_r70yGjQ) - Understanding how Rust's paradigm differs from OOP -->
-- The code of the posts is available in the [solid_test repo on GitHub](https://github.com/40tude/solid_test)
-- The dedicated repo for the modularized version of the [hexagonal architecture](https://github.com/40tude/hexagonal_architecture).
-- The [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid) companion project on GitHub.
+* The code of the posts is available in the [solid_test repo on GitHub](https://github.com/40tude/solid_test)
+* The dedicated repo for the modularized version of the [hexagonal architecture](https://github.com/40tude/hexagonal_architecture).
+* The [Coffee Shop Order System](https://github.com/40tude/coffee-shop-solid) companion project on GitHub.
 
 
 <div align="center">
