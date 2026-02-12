@@ -1,13 +1,17 @@
 ---
 published: true
+author: 40tude
 lang: en-US
 layout: default
 title: "From Monolith to Distributed Systems in Rust: A Practical Introduction"
 description: "A hands-on journey through small, working projects to understand when and why architecture needs to evolve."
+image: docs/06_programmation/rust/026_monolith_to_distributed/assets/img03.webp
+twitter:
+  card: summary_large_image
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-02-11 10:00:00
+last_modified_date: 2026-02-13 00:30:00
 ---
 
 
