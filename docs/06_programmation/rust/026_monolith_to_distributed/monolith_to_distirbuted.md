@@ -1109,6 +1109,14 @@ The entire component1 block is wrapped in a `{ ... }` scope so that `lib` (the l
 Everything is wrapped in `unsafe` blocks with detailed `// SAFETY` comments. There are a lot of them. That is not sloppy code. That is how FFI works in Rust: every call across the DLL boundary is inherently unsafe, and we are expected to document why we believe each call is sound.
 
 
+<div align="center">
+<img src="./assets/img03.webp" alt="" width="900" loading="lazy"/><br/>
+<span>Dashed lines indicate runtime discovery using LoadLibrary/libloading</span>
+</div>
+
+
+
+
 ### Note About the Address Space
 {: .no_toc }
 
