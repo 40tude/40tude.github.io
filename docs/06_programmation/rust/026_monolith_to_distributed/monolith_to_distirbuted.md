@@ -176,7 +176,7 @@ impl Component1 {
     }
 }
 
-// Similar code for Component2Data + 1 test
+// Similar code for Component2Data + 1 local test
 ```
 
 In `main()` we do the following:
@@ -932,9 +932,9 @@ The tests are similar to what we already know.
 ### Why This Step Matters
 {: .no_toc }
 
-This step is mostly interesting intellectually because **we do not actually get what we want** (one exe loading 2 DLLs at runtime).
+This step is mostly interesting intellectually because **we do not actually get what we want**: one executable loading automatically 2 DLLs at runtime.
 
-What? Really? In fact, when we run `cargo build`, Cargo produces both `.rlib` and `.dll` files. But when it links `app.exe`, **it uses the `.rlib` (static library), not the `.dll`**.
+What? Really? How can it works? In fact, when we run `cargo build`, Cargo produces both `.rlib` and `.dll` files. But when it links `app.exe`, **it uses the `.rlib` (static library), not the `.dll`**.
 
 We can verify this ourselves:
 
@@ -961,7 +961,7 @@ component1 = { path = "../component1_dll" }
 
 This is a **Rust-to-Rust** dependency. Cargo always prefers `rlib` for these because:
 
-1. Rust's ABI is unstable and can change between compiler versions
+1. Rust's ABI (Application Binary Interface) is unstable and can change between compiler versions
 1. Static linking is simpler and faster
 1. `rlib` preserves full type info, generics, and monomorphization
 
@@ -1029,7 +1029,7 @@ The code is ready, not the comments.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 07: Distributes HTTP
+## Step 07: Distributed HTTP
 The code is ready, not the comments.
 
 <!-- ###################################################################### -->
