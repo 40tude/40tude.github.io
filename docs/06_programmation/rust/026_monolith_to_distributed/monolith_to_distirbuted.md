@@ -110,6 +110,74 @@ Here we are just taking a snapshot of the situation. No judgment. We work with w
 ### Show Me the Code
 {: .no_toc }
 
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step00_monofile_monolith` or read the code GitHub withing your browser. You can even copy/paste the code in [Rust Playground](https://play.rust-lang.org/).
+
+<div align="center">
+<img src="./assets/img01.webp" alt="The Rust source code of Step 00 in Rust Playground" width="900" loading="lazy"/><br/>
+<!-- <span>Optional comment</span> -->
+</div>
+
+```rust
+fn main() {
+    println!("\n\nPhase 00: Mono File Monolith Application\n");
+
+    println!("--- Processing Pipeline ---");
+
+    let input_value = 42;
+    println!("Input value: {}", input_value);
+
+    let comp1 = Component1::new();
+    let data1 = comp1.process(input_value);
+    let is_valid = comp1.validate(&data1);
+    println!("Component1 result: {:?}, Valid: {}", data1, is_valid);
+
+    let comp2 = Component2::new();
+    let data2 = comp2.transform(data1.value);
+    let analysis = comp2.analyze(&data2);
+    println!("Component2 result: {:?}", data2);
+    println!("{}", analysis);
+
+    println!("\nExecution complete");
+}
+
+#[derive(Debug)]
+pub struct Component1Data {
+    pub value: i32,
+    pub processed: bool,
+}
+
+pub struct Component1;
+
+impl Default for Component1 {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Component1 {
+    pub fn new() -> Self {
+        println!("\t[Component1] Initialized");
+        Component1
+    }
+
+    pub fn process(&self, input: i32) -> Component1Data {
+        println!("\t[Component1] Processing value: {}", input);
+        let result = input * 2;
+
+        Component1Data {
+            value: result,
+            processed: true,
+        }
+    }
+
+    pub fn validate(&self, data: &Component1Data) -> bool {
+        println!("\t[Component1] Validating data: {:?}", data);
+        data.processed && data.value > 0
+    }
+}
+
+// Similar code for Component2Data + 1 test
+```
 
 In `main()` we do the following:
 
@@ -224,6 +292,8 @@ The biggest change is that after splitting `main.rs`, we now have 3 files in the
 
 ### Show Me the Code
 {: .no_toc }
+
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step01_multifiles_monolith` or read the code on GitHub withing your browser.
 
 We keep only the `main()` function in `main.rs`. Then, and here it is pretty straightforward, we move everything related to `Component1` into `component1.rs` and do the same with `Component2` into `component2.rs`. In real life it is rarely this clean cut, but we have to start somewhere. Go for it, do not be afraid. In the worst case the Rust build system will bark at us and point us in the right direction.
 
@@ -347,6 +417,8 @@ Each component (`component1`, `component2`, and `app`) now lives in its own crat
 
 ### Show Me the Code
 {: .no_toc }
+
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step02_modular_monolith` or read the code on GitHub withing your browser.
 
 The `Cargo.toml` at the project root simply lists the workspace members.
 
@@ -559,6 +631,9 @@ Here is a summary of what changed:
 ### Show Me the Code
 {: .no_toc }
 
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step03_trait_interface` or read the code on GitHub withing your browser.
+
+
 In step 02, `app` calls `Component1` and `Component2` methods directly. The app knows every concrete type and every method signature. If we swap an implementation, we have to change the app code too.
 
 Here we introduce a **`traits` crate** that sits between the app and the component libraries. It defines two trait contracts:
@@ -724,6 +799,8 @@ We also simplified `app/src/main.rs` to use only `run_pipeline()`, making our co
 
 ### Show Me the Code
 {: .no_toc }
+
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step04_plugins_dll` or read the code on GitHub withing your browser.
 
 Here is the new version of `main()`. The code is familiar by now.
 
