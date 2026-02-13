@@ -1298,7 +1298,7 @@ We replaced static linking with runtime DLL loading using `libloading`. The `plu
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 06 — Multi-process via Pipes
+## Step 06: Multi-process via Pipes
 
 
 ### What Changed from Step 03
