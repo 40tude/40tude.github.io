@@ -619,6 +619,14 @@ The workspace structure also reflects the architecture of the application. By lo
 
 
 
+### Things to Think About
+
+- We split code into three crates, but everything still compiles into one binary. What would need to change if we wanted to deploy `service1` and `service2` independently?
+- Right now `app` depends on both library crates directly. What happens if `service1` and `service2` start depending on each other? How would we prevent that?
+- We chose to put shared types (`ProcessInput`, `TransformInput`, etc.) in each crate. At what point does it make sense to extract them into a shared crate?
+- If a teammate only touches `service2`, they still rebuild the whole workspace by default. How could we speed up their inner dev loop?
+
+
 
 
 
@@ -790,6 +798,15 @@ Traits are the key ingredient here. But beyond the language feature itself, ther
 1. From the application's point of view, we are done. We stated what we need. It is up to the components to fall in line
 
 The crucial thing is that **the application sets the tone**. The `app` decides it will call `process()` on something that implements `Processor` (see `fn run_pipeline(processor: &dyn Processor, ...` in `main.rs`). It is not a library imposing its API on the application. The roles are reversed, and that is exactly why it is called the **Dependency Inversion Principle**.
+
+
+
+### Things to Think About
+
+- Our traits have a single method each. What if `Processor` needed two methods (say, `process` and `validate`)? When does a trait become too fat?
+- We use `&dyn Trait` (dynamic dispatch). What would change if we switched to generics (`impl Trait`)? What would we gain, and what would we lose?
+- The `app` crate now depends only on the `traits` crate, not on concrete implementations. Could we write tests for `app` using mock implementations? What would that look like?
+- If we add a third operation (say, `compress`) to the pipeline, how many crates do we need to touch? Is that number satisfying?
 
 
 ### When to Move On
@@ -997,6 +1014,14 @@ The `crate-type` setting in `Cargo.toml` lets us produce dynamic libraries that 
 
 Worth noting that "DLL" here is the Windows terminology. On Linux the equivalent is `.so` (shared object), on macOS it is `.dylib`. Cargo produces the right format for whatever platform we are building on.
 
+
+
+### Things to Think About
+
+- We generate DLL files but never load them. In what scenario would generating both `rlib` and `cdylib` actually matter in a real project?
+- The DLL and the `rlib` contain the same logic. If we ship the DLL to someone else, can they use it from a different Rust version? From C? From Python?
+- We did not change a single line of business logic in this step. Is that a strength or a sign that this step is pointless? What is the value of a step that only changes build artifacts?
+- If our goal is runtime plugin loading (next step), what contract do we need between the host and the plugin? Where should that contract live?
 
 
 
@@ -1228,6 +1253,18 @@ Beyond that, a few things are really helpful:
 1. **`repr(C)` on data structs.** Ensures the struct layout matches what a C compiler would produce. Without this, Rust is free to reorder fields or add padding however it likes, which would break things across the DLL boundary
 
 
+
+
+### Things to Think About
+
+- Every FFI call in this step requires `unsafe`. If a DLL has a bug that corrupts memory, what happens to the host process? How does this compare to a bug in a statically linked library?
+- We must compile the DLL and the host with the exact same Rust toolchain version. What would happen if we upgraded `rustc` for the host but forgot to rebuild the DLLs?
+- Could we design a plugin system where third parties ship DLLs for our host? What extra guarantees would we need beyond what we have here?
+- If the host process crashes because of a faulty plugin, all other plugins go down too. How could we get crash isolation without giving up dynamic loading entirely?
+
+
+
+
 ### When to Move On
 {: .no_toc }
 
@@ -1246,17 +1283,237 @@ If either of these concerns is an issue for you (as it is for me), the next logi
 We replaced static linking with runtime DLL loading using `libloading`. The `plugin_interface` crate defines the contract: traits, data types, FFI function signatures, and symbol names. Each component DLL exports three `extern "C"` functions (`_plugin_create`, `_plugin_destroy`, `_plugin_version`) and the host `app` loads them by name at runtime. The business logic is unchanged (42 in, "Value-0084" out). We gained true binary-level decoupling and the ability to swap plugins without recompiling the host. The price is `unsafe` code at every DLL boundary crossing and the requirement that everything be compiled with the same Rust toolchain.
 
 
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 06: Multi Processes
-The code is ready, not the comments.
+## Step 06 — Multi-process via Pipes
+
+
+### What Changed from Step 03
+
+Wait, Step 03? Yes. We are comparing against Step 03, not Step 05. Here is why. Step 04 was an experiment where we asked Cargo to produce DLLs but ended up still linking statically through `rlib`. Step 05 went all the way and loaded DLLs at runtime using `libloading`. Both steps were valuable learning experiences, but the DLL path is a niche pattern in the Rust ecosystem. So we rewind to Step 03 (the trait-based modular monolith) and take a completely different fork in the road.
+
+In Step 05, all components lived in the same address space. If a DLL crashed, the whole application went down with it. This time, we split the application into **separate processes**, each with its own isolated address space. If a service crashes, the orchestrator can detect it and react. No more shared memory, no more raw pointers, no more `unsafe`.
+
+The vocabulary changes too. We no longer talk about "components." From now on, they are **services**. We still run everything on the same machine, but each service is its own executable with its own `main()`.
+
+To keep things simple, the main application (we kept the name `app` in the code, though it really acts as an orchestrator) spawns both services as child processes. It does not expect them to be already running somewhere. It starts them, talks to them, and shuts them down.
+
+The big mental shift is this: we can no longer call functions directly. There are no library crates to link against, no DLLs to load. Instead, we set up a **message protocol**. The orchestrator sends JSON messages through stdin pipes, and the services reply through stdout pipes. Data travels as serialized text, not as in-memory structs.
+
+We kept the `get_version()` pattern from the DLL experiments because it is genuinely useful: the orchestrator can ask each service for its version right after startup, which is handy for logging and debugging.
+
+One more thing about the `app` crate: we display `[App]` in the terminal, but mentally we should think "orchestrator." We could rename it, but for consistency across the series we kept the same crate name.
+
+Now, about the traits we introduced in Step 03. They were a big deal back then because they defined the contract between `app` and its components. Here, traits become less central. The contract is now defined by the **message types** in `common/src/lib.rs`. The `Message` enum lists every possible exchange between the orchestrator and the services: `Process`, `ProcessResult`, `Transform`, `TransformResult`, `GetVersion`, `VersionResult`, `Shutdown`. If we think about it, the message definitions play the exact same role as the trait definitions did in Step 03. They describe what each service can do and what data it expects. The enforcement mechanism is different (runtime JSON parsing instead of compile-time trait bounds), but the intent is identical.
+
+
+### Show Me the Code
+
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step06_multi_process` or read the code on GitHub within your browser.
+
+
+
+#### **The common crate (message protocol)**
+
+The `common` crate is the shared vocabulary between the orchestrator and the services. Its `Cargo.toml` depends on `serde` and `serde_json`, nothing else. Inside `lib.rs`, we find the request/response structs (`ProcessRequest`, `ProcessResponse`, `TransformRequest`, `TransformResponse`, `VersionResponse`) and the `Message` enum that wraps them all.
+
+All the structs derive `Serialize` and `Deserialize` so they can travel as JSON over the pipes. The `Message` enum also provides two helper methods: `to_json()` for serialization (using `unwrap()` because we control the types and serialization cannot fail) and `from_json()` for deserialization (returning a `Result` because incoming JSON might be malformed).
+
+This crate is the equivalent of the `traits` crate from Step 03. It defines the contract. Any service that wants to participate in the pipeline must understand these message types.
+
+
+#### **The app (orchestrator)**
+
+The `app/Cargo.toml` depends on `common` (the message definitions, similar to how it depended on `traits` in Step 03) plus `serde` and `serde_json`. No dependency on `service1` or `service2`. The orchestrator does not know anything about the services' internals. It only knows the message protocol.
+
+The core abstraction is `ServiceHandle`, a struct that holds a `Child` process and the service name. Let us walk through it.
+
+`ServiceHandle::new()` spawns the service executable using `Command::new()`. Three pipe configurations matter here:
+
+- `stdin(Stdio::piped())` creates a writable pipe so the orchestrator can send messages to the service
+- `stdout(Stdio::piped())` creates a readable pipe so the orchestrator can receive responses
+- `stderr(Stdio::inherit())` lets the service's diagnostic output appear directly in the terminal
+
+That last one is important. Since stdout is reserved for JSON protocol messages, services use `eprintln!()` for all their diagnostic output (startup banners, progress logs, error messages). Because stderr is inherited, those messages show up in the same terminal as the orchestrator's own output. This is why we see the indented `[Service1]` and `[Service2]` lines interleaved with the `[App]` lines in the expected output.
+
+`send_message()` serializes a `Message` to JSON, writes it as a single line to the child's stdin, and flushes. The flush is essential: without it, the message might sit in a buffer and the service would never see it.
+
+`read_response()` wraps the child's stdout in a `BufReader`, reads one line (blocking until data arrives), and returns the raw JSON string. The caller is responsible for trimming and parsing.
+
+`shutdown()` sends a `Message::Shutdown` to the service and then calls `wait()` to reap the child process. Notice that `shutdown()` takes `self` by value, consuming the `ServiceHandle`. Once we shut down a service, the handle is gone. No accidental reuse.
+
+In `main()`, the orchestrator locates the service executables, spawns them, queries their versions, runs the processing pipeline (send 42 to service1, get 84 back, send 84 to service2, get "Value-0084" back), and shuts everything down.
+
+The error handling is intentionally lightweight. Most I/O operations use `?` to propagate errors, and JSON parsing uses `expect()` to crash immediately on protocol violations. In a production system we would want retry logic, timeouts, and proper error variants. But that would triple the code size and obscure the architecture lesson, so we keep it simple.
+
+One thing that is more verbose compared to calling functions in a library: there is real plumbing code here. We serialize, send, receive, deserialize, pattern-match on the response variant. What used to be `component1.process(value)` is now a whole send/receive/parse dance. That is the cost of process isolation.
+
+
+#### **The services**
+
+Let us look at `service1`. Service2 follows the exact same pattern, just with `TransformationService` instead of `ProcessingService`.
+
+The `Cargo.toml` depends on `common` (same message types) plus `serde` and `serde_json`.
+
+In `main.rs`, the interesting part is that the business logic is tiny: `ProcessingService` is a zero-sized struct whose `process()` method doubles the input value and returns a `ProcessResponse`. That is it. Same logic as every previous step.
+
+Everything else is plumbing. The `main()` function sets up a loop over `stdin.lock().lines()`. For each line, it tries to parse the JSON into a `Message` and dispatches with a `match`:
+
+- `Message::Process(request)` calls the business logic, wraps the result in `Message::ProcessResult`, serializes it, and writes it to stdout
+- `Message::GetVersion` builds a `VersionResult` using `env!("CARGO_PKG_VERSION")` (the version from `Cargo.toml`, baked in at compile time) and sends it back
+- `Message::Shutdown` breaks out of the loop, ending the process
+- Any other variant logs a warning to stderr
+- Parse errors are logged to stderr but the loop continues (resilient to garbage input)
+
+Notice that services never use `println!()`. All diagnostic output goes through `eprintln!()` (to stderr), and all protocol responses go through `writeln!(stdout, ...)` followed by `flush()`. Mixing those up would corrupt the JSON protocol.
+
+Both the orchestrator and the services run in a single-threaded, linear, synchronous context. No async, no threading. Simple and easy to reason about.
+
+Right now, service1 and service2 are monolithic single-file executables. Of course, we could apply everything we learned in Step 02 and Step 03 to give each service an internal modular architecture with multiple files, separate crates, unit tests, and integration tests. But that would be premature for what we are trying to demonstrate here.
+
+
+#### **Expected output**
+
+```text
+Phase 06: Multi process
+
+[App] Starting service: Service1
+[App] Starting service: Service2
+        [Service1] Processing Service
+        [Service1] Listening on STDIN for JSON messages...
+        [Service1] Initialized - Ready to process requests
+[App] service1 version: 0.1.0
+        [Service2] Transformation Service
+        [Service2] Listening on STDIN for JSON messages...
+        [Service2] Initialized - Ready to transform requests
+[App] service2 version: 0.2.0
+
+--- Processing Distributed Pipeline ---
+[App] Input value: 42
+[App] Sending to Service1...
+        [Service1] Input value: 42
+[App] Service1 result: value=84, processed=true
+
+[App] Sending to Service2...
+        [Service2] Input value: 84
+[App] Service2 result: original=84, transformed=Value-0084
+
+[App] Pipeline completed successfully!
+[App] Final result: Value-0084
+
+[App] Cleaning up services...
+[App] Shutting down service: Service1
+        [Service1] Shutdown signal received
+        [Service1] Shutting down
+[App] Shutting down service: Service2
+        [Service2] Shutdown signal received
+        [Service2] Shutting down
+[App] All services shut down
+
+[App] Execution complete
+```
+
+Tests are similar to what we have seen before. Each service has its own unit tests that exercise the business logic directly, without any pipe or message machinery involved.
+
+```text
+cargo test -p service2
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src\main.rs
+
+running 2 tests
+test test::transform_formats_value ... ok
+test test::transform_pads_small_value ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
+
+
+
+
+
+### Why This Step Matters
+
+We just crossed a major threshold. We went from calling functions (whether in libraries, through trait objects, or across DLL boundaries) to **exchanging messages between independent processes**. This is a fundamentally different model.
+
+The orchestrator and the services are fully decoupled. It does not matter if service1 needs a nuclear reactor to do its computation. From the orchestrator's perspective, it sends a request and gets a response. The service's internals are completely opaque.
+
+There are a few things we intentionally left simple in this step.
+
+**Error handling** is minimal. In a real system, we would want to handle cases like a service crashing mid-pipeline, malformed responses, timeouts when a service hangs, and so on. We could define error message variants, implement retry strategies, or use supervisor patterns. But all of that would make the code significantly more complex, and the point of this step is to show the architecture, not to build a production-grade framework.
+
+**Elasticity** is within reach. If the orchestrator has a lot of work to do, it can spawn additional instances of service1 or service2. Each new instance is just another child process with its own pipes. We get basic elasticity on a single machine. True scalability (spreading services across multiple machines) is not possible yet because we rely on local pipes, but we are getting closer. That is exactly what Step 07 and Step 08 will address.
+
+> **Try this (mentally):** Imagine the orchestrator spawns ten instances of service1 instead of one. Each gets its own `ServiceHandle` with its own pair of pipes. At the OS level, this is trivial. The real bottleneck is in the orchestrator itself: `read_response()` blocks until one service replies. To send work to all ten in parallel and collect responses as they come, we would need either threads (one per handle) or async I/O (`tokio` with `tokio::process::Command`). The services themselves would not change at all. This is a nice property of process isolation: scaling out is an orchestrator concern, not a service concern.
+
+
+
+
+### What Rust Gives Us Here
+
+Rust does not do anything magical for multi-process communication. Pipes and JSON are OS and library features, not language features. But a few things in the Rust ecosystem make this step smoother than it would be in many other languages.
+
+1. **`serde` and `serde_json`.** The derive macros (`#[derive(Serialize, Deserialize)]`) turn our structs and enums into serializable types with zero boilerplate. The `Message` enum serializes to JSON using Serde's default tagged representation: `{"Process":{"value":42}}`. Deserialization gives us back a proper Rust enum we can `match` on. No manual JSON parsing, no stringly-typed dispatch
+1. **`std::process::Command`.** The standard library gives us a clean API for spawning child processes with piped stdin/stdout/stderr. No external crate needed. The `Child` struct owns the process handle and the pipe endpoints, and dropping it cleans up resources
+1. **Pattern matching on enums.** The `match` block in each service's main loop is a perfect fit for message dispatch. The compiler ensures we handle every variant (or explicitly ignore them with a wildcard). If we add a new message type to the `Message` enum, every service that does not handle it will get a compiler warning
+1. **Ownership for cleanup.** `ServiceHandle::shutdown()` takes `self` by value. Once we call it, the handle is consumed and we cannot accidentally send messages to a dead service. The type system prevents use-after-shutdown bugs at compile time
+
+
+### Things to Think About
+
+- Our orchestrator spawns one instance of each service. What if we need ten instances of `service1` to handle load? What part of the orchestrator would need to change, and what part of the services would stay the same?
+- Right now, if `service2` crashes mid-pipeline, the orchestrator gets a broken pipe error and stops. How would we design a supervision strategy? Should the orchestrator restart the service, retry the message, or bail out?
+- We use JSON as our message format. What would change if we switched to a binary format like MessagePack or Protocol Buffers? What would we gain, what would we lose?
+- Our pipes only work on the same machine. If we need `service1` on machine A and `service2` on machine B, what is the minimum we need to change? (Hint: think about what the next two steps will introduce.)
+- How would we add monitoring? If someone asks "is service1 healthy right now?", where does that question go and who answers it?
+
+
+### When to Move On
+
+Pipes are great for parent/child communication on the same machine. But they have a fundamental limitation: both processes must run on the same host. The orchestrator spawns the services as children, and the pipes are local OS constructs.
+
+If we are going to rewrite the communication layer anyway, we might as well make the services capable of running anywhere, locally or on a remote machine. That is exactly what Step 07 does with HTTP, and what Step 08 pushes further with a message broker (NATS). The business logic stays the same. Only the transport changes.
+
+
+### Summary
+
+We split the application into three independent executables: an orchestrator (`app`) and two services (`service1`, `service2`). They communicate through JSON messages sent over stdin/stdout pipes. The `common` crate defines the message protocol (a `Message` enum with variants for each request/response type), replacing the trait definitions from Step 03. The business logic is unchanged (42 in, "Value-0084" out). We gained full process isolation, crash containment, and the foundation for multi-instance elasticity. The tradeoff is more plumbing code and the overhead of serialization compared to direct function calls.
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 07: Distributed HTTP
 The code is ready, not the comments.
+
+
+
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
