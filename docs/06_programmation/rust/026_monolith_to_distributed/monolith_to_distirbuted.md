@@ -620,6 +620,7 @@ The workspace structure also reflects the architecture of the application. By lo
 
 
 ### Things to Think About
+{: .no_toc }
 
 - We split code into three crates, but everything still compiles into one binary. What would need to change if we wanted to deploy `service1` and `service2` independently?
 - Right now `app` depends on both library crates directly. What happens if `service1` and `service2` start depending on each other? How would we prevent that?
@@ -802,6 +803,7 @@ The crucial thing is that **the application sets the tone**. The `app` decides i
 
 
 ### Things to Think About
+{: .no_toc }
 
 - Our traits have a single method each. What if `Processor` needed two methods (say, `process` and `validate`)? When does a trait become too fat?
 - We use `&dyn Trait` (dynamic dispatch). What would change if we switched to generics (`impl Trait`)? What would we gain, and what would we lose?
@@ -1017,6 +1019,7 @@ Worth noting that "DLL" here is the Windows terminology. On Linux the equivalent
 
 
 ### Things to Think About
+{: .no_toc }
 
 - We generate DLL files but never load them. In what scenario would generating both `rlib` and `cdylib` actually matter in a real project?
 - The DLL and the `rlib` contain the same logic. If we ship the DLL to someone else, can they use it from a different Rust version? From C? From Python?
@@ -1256,6 +1259,7 @@ Beyond that, a few things are really helpful:
 
 
 ### Things to Think About
+{: .no_toc }
 
 - Every FFI call in this step requires `unsafe`. If a DLL has a bug that corrupts memory, what happens to the host process? How does this compare to a bug in a statically linked library?
 - We must compile the DLL and the host with the exact same Rust toolchain version. What would happen if we upgraded `rustc` for the host but forgot to rebuild the DLLs?
@@ -1298,6 +1302,7 @@ We replaced static linking with runtime DLL loading using `libloading`. The `plu
 
 
 ### What Changed from Step 03
+{: .no_toc }
 
 Wait, Step 03? Yes. We are comparing against Step 03, not Step 05. Here is why. Step 04 was an experiment where we asked Cargo to produce DLLs but ended up still linking statically through `rlib`. Step 05 went all the way and loaded DLLs at runtime using `libloading`. Both steps were valuable learning experiences, but the DLL path is a niche pattern in the Rust ecosystem. So we rewind to Step 03 (the trait-based modular monolith) and take a completely different fork in the road.
 
@@ -1317,12 +1322,14 @@ Now, about the traits we introduced in Step 03. They were a big deal back then b
 
 
 ### Show Me the Code
+{: .no_toc }
 
 Download the [project](https://github.com/40tude/mono_to_distributed) and open `step06_multi_process` or read the code on GitHub within your browser.
 
 
 
 #### **The common crate (message protocol)**
+{: .no_toc }
 
 The `common` crate is the shared vocabulary between the orchestrator and the services. Its `Cargo.toml` depends on `serde` and `serde_json`, nothing else. Inside `lib.rs`, we find the request/response structs (`ProcessRequest`, `ProcessResponse`, `TransformRequest`, `TransformResponse`, `VersionResponse`) and the `Message` enum that wraps them all.
 
@@ -1332,6 +1339,7 @@ This crate is the equivalent of the `traits` crate from Step 03. It defines the 
 
 
 #### **The app (orchestrator)**
+{: .no_toc }
 
 The `app/Cargo.toml` depends on `common` (the message definitions, similar to how it depended on `traits` in Step 03) plus `serde` and `serde_json`. No dependency on `service1` or `service2`. The orchestrator does not know anything about the services' internals. It only knows the message protocol.
 
@@ -1359,6 +1367,7 @@ One thing that is more verbose compared to calling functions in a library: there
 
 
 #### **The services**
+{: .no_toc }
 
 Let us look at `service1`. Service2 follows the exact same pattern, just with `TransformationService` instead of `ProcessingService`.
 
@@ -1382,6 +1391,7 @@ Right now, service1 and service2 are monolithic single-file executables. Of cour
 
 
 #### **Expected output**
+{: .no_toc }
 
 ```text
 Phase 06: Multi process
@@ -1442,6 +1452,7 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 ### Why This Step Matters
+{: .no_toc }
 
 We just crossed a major threshold. We went from calling functions (whether in libraries, through trait objects, or across DLL boundaries) to **exchanging messages between independent processes**. This is a fundamentally different model.
 
@@ -1459,6 +1470,7 @@ There are a few things we intentionally left simple in this step.
 
 
 ### What Rust Gives Us Here
+{: .no_toc }
 
 Rust does not do anything magical for multi-process communication. Pipes and JSON are OS and library features, not language features. But a few things in the Rust ecosystem make this step smoother than it would be in many other languages.
 
@@ -1469,6 +1481,7 @@ Rust does not do anything magical for multi-process communication. Pipes and JSO
 
 
 ### Things to Think About
+{: .no_toc }
 
 - Our orchestrator spawns one instance of each service. What if we need ten instances of `service1` to handle load? What part of the orchestrator would need to change, and what part of the services would stay the same?
 - Right now, if `service2` crashes mid-pipeline, the orchestrator gets a broken pipe error and stops. How would we design a supervision strategy? Should the orchestrator restart the service, retry the message, or bail out?
@@ -1478,6 +1491,7 @@ Rust does not do anything magical for multi-process communication. Pipes and JSO
 
 
 ### When to Move On
+{: .no_toc }
 
 Pipes are great for parent/child communication on the same machine. But they have a fundamental limitation: both processes must run on the same host. The orchestrator spawns the services as children, and the pipes are local OS constructs.
 
@@ -1485,6 +1499,7 @@ If we are going to rewrite the communication layer anyway, we might as well make
 
 
 ### Summary
+{: .no_toc }
 
 We split the application into three independent executables: an orchestrator (`app`) and two services (`service1`, `service2`). They communicate through JSON messages sent over stdin/stdout pipes. The `common` crate defines the message protocol (a `Message` enum with variants for each request/response type), replacing the trait definitions from Step 03. The business logic is unchanged (42 in, "Value-0084" out). We gained full process isolation, crash containment, and the foundation for multi-instance elasticity. The tradeoff is more plumbing code and the overhead of serialization compared to direct function calls.
 
