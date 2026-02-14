@@ -1583,7 +1583,385 @@ We split the application into three independent executables: an orchestrator (`a
 </div>
 
 
-The code is ready, not the comments.
+### What Changed from Step 06
+
+This is another big shift. We still exchange messages between services, but they now travel over HTTP instead of stdin/stdout pipes. That single change unlocks something we could not do before: the services no longer need to run on the same machine as the orchestrator. They do not even need to be started by the orchestrator. Each service is an independent HTTP server that we launch in its own terminal, and the `app` crate simply sends HTTP requests to them.
+
+The directory layout is identical to Step 06. Same four crates, same names.
+
+```text
+step07_distributed_http/
+│   Cargo.toml
+├───app
+│   │   Cargo.toml
+│   └───src
+│           main.rs
+├───common
+│   │   Cargo.toml
+│   └───src
+│           lib.rs
+├───service1
+│   │   Cargo.toml
+│   └───src
+│           main.rs
+└───service2
+    │   Cargo.toml
+    └───src
+            main.rs
+```
+
+The root `Cargo.toml` is the same workspace definition. What changed is underneath.
+
+The `common` crate got simpler. In Step 06, it defined a `Message` enum with seven variants covering every possible exchange. Here, we dropped the enum entirely. We only have four plain structs: `ProcessRequest`, `ProcessResponse`, `TransformRequest`, `TransformResponse`. Each carries a `request_id` field alongside the payload data. The routing is now handled by HTTP endpoints (`/process`, `/transform`), so we do not need an envelope enum to tell services which operation we want. The URL itself carries that intent.
+
+The services switched from "read stdin in a loop" to "listen on a TCP port and handle HTTP routes." They use [Axum](https://github.com/tokio-rs/axum) as the HTTP framework and `tokio` as the async runtime. Service1 listens on port 3001, Service2 on port 3002. Both expose a `POST` endpoint for their business logic and a `GET /health` endpoint.
+
+The `app` crate no longer spawns child processes. It does not manage lifetimes, pipes, or shutdowns. It just creates an HTTP client with `reqwest`, sends POST requests, and reads the JSON responses. The code is noticeably shorter and simpler than the Step 06 orchestrator.
+
+One new addition: every request now carries a `request_id` (a UUID). In the sequential version of the app, it might seem like overkill. But we will see in a moment why it matters.
+
+
+### Show Me the Code
+
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step07_distributed_http` or read the code on GitHub within your browser.
+
+
+#### **The common crate**
+
+The `common/Cargo.toml` depends only on `serde`. No more `serde_json` needed here since each service handles its own serialization. The `lib.rs` defines four structs, all deriving `Serialize`, `Deserialize`, `Debug`, and `Clone`:
+
+```rust
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ProcessRequest {
+    pub value: i32,
+    pub request_id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ProcessResponse {
+    pub value: i32,
+    pub processed: bool,
+    pub request_id: String,
+}
+```
+
+`TransformRequest` and `TransformResponse` follow the same pattern. Compared to Step 06's `Message` enum, this is much lighter. The contract between services is now split between the struct definitions (what data travels) and the HTTP routes (where it goes). Together they play the same role as the `Message` enum did before, just expressed differently.
+
+
+#### **The services**
+
+Let us look at `service1`. Service2 follows the exact same pattern with `transform` instead of `process`.
+
+The `Cargo.toml` depends on `axum`, `common`, `serde`, `serde_json`, and `tokio`. In `main.rs`, the structure is straightforward:
+
+```rust
+#[tokio::main]
+async fn main() {
+    eprintln!("\t[Service1] Processing  Service");
+
+    let app = Router::new()
+        .route("/process", post(handle_process))
+        .route("/health", get(handle_health));
+
+    let addr = format!("0.0.0.0:{PORT}");
+    eprintln!("\t[Service1] Listening on http://{addr}");
+
+    let listener = TcpListener::bind(&addr).await.expect("failed to bind port");
+    axum::serve(listener, app).await.expect("server error");
+}
+```
+
+We define two routes: `POST /process` for the business logic and `GET /health` for a basic liveness check. Axum handles the JSON deserialization for us. The handler function receives a `Json<ProcessRequest>` and returns a `Json<ProcessResponse>`. That is it. No manual parsing, no `match` on message variants.
+
+The business logic itself is extracted into a standalone `process()` function:
+
+```rust
+fn process(request: ProcessRequest) -> ProcessResponse {
+    let result = request.value * 2;
+    ProcessResponse {
+        value: result,
+        processed: true,
+        request_id: request.request_id,
+    }
+}
+```
+
+Same logic as every previous step. The `request_id` passes through unchanged so the caller can correlate requests and responses.
+
+Notice that services still use `eprintln!()` for their diagnostic output, just like in Step 06. Even though we are no longer using stdout for protocol messages, it is a good habit. The service's stdout is not piped to anyone anymore, but keeping diagnostics on stderr means we could add structured logging later without interfering with any future tooling.
+
+Also notice: there is no shutdown handler. In Step 06, the orchestrator sent a `Shutdown` message and reaped the child process. Here, the services run until we press Ctrl+C. They are independent processes, not children. This is simpler but also means we need to manage their lifecycle externally.
+
+
+#### **The app (HTTP client)**
+
+The `app/Cargo.toml` brings in new dependencies: `reqwest` (HTTP client with JSON support), `tokio`, and `uuid`. No more `std::process::Command`, no more pipe management.
+
+The `main()` function is linear and easy to follow:
+
+```rust
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = reqwest::Client::new();
+
+    let request_id = Uuid::new_v4().to_string();
+    let input_value = 42;
+
+    // Step 1: Send to Service1
+    let process_request = ProcessRequest {
+        value: input_value,
+        request_id: request_id.clone(),
+    };
+
+    let result1: ProcessResponse = client
+        .post(format!("{SERVICE1_URL}/process"))
+        .json(&process_request)
+        .send()
+        .await?
+        .json()
+        .await?;
+
+    // Step 2: Send to Service2
+    let transform_request = TransformRequest {
+        value: result1.value,
+        request_id: request_id.clone(),
+    };
+
+    let result2: TransformResponse = client
+        .post(format!("{SERVICE2_URL}/transform"))
+        .json(&transform_request)
+        .send()
+        .await?
+        .json()
+        .await?;
+
+    println!("[App] Final result: {}", result2.transformed);
+    Ok(())
+}
+```
+
+Compare this to Step 06's orchestrator. No `ServiceHandle`, no `send_message()` / `read_response()` dance, no `BufReader`, no explicit `flush()`. We build a request, post it, await the response, and deserialize. The `reqwest` client handles connection pooling, content-type headers, and serialization under the hood. The plumbing code we spent paragraphs describing in Step 06 simply vanishes.
+
+
+#### **Expected output**
+
+To run the full pipeline, we need three terminals:
+
+```text
+# Terminal 1
+cargo run -p service1   # starts on http://127.0.0.1:3001
+
+# Terminal 2
+cargo run -p service2   # starts on http://127.0.0.1:3002
+
+# Terminal 3
+cargo run -p app        # sends HTTP requests to service1 & service2
+```
+
+If you see this window, click `Authorize`:
+
+<div align="center">
+<img src="./assets/img13.webp" alt="Do you want to allow this app to communicate on public and private networks?" width="450" loading="lazy"/><br/>
+<span>Do you want to allow this app to communicate on public and private networks?</span>
+</div>
+
+
+The app terminal shows:
+
+```text
+Phase 07: Distributed system (HTTP)
+
+
+--- Processing Distributed Pipeline ---
+[App] Starting request: 6a80b91f-d85d-44c6-9a25-787e1e5f3a87
+[App] Input value: 42
+
+[App] Sending to Service1...
+[App] Service1 result: value=84, processed=true
+
+[App] Sending to Service2...
+[App] Service2 result: original=84, transformed=Value-0084
+
+[App] Pipeline completed successfully!
+[App] Final result: Value-0084
+
+Execution complete
+```
+
+If we run the app three times, the service2 terminal accumulates the requests. Each one shows a different `request_id`:
+
+```text
+cargo run -p service2
+        [Service2] Transformation Service
+        [Service2] Listening on http://0.0.0.0:3002
+        [Service2] Transforming request: 02718f45-8b58-417e-820d-29caf75b5a63
+        [Service2] Input value: 84
+        [Service2] Transforming request: d5615a68-e7a6-4345-90df-98c6cce366fc
+        [Service2] Input value: 84
+        [Service2] Transforming request: 6a80b91f-d85d-44c6-9a25-787e1e5f3a87
+        [Service2] Input value: 84
+```
+
+The tests are similar to what we have seen before. Each service tests its business logic directly, without any HTTP machinery involved.
+
+```text
+cargo test -p service1
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.50s
+     Running unittests src\main.rs
+
+running 2 tests
+test test::negative_value_stays_negative ... ok
+test test::process_doubles_value ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+```
+
+
+#### **The concurrent version (main_multi.bak)**
+
+The `request_id` might seem like overkill when we process a single value sequentially. But what happens when we process five values at the same time?
+
+> **Try this**
+> While `Service1` and `Service2` are **still running** in their terminals:
+> * Rename `app\src\main.rs` to `app\src\main.bak`
+> * Rename `app\src\main_multi.bak` to `app\src\main.rs`
+> * In the terminal where the app was running:
+>     ```powershell
+>     cargo clean -p app
+>     cargo build -p app
+>     cargo run -p app
+>     ```
+> We should see the benefit of using `request_id`:
+
+```text
+Phase 07: Distributed system (HTTP)
+
+--- Processing Distributed Pipeline (5 values concurrently) ---
+
+[App] Spawning pipeline for value=10  request_id=5122453d
+[App] Spawning pipeline for value=20  request_id=fbb63346
+[App] Spawning pipeline for value=30  request_id=ac31155f
+[App] Spawning pipeline for value=42  request_id=32ddf1c7
+[App] Spawning pipeline for value=50  request_id=425b78c7
+
+[fbb63346] Service1 done: value=20 -> processed=40
+[32ddf1c7] Service1 done: value=42 -> processed=84
+[425b78c7] Service1 done: value=50 -> processed=100
+[ac31155f] Service1 done: value=30 -> processed=60
+[5122453d] Service1 done: value=10 -> processed=20
+[32ddf1c7] Service2 done: value=84 -> transformed=Value-0084
+[fbb63346] Service2 done: value=40 -> transformed=Value-0040
+[425b78c7] Service2 done: value=100 -> transformed=Value-0100
+[App] Completed: value=42 -> Value-0084  request_id=32ddf1c7
+[App] Completed: value=20 -> Value-0040  request_id=fbb63346
+[ac31155f] Service2 done: value=60 -> transformed=Value-0060
+[App] Completed: value=50 -> Value-0100  request_id=425b78c7
+[App] Completed: value=30 -> Value-0060  request_id=ac31155f
+[5122453d] Service2 done: value=20 -> transformed=Value-0020
+[App] Completed: value=10 -> Value-0020  request_id=5122453d
+
+--- Final Results (sorted by input value) ---
+  10 -> Value-0020  [5122453d]
+  20 -> Value-0040  [fbb63346]
+  30 -> Value-0060  [ac31155f]
+  42 -> Value-0084  [32ddf1c7]
+  50 -> Value-0100  [425b78c7]
+
+Execution complete
+```
+
+Responses come back in arbitrary order. Without the `request_id`, we would have no way to figure out which result belongs to which input. The ID acts as a correlation token, tying each response back to the request that triggered it. This is a classic pattern in distributed systems, and it is exactly why we included it from the start.
+
+The concurrent version uses `tokio::task::JoinSet`. We create a `JoinSet`, spawn one task per input value, and collect results as they complete:
+
+```rust
+let mut join_set = tokio::task::JoinSet::new();
+
+for &value in &INPUT_VALUES {
+    let request_id = Uuid::new_v4().to_string();
+    let client = client.clone();
+    let rid = request_id.clone();
+    join_set.spawn(async move { run_pipeline(client, value, rid).await });
+}
+```
+
+The `run_pipeline()` function is essentially a copy of the sequential `main()` logic: build a `ProcessRequest`, post to service1, take the result, build a `TransformRequest`, post to service2, return everything.
+
+When collecting results, we run into an interesting line:
+
+```rust
+let (value, transformed, request_id) = outcome??;
+```
+
+Two question marks. The first `?` unwraps the `Result` from `JoinSet::join_next()`, which can fail with a `tokio::task::JoinError` (if the spawned task panicked). The second `?` unwraps the `Result` returned by `run_pipeline()` itself.
+
+This double unwrap has a ripple effect on the function signature. The sequential version used:
+
+```rust
+async fn main() -> Result<(), Box<dyn std::error::Error>> { ... }
+```
+
+The concurrent version needs:
+
+```rust
+async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> { ... }
+```
+
+Why? Because `tokio::task::spawn` requires the future to be `Send`, so `run_pipeline` must return a `Send + Sync` error type. When the `?` operator tries to convert `Box<dyn Error + Send + Sync>` into `Box<dyn Error>`, Rust looks for `impl From<Box<dyn Error + Send + Sync>> for Box<dyn Error>`. That conversion requires `Box<dyn Error + Send + Sync>` to implement `Error` itself, which requires `Sized`, and `dyn Error + Send + Sync` is not `Sized`. The compiler rejects it.
+
+The fix is simple: align `main`'s return type with `run_pipeline`'s, so both use `Box<dyn Error + Send + Sync>`. The `?` operator has nothing to convert since both types match.
+
+In short: sequential version means no `Send` constraint, so `Box<dyn Error>` is enough. Concurrent version with `JoinSet` means everything must be `Send + Sync`, and that constraint propagates all the way up to `main`.
+
+Worth noting: the services themselves did not change at all. They have no idea whether the client is sending one request or fifty. That is the beauty of HTTP. The concurrency is entirely the client's concern.
+
+
+### Why This Step Matters
+
+We talked about elasticity and scalability back in Step 02 and Step 06. In Step 06, we had process isolation but were still tied to a single machine because pipes are local OS constructs. The orchestrator had to spawn the services as children.
+
+With HTTP, that constraint is gone. Service1 could run on machine A, service2 on machine B, and the app on machine C. We just change the URL constants. The code does not care whether `127.0.0.1` is localhost or a remote server across the ocean.
+
+This is also the first time we get real concurrent request handling for free. Axum, built on top of tokio, handles each incoming request in its own async task. If ten clients send requests simultaneously, all ten get processed concurrently without us writing a single line of threading code. In Step 06, the services were single-threaded loops reading from stdin. Here, they are full-fledged servers.
+
+The tradeoff is that we now depend on the network. If service1 is down, the app gets a connection error instead of a clean pipe error. If the network is slow, requests take longer. We also need to think about things we never had to worry about before: timeouts, retries, connection pooling, TLS for production deployments. The `reqwest` client handles some of these automatically (connection pooling, for instance), but others are left to us.
+
+The `GET /health` endpoint on each service is a small but important addition. It gives us a way to check whether a service is alive before sending it work. In a production system, a load balancer or orchestration platform (like Kubernetes) would poll this endpoint periodically and route traffic only to healthy instances.
+
+
+### What Rust Gives Us Here
+
+1. **`axum` and `tokio`.** Axum is remarkably ergonomic for building HTTP services. We define a route, point it at a handler function, and Axum takes care of deserializing JSON request bodies, serializing responses, setting content-type headers, and running everything on the tokio async runtime. The handler signature `async fn handle_process(Json(request): Json<ProcessRequest>) -> Json<ProcessResponse>` is almost self-documenting
+1. **`reqwest`.** On the client side, `reqwest` provides a clean async HTTP client that integrates perfectly with tokio. Building a request, sending it, and parsing the JSON response is a three-line chain. It handles connection pooling, redirects, and encoding transparently
+1. **`serde` derive macros.** Same story as previous steps, but worth repeating. Our request and response structs derive `Serialize` and `Deserialize`, and both Axum and reqwest use serde under the hood. We never write a JSON parser. The types are the contract
+1. **`tokio::task::JoinSet`.** For the concurrent version, JoinSet gives us a clean way to spawn multiple async tasks and collect their results as they complete. It is the async equivalent of spawning threads and joining them, but much lighter weight. Each spawned task is a green thread on the tokio runtime, not an OS thread
+1. **The `?` operator and error type propagation.** The double `??` pattern and the `Send + Sync` constraint we encountered in the concurrent version are a good example of how Rust's type system forces us to think about error propagation explicitly. It might feel annoying at first, but it caught a real issue: our error types needed to be thread-safe for concurrent code. In another language, that would have been a subtle runtime bug
+
+
+### Things to Think About
+
+- Both services listen on hardcoded ports. What happens if port 3001 is already in use? How would we make the port configurable (environment variables, config file, command line arguments)?
+- Our services have a `GET /health` endpoint. How would we use it? Think about a script or a tool that checks all services before sending the first request.
+- Right now, if service1 is down, the app gets a connection refused error and crashes. How would we add retry logic? How many retries before giving up? Should we use exponential backoff?
+- We saw that the concurrent version processes five values at once. What if we need to process a thousand? Would we spawn a thousand tasks, or should we use some form of concurrency limit?
+- The services currently accept requests from anyone. How would we add authentication? Where would the credentials live?
+
+
+### When to Move On
+
+We have a clean HTTP architecture, and it works well. But there are a few things that start feeling awkward.
+
+The app needs to know the exact URL of each service. If we add a third service, we need to update the app. If a service moves to a different port or host, we need to update the app. The app is tightly coupled to the service topology.
+
+There is also no built-in way for services to talk to each other. Our pipeline is strictly "app calls service1, then app calls service2." What if service1 needed to notify service2 directly? We would have to wire up more URLs, more client code, more coupling.
+
+These are exactly the problems that a message broker solves. In Step 08, we introduce NATS. Services publish and subscribe to subjects instead of calling URLs. The broker handles routing, and nobody needs to know where anyone else lives. Same business logic, same results, radically different wiring.
+
+
+### Summary
+
+We replaced stdin/stdout pipes with HTTP. The services became independent Axum servers listening on ports 3001 and 3002, each exposing a `POST` endpoint for their business logic and a `GET /health` endpoint. The app became a lightweight `reqwest` client that sends JSON requests and reads JSON responses. The `common` crate simplified from a `Message` enum to four plain request/response structs, because HTTP routes now carry the intent that the enum variants used to encode. We introduced `request_id` as a correlation token, which proved its value in the concurrent version where five pipelines run simultaneously through `tokio::task::JoinSet`. The business logic is unchanged (42 in, "Value-0084" out). We gained network transparency (services can run anywhere), native concurrency (Axum handles multiple requests in parallel), and a simpler client. The tradeoff is network dependency and the need to manage service lifecycle externally.
+
 
 
 
