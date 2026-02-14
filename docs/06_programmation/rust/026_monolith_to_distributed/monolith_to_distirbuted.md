@@ -2005,6 +2005,12 @@ The code is ready, not the comments.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Conclusion
+
+<div align="center">
+<img src="./assets/img14.webp" alt="From single file monolith to fully distributed in 8 steps" width="900" loading="lazy"/><br/>
+<span>From single file monolith to fully distributed in 8 steps</span>
+</div>
+
 It is on its way...
 
 
