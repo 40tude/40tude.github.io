@@ -254,7 +254,7 @@ At this point, honestly, Rust gives us one thing: it compiles. The borrow checke
 
 If the code does the job and we are done with it, let us not touch a thing. Let's run `cargo install` and move on.
 
-But if the application is not finished and we keep wanting to add "just one more little feature", then it is time to look up from the keyboard and take advantage of everything Rust's ecosystem and build system can offer.
+But if the application is not finished and we keep wanting to add "just one more little feature", then it is time to look up from the keyboard and take advantage of everything Rust's ecosystem and [build system]({%link docs/06_programmation/rust/014_build_system/from_src_to_exe.md%}) can offer.
 
 
 ### Summary
@@ -318,7 +318,7 @@ step01_multifiles_monolith/
 
 Download the [project](https://github.com/40tude/mono_to_distributed) and open `step01_multifiles_monolith` or read the code on GitHub withing your browser.
 
-We keep only the `main()` function in `main.rs`. Then, and here it is pretty straightforward, we move everything related to `Component1` into `component1.rs` and do the same with `Component2` into `component2.rs`. In real life it is rarely this clean cut, but we have to start somewhere. Go for it, do not be afraid. In the worst case the Rust build system will bark at us and point us in the right direction.
+We keep only the `main()` function in `main.rs`. Then, and here it is pretty straightforward, we move everything related to `Component1` into `component1.rs` and do the same with `Component2` into `component2.rs`. In real life it is rarely this clean cut, but we have to start somewhere. Go for it, do not be afraid. In the worst case the Rust [build system]({%link docs/06_programmation/rust/014_build_system/from_src_to_exe.md%}) will bark at us and point us in the right direction.
 
 Next, we go back to `main.rs` and at the very top we bring the `component1` and `component2` modules into scope. This part is important, so let us make sure we have the right mental model here.
 
@@ -541,7 +541,7 @@ Now here is a nice detail about testing.
 * In `component1`, the tests are inside the source file using `#[cfg(test)] mod tests` with `use super::*;`. This is a unit test: it has access to everything in the module, including private items.
 * In `component2`, the tests live in a separate `tests/` directory, which forces them to behave like an external client. The test file has to write `use component2::Component2;` because it can only access the public API. Both approaches have their place, and it is good to know the difference early on.
 
-> **Take the time to break things.** Seriously. Rename crates, mess up paths, swap directory names and package names, let the build system complain. Keep going until the relationship between crates, modules, directory names, package names, and the build system clicks in our head. This is one of those things that is much easier to learn by making mistakes than by reading documentation.
+> **Take the time to break things.** Seriously. Rename crates, mess up paths, swap directory names and package names, let the build system complain. Keep going until the relationship between crates, modules, directory names, package names, and the [build system]({%link docs/06_programmation/rust/014_build_system/from_src_to_exe.md%}) clicks in our head. This is one of those things that is much easier to learn by making mistakes than by reading documentation.
 
 
 #### **Expected output**
@@ -1396,7 +1396,7 @@ That last one is important. Since stdout is reserved for JSON protocol messages,
 
 In `main()`, the orchestrator locates the service executables, spawns them, queries their versions, runs the processing pipeline (send 42 to service1, get 84 back, send 84 to service2, get "Value-0084" back), and shuts everything down.
 
-The error handling is intentionally lightweight. Most I/O operations use `?` to propagate errors, and JSON parsing uses `expect()` to crash immediately on protocol violations. In a production system we would want retry logic, timeouts, and proper error variants. But that would triple the code size and obscure the architecture lesson, so we keep it simple.
+The [error handling]({%link docs/06_programmation/rust/016_errors/errors_00.md%}) is intentionally lightweight. Most I/O operations use `?` to propagate errors, and JSON parsing uses `expect()` to crash immediately on protocol violations. In a production system we would want retry logic, timeouts, and proper error variants. But that would triple the code size and obscure the architecture lesson, so we keep it simple.
 
 One thing that is more verbose compared to calling functions in a library: there is real plumbing code here. We serialize, send, receive, deserialize, pattern-match on the response variant. What used to be `component1.process(value)` is now a whole send/receive/parse dance. That is the cost of process isolation.
 
@@ -1609,4 +1609,9 @@ It is on its way...
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
+* [Learning Modular Monolith Architecture with Rust]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%})
+* [Hexagonal Architecture in Rust:]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) A Beginner’s Guide
+* [SOLID principles in Rust:]({%link docs/06_programmation/rust/022_solid/solid_00.md%}) A Practical Guide
+* Read [Clean Architecture](https://amzn.eu/d/069Sfh5P)
+* [NATS](https://docs.nats.io/)
 * (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phones. It is hosted for free on Heroku and may be slow to startup.
