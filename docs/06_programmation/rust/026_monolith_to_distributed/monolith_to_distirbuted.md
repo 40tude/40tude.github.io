@@ -1584,6 +1584,7 @@ We split the application into three independent executables: an orchestrator (`a
 
 
 ### What Changed from Step 06
+{: .no_toc }
 
 This is another big shift. We still exchange messages between services, but they now travel over HTTP instead of stdin/stdout pipes. That single change unlocks something we could not do before: the services no longer need to run on the same machine as the orchestrator. They do not even need to be started by the orchestrator. Each service is an independent HTTP server that we launch in its own terminal, and the `app` crate simply sends HTTP requests to them.
 
@@ -1622,11 +1623,13 @@ One new addition: every request now carries a `request_id` (a UUID). In the sequ
 
 
 ### Show Me the Code
+{: .no_toc }
 
 Download the [project](https://github.com/40tude/mono_to_distributed) and open `step07_distributed_http` or read the code on GitHub within your browser.
 
 
 #### **The common crate**
+{: .no_toc }
 
 The `common/Cargo.toml` depends only on `serde`. No more `serde_json` needed here since each service handles its own serialization. The `lib.rs` defines four structs, all deriving `Serialize`, `Deserialize`, `Debug`, and `Clone`:
 
@@ -1649,6 +1652,7 @@ pub struct ProcessResponse {
 
 
 #### **The services**
+{: .no_toc }
 
 Let us look at `service1`. Service2 follows the exact same pattern with `transform` instead of `process`.
 
@@ -1694,6 +1698,7 @@ Also notice: there is no shutdown handler. In Step 06, the orchestrator sent a `
 
 
 #### **The app (HTTP client)**
+{: .no_toc }
 
 The `app/Cargo.toml` brings in new dependencies: `reqwest` (HTTP client with JSON support), `tokio`, and `uuid`. No more `std::process::Command`, no more pipe management.
 
@@ -1744,6 +1749,7 @@ Compare this to Step 06's orchestrator. No `ServiceHandle`, no `send_message()` 
 
 
 #### **Expected output**
+{: .no_toc }
 
 To run the full pipeline, we need three terminals:
 
@@ -1818,6 +1824,7 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 
 #### **The concurrent version (main_multi.bak)**
+{: .no_toc }
 
 The `request_id` might seem like overkill when we process a single value sequentially. But what happens when we process five values at the same time?
 
@@ -1917,6 +1924,7 @@ Worth noting: the services themselves did not change at all. They have no idea w
 
 
 ### Why This Step Matters
+{: .no_toc }
 
 We talked about elasticity and scalability back in Step 02 and Step 06. In Step 06, we had process isolation but were still tied to a single machine because pipes are local OS constructs. The orchestrator had to spawn the services as children.
 
@@ -1930,6 +1938,7 @@ The `GET /health` endpoint on each service is a small but important addition. It
 
 
 ### What Rust Gives Us Here
+{: .no_toc }
 
 1. **`axum` and `tokio`.** Axum is remarkably ergonomic for building HTTP services. We define a route, point it at a handler function, and Axum takes care of deserializing JSON request bodies, serializing responses, setting content-type headers, and running everything on the tokio async runtime. The handler signature `async fn handle_process(Json(request): Json<ProcessRequest>) -> Json<ProcessResponse>` is almost self-documenting
 1. **`reqwest`.** On the client side, `reqwest` provides a clean async HTTP client that integrates perfectly with tokio. Building a request, sending it, and parsing the JSON response is a three-line chain. It handles connection pooling, redirects, and encoding transparently
@@ -1939,6 +1948,7 @@ The `GET /health` endpoint on each service is a small but important addition. It
 
 
 ### Things to Think About
+{: .no_toc }
 
 - Both services listen on hardcoded ports. What happens if port 3001 is already in use? How would we make the port configurable (environment variables, config file, command line arguments)?
 - Our services have a `GET /health` endpoint. How would we use it? Think about a script or a tool that checks all services before sending the first request.
@@ -1948,6 +1958,7 @@ The `GET /health` endpoint on each service is a small but important addition. It
 
 
 ### When to Move On
+{: .no_toc }
 
 We have a clean HTTP architecture, and it works well. But there are a few things that start feeling awkward.
 
@@ -1959,6 +1970,7 @@ These are exactly the problems that a message broker solves. In Step 08, we intr
 
 
 ### Summary
+{: .no_toc }
 
 We replaced stdin/stdout pipes with HTTP. The services became independent Axum servers listening on ports 3001 and 3002, each exposing a `POST` endpoint for their business logic and a `GET /health` endpoint. The app became a lightweight `reqwest` client that sends JSON requests and reads JSON responses. The `common` crate simplified from a `Message` enum to four plain request/response structs, because HTTP routes now carry the intent that the enum variants used to encode. We introduced `request_id` as a correlation token, which proved its value in the concurrent version where five pipelines run simultaneously through `tokio::task::JoinSet`. The business logic is unchanged (42 in, "Value-0084" out). We gained network transparency (services can run anywhere), native concurrency (Axum handles multiple requests in parallel), and a simpler client. The tradeoff is network dependency and the need to manage service lifecycle externally.
 
