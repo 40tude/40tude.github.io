@@ -106,6 +106,11 @@ It is on its way...
 <!-- ###################################################################### -->
 ## Step 00: Single-file Monolith
 
+<div align="center">
+<img src="./assets/img04.webp" alt="Single File Monolith" width="900" loading="lazy"/><br/>
+<span>Single File Monolith</span>
+</div>
+
 In the real world, picture all our code living in one single `main.rs` file. And we are not talking about a cute 50 line script. Think 500 lines, maybe more. At some point we stop enjoying reading our own code and we start worrying about breaking things every time we touch something. We have all been there.
 
 Here we are just taking a snapshot of the situation. No judgment. We work with what we have. In this project the code itself is deliberately simple because we care more about project organization than business logic. But imagine the file is way longer than what we see here.
@@ -287,6 +292,11 @@ We wrote code that works. That is awesome and not everyone can do it. But everyt
 <!-- ###################################################################### -->
 ## Step 01: Multi-file Monolith
 
+<div align="center">
+<img src="./assets/img05.webp" alt="Multi-file Monolith" width="900" loading="lazy"/><br/>
+<span>Multi-file Monolith</span>
+</div>
+
 
 ### What Changed from Step 00
 {: .no_toc }
@@ -443,6 +453,11 @@ We split a monolithic file into 3 files and gained readability, easier code revi
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 02: Workspace Monolith
+
+<div align="center">
+<img src="./assets/img06.webp" alt="Workspace Monolith" width="900" loading="lazy"/><br/>
+<span>Workspace Monolith</span>
+</div>
 
 
 ### What Changed from Step 01
@@ -675,6 +690,11 @@ We split our project into a Cargo workspace with 3 independent crates. We still 
 <!-- ###################################################################### -->
 ## Step 03: Trait-based Decoupling
 
+<div align="center">
+<img src="./assets/img07.webp" alt="Trait-based Decoupling" width="900" loading="lazy"/><br/>
+<span>Trait-based Decoupling</span>
+</div>
+
 Before reading further...
 * If you want to dig deeper into **SOLID** and the **Dependency Inversion Principle** (DIP) in Rust, there is a [dedicated page]({%link docs/06_programmation/rust/022_solid/solid_04.md%}) here.
 * And follow the next link for a primer on  [Hexagonal Architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%})
@@ -854,6 +874,11 @@ The business logic is identical to Step 02. Same input (42), same output ("Value
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 04: Plugin DLL
+
+<div align="center">
+<img src="./assets/img08.webp" alt="Plugin DLL" width="900" loading="lazy"/><br/>
+<span>Plugin DLL</span>
+</div>
 
 
 ### What Changed from Step 03
@@ -1050,6 +1075,11 @@ We added `crate-type = ["cdylib", "rlib"]` to our component crates. Cargo now pr
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 05: Runtime DLL Loading
+
+<div align="center">
+<img src="./assets/img09.webp" alt="Runtime DLL Loading" width="900" loading="lazy"/><br/>
+<span>Runtime DLL Loading</span>
+</div>
 
 
 ### What Changed from Step 04
@@ -1300,6 +1330,11 @@ We replaced static linking with runtime DLL loading using `libloading`. The `plu
 <!-- ###################################################################### -->
 ## Step 06: Multi-process via Pipes
 
+<div align="center">
+<img src="./assets/img10.webp" alt="Multi-process via Pipes" width="900" loading="lazy"/><br/>
+<span>Multi-process via Pipes</span>
+</div>
+
 
 ### What Changed from Step 03
 {: .no_toc }
@@ -1518,6 +1553,13 @@ We split the application into three independent executables: an orchestrator (`a
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 07: Distributed HTTP
+
+<div align="center">
+<img src="./assets/img11.webp" alt="Distributed HTTP" width="900" loading="lazy"/><br/>
+<span>Distributed HTTP</span>
+</div>
+
+
 The code is ready, not the comments.
 
 
@@ -1533,7 +1575,13 @@ The code is ready, not the comments.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Step 08: Message Broker
+## Step 08: Message Broker with NATS
+
+<div align="center">
+<img src="./assets/img12.webp" alt="Message Broker with NATS" width="900" loading="lazy"/><br/>
+<span>Message Broker with NATS</span>
+</div>
+
 The code is ready, not the comments.
 
 
