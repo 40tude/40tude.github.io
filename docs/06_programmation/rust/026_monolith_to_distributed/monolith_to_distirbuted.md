@@ -886,6 +886,29 @@ The business logic is identical to Step 02. Same input (42), same output ("Value
 
 The component directories are now named `component1_dll` and `component2_dll` instead of `component1_lib` and `component2_lib`, to reflect that they produce dynamic libraries. The package names in `Cargo.toml` stay `component1` and `component2` as before.
 
+```text
+step04_plugins_dll/
+│   Cargo.toml
+├───app
+│   │   Cargo.toml
+│   └───src
+│           main.rs
+├───component1_dll
+│   │   Cargo.toml
+│   └───src
+│           lib.rs
+├───component2_dll
+│   │   Cargo.toml
+│   ├───src
+│   │       lib.rs
+│   └───tests
+│           component2_test.rs
+└───traits
+    │   Cargo.toml
+    └───src
+            lib.rs
+```
+
 Ideally we just add one section to each component's `Cargo.toml`:
 
 ```toml
