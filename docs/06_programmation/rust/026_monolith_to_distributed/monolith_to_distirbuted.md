@@ -39,8 +39,18 @@ A hands-on journey through small, working projects to understand when and why ar
 ## TL;DR
 {: .no_toc }
 
-* For beginners
-* ...
+* For beginners, tinkerers, hobbyists, amateurs...
+* Start with a monolith. Seriously. A single binary that works is worth more than a complicated system that sort of works
+* Only split code when the pain of not splitting becomes real: hard to read, hard to test, hard to work on with others
+* Move to a Modular Monolith using an Hexagonal Architecture as soon as you decide to leave the initial mono file monolith. This is NOT over engineering, this is an investment.
+* Traits define contracts. The application decides which methods it needs; the components fall in line. That is Dependency Inversion, and it costs almost nothing to set up
+* Cargo workspaces are the sweet spot for most Rust projects. Independent builds, independent tests, one repository. Hard to beat
+* Every architectural boundary we add (DLL, process, HTTP, broker) makes the system harder to debug. Serialization, network calls, and message routing are not free
+* The business logic should never care about how it is called. Whether it runs inside a function, behind an FFI boundary, or on the other side of a NATS broker, 42 * 2 is still 84
+* Do not refactor while reorganizing. Move the code first, verify the output is identical, then improve. One concern at a time
+* Process isolation buys crash containment. If a service panics, the rest of the system keeps running. That is worth something, but only if we actually need it
+* HTTP gives us network transparency. A message broker gives us topology decoupling. Pick the simplest one that solves the actual problem
+* There is no shame in stopping at step 03. Most production software runs just fine as a well designed modular monolith.
 
 
 **Note**
@@ -93,7 +103,35 @@ The [companion project](https://github.com/40tude/mono_to_distributed) with is a
 
 ## Introduction
 
-It is on its way...
+This article is a hands-on walkthrough. We start with a single Rust file and, step by step, we evolve it into a distributed system with independent services talking through a message broker. Nine steps, same business logic every time, zero big rewrites.
+
+The business logic itself is deliberately boring: take an integer, double it, format the result as a string. That is on purpose. We want to focus on **project organization and architecture**, not on algorithms or clever tricks. Every step produces the exact same output (42 in, "Value-0084" out). What changes is how the code is structured, built, and deployed.
+
+Here is the progression at a glance:
+
+| Step | Architecture | Key Move |
+|------|-------------|----------|
+| 00 | Single file | Baseline |
+| 01 | Multiple files | Module system |
+| 02 | Cargo workspace | Independent crates |
+| 03 | Traits crate | Dependency inversion |
+| 04 | DLL generation | Build artifact experiment |
+| 05 | Runtime DLL loading | Plugin system via FFI |
+| 06 | Separate processes | JSON over pipes |
+| 07 | HTTP services | Network transparency |
+| 08 | Message broker (NATS) | Full topology decoupling |
+
+Each step builds on the previous one. We never throw everything away and start over. We refactor incrementally, one concern at a time, and at each stage we pause to understand what we gained, what it cost, and whether we even need to go further. That last point is important: **most projects do not need to reach step 08**. A well structured modular monolith (step 02 or 03) is the right answer for the vast majority of use cases. We go all the way to a message broker not because everyone should, but because understanding the full spectrum helps us make better decisions about where to stop.
+
+One recurring theme throughout: **no premature refactoring**. At each step, we resist the urge to "improve" things that are not broken. We move one piece, verify the output is identical, and only then consider the next move. This discipline is what makes incremental evolution safe.
+
+A few practical notes before we begin:
+
+- **Error handling is minimal.** We use `unwrap()`, `expect()`, and `?` liberally. This is a teaching project, not a production codebase. Adding proper error types and recovery strategies would triple the code size and obscure the architecture lessons. We know it is there; we are choosing to keep the signal to noise ratio high. See `step09_message_broker2` for a project with more error handling.
+- **Each step is a self-contained Cargo workspace.** We can `cd` into any step folder and run `cargo build`, `cargo test`, `cargo run` independently. No step depends on another.
+- **The code is on [GitHub](https://github.com/40tude/mono_to_distributed).** Each step folder contains a `QUICK_START.md` with exact instructions for building and running.
+
+Let's get started.
 
 
 
@@ -252,7 +290,7 @@ At this point, honestly, Rust gives us one thing: it compiles. The borrow checke
 ### When to Move On
 {: .no_toc }
 
-If the code does the job and we are done with it, let us not touch a thing. Let's run `cargo install` and move on.
+If the code does the job and we are done with it, let's not touch a thing. Let's run `cargo install` and move on.
 
 But if the application is not finished and we keep wanting to add "just one more little feature", then it is time to look up from the keyboard and take advantage of everything Rust's ecosystem and [build system]({%link docs/06_programmation/rust/014_build_system/from_src_to_exe.md%}) can offer.
 
@@ -320,7 +358,7 @@ Download the [project](https://github.com/40tude/mono_to_distributed) and open `
 
 We keep only the `main()` function in `main.rs`. Then, and here it is pretty straightforward, we move everything related to `Component1` into `component1.rs` and do the same with `Component2` into `component2.rs`. In real life it is rarely this clean cut, but we have to start somewhere. Go for it, do not be afraid. In the worst case the Rust [build system]({%link docs/06_programmation/rust/014_build_system/from_src_to_exe.md%}) will bark at us and point us in the right direction.
 
-Next, we go back to `main.rs` and at the very top we bring the `component1` and `component2` modules into scope. This part is important, so let us make sure we have the right mental model here.
+Next, we go back to `main.rs` and at the very top we bring the `component1` and `component2` modules into scope. This part is important, so let's make sure we have the right mental model here.
 
 ```rust
 // main.rs
@@ -349,7 +387,7 @@ As for the contents of `component1.rs` and `component2.rs`, it is really just co
 
 **Important:** during this kind of exercise, this is **not** the time to refactor. Yes, we just copy pasted the code, it is shorter now, and we immediately spot something we want to improve. No, no, no my friend. Not now. Write it down on a piece of paper if you really want to (adding a `// TODO:` somewhere in the file is debatable). At the end of this step we want to be "iso functional" with `step00`. Same behavior, same output, zero surprises.
 
-One more thing: let us not go overboard with the splitting either. We do not want to end up with one function per file. At our level, whether we are hobbyists or early career developers, the big blocks to separate are usually pretty obvious.
+One more thing: let's not go overboard with the splitting either. We do not want to end up with one function per file. At our level, whether we are hobbyists or early career developers, the big blocks to separate are usually pretty obvious.
 
 
 #### **Expected output**
@@ -657,7 +695,7 @@ Elasticity is about handling temporary spikes in workload. Think of Amazon durin
 
 Scalability is about a sustained mismatch between what we planned for and what we actually need. We designed the system for 100 users and it turns out we have 100_000. That might require more processing power, better geographic distribution, or a fundamentally different deployment strategy.
 
-But let us calm down for a second. We do not all have Netflix's Friday night problems. At our level, as hobbyists or early career developers, a solid architecture ([Hexagonal]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) for example) wrapped in a Modular Monolith is more than enough for the vast majority of use cases. We should only move forward when we have **measured** a real bottleneck, not because it sounds cool.
+But let's calm down for a second. We do not all have Netflix's Friday night problems. At our level, as hobbyists or early career developers, a solid architecture ([Hexagonal]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) for example) wrapped in a Modular Monolith is more than enough for the vast majority of use cases. We should only move forward when we have **measured** a real bottleneck, not because it sounds cool.
 
 
 
@@ -968,7 +1006,7 @@ fn run_pipeline(processor: &dyn Processor, transformer: &dyn Transformer, input:
 }
 ```
 
-One thing worth noticing: `run_pipeline()` is now a clear, self-contained function that only depends on traits. It is a natural candidate for moving into `app/src/lib.rs`. That would let us create an `app/tests/` directory with proper integration tests for the full application pipeline.
+One thing worth noticing: `run_pipeline()` is now a clear, self-contained function that only depends on traits. It is a natural candidate for moving into `app/src/lib.rs`. That would let's create an `app/tests/` directory with proper integration tests for the full application pipeline.
 
 For now, I added a simple test that verifies the pipeline does not panic. It is not visible in the snippet above but it is there in the source.
 
@@ -1079,7 +1117,7 @@ Worth noting that "DLL" here is the Windows terminology. On Linux the equivalent
 ### When to Move On
 {: .no_toc }
 
-Honestly, this step is one to understand but not to linger on. Now that we know how it works, let us move to Step 05 where we actually load DLLs at runtime. That is where things get real.
+Honestly, this step is one to understand but not to linger on. Now that we know how it works, let's move to Step 05 where we actually load DLLs at runtime. That is where things get real.
 
 
 
@@ -1401,7 +1439,7 @@ This crate is the equivalent of the `traits` crate from Step 03. It defines the 
 
 The `app/Cargo.toml` depends on `common` (the message definitions, similar to how it depended on `traits` in Step 03) plus `serde` and `serde_json`. No dependency on `service1` or `service2`. The orchestrator does not know anything about the services' internals. It only knows the message protocol.
 
-The core abstraction is `ServiceHandle`, a struct that holds a `Child` process and the service name. Let us walk through it.
+The core abstraction is `ServiceHandle`, a struct that holds a `Child` process and the service name. Let's walk through it.
 
 `ServiceHandle::new()` spawns the service executable using `Command::new()`. Three pipe configurations matter here:
 
@@ -1427,7 +1465,7 @@ One thing that is more verbose compared to calling functions in a library: there
 #### **The services**
 {: .no_toc }
 
-Let us look at `service1`. Service2 follows the exact same pattern, just with `TransformationService` instead of `ProcessingService`.
+Let's look at `service1`. Service2 follows the exact same pattern, just with `TransformationService` instead of `ProcessingService`.
 
 The `Cargo.toml` depends on `common` (same message types) plus `serde` and `serde_json`.
 
@@ -1654,7 +1692,7 @@ pub struct ProcessResponse {
 #### **The services**
 {: .no_toc }
 
-Let us look at `service1`. Service2 follows the exact same pattern with `transform` instead of `process`.
+Let's look at `service1`. Service2 follows the exact same pattern with `transform` instead of `process`.
 
 The `Cargo.toml` depends on `axum`, `common`, `serde`, `serde_json`, and `tokio`. In `main.rs`, the structure is straightforward:
 
@@ -1999,7 +2037,7 @@ We replaced stdin/stdout pipes with HTTP. The services became independent Axum s
 
 
 > **Note:** This section covers both `step08_message_broker` and `step09_message_broker2`. Step 09 is a bonus, a polished version of Step 08. We will walk through Step 08 in detail, then point out what Step 09 adds and let the code speak for itself. Improvements from Step 08 to Step 09 include:
-> * **Queue group support**: services now use `queue_subscribe` instead of plain `subscribe`, so NATS load balances across multiple instances of the same service instead of fanning out to all of them (in the code look for `.queue_subscribe` or `QUEUE_TRANSFORM`). Running multiple instances of service1 (or service2) will now load balance requests across them instead of fanning out to all instances.
+> * **Queue group support**: services now use `queue_subscribe` instead of plain `subscribe`, so NATS load balances across multiple instances of the same service instead of fanning out to all of them (in the code look for `.queue_subscribe()` or `QUEUE_TRANSFORM`). Running multiple instances of service1 (or service2) will now load balance requests across them instead of fanning out to all instances.
 > * Multiple values processed and transformed concurrently
 > * Error reporting from Service1 and Service2
 > * More tests in Service1 and Service2
@@ -2032,7 +2070,7 @@ app  "service.transform" -> NATS broker -> service2
 
 | Problem | HTTP (Step 07) | Broker (Step 08) |
 |---------|---------------|-----------------|
-| Adding a 2nd instance of service1 | Change orchestrator code or add a load balancer | Start another service1 in a queue group and NATS load balances automatically |
+| Adding a 2nd instance of service1 | Change orchestrator code or add a load balancer | Start another service1 in a queue group and NATS load balances automatically (Step 09) |
 | Service1 restarts | Orchestrator gets a connection error | Publisher retries; NATS delivers when service1 is back |
 | Service moves to another machine | Update the URL in orchestrator | Nothing changes, it subscribes to the same subject |
 
@@ -2040,12 +2078,12 @@ app  "service.transform" -> NATS broker -> service2
 ### Key Concepts
 {: .no_toc }
 
-Before we dive into the code, let us pin down the four NATS primitives we use:
+Before we dive into the code, let's pin down the four NATS primitives we use:
 
 - **Subject**: a string like `"service.process"`. This is the "address" of a message. Not a URL, not an IP. Just a name. We define ours in `common/src/lib.rs`.
 - **Publish**: send a message to a subject.
 - **Subscribe**: listen for messages on a subject.
-- **Request/Reply**: publish a message and wait for exactly one reply. NATS handles this by creating a temporary "inbox" subject behind the scenes. We will look at the mechanics in a moment.
+- **Request/Reply**: publish a message and wait for exactly one reply. NATS handles this by creating a temporary "inbox" subject behind the scenes. We look at it below.
 
 
 
@@ -2091,7 +2129,7 @@ Business logic is identical. Input 42, multiply by 2, format as "Value-0084".
 
 Data types (`ProcessRequest`, `ProcessResponse`, `TransformRequest`, `TransformResponse`) are unchanged from Step 07.
 
-Serialization is still JSON via serde. The bytes go through NATS instead of HTTP bodies, but `serde_json::to_vec` and `serde_json::from_slice` do the same job.
+Serialization is still JSON via `serde`. The bytes go through NATS instead of HTTP bodies, but `serde_json::to_vec` and `serde_json::from_slice` do the same job.
 
 Unit tests are the same. No NATS server needed since they test pure business logic.
 
@@ -2120,8 +2158,8 @@ Step 07 (HTTP, point to point):
 
 Step 08 (NATS, broker mediated):
 
-  app  publish  ->  NATS server  <  subscribe  service1
-  app  publish  ->  NATS server  <  subscribe  service2
+  app  publish  ->  NATS server  <-  subscribe  service1
+  app  publish  ->  NATS server  <-  subscribe  service2
 ```
 
 The `app` no longer talks directly to the services. Everything goes through the broker.
@@ -2194,9 +2232,9 @@ pub trait Messaging {
 }
 ```
 
-This trait is our transport abstraction. The `app` calls `broker.request(subject, payload)` and gets back raw bytes. It does not know or care if behind the trait there is NATS, RabbitMQ, or a simple in memory channel. This is Dependency Inversion (DIP) applied to the messaging layer. The trait lives in `common` so both the `app` and any future adapter can depend on it without circular dependencies.
+This trait is our transport abstraction. The `app` calls `broker.request(subject, payload)` and gets back raw bytes. It does not know or care if behind the trait there is NATS, RabbitMQ, or a simple in memory channel. This is **Dependency Inversion** (DIP) applied to the messaging layer. The trait lives in `common` so both the `app` and any future adapter can depend on it without circular dependencies.
 
-Notice the return type: `impl Future<...> + Send`. This is RPITIT (Return Position Impl Trait In Traits), stabilized in Rust 2024 edition. It lets us write async trait methods without the `async_trait` macro that older Rust code needed.
+Notice the return type: `impl Future<...> + Send`. This is **Return Position Impl Trait In Traits** (RPITIT), stabilized in Rust 2024 edition. It lets us write async trait methods without the `async_trait` macro that older Rust code needed.
 
 
 #### **The app (publisher)**
@@ -2258,7 +2296,7 @@ impl Messaging for NatsMessaging {
 }
 ```
 
-The double `??` on the `.await??` line is worth pausing on. The outer `?` unwraps the `Result` from `tokio::time::timeout`, which can fail with an `Elapsed` error if the service does not reply within 5 seconds. The inner `?` unwraps the `Result` from `self.client.request()`, which can fail if NATS is unreachable. Two layers of error, two question marks. We saw the same pattern in Step 07's concurrent version with `JoinSet`.
+Agai, the double `??` on the `.await??` line is worth pausing on. The outer `?` unwraps the `Result` from `tokio::time::timeout`, which can fail with an `Elapsed` error if the service does not reply within 5 seconds. The inner `?` unwraps the `Result` from `self.client.request()`, which can fail if NATS is unreachable. Two layers of error, two question marks. We saw the same pattern in Step 07's concurrent version with `JoinSet`.
 
 The `run_pipeline` function is broker agnostic. It takes `&impl Messaging`, not a concrete NATS type:
 
@@ -2300,7 +2338,7 @@ Compare this with Step 07's `main()`. There, we built a `reqwest::Client`, calle
 #### **The services**
 {: .no_toc }
 
-Let us look at `service1`. Service2 follows the exact same pattern with `transform` instead of `process`.
+Let's look at `service1`. Service2 follows the exact same pattern with `transform` instead of `process`.
 
 The `service1/Cargo.toml` depends on `common`, `async-nats`, `bytes`, `serde`, `serde_json`, `tokio`, and `tokio-stream`. Notice that service1 does not use the `Messaging` trait. It works directly with the NATS client. That is a deliberate choice: the trait exists to insulate the `app` (the publisher) from the transport layer, because the `app` is the one that initiates communication and might need to swap brokers someday. The services are listeners; they just subscribe and reply. Wrapping them in the `Messaging` trait would add complexity for no real benefit.
 
@@ -2355,7 +2393,7 @@ Worth noting: `subscription.next()` comes from `tokio_stream::StreamExt`. The NA
 #### **Expected output**
 {: .no_toc }
 
-Before running, we need a NATS server. Check `QUICK_START.md` in the `step08_message_broker` folder for installation instructions:
+Before running, we need a NATS server. Check `QUICK_START.md` in the `step08_message_broker` folder for installation instructions. I can't do it for you but I promise it takes less than 30 seconds. See below :
 
 <div align="center">
 <img src="./assets/img15.webp" alt="Installing scoop and nats-server under Windows and Powershell" width="900" loading="lazy"/><br/>
@@ -2446,7 +2484,7 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ### About Step 09
 {: .no_toc }
 
-The `step09_message_broker2` folder contains a polished version of Step 08. We are not going to walk through every line here; the code is there for the taking and the patterns should feel familiar at this point. But let us highlight what changed and what to look for.
+The `step09_message_broker2` folder contains a polished version of Step 08. We are not going to walk through every line here; the code is there for the taking and the patterns should feel familiar at this point. But let's highlight what changed and what to look for.
 
 The big picture: Step 09 reuses the same concurrent approach we used in Step 07's `main_multi.bak` variant. Instead of processing a single value, the `app` fires five values through the pipeline at the same time using `tokio::task::JoinSet`. The input array is deliberately chosen to trigger edge cases:
 
@@ -2516,9 +2554,9 @@ Three values make it through. Two trigger domain errors at different stages of t
 
 We just crossed another important threshold. With HTTP in Step 07, we gained network transparency: services could run on different machines. With a message broker, we gain something more: the services and the `app` are truly decoupled. The `app` does not need to know where services live, how many instances are running, or whether they are even online right now.
 
-But let us be honest about where most of us stand. At our level (hobbyists, learners, early professionals), the real takeaway is not "use NATS in production tomorrow." It is this: if we start from a modular monolith and one of our components genuinely needs to become a service, protecting the `app` from transport changes via a `Messaging` trait is a solid strategy. We saw that the `run_pipeline` function in the `app` does not mention NATS at all. If we needed to swap in RabbitMQ, or even a simple in memory channel for testing, we would write a new adapter and nothing else would change.
+But let's be honest about where most of us stand. At our level (hobbyists, learners, early professionals), the real takeaway is not "use NATS in production tomorrow." It is this: if we start from a modular monolith and one of our components genuinely needs to become a service, protecting the `app` from transport changes via a `Messaging` trait is a solid strategy. We saw that the `run_pipeline` function in the `app` does not mention NATS at all. If we needed to swap in RabbitMQ, or even a simple in memory channel for testing, we would write a new adapter and nothing else would change.
 
-For those who want to push further, this is essentially the beginning of a hexagonal architecture. The `Messaging` trait is a port. `NatsMessaging` is an adapter. We are not using the formal vocabulary here, but the structure is already in place. Naming it explicitly and organizing the code around ports and adapters would be the natural next step for a larger project.
+For those who want to push further, this is essentially the beginning of a [Hexagonal Architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}). The `Messaging` trait is a Port. `NatsMessaging` is an Adapter. We are not using the formal vocabulary here, but the structure is already in place. Naming it explicitly and organizing the code around ports and adapters would be the natural next step for a larger project.
 
 
 
@@ -2537,7 +2575,7 @@ For those who want to push further, this is essentially the beginning of a hexag
 1. **`bytes::Bytes`.** The `async-nats` API uses `Bytes` (from the `bytes` crate) for message payloads instead of `Vec<u8>`. `Bytes` is a reference counted, cheaply cloneable byte buffer. We convert from `Vec<u8>` with `Bytes::from(payload)` and back with `reply.payload.to_vec()`. In high throughput scenarios, `Bytes` avoids unnecessary copies
 1. **`tokio::time::timeout`.** Wrapping a future in `timeout(duration, future).await` gives us a `Result<Result<T, E>, Elapsed>`. The double `??` pattern unwraps both layers cleanly. Without this, a missing service would hang the `app` forever
 1. **`serde` everywhere.** Same story as every previous step. Our structs derive `Serialize` and `Deserialize`, and both the `app` and the services use `serde_json::to_vec` / `serde_json::from_slice` to go between structs and bytes. The serialization format is the same whether the bytes travel through HTTP, pipes, or NATS
-1. **`tokio::select!` (Step 09).** In the enhanced version, services use `tokio::select!` to race between processing the next message and a Ctrl+C signal. This gives us graceful shutdown without complex signal handling code. The macro picks whichever future completes first
+1. **`tokio::select!` (Step 09).** In the enhanced version, services use `tokio::select!` to race between processing the next message and a `CTRL+C` signal. This gives us graceful shutdown without complex signal handling code. The macro picks whichever future completes first
 
 
 
@@ -2556,19 +2594,18 @@ For those who want to push further, this is essentially the beginning of a hexag
 ### When to Move On
 {: .no_toc }
 
-This is the last step. We have traveled from a single file monolith to a message broker architecture in eight increments, each one building on the previous without rewriting what already worked.
+This is the last architectural step. The bonus `step09_message_broker2` folder refines the implementation (concurrent processing, error reporting, graceful shutdown, queue groups for load balancing), but it does not introduce a new architecture. The broker pattern is the ceiling of this series.
 
-There is no Step 09 to move on to (well, there is `step09_message_broker2`, but that is a refinement, not a new architecture). The question now is: what do we do with all this?
+If we want to push the NATS integration further, queue groups are a natural next move. In Step 08, all subscribers receive every message (fan out). With queue groups, NATS load balances across multiple instances of the same service: start three copies of service1, and each request goes to exactly one of them. Step 09 already uses `queue_subscribe` for this. Beyond that, NATS JetStream adds message persistence, replay, and exactly once delivery for use cases where messages must survive broker restarts.
 
-The honest answer is that most of us will not need a message broker for our day to day Rust projects. But the journey matters more than the destination. We now understand the tradeoffs at each level: modules give us organization, workspaces give us build boundaries, traits give us decoupling, processes give us isolation, HTTP gives us network transparency, and a broker gives us full decoupling from service topology.
+But before chasing more features, it is worth stepping back and looking at the full journey. That is what the conclusion is for.
 
-The right architecture for any given project is the simplest one that solves the actual problem. If a monolith works, ship the monolith. If one component genuinely needs to scale independently or run on a different machine, we know exactly which steps to take and what tradeoffs come with each one. No premature refactoring, no cargo culting microservices. Just the right tool for the job, chosen with full awareness of the alternatives.
 
 
 ### Summary
 {: .no_toc }
 
-We replaced HTTP with a NATS message broker. The services dropped Axum and switched to subscribing on NATS subjects (`"service.process"`, `"service.transform"`). The `app` dropped `reqwest` and sends messages through a `Messaging` trait backed by `NatsMessaging`, the only component that knows about the concrete broker. The `common` crate now hosts both the shared data types and the `Messaging` trait, acting as the contract between the `app` and the transport layer. The business logic is unchanged (42 in, "Value-0084" out). We gained full decoupling from service topology: the `app` does not know where services live, how many instances exist, or what broker runs underneath. The tradeoff is an external dependency (NATS server) and the operational overhead of managing a broker. Step 09 extends the pattern with concurrent processing of multiple values, domain error reporting via `Option<String>` fields, and graceful Ctrl+C shutdown using `tokio::select!`.
+We replaced HTTP with a NATS message broker. The services dropped Axum and switched to subscribing on NATS subjects (`"service.process"`, `"service.transform"`). The `app` dropped `reqwest` and sends messages through a `Messaging` trait backed by `NatsMessaging`, the only component that knows about the concrete broker. The `common` crate now hosts both the shared data types and the `Messaging` trait, acting as the contract between the `app` and the transport layer. The business logic is unchanged (42 in, "Value-0084" out). We gained full decoupling from service topology: the `app` does not know where services live, how many instances exist, or what broker runs underneath. The tradeoff is an external dependency (NATS server) and the operational overhead of managing a broker. Step 09 extends the pattern with concurrent processing of multiple values, domain error reporting via `Option<String>` fields, and graceful `CTRL+C` shutdown using `tokio::select!`.
 
 
 
@@ -2583,7 +2620,34 @@ We replaced HTTP with a NATS message broker. The services dropped Axum and switc
 <span>From single file monolith to fully distributed in 8 steps</span>
 </div>
 
-It is on its way...
+
+
+We traveled from a single file monolith to a message broker architecture in nine steps. Same input, same output, every single time. The business logic never changed. What changed is how we organize, build, and deploy the code around it.
+
+Let's take one last look at what each level gave us:
+
+| Level | What We Gained | What It Cost |
+|-------|---------------|-------------|
+| Single file (00) | It works | Everything in one place, hard to navigate |
+| Multiple files (01) | Readability, per module tests | Still one crate, one compilation unit |
+| Workspace (02) | Independent builds, tests, versions | More files, more `Cargo.toml` to manage |
+| Traits (03) | Decoupling, dependency inversion | An extra crate, slightly more abstraction |
+| DLL generation (04) | Artifacts ready for external consumers | Unused by the app itself |
+| Runtime DLL loading (05) | True binary decoupling, plugin system | `unsafe` everywhere, ABI fragility |
+| Separate processes (06) | Crash isolation, independent deployment | Serialization overhead, plumbing code |
+| HTTP (07) | Network transparency, concurrent handling | Network dependency, service lifecycle management |
+| Message broker (08) | Full topology decoupling, scalability | External infrastructure (NATS server) |
+
+The honest truth is that most of us (amateur, tinkerter, hobbyst, young dev pro) will not need a message broker for our day to day Rust projects. A well structured modular monolith (step 02) with trait based decoupling (step 03) covers the vast majority of real world use cases. And that is perfectly fine. Shipping a monolith that works is infinitely better than shipping a distributed system that sort of works.
+
+The value of walking through all nine steps is not that we should use all nine. It is that we now understand the tradeoffs at each level. Modules give us organization. Workspaces give us build boundaries. Traits give us decoupling. Processes give us isolation. HTTP gives us network transparency. A broker gives us full decoupling from service topology. Each one solves a real problem, and each one introduces new complexity.
+
+The right architecture for any given project is the simplest one that solves the actual problem. If a monolith works, ship the monolith. If one component genuinely needs to scale independently or run on a different machine, we know exactly which steps to take and what tradeoffs come with each one. No premature refactoring, no cargo culting microservices. Just the right tool for the job, chosen with full awareness of the alternatives.
+
+One thing we did not do in this series is handle errors properly. That was a deliberate choice to keep the code focused on architecture. In a real project, each of these steps would benefit from proper error types, recovery strategies, retries, and observability. That is a whole other journey, and it is worth taking once the architecture is settled.
+
+If there is one takeaway from this article, it is this: **start simple, measure, and only add complexity when the problem demands it**. We proved that we can evolve a Rust project from a single file to a distributed system without ever throwing everything away and starting over. That incremental path is always available. There is no rush to take it.
+
 
 
 
