@@ -35,7 +35,7 @@ A short, practical reminder with working examples.
 ## TL;DR
 {: .no_toc }
 
-* For beginners
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * **Function**: Executes once, returns once
 * **Method**: Function tied to a type
 * **Closure**: Function that captures environment variables

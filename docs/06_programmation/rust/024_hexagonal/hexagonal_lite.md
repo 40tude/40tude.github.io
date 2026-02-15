@@ -35,7 +35,7 @@ Learn how to structure your Rust code with ports, adapters, and clean separation
 ## TL;DR
 {: .no_toc }
 
-* For beginners
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * Ports = Traits
 * Adapters = Implementations
 * `application` owns the use case

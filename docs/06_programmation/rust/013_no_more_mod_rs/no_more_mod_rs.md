@@ -13,7 +13,7 @@ last_modified_date : 2025-10-02 10:45:00
 # From Folders to Crates: A Practical Guide to Modern Rust Module Trees (No mod.rs, No Tears)
 
 ## TL;DR
-* For beginners
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * Starting with a hierarchy of directories and files already in place
 * A process to make sure the compiler and the linker can build the lib and the app
 * Explain the `use ...` statements that help to write easy to read code

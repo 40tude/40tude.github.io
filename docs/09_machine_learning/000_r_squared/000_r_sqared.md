@@ -20,7 +20,7 @@ last_modified_date: 2025-01-16 10:00:00 +0000
 {: .note }
 This article was first published on [Medium](https://medium.com/@philippe.baucour/yet-another-linear-regression-introduction-0835e333508b){:target="_blank"} on Dec 5, 2024 under the title : ***Yet another linear regression and R² introduction***. I really enjoy reading on Medium so I wanted to contribute. However, at the time of writing, and based on my understanding, Medium does not support Markdown nor $$\mathrm{\LaTeX}$$. As a result, the content of the article is not rendered as intended. Additionally, the writing experience was frustrating. I suppose this will be my first and last article on Medium.
 
-This article is for beginners. My goal is to help you gain a clearer understanding of $$R^2$$ so you can confidently explain it to yourself or someone else.
+This article is For beginners, tinkerers, hobbyists, amateurs, and early-career developers... My goal is to help you gain a clearer understanding of $$R^2$$ so you can confidently explain it to yourself or someone else.
 
 
 

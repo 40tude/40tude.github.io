@@ -39,11 +39,11 @@ A hands-on journey through small, working projects to understand when and why ar
 ## TL;DR
 {: .no_toc }
 
-* For beginners, tinkerers, hobbyists, amateurs...
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * Start with a monolith. Seriously. A single binary that works is worth more than a complicated system that sort of works
 * Only split code when the pain of not splitting becomes real: hard to read, hard to test, hard to work on with others
 * Do not refactor while reorganizing. Move the code first, verify the output is identical, then improve. One concern at a time
-* Move to a Modular Monolith using an Hexagonal Architecture as soon as you decide to leave the initial mono file monolith. This is NOT over engineering, this is an investment.
+* Move to a [Modular Monolith using an Hexagonal Architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%})as soon as you decide to leave the initial mono file monolith. This is NOT over engineering, this is an investment.
 * Traits define contracts. The application decides which methods it needs; the components fall in line. That is Dependency Inversion, and it costs almost nothing to set up
 * Cargo workspaces are the sweet spot for most Rust projects. Independent builds, independent tests, one repository. Hard to beat
 * Every architectural boundary we add (DLL, process, HTTP, broker) makes the system harder to debug. Serialization, network calls, and message routing are not free

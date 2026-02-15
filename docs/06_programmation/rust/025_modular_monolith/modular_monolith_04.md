@@ -4,7 +4,7 @@ author: 40tude
 lang: en-US
 layout: default
 title: "Learning Modular Monolith Architecture with Rust - 04"
-description: "Learn Rust modular monolith: 7-step tutorial from Hello World to I/O-agnostic application with hexagonal architecture, traits and crates. For beginners."
+description: "Learn Rust modular monolith: 7-step tutorial from Hello World to I/O-agnostic application with hexagonal architecture, traits and crates. For beginners, tinkerers, hobbyists, amateurs, and early-career developers..."
 image: /docs/06_programmation/rust/025_modular_monolith/assets/img12.webp
 twitter:
   card: summary_large_image
@@ -18,7 +18,7 @@ last_modified_date: 2026-02-03 08:00:00
 # Learning Modular Monolith Architecture with Rust
 {: .no_toc }
 
-Learn Rust modular monolith: 7-step tutorial from Hello World to I/O-agnostic application with hexagonal architecture, traits and crates. For beginners.
+Learn Rust modular monolith: 7-step tutorial from Hello World to I/O-agnostic application with hexagonal architecture, traits and crates. For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 {: .lead }
 
 

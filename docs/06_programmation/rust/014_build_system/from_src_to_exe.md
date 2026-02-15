@@ -18,7 +18,7 @@ last_modified_date : 2025-08-26 09:00:00
 
 
 ## TL;DR
-* For beginners
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * Explain how Cargo builds crates and how they get linked into executables or libraries
 * Do not explain how to navigate the module tree to call a function or how to decide what’s visible to the outside world. Read this [post]({%link docs/06_programmation/rust/013_no_more_mod_rs/no_more_mod_rs.md%}) instead.
 

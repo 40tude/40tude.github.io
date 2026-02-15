@@ -49,7 +49,7 @@ A gentle, story-driven introduction so you’ll never be confused again.
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
-* For beginners
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * We indicate whether the prediction was correct (T/F) + the nature of prediction (P/N)
 * `FN=Misses`, `FP=False Alarm`
 * When the confusion matrix is about `X`, say aloud:

@@ -40,7 +40,7 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 ## TL;DR
 {: .no_toc }
 
-* For beginners.
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 
 * The code is on [GitHub](https://github.com/40tude/err_for_blog_post).
 
