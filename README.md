@@ -693,3 +693,19 @@ parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
 last_modified_date: 2026-02-13 00:30:00
+
+
+
+## Communication
+* LinkedIn
+* https://www.reddit.com/r/learnrust/
+* https://www.reddit.com/r/rust/
+* https://users.rust-lang.org/
+* LinkedIn
+* Discord ?
+
+#RustLang
+@rustlang
+
+
+
