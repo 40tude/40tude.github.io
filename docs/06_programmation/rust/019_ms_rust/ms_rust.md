@@ -686,3 +686,4 @@ Once you are happy, copy and paste the `ms-rust` directory in `$env:USERPROFILE/
 * On Claude Code Docs, read this [page](https://code.claude.com/docs/en/skills)
 * About SKILL, read this [page](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
 * [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.

@@ -1570,6 +1570,7 @@ I hope you've had as much fun reading these posts as I've had writing them. From
 * Patterns in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html#grammar-PatternNoTopAlt)
 * let statement in the [Rust Reference](https://doc.rust-lang.org/stable/reference/statements.html#grammar-LetStatement)
 * Destructuring in the [Rust Reference](https://doc.rust-lang.org/stable/reference/patterns.html?highlight=destructuring#destructuring)
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
 
 
 ----

@@ -683,3 +683,4 @@ In the mean time you can read [this book](https://www.amazon.fr/dp/1786494337). 
 * [Yet Another Intro to Linear Regression and R²]({%link docs/09_machine_learning/000_r_squared/000_r_sqared.md%}) where squaring the errors is used, again.
 * [If Anyone Builds It, Everyone Dies.](https://www.amazon.fr/Anyone-Builds-Everyone-Dies-Superhuman/dp/0316595640)
 * [The Alignment Problem](https://www.amazon.fr/dp/1786494337)
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.

@@ -2613,7 +2613,10 @@ The Standard Library docs are incredibly thorough. Once you know how to **read**
 - [Rust on Windows 11, My Complete Setup Guide]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%})
 - (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phones. It is hosted for free on Heroku and may be slow to startup.
 - Read [Pragmatic programmer](https://amzn.eu/d/05VM572a). It cannot hurt.
-- Watch this video:
+- You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
+
+Watch this video:
+
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=SAss1APdTHPIcvNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

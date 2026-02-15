@@ -1103,6 +1103,7 @@ Are we building a cross-platform app?
 * [Pixels Documentation](https://docs.rs/pixels)
 * [Vulkan vs DirectX Comparison](https://www.khronos.org/vulkan/)
 * [WGPU Best Practices](https://github.com/gfx-rs/wgpu/wiki)
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
 
 
 

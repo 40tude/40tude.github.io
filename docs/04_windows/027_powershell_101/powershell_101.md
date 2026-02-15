@@ -2,7 +2,7 @@
 published: true
 lang: en-US
 layout: default
-title: PowerShell and Windows PowerShell 
+title: PowerShell and Windows PowerShell
 description: Understanding the differences between PowerShell and Windows PowerShell
 parent: Windows
 #math: mathjax
@@ -36,7 +36,7 @@ pwsh
 
 **Above, from where does `pwsh` comes from?**
 
-`pwsh` is the executable name for PowerShell 7 and later. It stands for: 
+`pwsh` is the executable name for PowerShell 7 and later. It stands for:
 > **P**o**w**er**Sh**ell → **pwsh**
 
 On Windows PowerShell 5.1, the executable was `powershell.exe`
@@ -61,24 +61,24 @@ So when you see `pwsh`, just remember:
 
 
 ## Current situation
-Here I suppose you have a recent Windows 11 (version above 22H2 that comes with [Terminal Windows](https://learn.microsoft.com/fr-fr/windows/terminal/)) 
+Here I suppose you have a recent Windows 11 (version above 22H2 that comes with [Terminal Windows](https://learn.microsoft.com/fr-fr/windows/terminal/))
 
 There are 2 versions of PowerShell available
 
-1. **Windows PowerShell** (5.1 for example) 
+1. **Windows PowerShell** (5.1 for example)
 - Windows PowerShell is specific to Windows, it is NOT portable, hence the name: **Windows** PowerShell
 - Comes with Windows
 - Path to the app: `%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe`
-- See the folders : 
+- See the folders :
     * `%USERPROFILE%/Documents/WindowsPowerShell`
     * or `%USERPROFILE%/OneDrive/Documents/WindowsPowerShell`
 
-2. **PowerShell** (7.5.3 for example) 
+2. **PowerShell** (7.5.3 for example)
 - PowerShell is portable (Linux...)
 - Open source: [GitHub repo](https://github.com/PowerShell/PowerShell)
 - Does not come (yet) automatically with Windows. You must install it
 - Path to the app: `C:\Program Files\PowerShell\7\pwsh.exe`
-- See the folders : 
+- See the folders :
     * `%USERPROFILE%/Documents/PowerShell`
     * or `%USERPROFILE%/OneDrive/Documents/PowerShell`
 
@@ -104,7 +104,7 @@ Windows PowerShell is legacy — PowerShell 7 is the future.
 ## Checking the version
 
 ```powershell
-$PSVersionTable 
+$PSVersionTable
 ```
 
 
@@ -277,7 +277,7 @@ $Profile | Get-Member -MemberType NoteProperty | Select-Object Name
 ## About the WindowsPowerShell directory
 
 * Do not delete it
-* Some scripts or Windows tools may still use PowerShell 5.1. 
+* Some scripts or Windows tools may still use PowerShell 5.1.
 * You can leave it empty
 
 
@@ -307,7 +307,7 @@ if (Test-Path($ChocolateyProfile)) {
 # This help activate a venv
 function venv {
     param([string]$EnvName = "venv")
-    
+
     if (Test-Path ".\$EnvName\Scripts\Activate.ps1") {
         & ".\$EnvName\Scripts\Activate.ps1"
     } elseif (Test-Path "..\$EnvName\Scripts\Activate.ps1") {
@@ -344,7 +344,7 @@ function venv {
 
 ## FAQ
 
-### Does Terminal Windows == PowerShell ? 
+### Does Terminal Windows == PowerShell ?
 * No
 * Terminal Windows is "just" a modern "host" app.
 * PowerShell is the shell that runs inside it.
@@ -393,7 +393,7 @@ Better approach:
 ### How do I start PowerShell 7? ("pwsh"??)
 
 * After installing PowerShell 7
-* In any terminal (Terminal Windows, cmd, Run dialog, etc.) 
+* In any terminal (Terminal Windows, cmd, Run dialog, etc.)
 * You can launch PowerShell by typing:
 
 ```powershell
@@ -410,7 +410,7 @@ You can also:
 
 
 
- 
+
 
 ## Bibliography
 - [Learn Powershell in a Month of Lunches](https://amzn.eu/d/gIeAd7w)
@@ -424,7 +424,9 @@ You can also:
 - [PowerShell](https://learn.microsoft.com/powershell/)
 - [Install PowerShell](https://learn.microsoft.com/powershell/scripting/install/installing-powershell)
 - [PowerShell GitHub repository](https://github.com/PowerShell/PowerShell)
+- You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
 - I know, this playlist is very old BUT I really enjoy the tone of the talk and you can see the [father of Powershell](https://en.wikipedia.org/wiki/Jeffrey_Snover)... Respect. For what I know he left Microsoft since then.
+
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=b0P_Wpe5JMUg-FmA&amp;list=PLyJiOytEPs4etH7Ujq7PU7jlOlHL-9RmV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

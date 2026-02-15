@@ -2670,3 +2670,4 @@ If there is one takeaway from this article, it is this: **start simple, measure,
 * Read [Clean Architecture](https://amzn.eu/d/069Sfh5P)
 * [NATS](https://docs.nats.io/)
 * (beginners) Would you like to check your knowledge with some [flashcards](https://rust-deck-befcc06ba7fa.herokuapp.com/practice)? Works fine on cell phones. It is hosted for free on Heroku and may be slow to startup.
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.

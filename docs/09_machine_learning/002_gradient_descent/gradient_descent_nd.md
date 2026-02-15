@@ -1281,3 +1281,4 @@ It covers all the topics above (and much more) with clear explanations and pract
 * [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can paste the scripts above.
 * [Machine Learning avec Scikit-Learn](https://www.amazon.fr/dp/2100847686)
 * [Flatland: A Romance of Many Dimensions by Edwin A. Abbott](https://www.amazon.fr/Flatland-Romance-Dimensions-Edwin-Abbott/dp/B0875SRH84)
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.

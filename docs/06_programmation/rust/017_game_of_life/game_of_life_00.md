@@ -3090,6 +3090,7 @@ Other ideas include but are not limited to:
 * [Pixels Documentation](https://docs.rs/pixels){:target="_blank"}
 * [Vulkan vs DirectX Comparison](https://www.khronos.org/vulkan/){:target="_blank"}
 * [WGPU Best Practices](https://github.com/gfx-rs/wgpu/wiki){:target="_blank"}
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
 
 
 

@@ -715,6 +715,7 @@ As for me? I eventually adjusted my model, raised my threshold, improved my prec
 ## Webliography
 
 * [Fraud Detection 2](https://github.com/40tude/fraud_detection_2)
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
 
 
 

@@ -570,3 +570,4 @@ In the mean time you can read [this book](https://www.amazon.fr/Coming-Wave-Tech
 ## Webliography
 * [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can past the scripts above.
 * [The Coming Wave](https://www.amazon.fr/Coming-Wave-Technology-Twenty-first-Centurys/dp/0593728173).
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.

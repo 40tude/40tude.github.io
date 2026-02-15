@@ -1300,6 +1300,7 @@ else {
 - [Commit Messages](https://www.conventionalcommits.org/en/v1.0.0/)
 - [Commit Messages](https://medium.com/@iambonitheuri/the-art-of-writing-meaningful-git-commit-messages-a56887a4cb49)
 - [Cargo Book](https://doc.rust-lang.org/cargo/)
+- You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
 
 
 

@@ -1139,3 +1139,4 @@ The examples use array and Vec. This is fine but but what have been said also ap
 ### Webliography
 * Feel free to read this page in [THE book](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html#for-loops)
 * Now, [read the bible](https://doc.rust-lang.org/stable/reference/expressions/loop-expr.html#iterator-loops) you can.
+* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
