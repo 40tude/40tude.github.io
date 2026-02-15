@@ -1996,13 +1996,572 @@ We replaced stdin/stdout pipes with HTTP. The services became independent Axum s
 <span>Message Broker with NATS</span>
 </div>
 
-The code is ready, not the comments.
+
+
+> **Note:** This section covers both `step08_message_broker` and `step09_message_broker2`. Step 09 is a bonus, a polished version of Step 08. We will walk through Step 08 in detail, then point out what Step 09 adds and let the code speak for itself. Improvements from Step 08 to Step 09 include:
+> * Multiple values processed and transformed concurrently
+> * Error reporting from Service1 and Service2
+> * More tests in Service1 and Service2
+> * Graceful shutdown (Ctrl+C handling) in Service1 and Service2
+
+
+### What is a Message Broker?
+{: .no_toc }
+
+A message broker is a middleman that routes messages between producers and consumers. Think of it as a post office: the sender drops a letter addressed to a subject, the broker figures out who is subscribed, and delivers.
+
+In Step 07 (HTTP), the app needed to know the exact address of each service:
+
+```
+app  POST http://127.0.0.1:3001/process    ->  service1
+app  POST http://127.0.0.1:3002/transform   ->  service2
+```
+
+With a broker, the app sends to a subject (a named channel). It has no idea who is listening:
+
+```
+app  "service.process"    ->  NATS broker  ->  service1
+app  "service.transform"  ->  NATS broker  ->  service2
+```
+
+
+
+#### **Why does this matter?**
+{: .no_toc }
+
+| Problem | HTTP (Step 07) | Broker (Step 08) |
+|---------|---------------|-----------------|
+| Adding a 2nd instance of service1 | Change orchestrator code or add a load balancer | Just start another service1, NATS auto distributes |
+| Service1 restarts | Orchestrator gets a connection error | Publisher retries; NATS delivers when service1 is back |
+| Service moves to another machine | Update the URL in orchestrator | Nothing changes, it subscribes to the same subject |
+
+
+### Key Concepts
+{: .no_toc }
+
+Before we dive into the code, let us pin down the four NATS primitives we use:
+
+- **Subject**: a string like `"service.process"`. This is the "address" of a message. Not a URL, not an IP. Just a name. We define ours in `common/src/lib.rs`.
+- **Publish**: send a message to a subject.
+- **Subscribe**: listen for messages on a subject.
+- **Request/Reply**: publish a message and wait for exactly one reply. NATS handles this by creating a temporary "inbox" subject behind the scenes. We will look at the mechanics in a moment.
+
+
+
+
+
+
+
+
+
+### What Changed from Step 07
+{: .no_toc }
+
+#### **What was removed**
+{: .no_toc }
+
+No HTTP server. Services no longer run Axum. No ports, no routes, no `Router::new()`. The NATS client library handles all networking for us.
+
+No URLs. The app does not know `http://127.0.0.1:3001`. It only knows the subject name `"service.process"`.
+
+No `reqwest`. The app uses the `Messaging` trait (backed by `async-nats`) instead of HTTP POST.
+
+#### **What was added**
+
+A NATS client (`async-nats` crate) replaces both Axum on the server side and reqwest on the client side. Both the app and the services use the same `async_nats::connect()` call.
+
+Subject constants defined in `common/src/lib.rs`: `SUBJECT_PROCESS` and `SUBJECT_TRANSFORM`. These are the "addresses" where messages travel.
+
+A timeout on requests. Since the broker is async, the app wraps each request in `tokio::time::timeout()` to avoid waiting forever if a service is down.
+
+A `Messaging` trait in `common/src/lib.rs`. This is a transport abstraction: the app never touches NATS types directly. It calls `broker.request(subject, payload)` and does not care whether the broker behind it is NATS, RabbitMQ, or an in memory channel. More on this in a moment.
+
+
+
+
+#### **What stayed the same**
+{: .no_toc }
+
+Business logic is identical. Input 42, multiply by 2, format as "Value-0084".
+
+Data types (`ProcessRequest`, `ProcessResponse`, `TransformRequest`, `TransformResponse`) are unchanged from Step 07.
+
+Serialization is still JSON via serde. The bytes go through NATS instead of HTTP bodies, but `serde_json::to_vec` and `serde_json::from_slice` do the same job.
+
+Unit tests are the same. No NATS server needed since they test pure business logic.
+
+
+
+#### **Dependency graph**
+{: .no_toc }
+
+```
+            common              (shared types + subject constants + Messaging trait)
+           /  |  \
+   service1  service2  app
+       \       |       /
+        \      |      /
+       NATS broker (external)
+```
+
+Compared to Step 07:
+
+```
+Step 07 (HTTP, point to point):
+
+  app  HTTP POST  ->  service1 (Axum on :3001)
+  app  HTTP POST  ->  service2 (Axum on :3002)
+
+Step 08 (NATS, broker mediated):
+
+  app  publish  ->  NATS server  <  subscribe  service1
+  app  publish  ->  NATS server  <  subscribe  service2
+```
+
+The app no longer talks directly to the services. Everything goes through the broker.
+
+#### **How request/reply works internally**
+{: .no_toc }
+
+When we call `client.request("service.process", payload)`:
+
+1. The NATS client creates a temporary inbox subject (something like `_INBOX.abc123`)
+1. It subscribes to that inbox
+1. It publishes our payload to `"service.process"` with a reply-to header pointing to the inbox
+1. Service1 receives the message, processes it, and publishes the response to the reply-to subject
+1. The app's inbox subscription receives the response
+1. `client.request()` returns it
+
+All of this is hidden behind one line of code. We never see the inbox.
+
+
+
+
+
+
+
+
+
+
+
+### Show Me the Code
+{: .no_toc }
+
+Download the [project](https://github.com/40tude/mono_to_distributed) and open `step08_message_broker` or read the code on GitHub within your browser.
+
+#### **The common crate**
+{: .no_toc }
+
+The `common/Cargo.toml` depends on `serde` and `serde_json`. It has no knowledge of NATS or any broker.
+
+In `lib.rs`, we find our four familiar structs:
+
+```rust
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ProcessRequest {
+    pub value: i32,
+    pub request_id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ProcessResponse {
+    pub value: i32,
+    pub processed: bool,
+    pub request_id: String,
+}
+```
+
+`TransformRequest` and `TransformResponse` follow the same pattern. These are identical to Step 07.
+
+What is new is the pair of subject constants and the `Messaging` trait:
+
+```rust
+pub const SUBJECT_PROCESS: &str = "service.process";
+pub const SUBJECT_TRANSFORM: &str = "service.transform";
+
+pub trait Messaging {
+    fn request(
+        &self,
+        subject: &str,
+        payload: Vec<u8>,
+    ) -> impl Future<Output = Result<Vec<u8>, Box<dyn std::error::Error + Send + Sync>>> + Send;
+}
+```
+
+This trait is our transport abstraction. The app calls `broker.request(subject, payload)` and gets back raw bytes. It does not know or care if behind the trait there is NATS, RabbitMQ, or a simple in memory channel. This is Dependency Inversion (DIP) applied to the messaging layer. The trait lives in `common` so both the app and any future adapter can depend on it without circular dependencies.
+
+Notice the return type: `impl Future<...> + Send`. This is RPITIT (Return Position Impl Trait In Traits), stabilized in Rust 2024 edition. It lets us write async trait methods without the `async_trait` macro that older Rust code needed.
+
+
+#### **The app (publisher)**
+{: .no_toc }
+
+The `app/Cargo.toml` depends on `common` for shared types and the `Messaging` trait, then on `async-nats` for the concrete broker connection, `bytes` for zero-copy payload handling (the `async-nats` API takes `Bytes` instead of `Vec<u8>`), `tokio` for the async runtime, and `uuid` for request IDs.
+
+The `main()` function is short and linear:
+
+```rust
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    println!("\n\nPhase 08: Message Broker Pipeline (NATS)\n");
+
+    println!("[App] Connecting to {NATS_URL}...");
+    let broker = NatsMessaging::connect(NATS_URL).await?;
+    println!("[App] Connected to NATS broker");
+
+    println!("\n--- Processing Distributed Pipeline ---");
+
+    run_pipeline(&broker, 42).await?;
+
+    println!("\nExecution complete");
+
+    Ok(())
+}
+```
+
+Connect, run the pipeline, done. All the complexity is hidden behind `NatsMessaging` and `run_pipeline`.
+
+The `NatsMessaging` struct is the concrete NATS adapter. It is the only place in the entire app that knows about `async_nats`:
+
+```rust
+struct NatsMessaging {
+    client: async_nats::Client,
+}
+
+impl NatsMessaging {
+    async fn connect(url: &str) -> Result<Self, Box<dyn std::error::Error + Send + Sync>> {
+        let client = async_nats::connect(url).await?;
+        Ok(Self { client })
+    }
+}
+
+impl Messaging for NatsMessaging {
+    async fn request(
+        &self,
+        subject: &str,
+        payload: Vec<u8>,
+    ) -> Result<Vec<u8>, Box<dyn std::error::Error + Send + Sync>> {
+        let subject = subject.to_owned();
+        let reply = tokio::time::timeout(
+            REQUEST_TIMEOUT,
+            self.client.request(subject, Bytes::from(payload)),
+        )
+        .await??;
+        Ok(reply.payload.to_vec())
+    }
+}
+```
+
+The double `??` on the `.await??` line is worth pausing on. The outer `?` unwraps the `Result` from `tokio::time::timeout`, which can fail with an `Elapsed` error if the service does not reply within 5 seconds. The inner `?` unwraps the `Result` from `self.client.request()`, which can fail if NATS is unreachable. Two layers of error, two question marks. We saw the same pattern in Step 07's concurrent version with `JoinSet`.
+
+The `run_pipeline` function is broker agnostic. It takes `&impl Messaging`, not a concrete NATS type:
+
+```rust
+async fn run_pipeline(
+    broker: &impl Messaging,
+    input_value: i32,
+) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+    let request_id = Uuid::new_v4().to_string();
+
+    // Step 1: Send to Service1 via subject "service.process"
+    let process_request = ProcessRequest {
+        value: input_value,
+        request_id: request_id.clone(),
+    };
+    let payload = serde_json::to_vec(&process_request)?;
+
+    let reply = broker.request(SUBJECT_PROCESS, payload).await?;
+    let result1: ProcessResponse = serde_json::from_slice(&reply)?;
+
+    // Step 2: Send to Service2 via subject "service.transform"
+    let transform_request = TransformRequest {
+        value: result1.value,
+        request_id: request_id.clone(),
+    };
+    let payload = serde_json::to_vec(&transform_request)?;
+
+    let reply = broker.request(SUBJECT_TRANSFORM, payload).await?;
+    let result2: TransformResponse = serde_json::from_slice(&reply)?;
+
+    println!("[App] Final result: {}", result2.transformed);
+    Ok(())
+}
+```
+
+Compare this with Step 07's `main()`. There, we built a `reqwest::Client`, called `.post(url).json(&request).send().await?.json().await?`. Here, we serialize to bytes with `serde_json::to_vec`, call `broker.request(subject, payload).await?`, and deserialize with `serde_json::from_slice`. The structure is the same: build request, send, read response. The transport changed, the shape did not. If we ever swapped NATS for RabbitMQ, only the `NatsMessaging` struct would change. The pipeline function would not need a single edit.
+
+
+#### **The services**
+{: .no_toc }
+
+Let us look at `service1`. Service2 follows the exact same pattern with `transform` instead of `process`.
+
+The `service1/Cargo.toml` depends on `common`, `async-nats`, `bytes`, `serde`, `serde_json`, `tokio`, and `tokio-stream`. Notice that service1 does not use the `Messaging` trait. It works directly with the NATS client. That is a deliberate choice: the trait exists to insulate the app (the publisher) from the transport layer, because the app is the one that initiates communication and might need to swap brokers someday. The services are listeners; they just subscribe and reply. Wrapping them in the `Messaging` trait would add complexity for no real benefit.
+
+The business logic is the same `process()` function we have seen since Step 01:
+
+```rust
+fn process(request: ProcessRequest) -> ProcessResponse {
+    let result = request.value * 2;
+    ProcessResponse {
+        value: result,
+        processed: true,
+        request_id: request.request_id,
+    }
+}
+```
+
+The `main()` function connects to NATS, subscribes to the `SUBJECT_PROCESS` subject, and enters a loop:
+
+```rust
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = async_nats::connect(NATS_URL).await?;
+    let mut subscription = client.subscribe(SUBJECT_PROCESS).await?;
+
+    while let Some(message) = subscription.next().await {
+        let request: ProcessRequest = serde_json::from_slice(&message.payload)?;
+        let response = process(request);
+
+        if let Some(reply_subject) = message.reply {
+            let response_bytes = Bytes::from(serde_json::to_vec(&response)?);
+            client.publish(reply_subject, response_bytes).await?;
+        }
+    }
+
+    Ok(())
+}
+```
+
+No Axum, no routes, no port binding. The service subscribes to a subject and sits in a `while let` loop. When a message arrives, it deserializes the payload, calls `process(request)`, serializes the response, and publishes it to the `reply_subject` that NATS attached to the incoming message. That reply subject is the temporary inbox we described earlier.
+
+The `if let Some(reply_subject)` guard is there because not all NATS messages carry a reply subject. In pure pub/sub (fire and forget), there is no reply. In our case we always use request/reply, so the guard will always match, but it is good practice.
+
+Worth noting: `subscription.next()` comes from `tokio_stream::StreamExt`. The NATS subscription implements `Stream`, so we can iterate over incoming messages using the same pattern we would use with any async iterator.
+
+
+
+
+
+
+
+
+#### **Expected output**
+{: .no_toc }
+
+Before running, we need a NATS server. Check `QUICK_START.md` in the `step08_message_broker` folder for installation instructions:
 
 <div align="center">
 <img src="./assets/img15.webp" alt="Installing scoop and nats-server under Windows and Powershell" width="900" loading="lazy"/><br/>
 <span>Installing scoop and nats-server under Windows and Powershell</span>
 </div>
 
+
+
+Once installed, we need four terminals:
+
+
+```text
+# Terminal 1: start NATS
+nats-server
+
+# Terminal 2
+cargo run -p service1
+
+# Terminal 3
+cargo run -p service2
+
+# Terminal 4
+cargo run -p app
+```
+
+The app terminal shows:
+
+```text
+Phase 08: Message Broker Pipeline (NATS)
+
+[App] Connecting to nats://127.0.0.1:4222...
+[App] Connected to NATS broker
+
+--- Processing Distributed Pipeline ---
+[App] Starting request: c907abc8-bccc-47e1-9e96-e10aab766389
+[App] Input value: 42
+
+[App] Sending to "service.process"...
+[App] Service1 result: value=84, processed=true
+
+[App] Sending to "service.transform"...
+[App] Service2 result: original=84, transformed=Value-0084
+
+[App] Pipeline completed successfully!
+[App] Final result: Value-0084
+
+Execution complete
+```
+
+Service1's terminal after one run of the app:
+
+```text
+[Service1] Processing Service (NATS)
+[Service1] Connecting to nats://127.0.0.1:4222...
+[Service1] Connected. Subscribing to "service.process"...
+[Service1] Waiting for requests...
+[Service1] Processing request: c907abc8-bccc-47e1-9e96-e10aab766389
+[Service1] Input value: 42
+```
+
+Service2's terminal after running the app twice:
+
+```text
+[Service2] Transformation Service (NATS)
+[Service2] Connecting to nats://127.0.0.1:4222...
+[Service2] Connected. Subscribing to "service.transform"...
+[Service2] Waiting for requests...
+[Service2] Transforming request: c907abc8-bccc-47e1-9e96-e10aab766389
+[Service2] Input value: 84
+[Service2] Transforming request: f0666650-8e5d-4fee-8f07-6460b93d406a
+[Service2] Input value: 84
+```
+
+The services stay alive between runs. We can launch the app ten times and the services just keep accumulating requests. They are completely independent processes.
+
+The tests work without a NATS server since they exercise pure business logic:
+
+```text
+cargo test -p service1
+running 2 tests
+test test::negative_value_stays_negative ... ok
+test test::process_doubles_value ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+```
+
+
+### About Step 09
+{: .no_toc }
+
+The `step09_message_broker2` folder contains a polished version of Step 08. We are not going to walk through every line here; the code is there for the taking and the patterns should feel familiar at this point. But let us highlight what changed and what to look for.
+
+The big picture: Step 09 reuses the same concurrent approach we used in Step 07's `main_multi.bak` variant. Instead of processing a single value, the app fires five values through the pipeline at the same time using `tokio::task::JoinSet`. The input array is deliberately chosen to trigger edge cases:
+
+```rust
+const INPUT_VALUES: [i32; 5] = [10, 42, 5_000, 50, 1_073_741_824];
+```
+
+What happens when the integer passed to Service1 cannot be multiplied by 2? The value `1_073_741_824` is just above `i32::MAX / 2`, so `value * 2` would overflow. In Step 09, Service1 uses `checked_mul(2)` and returns an error response instead of panicking.
+
+What happens when the number passed to Service2 has more than 4 digits? The value `5_000` doubles to `10_000`, which does not fit the `Value-XXXX` format. Service2 validates the range and returns an error response.
+
+To carry these errors cleanly, `ProcessResponse` and `TransformResponse` gain an `error: Option<String>` field. `None` means success, `Some(message)` means a domain error occurred. The app checks this field after each service call and propagates the error message in its final output.
+
+In Service1 and Service2, take a look at the main loop. Instead of a plain `while let`, Step 09 uses `tokio::select!` to race between incoming messages and a `tokio::signal::ctrl_c()` future. When we press Ctrl+C, the service prints a shutdown message and exits cleanly instead of being killed mid-request:
+
+```text
+[Service1] Initiating Shutdown...
+[Service1] Server Exiting.
+```
+
+Here is the full output from the app in Step 09:
+
+```text
+Phase 09: Message Broker Pipeline II
+
+[App] Connecting to nats://127.0.0.1:4222...
+[App] Connected to NATS broker
+
+--- Processing Distributed Pipeline (5 values concurrently) ---
+
+[App] Spawning pipeline for value=10  request_id=b8baa04e
+[App] Spawning pipeline for value=42  request_id=3c71926f
+[App] Spawning pipeline for value=5000  request_id=8437a4b9
+[App] Spawning pipeline for value=50  request_id=84a2d8d5
+[App] Spawning pipeline for value=1073741824  request_id=e768e3b8
+
+[b8baa04e] Service1 done: value=10 -> processed=20
+[3c71926f] Service1 done: value=42 -> processed=84
+[8437a4b9] Service1 done: value=5000 -> processed=10000
+[b8baa04e] Service2 done: value=20 -> transformed=Value-0020
+[84a2d8d5] Service1 done: value=50 -> processed=100
+[App] Completed: value=10 -> Value-0020  request_id=b8baa04e
+[3c71926f] Service2 done: value=84 -> transformed=Value-0084
+[App] Completed: value=42 -> Value-0084  request_id=3c71926f
+[e768e3b8] Service1 ERROR: overflow: 1073741824 * 2 exceeds i32 range
+[App] Completed: value=1073741824 -> ERROR(service1): overflow: 1073741824 * 2 exceeds i32 range  request_id=e768e3b8
+[8437a4b9] Service2 ERROR: value 10000 exceeds 4-digit format range [-9999..9999]
+[App] Completed: value=5000 -> ERROR(service2): value 10000 exceeds 4-digit format range [-9999..9999]  request_id=8437a4b9
+[84a2d8d5] Service2 done: value=100 -> transformed=Value-0100
+[App] Completed: value=50 -> Value-0100  request_id=84a2d8d5
+
+--- Final Results (sorted by input value) ---
+  10 -> Value-0020  [b8baa04e]
+  42 -> Value-0084  [3c71926f]
+  50 -> Value-0100  [84a2d8d5]
+  5000 -> ERROR(service2): value 10000 exceeds 4-digit format range [-9999..9999]  [8437a4b9]
+  1073741824 -> ERROR(service1): overflow: 1073741824 * 2 exceeds i32 range  [e768e3b8]
+
+Execution complete
+```
+
+Three values make it through. Two trigger domain errors at different stages of the pipeline. The `request_id` lets us trace each value through the noise of interleaved output.
+
+
+### Why This Step Matters
+{: .no_toc }
+
+We just crossed another important threshold. With HTTP in Step 07, we gained network transparency: services could run on different machines. With a message broker, we gain something more: the services and the app are truly decoupled. The app does not need to know where services live, how many instances are running, or whether they are even online right now.
+
+But let us be honest about where most of us stand. At our level (hobbyists, learners, early professionals), the real takeaway is not "use NATS in production tomorrow." It is this: if we start from a modular monolith and one of our components genuinely needs to become a service, protecting the app from transport changes via a `Messaging` trait is a solid strategy. We saw that the `run_pipeline` function in the app does not mention NATS at all. If we needed to swap in RabbitMQ, or even a simple in memory channel for testing, we would write a new adapter and nothing else would change.
+
+For those who want to push further, this is essentially the beginning of a hexagonal architecture. The `Messaging` trait is a port. `NatsMessaging` is an adapter. We are not using the formal vocabulary here, but the structure is already in place. Naming it explicitly and organizing the code around ports and adapters would be the natural next step for a larger project.
+
+
+
+
+
+
+
+
+
+
+### What Rust Gives Us Here
+{: .no_toc }
+
+1. **`async-nats`.** The official NATS client for Rust. Connecting, subscribing, publishing, and request/reply all work through clean async APIs that integrate with tokio. The subscription implements `Stream`, so we consume messages with `while let Some(msg) = subscription.next().await`, the same pattern we would use with any async iterator
+1. **The `Messaging` trait with RPITIT.** Rust 2024 edition lets us write `fn request(...) -> impl Future<...> + Send` directly in a trait definition. No need for the `#[async_trait]` macro that older codebases require. This gives us a clean, zero cost abstraction over the transport layer
+1. **`bytes::Bytes`.** The `async-nats` API uses `Bytes` (from the `bytes` crate) for message payloads instead of `Vec<u8>`. `Bytes` is a reference counted, cheaply cloneable byte buffer. We convert from `Vec<u8>` with `Bytes::from(payload)` and back with `reply.payload.to_vec()`. In high throughput scenarios, `Bytes` avoids unnecessary copies
+1. **`tokio::time::timeout`.** Wrapping a future in `timeout(duration, future).await` gives us a `Result<Result<T, E>, Elapsed>`. The double `??` pattern unwraps both layers cleanly. Without this, a missing service would hang the app forever
+1. **`serde` everywhere.** Same story as every previous step. Our structs derive `Serialize` and `Deserialize`, and both the app and the services use `serde_json::to_vec` / `serde_json::from_slice` to go between structs and bytes. The serialization format is the same whether the bytes travel through HTTP, pipes, or NATS
+1. **`tokio::select!` (Step 09).** In the enhanced version, services use `tokio::select!` to race between processing the next message and a Ctrl+C signal. This gives us graceful shutdown without complex signal handling code. The macro picks whichever future completes first
+
+
+
+
+### Things to Think About
+{: .no_toc }
+
+- We used NATS as our broker, but the `Messaging` trait means we could swap it out. It would be a good exercise to try Redis Streams, RabbitMQ, or even a simple `tokio::sync::mpsc` channel as an alternative adapter. How much code changes?
+- The `Messaging` trait is already a port in hexagonal architecture terms, and `NatsMessaging` is already an adapter. We are one rename away from making that vocabulary explicit. For a larger project, organizing code around ports and adapters would make the boundaries even clearer
+- NATS and Kafka both call themselves "messaging systems" but they serve different use cases. NATS is lightweight, low latency, and ephemeral by default (messages are not stored). Kafka is built for durable, ordered event streams. Understanding when to pick one over the other is worth the research
+- Right now, `nats://127.0.0.1:4222` is a hardcoded constant in both the app and the services. In a real project, we would read it from an environment variable or a `.env` file. How would we share that configuration across services? A shared config file? A `.env` in the workspace root?
+- NATS supports JetStream for persistent messaging (messages survive broker restarts, consumers can replay history). Check the `QUICK_START.md` in the step folder for pointers. If our use case requires durability guarantees, JetStream is the NATS answer to Kafka style persistence
+- NATS also supports more patterns than we used here. We only used request/reply (one message, one answer). Pub/sub (fan out to multiple consumers) and queue groups (load balancing across multiple instances of the same service) have no equivalent in plain HTTP and are worth exploring
+
+
+### When to Move On
+{: .no_toc }
+
+This is the last step. We have traveled from a single file monolith to a message broker architecture in eight increments, each one building on the previous without rewriting what already worked.
+
+There is no Step 09 to move on to (well, there is `step09_message_broker2`, but that is a refinement, not a new architecture). The question now is: what do we do with all this?
+
+The honest answer is that most of us will not need a message broker for our day to day Rust projects. But the journey matters more than the destination. We now understand the tradeoffs at each level: modules give us organization, workspaces give us build boundaries, traits give us decoupling, processes give us isolation, HTTP gives us network transparency, and a broker gives us full decoupling from service topology.
+
+The right architecture for any given project is the simplest one that solves the actual problem. If a monolith works, ship the monolith. If one component genuinely needs to scale independently or run on a different machine, we know exactly which steps to take and what tradeoffs come with each one. No premature refactoring, no cargo culting microservices. Just the right tool for the job, chosen with full awareness of the alternatives.
+
+
+### Summary
+
+We replaced HTTP with a NATS message broker. The services dropped Axum and switched to subscribing on NATS subjects (`"service.process"`, `"service.transform"`). The app dropped `reqwest` and sends messages through a `Messaging` trait backed by `NatsMessaging`, the only component that knows about the concrete broker. The `common` crate now hosts both the shared data types and the `Messaging` trait, acting as the contract between the app and the transport layer. The business logic is unchanged (42 in, "Value-0084" out). We gained full decoupling from service topology: the app does not know where services live, how many instances exist, or what broker runs underneath. The tradeoff is an external dependency (NATS server) and the operational overhead of managing a broker. Step 09 extends the pattern with concurrent processing of multiple values, domain error reporting via `Option<String>` fields, and graceful Ctrl+C shutdown using `tokio::select!`.
 
 
 
