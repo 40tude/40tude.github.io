@@ -2066,7 +2066,11 @@ No URLs. The app does not know `http://127.0.0.1:3001`. It only knows the subjec
 
 No `reqwest`. The app uses the `Messaging` trait (backed by `async-nats`) instead of HTTP POST.
 
+
+
+
 #### **What was added**
+{: .no_toc }
 
 A NATS client (`async-nats` crate) replaces both Axum on the server side and reqwest on the client side. Both the app and the services use the same `async_nats::connect()` call.
 
@@ -2560,6 +2564,7 @@ The right architecture for any given project is the simplest one that solves the
 
 
 ### Summary
+{: .no_toc }
 
 We replaced HTTP with a NATS message broker. The services dropped Axum and switched to subscribing on NATS subjects (`"service.process"`, `"service.transform"`). The app dropped `reqwest` and sends messages through a `Messaging` trait backed by `NatsMessaging`, the only component that knows about the concrete broker. The `common` crate now hosts both the shared data types and the `Messaging` trait, acting as the contract between the app and the transport layer. The business logic is unchanged (42 in, "Value-0084" out). We gained full decoupling from service topology: the app does not know where services live, how many instances exist, or what broker runs underneath. The tradeoff is an external dependency (NATS server) and the operational overhead of managing a broker. Step 09 extends the pattern with concurrent processing of multiple values, domain error reporting via `Option<String>` fields, and graceful Ctrl+C shutdown using `tokio::select!`.
 
