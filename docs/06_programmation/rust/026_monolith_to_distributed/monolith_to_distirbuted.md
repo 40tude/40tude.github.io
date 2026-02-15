@@ -1648,7 +1648,7 @@ pub struct ProcessResponse {
 }
 ```
 
-`TransformRequest` and `TransformResponse` follow the same pattern. Compared to Step 06's `Message` enum, this is much lighter. The contract between services is now split between the struct definitions (what data travels) and the HTTP routes (where it goes). Together they play the same role as the `Message` enum did before, just expressed differently.
+`TransformRequest` and `TransformResponse` follow the same pattern. Compared to Step 06's `Message` enum, this is much lighter. The contract between services is now split between the struct definitions (what data travels) and the HTTP routes (where it goes). Together they play the same role as the `Message` enum did before (or the trait in Step 03 even before), just expressed differently.
 
 
 #### **The services**
@@ -1692,7 +1692,7 @@ fn process(request: ProcessRequest) -> ProcessResponse {
 
 Same logic as every previous step. The `request_id` passes through unchanged so the caller can correlate requests and responses.
 
-Notice that services still use `eprintln!()` for their diagnostic output, just like in Step 06. Even though we are no longer using stdout for protocol messages, it is a good habit. The service's stdout is not piped to anyone anymore, but keeping diagnostics on stderr means we could add structured logging later without interfering with any future tooling.
+Notice that services still use `eprintln!()` for their diagnostic output, just like in Step 06. Even though we are no longer using stdout for protocol messages, it is better than a `println!()` but not as good as a log message. Anyway... The service's stdout is not piped to anyone anymore, but keeping diagnostics on stderr means we could add structured logging later without interfering with any future tooling.
 
 Also notice: there is no shutdown handler. In Step 06, the orchestrator sent a `Shutdown` message and reaped the child process. Here, the services run until we press Ctrl+C. They are independent processes, not children. This is simpler but also means we need to manage their lifecycle externally.
 
@@ -1823,12 +1823,13 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 ```
 
 
-#### **The concurrent version (main_multi.bak)**
+#### **The concurrent version (`main_multi.bak`)**
 {: .no_toc }
 
 The `request_id` might seem like overkill when we process a single value sequentially. But what happens when we process five values at the same time?
 
-> **Try this**
+> **Try this:**
+>
 > While `Service1` and `Service2` are **still running** in their terminals:
 > * Rename `app\src\main.rs` to `app\src\main.bak`
 > * Rename `app\src\main_multi.bak` to `app\src\main.rs`
@@ -1838,7 +1839,7 @@ The `request_id` might seem like overkill when we process a single value sequent
 >     cargo build -p app
 >     cargo run -p app
 >     ```
-> We should see the benefit of using `request_id`:
+> Now we can see the benefit of using `request_id`:
 
 ```text
 Phase 07: Distributed system (HTTP)
@@ -1916,7 +1917,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> { ... }
 
 Why? Because `tokio::task::spawn` requires the future to be `Send`, so `run_pipeline` must return a `Send + Sync` error type. When the `?` operator tries to convert `Box<dyn Error + Send + Sync>` into `Box<dyn Error>`, Rust looks for `impl From<Box<dyn Error + Send + Sync>> for Box<dyn Error>`. That conversion requires `Box<dyn Error + Send + Sync>` to implement `Error` itself, which requires `Sized`, and `dyn Error + Send + Sync` is not `Sized`. The compiler rejects it.
 
-The fix is simple: align `main`'s return type with `run_pipeline`'s, so both use `Box<dyn Error + Send + Sync>`. The `?` operator has nothing to convert since both types match.
+The fix consist in aligning `main`'s return type with `run_pipeline`'s, so both use `Box<dyn Error + Send + Sync>`. The `?` operator has nothing to convert since both types match.
 
 In short: sequential version means no `Send` constraint, so `Box<dyn Error>` is enough. Concurrent version with `JoinSet` means everything must be `Send + Sync`, and that constraint propagates all the way up to `main`.
 
@@ -1996,6 +1997,11 @@ We replaced stdin/stdout pipes with HTTP. The services became independent Axum s
 </div>
 
 The code is ready, not the comments.
+
+<div align="center">
+<img src="./assets/img15.webp" alt="Installing scoop and nats-server under Windows and Powershell" width="900" loading="lazy"/><br/>
+<span>Installing scoop and nats-server under Windows and Powershell</span>
+</div>
 
 
 

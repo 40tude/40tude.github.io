@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2025-11-28 17:00:00
+last_modified_date : 2026-02-15 01:00:00
 ---
 
 
@@ -682,6 +682,7 @@ Once you are happy, copy and paste the `ms-rust` directory in `$env:USERPROFILE/
 
 ## 5. Webliography
 * [The Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html)
+* [Rust guidelines](https://github.com/microsoft/rust-guidelines) on GitHub
 * On Claude Code Docs, read this [page](https://code.claude.com/docs/en/skills)
 * About SKILL, read this [page](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
 * [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
