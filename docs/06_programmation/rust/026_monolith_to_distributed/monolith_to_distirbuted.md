@@ -11,7 +11,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-02-13 00:30:00
+last_modified_date: 2026-02-15 16:00:00
 ---
 
 
@@ -24,9 +24,9 @@ A hands-on journey through small, working projects to understand when and why ar
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -42,15 +42,15 @@ A hands-on journey through small, working projects to understand when and why ar
 * For beginners, tinkerers, hobbyists, amateurs...
 * Start with a monolith. Seriously. A single binary that works is worth more than a complicated system that sort of works
 * Only split code when the pain of not splitting becomes real: hard to read, hard to test, hard to work on with others
+* Do not refactor while reorganizing. Move the code first, verify the output is identical, then improve. One concern at a time
 * Move to a Modular Monolith using an Hexagonal Architecture as soon as you decide to leave the initial mono file monolith. This is NOT over engineering, this is an investment.
 * Traits define contracts. The application decides which methods it needs; the components fall in line. That is Dependency Inversion, and it costs almost nothing to set up
 * Cargo workspaces are the sweet spot for most Rust projects. Independent builds, independent tests, one repository. Hard to beat
 * Every architectural boundary we add (DLL, process, HTTP, broker) makes the system harder to debug. Serialization, network calls, and message routing are not free
 * The business logic should never care about how it is called. Whether it runs inside a function, behind an FFI boundary, or on the other side of a NATS broker, 42 * 2 is still 84
-* Do not refactor while reorganizing. Move the code first, verify the output is identical, then improve. One concern at a time
 * Process isolation buys crash containment. If a service panics, the rest of the system keeps running. That is worth something, but only if we actually need it
 * HTTP gives us network transparency. A message broker gives us topology decoupling. Pick the simplest one that solves the actual problem
-* There is no shame in stopping at step 03. Most production software runs just fine as a well designed modular monolith.
+* There is no shame in stopping at Step 03. Most production software runs just fine as a well designed modular monolith.
 
 
 **Note**
@@ -121,7 +121,7 @@ Here is the progression at a glance:
 | 07 | HTTP services | Network transparency |
 | 08 | Message broker (NATS) | Full topology decoupling |
 
-Each step builds on the previous one. We never throw everything away and start over. We refactor incrementally, one concern at a time, and at each stage we pause to understand what we gained, what it cost, and whether we even need to go further. That last point is important: **most projects do not need to reach step 08**. A well structured modular monolith (step 02 or 03) is the right answer for the vast majority of use cases. We go all the way to a message broker not because everyone should, but because understanding the full spectrum helps us make better decisions about where to stop.
+Each step builds on the previous one. We never throw everything away and start over. We refactor incrementally, one concern at a time, and at each stage we pause to understand what we gained, what it cost, and whether we even need to go further. That last point is important: **most projects do not need to reach step 08**. A well structured modular monolith (Step 02 or 03) is the right answer for the vast majority of use cases. We go all the way to a message broker not because everyone should, but because understanding the full spectrum helps us make better decisions about where to stop.
 
 One recurring theme throughout: **no premature refactoring**. At each step, we resist the urge to "improve" things that are not broken. We move one piece, verify the output is identical, and only then consider the next move. This discipline is what makes incremental evolution safe.
 
@@ -2638,7 +2638,7 @@ Let's take one last look at what each level gave us:
 | HTTP (07) | Network transparency, concurrent handling | Network dependency, service lifecycle management |
 | Message broker (08) | Full topology decoupling, scalability | External infrastructure (NATS server) |
 
-The honest truth is that most of us (amateur, tinkerter, hobbyst, young dev pro) will not need a message broker for our day to day Rust projects. A well structured modular monolith (step 02) with trait based decoupling (step 03) covers the vast majority of real world use cases. And that is perfectly fine. Shipping a monolith that works is infinitely better than shipping a distributed system that sort of works.
+The honest truth is that most of us (amateur, tinkerers, hobbyists, young developers) will not need a message broker for our day to day Rust projects. A well structured modular monolith (Step 02) with trait based decoupling (Step 03) covers the vast majority of real world use cases. And that is perfectly fine. Shipping a monolith that works is infinitely better than shipping a distributed system that sort of works.
 
 The value of walking through all nine steps is not that we should use all nine. It is that we now understand the tradeoffs at each level. Modules give us organization. Workspaces give us build boundaries. Traits give us decoupling. Processes give us isolation. HTTP gives us network transparency. A broker gives us full decoupling from service topology. Each one solves a real problem, and each one introduces new complexity.
 
