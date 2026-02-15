@@ -709,3 +709,12 @@ last_modified_date: 2026-02-13 00:30:00
 
 
 
+Le fichier monolith_to_distributed.md est trop long et pas fait pour être publié
+sur Medium.
+Peux tu déposer dans raw_assets/ une version que je peux poster sur
+Medium. Pense peut être à utiliser les quelques unes des images img04 à img12 ou
+img14 pour illustrer. Idéalement je souhaite juste à avoir à coller le fichier
+que tu vas générer. Evite les dash, les em-dash et les emojis. Ton de la
+discussion.
+
+
