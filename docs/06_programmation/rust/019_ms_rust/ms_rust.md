@@ -30,6 +30,9 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
 * Automatically enforces Microsoft Rust coding standards through Claude skills
@@ -49,6 +52,9 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Table of Contents
 {: .no_toc .text-delta}
 - TOC
