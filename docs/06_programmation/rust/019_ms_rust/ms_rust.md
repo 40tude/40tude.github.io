@@ -88,7 +88,10 @@ Invoke-WebRequest -Uri "https://microsoft.github.io/rust-guidelines/agents/all.t
 ls
 ```
 
-If you prefer the GUI remember you can use `%USERPRFILE%` and `%TMP%` when needed.
+If you prefer the GUI remember you can use:
+* WIN+E | load file explorer)
+* CTRL+L  | set the focus where it should
+* `%USERPRFILE%` or `%TMP%` when needed
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
@@ -553,13 +556,18 @@ Here is how it looks in the terminal
 <span>Read the last 2 lines in color. I can't do it for you.</span>
 </div>
 
-At the bottom, in Technicolor, you are asked to review the `SKILL.md` which have been created. This one is much longer than the previous one we had. Indeed it helps Claude Code to decide which document to read. See below my current version:
+At the bottom, in Technicolor, you are asked to review the `SKILL.md` which have been created. This one is much longer than the previous one we had. Indeed it helps Claude Code to decide which document to read. See below my current version (2026-02-16):
+
+
+
+
 
 
 ```markdown
 ---
 name: ms-rust
 description: ALWAYS invoke this skill BEFORE writing or modifying ANY Rust code (.rs files) even for simple Hello World programs. Enforces Microsoft-style Rust development discipline and requires consulting the appropriate guideline files before any coding activity. This skill is MANDATORY for all Rust development.
+last_updated: 2026-02-16
 ---
 
 # Rust Development Skill
@@ -671,14 +679,23 @@ Use when:
 
 1. **Load the necessary guideline files BEFORE ANY RUST CODE GENERATION.**
 2. Apply the required rules from the relevant guidelines.
-3. Apply the *M-CANONICAL-DOCS* documentation format.
+3. Apply the [M-CANONICAL-DOCS](03_documentation.md#M-CANONICAL-DOCS) documentation format (summary sentence < 15 words, then extended docs, Examples, Errors, Panics, Safety, Abort sections as applicable).
 5. Comments must ALWAYS be written in American English, unless the user explicitly requests ‘write comments in French’ or provides another clear instruction specifying a different comment language.
-6. If the file is fully compliant, add a comment: `// Rust guideline compliant {date}` where {date} is the guideline date or the date of the current day (format YYYY-MM-DD)
-
+6. If the file is fully compliant, add a comment: `// Rust guideline compliant {last_updated}` where `{last_updated}` is the `last_updated` value from this skill's frontmatter.
 
 ---
-
 ```
+
+
+
+
+**Note:** VSCode may complain because the attribute `last_updated` in the frontmatter is not supported but this is not a big deal.
+
+
+
+
+
+
 Once you are happy, copy and paste the `ms-rust` directory in `$env:USERPROFILE/.claude/skills/` and you should be good to go.
 
 
