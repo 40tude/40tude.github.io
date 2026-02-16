@@ -89,9 +89,9 @@ ls
 ```
 
 If you prefer the GUI remember you can use:
-* WIN+E | load file explorer
-* CTRL+L  | set the focus where it should
-* `%USERPRFILE%` or `%TMP%` when needed
+* WIN+E to load file explorer
+* CTRL+L to set the focus where it should
+* Type `%USERPRFILE%` or `%TMP%` when needed
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="600" loading="lazy"/><br/>
@@ -206,7 +206,7 @@ For what I understood, here is what happen when starting a conversation
 4. Invoking the skill. When Claude decides to use a skill (based on its description), it use the Skill tool with the name of the skill. That's when the entire contents of `SKILL.md` are injected into the conversation.
 5. Applying the instructions. Once the skill is invoked, Claude sees all the detailed instructions from `SKILL.md` and have to follow them for the task at hand.
 
-**About invocation control** (added Feb. 2026): by default, both you and Claude can invoke a skill. But two frontmatter fields let you change this behavior. Set `disable-model-invocation: true` if you want only YOU to trigger the skill (Claude will not auto-invoke it). Set `user-invocable: false` if you want the skill to be background knowledge that Claude uses when relevant, but that does not show up in the `/` menu. For `ms-rust` we want Claude to auto-invoke it, so the defaults are fine.
+**About invocation control** (added Feb. 2026): by default, Claude and us can invoke a skill. But two frontmatter fields let us change this behavior. If we set `disable-model-invocation: true` then only US can trigger the skill (Claude will not auto-invoke it). If we set `user-invocable: false` the skill is a background knowledge that Claude uses when relevant, but that does not show up in the `/` menu. For `ms-rust` we want Claude to auto-invoke it, so the defaults are fine.
 
 So the flow looks more or less like this:
 * Start of conversation: Claude knows the names/descriptions of the available skills.
@@ -567,8 +567,9 @@ At the bottom, in Technicolor, you are asked to review the `SKILL.md` which have
 ---
 name: ms-rust
 description: ALWAYS invoke this skill BEFORE writing or modifying ANY Rust code (.rs files) even for simple Hello World programs. Enforces Microsoft-style Rust development discipline and requires consulting the appropriate guideline files before any coding activity. This skill is MANDATORY for all Rust development.
-last_updated: 2026-02-16
 ---
+
+**Current compliance date: 2026-02-16**
 
 # Rust Development Skill
 <!-- The Pragmatic Rust Guidelines are copyrighted (c) by Microsoft Corporation and licensed under the MIT license. -->
@@ -681,7 +682,7 @@ Use when:
 2. Apply the required rules from the relevant guidelines.
 3. Apply the [M-CANONICAL-DOCS](03_documentation.md#M-CANONICAL-DOCS) documentation format (summary sentence < 15 words, then extended docs, Examples, Errors, Panics, Safety, Abort sections as applicable).
 5. Comments must ALWAYS be written in American English, unless the user explicitly requests ‘write comments in French’ or provides another clear instruction specifying a different comment language.
-6. If the file is fully compliant, add a comment: `// Rust guideline compliant {last_updated}` where `{last_updated}` is the `last_updated` value from this skill's frontmatter.
+6. If the file is fully compliant, add a comment: `// Rust guideline compliant {date}` where `{date}` is the **Current compliance date** shown at the top of this document.
 
 ---
 ```
@@ -689,7 +690,6 @@ Use when:
 
 
 
-**Note:** VSCode may complain because the attribute `last_updated` in the frontmatter is not supported but this is not a big deal.
 
 
 
