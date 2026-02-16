@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2026-02-16 10:00:00
+last_modified_date : 2026-02-16 10:15:00
 ---
 
 
@@ -89,7 +89,7 @@ ls
 ```
 
 If you prefer the GUI remember you can use:
-* WIN+E | load file explorer)
+* WIN+E | load file explorer
 * CTRL+L  | set the focus where it should
 * `%USERPRFILE%` or `%TMP%` when needed
 
