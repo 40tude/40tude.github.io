@@ -2039,6 +2039,7 @@ We replaced stdin/stdout pipes with HTTP. The services became independent Axum s
 > **Note:** This section covers both `step08_message_broker` and `step09_message_broker2`. Step 09 is a bonus, a polished version of Step 08. We will walk through Step 08 in detail, then point out what Step 09 adds and let the code speak for itself. Improvements from Step 08 to Step 09 include:
 > * **Queue group support**: services now use `queue_subscribe` instead of plain `subscribe`, so NATS load balances across multiple instances of the same service instead of fanning out to all of them (in the code look for `.queue_subscribe()` or `QUEUE_TRANSFORM`). Running multiple instances of service1 (or service2) will now load balance requests across them instead of fanning out to all instances.
 > * Multiple values processed and transformed concurrently
+> * The equivalent of `Get_Version()` is back
 > * Error reporting from Service1 and Service2
 > * More tests in Service1 and Service2
 > * Graceful shutdown (Ctrl+C handling) in Service1 and Service2
@@ -2143,8 +2144,8 @@ Unit tests are the same. No NATS server needed since they test pure business log
          /     |      \
         /      |       \
    service1   app   service2
-       \       |       /
-        \      |      /
+        \      |       /
+         \     |      /
      NATS broker (external)
 ```
 
@@ -2512,36 +2513,38 @@ Phase 09: Message Broker Pipeline II
 
 [App] Connecting to nats://127.0.0.1:4222...
 [App] Connected to NATS broker
+[App] Service1 version: 0.1.618
+[App] Service2 version: 0.2.718
 
 --- Processing Distributed Pipeline (5 values concurrently) ---
 
-[App] Spawning pipeline for value=10  request_id=b8baa04e
-[App] Spawning pipeline for value=42  request_id=3c71926f
-[App] Spawning pipeline for value=5000  request_id=8437a4b9
-[App] Spawning pipeline for value=50  request_id=84a2d8d5
-[App] Spawning pipeline for value=1073741824  request_id=e768e3b8
+[App] Spawning pipeline for value=10  request_id=e9456d76
+[App] Spawning pipeline for value=42  request_id=5cb2b3f4
+[App] Spawning pipeline for value=5000  request_id=e7a70251
+[App] Spawning pipeline for value=50  request_id=411f7aa4
+[App] Spawning pipeline for value=1073741824  request_id=97d9868f
 
-[b8baa04e] Service1 done: value=10 -> processed=20
-[3c71926f] Service1 done: value=42 -> processed=84
-[8437a4b9] Service1 done: value=5000 -> processed=10000
-[b8baa04e] Service2 done: value=20 -> transformed=Value-0020
-[84a2d8d5] Service1 done: value=50 -> processed=100
-[App] Completed: value=10 -> Value-0020  request_id=b8baa04e
-[3c71926f] Service2 done: value=84 -> transformed=Value-0084
-[App] Completed: value=42 -> Value-0084  request_id=3c71926f
-[e768e3b8] Service1 ERROR: overflow: 1073741824 * 2 exceeds i32 range
-[App] Completed: value=1073741824 -> ERROR(service1): overflow: 1073741824 * 2 exceeds i32 range  request_id=e768e3b8
-[8437a4b9] Service2 ERROR: value 10000 exceeds 4-digit format range [-9999..9999]
-[App] Completed: value=5000 -> ERROR(service2): value 10000 exceeds 4-digit format range [-9999..9999]  request_id=8437a4b9
-[84a2d8d5] Service2 done: value=100 -> transformed=Value-0100
-[App] Completed: value=50 -> Value-0100  request_id=84a2d8d5
+[e9456d76] Service1 done: value=10 -> processed=20
+[5cb2b3f4] Service1 done: value=42 -> processed=84
+[e7a70251] Service1 done: value=5000 -> processed=10000
+[e9456d76] Service2 done: value=20 -> transformed=Value-0020
+[App] Completed: value=10 -> Value-0020  request_id=e9456d76
+[411f7aa4] Service1 done: value=50 -> processed=100
+[97d9868f] Service1 ERROR: overflow: 1073741824 * 2 exceeds i32 range
+[5cb2b3f4] Service2 done: value=84 -> transformed=Value-0084
+[App] Completed: value=1073741824 -> ERROR(service1): overflow: 1073741824 * 2 exceeds i32 range  request_id=97d9868f
+[App] Completed: value=42 -> Value-0084  request_id=5cb2b3f4
+[e7a70251] Service2 ERROR: value 10000 exceeds 4-digit format range [-9999..9999]
+[App] Completed: value=5000 -> ERROR(service2): value 10000 exceeds 4-digit format range [-9999..9999]  request_id=e7a70251
+[411f7aa4] Service2 done: value=100 -> transformed=Value-0100
+[App] Completed: value=50 -> Value-0100  request_id=411f7aa4
 
 --- Final Results (sorted by input value) ---
-  10 -> Value-0020  [b8baa04e]
-  42 -> Value-0084  [3c71926f]
-  50 -> Value-0100  [84a2d8d5]
-  5000 -> ERROR(service2): value 10000 exceeds 4-digit format range [-9999..9999]  [8437a4b9]
-  1073741824 -> ERROR(service1): overflow: 1073741824 * 2 exceeds i32 range  [e768e3b8]
+  10 -> Value-0020  [e9456d76]
+  42 -> Value-0084  [5cb2b3f4]
+  50 -> Value-0100  [411f7aa4]
+  5000 -> ERROR(service2): value 10000 exceeds 4-digit format range [-9999..9999]  [e7a70251]
+  1073741824 -> ERROR(service1): overflow: 1073741824 * 2 exceeds i32 range  [97d9868f]
 
 Execution complete
 ```

@@ -765,6 +765,7 @@ Skills can also be distributed via the [plugin system](https://code.claude.com/d
 
 
 ## 7. Webliography
+* [all.txt](https://microsoft.github.io/rust-guidelines/agents/index.html)
 * [The Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html)
 * [Rust guidelines](https://github.com/microsoft/rust-guidelines) on GitHub
 * [Extend Claude with skills](https://code.claude.com/docs/en/skills) on Claude Code Docs
