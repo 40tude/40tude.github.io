@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2026-02-15 01:00:00
+last_modified_date : 2026-02-16 09:00:00
 ---
 
 
@@ -36,6 +36,7 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 * Simple 3-step setup: download guidelines, create/tune `SKILL.md`, test with a Rust project
 * Claude will automatically apply guidelines to all future `.rs` files
 * VSCode + Win11 (not tested elsewhere)
+* Updated Feb. 2026: slash commands merged into skills, new frontmatter fields, Agent Skills open standard
 
 
 
@@ -173,11 +174,13 @@ This skill automatically enforces Rust coding standards and best practices when 
 ```
 
 
-* **⚠️ Warning**: The `name` field must contain only lowercase letters and hyphens (no underscores).
+* **Warning**: The `name` field must contain only lowercase letters and hyphens (no underscores).
+* Since early 2026, the `name` field is technically optional (Claude uses the directory name as fallback). I still recommend setting it explicitly. Less ambiguity, fewer surprises.
 * Based on my experience... I **strongly** recommend to use the same name for the directory and the skill (`ms-rust` here, in our case).
 * The `description` is important (see the Side Note below) because this is what helps Claude to decide to apply such or such skill. For example here we make clear that the skill apply to "ANY Rust code".
 * It seems uppercase matters. I did some tests to confirm it. Do you see ALWAYS, ANY and **CRITICAL** above?
 * Be specific. See point 5 for example.
+* The official docs now recommend keeping `SKILL.md` under 500 lines. For detailed reference material, use separate files in the skill directory and reference them from `SKILL.md`. This is exactly what we do later with the splitting approach.
 * Don't be surprised if you have to iterate few times before your reach your Nirvana.
 
 
@@ -186,8 +189,8 @@ This skill automatically enforces Rust coding standards and best practices when 
 {: .no_toc }
 
 For what I understood, here is what happen when starting a conversation
-1. The skills are already indexed - Claude does NOT browse the `.claude/skills` directory at the beginning of each conversation. The Claude Code System has already scanned this directory and provided Claude with a list of available skills.
-2. Claude receives a prepared list - In its system instructions, there is a <available_skills> section that lists the available skills with their name and description (extracted from `SKILL.md` ). For example:
+1. The skills are already indexed. Claude does NOT browse the `.claude/skills` directory at the beginning of each conversation. The Claude Code System has already scanned this directory and provided Claude with a list of available skills.
+2. Claude receives a prepared list. In its system instructions, there is a section that lists the available skills with their name and description (extracted from `SKILL.md` ). For example:
     ```xml
     <available_skills>
     <skill>
@@ -196,15 +199,16 @@ For what I understood, here is what happen when starting a conversation
     </skill>
     </available_skills>
     ```
-3. Claude don't read `SKILL.md` at startup - It never reads the entire contents of `SKILL.md` files before we  ask something. It just see the short description. This is why its content is important.
-4. Invoking the skill - When Claude decides to use a skill (based on its description), it use the Skill tool with the name of the skill. That's when the entire contents of `SKILL.md` are injected into the conversation.
-5. Applying the instructions - Once the skill is invoked, Claude sees all the detailed instructions from `SKILL.md` and have to follow them for the task at hand.
+3. Claude don't read `SKILL.md` at startup. It never reads the entire contents of `SKILL.md` files before we ask something. It just see the short description. This is why its content is important.
+4. Invoking the skill. When Claude decides to use a skill (based on its description), it use the Skill tool with the name of the skill. That's when the entire contents of `SKILL.md` are injected into the conversation.
+5. Applying the instructions. Once the skill is invoked, Claude sees all the detailed instructions from `SKILL.md` and have to follow them for the task at hand.
 
+**About invocation control** (added Feb. 2026): by default, both you and Claude can invoke a skill. But two frontmatter fields let you change this behavior. Set `disable-model-invocation: true` if you want only YOU to trigger the skill (Claude will not auto-invoke it). Set `user-invocable: false` if you want the skill to be background knowledge that Claude uses when relevant, but that does not show up in the `/` menu. For `ms-rust` we want Claude to auto-invoke it, so the defaults are fine.
 
 So the flow looks more or less like this:
-* Start of conversation → Claude knows the names/descriptions of the available skills.
-* Rust task requested → Claude sees that ms-rust corresponds → It invokes the skill.
-* Skill invoked → The complete content of `SKILL.md` appears → It reads and apply the instructions.
+* Start of conversation: Claude knows the names/descriptions of the available skills.
+* Rust task requested: Claude sees that ms-rust corresponds, it invokes the skill.
+* Skill invoked: the complete content of `SKILL.md` appears, it reads and apply the instructions.
 
 
 
@@ -322,7 +326,7 @@ fn print_fibonacci(n: usize) {
 
 
 
-## 6. Update (2025-11-28)
+## 5. Update (2025-11-28)
 
 Everything was working like a charm then, at one point, I got this message (in red) from Claude Code.
 
@@ -337,6 +341,8 @@ I get in touch with the guys in charge of the Pragmatic Rust Guidelines but they
 One thing... May be I could split the document into multiples documents and let Claude discover them as needed. That would be even consistent with the discovery process we discussed before.
 
 First, let's split the original file with a Powershell script. Here is how the directories are organized:
+
+<!-- C:\Users\phili\OneDrive\Documents\Programmation\rust\95_ms_rust_guidelines\ms_skill -->
 
 ```
 /.
@@ -512,7 +518,9 @@ Write-Host -ForegroundColor Green "Once satisfied, copy $shortOutDir/ directory 
 
 ```
 
-Here is how to invoke the script : ` .\new-skills.ps1`. If needed you can pass another filename. By default it looks for "all.txt".
+Here is how to invoke the script : ` .\new-skills.ps1`.
+
+If needed you can pass another filename. By default it looks for "all.txt".
 
 At the end the directories look like this:
 
@@ -680,10 +688,70 @@ Once you are happy, copy and paste the `ms-rust` directory in `$env:USERPROFILE/
 </div>
 
 
-## 5. Webliography
+## 6. What changed since late 2025
+
+Since the first version of this post, the skills system in Claude Code has evolved. Here is a summary of the main changes. I am not rewriting the [official doc](https://code.claude.com/docs/en/skills) here. I just want to share what I noticed and what may be useful for our `ms-rust` setup.
+
+### Slash commands merged into skills (Jan. 2026)
+{: .no_toc }
+
+Anthropic merged custom slash commands (`.claude/commands/`) into the skills system. Your old command files still work but skills are now the recommended way. The main benefit is that skills support additional features like supporting files, invocation control, and subagent execution.
+
+
+### New frontmatter fields
+{: .no_toc }
+
+The YAML frontmatter in `SKILL.md` now supports several new optional fields. Here are the ones I find most interesting:
+
+| Field | What it does |
+|---|---|
+| `disable-model-invocation` | Set to `true` so only YOU can invoke the skill (not Claude). Useful for deploy-type skills. |
+| `user-invocable` | Set to `false` to hide from the `/` menu. Claude can still use it as background knowledge. |
+| `allowed-tools` | Restrict which tools Claude can use when the skill is active. Ex: `Read, Grep, Glob` |
+| `context` | Set to `fork` to run in an isolated subagent context. |
+| `agent` | Which subagent type to use with `context: fork`. Ex: `Explore`, `Plan` |
+| `argument-hint` | Hint shown during autocomplete. Ex: `[issue-number]` |
+
+For `ms-rust`, the defaults work fine. But good to know they exist if you build other skills.
+
+
+### Dynamic features
+{: .no_toc }
+
+Skills now support string substitutions like `$ARGUMENTS` and `$ARGUMENTS[N]` for passing parameters when you invoke them. For example, `/fix-issue 123` can inject `123` into the skill content.
+
+There is also the `` !`command` `` syntax for injecting shell command output before the skill content reaches Claude. Not critical for our `ms-rust` use case, but powerful for task-oriented skills.
+
+
+### Agent Skills open standard
+{: .no_toc }
+
+Claude Code skills now follow the [Agent Skills](https://agentskills.io) open standard. This means skills are portable across multiple AI tools, not just Claude. Not a big deal for day-to-day use but worth knowing if you plan to share your skills.
+
+
+### Where skills live (updated)
+{: .no_toc }
+
+The paths have not changed but the official doc now clearly lists all the levels:
+
+| Location | Path | Applies to |
+|---|---|---|
+| Enterprise | Managed settings | All users in your organization |
+| Personal | `~/.claude/skills/<skill-name>/SKILL.md` | All our projects |
+| Project | `.claude/skills/<skill-name>/SKILL.md` | This project only |
+| Plugin | `<plugin>/skills/<skill-name>/SKILL.md` | Where plugin is enabled |
+
+On Windows, `~` means `%USERPROFILE%` as before. Higher-priority locations win: enterprise > personal > project.
+
+Skills can also be distributed via the [plugin system](https://code.claude.com/docs/en/plugins) now. And Claude Code automatically discovers skills from nested `.claude/skills/` directories when you work inside subdirectories. This supports monorepo setups.
+
+
+
+## 7. Webliography
 * [The Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html)
 * [Rust guidelines](https://github.com/microsoft/rust-guidelines) on GitHub
-* On Claude Code Docs, read this [page](https://code.claude.com/docs/en/skills)
-* About SKILL, read this [page](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
-* [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
-* You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
+* [Extend Claude with skills](https://code.claude.com/docs/en/skills) on Claude Code Docs
+* [Agent Skills open standard](https://agentskills.io)
+* [Official skills repository](https://github.com/anthropics/skills) by Anthropic
+* [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+* You're welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
