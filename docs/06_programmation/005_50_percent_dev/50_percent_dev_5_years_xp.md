@@ -35,9 +35,14 @@ A data-driven investigation into one of the most repeated claims in software eng
 ## TL;DR
 {: .no_toc }
 
-* We ...
-
-
+* In 2017, the data was remarkably close to Uncle Bob’s prediction.
+* For decades, the observation remained broadly accurate due to sustained industry growth.
+* Starting in 2024, the growth rate of the developer population began to decelerate.
+* The developer population is aging, changing the experience distribution.
+* Software engineering continues to expand globally, creating entirely new audiences that must relearn established knowledge.
+* The core insight remains profoundly relevant: software engineering is still a young field with constant influx and insufficient knowledge transfer.
+* The rise of AI does not reduce the need for education. It increases the need for fundamentals, validation, and critical thinking.
+* We are no longer just training developers. We are training engineers who can guide, constrain, and validate machines that build.
 
 
 
