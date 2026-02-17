@@ -91,7 +91,7 @@ If the reasoning is not crystal clear, read this page which explain  [what is a 
 >
 > Robert C. Martin, "The Future of Programming" (2016, repeated in every edition since)
 
-Martin's reasoning begins in 1946 with Alan Turing writing the first lines of code, and traces exponential growth through to the present day. In his 2014 blog post "My Lawn," he estimated roughly 22 million programmers worldwide and calculated a growth rate of about 14.5% per year, a doubling time of approximately five years ([70/15 ≃ 5]({%link docs/03_maths/002_pourcentages/pourcentages.md%}#la-règle-du-70)). The mathematical consequence is inescapable: if the population doubles every five years, the newest half of that population necessarily has less than five years of tenure.
+Martin's reasoning begins in 1946 with Alan Turing writing the first lines of code, and traces exponential growth through to the present day. In his 2014 blog post "My Lawn," he estimated roughly 22 million programmers worldwide and calculated a growth rate of about 14.5% per year, a doubling time of approximately five years (because [70/15 ≃ 5]({%link docs/03_maths/002_pourcentages/pourcentages.md%}#la-règle-du-70)). The mathematical consequence is inescapable: if the population doubles every five years, the newest half of that population necessarily has less than five years of tenure.
 
 This idea has been enormously influential. It's cited in podcasts (The Changelog #367), Hacker News threads, LinkedIn articles, conference talks, and countless blog posts. But does the data actually support it?
 
@@ -409,7 +409,7 @@ What we call "new" ideas are often rediscoveries:
 * Data locality optimization
 * Concurrency patterns
 
-A Rust tutorial on hexagonal architecture reaches a completely different audience than a Java one written in 2012, even if the concept is identical.
+A Rust tutorial on [hexagonal architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) reaches a completely different audience than a Java one written in 2012, even if the concept is identical.
 
 Each generation must re-learn the same principles through the lens of new tools.
 
@@ -600,7 +600,7 @@ Our industry continuously absorbs new practitioners. Tools, platforms, and pract
 
 Do not hesitate to revisit so-called basic topics. Do not assume your audience already understands the foundations.
 
-An article about SOLID principles written for Rust does not reach the same audience as one written for C# in 2009, even if the principles are identical. A modern tutorial on gradient descent using today’s Python ecosystem connects with readers who would never encounter the 2015 version. A guide to hexagonal architecture using NATS and distributed services addresses realities that did not exist ten years ago.
+An article about [SOLID principles written for Rust]({%link docs/06_programmation/rust/022_solid/solid_00.md%}) does not reach the same audience as one written for C# in 2009, even if the principles are identical. A [modern tutorial on gradient descent]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) using today’s Python ecosystem connects with readers who would never encounter the 2015 version. A guide to [hexagonal architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) using [NATS and distributed services]({%link docs/06_programmation/rust/026_monolith_to_distributed/monolith_to_distributed.md%}) addresses realities that did not exist ten years ago.
 
 Every shift in technology, every new wave of developers, and every geographic expansion of the profession creates a new audience that deserves clear and thoughtful explanations.
 
