@@ -33,7 +33,9 @@ A data-driven investigation into one of the most repeated claims in software eng
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## TL;DR
-* ...
+{: .no_toc }
+
+* We ...
 
 
 
@@ -295,29 +297,32 @@ Several forces explain this shift. First, the tech industry's 2023–2024 layoff
 
 Even if the exact "50%" figure is softening, the structural problem Uncle Bob identified hasn't gone away,if anything, it's become more complex. Let's consider why technical education, vulgarization, and returning to "already covered" topics is more critical than ever.
 
-| Key Stat | Value | Source |
-|:---------|:-----:|:-------|
+| Key Stat                                     |  Value  | Source              |
+| :------------------------------------------- | :-----: | :------------------ |
 | Developers who learned a new skill last year | **69%** | Stack Overflow 2025 |
 | Developers using or planning to use AI tools | **84%** | Stack Overflow 2025 |
-| Developers who trust AI output | **33%** | Stack Overflow 2025 |
-| Developers who actively distrust AI output | **46%** | Stack Overflow 2025 |
+| Developers who trust AI output               | **33%** | Stack Overflow 2025 |
+| Developers who actively distrust AI output   | **46%** | Stack Overflow 2025 |
+
+
 
 ### How Developers Learn (2025)
 {: .no_toc }
 
 
 <!--
-| Learning method | % of respondents |
-|:----------------|:----------------:|
-| Technical documentation | **68%** |
-| Online resources (tutorials, blogs, forums) | **62%** |
-| AI-powered tools | **52%** |
-| Online courses / certifications | **42%** |
-| Stack Overflow | **38%** |
-| Books / physical media | **30%** |
-| Traditional school | **18%** |
+| Learning Method                             | % of Respondents |
+| :------------------------------------------ | :--------------: |
+| Technical documentation                     |      **68%**     |
+| Online resources (tutorials, blogs, forums) |      **62%**     |
+| AI-powered tools                            |      **52%**     |
+| Online courses / certifications             |      **42%**     |
+| Stack Overflow                              |      **38%**     |
+| Books / physical media                      |      **30%**     |
+| Traditional school                          |      **18%**     |
 
-*Source: Stack Overflow Developer Survey 2025 (49,000+ respondents). Online resources and documentation dominate over formal education.*
+*Source: Stack Overflow Developer Survey 2025 (49,000+ respondents). Documentation and online content dominate formal education.*
+
  -->
 
 
@@ -327,31 +332,228 @@ Even if the exact "50%" figure is softening, the structural problem Uncle Bob id
 </figure>
 
 
-**First, the renewal is constant.** Even though growth has slowed, 69% of developers reported learning new coding techniques or a new programming language in just the last year. The tooling landscape shifts so rapidly, from Docker to Kubernetes, from REST to gRPC, from manual testing to CI/CD, from jQuery to React to Server Components, that even experienced developers are perpetually "junior" in some domain. A 15-year veteran who mastered Java in 2010 may be a complete beginner in Rust, LLM integration, or WebAssembly today.
+### 1. The renewal is constant
 
-**Second, the tools have changed but the fundamentals haven't.** Uncle Bob made this exact point in his talk: programming paradigms, structured, object-oriented, and functional, were all invented before 1970. The "new" patterns and architectures (hexagonal architecture, event sourcing, modular monolith, CQRS) are often well-established ideas rediscovered by each generation. A tutorial on hexagonal architecture in Rust serves a genuinely different audience than one written for Java in 2012, even if the underlying concept is the same.
+Even in a slower-growth industry, **69% of developers learned a new language or technique last year**. That’s an astonishing level of churn in professional knowledge.
 
-**Third, the AI era amplifies the need, not diminishes it.** The 2025 Stack Overflow survey reveals a striking paradox: 84% of developers are using or planning to use AI tools, yet only 33% trust their output, and 46% actively distrust it. The biggest frustration? Solutions that are "almost right but not quite" (66%). This means developers need *more* foundational understanding to evaluate and debug AI-generated code, not less. Blindly accepting AI output without understanding the underlying principles is a recipe for disaster, precisely the kind of "catastrophe from bad software" Uncle Bob warned about.
+The tooling landscape keeps shifting:
+
+* Docker → Kubernetes
+* REST → gRPC / event-driven systems
+* Manual testing → CI/CD pipelines
+* jQuery → React → Server Components
+* Monoliths → distributed systems → modular monoliths (again)
+
+A developer with 15 years of experience may still be a beginner in Rust, WebAssembly, or LLM integration. Every generation of tools resets part of the learning curve. Remember when C++11 was "modern"? Entire mental models had to be rebuilt.
+
+Experience accumulates but relevance must be continuously renewed.
+
+### 2. The Developer Population Is Expanding Geographically
+
+The global developer base is not static. It is growing rapidly in regions that are encountering many software engineering concepts for the first time:
+
+* South Asia nearly doubled its developer population (≈4M → 7.5M since 2022)
+* Greater China more than doubled (≈2.4M → 5.8M)
+* South America roughly doubled (≈1.7M → 3.4M)
+
+For many of these developers, ideas like clean architecture, testing discipline, or domain modeling are not "old news." They are new discoveries.
+
+Content that feels repetitive to a Western audience can be foundational elsewhere. What seems like rehashing is often **knowledge diffusion at planetary scale**.
+
+
+
+
+### 3. The Profession Is Aging But Mentorship Hasn’t Scaled
+
+Developers are staying in the field longer, while fewer newcomers enter through traditional academic pipelines.
+
+That creates a paradox:
+
+* The experience pool is deeper than ever
+* But structured mentorship has not scaled with it
+
+As the survey shows, developers primarily learn through:
+
+* Documentation (68%)
+* Online content (62%)
+
+Formal education barely registers (18%).
+
+In practice, blog posts, talks, tutorials, and open-source examples have become the industry’s informal university. Writing educational material is no longer "giving back." It is part of maintaining the profession itself.
+
+
+
+
+### 4. Tools Change. Fundamentals Don’t.
+
+Uncle Bob emphasized this years ago: the major programming paradigms (structured, object-oriented, and functional) were all established before 1970.
+
+What we call "new" ideas are often rediscoveries:
+
+* Hexagonal architecture
+* CQRS
+* Event sourcing
+* Data locality optimization
+* Concurrency patterns
+
+A Rust tutorial on hexagonal architecture reaches a completely different audience than a Java one written in 2012, even if the concept is identical.
+
+Each generation must re-learn the same principles through the lens of new tools.
+
+
+
+
+
+
+### 5. The AI Era Increases the Need for Understanding
+
+This already changed in early 2026 but the 2025 survey revealed a striking paradox:
+
+* **84%** of developers use or plan to use AI tools
+* Only **33%** trust the output
+* **46%** actively distrust it
+* The #1 frustration: solutions that are *"almost right, but not quite"* (66%)
 
 > *"Three quarters of developers said they would still want to ask a human rather than AI because they don't trust AI answers. 61% cited ethical or security concerns. 61% said they want to fully understand their code."*
 >
 > Stack Overflow 2025 survey: free-form responses
 
 
+AI doesn’t remove the need for fundamentals. It raises the bar.
 
-<!--
-**Fourth, AI in early 2026.** Toutes les semaines y a un truc nouveau
+To validate AI-generated code, developers must:
+
+* Understand architecture
+* Detect subtle correctness issues
+* Recognize security risks
+* Debug systems they didn’t directly write
+
+Blindly accepting generated code is exactly the kind of failure mode Uncle Bob warned about: software that works until it catastrophically doesn’t.
+
+
+Again, it is clear that perceptions shifted dramatically in Q1 2026 with the widespread adoption of AI agents, systems like Opus 4.6, and coordinated teams of agents. Who would have imagined, just six months earlier, that we would be comfortable letting AI agents work for two weeks and produce, with little to no supervision, something as substantial as a nearly [complete C compiler](https://www.anthropic.com/engineering/building-c-compiler)?
+
+Trust in these systems will absolutely continue to grow. But we cannot lose sight of the fundamentals. If we do not want to find ourselves five years from now with an entire segment of developers missing, we must keep hiring junior engineers and take the time to train them properly.
 
 
 
-**Fifth** En plus faut éduquer ceux qui ne sont pas programmeurs et qui vont se retrouver à écrire les specifications d'un programme qui sera écrit par une IA. Par sûr qu'à terme il aient même conscience que l'IA a dû créer un programme (ou une app pour leur téléphone) qui leur permet quand il la lance d'aller cerhcher de nouvelles données, las traiter et les présenter.
- -->
+<figure style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Nd2pavAegx4?si=ihCyKo9lq2nLl5iA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figcaption>The English audio track is available</figcaption>
+</figure>
 
 
-**Sixth, the geographic expansion creates new audiences.** South Asia has nearly doubled its developer population (4M to 7.5M) since 2022. Greater China tripled (2.4M to 5.8M). South America doubled (1.7M to 3.4M). These developers are encountering design patterns, architectural concepts, and engineering best practices for the first time. Content that was "already covered" for a Western audience a decade ago is brand new for millions of developers entering the field from these rapidly growing regions.
 
-**Seventh, the aging of the profession creates a mentorship gap.** As fewer young developers enter and more experienced ones stay, the ratio of learners to teachers improves, but the knowledge transfer mechanisms haven't scaled to match. Blog articles, tutorials, and educational content are the primary vehicles through which this transfer happens. The 2025 survey confirms that technical documentation (68%) and online resources (62%) are the top learning methods, far ahead of traditional schooling (18%).
 
+
+### 6. Early 2026: From Assistants to Autonomous Teams
+
+We are living through an extraordinary transition.
+
+In less than a year, we’ve moved from a **"ping-pong" model** (ask → answer) to a **"team sport" model** where multiple agents collaborate, iterate, retry, and deliver substantial systems with minimal supervision.
+
+This is powerful and disorienting. The pace of change is now faster than most individuals can comfortably track.
+
+The result is not less need for education, but more:
+
+We must now learn how to *direct*, *constrain*, and *verify* these systems.
+
+
+
+
+### 7. Like Electricity, AI Will Eventually Become Invisible
+
+AI will likely fade into the background and become infrastructure. People who are not programmers will increasingly describe what they want, and software will be generated for them.
+
+They may never realize they are "programming."
+
+But someone must still understand:
+
+* How to validate results
+* How to test behavior
+* How to define specifications clearly
+* How to detect failure modes
+
+Trusting generated software is fundamentally different from trusting a human-written system you can inspect.
+
+If an AI designs the recipe, chooses the ingredients, cooks the meal, and serves it... Do you trust it without tasting?
+
+The same question applies to:
+
+* Medical analysis
+* Financial software
+* Business automation
+* Data interpretation
+
+As AI becomes more seamless, critical thinking must become sharper, not weaker.
+
+Disciplines like TDD, validation pipelines, and explicit specification become even more important because they are how we *constrain* automation.
+
+
+
+
+
+
+### 8. The Economic Case for Continuous Education
+
+Training developers is often seen as a cost center. In reality, it is a form of risk management.
+
+Replacing a developer is expensive. Rebuilding shared understanding is even more expensive. A team that does not continuously learn ends up paying in different ways. They accumulate technical debt, misuse new tools, and ship systems that nobody fully understands. The price is paid later through outages, rewrites, and slow delivery.
+
+Investing in education is cheaper than recovering from misunderstanding. Up skilling an existing team preserves context, domain knowledge, and ownership. Education is not charity. It is operational resilience.
+
+
+
+
+### 9. The AI Second-System Effect
+
+Fred Brooks described the ["Second-System Effect"](https://en.wikipedia.org/wiki/Second-system_effect) as the tendency to overbuild the second system because confidence grows faster than judgment.
+
+AI amplifies this effect.
+
+Developers can now produce large systems before they have internalized the constraints that usually come from experience. The tooling removes friction, but it does not replace architectural maturity. This makes it easier to create software that looks sophisticated yet lacks coherence, observability, or long-term maintainability.
+
+Faster construction without deeper understanding increases the probability of fragile systems. Education is what keeps speed aligned with sound engineering decisions.
+
+
+
+
+### 10. Creation Is Faster. Maintenance Is Still Human
+
+AI dramatically accelerates the act of writing code. It does not eliminate the need to maintain it.
+
+Most software effort has always been maintenance (write once, read hundred). Debugging, adapting to new requirements, improving performance, and understanding side effects remain human-driven tasks. Generated code still has to live inside real systems with real constraints.
+
+When teams skip learning because "the AI can write it," they create artifacts that nobody can safely evolve. The bottleneck simply moves from creation to comprehension.
+
+Understanding remains the scarce resource.
+
+
+
+
+
+### 11. The Risk of Losing Tacit Knowledge
+
+Not all knowledge is written down. Some of the most important engineering insights exist only in experience.
+
+Senior engineers carry mental models about tradeoffs, failure patterns, and system behavior that rarely appear in documentation. When this knowledge is not actively transmitted, it disappears. No tool can regenerate it automatically.
+
+Documentation scales. Tribal knowledge does not.
+
+Continuous teaching is how that invisible layer of expertise becomes shared capability instead of institutional memory loss.
+
+
+
+
+### 12. Teaching Is Part of the Engineering Job
+
+In many professions, transmitting knowledge is considered part of the work itself. Software engineering is no different, even if we sometimes pretend otherwise.
+
+Code reviews, design discussions, internal talks, blog posts, and mentoring are not side activities. They are mechanisms that keep the discipline functional across time. A team that does not teach eventually stops improving because each person must rediscover the same lessons alone.
+
+Writing educational material is not just giving back to the community. It is maintaining the profession’s collective competence.
+
+Engineers do not only build systems. They build the people who will maintain them.
 
 
 
@@ -364,22 +566,73 @@ Even if the exact "50%" figure is softening, the structural problem Uncle Bob id
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 07 - Conclusion: Keep Teaching, Keep Writing, Keep Vulgarizing
+## 07 - Conclusion: Keep Teaching, Keep Writing, Keep Explaining
 
-Uncle Bob Martin's claim that half of all programmers have less than five years of experience was a mathematical observation rooted in exponential growth, and for about two decades, the data supported it convincingly. In 2025, as growth slows and the developer population matures, the exact ratio is shifting. But the underlying truth, that our industry constantly absorbs new practitioners, that tools and paradigms shift faster than institutional knowledge can keep up, and that fundamentals need to be taught and retaught in every new technological context, is more relevant than ever.
+Uncle Bob Martin’s observation that half of all programmers had less than five years of experience was originally a mathematical consequence of rapid exponential growth. For nearly two decades, the data supported that claim. In 2025 and beyond, growth is slowing and the developer population is maturing, so the exact ratio is changing.
 
-> **The takeaway for technical educators and content creators:**
->
-> Don't hesitate to revisit "basic" topics. Don't assume your audience already knows the fundamentals. That article about SOLID principles in Rust? It serves a different audience than the one written for C# in 2009, even if the principles are identical. The tutorial on gradient descent with a modern Python stack reaches people the 2015 version never will. The guide to hexagonal architecture using NATS and microservices addresses problems that didn't exist a decade ago. Every new generation of developers, every new technology stack, every new geographic expansion of the profession creates a fresh audience that deserves clear, well-crafted educational content.
+But the deeper truth has not changed.
+
+Our industry continuously absorbs new practitioners. Tools, platforms, and practices evolve faster than institutional knowledge can stabilize. Fundamentals must be rediscovered, relearned, and re-explained in every technological generation.
+
+### The Responsibility of Technical Educators and Content Creators
+
+Do not hesitate to revisit so-called basic topics. Do not assume your audience already understands the foundations.
+
+An article about SOLID principles written for Rust does not reach the same audience as one written for C# in 2009, even if the principles are identical. A modern tutorial on gradient descent using today’s Python ecosystem connects with readers who would never encounter the 2015 version. A guide to hexagonal architecture using NATS and distributed services addresses realities that did not exist ten years ago.
+
+Every shift in technology, every new wave of developers, and every geographic expansion of the profession creates a new audience that deserves clear and thoughtful explanations.
+
+Technical education is not just about exploring new territory. It is about making established knowledge accessible and relevant again and again.
+
+### A New Educational Challenge: Leading AI Systems
+
+Education must now prepare developers for roles that did not previously exist.
+
+We need to train team leads of AI agent teams, architects, and managers who understand how to create environments where AI can produce reliable outcomes. Their job is not simply to write code. Their job is to define constraints, validation strategies, and feedback mechanisms so that automated systems deliver results that meet expectations.
+
+This raises an important question.
+
+**How do we teach young developers to become architects and leaders of AI-driven engineering?**
+
+A young architect is not placed in charge of the Jeddah Tower.
+A young architect is not assigned to design a nuclear submarine.
+A young architect is not made responsible for an A380.
+
+They begin with smaller structures. They learn materials, constraints, safety margins, and verification methods. They work under supervision. They study failures. They develop judgment before they are trusted with scale.
+
+The same progression must exist in the age of AI.
+
+We cannot expect someone who has only experimented with prompts or assembled small applications to suddenly orchestrate autonomous agent systems that generate production software. Leading AI requires architectural thinking, testing discipline, traceability, and risk awareness. The complexity has not vanished. It has moved to a higher level of abstraction.
+
+### Designing the System That Builds the System
+
+The modern architect must design:
+
+* The clarity of the specifications that guide the agents
+* The guardrails that constrain their behavior
+* The automated tests that define what "done" means
+* The observability that reveals drift and failure modes
+* The review structures that keep humans meaningfully involved
+
+They are no longer just designing software, they are designing the system that builds the software.
+
+### From Teaching Programming to Teaching Supervision of Automation
+
+Education must evolve from teaching only how to code to teaching how to supervise automated creation.
+
+Developers need to learn how to decompose problems, express verifiable requirements, and construct rigorous validation suites. Practices like test driven development, incremental delivery, and formal review become even more critical because they are how we align fast AI generation with real world correctness.
+
+We are no longer just training developers.
+
+We are training engineers who can guide, constrain, and validate machines that build.
 
 
 
 
-<!-- In an industry where 69% of practitioners learned something new last year, where AI is creating as many questions as it answers, and where millions of new developers are entering from previously underserved regions, the mission of technical education is not just about covering new ground. It's about making the old ground accessible, relevant, and alive for everyone who needs it, *again and again*. -->
 
 
 
-<!-- How to teach the young developers to be architect and team lead of AI agent team?  A young architect is not in charge of the Jeddah Tower. A young architech is not in charge of nuclear submarine, A380.... -->
+
 
 
 
@@ -403,5 +656,8 @@ Uncle Bob Martin's claim that half of all programmers have less than five years 
 13. [Dice.com, "Most Devs Have Less Than 6 Years Experience", March 2017.](https://www.dice.com/career-advice/devs-less-experience-survey)
 14. [Global Nerdy, "Robert C. Uncle Bob Martin: The Future of Programming, 2019 edition".](https://www.globalnerdy.com/2019/08/22/robert-c-uncle-bob-martin-the-future-of-programming-2019-edition/)
 15. [What is a percentage?]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
+16. [Building a C compiler with a team of parallel Claudes](https://www.anthropic.com/engineering/building-c-compiler)
+17. [Mythical Man-Month, The: Essays on Software Engineering (Fred Brooks)](https://www.amazon.com/Mythical-Man-Month-Software-Engineering-Anniversary/dp/0201835959)
+
 
 *Article researched and written with data collected February 2026. All survey data cited is from publicly available reports.*
