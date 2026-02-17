@@ -348,11 +348,11 @@ The tooling landscape keeps shifting:
 * REST → gRPC / event-driven systems
 * Manual testing → CI/CD pipelines
 * jQuery → React → Server Components
-* Monoliths → distributed systems → modular monoliths (again)
+* Monoliths → distributed systems → [modular monoliths]({%link docs/06_programmation/rust/025_modular_monolith/modular_monolith_00.md%}) (again)
 
 A developer with 15 years of experience may still be a beginner in Rust, WebAssembly, or LLM integration. Every generation of tools resets part of the learning curve. Remember when C++11 was "modern"? Entire mental models had to be rebuilt.
 
-Experience accumulates but relevance must be continuously renewed.
+*Experience accumulates but relevance must be continuously renewed.*
 
 
 
@@ -433,7 +433,7 @@ This already changed in early 2026 but the 2025 survey revealed a striking parad
 > Stack Overflow 2025 survey: free-form responses
 
 
-AI doesn’t remove the need for fundamentals. It raises the bar.
+*AI doesn’t remove the need for fundamentals. It raises the bar.*
 
 To validate AI-generated code, developers must:
 
@@ -465,13 +465,11 @@ Trust in these systems will absolutely continue to grow. But we cannot lose sigh
 
 We are living through an extraordinary transition.
 
-In less than a year, we’ve moved from a **"ping-pong" model** (ask → answer) to a **"team sport" model** where multiple agents collaborate, iterate, retry, and deliver substantial systems with minimal supervision.
+In less than a year, we’ve moved from a **"ping-pong" model** (chat mode, ask -> answer) to a **"team sport" model** where multiple agents collaborate, iterate, retry, and deliver substantial systems with minimal supervision.
 
 This is powerful and disorienting. The pace of change is now faster than most individuals can comfortably track.
 
-The result is not less need for education, but more:
-
-We must now learn how to *direct*, *constrain*, and *verify* these systems.
+The result is not less need for education, but more: we must now learn how to *direct*, *constrain*, and *verify* these systems.
 
 
 
@@ -490,9 +488,7 @@ But someone must still understand:
 * How to define specifications clearly
 * How to detect failure modes
 
-Trusting generated software is fundamentally different from trusting a human-written system you can inspect.
-
-If an AI designs the recipe, chooses the ingredients, cooks the meal, and serves it... Do you trust it without tasting?
+Trusting generated software is fundamentally different from trusting a human-written system you can inspect. If an AI designs the recipe, chooses the ingredients, cooks the meal, and serves it... Do you trust it without tasting?
 
 The same question applies to:
 
@@ -539,13 +535,24 @@ Faster construction without deeper understanding increases the probability of fr
 ### 10. Creation Is Faster. Maintenance Is Still Human
 {: .no_toc }
 
-AI dramatically accelerates the act of writing code. It does not eliminate the need to maintain it.
+AI dramatically accelerates the act of writing code but it does not eliminate the need to understand and maintain it.
 
-Most software effort has always been maintenance (write once, read hundred). Debugging, adapting to new requirements, improving performance, and understanding side effects remain human-driven tasks. Generated code still has to live inside real systems with real constraints.
+Most software effort has always been maintenance. We write something once, then read, adapt, debug, and extend it for years. Investigating defects, responding to new requirements, improving performance, and understanding unintended side effects remain deeply human activities. Generated code still has to operate inside real systems with real constraints, dependencies, and business expectations.
 
-When teams skip learning because "the AI can write it," they create artifacts that nobody can safely evolve. The bottleneck simply moves from creation to comprehension.
+When teams stop learning because "the AI can write it", they risk producing artifacts that no one can safely evolve. The bottleneck does not disappear. It simply shifts from creation to comprehension.
 
-Understanding remains the scarce resource.
+Even if the nature of the maintenance changes, the need for humans who can audit the code, who can understand what the system is supposed to do, who can define how it should be validated, does not go away.
+
+
+**Side note.** To tell the truth I'm not 110% sure and this view about maintenance may not hold forever. It is possible that, over time, regenerating an application with a coordinated team of AI agents will become more efficient than maintaining it in the traditional sense. Alternatively, from the very start of a project, we may embed agents directly into the CI/CD pipeline that continuously search for vulnerabilities, optimize code paths, audit design decisions, and stress test the system (for what I understood testing was a key element in the C compiler story I mentioned earlier)
+
+In practice, this already possible. For example, adding one agent dedicated to testing and another dedicated to code auditing, with the explicit goal of simplifying what can be simplified, creates a feedback loop (write feature request on GitHub, open an issue...) that is faster and more systematic than many human processes.
+
+User driven changes will still define what evolves, but maintenance itself may increasingly be performed by automated systems. And there there are at least two compelling advantages:
+
+1. Agents detect and report issues extremely quickly. The speed and quality of the feedback loop are critical to the quality of the end product.
+2. Cost dynamics are different. An experienced human tester is expensive, far more expensive than the compute resources required to run continuous AI driven analysis. But... Again, the cost of not training new testers or loosing all our testers five years from now will be dramatic.
+
 
 
 
@@ -554,7 +561,7 @@ Understanding remains the scarce resource.
 ### 11. The Risk of Losing Tacit Knowledge
 {: .no_toc }
 
-Not all knowledge is written down. Some of the most important engineering insights exist only in experience.
+Not all knowledge is written down. Some of the most important engineering insights exist only in experience (call it instinct, gut feeling if you want)
 
 Senior engineers carry mental models about tradeoffs, failure patterns, and system behavior that rarely appear in documentation. When this knowledge is not actively transmitted, it disappears. No tool can regenerate it automatically.
 
