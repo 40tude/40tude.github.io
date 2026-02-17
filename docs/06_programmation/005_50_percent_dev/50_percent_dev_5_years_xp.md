@@ -375,11 +375,11 @@ Uncle Bob Martin's claim that half of all programmers have less than five years 
 
 
 
-In an industry where 69% of practitioners learned something new last year, where AI is creating as many questions as it answers, and where millions of new developers are entering from previously underserved regions, the mission of technical education is not just about covering new ground. It's about making the old ground accessible, relevant, and alive for everyone who needs it, *again and again*.
+<!-- In an industry where 69% of practitioners learned something new last year, where AI is creating as many questions as it answers, and where millions of new developers are entering from previously underserved regions, the mission of technical education is not just about covering new ground. It's about making the old ground accessible, relevant, and alive for everyone who needs it, *again and again*. -->
 
 
 
-How to teach the young developpers to be architect and team lead of AI agent team?  A young architect is not in charge of the Jeddah Tower. A young architech is not in charge of nuclear submarine, A380....
+<!-- How to teach the young developers to be architect and team lead of AI agent team?  A young architect is not in charge of the Jeddah Tower. A young architech is not in charge of nuclear submarine, A380.... -->
 
 
 
