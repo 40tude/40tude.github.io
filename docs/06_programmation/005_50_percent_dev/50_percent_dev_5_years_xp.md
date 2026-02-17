@@ -5,7 +5,7 @@ lang: en-US
 layout: default
 title: "Half of All Developers Have Less Than 5 Years of Experience: Myth, Reality, and Why It Matters"
 description: "A data-driven investigation into one of the most repeated claims in software engineering, and what it means for technical education in 2026."
-image: docs/06_programmation/rust/026_monolith_to_distributed/assets/img14.webp
+image: docs/06_programmation/005_50_percent_dev/assets/img03.webp
 twitter:
   card: summary_large_image
 parent: "Programmation"
@@ -71,7 +71,9 @@ A data-driven investigation into one of the most repeated claims in software eng
 
 You've probably heard it before, in a conference talk, a blog post, or a podcast: *"Half of all developers have less than five years of experience."* The statement is striking, almost alarming. It suggests an industry in perpetual adolescence, where the majority of practitioners are still figuring things out. But where does this claim actually originate, and is it true?
 
-The primary source is **Robert C. Martin**, universally known as "Uncle Bob." Co-author of the Agile Manifesto, author of *Clean Code* and *Clean Archtecture*. One of the most influential voices in software craftsmanship, Martin has been making this argument in his famous "Future of Programming" talk since at least 2014. His reasoning is elegantly simple: if the number of programmers worldwide doubles every five years, then at any given moment, half of them must have been hired within the last five years.
+The primary source is **Robert C. Martin**, universally known as "Uncle Bob." Co-author of the Agile Manifesto, author of *Clean Code* and *Clean Architecture*. One of the most influential voices in software craftsmanship, Martin has been making this argument in his famous "Future of Programming" talk since at least 2014. His reasoning is elegantly simple: if the number of programmers worldwide doubles every five years, then at any given moment, half of them must have been hired within the last five years.
+
+If the reasoning is not crystal clear, read this page which explain  [what is a percentage]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) and where I take the time to explain exponential growth plus many other things like the rule of the 70 etc.
 
 <figure style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ecIWPzGEbFc?si=ursHMV8_PrXlskjb&amp;start=3059" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -82,7 +84,7 @@ The primary source is **Robert C. Martin**, universally known as "Uncle Bob." Co
 >
 > Robert C. Martin, "The Future of Programming" (2016, repeated in every edition since)
 
-Martin's reasoning begins in 1946 with Alan Turing writing the first lines of code, and traces exponential growth through to the present day. In his 2014 blog post "My Lawn," he estimated roughly 22 million programmers worldwide and calculated a growth rate of about 14.5% per year, a doubling time of approximately five years (70/15 ≃ 5). The mathematical consequence is inescapable: if the population doubles every five years, the newest half of that population necessarily has less than five years of tenure.
+Martin's reasoning begins in 1946 with Alan Turing writing the first lines of code, and traces exponential growth through to the present day. In his 2014 blog post "My Lawn," he estimated roughly 22 million programmers worldwide and calculated a growth rate of about 14.5% per year, a doubling time of approximately five years ([70/15 ≃ 5]({%link docs/03_maths/002_pourcentages/pourcentages.md%})#la-règle-du-70). The mathematical consequence is inescapable: if the population doubles every five years, the newest half of that population necessarily has less than five years of tenure.
 
 This idea has been enormously influential. It's cited in podcasts (The Changelog #367), Hacker News threads, LinkedIn articles, conference talks, and countless blog posts. But does the data actually support it?
 
@@ -385,7 +387,7 @@ How to teach the young developpers to be architect and team lead of AI agent tea
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Sources
+## Webliography
 
 1. Robert C. Martin, "My Lawn", Clean Coder Blog, June 2014. https://blog.cleancoder.com/uncle-bob/2014/06/20/MyLawn.html
 2. Robert C. Martin, "The Future of Programming" talk (2016). YouTube: https://www.youtube.com/watch?v=ecIWPzGEbFc
@@ -401,6 +403,6 @@ How to teach the young developpers to be architect and team lead of AI agent tea
 12. Evans Data Corporation, Worldwide Developer Population Report 2024. https://evansdata.com/press/viewRelease.php?pressID=365
 13. Dice.com, "Most Devs Have Less Than 6 Years Experience", March 2017. https://www.dice.com/career-advice/devs-less-experience-survey
 14. Global Nerdy, "Robert C. Uncle Bob Martin: The Future of Programming, 2019 edition". https://www.globalnerdy.com/2019/08/22/robert-c-uncle-bob-martin-the-future-of-programming-2019-edition/
-
+15. [What is a percentage?]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
 
 *Article researched and written with data collected February 2026. All survey data cited is from publicly available reports.*
