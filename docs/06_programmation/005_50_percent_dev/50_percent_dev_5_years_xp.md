@@ -23,9 +23,9 @@ A data-driven investigation into one of the most repeated claims in software eng
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -47,7 +47,7 @@ A data-driven investigation into one of the most repeated claims in software eng
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="600" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/><br/>
 <!-- <span>A step-by-step guide to leveraging Claude and Microsoft's Rust Guidelines in VSCode.</span> -->
 </div>
 
