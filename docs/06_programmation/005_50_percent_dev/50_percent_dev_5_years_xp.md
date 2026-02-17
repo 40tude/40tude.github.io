@@ -84,10 +84,9 @@ If the reasoning is not crystal clear, read this page which explain  [what is a 
 >
 > Robert C. Martin, "The Future of Programming" (2016, repeated in every edition since)
 
-Martin's reasoning begins in 1946 with Alan Turing writing the first lines of code, and traces exponential growth through to the present day. In his 2014 blog post "My Lawn," he estimated roughly 22 million programmers worldwide and calculated a growth rate of about 14.5% per year, a doubling time of approximately five years ([70/15 ≃ 5]({%link docs/03_maths/002_pourcentages/pourcentages.md%})#la-règle-du-70). The mathematical consequence is inescapable: if the population doubles every five years, the newest half of that population necessarily has less than five years of tenure.
+Martin's reasoning begins in 1946 with Alan Turing writing the first lines of code, and traces exponential growth through to the present day. In his 2014 blog post "My Lawn," he estimated roughly 22 million programmers worldwide and calculated a growth rate of about 14.5% per year, a doubling time of approximately five years ([70/15 ≃ 5]({%link docs/03_maths/002_pourcentages/pourcentages.md%}#la-règle-du-70)). The mathematical consequence is inescapable: if the population doubles every five years, the newest half of that population necessarily has less than five years of tenure.
 
 This idea has been enormously influential. It's cited in podcasts (The Changelog #367), Hacker News threads, LinkedIn articles, conference talks, and countless blog posts. But does the data actually support it?
-
 
 
 
@@ -389,20 +388,20 @@ How to teach the young developpers to be architect and team lead of AI agent tea
 <!-- ###################################################################### -->
 ## Webliography
 
-1. Robert C. Martin, "My Lawn", Clean Coder Blog, June 2014. https://blog.cleancoder.com/uncle-bob/2014/06/20/MyLawn.html
-2. Robert C. Martin, "The Future of Programming" talk (2016). YouTube: https://www.youtube.com/watch?v=ecIWPzGEbFc
-3. Robert C. Martin, interview on The Changelog Podcast #367 (2019). https://changelog.com/podcast/367
-4. Robert C. Martin, interview on Tech Lead Journal #90 (2022). https://techleadjournal.dev/episodes/90/
-5. Stack Overflow Developer Survey 2017. https://insights.stackoverflow.com/survey/2017
-6. Stack Overflow Developer Survey 2023. https://survey.stackoverflow.co/2023/
-7. Stack Overflow Developer Survey 2024. https://survey.stackoverflow.co/2024/
-8. Stack Overflow Developer Survey 2025. https://survey.stackoverflow.co/2025/
-9. SlashData, "Global Developer Population Trends 2025", May 2025. https://www.slashdata.co/post/global-developer-population-trends-2025-how-many-developers-are-there
-10. Developer Nation (SlashData), Pulse Report DN22. https://www.developernation.net/developer-reports/dn22/
-11. JetBrains, "Global Developer Population Reaches 19.6 Million in 2024". https://blog.jetbrains.com/research/2025/01/global-developer-population-2024/
-12. Evans Data Corporation, Worldwide Developer Population Report 2024. https://evansdata.com/press/viewRelease.php?pressID=365
-13. Dice.com, "Most Devs Have Less Than 6 Years Experience", March 2017. https://www.dice.com/career-advice/devs-less-experience-survey
-14. Global Nerdy, "Robert C. Uncle Bob Martin: The Future of Programming, 2019 edition". https://www.globalnerdy.com/2019/08/22/robert-c-uncle-bob-martin-the-future-of-programming-2019-edition/
+01. [Robert C. Martin, "My Lawn", Clean Coder Blog, June 2014.](https://blog.cleancoder.com/uncle-bob/2014/06/20/MyLawn.html)
+02. [Robert C. Martin, "The Future of Programming" talk (2016)](https://www.youtube.com/watch?v=ecIWPzGEbFc). YouTube
+03. [Robert C. Martin, interview on The Changelog Podcast #367 (2019).](https://changelog.com/podcast/367)
+04. [Robert C. Martin, interview on Tech Lead Journal #90 (2022).](https://techleadjournal.dev/episodes/90/)
+05. [Stack Overflow Developer Survey 2017.](https://insights.stackoverflow.com/survey/2017)
+06. [Stack Overflow Developer Survey 2023.](https://survey.stackoverflow.co/2023/)
+07. [Stack Overflow Developer Survey 2024.](https://survey.stackoverflow.co/2024/)
+08. [Stack Overflow Developer Survey 2025.](https://survey.stackoverflow.co/2025/)
+09. [SlashData, "Global Developer Population Trends 2025", May 2025.](https://www.slashdata.co/post/global-developer-population-trends-2025-how-many-developers-are-there)
+10. [Developer Nation (SlashData), Pulse Report DN22.](https://www.developernation.net/developer-reports/dn22/)
+11. [JetBrains, "Global Developer Population Reaches 19.6 Million in 2024".](https://blog.jetbrains.com/research/2025/01/global-developer-population-2024/)
+12. [Evans Data Corporation, Worldwide Developer Population Report 2024.](https://evansdata.com/press/viewRelease.php?pressID=365)
+13. [Dice.com, "Most Devs Have Less Than 6 Years Experience", March 2017.](https://www.dice.com/career-advice/devs-less-experience-survey)
+14. [Global Nerdy, "Robert C. Uncle Bob Martin: The Future of Programming, 2019 edition".](https://www.globalnerdy.com/2019/08/22/robert-c-uncle-bob-martin-the-future-of-programming-2019-edition/)
 15. [What is a percentage?]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
 
 *Article researched and written with data collected February 2026. All survey data cited is from publicly available reports.*
