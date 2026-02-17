@@ -11,7 +11,7 @@ twitter:
 parent: "Programmation"
 # nav_order: 35
 date:               2026-02-15 22:00:00
-last_modified_date: 2026-02-15 23:30:00
+last_modified_date: 2026-02-17 11:30:00
 ---
 
 
@@ -333,6 +333,7 @@ Even if the exact "50%" figure is softening, the structural problem Uncle Bob id
 
 
 ### 1. The renewal is constant
+{: .no_toc }
 
 Even in a slower-growth industry, **69% of developers learned a new language or technique last year**. That’s an astonishing level of churn in professional knowledge.
 
@@ -348,7 +349,12 @@ A developer with 15 years of experience may still be a beginner in Rust, WebAsse
 
 Experience accumulates but relevance must be continuously renewed.
 
+
+
+
+
 ### 2. The Developer Population Is Expanding Geographically
+{: .no_toc }
 
 The global developer base is not static. It is growing rapidly in regions that are encountering many software engineering concepts for the first time:
 
@@ -364,6 +370,7 @@ Content that feels repetitive to a Western audience can be foundational elsewher
 
 
 ### 3. The Profession Is Aging But Mentorship Hasn’t Scaled
+{: .no_toc }
 
 Developers are staying in the field longer, while fewer newcomers enter through traditional academic pipelines.
 
@@ -385,6 +392,7 @@ In practice, blog posts, talks, tutorials, and open-source examples have become 
 
 
 ### 4. Tools Change. Fundamentals Don’t.
+{: .no_toc }
 
 Uncle Bob emphasized this years ago: the major programming paradigms (structured, object-oriented, and functional) were all established before 1970.
 
@@ -406,6 +414,7 @@ Each generation must re-learn the same principles through the lens of new tools.
 
 
 ### 5. The AI Era Increases the Need for Understanding
+{: .no_toc }
 
 This already changed in early 2026 but the 2025 survey revealed a striking paradox:
 
@@ -447,6 +456,7 @@ Trust in these systems will absolutely continue to grow. But we cannot lose sigh
 
 
 ### 6. Early 2026: From Assistants to Autonomous Teams
+{: .no_toc }
 
 We are living through an extraordinary transition.
 
@@ -462,6 +472,7 @@ We must now learn how to *direct*, *constrain*, and *verify* these systems.
 
 
 ### 7. Like Electricity, AI Will Eventually Become Invisible
+{: .no_toc }
 
 AI will likely fade into the background and become infrastructure. People who are not programmers will increasingly describe what they want, and software will be generated for them.
 
@@ -495,6 +506,7 @@ Disciplines like TDD, validation pipelines, and explicit specification become ev
 
 
 ### 8. The Economic Case for Continuous Education
+{: .no_toc }
 
 Training developers is often seen as a cost center. In reality, it is a form of risk management.
 
@@ -506,6 +518,7 @@ Investing in education is cheaper than recovering from misunderstanding. Up skil
 
 
 ### 9. The AI Second-System Effect
+{: .no_toc }
 
 Fred Brooks described the ["Second-System Effect"](https://en.wikipedia.org/wiki/Second-system_effect) as the tendency to overbuild the second system because confidence grows faster than judgment.
 
@@ -519,6 +532,7 @@ Faster construction without deeper understanding increases the probability of fr
 
 
 ### 10. Creation Is Faster. Maintenance Is Still Human
+{: .no_toc }
 
 AI dramatically accelerates the act of writing code. It does not eliminate the need to maintain it.
 
@@ -533,6 +547,7 @@ Understanding remains the scarce resource.
 
 
 ### 11. The Risk of Losing Tacit Knowledge
+{: .no_toc }
 
 Not all knowledge is written down. Some of the most important engineering insights exist only in experience.
 
@@ -546,6 +561,7 @@ Continuous teaching is how that invisible layer of expertise becomes shared capa
 
 
 ### 12. Teaching Is Part of the Engineering Job
+{: .no_toc }
 
 In many professions, transmitting knowledge is considered part of the work itself. Software engineering is no different, even if we sometimes pretend otherwise.
 
@@ -575,6 +591,7 @@ But the deeper truth has not changed.
 Our industry continuously absorbs new practitioners. Tools, platforms, and practices evolve faster than institutional knowledge can stabilize. Fundamentals must be rediscovered, relearned, and re-explained in every technological generation.
 
 ### The Responsibility of Technical Educators and Content Creators
+{: .no_toc }
 
 Do not hesitate to revisit so-called basic topics. Do not assume your audience already understands the foundations.
 
@@ -585,6 +602,7 @@ Every shift in technology, every new wave of developers, and every geographic ex
 Technical education is not just about exploring new territory. It is about making established knowledge accessible and relevant again and again.
 
 ### A New Educational Challenge: Leading AI Systems
+{: .no_toc }
 
 Education must now prepare developers for roles that did not previously exist.
 
@@ -605,6 +623,7 @@ The same progression must exist in the age of AI.
 We cannot expect someone who has only experimented with prompts or assembled small applications to suddenly orchestrate autonomous agent systems that generate production software. Leading AI requires architectural thinking, testing discipline, traceability, and risk awareness. The complexity has not vanished. It has moved to a higher level of abstraction.
 
 ### Designing the System That Builds the System
+{: .no_toc }
 
 The modern architect must design:
 
@@ -617,6 +636,7 @@ The modern architect must design:
 They are no longer just designing software, they are designing the system that builds the software.
 
 ### From Teaching Programming to Teaching Supervision of Automation
+{: .no_toc }
 
 Education must evolve from teaching only how to code to teaching how to supervise automated creation.
 
@@ -639,7 +659,7 @@ We are training engineers who can guide, constrain, and validate machines that b
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Webliography
+## 08 - Webliography
 
 01. [Robert C. Martin, "My Lawn", Clean Coder Blog, June 2014.](https://blog.cleancoder.com/uncle-bob/2014/06/20/MyLawn.html)
 02. [Robert C. Martin, "The Future of Programming" talk (2016)](https://www.youtube.com/watch?v=ecIWPzGEbFc). YouTube
