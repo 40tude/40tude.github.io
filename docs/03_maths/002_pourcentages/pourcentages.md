@@ -1,12 +1,22 @@
 ---
+published: true
+author: 40tude
 layout: default
 title: "Pourcentages, croissance, gestion des ressources..."
+description: "Un voyage depuis les intérêts composés jusqu'aux ressources finies de la planète, avec un papier, un stylo et quelques formules simples."
+image: docs/03_maths/002_pourcentages/assets/image-50.webp
+twitter:
+  card: summary_large_image
 parent: "Maths"
 nav_order: 2
 math: mathjax
 date: 2023-03-21 23:27:31
-last_modified_date: 2023-04-14 11:48:24
+last_modified_date: 2026-02-18 09:00:00
 ---
+
+
+
+
 
 
 # Pourcentages, croissance, gestion des ressources...
@@ -898,6 +908,14 @@ Dans cette [vidéo](https://youtu.be/UmbFaPrXFcE?t=1144) on retrouve les chiffre
 
 ## Conclusion
 
-*À écrire.*
 
+Bon, Marty, on a fait un sacré voyage depuis le premier challenge. On est partis d'une question toute bête sur les pourcentages et on s'est retrouvés à parler de ressources non renouvelables et de cuivre. Pas mal pour un anniversaire.
+
+Ce qu'il faut retenir de tout ça, c'est qu'une croissance exponentielle, c'est quelque chose que notre cerveau gère très mal. On a tendance à penser de manière linéaire, à imaginer des droites alors que la réalité nous colle des courbes qui s'emballent. Et c'est là que ça devient dangereux.
+
+La règle des 70, les périodes de doublement, la formule de $$T_2$$... tout ça ne sont que des outils. Des outils simples, accessibles à n'importe qui muni d'un papier, d'un stylo et d'un peu de curiosité. Le vrai message, c'est qu'une croissance même modeste (1%, 2%, 3%...) sur une ressource finie finit toujours par poser un problème. Toujours. Sans exception.
+
+Alors la prochaine fois qu'un expert ou un politicien te parle de réserves de pétrole, de cuivre ou de quoi que ce soit d'autre en te donnant un nombre d'années au taux de consommation actuel, tu sais ce que tu as à faire. Tu sors ta calculette, tu appliques notre petite formule, et tu te demandes si ton interlocuteur, lui, l'a fait avant de te parler.
+
+Et si ce n'est pas le cas... tu peux toujours partager l'URL de ce billet.
 
