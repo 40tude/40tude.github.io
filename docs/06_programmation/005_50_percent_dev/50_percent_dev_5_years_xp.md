@@ -11,7 +11,7 @@ twitter:
 parent: "Programmation"
 # nav_order: 35
 date:               2026-02-15 22:00:00
-last_modified_date: 2026-02-17 11:30:00
+last_modified_date: 2026-02-18 18:00:00
 ---
 
 
@@ -41,7 +41,7 @@ A data-driven investigation into one of the most repeated claims in software eng
 * The developer population is aging, changing the experience distribution.
 * Software engineering continues to expand globally, creating entirely new audiences that must relearn established knowledge.
 * The core insight remains profoundly relevant: software engineering is still a young field with constant influx and insufficient knowledge transfer.
-* The rise of AI does not reduce the need for education. It increases the need for fundamentals, validation, and critical thinking.
+* The rise of AI does not reduce the need for education. It increases the need for fundamentals, validation, and critical thinking. It is raising the bar.
 * We are no longer just training developers. We are training engineers who can guide, constrain, and validate machines that build.
 
 
@@ -690,6 +690,7 @@ We are training engineers who can guide, constrain, and validate machines that b
 15. [What is a percentage?]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
 16. [Building a C compiler with a team of parallel Claudes](https://www.anthropic.com/engineering/building-c-compiler)
 17. [Mythical Man-Month, The: Essays on Software Engineering (Fred Brooks)](https://www.amazon.com/Mythical-Man-Month-Software-Engineering-Anniversary/dp/0201835959)
+18. [Junior Dev Jobs are Gone](https://youtu.be/bDcgHzCBgmQ?si=5i3Ht-fAPmuOuq-G&t=1609)
 
 
 *Article researched and written with data collected February 2026. All survey data cited is from publicly available reports.*
