@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. The focus is
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-26 09:30:00
+last_modified_date: 2026-02-18 09:30:00
 ---
 
 
@@ -244,6 +244,9 @@ fn main() {
     use domain::OrderService;
     use email::Email;
 
+    // This is Dependency Injection. main() creates the Email instance and
+    // injects it into OrderService::new(Email). OrderService never creates its
+    // own sender, it receives it from outside.
     let email_service = OrderService::new(Email);
     email_service.place_order(101);
 }
