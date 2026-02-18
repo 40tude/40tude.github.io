@@ -7,7 +7,7 @@ description: "A gentle introduction to SOLID principles using Rust. The focus is
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-30 15:00:00
+last_modified_date: 2026-02-18 10:00:00
 ---
 
 
@@ -111,7 +111,11 @@ In Rust terms:
 
 > "Code that depends on a trait must work correctly with any implementation of that trait."
 
-LSP is about **keeping promises**. If our trait says "this method returns the sum of two numbers", then every implementation better return the sum - not the difference, not a random number, not a side effect.
+LSP is about **keeping promises**. If our trait says "this method returns the sum of two numbers", then every implementation better return the sum, not the difference, not a random number, not a side effect.
+
+Think of it like ordering a rideshare. You request a car, the app matches you with a driver, could be Alice, could be Paul. You don't care who drives. You expect the same thing: a car shows up, takes you to the destination, and charges the fare shown. If Paul decides to take a scenic detour, charge twice, or drop you off three blocks away, that's a broken promise, even though he technically drove a car.
+
+Same idea with traits: if code depends on a `Storage`, any implementation had better behave like a `Storage`. Not almost like it. Not like it except on Tuesdays. Like it, full stop.
 
 
 
@@ -123,7 +127,7 @@ LSP is about **keeping promises**. If our trait says "this method returns the su
 
 ### The Problem: Surprising Substitutions
 
-Historic and classic example from OOP - the Rectangle/Square problem. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+The promise sounds obvious until we try to break it. Let's start with the most famous example in SOLID literature. Historic and classic example from OOP: the Rectangle/Square problem. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_01_lsp
@@ -231,7 +235,7 @@ Expected area: 130, Got: 169
 
 ### The Solution: Better Abstractions
 
-We should not force types into hierarchies they don't belong to. We should model what they actually are. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+The root cause was a bad abstraction. We tried to model a mathematical relationship in software. The fix is not to patch `Square`, but to rethink what the trait should promise. We should not force types into hierarchies they don't belong to. We should model what they actually are. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 // cargo run -p ex_02_lsp
@@ -330,6 +334,82 @@ Area: 42, Perimeter: 26
 
 No mutation, no violated expectations. Each shape upholds the `Shape` contract.
 
+The Rectangle/Square problem is the textbook example and every SOLID tutorial uses it. But it can feel abstract. Let's look at something closer to daily work before moving on to a fuller example.
+
+
+
+
+### Everyday Violation: Logger
+
+A `Logger` trait sounds harmless. Log a message, done. But even here, LSP can be silently broken. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+
+```rust
+// Paste in Rust Playground
+
+// =========================
+// Abstractions
+// =========================
+
+// Contract: log() accepts any &str. Never panics. Never crashes the caller.
+pub trait Logger {
+    fn log(&self, message: &str);
+}
+
+// =========================
+// Good implementation
+// =========================
+
+// Writes to stderr. Quiet on failure. Honors the contract.
+pub struct StderrLogger;
+
+impl Logger for StderrLogger {
+    fn log(&self, message: &str) {
+        eprintln!("[LOG] {}", message);
+    }
+}
+
+// =========================
+// Bad implementation: violates LSP
+// =========================
+
+// Panics on empty messages. The trait says nothing about that restriction.
+pub struct StrictLogger;
+
+impl Logger for StrictLogger {
+    fn log(&self, message: &str) {
+        // Strengthening the precondition: callers are now required to pass non-empty strings.
+        // The Logger contract does NOT require this. LSP is violated.
+        assert!(!message.is_empty(), "StrictLogger: message must not be empty");
+        println!("[STRICT] {}", message);
+    }
+}
+
+// =========================
+// Usage
+// =========================
+
+fn record_event(logger: &dyn Logger, event: &str) {
+    // The caller trusts the Logger contract.
+    // It never checks for empty strings, why would it? The trait doesn't require that.
+    logger.log(event);
+}
+
+fn main() {
+    let stderr = StderrLogger;
+    let strict = StrictLogger;
+
+    record_event(&stderr, "Server started"); // OK
+    record_event(&stderr, "");              // OK. Empty string, no output, no crash
+
+    record_event(&strict, "Server started"); // OK
+    record_event(&strict, "");              // PANICS! LSP violated.
+}
+```
+
+**The violation**: `StrictLogger` **strengthens the precondition**. The trait says `log()` accepts any `&str`. `StrictLogger` silently adds *"...unless it's empty, in which case I'll panic your program."* The caller cannot substitute one logger for the other safely.
+
+The fix is simple: either remove the `assert!` and handle empty strings gracefully, or document the restriction in the trait itself so it becomes part of the contract (not a surprise).
+
 
 
 
@@ -347,7 +427,7 @@ No mutation, no violated expectations. Each shape upholds the `Shape` contract.
 
 ### Real-World Example: Storage Backends
 
-Let's say we're building a key-value store with multiple backends. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+Shapes are easy to reason about. Let's look at a case closer to production code, where the contract is implicit and violations are subtler. Let's say we're building a key-value store with multiple backends. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 use std::collections::HashMap;
@@ -359,7 +439,7 @@ pub trait Storage {
     fn delete(&mut self, key: &str) -> bool;
 }
 
-// Concrete storage - In-memory backend
+// Concrete storage: In-memory backend
 pub struct MemoryStorage {
     data: HashMap<String, String>,
 }
@@ -386,7 +466,7 @@ impl Storage for MemoryStorage {
     }
 }
 
-// Concrete storage - File storage - BAD, violates LSP
+// Concrete storage: File storage: BAD, violates LSP
 pub struct FileStorage {
     base_path: String,
 }
@@ -462,7 +542,7 @@ The client code (`demo()`) works with all implementations, but its assumptions a
 
 ### The Fix: Make Contracts Explicit
 
-You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
+The interface did not need to change, the behavior did. Here is the corrected version. You can copy and paste the code below in [Rust Playground](https://play.rust-lang.org/):
 
 ```rust
 use std::collections::HashMap;
@@ -474,7 +554,7 @@ pub trait Storage {
     fn delete(&mut self, key: &str) -> bool;
 }
 
-// Concrete storage - In-memory backend
+// Concrete storage: In-memory backend
 pub struct MemoryStorage {
     data: HashMap<String, String>,
 }
@@ -501,7 +581,7 @@ impl Storage for MemoryStorage {
     }
 }
 
-// Concrete storage - File storage - FIXED: LSP-compliant
+// Concrete storage: File storage FIXED: LSP-compliant
 pub struct FileStorage {
     base_path: String,
 }
@@ -736,7 +816,7 @@ So this is LSP-compliant, not robust but OK for a short demo code.
 
 ### Quizz
 
-In the code below, iIs LSP violated or not? Explain.
+In the code below, is LSP violated or not? Explain.
 
 ```rust
 // Expected contract: returns >= 0.0
@@ -787,7 +867,22 @@ fn main() {
 }
 ```
 
+#### Answer
 
+Yes, LSP is violated.
+
+The trait comment documents the contract: `calculate_distance()` must return `>= 0.0`. `Distance1` honors it, Euclidean distance is always non-negative. But `Distance2` wraps any `f64` value, including negatives. The caller (`process_distance`) never checks for negatives, why would it? The contract says there aren't any.
+
+When `val2` is passed with `value: -50.0`, the output is:
+
+```powershell
+Distance: -50 meters,
+Short distance
+```
+
+The "Short distance" branch fires for a negative distance. Physically nonsense, logically wrong. `Distance2` **weakens the postcondition**: the trait promises `>= 0.0`, the implementation delivers anything.
+
+The fix is to enforce the invariant, either in the type itself (`struct NonNegativeDistance(f64)` that panics or clamps on construction) or in the trait documentation plus a `validate()` helper that implementors must call.
 
 
 
@@ -882,6 +977,24 @@ Context: It is 8:20 AM. You replaced an implementation with another one. Tests s
 * If using a subtype forces the caller to add special cases, defensive checks, or different logic, LSP is likely violated.
 * The Liskov Substitution Principle is not about inheritance syntax, but about **behavioral compatibility**.
 * LSP is a thinking tool that helps us say: *"If I have to know the concrete type, then substitution is broken."*
+
+Here are typical situations where this question becomes urgent:
+
+| Situation | LSP signal |
+| --------- | ---------- |
+| You swap a `MemoryCache` for a `RedisCache` and callers start adding `if is_redis` checks | Violated |
+| A new `Logger` impl panics on empty strings when the others silently skip | Violated |
+| A `ReadOnlyStorage` implements `Storage` but throws on `set()` | Violated |
+| You replace a test double with a real implementation and all tests still pass | Respected |
+| All `Shape` impls return non-negative areas and perimeters without special cases | Respected |
+
+**Three quick checks before shipping a new trait implementation:**
+
+1. **Preconditions**: Does the new type demand more from callers than the trait promises? If yes, LSP is violated.
+2. **Postconditions**: Does the new type deliver less than the trait promises (weaker guarantees, surprise `None`, unexpected panic)? If yes, LSP is violated.
+3. **Invariants**: Does the new type break assumptions the contract implies (non-negative distance, idempotent deletes, etc.)? If yes, LSP is violated.
+
+If all three checks pass, substitution is safe.
 
 
 
