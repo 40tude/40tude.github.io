@@ -868,6 +868,7 @@ fn main() {
 ```
 
 #### Answer
+{: .no_toc }
 
 Yes, LSP is violated.
 

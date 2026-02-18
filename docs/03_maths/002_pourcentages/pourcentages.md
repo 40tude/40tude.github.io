@@ -21,9 +21,24 @@ last_modified_date: 2026-02-18 09:00:00
 
 # Pourcentages, croissance, gestion des ressources...
 
+
+Un voyage depuis les intérêts composés jusqu'aux ressources finies de la planète, avec un papier, un stylo et quelques formules simples.
+{: .lead }
+
+
+
+
+
 <div align="center">
 <img src="./assets/image-45.webp" alt="" loading="lazy"/>
 </div>
+
+
+
+
+
+
+
 
 ## Introduction
 
