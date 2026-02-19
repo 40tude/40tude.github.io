@@ -11,7 +11,7 @@ twitter:
 parent: "Programmation"
 # nav_order: 35
 date:               2026-02-15 22:00:00
-last_modified_date: 2026-02-18 18:00:00
+last_modified_date: 2026-02-19 08:00:00
 ---
 
 
@@ -43,7 +43,7 @@ A data-driven investigation into one of the most repeated claims in software eng
 * The core insight remains profoundly relevant: software engineering is still a young field with constant influx and insufficient knowledge transfer.
 * The rise of AI does not reduce the need for education. It increases the need for fundamentals, validation, and critical thinking. It is raising the bar.
 * We are no longer just training developers. We are training engineers who can guide, constrain, and validate machines that build.
-
+* Is learning and teaching the Spec-driven Development the way to go?
 
 
 <div align="center">
@@ -668,6 +668,107 @@ We are training engineers who can guide, constrain, and validate machines that b
 
 
 
+
+
+
+
+
+
+## 07 - Conclusion: Keep Teaching — But Teach Differently
+
+Uncle Bob Martin’s observation that half of all programmers had less than five years of experience was originally a mathematical consequence of rapid exponential growth. For nearly two decades, the data supported that claim. In 2025 and beyond, growth is slowing and the developer population is maturing, so the exact ratio is changing.
+
+But the deeper truth has not changed.
+
+Our industry continuously absorbs new practitioners. Tools, platforms, and practices evolve faster than institutional knowledge can stabilize. Fundamentals must be rediscovered, relearned, and re-explained in every technological generation.
+
+What did change was the inflection point we crossed in November 2025 with the release of GPT-5.2 and Opus 4.5, which marked the transition from AI as an assistive tool to AI as an active participant in the software delivery process. Since then, especially entering 2026, the nature of the skills we must transmit has begun to shift accordingly.
+
+### The Responsibility of Technical Educators and Content Creators
+
+{: .no_toc }
+
+We must still revisit foundational topics. We must still explain architecture, testing, and design clearly and repeatedly. Every new technology stack and every new generation creates a fresh audience that needs those ideas.
+
+Technical education is not just about exploring new territory. It is about making durable knowledge accessible and relevant again and again.
+
+However, repeating the same lessons without adapting their focus would be a mistake.
+
+### Using AI as a Fancy Chatbot Means Missing the Point
+
+{: .no_toc }
+
+If in February 2026 we are still using ChatGPT, Claude and friends as luxury chat interfaces, we are at [Level 0](https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/) and getting it all wrong.
+
+The strong signals we have been receiving since the beginning of the year point in a different direction. These tools (especially Claude, and [Claude Cowork](https://claude.com/blog/cowork-research-preview)) are not just assistants that help write code faster. They are becoming production actors capable of designing, generating, testing, and evolving software under supervision. ANd no, I'm NOT either talking about "vibe coding".
+
+This shift requires us to learn and teach new ways of building software. One example is spec-driven development, where the primary artifact is no longer the code itself but the precise, testable specification that guides automated generation.
+
+When the marginal cost of producing code and even tests approaches zero, the economics of software change dramatically. The expensive mistakes are no longer syntax errors or missing implementations. The real costs become:
+
+* Poor design decisions
+* Weak architecture
+* Lack of evolvability
+* Ambiguous specifications
+* Inadequate validation strategies
+
+In other words, when building becomes cheap, *thinking becomes expensive*.
+
+### A Changing Industry Demands Different Skills
+
+{: .no_toc }
+
+We are already seeing the emergence of highly automated delivery environments, sometimes described as dark factories for software, where large portions if not all of the production are handled by coordinated AI systems.
+
+At the same time:
+
+* Hiring rates for junior engineers are declining in some sectors
+* Retention of experienced developers is becoming harder
+* Organizations are searching for leverage rather than headcount
+
+The market is not eliminating software work. It is changing the profile of the people needed.
+
+Demand is shifting toward engineers who can orchestrate teams of AI agents to design, build, test, deliver, and maintain applications. These roles require stronger architectural thinking, clearer communication of intent, and rigorous validation discipline.
+
+There will not be less work to do. There will be different work to do.
+
+### Designing the System That Builds the System
+
+{: .no_toc }
+
+The modern architect must focus on:
+
+* Writing specifications that are unambiguous and testable
+* Defining guardrails that constrain automated behavior
+* Providing exhaustive validation suites that encode expectations
+* Ensuring observability so deviations are detected early
+* Structuring human oversight where judgment is required
+
+They are no longer just designing software. They are designing the system that builds the software.
+
+### From Teaching Programming to Teaching Orchestration
+
+{: .no_toc }
+
+Education must evolve from teaching only how to write code to teaching how to direct automated creation.
+
+Developers need to learn how to decompose problems, express intent precisely, and construct feedback loops that keep AI driven production aligned with the expressed needs. Practices like test driven development, incremental validation, and architectural reasoning become even more critical because they anchor a process that can otherwise scale faster than our ability to control it.
+
+We still need to teach. We still need to write. We still need to explain.
+
+But we must increasingly teach how to think, specify, and supervise, not just how to implement.
+
+We are no longer just training developers, we are training managers who can guide, constrain, and validate machines that build.
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -691,6 +792,6 @@ We are training engineers who can guide, constrain, and validate machines that b
 16. [Building a C compiler with a team of parallel Claudes](https://www.anthropic.com/engineering/building-c-compiler)
 17. [Mythical Man-Month, The: Essays on Software Engineering (Fred Brooks)](https://www.amazon.com/Mythical-Man-Month-Software-Engineering-Anniversary/dp/0201835959)
 18. [Junior Dev Jobs are Gone](https://youtu.be/bDcgHzCBgmQ?si=5i3Ht-fAPmuOuq-G&t=1609)
-
+19. [Spec-driven development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
 
 *Article researched and written with data collected February 2026. All survey data cited is from publicly available reports.*
