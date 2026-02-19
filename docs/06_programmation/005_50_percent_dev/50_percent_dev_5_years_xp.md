@@ -674,7 +674,7 @@ We are training engineers who can guide, constrain, and validate machines that b
 
 
 
-## 07 - Conclusion: Keep Teaching — But Teach Differently
+## 07 - Conclusion: Keep Teaching, But Teach Differently
 
 Uncle Bob Martin’s observation that half of all programmers had less than five years of experience was originally a mathematical consequence of rapid exponential growth. For nearly two decades, the data supported that claim. In 2025 and beyond, growth is slowing and the developer population is maturing, so the exact ratio is changing.
 
