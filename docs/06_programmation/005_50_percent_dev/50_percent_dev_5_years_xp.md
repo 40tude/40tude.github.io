@@ -685,7 +685,6 @@ Our industry continuously absorbs new practitioners. Tools, platforms, and pract
 What did change was the inflection point we crossed in November 2025 with the release of GPT-5.2 and Opus 4.5, which marked the transition from AI as an assistive tool to AI as an active participant in the software delivery process. Since then, especially entering 2026, the nature of the skills we must transmit has begun to shift accordingly.
 
 ### The Responsibility of Technical Educators and Content Creators
-
 {: .no_toc }
 
 We must still revisit foundational topics. We must still explain architecture, testing, and design clearly and repeatedly. Every new technology stack and every new generation creates a fresh audience that needs those ideas.
@@ -695,7 +694,6 @@ Technical education is not just about exploring new territory. It is about makin
 However, repeating the same lessons without adapting their focus would be a mistake.
 
 ### Using AI as a Fancy Chatbot Means Missing the Point
-
 {: .no_toc }
 
 If in February 2026 we are still using ChatGPT, Claude and friends as luxury chat interfaces, we are at [Level 0](https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/) and getting it all wrong.
@@ -715,7 +713,6 @@ When the marginal cost of producing code and even tests approaches zero, the eco
 In other words, when building becomes cheap, *thinking becomes expensive*.
 
 ### A Changing Industry Demands Different Skills
-
 {: .no_toc }
 
 We are already seeing the emergence of highly automated delivery environments, sometimes described as dark factories for software, where large portions if not all of the production are handled by coordinated AI systems.
@@ -733,7 +730,6 @@ Demand is shifting toward engineers who can orchestrate teams of AI agents to de
 There will not be less work to do. There will be different work to do.
 
 ### Designing the System That Builds the System
-
 {: .no_toc }
 
 The modern architect must focus on:
@@ -747,7 +743,6 @@ The modern architect must focus on:
 They are no longer just designing software. They are designing the system that builds the software.
 
 ### From Teaching Programming to Teaching Orchestration
-
 {: .no_toc }
 
 Education must evolve from teaching only how to write code to teaching how to direct automated creation.
