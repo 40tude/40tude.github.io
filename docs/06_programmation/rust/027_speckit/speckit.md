@@ -40,6 +40,10 @@ Building and evolving a small Axum web app step-by-step using specs, tasks, and 
 {: .no_toc }
 
 * For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
+* Spec-Driven Development (SDD) is not a heavy formal process. It is a lightweight discipline: write the spec first, let the AI build from it, catch contradictions before they become bugs.
+* Spec Kit is a set of Claude Code slash commands that turn a plain-text specification into working, tested, deployed software -- one command at a time.
+* The workflow naturally extends to feature additions. Adding a new feature follows the exact same path: specify, clarify, plan, implement. The spec repo becomes a living record of every architectural decision.
+* You are always in control. Spec Kit drives the spec and the structure; Claude Code handles everything else. You can mix the two at any point.
 
 
 **Note**
@@ -113,11 +117,11 @@ I suppose the following software are installed:
     winget install GitHub.cli
     gh auth login
 
-    # Puis dans le wizard :
-    #   Account → GitHub.com
-    #   Protocol → HTTPS
-    #   Authenticate Git with GitHub credentials → Yes
-    #   How to authenticate → Login with a web browser
+    # In the wizard:
+    #   Account -> GitHub.com
+    #   Protocol -> HTTPS
+    #   Authenticate Git with GitHub credentials -> Yes
+    #   How to authenticate -> Login with a web browser
 
     gh --version
     gh auth status
@@ -141,7 +145,7 @@ I suppose the following software are installed:
 
 
 **Note**
-If you need to update specify
+To update specify
 
 ```powershell
 uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
@@ -161,7 +165,7 @@ cargo new bmi_sdd
 cd ./bmi_sdd
 cargo build
 cargo run
-# commit and push on GitHub
+# Commit and push on GitHub
 git add .
 git commit -m "My first commit"
 
@@ -192,13 +196,15 @@ claude
 <!-- ###################################################################### -->
 ## /speckit.constitution
 
-I open a chat with claude in my web browser
-I share the very first version of the README.md
-I say :
+The constitution is the foundation of the entire workflow. It captures what the project is: its purpose, its constraints, its technology choices, and what it explicitly does not do. Every subsequent command (spec, plan, tasks, implementation) must stay consistent with it. If a feature contradicts the constitution, Spec Kit will flag the conflict rather than silently implementing something that breaks the design.
+
+Think of it as a binding contract between you and the AI: written once, amended deliberately, never ignored.
+
+I open a chat with Claude in my web browser, share the very first version of the `README.md` and ask:
 
 > I work with the speckit workflow. After reading the README.md, suggest a prompt to use with /speckit.constitution. If anything is missing from the README, let me know as well.
 
-Then we have a Q&A session. At the end I get the prompt below, which I paste into the Claude session I have in VSCode:
+We go through a short Q&A session. At the end I get the prompt below, which I paste into the Claude session in VSCode:
 
 ```text
 /speckit.constitution
@@ -268,11 +274,15 @@ Create a BMI Calculator web application in Rust with the following requirements:
 <!-- ###################################################################### -->
 ## /speckit.specify
 
+`/speckit.specify` takes the constitution and a feature description and produces a formal, structured spec. The spec lives in the repo as a markdown file under specs/. It includes acceptance criteria, module boundaries, expected test cases, and design decisions: everything a developer (or an AI agent) needs to implement without guessing.
+
+The constitution says what the app should do; the spec says how it should be structured to do it.
+
 I continue the chat in Claude web. I ask:
 
 > Now I need to use /speckit.specify but I'm not sure what to write. I feel like we've already said everything in the constitution. Can you suggest some prompts?
 
-We go back and forth a few times. Finally I paste this commande in Claude in VSCode:
+We go back and forth a few times. I finally paste this commande in Claude in VSCode:
 
 
 ```
@@ -329,6 +339,10 @@ From these tests, derive the types, modules, and function signatures.
 <!-- ###################################################################### -->
 ## /speckit.clarify
 
+`/speckit.clarify` reads the current spec and surfaces every ambiguity it can find. It asks targeted questions -- things like "what happens when the body is valid JSON but the weight field is a string?", or "should the health endpoint return a body or just a status code?" and expects concrete answers before moving on.
+
+The point is to resolve ambiguities in the spec rather than in the code. Fixing a one-line spec update is cheap. Fixing a baked-in assumption three layers deep in the implementation is not.
+
 ```powershell
 /clear           # check Opus is active
 /speckit.clarify # No additional instruction
@@ -344,6 +358,10 @@ Commit msg: `After /speckit.clarify`
 <!-- ###################################################################### -->
 ## /speckit.plan
 
+`/speckit.plan` turns the clarified spec into a technical plan. It produces a set of documents in the spec folder: plan.md (overall architecture), quickstart.md (how to build and run), research.md (crate choices and tradeoffs), data-model.md (types and structures), and api.md (endpoint contracts).
+
+This is the step where Spec Kit translates "what the app should do" into "how the code should be organized." No code yet, just a blueprint precise enough to implement from.
+
 ```powershell
 /clear          # check Opus is active
 /specify.plan
@@ -352,7 +370,7 @@ Commit msg: `After /speckit.clarify`
 Commit msg: `After /speckit.plan`
 
 
-**Note:** Reading this page `https://github.com/github/spec-kit/blob/main/spec-driven.md`, I wonder if I should have put the list of tools to use here instead.
+**Note:** Reading this page `https://github.com/github/spec-kit/blob/main/spec-driven.md`, I wonder if I should have listed the tools to use here instead.
 
 
 
@@ -363,6 +381,11 @@ Commit msg: `After /speckit.plan`
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## /speckit.tasks
+
+`/speckit.tasks` breaks the plan into a concrete, ordered list of tasks and writes them to specs/.../tasks.md. Each task is small, focused, and actionable. The kind of unit you can hand to an AI agent (or a junior developer) and get a working result back.
+
+This step is worth switching to a lighter model for. The heavy reasoning happened in the earlier steps; task generation is mostly pattern-matching and decomposition.
+
 
 * **⚠️ IMPORTANT:** Remember to switch to Sonnet (full)
 
@@ -382,6 +405,11 @@ Commit msg: `After /speckit.plan`
 <!-- ###################################################################### -->
 ## /speckit.analyze
 
+`/speckit.analyze` cross-checks everything produced so far: the constitution, the spec, the plan, and the tasks. It looks for contradictions, gaps, unstated assumptions, and risks. It assigns each finding a category (Constitution, Implementation, Warning) and a severity (CRITICAL, IMPORTANT, WARNING).
+
+This is a quality gate. It is the step where Spec Kit earns its keep.
+
+
 ```powershell
 clear             # check Sonnet is active
 speckit.analyze
@@ -395,6 +423,9 @@ speckit.analyze
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## /speckit.checklist
+
+`/speckit.checklist` generates two checklists. The first (requirements.md) is a pre-implementation gate: does the spec contain enough detail to code from? The second (pr-review.md) is a post-implementation gate: does the code match the spec? The first must be complete before coding starts; the second is used during the PR review.
+
 
 ```powershell
 /clear             # check Sonnet is active
@@ -410,6 +441,9 @@ speckit.analyze
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## /speckit.implement
+
+`/speckit.implement` does the actual work. Guided by the spec, plan, tasks, and checklists, it generates the code. It processes the task list in order, marks each task complete as it goes, and stops if a checklist item cannot be satisfied.
+
 
 ```powershell
 /clear               # check Sonnet is active
@@ -452,6 +486,10 @@ cargo run -- --log-level "bmi_sdd=debug,hyper=debug,tower=debug"
 
 The server starts at `http://localhost:3000` (or the configured port).
 
+
+
+
+
 ### Testing
 
 ```powershell
@@ -465,6 +503,10 @@ cargo test --bin bmi_sdd
 # Integration tests only
 cargo test --test api_test
 ```
+
+
+
+
 
 ### Manual Verification
 
@@ -495,7 +537,8 @@ start http://localhost:3000
 
 
 
-I stay in the branch and I use Claude code to:
+Spec Kit got us to a working implementation. But Spec Kit is not the only tool available inside Claude Code. At this point I stay on the branch and use Claude Code directly to add two small things that I wanted but did not spec up:
+
 * Add `CTRL+C` support
 * Add one tracing::debug! in src/api.rs
 
@@ -504,6 +547,9 @@ I stay in the branch and I use Claude code to:
 <img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
 <figcaption>...</figcaption>
 </figure>
+
+
+This is the key practical point: Spec Kit and Claude Code complement each other. Spec Kit is for structured, traceable development -- specs, plans, tasks, checklists. Claude Code is for everything else: quick fixes, small additions, refactoring, debugging. You do not have to choose one or the other. Use Spec Kit when the work benefits from a written spec; use Claude Code directly when it does not.
 
 
 <!-- ###################################################################### -->
@@ -593,12 +639,13 @@ heroku open
 Alternatively point your browser to the previous URL (for example: https://rust-bmi-sdd-XXXX.herokuapp.com/)
 
 **Note:**
-Use
 ```powershell
 heroku run bash
 ```
-* To check the files deployed on Heroku.
-* To check the size of the binary use `ls -al ./target/release/`
+* Use this to inspect the files deployed on Heroku.
+* Check the binary size with `ls -al ./target/release/`
+
+
 
 <figure style="text-align: center;">
 <img src="./assets/img05.webp" alt="" width="900" loading="lazy"/>
@@ -607,11 +654,10 @@ heroku run bash
 
 
 **Note:**
-The process should be:
-- Add features with Spec Kit, modify the app with Claude, test locally etc.
-- Commit & push on GitHub
-- Push on Heroku (`git push heroku main`)
-
+The typical release cycle from here:
+- Add features with Spec Kit, modify the app with Claude Code, test locally
+- Commit and push to GitHub
+- Push to Heroku (`git push heroku main`)
 
 
 
@@ -624,16 +670,19 @@ The process should be:
 <!-- ###################################################################### -->
 ## Adding a feature
 
-Now I want to add an history with the last 5 calculated BMI.
+The first implementation is live. Now I want to add a history panel that shows the last 5 BMI calculations.
+
+This is where Spec Kit really shows its value beyond the initial build. Adding a feature is not just "tell the AI what to do and hope for the best." It follows the same structured workflow: write a spec for the feature, plan it, task it, implement it. The spec for the new feature must stay consistent with the constitution and if it does not, Spec Kit will tell you.
 
 
-### Process
-On va créer une issue (#42 par exemple )
-On va implémenter la feature dans une branche en suivant le workflow speckit
-On va tester, améliorer etc.
-On va merger la branche et fermer l'issue (`Closes #42` dans le message)
+The general process:
+1. Create a GitHub issue for the feature
+2. Run the Spec Kit workflow on a new branch
+3. Test and refine locally
+4. Merge the branch and close the issue
 
-Suite discussion avec Claude dans mon Browser Web j'arrive au prompt suivant
+After a back-and-forth with Claude in my web browser, I end up with the following prompt to create the GitHub issue:
+
 
 
 
@@ -674,14 +723,16 @@ Labels: enhancement
 ```
 
 
-* À la fin je lis `Issue created: https://github.com/40tude/bmi_sdd/issues/2`. Je note que l'issue a le numéro 2
-* Je peux aller sur GitHub pour voir l'issue #2 qui a été créée
-* Ensuite je repars dans un workflow speckit "classique" pour implementer la feature
+- At the end I see Issue created: https://github.com/40tude/bmi_sdd/issues/2. The issue number is 2.
+- I can go to GitHub to see issue #2.
+- From here I follow the standard Spec Kit workflow to implement the feature.
 
 <figure style="text-align: center;">
 <img src="./assets/img02.webp" alt="" width="900" loading="lazy"/>
 <figcaption>...</figcaption>
 </figure>
+
+
 
 
 <!-- ###################################################################### -->
@@ -692,7 +743,8 @@ Labels: enhancement
 * **⚠️ IMPORTANT:** `/model` → Opus 4.6, effort: full
 * `/clear`
 
-Je colle
+I paste the folowing slash command:
+
 ```text
 /speckit.specify
 We want to implement the feature described in GitHub issue #2:
@@ -701,10 +753,13 @@ in-memory VecDeque, shared across all users.
 ```
 
 * This creates branch `002-bmi-history`
-* Creates specs/002-bmi-history
-* It indicates : `No clarifications needed -- the GitHub issue was well-specified.`
+* Creates `specs/002-bmi-history`
+* Spec Kit reports: `No clarifications needed -- the GitHub issue was well-specified.`
     * I will **NOT** `/speckit.clarify`
 * Commit msg: `After /speckit.specify`
+
+
+
 
 
 <!-- ###################################################################### -->
@@ -741,33 +796,33 @@ in-memory VecDeque, shared across all users.
 ### /speckit.analyze
 * `/clear` # check Sonnet is active
 * `/speckit.analyze`
-* I read the findings in the terminal
 
+This is where **things get interesting**. Spec Kit surfaces a critical finding:
+
+```
 ID: C1
 Category: Constitution
 Severity: CRITICAL
 Location(s): constitution.md:L64, plan.md:L32
 Summary: Principle V declares "The application is stateless." Feature adds server-wide mutable state. Plan marks this as VIOLATION but the constitution itself has never been formally amended (no version bump, no text change).
 Recommendation: Run /speckit.constitution to amend Principle V: add an exception clause permitting ephemeral in-memory state when explicitly required by spec and documented in Complexity Tracking.
+```
 
-C'est un très bon catch de Speckit. **Stateless** signifie que le serveur ne conserve aucune donnée entre les requêtes. Chaque requête est traitée indépendamment, sans mémoire du passé. C'est ce que dit ton `constitution.md` actuellement.
+This is an excellent catch. Stateless means the server holds no data between requests. Every request is handled independently with no memory of past ones. That is exactly what the constitution says.
 
-Un `VecDeque` en mémoire partagée via `Arc<Mutex<...>>` dans le state Axum, c'est exactement l'opposé — le serveur **conserve un état** qui persiste entre les requêtes.
+But a `VecDeque` wrapped in `Arc<Mutex<...>>` and registered as Axum shared state is the opposite: the server does hold state that persists across requests.
 
-Donc Speckit a raison de bloquer : il y a une contradiction formelle entre la constitution et la feature.
+Spec Kit is right to block on this. There is a formal contradiction between the constitution and the feature. The correct response is to amend the constitution before implementing. For example, updating Principle V to say something like:
 
-La bonne action c'est d'**amender la constitution** avant d'implémenter. Par exemple, modifier le principe V pour dire quelque chose comme :
+> The application minimizes server-side state. Ephemeral in-memory state is permitted when explicitly documented and justified. Persistent storage requires a separate architectural decision.
 
-> *"The application minimizes server-side state. Ephemeral in-memory state is permitted when explicitly documented and justified. Persistent storage requires a separate architectural decision."*
+Then bump the version (e.g., v1.0 to v1.1) with a note explaining why the principle was relaxed.
 
-Et bumper la version (ex: `v1.0` → `v1.1`) avec une note expliquant pourquoi ce principe a été assoupli.
+This is one of the **most valuable things Spec Kit does**. A feature that looks trivial forces a conscious, traceable architectural decision. Instead of quietly introducing shared mutable state and hoping nobody notices, the workflow surfaces the contradiction and requires an explicit amendment. That is the whole point.
 
-C'est un **excellent point**. Ca montre que SDD ne laisse pas passer les contradictions silencieusement. Une feature qui semble anodine force une décision architecturale consciente et traçable. C'est exactement la valeur du workflow.
+I answer `Yes` to "Would you like me to suggest concrete remediation edits for the top 3 issues? I can produce the exact text changes for data-model.md and tasks.md for your review before you apply them."
 
-
-Je répond "YES" à la question "Would you like me to suggest concrete remediation edits for the top 3 issues (C2, I1, W1)? I can produce the exact text changes for data-model.md and tasks.md for your review before you apply them."
-
-Je le laisse faire. Il demande ensuite de bumper constitution. J'accepte
+I let it proceed. It then asks to bump the constitution version. I accept.
 
 
 * Commit msg: `After /speckit.analyze`
@@ -788,17 +843,21 @@ Je le laisse faire. Il demande ensuite de bumper constitution. J'accepte
 
 * `/clear` # check Sonnet is active
 * `/speckit.checklist`
-* C'est quoi /specify.checklist ? C'est une étape de validation de la spec avant d'implémenter. L'idée : avant de coder, on s'assure que la spec est suffisamment précise et complète pour qu't un dev (ou un agent) puisse l'implémenter sans avoir à deviner. C'est un filet de sécurité qui détecte les trous dans la spec.
-En gros : "Est-ce que ce qu'on a écrit est assez précis pour être implémenté sans ambiguïté ?"
-* Les 3 questions
-    * Q1 — Sur quoi concentrer la checklist ?
-    Pour un article de blog sur une feature simple, choisis D (All three equally) — tu veux une couverture équilibrée qui montre bien l'intérêt du processus. Si tu choisis A, B ou C tu rates des angles intéressants pour tes lecteurs.
-    * Q2 — Niveau de profondeur ?
-    B (Standard PR review) — c'est le bon équilibre pour l'article. Lightweight serait trop superficiel pour être pédagogique, et Formal release gate serait overkill pour un hello world.
-    * Q3 — La concurrence est-elle un bloquant ?
-    A (Hard blocker) — et c'est justement un super exemple pour l'article. Rust te force à gérer la concurrence explicitement (Arc<Mutex<...>>), donc autant que la spec le reflète comme une vraie exigence plutôt qu'une simple "assumption". Ça montre que SDD attrape les failles de sécurité avant le code.
-* Je réponds : "D B A"
-* Il créé un pr-review.md
+
+`/speckit.checklist` asks three questions before generating the checklists:
+
+
+
+- Q1 -- What should the checklist focus on?
+For a blog article covering a simple feature, pick D (All three equally) -- balanced coverage shows the full value of the process. Picking A, B, or C would miss interesting angles.
+- Q2 -- Depth level?
+B (Standard PR review) -- the right balance. Lightweight is too shallow to be educational; Formal release gate is overkill for a small feature.
+- Q3 -- Is concurrency a hard blocker?
+A (Hard blocker) -- and this makes a great example. Rust forces explicit concurrency management (Arc<Mutex<...>>), so the spec should treat it as a real requirement rather than a background assumption. This shows that SDD catches concurrency concerns before any code exists.
+
+I answer: `D B A`
+
+* Spec Kit creates pr-review.md.
 * Commit msg: `After /speckit.checklist`
 
 
@@ -816,7 +875,8 @@ En gros : "Est-ce que ce qu'on a écrit est assez précis pour être implément�
 * `/clear` # check Sonnet is active
 * `/usage` # I read 54%
 * `/speckit.implement`
-* A un moment il indique
+
+  At one point it reports:
 
 ```text
 Checklist Status
@@ -831,20 +891,24 @@ Checklist Status
 The pr-review.md is a post-implementation PR review checklist (all items are reviewer questions about spec gaps, not implementation prerequisites). It is not intended to be completed before coding.
 
 Some checklists are incomplete. Do you want to proceed with implementation anyway? (yes/no)
+
 ```
-C'est parfaitement logique:
-* **`requirements.md` à 13/13**: c'est la checklist *pré-implémentation*. Elle vérifie que la spec est assez précise pour coder. Elle est complète, donc tu es prêt.
-* **`pr-review.md` à 0/28**: c'est la checklist *post-implémentation*. Elle sert au moment de la PR/code review, quand le code existe déjà. Elle pose des questions du type "est-ce que l'implémentation respecte la spec ?". Il est normal qu'elle soit à 0 avant de coder, il n'y a rien à reviewer encore.
 
 
-* Je réponde YES. La `pr-review.md` sera utile plus tard quand tu feras ta PR pour merger la feature et clore l'issue GitHub.
+This is perfectly logical:
 
-* Pour l'article: illustre que Speckit distingue bien les deux phases : *spec validation* avant le code, *implementation review* après.
+- requirements.md at 13/13: the pre-implementation checklist. It verifies the spec is detailed enough to code from. Complete means ready.
+- `pr-review.md` at 0/28: the post-implementation checklist. It is used during the PR review, once the code exists. Questions like "does the implementation respect the spec?" cannot be answered before there is any code. Zero is the correct value here.
 
+I answer `Yes`. The `pr-review.md` checklist will be useful later when creating the PR to merge the feature and close the GitHub issue.
 
-
+This distinction matters: Spec Kit separates spec validation (before code) from implementation review (after code). Both are valuable; they just run at different times.
 
 * Commit msg: `After /speckit.implement`
+
+
+
+
 
 
 
@@ -870,7 +934,8 @@ C'est parfaitement logique:
 <!-- <span>Optional comment</span> -->
 </div>
 
-Je reste dans la branche et j'utilise Claude (pas Spec Kit)
+I stay on the branch and use Claude Code directly (not Spec Kit) to improve the visual appearance of the history table. This is exactly the kind of small, focused work where going through a full Spec Kit workflow would be overkill. I use this prompt:
+
 
 * `/clear` # check Sonnet is active
 * `/usage` # 71%
@@ -903,7 +968,7 @@ Requirements:
 
 ### Merge of the branch
 
-J'utilise le prompt ci-dessous:
+I use this prompt to let Claude Code handle the merge:
 
 ```text
 Merge the current feature branch into main, then close GitHub issue #2.
@@ -918,7 +983,7 @@ Steps:
 
 
 
-Sinon je peux le faire à la main:
+Or, manually:
 
 ```powershell
 # Switch to the branch just to make sure
