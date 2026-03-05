@@ -41,13 +41,15 @@ Building and evolving a small Axum web app step-by-step using specs, tasks, and 
 
 * For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * Spec-Driven Development (SDD) is not a heavy formal process. It is a lightweight discipline: write the spec first, let the AI build from it, catch contradictions before they become bugs.
-* Spec Kit is a set of Claude Code slash commands that turn a plain-text specification into working, tested, deployed software -- one command at a time.
+* Since the cost of the line of code dropped to 0,
+* Since the specification is based on readable documents (markdown) you can modify
+* Spec Kit is a set of Claude Code slash commands that turn a plain-text specification into working, tested, deployed software. One command at a time.
 * The workflow naturally extends to feature additions. Adding a new feature follows the exact same path: specify, clarify, plan, implement. The spec repo becomes a living record of every architectural decision.
-* You are always in control. Spec Kit drives the spec and the structure; Claude Code handles everything else. You can mix the two at any point.
+* We are in control. Spec Kit drives the spec and the structure. Claude Code handles everything else. We can mix the two at any point.
 
 
 **Note**
-The [companion project](https://github.com/40tude/bmi_sdd) with is available on GitHub.
+The [companion project](https://github.com/40tude/bmi_sdd) with is available on GitHub but I strongly recommend to follow the instruction and build your own application.
 
 
 
@@ -96,7 +98,39 @@ The [companion project](https://github.com/40tude/bmi_sdd) with is available on 
 ## Introduction
 
 
+The software industry has shifted faster in the past four months than it did in the previous four years. Since the release of [Opus 4.5 in November 2025](https://www.anthropic.com/news/claude-opus-4-5), the introduction of [Cowork in January 2026](https://claude.com/blog/cowork-research-preview), and then [Opus 4.6 early February](https://www.anthropic.com/news/claude-opus-4-6), the gap between what AI agents can do and what junior developers typically do has narrowed to the point where companies are starting to notice.
 
+Hiring of entry-level developers is dropping sharply. At some organizations, opening a new dev position now requires demonstrating that the role cannot be
+filled by an AI agent. We are in March 2026. Budget cycles for 2027 start in a few months. Some of those conversations are going to be uncomfortable.
+
+I have been thinking about this for a while (see [this post]({%link docs/06_programmation/005_50_percent_dev/50_percent_dev_5_years_xp.md%})). I am still a
+Rust, C++, and Python person. I can still spend three hours on Codingame enjoying a tight algorithm in under 50 lines. But I am convinced that our
+relationship to code must change.
+
+Here is how I think about it. We went from punch cards to assembly, then to C, then to C++ and Rust. Each step letting us express intent more naturally, at
+a higher level of abstraction. In the span of a few months, we jumped a level again. Today, the programming language is English. Or French. Or whatever
+language you think in.
+
+At the same time, I trust an AI agent generating code today about as much as I trusted a C compiler from the 1970s: I check twice, I add guardrails, I do not
+take the output on faith. But in three years? We will trust the agent the same way we trust clang, gcc, or rustc today. That question will be settled.
+
+So the question is not whether to adapt: it is when. Staying anchored to the old workflow is a "Who Moved My Cheese" problem. The cheese moved.
+
+That brings up a real question of method. We are past the stage of using Claude or ChatGPT as a fancy chatbot. We are past using them as Intellisense on
+steroids. What we need is a workflow that takes us from a plain-English description to a working, tested, deployed application. There are smart people
+working on this problem. My current answer is Spec Kit.
+
+In this post we will:
+
+- Build a small web application (a BMI calculator, though the domain is not the point)
+- Deploy it to Heroku
+- Add a feature to it
+- Do all of this without writing a single line of code by hand
+
+We will use the Spec Kit workflow from start to finish. I will walk through every step and every command, and share every prompt I used along with how I
+designed each one.
+
+Ok, let's get into it.
 
 
 
@@ -462,6 +496,8 @@ speckit.analyze
 ## Test & Check Local
 
 ### Checking
+{: .no_toc }
+
 ```powershell
 # Default port 3000
 cargo run
@@ -491,6 +527,7 @@ The server starts at `http://localhost:3000` (or the configured port).
 
 
 ### Testing
+{: .no_toc }
 
 ```powershell
 # Run all tests (unit + integration)
@@ -509,6 +546,7 @@ cargo test --test api_test
 
 
 ### Manual Verification
+{: .no_toc }
 
 With the server running (`cargo run`):
 
@@ -589,6 +627,7 @@ git pull origin main
 
 
 ### Prerequisites
+{: .no_toc }
 
 - Run and test locally first
 - Heroku account
@@ -598,6 +637,7 @@ git pull origin main
 
 
 ### Steps
+{: .no_toc }
 
 1. Create a new Heroku app:
 ```powershell
@@ -739,6 +779,7 @@ Labels: enhancement
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### /speckit.specify
+{: .no_toc }
 
 * **⚠️ IMPORTANT:** `/model` → Opus 4.6, effort: full
 * `/clear`
@@ -766,6 +807,8 @@ in-memory VecDeque, shared across all users.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### /speckit.plan
+{: .no_toc }
+
 * `/clear` # check Opus is active
 
 ```text
@@ -782,6 +825,8 @@ in-memory VecDeque, shared across all users.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### /speckit.tasks
+{: .no_toc }
+
 * **⚠️ IMPORTANT:** Remember to switch back to `/model sonnet full`
 * `/clear`
 * `/speckit.tasks`
@@ -794,6 +839,8 @@ in-memory VecDeque, shared across all users.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### /speckit.analyze
+{: .no_toc }
+
 * `/clear` # check Sonnet is active
 * `/speckit.analyze`
 
@@ -840,6 +887,7 @@ I let it proceed. It then asks to bump the constitution version. I accept.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### /speckit.checklist
+{: .no_toc }
 
 * `/clear` # check Sonnet is active
 * `/speckit.checklist`
@@ -871,6 +919,7 @@ I answer: `D B A`
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ### /speckit.implement
+{: .no_toc }
 
 * `/clear` # check Sonnet is active
 * `/usage` # I read 54%
@@ -967,7 +1016,13 @@ Requirements:
 </div>
 
 
+
+
+
+
+
 ### Merge of the branch
+{: .no_toc }
 
 I use this prompt to let Claude Code handle the merge:
 
