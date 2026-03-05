@@ -882,7 +882,8 @@ I answer: `D B A`
 Checklist Status
 
   ┌─────────────────┬───────┬───────────┬────────────┬────────┐
-  │    Checklist    │ Total │ Completed │ Incomplete │ Status │ ├─────────────────┼───────┼───────────┼────────────┼────────┤
+  │    Checklist    │ Total │ Completed │ Incomplete │ Status │
+  ├─────────────────┼───────┼───────────┼────────────┼────────┤
   │ requirements.md │ 13    │ 13        │ 0          │ PASS   │
   ├─────────────────┼───────┼───────────┼────────────┼────────┤
   │ pr-review.md    │ 28    │ 0         │ 28         │ FAIL   │
