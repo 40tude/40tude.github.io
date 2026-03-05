@@ -40,6 +40,7 @@ Building and evolving a small Axum web app step-by-step using specs, tasks, and 
 {: .no_toc }
 
 * For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
+* Spec Kit is an AI assisted structuring workflow using 4 major steps : specification, plan, tasks et implementation.
 * Spec-Driven Development (SDD) is not a heavy formal process. It is a lightweight discipline: write the spec first, let the AI build from it, catch contradictions before they become bugs.
 * Since the cost of the line of code dropped to 0,
 * Since the specification is based on readable documents (markdown) you can modify
@@ -121,14 +122,21 @@ That brings up a real question of method. We are past the stage of using Claude 
 steroids. What we need is a workflow that takes us from a plain-English description to a working, tested, deployed application. There are smart people
 working on this problem. My current answer is Spec Kit.
 
-In this post we will:
+OK, but what is Spec Kit? In 2 words, it is an AI assisted structuring workflow using 4 major steps : specification, plan, tasks et implementation.
 
+In this post we will demonstrate how to use it and we will:
 - Build a small web application (a BMI calculator, though the domain is not the point)
 - Deploy it to Heroku
 - Add a feature to it
 - Do all of this without writing a single line of code by hand
 
-We will use the Spec Kit workflow from start to finish. I will walk through every step and every command, and share every prompt I used along with how I
+Ok, but when **NOT** to use Spec Kit?
+* It requires a bit of discipline ((but no more than writing code requires))
+* Can be overkill for small scripts or small feature (we will see examples later)
+* It is heavily dependent on the quality of the model and for now Claude is
+
+
+This said, here we will use the Spec Kit workflow from start to finish. I will walk through every step and every command, and share every prompt I used along with how I
 designed each one.
 
 Ok, let's get into it.
@@ -1088,6 +1096,25 @@ git pull origin main
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Conclusion
+
+Spec Kit introduces a different way of thinking about software development. Instead of jumping directly into code, the process begins with a clear description of *what* we want to build and *why*. From there, a structured workflow (constitution, specification, planning, task breakdown, and implementation) progressively transforms that intent into working software.
+
+Throughout this article, we have seen how this approach changes the interaction with AI coding assistants. Rather than relying on one-shot prompts, Spec Kit encourages a step-by-step dialogue where requirements are clarified, the architecture is defined, and implementation tasks are generated before writing the final code. This staged process helps reduce ambiguity, improve consistency, and keep the project aligned with its original goals.
+
+Using Spec Kit and storing every issue on GitHub also brings several practical advantages:
+
+* **Better clarity**: specifications capture the intent of the feature before implementation begins.
+* **More predictable development**: planning and task generation create a clear roadmap.
+* **Improved collaboration with AI tools**: structured commands guide the assistant and reduce random or inconsistent code generation.
+* **Reusable project knowledge**: specifications and plans remain useful documentation instead of being discarded once the code is written.
+
+In other words, Spec Kit helps shift the focus from *writing code quickly* to *building the right thing in a structured way*. By combining clear specifications with modern AI assistants, it offers a workflow that is both disciplined and productive.
+
+Of course, like any methodology, it takes a little time to adopt and adapt to one’s own habits. But once integrated into the development workflow, Spec Kit can become a powerful ally for designing features, structuring projects, and making better use of AI-assisted development.
+
+And perhaps that is the most interesting takeaway: with tools like Spec Kit, the future of programming is not just about generating code faster — it is about **thinking more clearly about what we want to build, and letting the tools help us get there.**
+
+
 
 
 
