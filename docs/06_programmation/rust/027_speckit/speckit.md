@@ -140,6 +140,10 @@ Ok, but when **NOT** to use Spec Kit?
 * It requires a bit of discipline (but no more than writing code requires)
 * Can be overkill for small scripts or small feature (we will see examples later)
 * It is heavily dependent on the quality of the model and for now Claude is on the top of my list.
+* Do not use it for Vibe Coding.
+* You need to know the programming language used and I remain convinced that developers and those who know how it works underneath will get better results.
+
+
 
 
 This said, here we will use the Spec Kit workflow from start to finish. I will walk through every step and every command, and share every prompt I used along with how I
