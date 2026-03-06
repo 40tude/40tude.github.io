@@ -204,7 +204,7 @@ I suppose the following software are installed:
 
 
 **Note**
-To update specify
+To update Specify CLI
 
 ```powershell
 uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
