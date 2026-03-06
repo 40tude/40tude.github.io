@@ -106,7 +106,7 @@ Hiring of entry-level developers is dropping sharply. At some organizations, ope
 filled by an AI agent. We are in March 2026. Budget cycles for 2027 start in a few months. Some of those conversations are going to be uncomfortable.
 
 I have been thinking about this for a while (see [this post]({%link docs/06_programmation/005_50_percent_dev/50_percent_dev_5_years_xp.md%})). I am still a
-Rust, C++, and Python person. I can still spend three hours on Codingame enjoying a tight algorithm in under 50 lines. But I am convinced that our
+Rust, C++, and Python person. I can still spend three hours on [Codingame](https://www.codingame.com/home) enjoying a tight algorithm in under 50 lines. But I am convinced that our
 relationship to code must change.
 
 Here is how I think about it. We went from punch cards to assembly, then to C, then to C++ and Rust. Each step letting us express intent more naturally, at
@@ -118,27 +118,28 @@ language you think in.
 <figcaption>The 80-character line limit comes from punch cards with 80 columns.</figcaption>
 </figure>
 
-At the same time, I trust an AI agent generating code today about as much as I trusted a C compiler from the 1970s: I check twice, I add guardrails, I do not
+At the same time, I trust an AI agent generating code today about as much as engineers trusted their C compiler in the 70s: I check twice, I add guardrails, I do not
 take the output on faith. But in three years? We will trust the agent the same way we trust clang, gcc, or rustc today. That question will be settled.
 
 So the question is not whether to adapt: it is when. Staying anchored to the old workflow is a "Who Moved My Cheese" problem. The cheese moved.
 
 That brings up a real question of method. We are past the stage of using Claude or ChatGPT as a fancy chatbot. We are past using them as Intellisense on
 steroids. What we need is a workflow that takes us from a plain-English description to a working, tested, deployed application. There are smart people
-working on this problem. My current answer is Spec Kit.
+working on this problem. My current choice is Spec Kit (first released in [Sept 2025](https://developer.microsoft.com/blog/spec-driven-development-spec-kit)) but there plenty of alternatives ([Agent OS](https://github.com/buildermethods/agent-os), [Tessl](https://tessl.io/), [Kiro](https://kiro.dev/), [GSD (get shit done)](https://github.com/gsd-build/get-shit-done), [BMAD method](https://github.com/bmad-code-org/BMAD-METHOD), [OpenSpec](https://openspec.dev/)...)
 
 OK, but what is Spec Kit? In 2 words, it is an AI assisted structuring workflow using 4 major steps : specification, plan, tasks et implementation.
 
 In this post we will demonstrate how to use it and we will:
 - Build a small web application (a BMI calculator, though the domain is not the point)
+- Test it
 - Deploy it to Heroku
 - Add a feature to it
 - Do all of this without writing a single line of code by hand
 
 Ok, but when **NOT** to use Spec Kit?
-* It requires a bit of discipline ((but no more than writing code requires))
+* It requires a bit of discipline (but no more than writing code requires)
 * Can be overkill for small scripts or small feature (we will see examples later)
-* It is heavily dependent on the quality of the model and for now Claude is
+* It is heavily dependent on the quality of the model and for now Claude is on the top of my list.
 
 
 This said, here we will use the Spec Kit workflow from start to finish. I will walk through every step and every command, and share every prompt I used along with how I
@@ -189,7 +190,8 @@ I suppose the following software are installed:
     * You have an account (free)
     * Install Heroku CLI. Read [https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)
 1. Spec Kit
-    * https://github.com/github/spec-kit
+    * [https://github.com/github/spec-kit](https://github.com/github/spec-kit)
+    * I recommand to install Specify CLI with this command
     ```powershell
     uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
     ```
@@ -320,7 +322,7 @@ Create a BMI Calculator web application in Rust with the following requirements:
 
 
 
-* I review `.specify/memory/constitution.md`
+* I review the `.specify/memory/constitution.md` file
 * Commit msg: `add: project constitution v1.0.0`
 
 
@@ -331,7 +333,7 @@ Create a BMI Calculator web application in Rust with the following requirements:
 <!-- ###################################################################### -->
 ## /speckit.specify
 
-`/speckit.specify` takes the constitution and a feature description and produces a formal, structured spec. The spec lives in the repo as a markdown file under specs/. It includes acceptance criteria, module boundaries, expected test cases, and design decisions: everything a developer (or an AI agent) needs to implement without guessing.
+`/speckit.specify` takes the constitution and a feature description and produces a formal, structured spec. The spec lives in the repo as a markdown file under the `specs/` folder. It includes acceptance criteria, module boundaries, expected test cases, and design decisions: everything a developer (or an AI agent) needs to implement without guessing.
 
 The constitution says what the app should do; the spec says how it should be structured to do it.
 
@@ -417,11 +419,11 @@ Commit msg: `After /speckit.clarify`
 
 `/speckit.plan` turns the clarified spec into a technical plan. It produces a set of documents in the spec folder: `plan.md` (overall architecture), `quickstart.md` (how to build and run), `research.md` (crate choices and tradeoffs), `data-model.md` (types and structures), and `api.md` (endpoint contracts).
 
-This is the step where Spec Kit translates "what the app should do" into "how the code should be organized." No code yet, just a blueprint precise enough to implement from.
+This is the step where Spec Kit translates "**WHAT** the app should do" into "**HOW** the code should be organized." No code yet, just a blueprint precise enough to implement from.
 
 ```powershell
 /clear          # check Opus is active
-/specify.plan
+/speckit.plan
 
 ```
 Commit msg: `After /speckit.plan`
@@ -607,8 +609,8 @@ start http://localhost:3000
 
 Spec Kit got us to a working implementation. But Spec Kit is not the only tool available inside Claude Code. At this point **I stay on the branch** and use Claude Code directly to add two small things that I wanted but did not spec up:
 
-* Add `CTRL+C` support
-* Add one tracing::debug! in src/api.rs
+* Add `CTRL+C` support to gracefully ends the server (mostly useful locally)
+* Add one `tracing::debug!` in `src/api.rs` just to see it in action when we run the server locally with `cargo run -- --log-level debug`
 
 This is the **key practical point**: Spec Kit and Claude Code complement each other.
 - Spec Kit is for structured, traceable development: specs, plans, tasks, checklists.
@@ -843,7 +845,7 @@ in-memory VecDeque, shared across all users.
 * `/clear` # check Opus is active
 
 ```text
-/specify.plan
+/speckit.plan
 ```
 * Generate `plan.md`, `quickstart.md`, `research.md` and `data-model.md`, `api.md` in `specs/002-bmi-history` and `CLAUDE.md`...
 * Commit msg: `After /speckit.plan`
