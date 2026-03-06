@@ -24,9 +24,9 @@ Building and evolving a small Axum web app step-by-step using specs, tasks, and 
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -46,12 +46,12 @@ Building and evolving a small Axum web app step-by-step using specs, tasks, and 
 * Since the specification is based on readable documents (markdown) we can read, modify and keep track of everything on GitHub.
 * Spec Kit is a set of Claude Code slash commands that turn a plain-text specification into working, tested, deployed software.
 * The workflow naturally extends to feature additions. Adding a new feature follows the exact same path: specify, clarify, plan, implement. The spec repo becomes a living record of every architectural decision (the source of truth).
-* We are in control. Spec Kit drives the spec and the structure. Claude Code handles everything else. We can mix the two at any point.
+* We are in control: Spec Kit drives the spec and the structure. Claude Code handles everything else. We can mix the two at any point.
 * We do not have to choose Spec Kit or Claude. Use Spec Kit when the work benefits from a written spec and use Claude Code directly when it does not.
 
 
 **Note**
-The [companion project](https://github.com/40tude/bmi_sdd) with is available on GitHub but I strongly recommend to follow the instruction and build your own application.
+The [companion project](https://github.com/40tude/bmi_sdd) with is available on GitHub but I strongly recommend to follow the instructions and build your own application.
 
 
 
@@ -169,6 +169,7 @@ Ok, now that we have an overview of the workflow, let's go through each step and
 ## Prerequisites
 I suppose the following software are installed:
 1. VScode
+1. Rust (but the methodology explained below is still worthwhile and makes sense even if you use another programming language)
 1. GitHub
 1. GitHub CLI (gh)
     ```powershell
@@ -267,6 +268,8 @@ I open a chat with Claude in my web browser, share the very first version of the
 
 > I work with the speckit workflow. After reading the `README.md`, suggest a prompt to use with `/speckit.constitution`. If anything is missing from the `README.md`, let me know as well.
 
+Why do I use Claude (or any other AI chatbot/assistant/LLM interface) in my browser? This may change but today I like the idea of having a conversation on the side with "someone" else, work on the prompt/question then come back VSCode and the Claude Code prompt and paste my request. For me it is like using a scrap book a the side. I have no idea if it make sense, if it is a good practice and/or something I should recommend. It just work for me today.
+
 We go through a short Q&A session. At the end I get the prompt below, which I paste into the Claude session in VSCode:
 
 ```text
@@ -329,7 +332,117 @@ Create a BMI Calculator web application in Rust with the following requirements:
 * I review the `.specify/memory/constitution.md` file
 * Commit msg: `add: project constitution v1.0.0`
 
+**Note:**
 
+* Here is the very first version of the constitution. Spoiler alert... It will be amended later but this is an other story.
+* Here I want to make sure we realize "it is just a text file in plain English" that we can review, modify, adapt to our needs.
+
+
+```text
+<!--
+Sync Impact Report
+===================
+Version change: N/A (initial) -> 1.0.0
+Added principles:
+  - I. Domain Purity
+  - II. Test-Driven Development
+  - III. Clean Layering
+  - IV. Observability
+  - V. Simplicity
+Added sections:
+  - Tech Stack & Constraints
+  - Development Workflow
+  - Governance
+Removed sections: none
+Templates requiring updates:
+  - .specify/templates/plan-template.md: no update needed (Constitution Check is dynamic)
+  - .specify/templates/spec-template.md: no update needed (generic template)
+  - .specify/templates/tasks-template.md: no update needed (generic template)
+  - .specify/templates/checklist-template.md: no update needed (generic template)
+Follow-up TODOs: none
+-->
+
+# BMI Calculator Constitution
+
+## Core Principles
+
+### I. Domain Purity
+
+All BMI calculation and classification logic MUST reside in a pure domain
+module with zero I/O and zero framework dependencies. Domain functions
+accept primitives and return domain types. This ensures testability and
+portability independent of the web framework.
+
+### II. Test-Driven Development
+
+TDD is mandatory. Red-Green-Refactor cycle strictly enforced:
+- Unit tests for domain logic MUST cover calculation accuracy, WHO
+  category boundaries, and rejection of invalid inputs (zero, negative).
+- Integration tests MUST exercise API endpoints via HTTP using Reqwest:
+  valid requests, invalid inputs, missing fields.
+- All tests MUST pass via `cargo test` with no manual setup.
+
+### III. Clean Layering
+
+The application MUST maintain three distinct layers:
+- **Domain**: pure functions, no dependencies on Axum or Serde.
+- **API**: Axum handlers, JSON request/response types (Serde), input
+  validation, error mapping to HTTP status codes.
+- **UI**: embedded HTML page served by Axum, Bootstrap via CDN,
+  fetch-based form submission to `/api/bmi`.
+
+Cross-layer imports follow one direction: API depends on Domain; UI is
+independent static content. Domain MUST NOT import API or UI types.
+
+### IV. Observability
+
+All errors MUST be logged server-side using `tracing`. The application
+MUST initialize `tracing-subscriber` at startup with configurable log
+level (via Clap CLI flag). Structured logging is preferred over ad-hoc
+print statements.
+
+### V. Simplicity
+
+YAGNI strictly enforced. The application is stateless -- no database, no
+persistence, no authentication, no API versioning. Only build what the
+spec requires. Reject complexity that serves hypothetical future needs.
+
+## Tech Stack & Constraints
+
+- **Language**: Rust (edition 2024)
+- **Async runtime**: Tokio
+- **Web framework**: Axum
+- **Serialization**: Serde + serde_json
+- **Error handling**: thiserror (domain errors), anyhow (app-level)
+- **Logging**: tracing + tracing-subscriber
+- **CLI**: Clap (--port flag, log level flag)
+- **Test HTTP client**: Reqwest (integration tests)
+- **UI**: Bootstrap CDN, embedded HTML
+- **Deployment**: Heroku via Rust buildpack; PORT env var overrides
+  --port CLI flag; Procfile required
+- **Platform**: Windows 11 dev environment; deploy target is Linux
+  (Heroku)
+
+## Development Workflow
+
+- Single `main` branch; feature work on short-lived branches.
+- Commit messages: `<action>: <what>` format, max 50 chars, US English.
+- `cargo fmt` and `cargo clippy` MUST pass before commit.
+- `cargo test` MUST pass before merge.
+- No files with names starting with `nul` or `null` (Windows reserved).
+
+## Governance
+
+This constitution is the authoritative reference for project decisions.
+All code reviews and PRs MUST verify compliance with these principles.
+
+**Amendment procedure**: Any principle change requires documentation of
+rationale, version bump per semver, and update of this file.
+
+**Version**: 1.0.0 | **Ratified**: 2026-03-04 | **Last Amended**: 2026-03-04
+
+
+```
 
 
 <!-- ###################################################################### -->
@@ -345,10 +458,11 @@ I continue the chat in Claude web. I ask:
 
 > Now I need to use `/speckit.specify` but I'm not sure what to write. I feel like we've already said everything in the constitution. Can you suggest some prompts?
 
-We go back and forth a few times. I finally paste this slash command in Claude in VSCode:
+We go back and forth a few times. Finally I clear the context (this is important) and then I paste the slash command in Claude in VSCode:
 
 
 ```
+/clear           # check Opus is active
 /speckit.specify
 
 Specify the project with the following structure:
@@ -747,7 +861,9 @@ The typical release cycle from here:
 
 The first implementation is live. Now I want to add a history panel that shows the last 5 BMI calculations.
 
-This is where **Spec Kit really shows its value** beyond the initial build. Adding a feature is not just "tell the AI what to do and hope for the best." It follows the same structured workflow: write a spec for the feature, plan it, task it, implement it. The spec for the new feature must stay consistent with the constitution and if it does not, Spec Kit will tell you.
+This is where **Spec Kit really shows its value** beyond the initial build. Adding a feature is not just "tell the AI what to do and hope for the best" (an old Vibe Coding mantra).
+
+No, no, no my friend, adding a feature follows the same structured workflow: write a spec for the feature, plan it, task it, implement it. The spec for the new feature must stay consistent with the constitution and if it does not, Spec Kit will tell you.
 
 
 The general process:
@@ -892,11 +1008,11 @@ Summary: Principle V declares "The application is stateless." Feature adds serve
 Recommendation: Run /speckit.constitution to amend Principle V: add an exception clause permitting ephemeral in-memory state when explicitly required by spec and documented in Complexity Tracking.
 ```
 
-This is an excellent catch. Stateless means the server holds no data between requests. Every request is handled independently with no memory of past ones. That is exactly what the constitution says.
+This is an **excellent catch**. Stateless means the server holds no data between requests. Every request is handled independently with no memory of past ones. That is exactly what the constitution says.
 
 But a `VecDeque` wrapped in `Arc<Mutex<...>>` and registered as Axum shared state is the opposite: the server does hold state that persists across requests.
 
-Spec Kit is right to block on this. There is a formal contradiction between the constitution and the feature. The correct response is to amend the constitution before implementing. For example, updating Principle V to say something like:
+Spec Kit is right to block on this. There is a **formal contradiction** between the constitution and the feature. The correct response is to amend the constitution before implementing. For example, updating Principle V to say something like:
 
 > The application minimizes server-side state. Ephemeral in-memory state is permitted when explicitly documented and justified. Persistent storage requires a separate architectural decision.
 
@@ -1002,9 +1118,9 @@ This distinction matters: Spec Kit separates spec validation (before code) from 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Checking and testing (local)
+## Test & Check Local
 
-See the previous "Checking and testing (local)" section
+See the previous "Test & Check Local" section
 
 
 
@@ -1027,7 +1143,7 @@ I stay on the branch and use Claude Code directly (not Spec Kit) to improve the 
 
 * `/clear` # check Sonnet is active
 * `/usage` # 71%
-* I use this prompt
+* At the end of the discussion with Claude in the browser, I paste this prompt
 
 ```
 Improve the visual appearance of the Calculation History table using
@@ -1108,8 +1224,8 @@ git pull origin main
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Deployment to Heroku
-- Commit & push on GitHub
-- Push on Heroku (`git push heroku main`)
+- First, commit & push on GitHub
+- Then push on Heroku (`git push heroku main`)
 
 
 
@@ -1133,7 +1249,7 @@ In other words, Spec Kit helps shift the focus from *writing code quickly* to *b
 
 Of course, like any methodology, it takes a little time to adopt and adapt to one’s own habits. But once integrated into the development workflow, Spec Kit can become a powerful ally for designing features, structuring projects, and making better use of AI-assisted development.
 
-And perhaps that is the most interesting takeaway: with tools like Spec Kit, the future of programming is not just about generating code faster — it is about **thinking more clearly about what we want to build, and letting the tools help us get there.**
+And perhaps that is the most interesting takeaway: the future of programming is not just about generating code faster, it is about **thinking more clearly about what we want to build, and letting the tools help us get there.**
 
 
 
