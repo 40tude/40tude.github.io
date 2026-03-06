@@ -42,10 +42,10 @@ Building and evolving a small Axum web app step-by-step using specs, tasks, and 
 * For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * Spec Kit is an AI assisted structuring workflow using 4 major steps : specification, plan, tasks et implementation.
 * Spec-Driven Development (SDD) is not a heavy formal process. It is a lightweight discipline: write the spec first, let the AI build from it, catch contradictions before they become bugs.
-* Since the cost of the line of code dropped to 0,
-* Since the specification is based on readable documents (markdown) you can modify
-* Spec Kit is a set of Claude Code slash commands that turn a plain-text specification into working, tested, deployed software. One command at a time.
-* The workflow naturally extends to feature additions. Adding a new feature follows the exact same path: specify, clarify, plan, implement. The spec repo becomes a living record of every architectural decision.
+* Since the cost of the line of code dropped to 0 it is easy to change the specs and experiment multiple alternatives.
+* Since the specification is based on readable documents (markdown) we can read, modify and keep track of everything on GitHub.
+* Spec Kit is a set of Claude Code slash commands that turn a plain-text specification into working, tested, deployed software.
+* The workflow naturally extends to feature additions. Adding a new feature follows the exact same path: specify, clarify, plan, implement. The spec repo becomes a living record of every architectural decision (the source of truth).
 * We are in control. Spec Kit drives the spec and the structure. Claude Code handles everything else. We can mix the two at any point.
 * We do not have to choose Spec Kit or Claude. Use Spec Kit when the work benefits from a written spec and use Claude Code directly when it does not.
 
@@ -113,6 +113,11 @@ Here is how I think about it. We went from punch cards to assembly, then to C, t
 a higher level of abstraction. In the span of a few months, we jumped a level again. Today, the programming language is English. Or French. Or whatever
 language you think in.
 
+<figure style="text-align: center;">
+<img src="./assets/img07.webp" alt="The 80-character line limit comes from punch cards with 80 columns." width="450" loading="lazy"/>
+<figcaption>The 80-character line limit comes from punch cards with 80 columns.</figcaption>
+</figure>
+
 At the same time, I trust an AI agent generating code today about as much as I trusted a C compiler from the 1970s: I check twice, I add guardrails, I do not
 take the output on faith. But in three years? We will trust the agent the same way we trust clang, gcc, or rustc today. That question will be settled.
 
@@ -139,7 +144,12 @@ Ok, but when **NOT** to use Spec Kit?
 This said, here we will use the Spec Kit workflow from start to finish. I will walk through every step and every command, and share every prompt I used along with how I
 designed each one.
 
-Ok, let's get into it.
+Ok, now that we have an overview of the workflow, let's go through each step and see how Spec Kit guides the development process.
+
+<figure style="text-align: center;">
+<img src="./assets/img06.webp" alt="The Spec Kit workflow." width="225" loading="lazy"/>
+<figcaption>The Spec Kit workflow.</figcaption>
+</figure>
 
 
 
@@ -237,6 +247,11 @@ claude
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## /speckit.constitution
+
+<figure style="text-align: center;">
+<img src="./assets/img08.webp" alt="constitution" width="450" loading="lazy"/>
+<figcaption>Constitution</figcaption>
+</figure>
 
 The **constitution** is the foundation of the entire workflow. It captures what the project is: its purpose, its constraints, its technology choices, and what it explicitly does not do. Every subsequent command (spec, plan, tasks, implementation) must stay consistent with it. If a feature contradicts the constitution, Spec Kit will flag the conflict rather than silently implementing something that breaks the design.
 
