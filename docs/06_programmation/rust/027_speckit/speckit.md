@@ -123,11 +123,20 @@ take the output on faith. But in three years? We will trust the agent the same w
 
 So the question is not whether to adapt: it is when. Staying anchored to the old workflow is a "Who Moved My Cheese" problem. The cheese moved.
 
-That brings up a real question of method. We are past the stage of using Claude or ChatGPT as a fancy chatbot. We are past using them as Intellisense on
-steroids. What we need is a workflow that takes us from a plain-English description to a working, tested, deployed application. There are smart people
-working on this problem. My current choice is Spec Kit (first released in [Sept 2025](https://developer.microsoft.com/blog/spec-driven-development-spec-kit)) but there plenty of alternatives ([Agent OS](https://github.com/buildermethods/agent-os), [Tessl](https://tessl.io/), [Kiro](https://kiro.dev/), [GSD (get shit done)](https://github.com/gsd-build/get-shit-done), [BMAD method](https://github.com/bmad-code-org/BMAD-METHOD), [OpenSpec](https://openspec.dev/)...)
+<figure style="text-align: center;">
+<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/>
+<figcaption>https://amzn.eu/d/0imuD1an</figcaption>
+</figure>
 
-OK, but what is Spec Kit? In 2 words, it is an AI assisted structuring workflow using 4 major steps : specification, plan, tasks et implementation.
+That brings up a real question of method. We are past the stage of using Claude or ChatGPT as a fancy chatbot. We are past using them as Intellisense on
+steroids. What we need is a **workflow** that takes us from a plain-English description to a working, tested, deployed application. There are smart people
+working on this problem. My current choice is Spec Kit (first released in [Sept 2025](https://developer.microsoft.com/blog/spec-driven-development-spec-kit)) but there are plenty of alternatives ([Agent OS](https://github.com/buildermethods/agent-os), [Tessl](https://tessl.io/), [Kiro](https://kiro.dev/), [GSD (get shit done)](https://github.com/gsd-build/get-shit-done), [BMAD method](https://github.com/bmad-code-org/BMAD-METHOD), [OpenSpec](https://openspec.dev/)...)
+
+OK, but what is Spec Kit? In 2 words, it is an AI assisted structuring workflow using 4 major steps:
+1. specification
+1. plan
+1. tasks
+1. implementation.
 
 In this post we will demonstrate how to use it and we will:
 - Build a small web application (a BMI calculator, though the domain is not the point)
@@ -138,18 +147,15 @@ In this post we will demonstrate how to use it and we will:
 
 Ok, but when **NOT** to use Spec Kit?
 * It requires a bit of discipline (but no more than writing code requires)
-* Can be overkill for small scripts or small feature (we will see examples later)
+* Can be overkill for very small app or small feature (we will see examples later)
 * It is heavily dependent on the quality of the model and for now Claude is on the top of my list.
 * Do not use it for Vibe Coding.
 * You need to know the programming language used and I remain convinced that developers and those who know how it works underneath will get better results.
 
 
 
-
 This said, here we will use the Spec Kit workflow from start to finish. I will walk through every step and every command, and share every prompt I used along with how I
-designed each one.
-
-Ok, now that we have an overview of the workflow, let's go through each step and see how Spec Kit guides the development process.
+designed each one. Ok, let's go through each step and see how Spec Kit guides the development process.
 
 <figure style="text-align: center;">
 <img src="./assets/img06.webp" alt="The Spec Kit workflow." width="225" loading="lazy"/>
@@ -204,7 +210,8 @@ I suppose the following software are installed:
 
 
 **Note**
-To update Specify CLI
+
+To update Specify CLI you simply reinstall it.
 
 ```powershell
 uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
@@ -262,13 +269,15 @@ claude
 
 The **constitution** is the foundation of the entire workflow. It captures what the project is: its purpose, its constraints, its technology choices, and what it explicitly does not do. Every subsequent command (spec, plan, tasks, implementation) must stay consistent with it. If a feature contradicts the constitution, Spec Kit will flag the conflict rather than silently implementing something that breaks the design.
 
-Think of it as a binding contract between you and the AI: written once, amended deliberately, never ignored.
+We can think of it as a binding contract between us and the AI: written once, amended deliberately (we will see why and how later), never ignored.
 
 I open a chat with Claude in my web browser, share the very first version of the `README.md` I wrote and ask:
 
 > I work with the speckit workflow. After reading the `README.md`, suggest a prompt to use with `/speckit.constitution`. If anything is missing from the `README.md`, let me know as well.
 
-Why do I use Claude (or any other AI chatbot/assistant/LLM interface) in my browser? This may change but today I like the idea of having a conversation on the side with "someone" else, work on the prompt/question then come back VSCode and the Claude Code prompt and paste my request. For me it is like using a scrap book a the side. I have no idea if it make sense, if it is a good practice and/or something I should recommend. It just work for me today.
+Why do I use Claude (or any other AI chatbot, assistant, or LLM interface) in my browser? This might change over time, but right now I like the idea of having a side conversation with “someone.” I use it to think through my prompt or question, refine it, and then return to VS Code and the Claude Code prompt to paste the final request.
+
+For me, it’s a bit like keeping a scrapbook on the side where I can experiment with ideas. I honestly don’t know whether it makes sense, whether it’s a good practice, or something I should recommend. It just happens to work well for me at the moment.
 
 We go through a short Q&A session. At the end I get the prompt below, which I paste into the Claude session in VSCode:
 
@@ -335,7 +344,7 @@ Create a BMI Calculator web application in Rust with the following requirements:
 **Note:**
 
 * Here is the very first version of the constitution. Spoiler alert... It will be amended later but this is an other story.
-* Here I want to make sure we realize "it is just a text file in plain English" that we can review, modify, adapt to our needs.
+* Here I want to make sure we realize "it is just a text file in plain English" that we can review, modify, adapt to our needs. In this case you can either open the file and make the modifications yourself or simply ask claude to do it for you.
 
 
 ```text
@@ -452,7 +461,7 @@ rationale, version bump per semver, and update of this file.
 
 `/speckit.specify` takes the constitution and a feature description and produces a formal, structured spec. The spec lives in the repo as a markdown file under the `specs/` folder. It includes acceptance criteria, module boundaries, expected test cases, and design decisions: everything a developer (or an AI agent) needs to implement without guessing.
 
-The constitution says what the app should do; the spec says how it should be structured to do it.
+The constitution says **WHAT** the app should do; the spec says **HOW** it should be structured to do it.
 
 I continue the chat in Claude web. I ask:
 
@@ -503,8 +512,8 @@ From these tests, derive the types, modules, and function signatures.
 
 
 * This creates branch `001-bmi-calculator`
-* I read `specs\001-bmi-calculator\spec.md`
-* I read `specs\001-bmi-calculator\checklists\requirements.md`
+* Once this is done, I read `specs\001-bmi-calculator\spec.md`
+* I also read `specs\001-bmi-calculator\checklists\requirements.md`
 * Commit msg: `After /speckit.specify`
 
 
@@ -559,7 +568,7 @@ Commit msg: `After /speckit.plan`
 <!-- ###################################################################### -->
 ## /speckit.tasks
 
-`/speckit.tasks` breaks the plan into a concrete, ordered list of tasks and writes them to specs/.../tasks.md. Each task is small, focused, and actionable. The kind of unit you can hand to an AI agent (or a junior developer) and get a working result back.
+`/speckit.tasks` breaks the plan into a concrete, ordered list of tasks and writes them to `specs/.../tasks.md`. Each task is small, focused, and actionable. The kind of unit you can hand to an AI agent (or a junior developer) and get a working result back.
 
 This step is worth switching to a lighter model for. The heavy reasoning happened in the earlier steps; task generation is mostly pattern-matching and decomposition.
 
@@ -602,8 +611,8 @@ speckit.analyze
 ## /speckit.checklist
 
 `/speckit.checklist` generates two checklists.
-1. The first (`requirements.md`) is a pre-implementation gate: does the spec contain enough detail to code from?
-1. The second (`pr-review.md`) is a post-implementation gate: does the code match the spec?
+1. The first, `requirements.md`, is a pre-implementation gate: does the spec contain enough detail to code from?
+1. The second, `pr-review.md`, is a post-implementation gate: does the code match the spec?
 
 The first must be complete before coding starts while the second is used during the PR review.
 
@@ -727,7 +736,7 @@ start http://localhost:3000
 
 Spec Kit got us to a working implementation. But Spec Kit is not the only tool available inside Claude Code. At this point **I stay on the branch** and use Claude Code directly to add two small things that I wanted but did not spec up:
 
-* Add `CTRL+C` support to gracefully ends the server (mostly useful locally)
+* Add `CTRL+C` support to gracefully ends the server (useful when running locally)
 * Add one `tracing::debug!` in `src/api.rs` just to see it in action when we run the server locally with `cargo run -- --log-level debug`
 
 This is the **key practical point**: Spec Kit and Claude Code complement each other.
@@ -779,9 +788,9 @@ git pull origin main
 {: .no_toc }
 
 - Run and test locally first
-- Heroku account
-- Heroku CLI installed
-- Read the `.slugignore` file (avoid useless files on Heroku)
+- Create an Heroku account
+- Heroku CLI is installed
+- Read the `.slugignore` file (avoid to send useless files on Heroku)
 - Check the line `strip = "symbols"` in `Cargo.toml` (reduce size by removing symbol table entries from the final executable)
 
 
@@ -799,7 +808,8 @@ heroku buildpacks:set emk/rust
 ```
 
 **Note:**
-Combine 1 & 2 with:
+
+You can combine step 1 & 2 with:
 
 ```powershell
 heroku create rust-bmi-sdd --buildpack emk/rust
@@ -843,6 +853,7 @@ heroku run bash
 
 
 **Note:**
+
 The typical release cycle from here:
 - Add features with Spec Kit, modify the app with Claude Code, test locally
 - Commit and push to GitHub
@@ -863,7 +874,7 @@ The first implementation is live. Now I want to add a history panel that shows t
 
 This is where **Spec Kit really shows its value** beyond the initial build. Adding a feature is not just "tell the AI what to do and hope for the best" (an old Vibe Coding mantra).
 
-No, no, no my friend, adding a feature follows the same structured workflow: write a spec for the feature, plan it, task it, implement it. The spec for the new feature must stay consistent with the constitution and if it does not, Spec Kit will tell you.
+No, no, no my friend. Instead, adding a feature follows the same structured workflow: write a spec for the feature, plan it, task it, implement it. The spec for the new feature must stay consistent with the constitution and if it does not, Spec Kit will tell us.
 
 
 The general process:
@@ -997,7 +1008,7 @@ in-memory VecDeque, shared across all users.
 * `/clear` # check Sonnet is active
 * `/speckit.analyze`
 
-This is where **things get interesting**. Spec Kit surfaces a critical finding:
+This is where **things get interesting**. Spec Kit surfaces a **critical** finding:
 
 ```
 ID: C1
@@ -1138,12 +1149,12 @@ See the previous "Test & Check Local" section
 <!-- <span>Optional comment</span> -->
 </div>
 
-I stay on the branch and use Claude Code directly (not Spec Kit) to improve the visual appearance of the history table. This is exactly the kind of small, focused work where going through a full Spec Kit workflow would be overkill.
+**I stay on the branch** and use Claude Code directly (not Spec Kit) to improve the visual appearance of the history table. This is exactly the kind of small, focused work where going through a full Spec Kit workflow would be overkill.
 
 
 * `/clear` # check Sonnet is active
 * `/usage` # 71%
-* At the end of the discussion with Claude in the browser, I paste this prompt
+* At the end of the discussion with Claude in the browser, I paste this prompt in my Claude Code session in VScode:
 
 ```
 Improve the visual appearance of the Calculation History table using
@@ -1234,7 +1245,7 @@ git pull origin main
 <!-- ###################################################################### -->
 ## Conclusion
 
-Spec Kit introduces a different way of thinking about software development. Instead of jumping directly into code, the process begins with a clear description of *what* we want to build and *why*. From there, a structured workflow (constitution, specification, planning, task breakdown, and implementation) progressively transforms that intent into working software.
+Spec Kit introduces a different way of thinking about software development. Instead of jumping directly into code, the process begins with a clear description of **what** we want to build and **why**. From there, a structured workflow (constitution, specification, planning, task breakdown, and implementation) progressively transforms that intent into working software.
 
 Throughout this article, we have seen how this approach changes the interaction with AI coding assistants. Rather than relying on one-shot prompts, Spec Kit encourages a step-by-step dialogue where requirements are clarified, the architecture is defined, and implementation tasks are generated before writing the final code. This staged process helps reduce ambiguity, improve consistency, and keep the project aligned with its original goals.
 
@@ -1247,7 +1258,7 @@ Using Spec Kit and storing every issue on GitHub also brings several practical a
 
 In other words, Spec Kit helps shift the focus from *writing code quickly* to *building the right thing in a structured way*. By combining clear specifications with modern AI assistants, it offers a workflow that is both disciplined and productive.
 
-Of course, like any methodology, it takes a little time to adopt and adapt to one’s own habits. But once integrated into the development workflow, Spec Kit can become a powerful ally for designing features, structuring projects, and making better use of AI-assisted development.
+Of course, like any methodology, it takes a some time to adopt and adapt to one’s own habits. But once integrated into the development workflow, Spec Kit can become a powerful ally for designing features, structuring projects, and making better use of AI-assisted development.
 
 And perhaps that is the most interesting takeaway: the future of programming is not just about generating code faster, it is about **thinking more clearly about what we want to build, and letting the tools help us get there.**
 
