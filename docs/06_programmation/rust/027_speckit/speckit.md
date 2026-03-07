@@ -125,7 +125,7 @@ So the question is not whether to adapt: it is when. Staying anchored to the old
 
 <figure style="text-align: center;">
 <img src="./assets/img09.webp" alt="" width="225" loading="lazy"/>
-<figcaption>https://amzn.eu/d/0imuD1an</figcaption>
+<figcaption><a href="https://amzn.eu/d/0imuD1an">The book on Amazon</a></figcaption>
 </figure>
 
 That brings up a real question of method. We are past the stage of using Claude or ChatGPT as a fancy chatbot. We are past using them as Intellisense on
