@@ -2,12 +2,12 @@
 published: true
 lang: en-US
 layout: default
-title: "UV Python Package Manager: The Essentials" 
+title: "UV Python Package Manager: The Essentials"
 description: Fast Python package and project manager.
 parent: Python
 #math: mathjax
 date               : 2025-10-29 17:00:00
-last_modified_date : 2025-10-29 17:00:00
+last_modified_date : 2026-03-07 18:00:00
 ---
 
 <div align="center">
@@ -20,7 +20,7 @@ last_modified_date : 2025-10-29 17:00:00
 
 # UV Python Package Manager: The Essentials
 
-I just get rid of `Conda` and switch to `uv`. Conda was great at the beginning because it's an all in one solution. I recommend it to beginners who just want to quickly write `data = pd.read_csv...`. You know the song. However conda is huge, heavy and slow. In addition while learning Rust I discovered the Cargo way of doing and I like it a lot. For example I was never using Anaconda application (not even sure of its name) but only the CLI. I should have use mini conda more often. I don't know. 
+I just get rid of `Conda` and switch to `uv`. Conda was great at the beginning because it's an all in one solution. I recommend it to beginners who just want to quickly write `data = pd.read_csv...`. You know the song. However conda is huge, heavy and slow. In addition while learning Rust I discovered the Cargo way of doing and I like it a lot. For example I was never using Anaconda application (not even sure of its name) but only the CLI. I should have use mini conda more often. I don't know.
 
 You can read these posts here:
 * [Install Under Linux]({%link docs/05_linux/012_install_config_mint/install_config.md%}#install-anaconda)
@@ -50,9 +50,9 @@ python main.py
 
 
 <!-- ```powershell
-uv venv my_project # Create  
+uv venv my_project # Create
 ./my_project/Scripts/Activate.ps1 # Activate
-uv pip install pandas numpy scikit-learn matplotlib # Install 
+uv pip install pandas numpy scikit-learn matplotlib # Install
 deactivate # Deactivate
 ``` -->
 
@@ -69,8 +69,14 @@ winget install astral-sh.uv
 uv --version
 ```
 
+## Update
 
-<!-- 
+```powershell
+winget upgrade astral-sh.uv
+uv --version
+```
+
+<!--
 
 ## Create a new virtual environment
 
@@ -141,7 +147,7 @@ Add this function to your `Documents/PowerShell/Microsoft.PowerShell_profile.ps1
 # Function to activate a venv
 function Set-Env {
     param([string]$EnvName = $null)
-    
+
     # If argument is "." or no argument provided
     if (($EnvName -eq ".") -or (-not $EnvName)) {
         # Case 1: uv project with .venv
@@ -163,7 +169,7 @@ function Set-Env {
         # Otherwise search for "venv" by default
         $EnvName = "venv"
     }
-    
+
     # Search for named environment in current directory
     if (Test-Path ".\$EnvName\Scripts\Activate.ps1") {
         & ".\$EnvName\Scripts\Activate.ps1"
@@ -353,7 +359,7 @@ Before `uv`, we had:
 
 #### The difference
 
-Unlike Rust, where Cargo is the official tool, `uv` is a third-party tool that aims to modernize the Python ecosystem. 
+Unlike Rust, where Cargo is the official tool, `uv` is a third-party tool that aims to modernize the Python ecosystem.
 
 
 
@@ -420,7 +426,7 @@ uv pip install -r requirements.txt # or uv pip install numpy
 
 
 
-<!-- 
+<!--
 
 ## Check list to take off
 
