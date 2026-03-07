@@ -124,7 +124,7 @@ take the output on faith. But in three years? We will trust the agent the same w
 So the question is not whether to adapt: it is when. Staying anchored to the old workflow is a "Who Moved My Cheese" problem. The cheese moved.
 
 <figure style="text-align: center;">
-<img src="./assets/img09.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img09.webp" alt="" width="225" loading="lazy"/>
 <figcaption>https://amzn.eu/d/0imuD1an</figcaption>
 </figure>
 
