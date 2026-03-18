@@ -598,8 +598,7 @@ This is a quality gate. It is the step where Spec Kit earns its keep.
 
 ```powershell
 clear             # check Sonnet is active
-speckit.analyze
-
+/speckit.analyze
 ```
 * Commit msg: `After /speckit.analyze`
 
