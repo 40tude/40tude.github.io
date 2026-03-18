@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2026-02-16 22:30:00
+last_modified_date : 2026-03-09 22:30:00
 ---
 
 
@@ -612,7 +612,7 @@ Use when working on:
 - Performance optimization using mimalloc allocator
 - User-facing features and initialization logic
 
-#### 3. `03_documentation_guidelines.md`
+#### 3. `03_documentation.md`
 Use when:
 - Writing public API documentation and doc comments
 - Creating canonical documentation sections (Examples, Errors, Panics, Safety)
