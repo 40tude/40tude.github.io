@@ -15,8 +15,8 @@ last_modified_date: 2026-03-20 14:00:00
 ---
 
 # About derivatives, differential and the principle of least action in physics
-<!-- # Why derivatives and differential equations in physics -->
 {: .no_toc }
+<!-- # Why derivatives and differential equations in physics -->
 
 DESCRIPTION
 {: .lead }
@@ -53,16 +53,6 @@ DESCRIPTION
 <figcaption>Among infinitely many possible trajectories, nature selects the one that extremizes the action.</figcaption>
 </figure>
 
-Space… the final frontier.
-
-These are the explorations of a curious mind, seeking to understand the deep structure of reality.
-
-Its ongoing mission: to uncover why the laws of physics are written in the language of change... to reveal how motion itself is governed by variation...and to follow the hidden principle that guides every path through the universe.
-
-To venture beyond equations as mere symbols...to see in them the traces of a deeper order...where among all possibilities, nature selects the one that matters most.
-
-
-
 
 
 
@@ -87,7 +77,13 @@ To venture beyond equations as mere symbols...to see in them the traces of a dee
 
 
 
-
+> *Space: the final frontier.*
+>
+> *These are the voyages of a curious mind, on a lifelong quest to decode the deep architecture of reality.*
+>
+> *Its ongoing mission: to explore why the laws of physics are written in the language of change... to uncover how motion itself is governed by the beauty of variation... and to trace the hidden principle that dictates every path through the cosmos.*
+>
+> *To look beyond equations as mere symbols—to see in them the signature of a deeper order... where, among all possible worlds, nature chooses the one that speaks of balance.*
 
 
 
@@ -117,7 +113,7 @@ Great question. The short answer is: derivatives appear in physics because natur
 
 
 <!-- ###################################################################### -->
-### 1. Physics tries to describe **how things change**
+### 1. Physics tries to describe how things change
 {: .no_toc }
 
 Most physical phenomena involve **change**:
@@ -183,21 +179,15 @@ Second derivatives appear when **acceleration matters**.
 
 Example:
 
-$$
-F = ma
-$$
+$$F = ma$$
 
 But acceleration is
 
-$$
-a = \frac{d^2x}{dt^2}
-$$
+$$a = \frac{d^2x}{dt^2}$$
 
 So Newton's law becomes
 
-$$
-F = m \frac{d^2x}{dt^2}
-$$
+$$F = m \frac{d^2x}{dt^2}$$
 
 Why second order?
 
@@ -238,9 +228,7 @@ Galileo had already measured that:
 
 This implies:
 
-$$
-a = \text{constant when force is constant}
-$$
+$$a = \text{constant when force is constant}$$
 
 Then experiments showed:
 
@@ -249,15 +237,11 @@ Then experiments showed:
 
 So empirically:
 
-$$
-a \propto \frac{F}{m}
-$$
+$$a \propto \frac{F}{m}$$
 
 Which gives
 
-$$
-F = ma
-$$
+$$F = ma$$
 
 So it is really an **empirical law extracted from experiments**.
 
