@@ -15,6 +15,14 @@ date:               2026-03-20 08:00:00
 last_modified_date: 2026-03-20 14:00:00
 ---
 
+
+<!--
+* Comment présenter à un élève de terminale qui sait à peu près ce qu'est une dérivée et une intégrale?
+* Dans "What is a variational principle (in general)?". Revenir sur ces histoire de fonctionnelle (fonction de fonction). Pourquoi on en a besoin.
+* Dans la Conclusion. Parler du chemin optimum qu'emprunte une IA/Agent pour résoudre un problème
+-->
+
+
 # From Derivatives to Action: How Physics Describes Change
 {: .no_toc }
 <!-- # Why derivatives and differential equations in physics -->
@@ -104,7 +112,6 @@ It’s on the way, just taking a little longer than expected.
 
 
 
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -117,7 +124,7 @@ Great question Marty! The short answer is: derivatives appear in physics because
 
 
 <!-- ###################################################################### -->
-### 1. Physics tries to describe how things change
+### 1. In Physics wr try to describe how things change
 {: .no_toc }
 
 Most physical phenomena involve change:
@@ -129,13 +136,15 @@ Most physical phenomena involve change:
 
 Mathematically, the cleanest way to describe change is with a derivative.
 
-For a quantity $$x(t)$$:
+For a quantity $$x(t)$$, which express where you are in function of time:
 
 * Velocity: $$v = \frac{dx}{dt}$$
-
 * Acceleration: $$a = \frac{d^2x}{dt^2}$$
 
-So the moment we want to describe motion**, derivatives appear naturally.
+So the moment we want to describe motion, derivatives appear naturally.
+
+#### **Side Note**
+J'espère que c'est clair et que tu visualise bien ce qui se passe car c'est important pour la suite. Imagine que tu marches le long d'une route qui est droite et plate. Tu fais un pas de 1m toute les secondes (tu es plus grand que moi). Donc, si je prends une photo toutes les secondes je vais te voir progresser vers la droite par exemple. Par rapport au point de départ tu vas passer successivement par les "graduations" 1m, 2m... Dans ce contexte, c'est ça $$x(t)$$. C'est clair pour toi? Ok... Maintenant, quelle est ta vitesse? Si tu ne sais pas, rappelle toi que sur les autoroutes on roule à 130 km/h. Donc une vitesse c'est une distance divisée par un temps, c'est la variation de ton abscisse $$x$$ pendant un intervalle de temps, c'est le rapport $$\frac{dx}{dt}$$ (ici $$dx$$ et $$dt$$ veulent variation de $$x$$ et de $$t$$ respectivement). Finalement, l'accélération c'est la variation de la vitesse pendant un intervalle de temps. C'est ça qui te plaque dans ton siège de voiture au démarrage. Mais bon, la vitesse c'est déjà la variation de $$x$$ pendant ce même intervalle de temps. Du coup l'accélération c'est le rapport $$\frac{d^2x}{dt^2}$$.
 
 
 
@@ -150,21 +159,19 @@ This is not arbitrary. It comes from how many levels of change influence the sys
 #### **First derivative → flow / transport**
 {: .no_toc }
 
-If a phenomenon depends only on the rate of change**, we get first-order equations.
+If a phenomenon depends only on the rate of change, we get first-order equations.
 
 Example: radioactive decay
 
+Experimentation: We measure that the speed at which nuclei disappear is proportional to how many remain.
+
+Interpretation: Speed of means $$\frac{dN}{dt}$$, is proportional means $$\lambda$$, how many reamain means $$N$$, disappear means $$-$$. Tadaaa!
+
 $$\frac{dN}{dt} = -\lambda N$$
 
-Interpretation:
+This law is local and simple. More atoms → more decay events per second. The formula leads to the exponential decay.
 
-> The speed at which nuclei disappear is proportional to how many remain.
 
-This law is local and simple:
-
-* more atoms → more decay events per second
-
-This leads to exponential decay.
 
 
 
@@ -194,7 +201,7 @@ To know the future motion, we must know:
 * position
 * velocity
 
-Two initial conditions → second order equation.
+Two initial conditions means second order equation.
 
 
 
@@ -222,7 +229,9 @@ Galileo had already measured that:
 * objects fall with constant acceleration**
 * motion without forces → constant velocity
 
-This implies:
+Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle, until then, people assumed the speed of falling bodies was proportional to their weight.
+
+Galileo's experiments implies:
 
 $$a = \text{constant when force is constant}$$
 
@@ -244,7 +253,7 @@ So it is really an empirical law extracted from experiments.
 
 
 <!-- ###################################################################### -->
-### 4. Why physics prefers local laws**
+### 4. Why physics prefers local laws
 {: .no_toc }
 
 Most physical laws describe local behavior:
@@ -267,7 +276,7 @@ The heat flowing through a point depends on the temperature gradient:
 
 $$\text{Heat flow} \propto - \nabla T$$
 
-That gradient is a derivative.
+That gradient ($$\nabla$$) sign in called Nabla. Think about you on your snowboard when you are looking, in 3D, for the greatest slope. You are looking for the greatest gradient. When we deal with 1D problems ($$f(x)=x^2$$) the gradient is our good old and beloved derivative.
 
 
 
@@ -282,12 +291,12 @@ The heat equation is
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
-This looks mysterious but comes from two simple physical statements.
+This looks complicated but comes from two simple physical statements.
 
 #### **1 Heat flows from hot to cold**
 {: .no_toc }
 
-(Fourier law)
+This is the Fourier law:
 
 $$q = -k \nabla T$$
 
@@ -446,7 +455,7 @@ They don't tell us the whole trajectory.
 
 They only say:
 
-> If the system is like this right now**, then it will start changing like that.
+> If the system is like this right now, then it will start changing like that.
 
 That is exactly what a differential equation describes.
 
@@ -619,8 +628,8 @@ $$
 
 Interpretation:
 
-* if a point is hotter than its neighbors**, heat flows away
-* if a point is colder than neighbors**, heat flows in
+* if a point is hotter than its neighbors, heat flows away
+* if a point is colder than neighbors, heat flows in
 
 So temperature differences smooth out over time.
 
@@ -647,11 +656,11 @@ Example: vibrating string.
 
 Here the interpretation is different.
 
-If a point on the string is curved**, tension pulls it back toward equilibrium.
+If a point on the string is curved, tension pulls it back toward equilibrium.
 
 More curvature → stronger restoring force.
 
-That force produces acceleration**, which is why the time derivative is second order.
+That force produces acceleration, which is why the time derivative is second order.
 
 So:
 
@@ -746,7 +755,7 @@ There are several deep reasons.
 
 Atoms only interact with nearby atoms.
 
-So the state at a point depends on neighbors**, not the whole universe.
+So the state at a point depends on neighbors, not the whole universe.
 
 The Laplacian is precisely the operator that compares a point to its neighbors.
 
@@ -827,7 +836,7 @@ Physicists usually assume:
 3. smoothness
 4. conservation laws
 
-When we write the simplest equation compatible with these principles**, we often end up with:
+When we write the simplest equation compatible with these principles, we often end up with:
 
 * first or second derivatives
 * Laplacians
@@ -917,7 +926,7 @@ Let’s unpack that carefully.
 
 A variational principle is any statement of the form:
 
-> “The physical solution is the one that makes a certain quantity stationary (usually an extremum this means a minimum or a maximum).”
+> "The physical solution is the one that makes a certain quantity stationary (usually an extremum this means a minimum or a maximum)."
 
 Mathematically:
 
@@ -981,7 +990,7 @@ Historically, it was developed by people like Pierre-Louis Maupertuis and later 
 ### 3. Other variational principles in physics
 {: .no_toc }
 
-There are many important examples that are not phrased as “action minimization”**, even though some can be reformulated that way.
+There are many important examples that are not phrased as "action minimization", even though some can be reformulated that way.
 
 
 
@@ -1004,7 +1013,7 @@ This explains:
 * refraction
 * reflection
 
-This is actually an action principle for light**, but historically it came first and looks different.
+This is actually an action principle for light, but historically it came first and looks different.
 
 
 
@@ -1027,7 +1036,7 @@ Examples:
 * elastic structures
 * equilibrium configurations
 
-No time involved — this is not an “action over time”, just a spatial variational principle.
+No time involved — this is not an "action over time", just a spatial variational principle.
 
 
 #### **3. Principle of virtual work**
@@ -1056,7 +1065,7 @@ In thermodynamics and statistical physics:
 * minimum entropy production (near equilibrium)
 * Onsager’s principle
 
-These are variational principles involving irreversible processes**, not classical action.
+These are variational principles involving irreversible processes, not classical action.
 
 
 
@@ -1072,7 +1081,7 @@ $$
 
 Minimizing this gives approximations of energy levels.
 
-This is a variational method**, not a fundamental law, but it uses the same idea.
+This is a variational method, not a fundamental law, but it uses the same idea.
 
 
 
@@ -1162,11 +1171,11 @@ One way to think about it:
 
 Instead of describing physics as:
 
-> “local cause → local effect”
+> "local cause → local effect"
 
 We describe it as:
 
-> “global constraint on all possible histories”
+> "global constraint on all possible histories"
 
 Then the real trajectory is the one that satisfies that constraint.
 
@@ -1185,7 +1194,7 @@ Yet they give the same results.
 ### 7. Subtle but important point
 {: .no_toc }
 
-“Least action” is slightly misleading.
+"Least action" is slightly misleading.
 
 In reality:
 
@@ -1260,7 +1269,7 @@ Final takeaway
 
 This is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle. I'll go carefully and start from the basics so every step makes sense.
 
-The key idea comes from the Pierre-Louis Maupertuis principle**, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange.
+The key idea comes from the Pierre-Louis Maupertuis principle, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange.
 
 The principle says:
 
@@ -1733,9 +1742,9 @@ Can we revisit the origins of the definition of what is known as the action in p
 
 En mécanique classique, on veut comprendre comment un objet bouge d’un point A à un point B. Au lieu de regarder seulement sa position à un instant donné, on peut regarder tout le chemin qu’il prend.
 
-C’est là qu’intervient l’**action**, notée $$S$$. C’est une sorte de "**score**" qu’on calcule pour chaque chemin possible. Plus concrètement, pour chaque trajectoire que l’objet pourrait suivre entre $$t_1$$ et $$t_2$$, on associe un nombre $$S$$ qui résume "combien d’énergie il dépense pour se déplacer".
+C’est là qu’intervient l’**action, notée $$S$$. C’est une sorte de "**score**" qu’on calcule pour chaque chemin possible. Plus concrètement, pour chaque trajectoire que l’objet pourrait suivre entre $$t_1$$ et $$t_2$$, on associe un nombre $$S$$ qui résume "combien d’énergie il dépense pour se déplacer".
 
-Pour calculer ce score, on utilise le Lagrangien**, noté $$L$$ :
+Pour calculer ce score, on utilise le Lagrangien, noté $$L$$ :
 
 $$
 L = T - V
@@ -1763,7 +1772,7 @@ $$
 S[q(t)] = \int_{t_1}^{t_2} L(q, \dot{q}, t)  dt
 $$
 
-where $$L = T - V$$ is the Lagrangian**, $$T$$ is kinetic energy, $$V$$ is potential energy, and $$q(t)$$ describes the configuration of the system over time.
+where $$L = T - V$$ is the Lagrangian, $$T$$ is kinetic energy, $$V$$ is potential energy, and $$q(t)$$ describes the configuration of the system over time.
 
 The principle of least action (more accurately, principle of stationary action) states that the physical path a system follows makes $$S$$ stationary (usually a minimum) compared to nearby paths:
 
@@ -1771,7 +1780,7 @@ $$
 \delta S = 0
 $$
 
-This yields Euler–Lagrange equations**, which are exactly Newton’s laws in disguise.
+This yields Euler–Lagrange equations, which are exactly Newton’s laws in disguise.
 
 
 
@@ -1785,7 +1794,7 @@ Historically, this comes from Hamilton’s reformulation of mechanics:
 * Potential energy $$V$$ represents "stored" energy due to forces.
 * The Lagrangian $$L = T - V$$ turns out to encode the dynamics correctly: when we apply $$\delta S = 0$$, the resulting equations of motion reproduce Newton’s second law $$F = ma$$.
 
-If we tried $$T + V$$, the Euler–Lagrange equations would lead to completely wrong dynamics. Mathematically, $$T - V$$ naturally appears when we try to generalize d’Alembert’s principle**, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
+If we tried $$T + V$$, the Euler–Lagrange equations would lead to completely wrong dynamics. Mathematically, $$T - V$$ naturally appears when we try to generalize d’Alembert’s principle, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
 
 So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a variational principle.
 
@@ -1795,8 +1804,8 @@ So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a va
 ### 3. Why minimize (or make stationary) instead of maximize?
 {: .no_toc }
 
-* In many simple cases, the action is actually minimized**, like in free particle motion or harmonic oscillators.
-* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes**, we don’t always strictly minimize in a global sense.
+* In many simple cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
+* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
 
 So the focus is on "stationary" not strictly "minimum".
 
@@ -1827,7 +1836,7 @@ So the focus is on "stationary" not strictly "minimum".
 * Maupertuis (1744) first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
 * Euler and Lagrange formalized it, showing $$S = \int L \, dt$$ gives Newton’s equations.
 * Hamilton gave the modern formulation with $$L = T - V$$ in 1834.
-* So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express mechanics in terms of variational principles**, which is elegant and generalizable (to fields, quantum mechanics, relativity…).
+* So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express mechanics in terms of variational principles, which is elegant and generalizable (to fields, quantum mechanics, relativity…).
 
 
 
@@ -1838,7 +1847,7 @@ So the focus is on "stationary" not strictly "minimum".
 1. Action $$S = \int (T - V) \, dt$$ because this combination reproduces Newtonian dynamics via a variational principle.
 2. We look for stationary points of $$S$$, not strictly minima, because the actual physical path makes $$\delta S = 0$$.
 3. Other choices like $$T + V$$ or $$(T - V)^2$$ fail to give the correct equations of motion.
-4. Historically, it comes from the effort to express mechanics as a global extremum principle**, starting with Maupertuis and culminating in Hamilton’s formulation.
+4. Historically, it comes from the effort to express mechanics as a global extremum principle, starting with Maupertuis and culminating in Hamilton’s formulation.
 
 
 
@@ -1918,13 +1927,13 @@ $$
 {: .no_toc }
 
 
-Imaginons que la balle parte du point $$h_1$$ à $$t_1$$ et arrive à $$h_2$$ à $$t_2$$. On peut imaginer plusieurs chemins possibles**, par exemple :
+Imaginons que la balle parte du point $$h_1$$ à $$t_1$$ et arrive à $$h_2$$ à $$t_2$$. On peut imaginer plusieurs chemins possibles, par exemple :
 
 1. Une chute droite et régulière (vitesse constante de plus en plus grande).
 2. Un chemin "zigzag" (imaginons que la balle saute en l’air avant de tomber).
 3. Un chemin très bizarre qui monte d’abord puis descend.
 
-Pour chaque chemin**, on calcule l’action :
+Pour chaque chemin, on calcule l’action :
 
 $$
 S = \int_{t_1}^{t_2} \left( \frac{1}{2} m v(t)^2 - m g h(t) \right) dt
@@ -1941,7 +1950,7 @@ Chaque chemin donne un nombre différent.
 Le principe de l’action nous dit que le chemin réel suivi par la balle est celui qui rend $$S$$ stationnaire (souvent minimum).
 
 * Si tu imagines toutes les trajectoires possibles, la vraie trajectoire correspond à celle qui équilibre le plus harmonieusement énergie cinétique et énergie potentielle sur le temps.
-* Dans le cas de la chute libre, ça correspond simplement à une chute rectiligne uniformément accélérée**, exactement ce que Newton nous dit avec (F = ma).
+* Dans le cas de la chute libre, ça correspond simplement à une chute rectiligne uniformément accélérée, exactement ce que Newton nous dit avec (F = ma).
 
 
 
@@ -2230,7 +2239,7 @@ C’est exactement la chute rectiligne uniformément accélérée que vous conna
 <!-- ###################################################################### -->
 ## How Maxwell's equations can be derived from a variational principle?
 
-The amazing thing is that the four Maxwell equations can be obtained from one single variational principle**, exactly like $$F=ma$$. The difference is that instead of a particle trajectory $$x(t)$$, we now vary fields in spacetime.
+The amazing thing is that the four Maxwell equations can be obtained from one single variational principle, exactly like $$F=ma$$. The difference is that instead of a particle trajectory $$x(t)$$, we now vary fields in spacetime.
 
 The equations describe the electromagnetic field discovered by James Clerk Maxwell.
 
@@ -2598,7 +2607,7 @@ $$
 * $$S$$ = action pour ce chemin
 * $$\hbar$$ = constante de Planck réduite
 
-Le chemin classique émerge comme celui dont les contributions des chemins voisins s’ajoutent de façon constructive**, alors que les chemins "bizarres" s’annulent par interférences.
+Le chemin classique émerge comme celui dont les contributions des chemins voisins s’ajoutent de façon constructive, alors que les chemins "bizarres" s’annulent par interférences.
 
 
 
@@ -2607,7 +2616,7 @@ Le chemin classique émerge comme celui dont les contributions des chemins voisi
 {: .no_toc }
 
 * En classique, $$\delta S = 0$$ sélectionne le chemin réel.
-* En quantique, tous les chemins existent**, mais le chemin classique correspond au maximum d’interférences constructives**, ce qui explique pourquoi les lois classiques émergent à grande échelle.
+* En quantique, tous les chemins existent, mais le chemin classique correspond au maximum d’interférences constructives, ce qui explique pourquoi les lois classiques émergent à grande échelle.
 
 
 
@@ -2660,11 +2669,22 @@ Coming soon, just a bit delayed.
 
 
 
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
+
+### US
 * ...
+
+### FR
+* [Chainette]({%link docs/03_maths/000_chainette/000_chainette.md%})
+* [Equation Différentielle du 1er Ordre]({%link docs/03_maths/003_equations_differentielles_premier_ordre/003_equations_differentielles_premier_ordre.md%})
+* [Equation de Bernouilli]({%link docs/03_maths/004_equation_de_bernoulli/004_equation_de_bernoulli.md%})
+* [Dérivées et Différentielles]({%link docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.md%})
+* [Equation d'onde]({%link docs/03_maths/006_equation_onde_1d/equation_onde_1d.md%})
+* [Forme intégrale et différentielle de la loi de Gauss]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
+* [Distance la plus courte entre 2 points]({%link docs/03_maths/014_distance_entre_2_points/distance_la_plus_courte_entre_2_points.md%})
+
 
 
