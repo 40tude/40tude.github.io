@@ -3,8 +3,8 @@ published: true
 author: 40tude
 lang: en-US
 layout: default
-title: "About derivatives, differentials and the principle of least action in physics"
-description: "DESCRIPTION"
+title: "From Derivatives to Action: How Physics Describes Change"
+description: "Building intuition from local laws, differential equations, and variational principles"
 image: docs/03_maths/020_equa_diff_in_physics/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -15,11 +15,11 @@ date:               2026-03-20 08:00:00
 last_modified_date: 2026-03-20 14:00:00
 ---
 
-# About derivatives, differential and the principle of least action in physics
+# From Derivatives to Action: How Physics Describes Change
 {: .no_toc }
 <!-- # Why derivatives and differential equations in physics -->
 
-DESCRIPTION
+Building intuition from local laws, differential equations, and variational principles
 {: .lead }
 
 
