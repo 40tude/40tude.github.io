@@ -84,9 +84,12 @@ Building intuition from local laws, differential equations, and variational prin
 >
 > *Its ongoing mission: to explore why the laws of physics are written in the language of change... to uncover how motion itself is governed by the beauty of variation... and to trace the hidden principle that dictates every path through the cosmos.*
 >
-> *To look beyond equations as mere symbols—to see in them the signature of a deeper order... where, among all possible worlds, nature chooses the one that speaks of balance.*
+> *To look beyond equations as mere symbols, to see in them the signature of a deeper order... where, among all possible worlds, nature chooses the one that speaks of balance.*
 
-
+<figure style="text-align: right;">
+<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
+<figcaption>...</figcaption>
+</figure>
 
 
 <!-- ###################################################################### -->
@@ -1715,7 +1718,7 @@ So "action" is really:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Why $$L = T - V$$
+## Why $$L = T - V$$?
 
 It has been stated that the Lagrangian $$L = T - V$$, where $$T$$ is kinetic energy and $$V$$ is potential energy. Why? Why do we minimize the difference rather than the sum? Why do we minimize the difference between the values rather than the difference between their squares?
 
@@ -1978,7 +1981,7 @@ Le principe de l’action nous dit que le chemin réel suivi par la balle est ce
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Expliquons pourquoi une balle tombe verticalement en accelerant?
+## We can explain why a ball falls vertically while accelerating?
 
 
 Parfait, on va faire le raisonnement pas à pas pour une balle qui tombe verticalement sous la gravité, en utilisant le principe de l’action**. On va rester simple et clair.
