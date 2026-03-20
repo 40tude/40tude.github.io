@@ -39,8 +39,8 @@ DESCRIPTION
 ## TL;DR
 {: .no_toc }
 
-* Action $S = \int_{t_1}^{t_2} L(x,\dot x,t),dt$
-* Lagrangian $L$
+* Action $$S = \int_{t_1}^{t_2} L(x,\dot x,t),dt$$
+* Lagrangian $$L$$
 
 
 
@@ -125,17 +125,11 @@ Most physical phenomena involve **change**:
 
 Mathematically, the cleanest way to describe **change** is with a derivative.
 
-For a quantity (x(t)):
+For a quantity $$x(t)$$:
 
-* Velocity:
-  $$
-  v = \frac{dx}{dt}
-  $$
+* Velocity: $$v = \frac{dx}{dt}$$
 
-* Acceleration:
-  $$
-  a = \frac{d^2x}{dt^2}
-  $$
+* Acceleration: $$a = \frac{d^2x}{dt^2}$$
 
 So the moment you want to **describe motion**, derivatives appear naturally.
 
@@ -269,9 +263,7 @@ Temperature $T(x,t)$
 
 The heat flowing through a point depends on the **temperature gradient**:
 
-$$
-\text{Heat flow} \propto - \nabla T
-$$
+$$\text{Heat flow} \propto - \nabla T$$
 
 That gradient is a derivative.
 
@@ -286,9 +278,7 @@ That gradient is a derivative.
 
 The heat equation is
 
-$$
-\frac{\partial T}{\partial t} = \kappa \nabla^2 T
-$$
+$$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
 This looks mysterious but comes from **two simple physical statements**.
 
@@ -297,9 +287,7 @@ This looks mysterious but comes from **two simple physical statements**.
 
 (Fourier law)
 
-$$
-q = -k \nabla T
-$$
+$$q = -k \nabla T$$
 
 Heat flux depends on **temperature gradient**.
 
@@ -312,15 +300,11 @@ Change of temperature = heat entering − heat leaving.
 
 Mathematically this gives
 
-$$
-\frac{\partial T}{\partial t} = - \nabla \cdot q
-$$
+$$\frac{\partial T}{\partial t} = - \nabla \cdot q$$
 
 Substitute (q):
 
-$$
-\frac{\partial T}{\partial t} = \kappa \nabla^2 T
-$$
+$$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
 So the second derivative appears because:
 
@@ -607,9 +591,9 @@ $$
 
 Examples:
 
-* temperature (T(x,t))
-* displacement of a string (y(x,t))
-* quantum wavefunction (\psi(x,t))
+* temperature $T(x,t)$
+* displacement of a string $y(x,t)$
+* quantum wavefunction $\psi(x,t)$
 
 In all three cases, the evolution of the system takes the form:
 v
