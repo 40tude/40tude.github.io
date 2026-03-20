@@ -143,7 +143,7 @@ So the moment we want to describe motion**, derivatives appear naturally.
 ### 2. Why equations are often first or second order
 {: .no_toc }
 
-This is not arbitrary. It comes from how many levels of change influence the system**.
+This is not arbitrary. It comes from how many levels of change influence the system.
 
 
 
@@ -171,7 +171,7 @@ This leads to exponential decay.
 #### **Second derivative → dynamics / inertia**
 {: .no_toc }
 
-Second derivatives appear when acceleration matters**.
+Second derivatives appear when acceleration matters.
 
 Example:
 
@@ -187,14 +187,14 @@ $$F = m \frac{d^2x}{dt^2}$$
 
 Why second order?
 
-Because inertia exists**. A body remembers its velocity.
+Because inertia exists. A body remembers its velocity.
 
 To know the future motion, we must know:
 
 * position
 * velocity
 
-Two initial conditions → second order equation**.
+Two initial conditions → second order equation.
 
 
 
@@ -209,7 +209,7 @@ Important point:
 
 **Newton did not guess the equation randomly.**
 
-It emerged from experiments + symmetry principles**.
+It emerged from experiments + symmetry principles.
 
 
 
@@ -239,7 +239,7 @@ Which gives
 
 $$F = ma$$
 
-So it is really an empirical law extracted from experiments**.
+So it is really an empirical law extracted from experiments.
 
 
 
@@ -257,7 +257,7 @@ Nature usually says something simpler:
 
 > "What happens here depends on what is happening just next to it."
 
-This locality leads directly to derivatives**.
+This locality leads directly to derivatives.
 
 Example:
 
@@ -282,7 +282,7 @@ The heat equation is
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
-This looks mysterious but comes from two simple physical statements**.
+This looks mysterious but comes from two simple physical statements.
 
 #### **1 Heat flows from hot to cold**
 {: .no_toc }
@@ -291,7 +291,7 @@ This looks mysterious but comes from two simple physical statements**.
 
 $$q = -k \nabla T$$
 
-Heat flux depends on temperature gradient**.
+Heat flux depends on temperature gradient.
 
 
 
@@ -313,7 +313,7 @@ So the second derivative appears because:
 * heat flow depends on gradient**
 * conservation introduces divergence**
 
-Gradient of gradient → Laplacian**.
+Gradient of gradient → Laplacian.
 
 
 
@@ -349,7 +349,7 @@ Future depends on current rate of change.
 
 Energy, momentum, charge, mass…
 
-These are expressed mathematically using divergences and derivatives**.
+These are expressed mathematically using divergences and derivatives.
 
 
 
@@ -430,23 +430,23 @@ We see derivatives everywhere because physics tries to answer:
 
 > How does the state of the system change locally**?
 
-Derivatives are simply the mathematical language of change**.
+Derivatives are simply the mathematical language of change.
 
 And differential equations express:
 
-> The rate of change of something depends on the current state of the system**.
+> The rate of change of something depends on the current state of the system.
 
 
 
 A good mental model is:
 
-Physics laws are like rules of evolution**.
+Physics laws are like rules of evolution.
 
 They don't tell us the whole trajectory.
 
 They only say:
 
-> If the system is like this right now**, then it will start changing like that**.
+> If the system is like this right now**, then it will start changing like that.
 
 That is exactly what a differential equation describes.
 
@@ -571,9 +571,9 @@ $$
 \nabla^2
 $$
 
-which is basically the second derivative in space**.
+which is basically the second derivative in space.
 
-Why the second derivative? Because it measures curvature**.
+Why the second derivative? Because it measures curvature.
 
 
 
@@ -596,9 +596,9 @@ Graphically:
 * (u'' > 0) → valley
 * (u'' < 0) → hill
 
-So the second derivative tells us how different a point is from its surroundings**.
+So the second derivative tells us how different a point is from its surroundings.
 
-And many physical processes try to reduce those differences or react to them**.
+And many physical processes try to reduce those differences or react to them.
 
 That’s why the Laplacian appears everywhere.
 
@@ -622,11 +622,11 @@ Interpretation:
 * if a point is hotter than its neighbors**, heat flows away
 * if a point is colder than neighbors**, heat flows in
 
-So temperature differences smooth out over time**.
+So temperature differences smooth out over time.
 
 The Laplacian measures exactly that difference.
 
-Result: the system diffuses**.
+Result: the system diffuses.
 
 
 
@@ -651,7 +651,7 @@ If a point on the string is curved**, tension pulls it back toward equilibrium.
 
 More curvature → stronger restoring force.
 
-That force produces acceleration**, which is why the time derivative is second order**.
+That force produces acceleration**, which is why the time derivative is second order.
 
 So:
 
@@ -686,7 +686,7 @@ This also contains the Laplacian.
 
 Why?
 
-Because the Laplacian corresponds to kinetic energy**.
+Because the Laplacian corresponds to kinetic energy.
 
 In fact, the kinetic energy operator is:
 
@@ -717,7 +717,7 @@ $$
 \text{time evolution} = \text{spatial curvature}
 $$
 
-The curvature represents how different a point is from nearby points**.
+The curvature represents how different a point is from nearby points.
 
 Depending on the physics:
 
@@ -767,7 +767,7 @@ The simplest operator with those symmetries is the Laplacian.
 #### **3️. Energy minimization**
 {: .no_toc }
 
-Many systems evolve to minimize energy**.
+Many systems evolve to minimize energy.
 
 Energy often contains terms like
 
@@ -781,7 +781,7 @@ $$
 \nabla^2 u
 $$
 
-So the Laplacian appears naturally from variational principles**.
+So the Laplacian appears naturally from variational principles.
 
 
 
@@ -906,7 +906,7 @@ That’s why the same structures appear in:
 
 It is important to understand that:
 
-> The principle of least (or stationary) action is one specific instance of a much broader idea: variational principles**.
+> The principle of least (or stationary) action is one specific instance of a much broader idea: variational principles.
 
 Let’s unpack that carefully.
 
@@ -1093,7 +1093,7 @@ This is a good question because, in effect, not all variational principles are e
 
 Many variational principles describe equilibrium.
 
-The action principle describes how systems evolve in time**.
+The action principle describes how systems evolve in time.
 
 
 
@@ -1258,9 +1258,9 @@ Final takeaway
 <!-- ###################################################################### -->
 ## Show me how, using the principle of stationary action (least action), we can recover $$F=ma$$?
 
-This is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle**. I'll go carefully and start from the basics so every step makes sense.
+This is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle. I'll go carefully and start from the basics so every step makes sense.
 
-The key idea comes from the Pierre-Louis Maupertuis principle**, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange**.
+The key idea comes from the Pierre-Louis Maupertuis principle**, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange.
 
 The principle says:
 
@@ -1313,7 +1313,7 @@ $$
 \delta S = 0
 $$
 
-Meaning: small variations of the trajectory do not change the action at first order**.
+Meaning: small variations of the trajectory do not change the action at first order.
 
 We therefore consider a slightly modified path:
 
@@ -1388,7 +1388,7 @@ $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot x} - \frac{\partial L}{\partial x} = 0
 $$
 
-This is the Euler–Lagrange equation**.
+This is the Euler–Lagrange equation.
 
 This equation is the core of Lagrangian mechanics.
 
@@ -1460,7 +1460,7 @@ $$
 F = m\ddot x
 $$
 
-Which is exactly Newton’s second law**.
+Which is exactly Newton’s second law.
 
 
 
@@ -1507,7 +1507,7 @@ The system chooses the trajectory that balances:
 
 so that small deviations do not reduce the action.
 
-In some sense, the system finds the most economical path in spacetime**.
+In some sense, the system finds the most economical path in spacetime.
 
 
 
@@ -1638,7 +1638,7 @@ $$
 S = \int (T - V) \, dt
 $$
 
-and turned "action" into a central, precise mathematical object**.
+and turned "action" into a central, precise mathematical object.
 
 
 
@@ -1731,9 +1731,9 @@ Can we revisit the origins of the definition of what is known as the action in p
 ### 1. What the action is
 {: .no_toc }
 
-En mécanique classique, on veut comprendre comment un objet bouge d’un point A à un point B**. Au lieu de regarder seulement sa position à un instant donné, on peut regarder tout le chemin qu’il prend**.
+En mécanique classique, on veut comprendre comment un objet bouge d’un point A à un point B. Au lieu de regarder seulement sa position à un instant donné, on peut regarder tout le chemin qu’il prend.
 
-C’est là qu’intervient l’**action**, notée $$S$$. C’est une sorte de "**score**" qu’on calcule pour chaque chemin possible**. Plus concrètement, pour chaque trajectoire que l’objet pourrait suivre entre $$t_1$$ et $$t_2$$, on associe un nombre $$S$$ qui résume "combien d’énergie il dépense pour se déplacer".
+C’est là qu’intervient l’**action**, notée $$S$$. C’est une sorte de "**score**" qu’on calcule pour chaque chemin possible. Plus concrètement, pour chaque trajectoire que l’objet pourrait suivre entre $$t_1$$ et $$t_2$$, on associe un nombre $$S$$ qui résume "combien d’énergie il dépense pour se déplacer".
 
 Pour calculer ce score, on utilise le Lagrangien**, noté $$L$$ :
 
@@ -1785,9 +1785,9 @@ Historically, this comes from Hamilton’s reformulation of mechanics**:
 * Potential energy $$V$$ represents "stored" energy due to forces.
 * The Lagrangian $$L = T - V$$ turns out to encode the dynamics correctly: when we apply $$\delta S = 0$$, the resulting equations of motion reproduce Newton’s second law $$F = ma$$.
 
-If we tried $$T + V$$, the Euler–Lagrange equations would lead to completely wrong dynamics**. Mathematically, $$T - V$$ naturally appears when we try to generalize d’Alembert’s principle**, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
+If we tried $$T + V$$, the Euler–Lagrange equations would lead to completely wrong dynamics. Mathematically, $$T - V$$ naturally appears when we try to generalize d’Alembert’s principle**, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
 
-So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a variational principle**.
+So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a variational principle.
 
 
 
@@ -1812,8 +1812,8 @@ So the focus is on "stationary" not strictly "minimum".
 ### 4. Why not the difference of squares or other functions?
 {: .no_toc }
 
-* The Lagrangian is chosen to be linear in energies $$T - V$$ because it matches Newtonian dynamics**.
-* Using $$T + V$$ or $$(T - V)^2$$ gives different Euler–Lagrange equations that do not reproduce physical trajectories**.
+* The Lagrangian is chosen to be linear in energies $$T - V$$ because it matches Newtonian dynamics.
+* Using $$T + V$$ or $$(T - V)^2$$ gives different Euler–Lagrange equations that do not reproduce physical trajectories.
 * It turns out that (T - V) is the simplest combination leading to second-order differential equations in time, which is what we observe for real motion.
 
 
@@ -1949,7 +1949,7 @@ Le principe de l’action nous dit que le chemin réel suivi par la balle est ce
 ### 4. Intuition visuelle
 {: .no_toc }
 
-* Le "score" $$S$$ est comme une mesure de "coût" du chemin**.
+* Le "score" $$S$$ est comme une mesure de "coût" du chemin.
 * Le chemin réel minimise ce coût global, plutôt que de décider instant par instant quelle force appliquer.
 * C’est comme si la balle avait "calculé à l’avance" le meilleur trajet pour que $$T$$ et $$V$$ s’équilibrent sur tout le chemin.
 
@@ -1984,7 +1984,7 @@ Le principe de l’action nous dit que le chemin réel suivi par la balle est ce
 ## We can explain why a ball falls vertically while accelerating?
 
 
-Parfait, on va faire le raisonnement pas à pas pour une balle qui tombe verticalement sous la gravité, en utilisant le principe de l’action**. On va rester simple et clair.
+Parfait, on va faire le raisonnement pas à pas pour une balle qui tombe verticalement sous la gravité, en utilisant le principe de l’action. On va rester simple et clair.
 
 
 
@@ -2033,7 +2033,7 @@ $$
 S[h(t)] = \int_{t_1}^{t_2} L(h, \dot{h}) , dt
 $$
 
-La balle "choisit" le chemin (h(t)) qui rend $$S$$ stationnaire par rapport à de petites variations du chemin**.
+La balle "choisit" le chemin (h(t)) qui rend $$S$$ stationnaire par rapport à de petites variations du chemin.
 
 On imagine donc un chemin légèrement modifié :
 
@@ -2050,7 +2050,7 @@ $$
 \frac{d}{d\epsilon} S[h(t) + \epsilon \eta(t)] \Big|_{\epsilon=0} = 0
 $$
 
-C’est-à-dire que la dérivée de l’action par rapport à cette petite variation est nulle**.
+C’est-à-dire que la dérivée de l’action par rapport à cette petite variation est nulle.
 
 
 
@@ -2100,13 +2100,13 @@ $$
 #### **4. Principe du coefficient devant $$\eta$$**
 {: .no_toc }
 
-Cette intégrale doit être nulle pour toute fonction arbitraire (\eta(t))**. La seule façon que ce soit toujours vrai est que le coefficient de (\eta) soit nul :
+Cette intégrale doit être nulle pour toute fonction arbitraire (\eta(t)). La seule façon que ce soit toujours vrai est que le coefficient de (\eta) soit nul :
 
 $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot{h}} - \frac{\partial L}{\partial h} = 0
 $$
 
-Et voilà, c’est l’équation d’Euler-Lagrange**.
+Et voilà, c’est l’équation d’Euler-Lagrange.
 
 
 
@@ -2167,7 +2167,7 @@ $$
 m \ddot{h} - (- m g) = 0 \quad \Rightarrow \quad m \ddot{h} + m g = 0 \quad \Rightarrow \quad \ddot{h} = - g
 $$
 
-Voilà, exactement l’accélération verticale sous gravité**.
+Voilà, exactement l’accélération verticale sous gravité.
 
 
 
@@ -2230,7 +2230,7 @@ C’est exactement la chute rectiligne uniformément accélérée que vous conna
 <!-- ###################################################################### -->
 ## How Maxwell's equations can be derived from a variational principle?
 
-The amazing thing is that the four Maxwell equations can be obtained from one single variational principle**, exactly like $$F=ma$$. The difference is that instead of a particle trajectory $$x(t)$$, we now vary fields in spacetime**.
+The amazing thing is that the four Maxwell equations can be obtained from one single variational principle**, exactly like $$F=ma$$. The difference is that instead of a particle trajectory $$x(t)$$, we now vary fields in spacetime.
 
 The equations describe the electromagnetic field discovered by James Clerk Maxwell.
 
@@ -2303,7 +2303,7 @@ Interpretation:
 | $$\rho \phi$$ | coupling to charge    |
 | $$J\cdot A$$  | coupling to current   |
 
-So the action contains field energy + interaction with charges**.
+So the action contains field energy + interaction with charges.
 
 
 
@@ -2327,7 +2327,7 @@ $$
 \mathbf{A} \rightarrow \mathbf{A} + \delta\mathbf{A}
 $$
 
-From this we obtain Euler–Lagrange equations for fields**.
+From this we obtain Euler–Lagrange equations for fields.
 
 For a field $$q$$:
 
@@ -2354,7 +2354,7 @@ $$
 \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
 $$
 
-This is Gauss's law**.
+This is Gauss's law.
 
 
 
@@ -2368,7 +2368,7 @@ $$
 \nabla \times \mathbf{B} - \frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}
 $$
 
-This is Ampère–Maxwell law**.
+This is Ampère–Maxwell law.
 
 
 
@@ -2393,7 +2393,7 @@ $$
 
 (Faraday's law).
 
-So all four Maxwell equations emerge**.
+So all four Maxwell equations emerge.
 
 
 
@@ -2433,7 +2433,7 @@ $$
 \frac{1}{c^2}\frac{\partial E}{\partial t}
 $$
 
-All from one action**.
+All from one action.
 
 
 
@@ -2460,7 +2460,7 @@ $$
 \phi \rightarrow \phi - \partial_t \chi
 $$
 
-This symmetry explains charge conservation**.
+This symmetry explains charge conservation.
 
 
 
@@ -2469,7 +2469,7 @@ This symmetry explains charge conservation**.
 
 The electromagnetic action is naturally written in relativistic form.
 
-That is why electromagnetism fits perfectly with special relativity**.
+That is why electromagnetism fits perfectly with special relativity.
 
 
 
@@ -2483,7 +2483,7 @@ The same framework works for:
 * the Standard Model
 * gravity
 
-So Maxwell theory is actually the first modern field theory**.
+So Maxwell theory is actually the first modern field theory.
 
 
 
@@ -2501,7 +2501,7 @@ $$
 \frac{\partial^2 E}{\partial t^2}
 $$
 
-This is the wave equation**.
+This is the wave equation.
 
 Meaning:
 
@@ -2513,9 +2513,9 @@ $$
 c = \frac{1}{\sqrt{\mu_0\epsilon_0}}
 $$
 
-which turned out to be exactly the speed of light**.
+which turned out to be exactly the speed of light.
 
-This is how Maxwell predicted that light is an electromagnetic wave**.
+This is how Maxwell predicted that light is an electromagnetic wave.
 
 
 
@@ -2540,7 +2540,7 @@ $$
 
 Nature seems to follow a universal rule:
 
-> The laws of physics come from making an action stationary**.
+> The laws of physics come from making an action stationary.
 
 
 
@@ -2617,7 +2617,7 @@ Le chemin classique émerge comme celui dont les contributions des chemins voisi
 
 On peut voir le principe de l’action comme la version "limite classique" de l’intégrale de chemin de Feynman.
 
-* Les deux partent de la même idée : une action associée à chaque chemin**.
+* Les deux partent de la même idée : une action associée à chaque chemin.
 * La différence : le classique choisit un chemin, le quantique somme sur tous.
 
 
