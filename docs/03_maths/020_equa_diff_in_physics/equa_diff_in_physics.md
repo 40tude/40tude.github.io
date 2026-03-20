@@ -107,7 +107,7 @@ Coming, it is on its way...
 <!-- ###################################################################### -->
 ## Why derivatives and differential equations in physics?
 
-Can you take the time to explain why we so often encounter first- or second-order differential equations, as well as derivatives, in physics formulas? I understand
+Can we take the time to explain why we so often encounter first- or second-order differential equations, as well as derivatives, in physics formulas? I understand
 $F=ma$, but I don’t understand how it was derived, from where it comes from... Same thing for the wave equation or heat propagation equation, etc.
 
 Great question. The short answer is: derivatives appear in physics because nature evolves continuously in time and space, and differential equations express how a system changes locally. But it's worth unpacking this slowly from first principles.
@@ -132,7 +132,7 @@ For a quantity $$x(t)$$:
 
 * Acceleration: $$a = \frac{d^2x}{dt^2}$$
 
-So the moment you want to **describe motion**, derivatives appear naturally.
+So the moment we want to **describe motion**, derivatives appear naturally.
 
 
 
@@ -147,7 +147,7 @@ This is not arbitrary. It comes from **how many levels of change influence the s
 #### First derivative → flow / transport
 {: .no_toc }
 
-If a phenomenon depends only on the **rate of change**, you get first-order equations.
+If a phenomenon depends only on the **rate of change**, we get first-order equations.
 
 Example: radioactive decay
 
@@ -186,7 +186,7 @@ Why second order?
 
 Because **inertia exists**. A body remembers its velocity.
 
-To know the future motion, you must know:
+To know the future motion, we must know:
 
 * position
 * velocity
@@ -357,35 +357,6 @@ These are expressed mathematically using **divergences and derivatives**.
 
 
 
-<!-- ###################################################################### -->
-<!-- ### 7. A deeper modern perspective
-
-In modern physics, many laws come from **variational principles**.
-
-Example: principle of least action.
-
-The system minimizes
-
-$$
-S = \int L(q,\dot q,t) dt
-$$
-
-When you minimize this functional, you **automatically obtain differential equations**:
-
-$$
-\frac{d}{dt}\frac{\partial L}{\partial \dot q} -
-\frac{\partial L}{\partial q}
-=0
-$$
-
-These are the **Euler-Lagrange equations**.
-
-Newton's law actually comes from this framework.
- -->
-
-
-
-
 
 
 
@@ -452,7 +423,7 @@ Examples:
 ### 8. Summary
 {: .no_toc }
 
-You see derivatives everywhere because physics tries to answer:
+We see derivatives everywhere because physics tries to answer:
 
 > How does the state of the system **change locally**?
 
@@ -468,22 +439,13 @@ A good mental model is:
 
 Physics laws are like **rules of evolution**.
 
-They don't tell you the whole trajectory.
+They don't tell us the whole trajectory.
 
 They only say:
 
 > If the system is like this **right now**, then it will start changing **like that**.
 
 That is exactly what a **differential equation** describes.
-
-
-
-<!-- If you'd like, I can also show you something very illuminating:
-
-**Why the heat equation, wave equation, and Schrödinger equation all have almost the same structure.**
-
-Once you see that, a huge amount of physics suddenly becomes much clearer. -->
-
 
 
 
@@ -572,7 +534,7 @@ Once you see that, a huge amount of physics suddenly becomes much clearer. -->
 <!-- ###################################################################### -->
 ## Why the heat equation, the wave equation and the Schrödinger equation look so similar?
 
-Once you see the common structure, a lot of physics suddenly becomes less mysterious.
+Once we see the common structure, a lot of physics suddenly becomes less mysterious.
 
 We’ll go step by step.
 
@@ -621,7 +583,7 @@ Why the second derivative? Because it measures **curvature**.
 
 Imagine a function (u(x)).
 
-The second derivative tells you whether the value at a point is:
+The second derivative tells us whether the value at a point is:
 
 * higher than its neighbors
 * lower than its neighbors
@@ -810,7 +772,7 @@ $$
 (\nabla u)^2
 $$
 
-When you minimize such an energy functional, the resulting equation contains
+When we minimize such an energy functional, the resulting equation contains
 
 $$
 \nabla^2 u
@@ -825,7 +787,7 @@ So the Laplacian appears naturally from **variational principles**.
 ### 8. A powerful intuition
 {: .no_toc }
 
-You can think of the Laplacian as:
+We can think of the Laplacian as:
 
 > **difference between a point and the average of its neighbors**
 
@@ -862,7 +824,7 @@ Physicists usually assume:
 3. smoothness
 4. conservation laws
 
-When you write the **simplest equation compatible with these principles**, you often end up with:
+When we write the **simplest equation compatible with these principles**, we often end up with:
 
 * first or second derivatives
 * Laplacians
@@ -891,13 +853,6 @@ That’s why the same structures appear in:
 * electromagnetism
 * fluid dynamics
 
-
-
-<!-- If you're interested, the next really enlightening step is something many physics students never get shown clearly:
-
-**why the Laplacian is basically the continuous version of averaging your neighbors**.
-
-Seeing that once makes diffusion, waves, and quantum mechanics feel much more intuitive. -->
 
 
 
@@ -971,8 +926,8 @@ where $\mathcal{F}$ is some functional (a function of functions).
 
 So the structure is:
 
-* You define a quantity depending on a function (trajectory, field, shape…)
-* You require that small variations do not change it at first order
+* We define a quantity depending on a function (trajectory, field, shape…)
+* We require that small variations do not change it at first order
 
 This idea exists far beyond physics.
 
@@ -1206,7 +1161,7 @@ Instead of describing physics as:
 
 > “local cause → local effect”
 
-you describe it as:
+We describe it as:
 
 > “global constraint on all possible histories”
 
@@ -1710,7 +1665,7 @@ In modern physics, "action" is less about "effort" and more about:
 * a **functional** that encodes the entire dynamics of a system
 * the central object from which all equations of motion can be derived
 
-And in quantum mechanics (as you noticed with Feynman), it becomes even more fundamental:
+And in quantum mechanics (as we noticed with Feynman), it becomes even more fundamental:
 
 * every path is weighted by $e^{iS/\hbar}$
 
@@ -1825,9 +1780,9 @@ Historically, this comes from **Hamilton’s reformulation of mechanics**:
 
 * Kinetic energy $T$ represents motion.
 * Potential energy $V$ represents "stored" energy due to forces.
-* The Lagrangian $L = T - V$ turns out to encode the **dynamics** correctly: when you apply $\delta S = 0$, the resulting equations of motion reproduce Newton’s second law $F = ma$.
+* The Lagrangian $L = T - V$ turns out to encode the **dynamics** correctly: when we apply $\delta S = 0$, the resulting equations of motion reproduce Newton’s second law $F = ma$.
 
-If you tried $T + V$, the Euler–Lagrange equations would lead to **completely wrong dynamics**. Mathematically, $T - V$ naturally appears when you try to generalize **d’Alembert’s principle**, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
+If we tried $T + V$, the Euler–Lagrange equations would lead to **completely wrong dynamics**. Mathematically, $T - V$ naturally appears when we try to generalize **d’Alembert’s principle**, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
 
 So it’s not arbitrary; it’s **derived to make Newton’s laws emerge from a variational principle**.
 
@@ -2586,16 +2541,6 @@ Nature seems to follow a universal rule:
 
 
 
-<!-- If you'd like, the next step becomes even more fascinating:
-
-**why the action for electromagnetism has exactly the form $E^2 - B^2$**.
-
-That turns out to come almost uniquely from **symmetry + relativity**, and it's one of the clearest examples of how modern physics *derives* equations rather than guessing them. -->
-
-
-
-
-
 
 
 
@@ -2631,9 +2576,9 @@ That turns out to come almost uniquely from **symmetry + relativity**, and it's 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## All of this is quite reminiscent of Feynman integrals. Don't you think?
+## All of this is quite reminiscent of Feynman integrals. No?
 
-Exactly! What you see with the **principle of action** is indeed very similar to the idea behind **Feynman integrals** in quantum mechanics. Let's try to establish the connection:
+What we see with the **principle of action** is indeed very similar to the idea behind **Feynman integrals** in quantum mechanics. Let's try to establish the connection:
 
 
 <!-- ###################################################################### -->
