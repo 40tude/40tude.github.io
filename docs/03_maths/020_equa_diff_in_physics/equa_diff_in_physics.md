@@ -97,7 +97,7 @@ Building intuition from local laws, differential equations, and variational prin
 <!-- ###################################################################### -->
 ## Introduction
 
-Coming, it is on its way...
+It’s on the way, just taking a little longer than expected.
 
 
 
@@ -120,12 +120,12 @@ Great question. The short answer is: derivatives appear in physics because natur
 ### 1. Physics tries to describe how things change
 {: .no_toc }
 
-Most physical phenomena involve change**:
+Most physical phenomena involve change:
 
-* position changes with time
-* temperature changes in space
-* velocity changes due to forces
-* electric fields vary in space and time
+* Position changes with time
+* Temperature changes in space
+* Velocity changes due to forces
+* Electric fields vary in space and time
 
 Mathematically, the cleanest way to describe change is with a derivative.
 
@@ -160,7 +160,7 @@ Interpretation:
 
 > The speed at which nuclei disappear is proportional to how many remain.
 
-This law is local and simple**:
+This law is local and simple:
 
 * more atoms → more decay events per second
 
@@ -247,7 +247,7 @@ So it is really an empirical law extracted from experiments.
 ### 4. Why physics prefers local laws**
 {: .no_toc }
 
-Most physical laws describe local behavior**:
+Most physical laws describe local behavior:
 
 Instead of saying
 
@@ -263,7 +263,7 @@ Example:
 
 Temperature $$T(x,t)$$
 
-The heat flowing through a point depends on the temperature gradient**:
+The heat flowing through a point depends on the temperature gradient:
 
 $$\text{Heat flow} \propto - \nabla T$$
 
@@ -547,7 +547,7 @@ We’ll go step by step.
 ### 1. The common mathematical structure
 {: .no_toc }
 
-Many physical phenomena involve a quantity that depends on space and time**:
+Many physical phenomena involve a quantity that depends on space and time:
 
 $$
 u(x,t)
@@ -565,7 +565,7 @@ $$
 \text{time change} = \text{spatial variation}
 $$
 
-The spatial variation is usually measured by the Laplacian**:
+The spatial variation is usually measured by the Laplacian:
 
 $$
 \nabla^2
@@ -1116,7 +1116,7 @@ It works for:
 #### **3. It encodes symmetries**
 {: .no_toc }
 
-Through Emmy Noether’s theorem**:
+Through Emmy Noether’s theorem:
 
 > Every symmetry of the action corresponds to a conservation law.
 
@@ -1272,7 +1272,7 @@ The principle says:
 ### 1. Define the action
 {: .no_toc }
 
-We introduce a quantity called the action**:
+We introduce a quantity called the action:
 
 $$
 S = \int_{t_1}^{t_2} L(x,\dot x,t),dt
@@ -1779,7 +1779,7 @@ This yields Euler–Lagrange equations**, which are exactly Newton’s laws in d
 ### 2. Why $$L = T - V$$ and not $$T + V$$
 {: .no_toc }
 
-Historically, this comes from Hamilton’s reformulation of mechanics**:
+Historically, this comes from Hamilton’s reformulation of mechanics:
 
 * Kinetic energy $$T$$ represents motion.
 * Potential energy $$V$$ represents "stored" energy due to forces.
@@ -2249,12 +2249,12 @@ $$
 S = \int L(x,\dot x,t),dt
 $$
 
-In electromagnetism we instead describe fields**:
+In electromagnetism we instead describe fields:
 
 * electric field $$ \mathbf{E}(x,t) $$
 * magnetic field $$ \mathbf{B}(x,t) $$
 
-But varying vector fields directly is inconvenient. Instead we introduce potentials**:
+But varying vector fields directly is inconvenient. Instead we introduce potentials:
 
 * scalar potential $$ \phi $$
 * vector potential $$ \mathbf{A} $$
@@ -2277,7 +2277,7 @@ These automatically satisfy two Maxwell equations.
 ### 2. The electromagnetic action
 {: .no_toc }
 
-For fields, the action becomes an integral over spacetime**:
+For fields, the action becomes an integral over spacetime:
 
 $$
 S = \int L \, d^3x \,dt
@@ -2450,7 +2450,7 @@ The variational approach reveals deep structure.
 #### **1️. Symmetry**
 {: .no_toc }
 
-The action is invariant under gauge transformations**:
+The action is invariant under gauge transformations:
 
 $$
 A \rightarrow A + \nabla \chi
@@ -2653,7 +2653,7 @@ On peut voir le principe de l’action comme la version "limite classique" de l�
 <!-- ###################################################################### -->
 ## Conclusion
 
-Coming, it is on its way...
+Coming soon, just a bit delayed.
 
 
 
