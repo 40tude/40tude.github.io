@@ -301,7 +301,7 @@ Mathematically this gives
 
 $$\frac{\partial T}{\partial t} = - \nabla \cdot q$$
 
-Substitute (q):
+Substitute $q$:
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
@@ -1298,7 +1298,7 @@ Final takeaway
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Show me how, using the principle of stationary action (least action), we can recover $F=ma$?
+## Show me how, using the principle of stationary action (least action), we can recover $$F=ma$$?
 
 This is one of the most beautiful things in theoretical physics: **Newton’s law can be derived from a variational principle**. I'll go carefully and start from the basics so every step makes sense.
 
@@ -1760,7 +1760,7 @@ So "action" is really:
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Why $L = T - V$
+## Why $$L = T - V$$
 
 It has been stated that the Lagrangian $L = T - V$, where $T$ is kinetic energy and $V$ is potential energy. Why? Why do we minimize the difference rather than the sum? Why do we minimize the difference between the values rather than the difference between their squares?
 
