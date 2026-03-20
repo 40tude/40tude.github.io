@@ -10,6 +10,7 @@ twitter:
   card: summary_large_image
 parent: "Maths"
 # nav_order: 36
+math: mathjax
 date:               2026-03-20 08:00:00
 last_modified_date: 2026-03-20 14:00:00
 ---
@@ -150,9 +151,7 @@ If a phenomenon depends only on the **rate of change**, you get first-order equa
 
 Example: radioactive decay
 
-$$
-\frac{dN}{dt} = -\lambda N
-$$
+$$\frac{dN}{dt} = -\lambda N$$
 
 Interpretation:
 
