@@ -108,7 +108,7 @@ Coming, it is on its way...
 ## Why derivatives and differential equations in physics?
 
 Can we take the time to explain why we so often encounter first- or second-order differential equations, as well as derivatives, in physics formulas? I understand
-$F=ma$, but I don’t understand how it was derived, from where it comes from... Same thing for the wave equation or heat propagation equation, etc.
+$$F=ma$$, but I don’t understand how it was derived, from where it comes from... Same thing for the wave equation or heat propagation equation, etc.
 
 Great question. The short answer is: derivatives appear in physics because nature evolves continuously in time and space, and differential equations express how a system changes locally. But it's worth unpacking this slowly from first principles.
 
@@ -199,7 +199,7 @@ Two initial conditions → **second order equation**.
 
 
 <!-- ###################################################################### -->
-### 3. But how did Newton discover $F = ma$?
+### 3. But how did Newton discover $$F = ma$$?
 {: .no_toc }
 
 Important point:
@@ -258,7 +258,7 @@ This locality leads **directly to derivatives**.
 
 Example:
 
-Temperature $T(x,t)$
+Temperature $$T(x,t)$$
 
 The heat flowing through a point depends on the **temperature gradient**:
 
@@ -301,7 +301,7 @@ Mathematically this gives
 
 $$\frac{\partial T}{\partial t} = - \nabla \cdot q$$
 
-Substitute $q$:
+Substitute $$q$$:
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
@@ -552,9 +552,9 @@ $$
 
 Examples:
 
-* temperature $T(x,t)$
-* displacement of a string $y(x,t)$
-* quantum wavefunction $\psi(x,t)$
+* temperature $$T(x,t)$$
+* displacement of a string $$y(x,t)$$
+* quantum wavefunction $$\psi(x,t)$$
 
 In all three cases, the evolution of the system takes the form:
 v
@@ -720,9 +720,9 @@ Depending on the physics:
 
 | System  | Equation                                      | Behavior          |
 | ------- | --------------------------------------------- | ----------------- |
-| Heat    | $ \partial_t T = \kappa \nabla^2 T $          | Diffusion         |
-| Waves   | $ \partial_t^2 u = c^2 \nabla^2 u $           | Oscillations      |
-| Quantum | $ i\partial_t \psi = -\nabla^2 \psi + V\psi $ | Probability waves |
+| Heat    | $$ \partial_t T = \kappa \nabla^2 T $$          | Diffusion         |
+| Waves   | $$ \partial_t^2 u = c^2 \nabla^2 u $$           | Oscillations      |
+| Quantum | $$ i\partial_t \psi = -\nabla^2 \psi + V\psi $$ | Probability waves |
 
 Same mathematical ingredient, different physics.
 
@@ -918,11 +918,11 @@ A **variational principle** is any statement of the form:
 
 Mathematically:
 
-$
+$$
 \delta \mathcal{F} = 0
-$
+$$
 
-where $\mathcal{F}$ is some functional (a function of functions).
+where $$\mathcal{F}$$ is some functional (a function of functions).
 
 So the structure is:
 
@@ -943,15 +943,15 @@ This idea exists far beyond physics.
 
 The **principle of least action** is just the case where:
 
-$
+$$
 \mathcal{F} = S = \int L\,dt
-$
+$$
 
 So:
 
-$
+$$
 \delta S = 0
-$
+$$
 
 This gives:
 
@@ -988,9 +988,9 @@ There are many important examples that are **not phrased as “action minimizati
 
 Associated with Pierre de Fermat
 
-$
+$$
 \delta \int n(s)\,ds = 0
-$
+$$
 
 Interpretation:
 
@@ -1014,9 +1014,9 @@ In statics:
 
 > A system at equilibrium minimizes its potential energy.
 
-$
+$$
 \delta U = 0
-$
+$$
 
 Examples:
 
@@ -1032,9 +1032,9 @@ No time involved — this is not an “action over time”, just a spatial varia
 
 Used in mechanics and engineering:
 
-$
+$$
 \sum F_i \cdot \delta x_i = 0
-$
+$$
 
 Interpretation:
 
@@ -1063,9 +1063,9 @@ These are **variational principles involving irreversible processes**, not class
 
 Used in quantum mechanics and engineering:
 
-$
+$$
 E[\psi] = \frac{\langle \psi | H | \psi \rangle}{\langle \psi|\psi\rangle}
-$
+$$
 
 Minimizing this gives approximations of energy levels.
 
@@ -1186,9 +1186,9 @@ Yet they give the same results.
 
 In reality:
 
-$
+$$
 \delta S = 0
-$
+$$
 
 means:
 
@@ -1277,11 +1277,11 @@ $$
 
 where:
 
-* $x(t)$ = position
-* $\dot x = dx/dt$ = velocity
-* $L$ = **Lagrangian**
+* $$x(t)$$ = position
+* $$\dot x = dx/dt$$ = velocity
+* $$L$$ = **Lagrangian**
 
-For a particle in a potential $V(x)$:
+For a particle in a potential $$V(x)$$:
 
 $$
 L = T - V
@@ -1289,8 +1289,8 @@ $$
 
 where:
 
-* $T = \frac{1}{2} m \dot{x}^2$ (kinetic energy)
-* $V(x)$ (potential energy)
+* $$T = \frac{1}{2} m \dot{x}^2$$ (kinetic energy)
+* $$V(x)$$ (potential energy)
 
 So:
 
@@ -1320,9 +1320,9 @@ $$
 
 where:
 
-* $\epsilon$ is small
-* $\eta(t)$ is an arbitrary function
-* $\eta(t_1)=\eta(t_2)=0$ (endpoints fixed)
+* $$\epsilon$$ is small
+* $$\eta(t)$$ is an arbitrary function
+* $$\eta(t_1)=\eta(t_2)=0$$ (endpoints fixed)
 
 
 
@@ -1351,7 +1351,7 @@ $$
 
 
 <!-- ########################################### -->
-### 4. Remove the derivative on $\dot{\eta}$
+### 4. Remove the derivative on $$\dot{\eta}$$
 {: .no_toc }
 
 We integrate by parts:
@@ -1536,7 +1536,7 @@ $$
 \frac{d}{dt}\frac{\partial L}{\partial \dot x} - \frac{\partial L}{\partial x} = 0
 $$
 
-5. Substitute $L$
+5. Substitute $$L$$
 
 → gives
 
@@ -1602,7 +1602,7 @@ So "action" was meant to sound like:
 ### 2. What Maupertuis meant by "action"
 {: .no_toc }
 
-His original definition wasn’t exactly $ \int (T - V) \, dt$.
+His original definition wasn’t exactly $$ \int (T - V) \, dt$$.
 He defined action roughly as:
 
 $$
@@ -1667,7 +1667,7 @@ In modern physics, "action" is less about "effort" and more about:
 
 And in quantum mechanics (as we noticed with Feynman), it becomes even more fundamental:
 
-* every path is weighted by $e^{iS/\hbar}$
+* every path is weighted by $$e^{iS/\hbar}$$
 
 So "action" is really:
 
@@ -1681,7 +1681,7 @@ So "action" is really:
 
 * The word **"action"** was introduced by Maupertuis in the 18th century
 * It originally meant something like **"effort" or "amount of motion"**
-* It was later formalized by Lagrange and Hamilton into $S = \int (T - V) \, dt$
+* It was later formalized by Lagrange and Hamilton into $$S = \int (T - V) \, dt$$
 * The name stuck even as the concept became more abstract and central
 
 
@@ -1717,7 +1717,7 @@ So "action" is really:
 <!-- ###################################################################### -->
 ## Why $$L = T - V$$
 
-It has been stated that the Lagrangian $L = T - V$, where $T$ is kinetic energy and $V$ is potential energy. Why? Why do we minimize the difference rather than the sum? Why do we minimize the difference between the values rather than the difference between their squares?
+It has been stated that the Lagrangian $$L = T - V$$, where $$T$$ is kinetic energy and $$V$$ is potential energy. Why? Why do we minimize the difference rather than the sum? Why do we minimize the difference between the values rather than the difference between their squares?
 
 Can we revisit the origins of the definition of what is known as the action in physics?
 
@@ -1730,18 +1730,18 @@ Can we revisit the origins of the definition of what is known as the action in p
 
 En mécanique classique, on veut comprendre **comment un objet bouge d’un point A à un point B**. Au lieu de regarder seulement sa position à un instant donné, on peut regarder **tout le chemin qu’il prend**.
 
-C’est là qu’intervient l’**action**, notée $S$. C’est une sorte de "**score**" qu’on calcule pour **chaque chemin possible**. Plus concrètement, pour chaque trajectoire que l’objet pourrait suivre entre $t_1$ et $t_2$, on associe un nombre $S$ qui résume "combien d’énergie il dépense pour se déplacer".
+C’est là qu’intervient l’**action**, notée $$S$$. C’est une sorte de "**score**" qu’on calcule pour **chaque chemin possible**. Plus concrètement, pour chaque trajectoire que l’objet pourrait suivre entre $$t_1$$ et $$t_2$$, on associe un nombre $$S$$ qui résume "combien d’énergie il dépense pour se déplacer".
 
-Pour calculer ce score, on utilise le **Lagrangien**, noté $L$ :
+Pour calculer ce score, on utilise le **Lagrangien**, noté $$L$$ :
 
 $$
 L = T - V
 $$
 
-* $T$ est l’énergie cinétique : l’énergie due au mouvement, qui dépend de la vitesse.
-* $V$ est l’énergie potentielle : l’énergie due aux forces qui "poussent ou tirent" l’objet (comme la gravité ou un ressort).
+* $$T$$ est l’énergie cinétique : l’énergie due au mouvement, qui dépend de la vitesse.
+* $$V$$ est l’énergie potentielle : l’énergie due aux forces qui "poussent ou tirent" l’objet (comme la gravité ou un ressort).
 
-On fait ensuite l’intégrale de $L$ sur le temps entre $t_1$ et $t_2$ :
+On fait ensuite l’intégrale de $$L$$ sur le temps entre $$t_1$$ et $$t_2$$ :
 
 $$
 S = \int_{t_1}^{t_2} L \, dt = \int_{t_1}^{t_2} (T - V) \,dt
@@ -1749,20 +1749,20 @@ $$
 
 Cette intégrale donne **un seul nombre pour chaque chemin** (encore une fois, pense à un score, à une note globale, une note "intégrale"). Le principe de moindre action dit que **le chemin que l’objet choisit réellement rend ce nombre "stationnaire"** (souvent minimum) par rapport à tous les autres chemins possibles.
 
-Donc, plutôt que de suivre directement les forces à chaque instant comme avec $F = ma$, on peut **penser en termes de chemin global** et l’objet "choisit" la trajectoire qui rend l’action spéciale.
+Donc, plutôt que de suivre directement les forces à chaque instant comme avec $$F = ma$$, on peut **penser en termes de chemin global** et l’objet "choisit" la trajectoire qui rend l’action spéciale.
 
 
 
 
-More precisely, in classical mechanics, the **action** $S$ is a functional, a quantity that depends on the whole path a system takes between two times:
+More precisely, in classical mechanics, the **action** $$S$$ is a functional, a quantity that depends on the whole path a system takes between two times:
 
 $$
 S[q(t)] = \int_{t_1}^{t_2} L(q, \dot{q}, t)  dt
 $$
 
-where $L = T - V$ is the **Lagrangian**, $T$ is kinetic energy, $V$ is potential energy, and $q(t)$ describes the configuration of the system over time.
+where $$L = T - V$$ is the **Lagrangian**, $$T$$ is kinetic energy, $$V$$ is potential energy, and $$q(t)$$ describes the configuration of the system over time.
 
-The **principle of least action** (more accurately, principle of stationary action) states that the physical path a system follows makes $S$ **stationary** (usually a minimum) compared to nearby paths:
+The **principle of least action** (more accurately, principle of stationary action) states that the physical path a system follows makes $$S$$ **stationary** (usually a minimum) compared to nearby paths:
 
 $$
 \delta S = 0
@@ -1773,16 +1773,16 @@ This yields **Euler–Lagrange equations**, which are exactly Newton’s laws in
 
 
 <!-- ###################################################################### -->
-### 2. Why $L = T - V$ and not $T + V$
+### 2. Why $$L = T - V$$ and not $$T + V$$
 {: .no_toc }
 
 Historically, this comes from **Hamilton’s reformulation of mechanics**:
 
-* Kinetic energy $T$ represents motion.
-* Potential energy $V$ represents "stored" energy due to forces.
-* The Lagrangian $L = T - V$ turns out to encode the **dynamics** correctly: when we apply $\delta S = 0$, the resulting equations of motion reproduce Newton’s second law $F = ma$.
+* Kinetic energy $$T$$ represents motion.
+* Potential energy $$V$$ represents "stored" energy due to forces.
+* The Lagrangian $$L = T - V$$ turns out to encode the **dynamics** correctly: when we apply $$\delta S = 0$$, the resulting equations of motion reproduce Newton’s second law $$F = ma$$.
 
-If we tried $T + V$, the Euler–Lagrange equations would lead to **completely wrong dynamics**. Mathematically, $T - V$ naturally appears when we try to generalize **d’Alembert’s principle**, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
+If we tried $$T + V$$, the Euler–Lagrange equations would lead to **completely wrong dynamics**. Mathematically, $$T - V$$ naturally appears when we try to generalize **d’Alembert’s principle**, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
 
 So it’s not arbitrary; it’s **derived to make Newton’s laws emerge from a variational principle**.
 
@@ -1793,7 +1793,7 @@ So it’s not arbitrary; it’s **derived to make Newton’s laws emerge from a 
 {: .no_toc }
 
 * In many simple cases, the action is **actually minimized**, like in free particle motion or harmonic oscillators.
-* More generally, the principle is "stationary action," meaning $\delta S = 0$. This includes minima, maxima, and saddle points. The key is that the **first variation vanishes**, we don’t always strictly minimize in a global sense.
+* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the **first variation vanishes**, we don’t always strictly minimize in a global sense.
 
 So the focus is on "stationary" not strictly "minimum".
 
@@ -1809,8 +1809,8 @@ So the focus is on "stationary" not strictly "minimum".
 ### 4. Why not the difference of squares or other functions?
 {: .no_toc }
 
-* The Lagrangian is chosen to be **linear in energies** $T - V$ because it **matches Newtonian dynamics**.
-* Using $T + V$ or $(T - V)^2$ gives different Euler–Lagrange equations that **do not reproduce physical trajectories**.
+* The Lagrangian is chosen to be **linear in energies** $$T - V$$ because it **matches Newtonian dynamics**.
+* Using $$T + V$$ or $$(T - V)^2$$ gives different Euler–Lagrange equations that **do not reproduce physical trajectories**.
 * It turns out that (T - V) is the simplest combination leading to **second-order differential equations** in time, which is what we observe for real motion.
 
 
@@ -1822,9 +1822,9 @@ So the focus is on "stationary" not strictly "minimum".
 {: .no_toc }
 
 * **Maupertuis (1744)** first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
-* **Euler and Lagrange** formalized it, showing $S = \int L \, dt$ gives Newton’s equations.
-* **Hamilton** gave the modern formulation with $L = T - V$ in 1834.
-* So the action $S$ is not just "something we made up"; it arises naturally from trying to express **mechanics in terms of variational principles**, which is elegant and generalizable (to fields, quantum mechanics, relativity…).
+* **Euler and Lagrange** formalized it, showing $$S = \int L \, dt$$ gives Newton’s equations.
+* **Hamilton** gave the modern formulation with $$L = T - V$$ in 1834.
+* So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express **mechanics in terms of variational principles**, which is elegant and generalizable (to fields, quantum mechanics, relativity…).
 
 
 
@@ -1832,9 +1832,9 @@ So the focus is on "stationary" not strictly "minimum".
 ### 6. Summary
 {: .no_toc }
 
-1. Action $S = \int (T - V) \, dt$ because this combination reproduces Newtonian dynamics via a variational principle.
-2. We look for stationary points of $S$, not strictly minima, because the actual physical path makes $\delta S = 0$.
-3. Other choices like $T + V$ or $(T - V)^2$ fail to give the correct equations of motion.
+1. Action $$S = \int (T - V) \, dt$$ because this combination reproduces Newtonian dynamics via a variational principle.
+2. We look for stationary points of $$S$$, not strictly minima, because the actual physical path makes $$\delta S = 0$$.
+3. Other choices like $$T + V$$ or $$(T - V)^2$$ fail to give the correct equations of motion.
 4. Historically, it comes from the effort to **express mechanics as a global extremum principle**, starting with Maupertuis and culminating in Hamilton’s formulation.
 
 
@@ -1899,8 +1899,8 @@ So the focus is on "stationary" not strictly "minimum".
 ### 1. Définir les énergies
 {: .no_toc }
 
-* **Énergie cinétique $T$** : dépend de la vitesse de la balle. Si la balle tombe verticalement, $T = \frac{1}{2} m v^2$.
-* **Énergie potentielle $V$** : due à la gravité, $V = m g h$, où $h$ est la hauteur au-dessus du sol.
+* **Énergie cinétique $$T$$** : dépend de la vitesse de la balle. Si la balle tombe verticalement, $$T = \frac{1}{2} m v^2$$.
+* **Énergie potentielle $$V$$** : due à la gravité, $$V = m g h$$, où $$h$$ est la hauteur au-dessus du sol.
 
 Le **Lagrangien** est donc :
 
@@ -1915,7 +1915,7 @@ $$
 {: .no_toc }
 
 
-Imaginons que la balle parte du point $h_1$ à $t_1$ et arrive à $h_2$ à $t_2$. On peut **imaginer plusieurs chemins possibles**, par exemple :
+Imaginons que la balle parte du point $$h_1$$ à $$t_1$$ et arrive à $$h_2$$ à $$t_2$$. On peut **imaginer plusieurs chemins possibles**, par exemple :
 
 1. Une chute droite et régulière (vitesse constante de plus en plus grande).
 2. Un chemin "zigzag" (imaginons que la balle saute en l’air avant de tomber).
@@ -1935,7 +1935,7 @@ Chaque chemin donne un nombre différent.
 ### 3. La balle "choisit" le bon chemin
 {: .no_toc }
 
-Le principe de l’action nous dit que **le chemin réel suivi par la balle est celui qui rend $S$ stationnaire** (souvent minimum).
+Le principe de l’action nous dit que **le chemin réel suivi par la balle est celui qui rend $$S$$ stationnaire** (souvent minimum).
 
 * Si tu imagines toutes les trajectoires possibles, la vraie trajectoire correspond à celle qui **équilibre le plus harmonieusement énergie cinétique et énergie potentielle** sur le temps.
 * Dans le cas de la chute libre, ça correspond simplement à **une chute rectiligne uniformément accélérée**, exactement ce que Newton nous dit avec (F = ma).
@@ -1946,9 +1946,9 @@ Le principe de l’action nous dit que **le chemin réel suivi par la balle est 
 ### 4. Intuition visuelle
 {: .no_toc }
 
-* Le "score" $S$ est comme une **mesure de "coût" du chemin**.
+* Le "score" $$S$$ est comme une **mesure de "coût" du chemin**.
 * Le chemin réel minimise ce coût global, plutôt que de décider instant par instant quelle force appliquer.
-* C’est comme si la balle avait "calculé à l’avance" le meilleur trajet pour que $T$ et $V$ s’équilibrent sur tout le chemin.
+* C’est comme si la balle avait "calculé à l’avance" le meilleur trajet pour que $$T$$ et $$V$$ s’équilibrent sur tout le chemin.
 
 
 
@@ -1991,10 +1991,10 @@ Parfait, on va faire le raisonnement **pas à pas** pour une balle qui tombe ver
 
 On note :
 
-* $h(t)$ = hauteur de la balle à l’instant (t)
-* $v(t) = \dot{h}(t) = \frac{dh}{dt}$ = vitesse
-* Masse de la balle = $m$ (ne change rien au résultat)
-* Accélération due à la gravité = $g$
+* $$h(t)$$ = hauteur de la balle à l’instant (t)
+* $$v(t) = \dot{h}(t) = \frac{dh}{dt}$$ = vitesse
+* Masse de la balle = $$m$$ (ne change rien au résultat)
+* Accélération due à la gravité = $$g$$
 
 L’énergie cinétique :
 
@@ -2030,7 +2030,7 @@ $$
 S[h(t)] = \int_{t_1}^{t_2} L(h, \dot{h}) , dt
 $$
 
-La balle "choisit" le chemin (h(t)) qui rend $S$ **stationnaire** par rapport à de **petites variations du chemin**.
+La balle "choisit" le chemin (h(t)) qui rend $$S$$ **stationnaire** par rapport à de **petites variations du chemin**.
 
 On imagine donc un **chemin légèrement modifié** :
 
@@ -2038,8 +2038,8 @@ $$
 h(t) \to h(t) + \epsilon \eta(t)
 $$
 
-* $\eta(t)$ est une petite fonction arbitraire qui **s’annule aux extrémités** $t_1$ et $t_2$ (on ne change pas les points de départ et d’arrivée).
-* $\epsilon$ est un petit nombre pour mesurer la variation.
+* $$\eta(t)$$ est une petite fonction arbitraire qui **s’annule aux extrémités** $$t_1$$ et $$t_2$$ (on ne change pas les points de départ et d’arrivée).
+* $$\epsilon$$ est un petit nombre pour mesurer la variation.
 
 Le principe de l’action dit :
 
@@ -2058,7 +2058,7 @@ C’est-à-dire que **la dérivée de l’action par rapport à cette petite var
 #### 2. Développement
 {: .no_toc }
 
-On remplace $L$ :
+On remplace $$L$$ :
 
 $$
 S[h+\epsilon \eta] = \int_{t_1}^{t_2} L(h + \epsilon \eta, \dot{h} + \epsilon \dot{\eta}) dt
@@ -2077,13 +2077,13 @@ $$
 #### 3. Intégration par parties
 {: .no_toc }
 
-On veut éliminer $\dot{\eta}$ pour ne garder que $\eta$. On fait une **intégration par parties** sur le deuxième terme :
+On veut éliminer $$\dot{\eta}$$ pour ne garder que $$\eta$$. On fait une **intégration par parties** sur le deuxième terme :
 
 $$
 \int_{t_1}^{t_2} \frac{\partial L}{\partial \dot{h}} \dot{\eta} , dt = \left[ \frac{\partial L}{\partial \dot{h}} \eta \right]_{t_1}^{t_2} - \int_{t_1}^{t_2} \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{h}} \right) \eta  dt
 $$
 
-Mais $\eta(t_1) = \eta(t_2) = 0$, donc le terme aux bornes disparaît. Il reste :
+Mais $$\eta(t_1) = \eta(t_2) = 0$$, donc le terme aux bornes disparaît. Il reste :
 
 $$
 \delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial h} - \frac{d}{dt} \frac{\partial L}{\partial \dot{h}} \right) \eta  dt = 0
@@ -2094,7 +2094,7 @@ $$
 
 
 
-#### 4. Principe du coefficient devant $\eta$
+#### 4. Principe du coefficient devant $$\eta$$
 {: .no_toc }
 
 Cette intégrale doit être nulle pour **toute fonction arbitraire (\eta(t))**. La seule façon que ce soit toujours vrai est que le **coefficient de (\eta) soit nul** :
@@ -2155,9 +2155,9 @@ $$
 
 Calculons les dérivées :
 
-1. $\frac{\partial L}{\partial \dot{h}} = m \dot{h}$
-2. $\frac{d}{dt} \frac{\partial L}{\partial \dot{h}} = m \ddot{h}$
-3. $\frac{\partial L}{\partial h} = - m g$
+1. $$\frac{\partial L}{\partial \dot{h}} = m \dot{h}$$
+2. $$\frac{d}{dt} \frac{\partial L}{\partial \dot{h}} = m \ddot{h}$$
+3. $$\frac{\partial L}{\partial h} = - m g$$
 
 Donc l’équation devient :
 $$
@@ -2182,8 +2182,8 @@ $$
 h(t) = h_0 + \dot{h}_0 t - \frac{1}{2} g t^2
 $$
 
-* $h_0$ = hauteur initiale
-* $\dot{h}_0$ = vitesse initiale (souvent 0 si on lâche la balle)
+* $$h_0$$ = hauteur initiale
+* $$\dot{h}_0$$ = vitesse initiale (souvent 0 si on lâche la balle)
 
 Donc pour une balle lâchée :
 $$
@@ -2227,7 +2227,7 @@ C’est exactement la **chute rectiligne uniformément accélérée** que vous c
 <!-- ###################################################################### -->
 ## How Maxwell's equations can be derived from a variational principle?
 
-The amazing thing is that the four **Maxwell equations** can be obtained from **one single variational principle**, exactly like $F=ma$. The difference is that instead of a particle trajectory $x(t)$, we now vary **fields in spacetime**.
+The amazing thing is that the four **Maxwell equations** can be obtained from **one single variational principle**, exactly like $$F=ma$$. The difference is that instead of a particle trajectory $$x(t)$$, we now vary **fields in spacetime**.
 
 The equations describe the electromagnetic field discovered by James Clerk Maxwell.
 
@@ -2239,7 +2239,7 @@ The equations describe the electromagnetic field discovered by James Clerk Maxwe
 
 In mechanics we had:
 
-* variable: $x(t)$
+* variable: $$x(t)$$
 * action:
 
 $$
@@ -2248,13 +2248,13 @@ $$
 
 In electromagnetism we instead describe **fields**:
 
-* electric field $ \mathbf{E}(x,t) $
-* magnetic field $ \mathbf{B}(x,t) $
+* electric field $$ \mathbf{E}(x,t) $$
+* magnetic field $$ \mathbf{B}(x,t) $$
 
 But varying vector fields directly is inconvenient. Instead we introduce **potentials**:
 
-* scalar potential $ \phi $
-* vector potential $ \mathbf{A} $
+* scalar potential $$ \phi $$
+* vector potential $$ \mathbf{A} $$
 
 The physical fields are defined by
 
@@ -2288,17 +2288,17 @@ $$
 
 where
 
-* $\rho$ = charge density
-* $\mathbf{J}$ = current density
+* $$\rho$$ = charge density
+* $$\mathbf{J}$$ = current density
 
 Interpretation:
 
 | Term        | Meaning               |
 | ----------- | --------------------- |
-| $E^2$       | electric field energy |
-| $B^2$       | magnetic field energy |
-| $\rho \phi$ | coupling to charge    |
-| $J\cdot A$  | coupling to current   |
+| $$E^2$$       | electric field energy |
+| $$B^2$$       | magnetic field energy |
+| $$\rho \phi$$ | coupling to charge    |
+| $$J\cdot A$$  | coupling to current   |
 
 So the action contains **field energy + interaction with charges**.
 
@@ -2326,7 +2326,7 @@ $$
 
 From this we obtain **Euler–Lagrange equations for fields**.
 
-For a field $q$:
+For a field $$q$$:
 
 $$
 \partial_\mu
@@ -2345,7 +2345,7 @@ This is the field version of the Euler–Lagrange equation.
 ### 4. Vary the scalar potential
 {: .no_toc }
 
-When we vary $ \phi $, the calculation gives:
+When we vary $$ \phi $$, the calculation gives:
 
 $$
 \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
@@ -2359,7 +2359,7 @@ This is **Gauss's law**.
 ### 5. Vary the vector potential
 {: .no_toc }
 
-Varying $ \mathbf{A} $ gives:
+Varying $$ \mathbf{A} $$ gives:
 
 $$
 \nabla \times \mathbf{B} - \frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}
@@ -2523,7 +2523,7 @@ This is how Maxwell predicted that **light is an electromagnetic wave**.
 ### 10. Summary
 {: .no_toc }
 
-Just like $F=ma$ comes from extremizing
+Just like $$F=ma$$ comes from extremizing
 
 $$
 S=\int (T-V),dt
@@ -2585,15 +2585,15 @@ What we see with the **principle of action** is indeed very similar to the idea 
 ### 1. Classique vs quantique
 {: .no_toc }
 
-* **Classique** : l’objet suit un **chemin unique** qui rend l’action $S$ stationnaire.
+* **Classique** : l’objet suit un **chemin unique** qui rend l’action $$S$$ stationnaire.
 * **Quantique** : une particule **explore tous les chemins possibles** entre deux points, pas seulement celui qui minimise l’action. Chaque chemin contribue avec un **poids complexe** :
 
 $$
 \text{Amplitude} \sim e^{i S/\hbar}
 $$
 
-* $S$ = action pour ce chemin
-* $\hbar$ = constante de Planck réduite
+* $$S$$ = action pour ce chemin
+* $$\hbar$$ = constante de Planck réduite
 
 Le chemin classique émerge comme **celui dont les contributions des chemins voisins s’ajoutent de façon constructive**, alors que les chemins "bizarres" s’annulent par interférences.
 
@@ -2603,7 +2603,7 @@ Le chemin classique émerge comme **celui dont les contributions des chemins voi
 ### 2. Intuition
 {: .no_toc }
 
-* En classique, $\delta S = 0$ sélectionne le chemin réel.
+* En classique, $$\delta S = 0$$ sélectionne le chemin réel.
 * En quantique, **tous les chemins existent**, mais le chemin classique correspond au **maximum d’interférences constructives**, ce qui explique pourquoi les lois classiques émergent à grande échelle.
 
 
