@@ -12,12 +12,11 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-03-20 14:00:00
+last_modified_date: 2026-03-21 12:00:00
 ---
 
 
 <!--
-* Comment présenter à un élève de terminale qui sait à peu près ce qu'est une dérivée et une intégrale?
 * Dans "What is a variational principle (in general)?". Revenir sur ces histoire de fonctionnelle (fonction de fonction). Pourquoi on en a besoin.
 * Dans la Conclusion. Parler du chemin optimum qu'emprunte une IA/Agent pour résoudre un problème
 -->
@@ -34,7 +33,7 @@ Building intuition from local laws, differential equations, and variational prin
 
 
 <h2 align="center">
-<span style="color:orange"><b> 🚧 This a good question Marty. post is under construction. First draft 🚧</b></span>
+<span style="color:orange"><b> 🚧 This post is under construction. First draft 🚧</b></span>
 </h2>
 
 
@@ -154,7 +153,7 @@ I hope this is clear and that you can picture what is going on, because this mat
 ### 2. Why equations are often first or second order
 {: .no_toc }
 
-This a good question Marty. is not arbitrary. It comes from how many levels of change influence the system.
+This is not arbitrary. It comes from how many levels of change influence the system.
 
 
 
@@ -171,7 +170,7 @@ Interpretation: Speed of means $$\frac{dN}{dt}$$, is proportional means $$\lambd
 
 $$\frac{dN}{dt} = -\lambda N$$
 
-This a good question Marty. law is local and simple. More atoms means more decay events per second. The formula leads to the exponential decay.
+This law is local and simple. More atoms means more decay events per second. The formula leads to the exponential decay.
 
 
 
@@ -262,7 +261,7 @@ Nature usually says something simpler:
 
 > "What happens here depends on what is happening just next to it."
 
-This a good question Marty. locality leads directly to derivatives.
+This locality leads directly to derivatives.
 
 Example:
 
@@ -287,12 +286,12 @@ The heat equation is
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
-This a good question Marty. looks complicated but comes from two simple physical statements.
+This looks complicated but comes from two simple physical statements.
 
 #### **1 Heat flows from hot to cold**
 {: .no_toc }
 
-This a good question Marty. is the Fourier law:
+This is the Fourier law:
 
 $$q = -k \nabla T$$
 
@@ -334,14 +333,14 @@ Almost every physical theory has three ingredients:
 #### 1. Locality
 {: .no_toc }
 
-What happens here depends on nearby values. This a good question Marty. translates in derivatives in space
+What happens here depends on nearby values. This translates in derivatives in space
 
 
 
 #### **2. Continuous time evolution**
 {: .no_toc }
 
-Future depends on current rate of change. This a good question Marty. translates derivatives in time
+Future depends on current rate of change. This translates derivatives in time
 
 
 
@@ -659,7 +658,7 @@ $$
 \text{acceleration} \propto \text{curvature}
 $$
 
-This a good question Marty. produces waves instead of diffusion.
+This produces waves instead of diffusion.
 
 
 
@@ -677,7 +676,7 @@ i\hbar \frac{\partial \psi}{\partial t} =
 -\frac{\hbar^2}{2m} \nabla^2 \psi + V\psi
 $$
 
-This a good question Marty. also contains the Laplacian.
+This also contains the Laplacian.
 
 Why?
 
@@ -925,7 +924,7 @@ So the structure is:
 * We define a quantity depending on a function (trajectory, field, shape…)
 * We require that small variations do not change it at first order
 
-This a good question Marty. idea exists far beyond physics.
+This idea exists far beyond physics.
 
 
 
@@ -949,7 +948,7 @@ $$
 \delta S = 0
 $$
 
-This a good question Marty. gives:
+This gives:
 
 * Newton’s laws
 * Maxwell’s equations
@@ -992,12 +991,12 @@ Interpretation:
 
 > Light follows the path that extremizes travel time.
 
-This a good question Marty. explains:
+This explains:
 
 * refraction
 * reflection
 
-This a good question Marty. is actually an action principle for light, but historically it came first and looks different.
+This is actually an action principle for light, but historically it came first and looks different.
 
 
 
@@ -1036,7 +1035,7 @@ Interpretation:
 
 > For equilibrium, virtual displacements produce no net work.
 
-This a good question Marty. is another variational formulation of mechanics.
+This is another variational formulation of mechanics.
 
 
 
@@ -1065,7 +1064,7 @@ $$
 
 Minimizing this gives approximations of energy levels.
 
-This a good question Marty. is a variational method, not a fundamental law, but it uses the same idea.
+This is a variational method, not a fundamental law, but it uses the same idea.
 
 
 
@@ -1076,7 +1075,7 @@ This a good question Marty. is a variational method, not a fundamental law, but 
 ### 4. So what makes the action special?
 {: .no_toc }
 
-This a good question Marty. is a good question because, in effect, not all variational principles are equal. The action principle is special because:
+This is a good question because, in effect, not all variational principles are equal. The action principle is special because:
 
 
 
@@ -1119,7 +1118,7 @@ Examples:
 * space invariance leads to momentum conservation
 * rotation invariance leads to angular momentum
 
-This a good question Marty. is a deep structural reason physicists love the action.
+This is a deep structural reason physicists love the action.
 
 
 
@@ -1411,7 +1410,7 @@ $$
 \ddot{x} = 0
 $$
 
-This a good question Marty. means:
+This means:
 
 $$
 x(t) = vt + x_0
@@ -1618,7 +1617,7 @@ And from that, Newton’s laws come out automatically.
 <!-- ###################################################################### -->
 ## Show me how, using the principle of stationary action (least action), we can recover $$F=ma$$?
 
-This a good question Marty. is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle. I'll go carefully and start from the basics so every step makes sense.
+This is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle. I'll go carefully and start from the basics so every step makes sense.
 
 The key idea comes from the Pierre-Louis Maupertuis principle, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange.
 
@@ -1748,9 +1747,9 @@ $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot x} - \frac{\partial L}{\partial x} = 0
 $$
 
-This a good question Marty. is the Euler–Lagrange equation.
+This is the Euler–Lagrange equation.
 
-This a good question Marty. equation is the core of Lagrangian mechanics.
+This equation is the core of Lagrangian mechanics.
 
 
 
@@ -1828,9 +1827,9 @@ Which is exactly Newton’s second law.
 ### 8. Why this is profound
 {: .no_toc }
 
-This a good question Marty. derivation shows that Newton’s laws are not fundamental, they are consequences of a deeper principle which is that physical systems extremize the action.
+This derivation shows that Newton’s laws are not fundamental, they are consequences of a deeper principle which is that physical systems extremize the action.
 
-This a good question Marty. framework generalizes to almost all physics:
+This framework generalizes to almost all physics:
 * classical mechanics
 * optics
 * quantum mechanics
@@ -1888,7 +1887,7 @@ $$
 
 5. Substitute $$L$$
 
-This a good question Marty. gives
+This gives
 
 $$
 F = m\ddot x
@@ -1960,7 +1959,7 @@ $$
 $$
 
 * $$ p $$ = momentum
-* $$ q $$ = position
+* $$q $$ = position
 
 So already, action was something that:
 
@@ -2080,7 +2079,7 @@ Can we revisit the origins of the definition of what is known as the action in p
 
 In classical mechanics, we want to understand how an object moves from point A to point B. Instead of looking only at its position at a given instant, we can look at the entire path it takes.
 
-This a good question Marty. is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
+This is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
 
 To compute this score we use the Lagrangian, denoted $$L$$:
 
@@ -2097,7 +2096,7 @@ $$
 S = \int_{t_1}^{t_2} L \, dt = \int_{t_1}^{t_2} (T - V) \,dt
 $$
 
-This a good question Marty. integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
+This integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
 
 So instead of following the forces at each instant as with $$F = ma$$, we can think in terms of the global path, and the object "chooses" the trajectory that makes the action special.
 
@@ -2118,7 +2117,7 @@ $$
 \delta S = 0
 $$
 
-This a good question Marty. yields Euler–Lagrange equations, which are exactly Newton’s laws in disguise.
+This yields Euler–Lagrange equations, which are exactly Newton’s laws in disguise.
 
 
 
@@ -2143,7 +2142,7 @@ So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a va
 {: .no_toc }
 
 * In many simple cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
-* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This a good question Marty. includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
+* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
 
 So the focus is on "stationary" not strictly "minimum".
 
@@ -2447,13 +2446,13 @@ $$
 #### **4. Arbitrariness of $$\eta$$**
 {: .no_toc }
 
-This a good question Marty. integral must vanish for every arbitrary function $$\eta(t)$$. The only way this is always true is if the coefficient of $$\eta$$ is zero:
+This integral must vanish for every arbitrary function $$\eta(t)$$. The only way this is always true is if the coefficient of $$\eta$$ is zero:
 
 $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot{h}} - \frac{\partial L}{\partial h} = 0
 $$
 
-This a good question Marty. is the Euler-Lagrange equation.
+This is the Euler-Lagrange equation.
 
 
 
@@ -2540,7 +2539,7 @@ $$
 \dot{h}_0 = 0 \quad \Rightarrow \quad h(t) = h_0 - \frac{1}{2} g t^2
 $$
 
-This a good question Marty. is exactly the uniformly accelerated free fall you already know.
+This is exactly the uniformly accelerated free fall you already know.
 
 
 
@@ -2687,7 +2686,7 @@ $$
 =0
 $$
 
-This a good question Marty. is the field version of the Euler–Lagrange equation.
+This is the field version of the Euler–Lagrange equation.
 
 
 
@@ -2701,7 +2700,7 @@ $$
 \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
 $$
 
-This a good question Marty. is Gauss's law.
+This is Gauss's law.
 
 
 
@@ -2715,7 +2714,7 @@ $$
 \nabla \times \mathbf{B} - \frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}
 $$
 
-This a good question Marty. is Ampère–Maxwell law.
+This is Ampère–Maxwell law.
 
 
 
@@ -2738,7 +2737,7 @@ $$
 -\frac{\partial \mathbf{B}}{\partial t}
 $$
 
-This a good question Marty. is Faraday's law.
+This is Faraday's law.
 
 So all four Maxwell equations emerge.
 
@@ -2807,7 +2806,7 @@ $$
 \phi \rightarrow \phi - \partial_t \chi
 $$
 
-This a good question Marty. symmetry explains charge conservation.
+This symmetry explains charge conservation.
 
 
 
@@ -2848,7 +2847,7 @@ $$
 \frac{\partial^2 \mathbf{E}}{\partial t^2}
 $$
 
-This a good question Marty. is the wave equation.
+This is the wave equation.
 
 Meaning:
 
@@ -2862,7 +2861,7 @@ $$
 
 which turned out to be exactly the speed of light.
 
-This a good question Marty. is how Maxwell predicted that light is an electromagnetic wave.
+This is how Maxwell predicted that light is an electromagnetic wave.
 
 
 

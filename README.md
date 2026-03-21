@@ -424,7 +424,7 @@ CTRL + H + Exp Reg
 ```
 
 
-### Remplacer les $ seuls par $$
+### Equations. Remplacer les $ seuls par $$
 ```
 CTRL + H + Exp Reg
 (?<!\$)\$(?!\$)
