@@ -1567,6 +1567,117 @@ $$
 $$
 
 
+
+
+
+
+
+
+
+
+
+
+#### Side Note about Integration by Parts
+
+Let’s start from something we definitely "should" know: $$\frac{d}{dt}(uv) = u'v + uv' $$. This is the product rule for derivatives. If you don't remember, find a bridge and jump. I can't do anything for you. You are lost for the cause.
+
+Let's turn this into something useful and we’re going to reverse the logic. If:
+
+$$
+\frac{d}{dt}(uv) = u'v + uv'
+$$
+
+then integrating both sides gives:
+
+$$
+\int \frac{d}{dt}(uv) \, dt = \int u'v \, dt + \int uv' \, dt
+$$
+
+Let's simplify. The left side is easy:
+
+$$
+\int \frac{d}{dt}(uv) \, dt = uv
+$$
+
+So we get:
+
+$$
+uv = \int u'v \, dt + \int uv' \, dt
+$$
+
+Let's cleanup our bedroom. It comes:
+
+
+$$
+\int uv' \, dt = uv - \int u'v \, dt
+$$
+
+This is integration by parts. Now, just for the fun and to make sure we are on the same page, let's apply it, again, to our case. We want to transform:
+
+$$
+\int \dot{x}\dot{\eta}, dt
+$$
+
+We match it with:
+* If $$ u = \dot{x} $$ then $$ u' = \ddot{x} $$
+* If $$ v' = \dot{\eta} $$ then $$ v = \eta $$
+
+Let's apply the formula
+
+$$
+\int \dot{x}\dot{\eta}, dt
+= \dot{x}\eta - \int \ddot{x}\eta, dt
+$$
+
+Since we’re working between two times $$ t_1 $$ and $$ t_2 $$, we write:
+
+$$
+= [\dot{x}\eta]_{t_1}^{t_2} - \int \ddot{x}\eta, dt
+$$
+
+
+The first term disappears because, remember, we chose:
+
+$$
+\eta(t_1) = \eta(t_2) = 0
+$$
+
+So:
+
+$$
+[\dot{x}\eta]_{t_1}^{t_2} = 0
+$$
+
+So we’re left with:
+
+$$
+\int \dot{x}\dot{\eta}, dt = - \int \ddot{x}\eta, dt
+$$
+
+And that’s exactly what we needed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### **Step 7: Key conclusion: Tadaa!**
 {: .no_toc }
 
