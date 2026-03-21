@@ -1244,6 +1244,362 @@ Final takeaway
 
 
 
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## I'm in high school, could you show me an example I can understand?
+
+Alright, let’s tackle this carefully and make it *actually understandable* at a high school (terminale) level. We’ll go step by step, with a one classic example of stationary action: A particle moving in a straight line (free particle). I’ll explain both the **idea** and the **calculations**, without skipping the important reasoning.
+
+
+### First: Again... What does "stationary action" mean?
+
+In physics, we define something called the **action**:
+
+$$
+S = \int_{t_1}^{t_2} L , dt
+$$
+
+* $$ S $$: the action
+* $$ L $$: the Lagrangian (usually $$ L = T - V $$)
+* $$ T $$: kinetic energy
+* $$ V $$: potential energy
+
+The principle says:
+
+> The real motion of a system is the one that makes the action stationary (usually a minimum).
+
+"Stationary" means:
+
+* not necessarily the smallest,
+* but small variations don’t change it at first order.
+
+
+### Key idea (super important)
+
+We imagine a **small change in the path**:
+
+$$
+x(t) \rightarrow x(t) + \varepsilon \eta(t)
+$$
+
+* $$ \varepsilon $$: very small number
+* $$ \eta(t) $$: arbitrary small function (but zero at the endpoints)
+
+We then ask "How does the action change?"
+
+If:
+
+$$
+\delta S = 0
+$$
+
+then the path is physical.
+
+
+### Free particle (no forces applied)
+
+#### **Step 1: Define the system**
+
+A particle of mass $$ m $$, moving freely.
+
+* No forces means no potential energy
+* So:
+
+$$
+L = T = \frac{1}{2} m v^2
+$$
+
+and since $$ v = \dot{x} $$:
+
+$$
+L = \frac{1}{2} m \dot{x}^2
+$$
+
+
+#### **Step 2: Write the action**
+
+$$
+S = \int_{t_1}^{t_2} \frac{1}{2} m \dot{x}^2 , dt
+$$
+
+
+#### **Step 3: Vary the path**
+
+We replace:
+
+$$
+x(t) \rightarrow x(t) + \varepsilon \eta(t)
+$$
+
+Then:
+
+$$
+\dot{x} \rightarrow \dot{x} + \varepsilon \dot{\eta}
+$$
+
+
+#### **Step 4: Plug into the action**
+
+$$
+S(\varepsilon) = \int \frac{1}{2} m (\dot{x} + \varepsilon \dot{\eta})^2 dt
+$$
+
+Expand:
+
+$$
+= \int \frac{1}{2} m \left( \dot{x}^2 + 2\varepsilon \dot{x}\dot{\eta} + \varepsilon^2 \dot{\eta}^2 \right) dt
+$$
+
+
+#### **Step 5: Keep only small terms**
+
+We ignore ( \varepsilon^2 ) (too small):
+
+$$
+S(\varepsilon) \approx S(0) + \varepsilon \int m \dot{x}\dot{\eta} , dt
+$$
+
+So:
+
+$$
+\delta S = \varepsilon \int m \dot{x}\dot{\eta} , dt
+$$
+
+
+#### **Step 6: Integration by parts**
+
+We transform:
+
+$$
+\int \dot{x}\dot{\eta} dt
+$$
+
+Using integration by parts:
+
+$$
+= [\dot{x}\eta]_{t_1}^{t_2} - \int \ddot{x} \eta dt
+$$
+
+But:
+
+* $$ \eta(t_1) = \eta(t_2) = 0 $$
+
+So:
+
+$$
+\delta S = -\varepsilon \int m \ddot{x} \eta dt
+$$
+
+
+#### **Step 7: Key conclusion**
+
+For this to be zero **for any function ( \eta )**:
+
+$$
+m \ddot{x} = 0
+$$
+
+
+#### **Final result: Tadaa!**
+
+$$
+\ddot{x} = 0
+$$
+
+This means:
+
+$$
+x(t) = vt + x_0
+$$
+
+Straight-line motion at constant speed — exactly Newton’s first law.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## I'm still in high school, can you show me another example?
+
+
+### Particle in gravity
+
+Because, now it gets more interesting.
+
+
+#### **Step 1: Define energies**
+
+* Kinetic energy:
+
+$$
+T = \frac{1}{2} m \dot{x}^2
+$$
+
+* Potential energy (gravity):
+
+$$
+V = mgx
+$$
+
+So:
+
+$$
+L = \frac{1}{2} m \dot{x}^2 - mgx
+$$
+
+
+#### **Step 2: Action**
+
+$$
+S = \int \left( \frac{1}{2} m \dot{x}^2 - mgx \right) dt
+$$
+
+
+#### **Step 3: Vary the path**
+
+Same idea:
+
+$$
+x \rightarrow x + \varepsilon \eta
+$$
+
+Then:
+
+* $$ \dot{x} \rightarrow \dot{x} + \varepsilon \dot{\eta} $$
+* $$ x \rightarrow x + \varepsilon \eta $$
+
+
+#### **Step 4: Plug in**
+
+$$
+S(\varepsilon) = \int \left( \frac{1}{2} m (\dot{x} + \varepsilon \dot{\eta})^2 - mg(x + \varepsilon \eta) \right) dt
+$$
+
+Expand:
+
+$$
+= S(0) + \varepsilon \int \left( m \dot{x}\dot{\eta} - mg\eta \right) dt
+$$
+
+
+#### **Step 5: Compute variation**
+
+$$
+\delta S = \varepsilon \int \left( m \dot{x}\dot{\eta} - mg\eta \right) dt
+$$
+
+
+#### **Step 6: Integration by parts again**
+
+$$
+\int m \dot{x}\dot{\eta} dt = -\int m \ddot{x} \eta dt
+$$
+
+So:
+
+$$
+\delta S = \varepsilon \int \left( -m \ddot{x} - mg \right)\eta , dt
+$$
+
+
+
+#### **Step 7: Final condition**
+
+For all $$ \eta $$:
+
+$$
+-m \ddot{x} - mg = 0
+$$
+
+
+#### **Final result: Tadaa!**
+
+$$
+m \ddot{x} = -mg
+$$
+
+or:
+
+$$
+\ddot{x} = -g
+$$
+
+That’s exactly the equation of a falling object.
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## What you should remember from the 2 previous examples
+
+Both examples follow the same structure:
+
+1. Write $$ L = T - V $$
+2. Compute the action
+3. Slightly change the path
+4. Expand
+5. Set $$ \delta S = 0 $$
+6. Get the equation of motion
+
+
+Instead of saying:
+
+> "Forces determine motion"
+
+The principle of stationary action says:
+
+> "Nature chooses the path that makes the action stable."
+
+And from that, **Newton’s laws come out automatically**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
