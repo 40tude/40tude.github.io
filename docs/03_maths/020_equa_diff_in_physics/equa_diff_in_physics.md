@@ -2393,28 +2393,28 @@ The full set is:
 **Gauss law**
 
 $$
-\nabla \cdot E = \frac{\rho}{\epsilon_0}
+\nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
 $$
 
 **Gauss law for magnetism**
 
 $$
-\nabla \cdot B = 0
+\nabla \cdot \mathbf{B} = 0
 $$
 
 **Faraday law**
 
 $$
-\nabla \times E =
--\frac{\partial B}{\partial t}
+\nabla \times \mathbf{E} =
+-\frac{\partial \mathbf{B}}{\partial t}
 $$
 
 **Ampère–Maxwell law**
 
 $$
-\nabla \times B =
-\mu_0 J +
-\frac{1}{c^2}\frac{\partial E}{\partial t}
+\nabla \times \mathbf{B} =
+\mu_0 \mathbf{J} +
+\frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t}
 $$
 
 All from one action.
@@ -2480,9 +2480,9 @@ So Maxwell theory is actually the first modern field theory.
 If we remove charges ((\rho=0), (J=0)) and combine Maxwell equations, we obtain
 
 $$
-\nabla^2 E =
+\nabla^2 \mathbf{E} =
 \frac{1}{c^2}
-\frac{\partial^2 E}{\partial t^2}
+\frac{\partial^2 \mathbf{E}}{\partial t^2}
 $$
 
 This is the wave equation.
