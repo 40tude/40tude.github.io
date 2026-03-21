@@ -144,7 +144,9 @@ For a quantity $$x(t)$$, which express where you are in function of time:
 So the moment we want to describe motion, derivatives appear naturally.
 
 #### **Side Note**
-J'espère que c'est clair et que tu visualise bien ce qui se passe car c'est important pour la suite. Imagine que tu marches le long d'une route qui est droite et plate. Tu fais un pas de 1m toute les secondes (tu es plus grand que moi). Donc, si je prends une photo toutes les secondes je vais te voir progresser vers la droite par exemple. Par rapport au point de départ tu vas passer successivement par les "graduations" 1m, 2m... Dans ce contexte, c'est ça $$x(t)$$. C'est clair pour toi? Ok... Maintenant, quelle est ta vitesse? Si tu ne sais pas, rappelle toi que sur les autoroutes on roule à 130 km/h. Donc une vitesse c'est une distance divisée par un temps, c'est la variation de ton abscisse $$x$$ pendant un intervalle de temps, c'est le rapport $$\frac{dx}{dt}$$ (ici $$dx$$ et $$dt$$ veulent variation de $$x$$ et de $$t$$ respectivement). Finalement, l'accélération c'est la variation de la vitesse pendant un intervalle de temps. C'est ça qui te plaque dans ton siège de voiture au démarrage. Mais bon, la vitesse c'est déjà la variation de $$x$$ pendant ce même intervalle de temps. Du coup l'accélération c'est le rapport $$\frac{d^2x}{dt^2}$$.
+{: .no_toc }
+
+I hope this is clear and that you can picture what is going on, because this matters for what follows. Imagine you are walking along a straight, flat road. You take one step of 1 m every second (you are taller than me). So if I take a photo every second, I will see you moving to the right, say. From the starting point you will pass through positions 1 m, 2 m, and so on. In that context, this is exactly what $$x(t)$$ means. Clear? Good. Now, what is your speed? If you are not sure, remember that on highways we drive at 130 km/h. Speed is a distance divided by a time: it is the change in your position $$x$$ over a time interval, the ratio $$\frac{dx}{dt}$$ (where $$dx$$ and $$dt$$ stand for "change in $$x$$" and "change in $$t$$" respectively). Finally, acceleration is the change in speed over a time interval. That is what pushes you back into your car seat when you accelerate. But speed is already the change in $$x$$ over a time interval, so acceleration is the ratio $$\frac{d^2x}{dt^2}$$.
 
 
 
@@ -156,7 +158,7 @@ This is not arbitrary. It comes from how many levels of change influence the sys
 
 
 
-#### **First derivative → flow / transport**
+#### **First derivative -> flow / transport**
 {: .no_toc }
 
 If a phenomenon depends only on the rate of change, we get first-order equations.
@@ -169,13 +171,13 @@ Interpretation: Speed of means $$\frac{dN}{dt}$$, is proportional means $$\lambd
 
 $$\frac{dN}{dt} = -\lambda N$$
 
-This law is local and simple. More atoms → more decay events per second. The formula leads to the exponential decay.
+This law is local and simple. More atoms means more decay events per second. The formula leads to the exponential decay.
 
 
 
 
 
-#### **Second derivative → dynamics / inertia**
+#### **Second derivative -> dynamics / inertia**
 {: .no_toc }
 
 Second derivatives appear when acceleration matters.
@@ -212,13 +214,7 @@ Two initial conditions means second order equation.
 ### 3. But how did Newton discover $$F = ma$$?
 {: .no_toc }
 
-Important point:
-
-**Newton did not guess the equation randomly.**
-
-It emerged from experiments + symmetry principles.
-
-
+Important point: Newton did not guess the equation randomly. It emerged from experiments + symmetry principles.
 
 
 #### **Observations known before Newton**
@@ -226,8 +222,8 @@ It emerged from experiments + symmetry principles.
 
 Galileo had already measured that:
 
-* objects fall with constant acceleration**
-* motion without forces → constant velocity
+* objects fall with constant acceleration
+* motion without forces means constant velocity
 
 Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle, until then, people assumed the speed of falling bodies was proportional to their weight.
 
@@ -237,8 +233,8 @@ $$a = \text{constant when force is constant}$$
 
 Then experiments showed:
 
-* double the force → double the acceleration
-* double the mass → half the acceleration
+* double the force -> double the acceleration
+* double the mass -> half the acceleration
 
 So empirically:
 
@@ -319,10 +315,10 @@ $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
 So the second derivative appears because:
 
-* heat flow depends on gradient**
-* conservation introduces divergence**
+* heat flow depends on gradient
+* conservation introduces divergence
 
-Gradient of gradient → Laplacian.
+Gradient of gradient, this is the Laplacian.
 
 
 
@@ -338,18 +334,14 @@ Almost every physical theory has three ingredients:
 #### 1. Locality
 {: .no_toc }
 
-What happens here depends on nearby values.
-
-→ derivatives in space
+What happens here depends on nearby values. This translates in derivatives in space
 
 
 
 #### **2. Continuous time evolution**
 {: .no_toc }
 
-Future depends on current rate of change.
-
-→ derivatives in time
+Future depends on current rate of change. This translates derivatives in time
 
 
 
@@ -415,8 +407,8 @@ These are expressed mathematically using divergences and derivatives.
 
 Most fundamental laws in physics are second order because:
 
-* systems have inertia**
-* energy depends on velocity squared**
+* systems have inertia
+* energy depends on velocity squared
 * conservation of momentum naturally leads to acceleration
 
 Examples:
@@ -437,7 +429,7 @@ Examples:
 
 We see derivatives everywhere because physics tries to answer:
 
-> How does the state of the system change locally**?
+> How does the state of the system change locally?
 
 Derivatives are simply the mathematical language of change.
 
@@ -602,8 +594,8 @@ The second derivative tells us whether the value at a point is:
 
 Graphically:
 
-* (u'' > 0) → valley
-* (u'' < 0) → hill
+* $$u'' > 0$$ implies valley
+* $$u'' < 0$$ implies hill
 
 So the second derivative tells us how different a point is from its surroundings.
 
@@ -646,7 +638,7 @@ Result: the system diffuses.
 ### 4. Example 2: waves
 {: .no_toc }
 
-The wave equation is
+The wave equation is:
 
 $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u
@@ -654,18 +646,12 @@ $$
 
 Example: vibrating string.
 
-Here the interpretation is different.
-
-If a point on the string is curved, tension pulls it back toward equilibrium.
-
-More curvature → stronger restoring force.
-
-That force produces acceleration, which is why the time derivative is second order.
+Here the interpretation is different. If a point on the string is curved, tension pulls it back toward equilibrium. More curvature means stronger restoring force. That force produces acceleration, which is why the time derivative is second order.
 
 So:
 
-* curvature → force
-* force → acceleration
+* curvature means force
+* force means acceleration
 
 Thus:
 
@@ -745,7 +731,7 @@ Same mathematical ingredient, different physics.
 
 
 <!-- ###################################################################### -->
-### 7. Why nature loves local curvature laws**
+### 7. Why nature loves local curvature laws
 {: .no_toc }
 
 There are several deep reasons.
@@ -801,7 +787,7 @@ So the Laplacian appears naturally from variational principles.
 
 We can think of the Laplacian as:
 
-> difference between a point and the average of its neighbors**
+> difference between a point and the average of its neighbors
 
 In fact, on a discrete grid:
 
@@ -825,9 +811,7 @@ So the equations basically say:
 ### 9. Why physics equations look simple
 {: .no_toc }
 
-Another surprising fact:
-
-**The real world equations are often the simplest possible ones.**
+In fact, the real world equations are often the simplest possible ones.
 
 Physicists usually assume:
 
@@ -852,9 +836,9 @@ Which explains why the same equations appear everywhere.
 
 Derivatives appear in physics because:
 
-* physics describes change**
-* laws are local**
-* systems react to differences with neighbors**
+* physics describes change
+* laws are local
+* systems react to differences with neighbors
 * curvature (second derivative) measures those differences
 
 That’s why the same structures appear in:
@@ -1131,9 +1115,9 @@ Through Emmy Noether’s theorem:
 
 Examples:
 
-* time invariance → energy conservation
-* space invariance → momentum conservation
-* rotation invariance → angular momentum
+* time invariance leads to energy conservation
+* space invariance leads to momentum conservation
+* rotation invariance leads to angular momentum
 
 This is a deep structural reason physicists love the action.
 
@@ -1151,7 +1135,7 @@ In modern physics, the hierarchy is roughly:
 
   * Action principle (central, universal in fundamental physics)
 
-    * specific Lagrangians → specific theories
+    * Specific Lagrangians for specific theories
 
 So yes:
 
@@ -1171,7 +1155,7 @@ One way to think about it:
 
 Instead of describing physics as:
 
-> "local cause → local effect"
+> "local cause leads to local effect"
 
 We describe it as:
 
@@ -1208,9 +1192,7 @@ means:
 * maximum
 * or saddle point
 
-So the correct name is:
-
-> principle of stationary action**
+So the correct name is: principle of stationary action
 
 
 
@@ -1222,17 +1204,17 @@ So the correct name is:
 
 We can think of it like this:
 
-* Differential equations → local description**
-* Variational principles → global description**
+* Differential equations for local description
+* Variational principles for global description
 
 They are two equivalent ways of encoding the same physics.
 
 Final takeaway
 
-* Variational principles are a general mathematical framework**
-* The principle of least action is one specific (and extremely powerful) example**
+* Variational principles are a general mathematical framework
+* The principle of least action is one specific (and extremely powerful) example
 * Many other principles (optics, statics, thermodynamics) fit into the same pattern
-* Modern physics is largely built on the action because of its universality and symmetry properties**
+* Modern physics is largely built on the action because of its universality and symmetry properties
 
 
 
@@ -1291,7 +1273,7 @@ where:
 
 * $$x(t)$$ = position
 * $$\dot x = dx/dt$$ = velocity
-* $$L$$ = Lagrangian**
+* $$L$$ = Lagrangian
 
 For a particle in a potential $$V(x)$$:
 
@@ -1477,16 +1459,9 @@ Which is exactly Newton’s second law.
 ### 8. Why this is profound
 {: .no_toc }
 
-This derivation shows something remarkable:
-
-**Newton’s laws are not fundamental, they are consequences of a deeper principle.**
-
-The deeper principle is:
-
-> Physical systems extremize the action.
+This derivation shows that Newton’s laws are not fundamental, they are consequences of a deeper principle which is that physical systems extremize the action.
 
 This framework generalizes to almost all physics:
-
 * classical mechanics
 * optics
 * quantum mechanics
@@ -1550,7 +1525,7 @@ $$
 
 5. Substitute $$L$$
 
-→ gives
+This gives
 
 $$
 F = m\ddot x
@@ -1626,7 +1601,7 @@ $$
 
 So already, action was something that:
 
-* depends on the whole path**
+* depends on the whole path
 * accumulates along motion
 * measures something like "quantity of motion × distance"
 
@@ -1638,8 +1613,8 @@ So already, action was something that:
 
 The modern definition came later with:
 
-* Joseph-Louis Lagrange**
-* William Rowan Hamilton**
+* Joseph-Louis Lagrange
+* William Rowan Hamilton
 
 Hamilton (1830s) is the one who really established:
 
@@ -1657,8 +1632,8 @@ and turned "action" into a central, precise mathematical object.
 
 The name "action" survived even though the meaning became more abstract, for a few reasons:
 
-* It still represents something accumulated over motion**
-* It connects to energy and dynamics**
+* It still represents something accumulated over motion
+* It connects to energy and dynamics
 * It has the flavor of a global measure of what happens along a trajectory
 
 Even today, physicists sometimes loosely interpret action as:
@@ -1692,7 +1667,7 @@ So "action" is really:
 {: .no_toc }
 
 * The word "action" was introduced by Maupertuis in the 18th century
-* It originally meant something like "effort" or "amount of motion"**
+* It originally meant something like "effort" or "amount of motion"
 * It was later formalized by Lagrange and Hamilton into $$S = \int (T - V) \, dt$$
 * The name stuck even as the concept became more abstract and central
 
@@ -1740,28 +1715,28 @@ Can we revisit the origins of the definition of what is known as the action in p
 ### 1. What the action is
 {: .no_toc }
 
-En mécanique classique, on veut comprendre comment un objet bouge d’un point A à un point B. Au lieu de regarder seulement sa position à un instant donné, on peut regarder tout le chemin qu’il prend.
+In classical mechanics, we want to understand how an object moves from point A to point B. Instead of looking only at its position at a given instant, we can look at the entire path it takes.
 
-C’est là qu’intervient l’**action, notée $$S$$. C’est une sorte de "**score**" qu’on calcule pour chaque chemin possible. Plus concrètement, pour chaque trajectoire que l’objet pourrait suivre entre $$t_1$$ et $$t_2$$, on associe un nombre $$S$$ qui résume "combien d’énergie il dépense pour se déplacer".
+This is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
 
-Pour calculer ce score, on utilise le Lagrangien, noté $$L$$ :
+To compute this score we use the Lagrangian, denoted $$L$$:
 
 $$
 L = T - V
 $$
 
-* $$T$$ est l’énergie cinétique : l’énergie due au mouvement, qui dépend de la vitesse.
-* $$V$$ est l’énergie potentielle : l’énergie due aux forces qui "poussent ou tirent" l’objet (comme la gravité ou un ressort).
+* $$T$$ is the kinetic energy: the energy due to motion, which depends on speed.
+* $$V$$ is the potential energy: the energy due to forces that "push or pull" the object (such as gravity or a spring).
 
-On fait ensuite l’intégrale de $$L$$ sur le temps entre $$t_1$$ et $$t_2$$ :
+We then integrate $$L$$ over time between $$t_1$$ and $$t_2$$:
 
 $$
 S = \int_{t_1}^{t_2} L \, dt = \int_{t_1}^{t_2} (T - V) \,dt
 $$
 
-Cette intégrale donne un seul nombre pour chaque chemin (encore une fois, pense à un score, à une note globale, une note "intégrale"). Le principe de moindre action dit que le chemin que l’objet choisit réellement rend ce nombre "stationnaire" (souvent minimum) par rapport à tous les autres chemins possibles.
+This integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
 
-Donc, plutôt que de suivre directement les forces à chaque instant comme avec $$F = ma$$, on peut penser en termes de chemin global et l’objet "choisit" la trajectoire qui rend l’action spéciale.
+So instead of following the forces at each instant as with $$F = ma$$, we can think in terms of the global path, and the object "chooses" the trajectory that makes the action special.
 
 
 
@@ -1903,18 +1878,18 @@ So the focus is on "stationary" not strictly "minimum".
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Mise en application sur une balle qui tombe sous l’effet de la gravité
+## Application to a ball falling under gravity
 
 
 
 <!-- ###################################################################### -->
-### 1. Définir les énergies
+### 1. Define the energies
 {: .no_toc }
 
-* Énergie cinétique $$T$$ : dépend de la vitesse de la balle. Si la balle tombe verticalement, $$T = \frac{1}{2} m v^2$$.
-* Énergie potentielle $$V$$ : due à la gravité, $$V = m g h$$, où $$h$$ est la hauteur au-dessus du sol.
+* Kinetic energy $$T$$: depends on the speed of the ball. If the ball falls vertically, $$T = \frac{1}{2} m v^2$$.
+* Potential energy $$V$$: due to gravity, $$V = m g h$$, where $$h$$ is the height above the ground.
 
-Le Lagrangien est donc :
+The Lagrangian is therefore:
 
 $$
 L = T - V = \frac{1}{2} m v^2 - m g h
@@ -1923,44 +1898,44 @@ $$
 
 
 <!-- ###################################################################### -->
-### 2. Action pour un chemin
+### 2. Action for a path
 {: .no_toc }
 
 
-Imaginons que la balle parte du point $$h_1$$ à $$t_1$$ et arrive à $$h_2$$ à $$t_2$$. On peut imaginer plusieurs chemins possibles, par exemple :
+Suppose the ball starts at height $$h_1$$ at time $$t_1$$ and arrives at $$h_2$$ at time $$t_2$$. We can imagine several possible paths, for example:
 
-1. Une chute droite et régulière (vitesse constante de plus en plus grande).
-2. Un chemin "zigzag" (imaginons que la balle saute en l’air avant de tomber).
-3. Un chemin très bizarre qui monte d’abord puis descend.
+1. A straight, regular fall (speed increasing steadily).
+2. A "zigzag" path (imagine the ball bouncing upward before falling).
+3. A very odd path that goes up first then comes back down.
 
-Pour chaque chemin, on calcule l’action :
+For each path we compute the action:
 
 $$
 S = \int_{t_1}^{t_2} \left( \frac{1}{2} m v(t)^2 - m g h(t) \right) dt
 $$
 
-Chaque chemin donne un nombre différent.
+Each path yields a different number.
 
 
 
 <!-- ###################################################################### -->
-### 3. La balle "choisit" le bon chemin
+### 3. The ball "chooses" the right path
 {: .no_toc }
 
-Le principe de l’action nous dit que le chemin réel suivi par la balle est celui qui rend $$S$$ stationnaire (souvent minimum).
+The action principle tells us that the actual path taken by the ball is the one that makes $$S$$ stationary (often a minimum).
 
-* Si tu imagines toutes les trajectoires possibles, la vraie trajectoire correspond à celle qui équilibre le plus harmonieusement énergie cinétique et énergie potentielle sur le temps.
-* Dans le cas de la chute libre, ça correspond simplement à une chute rectiligne uniformément accélérée, exactement ce que Newton nous dit avec (F = ma).
+* If you imagine all possible trajectories, the real one is the trajectory that most harmoniously balances kinetic energy and potential energy over time.
+* In the case of free fall, this simply corresponds to uniformly accelerated straight-line motion, exactly what Newton tells us with $$F = ma$$.
 
 
 
 <!-- ###################################################################### -->
-### 4. Intuition visuelle
+### 4. Visual intuition
 {: .no_toc }
 
-* Le "score" $$S$$ est comme une mesure de "coût" du chemin.
-* Le chemin réel minimise ce coût global, plutôt que de décider instant par instant quelle force appliquer.
-* C’est comme si la balle avait "calculé à l’avance" le meilleur trajet pour que $$T$$ et $$V$$ s’équilibrent sur tout le chemin.
+* The "score" $$S$$ acts as a measure of the "cost" of the path.
+* The actual path minimizes this global cost, rather than deciding force by force at each instant.
+* It is as if the ball had "pre-computed" the best trajectory so that $$T$$ and $$V$$ balance out over the entire path.
 
 
 
@@ -1990,36 +1965,36 @@ Le principe de l’action nous dit que le chemin réel suivi par la balle est ce
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## We can explain why a ball falls vertically while accelerating?
+## Can we explain why a ball falls vertically while accelerating?
 
 
-Parfait, on va faire le raisonnement pas à pas pour une balle qui tombe verticalement sous la gravité, en utilisant le principe de l’action. On va rester simple et clair.
+Let us work through the reasoning step by step for a ball falling vertically under gravity, using the action principle. We will keep things simple and clear.
 
 
 
 <!-- ###################################################################### -->
-### 1. Définir les variables
+### 1. Define the variables
 {: .no_toc }
 
-On note :
+Let:
 
-* $$h(t)$$ = hauteur de la balle à l’instant (t)
-* $$v(t) = \dot{h}(t) = \frac{dh}{dt}$$ = vitesse
-* Masse de la balle = $$m$$ (ne change rien au résultat)
-* Accélération due à la gravité = $$g$$
+* $$h(t)$$ = height of the ball at time $$t$$
+* $$v(t) = \dot{h}(t) = \frac{dh}{dt}$$ = velocity
+* $$m$$ = mass of the ball (it cancels out in the end)
+* $$g$$ = gravitational acceleration
 
-L’énergie cinétique :
+Kinetic energy:
 
 $$
 T = \frac{1}{2} m \dot{h}^2
 $$
 
-L’énergie potentielle :
+Potential energy:
 $$
 V = m g h
 $$
 
-Donc le Lagrangien :
+The Lagrangian:
 $$
 L = T - V = \frac{1}{2} m \dot{h}^2 - m g h
 $$
@@ -2027,39 +2002,39 @@ $$
 
 
 <!-- ###################################################################### -->
-### 2. Retrouver l’équation d’Euler-Lagrange
+### 2. Derive the Euler-Lagrange equation
 {: .no_toc }
 
-Ici je prends le temps d'expliquer d’où vient l’équation d’Euler-Lagrange.
+Let us take the time to explain where the Euler-Lagrange equation comes from.
 
 
-#### **1. Idée de départ**
+#### **1. Starting idea**
 {: .no_toc }
 
-On a le principe de l’action :
+We have the action principle:
 
 $$
 S[h(t)] = \int_{t_1}^{t_2} L(h, \dot{h}) , dt
 $$
 
-La balle "choisit" le chemin (h(t)) qui rend $$S$$ stationnaire par rapport à de petites variations du chemin.
+The ball "chooses" the path $$h(t)$$ that makes $$S$$ stationary with respect to small variations of the path.
 
-On imagine donc un chemin légèrement modifié :
+We therefore consider a slightly modified path:
 
 $$
 h(t) \to h(t) + \epsilon \eta(t)
 $$
 
-* $$\eta(t)$$ est une petite fonction arbitraire qui s’annule aux extrémités $$t_1$$ et $$t_2$$ (on ne change pas les points de départ et d’arrivée).
-* $$\epsilon$$ est un petit nombre pour mesurer la variation.
+* $$\eta(t)$$ is a small arbitrary function that vanishes at the endpoints $$t_1$$ and $$t_2$$ (we do not change the start and end points).
+* $$\epsilon$$ is a small number measuring the size of the variation.
 
-Le principe de l’action dit :
+The action principle requires:
 
 $$
 \frac{d}{d\epsilon} S[h(t) + \epsilon \eta(t)] \Big|_{\epsilon=0} = 0
 $$
 
-C’est-à-dire que la dérivée de l’action par rapport à cette petite variation est nulle.
+That is, the derivative of the action with respect to this small variation is zero.
 
 
 
@@ -2067,16 +2042,16 @@ C’est-à-dire que la dérivée de l’action par rapport à cette petite varia
 
 
 
-#### **2. Développement**
+#### **2. Expand**
 {: .no_toc }
 
-On remplace $$L$$ :
+Substitute $$L$$:
 
 $$
 S[h+\epsilon \eta] = \int_{t_1}^{t_2} L(h + \epsilon \eta, \dot{h} + \epsilon \dot{\eta}) dt
 $$
 
-On dérive par rapport à (\epsilon) et on évalue en (\epsilon = 0) :
+Differentiate with respect to $$\epsilon$$ and evaluate at $$\epsilon = 0$$:
 
 $$
 \delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial h} \eta + \frac{\partial L}{\partial \dot{h}} \dot{\eta} \right) dt = 0
@@ -2086,16 +2061,16 @@ $$
 
 
 
-#### **3. Intégration par parties**
+#### **3. Integration by parts**
 {: .no_toc }
 
-On veut éliminer $$\dot{\eta}$$ pour ne garder que $$\eta$$. On fait une intégration par parties sur le deuxième terme :
+We want to eliminate $$\dot{\eta}$$ and keep only $$\eta$$. We integrate the second term by parts:
 
 $$
 \int_{t_1}^{t_2} \frac{\partial L}{\partial \dot{h}} \dot{\eta} , dt = \left[ \frac{\partial L}{\partial \dot{h}} \eta \right]_{t_1}^{t_2} - \int_{t_1}^{t_2} \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{h}} \right) \eta  dt
 $$
 
-Mais $$\eta(t_1) = \eta(t_2) = 0$$, donc le terme aux bornes disparaît. Il reste :
+Since $$\eta(t_1) = \eta(t_2) = 0$$, the boundary term vanishes. What remains is:
 
 $$
 \delta S = \int_{t_1}^{t_2} \left( \frac{\partial L}{\partial h} - \frac{d}{dt} \frac{\partial L}{\partial \dot{h}} \right) \eta  dt = 0
@@ -2106,24 +2081,24 @@ $$
 
 
 
-#### **4. Principe du coefficient devant $$\eta$$**
+#### **4. Arbitrariness of $$\eta$$**
 {: .no_toc }
 
-Cette intégrale doit être nulle pour toute fonction arbitraire (\eta(t)). La seule façon que ce soit toujours vrai est que le coefficient de (\eta) soit nul :
+This integral must vanish for every arbitrary function $$\eta(t)$$. The only way this is always true is if the coefficient of $$\eta$$ is zero:
 
 $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot{h}} - \frac{\partial L}{\partial h} = 0
 $$
 
-Et voilà, c’est l’équation d’Euler-Lagrange.
+This is the Euler-Lagrange equation.
 
 
 
-En résumé :
+In summary:
 
-1. On perturbe le chemin avec une petite variation.
-2. On exige que la variation de l’action soit nulle.
-3. Avec une intégration par parties, on obtient une condition sur (h(t)) : c’est l’Euler-Lagrange.
+1. Perturb the path with a small variation.
+2. Require the variation of the action to be zero.
+3. Integration by parts yields a condition on $$h(t)$$: the Euler-Lagrange equation.
 
 
 
@@ -2151,40 +2126,40 @@ En résumé :
 
 
 <!-- ###################################################################### -->
-### 3. Ecrire l’équation d’Euler-Lagrange
+### 3. Write the Euler-Lagrange equation
 {: .no_toc }
 
 
-Le principe de l’action dit :
+The action principle says:
 $$
 \delta S = \delta \int_{t_1}^{t_2} L(h, \dot{h}) dt = 0
 $$
 
-L’équation d’Euler-Lagrange qu'on vient de retrouve dit que :
+The Euler-Lagrange equation we just derived says:
 $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot{h}} - \frac{\partial L}{\partial h} = 0
 $$
 
-Calculons les dérivées :
+Let us compute the partial derivatives:
 
 1. $$\frac{\partial L}{\partial \dot{h}} = m \dot{h}$$
 2. $$\frac{d}{dt} \frac{\partial L}{\partial \dot{h}} = m \ddot{h}$$
 3. $$\frac{\partial L}{\partial h} = - m g$$
 
-Donc l’équation devient :
+The equation therefore becomes:
 $$
 m \ddot{h} - (- m g) = 0 \quad \Rightarrow \quad m \ddot{h} + m g = 0 \quad \Rightarrow \quad \ddot{h} = - g
 $$
 
-Voilà, exactement l’accélération verticale sous gravité.
+Exactly the vertical acceleration under gravity.
 
 
 
 <!-- ###################################################################### -->
-### 4. Intégration pour la trajectoire
+### 4. Integrate to find the trajectory
 {: .no_toc }
 
-On intègre deux fois pour obtenir la hauteur :
+Integrating twice gives the height:
 
 $$
 \dot{h}(t) = \dot{h}_0 - g t
@@ -2194,15 +2169,15 @@ $$
 h(t) = h_0 + \dot{h}_0 t - \frac{1}{2} g t^2
 $$
 
-* $$h_0$$ = hauteur initiale
-* $$\dot{h}_0$$ = vitesse initiale (souvent 0 si on lâche la balle)
+* $$h_0$$ = initial height
+* $$\dot{h}_0$$ = initial velocity (often 0 if the ball is simply dropped)
 
-Donc pour une balle lâchée :
+For a ball released from rest:
 $$
 \dot{h}_0 = 0 \quad \Rightarrow \quad h(t) = h_0 - \frac{1}{2} g t^2
 $$
 
-C’est exactement la chute rectiligne uniformément accélérée que vous connaissez.
+This is exactly the uniformly accelerated free fall you already know.
 
 
 
@@ -2310,7 +2285,7 @@ Interpretation:
 | $$E^2$$       | electric field energy |
 | $$B^2$$       | magnetic field energy |
 | $$\rho \phi$$ | coupling to charge    |
-| $$J\cdot A$$  | coupling to current   |
+| $$\mathbf{J}\cdot \mathbf{A}$$  | coupling to current   |
 
 So the action contains field energy + interaction with charges.
 
@@ -2388,7 +2363,7 @@ This is Ampère–Maxwell law.
 Because of how (E) and (B) were defined from the potentials, two equations are automatically satisfied:
 
 $$
-\nabla \cdot B = 0
+\nabla \cdot \mathbf{B} = 0
 $$
 
 (no magnetic monopoles)
@@ -2396,11 +2371,11 @@ $$
 and
 
 $$
-\nabla \times E =
--\frac{\partial B}{\partial t}
+\nabla \times \mathbf{E} =
+-\frac{\partial \mathbf{B}}{\partial t}
 $$
 
-(Faraday's law).
+This is Faraday's law.
 
 So all four Maxwell equations emerge.
 
@@ -2541,7 +2516,7 @@ $$
 S=\int (T-V),dt
 $$
 
-Maxwell’s equations come from extremizing the electromagnetic field action**
+Maxwell’s equations come from extremizing the electromagnetic field action
 
 $$
 S=\int L(E,B,\rho,J),d^3x,dt
@@ -2594,20 +2569,20 @@ What we see with the principle of action is indeed very similar to the idea behi
 
 
 <!-- ###################################################################### -->
-### 1. Classique vs quantique
+### 1. Classical vs quantum
 {: .no_toc }
 
-* Classique : l’objet suit un chemin unique qui rend l’action $$S$$ stationnaire.
-* Quantique : une particule explore tous les chemins possibles entre deux points, pas seulement celui qui minimise l’action. Chaque chemin contribue avec un poids complexe :
+* Classical: the object follows a single path that makes the action $$S$$ stationary.
+* Quantum: a particle explores all possible paths between two points, not just the one that minimizes the action. Each path contributes with a complex weight:
 
 $$
 \text{Amplitude} \sim e^{i S/\hbar}
 $$
 
-* $$S$$ = action pour ce chemin
-* $$\hbar$$ = constante de Planck réduite
+* $$S$$ = action for that path
+* $$\hbar$$ = reduced Planck constant
 
-Le chemin classique émerge comme celui dont les contributions des chemins voisins s’ajoutent de façon constructive, alors que les chemins "bizarres" s’annulent par interférences.
+The classical path emerges as the one for which contributions from neighboring paths add constructively, while "odd" paths cancel out by interference.
 
 
 
@@ -2615,19 +2590,19 @@ Le chemin classique émerge comme celui dont les contributions des chemins voisi
 ### 2. Intuition
 {: .no_toc }
 
-* En classique, $$\delta S = 0$$ sélectionne le chemin réel.
-* En quantique, tous les chemins existent, mais le chemin classique correspond au maximum d’interférences constructives, ce qui explique pourquoi les lois classiques émergent à grande échelle.
+* Classically, $$\delta S = 0$$ selects the real path.
+* Quantum mechanically, all paths exist, but the classical path corresponds to the maximum of constructive interference, which explains why classical laws emerge at large scales.
 
 
 
 <!-- ###################################################################### -->
-### 3. Donc oui
+### 3. So yes
 {: .no_toc }
 
-On peut voir le principe de l’action comme la version "limite classique" de l’intégrale de chemin de Feynman.
+The action principle can be seen as the "classical limit" of the Feynman path integral.
 
-* Les deux partent de la même idée : une action associée à chaque chemin.
-* La différence : le classique choisit un chemin, le quantique somme sur tous.
+* Both start from the same idea: an action associated with each path.
+* The difference: classically one path is chosen; quantum mechanically all paths are summed over.
 
 
 
@@ -2675,9 +2650,11 @@ Coming soon, just a bit delayed.
 ## Webliography
 
 ### US
+{: .no_toc }
 * ...
 
 ### FR
+{: .no_toc }
 * [Chainette]({%link docs/03_maths/000_chainette/000_chainette.md%})
 * [Equation Différentielle du 1er Ordre]({%link docs/03_maths/003_equations_differentielles_premier_ordre/003_equations_differentielles_premier_ordre.md%})
 * [Equation de Bernouilli]({%link docs/03_maths/004_equation_de_bernoulli/004_equation_de_bernoulli.md%})
