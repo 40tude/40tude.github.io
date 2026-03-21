@@ -135,7 +135,7 @@ Most physical phenomena involve change:
 
 Mathematically, the cleanest way to describe change is with a derivative.
 
-For a quantity $$x(t)$$, which express where you are in function of time:
+For a quantity $$x(t)$$, which express where we are in function of time:
 
 * Velocity: $$v = \frac{dx}{dt}$$
 * Acceleration: $$a = \frac{d^2x}{dt^2}$$
@@ -213,13 +213,13 @@ Two initial conditions means second order equation.
 ### 3. But how did Newton discover $$F = ma$$?
 {: .no_toc }
 
-Important point: Newton did not guess the equation randomly. It emerged from experiments + symmetry principles.
+Important point: Newton (1687, publication in Principia Mathematica) did not guess the equation randomly. It emerged from experiments + symmetry principles.
 
 
 #### **Observations known before Newton**
 {: .no_toc }
 
-Galileo had already measured that:
+Galileo (in 1589+, 100 years before Newton, 100 years) had already measured that:
 
 * objects fall with constant acceleration
 * motion without forces means constant velocity
@@ -263,15 +263,114 @@ Nature usually says something simpler:
 
 This locality leads directly to derivatives.
 
-Example:
 
-Temperature $$T(x,t)$$
 
-The heat flowing through a point depends on the temperature gradient:
 
-$$\text{Heat flow} \propto - \nabla T$$
 
-That gradient ($$\nabla$$) sign in called Nabla. Think about you on your snowboard when you are looking, in 3D, for the greatest slope. You are looking for the greatest gradient. When we deal with 1D problems ($$f(x)=x^2$$) the gradient is our good old and beloved derivative.
+
+#### **Example: Heat Flow and Temperature**
+{: .no_toc }
+
+Consider a temperature field:$$ T(x,t) $$.
+
+Don't start complaining. A temperature field $$ T(x, y, t) $$ is just the ceramic hob you turned on and then just turned off. Over time, the temperatures are going to change (go down), and they won't all be the same. The temperatures at the edge of the burner might cool down faster than the rest. Anyway, the temperature $$T$$ depends on both time and position. Here I used a field $$(x,y)$$, while in the example we only have $$T(x, t)$$. Life is simple!
+
+The heat flowing through a point depends on how temperature changes in space. More precisely, it depends on the **temperature gradient**:
+
+$$
+\text{Heat flow} \propto - \nabla T
+$$
+
+The symbol $$ \nabla $$ is called **“nabla”**.
+
+A simple way to understand it is through intuition: imagine standing on a snowboard on a mountain. You are trying to find the direction of the **steepest slope**. That direction is exactly what the gradient represents.
+
+* In **3D**, the gradient tells us the direction and strength of the steepest increase.
+* In **1D**, this reduces to something familiar:
+  $$
+  f(x) = x^2 \quad \Rightarrow \quad \nabla f = \frac{df}{dx}
+  $$
+  So in one dimension, nabla is just the usual derivative.
+
+
+#### **Note on the Nabla Operator**
+{: .no_toc }
+
+The symbol $$ \nabla $$ (or sometimes written $$ \vec{\nabla} $$) is called the nabla operator. It is a vector differential operator, which simply means that it behaves like a vector whose components are derivatives.
+
+In 3D, it is defined as:
+$$
+\nabla = \hat{i} \frac{\partial}{\partial x} + \hat{j} \frac{\partial}{\partial y} + \hat{k} \frac{\partial}{\partial z}
+$$
+
+You can also write it in vector form:
+$$
+\nabla =
+\begin{pmatrix}
+\frac{\partial}{\partial x} \
+\frac{\partial}{\partial y} \
+\frac{\partial}{\partial z}
+\end{pmatrix}
+$$
+
+At first, this may feel abstract because:
+
+* We don’t yet see what the operator is applied to
+* We don’t know how to “compute” with it
+
+The key idea is that everything depends on two things:
+
+1. What we apply $$ \nabla $$ to: a scalar field like the temperatures on the previous ceramic hob or a vector field like the vectors representing the wind force and direction on a 2D map.
+2. What operation we use (dot product, cross product, etc.)
+
+
+**Main Operations with Nabla**
+
+The table below summarizes the most important operations.
+
+| Operation         | 1D Version            | 3D Expression             | Name       | Result                                                                                                                                                                                                                                |
+| :---------------- | :-------------------- | :------------------------ | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Dot product       | ( \frac{dE}{dx} )     | ( \nabla \cdot \vec{E} )  | Divergence | ( \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} )                                                                                                                               |
+| Cross product     | — (not defined in 1D) | ( \nabla \times \vec{E} ) | Curl       | ( \begin{pmatrix} \frac{\partial E_z}{\partial y}-\frac{\partial E_y}{\partial z} \ \frac{\partial E_x}{\partial z}-\frac{\partial E_z}{\partial x} \ \frac{\partial E_y}{\partial x}-\frac{\partial E_x}{\partial y} \end{pmatrix} ) |
+| Applied to scalar | ( \frac{d\phi}{dx} )  | ( \nabla \phi )           | Gradient   | ( \begin{pmatrix} \frac{\partial \phi}{\partial x} \ \frac{\partial \phi}{\partial y} \ \frac{\partial \phi}{\partial z} \end{pmatrix} )                                                                                              |
+
+
+**Summary**
+
+* In **1D**, everything reduces to ordinary derivatives.
+* In **higher dimensions**, ( \nabla ) lets us generalize derivatives in a compact and powerful way.
+* The different operations (gradient, divergence, curl) describe **different physical behaviors**:
+
+  * Gradient -> direction of change
+  * Divergence -> sources and sinks
+  * Curl -> rotation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -317,7 +416,95 @@ So the second derivative appears because:
 * heat flow depends on gradient
 * conservation introduces divergence
 
-Gradient of gradient, this is the Laplacian.
+Divergence of gradient, this is the Laplacian ($$ \nabla^2 $$)
+
+
+
+
+#### Note on the Laplacian
+{: .no_toc }
+
+The symbol $$ \nabla^2 $$ is called the **Laplacian**. It may look mysterious, but it is actually something quite simple: The Laplacian is the divergence of the gradient.
+
+In other words: $$ \nabla^2 T = \nabla \cdot (\nabla T) $$
+
+
+**What does it do?**
+
+* You start with a **scalar field** (like temperature (T))
+* You apply the Laplacian
+* You get… **another scalar**
+
+So:
+**Input:** scalar
+**Output:** scalar
+
+
+**In 1D (simplest case)**
+
+In one dimension, everything reduces to ordinary derivatives:
+
+$$
+\nabla^2 T = \frac{d^2 T}{dx^2}
+$$
+
+So the Laplacian is just the second derivative. This tells us how the slope itself is changing (remember acceleration vs speed).
+
+
+**In 3D (general case)**
+
+In three dimensions, the Laplacian becomes:
+
+$$
+\nabla^2 T =
+\frac{\partial^2 T}{\partial x^2}
++
+\frac{\partial^2 T}{\partial y^2}
++
+\frac{\partial^2 T}{\partial z^2}
+$$
+
+It is the sum of second derivatives in each direction.
+
+
+**Physical intuition**
+
+The Laplacian measures how a quantity compares to its surroundings.
+
+* If ( \nabla^2 T > 0 ): the point is **colder than its neighbors** → heat flows in
+* If ( \nabla^2 T < 0 ): the point is **hotter than its neighbors** → heat flows out
+
+So it captures how things spread out or smooth out over time.
+
+
+**Why it appears in the heat equation?**
+
+* The **gradient** tells us how temperature changes → gives heat flow
+* The **divergence** tells us how heat accumulates or leaves
+
+Putting both together naturally gives the Laplacian:
+
+[
+\nabla^2 T
+]
+
+
+**Summary**
+* Laplacian = $$ \nabla^2 $$
+* In **1D**: Laplacian = second derivative
+* In **3D**: sum of second derivatives
+* It takes a **scalar -> scalar**
+* It describes **diffusion / spreading**
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -896,11 +1083,22 @@ That’s why the same structures appear in:
 <!-- ###################################################################### -->
 ## A deeper modern perspective
 
-It is important to understand that:
+### From differential equations to a global viewpoint
 
-> The principle of least (or stationary) action is one specific instance of a much broader idea: variational principles.
+Up to this point, we have described physical systems using derivatives: velocity as a first derivative, acceleration as a second derivative, and more generally differential equations that relate these quantities. This approach is local in nature: it tells us how the system evolves step by step, at each instant of time.
 
-Let’s unpack that carefully.
+However, this is not the only way to describe motion. Instead of focusing on what happens at each instant, we can ask a different question: *among all possible trajectories connecting two points, why does the system follow this particular one?*
+
+This leads us to a more global perspective, where the entire trajectory is considered at once. Rather than expressing laws as differential equations, we look for a quantity, called the action, whose value depends on the whole path, and we postulate that the actual motion makes this quantity stationary.
+
+The remarkable fact is that these two approaches, local differential equations and global optimization, are not in contradiction. They are in fact equivalent descriptions of the same physical laws.
+
+
+At this poit it is important to understand that:
+
+> The principle of least action (or stationary action) is one specific instance of a much broader idea: variational principles.
+
+Ok, let’s unpack that carefully.
 
 
 <!-- ###################################################################### -->
@@ -1556,7 +1754,7 @@ That’s exactly the equation of a falling object.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## What you should remember from the 2 previous examples
+## What we should keep in mind from the 2 previous examples
 
 Both examples follow the same structure:
 
@@ -2286,7 +2484,7 @@ Each path yields a different number.
 
 The action principle tells us that the actual path taken by the ball is the one that makes $$S$$ stationary (often a minimum).
 
-* If you imagine all possible trajectories, the real one is the trajectory that most harmoniously balances kinetic energy and potential energy over time.
+* If we imagine all possible trajectories, the real one is the trajectory that most harmoniously balances kinetic energy and potential energy over time.
 * In the case of free fall, this simply corresponds to uniformly accelerated straight-line motion, exactly what Newton tells us with $$F = ma$$.
 
 
@@ -2539,7 +2737,7 @@ $$
 \dot{h}_0 = 0 \quad \Rightarrow \quad h(t) = h_0 - \frac{1}{2} g t^2
 $$
 
-This is exactly the uniformly accelerated free fall you already know.
+This is exactly the uniformly accelerated free fall we already know.
 
 
 
