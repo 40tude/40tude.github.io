@@ -123,7 +123,7 @@ Great question Marty! The short answer is: derivatives appear in physics because
 
 
 <!-- ###################################################################### -->
-### 1. In Physics wr try to describe how things change
+### 1. In Physics we try to describe how things change
 {: .no_toc }
 
 Most physical phenomena involve change:
@@ -1589,6 +1589,297 @@ And from that, Newton’s laws come out automatically.
 
 
 
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Why do we call it Action in Physics?
+
+This a good question Marty and this actually goes straight into the history and philosophy of physics.
+
+
+
+<!-- ###################################################################### -->
+### 1. Where the word "action" comes from
+{: .no_toc }
+
+The term "action" was introduced in the 18th century, mainly by Pierre-Louis Moreau de Maupertuis (around 1744).
+
+He proposed an early version of a least-action principle and used the word *action* to describe a quantity that measures the "effort" or "activity" of nature along a path.
+
+At the time, physics was still heavily influenced by philosophical ideas like:
+
+* Nature acts in the most efficient way
+* God or nature minimizes effort or "expenditure"
+
+So "action" was meant to sound like:
+
+> how much "doing" or "effort" happens during a motion
+
+
+
+
+
+<!-- ###################################################################### -->
+### 2. What Maupertuis meant by "action"
+{: .no_toc }
+
+His original definition wasn’t exactly $$ \int (T - V) \, dt$$.
+He defined action roughly as:
+
+$$
+\text{action} \sim \int p , dq
+$$
+
+* $$ p $$ = momentum
+* $$q $$ = position
+
+So already, action was something that:
+
+* depends on the whole path
+* accumulates along motion
+* measures something like "quantity of motion × distance"
+
+
+
+<!-- ###################################################################### -->
+### 3. Who formalized it
+{: .no_toc }
+
+The modern definition came later with:
+
+* Joseph-Louis Lagrange
+* William Rowan Hamilton
+
+Hamilton (1830s) is the one who really established:
+
+$$
+S = \int (T - V) \, dt
+$$
+
+and turned "action" into a central, precise mathematical object.
+
+
+
+<!-- ###################################################################### -->
+### 4. Why the name stuck
+{: .no_toc }
+
+The name "action" survived even though the meaning became more abstract, for a few reasons:
+
+* It still represents something accumulated over motion
+* It connects to energy and dynamics
+* It has the flavor of a global measure of what happens along a trajectory
+
+Even today, physicists sometimes loosely interpret action as:
+
+* "how much dynamical activity happens along a path"
+* or "the cost of a trajectory"
+
+
+
+<!-- ###################################################################### -->
+### 5. A deeper modern perspective
+{: .no_toc }
+
+In modern physics, "action" is less about "effort" and more about:
+
+* a functional that encodes the entire dynamics of a system
+* the central object from which all equations of motion can be derived
+
+And in quantum mechanics (as we noticed with Feynman), it becomes even more fundamental:
+
+* every path is weighted by $$e^{iS/\hbar}$$
+
+So "action" is really:
+
+> the quantity that controls how nature evolves, both classically and quantum mechanically
+
+
+
+<!-- ###################################################################### -->
+### 6. Summary
+{: .no_toc }
+
+* The word "action" was introduced by Maupertuis in the 18th century
+* It originally meant something like "effort" or "amount of motion"
+* It was later formalized by Lagrange and Hamilton into $$S = \int (T - V) \, dt$$
+* The name stuck even as the concept became more abstract and central
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+<!-- ########################################### -->
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Why $$L = T - V$$?
+
+It has been stated that the Lagrangian $$L = T - V$$, where $$T$$ is kinetic energy and $$V$$ is potential energy. Why? Why do we minimize the difference rather than the sum? Why do we minimize the difference between the values rather than the difference between their squares?
+
+Can we revisit the origins of the definition of what is known as the action in physics?
+
+
+
+
+<!-- ###################################################################### -->
+### 1. What the action is
+{: .no_toc }
+
+In classical mechanics, we want to understand how an object moves from point A to point B. Instead of looking only at its position at a given instant, we can look at the entire path it takes.
+
+This is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
+
+To compute this score we use the Lagrangian, denoted $$L$$:
+
+$$
+L = T - V
+$$
+
+* $$T$$ is the kinetic energy: the energy due to motion, which depends on speed.
+* $$V$$ is the potential energy: the energy due to forces that "push or pull" the object (such as gravity or a spring).
+
+We then integrate $$L$$ over time between $$t_1$$ and $$t_2$$:
+
+$$
+S = \int_{t_1}^{t_2} L \, dt = \int_{t_1}^{t_2} (T - V) \,dt
+$$
+
+This integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
+
+So instead of following the forces at each instant as with $$F = ma$$, we can think in terms of the global path, and the object "chooses" the trajectory that makes the action special.
+
+
+
+
+More precisely, in classical mechanics, the action $$S$$ is a functional, a quantity that depends on the whole path a system takes between two times:
+
+$$
+S[q(t)] = \int_{t_1}^{t_2} L(q, \dot{q}, t)  dt
+$$
+
+where $$L = T - V$$ is the Lagrangian, $$T$$ is kinetic energy, $$V$$ is potential energy, and $$q(t)$$ describes the configuration of the system over time.
+
+The principle of least action (more accurately, principle of stationary action) states that the physical path a system follows makes $$S$$ stationary (usually a minimum) compared to nearby paths:
+
+$$
+\delta S = 0
+$$
+
+This yields Euler–Lagrange equations, which are exactly Newton’s laws in disguise.
+
+
+
+<!-- ###################################################################### -->
+### 2. Why $$L = T - V$$ and not $$T + V$$
+{: .no_toc }
+
+Historically, this comes from Hamilton’s reformulation of mechanics:
+
+* Kinetic energy $$T$$ represents motion.
+* Potential energy $$V$$ represents "stored" energy due to forces.
+* The Lagrangian $$L = T - V$$ turns out to encode the dynamics correctly: when we apply $$\delta S = 0$$, the resulting equations of motion reproduce Newton’s second law $$F = ma$$.
+
+If we tried $$T + V$$, the Euler–Lagrange equations would lead to completely wrong dynamics. Mathematically, $$T - V$$ naturally appears when we try to generalize d’Alembert’s principle, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
+
+So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a variational principle.
+
+
+
+<!-- ###################################################################### -->
+### 3. Why minimize (or make stationary) instead of maximize?
+{: .no_toc }
+
+* In many simple cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
+* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
+
+So the focus is on "stationary" not strictly "minimum".
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### 4. Why not the difference of squares or other functions?
+{: .no_toc }
+
+* The Lagrangian is chosen to be linear in energies $$T - V$$ because it matches Newtonian dynamics.
+* Using $$T + V$$ or $$(T - V)^2$$ gives different Euler–Lagrange equations that do not reproduce physical trajectories.
+* It turns out that (T - V) is the simplest combination leading to second-order differential equations in time, which is what we observe for real motion.
+
+
+
+
+
+<!-- ###################################################################### -->
+### 5. Historical genesis
+{: .no_toc }
+
+* Maupertuis (1744) first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
+* Euler and Lagrange formalized it, showing $$S = \int L \, dt$$ gives Newton’s equations.
+* Hamilton gave the modern formulation with $$L = T - V$$ in 1834.
+* So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express mechanics in terms of variational principles, which is elegant and generalizable (to fields, quantum mechanics, relativity…).
+
+
+
+<!-- ###################################################################### -->
+### 6. Summary
+{: .no_toc }
+
+1. Action $$S = \int (T - V) \, dt$$ because this combination reproduces Newtonian dynamics via a variational principle.
+2. We look for stationary points of $$S$$, not strictly minima, because the actual physical path makes $$\delta S = 0$$.
+3. Other choices like $$T + V$$ or $$(T - V)^2$$ fail to give the correct equations of motion.
+4. Historically, it comes from the effort to express mechanics as a global extremum principle, starting with Maupertuis and culminating in Hamilton’s formulation.
+
+
+
+
+
 
 
 
@@ -1894,297 +2185,6 @@ F = m\ddot x
 $$
 
 
-
-
-
-
-
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Why do we call it Action in Physics?
-
-This a good question Marty and this actually goes straight into the history and philosophy of physics.
-
-
-
-<!-- ###################################################################### -->
-### 1. Where the word "action" comes from
-{: .no_toc }
-
-The term "action" was introduced in the 18th century, mainly by Pierre-Louis Moreau de Maupertuis (around 1744).
-
-He proposed an early version of a least-action principle and used the word *action* to describe a quantity that measures the "effort" or "activity" of nature along a path.
-
-At the time, physics was still heavily influenced by philosophical ideas like:
-
-* Nature acts in the most efficient way
-* God or nature minimizes effort or "expenditure"
-
-So "action" was meant to sound like:
-
-> how much "doing" or "effort" happens during a motion
-
-
-
-
-
-<!-- ###################################################################### -->
-### 2. What Maupertuis meant by "action"
-{: .no_toc }
-
-His original definition wasn’t exactly $$ \int (T - V) \, dt$$.
-He defined action roughly as:
-
-$$
-\text{action} \sim \int p , dq
-$$
-
-* $$ p $$ = momentum
-* $$q $$ = position
-
-So already, action was something that:
-
-* depends on the whole path
-* accumulates along motion
-* measures something like "quantity of motion × distance"
-
-
-
-<!-- ###################################################################### -->
-### 3. Who formalized it
-{: .no_toc }
-
-The modern definition came later with:
-
-* Joseph-Louis Lagrange
-* William Rowan Hamilton
-
-Hamilton (1830s) is the one who really established:
-
-$$
-S = \int (T - V) \, dt
-$$
-
-and turned "action" into a central, precise mathematical object.
-
-
-
-<!-- ###################################################################### -->
-### 4. Why the name stuck
-{: .no_toc }
-
-The name "action" survived even though the meaning became more abstract, for a few reasons:
-
-* It still represents something accumulated over motion
-* It connects to energy and dynamics
-* It has the flavor of a global measure of what happens along a trajectory
-
-Even today, physicists sometimes loosely interpret action as:
-
-* "how much dynamical activity happens along a path"
-* or "the cost of a trajectory"
-
-
-
-<!-- ###################################################################### -->
-### 5. A deeper modern perspective
-{: .no_toc }
-
-In modern physics, "action" is less about "effort" and more about:
-
-* a functional that encodes the entire dynamics of a system
-* the central object from which all equations of motion can be derived
-
-And in quantum mechanics (as we noticed with Feynman), it becomes even more fundamental:
-
-* every path is weighted by $$e^{iS/\hbar}$$
-
-So "action" is really:
-
-> the quantity that controls how nature evolves, both classically and quantum mechanically
-
-
-
-<!-- ###################################################################### -->
-### 6. Summary
-{: .no_toc }
-
-* The word "action" was introduced by Maupertuis in the 18th century
-* It originally meant something like "effort" or "amount of motion"
-* It was later formalized by Lagrange and Hamilton into $$S = \int (T - V) \, dt$$
-* The name stuck even as the concept became more abstract and central
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-<!-- ########################################### -->
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Why $$L = T - V$$?
-
-It has been stated that the Lagrangian $$L = T - V$$, where $$T$$ is kinetic energy and $$V$$ is potential energy. Why? Why do we minimize the difference rather than the sum? Why do we minimize the difference between the values rather than the difference between their squares?
-
-Can we revisit the origins of the definition of what is known as the action in physics?
-
-
-
-
-<!-- ###################################################################### -->
-### 1. What the action is
-{: .no_toc }
-
-In classical mechanics, we want to understand how an object moves from point A to point B. Instead of looking only at its position at a given instant, we can look at the entire path it takes.
-
-This is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
-
-To compute this score we use the Lagrangian, denoted $$L$$:
-
-$$
-L = T - V
-$$
-
-* $$T$$ is the kinetic energy: the energy due to motion, which depends on speed.
-* $$V$$ is the potential energy: the energy due to forces that "push or pull" the object (such as gravity or a spring).
-
-We then integrate $$L$$ over time between $$t_1$$ and $$t_2$$:
-
-$$
-S = \int_{t_1}^{t_2} L \, dt = \int_{t_1}^{t_2} (T - V) \,dt
-$$
-
-This integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
-
-So instead of following the forces at each instant as with $$F = ma$$, we can think in terms of the global path, and the object "chooses" the trajectory that makes the action special.
-
-
-
-
-More precisely, in classical mechanics, the action $$S$$ is a functional, a quantity that depends on the whole path a system takes between two times:
-
-$$
-S[q(t)] = \int_{t_1}^{t_2} L(q, \dot{q}, t)  dt
-$$
-
-where $$L = T - V$$ is the Lagrangian, $$T$$ is kinetic energy, $$V$$ is potential energy, and $$q(t)$$ describes the configuration of the system over time.
-
-The principle of least action (more accurately, principle of stationary action) states that the physical path a system follows makes $$S$$ stationary (usually a minimum) compared to nearby paths:
-
-$$
-\delta S = 0
-$$
-
-This yields Euler–Lagrange equations, which are exactly Newton’s laws in disguise.
-
-
-
-<!-- ###################################################################### -->
-### 2. Why $$L = T - V$$ and not $$T + V$$
-{: .no_toc }
-
-Historically, this comes from Hamilton’s reformulation of mechanics:
-
-* Kinetic energy $$T$$ represents motion.
-* Potential energy $$V$$ represents "stored" energy due to forces.
-* The Lagrangian $$L = T - V$$ turns out to encode the dynamics correctly: when we apply $$\delta S = 0$$, the resulting equations of motion reproduce Newton’s second law $$F = ma$$.
-
-If we tried $$T + V$$, the Euler–Lagrange equations would lead to completely wrong dynamics. Mathematically, $$T - V$$ naturally appears when we try to generalize d’Alembert’s principle, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
-
-So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a variational principle.
-
-
-
-<!-- ###################################################################### -->
-### 3. Why minimize (or make stationary) instead of maximize?
-{: .no_toc }
-
-* In many simple cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
-* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
-
-So the focus is on "stationary" not strictly "minimum".
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-### 4. Why not the difference of squares or other functions?
-{: .no_toc }
-
-* The Lagrangian is chosen to be linear in energies $$T - V$$ because it matches Newtonian dynamics.
-* Using $$T + V$$ or $$(T - V)^2$$ gives different Euler–Lagrange equations that do not reproduce physical trajectories.
-* It turns out that (T - V) is the simplest combination leading to second-order differential equations in time, which is what we observe for real motion.
-
-
-
-
-
-<!-- ###################################################################### -->
-### 5. Historical genesis
-{: .no_toc }
-
-* Maupertuis (1744) first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
-* Euler and Lagrange formalized it, showing $$S = \int L \, dt$$ gives Newton’s equations.
-* Hamilton gave the modern formulation with $$L = T - V$$ in 1834.
-* So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express mechanics in terms of variational principles, which is elegant and generalizable (to fields, quantum mechanics, relativity…).
-
-
-
-<!-- ###################################################################### -->
-### 6. Summary
-{: .no_toc }
-
-1. Action $$S = \int (T - V) \, dt$$ because this combination reproduces Newtonian dynamics via a variational principle.
-2. We look for stationary points of $$S$$, not strictly minima, because the actual physical path makes $$\delta S = 0$$.
-3. Other choices like $$T + V$$ or $$(T - V)^2$$ fail to give the correct equations of motion.
-4. Historically, it comes from the effort to express mechanics as a global extremum principle, starting with Maupertuis and culminating in Hamilton’s formulation.
 
 
 
