@@ -164,9 +164,8 @@ If a phenomenon depends only on the rate of change, we get first-order equations
 
 Example: radioactive decay
 
-Experimentation: We measure that the speed at which nuclei disappear is proportional to how many remain.
-
-Interpretation: "Speed at" means $$\frac{dN}{dt}$$, "is proportional" means $$\lambda$$, "how many remain" means $$N$$ and "disappear" means $$-$$. Tadaa!
+* Experimentation: We measure that the speed at which nuclei disappear is proportional to how many remain.
+* Interpretation: "Speed" means $$\frac{dN}{dt}$$, "is proportional" means $$\lambda$$, "how many remain" means $$N$$ and "disappear" means $$-$$. Tadaa!
 
 $$\frac{dN}{dt} = -\lambda N$$
 
@@ -193,14 +192,10 @@ So Newton's law becomes
 
 $$F = m \frac{d^2x}{dt^2}$$
 
-Why second order?
+Why second order? Because inertia exists. A body "remembers" its velocity. To know the future motion, we must know:
 
-Because inertia exists. A body remembers its velocity.
-
-To know the future motion, we must know:
-
-* position
-* velocity
+* Position
+* Velocity
 
 Two initial conditions means second order equation.
 
@@ -213,18 +208,18 @@ Two initial conditions means second order equation.
 ### 3. But how did Newton discover $$F = ma$$?
 {: .no_toc }
 
-Important point: Newton (1687, publication in Principia Mathematica) did not guess the equation randomly. It emerged from experiments + symmetry principles.
+Important point: Newton (1687, publication in Principia Mathematica) did not guess the equation randomly. It emerged from experiments plus symmetry principles.
 
 
 #### **Observations known before Newton**
 {: .no_toc }
 
-Galileo (in 1589+, 100 years before Newton, 100 years) had already measured that:
+Galileo (in 1589+, 100 years before Newton, 100 years!) had already measured that:
 
-* objects fall with constant acceleration
-* motion without forces means constant velocity
+* Objects fall with constant acceleration
+* Motion without forces means constant velocity
 
-Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle, until then, people assumed the speed of falling bodies was proportional to their weight.
+Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle (-350), until then (it took almost 2000 years), people assumed the speed of falling bodies was proportional to their weight.
 
 Galileo's experiments implies:
 
@@ -232,8 +227,8 @@ $$a = \text{constant when force is constant}$$
 
 Then experiments showed:
 
-* double the force $$ \rightarrow $$ double the acceleration
-* double the mass $$ \rightarrow $$ half the acceleration
+* Double the force $$ \rightarrow $$ double the acceleration
+* Double the mass $$ \rightarrow $$ half the acceleration
 
 So empirically:
 
@@ -271,11 +266,11 @@ This locality leads directly to derivatives.
 #### **Example: Heat Flow and Temperature**
 {: .no_toc }
 
-Consider a temperature field:$$ T(x,t) $$.
+Consider a temperature field: $$ T(x,t) $$.
 
 Don't start complaining. A temperature field $$ T(x, y, t) $$ is just the ceramic hob you turned on and then just turned off. Over time, the temperatures are going to change (go down), and they won't all be the same. The temperatures at the edge of the burner might cool down faster than the rest. Anyway, the temperature $$T$$ depends on both time and position. Here I used a field $$(x,y)$$, while in the example we only have $$T(x, t)$$. Life is simple!
 
-The heat flowing through a point depends on how temperature changes in space. More precisely, it depends on the **temperature gradient**:
+The heat flowing through a point depends on how temperature changes in space. More precisely, it depends on the temperature gradient:
 
 $$
 \text{Heat flow} \propto - \nabla T
@@ -307,7 +302,7 @@ A simple way to understand it is through intuition: imagine standing on a snowbo
 #### **Side Note on the Nabla Operator**
 {: .no_toc }
 
-The symbol $$ \nabla $$ (or sometimes written $$ \vec{\nabla} $$) is called the nabla operator. It is a vector differential operator, which simply means that it behaves like a vector whose components are derivatives.
+The symbol $$ \nabla $$ (or sometimes written $$ \vec{\nabla} $$) is a vector differential operator, which simply means that it behaves like a vector whose components are derivatives.
 
 In 3D, it is defined as:
 $$
@@ -324,12 +319,6 @@ $$
 \end{pmatrix}
 $$
 
-<!-- $$
-\vec{\nabla} = \begin{pmatrix}\frac{\partial }{\partial x}
-\\ \frac{\partial }{\partial y}
-\\ \frac{\partial }{\partial z}
-\end{pmatrix}
-$$ -->
 
 
 
@@ -359,7 +348,7 @@ The table below summarizes the most important operations.
 **Summary about $$ \vec{\nabla} $$**
 
 * In 1D, everything reduces to ordinary derivatives.
-* In higher dimensions, ( \nabla ) lets us generalize derivatives in a compact and powerful way.
+* In higher dimensions, $$ \nabla $$ lets us generalize derivatives in a compact and powerful way.
 * The different operations (gradient, divergence, curl) describe different physical behaviors:
 
   * Gradient $$ \rightarrow $$ direction of change
@@ -434,8 +423,8 @@ $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
 So the second derivative appears because:
 
-* heat flow depends on gradient
-* conservation introduces divergence
+* Heat flow depends on gradient
+* Conservation introduces divergence
 
 Divergence of gradient, this is the Laplacian ($$ \nabla^2 $$)
 
@@ -462,13 +451,13 @@ In other words: $$ \nabla^2 T = \nabla \cdot (\nabla T) $$
 
 **What does it do?**
 
-* You start with a **scalar field** (like temperature (T))
+* You start with a scalar field (like temperature $$T$$)
 * You apply the Laplacian
-* You get… **another scalar**
+* You get... another scalar
 
-So:
-**Input:** scalar
-**Output:** scalar
+So
+* Input: scalar
+* Output: scalar
 
 
 **In 1D (simplest case)**
@@ -482,7 +471,7 @@ $$
 So the Laplacian is just the second derivative. This tells us how the slope itself is changing (remember acceleration vs speed).
 
 
-**In 3D (general case)**
+**In 3D (more general case)**
 
 In three dimensions, the Laplacian becomes:
 
@@ -510,14 +499,10 @@ So it captures how things spread out or smooth out over time.
 
 **Why it appears in the heat equation?**
 
-* The **gradient** tells us how temperature changes $$ \rightarrow $$ gives heat flow
-* The **divergence** tells us how heat accumulates or leaves
+* The gradient tells us how temperature changes $$ \rightarrow $$ gives heat flow
+* The divergence tells us how heat accumulates or leaves
 
-Putting both together naturally gives the Laplacian:
-
-[
-\nabla^2 T
-]
+Putting both together naturally gives the Laplacian $$\nabla^2 T$$
 
 
 **Summary about $$ \nabla^2 $$**
@@ -548,7 +533,7 @@ Putting both together naturally gives the Laplacian:
 
 Almost every physical theory has three ingredients:
 
-#### 1. Locality
+#### **1. Locality**
 {: .no_toc }
 
 What happens here depends on nearby values. This translates in derivatives in space
@@ -619,19 +604,18 @@ These are expressed mathematically using divergences and derivatives.
 
 
 <!-- ###################################################################### -->
-### 7. Why order 2 is extremely common
+### 7. Why second order is extremely common
 {: .no_toc }
 
 Most fundamental laws in physics are second order because:
 
-* systems have inertia
-* energy depends on velocity squared
-* conservation of momentum naturally leads to acceleration
+* Systems have inertia
+* Energy depends on velocity squared
+* Conservation of momentum naturally leads to acceleration
 
 Examples:
-
 * Newtonian mechanics
-* wave equation
+* Wave equation
 * Schrödinger equation (first order in time but second in space)
 * Maxwell equations (effectively second order)
 
@@ -773,25 +757,13 @@ $$
 
 Examples:
 
-* temperature $$T(x,t)$$
-* displacement of a string $$y(x,t)$$
-* quantum wavefunction $$\psi(x,t)$$
+* Temperature $$T(x,t)$$
+* Displacement of a string $$y(x,t)$$
+* Quantum wavefunction $$\psi(x,t)$$
 
-In all three cases, the evolution of the system takes the form:
-v
-$$
-\text{time change} = \text{spatial variation}
-$$
+In all three cases, the evolution of the system takes the form: $$ \text{time change} = \text{spatial variation} $$
 
-The spatial variation is usually measured by the Laplacian:
-
-$$
-\nabla^2
-$$
-
-which is basically the second derivative in space.
-
-Why the second derivative? Because it measures curvature.
+The spatial variation is usually measured by the Laplacian $$ \nabla^2 $$ which is basically the second derivative in space. Why the second derivative? Because it measures curvature.
 
 
 
@@ -802,23 +774,19 @@ Why the second derivative? Because it measures curvature.
 ### 2. The physical meaning of the second spatial derivative
 {: .no_toc }
 
-Imagine a function (u(x)).
+Imagine a function $$u(x)$$.
 
 The second derivative tells us whether the value at a point is:
 
-* higher than its neighbors
-* lower than its neighbors
+* Higher than its neighbors
+* Lower than its neighbors
 
 Graphically:
 
 * $$u'' > 0$$ implies valley
 * $$u'' < 0$$ implies hill
 
-So the second derivative tells us how different a point is from its surroundings.
-
-And many physical processes try to reduce those differences or react to them.
-
-That’s why the Laplacian appears everywhere.
+So the second derivative tells us how different a point is from its surroundings. And many physical processes try to reduce those differences or react to them. That’s why the Laplacian appears everywhere.
 
 
 
@@ -837,14 +805,10 @@ $$
 
 Interpretation:
 
-* if a point is hotter than its neighbors, heat flows away
-* if a point is colder than neighbors, heat flows in
+* If a point is hotter than its neighbors, heat flows away
+* If a point is colder than neighbors, heat flows in
 
-So temperature differences smooth out over time.
-
-The Laplacian measures exactly that difference.
-
-Result: the system diffuses.
+So temperature differences smooth out over time. The Laplacian measures exactly that difference. Result, the system diffuses.
 
 
 
@@ -865,10 +829,9 @@ Example: vibrating string.
 
 Here the interpretation is different. If a point on the string is curved, tension pulls it back toward equilibrium. More curvature means stronger restoring force. That force produces acceleration, which is why the time derivative is second order.
 
-So:
-
-* curvature means force
-* force means acceleration
+In others words:
+* Curvature means force
+* Force means acceleration
 
 Thus:
 
@@ -894,21 +857,14 @@ i\hbar \frac{\partial \psi}{\partial t} =
 -\frac{\hbar^2}{2m} \nabla^2 \psi + V\psi
 $$
 
-This also contains the Laplacian.
-
-Why?
-
-Because the Laplacian corresponds to kinetic energy.
-
-In fact, the kinetic energy operator is:
+This also contains the Laplacian.Why? Because the Laplacian corresponds to kinetic energy. In fact, the kinetic energy operator is:
 
 $$
 -\frac{\hbar^2}{2m}\nabla^2
 $$
 
 So again:
-
-* spatial curvature determines how the wavefunction evolves.
+* Spatial curvature determines how the wave function evolves.
 
 The mathematics ends up looking surprisingly similar to diffusion or waves.
 
@@ -956,11 +912,7 @@ There are several deep reasons.
 #### **1. Local interactions**
 {: .no_toc }
 
-Atoms only interact with nearby atoms.
-
-So the state at a point depends on neighbors, not the whole universe.
-
-The Laplacian is precisely the operator that compares a point to its neighbors.
+Atoms only interact with nearby atoms. So the state at a point depends on neighbors, not the whole universe. The Laplacian is precisely the operator that compares a point to its neighbors.
 
 
 
@@ -968,9 +920,8 @@ The Laplacian is precisely the operator that compares a point to its neighbors.
 {: .no_toc }
 
 Physical laws must be invariant under:
-
-* translations
-* rotations
+* Translations
+* Rotations
 
 The simplest operator with those symmetries is the Laplacian.
 
@@ -979,21 +930,7 @@ The simplest operator with those symmetries is the Laplacian.
 #### **3️. Energy minimization**
 {: .no_toc }
 
-Many systems evolve to minimize energy.
-
-Energy often contains terms like
-
-$$
-(\nabla u)^2
-$$
-
-When we minimize such an energy functional, the resulting equation contains
-
-$$
-\nabla^2 u
-$$
-
-So the Laplacian appears naturally from variational principles.
+Many systems evolve to minimize energy. Energy often contains terms like $$ (\nabla u)^2 $$. When we minimize such an energy functional, the resulting equation contains $$ \nabla^2 u $$. So the Laplacian appears naturally from variational principles.
 
 
 
@@ -1015,17 +952,16 @@ u_{\text{neighbors}} - u(x)
 $$
 
 So the equations basically say:
-
-* heat: move toward neighbor average
-* waves: accelerate toward neighbor average
-* quantum: evolve based on neighbor difference
+* Heat: move toward neighbor average
+* Waves: accelerate toward neighbor average
+* Quantum: evolve based on neighbor difference
 
 
 
 
 
 <!-- ###################################################################### -->
-### 9. Why physics equations look simple
+### 9. Why physics equations look "simple"
 {: .no_toc }
 
 In fact, the real world equations are often the simplest possible ones.
@@ -1039,9 +975,9 @@ Physicists usually assume:
 
 When we write the simplest equation compatible with these principles, we often end up with:
 
-* first or second derivatives
+* First or second derivatives
 * Laplacians
-* linear terms
+* Linear terms
 
 Which explains why the same equations appear everywhere.
 
@@ -1053,18 +989,18 @@ Which explains why the same equations appear everywhere.
 
 Derivatives appear in physics because:
 
-* physics describes change
-* laws are local
-* systems react to differences with neighbors
-* curvature (second derivative) measures those differences
+* Physics describes change
+* Laws are local
+* Systems react to differences with neighbors
+* Curvature (second derivative) measures those differences
 
 That’s why the same structures appear in:
 
-* heat
-* waves
-* quantum mechanics
-* electromagnetism
-* fluid dynamics
+* Heat
+* Waves
+* Quantum mechanics
+* Electromagnetism
+* Fluid dynamics
 
 
 
@@ -1211,7 +1147,7 @@ There are many important examples that are not phrased as "action minimization",
 #### **1. Fermat’s principle (optics)**
 {: .no_toc }
 
-Associated with Pierre de Fermat
+Associated with Pierre de Fermat (1660+)
 
 $$
 \delta \int n(s)\,ds = 0
@@ -1223,8 +1159,8 @@ Interpretation:
 
 This explains:
 
-* refraction
-* reflection
+* Refraction
+* Reflection
 
 This is actually an action principle for light, but historically it came first and looks different.
 
@@ -1245,11 +1181,11 @@ $$
 
 Examples:
 
-* a hanging chain
-* elastic structures
-* equilibrium configurations
+* A hanging chain
+* Elastic structures
+* Equilibrium configurations
 
-No time involved — this is not an "action over time", just a spatial variational principle.
+No time involved, this is not an "action over time", just a spatial variational principle.
 
 
 #### **3. Principle of virtual work**
@@ -1275,7 +1211,7 @@ This is another variational formulation of mechanics.
 
 In thermodynamics and statistical physics:
 
-* minimum entropy production (near equilibrium)
+* Minimum entropy production (near equilibrium)
 * Onsager’s principle
 
 These are variational principles involving irreversible processes, not classical action.
@@ -1302,7 +1238,7 @@ This is a variational method, not a fundamental law, but it uses the same idea.
 
 
 <!-- ###################################################################### -->
-### 4. So what makes the action special?
+### 4. So what makes the action so special?
 {: .no_toc }
 
 This is a good question because, in effect, not all variational principles are equal. The action principle is special because:
@@ -1310,12 +1246,10 @@ This is a good question because, in effect, not all variational principles are e
 
 
 
-#### **1. It applies to dynamics (time evolution)**
+#### **1. It applies to dynamics (evolution in time)**
 {: .no_toc }
 
-Many variational principles describe equilibrium.
-
-The action principle describes how systems evolve in time.
+Many variational principles describe equilibrium. The action principle describes how systems evolve in time.
 
 
 
@@ -1325,10 +1259,10 @@ The action principle describes how systems evolve in time.
 
 It works for:
 
-* particles
-* fields
-* relativity
-* quantum theory
+* Particles
+* Fields
+* Relativity
+* Quantum theory
 
 
 
@@ -1344,9 +1278,9 @@ Through Emmy Noether’s theorem:
 
 Examples:
 
-* time invariance leads to energy conservation
-* space invariance leads to momentum conservation
-* rotation invariance leads to angular momentum
+* Time invariance leads to energy conservation
+* Space invariance leads to momentum conservation
+* Rotation invariance leads to angular momentum
 
 This is a deep structural reason physicists love the action.
 
@@ -1366,9 +1300,7 @@ In modern physics, the hierarchy is roughly:
 
     * Specific Lagrangians for specific theories
 
-So yes:
-
-> The principle of least action is a particular realization of a much broader conceptual framework.
+So yes the principle of least action is a particular realization of a much broader conceptual framework.
 
 
 
@@ -1394,7 +1326,7 @@ Then the real trajectory is the one that satisfies that constraint.
 
 It’s a very different viewpoint:
 
-* Newton: local differential equation
+* Newton/Leibniz: local differential equation
 * Lagrange/Hamilton: global optimization over paths
 
 Yet they give the same results.
@@ -1407,9 +1339,7 @@ Yet they give the same results.
 ### 7. Subtle but important point
 {: .no_toc }
 
-"Least action" is slightly misleading.
-
-In reality:
+"Least action" is slightly misleading. In reality:
 
 $$
 \delta S = 0
@@ -1417,9 +1347,9 @@ $$
 
 means:
 
-* minimum
-* maximum
-* or saddle point
+* Minimum
+* Maximum
+* Or saddle point
 
 So the correct name is: principle of stationary action
 
@@ -1479,13 +1409,13 @@ Final takeaway
 <!-- ###################################################################### -->
 ## I'm in high school, could you show me an example I can understand?
 
-Alright, let’s tackle this carefully and make it *actually understandable* at a high school (terminale) level. We’ll go step by step, with a one classic example of stationary action: A particle moving in a straight line (free particle). I’ll explain both the **idea** and the **calculations**, without skipping the important reasoning.
+Alright, let’s tackle this carefully and make it *actually understandable* at a high school level. We’ll go step by step, with a one classic example of stationary action: A particle moving in a straight line (free particle). I’ll explain both the idea and the calculations, without skipping the important reasoning.
 
 
 ### First: Again... What does "stationary action" mean?
 {: .no_toc }
 
-In physics, we define something called the **action**:
+Remember, we defined something called the **action** as:
 
 $$
 S = \int_{t_1}^{t_2} L \, dt
@@ -1502,8 +1432,8 @@ The principle says:
 
 "Stationary" means:
 
-* not necessarily the smallest,
-* but small variations don’t change it at first order.
+* Not necessarily the smallest,
+* But small variations don’t change it at first order. Think of a marble at the bottom of a bowl. If we do not push to far, the marble remains at the bottom.
 
 
 ### Key idea (super important)
@@ -1518,9 +1448,7 @@ $$
 * $$ \varepsilon $$: very small number
 * $$ \eta(t) $$: arbitrary small function (but zero at the endpoints)
 
-We then ask "How does the action change?"
-
-If $$ \delta S = 0 $$ then the path is physical.
+We then ask "How does the action change?". If $$ \delta S = 0 $$ then the path is physical.
 
 
 ### Example of the free particle (no forces applied)
@@ -1529,10 +1457,7 @@ If $$ \delta S = 0 $$ then the path is physical.
 #### **Step 1: Define the system**
 {: .no_toc }
 
-A particle of mass $$ m $$, moving freely.
-
-* No forces means no potential energy
-* So:
+A particle of mass $$ m $$, moving freely. No forces means no potential energy and so:
 
 $$
 L = T = \frac{1}{2} m v^2
@@ -1549,7 +1474,7 @@ $$
 {: .no_toc }
 
 $$
-S = \int_{t_1}^{t_2} \frac{1}{2} m \dot{x}^2 , dt
+S = \int_{t_1}^{t_2} \frac{1}{2} m \dot{x}^2 \, dt
 $$
 
 
@@ -1579,25 +1504,33 @@ $$
 Expand:
 
 $$
-= \int \frac{1}{2} m \left( \dot{x}^2 + 2\varepsilon \dot{x}\dot{\eta} + \varepsilon^2 \dot{\eta}^2 \right) dt
+S(\varepsilon) = \int \frac{1}{2} m \left( \dot{x}^2 + 2\varepsilon \dot{x}\dot{\eta} + \varepsilon^2 \dot{\eta}^2 \right) dt
 $$
 
 
-#### **Step 5: Keep only small terms**
+#### **Step 5: Keep only first order terms**
 {: .no_toc }
 
-We ignore $$ \varepsilon^2 $$ (too small, remember $$0.1 x 0.1=0.001$$):
+We can ignore $$ \varepsilon^2 $$. Too small, remember $$0.1 \times 0.1=0.001$$:
 
 $$
-S(\varepsilon) \approx S(0) + \varepsilon \int m \dot{x}\dot{\eta} , dt
+S(\varepsilon) \approx S = \int_{t_1}^{t_2} \frac{1}{2} m \dot{x}^2 \, dt + \varepsilon \int m \dot{x}\dot{\eta} \, dt
+$$
+
+
+$$
+S(\varepsilon) \approx S(0) + \varepsilon \int m \dot{x}\dot{\eta} \, dt
 $$
 
 So:
 
 $$
-\delta S = \varepsilon \int m \dot{x}\dot{\eta} , dt
+\delta S = \varepsilon \int m \dot{x}\dot{\eta} \, dt
 $$
 
+$$
+\delta S = \varepsilon m \int \dot{x}\dot{\eta} \, dt
+$$
 
 #### **Step 6: Integration by parts**
 {: .no_toc }
@@ -1605,16 +1538,16 @@ $$
 We transform:
 
 $$
-\int \dot{x}\dot{\eta} dt
+\int \dot{x}\dot{\eta} \, dt
 $$
 
 Using integration by parts:
 
 $$
-= [\dot{x}\eta]_{t_1}^{t_2} - \int \ddot{x} \eta dt
+= [\dot{x}\eta]_{t_1}^{t_2} - \int \ddot{x} \eta \, dt
 $$
 
-But $$ \eta(t_1) = \eta(t_2) = 0 $$
+But, by definition we have $$ \eta(t_1) = \eta(t_2) = 0 $$
 
 So:
 
@@ -1883,9 +1816,9 @@ $$
 
 So already, action was something that:
 
-* depends on the whole path
-* accumulates along motion
-* measures something like "quantity of motion × distance"
+* Depends on the whole path
+* Accumulates along motion
+* Measures something like "quantity of motion × distance"
 
 
 
@@ -1895,10 +1828,10 @@ So already, action was something that:
 
 The modern definition came later with:
 
-* Joseph-Louis Lagrange
-* William Rowan Hamilton
+* Joseph-Louis Lagrange (1760+)
+* William Rowan Hamilton (1830+)
 
-Hamilton (1830s) is the one who really established:
+Hamilton is the one who really established:
 
 $$
 S = \int (T - V) \, dt
@@ -1931,12 +1864,12 @@ Even today, physicists sometimes loosely interpret action as:
 
 In modern physics, "action" is less about "effort" and more about:
 
-* a functional that encodes the entire dynamics of a system
-* the central object from which all equations of motion can be derived
+* A functional that encodes the entire dynamics of a system
+* The central object from which all equations of motion can be derived
 
 And in quantum mechanics (as we noticed with Feynman), it becomes even more fundamental:
 
-* every path is weighted by $$e^{iS/\hbar}$$
+* Every path is weighted by $$e^{iS/\hbar}$$
 
 So "action" is really:
 
@@ -2351,11 +2284,11 @@ Which is exactly Newton’s second law.
 This derivation shows that Newton’s laws are not fundamental, they are consequences of a deeper principle which is that physical systems extremize the action.
 
 This framework generalizes to almost all physics:
-* classical mechanics
-* optics
-* quantum mechanics
-* quantum field theory
-* general relativity
+* Classical mechanics
+* Optics
+* Quantum mechanics
+* Quantum field theory
+* General relativity
 
 
 
@@ -2369,8 +2302,8 @@ The action accumulates the difference $$ T - V $$ over time.
 
 The system chooses the trajectory that balances:
 
-* kinetic energy
-* potential energy
+* Kinetic energy
+* Potential energy
 
 so that small deviations do not reduce the action.
 
@@ -2818,8 +2751,8 @@ The equations describe the electromagnetic field discovered by James Clerk Maxwe
 
 In mechanics we had:
 
-* variable: $$x(t)$$
-* action:
+* Variable: $$x(t)$$
+* Action:
 
 $$
 S = \int L(x,\dot x,t),dt
@@ -2827,13 +2760,13 @@ $$
 
 In electromagnetism we instead describe fields:
 
-* electric field $$ \mathbf{E}(x,t) $$
-* magnetic field $$ \mathbf{B}(x,t) $$
+* Electric field $$ \mathbf{E}(x,t) $$
+* Magnetic field $$ \mathbf{B}(x,t) $$
 
 But varying vector fields directly is inconvenient. Instead we introduce potentials:
 
-* scalar potential $$ \phi $$
-* vector potential $$ \mathbf{A} $$
+* Scalar potential $$ \phi $$
+* Vector potential $$ \mathbf{A} $$
 
 The physical fields are defined by
 
@@ -3054,10 +2987,10 @@ That is why electromagnetism fits perfectly with special relativity.
 
 The same framework works for:
 
-* electromagnetism
-* quantum fields
-* the Standard Model
-* gravity
+* Electromagnetism
+* Quantum fields
+* The Standard Model
+* Gravity
 
 So Maxwell theory is actually the first modern field theory.
 
