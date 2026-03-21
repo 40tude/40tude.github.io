@@ -307,11 +307,21 @@ You can also write it in vector form:
 $$
 \nabla =
 \begin{pmatrix}
-\frac{\partial}{\partial x} \
-\frac{\partial}{\partial y} \
-\frac{\partial}{\partial z}
+\frac{\partial}{\partial x}
+\\ \frac{\partial}{\partial y}
+\\ \frac{\partial}{\partial z}
 \end{pmatrix}
 $$
+
+<!-- $$
+\vec{\nabla} = \begin{pmatrix}\frac{\partial }{\partial x}
+\\ \frac{\partial }{\partial y}
+\\ \frac{\partial }{\partial z}
+\end{pmatrix}
+$$ -->
+
+
+
 
 At first, this may feel abstract because:
 
@@ -328,18 +338,18 @@ The key idea is that everything depends on two things:
 
 The table below summarizes the most important operations.
 
-| Operation         | 1D Version            | 3D Expression             | Name       | Result                                                                                                                                                                                                                                |
-| :---------------- | :-------------------- | :------------------------ | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Dot product       | ( \frac{dE}{dx} )     | ( \nabla \cdot \vec{E} )  | Divergence | ( \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} )                                                                                                                               |
-| Cross product     | — (not defined in 1D) | ( \nabla \times \vec{E} ) | Curl       | ( \begin{pmatrix} \frac{\partial E_z}{\partial y}-\frac{\partial E_y}{\partial z} \ \frac{\partial E_x}{\partial z}-\frac{\partial E_z}{\partial x} \ \frac{\partial E_y}{\partial x}-\frac{\partial E_x}{\partial y} \end{pmatrix} ) |
-| Applied to scalar | ( \frac{d\phi}{dx} )  | ( \nabla \phi )           | Gradient   | ( \begin{pmatrix} \frac{\partial \phi}{\partial x} \ \frac{\partial \phi}{\partial y} \ \frac{\partial \phi}{\partial z} \end{pmatrix} )                                                                                              |
+| Operation         | 1D Version              | 3D Expression               | Name       | Result                                                                                                                                                                                                                                  |
+| :---------------- | :---------------------- | :-------------------------- | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dot product       | $$ \frac{dE}{dx} $$     | $$ \nabla \cdot \vec{E} $$  | Divergence | $$ \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} $$                                                                                                                               |
+| Cross product     | — (not defined in 1D)   | $$ \nabla \times \vec{E} $$ | Curl       | $$ \begin{pmatrix} \frac{\partial E_z}{\partial y}-\frac{\partial E_y}{\partial z} \\ \frac{\partial E_x}{\partial z}-\frac{\partial E_z}{\partial x} \\ \frac{\partial E_y}{\partial x}-\frac{\partial E_x}{\partial y} \end{pmatrix} $$ |
+| Applied to scalar | $$ \frac{d\phi}{dx} $$  | $$ \nabla \phi $$           | Gradient   | $$ \begin{pmatrix} \frac{\partial \phi}{\partial x} \\ \frac{\partial \phi}{\partial y} \\ \frac{\partial \phi}{\partial z} \end{pmatrix} $$                                                                                              |
 
 
 **Summary**
 
-* In **1D**, everything reduces to ordinary derivatives.
-* In **higher dimensions**, ( \nabla ) lets us generalize derivatives in a compact and powerful way.
-* The different operations (gradient, divergence, curl) describe **different physical behaviors**:
+* In 1D, everything reduces to ordinary derivatives.
+* In higher dimensions, ( \nabla ) lets us generalize derivatives in a compact and powerful way.
+* The different operations (gradient, divergence, curl) describe different physical behaviors:
 
   * Gradient -> direction of change
   * Divergence -> sources and sinks
@@ -471,15 +481,15 @@ It is the sum of second derivatives in each direction.
 
 The Laplacian measures how a quantity compares to its surroundings.
 
-* If ( \nabla^2 T > 0 ): the point is **colder than its neighbors** → heat flows in
-* If ( \nabla^2 T < 0 ): the point is **hotter than its neighbors** → heat flows out
+* If $$ \nabla^2 T > 0 $$: the point is colder than its neighbors -> heat flows in
+* If $$ \nabla^2 T < 0 $$: the point is hotter than its neighbors -> heat flows out
 
 So it captures how things spread out or smooth out over time.
 
 
 **Why it appears in the heat equation?**
 
-* The **gradient** tells us how temperature changes → gives heat flow
+* The **gradient** tells us how temperature changes -> gives heat flow
 * The **divergence** tells us how heat accumulates or leaves
 
 Putting both together naturally gives the Laplacian:
@@ -491,10 +501,10 @@ Putting both together naturally gives the Laplacian:
 
 **Summary**
 * Laplacian = $$ \nabla^2 $$
-* In **1D**: Laplacian = second derivative
-* In **3D**: sum of second derivatives
-* It takes a **scalar -> scalar**
-* It describes **diffusion / spreading**
+* In 1D: Laplacian = second derivative
+* In 3D: sum of second derivatives
+* It takes a scalar -> scalar
+* It describes diffusion/spreading
 
 
 
@@ -1084,6 +1094,7 @@ That’s why the same structures appear in:
 ## A deeper modern perspective
 
 ### From differential equations to a global viewpoint
+{: .no_toc }
 
 Up to this point, we have described physical systems using derivatives: velocity as a first derivative, acceleration as a second derivative, and more generally differential equations that relate these quantities. This approach is local in nature: it tells us how the system evolves step by step, at each instant of time.
 
