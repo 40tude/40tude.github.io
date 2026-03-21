@@ -293,6 +293,17 @@ A simple way to understand it is through intuition: imagine standing on a snowbo
   So in one dimension, nabla is just the usual derivative.
 
 
+
+
+
+
+
+
+
+
+
+
+
 #### **Note on the Nabla Operator**
 {: .no_toc }
 
@@ -345,7 +356,7 @@ The table below summarizes the most important operations.
 | Applied to scalar | $$ \frac{d\phi}{dx} $$  | $$ \nabla \phi $$           | Gradient   | $$ \begin{pmatrix} \frac{\partial \phi}{\partial x} \\ \frac{\partial \phi}{\partial y} \\ \frac{\partial \phi}{\partial z} \end{pmatrix} $$                                                                                              |
 
 
-**Summary**
+**Summary about $$ \vec{\nabla} $$**
 
 * In 1D, everything reduces to ordinary derivatives.
 * In higher dimensions, ( \nabla ) lets us generalize derivatives in a compact and powerful way.
@@ -431,10 +442,20 @@ Divergence of gradient, this is the Laplacian ($$ \nabla^2 $$)
 
 
 
-#### Note on the Laplacian
+
+
+
+
+
+
+
+
+
+
+#### **Note on the Laplacian**
 {: .no_toc }
 
-The symbol $$ \nabla^2 $$ is called the **Laplacian**. It may look mysterious, but it is actually something quite simple: The Laplacian is the divergence of the gradient.
+The symbol $$ \nabla^2 $$ is called the Laplacian. It may look mysterious, but it is actually something quite simple: The Laplacian is the divergence of the gradient.
 
 In other words: $$ \nabla^2 T = \nabla \cdot (\nabla T) $$
 
@@ -499,7 +520,7 @@ Putting both together naturally gives the Laplacian:
 ]
 
 
-**Summary**
+**Summary about $$ \nabla^2 $$**
 * Laplacian = $$ \nabla^2 $$
 * In 1D: Laplacian = second derivative
 * In 3D: sum of second derivatives
