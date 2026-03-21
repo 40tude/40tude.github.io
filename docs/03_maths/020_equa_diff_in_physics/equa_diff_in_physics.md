@@ -33,7 +33,7 @@ Building intuition from local laws, differential equations, and variational prin
 
 
 <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is under construction. First draft 🚧</b></span>
+<span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2>
 
 
@@ -116,7 +116,7 @@ It’s on the way, just taking a little longer than expected.
 <!-- ###################################################################### -->
 ## Why derivatives and differential equations in physics?
 
-Can we take the time to explain why we so often encounter first- or second-order differential equations, as well as derivatives, in physics formulas? I understand
+Can we take the time to explain why we so often encounter first- or second-order differential equations, as well as derivatives, in physics formulas? I "understand"
 $$F=ma$$, but I don’t understand how it was derived, from where it comes from... Same thing for the wave equation or heat propagation equation, etc.
 
 Great question Marty! The short answer is: derivatives appear in physics because nature evolves continuously in time and space, and differential equations express how a system changes locally. But it's worth unpacking this slowly from first principles.
@@ -157,7 +157,7 @@ This is not arbitrary. It comes from how many levels of change influence the sys
 
 
 
-#### **First derivative -> flow / transport**
+#### **First derivative $$ \rightarrow $$ flow / transport**
 {: .no_toc }
 
 If a phenomenon depends only on the rate of change, we get first-order equations.
@@ -166,7 +166,7 @@ Example: radioactive decay
 
 Experimentation: We measure that the speed at which nuclei disappear is proportional to how many remain.
 
-Interpretation: Speed of means $$\frac{dN}{dt}$$, is proportional means $$\lambda$$, how many reamain means $$N$$, disappear means $$-$$. Tadaaa!
+Interpretation: "Speed at" means $$\frac{dN}{dt}$$, "is proportional" means $$\lambda$$, "how many remain" means $$N$$ and "disappear" means $$-$$. Tadaa!
 
 $$\frac{dN}{dt} = -\lambda N$$
 
@@ -176,7 +176,7 @@ This law is local and simple. More atoms means more decay events per second. The
 
 
 
-#### **Second derivative -> dynamics / inertia**
+#### **Second derivative $$ \rightarrow $$ dynamics / inertia**
 {: .no_toc }
 
 Second derivatives appear when acceleration matters.
@@ -232,8 +232,8 @@ $$a = \text{constant when force is constant}$$
 
 Then experiments showed:
 
-* double the force -> double the acceleration
-* double the mass -> half the acceleration
+* double the force $$ \rightarrow $$ double the acceleration
+* double the mass $$ \rightarrow $$ half the acceleration
 
 So empirically:
 
@@ -304,7 +304,7 @@ A simple way to understand it is through intuition: imagine standing on a snowbo
 
 
 
-#### **Note on the Nabla Operator**
+#### **Side Note on the Nabla Operator**
 {: .no_toc }
 
 The symbol $$ \nabla $$ (or sometimes written $$ \vec{\nabla} $$) is called the nabla operator. It is a vector differential operator, which simply means that it behaves like a vector whose components are derivatives.
@@ -362,9 +362,9 @@ The table below summarizes the most important operations.
 * In higher dimensions, ( \nabla ) lets us generalize derivatives in a compact and powerful way.
 * The different operations (gradient, divergence, curl) describe different physical behaviors:
 
-  * Gradient -> direction of change
-  * Divergence -> sources and sinks
-  * Curl -> rotation
+  * Gradient $$ \rightarrow $$ direction of change
+  * Divergence $$ \rightarrow $$ sources and sinks
+  * Curl $$ \rightarrow $$ rotation
 
 
 
@@ -452,7 +452,7 @@ Divergence of gradient, this is the Laplacian ($$ \nabla^2 $$)
 
 
 
-#### **Note on the Laplacian**
+#### **Side Note on the Laplacian**
 {: .no_toc }
 
 The symbol $$ \nabla^2 $$ is called the Laplacian. It may look mysterious, but it is actually something quite simple: The Laplacian is the divergence of the gradient.
@@ -502,15 +502,15 @@ It is the sum of second derivatives in each direction.
 
 The Laplacian measures how a quantity compares to its surroundings.
 
-* If $$ \nabla^2 T > 0 $$: the point is colder than its neighbors -> heat flows in
-* If $$ \nabla^2 T < 0 $$: the point is hotter than its neighbors -> heat flows out
+* If $$ \nabla^2 T > 0 $$: the point is colder than its neighbors $$ \rightarrow $$ heat flows in
+* If $$ \nabla^2 T < 0 $$: the point is hotter than its neighbors $$ \rightarrow $$ heat flows out
 
 So it captures how things spread out or smooth out over time.
 
 
 **Why it appears in the heat equation?**
 
-* The **gradient** tells us how temperature changes -> gives heat flow
+* The **gradient** tells us how temperature changes $$ \rightarrow $$ gives heat flow
 * The **divergence** tells us how heat accumulates or leaves
 
 Putting both together naturally gives the Laplacian:
@@ -524,7 +524,7 @@ Putting both together naturally gives the Laplacian:
 * Laplacian = $$ \nabla^2 $$
 * In 1D: Laplacian = second derivative
 * In 3D: sum of second derivatives
-* It takes a scalar -> scalar
+* It takes a scalar $$ \rightarrow $$ scalar
 * It describes diffusion/spreading
 
 
