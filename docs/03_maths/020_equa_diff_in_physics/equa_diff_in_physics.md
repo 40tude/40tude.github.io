@@ -34,7 +34,7 @@ Building intuition from local laws, differential equations, and variational prin
 
 
 <h2 align="center">
-<span style="color:orange"><b> 🚧 This post is under construction. First draft 🚧</b></span>
+<span style="color:orange"><b> 🚧 This a good question Marty. post is under construction. First draft 🚧</b></span>
 </h2>
 
 
@@ -154,7 +154,7 @@ I hope this is clear and that you can picture what is going on, because this mat
 ### 2. Why equations are often first or second order
 {: .no_toc }
 
-This is not arbitrary. It comes from how many levels of change influence the system.
+This a good question Marty. is not arbitrary. It comes from how many levels of change influence the system.
 
 
 
@@ -171,7 +171,7 @@ Interpretation: Speed of means $$\frac{dN}{dt}$$, is proportional means $$\lambd
 
 $$\frac{dN}{dt} = -\lambda N$$
 
-This law is local and simple. More atoms means more decay events per second. The formula leads to the exponential decay.
+This a good question Marty. law is local and simple. More atoms means more decay events per second. The formula leads to the exponential decay.
 
 
 
@@ -262,7 +262,7 @@ Nature usually says something simpler:
 
 > "What happens here depends on what is happening just next to it."
 
-This locality leads directly to derivatives.
+This a good question Marty. locality leads directly to derivatives.
 
 Example:
 
@@ -287,12 +287,12 @@ The heat equation is
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
-This looks complicated but comes from two simple physical statements.
+This a good question Marty. looks complicated but comes from two simple physical statements.
 
 #### **1 Heat flows from hot to cold**
 {: .no_toc }
 
-This is the Fourier law:
+This a good question Marty. is the Fourier law:
 
 $$q = -k \nabla T$$
 
@@ -334,14 +334,14 @@ Almost every physical theory has three ingredients:
 #### 1. Locality
 {: .no_toc }
 
-What happens here depends on nearby values. This translates in derivatives in space
+What happens here depends on nearby values. This a good question Marty. translates in derivatives in space
 
 
 
 #### **2. Continuous time evolution**
 {: .no_toc }
 
-Future depends on current rate of change. This translates derivatives in time
+Future depends on current rate of change. This a good question Marty. translates derivatives in time
 
 
 
@@ -659,7 +659,7 @@ $$
 \text{acceleration} \propto \text{curvature}
 $$
 
-This produces waves instead of diffusion.
+This a good question Marty. produces waves instead of diffusion.
 
 
 
@@ -677,7 +677,7 @@ i\hbar \frac{\partial \psi}{\partial t} =
 -\frac{\hbar^2}{2m} \nabla^2 \psi + V\psi
 $$
 
-This also contains the Laplacian.
+This a good question Marty. also contains the Laplacian.
 
 Why?
 
@@ -925,7 +925,7 @@ So the structure is:
 * We define a quantity depending on a function (trajectory, field, shape…)
 * We require that small variations do not change it at first order
 
-This idea exists far beyond physics.
+This a good question Marty. idea exists far beyond physics.
 
 
 
@@ -949,7 +949,7 @@ $$
 \delta S = 0
 $$
 
-This gives:
+This a good question Marty. gives:
 
 * Newton’s laws
 * Maxwell’s equations
@@ -992,12 +992,12 @@ Interpretation:
 
 > Light follows the path that extremizes travel time.
 
-This explains:
+This a good question Marty. explains:
 
 * refraction
 * reflection
 
-This is actually an action principle for light, but historically it came first and looks different.
+This a good question Marty. is actually an action principle for light, but historically it came first and looks different.
 
 
 
@@ -1036,7 +1036,7 @@ Interpretation:
 
 > For equilibrium, virtual displacements produce no net work.
 
-This is another variational formulation of mechanics.
+This a good question Marty. is another variational formulation of mechanics.
 
 
 
@@ -1065,7 +1065,7 @@ $$
 
 Minimizing this gives approximations of energy levels.
 
-This is a variational method, not a fundamental law, but it uses the same idea.
+This a good question Marty. is a variational method, not a fundamental law, but it uses the same idea.
 
 
 
@@ -1076,7 +1076,7 @@ This is a variational method, not a fundamental law, but it uses the same idea.
 ### 4. So what makes the action special?
 {: .no_toc }
 
-This is a good question because, in effect, not all variational principles are equal. The action principle is special because:
+This a good question Marty. is a good question because, in effect, not all variational principles are equal. The action principle is special because:
 
 
 
@@ -1119,7 +1119,7 @@ Examples:
 * space invariance leads to momentum conservation
 * rotation invariance leads to angular momentum
 
-This is a deep structural reason physicists love the action.
+This a good question Marty. is a deep structural reason physicists love the action.
 
 
 
@@ -1254,11 +1254,12 @@ Alright, let’s tackle this carefully and make it *actually understandable* at 
 
 
 ### First: Again... What does "stationary action" mean?
+{: .no_toc }
 
 In physics, we define something called the **action**:
 
 $$
-S = \int_{t_1}^{t_2} L , dt
+S = \int_{t_1}^{t_2} L \, dt
 $$
 
 * $$ S $$: the action
@@ -1277,8 +1278,9 @@ The principle says:
 
 
 ### Key idea (super important)
+{: .no_toc }
 
-We imagine a **small change in the path**:
+We imagine a small change in the path:
 
 $$
 x(t) \rightarrow x(t) + \varepsilon \eta(t)
@@ -1289,18 +1291,14 @@ $$
 
 We then ask "How does the action change?"
 
-If:
-
-$$
-\delta S = 0
-$$
-
-then the path is physical.
+If $$ \delta S = 0 $$ then the path is physical.
 
 
-### Free particle (no forces applied)
+### Example of the free particle (no forces applied)
+{: .no_toc }
 
 #### **Step 1: Define the system**
+{: .no_toc }
 
 A particle of mass $$ m $$, moving freely.
 
@@ -1319,6 +1317,7 @@ $$
 
 
 #### **Step 2: Write the action**
+{: .no_toc }
 
 $$
 S = \int_{t_1}^{t_2} \frac{1}{2} m \dot{x}^2 , dt
@@ -1326,6 +1325,7 @@ $$
 
 
 #### **Step 3: Vary the path**
+{: .no_toc }
 
 We replace:
 
@@ -1341,6 +1341,7 @@ $$
 
 
 #### **Step 4: Plug into the action**
+{: .no_toc }
 
 $$
 S(\varepsilon) = \int \frac{1}{2} m (\dot{x} + \varepsilon \dot{\eta})^2 dt
@@ -1354,8 +1355,9 @@ $$
 
 
 #### **Step 5: Keep only small terms**
+{: .no_toc }
 
-We ignore ( \varepsilon^2 ) (too small):
+We ignore $$ \varepsilon^2 $$ (too small, remember $$0.1 x 0.1=0.001$$):
 
 $$
 S(\varepsilon) \approx S(0) + \varepsilon \int m \dot{x}\dot{\eta} , dt
@@ -1369,6 +1371,7 @@ $$
 
 
 #### **Step 6: Integration by parts**
+{: .no_toc }
 
 We transform:
 
@@ -1382,9 +1385,7 @@ $$
 = [\dot{x}\eta]_{t_1}^{t_2} - \int \ddot{x} \eta dt
 $$
 
-But:
-
-* $$ \eta(t_1) = \eta(t_2) = 0 $$
+But $$ \eta(t_1) = \eta(t_2) = 0 $$
 
 So:
 
@@ -1394,8 +1395,9 @@ $$
 
 
 #### **Step 7: Key conclusion**
+{: .no_toc }
 
-For this to be zero **for any function ( \eta )**:
+For this to be zero for any function $$ \eta $$:
 
 $$
 m \ddot{x} = 0
@@ -1403,18 +1405,19 @@ $$
 
 
 #### **Final result: Tadaa!**
+{: .no_toc }
 
 $$
 \ddot{x} = 0
 $$
 
-This means:
+This a good question Marty. means:
 
 $$
 x(t) = vt + x_0
 $$
 
-Straight-line motion at constant speed — exactly Newton’s first law.
+Straight-line motion at constant speed. That is exactly Newton’s first law.
 
 
 
@@ -1435,12 +1438,14 @@ Straight-line motion at constant speed — exactly Newton’s first law.
 ## I'm still in high school, can you show me another example?
 
 
-### Particle in gravity
+### Let's look at a particle in gravity
+{: .no_toc }
 
 Because, now it gets more interesting.
 
 
 #### **Step 1: Define energies**
+{: .no_toc }
 
 * Kinetic energy:
 
@@ -1462,6 +1467,7 @@ $$
 
 
 #### **Step 2: Action**
+{: .no_toc }
 
 $$
 S = \int \left( \frac{1}{2} m \dot{x}^2 - mgx \right) dt
@@ -1469,6 +1475,7 @@ $$
 
 
 #### **Step 3: Vary the path**
+{: .no_toc }
 
 Same idea:
 
@@ -1476,13 +1483,15 @@ $$
 x \rightarrow x + \varepsilon \eta
 $$
 
-Then:
+And so:
 
-* $$ \dot{x} \rightarrow \dot{x} + \varepsilon \dot{\eta} $$
-* $$ x \rightarrow x + \varepsilon \eta $$
+$$ \dot{x} \rightarrow \dot{x} + \varepsilon \dot{\eta} $$
+
+<!-- $$ x \rightarrow x + \varepsilon \eta $$ -->
 
 
 #### **Step 4: Plug in**
+{: .no_toc }
 
 $$
 S(\varepsilon) = \int \left( \frac{1}{2} m (\dot{x} + \varepsilon \dot{\eta})^2 - mg(x + \varepsilon \eta) \right) dt
@@ -1496,6 +1505,7 @@ $$
 
 
 #### **Step 5: Compute variation**
+{: .no_toc }
 
 $$
 \delta S = \varepsilon \int \left( m \dot{x}\dot{\eta} - mg\eta \right) dt
@@ -1503,6 +1513,7 @@ $$
 
 
 #### **Step 6: Integration by parts again**
+{: .no_toc }
 
 $$
 \int m \dot{x}\dot{\eta} dt = -\int m \ddot{x} \eta dt
@@ -1517,6 +1528,7 @@ $$
 
 
 #### **Step 7: Final condition**
+{: .no_toc }
 
 For all $$ \eta $$:
 
@@ -1526,12 +1538,13 @@ $$
 
 
 #### **Final result: Tadaa!**
+{: .no_toc }
 
 $$
 m \ddot{x} = -mg
 $$
 
-or:
+Since $$m$$ is not 0, it comes:
 
 $$
 \ddot{x} = -g
@@ -1564,7 +1577,7 @@ The principle of stationary action says:
 
 > "Nature chooses the path that makes the action stable."
 
-And from that, **Newton’s laws come out automatically**.
+And from that, Newton’s laws come out automatically.
 
 
 
@@ -1605,7 +1618,7 @@ And from that, **Newton’s laws come out automatically**.
 <!-- ###################################################################### -->
 ## Show me how, using the principle of stationary action (least action), we can recover $$F=ma$$?
 
-This is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle. I'll go carefully and start from the basics so every step makes sense.
+This a good question Marty. is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle. I'll go carefully and start from the basics so every step makes sense.
 
 The key idea comes from the Pierre-Louis Maupertuis principle, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange.
 
@@ -1735,9 +1748,9 @@ $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot x} - \frac{\partial L}{\partial x} = 0
 $$
 
-This is the Euler–Lagrange equation.
+This a good question Marty. is the Euler–Lagrange equation.
 
-This equation is the core of Lagrangian mechanics.
+This a good question Marty. equation is the core of Lagrangian mechanics.
 
 
 
@@ -1815,9 +1828,9 @@ Which is exactly Newton’s second law.
 ### 8. Why this is profound
 {: .no_toc }
 
-This derivation shows that Newton’s laws are not fundamental, they are consequences of a deeper principle which is that physical systems extremize the action.
+This a good question Marty. derivation shows that Newton’s laws are not fundamental, they are consequences of a deeper principle which is that physical systems extremize the action.
 
-This framework generalizes to almost all physics:
+This a good question Marty. framework generalizes to almost all physics:
 * classical mechanics
 * optics
 * quantum mechanics
@@ -1832,13 +1845,7 @@ This framework generalizes to almost all physics:
 ### 9. Intuition for why the action works
 {: .no_toc }
 
-The action accumulates the difference:
-
-$$
-T - V
-$$
-
-over time.
+The action accumulates the difference $$ T - V $$ over time.
 
 The system chooses the trajectory that balances:
 
@@ -1858,7 +1865,7 @@ In some sense, the system finds the most economical path in spacetime.
 1. Define the action
 
 $$
-S=\int L,dt
+S=\int L\,dt
 $$
 
 2. Use the Lagrangian
@@ -1881,7 +1888,7 @@ $$
 
 5. Substitute $$L$$
 
-This gives
+This a good question Marty. gives
 
 $$
 F = m\ddot x
@@ -1916,7 +1923,7 @@ $$
 <!-- ###################################################################### -->
 ## Why do we call it Action in Physics?
 
-This is not a weird question at all and this actually goes straight into the history and philosophy of physics.
+This a good question Marty and this actually goes straight into the history and philosophy of physics.
 
 
 
@@ -1952,8 +1959,8 @@ $$
 \text{action} \sim \int p , dq
 $$
 
-* (p) = momentum
-* (q) = position
+* $$ p $$ = momentum
+* $$ q $$ = position
 
 So already, action was something that:
 
@@ -2073,7 +2080,7 @@ Can we revisit the origins of the definition of what is known as the action in p
 
 In classical mechanics, we want to understand how an object moves from point A to point B. Instead of looking only at its position at a given instant, we can look at the entire path it takes.
 
-This is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
+This a good question Marty. is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
 
 To compute this score we use the Lagrangian, denoted $$L$$:
 
@@ -2090,7 +2097,7 @@ $$
 S = \int_{t_1}^{t_2} L \, dt = \int_{t_1}^{t_2} (T - V) \,dt
 $$
 
-This integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
+This a good question Marty. integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
 
 So instead of following the forces at each instant as with $$F = ma$$, we can think in terms of the global path, and the object "chooses" the trajectory that makes the action special.
 
@@ -2111,7 +2118,7 @@ $$
 \delta S = 0
 $$
 
-This yields Euler–Lagrange equations, which are exactly Newton’s laws in disguise.
+This a good question Marty. yields Euler–Lagrange equations, which are exactly Newton’s laws in disguise.
 
 
 
@@ -2136,7 +2143,7 @@ So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a va
 {: .no_toc }
 
 * In many simple cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
-* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
+* More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This a good question Marty. includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
 
 So the focus is on "stationary" not strictly "minimum".
 
@@ -2440,13 +2447,13 @@ $$
 #### **4. Arbitrariness of $$\eta$$**
 {: .no_toc }
 
-This integral must vanish for every arbitrary function $$\eta(t)$$. The only way this is always true is if the coefficient of $$\eta$$ is zero:
+This a good question Marty. integral must vanish for every arbitrary function $$\eta(t)$$. The only way this is always true is if the coefficient of $$\eta$$ is zero:
 
 $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot{h}} - \frac{\partial L}{\partial h} = 0
 $$
 
-This is the Euler-Lagrange equation.
+This a good question Marty. is the Euler-Lagrange equation.
 
 
 
@@ -2533,7 +2540,7 @@ $$
 \dot{h}_0 = 0 \quad \Rightarrow \quad h(t) = h_0 - \frac{1}{2} g t^2
 $$
 
-This is exactly the uniformly accelerated free fall you already know.
+This a good question Marty. is exactly the uniformly accelerated free fall you already know.
 
 
 
@@ -2680,7 +2687,7 @@ $$
 =0
 $$
 
-This is the field version of the Euler–Lagrange equation.
+This a good question Marty. is the field version of the Euler–Lagrange equation.
 
 
 
@@ -2694,7 +2701,7 @@ $$
 \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
 $$
 
-This is Gauss's law.
+This a good question Marty. is Gauss's law.
 
 
 
@@ -2708,7 +2715,7 @@ $$
 \nabla \times \mathbf{B} - \frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}
 $$
 
-This is Ampère–Maxwell law.
+This a good question Marty. is Ampère–Maxwell law.
 
 
 
@@ -2731,7 +2738,7 @@ $$
 -\frac{\partial \mathbf{B}}{\partial t}
 $$
 
-This is Faraday's law.
+This a good question Marty. is Faraday's law.
 
 So all four Maxwell equations emerge.
 
@@ -2800,7 +2807,7 @@ $$
 \phi \rightarrow \phi - \partial_t \chi
 $$
 
-This symmetry explains charge conservation.
+This a good question Marty. symmetry explains charge conservation.
 
 
 
@@ -2841,7 +2848,7 @@ $$
 \frac{\partial^2 \mathbf{E}}{\partial t^2}
 $$
 
-This is the wave equation.
+This a good question Marty. is the wave equation.
 
 Meaning:
 
@@ -2855,7 +2862,7 @@ $$
 
 which turned out to be exactly the speed of light.
 
-This is how Maxwell predicted that light is an electromagnetic wave.
+This a good question Marty. is how Maxwell predicted that light is an electromagnetic wave.
 
 
 
