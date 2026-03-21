@@ -1454,6 +1454,11 @@ We then ask "How does the action change?". If $$ \delta S = 0 $$ then the path i
 ### Example of the free particle (no forces applied)
 {: .no_toc }
 
+<figure style="text-align: center;">
+<img src="./assets/img05.webp" alt="Studying a free particle in space with the principle of least action" width="450" loading="lazy"/>
+<figcaption>Studying a free particle in space with the principle of least action</figcaption>
+</figure>
+
 #### **Step 1: Define the system**
 {: .no_toc }
 
@@ -1723,6 +1728,12 @@ And that’s exactly what we needed.
 {: .no_toc }
 
 Because, now it gets more interesting.
+
+
+<figure style="text-align: center;">
+<img src="./assets/img06.webp" alt="Studying a particle in gravity with the principle of least action" width="450" loading="lazy"/>
+<figcaption>Studying a particle in gravity with the principle of least action</figcaption>
+</figure>
 
 
 #### **Step 1: Define energies**
