@@ -1543,6 +1543,13 @@ $$
 \delta S = \varepsilon m \int \dot{x}\dot{\eta} \, dt
 $$
 
+
+
+
+
+
+
+
 #### **Step 6: Integration by parts**
 {: .no_toc }
 
@@ -1563,12 +1570,29 @@ But, by definition we have $$ \eta(t_1) = \eta(t_2) = 0 $$
 So it comes:
 
 $$
-\delta S = -\varepsilon m \int \ddot{x} \eta dt
+\delta S = -\varepsilon m \int \ddot{x} \eta \, dt
 $$
 
 
 
 
+#### **Step 7: Key conclusion: Tadaa!**
+{: .no_toc }
+
+For this to be zero for any function $$ \eta $$:
+
+$$
+\ddot{x} = 0
+$$
+
+
+This means:
+
+$$
+x(t) = vt + x_0
+$$
+
+Straight-line motion at constant speed. That is exactly Newton’s first law.
 
 
 
@@ -1577,7 +1601,16 @@ $$
 
 
 
-#### Side Note about Integration by Parts
+
+
+
+
+
+
+
+
+#### **Side Note about Integration by Parts**
+{: .no_toc }
 
 Let’s start from something we definitely "should" know: $$\frac{d}{dt}(uv) = u'v + uv' $$. This is the product rule for derivatives. If you don't remember, find a bridge and jump. I can't do anything for you. You are lost for the cause.
 
@@ -1587,7 +1620,7 @@ $$
 \frac{d}{dt}(uv) = u'v + uv'
 $$
 
-then integrating both sides gives:
+Then integrating both sides gives:
 
 $$
 \int \frac{d}{dt}(uv) \, dt = \int u'v \, dt + \int uv' \, dt
@@ -1615,7 +1648,7 @@ $$
 This is integration by parts. Now, just for the fun and to make sure we are on the same page, let's apply it, again, to our case. We want to transform:
 
 $$
-\int \dot{x}\dot{\eta}, dt
+\int \dot{x}\dot{\eta} \, dt
 $$
 
 We match it with:
@@ -1625,14 +1658,14 @@ We match it with:
 Let's apply the formula
 
 $$
-\int \dot{x}\dot{\eta}, dt
-= \dot{x}\eta - \int \ddot{x}\eta, dt
+\int \dot{x}\dot{\eta} \, dt
+= \dot{x}\eta - \int \ddot{x}\eta \, dt
 $$
 
 Since we’re working between two times $$ t_1 $$ and $$ t_2 $$, we write:
 
 $$
-= [\dot{x}\eta]_{t_1}^{t_2} - \int \ddot{x}\eta, dt
+= [\dot{x}\eta]_{t_1}^{t_2} - \int \ddot{x}\eta \, dt
 $$
 
 
@@ -1651,7 +1684,7 @@ $$
 So we’re left with:
 
 $$
-\int \dot{x}\dot{\eta}, dt = - \int \ddot{x}\eta, dt
+\int \dot{x}\dot{\eta} \, dt = - \int \ddot{x}\eta \, dt
 $$
 
 And that’s exactly what we needed.
@@ -1666,35 +1699,6 @@ And that’s exactly what we needed.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-#### **Step 7: Key conclusion: Tadaa!**
-{: .no_toc }
-
-For this to be zero for any function $$ \eta $$:
-
-$$
-\ddot{x} = 0
-$$
-
-
-This means:
-
-$$
-x(t) = vt + x_0
-$$
-
-Straight-line motion at constant speed. That is exactly Newton’s first law.
 
 
 
