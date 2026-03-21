@@ -1522,7 +1522,18 @@ $$
 S(\varepsilon) \approx S(0) + \varepsilon \int m \dot{x}\dot{\eta} \, dt
 $$
 
-So:
+Now bear with me. By definition, if $$\varepsilon$ small, we have:
+
+$$
+\delta S = S(\varepsilon) - S(0)
+$$
+
+So we can write, in first approximation:
+
+$$
+\delta S = S(0) + \varepsilon \int m \dot{x}\dot{\eta} \, dt - S(0)
+$$
+
 
 $$
 \delta S = \varepsilon \int m \dot{x}\dot{\eta} \, dt
