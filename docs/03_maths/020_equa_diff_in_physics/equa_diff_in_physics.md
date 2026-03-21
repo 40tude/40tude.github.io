@@ -1020,7 +1020,7 @@ That’s why the same structures appear in:
 
 
 <figure style="text-align: center;">
-<img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img02.webp" alt="" width="600" loading="lazy"/>
 <figcaption>.</figcaption>
 </figure>
 
@@ -1455,7 +1455,7 @@ We then ask "How does the action change?". If $$ \delta S = 0 $$ then the path i
 {: .no_toc }
 
 <figure style="text-align: center;">
-<img src="./assets/img05.webp" alt="Studying a free particle in space with the principle of least action" width="450" loading="lazy"/>
+<img src="./assets/img05.webp" alt="Studying a free particle in space with the principle of least action" width="600" loading="lazy"/>
 <figcaption>Studying a free particle in space with the principle of least action</figcaption>
 </figure>
 
@@ -1527,7 +1527,7 @@ $$
 S(\varepsilon) \approx S(0) + \varepsilon \int m \dot{x}\dot{\eta} \, dt
 $$
 
-Now bear with me. By definition, if $$\varepsilon$ small, we have:
+Now bear with me. By definition, if $$\varepsilon$$ small, we have:
 
 $$
 \delta S = S(\varepsilon) - S(0)
@@ -1584,14 +1584,14 @@ $$
 #### **Step 7: Key conclusion: Tadaa!**
 {: .no_toc }
 
-For this to be zero for any function $$ \eta $$:
+For this ($$\delta S$$) to be zero for any function $$ \eta $$ we must have:
 
 $$
 \ddot{x} = 0
 $$
 
 
-This means:
+Integrating twice, this means:
 
 $$
 x(t) = vt + x_0
@@ -1731,7 +1731,7 @@ Because, now it gets more interesting.
 
 
 <figure style="text-align: center;">
-<img src="./assets/img06.webp" alt="Studying a particle in gravity with the principle of least action" width="450" loading="lazy"/>
+<img src="./assets/img06.webp" alt="Studying a particle in gravity with the principle of least action" width="600" loading="lazy"/>
 <figcaption>Studying a particle in gravity with the principle of least action</figcaption>
 </figure>
 
@@ -1814,7 +1814,7 @@ $$
 So:
 
 $$
-\delta S = \varepsilon \int \left( -m \ddot{x} - mg \right)\eta , dt
+\delta S = \varepsilon \int \left( -m \ddot{x} - mg \right)\eta \, dt
 $$
 
 
@@ -1938,7 +1938,7 @@ His original definition wasn’t exactly $$ \int (T - V) \, dt$$.
 He defined action roughly as:
 
 $$
-\text{action} \sim \int p , dq
+\text{action} \sim \int p \, dq
 $$
 
 * $$ p $$ = momentum
@@ -1983,8 +1983,8 @@ The name "action" survived even though the meaning became more abstract, for a f
 
 Even today, physicists sometimes loosely interpret action as:
 
-* "how much dynamical activity happens along a path"
-* or "the cost of a trajectory"
+* "How much dynamical activity happens along a path"
+* or "The cost of a trajectory"
 
 
 
