@@ -1514,7 +1514,7 @@ $$
 We can ignore $$ \varepsilon^2 $$. Too small, remember $$0.1 \times 0.1=0.001$$:
 
 $$
-S(\varepsilon) \approx S = \int_{t_1}^{t_2} \frac{1}{2} m \dot{x}^2 \, dt + \varepsilon \int m \dot{x}\dot{\eta} \, dt
+S(\varepsilon) \approx \int_{t_1}^{t_2} \frac{1}{2} m \dot{x}^2 \, dt + \varepsilon \int m \dot{x}\dot{\eta} \, dt
 $$
 
 
@@ -1549,29 +1549,22 @@ $$
 
 But, by definition we have $$ \eta(t_1) = \eta(t_2) = 0 $$
 
-So:
+So it comes:
 
 $$
-\delta S = -\varepsilon \int m \ddot{x} \eta dt
+\delta S = -\varepsilon m \int \ddot{x} \eta dt
 $$
 
 
-#### **Step 7: Key conclusion**
+#### **Step 7: Key conclusion: Tadaa!**
 {: .no_toc }
 
 For this to be zero for any function $$ \eta $$:
 
 $$
-m \ddot{x} = 0
-$$
-
-
-#### **Final result: Tadaa!**
-{: .no_toc }
-
-$$
 \ddot{x} = 0
 $$
+
 
 This means:
 
