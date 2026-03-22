@@ -1032,7 +1032,7 @@ Atoms only interact with nearby atoms. So the state at a point depends on neighb
 
 
 
-#### **2️. Symmetry**
+#### **2. Symmetry**
 {: .no_toc }
 
 Physical laws must be invariant under:
@@ -1043,7 +1043,7 @@ The simplest operator with those symmetries is the Laplacian.
 
 
 
-#### **3️. Energy minimization**
+#### **3. Energy minimization**
 {: .no_toc }
 
 Many systems evolve to minimize energy. Energy often contains terms like $$ (\nabla u)^2 $$. When we minimize such an energy functional, the resulting equation contains $$ \nabla^2 u $$. So the Laplacian appears naturally from variational principles.
@@ -1536,7 +1536,7 @@ Many variational principles describe equilibrium. The action principle describes
 
 
 
-#### **2️. It is extremely general**
+#### **2. It is extremely general**
 {: .no_toc }
 
 It works for:
@@ -2142,7 +2142,7 @@ That’s exactly the equation of a falling object.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## What we should keep in mind from the 2 previous examples
+<!-- ## What we should keep in mind from the 2 previous examples
 
 Both examples follow the same structure:
 
@@ -2163,7 +2163,7 @@ The principle of stationary action says:
 > "Nature chooses the path that makes the action stable."
 
 And from that, Newton’s laws come out automatically.
-
+ -->
 
 
 
@@ -2797,11 +2797,11 @@ $$
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img
     src="./assets/img01.webp"
-    alt=""
+    alt="Different paths to get back to base, but only one is the most efficient."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption></figcaption>
+<figcaption>Different paths to get back to base, but only one is the most efficient.</figcaption>
 </figure>
 
 
@@ -2832,64 +2832,114 @@ $$
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Application to a ball falling under gravity
+## Application to a mass-spring system (harmonic oscillator)
 
+This time, no gravity. Instead, a mass attached to a spring. The result will be very different from the previous examples: rather than a constant acceleration, we will find oscillatory motion.
 
 
 <!-- ###################################################################### -->
 ### 1. Define the energies
 {: .no_toc }
 
-* Kinetic energy $$T$$: depends on the speed of the ball. If the ball falls vertically, $$T = \frac{1}{2} m v^2$$.
-* Potential energy $$V$$: due to gravity, $$V = m g h$$, where $$h$$ is the height above the ground.
+Consider a mass $$m$$ on a frictionless surface, attached to a spring of stiffness $$k$$. Let $$x(t)$$ be the displacement from the rest position.
 
-The Lagrangian is therefore:
+* Kinetic energy: $$T = \frac{1}{2} m \dot{x}^2$$
+* Potential energy stored in the spring (Hooke's law): $$V = \frac{1}{2} k x^2$$
+
+The Lagrangian is:
 
 $$
-L = T - V = \frac{1}{2} m v^2 - m g h
+L = T - V = \frac{1}{2} m \dot{x}^2 - \frac{1}{2} k x^2
 $$
-
 
 
 <!-- ###################################################################### -->
-### 2. Action for a path
+### 2. Write the action
 {: .no_toc }
 
-
-Suppose the ball starts at height $$h_1$$ at time $$t_1$$ and arrives at $$h_2$$ at time $$t_2$$. We can imagine several possible paths, for example:
-
-1. A straight, regular fall (speed increasing steadily).
-2. A "zigzag" path (imagine the ball bouncing upward before falling).
-3. A very odd path that goes up first then comes back down.
-
-For each path we compute the action:
-
 $$
-S = \int_{t_1}^{t_2} \left( \frac{1}{2} m v(t)^2 - m g h(t) \right) dt
+S = \int_{t_1}^{t_2} \left( \frac{1}{2} m \dot{x}^2 - \frac{1}{2} k x^2 \right) dt
 $$
-
-Each path yields a different number.
-
 
 
 <!-- ###################################################################### -->
-### 3. The ball "chooses" the right path
+### 3. Vary the path
 {: .no_toc }
 
-The action principle tells us that the actual path taken by the ball is the one that makes $$S$$ stationary (often a minimum).
+Same procedure as before. We replace:
 
-* If we imagine all possible trajectories, the real one is the trajectory that most harmoniously balances kinetic energy and potential energy over time.
-* In the case of free fall, this corresponds to uniformly accelerated straight-line motion, exactly what Newton tells us with $$F = ma$$.
+$$
+x(t) \rightarrow x(t) + \varepsilon \eta(t), \quad \eta(t_1) = \eta(t_2) = 0
+$$
 
+Then:
+
+$$
+\dot{x} \rightarrow \dot{x} + \varepsilon \dot{\eta}
+$$
 
 
 <!-- ###################################################################### -->
-### 4. Visual intuition
+### 4. Expand and keep first-order terms
 {: .no_toc }
 
-* The "score" $$S$$ acts as a measure of the "cost" of the path.
-* The actual path minimizes this global cost, rather than deciding force by force at each instant.
-* It is as if the ball had "pre-computed" the best trajectory so that $$T$$ and $$V$$ balance out over the entire path.
+$$
+S(\varepsilon) = \int \left[ \frac{1}{2} m (\dot{x} + \varepsilon\dot{\eta})^2 - \frac{1}{2} k (x + \varepsilon\eta)^2 \right] dt
+$$
+
+Expanding and dropping the $$\varepsilon^2$$ terms:
+
+$$
+S(\varepsilon) \approx S(0) + \varepsilon \int \left( m \dot{x}\dot{\eta} - k x \eta \right) dt
+$$
+
+So:
+
+$$
+\delta S = \varepsilon \int \left( m \dot{x}\dot{\eta} - k x \eta \right) dt
+$$
+
+
+<!-- ###################################################################### -->
+### 5. Integration by parts
+{: .no_toc }
+
+We transform the first term using integration by parts (boundary terms vanish since $$\eta(t_1) = \eta(t_2) = 0$$):
+
+$$
+\int m \dot{x}\dot{\eta} \, dt = - \int m \ddot{x} \eta \, dt
+$$
+
+So:
+
+$$
+\delta S = \varepsilon \int \left( -m \ddot{x} - k x \right) \eta \, dt
+$$
+
+
+<!-- ###################################################################### -->
+### 6. Equation of motion: Tadaa!
+{: .no_toc }
+
+For $$\delta S = 0$$ for any $$\eta$$, we need:
+
+$$
+m \ddot{x} + k x = 0
+$$
+
+or equivalently:
+
+$$
+\ddot{x} = -\frac{k}{m} x
+$$
+
+This is the equation of the harmonic oscillator. The solution is:
+
+$$
+x(t) = A \cos(\omega t + \varphi), \quad \omega = \sqrt{\frac{k}{m}}
+$$
+
+The mass oscillates back and forth with angular frequency $$\omega$$. No constant acceleration here -- a completely different physical behavior from free fall, yet obtained with exactly the same variational procedure.
 
 
 
@@ -3224,7 +3274,7 @@ $$
 The Lagrangian density for electromagnetism is
 
 $$
-L = \frac{\epsilon_0}{2}(E^2 - c^2 B^2) * \rho \phi - \mathbf{J}\cdot \mathbf{A}
+L = \frac{\epsilon_0}{2}(E^2 - c^2 B^2) - \rho \phi - \mathbf{J}\cdot \mathbf{A}
 $$
 
 where
@@ -3385,7 +3435,7 @@ The variational approach reveals deep structure.
 
 
 
-#### **1️. Symmetry**
+#### **1. Symmetry**
 {: .no_toc }
 
 The action is invariant under gauge transformations:
@@ -3402,7 +3452,7 @@ This symmetry explains charge conservation.
 
 
 
-#### **2️. Relativity**
+#### **2. Relativity**
 {: .no_toc }
 
 The electromagnetic action is naturally written in relativistic form.
@@ -3411,7 +3461,7 @@ That is why electromagnetism fits perfectly with special relativity.
 
 
 
-#### **3️. Field theory structure**
+#### **3. Field theory structure**
 {: .no_toc }
 
 The same framework works for:
@@ -3431,7 +3481,7 @@ So Maxwell theory is actually the first modern field theory.
 ### 9. A beautiful consequence: light
 {: .no_toc }
 
-If we remove charges ((\rho=0), (J=0)) and combine Maxwell equations, we obtain
+If we remove charges ($$\rho=0$$, $$J=0$$) and combine Maxwell equations, we obtain
 
 $$
 \nabla^2 \mathbf{E} =
