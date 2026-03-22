@@ -3441,6 +3441,17 @@ Coming soon, just a bit delayed.
 {: .no_toc }
 * ...
 
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img15.webp"
+    alt="A Student's Guide to Maxwell's Equations"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>A Student's Guide to Maxwell's Equations</figcaption>
+</figure>
+
+
 ### FR
 {: .no_toc }
 * [Forme intégrale et différentielle de la loi de Gauss]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
@@ -3451,9 +3462,6 @@ Coming soon, just a bit delayed.
 * [Equation d'onde]({%link docs/03_maths/006_equation_onde_1d/equation_onde_1d.md%})
 * [Distance la plus courte entre 2 points]({%link docs/03_maths/014_distance_entre_2_points/distance_la_plus_courte_entre_2_points.md%})
 
-
-#### **Le principe de Moindre Action - Passe-science #6**
-{: .no_toc }
 
 <figure style="max-width: 560px; margin: auto;">
   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -3467,4 +3475,25 @@ Coming soon, just a bit delayed.
   <figcaption style="text-align: center;">
     Le principe de moindre action - Passe-science #6
   </figcaption>
+</figure>
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img14.webp"
+    alt="Les principes variationnels en physique"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Les principes variationnels en physique</figcaption>
+</figure>
+
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img11.webp"
+    alt="Lumière et Matière"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Lumière et Matière</figcaption>
 </figure>
