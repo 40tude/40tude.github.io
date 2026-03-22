@@ -129,7 +129,7 @@ It’s on the way, just taking a little longer than expected.
 ## Why derivatives and differential equations in physics?
 
 Can we take the time to explain why we so often encounter first- or second-order differential equations, as well as derivatives, in physics formulas? I "understand"
-$$F=ma$$, but I don’t understand how it was derived, from where it comes from... Same thing for the wave equation or heat propagation equation, etc.
+$$F = ma$$, but I don’t understand how it was derived, from where it comes from... Same thing for the wave equation or heat propagation equation, etc.
 
 Great question Marty! The short answer is: derivatives appear in physics because nature evolves continuously in time and space, and differential equations express how a system changes locally. But it's worth unpacking this slowly from first principles.
 
@@ -169,7 +169,7 @@ In physics, most fundamental laws are expressed as differential equations of the
 
 **First-order equations** typically govern "flow" processes or systems where the rate of change depends directly on the current value. A classic example is radioactive decay or heat transfer (Newton’s Law of Cooling), where the rate of change in temperature is proportional to the temperature difference itself. In these cases, the universe is interested in how the "now" dictates the "next moment."
 
-**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to **Newton’s Second Law**, $$F = ma$$. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order. Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
+**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to **Newton’s Second Law**, $$F = ma$$ where the Force changes the *rate of change* of the position. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order. Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
 
 Going beyond the second order is rare in fundamental physics because it would imply that a system's "acceleration" depends on its "jerk" (the rate of change of acceleration), which doesn't typically align with our observations of how energy and momentum are conserved in nature.
 
@@ -254,7 +254,7 @@ You should see
 
 In physics, second-order derivatives are the language of dynamics and they appear when acceleration matters. While a first-order equation describes a system that simply "drifts" according to its current state (like a leaf in a stream), a second-order equation describes a system with **inertia**.
 
-**The Physics of "Memory":** The appearance of the second derivative is fundamentally linked to Newton’s Second Law. When we say $$F = ma$$, we are stating that a force doesn't change a position directly; it changes the *rate of change* of the position.
+**The Physics of "Memory":** The appearance of the second derivative is fundamentally linked to Newton’s Second Law. When we say $$F = ma$$, as already mentioned, we are stating that a force doesn't change a position directly, it changes the *rate of change* of the position.
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img
