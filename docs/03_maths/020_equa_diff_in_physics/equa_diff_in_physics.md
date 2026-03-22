@@ -53,37 +53,17 @@ Building intuition from local laws, differential equations, and variational prin
 
 
 
-
-
-
-<figure style="text-align: center;">
-<img src="./assets/img00.webp" alt="Among infinitely many possible trajectories, nature selects the one that extremizes the action." width="900" loading="lazy"/>
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img00.webp"
+    alt="Among infinitely many possible trajectories, nature selects the one that extremizes the action."
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
 <figcaption>Among infinitely many possible trajectories, nature selects the one that extremizes the action.</figcaption>
 </figure>
 
 
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-  <img
-    src="./assets/img00.webp"
-    alt="Describe the image here"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-  />
-  <figcaption>...</figcaption>
-</figure>
-
-
-
-<figure style="max-width: 450px; margin: auto; text-align: center;">
-  <img
-    src="./assets/img00.webp"
-    alt="Describe the image here"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-  />
-  <figcaption>...</figcaption>
-</figure>
 
 
 
@@ -116,9 +96,14 @@ Building intuition from local laws, differential equations, and variational prin
 >
 > *To look beyond equations as mere symbols, to see in them the signature of a deeper order... where, among all possible worlds, nature chooses the one that speaks of balance.*
 
-<figure style="text-align: right;">
-<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
-<figcaption>...</figcaption>
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img04.webp"
+    alt="Space: the final frontier."
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Space: the final frontier.</figcaption>
 </figure>
 
 
@@ -1042,9 +1027,15 @@ That’s why the same structures appear in:
 
 
 
-<figure style="text-align: center;">
-<img src="./assets/img02.webp" alt="" width="600" loading="lazy"/>
-<figcaption>.</figcaption>
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img02.webp"
+    alt="From differential equations to variational principle."
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>From differential equations to variational principle.</figcaption>
 </figure>
 
 
@@ -1085,9 +1076,9 @@ This leads us to a more global perspective, where the entire trajectory is consi
 The remarkable fact is that these two approaches, local differential equations and global optimization, are not in contradiction. They are in fact equivalent descriptions of the same physical laws.
 
 
-At this poit it is important to understand that:
+At this point it is important to understand that:
 
-> The principle of least action (or stationary action) is one specific instance of a much broader idea: variational principles.
+> The principle of least action (or stationary action) is one specific instance of a much broader idea: variational principle.
 
 Ok, let’s unpack that carefully.
 
@@ -1477,8 +1468,14 @@ We then ask "How does the action change?". If $$ \delta S = 0 $$ then the path i
 ### Example of the free particle (no forces applied)
 {: .no_toc }
 
-<figure style="text-align: center;">
-<img src="./assets/img05.webp" alt="Studying a free particle in space with the principle of least action" width="600" loading="lazy"/>
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img05.webp"
+    alt="Studying a free particle in space with the principle of least action"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
 <figcaption>Studying a free particle in space with the principle of least action</figcaption>
 </figure>
 
@@ -1753,8 +1750,13 @@ And that’s exactly what we needed.
 Because, now it gets more interesting.
 
 
-<figure style="text-align: center;">
-<img src="./assets/img06.webp" alt="Studying a particle in gravity with the principle of least action" width="600" loading="lazy"/>
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img06.webp"
+    alt="Studying a particle in gravity with the principle of least action"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
 <figcaption>Studying a particle in gravity with the principle of least action</figcaption>
 </figure>
 
@@ -2522,11 +2524,17 @@ $$
 
 
 
-<figure style="text-align: center;">
-<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
-<figcaption>.</figcaption>
-</figure>
 
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img01.webp"
+    alt=""
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption></figcaption>
+</figure>
 
 
 
