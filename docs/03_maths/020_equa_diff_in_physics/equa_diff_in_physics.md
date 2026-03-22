@@ -249,26 +249,6 @@ You should see
 #### **Second derivative $$ \rightarrow $$ dynamics / inertia**
 {: .no_toc }
 
-<!-- Second derivatives appear when acceleration matters.
-
-Example:
-
-$$F = ma$$
-
-But acceleration is
-
-$$a = \frac{d^2x}{dt^2}$$
-
-So Newton's law becomes
-
-$$F = m \frac{d^2x}{dt^2}$$
-
-Why second order? Because inertia exists. A body "remembers" its velocity. To know the future motion, we must know:
-
-* Position
-* Velocity
-
-Two initial conditions means second order equation. -->
 
 In physics, second-order derivatives are the language of dynamics and they appear when acceleration matters. While a first-order equation describes a system that simply "drifts" according to its current state (like a leaf in a stream), a second-order equation describes a system with **inertia**.
 
@@ -674,18 +654,18 @@ You should see
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img
     src="./assets/img10.webp"
-    alt="Second derivative indicates hills and valleys"
+    alt="The Laplacian measures how a quantity compares to its surroundings"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Second derivative indicates hills and valleys</figcaption>
+<figcaption>The Laplacian measures how a quantity compares to its surroundings</figcaption>
 </figure>
 
 
-* The **left plot** is our scalar field $$ T(x,y) $$: a “hot bump”
-* The **right plot** is $$ \nabla^2 T $$
-* At the **top of the bump** $$\rightarrow$$ Laplacian is **negative** $$\rightarrow$$ hotter than surroundings $$\rightarrow$$ heat flows out
-* Around the **edges** $$\rightarrow$$ Laplacian becomes **positive** $$\rightarrow$$ colder than surroundings $$\rightarrow$$ heat flows in
+* The left plot is our scalar field $$ T(x,y) $$: a “hot bump”
+* The right plot is $$ \nabla^2 T $$
+* At the top of the bump $$\rightarrow$$ Laplacian is negative $$\rightarrow$$ hotter than surroundings $$\rightarrow$$ heat flows out
+* Around the edges $$\rightarrow$$ Laplacian becomes **positive** $$\rightarrow$$ colder than surroundings $$\rightarrow$$ heat flows in
 * Again, the Laplacian measures how a quantity compares to its surroundings
 
 
@@ -727,42 +707,6 @@ Future depends on current rate of change. This translates derivatives in time
 Energy, momentum, charge, mass…
 
 These are expressed mathematically using divergences and derivatives.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -825,52 +769,6 @@ They only say:
 > If the system is like this right now, then it will start changing like that.
 
 That is exactly what a differential equation describes.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1105,8 +1003,8 @@ The curvature represents how different a point is from nearby points.
 
 Depending on the physics:
 
-| System  | Equation                                      | Behavior          |
-| ------- | --------------------------------------------- | ----------------- |
+| System  | Equation                                        | Behavior          |
+| ------- | ----------------------------------------------- | ----------------- |
 | Heat    | $$ \partial_t T = \kappa \nabla^2 T $$          | Diffusion         |
 | Waves   | $$ \partial_t^2 u = c^2 \nabla^2 u $$           | Oscillations      |
 | Quantum | $$ i\partial_t \psi = -\nabla^2 \psi + V\psi $$ | Probability waves |
@@ -1272,7 +1170,7 @@ That’s why the same structures appear in:
 <!-- ###################################################################### -->
 ## A deeper modern perspective
 
-### From differential equations to a global viewpoint
+### From differential equations to the variational principle
 {: .no_toc }
 
 Up to this point, we have described physical systems using derivatives: velocity as a first derivative, acceleration as a second derivative, and more generally differential equations that relate these quantities. This approach is local in nature: it tells us how the system evolves step by step, at each instant of time.
@@ -1284,11 +1182,7 @@ This leads us to a more global perspective, where the entire trajectory is consi
 The remarkable fact is that these two approaches, local differential equations and global optimization, are not in contradiction. They are in fact equivalent descriptions of the same physical laws.
 
 
-At this point it is important to understand that:
-
-> The principle of least action (or stationary action) is one specific instance of a much broader idea: variational principle.
-
-Ok, let’s unpack that carefully.
+Quick heads-up before we dive in: don't make the same mistake I did. It’s easy to get hyper-focused on the Principle of Least Action, but just remember it’s actually just one specific 'flavor' of a much bigger mathematical concept called the variational principle. Keep that in the back of your mind as we go, it’ll make everything else click way faster. Ok, let’s break it down.
 
 
 <!-- ###################################################################### -->
