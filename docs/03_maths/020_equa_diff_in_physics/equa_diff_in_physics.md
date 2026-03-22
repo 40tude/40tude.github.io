@@ -47,12 +47,33 @@ Building intuition from local laws, differential equations, and variational prin
 ## TL;DR
 {: .no_toc }
 
+**Why derivatives and differential equations?**
 * First-order derivatives represent "state change" (velocity/flow)
-* Second-order derivatives represent "interaction/response" (acceleration/force/curvature).
-* Differential equations for local description
-* Variational principles for global description
-* Action $$S = \int_{t_1}^{t_2} L(x,\dot x,t),dt$$
-* Lagrangian $$L$$
+* Second-order derivatives represent "interaction/response" (acceleration/force/curvature)
+* Physics laws are local: what happens here depends on nearby values -- this leads naturally to derivatives
+* Most fundamental laws are second-order because systems have inertia (they "remember" their velocity)
+
+**Why the same equations everywhere?**
+* Heat, waves, and quantum mechanics all share the structure: time evolution = spatial curvature
+* The Laplacian $$\nabla^2$$ measures how a point differs from its neighbors
+* Locality + symmetry + conservation laws always produce the same mathematical ingredients
+
+**From local to global: variational principles**
+* Differential equations describe physics locally (step by step in time)
+* Variational principles describe physics globally (the entire trajectory at once)
+* Both are equivalent -- two languages for the same physics
+
+**The principle of stationary action**
+* Action $$S = \int_{t_1}^{t_2} L(x,\dot x,t)\,dt$$
+* Lagrangian $$L = T - V$$ (kinetic minus potential energy)
+* The real trajectory is the one that makes $$\delta S = 0$$
+* From this single principle: Newton's laws, Maxwell's equations, quantum mechanics, general relativity
+* Noether's theorem: every symmetry of the action gives a conservation law (time -> energy, space -> momentum, rotation -> angular momentum)
+
+**The quantum connection**
+* In quantum mechanics, a particle explores all possible paths
+* Each path contributes with amplitude $$e^{iS/\hbar}$$
+* The classical trajectory is the one where paths interfere constructively: the action is stationary
 
 
 
