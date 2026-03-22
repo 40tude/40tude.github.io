@@ -169,7 +169,7 @@ In physics, most fundamental laws are expressed as differential equations of the
 
 **First-order equations** typically govern "flow" processes or systems where the rate of change depends directly on the current value. A classic example is radioactive decay or heat transfer (Newton’s Law of Cooling), where the rate of change in temperature is proportional to the temperature difference itself. In these cases, the universe is interested in how the "now" dictates the "next moment."
 
-**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to **Newton’s Second Law**, $$F = ma$$ where the Force changes the *rate of change* of the position. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order. Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
+**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to Newton’s Second Law, $$F = ma$$ where the Force changes the *rate of change* of the position. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order. Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
 
 Going beyond the second order is rare in fundamental physics because it would imply that a system's "acceleration" depends on its "jerk" (the rate of change of acceleration), which doesn't typically align with our observations of how energy and momentum are conserved in nature.
 
@@ -252,7 +252,7 @@ You should see
 {: .no_toc }
 
 
-In physics, second-order derivatives are the language of dynamics and they appear when acceleration matters. While a first-order equation describes a system that simply "drifts" according to its current state (like a leaf in a stream), a second-order equation describes a system with **inertia**.
+In physics, second-order derivatives are the language of dynamics and they appear when acceleration matters. While a first-order equation describes a system that "drifts" according to its current state (like a leaf in a stream), a second-order equation describes a system with inertia.
 
 **The Physics of "Memory":** The appearance of the second derivative is fundamentally linked to Newton’s Second Law. When we say $$F = ma$$, as already mentioned, we are stating that a force doesn't change a position directly, it changes the *rate of change* of the position.
 
@@ -271,8 +271,8 @@ Since acceleration $$a$$ is the derivative of velocity $$v$$, and velocity is th
 $$F = m \frac{dv}{dt} = m \frac{d^2x}{dt^2}$$
 
 This mathematical structure implies that a physical body has a "memory" of its motion. Because the equation is second-order, the "state" of the system at any moment $$t$$ is not defined by position alone. To predict the future ($$t + \Delta t$$), the laws of physics require two distinct pieces of information:
-1.  Where the object is (Position: $x$)
-2.  How fast it is already moving (Velocity: $\dot{x}$)
+1.  Where the object is (Position: $$x$$)
+2.  How fast it is already moving (Velocity: $$\dot{x}$$)
 
 **Why Two Initial Conditions?:** From a calculus perspective, solving a second-order equation requires integrating twice. Each integration introduces a constant ($$C_1$$ and $$C_2$$). Physically, these constants correspond to the initial position and initial velocity.
 
@@ -308,7 +308,7 @@ Galileo (in 1589+, 100 years before Newton, 100 years!) had already measured tha
 * Objects fall with constant acceleration
 * Motion without forces means constant velocity
 
-Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle (-350), until then (it took almost 2000 years), people assumed the speed of falling bodies was proportional to their weight.
+Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle (-350), until then (it took almost 2_000 years), people assumed the speed of falling bodies was proportional to their weight.
 
 Galileo's experiments implies:
 
@@ -323,7 +323,7 @@ So empirically:
 
 $$a \propto \frac{F}{m}$$
 
-Where the symbol $$\propto$$ means proportional. At the end this gives:
+Where the symbol $$\propto$$ means proportional. At the end they came with:
 
 $$F = ma$$
 
@@ -341,7 +341,7 @@ Instead of saying
 
 > "The temperature everywhere depends on the whole system"
 
-Nature usually says something simpler:
+Nature usually says something like:
 
 > "What happens here depends on what is happening just next to it."
 
@@ -367,7 +367,7 @@ $$
 
 The symbol $$ \nabla $$ is called nabla (it can be also named del).
 
-A simple way to understand it is through intuition: imagine standing on a snowboard on a mountain. You are trying to find the direction of the steepest slope. That direction is exactly what the gradient represents.
+On way to understand it is through intuition: imagine standing on a snowboard on a mountain. You are trying to find the direction of the steepest slope. That direction is exactly what the gradient represents.
 
 * In **3D**, the gradient tells us the direction and strength of the steepest increase.
 * In **1D**, this reduces to something familiar:
@@ -391,7 +391,7 @@ A simple way to understand it is through intuition: imagine standing on a snowbo
 #### **Side Note on the Nabla Operator**
 {: .no_toc }
 
-The symbol $$ \nabla $$ (or sometimes written $$ \vec{\nabla} $$) is a vector differential operator, which simply means that it behaves like a vector whose components are derivatives.
+The symbol $$ \nabla $$ (or sometimes written $$ \vec{\nabla} $$) is a vector differential operator, which means that it behaves like a vector whose components are derivatives.
 
 In 3D, it is defined as:
 $$
@@ -484,7 +484,7 @@ The heat equation is
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
-This looks complicated but comes from two simple physical statements.
+This looks complicated but comes from two physical statements.
 
 #### **1 Heat flows from hot to cold**
 {: .no_toc }
@@ -533,9 +533,9 @@ Divergence of gradient, this is the Laplacian ($$ \nabla^2 $$)
 #### **Side Note on the Laplacian**
 {: .no_toc }
 
-The symbol $$ \nabla^2 $$ is called the Laplacian. It may look mysterious, but it is actually something quite simple: The Laplacian is the divergence of the gradient.
+The symbol $$ \nabla^2 $$ is called the Laplacian. It look mysterious, but it is actually a way to say "divergence of the gradient". In other words:
 
-In other words: $$ \nabla^2 T = \nabla \cdot (\nabla T) $$
+$$ \nabla^2 T = \nabla \cdot (\nabla T) $$
 
 
 **What does it do?**
@@ -752,7 +752,7 @@ We see derivatives everywhere because physics tries to answer:
 
 > How does the state of the system change locally?
 
-Derivatives are simply the mathematical language of change.
+Derivatives are the mathematical language of change.
 
 And differential equations express:
 
@@ -2417,7 +2417,7 @@ So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a va
 ### 3. Why minimize (or make stationary) instead of maximize?
 {: .no_toc }
 
-* In many simple cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
+* In many cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
 * More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
 
 So the focus is on "stationary" not strictly "minimum".
@@ -2879,7 +2879,7 @@ Each path yields a different number.
 The action principle tells us that the actual path taken by the ball is the one that makes $$S$$ stationary (often a minimum).
 
 * If we imagine all possible trajectories, the real one is the trajectory that most harmoniously balances kinetic energy and potential energy over time.
-* In the case of free fall, this simply corresponds to uniformly accelerated straight-line motion, exactly what Newton tells us with $$F = ma$$.
+* In the case of free fall, this corresponds to uniformly accelerated straight-line motion, exactly what Newton tells us with $$F = ma$$.
 
 
 
@@ -2922,7 +2922,7 @@ The action principle tells us that the actual path taken by the ball is the one 
 ## Can we explain why a ball falls vertically while accelerating?
 
 
-Let us work through the reasoning step by step for a ball falling vertically under gravity, using the action principle. We will keep things simple and clear.
+<!-- Ok... So using the action principle let's work through the reasoning step by step for a ball falling vertically under gravity. We will keep things simple and clear. -->
 
 
 
@@ -3124,7 +3124,7 @@ h(t) = h_0 + \dot{h}_0 t - \frac{1}{2} g t^2
 $$
 
 * $$h_0$$ = initial height
-* $$\dot{h}_0$$ = initial velocity (often 0 if the ball is simply dropped)
+* $$\dot{h}_0$$ = initial velocity (often 0 if the ball is dropped)
 
 For a ball released from rest:
 $$
