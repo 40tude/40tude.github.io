@@ -1225,8 +1225,8 @@ At this point, a natural question arises:
 
 At first sight, this may feel artificial. In Newtonian mechanics, we are used to local laws such as:
 
-* "force equals mass times acceleration"
-* equations that tell us how motion evolves step by step in time
+* "Force equals mass times acceleration"
+* Equations that tell us how motion evolves step by step in time
 
 A variational principle looks very different. It is a global statement: instead of describing what happens at each instant, it compares entire possible trajectories and selects one special path.
 
@@ -1257,21 +1257,21 @@ There isn’t a single definitive answer, but we can look at it from several com
 #### **1. Historical and intuitive perspective: from optics to mechanics**
 {: .no_toc }
 
-The first known variational principle did not come from mechanics, but from optics with **Pierre de Fermat** (~1650):
+The first known variational principle did not come from mechanics, but from optics with Pierre de Fermat (~1650):
 
 > *Light follows the path that makes the travel time stationary.*
 
 Why? Fermat was looking for a unifying principle to explain both reflection and refraction.
 In a uniform medium, the shortest path is a straight line. But in a medium with varying refractive index, it’s no longer the geometric distance that matters—it’s the *time*.
 
-When **Pierre-Louis Moreau de Maupertuis**, **Leonhard Euler**, and **Joseph-Louis Lagrange** searched for a similar principle in mechanics, they were guided by this idea: **nature behaves in an "economical" way**.
+When Pierre-Louis Moreau de Maupertuis, Leonhard Euler, and Joseph-Louis Lagrange searched for a similar principle in mechanics, they were guided by this idea: nature behaves in an "economical" way.
 
 * A free particle moves in a straight line.
 * A projectile follows a curved path.
 
 But what is being minimized (or made stationary)? Not distance, not time, but the integral of ( T - V ), the difference between kinetic and potential energy.
 
-Why this specific form $$ L = T - V $$? It wasn’t guessed from first principles—it was discovered by trial and error. The goal was to find a quantity whose extremization reproduces Newton’s laws.
+Why this specific form $$ L = T - V $$? It wasn’t guessed from first principles. It was discovered by trial and error. The goal was to find a quantity whose extremization reproduces Newton’s laws.
 
 Lagrange showed that if we impose $$ \delta \int L,dt = 0 \quad \text{with} \quad L = T - V$$, we recover
 $$m\ddot{x} = -\nabla V$$.
@@ -1363,6 +1363,7 @@ From this viewpoint, extremizing the action generalizes the idea of a "straight 
 
 
 #### **4. Summary**
+{: .no_toc }
 
 * **Mathematically**: extremizing an integral is equivalent to enforcing differential equations with boundary conditions. This is a more global formulation.
 * **Physically**: the principle of least action is not more fundamental than Newton’s laws, but it reveals structure, symmetry, and unity.
