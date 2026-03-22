@@ -2283,7 +2283,7 @@ The action becomes
 $$
 S(\epsilon) = \int_{t_1}^{t_2}L(x+\epsilon\eta,\dot x+\epsilon\dot\eta,t) \, dt$$
 
-Now differentiate with respect to (\epsilon):
+Now differentiate with respect to $$\epsilon$$:
 
 $$
 \frac{dS}{d\epsilon} = \int\left(\frac{\partial L}{\partial x}\eta+\frac{\partial L}{\partial \dot x}\dot\eta\right) \, dt$$
@@ -2325,7 +2325,7 @@ $$
 ### 5. Euler–Lagrange equation
 {: .no_toc }
 
-Because (\eta(t)) is arbitrary, the only way the integral can always vanish is if:
+Because $$\eta(t)$$ is arbitrary, the only way the integral can always vanish is if:
 
 $$
 \frac{d}{dt} \frac{\partial L}{\partial \dot x} - \frac{\partial L}{\partial x} = 0
@@ -3318,5 +3318,13 @@ Coming soon, just a bit delayed.
 * [Forme intégrale et différentielle de la loi de Gauss]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
 * [Distance la plus courte entre 2 points]({%link docs/03_maths/014_distance_entre_2_points/distance_la_plus_courte_entre_2_points.md%})
 
+
+#### **Le principe de Moindre Action - Passe-science #6**
+{: .no_toc }
+
+<figure style="text-align: center;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/MIeYz6aMBbk" title="YouTube video player" allowfullscreen></iframe>
+  <figcaption>Le principe de Moindre Action - Passe-science #6</figcaption>
+</figure>
 
 
