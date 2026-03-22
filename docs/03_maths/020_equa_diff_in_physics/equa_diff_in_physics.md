@@ -137,28 +137,16 @@ Building intuition from local laws, differential equations, and variational prin
 <!-- ###################################################################### -->
 ## Introduction
 
-March 2026. We’re driving back from a ski trip. It’s past midnight. The highway is almost empty. Everyone else in the car is asleep.
-
-And, like when you try to meditate and think about nothing... your brain does the exact opposite.
-
-Mine starts wandering.
-
-From one idea to another, without any clear direction... until it lands on a surprisingly stubborn question:
+March 2026. We’re driving back from a ski trip. It’s past midnight. The highway is almost empty. Everyone else in the car is asleep. It's like when you try to meditate and think about nothing... your brain does the exact opposite. Mine starts wandering. From one idea to another, without any clear direction... until it lands on a surprisingly stubborn question:
 
 > *Why does physics use so many first- and second-order derivatives?*
 
-Don’t ask me how I got there. But once the question is in your head, it doesn’t really leave.
+Don’t ask me how I got there. But once the question is in your head, it doesn’t really leave. We write things like $$ \frac{dx}{dt}, \quad \frac{d^2x}{dt^2} $$ all the time. Velocity, acceleration, waves, heat, electromagnetism... it’s everywhere. And sure, I "know" (more or less) what these formulas really mean... But a different question starts to emerge:
 
-We write things like $$ \frac{dx}{dt}, \quad \frac{d^2x}{dt^2} $$ all the time. Velocity, acceleration, waves, heat, electromagnetism... it’s everywhere.
-
-And sure, I "know" (more or less) what these formulas mean... But a different question starts to emerge:
-
-> *Why does nature seem to “think” in derivatives?*
+> *Why does nature seem to "think" in derivatives?*
 > *Why first order here, second order there... and almost never more?*
 
-There must be a reason.
-
-So in this post, I propose we take a step back and try to build some intuition. We’ll start with what we already know:
+There must be a reason... So in this post, I propose we take a step back and try to build some intuition. We’ll start with what we already know:
 
 * what first and second derivatives really represent,
 * why differential equations naturally appear in physics,
@@ -174,13 +162,13 @@ This is the principle of stationary action (aka principle of least action).
 
 It might sound abstract at first, but it turns out to be one of the most powerful ways to describe our world. From classical mechanics to quantum physics, it’s the same underlying idea showing up again and again.
 
-This post is written for a high school senior or a first-year university student. Whenever needed, we’ll slow down and revisit key tools (like integration by parts).
+This post is written for a high school senior or a first-year university student. Whenever needed, we’ll slow down and revisit key tools (e.g. integration by parts).
 
 There are also a few Python snippets you can copy-paste and run to build intuition visually. And at the end, you’ll find a webliography with books, videos, and related articles if you want to go further (including deeper dives into derivatives, differentials, and Maxwell’s equations).
 
 The tone here is conversational and as usual there are no stupid questions, only good ones that haven’t been explored yet.
 
-Alright—let’s get started!
+Alright, let’s get started!
 
 
 
@@ -479,7 +467,7 @@ $$
 At first, this may feel abstract because:
 
 * We don’t yet see what the operator is applied to
-* We don’t know how to “compute” with it
+* We don’t know how to "compute" with it
 
 The key idea is that everything depends on two things:
 
@@ -728,7 +716,7 @@ You should see
 </figure>
 
 
-* The left plot is our scalar field $$ T(x,y) $$: a “hot bump”
+* The left plot is our scalar field $$ T(x,y) $$: a "hot bump"
 * The right plot is $$ \nabla^2 T $$
 * At the top of the bump $$\rightarrow$$ Laplacian is negative $$\rightarrow$$ hotter than surroundings $$\rightarrow$$ heat flows out
 * Around the edges $$\rightarrow$$ Laplacian becomes **positive** $$\rightarrow$$ colder than surroundings $$\rightarrow$$ heat flows in
