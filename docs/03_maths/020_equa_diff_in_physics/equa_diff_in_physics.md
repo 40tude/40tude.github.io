@@ -16,15 +16,9 @@ last_modified_date: 2026-03-22 17:00:00
 ---
 
 
-<!--
-* Dans "What is a variational principle (in general)?". Revenir sur ces histoire de fonctionnelle (fonction de fonction). Pourquoi on en a besoin.
-* Dans la Conclusion. Parler du chemin optimum qu'emprunte une IA/Agent pour résoudre un problème
--->
-
 
 # From Derivatives to Action: How Physics Describes Change
 {: .no_toc }
-<!-- # Why derivatives and differential equations in physics -->
 
 Building intuition from local laws, differential equations, and variational principles
 {: .lead }
@@ -32,9 +26,9 @@ Building intuition from local laws, differential equations, and variational prin
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -1606,7 +1600,7 @@ It works for:
 #### **3. It encodes symmetries**
 {: .no_toc }
 
-Through Emmy Noether’s theorem:
+Through Emmy Noether’s theorem (1915):
 
 > *Every symmetry of the action corresponds to a conservation law.*
 
@@ -3801,7 +3795,35 @@ The action principle can be seen as the "classical limit" of the Feynman path in
 <!-- ###################################################################### -->
 ## Conclusion
 
-Coming soon, just a bit delayed.
+Remember that highway, past midnight, everyone asleep? That stubborn question that wouldn't leave:
+
+> *Why does physics use so many first- and second-order derivatives?*
+
+We now have an answer. Several, actually.
+
+Derivatives appear because nature evolves continuously, and the most natural way to describe continuous change is to ask: *what is happening right now, compared to an instant ago?* That question, asked at every point in space and time, is precisely what a derivative is. And because most physical systems have inertia (they remember their velocity) the laws governing them are naturally second-order.
+
+But we went further than that. We discovered that the three great equations of classical physics (heat, waves, quantum mechanics) all share the same skeleton: a time derivative on the left, a Laplacian on the right. Not a coincidence. Locality, symmetry, and conservation laws are so constraining that they leave very little room for the mathematics to differ.
+
+Then came the deeper shift. Differential equations describe physics locally, step by step, from one instant to the next. But there is another language entirely: instead of asking "what force acts here?" we ask "which path, among all possible paths, does nature actually take?" And the answer is: the one that makes the action stationary.
+
+$$
+S = \int_{t_1}^{t_2} L(x, \dot{x}, t)\, dt
+$$
+
+This is not just a computational trick. It is a different way of thinking about physical law. Nature does not push particles forward with forces. It selects trajectories globally, as if evaluating all possibilities at once and choosing the one that balances kinetic and potential energy in the most efficient way.
+
+From that single principle, Newton's laws, Maxwell's equations, and the Schrodinger equation all fall out. Emmy Noether (watch the video below) then showed that the symmetries of the action are the deepest reason conservation laws exist: time invariance gives energy conservation, spatial invariance gives momentum conservation. The structure runs very deep.
+
+And here is what I find genuinely striking: this same logic shows up far outside physics.
+
+When a neural network learns, it minimizes a loss function over billions of possible parameter configurations. It searches for the path through parameter space that makes something stationary. When a reinforcement learning agent plans ahead, it does not just react locally to the next state; it evaluates entire sequences of decisions and selects the trajectory that maximizes a cumulative reward. The agent, in a very real sense, extremizes its own action.
+
+Nature and intelligence turn out to share the same underlying move: among all possible paths, find the one that matters.
+
+That is not a metaphor. It is the same mathematics.
+
+The highway is still out there, mostly empty, the night still quiet. But the question has an answer now. And the answer, as it usually is in physics, turns out to be more beautiful than the question deserved.
 
 
 
@@ -3839,6 +3861,7 @@ Your favorit browser should be able to translate if needed.
 * [Dérivées et Différentielles]({%link docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.md%})
 * [Equation d'onde]({%link docs/03_maths/006_equation_onde_1d/equation_onde_1d.md%})
 * [Distance la plus courte entre 2 points]({%link docs/03_maths/014_distance_entre_2_points/distance_la_plus_courte_entre_2_points.md%})
+* [Gradient Descent in 1, 2 or N dimensions]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%})
 
 
 <figure style="max-width: 560px; margin: auto;">
