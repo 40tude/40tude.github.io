@@ -160,14 +160,14 @@ I hope this is clear and that you can picture what is going on, because this mat
 
 
 <!-- ###################################################################### -->
-### 2. Why equations are often first or second order
+### 2. Why equations are often first or second order?
 {: .no_toc }
 
 In physics, most fundamental laws are expressed as differential equations of the first or second order because they describe how a system's state evolves based on its current configuration.
 
 **First-order equations** typically govern "flow" processes or systems where the rate of change depends directly on the current value. A classic example is radioactive decay or heat transfer (Newton’s Law of Cooling), where the rate of change in temperature is proportional to the temperature difference itself. In these cases, the universe is interested in how the "now" dictates the "next moment."
 
-**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to **Newton’s Second Law**, $$F = ma$$. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force—from gravity to electromagnetism—is naturally second-order. Furthermore, second-order derivatives account for **curvature** and **restoring forces**. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
+**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to **Newton’s Second Law**, $$F = ma$$. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order. Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
 
 Going beyond the second order is rare in fundamental physics because it would imply that a system's "acceleration" depends on its "jerk" (the rate of change of acceleration), which doesn't typically align with our observations of how energy and momentum are conserved in nature.
 
@@ -190,16 +190,66 @@ Example: radioactive decay
 
 $$\frac{dN}{dt} = -\lambda N$$
 
-This law is local and simple. More atoms means more decay events per second. The formula leads to the exponential decay.
+This law is local and simple. More atoms means more decay events per second. The formula leads to a exponential decay.
 
 
+#### **Side Note with Python**
+{: .no_toc }
 
+Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+lambda_ = 0.5   # decay constant
+N0 = 10         # initial quantity
+
+# Time array
+t = np.linspace(0, 10, 200)
+
+# Exponential decay solution
+N = N0 * np.exp(-lambda_ * t)
+
+# Numerical derivative dN/dt
+dt = t[1] - t[0]
+dN_dt = np.gradient(N, dt)
+
+# Plot
+plt.figure(figsize=(8, 5))
+
+plt.plot(t, N, label="N(t) (quantity)")
+plt.plot(t, dN_dt, linestyle="--", label="dN/dt (rate of change)")
+
+# Decorations
+plt.axhline(0)
+plt.title("First derivative as rate of change (exponential decay)")
+plt.xlabel("Time")
+plt.ylabel("Value")
+plt.legend()
+
+plt.show()
+
+```
+You should see
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img09.webp"
+    alt="First derivative as rate of change (exponential decay)"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>First derivative as rate of change (exponential decay)</figcaption>
+</figure>
 
 
 #### **Second derivative $$ \rightarrow $$ dynamics / inertia**
 {: .no_toc }
 
-Second derivatives appear when acceleration matters.
+<!-- Second derivatives appear when acceleration matters.
 
 Example:
 
@@ -218,29 +268,20 @@ Why second order? Because inertia exists. A body "remembers" its velocity. To kn
 * Position
 * Velocity
 
-Two initial conditions means second order equation.
+Two initial conditions means second order equation. -->
 
-
-
-
-
-
-
-
-
-
-In physics, second-order derivatives are the language of dynamics. While a first-order equation describes a system that simply "drifts" according to its current state (like a leaf in a stream), a second-order equation describes a system with **inertia**.
+In physics, second-order derivatives are the language of dynamics and they appear when acceleration matters. While a first-order equation describes a system that simply "drifts" according to its current state (like a leaf in a stream), a second-order equation describes a system with **inertia**.
 
 **The Physics of "Memory":** The appearance of the second derivative is fundamentally linked to Newton’s Second Law. When we say $$F = ma$$, we are stating that a force doesn't change a position directly; it changes the *rate of change* of the position.
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img
     src="./assets/img07.webp"
-    alt="Describe the image here"
+    alt="Newton’s Second Law"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Newton’s Second Law</figcaption>
 </figure>
 
 Since acceleration $$a$$ is the derivative of velocity $$v$$, and velocity is the derivative of position $$x$$, we arrive at a second-order differential equation:
@@ -300,7 +341,7 @@ So empirically:
 
 $$a \propto \frac{F}{m}$$
 
-Which gives
+Where the symbol $$\propto$$ means proportional. At the end this gives:
 
 $$F = ma$$
 
@@ -309,7 +350,7 @@ So it is really an empirical law extracted from experiments.
 
 
 <!-- ###################################################################### -->
-### 4. Why physics prefers local laws
+### 4. Why physics prefers local laws?
 {: .no_toc }
 
 Most physical laws describe local behavior:
@@ -332,9 +373,9 @@ This locality leads directly to derivatives.
 #### **Example: Heat Flow and Temperature**
 {: .no_toc }
 
-Consider a temperature field: $$ T(x,t) $$.
+Consider a temperature field: $$ T(x, t) $$.
 
-Don't start complaining. A temperature field $$ T(x, y, t) $$ is just the ceramic hob you turned on and then just turned off. Over time, the temperatures are going to change (go down), and they won't all be the same. The temperatures at the edge of the burner might cool down faster than the rest. Anyway, the temperature $$T$$ depends on both time and position. Here I used a field $$(x,y)$$, while in the example we only have $$T(x, t)$$. Life is simple!
+Don't start grumbling. A temperature field $$ T(x, y, t) $$ is just the ceramic hob you turned on and then turned off. Over time, the temperatures are going to change (go down), and they won't all be the same. The temperatures at the edge of the burner might cool down faster than the rest. Anyway, the temperature $$T$$ depends on both time and position. Here I used a field $$(x,y)$$, while in the example we only have $$T(x, t)$$. Life is simple!
 
 The heat flowing through a point depends on how temperature changes in space. More precisely, it depends on the temperature gradient:
 
@@ -342,9 +383,9 @@ $$
 \text{Heat flow} \propto - \nabla T
 $$
 
-The symbol $$ \nabla $$ is called **“nabla”**.
+The symbol $$ \nabla $$ is called nabla (it can be also named del).
 
-A simple way to understand it is through intuition: imagine standing on a snowboard on a mountain. You are trying to find the direction of the **steepest slope**. That direction is exactly what the gradient represents.
+A simple way to understand it is through intuition: imagine standing on a snowboard on a mountain. You are trying to find the direction of the steepest slope. That direction is exactly what the gradient represents.
 
 * In **3D**, the gradient tells us the direction and strength of the steepest increase.
 * In **1D**, this reduces to something familiar:
@@ -396,8 +437,8 @@ At first, this may feel abstract because:
 
 The key idea is that everything depends on two things:
 
-1. What we apply $$ \nabla $$ to: a scalar field like the temperatures on the previous ceramic hob or a vector field like the vectors representing the wind force and direction on a 2D map.
-2. What operation we use (dot product, cross product, etc.)
+1. What we apply $$ \nabla $$ to: a scalar field like the temperatures on the previous ceramic hob or a vector field like the vectors representing the wind forces and directions on a 2D map.
+2. What operation we use. Remember nabla is a vector so we can compute dot product, cross product...
 
 
 **Main Operations with Nabla**
@@ -581,6 +622,73 @@ Putting both together naturally gives the Laplacian $$\nabla^2 T$$
 
 
 
+#### **Side Note with Python**
+{: .no_toc }
+
+Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Create a 2D grid
+x = np.linspace(-3, 3, 100)
+y = np.linspace(-3, 3, 100)
+X, Y = np.meshgrid(x, y)
+
+# Define a scalar field T(x, y)
+T = np.exp(-(X**2 + Y**2))  # a smooth "hot bump"
+
+# Compute Laplacian numerically
+dx = x[1] - x[0]
+dy = y[1] - y[0]
+
+d2T_dx2 = np.gradient(np.gradient(T, dx, axis=1), dx, axis=1)
+d2T_dy2 = np.gradient(np.gradient(T, dy, axis=0), dy, axis=0)
+
+laplacian_T = d2T_dx2 + d2T_dy2
+
+# Plot
+fig = plt.figure(figsize=(12, 5))
+
+# --- Surface: T(x, y)
+ax1 = fig.add_subplot(121, projection='3d')
+ax1.plot_surface(X, Y, T)
+ax1.set_title("Scalar field T(x, y)")
+ax1.set_xlabel("x")
+ax1.set_ylabel("y")
+
+# --- Surface: Laplacian of T
+ax2 = fig.add_subplot(122, projection='3d')
+ax2.plot_surface(X, Y, laplacian_T)
+ax2.set_title("Laplacian ∇²T")
+ax2.set_xlabel("x")
+ax2.set_ylabel("y")
+
+plt.tight_layout()
+plt.show()
+```
+You should see
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img10.webp"
+    alt="Second derivative indicates hills and valleys"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Second derivative indicates hills and valleys</figcaption>
+</figure>
+
+
+* The **left plot** is our scalar field $$ T(x,y) $$: a “hot bump”
+* The **right plot** is $$ \nabla^2 T $$
+* At the **top of the bump** $$\rightarrow$$ Laplacian is **negative** $$\rightarrow$$ hotter than surroundings $$\rightarrow$$ heat flows out
+* Around the **edges** $$\rightarrow$$ Laplacian becomes **positive** $$\rightarrow$$ colder than surroundings $$\rightarrow$$ heat flows in
+* Again, the Laplacian measures how a quantity compares to its surroundings
+
+
 
 
 
@@ -670,7 +778,7 @@ These are expressed mathematically using divergences and derivatives.
 
 
 <!-- ###################################################################### -->
-### 7. Why second order is extremely common
+### 7. Why second order is extremely common?
 {: .no_toc }
 
 Most fundamental laws in physics are second order because:
@@ -805,9 +913,7 @@ That is exactly what a differential equation describes.
 <!-- ###################################################################### -->
 ## Why the heat equation, the wave equation and the Schrödinger equation look so similar?
 
-Once we see the common structure, a lot of physics suddenly becomes less mysterious.
-
-We’ll go step by step.
+Let's go step by step.
 
 
 
@@ -854,7 +960,54 @@ Graphically:
 
 So the second derivative tells us how different a point is from its surroundings. And many physical processes try to reduce those differences or react to them. That’s why the Laplacian appears everywhere.
 
+#### **Side Note with Python**
+{: .no_toc }
 
+Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create x values
+x = np.linspace(-5, 5, 400)
+
+# Define a function u(x)
+u = np.sin(x)
+
+# Compute second derivative numerically
+dx = x[1] - x[0]
+u_second = np.gradient(np.gradient(u, dx), dx)
+
+# Plot the function
+plt.figure(figsize=(8, 5))
+plt.plot(x, u, label="u(x) = sin(x)")
+
+# Highlight regions
+plt.fill_between(x, u, where=(u_second > 0), alpha=0.3, label="u'' > 0 (valley)")
+plt.fill_between(x, u, where=(u_second < 0), alpha=0.3, label="u'' < 0 (hill)")
+
+# Decorations
+plt.axhline(0)
+plt.title("Second derivative indicates hills and valleys")
+plt.legend()
+plt.xlabel("x")
+plt.ylabel("u(x)")
+
+plt.show()
+
+```
+You should see
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img08.webp"
+    alt="Second derivative indicates hills and valleys"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Second derivative indicates hills and valleys</figcaption>
+</figure>
 
 
 
@@ -891,9 +1044,9 @@ $$
 \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u
 $$
 
-Example: vibrating string.
+Don't trust me. Read this [page]({%link docs/03_maths/006_equation_onde_1d/equation_onde_1d.md%}) to see how to derive the previous formula.
 
-Here the interpretation is different. If a point on the string is curved, tension pulls it back toward equilibrium. More curvature means stronger restoring force. That force produces acceleration, which is why the time derivative is second order.
+In the case of a vibrating string, the interpretation is different. If a point on the string is curved, tension pulls it back toward equilibrium. More curvature means stronger restoring force. That force produces acceleration, which is why the time derivative is second order.
 
 In others words:
 * Curvature means force
@@ -923,16 +1076,13 @@ i\hbar \frac{\partial \psi}{\partial t} =
 -\frac{\hbar^2}{2m} \nabla^2 \psi + V\psi
 $$
 
-This also contains the Laplacian.Why? Because the Laplacian corresponds to kinetic energy. In fact, the kinetic energy operator is:
+This also contains the Laplacian. Why? Because the Laplacian corresponds to kinetic energy. In fact, the kinetic energy operator is:
 
 $$
 -\frac{\hbar^2}{2m}\nabla^2
 $$
 
-So again:
-* Spatial curvature determines how the wave function evolves.
-
-The mathematics ends up looking surprisingly similar to diffusion or waves.
+So again, the spatial curvature determines how the wave function evolves. The mathematics ends up looking surprisingly similar to diffusion or waves.
 
 
 
@@ -970,7 +1120,7 @@ Same mathematical ingredient, different physics.
 
 
 <!-- ###################################################################### -->
-### 7. Why nature loves local curvature laws
+### 7. Why nature loves local curvature laws?
 {: .no_toc }
 
 There are several deep reasons.
@@ -1027,7 +1177,7 @@ So the equations basically say:
 
 
 <!-- ###################################################################### -->
-### 9. Why physics equations look "simple"
+### 9. Why physics equations look "simple"?
 {: .no_toc }
 
 In fact, the real world equations are often the simplest possible ones.
@@ -2188,7 +2338,7 @@ This yields Euler–Lagrange equations, which are exactly Newton’s laws in dis
 
 
 <!-- ###################################################################### -->
-### 2. Why $$L = T - V$$ and not $$T + V$$
+### 2. Why $$L = T - V$$ and not $$T + V$$?
 {: .no_toc }
 
 Historically, this comes from Hamilton’s reformulation of mechanics:
@@ -3399,12 +3549,12 @@ Coming soon, just a bit delayed.
 
 ### FR
 {: .no_toc }
+* [Forme intégrale et différentielle de la loi de Gauss]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
 * [Chainette]({%link docs/03_maths/000_chainette/000_chainette.md%})
 * [Equation Différentielle du 1er Ordre]({%link docs/03_maths/003_equations_differentielles_premier_ordre/003_equations_differentielles_premier_ordre.md%})
-* [Equation de Bernouilli]({%link docs/03_maths/004_equation_de_bernoulli/004_equation_de_bernoulli.md%})
+* [Equation de Bernoulli]({%link docs/03_maths/004_equation_de_bernoulli/004_equation_de_bernoulli.md%})
 * [Dérivées et Différentielles]({%link docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.md%})
 * [Equation d'onde]({%link docs/03_maths/006_equation_onde_1d/equation_onde_1d.md%})
-* [Forme intégrale et différentielle de la loi de Gauss]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
 * [Distance la plus courte entre 2 points]({%link docs/03_maths/014_distance_entre_2_points/distance_la_plus_courte_entre_2_points.md%})
 
 
