@@ -1909,6 +1909,67 @@ $$
 Straight-line motion at constant speed. That is exactly Newton’s first law.
 
 
+#### **Side Note with Python**
+{: .no_toc }
+
+The following script generates several candidate paths between the same two endpoints and computes the action for each. The physical path (straight line, $$a = 0$$) is the one with the minimum action.
+
+Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Free particle: from x=0 at t=0 to x=1 at t=1
+# Physical path: straight line x(t) = t
+# Perturbed paths: x(t) = t + a * sin(pi * t)
+
+m = 1.0
+t = np.linspace(0, 1, 500)
+dt = t[1] - t[0]
+
+amplitudes = [-0.4, -0.2, 0.0, 0.2, 0.4]
+actions = []
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+for a in amplitudes:
+    x = t + a * np.sin(np.pi * t)
+    v = np.gradient(x, dt)
+    S = np.trapz(0.5 * m * v**2, t)
+    actions.append(S)
+    ax1.plot(t, x, label=f"a = {a:.1f}   S = {S:.3f}")
+
+ax1.set_title("Candidate paths (free particle)")
+ax1.set_xlabel("time t")
+ax1.set_ylabel("position x(t)")
+ax1.legend()
+
+colors = ["tab:blue" if a == 0.0 else "tab:gray" for a in amplitudes]
+ax2.bar([f"a={a:.1f}" for a in amplitudes], actions, color=colors)
+ax2.set_title("Action S for each path\n(blue = physical path)")
+ax2.set_xlabel("path")
+ax2.set_ylabel("action S")
+
+plt.tight_layout()
+plt.show()
+```
+
+You should see
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img20.webp"
+    alt="Among all candidate paths, the physical straight-line path has the minimum action"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Among all candidate paths, the physical straight-line path has the minimum action</figcaption>
+</figure>
+
+* The left plot shows 5 paths all going from $$(0,0)$$ to $$(1,1)$$: the physical straight line and 4 curved alternatives
+* The right plot shows the action computed for each: the physical path (blue) has the lowest value
+* This is the variational principle made visible: nature selects the path that minimizes the action
 
 
 
@@ -2961,6 +3022,63 @@ x(t) = A \cos(\omega t + \varphi), \quad \omega = \sqrt{\frac{k}{m}}
 $$
 
 The mass oscillates back and forth with angular frequency $$\omega$$. No constant acceleration here -- a completely different physical behavior from free fall, yet obtained with exactly the same variational procedure.
+
+
+#### **Side Note with Python**
+{: .no_toc }
+
+The following script plots the position, kinetic energy, and potential energy of the harmonic oscillator over time. Notice how $$T$$ and $$V$$ constantly exchange energy while the total $$E = T + V$$ remains perfectly constant.
+
+Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Harmonic oscillator: x(t) = A cos(omega t)
+m = 1.0
+k = 4.0
+A = 1.0
+
+omega = np.sqrt(k / m)
+t = np.linspace(0, 3 * np.pi / omega, 500)
+
+x = A * np.cos(omega * t)
+v = -A * omega * np.sin(omega * t)
+T = 0.5 * m * v**2
+V = 0.5 * k * x**2
+E = T + V
+
+plt.figure(figsize=(9, 5))
+plt.plot(t, x, label="x(t)  position")
+plt.plot(t, T, label="T(t)  kinetic energy", linestyle="--")
+plt.plot(t, V, label="V(t)  potential energy", linestyle="--")
+plt.plot(t, E, label="E = T + V  total energy", linewidth=2, color="black")
+
+plt.axhline(0, color="k", linewidth=0.5)
+plt.title("Harmonic oscillator: energy exchange")
+plt.xlabel("time t")
+plt.ylabel("value")
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+You should see
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img19.webp"
+    alt="Harmonic oscillator: kinetic and potential energy exchange while total energy stays constant"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Harmonic oscillator: kinetic and potential energy exchange while total energy stays constant</figcaption>
+</figure>
+
+* When the mass passes through the equilibrium position ($$x = 0$$), speed is maximum: all energy is kinetic
+* At the turning points ($$x = \pm A$$), speed is zero: all energy is potential
+* The black line $$E = T + V$$ is perfectly flat -- energy is conserved
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
