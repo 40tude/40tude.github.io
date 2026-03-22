@@ -63,6 +63,29 @@ Building intuition from local laws, differential equations, and variational prin
 
 
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+  <img
+    src="./assets/img00.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+  />
+  <figcaption>...</figcaption>
+</figure>
+
+
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+  <img
+    src="./assets/img00.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+  />
+  <figcaption>...</figcaption>
+</figure>
+
+
 
 
 
@@ -3322,12 +3345,6 @@ Coming soon, just a bit delayed.
 #### **Le principe de Moindre Action - Passe-science #6**
 {: .no_toc }
 
-<figure style="text-align: center;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/MIeYz6aMBbk" title="YouTube video player" allowfullscreen></iframe>
-  <figcaption>Le principe de Moindre Action - Passe-science #6</figcaption>
-</figure>
-
-
 <figure style="max-width: 560px; margin: auto;">
   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
@@ -3340,4 +3357,18 @@ Coming soon, just a bit delayed.
   <figcaption style="text-align: center;">
     Le principe de moindre action - Passe-science #6
   </figcaption>
+</figure>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/MIeYz6aMBbk"
+    title="Le principe de moindre action - Passe-science #6"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Le principe de moindre action - Passe-science #6
+</figcaption>
 </figure>
