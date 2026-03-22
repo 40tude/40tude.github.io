@@ -50,7 +50,7 @@ Building intuition from local laws, differential equations, and variational prin
 **Why derivatives and differential equations?**
 * First-order derivatives represent "state change" (velocity/flow)
 * Second-order derivatives represent "interaction/response" (acceleration/force/curvature)
-* Physics laws are local: what happens here depends on nearby values -- this leads naturally to derivatives
+* Physics laws are local: what happens here depends on nearby values. This leads naturally to derivatives
 * Most fundamental laws are second-order because systems have inertia (they "remember" their velocity)
 
 **Why the same equations everywhere?**
@@ -68,7 +68,7 @@ Building intuition from local laws, differential equations, and variational prin
 * Lagrangian $$L = T - V$$ (kinetic minus potential energy)
 * The real trajectory is the one that makes $$\delta S = 0$$
 * From this single principle: Newton's laws, Maxwell's equations, quantum mechanics, general relativity
-* Noether's theorem: every symmetry of the action gives a conservation law (time -> energy, space -> momentum, rotation -> angular momentum)
+* Noether's theorem: every symmetry of the action gives a conservation law (time $$\rightarrow$$ energy, space $$\rightarrow$$ momentum, rotation $$\rightarrow$$ angular momentum)
 
 **The quantum connection**
 * In quantum mechanics, a particle explores all possible paths
@@ -2963,6 +2963,17 @@ $$
 The mass oscillates back and forth with angular frequency $$\omega$$. No constant acceleration here -- a completely different physical behavior from free fall, yet obtained with exactly the same variational procedure.
 
 
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img17.webp"
+    alt="Studying mass-spring system with the principle of least action"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Studying mass-spring system with the principle of least action</figcaption>
+</figure>
+
+
 
 
 
@@ -3241,7 +3252,17 @@ This is exactly the uniformly accelerated free fall we already know.
 
 The amazing thing is that the four Maxwell equations can be obtained from one single variational principle, exactly like $$F=ma$$. The difference is that instead of a particle trajectory $$x(t)$$, we now vary fields in spacetime.
 
-The equations describe the electromagnetic field discovered by James Clerk Maxwell.
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img18.webp"
+    alt="How Maxwell's equations can be derived from a variational principle?"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>How Maxwell's equations can be derived from a variational principle?</figcaption>
+</figure>
+
 
 
 
