@@ -3366,17 +3366,3 @@ Coming soon, just a bit delayed.
     Le principe de moindre action - Passe-science #6
   </figcaption>
 </figure>
-
-<figure style="max-width: 560px; margin: auto;">
-<div style="position: relative; padding-bottom: 56.25%; height: 0;">
-    <iframe
-    src="https://www.youtube.com/embed/MIeYz6aMBbk"
-    title="Le principe de moindre action - Passe-science #6"
-    style="position: absolute; inset: 0; width: 100%; height: 100%;"
-    allowfullscreen>
-    </iframe>
-</div>
-<figcaption style="text-align: center;">
-    Le principe de moindre action - Passe-science #6
-</figcaption>
-</figure>
