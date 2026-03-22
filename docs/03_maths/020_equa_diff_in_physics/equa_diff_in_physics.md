@@ -137,7 +137,50 @@ Building intuition from local laws, differential equations, and variational prin
 <!-- ###################################################################### -->
 ## Introduction
 
-It’s on the way, just taking a little longer than expected.
+March 2026. We’re driving back from a ski trip. It’s past midnight. The highway is almost empty. Everyone else in the car is asleep.
+
+And, like when you try to meditate and think about nothing… your brain does the exact opposite.
+
+Mine starts wandering.
+
+From one idea to another, without any clear direction... until it lands on a surprisingly stubborn question:
+
+> *Why does physics use so many first- and second-order derivatives?*
+
+Don’t ask me how I got there. But once the question is in your head, it doesn’t really leave.
+
+We write things like $$ \frac{dx}{dt}, \quad \frac{d^2x}{dt^2} $$ all the time. Velocity, acceleration, waves, heat, electromagnetism… it’s everywhere.
+
+And sure, I "know" (more or less) what these formulas mean... But a different question starts to emerge:
+
+> *Why does nature seem to “think” in derivatives?*
+> *Why first order here, second order there… and almost never more?*
+
+There must be a reason.
+
+So in this post, I propose we take a step back and try to build some intuition. We’ll start with what we already know:
+
+* what first and second derivatives really represent,
+* why differential equations naturally appear in physics,
+* and why second-order equations are so common.
+
+Then we’ll take a turn. Instead of describing motion step by step, we’ll discover a completely different perspective: variational principles.
+
+And in particular, one idea that sits at the heart of modern physics:
+
+> *Among all possible paths, nature selects the one that makes something... stationary.*
+
+This is the principle of stationary action (aka principle of least action).
+
+It might sound abstract at first, but it turns out to be one of the most powerful ways to describe our world. From classical mechanics to quantum physics, it’s the same underlying idea showing up again and again.
+
+This post is written for a high school senior or a first-year university student. Whenever needed, we’ll slow down and revisit key tools (like integration by parts).
+
+There are also a few Python snippets you can copy-paste and run to build intuition visually. And at the end, you’ll find a webliography with books, videos, and related articles if you want to go further (including deeper dives into derivatives, differentials, and Maxwell’s equations).
+
+The tone here is conversational and as usual there are no stupid questions, only good ones that haven’t been explored yet.
+
+Alright—let’s get started!
 
 
 
@@ -360,11 +403,11 @@ Most physical laws describe local behavior:
 
 Instead of saying
 
-> "The temperature everywhere depends on the whole system"
+> *The temperature everywhere depends on the whole system.*
 
 Nature usually says something like:
 
-> "What happens here depends on what is happening just next to it."
+> *What happens here depends on what is happening just next to it.*
 
 This locality leads directly to derivatives.
 
@@ -771,13 +814,13 @@ Examples:
 
 We see derivatives everywhere because physics tries to answer:
 
-> How does the state of the system change locally?
+> *How does the state of the system change locally?*
 
 Derivatives are the mathematical language of change.
 
 And differential equations express:
 
-> The rate of change of something depends on the current state of the system.
+> *The rate of change of something depends on the current state of the system.*
 
 
 
@@ -1078,7 +1121,7 @@ Many systems evolve to minimize energy. Energy often contains terms like $$ (\na
 
 We can think of the Laplacian as:
 
-> difference between a point and the average of its neighbors
+> *Difference between a point and the average of its neighbors.*
 
 In fact, on a discrete grid:
 
@@ -1214,7 +1257,7 @@ Quick heads-up before we dive in: don't make the same mistake I did. It’s easy
 
 A variational principle is any statement of the form:
 
-> "The physical solution is the one that makes a certain quantity stationary (usually an extremum this means a minimum or a maximum)."
+> *The physical solution is the one that makes a certain quantity stationary (usually an extremum this means a minimum or a maximum).*
 
 Mathematically:
 
@@ -1242,7 +1285,7 @@ This idea exists far beyond physics.
 
 At this point, a natural question arises:
 
-> "Why should a physical system be described by an extremum of some quantity?"
+> *Why should a physical system be described by an extremum of some quantity?*
 
 At first sight, this may feel artificial. In Newtonian mechanics, we are used to local laws such as:
 
@@ -1257,7 +1300,7 @@ When we impose $$ \delta \mathcal{F} = 0$$, we are requiring that small changes 
 
 In other words:
 
-> A variational principle is a compact, global way of writing the same physics that can also be expressed with differential equations.
+> *A variational principle is a compact, global way of writing the same physics that can also be expressed with differential equations.*
 
 This is why the principle of least action is so powerful: it does not replace Newton’s laws. It reformulates them in a way that reveals deeper structure (symmetries, conservation laws, and generalizations to fields).
 
@@ -1458,7 +1501,7 @@ $$
 
 Interpretation:
 
-> Light follows the path that extremizes travel time.
+> *Light follows the path that extremizes travel time.*
 
 This explains:
 
@@ -1476,7 +1519,7 @@ This is actually an action principle for light, but historically it came first a
 
 In statics:
 
-> A system at equilibrium minimizes its potential energy.
+> *A system at equilibrium minimizes its potential energy.*
 
 $$
 \delta U = 0
@@ -1502,7 +1545,7 @@ $$
 
 Interpretation:
 
-> For equilibrium, virtual displacements produce no net work.
+> *For equilibrium, virtual displacements produce no net work.*
 
 This is another variational formulation of mechanics.
 
@@ -1577,7 +1620,7 @@ It works for:
 
 Through Emmy Noether’s theorem:
 
-> Every symmetry of the action corresponds to a conservation law.
+> *Every symmetry of the action corresponds to a conservation law.*
 
 Examples:
 
@@ -1619,11 +1662,11 @@ One way to think about it:
 
 Instead of describing physics as:
 
-> "local cause leads to local effect"
+> *Local cause leads to local effect.*
 
 We describe it as:
 
-> "global constraint on all possible histories"
+> *Global constraint on all possible histories.*
 
 Then the real trajectory is the one that satisfies that constraint.
 
@@ -1731,7 +1774,7 @@ $$
 
 The principle says:
 
-> The real motion of a system is the one that makes the action stationary (usually a minimum).
+> *The real motion of a system is the one that makes the action stationary (usually a minimum).*
 
 "Stationary" means:
 
@@ -2221,37 +2264,6 @@ That’s exactly the equation of a falling object.
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ## What we should keep in mind from the 2 previous examples
-
-Both examples follow the same structure:
-
-1. Write $$ L = T - V $$
-2. Compute the action
-3. Slightly change the path
-4. Expand
-5. Set $$ \delta S = 0 $$
-6. Get the equation of motion
-
-
-Instead of saying:
-
-> "Forces determine motion"
-
-The principle of stationary action says:
-
-> "Nature chooses the path that makes the action stable."
-
-And from that, Newton’s laws come out automatically.
- -->
-
-
-
-
-
-
 
 
 
@@ -2299,7 +2311,7 @@ At the time, physics was still heavily influenced by philosophical ideas like:
 
 So "action" was meant to sound like:
 
-> how much "doing" or "effort" happens during a motion
+> *How much "doing" or "effort" happens during a motion.*
 
 
 
@@ -2378,7 +2390,7 @@ And in quantum mechanics (as we noticed with Feynman), it becomes even more fund
 
 So "action" is really:
 
-> the quantity that controls how nature evolves, both classically and quantum mechanically
+> *The quantity that controls how nature evolves, both classically and quantum mechanically.*
 
 
 
@@ -2582,7 +2594,7 @@ The key idea comes from the Pierre-Louis Maupertuis principle, later generalized
 
 The principle says:
 
-> The trajectory of a physical system is the one that makes the action stationary.
+> *The trajectory of a physical system is the one that makes the action stationary.*
 
 
 
@@ -3653,7 +3665,7 @@ This is the wave equation.
 
 Meaning:
 
-> electromagnetic fields propagate as waves.
+> *Electromagnetic fields propagate as waves.*
 
 The wave speed is
 
@@ -3688,7 +3700,7 @@ $$
 
 Nature seems to follow a universal rule:
 
-> The laws of physics come from making an action stationary.
+> *The laws of physics come from making an action stationary.*
 
 
 
@@ -3817,7 +3829,7 @@ Coming soon, just a bit delayed.
 {: .no_toc }
 * ...
 
-<figure style="max-width: 450px; margin: auto; text-align: center;">
+<figure style="max-width: 225px; margin: auto; text-align: center;">
 <img
     src="./assets/img15.webp"
     alt="A Student's Guide to Maxwell's Equations"
@@ -3830,6 +3842,8 @@ Coming soon, just a bit delayed.
 
 ### FR
 {: .no_toc }
+Your favorit browser should be able to translate if needed.
+
 * [Forme intégrale et différentielle de la loi de Gauss]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
 * [Chainette]({%link docs/03_maths/000_chainette/000_chainette.md%})
 * [Equation Différentielle du 1er Ordre]({%link docs/03_maths/003_equations_differentielles_premier_ordre/003_equations_differentielles_premier_ordre.md%})
@@ -3853,7 +3867,7 @@ Coming soon, just a bit delayed.
   </figcaption>
 </figure>
 
-<figure style="max-width: 450px; margin: auto; text-align: center;">
+<figure style="max-width: 225px; margin: auto; text-align: center;">
 <img
     src="./assets/img14.webp"
     alt="Les principes variationnels en physique"
@@ -3864,7 +3878,7 @@ Coming soon, just a bit delayed.
 </figure>
 
 
-<figure style="max-width: 450px; margin: auto; text-align: center;">
+<figure style="max-width: 225px; margin: auto; text-align: center;">
 <img
     src="./assets/img11.webp"
     alt="Lumière et Matière"
