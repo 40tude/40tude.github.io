@@ -12,7 +12,7 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-03-21 12:00:00
+last_modified_date: 2026-03-22 13:00:00
 ---
 
 
@@ -49,6 +49,8 @@ Building intuition from local laws, differential equations, and variational prin
 
 * First-order derivatives represent "state change" (velocity/flow)
 * Second-order derivatives represent "interaction/response" (acceleration/force/curvature).
+* Differential equations for local description
+* Variational principles for global description
 * Action $$S = \int_{t_1}^{t_2} L(x,\dot x,t),dt$$
 * Lagrangian $$L$$
 
@@ -1213,9 +1215,172 @@ This idea exists far beyond physics.
 
 
 
+<!-- ###################################################################### -->
+### 2. Why extremize anything?
+{: .no_toc }
+
+At this point, a natural question arises:
+
+> "Why should a physical system be described by an extremum of some quantity?"
+
+At first sight, this may feel artificial. In Newtonian mechanics, we are used to local laws such as:
+
+* "force equals mass times acceleration"
+* equations that tell us how motion evolves step by step in time
+
+A variational principle looks very different. It is a global statement: instead of describing what happens at each instant, it compares entire possible trajectories and selects one special path.
+
+So why does this work? The key idea is that extremizing a functional is not a completely new kind of law. It is actually another way of encoding differential equations.
+
+When we impose $$ \delta \mathcal{F} = 0$$, we are requiring that small changes of the function do not affect the quantity at first order. This constraint turns out to be strong enough to produce local equations of motion (through the Euler–Lagrange equations).
+
+In other words:
+
+> A variational principle is a compact, global way of writing the same physics that can also be expressed with differential equations.
+
+This is why the principle of least action is so powerful: it does not replace Newton’s laws. It reformulates them in a way that reveals deeper structure (symmetries, conservation laws, and generalizations to fields).
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
-### 2. The principle of least action = a specific variational principle
+### 3. Why extremize anything? Extended Cut.
+{: .no_toc }
+
+There isn’t a single definitive answer, but we can look at it from several complementary angles. Each one sheds light on a different aspect of the idea.
+
+
+#### **1. Historical and intuitive perspective: from optics to mechanics**
+{: .no_toc }
+
+The first known variational principle did not come from mechanics, but from optics with **Pierre de Fermat** (~1650):
+
+> *Light follows the path that makes the travel time stationary.*
+
+Why? Fermat was looking for a unifying principle to explain both reflection and refraction.
+In a uniform medium, the shortest path is a straight line. But in a medium with varying refractive index, it’s no longer the geometric distance that matters—it’s the *time*.
+
+When **Pierre-Louis Moreau de Maupertuis**, **Leonhard Euler**, and **Joseph-Louis Lagrange** searched for a similar principle in mechanics, they were guided by this idea: **nature behaves in an "economical" way**.
+
+* A free particle moves in a straight line.
+* A projectile follows a curved path.
+
+But what is being minimized (or made stationary)? Not distance, not time, but the integral of ( T - V ), the difference between kinetic and potential energy.
+
+Why this specific form $$ L = T - V $$? It wasn’t guessed from first principles—it was discovered by trial and error. The goal was to find a quantity whose extremization reproduces Newton’s laws.
+
+Lagrange showed that if we impose $$ \delta \int L,dt = 0 \quad \text{with} \quad L = T - V$$, we recover
+$$m\ddot{x} = -\nabla V$$.
+
+So this is not a new physical law. It’s a **powerful reformulation** of existing ones.
+
+
+
+
+
+
+
+#### **2. Mathematical perspective: a compact way to encode local laws**
+{: .no_toc }
+
+Why require an integral to be stationary instead of directly writing differential equations?
+
+Suppose we start with an equation of motion like $$\ddot{x} = f(x)$$.
+
+We can ask: does there exist a function $$ L(x,\dot{x}) $$ such that solutions of this equation are exactly the critical points of $$\int L \,dt$$?
+
+Under certain conditions (for example, when forces come from a potential), the answer is yes.
+
+More importantly: extremizing an integral is a compact, global way to encode second-order differential equations together with boundary conditions.
+
+For a functional
+$$
+S[q] = \int_{t_1}^{t_2} L(q,\dot{q},t),dt,
+$$
+
+The condition $$ \delta S = 0 $$, for variations vanishing at the endpoints, leads *locally* to the Euler–Lagrange equations:
+
+$$
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}}\right) - \frac{\partial L}{\partial q} = 0.
+$$
+
+So the variational principle is not something foreign to differential equations. It’s another, more global way of expressing them.
+
+
+
+
+
+
+
+
+
+#### **3. Physical/philosophical perspective: why an extremum?**
+{: .no_toc }
+
+This question has puzzled thinkers from Gottfried Wilhelm Leibniz to Richard Feynman. Here are a few ways to think about it.
+
+**The quantum mechanics viewpoint (Feynman):**
+
+In quantum mechanics, a particle does not follow a single path. It explores all possible paths, each contributing an amplitude proportional to $$e^{iS/\hbar}$$.
+
+The observed behavior comes from summing over all these paths.
+
+When $$ \hbar $$ is very small (the classical limit), most contributions cancel out due to destructive interference. The only paths that survive are those where $$ S $$ is stationary because the phase varies the least there.
+
+So the classical principle of least action emerges from quantum interference. There’s no "decision" by nature, just constructive interference near the classical path.
+
+
+**Economy of description:**
+
+A variational principle is a global statement:
+
+* Instead of saying: "at every instant, acceleration equals force divided by mass,"
+* We say: "among all possible paths, the real one makes a certain quantity stationary."
+
+This formulation is especially powerful for:
+
+* Symmetries (via Noether’s theorem $$\rightarrow$$ conservation laws),
+* Constrained systems,
+* Field theories (where partial differential equations come from a Lagrangian density).
+
+So we use it because it is conceptually powerful and unifying, not because nature "prefers" extrema.
+
+
+**A geometric analogy:**
+
+In differential geometry, geodesics are curves that extremize distance.
+
+* In flat space $$\rightarrow$$ straight lines
+* In curved space $$\rightarrow$$ curved paths
+
+In mechanics, we can reformulate motion as a geodesic problem in a more abstract "configuration space," where the metric is related to kinetic energy.
+
+From this viewpoint, extremizing the action generalizes the idea of a "straight line" to more complex spaces.
+
+
+#### **4. Summary**
+
+* **Mathematically**: extremizing an integral is equivalent to enforcing differential equations with boundary conditions. This is a more global formulation.
+* **Physically**: the principle of least action is not more fundamental than Newton’s laws, but it reveals structure, symmetry, and unity.
+* **Quantum mechanically**: the classical path is the one that survives interference—it’s where the action is stationary.
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### 4. The principle of least action = a specific variational principle
 {: .no_toc }
 
 The principle of least action is just the case where:
@@ -1252,7 +1417,7 @@ Historically, it was developed by people like Pierre-Louis Maupertuis and later 
 
 
 <!-- ###################################################################### -->
-### 3. Other variational principles in physics
+### 5. Other variational principles in physics
 {: .no_toc }
 
 There are many important examples that are not phrased as "action minimization", even though some can be reformulated that way.
@@ -1354,7 +1519,7 @@ This is a variational method, not a fundamental law, but it uses the same idea.
 
 
 <!-- ###################################################################### -->
-### 4. So what makes the action so special?
+### 6. So what makes the action so special?
 {: .no_toc }
 
 This is a good question because, in effect, not all variational principles are equal. The action principle is special because:
@@ -1405,7 +1570,7 @@ This is a deep structural reason physicists love the action.
 
 
 <!-- ###################################################################### -->
-### 5. Modern viewpoint
+### 7. Modern viewpoint
 {: .no_toc }
 
 In modern physics, the hierarchy is roughly:
@@ -1423,7 +1588,7 @@ So yes the principle of least action is a particular realization of a much broad
 
 
 <!-- ###################################################################### -->
-### 6. A deeper intuition
+### 8. A deeper intuition
 {: .no_toc }
 
 Why do variational principles appear at all?
@@ -1452,7 +1617,7 @@ Yet they give the same results.
 
 
 <!-- ###################################################################### -->
-### 7. Subtle but important point
+### 9. Subtle but important point
 {: .no_toc }
 
 "Least action" is slightly misleading. In reality:
@@ -1474,7 +1639,7 @@ So the correct name is: principle of stationary action
 
 
 <!-- ###################################################################### -->
-### 8. Big picture
+### 10. Big picture
 {: .no_toc }
 
 We can think of it like this:
