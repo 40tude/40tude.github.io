@@ -12,7 +12,7 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-03-22 13:00:00
+last_modified_date: 2026-03-22 17:00:00
 ---
 
 
@@ -139,7 +139,7 @@ Building intuition from local laws, differential equations, and variational prin
 
 March 2026. We’re driving back from a ski trip. It’s past midnight. The highway is almost empty. Everyone else in the car is asleep.
 
-And, like when you try to meditate and think about nothing… your brain does the exact opposite.
+And, like when you try to meditate and think about nothing... your brain does the exact opposite.
 
 Mine starts wandering.
 
@@ -149,12 +149,12 @@ From one idea to another, without any clear direction... until it lands on a sur
 
 Don’t ask me how I got there. But once the question is in your head, it doesn’t really leave.
 
-We write things like $$ \frac{dx}{dt}, \quad \frac{d^2x}{dt^2} $$ all the time. Velocity, acceleration, waves, heat, electromagnetism… it’s everywhere.
+We write things like $$ \frac{dx}{dt}, \quad \frac{d^2x}{dt^2} $$ all the time. Velocity, acceleration, waves, heat, electromagnetism... it’s everywhere.
 
 And sure, I "know" (more or less) what these formulas mean... But a different question starts to emerge:
 
 > *Why does nature seem to “think” in derivatives?*
-> *Why first order here, second order there… and almost never more?*
+> *Why first order here, second order there... and almost never more?*
 
 There must be a reason.
 
@@ -770,7 +770,7 @@ Future depends on current rate of change. This translates derivatives in time
 #### **3. Conservation laws**
 {: .no_toc }
 
-Energy, momentum, charge, mass…
+Energy, momentum, charge, mass...
 
 These are expressed mathematically using divergences and derivatives.
 
@@ -1269,7 +1269,7 @@ where $$\mathcal{F}$$ is some functional (a function of functions).
 
 So the structure is:
 
-* We define a quantity depending on a function (trajectory, field, shape…)
+* We define a quantity depending on a function (trajectory, field, shape...)
 * We require that small variations do not change it at first order
 
 This idea exists far beyond physics.
@@ -2543,7 +2543,7 @@ So the focus is on "stationary" not strictly "minimum".
 * Maupertuis (1744) first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
 * Euler and Lagrange formalized it, showing $$S = \int L \, dt$$ gives Newton’s equations.
 * Hamilton gave the modern formulation with $$L = T - V$$ in 1834.
-* So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express mechanics in terms of variational principles, which is elegant and generalizable (to fields, quantum mechanics, relativity…).
+* So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express mechanics in terms of variational principles, which is elegant and generalizable (to fields, quantum mechanics, relativity...).
 
 
 
