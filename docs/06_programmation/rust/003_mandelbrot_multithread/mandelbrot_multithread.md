@@ -36,9 +36,21 @@ J'ai passé pas mal de temps sur YouTube et je suis tombé sur la vidéo ci-dess
 
 Je te propose de regarder l'extrait en question puis de revenir ici.
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/k7nAtrwPhR8?si=Q4C6-UgT5lTvJLwP&amp;start=3130" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/k7nAtrwPhR8"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 De mon point de vue, c'est une bonne idée de projet. En effet, ce n'est pas très compliqué mais surtout ça permet de "voir" un résultat. En tout cas c'est plus excitant que d'afficher du texte dans une console. Allez, c'est parti...
 
@@ -1024,9 +1036,21 @@ Dans cette version je ne modifie que la fonction `render_stripe()`. De mon point
 
 Si tu as du mal avec ces histoires de heap et de stack, investi du temps dans la vidéo ci-dessous :
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7_o-YRxf_cc?si=ilL3NkYoo1dURpO_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/7_o-YRxf_cc"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 Ci-dessous je ne montre que le code de `render_stripe()`.
 
@@ -1470,9 +1494,21 @@ Du point de vue de la console voilà ce que j'observe :
 
 Bon, voilà, notre petite histoire avance plutôt bien… Cela dit, pour être honnête, **avant la version précédente** et l’introduction d’un `scope`, je pensais naïvement que les threads pouvaient modifier directement la zone mémoire de l’image. Bien sûr, j’étais certain qu’il n’y aurait aucun problème puisque chaque thread travaille sur des pixels différents — aucun risque de croiser les effluves...
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TAQnOzY7QXE?si=w3FyGMM7o5qacGS7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TAQnOzY7QXE"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 Bref, de fil en aiguille (certains appellent ça du compiler-driven development : tu compiles, ça plante, tu lis attentivement les messages d’erreur et tu essaies de contenter la bête), j’en suis venu à protéger l’accès à l’image avec un Arc et un Mutex. Mauvaise idée. Certes, c’est très sécurisé, mais ça force un accès exclusif : un seul thread peut manipuler l’image à la fois. Imagine 20 personnes de bonne volonté prêtes à faire la vaisselle… mais avec un seul évier ! Résultat : c’est contre-productif et, au final, plus lent qu’en single-thread.
 

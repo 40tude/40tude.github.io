@@ -44,9 +44,22 @@ This simple definition makes Happy Numbers a great playground to:
 * Compare multiple implementations of the same logic
 * Measure real performance instead of guessing
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?start=31" frameborder="0" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/ZbZSe6N_BXs"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
+
 
 <!-- title="Happy Numbers explanation" -->
 

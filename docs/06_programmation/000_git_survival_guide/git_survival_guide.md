@@ -61,13 +61,22 @@ On peut aussi saisir
 git config --global init.defaultBranch main
 
 ```
-En fait par défaut git crée une branche "master" dont le nom n'est plus trop dans l'air du temps (wokisme quand tu nous tiens...) ce qui peut poser des soucis lorsqu'on crée un repo depuis VSCode qui lui, va créer une branche "main". 
+En fait par défaut git crée une branche "master" dont le nom n'est plus trop dans l'air du temps (wokisme quand tu nous tiens...) ce qui peut poser des soucis lorsqu'on crée un repo depuis VSCode qui lui, va créer une branche "main".
 
 Je suis d'accord mon lapin, tout ça c'est des conneries, "master en servant" c'était pourtant plutôt cool, mais bon, autant se simplifier la vie dès le départ.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IsvfofcIE1Q?si=-kN_5FRF5B4D3y-f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/IsvfofcIE1Q"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+</figcaption>
+</figure>
 
 Prendre ensuite le temps de lire cette [page](http://rogerdudler.github.io/git-guide/).
 
@@ -216,7 +225,7 @@ Ceci dit, à ce stade on a pas encore fait la liaison entre le dépôt sur GitHu
 <img src="./assets/SynchroFaite.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-### Note 
+### Note
 On ne retrouve pas tous les fichiers ni tous les répertoires. Par exemple on envoie pas sur le dépôt le répertoire Debug de 700 Ko qui contient l'application compilée. On envoie pas non plus sur le dépôt le répertoire $Projet$/Debug de 3.5 Mo avec le header pré-compilé etc. Il est bien ce Visual Studio (pour info c'est dans le fichier .gitignore que cela se passe).
 
 

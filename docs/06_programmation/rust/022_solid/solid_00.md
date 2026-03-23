@@ -247,11 +247,22 @@ Rust has features that greatly facilitate the implementation of SOLID principles
 Alright, enough philosophy. It is dogfight time! Let's dive into each principle with real code.
 
 
-<figure style="text-align: center;">
+<!-- <figure style="text-align: center;">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <figcaption>I love the opening theme. It gives me goosebumps every time.</figcaption>
-</figure>
+</figure> -->
 
+<figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/EZfM2VMs_vI"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
+    </div>
+    <figcaption style="text-align: center;">I love the opening theme. It gives me goosebumps every time.</figcaption>
+</figure>
 
 
 

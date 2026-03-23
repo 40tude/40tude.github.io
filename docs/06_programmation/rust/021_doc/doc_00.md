@@ -2617,6 +2617,18 @@ The Standard Library docs are incredibly thorough. Once you know how to **read**
 
 Watch this video:
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ODk38qJ1A3U?si=SAss1APdTHPIcvNK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/ODk38qJ1A3U"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
+    </div>
+    <figcaption style="text-align: center;"></figcaption>
+</figure>

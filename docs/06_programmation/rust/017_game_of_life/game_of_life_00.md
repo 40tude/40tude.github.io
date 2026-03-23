@@ -288,9 +288,22 @@ Then the event loop will run until `elwt.exit()` (`elwt` stands for Event Loop W
 
 * **WindowEvent::RedrawRequested**: In response to this event we must redraw the content of the window. However, in the case of a Game of Life (or game, simulation...) what I know is: which cells are dead and which ones are alive. My universe, my world is a grid of cells. I don't know anything about the number of screens, the size of the window, the resolution...This is where Pixels comes into the play providing multiple levels of indirection which help me to stay in my universe. We will dig into the details soon but for the moment imagine that our world is a Flatland that we want to paint in blue.
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/avMX-Zft7K4?si=s7n8lhAexcTKtDlG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/avMX-Zft7K4"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
+    </div>
+    <figcaption style="text-align: center;"></figcaption>
+</figure>
+
 
 In order to paint our universe, we start by getting the `pixels` object (no panic, I know I did'nt talk about this guy yet). Then, with `frame`,  we get a mutable byte slice from the pixels object. Then we traverse the content of the frame, 4 bytes at a time since the spots of our universe are RGBA encoded with 3 bytes for Red, Green and Blue components while the last byte is for transparency.
 
@@ -3099,12 +3112,35 @@ Other ideas include but are not limited to:
 
 No matter if you speak french or not, watch the first video and add caption if needed. It is about an **analogic version of the game of life**. Smoking!
 
-<div align=center>
+<!-- <div align=center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PlzV4aJ7iMI?si=g3ZipX16w5sUbyZm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+</div> -->
 
-<div align=center>
+<figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/PlzV4aJ7iMI"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
+    </div>
+    <figcaption style="text-align: center;"></figcaption>
+</figure>
+
+<!-- <div align=center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/S-W0NX97DB0?si=tTe9YI-W1XWLVIoC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+</div> -->
 
+<figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/S-W0NX97DB0"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
+    </div>
+    <figcaption style="text-align: center;"></figcaption>
+</figure>
 

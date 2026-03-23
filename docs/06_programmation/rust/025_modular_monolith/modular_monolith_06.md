@@ -671,11 +671,22 @@ Now go build something real. And if you have time, check out the [Bonus episode]
 
 
 
-<figure style="text-align: center;">
+<!-- <figure style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/j-VQCYP7wyw?si=AD7VbUucXEcX3AmV" frameborder="0" allowfullscreen></iframe>
   <figcaption>Rust Error Handling - Best Practices</figcaption>
-</figure>
+</figure> -->
 
+<figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/j-VQCYP7wyw"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
+    </div>
+    <figcaption style="text-align: center;">Rust Error Handling - Best Practices</figcaption>
+</figure>
 
 
 <!--

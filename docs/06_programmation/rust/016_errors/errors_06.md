@@ -73,10 +73,21 @@ A beginner-friendly conversation on Errors, Results, Options, and beyond.
 
 ## Path to Production - Step_00
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LUapZhcsdx8?si=cxsAd5AjKMZfTm1x&amp;start=12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+</div> -->
 
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/LUapZhcsdx8"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 **Bob:** You know what? We will use the last experiment code as a starting point. Again the objective is to transition to a production ready code (at least from the error management standpoint). As it is, the code is monolithic and it looks like this:
 
@@ -774,9 +785,21 @@ thiserror = "2.0.17"
 
 Now, run the application (`cargo run -p step_03`) and "tell me why" you get this output.
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H3LbzjFJdSA?si=swM00wplNuHeLbL9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/H3LbzjFJdSA"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 **Alice:** Good news, it works. Bad news, I don't see big difference in the output. With `step_02` I had:
 
@@ -856,9 +879,21 @@ fn main() -> Result<()> {
 
 The `non_existent_folder` is "back in town"
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hQo1HIcSVtg?si=tSkFmxpGfVozzhFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/hQo1HIcSVtg"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 In addition, the `?` operator has disappeared. We use `match` after each call instead. Don't, but if you run the code at this point you should not see big changes.
 
@@ -1315,10 +1350,21 @@ Here is what you should see after: `cargo test -p step_06`
 
 ## Conclusion
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/v22YbORzDD0?si=coC-2aQAbL0PTIwa&amp;start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+</div> -->
 
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/v22YbORzDD0"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 It's 6AM. Your sister is coming back home. You are "dead" but happy because you learnt a lot even if you are not sure you will keep everything in your mind. It is also time for you to go to bed...
 
@@ -1352,17 +1398,56 @@ Enjoy!
 * You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
 
 * You're probably misusing unwrap in Rust
-    <div align="center">
+    <!-- <div align="center">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/k10xtq02nqY?si=htUcBirLf5X7miuX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div> -->
+
+    <figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/k10xtq02nqY"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
     </div>
+    <figcaption style="text-align: center;"></figcaption>
+    </figure>
+
+
+
 * Custom Errors
-    <div align="center">
+    <!-- <div align="center">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/KrZ0nmpNVOw?si=4XTRH4Ek-dDyqDfv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div> -->
+    <figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/KrZ0nmpNVOw"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
     </div>
+    <figcaption style="text-align: center;"></figcaption>
+    </figure>
+
+
 * Error Best Practices
-    <div align="center">
+    <!-- <div align="center">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/j-VQCYP7wyw?si=GUo1WT26ECX8erGW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div> -->
+    <figure style="max-width: 560px; margin: auto;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+        <iframe
+        src="https://www.youtube.com/embed/j-VQCYP7wyw"
+        title=""
+        style="position: absolute; inset: 0; width: 100%; height: 100%;"
+        allowfullscreen>
+        </iframe>
     </div>
+    <figcaption style="text-align: center;"></figcaption>
+    </figure>
 
 
 

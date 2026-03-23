@@ -82,10 +82,24 @@ The primary source is **Robert C. Martin**, universally known as "Uncle Bob." Co
 
 If the reasoning is not crystal clear, read this page which explain  [what is a percentage]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) and where I take the time to explain exponential growth plus many other things like the rule of the 70 etc.
 
-<figure style="text-align: center;">
+<!-- <figure style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ecIWPzGEbFc?si=ursHMV8_PrXlskjb&amp;start=3059" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <figcaption></figcaption>
+</figure> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/ecIWPzGEbFc"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+</figcaption>
 </figure>
+
 
 > *"The number of programmers in the world doubles every five years, which means that half the programmers in the world have less than five years of experience. And this leaves our industry in a state of perpetual inexperience."*
 >
@@ -451,11 +465,22 @@ Trust in these systems will absolutely continue to grow. But we cannot lose sigh
 
 
 
-<figure style="text-align: center;">
+<!-- <figure style="text-align: center;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Nd2pavAegx4?si=ihCyKo9lq2nLl5iA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <figcaption>The English audio track is available</figcaption>
-</figure>
+</figure> -->
 
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/Nd2pavAegx4"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">The English audio track is available</figcaption>
+</figure>
 
 
 

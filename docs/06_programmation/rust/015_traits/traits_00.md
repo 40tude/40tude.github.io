@@ -195,9 +195,21 @@ But we have to anticipate... Sure, we're so efficient and so bright that we'll b
 
 First thing first, let's focus on the temperature sensors. Depending on the region of the world, we are asked to support both °C and °F (nobody's perfect...). On the other hand, not all sensors are the same. Some of them may be already in place... Some of them may have different communication link (serial, EtherCAT...). Some of them may return values using `f64` while other use `int16` encoding (microcontroller). So we can imagine that we have different types of temperature sensors, but this should be transparent from the software stand point.
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LgrXd0NM2y8?si=11oJOk0zxRrH9Dsr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/LgrXd0NM2y8"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
 
 OK... Then what?
 

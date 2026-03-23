@@ -904,9 +904,24 @@ As we can expect, this is another story when the components are not primitive. T
 
 Do you remember, not September (EWF, 1978), but `destructuring04()` and `destructuring04_bis()` where we passed the array by value then by reference. Here, we want to avoid the raw `for` loop ("no raw loops", said Sean Parent in 2013). To do so we can use an iterator to visit an iterable (think of a vector, for example) from start to end.
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W2tWOdzgXHA?si=RadnIfHfbD5lNcaD&amp;start=131" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/W2tWOdzgXHA"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;"></figcaption>
+</figure>
+
+
 
 ```rust
 fn destructuring06() {

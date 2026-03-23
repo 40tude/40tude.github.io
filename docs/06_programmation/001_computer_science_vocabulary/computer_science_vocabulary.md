@@ -1490,9 +1490,23 @@ See : <http://stackoverflow.com/questions/17930267/what-is-the-difference-betwee
 ## Tasks
 Cooperative multitasking. Think about Windows 3.1 when true parallelism via multithread was not yet available under Windows. However, even with one CPU, we were able, at the same time, to play music, print a document and draw in MSPaint.
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QIHy8pXbneI?si=5fCEHDZu2Va85AyY&amp;start=1098" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/QIHy8pXbneI"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+</figcaption>
+</figure>
+
 
 A task is a computation that can potentially be executed **concurrently** with other computations. The keyword here is concurrently. One task is executed until it must wait (I/O or timer). Then a second task resumes from where it stopped, and so on, until the first task can continue again. The first task then runs until it must wait again.
 

@@ -95,9 +95,23 @@ En fait par défaut git crée une branche "master" dont le nom n'est plus trop d
 
 Je suis d'accord mon lapin, tout ça c'est des conneries, "master en servant" c'était pourtant bien cool, mais bon, autant se simplifier la vie dès le départ.
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IsvfofcIE1Q?si=6kcJNwORKE-OPd3y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/IsvfofcIE1Q"
+    title=""
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+</figcaption>
+</figure>
+
 
 Prendre ensuite le temps de lire cette [page](http://rogerdudler.github.io/git-guide/).
 
