@@ -1319,7 +1319,12 @@ But what is being minimized (or made stationary)? Not distance, not time, but th
 
 Why this specific form $$ L = T - V $$? It wasn’t guessed from first principles. It was discovered by trial and error. The goal was to find a quantity whose extremization reproduces Newton’s laws.
 
-Lagrange showed that if we impose $$ \delta \int L,dt = 0 \quad \text{with} \quad L = T - V$$, we recover
+Lagrange showed that if we impose
+
+$$ \delta \int L \, dt = 0 \quad \text{with} \quad L = T - V$$
+
+Then we recover
+
 $$m\ddot{x} = -\nabla V$$.
 
 So this is not a new physical law. It’s a **powerful reformulation** of existing ones.
@@ -2207,6 +2212,8 @@ $$
 #### **Step 6: Integration by parts again**
 {: .no_toc }
 
+
+<!--
 $$
 \int m \dot{x}\dot{\eta} dt = -\int m \ddot{x} \eta dt
 $$
@@ -2216,13 +2223,67 @@ So:
 $$
 \delta S = \varepsilon \int \left( -m \ddot{x} - mg \right)\eta \, dt
 $$
+ -->
+
+
+
+
+
+
+
+
+
+We start from:
+
+$$
+\int m \dot{x}\dot{\eta} , dt
+$$
+
+Apply integration by parts:
+
+$$
+= m [\dot{x} \eta]_{t_1}^{t_2} - \int m \ddot{x} \eta , dt
+$$
+
+But since we impose that the variation vanishes at the endpoints:
+
+$$
+\eta(t_1) = \eta(t_2) = 0
+$$
+
+the boundary term disappears:
+
+$$
+[\dot{x} \eta]_{t_1}^{t_2} = 0
+$$
+
+So we are left with:
+
+$$
+\int m \dot{x}\dot{\eta} , dt = - \int m \ddot{x} \eta , dt
+$$
+
+Now substitute back into the variation:
+
+$$
+\delta S = \varepsilon \int \left( -m \ddot{x} - mg \right)\eta , dt
+$$
+
+
+
+
+
+
+
+
+
 
 
 
 #### **Step 7: Final condition**
 {: .no_toc }
 
-For all $$ \eta $$:
+For all $$ \eta $$ we want $$\delta S = 0$$ so:
 
 $$
 -m \ddot{x} - mg = 0
