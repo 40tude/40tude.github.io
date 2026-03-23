@@ -3432,7 +3432,15 @@ This is exactly the uniformly accelerated free fall we already know.
 <!-- ###################################################################### -->
 ## How Maxwell's equations can be derived from a variational principle?
 
-The amazing thing is that the four Maxwell equations can be obtained from one single variational principle, exactly like $$F=ma$$. The difference is that instead of a particle trajectory $$x(t)$$, we now vary fields in spacetime.
+The amazing thing is that the four Maxwell equations can be obtained from a single variational principle, exactly like $$F = ma$$.
+
+But there is one big conceptual jump:
+
+* Instead of finding the “best trajectory” $$x(t)$$ of a particle,
+* We now look for the “best configuration” of fields in space and time.
+
+So we are no longer minimizing a path…
+we are minimizing how fields behave everywhere.
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
@@ -3452,65 +3460,55 @@ The amazing thing is that the four Maxwell equations can be obtained from one si
 ### 1. From particles to fields
 {: .no_toc }
 
-In mechanics we had:
+In mechanics, everything depended on a single function:
 
 * Variable: $$x(t)$$
 * Action:
+  $$
+  S = \int L(x,\dot x,t),dt
+  $$
 
-$$
-S = \int L(x,\dot x,t),dt
-$$
+We varied this function and obtained an equation of motion.
 
-In electromagnetism we instead describe fields:
+
+
+In electromagnetism, things are richer.
+
+Instead of one function, we now have fields defined at every point in space and time:
 
 * Electric field $$ \mathbf{E}(x,t) $$
 * Magnetic field $$ \mathbf{B}(x,t) $$
 
-
-
-
-
-To apply the variational principle to Maxwell's equations, working directly with the $$\mathbf{E}$$ (electric) and $$\mathbf{B}$$ (magnetic) fields is actually quite difficult because they are too "constrained" by their own geometry. Instead, we use more fundamental building blocks: the scalar potential $$\phi$$ and the vector potential $$\mathbf{A}$$.
-
-The electric field is defined as:
-
-$$\mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}$$
-
-And the magnetic field as:
-
-$$\mathbf{B} = \nabla \times \mathbf{A}$$.
-
-The beauty of this approach? By expressing the Lagrangian in terms of these potentials, two of Maxwell's four equations are satisfied "for free" just by the way the math is set up.
-
-
-<!-- The remaining two—the famous ones linking fields to charges and currents—emerge naturally the moment we demand that the action be stationary. It’s the ultimate payoff of this formalism: the entire complexity of electromagnetism is condensed into a single energy function varying across spacetime. -->
+So instead of a curve, we are dealing with objects that fill space.
 
 
 
 
 
+#### **Why not vary $$\mathbf{E}$$ and $$\mathbf{B}$$ directly?**
+{: .no_toc }
+
+At first glance, it would seem natural to vary $$\mathbf{E}$$ and $$\mathbf{B}$$.
+
+But there is a problem:
+
+* They are not independent.
+* They must satisfy certain constraints (like Faraday’s law).
+
+This makes the variational calculation messy.
 
 
 
 
+#### **A smarter choice: potentials**
+{: .no_toc }
 
+Instead, we introduce more fundamental quantities:
 
+* Scalar potential $$\phi$$
+* Vector potential $$\mathbf{A}$$
 
-
-
-
-
-
-
-
-
-
-<!-- But varying vector fields directly is inconvenient. Instead we introduce potentials:
-
-* Scalar potential $$ \phi $$
-* Vector potential $$ \mathbf{A} $$
-
-The physical fields are defined by
+From these, the fields are defined as:
 
 $$
 \mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}
@@ -3520,7 +3518,23 @@ $$
 \mathbf{B} = \nabla \times \mathbf{A}
 $$
 
-These automatically satisfy two Maxwell equations. -->
+
+#### **Why is this useful?**
+{: .no_toc }
+
+Because now:
+
+* $$\phi$$ and $$\mathbf{A}$$ are independent variables
+* $$\mathbf{E}$$ and $$\mathbf{B}$$ are automatically constructed
+
+And something remarkable happens. Indeed, two of Maxwell’s equations are already built into these definitions. We will come back to that later.
+
+
+
+
+
+
+
 
 
 
@@ -3528,33 +3542,47 @@ These automatically satisfy two Maxwell equations. -->
 ### 2. The electromagnetic action
 {: .no_toc }
 
-For fields, the action becomes an integral over spacetime:
+For fields, the action is no longer just over time.
+
+We must integrate over all space and time:
 
 $$
-S = \int L \, d^3x \,dt
+S = \int L \, d^3x \, dt
 $$
 
-The Lagrangian density for electromagnetism is
+Here, $$L$$ is no longer just a Lagrangian. It is a Lagrangian density (energy per unit volume). Watch out. We have $$L \, d^3x$$, this is a Lagrangian density mutlitplied bt a volume $$\rightarrow$$ Lagrangian.
+
+
+The electromagnetic Lagrangian density is:
 
 $$
 L = \frac{\epsilon_0}{2}(E^2 - c^2 B^2) - \rho \phi - \mathbf{J}\cdot \mathbf{A}
 $$
 
-where
+where:
 
 * $$\rho$$ = charge density
 * $$\mathbf{J}$$ = current density
 
-Interpretation:
 
-| Term        | Meaning               |
-| ----------- | --------------------- |
-| $$E^2$$       | electric field energy |
-| $$B^2$$       | magnetic field energy |
-| $$\rho \phi$$ | coupling to charge    |
-| $$\mathbf{J}\cdot \mathbf{A}$$  | coupling to current   |
+#### Let’s slow down and interpret each term
 
-So the action contains field energy + interaction with charges.
+This is crucial.
+
+| Term                             | Meaning                                               |
+| -------------------------------- | ----------------------------------------------------- |
+| $$\frac{\epsilon_0}{2}E^2$$      | energy stored in the electric field                   |
+| $$-\frac{\epsilon_0}{2}c^2 B^2$$ | energy stored in the magnetic field                   |
+| $$-\rho \phi$$                   | interaction between charges and the scalar potential  |
+| $$-\mathbf{J}\cdot \mathbf{A}$$  | interaction between currents and the vector potential |
+
+
+So the action contains:
+
+* energy of the fields themselves
+* plus how they interact with matter
+
+This is the field equivalent of “kinetic + potential energy”.
 
 
 
@@ -3562,36 +3590,85 @@ So the action contains field energy + interaction with charges.
 ### 3. Apply the variational principle
 {: .no_toc }
 
-The rule is exactly the same as before:
+The rule is unchanged:
 
 $$
 \delta S = 0
 $$
 
-But now we vary the fields:
+But what do we vary?
+
+* Not a trajectory anymore
+* We vary the fields themselves
 
 $$
-\phi \rightarrow \phi + \delta\phi
+\phi \rightarrow \phi + \delta \phi
 $$
 
 $$
-\mathbf{A} \rightarrow \mathbf{A} + \delta\mathbf{A}
+\mathbf{A} \rightarrow \mathbf{A} + \delta \mathbf{A}
 $$
 
-From this we obtain Euler–Lagrange equations for fields.
 
-For a field $$q$$:
+#### **What does “varying a field” mean?**
+{: .no_toc }
+
+It means:
+
+* slightly changing its value
+* at every point in space and time
+
+and asking:
+
+> *Does the action increase or decrease?*
+
+The physical fields are the ones that make the action stationary.
+
+
+
+
+
+
+#### **The field Euler–Lagrange equation**
+{: .no_toc }
+
+For any field $$q$$, the equation becomes:
 
 $$
 \partial_\mu
 \left(
 \frac{\partial L}{\partial (\partial_\mu q)}
-\right) -
+\right)
+-
 \frac{\partial L}{\partial q}
-=0
+= 0
+$$
+
+This looks intimidating, but it is just the continuous version of:
+
+$$
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q}\right) - \frac{\partial L}{\partial q} = 0
 $$
 
 This is the field version of the Euler–Lagrange equation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3599,13 +3676,25 @@ This is the field version of the Euler–Lagrange equation.
 ### 4. Vary the scalar potential
 {: .no_toc }
 
-When we vary $$ \phi $$, the calculation gives:
+Now we apply the rule to $$\phi$$.
+
+Important idea:
+
+* $$\phi$$ only appears in $$\mathbf{E}$$ and in the term $$-\rho \phi$$
+
+So when we vary $$\phi$$, we are really changing:
+
+* the electric field
+* the interaction with charge
+
+After working through the derivatives (this is the technical part), everything simplifies to:
 
 $$
 \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
 $$
 
-This is Gauss's law.
+
+This is Gauss’s law. So one Maxwell equation comes directly from $$\delta S = 0$$.
 
 
 
@@ -3613,13 +3702,24 @@ This is Gauss's law.
 ### 5. Vary the vector potential
 {: .no_toc }
 
-Varying $$ \mathbf{A} $$ gives:
+Now we vary $$\mathbf{A}$$.
+
+This affects:
+
+* $$\mathbf{E}$$ (through the time derivative)
+* $$\mathbf{B}$$ (through the curl)
+* The interaction term $$\mathbf{J} \cdot \mathbf{A}$$
+
+Again, after a (long but systematic) calculation, we obtain:
 
 $$
-\nabla \times \mathbf{B} - \frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t} = \mu_0 \mathbf{J}
+\nabla \times \mathbf{B} -
+\frac{1}{c^2} \frac{\partial \mathbf{E}}{\partial t}
+\mu_0 \mathbf{J}
 $$
 
-This is Ampère–Maxwell law.
+
+This is the **Ampère–Maxwell law**. Now we have two equations out of four.
 
 
 
@@ -3627,24 +3727,67 @@ This is Ampère–Maxwell law.
 ### 6. The other two equations appear automatically
 {: .no_toc }
 
-Because of how (E) and (B) were defined from the potentials, two equations are automatically satisfied:
+This is one of the most beautiful parts.
+
+Remember how we defined:
+
+$$
+\mathbf{B} = \nabla \times \mathbf{A}
+$$
+
+Take the divergence:
+
+$$
+\nabla \cdot \mathbf{B} = \nabla \cdot (\nabla \times \mathbf{A})
+$$
+
+But a fundamental identity in vector calculus says:
+
+$$
+\nabla \cdot (\nabla \times \text{anything}) = 0
+$$
+
+So:
 
 $$
 \nabla \cdot \mathbf{B} = 0
 $$
 
-(no magnetic monopoles)
 
-and
+* This is **Gauss’s law for magnetism**
+* It is not derived — it is automatically true
+
+
+
+Now for the electric field:
 
 $$
-\nabla \times \mathbf{E} =
+\mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}
+$$
+
+Take the curl:
+
+$$
+\nabla \times \mathbf{E}=
+-\nabla \times (\nabla \phi)
+\frac{\partial}{\partial t}(\nabla \times \mathbf{A})
+$$
+
+Again, an identity:
+
+$$
+\nabla \times (\nabla \phi) = 0
+$$
+
+So we get:
+
+$$
+\nabla \times \mathbf{E}
+=
 -\frac{\partial \mathbf{B}}{\partial t}
 $$
 
-This is Faraday's law.
-
-So all four Maxwell equations emerge.
+This is **Faraday’s law**
 
 
 
@@ -3655,7 +3798,7 @@ So all four Maxwell equations emerge.
 ### 7. The four Maxwell equations
 {: .no_toc }
 
-The full set is:
+We now have the full set:
 
 **Gauss law**
 
@@ -3684,7 +3827,13 @@ $$
 \frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t}
 $$
 
-All from one action.
+All four equations come from:
+
+* One choice of variables ($$\phi, \mathbf{A}$$)
+* One Lagrangian
+* One principle: $$ \delta S = 0 $$
+
+Smoking!
 
 
 
