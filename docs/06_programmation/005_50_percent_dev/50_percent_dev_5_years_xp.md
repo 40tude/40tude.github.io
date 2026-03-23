@@ -813,5 +813,6 @@ We are no longer just training developers, we are training managers who can guid
 17. [Mythical Man-Month, The: Essays on Software Engineering (Fred Brooks)](https://www.amazon.com/Mythical-Man-Month-Software-Engineering-Anniversary/dp/0201835959)
 18. [Junior Dev Jobs are Gone](https://youtu.be/bDcgHzCBgmQ?si=5i3Ht-fAPmuOuq-G&t=1609)
 19. [Spec-driven development](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
+20. [How AI Impacts Skill Formation](https://arxiv.org/pdf/2601.20245)
 
 *Article researched and written with data collected February 2026. All survey data cited is from publicly available reports.*
