@@ -3439,8 +3439,7 @@ But there is one big conceptual jump:
 * Instead of finding the “best trajectory” $$x(t)$$ of a particle,
 * We now look for the “best configuration” of fields in space and time.
 
-So we are no longer minimizing a path…
-we are minimizing how fields behave everywhere.
+So we are no longer minimizing a path... We are minimizing how fields behave everywhere.
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
@@ -3465,16 +3464,10 @@ In mechanics, everything depended on a single function:
 * Variable: $$x(t)$$
 * Action:
   $$
-  S = \int L(x,\dot x,t),dt
+  S = \int L(x,\dot x,t) \, dt
   $$
 
-We varied this function and obtained an equation of motion.
-
-
-
-In electromagnetism, things are richer.
-
-Instead of one function, we now have fields defined at every point in space and time:
+We varied this function and obtained an equation of motion. In electromagnetism, things are richer. Instead of one function, we now have fields defined at every point in space and time:
 
 * Electric field $$ \mathbf{E}(x,t) $$
 * Magnetic field $$ \mathbf{B}(x,t) $$
@@ -3488,9 +3481,7 @@ So instead of a curve, we are dealing with objects that fill space.
 #### **Why not vary $$\mathbf{E}$$ and $$\mathbf{B}$$ directly?**
 {: .no_toc }
 
-At first glance, it would seem natural to vary $$\mathbf{E}$$ and $$\mathbf{B}$$.
-
-But there is a problem:
+At first glance, it would seem natural to vary $$\mathbf{E}$$ and $$\mathbf{B}$$ but there is a problem:
 
 * They are not independent.
 * They must satisfy certain constraints (like Faraday’s law).
@@ -3500,7 +3491,7 @@ This makes the variational calculation messy.
 
 
 
-#### **A smarter choice: potentials**
+#### **A smarter choice: Add a level of indirection in the form of potentials**
 {: .no_toc }
 
 Instead, we introduce more fundamental quantities:
@@ -3524,7 +3515,7 @@ $$
 
 Because now:
 
-* $$\phi$$ and $$\mathbf{A}$$ are independent variables
+* $$\phi$$ and $$\mathbf{A}$$ are two independent variables
 * $$\mathbf{E}$$ and $$\mathbf{B}$$ are automatically constructed
 
 And something remarkable happens. Indeed, two of Maxwell’s equations are already built into these definitions. We will come back to that later.
@@ -3542,9 +3533,7 @@ And something remarkable happens. Indeed, two of Maxwell’s equations are alrea
 ### 2. The electromagnetic action
 {: .no_toc }
 
-For fields, the action is no longer just over time.
-
-We must integrate over all space and time:
+For fields, the action is no longer just over time. We must integrate over all space and time:
 
 $$
 S = \int L \, d^3x \, dt
@@ -3565,24 +3554,26 @@ where:
 * $$\mathbf{J}$$ = current density
 
 
-#### Let’s slow down and interpret each term
+#### **Let’s slow down and interpret each term**
+{: .no_toc }
 
 This is crucial.
 
 | Term                             | Meaning                                               |
 | -------------------------------- | ----------------------------------------------------- |
-| $$\frac{\epsilon_0}{2}E^2$$      | energy stored in the electric field                   |
-| $$-\frac{\epsilon_0}{2}c^2 B^2$$ | energy stored in the magnetic field                   |
-| $$-\rho \phi$$                   | interaction between charges and the scalar potential  |
-| $$-\mathbf{J}\cdot \mathbf{A}$$  | interaction between currents and the vector potential |
+| $$\frac{\epsilon_0}{2}E^2$$      | Energy stored in the electric field                   |
+| $$-\frac{\epsilon_0}{2}c^2 B^2$$ | Energy stored in the magnetic field                   |
+| $$-\rho \phi$$                   | Interaction between charges and the scalar potential  |
+| $$-\mathbf{J}\cdot \mathbf{A}$$  | Interaction between currents and the vector potential |
 
 
 So the action contains:
 
-* energy of the fields themselves
-* plus how they interact with matter
+* Energy of the fields themselves
+* Plus how they interact with matter
 
-This is the field equivalent of “kinetic + potential energy”.
+This plays the same role as $$L = T - V$$ in mechanics, but for fields. The terms in $$E^2$$ and $$B^2$$ correspond to energy stored in the field, while the terms involving $$\rho$$ and $$\mathbf{J}$$ describe how the field interacts with matter.
+
 
 
 
@@ -3622,7 +3613,7 @@ and asking:
 
 > *Does the action increase or decrease?*
 
-The physical fields are the ones that make the action stationary.
+And once we answer the question, the physical fields (the reality) are the ones that make the action stationary.
 
 
 
@@ -3684,8 +3675,8 @@ Important idea:
 
 So when we vary $$\phi$$, we are really changing:
 
-* the electric field
-* the interaction with charge
+* The electric field
+* The interaction with charge
 
 After working through the derivatives (this is the technical part), everything simplifies to:
 
@@ -3719,7 +3710,7 @@ $$
 $$
 
 
-This is the **Ampère–Maxwell law**. Now we have two equations out of four.
+This is the Ampère–Maxwell law. Now we have two equations out of four.
 
 
 
@@ -3727,9 +3718,7 @@ This is the **Ampère–Maxwell law**. Now we have two equations out of four.
 ### 6. The other two equations appear automatically
 {: .no_toc }
 
-This is one of the most beautiful parts.
-
-Remember how we defined:
+This is one of the most beautiful parts. Remember how we defined:
 
 $$
 \mathbf{B} = \nabla \times \mathbf{A}
@@ -3754,8 +3743,8 @@ $$
 $$
 
 
-* This is **Gauss’s law for magnetism**
-* It is not derived — it is automatically true
+* This is Gauss’s law for magnetism.
+* It is not derived, it is automatically true (because how A was designed)
 
 
 
@@ -3787,7 +3776,7 @@ $$
 -\frac{\partial \mathbf{B}}{\partial t}
 $$
 
-This is **Faraday’s law**
+This is Faraday’s law.
 
 
 
@@ -3935,7 +3924,7 @@ $$
 Maxwell’s equations come from extremizing the electromagnetic field action
 
 $$
-S=\int L(E,B,\rho,J),d^3x,dt
+S=\int L(E,B,\rho,J) \, d^3x \, dt
 $$
 
 Nature seems to follow a universal rule:
