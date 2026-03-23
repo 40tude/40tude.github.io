@@ -58,6 +58,7 @@ Building intuition from local laws, differential equations, and variational prin
 * Both are equivalent -- two languages for the same physics
 
 **The principle of stationary action**
+* Action $$S$$ is a score
 * Action $$S = \int_{t_1}^{t_2} L(x,\dot x,t)\,dt$$
 * Lagrangian $$L = T - V$$ (kinetic minus potential energy)
 * The real trajectory is the one that makes $$\delta S = 0$$
