@@ -2236,13 +2236,13 @@ $$
 We start from:
 
 $$
-\int m \dot{x}\dot{\eta} , dt
+\int m \dot{x}\dot{\eta} \, dt
 $$
 
 Apply integration by parts:
 
 $$
-= m [\dot{x} \eta]_{t_1}^{t_2} - \int m \ddot{x} \eta , dt
+= m [\dot{x} \eta]_{t_1}^{t_2} - \int m \ddot{x} \eta \, dt
 $$
 
 But since we impose that the variation vanishes at the endpoints:
@@ -2260,13 +2260,13 @@ $$
 So we are left with:
 
 $$
-\int m \dot{x}\dot{\eta} , dt = - \int m \ddot{x} \eta , dt
+\int m \dot{x}\dot{\eta} , dt = - \int m \ddot{x} \eta \, dt
 $$
 
 Now substitute back into the variation:
 
 $$
-\delta S = \varepsilon \int \left( -m \ddot{x} - mg \right)\eta , dt
+\delta S = \varepsilon \int \left( -m \ddot{x} - mg \right)\eta \, dt
 $$
 
 
@@ -2340,7 +2340,7 @@ This a good question Marty and this actually goes straight into the history and 
 
 
 <!-- ###################################################################### -->
-### 1. Where the word "action" comes from
+### 1. Where the word "action" comes from?
 {: .no_toc }
 
 The term "action" was introduced in the 18th century, mainly by Pierre-Louis Moreau de Maupertuis (around 1744).
@@ -2361,7 +2361,7 @@ So "action" was meant to sound like:
 
 
 <!-- ###################################################################### -->
-### 2. What Maupertuis meant by "action"
+### 2. What Maupertuis meant by "action"?
 {: .no_toc }
 
 His original definition wasn’t exactly $$ \int (T - V) \, dt$$.
@@ -2383,7 +2383,7 @@ So already, action was something that:
 
 
 <!-- ###################################################################### -->
-### 3. Who formalized it
+### 3. Who formalized it?
 {: .no_toc }
 
 The modern definition came later with:
@@ -2402,7 +2402,7 @@ and turned "action" into a central, precise mathematical object.
 
 
 <!-- ###################################################################### -->
-### 4. Why the name stuck
+### 4. Why the name stuck?
 {: .no_toc }
 
 The name "action" survived even though the meaning became more abstract, for a few reasons:
@@ -2484,10 +2484,19 @@ It has been stated that the Lagrangian $$L = T - V$$, where $$T$$ is kinetic ene
 Can we revisit the origins of the definition of what is known as the action in physics?
 
 
+<!-- ###################################################################### -->
+### 1. Why not use the total energy?
+{: .no_toc }
+
+We are usually taught to work with total energy, $E = T + V$, which is a conserved quantity over time.
+
+<!-- However, the Lagrangian ($L$) focuses on the dynamics, the "trade-off" during the journey. We might legitimately wonder: why subtract potential energy?  -->
+
+Now, imagine a ball thrown upward: it loses kinetic energy ($T$) to gain potential energy ($V$). If we used $T + V$, the sum would remain constant regardless of the path taken, which doesn't help us distinguish the "real" trajectory from the "fake" ones. By using $L = T - V$, we are essentially measuring the "balance" between motion and position at every instant. The Principle of Least Action looks for the path that minimizes this cumulative imbalance over the entire trip. It’s as if nature seeks the ultimate economy, ensuring that kinetic energy isn't spent unless it’s "justified" by a corresponding change in potential energy.
 
 
 <!-- ###################################################################### -->
-### 1. What the action is
+### 2. What the action is?
 {: .no_toc }
 
 In classical mechanics, we want to understand how an object moves from point A to point B. Instead of looking only at its position at a given instant, we can look at the entire path it takes.
@@ -2535,7 +2544,7 @@ This yields Euler–Lagrange equations, which are exactly Newton’s laws in dis
 
 
 <!-- ###################################################################### -->
-### 2. Why $$L = T - V$$ and not $$T + V$$?
+### 3. Why $$L = T - V$$ and not $$T + V$$?
 {: .no_toc }
 
 Historically, this comes from Hamilton’s reformulation of mechanics:
@@ -2551,7 +2560,7 @@ So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a va
 
 
 <!-- ###################################################################### -->
-### 3. Why minimize (or make stationary) instead of maximize?
+### 4. Why minimize (or make stationary) instead of maximize?
 {: .no_toc }
 
 * In many cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
@@ -2568,7 +2577,7 @@ So the focus is on "stationary" not strictly "minimum".
 
 
 <!-- ###################################################################### -->
-### 4. Why not the difference of squares or other functions?
+### 5. Why not the difference of squares or other functions?
 {: .no_toc }
 
 * The Lagrangian is chosen to be linear in energies $$T - V$$ because it matches Newtonian dynamics.
@@ -2580,7 +2589,7 @@ So the focus is on "stationary" not strictly "minimum".
 
 
 <!-- ###################################################################### -->
-### 5. Historical genesis
+### 6. Historical genesis
 {: .no_toc }
 
 * Maupertuis (1744) first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
@@ -2591,7 +2600,7 @@ So the focus is on "stationary" not strictly "minimum".
 
 
 <!-- ###################################################################### -->
-### 6. Summary
+### 7. Summary
 {: .no_toc }
 
 1. Action $$S = \int (T - V) \, dt$$ because this combination reproduces Newtonian dynamics via a variational principle.
@@ -3457,7 +3466,46 @@ In electromagnetism we instead describe fields:
 * Electric field $$ \mathbf{E}(x,t) $$
 * Magnetic field $$ \mathbf{B}(x,t) $$
 
-But varying vector fields directly is inconvenient. Instead we introduce potentials:
+
+
+
+
+To apply the variational principle to Maxwell's equations, working directly with the $$\mathbf{E}$$ (electric) and $$\mathbf{B}$$ (magnetic) fields is actually quite difficult because they are too "constrained" by their own geometry. Instead, we use more fundamental building blocks: the scalar potential $$\phi$$ and the vector potential $$\mathbf{A}$$.
+
+The electric field is defined as:
+
+$$\mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}$$
+
+And the magnetic field as:
+
+$$\mathbf{B} = \nabla \times \mathbf{A}$$.
+
+The beauty of this approach? By expressing the Lagrangian in terms of these potentials, two of Maxwell's four equations are satisfied "for free" just by the way the math is set up.
+
+
+<!-- The remaining two—the famous ones linking fields to charges and currents—emerge naturally the moment we demand that the action be stationary. It’s the ultimate payoff of this formalism: the entire complexity of electromagnetism is condensed into a single energy function varying across spacetime. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- But varying vector fields directly is inconvenient. Instead we introduce potentials:
 
 * Scalar potential $$ \phi $$
 * Vector potential $$ \mathbf{A} $$
@@ -3472,7 +3520,7 @@ $$
 \mathbf{B} = \nabla \times \mathbf{A}
 $$
 
-These automatically satisfy two Maxwell equations.
+These automatically satisfy two Maxwell equations. -->
 
 
 
