@@ -759,6 +759,7 @@ So it captures how things spread out or smooth out over time.
 {: .no_toc }
 
 Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+
 In the code below we use $$\nabla^2 T \approx T_{\text{up}} + T_{\text{down}} + T_{\text{left}} + T_{\text{right}} - 4 T_{\text{center}}$$ because we don't have a continuous function but a set of discrete values.
 
 ```python
@@ -849,6 +850,8 @@ Putting both together naturally gives the Laplacian $$\nabla^2 T$$
 {: .no_toc }
 
 Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+
+This time the function is continuous.
 
 ```python
 import numpy as np
