@@ -11,7 +11,7 @@ parent: "Maths"
 nav_order: 2
 math: mathjax
 date: 2023-03-21 23:27:31
-last_modified_date: 2026-02-18 09:00:00
+last_modified_date: 2026-03-24 15:00:00
 ---
 
 
@@ -391,7 +391,7 @@ Ensuite, c'est toujours pareil et je peux donc dresser le tableau suivant :
 ## Le cinquième challenge de Mamie - Des bactéries dans un bocal
 
 <div align="center">
-<img src="./assets/image-63_1.webp" width="450" alt="" loading="lazy"/>
+<img src="./assets/image-63_1.webp" width="225" alt="" loading="lazy"/>
 </div>
 
 
@@ -440,6 +440,19 @@ Ton père (pauvre garçon) est directeur commercial. Tu crois que s'il annonce f
 On est piqué à la croissance : que ce soit à propos des salaires, du nombre de télés dans la maison... On en veut plus, toujours plus. On veut "progresser" et depuis trop longtemps nos politiques (qui ont, eux aussi, les mains liées par les banques car les maries, les régions, le pays, l'Europe... contractent des prêts avec des taux d'intérêt) ont fait du mot "croissance" un synonyme du mot "progrès". Du coup, si tu proposes de réfléchir au coup d'après, de lever le pied, tu es "has-been", tu prônes la décroissance, tu veux nous voir revenir à l'âge de pierre et porter des peaux de bêtes etc.
 
 Bref, pas simple de se faire entendre quand les gens n'ont toujours pas compris que ces histoires de pourcentages c'étaient toujours des histoires de croissances exponentielles et que ces dernières ne sont tout simplement pas soutenables dans un monde aux ressources finies (quand il n'y a plus de cuivre, il n'y a plus de cuivre. Point).
+
+### Note
+À l'occasion lis ou relis [Projet Dernière Chance](https://www.amazon.fr/Projet-Derni%C3%A8re-Chance-Andy-Weir/dp/B0B5KP9NCL). Comme [Seul sur Mars](https://amzn.eu/d/0hY8BV9D), j'avais bien aimé. En tout cas, tu retrouveras ce genre de calculs quand ils discutent de la multiplication des astrophages tous les 8 jours et que sur le porte-avions Chinois ils déterminent qu'avec un mois de plus ils devraient produire ce dont ils ont besoin.
+
+<figure style="max-width: 225px; margin: auto; text-align: center;">
+<img
+    src="./assets/image-68.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>J</figcaption>
+</figure>
 
 ## Le sixième challenge de Mamie - L'échiquier de Sissa
 

@@ -12,7 +12,7 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-03-22 17:00:00
+last_modified_date: 2026-03-23 15:30:00
 ---
 
 
@@ -132,7 +132,7 @@ Building intuition from local laws, differential equations, and variational prin
 <!-- ###################################################################### -->
 ## Introduction
 
-March 2026. We’re driving back from a ski trip. It’s past midnight. The highway is almost empty. Everyone else in the car is asleep. It's like when you try to meditate and think about nothing... your brain does the exact opposite. Mine starts wandering. From one idea to another, without any clear direction... until it lands on a surprisingly stubborn question:
+March 2026. We’re driving back from a ski trip. It’s past midnight. The highway is almost empty. Everyone else in the car is asleep. It's like when you try to meditate and think about nothing... And your brain does the exact opposite (it is not the first time [it happens]({%link docs/03_maths/000_chainette/000_chainette.md%})). Mine starts wandering. From one idea to another, without any clear direction... until it lands on a surprisingly stubborn question:
 
 > *Why does physics use so many first- and second-order derivatives?*
 
