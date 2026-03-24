@@ -419,7 +419,8 @@ To predict the future state at $$t + \Delta t$$, the laws of physics require two
 
 **Why Two Initial Conditions?:** From a calculus perspective, solving a second-order equation requires integrating twice. Each integration introduces a constant ($$C_1$$ and $$C_2$$). Physically, these constants correspond to the initial position and initial velocity.
 
-If the universe were governed by first-order equations ($$F = mv$$), inertia wouldn't exist. The moment you stopped applying a force, an object would instantly stop moving. Because our universe is second-order, objects "remember" their velocity, requiring a counter-force to bring them to rest. This is why second-order equations are essential for describing anything that oscillates, orbits, or survives an impact.
+
+Again, if the universe were governed by first-order equations ($$F = mv$$), inertia wouldn't exist. The moment you stopped applying a force, an object would instantly stop moving. Because our universe is second-order, objects "remember" their velocity, requiring a counter-force to bring them to rest. This is why second-order equations are essential for describing anything that oscillates, orbits, or survives an impact.
 
 
 
@@ -451,7 +452,7 @@ Galileo (in 1589+, 100 years before Newton, 100 years!) had already measured tha
 * Objects fall with constant acceleration
 * Motion without forces means constant velocity
 
-Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle (-350), until then (it took almost 2_000 years), people assumed the speed of falling bodies was proportional to their weight.
+Believe it or not, Galileo was the first to measure it experimentally. Launching watermelons from the top of the Pisa tower is certainly a legend. He more certainly used inclined plans (to slow down the falls). Thanks to Aristotle (-350), until then (so, realize it took almost 2_000 years), people assumed the speed of falling bodies was proportional to their weight.
 
 Galileo's experiments implies:
 
@@ -508,14 +509,14 @@ $$
 \text{Heat flow} \propto - \nabla T
 $$
 
-The symbol $$ \nabla $$ is called nabla (it can be also named del).
+The symbol $$ \nabla $$ is called nabla (it can be named "del" also).
 
-On way to understand it is through intuition: imagine standing on a snowboard on a mountain. You are trying to find the direction of the steepest slope. That direction is exactly what the gradient represents.
+One way to understand the "gradient" is through intuition: imagine standing on a snowboard on a mountain. You are trying to find the direction of the steepest slope. That direction is exactly what the gradient represents.
 
 * In **3D**, the gradient tells us the direction and strength of the steepest increase.
 * In **1D**, this reduces to something familiar:
   $$
-  f(x) = x^2 \quad \Rightarrow \quad \nabla f = \frac{df}{dx}
+  f(x) = x^2 \quad \rightarrow \quad \nabla f = \frac{df}{dx}
   $$
   So in one dimension, nabla is just the usual derivative.
 
@@ -580,9 +581,8 @@ The table below summarizes the most important operations.
 **Summary about $$ \vec{\nabla} $$**
 
 * In 1D, everything reduces to ordinary derivatives.
-* In higher dimensions, $$ \nabla $$ lets us generalize derivatives in a compact and powerful way.
+* In higher dimensions, $$ \nabla $$ lets us generalize derivatives in a compact way.
 * The different operations (gradient, divergence, curl) describe different physical behaviors:
-
   * Gradient $$ \rightarrow $$ direction of change
   * Divergence $$ \rightarrow $$ sources and sinks
   * Curl $$ \rightarrow $$ rotation
@@ -636,7 +636,16 @@ This is the Fourier law:
 
 $$q = -k \nabla T$$
 
-Heat flux depends on temperature gradient.
+$$q$$, the heat flux (energy per unit area per unit time) depends on temperature gradient. $$q$$ is not a "temperature flux" but a heat flux.
+
+Do not hesitate to think in 1D where $$q = -k \frac{dT}{dx}$$
+
+* $$q$$, Heat Flux: This represents the flow of thermal energy (Joules) passing through a unit area ($m^2$) per second ($s$). Its unit is $W/m^2$.
+* $$k$$, Thermal Conductivity: This is a material property. A high $k$ (like copper) means the material conducts heat easily. A low $k$ (like fiberglass) means it is an insulator.
+* $$\frac{dT}{dx}$$, Temperature Gradient: This is the change in temperature over a specific distance.
+
+Why is there a negative sign? The negative sign is the mathematical way of saying "heat flows from hot to cold."
+
 
 
 
@@ -645,11 +654,27 @@ Heat flux depends on temperature gradient.
 
 Change of temperature = heat entering − heat leaving.
 
-Mathematically this gives
+Mathematically this gives:
 
 $$\frac{\partial T}{\partial t} = - \nabla \cdot q$$
 
-Substitute $$q$$:
+Again, interpretation in 1D might be easier. It comes:
+
+$$\frac{\partial T}{\partial t} = - \frac{\partial q}{\partial x}$$
+
+It tells us that the temperature at a specific point changes over time ($$t$$) based on whether heat is "piling up" or "draining away" at that location.
+
+
+
+* $\frac{\partial T}{\partial t}$ (Rate of Change): This represents how fast the temperature is rising or falling at a single point $x$.
+* $- \frac{\partial q}{\partial x}$ (Negative Flux Gradient): This term describes the "net" heat flow.
+    * If more heat enters a small segment than leaves it, the gradient $\frac{\partial q}{\partial x}$ is negative.
+    * The double negative ($-\frac{\partial q}{\partial x}$) turns this into a positive temperature increase.
+
+
+
+
+Once this is understood in 1D, substitute $$q$$ in the second equation and it comes:
 
 $$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
