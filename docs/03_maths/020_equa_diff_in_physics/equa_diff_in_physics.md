@@ -229,7 +229,7 @@ In physics, most fundamental laws are expressed as differential equations of the
 #### **Side Note**
 {: .no_toc }
 
-You believe these examples are artificial? Ok... What about [percentages?]({%docs/03_maths/002_pourcentages/pourcentages.md%}) Think to the money your beloved grand-mother put in an account with 1.5% interest. When we say:
+You believe these examples are artificial? Ok... What about [percentages?]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) Think to the money your beloved grand-mother put in an account with 1.5% interest. When we say:
 
 > *We add x% to a sum, and that added amount depends on the current sum*
 
