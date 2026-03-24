@@ -136,16 +136,16 @@ March 2026. We’re driving back from a ski trip. It’s past midnight. The high
 
 > *Why does physics use so many first- and second-order derivatives?*
 
-Don’t ask me how I got there. But once the question is in your head, it doesn’t really leave. We write things like $$ \frac{dx}{dt}, \quad \frac{d^2x}{dt^2} $$ all the time. Velocity, acceleration, waves, heat, electromagnetism... it’s everywhere. And sure, I "know" (more or less) what these formulas really mean... But a different question starts to emerge:
+Don’t ask me how I got there. But once the question is in your head, it doesn’t really leave. We read things like $$ \frac{dx}{dt}, \quad \frac{d^2x}{dt^2} $$ all the time. Velocity, acceleration, waves, heat, electromagnetism... it’s everywhere. And sure, I "know" (more or less) what these formulas really mean... But a different question starts to emerge:
 
 > *Why does nature seem to "think" in derivatives?*
 > *Why first order here, second order there... and almost never more?*
 
 There must be a reason... So in this post, I propose we take a step back and try to build some intuition. We’ll start with what we already know:
 
-* what first and second derivatives really represent,
-* why differential equations naturally appear in physics,
-* and why second-order equations are so common.
+* What first and second derivatives really represent,
+* Why differential equations naturally appear in physics,
+* And why second-order equations are so common.
 
 Then we’ll take a turn. Instead of describing motion step by step, we’ll discover a completely different perspective: variational principles.
 
@@ -157,7 +157,7 @@ This is the principle of stationary action (aka principle of least action).
 
 It might sound abstract at first, but it turns out to be one of the most powerful ways to describe our world. From classical mechanics to quantum physics, it’s the same underlying idea showing up again and again.
 
-This post is written for a high school senior or a first-year university student. Whenever needed, we’ll slow down and revisit key tools (e.g. integration by parts).
+This post is written with high school seniors (though some sections may still be challenging) and first-year university students in mind. Whenever necessary, we’ll slow down and revisit key tools (e.g., integration by parts) or add some "Side Note".
 
 There are also a few Python snippets you can copy-paste and run to build intuition visually. And at the end, you’ll find a webliography with books, videos, and related articles if you want to go further (including deeper dives into derivatives, differentials, and Maxwell’s equations).
 
@@ -206,6 +206,16 @@ So the moment we want to describe motion, derivatives appear naturally.
 
 I hope this is clear and that you can picture what is going on, because this matters for what follows. Imagine you are walking along a straight, flat road. You take one step of 1 m every second (you are taller than me). So if I take a photo every second, I will see you moving to the right, say. From the starting point you will pass through positions 1 m, 2 m, and so on. In that context, this is exactly what $$x(t)$$ means. Clear? Good. Now, what is your speed? If you are not sure, remember that on highways we drive at 130 km/h. Speed is a distance divided by a time: it is the change in your position $$x$$ over a time interval, the ratio $$\frac{dx}{dt}$$ (where $$dx$$ and $$dt$$ stand for "change in $$x$$" and "change in $$t$$" respectively). Finally, acceleration is the change in speed over a time interval. That is what pushes you back into your car seat when you accelerate. But speed is already the change in $$x$$ over a time interval, so acceleration is the ratio $$\frac{d^2x}{dt^2}$$.
 
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img21.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
+
 
 
 <!-- ###################################################################### -->
@@ -215,6 +225,97 @@ I hope this is clear and that you can picture what is going on, because this mat
 In physics, most fundamental laws are expressed as differential equations of the first or second order because they describe how a system's state evolves based on its current configuration.
 
 **First-order equations** typically govern "flow" processes or systems where the rate of change depends directly on the current value. A classic example is radioactive decay or heat transfer (Newton’s Law of Cooling), where the rate of change in temperature is proportional to the temperature difference itself. In these cases, the universe is interested in how the "now" dictates the "next moment."
+
+#### **Side Note**
+{: .no_toc }
+
+You believe these examples are artificial? Ok... What about percentages? Think about the money your beloved grand-mother put in an account with 1.5% interest. When we say:
+
+> *We add x% to a sum, and that added amount depends on the current sum*
+
+That’s exactly the idea of "rate of change depends on the current value".
+
+* If you have \$100 and gain 5%, you add $5
+* If you have \$200 and gain 5%, you add $10
+
+So the change depends on the current amount. Ok... Now, let's follow the white rabbit and let's write this as a differential equation (just to make sure we are in sync). Let’s call:
+
+* $$ S(t) $$: the amount of money at time $$ t $$
+* $$ r $$: the growth rate (for example, 5% = 0.05)
+
+The key idea becomes:
+
+> *The rate at which the money changes is proportional to how much money we already have*
+
+Mathematically:
+$$
+\frac{dS}{dt} = r \cdot S
+$$
+
+Can you believe it? There is a first-order differential equation hidden behind a percentage. Ok... What happens when we solve it? Can we "see" the future?
+
+In fact if we solve:
+$$
+\frac{dS}{dt} = rS
+$$
+
+We get:
+$$
+S(t) = S_0 e^{rt}
+$$
+
+Where:
+* $$ S_0 $$: the initial amount (\$100)
+* $$ e^{rt} $$: continuous growth
+
+This is what we call "continuous compounding" and this explains why your banker have a Lamborghini while you own a bicycle.
+
+In high school, we usually see something like: $$S_n = S_0 (1 + r)^n $$
+
+That’s discrete compounding (step by step). The differential equation version is an extreme version where we say:
+
+> *What if compounding happens all the time, not just once per year?*
+
+<!-- Then we get the exponential ( e^{rt} ) -->
+
+<!-- Your mental model is exactly what first-order equations describe:
+
+> The future depends only on the present value, not on the past.
+
+* radioactive decay → depends on current amount
+* cooling → depends on current temperature difference
+* compound interest → depends on current capital -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to Newton’s Second Law, $$F = ma$$ where the Force changes the *rate of change* of the position. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order. Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
 
