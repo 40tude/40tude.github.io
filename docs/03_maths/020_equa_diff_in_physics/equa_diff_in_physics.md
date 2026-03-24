@@ -1079,7 +1079,29 @@ Examples:
 
 In all three cases, the evolution of the system takes the form: $$ \text{time change} = \text{spatial variation} $$
 
-The spatial variation is usually measured by the Laplacian $$ \nabla^2 $$ which is basically the second derivative in space. Why the second derivative? Because it measures curvature.
+The spatial variation is usually measured by the Laplacian $$ \nabla^2 $$, which is essentially the second derivative in space. Why the second derivative? Because it measures *curvature*.
+
+To see this, imagine the graph of the function:
+* If the function is a straight line, its slope is constant, and the second derivative is zero $$\rightarrow$$ no curvature.
+* If the function bends upward (like a bowl), the second derivative is positive.
+* If it bends downward (like an upside-down bowl), the second derivative is negative.
+
+In other words, the second derivative tells us how much the quantity at a point differs from its surroundings. This is exactly what drives many physical processes:
+* Heat flows from hot regions to colder ones.
+* A stretched string accelerates toward its equilibrium shape.
+
+In both cases, it’s the local curvature that determines how the system evolves.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1303,7 +1325,7 @@ We can think of the Laplacian as:
 
 > *Difference between a point and the average of its neighbors.*
 
-In fact, on a discrete grid:
+In fact, on a discrete grid, remember the second sample code in Python with the 3x3 grid:
 
 $$
 \nabla^2 u(x)
