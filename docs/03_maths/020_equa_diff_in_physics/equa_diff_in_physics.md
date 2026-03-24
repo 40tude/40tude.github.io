@@ -666,7 +666,7 @@ It tells us that the temperature at a specific point changes over time ($$t$$) b
 
 
 
-* $$\frac{\partial T}{\partial t}$$, rate of change: This represents how fast the temperature is rising or falling at a single point $x$.
+* $$\frac{\partial T}{\partial t}$$, rate of change: This represents how fast the temperature is rising or falling at a single point $$x$$.
 * $$- \frac{\partial q}{\partial x}$$, negative flux gradient: This term describes the "net" heat flow.
     * If more heat enters a small segment than leaves it, the gradient $$\frac{\partial q}{\partial x}$$ is negative.
     * The double negative ($$-\frac{\partial q}{\partial x}$$) turns this into a positive temperature increase.
@@ -748,10 +748,83 @@ It is the sum of second derivatives in each direction.
 
 The Laplacian measures how a quantity compares to its surroundings.
 
-* If $$ \nabla^2 T > 0 $$: the point is colder than its neighbors $$ \rightarrow $$ heat flows in
 * If $$ \nabla^2 T < 0 $$: the point is hotter than its neighbors $$ \rightarrow $$ heat flows out
+* If $$ \nabla^2 T > 0 $$: the point is colder than its neighbors $$ \rightarrow $$ heat flows in
 
 So it captures how things spread out or smooth out over time.
+
+
+
+#### **Side Note with Python**
+{: .no_toc }
+
+Copy the code below in a [Jupyter Notebook](https://jupyter.org/try-jupyter/lab/)
+In the code below we use $$\nabla^2 T \approx T_{\text{up}} + T_{\text{down}} + T_{\text{left}} + T_{\text{right}} - 4 T_{\text{center}}$$ because we don't have a continuous function but a set of discrete values.
+
+```python
+# Compute the Laplacian at the center of a 3x3 grid
+def laplacian_center(grid):
+    # Extract neighbors and center value
+    up = grid[0][1]
+    down = grid[2][1]
+    left = grid[1][0]
+    right = grid[1][2]
+    center = grid[1][1]
+
+    # Finite difference Laplacian
+    return up + down + left + right - 4 * center
+
+
+# Case 1: center = 100, others = 0
+grid1 = [
+    [0, 0, 0],
+    [0, 100, 0],
+    [0, 0, 0]
+]
+
+result1 = laplacian_center(grid1)
+print("Case 1 Laplacian:", result1)
+
+
+# Case 2: center = 50, others = 100
+grid2 = [
+    [100, 100, 100],
+    [100, 50, 100],
+    [100, 100, 100]
+]
+
+result2 = laplacian_center(grid2)
+print("Case 2 Laplacian:", result2)
+```
+Expected results
+
+```text
+Case 1 Laplacian: -400
+Case 2 Laplacian: 200
+```
+
+Comments
+
+* Case 1 (hot center, cold surroundings):
+  $$
+  0 + 0 + 0 + 0 - 4 \times 100 = -400
+  $$
+
+  $$\rightarrow$$ Negative Laplacian $$\rightarrow$$ heat flows outward
+
+* Case 2 (cold center, hot surroundings):
+  $$
+  100 + 100 + 100 + 100 - 4 \times 50 = 200
+  $$
+
+  $$\rightarrow$$Positive Laplacian → heat flows inward
+
+
+
+
+
+
+
 
 
 **Why it appears in the heat equation?**
