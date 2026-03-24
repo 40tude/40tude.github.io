@@ -209,11 +209,11 @@ I hope this is clear and that you can picture what is going on, because this mat
 <figure style="max-width: 600px; margin: auto; text-align: center;">
 <img
     src="./assets/img21.webp"
-    alt="Describe the image here"
+    alt="Position, speed and acceleration"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Position, speed and acceleration</figcaption>
 </figure>
 
 
@@ -229,7 +229,7 @@ In physics, most fundamental laws are expressed as differential equations of the
 #### **Side Note**
 {: .no_toc }
 
-You believe these examples are artificial? Ok... What about percentages? Think about the money your beloved grand-mother put in an account with 1.5% interest. When we say:
+You believe these examples are artificial? Ok... What about [percentages?]({%docs/03_maths/002_pourcentages/pourcentages.md%}) Think to the money your beloved grand-mother put in an account with 1.5% interest. When we say:
 
 > *We add x% to a sum, and that added amount depends on the current sum*
 
@@ -276,15 +276,6 @@ That’s discrete compounding (step by step). The differential equation version 
 
 > *What if compounding happens all the time, not just once per year?*
 
-<!-- Then we get the exponential ( e^{rt} ) -->
-
-<!-- Your mental model is exactly what first-order equations describe:
-
-> The future depends only on the present value, not on the past.
-
-* radioactive decay → depends on current amount
-* cooling → depends on current temperature difference
-* compound interest → depends on current capital -->
 
 
 
@@ -292,32 +283,11 @@ That’s discrete compounding (step by step). The differential equation version 
 
 
 
+**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to Newton’s Second Law, $$F = ma$$. This equality explains how the Force (do you hear John Williams's music?) changes the *rate of change* of the position. Say it again. The force changes the rate of change of the position.
 
+Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**Second-order equations**, however, are the backbone of classical mechanics and wave theory. This is largely due to Newton’s Second Law, $$F = ma$$ where the Force changes the *rate of change* of the position. Since acceleration is the second derivative of position ($$a = \frac{d^2x}{dt^2}$$), any law involving force (from gravity to electromagnetism) is naturally second-order. Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
+Furthermore, second-order derivatives account for curvature and restoring forces. In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
 
 Going beyond the second order is rare in fundamental physics because it would imply that a system's "acceleration" depends on its "jerk" (the rate of change of acceleration), which doesn't typically align with our observations of how energy and momentum are conserved in nature.
 
@@ -336,7 +306,13 @@ If a phenomenon depends only on the rate of change, we get first-order equations
 Example: radioactive decay
 
 * Experimentation: We measure that the speed at which nuclei disappear is proportional to how many remain.
-* Interpretation: "Speed" means $$\frac{dN}{dt}$$, "is proportional" means $$\lambda$$, "how many remain" means $$N$$ and "disappear" means $$-$$. Tadaa!
+* Interpretation:
+    - "Speed" means $$\frac{dN}{dt}$$
+    - "is proportional" means $$\lambda$$
+    - "how many remain" means $$N$$
+    - "disappear" means $$-$$
+
+Tadaa!
 
 $$\frac{dN}{dt} = -\lambda N$$
 
@@ -418,9 +394,28 @@ Since acceleration $$a$$ is the derivative of velocity $$v$$, and velocity is th
 
 $$F = m \frac{dv}{dt} = m \frac{d^2x}{dt^2}$$
 
-This mathematical structure implies that a physical body has a "memory" of its motion. Because the equation is second-order, the "state" of the system at any moment $$t$$ is not defined by position alone. To predict the future ($$t + \Delta t$$), the laws of physics require two distinct pieces of information:
-1.  Where the object is (Position: $$x$$)
-2.  How fast it is already moving (Velocity: $$\dot{x}$$)
+This mathematical structure implies that a physical body possesses a "memory" of its own motion. Because the governing equation is second-order, the "state" of the system at any given moment $$t$$ is not defined by its location alone.
+
+To predict the future state at $$t + \Delta t$$, the laws of physics require two distinct data points. You can think of this as the system needing to know both its current address and its recent history:
+
+1.  Where the object is (Position: $$x$$): The instantaneous spatial coordinate.
+2.  How it got there (Velocity: $\dot{x}$): The "memory" of its previous motion, which dictates its momentum.
+
+
+
+
+
+
+**The Contrast: Memory vs. Instantaneous Systems:** To visualize this, imagine a light switch versus a coasting car
+
+* No Memory (First-Order): A light switch. The moment you stop applying force, the state is fixed. It doesn't "remember" how fast you flipped it. It is either *on* or *off*.
+* With Memory (Second-Order): A car traveling at 60 km/h. If you take your foot off the gas (zero force), the car doesn't stop instantly. It "remembers" its velocity and continues to move forward. This "stored" information is what we mathematically represent as the second-order derivative.
+
+
+
+
+
+
 
 **Why Two Initial Conditions?:** From a calculus perspective, solving a second-order equation requires integrating twice. Each integration introduces a constant ($$C_1$$ and $$C_2$$). Physically, these constants correspond to the initial position and initial velocity.
 
