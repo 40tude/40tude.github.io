@@ -666,10 +666,10 @@ It tells us that the temperature at a specific point changes over time ($$t$$) b
 
 
 
-* $\frac{\partial T}{\partial t}$ (Rate of Change): This represents how fast the temperature is rising or falling at a single point $x$.
-* $- \frac{\partial q}{\partial x}$ (Negative Flux Gradient): This term describes the "net" heat flow.
-    * If more heat enters a small segment than leaves it, the gradient $\frac{\partial q}{\partial x}$ is negative.
-    * The double negative ($-\frac{\partial q}{\partial x}$) turns this into a positive temperature increase.
+* $$\frac{\partial T}{\partial t}$$, rate of change: This represents how fast the temperature is rising or falling at a single point $x$.
+* $$- \frac{\partial q}{\partial x}$$, negative flux gradient: This term describes the "net" heat flow.
+    * If more heat enters a small segment than leaves it, the gradient $$\frac{\partial q}{\partial x}$$ is negative.
+    * The double negative ($$-\frac{\partial q}{\partial x}$$) turns this into a positive temperature increase.
 
 
 
