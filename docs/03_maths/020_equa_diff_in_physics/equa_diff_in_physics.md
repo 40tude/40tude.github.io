@@ -157,9 +157,11 @@ This is the principle of stationary action (aka principle of least action).
 
 It might sound abstract at first, but it turns out to be one of the most powerful ways to describe our world. From classical mechanics to quantum physics, it’s the same underlying idea showing up again and again.
 
-This post is written with high school seniors (though some sections may still be challenging) and first-year university students in mind. Whenever necessary, we’ll slow down and revisit key tools (e.g., integration by parts) or add some "Side Note".
-
-There are also a few Python snippets you can copy-paste and run to build intuition visually. And at the end, you’ll find a webliography with books, videos, and related articles if you want to go further (including deeper dives into derivatives, differentials, and Maxwell’s equations).
+This post is written with high school seniors (though some sections may still be challenging) and first-year university students in mind.
+- Whenever necessary, we’ll slow down and revisit key tools (e.g., integration by parts) or add some "Side Note".
+- There are a few Python code snippets you can copy-paste and run to build intuition visually.
+- And yes, some ideas are revisited and explored from different angles. This is intentional. Indeed, I’m convinced it helps the concepts really click.
+- And at the end, there is a "bliography" with books, videos, and related articles if you want to go further (including deeper dives into derivatives, differentials, and Maxwell’s equations).
 
 The tone here is conversational and as usual there are no stupid questions, only good ones that haven’t been explored yet.
 
@@ -818,7 +820,7 @@ Comments
   100 + 100 + 100 + 100 - 4 \times 50 = 200
   $$
 
-  $$\rightarrow$$Positive Laplacian → heat flows inward
+  $$\rightarrow$$ Positive Laplacian $$\rightarrow$$ heat flows inward
 
 
 
