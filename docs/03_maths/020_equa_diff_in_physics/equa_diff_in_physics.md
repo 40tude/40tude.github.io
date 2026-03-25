@@ -3761,10 +3761,10 @@ $$
 \mathbf{B} = \nabla \times \mathbf{A}
 $$
 
-At this point we can say:
+At this stage we can say:
 
 * $$\mathbf{A} $$ is introduced to *satisfy this identity*
-* At this stage, $$\mathbf{A}$$ is a mathematical construction
+* $$\mathbf{A}$$ is a mathematical construction
 
 
 Now let's focus on the Faraday’s law which says:
@@ -3792,7 +3792,7 @@ $$
 The minus sign in $$-\nabla \phi$$ is chosen to match how electric potential is defined in electrostatics. We could have:
 
 $$
-\mathbf{E} + \frac{\partial \mathbf{A}}{\partial t} = -\nabla f
+\mathbf{E} + \frac{\partial \mathbf{A}}{\partial t} = \nabla f
 $$
 
 But then we would meet some contradiction in electrostatic formulas. So, since it does not really matter, here, it is better to write $$-\nabla \phi$$.
