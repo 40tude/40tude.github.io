@@ -3773,7 +3773,7 @@ $$
 \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
 $$
 
-If we substitute $$ \mathbf{B} = \nabla \times \mathbf{A} $$ it comes:
+If we substitute $$ \mathbf{B} = \nabla \times \mathbf{A} $$ and use the linearity of the curl it comes:
 
 $$
 \nabla \times \mathbf{E} = - \frac{\partial}{\partial t} (\nabla \times \mathbf{A})
@@ -3783,11 +3783,19 @@ $$
 \nabla \times \left( \mathbf{E} + \frac{\partial \mathbf{A}}{\partial t} \right) = 0
 $$
 
-A vector field with zero curl is a gradient so $$\mathbf{E} + \frac{\partial \mathbf{A}}{\partial t}$$ is the gradient of "something". Let's call this "something" $$\phi$$. We can write :
+A vector field with zero curl is a gradient. So $$\mathbf{E} + \frac{\partial \mathbf{A}}{\partial t}$$ is the gradient of "something". Let's call this "something" $$\phi$$. We can write :
 
 $$
 \mathbf{E} + \frac{\partial \mathbf{A}}{\partial t} = -\nabla \phi
 $$
+
+The minus sign in $$-\nabla \phi$$ is chosen to match how electric potential is defined in electrostatics. We could have:
+
+$$
+\mathbf{E} + \frac{\partial \mathbf{A}}{\partial t} = -\nabla f
+$$
+
+But then we would meet some contradiction in electrostatic formulas. So, since it does not really matter, here, it is better to write $$-\nabla \phi$$.
 
 At the end of the day we have:
 
@@ -3802,8 +3810,8 @@ Summary of the classical view:
 
 * $$ \mathbf{A} $$ and $$ \phi $$ are designed from $$ \mathbf{E}, \mathbf{B} $$
 * They exist because of:
-  * $$ \nabla \cdot \mathbf{B} = 0 $$
-  * $$ \nabla \times \mathbf{E} = -\partial_t \mathbf{B} $$
+  * Gauss's law: $$ \nabla \cdot \mathbf{B} = 0 $$
+  * Faraday's law: $$ \nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t} $$
 
 So initially we can say that fields are "real", potentials are "derived tools".
 
