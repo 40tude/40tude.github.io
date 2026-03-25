@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2026-03-09 22:30:00
+last_modified_date : 2026-03-25 08:30:00
 ---
 
 
@@ -60,7 +60,7 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 - TOC
 {:toc}
 
-
+If you are in hurry, click on the link [Update (2025-11-28)](#5-update-2025-11-28) above.
 
 
 
@@ -169,6 +169,7 @@ In VSCode, create a file named **SKILL.md** (the UPPERCASE letters are important
 ---
 name: ms-rust
 description: ALWAYS use this skill BEFORE writing or modifying ANY Rust code (.rs files), even for simple Hello World programs. Enforces Microsoft Rust coding guidelines, applies M-CANONICAL-DOCS documentation, adds compliance comments, and validates against rust-guidelines.txt. This skill is MANDATORY for all Rust development.
+context: fork
 ---
 
 # Rust Development
