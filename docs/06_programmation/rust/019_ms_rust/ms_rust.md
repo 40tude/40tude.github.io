@@ -588,6 +588,7 @@ At the bottom, in Technicolor, you are asked to review the `SKILL.md` which have
 ---
 name: ms-rust
 description: ALWAYS invoke this skill BEFORE writing or modifying ANY Rust code (.rs files) even for simple Hello World programs. Enforces Microsoft-style Rust development discipline and requires consulting the appropriate guideline files before any coding activity. This skill is MANDATORY for all Rust development.
+context: fork
 ---
 
 **Current compliance date: 2026-02-16**

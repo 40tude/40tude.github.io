@@ -12,7 +12,7 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-03-23 15:30:00
+last_modified_date: 2026-03-25 10:45:00
 ---
 
 
@@ -1530,14 +1530,14 @@ The first known variational principle did not come from mechanics, but from opti
 > *Light follows the path that makes the travel time stationary.*
 
 Why? Fermat was looking for a unifying principle to explain both reflection and refraction.
-In a uniform medium, the shortest path is a straight line. But in a medium with varying refractive index, it’s no longer the geometric distance that matters—it’s the *time*.
+In a uniform medium, the shortest path is a straight line. But in a medium with varying refractive index, it’s no longer the geometric distance that matters, it’s the *time*.
 
 When Pierre-Louis Moreau de Maupertuis, Leonhard Euler, and Joseph-Louis Lagrange searched for a similar principle in mechanics, they were guided by this idea: nature behaves in an "economical" way.
 
 * A free particle moves in a straight line.
 * A projectile follows a curved path.
 
-But what is being minimized (or made stationary)? Not distance, not time, but the integral of ( T - V ), the difference between kinetic and potential energy.
+But what is being minimized (or made stationary)? Not distance, not time, but the integral of $$ T - V $$, the difference between kinetic and potential energy.
 
 Why this specific form $$ L = T - V $$? It wasn’t guessed from first principles. It was discovered by trial and error. The goal was to find a quantity whose extremization reproduces Newton’s laws.
 
@@ -1547,9 +1547,9 @@ $$ \delta \int L \, dt = 0 \quad \text{with} \quad L = T - V$$
 
 Then we recover
 
-$$m\ddot{x} = -\nabla V$$.
+$$m\ddot{x} = -\nabla V$$
 
-So this is not a new physical law. It’s a **powerful reformulation** of existing ones.
+So this is not a new physical law. It’s a powerful reformulation of existing ones.
 
 
 
@@ -1571,8 +1571,9 @@ Under certain conditions (for example, when forces come from a potential), the a
 More importantly: extremizing an integral is a compact, global way to encode second-order differential equations together with boundary conditions.
 
 For a functional
+
 $$
-S[q] = \int_{t_1}^{t_2} L(q,\dot{q},t),dt,
+S[q] = \int_{t_1}^{t_2} L(q,\dot{q},t) \, dt
 $$
 
 The condition $$ \delta S = 0 $$, for variations vanishing at the endpoints, leads *locally* to the Euler–Lagrange equations:
@@ -1657,20 +1658,19 @@ From this viewpoint, extremizing the action generalizes the idea of a "straight 
 ### 4. The principle of least action = a specific variational principle
 {: .no_toc }
 
-The principle of least action is just the case where:
+The principle of least action is the case where:
 
 $$
 \mathcal{F} = S = \int L\,dt
 $$
 
-So:
+And where we want:
 
 $$
 \delta S = 0
 $$
 
 This gives:
-
 * Newton’s laws
 * Maxwell’s equations
 * Schrödinger equation
@@ -1827,7 +1827,7 @@ It works for:
 #### **3. It encodes symmetries**
 {: .no_toc }
 
-Through Emmy Noether’s theorem (1915):
+Through Emmy Noether’s theorem (~1915):
 
 > *Every symmetry of the action corresponds to a conservation law.*
 
@@ -1867,9 +1867,7 @@ So yes the principle of least action is a particular realization of a much broad
 
 Why do variational principles appear at all?
 
-One way to think about it:
-
-Instead of describing physics as:
+One way to think about it is that instead of describing physics as:
 
 > *Local cause leads to local effect.*
 
@@ -1894,19 +1892,13 @@ Yet they give the same results.
 ### 9. Subtle but important point
 {: .no_toc }
 
-"Least action" is slightly misleading. In reality:
-
-$$
-\delta S = 0
-$$
-
-means:
+"Least action" is slightly misleading. In reality $$ \delta S = 0 $$ means:
 
 * Minimum
 * Maximum
 * Or saddle point
 
-So the correct name is: principle of stationary action
+So the correct name is: principle of *stationary action*
 
 
 
@@ -1923,7 +1915,7 @@ We can think of it like this:
 
 They are two equivalent ways of encoding the same physics.
 
-Final takeaway
+Final takeaway:
 
 * Variational principles are a general mathematical framework
 * The principle of least action is one specific (and extremely powerful) example
@@ -1964,19 +1956,19 @@ Final takeaway
 <!-- ###################################################################### -->
 ## I'm in high school, could you show me an example I can understand?
 
-Alright, let’s tackle this carefully and make it *actually understandable* at a high school level. We’ll go step by step, with a one classic example of stationary action: A particle moving in a straight line (free particle). I’ll explain both the idea and the calculations, without skipping the important reasoning.
+Alright, let’s tackle this carefully and make it *actually understandable* at a high school level. We’ll go step by step, with one classic example of stationary action: A particle moving in a straight line (free particle). I’ll explain both the idea and the calculations, without skipping the important reasoning.
 
 
 ### First: Again... What does "stationary action" mean?
 {: .no_toc }
 
-Remember, we defined something called the **action** as:
+Remember, we defined something called the action as:
 
 $$
 S = \int_{t_1}^{t_2} L \, dt
 $$
 
-* $$ S $$: the action
+* $$ S $$: the action, the score
 * $$ L $$: the Lagrangian (usually $$ L = T - V $$)
 * $$ T $$: kinetic energy
 * $$ V $$: potential energy
@@ -2000,13 +1992,13 @@ $$
 x(t) \rightarrow x(t) + \varepsilon \eta(t)
 $$
 
-* $$ \varepsilon $$: very small number
+* $$ \varepsilon $$: is a very small number
 * $$ \eta(t) $$: arbitrary small function (but zero at the endpoints)
 
-We then ask "How does the action change?". If $$ \delta S = 0 $$ then the path is physical.
+We then ask "How does the action change?". If $$ \delta S = 0 $$ then the path is the physical path that we are looking for.
 
 
-### Example of the free particle (no forces applied)
+### The example of the free particle in detail
 {: .no_toc }
 
 
@@ -2094,7 +2086,7 @@ $$
 \delta S = S(\varepsilon) - S(0)
 $$
 
-So we can write, in first approximation:
+So, in first approximation, we can write:
 
 $$
 \delta S = S(0) + \varepsilon \int m \dot{x}\dot{\eta} \, dt - S(0)
@@ -2145,7 +2137,7 @@ $$
 #### **Step 7: Key conclusion: Tadaa!**
 {: .no_toc }
 
-For this ($$\delta S$$) to be zero for any function $$ \eta $$ we must have:
+For this $$\delta S$$ to be zero for any function $$ \eta $$ we must have:
 
 $$
 \ddot{x} = 0
@@ -2240,6 +2232,20 @@ You should see
 {: .no_toc }
 
 Let’s start from something we definitely "should" know: $$\frac{d}{dt}(uv) = u'v + uv' $$. This is the product rule for derivatives. If you don't remember, find a bridge and jump. I can't do anything for you. You are lost for the cause.
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/owfbV6-euBE"
+    title="Dérivée de la somme et du produit de fonctions "
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Dérivée de la somme et du produit de fonctions.
+</figcaption>
+</figure>
 
 Let's turn this into something useful and we’re going to reverse the logic. If:
 
@@ -2565,7 +2571,7 @@ This a good question Marty and this actually goes straight into the history and 
 ### 1. Where the word "action" comes from?
 {: .no_toc }
 
-The term "action" was introduced in the 18th century, mainly by Pierre-Louis Moreau de Maupertuis (around 1744).
+The term "action" was introduced in the 18th century, mainly by Pierre-Louis Moreau de Maupertuis (~1744).
 
 He proposed an early version of a least-action principle and used the word *action* to describe a quantity that measures the "effort" or "activity" of nature along a path.
 
@@ -2610,8 +2616,8 @@ So already, action was something that:
 
 The modern definition came later with:
 
-* Joseph-Louis Lagrange (1760+)
-* William Rowan Hamilton (1830+)
+* Joseph-Louis Lagrange (~1760)
+* William Rowan Hamilton (~1830)
 
 Hamilton is the one who really established:
 
@@ -2710,11 +2716,15 @@ Can we revisit the origins of the definition of what is known as the action in p
 ### 1. Why not use the total energy?
 {: .no_toc }
 
-We are usually taught to work with total energy, $E = T + V$, which is a conserved quantity over time.
+We are usually taught to work with total energy, $$E = T + V$$, which is a conserved quantity over time.
 
 <!-- However, the Lagrangian ($L$) focuses on the dynamics, the "trade-off" during the journey. We might legitimately wonder: why subtract potential energy?  -->
 
-Now, imagine a ball thrown upward: it loses kinetic energy ($T$) to gain potential energy ($V$). If we used $T + V$, the sum would remain constant regardless of the path taken, which doesn't help us distinguish the "real" trajectory from the "fake" ones. By using $L = T - V$, we are essentially measuring the "balance" between motion and position at every instant. The Principle of Least Action looks for the path that minimizes this cumulative imbalance over the entire trip. It’s as if nature seeks the ultimate economy, ensuring that kinetic energy isn't spent unless it’s "justified" by a corresponding change in potential energy.
+Now, imagine a ball thrown upward: it loses kinetic energy $$ T $$ to gain potential energy $$ V $$. If we used $$T + V$$, the sum would remain constant regardless of the path taken, which doesn't help us distinguish the "real" trajectory from the "fake" ones.
+
+By using $$L = T - V $$, we are essentially measuring the "balance" between motion and position at every instant. The Principle of Least Action looks for the path that minimizes this cumulative imbalance over the entire trip.
+
+It’s as if nature seeks the ultimate economy, ensuring that kinetic energy isn't spent unless it’s "justified" by a corresponding change in potential energy.
 
 
 <!-- ###################################################################### -->
@@ -2723,7 +2733,7 @@ Now, imagine a ball thrown upward: it loses kinetic energy ($T$) to gain potenti
 
 In classical mechanics, we want to understand how an object moves from point A to point B. Instead of looking only at its position at a given instant, we can look at the entire path it takes.
 
-This is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path. More concretely, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
+This is where the action, denoted $$S$$, comes in. It is a kind of "score" we compute for each possible path and personally I really like this idea of "score". This said, for every trajectory the object could follow between $$t_1$$ and $$t_2$$, we assign a number $$S$$ that summarizes "how much energy it expends to move".
 
 To compute this score we use the Lagrangian, denoted $$L$$:
 
@@ -2742,7 +2752,7 @@ $$
 
 This integral yields a single number for each path (again, think of it as a score, a global grade). The principle of least action says that the path the object actually takes is the one that makes this number "stationary" (often a minimum) compared to all other possible paths.
 
-So instead of following the forces at each instant as with $$F = ma$$, we can think in terms of the global path, and the object "chooses" the trajectory that makes the action special.
+So, instead of following the forces at each instant as with $$F = ma$$, we can think in terms of the global path, and the object "chooses" the trajectory that makes the action special.
 
 
 
@@ -2777,7 +2787,7 @@ Historically, this comes from Hamilton’s reformulation of mechanics:
 
 If we tried $$T + V$$, the Euler–Lagrange equations would lead to completely wrong dynamics. Mathematically, $$T - V$$ naturally appears when we try to generalize d’Alembert’s principle, which itself expresses that the difference between applied forces and inertial forces "vanishes" along the physical path.
 
-So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a variational principle.
+So it’s not arbitrary. It’s derived to make Newton’s laws emerge from a variational principle.
 
 
 
@@ -2788,7 +2798,7 @@ So it’s not arbitrary; it’s derived to make Newton’s laws emerge from a va
 * In many cases, the action is actually minimized, like in free particle motion or harmonic oscillators.
 * More generally, the principle is "stationary action," meaning $$\delta S = 0$$. This includes minima, maxima, and saddle points. The key is that the first variation vanishes, we don’t always strictly minimize in a global sense.
 
-So the focus is on "stationary" not strictly "minimum".
+So the focus is on "stationary" not strictly "minimum" or "least".
 
 
 
@@ -2814,7 +2824,7 @@ So the focus is on "stationary" not strictly "minimum".
 ### 6. Historical genesis
 {: .no_toc }
 
-* Maupertuis (1744) first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
+* Maupertuis (~1744) first proposed a kind of "least action" principle: the integral of momentum along the path is minimized.
 * Euler and Lagrange formalized it, showing $$S = \int L \, dt$$ gives Newton’s equations.
 * Hamilton gave the modern formulation with $$L = T - V$$ in 1834.
 * So the action $$S$$ is not just "something we made up"; it arises naturally from trying to express mechanics in terms of variational principles, which is elegant and generalizable (to fields, quantum mechanics, relativity...).
@@ -2827,7 +2837,7 @@ So the focus is on "stationary" not strictly "minimum".
 
 1. Action $$S = \int (T - V) \, dt$$ because this combination reproduces Newtonian dynamics via a variational principle.
 2. We look for stationary points of $$S$$, not strictly minima, because the actual physical path makes $$\delta S = 0$$.
-3. Other choices like $$T + V$$ or $$(T - V)^2$$ fail to give the correct equations of motion.
+3. Other choices like $$ T + V $$ or $$ T^2 - V^2 $$ fail to give the correct equations of motion.
 4. Historically, it comes from the effort to express mechanics as a global extremum principle, starting with Maupertuis and culminating in Hamilton’s formulation.
 
 
@@ -2862,11 +2872,9 @@ So the focus is on "stationary" not strictly "minimum".
 <!-- ###################################################################### -->
 ## Show me how, using the principle of stationary action (least action), we can recover $$F=ma$$?
 
-This is one of the most beautiful things in theoretical physics: Newton’s law can be derived from a variational principle. I'll go carefully and start from the basics so every step makes sense.
+I'm always amazed to see that Newton’s law can be derived from a variational principle. I really like this example. Again, I'll go carefully and start from the basics so every step makes sense.
 
-The key idea comes from the Pierre-Louis Maupertuis principle, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange.
-
-The principle says:
+As we said, the key idea comes from the Pierre-Louis Maupertuis principle, later generalized by William Rowan Hamilton and Joseph-Louis Lagrange. The principle says:
 
 > *The trajectory of a physical system is the one that makes the action stationary.*
 
@@ -2911,13 +2919,13 @@ $$
 ### 2. The principle of stationary action
 {: .no_toc }
 
-Nature selects the path (x(t)) such that the action is stationary:
+Nature selects the path $$x(t)$$ such that the action is stationary. So we want:
 
 $$
 \delta S = 0
 $$
 
-Meaning: small variations of the trajectory do not change the action at first order.
+Which means that small variations of the trajectory do not change the action at first order.
 
 We therefore consider a slightly modified path:
 
@@ -2927,9 +2935,9 @@ $$
 
 where:
 
-* $$\epsilon$$ is small
+* $$\epsilon$$ is a small number
 * $$\eta(t)$$ is an arbitrary function
-* $$\eta(t_1)=\eta(t_2)=0$$ (endpoints fixed)
+* $$\eta(t_1)=\eta(t_2)=0$$. The endpoints are fixed.
 
 
 
@@ -2994,7 +3002,7 @@ $$
 
 This is the Euler–Lagrange equation.
 
-This equation is the core of Lagrangian mechanics.
+<!-- This equation is the core of Lagrangian mechanics. -->
 
 
 
@@ -3058,7 +3066,7 @@ $$
 F = -\frac{dV}{dx}
 $$
 
-So we obtain:
+Final result. Tadaa!:
 
 $$
 F = m\ddot x
@@ -3089,16 +3097,16 @@ This framework generalizes to almost all physics:
 ### 9. Intuition for why the action works
 {: .no_toc }
 
-The action accumulates the difference $$ T - V $$ over time.
+The action accumulates the difference $$ T - V $$ over time and space.
 
-The system chooses the trajectory that balances:
+The system "chooses" the trajectory that balances:
 
 * Kinetic energy
 * Potential energy
 
-so that small deviations do not reduce the action.
+So that small deviations do not reduce the action.
 
-In some sense, the system finds the most economical path in spacetime.
+In some sense, the system "finds" the most economical path in spacetime.
 
 
 
@@ -3364,7 +3372,7 @@ You should see
 
 * When the mass passes through the equilibrium position ($$x = 0$$), speed is maximum: all energy is kinetic
 * At the turning points ($$x = \pm A$$), speed is zero: all energy is potential
-* The black line $$E = T + V$$ is perfectly flat -- energy is conserved
+* The black line $$E = T + V$$ is perfectly flat, total energy is conserved
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
@@ -3803,16 +3811,13 @@ This plays the same role as $$L = T - V$$ in mechanics, but for fields. The term
 ### 3. Apply the variational principle
 {: .no_toc }
 
-The rule is unchanged:
+The rule is unchanged, we want:
 
 $$
 \delta S = 0
 $$
 
-But what do we vary?
-
-* Not a trajectory anymore
-* We vary the fields themselves
+But what do we vary? Not a trajectory anymore, but the fields themselves
 
 $$
 \phi \rightarrow \phi + \delta \phi
@@ -3835,7 +3840,7 @@ and asking:
 
 > *Does the action increase or decrease?*
 
-And once we answer the question, the physical fields (the reality) are the ones that make the action stationary.
+And once we answer the question, the physical fields (the reality) are the ones that make the action stationary $$ \delta S = 0 $$.
 
 
 
@@ -3907,7 +3912,7 @@ $$
 $$
 
 
-This is Gauss’s law. So one Maxwell equation comes directly from $$\delta S = 0$$.
+This is Gauss’s law. So one Maxwell equation comes directly from the requirement $$\delta S = 0$$.
 
 
 
@@ -3915,12 +3920,10 @@ This is Gauss’s law. So one Maxwell equation comes directly from $$\delta S = 
 ### 5. Vary the vector potential
 {: .no_toc }
 
-Now we vary $$\mathbf{A}$$.
-
-This affects:
+Now we vary $$\mathbf{A}$$. This affects:
 
 * $$\mathbf{E}$$ (through the time derivative)
-* $$\mathbf{B}$$ (through the curl)
+* $$\mathbf{B}$$ (through the curl, remember $$\mathbf{B} = \nabla \times \mathbf{A}$$)
 * The interaction term $$\mathbf{J} \cdot \mathbf{A}$$
 
 Again, after a (long but systematic) calculation, we obtain:
@@ -3966,7 +3969,7 @@ $$
 
 
 * This is Gauss’s law for magnetism.
-* It is not derived, it is automatically true (because how A was designed)
+* It is not derived, it is automatically true (because how $$ A $$ was designed)
 
 
 
@@ -3984,7 +3987,7 @@ $$
 \frac{\partial}{\partial t}(\nabla \times \mathbf{A})
 $$
 
-Again, an identity:
+Again, an identity says:
 
 $$
 \nabla \times (\nabla \phi) = 0
@@ -4006,10 +4009,10 @@ This is Faraday’s law.
 
 
 <!-- ########################################### -->
-### 7. The four Maxwell equations
+### 7. The four Maxwell equations. Tadaa!
 {: .no_toc }
 
-We now have the full set:
+<!-- We now have the full set: -->
 
 **Gauss law**
 
@@ -4049,7 +4052,7 @@ Smoking!
 
 
 <!-- ########################################### -->
-### 8. Why this is conceptually powerful
+### 8. Why this is conceptually powerful?
 {: .no_toc }
 
 
@@ -4124,9 +4127,7 @@ $$
 c = \frac{1}{\sqrt{\mu_0\epsilon_0}}
 $$
 
-which turned out to be exactly the speed of light.
-
-This is how Maxwell predicted that light is an electromagnetic wave.
+Which turned out to be exactly the speed of light. This is how Maxwell predicted that light is an electromagnetic wave.
 
 
 
@@ -4217,7 +4218,7 @@ The classical path emerges as the one for which contributions from neighboring p
 ### 2. Intuition
 {: .no_toc }
 
-* Classically, $$\delta S = 0$$ selects the real path.
+* Classically, $$\delta S = 0$$ selects the real/physical path.
 * Quantum mechanically, all paths exist, but the classical path corresponds to the maximum of constructive interference, which explains why classical laws emerge at large scales.
 
 
