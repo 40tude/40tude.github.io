@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2026-03-25 08:30:00
+last_modified_date : 2026-03-25 16:00:00
 ---
 
 
@@ -588,6 +588,7 @@ At the bottom, in Technicolor, you are asked to review the `SKILL.md` which have
 name: ms-rust
 description: ALWAYS invoke this skill BEFORE writing or modifying ANY Rust code (.rs files) even for simple Hello World programs. Enforces Microsoft-style Rust development discipline and requires consulting the appropriate guideline files before any coding activity. This skill is MANDATORY for all Rust development.
 context: fork
+user-invocable: false
 ---
 
 **Current compliance date: 2026-02-16**
@@ -604,12 +605,14 @@ This skill enforces structured, guideline-driven Rust development. It ensures al
 **This skill MUST be invoked for ANY Rust action**, including:
 - Creating new `.rs` files (even minimal examples like Hello World)
 - Modifying existing `.rs` files (any change, no matter how small)
-- Reviewing, refactoring, or rewriting code Rust code
+- Reviewing, refactoring, or rewriting Rust code
 
 
 ## Which guideline to read and when
 
 Before writing or modifying Rust code, **Claude must load ONLY the guideline files that apply to the requested task**, using segmented reading (`offset` and `limit`) when needed.
+
+> When in doubt about which guidelines apply, load all candidates -- loading an extra file is cheaper than missing a relevant rule.
 
 ### Guidelines and when they apply
 
@@ -699,12 +702,12 @@ Use when:
 
 ## Coding Rules
 
-1. **Load the necessary guideline files BEFORE ANY RUST CODE GENERATION.**
-2. Apply the required rules from the relevant guidelines.
-3. Apply the [M-CANONICAL-DOCS](03_documentation.md#M-CANONICAL-DOCS) documentation format (summary sentence < 15 words, then extended docs, Examples, Errors, Panics, Safety, Abort sections as applicable).
-4. Comments must ALWAYS be written in American English, unless the user explicitly requests ‘write comments in French’ or provides another clear instruction specifying a different comment language.
-5. If the file is fully compliant, add a comment: `// Rust guideline compliant {date}` where `{date}` is the **Current compliance date** shown at the top of this document.
-
+1. **Load `08_universal_guidelines.md` FIRST, for every Rust task without exception.**
+2. Then load any additional guideline files relevant to the task (see "Which guideline to read and when" above).
+3. Apply the required rules from the relevant guidelines.
+4. Load `03_documentation.md` when you need to write documentation.
+5. Comments must ALWAYS be written in American English, unless the user explicitly requests ‘write comments in French’ or provides another clear instruction specifying a different comment language.
+6. If the file is fully compliant, add a comment: `// Rust guideline compliant {date}` where `{date}` is the **Current compliance date** shown at the top of this document.
 ---
 ```
 
