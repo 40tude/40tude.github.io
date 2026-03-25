@@ -169,7 +169,6 @@ In VSCode, create a file named **SKILL.md** (the UPPERCASE letters are important
 ---
 name: ms-rust
 description: ALWAYS use this skill BEFORE writing or modifying ANY Rust code (.rs files), even for simple Hello World programs. Enforces Microsoft Rust coding guidelines, applies M-CANONICAL-DOCS documentation, adds compliance comments, and validates against rust-guidelines.txt. This skill is MANDATORY for all Rust development.
-context: fork
 ---
 
 # Rust Development
