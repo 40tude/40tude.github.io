@@ -161,7 +161,7 @@ This post is written with high school seniors (though some sections may still be
 - Whenever necessary, we’ll slow down and revisit key tools (e.g., integration by parts) or add some "Side Note".
 - There are a few Python code snippets you can copy-paste and run to build intuition visually.
 - And yes, some ideas are revisited and explored from different angles. This is intentional. Indeed, I’m convinced it helps the concepts really click.
-- And at the end, there is a "bliography" with books, videos, and related articles if you want to go further (including deeper dives into derivatives, differentials, and Maxwell’s equations).
+- And at the end, there is a [webliography](#webliography) with books, videos, and related articles if you want to go further (including deeper dives into derivatives, differentials, and Maxwell’s equations).
 
 The tone here is conversational and as usual there are no stupid questions, only good ones that haven’t been explored yet.
 
@@ -3714,9 +3714,11 @@ So instead of a curve, we are dealing with objects that fill space.
 At first glance, it would seem natural to vary $$\mathbf{E}$$ and $$\mathbf{B}$$ but there is a problem:
 
 * They are not independent.
-* They must satisfy certain constraints (like Faraday’s law).
+    * Faraday’s law: $$ \nabla \times \mathbf{E} = - \frac{\partial \mathbf{B}}{\partial t}$$
+    * Ampère-Maxwell law: $$ \nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} $$
+* They must satisfy certain constraints (again, a consequence of the Faraday’s law).
 
-This makes the variational calculation messy.
+This makes the variational calculation messy in practice.
 
 
 
@@ -3738,6 +3740,108 @@ $$
 $$
 \mathbf{B} = \nabla \times \mathbf{A}
 $$
+
+
+#### **Side Note**
+{: .no_toc }
+
+The introduction of $$\mathbf{A}$$ and $$\phi$$ is not magic, this is lot of work, try and errors. Let's take some time to understand what happened (my shortenend version)
+
+<!-- Historically, $$\mathbf{A}$$ and $$\phi$$ were defined from $$ \mathbf{E} $$ and $$ \mathbf{B} $$. Indeed, in classical electromagnetism, the potentials are introduced because of structural properties of the fields, as encoded in Maxwell's equations. -->
+
+Let's start with $$ \mathbf{B} $$. One Maxwell equation says:
+
+$$
+\nabla \cdot \mathbf{B} = 0
+$$
+
+A vector field with zero divergence can always be written as a curl of "something". Let's call this "something" $$\mathbf{A}$$. So we can write:
+
+$$
+\mathbf{B} = \nabla \times \mathbf{A}
+$$
+
+At this point we can say:
+
+* $$\mathbf{A} $$ is introduced to *satisfy this identity*
+* At this stage, $$\mathbf{A}$$ is a mathematical construction
+
+
+Now let's focus on the Faraday’s law which says:
+
+$$
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+$$
+
+If we substitute $$ \mathbf{B} = \nabla \times \mathbf{A} $$ it comes:
+
+$$
+\nabla \times \mathbf{E} = - \frac{\partial}{\partial t} (\nabla \times \mathbf{A})
+$$
+
+$$
+\nabla \times \left( \mathbf{E} + \frac{\partial \mathbf{A}}{\partial t} \right) = 0
+$$
+
+A vector field with zero curl is a gradient so $$\mathbf{E} + \frac{\partial \mathbf{A}}{\partial t}$$ is the gradient of "something". Let's call this "something" $$\phi$$. We can write :
+
+$$
+\mathbf{E} + \frac{\partial \mathbf{A}}{\partial t} = -\nabla \phi
+$$
+
+At the end of the day we have:
+
+$$
+\mathbf{E} = -\nabla \phi - \frac{\partial \mathbf{A}}{\partial t}
+$$
+
+Here, $$\phi $$ is introduced as another mathematical consequence.
+
+
+Summary of the classical view:
+
+* $$ \mathbf{A} $$ and $$ \phi $$ are designed from $$ \mathbf{E}, \mathbf{B} $$
+* They exist because of:
+  * $$ \nabla \cdot \mathbf{B} = 0 $$
+  * $$ \nabla \times \mathbf{E} = -\partial_t \mathbf{B} $$
+
+So initially we can say that fields are "real", potentials are "derived tools".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #### **Why is this useful?**
