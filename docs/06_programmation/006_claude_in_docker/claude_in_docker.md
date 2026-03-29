@@ -4,7 +4,7 @@ author: 40tude
 lang: en-US
 layout: default
 title: "Running Claude Code in a Docker Linux Container (Windows 11 Host)"
-description: ""
+description: "Hardening Your AI Workflow: Containerizing Claude Code to Protect Your Host System"
 image: docs\06_programmation\006_claude_in_docker\assets\img00.webp
 twitter:
   card: summary_large_image
@@ -20,7 +20,7 @@ last_modified_date: 2026-03-29 12:00:00
 # Running Claude Code in a Docker Linux Container (Windows 11 Host)
 {: .no_toc }
 
-???
+Hardening Your AI Workflow: Containerizing Claude Code to Protect Your Host System
 {: .lead }
 
 
@@ -69,6 +69,10 @@ last_modified_date: 2026-03-29 12:00:00
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Introduction
 
 
 
@@ -149,6 +153,7 @@ CMD ["bash"]
 
 
 #### **Note**
+{: .no_toc }
 
 To create an image with rust one can use the Dockerfile below:
 
@@ -241,7 +246,9 @@ docker run --rm -it `
   bash
 ```
 
-#### **Notes:**
+#### **Note:**
+{: .no_toc }
+
 * `-v`:
 * `-v`:
 * `-w`: set current directory
@@ -681,3 +688,10 @@ uv run syracuse/main.py
 />
 <figcaption>I'm a legend</figcaption>
 </figure>
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Conclusion
