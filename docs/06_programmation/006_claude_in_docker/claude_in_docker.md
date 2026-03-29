@@ -83,7 +83,109 @@ The workflow is straightforward: build a minimal Docker image with Node, Claude 
 
 This guide walks through the whole setup on a Windows 11 host: building the image, authenticating Claude (both Pro plan and API key), mounting a project, and running a first agentic session. Two Dockerfiles are provided : one with Python/uv, one adding Rust. By the end we will have a reusable container we can spin up in seconds for any new project.
 
-Ready? Fire up Docker Desktop and let's build the sandbox.
+Ready? Let's dive in!
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Why Use Docker with Claude?
+
+Running Claude inside a Docker container is not just a convenience—it fundamentally changes how we interact with AI-assisted coding by making it safer, more reproducible, and easier to control.
+
+### Isolation and Safety
+{: .no_toc }
+
+Claude Code is an autonomous agent capable of reading, modifying, and generating files. Running it directly on your host system means giving it access to your entire environment, which can be risky.
+
+Docker provides a controlled sandbox:
+
+* The agent only sees what we explicitly mount into the container
+* It cannot access your full filesystem by default
+* Any unintended changes are confined to the container
+
+This isolation significantly reduces the risk of accidental file modifications or destructive operations.
+
+
+### Reproducibility
+{: .no_toc }
+
+A Docker container ensures that Claude always runs in a consistent environment:
+
+* Same OS
+* Same dependencies
+* Same tooling
+
+This means:
+
+* We avoid “it works on my machine” problems
+* We can share your setup with others بسهولة
+* We can recreate identical environments across projects
+
+
+### Dependency Management
+{: .no_toc }
+
+Claude often interacts with codebases that require specific tools, runtimes, or libraries.
+
+Instead of installing everything on your host machine, Docker allows us to:
+
+* Keep dependencies scoped to a project
+* Avoid version conflicts
+* Maintain clean and minimal host environments
+
+
+### Controlled File Access
+{: .no_toc }
+
+With Docker, we decide exactly what Claude can access:
+
+* Mount only the project directory we want it to work on
+* Keep sensitive files (SSH keys, configs, etc.) outside the container
+* Use read-only mounts when needed
+
+This gives us fine-grained control over what the agent can see and modify.
+
+
+### Safer Experimentation
+{: .no_toc }
+
+Docker makes it easy to experiment without consequences:
+
+* Test prompts that modify large parts of a codebase
+* Let Claude refactor or reorganize files
+* Try automation workflows
+
+If something goes wrong, we can simply discard the container and start fresh.
+
+
+### Better Automation
+{: .no_toc }
+
+Running Claude in Docker also opens the door to automation:
+
+* Integrate it into scripts or CI/CD pipelines
+* Run batch operations on repositories
+* Execute repeatable workflows
+
+Because the environment is isolated and reproducible, automation becomes much more reliable.
+
+
+<!-- ### Summary
+{: .no_toc }
+Using Docker with Claude gives you:
+
+* A safe execution environment
+* Full control over file access
+* Clean dependency management
+* Reproducible setups
+* Confidence to experiment and automate
+
+In short, Docker turns Claude from a powerful tool into a controlled and production-ready assistant. -->
 
 
 
@@ -165,7 +267,7 @@ CMD ["bash"]
 #### **Note**
 {: .no_toc }
 
-To create an image with rust one can use the Dockerfile below:
+To create an image with Rust one can use the Dockerfile below:
 
 ```dockerfile
 FROM node:22-slim
@@ -665,6 +767,271 @@ uv run syracuse/main.py
 />
 <figcaption>Claude generated the Syracuse series app -- code and output visible side by side.</figcaption>
 </figure>
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Alternatives
+
+While running Claude manually inside a Docker container is flexible and educational, it is not the only approach. Several newer or higher-level solutions exist, each with different trade-offs.
+
+### Docker Sandbox (Official Approach)
+{: .no_toc }
+
+Docker now provides a more integrated way to run AI agents through its sandboxing features.
+
+Instead of building and managing containers manually, we can use a simplified command to launch an isolated environment tailored for agent execution.
+
+**Advantages:**
+
+* Minimal setup
+* Strong isolation by default
+* Designed specifically for AI agents
+* Less room for configuration mistakes
+
+**Drawbacks:**
+
+* Less control over the environment
+* Harder to customize deeply
+* Still evolving (APIs and features may change)
+
+This approach is ideal if we want a quick, safe setup without managing Dockerfiles or container configuration.
+
+
+
+
+<!-- ### Docker Model Runner (Local Models)
+{: .no_toc }
+
+Another emerging approach is running models locally instead of relying on external APIs.
+
+In this setup:
+
+* Claude Code (or similar tooling) interacts with a locally hosted model
+* Docker is used to run both the agent and the model
+
+**Advantages:**
+
+* No external API calls
+* Better privacy (data stays local)
+* Potentially lower long-term cost
+
+**Drawbacks:**
+
+* Requires powerful hardware
+* Setup is more complex
+* Model quality may differ from hosted solutions
+
+This is particularly interesting for advanced users or sensitive environments.
+ -->
+
+### Dev Containers (VS Code / GitHub Codespaces)
+{: .no_toc }
+
+Development containers provide a pre-configured environment tightly integrated with editors like VS Code.
+
+**Advantages:**
+
+* Seamless developer experience
+* Built-in tooling and extensions
+* Easy onboarding for teams
+
+**Drawbacks:**
+
+* Less isolation from the developer workflow
+* Not specifically designed for autonomous agents
+* May expose more of your environment than intended
+
+This approach works well if Claude is part of a broader development workflow rather than an isolated agent.
+
+
+<!-- ### Manual Docker Setup (This Guide)
+{: .no_toc }
+
+The approach described in this document sits between low-level control and usability.
+
+**Advantages:**
+
+* Full control over environment and permissions
+* Highly customizable
+* Works everywhere Docker runs
+
+**Drawbacks:**
+
+* Requires more setup and maintenance
+* Easier to misconfigure if you're not careful -->
+
+
+<!-- ### Choosing the Right Approach
+{: .no_toc }
+
+* Use **Docker Sandbox** for simplicity and safety
+* Use **manual Docker** for control and customization
+* Use **local model setups** for privacy and independence
+* Use **dev containers** for integrated development workflows
+
+There is no single “best” solution—only the one that fits your constraints and goals. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Limitations and Pitfalls
+
+While Docker provides strong isolation and flexibility, it is not a silver bullet. Misconfiguration or misunderstanding can still lead to issues.
+
+### File Permissions
+{: .no_toc }
+
+Containers often run as `root` by default.
+
+This can lead to:
+
+* Files created with incorrect ownership on the host
+* Permission conflicts when editing files outside Docker
+
+**Recommendation:**
+
+* Use a non-root user inside the container when possible
+* Align container user IDs with your host user
+
+
+### Volume Misconfiguration
+{: .no_toc }
+
+Mounting volumes incorrectly can expose more data than intended.
+
+Common mistakes:
+
+* Mounting your entire home directory
+* Forgetting that mounted paths are writable by default
+
+**Recommendation:**
+
+* Mount only what is necessary
+* Use read-only mounts when possible
+
+
+### Network Access
+{: .no_toc }
+
+By default, containers may have outbound network access.
+
+This means:
+
+* The agent can call external services
+* Data may leave our environment unintentionally
+
+**Recommendation:**
+
+* Restrict network access if not needed
+* Be explicit about what external communication is allowed
+
+
+### False Sense of Security
+{: .no_toc }
+
+Docker is isolation—not full virtualization.
+
+Risks still exist:
+
+* Kernel-level vulnerabilities
+* Misconfigured containers
+* Overly permissive mounts
+
+**Key point:**
+Docker reduces risk, but does not eliminate it.
+
+
+### API Costs and Resource Usage
+{: .no_toc }
+
+When using hosted models:
+
+* Every interaction may incur cost
+* Automated workflows can generate significant usage
+
+**Recommendation:**
+
+* Monitor API usage
+* Set limits or budgets where possible
+
+
+### Environment Drift
+{: .no_toc }
+
+If we rebuild containers inconsistently:
+
+* Dependencies may change
+* Behavior may differ between runs
+
+**Recommendation:**
+
+* Pin versions in our Dockerfile
+* Use reproducible builds
+
+
+### Debugging Complexity
+{: .no_toc }
+
+When something goes wrong, debugging can be harder:
+
+* Is the issue in the host?
+* The container?
+* The agent itself?
+
+**Recommendation:**
+
+* Keep setups simple
+* Add logging and visibility where possible
+
+
+<!-- ### Summary
+
+Docker provides powerful isolation and control, but requires careful use.
+
+Common pitfalls include:
+
+* Incorrect permissions
+* Overexposed volumes
+* Unrestricted network access
+* Hidden costs from API usage
+
+Understanding these limitations helps you use Docker with Claude safely and effectively. -->
+
+
+
+
+
+
+
+
+
 
 
 
