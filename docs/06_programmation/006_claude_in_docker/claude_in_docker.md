@@ -38,8 +38,8 @@ Hardening Your AI Workflow: Containerizing Claude Code to Protect Your Host Syst
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## TL;DR
-{: .no_toc }
+<!-- ## TL;DR
+{: .no_toc } -->
 
 
 
@@ -47,11 +47,11 @@ Hardening Your AI Workflow: Containerizing Claude Code to Protect Your Host Syst
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img00.webp"
-    alt="Describe the image here"
+    alt="CLAUDE Code in a Linux container on a Windows host"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>CLAUDE Code in a Linux container on a Windows host</figcaption>
 </figure>
 
 
@@ -73,7 +73,17 @@ Hardening Your AI Workflow: Containerizing Claude Code to Protect Your Host Syst
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Introduction
+Claude Code's `--dangerouslySkipPermissions` flag (a.k.a. "yolo mode") lets Claude act autonomously without asking for confirmation on every file write, shell command, or package install. It is powerful but risky: a runaway agent on your host machine could delete files, corrupt configs, or trash your system.
 
+The fix is simple: run Claude Code inside a Docker Linux container. The container is disposable. If something goes wrong, you kill it and start fresh. Your Windows host stays untouched.
+
+There is a second benefit. Claude Code was built and trained in a Linux environment. It reasons about Linux paths, shell commands, and toolchains more naturally than it does about Windows. Running it in a native Linux container removes a whole class of friction where Claude suggests `apt install`, `curl | bash`, or `#!/usr/bin/env python` and you have to mentally translate.
+
+The workflow is straightforward: build a minimal Docker image with Node, Claude Code, and our toolchain (Python via uv, Rust, etc.), mount our project folder as a volume, and run Claude inside. Our code is persisted on the host, the container itself is ephemeral.
+
+This guide walks through the whole setup on a Windows 11 host: building the image, authenticating Claude (both Pro plan and API key), mounting a project, and running a first agentic session. Two Dockerfiles are provided : one with Python/uv, one adding Rust. By the end you will have a reusable container you can spin up in seconds for any new project.
+
+Ready? Fire up Docker Desktop and let's build the sandbox.
 
 
 
@@ -695,3 +705,14 @@ uv run syracuse/main.py
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Conclusion
+Running Claude Code inside a Docker container is a small upfront investment that pays off immediately. We get get yolo mode without the anxiety: Claude can install packages, rewrite files, and run arbitrary shell commands. If it goes sideways, one `docker rm` and we are back to a clean slate. Nothing on our beloved Windows host is ever at risk.
+
+Beyond safety, the Linux environment just works better. No path translation, no shebang issues, no "this script assumes bash" friction. Claude operates in the environment it was designed for, and the results seems to show.
+
+The image built here is intentionally minimal. From this base we can layer in anything our stack requires: databases, compilers, CLI tools and commit the Dockerfile alongside your project so the environment is fully reproducible. Our teammates (or our future self) get the exact same setup with a single docker build.
+
+The mounted volume pattern means our code always lives on the host, version-controlled and safe, while the container remains throwaway. Spin it up, let Claude loose, close it down. Repeat.
+
+That is the whole workflow. Simple, safe, and fast enough that you will not think twice about using it every day.
+
+Is this how I will work from now on? I don’t know. First, Claude should be able to work perfectly on the most commonly used host; it should not force us to move to Linux or, even worse, to macOS. On the other hand, I really like my Windows setup.
