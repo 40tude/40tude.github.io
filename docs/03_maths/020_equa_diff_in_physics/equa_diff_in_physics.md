@@ -359,7 +359,6 @@ plt.ylabel("Value")
 plt.legend()
 
 plt.show()
-
 ```
 You should see
 
