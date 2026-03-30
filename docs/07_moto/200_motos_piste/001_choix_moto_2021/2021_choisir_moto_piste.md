@@ -1,5 +1,6 @@
 ---
 layout: default
+published: false
 title: "2021 - Choisir sa moto"
 parent: "Choisir sa moto pour la piste"
 nav_order: 2
@@ -57,17 +58,17 @@ Dans la seconde vidéo, j'ai, entre autres, apporté une attention particulière
 
 À ce stade, dans ma short list il ne reste plus que la R1 et la RSV4 toutes les deux en suspensions analogiques. Petite vérification des nouveautés du salon EICMA 2021. À priori il n'y aura pas de nouveau modèle de R1 ni de RSV4 en 2022 (côté Piaggio il y aura une version noire et or que je ne trouve pas particulièrement belle d'ailleurs, mais bon, rien de bien révolutionnaire)
 
-On est première semaine de décembre 2021. Petit coup de téléphone chez [Rosny Yam](https://www.rosnyyam.com/) pour connaître les délais de livraison. On ne m'annonce rien avant fin mars 2022 à cause du COVID, la pénurie des composants, patati, patata. "Mais bon pas de problème je me renseigne plus précisément et je reviens vers vous par mail...". 
+On est première semaine de décembre 2021. Petit coup de téléphone chez [Rosny Yam](https://www.rosnyyam.com/) pour connaître les délais de livraison. On ne m'annonce rien avant fin mars 2022 à cause du COVID, la pénurie des composants, patati, patata. "Mais bon pas de problème je me renseigne plus précisément et je reviens vers vous par mail...".
 
-À l'heure où je rédige ce billet on est fin décembre et j'attends toujours le mail en question. Ils gagnent trop d'argent ces commerciaux... Faudra pas qu'ils se plaignent le jour où [Eric de Seynes](https://www.linkedin.com/in/eric-de-seynes-8b76431a9/?originalSubdomain=fr) va revoir les plans de comm' 😁. 
+À l'heure où je rédige ce billet on est fin décembre et j'attends toujours le mail en question. Ils gagnent trop d'argent ces commerciaux... Faudra pas qu'ils se plaignent le jour où [Eric de Seynes](https://www.linkedin.com/in/eric-de-seynes-8b76431a9/?originalSubdomain=fr) va revoir les plans de comm' 😁.
 
 Comme je ne connais pas du tout Aprilia je vais voir ce qu'il y a chez [Paris Nord Moto](https://parisnordmoto.com/). Là, je trouve une RSV4 Factory d'occase et une autre neuve et encore une autre en version standard.
 
-Bien sûr je crée des alertes sur Le Bon Coin. Quitte à changer, autant partir sur une moto récente et donc les alertes concernent des véhicules de l'année (oui, oui, ça sent le gars qui veut se faire plaisir...). 
+Bien sûr je crée des alertes sur Le Bon Coin. Quitte à changer, autant partir sur une moto récente et donc les alertes concernent des véhicules de l'année (oui, oui, ça sent le gars qui veut se faire plaisir...).
 
 Je retrouve sur LBC la Factory de Paris Nord Moto. C'est toujours pareil, sur LBC, je trouve que les motos sont assez chères (quand c'est un pro qui vend je n'en parle même pas). Est-ce que les vendeurs montent les prix car ils savent qu'ils vont devoir négocier ? Je ne sais pas, mais cela ne me parait pas très sain.
 
-D'autre part, je suis estomaqué par le kilométrage très faible de ces motos : 2 000, 1 500, 1 200... Très peu de motos de l'année ont 3 000 km. Dans ces conditions j'ai du mal à croire que les rodages ont été effectués correctement et que les gars (et c'est logique) n'aient pas été tenté de pousser les moteurs. 
+D'autre part, je suis estomaqué par le kilométrage très faible de ces motos : 2 000, 1 500, 1 200... Très peu de motos de l'année ont 3 000 km. Dans ces conditions j'ai du mal à croire que les rodages ont été effectués correctement et que les gars (et c'est logique) n'aient pas été tenté de pousser les moteurs.
 
 Bref, à ce stade de ma réflexion je me fais un peu peur vis à vis de la mécanique et, toujours à propos des modèles 2021, quand je compare le prix de l'occasion et le prix du neuf, je trouve qu'il n'y a pas tant de différence que ça.
 
@@ -105,7 +106,7 @@ Normalement je vais la chercher demain. Elle est neuve et full stock. Pas une op
 
 Encore une fois... Quand je vois mon niveau et ce qu'arrivent à faire les instructeurs des stages avec des motos complètement d'origine... Je me dis que j'ai tout intérêt à investir dans des stages de [pilotage] NOT YET TRANSFERED (https://www.40tude.fr/category/pilotage-moto/) et des pneus plutôt que dans de l'accastillage "racing".
 
-La vidéo ci-dessous me parait emblématique de ce que j'essaie de faire passer. Même s'il y a déjà eu quelques modifications sur la moto, il faut juste regarder la difference de vitesse de passage par rapport aux autres pilotes (nous). C'est édifiant. Par exemple à **1:43** on voit bien que le gars essaie de rattraper son retard au freinage mais... Il se loupe complètement à la sortie. On l'a tous fait... Moi le premier...Bref  vaut mieux que j'investisse dans la formation du bonhomme que dans les accessoires de la miss. 
+La vidéo ci-dessous me parait emblématique de ce que j'essaie de faire passer. Même s'il y a déjà eu quelques modifications sur la moto, il faut juste regarder la difference de vitesse de passage par rapport aux autres pilotes (nous). C'est édifiant. Par exemple à **1:43** on voit bien que le gars essaie de rattraper son retard au freinage mais... Il se loupe complètement à la sortie. On l'a tous fait... Moi le premier...Bref  vaut mieux que j'investisse dans la formation du bonhomme que dans les accessoires de la miss.
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Lvf-J-2HWTU?si=5Nab7fZXb7JH57Yp&amp;start=77" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
