@@ -341,6 +341,7 @@ settings.json
 ```
 
 ### Dockerfile
+{: .no_toc }
 
 * `sudo` is NOT installed -- this is intentional. Claude runs as a non-root user with no privilege escalation path.
 * Python is NOT installed at the system level -- UV manages Python versions on demand.
@@ -383,6 +384,7 @@ ENV UV_PROJECT_ENVIRONMENT="/home/devuser/python_venv"
 
 
 ### devcontainer.json
+{: .no_toc }
 
 * `${localWorkspaceFolderBasename}` makes this file project-agnostic -- no need to edit it per project.
 * 3 Docker volumes are created to persist the Claude home directory, the virtual environment, and the UV cache.
@@ -410,6 +412,7 @@ ENV UV_PROJECT_ENVIRONMENT="/home/devuser/python_venv"
 
 
 ### CLAUDE.md
+{: .no_toc }
 
 This is the `CLAUDE.md` that gets injected into the container. Paste your own content and adapt it to your Python conventions if needed.
 
@@ -436,6 +439,7 @@ This is the `CLAUDE.md` that gets injected into the container. Paste your own co
 
 
 ### settings.json
+{: .no_toc }
 
 `skipDangerousModePermissionPrompt` suppresses the "are you sure?" prompt that appears when launching Claude with `--dangerously-skip-permissions`. Setting it to `false` (or removing it) brings that confirmation dialog back on next launch.
 
@@ -482,6 +486,7 @@ settings.json
 ```
 
 ### Dockerfile
+{: .no_toc }
 
 * `sudo` is NOT installed -- this is intentional. Claude runs as a non-root user with no privilege escalation path.
 * `build-essential` is installed at the system level -- it provides the C linker and standard libraries that Rust needs to compile.
@@ -520,6 +525,7 @@ RUN mkdir -p /home/devuser/.cargo \
 
 
 ### devcontainer.json
+{: .no_toc }
 
 * `${localWorkspaceFolderBasename}` makes this file project-agnostic -- no need to edit it per project.
 * 2 Docker volumes are created: one for the Claude home directory, one for the Rust `target/` directory. No virtual environment to manage here.
@@ -546,6 +552,7 @@ RUN mkdir -p /home/devuser/.cargo \
 
 
 ### CLAUDE.md
+{: .no_toc }
 
 This is the `CLAUDE.md` that gets injected into the container. Paste your own content and adapt it to your Rust conventions if needed.
 
@@ -571,6 +578,7 @@ This is the `CLAUDE.md` that gets injected into the container. Paste your own co
 
 
 ### settings.json
+{: .no_toc }
 
 Same as the Python setup, with one addition: the `rust-analyzer-lsp` plugin is enabled so Claude can use the language server for smarter Rust assistance. `skipDangerousModePermissionPrompt` suppresses the confirmation dialog when launching in yolo mode.
 
@@ -621,9 +629,11 @@ One last thing: do not forget to delete the `py_delete_me_02` and `rust_delete_m
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## PS
+
 This is the script `New-RustProject.ps1` I use to create my Rust project
 
-```ps1
+<!-- {% raw %} -->
+```````powershell
 # How to:
 # Copy the script in a folder then add the latter to the PATH
 #   $rustDir = "C:\Users\phili\OneDrive\Documents\Programmation\rust"
@@ -1011,5 +1021,5 @@ Write-Host "  2. Start coding in src/main.rs" -ForegroundColor White
 Write-Host "  3. Run 'cargo run' to test" -ForegroundColor White
 Write-Host "`nHappy coding! 🦀" -ForegroundColor Cyan
 
-
-```
+```````
+<!-- {% endraw %} -->
