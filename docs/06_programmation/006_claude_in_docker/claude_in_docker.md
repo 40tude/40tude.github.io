@@ -3,12 +3,12 @@ published: true
 author: 40tude
 lang: en-US
 layout: default
-title: "Yolo Mode, Behind Glass: Running Claude Code in Docker on Windows 11"
+title: "YOLO Mode, Behind Glass: Running Claude Code in Docker on Windows 11"
 description: "Full AI autonomy inside a container, zero risk to the host, and a fix for OneDrive's thousand-files problem"
 image: docs\06_programmation\006_claude_in_docker\assets\img00.webp
 twitter:
   card: summary_large_image
-parent: "Maths"
+parent: "Programmation"
 # nav_order: 36
 math: mathjax
 date:               2026-04-01 12:00:00
@@ -17,10 +17,10 @@ last_modified_date: 2026-04-01 12:00:00
 
 
 
-# Running Claude Code in a Docker Linux Container (Windows 11 Host)
+# YOLO Mode, Behind Glass: Running Claude Code in Docker on Windows 11
 {: .no_toc }
 
-Hardening Our AI Workflow: Containerizing Claude Code to Protect Our Host System
+Full AI autonomy inside a container, zero risk to the host, and a fix for OneDrive's thousand-files problem.
 {: .lead }
 
 
@@ -51,7 +51,7 @@ Hardening Our AI Workflow: Containerizing Claude Code to Protect Our Host System
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Yolo mode, safely contained.</figcaption>
+<figcaption>Claude YOLO mode, safely contained. Really?</figcaption>
 </figure>
 
 
@@ -74,9 +74,9 @@ Hardening Our AI Workflow: Containerizing Claude Code to Protect Our Host System
 <!-- ###################################################################### -->
 ## Introduction
 
-So I'm on Windows 11. Happy there, not moving. My projects live under OneDrive, VSCode is my editor, and for the past few months my workflow has been circling around one goal: letting Claude write code while I focus on what actually matters.
+So I'm on Windows 11. Happy there, not moving. My projects live under OneDrive, VSCode is my editor, and for the past few days, while using WAT (Workflows, Agents and Tools) and SDD ([Spec-Driven Development]({%link docs/06_programmation/rust/027_speckit/speckit.md%})), my workflow has been circling around one goal: letting Claude write code while I focus on what actually matters.
 
-And when I say "letting Claude write code", I mean *really* letting it. There is a mode called "yolo" (`claude --dangerously-skip-permissions`) where Claude can read, write, delete, and run commands without stopping to ask us every five seconds. No confirmation dialogs, no friction. It just works. And yeah, it is as powerful as it sounds. It is also as dangerous as it sounds. Run that on your actual machine and one confused LLM later, you could have missing files, a mangled git history, or an API key that went somewhere it should not have. So before I touched yolo mode with a ten-foot pole, I needed a proper cage for it.
+And when I say "letting Claude write code", I mean *really* letting it. There is a mode called YOLO (`claude --dangerously-skip-permissions`) where Claude can read, write, delete, and run commands without stopping to ask us every five seconds. No confirmation dialogs, no friction. It just works. And yeah, it is as powerful as it sounds. It is also as dangerous as it sounds. Run that on your actual machine and one confused LLM later, you could have missing files, a mangled git history, or an API key that went somewhere it should not have. So before I touched YOLO mode with a ten-foot pole, I needed a proper cage for it.
 
 That is the whole point of this article.
 
@@ -84,100 +84,17 @@ My first instinct was WSL2. Linux inside Windows, great VSCode integration, soun
 
 My second idea was the official devcontainer setup from the [Claude docs page](https://code.claude.com/docs/en/devcontainer). Genuinely good setup. Would work perfectly... if I did not have OneDrive. My documents are synced. My projects live there. And a Docker Linux container does not know or care about OneDrive. So the `.venv` folder from a Python project, or the `target/` directory from a Rust build, will merrily push tens of thousands of tiny files to the cloud in real time.
 
-<!-- OneDrive grinds to a halt, your CPU fans spin up, your SSD weeps softly. Not great. -->
+Dropbox is not the answer either. I already have a Microsoft 365 family subscription. Paying for another sync service on top of that would just be money going in circles.
 
-Dropbox is not the answer either. I already have a Microsoft 365 family subscription. Paying for another sync service on top of that would just be money going in circles. What I actually want is a `.onedriveignore` file. You know, like `.gitignore` but for OneDrive. Tell it "watch this folder, but please, for the love of everything, ignore that subfolder." That feature does not exist. I doubt it ever will (I sent feedback, never got an answer).
+What I actually want is a `.onedriveignore` file. You know, like `.gitignore` but for OneDrive. Tell it "watch this folder, but please, for the love of everything, ignore that subfolder." That feature does not exist. I doubt it ever will (I sent feedback, never got an answer).
 
 And yes, I know what you are about to say: "just put your projects outside OneDrive." Tried it. Does not work for me in practice. There is always that one quick script, that one throwaway test project you bash out in twenty minutes, something you sketch on the corner of your desk and do not want to lose while you also do not feel like turning into a proper GitHub repo in a dedicated non-synced folder. So things end up scattered, you always forget which copy is current, and eventually the whole system falls apart. OneDrive is fine as long as you do not ask it to sync folders with thousands of tiny files being hammered constantly. And that is *exactly* what Python with UV and Rust both do.
 
 For Rust I already worked out a solution, and I wrote about it in [this article]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). For Python, I was stuck, until now.
 
-The answer is Docker. One container for Python, one for Rust. Claude can run inside with full "yolo" permissions. Docker volumes swallow the build artifacts that OneDrive cannot handle. The host stays pristine. And "yolo" mode stays exactly where it belongs: safely contained, like a fireball in a glass cube.
+At this point, it seems that the solution to both of my problems (enabling Claude's YOLO mode and hiding certain folders in OneDrive) is Docker. One container for Python, one for Rust. Claude can run inside with full YOLO permissions. Docker volumes swallow the build artifacts that OneDrive cannot handle. The host stays pristine. And YOLO mode stays exactly where it belongs: safely contained, like a fireball in a glass cube.
 
 Ready? Let's dive in!
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ## Why this setup matters?
-
-At first glance, running Claude inside Docker for a Rust (or Python) project might feel like overkill. It’s not, it is even recommended, read this [page](https://code.claude.com/docs/en/devcontainer).
-
-This setup solves two very concrete problems.
-
-### 1. Keeping our host environment clean
-{: .no_toc }
-
-Modern toolchains are noisy.
-
-* Rust (`cargo`) generates a large `target/` directory
-* Python tools like `uv` create caches, virtual environments, and various intermediate files
-* Claude itself can generate temporary artifacts depending on how you use it
-
-If our project lives inside a synchronized folder (like OneDrive), all of that becomes a problem:
-
-* unnecessary file synchronization
-* performance degradation
-* constant churn in our file history
-* and sometimes even sync conflicts
-
-By running everything inside Docker, we isolate those build artifacts and caches from our host filesystem. Our working directory stays clean, and only the files that actually matter are visible outside the container.
-
-### 2. Safe “YOLO mode” with Claude Code
-{: .no_toc }
-
-Claude Code is most powerful when we let it act with minimal friction. In practice, that often means:
-
-* generating files
-* modifying project structure
-* running commands
-* iterating quickly without micromanaging every step
-
-That’s great for productivity, but risky on our host machine.
-
-Docker gives us a controlled sandbox:
-
-* Claude can operate freely inside the container
-* mistakes are contained
-* resetting the environment is trivial
-
-We get the benefits of an aggressive, fast iteration loop without worrying about polluting or breaking your main system.
-
-### 3. Reproducibility and consistency
-{: .no_toc }
-
-A containerized setup ensures that:
-
-* our toolchain versions are fixed
-* our environment is predictable
-* our configuration can be shared or versioned
-
-This is especially useful for Rust, where compiler versions and dependencies can influence behavior, and for Python, where environments are notoriously fragile.
-
-### 4. A better mental model
-{: .no_toc }
-
-This setup enforces a clean separation:
-
-* our host machine = stable, minimal, clean
-* the container = disposable, experimental, tool-heavy
-* Claude = an agent operating inside that controlled space
-
-Once we adopt this model, it becomes easier to reason about what Claude is doing, where files go, and how to recover when something goes wrong.
- -->
-
-
-
-
-
-
 
 
 
@@ -194,14 +111,23 @@ Once we adopt this model, it becomes easier to reason about what Claude is doing
 In practice, everything in this setup is driven by the following initials design goals:
 
 * Do not change the way I create projects on Windows
-* Run Claude in "yolo" mode safely
+* Do my best to run Claude in YOLO mode safely
 * Create two containers: one for Rust, one for Python
 * Install Claude and the GitHub CLI inside each of them
     * I did some tests where I was reusing the Claude setup of my WIN 11 host. Finally I found more effective to have a Claude setup per container.
-* Do NOT install sudo
-* Create Docker volumes to hide the files we do not want OneDrive to sync
+* Do NOT install `sudo`
+* Create Docker volumes to hide the files we do not want OneDrive (aka Sauron) to sync
 
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img01.webp"
+    alt="OneDrive aka Sauron"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>OneDrive aka Sauron</figcaption>
+</figure>
 
 
 <!-- ###################################################################### -->
@@ -234,6 +160,16 @@ In practice, everything in this setup is driven by the following initials design
 
 Before we get into the configuration details (and you know that the evil is in the details), let's do a quick end-to-end run. The goal here is to prove the setup works. We will create a throwaway Python project, open it in the container, run some code, and let Claude commit and push it to GitHub. Configuration files and explanations come later. For now, just follow the steps.
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img02.webp"
+    alt="Trust in me, just in me..."
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Trust in me, just in me...</figcaption>
+</figure>
+
 **1.** Open a terminal on the host (`Win+X`, then `I`). Navigate to a folder watched by OneDrive, that is intentional, we are testing the real scenario.
 
 **2.** Create a new Python project:
@@ -242,7 +178,7 @@ Before we get into the configuration details (and you know that the evil is in t
 uv init py_delete_me_02
 ```
 
-**3.** Copy the `.devcontainer/` folder into the project root. (We will cover what is inside that folder in the next sections. Trust the process for now.)
+**3.** Copy the `.devcontainer/` folder into the project root. We will cover what is inside that folder in the next sections. Trust the process for now.
 
 **4.** Open the project in VSCode:
 
@@ -251,7 +187,7 @@ cd ./py_delete_me_02/
 code .
 ```
 
-**5.** VSCode will detect the `.devcontainer/` folder and prompt us to reopen in a container. Click **Reopen In Container**. The image builds on the first run, grab a coffee.
+**5.** VSCode will detect the `.devcontainer/` folder and prompt us to reopen in a container. Click **Reopen In Container** (bottom right, blue). The image builds on the first run, grab a coffee.
 
 **6.** Once inside the container, open a terminal (`Ctrl+ù` or `Terminal > New Terminal`) and verify the Claude home directory is in place:
 
@@ -275,6 +211,17 @@ local     py_delete_me_02_venv
 local     vscode
 ```
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img03.webp"
+    alt="The named volumes created on Docker"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The named volumes created on Docker</figcaption>
+</figure>
+
+
 **8.** Back in the VSCode terminal (inside the container), run the project:
 
 ```bash
@@ -291,14 +238,14 @@ claude
 
 **10.** Run `/memory` and check `~/.claude/CLAUDE.md`. We should see our instructions loaded from the `.devcontainer/` template. The `py_delete_me_02_claude_home` volume is now around 3.9 MB.
 
-**11.** Close everything (`/exit` to quit Claude, then close VSCode). Reopen VSCode and click **Reopen In Container** again. This confirms that the volumes persist between sessions.
+**11.** Close everything (`/exit` to quit Claude, then close VSCode). Reopen VSCode and click **Reopen In Container** again (bottom right, blue notification). This confirms that the volumes persist between sessions.
 
 **12.** Launch Claude again and run these two prompts:
 
 - `Please commit the project`
 - `Please push the project on GitHub in a repo named "py_delete_me_02"`
 
-If both succeed, we have a fully working Python setup. Claude can ran in "yolo" mode, inside a container, and our OneDrive folder stayed clean.
+If both succeed, we have a fully working Python setup. We did'int but Claude can ran in YOLO mode (start it with `claude --dangerously-skip-permissions`) inside a container and our OneDrive folder stayed clean.
 
 
 
@@ -338,7 +285,7 @@ New-RustProject.ps1 rust_delete_me_02
 Rename-Item .cargo .cargo.bak
 ```
 
-**4.** Copy the `.devcontainer/` folder into the project root. (We will cover what is inside that folder in the next sections. Trust the process for now.)
+**4.** Copy the `.devcontainer/` folder into the project root. We will cover what is inside that folder in the next sections. Trust the process for now.
 
 **5.** Open the project in VSCode:
 
@@ -347,7 +294,18 @@ cd .\rust_delete_me_02\
 code .
 ```
 
-**6.** VSCode will detect the `.devcontainer/` folder and prompt us to reopen in a container. Click **Reopen In Container**. The image builds on the first run -- grab a coffee.
+**6.** VSCode will detect the `.devcontainer/` folder and prompt us to reopen in a container. Click **Reopen In Container** (bottom right, in blue). The image builds on the first run, you can grab a green tea.
+
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img04.webp"
+    alt="Reopen In Container"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Reopen In Container</figcaption>
+</figure>
 
 **7.** Once inside the container, open a terminal (`Ctrl+ù` or `Terminal > New Terminal`) and verify the Claude home directory is in place:
 
@@ -355,7 +313,18 @@ code .
 ls /home/devuser/.claude/
 ```
 
-We should see: `CLAUDE.md  backups  downloads  session-env  settings.json`
+We should see: `CLAUDE.md  backups  downloads  session-env  settings.json...`
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img05.webp"
+    alt="ls ~/.claude/"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>ls ~/.claude/</figcaption>
+</figure>
+
 
 **8.** Switch back to a terminal on the host and check the Docker volumes that were created:
 
@@ -370,6 +339,16 @@ local     rust_delete_me_02_target
 local     vscode
 ```
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img06.webp"
+    alt="docker volume ls"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>docker volume ls</figcaption>
+</figure>
+
 **9.** Back in the VSCode terminal (inside the container), build and run the project:
 
 ```bash
@@ -378,7 +357,7 @@ cargo run
 
 The `rust_delete_me_02_target` volume will now be around 7.7 MB. Nothing significant was written to our OneDrive folder.
 
-> **Note:** You will notice a small `./target` folder appears in the workspace. This is normal Cargo behavior -- it writes a few metadata files there (`CACHEDIR.TAG`, `.rustc_info.json`, some empty directories) even when `target-dir` is redirected. The actual build artifacts are in the Docker volume. The leftover folder is tiny and harmless.
+> **Note:** You will notice a small `./target` folder appears in the workspace. This is "normal" Cargo behavior. It writes a few metadata files there (`CACHEDIR.TAG`, `.rustc_info.json`, some empty directories) even when `target-dir` is redirected. The actual build artifacts are in the Docker volume. The leftover folder is tiny and harmless. I created an [issue](https://github.com/issues/created?issue=anthropics%7Cclaude-code%7C41869).
 
 **10.** Launch Claude and paste the token when prompted:
 
@@ -388,6 +367,16 @@ claude
 
 **11.** Run `/memory` and check `~/.claude/CLAUDE.md`. We should see our instructions copied from the `.devcontainer/` template. The `rust_delete_me_02_claude_home` volume is now around 3.9 MB.
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img07.webp"
+    alt="Check with /memory"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Check with /memory</figcaption>
+</figure>
+
 **12.** Close everything (`/exit` to quit Claude, then close VSCode). Reopen VSCode and click **Reopen In Container** again. This confirms that the volumes persist between sessions.
 
 **13.** Launch Claude again and run these two prompts:
@@ -395,7 +384,7 @@ claude
 - `Please commit the project`
 - `Please push the project on GitHub in a repo named “rust_delete_me_02”`
 
-If both succeed, we have a fully working Rust setup. Claude can run in "yolo" mode, inside a container, and our OneDrive folder stayed clean.
+If both succeed, we have a fully working Rust setup. Claude can run in YOLO mode, inside a container, and our OneDrive folder stayed clean.
 
 
 
@@ -675,7 +664,7 @@ This is the `CLAUDE.md` that gets injected into the container. Paste your own co
 ### settings.json
 {: .no_toc }
 
-Same as the Python setup, with one addition: the `rust-analyzer-lsp` plugin is enabled so Claude can use the language server for smarter Rust assistance. `skipDangerousModePermissionPrompt` suppresses the confirmation dialog when launching in yolo mode.
+Same as the Python setup, with one addition: the `rust-analyzer-lsp` plugin is enabled so Claude can use the language server for smarter Rust assistance. `skipDangerousModePermissionPrompt` suppresses the confirmation dialog when launching in YOLO mode.
 
 ```json
 {
@@ -713,7 +702,7 @@ This setup is recent and I have not run it for months yet. That said, here are t
 
 The project folder (`/workspace`) is a bind mount from Windows into the Linux container. This is slower than a native Linux filesystem, especially for operations that touch many small files. In practice, editing source files and having Claude read or write code is fine. The heavier operations -- compilation, package resolution -- are handled by Docker volumes (`rust_target`, `python_venv`, `uv`), which run on native Linux FS and are fast.
 
-The real first-time cost is the image build. The first `Reopen In Container` takes a few minutes (Rust toolchain download in particular). After that it is cached and subsequent starts are fast.
+The real first-time cost is the image build. The first **Reopen In Container** takes a few minutes (Rust toolchain download in particular). After that it is cached and subsequent starts are fast.
 
 ### 2. What lives where
 {: .no_toc }
@@ -760,7 +749,7 @@ This setup isolates Claude from your host filesystem, but not from the network. 
 <!-- ###################################################################### -->
 ## Conclusion
 
-So, does it work? Yes. Claude can run in "yolo" mode inside a container, commits code, pushes to GitHub, and never touches anything it should not. OneDrive does not see the build artifacts. The Claude home directory persists between sessions. The setup is the same four files dropped into any new project: copy, open, done.
+So, does it work? Yes. Claude can run in YOLO mode inside a container, commits code, pushes to GitHub, and never touches anything it should not. OneDrive does not see the build artifacts. The Claude home directory persists between sessions. The setup is the same four files dropped into any new project: copy, open, done.
 
 Is it perfect? Not quite. The small `./target` folder that Cargo creates in the workspace is a known annoyance. It is harmless and tiny, but it is there. I opened an issue about it. For now, we live with it.
 
@@ -785,7 +774,7 @@ One last thing: do not forget to delete the `py_delete_me_02` and `rust_delete_m
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## PS
+## Post-scriptum
 
 This is the script `New-RustProject.ps1` I use to create my Rust project
 
