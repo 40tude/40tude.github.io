@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 author: 40tude
 lang: en-US
 layout: default
@@ -11,8 +11,8 @@ twitter:
 parent: "Maths"
 # nav_order: 36
 math: mathjax
-date:               2026-03-29 12:00:00
-last_modified_date: 2026-03-29 12:00:00
+date:               2026-04-01 12:00:00
+last_modified_date: 2026-04-01 12:00:00
 ---
 
 
@@ -73,119 +73,39 @@ Hardening Our AI Workflow: Containerizing Claude Code to Protect Our Host System
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Introduction
-Claude Code's `--dangerouslySkipPermissions` flag (a.k.a. "yolo mode") lets Claude act autonomously without asking for confirmation on every file write, shell command, or package install. It is powerful but risky: a runaway agent on our host machine could delete files, corrupt configs, or trash our system.
 
-The fix is simple: run Claude Code inside a Docker Linux container. The container is disposable. If something goes wrong, we kill it and start fresh. Our Windows host stays untouched.
+So I'm on Windows 11. Happy there, not moving. My projects live under OneDrive, VSCode is my editor, and for the past few months my workflow has been circling around one goal: letting Claude write code while I focus on what actually matters.
 
-There is a second benefit. Claude Code was built and trained in a Linux environment. It reasons about Linux paths, shell commands, and toolchains more naturally than it does about Windows. Running it in a native Linux container removes a whole class of friction where Claude suggests `apt install`, `curl | bash`, or `#!/usr/bin/env python` and we have to mentally translate.
+And when I say "letting Claude write code", I mean *really* letting it. There is a mode called "yolo" (`--dangerously-skip-permissions`) where Claude can read, write, delete, and run commands without stopping to ask you every five seconds. No confirmation dialogs, no friction. It just works. And yeah, it is as powerful as it sounds. It is also as dangerous as it sounds. Run that on your actual machine and one confused LLM later, you could have missing files, a mangled git history, or an API key that went somewhere it should not have. So before I touched yolo mode with a ten-foot pole, I needed a proper cage for it.
 
-The workflow is straightforward: build a minimal Docker image with Node, Claude Code, and our toolchain (Python via uv, Rust, etc.), mount our project folder as a volume, and run Claude inside. Our code is persisted on the host, the container itself is ephemeral.
+That is the whole point of this article.
 
-This guide walks through the whole setup on a Windows 11 host: building the image, authenticating Claude (both Pro plan and API key), mounting a project, and running a first agentic session. Two Dockerfiles are provided : one with Python/uv, one adding Rust. By the end we will have a reusable container we can spin up in seconds for any new project.
+My first instinct was WSL2. Linux inside Windows, great VSCode integration, sounds like exactly what I need. Except here is the thing: WSL2 mounts your Windows drives directly. `C:\` shows up as `/mnt/c/` inside the container. Everything Claude can touch in WSL2, it can touch on your host. That transparent access is precisely what I want to avoid. Maybe if performance becomes a real issue with Docker I will revisit WSL2, but for now I am leaving that door closed.
+
+My second idea was the official devcontainer setup from the Claude docs page. Genuinely good setup. Would work perfectly... if I did not have OneDrive. My documents are synced. My projects live there. And a Docker Linux container does not know or care about OneDrive. So the `.venv` folder from a Python project, or the `target/` directory from a Rust build, will merrily push tens of thousands of tiny files to the cloud in real time. OneDrive grinds to a halt, your CPU fans spin up, your SSD weeps softly. Not great.
+
+Dropbox is not the answer either. I already have a Microsoft 365 family subscription. Paying for another sync service on top of that would just be money going in circles. What I actually want is a `.onedriveignore` file. You know, like `.gitignore` but for OneDrive. Tell it "watch this folder, but please, for the love of everything, ignore that subfolder." That feature does not exist. I doubt it ever will.
+
+And yes, I know what you are about to say: "just put your projects outside OneDrive." Tried it. Does not work for me in practice. There is always that one quick script, that one throwaway test project you bash out in twenty minutes, something you sketch on a corner of your desk and do not want to lose -- but that you also do not feel like turning into a proper GitHub repo in a dedicated non-synced folder. So things end up scattered, you always forget which copy is current, and eventually the whole system falls apart. OneDrive is fine as long as you do not ask it to sync folders with thousands of tiny files being hammered constantly. And that is *exactly* what Python with UV and Rust both do.
+
+For Rust I already worked out a solution, and I wrote about it in [this article]({%link docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.md%}). For Python, I was stuck -- until now.
+
+The answer is Docker. One container for Python, one for Rust. Claude runs inside with full yolo permissions. Docker volumes swallow the build artifacts that OneDrive cannot handle. The host stays pristine. And yolo mode stays exactly where it belongs: safely contained, like a fireball in a glass cube.
 
 Ready? Let's dive in!
 
-
-
-
-
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Why Use Docker with Claude?
+## Design Goals
+* Do not change the way I create projects on Windows
+* Run Claude in "yolo" mode safely
+* Create two containers: one for Rust, one for Python
+* Install Claude and the GitHub CLI inside each of them
+    * I did some tests where I was reusing the Claude setup of my WIN 11 host. Finally I found more effective to have a Claude setup per container.
+* Do NOT install sudo
+* Create Docker volumes to hide the files we do not want OneDrive to sync
 
-Running Claude inside a Docker container is not just a convenience—it fundamentally changes how we interact with AI-assisted coding by making it safer, more reproducible, and easier to control.
-
-### Isolation and Safety
-{: .no_toc }
-
-Claude Code is an autonomous agent capable of reading, modifying, and generating files. Running it directly on your host system means giving it access to your entire environment, which can be risky.
-
-Docker provides a controlled sandbox:
-
-* The agent only sees what we explicitly mount into the container
-* It cannot access your full filesystem by default
-* Any unintended changes are confined to the container
-
-This isolation significantly reduces the risk of accidental file modifications or destructive operations.
-
-
-### Reproducibility
-{: .no_toc }
-
-A Docker container ensures that Claude always runs in a consistent environment:
-
-* Same OS
-* Same dependencies
-* Same tooling
-
-This means:
-
-* We avoid “it works on my machine” problems
-* We can share your setup with others بسهولة
-* We can recreate identical environments across projects
-
-
-### Dependency Management
-{: .no_toc }
-
-Claude often interacts with codebases that require specific tools, runtimes, or libraries.
-
-Instead of installing everything on your host machine, Docker allows us to:
-
-* Keep dependencies scoped to a project
-* Avoid version conflicts
-* Maintain clean and minimal host environments
-
-
-### Controlled File Access
-{: .no_toc }
-
-With Docker, we decide exactly what Claude can access:
-
-* Mount only the project directory we want it to work on
-* Keep sensitive files (SSH keys, configs, etc.) outside the container
-* Use read-only mounts when needed
-
-This gives us fine-grained control over what the agent can see and modify.
-
-
-### Safer Experimentation
-{: .no_toc }
-
-Docker makes it easy to experiment without consequences:
-
-* Test prompts that modify large parts of a codebase
-* Let Claude refactor or reorganize files
-* Try automation workflows
-
-If something goes wrong, we can simply discard the container and start fresh.
-
-
-### Better Automation
-{: .no_toc }
-
-Running Claude in Docker also opens the door to automation:
-
-* Integrate it into scripts or CI/CD pipelines
-* Run batch operations on repositories
-* Execute repeatable workflows
-
-Because the environment is isolated and reproducible, automation becomes much more reliable.
-
-
-<!-- ### Summary
-{: .no_toc }
-Using Docker with Claude gives you:
-
-* A safe execution environment
-* Full control over file access
-* Clean dependency management
-* Reproducible setups
-* Confidence to experiment and automate
-
-In short, Docker turns Claude from a powerful tool into a controlled and production-ready assistant. -->
 
 
 
@@ -196,842 +116,477 @@ In short, Docker turns Claude from a powerful tool into a controlled and product
 
 - Windows 11
 - VSCode
+    - Extension: Dev Containers
+- Git + GitHub CLI
+    - GitHub CLI must be authenticated on the host before opening any container (`gh auth login`)
 - Docker Desktop for Windows installed, updated and running
     - `winget install -e --id Docker.DockerDesktop`
+- For Python projects: UV installed on the host
+    - `winget install -e --id astral-sh.uv`
+- For Rust projects: Rust toolchain installed on the host
+    - `winget install -e --id Rustlang.Rustup`
 - An Anthropic account with a Pro or Max plan
     - Optionally an API key (from [console.anthropic.com](https://console.anthropic.com))
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 1 — Create project folder (PowerShell)
 
-`Win + X + I` to open a terminal
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Python Use Case
+
+Before we get into the configuration details, let's do a quick end-to-end run. The goal here is to prove the setup works. We will create a throwaway Python project, open it in the container, run some code, and let Claude commit and push it to GitHub. Configuration files and explanations come later. For now, just follow the steps.
+
+**1.** Open a terminal on the host (`Win+X`, then `I`). Navigate to a folder watched by OneDrive, that is intentional, we are testing the real scenario.
+
+**2.** Create a new Python project:
 
 ```powershell
-cd $env:tmp
-New-Item -ItemType Directory -Path hello_uv
-cd hello_uv
+uv init py_delete_me_02
 ```
 
+**3.** Copy the `.devcontainer/` folder into the project root. (We will cover what is inside that folder in the next sections. Trust the process for now.)
 
-At this point we can load VSCode from the current directory (`code .`) or continue to use the terminal.
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 2 — Create the Image
-
-Create a `make_image/Dockerfile` file
+**4.** Open the project in VSCode:
 
 ```powershell
-New-Item -ItemType Directory -Path make_image # create the `make_image` folder
-cd make_image
-New-Item Dockerfile # create the file
+cd ./py_delete_me_02/
+code .
 ```
 
-Copy the content below in `Dockerfile`
+**5.** VSCode will detect the `.devcontainer/` folder and prompt us to reopen in a container. Click **Reopen In Container**. The image builds on the first run, grab a coffee.
+
+**6.** Once inside the container, open a terminal (`Ctrl+ù` or `Terminal > New Terminal`) and verify the Claude home directory is in place:
+
+```bash
+ls /home/devuser/.claude/
+```
+
+We should see: `CLAUDE.md  backups  downloads  session-env  settings.json`
+
+**7.** Switch back to a terminal on the host and check the Docker volumes that were created:
+
+```powershell
+docker volume ls
+```
+
+```text
+DRIVER    VOLUME NAME
+local     py_delete_me_02_claude_home
+local     py_delete_me_02_uv
+local     py_delete_me_02_venv
+local     vscode
+```
+
+**8.** Back in the VSCode terminal (inside the container), run the project:
+
+```bash
+uv run python main.py
+```
+
+The first run downloads CPython. The `py_delete_me_02_uv` volume will now be around 94 MB. Nothing was written to our OneDrive folder.
+
+**9.** Launch Claude and paste your token when prompted:
+
+```bash
+claude
+```
+
+**10.** Run `/memory` and check `~/.claude/CLAUDE.md`. We should see our instructions loaded from the `.devcontainer/` template. The `py_delete_me_02_claude_home` volume is now around 3.9 MB.
+
+**11.** Close everything (`/exit` to quit Claude, then close VSCode). Reopen VSCode and click **Reopen In Container** again. This confirms that the volumes persist between sessions.
+
+**12.** Launch Claude again and run these two prompts:
+
+- `Please commit the project`
+- `Please push the project on GitHub in a repo named "py_delete_me_02"`
+
+If both succeed, we have a fully working Python setup. Claude can ran in "yolo" mode, inside a container, and our OneDrive folder stayed clean.
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Rust Use Case
+
+Before we get into the configuration details, let’s do a quick end-to-end run. The goal here is to prove the setup works. We will create a throwaway Rust project, open it in the container, build it, and let Claude commit and push it to GitHub. Configuration files and explanations come later. For now, just follow the steps.
+
+**1.** Open a terminal on the host (`Win+X`, then `I`). Navigate to a folder watched by OneDrive. That is intentional, we are testing the real scenario.
+
+**2.** Create a new Rust project. Either way works:
+
+```powershell
+cargo new rust_delete_me_02
+```
+
+Or, if you use the `New-RustProject.ps1` script described at the end of this article:
+
+```powershell
+New-RustProject.ps1 rust_delete_me_02
+```
+
+**3.** If a `.cargo/` folder exists in the project root (the `New-RustProject.ps1` script creates one), rename it before going further. That config redirects `target/` outside OneDrive on the host, but it would conflict with the container’s own Cargo configuration:
+
+```powershell
+Rename-Item .cargo .cargo.bak
+```
+
+**4.** Copy the `.devcontainer/` folder into the project root. (We will cover what is inside that folder in the next sections. Trust the process for now.)
+
+**5.** Open the project in VSCode:
+
+```powershell
+cd .\rust_delete_me_02\
+code .
+```
+
+**6.** VSCode will detect the `.devcontainer/` folder and prompt us to reopen in a container. Click **Reopen In Container**. The image builds on the first run -- grab a coffee.
+
+**7.** Once inside the container, open a terminal (`Ctrl+ù` or `Terminal > New Terminal`) and verify the Claude home directory is in place:
+
+```bash
+ls /home/devuser/.claude/
+```
+
+We should see: `CLAUDE.md  backups  downloads  session-env  settings.json`
+
+**8.** Switch back to a terminal on the host and check the Docker volumes that were created:
+
+```powershell
+docker volume ls
+```
+
+```text
+DRIVER    VOLUME NAME
+local     rust_delete_me_02_claude_home
+local     rust_delete_me_02_target
+local     vscode
+```
+
+**9.** Back in the VSCode terminal (inside the container), build and run the project:
+
+```bash
+cargo run
+```
+
+The `rust_delete_me_02_target` volume will now be around 7.7 MB. Nothing significant was written to our OneDrive folder.
+
+> **Note:** You will notice a small `./target` folder appears in the workspace. This is normal Cargo behavior -- it writes a few metadata files there (`CACHEDIR.TAG`, `.rustc_info.json`, some empty directories) even when `target-dir` is redirected. The actual build artifacts are in the Docker volume. The leftover folder is tiny and harmless.
+
+**10.** Launch Claude and paste your token when prompted:
+
+```bash
+claude
+```
+
+**11.** Run `/memory` and check `~/.claude/CLAUDE.md`. We should see our instructions copied from the `.devcontainer/` template. The `rust_delete_me_02_claude_home` volume is now around 3.9 MB.
+
+**12.** Close everything (`/exit` to quit Claude, then close VSCode). Reopen VSCode and click **Reopen In Container** again. This confirms that the volumes persist between sessions.
+
+**13.** Launch Claude again and run these two prompts:
+
+- `Please commit the project`
+- `Please push the project on GitHub in a repo named “rust_delete_me_02”`
+
+If both succeed, you have a fully working Rust setup. Claude ran in "yolo" mode, inside a container, and our OneDrive folder stayed clean.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Configuration for Python
+
+This section contains every file that goes into the `.devcontainer/` folder. The idea is to keep a `template_devcontainer/` folder somewhere on your hard disk and copy its `.devcontainer/` subfolder into each new project -- which is exactly what we did in the Python use case above.
+
+The `.devcontainer/` folder contains 4 files:
+
+```text
+CLAUDE.md
+devcontainer.json
+Dockerfile
+settings.json
+```
+
+### Dockerfile
+
+* `sudo` is NOT installed -- this is intentional. Claude runs as a non-root user with no privilege escalation path.
+* Python is NOT installed at the system level -- UV manages Python versions on demand.
+* A non-root `devuser` is created. All user-level tools (Claude, UV) are installed under that account.
+* The project lives in `/workspace`.
+* The Dockerfile switches from `root` to `devuser` partway through: system packages first as root, then user tools as devuser. Order matters.
+* `session-env` is pre-created by the Dockerfile so that when the Docker volume mounts `/home/devuser/.claude`, that subdirectory is already owned by `devuser`. Without this, Docker would create it as root on first mount and Claude would fail to write there.
+* `UV_PROJECT_ENVIRONMENT` redirects the virtual environment outside `/workspace` so it lands in the Docker volume instead of the OneDrive-watched project folder.
 
 ```dockerfile
-FROM node:22-slim
+FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y \
-    curl git ripgrep ca-certificates \
+    git curl ca-certificates gh \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /tmp
-RUN curl -fsSL https://claude.ai/install.sh | bash
-ENV PATH="/root/.local/bin:$PATH"
-
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Pre-install Python 3.12 and set as default
-RUN /root/.local/bin/uv python install cpython-3.12
-RUN echo "3.12" > /root/.python-version
-
-# Skip the onboarding wizard on every start
-RUN echo '{"hasCompletedOnboarding":true,"installMethod":"native"}' > /root/.claude.json
+RUN useradd -m -s /bin/bash devuser \
+    && mkdir -p /home/devuser/python_venv \
+    && chown devuser:devuser /home/devuser/python_venv
 
 WORKDIR /workspace
-CMD ["bash"]
-```
+RUN chown devuser:devuser /workspace
 
+USER devuser
 
-#### **Note**
-{: .no_toc }
+ENV PATH="/home/devuser/.local/bin:$PATH"
 
-To create an image with Rust one can use the Dockerfile below:
-
-```dockerfile
-FROM node:22-slim
-
-RUN apt-get update && apt-get install -y \
-    curl git ripgrep ca-certificates \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /tmp
 RUN curl -fsSL https://claude.ai/install.sh | bash
-ENV PATH="/root/.local/bin:$PATH"
+
+RUN mkdir -p /home/devuser/.local/share/uv
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Install Rust (latest stable via rustup)
+# Pre-create session-env so Docker volume initializes with devuser ownership
+RUN mkdir -p /home/devuser/.claude/session-env
+
+# Redirect .venv outside of /workspace to avoid OneDrive sync
+ENV UV_PROJECT_ENVIRONMENT="/home/devuser/python_venv"
+```
+
+
+### devcontainer.json
+
+* `${localWorkspaceFolderBasename}` makes this file project-agnostic -- no need to edit it per project.
+* 3 Docker volumes are created to persist the Claude home directory, the virtual environment, and the UV cache.
+* The GitHub CLI config is bind-mounted from the host, so the authentication you did with `gh auth login` on Windows carries through.
+* `postCreateCommand` copies `CLAUDE.md` and `settings.json` from `.devcontainer/` into the Claude home volume on first container creation. You can edit them inside the container afterward if needed.
+
+```json
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "devuser",
+  "mounts": [
+    "source=${localEnv:USERPROFILE}\\AppData\\Roaming\\GitHub CLI,target=/home/devuser/.config/gh,type=bind",
+    "source=${localWorkspaceFolderBasename}_claude_home,target=/home/devuser/.claude,type=volume",
+    "source=${localWorkspaceFolderBasename}_venv,target=/home/devuser/python_venv,type=volume",
+    "source=${localWorkspaceFolderBasename}_uv,target=/home/devuser/.local/share/uv,type=volume"
+  ],
+  "postCreateCommand": "cp /workspace/.devcontainer/CLAUDE.md /home/devuser/.claude/CLAUDE.md && cp /workspace/.devcontainer/settings.json /home/devuser/.claude/settings.json",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace"
+}
+```
+
+
+### CLAUDE.md
+
+This is the `CLAUDE.md` that gets injected into the container. Paste your own content and adapt it to your Python conventions if needed.
+
+```text
+## CRITICAL RULES - NEVER SKIP
+- LANGUAGE: US English for ALL artifacts (code, comments, commits, docs, errors, UI strings). French OK only in live chat. When uncertain, ASK.
+- PLATFORM: Debian Linux (Docker/WSL2 container). Use bash/shell syntax for all CLI examples and scripts.
+- CONCISION: Plans, commits, docs, be extremely concise. Sacrifice grammar for brevity.
+- No en-dash, no em-dash, no emojis in artifacts.
+- BEFORE creating docs (.md, README.md, etc.), check both user and project CLAUDE.md for requirements.
+
+## Platform Details
+- Never write temp files in project root. Create `temp/` first
+- Python: ALWAYS `uv run python main.py` (NEVER invoke `python` or `python3` directly)
+
+## Git Commits
+- Format: `<action>: <what changed>` (e.g., "update: edition 2024 + crate versions")
+- Max 50 chars subject, US English, omit articles
+
+## Documentation
+- Clear headings, code blocks with language tags, concise explanations
+- Check project `CLAUDE.md` for project-specific requirements
+```
+
+
+### settings.json
+
+`skipDangerousModePermissionPrompt` suppresses the "are you sure?" prompt that appears when launching Claude with `--dangerously-skip-permissions`. Setting it to `false` (or removing it) brings that confirmation dialog back on next launch.
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Configuration for Rust
+
+This section contains every file that goes into the `.devcontainer/` folder for Rust projects. Keep a `template_devcontainer/` folder somewhere on your hard disk and copy its `.devcontainer/` subfolder into each new project -- which is exactly what we did in the Rust use case above.
+
+The `.devcontainer/` folder contains 4 files:
+
+```text
+CLAUDE.md
+devcontainer.json
+Dockerfile
+settings.json
+```
+
+### Dockerfile
+
+* `sudo` is NOT installed -- this is intentional. Claude runs as a non-root user with no privilege escalation path.
+* `build-essential` is installed at the system level -- it provides the C linker and standard libraries that Rust needs to compile.
+* A non-root `devuser` is created. All user-level tools (Claude, Rust toolchain) are installed under that account.
+* The project lives in `/workspace`.
+* The Dockerfile switches from `root` to `devuser` partway through: system packages first as root, then user tools as devuser. Order matters.
+* `~/.cargo/config.toml` is written inside the container to redirect `target/` to `/home/devuser/rust_target`, which is the Docker volume. This is what keeps build artifacts out of the OneDrive-watched project folder.
+
+```dockerfile
+FROM debian:bookworm-slim
+
+RUN apt-get update && apt-get install -y \
+    git curl build-essential ca-certificates gh \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN useradd -m -s /bin/bash devuser \
+    && mkdir -p /home/devuser/rust_target \
+    && chown devuser:devuser /home/devuser/rust_target
+
+WORKDIR /workspace
+RUN chown devuser:devuser /workspace
+
+USER devuser
+
+ENV PATH="/home/devuser/.local/bin:$PATH"
+
+RUN curl -fsSL https://claude.ai/install.sh | bash
+
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:$PATH"
+ENV PATH="/home/devuser/.cargo/bin:$PATH"
 
-# Skip the onboarding wizard on every start
-RUN echo '{"hasCompletedOnboarding":true,"installMethod":"native"}' > /root/.claude.json
-
-WORKDIR /workspace
-CMD ["bash"]
-
+# Redirect target/ outside of /workspace to avoid OneDrive sync
+RUN mkdir -p /home/devuser/.cargo \
+    && printf '[build]\ntarget-dir = "/home/devuser/rust_target"' > /home/devuser/.cargo/config.toml
 ```
 
 
+### devcontainer.json
 
-Build the image
-    - In VSCode, we can open a terminal (`CTRL+ù`) and `cd make_image`
+* `${localWorkspaceFolderBasename}` makes this file project-agnostic -- no need to edit it per project.
+* 2 Docker volumes are created: one for the Claude home directory, one for the Rust `target/` directory. No virtual environment to manage here.
+* The GitHub CLI config is bind-mounted from the host, so the authentication you did with `gh auth login` on Windows carries through.
+* `postCreateCommand` copies `CLAUDE.md` and `settings.json` from `.devcontainer/` into the Claude home volume on first container creation. You can edit them inside the container afterward if needed.
 
-
-
-
-```powershell
-docker build -t claude-uv:latest .
-# docker build --no-cache -t claude-uv:latest .       # may help
-```
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img02.webp"
-    alt="Terminal output of docker build completing successfully for the claude-uv image"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>docker build completes -- the claude-uv image is ready.</figcaption>
-</figure>
-
-
-The images should be available in Docker
-
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img01.webp"
-    alt="Docker Desktop Images tab showing the claude-uv:latest image (626 MB) in the local image list"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>claude-uv:latest visible in Docker Desktop -- 626 MB, ready to run.</figcaption>
-</figure>
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 3 — If PRO PLAN. Start the container with the project folder mounted
-
-
-Reach the root of the folder and run the image.
-
-
-```powershell
-cd ..
-docker run --rm -it `
-  --name claude-dev `
-  -v "${PWD}:/workspace" `
-  -v "${HOME}\.claude_docker:/root/.claude" `
-  -w /workspace `
-  claude-uv:latest `
-  bash
-```
-
-#### **Note:**
-{: .no_toc }
-
-* `-v "${PWD}:/workspace"`: mounts the current project folder into `/workspace` inside the container
-* `-v "${HOME}\.claude_docker:/root/.claude"`: persists Claude credentials and config outside the container so authentication survives restarts
-* `-w /workspace`: sets the working directory inside the container
-* `claude-uv:latest`: runs the image we built in Step 2
-* `bash`: starts an interactive shell instead of the default CMD
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img03.webp"
-    alt="Terminal showing the docker run command launching the claude-uv container with the workspace volume mounted"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>Container started -- /workspace is mounted and we are inside the Linux shell.</figcaption>
-</figure>
-
-
-
-Check every thing works as expected
-
-```bash
-uv --version
-claude --version
-claude
+```json
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "devuser",
+  "mounts": [
+    "source=${localEnv:USERPROFILE}\\AppData\\Roaming\\GitHub CLI,target=/home/devuser/.config/gh,type=bind",
+    "source=${localWorkspaceFolderBasename}_claude_home,target=/home/devuser/.claude,type=volume",
+    "source=${localWorkspaceFolderBasename}_target,target=/home/devuser/rust_target,type=volume"
+  ],
+  "postCreateCommand": "cp /workspace/.devcontainer/CLAUDE.md /home/devuser/.claude/CLAUDE.md && cp /workspace/.devcontainer/settings.json /home/devuser/.claude/settings.json",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace"
+}
 ```
 
 
+### CLAUDE.md
 
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img14.webp"
-    alt="Terminal showing uv and claude version checks, then Claude Code v2.1.87 launching with its welcome screen inside the container"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>uv and Claude Code are both available -- Claude is ready for work.</figcaption>
-</figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 3 bis — If USING TOKENS. Start the container with the project folder mounted
-
-
-
-We use a secret key so create a `.env` file and paste the key from [console.anthropic.com](https://console.anthropic.com)
-
+This is the `CLAUDE.md` that gets injected into the container. Paste your own content and adapt it to your Rust conventions if needed.
 
 ```text
-ANTHROPIC_API_KEY=sk-ant-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
+## CRITICAL RULES - NEVER SKIP
+- LANGUAGE: US English for ALL artifacts (code, comments, commits, docs, errors, UI strings). French OK only in live chat. When uncertain, ASK.
+- PLATFORM: Debian Linux (Docker/WSL2 container). Use bash/shell syntax for all CLI examples and scripts.
+- CONCISION: Plans, commits, docs, be extremely concise. Sacrifice grammar for brevity.
+- No en-dash, no em-dash, no emojis in artifacts.
+- BEFORE creating docs (.md, README, etc.), check both user and project `CLAUDE.md` for requirements.
 
-Even if you do not plan to push the project on GitHub today, trust me, create a `.gitignore` file and add the `.env` file. You never know...
+## Platform Details
+- Never write temp files in project root. Create `temp/` first
 
+## Git Commits
+- Format: `<action>: <what changed>` (e.g., "update: edition 2024 + crate versions")
+- Max 50 chars subject, US English, omit articles
 
-```text
-.env
-```
-
-Reach the root of the project folder and run the image
-
-```powershell
-cd ..
-docker run --rm -it `
-  --env-file .env `
-  --name claude-dev `
-  -v "${PWD}:/workspace" `
-  -v "${HOME}\.claude_docker:/root/.claude" `
-  -w /workspace `
-  claude-uv:latest `
-  bash
+## Documentation
+- Clear headings, code blocks with language tags, concise explanations
+- Check project `CLAUDE.md` for project-specific requirements
 ```
 
 
+### settings.json
 
+Same as the Python setup, with one addition: the `rust-analyzer-lsp` plugin is enabled so Claude can use the language server for smarter Rust assistance. `skipDangerousModePermissionPrompt` suppresses the confirmation dialog when launching in yolo mode.
 
-
-
-<!--
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img04.webp"
-    alt="Describe the image here"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>I'm a legend</figcaption>
-</figure>
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 4 — Start Claude Code
-
-Once inside the container, start Claude:
-
-```bash
-claude
+```json
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true
+}
 ```
-
-**First launch (Pro plan):** Claude will display a URL. Copy it (`c`), paste it in a browser, log in, copy the code back, and paste it in the terminal. From that point on, credentials are stored in `~/.claude_docker` on the host and reused on every subsequent `docker run`.
-
-**First launch (API key):** Claude picks up `ANTHROPIC_API_KEY` from the environment automatically -- no browser step needed.
-
-#### **Enabling yolo mode**
-{: .no_toc }
-
-The whole point of running inside a container is to safely use autonomous mode. Start Claude with:
-
-```bash
-claude --dangerouslySkipPermissions
-```
-
-Claude will now read, write, and run commands without asking for confirmation at every step. Because we are inside a throwaway container, the risk to our host system is zero.
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 5 — Ask Claude Code to create a `uv`-based Hello World project
-
-
-Once Claude Code's interactive session is open, type the following prompt:
-
-```
-Create a demo folder
-In that folder create a Python "hello world" project using uv.
-Initialize it with `uv init`, create a main.py that prints "Hello, World!", and run it with `uv run`.
-```
-
-Claude Code will:
-1. Run `uv init` to scaffold the project
-2. Create (or edit) `main.py` with a `print("Hello, World!")` statement
-3. Execute `uv run main.py` and get the output
-
-
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img10.webp"
-    alt="Claude Code terminal output confirming the Hello World project was scaffolded with uv init, main.py created, and uv run executed successfully"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>Claude scaffolded the project, wrote main.py, ran it -- all in 58 seconds.</figcaption>
-</figure>
-
-
-All generated files land in `/workspace/demo` inside the container, which maps back to `tmp\hello_uv\demo` on our Windows host (**fully persisted**).
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img13.webp"
-    alt="VSCode Explorer showing the hello_uv project tree with the demo folder containing main.py, pyproject.toml, uv.lock and other generated files"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>The generated project is fully visible in VSCode -- persisted on the Windows host via the volume mount.</figcaption>
-</figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 6 — Open a terminal and connect to the running image
-
-Open a new terminal in VSCode (`CTRL+SHIFT+ù`)
-```bash
-docker ps
-
-```
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img11.webp"
-    alt="VSCode terminal showing docker ps output with the claude-dev container running from claude-uv:latest, up for 10 minutes"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>docker ps confirms the claude-dev container is still running -- ready to exec into.</figcaption>
-</figure>
-
-
-```powershell
-docker exec -it claude-dev bash
-
-```
-
-Once in the Linux context run the python script
-
-```bash
-uv run demo/main.py
-
-```
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img12.webp"
-    alt="VSCode showing main.py open in the editor alongside a terminal where uv run demo/main.py outputs Hello, World! from inside the container"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>Edit in VSCode, run inside the container -- both sides see the same files.</figcaption>
-</figure>
-
-
-
-Since VSCode is open we can modify the Python script OR switch to the Claude terminal and continue.
-
-Close everything
-* Terminal 1: `/exit` CLAUDE then `exit` the image
-* Terminal 2: `exit` the image
-* Close VSCode
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 7 — Tomorrow morning
-
-Open the folder in VSCode
-
-Open a terminal in VSCode (at the root of the folder)
-
-Run the command
-
-```powershell
-docker run --rm -it `
-  --name claude-dev `
-  -v "${PWD}:/workspace" `
-  -v "${HOME}\.claude_docker:/root/.claude" `
-  -w /workspace `
-  claude-uv:latest `
-  bash
-```
-
-
-Once in the image, run the app
-
-```bash
-uv run demo/main.py
-```
-
-
-Call Claude
-
-```bash
-claude
-
-```
-
-Open a second terminal (CTRL+SHIFT+ù) to the running image
-
-```powershell
-docker exec -it claude-dev bash
-```
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Step 8 — A new project
-
-
-```powershell
-cd $env:tmp
-New-Item -ItemType Directory -Path hello_uv2
-cd hello_uv2
-```
-
-* Open the folder with Code
-* Open a terminal
-
-```powershell
-docker run --rm -it `
-  --name claude-dev `
-  -v "${PWD}:/workspace" `
-  -v "${HOME}\.claude_docker:/root/.claude" `
-  -w /workspace `
-  claude-uv:latest `
-  bash
-```
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img15.webp"
-    alt="VSCode terminal showing the docker run command for hello_uv2 and Claude Code prompting to confirm workspace trust before starting"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>New project, same workflow -- Claude asks for workspace trust on first launch.</figcaption>
-</figure>
-
-Start Claude in yolo mode:
-
-```bash
-claude --dangerouslySkipPermissions
-```
-
-Then type the prompt:
-
-```
-Create with uv a Python application that ask for an integer, check it is positive, report an error if not and generate the Syracuse series otherwise .
-Initialize the project with `uv init`, and run it with `uv run`.
-```
-
-Open a new terminal in VSCode (`CTRL+SHIFT+ù`)
-
-```powershell
-docker exec -it claude-dev bash
-
-```
-
-Run the app
-
-```bash
-uv run syracuse/main.py
-```
-
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img16.webp"
-    alt="VSCode showing the Syracuse series code in main.py and a terminal running uv run syracuse/main.py with the computed series as output"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>Claude generated the Syracuse series app -- code and output visible side by side.</figcaption>
-</figure>
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Alternatives
-
-While running Claude manually inside a Docker container is flexible and educational, it is not the only approach. Several newer or higher-level solutions exist, each with different trade-offs.
-
-### Docker Sandbox (Official Approach)
-{: .no_toc }
-
-Docker now provides a more integrated way to run AI agents through its sandboxing features.
-
-Instead of building and managing containers manually, we can use a simplified command to launch an isolated environment tailored for agent execution.
-
-**Advantages:**
-
-* Minimal setup
-* Strong isolation by default
-* Designed specifically for AI agents
-* Less room for configuration mistakes
-
-**Drawbacks:**
-
-* Less control over the environment
-* Harder to customize deeply
-* Still evolving (APIs and features may change)
-
-This approach is ideal if we want a quick, safe setup without managing Dockerfiles or container configuration.
-
-
-
-
-<!-- ### Docker Model Runner (Local Models)
-{: .no_toc }
-
-Another emerging approach is running models locally instead of relying on external APIs.
-
-In this setup:
-
-* Claude Code (or similar tooling) interacts with a locally hosted model
-* Docker is used to run both the agent and the model
-
-**Advantages:**
-
-* No external API calls
-* Better privacy (data stays local)
-* Potentially lower long-term cost
-
-**Drawbacks:**
-
-* Requires powerful hardware
-* Setup is more complex
-* Model quality may differ from hosted solutions
-
-This is particularly interesting for advanced users or sensitive environments.
- -->
-
-### Dev Containers (VS Code / GitHub Codespaces)
-{: .no_toc }
-
-Development containers provide a pre-configured environment tightly integrated with editors like VS Code.
-
-**Advantages:**
-
-* Seamless developer experience
-* Built-in tooling and extensions
-* Easy onboarding for teams
-
-**Drawbacks:**
-
-* Less isolation from the developer workflow
-* Not specifically designed for autonomous agents
-* May expose more of your environment than intended
-
-This approach works well if Claude is part of a broader development workflow rather than an isolated agent.
-
-
-<!-- ### Manual Docker Setup (This Guide)
-{: .no_toc }
-
-The approach described in this document sits between low-level control and usability.
-
-**Advantages:**
-
-* Full control over environment and permissions
-* Highly customizable
-* Works everywhere Docker runs
-
-**Drawbacks:**
-
-* Requires more setup and maintenance
-* Easier to misconfigure if you're not careful -->
-
-
-<!-- ### Choosing the Right Approach
-{: .no_toc }
-
-* Use **Docker Sandbox** for simplicity and safety
-* Use **manual Docker** for control and customization
-* Use **local model setups** for privacy and independence
-* Use **dev containers** for integrated development workflows
-
-There is no single “best” solution—only the one that fits your constraints and goals. -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Limitations and Pitfalls
-
-While Docker provides strong isolation and flexibility, it is not a silver bullet. Misconfiguration or misunderstanding can still lead to issues.
-
-### File Permissions
-{: .no_toc }
-
-Containers often run as `root` by default.
-
-This can lead to:
-
-* Files created with incorrect ownership on the host
-* Permission conflicts when editing files outside Docker
-
-**Recommendation:**
-
-* Use a non-root user inside the container when possible
-* Align container user IDs with your host user
-
-
-### Volume Misconfiguration
-{: .no_toc }
-
-Mounting volumes incorrectly can expose more data than intended.
-
-Common mistakes:
-
-* Mounting your entire home directory
-* Forgetting that mounted paths are writable by default
-
-**Recommendation:**
-
-* Mount only what is necessary
-* Use read-only mounts when possible
-
-
-### Network Access
-{: .no_toc }
-
-By default, containers may have outbound network access.
-
-This means:
-
-* The agent can call external services
-* Data may leave our environment unintentionally
-
-**Recommendation:**
-
-* Restrict network access if not needed
-* Be explicit about what external communication is allowed
-
-
-### False Sense of Security
-{: .no_toc }
-
-Docker is isolation—not full virtualization.
-
-Risks still exist:
-
-* Kernel-level vulnerabilities
-* Misconfigured containers
-* Overly permissive mounts
-
-**Key point:**
-Docker reduces risk, but does not eliminate it.
-
-
-### API Costs and Resource Usage
-{: .no_toc }
-
-When using hosted models:
-
-* Every interaction may incur cost
-* Automated workflows can generate significant usage
-
-**Recommendation:**
-
-* Monitor API usage
-* Set limits or budgets where possible
-
-
-### Environment Drift
-{: .no_toc }
-
-If we rebuild containers inconsistently:
-
-* Dependencies may change
-* Behavior may differ between runs
-
-**Recommendation:**
-
-* Pin versions in our Dockerfile
-* Use reproducible builds
-
-
-### Debugging Complexity
-{: .no_toc }
-
-When something goes wrong, debugging can be harder:
-
-* Is the issue in the host?
-* The container?
-* The agent itself?
-
-**Recommendation:**
-
-* Keep setups simple
-* Add logging and visibility where possible
-
-
-<!-- ### Summary
-
-Docker provides powerful isolation and control, but requires careful use.
-
-Common pitfalls include:
-
-* Incorrect permissions
-* Overexposed volumes
-* Unrestricted network access
-* Hidden costs from API usage
-
-Understanding these limitations helps you use Docker with Claude safely and effectively. -->
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1039,14 +594,422 @@ Understanding these limitations helps you use Docker with Claude safely and effe
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Conclusion
-Running Claude Code inside a Docker container is a small upfront investment that pays off immediately. We get yolo mode without the anxiety: Claude can install packages, rewrite files, and run arbitrary shell commands. If it goes sideways, one `docker rm` and we are back to a clean slate. Nothing on our beloved Windows host is ever at risk.
 
-Beyond safety, the Linux environment just works better. No path translation, no shebang issues, no "this script assumes bash" friction. Claude operates in the environment it was designed for, and the results seem to show.
+So, does it work? Yes. Claude can run in "yolo" mode inside a container, commits code, pushes to GitHub, and never touches anything it should not. OneDrive does not see the build artifacts. The Claude home directory persists between sessions. The setup is the same four files dropped into any new project -- copy, open, done.
 
-The image built here is intentionally minimal. From this base we can layer in anything our stack requires: databases, compilers, CLI tools and commit the Dockerfile alongside our project so the environment is fully reproducible. Our teammates (or our future self) get the exact same setup with a single docker build.
+Is it perfect? Not quite. The small `./target` folder that Cargo creates in the workspace is a known annoyance. It is harmless and tiny, but it is there. I opened an issue about it. For now, we live with it.
 
-The mounted volume pattern means our code always lives on the host, version-controlled and safe, while the container remains throwaway. Spin it up, let Claude loose, close it down. Repeat.
+I also never tested WSL2. Maybe I will someday, if the Docker image build times start to feel too long. But the transparent host access still worries me enough that I am not in a hurry.
 
-That is the whole workflow. Simple, safe, and fast enough that we will not think twice about using it every day.
+The one thing the setup does not do for you is copy the `.devcontainer/` folder automatically into new projects. You have to do that yourself. You could automate it: add it to `New-RustProject.ps1`, write a small wrapper for `uv init`, or just keep a shortcut to the template folder. Whatever fits your workflow.
 
-Is this how I will work from now on? I don’t know. First, Claude should be able to work perfectly on the most commonly used host; it should not force us to move to Linux or, even worse, to macOS. On the other hand, I really like my Windows setup.
+One last thing: do not forget to delete the `py_delete_me_02` and `rust_delete_me_02` repositories you created on GitHub during the walkthrough.
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## PS
+This is the script `New-RustProject.ps1` I use to create my Rust project
+
+```ps1
+# How to:
+# Copy the script in a folder then add the latter to the PATH
+#   $rustDir = "C:\Users\phili\OneDrive\Documents\Programmation\rust"
+#   $currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+#   [Environment]::SetEnvironmentVariable("Path", "$currentPath;$rustDir", "User")
+
+# Notes
+# .\New-RustProject.ps1 my_prj 011_my_prj
+# .\New-RustProject.ps1 -PRJ_NAME my_project -Author "John Doe" -LicenseType Apache -GitInit
+# Remove-Item -Path "011_my_prj" -Recurse -Force
+
+param (
+    [Parameter(Mandatory = $true, HelpMessage = "Project name (snake_case)")]
+    [string]$PRJ_NAME,
+
+    [Parameter(Mandatory = $false, HelpMessage = "Directory name (if different from project name)")]
+    [string]$DIR_NAME,
+
+    [Parameter(Mandatory = $false, HelpMessage = "Author name for LICENSE")]
+    [string]$Author = "40tude",
+
+    [Parameter(Mandatory = $false, HelpMessage = "License type: MIT, Apache, or None")]
+    [ValidateSet("MIT", "Apache", "None")]
+    [string]$LicenseType = "MIT",
+
+    [Parameter(Mandatory = $false, HelpMessage = "Initialize git repository")]
+    [switch]$GitInit
+)
+
+# Stop execution on any error
+$ErrorActionPreference = "Stop"
+
+# ============================================================================
+# VALIDATION
+# ============================================================================
+
+Write-Host "Validating inputs..." -ForegroundColor Cyan
+
+# Validate PRJ_NAME follows Rust naming conventions (snake_case)
+if ($PRJ_NAME -notmatch '^[a-z][a-z0-9_]*$') {
+    throw "Invalid project name '$PRJ_NAME'. Rust project names must be snake_case (lowercase letters, numbers, underscores only, must start with letter)."
+}
+
+# Check if cargo is installed
+Write-Host "Checking cargo installation..." -ForegroundColor Cyan
+try {
+    $null = Get-Command cargo -ErrorAction Stop
+}
+catch {
+    throw "Cargo not found. Please install Rust from https://rustup.rs/"
+}
+
+# ============================================================================
+# HELPER FUNCTIONS
+# ============================================================================
+
+function New-FileIfNotExists {
+    param (
+        [string]$Path,
+        [string]$Content = ""
+    )
+
+    if (-not (Test-Path $Path)) {
+        if ($Content) {
+            Set-Content -Path $Path -Value $Content -Encoding UTF8
+        }
+        else {
+            New-Item -ItemType File -Path $Path | Out-Null
+        }
+        Write-Host "  Created: $Path" -ForegroundColor Green
+    }
+    else {
+        Write-Host "  Exists: $Path" -ForegroundColor Yellow
+    }
+}
+
+function New-DirectoryIfNotExists {
+    param ([string]$Path)
+
+    if (-not (Test-Path $Path)) {
+        New-Item -ItemType Directory -Path $Path | Out-Null
+        Write-Host "  Created: $Path" -ForegroundColor Green
+    }
+    else {
+        Write-Host "  Exists: $Path" -ForegroundColor Yellow
+    }
+}
+
+# ============================================================================
+# PROJECT CREATION
+# ============================================================================
+
+$ProjectDir = if ($DIR_NAME) { $DIR_NAME } else { $PRJ_NAME }
+
+Write-Host "`nCreating Rust project '$PRJ_NAME'..." -ForegroundColor Cyan
+
+# Create Rust project
+if ($DIR_NAME) {
+    cargo new $ProjectDir --name $PRJ_NAME
+}
+else {
+    cargo new $PRJ_NAME
+}
+
+# Verify project directory exists
+if (-not (Test-Path $ProjectDir)) {
+    throw "Project directory '$ProjectDir' was not created."
+}
+
+Push-Location $ProjectDir
+Write-Host "Project created successfully`n" -ForegroundColor Green
+
+# ============================================================================
+# CARGO CONFIG (redirect target/ outside OneDrive)
+# ============================================================================
+
+Write-Host "Creating Cargo config..." -ForegroundColor Cyan
+
+# Get the full path of the project directory
+$FullProjectPath = (Get-Location).Path
+
+# Build the OneDrive base path dynamically
+$OneDriveBase = Join-Path $env:USERPROFILE "OneDrive"
+
+# Check if the project is inside OneDrive
+if ($FullProjectPath.StartsWith($OneDriveBase, [System.StringComparison]::OrdinalIgnoreCase)) {
+    # Extract the relative path after OneDrive\
+    $RelativePath = $FullProjectPath.Substring($OneDriveBase.Length).TrimStart('\')
+
+    # Build the target-dir path with forward slashes for TOML compatibility
+    $RustBuildsBase = "$env:USERPROFILE/rust_builds" -replace '\\', '/'
+    $RelativePathForward = $RelativePath -replace '\\', '/'
+    $TargetDir = "$RustBuildsBase/$RelativePathForward"
+
+    # Create .cargo directory and config.toml
+    New-DirectoryIfNotExists -Path ".cargo"
+
+    $CargoConfigContent = @"
+[build]
+# Use native CPU optimizations for all builds
+# rustc --print cfg -C target-cpu=native | Select-String "target_feature"
+# Get-CimInstance -ClassName Win32_Processor | Select-Object Name, Caption, NumberOfCores, NumberOfLogicalProcessors
+rustflags = ["-C", "target-cpu=native"]
+
+# Avoid any issue with OneDrive
+target-dir = "$TargetDir"
+"@
+
+    New-FileIfNotExists -Path ".cargo\config.toml" -Content $CargoConfigContent
+    Write-Host "  Target directory redirected to: $TargetDir" -ForegroundColor Green
+}
+else {
+    Write-Host "  Project is not in OneDrive, skipping target redirection" -ForegroundColor Yellow
+}
+
+# ============================================================================
+# DIRECTORY STRUCTURE
+# ============================================================================
+
+Write-Host "`nCreating directory structure..." -ForegroundColor Cyan
+New-DirectoryIfNotExists -Path "docs"
+
+# ============================================================================
+# DOCUMENTATION FILES
+# ============================================================================
+
+Write-Host "`nCreating documentation files..." -ForegroundColor Cyan
+
+# README.md template
+$ReadmeContent = @"
+# $PRJ_NAME
+
+> **Warning:** The ``.cargo/`` folder contains Windows-specific configuration (custom ``target-dir`` for OneDrive, CPU flags). Delete or rename before building:
+> ``````bash
+> mv .cargo .cargo.bak
+> ``````
+> More information on this [page](https://www.40tude.fr/docs/06_programmation/rust/005_my_rust_setup_win11/my_rust_setup_win11.html#onedrive).
+
+
+## Description
+
+[Add project description here]
+
+## Installation
+
+``````bash
+cargo build --release
+``````
+
+## Usage
+
+``````bash
+cargo run
+``````
+
+## Testing
+
+``````bash
+cargo test
+``````
+
+## License
+
+$LicenseType License - see [LICENSE](LICENSE) for details
+
+
+## Contributing
+This project is developed for personal and educational purposes. Feel free to explore and use it to enhance your own learning.
+
+Given the nature of the project, external contributions are not actively sought nor encouraged. However, constructive feedback aimed at improving the project (in terms of speed, accuracy, comprehensiveness, etc.) is welcome. Please note that this project is being created as a hobby and is unlikely to be maintained once my initial goal has been achieved.
+"@
+
+New-FileIfNotExists -Path "README.md" -Content $ReadmeContent
+
+# docs/notes.md
+$NotesContent = @"
+# Development Notes
+
+## TODO
+
+- [ ] Initial setup
+- [ ] First implementation
+
+## Ideas
+
+[Add your ideas here]
+"@
+
+New-FileIfNotExists -Path "docs\notes.md" -Content $NotesContent
+
+# ============================================================================
+# LICENSE
+# ============================================================================
+
+Write-Host "`nCreating LICENSE..." -ForegroundColor Cyan
+
+if ($LicenseType -eq "MIT") {
+    $LicenseContent = @"
+MIT License
+
+Copyright (c) 2025 $Author
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"@
+    New-FileIfNotExists -Path "LICENSE" -Content $LicenseContent
+
+}
+elseif ($LicenseType -eq "Apache") {
+    $LicenseContent = @"
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
+
+Copyright 2025 $Author
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"@
+    New-FileIfNotExists -Path "LICENSE" -Content $LicenseContent
+
+}
+else {
+    Write-Host "  No license file created (LicenseType = None)" -ForegroundColor Yellow
+}
+
+# ============================================================================
+# .ENV FILE
+# ============================================================================
+
+Write-Host "`nCreating environment file..." -ForegroundColor Cyan
+$EnvContent = @"
+# Environment variables for $PRJ_NAME
+# Add your sensitive configuration here
+"@
+
+New-FileIfNotExists -Path ".env" -Content $EnvContent
+
+# ============================================================================
+# .GITIGNORE
+# ============================================================================
+
+Write-Host "`nUpdating .gitignore..." -ForegroundColor Cyan
+
+$GitIgnoreFile = ".gitignore"
+$GitIgnoreLines = @()
+
+if (Test-Path $GitIgnoreFile) {
+    # Force array result even for single line
+    $GitIgnoreLines = @(Get-Content $GitIgnoreFile)
+}
+
+# Normalize '/target' to 'target/'
+$GitIgnoreLines = @($GitIgnoreLines | ForEach-Object {
+        if ($_ -eq "/target") { "target/" } else { $_ }
+    })
+
+# Required entries
+$RequiredEntries = @(
+    "target/",
+    "temp/",
+    "docs/",
+    ".env",
+    ".claude/settings.local.json"
+)
+
+# Add missing entries
+foreach ($Entry in $RequiredEntries) {
+    if ($GitIgnoreLines -notcontains $Entry) {
+        $GitIgnoreLines += $Entry
+    }
+}
+
+# Write each line separately with newline
+$GitIgnoreLines -join "`n" | Set-Content -Path $GitIgnoreFile -Encoding UTF8 -NoNewline
+Add-Content -Path $GitIgnoreFile -Value "" -Encoding UTF8
+
+Write-Host "  Updated .gitignore" -ForegroundColor Green
+
+# ============================================================================
+# GIT INITIALIZATION
+# ============================================================================
+
+if ($GitInit) {
+    Write-Host "`nInitializing git repository..." -ForegroundColor Cyan
+
+    # Check if already a git repo
+    if (Test-Path ".git") {
+        Write-Host "  Git repository already initialized" -ForegroundColor Yellow
+    }
+    else {
+        git init
+        Write-Host "  Git repository initialized" -ForegroundColor Green
+
+        # Optional: Create initial commit
+        git add .
+        git commit -m "Initial commit: $PRJ_NAME project setup"
+        Write-Host "  Initial commit created" -ForegroundColor Green
+    }
+}
+
+# Return to initial directory
+Pop-Location
+
+# ============================================================================
+# SUMMARY
+# ============================================================================
+
+Write-Host "`n============================================" -ForegroundColor Cyan
+Write-Host "Project '$PRJ_NAME' created successfully!" -ForegroundColor Green
+Write-Host "============================================" -ForegroundColor Cyan
+Write-Host "Location: $(Resolve-Path $ProjectDir)" -ForegroundColor White
+Write-Host "Author: $Author" -ForegroundColor White
+Write-Host "License: $LicenseType" -ForegroundColor White
+if ($GitInit) {
+    Write-Host "Git: Initialized with initial commit" -ForegroundColor White
+}
+Write-Host "`nNext steps:" -ForegroundColor Cyan
+Write-Host "  1. Edit README.md with project description" -ForegroundColor White
+Write-Host "  2. Start coding in src/main.rs" -ForegroundColor White
+Write-Host "  3. Run 'cargo run' to test" -ForegroundColor White
+Write-Host "`nHappy coding! 🦀" -ForegroundColor Cyan
+
+
+```
