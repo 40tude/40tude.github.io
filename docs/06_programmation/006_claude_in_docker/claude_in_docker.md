@@ -3,8 +3,8 @@ published: true
 author: 40tude
 lang: en-US
 layout: default
-title: "Running Claude Code in a Docker Linux Container (Windows 11 Host)"
-description: "Hardening Our AI Workflow: Containerizing Claude Code to Protect Our Host System"
+title: "Yolo Mode, Behind Glass: Running Claude Code in Docker on Windows 11"
+description: "Full AI autonomy inside a container, zero risk to the host, and a fix for OneDrive's thousand-files problem"
 image: docs\06_programmation\006_claude_in_docker\assets\img00.webp
 twitter:
   card: summary_large_image
@@ -106,7 +106,7 @@ Ready? Let's dive in!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Why this setup matters?
+<!-- ## Why this setup matters?
 
 At first glance, running Claude inside Docker for a Rust (or Python) project might feel like overkill. It’s not, it is even recommended, read this [page](https://code.claude.com/docs/en/devcontainer).
 
@@ -171,7 +171,7 @@ This setup enforces a clean separation:
 * Claude = an agent operating inside that controlled space
 
 Once we adopt this model, it becomes easier to reason about what Claude is doing, where files go, and how to recover when something goes wrong.
-
+ -->
 
 
 
@@ -706,63 +706,44 @@ Same as the Python setup, with one addition: the `rust-analyzer-lsp` plugin is e
 <!-- ###################################################################### -->
 ## Gotchas / Pitfalls
 
-At this stage, I don’t have yet a lot of feedback on this setup. But based on initial usage and comparing with the official devcontainer recommendations, here are a few points we should keep in mind.
+This setup is recent and I have not run it for months yet. That said, here are the rough edges I have already hit or that are worth knowing about upfront.
 
-### 1. File system performance?
+### 1. Bind mount performance
 {: .no_toc }
 
-Bind mounts can slow things down:
+The project folder (`/workspace`) is a bind mount from Windows into the Linux container. This is slower than a native Linux filesystem, especially for operations that touch many small files. In practice, editing source files and having Claude read or write code is fine. The heavier operations -- compilation, package resolution -- are handled by Docker volumes (`rust_target`, `python_venv`, `uv`), which run on native Linux FS and are fast.
 
-* `cargo build` may be noticeably slower
-* lots of small files (e.g. `target/`) don’t play well with mounted volumes
+The real first-time cost is the image build. The first `Reopen In Container` takes a few minutes (Rust toolchain download in particular). After that it is cached and subsequent starts are fast.
 
-
-
-### 2. Volume and path confusion?
+### 2. What lives where
 {: .no_toc }
 
-It might be easy to forget what lives where:
+It is easy to lose track of what is where. Quick reference:
 
-* host vs container
-* mounted vs non-mounted directories
+* `/workspace` -- your project source, bind-mounted from Windows. Visible in Windows Explorer.
+* `/home/devuser/rust_target` or `/home/devuser/python_venv` -- Docker volumes. NOT visible from Windows Explorer. Use `docker volume inspect <name>` to find the actual path on disk.
+* `/home/devuser/.claude` -- Docker volume. Claude’s memory, settings, and session data persist here between container restarts.
 
+If you delete a Docker volume by mistake, the container starts fresh: Claude will ask for a token again and your `CLAUDE.md` gets recopied from `.devcontainer/`.
 
-
-### 3. Permissions issues?
+### 3. Permissions
 {: .no_toc }
 
+Getting file ownership right between `root` and `devuser` across Docker volumes was the trickiest part of writing the Dockerfiles. The `session-env` pre-creation trick (visible in the Python Dockerfile) exists precisely to avoid a case where Docker initializes a volume directory as `root`, leaving Claude unable to write there.
 
-* files created as `root`
-* permission mismatches on the host
+The safeguard is simple: do NOT install `sudo`. If something breaks due to a permissions issue, the right fix is to correct the Dockerfile and rebuild -- not to give `devuser` a way to escalate.
 
-It has been a nightmare when working on `Dockerfile` and `devcontainer.json` but I guess we are safe now. Let's make sure to NOT install `sudo`.
+To rebuild: `Ctrl+Shift+P` then `Dev Containers: Rebuild and Reopen in Container`. Since each container is project-specific, rebuilding one does not affect the others.
 
-
-
-### 4. Environment gaps inside the container?
+### 4. Missing tools
 {: .no_toc }
 
-Claude only sees what’s installed in the container:
+Claude only sees what is installed in the container. If it tries to use a tool that is not there -- `jq`, `make`, some system utility -- it will fail, sometimes silently. The fix is straightforward: add the package to the `apt-get install` line in the Dockerfile and rebuild. Because each container is per-project, you can be surgical about what goes in each one.
 
-* missing tools => broken workflows
-* differences with our host environment
-
-If this happen I guess we can modify the Dockerfile and `CTRL+SHIF+P` then select `Dev Containers: Rebuild and Reopen in Container` and since the container is project based we can "improve" this container without impacting the others. If a tools becomes a must then we can install it using the `Dockerfile`.
-
-
-### 5. Security aspects (not fully addressed here)
+### 5. Network is not restricted
 {: .no_toc }
 
-Compared to the official devcontainer guidance, this setup is quite minimal. For example, I haven’t done anything specific regarding:
-
-* firewalling
-* network restrictions
-* limiting what Claude can access
-
-This may or may not matter depending on your use case, but it’s something to be aware of if you plan to go further.
-
-
-So far this setup works well. It adresses both concerns I have ("yolo" mode + OneDrive), but it adds an extra layer (Docker) that comes with its own trade-offs.
+This setup isolates Claude from your host filesystem, but not from the network. Claude inside the container can make HTTP requests, clone repositories, download packages, anything that requires internet access. For most development workflows that is exactly what we want. But if you are working with sensitive code or data and want to go further, you would need to add Docker network restrictions on top of this setup. That is outside the scope of this article.
 
 
 
