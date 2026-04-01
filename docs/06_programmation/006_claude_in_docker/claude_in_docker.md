@@ -388,6 +388,16 @@ If both succeed, we have a fully working Rust setup. Claude can run in YOLO mode
 
 
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img08.webp"
+    alt="The project has been push on GitHub"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The project has been push on GitHub</figcaption>
+</figure>
+
 
 
 
@@ -413,7 +423,7 @@ If both succeed, we have a fully working Rust setup. Claude can run in YOLO mode
 <!-- ###################################################################### -->
 ## Configuration for Python
 
-This section contains every file that goes into the `.devcontainer/` folder. The idea is to keep a `template_devcontainer/` folder somewhere on your hard disk and copy its `.devcontainer/` subfolder into each new project -- which is exactly what we did in the Python use case above.
+This section contains every file that goes into the `.devcontainer/` folder. The idea is to keep a `template_devcontainer/` folder somewhere on your hard disk and copy its `.devcontainer/` subfolder into each new project which is exactly what we did in the Python use case above.
 
 The `.devcontainer/` folder contains 4 files:
 
@@ -427,8 +437,8 @@ settings.json
 ### Dockerfile
 {: .no_toc }
 
-* `sudo` is NOT installed -- this is intentional. Claude runs as a non-root user with no privilege escalation path.
-* Python is NOT installed at the system level -- UV manages Python versions on demand.
+* `sudo` is NOT installed. This is intentional. Claude runs as a non-root user with no privilege escalation path.
+* Python is NOT installed at the system level, UV manages Python versions on demand.
 * A non-root `devuser` is created. All user-level tools (Claude, UV) are installed under that account.
 * The project lives in `/workspace`.
 * The Dockerfile switches from `root` to `devuser` partway through: system packages first as root, then user tools as devuser. Order matters.
@@ -470,7 +480,7 @@ ENV UV_PROJECT_ENVIRONMENT="/home/devuser/python_venv"
 ### devcontainer.json
 {: .no_toc }
 
-* `${localWorkspaceFolderBasename}` makes this file project-agnostic -- no need to edit it per project.
+* `${localWorkspaceFolderBasename}` makes this file project-agnostic.
 * 3 Docker volumes are created to persist the Claude home directory, the virtual environment, and the UV cache.
 * The GitHub CLI config is bind-mounted from the host, so the authentication you did with `gh auth login` on Windows carries through.
 * `postCreateCommand` copies `CLAUDE.md` and `settings.json` from `.devcontainer/` into the Claude home volume on first container creation. We can edit them inside the container afterward if needed.
@@ -558,7 +568,7 @@ This is the `CLAUDE.md` that gets injected into the container. Paste your own co
 <!-- ###################################################################### -->
 ## Configuration for Rust
 
-This section contains every file that goes into the `.devcontainer/` folder for Rust projects. Keep a `template_devcontainer/` folder somewhere on your hard disk and copy its `.devcontainer/` subfolder into each new project -- which is exactly what we did in the Rust use case above.
+This section contains every file that goes into the `.devcontainer/` folder for Rust projects. Keep a `template_devcontainer/` folder somewhere on your hard disk and copy its `.devcontainer/` subfolder into each new project which is exactly what we did in the Rust use case above.
 
 The `.devcontainer/` folder contains 4 files:
 
@@ -572,8 +582,8 @@ settings.json
 ### Dockerfile
 {: .no_toc }
 
-* `sudo` is NOT installed -- this is intentional. Claude runs as a non-root user with no privilege escalation path.
-* `build-essential` is installed at the system level -- it provides the C linker and standard libraries that Rust needs to compile.
+* `sudo` is NOT installed. This is intentional. Claude runs as a non-root user with no privilege escalation path.
+* `build-essential` is installed at the system level, it provides the C linker and standard libraries that Rust needs to compile.
 * A non-root `devuser` is created. All user-level tools (Claude, Rust toolchain) are installed under that account.
 * The project lives in `/workspace`.
 * The Dockerfile switches from `root` to `devuser` partway through: system packages first as root, then user tools as devuser. Order matters.
@@ -611,7 +621,7 @@ RUN mkdir -p /home/devuser/.cargo \
 ### devcontainer.json
 {: .no_toc }
 
-* `${localWorkspaceFolderBasename}` makes this file project-agnostic -- no need to edit it per project.
+* `${localWorkspaceFolderBasename}` makes this file project-agnostic.
 * 2 Docker volumes are created: one for the Claude home directory, one for the Rust `target/` directory. No virtual environment to manage here.
 * The GitHub CLI config is bind-mounted from the host, so the authentication you did with `gh auth login` on Windows carries through.
 * `postCreateCommand` copies `CLAUDE.md` and `settings.json` from `.devcontainer/` into the Claude home volume on first container creation. We can edit them inside the container afterward if needed.
@@ -700,7 +710,7 @@ This setup is recent and I have not run it for months yet. That said, here are t
 ### 1. Bind mount performance
 {: .no_toc }
 
-The project folder (`/workspace`) is a bind mount from Windows into the Linux container. This is slower than a native Linux filesystem, especially for operations that touch many small files. In practice, editing source files and having Claude read or write code is fine. The heavier operations -- compilation, package resolution -- are handled by Docker volumes (`rust_target`, `python_venv`, `uv`), which run on native Linux FS and are fast.
+The project folder (`/workspace`) is a bind mount from Windows into the Linux container. This is slower than a native Linux filesystem, especially for operations that touch many small files. In practice, editing source files and having Claude read or write code is fine. The heavier operations (compilation, package resolution) are handled by Docker volumes (`rust_target`, `python_venv`, `uv`), which run on native Linux FS and are fast.
 
 The real first-time cost is the image build. The first **Reopen In Container** takes a few minutes (Rust toolchain download in particular). After that it is cached and subsequent starts are fast.
 
@@ -709,9 +719,9 @@ The real first-time cost is the image build. The first **Reopen In Container** t
 
 It is easy to lose track of what is where. Quick reference:
 
-* `/workspace` -- your project source, bind-mounted from Windows. Visible in Windows Explorer.
-* `/home/devuser/rust_target` or `/home/devuser/python_venv` -- Docker volumes. NOT visible from Windows Explorer. Use `docker volume inspect <name>` to find the actual path on disk.
-* `/home/devuser/.claude` -- Docker volume. Claude’s memory, settings, and session data persist here between container restarts.
+* `/workspace`: our project source, bind-mounted from Windows. Visible in Windows Explorer.
+* `/home/devuser/rust_target` or `/home/devuser/python_venv`: Docker volumes. NOT visible from Windows Explorer. Use `docker volume inspect <name>` to find the actual path on disk.
+* `/home/devuser/.claude`: Docker volume. Claude’s memory, settings, and session data persist here between container restarts.
 
 If you delete a Docker volume by mistake, the container starts fresh: Claude will ask for a token again and your `CLAUDE.md` gets recopied from `.devcontainer/`.
 
@@ -720,14 +730,14 @@ If you delete a Docker volume by mistake, the container starts fresh: Claude wil
 
 Getting file ownership right between `root` and `devuser` across Docker volumes was the trickiest part of writing the Dockerfiles. The `session-env` pre-creation trick (visible in the Python Dockerfile) exists precisely to avoid a case where Docker initializes a volume directory as `root`, leaving Claude unable to write there.
 
-The safeguard is simple: do NOT install `sudo`. If something breaks due to a permissions issue, the right fix is to correct the Dockerfile and rebuild -- not to give `devuser` a way to escalate.
+The safeguard is simple: do NOT install `sudo`. If something breaks due to a permissions issue, the right fix is to correct the Dockerfile and rebuild (not to give `devuser` a way to escalate).
 
 To rebuild: `Ctrl+Shift+P` then `Dev Containers: Rebuild and Reopen in Container`. Since each container is project-specific, rebuilding one does not affect the others.
 
 ### 4. Missing tools
 {: .no_toc }
 
-Claude only sees what is installed in the container. If it tries to use a tool that is not there -- `jq`, `make`, some system utility -- it will fail, sometimes silently. The fix is straightforward: add the package to the `apt-get install` line in the Dockerfile and rebuild. Because each container is per-project, you can be surgical about what goes in each one.
+Claude only sees what is installed in the container. If it tries to use a tool that is not there (`jq`, `make`, some system utility) it will fail, sometimes silently. The fix is straightforward: add the package to the `apt-get install` line in the Dockerfile and rebuild. Because each container is per-project, you can be surgical about what goes in each one.
 
 ### 5. Network is not restricted
 {: .no_toc }
