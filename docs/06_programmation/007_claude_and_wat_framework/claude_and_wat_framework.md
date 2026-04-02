@@ -229,14 +229,14 @@ This loop is how the framework improves over time.
 - **Intermediates**: Temporary processing files that can be regenerated go to `.tmp/`
 
 **Directory layout:**
-```
+``````
 out/                            # Generated files (markdown, PDFs...) are stored as final output.
 .tmp/                           # Temporary files.
 tools/                          # Python scripts for deterministic execution
 workflows/                      # Markdown SOPs defining what to do and how
 .env                            # API keys and environment variables (NEVER store secrets anywhere else)
 .gitignore                      # Excludes .tmp/, .env, __pycache__/, .venv/
-```
+``````
 
 ## Execution Environment (STRICT)
 
@@ -513,6 +513,7 @@ When the plan is ready:
 ## Step 05: Implementing
 
 1. **TURN ON ACCEPT EDIT**: `SHIFT+TAB`
+* ⚠️ `Alt+P`, Sonnet, Medium (or even Low)
 1. Tell claude to code
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
