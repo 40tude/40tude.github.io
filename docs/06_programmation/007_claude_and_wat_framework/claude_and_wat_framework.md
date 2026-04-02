@@ -229,6 +229,7 @@ This loop is how the framework improves over time.
 - **Intermediates**: Temporary processing files that can be regenerated go to `.tmp/`
 
 **Directory layout:**
+
 ``````
 out/                            # Generated files (markdown, PDFs...) are stored as final output.
 .tmp/                           # Temporary files.
@@ -236,7 +237,7 @@ tools/                          # Python scripts for deterministic execution
 workflows/                      # Markdown SOPs defining what to do and how
 .env                            # API keys and environment variables (NEVER store secrets anywhere else)
 .gitignore                      # Excludes .tmp/, .env, __pycache__/, .venv/
-``````
+````````
 
 ## Execution Environment (STRICT)
 
@@ -296,7 +297,7 @@ Stay pragmatic. Stay reliable. Keep learning.
 * In VSCode, open a terminal (`CTRL+ù`)
 * Open `claude`
 * ⚠️ `Alt+P`, Sonnet, High Effort
-* Use this prompt:
+* Use this **prompt**:
 
 ```text
 Read CLAUDE.md in full, then follow the instructions in the "Bootstrapping a New Project" section
@@ -483,7 +484,7 @@ Propose a small, end-to-end version of the system that:
 
 1. `/clear` conversation
 1. ⚠️ **TURN ON PLAN MODE**: `SHIFT+TAB`
-1. Paste the content of `docs/project_goal.md` and use it as a prompt.
+1. Paste the content of `docs/project_goal.md` and use it as a **prompt**.
 1. Answer Claude questions
 
 
@@ -501,8 +502,9 @@ Propose a small, end-to-end version of the system that:
 When the plan is ready:
 
 1. Read the plan
-1. Ask question : "Make sure we can specifiy a time window (ex 24H, 48H)"
-1. When you are satisfy, ask Claude to make a copy of the plan in `out/plan_00.md` folder
+1. Ask question. For example : "Make sure we can specify a time window (ex 24H, 48H)"
+1. When you are satisfied, ask Claude to make a copy of the plan in `out/plan_00.md` folder
+    - It cannot copy the plan in `docs/` but you can.
 
 
 
@@ -539,6 +541,8 @@ Test the tools in order
 1. `uv run python tools/summarize_articles.py`
 1. `uv run python tools/render_digest.py`
 
+
+TADAA!
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
