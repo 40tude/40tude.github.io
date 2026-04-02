@@ -3,7 +3,7 @@ published: true
 author: 40tude
 lang: en-US
 layout: default
-title: "Claude and the WAT Framework"
+title: "Claude and the WAT Task Pipeline"
 description: "..."
 image: docs\06_programmation\007_claude_and_wat_framework\assets\img00.webp
 twitter:
@@ -17,7 +17,7 @@ last_modified_date: 2026-04-02 15:00:00
 
 
 
-# Claude and the WAT Framework
+# Claude and the WAT Task Pipeline
 {: .no_toc }
 
 ...
@@ -38,8 +38,11 @@ last_modified_date: 2026-04-02 15:00:00
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-<!-- ## TL;DR
-{: .no_toc } -->
+## TL;DR
+{: .no_toc }
+
+> Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%}#ANCHOR)** when you're *building* something that lasts.
+> Use a **WAT Task Pipeline** when you're *processing* something one-off.
 
 
 
@@ -68,10 +71,92 @@ last_modified_date: 2026-04-02 15:00:00
 
 
 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Introduction
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## SDD vs WAT Task Pipeline. What's the Difference and When to Use Which?
+
+### The Core Distinction
+{: .no_toc }
+
+Both SDD and task pipelines use the **WAT framework** (Workflows, Agents, Tools) a three-layer architecture that separates AI reasoning from deterministic code execution. The difference is in *what we are building* and *what we deliver*.
+
+**SDD (Spec-Driven Development)** is a methodology for **building software guided by specifications**. The final artifact is **code that runs in production**: a Rust binary, an API, a web application. The specs describe an architecture, contracts, and business behaviors. The agent (Claude Code) *builds* something durable.
+
+**WAT Task Pipelines** are **workflows for executing one-shot tasks**. The final artifact is **processed data or an action**: a summary, a report, a spreadsheet, a sent email, a Jira ticket. The Python scripts are *disposable tools* or *reusable-as-is utilities*, not an evolving codebase.
+
+In short:
+
+- **SDD**: we deliver a **system** (that produces results on demand).
+- **WAT Task Pipeline**: we deliver a **result** (a file, processed data, or a triggered action).
+
+
+### Why Multiple Scripts Instead of One?
+{: .no_toc }
+
+We *could* put everything in a single file. But splitting into separate steps gives us:
+
+- **Fault recovery**: if scraping fails, we rerun just that step.
+- **Observability**: we can inspect intermediate data between steps.
+- **Composability**: we reuse "summarize articles" in another pipeline.
+- **Parallelism**: independent steps can run concurrently.
+
+Same logic as Powershell pipes: `fetch | parse | summarize | synthesize`. A single script *works*, but a pipeline *composes and maintains itself*.
+
+
+### The "Who Complains About What" Test
+{: .no_toc }
+
+This is perhaps the sharpest way to tell them apart:
+
+- **WAT Task Pipeline**: the client complains that the data isn't formatted the way they want. The issue is **presentation or one-shot processing**.
+- **SDD**: the client complains that the application can't handle their data the way they want. The issue is **behavior or the data model**.
+
+In a task pipeline, once the deliverable is consumed, it's done. In SDD, the deliverable *persists and interacts*. The user comes back to it, feeds it, and depends on it over time.
+
+
+
+
+### Decision Grid
+{: .no_toc }
+
+| Criterion               | SDD (Spec-Driven Development)     | WAT Task Pipeline                    |
+| ------------------------ | --------------------------------- | ------------------------------------ |
+| **The output is...**     | Production code                   | Processed data or a triggered action |
+| **Does it evolve?**      | Yes — features, refactors         | No (or rarely)                       |
+| **The agent's role**     | Builds                            | Executes                             |
+| **Spec lifespan**        | Long (PRs, version history)       | Short (task description)             |
+| **Typical deliverables** | Binary, API, web app              | Slides, PDF, spreadsheet, email      |
+| **Bug profile**          | Behavior / data model issues      | Formatting / processing issues       |
+| **Pilot profile**        | Dev guiding an architecture       | Analyst orchestrating tools          |
+
+
+
+
+
+
+
+
+
+
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Prerequisites
+
 * Windows 11 (but should work similarly on other platforms)
 * VSCode
 * Claude
@@ -138,8 +223,8 @@ You can start with the version below.
 ### An exemple of `CLAUDE.md`
 {: .no_toc }
 
-{% raw %}
-```text
+<!-- {% raw %} -->
+``````text
 # Agent Instructions
 
 You're working inside the **WAT framework** (Workflows, Agents, Tools). This architecture separates concerns so that probabilistic AI handles reasoning while deterministic code handles execution. That separation is what makes this system reliable.
@@ -230,14 +315,13 @@ This loop is how the framework improves over time.
 
 **Directory layout:**
 
-``````
+
 out/                            # Generated files (markdown, PDFs...) are stored as final output.
 .tmp/                           # Temporary files.
 tools/                          # Python scripts for deterministic execution
 workflows/                      # Markdown SOPs defining what to do and how
 .env                            # API keys and environment variables (NEVER store secrets anywhere else)
 .gitignore                      # Excludes .tmp/, .env, __pycache__/, .venv/
-````````
 
 ## Execution Environment (STRICT)
 
@@ -278,8 +362,8 @@ You sit between what I want (workflows) and what actually gets done (tools). You
 
 Stay pragmatic. Stay reliable. Keep learning.
 
-```
-{% endraw %}
+``````
+<!-- {% endraw %} -->
 
 
 
