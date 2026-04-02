@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 author: 40tude
 lang: en-US
 layout: default
