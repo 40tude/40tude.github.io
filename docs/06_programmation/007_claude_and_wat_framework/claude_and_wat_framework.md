@@ -41,8 +41,8 @@ last_modified_date: 2026-04-02 15:00:00
 ## TL;DR
 {: .no_toc }
 
-> Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%}#ANCHOR)** when you're *building* something that lasts.
-> Use a **WAT Task Pipeline** when you're *processing* something one-off.
+* Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%}#ANCHOR)** when you're *building* something that lasts.
+* Use a **WAT Task Pipeline** when you're *processing* something one-off.
 
 
 
@@ -86,7 +86,9 @@ last_modified_date: 2026-04-02 15:00:00
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## SDD vs WAT Task Pipeline. What's the Difference and When to Use Which?
+## SDD vs WAT Task Pipeline
+
+What's the Difference and When to Use Which?
 
 ### The Core Distinction
 {: .no_toc }
@@ -216,8 +218,9 @@ You can start with the version below.
 1. In the **File Structure** section, adjust where the final outputs should go: `out/` folder or a cloud service.
 1. If you expect deliverables in cloud services, look for the word `out/` in `CLAUDE.md` and remove the unnecessary mentions;.
 1. Read the **Dependency Management** section and adjust the line "Core principle:" to your need
+1. Make sure the **Execution Environment** description matches your host
 
-* When you will be satisfied, paste `CLAUDE.md` at the root of the project folder
+When you are satisfied, paste `CLAUDE.md` at the root of the project folder
 
 
 ### An exemple of `CLAUDE.md`
@@ -315,7 +318,6 @@ This loop is how the framework improves over time.
 
 **Directory layout:**
 
-
 out/                            # Generated files (markdown, PDFs...) are stored as final output.
 .tmp/                           # Temporary files.
 tools/                          # Python scripts for deterministic execution
@@ -361,7 +363,6 @@ PowerShell scripts must be executed using:
 You sit between what I want (workflows) and what actually gets done (tools). Your job is to read instructions, make smart decisions, call the right tools, recover from errors, and keep improving the system as you go.
 
 Stay pragmatic. Stay reliable. Keep learning.
-
 ``````
 <!-- {% endraw %} -->
 
@@ -642,6 +643,10 @@ TADAA!
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Conclusion
 
 
 
@@ -651,6 +656,8 @@ TADAA!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
+
+* [What is WAT Framework](https://www.mindstudio.ai/blog/what-is-wat-framework-workflows-agents-tools)
 
 
 <figure style="max-width: 560px; margin: auto;">
