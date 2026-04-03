@@ -43,6 +43,9 @@ last_modified_date: 2026-04-03 08:00:00
 
 * Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%})** when you're *building* something that lasts.
 * Use a **WAT Task Pipeline** when you're *processing* something one-off.
+* We apply WAT Task Pipeline principles to create a *Daily Tech Digest Generator*
+* Keep `CLAUDE.md` independent of the task pipelin
+* `docs/project_goal.md` is specific to the task pipeline
 
 
 
@@ -88,7 +91,7 @@ last_modified_date: 2026-04-03 08:00:00
 <!-- ###################################################################### -->
 ## SDD vs WAT Task Pipeline
 
-What's the difference between SDD (Spec-Driven Development) anf WAT Task Pipeline (WAT stands for Workflows, Agents, Tools) and when to use which?
+What's the difference between SDD (Spec-Driven Development) and WAT Task Pipeline (WAT stands for Workflows, Agents, Tools) and when to use which?
 
 ### The Core Distinction
 {: .no_toc }
@@ -123,8 +126,8 @@ Same logic as Powershell pipes: `fetch | parse | summarize | synthesize` where o
 
 This is perhaps the sharpest way to tell them apart:
 
-- **WAT Task Pipeline**: the client complains that the data isn't formatted the way they want. The issue is **presentation or one-shot processing**.
-- **SDD**: the client complains that the application can't handle their data the way they want. The issue is **behavior or the data model**.
+- WAT Task Pipeline: the client complains that the data isn't formatted the way they want. The issue is **presentation or one-shot processing**.
+- SDD: the client complains that the application can't handle their data the way they want. The issue is **behavior or the data model**.
 
 In a task pipeline, once the deliverable is consumed, it's done. In SDD, the deliverable *persists and interacts*. The user comes back to it, feeds it, and depends on it over time.
 
@@ -173,6 +176,11 @@ In a task pipeline, once the deliverable is consumed, it's done. In SDD, the del
 <!-- ###################################################################### -->
 ## Step 00: Create project folder
 
+
+Here, we apply WAT Task Pipeline principles to create what I call a *Daily Tech Digest Generator*. The idea is to scan the web for new articles, news, and RSS feeds, then rank and filter the results. Finally, the system summarizes the selected content and generates a Markdown report: essentially a pipeline you might want to run every morning at 7:30.
+
+
+
 ```powershell
 # Create a folder for the new project
 new-item -ItemType Directory daily_tech_digest_02
@@ -207,9 +215,25 @@ code .
 ## Step 01: Create `CLAUDE.md`
 
 * In the `docs/` folder, make some tests, keep different versions of `CLAUDE.md` etc.
+* `CLAUDE.md` should be independent of the task pipeline
+* Start simple and short (not more than 200 lines in any case, the shorter the better)
 * Talk to ChatGPT, Claude and friends...
+* Iterate, iterate, iterate
+    * Improve your `CLAUDE.md` for this task pipeline but also for the next
+    * This is why I try to keep 1 copy of `CLAUDE.md` and reuse it from one task pipeline to another.
 
-You can start with the version below.
+You can start with the version below. Compared to other `CLAUDE.md` you can see:
+
+* This `CLAUDE.md` file is much longer than my `%USERPROFILE%/.claude/CLAUDE.md` (20 lines)
+* WAT Framework (the context) is explained upfront.
+* The access rules to the folder in the "project" are set and strict
+* There is a "Bootstrapping a New Project" which is mentioned in the first prompt (see lower)
+* The "How To Operate" section clearly explains how the agent is supposed to work
+* The "The Self-Improvement Loop" explains how to improve the workflow over time
+* At the end the File Structure, the Execution Environment and the Dependency Management are covered.
+
+Read it `CLAUDE.md`. I can't do it for you. Don't trust me. What works for me may not work for you. Spend lot of time on it at the beginning. This is **your** `CLAUDE.md`. Keep it task pipeline agnostic, use it from one projet to another and improve it over time.
+
 
 ### Notes
 {: .no_toc }
@@ -387,23 +411,28 @@ Stay pragmatic. Stay reliable. Keep learning.
 Read CLAUDE.md in full, then follow the instructions in the "Bootstrapping a New Project" section
 ```
 
-At the end Claude has created the directories and it confirms its role.
+At the end Claude created the directories and confirmed its role.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img02.webp"
-    alt="Describe the image here"
+    alt="Claude created the directories and confirmed its responsibilities."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Claude created the directories and confirmed its responsibilities.</figcaption>
 </figure>
 
 
-* ⚠️ Delete the `main.py` at the root of the project
+* ⚠️ Delete the `main.py` file at the root of the project
 * Create a `.env` file at the root of the project (we never know)
 
 
+
+### Note
+{: .no_toc }
+
+I'm wondering if I should "improve" `CLAUDE.md` so that it manage these files at the end of the bootstrapping phase.
 
 
 
@@ -417,7 +446,7 @@ At the end Claude has created the directories and it confirms its role.
 
 * In the `docs/` folder, make some tests, keep different versions of `project_goal.md` etc.
 * Talk to ChatGPT, Claude and friends...
-* Iterate
+* Iterate, iterate, iterate
 
 For example, here is a first version:
 
@@ -575,20 +604,20 @@ Propose a small, end-to-end version of the system that:
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img03.webp"
-    alt="Describe the image here"
+    alt="Answering Claude's questions during planning phase"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Answering Claude's questions during planning phase</figcaption>
 </figure>
 
 
 When the plan is ready:
 
-1. Read the plan
-1. Ask question. For example : "Make sure we can specify a time window (ex 24H, 48H)"
+1. **Read the plan**. Do not accept blindly.
+1. Ask questions or require improvement. For example : "Update the plan so that we can specify a time window (ex 24H, 48H)"
 1. When you are satisfied, ask Claude to make a copy of the plan in `out/plan_00.md` folder
-    - It cannot copy the plan in `docs/` but you can.
+    - Remember, Claude cannot copy the plan in `docs/` (but you can).
 
 
 
@@ -600,16 +629,16 @@ When the plan is ready:
 
 1. **TURN ON ACCEPT EDIT**: `SHIFT+TAB`
 * ⚠️ `Alt+P`, Sonnet, Medium (or even Low)
-1. Tell claude to code
+1. Tell Claude to code
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img04.webp"
-    alt="Describe the image here"
+    alt="Claude's plan is done. Time to implement."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Show time!</figcaption>
 </figure>
 
 
@@ -631,11 +660,11 @@ TADAA!
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img05.webp"
-    alt="Describe the image here"
+    alt="The first edition of our Daily Tech Digest."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>The first edition of our Daily Tech Digest.</figcaption>
 </figure>
 
 
