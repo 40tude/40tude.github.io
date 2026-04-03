@@ -12,7 +12,7 @@ parent: "Programmation"
 # nav_order: 36
 math: mathjax
 date:               2026-04-02 15:00:00
-last_modified_date: 2026-04-03 08:00:00
+last_modified_date: 2026-04-03 10:30:00
 ---
 
 
@@ -694,7 +694,7 @@ None of this is a failure. It's a backlog.
 ### How to improve: ask Claude, tool by tool
 {: .no_toc }
 
-Here's the key insight: **each tool is independent**. You don't need to rewrite the pipeline. You refine one tool at a time, verify it, and move on. For example:
+Here's the key insight: **each tool is independent**. We don't need to rewrite the pipeline. We refine one tool at a time, verify it, and move on. For example:
 
 ```text
 # Improve filter_articles.py
@@ -706,7 +706,7 @@ similarity. Keep the same input/output contract (.tmp/fetched.json
 -> .tmp/filtered.json).
 ```
 
-That prompt is specific, bounded, and testable. Claude improves one tool, you test it, done. This is what "independent tools" buys you: surgical iteration without regression risk.
+That prompt is specific, bounded, and testable. Claude improves one tool, we test it, done. This is what "independent tools" provide: surgical iteration without regression risk.
 
 Apply the same pattern to scheduling (add a `tools/schedule_digest.ps1`), deduplication (a hash cache in `.tmp/seen.json`), or email delivery (a `tools/send_email.py` wrapping SMTP or a Gmail API tool).
 
@@ -726,6 +726,7 @@ None of these require touching the agent logic or `CLAUDE.md`. That's the point.
 
 
 
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -736,7 +737,7 @@ We built a working Daily Tech Digest Generator in one session: four independent 
 ### What we actually did
 {: .no_toc }
 
-Step back and look at the structure:
+Let's step back and look at the structure:
 
 - `CLAUDE.md` defines the agent's operating rules, tool conventions, and environment. It is **task-agnostic** and reusable across any WAT pipeline.
 - `docs/project_goal.md` holds the task-specific intent: what we want, constraints, and the planning protocol.
@@ -751,16 +752,16 @@ That separation is the whole point. The pipeline didn't exist before we started,
 
 The digest is disposable. The `CLAUDE.md` is not.
 
-Every iteration teaches you something: which instructions Claude ignores, which constraints it violates, which sections are ambiguous. When you fix `CLAUDE.md`, you fix every future pipeline that inherits it. The 200-line file you refine over ten projects is worth more than any single digest generator.
+Every iteration teaches us something: which instructions Claude ignores, which constraints it violates, which sections are ambiguous. When we fix `CLAUDE.md`, we fix every future pipeline that inherits it. The `CLAUDE.md` file we refine over ten projects is worth more than any single digest generator.
 
-Concretely: after this project, update `CLAUDE.md` with what you learned. Did Claude create files outside the allowed directories? Tighten the boundaries. Did it install packages itself? Add an explicit prohibition. Did it produce workflows without being asked? Add a "wait for explicit instruction" rule.
+Concretely: after this project, update `CLAUDE.md` with what *you* learned. Did Claude create files outside the allowed directories? Tighten the boundaries. Did it install packages itself? Add an explicit prohibition. Did it produce workflows without being asked? Add a "wait for explicit instruction" rule.
 
 The `CLAUDE.md` in this article is a starting point. Yours should diverge from it.
 
 ### `project_goal.md` is what changes
 {: .no_toc }
 
-When you start the next pipeline (a weekly competitive analysis, a GitHub trending tracker, a changelog summarizer), copy the project folder, keep `CLAUDE.md` as-is, and rewrite only `docs/project_goal.md`. The bootstrapping prompt stays the same. The planning protocol stays the same. Only the goal changes.
+When you start the next pipeline (a weekly competitive analysis, a GitHub trending tracker, a changelog summarizer), keep `CLAUDE.md` as-is, and rewrite only `docs/project_goal.md`. The bootstrapping prompt stays the same. The planning protocol stays the same. Only the goal changes.
 
 That's the leverage: a stable operating framework applied to an infinite surface of one-shot tasks.
 
