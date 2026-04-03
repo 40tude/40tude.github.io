@@ -47,7 +47,7 @@ last_modified_date: 2026-04-03 10:30:00
 * Keep `CLAUDE.md` independent of the task pipeline
 * `docs/project_goal.md` is specific to the task pipeline
 * Enable **Plan Mode** (`SHIFT+TAB`) before any implementation and **read** the plan before accepting it
-* Tools are independent: improve them one at a time by prompting Claude with a bounded, testable request
+* The created tools (`tools/*.py` here) are independent: we can improve them one at a time by prompting Claude with a bounded, testable request
 
 
 
@@ -242,9 +242,9 @@ Read `CLAUDE.md` file 10_000 times. I can't do it for you. This is your baby. Do
 ### Notes
 {: .no_toc }
 
-1. In the **File Structure** section, adjust where the final outputs should go: `out/` folder or a cloud service.
-1. If you expect deliverables in cloud services, look for the word `out/` in `CLAUDE.md` and remove the unnecessary mentions;.
-1. Read the **Dependency Management** section and adjust the line "Core principle:" to your need
+1. In the **File Structure** section, adjust where the final outputs should go: `out/` folder or a cloud service? Pick one, comment or delete the other
+1. If you expect deliverables in cloud services, look for the word `out/` in `CLAUDE.md` and remove the unnecessary mentions
+1. Read the **Dependency Management** section and adjust the line "Core principle" to your need
 1. Make sure the **Execution Environment** description matches your host
 
 When you are satisfied, paste `CLAUDE.md` at the root of the project folder
@@ -429,7 +429,7 @@ At the end Claude created the directories and confirmed its role.
 
 
 * ⚠️ Delete the `main.py` file at the root of the project
-* Create a `.env` file at the root of the project (we never know)
+* Create a `.env` file at the root of the project (we will need it to store our API key)
 
 
 
@@ -622,7 +622,7 @@ When the plan is ready:
 1. Ask questions or require improvement. For example : "Update the plan so that we can specify a time window (ex 24H, 48H)"
 1. Don't be afraid to leave (hit `ESC` twice) the process. Then you can discuss with Claude, clarify points... Let it modify the plan... Once you are happy, you can always ask to "continue" the plan.
 1. At the very end, when you are satisfied, ask Claude to make a copy of the plan in `out/plan_00.md` folder
-    - Remember, Claude cannot copy the plan in `docs/` (but you can).
+    - Remember, according `CLAUDE.md` the agent is not allowed to copy the plan in `docs/` (but you can).
 
 
 
@@ -682,7 +682,7 @@ TADAA!
 <!-- ###################################################################### -->
 ## Next?
 
-From the usability stand point, first thing first let's ask Claude to write a `run_me.ps1` script to run the pipe but...
+We built a working Daily Tech Digest Generator in one session: four independent tools chained in a pipeline, coordinated by an agent, governed by a `CLAUDE.md`. That's the proof of concept. Now the real work begins. First thing first let's ask Claude to write a `run_me.ps1` script to run the pipe but...
 
 ### Be honest: this pipeline is weak
 {: .no_toc }
@@ -742,7 +742,6 @@ None of these require touching the agent logic or `CLAUDE.md`. That's the point.
 <!-- ###################################################################### -->
 ## Conclusion
 
-We built a working Daily Tech Digest Generator in one session: four independent tools chained in a pipeline, coordinated by an agent, governed by a `CLAUDE.md`. That's the proof of concept. Now the real work begins.
 
 ### 1. What we actually did
 {: .no_toc }
