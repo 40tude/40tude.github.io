@@ -12,7 +12,7 @@ parent: "Programmation"
 # nav_order: 36
 math: mathjax
 date:               2026-04-02 15:00:00
-last_modified_date: 2026-04-02 15:00:00
+last_modified_date: 2026-04-03 08:00:00
 ---
 
 
