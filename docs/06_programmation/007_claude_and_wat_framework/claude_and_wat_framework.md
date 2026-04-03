@@ -43,7 +43,7 @@ last_modified_date: 2026-04-03 10:30:00
 
 * Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%})** when you're *building* something that lasts.
 * Use a **WAT Task Pipeline** when you're *processing* something one-off.
-* We apply WAT Task Pipeline principles to create a *Daily Tech Digest Generator*
+* Here, we apply WAT Task Pipeline principles to create a *Daily Tech Digest Generator*
 * Keep `CLAUDE.md` independent of the task pipeline
 * `docs/project_goal.md` is specific to the task pipeline
 * Enable **Plan Mode** (`SHIFT+TAB`) before any implementation and **read** the plan before accepting it
@@ -162,8 +162,11 @@ In a task pipeline, once the deliverable is consumed, it's done. In SDD, the del
 
 * Windows 11 (but it should work similarly on other platforms)
 * VSCode
-* Claude
-* uv
+    * `winget install --id Microsoft.VisualStudioCode -e`
+* Claude Code
+    * `irm https://claude.ai/install.ps1 | iex`
+* [uv]({%link docs/06_programmation/python/005_uv/uv.md%}) (because I want to use Python)
+    * `winget install astral-sh.uv`
 
 
 
@@ -177,9 +180,12 @@ In a task pipeline, once the deliverable is consumed, it's done. In SDD, the del
 
 Here, we apply WAT Task Pipeline principles to create what I call a *Daily Tech Digest Generator*. The idea is to scan the web for new articles, news, and RSS feeds, then rank and filter the results. Finally, the system summarizes the selected content and generates a Markdown report: essentially a pipeline you might want to run every morning at 7:30.
 
-
+Open a terminal (`WIN + X` then press `I`)
 
 ```powershell
+# move in your temp folder
+cd $env:tmp
+
 # Create a folder for the new project
 new-item -ItemType Directory daily_tech_digest_02
 cd daily_tech_digest_02
@@ -195,11 +201,11 @@ code .
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img01.webp"
-    alt="Launch VSCode from File Explorer"
+    alt="Alternatively you can launch VSCode from File Explorer"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Launch VSCode from File Explorer</figcaption>
+<figcaption>Alternatively you can launch VSCode from File Explorer</figcaption>
 </figure>
 
 
@@ -224,13 +230,13 @@ You can start with the version below. Compared to other `CLAUDE.md` you can see:
 
 * This `CLAUDE.md` file is much longer than my `%USERPROFILE%/.claude/CLAUDE.md` (20 lines)
 * WAT Framework (the context) is explained upfront.
-* The access rules to the folder in the "project" are set and strict
-* There is a "Bootstrapping a New Project" which is mentioned in the first prompt (see lower)
+* The access rules to the folders in the "project" are set and strict
+* There is a "Bootstrapping a New Project" section which is mentioned in the first prompt (see lower)
 * The "How To Operate" section clearly explains how the agent is supposed to work
-* The "The Self-Improvement Loop" explains how to improve the workflow over time
+* The "The Self-Improvement Loop" section explains how to improve the workflow over time
 * At the end the File Structure, the Execution Environment and the Dependency Management are covered.
 
-Read it `CLAUDE.md`. I can't do it for you. Don't trust me. What works for me may not work for you. Spend lot of time on it at the beginning. This is **your** `CLAUDE.md`. Keep it task pipeline agnostic, use it from one projet to another and improve it over time.
+Read `CLAUDE.md` file 10_000 times. I can't do it for you. This is your baby. Don't trust me. What works for me may not work for you. Spend lot of time on it at the beginning. Again, this is **your** `CLAUDE.md`. Keep it task pipeline agnostic, use it from one projet to another and improve it over time.
 
 
 ### Notes
@@ -430,7 +436,7 @@ At the end Claude created the directories and confirmed its role.
 ### Note
 {: .no_toc }
 
-I'm wondering if I should "improve" `CLAUDE.md` so that it manage these files at the end of the bootstrapping phase.
+I'm wondering if I should "improve" `CLAUDE.md` so that it manages these 2 files at the end of the bootstrapping phase.
 
 
 
@@ -593,9 +599,9 @@ Propose a small, end-to-end version of the system that:
 <!-- ###################################################################### -->
 ## Step 04: Second prompt
 
-1. `/clear` conversation
+1. `/clear` the conversation
 1. ⚠️ **TURN ON PLAN MODE**: `SHIFT+TAB`
-1. Paste the content of `docs/project_goal.md` and use it as a **prompt**.
+1. Paste the content of `docs/project_goal.md` in Claude code and use it as a **prompt**.
 1. Answer Claude questions
 
 
@@ -614,7 +620,8 @@ When the plan is ready:
 
 1. **Read the plan**. Do not accept blindly.
 1. Ask questions or require improvement. For example : "Update the plan so that we can specify a time window (ex 24H, 48H)"
-1. When you are satisfied, ask Claude to make a copy of the plan in `out/plan_00.md` folder
+1. Don't be afraid to leave (hit `ESC` twice) the process. Then you can discuss with Claude, clarify points... Let it modify the plan... Once you are happy, you can always ask to "continue" the plan.
+1. At the very end, when you are satisfied, ask Claude to make a copy of the plan in `out/plan_00.md` folder
     - Remember, Claude cannot copy the plan in `docs/` (but you can).
 
 
@@ -640,11 +647,11 @@ When the plan is ready:
 </figure>
 
 
-Read the summary and execute the 2 manual steps
+**Read** the summary and execute the 2 manual steps
 
 1. ⚠️ `ANTHROPIC_API_KEY`. Go to the [Claude Console](https://platform.claude.com/dashboard), generate a key and paste it in the `.env` file
-    - Make sure some credits are available.
-1. Run `uv add feedparser anthropic python-dotenv` in a second terminal (`CTRL+SHIFT+ù`)
+    - Make sure some credits are available. Since Haiku is used to summarize the articles it will cost few cents, not more.
+1. in a second terminal (`CTRL+SHIFT+ù`) run the command `uv add feedparser anthropic python-dotenv`
 
 Test the tools in order
 1. `uv run python tools/fetch_rss.py --hours 24`
@@ -652,6 +659,7 @@ Test the tools in order
 1. `uv run python tools/summarize_articles.py`
 1. `uv run python tools/render_digest.py`
 
+At the end the report of the day is in the `out/` folder.
 
 TADAA!
 
@@ -694,7 +702,9 @@ None of this is a failure. It's a backlog.
 ### How to improve: ask Claude, tool by tool
 {: .no_toc }
 
-Here's the key insight: **each tool is independent**. We don't need to rewrite the pipeline. We refine one tool at a time, verify it, and move on. For example:
+Here's the key insight: **each tool is independent**.
+
+We don't need to rewrite the pipeline. We refine one tool at a time, verify it, and move on. For example:
 
 ```text
 # Improve filter_articles.py
@@ -708,12 +718,12 @@ similarity. Keep the same input/output contract (.tmp/fetched.json
 
 That prompt is specific, bounded, and testable. Claude improves one tool, we test it, done. This is what "independent tools" provide: surgical iteration without regression risk.
 
-Apply the same pattern to scheduling (add a `tools/schedule_digest.ps1`), deduplication (a hash cache in `.tmp/seen.json`), or email delivery (a `tools/send_email.py` wrapping SMTP or a Gmail API tool).
+Apply the same pattern to scheduling (add a `tools/schedule_digest.ps1`), deduplication (a hash cache in `.tmp/seen.json`), or email delivery (a `tools/send_email.py` wrapping SMTP or a Gmail API tool). And do not think you have to code. No, no, no my friend. You have to write a prompt (see above) and ask Claude to do it for you.
 
 ### What to build next
 {: .no_toc }
 
-A few natural extensions, in roughly increasing complexity:
+Again the Daily Tech Digest Generator is an example used as an illustration but... If we want to got further, here are few natural extensions, in roughly increasing complexity:
 
 1. **Scheduling**: `tools/schedule_digest.ps1` using Windows Task Scheduler. One tool, no new dependencies.
 2. **Semantic filtering**: Replace keyword matching with embedding-based relevance. Higher signal, same interface.
@@ -734,7 +744,7 @@ None of these require touching the agent logic or `CLAUDE.md`. That's the point.
 
 We built a working Daily Tech Digest Generator in one session: four independent tools chained in a pipeline, coordinated by an agent, governed by a `CLAUDE.md`. That's the proof of concept. Now the real work begins.
 
-### What we actually did
+### 1. What we actually did
 {: .no_toc }
 
 Let's step back and look at the structure:
@@ -747,7 +757,7 @@ Let's step back and look at the structure:
 That separation is the whole point. The pipeline didn't exist before we started, but the *frame* did. That frame is what you carry forward.
 
 
-### `CLAUDE.md` is the real deliverable
+### 2. `CLAUDE.md` is the real deliverable
 {: .no_toc }
 
 The digest is disposable. The `CLAUDE.md` is not.
@@ -758,7 +768,7 @@ Concretely: after this project, update `CLAUDE.md` with what *you* learned. Did 
 
 The `CLAUDE.md` in this article is a starting point. Yours should diverge from it.
 
-### `project_goal.md` is what changes
+### 3. `project_goal.md` is what changes
 {: .no_toc }
 
 When you start the next pipeline (a weekly competitive analysis, a GitHub trending tracker, a changelog summarizer), keep `CLAUDE.md` as-is, and rewrite only `docs/project_goal.md`. The bootstrapping prompt stays the same. The planning protocol stays the same. Only the goal changes.
