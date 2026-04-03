@@ -1271,6 +1271,7 @@ And perhaps that is the most interesting takeaway: the future of programming is 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
+* [Claude and the WAT Task Pipeline]({%link docs\06_programmation\007_claude_and_wat_framework\claude_and_wat_framework.md%})
 * [Spec Kit repo](https://github.com/github/spec-kit)
 
 <figure style="max-width: 560px; margin: auto;">
