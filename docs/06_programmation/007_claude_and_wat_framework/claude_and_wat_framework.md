@@ -41,7 +41,7 @@ last_modified_date: 2026-04-02 15:00:00
 ## TL;DR
 {: .no_toc }
 
-* Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%}#ANCHOR)** when you're *building* something that lasts.
+* Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%})** when you're *building* something that lasts.
 * Use a **WAT Task Pipeline** when you're *processing* something one-off.
 
 
@@ -88,12 +88,12 @@ last_modified_date: 2026-04-02 15:00:00
 <!-- ###################################################################### -->
 ## SDD vs WAT Task Pipeline
 
-What's the Difference and When to Use Which?
+What's the difference between SDD (Spec-Driven Development) anf WAT Task Pipeline (WAT stands for Workflows, Agents, Tools) and when to use which?
 
 ### The Core Distinction
 {: .no_toc }
 
-Both SDD and task pipelines use the **WAT framework** (Workflows, Agents, Tools) a three-layer architecture that separates AI reasoning from deterministic code execution. The difference is in *what we are building* and *what we deliver*.
+Both [SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%}) and WAT Task Pipelines use the **WAT framework** (Workflows, Agents, Tools) a three-layer architecture that separates AI reasoning from deterministic code execution. The difference is in *what we are building* and *what we deliver*.
 
 **SDD (Spec-Driven Development)** is a methodology for **building software guided by specifications**. The final artifact is **code that runs in production**: a Rust binary, an API, a web application. The specs describe an architecture, contracts, and business behaviors. The agent (Claude Code) *builds* something durable.
 
@@ -115,7 +115,7 @@ We *could* put everything in a single file. But splitting into separate steps gi
 - **Composability**: we reuse "summarize articles" in another pipeline.
 - **Parallelism**: independent steps can run concurrently.
 
-Same logic as Powershell pipes: `fetch | parse | summarize | synthesize`. A single script *works*, but a pipeline *composes and maintains itself*.
+Same logic as Powershell pipes: `fetch | parse | summarize | synthesize` where objects (think of `.md` or `.json` files) go down the flow, from one step to the other. A single script *works*, but a pipeline *composes and maintains itself*.
 
 
 ### The "Who Complains About What" Test
@@ -159,10 +159,9 @@ In a task pipeline, once the deliverable is consumed, it's done. In SDD, the del
 <!-- ###################################################################### -->
 ## Prerequisites
 
-* Windows 11 (but should work similarly on other platforms)
+* Windows 11 (but it should work similarly on other platforms)
 * VSCode
 * Claude
-* Python
 * uv
 
 
@@ -657,6 +656,7 @@ TADAA!
 <!-- ###################################################################### -->
 ## Webliography
 
+* [Spec-Driven Development with Rust and GitHub Spec Kit]({%link docs/06_programmation/rust/027_speckit/speckit.md%})
 * [What is WAT Framework](https://www.mindstudio.ai/blog/what-is-wat-framework-workflows-agents-tools)
 
 
@@ -664,13 +664,13 @@ TADAA!
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/saggDHHnmtQ"
-    title="I'm a legend"
+    title="Master 95% of Claude Code in 36 Mins (as a beginner)"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    I'm a legend
+    Master 95% of Claude Code in 36 Mins (as a beginner)
 </figcaption>
 </figure>
 

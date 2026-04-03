@@ -1272,3 +1272,18 @@ And perhaps that is the most interesting takeaway: the future of programming is 
 <!-- ###################################################################### -->
 ## Webliography
 * [Spec Kit repo](https://github.com/github/spec-kit)
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/nnUMJX9013Y"
+    title="The new spec-driven workflow is a mess..."
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    The new spec-driven workflow is a mess...
+</figcaption>
+</figure>
+
