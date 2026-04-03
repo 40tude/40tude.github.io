@@ -26,9 +26,9 @@ last_modified_date: 2026-04-03 08:00:00
 
 
 
-<h2 align="center">
+<!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
-</h2>
+</h2> -->
 
 
 
@@ -44,8 +44,10 @@ last_modified_date: 2026-04-03 08:00:00
 * Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%})** when you're *building* something that lasts.
 * Use a **WAT Task Pipeline** when you're *processing* something one-off.
 * We apply WAT Task Pipeline principles to create a *Daily Tech Digest Generator*
-* Keep `CLAUDE.md` independent of the task pipelin
+* Keep `CLAUDE.md` independent of the task pipeline
 * `docs/project_goal.md` is specific to the task pipeline
+* Enable **Plan Mode** (`SHIFT+TAB`) before any implementation and **read** the plan before accepting it
+* Tools are independent: improve them one at a time by prompting Claude with a bounded, testable request
 
 
 
@@ -79,10 +81,6 @@ last_modified_date: 2026-04-03 08:00:00
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Introduction
 
 
 
@@ -674,8 +672,97 @@ TADAA!
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+## Next?
+
+From the usability stand point, first thing first let's ask Claude to write a `run_me.ps1` script to run the pipe but...
+
+### Be honest: this pipeline is weak
+{: .no_toc }
+
+The first version works, but it's naive. Keyword-based filtering misses context. RSS is not the whole web. A single Markdown file is not a delivery mechanism. Here's a short list of what's broken or missing:
+
+| Problem | Impact |
+|---|---|
+| Keyword filtering catches false positives | Low signal-to-noise in the digest |
+| No deduplication across feeds | Same article appears twice |
+| Summarization uses no context window management | Long articles get truncated silently |
+| No scheduling | You have to run it manually every morning |
+| Output is a local `.md` file | Not actionable unless you open it |
+
+None of this is a failure. It's a backlog.
+
+### How to improve: ask Claude, tool by tool
+{: .no_toc }
+
+Here's the key insight: **each tool is independent**. You don't need to rewrite the pipeline. You refine one tool at a time, verify it, and move on. For example:
+
+```text
+# Improve filter_articles.py
+The current tool uses keyword matching. Rewrite it to use semantic
+similarity via the Claude API. The tool should embed each article
+title+description and compare it against a user-defined interest
+profile stored in config/interests.md. Threshold: 0.75 cosine
+similarity. Keep the same input/output contract (.tmp/fetched.json
+-> .tmp/filtered.json).
+```
+
+That prompt is specific, bounded, and testable. Claude improves one tool, you test it, done. This is what "independent tools" buys you: surgical iteration without regression risk.
+
+Apply the same pattern to scheduling (add a `tools/schedule_digest.ps1`), deduplication (a hash cache in `.tmp/seen.json`), or email delivery (a `tools/send_email.py` wrapping SMTP or a Gmail API tool).
+
+### What to build next
+{: .no_toc }
+
+A few natural extensions, in roughly increasing complexity:
+
+1. **Scheduling**: `tools/schedule_digest.ps1` using Windows Task Scheduler. One tool, no new dependencies.
+2. **Semantic filtering**: Replace keyword matching with embedding-based relevance. Higher signal, same interface.
+3. **Source expansion**: Add Hacker News API, GitHub Trending, or Lobste.rs. Each source = one new tool.
+4. **Email delivery**: `tools/send_email.py` using SMTP or a transactional API. The digest lands in your inbox at 7:30.
+5. **Multi-topic profiles**: `config/interests.md` with named personas. Run once, get three tailored digests.
+
+None of these require touching the agent logic or `CLAUDE.md`. That's the point.
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Conclusion
 
+We built a working Daily Tech Digest Generator in one session: four independent tools chained in a pipeline, coordinated by an agent, governed by a `CLAUDE.md`. That's the proof of concept. Now the real work begins.
+
+### What we actually did
+{: .no_toc }
+
+Step back and look at the structure:
+
+- `CLAUDE.md` defines the agent's operating rules, tool conventions, and environment. It is **task-agnostic** and reusable across any WAT pipeline.
+- `docs/project_goal.md` holds the task-specific intent: what we want, constraints, and the planning protocol.
+- Four tools (`fetch_rss.py`, `filter_articles.py`, `summarize_articles.py`, `render_digest.py`) implement one deterministic operation each.
+- The agent reads workflows and sequences tool calls. No magic, no monolith.
+
+That separation is the whole point. The pipeline didn't exist before we started, but the *frame* did. That frame is what you carry forward.
+
+
+### `CLAUDE.md` is the real deliverable
+{: .no_toc }
+
+The digest is disposable. The `CLAUDE.md` is not.
+
+Every iteration teaches you something: which instructions Claude ignores, which constraints it violates, which sections are ambiguous. When you fix `CLAUDE.md`, you fix every future pipeline that inherits it. The 200-line file you refine over ten projects is worth more than any single digest generator.
+
+Concretely: after this project, update `CLAUDE.md` with what you learned. Did Claude create files outside the allowed directories? Tighten the boundaries. Did it install packages itself? Add an explicit prohibition. Did it produce workflows without being asked? Add a "wait for explicit instruction" rule.
+
+The `CLAUDE.md` in this article is a starting point. Yours should diverge from it.
+
+### `project_goal.md` is what changes
+{: .no_toc }
+
+When you start the next pipeline (a weekly competitive analysis, a GitHub trending tracker, a changelog summarizer), copy the project folder, keep `CLAUDE.md` as-is, and rewrite only `docs/project_goal.md`. The bootstrapping prompt stays the same. The planning protocol stays the same. Only the goal changes.
+
+That's the leverage: a stable operating framework applied to an infinite surface of one-shot tasks.
 
 
 
