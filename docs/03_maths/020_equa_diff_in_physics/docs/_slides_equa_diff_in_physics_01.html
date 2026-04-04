@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -12,14 +11,13 @@
     <link rel="stylesheet" href="./dist/theme/night.css" id="theme" />
     <link rel="stylesheet" href="./css/highlight/monokai.css" />
 
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="reveal">
-        <div class="slides">
-            <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
-                <textarea data-template>
-
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
 
 <!-- local testing   : reveal-md .\_slides_equa_diff_in_physics_01.md --watch -->
 <!-- generates slides: reveal-md .\_slides_equa_diff_in_physics_01.md --static docs + REMOVE UNDESCORE-->
@@ -146,7 +144,7 @@ Because these equations describe
 <!-- * More atoms means more decay events per second. -->
 * Solution (exponential decay): $N(t) = N_0 e^{-\lambda t}$
 
-<img src="./assets/img09.webp" style="max-height: 30vh;">
+<img src="assets/img09.webp" style="max-height: 30vh;">
 
 
 
@@ -431,8 +429,8 @@ Classical mechanics **emerges** from quantum mechanics as a limit.
 
 
           </textarea>
-            </section>
-        </div>
+        </section>
+      </div>
     </div>
 
     <script src="./dist/reveal.js"></script>
@@ -445,63 +443,62 @@ Classical mechanics **emerges** from quantum mechanics as a limit.
     <script src="./plugin/notes/notes.js"></script>
     <script src="./plugin/math/math.js"></script>
     <script>
-        function extend() {
-            var target = {};
-            for (var i = 0; i < arguments.length; i++) {
-                var source = arguments[i];
-                for (var key in source) {
-                    if (source.hasOwnProperty(key)) {
-                        target[key] = source[key];
-                    }
-                }
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
             }
-            return target;
+          }
         }
+        return target;
+      }
 
-        // default options to init reveal.js
-        var defaultOptions = {
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'default', // none/fade/slide/convex/concave/zoom
-            slideNumber: true,
-            highlight: {
-                highlightOnLoad: false
-            },
-            plugins: [
-                RevealMarkdown,
-                RevealHighlight,
-                RevealZoom,
-                RevealNotes,
-                RevealMath
-            ]
-        };
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
 
-        // options from URL query string
-        var queryOptions = Reveal().getQueryHash() || {};
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
 
-        var options = extend(defaultOptions, { "transition": "slide", "slideNumber": true, "controls": true, "progress": true, "center": false, "mathjax3": { "mathjax": "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js", "loader": { "load": ["output/chtml"] } }, "_": [".\\_slides_equa_diff_in_physics_01.md"], "static": "docs" }, queryOptions);
+      var options = extend(defaultOptions, {"transition":"slide","slideNumber":true,"controls":true,"progress":true,"center":false,"mathjax3":{"mathjax":"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js","loader":{"load":["output/chtml"]}},"_":[".\\_slides_equa_diff_in_physics_01.md"],"static":"docs"}, queryOptions);
     </script>
 
 
     <script>
-        Reveal.initialize(options);
-        Reveal.addEventListener('ready', function (event) {
-            const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
-            const hlp = Reveal.getPlugin('highlight');
-            blocks.forEach(hlp.highlightBlock);
-        });
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
     </script>
 
     <script>
-        const mermaidOptions = extend({ startOnLoad: false }, {});
-        mermaid.startOnLoad = false;
-        mermaid.initialize(mermaidOptions);
-        const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
-        Reveal.addEventListener('ready', cb);
-        Reveal.addEventListener('slidetransitionend', cb);
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
     </script>
-</body>
-
+  </body>
 </html>
