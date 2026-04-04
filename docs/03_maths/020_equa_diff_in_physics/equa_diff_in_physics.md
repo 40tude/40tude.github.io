@@ -41,7 +41,7 @@ Building intuition from local laws, differential equations, and variational prin
 ## TL;DR
 {: .no_toc }
 
-A <a href="{% link ./docs/_slides_equa_diff_in_physics_01.html %}" target="_blank">slide deck</a> is available.
+A <a href="{%link docs/03_maths/020_equa_diff_in_physics/docs/_slides_equa_diff_in_physics_01.html%}" target="_blank">slide deck</a> is available.
 
 **Why derivatives and differential equations?**
 * First-order derivatives represent "state change" (velocity/flow)
