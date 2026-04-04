@@ -15,7 +15,8 @@ revealOptions:
         - output/chtml
 ---
 
-<!-- reveal-md .\_slides_equa_diff_in_physics.md -->
+<!-- local testing   : reveal-md .\_slides_equa_diff_in_physics.md --watch                           -->
+<!-- generates slides: reveal-md .\_slides_equa_diff_in_physics.md --static docs + REMOVE UNDESCORE  -->
 
 <style>
   .reveal { font-size: 28px; }
@@ -23,6 +24,7 @@ revealOptions:
   .reveal h2 { font-size: 1.1em; text-align: left; }
   .reveal h3 { font-size: 0.9em; text-align: left; }
   .reveal p, .reveal li { font-size: 0.9em; text-align: left; }
+  .reveal ul, .reveal ol { display: block; }
   .reveal blockquote { font-size: 0.85em; }
   .reveal table { font-size: 0.8em; }
   .reveal pre, .reveal code { font-size: 0.75em; }
@@ -59,713 +61,367 @@ revealOptions:
 
 <!-- .slide: class="bumper" -->
 
-<!-- =====================================================
-     TITLE
-     ===================================================== -->
-
 # From Derivatives to Action
 
-## How Physics Describes Change
+## How Physics Describes Changes
 
-> Building intuition from local laws, differential equations,
-> and variational principles
+<!-- > Building intuition from local laws, differential equations,
+> and variational principles -->
 
 <div align="center">
 <small>40tude · 2026</small>
 </div>
 
----
+<img src="assets/img00.webp" style="max-height: 30vh;">
 
-<!-- COVER IMAGE -->
 
-<img src="assets/img00.webp" class="img-full">
 
-> Among infinitely many possible trajectories, nature selects
-> the one that **extremizes the action**.
 
----
 
-# Roadmap
 
-1. Why derivatives appear in physics
-2. Heat, waves & quantum mechanics, a shared skeleton
-3. Variational principles, the global view
-4. Principle of stationary action & the Lagrangian
-5. Examples: free particle, gravity, harmonic oscillator
-6. Deriving $F = ma$ from $\delta S = 0$
-7. Maxwell's equations from a single action
-8. Feynman path integrals & the quantum connection
+
+
+
+
+
+
+
+
 
 ---
-
-<!-- =====================================================
-     PART 1 — WHY DERIVATIVES?
-     ===================================================== -->
 
 <!-- .slide: class="bumper" -->
 
-# Part 1
+# Why Derivatives and Differential Equations?
 
-## Why Derivatives and Differential Equations?
 
----
 
-# Physics Describes **Change**
-
-Most physical phenomena involve change:
-
-- Position changes with time
-- Temperature changes in space
-- Velocity changes due to forces
-- Electric fields vary in space and time
-
-The cleanest tool to describe change is the **derivative**.
-
-$$v = \frac{dx}{dt} \qquad a = \frac{d^2x}{dt^2}$$
 
 ---
+# Most physical phenomena involve change
 
-# Velocity & Acceleration
+* Position changes with time
+* Temperature changes in space
+* Velocity changes due to forces
+* Electric fields vary in space and time
 
-<img src="assets/img21.webp">
+If $x(t)$ expresses where we are in function of time
 
-<small>Position, speed and acceleration, the first two derivatives of $x(t)$</small>
+* Velocity: $v = \frac{dx}{dt}$
+* Acceleration: $a = \frac{d^2x}{dt^2}$
+
+When describing changes (in space in time...) **derivatives** appear naturally.
+
+
+
 
 ---
+# Why equations are first or second order?
 
-# First-Order Equations → **Flow**
+Because these equations describe
+- how a system's state evolves
+- based on its current configuration
 
-When the *rate of change* depends on the *current value*:
 
-$$\frac{dN}{dt} = -\lambda N \qquad \text{(radioactive decay)}$$
 
-Solution: exponential decay $N(t) = N_0 e^{-\lambda t}$
+---
+# Why first-order equations?
+
+* Where the rate of change depends on the current value.
+    * Radioactive decay
+    * Heat transfer (Newton’s Law of Cooling)
+    * Percentages ($\frac{dS}{dt} = r \cdot S$)
+* The universe is interested in how the "now" dictates the "next moment".
+
+
+---
+# Example: radioactive decay
+
+* We **measure** that the speed at which nuclei disappear is proportional to how many remain.
+* Translation: $\frac{dN}{dt} = -\lambda N$
+<!-- * More atoms means more decay events per second. -->
+* Solution (exponential decay): $N(t) = N_0 e^{-\lambda t}$
 
 <img src="assets/img09.webp" style="max-height: 30vh;">
 
-<small>The simplest first-order ODE hidden behind a percentage!</small>
+
+
+
+---
+# Why second-order equations?
+
+* Because of Newton’s Second Law: $F = ma$
+* Which explains that the Force changes the rate of change of the position
+* Any law involving force (from gravity to electromagnetism) is naturally second-order
+* In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
+
 
 
 ---
+# The Physics of "Memory"
+
+* A force doesn't change a position directly, it changes the *rate of change* of the position
+* $F = m \frac{dv}{dt} = m \frac{d^2x}{dt^2}$
+* To predict the future state at $t + \Delta t$, we need to know
+    1.  Where the object is ($x$)
+    2.  How it got there (Velocity: $\dot{x}$). The "memory" of its previous motion, which dictates its momentum.
+* If the universe were governed by first-order equations ($F = mv$), inertia wouldn't exist
 
 
-# Exponential Decay — Python
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
 
-# Parameters
-lambda_ = 0.5   # decay constant
-N0 = 10         # initial quantity
 
-# Time array
-t = np.linspace(0, 10, 200)
 
-# Exponential decay solution
-N = N0 * np.exp(-lambda_ * t)
-
-# Numerical derivative dN/dt
-dt = t[1] - t[0]
-dN_dt = np.gradient(N, dt)
-
-# Plot
-plt.figure(figsize=(8, 5))
-plt.plot(t, N, label="N(t) (quantity)")
-plt.plot(t, dN_dt, linestyle="--", label="dN/dt (rate of change)")
-plt.axhline(0)
-plt.title("First derivative as rate of change (exponential decay)")
-plt.xlabel("Time")
-plt.ylabel("Value")
-plt.legend()
-plt.show()
-```
 
 ---
-
-
-# Second-Order Equations → **Dynamics**
-
-Newton's 2nd law states that force changes the **rate of change** of position:
-
-$$F = m a = m \frac{d^2x}{dt^2}$$
-
-<img src="assets/img07.webp" style="max-height: 30vh;">
-
----
-
-# The Physics of **"Memory"**
-
-A second-order system needs *two* initial conditions to predict the future:
-
-| What we need | Meaning |
-|---|---|
-| Position $x(t_0)$ | Where it is |
-| Velocity $\dot{x}(t_0)$ | Where it came from |
-
-> A first-order universe has **no inertia**.
-> A second-order universe **remembers its velocity**.
-
----
-
-# How Did Newton Find $F = ma$?
-
-**Galileo (1589+)**, 100 years before Newton, measured:
-
-- Objects fall with *constant* acceleration
-- Motion without forces ⟹ *constant* velocity
-
-Experiments then showed:
-
-$$F \times 2 \Rightarrow a \times 2 \qquad m \times 2 \Rightarrow a \div 2$$
-
-$$\therefore \quad a \propto \frac{F}{m} \quad \Longrightarrow \quad F = ma$$
-
-> **An empirical law, not a guess.**
-
----
-
-# Why Physics Prefers **Local** Laws
-
-Instead of
-> *"Temperature everywhere depends on the whole system"*
-
-nature says
-> *"What happens here depends on what is happening just next to it."*
-
-$$\text{locality} \quad \Longrightarrow \quad \text{derivatives}$$
-
----
-
-<!-- =====================================================
-     PART 2 — HEAT EQUATION
-     ===================================================== -->
 
 <!-- .slide: class="bumper" -->
 
-# Part 2
+# Why the same equations everywhere?
 
-## A Concrete Example: The Heat Equation
 
----
 
-# Two Physical Statements
-
-**1. Fourier's Law:** heat flows from hot to cold:
-
-$$q = -k \nabla T$$
-
-**2. Energy conservation:** what enters must stay or leave:
-
-$$\frac{\partial T}{\partial t} = -\nabla \cdot q$$
-
-Combine them → **the heat equation**:
-
-$$\frac{\partial T}{\partial t} = \kappa \nabla^2 T$$
 
 ---
+# Three phenomena, one structure
 
-# The Laplacian $\nabla^2$, an Intuition
+Different fields, same pattern.
+<!-- Time change = spatial curvature: -->
 
-$$\nabla^2 T = \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2}$$
-
-It measures **how a point differs from its neighbors**:
-
-| Sign of $\nabla^2 T$ | Meaning |
-|---|---|
-| $< 0$ | Hotter than surroundings → heat flows **out** |
-| $> 0$ | Colder than surroundings → heat flows **in** |
-
-<img src="assets/img10.webp" style="max-height: 30vh;">
-
----
-
-<!-- =====================================================
-     PART 3 — SHARED SKELETON
-     ===================================================== -->
-
-<!-- .slide: class="bumper" -->
-
-# Part 3
-
-## Why Heat, Waves & Quantum Mechanics Look So Similar
-
----
-
-# One Skeleton, Three Theories
-
-The pattern **time evolution = spatial curvature** appears in:
+* Temperature: $T(x,t)$
+* String displacement: $y(x,t)$
+* Quantum wavefunction: $\psi(x,t)$
 
 | System | Equation | Behavior |
-|---|---|---|
+| ------- | -------------------------------------------- | ------------ |
 | Heat | $\partial_t T = \kappa \nabla^2 T$ | Diffusion |
 | Waves | $\partial_t^2 u = c^2 \nabla^2 u$ | Oscillations |
-| Quantum | $i\hbar \partial_t\psi = -\frac{\hbar^2}{2m}\nabla^2\psi + V\psi$ | Probability waves |
+| Quantum | $i\partial_t \psi = -\nabla^2 \psi + V\psi$ | Prob. waves |
 
-> Same mathematical ingredient, different physics.
+Same math ingredient, different physics.
 
----
-
-# Why the Laplacian Everywhere?
-
-**1. Locality:** atoms interact only with neighbors.
-The Laplacian compares a point to its neighbors.
-
-**2. Symmetry:** laws must be invariant under translations and rotations.
-The simplest such operator is $\nabla^2$.
-
-**3. Energy minimization:** many systems minimize energy.
-Energy contains $(\nabla u)^2$; minimizing it yields $\nabla^2 u$.
 
 ---
+# The Laplacian $\nabla^2$
+## Measuring local difference
 
-# Hills, Valleys & the Second Derivative
+The second spatial derivative measures **curvature**: how different a point is from its neighbors.
 
-<img src="assets/img08.webp">
+* $\nabla^2 u > 0$ : point is colder/lower than neighbors: heat/force flows in
+* $\nabla^2 u < 0$ : point is hotter/higher than neighbors: heat/force flows out
 
-<small>$u'' > 0$ → valley &nbsp;|&nbsp; $u'' < 0$ → hill &nbsp;|&nbsp; Many physical processes react to these differences.</small>
+In 1D: $\nabla^2 u = \frac{d^2u}{dx^2}$
 
----
+In 3D: $\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}$
 
-# Three Deep Reasons for Differential Equations
-
-1. **Locality:** what happens here depends on nearby values → derivatives in space
-2. **Continuous time evolution:** future depends on current rate of change → derivatives in time
-3. **Conservation laws:** energy, momentum, charge → expressed as divergences and derivatives
 
 ---
+# Why?
+## Locality + Symmetry + Conservation
 
-<!-- =====================================================
-     PART 4 — VARIATIONAL PRINCIPLES
-     ===================================================== -->
+Physics equations are the simplest ones compatible with:
+
+1. **Locality**: what happens here depends on neighbors, not the whole universe
+2. **Symmetry**: laws must be invariant under translations and rotations
+3. **Conservation laws**: energy, momentum, charge
+
+The simplest differential operator satisfying all three constraints is the **Laplacian** $\nabla^2$.
+
+Which explains why the same equations appear in heat, waves, quantum mechanics, and electromagnetism.
+
+
+
+
+
+---
 
 <!-- .slide: class="bumper" -->
 
-# Part 4
+# From local to global: variational principles
 
-## A Deeper Perspective: Variational Principles
 
----
 
-<img src="assets/img02.webp" class="img-full">
-
-<small>From differential equations to variational principles,two languages for the same physics.</small>
 
 ---
+# Two languages for the same physics
 
-# Local vs Global Description
+**Local (differential equations):**
+> If the system is like *this* right now, it will start changing like *that*.
 
-| Local (Newton/Leibniz) | Global (Lagrange/Hamilton) |
-|---|---|
-| "Force causes acceleration at every instant" | "Among all possible paths, find the special one" |
-| Differential equation | Extremum of a functional |
-| Step by step in time | The entire trajectory at once |
+Step-by-step evolution from one instant to the next.
 
-> **Both descriptions are equivalent.**
+**Global (variational principle):**
+> Among all possible paths connecting A to B, which one does nature choose?
+
+The entire trajectory is considered at once.
+
+Both languages are **equivalent**, they encode the same physics.
+
 
 ---
-
-# What is a Variational Principle?
+# What is a variational principle?
 
 Any statement of the form:
 
-> *The physical solution is the one that makes a certain quantity **stationary**.*
+> *The physical solution is the one that makes a certain quantity stationary.*
 
 $$\delta \mathcal{F} = 0$$
 
-where $\mathcal{F}$ is a **functional** (a function of functions).
+Historical first. Fermat's principle (~1660):
 
-Examples beyond physics: shortest path (geodesics), minimal surfaces, optimal control...
+> *Light follows the path of stationary travel time.*
 
----
+This explains both reflection and refraction from a single principle.
 
-# Why Extremize Anything?
+From optics to mechanics: Maupertuis, Euler, Lagrange, Hamilton all searched for the same idea.
 
-Extremizing an integral is a **compact, global way to encode differential equations**.
 
-For a functional $S[q] = \int_{t_1}^{t_2} L(q,\dot{q},t) dt$,
-the condition $\delta S = 0$ with fixed endpoints gives the **Euler–Lagrange equations**:
 
-$$\frac{d}{dt} \left(\frac{\partial L}{\partial \dot{q}}\right) - \frac{\partial L}{\partial q} = 0$$
 
-> Not new physics, a more **elegant reformulation**.
+
+
 
 ---
-
-<!-- =====================================================
-     PART 5 — STATIONARY ACTION
-     ===================================================== -->
 
 <!-- .slide: class="bumper" -->
 
-# Part 5
+# The principle of stationary action
 
-## The Principle of Stationary Action
 
----
 
-# The Action $S$
-
-$$S = \int_{t_1}^{t_2} L(x,\dot{x},t) dt$$
-
-- $S$ is a **score** for each possible trajectory
-- $L$ is the **Lagrangian**, $L = T - V$ (kinetic minus potential energy)
-- The **real** trajectory makes $\delta S = 0$
-
-> "Stationary" = minimum, maximum, or saddle point.
-> Correct name: **principle of stationary action**.
 
 ---
+# Action: a "score" for each trajectory
 
-# Why $L = T - V$ and Not $T + V$?
+For any possible path, we compute a single number, the **action**:
 
-$T + V = E$ is **conserved**, the same for *all* paths.
-It cannot distinguish the real trajectory from the fake ones.
+$$S = \int_{t_1}^{t_2} L(x, \dot{x}, t)\, dt$$
 
-$T - V$ measures the **imbalance** between motion and position.
-Minimizing the cumulative imbalance recovers Newton's laws.
+* $L = T - V$ is the **Lagrangian** (kinetic minus potential energy)
+* $T = \frac{1}{2}m\dot{x}^2$ and $V(x)$ = potential energy
 
-> Historically: discovered by Lagrange & Hamilton through trial and error
-> to make Euler–Lagrange equations reproduce $F = ma$.
+The principle:
 
----
+> *The real trajectory is the one that makes $S$ stationary: $\delta S = 0$*
 
-# Historical Timeline
+Not arbitrary. $L = T - V$ is the **unique** combination that reproduces Newton's laws.
 
-| Person | Year | Contribution |
-|---|---|---|
-| Fermat | ~1660 | Least time in optics |
-| Maupertuis | 1744 | "Least action" $\int p dq$ |
-| Lagrange | 1760+ | Formalized $\delta S = 0$ |
-| Hamilton | 1834 | $S = \int (T-V) dt$ |
-| Noether | 1915 | Symmetry → conservation laws |
-| Feynman | 1948 | Path integral formulation |
+
+
+
+
 
 ---
+# From $\delta S = 0$ to $F = ma$
 
-<!-- =====================================================
-     PART 6 — EXAMPLES
-     ===================================================== -->
+Starting from $L = \frac{1}{2}m\dot{x}^2 - V(x)$ and requiring $\delta S = 0$:
 
-<!-- .slide: class="bumper" -->
+1. Vary the path: $x(t) \to x(t) + \varepsilon\eta(t)$, with $\eta(t_1) = \eta(t_2) = 0$
+2. Expand to first order, integrate by parts (boundary terms vanish)
+3. Require $\delta S = 0$ for **any** variation $\eta$
 
-# Part 6
+This gives the **Euler-Lagrange equation**:
 
-## Three Examples
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{x}} - \frac{\partial L}{\partial x} = 0$$
 
----
+Substituting $L$: $\quad m\ddot{x} = -\frac{dV}{dx} = F$
 
-# Example 1: Free Particle
-
-<img src="assets/img05.webp">
-
-No forces → $V=0$, so $L = \frac{1}{2}m\dot{x}^2$
 
 ---
+# Noether's theorem (1915)
 
-# Free Particle
+> *Every symmetry of the action gives a conservation law.*
 
-**Action:** $S = \int \frac{1}{2}m\dot{x}^2 dt$
-
-**Perturb the path:** $x \to x + \varepsilon\eta$ (with $\eta(t_1)=\eta(t_2)=0$)
-
-**First variation:** $\delta S = \varepsilon m\int \dot{x}\dot{\eta} dt$
-
-**Integration by parts:** $= -\varepsilon m\int \ddot{x} \eta dt$
-
-**For $\delta S = 0$ for any $\eta$:**
-
-$$\ddot{x} = 0 \quad \Longrightarrow \quad x(t) = vt + x_0$$
-
-> **Newton's First Law!**
-
----
-
-# Candidate Paths vs Minimum Action
-
-<img src="assets/img20.webp" class="img-full">
-
-<small>The physical straight-line path (blue) has the **minimum** action among all candidate paths.</small>
-
----
-
-# Example 2: Particle in Gravity
-
-<img src="assets/img06.webp">
-
-* $L = \frac{1}{2}m\dot{x}^2 - mgx$
-* Same variational procedure → $m\ddot{x} = -mg$ → $\ddot{x} = -g$
-* Free fall equation recovered
-
----
-
-# Example 3: Harmonic Oscillator
-
-<img src="assets/img17.webp">
-
-* Mass on a spring: $L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}kx^2$
-* Euler–Lagrange gives: $m\ddot{x} + kx = 0 \quad \Longrightarrow \quad x(t) = A\cos(\omega t + \varphi),  \omega = \sqrt{\frac{k}{m}}$
-
----
-
-# Harmonic Oscillator, Energy Exchange
-
-<img src="assets/img19.webp" class="img-full">
-
-<small>$T$ and $V$ exchange continuously. Total energy $E = T + V$ stays perfectly **constant**.</small>
-
----
-
-<!-- =====================================================
-     PART 7 — EULER-LAGRANGE & F=ma
-     ===================================================== -->
-
-<!-- .slide: class="bumper" -->
-
-# Part 7
-
-## Deriving $F = ma$ from $\delta S = 0$
-
----
-
-# The Euler–Lagrange Equation
-
-Starting from $\delta S = 0$ and integrating by parts:
-
-$$\frac{d}{dt} \left(\frac{\partial L}{\partial \dot{x}}\right) - \frac{\partial L}{\partial x} = 0$$
-
-For $L = \frac{1}{2}m\dot{x}^2 - V(x)$:
-
-$$\frac{\partial L}{\partial \dot{x}} = m\dot{x} \qquad \frac{\partial L}{\partial x} = -\frac{dV}{dx}$$
-
----
-
-# Newton's Second Law Recovered
-
-Substituting into the Euler–Lagrange equation:
-
-$$m\ddot{x} -  \left(-\frac{dV}{dx}\right) = 0$$
-
-$$m\ddot{x} = -\frac{dV}{dx} = F$$
-
-$$F = ma$$
-
-> Newton's laws are **consequences** of a deeper principle.
-
----
-
-<!-- .slide: data-visibility="hidden" -->
-<img src="assets/img01.webp" class="img-full">
-
-<small>Different paths to get back to base but only one is the most efficient.</small>
-
----
-
-<!-- =====================================================
-     PART 8 — MAXWELL'S EQUATIONS
-     ===================================================== -->
-
-<!-- .slide: class="bumper" -->
-
-# Part 8
-
-## Maxwell's Equations from a Single Action
-
----
-
-<img src="assets/img18.webp" class="img-full">
-
-<small>From particles to fields, the variational principle scales up.</small>
-
----
-
-# From Particles to Fields
-
-In mechanics, we vary a **trajectory** $x(t)$.
-
-In electromagnetism, we vary **fields** $\phi(x,t)$ and $\mathbf{A}(x,t)$:
-
-$$\mathbf{E} = -\nabla\phi - \frac{\partial\mathbf{A}}{\partial t} \qquad \mathbf{B} = \nabla\times\mathbf{A}$$
-
-The action integrates over **all of space and time**:
-
-$$S = \int \mathcal{L}(E, B, \rho, J)   d^3x dt$$
-
----
-
-# The Electromagnetic Lagrangian Density
-
-$$\mathcal{L} = \frac{\epsilon_0}{2} \left(E^2 - c^2 B^2\right) - \rho\phi - \mathbf{J}\cdot\mathbf{A}$$
-
-| Term | Meaning |
-|---|---|
-| $\frac{\epsilon_0}{2}E^2$ | Energy stored in the electric field |
-| $-\frac{\epsilon_0}{2}c^2 B^2$ | Energy stored in the magnetic field |
-| $-\rho\phi$ | Charge–scalar potential interaction |
-| $-\mathbf{J}\cdot\mathbf{A}$ | Current–vector potential interaction |
-
----
-
-# All Four Maxwell Equations from $\delta S = 0$
-
-**Vary $\phi$:**
-$$\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0} \quad \text{(Gauss's law)}$$
-
-**Vary $\mathbf{A}$:**
-$$\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \frac{1}{c^2}\frac{\partial\mathbf{E}}{\partial t} \quad \text{(Ampère–Maxwell)}$$
-
-**Built into the definitions of $\mathbf{E}$ and $\mathbf{B}$:**
-$$\nabla\cdot\mathbf{B} = 0 \qquad \nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}$$
-
----
-
-# A Beautiful Consequence: Light
-
-Remove charges ($\rho=0$, $\mathbf{J}=0$) and combine Maxwell's equations:
-
-$$\nabla^2\mathbf{E} = \frac{1}{c^2}\frac{\partial^2\mathbf{E}}{\partial t^2}$$
-
-This is a **wave equation**. Electromagnetic fields propagate at speed:
-
-$$c = \frac{1}{\sqrt{\mu_0\epsilon_0}}$$
-
-> **Maxwell predicted that light is an electromagnetic wave.**
-
----
-
-# Why the Action is So Powerful
-
-- **Dynamics:** describes how systems *evolve in time*
-- **Generality:** works for particles, fields, relativity, quantum theory
-- **Symmetry:** via Emmy Noether's theorem (1915):
-
-$$\text{Every symmetry of the action}  \Longrightarrow  \text{a conservation law}$$
-
-| Symmetry | Conservation Law |
-|---|---|
+| Symmetry | Conservation law |
+| -------- | ---------------- |
 | Time invariance | Energy |
 | Space invariance | Momentum |
-| Rotation invariance | Angular Momentum |
+| Rotation invariance | Angular momentum |
+
+Newton's laws do not *explain* why energy is conserved. The action framework does.
+
 
 ---
+# One principle, all of fundamental physics
 
-<!-- =====================================================
-     PART 9 — FEYNMAN
-     ===================================================== -->
+Starting from $\delta S = 0$ with the right Lagrangian:
+
+* **Newton's laws**: classical mechanics
+* **Maxwell's equations**: electromagnetism
+* **Schrodinger equation**: quantum mechanics
+* **Einstein's field equations**: general relativity
+
+Light itself is a consequence: combining Maxwell's equations from the EM action gives a wave equation with speed $c = \frac{1}{\sqrt{\mu_0\varepsilon_0}}$.
+
+
+
+
+---
 
 <!-- .slide: class="bumper" -->
 
-# Part 9
+# The quantum connection
 
-## The Quantum Connection: Feynman Path Integrals
+
+
 
 ---
+# Feynman path integral
+## All paths contribute
 
-# Classical vs Quantum
+Classical: one path, the one where $\delta S = 0$.
 
-**Classical:**
-The particle follows *one* path, the one where $\delta S = 0$.
+Quantum (Feynman, ~1948): a particle "explores" **all** possible paths.
 
-**Quantum (Feynman, 1948):**
-The particle explores *all possible paths*.
-Each path contributes with a complex amplitude:
+Each path contributes an amplitude:
 
-$$\text{Amplitude} \sim e^{iS/\hbar}$$
+$$e^{iS/\hbar}$$
+
+* $S$ = action for that path
+* $\hbar$ = reduced Planck constant (very small)
 
 The total amplitude is the **sum over all paths**.
 
----
-
-# Why Classical Physics Emerges
-
-When $\hbar \to 0$ (or equivalently at large scales):
-
-- Most paths have *wildly varying* phases → **destructive interference**
-- Near the classical path, phases vary slowly → **constructive interference**
-
-$$\delta S = 0 \quad \Longleftrightarrow \quad \text{maximum constructive interference}$$
-
-> The principle of stationary action is the **classical limit** of quantum mechanics.
 
 ---
+# Why the classical path survives?
 
-<!-- =====================================================
-     CONCLUSION
-     ===================================================== -->
+When $\hbar \to 0$ (macroscopic scale):
+
+* Near the stationary-action path, phases vary slowly, **constructive interference**
+* Away from it, phases oscillate rapidly, **destructive interference**, cancels out
+
+The classical trajectory ($\delta S = 0$) is the one where neighboring paths interfere constructively.
+
+Classical mechanics **emerges** from quantum mechanics as a limit.
+
+
+
+---
 
 <!-- .slide: class="bumper" -->
 
-# Conclusion
+# Take away
 
-## The Big Picture
 
----
 
-# Two Languages, One Physics
-
-```
-Differential equations          Variational principles
-(local description)             (global description)
-
-"At every instant,              "Among all possible paths,
- acceleration = force/mass"      find the one that matters"
-
-        ↕              equivalent            ↕
-```
-
-<!-- Both encode the **same physical laws** — choose whichever reveals more structure. -->
 
 ---
+# Take away
 
-# From One Principle, Everything
+* Physics uses derivatives because nature evolves **continuously**: derivatives are the language of change
+* Most laws are **2nd order** because systems have inertia. They remember their velocity
+* The same equations (heat, waves, quantum) arise from **locality + symmetry + conservation**
+* The Laplacian $\nabla^2$ is the universal operator: it measures how a point differs from its neighbors
+* Differential equations (local) and variational principles (global) are **two equivalent languages**
+* The action $S = \int (T-V)\,dt$ encodes all of classical physics in a single principle: $\delta S = 0$
+* **Noether's theorem**: every symmetry of the action generates a conservation law
+* Quantum mechanics sums all paths weighted by $e^{iS/\hbar}$ and the classical path emerges by constructive interference
 
-$$\delta S = 0 \qquad S = \int_{t_1}^{t_2} L(x,\dot{x},t) dt$$
 
-- Newton's laws ✓
-- Maxwell's equations ✓
-- Schrödinger equation ✓
-- General Relativity ✓
-- Standard Model ✓
 
-> *Nature seems to follow a universal rule:*
-> *the laws of physics come from making an action stationary.*
 
----
 
-# A Surprising Generalization
 
-The same logic appears **beyond physics**:
 
-- **Neural networks** minimize a loss function over all parameter configurations
-- **Reinforcement learning** agents extremize a cumulative reward over sequences of decisions
 
-> *Nature and intelligence share the same underlying move:*
-> *among all possible paths, find the one that matters.*
->
-> That is not a metaphor. It is the same mathematics.
-
----
-
-# Summary
-
-| Concept | Key formula | What it tells us |
-|---|---|---|
-| 1st derivative | $\dot{x} = dx/dt$ | Rate of change / flow |
-| 2nd derivative | $\ddot{x} = d^2x/dt^2$ | Curvature / inertia |
-| Laplacian | $\nabla^2 u$ | Difference from neighbors |
-| Action | $S = \int L dt$ | Score for a trajectory |
-| Stationarity | $\delta S = 0$ | Selects the real trajectory |
-| Noether's theorem | symmetry ↔ conservation | Deepest structure of physics |
-
----
-
-<!-- FINAL IMAGE -->
-
-<img src="assets/img00.webp" class="img-full">
-
-> *Among infinitely many possible trajectories,*
-> *nature selects the one that extremizes the action.*
-
-### Thank you
-
-<small>40tude · 2026 · <em>From Derivatives to Action: How Physics Describes Change</em></small>
