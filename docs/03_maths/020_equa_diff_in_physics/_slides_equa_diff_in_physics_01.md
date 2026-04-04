@@ -16,7 +16,7 @@ revealOptions:
 ---
 
 <!-- local testing   : reveal-md .\_slides_equa_diff_in_physics_01.md --watch -->
-<!-- generates slides: reveal-md .\_slides_equa_diff_in_physics_01.md --static docs -->
+<!-- generates slides: reveal-md .\_slides_equa_diff_in_physics_01.md --static docs + REMOVE UNDESCORE-->
 
 <style>
   .reveal { font-size: 28px; }
