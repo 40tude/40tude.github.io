@@ -15,8 +15,17 @@ revealOptions:
         - output/chtml
 ---
 
-<!-- local testing   : reveal-md .\_slides_equa_diff_in_physics.md --watch                           -->
-<!-- generates slides: reveal-md .\_slides_equa_diff_in_physics.md --static docs + REMOVE UNDESCORE  -->
+<!--
+local testing
+reveal-md .\_slides_equa_diff_in_physics.md --watch
+-->
+
+<!--
+generates slides
+1- reveal-md .\_slides_equa_diff_in_physics.md --static docs
+2- only keep docs/index.html
+3- in docs/index.html replace `assets/img00.webp with` with `../assets/img00.webp`
+-->
 
 <style>
   .reveal { font-size: 28px; }
@@ -155,6 +164,8 @@ Because these equations describe
 * Any law involving force (from gravity to electromagnetism) is naturally second-order
 * In wave equations, the second derivative describes how a disturbance "snaps back" toward equilibrium, allowing energy to propagate through space.
 
+<img src="assets/img07.webp" style="max-height: 30vh;">
+
 
 
 ---
@@ -210,9 +221,16 @@ The second spatial derivative measures **curvature**: how different a point is f
 * $\nabla^2 u > 0$ : point is colder/lower than neighbors: heat/force flows in
 * $\nabla^2 u < 0$ : point is hotter/higher than neighbors: heat/force flows out
 
-In 1D: $\nabla^2 u = \frac{d^2u}{dx^2}$
 
-In 3D: $\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}$
+
+| 1D        | 3D |
+| :-------: | :--------------------------------------------: |
+| $\nabla^2 u = \frac{d^2u}{dx^2}$ | $\nabla^2 u = \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}$ |
+
+
+
+<img src="assets/img10.webp" style="max-height: 25vh;">
+
 
 
 ---
@@ -238,6 +256,8 @@ Which explains why the same equations appear in heat, waves, quantum mechanics, 
 <!-- .slide: class="bumper" -->
 
 # From local to global: variational principles
+
+<img src="assets/img02.webp" style="max-height: 30vh;">
 
 
 
@@ -312,7 +332,7 @@ Not arbitrary. $L = T - V$ is the **unique** combination that reproduces Newton'
 
 
 ---
-# From $\delta S = 0$ to $F = ma$
+# Example: $F = m\ddot{x}$
 
 Starting from $L = \frac{1}{2}m\dot{x}^2 - V(x)$ and requiring $\delta S = 0$:
 
@@ -324,7 +344,8 @@ This gives the **Euler-Lagrange equation**:
 
 $$\frac{d}{dt}\frac{\partial L}{\partial \dot{x}} - \frac{\partial L}{\partial x} = 0$$
 
-Substituting $L$: $\quad m\ddot{x} = -\frac{dV}{dx} = F$
+
+Substituting $L$ it comes $\quad  F = -\frac{dV}{dx} = m\ddot{x}$
 
 
 ---
@@ -373,9 +394,7 @@ Classical: one path, the one where $\delta S = 0$.
 
 Quantum (Feynman, ~1948): a particle "explores" **all** possible paths.
 
-Each path contributes an amplitude:
-
-$$e^{iS/\hbar}$$
+Each path contributes an amplitude: $e^{iS/\hbar}$
 
 * $S$ = action for that path
 * $\hbar$ = reduced Planck constant (very small)
