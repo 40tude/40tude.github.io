@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2026-04-05 12:00:00
+last_modified_date : 2026-04-05 19:00:00
 ---
 
 
@@ -422,7 +422,7 @@ First, let's split the original file with a Powershell script. Here is how the d
 * Then I call the script `new-skill.ps1`.
 * To finish I copy the created directory (`ms-rust` here) into the `%USERPROFILE%/.claude/skill` and i'm done.
 
-Here is the script I use
+Here is the script I use in Feb,2026 (latest version available in the [repo](https://github.com/40tude/ms_rust_skill)):
 
 
 ```powershell
