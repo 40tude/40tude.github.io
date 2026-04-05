@@ -8,7 +8,7 @@ parent: Rust
 #math: mathjax
 nav_order: 2
 date               : 2025-11-19 01:00:00
-last_modified_date : 2026-03-25 16:00:00
+last_modified_date : 2026-04-05 12:00:00
 ---
 
 
@@ -35,11 +35,20 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
+
 * Automatically enforces Microsoft Rust coding standards through Claude skills
 * Simple 3-step setup: download guidelines, create/tune `SKILL.md`, test with a Rust project
 * Claude will automatically apply guidelines to all future `.rs` files
 * VSCode + Win11 (not tested elsewhere)
-* Updated Feb. 2026: slash commands merged into skills, new frontmatter fields, Agent Skills open standard
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## History
+{: .no_toc }
+
+* April 2026: replace links to `.png` with descriptions + [GitHub repo](https://github.com/40tude/ms_rust_skill)
+* Feb. 2026: slash commands merged into skills, new frontmatter fields, Agent Skills open standard
 
 
 
@@ -65,6 +74,9 @@ If you are in hurry, click on the link [Update (2025-11-28)](#5-update-2025-11-2
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 0. Prerequisites
 In the following I suppose:
 - Windows 11
@@ -76,6 +88,13 @@ In the following I suppose:
 If you run Linux or MacOS, the procedure should be similar except may be, the names of the directories.
 
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 1. Create the Skill Structure
 
 Open a PowerShell terminal (WIN+X then i)
@@ -147,6 +166,17 @@ If you’re interested, you can [read this page](https://isocpp.github.io/CppCor
 
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 2. Create the `SKILL.md` File
 
 You are in the directory : `%USERPROFILE%/.claude/skills/ms-rust`
@@ -251,6 +281,13 @@ C:\Users\<your_name>\.claude\
 
 
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 3. Test the Skill
 
 Return to the terminal which should still be open.
@@ -279,6 +316,9 @@ In VSCode:
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 4. Verification
 
 After the modifications have been made, the code should:
@@ -349,6 +389,9 @@ fn print_fibonacci(n: usize) {
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 5. Update (2025-11-28)
 
 Everything was working like a charm then, at one point, I got this message (in red) from Claude Code.
@@ -369,14 +412,14 @@ First, let's split the original file with a Powershell script. Here is how the d
 
 ```
 /.
-│   new-skills.ps1
+│   new-skill.ps1
 ├───in
     all.txt
     SKILL.md
 ```
 
 * The idea is that I drop into the `in` directory the latest version of the guidelines I can get from Github (see `all.txt` on this [page](https://microsoft.github.io/rust-guidelines/agents/index.html)).
-* Then I call the script `new-skills.ps1`.
+* Then I call the script `new-skill.ps1`.
 * To finish I copy the created directory (`ms-rust` here) into the `%USERPROFILE%/.claude/skill` and i'm done.
 
 Here is the script I use
@@ -541,7 +584,7 @@ Write-Host -ForegroundColor Green "Once satisfied, copy $shortOutDir/ directory 
 
 ```
 
-Here is how to invoke the script : ` .\new-skills.ps1`.
+Here is how to invoke the script : ` .\new-skill.ps1`.
 
 If needed you can pass another filename. By default it looks for "all.txt".
 
@@ -549,7 +592,7 @@ At the end the directories look like this:
 
 ```
 .
-│   new-skills.ps1
+│   new-skill.ps1
 ├───in
 │       all.txt
 │       SKILL.md
@@ -729,6 +772,19 @@ Once you are happy, copy and paste the `ms-rust` directory in `$env:USERPROFILE/
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 6. What changed since late 2025
 
 Since the first version of this post, the skills system in Claude Code has evolved. Here is a summary of the main changes. I am not rewriting the [official doc](https://code.claude.com/docs/en/skills) here. I just want to share what I noticed and what may be useful for our `ms-rust` setup.
@@ -788,7 +844,11 @@ Skills can also be distributed via the [plugin system](https://code.claude.com/d
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## 7. Webliography
+* [GitHub repo](https://github.com/40tude/ms_rust_skill) of this project
 * [all.txt](https://microsoft.github.io/rust-guidelines/agents/index.html)
 * [The Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html)
 * [Rust guidelines](https://github.com/microsoft/rust-guidelines) on GitHub
