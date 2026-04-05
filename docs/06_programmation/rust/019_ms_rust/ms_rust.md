@@ -849,11 +849,17 @@ Skills can also be distributed via the [plugin system](https://code.claude.com/d
 <!-- ###################################################################### -->
 ## 7. Webliography
 * [GitHub repo](https://github.com/40tude/ms_rust_skill) of this project
-* [all.txt](https://microsoft.github.io/rust-guidelines/agents/index.html)
-* [The Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html)
-* [Rust guidelines](https://github.com/microsoft/rust-guidelines) on GitHub
+* [all.txt](https://microsoft.github.io/rust-guidelines/agents/index.html), the source of truth
+* [Pragmatic Rust Guidelines](https://microsoft.github.io/rust-guidelines/guidelines/index.html) book online
+* [Microsoft rust-guidelines](https://github.com/microsoft/rust-guidelines) repo on GitHub
+* [Rust API Guidelines Checklist](https://rust-lang.github.io/api-guidelines/checklist.html) book online
+
+Claude & skills
 * [Extend Claude with skills](https://code.claude.com/docs/en/skills) on Claude Code Docs
 * [Agent Skills open standard](https://agentskills.io)
 * [Official skills repository](https://github.com/anthropics/skills) by Anthropic
+
+C++
 * [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
-* You're welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
+
+You're welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.
