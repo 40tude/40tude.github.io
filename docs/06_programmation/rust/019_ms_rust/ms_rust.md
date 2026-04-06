@@ -47,7 +47,11 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 ## History
 {: .no_toc }
 
-* April 2026: replace links to `.png` with descriptions + [GitHub repo](https://github.com/40tude/ms_rust_skill)
+* April 2026:
+    * replace links to `.png` images with descriptions
+    * remove links which are not read by claude
+    * many other small improvements in the script `new-skill.ps1`
+    * create a [GitHub repo](https://github.com/40tude/ms_rust_skill)
 * Feb. 2026: slash commands merged into skills, new frontmatter fields, Agent Skills open standard
 
 
@@ -69,7 +73,8 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 - TOC
 {:toc}
 
-If you are in hurry, click on the link [Update (2025-11-28)](#5-update-2025-11-28) above.
+* If you just want the skill, read the `README.md` on the [repo](https://github.com/40tude/ms_rust_skill).
+* If you are in hurry, start reading from [Update (2025-11-28)](#5-update-2025-11-28).
 
 
 
