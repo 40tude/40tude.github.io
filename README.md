@@ -548,9 +548,9 @@ References :
 
 ## Publication
 
-### Alerte de securite Dependabot
+### Alerte de securite Dependabot via Mail
 
-Titre typique : `[40tude] A security advisory on addressable affects at least one of your repositories`
+Mail, titre typique : `[40tude] A security advisory on addressable affects at least one of your repositories`
 
 0. Dans le mail, cliquer sur le lien en bas. Renvoie par exemple sur `https://github.com/40tude/40tude.github.io/security/dependabot/11`
 1. Aller sur la page de l'alerte
@@ -559,6 +559,15 @@ Titre typique : `[40tude] A security advisory on addressable affects at least on
 4. Aller sur la PR, cliquer "Merge pull request"
 5. GitHub Pages rebuildera avec la version corrigee
 
+
+### Alerte Dependabot sur le site GitHUb
+0. Sur le GitHub du  site regarder "Securirty & quality"
+1. Cliquer dessus si besoin
+2. Aller dans la catégorie Dependabot
+3. Cliquer sur `Create Dependabot security update` (bouton vert)
+4. Cliquer sur `Review Security Update` (bouton vert)
+4. Cliquer `Merge Pull Request` (bouton vert)
+5. Cliquer `Confirm Merge` (bouton vert)
 ---
 
 ## SEO
