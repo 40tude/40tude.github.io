@@ -3,17 +3,17 @@ published: false
 author: 40tude
 lang: en-US
 layout: default
-title: "Add a title"
-description: "Add a description"
-image: Full path to the first image. Example: docs/03_maths/020_equa_diff_in_physics/assets/img00.webp
+title: "TODO: Add a title"
+description: "TODO: Add a description"
+image: TODO: Full path to the first image. Example: docs/03_maths/020_equa_diff_in_physics/assets/img00.webp
 twitter:
   card: summary_large_image
-parent: "Maths"
+parent: "TODO: Add category"
 # nav_order: 36
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-10 18:12:10
+last_modified_date: 2026-04-10 18:23:32
 ---
 
 
@@ -49,11 +49,11 @@ last_modified_date: 2026-04-10 18:12:10
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img00.webp"
-    alt="Add a description"
+    alt="TODO: Add a description"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Add a legend</figcaption>
+<figcaption>TODO: Add a legend</figcaption>
 </figure>
 
 
@@ -100,9 +100,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit t
     allowfullscreen>
     </iframe>
 </div>
-<figcaption style="text-align: center;">
-    Add a legend
-</figcaption>
+<figcaption style="text-align: center;">TODO: Add a legend</figcaption>
 </figure>
 
 
@@ -155,5 +153,3 @@ Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magni
 
 * [Link to a web page](https://cleonis.nl/physics/phys256/energy_position_equation.php).
 * [Link to a page of the site]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
-
-
