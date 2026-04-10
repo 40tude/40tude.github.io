@@ -4,7 +4,7 @@ title: "Mes notes Windows"
 parent: "Windows"
 #math: mathjax
 date: 2017-01-14 21:08:00
-last_modified_date: 2026-04-10 18:12:10
+last_modified_date: 2026-04-10 18:26:38
 ---
 
 # Mes notes Windows
@@ -274,9 +274,9 @@ Pour qu'en mon absence, le portable ce mette tout seul en veille prolongée au b
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Nouveau Document Markdown - Ajouter l'option au click droit
+## Nouveau Document Markdown | File Explorer | Ajouter l'option au click droit
 
-Ouvrir un terminal Admin (WIN X + A)
+Ouvrir un terminal en mode `Admin` (**WIN X + A**)
 
 ```powershell
 # 1. Register the .md file extension (if not already done)
