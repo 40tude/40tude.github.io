@@ -4,7 +4,7 @@ title: "Mes notes Windows"
 parent: "Windows"
 #math: mathjax
 date: 2017-01-14 21:08:00
-last_modified_date: 2026-04-10 15:25:42
+last_modified_date: 2026-04-10 18:12:10
 ---
 
 # Mes notes Windows
@@ -304,6 +304,10 @@ Stop-Process -Name explorer -Force
 />
 <figcaption>Ajouter une option "Document Markdown" au clic droit dans File Explorer</figcaption>
 </figure>
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->

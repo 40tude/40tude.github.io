@@ -248,7 +248,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2023-12-04 00:02:38
+last_modified_date: 2026-04-10 18:12:10
 ---
 ```
 
@@ -266,7 +266,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-02-13 00:30:00
+last_modified_date: 2026-04-10 18:12:10
 ```
 
 Image OG ideale : PNG 1200px x 630px
@@ -390,6 +390,22 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
         Write-Output $_.FullName
     }
 }
+```
+
+### Template d'article
+
+* Utilise Liquid pour écrire une seule fois le titre et la description
+* La date et l'heure de dernière mise à jour sont maintenue grâce à un hook de pre-commit qui est dans `40tude.github.io/.git/hooks/pre-commit`
+    * Si un jour on déplace le dossier du site faudra recréer le hook. Voir le code ci-dessous.
+
+```bash
+# .git/hooks/pre-commit
+#!/bin/bash
+now=$(date +"%Y-%m-%d %H:%M:%S")
+for file in $(git diff --cached --name-only | grep '\.md$'); do
+sed -i "s/^last_modified_date:.*$/last_modified_date: $now/" "$file"
+git add "$file"
+done
 ```
 
 
