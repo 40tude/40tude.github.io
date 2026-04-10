@@ -4,7 +4,7 @@ title: "Mes notes Windows"
 parent: "Windows"
 #math: mathjax
 date: 2017-01-14 21:08:00
-last_modified_date: 2023-11-25 15:25:42
+last_modified_date: 2026-04-10 15:25:42
 ---
 
 # Mes notes Windows
@@ -20,14 +20,14 @@ last_modified_date: 2023-11-25 15:25:42
 <!-- ###################################################################### -->
 ## Introduction
 
-Je regroupe ici un ensemble de notes diverses à propos de Windows 10 & 11.   
-Les notes sont classées par ordre alphabétique.  
-Sinon faites **CTRL + F** et tapez un mot clé : "Mise en veille" ou "ISO" par exemple.  
-Il y a aussi une TOC juste au dessus.  
+Je regroupe ici un ensemble de notes diverses à propos de Windows 10 & 11.
+Les notes sont classées par ordre alphabétique.
+Sinon faites **CTRL + F** et tapez un mot clé : "Mise en veille" ou "ISO" par exemple.
+Il y a aussi une TOC juste au dessus.
 
-Il est possible qu'avec les mises à jour de Windows, certaines boîtes de dialogue changent ou que la mise en page évolue. Cela dit vous devriez vous y retrouver.  
-Si je fais des mises à jour importantes je l'indiquerai clairement.  
-Si vous cherchez des raccourcis clavier Windows, allez plutôt sur cette [page] ``NOT YET TRANSFERED`` (https://www.40tude.fr/win10-raccourcis-clavier/).  
+Il est possible qu'avec les mises à jour de Windows, certaines boîtes de dialogue changent ou que la mise en page évolue. Cela dit vous devriez vous y retrouver.
+Si je fais des mises à jour importantes je l'indiquerai clairement.
+Si vous cherchez des raccourcis clavier Windows, allez plutôt sur cette [page] ``NOT YET TRANSFERED`` (https://www.40tude.fr/win10-raccourcis-clavier/).
 
 
 
@@ -100,7 +100,7 @@ Le répertoire "lxss" n’apparaît pas du tout dans l'explorateur de fichier (m
   + Nouvelle clé
     - **InprocServer32**
     - Dans la fenêtre, double-cliquer sur "par défaut".
-    - Aucune modification. 
+    - Aucune modification.
     - OK pour appliquer une valeur par défaut
 * Redémarrer
 
@@ -158,8 +158,8 @@ powercfg -requestsoverride DRIVER "srvnet" SYSTEM
 powercfg -requestsoverride DRIVER "\FileSystem\srvnet" SYSTEM
 ```
 
-Je "pense" mais je ne suis pas sûr à 100% que seule la première ligne est suffisante.  
-Si la raison est différente, faire une recherche sur le service/application qui pose problème.  
+Je "pense" mais je ne suis pas sûr à 100% que seule la première ligne est suffisante.
+Si la raison est différente, faire une recherche sur le service/application qui pose problème.
 
 
 
@@ -237,7 +237,7 @@ Pour info on voit que par rapport à ce que je pouvais avoir avec d'autres porta
 </div>
 
 
-Le truc à retenir c'est qu'il faut : 
+Le truc à retenir c'est qu'il faut :
 * Etre vigilant
 * Prendre le temps d'aller voir la vidéo
 * Mettre un pouce en l'air
@@ -272,8 +272,38 @@ Pour qu'en mon absence, le portable ce mette tout seul en veille prolongée au b
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Nouveau Document Markdown - Ajouter l'option au click droit
 
+Ouvrir un terminal Admin (WIN X + A)
 
+```powershell
+# 1. Register the .md file extension (if not already done)
+New-Item -Path "HKLM:\SOFTWARE\Classes\.md" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Classes\.md" -Name "(default)" -Value "Markdown.Document"
+
+# 2. Add the "New" context menu entry
+New-Item -Path "HKLM:\SOFTWARE\Classes\.md\ShellNew" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Classes\.md\ShellNew" -Name "NullFile" -Value ""
+
+# 3. (Optional) Give it a friendly name
+New-Item -Path "HKLM:\SOFTWARE\Classes\Markdown.Document" -Force | Out-Null
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Classes\Markdown.Document" -Name "(default)" -Value "Document Markdown"
+
+# Stop Explorer
+Stop-Process -Name explorer -Force
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img01.webp"
+    alt="Ajouter une option 'Document Markdown' au clic droit dans File Explorer"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Ajouter une option "Document Markdown" au clic droit dans File Explorer</figcaption>
+</figure>
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -414,8 +444,8 @@ Penser à ouvrir de suite une console en mode Admin et à taper :
 Update-Help
 ```
 
-Ensuite c'est plus sympa (qu'on soit Admin ou pas) quand on cherche de l'aide sur une commande.  
-Exemple : 
+Ensuite c'est plus sympa (qu'on soit Admin ou pas) quand on cherche de l'aide sur une commande.
+Exemple :
 
 ```powershell
 help ls
@@ -482,12 +512,12 @@ Set-location .\Documents\
 Set-location $HOME\Documents\
 ```
 
-Pour prendre en compte le nouveau profile, pas besoin de fermer le PowerShell.  
+Pour prendre en compte le nouveau profile, pas besoin de fermer le PowerShell.
 Il suffit de saisir :
 
 ```powershell
 .$PROFILE
-``` 
+```
 
 
 
