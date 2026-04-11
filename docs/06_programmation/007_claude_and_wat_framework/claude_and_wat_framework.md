@@ -5,14 +5,14 @@ lang: en-US
 layout: default
 title: "Claude and the WAT Task Pipeline"
 description: "..."
-image: docs\06_programmation\007_claude_and_wat_framework\assets\img00.webp
+image: docs/06_programmation/007_claude_and_wat_framework/assets/img00.webp
 twitter:
   card: summary_large_image
 parent: "Programmation"
 # nav_order: 36
 math: mathjax
 date:               2026-04-02 15:00:00
-last_modified_date: 2026-04-03 10:30:00
+last_modified_date: 2026-04-11 09:52:06
 ---
 
 

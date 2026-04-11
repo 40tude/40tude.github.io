@@ -4,6 +4,9 @@ lang: en-US
 layout: default
 title: Microsoft Pragmatic Rust Guidelines with Claude
 description: How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
+image: docs/06_programmation/rust/019_ms_rust/assets/img00.webp
+twitter:
+  card: summary_large_image
 parent: Rust
 #math: mathjax
 nav_order: 2
