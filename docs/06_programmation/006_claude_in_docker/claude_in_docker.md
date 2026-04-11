@@ -5,14 +5,14 @@ lang: en-US
 layout: default
 title: "YOLO Mode, Behind Glass: Running Claude Code in Docker on Windows 11"
 description: "Full AI autonomy inside a container, zero risk to the host, and a fix for OneDrive's thousand-files problem"
-image: docs\06_programmation\006_claude_in_docker\assets\img00.webp
+image: docs/06_programmation/006_claude_in_docker/assets/img00.webp
 twitter:
   card: summary_large_image
 parent: "Programmation"
 # nav_order: 36
 math: mathjax
 date:               2026-04-01 12:00:00
-last_modified_date: 2026-04-01 12:00:00
+last_modified_date: 2026-04-11 09:55:20
 ---
 
 
