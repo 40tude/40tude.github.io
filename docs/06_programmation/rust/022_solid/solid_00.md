@@ -4,10 +4,13 @@ lang: en-US
 layout: default
 title: "SOLID Principles in Rust: A Practical Guide - 00"
 description: "A gentle introduction to SOLID principles using Rust. The focus is on Single Responsibility Principle."
+image: docs/06_programmation/rust/022_solid/assets/img00.webp
+twitter:
+  card: summary_large_image
 parent: "Rust"
 nav_order: 31
 date:               2026-01-12 16:00:00
-last_modified_date: 2026-01-18 10:00:00
+last_modified_date: 2026-04-11 09:59:55
 ---
 
 

@@ -4,6 +4,9 @@ lang: en-US
 layout: default
 title: "UV Python Package Manager: The Essentials"
 description: Fast Python package and project manager.
+image: docs/06_programmation/python/005_uv/assets/img00.webp
+twitter:
+  card: summary_large_image
 parent: Python
 #math: mathjax
 date               : 2025-10-29 17:00:00
