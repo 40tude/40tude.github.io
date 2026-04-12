@@ -3,9 +3,9 @@ published: false
 author: 40tude
 lang: en-US
 layout: default
-title: "TODO: Add a title"
-description: "TODO: Add a description"
-image: TODO: Full path to the first image. Example: docs/03_maths/020_equa_diff_in_physics/assets/img00.webp
+title: "Ollama 101 with Windows 11"
+description: "A checklist"
+image: docs/09_ml_ai/005_ollama/assets/img01.webp
 twitter:
   card: summary_large_image
 parent: "TODO: Add category"
@@ -13,7 +13,7 @@ parent: "TODO: Add category"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-12 12:17:03
+last_modified_date: 2026-04-12 12:29:49
 ---
 
 
@@ -77,8 +77,101 @@ last_modified_date: 2026-04-12 12:17:03
 
 
 
+```powershell
+irm https://ollama.com/install.ps1 | iex
 
 
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img01.webp"
+    alt="TODO: Add a description"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>TODO: Add a legend</figcaption>
+</figure>
+
+
+
+
+```powershell
+ollama run qwen2.5:3b
+
+# prompt:
+Write a Rust function that reverses a string safely
+
+# Explain what Rust ownership is in simple terms
+# ...
+
+# /exit or CTRL+D to exit
+
+```
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img01.webp"
+    alt="TODO: Add a description"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>TODO: Add a legend</figcaption>
+</figure>
+
+
+```powershell
+ollama --help
+
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img03.webp"
+    alt="TODO: Add a description"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>TODO: Add a legend</figcaption>
+</figure>
+
+
+
+```powershell
+ollama list
+ollama show qwen2.5:3b
+
+```
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img03.webp"
+    alt="TODO: Add a description"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>TODO: Add a legend</figcaption>
+</figure>
+
+
+```powershell
+Get-ChildItem "$env:USERPROFILE\.ollama\models" -Recurse
+
+```
+
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img05.webp"
+    alt="TODO: Add a description"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>TODO: Add a legend</figcaption>
+</figure>
 
 
 
