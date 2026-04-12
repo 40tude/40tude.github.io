@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 lang: en-US
 layout: default
 title: Understanding Gradient Descent
@@ -7,7 +7,7 @@ description: An introduction with a 1D model
 parent: "Machine Learning"
 math: mathjax
 date:               2025-11-20 15:00:00 +0000
-last_modified_date: 2025-11-23 11:00:00 +0000
+last_modified_date: 2026-04-12 12:17:03
 # nav_order: 9
 # permalink: /machine_learning/
 ---
@@ -46,8 +46,7 @@ An introduction with a 1D model
 
 
 <div align="center">
-<img src="./assets/img00.webp" alt="" width="900
-" loading="lazy"/><br/>
+<img src="./assets/img00.webp" alt="" width="225" loading="lazy"/><br/>
 <span>Gradient Descent in 1D.</span>
 </div>
 
@@ -658,9 +657,9 @@ print(f"Number of steps to converge: {steps}")
 
 ## What is Next?
 
-* [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
-* [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
-* [Part 3]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions
+* [Part 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
+* [Part 2]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
+* [Part 3]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions
 
 
 In the mean time you can read [this book](https://www.amazon.fr/dp/1786494337). It mentions "stochastic gradient descent" in chapter one if I remember well.
@@ -681,7 +680,7 @@ In the mean time you can read [this book](https://www.amazon.fr/dp/1786494337). 
 
 ## Webliography
 * [JupyterLab](https://jupyter.org/try-jupyter/lab/). Where you can past the scripts above.
-* [Yet Another Intro to Linear Regression and R²]({%link docs/09_machine_learning/000_r_squared/000_r_sqared.md%}) where squaring the errors is used, again.
+* [Yet Another Intro to Linear Regression and R²]({%link docs/09_ml_ai/000_r_squared/000_r_sqared.md%}) where squaring the errors is used, again.
 * [If Anyone Builds It, Everyone Dies.](https://www.amazon.fr/Anyone-Builds-Everyone-Dies-Superhuman/dp/0316595640)
 * [The Alignment Problem](https://www.amazon.fr/dp/1786494337)
 * You’re welcome to share [comments or suggestions](https://github.com/40tude/40tude.github.io/discussions) on GitHub to help improve this article.

@@ -7,7 +7,7 @@ description: "A gentle, story-driven introduction so you’ll never be confused 
 parent: "Machine Learning"
 math: mathjax
 date:               2025-12-13 18:00:00 +0000
-last_modified_date: 2025-12-31 15:00:00 +0000
+last_modified_date: 2026-04-12 12:17:03
 ---
 
 
@@ -39,9 +39,9 @@ A gentle, story-driven introduction so you’ll never be confused again.
 
 #### The Posts Of The Saga
 {: .no_toc }
-* [Episode 00]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix.md%})
-* [Episode 01]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_01.md%})
-* [Episode 02]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_02.md%})
+* [Episode 00]({%link docs/09_ml_ai/003_confusion_matrix/confusion_matrix.md%})
+* [Episode 01]({%link docs/09_ml_ai/003_confusion_matrix/confusion_matrix_01.md%})
+* [Episode 02]({%link docs/09_ml_ai/003_confusion_matrix/confusion_matrix_02.md%})
 
 
 
@@ -589,9 +589,9 @@ REALITY       ├──────────┼──────────
 <!-- ###################################################################### -->
 ## The Posts Of The Saga
 {: .no_toc }
-* [Episode 00]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix.md%})
-* [Episode 01]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_01.md%})
-* [Episode 02]({%link docs/09_machine_learning/003_confusion_matrix/confusion_matrix_02.md%})
+* [Episode 00]({%link docs/09_ml_ai/003_confusion_matrix/confusion_matrix.md%})
+* [Episode 01]({%link docs/09_ml_ai/003_confusion_matrix/confusion_matrix_01.md%})
+* [Episode 02]({%link docs/09_ml_ai/003_confusion_matrix/confusion_matrix_02.md%})
 
 
 

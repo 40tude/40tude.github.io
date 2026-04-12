@@ -7,7 +7,7 @@ description: We continue the introduction with a 2D model
 parent: "Machine Learning"
 math: mathjax
 date:               2025-11-23 12:00:00 +0000
-last_modified_date: 2025-11-23 12:00:00 +0000
+last_modified_date: 2026-04-12 12:17:03
 # nav_order: 9
 # permalink: /machine_learning/
 ---
@@ -32,7 +32,7 @@ We continue our introduction to the gradient descent but with a 2D model.
 * The cost function is now a function of 2 independent variables: $$C= f(error\_x, error\_y)$$
 * Independence of the variables is crucial
 * This is what allow us to evaluate the total variation of the cost function as the sum of each variation of the cost function along each dimension
-* Along each dimension we apply what we learnt in [Episode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
+* Along each dimension we apply what we learnt in [Episode 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
 
 
 
@@ -62,7 +62,7 @@ We continue our introduction to the gradient descent but with a 2D model.
 
 ## Second version of our Laser Pointer Game
 
-This Episode follows [this one]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) and I strongly recommend you read it before to read this one.
+This Episode follows [this one]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}) and I strongly recommend you read it before to read this one.
 
 The setup is similar to the previous one. Again, you do not know where is the target on the screen and you do not know the distance between you and the target. This time you can modify the $$y$$ and the $$x$$ of the laser point on the screen. Finally your friend tells you the two errors : "x centimeters too high and y centimeters on the left"
 
@@ -98,7 +98,7 @@ Why? In fact, when one think about the situation he could imagine that a laser d
 <!-- <span>Gradient Descent in 2D.</span> -->
 </div>
 
-Based on what we learnt in [Epsiode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), the lost function uses square so that errors are always cumulated. Here it also uses a square root so I'm not sure large errors yield larger penalties but this is what we have so far.
+Based on what we learnt in [Epsiode 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}), the lost function uses square so that errors are always cumulated. Here it also uses a square root so I'm not sure large errors yield larger penalties but this is what we have so far.
 
 As we will see later this cost function is way much too complicated but let's start with what we have...
 
@@ -184,7 +184,7 @@ $$
 
 ***Could we simplify the previous calculations?***
 
-Yes we can. Remember, what we said in [Episode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): *The cost function is NOT just a fancy name for error. It's our carefully designed measure of "wrongness" that is perfectly tailored for an algorithm to efficiently minimize it.* So here, instead of:
+Yes we can. Remember, what we said in [Episode 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}): *The cost function is NOT just a fancy name for error. It's our carefully designed measure of "wrongness" that is perfectly tailored for an algorithm to efficiently minimize it.* So here, instead of:
 
 $$C = \sqrt{error\_x^2 + error\_y^2}$$
 
@@ -216,7 +216,7 @@ $$\begin{aligned}
 ### Let's Run the Simulation by hand
 {: .no_toc }
 
-As you will see, the process is similar to what we did in [Episode 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) but here we run the calculation for each independent dimension.
+As you will see, the process is similar to what we did in [Episode 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}) but here we run the calculation for each independent dimension.
 
 Let's say:
 * The target is at $$x\_target = 100$$ cm and $$y\_target = 100$$ cm
@@ -258,7 +258,7 @@ Let's say:
 </div>
 
 
-The Excel sheet is [here]({%link docs/09_machine_learning/002_gradient_descent/assets/gradient_descent.xlsx%})
+The Excel sheet is [here]({%link docs/09_ml_ai/002_gradient_descent/assets/gradient_descent.xlsx%})
 
 
 
@@ -541,9 +541,9 @@ The 3D map is very symmetric. Indeed, if we only speak about the initial altitud
 
 ## What is Next?
 
-* [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
-* [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
-* [Part 3]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions
+* [Part 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
+* [Part 2]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
+* [Part 3]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions
 
 
 

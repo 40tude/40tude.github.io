@@ -7,7 +7,7 @@ description: Generalizing to real-world machine learning problems
 parent: "Machine Learning"
 math: mathjax
 date:               2025-11-24 16:00:00 +0000
-last_modified_date: 2025-11-29 18:00:00 +0000
+last_modified_date: 2026-04-12 12:17:03
 # nav_order: 9
 # permalink: /machine_learning/
 ---
@@ -77,12 +77,12 @@ Let's see if we can generalize to N dimensions in this post but first, let's tak
 ### What We've Been Doing Until Now
 {: .no_toc }
 
-In [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}), we pointed a laser at a target. We had **one parameter** to adjust: the vertical position $$y\_laser$$. Our goal? Make the error $$error = y\_laser - y\_target$$ equal to zero.
+In [Part 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}), we pointed a laser at a target. We had **one parameter** to adjust: the vertical position $$y\_laser$$. Our goal? Make the error $$error = y\_laser - y\_target$$ equal to zero.
 
 
 
 
-In [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}), we controlled the laser in **two dimensions**: both $$x\_laser$$ and $$y\_laser$$. Same principle, just more parameters to adjust.
+In [Part 2]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_2d.md%}), we controlled the laser in **two dimensions**: both $$x\_laser$$ and $$y\_laser$$. Same principle, just more parameters to adjust.
 
 In both cases, we were **directly adjusting what we wanted to fix**. The laser position was wrong, so we adjusted... the laser position. Simple.
 
@@ -135,7 +135,7 @@ This is what machine learning is: **finding the right weights** so your model ma
 ### Same Math, Different Interpretation
 {: .no_toc }
 
-The beautiful thing? The mathematics we learned in Episodes [1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) and [2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}) **apply exactly the same way**:
+The beautiful thing? The mathematics we learned in Episodes [1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}) and [2]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_2d.md%}) **apply exactly the same way**:
 
 - In the laser game, we adjusted $$y\_laser$$ to minimize $$(y\_laser - y\_target)^2$$
 - In machine learning, we adjust $$w_1, w_2, ..., w_N$$ to minimize $$(prediction - actual)^2$$
@@ -1248,9 +1248,9 @@ But the core idea—compute the gradient, take a step downhill—remains unchang
 
 ## What Is Next?
 
-* [Part 1]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
-* [Part 2]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
-* [Part 3]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions
+* [Part 1]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}): where we discuss the gradient descent in 1D
+* [Part 2]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_2d.md%}): where we discuss the gradient descent in 2D
+* [Part 3]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent_nd.md%}): where we generalize the gradient descent to N dimensions
 
 
 Now that you understand the fundamentals of gradient descent, you're ready to explore more advanced topics:

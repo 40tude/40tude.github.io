@@ -4,7 +4,7 @@ title: "Les rôles en Machine Learning et en IA"
 parent: "Machine Learning"
 # math: mathjax
 date:               2025-03-20 08:00:00 +0000
-last_modified_date: 2025-03-20 08:00:00 +0000
+last_modified_date: 2026-04-12 12:17:03
 # nav_order: 9
 # permalink: /machine_learning/
 ---

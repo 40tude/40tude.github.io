@@ -12,7 +12,7 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-04-04 15:00:00
+last_modified_date: 2026-04-12 12:17:03
 ---
 
 
@@ -4463,7 +4463,7 @@ Your favorit browser should be able to translate if needed.
 * [Dérivées et Différentielles]({%link docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.md%})
 * [Equation d'onde]({%link docs/03_maths/006_equation_onde_1d/equation_onde_1d.md%})
 * [Distance la plus courte entre 2 points]({%link docs/03_maths/014_distance_entre_2_points/distance_la_plus_courte_entre_2_points.md%})
-* [Gradient Descent in 1, 2 or N dimensions]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%})
+* [Gradient Descent in 1, 2 or N dimensions]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%})
 * [The Energy-Position equation](https://cleonis.nl/physics/phys256/energy_position_equation.php). It is part of a set of 3 articles.
 
 

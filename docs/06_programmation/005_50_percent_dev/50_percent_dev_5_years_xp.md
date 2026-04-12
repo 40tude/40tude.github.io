@@ -11,7 +11,7 @@ twitter:
 parent: "Programmation"
 # nav_order: 35
 date:               2026-02-15 22:00:00
-last_modified_date: 2026-02-19 08:00:00
+last_modified_date: 2026-04-12 12:17:03
 ---
 
 
@@ -632,7 +632,7 @@ Our industry continuously absorbs new practitioners. Tools, platforms, and pract
 
 Do not hesitate to revisit so-called basic topics. Do not assume your audience already understands the foundations.
 
-An article about [SOLID principles written for Rust]({%link docs/06_programmation/rust/022_solid/solid_00.md%}) does not reach the same audience as one written for C# in 2009, even if the principles are identical. A [modern tutorial on gradient descent]({%link docs/09_machine_learning/002_gradient_descent/gradient_descent.md%}) using today’s Python ecosystem connects with readers who would never encounter the 2015 version. A guide to [hexagonal architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) using [NATS and distributed services]({%link docs/06_programmation/rust/026_monolith_to_distributed/monolith_to_distributed.md%}) addresses realities that did not exist ten years ago.
+An article about [SOLID principles written for Rust]({%link docs/06_programmation/rust/022_solid/solid_00.md%}) does not reach the same audience as one written for C# in 2009, even if the principles are identical. A [modern tutorial on gradient descent]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}) using today’s Python ecosystem connects with readers who would never encounter the 2015 version. A guide to [hexagonal architecture]({%link docs/06_programmation/rust/024_hexagonal/hexagonal_lite.md%}) using [NATS and distributed services]({%link docs/06_programmation/rust/026_monolith_to_distributed/monolith_to_distributed.md%}) addresses realities that did not exist ten years ago.
 
 Every shift in technology, every new wave of developers, and every geographic expansion of the profession creates a new audience that deserves clear and thoughtful explanations.
 
