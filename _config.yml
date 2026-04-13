@@ -1,9 +1,7 @@
 title: 40tude
-description: "40tude.fr, mon blog perso. Au programme : Rust, Python, C++, assembleur (algorithmes, tutos, création d'OS...), administration Windows/Linux, un peu de maths, sans oublier mes notes de pilotage moto sur circuit." 
-
+description: "40tude.fr, personal blog in French and English. Topics: Rust, Python, C++, assembly (algorithms, tutorials, OS creation), Windows/Linux administration, mathematics, machine learning, and motorcycle track riding notes."
 theme: just-the-docs
 
-# url: https://40tude.github.io/
 url: https://www.40tude.fr
 
 defaults:
@@ -18,7 +16,7 @@ defaults:
 
 # Read https://just-the-docs.com/docs/ui-components/code/line-numbers/
 # Turn on line numbers for fenced code blocks globally
-# I don't use it because it does not work when I try to reduce the high of src code line 
+# I don't use it because it does not work when I try to reduce the high of src code line
 # See assets/css/custom.css
 # kramdown:
 #   syntax_highlighter_opts:
@@ -61,7 +59,7 @@ callouts:
   highlight:
     color: yellow
 
-              
+
 ga_tracking: G-HEDHH8MLQE
 ga_tracking_anonymize_ip: true
 
@@ -71,10 +69,6 @@ exclude:
   - LICENSE
   - Gemfile
   - Gemfile.lock
-  - docs/billet00.md
-  - docs/billet01.md
-  - docs/categorie_02/
-  - docs/categorie_03/
   - scrap_book/
   # - docs/maths/
   # - .sass-cache/

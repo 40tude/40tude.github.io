@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(head -10 \"/c/Users/phili/OneDrive/Documents/40tude.github.io/docs/02_simple_os/000_sos_2_le_retour_20_ans_apres_episode_0/\"*.md)"
     ]
   }
 }
