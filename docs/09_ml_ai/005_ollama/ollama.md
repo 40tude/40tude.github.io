@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 11:25:32
+last_modified_date: 2026-04-13 11:27:46
 ---
 
 
@@ -47,8 +47,7 @@ last_modified_date: 2026-04-13 11:25:32
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img00.webp"
+<img src="./assets/img00.webp"
     alt="TODO: Add a description"
     style="width: 100%; height: auto;"
     loading="lazy"
