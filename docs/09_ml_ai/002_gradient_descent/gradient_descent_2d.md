@@ -4,10 +4,10 @@ lang: en-US
 layout: default
 title: Understanding Gradient Descent in 2D
 description: We continue the introduction with a 2D model
-parent: "Machine Learning"
+parent: "ML & AI"
 math: mathjax
 date:               2025-11-23 12:00:00 +0000
-last_modified_date: 2026-04-12 12:17:03
+last_modified_date: 2026-04-13 08:13:33
 # nav_order: 9
 # permalink: /machine_learning/
 ---

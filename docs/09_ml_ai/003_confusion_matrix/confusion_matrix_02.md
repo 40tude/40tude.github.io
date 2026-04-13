@@ -4,10 +4,10 @@ lang: en-US
 layout: default
 title: "Understanding the Confusion Matrix - 02"
 description: "A gentle, story-driven introduction so you’ll never be confused again."
-parent: "Machine Learning"
+parent: "ML & AI"
 math: mathjax
 date:               2025-12-13 18:00:00 +0000
-last_modified_date: 2026-04-12 12:17:03
+last_modified_date: 2026-04-13 08:13:33
 ---
 
 

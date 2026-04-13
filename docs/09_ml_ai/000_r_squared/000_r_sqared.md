@@ -1,10 +1,10 @@
 ---
 layout: default
 title: "Yet Another Intro to Linear Regression and R²"
-parent: "Machine Learning"
+parent: "ML & AI"
 math: mathjax
 date:               2025-01-16 10:00:00 +0000
-last_modified_date: 2026-04-12 12:17:03
+last_modified_date: 2026-04-13 08:13:33
 # nav_order: 9
 # permalink: /machine_learning/
 ---
