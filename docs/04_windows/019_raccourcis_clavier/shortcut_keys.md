@@ -4,13 +4,13 @@ title: "Raccourcis clavier"
 parent: "Windows"
 #math: mathjax
 date: 2015-09-27 21:38:30
-last_modified_date: 2023-01-12 00:17:11
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 # Raccourcis clavier
 
-Cette page n'est qu'un listing des raccourcis clavier que j'utilise régulièrement.  
-Allez faire un tour sur cette page pour [quelques manipes utiles]({%link docs/04_windows/017_windows_notes_diverses/notes_diverses.md%}) sous Windows.  
+Cette page n'est qu'un listing des raccourcis clavier que j'utilise régulièrement.
+Allez faire un tour sur cette page pour [quelques manipes utiles]({%link docs/04_windows/017_windows_notes_diverses/notes_diverses.md%}) sous Windows.
 S'il y a d'autres raccourcis clavier que je me mets à utiliser je ferai une mise à jour de cette page.
 
 ## Mon top du top
@@ -21,18 +21,19 @@ S'il y a d'autres raccourcis clavier que je me mets à utiliser je ferai une mis
 | Windows + Shift + s                                  | Capture écran |
 | Ctrl + Shift + Echap                                 | Gestionnaire de tâches |
 | Alt + Tab                                            | Les tâches |
-| Windows + X + i ou +a (admin)                        | Terminal normal ou admin |
+| Windows + X + I ou + A (admin)                        | Terminal normal ou admin |
 | Windows + R                                          | Run une commande |
+| Windows + ²                                          | Terminal en mode Quake |
 
 
 
 | RACCOURCIS CLAVIER                                   | DESCRIPTION            |
 | :--------------------------------------------------- |:---------------------- |
-| Windows + Shift + s                                  | Capture écran |
+| Windows + Shift + S                                  | Capture écran |
 | Ctrl + Shift + Echap                                 | Gestionnaire de tâches |
 | Alt + Tab                                            | Les tâches |
 | Windows + Tab                                        | Applis & bureaux (Tab pour switcher entre Apps & Bureaux. Flêche pour naviguer) |
-| Windows + Ctrl + D                                   | Crée un nouveau bureau virtuel |
+| Windows + Ctrl + D                v                   | Crée un nouveau bureau virtuel |
 | Windows + Ctrl + flèche gche/drte                    | Circule dans les bureaux |
 | Windows + Ctrl + F4                                  | Ferme le bureau virtuel en cours d’utilisation |
 

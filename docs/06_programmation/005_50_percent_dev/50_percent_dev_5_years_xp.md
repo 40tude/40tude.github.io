@@ -11,7 +11,7 @@ twitter:
 parent: "Programmation"
 # nav_order: 35
 date:               2026-02-15 22:00:00
-last_modified_date: 2026-04-12 12:17:03
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 
@@ -78,7 +78,7 @@ A data-driven investigation into one of the most repeated claims in software eng
 
 You've probably heard it before, in a conference talk, a blog post, or a podcast: *"Half of all developers have less than five years of experience."* The statement is striking, almost alarming. It suggests an industry in perpetual adolescence, where the majority of practitioners are still figuring things out. But where does this claim actually originate, and is it true?
 
-The primary source is **Robert C. Martin**, universally known as "Uncle Bob." Co-author of the Agile Manifesto, author of *Clean Code* and *Clean Architecture*. One of the most influential voices in software craftsmanship, Martin has been making this argument in his famous "Future of Programming" talk since at least 2014. His reasoning is elegantly simple: if the number of programmers worldwide doubles every five years, then at any given moment, half of them must have been hired within the last five years.
+The primary source is **Robert C. Martin**, universally known as "Uncle Bob." Co-author of the [Agile Manifesto](https://agilemanifesto.org/), author of *Clean Code* and *Clean Architecture*. One of the most influential voices in software craftsmanship, Martin has been making this argument in his famous "Future of Programming" talk since at least 2014. His reasoning is elegantly simple: if the number of programmers worldwide doubles every five years, then at any given moment, half of them must have been hired within the last five years.
 
 If the reasoning is not crystal clear, read this page which explain  [what is a percentage]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) and where I take the time to explain exponential growth plus many other things like the rule of the 70 etc.
 

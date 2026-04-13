@@ -12,7 +12,7 @@ parent: "Programmation"
 # nav_order: 36
 math: mathjax
 date:               2026-04-01 12:00:00
-last_modified_date: 2026-04-11 09:55:20
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 
@@ -357,7 +357,7 @@ cargo run
 
 The `rust_delete_me_02_target` volume will now be around 7.7 MB. Nothing significant was written to our OneDrive folder.
 
-> **Note:** You will notice a small `./target` folder appears in the workspace. This is NOT an expected behavior. Cargo writes a few metadata files there (`CACHEDIR.TAG`, `.rustc_info.json`, some empty directories) even when `target-dir` is redirected. The actual build artifacts are in the Docker volume. The leftover folder is tiny and harmless. I created an [issue](https://github.com/rust-lang/cargo/issues/16826).
+> **Note:** You will notice a small `./target` folder appears in the workspace. This is NOT an expected behavior. Cargo writes a few metadata files there (`CACHEDIR.TAG`, `.rustc_info.json`, some empty directories) even when `target-dir` is redirected. The actual build artifacts are in the Docker volume. The leftover folder is tiny and harmless. I created an [issue](https://github.com/rust-lang/cargo/issues/16826) but it seems the problem comes from the extension rust-analyzer which create the sub-directory and files as soon as possible.
 
 **10.** Launch Claude and paste the token when prompted:
 

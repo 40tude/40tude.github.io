@@ -11,7 +11,7 @@ twitter:
 parent: "Rust"
 nav_order: 36
 date:               2026-03-05 11:00:00
-last_modified_date: 2026-04-03 08:30:00
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 
@@ -1273,6 +1273,7 @@ And perhaps that is the most interesting takeaway: the future of programming is 
 ## Webliography
 * [Claude and the WAT Task Pipeline]({%link docs/06_programmation/007_claude_and_wat_framework/claude_and_wat_framework.md%})
 * [Spec Kit repo](https://github.com/github/spec-kit)
+* [Spec-Driven Development Is Waterfall in Markdown](https://medium.com/@iamalvisng/spec-driven-development-is-waterfall-in-markdown-e2921554a600)
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">

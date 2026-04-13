@@ -4,7 +4,7 @@ title: "Mes notes Windows"
 parent: "Windows"
 #math: mathjax
 date: 2017-01-14 21:08:00
-last_modified_date: 2026-04-10 18:26:38
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 # Mes notes Windows
@@ -27,7 +27,7 @@ Il y a aussi une TOC juste au dessus.
 
 Il est possible qu'avec les mises à jour de Windows, certaines boîtes de dialogue changent ou que la mise en page évolue. Cela dit vous devriez vous y retrouver.
 Si je fais des mises à jour importantes je l'indiquerai clairement.
-Si vous cherchez des raccourcis clavier Windows, allez plutôt sur cette [page] ``NOT YET TRANSFERED`` (https://www.40tude.fr/win10-raccourcis-clavier/).
+Si vous cherchez des raccourcis clavier Windows, allez plutôt sur cette [page]({%link docs/04_windows/019_raccourcis_clavier%})
 
 
 

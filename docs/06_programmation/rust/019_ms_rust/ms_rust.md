@@ -24,12 +24,9 @@ How to transform the Pragmatic Rust Guidelines into a Claude skill, step by step
 
 
 
-
 <!-- <h2 align="center">
 <span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span>
 </h2> -->
-
-
 
 
 

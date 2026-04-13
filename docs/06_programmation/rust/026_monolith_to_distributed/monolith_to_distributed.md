@@ -11,7 +11,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-02-15 22:00:00
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 
@@ -143,6 +143,7 @@ Let's get started.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Step 00: Single-file Monolith
+
 
 <div align="center">
 <img src="./assets/img04.webp" alt="Single File Monolith" width="900" loading="lazy"/><br/>

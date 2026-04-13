@@ -12,7 +12,7 @@ parent: "Programmation"
 # nav_order: 36
 math: mathjax
 date:               2026-04-02 15:00:00
-last_modified_date: 2026-04-11 09:52:06
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 
@@ -783,8 +783,8 @@ That's the leverage: a stable operating framework applied to an infinite surface
 ## Webliography
 
 * [Spec-Driven Development with Rust and GitHub Spec Kit]({%link docs/06_programmation/rust/027_speckit/speckit.md%})
+* [Spec-Driven Development Is Waterfall in Markdown](https://medium.com/@iamalvisng/spec-driven-development-is-waterfall-in-markdown-e2921554a600)
 * [What is WAT Framework](https://www.mindstudio.ai/blog/what-is-wat-framework-workflows-agents-tools)
-
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">

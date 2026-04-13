@@ -11,7 +11,7 @@ twitter:
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-02-10 08:00:00
+last_modified_date: 2026-04-13 15:03:54
 ---
 
 
@@ -52,9 +52,6 @@ Learn Rust modular monolith: 7-step tutorial from Hello World to I/O-agnostic ap
 * Bonus: Improve the file adapter
 
 All the [examples](https://github.com/40tude/modular_monolith_tuto) are on GitHub
-
-
-
 
 
 
