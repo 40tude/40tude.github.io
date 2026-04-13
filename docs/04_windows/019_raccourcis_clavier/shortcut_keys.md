@@ -13,7 +13,7 @@ parent: "Windows"
 # nav_order: 36
 #math: mathjax
 date: 2015-09-27 21:38:30
-last_modified_date: 2026-04-13 15:21:07
+last_modified_date: 2026-04-13 15:23:38
 ---
 
 
@@ -26,8 +26,7 @@ last_modified_date: 2026-04-13 15:21:07
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
-<img
-    src="./assets/img00.webp"
+<img src="./assets/img00.webp"
     alt=""
     style="width: 100%; height: auto;"
     loading="lazy"
