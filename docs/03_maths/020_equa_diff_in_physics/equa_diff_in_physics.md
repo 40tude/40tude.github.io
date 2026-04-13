@@ -12,7 +12,7 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-04-12 12:17:03
+last_modified_date: 2026-04-13 14:45:36
 ---
 
 
@@ -4454,7 +4454,7 @@ The highway is still out there, mostly empty, the night still quiet. But the que
 
 ### FR
 {: .no_toc }
-Your favorit browser should be able to translate if needed.
+Your favorite browser should be able to translate if needed.
 
 * [Forme intégrale et différentielle de la loi de Gauss]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
 * [Chainette]({%link docs/03_maths/000_chainette/000_chainette.md%})
