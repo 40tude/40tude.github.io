@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 11:27:46
+last_modified_date: 2026-04-13 11:38:15
 ---
 
 
@@ -38,12 +38,13 @@ last_modified_date: 2026-04-13 11:27:46
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+<!--
 ## TL;DR
 {: .no_toc }
 
 * Point 1
 * Point 2
-
+ -->
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -67,10 +68,10 @@ last_modified_date: 2026-04-13 11:27:46
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Table of Contents
+<!-- ## Table of Contents
 {: .no_toc .text-delta}
 - TOC
-{:toc}
+{:toc} -->
 
 
 
@@ -85,7 +86,7 @@ last_modified_date: 2026-04-13 11:27:46
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit tincidunt. Nunc et laoreet ipsum. Fusce neque nisi, blandit vitae magna nec, sollicitudin commodo felis. Morbi a viverra lorem, ut sollicitudin lacus. Pellentesque euismod magna et enim fermentum tempor. Etiam vel sagittis mauris. Praesent dictum nisl sit amet tellus rhoncus mollis. Aenean nisi nibh, tincidunt at massa eget, luctus aliquet lectus. Mauris ac massa dolor. Sed fringilla tristique est. Suspendisse nec leo et magna tincidunt ultrices. Suspendisse lacinia leo sed congue ornare. Mauris congue eu dui posuere ultricies. Duis volutpat volutpat erat, ut consequat nisl bibendum gravida. Curabitur fringilla tincidunt auctor.
 
 <!-- Link to a video -->
-<figure style="max-width: 560px; margin: auto;">
+<!-- <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/MIeYz6aMBbk"
@@ -95,7 +96,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit t
     </iframe>
 </div>
 <figcaption style="text-align: center;">TODO: Add a legend</figcaption>
-</figure> -->
+</figure> --> -->
 
 
 

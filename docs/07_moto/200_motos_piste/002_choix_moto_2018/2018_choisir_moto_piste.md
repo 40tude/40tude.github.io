@@ -5,11 +5,19 @@ parent: "Motos"
 nav_order: 3
 #math: mathjax
 date: 2018-11-01 17:02:55
-last_modified_date: 2026-04-13 11:25:32
+last_modified_date: 2026-04-13 11:38:15
 ---
 
 # 2018 - Choisir sa moto pour la piste
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00.webp"
+    alt="Arrivée de ma 1ere moto de piste à la maison"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Arrivée de ma 1ere moto de piste à la maison</figcaption>
+</figure>
 
 # Introduction
 
