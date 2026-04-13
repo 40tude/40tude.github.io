@@ -1,10 +1,10 @@
 ---
-published: false
+published: true
 author: 40tude
 lang: en-US
 layout: default
-title: "Ollama 101 with Windows 11"
-description: "A checklist"
+title: "Ollama 101: Windows 11 Quickstart Checklist"
+description: "Everything you need to install, run, and experiment with local LLMs in minutes"
 image: docs/09_ml_ai/005_ollama/assets/img01.webp
 twitter:
   card: summary_large_image
@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 08:13:33
+last_modified_date: 2026-04-13 11:07:26
 ---
 
 
