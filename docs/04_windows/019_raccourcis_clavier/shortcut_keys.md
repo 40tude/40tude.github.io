@@ -1,13 +1,42 @@
 ---
+published: true
+author: 40tude
+lang: fr-FR
 layout: default
 title: "Raccourcis clavier"
+description: "La liste des raccourcis Windows que j'utilise au quotidien"
+image: docs/04_windows/019_raccourcis_clavier/assets/img00.webp
+twitter:
+  card: summary_large_image
+
 parent: "Windows"
+# nav_order: 36
 #math: mathjax
 date: 2015-09-27 21:38:30
-last_modified_date: 2026-04-13 15:03:54
+last_modified_date: 2026-04-13 15:21:07
 ---
 
-# Raccourcis clavier
+
+
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img00.webp"
+    alt=""
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<!-- <figcaption>TODO: Add a legend</figcaption> -->
+</figure>
+
+
+
 
 Cette page n'est qu'un listing des raccourcis clavier que j'utilise régulièrement.
 Allez faire un tour sur cette page pour [quelques manipes utiles]({%link docs/04_windows/017_windows_notes_diverses/notes_diverses.md%}) sous Windows.
