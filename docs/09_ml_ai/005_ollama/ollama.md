@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 11:48:55
+last_modified_date: 2026-04-13 11:53:58
 ---
 
 
@@ -49,11 +49,11 @@ last_modified_date: 2026-04-13 11:48:55
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
 <img src="./assets/img00.webp"
-    alt="TODO: Add a description"
+    alt="Under Windows 11, use Ollama to install and run LLM locally"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Under Windows 11, use Ollama to install and run LLM locally</figcaption>
 </figure>
 
 
@@ -110,11 +110,11 @@ Visit [ollama.com](https://ollama.com/)
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img
     src="./assets/img06.webp"
-    alt="TODO: Add a description"
+    alt="Visit ollama.com"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Visit ollama.com</figcaption>
 </figure>
 
 
