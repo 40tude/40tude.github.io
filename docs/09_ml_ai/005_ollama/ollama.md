@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 11:38:15
+last_modified_date: 2026-04-13 11:48:55
 ---
 
 
@@ -47,7 +47,7 @@ last_modified_date: 2026-04-13 11:38:15
  -->
 
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 600px; margin: auto; text-align: center;">
 <img src="./assets/img00.webp"
     alt="TODO: Add a description"
     style="width: 100%; height: auto;"
@@ -96,7 +96,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit t
     </iframe>
 </div>
 <figcaption style="text-align: center;">TODO: Add a legend</figcaption>
-</figure> --> -->
+</figure> -->
 
 
 
@@ -138,11 +138,11 @@ ollama run qwen2.5:3b
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img01.webp"
-    alt="TODO: Add a description"
+    alt="Install and Run QWEN in Ollama"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Install and Run QWEN in Ollama</figcaption>
 </figure>
 
 
@@ -152,7 +152,7 @@ ollama run qwen2.5:3b
 <!-- ###################################################################### -->
 ## First prompt
 
-Once you see `>>>>` you can try your first prompt.
+Once you see the `>>>>`, you can try your first prompt.
 
 ```powershell
 # prompt:
@@ -169,11 +169,11 @@ See below the answer:
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img02.webp"
-    alt="TODO: Add a description"
+    alt="First prompt within Ollama"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>First prompt within Ollama</figcaption>
 </figure>
 
 
@@ -197,11 +197,11 @@ ollama --help
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img03.webp"
-    alt="TODO: Add a description"
+    alt="Getting Help from Ollama"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Getting Help from Ollama</figcaption>
 </figure>
 
 
@@ -215,12 +215,12 @@ ollama show qwen2.5:3b
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
-    src="./assets/img03.webp"
-    alt="TODO: Add a description"
+    src="./assets/img04.webp"
+    alt="Getting information about QWEN"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Getting information about QWEN</figcaption>
 </figure>
 
 
@@ -241,11 +241,11 @@ Get-ChildItem "$env:USERPROFILE\.ollama\models" -Recurse
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img05.webp"
-    alt="TODO: Add a description"
+    alt="Ollama: checking where the models are stored locally"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Ollama: checking where the models are stored locally</figcaption>
 </figure>
 
 
