@@ -5,7 +5,7 @@ lang: en-US
 layout: default
 title: "Ollama 101: Windows 11 Quickstart Checklist"
 description: "Everything you need to install, run, and experiment with local LLMs in minutes"
-image: docs/09_ml_ai/005_ollama/assets/img01.webp
+image: docs/09_ml_ai/005_ollama/assets/img00.webp
 twitter:
   card: summary_large_image
 parent: "ML & AI"
@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 11:07:26
+last_modified_date: 2026-04-13 11:25:32
 ---
 
 
@@ -81,7 +81,7 @@ last_modified_date: 2026-04-13 11:07:26
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Introduction
+<!-- ## Introduction
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit tincidunt. Nunc et laoreet ipsum. Fusce neque nisi, blandit vitae magna nec, sollicitudin commodo felis. Morbi a viverra lorem, ut sollicitudin lacus. Pellentesque euismod magna et enim fermentum tempor. Etiam vel sagittis mauris. Praesent dictum nisl sit amet tellus rhoncus mollis. Aenean nisi nibh, tincidunt at massa eget, luctus aliquet lectus. Mauris ac massa dolor. Sed fringilla tristique est. Suspendisse nec leo et magna tincidunt ultrices. Suspendisse lacinia leo sed congue ornare. Mauris congue eu dui posuere ultricies. Duis volutpat volutpat erat, ut consequat nisl bibendum gravida. Curabitur fringilla tincidunt auctor.
 
@@ -96,7 +96,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit t
     </iframe>
 </div>
 <figcaption style="text-align: center;">TODO: Add a legend</figcaption>
-</figure>
+</figure> -->
 
 
 

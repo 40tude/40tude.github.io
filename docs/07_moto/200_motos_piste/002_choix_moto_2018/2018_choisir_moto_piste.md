@@ -1,14 +1,14 @@
 ---
 layout: default
-title: "2018 - Choisir sa moto"
-parent: "Choisir sa moto pour la piste"
+title: "2018 - Choisir sa moto pour la piste"
+parent: "Motos"
 nav_order: 3
 #math: mathjax
 date: 2018-11-01 17:02:55
-last_modified_date: 2021-11-25 23:57:10
+last_modified_date: 2026-04-13 11:25:32
 ---
 
-# 2018 - Choisir sa moto
+# 2018 - Choisir sa moto pour la piste
 
 
 # Introduction
@@ -140,7 +140,7 @@ Bon là faut être clair... Faut être dur. Une fois qu'une annonce est sauvegar
 
 Si l'annonce a passé le premier filtre on peut passer à la suite et tu rentres en contact avec le vendeur via la messagerie de LBC.
 
-### Message type 
+### Message type
 
 ```
 Bonjour,
