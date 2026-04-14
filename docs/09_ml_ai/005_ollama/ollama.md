@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-14 12:59:26
+last_modified_date: 2026-04-14 18:20:48
 ---
 
 
@@ -118,6 +118,8 @@ Visit [ollama.com](https://ollama.com/)
 </figure>
 
 
+Open a terminal and copy the line below (no need to be admin) :
+
 ```powershell
 irm https://ollama.com/install.ps1 | iex
 ```
@@ -128,7 +130,7 @@ irm https://ollama.com/install.ps1 | iex
 <!-- ###################################################################### -->
 ## Install and Run QWEN
 
-This is a "small" model. Perfect to check our setup.
+This is a "small" model. Perfect to check our setup. In the same terminal past the command below:
 
 ```powershell
 ollama run qwen2.5:3b
@@ -185,7 +187,7 @@ See below the answer:
 <!-- ###################################################################### -->
 ## Getting Help and Information
 
-As Claude, Ollama have a set of slash commands but it is poor:
+As Claude, Ollama have a set of slash commands but it is short:
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
 <img
@@ -219,7 +221,7 @@ ollama --help
 </figure>
 
 
-- Let's try `ollama list` to see the list of model available locally:
+- Let's try `ollama list` to see the list of models available locally:
 
 ```powershell
 ollama list
@@ -245,7 +247,7 @@ ollama show qwen2.5:3b
 <!-- ###################################################################### -->
 ## Check where the models are stored
 
-Ollama is installed in `$env:USERPROFILE/.ollama`
+Ollama is installed in `$env:USERPROFILE/.ollama`. This is a good news because it is NOT monitored by OneDrive. If needed one can read this [page](https://docs.ollama.com/windows#changing-model-location) and change `OLLAMA_MODELS` default value.
 
 ```powershell
 Get-ChildItem $env:USERPROFILE/.ollama/models -Recurse
@@ -498,15 +500,140 @@ I can’t do this with my “limited” Claude Pro subscription. That’s why I 
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ## Conclusion
 
-Maecenas in arcu id erat interdum tristique sed fermentum tortor. Donec eget felis ornare sem dapibus tincidunt at vitae justo. Mauris feugiat tristique augue at maximus. Vivamus euismod blandit mi, ut pretium libero tempor sit amet. In tristique nisi vel mi molestie, ac ornare enim blandit. Phasellus bibendum diam massa, in tempor purus imperdiet a. Curabitur mattis mauris eget cursus molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
-Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum efficitur sapien leo, id iaculis sem sagittis ac. Praesent dolor nisl, fringilla fermentum maximus id, ornare id justo. Morbi at gravida purus, eu imperdiet risus.
- -->
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Let's test a smaller model with an extended context
+
+In terminal 1 I run this command
+
+```powershell
+ollama run qwen3.5:9b
+```
+
+In terminal 2 I run this one
+
+```powershell
+ollama ps
+NAME          ID              SIZE      PROCESSOR          CONTEXT    UNTIL
+qwen3.5:9b    6488c96fa5fa    8.9 GB    28%/72% CPU/GPU    4096       4 minutes from now
+```
+We can see that the context is "only" `4K`.
+
+I stay in the current folder (`$env:tmp/delete_me`)
+
+```powershell
+# create Modelfile
+@"
+FROM qwen3.5:9b
+PARAMETER num_ctx 65536
+"@ | Set-Content -Path Modelfile -Encoding UTF8
+
+
+# use Modelfile to create a "new" model
+ollama create qwen3.5-9b-64k -f Modelfile
+```
+
+Now we have a `3.5:9B` model with `64k` context rather than `4k` by default.
+
+```powershell
+ollama list
+NAME                     ID              SIZE      MODIFIED
+qwen3.5-9b-64k:latest    b7b9afeaf023    6.6 GB    2 minutes ago
+qwen3.5:9b               6488c96fa5fa    6.6 GB    14 minutes ago
+gemma4:26b               5571076f3d70    17 GB     4 hours ago
+gemma4:e4b               c6eb396dbd59    9.6 GB    8 hours ago
+qwen2.5:3b               357c53fb659c    1.9 GB    2 days ago
+
+```
+
+Let's check that. In terminal 1 I run:
+
+```powershell
+ollama run qwen3.5-9b-64k
+```
+
+In terminal 2 I run:
+
+```powershell
+ollama ps
+NAME                     ID              SIZE     PROCESSOR          CONTEXT    UNTIL
+qwen3.5-9b-64k:latest    b7b9afeaf023    12 GB    36%/64% CPU/GPU    65536      3 minutes from now
+```
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Using our 64k context model with Claude in VSCode
+
+
+* I stay in the same directory
+* Open VSCode (`code .`)
+* Open a terminal (`CTRL+ù`) and run this command
+
+```powershell
+ollama launch claude --model qwen3.5-9b-64k
+```
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img18.webp"
+    alt="Claude Code with QWEN 3.5:9b and 64k context"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Claude Code with QWEN 3.5:9b and 64k context</figcaption>
+</figure>
+
+
+
+Now I use this prompt : `In the current directory, create a Python script odd.py which print the 10 first odd numbers`
+
+Once this is done, since I want to see if it follows the instructions of `CLAUDE.md` I ask it to run the script with this prompt: `Can you run it?`
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img19.webp"
+    alt="The model run the Python script using uv"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The model run the Python script using uv</figcaption>
+</figure>
+
+With a 64k context, the model is able to save the file, it remember what it does (in the seconde pront I said "can you run it") and it follow the instruction of my `CLAUDE.md`. So it seems context width is someting we should keep an I on.
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Conclusion
+
+We learn a lot but at the end of the day we have a setup we can improve. Remember, my objective is:
+
+I wanted to run a model in a loop all night. I needed the ability to:
+* generate code
+* save it
+* run it (`uv` or `cargo run`)
+* read some results (for example, execution time)
+* decide whether the latest version of the code is better or not
+* repeat the loop
+
+We will see how it goes but the next step should be to check the context of Gemma4, extend it it needed and work on the loop. Stay tune!
 
 
 
