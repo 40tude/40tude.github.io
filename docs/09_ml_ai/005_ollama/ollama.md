@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-14 12:35:46
+last_modified_date: 2026-04-14 12:59:26
 ---
 
 
@@ -314,7 +314,7 @@ Given the hardware configuration described above, which Gemma 4 model would you 
 </figure>
 
 
-After discussing with ChatGPT and double checking [this page](https://ollama.com/library/gemma4) I decided to give a try to Gemma 4, 4B
+After discussing with ChatGPT and double checking [this page](https://ollama.com/library/gemma4) I decided to give a try to Gemma 4:e4B
 
 
 
@@ -333,11 +333,11 @@ ollama run gemma4:e4b
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img09.webp"
-    alt="Ollama download Gemma 4 4B"
+    alt="Ollama download Gemma 4:e4B"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Ollama download Gemma 4 4B</figcaption>
+<figcaption>Ollama download Gemma 4:e4B</figcaption>
 </figure>
 
 
@@ -346,11 +346,11 @@ Once the model is succesfully downloaded, let's try a prompt:
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img10.webp"
-    alt="Second prompt with gemma4:4b"
+    alt="Second prompt with gemma4:e4b"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Second prompt with gemma4:4b</figcaption>
+<figcaption>Second prompt with gemma4:e4b</figcaption>
 </figure>
 
 
@@ -375,7 +375,7 @@ Below we can see that `ollama.exe` uses the GPU. Then the monitoring shows what 
 
 **Side Note**
 - `%LOCALAPPDATA%/Ollama` contains the logs
-- `%LOCALAPPDATA%/Programs/Ollama` caontains the app and the lib
+- `%LOCALAPPDATA%/Programs/Ollama` contains the app and the lib
 
 
 
@@ -385,16 +385,16 @@ Below we can see that `ollama.exe` uses the GPU. Then the monitoring shows what 
 <!-- ###################################################################### -->
 ## Using Gemma 4 in the Ollama Windows app
 
-Launch the Ollama app and select Gemma4 model in the drop down list. Use a third prompt (we could alternatively paste an image)
+Launch the Ollama app and select Gemma4 model in the drop down list (bottom right). Use a third prompt (we could alternatively paste an image)
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img12.webp"
-    alt="Using Gemma4:4B model in the Ollama Windows app"
+    alt="Using Gemma4:e4B model in the Ollama Windows app"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Using Gemma4:4B model in the Ollama Windows app</figcaption>
+<figcaption>Using Gemma4:e4B model in the Ollama Windows app</figcaption>
 </figure>
 
 
@@ -422,7 +422,7 @@ ollama launch
 </figure>
 
 
-Select `Claude Code` then use the right arrow to select in the list of models, at the bottom of the terminal, select `gemma4:26b`
+Select `Claude Code` then use the ➡️ (**right arrow** ) to select in the list of models, at the bottom of the terminal, select `gemma4:e4b`
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -436,7 +436,7 @@ Select `Claude Code` then use the right arrow to select in the list of models, a
 </figure>
 
 
-
+Once in Claude, my status line indicates the model, the directory... We are all set:
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
@@ -454,7 +454,7 @@ Then I use this prompt
 show me how to print the 10 first odd number in Python
 ```
 
-
+I get this answer:
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -475,18 +475,15 @@ show me how to print the 10 first odd number in Python
 
 
 
-Then I use this prompt
+Then I use this prompt:
 
 ```
 Can you save the script in the current directory in odd.py
-
 ```
 
-And then it get weird and NOT usable. Indeed Claude context is too big and the context of the model is too small. The model doesn't remember the code it generated few seconds beofre. It does'nt know how to save the file, it does not use Claude API to save the file...
+Then things get weird and **not usable**. Indeed Claude context is too big and the context of the model is too small. The model doesn't even remember the code it generated few seconds before. It does'nt know how to save a file, it does not use Claude API to save the file...
 
-I did some tests with Gemma 26B. Same problems...
-
-Not yet usable in my point of view.
+I also did some tests with Gemma 26B. Same kind of problems/bugs... Not yet usable in my point of view.
 
 This is unfortunate because I wanted to run the model all night to improve some code. To do that, I would need the ability to:
 
