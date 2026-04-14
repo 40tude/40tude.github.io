@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 11:53:58
+last_modified_date: 2026-04-14 12:35:46
 ---
 
 
@@ -185,7 +185,21 @@ See below the answer:
 <!-- ###################################################################### -->
 ## Getting Help and Information
 
-- Exit Ollama (`/exit`)
+As Claude, Ollama have a set of slash commands but it is poor:
+
+<figure style="max-width: 600px; margin: auto; text-align: center;">
+<img
+    src="./assets/img16.webp"
+    alt="List of Ollama's slash commands"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>List of Ollama's slash commands</figcaption>
+</figure>
+
+
+
+- Exit Ollama (`/exit` or `/bye`)
 - In the terminal type
 
 
@@ -194,7 +208,7 @@ ollama --help
 ```
 
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 600px; margin: auto; text-align: center;">
 <img
     src="./assets/img03.webp"
     alt="Getting Help from Ollama"
@@ -231,12 +245,11 @@ ollama show qwen2.5:3b
 <!-- ###################################################################### -->
 ## Check where the models are stored
 
-Ollama is installed in `$env:USERPROFILE`
+Ollama is installed in `$env:USERPROFILE/.ollama`
 
 ```powershell
-Get-ChildItem "$env:USERPROFILE\.ollama\models" -Recurse
+Get-ChildItem $env:USERPROFILE/.ollama/models -Recurse
 ```
-
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
@@ -250,25 +263,241 @@ Get-ChildItem "$env:USERPROFILE\.ollama\models" -Recurse
 
 
 
+
+
 <!-- ###################################################################### -->
-<!-- ### Level 3 Section
-{: .no_toc }
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Know your hardware configuration
 
-Cras dui ex, scelerisque et magna et, lacinia convallis nunc. Proin sapien nunc, eleifend a mi semper, efficitur pharetra justo. Etiam sit amet ex lacinia, consequat orci sed, malesuada leo. Donec commodo felis eu commodo suscipit. Praesent vitae lorem a dui porta volutpat. Pellentesque efficitur pharetra velit, at placerat nulla iaculis in. Praesent placerat turpis sit amet mauris bibendum interdum. Sed consectetur massa lacus, tempus congue purus dictum nec.
+```powershell
+& dxdiag /t "$env:TEMP\dxdiag.txt"; Start-Sleep -Seconds 5; Select-String "Display Memory|Card name" "$env:TEMP\dxdiag.txt"
+Get-CimInstance Win32_Processor | Select-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed
+Get-CimInstance Win32_PhysicalMemory | Select-Object Manufacturer, Capacity, Speed, MemoryType
+(Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory / 1GB
+```
 
-Math inline $$x(t)$$ and, below, math offline:
-
-$$
-\frac{dS}{dt} = r \cdot S
-$$
-
- -->
-
-
-
-
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img07.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Selecting Gemma 4
+
+Select and copy the text from the terminal into ChatGPT, Claude or other friends then add this prompt:
+
+```
+Given the hardware configuration described above, which Gemma 4 model would you recommend for my Windows 11 PC?
+```
+
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img08.webp"
+    alt="Claude recommend 26B A4B (MoE, Mixture of Experts)"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Claude recommend 26B A4B (MoE, Mixture of Experts)</figcaption>
+</figure>
+
+
+After discussing with ChatGPT and double checking [this page](https://ollama.com/library/gemma4) I decided to give a try to Gemma 4, 4B
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Using Gemma 4 in the terminal
+
+⚠️ Make sure to plug an Ethernet cable rather than using Wifi then use the following command.
+
+```powershell
+ollama run gemma4:e4b
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img09.webp"
+    alt="Ollama download Gemma 4 4B"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Ollama download Gemma 4 4B</figcaption>
+</figure>
+
+
+Once the model is succesfully downloaded, let's try a prompt:
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img10.webp"
+    alt="Second prompt with gemma4:4b"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Second prompt with gemma4:4b</figcaption>
+</figure>
+
+
+Let's check the state of the GPU while the model is working. I tried different options but I was not abel to display Compute/CUDA on the discrete GPU using task manager (CTRL+SHIFT+ESC). So I propose to open a second terminal and run this command
+
+```powershell
+nvidia-smi --query-gpu=utilization.gpu --format=csv -l 1
+```
+
+Below we can see that `ollama.exe` uses the GPU. Then the monitoring shows what happens when I run a prompt in another terminal.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img11.webp"
+    alt="The GPU is working"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The GPU is working</figcaption>
+</figure>
+
+
+**Side Note**
+- `%LOCALAPPDATA%/Ollama` contains the logs
+- `%LOCALAPPDATA%/Programs/Ollama` caontains the app and the lib
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Using Gemma 4 in the Ollama Windows app
+
+Launch the Ollama app and select Gemma4 model in the drop down list. Use a third prompt (we could alternatively paste an image)
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img12.webp"
+    alt="Using Gemma4:4B model in the Ollama Windows app"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Using Gemma4:4B model in the Ollama Windows app</figcaption>
+</figure>
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Using Gemma 4 with Claude
+
+* Open VSCode in an empty directory
+* Open a terminal and call
+
+```powershell
+ollama launch
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img13.webp"
+    alt="ollama launch"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>ollama launch</figcaption>
+</figure>
+
+
+Select `Claude Code` then use the right arrow to select in the list of models, at the bottom of the terminal, select `gemma4:26b`
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img14.webp"
+    alt="ollama launch"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>ollama launch</figcaption>
+</figure>
+
+
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img15.webp"
+    alt="gemma4:e4b used by Claude Code in VSCode"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>gemma4:e4b used by Claude Code in VSCode</figcaption>
+</figure>
+
+Then I use this prompt
+
+```
+show me how to print the 10 first odd number in Python
+```
+
+
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img17.webp"
+    alt="Answer from the model"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Answer from the model</figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+Then I use this prompt
+
+```
+Can you save the script in the current directory in odd.py
+
+```
+
+And then it get weird and NOT usable. Indeed Claude context is too big and the context of the model is too small. The model doesn't remember the code it generated few seconds beofre. It does'nt know how to save the file, it does not use Claude API to save the file...
+
+I did some tests with Gemma 26B. Same problems...
+
+Not yet usable in my point of view.
+
+This is unfortunate because I wanted to run the model all night to improve some code. To do that, I would need the ability to:
+
+* generate code
+* save it
+* run it
+* read some results (for example, execution time)
+* decide whether the latest version of the code is better or not
+* repeat the loop
+
+I can’t do this with my “limited” Claude Pro subscription. That’s why I wanted to run everything locally, even if it meant it would be slow. Time wasn’t the issue for this experiment.
 
 
 
@@ -287,7 +516,8 @@ Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magni
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-<!-- ## Webliography
+## Webliography
 
-* [Link to a web page](https://cleonis.nl/physics/phys256/energy_position_equation.php).
-* [Link to a page of the site]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%}) -->
+* [Unsloth: Gemma 4](https://unsloth.ai/docs/models/gemma-4)
+
+
