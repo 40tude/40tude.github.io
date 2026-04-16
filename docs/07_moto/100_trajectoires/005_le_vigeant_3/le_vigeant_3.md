@@ -7,7 +7,7 @@ parent: "Trajectoires"
 nav_order: 5
 #math: mathjax
 date: 2022-10-15 14:29:19
-last_modified_date: 2026-04-16 11:57:42
+last_modified_date: 2026-04-16 12:13:48
 ---
 
 # {{ page.title }}
@@ -530,7 +530,7 @@ Pour finir en beauté, une super vidéo très claire et qui refait avec d'autres
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://www.youtube.com/embed/if_cCUqhrwA?t=8"
+    src="https://www.youtube.com/embed/if_cCUqhrwA?start=8"
     title=""
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -614,3 +614,18 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc"
+    title="Comment faire des squats"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Comment faire des squats
+</figcaption>
+</figure>
