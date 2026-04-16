@@ -1,11 +1,12 @@
 ---
 layout: default
-title: "La Ferté Gaucher 1"
+title: "Trajectoires moto à La Ferté Gaucher (Partie 1) : Guide complet du tracé sud"
+description: "Analyse virage par virage pour améliorer vos trajectoires et vos chronos sur le circuit rapide"
 parent: "Trajectoires"
 nav_order: 1
 #math: mathjax
 date: 2023-05-15 18:21:41
-last_modified_date: 2026-04-16 10:34:32
+last_modified_date: 2026-04-16 11:01:11
 ---
 
 # La Ferté Gaucher 1
