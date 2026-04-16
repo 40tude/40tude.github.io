@@ -5,7 +5,7 @@ parent: "Trajectoires"
 nav_order: 1
 #math: mathjax
 date: 2023-05-15 18:21:41
-last_modified_date: 2023-09-01 13:12:25
+last_modified_date: 2026-04-16 10:34:32
 ---
 
 # La Ferté Gaucher 1
@@ -17,7 +17,7 @@ last_modified_date: 2023-09-01 13:12:25
 
 
 ## Introduction
-Les 13 et 14 mai 2023 j'étais, une fois n'est pas coutume, sur [le circuit de la Ferté Gaucher](https://www.circuitslfg.fr/). Le samedi c'était un [stage de pilotage moto] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-stage-du-13-05-23-lfg/) d'une journée et le dimanche un [roulage classique] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-roulage-du-14-05-23-lfg/). Le 14, j'ai eu l'occasion d'aller faire le tour du circuit à pied entre midi et deux. J'en ai profité pour prendre des photos et, un peu comme je l'ai déjà fait pour le [Vigeant] NOT YET TRANSFERED (https://www.40tude.fr/le-vigeant-1-3/), je vous propose de faire une présentation du circuit.
+Les 13 et 14 mai 2023 j'étais, une fois n'est pas coutume, sur [le circuit de la Ferté Gaucher](https://www.circuitslfg.fr/). Le samedi c'était un [stage de pilotage moto] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-stage-du-13-05-23-lfg/) d'une journée et le dimanche un [roulage classique] NOT YET TRANSFERED (https://www.40tude.fr/rsv4-sur-circuit-roulage-du-14-05-23-lfg/). Le 14, j'ai eu l'occasion d'aller faire le tour du circuit à pied entre midi et deux. J'en ai profité pour prendre des photos et, un peu comme je l'ai déjà fait pour le [Vigeant]({%link docs/07_moto/100_trajectoires/003_le_vigeant_1/le_vigeant_1.md%}), je vous propose de faire une présentation du circuit.
 
 Ici il n'y aura que 2 épisodes. La division du circuit se fera entre les deux bypass qui coupent le circuit en 2 plus petits. Le "rapide" de 2 km au sud et le "technique" de 1.6 km au nord. Pour rappel, voilà ce à quoi ressemble le circuit. Il tourne à gauche, il y a pas mal de grip et par temps sec on peut rouler sur les bandes blanches et les vibreurs (même moi je le fait, c'est dire...). Ci-dessous le sud est en bas et le nord en haut. Si vous ne connaissez pas du tout le circuit, cliquez sur l'image ci-dessous. Les bypass sont autour du spot N°6.
 
@@ -317,7 +317,7 @@ Je sais que je vais passer sur le point de corde donc... Je lève les yeux et le
 
 Au point de corde j'accélère franchement ("wouaap effect"). On devrait être 100% gaz au PC car avec l'inertie du moteur il sera 100% dans les tours après le point de corde alors que la moto est de plus en plus verticale.
 
-Avec l'accélération la moto va se déporter naturellement vers la gauche. Je tire sur le bracelet intérieur pour aider la moto à se relever plus vite ([contre braquage] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)). Si cela ne te parle pas, "repousse" la moto en tendant bien ton bras gauche au-dessus du réservoir (ça revient au même en fait). Je garde bien la tête en bas, à l'intérieur du virage et le corps à droite pour pouvoir accélérer fort. Je ne remonte pas sur la selle car le prochain virage tourne encore à droite.
+Avec l'accélération la moto va se déporter naturellement vers la gauche. Je tire sur le bracelet intérieur pour aider la moto à se relever plus vite  ([contre braquage]({%link docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md%})). Si cela ne te parle pas, "repousse" la moto en tendant bien ton bras gauche au-dessus du réservoir (ça revient au même en fait). Je garde bien la tête en bas, à l'intérieur du virage et le corps à droite pour pouvoir accélérer fort. Je ne remonte pas sur la selle car le prochain virage tourne encore à droite.
 
 <div align="center">
 <img src="./assets/20230514_130151.webp" alt="" width="900" loading="lazy"/>
@@ -359,7 +359,7 @@ Accélération franche au point de corde.
 </div>
 
 
-Avec l'accélération, la moto se déporte à gauche. Attention, là, il y a du boulot... Lors du changement d'angle, au moment où la moto est verticale, je passe un rapport de plus ([short shift] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-10-short-shift/), je passe en 3). Je mets ensuite mon pied gauche en position haute sur le cale-pied. J'angle la moto à gauche, je colle à la ligne et j'enroule. Idéalement il faut faire tout ça alors que le corps passe de droite à gauche sans s'arrêter pour s'assoir sur la selle. Mouai... En ce qui me concerne il y a encore du boulot ici...
+Avec l'accélération, la moto se déporte à gauche. Attention, là, il y a du boulot... Lors du changement d'angle, au moment où la moto est verticale, je passe un rapport de plus ([short shift]({%link docs/07_moto/001_notes_pilotage/011_short_shift/short_shift.md%})) et je passe en 3. Je mets ensuite mon pied gauche en position haute sur le cale-pied. J'angle la moto à gauche, je colle à la ligne et j'enroule. Idéalement il faut faire tout ça alors que le corps passe de droite à gauche sans s'arrêter pour s'assoir sur la selle. Mouai... En ce qui me concerne il y a encore du boulot ici...
 
 <div align="center">
 <img src="./assets/20230514_130516.webp" alt="" width="900" loading="lazy"/>

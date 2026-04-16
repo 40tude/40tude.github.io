@@ -5,7 +5,7 @@ parent: "Trajectoires"
 nav_order: 2
 #math: mathjax
 date: 2023-05-15 19:09:23
-last_modified_date: 2023-09-01 13:25:39
+last_modified_date: 2026-04-16 10:34:32
 ---
 
 
@@ -57,7 +57,7 @@ Je vise la rigole noire en plein milieu du vibreur. Si le temps est sec ça pass
 </div>
 
 
-Les choses se précisent. Je me prépare à être [incisif sur mes appuis] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-08-pif-paf/) pour faire basculer la moto dans le paf.
+Les choses se précisent. Je me prépare à être [incisif sur mes appuis]({%link docs/07_moto/001_notes_pilotage/009_pif_paf/pif_paf.md%}) pour faire basculer la moto dans le paf.
 
 <div align="center">
 <img src="./assets/20230514_130928.webp" alt="" width="900" loading="lazy"/>
@@ -336,7 +336,7 @@ A priori je ne suis pas le seul à passer par là ...
 </div>
 
 
-À la sortie du pif il faut longer un peu à l'extérieur avant de plonger dans le paf. Je suis donc "lite" sur les fesses. Les cuisses allègent le corps et on utilise les genoux pour passer d'un côté à l'autre ([knee to knee] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-07-knee-to-knee/)). Le point de corde du paf (voir la flèche ci-dessous) est assez loin. Autrement dit, si on veut une courbe en V pour bénéficier du couple de la moto un maximum de temps, il faut s'avancer un peu dans le pif avant de faire tourner rapidement la moto. On est genou au sol quand on fait pivoter la moto dans le paf.
+À la sortie du pif il faut longer un peu à l'extérieur avant de plonger dans le paf. Je suis donc "lite" sur les fesses. Les cuisses allègent le corps et on utilise les genoux pour passer d'un côté à l'autre ([knee to knee]({%link docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md%})). Le point de corde du paf (voir la flèche ci-dessous) est assez loin. Autrement dit, si on veut une courbe en V pour bénéficier du couple de la moto un maximum de temps, il faut s'avancer un peu dans le pif avant de faire tourner rapidement la moto. On est genou au sol quand on fait pivoter la moto dans le paf.
 
 Le truc à ne pas faire serait de passer du point de corde du pif au vibreur du paf. Ce serait facile, ce serait rassurant mais on serait mort, bloqué pendant 3H le long du vibreur, sans vitesse, sans couple... La misère quoi !
 
