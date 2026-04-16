@@ -7,7 +7,7 @@ parent: "Trajectoires"
 nav_order: 5
 #math: mathjax
 date: 2022-10-15 14:29:19
-last_modified_date: 2026-04-16 11:01:11
+last_modified_date: 2026-04-16 11:45:30
 ---
 
 # {{ page.title }}
@@ -527,24 +527,87 @@ Pour finir en beauté, une super vidéo très claire et qui refait avec d'autres
 
 <!-- https://youtu.be/if_cCUqhrwA?t=8 -->
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/if_cCUqhrwA?si=ROqiTx7toRhyAaNL&amp;start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://m.youtube.com/watch?v=if_cCUqhrwA?t=8"
+    title="Bien voir les rapports utilisés"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    Bien voir les rapports utilisés
+</figcaption>
+</figure>
+
+
 
 J'aime bien la vidéo ci-dessous car on voit les rapports utilisés ainsi que les vitesses de passage en courbe. Sur YouTube faut pas hésiter à zoomer (si, si tu peux zoomer sur la vidéo) un peu sur le tableau de bord.
 
 <!-- https://youtu.be/eMrPhVVLpGc?si=LrBuZN1s_z50CV15&t=9 -->
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eMrPhVVLpGc?si=nNx94SQxv4bRSHTh&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://m.youtube.com/watch?v=eMrPhVVLpGc"
+    title="Bien voir les rapports utilisés"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    Bien voir les rapports utilisés
+</figcaption>
+</figure>
 
-Une dernière vidéo pour faire bonne mesure avec les conseils d'un coach de DDRS.
 
-<!-- https://youtu.be/ifJmAPjkvX0 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ifJmAPjkvX0?si=183dCWvGoEe2zguz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
+Deux dernières vidéos pour faire bonne mesure avec les conseils d'un coach de DDRS et d'un champion du monde.
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://m.youtube.com/watch?v=ifJmAPjkvX0"
+    title="Conseil de coach DDRS"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    Conseil de coach DDRS
+</figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://m.youtube.com/watch?v=KvqUdB5vUOw"
+    title="Roule plus vite grâce aux conseils de Gregg Black"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Roule plus vite grâce aux conseils de Gregg Black
+</figcaption>
+</figure>
 
 
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages
