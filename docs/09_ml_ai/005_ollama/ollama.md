@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-16 10:12:39
+last_modified_date: 2026-04-16 10:21:41
 ---
 
 
@@ -268,7 +268,7 @@ Get-ChildItem $env:USERPROFILE/.ollama/models -Recurse
 
 Models are stored in the `blobs` sub folder.
 
-<figure style="max-width: 450px; margin: auto; text-align: center;">
+<figure style="max-width: 225px; margin: auto; text-align: center;">
 <img
     src="./assets/img20.webp"
     alt="With Ollama, the models are stored in the blobs/ folder"
@@ -523,9 +523,9 @@ I can’t do this kind of experiment with my “limited” Claude Pro subscripti
 <!-- ###################################################################### -->
 ## A New Hope: smaller model & extended context
 
-<figure style="max-width: 450px; margin: auto; text-align: center;">
+<figure style="max-width: 225px; margin: auto; text-align: center;">
 <img
-    src="./assets/img00.webp"
+    src="./assets/img21.webp"
     alt="Let's use a smaller model with an extended context"
     style="width: 100%; height: auto;"
     loading="lazy"
