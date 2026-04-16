@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-14 18:49:42
+last_modified_date: 2026-04-16 10:12:39
 ---
 
 
@@ -130,7 +130,7 @@ irm https://ollama.com/install.ps1 | iex
 <!-- ###################################################################### -->
 ## Install and Run QWEN
 
-This is a "small" model. Perfect to check our setup. In the same terminal past the command below:
+QWEN 2.5 is a "small" model (2GB). This is perfect to check our setup. In the same terminal past the command below:
 
 ```powershell
 ollama run qwen2.5:3b
@@ -147,6 +147,7 @@ ollama run qwen2.5:3b
 <figcaption>Install and Run QWEN in Ollama</figcaption>
 </figure>
 
+Ollama downloads and run the model in an interactive session.
 
 
 <!-- ###################################################################### -->
@@ -154,7 +155,7 @@ ollama run qwen2.5:3b
 <!-- ###################################################################### -->
 ## First prompt
 
-Once you see the `>>>>`, you can try your first prompt.
+Once you see the `>>>>`, you can try your first prompt. See below an example:
 
 ```powershell
 # prompt:
@@ -187,7 +188,7 @@ See below the answer:
 <!-- ###################################################################### -->
 ## Getting Help and Information
 
-As Claude, Ollama have a set of slash commands but it is short:
+As Claude, Ollama have a set of slash commands but it is much shorter:
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
 <img
@@ -201,7 +202,7 @@ As Claude, Ollama have a set of slash commands but it is short:
 
 
 
-- Exit Ollama (`/exit` or `/bye`)
+- Exit Ollama (`/exit`, `/bye` or `CTRL+D`)
 - In the terminal type
 
 
@@ -239,15 +240,17 @@ ollama show qwen2.5:3b
 <figcaption>Getting information about QWEN</figcaption>
 </figure>
 
+The `show` command provides detailed information about the model. I'm not sure to understand the `context length` parameter (more information below).
+
 
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Check where the models are stored
+## Checking where the models are stored
 
-Ollama is installed in `$env:USERPROFILE/.ollama`. This is a good news because it is NOT monitored by OneDrive. If needed one can read this [page](https://docs.ollama.com/windows#changing-model-location) and change `OLLAMA_MODELS` default value.
+Under Windows, Ollama is installed in `$env:USERPROFILE/.ollama`. This is a good news because this means it is NOT monitored by OneDrive. If needed one can read this [page](https://docs.ollama.com/windows#changing-model-location) and change `OLLAMA_MODELS` default value.
 
 ```powershell
 Get-ChildItem $env:USERPROFILE/.ollama/models -Recurse
@@ -263,14 +266,25 @@ Get-ChildItem $env:USERPROFILE/.ollama/models -Recurse
 <figcaption>Ollama: checking where the models are stored locally</figcaption>
 </figure>
 
+Models are stored in the `blobs` sub folder.
 
-
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img20.webp"
+    alt="With Ollama, the models are stored in the blobs/ folder"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>With Ollama, the models are stored in the blobs/ folder</figcaption>
+</figure>
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Know your hardware configuration
+
+Under WIndows 11 you can try the commands below to get information about RAM, VRAM...
 
 ```powershell
 & dxdiag /t "$env:TEMP\dxdiag.txt"; Start-Sleep -Seconds 5; Select-String "Display Memory|Card name" "$env:TEMP\dxdiag.txt"
@@ -297,7 +311,7 @@ Get-CimInstance Win32_PhysicalMemory | Select-Object Manufacturer, Capacity, Spe
 <!-- ###################################################################### -->
 ## Selecting gemma4
 
-Select and copy the text from the terminal into ChatGPT, Claude or other friends then add this prompt:
+Select the text from the terminal then copy it into ChatGPT, Claude or other friends then add this prompt:
 
 ```
 Given the hardware configuration described above, which gemma4 model would you recommend for my Windows 11 PC?
@@ -316,7 +330,7 @@ Given the hardware configuration described above, which gemma4 model would you r
 </figure>
 
 
-After discussing with ChatGPT and double checking [this page](https://ollama.com/library/gemma4) I decided to give a try to gemma4:e4B
+After discussing with ChatGPT and double checking [this page](https://ollama.com/library/gemma4) I decided to give a try to `gemma4:e4B`
 
 
 
@@ -326,7 +340,7 @@ After discussing with ChatGPT and double checking [this page](https://ollama.com
 <!-- ###################################################################### -->
 ## Using gemma4 in the terminal
 
-⚠️ Make sure to plug an Ethernet cable rather than using Wifi then use the following command.
+⚠️ Make sure to plug an Ethernet cable rather than using Wifi then use the following command to download and run `gemma4:e4B`.
 
 ```powershell
 ollama run gemma4:e4b
@@ -356,13 +370,13 @@ Once the model is succesfully downloaded, let's try a prompt:
 </figure>
 
 
-Let's check the state of the GPU while the model is working. I tried different options but I was not abel to display Compute/CUDA on the discrete GPU using task manager (CTRL+SHIFT+ESC). So I propose to open a second terminal and run this command
+Let's check the state of the GPU while the model is working. I tried different options but I was not able to display Compute/CUDA on the discrete GPU using task manager (CTRL+SHIFT+ESC). So I propose to open a second terminal and run this command
 
 ```powershell
 nvidia-smi --query-gpu=utilization.gpu --format=csv -l 1
 ```
 
-Below we can see that `ollama.exe` uses the GPU. Then the monitoring shows what happens when I run a prompt in another terminal.
+Below we can see that `ollama.exe` uses the GPU. Then the monitoring shows what happens when I run a prompt in another terminal (the activity jumps from 0% to 40%)
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
@@ -387,7 +401,7 @@ Below we can see that `ollama.exe` uses the GPU. Then the monitoring shows what 
 <!-- ###################################################################### -->
 ## Using gemma4 in the Ollama Windows app
 
-Launch the Ollama app and select gemma4 model in the drop down list (bottom right). Use a third prompt (we could alternatively paste an image)
+Launch the Ollama app and select `gemma4:4b` model in the drop down list (bottom right). Use a third prompt (we could alternatively paste an image)
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
@@ -453,7 +467,7 @@ Once in Claude, my status line indicates the model, the directory... We are all 
 Then I use this prompt
 
 ```
-show me how to print the 10 first odd number in Python
+show me how to print the 10 first odd numbers in Python
 ```
 
 I get this answer:
@@ -483,9 +497,9 @@ Then I use this prompt:
 Can you save the script in the current directory in odd.py
 ```
 
-Then things get weird and **not usable**. Indeed Claude context is too big and the context of the model is too small. The model doesn't even remember the code it generated few seconds before. It does'nt know how to save a file, it does not use Claude API to save the file...
+Then things get weird and **not usable**. Indeed, for what I understand, Claude context is too large and the context of the model is too small. The model doesn't even remember the code it generated few seconds before. It does'nt know how to save a file, it does not use Claude API to save the file...
 
-I also did some tests with gemma4:26b. Same kind of problems/bugs... Not yet usable in my point of view.
+I also did some tests with `gemma4:26b`. Same kind of problems/bugs... Not yet usable in my point of view.
 
 This is unfortunate because I wanted to run the model all night to improve some code. To do that, I would need the ability to:
 
@@ -496,7 +510,7 @@ This is unfortunate because I wanted to run the model all night to improve some 
 * decide whether the latest version of the code is better or not
 * repeat the loop
 
-I can’t do this with my “limited” Claude Pro subscription. That’s why I wanted to run everything locally, even if it meant it would be slow. Time wasn’t the issue for this experiment.
+I can’t do this kind of experiment with my “limited” Claude Pro subscription. That’s why I wanted to run everything locally, even if it meant it would be slow. Time wasn’t the issue for this experiment.
 
 
 
@@ -507,7 +521,19 @@ I can’t do this with my “limited” Claude Pro subscription. That’s why I 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Let's test a smaller model with an extended context
+## A New Hope: smaller model & extended context
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img00.webp"
+    alt="Let's use a smaller model with an extended context"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Let's use a smaller model with an extended context</figcaption>
+</figure>
+
+
 
 In one terminal I run this command:
 
@@ -515,16 +541,16 @@ In one terminal I run this command:
 ollama run qwen3.5:9b
 ```
 
-Then in a second terminal I run this one:
+Then, in a second terminal I run this one:
 
 ```powershell
 ollama ps
 NAME          ID              SIZE      PROCESSOR          CONTEXT    UNTIL
 qwen3.5:9b    6488c96fa5fa    8.9 GB    28%/72% CPU/GPU    4096       4 minutes from now
 ```
-We can see that the context is "only" `4K`.
+We can see that the context is "only" `4k`. Do you remember the output of the `ollama show qwen2.5:3b` showing a `context length` of `32k`? Know you undesrtand why I said I was confused.
 
-I stay in the current folder (`$env:tmp/delete_me` in my case) and I run the following commands:
+Ok... I stay in the current folder (`$env:tmp/delete_me` in my case) and I run the following commands:
 
 ```powershell
 # create Modelfile
@@ -564,7 +590,7 @@ ollama ps
 NAME                     ID              SIZE     PROCESSOR          CONTEXT    UNTIL
 qwen3.5-9b-64k:latest    b7b9afeaf023    12 GB    36%/64% CPU/GPU    65536      3 minutes from now
 ```
-We are good to go.
+We are good to go because the context seems to be effectively 64k. Let's see if this helps.
 
 
 <!-- ###################################################################### -->
@@ -575,7 +601,7 @@ We are good to go.
 
 * I stay in the same directory
 * Open VSCode (`code .`)
-* Open a terminal (`CTRL+ù`) and run this command
+* Open a terminal in VSCode (`CTRL+ù`) and run this command
 
 ```powershell
 ollama launch claude --model qwen3.5-9b-64k
@@ -596,7 +622,7 @@ ollama launch claude --model qwen3.5-9b-64k
 
 Now I use this prompt : `In the current directory, create a Python script odd.py which print the 10 first odd numbers`
 
-Once this is done, since I want to see if the model follows the instructions of `CLAUDE.md` I ask it to run the script with this prompt: `Can you run it?`. See below:
+Once this is done, since I want to see if the model follows the instructions of my `CLAUDE.md` I ask it to run the script with this prompt: `Can you run it?`. See below:
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
@@ -608,7 +634,7 @@ Once this is done, since I want to see if the model follows the instructions of 
 <figcaption>The model run the Python script using uv</figcaption>
 </figure>
 
-Cool... It seems that with a 64k context, the model is able to save the file, it remember what it does (in the second pront I just said "can you run it" without mentioning the script whatsoever) and it follows the instructions of my `CLAUDE.md`. So it seems context length is someting we should keep an eye on.
+Cool... It seems that with a 64k context, the model is able to save the file, it remembers what it does (in the second prompt I just said "can you run it" without mentioning the script whatsoever) and it follows the instructions of my `CLAUDE.md` (it use `uv` to run the script). So it seems context length is someting we should keep an eye on.
 
 
 
@@ -631,7 +657,7 @@ We learn a lot but at the end of the day we have a setup we can improve. Remembe
 * decide whether the latest version of the code is better or not
 * repeat the loop
 
-We will see how it goes but the next step should be to check the context of gemma4, extend it it needed and work on the loop. Stay tune!
+We will see how it goes but the next step should be to check the context of `gemma4:26b`, extend it if needed and work on the loop. Stay tune!
 
 
 
