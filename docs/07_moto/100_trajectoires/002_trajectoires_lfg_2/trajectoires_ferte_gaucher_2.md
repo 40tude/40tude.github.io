@@ -6,11 +6,18 @@ parent: "Trajectoires"
 nav_order: 2
 #math: mathjax
 date: 2023-05-15 19:09:23
-last_modified_date: 2026-04-16 11:01:11
+last_modified_date: 2026-04-16 11:05:18
 ---
 
 
-# La Ferté Gaucher 2
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
+
+
 
 Si besoin, la [première partie]({%link docs/07_moto/100_trajectoires/001_trajectoires_lfg_1/trajectoires_ferte_gaucher_1.md%}) du tour du circuit de la Ferté Gaucher est ici.
 

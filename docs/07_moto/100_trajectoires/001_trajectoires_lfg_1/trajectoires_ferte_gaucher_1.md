@@ -6,10 +6,14 @@ parent: "Trajectoires"
 nav_order: 1
 #math: mathjax
 date: 2023-05-15 18:21:41
-last_modified_date: 2026-04-16 11:01:11
+last_modified_date: 2026-04-16 11:05:18
 ---
 
-# La Ferté Gaucher 1
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 
 ## Mises à jour
