@@ -7,7 +7,7 @@ parent: "Trajectoires"
 nav_order: 5
 #math: mathjax
 date: 2022-10-15 14:29:19
-last_modified_date: 2026-04-16 12:19:00
+last_modified_date: 2026-04-16 12:21:15
 ---
 
 # {{ page.title }}
@@ -624,3 +624,5 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
     Comment faire des squats
 </figcaption>
 </figure>
+
+
