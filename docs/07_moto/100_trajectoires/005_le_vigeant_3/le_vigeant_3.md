@@ -7,7 +7,7 @@ parent: "Trajectoires"
 nav_order: 5
 #math: mathjax
 date: 2022-10-15 14:29:19
-last_modified_date: 2026-04-16 11:45:30
+last_modified_date: 2026-04-16 11:51:04
 ---
 
 # {{ page.title }}
@@ -527,18 +527,17 @@ Pour finir en beauté, une super vidéo très claire et qui refait avec d'autres
 
 <!-- https://youtu.be/if_cCUqhrwA?t=8 -->
 
-
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://m.youtube.com/watch?v=if_cCUqhrwA?t=8"
-    title="Bien voir les rapports utilisés"
+    src="https://youtu.be/if_cCUqhrwA?t=8"
+    title=""
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    Bien voir les rapports utilisés
+    ...
 </figcaption>
 </figure>
 
@@ -551,7 +550,7 @@ J'aime bien la vidéo ci-dessous car on voit les rapports utilisés ainsi que le
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://m.youtube.com/watch?v=eMrPhVVLpGc"
+    src="https://youtu.be/eMrPhVVLpGc?t=9"
     title="Bien voir les rapports utilisés"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -575,7 +574,7 @@ Deux dernières vidéos pour faire bonne mesure avec les conseils d'un coach de 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://m.youtube.com/watch?v=ifJmAPjkvX0"
+    src="https://youtu.be/ifJmAPjkvX0"
     title="Conseil de coach DDRS"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -594,11 +593,10 @@ Deux dernières vidéos pour faire bonne mesure avec les conseils d'un coach de 
 
 
 
-
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://m.youtube.com/watch?v=KvqUdB5vUOw"
+    src="https://youtu.be/KvqUdB5vUOw"
     title="Roule plus vite grâce aux conseils de Gregg Black"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
