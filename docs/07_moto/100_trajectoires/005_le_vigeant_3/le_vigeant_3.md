@@ -7,7 +7,7 @@ parent: "Trajectoires"
 nav_order: 5
 #math: mathjax
 date: 2022-10-15 14:29:19
-last_modified_date: 2026-04-16 11:51:04
+last_modified_date: 2026-04-16 11:57:42
 ---
 
 # {{ page.title }}
@@ -530,7 +530,7 @@ Pour finir en beauté, une super vidéo très claire et qui refait avec d'autres
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://youtu.be/if_cCUqhrwA?t=8"
+    src="https://www.youtube.com/embed/if_cCUqhrwA?t=8"
     title=""
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -543,14 +543,14 @@ Pour finir en beauté, une super vidéo très claire et qui refait avec d'autres
 
 
 
-J'aime bien la vidéo ci-dessous car on voit les rapports utilisés ainsi que les vitesses de passage en courbe. Sur YouTube faut pas hésiter à zoomer (si, si tu peux zoomer sur la vidéo) un peu sur le tableau de bord.
+J'aime bien la vidéo ci-dessous car on voit les rapports utilisés ainsi que les vitesses de passage en courbe. Sur YouTube faut pas hésiter à zoomer un peu sur le tableau de bord (si, si tu peux zoomer sur la vidéo).
 
 <!-- https://youtu.be/eMrPhVVLpGc?si=LrBuZN1s_z50CV15&t=9 -->
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://youtu.be/eMrPhVVLpGc?t=9"
+    src="https://www.youtube.com/embed/eMrPhVVLpGc?t=9"
     title="Bien voir les rapports utilisés"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -574,7 +574,7 @@ Deux dernières vidéos pour faire bonne mesure avec les conseils d'un coach de 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://youtu.be/ifJmAPjkvX0"
+    src="https://www.youtube.com/embed/ifJmAPjkvX0"
     title="Conseil de coach DDRS"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -596,7 +596,7 @@ Deux dernières vidéos pour faire bonne mesure avec les conseils d'un coach de 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://youtu.be/KvqUdB5vUOw"
+    src="https://www.youtube.com/embed/KvqUdB5vUOw"
     title="Roule plus vite grâce aux conseils de Gregg Black"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
