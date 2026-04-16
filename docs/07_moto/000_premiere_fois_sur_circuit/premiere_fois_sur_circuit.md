@@ -1,13 +1,22 @@
 ---
 layout: default
-title: "Première fois sur circuit"
+title: "Première journée sur circuit : le planning session par session à imprimer et garder en poche"
+description: "Six sessions, un objectif par session, une feuille A4 — tout ce qu'il faut pour tirer le meilleur de ta première journée de roulage sans se noyer dans la théorie."
 parent: "Motos"
 nav_order: 2
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-04-16 10:34:32
+last_modified_date: 2026-04-16 11:33:23
 ---
 
-# Première fois sur circuit
+
+
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
+
 
 <div align="center">
 <img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
