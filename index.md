@@ -4,7 +4,7 @@ layout: home
 # nav_order: 1
 nav_exclude: true
 date:               2024-12-25 12:00:00 +0000
-last_modified_date: 1964-01-01 08:00:00 +0000   # Ne tient pas compte de cette page dans les pages récemment mises à jour
+last_modified_date: 2026-04-16 11:14:06
 # last_modified_date: 2025-01-15 08:00:00 +0000
 ---
 
@@ -48,7 +48,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
       </td>
       <td>
         <h2><a href="{{ page.url }}">{{ page.title }} :</a></h2>
-        {{ page.content | markdownify | strip_html | truncatewords: nb_words }}
+        {% if page.description and page.description != '' %}{{ page.description | truncatewords: nb_words }}{% else %}{{ page.content | markdownify | strip_html | truncatewords: nb_words }}{% endif %}
       </td>
     </tr>
   {% endfor %}
