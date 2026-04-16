@@ -5,7 +5,7 @@ parent: "Trajectoires"
 nav_order: 3
 #math: mathjax
 date: 2022-06-06 15:07:52
-last_modified_date: 2023-08-28 13:53:48
+last_modified_date: 2026-04-16 10:40:25
 ---
 
 
@@ -55,11 +55,11 @@ On se dirige plein pot vers la passerelle. Au fait, tu es sûr que tu es **en bu
 </div>
 
 
-Au PF je rentre 2 rapports tout de suite pour bénéficier d'un vrai frein moteur. Je reste collé à la ligne blanche. 
+Au PF je rentre 2 rapports tout de suite pour bénéficier d'un vrai frein moteur. Je reste collé à la ligne blanche.
 
 Le point à partir duquel je change de direction pour commencer à me décoller de la ligne est pile-poil au milieu de la distance qui sépare le panneau 100 m et le panneau avec une flèche noire qui pointe vers la droite.
 
-* **Le panneau 100 m** : il est sur la droite de la piste. On ne le voit pas dans la photo ci-dessous mais il est au bout de la ligne blanche qui traverse la piste. 
+* **Le panneau 100 m** : il est sur la droite de la piste. On ne le voit pas dans la photo ci-dessous mais il est au bout de la ligne blanche qui traverse la piste.
 * **Le panneau avec une flèche noire** : lui ça va, il est à gauche de la photo ci-dessous.
 * **Le milieu** dont je parle : c'est le tout petit cône rouge, à gauche de la piste, au milieu de l'image ci-dessous.
 
@@ -111,11 +111,11 @@ Si jamais un jour il n'y a pas de cône pour marquer le PV, le point extérieur 
 
 Là, on a passé le second PC (avant dernier vibreur rouge) et on regarde derrière nous. À la sortie du double droit il faut faire l'effort de ne pas vouloir aller tout à l'extérieur car en fait le prochain virage est un gauche. Il va donc falloir traverser la piste et plus on sera à l'extérieur, plus cela va nous prendre du temps.
 
-Si on sort fort et sur le vibreur faut sentir qu'on contrebraque en repoussant la moto avec le bras extérieur qui est tendu et en tirant sur le bracelet intérieur (bras intérieur plié). Contrebraquer (consciemment ou pas) en sortie permet de relever la moto plus vite ce qui permet d'accélérer plus fort et pour plus longtemps. 
+Si on sort fort et sur le vibreur faut sentir qu'on contrebraque en repoussant la moto avec le bras extérieur qui est tendu et en tirant sur le bracelet intérieur (bras intérieur plié). Contrebraquer (consciemment ou pas) en sortie permet de relever la moto plus vite ce qui permet d'accélérer plus fort et pour plus longtemps.
 
-Je parle spécifiquement du contre braquage en sortie de virage sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/). 
+Je parle spécifiquement du contre braquage en sortie de virage sur [cette page]({%link docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md%}).
 
-On sort 3/4 piste si possible sinon va falloir se bouger les fesses car le prochain virage arrive vite. L'idée ici est de favoriser la distance et d'éviter de faire des grands S (j'en parle sur [cette page] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/)).
+On sort 3/4 piste si possible sinon va falloir se bouger les fesses car le prochain virage arrive vite. L'idée ici est de favoriser la distance et d'éviter de faire des grands S (j'en parle sur [cette page]({%link docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md%})).
 
 <div align="center">
 <img src="./assets/2022-05-27-18.04.47-scaled.webp" alt="" width="900" loading="lazy"/>
@@ -150,7 +150,7 @@ Cela n'a rien à voir avec les trajectoires... C'est juste pour confirmer qu'au 
 </div>
 
 
-Faut rester large... 
+Faut rester large...
 
 Pour être complet, j'ai entendu une autre version qui dit : tu arrives mi-piste, tu claques la moto à la mise sur l'angle, genou au sol et tu colles la corde le plus vite possible. L'idée étant sans doute de bien rester à gauche à la sortie, d'accélérer fort sans trop s'écarter dans le bout de ligne droite qui suit et de rentrer très fort dans le double droit qui suit (Le Trop Vite). À voir... Pour l'instant on va rester en mode "académique".
 
@@ -184,9 +184,9 @@ Au sol il y a une espèce de marque/rainure qui sépare la piste en deux. Il fau
 <img src="./assets/2022-08-23-17.29.48-1.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-Photo de 2022. Bien sûr, la marque va disparaître un jour ou l'autre...  
+Photo de 2022. Bien sûr, la marque va disparaître un jour ou l'autre...
 
-Les 2 virages à droite qui suivent sont très importants car ils conditionnent la vitesse dans la prochaine longue ligne droite. 
+Les 2 virages à droite qui suivent sont très importants car ils conditionnent la vitesse dans la prochaine longue ligne droite.
 
 On est sorti mi-piste puis on arrive à la hauteur du PMSA en étant 3/4 piste à gauche. On est parallèle à la ligne blanche. On arrive vite et on ne freine pas. On coupe en mettant la moto très rapidement sur l'angle puis filet de gaz à partir du premier PC pour s'écarter vers l'extérieur. L'idée est d'enchaîner les 2 virages en un seul. La moto ne doit pas se relever. On passe donc les 2 virages avec le même angle, en une fois. Si on était en Snowboard, au sol on ne devrait voir qu'une seule belle courbe, bien coupée, entre les 2 PC.
 
@@ -196,7 +196,7 @@ On est sorti mi-piste puis on arrive à la hauteur du PMSA en étant 3/4 piste �
 
 ### La remarque de Gregg
 
-Non, je ne connais pas personnellement Gregg Black et non il ne participe pas officiellement à la rédaction de ce billet mais il est le bienvenu. Quoiqu'il en soit, lors du roulage Box23 des 27 et 28 mai 2023, le matin, il a animé un atelier "position". 
+Non, je ne connais pas personnellement Gregg Black et non il ne participe pas officiellement à la rédaction de ce billet mais il est le bienvenu. Quoiqu'il en soit, lors du roulage Box23 des 27 et 28 mai 2023, le matin, il a animé un atelier "position".
 
 À un moment, on s'y est mis à plusieurs, on a ligoté sur une chaise et on lui à mis une lampe dans les yeux 😁 Du coup on a pu le faire parler des rapports qu'il utilise dans certaines sections du circuit. J'indique simplement ici ce qu'il nous a dit. Après, bien sûr, il faut avoir le niveau pour pouvoir mettre en application...
 "Je rentre en 3 dans le double droit avant la ligne droite pour avoir beaucoup de vitesse et ne pas être trop ralenti par de frein moteur de la 2".

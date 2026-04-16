@@ -6,7 +6,7 @@ nav_order: 4
 
 #math: mathjax
 date: 2022-08-26 18:57:27
-last_modified_date: 2023-08-25 15:57:21
+last_modified_date: 2026-04-16 10:40:25
 ---
 
 # Le Vigeant 2
@@ -294,7 +294,7 @@ Vue de la sortie du Buisson quand on regarde derrière.
 </div>
 
 
-On est tout au bout vibreur, tout à l'extérieur et à l'entrée du S du Sanglier. J'ai passé la 3 et la 4 ([short shift] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-10-short-shift/)).
+On est tout au bout vibreur, tout à l'extérieur et à l'entrée du S du Sanglier. J'ai passé la 3 et la 4 ([short shift]({%link docs/07_moto/001_notes_pilotage/011_short_shift/short_shift.md%})).
 
 <div align="center">
 <img src="./assets/2022-05-27-18.31.35-scaled.webp" alt="" width="900" loading="lazy"/>
