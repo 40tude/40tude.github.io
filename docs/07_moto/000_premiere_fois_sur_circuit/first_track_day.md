@@ -1,4 +1,7 @@
 ---
+published: true
+author: 40tude
+lang: en-US
 layout: default
 title: "First track day: the session-by-session schedule to print and keep in your pocket"
 description: "Six sessions, one goal per session, one sheet of paper. Everything you need to get the most out of your first track day without drowning in theory."
@@ -6,7 +9,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-17 12:06:41
+last_modified_date: 2026-04-17 12:11:15
 ---
 
 
@@ -17,6 +20,9 @@ last_modified_date: 2026-04-17 12:06:41
 {{ page.description }}
 {: .lead }
 
+<h2 align="center">
+<span style="color:orange"><b> 🚧 This post is under translation 🚧</b></span>
+</h2>
 
 
 <div align="center">
