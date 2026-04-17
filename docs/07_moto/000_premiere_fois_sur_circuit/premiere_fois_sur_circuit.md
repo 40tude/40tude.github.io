@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-04-17 12:06:41
+last_modified_date: 2026-04-17 18:33:33
 ---
 
 
@@ -224,9 +224,6 @@ Tu vas commencer par la plus grande ligne droite parce que c'est là que tu as l
 
 Heu... C'est peut-être un détail pour toi mais pour moi ça veut dire beaucoup 🎶. Quand tu abaisses le haut du corps tu ne t'accroches pas au guidon. Idéalement tu devrais être capable de baisser le torse sans utiliser tes mains (c'est d'ailleurs un bon exercice à faire en statique sur l'aire plane ou la veille dans ton garage). Le truc, c'est que moins on touche la moto mieux c'est et idéalement s'il n'y avait pas de pilote, la moto se comporterait bien mieux la plupart du temps. Donc, bref, tu ne tiens presque pas les poignées et tu fais tout avec **les abdos**. Oui, oui je confirme c'est un sport et tu vas bien dormir ce soir. Et non, tu n'as pas besoin de serrer l'accélérateur comme tu le fais. Tu peux le tenir ouvert à 100% avec 3 doigts. Là aussi, fais le test sur le parking ou quand tu roules la semaine qui précède le roulage.
 
-<!-- <div align="center">
-<img src="./assets/image-21_1.webp" alt="" width="300" loading="lazy"/>
-</div> -->
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -328,6 +325,7 @@ Au PC tu as du gaz. La moto a moins d'angle qu'au PV. Plus tard, au PC, tu n'aur
 Le truc **très important**, l'image que tu dois garder en tête...
 Si on arrête le temps quand la moto est au PC, si on la met verticale sur ses deux roues et qu'on met 100% gaz rien de fâcheux ne doit arriver. En effet, ses roues doivent être orientées vers le PS et pas vers le bac à gravier. Donc, si c'est bien le cas, qu'est ce qui va se passer ? La moto va juste sortir du virage comme une balle en toute sécurité dans la direction du PS. Regarde l'orientation, la direction de la flèche verte du dessin.
 En revanche, si au PC les roues ne sont pas bien alignées (en fait cela veut dire que la moto n'a pas fini de tourner) et si on met 100% gaz tu vas droit dans le gravier.
+
 Relis ce paragraphe plusieurs fois si besoin. C'est important que tu gardes cette image mentale: au point de corde PC tu es déjà en train d'**enrouler** le cable d'accélérateur, les roues de la moto sont dans la bonne **direction** **ET** elles passent à **1 cm** de ce dernier.
 
 Tu passes le PC, tu tires sur la poignée intérieure au virage pour continuer à relever la moto (tu peux aussi "repousser" la moto avec les bras, ça revient au même en fait). Comme tu n'es pas 100% gaz au PC tu continues à enrouler. La moto est de plus en plus verticale.
@@ -388,7 +386,7 @@ Bienvenue au club! En fait, on est pas suicidaire donc on freine, on freine trop
 * *C'est bizarre, je n'ai pas peur, tout va bien mais je passe toujours à 1 m du PC.*
 C'est sans doute parce que la mise sur l'angle ou le pivot sont **beaucoup trop lents**. Tu peux alors essayer ça :
     * Ne change rien mais assure-toi de regarder le PC avec **ton menton**. Ne regarde pas la scène, désigne ta cible. Oui, tu sais qu'il y a des cônes, un virage, un mec devant toi etc. Tu as l'information en tête mais ils sortent de ton champ de vision car tu désignes ta cible avec **ton menton**. Je dis menton pour t'obliger à tourner la tête **et** les épaules vers le PC.
-    * Fais l'effort d'ouvrir tes épaules, de les orienter vers l'intérieur du virage. Typiquement, tu peux très bien tourner la tête vers le PC, le désigner du menton **mais** garder tes épaules parallèles au guidon. Ce n'est pas ce que l'on veut ici. Il faut que tu désignes ta cible du menton **et** que, un peu à la façon de Robocop, tes épaules tournent avec la tête. Il faut que tu sentes que ton bras intérieur se plie et que le bras extérieur se tend.
+    * Fais l'effort d'ouvrir tes épaules, de les orienter vers l'intérieur du virage. Typiquement, tu peux très bien tourner la tête vers le PC, le désigner du menton **mais** garder tes épaules parallèles au guidon. Ce n'est **PAS** ce que l'on veut ici. Il faut que tu désignes ta cible du menton **et** que, un peu à la façon de Robocop, tes épaules tournent avec la tête. Il faut que tu sentes que ton bras intérieur se plie et que le bras extérieur se tend.
     * Freine un peu plus tôt et fais ta mise sur l'angle comme d'habitude mais un peu avant le PMSA. Quand je dis "un peu" cela veut dire l'équivalent d'une ou 2 motos de long. Après, au tour suivant tu ajustes mais bon, fondamentalement ta mise sur l'angle est trop lente.
     * Ne change rien mais sois plus incisif, plus rapide quand tu fais pivoter la moto. Pour cela, il suffit (yaka-faukon) de pousser plus fort sur la poignée intérieure. Tu peux aussi essayer de mettre un peu plus de poids sur le cale-pied intérieur en te penchant vers l'**intérieur du virage**, en appuyant consciemment dessus avec ton pied.
 
