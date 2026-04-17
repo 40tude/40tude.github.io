@@ -1,12 +1,12 @@
 ---
 layout: default
 title: "Première journée sur circuit : le planning session par session à imprimer et garder en poche"
-description: "Six sessions, un objectif par session, une feuille A4 — tout ce qu'il faut pour tirer le meilleur de ta première journée de roulage sans se noyer dans la théorie."
+description: "Six sessions, un objectif par session, une feuille A4. Tout ce qu'il faut pour tirer le meilleur de ta première journée de roulage sans se noyer dans la théorie."
 parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-04-16 17:07:35
+last_modified_date: 2026-04-17 12:06:41
 ---
 
 
@@ -37,9 +37,6 @@ Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer
 
 Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Sinon, tu peux regarder cette série de vidéos :
 
-<!-- <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=9aGfzYXK7sVjutL3&amp;list=PLHh0ACbIwXxmNbfiJzfiXttLZltL586zy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div> -->
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -57,11 +54,13 @@ Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais 
 
 
 
-Pour le rest, dans ce billet il y aura :
+Pour le reste, dans ce billet il y aura :
 
 * [Le planning en mode synthétique](#le-planning-synthétique) : ça donne une idée du programme.
 * [Le planning en mode action](#le-planning-en-mode-action) : c'est la partie à imprimer et à garder à portée de main.
 * [Le planning en mode détaillé](#le-planning-en-mode-détaillé) : à lire **avant** d'aller sur le circuit et à relire sur son téléphone le midi de la journée de roulage. C'est dans cette partie que je prends du temps pour expliquer le contenu des différentes sessions.
+
+
 
 ## Le planning synthétique
 
@@ -84,7 +83,7 @@ Du point de vue de la journée, afin de découvrir un maximum de choses, on a au
 
 ## Le planning en mode action
 
-Il suffit de récupérer le .pdf ci-dessous et de l'imprimer. C'est écrit en mode sms. Pour le comprendre il faut lire la section suivante.
+Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en mode sms. Pour le comprendre il faut lire la section suivante.
 
 [Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)
 
