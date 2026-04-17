@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-04-17 18:33:33
+last_modified_date: 2026-04-17 19:32:15
 ---
 
 
@@ -449,7 +449,7 @@ Il faut trouver le virage le plus important. Pour ça, sur le plan, identifie la
 * *C'est bizarre ce que tu dis, car moi j'ai plutôt l'habitude de rentrer les rapports à la toute fin du freinage.*
 Oui mais non. Ce n'est pas un souci quand tu arrives à un feu rouge mais sur circuit il faut utiliser tout ce qui est à notre disposition pour ralentir la bête. En rentrant les rapports très tôt tu vas bénéficier du frein moteur et c'est vraiment important. Heu... Pas d'embrouille, si tu n'as pas de downshifter sur ta moto tu donnes bien un coup de gaz toi-même à chaque fois que tu rentres une vitesse.
 
-* *Je n'arrive pas à tout faire c'est trop compliqué !*
+* *Je n'arrive pas à tout faire, c'est trop compliqué !*
 OK, pas de problème on s'adapte... Choisis un virage où il n'y a pas de rapport à rentrer. À la fin d'un petit bout de ligne droite par exemple. Du coup tu peux te concentrer **uniquement** sur le levier de frein et le freinage en 3 temps.
 1. Les plaquettes lèchent les disques et le transfert de masse se fait.
 1. Quand ça c'est en place, tu serres très fort et sans à coup le levier de frein (pense à l'éponge)
@@ -583,11 +583,9 @@ Je pense qu'il faut, dans l'ordre, augmenter la vitesse de mise sur l'angle **pu
 
 * *Tu as dit qu'on a fait que la moitié de l'exercice. Je fais quoi moi maintenant si je veux aller plus loin ?*
 Si tu poses la question c'est que tu claques ta moto sur l'angle et que tu as une belle vitesse d'entrée en virage. On est d'accord ? Bon, ben si c'est effectivement le cas, pour passer encore plus vite dans le virage, il faut **rajouter du poids supplémentaire à l'intérieur du virage**. L'idée consiste alors à décaler tout le pilote sur la selle vers l'**intérieur du virage**. Tout ce que l'on a dit précédemment reste valable mais typiquement il cherche maintenant à caller sa raie des fesses dans le coin de la selle. Ensuite, il va rajouter encore de la masse en posant le pied intérieur au bout du cale-pied. Il va s'en servir comme d'une rotule lorsqu'il va ouvrir son genou. Ici, ce n'est pas "il nous faut plus de dents" mais "il nous faut plus de poids à l'intérieur".
+
 Mais bon, "avant de savoir courir il faut savoir marcher". Mettre tout ça en place sur une seule session, alors que cela impacte aussi le freinage, nous paraissait un peu "touchy". Comme le pilote débute, on a fait le choix de se concentrer sur le haut du corps dans un premier temps. Une fois que ça c'est en place, qu'il claque la moto sur l'angle et qu'il a la vitesse d'entrée suffisante, plus tard, il pourra "facilement" y rajouter le bas du corps. On adapte sa position pour passer plus vite, pas le contraire.
 
-<!-- **Note de pilotage que tu peux lire :** -->
-
-<!-- * [Une conduite de virage efficace](https://www.40tude.fr/pilotage-moto-04-conduite-du-virage/) -->
 
 ### 7. La septième session
 

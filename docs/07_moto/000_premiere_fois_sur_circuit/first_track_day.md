@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-17 18:33:33
+last_modified_date: 2026-04-17 19:32:15
 ---
 
 
@@ -84,7 +84,7 @@ As for the day itself, in order to discover as many things as possible, we also 
 1. [Getting down on the bike](#3-getting-down-on-the-bike)
 1. [Apex and racing line](#4-apex-and-racing-line)
 1. [Braking](#5-braking)
-1. [Corner technique](#6-corner-technique)
+1. [Driving the corner](#6-driving-the-corner)
 1. [The seventh session](#7-the-seventh-session)
 
 ## The schedule in action mode
@@ -440,7 +440,7 @@ The first time, at the end of your braking, when you think you're at the right e
 
 You gain nothing by barreling into a corner, but there are big gains to be made by being consistent. What matters is exit speed, **NOT** entry speed.
 
-Well, all that's left is to do the same with every other corner on the track... A lifetime — I'm telling you, you can spend a lifetime on this...
+Well, all that's left is to do the same with every other corner on the track... A lifetime, I'm telling you, you can spend a lifetime on this...
 
 **Goal at the end of the session**
 
@@ -453,16 +453,16 @@ Well, all that's left is to do the same with every other corner on the track... 
 You need to find the most important corner. For that, look at the map, identify the longest straight, and refine the braking for the corner that precedes it. Same as always... By nailing your braking, you give yourself the means to exit faster, and therefore have a higher speed at the end of the following straight.
 
 * *That's odd what you're saying, because I usually downshift at the very end of the braking zone.*
-Yes, but no. It's fine when you're stopping at a red light, but on track you need to use everything at your disposal to slow the beast down. By downshifting very early you benefit from engine braking, and it's really important. Oh... no funny business — if you don't have a quickshifter on your bike, you give it a blip of throttle yourself every time you downshift.
+Yes, but no. It's fine when you're stopping at a red light, but on track you need to use everything at your disposal to slow the beast down. By downshifting very early you benefit from engine braking, and it's really important. Oh... no funny business, if you don't have a quickshifter on your bike, you give it a blip of throttle yourself every time you downshift.
 
-* *I can't do it all — it's too complicated!*
+* *I can't do it all, it's too complicated!*
 OK, no problem, we adapt... Pick a corner where there's no downshifting needed. At the end of a short straight, for example. That way you can focus **only** on the brake lever and 3-phase braking.
 1. The pads kiss the discs and the weight transfer happens.
 1. Once that's in place, you squeeze the brake lever very hard and smoothly (think of the sponge).
-1. At the end, you release the brake lever **gen-tly** to precisely adjust the speed at which you pass through the TIP and quickly tip the bike in. At that point you have no brakes and no throttle — you're in the neutral zone.
+1. At the end, you release the brake lever **gen-tly** to precisely adjust the speed at which you pass through the TIP and quickly tip the bike in. At that point you have no brakes and no throttle, you're in the neutral zone.
 
 * Once that's in place, take a corner where you need to downshift 1 gear (not 2, just 1). That should be fine because you'll downshift right away. Don't be afraid of downshifting too early. It's really "I chop the throttle, I downshift."
-When that's sorted, you need to tackle a corner where you have to downshift multiple gears. At first, give yourself margin — move your BP back — and be careful not to forget to brake just because you're concentrating on the gear changes. If things go sideways, don't pull the clutch in — brake — and at the very end, pull the clutch lever to avoid stalling, then try again next lap.
+When that's sorted, you need to tackle a corner where you have to downshift multiple gears. At first, give yourself margin, move your BP back and be careful not to forget to brake just because you're concentrating on the gear changes. If things go sideways, don't pull the clutch in, brake and at the very end, pull the clutch lever to avoid stalling, then try again next lap.
 
 Note that you can practice downshifting multiple gears right at the start of your braking zone on the road, in the weeks before you come.
 
@@ -473,19 +473,19 @@ Bingo! Because you released the clutch too quickly after downshifting.
 Regarding the rear wheel lifting, if it does happen, slightly ease off the brake lever (easier to write than to live through, I know). Most importantly, ask yourself whether you didn't jerk the brake lever and whether you're not too far forward, pubic bone glued to the tank (by the way — can you confirm you're clamping the tank with your knees? That should prevent you from ending up pressed against the tank).
 
 * *And what if I mess up and arrive way too fast into the corner? What do I do?*
-OK, you're going to have to take my word for it. Trust me... Release the brakes, turn your chin and shoulders hard toward the AP and lean everything. It'll work.
+OK, you're going to have to take my word for it. Trust in me, just in me... Release the brakes, turn your chin and shoulders hard toward the AP and lean everything. It'll work.
 What's for sure is that if you add brake while leaned over, the bike will stand up. If it's still only slightly leaned and you add brake, you won't be able to add lean (or you'll crash. Brake pressure and lean angle are inversely proportional). What's the alternative? There's no other choice. You turn your head toward the apex, release the brakes, and commit to the corner with whatever speed you have. Yes, I know, it's easier to write than to live through, but that's reality.
 
 * *How do I know I'm starting to reach the limits?*
 To maximize braking you need to benefit from both engine braking on the rear wheel and front brakes on the front wheel. When the rear wheel starts to lift, you're at the max. Next lap, try sliding back on the seat and using your knees around the tank so you don't slide forward.
-In my opinion, what's more likely to happen is that your brakes will start fading and the lever will feel spongy. Other possibility: the front fork — which has never been serviced and whose springs aren't meant for track use — bottoms out, which seriously limits what you can do under braking.
+In my opinion, what's more likely to happen is that your brakes will start fading and the lever will feel spongy. Other possibility: the front fork, which has never been serviced and whose springs aren't meant for track use, bottoms out, which seriously limits what you can do under braking.
 
 * *Why do you always say **gen-tly**?*
-Once again, if there were no rider on the bike, the bike would behave much more sanely — less violently, less erratically. If the rider falls off and the bike stays on its wheels, it'll just keep going straight. When it hits the curbs and goes into the grass, it'll bounce, land on its wheels, and keep going. Leave a rider on it — they'll grab the brakes and they'll both go down.
-You need to be **pro-gres-sive** and go easy so you don't upset the bike. You release the clutch gently. You respect the first 2 phases of braking — let the front end dive, then squeeze the brakes **pro-gres-sive-ly**. You roll the throttle cable on **continuously** and faster and faster. The examples are endless...
+Once again, if there were no rider on the bike, the bike would behave much more sanely, less violently, less erratically. If the rider falls off and the bike stays on its wheels, it'll just keep going straight. When it hits the curbs and goes into the grass, it'll bounce, land on its wheels, and keep going. Leave a rider on it, they'll grab the brakes and they'll both go down.
+You need to be **pro-gres-sive** and go easy so you don't upset the bike. You release the clutch gently. You respect the first 2 phases of braking, let the front end dive, then squeeze the brakes **pro-gres-sive-ly**. You roll the throttle cable on **continuously** and faster and faster. The examples are endless...
 
 
-### 6. Corner technique
+### 6. Driving the corner
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/>
@@ -498,7 +498,7 @@ Showtime! By this point, you've put a lot of things in place:
 * You accelerate at full throttle.
 * You tuck on the tank and you're getting used to having your head in a low position.
 * Your braking gives you the same speed at the TIP every time.
-* You know what you're trying to accomplish in the corner: exit as fast as possible by running your wheels over the TIP, AP, and EP. Coming from the PP, at the AP you're trying to pass your wheels at 1 cm **and** in the right direction.
+* You know what you're trying to accomplish in the corner: exit as fast as possible by running your wheels over the TIP, AP, and EP. Coming from the PP, at the AP you're trying to pass your wheels at 1/3 inch cm **and** in the right direction.
 
 That said, there are still a few "details" to sort out:
 
@@ -507,50 +507,50 @@ That said, there are still a few "details" to sort out:
 * Since you're getting faster and faster...
 * You're leaning more and more. That's dangerous. You may have even scraped a peg already.
 
-You can see we're hitting a limit here — a glass ceiling — because you can't go further than the peg. So we're going to dedicate this session to improving what's called corner technique. The idea is to give ourselves the means to exit faster and faster while still, of course, running the wheels over the TIP, AP, and EP.
+You can see we're hitting a limit here, a glass ceiling, because you can't go further than the peg. So we're going to dedicate this session to improving what's called corner technique. The idea is to give ourselves the means to exit faster and faster while still, of course, running the wheels over the TIP, AP, and EP.
 
 Physics dictates that if you want to go faster through a corner, you need to counterbalance the centrifugal force pushing the bike to the outside. To do that, you need to put more mass on the **inside of the turn**. The first instinct was to lean the bike, but you quickly hit the limits of that approach.
 
 In order to start rolling on the throttle earlier to exit faster (that's our only goal), we have no choice but to "lean" the rider to the inside of the turn and keep the bike more upright.
 
-This might be a bit frustrating, but due to time constraints, we're only going to do half of the exercise here — focusing ONLY on the upper body. So no, this is not when you're going to drag a knee.
+This might be a bit frustrating, but due to time constraints, we're only going to do half of the exercise here, focusing ONLY on the upper body. So no, this is not when you're going to drag a knee.
 
 Here's what I suggest you do in a corner where you feel comfortable:
 
-* *Same as before:* You finish your braking at the TIP while clamping the tank with your knees and staying seated toward the back. Your wheels are 1 cm from and parallel to the white line as you arrive at the TIP. When you release the brake lever, grip shift around the throttle.
+* *Same as before:* You finish your braking at the TIP while clamping the tank with your knees and staying seated toward the back. Your wheels are 1/3 inch from and parallel to the white line as you arrive at the TIP. When you release the brake lever, grip shift around the throttle.
 * *Same as before:* You tip the bike in quickly by pushing the inside handlebar. You're in the neutral zone: no brakes, no throttle.
 * *Same as before:* Your chin points at the AP and your shoulders rotate toward the inside of the turn.
 * **New:** Instead of staying with arms straight, torso upright and in line with the bike, you're going to lower your torso toward the **inside of the turn** while **exhaling** hard into your helmet.
-No — you're not going toward the tank; you're going to the side of the tank, toward the AP that your chin, head, and shoulders are pointing at. Your inside arm bends (it's totally "limp," relaxed, loose) while your outside arm extends and **rests** on the tank (on a naked bike the arm is extended but hovers 5 cm above the tank). Your shoulders open toward the inside of the turn. When you lower your torso, remember to exhale to become "all limp." You need to "deflate."
+No, you're not going toward the tank, you're going to the side of the tank, toward the AP that your chin, head, and shoulders are pointing at. Your inside arm bends (it's totally "limp," relaxed, loose) while your outside arm extends and **rests** on the tank (on a naked bike the arm is extended but hovers 2 inches above the tank). Your shoulders open toward the inside of the turn. When you lower your torso, remember to exhale to become "all limp." You need to "deflate."
 * **New:** At the same time, act as though you're pushing the bike away to keep it upright while you do everything to put as much of your body as possible on the **inside of the turn**. You **push** the bike away with your arms. You should end up with your "chin at the handlebar" and your helmet level with the mirror.
     * Don't hesitate to **hook** onto the bike with your outside knee on the side of the tank. And no, you don't need to hang on to the handlebars once the bike is leaned over.
     * If your butt is still centered on the seat, your spine and the bike's centerline form a V.
-* *Same as before:* No steady-state throttle. When you start rolling on the cable, it's imperceptible at first, but most importantly you never stop — you roll on faster and faster as you stand the bike up approaching the AP.
+* *Same as before:* No steady-state throttle. When you start rolling on the cable, it's imperceptible at first, but most importantly you never stop. You roll on faster and faster as you stand the bike up approaching the AP.
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img
     src="./assets/20230625_001949-1-scaled.webp"
-    alt="Menton au guidon"
+    alt="Chin at the handlebar"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Menton au guidon</figcaption>
+<figcaption>Chin at the handlebar</figcaption>
 </figure>
 
 
-The important thing during corner technique is to put as much of the rider's weight on the **inside of the turn** as possible and push the bike away to keep it upright. Yes, of course it'll lean, but you get the idea.
+The important thing while driving the corner is to put as much of the rider's weight on the **inside of the turn** as possible and push the bike away to keep it upright. Yes, of course it'll lean, but you get the idea.
 
-Note that I didn't say to put the rider "down" — I said "to the inside," meaning as far away from the bike as possible. That's why we say "chin at the handlebar" and "helmet in the mirror."
+Note that I didn't say to put the rider "down". I said "to the inside," meaning as far away from the bike as possible. That's why we say "chin at the handlebar" and "helmet in the mirror."
 
 You should feel that it's your body that "goes" to the **inside of the turn** while you "push" the bike away with your arms to keep it as upright as possible. Opening your shoulders also helps you end up with one arm extended and the other bent. Do this in the paddock or in your garage before you come.
 
-From now on, at the same speed, the bike leans less. You're safer. You can afford to start rolling on the throttle earlier and harder. You can do it because the bike is more upright than before — the rear tire's contact patch on the ground is wider. So you exit the corner faster and you increase your top speed at the end of the following straight. That's the only thing that matters. Period.
+From now on, at the same speed, the bike leans less. You're safer. You can afford to start rolling on the throttle earlier and harder. You can do it because the bike is more upright than before, the rear tire's contact patch on the ground is wider. So you exit the corner faster and you increase your top speed at the end of the following straight. That's the only thing that matters. Period.
 
 **Goal at the end of the session**
 
 * In at least one corner your torso is forward and to the **inside of the turn**. Your head is offset, on the side of the bike, the inside arm is bent, you have your chin at the handlebar, and the other arm is extended on the tank, shoulders open toward the inside of the turn.
 * You should feel that the entire corner resembles the following sequence:
-  + You brake while aiming at the TIP, wheels parallel and 1 cm from the line.
+  + You brake while aiming at the TIP, wheels parallel and 1/3 inch from the line.
   + At the TIP, you snap the bike onto its lean quickly, pushing the inside handlebar while looking at the AP.
   + Neutral phase. No brakes, no throttle. Good entry speed. Be patient, be patient, be patient.
   + No steady-state throttle. After the PP and before the AP you start rolling on the throttle cable. Imperceptible at first. You roll on faster and faster. Ideally you're 100% throttle at the AP, you pull the inside handlebar, and you point your chin at the EP.
@@ -560,9 +560,9 @@ From now on, at the same speed, the bike leans less. You're safer. You can affor
 **Notes**
 
 * *I can't bend the inside arm. I'm tense and feel like I'm forcing it.*
-I confirm — you are forcing it. You need to convince yourself that once the bike is leaned over, you could do this without touching the handlebars. Think of those guys in the photos who are at full lean waving at the camera.
+I confirm you are forcing it. You need to convince yourself that once the bike is leaned over, you could do this without touching the handlebars. Think of those guys in the photos who are at full lean waving at the camera.
 You can try the following:
-  + Start with a left-hand turn — it's generally easier because you can "forget" the throttle grip.
+  + Start with a left-hand turn, it's generally easier because you can "forget" the throttle grip.
   + When the bike tips in, try to feel that you're moving your torso with your abs and **only your abs**. The idea is to avoid pushing on the handlebars to shift your upper body. Yes, you're going to need to do planks at home.
   + As the bike tips in, release the inside grip and rotate your hand a quarter turn forward around the grip. This will unlock your wrist and "naturally" align your forearm with the clip-on/handlebar. Don't be surprised if you end up holding the bar like a screwdriver. That's normal. That's what we want.
   + Let the arm bend as you rotate your hand and your torso gets closer.
@@ -573,7 +573,7 @@ You can try the following:
 * *Ugh... I really don't like this feeling of having my head hanging in the void, or this point of view.*
 Sorry... You're going to have to get used to having your head over the grass and the curbs. You need to eat some miles, but it comes fast... Your brain just needs to adjust. Important: Lift your eyes, point at your next target — it really helps.
 
-* Say, Barbara, remember session 3 this morning? [Getting down on the bike](#3-se-coucher-sur-la-moto). At one point I said "If you're tired of lowering your torso... then don't raise it anymore..." Well, now you can actually do that. For example, exiting a corner at the EP, you're still head to the side, one arm bent, one arm extended. When you get back in line, keep your head low with the front of the helmet touching the tank. In fact, from now on you only need to raise your head DURING braking. There you go — you've become a rider!
+* Do you remember session 3 this morning? [Getting down on the bike](#3-getting-down-on-the-bike). At one point I said "If you're tired of lowering your torso... then don't raise it anymore..." Well, now you can actually do that. For example, exiting a corner at the EP, you're still head to the side, one arm bent, one arm extended. When you get back in line, keep your head low with the front of the helmet touching the tank. In fact, from now on you only need to raise your head DURING braking. There you go, you've become a rider!
 
 * You should take the opportunity, while staying within your 75%, to start accelerating earlier. Yes, you stay in your 75% zone, but **think** for 2 minutes. If the bike is more upright and if it's going through at the same speed (wait, you haven't put blue tape over your speedometer yet and you can still read your speed?), you can afford to start rolling on the throttle cable earlier. There's no risk. The tire's contact patch is wider than before. So do it, because by accelerating earlier you'll accelerate longer, which increases your top speed at the end of the following straight (always the same goal).
 
@@ -583,25 +583,23 @@ However, it's difficult. We all have a sense of the speed at which "oh crap, thi
 I think you should, in order, increase the speed of your tip-in **then** increase your entry speed.
   + Regarding tip-in speed, this is an exercise you do in riding courses where you do a gymkhana through cones and have to quickly switch from one side to the other (ideally with a knee on the ground). Plus you're filmed and you get thoroughly embarrassed during the debrief (actually, we all have a good laugh because nobody's great at this exercise).
   On a track day you need to pick 2 corners on opposite sides of the circuit and feel yourself pushing the inside handlebar. That's what lets you "snap" the bike onto its lean. Sure, you can press on the pegs, but the tip-in will be slow. To tip in quickly, you need to countersteer and push the inside handlebar.
-  Do the test on the road, on a straight, at 80 km/h — let go of the bars and push the left grip with your index finger. What happens? Now imagine a corner where you push with the palm of your left hand. As long as you push, the bike leans. The harder you push, the faster it leans. You need to experiment, you need to accumulate reps... A lifetime, I'm telling you...
-  + Once your tip-in is faster, you can gradually increase your corner entry speed. Progressive. Here again, the brain and body need to adjust. In riding courses there's an exercise called "no brakes, no gearbox" where you do laps without being allowed to shift gears or touch the brakes. You modulate speed only with the throttle and you manage however you want, but you enter the corner at whatever speed you've got at that moment... Join up, they said — join up.
+  Do the test on the road, on a straight, at 55 mph, let go of the bars and push the left grip with your index finger. What happens? Now imagine a corner where you push with the palm of your left hand. As long as you push, the bike leans. The harder you push, the faster it leans. You need to experiment, you need to accumulate reps... A lifetime, I'm telling you...
+  + Once your tip-in is faster, you can gradually increase your corner entry speed. Progressive. Here again, the brain and body need to adjust. In riding courses there's an exercise called "no brakes, no gearbox" where you do laps without being allowed to shift gears or touch the brakes. You modulate speed only with the throttle and you manage however you want, but you enter the corner at whatever speed you've got at that moment... Join up, they said, join up.
   On a track day there aren't 36 solutions. Change only one thing at a time. For example, keep your BPs and TIPs but brake less hard. Or move your BP up by 1 or 2 bike lengths and keep your TIP and your braking style. At our level, make absolutely sure your fingers are off the brake lever when you tip in.
 
 * *You said we've only done half the exercise. What do I do now if I want to go further?*
-If you're asking, it means you're snapping the bike onto its lean and you have a good corner entry speed. We agree? OK, well if that's indeed the case, to go even faster through the corner you need to **add more weight to the inside of the turn**. The idea now is to slide the entire rider on the seat toward the **inside of the turn**. Everything we said before still applies, but now the rider is trying to park their butt crack in the corner of the seat. Then they'll add even more mass by placing their inside foot at the tip of the peg. They'll use it as a ball joint when they open their knee. Here, it's not "we need more teeth" — it's "we need more weight on the inside."
+If you're asking, it means you're snapping the bike onto its lean and you have a good corner entry speed. We agree? OK, well if that's indeed the case, to go even faster through the corner you need to **add more weight to the inside of the turn**. The idea now is to slide the entire rider on the seat toward the **inside of the turn**. Everything we said before still applies, but now the rider is trying to park their butt crack in the corner of the seat. Then they'll add even more mass by placing their inside foot at the tip of the peg. They'll use it as a ball joint when they open their knee. Here, it's not "we need more teeth", it's "we need more weight on the inside."
+
 But hey, "before you can run, you have to walk." Putting all of this together in a single session, when it also affects braking, seemed a bit "touchy" to us. Since the rider is a beginner, we chose to focus on the upper body first. Once that's in place, once they're snapping the bike over and have sufficient entry speed, later they can "easily" add the lower body. You adapt your position to go faster — not the other way around.
 
-<!-- **Note de pilotage que tu peux lire :** -->
-
-<!-- * [Une conduite de virage efficace](https://www.40tude.fr/pilotage-moto-04-conduite-du-virage/) -->
 
 ### 7. The seventh session
 
-There's a bit of a "7th Company" vibe here — a hint of Pithiviers. Don't you think? In any case, it's the session nobody expected. So it's pure bonus, pure happiness.
+It's the session nobody expected. So it's pure bonus, pure happiness.
 
-You know what? Forget everything we talked about and just go ride. No pressure — you don't even have a lap timer to measure anything. Don't try to stay at 75%, 50%, or 100%. Who cares — you've done the job, you've got nothing left to prove today.
+You know what? Forget everything we talked about and just go ride. No pressure, you don't even have a lap timer to measure anything. Don't try to stay at 75%, 50%, or 100%. Who cares, you've done the job, you've got nothing left to prove today.
 
-Clear your head, get on your bike, and reel off the laps "just for fun" 🎶, staying cool and smooth.
+Clear your head, get on your bike, and reel off the laps just for fun, staying cool and smooth.
 
 **Goal at the end of the session**
 
@@ -610,19 +608,19 @@ Clear your head, get on your bike, and reel off the laps "just for fun" 🎶, st
 **Notes**
 
 * If you're truly wiped out, skip the last session.
-That said, **think about it**. Are you really dead tired, or are you just too lazy to put your sweaty helmet back on? Usually there are fewer riders in the last session. That means more space, more peace of mind — it frees up your head. You need to seize an opportunity when it presents itself. It's like taking the last snowboard run when everyone else has already headed in. "In tartiflette we trust" — go ahead, enjoy!
+That said, **think about it**. Are you really dead tired, or are you just too lazy to put your sweaty helmet back on? Usually there are fewer riders in the last session. That means more space, more peace of mind, it frees up your head. You need to seize an opportunity when it presents itself. It's like taking the last snowboard run when everyone else has already headed in. "In tartiflette we trust", go ahead, enjoy!
 
 * If your buddies suggest riding together "for the last one," say no.
-Let them go ahead. You don't know what kind of "freshness" they're in. As the old Indian proverb says: "If it smells like hooliganism, it smells like trouble."
+Let them go ahead. You don't know what kind of "freshness" they're in. As the old saying goes: "If it smells like the last race, it smells like trouble."
 
-## Et maintenant, que vais-je faire ?
+## And now, what should I do?
 
 **Warning.** Because we don't mess around with safety, as soon as you come out of the last session you go straight to re-inflate your tires to their "road" pressure.
 
 Now there are two possible scenarios:
 
-1. Either you didn't enjoy the day — you scared yourself, you're not comfortable with people passing you, you're not having fun... That's OK. There are plenty of ways to enjoy motorcycling. However, you might want to try an [AFDM course](https://afdm.org/le-stage-perf-2-jours/), and if possible do a 2-day course. Yes, it's not free and you might have to sell one of your children, but these courses should be reimbursed by insurance companies (I'm dead serious about this one).
-It's nothing like the track, but you and the bike are going to do things you didn't think possible, you'll understand a lot, and above all, you'll gain confidence — a lot of confidence.
+1. Either you didn't enjoy the day, you scared yourself, you're not comfortable with people passing you, you're not having fun... That's OK. There are plenty of ways to enjoy motorcycling. However, you might want to try an on-road driving course and if possible do a 2-day course. Yes, it's not free and you might have to sell one of your children, but these courses should be reimbursed by insurance companies (I'm dead serious about this one).
+It's nothing like the track, but you and the bike are going to do things you didn't think possible, you'll understand a lot, and above all, you'll gain confidence, a lot of confidence.
 
 <div align="center">
 <img src="./assets/image-23.webp" alt="" width="450" loading="lazy"/>
@@ -634,8 +632,8 @@ Once that's done, give the track another chance and/or do a day course dedicated
 
 2. In the second case, if you're grinning ear to ear even though you're exhausted and you know you still have 12,000 things to learn... Welcome. I just have 3 recommendations:
     * Your bike is way better than you are. So, for now, keep riding it as-is. Don't spend any money. Maintain it properly (tires, front brake pads, brake fluid, fork oil change, fork seals, standard engine maintenance...) and don't go dropping €1,500 on an exhaust. That's dumb.
-    * On the other hand, if you truly intend to do more track days, buy a GPS lap timer (don't use your phone — or at least stash it under the seat). Say what you will, "the stopwatch doesn't lie." You can tell yourself whatever story you want, make whatever excuses you want... Either you're going faster, or you're less efficient. Period. Plus, the lap timer can be used on other bikes later on.
-    * Sign up for a 1- or 2-day riding course soon. It's a serious investment (around €600 just for the 2-day course), but it's structured, professional, etc. It's a budget, but it'll gain you way more seconds per lap than any carbon accessory, rearset, or Mithril exhaust pipe. It's like learning snowboarding on your own versus going through ski school. There's no comparison. **Watch out** — you'll need to show up at the course in shape (abs, thighs) and well-rested, because the pace is intense. It's not a Marine boot camp, but you have to commit, not waste time between sessions, and hold on to the end (physically and mentally). <!-- Exemple avec mon tout premier stage avec DRRS en 2019 (NOT YET TRANSFERED) -->
+    * On the other hand, if you truly intend to do more track days, buy a GPS lap timer (don't use your phone or at least stash it under the seat). Say what you will, "the stopwatch doesn't lie." You can tell yourself whatever story you want, make whatever excuses you want... Either you're going faster, or you're less efficient. Period. Plus, the lap timer can be used on other bikes later on.
+    * Sign up for a 1- or 2-day riding course soon. It's a serious investment (around €600 just for the 2-day course), but it's structured, professional, etc. It's a budget, but it'll gain you way more seconds per lap than any carbon accessory, rearset, or Mithril exhaust pipe. It's like learning snowboarding on your own versus going through ski school. There's no comparison. **Watch out**, you'll need to show up at the course in shape (abs, thighs) and well-rested, because the pace is intense. It's not a Marine boot camp, but you have to commit, not waste time between sessions, and hold on to the end (physically and mentally). <!-- Exemple avec mon tout premier stage avec DRRS en 2019 (NOT YET TRANSFERED) -->
 
 Remember to check out the photos from the day. Either they're already viewable at the track, or you'll get them online next week. Buy the least awful one and set it aside. We'll talk about it again next year or in 2 years 😊.
 
@@ -646,14 +644,14 @@ Alright, to be continued in the next installment, and in the meantime re-read th
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
-    title="Comment faire des squats"
+    src="https://www.youtube.com/embed/xqvCmoLULNY"
+    title="Exercise Tutorial - Squat"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    Comment faire des squats
+    Exercise Tutorial - Squat
 </figcaption>
 </figure>
 
