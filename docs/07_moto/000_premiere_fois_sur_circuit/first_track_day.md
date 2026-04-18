@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-18 07:06:38
+last_modified_date: 2026-04-18 08:32:42
 ---
 
 
@@ -207,6 +207,35 @@ No chance, go for it, just upshift before the redline.
 
 * Hey... Do you know what gear you're in on different sections of the track?
 Add +1 and -1 on your track map.
+
+
+
+
+
+{: .note }
+> All else being equal, the first rider at the end of the straight is always the one who goes 100% throttle first.
+>
+> So if you can't do this exercise, ask yourself **THE** question. What's the problem? The bike? The rider? The match between the two?
+>
+> Imagine I cut your bike's power by 4. Do you think you'd be able to go full throttle? Yes? No? Why?
+>
+> What if I cut it in half? On the longest straight of the track, where would you find yourself at 100% throttle? By the end of the first quarter? At the exit point? At the apex of the previous corner?
+>
+> Sure, it's your first trackday, we're not in MotoGP. But the whole point is to make progress and give yourself the means to get past the "100% throttle" milestone. So what do we do? **Think about it.** Be honest with yourself. Do you have too much power for what you can actually handle today?
+>
+> I'm not judging. I've been there too. It's one thing to pull away at a traffic light, it's another to pin the throttle at the apex. Without control, power is nothing.
+>
+> I'm not asking you to sell your bike. I'm just saying that if you can't go 100% throttle, something needs to change. For the track, have you considered renting a 400cc? It can make all the difference.
+
+
+
+
+
+
+
+
+
+
 
 ### 3. Getting down on the bike
 
