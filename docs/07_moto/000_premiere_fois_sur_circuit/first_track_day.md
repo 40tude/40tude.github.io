@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-18 06:50:20
+last_modified_date: 2026-04-18 07:06:38
 ---
 
 
@@ -373,7 +373,7 @@ Let's use the figure below, in which you're arriving from the bottom. You've exi
 OK, is it clearer with this beautiful figure? Good... Actually, it's an efficiency problem. We are slow, very slow, when tipping the bike in. So we want to make things as easy on ourselves as possible.
 
 1. **Case 1:** The red line. You exit the previous corner, you're on the left side of the track, you accelerate and take your time. At some point you realize you need to get to the right side of the track for the upcoming left-hander coming at you fast. You're late, you aim for the cone (the black dot), and you arrive with the bike aligned along the red line. As a result, to inscribe the bike into the turn, you have to turn it through an angle $$\beta$$. That's the angle between the red line and the blue curve.
-1. **Case 2:** The green line. No, we're not going to the electric chair... You exit the previous corner, you're on the left side of the track, you accelerate and get your butt moving to the right side of the track quickly. You arrive at the cone with the bike aligned along the green line. Both wheels are 1/3 inch from the white line. To inscribe the bike into the turn, you need to turn it through an angle $$\alpha$$. That's the angle between the green line and the blue curve.
+1. **Case 2:** The green line. You exit the previous corner, you're on the left side of the track, you accelerate and get your butt moving to the right side of the track quickly. You arrive at the cone with the bike aligned along the green line. Both wheels are 1/3 inch from the white line. To inscribe the bike into the turn, you need to turn it through an angle $$\alpha$$. That's the angle between the green line and the blue curve.
 
 Since we're still just as slow, our tip-in speed hasn't changed. In your opinion, in which case do you tip the bike in faster? Right, so you know what you have to do... To make your life easier, get in the habit of **hugging the white line well before the TIP.**
 
