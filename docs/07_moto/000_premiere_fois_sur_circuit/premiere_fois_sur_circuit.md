@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-04-17 19:32:15
+last_modified_date: 2026-04-18 08:29:08
 ---
 
 
@@ -201,6 +201,26 @@ Aucune chance, vas-y, mais passe les rapports avant la zone rouge.
 
 * Heu... Est-ce que tu sais sur quel rapport tu es dans les différentes sections du circuit ?
 Ajoute des +1 et des -1 sur ton plan du circuit.
+
+
+
+
+{: .note }
+> À configuration identique, celui qui est le premier au bout de la ligne droite c'est toujours celui qui est 100% gaz en premier.
+>
+> Du coup, si tu n'arrives pas à faire l'exercice, pose-toi sérieusement **LA** question. Qu'est-ce qui pose problème? La moto? Le "pilote"? L'adéquation entre les deux?
+>
+> Imagine que je divise par 4 la puissance de ta moto. Tu penses que tu seras capable d'ouvrir les gaz à 100% ? Oui? Non? Pourquoi?
+>
+> Et si je la divise par 2? Dans la plus longue ligne droite du circuit, à quel endroit vas-tu te retrouver 100% gaz ouvert? À la fin du premier quart? Au point de sortie? Au point de corde du virage précédent?
+>
+> Ok, c'est une première journée de roulage, on n'est pas en MotoGP. Mais l'idée c'est de pouvoir progresser et de se donner les moyens de dépasser le cap des "100% gaz". Du coup, qu'est-ce qu'on fait? **Réfléchis.** Sois honnête avec toi-même. Est-ce que tu n'as pas trop de puissance par rapport à ce que tu sais faire aujourd'hui?
+>
+> Je ne critique pas. Moi aussi je suis passé par là. C'est une chose de prendre des tours au feu rouge, c'en est une autre de mettre la poignée dans le coin à l'apex. Sans contrôle, la puissance n'est rien.
+>
+> Je ne te demande pas de revendre ta moto. Je dis juste que si tu n'arrives pas à mettre 100% gaz, il va falloir changer quelque chose. Pour la piste, as-tu envisagé de louer un 400cc? Ça peut tout changer.
+
+
 
 ### 3. Se coucher sur la moto
 
