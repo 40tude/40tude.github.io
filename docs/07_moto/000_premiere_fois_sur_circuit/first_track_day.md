@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-18 06:33:52
+last_modified_date: 2026-04-18 06:50:20
 ---
 
 
@@ -299,7 +299,7 @@ Once you've done it once, you do it again but trying to exit the corner a bit fa
 We'll use the magnificent diagram below:
 
 <div align="center">
-<img src="./assets/image-20.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/image-20_us.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 
@@ -312,7 +312,7 @@ You're already looking at the AP you want to reach. Yes, I confirm. The bike is 
 
 Because the AP is far away, you make the effort to stay wide and not cut toward the inside curb. It feels reassuring to hug the inside of the turn, but **it's a mistake** that everyone makes at the beginning.
 
-You tip the bike in. You reach the pivot point (PP). There, you make the bike turn. This happens by consciously (or not) pushing on the inside handlebar. This is where you have the most lean angle (and where one day you'll drag a knee). Nothing bad can happen because you're not braking and you're not on the throttle either.
+You tip the bike in. You reach the **P**ivot **P**oint (PP). There, you make the bike turn. This happens by consciously (or not) pushing on the inside handlebar. This is where you have the most lean angle (and where one day you'll drag a knee). Nothing bad can happen because you're not braking and you're not on the throttle either.
 
 You're still off the throttle. The bike is pivoting, be patient, be patient... This is very hard at first, because since you don't have enough speed, you'll tend to want to open the throttle too early. No, no, you wait, you let the bike turn.
 
@@ -367,7 +367,7 @@ It's the same for all riders regardless of their level. It will never change, it
 Let's use the figure below, in which you're arriving from the bottom. You've exited a right-hand turn that was followed by a short straight. So at the exit of the first corner you were on the far left of the track, and now you need to negotiate the next corner, which turns left.
 
 <div align="center">
-<img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
+<img src="./assets/img04_us.webp" alt="" width="450" loading="lazy"/>
 </div>
 
 OK, is it clearer with this beautiful figure? Good... Actually, it's an efficiency problem. We are slow, very slow, when tipping the bike in. So we want to make things as easy on ourselves as possible.
