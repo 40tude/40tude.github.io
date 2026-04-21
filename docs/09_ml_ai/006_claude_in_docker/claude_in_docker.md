@@ -8,11 +8,11 @@ description: "Full AI autonomy inside a container, zero risk to the host, and a 
 image: docs/06_programmation/006_claude_in_docker/assets/img00.webp
 twitter:
   card: summary_large_image
-parent: "Programmation"
+parent: "ML & AI"
 # nav_order: 36
 math: mathjax
 date:               2026-04-01 12:00:00
-last_modified_date: 2026-04-13 15:03:54
+last_modified_date: 2026-04-21 10:17:57
 ---
 
 
