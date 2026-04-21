@@ -3,8 +3,8 @@ published: true
 author: 40tude
 lang: en-US
 layout: default
-title: "Ollama 101: Windows 11 Quickstart Checklist"
-description: "Everything you need to install, run, and experiment with local LLMs in minutes"
+title: "Running Local LLMs on Windows 11: From Ollama Setup to Gemma 4 and Context Tuning"
+description: "A hands-on guide to running local LLMs on Windows 11 using Ollama, comparing Gemma 4 and Qwen models, and solving real-world limitations like context size for development workflows."
 image: docs/09_ml_ai/005_ollama/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-16 10:21:41
+last_modified_date: 2026-04-21 11:32:47
 ---
 
 
@@ -81,22 +81,30 @@ last_modified_date: 2026-04-16 10:21:41
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-<!-- ## Introduction
+## Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit tincidunt. Nunc et laoreet ipsum. Fusce neque nisi, blandit vitae magna nec, sollicitudin commodo felis. Morbi a viverra lorem, ut sollicitudin lacus. Pellentesque euismod magna et enim fermentum tempor. Etiam vel sagittis mauris. Praesent dictum nisl sit amet tellus rhoncus mollis. Aenean nisi nibh, tincidunt at massa eget, luctus aliquet lectus. Mauris ac massa dolor. Sed fringilla tristique est. Suspendisse nec leo et magna tincidunt ultrices. Suspendisse lacinia leo sed congue ornare. Mauris congue eu dui posuere ultricies. Duis volutpat volutpat erat, ut consequat nisl bibendum gravida. Curabitur fringilla tincidunt auctor.
+Running large language models locally on Windows 11 is easier than ever. Tools like Ollama make installation almost trivial: as we will see, you can download a model and start prompting in just a few minutes.
 
-<!-- Link to a video -->
-<!-- <figure style="max-width: 560px; margin: auto;">
-<div style="position: relative; padding-bottom: 56.25%; height: 0;">
-    <iframe
-    src="https://www.youtube.com/embed/MIeYz6aMBbk"
-    title="Add a title"
-    style="position: absolute; inset: 0; width: 100%; height: 100%;"
-    allowfullscreen>
-    </iframe>
-</div>
-<figcaption style="text-align: center;">TODO: Add a legend</figcaption>
-</figure> -->
+But getting something to run is not the same as making it *useful*.
+
+My initial goal was simple: run a local model overnight to iterate on code. Generate it, execute it, measure results, improve it, and repeat—all without relying on cloud APIs or subscription limits. In theory, this should be possible with modern open models.
+
+In practice, things get more complicated.
+
+Very quickly, the choice of model becomes critical. Smaller models run fast but struggle with reasoning or memory. Larger ones promise better results but introduce hardware constraints. And then there’s a less obvious limitation that turns out to be a dealbreaker for real workflows: **context length**.
+
+In this article, I’ll walk through a hands-on exploration of running local LLMs on Windows 11. We’ll start with Ollama as a convenient entry point, then move beyond simple setup to:
+
+* test different models like Qwen and Gemma 4
+* understand how hardware impacts what you can realistically run
+* and experiment with extending context size to unlock more reliable behavior
+
+The goal isn’t just to “run a model locally,” but to better understand what it takes to build a setup that can actually support real development tasks.
+
+
+
+
+
 
 
 
