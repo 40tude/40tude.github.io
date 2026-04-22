@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 16:55:01
+last_modified_date: 2026-04-22 17:25:35
 ---
 
 
@@ -307,6 +307,8 @@ Linear regression on all 7 log-log points gives $$\hat{\alpha} \approx 0.74$$, i
 $$\boxed{B \approx 0.8 \cdot M^{3/4}}$$ -->
 
 #### **Step 4.1: A quick estimate of the slope**
+{: .no_toc }
+
 We can get a rough idea by using just the two extreme points (mouse and elephant):
 
 $$\hat{\alpha}_{\text{rough}} = \frac{\Delta \log B}{\Delta \log M} = \frac{\log(1100) - \log(0.24)}{\log(3000) - \log(0.025)} = \frac{3.04 - (-0.62)}{3.48 - (-1.60)} = \frac{3.66}{5.08} \approx 0.72$$
@@ -314,6 +316,7 @@ $$\hat{\alpha}_{\text{rough}} = \frac{\Delta \log B}{\Delta \log M} = \frac{\log
 This tells us the slope is *somewhere around* 0.72 but we only used 2 points out of 7, so it's a rough estimate.
 
 #### **Step 4.2: A better estimate using all the data**
+{: .no_toc }
 
 A linear regression on all 7 log-log points uses every animal, not just the extremes, so it's more reliable. It gives:
 
@@ -322,6 +325,7 @@ $$\hat{\alpha} = 0.74, \qquad \hat{b} = -0.10$$
 where the fitted line is $$\log B = \hat{b} + \hat{\alpha} \cdot \log M$$, i.e. $$\log B = -0.10 + 0.74 \cdot \log M$$.
 
 #### **Step 4.3: Why do we write $$3/4$$ instead of $$0.74$$?**
+{: .no_toc }
 
 Both 0.72 (rough) and 0.74 (regression) are *empirical estimates*. They come from a small, noisy dataset and carry some uncertainty. The true slope could reasonably be anything between about 0.70 and 0.78.
 
@@ -333,6 +337,7 @@ The fraction $$3/4 = 0.75$$ sits right in the middle of that range. Physicists a
 So $$3/4$$ is not a third, different value, it's the theoretical "round number" that our noisy estimates are consistent with.
 
 #### **Step 4.4: From the intercept to the prefactor 0.8**
+{: .no_toc }
 
 The regression gives us the equation in log-space:
 
@@ -349,6 +354,7 @@ $$C = 10^{-0.10} \approx 0.79 \approx 0.8$$
 We can check on a calculator: $$10^{-0.10} = 0.794...$$
 
 #### **Step 4.5: Final result**
+{: .no_toc }
 
 $$\boxed{B \approx 0.8 \cdot M^{3/4}}$$
 
@@ -589,6 +595,8 @@ The exponential-in-magnitude formula and the power-law-in-energy formula are the
 
 
 #### **Side Note**
+{: .no_toc }
+
 **"Heavy tail"** is a precise mathematical concept: it means the tail of the distribution decays slower than any exponential. Formally, for a heavy-tailed distribution, $\lim_{x \to \infty} e^{\lambda x} \cdot P(X > x) = \infty$ for all $\lambda > 0$. Power laws satisfy this. The tail is "heavy" because it carries more probability mass than you'd expect — extreme events are rare but not *as* rare as an exponential would predict.
 
 
@@ -1378,7 +1386,7 @@ The deepest intuition: power laws emerge from **multiplicative processes without
 <!-- ###################################################################### -->
 ## Conclusion
 
-Lorem...
+* Don't forget to talk about pareto and the article in preparation
 
 
 
@@ -1389,7 +1397,7 @@ Lorem...
 ## Webliography
 
 
-* [percentage and exponential growth]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
+* [Percentage and exponential growth]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
 
 
 <!-- * [Link to a web page](https://cleonis.nl/physics/phys256/energy_position_equation.php).
@@ -1400,12 +1408,12 @@ Lorem...
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/MrsjMiL9W9o"
-    title="Add a title"
+    title="Krachs Boursiers & Tremblements De Terre"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
-<figcaption style="text-align: center;">TODO: Add a legend</figcaption>
+<figcaption style="text-align: center;">Krachs Boursiers & Tremblements De Terre</figcaption>
 </figure>
 
 
