@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 11:55:02
+last_modified_date: 2026-04-22 11:56:58
 ---
 
 
@@ -47,8 +47,7 @@ last_modified_date: 2026-04-22 11:55:02
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img00.webp"
+<img src="./assets/img00.webp"
     alt="Muahaha… I don’t rule the world. I just control the tail."
     style="width: 100%; height: auto;"
     loading="lazy"
