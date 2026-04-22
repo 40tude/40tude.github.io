@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 17:25:35
+last_modified_date: 2026-04-22 17:41:27
 ---
 
 
@@ -41,8 +41,17 @@ last_modified_date: 2026-04-22 17:25:35
 ## TL;DR
 {: .no_toc }
 
-* Point 1
-* Scale Invariance
+* A **power law** looks like $$y = C \cdot x^{\alpha}$$.
+* **Scale invariance**: doubling $$x$$ always multiplies $$y$$ by the same factor ($$2^{\alpha}$$), no matter where you start. Exponentials don't have this property.
+* **The log-log diagnostic**: plot $$\log y$$ vs $$\log x$$. A straight line means power law; the slope is the exponent $$\alpha$$.
+* **Heavy tail**: the probability of extreme events decays much slower than an exponential. Catastrophic earthquakes, financial crashes, and viral content are all far more likely than a Gaussian or exponential model would predict.
+* Power laws appear everywhere: city populations, wealth distribution, word frequencies (Zipf), web links, solar flares, file sizes.
+* **Exponential vs power law in one rule**:
+    * constant ratio per *multiplicative* step in $$x$$ means power law
+    * constant ratio per *additive* step means exponential.
+* Power laws emerge from **multiplicative processes without a characteristic scale** ("the rich get richer")
+* Exponentials emerge from **constant-rate processes with a characteristic scale** (radioactive decay).
+* **Warning (Clauset, 2009)**: "looks linear on log-log" is necessary but not sufficient. Log-normal distributions can fool us. Use Maximum Likelihood Estimation and goodness-of-fit tests before claiming a power law.
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -1414,6 +1423,19 @@ The deepest intuition: power laws emerge from **multiplicative processes without
     </iframe>
 </div>
 <figcaption style="text-align: center;">Krachs Boursiers & Tremblements De Terre</figcaption>
+</figure>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/HBluLfX2F_k?start=0"
+    title="What is a power law?"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">What is a power law?</figcaption>
 </figure>
 
 
