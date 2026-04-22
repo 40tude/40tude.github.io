@@ -5,7 +5,7 @@ lang: en-US
 layout: default
 title: "TODO: Add a title"
 description: "TODO: Add a description"
-image: TODO: Full path to the first image. Example: docs/03_maths/020_equa_diff_in_physics/assets/img00.webp
+image: docs/03_maths/021_power_laws/assets/img00.webp
 twitter:
   card: summary_large_image
 parent: "Maths"
@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 11:19:01
+last_modified_date: 2026-04-22 11:26:08
 ---
 
 
@@ -81,7 +81,6 @@ last_modified_date: 2026-04-22 11:19:01
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Introduction
-
 
 
 
@@ -163,7 +162,7 @@ plt.show()
 </figure>
 
 
-<!-- you'll immediately see the problem: Mouse, Rat, Cat, and Dog are all crushed into the bottom-left corner while Elephant dominates. That's exactly the visual motivation for switching to log-log later in your article. -->
+We immediately *see* the problem: Mouse, Rat, Cat, and Dog are all crushed into the bottom-left corner while Elephant dominates. That's exactly the visual motivation for switching to another scaling.
 
 
 
@@ -1184,6 +1183,10 @@ Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magni
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Webliography
+
+
+* [percentage and exponential growth]({%link docs\03_maths\002_pourcentages\pourcentages.md%})
+
 
 <!-- * [Link to a web page](https://cleonis.nl/physics/phys256/energy_position_equation.php).
 * [Link to a page of the site]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
