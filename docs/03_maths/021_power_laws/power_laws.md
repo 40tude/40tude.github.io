@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 12:23:57
+last_modified_date: 2026-04-22 15:39:24
 ---
 
 
@@ -80,7 +80,7 @@ last_modified_date: 2026-04-22 12:23:57
 <!-- ###################################################################### -->
 ## Introduction
 
-Lorem
+Lorem...
 
 
 
@@ -95,11 +95,11 @@ Lorem
 ### The Setup
 {: .no_toc }
 
-In the 1930s, Max Kleiber was measuring how much oxygen different animals consume per day (from mice to cows). He had a simple, practical question: **if I double an animal's body mass, how much more food does it need?**
+In the 1930s, [Max Kleiber](https://en.wikipedia.org/wiki/Max_Kleiber) was measuring how much oxygen different animals consume per day (from mice to cows). He had a simple, practical question: **if I double an animal's body mass, how much more food does it need?**
 
 The naive hypothesis (the "obvious" one) was linear: twice the mass $$\rightarrow$$ twice the energy. Some biologists argued for a $$2/3$$ exponent, based on surface-area reasoning (heat loss scales with surface, surface scales as $$M^{2/3}$$).
 
-Kleiber just… measured things.
+Like Galileo before him, Kleiber just… measured things.
 
 
 
@@ -160,7 +160,7 @@ plt.show()
 </figure>
 
 
-With the help of the graph, we immediately *see* the problem: Mouse, Rat, Cat, and Dog are all crushed into the bottom-left corner while Elephant dominates. That's exactly the visual motivation for switching to another scaling.
+With the help of the graph, we immediately *see* the problem: data for small animals are packed into the bottom-left corner while Elephant are on the other side of the scale. We can't zoom on small animals without "loosing" larger ones. That's exactly the visual motivation for switching to another scaling.
 
 
 
@@ -169,7 +169,7 @@ With the help of the graph, we immediately *see* the problem: Mouse, Rat, Cat, a
 ### Step 2: Try log-linear. Does it straighten?
 {: .no_toc }
 
-Plot $$\log B$$ vs $$M$$. Still curved. Not exponential.
+Let's plot $$\log B$$ vs $$M$$. Still curved. Not exponential.
 
 ```python
 import numpy as np
@@ -206,7 +206,7 @@ plt.show()
 </figure>
 
 
-The small animals are a bit more visible now, but the points still curve. This confirms this isn't an exponential relationship (which would appear as a straight line here)
+The small animals are more visible now, but the points still curve. This confirms this isn't an exponential relationship (which would appear as a straight line here)
 
 
 
@@ -216,7 +216,7 @@ The small animals are a bit more visible now, but the points still curve. This c
 ### Step 3: Try log-log.
 {: .no_toc }
 
-Plot $$\log B$$ vs $$\log M$$:
+Let's plot $$\log B$$ vs $$\log M$$:
 
 | $$\log_{10} M$$ | $$\log_{10} B$$ |
 |---------------|---------------|
@@ -286,7 +286,7 @@ plt.show()
 </figcaption>
 </figure>
 
-Now the points fall on a straight line. This is the moment of discovery.
+Now the points fall on a straight line. This is our moment of discovery.
 
 
 
@@ -298,34 +298,118 @@ Now the points fall on a straight line. This is the moment of discovery.
 ### Step 4: Read off the slope
 {: .no_toc }
 
-From mouse to elephant: $$\Delta \log M = 3.48 - (-1.60) = 5.08$$, $$\Delta \log B = 3.04 - (-0.62) = 3.66$$.
+<!-- From mouse to elephant: $$\Delta \log M = 3.48 - (-1.60) = 5.08$$, $$\Delta \log B = 3.04 - (-0.62) = 3.66$$.
 
 $$\hat{\alpha} = \frac{3.66}{5.08} \approx 0.72$$
 
 Linear regression on all 7 log-log points gives $$\hat{\alpha} \approx 0.74$$, intercept $$\approx -0.10$$, so:
 
+$$\boxed{B \approx 0.8 \cdot M^{3/4}}$$ -->
+
+#### **Step 4.1: A quick estimate of the slope**
+We can get a rough idea by using just the two extreme points (mouse and elephant):
+
+$$\hat{\alpha}_{\text{rough}} = \frac{\Delta \log B}{\Delta \log M} = \frac{\log(1100) - \log(0.24)}{\log(3000) - \log(0.025)} = \frac{3.04 - (-0.62)}{3.48 - (-1.60)} = \frac{3.66}{5.08} \approx 0.72$$
+
+This tells us the slope is *somewhere around* 0.72 but we only used 2 points out of 7, so it's a rough estimate.
+
+#### **Step 4.2: A better estimate using all the data**
+
+A linear regression on all 7 log-log points uses every animal, not just the extremes, so it's more reliable. It gives:
+
+$$\hat{\alpha} = 0.74, \qquad \hat{b} = -0.10$$
+
+where the fitted line is $\log B = \hat{b} + \hat{\alpha} \cdot \log M$, i.e. $\log B = -0.10 + 0.74 \cdot \log M$.
+
+#### **Step 4.3: Why do we write $3/4$ instead of $0.74$?**
+
+Both 0.72 (rough) and 0.74 (regression) are *empirical estimates*. They come from a small, noisy dataset and carry some uncertainty. The true slope could reasonably be anything between about 0.70 and 0.78.
+
+The fraction $3/4 = 0.75$ sits right in the middle of that range. Physicists and biologists prefer it because:
+
+- it's within the measurement uncertainty of both estimates,
+- a clean fraction suggests there may be a deeper structural explanation (and indeed, the West-Brown-Enquist model from 1997 derives $3/4$ from theoretical principles about fractal vascular networks).
+
+So $3/4$ is not a third, different value, it's the theoretical "round number" that our noisy estimates are consistent with.
+
+#### **Step 4.4: From the intercept to the prefactor 0.8**
+
+The regression gives us the equation in log-space:
+
+$$\log B = -0.10 + \frac{3}{4}\log M$$
+
+We need to convert this back to an ordinary equation $B = C \cdot M^{3/4}$. Taking the log of both sides of that ordinary equation gives $\log B = \log C + \frac{3}{4}\log M$, so by comparison:
+
+$$\log C = -0.10$$
+
+To find $C$, we "undo" the logarithm (base 10):
+
+$$C = 10^{-0.10} \approx 0.79 \approx 0.8$$
+
+We can check on a calculator: $$10^{-0.10} = 0.794...$$
+
+#### **Step 4.5: Final result**
+
 $$\boxed{B \approx 0.8 \cdot M^{3/4}}$$
 
+where $$B$$ is in watts, $$M$$ is in kilograms, and $$0.8$$ is not a mysterious constant, it's simply $$10^{\text{intercept}} = 10^{-0.10}$$.
 
 
 
 <!-- ###################################################################### -->
-### Step 5: Reject the competing hypotheses
+### Step 5: Testing the three hypotheses against the data
 {: .no_toc }
 
+<!--
 | Hypothesis | Exponent | Prediction for elephant vs mouse ratio | Observed |
 |------------|----------|----------------------------------------|----------|
-| Linear | 1.0 | $$(3000/0.025)^{1.0} = 120{,}000\times$$ | — |
-| Surface area | 0.67 | $$(120{,}000)^{0.67} = 3{,}800\times$$ | — |
-| **Kleiber** | **0.75** | $$(120{,}000)^{0.75} = 18{,}600\times$$ | **$$1100/0.24 \approx 4{,}600\times$$** |
+| Linear | 1.0 | $$(3000/0.025)^{1.0} = 120\,000\times$$ | — |
+| Surface area | 0.67 | $$(120\,000)^{0.67} = 3\,800\times$$ | — |
+| **Kleiber** | **0.75** | $$(120\,000)^{0.75} = 18\,600\times$$ | **$$1100/0.24 \approx 4\,600\times$$** |
 
 None is perfect (real biology is noisy), but $$3/4$$ fits dramatically better than $$1$$ or $$2/3$$, and it holds across **27 orders of magnitude** of body mass when we include bacteria and whales. That robustness is the signature that we've found something real.
+ -->
+
+
+We have a mouse (0.025 kg, 0.24 W) and an elephant (3000 kg, 1100 W). The mass ratio between them is:
+
+$$\frac{M_{\text{elephant}}}{M_{\text{mouse}}} = \frac{3000}{0.025} = 120\,000$$
+
+The **observed** metabolic rate ratio is:
+
+$$\frac{B_{\text{elephant}}}{B_{\text{mouse}}} = \frac{1100}{0.24} \approx 4\,580$$
+
+So the elephant is 120 000 times heavier, but only about 4 600 times more "energy-hungry." The question is: which model predicts this correctly?
+
+If $$B = C \cdot M^{\alpha}$$, then the ratio of metabolic rates is:
+
+$$\frac{B_{\text{elephant}}}{B_{\text{mouse}}} = \left(\frac{M_{\text{elephant}}}{M_{\text{mouse}}}\right)^{\alpha} = 120\,000^{\,\alpha}$$
+
+Let's compute this for each hypothesis:
+
+| Hypothesis | Exponent $$\alpha$$ | Predicted ratio $$120\,000^{\,\alpha}$$ | Observed ratio | How far off? |
+|---|---|---|---|---|
+| Linear ("metabolism proportional to mass") | 1.0 | $$120\,000^{1.0} = 120\,000$$ | 4,580 | **26× too high** |
+| Surface area (Rubner's law) | 0.67 | $$120\,000^{0.67} \approx 2\,420$$ | 4,580 | **1.9× too low** |
+| **Kleiber's law** | **0.75** | $$120\,000^{0.75} \approx 5\,530$$ | **4,580** | **1.2× too high** |
+
+How to read this table: if the elephant-to-mouse metabolic ratio is really about 4 580, then:
+
+- The **linear** model ($$\alpha = 1$$) predicts 120 000. It overshoots by a factor of 26. It's wildly wrong because it assumes a big animal is just a "scaled-up small animal" with no efficiency gain.
+- The **surface area** model ($$\alpha = 2/3$$) predicts 2 420. It undershoots by almost half. It's in the right ballpark but systematically too low.
+- **Kleiber's** model ($$\alpha = 3/4$$) predicts 5 530. It overshoots by only about 20%. With just two noisy data points, that's remarkably close.
+
+None of the three is exact, which is normal: real biological data is noisy, and the mouse and elephant don't sit perfectly on any theoretical line. But $$\alpha = 3/4$$ is clearly the best of the three.
+
+**Why this is convincing beyond just two animals:** When biologists extend this analysis from bacteria ($$10^{-13}$$ W) to blue whales ($$10^{4}$$ W), spanning roughly **27 orders of magnitude** in body mass, the $$3/4$$ exponent continues to hold. A pattern that survives across such an enormous range is very unlikely to be a coincidence; it points to a universal structural constraint on how organisms distribute energy.
+
+
 
 
 
 
 <!-- ###################################################################### -->
-### Why 3/4 and not 2/3? The physical story came *after* the data.
+### Why 3/4 and not 2/3? The physical story came *loong after* the data.
 {: .no_toc }
 
 The $$\frac{3}{4}$$ exponent was a mystery for 60 years. In 1997, West, Brown & Enquist showed it emerges from the **fractal geometry of vascular networks**: the network must fill a 3D volume but itself has fractal dimension and the math forces $$\alpha = \frac{3}{4}$$. The law was discovered empirically decades before it was understood theoretically. **Data first, theory second.**
@@ -1177,9 +1261,7 @@ The deepest intuition: power laws emerge from **multiplicative processes without
 <!-- ###################################################################### -->
 ## Conclusion
 
-Maecenas in arcu id erat interdum tristique sed fermentum tortor. Donec eget felis ornare sem dapibus tincidunt at vitae justo. Mauris feugiat tristique augue at maximus. Vivamus euismod blandit mi, ut pretium libero tempor sit amet. In tristique nisi vel mi molestie, ac ornare enim blandit. Phasellus bibendum diam massa, in tempor purus imperdiet a. Curabitur mattis mauris eget cursus molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum efficitur sapien leo, id iaculis sem sagittis ac. Praesent dolor nisl, fringilla fermentum maximus id, ornare id justo. Morbi at gravida purus, eu imperdiet risus.
+Lorem...
 
 
 
