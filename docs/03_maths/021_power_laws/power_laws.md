@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 12:08:13
+last_modified_date: 2026-04-22 12:19:27
 ---
 
 
@@ -160,7 +160,7 @@ plt.show()
 </figure>
 
 
-We immediately *see* the problem: Mouse, Rat, Cat, and Dog are all crushed into the bottom-left corner while Elephant dominates. That's exactly the visual motivation for switching to another scaling.
+With the help of the graph, we immediately *see* the problem: Mouse, Rat, Cat, and Dog are all crushed into the bottom-left corner while Elephant dominates. That's exactly the visual motivation for switching to another scaling.
 
 
 
@@ -198,13 +198,15 @@ plt.show()
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img02.webp"
-    alt="The small animals are a bit more visible now, but the points still curve. This confirms this isn't an exponential relationship (which would appear as a straight line here)"
+    alt="The points still curve on semi-log graph"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>The small animals are a bit more visible now, but the points still curve. This confirms this isn't an exponential relationship (which would appear as a straight line here)</figcaption>
+<figcaption>The points still curve on semi-log graph</figcaption>
 </figure>
 
+
+The small animals are a bit more visible now, but the points still curve. This confirms this isn't an exponential relationship (which would appear as a straight line here)
 
 
 
@@ -276,14 +278,15 @@ plt.show()
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img03.webp"
-    alt="Plot those 7 points. They fall **on a straight line**. This is the moment of discovery."
+    alt="Haha moment with the log-log graph?"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Plot those 7 points. They fall **on a straight line**. This is the moment of discovery.
+<figcaption>Haha moment with the log-log graph?
 </figcaption>
 </figure>
 
+Now the points fall on a straight line. This is the moment of discovery.
 
 
 
