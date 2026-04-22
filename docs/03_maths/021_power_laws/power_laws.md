@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 15:39:24
+last_modified_date: 2026-04-22 15:51:23
 ---
 
 
@@ -319,18 +319,18 @@ A linear regression on all 7 log-log points uses every animal, not just the extr
 
 $$\hat{\alpha} = 0.74, \qquad \hat{b} = -0.10$$
 
-where the fitted line is $\log B = \hat{b} + \hat{\alpha} \cdot \log M$, i.e. $\log B = -0.10 + 0.74 \cdot \log M$.
+where the fitted line is $$\log B = \hat{b} + \hat{\alpha} \cdot \log M$$, i.e. $$\log B = -0.10 + 0.74 \cdot \log M$$.
 
-#### **Step 4.3: Why do we write $3/4$ instead of $0.74$?**
+#### **Step 4.3: Why do we write $$3/4$$ instead of $$0.74$$?**
 
 Both 0.72 (rough) and 0.74 (regression) are *empirical estimates*. They come from a small, noisy dataset and carry some uncertainty. The true slope could reasonably be anything between about 0.70 and 0.78.
 
-The fraction $3/4 = 0.75$ sits right in the middle of that range. Physicists and biologists prefer it because:
+The fraction $$3/4 = 0.75$$ sits right in the middle of that range. Physicists and biologists prefer it because:
 
 - it's within the measurement uncertainty of both estimates,
-- a clean fraction suggests there may be a deeper structural explanation (and indeed, the West-Brown-Enquist model from 1997 derives $3/4$ from theoretical principles about fractal vascular networks).
+- a clean fraction suggests there may be a deeper structural explanation (and indeed, the West-Brown-Enquist model from 1997 derives $$3/4$$ from theoretical principles about fractal vascular networks).
 
-So $3/4$ is not a third, different value, it's the theoretical "round number" that our noisy estimates are consistent with.
+So $$3/4$$ is not a third, different value, it's the theoretical "round number" that our noisy estimates are consistent with.
 
 #### **Step 4.4: From the intercept to the prefactor 0.8**
 
@@ -338,11 +338,11 @@ The regression gives us the equation in log-space:
 
 $$\log B = -0.10 + \frac{3}{4}\log M$$
 
-We need to convert this back to an ordinary equation $B = C \cdot M^{3/4}$. Taking the log of both sides of that ordinary equation gives $\log B = \log C + \frac{3}{4}\log M$, so by comparison:
+We need to convert this back to an ordinary equation $$B = C \cdot M^{3/4}$$. Taking the log of both sides of that ordinary equation gives $$\log B = \log C + \frac{3}{4}\log M$$, so by comparison:
 
 $$\log C = -0.10$$
 
-To find $C$, we "undo" the logarithm (base 10):
+To find $$C$$, we "undo" the logarithm (base 10):
 
 $$C = 10^{-0.10} \approx 0.79 \approx 0.8$$
 
@@ -409,7 +409,7 @@ None of the three is exact, which is normal: real biological data is noisy, and 
 
 
 <!-- ###################################################################### -->
-### Why 3/4 and not 2/3? The physical story came *loong after* the data.
+### Why 3/4 and not 2/3? The physical story came *long after* the data.
 {: .no_toc }
 
 The $$\frac{3}{4}$$ exponent was a mystery for 60 years. In 1997, West, Brown & Enquist showed it emerges from the **fractal geometry of vascular networks**: the network must fill a 3D volume but itself has fractal dimension and the math forces $$\alpha = \frac{3}{4}$$. The law was discovered empirically decades before it was understood theoretically. **Data first, theory second.**
