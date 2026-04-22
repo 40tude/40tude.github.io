@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 12:19:27
+last_modified_date: 2026-04-22 12:23:57
 ---
 
 
@@ -328,7 +328,7 @@ None is perfect (real biology is noisy), but $$3/4$$ fits dramatically better th
 ### Why 3/4 and not 2/3? The physical story came *after* the data.
 {: .no_toc }
 
-The 3/4 exponent was a mystery for 60 years. In 1997, West, Brown & Enquist showed it emerges from the **fractal geometry of vascular networks**: the network must fill a 3D volume but itself has fractal dimension and the math forces $$\alpha = 3/4$$. The law was discovered empirically decades before it was understood theoretically. **Data first, theory second.**
+The $$\frac{3}{4}$$ exponent was a mystery for 60 years. In 1997, West, Brown & Enquist showed it emerges from the **fractal geometry of vascular networks**: the network must fill a 3D volume but itself has fractal dimension and the math forces $$\alpha = \frac{3}{4}$$. The law was discovered empirically decades before it was understood theoretically. **Data first, theory second.**
 
 
 
