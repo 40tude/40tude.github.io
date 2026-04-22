@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 16:43:39
+last_modified_date: 2026-04-22 16:55:01
 ---
 
 
@@ -1090,9 +1090,8 @@ plt.show()
 
 
 
-Left panel: on a log-log plot the power law is a perfect straight line while the exponential curves upward.
-
-Right panel: on a log-linear plot the roles swap. The exponential becomes the straight line. That's the diagnostic trick in one glance.
+* Left panel: on a log-log plot the power law is a perfect straight line while the exponential curves upward.
+* Right panel: on a log-linear plot the roles swap. The exponential becomes the straight line. That's the diagnostic trick in one glance.
 
 
 
@@ -1103,8 +1102,8 @@ Right panel: on a log-linear plot the roles swap. The exponential becomes the st
 | Plot type | Power law | Exponential |
 |-----------|-----------|-------------|
 | Linear-linear | Curve | Curve |
-| **Log-log** | **Straight line** ✓ | Curves |
-| **Log-linear** | Curves | **Straight line** ✓ |
+| **Log-log** | **Straight line**  | Curves |
+| **Log-linear** | Curves | **Straight line**  |
 
 
 
@@ -1285,7 +1284,7 @@ $$\hat{\alpha} = 1 + n \left[\sum_{i=1}^{n} \ln \frac{x_i}{x_{min}}\right]^{-1}$
 ### Step 4: Watch for the heavy tail
 {: .no_toc }
 
-Power law distributions with $$\alpha \leq 2$$ have **infinite variance**. With $$\alpha \leq 1$$, even the mean is infinite. This has practical consequences: our sample mean will never converge, and "average" behavior is meaningless. This is why financial risk models built on Gaussian assumptions catastrophically failed in 2008 — asset return tails are closer to power laws ($$\alpha \approx 3$$) than Gaussians.
+Power law distributions with $$\alpha \leq 2$$ have **infinite variance**. With $$\alpha \leq 1$$, even the mean is infinite. This has practical consequences: our sample mean will never converge, and "average" behavior is meaningless. This is why financial risk models built on Gaussian assumptions catastrophically failed in 2008, asset return tails are closer to power laws ($$\alpha \approx 3$$) than Gaussians.
 
 
 
@@ -1296,7 +1295,7 @@ Power law distributions with $$\alpha \leq 2$$ have **infinite variance**. With 
 <!-- ###################################################################### -->
 ## Can We Convert Between Power Law and Exponential?
 
-This is a subtle and interesting question.
+<!-- This is a subtle and interesting question. -->
 
 
 
@@ -1311,7 +1310,7 @@ $$y = Ce^{\lambda \log t} = C \cdot t^{\lambda}$$
 
 That's a power law in $$t$$! So: **an exponential in $$x$$ is a power law in $$e^x$$**, and conversely **a power law in $$x$$ is an exponential in $$\log x$$**.
 
-This means log-normal data will appear as a power law if we accidentally plot it on the wrong axes — a very common mistake.
+This means log-normal data will appear as a power law if we accidentally plot it on the wrong axes (a very common mistake).
 
 
 
@@ -1397,15 +1396,16 @@ Lorem...
 * [Link to a page of the site]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
 -->
 
-<!-- Link to a video -->
-<!-- <figure style="max-width: 560px; margin: auto;">
+<figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://www.youtube.com/embed/MIeYz6aMBbk"
+    src="https://www.youtube.com/embed/MrsjMiL9W9o"
     title="Add a title"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">TODO: Add a legend</figcaption>
-</figure>  -->
+</figure>
+
+
