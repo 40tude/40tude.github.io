@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 17:41:27
+last_modified_date: 2026-04-22 17:58:16
 ---
 
 
@@ -42,9 +42,9 @@ last_modified_date: 2026-04-22 17:41:27
 {: .no_toc }
 
 * A **power law** looks like $$y = C \cdot x^{\alpha}$$.
-* **Scale invariance**: doubling $$x$$ always multiplies $$y$$ by the same factor ($$2^{\alpha}$$), no matter where you start. Exponentials don't have this property.
-* **The log-log diagnostic**: plot $$\log y$$ vs $$\log x$$. A straight line means power law; the slope is the exponent $$\alpha$$.
-* **Heavy tail**: the probability of extreme events decays much slower than an exponential. Catastrophic earthquakes, financial crashes, and viral content are all far more likely than a Gaussian or exponential model would predict.
+* **Scale invariance**: doubling $$x$$ always multiplies $$y$$ by the same factor ($$2^{\alpha}$$), no matter where we start. Exponentials don't have this property.
+* **The log-log diagnostic**: plot $$\log y$$ vs $$\log x$$. A straight line means power law. The slope is the exponent $$\alpha$$.
+* **Heavy tail**: the probability of extreme events decays much slower than an exponential. Catastrophic earthquakes, financial crashes and viral content are all far more likely than a Gaussian or exponential model would predict.
 * Power laws appear everywhere: city populations, wealth distribution, word frequencies (Zipf), web links, solar flares, file sizes.
 * **Exponential vs power law in one rule**:
     * constant ratio per *multiplicative* step in $$x$$ means power law
@@ -1350,14 +1350,14 @@ In **machine learning**: learning curves often follow a power law in the number 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Summary: When to Use a Power Law
+## When to Use a Power Law
 
 We can use a power law when:
 
 - **Scale invariance** is physically plausible. There's no natural characteristic scale in the system (vs. radioactive decay, which has a half-life: a characteristic time scale $$\rightarrow$$ exponential)
 - We observe **"the rich get richer"** dynamics: multiplicative feedback, preferential attachment, cumulative advantage
-- Our data has a **heavy tail** — extreme events are far more common than a Gaussian or exponential would predict
-- The phenomenon involves **geometric/fractal self-similarity** (coastlines, vascular networks, drainage basins)
+- Our data has a **heavy tail** and extreme events are far more common than a Gaussian or exponential would predict
+- The phenomenon involves **geometric/fractal self-similarity** (coastlines, vascular networks, drainage basins, pile of sand)
 - We are dealing with **rank-frequency** relationships (words, cities, firms)
 
 We should prefer an exponential when:
