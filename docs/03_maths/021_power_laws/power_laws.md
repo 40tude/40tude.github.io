@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 11:52:42
+last_modified_date: 2026-04-22 11:55:02
 ---
 
 
@@ -229,7 +229,7 @@ Plot $\log B$ vs $\log M$:
 
 
 
-
+{% raw %}
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -270,9 +270,8 @@ ax.legend(fontsize=12)
 ax.grid(True, which="both", alpha=0.3)
 fig.tight_layout()
 plt.show()
-
 ```
-
+{% endraw %}
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
