@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 15:51:23
+last_modified_date: 2026-04-22 16:43:39
 ---
 
 
@@ -42,7 +42,7 @@ last_modified_date: 2026-04-22 15:51:23
 {: .no_toc }
 
 * Point 1
-* Point 2
+* Scale Invariance
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -436,7 +436,7 @@ The $$\frac{3}{4}$$ exponent was a mystery for 60 years. In 1997, West, Brown & 
 
 In the 1940s, Beno Gutenberg and Charles Richter were cataloguing California earthquakes. They had counts of earthquakes per year at each magnitude level. The question: **is there a pattern in how often large vs small quakes occur?**
 
-The engineering hope was that large earthquakes were rare "anomalies" — exponentially rare, like failures in most engineered systems, so we could define a "maximum credible earthquake." Spoiler: that hope was wrong.
+The engineering hope was that large earthquakes were rare "anomalies", exponentially rare, like failures in most engineered systems, so we could define a "maximum credible earthquake." Spoiler alert: that hope was wrong.
 
 
 
@@ -482,11 +482,11 @@ plt.show()
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img04.webp"
-    alt="Same story as the metabolic data in linear scale — the small magnitudes crush everything else."
+    alt="Same story as the metabolic data in linear scale where the small magnitudes crush everything else."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Same story as the metabolic data in linear scale — the small magnitudes crush everything else.
+<figcaption>Same story as the metabolic data in linear scale where the small magnitudes crush everything else.
 </figcaption>
 </figure>
 
@@ -495,7 +495,7 @@ plt.show()
 ### Step 1: First look: is it exponential?
 {: .no_toc }
 
-Plot $$\log N$$ vs $$M$$ (log-linear):
+Let's plot $$\log N$$ vs $$M$$ (log-linear):
 
 | $$M$$ | $$\log_{10} N$$ |
 |-----|---------------|
@@ -583,10 +583,13 @@ $$\boxed{N(E) \propto E^{-2b/3}}$$
 
 $$N(>E) \propto E^{-1}$$
 
-A quake releasing $$10\times$$ more energy is $$10\times$$ rarer. A quake releasing $$1000\times$$ more energy is $$1000\times$$ rarer. **There is no characteristic earthquake size.** The ratio is always the same. That's scale invariance in action.
+A quake releasing $$10\times$$ more energy is $$10\times$$ rarer. A quake releasing $$1000\times$$ more energy is $$1000\times$$ rarer. **There is no characteristic earthquake size.** The ratio is always the same. That's **scale invariance** in action.
 
 The exponential-in-magnitude formula and the power-law-in-energy formula are the **same statement**, just in different variables. The discovery was realizing that magnitude was already a compressed (logarithmic) representation, and that uncompressing it reveals the true power law structure.
 
+
+#### **Side Note**
+**"Heavy tail"** is a precise mathematical concept: it means the tail of the distribution decays slower than any exponential. Formally, for a heavy-tailed distribution, $\lim_{x \to \infty} e^{\lambda x} \cdot P(X > x) = \infty$ for all $\lambda > 0$. Power laws satisfy this. The tail is "heavy" because it carries more probability mass than you'd expect — extreme events are rare but not *as* rare as an exponential would predict.
 
 
 
@@ -595,6 +598,121 @@ The exponential-in-magnitude formula and the power-law-in-energy formula are the
 {: .no_toc }
 
 If seismic energy followed a true exponential distribution (with a characteristic scale), there would be a natural maximum earthquake and risk would be bounded. The power law means **there is no such maximum**. The distribution has a **heavy tail**. Every time we think we've seen the biggest possible earthquake, the math says there's a finite probability of something larger. This fundamentally changed how nuclear plants, dams, and bridges are designed.
+
+
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# -----------------------------
+# Parameters
+# -----------------------------
+alpha = 2.5          # Pareto tail exponent
+lam_exp = 1.0        # Exponential decay rate
+lam_test = 0.3       # Lambda used in the heavy-tail definition
+
+x = np.linspace(1, 40, 1000)
+
+# -----------------------------
+# Survival functions P(X>x)
+# -----------------------------
+# Exponential tail
+S_exp = np.exp(-lam_exp * x)
+
+# Pareto tail (power law)
+S_par = x**(-alpha)
+
+# -----------------------------
+# Plot 1: Tail probabilities
+# -----------------------------
+plt.figure(figsize=(10,6))
+plt.semilogy(x, S_exp, label='Exponential tail', linewidth=3)
+plt.semilogy(x, S_par, label='Power-law tail (heavy tail)', linewidth=3)
+
+plt.title("Tail Probability P(X>x): Exponential vs Heavy Tail")
+plt.xlabel("Event size x")
+plt.ylabel("Survival probability (log scale)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+# -----------------------------
+# Plot 2: Log-log reveals power law
+# -----------------------------
+plt.figure(figsize=(10,6))
+plt.loglog(x, S_exp, label='Exponential', linewidth=3)
+plt.loglog(x, S_par, label='Power law', linewidth=3)
+
+plt.title("Log-Log View (Power law becomes a straight line)")
+plt.xlabel("Event size x")
+plt.ylabel("P(X>x)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+# -----------------------------
+# Illustration of heavy-tail definition:
+# exp(lambda x) * P(X>x)
+# -----------------------------
+test_exp = np.exp(lam_test*x) * S_exp
+test_par = np.exp(lam_test*x) * S_par
+
+plt.figure(figsize=(10,6))
+plt.yscale('log')
+plt.plot(x, test_exp, label=r'$e^{\lambda x} P(X>x)$ exponential', linewidth=3)
+plt.plot(x, test_par, label=r'$e^{\lambda x} P(X>x)$ Pareto', linewidth=3)
+
+plt.title("Mathematical Heavy-Tail Test")
+plt.xlabel("x")
+plt.ylabel(r'$e^{\lambda x} P(X>x)$')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+# -----------------------------
+# Extreme-event comparison
+# -----------------------------
+thresholds = [5, 10, 20]
+
+print("\nProbability of very large events:")
+for t in thresholds:
+    p_exp = np.exp(-lam_exp*t)
+    p_par = t**(-alpha)
+
+    print(f"\nThreshold x > {t}")
+    print(f"Exponential : {p_exp:.3e}")
+    print(f"Power law   : {p_par:.3e}")
+    print(f"Power-law is {p_par/p_exp:.1f} times larger")
+
+
+# -----------------------------
+# Optional: earthquake interpretation
+# -----------------------------
+print("\nInterpretation:")
+print("In a heavy-tailed model, catastrophic earthquakes remain much")
+print("more probable than an exponential model would suggest.")
+print("That is the sense in which the tail is 'heavy'.")
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img11.webp"
+    alt="Heavy Tail > Exponential"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Heavy Tail > Exponential</figcaption>
+</figure>
+
+
+
+
+
+
 
 
 
@@ -608,9 +726,9 @@ If seismic energy followed a true exponential distribution (with a characteristi
 <!-- ###################################################################### -->
 ## The General Recipe
 
-Both examples follow the same narrative, the same story:
+Both previous examples follow the same narrative, the same story:
 
-1. **Measure without assumptions**. Just collect $$(x_i, y_i)$$ pairs
+1. **Measure without assumptions**. Just collect $$(x_i, y_i)$$ pairs (usually, harder than anticipited)
 2. **Plot linearly**. See a curve, gain intuition about scale
 3. **Try log-linear**. Test the exponential hypothesis explicitly
 4. **Try log-log**. If this straightens, we have a power law candidate
@@ -619,7 +737,7 @@ Both examples follow the same narrative, the same story:
 7. **Ask what the exponent means**. The number $$\alpha$$ often encodes deep geometry or mechanism
 8. **Watch for hidden variables**. Like Richter's magnitude being already logarithmic
 
-The moment of discovery is always step 4: the log-log plot snapping into a straight line when everything else was a curve. That's the "aha" moment we will remember.
+The moment of discovery is always **step 4**. The log-log plot snapping into a straight line when everything else was a curve. That's the "aha" moment we will remember.
 
 
 
@@ -674,11 +792,11 @@ The crucial structural difference: in a power law, $$x$$ is the **base**. In an 
 ### Power law examples we already know
 {: .no_toc }
 
-**Area of a circle:** $$A = \pi r^2$$ \rightarrow exponent $$\alpha = 2$$
+**Area of a circle:** $$A = \pi r^2$$ \rightarrow$$ exponent $$\alpha = 2$$
 
-**Volume of a sphere:** $$V = \frac{4}{3}\pi r^3$$ \rightarrow exponent $$\alpha = 3$$
+**Volume of a sphere:** $$V = \frac{4}{3}\pi r^3 \rightarrow$$ exponent $$\alpha = 3$$
 
-**Gravitational force:** $$F = G \frac{m_1 m_2}{r^2}$$ \rightarrow exponent $$\alpha = -2$$ (decreasing)
+**Gravitational force:** $$F = G \frac{m_1 m_2}{r^2} \rightarrow$$ exponent $$\alpha = -2$$ (decreasing)
 
 Now let's feel the difference between power law and exponential growth numerically.
 
@@ -726,7 +844,7 @@ plt.show()
 <figcaption>The semi-log y-axis makes the contrast dramatic.</figcaption>
 </figure>
 
-$$e^x$$ shoots up as a straight line while $$x^2$$ barely curves upward visually hammering home that exponentials always dominate power laws at large $$x$$.
+<!-- $$e^x$$ shoots up as a straight line while $$x^2$$ curves upward only very slightly. This clearly shows that exponential functions always outperform power laws when $$x$$ is large. -->
 
 The exponential **annihilates** the power law for large $$x$$. This is the fundamental theorem of comparing these two families: **exponentials always eventually dominate power laws**, no matter how large $$\alpha$$ is.
 
@@ -831,7 +949,7 @@ plt.show()
 <figcaption>I'm a legend</figcaption>
 </figure>
 
-On the left, both red arrows show the same ×4 ratio (since $$2^2 = 4$$) whether we start at $$x=2$$ or $$x=5$$. That's scale invariance. On the right, the same doubling produces very different ratios depending on where we start. The exponential breaks scale invariance.
+On the left, both red arrows show the same ×4 ratio (since $$2^2 = 4$$) whether we start at $$x=2$$ or $$x=5$$. That's **scale invariance**. On the right, the same doubling produces very different ratios depending on where we start. The exponential breaks scale invariance.
 
 
 
