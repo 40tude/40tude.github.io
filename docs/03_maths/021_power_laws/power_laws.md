@@ -3,8 +3,8 @@ published: true
 author: 40tude
 lang: en-US
 layout: default
-title: "TODO: Add a title"
-description: "TODO: Add a description"
+title: "What Is a Power Law? Discovering Scale Invariance with Real Examples"
+description: "Learn what power laws are, how log-log plots reveal them, and why phenomena like earthquakes, city sizes, and metabolic scaling follow these surprising patterns."
 image: docs/03_maths/021_power_laws/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 11:30:47
+last_modified_date: 2026-04-22 11:37:40
 ---
 
 
@@ -82,7 +82,7 @@ last_modified_date: 2026-04-22 11:30:47
 <!-- ###################################################################### -->
 ## Introduction
 
-
+Lorem
 
 
 
