@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 11:43:41
+last_modified_date: 2026-04-22 11:52:42
 ---
 
 
@@ -252,7 +252,7 @@ B_fit = prefactor * M_fit ** exponent
 fig, ax = plt.subplots(figsize=(9, 6))
 ax.loglog(M, B, 'o', markersize=9, color='#2a6496', zorder=5)
 ax.loglog(M_fit, B_fit, '--', color='#cc4444', linewidth=1.5,
-          label=f"Fit: $B = {prefactor:.2f} \\, M^{{{exponent:.2f}}}$")
+          label = "Fit: $B = %.2f \\, M^{%.2f}$" % (prefactor, exponent))
 
 # Annotate each animal
 offsets = {
@@ -1189,7 +1189,7 @@ Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magni
 ## Webliography
 
 
-* [percentage and exponential growth]({%link docs\03_maths\002_pourcentages\pourcentages.md%})
+* [percentage and exponential growth]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
 
 
 <!-- * [Link to a web page](https://cleonis.nl/physics/phys256/energy_position_equation.php).
