@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 11:37:40
+last_modified_date: 2026-04-22 11:43:41
 ---
 
 
@@ -674,6 +674,7 @@ With an exponential: $$y(kx) = Ce^{\lambda kx} = e^{\lambda(k-1)x} \cdot Ce^{\la
 
 **Practical meaning:** For a power law with $$\alpha = 2$$, a city 10× bigger than another will always have roughly $$10^2 = 100$$× more of whatever is being measured (road surface, number of gas stations…), regardless of whether we are comparing 10k vs 100k cities, or 100k vs 1M cities. The ratio is always the same.
 
+{% raw %}
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -731,6 +732,9 @@ ax.grid(True, alpha=0.3)
 fig.tight_layout()
 plt.show()
 ```
+{% endraw %}
+
+
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
