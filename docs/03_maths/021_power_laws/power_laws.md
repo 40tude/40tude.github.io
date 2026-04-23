@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 10:46:36
+last_modified_date: 2026-04-23 11:36:01
 ---
 
 
@@ -135,6 +135,12 @@ Like Galileo before him, Kleiber just… measured things.
 {: .no_toc }
 
 On linear axes, the elephant dominates everything and we can't see structure in the small animals at all. We notice it's "some kind of curve" but can't say more.
+
+#### **Side Note**
+{: .no_toc }
+
+* Feel free to copy and paste the code of this article, online, in a [Jupyter Notebook](https://jupyter.org/)
+* Otherwise you can download a notebook [here](assets/power_laws.ipynb). It contains all the sample code.
 
 
 ```python
