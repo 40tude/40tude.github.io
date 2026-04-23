@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 10:28:39
+last_modified_date: 2026-04-23 10:41:33
 ---
 
 
@@ -42,6 +42,7 @@ last_modified_date: 2026-04-23 10:28:39
 {: .no_toc }
 
 * A **power law** looks like $$y = C \cdot x^{\alpha}$$.
+* $$\alpha$$ determines whether a system has a meaningful average or variance. When  $$\alpha \leq 2$$, average behavior becomes unstable, making models based on “typical” outcomes unreliable and increasing the risk of catastrophic surprises in areas like policy, infrastructure, and finance.
 * **Scale invariance**: doubling $$x$$ always multiplies $$y$$ by the same factor ($$2^{\alpha}$$), no matter where we start. Exponentials don't have this property.
 * **The log-log diagnostic**: plot $$\log y$$ vs $$\log x$$. A straight line means power law. The slope is the exponent $$\alpha$$.
 * **Heavy tail**: the probability of extreme events decays much slower than an exponential. Catastrophic earthquakes, financial crashes and viral content are all far more likely than a Gaussian or exponential model would predict.
@@ -52,7 +53,6 @@ last_modified_date: 2026-04-23 10:28:39
 * Power laws emerge from **multiplicative processes without a characteristic scale** ("the rich get richer")
 * Exponentials emerge from **constant-rate processes with a characteristic scale** (radioactive decay).
 * **Warning (Clauset, 2009)**: "looks linear on log-log" is necessary but not sufficient. Log-normal distributions can fool us. Use Maximum Likelihood Estimation and goodness-of-fit tests before claiming a power law.
-* **$$\alpha$$** determines whether a system has a meaningful average or variance. When  $$\alpha \leq 2$$, average behavior becomes unstable, making models based on “typical” outcomes unreliable and increasing the risk of catastrophic surprises in areas like policy, infrastructure, and finance.
 
 
 
