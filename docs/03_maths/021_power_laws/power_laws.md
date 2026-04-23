@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-22 17:58:16
+last_modified_date: 2026-04-23 09:49:46
 ---
 
 
@@ -1272,7 +1272,7 @@ Let's plot our data on log-log axes. If it looks linear, we have a candidate.
 
 $$\log y = \alpha \log x + \log C$$
 
-Run OLS on $$(\log x_i, \log y_i)$$ pairs. The slope gives $$\hat{\alpha}$$, the intercept gives $$\log \hat{C}$$.
+Run ordinary least square (OLS) on $$(\log x_i, \log y_i)$$ pairs. The slope gives $$\hat{\alpha}$$, the intercept gives $$\log \hat{C}$$.
 
 **Caution:** This minimizes error in log-space, which implicitly assumes multiplicative (relative) errors, not additive ones. Fine for many natural phenomena, but check our assumptions.
 
@@ -1294,6 +1294,113 @@ $$\hat{\alpha} = 1 + n \left[\sum_{i=1}^{n} \ln \frac{x_i}{x_{min}}\right]^{-1}$
 3. Use a **Kolmogorov-Smirnov test** to measure goodness-of-fit
 4. Compare with alternative distributions (log-normal, exponential) via likelihood ratio tests
 
+The code below runs this pipeline on two synthetic datasets: one sampled from a true Pareto distribution and one from a log-normal that looks identical on a log-log plot. The KS p-value and the log-likelihood ratio expose the difference.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+rng = np.random.default_rng(42)
+xmin = 1.0
+n = 2000
+
+# --- Case 1: true power law (Pareto, alpha=2.5) ---
+alpha_true = 2.5
+u = rng.uniform(0, 1, n)
+data_pl = xmin * (1 - u) ** (-1 / alpha_true)
+
+# --- Case 2: log-normal impostor ---
+data_ln = rng.lognormal(mean=0.0, sigma=1.5, size=n)
+data_ln = data_ln[data_ln >= xmin]
+
+
+def mle_alpha(data, xmin):
+    """Clauset-Shalizi-Newman MLE for power-law exponent."""
+    x = data[data >= xmin]
+    return 1 + len(x) / np.sum(np.log(x / xmin))
+
+
+def ks_pvalue(data, xmin, alpha_hat, n_boot=400):
+    """Bootstrap p-value for KS goodness-of-fit."""
+    x = np.sort(data[data >= xmin])
+    n = len(x)
+    ecdf = np.arange(1, n + 1) / n
+    tcdf = 1 - (xmin / x) ** (alpha_hat - 1)
+    ks_obs = np.max(np.abs(ecdf - tcdf))
+    count = 0
+    for _ in range(n_boot):
+        boot = xmin * rng.uniform(0, 1, n) ** (-1 / alpha_hat)
+        a_b = mle_alpha(boot, xmin)
+        xb = np.sort(boot)
+        ecdf_b = np.arange(1, n + 1) / n
+        tcdf_b = 1 - (xmin / xb) ** (a_b - 1)
+        if np.max(np.abs(ecdf_b - tcdf_b)) >= ks_obs:
+            count += 1
+    return ks_obs, count / n_boot
+
+
+def loglik_pl(data, xmin, alpha):
+    x = data[data >= xmin]
+    n = len(x)
+    return n * np.log(alpha - 1) - n * np.log(xmin) - alpha * np.sum(np.log(x / xmin))
+
+
+def loglik_ln(data, xmin):
+    x = data[data >= xmin]
+    mu = np.mean(np.log(x))
+    sigma = np.std(np.log(x), ddof=1)
+    return np.sum(stats.lognorm.logpdf(x, s=sigma, scale=np.exp(mu)))
+
+
+results = []
+for data, label, color in [
+    (data_pl, "True power law (Pareto)", "#FF7F0E"),
+    (data_ln, "Log-normal impostor",     "#1F77B4"),
+]:
+    a = mle_alpha(data, xmin)
+    ks, p = ks_pvalue(data, xmin, a)
+    lr = loglik_pl(data, xmin, a) - loglik_ln(data, xmin)
+    results.append((data, label, color, a, ks, p, lr))
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+for ax, (data, label, color, a, ks, p, lr) in zip(axes, results):
+    x = np.sort(data[data >= xmin])
+    ccdf = 1 - np.arange(1, len(x) + 1) / len(x)
+    ax.loglog(x, ccdf + 1e-6, ".", alpha=0.25, markersize=10, color=color)
+
+    x_fit = np.logspace(np.log10(xmin), np.log10(x[-1]), 300)
+    ax.loglog(x_fit, (xmin / x_fit) ** (a - 1), "-", linewidth=1,
+              color="black", label=f"Power law fit  alpha={a:.2f}")
+
+    verdict  = "CONFIRMED" if p >= 0.1 else "REJECTED"
+    lr_label = "PL favored" if lr > 0 else "Log-normal favored"
+    ax.set_title(
+        f"{label}\n"
+        f"KS p-value = {p:.2f}  =>  {verdict}\n"
+        f"Log-LR = {lr:.1f}  ({lr_label})",
+        fontsize=12,
+    )
+    ax.set_xlabel("x", fontsize=12)
+    ax.set_ylabel("P(X > x)", fontsize=12)
+    ax.legend(fontsize=11)
+    ax.grid(True, alpha=0.3, which="both")
+
+fig.suptitle("CSN Test: Confirming vs. Rejecting a Power Law")
+fig.tight_layout()
+plt.show()
+```
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img12.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 
