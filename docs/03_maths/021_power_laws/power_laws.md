@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 10:10:50
+last_modified_date: 2026-04-23 10:28:39
 ---
 
 
@@ -52,6 +52,8 @@ last_modified_date: 2026-04-23 10:10:50
 * Power laws emerge from **multiplicative processes without a characteristic scale** ("the rich get richer")
 * Exponentials emerge from **constant-rate processes with a characteristic scale** (radioactive decay).
 * **Warning (Clauset, 2009)**: "looks linear on log-log" is necessary but not sufficient. Log-normal distributions can fool us. Use Maximum Likelihood Estimation and goodness-of-fit tests before claiming a power law.
+* **$$\alpha$$** determines whether a system has a meaningful average or variance. When  $$\alpha \leq 2$$, average behavior becomes unstable, making models based on “typical” outcomes unreliable and increasing the risk of catastrophic surprises in areas like policy, infrastructure, and finance.
+
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -1553,32 +1555,46 @@ The deepest intuition: power laws emerge from **multiplicative processes without
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Conclusion
 
-* Don't forget to talk about pareto and the article in preparation
+Power laws are not a mathematical curiosity. They are a recurring signature of how complex/scale-invariant/fractals systems actually work: a mouse and an elephant share the same metabolic blueprint scaled by a single exponent. A magnitude-8 earthquake is not a freak accident but the predictable tail of the same distribution that produces magnitude-2 tremors every day.
+
+Three ideas are worth keeping:
+
+1. **The log-log plot is a diagnostic, not a proof**: A straight line on log-log axes is the first clue, but log-normal distributions can produce the same visual. Rigorous confirmation requires MLE, a goodness-of-fit test, and a likelihood comparison against alternatives. This is exactly what Clauset, Shalizi, and Newman showed in 2009.
+
+2. **The exponent $$\alpha$$ carries real stakes**: It is not just a fitting parameter. It determines whether the mean and variance of the phenomenon are mathematically finite. A system with $$\alpha \leq 2$$ has no stable "average" behavior in the sense the central limit theorem requires. Designing policy, infrastructure, or financial models as if the average were representative is how catastrophic surprises happen.
+
+3. **The mechanism matters as much as the fit**: A power law is not just a description. It is evidence of a process, preferential attachment, self-organized criticality, multiplicative growth... Identifying that process tells us how the system will behave as it scales and whether the power law will hold beyond the range of our data.
+
+From Kleiber's metabolic measurements in the 1930s to the scaling laws now used to predict the performance of language models, the same mathematical structure keeps reappearing. Learning to recognize it and to test it honestly is one of the most broadly useful tools in quantitative reasoning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
