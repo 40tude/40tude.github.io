@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 10:02:19
+last_modified_date: 2026-04-23 10:10:50
 ---
 
 
@@ -1408,7 +1408,7 @@ plt.show()
 ### Step 4: Watch for the heavy tail
 {: .no_toc }
 
-Power law distributions with $$\alpha \leq 2$$ have **infinite variance**. With $$\alpha \leq 1$$, even the mean is infinite. This section explains why, step by step.
+Power law distributions with $$\alpha \leq 2$$ have **infinite variance**. With $$\alpha \leq 1$$, even the mean is infinite. This section explains why, step by step and shows the consequences with an example.
 
 
 
@@ -1474,17 +1474,17 @@ Same reasoning: this integral converges if and only if $$1 - \alpha < -1$$, i.e.
 #### **The 2008 financial crisis: a concrete illustration**
 {: .no_toc }
 
-From the 1990s onward, banks managed risk with a tool called **Value at Risk (VaR)**. The idea is simple: "what is the maximum amount we can lose in one day, with 99% confidence?" A $$10M VaR means that, 99 days out of 100, the daily loss stays below$$10M.
+From the 1990s onward, banks managed risk with a tool called **Value at Risk (VaR)**. The idea is simple: "what is the maximum amount we can lose in one day, with 99% confidence?" A 10M$ VaR means that, 99 days out of 100, the daily loss stays below 10M$.
 
-To compute VaR, risk managers modeled daily asset returns as a **Gaussian distribution**. Under a Gaussian, the probability of losing more than 5 standard deviations (a "5-sigma event") is about $$3 \times 10^{-7}$$, or once every 14,000 years. Models said such events were essentially impossible.
+To compute VaR, risk managers modeled daily asset returns as a **Gaussian distribution**. Under a Gaussian, the probability of losing more than 5 standard deviations (a "5-sigma event") is about $$3 \times 10^{-7}$$, or once every 14 000 years. Models said such events were essentially impossible.
 
 The problem: asset return tails are not Gaussian. Empirical studies consistently find they follow a power law with $$\alpha \approx 3$$ (the so-called "cubic law" of returns). With $$\alpha = 3$$:
 
 $$P(|r| > k\,\sigma) \sim k^{-3}$$
 
-A "5-sigma event" has probability $$\sim 5^{-3} = 0.8\%$$, or roughly once every four months, not once every 14,000 years. The tails of a power law are incomparably fatter than a Gaussian tail.
+A "5-sigma event" has probability $$\sim 5^{-3} = 0.8\%$$, or roughly once every four months, not once every 14 000 years. The tails of a power law are incomparably fatter than a Gaussian tail.
 
-Because $$\alpha = 3 > 2$$, variance is technically finite, so the Gaussian models were not obviously wrong in normal times. But the Gaussian drastically underestimated the probability of extreme moves. When the 2007--2008 crisis hit, VaR models said events with probability $$10^{-7}$$ were occurring week after week. They were not outliers; they were business as usual for a power-law distribution. Banks had set aside nowhere near enough capital to cover those losses, and the rest is history.
+Because $$\alpha = 3 > 2$$, variance is technically finite, so the Gaussian models were not obviously wrong in normal times. But the Gaussian drastically underestimated the probability of extreme moves. When the 2007-2008 crisis hit, VaR models said events with probability $$10^{-7}$$ were occurring week after week. They were not outliers, they were business as usual for a power-law distribution. Banks had set aside nowhere near enough capital to cover those losses, and the rest is history.
 
 
 
