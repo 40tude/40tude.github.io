@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 09:49:46
+last_modified_date: 2026-04-23 10:02:19
 ---
 
 
@@ -1395,11 +1395,11 @@ plt.show()
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img12.webp"
-    alt="Describe the image here"
+    alt="CSN Test: Confirming vs. Rejecting a Power Law"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>CSN Test: Confirming vs. Rejecting a Power Law</figcaption>
 </figure>
 
 
@@ -1408,7 +1408,83 @@ plt.show()
 ### Step 4: Watch for the heavy tail
 {: .no_toc }
 
-Power law distributions with $$\alpha \leq 2$$ have **infinite variance**. With $$\alpha \leq 1$$, even the mean is infinite. This has practical consequences: our sample mean will never converge, and "average" behavior is meaningless. This is why financial risk models built on Gaussian assumptions catastrophically failed in 2008, asset return tails are closer to power laws ($$\alpha \approx 3$$) than Gaussians.
+Power law distributions with $$\alpha \leq 2$$ have **infinite variance**. With $$\alpha \leq 1$$, even the mean is infinite. This section explains why, step by step.
+
+
+
+#### **The density function**
+{: .no_toc }
+
+Throughout this section we use the **CCDF tail exponent**: $$P(X > x) \sim x^{-\alpha}$$. The corresponding probability density is:
+
+$$f(x) = \frac{\alpha}{x_{\min}} \left(\frac{x}{x_{\min}}\right)^{-(\alpha+1)}, \qquad x \geq x_{\min}$$
+
+This is the Pareto distribution. The exponent on the density is $$-(\alpha+1)$$, one unit steeper than the tail, because differentiating $$x^{-\alpha}$$ gives $$\alpha x^{-(\alpha+1)}$$.
+
+
+
+
+#### **Why the mean can be infinite ($$\alpha \leq 1$$)**
+{: .no_toc }
+
+By definition, $$\mathbb{E}[X] = \displaystyle\int_{x_{\min}}^{+\infty} x \cdot f(x)\, dx$$. Substituting:
+
+$$\mathbb{E}[X] = \int_{x_{\min}}^{+\infty} x \cdot \frac{\alpha}{x_{\min}^{-\alpha}} \cdot x^{-(\alpha+1)}\, dx = \alpha\, x_{\min}^{\alpha} \int_{x_{\min}}^{+\infty} x^{-\alpha}\, dx$$
+
+The key is the integral $$\displaystyle\int_{x_{\min}}^{+\infty} x^{-\alpha}\, dx$$. Using the power rule for antiderivatives:
+
+$$\int_{x_{\min}}^{A} x^{-\alpha}\, dx = \left[\frac{x^{1-\alpha}}{1-\alpha}\right]_{x_{\min}}^{A} = \frac{A^{1-\alpha} - x_{\min}^{1-\alpha}}{1-\alpha}$$
+
+Now let $$A \to +\infty$$:
+
+- If $$\alpha > 1$$: the exponent $$1 - \alpha < 0$$, so $$A^{1-\alpha} \to 0$$. The integral converges and $$\mathbb{E}[X] = \dfrac{\alpha\, x_{\min}}{\alpha - 1}$$.
+- If $$\alpha \leq 1$$: the exponent $$1 - \alpha \geq 0$$, so $$A^{1-\alpha} \to +\infty$$. The integral diverges. **The mean is infinite.**
+
+**What does "infinite mean" feel like in practice?** Draw $$n$$ samples and compute their average. The average does not settle around a fixed value as $$n$$ grows; instead, every now and then, an astronomically large value appears and jerks the average upward. There is no "typical" observation and no reliable center of gravity.
+
+
+
+
+#### **Why the variance can be infinite ($$\alpha \leq 2$$)**
+{: .no_toc }
+
+
+Variance is $$\text{Var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2$$. Even if the mean is finite ($$\alpha > 1$$), the variance is infinite when $$\mathbb{E}[X^2]$$ diverges:
+
+$$\mathbb{E}[X^2] = \alpha\, x_{\min}^{\alpha} \int_{x_{\min}}^{+\infty} x^{1-\alpha}\, dx$$
+
+Same reasoning: this integral converges if and only if $$1 - \alpha < -1$$, i.e., $$\alpha > 2$$.
+
+- If $$\alpha > 2$$: variance is finite.
+- If $$1 < \alpha \leq 2$$: mean exists, but variance is **infinite**. The central limit theorem does not apply. Sample averages converge, but agonizingly slowly, and fluctuations remain huge.
+
+
+#### **Summary table:**
+{: .no_toc }
+
+| Condition | Mean | Variance |
+|-----------|------|----------|
+| $$\alpha > 2$$ | finite | finite |
+| $$1 < \alpha \leq 2$$ | finite | **infinite** |
+| $$\alpha \leq 1$$ | **infinite** | **infinite** |
+
+
+
+
+#### **The 2008 financial crisis: a concrete illustration**
+{: .no_toc }
+
+From the 1990s onward, banks managed risk with a tool called **Value at Risk (VaR)**. The idea is simple: "what is the maximum amount we can lose in one day, with 99% confidence?" A $$10M VaR means that, 99 days out of 100, the daily loss stays below$$10M.
+
+To compute VaR, risk managers modeled daily asset returns as a **Gaussian distribution**. Under a Gaussian, the probability of losing more than 5 standard deviations (a "5-sigma event") is about $$3 \times 10^{-7}$$, or once every 14,000 years. Models said such events were essentially impossible.
+
+The problem: asset return tails are not Gaussian. Empirical studies consistently find they follow a power law with $$\alpha \approx 3$$ (the so-called "cubic law" of returns). With $$\alpha = 3$$:
+
+$$P(|r| > k\,\sigma) \sim k^{-3}$$
+
+A "5-sigma event" has probability $$\sim 5^{-3} = 0.8\%$$, or roughly once every four months, not once every 14,000 years. The tails of a power law are incomparably fatter than a Gaussian tail.
+
+Because $$\alpha = 3 > 2$$, variance is technically finite, so the Gaussian models were not obviously wrong in normal times. But the Gaussian drastically underestimated the probability of extreme moves. When the 2007--2008 crisis hit, VaR models said events with probability $$10^{-7}$$ were occurring week after week. They were not outliers; they were business as usual for a power-law distribution. Banks had set aside nowhere near enough capital to cover those losses, and the rest is history.
 
 
 
