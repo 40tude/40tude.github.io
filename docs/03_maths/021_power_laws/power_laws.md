@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 11:36:01
+last_modified_date: 2026-04-23 18:38:25
 ---
 
 
@@ -163,7 +163,6 @@ ax.set_title("Metabolic Rate vs Body Mass", fontsize=14)
 ax.grid(True, alpha=0.3)
 fig.tight_layout()
 plt.show()
-
 ```
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -209,7 +208,6 @@ ax.set_title("log(Metabolic Rate) vs Body Mass — semi-log", fontsize=14)
 ax.grid(True, alpha=0.3)
 fig.tight_layout()
 plt.show()
-
 ```
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">

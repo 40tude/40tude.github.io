@@ -4,7 +4,7 @@ title: "Freinage"
 parent: "Notes de Pilotage Moto"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2023-05-20 23:53:14
+last_modified_date: 2026-04-23 18:38:25
 ---
 
 # Freinage
@@ -84,7 +84,7 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 * L'objectif du freinage c'est de **fixer précisément la vitesse d'entrée dans le virage le plus rapidement possible**
 * Dans cette session, on ne doit plus être en train de freiner quand on passe sur l'angle. Les doigts ne sont donc plus sur le levier de frein après le PMSA.
-* On ne veut pas faire du [Trail Braking] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/) c'est-à-dire de finir de relâcher les freins alors qu'on est sur l'angle (Trail off = estomper)
+* On ne veut pas faire du [Trail Braking]({%link docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/freinage_sur_langle_trail_breaking.md%}) c'est-à-dire de finir de relâcher les freins alors qu'on est sur l'angle (Trail off = estomper)
 * Attention à ne pas avoir une vitesse d'entrée **trop faible**. Cela arrive entre autres si la mise sur l'angle est trop lente.
 
 
@@ -97,13 +97,13 @@ On **an-ti-ci-pe** et on se positionne sur la moto très longtemps avant le proc
 * Reculé sur la selle (un poing entre le réservoir et nous)
 * **Une** fesse sortie, buste et épaules décalées mais pas trop
     * Hang off early and **NOT** too far
-    * Typiquement, en ligne droite, alors qu'on est 100% gaz, **en butée** et penché en avant on a sorti une fesse et on a la raie des fesses sur le bord de la selle. 
+    * Typiquement, en ligne droite, alors qu'on est 100% gaz, **en butée** et penché en avant on a sorti une fesse et on a la raie des fesses sur le bord de la selle.
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
 </div>
 
-**Màj 17 03 23 :**  
+**Màj 17 03 23 :**
 En ce qui me concerne je pense qu'il faut que j'ai "l'intention" de sortir 2 fesses pour qu'au final il y en est une de sortie...
 
 Voir ci-dessous la vidéo dont est extraite la photo :
@@ -116,13 +116,13 @@ Voir ci-dessous la vidéo dont est extraite la photo :
 
 * Pointe du pied intérieur sur le bout du repose-pied afin de pouvoir, plus tard, ouvrir le genou
     * Le pied intérieur est très mobile. Tout se passe comme si au bout du cale-pied il y avait une rotule.
-    * Pied extérieur à plat, calé au talon (personnellement je n'y arrive pas. La partie la plus large de mon pied reste en place. Comme je ne suis pas grand, je peux pousser sur la point du pied afin de bien ajuster la hauteur du genou "dans" le réservoir)
+    * Pied extérieur à plat, calé au talon (personnellement je n'y arrive pas. La partie la plus large de mon pied reste en place. Comme je ne suis pas grand, je peux pousser sur la pointe du pied afin de bien ajuster la hauteur du genou "dans" le réservoir)
     * Jambes collées au réservoir pour s'y "accrocher" (Hooked In)
         * Oui, oui c'est bizarre car on a une fesse dehors avec les jambes serrées, pour l'instant on est tordu MAIS…
         * Dès qu'on va ouvrir la jambe intérieure on sera quasiment en position finale pour le virage.
-        * À ce propos... Il faut penser à régulièrement vérifier qu'on sent bien les cuisses serrées sur le réservoir. Il ne faut pas hésiter à coller des grips sur ce dernier. Ça évite vraiment de glisser vers l'avant lors des freinages appuyés. Ca aide à garder la majorité du poids du pilote vers l'arrière de la moto. Bref, que des avantages.
+        * À ce propos... Il faut penser à régulièrement vérifier qu'on sent bien les cuisses serrées sur le réservoir. Il ne faut pas hésiter à coller des grips sur ce dernier. Ça évite vraiment de glisser vers l'avant lors des freinages appuyés. Ça aide à garder la majorité du poids du pilote vers l'arrière de la moto. Bref, que des avantages.
 
-Ci-dessous, au bout de la ligne droite il y a un virage à gauche. On voit bien sur l'image de droite que le pilote est de travers, "tordu".  
+Ci-dessous, au bout de la ligne droite il y a un virage à gauche. On voit bien sur l'image de droite que le pilote est de travers, "tordu".
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="900" loading="lazy"/>
@@ -135,7 +135,7 @@ La vidéo dont est extraite la photo :
 </div>
 
 
-Heu... Si tu sors d'un gauche, que tu enquilles un petit bout de ligne droite pour attaquer un autre gauche... On est d'accord. On an-ti-ci-pe et on **réfléchit**. Donc c'est même pas la peine de remettre tes 2 fesses sur la selle. Tu gardes la fesse gauche dehors pendant toute la ligne droite. Encore une fois, moins on perturbe la moto mieux c'est. Donc moins tu déplace tes 80 kg (faut pas oublier la combine, les bottes, le casque...) sur une moto qui pèse 200 kg mieux c'est. En plus tu gagnes du temps et tu t'économise physiquement. Que demande le peuple...
+Heu... Si tu sors d'un gauche, que tu enquilles un petit bout de ligne droite pour attaquer un autre gauche... On est d'accord. On an-ti-ci-pe et on **réfléchit**. Donc, c'est même pas la peine de remettre tes 2 fesses sur la selle. Tu gardes la fesse gauche dehors pendant toute la ligne droite. Encore une fois, moins on perturbe la moto mieux c'est. Donc moins tu déplace tes 80 kg (faut pas oublier la combine, les bottes, le casque...) sur une moto qui pèse 200 kg mieux c'est. En plus tu gagnes du temps et tu t'économise physiquement. Que demande le peuple...
 
 
 On laisse un doigt sur l'embrayage pendant tout le freinage (je ne suis pas sûr de le faire. Faut que je prenne le temps de vérifier)
@@ -155,11 +155,11 @@ On laisse un doigt sur l'embrayage pendant tout le freinage (je ne suis pas sûr
 ### Le freinage proprement dit
 On se redresse, on coupe les gaz et on commence à freiner en même temps (oui, oui il y a **3 choses à faire** en même temps).
 
-En règle générale, sur piste, il faut supprimer les moments où on ne freine pas et où on n'accélère pas non plus. On cherche donc à minimiser, voire à supprimer les phases neutres. Autrement dit, soit on accélère, soit on freine. Attention, ça ne veut pas dire, on freine à fond ou on accélère à fond. Non, non, on n'est pas sur une PlayStation. Il y a des cas où on relâchera progressivement les freins et d'autres où on enroulera le cable d'accélérateur continûment. Cela dit, soit on freine, soit on accélère.
+En règle générale, sur piste, il faut supprimer les moments où on ne freine pas et où on n'accélère pas non plus. On cherche donc à minimiser, voire à **supprimer les phases neutres**. Autrement dit, soit on accélère, soit on freine. Attention, ça ne veut pas dire, on freine à fond ou on accélère à fond. Non, non, on n'est pas sur une PlayStation. Il y a des cas où on relâchera progressivement les freins et d'autres où on enroulera le cable d'accélérateur continûment. Cela dit, soit on freine, soit on accélère.
 
 La raison pour laquelle il faut faire les trois choses en même temps est purement physique, mécanique. En effet, si on coupe les gaz mais qu'on ne freine pas tout de suite, la fourche va s'enfoncer grâce au transfert de masse qui va s'opérer lorsqu'on va couper les gaz. Ensuite, si on ne freine pas, elle va remonter (la fourche s'équilibre). Puis on va freiner, elle va alors replonger etc. Ce n'est pas bon du tout pour la stabilité ni le grip du pneu avant.
 
-Idéalement, sur un 1000, moto qui a beaucoup d'inertie, il faut aussi rentrer les rapports au moment même où on coupe les gaz. Cela fait donc **4 choses à faire** en même temps. En tout cas, il faut descendre les rapports beaucoup plus tôt que ce que l'on fait d'habitude sur route. Ici l'idée c'est de bénéficier au maximum du frein moteur et ce, qu'on soit en 1000, 600 etc. Il n'est pas efficace d'attendre d'être à 50% ou à 75% de la distance de freinage pour commencer à taper comme un sourd sur notre sélecteur (en plus il ne nous a rien fait, il n'a pas mérité un tel traitement...). Au contraire, l'idée c'est de rentrer les vitesses très tôt, de garder le moteur haut dans les tours et de bénéficier alors d'un vrai frein moteur. 
+Idéalement, sur un 1000, moto qui a beaucoup d'inertie, il faut aussi rentrer les rapports au moment même où on coupe les gaz. Cela fait donc **4 choses à faire** en même temps. En tout cas, il faut descendre les rapports beaucoup plus tôt que ce que l'on fait d'habitude sur route. Ici l'idée c'est de bénéficier au maximum du frein moteur et ce, qu'on soit en 1000, 600 etc. Il n'est pas efficace d'attendre d'être à 50% ou à 75% de la distance de freinage pour commencer à taper comme un sourd sur notre sélecteur (en plus il ne nous a rien fait, il n'a pas mérité un tel traitement...). Au contraire, l'idée c'est de rentrer les vitesses très tôt, de garder, sans aller au rupteur, le moteur haut dans les tours et de bénéficier alors d'un vrai frein moteur.
 
 Plus d'explications dans la vidéo ci-dessous :
 
@@ -261,7 +261,7 @@ On freine rapidement car 1 sec c'est 50m à 200 km/h, 25m à 100 km/h (en fait c
 En étant "progressif", on évite de :
 * Compresser complètement la fourche
 * De perdre la suspension (si la fourche est en butée il n'y a plus de suspension)
-* De ne plus avoir que le pneu pour faire amortisseur 
+* De ne plus avoir que le pneu pour faire amortisseur
 * D'avoir la roue qui rebondit car elle ne peut rien faire d'autre
 * De bloquer la roue quand elle est en l'air car la roue seule a très peu d'inertie et qu'à ce moment les freins la stoppent très facilement
 * De reposer l'avant avec la roue bloquée
@@ -292,7 +292,7 @@ La raison pour laquelle une fois appliquée on ne change plus la pression exerc�
 
 Ce que j'ai beaucoup de mal à faire c'est de freiner plus tôt, de baisser l'intensité du freinage et de la garder constante. Par exemple, je n'arrive pas à freiner deux fois moins fort mais à rester constant. En plus avec le rétrogradage, je sens bien le nez de la moto qui pique. C'est vraiment un truc sur lequel il faut que je revienne.
 
-**Note** 
+**Note**
 Le problème précédent a été résolu quand je suis passé du ZX6R au RSV4 qui dispose de down-shifter qui donne le petit coup d'accélérateur pour le "pilote".
 
 C'est d'autant plus vrai qu'en freinant très fort (à mon niveau s'entend), au dernier moment, je suis à mes limites mais surtout mes freinages ne sont pas du tout homogènes. Un coup ma mise sur l'angle se fait trop tard, le tour d'après je suis trop lent en entrée de virage... Donc un même virage ne se passe jamais de la même façon, j'ai du mal à l'anticiper, je perds en sérénité etc. Bref, c'est pour toutes ces bonnes raisons qu'il est très important de s’entraîner et à acquérir **une pression de freinage constante**.
@@ -311,7 +311,7 @@ Ensuite, au fil des tours, on rapprochera la marque de freinage du point de mise
 
 Pendant le freinage, alors qu'on est en ligne droite, moto verticale, le visage se tourne vers le point de corde (voir la note de Pilotage 03 [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}))
 
-On freine très fort mais progressivement et de manière contrôlée comme si on pressait une balle en mousse. Si, dans ses conditions, on va au bout de la suspension, il faut revoir les réglages de cette dernière. En effet, si on pousse la fourche en dehors de son domaine de fonctionnement, elle ne va plus être capable d'amortir quoi que ce soit, la moto va rebondir, la roue avant se bloquer etc. (voir ce qu'on a dit un peu avant). 
+On freine très fort mais progressivement et de manière contrôlée comme si on pressait une balle en mousse. Si, dans ses conditions, on va au bout de la suspension, il faut revoir les réglages de cette dernière. En effet, si on pousse la fourche en dehors de son domaine de fonctionnement, elle ne va plus être capable d'amortir quoi que ce soit, la moto va rebondir, la roue avant se bloquer etc. (voir ce qu'on a dit un peu avant).
 
 Pour tester l'amplitude du débattement de la suspension on peut mettre un Rilsan sur un des tubes de fourche (calé en haut sur fourche inversée). Avant de partir en session il faut le remonter au maximum. À la fin de session il suffit de voir l'écart qui reste entre le Rislan et le bas de la fourche.
 
@@ -319,7 +319,8 @@ Pour tester l'amplitude du débattement de la suspension on peut mettre un Rils
 <img src="./assets/img12.webp" alt="" loading="lazy"/>
 </div>
 
-Pour avoir une idée du comportement de la suspension, on peut aussi [interpréter l'état des pneus] NOT YET TRANSFERED (https://www.40tude.fr/lecture-des-pneus-pression-et-suspensions/) comme joe l'indien les traces des bisons.
+Pour avoir une idée du comportement de la suspension, on peut aussi [interpréter l'état des pneus]({%link docs/07_moto/006_lecture_des_pneus/lecture_des_pneus.md%}) comme joe l'indien les traces des bisons.
+
 
 
 
@@ -328,7 +329,7 @@ Pour avoir une idée du comportement de la suspension, on peut aussi [interprét
   + On relâche **dou-ce-ment** l'embrayage. C'est important.
   + Si c'est le "bronx" au niveau de la roue arrière, comme on a un doigt sur l'embrayage, il "suffit" (yaka faukon) de tirer un peu dessus pour que tout rentre dans l'ordre. Cela dit, on perd alors le frein moteur (on a désolidarisé la roue arrière du vilebrequin) et donc on ne reste pas 3 heures avec les doigts sur le levier. Un dernier truc... Pas besoin de ramener le levier d'embrayage jusqu'à la poignée. Généralement on parle d'une course de quelques millimètres (un peu comme quand on fait cirer l'embrayage au démarrage). Si on tire le levier à un doigt, ce dernier n'a pas besoin de toucher les doigts qui sont sur la poignée. On tire vraiment de quelques millimètres.
 
-**Maj 17 03 23**   
+**Maj 17 03 23**
 Plateau. On garde une pression constante. Pas la peine de se mettre dans le rouge, au taquet ou en mode panique. Dans cette phase, le plus important ce n'est pas l'intensité (5 bars, 10 bars de pression) mais la constance (pas de variations autour de la pression de levier). J'aimerai vraiment installer un système d'acquisition de données afin de mesurer ce qui se passe dans mes plateaux. Je pense que ce serait peut-être démoralisant mais très instructif 😊 (on ne fait progresser que ce que l'on mesure)
 
 
@@ -386,8 +387,8 @@ Une fois qu'on est sur l'angle on ne change plus notre position sur la moto. Cel
 <!-- ###################################################################### -->
 ## À la fin de la session
 
-* Pas la peine de freiner tard et comme une brute. 
-    * Ce qui compte c'est la vitesse de sortie de virage, **PAS** la vitesse d'entrée. 
+* Pas la peine de freiner tard et comme une brute.
+    * Ce qui compte c'est la vitesse de sortie de virage, **PAS** la vitesse d'entrée.
     * Il vaut donc mieux rentrer plus lentement, assurer son point de corde et sortir comme une balle plutôt que de rentrer roue arrière levée et sortir en sous régime, hors de la trajectoire idéale et à la ramasse totale.
 * Bien sentir les 3 phases lors du freinage
     * Montée rapide à 100% (ce qui est différent de sauter sur les freins comme un requin sur une Australienne)

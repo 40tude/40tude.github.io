@@ -4,7 +4,7 @@ title: "Décomposition des virages"
 parent: "Notes de Pilotage Moto"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2023-04-27 17:10:45
+last_modified_date: 2026-04-23 18:38:25
 ---
 
 # Décomposition des virages
@@ -16,7 +16,7 @@ last_modified_date: 2023-04-27 17:10:45
 {:toc}
 
 
-J'essaie de courir régulièrement et mon parcours est un peu toujours le même. Là, je sais que le trottoir est vraiment incliné, ici y a une chaîne entre des plots etc. Je sais où je vais, j'ai mes points de repère et je peux quasiment dire si je suis en avance ou en retard sans regarder ma montre.... Le fait de savoir comment ça va se passer me permet d'anticiper, d'être plus à l'aise et de me concentrer sur l'essentiel. 
+J'essaie de courir régulièrement et mon parcours est un peu toujours le même. Là, je sais que le trottoir est vraiment incliné, ici y a une chaîne entre des plots etc. Je sais où je vais, j'ai mes points de repère et je peux quasiment dire si je suis en avance ou en retard sans regarder ma montre.... Le fait de savoir comment ça va se passer me permet d'anticiper, d'être plus à l'aise et de me concentrer sur l'essentiel.
 
 La décomposition des virages se propose de faire la même chose. C'est un outil qui va nous permettre d'anticiper, de savoir comment ça va se passer, de libérer notre esprit et d'être plus régulier tour après tour.
 
@@ -31,8 +31,8 @@ La décomposition des virages se propose de faire la même chose. C'est un outil
 ## Objectif de la session
 
 La décomposition des virages c'est apprendre à porter son regard
-1. Sur le point de corde **AVANT** le point de mise sur l'angle (PMSA)
-1. Sur le point de sortie **AVANT** d'être passé par le point de corde (PC, apex)
+1. Sur le point de corde **AVANT** que la moto n'arrive sur le point de mise sur l'angle (PMSA)
+1. Sur le point de sortie **AVANT** que la moto n'arrive sur le point de corde (PC, apex)
 
 Le virage est ainsi découpé en 3 étapes :
 1. Avant le PMSA
@@ -51,7 +51,7 @@ Le virage est ainsi découpé en 3 étapes :
     * Nous ici on passe directement à 3 steps parce qu'on est trop fort ✊
 
 {: .note }
-**ATOTW II** c'est **LE** bouquin [A Twist Of The Wrist](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=A+twist+of+the+Wrist&qid=1567893832&s=gateway&sr=8-3). Le livre commence à être un peu vieux mais fondamentalement tout y est.  
+**ATOTW II** c'est **LE** bouquin [A Twist Of The Wrist](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=A+twist+of+the+Wrist&qid=1567893832&s=gateway&sr=8-3). Le livre commence à être un peu vieux mais fondamentalement tout y est.
 Il y a aussi une vidéo... Franchement elle, elle date carrément et franchement le jeu des acteurs n'est pas au top. Mais bon, elle reprend tout le contenu du bouquin. Elle dure une heure quand elle est d'un seul tenant mais ça vaut le coup. J'arrête de mettre un lien dans cette page car la vidéo est régulièrement supprimée de YouTube. Le mieux c'est encore d'aller sur YouTube et de faire une recherche sur "[a twist of the wrist](https://www.youtube.com/results?search_query=a+twist+of+the+wrist)".
 
 
@@ -102,12 +102,12 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 Avant même l'entrée de virage :
 * T1 : le premier temps de la décomposition des virages consiste à localiser le point de mise sur l'angle.
-Point de mise sur l'angle = **PMSA** (turn-point).  
+Point de mise sur l'angle = **PMSA** (turn-point).
 Cela se fait le plus tôt possible. Cela dit, à notre niveau, cela peut se faire avant ou pendant le freinage… Plus tard, la localisation du PMSA se fera systématiquement bien **AVANT** le freinage.
 * T2 : localisation du point de corde (**PC**, apex)
 Cela doit être fait pendant le freinage, **AVANT** d'arriver au PMSA.
 L'apex peut se situer au milieu du virage mais plus généralement au 3/4 du virage. En règle générale, plus un virage est serré et plus le point de corde est retardé.
-* T3 : localisation du point de sortie (**PS**) **AVANT** d'arriver sur l'apex.  
+* T3 : localisation du point de sortie (**PS**) **AVANT** d'arriver sur l'apex.
 **AVANT** de faire passer les pneus sur le point de corde, avec le regard, on accroche le point de sortie PS et on ne le lâche plus.
 
 Il faut donc **an-ti-ci-per** et accrocher du regard :
@@ -162,7 +162,7 @@ L'anticipation permet d'être plus à l'aise et plus serein.
 ## À la fin de la session
 
 Il faut vraiment être conscient des différentes phases qui composent les virages :
-* Instant où on localise le point de mise sur l'angle 
+* Instant où on localise le point de mise sur l'angle
 * Instant où on localise le point de corde
 * Sentir qu'on se dirige vers le point de mise sur l'angle alors qu'on regarde le point de corde
 * On passe sur l'angle en fixant le point de corde
@@ -206,12 +206,12 @@ Dans un virage il faut joindre PMSA (point de mise sur l'angle), PV (point de pi
 
 J'exagère mais si on remonte le circuit, tout se passe comme si on tirait une droite de PS à PC jusqu'à PV.
 
-* Quand on arrive sur un virage, il ne faut pas plonger trop tôt à la corde afin de ne pas y être coincé pendant 3 heures... 
-    * Si c'est pas clair, imagine que tu es à la corde à l'entrée d'un grand virage qui est un demi-cercle. À partir de quand tu vas pouvoir accélérer? J'exagère à peine mais comme il va falloir attendre que tes roues indiquent la bonne direction tu ne pourras accélérer qu'à la toute fin du demi-cercle (ou presque).  
-    Comme en plus ta trajectoire suit un cercle de faible rayon ta vitesse est faible (double peine).  
-    Donc tu va passer 3H dans le virage et accélérer très tard.  
+* Quand on arrive sur un virage, il ne faut pas plonger trop tôt à la corde afin de ne pas y être coincé pendant 3 heures...
+    * Si c'est pas clair, imagine que tu es à la corde à l'entrée d'un grand virage qui est un demi-cercle. À partir de quand tu vas pouvoir accélérer? J'exagère à peine mais comme il va falloir attendre que tes roues indiquent la bonne direction tu ne pourras accélérer qu'à la toute fin du demi-cercle (ou presque).
+    Comme en plus ta trajectoire suit un cercle de faible rayon ta vitesse est faible (double peine).
+    Donc tu va passer 3H dans le virage et accélérer très tard.
     Bref, t'es mort.
-    * Regarde ci-dessous. En 1 et 2 si tu accélères tu sors dans les graviers. Il faut attendre d'être en 3 (ou un peu avant) pour pouvoir accélérer. 
+    * Regarde ci-dessous. En 1 et 2 si tu accélères tu sors dans les graviers. Il faut attendre d'être en 3 (ou un peu avant) pour pouvoir accélérer.
 
 <div align="center">
 <img src="./assets/img_105.webp" alt="" width="450" loading="lazy"/>
@@ -224,8 +224,8 @@ J'exagère mais si on remonte le circuit, tout se passe comme si on tirait une d
 * Le point de corde **ce n'est pas** un point qui se trouve au même niveau que le cône, à un mètre sur le goudron de piste. Nan, nan... Il faut vraiment que les **pneus** (pas le genou ou la tête, les pneus) passent sur les premiers millimètres de goudron à la verticale du cône.
     * Le corps est donc au-dessus du cône, du vibreur ou de l'herbe.
     * Ce qui compte c'est la position des pneus vis à vis du point de corde et pas la position du casque ou des sliders.
-    * Comme on est à 75% de nos capacités il faut vraiment en profiter pour faire passer les pneus à un millimètre à la verticale du point de corde. 
-    
+    * Comme on est à 75% de nos capacités il faut vraiment en profiter pour faire passer les pneus à un millimètre à la verticale du point de corde.
+
 Perso j'ai tendance à vouloir aller trop vite, trop rapidement. Je ne prends pas le temps d'assurer mes points de corde à "basse vitesse" puis à passer de plus en plus vite au fil des tours. C'est complètement idiot de ma part.
 
 **Un exemple**
@@ -252,7 +252,7 @@ Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien d
 
 C'est quoi l'objectif? On veut passer **sur** PC (le point de corde) en ayant les roues dans la direction de PS (le point de sortie). Dans le superbe crobar ci-dessous, tu arrives de la gauche et tu vas sortir par la droite (normalement).
 
-Bon, ben vas-y, trace une droite qui va de PS à PC (voir les pointillés). Oui, oui je confirme on "remonte" le circuit. La droite "dépasse PC et s'enfonce dans le virage. 
+Bon, ben vas-y, trace une droite qui va de PS à PC (voir les pointillés). Oui, oui je confirme on "remonte" le circuit. La droite "dépasse PC et s'enfonce dans le virage.
 
 Imagine... Imagine la situation théorique suivante. Là où la droite coupe l'extérieur du virage (un peu au-dessus du 1). Tu es à l'arrêt, tu oriente les roues de ton dragster (j'ai dis que c'était théorique, je fais ce que je veux...) selon la direction de la droite. C'est bon? Allez, 100% gaz...
 
@@ -264,9 +264,9 @@ Qu'est-ce qui va se passer? Rien. Tu vas sortir comme une balle du virage. Aucun
 
 Il va donc falloir trouver un compromis entre "je roule collé à la corde" et "je pars du bord de la piste dans la bonne direction". Ce compromis c'est le point de pivot (PV ci-dessus).
 
-On reprend... 
+On reprend...
 * Tu as terminé le freinage au PMSA et tu vise le PC avec ton menton
-* Tu es gaz coupé et tes doigts ne touchent plus le levier de frein. 
+* Tu es gaz coupé et tes doigts ne touchent plus le levier de frein.
 * Tu ne plonges **PAS** à la corde
 * Au contraire, tu restes large, tu as peu d'angle et tu "t'enfonces" dans le virage
 * "Quand tu le sens" (tu es sur PV), tu fais pivoter très rapidement la moto en poussant fort sur le bracelet intérieur
@@ -276,7 +276,7 @@ On reprend...
 * Tu commences à accélérer tout de suite après PV (pas en 2 mais en 3). Tu appliques la **Throttle Rule**. Il ne peut rien arriver car tes roues sont dans la bonne direction. Tu vas juste aller de plus en plus vite entre PV, PC et PS. Rien de plus. Plus la moto se relève plus tu enroule le câble d'accélérateur.
 * N'hésites pas à tirer sur le bracelet intérieur pour aider la moto à se relever plus vite.
 
-Si on compare avec le pilote qui reste collé à la corde: 
+Si on compare avec le pilote qui reste collé à la corde:
 * Qui des deux a accéléré le premier ?
 * Qui des deux va avoir l'accélération la plus longue?
 * Qui va avoir la vitesse la plus élevée au PC?
@@ -299,7 +299,7 @@ T'as compris le truc.
 
 Un truc qui peut aider au début c'est de river ses yeux et son menton sur le point de corde. Notre menton et nos yeux vont changer de cible au fur et à mesure de notre avancement dans le virage mais ici l'idée c'est de s'entrainer en exagérant à faire abstraction du reste de la scene et d'être "focus" sur le point de corde.
 
-J'arrive au virage, je chope le cône du PC du regard et du menton. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas. 
+J'arrive au virage, je chope le cône du PC du regard et du menton. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas.
 
 Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approche du cône. Il ne faut pas regarder l'entrée du virage dans son ensemble. Faut être "laser focus" sur le cône (pense aux lasers des yeux de superman).
 
@@ -319,9 +319,9 @@ Prenons le cas où je suis trop tôt à la corde. Au prochain tour je ne change 
 Si on est d'accord avec le point précédent, si je suis constamment trop loin du cône du PC on va faire le contraire. Au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
 
 
-Mais bon, faut pas se bercer d'illusions, nous sommes trop lents à la mise sur l'angle et surtout au PV. 
+Mais bon, faut pas se bercer d'illusions, nous sommes trop lents à la mise sur l'angle et surtout au PV.
 
-Je crois qu'on hésite car on se dit qu'on va être tellement rapide que l'avant ne va pas suivre et qu'on va le perdre. À notre niveau c'est très improbable. Oui on va perdre l'avant car on a repris les freins mais là... On ne freine plus, on accélère pas encore. Le pneu avant est bien ancré, le pilote n'applique aucune action parasite sur la moto. Aucune chance que ça parte en vrille cette histoire. 
+Je crois qu'on hésite car on se dit qu'on va être tellement rapide que l'avant ne va pas suivre et qu'on va le perdre. À notre niveau c'est très improbable. Oui on va perdre l'avant car on a repris les freins mais là... On ne freine plus, on accélère pas encore. Le pneu avant est bien ancré, le pilote n'applique aucune action parasite sur la moto. Aucune chance que ça parte en vrille cette histoire.
 
 Une solution c'est de faire du gymkhana entre des cônes. C'est un exercice qu'on fait en stage.
 
@@ -489,7 +489,7 @@ Allez, une autre vidéo sur le sujet. J'aime bien la démo à **1:11** ainsi que
 
 
 
-### Confirmer qu'on a la bonne trajectoire dans le virage 
+### Confirmer qu'on a la bonne trajectoire dans le virage
 
 * Si on suppose qu'on rentre gaz coupés et freins relâchés dans la courbe
 * C'est la ligne où on accélère constamment à partir du moment où on commence à accélérer. C'est la **Throttle Rule**. Le mieux, c'est de la relire, de la relire encore, de la relire toujours...
@@ -498,7 +498,7 @@ Allez, une autre vidéo sur le sujet. J'aime bien la démo à **1:11** ainsi que
   + Prenons un cas extrême pour fixer les idées. Si on commençait à accélérer à la toute fin de la courbe, notre virage se terminerait "officiellement" au milieu de la ligne droite qui suit le virage en question.
   + Pour un autre pilote qui accélérerait au tout début de la courbe (c'est un exemple théorique), la fin "officielle" de son virage se situerait peut-être juste après le point de sortie (PS) ou plus vraisemblablement au SAMU local.
 * En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule**. Relire si besoin la [seconde]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}) Note de Pilotage Moto
-* À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde (oui, oui bien sûr ça dépend du vriage). Avec la **Throttle Rule**, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde (juste après PV). Ouvrir les gaz, permet de répartir la charge de manière idéale entre l'avant (40%) et l'arrière (60%). Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque. 
+* À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde (oui, oui bien sûr ça dépend du vriage). Avec la **Throttle Rule**, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde (juste après PV). Ouvrir les gaz, permet de répartir la charge de manière idéale entre l'avant (40%) et l'arrière (60%). Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque.
 
 Mouai... Ben moi j'ai beau le savoir et l'expliquer, je n'arrive toujours pas à le faire comme je voudrais.
 
@@ -518,7 +518,7 @@ Un calcul rapide montre que :
 * Avec 10 km/h de différence en sortie de virage
 * En accélérant à 0,43 G (4.2 m/s²)
 * On gagne 0.5 sec
-* En bout de ligne droite, à 200 km/h ça représente 25m d'écart, soit 12 motos les unes derrière les autres. Pas mal...
+* En bout de ligne droite, à 200 km/h ça représente 25m d'écart, soit **12 motos** les unes derrière les autres. Pas mal...
 
 Dans le tableau ci-dessous, on a 0.43 G (4.2 m/s²) d'accélération alors qu'on part à 103 km/h (à gauche) et 90 km/h (à droite). Au bout de 8.32 sec, à gauche, on a fait 400m. A droite, pour faire 400 m il faut attendre 8,79 sec. Y a donc 0.5 sec d'écart.
 

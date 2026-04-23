@@ -4,7 +4,7 @@ title: "Découverte de la piste 2"
 parent: "Notes de Pilotage Moto"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2023-09-09 00:08:32
+last_modified_date: 2026-04-23 18:38:25
 ---
 
 # Découverte de la piste 2
@@ -213,7 +213,7 @@ Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
 ### Progressif on te dit
 
-Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-01-decouverte-de-la-piste/). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
+Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule](#la-throttle-rule). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
 
 <!-- https://youtu.be/rPlp_SvbLLE?t=160 -->
 
@@ -225,7 +225,7 @@ Dans l'image ci-dessus, profites-en pour noter la différence de distance entre 
 
 Bref... À ce stade, la décomposition des virages nous permet de passer sereinement et régulièrement au point de corde en ayant la sortie en point de mire.
 
-Plus tard (note de [Pilotage N°09] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/), Freinage sur l'angle & Trail Braking) il n'y aura presque plus de temps mort entre la fin du freinage et le début de l'accélération (en fait on terminera le freinage sur l'angle, bien après le PMSA)
+Plus tard [Note de Pilotage N°10]({%link docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/freinage_sur_langle_trail_breaking.md%}) il n'y aura presque plus de temps mort entre la fin du freinage et le début de l'accélération (en fait on terminera le freinage sur l'angle, bien après le PMSA)
 
 
 

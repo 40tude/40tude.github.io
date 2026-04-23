@@ -4,7 +4,7 @@ title: "Introduction aux Notes de Pilotage Moto"
 parent: "Notes de Pilotage Moto"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2025-06-22 16:00:00 +0000
+last_modified_date: 2026-04-23 18:38:25
 ---
 
 <div align="center">
@@ -21,7 +21,7 @@ Les choses ont évolué depuis la première mise en ligne des Notes de Pilotage 
 * Le billet a été écrit après les Notes de Pilotage Moto
 * Il est moins complet que les Notes de Pilotage Moto, moins exhaustif, moins technique. Cependant, il y a déjà beaucoup de choses (encore un peu trop à mon goût) et il est très **laaaaargement** suffisant.
 
-Une fois que votre première journée c'est bien déroulé et si vous avez trouvé utile les conseils et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails et revoir certains points.
+Une fois que votre première journée c'est bien déroulé et si vous avez trouvé utile les conseils, le ton et l'approche de l'article, alors, et uniquement alors je vous propose de revenir ici afin de rentrer dans les détails et de revoir certains points.
 
 
 
@@ -45,13 +45,12 @@ Comme son nom l'indique, la section **Basics** s'intéresse aux fondamentaux. C'
 5. **[Conduite du virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%})** : On assemble les briques élémentaires précédentes pour construire une base solide sur laquelle on va pouvoir s'appuyer avant de passer à la section Advanced.
 
 ### Advanced
-6. **Hook Turns** : NOT YET TRANSFERED - On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner...
+6. **[Hook Turns]({%link docs/07_moto/001_notes_pilotage/006_hook_turns/hook_turns.md%})** : On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner...
 En gros, on verrouille le bas du corps "dans" la moto alors que le buste est très mobile. Ensuite on cherche à déplacer le centre de gravité de l'ensemble moto-pilote encore plus vers l'**intérieur du virage**. On en parle que maintenant car il faut que pas mal de choses soient déjà en place avant de s'attaquer à ce sujet.
-7. **Contre braquage en sortie de virage** : NOT YET TRANSFERED - En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
-8. **Knee to knee** : NOT YET TRANSFERED - On ajoute un outil à notre panoplie qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
-9. **Pif-paf** : NOT YET TRANSFERED - Je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
-10. **Freinage sur l’angle (Trail Braking)** : NOT YET TRANSFERED - Si je veux favoriser ma vitesse en ligne droite, je dois garder les gaz ouverts à 100% le plus longtemps possible. Cela veut donc dire que je dois réduire de plus en plus ma distance de freinage. Mouai... Mais bon, à un moment, ce n'est plus tenable si on veut toujours continuer à freiner avec la moto droite. Je suis donc amené, logiquement, à terminer mon freinage sur l'angle... On fait le point ici.
-11. **Short shift** : NOT YET TRANSFERED - C'est l'art de passer au rapport supérieur bien avant d'être au régime moteur optimum. Pourquoi, comment... Un pro (un vrai, pas moi 😂) nous explique tout ça, en français, dans le texte.
+7. **[Contre braquage en sortie de virage]({%link docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md%}#ANCHOR)** : En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
+8. **[Knee to knee]({%link docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md%})** : On ajoute à notre boîte à outils un outil à qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
+9. **[Pif-paf]({%link docs/07_moto/001_notes_pilotage/009_pif_paf/pif_paf.md%})** : Je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
+10. **[Freinage sur l’angle (Trail Braking)]({%link docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/freinage_sur_langle_trail_breaking.md%})** : Si je veux favoriser ma vitesse en ligne droite, je dois garder les gaz ouverts à 100% le plus longtemps possible. Cela veut donc dire que je dois réduire de plus en plus ma distance de freinage. Mouai... Mais bon, à un moment, ce n'est plus tenable si on veut toujours continuer à freiner avec la moto droite. Je suis donc amené, logiquement, à terminer mon freinage sur l'angle... On fait le point ici.
 
 ### Compléments
 12. **[Conseils de pro]({%link docs/07_moto/001_notes_pilotage/012_conseils_de_pros/conseils_de_pros.md%})** : Ce sont en effet des conseils de vrais pros pour lesquels il y a des références etc. À lire, à relire et à inscrire dans sa [feuille de session]({%link docs/07_moto/002_feuille_sessions/feuille_sessions.md%}) comme exercices à faire par exemple.
@@ -98,6 +97,7 @@ En revanche si un point n'est pas clair ou pas suffisamment expliqué, lâchez-v
 
 Par exemple, n'hésitez pas à conseiller telle ou telle vidéo sur YouTube qui illustre bien le point abordé dans la Note.
 
+Pour les commentaires, ça se passe par [ici](https://github.com/40tude/40tude.github.io/discussions)
 
 
 

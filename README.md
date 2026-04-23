@@ -46,8 +46,7 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 
 
 ### Caracteres speciaux et tirets
-* C cedille majuscule = ALT + 128 (du pave numerique)
-* em dash — = ALT + 0150
+* C cedille majuscule = ALT + 128 (du pave numérique)
 
 ```json
 "em dash": {
@@ -59,7 +58,7 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 
 * `-` hyphen
 * `–` en dash (tiret demi-cadratin)
-* `—` em dash (tiret cadratin) : inserer une remarque parenthetique, plus expressif que la virgule
+* `—` em dash (tiret cadratin) : inserer une remarque parenthetique, plus expressif que la virgule - ALT + 0150
 
 Supprimer les espaces vides en fin de ligne : `[ \t]+$`
 (Voir aussi settings.json : `"files.trimTrailingWhitespace": true`)
@@ -248,7 +247,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-04-10 18:12:10
+last_modified_date: 2026-04-23 18:38:25
 ---
 ```
 
@@ -266,7 +265,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-04-10 18:12:10
+last_modified_date: 2026-04-23 18:38:25
 ```
 
 Image OG ideale : PNG 1200px x 630px
