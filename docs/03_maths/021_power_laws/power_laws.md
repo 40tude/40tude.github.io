@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 10:46:18
+last_modified_date: 2026-04-23 10:46:36
 ---
 
 
@@ -28,7 +28,7 @@ last_modified_date: 2026-04-23 10:46:18
 
 
 
-<h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2>
+<!-- <h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2> -->
 
 
 
