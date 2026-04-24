@@ -3,10 +3,10 @@ layout: default
 title: "Première journée sur circuit : le planning session par session à imprimer et garder en poche"
 description: "Six sessions, un objectif par session, une feuille A4. Tout ce qu'il faut pour tirer le meilleur de ta première journée de roulage sans se noyer dans la théorie."
 parent: "Motos"
-nav_order: 2
+nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-04-18 08:29:08
+last_modified_date: 2026-04-24 12:01:27
 ---
 
 

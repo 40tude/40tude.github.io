@@ -6,10 +6,10 @@ layout: default
 title: "First track day: the session-by-session schedule to print and keep in your pocket"
 description: "Six sessions, one goal per session, one sheet of paper. Everything you need to get the most out of your first track day without drowning in theory."
 parent: "Motos"
-nav_order: 2
+nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-24 10:53:41
+last_modified_date: 2026-04-24 12:01:27
 ---
 
 

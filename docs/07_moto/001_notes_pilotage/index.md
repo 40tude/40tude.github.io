@@ -8,9 +8,9 @@ description: "Introduction et présentation des chapitres des notes de pilotage 
 # twitter:
 #   card: summary_large_image
 parent: "Motos"
-nav_order: 3
+nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 12:01:27
 #last_modified_date: 2025-01-16 16:00:00 +0000
 permalink: /notes_pilotage_moto/
 ---

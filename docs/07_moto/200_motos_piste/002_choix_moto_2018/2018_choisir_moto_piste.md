@@ -2,10 +2,10 @@
 layout: default
 title: "2018 - Choisir sa moto pour la piste"
 parent: "Motos"
-nav_order: 3
+nav_order: 97
 #math: mathjax
 date: 2018-11-01 17:02:55
-last_modified_date: 2026-04-13 11:38:15
+last_modified_date: 2026-04-24 12:01:27
 ---
 
 # 2018 - Choisir sa moto pour la piste
