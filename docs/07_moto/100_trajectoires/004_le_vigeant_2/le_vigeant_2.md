@@ -3,12 +3,12 @@ layout: default
 title: "Trajectoires moto au Vigeant (2/3) — Du Pif-Paf au S du Sanglier"
 description: "Deuxième partie du tour de piste commenté : freinage de la grande ligne droite, chicane Pif-Paf, Le Buisson et enchaînement du S du Sanglier jusqu'à l'entrée du Trop Tard."
 
-parent: "Trajectoires"
+parent: "Trajectoires de quelques circuits"
 nav_order: 4
 
 #math: mathjax
 date: 2022-08-26 18:57:27
-last_modified_date: 2026-04-16 11:01:11
+last_modified_date: 2026-04-24 12:06:37
 ---
 
 # {{ page.title }}

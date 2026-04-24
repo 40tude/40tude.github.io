@@ -3,11 +3,11 @@ layout: default
 title: "Trajectoires moto au Vigeant (3/3) — Du Trop Tard à la ligne d'arrivée"
 description: "Dernier épisode du tour de piste : l'épingle du Trop Tard, le gauche de la Ferme, la seconde épingle et les doubles droits des stands pour boucler le tour."
 
-parent: "Trajectoires"
+parent: "Trajectoires de quelques circuits"
 nav_order: 5
 #math: mathjax
 date: 2022-10-15 14:29:19
-last_modified_date: 2026-04-16 12:21:15
+last_modified_date: 2026-04-24 12:06:37
 ---
 
 # {{ page.title }}

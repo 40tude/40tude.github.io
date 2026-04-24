@@ -2,11 +2,11 @@
 layout: default
 title: "Trajectoires moto au Vigeant (1/3) — De la ligne d'arrivée au Trop Vite"
 description: "Points de freinage, points de corde et repères visuels pour aborder la première zone du Val de Vienne : double droit d'entrée, gauche rapide et enchaînement du Trop Vite."
-parent: "Trajectoires"
+parent: "Trajectoires de quelques circuits"
 nav_order: 3
 #math: mathjax
 date: 2022-06-06 15:07:52
-last_modified_date: 2026-04-16 11:01:11
+last_modified_date: 2026-04-24 12:06:37
 ---
 
 
