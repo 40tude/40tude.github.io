@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 10:53:41
 ---
 
 # {{ page.title }}
@@ -134,6 +134,7 @@ Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n7LHAWWeSbHh5IqF&amp;start=1014&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
 
 Une série de podcasts disponibles sur YouTube qui est pas mal si vous parlez Anglais. En ce qui me concerne je les écoute sur téléphone avec l'application Podcast Addict. Je vous conseille de les suivre dans l'ordre de publication (du plus vieux au plus récent).
 

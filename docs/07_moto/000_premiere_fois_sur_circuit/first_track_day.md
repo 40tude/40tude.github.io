@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 2
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-18 11:16:02
+last_modified_date: 2026-04-24 10:53:41
 ---
 
 
@@ -26,10 +26,14 @@ last_modified_date: 2026-04-18 11:16:02
 </h2> -->
 
 
-<div align="center">
-<img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
-</div>
-
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/image-25.webp"
+    alt="My first track day with the MT07"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>My first track day with the MT07</figcaption>
+</figure>
 
 
 ## Introduction

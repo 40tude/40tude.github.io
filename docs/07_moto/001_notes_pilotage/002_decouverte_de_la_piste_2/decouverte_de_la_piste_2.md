@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 10:53:41
 ---
 
 # {{ page.title }}
@@ -149,9 +149,19 @@ Bien sûr on cherche mettre la poignée **en butée**.
 
 On en parle dans cette vidéo :
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CE_UaGJqH-E?si=W9VrsJk1hFqXJi5V&amp;start=1014" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/CE_UaGJqH-E?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -237,11 +247,20 @@ Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
 Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule](#la-throttle-rule). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
 
-<!-- https://youtu.be/rPlp_SvbLLE?t=160 -->
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rPlp_SvbLLE?si=-xr5LyTOBVrDiPAK&amp;start=160" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/rPlp_SvbLLE?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 Dans l'image ci-dessus, profites-en pour noter la différence de distance entre la bande blanche et les pneus.
 
@@ -269,7 +288,6 @@ Plus tard [Note de Pilotage N°10]({%link docs/07_moto/001_notes_pilotage/010_fr
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EJQaKf3txVg?si=_SHs0_X1wy9_4IL4&amp;start=184" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
-
 
 
 <!-- ###################################################################### -->

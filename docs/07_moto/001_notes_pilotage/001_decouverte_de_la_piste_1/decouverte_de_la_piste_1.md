@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 10:53:41
 ---
 
 
@@ -62,9 +62,19 @@ Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 
 
 * Est-ce que j'ai une feuille imprimée avec le tracé du circuit et mes notes manuscrites ? Typiquement ces notes manuscrites sont prises en regardant YouTube à 75% ou même 50% de la vitesse normale. Il ne faut pas hésiter à chercher les séances Duo Run [DDRS] NOT YET TRANSFERED (https://www.40tude.fr/zx6r-sur-circuit-stage-de-pilotage-de-radigues-rider-school-drrs/) où le moniteur fait des remarques au stagiaire. Il faut éviter de regarder les vidéos de pilotes pros ou de record du tour. Leurs marques de freinage, leur vitesse d'exécution n'ont rien à voir avec ce que l'on peut faire. Le seul truc qu'on a en commun avec les pros ce sont les points de corde. Bref, idéalement la découverte de la piste doit se faire avec un "prof". Un bon exemple ci-dessous au Vigeant :
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ifJmAPjkvX0?si=y7HGEcN_FeJfx2Rx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/ifJmAPjkvX0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 ### Dans la tête
 
@@ -282,11 +292,21 @@ Typiquement, je dois être capable de relâcher mon grip, de détendre mes doigt
 
 Dans un même ordre d'idée, en ligne droite je dois être capable de tenir l'accélérateur avec 3 doigts et avec la paume de la main décollée de la poignée. Qui a dit qu'il fallait être crispé et avoir une force de taureau pour enrouler une poignée de gaz ? Prends le temps de regarder cette vidéo par exemple. Instructif...
 
-<!-- https://youtu.be/h24XjzybrA0 -->
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h24XjzybrA0?si=1AiXYc_QGYxzFj5v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/h24XjzybrA0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
+
 
 
 
@@ -361,9 +381,19 @@ Bref, autant relâcher les bracelets et laisser la moto s'auto réguler.
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
