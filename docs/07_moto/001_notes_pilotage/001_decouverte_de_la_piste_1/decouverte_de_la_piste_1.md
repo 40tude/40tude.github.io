@@ -2,7 +2,7 @@
 published: true
 author: 40tude
 layout: default
-title: "Découvrir un circuit moto : repères, trajectoires et premiers roulages"
+title: "Découvrir un circuit moto : repères, trajectoires et premier roulage"
 description: "Comment découvrir un circuit moto efficacement : repères visuels, placement et premières bases du pilotage sur piste."
 image: docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/assets/LFG2.webp
 twitter:
@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-04-24 12:35:16
+last_modified_date: 2026-04-24 16:28:43
 ---
 
 
@@ -40,12 +40,6 @@ Tu as dormi peu la nuit dernière... Endormis tard, tu t'es levé à 5H30. Dans 
 
 1. Découvrir la piste en roulant à **75% de nos capacités**.
 1. En ligne droite, **se coucher sur la moto**.
-<!-- 1. Faire l'effort d'ouvrir les gaz en grand dès qu'on peut -->
-<!-- 1. Faire passer ses pneus sur les points de corde -->
-
-<!--
-Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 2 min alors je dois tourner en 2'30" ? Peut-être. J'en suis de moins en moins sûr.
--->
 
 
 
@@ -64,7 +58,7 @@ Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 
 
 * Je ne connais pas la piste **mais** j'ai étudié les trajectoires sur [YouTube](https://www.youtube.com/playlist?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS)
 
-* Est-ce que j'ai une feuille imprimée avec le tracé du circuit et mes notes manuscrites ? Typiquement ces notes manuscrites sont prises en regardant YouTube à 75% ou même 50% de la vitesse normale. Il ne faut pas hésiter à chercher les séances Duo Run [DDRS] NOT YET TRANSFERED (https://www.40tude.fr/zx6r-sur-circuit-stage-de-pilotage-de-radigues-rider-school-drrs/) où le moniteur fait des remarques au stagiaire. Il faut éviter de regarder les vidéos de pilotes pros ou de record du tour. Leurs marques de freinage, leur vitesse d'exécution n'ont rien à voir avec ce que l'on peut faire. Le seul truc qu'on a en commun avec les pros ce sont les points de corde. Bref, idéalement la découverte de la piste doit se faire avec un "prof". Un bon exemple ci-dessous au Vigeant :
+* Est-ce que j'ai une feuille imprimée avec le tracé du circuit et mes notes manuscrites? Typiquement ces notes manuscrites sont prises en regardant YouTube à 75% ou même à 50% de la vitesse normale. Il ne faut pas hésiter à chercher les séances Duo Run de [DRRS](https://www.drrs-moto.com/) où le moniteur fait des remarques au stagiaire. Il faut éviter de regarder les vidéos de pilotes pros ou de record du tour. Leurs marques de freinage, leur vitesse d'exécution n'ont rien à voir avec ce que l'on peut faire. Le seul truc qu'on a en commun avec les pros ce sont les points de corde. Bref, idéalement la découverte de la piste doit se faire avec un "prof". Un bon exemple ci-dessous au Vigeant :
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -83,19 +77,17 @@ Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 
 ### Dans la tête
 {: .no_toc }
 
-
-* Est-ce que je suis capable de faire un tour de circuit "dans ma tête" ? Ne rigolez pas, c'est plus important qu'il n'y paraît. On déclenche le chrono sur son téléphone, on ferme les yeux, on fait un tour complet dans sa tête, on arrête le chrono, on ouvre les yeux et on regarde le temps.
+* Est-ce que je suis capable de faire un tour de circuit "dans ma tête"? Rigolez pas, c'est plus important qu'il n'y paraît. On déclenche le chrono sur son téléphone, on ferme les yeux, on fait un tour complet dans sa tête, on arrête le chrono, on ouvre les yeux et on regarde le temps.
 Afin que le chrono d'un tour "dans la tête" soit similaire au chrono d'un tour réel, il faut, pour chaque virage, avoir des points de repère : point de freinage, point de mise sur l'angle, point de corde, point de sortie.
 Il faut aussi avoir tout un ensemble de marques tout au long du circuit : je vise le grand arbre, je passe sur la marque jaune, sous la passerelle je suis à gauche de la piste, je fais bien attention d'arriver sur le virage en posant mes roues sur la ligne blanche, à l'extrême droite de la piste...
-* Est-ce que je visualise bien les enchaînements de virages ? Est-ce que je peux les réciter sans hésitation à voix haute ? : Ligne droite, un gauche serré, un pif, un paf, un grand gauche…
+* Est-ce que je visualise bien les enchaînements de virages? Est-ce que je peux les réciter sans hésitation à voix haute? : Ligne droite, un gauche serré, un pif, un paf, un grand gauche…
 * Deux ou trois jours avant d'aller rouler, dans les embouteillages par exemple, c'est un bon moyen de faire passer le temps. Faut juste penser à mettre la feuille avec la piste et ses notes sur le siège passager.
 
 
 ### Sur papier
 {: .no_toc }
 
-
-* Est-ce que je peux "dessiner" (plus ou moins fidèlement) la piste sur une feuille de papier ? C'est toujours le même principe... Faut qu'on arrive à avoir la piste en tête avant d'arriver.
+* Est-ce que je peux "dessiner" (plus ou moins fidèlement) la piste sur une feuille de papier? C'est toujours le même principe... Faut qu'on arrive à avoir la piste en tête avant d'arriver.
 * J'ai identifié les virages sur lesquels il va falloir porter une attention particulière durant la session. Dans ce contexte cela veut dire que dans ces virages on passe sur le point de corde au millimètre près. S'il faut diviser par 2 la vitesse dans le virage, tant pis, on pourra toujours l'augmenter ensuite. Les virages importants sont :
     1. Les virages avant les longues lignes droites
     1. Les grands virages rapides
@@ -114,7 +106,7 @@ Il faut aussi avoir tout un ensemble de marques tout au long du circuit : je vis
 {: .no_toc }
 
 
-La marshal en a parlé lors de son briefing pour les débutants. En cas de doute 1.9 AR et 2.1 à l'AV. Y a forcément un compresseur et un manomètre quelque part. Ne suppose pas que tes pressions sont bonnes, vérifie!
+La marshal en a parlé lors de son briefing pour les débutants. En cas de doute 1.9 AR et 2.1 à l'AV. Y a forcément un compresseur et un manomètre quelque part. Ne suppose pas que tes pressions sont bonnes, vérifie-les. Personne ne peut le faire à ta place et je suis pas ta mère.
 
 
 
@@ -170,14 +162,14 @@ En plus, il faut que notre cerveau s'habitue à la vitesse et qu'il ait suffisam
 ### Les pieds
 {: .no_toc }
 
-Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus large de tes pieds (normal faut répartir la pression au maximum). Eh bien c'est cette partie du pied que tu dois faire reposer sur tes reposes pieds. Pas la pointe du pied ni le talon, non, non, juste cette partie. Oui, faut plier les genoux. Oui, ça fait bizarre mais oui, tu peux aussi anticiper l'action et prendre l'habitude de poser tes pieds de cette façon les semaines qui précèdent la journée de roulage quand tu es sur route.
+Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus large de tes pieds (normal, faut répartir la pression au maximum). Eh bien c'est cette partie du pied que tu dois faire reposer sur tes reposes pieds. Pas la pointe du pied ni le talon, non, non, juste cette partie. Oui, faut plier les genoux. Oui, ça fait bizarre mais oui, tu peux anticiper l'action. Par exemple, les semaines qui précèdent la journée de roulage quand prends l'habitude de poser tes pieds de cette façon quand tu es sur route.
 
 ### Utilise toute la piste
 {: .no_toc }
 
 * Je roule à gauche si le prochain virage est à droite.
 * Je roule à droite si le prochain virage est à gauche.
-* Dans les 2 cas je suis à 1cm de la bande blanche. Je ne suis pas à 1m ou à 25cm. Non, je roule à 1cm de la bande blanche.
+* Dans les 2 cas je suis à **1cm de la bande blanche**. Je ne suis pas à 1m ou à 25cm. Non, non, je roule à 1cm de la bande blanche.
 
 ### La chasse aux cônes
 {: .no_toc }
@@ -185,9 +177,10 @@ Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus 
 * C'est comme à Pâques lors de la chasse au oeufs. Normalement, sur chaque virage il y aura 3 cônes. Un à l'entrée et à l'extérieur du virage (au bout du vibreur typiquement). Un second à l'intérieur du virage. Un dernier à la sortie et à l'extérieur du virage, lui aussi au bout du vibreur.
 * Comme tu es à 75% de tes capacités, prends le temps de les repérer.
 * Prends aussi le temps de remarquer que plus le virage est serré, plus le cône intérieur est loin dans le virage. Par exemple dans un virage en épingle tu vas le trouver au 3/4 du virage.
-* Idéalement tu dois passer à 1cm de chacun d'entre eux.
+* Idéalement, plus tard, tu devra faire passer tes roues à 1cm de chacun d'entre eux.
     * Pour le 1 et le 3 c'est trop facile car tu roules, tout à gauche ou tout à droite sur la piste. J'en parle même pas. Trop facile je te dis.
-    * Le second cône lui par contre... Good luck. On en reparle plus tard. Pour l'instant note juste où il est et garde en tête qu'à terme tu veux faire passer tes roues dessus (j'ai bien dis tes roues)
+    * Le second cône lui par contre... Good luck. On en reparle plus tard.
+* Pour l'instant, t'es à 75%, en mode repérage, donc tu note juste où sont les cônes et garde en tête qu'à terme tu veux faire passer tes roues dessus (j'ai bien dis tes roues)
 
 
 
@@ -206,7 +199,7 @@ Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus 
 
 Parce qu'en revenant de cette session de découverte de la piste c'est le plus important. Le reste on s'en fout... Faut être clair... En ce qui me concerne, ma carrière en moto GP est plutôt derrière moi 😡. Quant à toi, si tu lis ces pages... Ben, ce n'est pas gagné les "Grid Girls" à tes côtés l'année prochaine. Donc, bref, ce qui compte c'est de s'être fait plaisir 😁.
 
-Alors...Est-ce que tu t'es fait plaisir ? Si c'est le cas, bravo. Tu peux être très fier de toi. Ça veut dire que tu as roulé suffisamment lentement pour avoir assez de bande passante afin que ton cerveau réalise et mémorise tout ce qui s'est passé.
+Alors...Est-ce que tu t'es fait plaisir? Si c'est le cas, bravo. Tu peux être très fier de toi. Ça veut dire que tu as roulé suffisamment lentement pour avoir assez de bande passante afin que ton cerveau réalise et mémorise tout ce qui s'est passé.
 
 
 ### De retour sur l'aire plane
@@ -226,11 +219,11 @@ Alors...Est-ce que tu t'es fait plaisir ? Si c'est le cas, bravo. Tu peux être 
 
 Oui, je sais, ça fait bizarre. D'un côté on dit qu'on roule à 75% de nos moyens et de l'autre on dit qu'il faut se positionner comme si on devait aller chercher le dernier centième de seconde. En fait, ce n'est pas contradictoire avec la session de découverte de la piste. On est sur circuit, on apprend des choses nouvelles et l'une des toutes premières c'est le positionnement sur la moto dans les lignes droites et les virages rapides.
 
-Bref, en ligne droite il ne faut plus de bras tendus, de nez au vent... Non, non, on est menton sur le réservoir, bras pliés et resserrés sur ce dernier. Quand je dis menton, c'est vraiment ça. Le casque doit toucher le réservoir (tu dois entendre le "poc"). Il ne faut pas hésiter à s’entraîner à la maison, en statique dans le garage avec le casque sur la tête. Cela permet vraiment de voir ce que cela donne. Quand l'avant du casque touche le réservoir, qu'est-ce que je vois devant ? Rien, pas grand-chose... Si je veux que ma vision passe juste au-dessus du tableau de bord comment je dois être sur la moto ? Est-ce que mes coudes touchent mes genoux, est-ce qu'il y a de la place (ou pas) ... Enfin bref, autant prendre 15 minutes dans le garage ou l'aire plane du circuit pour vérifier tout ça.
+Bref, en ligne droite il ne faut plus de bras tendus, de nez au vent... Non, non, on est menton sur le réservoir, bras pliés et resserrés sur ce dernier. Quand je dis menton, c'est vraiment ça. Le casque doit toucher le réservoir (tu dois entendre le "poc"). Il ne faut pas hésiter à s’entraîner à la maison, en statique dans le garage avec le casque sur la tête. Cela permet vraiment de voir ce que cela donne. Quand l'avant du casque touche le réservoir, qu'est-ce que je vois devant? Rien, pas grand-chose... Si je veux que ma vision passe juste au-dessus du tableau de bord comment je dois être sur la moto? Est-ce que mes coudes touchent mes genoux, est-ce qu'il y a de la place (ou pas) ... Enfin bref, autant prendre 15 minutes dans le garage ou l'aire plane du circuit pour vérifier tout ça.
 
 Faudra en profiter pour mettre du scotch à peinture bleu sur le compteur (pas la peine d'être tenté de regarder autre chose que la piste le jour du roulage).
 
-Si c'est difficile ou si cela ne passe pas au niveau des bras, pense à reculer tes fesses sur la selle. Si tu es très grand, n'hésite pas à les pousser jusqu'à la section du passager ou alors à carrément t'assoir sur le dosseret de selle (mais là à mon avis tu mesures 2 m ou tu roules en Piwi).
+Si c'est difficile ou si cela ne passe pas au niveau des bras, pense à reculer tes fesses sur la selle. Si tu es très grand, n'hésite pas à les pousser jusqu'à la section du passager ou alors à carrément t’asseoir sur le dosseret de selle (mais là à mon avis tu mesures 2 m ou tu roules en Piwi).
 
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
@@ -270,7 +263,7 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 ### Les rapports
 {: .no_toc }
 
-* Je sais, on en a pas parlé, mais pour chaque virage, peux tu indiquer sur ton plan de la piste combien de rapport tu rentres (-2, -1, -3...) ?
+* Je sais, on en a pas parlé, mais pour chaque virage, peux tu indiquer sur ton plan combien de rapport tu rentres (-2, -1, -3...) ?
 * Si tu ne sais pas c'est pas grave. Lors de la prochaine session notes l'information pour 1 ou 2 virages puis encore pour 1 ou 2 virages à la session d'après. En fin de journée tu auras couvert tout le circuit.
 * En session tu n'as pas de temps à consacrer aux rétrogradages et il ne faut pas regarder ton tableau de bord. Afin de te libérer la tête apprends le nombre de rapport à rentrer à chaque virage.
 
@@ -332,11 +325,11 @@ Il ne faut pas hésiter non plus à sortir de la piste et à s'arrêter devant l
 {: .no_toc }
 
 
-On ne peut pas tenir 7 sessions de 20 minutes par jour si on n'est pas détendu sur la moto. De même, comment être efficace à l'approche du prochain virage si on est tendu comme une corde dans la ligne droite qui le précède ? On n'a pas le choix, il faut se ménager des "aires de repos" où on peut reprendre notre souffle (ou s'assurer qu'on n'est pas en apnée), relâcher ses mains, ses doigts, ses bras etc.
+On ne peut pas tenir 7 sessions de 20 minutes par jour si on n'est pas détendu sur la moto. De même, comment être efficace à l'approche du prochain virage si on est tendu comme une corde dans la ligne droite qui le précède? On n'a pas le choix, il faut se ménager des "aires de repos" où on peut reprendre notre souffle (ou s'assurer qu'on n'est pas en apnée), relâcher ses mains, ses doigts, ses bras etc.
 
 Typiquement, je dois être capable de relâcher mon grip, de détendre mes doigts et d'aller tripoter le levier d'embrayage.
 
-Dans un même ordre d'idée, en ligne droite je dois être capable de tenir l'accélérateur avec 3 doigts et avec la paume de la main décollée de la poignée. Qui a dit qu'il fallait être crispé et avoir une force de taureau pour enrouler une poignée de gaz ? Prends le temps de regarder cette vidéo par exemple. Instructif...
+Dans un même ordre d'idée, en ligne droite je dois être capable de tenir l'accélérateur avec 3 doigts et avec la paume de la main décollée de la poignée. Qui a dit qu'il fallait être crispé et avoir une force de taureau pour enrouler une poignée de gaz? Prends le temps de regarder cette vidéo par exemple. Instructif...
 
 
 <figure style="max-width: 560px; margin: auto;">
@@ -492,7 +485,7 @@ Idem si vous êtes en 600 et qu'un gamin en Yam R3 vous met 10" au tour (ptit co
 Je réalise que cela fait beaucoup de choses pour une session de découverte de la piste... Ici ma recommandation est la suivante : si tu n'es pas sûr d'ouvrir en grand dès que tu le peux ou si tu n'es pas sûr d'être couché sur la moto à la moindre occasion... Prends ton temps, refais une session, reste bien à 75% de tes capacités et travaille ces deux aspects de ton pilotage.
 Maj 17 03 23 : Par exemple à la prochaine session donnes toi pour objectif de sentir que la poignée d'accélérateur arrive en butée à plusieurs endroits du circuit (là tu es sûr d'être 100% gaz). Pour la session d'après, en plus de l'ouverture des gaz à 100%, fixes toi comme objectif de sentir ton menton sur le réservoir à tel ou tel endroit du circuit. Tu auras préalablement choisi ces endroits sur ton plan.
 
-À ce stade les trajectoires, la position, les chronos on s'en fout... Pense juste à te coucher et à ouvrir à 100%. Une fois que ça c'est en place, applique-toi à rentrer suffisamment **lentement** dans les virages pour placer tes roues sur le point de corde à chaque tour. Ou bien... Applique-toi à rentrer suffisamment vite dans les virages pour pouvoir rejoindre le point de corde et placer tes roues sur le point de corde à chaque tour. Généralement on (je) freine trop avant le virage, je rentre trop lentement et la moto n'a pas assez d'inertie pour rejoindre le point de corde toute seule. Au tour suivant je ne fais pas l'effort de freiner plus tard ou de freiner moins fort pour rentrer avec plus de vitesse dans le virage. La trouille ? Peut-être... Mais c'est idiot car comme on rentre sans freiner, ni accélérer, rien ne peut arriver... Enfin bref, "100 fois sur le métier, remettez votre ouvrage...". De toute façon je reviens sur ces histoires de point de corde dans l'article suivant.
+À ce stade les trajectoires, la position, les chronos on s'en fout... Pense juste à te coucher et à ouvrir à 100%. Une fois que ça c'est en place, applique-toi à rentrer suffisamment **lentement** dans les virages pour placer tes roues sur le point de corde à chaque tour. Ou bien... Applique-toi à rentrer suffisamment vite dans les virages pour pouvoir rejoindre le point de corde et placer tes roues sur le point de corde à chaque tour. Généralement on (je) freine trop avant le virage, je rentre trop lentement et la moto n'a pas assez d'inertie pour rejoindre le point de corde toute seule. Au tour suivant je ne fais pas l'effort de freiner plus tard ou de freiner moins fort pour rentrer avec plus de vitesse dans le virage. La trouille? Peut-être... Mais c'est idiot car comme on rentre sans freiner, ni accélérer, rien ne peut arriver... Enfin bref, "100 fois sur le métier, remettez votre ouvrage...". De toute façon je reviens sur ces histoires de point de corde dans l'article suivant.
 
 Oui, oui il y a des pilotes qui roulent beaucoup plus vite... Je confirme, tes trajectoires ne sont pas au top... Oui, oui tu te fais avoir par beaucoup de monde au freinage... Cela dit, **avant de courir il faut savoir marcher**. Donc, refais une première session et acquiers de bonnes bases sur lesquelles tu pourras construire quelque chose.
 -->
@@ -509,7 +502,7 @@ Oui, oui il y a des pilotes qui roulent beaucoup plus vite... Je confirme, tes t
 * Vérifier que dans les virages le point de corde est bien matérialisé par un cône au 3/4 du virage (late apex)
     * Si ce n'est pas le cas, quelle est la marque fixe à utiliser ?
     * S'il n'y a pas de cône, alors, si je découpe le vibreur intérieur en 4 sections, où est le point de corde ?
-    * Pourquoi le cône n'est pas au 3/4 ? C'est un virage qui se resserre, qui s'ouvre, un double virage…
+    * Pourquoi le cône n'est pas au 3/4? C'est un virage qui se resserre, qui s'ouvre, un double virage…
 * Si le virage est grand et à rayon constant on va sans doute le prendre en double apex (le 2 à LFG ou le 8 des Ecuyers par exemple)
 * Si c'est une épingle, il faut tirer tout droit, s'écarter du virage, plonger en retard et choper le point de corde au bout du quatrième quart du vibreur
 * Dans un pif paf, on "sacrifie" le pif pour "sauver" le paf. Pas d'angoisse, il y a une fiche dédiée au [pif-paf] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-08-pif-paf/). Cela dit, on ne rentre pas trop vite afin de ne pas sortir trop large du pif. En effet, comme il faut favoriser la sortie du paf il faut s'arranger pour être bien placé à l'extérieur avant l'entrée du paf. Si on rentre trop vite dans le pif, on va sortir large et va se retrouver à la corde du paf et on sera coincé (voir schéma ci-dessous)
