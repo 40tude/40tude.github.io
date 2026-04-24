@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 # {{ page.title }}
@@ -230,9 +230,14 @@ J'exagère mais si on remonte le circuit, tout se passe comme si on tirait une d
     Bref, t'es mort.
     * Regarde ci-dessous. En 1 et 2 si tu accélères tu sors dans les graviers. Il faut attendre d'être en 3 (ou un peu avant) pour pouvoir accélérer.
 
-<div align="center">
-<img src="./assets/img_105.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_105.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 * Je le redis autrement... Si je me dirige trop tôt vers la corde, je me rassure, ma mise sur l'angle est lente etc. Mais... Mais je vais me retrouver très tôt à l'intérieur du virage. Là, je suis coincé, je ne peux rien faire : si j'accélère, je vais m'écarter et d'un autre côté je ne peux pas resserrer encore plus mon virage et finir par rouler dans l'herbe.... Bref, je peux juste attendre l'arrivée du cône libérateur qui marque le point de corde pour accélérer et sortir du virage.
 
@@ -247,14 +252,24 @@ Perso j'ai tendance à vouloir aller trop vite, trop rapidement. Je ne prends pa
 
 **Un exemple**
 
-<div align="center">
-<img src="./assets/img_01.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_01.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 Oui…mais non
 
-<div align="center">
-<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_02.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Oui. Dans les 2 photos, notez la différence d'écartement entre les pneus et la bande blanche.
 
@@ -288,9 +303,14 @@ Imagine... Imagine la situation théorique suivante. Là où la droite coupe l'e
 
 Qu'est-ce qui va se passer? Rien. Tu vas sortir comme une balle du virage. Aucune chance d'aller dans les graviers et tu bénificeras de la plus longue durée d'accélération possible (tu pars du bord de la piste)
 
-<div align="center">
-<img src="./assets/img_106.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_106.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Il va donc falloir trouver un compromis entre "je roule collé à la corde" et "je pars du bord de la piste dans la bonne direction". Ce compromis c'est le point de pivot (PV ci-dessus).
 
@@ -335,9 +355,14 @@ J'arrive au virage, je chope le cône du PC du regard et du menton. Je ne regard
 
 Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approche du cône. Il ne faut pas regarder l'entrée du virage dans son ensemble. Faut être "laser focus" sur le cône (pense aux lasers des yeux de superman).
 
-<div align="center">
-<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_03.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 ### Triche un peu
@@ -367,9 +392,14 @@ Une solution c'est de faire du gymkhana entre des cônes. C'est un exercice qu'o
 
 Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. Ils sont où ? Sur le bitume, à un mètre du vibreur ? Nan. À 10 centimètres ? Nan. À un millimètre ? Même pas en rêve ! Ils sont sur la bande blanche en train de lécher le vibreur.
 
-<div align="center">
-<img src="./assets/img_04.webp" alt="" width="600" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_04.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 ### Je suis lourd

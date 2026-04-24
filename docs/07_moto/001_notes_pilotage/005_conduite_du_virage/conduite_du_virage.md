@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 7
 date: 2019-09-08 18:33:15
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 # {{ page.title }}
@@ -43,9 +43,14 @@ Hmm... En fait voilà où on en est : on commence à voir certains éléments se
 Et c’est pour ça que ce billet est un peu particulier, que c'est celui dont la section [Remarques](#remarques) est la plus longue et que c'est le dernier de la section Basics. En effet, on sait ce que l’on veut : couché, en butée, trois phases de freinage, sur point de corde avec les roues vers le point de sortie… On a donc les briques de base du pilotage. Ce qui nous manque, ce qu’il reste à faire, c’est assembler tout ça pour **produire** une base solide sur laquelle on va pouvoir s'appuyer. En gros, on va jouer au Lego. Sympa, non ? Allez, c’est parti !
 
 
-<div align="center">
-<img src="./assets/img00.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img00.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 * Le freinage en ligne droite est terminé, on inscrit la moto sur l'angle, on rentre dans le virage et ?
@@ -338,17 +343,27 @@ Que ce soit d'une façon ou de l'autre, à la fin on doit se retrouver
 * Les côtes le long du réservoir
 * Le côté du casque le long du flanc du réservoir (en tout cas pas en position haute ni dans l'axe de la moto)
 
-<div align="center">
-<img src="./assets/image-38.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-38.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 * Le menton (pas les yeux) tourné vers le point de corde.
 * Le bras extérieur, tendu et appuyé sur le réservoir. On doit sentir la pression du réservoir sous le bras. Les espagnols disent "codo al sol". Autrement dit on doit avoir le coude au soleil et le pli, l'intérieur, du coude doit être orienté vers le réservoir. On doit sentir que le bras est tendu. Cela oblige mécaniquement à avoir la tête loin à l'intérieur du virage car le bras repousse, l'épaule, le cou et la tête (alouette).
 
-<div align="center">
-<img src="./assets/image-6.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-6.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Ci-dessus, faut pas regarder l'angle pris par le petit jeune. Faut juste regarder où se trouve le coude gauche et comment il est orienté. Au soleil 🎶🎵
 
@@ -356,18 +371,28 @@ Ci-dessus, faut pas regarder l'angle pris par le petit jeune. Faut juste regarde
 * Genou ouvert
 * Pied extérieur, à plat, calé sur le talon. Perso je n'y arrive pas, je laisse les métatarses sur le cale-pied. Comme je ne suis pas grand cela me permet de toucher le réservoir avec le genou.
 
-<div align="center">
-<img src="./assets/image-39.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-39.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 * La cuisse extérieure ancrée dans le réservoir (là aussi il faut sentir qu'on appuie sur le réservoir). Vu qu'on n'est pas agrippé au guidon et qu'on ne le tient presque pas, le genou extérieur c'est ce qui doit nous empêcher de "tomber" de la moto.
 * Tenir le bracelet intérieur comme **un tournevis** (avant-bras dans le prolongement de la poignée)
 * Le coude intérieur, qui est dans l'alignement du poignet, est donc très en dessous du guidon. Voir par exemple ci-dessous :
 
-<div align="center">
-<img src="./assets/image-8.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-8.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 La vidéo associée (où Alberto parle aussi de Grip-Shifting etc.)
@@ -396,27 +421,47 @@ Il faut quand même garder à l'esprit que c'est parce que l'on veut passer de p
 
 On peut s'inspirer des 2 images ci-dessous. Regardez la prise tournevis, l'alignement de l'avant-bras avec le bracelet et la position du coude ainsi que le décalage de l'ensemble tête-colonne par rapport à l'axe de la moto. Il est vraiment sur le côté de la moto.
 
-<div align="center">
-<img src="./assets/image-35.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-35.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-34.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-34.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 C'est le même virage que l'image précédente mais à la sortie avec la moto qui se relève. Il reste la fesse à côté de la selle car...
 
-<div align="center">
-<img src="./assets/image-36.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-36.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Un peu plus tard, il repique encore à gauche.
 
-<div align="center">
-<img src="./assets/image-37.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-37.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 La seconde partie de la vidéo ci-dessous peut donner des idées. Entre autres, elle explique bien pourquoi, sortir la tête de l'axe de la moto permet de passer plus vite en virage.
@@ -537,9 +582,14 @@ Voir aussi [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/i
 
 Aller le plus loin possible pour aller chercher le bord extérieur de la piste (late apex, sommet retardé)
 
-<div align="center">
-<img src="./assets/image-31.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-31.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Voir la vidéo ci-dessous :
@@ -629,9 +679,14 @@ Une fois que la moto est sur l'angle c'est l'arrière qui est responsable de la 
 
 Pour s'en convaincre il n'y a qu'à voir les photos de roue arrière en sortie de virage où la moto garde le même angle que dans le virage
 
-<div align="center">
-<img src="./assets/image-40.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-40.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Pour avoir un virage en Hook (crochet, comme le capitaine, pas le tricot) il faut pencher le buste en avant et en bas, à l'intérieur du virage
@@ -716,9 +771,14 @@ On va là où on regarde. Donc si à l'entrée du virage on regarde l'intérieur
 * On aura une ligne "facile" jusqu'à la l'intérieur du virage mais on sera planté pour la sortie.
 * En effet, si à la corde, nos roues ne sont toujours pas dans la direction de PS, notre trajectoire sera trop large. Il va falloir rester très longtemps sur l'angle avant de pouvoir accélérer. On va donc perdre beaucoup de temps à remettre la moto verticale et à 100% des gaz. On en avait parlé dans le billet à propos de [Décomposition des virages]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}#le-point-de-corde-pc). Tu te rappelles de ce schéma ?
 
-<div align="center">
-<img src="./assets/img_105.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_105.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Pour éviter ça il est recommandé :
@@ -755,9 +815,14 @@ Sur le dessin ça ne se voit pas bien mais au milieu du virage (en C) on doit ê
 
 Donc on ne passe pas tout notre temps à longer la corde. Les pneus touchent la corde une fois et une seule.
 
-<div align="center">
-<img src="./assets/image-28.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-28.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 C'est aussi pour ça qu'il faut regarder le point de corde bien avant la mise sur l'angle et faire abstraction de tout ce qui il y a autour afin d'aller de A en B sans plonger trop tôt à la corde comme un idiot.
@@ -766,9 +831,14 @@ Normalement, plus le virage est lent et plus le point de corde est retardé et d
 
 Une fois que l'image précédente est acquise, on peut passer à la seconde dont on a déjà parlé [ici]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}#le-point-de-pivot-pv). Je ne vais donc par refaire les commentaires.
 
-<div align="center">
-<img src="./assets/img_106.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_106.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 
@@ -847,16 +917,26 @@ C'est moins sexy mais, finalement, c'est plus efficace
 
 Donc il faut penser à faire ça :
 
-<div align="center">
-<img src="./assets/image-32.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-32.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Pour éviter de se retrouver là :
 
-<div align="center">
-<img src="./assets/image-33.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-33.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Dans la vidéo ci-dessous c'est instructif de voir, au ralenti, ce qui se passe avec la main au moment où il relâche complètement le frein avant. Faut aussi bien regarder comment il tient l'accélérateur en ligne droite... La main ne touche quasiment pas la poignée. La paume est très écartée de la poignée par exemple (1'19" par exemple).

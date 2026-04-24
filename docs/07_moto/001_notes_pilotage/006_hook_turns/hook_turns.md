@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 8
 #math: mathjax
 date: 2019-09-21 12:55:23
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 
@@ -38,9 +38,14 @@ last_modified_date: 2026-04-24 12:22:29
 
 Que ce soit sur route ou sur circuit, on s'est tous, au moins une fois, trouvé dans un virage où l'on sentait qu'on allait sortir trop large. Le Hook Turn est l'outil dont on aurait eu besoin...
 
-<div align="center">
-<img src="./assets/img01.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img01.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 
@@ -268,9 +273,14 @@ On comprend dans la vidéo précédente qu'il faut appliquer un couple afin d'em
 
 Il faut donc, à tout prix, sortir sa tête de l'axe longitudinal de la moto et la mettre sur le côté. Le plus loin, le mieux. Voir ci-dessous :
 
-<div align="center">
-<img src="./assets/img09.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img09.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 On retiendra qu'en virage, il ne faut pas nécessairement mettre sa tête et son corps plus bas afin d'abaisser le centre de gravité de l'ensemble moto+pilote. Il faut sortir sa tête et son corps de l'axe de la moto pour appliquer un couple supérieur et empêcher la moto de se redresser. C'est aussi pour ça qu'il ne faut pas hésiter à penser qu'on sort 2 fesses (même si dans la réalité on en sort qu'une et demi). En effet, ça permet de décaler plus de masse plus loin à l'intérieur du virage et donc d'exercer plus de couple.

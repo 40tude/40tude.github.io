@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 9
 #math: mathjax
 date: 2019-09-22 15:51:16
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 
@@ -133,9 +133,14 @@ On ne pourra pas dire qu'on n'en a pas parlé...
   + Ci-dessous c'est un pif-paf et on est juste entre les 2. Bien voir la direction de la roue avant
 
 
-<div align="center">
-<img src="./assets/image-41.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-41.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 ### Tu n'es pas convaincu?
@@ -144,30 +149,50 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 Allez, séance photos. On est dans un pif-paf. Le pif tournait à gauche. Comme le petit jeune sur la photo est généreux sur les gaz la roue avant se lève. Ça c'est bien car cela nous permet de bien voir ce qu'il fait avec ses bracelets.
 
-<div align="center">
-<img src="./assets/image.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 La roue est dorénavant bien levée et comme il tire sur le bracelet intérieur (le gauche), la roue est tournée vers la gauche.
 
-<div align="center">
-<img src="./assets/image-1.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-1.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Si cela ne servait à rien de tirer sur le bracelet il ne le ferait pas. En effet, pour tenir plus de 40 min à ce rythme, il a intérêt à s'économiser. Donc pas la peine de perdre de l'énergie à faire des trucs qui ne servent à rien. Mais là... Il a fait un truc, on voit bien où pointe la roue AV.
 
-<div align="center">
-<img src="./assets/image-2.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-2.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Si elle n'était pas levée on verrait beaucoup moins bien le phénomène.
 
-<div align="center">
-<img src="./assets/image-3.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-3.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 ### Toujours pas convaincu ?
@@ -176,16 +201,26 @@ Si elle n'était pas levée on verrait beaucoup moins bien le phénomène.
 
 On va donc regarder du côté de chez Honda. La physique et la mécanique y sont peut-être différentes. Bizarre, les deux affreux ci-dessous ont tous les deux la roues avant en l'air (ça on s'en fiche, ça permet juste de bien faire ressortir le phénomène) et ? Et on voit bien qu'eux aussi tirent sur le bracelet intérieur du virage précédent (regardes comment sont penchées les 2 autres motos derrière)
 
-<div align="center">
-<img src="./assets/image-4.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-4.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Allez, une dernière pour la route. Je passe les détails, on sort d'un gauche, on va dans un droit (voir la marque au sol) et pourtant, la roue levée pointe vers la gauche. Autrement dit, là aussi, en sortie de virage il tire sur le bracelet intérieur.
 
-<div align="center">
-<img src="./assets/image-5.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-5.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Bon allez, je crois qu'on a notre dose, j'arrête là.
@@ -211,9 +246,14 @@ Je te propose l'exercice suivant... Enferme toi dans une pice parce que tu va av
 
 Il faut rester déhanché en sortie de virage alors que la moto se relève. Relire si besoin la Note de Pilotage sur la [Conduite du Virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}).
 
-<div align="center">
-<img src="./assets/img00.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img00.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Tu te rappelles? **La fin officielle du virage c'est quand la moto est droite et qu'on est 100% gaz, en butée.**
@@ -228,37 +268,77 @@ Tu te rappelles? **La fin officielle du virage c'est quand la moto est droite et
 
 En allant chercher systématiquement l'extérieur alors qu'en faisant l'effort de contre-braquer on est plus efficace. Autrement dit "évitons" de transformer les petites lignes droites en "S". Ci-dessous la preuve en images :
 
-<div align="center">
-<img src="./assets/image-43.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-43.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-44.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-44.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-45.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-45.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-46.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-46.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-47.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-47.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-48.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-48.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-49.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-49.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-50.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-50.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Plus tard, bien sûr, quand on aura une vitesse de sortie bien supérieure, on n'aura pas d'autre choix que d'utiliser toute la piste même si on contre-braque etc. Mais bon, pour l'instant, faisons l'effort de contre braquer, d'utiliser moins de largeur de piste. Ça va nous donner de la marge pour plus tard et ça réduit la distance parcourue.
 

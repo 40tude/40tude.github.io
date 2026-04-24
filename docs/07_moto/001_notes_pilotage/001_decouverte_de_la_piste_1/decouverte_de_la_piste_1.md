@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 
@@ -100,9 +100,14 @@ Il faut aussi avoir tout un ensemble de marques tout au long du circuit : je vis
     1. Les virages avant les longues lignes droites
     1. Les grands virages rapides
 
-<div align="center">
-<img src="./assets/LFG2.webp" alt="" width="900" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/LFG2.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 ### Pression des pneus
@@ -228,9 +233,14 @@ Faudra en profiter pour mettre du scotch à peinture bleu sur le compteur (pas l
 Si c'est difficile ou si cela ne passe pas au niveau des bras, pense à reculer tes fesses sur la selle. Si tu es très grand, n'hésite pas à les pousser jusqu'à la section du passager ou alors à carrément t'assoir sur le dosseret de selle (mais là à mon avis tu mesures 2 m ou tu roules en Piwi).
 
 
-<div align="center">
-<img src="./assets/image-1-1.webp" alt="" width="600" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-1-1.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas encore là. Perso j'ai un mal de chien à le faire car je me casse les cervicales et que je ne vois pas grand-chose... En plus ce n'est toujours pas devenu un réflexe naturel... Y a du boulot...
 
@@ -504,9 +514,14 @@ Oui, oui il y a des pilotes qui roulent beaucoup plus vite... Je confirme, tes t
 * Si c'est une épingle, il faut tirer tout droit, s'écarter du virage, plonger en retard et choper le point de corde au bout du quatrième quart du vibreur
 * Dans un pif paf, on "sacrifie" le pif pour "sauver" le paf. Pas d'angoisse, il y a une fiche dédiée au [pif-paf] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-08-pif-paf/). Cela dit, on ne rentre pas trop vite afin de ne pas sortir trop large du pif. En effet, comme il faut favoriser la sortie du paf il faut s'arranger pour être bien placé à l'extérieur avant l'entrée du paf. Si on rentre trop vite dans le pif, on va sortir large et va se retrouver à la corde du paf et on sera coincé (voir schéma ci-dessous)
 
-<div align="center">
-<img src="./assets/pif_paf.webp" alt="" width="450" loading="lazy"/>
-</div> -->
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/pif_paf.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure> -->
 
 
 

@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 13
 #math: mathjax
 date: 2020-04-15 00:39:25
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 
@@ -126,9 +126,14 @@ Exemples de circuits que je connais et où l'on utilise le short shift :
 
 Carole - La parabolique c'est la courbe Fox en haut à gauche (clique sur l'image si besoin)
 
-<div align="center">
-<img src="./assets/Trajectoires-Carole.webp" alt="" width="900" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/Trajectoires-Carole.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Toujours à Carole, on peut regarder attentivement ce qui se passe à 1'04" dans la vidéo ci-dessous :
@@ -160,9 +165,14 @@ Toujours à Carole, on peut regarder attentivement ce qui se passe à 1'04" dans
 
 La Ferté Gaucher (LFG) - Le N°6 c'est le plus grand gauche du circuit. Attention, dans la figure, je pense que ce sont des trajectoires Auto. Par exemple, le 3 ne se prend pas du tout comme ça à moto.
 
-<div align="center">
-<img src="./assets/Trajectoires-LFG-scaled.webp" alt="" width="900" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/Trajectoires-LFG-scaled.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Dans la vidéo ci-dessous il faut écouter attentivement le passage de vitesse à 1'01. On est dans le grand gauche N°6.
@@ -192,9 +202,14 @@ Dans la vidéo ci-dessous il faut écouter attentivement le passage de vitesse �
 
 Sanglier se trouve à tout à gauche ci-dessous :
 
-<div align="center">
-<img src="./assets/Trajectoires-Vigeant-3.webp" alt="" width="900" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/Trajectoires-Vigeant-3.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Ci-dessous, il faut écouter le passage de rapport à 1'13" par exemple.

@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 12
 #math: mathjax
 date: 2019-12-31 16:06:58
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 
@@ -47,9 +47,14 @@ last_modified_date: 2026-04-24 12:22:29
 * Terminer le freinage alors qu'on est sur l'angle et dans le virage (voir l'image de gauche ci-dessous)
 * Être capable de le faire en toute sérénité.
 
-<div align="center">
-<img src="./assets/img_01.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_01.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 1. Faut surtout noter la position des doigts sur le levier de frein dans les 2 images.
@@ -164,9 +169,14 @@ Il faut, de manière consciente :
 
 Finalement, toutes choses égales par ailleurs on doit freiner plus tard. On doit donc adapter son point de freinage (PF)
 
-<div align="center">
-<img src="./assets/img_02.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_02.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 La vidéo associée :
 
@@ -256,64 +266,129 @@ Une dernière dans un contexte de conduite sur route. Cela dit les principes son
 
 Juste après avoir relâché le levier de frein le grip shifting c'est l'action qui consiste à faire tourner sa main d'1/8 de tour (je dis ça au pif) autour de la poignée de gaz mais avant de commencer à enrouler cette dernière jusqu'à la butée. Ci-dessous, le gars est bien, bien sur l'angle et il relâche gentiment le frein avant alors qu'il rejoint le point de corde. Il ne semble pas faire de grip shift :
 
-<div align="center">
-<img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_03.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
-<div align="center">
-<img src="./assets/img_04.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_04.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_05.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_05.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_06.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_06.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_07.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_07.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Rossi fait la même chose mais avec un grip shift alors qu'il termine son freinage sur l'angle.
 
-<div align="center">
-<img src="./assets/img_08.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_08.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_09.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_09.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_10.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_10.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_11.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_11.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_12.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_12.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_13.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_13.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_14.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_14.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Il faut garder en tête que le grip shift permet
 1. De replacer sa main pour pouvoir accélérer sans se retrouver, plus tard, "coincé" au niveau du poignet.
 1. Ça facilite aussi le positionnement de la main et de l'avant-bras pour prendre la poignée de gaz avec une prise tournevis.
 
-<div align="center">
-<img src="./assets/img_15.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_15.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 Dans la vidéo ci-dessous il ne faut surtout pas hésiter à mettre la vitesse à 50% et à bien noter le mouvement de rotation que fait la main dès que le levier de frein est lâché. Tu vas voir, c'est systématique. Il faut aussi en profiter pour regarder la façon dont il tient la poignée de gaz dans les lignes droite (à trois doigts, très très lite, à la limite, il y a un espace entre sa paume et la poignée).

@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 # {{ page.title }}
@@ -111,9 +111,14 @@ On **an-ti-ci-pe** et on se positionne sur la moto très longtemps avant le proc
     * Hang off early and **NOT** too far
     * Typiquement, en ligne droite, alors qu'on est 100% gaz, **en butée** et penché en avant on a sorti une fesse et on a la raie des fesses sur le bord de la selle.
 
-<div align="center">
-<img src="./assets/img01.webp" alt="" width="900" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img01.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 **Màj 17 03 23 :**
 En ce qui me concerne je pense qu'il faut que j'ai "l'intention" de sortir 2 fesses pour qu'au final il y en est une de sortie...
@@ -147,9 +152,14 @@ Voir ci-dessous la vidéo dont est extraite la photo :
 
 Ci-dessous, au bout de la ligne droite il y a un virage à gauche. On voit bien sur l'image de droite que le pilote est de travers, "tordu".
 
-<div align="center">
-<img src="./assets/img02.webp" alt="" width="900" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img02.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 La vidéo dont est extraite la photo :
 
@@ -438,9 +448,14 @@ Plateau. On garde une pression constante. Pas la peine de se mettre dans le roug
     * S'assurer que le coude intérieur est abaissé
     * Que l'avant-bras, la main et le poignet sont **dans le prolongement du bracelet** (prise tournevis)
 
-<div align="center">
-<img src="./assets/img13.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img13.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Prise tournevis
 

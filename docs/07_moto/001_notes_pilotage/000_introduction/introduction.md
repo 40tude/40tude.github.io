@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 # {{ page.title }}
@@ -19,9 +19,15 @@ last_modified_date: 2026-04-24 11:50:04
 {{ page.description }}
 {: .lead }
 
-<div align="center">
-<img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img01.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
+
 
 
 

@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 11
 #math: mathjax
 date: 2019-09-22 17:33:21
-last_modified_date: 2026-04-24 12:22:29
+last_modified_date: 2026-04-24 12:35:16
 ---
 
 
@@ -170,40 +170,75 @@ Il faut sentir :
 {: .no_toc }
 
 
-<div align="center">
-<img src="./assets/image-58.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-58.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
-<div align="center">
-<img src="./assets/image-54.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-54.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Le genou gauche appuie sur le réservoir et tire à lui le reste du corps. C'est d'autant plus facile pour le genou de faire glisser les fesses de droite à gauche que le pilote n'est pas vraiment assis sur la moto. En fait, il est très "lite" sur la moto et porté par ses jambes.
 
-<div align="center">
-<img src="./assets/image-56.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-56.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Bien voir que la fesse gauche est déjà dehors alors que la moto est tout juste verticale. Comme pour un virage normal, il est donc positionné pour le Paf alors que la moto n'est pas encore à la verticale.
 
-<div align="center">
-<img src="./assets/image-52.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-52.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-53.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-53.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/image-55.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-55.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 La tête est venue chercher la main sur le guidon et elle est au niveau du rétroviseur. Le poignet est en prise tournevis et le coude... au sol. C'est tellement facile sur une page web...
 
-<div align="center">
-<img src="./assets/image-57.webp" alt="" width="560" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/image-57.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Tous les détails dans cette vidéo. Commence par la partie sur le pif-paf MAIS ensuite, prends le tout regarder. Y a vraiment plein de choses à voir et à revoir.
 
