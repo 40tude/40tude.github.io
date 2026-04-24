@@ -7,11 +7,11 @@ description: "Technique de pilotage pour améliorer timing, transfert et vitesse
 image: docs/07_moto/001_notes_pilotage/009_pif_paf/assets/image-56.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 11
 #math: mathjax
 date: 2019-09-22 17:33:21
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 

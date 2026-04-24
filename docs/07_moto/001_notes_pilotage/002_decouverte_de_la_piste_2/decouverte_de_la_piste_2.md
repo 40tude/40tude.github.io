@@ -7,10 +7,10 @@ description: "Apprendre à ouvrir les gaz en sortie de virage, gérer la poigné
 image: docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/assets/LFG2.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 # {{ page.title }}
@@ -19,6 +19,18 @@ last_modified_date: 2026-04-24 10:15:28
 {{ page.description }}
 {: .lead }
 
+
+
+<div align="center">
+<img src="./assets/LFG2.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

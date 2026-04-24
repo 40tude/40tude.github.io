@@ -2,7 +2,7 @@
 published: true
 author: 40tude
 layout: default
-title: "Notes de pilotage moto sur circuit: méthode progressive pour mieux rouler"
+title: "Notes de pilotage moto sur circuit"
 description: "Introduction et présentation des chapitres des notes de pilotage moto sur piste."
 # image: docs/07_moto/001_notes_pilotage/000_introduction/assets/img01.webp
 # twitter:
@@ -10,7 +10,7 @@ description: "Introduction et présentation des chapitres des notes de pilotage 
 parent: "Motos"
 nav_order: 3
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 #last_modified_date: 2025-01-16 16:00:00 +0000
 permalink: /notes_pilotage_moto/
 ---

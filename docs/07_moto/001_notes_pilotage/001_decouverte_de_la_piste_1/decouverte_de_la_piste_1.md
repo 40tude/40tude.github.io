@@ -7,10 +7,10 @@ description: "Comment découvrir un circuit moto efficacement : repères visuels
 image: docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/assets/LFG2.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 

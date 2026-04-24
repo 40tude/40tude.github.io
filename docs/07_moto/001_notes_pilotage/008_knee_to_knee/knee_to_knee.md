@@ -7,11 +7,11 @@ description: "Comment enchaîner les changements d’angle rapidement avec la te
 image: docs/07_moto/001_notes_pilotage/008_knee_to_knee/assets/image-52.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 10
 #math: mathjax
 date: 2019-09-22 16:33:12
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 
@@ -20,6 +20,13 @@ last_modified_date: 2026-04-24 10:15:28
 
 {{ page.description }}
 {: .lead }
+
+
+<div align="center">
+<img src="./assets/image-52.webp" alt="" width="450" loading="lazy"/>
+</div>
+
+
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

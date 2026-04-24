@@ -7,10 +7,10 @@ description: "Comment découper un virage en trois étapes, placer son regard et
 image: docs/07_moto/001_notes_pilotage/003_three_steps/assets/img_04.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 # {{ page.title }}

@@ -7,11 +7,11 @@ description: "Comprendre quand utiliser le short shifting sur piste pour stabili
 image: docs/07_moto/001_notes_pilotage/011_short_shift/assets/Trajectoires-Carole.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 13
 #math: mathjax
 date: 2020-04-15 00:39:25
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 

@@ -7,10 +7,10 @@ description: "Introduction aux notes de pilotage moto sur piste : trajectoires, 
 image: docs/07_moto/001_notes_pilotage/000_introduction/assets/img01.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 # {{ page.title }}
@@ -25,6 +25,8 @@ last_modified_date: 2026-04-24 10:15:28
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Première fois sur circuit
 Les choses ont évolué depuis la première mise en ligne des Notes de Pilotage Moto (fin 2019). Dorénavant, je vous propose de commencer par lire l'article [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%})
 * Il n'y a qu'une page à lire
@@ -37,6 +39,8 @@ Une fois que votre première journée c'est bien déroulé et si vous avez trouv
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Le programme
 
 Ma première journée de roulage... Un bon exemple ici... NOT YET TRANSFERED. Je n'ai pas dormi de la nuit, j'étais excité depuis des semaines, j'avais un peu la trouille de me mettre au tas et de ne pas pouvoir rentrer par mes propres moyens... Cela dit, j'aurai bien aimé qu'on m'explique un peu comment appréhender la piste et le pilotage. Je ne parle pas ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) mais uniquement du pilotage.
@@ -79,6 +83,8 @@ En gros, on verrouille le bas du corps "dans" la moto alors que le buste est tr�
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Comment lire les Notes de Pilotage Moto ?
 
 Je souhaite qu'il y ait une dizaine de sujets (c'est toujours pas fixé et je pense que cela ne le sera jamais). Chaque Note de Pilotage Moto suppose qu'on la mette en œuvre lors d'une session de roulage de 20 minutes. Cela dit, on va être pragmatique et se dire qu'il n'y a rien d'obligatoire. Par exemple, s'il faut 3 sessions pour découvrir le circuit et bien... Il faudra 3 sessions "et pis c'est tout !"... Pas la peine de se mettre martèle en tête et/ou de se mettre dans le rouge dès le départ.
@@ -101,6 +107,8 @@ Il y aura des répétitions car certains aspects me paraissent vraiment importan
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## À propos des commentaires
 
 Ils sont, bien sûr, les bienvenus s'ils sont bienveillants et constructifs. J'ai ces Notes de Pilotage Moto depuis pas mal de temps dans OneNote et j'estime qu'il est grand temps de les partager. Si dans une des notes vous considérez que je dis une bêtise, pas la peine de me tirer dessus ou de m'agonir avec un commentaire au vitriol. J'ai peut-être, tout simplement, pas encore compris telle ou telle technique de pilotage.
@@ -113,6 +121,8 @@ Pour les commentaires, ça se passe par [ici](https://github.com/40tude/40tude.g
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Vidéos et podcast
 
 Cliquez sur la vidéo ci-dessous. C'est une playlist d'une centaine de vidéos que je garde sous le coude sur YouTube. Il y a un peu de tout et c'est plus ou moins organisé : Fitness, Trajectoire, Position...
@@ -139,6 +149,8 @@ Une série de podcasts disponibles sur YouTube qui est pas mal si vous parlez An
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Livres
 
 Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
@@ -157,6 +169,8 @@ Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Sites
 
 * [Les secrets du pilotage](http://dmic.free.fr/Pilotage/Secrets-du-pilotage-shared-by-Micboy.pdf)

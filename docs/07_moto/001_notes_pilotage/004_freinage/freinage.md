@@ -7,10 +7,10 @@ description: "Apprendre le freinage moto sur piste : montée rapide en pression,
 image: docs/07_moto/001_notes_pilotage/004_freinage/assets/img02.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 # {{ page.title }}

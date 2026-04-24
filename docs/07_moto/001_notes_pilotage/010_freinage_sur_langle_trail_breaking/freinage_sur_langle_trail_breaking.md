@@ -7,11 +7,11 @@ description: "Guide du trail braking en moto : relâcher les freins sur l’angl
 image: docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/assets/img_01.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 12
 #math: mathjax
 date: 2019-12-31 16:06:58
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 

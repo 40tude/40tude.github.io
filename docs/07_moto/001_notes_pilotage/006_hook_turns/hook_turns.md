@@ -7,11 +7,11 @@ description: "Technique du Hook Turn en pilotage moto : comment resserrer un vir
 image: docs/07_moto/001_notes_pilotage/006_hook_turns/assets/img09.webp
 twitter:
   card: summary_large_image
-parent: "Notes de Pilotage Moto"
+parent: "Notes de pilotage moto sur circuit"
 nav_order: 8
 #math: mathjax
 date: 2019-09-21 12:55:23
-last_modified_date: 2026-04-24 10:15:28
+last_modified_date: 2026-04-24 10:33:38
 ---
 
 
