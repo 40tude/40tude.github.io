@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-24 12:35:16
+last_modified_date: 2026-04-24 18:20:50
 ---
 
 # {{ page.title }}
@@ -45,7 +45,7 @@ La décomposition des virages c'est apprendre à porter son regard
 
 Le virage est ainsi découpé en 3 étapes :
 1. Avant le PMSA
-1. Du PMSA au PC (en passant par PV le point où on fait pivoter la moto)
+1. Du PMSA au PC (en passant par PV le point où on fait pivoter la moto, c'est là que ton genou sera au sol plus tard)
 1. Du PC au point de sortie (PS)
 
 
@@ -61,7 +61,7 @@ Le virage est ainsi découpé en 3 étapes :
 
 {: .note }
 **ATOTW II** c'est **LE** bouquin [A Twist Of The Wrist](https://www.amazon.fr/Twist-Wrist-Vol-Performance-Motorcycle/dp/0965045021/ref%3Dsr_1_3?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=A+twist+of+the+Wrist&qid=1567893832&s=gateway&sr=8-3). Le livre commence à être un peu vieux mais fondamentalement tout y est.
-Il y a aussi une vidéo... Franchement elle, elle date carrément et franchement le jeu des acteurs n'est pas au top. Mais bon, elle reprend tout le contenu du bouquin. Elle dure une heure quand elle est d'un seul tenant mais ça vaut le coup. J'arrête de mettre un lien dans cette page car la vidéo est régulièrement supprimée de YouTube. Le mieux c'est encore d'aller sur YouTube et de faire une recherche sur "[a twist of the wrist](https://www.youtube.com/results?search_query=a+twist+of+the+wrist)".
+Il y a aussi une vidéo... Franchement elle, elle date carrément et le jeu des acteurs n'est vraiment pas top. Mais bon, elle reprend tout le contenu du bouquin. Elle dure une heure quand elle est d'un seul tenant mais ça vaut le coup. J'arrête de mettre un lien dans cette page car la vidéo est régulièrement supprimée de YouTube. Le mieux c'est encore d'aller sur YouTube et de faire une recherche sur "[a twist of the wrist](https://www.youtube.com/results?search_query=a+twist+of+the+wrist)".
 
 
 
@@ -113,13 +113,14 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 Avant même l'entrée de virage :
 * T1 : le premier temps de la décomposition des virages consiste à localiser le point de mise sur l'angle.
-Point de mise sur l'angle = **PMSA** (turn-point).
-Cela se fait le plus tôt possible. Cela dit, à notre niveau, cela peut se faire avant ou pendant le freinage… Plus tard, la localisation du PMSA se fera systématiquement bien **AVANT** le freinage.
+    * Point de mise sur l'angle = **PMSA** (turn-point).
+    * Cela se fait le plus tôt possible. Cela dit, à notre niveau, cela peut se faire avant ou pendant le freinage…
+    * Plus tard, la localisation du PMSA se fera systématiquement bien **AVANT** le freinage.
 * T2 : localisation du point de corde (**PC**, apex)
-Cela doit être fait pendant le freinage, **AVANT** d'arriver au PMSA.
-L'apex peut se situer au milieu du virage mais plus généralement au 3/4 du virage. En règle générale, plus un virage est serré et plus le point de corde est retardé.
+    * Cela doit être fait pendant le freinage, **AVANT** d'arriver au PMSA.
+    * L'apex peut se situer au milieu du virage mais plus généralement au 3/4 du virage. En règle générale, plus un virage est serré et plus le point de corde est retardé.
 * T3 : localisation du point de sortie (**PS**) **AVANT** d'arriver sur l'apex.
-**AVANT** de faire passer les pneus sur le point de corde, avec le regard, on accroche le point de sortie PS et on ne le lâche plus.
+    * **AVANT** de faire passer les pneus sur le point de corde, avec le regard, on accroche le point de sortie PS et on ne le lâche plus.
 
 Il faut donc **an-ti-ci-per** et accrocher du regard :
 * Le point de corde (PC) alors qu'on se dirige vers le point de mise sur l'angle (PMSA)
@@ -127,9 +128,15 @@ Il faut donc **an-ti-ci-per** et accrocher du regard :
 
 Ci-dessous on voit bien que le pilote ne regarde pas du tout sa roue avant mais bien l'endroit où il veut aller
 
-<div align="center">
-<img src="./assets/img02.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img02.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
+
 
 
 ### Anticipation
@@ -146,7 +153,8 @@ L'anticipation permet d'être plus à l'aise et plus serein.
 * **ACHTUNG!** Il faut laisser du temps entre les 2 phases.
   + Sinon on n'appellerait pas ça la décomposition des virages 😁
   + Plus sérieusement, on a tendance à aller trop vite entre le moment où on a repéré le point de corde et la mise sur l'angle
-  + Il faut donc faire l'effort de viser le point de corde "longtemps" avant la mise sur l'angle effective. En d'autres mots cela veut dire qu'on continue de rouler tout droit, de freiner puis de faire la mise sur l'angle alors qu'on ne regarde QUE le point de corde et plus le PMSA. Un peu comme quand on était gamin et qu'à vélo on tournait la tête pour regarder la belle Rosalie qui marchait sur le trottoir.
+  + Il faut donc faire l'effort de viser le point de corde "longtemps" avant la mise sur l'angle effective.
+  + En d'autres mots cela veut dire qu'on continue de rouler tout droit, de freiner puis de faire la mise sur l'angle alors qu'on ne regarde QUE le point de corde et plus le PMSA. Un peu comme quand on était gamin et qu'à vélo on tournait la tête pour regarder une belle bagnoles garée le long du trottoir.
 * Une fois qu'on est sur l'angle et qu'on est sûr que nos roues vont passer sur le point de corde...
 * Alors, on accroche du regard le point de sortie **AVANT** de passer sur le point de corde
 * En fait, **on change d'objectif dès qu'on est sûr qu'on va passer sur le point de corde**
@@ -183,7 +191,7 @@ Il faut vraiment être conscient des différentes phases qui composent les virag
 * On passe sur l'angle en fixant le point de corde
 * On fait pivoter la moto en fixant le point de corde
 * Instant où on localise le point de sortie
-* Faire passer ses pneus sur le point de corde avec les 2 roues dans la direction du PS
+* Faire passer ses pneus sur le point de corde avec **les 2 roues dans la direction du PS**
 * On passe sur le point de corde en fixant le point de sortie
 
 S'assurer qu'il y a bien un délai notable entre le repérage du point de corde et la mise sur l'angle car généralement on va trop vite.
@@ -196,9 +204,25 @@ Viser le point d'après, en avance de phase, permet de gagner en sérénité et 
 
 On se met sur l'angle en visant le point de corde. L'image ci-dessous illustre bien l'idée de "regarder où on veut aller".
 
-<div align="center">
-<img src="./assets/img01.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img01.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
+
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img01.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
+
+
 
 Tout se passe comme s'il avait un hameçon dans le nez et qu'il était au bout d'une ficelle en train de tourner autour d'un piquet
 
@@ -217,7 +241,7 @@ Tout se passe comme s'il avait un hameçon dans le nez et qu'il était au bout d
 {: .no_toc }
 
 
-Dans un virage il faut joindre PMSA (point de mise sur l'angle), PV (point de pivot), PC (point de corde) et PS (point de sortie) mais en plus, il faut qu'au PC les points de contacts des pneus indiquent la direction du point de sortie. Pour ne pas louper le PC il faut donc remplir 2 conditions simultanément :
+Dans un virage il faut joindre PMSA (point de mise sur l'angle), PV (point de pivot), PC (point de corde) et PS (point de sortie) mais en plus, il faut qu'au PC les points de contacts des **pneus indiquent la direction du point de sortie**. Pour ne pas louper le PC il faut donc remplir 2 conditions simultanément :
 1. Faire passer ses roues dessus (pas à 1m ni à 25cm, non, non, dessus)
 1. La moto dans la direction de PS
 
@@ -273,7 +297,7 @@ Oui…mais non
 
 Oui. Dans les 2 photos, notez la différence d'écartement entre les pneus et la bande blanche.
 
-Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien dire "Le corps au-dessus de la peinture".
+Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien dire "Le corps au-dessus de la peinture" et pas la tête au dessus du vibreur et les pneus à 1m du PC.
 
 
 <figure style="max-width: 560px; margin: auto;">
@@ -301,7 +325,7 @@ Bon, ben vas-y, trace une droite qui va de PS à PC (voir les pointillés). Oui,
 
 Imagine... Imagine la situation théorique suivante. Là où la droite coupe l'extérieur du virage (un peu au-dessus du 1). Tu es à l'arrêt, tu oriente les roues de ton dragster (j'ai dis que c'était théorique, je fais ce que je veux...) selon la direction de la droite. C'est bon? Allez, 100% gaz...
 
-Qu'est-ce qui va se passer? Rien. Tu vas sortir comme une balle du virage. Aucune chance d'aller dans les graviers et tu bénificeras de la plus longue durée d'accélération possible (tu pars du bord de la piste)
+Qu'est-ce qui va se passer? Rien. Tu vas sortir comme une balle du virage. Aucune chance d'aller dans les graviers et tu bénéficieras de la plus longue durée d'accélération possible (tu pars du bord de la piste)
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/img_106.webp"
@@ -323,7 +347,7 @@ On reprend...
 * C'est possible car tu ne freine pas, tu n’accélère pas, tu ne fais rien. Il ne peut rien t'arriver.
 * Tu arrêtes de faire pivoter la moto quand ses roues sont alignées sur la droite qui va de PC à PS
 * Tu vises PS du menton. Là c'est facile tu es dans l'axe
-* Tu commences à accélérer tout de suite après PV (pas en 2 mais en 3). Tu appliques la **Throttle Rule**. Il ne peut rien arriver car tes roues sont dans la bonne direction. Tu vas juste aller de plus en plus vite entre PV, PC et PS. Rien de plus. Plus la moto se relève plus tu enroule le câble d'accélérateur.
+* Tu commences à accélérer tout de suite après PV (pas en 2 mais en 3). Tu appliques la **Throttle Rule**. Il ne peut rien arriver car tes roues sont dans la bonne direction. Tu vas juste aller de plus en plus vite entre PV, PC et PS. Rien de plus. Plus la moto se relève de plus en plus, tu enroule le câble d'accélérateur.
 * N'hésites pas à tirer sur le bracelet intérieur pour aider la moto à se relever plus vite.
 
 Si on compare avec le pilote qui reste collé à la corde:
@@ -332,6 +356,7 @@ Si on compare avec le pilote qui reste collé à la corde:
 * Qui va avoir la vitesse la plus élevée au PC?
 * Qui des deux va être le premier 100% gaz, **en butée**?
 * Qui va avoir la vitesse la plus élevée au bout de la ligne droite qui suit?
+* Qui va faire un "poutou" à la grid girl de service (mon seul objectif dans la vien en fait)
 
 T'as compris le truc.
 
@@ -349,7 +374,7 @@ T'as compris le truc.
 {: .no_toc }
 
 
-Un truc qui peut aider au début c'est de river ses yeux et son menton sur le point de corde. Notre menton et nos yeux vont changer de cible au fur et à mesure de notre avancement dans le virage mais ici l'idée c'est de s'entrainer en exagérant à faire abstraction du reste de la scene et d'être "focus" sur le point de corde.
+Un truc qui peut aider au début c'est de river ses yeux et son menton sur le point de corde. Notre menton et nos yeux vont changer de cible au fur et à mesure de notre avancement dans le virage mais ici l'idée c'est de s’entraîner en exagérant à faire abstraction du reste de la scene et d'être "focus" sur le point de corde.
 
 J'arrive au virage, je chope le cône du PC du regard et du menton. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas.
 
@@ -368,21 +393,19 @@ Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approch
 ### Triche un peu
 {: .no_toc }
 
-Si j'ai du mal à placer mes pneus parfaitement sur le point de corde, je peux appuyer légèrement sur le frein arrière. Ça permet de resserrer le virage et d'ajuster la trajectoire le cas échéant.
+Si j'ai du mal à placer mes pneus parfaitement sur le point de corde, dans les virages à gauche, je peux appuyer légèrement sur le frein arrière. Ça permet de resserrer le virage et d'ajuster la trajectoire le cas échéant. Maintenant que tu sais ça... Pourquoi les pilotes ont le frein arrière au guidon? Je te laisse réfléchir là dessus...
 
 
 ### Ta mise sur l'angle et le pivot sont trop lents
 {: .no_toc }
 
-
 Prenons le cas où je suis trop tôt à la corde. Au prochain tour je ne change rien mais je retarde un peu (5 m, 2 motos de long) mon freinage. Je vais m'enfoncer un peu plus dans le virage et m'écarter de la corde, faire mon PV plus loin et passer sur PC.
 
 Si on est d'accord avec le point précédent, si je suis constamment trop loin du cône du PC on va faire le contraire. Au prochain tour on ne change rien mais on freine plus tôt et on fait notre mise sur l'angle plus tôt. En faisant comme ça on ne se met pas dans le rouge en freinant plus fort ou en se mettant sur l'angle plus vite mais on va se rapprocher du point de corde.
 
-
 Mais bon, faut pas se bercer d'illusions, nous sommes trop lents à la mise sur l'angle et surtout au PV.
 
-Je crois qu'on hésite car on se dit qu'on va être tellement rapide que l'avant ne va pas suivre et qu'on va le perdre. À notre niveau c'est très improbable. Oui on va perdre l'avant car on a repris les freins mais là... On ne freine plus, on accélère pas encore. Le pneu avant est bien ancré, le pilote n'applique aucune action parasite sur la moto. Aucune chance que ça parte en vrille cette histoire.
+Je crois qu'on hésite car on se dit qu'on va être tellement rapide que l'avant ne va pas suivre et qu'on va le perdre. À notre niveau c'est très improbable. Oui on va perdre l'avant si on reprend les freins... Mais là? On ne freine plus, on accélère pas encore. Le pneu avant est bien ancré, le pilote n'applique aucune action parasite sur la moto. Aucune chance que ça parte en vrille cette histoire.
 
 Une solution c'est de faire du gymkhana entre des cônes. C'est un exercice qu'on fait en stage.
 
@@ -405,7 +428,7 @@ Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. I
 ### Je suis lourd
 {: .no_toc }
 
-Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tour passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique que, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
+Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tour passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique QUE, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
 
 Prenons un exemple. Il est illusoire de vouloir améliorer son accélération en sortie de virage alors que mes roues ne passent toujours pas au point de corde. Pourquoi ? Tout simple. Je suis en intermédiaire, mes temps ne sont pas ridicules, j'ai, je pense des freinages de tueur etc. Je me dis qu'il faut maintenant que je soigne ma façon d'accélérer et de sortir des virages. Cela dit, je passe systématiquement à un mètre des points de corde (ma tête est au-dessus de la ligne blanche et/ou mon slider est sur la bande blanche).
 
@@ -416,9 +439,6 @@ Il ne faut pas passer à la suite tant qu'on n'est pas capable de les assurer à
 **Une petite vidéo peut être...**
 
 Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture à 50% ou à 25% et à regarder où passe la roue avant... Oui, oui je sais, il n'est pas trop en mode débutant... Quoiqu'il en soit, ce sont vraiment des passages au millimètre sur les bandes blanches...
-
-<!-- https://youtu.be/Ym4SRjSKmoI -->
-
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -435,53 +455,85 @@ Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture 
 </figure>
 
 
-
-
-
-
-
 **Un autre exemple**
 
 Heu… Oui, oui je confirme, lui aussi est un peu au-delà de nos 75% mais c'est parce qu'il est jeune et enthousiaste… ✊
 
-<div align="center">
-<img src="./assets/img_05.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_05.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_06.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_06.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_07.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_07.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_08.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_08.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_09.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_09.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_10.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_10.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_11.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_11.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img_12.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_12.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 
 La vidéo complète est ci-dessous.
-
-<!-- https://www.youtube.com/watch?v=0LA2pNlNNw0 -->
-
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -518,33 +570,63 @@ La vidéo complète est ci-dessous.
 * On a regardé à l'intérieur du virage mais **on ne voit pas le PC**
 * On voit juste la courbe intérieure
 
-<div align="center">
-<img src="./assets/img03.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img03.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Alors qu'on passe sur l'angle, on continue à regarder l'intérieur de la courbe
 
-<div align="center">
-<img src="./assets/img04.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img04.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img05.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img05.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img06.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img06.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img07.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img07.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Quand on est sûr d'atteindre le point de corde, on passe à la suite et on vise le point de sortie. Là, pour le coup, on retrouve le schéma classique de la décomposition des virages qu'on a vu plus haut.
 
-<div align="center">
-<img src="./assets/img08.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img08.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 La vidéo dont sont issues les images précédentes
@@ -640,9 +722,14 @@ Un calcul rapide montre que :
 
 Dans le tableau ci-dessous, on a 0.43 G (4.2 m/s²) d'accélération alors qu'on part à 103 km/h (à gauche) et 90 km/h (à droite). Au bout de 8.32 sec, à gauche, on a fait 400m. A droite, pour faire 400 m il faut attendre 8,79 sec. Y a donc 0.5 sec d'écart.
 
-<div align="center">
-<img src="./assets/img_13.webp" alt=""  width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img_13.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 La vidéo ci-dessous rentre plus dans les détails.
 

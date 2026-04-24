@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-24 12:35:16
+last_modified_date: 2026-04-24 18:20:50
 ---
 
 # {{ page.title }}
@@ -188,9 +188,14 @@ On laisse un doigt sur l'embrayage pendant tout le freinage (je ne suis pas sûr
 * **Plus important** : si la roue arrière veut passer devant, rebondit etc. il "suffira" de tirer très légèrement sur l'embrayage (1 mm) pour désolidariser le moteur de la roue et remettre cette dernière dans l'axe
 * Bien sûr, il faut avoir remis de l'ordre et avoir relâché l'embrayage avant de passer sur l'angle
 
-<div align="center">
-<img src="./assets/img03.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img03.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 
@@ -228,9 +233,14 @@ Plus d'explications dans la vidéo ci-dessous :
 Quand on freine, on redresse le buste, on est bras tendus, verrouillés, le regard sur le point de mise sur l'angle (qui est devant nous normalement… vu qu'on se dirige dessus…). Il faut garder en tête l'image du diable qui sort de sa boîte.
 
 
-<div align="center">
-<img src="./assets/img04.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img04.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 
@@ -252,27 +262,52 @@ La sortie de derrière la bulle doit être aussi rapide que la coupure des gaz. 
 
 Pourquoi 3 et pas 4 ? Tout simplement parce qu'il y a trop de différence entre la taille du majeur et celle de l'auriculaire et donc si on règle le levier pour l'auriculaire il ne sera pas bien réglé pour le majeur. D'un autre côté, les 3 dernières phalanges de l'index, majeur et annulaire sont sensiblement à la même place donc, si on règle pour l'un on règle pour les autres.
 
-<div align="center">
-<img src="./assets/img05.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img05.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img07.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img07.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 On peut noter la "longueur" du levier de frein
 
-<div align="center">
-<img src="./assets/img08.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img08.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img06.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img06.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
-<div align="center">
-<img src="./assets/img09.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img09.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 
@@ -303,9 +338,14 @@ On peut noter la "longueur" du levier de frein
 
 Il faut sans doute aussi jeter un œil sur la vidéo ci-dessous où l'on parle, en autres et en Italien, de l'importance de l'écartement des bracelets.
 
-<div align="center">
-<img src="./assets/img10.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img10.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 À gauche avant, à droite après.
 
@@ -374,9 +414,14 @@ On perd 100% de pouvoir directif quand la roue avant est bloquée et qu'elle "gl
 
 Du point de vue du profil de freinage ça donne un truc comme ça. En abscisse c'est le temps et en ordonnée c'est la pressiion en bars. Attention, le plus important c'est le plateau à 100%.
 
-<div align="center">
-<img src="./assets/img11.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img11.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 D'abord, il faut comprendre que les 100% c'est les 100% de ce que l'on a décidé d'appliquer. Ce n'est pas les 100% de ce que peuvent donner les freins. Oui, bien sûr avec l'expérience votre 100% sera de plus en plus haut mais...
@@ -414,9 +459,14 @@ On freine très fort mais progressivement et de manière contrôlée comme si on
 
 Pour tester l'amplitude du débattement de la suspension on peut mettre un Rilsan sur un des tubes de fourche (calé en haut sur fourche inversée). Avant de partir en session il faut le remonter au maximum. À la fin de session il suffit de voir l'écart qui reste entre le Rislan et le bas de la fourche.
 
-<div align="center">
-<img src="./assets/img12.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img12.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 Pour avoir une idée du comportement de la suspension, on peut aussi [interpréter l'état des pneus]({%link docs/07_moto/006_lecture_des_pneus/lecture_des_pneus.md%}) comme joe l'indien les traces des bisons.
 
@@ -465,9 +515,14 @@ Prise tournevis
 
 Dans la photo ci-dessous il faut regarder la tête (la main n'est pas en prise tournevis)
 
-<div align="center">
-<img src="./assets/img14.webp" alt="" loading="lazy"/>
-</div>
+<figure style="max-width: 560px; margin: auto; text-align: center;">
+<img src="./assets/img14.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 
 On passe sur l'angle à la bonne vitesse et... La bonne vitesse d'entrée c'est quand l'arrière commence à déraper ! ([ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p 25) 😊
