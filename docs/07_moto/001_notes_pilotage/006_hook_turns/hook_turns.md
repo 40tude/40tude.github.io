@@ -1,16 +1,25 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "La technique du Hook Turn"
+title: "Hook Turn moto sur circuit : resserrer la trajectoire pour sortir plus fort"
+description: "Technique du Hook Turn en pilotage moto : comment resserrer un virage, charger l’avant et améliorer les sorties de courbe sur circuit."
+image: docs/07_moto/001_notes_pilotage/006_hook_turns/assets/img09.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 8
 #math: mathjax
 date: 2019-09-21 12:55:23
-last_modified_date: 2023-04-27 17:13:40
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# La technique du Hook Turn
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}
@@ -46,9 +55,9 @@ Que ce soit sur route ou sur circuit, on s'est tous, au moins une fois, trouvé 
 <!-- ###################################################################### -->
 ## Objectifs de la session
 
-* Se doter d'un outil qui va nous permettre de resserrer les virages (au milieu, au début ou à la fin). 
+* Se doter d'un outil qui va nous permettre de resserrer les virages (au milieu, au début ou à la fin).
 
-*Pourquoi ?* Afin de favoriser la sortie! Faudra le répéter combien de fois ? 
+*Pourquoi ?* Afin de favoriser la sortie! Faudra le répéter combien de fois ?
 
 *Ok, mais pourquoi ça favorise la sortie ?* Si on sort moins large, au prochain tour on pourra accélérer plus fort, plus tôt et on se retrouvera 100% gaz plus vite que les autres.
 

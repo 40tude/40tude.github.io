@@ -1,16 +1,25 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Knee to knee"
+title: "Transition gauche droite en moto : technique Knee to Knee sur circuit"
+description: "Comment enchaîner les changements d’angle rapidement avec la technique Knee to Knee en pilotage moto."
+image: docs/07_moto/001_notes_pilotage/008_knee_to_knee/assets/image-52.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 10
 #math: mathjax
 date: 2019-09-22 16:33:12
-last_modified_date: 2023-04-27 17:15:10
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# Knee to knee
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

@@ -1,14 +1,23 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Décomposition des virages"
+title: "Trajectoire moto sur circuit : méthode Three Steps et décomposition du virage"
+description: "Comment découper un virage en trois étapes, placer son regard et améliorer précision et régularité sur piste."
+image: docs/07_moto/001_notes_pilotage/003_three_steps/assets/img_04.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-04-24 10:15:28
 ---
 
-# Décomposition des virages
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

@@ -1,16 +1,25 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Les pif-paf"
+title: "Pif-Paf moto sur circuit : enchaîner les changements de direction rapidement"
+description: "Technique de pilotage pour améliorer timing, transfert et vitesse dans les enchaînements type pif-paf."
+image: docs/07_moto/001_notes_pilotage/009_pif_paf/assets/image-56.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 11
 #math: mathjax
 date: 2019-09-22 17:33:21
-last_modified_date: 2023-04-27 17:16:23
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# Les pif-paf
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

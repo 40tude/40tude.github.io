@@ -1,14 +1,24 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Découverte de la piste 2"
+title: "Accélération moto sur circuit : ouvrir les gaz vite et correctement"
+description: "Apprendre à ouvrir les gaz en sortie de virage, gérer la poignée et gagner du temps sur circuit."
+image: docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/assets/LFG2.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-04-24 10:15:28
 ---
 
-# Découverte de la piste 2
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

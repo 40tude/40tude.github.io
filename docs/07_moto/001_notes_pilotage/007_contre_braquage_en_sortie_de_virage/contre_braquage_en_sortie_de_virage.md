@@ -1,16 +1,25 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Contre braquage en sortie de virage"
+title: "Contre-braquage moto sur circuit : tourner plus vite et relever la moto en sortie"
+description: "Comprendre et travailler le contre-braquage pour accélérer la mise sur l’angle et optimiser les sorties de virage."
+image: docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/assets/image-41.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 9
 #math: mathjax
 date: 2019-09-22 15:51:16
-last_modified_date: 2023-04-27 17:14:26
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# Contre braquage en sortie de virage
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}
@@ -25,7 +34,7 @@ last_modified_date: 2023-04-27 17:14:26
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Introduction
-Je ferme les yeux et je me vois à moto, avant d'entrer dans un virage à gauche. Non, non, je ne suis pas sur circuit, je suis à 80 km/h sur une belle route de campagne bien goudronnée (si, si, ça existe j'en ai vu dans les pubs à la télé). J'ai coupé les gaz, ma vitesse est adaptée et là, je fais quoi? Que j'en sois conscient ou pas, je fais ce que l'on appelle un contre-braquage. Autrement dit, je pousse sur la partie gauche du guidon pour diriger la roue dans la direction **opposée** au virage. Le contre-braquage c'est contre intuitif... Cela dit comme on fait ça depuis que nos vélos n'ont plus de roulettes, c'est quasiment devenu instinctif. 
+Je ferme les yeux et je me vois à moto, avant d'entrer dans un virage à gauche. Non, non, je ne suis pas sur circuit, je suis à 80 km/h sur une belle route de campagne bien goudronnée (si, si, ça existe j'en ai vu dans les pubs à la télé). J'ai coupé les gaz, ma vitesse est adaptée et là, je fais quoi? Que j'en sois conscient ou pas, je fais ce que l'on appelle un contre-braquage. Autrement dit, je pousse sur la partie gauche du guidon pour diriger la roue dans la direction **opposée** au virage. Le contre-braquage c'est contre intuitif... Cela dit comme on fait ça depuis que nos vélos n'ont plus de roulettes, c'est quasiment devenu instinctif.
 
 Bon, hé bien, fort de ce constat, on va appliquer la même technique mais en sortie de virage...
 
@@ -62,7 +71,7 @@ Bon, hé bien, fort de ce constat, on va appliquer la même technique mais en so
 <!-- ###################################################################### -->
 ## Prérequis
 * On a une conduite de virage sur la ligne idéale et on accélère déjà assez tôt. Pour rappel, la ligne idéale c'est la ligne sur laquelle, à partir du moment où on enroule le cable d'accélérateur, on ne s'arrête plus.
-* En début de session, afin de mesurer les progrès, il faut penser à prendre un point de référence temporaire pour la fin du virage. 
+* En début de session, afin de mesurer les progrès, il faut penser à prendre un point de référence temporaire pour la fin du virage.
 * Pour rappel, la fin du virage c'est quand la moto est verticale et qu'on est 100% gaz, **en butée**.
 
 
@@ -129,7 +138,7 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 </div>
 
 
-### Tu n'es pas convaincu? 
+### Tu n'es pas convaincu?
 
 Allez, séance photos. On est dans un pif-paf. Le pif tournait à gauche. Comme le petit jeune sur la photo est généreux sur les gaz la roue avant se lève. Ça c'est bien car cela nous permet de bien voir ce qu'il fait avec ses bracelets.
 
@@ -159,7 +168,7 @@ Si elle n'était pas levée on verrait beaucoup moins bien le phénomène.
 </div>
 
 
-### Toujours pas convaincu ? 
+### Toujours pas convaincu ?
 
 On va donc regarder du côté de chez Honda. La physique et la mécanique y sont peut-être différentes. Bizarre, les deux affreux ci-dessous ont tous les deux la roues avant en l'air (ça on s'en fiche, ça permet juste de bien faire ressortir le phénomène) et ? Et on voit bien qu'eux aussi tirent sur le bracelet intérieur du virage précédent (regardes comment sont penchées les 2 autres motos derrière)
 
@@ -182,7 +191,7 @@ Bon allez, je crois qu'on a notre dose, j'arrête là.
 
 * Il faut tirer, mais il ne faut pas tirer trop vite sur le bracelet intérieur
 * On tire doucement au début du contre-braquage puis de plus en plus vite alors que la moto se relève et qu'on accélère de plus en plus.
-* Au lieu de relever la moto en 2 sec on va quand même la relever en 1 sec (ce n'est pas non plus des vacances 😀). 
+* Au lieu de relever la moto en 2 sec on va quand même la relever en 1 sec (ce n'est pas non plus des vacances 😀).
 * Donc il faut y aller, il faut **TIRER** de manière volontaire sur le guidon intérieur et accélérer en même temps
 * Attention. Si on tire trop vite sur le guidon on n'a pas le temps d'accélérer
   + 1 seconde c'est bien, c'est le temps qu'il faut pour dire "mille et un" par exemple. *Tu es un marrant toi, tu crois que j'ai le temps de compter en sortie de virage ?* Nan, c'est juste pour te donner une indication, un ordre d'idée.
@@ -191,7 +200,7 @@ Bon allez, je crois qu'on a notre dose, j'arrête là.
   + Donc on freine pareil, on ne change pas la mise sur l'angle ni la conduite du virage
   + La seule chose qu'on modifie c'est qu'en sortie, on tire sur le bracelet intérieur. Il est peut-être préférable de commencer par un virage à droite car alors on tire sur le bracelet droit et on tourne la poignée d'accélérateur en même temps. À voir, mais moi, ça me parait un peu plus facile.
 * Certains pilotes disent qu'en sortie de virage, il faut repousser la moto avec ses bras pour qu'elle se mette, de plus en plus verticale alors qu'on reste penché et qu'on enroule l'accélérateur. Oui, oui ils ont raison et si toutes ces histoires de contre braquage te saoule essaies de faire ça.
-  
+
 Je te propose l'exercice suivant... Enferme toi dans une pice parce que tu va avoir l'air d'un con Jean-Pierre... Assieds-toi sur une chaise. Prends un balai avec tes deux mains et tu le mets à l'horizontale devant toi. Penche ton buste un peu vers la gauche et fais en sorte que le manche à balais te suive (le côté gauche est donc plus bas que le côté droit). OK, maintenant, en restant le buste penché à gauche, sans trop réfléchir, essaies de repousser le balai un peu vers la droite. En ce qui me concerne, je me retrouve toujours penché mais avec le bras gauche un peu plié et le bras droit un peu tendu. Finalement mon buste et le balai sont toujours penchés vers la gauche mais la partie gauche du manche est dorénavant plus proche de moi alors que la partie droite est plus loin de moi. Bref, tout se passe comme si on avait tiré sur le bras intérieur du virage. **Conclusion :** repousser la moto en sortie de virage revient à **tirer** sur le bracelet intérieur et donc à contre-braquer. CQFD 😁
 
 Il faut rester déhanché en sortie de virage alors que la moto se relève. Relire si besoin la Note de Pilotage sur la [Conduite du Virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}).
@@ -245,7 +254,7 @@ En allant chercher systématiquement l'extérieur alors qu'en faisant l'effort d
 
 Plus tard, bien sûr, quand on aura une vitesse de sortie bien supérieure, on n'aura pas d'autre choix que d'utiliser toute la piste même si on contre-braque etc. Mais bon, pour l'instant, faisons l'effort de contre braquer, d'utiliser moins de largeur de piste. Ça va nous donner de la marge pour plus tard et ça réduit la distance parcourue.
 
-Le reste des explications est ici : 
+Le reste des explications est ici :
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NqmSB5RJNRg?si=3aTJcWCo-dLm-30Z&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -1,16 +1,25 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Short shift"
+title: "Short Shift moto sur circuit : quand monter un rapport plus tôt"
+description: "Comprendre quand utiliser le short shifting sur piste pour stabiliser la moto et améliorer les sorties."
+image: docs/07_moto/001_notes_pilotage/011_short_shift/assets/Trajectoires-Carole.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 13
 #math: mathjax
 date: 2020-04-15 00:39:25
-last_modified_date: 2023-04-27 17:17:58
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# Short shift
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}
@@ -35,18 +44,18 @@ Le short shift (ou short shifting) en Français, c'est l'action de passer la vit
 <!-- ###################################################################### -->
 ## L'objectif de la session
 
-Il n'y a pas vraiment d'objectif dans la session car on est très dépendant du circuit. 
+Il n'y a pas vraiment d'objectif dans la session car on est très dépendant du circuit.
 
 Par contre si tel ou tel endroit du circuit est connu pour nécessiter le short shift, l'objectif c'est bien sûr de l'avoir mis en place.
 
-Pas d'angoisse, il n'y a vraiment rien de compliquer. Faut juste que cela devienne, tour après tour une habitude, 
+Pas d'angoisse, il n'y a vraiment rien de compliquer. Faut juste que cela devienne, tour après tour une habitude,
 
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## Prérequis
 
-Pour l'instant, c'est simple : **LA** référence française sur le sujet c'est la vidéo ci-dessous. Il suffit de prendre le temps de la voir une ou deux fois. 
+Pour l'instant, c'est simple : **LA** référence française sur le sujet c'est la vidéo ci-dessous. Il suffit de prendre le temps de la voir une ou deux fois.
 
 
 <div align="center">

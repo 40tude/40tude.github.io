@@ -1,15 +1,25 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Découverte de la piste 1"
+title: "Découvrir un circuit moto : repères, trajectoires et premiers roulages"
+description: "Comment découvrir un circuit moto efficacement : repères visuels, placement et premières bases du pilotage sur piste."
+image: docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/assets/LFG2.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2023-06-01 18:22:57
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# Découverte de la piste 1
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}
@@ -28,12 +38,12 @@ Tu as dormi peu la nuit dernière... Endormis tard, tu t'es levé à 5H30. Dans 
 <!-- ###################################################################### -->
 ## Objectifs de la session
 
-1. Découvrir la piste en roulant à **75% de nos capacités**. 
+1. Découvrir la piste en roulant à **75% de nos capacités**.
 1. En ligne droite, **se coucher sur la moto**.
 <!-- 1. Faire l'effort d'ouvrir les gaz en grand dès qu'on peut -->
 <!-- 1. Faire passer ses pneus sur les points de corde -->
 
-<!-- 
+<!--
 Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 2 min alors je dois tourner en 2'30" ? Peut-être. J'en suis de moins en moins sûr.
 -->
 
@@ -58,8 +68,8 @@ Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 
 
 ### Dans la tête
 
-* Est-ce que je suis capable de faire un tour de circuit "dans ma tête" ? Ne rigolez pas, c'est plus important qu'il n'y paraît. On déclenche le chrono sur son téléphone, on ferme les yeux, on fait un tour complet dans sa tête, on arrête le chrono, on ouvre les yeux et on regarde le temps.  
-Afin que le chrono d'un tour "dans la tête" soit similaire au chrono d'un tour réel, il faut, pour chaque virage, avoir des points de repère : point de freinage, point de mise sur l'angle, point de corde, point de sortie.  
+* Est-ce que je suis capable de faire un tour de circuit "dans ma tête" ? Ne rigolez pas, c'est plus important qu'il n'y paraît. On déclenche le chrono sur son téléphone, on ferme les yeux, on fait un tour complet dans sa tête, on arrête le chrono, on ouvre les yeux et on regarde le temps.
+Afin que le chrono d'un tour "dans la tête" soit similaire au chrono d'un tour réel, il faut, pour chaque virage, avoir des points de repère : point de freinage, point de mise sur l'angle, point de corde, point de sortie.
 Il faut aussi avoir tout un ensemble de marques tout au long du circuit : je vise le grand arbre, je passe sur la marque jaune, sous la passerelle je suis à gauche de la piste, je fais bien attention d'arriver sur le virage en posant mes roues sur la ligne blanche, à l'extrême droite de la piste...
 * Est-ce que je visualise bien les enchaînements de virages ? Est-ce que je peux les réciter sans hésitation à voix haute ? : Ligne droite, un gauche serré, un pif, un paf, un grand gauche…
 * Deux ou trois jours avant d'aller rouler, dans les embouteillages par exemple, c'est un bon moyen de faire passer le temps. Faut juste penser à mettre la feuille avec la piste et ses notes sur le siège passager.
@@ -124,9 +134,9 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 ## La session
 
 ### Pas de pression
-C'est un loisir. On est là pour ce faire plaisir. Le principe est donc simple : pas de pression.   
-Lors de découverte de la piste on souhaite juste prendre nos marques sur le circuit en roulant à 75% de nos capacités.   
-En plus, il faut que notre cerveau s'habitue à la vitesse et qu'il ait suffisamment de bande passante pour bien enregistrer ce qui se passe. Si on brûle les étapes, si on va trop vite, si on se met dans le rouge, on ne va pas pouvoir apprendre le circuit. On va "oublier" de se coucher sur la moto et finalement ce sera une session pour rien.   
+C'est un loisir. On est là pour ce faire plaisir. Le principe est donc simple : pas de pression.
+Lors de découverte de la piste on souhaite juste prendre nos marques sur le circuit en roulant à 75% de nos capacités.
+En plus, il faut que notre cerveau s'habitue à la vitesse et qu'il ait suffisamment de bande passante pour bien enregistrer ce qui se passe. Si on brûle les étapes, si on va trop vite, si on se met dans le rouge, on ne va pas pouvoir apprendre le circuit. On va "oublier" de se coucher sur la moto et finalement ce sera une session pour rien.
 
 ### Les pieds
 Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus large de tes pieds (normal faut répartir la pression au maximum). Eh bien c'est cette partie du pied que tu dois faire reposer sur tes reposes pieds. Pas la pointe du pied ni le talon, non, non, juste cette partie. Oui, faut plier les genoux. Oui, ça fait bizarre mais oui, tu peux aussi anticiper l'action et prendre l'habitude de poser tes pieds de cette façon les semaines qui précèdent la journée de roulage quand tu es sur route.
@@ -137,11 +147,11 @@ Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus 
 * Dans les 2 cas je suis à 1cm de la bande blanche. Je ne suis pas à 1m ou à 25cm. Non, je roule à 1cm de la bande blanche.
 
 ### La chasse aux cônes
-* C'est comme à Pâques lors de la chasse au oeufs. Normalement, sur chaque virage il y aura 3 cônes. Un à l'entrée et à l'extérieur du virage (au bout du vibreur typiquement). Un second à l'intérieur du virage. Un dernier à la sortie et à l'extérieur du virage, lui aussi au bout du vibreur. 
+* C'est comme à Pâques lors de la chasse au oeufs. Normalement, sur chaque virage il y aura 3 cônes. Un à l'entrée et à l'extérieur du virage (au bout du vibreur typiquement). Un second à l'intérieur du virage. Un dernier à la sortie et à l'extérieur du virage, lui aussi au bout du vibreur.
 * Comme tu es à 75% de tes capacités, prends le temps de les repérer.
 * Prends aussi le temps de remarquer que plus le virage est serré, plus le cône intérieur est loin dans le virage. Par exemple dans un virage en épingle tu vas le trouver au 3/4 du virage.
-* Idéalement tu dois passer à 1cm de chacun d'entre eux. 
-    * Pour le 1 et le 3 c'est trop facile car tu roules, tout à gauche ou tout à droite sur la piste. J'en parle même pas. Trop facile je te dis. 
+* Idéalement tu dois passer à 1cm de chacun d'entre eux.
+    * Pour le 1 et le 3 c'est trop facile car tu roules, tout à gauche ou tout à droite sur la piste. J'en parle même pas. Trop facile je te dis.
     * Le second cône lui par contre... Good luck. On en reparle plus tard. Pour l'instant note juste où il est et garde en tête qu'à terme tu veux faire passer tes roues dessus (j'ai bien dis tes roues)
 
 
@@ -166,7 +176,7 @@ Alors...Est-ce que tu t'es fait plaisir ? Si c'est le cas, bravo. Tu peux être 
 * Tu bois un coup d'eau, tu nettoies la visière et tu te remets de tes émotions
 * Pour le reste tu as 40 minutes avant la prochaine session. On est laaarge...
     * Attention, y a peut être un debriefing avec le marshall. Vas-y, y a toujours des choses à apprendre.
-* Allez, encore un petit effort. Prends le temps de noter tes impressions, par écrit, virage par virage, sur la feuille de papier que tu utilisais en regardant YouTube. 
+* Allez, encore un petit effort. Prends le temps de noter tes impressions, par écrit, virage par virage, sur la feuille de papier que tu utilisais en regardant YouTube.
 
 
 
@@ -198,7 +208,7 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 
 
 
-### À propos des cônes 
+### À propos des cônes
 * Tu peux indiquer, pour chaque virage où sont les cônes sur ton plan de la piste ?
 * En fin de session, pour chaque virage, il faudrait avoir identifié :
     * Le point de freinage (**PF**). Point où on commence à freiner.
@@ -209,7 +219,7 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 
 
 
-### Les rapports 
+### Les rapports
 * Je sais, on en a pas parlé, mais pour chaque virage, peux tu indiquer sur ton plan de la piste combien de rapport tu rentres (-2, -1, -3...) ?
 * Si tu ne sais pas c'est pas grave. Lors de la prochaine session notes l'information pour 1 ou 2 virages puis encore pour 1 ou 2 virages à la session d'après. En fin de journée tu auras couvert tout le circuit.
 * En session tu n'as pas de temps à consacrer aux rétrogradages et il ne faut pas regarder ton tableau de bord. Afin de te libérer la tête apprends le nombre de rapport à rentrer à chaque virage.
@@ -296,7 +306,7 @@ Il faut donc vérifier régulièrement qu'on n'a pas tendance à s'accrocher au 
 
 * Être capable d'écarter et de rapprocher les coudes du corps (Chicken Wings)
 * Être capable de changer le grip (la façon de tenir) sur les poignées quand on est sur l'angle.
-* Avant et dans le virage, sentir que le buste est mobile et qu'on plie bien le coude intérieur. 
+* Avant et dans le virage, sentir que le buste est mobile et qu'on plie bien le coude intérieur.
 * Avant un virage, à la fin du freinage ne pas sentir qu'on force comme un "dahu" sur les avant-bras afin de les garder tendus avec le secret espoir d'enfoncer l'avant de la moto dans le sol. À la fin du freinage, quand on relâche progressivement la poignée de frein, on est de plus en plus "lite" sur le frein avant, on utilise le poids du corps (tête et buste) pour appuyer l'avant de la moto. Les bras ne sont donc pas tendus. Au contraire, à la fin du freinage, les bras se plient pour nous permettre de pencher le buste et approcher la tête vers la poignée qui est à l'intérieur du virage. Mais bon n'anticipons pas... À ce stade retiens juste que tu dois éviter d'être trop tendu au niveau des bras à la fin du freinage.
 
 Alors que la moto roule en ligne droite, afin de confirmer qu'on est "Zen" on peut vérifier qu'on est capable de faire des :
@@ -394,7 +404,7 @@ Idem si vous êtes en 600 et qu'un gamin en Yam R3 vous met 10" au tour (ptit co
 
 
 
-<!-- 
+<!--
 ## Conclusion temporaire
 
 Je réalise que cela fait beaucoup de choses pour une session de découverte de la piste... Ici ma recommandation est la suivante : si tu n'es pas sûr d'ouvrir en grand dès que tu le peux ou si tu n'es pas sûr d'être couché sur la moto à la moindre occasion... Prends ton temps, refais une session, reste bien à 75% de tes capacités et travaille ces deux aspects de ton pilotage.
@@ -402,7 +412,7 @@ Maj 17 03 23 : Par exemple à la prochaine session donnes toi pour objectif de s
 
 À ce stade les trajectoires, la position, les chronos on s'en fout... Pense juste à te coucher et à ouvrir à 100%. Une fois que ça c'est en place, applique-toi à rentrer suffisamment **lentement** dans les virages pour placer tes roues sur le point de corde à chaque tour. Ou bien... Applique-toi à rentrer suffisamment vite dans les virages pour pouvoir rejoindre le point de corde et placer tes roues sur le point de corde à chaque tour. Généralement on (je) freine trop avant le virage, je rentre trop lentement et la moto n'a pas assez d'inertie pour rejoindre le point de corde toute seule. Au tour suivant je ne fais pas l'effort de freiner plus tard ou de freiner moins fort pour rentrer avec plus de vitesse dans le virage. La trouille ? Peut-être... Mais c'est idiot car comme on rentre sans freiner, ni accélérer, rien ne peut arriver... Enfin bref, "100 fois sur le métier, remettez votre ouvrage...". De toute façon je reviens sur ces histoires de point de corde dans l'article suivant.
 
-Oui, oui il y a des pilotes qui roulent beaucoup plus vite... Je confirme, tes trajectoires ne sont pas au top... Oui, oui tu te fais avoir par beaucoup de monde au freinage... Cela dit, **avant de courir il faut savoir marcher**. Donc, refais une première session et acquiers de bonnes bases sur lesquelles tu pourras construire quelque chose. 
+Oui, oui il y a des pilotes qui roulent beaucoup plus vite... Je confirme, tes trajectoires ne sont pas au top... Oui, oui tu te fais avoir par beaucoup de monde au freinage... Cela dit, **avant de courir il faut savoir marcher**. Donc, refais une première session et acquiers de bonnes bases sur lesquelles tu pourras construire quelque chose.
 -->
 
 

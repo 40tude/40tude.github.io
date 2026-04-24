@@ -1,14 +1,24 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Freinage"
+title: "Freinage moto sur circuit : technique, pression et vitesse d’entrée"
+description: "Apprendre le freinage moto sur piste : montée rapide en pression, plateau constant, freinage dégressif et entrée en virage."
+image: docs/07_moto/001_notes_pilotage/004_freinage/assets/img02.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-04-24 10:15:28
 ---
 
-# Freinage
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

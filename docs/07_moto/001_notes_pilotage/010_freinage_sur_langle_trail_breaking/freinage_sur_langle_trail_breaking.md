@@ -1,16 +1,25 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Freinage sur l'angle (Trail Braking)"
+title: "Trail Braking moto : comment freiner sur l’angle sur circuit"
+description: "Guide du trail braking en moto : relâcher les freins sur l’angle, charger l’avant et mieux tourner."
+image: docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/assets/img_01.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 12
 #math: mathjax
 date: 2019-12-31 16:06:58
-last_modified_date: 2023-09-03 11:19:41
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# Freinage sur l'angle (Trail Braking)
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}
@@ -43,7 +52,7 @@ last_modified_date: 2023-09-03 11:19:41
 </div>
 
 
-1. Faut surtout noter la position des doigts sur le levier de frein dans les 2 images. 
+1. Faut surtout noter la position des doigts sur le levier de frein dans les 2 images.
 1. Ensuite, on peut comparer comment le menton désigne la cible dans l'image de gauche alors que c'est pas encore le cas dans l'image de droite.
 
 
@@ -115,7 +124,7 @@ La différence entre débutant et le confirmé c'est, entre autres, la longueur 
 
 * Le débutant termine son freinage droit. Au PMSA il engage la moto gaz coupé, il est patient, il est patient... Après le point de pivot (PV) il ouvre les gaz en appliquant la Throttle Rule qui dit qu'une fois qu'on a commencé à tourner la poignée on ne s'arrête plus.
 * Le confirmé, lui, continue, en entrée de virage, à freiner sur l'angle.
-  + Il est en phase de relâche des freins. 
+  + Il est en phase de relâche des freins.
   + Plus il a d'angle, moins il freine
   + Sa phase neutre (sans frein ni gaz) est donc plus courte
   + Comme le débutant, quand le PV est passé et que les roues sont alignées, il remet les gaz en appliquant la Throttle Rule
@@ -199,7 +208,7 @@ Une dernière dans un contexte de conduite sur route. Cela dit les principes son
 
 ### Grip shift sur l'angle
 
-Juste après avoir relâché le levier de frein le grip shifting c'est l'action qui consiste à faire tourner sa main d'1/8 de tour (je dis ça au pif) autour de la poignée de gaz mais avant de commencer à enrouler cette dernière jusqu'à la butée. Ci-dessous, le gars est bien, bien sur l'angle et il relâche gentiment le frein avant alors qu'il rejoint le point de corde. Il ne semble pas faire de grip shift : 
+Juste après avoir relâché le levier de frein le grip shifting c'est l'action qui consiste à faire tourner sa main d'1/8 de tour (je dis ça au pif) autour de la poignée de gaz mais avant de commencer à enrouler cette dernière jusqu'à la butée. Ci-dessous, le gars est bien, bien sur l'angle et il relâche gentiment le frein avant alors qu'il rejoint le point de corde. Il ne semble pas faire de grip shift :
 
 <div align="center">
 <img src="./assets/img_03.webp" alt="" width="450" loading="lazy"/>
@@ -252,8 +261,8 @@ Rossi fait la même chose mais avec un grip shift alors qu'il termine son freina
 <img src="./assets/img_14.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-Il faut garder en tête que le grip shift permet 
-1. De replacer sa main pour pouvoir accélérer sans se retrouver, plus tard, "coincé" au niveau du poignet. 
+Il faut garder en tête que le grip shift permet
+1. De replacer sa main pour pouvoir accélérer sans se retrouver, plus tard, "coincé" au niveau du poignet.
 1. Ça facilite aussi le positionnement de la main et de l'avant-bras pour prendre la poignée de gaz avec une prise tournevis.
 
 <div align="center">
@@ -269,7 +278,7 @@ Dans la vidéo ci-dessous il ne faut surtout pas hésiter à mettre la vitesse �
 
 
 
-Sylvain Guintoli a dédié une vidéo à ce qu'il appelle en français "la recharge de poignet" mais bon, on parle bien ici de grip shifting. Malheureusement la vidéo est dorénavant réservée aux membres. Bon, je laisse quand même le lien :  
+Sylvain Guintoli a dédié une vidéo à ce qu'il appelle en français "la recharge de poignet" mais bon, on parle bien ici de grip shifting. Malheureusement la vidéo est dorénavant réservée aux membres. Bon, je laisse quand même le lien :
 
 * <https://youtu.be/f1NR1VdvmTA>
 

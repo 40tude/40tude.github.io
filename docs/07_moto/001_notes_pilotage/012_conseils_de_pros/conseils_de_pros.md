@@ -1,15 +1,24 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Conseils de pros"
+title: "Conseils de pros pour le pilotage moto sur circuit : erreurs et techniques clés"
+description: "Conseils de pilotes et coachs professionnels pour améliorer trajectoires, freinage, vitesse en virage et régularité sur circuit."
+image: docs/07_moto/001_notes_pilotage/012_conseils_de_pros/assets/Screenshot_20230622_182719_Instagram.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 14
 date: 2020-04-13 14:26:40
-last_modified_date: 2023-04-27 17:19:44
+last_modified_date: 2026-04-24 10:15:28
 ---
 
 
-# Conseils de pros
+# {{ page.title }}
 {: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 ## Plan de la Note de Pilotage
 {: .no_toc .text-delta}

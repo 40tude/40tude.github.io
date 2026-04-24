@@ -1,17 +1,29 @@
 ---
+published: true
+author: 40tude
 layout: default
-title: "Introduction aux Notes de Pilotage Moto"
+title: "Pilotage moto sur circuit : méthode progressive pour apprendre à rouler vite"
+description: "Introduction aux notes de pilotage moto sur piste : trajectoires, freinage, vision et techniques pour progresser méthodiquement."
+image: docs/07_moto/001_notes_pilotage/000_introduction/assets/img01.webp
+twitter:
+  card: summary_large_image
 parent: "Notes de Pilotage Moto"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-04-24 10:15:28
 ---
+
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
 
 <div align="center">
 <img src="./assets/img01.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-# Introduction aux Notes de Pilotage Moto
+
 
 ## Première fois sur circuit
 Les choses ont évolué depuis la première mise en ligne des Notes de Pilotage Moto (fin 2019). Dorénavant, je vous propose de commencer par lire l'article [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%})
