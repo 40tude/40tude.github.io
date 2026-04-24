@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 10
 #math: mathjax
 date: 2019-09-22 16:33:12
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 
@@ -117,17 +117,37 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 Plus d'informations dans les 2 vidéos ci-dessous
 
-<!-- https://youtu.be/t3dA1x8c0F4?t=694 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/t3dA1x8c0F4?si=Gm6S_3OizGJN9m6S&amp;start=694" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/t3dA1x8c0F4?start=694"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
-<!-- https://youtu.be/_UWI-hvQ-6U?t=132 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_UWI-hvQ-6U?si=DXoQnLzsD6f61hQd&amp;start=132" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/_UWI-hvQ-6U?start=132"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -174,6 +194,17 @@ Plus d'informations dans les 2 vidéos ci-dessous
 
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>

@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 13
 #math: mathjax
 date: 2020-04-15 00:39:25
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 
@@ -58,9 +58,22 @@ Pas d'angoisse, il n'y a vraiment rien de compliquer. Faut juste que cela devien
 Pour l'instant, c'est simple : **LA** référence française sur le sujet c'est la vidéo ci-dessous. Il suffit de prendre le temps de la voir une ou deux fois.
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7FBEveekLKE?si=D7dj1GO6F7YzO9zX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/7FBEveekLKE?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
+
 
 
 <!-- ###################################################################### -->
@@ -118,9 +131,22 @@ Carole - La parabolique c'est la courbe Fox en haut à gauche (clique sur l'imag
 
 Toujours à Carole, on peut regarder attentivement ce qui se passe à 1'04" dans la vidéo ci-dessous :
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k623KIkV8Q4?si=OAa-vuEAYV6cAUc-&amp;start=43" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/k623KIkV8Q4?start=43"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
+
 
 
 
@@ -137,9 +163,21 @@ La Ferté Gaucher (LFG) - Le N°6 c'est le plus grand gauche du circuit. Attenti
 
 Dans la vidéo ci-dessous il faut écouter attentivement le passage de vitesse à 1'01. On est dans le grand gauche N°6.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JZ5-4_W7PFk?si=rJM7dIVBXPDsUn9z&amp;start=46" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/JZ5-4_W7PFk?start=46"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
+
 
 
 
@@ -155,9 +193,21 @@ Sanglier se trouve à tout à gauche ci-dessous :
 
 Ci-dessous, il faut écouter le passage de rapport à 1'13" par exemple.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RxfoK52YFrE?si=5ggjlexgwnAjcp72" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/RxfoK52YFrE?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
+
 
 
 
@@ -190,9 +240,19 @@ Ci-dessous, il faut écouter le passage de rapport à 1'13" par exemple.
 
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 

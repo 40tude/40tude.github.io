@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 # {{ page.title }}
@@ -252,9 +252,20 @@ Oui. Dans les 2 photos, notez la différence d'écartement entre les pneus et la
 
 Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien dire "Le corps au-dessus de la peinture".
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kfZlxpH2cZ0?si=cnNNl8Og5Z_6LiIj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/kfZlxpH2cZ0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 ### Le point de pivot (PV)
@@ -360,9 +371,20 @@ Dans la vidéo suivante il ne faut pas hésiter à mettre la vitesse de lecture 
 
 <!-- https://youtu.be/Ym4SRjSKmoI -->
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ym4SRjSKmoI?si=TxKZ0QJrkl6UXa5b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/Ym4SRjSKmoI?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -412,9 +434,20 @@ La vidéo complète est ci-dessous.
 
 <!-- https://www.youtube.com/watch?v=0LA2pNlNNw0 -->
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0LA2pNlNNw0?si=b_x5V-D-BSLU1jnK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/0LA2pNlNNw0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -465,17 +498,39 @@ Quand on est sûr d'atteindre le point de corde, on passe à la suite et on vise
 
 
 La vidéo dont sont issues les images précédentes
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/t-QLEVNM7Ss?si=NzZ24xAL7jKubCsr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/t-QLEVNM7Ss?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
 Allez, une autre vidéo sur le sujet. J'aime bien la démo à **1:11** ainsi que les spots à **2:58**. Enfin bref, c'est en anglais mais c'est à voir.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gCgvm5oVPWk?si=X17Rd2OHaicvbyHL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/gCgvm5oVPWk?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -537,9 +592,20 @@ Dans le tableau ci-dessous, on a 0.43 G (4.2 m/s²) d'accélération alors qu'on
 
 La vidéo ci-dessous rentre plus dans les détails.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xJqnsOYD8T0?si=aohrMEMyOgs7CJYJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/xJqnsOYD8T0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -552,7 +618,17 @@ La vidéo ci-dessous rentre plus dans les détails.
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 

@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 8
 #math: mathjax
 date: 2019-09-21 12:55:23
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 
@@ -77,9 +77,21 @@ Que ce soit sur route ou sur circuit, on s'est tous, au moins une fois, trouvé 
 
 * Faire des chaises à la maison, le long d'un mur, pour muscler les cuisses.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/O1l1DBqYUfc?si=pDUOWOOoL-MHegdt&amp;start=17" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/O1l1DBqYUfc?start=17"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 * Avoir un virage dont on [maitrise la conduite]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}), où on se sent bien et dont on souhaite resserrer la sortie :
     * C'est important de resserrer la sortie car ça nous donne de la marge pour les prochaines fois où on sortira encore plus fort (et donc avec une tendance plus forte à aller vers l'extérieur)
@@ -170,10 +182,20 @@ Bien être calé grâce aux genoux et aux pieds
 
 
 
-<!-- https://www.youtube.com/watch?v=rsCzhVyCFNg&feature=youtu.be&t=787 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rsCzhVyCFNg?si=_5dQOiaLnGGhQJ4w&amp;start=787" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/rsCzhVyCFNg?start=787"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -219,10 +241,21 @@ Et pas uniquement le mettre encore plus bas...
 
 La vidéo ci-dessous revient sur les forces en action dans un virage et justifie pourquoi il faut pencher la moto vers l'intérieur du virage. A la fin elle revient aussi sur ces histoires de contre braquage.
 
-<!-- https://youtu.be/PgUOOwnZcDU -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PgUOOwnZcDU?si=gobbx5ouzrZJYF2N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/PgUOOwnZcDU?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 On comprend dans la vidéo précédente qu'il faut appliquer un couple afin d'empêcher la moto de se relever. Pour rappel, un couple c'est une force au bout d'un axe. Si tu n'arrives pas à desserrer un écrou, typiquement, tu prends une clé plus longue. Si on veut appliquer plus de couple, à masse égale, il faut avoir un bras de levier plus grand (et pas nécessairement avoir une masse plus basse).
@@ -238,17 +271,39 @@ On retiendra qu'en virage, il ne faut pas nécessairement mettre sa tête et son
 
 Le lien sur la vidéo précédente dont est extraite l'image
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VFZoZLMZGqQ?si=JXyeSsawWDEkG9__&amp;start=187" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/VFZoZLMZGqQ?start=187"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 Une autre vidéo sur le même sujet sans toutefois parler de Hook Turn
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MLrjm84_BOU?si=doGEspUJAkY-k8ou" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/MLrjm84_BOU?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -266,6 +321,17 @@ Une autre vidéo sur le même sujet sans toutefois parler de Hook Turn
 
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>

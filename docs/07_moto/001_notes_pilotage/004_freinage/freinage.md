@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 # {{ page.title }}
@@ -118,9 +118,20 @@ En ce qui me concerne je pense qu'il faut que j'ai "l'intention" de sortir 2 fes
 
 Voir ci-dessous la vidéo dont est extraite la photo :
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EJCCMohqHMI?si=yyBj7XFiJsgpDaFR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/EJCCMohqHMI?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -140,9 +151,21 @@ Ci-dessous, au bout de la ligne droite il y a un virage à gauche. On voit bien 
 
 La vidéo dont est extraite la photo :
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/V8Osi_tAYi0?si=KxT9Wi7HVg8REtCk&amp;start=197" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/V8Osi_tAYi0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 Heu... Si tu sors d'un gauche, que tu enquilles un petit bout de ligne droite pour attaquer un autre gauche... On est d'accord. On an-ti-ci-pe et on **réfléchit**. Donc, c'est même pas la peine de remettre tes 2 fesses sur la selle. Tu gardes la fesse gauche dehors pendant toute la ligne droite. Encore une fois, moins on perturbe la moto mieux c'est. Donc moins tu déplace tes 80 kg (faut pas oublier la combine, les bottes, le casque...) sur une moto qui pèse 200 kg mieux c'est. En plus tu gagnes du temps et tu t'économise physiquement. Que demande le peuple...
@@ -173,9 +196,20 @@ Idéalement, sur un 1000, moto qui a beaucoup d'inertie, il faut aussi rentrer l
 
 Plus d'explications dans la vidéo ci-dessous :
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Bv0Wb09SAF0?si=VyqwlHWCLN1z5p7C&amp;start=462" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/Bv0Wb09SAF0?start=462"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 Quand on freine, on redresse le buste, on est bras tendus, verrouillés, le regard sur le point de mise sur l'angle (qui est devant nous normalement… vu qu'on se dirige dessus…). Il faut garder en tête l'image du diable qui sort de sa boîte.
 
@@ -234,9 +268,20 @@ On peut noter la "longueur" du levier de frein
 
 À ce propos on peut jeter un œil sur la première moitié de la vidéo ci-dessous.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CJwCxrORlR4?si=8t6OAB5z4SBq4N4t" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/CJwCxrORlR4?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 Il faut sans doute aussi jeter un œil sur la vidéo ci-dessous où l'on parle, en autres et en Italien, de l'importance de l'écartement des bracelets.
 
@@ -250,16 +295,38 @@ Ci-dessus, les carrés verts me permettent juste de m'assurer que les angles son
 
 Écarter les bracelets a pour objectif de donner plus de couple au moment où on va pousser le bracelet intérieur et mettre la moto sur l'angle. Si on a plus de couple, à force égale la mise sur l'angle sera plus rapide.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9AuWgTecSBw?si=w4WFFbHGXouRIOAd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/9AuWgTecSBw?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 Je ne résiste pas l'envie de pointer cette vidéo à propos de "THE ultimate outils de la mort" qui permet d'avoir des demi-guidon avec les mêmes angles. Sans doute à refaire d'une manière ou d'une autre avec ses propres moyens.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VPTsNQe2M5w?si=0eqWYGNfcRnECCis" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/VPTsNQe2M5w?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -437,9 +504,20 @@ Une fois qu'on est sur l'angle on ne change plus notre position sur la moto. Cel
 
 ### Revoir absolument cette vidéo
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NauC5A-Wio8?si=IMVLoePGvWkdNVLu&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/NauC5A-Wio8?start=5"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 J'aimerai vraiment avoir l'occasion de faire des tests similaires afin de vérifier ce que cela donne vraiment.
 * Sur un virage où normalement on freine à 175m
@@ -458,7 +536,18 @@ J'aimerai vraiment avoir l'occasion de faire des tests similaires afin de vérif
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>

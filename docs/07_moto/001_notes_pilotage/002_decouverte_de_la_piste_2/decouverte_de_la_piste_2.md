@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2026-04-24 10:53:41
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 # {{ page.title }}
@@ -283,11 +283,20 @@ Plus tard [Note de Pilotage N°10]({%link docs/07_moto/001_notes_pilotage/010_fr
 * Le but est de tout faire à l'accélérateur (accélération et ralentissement)
 * Pour des raisons évidentes de sécurité, lors des journées de roulages, ce n'est pas possible. Cela dit, c'est un super exercice qui permet de réaliser qu'en règle générale, on rentre beaucoup trop lentement dans les virages. C'est un exercice qui a été initialement inventé par [Keith Code](https://en.wikipedia.org/wiki/Keith_Code) pour la California Superbike School. Cet exercice est réalisé lors des [stages de pilotage DRRS] NOT YET TRANSFERED  ou [LFG] NOT YET TRANSFERED .
 
-<!-- https://youtu.be/EJQaKf3txVg?t=184 -->
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EJQaKf3txVg?si=_SHs0_X1wy9_4IL4&amp;start=184" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/EJQaKf3txVg?start=184"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 <!-- ###################################################################### -->
@@ -297,8 +306,19 @@ Plus tard [Note de Pilotage N°10]({%link docs/07_moto/001_notes_pilotage/010_fr
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 

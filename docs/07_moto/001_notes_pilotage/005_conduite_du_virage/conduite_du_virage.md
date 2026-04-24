@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 7
 date: 2019-09-08 18:33:15
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 # {{ page.title }}
@@ -90,24 +90,68 @@ Autrement dit :
     * Plus le virage est serré plus PV et PC sont espacés (dans une épingle on s'enfonce dans le virage avant de faire le pivot)
 * Consacrer du temps aux vidéos ci-dessous. Oui, j'ai remarqué, il y a des trucs de voitures mais ça fait de la culture générale et cela ne peut pas nous faire de mal.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/60mpzDGCWVI?si=5lLh65Mcs7RgIxpb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/60mpzDGCWVI?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VEJh4lLCzRc?si=Zh4XeU6fuu2OTAoh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/VEJh4lLCzRc?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aZlOkt1oU2k?si=9LlpKjdmhAiAnWtU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/aZlOkt1oU2k?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/N8qBdOs0s1E?si=FnUlu4iAZNeAxUs5&amp;start=209" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/N8qBdOs0s1E?start=209"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -192,17 +236,38 @@ Si on remet les gaz trop tôt, trop fort on va s'écarter de la ligne idéale
 
 Dans la vidéo ci-dessous pensez à mettre les sous-titres en Anglais et la vitesse à 0.75 car Alberto parle très vite.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ox3_unEQx5s?si=dgrvQ8JmYChNDOOa&amp;start=175" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/Ox3_unEQx5s?start=175"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 Dans la vidéo suivante Simon Crafar revient en détail sur sa préférence de conduire le virage gaz fermé et sans aucune utilisation des freins (vs [Trail Braking](https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/)). Pas d'offense, mais j'avoue que j'ai un peu de mal avec son anglais de néo-zélandais.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ps12mz_i3-0?si=AN03fFpXL2UbP3Yg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/ps12mz_i3-0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -305,9 +370,20 @@ Ci-dessus, faut pas regarder l'angle pris par le petit jeune. Faut juste regarde
 
 La vidéo associée (où Alberto parle aussi de Grip-Shifting etc.)
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jX1VhUhMrtg?si=rDZs1GUy8o9Bv57f&amp;start=58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/jX1VhUhMrtg?start=58"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 **En résumé**
@@ -343,9 +419,20 @@ Un peu plus tard, il repique encore à gauche.
 
 La seconde partie de la vidéo ci-dessous peut donner des idées. Entre autres, elle explique bien pourquoi, sortir la tête de l'axe de la moto permet de passer plus vite en virage.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VFZoZLMZGqQ?si=3PjWQkMzeLQTvU3Q&amp;start=376" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/VFZoZLMZGqQ?start=376"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -399,9 +486,20 @@ Cela dit, comme PV et PC vont être plus ou moins espacés en fonction des virag
 
 La vidéo suivante traite spécifiquement du sujet.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vIgiE2IAIUA?si=qisn3UifVEz5TxAs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/vIgiE2IAIUA?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -438,10 +536,20 @@ Voir la vidéo ci-dessous :
 
 **janvier 2025 :** même si elle n'a pas l'air disponible, elle l'est.
 
-<!-- https://youtu.be/I1GDuD8JuWQ?t=41 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/I1GDuD8JuWQ?si=1BjVJ2QCKqScrX_1&amp;start=41" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/I1GDuD8JuWQ?start=41"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -562,10 +670,20 @@ Bref, en virage, il n'y a qu'une seule règle à appliquer : Le Throttle Rule # 
 
 Voir la vidéo ci-dessous à partir de 27'30''
 
-<!-- https://youtu.be/XcMp7wuVKhY?t=1650 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XcMp7wuVKhY?si=fbHGWfGTN0_AzZPO&amp;start=1650" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/XcMp7wuVKhY?start=1650"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 <!-- Pos OK -->
 ### Que faire si on se retrouve constamment coincé à la corde?
@@ -639,10 +757,20 @@ Faut rentrer moins fort pour privilégier l'accélération en virage (.1 ou .2 G
 
 C'est moins sexy mais, finalement, c'est plus efficace
 
-<!-- https://youtu.be/NqmSB5RJNRg -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NqmSB5RJNRg?si=ruGXGg1W2Sgqjqyi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/NqmSB5RJNRg?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -702,10 +830,20 @@ Pour éviter de se retrouver là :
 Dans la vidéo ci-dessous c'est instructif de voir, au ralenti, ce qui se passe avec la main au moment où il relâche complètement le frein avant. Faut aussi bien regarder comment il tient l'accélérateur en ligne droite... La main ne touche quasiment pas la poignée. La paume est très écartée de la poignée par exemple (1'19" par exemple).
 
 
-<!-- https://youtu.be/h24XjzybrA0 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h24XjzybrA0?si=3yhZXHpjccY7WmDT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/h24XjzybrA0?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 Maj. 17/03/23 : Sylvain Guintoli vient de dédier une [vidéo](https://youtu.be/f1NR1VdvmTA) à ce sujet. C'est dire si c'est important.
@@ -723,9 +861,20 @@ Il propose : très gros freinage, très loin, mise sur l'angle rapide, wait, wai
 
 En tout cas c'est bien d'avoir un avis complémentaire sur la conduite de virage.
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5N1KZRcEUzE?si=uyWp-qPrp0YaATw1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/5N1KZRcEUzE?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -737,9 +886,20 @@ En tout cas c'est bien d'avoir un avis complémentaire sur la conduite de virage
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TIhtpItTuxc?si=qL84DxP-ejd_Yi4-&amp;start=53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 

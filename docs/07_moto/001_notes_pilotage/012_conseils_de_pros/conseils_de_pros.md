@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 14
 date: 2020-04-13 14:26:40
-last_modified_date: 2026-04-24 10:33:38
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 
@@ -45,9 +45,20 @@ La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 
 ### Vidéo 1/3
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bqBPpelAEk8?si=wghUYR5nm6UfF9YE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/bqBPpelAEk8?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 
@@ -63,9 +74,22 @@ La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 
 ### Vidéo 2/3
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XcDT-kzBeps?si=2ToKH1CcgDsXnsEd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/XcDT-kzBeps?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
+
 
 
 | #   | Conseil |
@@ -86,9 +110,23 @@ La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 ### Vidéo 3/3
 
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1t-yzT6so8Y?si=SIO40bGjMEJCCs8N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/1t-yzT6so8Y?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
+
+
 
 | #   | Conseil |
 | --- | ------- |
@@ -114,9 +152,20 @@ La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 
 Les 10 conseils de Sylvain Guintoli
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qkranbOEh6M?si=G8vVxnAr3dmVcL6H" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/qkranbOEh6M?start=0"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
 </div>
+<figcaption style="text-align: center;">
+    I'm a legend
+</figcaption>
+</figure>
 
 
 | # | Conseil |

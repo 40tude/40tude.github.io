@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-04-24 10:53:41
+last_modified_date: 2026-04-24 11:50:04
 ---
 
 
@@ -384,7 +384,7 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://www.youtube.com/embed/TIhtpItTuxc?start=0"
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
     title="I'm a legend"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
