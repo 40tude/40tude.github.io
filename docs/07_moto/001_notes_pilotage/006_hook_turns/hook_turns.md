@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 8
 #math: mathjax
 date: 2019-09-21 12:55:23
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 
@@ -165,6 +165,8 @@ Bien être calé grâce aux genoux et aux pieds
 
 
 ### Entraînement
+{: .no_toc }
+
 * Ce n'est pas le guidon qui supporte le poids du corps ce sont les **cuisses**.
 * Il faut avoir mal aux cuisses en fin de journée (ou le lendemain)
 * C'est pour ça qu'il faut faire des chaises et des squats à la maison.
@@ -177,6 +179,8 @@ Bien être calé grâce aux genoux et aux pieds
 
 
 ### À retenir
+{: .no_toc }
+
 * On est Hooked In, accroché, à la moto par le bas du corps.
 * En tout cas, **on ne s'accroche pas à la moto avec les mains**
 
@@ -236,6 +240,8 @@ Bien être calé grâce aux genoux et aux pieds
 ## Remarques
 
 ### Pourquoi il faut déplacer son corps à l'intérieur du virage ?
+{: .no_toc }
+
 
 Et pas uniquement le mettre encore plus bas...
 

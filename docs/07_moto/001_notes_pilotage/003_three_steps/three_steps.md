@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 # {{ page.title }}
@@ -108,6 +108,8 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 ## La session
 
 ### Acquisition de données
+{: .no_toc }
+
 
 Avant même l'entrée de virage :
 * T1 : le premier temps de la décomposition des virages consiste à localiser le point de mise sur l'angle.
@@ -131,6 +133,8 @@ Ci-dessous on voit bien que le pilote ne regarde pas du tout sa roue avant mais 
 
 
 ### Anticipation
+{: .no_toc }
+
 
 L'anticipation permet d'être plus à l'aise et plus serein.
 
@@ -151,6 +155,8 @@ L'anticipation permet d'être plus à l'aise et plus serein.
 
 
 ### Trouver la vitesse à laquelle on arrive à faire l'exercice
+{: .no_toc }
+
 * Apprendre à marcher avant de courir...
 * Après on pourra toujours augmenter la vitesse de passage.
 * Il faut donc commencer par réduire sa vitesse de passage à 2/3 de nos capacités si besoin.
@@ -208,6 +214,8 @@ Tout se passe comme s'il avait un hameçon dans le nez et qu'il était au bout d
 
 
 ### Le point de corde (PC)
+{: .no_toc }
+
 
 Dans un virage il faut joindre PMSA (point de mise sur l'angle), PV (point de pivot), PC (point de corde) et PS (point de sortie) mais en plus, il faut qu'au PC les points de contacts des pneus indiquent la direction du point de sortie. Pour ne pas louper le PC il faut donc remplir 2 conditions simultanément :
 1. Faire passer ses roues dessus (pas à 1m ni à 25cm, non, non, dessus)
@@ -269,6 +277,8 @@ Voir la vidéo associée. On est d'accord, "Body over the paint" ça veut bien d
 
 
 ### Le point de pivot (PV)
+{: .no_toc }
+
 
 C'est quoi l'objectif? On veut passer **sur** PC (le point de corde) en ayant les roues dans la direction de PS (le point de sortie). Dans le superbe crobar ci-dessous, tu arrives de la gauche et tu vas sortir par la droite (normalement).
 
@@ -316,6 +326,8 @@ T'as compris le truc.
 
 
 ### Regarde avec ton menton
+{: .no_toc }
+
 
 Un truc qui peut aider au début c'est de river ses yeux et son menton sur le point de corde. Notre menton et nos yeux vont changer de cible au fur et à mesure de notre avancement dans le virage mais ici l'idée c'est de s'entrainer en exagérant à faire abstraction du reste de la scene et d'être "focus" sur le point de corde.
 
@@ -329,10 +341,14 @@ Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approch
 
 
 ### Triche un peu
+{: .no_toc }
+
 Si j'ai du mal à placer mes pneus parfaitement sur le point de corde, je peux appuyer légèrement sur le frein arrière. Ça permet de resserrer le virage et d'ajuster la trajectoire le cas échéant.
 
 
 ### Ta mise sur l'angle et le pivot sont trop lents
+{: .no_toc }
+
 
 Prenons le cas où je suis trop tôt à la corde. Au prochain tour je ne change rien mais je retarde un peu (5 m, 2 motos de long) mon freinage. Je vais m'enfoncer un peu plus dans le virage et m'écarter de la corde, faire mon PV plus loin et passer sur PC.
 
@@ -357,6 +373,8 @@ Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. I
 
 
 ### Je suis lourd
+{: .no_toc }
+
 Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tour passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique que, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
 
 Prenons un exemple. Il est illusoire de vouloir améliorer son accélération en sortie de virage alors que mes roues ne passent toujours pas au point de corde. Pourquoi ? Tout simple. Je suis en intermédiaire, mes temps ne sont pas ridicules, j'ai, je pense des freinages de tueur etc. Je me dis qu'il faut maintenant que je soigne ma façon d'accélérer et de sortir des virages. Cela dit, je passe systématiquement à un mètre des points de corde (ma tête est au-dessus de la ligne blanche et/ou mon slider est sur la bande blanche).
@@ -462,6 +480,8 @@ La vidéo complète est ci-dessous.
 
 
 ### Ne pas louper un PC qu'on ne voit pas
+{: .no_toc }
+
 
 * On est au point de mise sur l'angle
 * Voir le cône jaune à gauche et en bas de l'écran
@@ -554,6 +574,8 @@ Allez, une autre vidéo sur le sujet. J'aime bien la démo à **1:11** ainsi que
 
 
 ### Confirmer qu'on a la bonne trajectoire dans le virage
+{: .no_toc }
+
 
 * Si on suppose qu'on rentre gaz coupés et freins relâchés dans la courbe
 * C'est la ligne où on accélère constamment à partir du moment où on commence à accélérer. C'est la **Throttle Rule**. Le mieux, c'est de la relire, de la relire encore, de la relire toujours...
@@ -572,6 +594,8 @@ Mouai... Ben moi j'ai beau le savoir et l'expliquer, je n'arrive toujours pas à
 
 
 ### Les virages importants
+{: .no_toc }
+
 
 Il y a 2 types de virages qui sont beaucoup plus importants que les autres et qu'il faudra peut être choisir en premier pour faire l'exercice. En tout cas, que ce soit maintenant ou plus tard, il faudra leur porter une attention particulière lors de la reconnaissance :
 1. Les virages avant les longues lignes droites. Il faut être sur la ligne qui nous permet d'appliquer la **Throttle Rule** très tôt afin de pouvoir bénéficier d'une accélération maximum pendant le plus longtemps possible.

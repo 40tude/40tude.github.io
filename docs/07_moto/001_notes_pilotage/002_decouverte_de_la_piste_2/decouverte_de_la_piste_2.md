@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 # {{ page.title }}
@@ -113,10 +113,14 @@ Ensuite on ne change pas une formule qui gagne. À l'instar de la première sess
 
 
 ### À vérifier pendant la session
+{: .no_toc }
+
 
 Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en butée**, voici 2 ou 3 points complémentaires sur le même sujet.
 
 ### Ne **PAS** jouer avec la poignée de gaz dans les virages
+{: .no_toc }
+
 * Jouer avec la poignée de gaz signifie, augmenter les gaz, puis les diminuer, puis en remettre une lichette, oups, je suis allé trop loin, je coupe...
 * Dit autrement, cela concerne les cas où, avant le point de corde, on rajoute des gaz car on est rentré trop lentement dans le virage. Au prochain tour il faudra retarder la mise sur l'angle.
 * Cela concerne aussi les cas où, après le point de corde, on coupe les gaz car on est beaucoup trop vite. Au prochain tour il faudra avancer la mise sur l'angle.
@@ -132,6 +136,8 @@ Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en but�
 * Il faut bien retenir que si dans un virage on est constant sur la poignée de gaz alors on n'est PAS sur la ligne idéale (car on ne respecte pas la **Throttle Rule**)
 
 ### PAS de filet de gaz dans le virage
+{: .no_toc }
+
 * La poignée est soit fermée soit on l'enroule.
 * Il n'y a **PAS** de phase dans laquelle dans le virage on a un filet de gaz.
 * Je répète. **PAS** de filet de gaz.
@@ -139,6 +145,8 @@ Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en but�
 
 
 ### La Throttle Rule
+{: .no_toc }
+
 C'est **LA** règle qu'il faut appliquer quand, dans le virage, après avoir fait pivoter la moto, on retouche à la poignée de gaz. Super simple tu vas voir :
 
 **Once the throttle is cracked on, it is rolled on evenly, smoothly and constantly troughout the remainder of the turn**
@@ -184,6 +192,8 @@ On en parle dans cette vidéo :
 ## À la fin de la session
 
 ### Est-ce que tu t'es couché dans la ligne droite que tu avais choisie ?
+{: .no_toc }
+
 Si oui bravo ! Bon ben reprends ton plan. Identifie le prochain endroit où tu vas te coucher sur la moto (ça peut être une ligne droite ou un grand virage) lors de la prochaine session. En faisant ainsi, étape par étape, en fin de journée tu auras tout couvert. En tout cas, bravo !
 
 Si tu as "oublié" de te coucher sur la moto ce n'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre-toi uniquement sur cet objectif.
@@ -195,6 +205,8 @@ Là, le truc c'est qu'il y a tellement de choses qui se passent que tu "oublies"
 
 
 ### Est-ce que j'ouvre les gaz en grand dès que je le peux ?
+{: .no_toc }
+
 
 Typiquement, en ligne droite, est-ce que je suis sûr que les gaz étaient bien ouverts à 100% ?
 
@@ -218,9 +230,13 @@ Pour le reste, tu peux te raconter tout ce que tu veux... Tant que tu n'as pas s
 ## Remarques
 
 ### Est-ce que je prends l'habitude de la vitesse ?
+{: .no_toc }
+
 Il n'y a pas de honte... C'est vrai qu'à rouler quotidiennement à 80 km/h on n'a tout simplement pas l'habitude de voir la piste défiler si vite. Bref, il ne faut pas hésiter à prendre son temps et s'il faut une, deux ou trois sessions de découverte de la piste pour accoutumer notre cerveau à la vitesse et bien... On va prendre le temps qui faut.
 
 ### Est-ce que je n'ai pas peur quand je vois le bord de piste "me sauter à la gueule" ?
+{: .no_toc }
+
 Je ne souhaite pas être grossier pour être grossier mais c'est vrai que la première fois que je me suis trouvé dans un grand gauche, la moto anglée, la tête pas trop loin du guidon et que j'ai vu les vibreurs blancs et rouge me foncer dessus... J'ai coupé. Ensuite j'ai arrêté d'accélérer... Ensuite je continuais à enrouler. Là aussi, je pense qu'il faut laisser du temps au temps afin que les muscles, la vision et le cerveau s'habituent à ces nouvelles positions, ces nouveaux points de vue etc. Là aussi, Rossi ce n'est pas fait un jour, il est normal que plusieurs sessions soient nécessaires.
 
 Il ne faut pas mettre la charrue avant les bœufs et tant qu'on n'est pas à l'aise avec la vitesse, les vibreurs qui jaillissent etc... Mieux vaut rester en mode découverte de la piste et se dire que le temps qu'on passe là, à se forcer à ouvrir en grand dès qu'on en a l'occasion est un investissement pour plus tard.
@@ -229,6 +245,8 @@ Heu... Ne me faites pas dire ce que je n'ai pas dit. Il faut se forcer à **sort
 
 
 ### Remise des gaz
+{: .no_toc }
+
 
 Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
@@ -244,6 +262,8 @@ Quand on est sur l'angle, on remet les gaz ASAP progressivement et continûment
 
 
 ### Progressif on te dit
+{: .no_toc }
+
 
 Une bonne vidéo qui explique pourquoi faut pas faire du On/Off avec la poignée de gaz mais plutôt appliquer la [Throttle Rule](#la-throttle-rule). Pas de panique par rapport au débit d'Alberto... Allumez les sous-titres et mettez la vitesse de lecture à 75% et ça ira beaucoup mieux 😁
 
@@ -277,6 +297,8 @@ Plus tard [Note de Pilotage N°10]({%link docs/07_moto/001_notes_pilotage/010_fr
 
 
 ### Idée d'exercice
+{: .no_toc }
+
 
 * Faire plusieurs tours de circuit en restant sur un seul rapport. Au pire on en utilise 2 (la 2 et la 3 par exemple) mais utiliser un seul rapport c'est ce qu'il y a de mieux.
 * **SANS FREIN** (c'est le plus important dans l'exercice). Donc, en bout de ligne droite on coupe les gaz, on ne freine pas, on rentre dans le virage avec ce que l'on a comme vitesse.

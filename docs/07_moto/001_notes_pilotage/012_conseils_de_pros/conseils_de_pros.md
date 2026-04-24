@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 14
 date: 2020-04-13 14:26:40
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 
@@ -44,6 +44,8 @@ En fait, je regroupe ici ce que j'ai pu trouver sur le web. Quand cela a du sens
 La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 
 ### Vidéo 1/3
+{: .no_toc }
+
 
 
 <figure style="max-width: 560px; margin: auto;">
@@ -73,6 +75,8 @@ La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 | 7 | Faut diriger la moto et pas se faire diriger par elle (sinon on n'est pas fichu de suivre les trajectoires qu'on souhaite suivre). |
 
 ### Vidéo 2/3
+{: .no_toc }
+
 
 
 
@@ -108,6 +112,8 @@ La série de trois vidéos en anglais avec les 25 conseils d'Alberto.
 
 
 ### Vidéo 3/3
+{: .no_toc }
+
 
 
 

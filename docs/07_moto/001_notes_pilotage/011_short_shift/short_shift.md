@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 13
 #math: mathjax
 date: 2020-04-15 00:39:25
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 
@@ -121,6 +121,8 @@ Exemples de circuits que je connais et où l'on utilise le short shift :
 
 <!-- ###################################################################### -->
 ### Carole
+{: .no_toc }
+
 
 Carole - La parabolique c'est la courbe Fox en haut à gauche (clique sur l'image si besoin)
 
@@ -153,6 +155,8 @@ Toujours à Carole, on peut regarder attentivement ce qui se passe à 1'04" dans
 
 <!-- ###################################################################### -->
 ### La Ferté Gaucher
+{: .no_toc }
+
 
 La Ferté Gaucher (LFG) - Le N°6 c'est le plus grand gauche du circuit. Attention, dans la figure, je pense que ce sont des trajectoires Auto. Par exemple, le 3 ne se prend pas du tout comme ça à moto.
 
@@ -183,6 +187,8 @@ Dans la vidéo ci-dessous il faut écouter attentivement le passage de vitesse �
 
 <!-- ###################################################################### -->
 ### Le Vigeant
+{: .no_toc }
+
 
 Sanglier se trouve à tout à gauche ci-dessous :
 

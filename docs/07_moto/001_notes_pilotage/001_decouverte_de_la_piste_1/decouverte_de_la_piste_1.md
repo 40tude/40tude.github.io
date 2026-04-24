@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 
@@ -57,6 +57,10 @@ Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 
 ## Prérequis
 
 ### Prises de notes
+{: .no_toc }
+
+{: .no_toc }
+
 
 * Je ne connais pas la piste **mais** j'ai étudié les trajectoires sur [YouTube](https://www.youtube.com/playlist?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS)
 
@@ -77,6 +81,8 @@ Est-ce que ça veut dire que si le tour dans la catégorie débutant se fait en 
 </figure>
 
 ### Dans la tête
+{: .no_toc }
+
 
 * Est-ce que je suis capable de faire un tour de circuit "dans ma tête" ? Ne rigolez pas, c'est plus important qu'il n'y paraît. On déclenche le chrono sur son téléphone, on ferme les yeux, on fait un tour complet dans sa tête, on arrête le chrono, on ouvre les yeux et on regarde le temps.
 Afin que le chrono d'un tour "dans la tête" soit similaire au chrono d'un tour réel, il faut, pour chaque virage, avoir des points de repère : point de freinage, point de mise sur l'angle, point de corde, point de sortie.
@@ -86,6 +92,8 @@ Il faut aussi avoir tout un ensemble de marques tout au long du circuit : je vis
 
 
 ### Sur papier
+{: .no_toc }
+
 
 * Est-ce que je peux "dessiner" (plus ou moins fidèlement) la piste sur une feuille de papier ? C'est toujours le même principe... Faut qu'on arrive à avoir la piste en tête avant d'arriver.
 * J'ai identifié les virages sur lesquels il va falloir porter une attention particulière durant la session. Dans ce contexte cela veut dire que dans ces virages on passe sur le point de corde au millimètre près. S'il faut diviser par 2 la vitesse dans le virage, tant pis, on pourra toujours l'augmenter ensuite. Les virages importants sont :
@@ -98,6 +106,9 @@ Il faut aussi avoir tout un ensemble de marques tout au long du circuit : je vis
 
 
 ### Pression des pneus
+{: .no_toc }
+
+
 La marshal en a parlé lors de son briefing pour les débutants. En cas de doute 1.9 AR et 2.1 à l'AV. Y a forcément un compresseur et un manomètre quelque part. Ne suppose pas que tes pressions sont bonnes, vérifie!
 
 
@@ -144,19 +155,28 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 ## La session
 
 ### Pas de pression
+{: .no_toc }
+
+
 C'est un loisir. On est là pour ce faire plaisir. Le principe est donc simple : pas de pression.
 Lors de découverte de la piste on souhaite juste prendre nos marques sur le circuit en roulant à 75% de nos capacités.
 En plus, il faut que notre cerveau s'habitue à la vitesse et qu'il ait suffisamment de bande passante pour bien enregistrer ce qui se passe. Si on brûle les étapes, si on va trop vite, si on se met dans le rouge, on ne va pas pouvoir apprendre le circuit. On va "oublier" de se coucher sur la moto et finalement ce sera une session pour rien.
 
 ### Les pieds
+{: .no_toc }
+
 Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus large de tes pieds (normal faut répartir la pression au maximum). Eh bien c'est cette partie du pied que tu dois faire reposer sur tes reposes pieds. Pas la pointe du pied ni le talon, non, non, juste cette partie. Oui, faut plier les genoux. Oui, ça fait bizarre mais oui, tu peux aussi anticiper l'action et prendre l'habitude de poser tes pieds de cette façon les semaines qui précèdent la journée de roulage quand tu es sur route.
 
 ### Utilise toute la piste
+{: .no_toc }
+
 * Je roule à gauche si le prochain virage est à droite.
 * Je roule à droite si le prochain virage est à gauche.
 * Dans les 2 cas je suis à 1cm de la bande blanche. Je ne suis pas à 1m ou à 25cm. Non, je roule à 1cm de la bande blanche.
 
 ### La chasse aux cônes
+{: .no_toc }
+
 * C'est comme à Pâques lors de la chasse au oeufs. Normalement, sur chaque virage il y aura 3 cônes. Un à l'entrée et à l'extérieur du virage (au bout du vibreur typiquement). Un second à l'intérieur du virage. Un dernier à la sortie et à l'extérieur du virage, lui aussi au bout du vibreur.
 * Comme tu es à 75% de tes capacités, prends le temps de les repérer.
 * Prends aussi le temps de remarquer que plus le virage est serré, plus le cône intérieur est loin dans le virage. Par exemple dans un virage en épingle tu vas le trouver au 3/4 du virage.
@@ -177,12 +197,16 @@ Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus 
 
 
 ### Est-ce que tu as la banane ?
+{: .no_toc }
+
 Parce qu'en revenant de cette session de découverte de la piste c'est le plus important. Le reste on s'en fout... Faut être clair... En ce qui me concerne, ma carrière en moto GP est plutôt derrière moi 😡. Quant à toi, si tu lis ces pages... Ben, ce n'est pas gagné les "Grid Girls" à tes côtés l'année prochaine. Donc, bref, ce qui compte c'est de s'être fait plaisir 😁.
 
 Alors...Est-ce que tu t'es fait plaisir ? Si c'est le cas, bravo. Tu peux être très fier de toi. Ça veut dire que tu as roulé suffisamment lentement pour avoir assez de bande passante afin que ton cerveau réalise et mémorise tout ce qui s'est passé.
 
 
 ### De retour sur l'aire plane
+{: .no_toc }
+
 * Tu bois un coup d'eau, tu nettoies la visière et tu te remets de tes émotions
 * Pour le reste tu as 40 minutes avant la prochaine session. On est laaarge...
     * Attention, y a peut être un debriefing avec le marshall. Vas-y, y a toujours des choses à apprendre.
@@ -191,6 +215,8 @@ Alors...Est-ce que tu t'es fait plaisir ? Si c'est le cas, bravo. Tu peux être 
 
 
 ### Est-ce que je me suis couché sur la moto ?
+{: .no_toc }
+
 Ça, ça veut dire que je suis couché, en position aérodynamique dans les lignes droites et les longs virages. Cela n'a l'air de rien mais comme on ne le fait jamais sur route, on a tendance à avoir une position de motard de la Gendarmerie Nationale. C'est gênant car si on ne prend pas l'habitude tout de suite de se coucher, il sera d'autant plus difficile de s'y mettre plus tard.
 
 Oui, je sais, ça fait bizarre. D'un côté on dit qu'on roule à 75% de nos moyens et de l'autre on dit qu'il faut se positionner comme si on devait aller chercher le dernier centième de seconde. En fait, ce n'est pas contradictoire avec la session de découverte de la piste. On est sur circuit, on apprend des choses nouvelles et l'une des toutes premières c'est le positionnement sur la moto dans les lignes droites et les virages rapides.
@@ -219,6 +245,8 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 
 
 ### À propos des cônes
+{: .no_toc }
+
 * Tu peux indiquer, pour chaque virage où sont les cônes sur ton plan de la piste ?
 * En fin de session, pour chaque virage, il faudrait avoir identifié :
     * Le point de freinage (**PF**). Point où on commence à freiner.
@@ -230,6 +258,8 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 
 
 ### Les rapports
+{: .no_toc }
+
 * Je sais, on en a pas parlé, mais pour chaque virage, peux tu indiquer sur ton plan de la piste combien de rapport tu rentres (-2, -1, -3...) ?
 * Si tu ne sais pas c'est pas grave. Lors de la prochaine session notes l'information pour 1 ou 2 virages puis encore pour 1 ou 2 virages à la session d'après. En fin de journée tu auras couvert tout le circuit.
 * En session tu n'as pas de temps à consacrer aux rétrogradages et il ne faut pas regarder ton tableau de bord. Afin de te libérer la tête apprends le nombre de rapport à rentrer à chaque virage.
@@ -257,6 +287,8 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 ## Remarques
 
 ### Avant de partir
+{: .no_toc }
+
 Il faudra bien se couvrir... Ça on sait. Cela dit, pense peut-être à bien remonter l'avant de ton casque quitte à avoir l'impression que ton menton ressort (ça fait bizarre au départ). Le truc c'est qu'une fois couché sur la moto, si ton casque est positionné comme pour la route tu ne vas pas voir grand-chose ou tu vas t'exploser les cervicales. Si tu oublies à le première session, crois moi, tu le feras à la seconde session 😂.
 
 
@@ -273,6 +305,8 @@ Il faudra bien se couvrir... Ça on sait. Cela dit, pense peut-être à bien rem
 
 
 ### Est-ce que tu n'a pas roulé trop vite?
+{: .no_toc }
+
 
 Encore une fois, on est en mode découverte de la piste. Il faut donc savoir rester à 75% de nos capacités ou en tout cas à en garder sous le pied.
 
@@ -285,6 +319,8 @@ Il ne faut pas hésiter non plus à sortir de la piste et à s'arrêter devant l
 
 
 ### Est-ce que tu étais bien relâché et détendu?
+{: .no_toc }
+
 
 On ne peut pas tenir 7 sessions de 20 minutes par jour si on n'est pas détendu sur la moto. De même, comment être efficace à l'approche du prochain virage si on est tendu comme une corde dans la ligne droite qui le précède ? On n'a pas le choix, il faut se ménager des "aires de repos" où on peut reprendre notre souffle (ou s'assurer qu'on n'est pas en apnée), relâcher ses mains, ses doigts, ses bras etc.
 
@@ -323,6 +359,8 @@ Il faut donc vérifier régulièrement qu'on n'a pas tendance à s'accrocher au 
 
 
 ### Être relâché ça veut dire
+{: .no_toc }
+
 
 * Être capable d'écarter et de rapprocher les coudes du corps (Chicken Wings)
 * Être capable de changer le grip (la façon de tenir) sur les poignées quand on est sur l'angle.
@@ -339,6 +377,8 @@ En sortie de virage, la tête de fourche peut bouger si on est pas détendu et s
 
 
 ### Être accroché au guidon nous fait sortir large
+{: .no_toc }
+
 
 1. Je suis en virage
 1. Comme je ne suis pas détendu, je suis accroché au guidon je tire dessus (c'est mécanique)
@@ -356,6 +396,8 @@ La solution? Être détendu au guidon, zen, relâché...
 
 
 ### Être accroché au guidon amplifies les guidonnages (wobble, tank slapper)
+{: .no_toc }
+
 <!-- #### À propos des guidonnages (wobble, tank slapper) -->
 
 * Les mouvements de fourche sont nécessaires. Ils font partie du système de la suspension (pneus et fourche)

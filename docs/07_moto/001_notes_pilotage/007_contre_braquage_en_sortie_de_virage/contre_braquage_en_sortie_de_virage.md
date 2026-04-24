@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 9
 #math: mathjax
 date: 2019-09-22 15:51:16
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 
@@ -139,6 +139,8 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 
 ### Tu n'es pas convaincu?
+{: .no_toc }
+
 
 Allez, séance photos. On est dans un pif-paf. Le pif tournait à gauche. Comme le petit jeune sur la photo est généreux sur les gaz la roue avant se lève. Ça c'est bien car cela nous permet de bien voir ce qu'il fait avec ses bracelets.
 
@@ -169,6 +171,8 @@ Si elle n'était pas levée on verrait beaucoup moins bien le phénomène.
 
 
 ### Toujours pas convaincu ?
+{: .no_toc }
+
 
 On va donc regarder du côté de chez Honda. La physique et la mécanique y sont peut-être différentes. Bizarre, les deux affreux ci-dessous ont tous les deux la roues avant en l'air (ça on s'en fiche, ça permet juste de bien faire ressortir le phénomène) et ? Et on voit bien qu'eux aussi tirent sur le bracelet intérieur du virage précédent (regardes comment sont penchées les 2 autres motos derrière)
 
@@ -188,6 +192,8 @@ Bon allez, je crois qu'on a notre dose, j'arrête là.
 
 
 ### Mises-en œuvre
+{: .no_toc }
+
 
 * Il faut tirer, mais il ne faut pas tirer trop vite sur le bracelet intérieur
 * On tire doucement au début du contre-braquage puis de plus en plus vite alors que la moto se relève et qu'on accélère de plus en plus.
@@ -217,6 +223,8 @@ Tu te rappelles? **La fin officielle du virage c'est quand la moto est droite et
 
 
 ### Il faut arrêter de se faire plaisir...
+{: .no_toc }
+
 
 En allant chercher systématiquement l'extérieur alors qu'en faisant l'effort de contre-braquer on est plus efficace. Autrement dit "évitons" de transformer les petites lignes droites en "S". Ci-dessous la preuve en images :
 

@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 11
 #math: mathjax
 date: 2019-09-22 17:33:21
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 
@@ -99,6 +99,8 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 * On "sacrifie" donc le Pif
 
 ### Le Pif
+{: .no_toc }
+
 
 * Je suis sur les pointes de pied sur les 2 cale-pieds.
 * Les points de corde dans les Pif-Paf sont en fin de vibreur
@@ -108,6 +110,8 @@ On ne pourra pas dire qu'on n'en a pas parlé...
   Pour éviter de "plonger" trop tôt sur le Paf il faut penser à ne pas lever les yeux vers le Paf mais plutôt à regarder ce qui était l'intérieur du Pif. Ça aide à resserrer la trajectoire en sortie du Pif et à bien se placer pour le Paf.
 
 ### La bascule
+{: .no_toc }
+
 
 * Si le Pif-Paf est très petit il n'y a pas d'accélération entre les 2 virages.
 * Dès que la distance entre le Pif et le Paf le permet, utiliser l'accélérateur va aider à relever la moto entre les virages. Ça va alléger la moto et on va la faire basculer beaucoup plus facilement. Il faut alors appuyer sur les cales pied, avancer la tête et alléger les fesses.
@@ -117,12 +121,16 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 * On n'est PAS assis sur la moto. Au contraire, les jambes servent d'amortisseurs supplémentaire et supportent le poids du corps (on est donc léger sur la moto). C'est aussi pour ça qu'il faut faire des squats 😊.
 
 ### Le Paf
+{: .no_toc }
+
 
 En fait, tout ce qui précède n'a qu'un seul but. Faire du Paf un virage "classique". On rentre large, la moto a fait sa mise sur l'angle rapidement. Yaka, faukon... Tout comme avant : prise tournevis, coude plié... Je n'ai plus qu'à fixer mon attention sur le point de corde et le point de sortie du Paf (voir ce qu'on avait dit dans [Three Steps]({% link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%})) et en avant Guingamp, ça devrait bien se passer.
 
 Heu... Faut être clair et humble. Ce que j'explique ci-dessus, c'est ce que je crois avoir compris à ce jour et c'est ce que je voudrais arriver à faire à tous les coups. Malheureusement dans la réalité... Ce n'est pas encore ça.
 
 ### Savoir marcher avant de courir
+{: .no_toc }
+
 
 Comme dans les autres sessions je commence par réduire ma vitesse (pas facile) et je fais très attention à ma trajectoire en sortie du Pif ainsi qu'à ce que mon corps soit prêt pour le Paf. La moto n'est pas encore tout à fait verticale. En fait, comme pour n'importe quel virage, mon corps doit être en place avant que la moto ne passe sur l'angle.
 
@@ -159,6 +167,8 @@ Il faut sentir :
 
 
 ### Exemple
+{: .no_toc }
+
 
 <div align="center">
 <img src="./assets/image-58.webp" alt="" width="560" loading="lazy"/>

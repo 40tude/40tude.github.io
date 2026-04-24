@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 7
 date: 2019-09-08 18:33:15
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 # {{ page.title }}
@@ -310,6 +310,8 @@ Il faut sentir :
 
 
 ### À propos de la position sur la moto
+{: .no_toc }
+
 
 Ce n'est toujours pas le plus important dans cette session mais on peut en dire 2 mots quand même car il faut que l'on soit bien installé si on veut avoir une conduite de virage efficace. Non ?
 
@@ -441,6 +443,8 @@ La seconde partie de la vidéo ci-dessous peut donner des idées. Entre autres, 
 
 
 ### Qu'est ce qui nous empêche d'avoir des mises sur l'angle plus rapides ?
+{: .no_toc }
+
 La vitesse de mise sur l'angle détermine la vitesse de passage dans le virage. Point, fin de l'histoire.
 
 Si la mise sur l'angle est lente alors, on :
@@ -464,6 +468,8 @@ La vitesse de mise sur l'angle c'est **LA** différence entre les pilotes
 
 
 ### *Quand est-ce qu'il faut commencer à ouvrir les gaz ?*
+{: .no_toc }
+
 
 Une fois arrivé au point "où on le sent bien" on enroule gentiment et continûment (Throttle rule, répartition des masses 40/60...). Au début, ça peut être au milieu du virage, au point de corde, peu après le point de corde... Plus tard se sera systématiquement avant le point de corde, juste après le PV une fois que nos roues seront sur la ligne PV-PC-PS. L'idée c'est de se donner les moyens d'être 100% gaz au point de corde.
 
@@ -508,6 +514,8 @@ La vidéo suivante traite spécifiquement du sujet.
 
 
 ### *100% gaz au point de corde, t'es sûr de ton coup ?*
+{: .no_toc }
+
 
 Si tout se passe bien c'est en effet ce qu'il faut rechercher. Il ne faut pas oublier un truc. On n'est pas sur une Xbox et donc même si on est 100% gaz au PC on n'aura pas tout de suite toute la cavalerie à la roue arrière. À cause de l'inertie de la mécanique, cette dernière n'arrivera qu'une fois le PC passé alors qu'on est en train de relever la moto et qu'on a de plus en plus de grip à la roue arrière. Perso je n'y arrive toujours pas et je sais pas si j'y arriverais un jour.
 
@@ -522,6 +530,8 @@ Si tout se passe bien c'est en effet ce qu'il faut rechercher. Il ne faut pas ou
 
 
 ### Virage qui se resserre
+{: .no_toc }
+
 
 Voir aussi [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p82.
 
@@ -556,6 +566,8 @@ Voir la vidéo ci-dessous :
 
 
 ### Les plus gros gains sont dans les virages rapides (et les lignes droites)
+{: .no_toc }
+
 
 Il faut donc les identifier, les chouchouter et éviter de les gâcher bêtement...
 
@@ -586,6 +598,8 @@ Au lieu d'essayer d'arriver à fond à 13 000 tr/minute tout de suite.
 
 
 ### Que faire si le virage n'est pas grand ouvert?
+{: .no_toc }
+
 * Couper les gaz gentiment bien avant ce que l'on ferait habituellement
 * Ensuite rouvrir les gaz le plus tôt possible
 * Augmenter le nombre de tr/min au tour prochain
@@ -594,6 +608,8 @@ Au lieu d'essayer d'arriver à fond à 13 000 tr/minute tout de suite.
 
 
 ### *Oui mais moi y a un virage rapide où je coupe carrément*
+{: .no_toc }
+
 Si dans un virage on est tenté, en cours de route, de couper les gaz ou de freiner légèrement faut se dire qu'on viole la Throttle Rule.
 * Il faut changer d'approche, vérifier si un meilleur contrôle de l'accélérateur ne pourrait pas résoudre le problème et nous faire sortir plus vite du virage.
 * Il faut vraiment arriver à accélérer plus tôt mais beaucoup moins fort qu'avant.
@@ -603,6 +619,8 @@ Si dans un virage on est tenté, en cours de route, de couper les gaz ou de frei
 
 
 ### Virage en Hook
+{: .no_toc }
+
 Lire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p59. Faut mettre du poids sur l'avant et en bas pour être capable de faire un virage en Hook et pas en Arc ("Bite and Turn")
 
 Si on rallume les gaz trop tôt on a une trajectoire en Arc
@@ -636,6 +654,8 @@ Pour avoir un virage en Hook (crochet, comme le capitaine, pas le tricot) il fau
 
 
 ### Pourquoi quand on freine en virage la moto part à l'extérieur ?
+{: .no_toc }
+
 
 * Je suis sur l'angle
 * Je coupe les gaz ou je freine de l'avant
@@ -660,6 +680,8 @@ Bref, en virage, il n'y a qu'une seule règle à appliquer : Le Throttle Rule # 
 
 
 ### Que faire si on est rentré trop vite et qu'on va être trop large?
+{: .no_toc }
+
 
 * Il ne faut pas couper les gaz
   + Facile à dire...
@@ -687,6 +709,8 @@ Voir la vidéo ci-dessous à partir de 27'30''
 
 <!-- Pos OK -->
 ### Que faire si on se retrouve constamment coincé à la corde?
+{: .no_toc }
+
 
 On va là où on regarde. Donc si à l'entrée du virage on regarde l'intérieur du virage, le début du vibreur par exemple, c'est là qu'on va aller.
 * On aura une ligne "facile" jusqu'à la l'intérieur du virage mais on sera planté pour la sortie.
@@ -717,6 +741,8 @@ Ce qui ne va pas c'est la ligne qu'on suit dans le virage. Au prochain tour il f
 
 <!-- Pos OK -->
 ### Images mentales pour éviter d'aller se jeter à la corde
+{: .no_toc }
+
 
 Du point de vue de la trajectoire en virage, je me dis que tout se passe comme si je voulais, sur une ligne droite, aller de A en B (dessin de gauche) mais qu'il y a maintenant un virage entre les 2 points (dessin de droite). Voir ci-dessous le formidable schéma où je prends le cas d'une épingle.
 
@@ -750,6 +776,8 @@ Une fois que l'image précédente est acquise, on peut passer à la seconde dont
 
 <!-- Pos OK -->
 ### Faut arrêter de se faire plaisir au freinage !
+{: .no_toc }
+
 
 Faut rentrer moins fort pour privilégier l'accélération en virage (.1 ou .2 G) puis la sortie de virage
 
@@ -780,6 +808,8 @@ C'est moins sexy mais, finalement, c'est plus efficace
 
 <!-- Pos OK -->
 ### Rester "relâché des bracelets"
+{: .no_toc }
+
 
 * C'est le meilleur moyen de limiter le nombre d'informations que l'on reçoit et que l'on transmet à la moto
 * Aucune pression sur le guidon n'est nécessaire à partir du moment où on a la bonne ouverture de gaz
@@ -806,6 +836,8 @@ C'est moins sexy mais, finalement, c'est plus efficace
 
 <!-- Pos OK -->
 ### Grip-Shifting
+{: .no_toc }
+
 
 À propos de l'accélérateur, il faut aussi penser aussi au **Grip Shifting**. Quand on a terminé avec le freinage et **avant** qu'on commence à tourner la poignée des gaz
 * On écarte les doigts très légèrement
@@ -854,6 +886,8 @@ Maj. 17/03/23 : Sylvain Guintoli vient de dédier une [vidéo](https://youtu.be/
 
 <!-- Pos OK -->
 ### Le point de vue de Simon Crafar
+{: .no_toc }
+
 
 Toujours à propos de la conduite de virage et sur l'importance que [Simon Crafar](https://fr.wikipedia.org/wiki/Simon_Crafar) accorde à "raccourcir les virages". Sa remarque est que ce qui compte ce sont les vitesses d'entrée et de sortie, pas les vitesses de passage en virage. Il remarque que ceux qui rentrent très loin dans le virage sur les freins (Trail Braking) vont à un moment ou à un autre limiter leur vitesse de passage car ils demandent trop au pneu arrière (là je ne suis pas sûr de comprendre ce qu'il veut dire).
 

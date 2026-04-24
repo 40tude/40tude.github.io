@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 # {{ page.title }}
@@ -102,6 +102,8 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 
 ### Position
+{: .no_toc }
+
 
 On **an-ti-ci-pe** et on se positionne sur la moto très longtemps avant le prochain virage :
 * Reculé sur la selle (un poing entre le réservoir et nous)
@@ -186,6 +188,8 @@ On laisse un doigt sur l'embrayage pendant tout le freinage (je ne suis pas sûr
 
 
 ### Le freinage proprement dit
+{: .no_toc }
+
 On se redresse, on coupe les gaz et on commence à freiner en même temps (oui, oui il y a **3 choses à faire** en même temps).
 
 En règle générale, sur piste, il faut supprimer les moments où on ne freine pas et où on n'accélère pas non plus. On cherche donc à minimiser, voire à **supprimer les phases neutres**. Autrement dit, soit on accélère, soit on freine. Attention, ça ne veut pas dire, on freine à fond ou on accélère à fond. Non, non, on n'est pas sur une PlayStation. Il y a des cas où on relâchera progressivement les freins et d'autres où on enroulera le cable d'accélérateur continûment. Cela dit, soit on freine, soit on accélère.
@@ -229,6 +233,8 @@ La sortie de derrière la bulle doit être aussi rapide que la coupure des gaz. 
 
 
 ### Combien de doigts pour freiner ?
+{: .no_toc }
+
 
 * On freine à 3 doigts (pas 1, ni 2, ni 4 mais  3 doigts)
 * Oui je sais... Voir les photos ci-dessous... Cela dit, il faut quand même réaliser qu'ils n'ont pas nos freins (carbone etc.) ni notre force dans les doigts.
@@ -262,6 +268,8 @@ On peut noter la "longueur" du levier de frein
 
 
 ### Réglages des leviers
+{: .no_toc }
+
 
 * Pense à vérifier que le levier de frein est bien réglé (pas trop loin, pas trop proche). Non seulement ça mais il faut aussi régler l'angle afin de ne pas avoir à casser le poignet.
 * Assure toi que l'annulaire tombe bien tout au bout du levier afin que les 3 doigts appliquent un maximum de couple au levier de frein.
@@ -351,6 +359,8 @@ On perd 100% de pouvoir directif quand la roue avant est bloquée et qu'elle "gl
 
 
 ### Profil de freinage
+{: .no_toc }
+
 
 Du point de vue du profil de freinage ça donne un truc comme ça. En abscisse c'est le temps et en ordonnée c'est la pressiion en bars. Attention, le plus important c'est le plateau à 100%.
 
@@ -385,6 +395,8 @@ Ensuite, au fil des tours, on rapprochera la marque de freinage du point de mise
 
 
 ### Revoyons l'action au ralenti
+{: .no_toc }
+
 
 Pendant le freinage, alors qu'on est en ligne droite, moto verticale, le visage se tourne vers le point de corde (voir la note de Pilotage 03 [Three Steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%}))
 
@@ -495,6 +507,8 @@ Une fois qu'on est sur l'angle on ne change plus notre position sur la moto. Cel
 ## Remarques
 
 ### Relire ces pages
+{: .no_toc }
+
 * <http://www.lerepairedesmotards.com/technique/freinage-gp.php>
 * <http://www.lerepairedesmotards.com/conseils/savoir-freiner.php>
 
@@ -503,6 +517,8 @@ Une fois qu'on est sur l'angle on ne change plus notre position sur la moto. Cel
 
 
 ### Revoir absolument cette vidéo
+{: .no_toc }
+
 
 
 <figure style="max-width: 560px; margin: auto;">

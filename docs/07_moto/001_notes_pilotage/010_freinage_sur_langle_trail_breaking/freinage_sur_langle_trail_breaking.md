@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 12
 #math: mathjax
 date: 2019-12-31 16:06:58
-last_modified_date: 2026-04-24 11:50:04
+last_modified_date: 2026-04-24 12:22:29
 ---
 
 
@@ -251,6 +251,8 @@ Une dernière dans un contexte de conduite sur route. Cela dit les principes son
 
 
 ### Grip shift sur l'angle
+{: .no_toc }
+
 
 Juste après avoir relâché le levier de frein le grip shifting c'est l'action qui consiste à faire tourner sa main d'1/8 de tour (je dis ça au pif) autour de la poignée de gaz mais avant de commencer à enrouler cette dernière jusqu'à la butée. Ci-dessous, le gars est bien, bien sur l'angle et il relâche gentiment le frein avant alors qu'il rejoint le point de corde. Il ne semble pas faire de grip shift :
 
