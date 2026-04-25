@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-24 18:20:50
+last_modified_date: 2026-04-25 09:17:00
 ---
 
 # {{ page.title }}
@@ -628,12 +628,15 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
-    title="I'm a legend"
+    title="Faut faire des squats"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    I'm a legend
+    Faut faire des squats
 </figcaption>
 </figure>
+
+
+Note suivante: [Conduite du virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%})

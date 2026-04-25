@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-24 18:20:50
+last_modified_date: 2026-04-25 09:17:00
 ---
 
 # {{ page.title }}
@@ -212,16 +212,6 @@ On se met sur l'angle en visant le point de corde. L'image ci-dessous illustre b
 />
 <figcaption>I'm a legend</figcaption>
 </figure>
-
-<figure style="max-width: 560px; margin: auto; text-align: center;">
-<img src="./assets/img01.webp"
-    alt="Describe the image here"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>I'm a legend</figcaption>
-</figure>
-
 
 
 Tout se passe comme s'il avait un hameçon dans le nez et qu'il était au bout d'une ficelle en train de tourner autour d'un piquet
@@ -695,7 +685,7 @@ Allez, une autre vidéo sur le sujet. J'aime bien la démo à **1:11** ainsi que
 * En revanche, il est très important qu'à partir du moment où on commence à enrouler le câble d'accélérateur, on arrête plus jusqu'à ce que la moto soit verticale et les gaz à 100% (c'est alors la **fin officielle du virage**)
   + Prenons un cas extrême pour fixer les idées. Si on commençait à accélérer à la toute fin de la courbe, notre virage se terminerait "officiellement" au milieu de la ligne droite qui suit le virage en question.
   + Pour un autre pilote qui accélérerait au tout début de la courbe (c'est un exemple théorique), la fin "officielle" de son virage se situerait peut-être juste après le point de sortie (PS) ou plus vraisemblablement au SAMU local.
-* En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule**. Relire si besoin la [seconde]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}) Note de Pilotage Moto
+* En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule**. Relire si besoin la [seconde]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}) note de pilotage
 * À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde (oui, oui bien sûr ça dépend du vriage). Avec la **Throttle Rule**, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde (juste après PV). Ouvrir les gaz, permet de répartir la charge de manière idéale entre l'avant (40%) et l'arrière (60%). Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque.
 
 Mouai... Ben moi j'ai beau le savoir et l'expliquer, je n'arrive toujours pas à le faire comme je voudrais.
@@ -763,13 +753,15 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
-    title="I'm a legend"
+    title="Faut faire des squats"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    I'm a legend
+    Faut faire des squats
 </figcaption>
 </figure>
 
+
+Note suivante: [Freinage]({%link docs/07_moto/001_notes_pilotage/004_freinage/freinage.md%})

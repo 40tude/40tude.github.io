@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 11
 #math: mathjax
 date: 2019-09-22 17:33:21
-last_modified_date: 2026-04-24 12:35:16
+last_modified_date: 2026-04-25 09:17:00
 ---
 
 
@@ -289,12 +289,15 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
-    title="I'm a legend"
+    title="Faut faire des squats"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    I'm a legend
+    Faut faire des squats
 </figcaption>
 </figure>
+
+
+Note suivante: [Freinage sur l'angle]({%link docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/freinage_sur_langle_trail_breaking.md%})

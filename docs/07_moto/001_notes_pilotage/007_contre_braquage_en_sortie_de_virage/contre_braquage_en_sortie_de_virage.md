@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 9
 #math: mathjax
 date: 2019-09-22 15:51:16
-last_modified_date: 2026-04-24 12:35:16
+last_modified_date: 2026-04-25 09:17:00
 ---
 
 
@@ -244,7 +244,7 @@ Bon allez, je crois qu'on a notre dose, j'arrête là.
 
 Je te propose l'exercice suivant... Enferme toi dans une pice parce que tu va avoir l'air d'un con Jean-Pierre... Assieds-toi sur une chaise. Prends un balai avec tes deux mains et tu le mets à l'horizontale devant toi. Penche ton buste un peu vers la gauche et fais en sorte que le manche à balais te suive (le côté gauche est donc plus bas que le côté droit). OK, maintenant, en restant le buste penché à gauche, sans trop réfléchir, essaies de repousser le balai un peu vers la droite. En ce qui me concerne, je me retrouve toujours penché mais avec le bras gauche un peu plié et le bras droit un peu tendu. Finalement mon buste et le balai sont toujours penchés vers la gauche mais la partie gauche du manche est dorénavant plus proche de moi alors que la partie droite est plus loin de moi. Bref, tout se passe comme si on avait tiré sur le bras intérieur du virage. **Conclusion :** repousser la moto en sortie de virage revient à **tirer** sur le bracelet intérieur et donc à contre-braquer. CQFD 😁
 
-Il faut rester déhanché en sortie de virage alors que la moto se relève. Relire si besoin la Note de Pilotage sur la [Conduite du Virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}).
+Il faut rester déhanché en sortie de virage alors que la moto se relève. Relire si besoin la note de pilotage sur la [Conduite du Virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}).
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/img00.webp"
@@ -405,12 +405,15 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
-    title="I'm a legend"
+    title="Faut faire des squats"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    I'm a legend
+    Faut faire des squats
 </figcaption>
 </figure>
+
+
+Note suivante: [Knee to knee]({%link docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md%})

@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-04-24 16:05:15
+last_modified_date: 2026-04-25 09:17:00
 ---
 
 # {{ page.title }}
@@ -68,10 +68,15 @@ Comme son nom l'indique, la section **Basics** ci-dessous s'intéresse aux fonda
 
 ### Advanced
 6. **[Hook Turns]({%link docs/07_moto/001_notes_pilotage/006_hook_turns/hook_turns.md%})** : On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner... En gros, on verrouille le bas du corps "dans" la moto alors que le buste est très mobile. Ensuite on cherche à déplacer le centre de gravité de l'ensemble moto-pilote encore plus vers l'**intérieur du virage**. On en parle que maintenant car il faut que pas mal de choses soient déjà en place avant de s'attaquer à ce sujet.
-7. **[Contre braquage en sortie de virage]({%link docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md%}#ANCHOR)** : En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
+7. **[Contre braquage en sortie de virage]({%link docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md%})** : En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
 8. **[Knee to knee]({%link docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md%})** : On ajoute à notre toolbox un outil à qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
 9. **[Pif-paf]({%link docs/07_moto/001_notes_pilotage/009_pif_paf/pif_paf.md%})** : Je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
 10. **[Freinage sur l’angle (Trail Braking)]({%link docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/freinage_sur_langle_trail_breaking.md%})** : Si je veux favoriser ma vitesse en ligne droite, je dois garder les gaz ouverts à 100% le plus longtemps possible. Cela veut donc dire que je dois réduire de plus en plus ma distance de freinage. À un moment ce n'est plus tenable si on veut toujours continuer à freiner avec la moto verticale. Je suis donc amené, logiquement, à terminer mon freinage sur l'angle... On fait le point ici.
+11. **[Short Shift]({%link docs/07_moto/001_notes_pilotage/011_short_shift/short_shift.md%})** : On peut se retrouver dans un grand gauche, 100% gaz ouverts, au rupteur et incapable de passer le rapport supérieur. On aurait pu réfléchir et passer ce rapport AVANT de se retrouver coincer. Nan?
+
+
+
+
 
 ### Compléments
 12. **[Conseils de pro]({%link docs/07_moto/001_notes_pilotage/012_conseils_de_pros/conseils_de_pros.md%})** : Ce sont en effet des conseils de vrais pros pour lesquels il y a des références etc. À lire, à relire et à inscrire dans sa [feuille de session]({%link docs/07_moto/002_feuille_sessions/feuille_sessions.md%}) comme exercices à faire par exemple.
@@ -92,7 +97,7 @@ Comme son nom l'indique, la section **Basics** ci-dessous s'intéresse aux fonda
 <!-- ###################################################################### -->
 ## Comment lire ces notes de pilotage moto ?
 
-Je souhaite qu'il y ait une dizaine de sujets (c'est toujours pas fixé et je pense que cela ne le sera jamais). Chaque Note de Pilotage Moto suppose qu'on la mette en œuvre lors d'une session de roulage de 20 minutes. Cela dit, on va être pragmatique et se dire qu'il n'y a rien d'obligatoire. Par exemple, s'il faut 3 sessions pour découvrir le circuit et bien... Il faudra 3 sessions "et pis c'est tout !"... Pas la peine de se mettre martèle en tête et/ou de se mettre dans le rouge dès le départ.
+Je souhaite qu'il y ait une dizaine de sujets (c'est toujours pas fixé et je pense que cela ne le sera jamais). Chaque note suppose qu'on la mette en œuvre lors d'une session de roulage de 20 minutes. Cela dit, on va être pragmatique et se dire qu'il n'y a rien d'obligatoire. Par exemple, s'il faut 3 sessions pour découvrir le circuit et bien... Il faudra 3 sessions "et pis c'est tout !"... Ceci dit on peut être malin. Par exemple on peut travailler le freinage au bout de la plus grande ligne droite du circuit et continuer à étudier le triple gauche à l'autre bout du circuit. Bref, pas la peine de se mettre martèle en tête et/ou de se mettre dans le rouge.
 
 
 
@@ -104,9 +109,9 @@ Elles ont toutes la même structure :
 1. **Petit rappel utile avant de rentrer sur le circuit** - C'est juste de la prudence avant d'entrer en piste. Ça va sans doute soûler ceux qui lisent les notes dans l'ordre mais ça rendra service à ceux qui arriveront directement sur telle ou telle page via une recherche sur le Web.
 1. **La session** - C'est là qu'on rentre dans le vif du sujet.
 1. **À la fin de la session** - On fait un point sur nos acquis
-1. **Remarques** - Des points et des questions plus ou moins en rapport avec le sujet de la Note de Pilotage Moto.
+1. **Remarques** - Des points et des questions plus ou moins en rapport avec le sujet de la note de pilotage en question.
 
-Il y aura des répétitions car certains aspects me paraissent vraiment importants. De toute façon, certains lecteurs, grâce à leur moteur de recherche préféré, arriveront directement sur une Note de Pilotage particulière et donc ce n'est pas complètement idiot de répéter certaines choses. Enfin je suis persuadé de l'utilité qu'il y a à expliquer les mêmes choses dans un contexte légèrement différent, avec un autre vocabulaire, des exemples différents. Des fois c'est là que le "Oh putain, j'ai compris" arrive.
+Il y aura des répétitions car certains aspects me paraissent vraiment importants. De toute façon, certains lecteurs, grâce à leur moteur de recherche préféré, arriveront directement sur une note particulière et donc ce n'est pas complètement idiot de répéter certaines choses. Enfin je suis persuadé de l'utilité qu'il y a à expliquer les mêmes choses dans un contexte légèrement différent, avec un autre vocabulaire, des exemples différents. Des fois c'est là que le "Oh putain, j'ai compris" arrive.
 
 
 
@@ -118,7 +123,7 @@ Il y aura des répétitions car certains aspects me paraissent vraiment importan
 
 Ils sont, bien sûr, les bienvenus s'ils sont bienveillants et constructifs. J'ai ces notes de pilotage moto depuis pas mal de temps dans OneNote et j'estime qu'il est grand temps de les partager. Si dans une des notes vous considérez que je dis une bêtise, pas la peine de me tirer dessus ou de m'agonir avec un commentaire au vitriol. J'ai peut-être, tout simplement, pas encore compris telle ou telle technique de pilotage.
 
-En revanche si un point n'est pas clair ou pas suffisamment expliqué, lâchez-vous et aidez-moi à améliorer la Note de Pilotage Moto en question.
+En revanche si un point n'est pas clair ou pas suffisamment expliqué, lâchez-vous et aidez-moi à améliorer la note en question.
 
 Par exemple, n'hésitez pas à conseiller telle ou telle vidéo sur YouTube qui illustre bien le point abordé dans la Note.
 
@@ -225,3 +230,31 @@ Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 * [Motopiste.net](http://www.motopiste.net/)
 * [Life at Lean](https://lifeatlean.com/free-guide-and-training-series/)
 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## La suite au prochain épisode
+
+Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
+    title="Faut faire des squats"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Faut faire des squats
+</figcaption>
+</figure>
+
+
+Note suivante: [Découverte de la piste 1/2]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})

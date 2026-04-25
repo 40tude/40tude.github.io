@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 7
 date: 2019-09-08 18:33:15
-last_modified_date: 2026-04-24 12:35:16
+last_modified_date: 2026-04-25 09:17:00
 ---
 
 # {{ page.title }}
@@ -76,9 +76,9 @@ Ce qu'il y a bien, c'est que la mesure de nos progrès va être très simple. En
 
 Autrement dit :
 
-* Être capable d'appliquer la **Throttle Rule** dans les virages (voir la [Note de Pilotage N° 02]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}))
+* Être capable d'appliquer la **Throttle Rule** dans les virages (voir la [note de pilotage N° 02]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}))
 * Car c'est la confirmation qu'on est sur notre ligne idéale pour tel ou tel virage
-* On s'occupe du point de sortie (PS) car on veut qu'au point de corde (PC) les roues soient sur la ligne qui relie le PV au PS en passant par PC. Cela dit, on ne s'occupe pas vraiment de la façon dont on redresse la moto. On verra ça plus tard... [Note de Pilotage N° 06] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-06-contre-braquage-en-sortie-de-virage/).
+* On s'occupe du point de sortie (PS) car on veut qu'au point de corde (PC) les roues soient sur la ligne qui relie le PV au PS en passant par PC. Cela dit, on ne s'occupe pas vraiment de la façon dont on redresse la moto. On verra ça plus tard... [Note de pilotage N° 07](docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md).
 
 
 
@@ -1005,36 +1005,16 @@ Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pil
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/TIhtpItTuxc?start=53"
-    title="I'm a legend"
+    title="Faut faire des squats"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    I'm a legend
+    Faut faire des squats
 </figcaption>
 </figure>
 
 
 
-
-
-
-
-
-
-
-
-
-<!-- #### **Remarque**
-{: .no_toc }
-
-
-
-
-
-
- -->
-
-
-
+Note suivante: [Hook Turns]({%link docs/07_moto/001_notes_pilotage/006_hook_turns/hook_turns.md%})
