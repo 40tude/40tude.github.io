@@ -10,7 +10,7 @@ twitter:
 parent: "Motos"
 #math: mathjax
 date: 2019-05-19 18:24:52
-last_modified_date: 2026-05-05 17:03:56
+last_modified_date: 2026-05-05 18:57:31
 ---
 
 
@@ -400,8 +400,8 @@ Il y a un peu de tout et dans toutes les langues, Français, Anglais, Italien, E
 <figure style="max-width: 560px; margin: auto;">
   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-      src="https://www.youtube.com/embed/videoseries?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS&start=1014"
-      title="Ma playlist de vidéos de pilotage moto sur circuit"
+      src="https://www.youtube.com/embed/Un9VmqE5BF4?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS"
+      title="Playlist sur le pilotage moto sur circuit"
       style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
@@ -410,6 +410,7 @@ Il y a un peu de tout et dans toutes les langues, Français, Anglais, Italien, E
   </div>
 
   <figcaption style="text-align: center;">
-    Ma playlist de vidéos de pilotage moto sur circuit
+    Playlist sur le pilotage moto sur circuit &mdash;
+    <a href="https://www.youtube.com/watch?v=Un9VmqE5BF4&list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" target="_blank">Ouvrir la playlist sur YouTube</a>
   </figcaption>
 </figure>

@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-05 17:49:40
+last_modified_date: 2026-05-05 18:57:31
 ---
 
 
@@ -245,11 +245,26 @@ Tu vas commencer par la plus grande ligne droite parce que c'est là que tu as l
 Heu... C'est peut-être un détail pour toi mais pour moi ça veut dire beaucoup 🎶. Quand tu abaisses le haut du corps tu ne t'accroches pas au guidon. Idéalement tu devrais être capable de baisser le torse sans utiliser tes mains (c'est d'ailleurs un bon exercice à faire en statique sur l'aire plane ou la veille dans ton garage). Le truc, c'est que moins on touche la moto mieux c'est et idéalement s'il n'y avait pas de pilote, la moto se comporterait bien mieux la plupart du temps. Donc, bref, tu ne tiens presque pas les poignées et tu fais tout avec **les abdos**. Oui, oui je confirme c'est un sport et tu vas bien dormir ce soir. Et non, tu n'as pas besoin de serrer l'accélérateur comme tu le fais. Tu peux le tenir ouvert à 100% avec 3 doigts. Là aussi, fais le test sur le parking ou quand tu roules la semaine qui précède le roulage.
 
 
-<div align="center">
+<!-- <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+</div> -->
 
-Ça va ? T'es pas mouru l'âne ? Là, pour le coup, il n'y a aucune raison de se mettre en mode panique. Tu accélères comme avant, tu freines comme avant. Le seul truc c'est qu'entre les deux tu t'es couché sur la moto. Oui, bien sûr, tu t'es aussi relevé au moment de freiner.
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/_qEe6Krz5JI"
+    title="Ça va? T'es pas mouru l'âne?"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Ça va? T'es pas mouru l'âne?
+</figcaption>
+</figure>
+
+
+Là, pour le coup, il n'y a aucune raison de se mettre en mode panique. Tu accélères comme avant, tu freines comme avant. Le seul truc c'est qu'entre les deux tu t'es couché sur la moto. Oui, bien sûr, tu t'es aussi relevé au moment de freiner.
 
 Allez, même méthode que précédemment. Tu choisis un autre bout de grande courbe ou de ligne droite à l'autre bout du circuit et tu fais l'exercice 2 fois par tour. Quand c'est bon avec l'un des deux tu rajoutes un autre segment de circuit et tu seras alors couché sur le réservoir 3 fois par tour etc.
 

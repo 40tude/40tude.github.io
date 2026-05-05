@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-04-25 09:17:00
+last_modified_date: 2026-05-05 18:57:31
 ---
 
 
@@ -56,7 +56,26 @@ Tu as dormi peu la nuit dernière... Endormis tard, tu t'es levé à 5H30. Dans 
 {: .no_toc }
 
 
-* Je ne connais pas la piste **mais** j'ai étudié les trajectoires sur [YouTube](https://www.youtube.com/playlist?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS)
+* Je ne connais pas la piste **mais** j'ai étudié les trajectoires sur YouTube:
+
+<figure style="max-width: 560px; margin: auto;">
+  <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+      src="https://www.youtube.com/embed/Un9VmqE5BF4?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS"
+      title="Playlist sur le pilotage moto sur circuit"
+      style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <figcaption style="text-align: center;">
+    Playlist sur le pilotage moto sur circuit &mdash;
+    <a href="https://www.youtube.com/watch?v=Un9VmqE5BF4&list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" target="_blank">Ouvrir la playlist sur YouTube</a>
+  </figcaption>
+</figure>
+
 
 * Est-ce que j'ai une feuille imprimée avec le tracé du circuit et mes notes manuscrites? Typiquement ces notes manuscrites sont prises en regardant YouTube à 75% ou même à 50% de la vitesse normale. Il ne faut pas hésiter à chercher les séances Duo Run de [DRRS](https://www.drrs-moto.com/) où le moniteur fait des remarques au stagiaire. Il faut éviter de regarder les vidéos de pilotes pros ou de record du tour. Leurs marques de freinage, leur vitesse d'exécution n'ont rien à voir avec ce que l'on peut faire. Le seul truc qu'on a en commun avec les pros ce sont les points de corde. Bref, idéalement la découverte de la piste doit se faire avec un "prof". Un bon exemple ci-dessous au Vigeant :
 

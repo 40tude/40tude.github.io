@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-05 18:16:25
+last_modified_date: 2026-05-05 18:57:31
 ---
 
 
@@ -269,7 +269,22 @@ Oh... This might sound like a small thing—but it actually makes a big differen
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-You doing OK? Still alive? For this one, there's absolutely no reason to go into panic mode. You accelerate like before, you brake like before. The only difference is that in between, you got down on the bike. And yes, of course, you also sat back up before braking.
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/_qEe6Krz5JI"
+    title="You doing OK? Still alive?"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    You doing OK? Still alive?
+</figcaption>
+</figure>
+
+
+For this one, there's absolutely no reason to go into panic mode. You accelerate like before, you brake like before. The only difference is that in between, you got down on the bike. And yes, of course, you also sat back up before braking.
 
 Alright, same method as before. Pick another sweeping turn or straight on the other side of the circuit and do the exercise twice per lap. When you've got one of the two down, add another segment and you'll be tucked on the tank 3 times per lap, and so on.
 

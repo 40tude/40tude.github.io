@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-05-05 18:47:53
+last_modified_date: 2026-05-05 18:57:31
 ---
 
 # {{ page.title }}
@@ -138,14 +138,6 @@ Pour les commentaires, ça se passe par [ici](https://github.com/40tude/40tude.g
 Cliquez sur la vidéo ci-dessous. C'est une playlist d'une centaine de vidéos que je garde sous le coude sur YouTube. Il y a un peu de tout et c'est plus ou moins organisé : Fitness, Trajectoire, Position...
 
 Il y en a dans toutes les langues : Français, Italien, Anglais, Espagnol... Si besoin, mettez les sous-titres et passez la vitesse de lecture à 75% ou moins.
-
-Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous conseille de cliquer sur le "**Regarder sur YouTube**" en bas plutôt que sur le bouton play rouge.
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n7LHAWWeSbHh5IqF&amp;start=1014&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-Un lien sur la <a href="https://www.youtube.com/watch?v=Un9VmqE5BF4&list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" target="_blank">playlist</a>.
 
 <figure style="max-width: 560px; margin: auto;">
   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
