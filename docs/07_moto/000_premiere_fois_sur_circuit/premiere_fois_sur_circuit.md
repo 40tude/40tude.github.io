@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-04-24 12:01:27
+last_modified_date: 2026-05-05 17:15:08
 ---
 
 
@@ -647,7 +647,7 @@ Quand ça s'est fait, redonne-toi une chance sur circuit et/ou fais une journée
 2. Dans le second cas, si tu as la banane alors que tu es crevé et que tu sais que tu as encore 12 000 trucs à apprendre... Welcome. J'ai juste 3 recommandations :
     * Ta moto est bien meilleure que toi. Donc, pour l'instant, continue avec elle, telle qu'elle est. Ne dépense rien. Entretiens-la correctement (pneus, plaquettes de frein AV, liquide de frein, vidange de fourche, joints spi de fourche, entretien moteur classique...) et ne vas pas mettre 1500€ dans un échappement. C'est de la connerie.
     * En revanche, si tu as vraiment l'intention de refaire de la piste achète un chrono GPS (n'utilise pas ton téléphone ou alors mets le sous la selle). On peut dire ce que l'on veut, "le chrono ne ment pas". Tu pourras te faire les films que tu veux, te trouver les excuses que tu veux... Soit, tu vas plus vite soit tu es moins efficace. Point. En plus, le chrono tu pourras l'utiliser sur d'autres motos par la suite.
-    * Participe rapidement à un stage de 1 ou 2 jours. C'est un sacré investissement (600 € environ rien que pour le stage de 2 jours) mais c'est cadré, pro etc. C'est un budget mais cela va te faire gagner beaucoup plus de secondes au tour que n'importe quel accessoire carbone, commande reculée ou pot d'échappement en Mithril. C'est comme apprendre le Snowboard tout seul ou en passant par l'ESF. Il n'y a pas photo. **Attention**, il faudra que tu arrives au stage en forme (abdos, cuisses) et reposé car le rythme y est soutenu. Ce n'est pas un stage commandos de marine mais il faut se donner, pas perdre de temps entre les sessions et tenir jusqu'au bout (physique & mental). <!-- Exemple avec mon tout premier stage avec DRRS en 2019 (NOT YET TRANSFERED) -->
+    * Participe rapidement à un stage de 1 ou 2 jours. C'est un sacré investissement (600 € environ rien que pour le stage de 2 jours) mais c'est cadré, pro etc. C'est un budget mais cela va te faire gagner beaucoup plus de secondes au tour que n'importe quel accessoire carbone, commande reculée ou pot d'échappement en Mithril. C'est comme apprendre le Snowboard tout seul ou en passant par l'ESF. Il n'y a pas photo. **Attention**, il faudra que tu arrives au stage en forme (abdos, cuisses) et reposé car le rythme y est soutenu. Ce n'est pas un stage commandos de marine mais il faut se donner, pas perdre de temps entre les sessions et tenir jusqu'au bout (physique & mental). Exemple avec mon tout premier [stage avec DRRS en 2019]({%link docs/07_moto/500_stage_de_radigues_rider_school_drrs/stage_de_radigues_rider_school_drrs.md%}).
 
 Pense à aller voir les photos de la journée. Soit, elles sont déjà consultables sur le circuit soit, tu les auras la semaine prochaine en ligne. Achète la moins moche d'entre elles et mets-la de côté. On en reparlera l'année prochaine ou dans 2 ans😊.
 
