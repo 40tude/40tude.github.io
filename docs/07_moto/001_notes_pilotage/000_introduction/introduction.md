@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-05-05 18:38:26
+last_modified_date: 2026-05-05 18:47:53
 ---
 
 # {{ page.title }}
@@ -160,7 +160,8 @@ Un lien sur la <a href="https://www.youtube.com/watch?v=Un9VmqE5BF4&list=PLOmfq6
   </div>
 
   <figcaption style="text-align: center;">
-    Playlist sur le pilotage moto sur circuit
+    Playlist sur le pilotage moto sur circuit &mdash;
+    <a href="https://www.youtube.com/watch?v=Un9VmqE5BF4&list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" target="_blank">Ouvrir la playlist sur YouTube</a>
   </figcaption>
 </figure>
 
