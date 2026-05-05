@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-05-05 18:16:25
+last_modified_date: 2026-05-05 18:38:26
 ---
 
 # {{ page.title }}
@@ -145,12 +145,12 @@ Pour accéder à la playlist (et la mettre de côté le cas échéant), je vous 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=n7LHAWWeSbHh5IqF&amp;start=1014&amp;list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-Un lien sur la [playlist](https://www.youtube.com/watch?v=Un9VmqE5BF4&list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS).
+Un lien sur la <a href="https://www.youtube.com/watch?v=Un9VmqE5BF4&list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS" target="_blank">playlist</a>.
 
 <figure style="max-width: 560px; margin: auto;">
   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-      src="https://www.youtube.com/embed/videoseries?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS"
+      src="https://www.youtube.com/embed/Un9VmqE5BF4?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS"
       title="Playlist sur le pilotage moto sur circuit"
       style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
