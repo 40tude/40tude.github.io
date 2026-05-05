@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-05 18:57:31
+last_modified_date: 2026-05-05 19:22:31
 ---
 
 
@@ -264,10 +264,6 @@ You'll start with the longest straight because that's where you have the most ti
 
 Oh... This might sound like a small thing—but it actually makes a big difference. When you lower your upper body, you don't hang on to the handlebars. Ideally, you should be able to lower your torso without using your hands (that's actually a good exercise to do in the paddock or the night before in your garage). The thing is, the less you touch the bike the better and ideally, if there were no rider, the bike would behave much better most of the time. So, basically, you barely hold the grips and you do everything with **your abs**. Yes, I confirm, this is a sport and you're going to sleep well tonight. And no, you don't need to squeeze the throttle the way you do. You can hold it open at 100% with 3 fingers. Try that in the parking lot or during your rides in the week before track day.
 
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
