@@ -10,7 +10,7 @@ twitter:
 parent: "Motos"
 #math: mathjax
 date: 2019-05-19 18:24:52
-last_modified_date: 2026-05-05 16:45:20
+last_modified_date: 2026-05-05 16:49:18
 ---
 
 
@@ -295,8 +295,6 @@ Plus important je prends l'engagement d'aller moins vite demain, de m'appliquer 
 
 En effet, cette première journée à mis en lumière le fait que je conduis comme un gendarme, que je ne sors pas les fesses et que je n'ai aucune chance de toucher le genou. En soit, ce ne serait pas grave mais finalement comme je prends déjà beaucoup d'angle ça limite sérieusement la progression de ma vitesse de passage en virage. Faut vraiment que je pose le genou si je veux progresser.
 
-<!-- [](https://www.40tude.fr/wp-content/uploads/2019/05/motard-996x1024.png) -->
-
 Bref, ce n'est pas top pour un gars qui pensait tout éclater aujourd'hui.
 
 
@@ -389,9 +387,6 @@ Ma playlist de vidéos YouTube dédiées au pilotage sur piste. À ce jour (Mai 
 J'ai essayé de regrouper les vidéos par thèmes.
 
 Il y a un peu de tout et dans toutes les langues, Français, Anglais, Italien, Espagnol mais on comprend car on connaît le sujet 😁
-
-<!-- https://www.youtube.com/playlist?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS -->
-
 
 
 <figure style="max-width: 560px; margin: auto;">
