@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 7
 date: 2019-09-08 18:33:15
-last_modified_date: 2026-05-05 17:37:49
+last_modified_date: 2026-05-05 17:49:40
 ---
 
 # {{ page.title }}
@@ -523,10 +523,11 @@ Une fois arrivé au point "où on le sent bien" on enroule gentiment et continû
 * 40/60 : c'est la répartition idéale des charges (en pourcentage) entre l'avant et l'arrière. En accélérant gentiment on déleste un peu l'AV et on charge un peu l'AR. C'est l'idéal pour la moto.
 
 {: .note-title }
-> Proposition II, le retour:
+> Proposition:
 >
-> Quand tu entends un instructeur ou un pilote dire "Filet de gaz"
-> Toi tu traduis ça par: "Je commence à enrouler le câble d'accélérateur".
+> À partir de maintenant je te propose la chose suivante:
+* Quand tu entends un instructeur ou un pilote dire "Filet de gaz"
+* Toi tu traduis ça par: "Je commence à enrouler le câble d'accélérateur".
 
 
 Dit autrement... Le moment où on commence à enrouler le câble d'accélérateur c'est souvent au milieu du virage, un peu avant le point de corde qui lui se trouve généralement au 3/4 du virage (plus le virage est serré plus le point de corde est reculé).

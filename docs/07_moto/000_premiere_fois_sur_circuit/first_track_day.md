@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-04-24 12:01:27
+last_modified_date: 2026-05-05 17:49:40
 ---
 
 
@@ -355,6 +355,16 @@ When the bike has pivoted enough, you're away from the curb and your wheels are 
 When the wheels are properly aligned, you stop pivoting the bike and just before the AP you start to open the throttle. You're leaving the neutral phase. At first, the acceleration should be imperceptible. You should barely feel the bike's nose lifting.
 
 However, once you've started rolling on the throttle, you don't stop. **No steady-state throttle!** I repeat, **no steady-state throttle**. At first you roll on gently, then faster and faster as the bike stands up.
+
+
+{: .note-title }
+> **Suggestion:**
+>
+> From now on, here’s what I propose:
+>
+> * When you hear an instructor or a rider say steady-state throttle,”
+> * You should interpret it as: “I’m starting to roll on the throttle.”
+
 
 Don't forget, you should only "touch" the curb once, at the AP.
 
