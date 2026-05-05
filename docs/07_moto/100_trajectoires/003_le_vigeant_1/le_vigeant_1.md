@@ -6,7 +6,7 @@ parent: "Trajectoires de quelques circuits"
 nav_order: 3
 #math: mathjax
 date: 2022-06-06 15:07:52
-last_modified_date: 2026-04-24 12:06:37
+last_modified_date: 2026-05-05 17:37:49
 ---
 
 
@@ -193,7 +193,7 @@ Photo de 2022. Bien sûr, la marque va disparaître un jour ou l'autre...
 
 Les 2 virages à droite qui suivent sont très importants car ils conditionnent la vitesse dans la prochaine longue ligne droite.
 
-On est sorti mi-piste puis on arrive à la hauteur du PMSA en étant 3/4 piste à gauche. On est parallèle à la ligne blanche. On arrive vite et on ne freine pas. On coupe en mettant la moto très rapidement sur l'angle puis filet de gaz à partir du premier PC pour s'écarter vers l'extérieur. L'idée est d'enchaîner les 2 virages en un seul. La moto ne doit pas se relever. On passe donc les 2 virages avec le même angle, en une fois. Si on était en Snowboard, au sol on ne devrait voir qu'une seule belle courbe, bien coupée, entre les 2 PC.
+On est sorti mi-piste puis on arrive à la hauteur du PMSA en étant 3/4 piste à gauche. On est parallèle à la ligne blanche. On arrive vite et on ne freine pas. On coupe en mettant la moto très rapidement sur l'angle puis on commence à enrouler (tout doucement au début, presque un filet de gaz) à partir du premier PC pour s'écarter vers l'extérieur. L'idée est d'enchaîner les 2 virages en un seul. La moto ne doit pas se relever. On passe donc les 2 virages avec le même angle, en une fois. Si on était en Snowboard, au sol on ne devrait voir qu'une seule belle courbe, bien coupée, entre les 2 PC.
 
 <div align="center">
 <img src="./assets/2022-05-27-18.09.51-scaled.webp" alt="" width="900" loading="lazy"/>
