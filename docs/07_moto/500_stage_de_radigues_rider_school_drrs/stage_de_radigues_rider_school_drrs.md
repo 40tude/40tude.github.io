@@ -10,7 +10,7 @@ twitter:
 parent: "Motos"
 #math: mathjax
 date: 2019-05-19 18:24:52
-last_modified_date: 2026-05-05 16:49:18
+last_modified_date: 2026-05-05 17:03:56
 ---
 
 
@@ -123,14 +123,6 @@ Encore une fois j'ai emmené la moitié de l'atelier. Ci-dessous il n'y a pas l'
 
 J'ai beau être tout seul, la voiture est blindée. J'ai même emmené une seconde paire de jantes avec des Dunlop D212 car je ne suis pas sûr que les Pirelli SuperCorsa V1 qui ont déjà tourné au Vigeant 2 jours, tiennent jusqu'au bout des 3 jours.
 
-<figure style="max-width: 450px; margin: auto; text-align: center;">
-<img src="./assets/2019-05-13-07.58.05-e1558305081448.webp"
-    alt="ZX6R sur le circuit de la Ferté Gaucher"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>ZX6R sur le circuit de la Ferté Gaucher</figcaption>
-</figure>
 
 J'arrive sur site vers 18H30. Le camion DRRS est déjà là et les gars sont au montage. Je suis poli, je fais le tour et je dis bonjour à tout le monde.
 
@@ -184,6 +176,15 @@ Vu que ça risque d'être rédhibitoire, comme les gars du sonomètre sont là j
 J'installe Kawette sur ses béquilles et j'allume les couvertures chauffantes.
 
 Direction le camion DRRS le cœur léger pour régler l'administratif. En 2 minutes c'est fait. Je repars avec un emploi du temps, un N° à coller sur la moto (9 rouge en l'occurrence), mes jetons pour les déjeuners et je suis inscrit au dîner de ce soir. Je connais le nom de mon instructeur, je sais que je suis chez les intermédiaires (les rouges) ainsi que l'horaire de mon Duo Run.
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/2019-05-13-07.58.05-e1558305081448.webp"
+    alt="ZX6R sur le circuit de la Ferté Gaucher"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>ZX6R sur le circuit de la Ferté Gaucher</figcaption>
+</figure>
 
 
 Un Duo Run c'est 20 minutes pendant lesquelles un des instructeurs vous suit, vous filme et vous passe des instructions via une liaison radio. Là aussi j'ai du pot. Je passe demain après-midi. Comme d'ici là j'aurai appris plein de trucs, c'est sûr, je vais lui en mettre plein la vue...
@@ -295,10 +296,17 @@ Plus important je prends l'engagement d'aller moins vite demain, de m'appliquer 
 
 En effet, cette première journée à mis en lumière le fait que je conduis comme un gendarme, que je ne sors pas les fesses et que je n'ai aucune chance de toucher le genou. En soit, ce ne serait pas grave mais finalement comme je prends déjà beaucoup d'angle ça limite sérieusement la progression de ma vitesse de passage en virage. Faut vraiment que je pose le genou si je veux progresser.
 
-Bref, ce n'est pas top pour un gars qui pensait tout éclater aujourd'hui.
 
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/gendarmes.webp"
+    alt="Conduire comme un gendarme c'est pas piloter"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Conduire comme un gendarme c'est pas piloter</figcaption>
+</figure>
 
-
+Bref, pas top pour un gars qui pensait tout éclater aujourd'hui.
 
 
 
@@ -393,7 +401,7 @@ Il y a un peu de tout et dans toutes les langues, Français, Anglais, Italien, E
   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
       src="https://www.youtube.com/embed/videoseries?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS&start=1014"
-      title="Ma playlist de vidéo de pilotage moto sur circuit"
+      title="Ma playlist de vidéos de pilotage moto sur circuit"
       style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
@@ -402,6 +410,6 @@ Il y a un peu de tout et dans toutes les langues, Français, Anglais, Italien, E
   </div>
 
   <figcaption style="text-align: center;">
-    Ma playlist de vidéo de pilotage moto sur circuit
+    Ma playlist de vidéos de pilotage moto sur circuit
   </figcaption>
 </figure>
