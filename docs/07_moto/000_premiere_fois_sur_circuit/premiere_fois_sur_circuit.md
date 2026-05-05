@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-05 17:27:21
+last_modified_date: 2026-05-05 17:31:14
 ---
 
 
@@ -336,15 +336,15 @@ Quand les roues sont bien alignées, tu arrêtes de faire pivoter la moto et un 
 
 En revanche, une fois que tu as commencé à enrouler le câble d'accélérateur tu ne t'arrêtes plus. **Pas de filet de gaz !** Je répète, **pas de filet de gaz**. Au début tu enroules doucement puis de plus en plus vite au fur et à mesure que la moto se redresse.
 
-{: .warning }
-À partir de maintenant je te propose la chose suivante. Quand tu entends un instructeur ou un pilote dire "File de gaz" toi tu traduis ça pas "Je comment à enrouler le câble d'accélérateur".
+<!-- {: .warning }
+À partir de maintenant je te propose la chose suivante. Quand tu entends un instructeur ou un pilote dire "File de gaz" toi tu traduis ça pas "Je comment à enrouler le câble d'accélérateur". -->
 
 {: .note-title }
-> Side Note:
+> Proposition:
 >
 > À partir de maintenant je te propose la chose suivante:
-> * Quand tu entends un instructeur ou un pilote dire "Filet de gaz" toi
-> * Toi tu traduis ça par: "Je comment à enrouler le câble d'accélérateur".
+* Quand tu entends un instructeur ou un pilote dire "Filet de gaz"
+* Toi tu traduis ça par: "Je comment à enrouler le câble d'accélérateur".
 
 
 N'oublies pas, tu ne dois "toucher" le vibreur qu'une seule fois au niveau du PC.
