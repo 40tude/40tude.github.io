@@ -2,19 +2,26 @@
 published: true
 author: 40tude
 layout: default
-title: "Stage De Radiguès Rider School"
-description: "..."
+title: "Stage De Radiguès Rider School (DRRS) — Compte rendu complet : La Ferté Gaucher, 2019"
+description: "Deux jours de stage DRRS à La Ferté Gaucher pour découvrir que je conduisais comme un gendarme, que mes fesses ne sortaient pas et que poser le genou, c'est une autre histoire. Récit honnête, session par session."
 image: docs\07_moto\500_stage_de_radigues_rider_school_drrs\assets\2019-05-15-12.20.15.webp
 twitter:
   card: summary_large_image
 parent: "Motos"
 #math: mathjax
 date: 2019-05-19 18:24:52
-last_modified_date: 2026-05-05 14:07:18
+last_modified_date: 2026-05-05 16:45:20
 ---
 
 
-Le stage de pilotage De Radiguès Rider School (DRRS) a eu lieu en début de semaine (13 et 14 mai 2019) sur le circuit de la Ferté Gaucher. J'ai ensuite poursuivi avec la journée Nolan le 15 mai sur le même circuit. Sous forme de compte rendu informel, je vous raconte comment ça s'est passé de mon côté.
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
+
+Le tout premier stage de pilotage auquel j'ai participé était un stage de la De Radiguès Rider School (DRRS). Il a eu lieu en 2019, sur le circuit de la Ferté Gaucher, en début de semaine (13 et 14 mai) . J'ai ensuite poursuivi avec la journée Nolan le 15 mai sur le même circuit. Sous forme de compte rendu informel, je vous raconte comment ça s'est passé de mon côté.
 
 ## Avant le dimanche
 
@@ -75,15 +82,15 @@ Pour le reste j'ai passé pas mal de temps sur YouTube à regarder des vidéos d
 
 Prendre le temps, en statique, de me déplacer sur la moto pour travailler la position en virage. Faire prendre des photos de derrière, de devant et de profil.
 
-* Est-ce que je suis bien couché sur la moto ?
-* Comment est-ce que je vois devant quand je suis couché ?
-* Est-ce que j'ai une fesse qui sort bien ?
-* Est-ce que je suis aussi à l'aise à gauche, qu'à droite ?
-* Comment est mon pied sur le cale-pied ?
-* Comment doit être ma main sur la poignée (prise tournevis) ?
+* Est-ce que je suis bien couché sur la moto? Comment ça fait? Où est-ce que ça appuis? Qu'est-ce que je ressens?
+* Comment est-ce que je vois devant quand je suis couché?
+* Est-ce que j'ai une fesse qui sort bien? Je sens le bord de la selle dans la raie des fesse? Il est où mon genou extérieur?  raie
+* Comment sont alors mes pieds sur les cale-pieds?
+* Est-ce que je suis aussi à l'aise à gauche, qu'à droite?
+* Comment doit être ma main sur la poignée (prise tournevis)?
 * ...
 
-Je ne l'ai pas fait et on va voir que cela a eu un impact certains.
+Je ne l'ai pas fait et on va voir que cela a eu un impact.
 
 
 <figure style="max-width: 560px; margin: auto;">
@@ -105,6 +112,16 @@ Je ne l'ai pas fait et on va voir que cela a eu un impact certains.
 
 Encore une fois j'ai emmené la moitié de l'atelier. Ci-dessous il n'y a pas l'outillage, les sacs avec les fringues, la combine etc. Va vraiment falloir que je me calme...
 
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="assets/2019-04-13 18.25.18.webp"
+    alt="Préparation de la moto et du matériel avant le stage sur le circuit de la Ferté Gaucher"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Préparation de la moto et du matériel avant le stage sur le circuit de la Ferté Gaucher</figcaption>
+</figure>
+
+J'ai beau être tout seul, la voiture est blindée. J'ai même emmené une seconde paire de jantes avec des Dunlop D212 car je ne suis pas sûr que les Pirelli SuperCorsa V1 qui ont déjà tourné au Vigeant 2 jours, tiennent jusqu'au bout des 3 jours.
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img src="./assets/2019-05-13-07.58.05-e1558305081448.webp"
@@ -115,9 +132,61 @@ Encore une fois j'ai emmené la moitié de l'atelier. Ci-dessous il n'y a pas l'
 <figcaption>ZX6R sur le circuit de la Ferté Gaucher</figcaption>
 </figure>
 
+J'arrive sur site vers 18H30. Le camion DRRS est déjà là et les gars sont au montage. Je suis poli, je fais le tour et je dis bonjour à tout le monde.
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/2019-05-13-13.55.30.webp"
+    alt="Arrivée au stage DRRS à la Ferté Gaucher"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Arrivée au stage DRRS à la Ferté Gaucher</figcaption>
+</figure>
+
+Y a encore un peu de monde sur le parking car il y avait une journée de roulage moto ce dimanche. Je me cale dans un coin, pas trop loin d'une prise électrique. Je descends la moto et je l'amène dans le box DRRS pour qu'elle y passe la nuit en toute sécurité.
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/2019-05-13-13.55.26.webp"
+    alt="Arrivée au stage DRRS à la Ferté Gaucher"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Arrivée au stage DRRS à la Ferté Gaucher</figcaption>
+</figure>
+
+Je laisse la remorque sur place. Je ne peux pas faire l'inscription administrative, on verra ça demain à 7H30. Je n'ai plus rien à faire ici, allez, je vais à l'hôtel.
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/2019-05-13-06.55.33.webp"
+    alt="Le Grand Terre - L'hôtel du circuit de la Ferté Gaucher"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Le Grand Terre - L'hôtel du circuit de la Ferté Gaucher</figcaption>
+</figure>
+
+Comme c'est Dimanche, même si j'ai mes shoes de running je ne vais pas courir. Je fais un tour à pied, je dîne tout seul en regardant des vidéos YouTube sur mon téléphone, je remonte avec la ferme intention de m'endormir tôt et de tous les éclater demain...
+
+Bon, ça c'était le plan mais à 3H30 du mat' je ne dors toujours pas ou bien je dors par tranche de 45 minutes. Y va être frais le Marquez des bacs à sable toute à l'heure...
 
 
-Un Duo Run c'est 20 minutes pendant lesquelles un des instructeurs vous suit, vous filme et vous passe des instructions via une liaison radio. Là aussi j'ai du pot. Je passe demain après-midi. Comme d'ici là j'aurai appris plein de trucs, c'est sûr je vais lui en mettre plein la vue...
+## Lundi
+
+6H00. Encore une fois je suis réveillé. Il fait jour. Bon, pas la peine de croire que je vais pouvoir dormir 30 minutes de plus. Allez, zou, à la douche et au rasage. C'est sûr, j'ai le temps de compter mes orteils, de m'habiller...
+
+7H00. Petit déjeuner "lite" histoire d'être tranquille ce matin. Je regarde dehors. Le ciel est de plus en plus bleu... Ça sent bon, les gars, ça sent bon la journée réussie.
+
+7H20. J'arrive sur le parking. Ça pèle un peu et je ne regrette pas d'avoir emmené polaire, bonnet et tour de cou. Je retrouve la remorque et je vais chercher Kawette. Y a beaucoup plus de monde qu'hier. Je suis à côté d'un CB 500. Faut toujours se méfier des CB 500...
+
+
+Vu que ça risque d'être rédhibitoire, comme les gars du sonomètre sont là j'y vais. Verdict : 93 dB écrit en gros sur mon garde boue avant. J'ai la banane... Putain, c'est un signe... Ça s'annonce bien cette journée, je vais tous les éclater...
+
+J'installe Kawette sur ses béquilles et j'allume les couvertures chauffantes.
+
+Direction le camion DRRS le cœur léger pour régler l'administratif. En 2 minutes c'est fait. Je repars avec un emploi du temps, un N° à coller sur la moto (9 rouge en l'occurrence), mes jetons pour les déjeuners et je suis inscrit au dîner de ce soir. Je connais le nom de mon instructeur, je sais que je suis chez les intermédiaires (les rouges) ainsi que l'horaire de mon Duo Run.
+
+
+Un Duo Run c'est 20 minutes pendant lesquelles un des instructeurs vous suit, vous filme et vous passe des instructions via une liaison radio. Là aussi j'ai du pot. Je passe demain après-midi. Comme d'ici là j'aurai appris plein de trucs, c'est sûr, je vais lui en mettre plein la vue...
 
 
 
@@ -168,16 +237,12 @@ Allez, j'enfile la combine et les bottes et je retourne faire un tour au camion 
 
 L'agenda appelle quelques remarques...
 
-* Il n'y a pas de trous dans l'agenda... C'est d’ailleurs un coup de pot que j'ai pensé à faire des photos le premier jour.... Quoiqu'il en soit, quand tu rentres de roulage, tu ne perds pas de temps. Tu enlèves casque et gants, tu mets la moto sur ses béquilles, tu branche les chauffantes et tu fonce au débriefing.
-* Le truc à bien comprendre c'est que si l'organisation DRRS est au cordeau, il faut que la tienne le soit aussi. Pas le temps de faire une pause photo ou un atelier verni à ongle... Si tu veux faire une vérification de pression ou une prise de température des pneus tu le fais vite et bien.
-* Idem, quand l'atelier théorique se termine et qu'il faut repartir en session de roulage... Pour la pose "wawa" (sur circuit j'ai l'impression de passer ma vie aux toilettes... Limite incontinent le garçon :-) ) tu passes la seconde et tu n'y passes pas 3H. Ensuite tu fonces à la moto, tu la mets en route, tu enlèves les chauffantes, tu mets l'Alfano en route, tu t'équipe et c'est reparti. En fait, le truc c'est que d'autres pilotes n'ont pas nécessairement de chauffantes. Ils sont garés près du camion DRRS et sont en prégrille plus vite que toi. Comme c'est plus intéressant d'aller sur piste avec les autres plutôt que de rouler tout seul faut donc pas trop traîner.
+* Il n'y a pas de trous dans l'agenda... C'est d’ailleurs un coup de pot que j'ai pensé à faire des photos le premier jour.... Quoiqu'il en soit, quand tu rentres de roulage, tu ne perds pas de temps. Tu enlèves casque et gants, tu mets la moto sur ses béquilles, tu branches les chauffantes et tu fonce au débriefing.
+* Le truc à bien comprendre c'est que si l'organisation DRRS est au cordeau, il faut que la tienne le soit aussi. Pas le temps de faire une pause photo ou un atelier vernis à ongle... Si tu veux faire une vérification de pression ou une prise de température des pneus tu le fais vite et bien.
+* Idem, quand l'atelier théorique se termine et qu'il faut repartir en session de roulage... Pour la pose "wawa" (sur circuit j'ai l'impression de passer ma vie aux toilettes... Limite incontinent le garçon 🤬 ) tu passes la seconde et tu n'y passes pas 3H. Ensuite tu fonces à la moto, tu la mets en route, tu enlèves les chauffantes, tu mets l'Alfano en route, tu t'équipes et c'est reparti. En fait, le truc c'est que d'autres pilotes n'ont pas nécessairement de chauffantes. Ils sont garés près du camion DRRS et sont en "prégrille" plus vite que toi. Comme c'est plus intéressant d'aller sur piste avec les autres plutôt que de rouler tout seul il est préférable de ne pas trop traîner.
 * J'avais emmené un carnet avec le secret espoir de noter 2 ou 3 trucs... Je pense qu'il n'a pas quitté mon sac à dos. Cela dit, je pense qu'il y a moyen de prendre des notes au moment du déjeuner et à la fin de journée. Il faut prendre le temps de noter ses impressions et ses sensations (sentir le genou extérieur qui pousse sur le réservoir, coller à la ligne blanche extérieure lors des freinages, dans telle épingle, bien rouler sur le vibreur avant la mise sur l'angle...). J'avais fait ça quand je prenais des cours particuliers de snowboard et cela m'avait bien aidé. Surtout l'année d'après quand on y retourne et qu'on est encore "débutant". Relire mes notes me permettait d'être rapidement dans le "bain" et de retrouver les sensations notées.
-* Chaque Atelier est une présentation de la part de l'instructeur et il s'appuie pour cela sur des slides qui sont pas mal fait.
-* Les débriefings se font sous l'auvent du camion autour d'une des 2 longues tables. En plus le café et le thé ne sont pas loin...
-
-<div align="center">
-<img src="" alt="" width="900" loading="lazy"/>
-</div>
+* Chaque atelier est une présentation de la part de l'instructeur et il s'appuie pour cela sur des slides qui sont pas mal fait.
+* Après chaque roulage, les débriefings se font sous l'auvent du camion autour d'une des 2 longues tables. En plus le café et le thé ne sont pas loin...
 
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
@@ -195,11 +260,11 @@ L'agenda appelle quelques remarques...
 
 ### Quelques trucs à propos de la première journée
 
-* En discutant j'ai constaté que je n'étais pas le seul à ne pas avoir bien dormi la veille. En fait on est tous pareil... :-)
+* En discutant j'ai constaté que je n'étais pas le seul à ne pas avoir bien dormi la veille. En fait on est tous pareil... 😁
 * Faut gérer les sessions. Sur 2 jours il va y avoir 14 sessions de 20 min. On a donc le temps et il ne faut surtout pas vouloir aller plus vite que la musique.
-  + Typiquement, moi au bout de 2 tours, j'oubliais tout, je passais en mode Banzaï et je fonçais (à mon niveau). C'est complètement débile...
+  + Typiquement, moi, au bout de 2 tours, j'oubliais tout, je passais en mode Banzaï et je fonçais (à mon niveau). C'est complètement débile...
   + Au contraire, faut prendre le temps d'appliquer les choses qu'on vient de voir sur les slides, de faire et refaire l'exercice à chaque virage. Dans des journées de roulage "classiques" on n'a pas toujours le luxe ni l'occasion de pouvoir aller doucement, de décomposer tel ou tel mouvement etc. En plus, l'agenda du lendemain montre qu'il y a des sessions sans thème précis. C'est à ce moment-là qu'il faudra mettre en oeuvre tout ce que l'on aura vu et faire progresser les chronos. Bref, première journée c'est "Doucement... Je bosse !"
-* Pour chaque virage il faut, dès le départ mémoriser ses points
+* Pour chaque virage il faut, dès le départ mémoriser ses points:
   + Point de freinage
   + Point de mise sur angle
   + Point de corde
@@ -230,9 +295,14 @@ Plus important je prends l'engagement d'aller moins vite demain, de m'appliquer 
 
 En effet, cette première journée à mis en lumière le fait que je conduis comme un gendarme, que je ne sors pas les fesses et que je n'ai aucune chance de toucher le genou. En soit, ce ne serait pas grave mais finalement comme je prends déjà beaucoup d'angle ça limite sérieusement la progression de ma vitesse de passage en virage. Faut vraiment que je pose le genou si je veux progresser.
 
-![](https://www.40tude.fr/wp-content/uploads/2019/05/motard-996x1024.png)
+<!-- [](https://www.40tude.fr/wp-content/uploads/2019/05/motard-996x1024.png) -->
 
 Bref, ce n'est pas top pour un gars qui pensait tout éclater aujourd'hui.
+
+
+
+
+
 
 ## Mardi
 
@@ -328,7 +398,7 @@ Il y a un peu de tout et dans toutes les langues, Français, Anglais, Italien, E
   <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
       src="https://www.youtube.com/embed/videoseries?list=PLOmfq6wDOTY7St0LApT2rQh3fsZKbvYUS&start=1014"
-      title="I'm a legend"
+      title="Ma playlist de vidéo de pilotage moto sur circuit"
       style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
@@ -337,6 +407,6 @@ Il y a un peu de tout et dans toutes les langues, Français, Anglais, Italien, E
   </div>
 
   <figcaption style="text-align: center;">
-    I'm a legend
+    Ma playlist de vidéo de pilotage moto sur circuit
   </figcaption>
 </figure>
