@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -108,7 +108,7 @@ Lorem... -->
 
 In the 1930s, [Max Kleiber](https://en.wikipedia.org/wiki/Max_Kleiber) was measuring how much oxygen different animals consume per day (from mice to cows). He had a simple, practical question: **if I double an animal's body mass, how much more food does it need?**
 
-The naive hypothesis (the "obvious" one) was linear: twice the mass $$\rightarrow$$ twice the energy. Some biologists argued for a $$2/3$$ exponent, based on surface-area reasoning (heat loss scales with surface, surface scales as $$M^{2/3}$$).
+The naive hypothesis, the "obvious" one, was linear: twice the mass $$\rightarrow$$ twice the energy. Some biologists argued for a $$2/3$$ exponent, based on surface-area reasoning (heat loss scales with surface, surface scales as $$M^{2/3}$$).
 
 Like Galileo before him, Kleiber just… measured things.
 

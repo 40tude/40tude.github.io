@@ -12,7 +12,7 @@ parent: "ML & AI"
 # nav_order: 36
 math: mathjax
 date:               2026-04-02 15:00:00
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -41,8 +41,8 @@ last_modified_date: 2026-04-23 18:38:25
 ## TL;DR
 {: .no_toc }
 
-* Use **[SDD]({%link docs/06_programmation/rust/027_speckit/speckit.md%})** when you're *building* something that lasts.
-* Use a **WAT Task Pipeline** when you're *processing* something one-off.
+* Use **[SDD (Spec-Driven Development)]({%link docs/06_programmation/rust/027_speckit/speckit.md%})** when you're *building* something that lasts.
+* Use a **WAT (Workflows, Agents, Tools) Task Pipeline** when you're *processing* something one-off.
 * Here, we apply WAT Task Pipeline principles to create a *Daily Tech Digest Generator*
 * Keep `CLAUDE.md` independent of the task pipeline
 * `docs/project_goal.md` is specific to the task pipeline
@@ -55,11 +55,11 @@ last_modified_date: 2026-04-23 18:38:25
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img00.webp"
-    alt="An explosion of fire safely contained inside a glass cube in a sci-fi server room, symbolizing isolated and controlled execution"
+    alt="Use a WAT (Workflows, Agents, Tools) Task Pipeline when you're processing something one-off"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Claude YOLO mode, safely contained. Really?</figcaption>
+<figcaption>Use a WAT (Workflows, Agents, Tools) Task Pipeline when you're processing something one-off</figcaption>
 </figure>
 
 

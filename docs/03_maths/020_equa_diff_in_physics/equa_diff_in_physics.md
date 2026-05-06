@@ -12,7 +12,7 @@ parent: "Maths"
 # nav_order: 36
 math: mathjax
 date:               2026-03-20 08:00:00
-last_modified_date: 2026-04-13 14:45:36
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -64,7 +64,7 @@ A <a href="{%link docs/03_maths/020_equa_diff_in_physics/docs/index.html%}" targ
 * Action $$S = \int_{t_1}^{t_2} L(x,\dot x,t)\,dt$$
 * Lagrangian $$L = T - V$$ (kinetic minus potential energy)
 * The real trajectory is the one that makes $$\delta S = 0$$
-* From this single principle: Newton's laws, Maxwell's equations, quantum mechanics, general relativity
+* From this single principle we get: Newton's laws, Maxwell's equations, quantum mechanics, general relativity
 * Noether's theorem: every symmetry of the action gives a conservation law (time $$\rightarrow$$ energy, space $$\rightarrow$$ momentum, rotation $$\rightarrow$$ angular momentum)
 
 **The quantum connection**

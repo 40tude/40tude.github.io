@@ -70,6 +70,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - scrap_book/
+  - tools/
   # - docs/maths/
   # - .sass-cache/
   # - .jekyll-cache/

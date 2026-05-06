@@ -11,7 +11,7 @@ twitter:
 parent: "Rust"
 nav_order: 34
 date:               2026-01-29 15:00:00
-last_modified_date: 2026-04-13 15:03:54
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -39,7 +39,7 @@ Learn Rust modular monolith: 7-step tutorial from Hello World to I/O-agnostic ap
 ## TL;DR
 {: .no_toc }
 
-* For beginners who already wrote some Rust code
+* For beginners, tinkerers, hobbyists, amateurs, and early-career developers...
 * We start from a single `main.rs` that prints "Hello Buck." and end with a fully modular workspace where the business logic has no idea how it reads or writes
 * Each step compiles, runs, and passes its tests
 * Step 00: Working proof of concept (one file, everything mixed)

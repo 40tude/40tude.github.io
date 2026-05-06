@@ -11,7 +11,7 @@ twitter:
 parent: "Programmation"
 # nav_order: 35
 date:               2026-02-15 22:00:00
-last_modified_date: 2026-04-13 15:03:54
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -42,7 +42,7 @@ A data-driven investigation into one of the most repeated claims in software eng
 * Software engineering continues to expand globally, creating entirely new audiences that must relearn established knowledge.
 * The core insight remains profoundly relevant: software engineering is still a young field with constant influx and insufficient knowledge transfer.
 * The rise of AI does not reduce the need for education. It increases the need for fundamentals, validation, and critical thinking. It is raising the bar.
-* We are no longer just training developers. We are training engineers who can guide, constrain, and validate machines that build.
+* We are no longer training developers. We are training engineers who can guide, constrain, and validate machines that build.
 * Is learning and teaching the Spec-driven Development the way to go?
 
 

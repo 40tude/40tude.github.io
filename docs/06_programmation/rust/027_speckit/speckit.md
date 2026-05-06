@@ -11,7 +11,7 @@ twitter:
 parent: "Rust"
 nav_order: 36
 date:               2026-03-05 11:00:00
-last_modified_date: 2026-04-21 10:21:22
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -51,7 +51,7 @@ Building and evolving a small Axum web app step-by-step using specs, tasks, and 
 
 
 **Note**
-The [companion project](https://github.com/40tude/bmi_sdd) with is available on GitHub but I strongly recommend to follow the instructions and build your own application.
+The [companion project](https://github.com/40tude/bmi_sdd) with is available on GitHub but I *strongly* recommend to follow the instructions and build your own application.
 
 
 

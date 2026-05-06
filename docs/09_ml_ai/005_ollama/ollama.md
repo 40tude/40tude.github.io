@@ -13,7 +13,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-21 11:32:47
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -83,7 +83,7 @@ last_modified_date: 2026-04-21 11:32:47
 <!-- ###################################################################### -->
 ## Introduction
 
-Running large language models locally on Windows 11 is easier than ever. Tools like Ollama make installation almost trivial: as we will see, you can download a model and start prompting in just a few minutes.
+Running large language models locally under Windows 11 is easier than ever. Tools like Ollama make installation almost trivial: as we will see, you can download a model and start prompting in just a few minutes.
 
 But getting something to run is not the same as making it *useful*.
 

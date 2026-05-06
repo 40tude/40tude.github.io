@@ -12,7 +12,7 @@ parent: "ML & AI"
 # nav_order: 36
 math: mathjax
 date:               2026-04-01 12:00:00
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-05-06 09:27:46
 ---
 
 
@@ -74,7 +74,7 @@ Full AI autonomy inside a container, zero risk to the host, and a fix for OneDri
 <!-- ###################################################################### -->
 ## Introduction
 
-So I'm on Windows 11. Happy there, not moving. My projects live under OneDrive, VSCode is my editor, and for the past few days, while using WAT (Workflows, Agents and Tools) and SDD ([Spec-Driven Development]({%link docs/06_programmation/rust/027_speckit/speckit.md%})), my workflow has been circling around one goal: letting Claude write code while I focus on what actually matters.
+I'm on Windows 11. Happy there, not moving. My projects live under OneDrive, VSCode is my editor, and for the past few days, while using WAT (Workflows, Agents and Tools) and SDD ([Spec-Driven Development]({%link docs/06_programmation/rust/027_speckit/speckit.md%})), my workflow has been circling around one goal: letting Claude write code while I focus on what actually matters.
 
 And when I say "letting Claude write code", I mean *really* letting it. There is a mode called YOLO (`claude --dangerously-skip-permissions`) where Claude can read, write, delete, and run commands without stopping to ask us every five seconds. No confirmation dialogs, no friction. It just works. And yeah, it is as powerful as it sounds. It is also as dangerous as it sounds. Run that on your actual machine and one confused LLM later, you could have missing files, a mangled git history, or an API key that went somewhere it should not have. So before I touched YOLO mode with a ten-foot pole, I needed a proper cage for it.
 
