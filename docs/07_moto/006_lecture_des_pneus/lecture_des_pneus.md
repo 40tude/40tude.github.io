@@ -5,7 +5,7 @@ parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-06 15:54:06
+last_modified_date: 2026-05-06 16:10:22
 ---
 
 
@@ -347,13 +347,11 @@ Afin de retenir la règle j'ai envie de proposer un truc du style "***Si y en a 
 
 Dans la photo ci-dessous le sens de rotation est vers nous. Au bout de la flèche rouge le bord avant de la rainure est plus haut que le bord arrière. Le rebond est trop lent. J'ouvre de 2 clics, je ne touche à rien d'autre et je vois comment évolue la situation à la fin de la session.
 
-*C'est bizarre, au bout de la flèche verte les 2 bords de la rainure sont à la même hauteur ?* Cela s'explique par le fait que la rainure de la flèche verte est sur la bande de roulement. Normalement le rebond a déjà eu lieu et on est 100% gaz ouvert alors qu'au bout de la flèche rouge on est encore sur l'angle en train d'appliquer la [Throttle Rule]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}##la-throttle-rule).
+*C'est bizarre, au bout de la flèche verte les 2 bords de la rainure sont à la même hauteur ?* Cela s'explique par le fait que la rainure de la flèche verte est sur la bande de roulement. Normalement le rebond a déjà eu lieu et on est [100% gaz ouvert **en butée**] []({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}#2-accélération-dans-les-lignes-droites) alors qu'au bout de la flèche rouge on est encore sur l'angle en train d'appliquer la [Throttle Rule]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}#la-throttle-rule).
 
 En priorité, il faut régler les problèmes qu'on rencontre quand on est sur l'angle (redonner de la confiance au pilote). Ici il faut donc s'occuper en premier de ce que l'on voit au bout de la flèche rouge.
 
 La moto avance si elle vient vers nous
-
-
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
 <img src="./assets/image-11.webp"
