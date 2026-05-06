@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-05 19:22:31
+last_modified_date: 2026-05-06 11:53:03
 ---
 
 
@@ -34,6 +34,8 @@ last_modified_date: 2026-05-05 19:22:31
 />
 <figcaption>My first track day with the MT07</figcaption>
 </figure>
+
+[Version FR disponible ici]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}).
 
 
 ## Introduction

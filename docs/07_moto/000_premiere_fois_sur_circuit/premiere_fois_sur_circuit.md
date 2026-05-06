@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-05 18:57:31
+last_modified_date: 2026-05-06 11:53:03
 ---
 
 
@@ -19,11 +19,17 @@ last_modified_date: 2026-05-05 18:57:31
 
 
 
-<div align="center">
-<img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
-</div>
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/image-25.webp"
+    alt="Première journée sur circuit avec le MT07"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Première journée sur circuit avec le MT07</figcaption>
+</figure>
 
 
+[US version available here]({%link docs/07_moto/000_premiere_fois_sur_circuit/first_track_day.md%}).
 
 ## Introduction
 
