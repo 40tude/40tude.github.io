@@ -5,7 +5,7 @@ parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-06 15:48:20
+last_modified_date: 2026-05-06 15:54:06
 ---
 
 
@@ -574,7 +574,7 @@ Si entre 2 sessions je gagne 3 secondes au tour... C'est sûr, j'ai changé quel
 
 Idem, si entre 9H00 et 11H on prend 10°C au niveau de la température ambiante. Il est clair que la température de la piste va monter aussi. Il est peut-être judicieux de mesurer de nouveau les pressions.
 
-Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page]({#link docs/07_moto/002_feuille_sessions/feuille_sessions.md#}) avec les 3 types de pneus que j'utilise régulièrement)
+Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page]({#link docs/07_moto/002_feuille_sessions/feuille_sessions.md}) avec les 3 types de pneus que j'utilise régulièrement)
 
 Accessoirement...Investir dans un thermomètre laser à 20€ afin de mesurer et prendre conscience des températures des pneus en retour de sessions. Encore une fois, il faut mesurer AV et AR mais aussi côté gauche et côté droit. Instructif.
 
@@ -699,7 +699,7 @@ Pour les réglages préliminaires des suspensions, j'aime bien en général les 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://www.youtube.com/embed/8lzBHYxa_A0?start=870"
+    src="https://www.youtube.com/embed/8lzBHYxa_A0?start=872"
     title="Suspension Setup"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
