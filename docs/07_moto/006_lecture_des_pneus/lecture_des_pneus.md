@@ -5,7 +5,7 @@ parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-06 11:53:03
+last_modified_date: 2026-05-06 15:48:20
 ---
 
 
@@ -24,7 +24,7 @@ L'idée est qu'à l'instar de l'indien qui lit les traces qu'ont laissé les bis
 
 **"Les pneus ne mentent pas"**.
 
-De plus, c'est très certainement plus précis et plus factuel que les "sentiments" dont on se rappelle à la descente de moto. Autrement dit, sous réserve d'interpréter correctement ces signes, on a là un formidable moyen d'améliorer le comportement de la moto, de préserver ses pneus et de faire tomber les chronos.
+De plus, ce que nous rapportent les pneus est très certainement plus précis et plus factuel que les "sentiments" dont on se rappelle à la descente de moto. Autrement dit, sous réserve d'interpréter correctement ces signes, on a là un formidable moyen d'améliorer le comportement de la moto, de préserver ses pneus et de faire tomber les chronos.
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
@@ -37,11 +37,11 @@ De plus, c'est très certainement plus précis et plus factuel que les "sentimen
 </figure>
 
 
-Attention aux Charlots! Tous ceux avec qui j'aborde le sujet des suspensions et/ou de la lecture des pneus me disent que soit ils n'y comprennent rien, soit ils ne connaissaient que le strict minimum pour survivre sur piste. Dans tous les cas ils confirment que les gens compétents sur le sujet se compte sur les doigts d'une main. Donc, méfiez-vous que ce soit sur les forums ou les tarmacs et méfiez-vous de ce que vous allez lire ici car il se peut que je n'ai pas encore complètement compris tel ou tel aspect.
+Attention aux Charlots! Tous ceux avec qui j'aborde le sujet des suspensions et/ou de la lecture des pneus me disent que soit ils n'y comprennent rien, soit ils ne connaissaient que le strict minimum pour survivre sur piste. Dans tous les cas ils confirment que les gens compétents sur le sujet se compte sur les doigts d'une main. Donc, méfiez-vous de ce vous allez lire sur les forums ou discuter sur les aires planes des circuits. Pire... Méfiez-vous de ce que vous allez lire ici car il se peut que je n'ai pas encore complètement compris tel ou tel aspect du sujet.
 
-Cela dit, j'essaie d'être un peu sérieux et de recouper un maximum d'informations avant d'écrire quoique ce soit. De toute façon, au pire, je peux facilement corriger/améliorer l'article au fil du temps. Mais bon, soyez indulgents, je ne suis pas un professionnel du sujet. J'ai juste la chance de parler un peu la langue de Shakespeare et de prendre des notes quand je lis ou que je regarde des vidéos.
+Cela dit, j'essaie d'être un peu sérieux et de recouper un maximum d'informations avant d'écrire quoique ce soit. De toute façon, si nécessaire je peux facilement corriger/améliorer l'article au fil du temps. Mais bon, soyez indulgents, je ne suis pas un professionnel du sujet. J'ai juste la chance de parler un peu la langue de Shakespeare et de prendre des notes quand je lis ou que je regarde des vidéos.
 
-En tout cas, ce n'est pas la peine non plus de dire "**laisse tomber, je ne comprends rien, c'est compliqué...**". Non, non tout au contraire, il faut s'intéresser au sujet car :
+En tout cas, ce n'est pas la peine non plus de dire "**laisse tomber, je ne comprends rien, c'est trop compliqué...**". Non, non, non. Tout au contraire, il faut s'intéresser au sujet car :
 
 * Ça économise les pneus (et vu le prix que ça coûte...)
 * Ça rend la moto plus performante, plus homogène et plus sûre
@@ -65,8 +65,8 @@ En tout cas, ce n'est pas la peine non plus de dire "**laisse tomber, je ne comp
 
 * On ne va pas parler du réglage initial des suspensions. Il y a déjà pas mal de choses écrites sur le sujet (voir plus loin la section [Références](#références)).
 * On va plutôt parler des pneus à rainures plutôt que des pneus slicks.
-* On suppose que la moto est bien entretenue, que la chaine n'est pas trop tendue, que les suspensions sont en bon état et que si on joue sur un paramètre cela engendre un effet.
-* Ce qui est dit ici s'applique aussi en grande partie aux motos de route qui viennent pour la première fois sur un circuit. Dans ce cas il faudra penser à baisser la pression des pneus (AV 2.1, AR 1.9 typiquement) et à vérifier que la chaine n'est pas trop tendue (risque d'empêcher le bras oscillant de travailler comme il faut). En fin de journée on pensera à remonter les pressions avant de reprendre la route.
+* On suppose que la moto est bien entretenue, que la chaîne n'est pas trop tendue, que les suspensions sont en bon état et que si on joue sur un paramètre cela engendre un effet.
+* Ce qui est dit ici s'applique aussi en grande partie aux motos de route qui viennent pour la [première fois sur un circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}). Dans ce cas il faudra penser à baisser la pression des pneus (AV 2.1, AR 1.9 typiquement mais vaut mieux aller vérifier) et à confirmer que la chaîne n'est pas trop tendue (risque d'empêcher le bras oscillant de travailler comme il faut). En fin de journée on pensera à remonter les pressions avant de reprendre la route.
 * On suppose bien sûr qu'il y a de la marge avant d'atteindre les témoins d'usure et que les pneus ne sont pas déjà complètement rincés (au fait, savez-vous retrouver la date de production du pneu ?)
 
 
@@ -101,7 +101,7 @@ En tout cas, ce n'est pas la peine non plus de dire "**laisse tomber, je ne comp
 </figure>
 
 
-Date de production du pneu. Si le DOT n'est pas d'un côté du pneu il est de l'autre. Le 1er N° c'est la semaine, le second c'est l'année.
+Date de production du pneu. Si le code DOT (Department of Transportation) n'est pas d'un côté du pneu il est de l'autre. Dans code le 1er N° c'est la semaine, le second c'est l'année.
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
@@ -116,7 +116,7 @@ Date de production du pneu. Si le DOT n'est pas d'un côté du pneu il est de l'
 
 ## Remarques à propos de la méthode
 
-* J'exagère à peine mais jouer sur les réglages des suspensions consiste très souvent à faire plus ou moins rentrer une aiguille dans un tube.
+* J'exagère à peine mais jouer sur les réglages des suspensions consiste très souvent à faire plus ou moins rentrer une aiguille dans un tube où circule de l'huile.
     * Si l'aiguille est dans le tube, elle le bouche et le débit d'huile dans le tube est faible.
     * Si l'aiguille n'est que partiellement dans le tube le débit d'huile est plus important.
 * C'est typiquement ce qui se passe sur les réglages de compression et de détente. Une fois qu'on a ça en tête on comprend donc qu'il **faudra être doux** et ne pas forcer comme une brute. Si on force trop quand on serre (sens horaire) pour faire rentrer l'aiguille dans le tube et qu'on arrive au bout, cela risque d'abîmer la pointe de l'aiguille et là, on aura plus que nos yeux pour pleurer.
@@ -152,7 +152,7 @@ Ci-dessous, c'est un extrait de la documentation du RSV4. Réglages piste de la 
 
 
 * Retrouvez sur le web les pressions recommandées par le constructeur des pneus.
-* Ensuite, mettez la main sur l'outillage nécessaire : tournevis, clé Allen... Rien de très spécial en fait. La clé pour régler la précontrainte de l'amortisseur est normalement dans la trousse à outils livrée avec la moto mais la qualité est faible voire nulle. Il faudra peut-être en acheter une.
+* Ensuite, mettez la main sur l'outillage nécessaire : tournevis, clé Allen... Rien de très spécial en fait. La clé pour régler la précontrainte de l'amortisseur est normalement dans la trousse à outils livrée avec la moto mais la qualité est faible voire nulle. Il faudra sans doute en acheter une et éviter à tout prix d'utiliser une pince multi-prise (aka becro).
 
 Clé issue de la trousse à outil du RSV4
 
@@ -179,7 +179,13 @@ Faut penser à prendre un manche assez long pour avoir du couple
 </figure>
 
 
-* Quand vous avez l'outillage en main, au calme, dans le garage, commencez par vérifier les réglages usine. Cela permet de mettre la main à la pâte et d'être sûr que tout est nominal et ce, même si la moto est neuve et sort du garage (oui, oui, je confirme). Eh oui bien sûr tu vous prenez des notes.
+* Quand vous avez l'outillage en main, au calme, dans le garage, commencez par vérifier les réglages usine. Cela permet de mettre la main à la pâte et d'être sûr que tout est nominal et ce, même si la moto est neuve et sort du garage (oui, oui, je confirme).
+
+* Eh oui, bien sûr, vous prenez des notes.
+
+
+
+
 
 ## Ce que l'on recherche
 
@@ -294,7 +300,7 @@ $$K$$ est une constante. Prends la valeur 100 si tu veux. Maintenant, si la temp
 
 Un autre exemple. Il suffit de penser aux déboires de ceux qui suivent des Ducati en Moto GP. Les mamas Italiennes dégagent une telle chaleur que le pneu avant de Quartararo monte en température et en pression. Du coup le grip change radicalement, les vitesses en entrée de virage ne peuvent plus être les mêmes, le niveau de confiance baisse etc.
 
-Cela explique aussi pourquoi il est important de mesurer la pression des pneus avant la première session de l'après-midi. En effet si entre 9H00 et 14H00 on passe de 17°C à 25°C, il est évident que cela va avoir un impact sur la pression des pneus qui va... Roulement de tambour... Augmenter, oui c'est bien ça. Ben tu vois quand tu veux 😁.
+Cela explique aussi pourquoi il est important de mesurer à nouveau la pression des pneus avant la première session de l'après-midi. En effet si entre 9H00 et 14H00 on passe de 17°C à 25°C, il est évident que cela va avoir un impact sur la pression des pneus qui va... Roulement de tambour... Augmenter, oui c'est bien ça. Ben tu vois quand tu veux 😁.
 
 
 
@@ -341,9 +347,9 @@ Afin de retenir la règle j'ai envie de proposer un truc du style "***Si y en a 
 
 Dans la photo ci-dessous le sens de rotation est vers nous. Au bout de la flèche rouge le bord avant de la rainure est plus haut que le bord arrière. Le rebond est trop lent. J'ouvre de 2 clics, je ne touche à rien d'autre et je vois comment évolue la situation à la fin de la session.
 
-*C'est bizarre, au bout de la flèche verte les 2 bords de la rainure sont à la même hauteur ?* Cela s'explique par le fait que la rainure de la flèche verte est sur la bande de roulement. Normalement le rebond a déjà eu lieu et on est 100% gaz ouvert alors qu'au bout de la flèche rouge on est encore sur l'angle en train d'appliquer la [Throttle Rule]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}).
+*C'est bizarre, au bout de la flèche verte les 2 bords de la rainure sont à la même hauteur ?* Cela s'explique par le fait que la rainure de la flèche verte est sur la bande de roulement. Normalement le rebond a déjà eu lieu et on est 100% gaz ouvert alors qu'au bout de la flèche rouge on est encore sur l'angle en train d'appliquer la [Throttle Rule]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}##la-throttle-rule).
 
-En priorité, il faut régler les problèmes qu'on rencontre quand on est sur l'angle. Ici il faut donc s'occuper en premier de ce que l'on voit au bout de la flèche rouge.
+En priorité, il faut régler les problèmes qu'on rencontre quand on est sur l'angle (redonner de la confiance au pilote). Ici il faut donc s'occuper en premier de ce que l'on voit au bout de la flèche rouge.
 
 La moto avance si elle vient vers nous
 
@@ -387,7 +393,7 @@ Ci-dessous, le pneu arrière avance quand il va vers la gauche.
 
 
 
-* Si la rainure est longue et va de la bande de roulement jusqu'au bord du pneu (j'exagère) on peut observer des cas où on perd de la matière à l'avant de la rainure sur la bande de roulement et en même temps, on perd de la matière à l'arrière de la rainure sur le côté du pneu. Dans ce cas-là on vérifie si la pression du pneu est bonne et on s'intéresse en priorité à ce qui se passe sur le côté du pneu.
+* Si la rainure est longue et va de la bande de roulement jusqu'au bord du pneu (j'exagère) on peut observer des cas où on perd de la matière à l'avant de la rainure sur la bande de roulement et en même temps, on perd de la matière à l'arrière de la rainure sur le côté du pneu. Dans ce cas-là on vérifie si la pression du pneu est bonne puis on s'intéresse en priorité à ce qui se passe sur le côté du pneu.
 
 
 <figure style="max-width: 600px; margin: auto; text-align: center;">
@@ -400,7 +406,7 @@ Ci-dessous, le pneu arrière avance quand il va vers la gauche.
 </figure>
 
 
-* Accumulation de bille de gomme
+* Accumulation de billes de gomme
     * Si, sur le **bord avant** des rainures du **pneu AV** il y a des accumulations de billes de gomme cela indique que la pression est trop basse.
     * Si, sur le **bord arrière** des rainures du **pneu AR** il y a des accumulations de billes de gomme cela indique que la pression est trop basse.
     * On peut commencer par ajouter **250 gr** de pression et voir ce que cela donne à la fin de la session.
@@ -568,14 +574,14 @@ Si entre 2 sessions je gagne 3 secondes au tour... C'est sûr, j'ai changé quel
 
 Idem, si entre 9H00 et 11H on prend 10°C au niveau de la température ambiante. Il est clair que la température de la piste va monter aussi. Il est peut-être judicieux de mesurer de nouveau les pressions.
 
-Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page] NOT YET TRANSFERED ({#link docs/07_moto/002_feuille_sessions/feuille_sessions.md#}) avec les 3 types de pneus que j'utilise régulièrement)
+Histoire de se simplifier la vie... Prendre une photo ou récupérer les pressions recommandées et les garder dans son téléphone ou sur une feuille de sessions (il y a un exemple de feuille de sessions [sur cette page]({#link docs/07_moto/002_feuille_sessions/feuille_sessions.md#}) avec les 3 types de pneus que j'utilise régulièrement)
 
 Accessoirement...Investir dans un thermomètre laser à 20€ afin de mesurer et prendre conscience des températures des pneus en retour de sessions. Encore une fois, il faut mesurer AV et AR mais aussi côté gauche et côté droit. Instructif.
 
 Concernant la précision du thermomètre il ne faut pas trop s'inquiéter. Ce qui est important c'est d'utiliser toujours le même en cours de journée et d'être attentif, plus aux variations qu'aux mesures. Ce que je veux dire c'est que s'il indique 52° alors qu'en réalité le pneu est à 55° ce n'est pas très grave. Cependant si entre le matin et l'après-midi nos mesures passent de 55° à 65° là, en revanche ça veut dire quelque chose et il faudra sans doute en tenir compte.
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 300px; margin: auto; text-align: center;">
 <img src="./assets/image-2_2022_10.webp"
     alt="Thermomètre laser"
     style="width: 100%; height: auto;"
@@ -594,7 +600,7 @@ Sinon quand vous serez riches vous pourrez investir dans un ensemble de précisi
 
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 300px; margin: auto; text-align: center;">
 <img src="./assets/image-3.webp"
     alt="Manomètre de précision et thermomètre Prisma"
     style="width: 100%; height: auto;"
@@ -619,7 +625,7 @@ Sinon quand vous serez riches vous pourrez investir dans un ensemble de précisi
 La chaîne YouTube de [Dave Moss](https://www.youtube.com/user/CatalystReactionSBW/videos?view=0&sort=p&flow=grid).
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-6-4.webp"
     alt="Dave Moss en pleine séance d'explication"
     style="width: 100%; height: auto;"
@@ -635,7 +641,7 @@ C'est, de loin, **LA** référence la plus complète sur le sujet. On parle ici 
 Ce qui me chagrine c'est qu'il fait de plus en plus de "trailer" afin qu'on paie et qu'on s'abonne. Perso ça me soûle un peu car il y a de moins en moins de vidéos complètes. Il ne faut donc pas hésiter à faire des recherches dans les anciennes vidéos quitte à effectuer la recherche depuis Google et PAS depuis YouTube. En effet, dans Google on peut préciser une fenêtre de tir pour les dates. Par exemple, voilà ce que cela donne quand je cherche une vidéo entre 2018 et 2020.
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-4_1.webp"
     alt=""
     style="width: 100%; height: auto;"
@@ -645,9 +651,9 @@ Ce qui me chagrine c'est qu'il fait de plus en plus de "trailer" afin qu'on paie
 </figure>
 
 
+Résultats des recherches ainsi paramétrées:
 
-
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-5.webp"
     alt=""
     style="width: 100%; height: auto;"
@@ -659,10 +665,10 @@ Ce qui me chagrine c'est qu'il fait de plus en plus de "trailer" afin qu'on paie
 
 Sauf erreur de ma part il y a aussi moyen de retrouver certaines vidéos sur Vimeo
 
-Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourche sur la chaine de **[Nathalie BETHELIE](https://www.youtube.com/channel/UCs-k62clKR91XY4T5lqoCJA)**. Attention les vidéos traitent de l'amortissement et pas vraiment des informations que nous remontent les pneus.
+Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourche sur la chaîne de **[Nathalie BETHELIE](https://www.youtube.com/channel/UCs-k62clKR91XY4T5lqoCJA)**. Attention les vidéos traitent de l'amortissement et pas vraiment des informations que nous remontent les pneus.
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-6-2.webp"
     alt="Les explications de Nathalie BETHELIE, entre autres, instructeur à la Ferté Gaucher"
     style="width: 100%; height: auto;"
@@ -672,9 +678,6 @@ Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourch
 </figure>
 
 
-<!-- <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0mGDdnFGyZ0?si=-gEWGkAnxt1S5sZA&amp;start=13" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div> -->
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -691,13 +694,25 @@ Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourch
 </figure>
 
 
+Pour les réglages préliminaires des suspensions, j'aime bien en général les vidéos de Obsession Engineering donc je vous propose celle-ci:
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/8lzBHYxa_A0?start=870"
+    title="Suspension Setup"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Suspension Setup
+</figcaption>
+</figure>
+
+
 Pour une introduction rapide en anglais sur le réglage des suspensions et sur ce que l'on peut faire (ou pas) en fonction des motos, il y a cette vidéo de **[MotoJitsu](https://www.youtube.com/c/MotoJitsu)** :
 
-<!-- https://www.youtube.com/watch?v=lo0kv_6hG-0&list=PLOmfq6wDOTY47KYrwDJZC12l5aDa5ST2Y&index=74&t=22s -->
-
-<!-- <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lo0kv_6hG-0?si=wEv5FPW99-gH_rh8&amp;start=22" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div> -->
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -714,10 +729,7 @@ Pour une introduction rapide en anglais sur le réglage des suspensions et sur c
 </figure>
 
 
-Il y a enfin cette vidéo de l'excellente chaine anglaise [Life at Lean](https://www.youtube.com/c/LifeatLean) qui est pour le coup, inspirée du travail de Dave Moss et pile-poil sur le sujet. AU moment où j'écris cette page 2022, je suis un peu inquiet, cela fait longtemps qu'il n'y a rien eu de publié sur la chaîne en question. Je crois que [Dan Netting](https://www.youtube.com/channel/UCY9gbD_LrCoBCMzSiV0I1kg) est passé à autre chose. En tout cas, cela n'enlève rien à la vidéo ci-dessous.
-
-<!-- https://youtu.be/Cqq5dEiADJY -->
-
+Il y a aussi cette vidéo de l'excellente chaîne anglaise [Life at Lean](https://www.youtube.com/c/LifeatLean) qui est pour le coup, inspirée du travail de Dave Moss et pile-poil sur le sujet. Au moment où j'écris cette page (2022), je suis un peu inquiet. En effet ça fait longtemps qu'il n'y a rien eu de publié sur la chaîne en question. Je crois que [Dan Netting](https://www.youtube.com/channel/UCY9gbD_LrCoBCMzSiV0I1kg) est passé à autre chose. En tout cas, cela n'enlève rien à la vidéo ci-dessous.
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -732,6 +744,10 @@ Il y a enfin cette vidéo de l'excellente chaine anglaise [Life at Lean](https:/
     Les explications de Dan Netting à propos de la lecture des pneus sur piste
 </figcaption>
 </figure>
+
+
+
+
 
 
 
@@ -756,7 +772,7 @@ Côté bouquins c'est un peu la misère en français et, là aussi, ils traitent
 À l'occasion vous pouvez-lire (en anglais) la première partie de [ce livre](https://lire.amazon.fr/kp/embed?asin=B00FKYXJCM&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_WKMHBQW5KY3X3XCR9AJE&tag=40tude-21) qui est dédié aux suspensions. Je trouve la seconde moitié pas appropriée à mes besoins car je n'ai pas du tout l'intention de démonter/remonter complètement ma fourche.
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-6_2022_10.webp"
     alt="Le livre Race Tech's Motorcycle Suspension Bible"
     style="width: 100%; height: auto;"
@@ -770,7 +786,7 @@ Côté bouquins c'est un peu la misère en français et, là aussi, ils traitent
 Ensuite dans le Tome 2 de "[Le chrono ne ment pas](http://kennyforay.com/shop/Le-chrono-ne-ment-pas-1%262-p195955506)" il y a un chapitre dédié aux suspensions. Sinon, il y a des informations disséminées dans les autres chapitres. Il faut acheter le livre sur le site de Kenny Foray, pas en Belgique.
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-16.webp"
     alt="Les 2 tomes de Le chrono ne ment pas de Steven Casaer"
     style="width: 100%; height: auto;"
@@ -784,7 +800,7 @@ Ensuite dans le Tome 2 de "[Le chrono ne ment pas](http://kennyforay.com/shop/Le
 Enfin, je pense au bouquin [Total Control de Lee Parks]({#link https://lire.amazon.fr/kp/embed?asin=B00R31222S&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_T3MD1F4X96MNY97WZPHT&tag=40tude-21#}) dont les chapitres 3 et 15 sont dédiés aux suspensions et à leurs réglages. Malheureusement, lui aussi ne parle pas de la lecture des pneus.
 
 
-<figure style="max-width: 600px; margin: auto; text-align: center;">
+<figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-6-1.webp"
     alt="Le livre Total Control de Lee Parks"
     style="width: 100%; height: auto;"
@@ -808,7 +824,6 @@ Encore une fois je ne suis pas un pro du sujet et donc, si vous avez des remarqu
 
 Bon, allez, la suite au prochain numéro. D’ici-là relisez les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faites des squats afin de préparer les prochains roulages.
 
-<!-- https://youtu.be/TIhtpItTuxc -->
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
