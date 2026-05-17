@@ -1,14 +1,43 @@
 ---
+published: true
+author: 40tude
+# lang: en-US
 layout: default
-title: "Jeûne de 6 jours - Février 2023"
+title: "Jeûne de 6 jours"
 description: ""
+image: docs/99_divers/003_jeune_6_jours_fevrier_2023/assets/image-25.webp
+twitter:
+  card: summary_large_image
 parent: "Divers"
 math: mathjax
 date:               2023-02-25 10:08:45
-last_modified_date: 2026-05-17 12:11:48
+last_modified_date: 2026-05-17 16:33:49
 ---
 
-# Jeûne de 6 jours - Février 2023
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## TL;DR
+{: .no_toc }
+
+* Tour de taille = H/2, viser 1/2 (moi 1.69 & 84.5 cm)
+* IMC = poids/hauteur² devrait être inférieur à 25 (moi 1.69m & 71kg)
+* OMAD (One Meal A Day)
+* L'insuline, hormone qui indique aux cellules que c'est le moment de stocker sous forme de gras
+* Cétogène, 5% de sucre
+* En cétose quand 3 mmol/l
+* Autophagie quand $$\frac{G}{K}$$ mesurés dans les mêmes unités est aux alentours de 1
+* Pour transformer mg/dl en mmol/l (glucose), divise par 18
+
+
 
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
@@ -21,6 +50,9 @@ last_modified_date: 2026-05-17 12:11:48
 </figure>
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Contexte
 
 Ce n'est pas un article sur les bienfaits ou les avantages du jeûne. Non, non, il se trouve que je viens de faire un jeûne de 6 jours (je recommence à m'alimenter ce soir - 25 02 23) et j'explique juste comment ça s'est passé pour moi, mon contexte etc.
@@ -37,13 +69,21 @@ Enfin, j'essaie de fonctionner en mode [cétogène]({%link docs/99_divers/004_mo
 
 Ah oui, j'allais oublier. J'ai déjà fait un jeûne l'année dernière (3 ou 4 jours je ne sais plus trop, je n'avais pas pris de notes à l'époque). Puis un autre qui n'a pas du tout fonctionné. J'ai arrêté le second jeûne quasiment au bout d'un jour et demi. C'était ma faute. En fait, je ne "l'avais pas en tête" avant de l'entreprendre et je devais manquer de motivation. C'est finalement, je crois, le plus important. C'est pour ça, par exemple, que j'écris mes objectifs sur cette page. IMHO : "Si tu ne le sens pas, ne le fais pas". En revanche, si tu as un objectif clair en tête, un peu de motivation, si tu le "vois", si tu le "sens", vas-y. Et ne tiens pas compte de ce que va dire ton entourage.
 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Mes objectifs
 
 À l'issue de ce jeûne je veux (notez que ce n'est pas "je souhaite", mais "je veux") :
 
 * Remettre les compteurs à zéro côté nutrition et lancer ma "prépa" physique pour avril.
 
-* Être revenu aux alentours de 70 kg. Même si [l'IMC](https://presse.inserm.fr/obesite-et-surpoids-pres-dun-francais-sur-deux-concerne/46494/) (poids sur taille²) ne veut pas dire grand-chose pour 1 personne cela m'amènera à un IMC de 24.5 ce qui n'est pas trop mal. Je dis que l'IMC est un outil statistique car on considère généralement qu'il est surtout valable à l'échelle d'une population. De toute façon, si je baisse trop (67 kg par exemple) mon entourage me dit que j'ai une sale tête. Euh… achtung. Une semaine de ski début mars ce n'est pas ce qu'il y a de mieux pour la ligne. Oui, oui tu prends l'air et tu fais des squats sur ton snowboard mais bon, même si "In tartiflette we trust" va falloir y aller mollo (en plus, moi, je suis plutôt fan de fondue Savoyarde).
+* Être revenu aux alentours de 70 kg. Même si [l'IMC](https://presse.inserm.fr/obesite-et-surpoids-pres-dun-francais-sur-deux-concerne/46494/) (poids sur hauteur²) ne veut pas dire grand-chose pour 1 personne cela m'amènera à un IMC de 24.5 ce qui n'est pas trop mal. Je dis que l'IMC est un outil statistique car on considère généralement qu'il est surtout valable à l'échelle d'une population. De toute façon, si je baisse trop (67 kg par exemple) mon entourage me dit que j'ai une sale tête. Euh… achtung. Une semaine de ski début mars ce n'est pas ce qu'il y a de mieux pour la ligne. Oui, oui tu prends l'air et tu fais des squats sur ton snowboard mais bon, même si "In tartiflette we trust" va falloir y aller mollo (en plus, moi, je suis plutôt fan de fondue Savoyarde).
 
 * Me rediscipliner côté bouffe pour rester dans cette zone des 70 kg. C'est tellement facile : un petit bout pain, un Curly… Tu parles… Quand je mets le nez dedans (au restaurant ou le WE typiquement car la semaine il n'y a pas de pain à la maison), c'est plutôt une demi-baguette et 3/4 d'un paquet de Curly… L'idée c'est de se dire que je n'aurai pas fait ce jeûne pour rien et que ce serait idiot de tout gâcher à cause d'un Curly (sales bêtes, je les adore mais sales bêtes quand même). À l'occasion, effectuez une recherche sur le [bliss point](https://en.wikipedia.org/wiki/Bliss_point_%28food%29) et vous comprendrez pourquoi, si on mange un Curly, on mange le paquet.
 
@@ -52,9 +92,16 @@ Ah oui, j'allais oublier. J'ai déjà fait un jeûne l'année dernière (3 ou 4 
 * Reprendre squats, pompes et planche quotidiennement (sauf le dimanche). Continuer la marche rapide et la course lente. Ça ne fait pas maigrir mais c'est surtout pour le moral (dopamine) et la moto sur piste car il faut des cuisses et du cardio.
   Je dis course lente et marche rapide car l'idée est de rester dans la zone aérobie (zone dans laquelle on doit être capable de parler). Typiquement j'essaie de me mettre à 130 battements par minute même si d'autres préconisent de rester à 120 bpm. Il y a une formule du style $$70\% * (220 - \textrm{age})$$ mais comme suis vieux la fréquence ainsi calculée est vraiment trop basse pour moi.
 
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## IMC ou tour de taille ?
 
-Je l'ai dit, l'IMC est plutôt un bon indicateur statistique. De son côté, le tour de taille est sans doute un meilleur indicateur personnel. Pour faire court, afin d'augmenter le nombre d'années de vie, idéalement le tour de taille doit être égal à 1/2 de ta taille (voir l'article de [PLoS One](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0103483) si besoin).
+Je l'ai dit, l'IMC est plutôt un bon indicateur statistique. De son côté, le tour de taille (à mesurer au nombril ou juste au dessus du nombril) est sans doute un meilleur indicateur personnel. Pour faire court, afin d'augmenter le nombre d'années de vie, idéalement le tour de taille doit être égal à 1/2 de ta taille (voir l'article de [PLoS One](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0103483) si besoin).
 
 <!-- <div align="center">
 &nbsp;
@@ -80,10 +127,22 @@ On considère qu'une personne est en obésité abdominale si son tour de taille 
 
 Enfin, sur le graphe précédent, on voit aussi qu'il n'est pas bon, même si c'est dans une moindre mesure d'avoir un tour de taille inférieur à la moitié de notre taille.
 
-## Note : Le rapport taille-hanche
+
+
+<!-- ###################################################################### -->
+### Note : Le rapport taille-hanche
+{: .no_toc }
 
 Un peu dans le même ordre d'idée que la note précédente... On considère que pour un homme ce rapport doit être inférieur à 0.95 et pour une femme, inférieur à 0.80. Le plus dur étant de les mesurer correctement 😊. Si besoin lire cette [page](https://global-sport.fr/rapport-taille-hanche-ou-rth-mesurer).
 
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Les mesures lors du jeûne
 
 Les mesures ci-dessous sont faites avec un [Go-Keto](https://www.swisspointofcare.com/fr/brand/go-keto-fr/). Je trouve que c'est un peu le coup de fusil au niveau du prix des lancets (les petites bandes blanches) mais bon, en temps normal je n'en utilise pas tous les jours. Je fais les 2 mesures (cétonémie et glycémie) avec le même appareil, le matin, à jeun et dans les mêmes conditions afin que les choses soient comparables d'un jour à l'autre.
@@ -98,6 +157,12 @@ Les mesures ci-dessous sont faites avec un [Go-Keto](https://www.swisspointofcar
 | Vendredi 24 | Levé plus tôt que d'habitude. J'ai couru lentement et marché vite + squat et pompes. Sinon, pas faim du tout de la journée mais j'ai eu un coup de barre en fin d'après-midi (dormi de 18 à 19H) | 69.5 | 5.1 | 61 |
 | Samedi 25 | Couché de bonne heure, levé de bonne heure. Mal au crâne au levé. Ça s'arrête ce soir. Il faudra que je fasse attention à ne pas trop manger en sortie de jeûne. | 68.6 | 6.3 | 67 |
 
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Conclusion
 
 "Like a charm" ou presque. Je pense que j'aurai pu continuer encore 2 ou 3 jours mais bon, je n'ai pas envie de casser l'ambiance ce soir et de faire suer les gens qui seront à la maison avec mes histoires.
