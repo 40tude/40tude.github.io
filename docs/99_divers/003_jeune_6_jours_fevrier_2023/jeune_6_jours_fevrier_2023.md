@@ -1,19 +1,25 @@
 ---
 layout: default
 title: "Jeûne de 6 jours - Février 2023"
+description: ""
 parent: "Divers"
 math: mathjax
-date: 2023-02-25 10:08:45
-last_modified_date: 2023-06-16 09:23:56
+date:               2023-02-25 10:08:45
+last_modified_date: 2026-05-17 12:11:48
 ---
 
 # Jeûne de 6 jours - Février 2023
 
-<div align="center">
-&nbsp;
-<img src="./assets/image-25.webp" alt="" width="450" loading="lazy"/>
-&nbsp;
-</div>
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/image-25.webp"
+    alt="Jeûne de 6 jours"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Jeûne de 6 jours</figcaption>
+</figure>
+
 
 ## Contexte
 
@@ -21,13 +27,13 @@ Ce n'est pas un article sur les bienfaits ou les avantages du jeûne. Non, non, 
 
 Je sens que depuis Noël et Jour de l'An j'ai du mal à stabiliser mon poids. Normalement je suis aux alentours de 71 kg en semaine. Le WE arrive, je monte à 72-73. Ensuite, rebelotte, il me faut une semaine pour redescendre à 71 kg. Mais bon, ces derniers temps, je suis moins discipliné et la moyenne est à la hausse… On va donc dire que je suis plutôt dans la zone des 72 (pour 1.69m, donc léger surpoids selon l'IMC) avec une tendance haussière. Cela dit, je souhaite positionner mon "set point" aux alentours des 69-70 kg.
 
-En plus, je pars au ski début mars et mon prochain [roulage moto sur circuit](`NOT YET TRANSFERED`) est prévu tout début avril. Il est donc grand temps de corriger le tir.
+En plus, je pars au ski début mars et mon prochain [roulage moto sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) est prévu tout début avril. Il est donc grand temps de corriger le tir.
 
 Je marche et cours très régulièrement (quasi quotidiennement, sauf le dimanche) mais j'ai arrêté les squats et les pompes depuis un bon moment. Je vais donc profiter de cette semaine de reprise en main pour redémarrer ma routine de musculation. Ça ne va pas chercher très loin : planche, squats, pompes...
 
 Sinon, le reste de l'année je fonctionne en mode OMAD (One Meal A Day). En gros je ne mange rien le matin, rien le midi, je ne mange que le soir. L'idée est de limiter le long de la journée les pics d'insuline. Pour rappel, l'insuline c'est l'hormone qui indique aux cellules que c'est le moment de stocker (sous forme de gras). Je ne fais pas de jeûne alterné (manger un jour sur deux ou jeuner deux jours de suite en semaine par exemple). C'est tout bête, mais du point de vue de la logistique (courses, vie de couple...) je trouve que ce n'est pas facile.
 
-Enfin, j'essaie de fonctionner en mode [cétogène](`NOT YET TRANSFERED`) (5% de glucide). Là aussi, je sais que depuis plusieurs semaines tout ça est un peu parti en live. Il est grand temps de siffler la fin de la récréation.
+Enfin, j'essaie de fonctionner en mode [cétogène]({%link docs/99_divers/004_mon_regime_keto/mon_regime_keto.md%}) (5% de glucide). Là aussi, je sais que depuis plusieurs semaines tout ça est un peu parti en live. Il est grand temps de siffler la fin de la récréation.
 
 Ah oui, j'allais oublier. J'ai déjà fait un jeûne l'année dernière (3 ou 4 jours je ne sais plus trop, je n'avais pas pris de notes à l'époque). Puis un autre qui n'a pas du tout fonctionné. J'ai arrêté le second jeûne quasiment au bout d'un jour et demi. C'était ma faute. En fait, je ne "l'avais pas en tête" avant de l'entreprendre et je devais manquer de motivation. C'est finalement, je crois, le plus important. C'est pour ça, par exemple, que j'écris mes objectifs sur cette page. IMHO : "Si tu ne le sens pas, ne le fais pas". En revanche, si tu as un objectif clair en tête, un peu de motivation, si tu le "vois", si tu le "sens", vas-y. Et ne tiens pas compte de ce que va dire ton entourage.
 
@@ -41,7 +47,7 @@ Ah oui, j'allais oublier. J'ai déjà fait un jeûne l'année dernière (3 ou 4 
 
 * Me rediscipliner côté bouffe pour rester dans cette zone des 70 kg. C'est tellement facile : un petit bout pain, un Curly… Tu parles… Quand je mets le nez dedans (au restaurant ou le WE typiquement car la semaine il n'y a pas de pain à la maison), c'est plutôt une demi-baguette et 3/4 d'un paquet de Curly… L'idée c'est de se dire que je n'aurai pas fait ce jeûne pour rien et que ce serait idiot de tout gâcher à cause d'un Curly (sales bêtes, je les adore mais sales bêtes quand même). À l'occasion, effectuez une recherche sur le [bliss point](https://en.wikipedia.org/wiki/Bliss_point_%28food%29) et vous comprendrez pourquoi, si on mange un Curly, on mange le paquet.
 
-* Retrouver ma discipline vis-à-vis du [sucre](`NOT YET TRANSFERED`). Ça, c'est une vraie saloperie et en plus il y en a partout, de plus en plus. Je fais la chasse au sucre depuis des années mais bon, il y a des hauts et des bas et ces derniers temps je me suis un peu relâché (pain le dimanche, petit bout de chocolat le soir, une part de tarte pour finir le repas dominical etc.).
+* Retrouver ma discipline vis-à-vis du [sucre]({%link docs/99_divers/006_a_propos_sucre/a_propos_sucre.md%}). Ça, c'est une vraie saloperie et en plus il y en a partout, de plus en plus. Je fais la chasse au sucre depuis des années mais bon, il y a des hauts et des bas et ces derniers temps je me suis un peu relâché (pain le dimanche, petit bout de chocolat le soir, une part de tarte pour finir le repas dominical etc.).
 
 * Reprendre squats, pompes et planche quotidiennement (sauf le dimanche). Continuer la marche rapide et la course lente. Ça ne fait pas maigrir mais c'est surtout pour le moral (dopamine) et la moto sur piste car il faut des cuisses et du cardio.
   Je dis course lente et marche rapide car l'idée est de rester dans la zone aérobie (zone dans laquelle on doit être capable de parler). Typiquement j'essaie de me mettre à 130 battements par minute même si d'autres préconisent de rester à 120 bpm. Il y a une formule du style $$70\% * (220 - \textrm{age})$$ mais comme suis vieux la fréquence ainsi calculée est vraiment trop basse pour moi.
@@ -50,11 +56,20 @@ Ah oui, j'allais oublier. J'ai déjà fait un jeûne l'année dernière (3 ou 4 
 
 Je l'ai dit, l'IMC est plutôt un bon indicateur statistique. De son côté, le tour de taille est sans doute un meilleur indicateur personnel. Pour faire court, afin d'augmenter le nombre d'années de vie, idéalement le tour de taille doit être égal à 1/2 de ta taille (voir l'article de [PLoS One](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0103483) si besoin).
 
-<div align="center">
+<!-- <div align="center">
 &nbsp;
 <img src="./assets/image.webp" alt="" loading="lazy"/>
 &nbsp;
-</div>
+</div> -->
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/image.webp"
+    alt="YLL relative to WHtR 0.5 in male non-smokers"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>YLL relative to WHtR 0.5 in male non-smokers</figcaption>
+</figure>
 
 
 Exemple : je mesure 1.69m, mon tour de taille devrait être de :
@@ -99,23 +114,48 @@ Bon, sinon que garder en tête ?
 
 Ci-dessous les différentes courbes :
 
-<div align="center">
+<!-- <div align="center">
 &nbsp;
 <img src="./assets/image-25_1.webp" alt="" loading="lazy"/>
 &nbsp;
-</div>
+</div> -->
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/image-25_1.webp"
+    alt="Variation du poids au cours de la semaine de jeun"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Variation du poids au cours de la semaine de jeun</figcaption>
+</figure>
 
-<div align="center">
+
+<!-- <div align="center">
 &nbsp;
 <img src="./assets/image-26.webp" alt="" loading="lazy"/>
 &nbsp;
-</div>
+</div> -->
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/image-26.webp"
+    alt="Variation de la cétonémie au cours de la semaine de jeun"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Variation de la cétonémie au cours de la semaine de jeun</figcaption>
+</figure>
 
-<div align="center">
+<!-- <div align="center">
 &nbsp;
 <img src="./assets/image-27.webp" alt="" loading="lazy"/>
 &nbsp;
-</div>
+</div> -->
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/image-27.webp"
+    alt="Variation de la glycémie au cours de la semaine de jeun"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Variation de la glycémie au cours de la semaine de jeun</figcaption>
+</figure>
 
 ## Note : Autophagie
 
@@ -159,11 +199,40 @@ Avec le même calcul on voit que le mercredi (G=67 mg/dl et K=3 mmol/l) le ratio
 | 6 < val < 9 | Cétonémie basse |
 | 9 < val | Cétonémie absente |
 
-Voir : <https://youtu.be/96dv7Xrgksw>
+<!-- Voir : <https://youtu.be/96dv7Xrgksw> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/96dv7Xrgksw"
+    title="Autophagy & Fasting: How Long To Biohack Your Body For Maximum Health? (GKI)"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Autophagy & Fasting: How Long To Biohack Your Body For Maximum Health? (GKI)
+</figcaption>
+</figure>
 
 Pour finir, une vidéo d'une personne que je ne trouve pas trop mal et que je suis où il explique ce qui se passe lors d'un jeûne. Oui, oui c'est anglais mais tu peux mettre les sous-titres et baisser la vitesse de lecture à 75% si besoin (mais il parle lentement).
 
-Voir : <https://youtu.be/Wzmacu2TgFg>
+<!-- Voir : <https://youtu.be/Wzmacu2TgFg> -->
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/Wzmacu2TgFg"
+    title="What Happens If You Don't Eat For 5 Days?"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    What Happens If You Don't Eat For 5 Days?
+</figcaption>
+</figure>
+
 
 En ce qui me concerne le prochain jeûne est normalement prévu dans 3 mois et demi, W25, du dimanche 18 juin au soir au samedi 24 juin au soir.
 
