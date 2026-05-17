@@ -3,15 +3,15 @@ published: true
 author: 40tude
 # lang: en-US
 layout: default
-title: "Jeûne de 6 jours"
-description: ""
+title: "Jeûne de 6 jours : poids, glycémie, cétones et autophagie"
+description: "Retour d’expérience détaillé sur un jeûne prolongé de 6 jours avec suivi du poids, de la glycémie, des cétones et des sensations au quotidien."
 image: docs/99_divers/003_jeune_6_jours_fevrier_2023/assets/image-25.webp
 twitter:
   card: summary_large_image
 parent: "Divers"
 math: mathjax
 date:               2023-02-25 10:08:45
-last_modified_date: 2026-05-17 16:51:20
+last_modified_date: 2026-05-17 17:51:43
 ---
 
 # {{ page.title }}
@@ -28,8 +28,8 @@ last_modified_date: 2026-05-17 16:51:20
 ## TL;DR
 {: .no_toc }
 
-* Viser tour de taille = H/2 (moi 1.69 & 84.5 cm)
-* IMC = poids/hauteur² devrait être inférieur à 25 (moi 1.69m & 71kg)
+* Viser tour de taille = H/2 (perso 1.69 $$\rightarrow$$ 84.5 cm)
+* IMC = poids/hauteur² devrait être inférieur à 25 (perso 1.69m $$\rightarrow$$ 71kg)
 * OMAD (One Meal A Day)
 * L'insuline, hormone qui indique aux cellules que c'est le moment de stocker sous forme de gras
 * Cétogène, 5% de sucre
@@ -235,7 +235,7 @@ Ci-dessous les différentes courbes :
 <figcaption>Variation de la glycémie au cours de la semaine de jeun</figcaption>
 </figure>
 
-## Note : Autophagie
+## Autophagie
 
 Je l'ai dit un peu plus haut, on considère généralement qu'on est en cétose quand le taux mesuré est aux alentours de 3 mmol/l. Ok. En revanche, comment savoir si on est en autophagie ? Pour rappel, [l'autophagie](https://fr.wikipedia.org/wiki/Autophagie) c'est un mode dans lequel le corps fait le "grand ménage" et recycle tout ce qu'il peut : cellules malades, endommagées, mal repliées... C'est un état dans lequel on souhaite arriver lors du jeûne.
 
