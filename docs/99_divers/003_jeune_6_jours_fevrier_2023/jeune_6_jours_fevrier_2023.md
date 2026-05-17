@@ -11,7 +11,7 @@ twitter:
 parent: "Divers"
 math: mathjax
 date:               2023-02-25 10:08:45
-last_modified_date: 2026-05-17 16:33:49
+last_modified_date: 2026-05-17 16:51:20
 ---
 
 # {{ page.title }}
@@ -28,7 +28,7 @@ last_modified_date: 2026-05-17 16:33:49
 ## TL;DR
 {: .no_toc }
 
-* Tour de taille = H/2, viser 1/2 (moi 1.69 & 84.5 cm)
+* Viser tour de taille = H/2 (moi 1.69 & 84.5 cm)
 * IMC = poids/hauteur² devrait être inférieur à 25 (moi 1.69m & 71kg)
 * OMAD (One Meal A Day)
 * L'insuline, hormone qui indique aux cellules que c'est le moment de stocker sous forme de gras
@@ -53,6 +53,19 @@ last_modified_date: 2026-05-17 16:33:49
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
+## Table des matières
+{: .no_toc .text-delta}
+- TOC
+{:toc}
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Contexte
 
 Ce n'est pas un article sur les bienfaits ou les avantages du jeûne. Non, non, il se trouve que je viens de faire un jeûne de 6 jours (je recommence à m'alimenter ce soir - 25 02 23) et j'explique juste comment ça s'est passé pour moi, mon contexte etc.
@@ -61,7 +74,7 @@ Je sens que depuis Noël et Jour de l'An j'ai du mal à stabiliser mon poids. No
 
 En plus, je pars au ski début mars et mon prochain [roulage moto sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) est prévu tout début avril. Il est donc grand temps de corriger le tir.
 
-Je marche et cours très régulièrement (quasi quotidiennement, sauf le dimanche) mais j'ai arrêté les squats et les pompes depuis un bon moment. Je vais donc profiter de cette semaine de reprise en main pour redémarrer ma routine de musculation. Ça ne va pas chercher très loin : planche, squats, pompes...
+Je marche et cours très régulièrement (quasi quotidiennement, sauf le dimanche) mais j'ai arrêté les squats et les pompes depuis un bon moment. Je vais donc profiter de cette semaine de reprise en main pour redémarrer ma routine de "musculation". Ça ne va pas chercher très loin : planche, squats, pompes...
 
 Sinon, le reste de l'année je fonctionne en mode OMAD (One Meal A Day). En gros je ne mange rien le matin, rien le midi, je ne mange que le soir. L'idée est de limiter le long de la journée les pics d'insuline. Pour rappel, l'insuline c'est l'hormone qui indique aux cellules que c'est le moment de stocker (sous forme de gras). Je ne fais pas de jeûne alterné (manger un jour sur deux ou jeuner deux jours de suite en semaine par exemple). C'est tout bête, mais du point de vue de la logistique (courses, vie de couple...) je trouve que ce n'est pas facile.
 
@@ -90,7 +103,7 @@ Ah oui, j'allais oublier. J'ai déjà fait un jeûne l'année dernière (3 ou 4 
 * Retrouver ma discipline vis-à-vis du [sucre]({%link docs/99_divers/006_a_propos_sucre/a_propos_sucre.md%}). Ça, c'est une vraie saloperie et en plus il y en a partout, de plus en plus. Je fais la chasse au sucre depuis des années mais bon, il y a des hauts et des bas et ces derniers temps je me suis un peu relâché (pain le dimanche, petit bout de chocolat le soir, une part de tarte pour finir le repas dominical etc.).
 
 * Reprendre squats, pompes et planche quotidiennement (sauf le dimanche). Continuer la marche rapide et la course lente. Ça ne fait pas maigrir mais c'est surtout pour le moral (dopamine) et la moto sur piste car il faut des cuisses et du cardio.
-  Je dis course lente et marche rapide car l'idée est de rester dans la zone aérobie (zone dans laquelle on doit être capable de parler). Typiquement j'essaie de me mettre à 130 battements par minute même si d'autres préconisent de rester à 120 bpm. Il y a une formule du style $$70\% * (220 - \textrm{age})$$ mais comme suis vieux la fréquence ainsi calculée est vraiment trop basse pour moi.
+  Je dis course lente et marche rapide car l'idée c'est de rester dans la zone aérobie (zone dans laquelle on doit être capable de parler). Typiquement j'essaie de me mettre à 130 battements par minute même si d'autres préconisent de rester à 120 bpm. Il y a une formule du style $$70\% * (220 - \textrm{age})$$ mais comme suis très vieux la fréquence ainsi calculée est vraiment trop basse pour moi.
 
 
 
