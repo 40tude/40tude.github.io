@@ -5,7 +5,7 @@ parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-18 11:48:24
+last_modified_date: 2026-05-18 11:53:46
 ---
 
 
@@ -671,7 +671,7 @@ En Anglais US, une bonne vidéo sur le réglage des suspensions. Attention la vi
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://www.youtube.com/embed/347H3Z-dv:BDg_U?start=13"
+    src="https://www.youtube.com/embed/0BP8qKMa3UQ"
     title="RS 660 | How to Setup Your Suspension"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -681,7 +681,6 @@ En Anglais US, une bonne vidéo sur le réglage des suspensions. Attention la vi
 RS 660 | How to Setup Your Suspension
 </figcaption>
 </figure>
-
 
 
 
