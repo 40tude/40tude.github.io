@@ -5,7 +5,7 @@ parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-06 17:22:48
+last_modified_date: 2026-05-18 11:48:24
 ---
 
 
@@ -663,17 +663,39 @@ Résultats des recherches ainsi paramétrées:
 
 Sauf erreur de ma part il y a aussi moyen de retrouver certaines vidéos sur Vimeo
 
-Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourche sur la chaîne de **[Nathalie BETHELIE](https://www.youtube.com/channel/UCs-k62clKR91XY4T5lqoCJA)**. Attention les vidéos traitent de l'amortissement et pas vraiment des informations que nous remontent les pneus.
 
 
-<figure style="max-width: 560px; margin: auto; text-align: center;">
+
+En Anglais US, une bonne vidéo sur le réglage des suspensions. Attention la vidéo traite de l'amortissement et pas des informations que nous remontent les pneus.
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/347H3Z-dv:BDg_U?start=13"
+    title="RS 660 | How to Setup Your Suspension"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+RS 660 | How to Setup Your Suspension
+</figcaption>
+</figure>
+
+
+
+
+Sinon en Français, il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourche sur la chaîne de **[Nathalie BETHELIE](https://www.youtube.com/channel/UCs-k62clKR91XY4T5lqoCJA)**.
+
+
+<!-- <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-6-2.webp"
     alt="Les explications de Nathalie BETHELIE, entre autres, instructeur à la Ferté Gaucher"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Les explications de Nathalie BETHELIE, entre autres, instructeur à la Ferté Gaucher</figcaption>
-</figure>
+</figure> -->
 
 
 
@@ -692,7 +714,7 @@ Sinon il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourch
 </figure>
 
 
-Pour les réglages préliminaires des suspensions, j'aime bien en général les vidéos de Obsession Engineering donc je vous propose celle-ci:
+<!-- Pour les réglages préliminaires des suspensions, j'aime bien en général les vidéos de Obsession Engineering donc je vous propose celle-ci:
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -724,10 +746,10 @@ Pour une introduction rapide en anglais sur le réglage des suspensions et sur c
 <figcaption style="text-align: center;">
     Les explications de MotoJitsu à propos des suspensions
 </figcaption>
-</figure>
+</figure> -->
 
 
-Il y a aussi cette vidéo de l'excellente chaîne anglaise [Life at Lean](https://www.youtube.com/c/LifeatLean) qui est pour le coup, inspirée du travail de Dave Moss et pile-poil sur le sujet. Au moment où j'écris cette page (2022), je suis un peu inquiet. En effet ça fait longtemps qu'il n'y a rien eu de publié sur la chaîne en question. Je crois que [Dan Netting](https://www.youtube.com/channel/UCY9gbD_LrCoBCMzSiV0I1kg) est passé à autre chose. En tout cas, cela n'enlève rien à la vidéo ci-dessous.
+Finalement, il y a aussi cette vidéo de l'excellente chaîne anglaise [Life at Lean](https://www.youtube.com/c/LifeatLean) qui est pour le coup, inspirée du travail de Dave Moss et pile-poil sur le sujet. Au moment où j'écris cette page (2022), je suis un peu inquiet. En effet ça fait longtemps qu'il n'y a rien eu de publié sur la chaîne en question. Je crois que [Dan Netting](https://www.youtube.com/channel/UCY9gbD_LrCoBCMzSiV0I1kg) est passé à autre chose. En tout cas, cela n'enlève rien à la vidéo ci-dessous.
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
