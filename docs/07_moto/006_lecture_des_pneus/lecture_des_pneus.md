@@ -1,4 +1,7 @@
 ---
+published: true
+author: 40tude
+# lang: en-US
 layout: default
 title: "Lecture des pneus moto sur circuit : guide complet pour régler pression et suspensions"
 description: "Guide pratique de lecture des pneus moto sur piste : pression idéale, température, rebond, compression, état de la gomme et diagnostic des défauts d’usure."
@@ -9,7 +12,7 @@ parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-21 08:53:32
+last_modified_date: 2026-05-21 09:03:07
 ---
 
 
@@ -24,7 +27,19 @@ last_modified_date: 2026-05-21 08:53:32
 Cette page est toujours en construction et je commence à me demander si elle sera terminée un jour.✊
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Table of Contents
+{: .no_toc .text-delta}
+- TOC
+{:toc}
 
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Introduction
 
 Pour faire court, dans cette page on va parler de la lecture des pneus après les sessions lors d'une [journée de roulage]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) moto sur circuit.
@@ -70,7 +85,15 @@ En tout cas, ce n'est pas la peine non plus de dire "**laisse tomber, je ne comp
 <figcaption>Réglage de la précontrainte sur amortisseur arrière</figcaption>
 </figure>
 
-## Parce que ça va mieux en le disant...
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Ce dont on ne va pas parler
 
 * On ne va pas parler du réglage initial des suspensions. Il y a déjà pas mal de choses écrites sur le sujet (voir plus loin la section [Références](#références)).
 * On va plutôt parler des pneus à rainures plutôt que des pneus slicks.
@@ -123,7 +146,13 @@ Date de production du pneu. Si le code DOT (Department of Transportation) n'est 
 </figure>
 
 
-## Remarques à propos de la méthode
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## La méthode
 
 * J'exagère à peine mais jouer sur les réglages des suspensions consiste très souvent à faire plus ou moins rentrer une aiguille dans un tube où circule de l'huile.
     * Si l'aiguille est dans le tube, elle le bouche et le débit d'huile dans le tube est faible.
@@ -196,7 +225,10 @@ Faut penser à prendre un manche assez long pour avoir du couple
 
 
 
-## Ce que l'on recherche
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Ce que l'on cherche à obtenir
 
 Allez, on commence par la fin. Ce que l'on souhaite voir à la surface du pneu arrière, typiquement, c'est un truc comme ça :
 
@@ -283,6 +315,9 @@ Faut regarder la droite du pneu
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Variation de pression
 
 **Niveau facile**
@@ -315,6 +350,9 @@ Cela explique aussi pourquoi il est important de mesurer à nouveau la pression 
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Pneu bleu
 
 **Niveau facile**
@@ -343,6 +381,9 @@ Au début de la prochaine session le film d'huile va partir et non, le pneu ne v
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Le bord des rainures
 
 **Niveau facile**
@@ -384,7 +425,9 @@ Ci-dessous, le pneu arrière avance quand il va vers la gauche.
 </figure>
 
 
+<!-- ###################################################################### -->
 ### Remarques en vrac
+{: .no_toc }
 
 * Il ne faut pas hésiter à "nettoyer" le pneu autour des rainures car, parfois, ce que l'on pense être de la perte de matière devant ou derrière correspond a de l'accumulation de débris sur l'autre bord. Ce n'est pas le cas ci-dessous.
 
@@ -441,6 +484,9 @@ Le pneu AV avance vers nous. La pression est trop basse.
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Pneu qui ne monte pas en température
 
 **Niveau intermédiaire**
@@ -482,6 +528,9 @@ Il faut laisser complètement refroidir le pneu **et la jante** puis vérifier l
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Pneu trop chaud
 
 **Niveau intermédiaire**
@@ -509,6 +558,9 @@ Il faut laisser complètement refroidir le pneu **et la jante** puis vérifier l
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Recommandations
 
 *C'est bien gentil tout ça mais, moi, demain je fais quoi de toutes ces informations?*
@@ -564,6 +616,7 @@ Bien sûr, en début de session il faut penser à le remonter.
 
 
 ### Lors d'une journée de roulage
+{: .no_toc }
 
 * À $$t$$ moins 10 min de la premiere session du matin, vérifier les pressions. Personnellement j'utilise de moins en moins les couvertures chauffantes donc j'ajuste les pressions aux pressions à froid. Sinon quand j'utilise des couvertures chauffantes je les laisse sur les pneus je règle la pression des pneus à la pression "sortie de couvertures".
 * À chaque fin de session
@@ -576,6 +629,7 @@ Bien sûr, en début de session il faut penser à le remonter.
 
 
 #### **En complément des conseils de la journée de roulage**
+{: .no_toc }
 
 Si entre 2 sessions je gagne 3 secondes au tour... C'est sûr, j'ai changé quelque chose : je passe plus vite à certains endroits, j'accélère plus fort... Bref, il faut avoir une attention particulière sur les pneus et prendre 2 minutes pour mesurer la pression avant la prochaine session.
 
@@ -625,9 +679,14 @@ Sinon quand vous serez riches vous pourrez investir dans un ensemble de précisi
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Références
 
+<!-- ###################################################################### -->
 ### Vidéos sur le web
+{: .no_toc }
 
 La chaîne YouTube de [Dave Moss](https://www.youtube.com/user/CatalystReactionSBW/videos?view=0&sort=p&flow=grid).
 
@@ -783,7 +842,9 @@ Finalement, il y a aussi cette vidéo de l'excellente chaîne anglaise [Life at 
 
 
 
+<!-- ###################################################################### -->
 ### Pages Web
+{: .no_toc }
 
 Google est ton ami... En Français et à propos du réglage des suspensions, je recommande cette [page.](http://www.les7pechesdumotard.fr/Comment-regler-ses-suspensions%2C158.html?utm_source=pocket_mylist) Elle date un peu et je n'aime pas les gifs animés mais tout ce qui concerne le réglage des suspensions y est.
 
@@ -796,9 +857,9 @@ En anglais il y a la [version web](https://lifeatlean.com/motorcycle-tyre-wear-g
 
 
 
-
+<!-- ###################################################################### -->
 ### Livres
-
+{: .no_toc }
 Côté bouquins c'est un peu la misère en français et, là aussi, ils traitent surtout des suspensions et pas vraiment de la lecture des pneus.
 
 À l'occasion vous pouvez-lire (en anglais) la première partie de [ce livre](https://lire.amazon.fr/kp/embed?asin=B00FKYXJCM&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_WKMHBQW5KY3X3XCR9AJE&tag=40tude-21) qui est dédié aux suspensions. Je trouve la seconde moitié pas appropriée à mes besoins car je n'ai pas du tout l'intention de démonter/remonter complètement ma fourche.
