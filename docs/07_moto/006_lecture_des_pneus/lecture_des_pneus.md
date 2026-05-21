@@ -1,15 +1,24 @@
 ---
 layout: default
-title: "Lecture des pneus"
+title: "Lecture des pneus moto sur circuit : guide complet pour régler pression et suspensions"
+description: "Guide pratique de lecture des pneus moto sur piste : pression idéale, température, rebond, compression, état de la gomme et diagnostic des défauts d’usure."
+image: docs/07_moto/006_lecture_des_pneus/assets/image-6-8.webp
+twitter:
+  card: summary_large_image
 parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-18 11:53:46
+last_modified_date: 2026-05-21 08:53:32
 ---
 
 
-# Lecture des pneus
+# {{ page.title }}
+{: .no_toc }
+
+{{ page.description }}
+{: .lead }
+
 
 {: .note }
 Cette page est toujours en construction et je commence à me demander si elle sera terminée un jour.✊
@@ -683,6 +692,23 @@ RS 660 | How to Setup Your Suspension
 </figure>
 
 
+J'aime bien les vidéos de Obsession Engineering, donc toujours à propos des réglages préliminaires des suspensions, je vous propose cette vidéo:
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/8lzBHYxa_A0?start=872"
+    title="Suspension Setup"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Suspension Setup
+</figcaption>
+</figure>
+
+
 
 Sinon en Français, il y a 2 vidéos dédiées respectivement aux amortisseurs et à la fourche sur la chaîne de **[Nathalie BETHELIE](https://www.youtube.com/channel/UCs-k62clKR91XY4T5lqoCJA)**.
 
@@ -713,21 +739,8 @@ Sinon en Français, il y a 2 vidéos dédiées respectivement aux amortisseurs e
 </figure>
 
 
-<!-- Pour les réglages préliminaires des suspensions, j'aime bien en général les vidéos de Obsession Engineering donc je vous propose celle-ci:
+<!--
 
-<figure style="max-width: 560px; margin: auto;">
-<div style="position: relative; padding-bottom: 56.25%; height: 0;">
-    <iframe
-    src="https://www.youtube.com/embed/8lzBHYxa_A0?start=872"
-    title="Suspension Setup"
-    style="position: absolute; inset: 0; width: 100%; height: 100%;"
-    allowfullscreen>
-    </iframe>
-</div>
-<figcaption style="text-align: center;">
-    Suspension Setup
-</figcaption>
-</figure>
 
 
 Pour une introduction rapide en anglais sur le réglage des suspensions et sur ce que l'on peut faire (ou pas) en fonction des motos, il y a cette vidéo de **[MotoJitsu](https://www.youtube.com/c/MotoJitsu)** :
