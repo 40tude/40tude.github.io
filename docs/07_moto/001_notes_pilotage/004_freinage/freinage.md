@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-04-25 09:17:00
+last_modified_date: 2026-05-25 12:04:17
 ---
 
 # {{ page.title }}
@@ -230,7 +230,7 @@ Plus d'explications dans la vidéo ci-dessous :
 </figcaption>
 </figure>
 
-Quand on freine, on redresse le buste, on est bras tendus, verrouillés, le regard sur le point de mise sur l'angle (qui est devant nous normalement… vu qu'on se dirige dessus…). Il faut garder en tête l'image du diable qui sort de sa boîte.
+Quand on freine, on redresse le buste, on est bras presque tendus, presque verrouillés, le regard sur le point de mise sur l'angle (qui est devant nous normalement… vu qu'on se dirige dessus…). Il faut garder en tête l'image du diable qui sort de sa boîte. Je dis presque tendus et presque verrouillés car il faut garder un peu d'amortissement et qu'il n'y en aura plus si tes coudes sont "verrouillés". Si besoin, pense aux bras des pilotes MotoGP qui se baladent en combinaison dans les paddocks.
 
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">

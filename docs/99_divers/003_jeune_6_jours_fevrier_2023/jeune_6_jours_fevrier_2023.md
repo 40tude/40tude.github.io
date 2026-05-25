@@ -11,7 +11,7 @@ twitter:
 parent: "Divers"
 math: mathjax
 date:               2023-02-25 10:08:45
-last_modified_date: 2026-05-17 17:51:43
+last_modified_date: 2026-05-25 12:04:17
 ---
 
 # {{ page.title }}
@@ -76,7 +76,7 @@ En plus, je pars au ski début mars et mon prochain [roulage moto sur circuit]({
 
 Je marche et cours très régulièrement (quasi quotidiennement, sauf le dimanche) mais j'ai arrêté les squats et les pompes depuis un bon moment. Je vais donc profiter de cette semaine de reprise en main pour redémarrer ma routine de "musculation". Ça ne va pas chercher très loin : planche, squats, pompes...
 
-Sinon, le reste de l'année je fonctionne en mode OMAD (One Meal A Day). En gros je ne mange rien le matin, rien le midi, je ne mange que le soir. L'idée est de limiter le long de la journée les pics d'insuline. Pour rappel, l'insuline c'est l'hormone qui indique aux cellules que c'est le moment de stocker (sous forme de gras). Je ne fais pas de jeûne alterné (manger un jour sur deux ou jeuner deux jours de suite en semaine par exemple). C'est tout bête, mais du point de vue de la logistique (courses, vie de couple...) je trouve que ce n'est pas facile.
+Sinon, le reste de l'année je fonctionne en mode OMAD (One Meal A Day). En gros je ne mange rien le matin, rien le midi, je ne mange que le soir. L'idée est de limiter le long de la journée les pics d'insuline. Pour rappel, l'insuline c'est l'hormone qui indique aux cellules que c'est le moment de stocker (sous forme de gras). Je ne fais pas de jeûne alterné (manger un jour sur deux ou jeûner deux jours de suite en semaine par exemple). C'est tout bête, mais du point de vue de la logistique (courses, vie de couple...) je trouve que ce n'est pas facile.
 
 Enfin, j'essaie de fonctionner en mode [cétogène]({%link docs/99_divers/004_mon_regime_keto/mon_regime_keto.md%}) (5% de glucide). Là aussi, je sais que depuis plusieurs semaines tout ça est un peu parti en live. Il est grand temps de siffler la fin de la récréation.
 

@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-21 08:53:32
+last_modified_date: 2026-05-25 12:04:17
 ---
 
 
@@ -89,7 +89,7 @@ last_modified_date: 2026-05-21 08:53:32
 ## 0. Préliminaires
 
 1. Vérifier que la chaîne n'est pas trop tendue
-    * Si c'est le cas, le bras oscillant ne peut pas bouger librement, la chaîne tire sur le PSB... Bref c'est pas une bonne idée.
+    * Si c'est le cas, le bras oscillant ne peut pas osciller librement, la chaîne tire sur le PSB... Bref, c'est vraiment pas une bonne chose.
 1. Mesurer la hauteur du joint spi de fourche. **Exemple**: 7 mm pour un RS 660
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -104,7 +104,20 @@ last_modified_date: 2026-05-21 08:53:32
 
 
 
-1. Mesurer la hauteur du zip. **Exemple**: 2.5 mm
+1. Mesurer la largeur du zip. **Exemple**: 2.5 mm
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img03.webp"
+    alt="Mesure de la largeur du zip. On va dire 2.5 mm"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Mesure de la largeur du zip. On va dire 2.5 mm</figcaption>
+</figure>
+
+
+1. Poser le zip sur 1 des tubes de fourche
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
@@ -116,18 +129,6 @@ last_modified_date: 2026-05-21 08:53:32
 <figcaption>Poser un zip sur un des tubes de fourche</figcaption>
 </figure>
 
-
-1. Poser un zip sur 1 des tubes de fourche
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img03.webp"
-    alt="Mesure de la largeur du zip. On va dire 2.5 mm"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>Mesure de la largeur du zip. On va dire 2.5 mm</figcaption>
-</figure>
 
 
 1. Pour l'AV et l'AR retrouver dans la documentation technique les moyens de régler ainsi que les valeurs usines de :
@@ -147,10 +148,10 @@ last_modified_date: 2026-05-21 08:53:32
 <figcaption>Doc Aprilia. 1=précharge 2=compression (tube de droite) 3=détente (tube de droite)</figcaption>
 </figure>
 
-**Exemple**:La doc Aprilia du RS660 factory indique qu'il n'y a qu'une configuration et que c'est la configuration piste qui a été choisie. Il n'indique aucune valeur pour un usage route.
-- Précharge = -5 tours depuis la vers
--
-
+**Exemple**: La doc Aprilia du RS660 factory indique qu'il n'y a qu'une configuration et que c'est la configuration piste qui a été choisie. Il n'indique aucune valeur pour un usage route. Ensuite il est indiqué :
+- Précharge = -5 tours depuis la position complètement serrée
+- Compression = -16 clicks depuis la position fermée
+- Détente = -12 clicks depuis la position fermée
 
 1. Préparer les outils en conséquence
 
@@ -189,6 +190,15 @@ last_modified_date: 2026-05-21 08:53:32
 1. Application numérique: $$\textrm{Bottom Out} = 143 - 120 = 23 \textrm{ mm}$$
 
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img
+    src="./assets/img05.webp"
+    alt=""
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Doc Aprilia. 1=précharge 2=compression (tube de droite) 3=détente (tube de droite)</figcaption>
+</figure>
 
 
 

@@ -12,7 +12,7 @@ parent: "Motos"
 nav_order: 4
 math: mathjax
 date:               2022-10-29 13:04:06
-last_modified_date: 2026-05-21 09:03:07
+last_modified_date: 2026-05-25 12:04:17
 ---
 
 
@@ -567,7 +567,11 @@ Il faut laisser complètement refroidir le pneu **et la jante** puis vérifier l
 
 Ok, ok, on va faire une petite synthèse qui se divise en deux parties selon que l'on est avant la saison des roulages ou pendant une journée de roulage.
 
+
+
+<!-- ###################################################################### -->
 ### Avant la saison de roulages
+{: .no_toc }
 
 1. Si je ne sais pas de quand date le dernier changement d'huile de la fourche ou s'il date d'y il a 2 ans et plus, je fais ou je fais faire un changement d'huile. J'en profite pour faire changer les joints spi.
 2. Idem pour l'amortisseur si cela est possible.
@@ -615,6 +619,7 @@ Bien sûr, en début de session il faut penser à le remonter.
 
 
 
+<!-- ###################################################################### -->
 ### Lors d'une journée de roulage
 {: .no_toc }
 
