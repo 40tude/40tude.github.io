@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-26 11:03:16
+last_modified_date: 2026-05-26 16:38:22
 ---
 
 
@@ -115,7 +115,7 @@ In this session,like in all the others, zero pressure. You ride at 75% of your a
 Two things to keep in mind, though:
 
 1. From now on you ride with the balls of your feet on the pegs. That's the widest part, just behind the toes. You're not on your tiptoes and you're not jamming your heel against the peg either. You can get used to this foot position on the road in the weeks before the track day.
-2. You arrive on the right side of the track if the next turn goes left, and on the left side if the next turn goes right. That's it, and it's already a lot, because when I say "right," for example, I mean your wheels are 1 cm from the white line. Not 1 meter, not 25 cm, no, no, no, you need to hug the line. Sure, if you're 5 cm off I'm not going to take you to court. Seriously though, you need to learn this now while you don't have much speed. You need to get used to seeing the white line very close to your tires (and no, you're not going to crash).
+2. You arrive on the right side of the track if the next turn goes left, and on the left side if the next turn goes right. That's it, and it's already a lot, because when I say "right," for example, I mean your wheels are 1 cm from the white line. Not 1 meter, not 9 inch, no, no, no, you need to hug the line. Sure, if you're 2 inch off I'm not going to take you to court. Seriously though, you need to learn this now while you don't have much speed. You need to get used to seeing the white line very close to your tires (and no, you're not going to crash).
 
 
 <div align="center">
@@ -688,9 +688,9 @@ Once that's done, give the track another chance and/or do a day course dedicated
 
 
 2. In the second case, if you're grinning ear to ear even though you're exhausted and you know you still have 12,000 things to learn... Welcome. I just have 3 recommendations:
-    * Your bike is way better than you are. So, for now, keep riding it as-is. Don't spend any money. Maintain it properly (tires, front brake pads, brake fluid, fork oil change, fork seals, standard engine maintenance...) and don't go dropping €1,500 on an exhaust. That's dumb.
+    * Your bike is way better than you are. So, for now, keep riding it as-is. Don't spend any money. Maintain it properly (tires, front brake pads, brake fluid, fork oil change, fork seals, standard engine maintenance...) and don't go dropping 1,500 $ on an exhaust. That's dumb.
     * On the other hand, if you truly intend to do more track days, buy a GPS lap timer (don't use your phone or at least stash it under the seat). Say what you will, "the stopwatch doesn't lie." You can tell yourself whatever story you want, make whatever excuses you want... Either you're going faster, or you're less efficient. Period. Plus, the lap timer can be used on other bikes later on.
-    * Sign up for a 1- or 2-day riding course soon. It's a serious investment (around €600 just for the 2-day course), but it's structured, professional, etc. It's a budget, but it'll gain you way more seconds per lap than any carbon accessory, rearset, or Mithril exhaust pipe. It's like learning snowboarding on your own versus going through ski school. There's no comparison. **Watch out**, you'll need to show up at the course in shape (abs, thighs) and well-rested, because the pace is intense. It's not a Marine boot camp, but you have to commit, not waste time between sessions, and hold on to the end (physically and mentally). <!-- Exemple avec mon tout premier stage avec DRRS en 2019 (NOT YET TRANSFERED) -->
+    * Sign up for a 1- or 2-day riding course soon. It's a serious investment (around 600 $ just for the 2-day course), but it's structured, professional, etc. It's a budget, but it'll gain you way more seconds per lap than any carbon accessory, rearset, or Mithril exhaust pipe. It's like learning snowboarding on your own versus going through ski school. There's no comparison. **Watch out**, you'll need to show up at the course in shape (abs, thighs) and well-rested, because the pace is intense. It's not a Marine boot camp, but you have to commit, not waste time between sessions, and hold on to the end (physically and mentally). <!-- Exemple avec mon tout premier stage avec DRRS en 2019 (NOT YET TRANSFERED) -->
 
 Remember to check out the photos from the day. Either they're already viewable at the track, or you'll get them online next week. Buy the least awful one and set it aside. We'll talk about it again next year or in 2 years 😊.
 
