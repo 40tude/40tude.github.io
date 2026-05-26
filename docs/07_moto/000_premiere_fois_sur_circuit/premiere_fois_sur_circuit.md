@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-06 11:53:03
+last_modified_date: 2026-05-26 10:52:59
 ---
 
 
@@ -130,7 +130,7 @@ Le fait de sortir peut-être très utile si tu te retrouves dans un paquet et qu
 **Remarques**
 
 * Tu es sûr d'avoir baissé la pression de tes pneus ?
-Si tu ne sais pas quelles pressions utiliser, tu mets 1.9 kg à l'AR et 2.1 à l'AV. Je ne suis pas sensé parler d'autre chose que de pilotage mais bon, là, ça peut jouer sur le pilotage. S'il y a un mécanicien et/ou un panneau avec la liste des pneus et les pressions va les voir.
+Si tu ne sais pas quelles pressions utiliser, tu mets 1.9 kg à l'AR et 2.1 à l'AV. Je ne suis pas sensé parler d'autre chose que de pilotage mais bon, là, ça peut jouer sur le pilotage. S'il y a un mécanicien et/ou un panneau avec la liste des pneus et les pressions va les voir. Tu peux utiliser [cette page](https://twotyres.co.uk/motorcycle-trackday-tyre-pressures/) si besoin.
 
 * Si jamais un marshal vous accompagne sur cette première session, tu te débrouille pour être le premier à le suivre.
 C'est un peu comme à l'école de ski. Le dernier de la file qui suit le moniteur n'a pas du tout la trajectoire du premier et il n'apprend pas grand-chose.
