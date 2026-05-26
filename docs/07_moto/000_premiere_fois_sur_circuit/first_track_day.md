@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-26 10:52:59
+last_modified_date: 2026-05-26 11:03:16
 ---
 
 
@@ -137,7 +137,7 @@ Going through the pits can be very useful if you find yourself in a pack and you
 **Notes**
 
 * Are you sure you lowered your tire pressures?
-If you don't know what pressures to use, set 27.0 PSI at the rear and 29.9 PSI at the front. I'm not supposed to talk about anything other than riding technique, but this one can affect your riding. If there's a mechanic and/or a sign listing tires and pressures, go check it out. You can read [this page](https://twotyres.co.uk/
+If you don't know what pressures to use, set 27.0 PSI at the rear and 29.9 PSI at the front. I'm not supposed to talk about anything other than riding technique, but this one can affect your riding. If there's a mechanic and/or a sign listing tires and pressures, go check it out. You can read [this page](https://twotyres.co.uk/).
 
 * If a marshal escorts you on this first session, make sure you're the first one behind them.
 It's a bit like ski school. The last kid in line following the instructor doesn't get the instructor's line at all and doesn't learn much.
