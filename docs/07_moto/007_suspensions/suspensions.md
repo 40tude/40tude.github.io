@@ -3,8 +3,8 @@ published: true
 author: 40tude
 # lang: en-US
 layout: default
-title: "TODO: Add a title"
-description: "TODO: Add a description"
+title: "Réglage des suspensions moto sur circuit : guide pas à pas pour mesurer et ajuster les réglages essentiels."
+description: "Une méthode structurée pour mesurer et régler ses suspensions avant un track day, avec identification du paramètre clé à surveiller en roulage."
 image: docs/07_moto/007_suspensions/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-27 18:36:15
+last_modified_date: 2026-05-27 19:08:35
 ---
 
 
@@ -143,8 +143,8 @@ last_modified_date: 2026-05-27 18:36:15
 
 $$
 \begin{align*}
-\text{FRONT\_STROKE} &= 120 \text{ mm} \\
-\text{REAR\_STROKE} &= 51.5 \text{ mm} \\
+\text{FRONT-STROKE} &= 120 \text{ mm} \\
+\text{REAR-STROKE} &= 51.5 \text{ mm} \\
 \end{align*}
 $$
 
@@ -332,9 +332,9 @@ $$\text{F2} = 115 \text{ mm}$$
 
 $$
 \begin{align*}
-\text{FRONT\_STATIC\_SAG} & = \text{F1} - \text{F2} \\
-\text{FRONT\_STATIC\_SAG} & = 143 - 115 \\
-\text{FRONT\_STATIC\_SAG} & = 28 \text{ mm}
+\text{FRONT-STATIC-SAG} & = \text{F1} - \text{F2} \\
+\text{FRONT-STATIC-SAG} & = 143 - 115 \\
+\text{FRONT-STATIC-SAG} & = 28 \text{ mm}
 \end{align*}
 $$
 
@@ -347,9 +347,9 @@ $$
 
 $$
 \begin{align*}
-\text{FRONT\_STATIC\_SAG} & = \text{F1} - \text{F2} \\
-\text{FRONT\_STATIC\_SAG} & = 143 - 118 \\
-\text{FRONT\_STATIC\_SAG} & = 25 \text{ mm}
+\text{FRONT-STATIC-SAG} & = \text{F1} - \text{F2} \\
+\text{FRONT-STATIC-SAG} & = 143 - 118 \\
+\text{FRONT-STATIC-SAG} & = 25 \text{ mm}
 \end{align*}
 $$
 
@@ -368,9 +368,9 @@ $$\text{R2} = ??? \text{ mm}$$
 
 $$
 \begin{align*}
-\text{REAR\_STATIC\_SAG} & = \text{R1} - \text{R2} \\
-\text{REAR\_STATIC\_SAG} & = ??? - ??? \\
-\text{REAR\_STATIC\_SAG} & = 10 \text{ mm}
+\text{REAR-STATIC-SAG} & = \text{R1} - \text{R2} \\
+\text{REAR-STATIC-SAG} & = ??? - ??? \\
+\text{REAR-STATIC-SAG} & = 10 \text{ mm}
 \end{align*}
 $$
 
@@ -408,9 +408,9 @@ $$\text{F3} = 108 \text{ mm}$$
 
 $$
 \begin{align*}
-\text{FRONT\_DRIVER\_SAG} & = \text{F1} - \text{F3} \\
-\text{FRONT\_DRIVER\_SAG} & = 143 - 108 \\
-\text{FRONT\_DRIVER\_SAG} & = 35 \text{ mm}
+\text{FRONT-DRIVER-SAG} & = \text{F1} - \text{F3} \\
+\text{FRONT-DRIVER-SAG} & = 143 - 108 \\
+\text{FRONT-DRIVER-SAG} & = 35 \text{ mm}
 \end{align*}
 $$
 
@@ -448,9 +448,9 @@ $$\text{F3} = 108 \text{ mm}$$
 
 $$
 \begin{align*}
-\text{REAR\_DRIVER\_SAG} & = \text{F1} - \text{F3} \\
-\text{REAR\_DRIVER\_SAG} & = 143 - 108 \\
-\text{REAR\_DRIVER\_SAG} & = 35 \text{ mm}
+\text{REAR-DRIVER-SAG} & = \text{F1} - \text{F3} \\
+\text{REAR-DRIVER-SAG} & = 143 - 108 \\
+\text{REAR-DRIVER-SAG} & = 35 \text{ mm}
 \end{align*}
 $$
 
@@ -489,9 +489,9 @@ Ajustements:
 
 $$
 \begin{align*}
-\text{BOTTOM\_OUT} & = \text{FULL\_EXT} - \text{FRONT\_STROKE} \\
-\text{BOTTOM\_OUT} & = 146 - 120 \\
-\text{BOTTOM\_OUT} & = 26 \text{ mm}
+\text{BOTTOM-OUT} & = \text{FULL-EXT} - \text{FRONT-STROKE} \\
+\text{BOTTOM-OUT} & = 146 - 120 \\
+\text{BOTTOM-OUT} & = 26 \text{ mm}
 \end{align*}
 $$
 
@@ -519,7 +519,7 @@ $$
 
 $$
 \begin{align*}
-\text{LIMIT} & = \text{F1} - \text{FRONT\_STROKE} - \text{SPI} - \text{ZIP} + \text{MARGIN} \\
+\text{LIMIT} & = \text{F1} - \text{FRONT-STROKE} - \text{SPI} - \text{ZIP} + \text{MARGIN} \\
 \text{LIMIT} & = 146 - 120 - 5 - 2 + 10 \\
 \text{LIMIT} & = 29 \text{ mm}
 \end{align*}
