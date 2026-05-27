@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-27 11:07:19
+last_modified_date: 2026-05-27 11:56:15
 ---
 
 
@@ -390,7 +390,7 @@ $$
 <!-- ###################################################################### -->
 ## Conclusion
 
-Ensuite faut rouler et utiliser [la lecture des pneus]({%link docs\07_moto\006_lecture_des_pneus\lecture_des_pneus.md%}) pour ajuster les réglages.
+Ensuite faut rouler et utiliser [la lecture des pneus]({%link docs/07_moto/006_lecture_des_pneus/lecture_des_pneus.md%}) pour ajuster les réglages.
 
 
 
