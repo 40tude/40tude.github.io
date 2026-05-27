@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-26 11:03:16
+last_modified_date: 2026-05-27 11:07:19
 ---
 
 
@@ -436,9 +436,9 @@ Bienvenue au club! En fait, on est pas suicidaire donc on freine, on freine trop
 * *C'est bizarre, je n'ai pas peur, tout va bien mais je passe toujours à 1 m du PC.*
 C'est sans doute parce que la mise sur l'angle ou le pivot sont **beaucoup trop lents**. Tu peux alors essayer ça :
     * Ne change rien mais assure-toi de regarder le PC avec **ton menton**. Ne regarde pas la scène, désigne ta cible. Oui, tu sais qu'il y a des cônes, un virage, un mec devant toi etc. Tu as l'information en tête mais ils sortent de ton champ de vision car tu désignes ta cible avec **ton menton**. Je dis menton pour t'obliger à tourner la tête **et** les épaules vers le PC.
-    * Fais l'effort d'ouvrir tes épaules, de les orienter vers l'intérieur du virage. Typiquement, tu peux très bien tourner la tête vers le PC, le désigner du menton **mais** garder tes épaules parallèles au guidon. Ce n'est **PAS** ce que l'on veut ici. Il faut que tu désignes ta cible du menton **et** que, un peu à la façon de Robocop, tes épaules tournent avec la tête. Il faut que tu sentes que ton bras intérieur se plie et que le bras extérieur se tend.
+    * Fais l'effort d'ouvrir tes épaules, de les orienter vers **l'intérieur du virage**. Typiquement, tu peux très bien tourner la tête vers le PC, le désigner du menton **mais** garder tes épaules parallèles au guidon. Ce n'est **PAS** ce que l'on veut ici. Il faut que tu désignes ta cible du menton **et** que, un peu à la façon de Robocop, tes épaules tournent avec la tête. Il faut que tu sentes que ton bras intérieur se plie et que le bras extérieur se tend.
     * Freine un peu plus tôt et fais ta mise sur l'angle comme d'habitude mais un peu avant le PMSA. Quand je dis "un peu" cela veut dire l'équivalent d'une ou 2 motos de long. Après, au tour suivant tu ajustes mais bon, fondamentalement ta mise sur l'angle est trop lente.
-    * Ne change rien mais sois plus incisif, plus rapide quand tu fais pivoter la moto. Pour cela, il suffit (yaka-faukon) de pousser plus fort sur la poignée intérieure. Tu peux aussi essayer de mettre un peu plus de poids sur le cale-pied intérieur en te penchant vers l'**intérieur du virage**, en appuyant consciemment dessus avec ton pied.
+    * Ne change rien mais sois plus incisif, plus rapide quand tu fais pivoter la moto. Pour cela, il suffit (yaka-faukon) de pousser plus fort sur la poignée intérieure. Tu peux aussi essayer de mettre un peu plus de poids sur le cale-pied intérieur en te penchant vers **l'intérieur du virage**, en appuyant consciemment dessus avec ton pied.
 
 * *Je ne sais pas ce qui se passe, mes pneus passent bien au point de corde mais en sortie de virage, je termine toujours au milieu de la piste et jamais sur le PS.*
 C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui déporte la moto vers l'extérieur. Pour te donner une idée, mets ta moto sur béquille latérale. Passe derrière la moto. Avec cet angle-là tu peux facilement avoir toute la puissance à la roue arrière. Je n'ai pas dit être **en butée** de gaz et attendre la cavalerie. Non, non, je dis être **en butée** de gaz **et** avoir tous les canassons au pneu. Quoiqu'il en soit, tu peux essayer 2 ou 3 choses :
@@ -489,7 +489,7 @@ Bon, ben il ne reste plus qu'à faire la même chose avec tous les autres virage
 **Objectif à la fin de la session**
 
 * Il y a au moins un virage dans lequel tu es constant sur ton freinage.
-* En freinant en 3 temps (enfonce l'avant, serre fort, relâche doucement) tu dois freiner beaucoup plus court que ce matin. Note que cela peut être aussi utile sur route.
+* En freinant en 3 temps (enfonce l'avant, serre fort, relâche doucement) tu dois freiner beaucoup plus court que ce matin.
 
 **Remarques**
 
@@ -555,7 +555,7 @@ On voit qu'on atteint là une limite, un plafond de verre car on ne peut pas all
 
 La physique fait que si on veut passer plus vite en virage il faut contrebalancer la force centrifuge qui pousse la moto à l'extérieur. Pour cela il faut mettre plus de masse à **l'intérieur du virage**. Le premier réflexe a consisté à pencher la moto mais bon on atteint vite les limites d'une telle démarche.
 
-Afin de pouvoir commencer à enrouler le câble d'accélérateur plus tôt pour sortir plus vite (c'est notre seul but), on a donc pas d'autre solution que de "pencher" le pilote à l'intérieur du virage et de laisser la moto plus droite.
+Afin de pouvoir commencer à enrouler le câble d'accélérateur plus tôt pour sortir plus vite (c'est notre seul but), on a donc pas d'autre solution que de "pencher" le pilote à **l'intérieur du virage** et de laisser la moto plus droite.
 
 Ça risque de râler un peu mais, faute de temps, on ne va faire ici que la moitié de l'exercice en ne s'occupant QUE du haut du corps. Donc, non, ce n'est pas maintenant qu'on va poser le genou.
 
@@ -563,10 +563,10 @@ Voici ce que je te propose de faire dans un virage où tu te sens à l'aise :
 
 * *Comme avant :* Tu termines ton freinage au PMSA en serrant le réservoir avec les genoux et en restant reculé sur la selle. Tes roues sont à 1 cm et parallèles à la ligne blanche en arrivant au PMSA. Quand tu relâches le levier de frein, grip shift autour de la poignée de gaz.
 * *Comme avant :* Tu mets la moto sur l'angle rapidement en poussant la poignée intérieure. Tu es en zone neutre : sans frein, ni gaz.
-* *Comme avant :* Ton menton désigne le PC et tes épaules tournent vers l'intérieur du virage.
-* **Nouveau :** Au lieu de rester bras tendus, le buste droit dans l'axe de la moto, tu vas baisser ton torse vers l'**intérieur du virage** en **expirant** fort dans ton casque.
-Non, tu ne vas pas vers le réservoir, tu vas à côté du réservoir, vers le PC que désignent ton menton, ta tête et tes épaules. Ton bras intérieur se plie (il est tout "mou", détendu, relax) alors que ton bras extérieur se tend et **se pose** sur le réservoir (sur un roadster le bras est tendu mais 5 cm au-dessus du réservoir). Tes épaules s'ouvrent vers l'intérieur du virage. Quand tu abaisses le torse, pense à bien souffler pour devenir "tout mou". Faut que tu te "dégonfle".
-* **Nouveau :** En même temps, tu fais comme si tu voulais repousser la moto pour la laisser droite alors que tu fais tout pour mettre un maximum de ton corps à l'**intérieur du virage**. Tu **repousses** donc la moto avec les bras. Tu dois finir avec le "menton au guidon" et le casque au niveau du rétro.
+* *Comme avant :* Ton menton désigne le PC et tes épaules tournent vers **l'intérieur du virage**.
+* **Nouveau :** Au lieu de rester bras tendus, le buste droit dans l'axe de la moto, tu vas baisser ton torse vers **l'intérieur du virage** en **expirant** fort dans ton casque.
+Non, tu ne vas pas vers le réservoir, tu vas à côté du réservoir, vers le PC que désignent ton menton, ta tête et tes épaules. Ton bras intérieur se plie (il est tout "mou", détendu, relax) alors que ton bras extérieur se tend et **se pose** sur le réservoir (sur un roadster le bras est tendu mais 5 cm au-dessus du réservoir). Tes épaules s'ouvrent vers **l'intérieur du virage**. Quand tu abaisses le torse, pense à bien souffler pour devenir "tout mou". Faut que tu te "dégonfle".
+* **Nouveau :** En même temps, tu fais comme si tu voulais repousser la moto pour la laisser droite alors que tu fais tout pour mettre un maximum de ton corps à **l'intérieur du virage**. Tu **repousses** donc la moto avec les bras. Tu dois finir avec le "menton au guidon" et le casque au niveau du rétro.
     * N'hésites pas à **t'accrocher** à la moto avec le genou extérieur sur le côté du réservoir. Et, non, tu n'as pas besoin de t'accrocher au guidon une fois que la moto est sur l'angle.
     * Si tes fesses sont toujours en ligne, sur la selle, ta colonne vertébrale et l'axe de la moto forment un V
 * *Comme avant :* pas de filet de gaz. Quand tu commences à enrouler le câble tu le fais de manière imperceptible au début mais surtout tu ne t'arrêtes plus et tu enroules de plus en plus vite au fur et à mesure que tu redresses la moto en t'approchant du PC.
@@ -582,17 +582,17 @@ Non, tu ne vas pas vers le réservoir, tu vas à côté du réservoir, vers le P
 </figure>
 
 
-Le truc important lors de la conduite du virage c'est de mettre un maximum du poids du pilote à l'**intérieur du virage** et de repousser la moto pour la laisser verticale. Oui, bien sûr, elle va prendre de l'angle mais bon, tu saisis l'idée.
+Le truc important lors de la conduite du virage c'est de mettre un maximum du poids du pilote à **l'intérieur du virage** et de repousser la moto pour la laisser verticale. Oui, bien sûr, elle va prendre de l'angle mais bon, tu saisis l'idée.
 
 Note bien que j'ai pas dit de mettre le pilote "en bas", j'ai dit "à l'intérieur", donc écarté le plus possible de la moto. C'est pour ça qu'on dit "menton au guidon" et "casque dans le rétro".
 
-Tu dois sentir que c'est ton corps qui "va" à l'**intérieur du virage** alors que tu "repousses" la moto avec tes bras pour la laisser le plus vertical possible. Le fait d'ouvrir les épaules t'aide aussi à te retrouver avec un bras tendu et l'autre plié. Fais-le en statique sur l'aire plane ou dans ton garage avant de venir.
+Tu dois sentir que c'est ton corps qui "va" à **l'intérieur du virage** alors que tu "repousses" la moto avec tes bras pour la laisser le plus vertical possible. Le fait d'ouvrir les épaules t'aide aussi à te retrouver avec un bras tendu et l'autre plié. Fais-le en statique sur l'aire plane ou dans ton garage avant de venir.
 
 Dorénavant, à vitesse de passage identique, la moto prend moins d'angle. Tu es plus en sécurité. Tu peux te permettre d'enrouler continûment les gaz plus tôt et plus fort. Tu peux le faire car la moto est plus verticale qu'avant, l'empreinte du pneu AR au sol est plus large. Tu sors donc plus vite du virage et tu augmentes ta vitesse au bout de la ligne droite qui suit le virage. C'est le seul truc qui compte. Point.
 
 **Objectif à la fin de la session**
 
-* Dans au moins un virage ton buste est sur l'avant et à l'**intérieur du virage**. Ta tête est écartée, sur le côté de la moto, le bras intérieur au virage est plié, tu as le menton au guidon et l'autre bras est tendu sur le réservoir, les épaules ouvertes vers l'intérieur du virage.
+* Dans au moins un virage ton buste est sur l'avant et à **l'intérieur du virage**. Ta tête est écartée, sur le côté de la moto, le bras intérieur au virage est plié, tu as le menton au guidon et l'autre bras est tendu sur le réservoir, les épaules ouvertes vers **l'intérieur du virage**.
 * Tu dois sentir que l'ensemble du virage ressemble à la séquence suivante :
   + Tu freines en visant le PMSA, roues parallèles et à 1 cm de la ligne
   + Au PMSA, tu claques la moto sur l'angle rapidement, tu pousses la poignée intérieure en regardant le PC
@@ -611,7 +611,7 @@ Tu peux essayer les choses suivantes :
   + En même temps que la moto prend de l'angle, relâche la poignée intérieure au virage et fais tourner ta main d'un quart de tour vers l'avant autour de la poignée. Ça va décoincer ton poignet et aligner "naturellement" ton avant-bras avec le bracelet/guidon. Ne sois pas surpris si à la fin tu tiens le guidon comme un tournevis. C'est normal. C'est ça qu'on veut.
   + Laisse le bras se plier quand tu fais tourner ta main et que ton buste se rapproche.
   + Pense à te "dégonfler" en soufflant fort dans ton casque.
-  + Assure-toi que tes épaules s'orientent bien vers l'intérieur du virage. Elles tournent avec ton menton. Elles ne doivent pas être parallèles au té de fourche.
+  + Assure-toi que tes épaules s'orientent bien vers **l'intérieur du virage**. Elles tournent avec ton menton. Elles ne doivent pas être parallèles au té de fourche.
   + Dans un virage à gauche, à la fin il faut que tu aies l'impression de pouvoir te gratter l'oreille droite avec la main gauche (et inversement dans un virage à droite). En gros, exagère à mort la position.
 
 * *Heu... J'aime pas du tout cette sensation d'être la tête dans le vide ni ce point de vue.*
@@ -622,7 +622,7 @@ Désolé... Va falloir te faire à l'idée d'avoir la tête au-dessus de l'herbe
 * Il faut que tu en profites pour commencer à accélérer plus tôt. Oui, oui tu restes dans tes 75% mais bon, **réfléchis** 2 minutes. Si la moto est plus verticale et si elle passe à la même vitesse (quoi, tu n'as pas encore mis le scotch bleu sur ton compteur et tu peux lire ta vitesse?) tu peux te permettre de commencer à enrouler le câble d'accélérateur plus tôt. Il n'y a pas de risque. L'empreinte du pneu est plus large qu'avant. Donc, fais-le car en accélérant plus tôt tu vas accélérer plus longtemps et tu vas donc augmenter ta vitesse de pointe au bout de la ligne droite suivante (toujours le même but).
 
 * Il faut que tu en profites pour, tout en restant dans tes 75%, commencer à augmenter ta vitesse d'entrée en virage. Ça c'est plus dur mais, si on y réfléchit un peu, c'est le symétrique du point précédent... Je m'explique.
-Si à vitesse d'entrée constante, en mettant le poids du pilote à l'**intérieur du virage** tu gardes la moto plus verticale qu'avant, cela veut dire que tu as plus de grip. Donc, si tu veux retrouver, en entrée le même grip qu'avant, tu peux te permettre de rentrer plus vite.
+Si à vitesse d'entrée constante, en mettant le poids du pilote à **l'intérieur du virage** tu gardes la moto plus verticale qu'avant, cela veut dire que tu as plus de grip. Donc, si tu veux retrouver, en entrée le même grip qu'avant, tu peux te permettre de rentrer plus vite.
 En revanche c'est difficile. En effet, on a tous une idée de la vitesse à laquelle "oh, putain, ça va pas passer". Du coup, soit on freine trop soit on a des mises sur l'angle qui prennent 2H.
 Je pense qu'il faut, dans l'ordre, augmenter la vitesse de mise sur l'angle **puis** augmenter la vitesse d'entrée.
   + Concernant la vitesse de mise sur l'angle, c'est un exercice qu'on fait en stage où on fait un gymkhana entre des cônes et où il faut rapidement passer d'un côté à l'autre (idéalement en étant genou au sol). En plus tu es filmé et tu te pètes la honte de ta vie au débriefing (en fait on rigole bien car on est tous pas très bons sur cet exercice).
@@ -632,7 +632,7 @@ Je pense qu'il faut, dans l'ordre, augmenter la vitesse de mise sur l'angle **pu
   En session de roulage il n'y a pas 36 solutions. Ne change qu'une chose à la fois. Par exemple garde tes PF et PMSA mais freine moins fort. Ou alors, avance ton PF de 1 ou 2 motos de long et garde ton PMSA ainsi que ta façon de freiner. À notre niveau, assure-toi bien de ne plus avoir les doigts sur le levier de freins quand tu mets la moto sur l'angle.
 
 * *Tu as dit qu'on a fait que la moitié de l'exercice. Je fais quoi moi maintenant si je veux aller plus loin ?*
-Si tu poses la question c'est que tu claques ta moto sur l'angle et que tu as une belle vitesse d'entrée en virage. On est d'accord ? Bon, ben si c'est effectivement le cas, pour passer encore plus vite dans le virage, il faut **rajouter du poids supplémentaire à l'intérieur du virage**. L'idée consiste alors à décaler tout le pilote sur la selle vers l'**intérieur du virage**. Tout ce que l'on a dit précédemment reste valable mais typiquement il cherche maintenant à caller sa raie des fesses dans le coin de la selle. Ensuite, il va rajouter encore de la masse en posant le pied intérieur au bout du cale-pied. Il va s'en servir comme d'une rotule lorsqu'il va ouvrir son genou. Ici, ce n'est pas "il nous faut plus de dents" mais "il nous faut plus de poids à l'intérieur".
+Si tu poses la question c'est que tu claques ta moto sur l'angle et que tu as une belle vitesse d'entrée en virage. On est d'accord ? Bon, ben si c'est effectivement le cas, pour passer encore plus vite dans le virage, il faut **rajouter du poids supplémentaire à l'intérieur du virage**. L'idée consiste alors à décaler tout le pilote sur la selle vers **l'intérieur du virage**. Tout ce que l'on a dit précédemment reste valable mais typiquement il cherche maintenant à caller sa raie des fesses dans le coin de la selle. Ensuite, il va rajouter encore de la masse en posant le pied intérieur au bout du cale-pied. Il va s'en servir comme d'une rotule lorsqu'il va ouvrir son genou. Ici, ce n'est pas "il nous faut plus de dents" mais "il nous faut plus de poids à l'intérieur".
 
 Mais bon, "avant de savoir courir il faut savoir marcher". Mettre tout ça en place sur une seule session, alors que cela impacte aussi le freinage, nous paraissait un peu "touchy". Comme le pilote débute, on a fait le choix de se concentrer sur le haut du corps dans un premier temps. Une fois que ça c'est en place, qu'il claque la moto sur l'angle et qu'il a la vitesse d'entrée suffisante, plus tard, il pourra "facilement" y rajouter le bas du corps. On adapte sa position pour passer plus vite, pas le contraire.
 

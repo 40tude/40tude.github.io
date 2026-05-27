@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-26 16:38:22
+last_modified_date: 2026-05-27 11:07:19
 ---
 
 
@@ -502,7 +502,7 @@ Well, all that's left is to do the same with every other corner on the track... 
 **Goal at the end of the session**
 
 * There's at least one corner where you're consistent with your braking.
-* By braking in 3 phases (load the front, squeeze hard, release gently) you should be braking much shorter than this morning. Note that this can also be useful on the road.
+* By braking in 3 phases (load the front, squeeze hard, release gently) you should be braking much shorter than this morning.
 
 **Notes**
 

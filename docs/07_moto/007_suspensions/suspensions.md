@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-25 12:04:17
+last_modified_date: 2026-05-27 11:07:19
 ---
 
 
@@ -46,7 +46,7 @@ last_modified_date: 2026-05-25 12:04:17
 
 
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
     src="./assets/img00.webp"
     alt="TODO: Add a description"
@@ -88,11 +88,13 @@ last_modified_date: 2026-05-25 12:04:17
 <!-- ###################################################################### -->
 ## 0. Préliminaires
 
+1. Vérifier que le réservoir est plein
 1. Vérifier que la chaîne n'est pas trop tendue
     * Si c'est le cas, le bras oscillant ne peut pas osciller librement, la chaîne tire sur le PSB... Bref, c'est vraiment pas une bonne chose.
-1. Mesurer la hauteur du joint spi de fourche. **Exemple**: 7 mm pour un RS 660
+    * On peut en profiter pour vérifier que la chaîne est bien alignée
+1. Mesurer la hauteur du joint spi de fourche. **Exemple**: $$\text{SPI} = 7 \text{ mm}$$ pour un RS 660 Factory
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
     src="./assets/img02.webp"
     alt="Mesure de la hauteur du joint spi de fourche"
@@ -104,9 +106,9 @@ last_modified_date: 2026-05-25 12:04:17
 
 
 
-1. Mesurer la largeur du zip. **Exemple**: 2.5 mm
+1. Mesurer la largeur du zip. **Exemple**: $$\text{ZIP} = 2.5 \text{ mm}$$
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
     src="./assets/img03.webp"
     alt="Mesure de la largeur du zip. On va dire 2.5 mm"
@@ -117,28 +119,28 @@ last_modified_date: 2026-05-25 12:04:17
 </figure>
 
 
-1. Poser le zip sur 1 des tubes de fourche
+1. Poser le zip sur un des tubes de fourche
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
     src="./assets/img01.webp"
     alt="Poser un zip sur un des tubes de fourche"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Poser un zip sur un des tubes de fourche</figcaption>
+<figcaption>Poser le zip sur un des tubes de fourche</figcaption>
 </figure>
 
 
 
-1. Pour l'AV et l'AR retrouver dans la documentation technique les moyens de régler ainsi que les valeurs usines de :
+1. Pour l'AV et l'AR retrouver dans la documentation les moyens de régler et les valeurs par défaut de :
     - Pré compression (pré-contrainte)
     - Rebond
     - Compression
     - Rebond rapide
     - Compression rapide
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
     src="./assets/img04.webp"
     alt="Doc Aprilia. 1=précharge 2=compression (tube de droite) 3=détente (tube de droite)"
@@ -148,7 +150,9 @@ last_modified_date: 2026-05-25 12:04:17
 <figcaption>Doc Aprilia. 1=précharge 2=compression (tube de droite) 3=détente (tube de droite)</figcaption>
 </figure>
 
-**Exemple**: La doc Aprilia du RS660 factory indique qu'il n'y a qu'une configuration et que c'est la configuration piste qui a été choisie. Il n'indique aucune valeur pour un usage route. Ensuite il est indiqué :
+En fonction des motos rebond, compression, rebond rapide et compression rapide peuvent ne PAS être disponibles.
+
+**Exemple de valeurs par défaut**: La doc Aprilia du RS660 Factory indique qu'il n'y a qu'une configuration piste et n'indique donc aucune valeur pour un usage route. Ensuite il est indiqué :
 - Précharge = -5 tours depuis la position complètement serrée
 - Compression = -16 clicks depuis la position fermée
 - Détente = -12 clicks depuis la position fermée
@@ -162,44 +166,65 @@ last_modified_date: 2026-05-25 12:04:17
 <!-- ###################################################################### -->
 ## 1. Fourche: Vérifier les réglages par défauts
 
-### Précharge
+### Pourquoi?:
+{: .no_toc }
+
+Pour vérifier car on sait jamais. Pour pouvoir y revenir le cas échéant.
+
+### Comment?:
+{: .no_toc }
+
+#### **Précharge**
+{: .no_toc }
+
 1. Ouvrir (dévisser) et noter le nombre de tours de précharge sur les tubes gauche et droit
 1. Fermer (visser) complètement et noter le nombre de tours disponibles
+1. Ouvrir complètement la précharge sur les 2 tubes
+
+### **Rebond (si disponible)**
+{: .no_toc }
+
+1. Ouvrir et noter le nombre de clics de rebond sur les tubes gauche et/ou droit
+1. Fermer complètement et noter le nombre de clics disponible
 1. Ouvrir complètement
 
-### Rebond (si disponible)
-1. Ouvrir et noter le nombre de clics de rebond sur les tubes gauche et droit
+#### **Compression (si disponible)**
+{: .no_toc }
+
+1. Ouvrir et noter le nombre de clics de compression sur les tubes gauche et/ou droit
 1. Fermer complètement et noter le nombre de clics disponible
 1. Ouvrir complètement
 
 
-### Compression (si disponible)
-1. Ouvrir et noter le nombre de clics de compression sur les tubes gauche et droit
-1. Fermer complètement et noter le nombre de clics disponible
-1. Ouvrir complètement
-
-
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 2. Déterminer le bottom out (buttée de fourche)
-1. Retrouver dans la documentation de la moto. **Exemple**: 120 mm pour un RS 660
-1. Étendre la fourche à son maximum
-1. Mesurer du fourreau au pied (ne pas mesurer sous le joint). **Exemple**: 143 mm pour un RS 660
-1. Application numérique: $$\textrm{Bottom Out} = 143 - 120 = 23 \textrm{ mm}$$
+## 2. Déterminer la buttée de fourche (bottom out)
+
+### Pourquoi?:
+{: .no_toc }
+
+### Comment?:
+{: .no_toc }
+
+1. Retrouver l'information dans la documentation du constructeur. **Exemple**: $$\text{FRONT\_STROKE} = 120 \text{ mm}$$ pour un RS 660 Factory
 
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
     src="./assets/img05.webp"
     alt=""
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Doc Aprilia. 1=précharge 2=compression (tube de droite) 3=détente (tube de droite)</figcaption>
+<figcaption>Débattements de la fourche et de l'amortisseur dans la doc constructeur.</figcaption>
 </figure>
 
+1. Si cela n'a pas été encore fait, tout ouvrir: précharge, rebond et compression.
+1. Étendre la fourche à son maximum. Faut être 2, on bascule la moto sur sa béquille latérale jusqu'à ce que le pneu AV ne touche plus terre.
+1. Mesurer alors la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint). **Exemple**: $$\text{FULL\_EXT} = 143 \text{ mm}$$ pour un RS 660 Factory
+1. Application numérique: $$\text{BOTTOM\_OUT} = \text{FULL\_EXT} - \text{FRONT\_STROKE} = 143 - 120 = 23 \text{ mm}$$
 
 
 
@@ -207,14 +232,21 @@ last_modified_date: 2026-05-25 12:04:17
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 4. Mesure du static sag (moto SANS pilote)
+## 4. Mesure de la course morte (static sag, moto SANS pilote)
+
+### Pourquoi?:
+{: .no_toc }
+
+### Comment?:
+{: .no_toc }
+
 1. Mesurer du fourreau au pied (ne pas mesurer sous le joint). **Exemple**: 115 mm pour un RS 660
-1. Application numérique: $$\textrm{Static SAG} = 143 - 115 = 28 \textrm{ mm}$$
+1. Application numérique: $$\text{STATIC\_SAG} = 143 - 115 = 28 \text{ mm}$$
 1. On veut un static sag en 15 et 25 mm (20 mm typique)
 1. Avec 28 mm, la moto s'enfonce trop. Faut ajouter/fermer la précharge
 1. On ferme de 4 tours
 1. On mesure et on lit 118 mm.
-1. $$\textrm{Static SAG} = 143 - 118 = 25 \textrm{ mm}$$
+1. $$\text{STATIC\_SAG} = 143 - 118 = 25 \text{ mm}$$
 1. On touche plus à rien
 
 
@@ -222,11 +254,18 @@ last_modified_date: 2026-05-25 12:04:17
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 4. Mesure du rider sag (moto AVEC pilote)
+## 4. Mesure de la précharge statique (driver sag, moto AVEC pilote)
+
+### Pourquoi?:
+{: .no_toc }
+
+### Comment?:
+{: .no_toc }
+
 1. S'équiper: bottes, gants, casque, combine ou blouson
 1. Monter DOUCEMENT sur la moto
 1. Première mesure, 108 mm par exemple
-1. $$\textrm{Rider SAG} = 143 - 108 = 35 \textrm{ mm}$$
+1. $$\text{RIDER\_SAG} = 143 - 108 = 35 \text{ mm}$$
 1. Freiner de l'avant et pomper plusieurs fois la fourche
 1. Faire une mesure. **Exemple**: 109 mm pour un RS 660
     1. C'est OK si la difference est de l'ordre du mm
@@ -245,12 +284,26 @@ last_modified_date: 2026-05-25 12:04:17
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## 5. Mettre à jour le Bottom Out en fonction du réglage de précharge
+## 5. Mettre à jour la buttée de fourche en fonction du réglage de précharge
 
+### Pourquoi?:
+{: .no_toc }
+
+### Comment?:
+{: .no_toc }
 
 1. Étendre la fourche à son maximum
 1. Mesurer du fourreau au pied (ne pas mesurer sous le joint). Exemple: 146 mm pour un RS 660 car on a mis +3 tours de précharge
-1. Application numérique: $$\textrm{Bottom Out} = 146 - 120 = 26$$
+1. Application numérique:
+
+$$
+\begin{align*}
+\text{BOTTOM\_OUT} & = \text{FULL\_EXT} - \text{FRONT\_STROKE} \\
+\text{BOTTOM\_OUT} & = 146 - 120 \\
+\text{BOTTOM\_OUT} & = 26 \text{ mm}
+\end{align*}
+$$
+
 
 
 
@@ -261,9 +314,24 @@ last_modified_date: 2026-05-25 12:04:17
 <!-- ###################################################################### -->
 ## 6. Calculer la limite à surveiller quand on roule
 
-1. On veut 10 mm de marge avec que la fourche ne touche
-1. La distance entre le pied de fourche et le base du zip: $$\textrm{Limit} = 146 - 120 - 5 - 2 + 10 = 29 mm$$
-1. Faut pas que le bas du zip descende sous les 29 mm
+### Pourquoi?:
+{: .no_toc }
+
+### Comment?:
+{: .no_toc }
+
+1. Par exemple, on veut $$\text{MARGIN} = 10 \text{ mm}$$ avant que la fourche ne touche.
+1. La distance minimale entre le pied de fourche et le base du zip est donc:
+
+$$
+\begin{align*}
+\text{LIMIT} & = \text{FULL\_EXT} - \text{FRONT\_STROKE} - \text{SPI} - \text{ZIP} + \text{MARGIN} \\
+\text{LIMIT} & = 146 - 120 - 5 - 2 + 10 \\
+\text{LIMIT} & = 29 \text{ mm}
+\end{align*}
+$$
+
+1. Il ne faut pas que le bas du zip descende sous les 29 mm
 
 Ajustements:
 * Si le bas du zip dépasse la limite (mesure inf à 29mm) il faut fermer la précharge et/ou vérifier les mesures
@@ -322,10 +390,7 @@ $$
 <!-- ###################################################################### -->
 ## Conclusion
 
-Maecenas in arcu id erat interdum tristique sed fermentum tortor. Donec eget felis ornare sem dapibus tincidunt at vitae justo. Mauris feugiat tristique augue at maximus. Vivamus euismod blandit mi, ut pretium libero tempor sit amet. In tristique nisi vel mi molestie, ac ornare enim blandit. Phasellus bibendum diam massa, in tempor purus imperdiet a. Curabitur mattis mauris eget cursus molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum efficitur sapien leo, id iaculis sem sagittis ac. Praesent dolor nisl, fringilla fermentum maximus id, ornare id justo. Morbi at gravida purus, eu imperdiet risus.
-
+Ensuite faut rouler et utiliser [la lecture des pneus]({%link docs\07_moto\006_lecture_des_pneus\lecture_des_pneus.md%}) pour ajuster les réglages.
 
 
 
@@ -334,5 +399,9 @@ Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magni
 <!-- ###################################################################### -->
 ## Webliography
 
-* [Link to a web page](https://cleonis.nl/physics/phys256/energy_position_equation.php).
-* [Link to a page of the site]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
+
+<!--
+https://acidmoto.ch/site/comment-bien-regler-ses-suspensions-guide-pour-comprendre-avant-de-toucher/
+
+
+ -->
