@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-27 19:08:35
+last_modified_date: 2026-05-27 19:15:20
 ---
 
 
@@ -49,8 +49,7 @@ last_modified_date: 2026-05-27 19:08:35
 
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
-<img
-    src="./assets/img00.webp"
+<img src="./assets/img00.webp"
     alt="Fourche RS660 Factory 2025"
     style="width: 100%; height: auto;"
     loading="lazy"
