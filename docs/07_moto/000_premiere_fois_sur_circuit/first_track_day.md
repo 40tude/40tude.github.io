@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-27 11:07:19
+last_modified_date: 2026-05-27 11:44:02
 ---
 
 
@@ -376,7 +376,7 @@ However, once you've started rolling on the throttle, you don't stop. **No stead
 > From now on, here’s what I propose:
 >
 > * When you hear an instructor or a rider say "steady-state throttle"
-> * You should interpret it as: "I’m starting to roll on the throttle".
+> * You should interpret it as: "I’m starting to roll on the throttle to the **stop**".
 
 
 Don't forget, you should only "touch" the curb once, at the AP.

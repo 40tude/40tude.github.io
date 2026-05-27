@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-27 11:07:19
+last_modified_date: 2026-05-27 11:44:02
 ---
 
 
@@ -363,7 +363,7 @@ En revanche, une fois que tu as commencé à enrouler le câble d'accélérateur
 > À partir de maintenant je te propose la chose suivante:
 >
 > * Quand tu entends un instructeur ou un pilote dire "Filet de gaz"
-> * Toi tu traduis ça par: "Je commence à enrouler le câble d'accélérateur".
+> * Toi tu traduis ça par: "Je commence à enrouler le câble d'accélérateur et je n'arrête qu'à la butée".
 
 
 Sinon, n'oublies pas, tu ne dois "toucher" le vibreur qu'une seule fois au niveau du PC.

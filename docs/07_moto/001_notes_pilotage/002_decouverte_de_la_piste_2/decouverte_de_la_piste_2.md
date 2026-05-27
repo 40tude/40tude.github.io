@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2026-04-25 09:17:00
+last_modified_date: 2026-05-27 11:44:02
 ---
 
 # {{ page.title }}
@@ -153,7 +153,7 @@ Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en but�
 
 C'est **LA** règle qu'il faut appliquer quand, dans le virage, après avoir fait pivoter la moto, on retouche à la poignée de gaz. Super simple tu vas voir :
 
-**Once the throttle is cracked on, it is rolled on evenly, smoothly and constantly troughout the remainder of the turn**
+**Once the throttle is cracked on, it is rolled on evenly, smoothly and constantly throughout the remainder of the turn**
 
 À partir du moment où on ouvre les gaz, on n'arrête pas de tourner la poignée, gentiment et continûment pendant tout le reste du virage.
 
