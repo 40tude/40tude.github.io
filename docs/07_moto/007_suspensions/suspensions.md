@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-28 14:44:35
+last_modified_date: 2026-05-28 15:49:54
 ---
 
 
@@ -293,7 +293,17 @@ Pour vérifier car on sait jamais. Pour pouvoir y revenir le cas échéant.
 
 2- Étendre la fourche à son maximum.
 * Il vaut mieux être 2.
-* Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AV ne touche plus terre.
+* Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AV ne touche plus terre. Ou alors... Utiliser une béquille de stand qui soulève la moto par le té inférieur de la colonne de direction.
+
+<figure style="max-width: 650px; margin: auto; text-align: center;">
+<img
+    src="./assets/img12.webp"
+    alt="Béquille de stand AV"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Béquille de stand AV</figcaption>
+</figure>
 
 3- Mesurer alors la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint spi).
 
@@ -564,12 +574,15 @@ $$
 ### Pourquoi?:
 {: .no_toc }
 
+* Il faut faire travailler la suspension sur la plus grande plage possible
+* Il ne faut pas que la fourche par exemple, arrive en butée car alors il ne reste plus que le pneu AV pour amortir et généralement cela se termine mal
+
 ### Comment?:
 {: .no_toc }
 
 1- Par exemple, on veut $$\text{MARGIN} = 10 \text{ mm}$$ avant que la fourche ne touche.
 
-2- La distance minimale entre le pied de fourche et le base du zip est donc:
+2- La distance minimale entre le pied de fourche et le bas du zip est donc:
 
 $$
 \begin{align*}
@@ -581,7 +594,7 @@ $$
 
 3- Il ne faut pas que le bas du zip descende sous les 29 mm
 
-4- Poser un sticker à 29 mm sur le tube ou bien se rappeler de la valeur
+4- Sur le tube, poser un sticker à 29 mm du pied de fourche ou noter la valeur sur [la feuille de session](docs/07_moto/002_feuille_sessions/assets/sessions.pdf)
 
 Ajustements:
 * Si le bas du zip dépasse la limite (mesure inf à 29 mm) il faut fermer la précharge et/ou vérifier les mesures
@@ -626,11 +639,11 @@ Ajustements:
 
 1- Retrouver les valeurs qu'on a noté au tout début
 
-2- Pomper à l'AV et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
+2- Pomper à l'AV et vérifier que ce dernier remonte à sa position initiale SANS la dépasser.
 
 3- Ne pas hésiter à faire des tests en ouvrant tout (la moto doit faire le yoyo) et en fermant tout (impossible d'enfoncer la fourche ou bien cette dernière remonte tout doucement).
 
-**Objectif:** Il faut que l'AV remonte vite mais sans dépasser la position d'équilibre.
+**Objectif:** Il faut que l'AV remonte vite mais SANS dépasser la position d'équilibre.
 
 
 
@@ -642,13 +655,19 @@ Ajustements:
 
 2- Pomper à l'AR et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
 
+3- Faire des tests en ouvrant tout et en fermant tout.
+
+**Objectif:** Il faut que l'AR remonte vite mais SANS dépasser la position d'équilibre.
+
+
+
 
 #### **AVANT** et **ARRIÈRE:**
 {: .no_toc }
 
 1- Pomper AV et AR et vérifier que l'avant et l'arrière se comportent de manière similaire.
 
-2- L'avant ne doit pas plonger ou remonter plus vite que l'arrière par exemple.
+2- L'AV ne doit pas plonger ou remonter plus vite que l'AR par exemple.
 
 
 **kObjectif:** La moto doit rester horizontale si on appui bien sur l'avant et l'arrière.
