@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-28 11:25:22
+last_modified_date: 2026-05-28 14:36:20
 ---
 
 
@@ -247,7 +247,10 @@ Ajoute des +1 et des -1 sur ton plan du circuit.
 
 **Idée d'entraînement sur la route avant de venir**
 
-1. En respectant les limitations de vitesse, en 2, mettre la poignée de gaz en butée, passer un rapport avant la zone rouge.
+En respectant les limitations de vitesse, en 2 avec la moto verticale.
+1. Tester l'accélération en deux temps : une "louchette" pour ancrer le pneu arrière suivi d'une grosse louche
+1. Amener la poignée de gaz en butée, passer un rapport avant la zone rouge.
+
 
 
 

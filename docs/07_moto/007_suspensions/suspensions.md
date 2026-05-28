@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-28 11:25:22
+last_modified_date: 2026-05-28 14:36:20
 ---
 
 
@@ -80,6 +80,10 @@ last_modified_date: 2026-05-28 11:25:22
 
 
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Introduction
 
 
 
@@ -89,12 +93,12 @@ last_modified_date: 2026-05-28 11:25:22
 <!-- ###################################################################### -->
 ## 0. Préliminaires
 
-1. Préparer à portée de main la combinaisons, la dorsale, les bottes, le casque, les gants...
-1. Vérifier que le réservoir est rempli entre 50% et 100%
-1. Vérifier que la chaîne n'est pas trop tendue
+1- Mettre à portée de main la combinaisons, la dorsale, les bottes, le casque, les gants...
+2- Vérifier que le réservoir est rempli entre 50% et 100%
+3- Vérifier que la chaîne n'est pas trop tendue
     * Si c'est le cas, le bras oscillant ne peut pas osciller librement, la chaîne tire sur le PSB... Bref, c'est vraiment pas une bonne chose.
     * On peut en profiter pour vérifier que la chaîne est bien alignée
-1. Mesurer la hauteur du joint spi de fourche. **Exemple:** $$\text{SPI} = 7 \text{ mm}$$ pour un RS 660 Factory
+4- Mesurer la hauteur du joint spi de fourche. **Exemple:** $$\text{SPI} = 7 \text{ mm}$$ pour un RS 660 Factory
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
@@ -108,7 +112,7 @@ last_modified_date: 2026-05-28 11:25:22
 
 
 
-4. Mesurer la largeur du zip. **Exemple:** $$\text{ZIP} = 2.5 \text{ mm}$$
+4- Mesurer la largeur du zip. **Exemple:** $$\text{ZIP} = 2.5 \text{ mm}$$
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
@@ -121,7 +125,7 @@ last_modified_date: 2026-05-28 11:25:22
 </figure>
 
 
-5. Poser le zip sur un des tubes de fourche
+6- Poser le zip sur un des tubes de fourche
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
@@ -137,7 +141,7 @@ last_modified_date: 2026-05-28 11:25:22
 
 
 
-6. Retrouver dans le manuel utilisateur les valeurs des débattements AV er AR.
+7- Retrouver dans le manuel utilisateur les valeurs des débattements AV er AR.
 **Exemple:**
 
 $$
@@ -167,7 +171,7 @@ $$
 
 
 
-6. Pour l'AV et l'AR retrouver dans la documentation les moyens de régler et les valeurs par défaut de :
+8- Pour l'AV et l'AR retrouver dans la documentation les moyens de régler et les valeurs par défaut de :
     - Précharge
     - Rebond
     - Compression
@@ -187,9 +191,9 @@ $$
 En fonction des motos rebond, compression, rebond rapide et compression rapide peuvent ne PAS être disponibles. Certains réglages peuvent se trouver sur le pied de fourche (en bas). Dans certains cas on peut aussi retrouver les réglages de rebond et de compression sur chacun des tubes
 
 **Exemple de valeurs par défaut**: La doc Aprilia du RS660 Factory indique qu'il n'y a qu'une configuration piste et n'indique donc aucune valeur pour un usage route. Ensuite il est précisé :
-- Précharge = -5 tours depuis la position complètement serrée
-- Compression = -16 clicks depuis la position fermée
-- Détente = -12 clicks depuis la position fermée
+- Précharge (1) = -5 tours depuis la position complètement serrée
+- Compression (2) = -16 clicks depuis la position fermée
+- Détente (3) = -12 clicks depuis la position fermée
 
 
 
@@ -204,9 +208,9 @@ En fonction des motos rebond, compression, rebond rapide et compression rapide p
 </figure>
 
 **Exemple de valeurs par défaut**: Là aussi la doc Aprilia du RS660 Factory indique qu'il n'y a qu'une configuration piste et n'indique donc aucune valeur pour un usage route. Ensuite il est précisé :
-- Précharge $$\rightarrow$$ A = 143 mm
-- Compression = -10 clicks depuis la position fermée
-- Détente = -20 clicks depuis la position fermée
+- Précharge (A) = 143 mm
+- Compression (4) = -10 clicks depuis la position fermée
+- Détente (1) = -20 clicks depuis la position fermée
 
 7. Préparer les outils en conséquence
 - Clé à pipe de 17
@@ -278,30 +282,47 @@ Pour vérifier car on sait jamais. Pour pouvoir y revenir le cas échéant.
 #### **AVANT:**
 {: .no_toc }
 
-1. Dévisser complètement la précharge, le rebond et la compression de la fourche
-1. Étendre la fourche à son maximum.
+1- Dévisser complètement la précharge, le rebond et la compression de la fourche
+2- Étendre la fourche à son maximum.
     * Il vaut mieux être 2.
-    * On bascule la moto sur sa béquille latérale jusqu'à ce que le pneu AV ne touche plus terre.
-1. Mesurer alors la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint spi).
+    * Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AV ne touche plus terre.
+3- Mesurer alors la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint spi).
 
 **Exemple:**
 
 $$\text{F1} = 143 \text{ mm}$$
 
 
+
+
+
 #### **ARRIÈRE:**
 {: .no_toc }
 
-1. Poser un morceau de scotch bleu à peinture sur le dosseret de selle, à la verticale de l'axe de la roue arrière. Faire une croix au feutre.
-1. Dévisser complètement la précharge, le rebond et la compression de l'amortisseur
-1. Étendre l'amortisseur à son maximum.
-    * Il vaut mieux être 2 ou 3
-    * Soulever l'arrière de la moto jusqu'à ce que le pneu AR ne touche plus terre.
-1. Mesurer alors la longueur entre l'axe de la roue AR et la croix.
+1- Poser un morceau de scotch bleu à peinture sur le dosseret de selle, à la verticale de l'axe de la roue arrière. Faire une croix au feutre.
+2- Dévisser complètement la précharge, le rebond et la compression de l'amortisseur
+3- Étendre l'amortisseur à son maximum.
+    * Il vaut mieux être 2
+    * Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AR ne touche plus terre.
+4- Mesurer alors la longueur entre l'axe de la roue AR et la croix.
 
 **Exemple:**
 
 $$\text{R1} = ??? \text{ mm}$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -320,14 +341,14 @@ $$\text{R1} = ??? \text{ mm}$$
 {: .no_toc }
 
 
-1. Manipuler doucement la moto et la mettre verticale sur ses deux roues
-1. Mesurer la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint spi).
+1- Manipuler doucement la moto et la mettre verticale sur ses deux roues
+2- Mesurer la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint spi).
 
 **Exemple:**
 
 $$\text{F2} = 115 \text{ mm}$$
 
-1. Application numérique:
+3- Application numérique:
 
 $$
 \begin{align*}
@@ -352,14 +373,14 @@ $$
 \end{align*}
 $$
 
-1. On touche plus à rien
+4- On touche plus à rien
 
 
 #### **ARRIÈRE:**
 {: .no_toc }
 
-1. Manipuler doucement la moto et la mettre verticale sur ses deux roues
-1. Mesurer la longueur entre l'axe de la roue AR et la croix.
+1- Manipuler doucement la moto et la mettre verticale sur ses deux roues
+2- Mesurer la longueur entre l'axe de la roue AR et la croix.
 
 **Exemple:**
 
@@ -375,8 +396,8 @@ $$
 
 
 
-1. Sur piste on veut un `STATIC_SAG` proche de 10 mm
-1. On touche plus à rien
+3- Sur piste on veut un `STATIC_SAG` proche de 10 mm
+4- On touche plus à rien
 
 
 
@@ -396,14 +417,16 @@ $$
 #### **AVANT:**
 {: .no_toc }
 
-1. S'équiper: bottes, gants, casque, combine ou blouson
-1. Monter DOUCEMENT sur la moto
+1- S'équiper: bottes, gants, casque, combine ou blouson
+2- Monter DOUCEMENT sur la moto
 
 **Exemple:**
 
 $$\text{F3} = 108 \text{ mm}$$
 
-1. Application numérique:
+
+
+3- Application numérique:
 
 $$
 \begin{align*}
@@ -414,7 +437,7 @@ $$
 $$
 
 
-1. Sur piste on veut un `FRONT_DRIVER_SAG` proche de 35 mm
+4- Sur piste on veut un `FRONT_DRIVER_SAG` proche de 35 mm
 
 
 <!-- 1. Freiner de l'avant et pomper plusieurs fois la fourche
@@ -443,7 +466,7 @@ Ajustements:
 
 $$\text{F3} = 108 \text{ mm}$$
 
-1. Application numérique:
+1- Application numérique:
 
 $$
 \begin{align*}
@@ -454,13 +477,24 @@ $$
 $$
 
 
-1. Sur piste on veut un `REAR_DRIVER_SAG` proche de 30 mm
+2- Sur piste on veut un `REAR_DRIVER_SAG` proche de 30 mm
 
 
 
 Ajustements:
 * Si on lit 25 mm il faut ouvrir la précharge. Si on est tout ouvert et si on atteint toujours pas la valeur souhaitée, le pilote est trop léger. Faut changer le ressort
 * Si on lit 40 mm il faut fermer la précharge. Si on est tout fermé et si on atteint toujours pas la valeur souhaitée, le pilote est trop lourd. Faut changer le ressort
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -481,10 +515,12 @@ Ajustements:
 {: .no_toc }
 
 
-1. Étendre la fourche à son maximum
-1. Mesurer du fourreau au pied (ne pas mesurer sous le joint spi).
+1- Étendre la fourche à son maximum
+2- Mesurer du fourreau au pied (ne pas mesurer sous le joint spi).
 **Exemple:** $$\text{F1} = 146 \text{ mm}$$
-1. Application numérique:
+
+
+3- Application numérique:
 
 $$
 \begin{align*}
@@ -513,8 +549,8 @@ $$
 ### Comment?:
 {: .no_toc }
 
-1. Par exemple, on veut $$\text{MARGIN} = 10 \text{ mm}$$ avant que la fourche ne touche.
-1. La distance minimale entre le pied de fourche et le base du zip est donc:
+1- Par exemple, on veut $$\text{MARGIN} = 10 \text{ mm}$$ avant que la fourche ne touche.
+2- La distance minimale entre le pied de fourche et le base du zip est donc:
 
 $$
 \begin{align*}
@@ -524,8 +560,8 @@ $$
 \end{align*}
 $$
 
-1. Il ne faut pas que le bas du zip descende sous les 29 mm
-1. Poser un sticker à 29 mm sur le tube
+3- Il ne faut pas que le bas du zip descende sous les 29 mm
+4- Poser un sticker à 29 mm sur le tube
 
 Ajustements:
 * Si le bas du zip dépasse la limite (mesure inf à 29 mm) il faut fermer la précharge et/ou vérifier les mesures
@@ -568,9 +604,9 @@ Ajustements:
 #### **AVANT:**
 {: .no_toc }
 
-1. Retrouver les valeurs qu'on a noté au tout début
-1. Pomper à l'AV et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
-1. Ne pas hésiter à faire des tests en ouvrant tout (la moto doit faire le yoyo) et en fermant tout (impossible d'enfoncer la fourche ou bien cette dernière remonte tout doucement).
+1- Retrouver les valeurs qu'on a noté au tout début
+2- Pomper à l'AV et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
+3- Ne pas hésiter à faire des tests en ouvrant tout (la moto doit faire le yoyo) et en fermant tout (impossible d'enfoncer la fourche ou bien cette dernière remonte tout doucement).
 
 **Objectif:** Il faut que l'AV remonte vite mais sans dépasser la position d'équilibre.
 
@@ -580,18 +616,18 @@ Ajustements:
 #### **ARRIÈRE:**
 {: .no_toc }
 
-1. Retrouver les valeurs qu'on a noté au tout début
-1. Pomper à l'AR et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
+1- Retrouver les valeurs qu'on a noté au tout début
+2- Pomper à l'AR et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
 
 
 #### **AVANT** et **ARRIÈRE:**
 {: .no_toc }
 
-1.  Pomper AV et AR et vérifier que l'avant et l'arrière se comportent de manière similaire.
-1. L'avant ne doit pas plonger ou remonter plus vite que l'arrière par exemple.
+1- Pomper AV et AR et vérifier que l'avant et l'arrière se comportent de manière similaire.
+2- L'avant ne doit pas plonger ou remonter plus vite que l'arrière par exemple.
 
 
-**Objectif:** La moto doit rester horizontale si on appui bien sur l'avant et l'arrière.
+**kObjectif:** La moto doit rester horizontale si on appui bien sur l'avant et l'arrière.
 
 
 
@@ -613,6 +649,16 @@ On va commencer par enlever le scotch du dosseret.
 
 Ensuite faut rouler et utiliser [la lecture des pneus]({%link docs/07_moto/006_lecture_des_pneus/lecture_des_pneus.md%}) pour ajuster les réglages.
 
+Faudra refaire les réglages si on change l'assiette de la moto, si on monte des commande reculées ou bien encore si on change les bracelets pour les faire passer sous le T de fourche. En effet, il y aura plus de poids sur l'avant du coup les précharges AV & AR sont à revoir.
+
+<figure style="max-width: 650px; margin: auto; text-align: center;">
+<img src="./assets/img11.webp"
+    alt="RS 660 avec des bracelets montés bas"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>RS 660 avec des bracelets montés bas</figcaption>
+</figure>
 
 
 <!-- ###################################################################### -->
