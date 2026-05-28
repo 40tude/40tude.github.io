@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-28 14:36:20
+last_modified_date: 2026-05-28 14:44:35
 ---
 
 
@@ -94,10 +94,13 @@ last_modified_date: 2026-05-28 14:36:20
 ## 0. Préliminaires
 
 1- Mettre à portée de main la combinaisons, la dorsale, les bottes, le casque, les gants...
+
 2- Vérifier que le réservoir est rempli entre 50% et 100%
+
 3- Vérifier que la chaîne n'est pas trop tendue
-    * Si c'est le cas, le bras oscillant ne peut pas osciller librement, la chaîne tire sur le PSB... Bref, c'est vraiment pas une bonne chose.
-    * On peut en profiter pour vérifier que la chaîne est bien alignée
+* Si c'est le cas, le bras oscillant ne peut pas osciller librement, la chaîne tire sur le PSB... Bref, c'est vraiment pas une bonne chose.
+* On peut en profiter pour vérifier que la chaîne est bien alignée
+
 4- Mesurer la hauteur du joint spi de fourche. **Exemple:** $$\text{SPI} = 7 \text{ mm}$$ pour un RS 660 Factory
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
@@ -112,7 +115,7 @@ last_modified_date: 2026-05-28 14:36:20
 
 
 
-4- Mesurer la largeur du zip. **Exemple:** $$\text{ZIP} = 2.5 \text{ mm}$$
+5- Mesurer la largeur du zip. **Exemple:** $$\text{ZIP} = 2.5 \text{ mm}$$
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
@@ -142,6 +145,7 @@ last_modified_date: 2026-05-28 14:36:20
 
 
 7- Retrouver dans le manuel utilisateur les valeurs des débattements AV er AR.
+
 **Exemple:**
 
 $$
@@ -172,11 +176,12 @@ $$
 
 
 8- Pour l'AV et l'AR retrouver dans la documentation les moyens de régler et les valeurs par défaut de :
-    - Précharge
-    - Rebond
-    - Compression
-    - Rebond rapide
-    - Compression rapide
+
+- Précharge
+- Rebond
+- Compression
+- Rebond rapide
+- Compression rapide
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
@@ -212,8 +217,10 @@ En fonction des motos rebond, compression, rebond rapide et compression rapide p
 - Compression (4) = -10 clicks depuis la position fermée
 - Détente (1) = -20 clicks depuis la position fermée
 
+
+
 7. Préparer les outils en conséquence
-- Clé à pipe de 17
+- Clé à pipe hexa de 17
 - Clé Allen de 3
 - ...
 
@@ -283,9 +290,11 @@ Pour vérifier car on sait jamais. Pour pouvoir y revenir le cas échéant.
 {: .no_toc }
 
 1- Dévisser complètement la précharge, le rebond et la compression de la fourche
+
 2- Étendre la fourche à son maximum.
-    * Il vaut mieux être 2.
-    * Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AV ne touche plus terre.
+* Il vaut mieux être 2.
+* Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AV ne touche plus terre.
+
 3- Mesurer alors la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint spi).
 
 **Exemple:**
@@ -300,10 +309,13 @@ $$\text{F1} = 143 \text{ mm}$$
 {: .no_toc }
 
 1- Poser un morceau de scotch bleu à peinture sur le dosseret de selle, à la verticale de l'axe de la roue arrière. Faire une croix au feutre.
+
 2- Dévisser complètement la précharge, le rebond et la compression de l'amortisseur
+
 3- Étendre l'amortisseur à son maximum.
-    * Il vaut mieux être 2
-    * Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AR ne touche plus terre.
+* Il vaut mieux être 2
+* Faire basculer la moto sur sa béquille latérale jusqu'à ce que le pneu AR ne touche plus terre.
+
 4- Mesurer alors la longueur entre l'axe de la roue AR et la croix.
 
 **Exemple:**
@@ -342,6 +354,7 @@ $$\text{R1} = ??? \text{ mm}$$
 
 
 1- Manipuler doucement la moto et la mettre verticale sur ses deux roues
+
 2- Mesurer la longueur entre le fourreau et le pied de fourche (ne pas mesurer sous le joint spi).
 
 **Exemple:**
@@ -359,11 +372,11 @@ $$
 $$
 
 
-1. Sur piste on veut un `STATIC_SAG` proche de 25 mm
-1. Ici, avec 28 mm, la moto s'enfonce un peu trop. Faut ajouter/fermer la précharge
-1. On ferme de 4 tours par exemple
-1. On mesure à nouveau et on lit $$\text{F2} = 118 \text{ mm}$$.
-1. Du coup on a
+* Sur piste on veut un `STATIC_SAG` proche de 25 mm
+* Ici, avec 28 mm, la moto s'enfonce un peu trop. Faut ajouter/fermer la précharge
+* On ferme de 4 tours par exemple
+* On mesure à nouveau et on lit $$\text{F2} = 118 \text{ mm}$$.
+* Du coup on a:
 
 $$
 \begin{align*}
@@ -380,6 +393,7 @@ $$
 {: .no_toc }
 
 1- Manipuler doucement la moto et la mettre verticale sur ses deux roues
+
 2- Mesurer la longueur entre l'axe de la roue AR et la croix.
 
 **Exemple:**
@@ -397,6 +411,7 @@ $$
 
 
 3- Sur piste on veut un `STATIC_SAG` proche de 10 mm
+
 4- On touche plus à rien
 
 
@@ -418,7 +433,9 @@ $$
 {: .no_toc }
 
 1- S'équiper: bottes, gants, casque, combine ou blouson
+
 2- Monter DOUCEMENT sur la moto
+* Faire mesurer par "l'esclave" de service
 
 **Exemple:**
 
@@ -516,6 +533,7 @@ Ajustements:
 
 
 1- Étendre la fourche à son maximum
+
 2- Mesurer du fourreau au pied (ne pas mesurer sous le joint spi).
 **Exemple:** $$\text{F1} = 146 \text{ mm}$$
 
@@ -550,6 +568,7 @@ $$
 {: .no_toc }
 
 1- Par exemple, on veut $$\text{MARGIN} = 10 \text{ mm}$$ avant que la fourche ne touche.
+
 2- La distance minimale entre le pied de fourche et le base du zip est donc:
 
 $$
@@ -561,7 +580,8 @@ $$
 $$
 
 3- Il ne faut pas que le bas du zip descende sous les 29 mm
-4- Poser un sticker à 29 mm sur le tube
+
+4- Poser un sticker à 29 mm sur le tube ou bien se rappeler de la valeur
 
 Ajustements:
 * Si le bas du zip dépasse la limite (mesure inf à 29 mm) il faut fermer la précharge et/ou vérifier les mesures
@@ -605,7 +625,9 @@ Ajustements:
 {: .no_toc }
 
 1- Retrouver les valeurs qu'on a noté au tout début
+
 2- Pomper à l'AV et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
+
 3- Ne pas hésiter à faire des tests en ouvrant tout (la moto doit faire le yoyo) et en fermant tout (impossible d'enfoncer la fourche ou bien cette dernière remonte tout doucement).
 
 **Objectif:** Il faut que l'AV remonte vite mais sans dépasser la position d'équilibre.
@@ -617,6 +639,7 @@ Ajustements:
 {: .no_toc }
 
 1- Retrouver les valeurs qu'on a noté au tout début
+
 2- Pomper à l'AR et vérifier que ce dernier remonte à sa position initiale sans la dépasser.
 
 
@@ -624,6 +647,7 @@ Ajustements:
 {: .no_toc }
 
 1- Pomper AV et AR et vérifier que l'avant et l'arrière se comportent de manière similaire.
+
 2- L'avant ne doit pas plonger ou remonter plus vite que l'arrière par exemple.
 
 
