@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-27 11:44:02
+last_modified_date: 2026-05-28 11:25:22
 ---
 
 
@@ -462,14 +462,20 @@ That's because you're not accelerating hard enough. It's the acceleration that p
         1. I settle the bike
         1. Big handful
 
+
+
+
+
+
+
+
+
 ### 5. Braking
 
 <div align="center">
 <img src="./assets/image-22.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-
-We could have swapped the content of sessions 4 and 5, but in the end we chose this order because it lets us state and explain the purpose of session 5.
 
 During the previous session, lap after lap, you can't do the same thing in the same corner. It's frustrating. You lack consistency.
 

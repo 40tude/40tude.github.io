@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-27 11:44:02
+last_modified_date: 2026-05-28 11:25:22
 ---
 
 
@@ -96,6 +96,12 @@ Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en 
 
 ## Le planning en mode détaillé
 
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ### 1. Reconnaissance de la piste
 
 <div align="center">
@@ -107,7 +113,7 @@ Dans cette session comme dans les autres... Aucune pression. Tu roules à 75% de
 
 Deux choses à respecter cependant:
 
-1. Tu conduis dorénavant avec la partie la plus large de tes pieds sur les repose-pieds. C'est la partie qui se trouve juste après les orteils. Tu n'es donc pas sur le bout des orteils et tu ne cale pas non plus ton talon sur les cale-pieds. Tu peux t'habituer à cette position de pieds, sur route, les semaines avant la journée de roulage.
+1. Tu conduis dorénavant avec la partie la plus large de tes pieds sur les repose-pieds. C'est la partie qui se trouve juste après les orteils, celle sur laquelle tu atterris quand tu sautes à la corde. Tu n'es donc pas sur le bout des orteils et tu ne cale pas non plus ton talon sur les cale-pieds. Tu peux t'habituer à cette position de pieds, sur route, les semaines avant la journée de roulage.
 2. Tu arrives en étant à droite de la piste si le prochain virage tourne à gauche et à gauche de la piste si le prochain virage tourne à droite. C'est tout et c'est déjà pas mal car quand je dis à droite par exemple, cela veut dire que tes roues sont à 1 cm de la bande blanche. Pas 1 mètre, pas 25 cm, non, non il faut que tu colles la ligne. Oui, bien sûr, si tu es à 5 cm je ne vais pas te faire un procès. Sérieux, il faut que tu apprennes à le faire maintenant alors que tu n'as pas de vitesse. Il faut que tu prennes l'habitude de voir la bande blanche très proche de tes pneus (et non, tu ne vas pas te sortir).
 
 
@@ -121,6 +127,7 @@ Pendant la session, prends le temps de repasser par la voie des stands. Tu repè
 **Attention**, et c'est d'ailleurs pour ça qu'on fait cet exercice. Quand tu t'insères sur le circuit, les autres sont déjà lancés. Donc, tu jettes ton œil (tu tournes franchement la tête et/ou tu lèves tes fesses de la moto et tu te retournes) et si c'est clair, tu accélères franchement. Ensuite, tu colles la ligne à l'extérieur du prochain virage. Tu fais attention, tu restes large dans le premier virage. Ensuite c'est bon, c'est reparti. Ceux qui sont derrière doivent prendre soin de toi (c'est comme au ski en fait).
 
 Le fait de sortir peut-être très utile si tu te retrouves dans un paquet et que tu n'es pas à l'aise (trop de monde, trop de bruit, trop stressant...). Le mieux dans ce cas-là c'est de passer par les stands puis de rentrer sur la piste tout de suite après afin de se retrouver seul, tranquille et safe. En effet, il ne faut pas suivre les autres de trop près, surtout en "Débutants" car tout peut arriver : rater une vitesse, changement de trajectoire inopiné, attaque de Martiens... Même chose si tu sens que tu manques de concentration... Tu sors, tu respires et tu repars. Cependant, si en fin de session tu es fatigué, tu sors. Il n'y a pas de honte à sortir un ou deux tours avant la fin d'une session.
+
 
 **Objectif à la fin de la session**
 
@@ -152,10 +159,20 @@ Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable
 
 
 
+**Idée d'entraînement sur la route avant de venir**
+
+1. Conduire avec la partie la plus large des tes pieds sur les repose-pieds
 
 
 
 
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ### 2. Accélération dans les lignes droites
 
 
@@ -228,6 +245,25 @@ Ajoute des +1 et des -1 sur ton plan du circuit.
 
 
 
+**Idée d'entraînement sur la route avant de venir**
+
+1. En respectant les limitations de vitesse, en 2, mettre la poignée de gaz en butée, passer un rapport avant la zone rouge.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ### 3. Se coucher sur la moto
 
 <div align="center">
@@ -297,6 +333,30 @@ Forcément avec ton roadster ce n'est pas top. Pas grave, on s'adapte. Tu te pen
 * *Je suis embêté avec mon casque. Il me tombe sur le nez et, je ne vois rien.*
 Lors de la prochaine session, quand tu auras sanglé ton casque, mets une main sous l'avant du casque et fais-le remonter. Il faut que tu aies la désagréable impression que l'on voit ton menton. Si jamais il retombe en cours de session tu peux soit changer la mousse intérieure (plus tard une fois de retour à la maison), soit mettre un bout de tissu plié au-dessus de ton front (ou mieux entre la mousse intérieure et le casque lui-même).
 
+
+
+
+
+**Idée d'entraînement sur la route avant de venir**
+
+1. N'ai pas peur du ridicule. C'est pour la bonne cause. À 80, 110 ou 130, avec les abdos, abaisse ton torse, touche le réservoir, souffle fort, lève les yeux, serre les bras, serre les cuisses. Tu arrives à tenir la position? Tu serais pas mieux en reculant tes fesses?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ### 4. Point de corde et trajectoire
 
 <div align="center">
@@ -449,14 +509,32 @@ C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui dép
         1. Je cale
         1. Grosse louche
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ### 5. Freinage
 
 <div align="center">
 <img src="./assets/image-22.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-
-On aurait pu intervertir le contenu des sessions 4 et 5 mais bon, finalement on a choisi cet ordre car cela permet de donner et d'expliquer le but de cette session 5.
 
 Lors de la session précédente, tour après tour on n'arrive pas à faire la même chose dans le même virage. C'est frustrant. On manque de régularité.
 
@@ -529,6 +607,25 @@ Encore une fois, s'il n'y avait pas de pilote sur la moto, le comportement de ce
 Il faut être **pro-gre-ssif** et y aller doucement pour ne pas brusquer la moto. Tu relâches l'embrayage doucement. Tu respectes les 2 premières phases du freinage, tu laisses la moto enfoncer l'avant puis tu serres **pro-gres-si-ve-ment** les freins. Tu enroules **continûment** et de plus en plus vite la câble d'accélérateur, les exemples sont innombrables...
 
 
+
+**Idée d'entraînement sur la route avant de venir**
+
+1. Rentre un rapport dès que tu coupe les gaz
+1. Si tu ne le fais pas déjà, met un coup d'accélérateur avant de rentrer un rapport
+1. Tu arrives à rentrer tous tes rapports en arrivant à un stop ou un feu rouge?
+
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ### 6. Conduite du virage
 
 <div align="center">
@@ -637,6 +734,18 @@ Si tu poses la question c'est que tu claques ta moto sur l'angle et que tu as un
 Mais bon, "avant de savoir courir il faut savoir marcher". Mettre tout ça en place sur une seule session, alors que cela impacte aussi le freinage, nous paraissait un peu "touchy". Comme le pilote débute, on a fait le choix de se concentrer sur le haut du corps dans un premier temps. Une fois que ça c'est en place, qu'il claque la moto sur l'angle et qu'il a la vitesse d'entrée suffisante, plus tard, il pourra "facilement" y rajouter le bas du corps. On adapte sa position pour passer plus vite, pas le contraire.
 
 
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ### 7. La septième session
 
 Y a petit air de 7eme compagnie et de Pithivier. Tu trouves pas? Quoiqu'il en soit, c'est celle qu'on n'attendait pas. C'est donc que du bonus, que du bonheur.

@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-27 19:15:20
+last_modified_date: 2026-05-28 11:25:22
 ---
 
 
@@ -89,8 +89,8 @@ last_modified_date: 2026-05-27 19:15:20
 <!-- ###################################################################### -->
 ## 0. Préliminaires
 
+1. Préparer à portée de main la combinaisons, la dorsale, les bottes, le casque, les gants...
 1. Vérifier que le réservoir est rempli entre 50% et 100%
-
 1. Vérifier que la chaîne n'est pas trop tendue
     * Si c'est le cas, le bras oscillant ne peut pas osciller librement, la chaîne tire sur le PSB... Bref, c'est vraiment pas une bonne chose.
     * On peut en profiter pour vérifier que la chaîne est bien alignée
@@ -266,7 +266,7 @@ Pour vérifier car on sait jamais. Pour pouvoir y revenir le cas échéant.
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ## 1. Déterminer la buttée de fourche (bottom out) -->
-## 1. Mesure de les extensions maximum à l'avant et à l'arrière
+## 1. Mesure des extensions maximum à l'avant et à l'arrière
 
 
 ### Pourquoi?:
