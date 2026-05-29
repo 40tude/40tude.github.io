@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-28 15:49:54
+last_modified_date: 2026-05-29 14:03:30
 ---
 
 
@@ -85,6 +85,9 @@ last_modified_date: 2026-05-28 15:49:54
 <!-- ###################################################################### -->
 ## Introduction
 
+* On suppose que la fourche et l'amortisseur sont en bon état. Pas de fuite au joint spi, huile pas trop ancienne etc.
+* Le but du jeu ici c'est de tenir compte de l'état de la moto et du pilote (poids équipé par exemple) et de régler, si possible, les suspensions pour un usage piste
+
 
 
 
@@ -129,6 +132,8 @@ last_modified_date: 2026-05-28 15:49:54
 
 
 6- Poser le zip sur un des tubes de fourche
+
+Pas la peine de serrer comme un sourd. Faut juste qu'il puisse coulisser sur le tube lorsque le joint spi va le pousser.
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
 <img
@@ -575,29 +580,29 @@ $$
 {: .no_toc }
 
 * Il faut faire travailler la suspension sur la plus grande plage possible
-* Il ne faut pas que la fourche par exemple, arrive en butée car alors il ne reste plus que le pneu AV pour amortir et généralement cela se termine mal
+* Mais il ne faut pas que la fourche par exemple, arrive en butée car alors il ne reste plus que le pneu AV pour amortir et généralement cela se termine mal
 
 ### Comment?:
 {: .no_toc }
 
-1- Par exemple, on veut $$\text{MARGIN} = 10 \text{ mm}$$ avant que la fourche ne touche.
+1- Par exemple, pour l'AV on veut $$\text{MARGIN} = 10 \text{ mm}$$ avant que la fourche n'arrive en butée
 
-2- La distance minimale entre le pied de fourche et le bas du zip est donc:
+2- La distance minimale entre le pied de fourche et le bas du zip doit donc être égale à:
 
 $$
 \begin{align*}
 \text{LIMIT} & = \text{F1} - \text{FRONT-STROKE} - \text{SPI} - \text{ZIP} + \text{MARGIN} \\
-\text{LIMIT} & = 146 - 120 - 5 - 2 + 10 \\
-\text{LIMIT} & = 29 \text{ mm}
+\text{LIMIT} & = 146 - 120 - 7 - 2.5 + 10 \\
+\text{LIMIT} & = 26.5 \text{ mm}
 \end{align*}
 $$
 
-3- Il ne faut pas que le bas du zip descende sous les 29 mm
+3- Il ne faut pas que le bas du zip descende sous les 27 mm
 
-4- Sur le tube, poser un sticker à 29 mm du pied de fourche ou noter la valeur sur [la feuille de session](docs/07_moto/002_feuille_sessions/assets/sessions.pdf)
+4- Sur le tube, poser un sticker à 27 mm du pied de fourche ou noter la valeur sur [la feuille de session](docs/07_moto/002_feuille_sessions/assets/sessions.pdf)
 
 Ajustements:
-* Si le bas du zip dépasse la limite (mesure inf à 29 mm) il faut fermer la précharge et/ou vérifier les mesures
+* Si le bas du zip dépasse la limite (mesure inf à 27 mm) il faut fermer la précharge et/ou vérifier les mesures
 * Si le bas du zip reste loin de la limite on peut freiner plus fort et/ou vérifier les mesures
 
 
@@ -690,9 +695,13 @@ Ajustements:
 
 On va commencer par enlever le scotch du dosseret.
 
-Ensuite faut rouler et utiliser [la lecture des pneus]({%link docs/07_moto/006_lecture_des_pneus/lecture_des_pneus.md%}) pour ajuster les réglages.
+Avant de partir au track day faudra noter sur la feuille de session les réglages usine. En effet si lors de la première session ça va pas du tout faudra les réutiliser.
 
-Faudra refaire les réglages si on change l'assiette de la moto, si on monte des commande reculées ou bien encore si on change les bracelets pour les faire passer sous le T de fourche. En effet, il y aura plus de poids sur l'avant du coup les précharges AV & AR sont à revoir.
+Ensuite avant de partir en session faudra, de temps en temps, penser à remonter le joint spi si on veut connaître le niveau d'enfoncement de la fourche (faut pas faire une fixette non plus)
+
+Lors du track day on pourra utiliser [la lecture des pneus]({%link docs/07_moto/006_lecture_des_pneus/lecture_des_pneus.md%}) pour affiner les réglages.
+
+Faudra refaire les réglages si le centre de gravité moto+pilote varie. Par exemple le pilote perd 5 kg et devient beau comme un Dieu, on change l'assiette de la moto, on monte des commande reculées, on change les bracelets pour les faire passer sous le té de fourche.
 
 <figure style="max-width: 650px; margin: auto; text-align: center;">
 <img src="./assets/img11.webp"
