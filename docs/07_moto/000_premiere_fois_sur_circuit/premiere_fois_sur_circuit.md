@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-05-29 14:03:30
+last_modified_date: 2026-06-04 09:19:20
 ---
 
 
@@ -113,7 +113,7 @@ Dans cette session comme dans les autres... Aucune pression. Tu roules à 75% de
 
 Deux choses à respecter cependant:
 
-1. Tu conduis dorénavant avec la partie la plus large de tes pieds sur les repose-pieds. C'est la partie qui se trouve juste après les orteils, celle sur laquelle tu atterris quand tu sautes à la corde. Tu n'es donc pas sur le bout des orteils et tu ne cale pas non plus ton talon sur les cale-pieds. Tu peux t'habituer à cette position de pieds, sur route, les semaines avant la journée de roulage.
+1. Tu conduis dorénavant avec la partie la plus large de tes pieds sur les repose-pieds. C'est la partie qui se trouve juste après les orteils, celle sur laquelle tu atterris quand tu sautes à la corde. Tu n'es donc pas sur le bout des orteils et tu ne cale pas non plus ton talon sur les cale-pieds. Latéralement, déplace tes pieds de sorte que ton petit orteil soit dans le vide (ce sera utile plus tard). Tu peux t'habituer à cette position de pieds, sur route, les semaines avant la journée de roulage.
 2. Tu arrives en étant à droite de la piste si le prochain virage tourne à gauche et à gauche de la piste si le prochain virage tourne à droite. C'est tout et c'est déjà pas mal car quand je dis à droite par exemple, cela veut dire que tes roues sont à 1 cm de la bande blanche. Pas 1 mètre, pas 25 cm, non, non il faut que tu colles la ligne. Oui, bien sûr, si tu es à 5 cm je ne vais pas te faire un procès. Sérieux, il faut que tu apprennes à le faire maintenant alors que tu n'as pas de vitesse. Il faut que tu prennes l'habitude de voir la bande blanche très proche de tes pneus (et non, tu ne vas pas te sortir).
 
 
@@ -185,13 +185,13 @@ Tu consacres les 20 minutes de cette session à t'assurer que dans les lignes dr
 
 C'est la base, et donc avant de faire autre chose, il faut que tu t'habitues à mettre la poignée de gaz **en butée** (oui, oui **en butée**). On ne le fait jamais sur route et on entend rarement le moteur très haut dans les tours. Bref, c'est un truc nouveau qu'il faut apprendre à faire. Par exemple, cela peut être en sortie de virage, sur la ligne droite qui suit. Tu es en 2 et la poignée est **en butée** au moment où tu passes la 3. L'objectif n'est pas d'être en 6, à fond et de finir au SAMU local. L'objectif n'est pas non plus de mettre la poignée de gaz à 100% en plein virage. Non, non l'objectif est de s'habituer à tourner la poignée et de sentir qu'on atteint la **butée** ✊. Donc en 2, en 3, 100% gaz quand la moto est verticale, en ligne droite, c'est très bien.
 
-Faut apprendre à le faire car le chrono dépend principalement de ta vitesse au bout des lignes droite et pas vraiment de ta vitesse dans les parties lentes. En plus, il faut habituer notre cerveau à la vitesse car à force de rouler à 80 km/h tous les jours, on est un peu largué au début quand on arrive sur circuit.
+Faut apprendre à le faire car le chrono dépend principalement de ta vitesse au bout des lignes droite et pas vraiment de ta vitesse dans les parties lentes. En plus, il faut habituer notre cerveau à la vitesse car à force de rouler à 80 km/h tous les jours, on est un peu largué au début quand on arrive sur circuit. Enfin, plus tard, si on est en butée au bout d'une ligne droite, on sera sûr de commencer à freiner (voir plus loin) en étant plus ou moins toujours à la même vitesse. Cela nous permettra d'être constant, régulier et donc de nous simplifier l'entrée dans le virage à venir.
 
 **Attention**, tu restes bien à 75% de tes capacités. Cela veut dire que dans telle ou telle ligne droite, tu mets 100% gaz mais que tu freines, peut-être, plus tôt que ce que tu faisais lors de la première session. Ne va pas te mettre en mode panique au freinage alors qu'ici on veut travailler l'accélération.
 
 Une fois que c'est validé dans une ou deux lignes droites, il faut effectuer cet exercice aussi dans les grandes courbes car fondamentalement se sont des sections rapides du circuit. Vas-y, pousses la 2, pousses la 3 en étant un peu sur l'angle dans une grande courbe.
 
-Moins évident mais tout aussi important... Il faut aussi accélérer franchement dans les petits bouts de ligne droite. Pas facile de mettre 100% gaz mais il faut être volontaire et tourner la poignée. Il faut sentir le "wouapp effect", le coup de pied aux fesses avec le moteur qui monte dans les tours même si tu coupes et freine juste après. **Attention**, on peut être tenté de faire du 0%-100% trop rapidement dans les petits bouts de ligne droite. Ce n'est pas l'objectif. Là, si on n'arrive pas **en butée** ce n'est pas grave. En revanche, il faut accélérer, sentir le coup de pied aux fesses et bien faire monter le moteur dans les tours sans nécessairement passer un rapport avant le prochain virage.
+Moins évident mais tout aussi important... Il faut aussi accélérer franchement dans les petits bouts de ligne droite. Pas facile de mettre 100% gaz mais il faut être volontaire et tourner la poignée. Il faut sentir le "wouapp effect", le coup de pied aux fesses avec le moteur qui monte dans les tours même si tu coupes et freine juste après. **Attention**, on peut être tenté de faire du 0%-100% trop rapidement dans les petits bouts de ligne droite. Ce n'est pas l'objectif. Là, si on arrive pas **en butée** ce n'est pas grave. En revanche, il faut accélérer, sentir le coup de pied aux fesses et bien faire monter le moteur dans les tours sans nécessairement passer un rapport avant le prochain virage.
 
 Organise-toi dans ta session... En effet, ça va être difficile de faire, d'entrée de jeu, l'exercice sur tous les bouts de ligne droite. Je te propose de commencer par la plus longue ligne droite. Ensuite, tu choisis une autre ligne droite qui est, sur le circuit, à l'opposé de la première. Cela va te permettre de faire l'exercice 2 fois par tour et de reprendre ton souffle entre les 2 (au fait, tu penses bien à souffler dans ton casque ?). Quand c'est acquis sur une des deux lignes droites, tu en ajoute une et tu fais donc l'exercice 3 fois par tour, etc.
 
@@ -340,7 +340,7 @@ Lors de la prochaine session, quand tu auras sanglé ton casque, mets une main s
 
 
 **Idée d'entraînement sur la route avant de venir**
-
+1. Dans ton garage, la moto sur sa béquille latérale. Bras écartés, utilise tes cuisses et entraîne toi à lever et à reculer tes fesses. Quand c'est fait, garde les bras écartés et avec les abdos amène ta poitrine sur le réservoir. Fais le plusieurs jours de suite. Faut que ton corps et ta vision s'habituent.
 1. N'ai pas peur du ridicule. C'est pour la bonne cause. À 80, 110 ou 130, avec les abdos, abaisse ton torse, touche le réservoir, souffle fort, lève les yeux, serre les bras, serre les cuisses. Tu arrives à tenir la position? Tu serais pas mieux en reculant tes fesses?
 
 
