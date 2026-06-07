@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-04 09:19:20
+last_modified_date: 2026-06-07 10:44:17
 ---
 
 
@@ -491,9 +491,9 @@ En fait, le PMSA correspond au moment où on commence à mettre la moto sur l'an
 
 * *Oui mais moi, dans les virages qui ne sont pas des épingles mais plutôt des virages assez grands, après le PMSA, je dois remettre un peu de gaz car sinon la moto est complètement arrêtée et/ou "tombe" vers la corde.*
 Bienvenue au club! En fait, on est pas suicidaire donc on freine, on freine trop et après avoir fait basculer la moto, on a plus assez d'élan pour dépasser le PV. Au prochain tour ne change qu'une chose à la fois (c'est important si tu veux être capable de déterminer ce qui marche, ou pas, pour toi). Par exemple, tu peux essayer ça :
-    * Tu freines de la même façon mais un peu plus tard. Quand je dis un peu plus tard cela veut dire l'équivalent d'une ou 2 motos de long, pas 25 m. Ne va pas te mettre en mode panique au freinage alors qu'on veut travailler la trajectoire en virage.
-    * Assure-toi bien de ne **PAS** rejoindre la corde trop vite. Si le virage a un grand rayon cela peut être très tentant. Il faut que tu passes le PMSA, que tu mettes de l'angle mais que tu "perde du temps" à t'enfoncer dans le virage avant de faire pivoter la moto, "au moment où tu le sens". Vue de haut ta trajectoire doit ressembler à un "V" (surtout si tu as une grosse cylindrée).
-    * Si tu as un 1000, essaies de tomber un rapport de moins quand tu freines. Tu auras moins de frein moteur et une vitesse d'entrée plus importante. Tu sortiras du virage grâce au couple du moteur.
+    * Assure-toi bien de ne **PAS** rejoindre la corde trop vite. Si le virage a un grand rayon cela peut être très tentant. Il faut que tu passes le PMSA, que tu mettes de l'angle que tu reste loin des vibreur intérieurs et que tu "perde du temps" à t'enfoncer dans le virage avant de faire pivoter la moto, "au moment où tu le sens". Vue de haut ta trajectoire doit ressembler à un "V" (surtout si tu as une grosse cylindrée).
+    * Si tu as un 1000, essaies de tomber un rapport de moins quand tu freines. Tu auras moins de frein moteur et une vitesse d'entrée plus importante. Tu sortiras du virage grâce au couple du moteur. Faudra absolument soigner l'enroulement de l'accélérateur (imperceptible au début puis de plus en plus vite alors que la moto se redresse).
+    * Ce que l'on veut c'est augmenter notre vitesse d'entrée pour pouvoir rejoindre PV et y faire pivoter la moto. Du coup, **réfléchis**... Je te propose de ne rien changer, de garder ton PF parce que tu le connais et que tu sais que "ça passe". Par contre, termine ton freinage un peu plus tôt et mets la moto sur l'angle un peu plus tôt avec un peu plus de vitesse. Attention, il faut être volontaire mais pas suicidaire. Tu y vas progressivement. Tu décales le PMSA de 1 ou 2 motos de long et tu augmentes ta vitesse de 1 ou 2 km/h (oui oui je sais y a du scotch à peinture sur le compteur et tu vois rien mais bon tu sais l'ordre de grandeur). Du coup tu pourras rejoindre PV avec suffisamment de vitesse.
 
 * *C'est bizarre, je n'ai pas peur, tout va bien mais je passe toujours à 1 m du PC.*
 C'est sans doute parce que la mise sur l'angle ou le pivot sont **beaucoup trop lents**. Tu peux alors essayer ça :

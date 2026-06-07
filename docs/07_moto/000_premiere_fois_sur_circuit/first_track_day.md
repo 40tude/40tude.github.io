@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-05-28 11:25:22
+last_modified_date: 2026-06-07 10:44:17
 ---
 
 
@@ -442,9 +442,10 @@ Actually, the TIP corresponds to the moment you start leaning the bike, while th
 
 * *Yeah but in corners that aren't hairpins but rather wide-radius turns, after the TIP I need to get back on the gas a bit because otherwise the bike comes to a near stop and/or "falls" toward the apex.*
 Welcome to the club! The thing is, we're not suicidal, so we brake, we brake too much, and after tipping the bike in, we don't have enough momentum to get past the PP. On the next lap, change only one thing at a time (this is important if you want to be able to figure out what works, or doesn't, for you). For example, you could try this:
-    * Brake the same way but a little later. When I say "a little later," I mean the equivalent of 1 or 2 bike lengths, not 25 meters. Don't put yourself in panic mode under braking when we're trying to work on corner trajectory.
     * Make sure you do **NOT** cut to the apex too early. If the corner has a large radius, it can be very tempting. You need to pass the TIP, lean the bike, but then "take your time" sinking into the corner before pivoting the bike "when you feel it." Seen from above, your line should look like a "V" (especially if you have a big-bore bike).
     * If you have a 1000, try downshifting one fewer gear when you brake. You'll have less engine braking and a higher entry speed. You'll exit the corner on the engine's torque.
+    * What we're trying to do is increase our entry speed so that we can reach PP and rotate the bike there. So, **think about it**... My suggestion is not to change anything. Keep your BP (break point), because you know it well and you know that "it works." On the other hand, finish your braking a little earlier and lean the bike in a little earlier while carrying a bit more speed. Be careful: be committed, not reckless. Make the change gradually. Move the **TIP** by one or two bike lengths and increase your speed by 1 mph (yeah, yeah, I know there's painter's tape over the speedometer and you can't really see anything, but you still have a rough idea of the speed range). That way, you'll be able to reach **PP** carrying enough speed to make the bike rotate properly.
+
 
 * *It's weird, I'm not scared, everything feels fine, but I always pass 1 meter from the AP.*
 It's probably because your tip-in or your pivot is **way too slow**. You can try the following:
