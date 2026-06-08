@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-08 10:06:50
+last_modified_date: 2026-06-08 11:43:51
 ---
 
 
@@ -601,9 +601,12 @@ Oui mais non. Ce n'est pas un souci quand tu arrives à un feu rouge mais sur ci
 
 * *Je n'arrive pas à tout faire, c'est trop compliqué !*
 OK, pas de problème on s'adapte... Choisis un virage où il n'y a pas de rapport à rentrer. À la fin d'un petit bout de ligne droite par exemple. Du coup tu peux te concentrer **uniquement** sur le levier de frein et le freinage en 3 temps.
+1. Tu coupe les gaz **et**, tout de suite, tu commence à freiner de l'avant
 1. Les plaquettes lèchent les disques et le transfert de masse se fait.
 1. Quand ça c'est en place, tu serres très fort et sans à coup le levier de frein (pense à l'éponge)
-1. À la fin, tu relâches **dou-ce-ment** le levier de frein pour ajuster précisément la vitesse à laquelle tu passes par le PMSA et mettre rapidement la moto sur l'angle. Tu n'as alors plus de frein ni de gaz, tu es en zone neutre.
+1. À la fin, tu relâches **dou-ce-ment** le levier de frein pour ajuster précisément la vitesse à laquelle tu passes par le PMSA
+1. Tu mets rapidement la moto sur l'angle
+1. Tu n'as alors plus de frein ni de gaz, tu es en zone neutre.
 
 * Une fois que ça c'est en place, prends un virage où il faut rentrer 1 rapport (pas 2 mais 1 rapport). Ça devrait aller car tu vas rentrer le rapport tout de suite. Ne crains pas de rentrer le rapport trop tôt. C'est vraiment "je coupe les gaz, je rentre un rapport".
 Quand ça c'est bon, il faut que tu t'attaques à un virage où tu dois rentrer plusieurs rapports. Au début prends de la marge, recule ton PF et fais attention à ne pas oublier de freiner sous prétexte que tu te concentres sur le passage des rapports. Si ça part en vrille tu ne débrayes pas, tu freines et à la toute fin tu tires sur le levier d'embrayage pour éviter de caler et au prochain tour tu refais un essai.
@@ -617,7 +620,7 @@ Bingo ! Parce que tu as relâché l'embrayage trop rapidement après avoir rentr
 Concernant la roue arrière qui se lève, si jamais ça arrive, relâche légèrement la pression sur le levier de frein (plus facile à écrire qu'à vivre, je sais). Surtout, demande-toi si tu n'as pas donné d'à coup dans ta façon de serrer le levier et si tu n'es pas trop avancé, le pubis collé au réservoir (au fait, tu confirmes que tu serres le réservoir avec les genoux. Ça doit t'empêcher de te retrouver collé au réservoir)
 
 * *Et si je me loupe et que j'arrive beaucoup trop vite dans le virage. Je fais quoi ?*
-Là, il va falloir que tu me croies sur parole. Aie confiance, crois en moi... Lâche les freins, tourne le menton et les épaules franchement vers le PC et penche tout. Ça va passer.
+Là, il va falloir que tu me croies sur parole. Aie confiance, crois en moi... 🎶 Lâche les freins, tourne le menton et les épaules franchement vers le PC et penche tout. Ça va passer.
 Ce qui est sûr, c'est que si tu rajoutes du frein alors que tu es sur l'angle, la moto va se relever. Si elle est encore peu inclinée, si tu rajoutes du frein tu ne pourras pas ajouter d'angle (ou tu vas aller au tas. Pression sur les freins et angle sont inversement proportionnels). L'alternative c'est quoi ? Il n'y a pas d'autre choix. Il faut tourner la tête vers le point de corde, relâcher les freins et rentrer dans le virage avec la vitesse que tu as. Oui, je sais, c'est plus facile à écrire qu'à vivre mais c'est la réalité.
 
 * *Comment je sais que je commence à atteindre les limites ?*
@@ -672,11 +675,11 @@ Cela dit il y a encore quelques "détails" à régler :
 
 On voit qu'on atteint là une limite, un plafond de verre car on ne peut pas aller plus loin que le cale-pied. On va donc consacrer cette session à améliorer ce que l'on appelle la conduite du virage. L'idée c'est de se donner les moyens de sortir de plus en plus vite du virage tout en continuant, bien sûr, à faire passer les roues sur les PMSA, PC et PS.
 
-La physique fait que si on veut passer plus vite en virage il faut contrebalancer la force centrifuge qui pousse la moto à l'extérieur. Pour cela il faut mettre plus de masse à **l'intérieur du virage**. Le premier réflexe a consisté à pencher la moto mais bon on atteint vite les limites d'une telle démarche.
+La physique fait que si on veut passer plus vite en virage il faut contrebalancer la force centrifuge qui pousse la moto à l'extérieur. Pour cela il faut mettre plus de masse à **l'intérieur du virage** et **l'avant de la moto**. Le premier réflexe a consisté à pencher la moto mais bon on atteint vite les limites d'une telle démarche.
 
 Afin de pouvoir commencer à enrouler le câble d'accélérateur plus tôt pour sortir plus vite (c'est notre seul but), on a donc pas d'autre solution que de "pencher" le pilote à **l'intérieur du virage** et de laisser la moto plus droite.
 
-Ça risque de râler un peu mais, faute de temps, on ne va faire ici que la moitié de l'exercice en ne s'occupant QUE du haut du corps. Donc, non, ce n'est pas maintenant qu'on va poser le genou.
+Ça risque de râler un peu mais, faute de temps, on ne va faire ici que la moitié de l'exercice en ne s'occupant **que** du haut du corps. Donc, non, ce n'est pas maintenant qu'on va poser le genou.
 
 Voici ce que je te propose de faire dans un virage où tu te sens à l'aise :
 
@@ -701,7 +704,7 @@ Non, tu ne vas pas vers le réservoir, tu vas à côté du réservoir, vers le P
 </figure>
 
 
-Le truc important lors de la conduite du virage c'est de mettre un maximum du poids du pilote à **l'intérieur du virage** et de repousser la moto pour la laisser verticale. Oui, bien sûr, elle va prendre de l'angle mais bon, tu saisis l'idée.
+Le truc important lors de la conduite du virage c'est de mettre un maximum du poids du pilote à **l'intérieur du virage**, sur l'**avant de la moto** et de **repousser** cette dernière pour la laisser verticale. Oui, bien sûr, elle va prendre de l'angle mais bon, tu saisis l'idée.
 
 Note bien que j'ai pas dit de mettre le pilote "en bas", j'ai dit "à l'intérieur", donc écarté le plus possible de la moto. C'est pour ça qu'on dit "menton au guidon" et "casque dans le rétro".
 
@@ -711,7 +714,7 @@ Dorénavant, à vitesse de passage identique, la moto prend moins d'angle. Tu es
 
 **Objectif à la fin de la session**
 
-* Dans au moins un virage ton buste est sur l'avant et à **l'intérieur du virage**. Ta tête est écartée, sur le côté de la moto, le bras intérieur au virage est plié, tu as le menton au guidon et l'autre bras est tendu sur le réservoir, les épaules ouvertes vers **l'intérieur du virage**.
+* Dans au moins un virage ton buste est sur **l'avant** et à **l'intérieur du virage**. Ta tête est écartée, sur le côté de la moto, le bras intérieur au virage est plié, tu as le menton au guidon et l'autre bras est tendu sur le réservoir, les épaules ouvertes vers **l'intérieur du virage**.
 * Tu dois sentir que l'ensemble du virage ressemble à la séquence suivante :
   + Tu freines en visant le PMSA, roues parallèles et à 1 cm de la ligne
   + Au PMSA, tu claques la moto sur l'angle rapidement, tu pousses la poignée intérieure en regardant le PC

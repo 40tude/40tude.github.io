@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-06-08 10:06:50
+last_modified_date: 2026-06-08 11:43:51
 ---
 
 
@@ -537,9 +537,12 @@ Yes, but no. It's fine when you're stopping at a red light, but on track you nee
 
 * *I can't do it all, it's too complicated!*
 OK, no problem, we adapt... Pick a corner where there's no downshifting needed. At the end of a short straight, for example. That way you can focus **only** on the brake lever and 3-phase braking.
+1. You chop the throttle **and**, at the same time, you start front breaking
 1. The pads kiss the discs and the weight transfer happens.
 1. Once that's in place, you squeeze the brake lever very hard and smoothly (think of the sponge).
-1. At the end, you release the brake lever **gen-tly** to precisely adjust the speed at which you pass through the TIP and quickly tip the bike in. At that point you have no brakes and no throttle, you're in the neutral zone.
+1. At the end, you release the brake lever **gen-tly** to precisely adjust the speed at which you pass through the TIP
+1. You quickly tip the bike in.
+1. At that point you have no brakes and no throttle, you're in the neutral zone.
 
 * Once that's in place, take a corner where you need to downshift 1 gear (not 2, just 1). That should be fine because you'll downshift right away. Don't be afraid of downshifting too early. It's really "I chop the throttle, I downshift."
 When that's sorted, you need to tackle a corner where you have to downshift multiple gears. At first, give yourself margin, move your BP back and be careful not to forget to brake just because you're concentrating on the gear changes. If things go sideways, don't pull the clutch in, brake and at the very end, pull the clutch lever to avoid stalling, then try again next lap.
@@ -553,7 +556,7 @@ Bingo! Because you released the clutch too quickly after downshifting.
 Regarding the rear wheel lifting, if it does happen, slightly ease off the brake lever (easier to write than to live through, I know). Most importantly, ask yourself whether you didn't jerk the brake lever and whether you're not too far forward, pubic bone glued to the tank (by the way — can you confirm you're clamping the tank with your knees? That should prevent you from ending up pressed against the tank).
 
 * *And what if I mess up and arrive way too fast into the corner? What do I do?*
-OK, you're going to have to take my word for it. Trust in me, just in me... Release the brakes, turn your chin and shoulders hard toward the AP and lean everything. It'll work.
+OK, you're going to have to take my word for it. Trust in me, just in me... 🎶 Release the brakes, turn your chin and shoulders hard toward the AP and lean everything. It'll work.
 What's for sure is that if you add brake while leaned over, the bike will stand up. If it's still only slightly leaned and you add brake, you won't be able to add lean (or you'll crash. Brake pressure and lean angle are inversely proportional). What's the alternative? There's no other choice. You turn your head toward the apex, release the brakes, and commit to the corner with whatever speed you have. Yes, I know, it's easier to write than to live through, but that's reality.
 
 * *How do I know I'm starting to reach the limits?*
@@ -589,11 +592,11 @@ That said, there are still a few "details" to sort out:
 
 You can see we're hitting a limit here, a glass ceiling, because you can't go further than the peg. So we're going to dedicate this session to improving what's called corner technique. The idea is to give ourselves the means to exit faster and faster while still, of course, running the wheels over the TIP, AP, and EP.
 
-Physics dictates that if you want to go faster through a corner, you need to counterbalance the centrifugal force pushing the bike to the outside. To do that, you need to put more mass on the **inside of the turn**. The first instinct was to lean the bike, but you quickly hit the limits of that approach.
+Physics dictates that if you want to go faster through a corner, you need to counterbalance the centrifugal force pushing the bike to the outside. To do that, you need to put more mass on the **inside of the turn** and the **front of the bike**. The first instinct was to lean the bike, but you quickly hit the limits of that approach.
 
 In order to start rolling on the throttle earlier to exit faster (that's our only goal), we have no choice but to "lean" the rider to the inside of the turn and keep the bike more upright.
 
-This might be a bit frustrating, but due to time constraints, we're only going to do half of the exercise here, focusing ONLY on the upper body. So no, this is not when you're going to drag a knee.
+This might be a bit frustrating, but due to time constraints, we're only going to do half of the exercise here, focusing **only** on the upper body. So no, this is not when you're going to drag a knee.
 
 Here's what I suggest you do in a corner where you feel comfortable:
 
@@ -618,7 +621,7 @@ No, you're not going toward the tank, you're going to the side of the tank, towa
 </figure>
 
 
-The important thing while driving the corner is to put as much of the rider's weight on the **inside of the turn** as possible and push the bike away to keep it upright. Yes, of course it'll lean, but you get the idea.
+The important thing while driving the corner is to put as much as possible of the rider's weight on the **inside of the turn**, on the **front of the bike**  and to **push away** the later to keep it upright. Yes, of course it'll lean, but you get the idea.
 
 Note that I didn't say to put the rider "down". I said "to the inside," meaning as far away from the bike as possible. That's why we say "chin at the handlebar" and "helmet in the mirror."
 
@@ -628,7 +631,7 @@ From now on, at the same speed, the bike leans less. You're safer. You can affor
 
 **Goal at the end of the session**
 
-* In at least one corner your torso is forward and to the **inside of the turn**. Your head is offset, on the side of the bike, the inside arm is bent, you have your chin at the handlebar, and the other arm is extended on the tank, shoulders open toward the inside of the turn.
+* In at least one corner your torso is **forward** and to the **inside of the turn**. Your head is offset, on the side of the bike, the inside arm is bent, you have your chin at the handlebar, and the other arm is extended on the tank, shoulders open toward the inside of the turn.
 * You should feel that the entire corner resembles the following sequence:
   + You brake while aiming at the TIP, wheels parallel and 1/3 inch from the line.
   + At the TIP, you snap the bike onto its lean quickly, pushing the inside handlebar while looking at the AP.
