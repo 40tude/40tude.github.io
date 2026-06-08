@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-06-07 10:44:17
+last_modified_date: 2026-06-08 10:06:50
 ---
 
 
@@ -351,7 +351,7 @@ We'll use the magnificent diagram below:
 
 
 You're arriving from the left side of the diagram, throttle closed, braking completed. You've taken your fingers off the brake lever. The bike is 1/3 inch from the white line, upright **and** parallel to it.
-**Watch out**, it's important to arrive at the TIP while hugging the white line. In other words, you don't arrive at the TIP on a diagonal: front wheel on the cone but rear wheel in the middle of the track, for example (I'm exaggerating of course). For instance, if you're exiting a left-hand turn and approaching a right-hand turn, you cross the track and reach the white line well BEFORE the TIP. Then you hug the white line to arrive at the TIP parallel to it (both wheels are 1/3 inch from the white line).
+**Watch out**, it's important to arrive at the TIP while hugging the white line. In other words, you don't arrive at the TIP on a diagonal: front wheel on the cone but rear wheel in the middle of the track, for example (I'm exaggerating of course). For instance, if you're exiting a left-hand turn and approaching a right-hand turn, you cross the track and reach the white line well **before** the TIP. Then you hug the white line to arrive at the TIP parallel to it (both wheels are 1/3 inch from the white line).
 
 You're going to enter what's called the neutral phase (no brakes, no throttle).
 
@@ -359,7 +359,7 @@ You're already looking at the AP you want to reach. Yes, I confirm. The bike is 
 
 Because the AP is far away, you make the effort to stay wide and not cut toward the inside curb. It feels reassuring to hug the inside of the turn, but **it's a mistake** that everyone makes at the beginning.
 
-You tip the bike in. You reach the **P**ivot **P**oint (PP). There, you make the bike turn. This happens by consciously (or not) pushing on the inside handlebar. This is where you have the most lean angle (and where one day you'll drag a knee). Nothing bad can happen because you're not braking and you're not on the throttle either.
+You tip the bike in. You reach the **P**ivot **P**oint (PP). There, you make the bike turn. This happens by consciously (or not) pushing on the inside handlebar. This is where you have the lowest speed, the most lean angle and where, one day, you'll drag a knee. Nothing bad can happen because you're not braking and you're not on the throttle either.
 
 You're still off the throttle. The bike is pivoting, be patient, be patient... This is very hard at first, because since you don't have enough speed, you'll tend to want to open the throttle too early. No, no, you wait, you let the bike turn.
 
@@ -418,7 +418,7 @@ That speed depends solely on your ability to be 100% throttle as early as possib
 Both conditions need to be met, and that's why it's easier to miss an AP than to nail one.
 
 * Of all the reference points we've discussed, the AP is the most important.
-It's the same for all riders regardless of their level. It will never change, it depends on the corner, not on the rider. The others, TIP, PP, and EP will evolve with your level. For example, the faster you enter a corner, the earlier your TIP will be. That said, for today, make the effort to use the full width of the track and respect the cones. Really go get the TIP on the outside at the entry and really go get the EP on the outside at the exit. This will "open up" the corner for you and, more importantly, allow your brain to grasp the full width of the track. Later you'll learn that in such-and-such a corner you need to enter at 3/4 track width, or that in another one you need to exit at mid-track. But we're not there yet. For now we're in "textbook" mode we'll fine-tune later.
+At our level we can say it's the same for all riders regardless of their level. It will never change, it depends on the corner, not on the rider. The others, TIP, PP, and EP will evolve with your level. For example, the faster you enter a corner, the earlier your TIP will be. That said, for today, make the effort to use the full width of the track and respect the cones. Really go get the TIP on the outside at the entry and really go get the EP on the outside at the exit. This will "open up" the corner for you and, more importantly, allow your brain to grasp the full width of the track. Later you'll learn that in such-and-such a corner you need to enter at 3/4 track width, or that in another one you need to exit at mid-track. But we're not there yet. For now we're in "textbook" mode we'll fine-tune later.
 
 * *Why do you insist so much on arriving at the TIP while hugging the white line?*
 Let's use the figure below, in which you're arriving from the bottom. You've exited a right-hand turn that was followed by a short straight. So at the exit of the first corner you were on the far left of the track, and now you need to negotiate the next corner, which turns left.
@@ -444,12 +444,12 @@ Actually, the TIP corresponds to the moment you start leaning the bike, while th
 Welcome to the club! The thing is, we're not suicidal, so we brake, we brake too much, and after tipping the bike in, we don't have enough momentum to get past the PP. On the next lap, change only one thing at a time (this is important if you want to be able to figure out what works, or doesn't, for you). For example, you could try this:
     * Make sure you do **NOT** cut to the apex too early. If the corner has a large radius, it can be very tempting. You need to pass the TIP, lean the bike, but then "take your time" sinking into the corner before pivoting the bike "when you feel it." Seen from above, your line should look like a "V" (especially if you have a big-bore bike).
     * If you have a 1000, try downshifting one fewer gear when you brake. You'll have less engine braking and a higher entry speed. You'll exit the corner on the engine's torque.
-    * What we're trying to do is increase our entry speed so that we can reach PP and rotate the bike there. So, **think about it**... My suggestion is not to change anything. Keep your BP (break point), because you know it well and you know that "it works." On the other hand, finish your braking a little earlier and lean the bike in a little earlier while carrying a bit more speed. Be careful: be committed, not reckless. Make the change gradually. Move the **TIP** by one or two bike lengths and increase your speed by 1 mph (yeah, yeah, I know there's painter's tape over the speedometer and you can't really see anything, but you still have a rough idea of the speed range). That way, you'll be able to reach **PP** carrying enough speed to make the bike rotate properly.
+    * What we're trying to do is increase our entry speed so that we can reach PP and rotate the bike there. So, **think about it**... My suggestion is not to change anything. Keep your BP (break point), because you know it well and you know that "it works." On the other hand, finish your braking a little earlier and lean the bike in a little earlier while carrying a bit more speed. Be careful: be committed, not reckless. Make the change gradually. Move the **TIP** by one or two bike lengths and increase your speed by 1 mph (yeah, yeah, I know there's painter's tape over the speedometer and you can't really see anything, but you get the idea). That way, you'll be able to reach **PP** carrying enough speed to make the bike rotate properly.
 
 
 * *It's weird, I'm not scared, everything feels fine, but I always pass 1 meter from the AP.*
 It's probably because your tip-in or your pivot is **way too slow**. You can try the following:
-    * Don't change anything, but make sure you're looking at the AP with **your chin**. Don't look at the scene, designate your target. Sure, you know there are cones, a corner, a guy ahead of you, etc. You have that information in your head, but it falls outside your field of vision because you're designating your target with **your chin**. I say chin to force you to turn your head **and** your shoulders toward the AP.
+    * Don't change anything, but make sure you're looking at the AP with **your chin**. Don't look at the scene, **designate your target**. Sure, you know there are cones, a corner, a guy ahead of you, etc. You have that information in your head, but it falls outside your field of vision because you're designating your target with **your chin**. I say chin to force you to turn your head **and** your shoulders toward the AP.
     * Make the effort to open your shoulders, to orient them toward the inside of the turn. You can perfectly well turn your head toward the AP, point your chin at it **but** keep your shoulders parallel to the handlebars. That's **NOT** what we want here. You need to point your chin at your target **and**, somewhat like Robocop, your shoulders rotate with your head. You need to feel your inside arm bending and the outside arm extending.
     * Brake a bit earlier and do your tip-in as usual but slightly before the TIP. When I say "slightly" I mean the equivalent of 1 or 2 bike lengths. Then on the next lap you adjust, but fundamentally your tip-in is too slow.
     * Don't change anything but be more incisive, faster when you pivot the bike. For that, all you need to do (easier said than done) is push harder on the inside handlebar. You can also try putting a bit more weight on the inside peg by leaning toward the **inside of the turn**, consciously pressing down on it with your foot.
@@ -458,14 +458,30 @@ It's probably because your tip-in or your pivot is **way too slow**. You can try
 That's because you're not accelerating hard enough. It's the acceleration that pushes the bike toward the outside. To give you an idea, put your bike on its sidestand. Go behind the bike. At that lean angle, you can easily have all the power to the rear wheel. I didn't say be at the throttle **stop** and wait for the cavalry. No, I said be at the throttle **stop** **and** have all the ponies at the tire. Anyway, you can try 2 or 3 things:
     * Are you sure you're aiming at the EP and not at some point 3/4 of the way across the track? The bike goes where you look.
     * Are you sure you never stop opening the throttle?
-    * Roll on the throttle cable at the same speed as before but start accelerating earlier. You'll spend less time with neither brakes nor throttle. You'll reduce the neutral phase. That's good, that's what we want.
+    * Roll on the throttle cable at the same speed as before but, after PP and before AP, start accelerating earlier. You'll spend less time with neither brakes nor throttle. You'll reduce the neutral phase. That's good, that's what we want.
     * Start rolling on the throttle cable as before but roll it on faster and faster, and make sure you reach the stop. At first, you'll transfer the load to the rear. The bike will imperceptibly lift its nose, settling into its ideal position with 40% weight on the front and 60% on the rear. Once that's set and the bike is loaded, you can roll on faster and faster while standing the bike up. Yes, you could say we accelerate in 2 phases:
         1. I settle the bike
         1. Big handful
 
 
-
-
+{: .note-title }
+> Note:
+>
+> Let's take an example. During the first phase, acceleration is linear: you go from 0% to 5% throttle in one second (this is an example). Each additional percentage is therefore reached every 1/20th of a second. Yes, I know this is all very theoretical, but you get the idea: for one second, you roll the throttle at a constant rate to reach 5% throttle.
+>
+> The second phase follows an exponential progression. You go from 5% to 100% throttle in one second as well, but unlike the first phase, the rate of increase builds progressively: the further along you are, the faster the throttle opens. In other words: for one second, you roll the throttle faster and faster until you hit the **stop**.
+>
+> The key takeaway is that you spend as much time reaching the first 5% of throttle as you do going from 5% to 100%.
+>
+> **Warning.** In the second phase, even though you are rolling on harder and harder as the bike stands up, it is essential that the throttle input and the rear wheel's rotational speed stay "in sync."
+>
+> Again, let's use an example to make this concrete. Imagine a 1000cc bike coming out of a corner, in third gear, at low speed. The rider then opens the throttle to 100%.
+>
+> The bike will not respond to that input immediately. The engine is under-revving. However, the engine starts to pick up revs and tries to meet the demand of the throttle.
+>
+> On a high-displacement machine, the available torque is such that at some point the rear tire will exceed its grip limit and start to spin. Without Traction Control, the engine then revs very quickly since the rear wheel is no longer properly loaded. The rider is caught off guard, chops the throttle, the rear tire hooks back up, and he gets highsided.
+>
+> This risk decreases with engine displacement (virtually non-existent on a 300cc, for example). It also explains why you need to downshift enough before the corner, avoid lugging the engine, and keep the bike on the boil.
 
 
 
