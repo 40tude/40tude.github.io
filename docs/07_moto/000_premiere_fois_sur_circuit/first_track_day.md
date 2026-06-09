@@ -9,7 +9,7 @@ parent: "Motos"
 nav_order: 1
 math: mathjax
 date:               2023-04-17 11:45:00
-last_modified_date: 2026-06-08 11:43:51
+last_modified_date: 2026-06-09 09:00:35
 ---
 
 
@@ -419,6 +419,12 @@ Both conditions need to be met, and that's why it's easier to miss an AP than to
 
 * Of all the reference points we've discussed, the AP is the most important.
 At our level we can say it's the same for all riders regardless of their level. It will never change, it depends on the corner, not on the rider. The others, TIP, PP, and EP will evolve with your level. For example, the faster you enter a corner, the earlier your TIP will be. That said, for today, make the effort to use the full width of the track and respect the cones. Really go get the TIP on the outside at the entry and really go get the EP on the outside at the exit. This will "open up" the corner for you and, more importantly, allow your brain to grasp the full width of the track. Later you'll learn that in such-and-such a corner you need to enter at 3/4 track width, or that in another one you need to exit at mid-track. But we're not there yet. For now we're in "textbook" mode we'll fine-tune later.
+
+* Respect the neutral phase. That is difficult. What will probably happen at first is that you'll brake too much and, by the time you reach PMSA, you won't have enough speed left to reach PV and rotate the bike there. In reality, we all tend to want to reach our minimum speed at PMSA. It feels reassuring, but it's actually a mistake. The lowest speed of the corner should be reached at PV.
+Depending on the corner, there is still some distance to cover between PMSA and PV. Therefore, your speed at PMSA must be high enough to allow you to safely reach PV with the throttle closed and without using the brakes.
+Once you arrive at PV, at the speed at which you feel comfortable rotating the bike, you initiate the turn and rotate the motorcycle until its wheels are aligned with the line connecting PC and PS. Then, and only then, can you begin to apply the throttle.
+The trap is arriving at PMSA at a speed that already feels slow enough to rotate the bike. The problem is that you still have the PMSA-to-PV distance to cover using only engine braking, since the throttle remains closed. If your speed is already too low at PMSA, the bike will no longer carry enough momentum to reach PV correctly.
+Put another way, it helps—although it is not easy—to think of the braking phase as consisting of two distinct parts. The first part uses both the brakes and engine braking to bring you to PMSA. The second part uses only engine braking and carries you from PMSA to PV.
 
 * *Why do you insist so much on arriving at the TIP while hugging the white line?*
 Let's use the figure below, in which you're arriving from the bottom. You've exited a right-hand turn that was followed by a short straight. So at the exit of the first corner you were on the far left of the track, and now you need to negotiate the next corner, which turns left.

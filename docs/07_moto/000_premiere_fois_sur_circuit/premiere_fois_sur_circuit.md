@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-08 11:43:51
+last_modified_date: 2026-06-09 09:00:35
 ---
 
 
@@ -161,7 +161,7 @@ Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable
 
 **Idée d'entraînement sur la route avant de venir**
 
-1. Conduire avec la partie la plus large des tes pieds sur les repose-pieds
+1. Conduire avec la partie la plus large de tes pieds sur les repose-pieds
 
 
 
@@ -400,22 +400,23 @@ On va utiliser le formidable schéma ci-dessous :
 </div>
 
 
-Tu arrives par la gauche du schéma, tu es gaz coupé, tu as terminé ton freinage. Tu as retiré tes doigts du levier de frein. La moto est à 1 cm de la ligne blanche, verticale **et** parallèle à cette dernière.
+Tu arrives par la gauche du schéma. Compte tenu de notre niveau, au PMSA tu es gaz coupé et tu as terminé ton freinage. Tu as retiré tes doigts du levier de frein. La moto est à 1 cm de la ligne blanche, verticale **et** parallèle à cette dernière.
+
 **Attention**, il est important d'arriver au PMSA en longeant la ligne blanche. Autrement dit, tu n'arrives pas au PMSA en diagonale : la roue AV sur le cône mais la roue AR au milieu de la piste par exemple (j'exagère bien sûr). Par exemple, si tu sors d'un virage à gauche et que tu rejoins un virage à droite, tu traverses la piste et tu rejoins la ligne blanche bien **avant** le PMSA. Ensuite tu longes la ligne blanche pour arriver au PMSA en étant parallèle à cette dernière (tes roues sont toutes les 2 à 1 cm de la ligne blanche).
 
 Tu vas rentrer dans ce que l'on appelle la phase neutre (pas de frein, pas d'accélérateur)
 
-Tu regardes déjà le PC que tu veux rejoindre. Oui, oui je confirme. La moto va dans une direction et toi tu regardes dans une autre.
+Tu es au PMSA mais tu regardes déjà le PC que tu veux rejoindre. Oui, oui je confirme. La moto va dans une direction (vers PV sur le schéma) et toi tu regardes dans une autre (vers PC).
 
 Comme le PC est loin tu fais l'effort de rester large et de ne pas rejoindre le vibreur, qui est à l'intérieur du virage. C'est rassurant d'aller se coller à l'intérieur du virage mais **c'est une bêtise** qu'on fait tous au début.
 
 Tu mets la moto sur l'angle. Tu arrives sur le point de pivot (PV). Là, tu fais pivoter la moto. Cela se fait en poussant consciemment (ou non) sur la poignée intérieure au virage. C'est à cet endroit que tu as le moins de vitesse, le plus d'angle et qu'un jour tu mettras le genou au sol. Il ne peut rien arriver de fâcheux car tu ne freines pas et tu n'accélères pas non plus.
 
-Tu es toujours gaz coupé. La moto pivote, tu es patient, tu es patient... C'est très dur au début, car comme tu n'as pas assez de vitesse, tu vas avoir tendance à vouloir ouvrir les gaz trop tôt. Non, non, tu attends, tu fais tourner la moto.
+Tu es toujours gaz coupé. La moto pivote, tu es patient, tu es patient... C'est très dur au début, car comme tu n'as pas assez de vitesse, tu vas avoir tendance à vouloir ouvrir les gaz trop tôt. Non, non, non. Tu attends, tu fais tourner la moto.
 
-Quand la moto a suffisamment pivoté, tu es écarté du vibreur et tes roues sont dans la direction qui relie le PC au PS. **C'est LE truc important**.
+Quand la moto a suffisamment pivoté, tu es un peu après PV, tu es encore "loin" du vibreur et tes roues sont dans la direction qui relie le PC au PS. **C'est LE truc important**.
 
-Quand les roues sont bien alignées, tu arrêtes de faire pivoter la moto et un peu avant le PC tu commences à ouvrir les gaz. Tu quittes donc la phase neutre. Au début, l'accélération doit être imperceptible. Faut à peine sentir le nez de la moto qui se relève.
+Quand les roues sont bien alignées, tu arrêtes de faire pivoter la moto et alors que tu n'a pas encore atteint PC, tu "scan" les points PC et PS et tu commences à ouvrir les gaz. Tu quittes donc la phase neutre. Au début, l'accélération doit être imperceptible. Faut à peine sentir le nez de la moto qui se relève.
 
 En revanche, une fois que tu as commencé à enrouler le câble d'accélérateur tu ne t'arrêtes plus. **Pas de filet de gaz !** Je répète, **pas de filet de gaz**. Au début tu enroules doucement puis de plus en plus vite au fur et à mesure que la moto se redresse.
 
@@ -430,17 +431,17 @@ En revanche, une fois que tu as commencé à enrouler le câble d'accélérateur
 
 Sinon, n'oublies pas, tu ne dois "toucher" le vibreur qu'une seule fois au niveau du PC.
 
-Au PC tu regardes le PS, c'est ton prochain objectif.
+Quand tu "sais" que tu vas rouler sur PC tu vise PS, c'est ton prochain objectif.
 
 Au PC tu as du gaz. La moto a moins d'angle qu'au PV. Plus tard, au PC, tu n'auras pas le genou au sol et tu auras déjà du gros gaz.
 
 Le truc **très important**, l'image que tu dois garder en tête...
 Si on arrête le temps quand la moto est au PC, si on la met verticale sur ses deux roues et qu'on met 100% gaz rien de fâcheux ne doit arriver. En effet, ses roues doivent être orientées vers le PS et pas vers le bac à gravier. Donc, si c'est bien le cas, qu'est ce qui va se passer ? La moto va juste sortir du virage comme une balle en toute sécurité dans la direction du PS. Regarde l'orientation, la direction de la flèche verte du dessin.
-En revanche, si au PC les roues ne sont pas bien alignées (en fait cela veut dire que la moto n'a pas fini de tourner) et si on met 100% gaz tu vas droit dans le gravier.
+En revanche, si au PC les roues ne sont pas bien alignées (en fait cela veut dire que la moto n'a pas fini de pivoté) et si on met 100% gaz tu vas droit dans le gravier.
 
 Relis ce paragraphe plusieurs fois si besoin. C'est important que tu gardes cette image mentale: au point de corde PC tu es déjà en train d'**enrouler** le cable d'accélérateur, les roues de la moto sont dans la bonne **direction** **ET** elles passent à **1 cm** de ce dernier.
 
-Tu passes le PC, tu tires sur la poignée intérieure au virage pour continuer à relever la moto (tu peux aussi "repousser" la moto avec les bras, ça revient au même en fait). Comme tu n'es pas 100% gaz au PC tu continues à enrouler. La moto est de plus en plus verticale.
+Tu passes le PC, tu tires sur la poignée intérieure au virage pour continuer à relever la moto (tu peux aussi "repousser" la moto avec les bras, ça revient au même en fait). Comme tu n'es pas 100% gaz au PC tu continues à enrouler. La moto est de plus en plus verticale elle s'écarte naturellement de la corde pour rejoindre PS.
 
 C'est l'accélération qui déporte la moto vers l'extérieur. Tu passes à 1 cm du PS, full gaz. La moto peut encore être légèrement anglée à la sortie de certains virages.
 
@@ -458,7 +459,7 @@ N'essaies pas de tout faire tout de suite. Là aussi, choisis tes batailles. Cho
 La température a évolué depuis ce matin donc la pression des pneus a, elle aussi, changé.
 
 * Ce qui compte c'est ta vitesse de sortie, **pas** ta vitesse d'entrée dans le virage.
-Il vaut mieux rentrer "doucement" et être 100% gaz en sortie plutôt que de se faire peur au freinage, de rater le PC et mettre 3H avant de pouvoir accélérer.
+Il vaut mieux rentrer "doucement" et être 100% gaz en sortie plutôt que de se faire peur au freinage, rater le PC et mettre 3H avant de pouvoir commencer à accélérer.
 
 * Je l'ai déjà dit, ce qui compte c'est la vitesse au bout de la ligne droite qui suit le virage.
 Cette dernière dépend uniquement de ta capacité à être 100% gaz le plus tôt possible, c'est à dire à ne pas louper le PC. Le reste c'est de la poésie et des discussions de comptoir.
@@ -467,7 +468,11 @@ Cette dernière dépend uniquement de ta capacité à être 100% gaz le plus tô
 Il faut que les deux conditions soient réunies et c'est pour cela qu'il est plus facile de louper un PC que de le réussir.
 
 * Des points de passage dont on a parlé, le PC est le plus important.
-À notre niveau on peut dire que c'est le même pour tous les pilotes quel que soit leur niveau. Il ne changera jamais, il dépend du virage pas des pilotes. Les autres, PMSA, PV et PS vont évoluer avec ton niveau. Par exemple plus tu vas rentrer vite dans un virage et plus ton PMSA va reculer (se faire tôt). Cela dit, aujourd'hui fais l'effort de bien utiliser toute la piste et de respecter les cônes. Va bien chercher le PMSA à l'extérieur en entrée et va bien chercher le PS à l'extérieur en sortie. Ça va "t'ouvrir" le virage et surtout ça va permettre à ton cerveau d'appréhender toute la largeur de la piste. Ensuite tu apprendras que dans tel ou tel virage il faut rentrer en étant 3/4 piste ou que dans tel autre faut sortir 1/2 piste. Mais bon on n'y est pas encore. Pour l'instant on est en mode "académique" on affinera plus tard.
+À notre niveau on peut considérer que c'est le même pour tous les pilotes qu'il ne change jamais, qu'il dépend du virage pas des pilotes. Les autres, PMSA, PV et PS vont évoluer avec ton niveau. Par exemple plus tu vas rentrer vite dans un virage et plus ton PMSA va reculer (se faire tôt). Cela dit, aujourd'hui fais l'effort de bien utiliser toute la piste et de respecter les cônes. Va bien chercher le PMSA à l'extérieur en entrée et va bien chercher le PS à l'extérieur en sortie. Ça va "t'ouvrir" le virage et surtout ça va permettre à ton cerveau d'appréhender toute la largeur de la piste. Ensuite tu apprendras que dans tel ou tel virage il faut rentrer en étant 3/4 piste ou que dans tel autre faut sortir 1/2 piste. Mais bon on n'y est pas encore. Pour l'instant on est en mode "académique" on affinera plus tard.
+
+* Respecte la phase neutre. Ça, c'est difficile. Ce qui va probablement se passer au début, c'est que tu vas trop freiner et qu'au PMSA tu n'auras pas assez de vitesse pour rejoindre le PV et y faire pivoter la moto. En réalité, nous avons tous tendance à vouloir atteindre notre vitesse minimale au PMSA. C'est rassurant, mais c'est une erreur. La vitesse la plus faible est atteinte au PV. Selon le virage, il reste une certaine distance à parcourir entre le PMSA et le PV. Il faut donc qu'au PMSA la vitesse soit suffisante pour permettre de rejoindre le PV en toute sécurité, gaz coupé et sans utiliser les freins. Une fois arrivé au PV, à la vitesse où on se sent capable de le faire, on fait pivoter la moto jusqu'à ce que ses roues soient alignées sur la trajectoire qui relie PC à PS. Ensuite, et seulement ensuite, on peut commencer à accélérer.
+Le piège consiste donc à arriver au PMSA avec une vitesse à laquelle on se sent capable de faire pivoter la moto. Or, il reste encore la distance PMSA-PV à parcourir, uniquement sur le frein moteur puisque les gaz sont coupés. Si la vitesse est déjà trop faible au PMSA, la moto n'aura plus suffisamment d'élan pour rejoindre correctement le PV.
+Dit encore autrement il faudrait, mais c'est pas facile, considérer que la phase de freinage se décompose en 2 grandes parties: une première phase qui met en oeuvre les freins et le frein moteur et qui nous amène au PMSA suivie d'une seconde phase qui n'utilise que le frein moteur et qui va du PMSA au PV.
 
 * *Pourquoi tu insistes autant pour qu'on arrive au PMSA en longeant la ligne blanche?*
 On va utiliser la figure ci-dessous dans laquelle on arrive du bas. On est sorti d'un virage qui tournait à droite et qui était suivit d'un petit bout de ligne droite. Donc, à la sortie du premier virage on était tout à gauche de la piste et on doit négocier le prochain virage, qui lui, tourne à gauche.
