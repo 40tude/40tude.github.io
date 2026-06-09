@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-09 09:00:35
+last_modified_date: 2026-06-09 11:02:56
 ---
 
 
@@ -137,7 +137,7 @@ Le fait de sortir peut-être très utile si tu te retrouves dans un paquet et qu
 **Remarques**
 
 * Tu es sûr d'avoir baissé la pression de tes pneus ?
-Si tu ne sais pas quelles pressions utiliser, tu mets 1.9 kg à l'AR et 2.1 à l'AV. Je ne suis pas sensé parler d'autre chose que de pilotage mais bon, là, ça peut jouer sur le pilotage. S'il y a un mécanicien et/ou un panneau avec la liste des pneus et les pressions va les voir. Tu peux utiliser [cette page](https://twotyres.co.uk/motorcycle-trackday-tyre-pressures/).
+Si tu ne sais pas quelles pressions utiliser, tu mets 1.9 kg à l'AR et 2.1 à l'AV. Je ne suis pas sensé parler d'autre chose que de pilotage mais bon, là, ça peut jouer sur le pilotage. S'il y a un mécanicien et/ou un panneau avec la liste des pneus et les pressions va les voir. Tu peux aussi utiliser [cette page](https://twotyres.co.uk/motorcycle-trackday-tyre-pressures/).
 
 * Si jamais un marshal vous accompagne sur cette première session, tu te débrouille pour être le premier à le suivre.
 C'est un peu comme à l'école de ski. Le dernier de la file qui suit le moniteur n'a pas du tout la trajectoire du premier et il n'apprend pas grand-chose.
@@ -148,7 +148,7 @@ Si oui, cela veut dire que tu es au-delà de tes 75%. Tu n'es pas en mode paniqu
 * Est-ce que tu as mal au cou ou aux épaules en fin de session ? Même raison que précédemment. Relax, zen, cool...Qu'est-ce que tu vas mettre en place dans la prochaine session pour atteindre la zénitude des moines Tibétains?
 
 * Est-ce que tu confirmes que tu n'as pas fait d'apnée pendant la session ?
-Si tu n'es pas sûr, lors de la prochaine session, fais l'effort de souffler dans ton casque dans les lignes droite (et dans les grandes courbes). Avec ton crayon, pose un rond sur le plan là où tu vas souffler lors de la prochaine session.
+Si tu n'es pas sûr, lors de la prochaine session, fais l'effort de souffler dans ton casque dans les lignes droite (et dans les grandes courbes). Avec ton crayon, pose des ronds sur le plan là où tu vas souffler lors de la prochaine session.
 
 * Est-ce que tu sais sur quel rapport tu es dans les différentes sections du circuit ?
 Peux-tu mettre des +1 et des -1 sur le plan ? Si tu ne sais pas ce n'est pas grave. Lors de la prochaine session essaies d'en retenir 2 ou 3, puis encore 2 ou 3 à la session suivante. L'idée c'est de se libérer la tête et, par exemple, de retenir qu'en bout de ligne droite tu rentres 2 rapports (-2). C'est plus facile à gérer que de vérifier que tu es bien en 2 dans le virage après la ligne droite (à l'occasion, sur ton tableau de bord, met du scotch bleu à peinture sur tout, sauf le compte tours. Ça évite d'être dérangé par des informations inutiles).
@@ -340,8 +340,8 @@ Lors de la prochaine session, quand tu auras sanglé ton casque, mets une main s
 
 
 **Idée d'entraînement sur la route avant de venir**
-1. Dans ton garage, la moto sur sa béquille latérale. Bras écartés, utilise tes cuisses et entraîne toi à lever et à reculer tes fesses. Quand c'est fait, garde les bras écartés et avec les abdos amène ta poitrine sur le réservoir. Fais le plusieurs jours de suite. Faut que ton corps et ta vision s'habituent.
-1. N'ai pas peur du ridicule. C'est pour la bonne cause. À 80, 110 ou 130, avec les abdos, abaisse ton torse, touche le réservoir, souffle fort, lève les yeux, serre les bras, serre les cuisses. Tu arrives à tenir la position? Tu serais pas mieux en reculant tes fesses?
+1. Dans ton garage, la moto sur sa béquille latérale. Bras écartés, utilise tes cuisses et entraîne toi à alléger et à reculer tes fesses. Quand c'est fait, garde les bras écartés et avec les abdos amène ta poitrine sur le réservoir. Fais le plusieurs jours de suite. Faut que ton corps et ta vision s'habituent.
+1. N'ai pas peur du ridicule, c'est pour la cause... À 80, 110 ou 130, avec les abdos, abaisse ton torse, touche le réservoir, souffle fort, lève les yeux, serre les bras, serre les cuisses. Tu arrives à tenir la position? Tu serais pas mieux en reculant tes fesses?
 
 
 
@@ -368,7 +368,7 @@ Lors de la prochaine session, quand tu auras sanglé ton casque, mets une main s
 
 Je ne veux pas te mettre la pression mais bon, de toutes les sessions c'est, de mon point de vue, la plus importante. Allez, comme ça, c'est dit et ça donne le ton pour le reste de l'après-midi.
 
-Sinon, j'espère que tu as été raisonnable sur la bouffe ce midi. Sérieux, fais "lite", tu feras mieux ce soir s'il y a vraiment besoin. J'espère aussi et que tu as pris le temps de te reposer car cet après-midi tu as 3 ou 4 sessions et encore pas mal de choses à découvrir. Cela dit, si je résume :
+Sinon, j'espère que tu as été raisonnable sur la bouffe ce midi. Sérieux, fais "lite", tu feras mieux ce soir s'il y a vraiment besoin. J'espère aussi et que tu as pris le temps de boire et de te reposer car cet après-midi tu as 3 ou 4 sessions et encore pas mal de choses à découvrir. Cela dit, si je résume :
 
 * Tu commences à connaître le circuit. En tout cas tu n'es plus surpris par tel ou tel virage, tu sais que là, il y a un pif-paf qui fait suer etc.
 * Dans certaines lignes droites (grandes ou petites) tu arrives à mettre l'accélérateur **en butée** ✊.
@@ -470,9 +470,7 @@ Il faut que les deux conditions soient réunies et c'est pour cela qu'il est plu
 * Des points de passage dont on a parlé, le PC est le plus important.
 À notre niveau on peut considérer que c'est le même pour tous les pilotes qu'il ne change jamais, qu'il dépend du virage pas des pilotes. Les autres, PMSA, PV et PS vont évoluer avec ton niveau. Par exemple plus tu vas rentrer vite dans un virage et plus ton PMSA va reculer (se faire tôt). Cela dit, aujourd'hui fais l'effort de bien utiliser toute la piste et de respecter les cônes. Va bien chercher le PMSA à l'extérieur en entrée et va bien chercher le PS à l'extérieur en sortie. Ça va "t'ouvrir" le virage et surtout ça va permettre à ton cerveau d'appréhender toute la largeur de la piste. Ensuite tu apprendras que dans tel ou tel virage il faut rentrer en étant 3/4 piste ou que dans tel autre faut sortir 1/2 piste. Mais bon on n'y est pas encore. Pour l'instant on est en mode "académique" on affinera plus tard.
 
-* Respecte la phase neutre. Ça, c'est difficile. Ce qui va probablement se passer au début, c'est que tu vas trop freiner et qu'au PMSA tu n'auras pas assez de vitesse pour rejoindre le PV et y faire pivoter la moto. En réalité, nous avons tous tendance à vouloir atteindre notre vitesse minimale au PMSA. C'est rassurant, mais c'est une erreur. La vitesse la plus faible est atteinte au PV. Selon le virage, il reste une certaine distance à parcourir entre le PMSA et le PV. Il faut donc qu'au PMSA la vitesse soit suffisante pour permettre de rejoindre le PV en toute sécurité, gaz coupé et sans utiliser les freins. Une fois arrivé au PV, à la vitesse où on se sent capable de le faire, on fait pivoter la moto jusqu'à ce que ses roues soient alignées sur la trajectoire qui relie PC à PS. Ensuite, et seulement ensuite, on peut commencer à accélérer.
-Le piège consiste donc à arriver au PMSA avec une vitesse à laquelle on se sent capable de faire pivoter la moto. Or, il reste encore la distance PMSA-PV à parcourir, uniquement sur le frein moteur puisque les gaz sont coupés. Si la vitesse est déjà trop faible au PMSA, la moto n'aura plus suffisamment d'élan pour rejoindre correctement le PV.
-Dit encore autrement il faudrait, mais c'est pas facile, considérer que la phase de freinage se décompose en 2 grandes parties: une première phase qui met en oeuvre les freins et le frein moteur et qui nous amène au PMSA suivie d'une seconde phase qui n'utilise que le frein moteur et qui va du PMSA au PV.
+* Respecte la phase neutre. Ça, c'est difficile. Au début, ce qui va probablement se passer, c'est que tu vas trop freiner et qu'au PMSA tu n'auras plus assez de vitesse pour rejoindre le PV et y faire pivoter la moto. Nous avons tous tendance à vouloir atteindre notre vitesse minimale au PMSA. C'est rassurant, mais c'est une erreur : la vitesse la plus faible du virage doit être atteinte au PV. Comme il reste une certaine distance à parcourir entre le PMSA et le PV, la vitesse au PMSA doit être suffisante pour rejoindre le PV en toute sécurité, gaz coupé et sans utiliser les freins. Une fois arrivé au PV, à la vitesse où l'on se sent capable de faire pivoter la moto, on la fait tourner jusqu'à ce que ses roues soient alignées sur la trajectoire reliant PC à PS. Ensuite, mais tout de suite après, on peut commencer à accélérer. Une façon utile de voir les choses est de considérer que le freinage se décompose en deux phases. La première utilise les freins et le frein moteur pour amener la moto jusqu'au PMSA. La seconde, qui correspond à la phase neutre, n'utilise que le frein moteur pour rejoindre le PV. Si la vitesse est déjà trop faible au PMSA, la moto n'aura plus suffisamment d'élan pour atteindre correctement le PV.
 
 * *Pourquoi tu insistes autant pour qu'on arrive au PMSA en longeant la ligne blanche?*
 On va utiliser la figure ci-dessous dans laquelle on arrive du bas. On est sorti d'un virage qui tournait à droite et qui était suivit d'un petit bout de ligne droite. Donc, à la sortie du premier virage on était tout à gauche de la piste et on doit négocier le prochain virage, qui lui, tourne à gauche.
@@ -511,7 +509,7 @@ C'est sans doute parce que la mise sur l'angle ou le pivot sont **beaucoup trop 
 C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui déporte la moto vers l'extérieur. Pour te donner une idée, mets ta moto sur béquille latérale. Passe derrière la moto. Avec cet angle-là tu peux facilement avoir toute la puissance à la roue arrière. Je n'ai pas dit être **en butée** de gaz et attendre la cavalerie. Non, non, je dis être **en butée** de gaz **et** avoir tous les canassons au pneu. Quoiqu'il en soit, tu peux essayer 2 ou 3 choses :
     * Es-tu sûr de bien viser le PS et pas un point au 3/4 de la piste à l'extérieur ? La moto va là où tu regardes.
     * Es-tu sûr qu'à aucun moment tu n'arrêtes pas d'ouvrir les gaz ?
-    * Enroule le câble d'accélérateur à la même vitesse qu'avant mais, après PP et avant PC, commence à accélérer plus tôt. Tu vas donc passer moins de temps sans frein ni gaz. Tu vas réduire le temps de la phase neutre. C'est bien, c'est ce que l'on cherche à faire.
+    * Enroule le câble d'accélérateur à la même vitesse qu'avant mais, après PV et avant PC, commence à accélérer plus tôt. Tu vas donc passer moins de temps sans frein ni gaz. Tu vas réduire le temps de la phase neutre. C'est bien, c'est ce que l'on cherche à faire.
     * Commence à enrouler le câble d'accélérateur comme avant mais enroule-le de plus en plus vite et assure-toi d'atteindre la butée. En fait, au début tu vas transférer la charge vers l'arrière. La moto va relever son nez de manière imperceptible, elle va se retrouver dans sa position idéale avec 40% du poids à l'avant et 60% à l'arrière. Quand ça s'est fait et qu'elle est calée, tu peux enrouler de plus en plus vite tout en redressant la moto. Oui, on peut dire qu'on accélère en 2 phases :
         1. Je cale
         1. Grosse louche
