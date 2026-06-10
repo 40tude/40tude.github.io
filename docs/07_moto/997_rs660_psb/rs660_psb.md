@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-06-10 16:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-06-10 18:13:34
+last_modified_date: 2026-06-10 18:43:33
 ---
 
 
@@ -23,6 +23,8 @@ last_modified_date: 2026-06-10 18:13:34
 
 {{ page.description }}
 {: .lead }
+
+
 
 
 
