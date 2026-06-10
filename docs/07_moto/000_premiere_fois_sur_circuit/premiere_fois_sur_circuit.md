@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-10 08:11:06
+last_modified_date: 2026-06-10 09:32:33
 ---
 
 
@@ -209,7 +209,7 @@ Normal on ne fait jamais ça sur route. C'est nouveau. Encore une fois, le but e
 C'est une moto, ce n'est pas une Xbox. Donc, même quand on enroule jusqu'à être 100% gaz, il y a un temps avant que le moteur arrive en zone rouge. Tu es gaz grand ouvert et pourtant le moteur continue à prendre des tours. Un peu avant la zone rouge, c'est là que tu passes au rapport supérieur.
 
 * *Pourquoi tu dis toujours "**en butée**" ?*
-Parce que c'est ce qu'il faut que tu recherches. Il faut que tu sentes la **butée**, que tu ne peux pas aller plus loin. Si ce n'est pas le cas, tu peux avoir le "sentiment" d'être à fond alors qu'en fait ce n'est pas le cas. Donc bref, il faut que tu tournes la poignée de gaz jusqu'à la **butée**, tu auras alors la certitude d'être à fond et de ne pas pouvoir aller plus loin. Pense à t'entraîner en statique dans ton garage ou sur l'aire plane.
+Parce que c'est ce qu'il faut que tu recherches. Il faut que tu sentes la **butée**, que tu ne peux pas aller plus loin. Si ce n'est pas le cas, tu peux avoir le **sentiment** d'être à fond alors qu'en fait ce n'est pas le cas. Donc bref, il faut que tu tournes la poignée de gaz jusqu'à la **butée**, tu auras alors la **certitude** d'être à fond et de ne pas pouvoir aller plus loin. Pense à t'entraîner en statique dans ton garage ou sur l'aire plane.
 
 * *Je ne vais pas faire une roue arrière et m'en coller une ?*
 Non car l'accélération est sensée être pro-gre-ssi-veu. Tu ne vas pas faire du "tout ou rien" mais plutôt enrouler, enrouler, enrouler... Jusqu'à la **butée**.
@@ -408,7 +408,7 @@ Tu vas rentrer dans ce que l'on appelle la phase neutre (pas de frein, pas d'acc
 
 Tu es au PMSA mais tu regardes déjà le PC que tu veux rejoindre. Oui, oui je confirme. La moto va dans une direction (vers PV sur le schéma) et toi tu regardes dans une autre (vers PC).
 
-Comme le PC est loin tu fais l'effort de rester large et de ne pas rejoindre le vibreur, qui est à l'intérieur du virage. C'est rassurant d'aller se coller à l'intérieur du virage mais **c'est une bêtise** qu'on fait tous au début.
+Comme le PC est loin tu fais l'effort de rester large et de ne pas rejoindre le vibreur qui est à l'intérieur du virage. C'est rassurant d'aller se coller à l'intérieur du virage mais **c'est une bêtise** qu'on fait tous au début.
 
 Tu mets la moto sur l'angle. Tu arrives sur le point de pivot (PV). Là, tu fais pivoter la moto. Cela se fait en poussant consciemment (ou non) sur la poignée intérieure au virage. C'est à cet endroit que tu as le moins de vitesse, le plus d'angle et qu'un jour tu mettras le genou au sol. Il ne peut rien arriver de fâcheux car tu ne freines pas et tu n'accélères pas non plus.
 
@@ -470,7 +470,7 @@ Il faut que les deux conditions soient réunies et c'est pour cela qu'il est plu
 * Des points de passage dont on a parlé, le PC est le plus important.
 À notre niveau on peut considérer que c'est le même pour tous les pilotes qu'il ne change jamais, qu'il dépend du virage pas des pilotes. Les autres, PMSA, PV et PS vont évoluer avec ton niveau. Par exemple plus tu vas rentrer vite dans un virage et plus ton PMSA va reculer (se faire tôt). Cela dit, aujourd'hui fais l'effort de bien utiliser toute la piste et de respecter les cônes. Va bien chercher le PMSA à l'extérieur en entrée et va bien chercher le PS à l'extérieur en sortie. Ça va "t'ouvrir" le virage et surtout ça va permettre à ton cerveau d'appréhender toute la largeur de la piste. Ensuite tu apprendras que dans tel ou tel virage il faut rentrer en étant 3/4 piste ou que dans tel autre faut sortir 1/2 piste. Mais bon on n'y est pas encore. Pour l'instant on est en mode "académique" on affinera plus tard.
 
-* Respecte la phase neutre. Ça, c'est difficile. Au début, ce qui va probablement se passer, c'est que tu vas trop freiner et qu'au PMSA tu n'auras plus assez de vitesse pour rejoindre le PV et y faire pivoter la moto. Nous avons tous tendance à vouloir atteindre notre vitesse minimale au PMSA. C'est rassurant, mais c'est une erreur : la vitesse la plus faible du virage doit être atteinte au PV. Comme il reste une certaine distance à parcourir entre le PMSA et le PV, la vitesse au PMSA doit être suffisante pour rejoindre le PV en toute sécurité, gaz coupé et sans utiliser les freins. Une fois arrivé au PV, à la vitesse où l'on se sent capable de faire pivoter la moto, on la fait tourner jusqu'à ce que ses roues soient alignées sur la trajectoire reliant PC à PS. Ensuite, mais tout de suite après, on peut commencer à accélérer. Une façon utile de voir les choses est de considérer que le freinage se décompose en deux phases. La première utilise les freins et le frein moteur pour amener la moto jusqu'au PMSA. La seconde, qui correspond à la phase neutre, n'utilise que le frein moteur pour rejoindre le PV. Si la vitesse est déjà trop faible au PMSA, la moto n'aura plus suffisamment d'élan pour atteindre correctement le PV.
+* Respecte la phase neutre. Ça, c'est difficile. Au début, ce qui va probablement se passer, c'est que tu vas trop freiner et qu'au PMSA tu n'auras plus assez de vitesse pour rejoindre le PV et y faire pivoter la moto. Nous avons tous tendance à vouloir atteindre notre vitesse minimale au PMSA. C'est rassurant, mais c'est une erreur : la vitesse la plus faible du virage doit être atteinte au PV. Comme il reste une certaine distance à parcourir entre le PMSA et le PV, la vitesse au PMSA doit être suffisante pour rejoindre le PV en toute sécurité, gaz coupé et sans utiliser les freins. Une fois arrivé au PV, à la vitesse où l'on se sent capable de faire pivoter la moto, on la fait tourner jusqu'à ce que ses roues soient alignées sur la trajectoire reliant PC à PS. Tout de suite après, on peut commencer à accélérer. Une façon utile de voir les choses est de considérer que le freinage se décompose en deux phases. La première utilise les freins et le frein moteur pour amener la moto jusqu'au PMSA. La seconde, qui correspond à la phase neutre, n'utilise que le frein moteur pour rejoindre le PV. Si la vitesse est déjà trop faible au PMSA, la moto n'aura plus suffisamment d'élan pour atteindre correctement le PV.
 
 * *Pourquoi tu insistes autant pour qu'on arrive au PMSA en longeant la ligne blanche?*
 On va utiliser la figure ci-dessous dans laquelle on arrive du bas. On est sorti d'un virage qui tournait à droite et qui était suivit d'un petit bout de ligne droite. Donc, à la sortie du premier virage on était tout à gauche de la piste et on doit négocier le prochain virage, qui lui, tourne à gauche.
@@ -490,12 +490,12 @@ Comme on est toujours aussi lent, notre vitesse de mise sur l'angle n'a pas évo
 
 
 * *Pourquoi le point de pivot (PV) c'est pas le point de mise sur l'angle (PMSA)?*
-En fait, le PMSA correspond au moment où on commence à mettre la moto sur l'angle alors que le PV correspond vraiment au moment où on fait pivoter/tourner la moto. Plus le virage est serré plus PMSA et PV seront distincts. À l'instar du PF (point de freinage) le PV dépend du pilote, de comment il le sent etc.
+En fait, le PMSA correspond au moment où on commence à mettre la moto sur l'angle alors que le PV correspond au moment où on fait pivoter/tourner la moto. Plus le virage est serré plus PMSA et PV seront distincts. À l'instar du PF (point de freinage) le PV dépend du pilote, de comment il le sent etc.
 
 * *Oui mais moi, dans les virages qui ne sont pas des épingles mais plutôt des virages assez grands, après le PMSA, je dois remettre un peu de gaz car sinon la moto est complètement arrêtée et/ou "tombe" vers la corde.*
 Bienvenue au club! En fait, on est pas suicidaire donc on freine, on freine trop et après avoir fait basculer la moto, on a plus assez d'élan pour dépasser le PV. Au prochain tour ne change qu'une chose à la fois (c'est important si tu veux être capable de déterminer ce qui marche, ou pas, pour toi). Par exemple, tu peux essayer ça :
     * Assure-toi bien de ne **PAS** rejoindre la corde trop vite. Si le virage a un grand rayon cela peut être très tentant. Il faut que tu passes le PMSA, que tu mettes de l'angle que tu reste loin des vibreur intérieurs et que tu "perde du temps" à t'enfoncer dans le virage avant de faire pivoter la moto, "au moment où tu le sens". Vue de haut ta trajectoire doit ressembler à un "V" (surtout si tu as une grosse cylindrée).
-    * Si tu as un 1000, essaies de tomber un rapport de moins quand tu freines. Tu auras moins de frein moteur et une vitesse d'entrée plus importante. Tu sortiras du virage grâce au couple du moteur. Faudra absolument soigner l'enroulement de l'accélérateur (imperceptible au début puis de plus en plus vite alors que la moto se redresse).
+    * Si tu as un 1000, essaies de tomber un rapport de moins quand tu freines. Tu auras moins de frein moteur entre le PMSA et PV. Tu sortiras du virage grâce au couple du moteur. Il faudra absolument soigner l'enroulement de l'accélérateur (imperceptible au début puis de plus en plus vite alors que la moto se redresse).
     * Ce que l'on veut c'est augmenter notre vitesse d'entrée pour pouvoir rejoindre PV et y faire pivoter la moto. Du coup, **réfléchis**... Je te propose de ne rien changer, de garder ton PF parce que tu le connais et que tu sais que "ça passe". Par contre, termine ton freinage un peu plus tôt et mets la moto sur l'angle un peu plus tôt avec un peu plus de vitesse. Attention, il faut être volontaire mais pas suicidaire. Tu y vas progressivement. Tu décales le PMSA de 1 ou 2 motos de long et tu augmentes ta vitesse de 1 ou 2 km/h (oui oui je sais y a du scotch à peinture sur le compteur et tu vois rien mais bon tu saisis l'ordre de grandeur). Du coup tu pourras rejoindre PV avec suffisamment de vitesse.
 
 * *C'est bizarre, je n'ai pas peur, tout va bien mais je passe toujours à 1 m du PC.*
@@ -528,7 +528,7 @@ C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui dép
 >
 >Là aussi prenons un exemple pour fixer les idées. Imaginons un 1000 cm³ en sortie de virage, en troisième, à basse vitesse. Le pilote ouvre alors les gaz à 100 %.
 >
->La moto ne va pas immédiatement répondre à cette commande. Le moteur est en sous-régime. Toutefois, le moteur commence à prendre des tours et cherche à satisfaire la demande de la poignée de gaz.
+>La moto ne va pas immédiatement répondre à cette commande (la vitesse de rotation de la roue AR et la command de gaz ne sont pas "raccord"). Le moteur est en sous-régime. Toutefois, le moteur commence à prendre des tours et cherche à satisfaire la demande de la poignée de gaz.
 >
 >Sur une grosse cylindrée, le couple disponible est tel qu'à un certain moment le pneu arrière va dépasser sa capacité d'adhérence et commencer à déraper. Sans Traction Control, le moteur monte alors très vite dans les tours puisque la roue arrière n'est plus correctement chargée. Le pilote est surpris et il coupe, le pneu AR raccroche et il est satellisé.
 >
@@ -569,7 +569,7 @@ Ce que l'on va s'attacher à faire dans cette session c'est "construire" la phas
 
 En fait, il faut garder en tête que le but du freinage c'est de fixer la vitesse d'entrée dans le virage le plus rapidement possible. Ensuite, et après c'est terminé pour les préliminaires, il faut retenir qu'on a autant de précision dans les freins qu'on en a dans l'accélérateur. Dans un cas on règle la vitesse alors qu'elle augmente alors que dans l'autre on la règle alors qu'elle diminue.
 
-Pour illustrer la construction du freinage, prenons le cas du bout de la plus grande ligne droite du circuit. Voici la checklist que je te propose de suivre :
+Pour illustrer la construction du freinage, plaçons nous à la fin de la plus grande ligne droite du circuit. Voici la checklist que je te propose de suivre :
 
 * À 200 m avant le prochain PMSA (en tout cas beaucoup plus tôt que ce que tu as l'habitude de faire)
 * Tu roules à 1 cm et parallèlement à la ligne blanche (je ne sais même pas pourquoi je le rappelle)
@@ -746,7 +746,7 @@ Désolé... Va falloir te faire à l'idée d'avoir la tête au-dessus de l'herbe
 
 * Il faut que tu en profites pour commencer à accélérer plus tôt. Oui, oui tu restes dans tes 75% mais bon, **réfléchis** 2 minutes. Si la moto est plus verticale et si elle passe à la même vitesse (quoi, tu n'as pas encore mis le scotch bleu sur ton compteur et tu peux lire ta vitesse?) tu peux te permettre de commencer à enrouler le câble d'accélérateur plus tôt. Il n'y a pas de risque. L'empreinte du pneu est plus large qu'avant. Donc, fais-le car en accélérant plus tôt tu vas accélérer plus longtemps et tu vas donc augmenter ta vitesse de pointe au bout de la ligne droite suivante (toujours le même but).
 
-* Il faut que tu en profites pour, tout en restant dans tes 75%, commencer à augmenter ta vitesse d'entrée en virage. Ça c'est plus dur mais, si on y réfléchit un peu, c'est le symétrique du point précédent... Je m'explique.
+* Il faut que tu en profites pour, tout en restant dans tes 75%, commencer à augmenter ta vitesse d'entrée en virage. Ça c'est beaucoup plus dur mais, si tu **réfléchis** un peu, c'est le symétrique du point précédent... Je m'explique.
 Si à vitesse d'entrée constante, en mettant le poids du pilote à **l'intérieur du virage** tu gardes la moto plus verticale qu'avant, cela veut dire que tu as plus de grip. Donc, si tu veux retrouver, en entrée le même grip qu'avant, tu peux te permettre de rentrer plus vite.
 En revanche c'est difficile. En effet, on a tous une idée de la vitesse à laquelle "oh, putain, ça va pas passer". Du coup, soit on freine trop soit on a des mises sur l'angle qui prennent 2H.
 Je pense qu'il faut, dans l'ordre, augmenter la vitesse de mise sur l'angle **puis** augmenter la vitesse d'entrée.
@@ -754,7 +754,7 @@ Je pense qu'il faut, dans l'ordre, augmenter la vitesse de mise sur l'angle **pu
   En journée de roulage il faut choisir 2 virages de part et d'autre du circuit et sentir qu'on pousse la poignée intérieure. C'est ça qui permet de "claquer" la moto sur l'angle. Oui on peut appuyer sur les repose-pieds mais la mise sur l'angle est lente. Pour mettre rapidement la moto sur l'angle il faut contre braquer et pousser la poignée intérieure.
   Fais le test sur route, en ligne droite, à 80 km/h, lâche le guidon et pousse avec ton index la poignée gauche. Il se passe quoi ? Maintenant imagine un virage ou tu pousses avec la paume de ta main gauche ? Tant que tu pousses la moto se penche. Plus tu pousses fort plus elle se met sur l'angle rapidement. Faut expérimenter, faut en manger... Une vie, je te dis...
   + Quand la mise sur l'angle est plus rapide tu peux, progressivement, augmenter la vitesse d'entrée dans le virage. Progressif. Là aussi, il faut que le cerveau et le corps s'habituent. En stage de pilotage on fait un exercice qui s'appelle "sans frein, ni boite" dans lequel on fait des tours de circuit sans avoir le droit de changer de rapport ni de toucher aux freins. On module la vitesse uniquement avec l'accélérateur et tu te débrouilles comme tu veux mais tu rentres dans le virage avec la vitesse que tu as à ce moment-là... Engagez-vous qui disaient, engagez-vous.
-  En session de roulage il n'y a pas 36 solutions. Ne change qu'une chose à la fois. Par exemple garde tes PF et PMSA mais freine moins fort. Ou alors, avance ton PF de 1 ou 2 motos de long et garde ton PMSA ainsi que ta façon de freiner. À notre niveau, assure-toi bien de ne plus avoir les doigts sur le levier de freins quand tu mets la moto sur l'angle.
+  En session de roulage il n'y a pas 36 solutions. Ne change qu'une chose à la fois. Par exemple garde tes PF et PMSA mais freine moins fort. Ou alors, avance ton PF de 1 ou 2 motos de long (tu freines à juste après le panneau 100m au lieu de freine au panneau 100m) et garde ton PMSA ainsi que ta façon de freiner. À notre niveau, assure-toi bien de ne plus avoir les doigts sur le levier de freins quand tu mets la moto sur l'angle.
 
 * *Tu as dit qu'on a fait que la moitié de l'exercice. Je fais quoi moi maintenant si je veux aller plus loin ?*
 Si tu poses la question c'est que tu claques ta moto sur l'angle et que tu as une belle vitesse d'entrée en virage. On est d'accord ? Bon, ben si c'est effectivement le cas, pour passer encore plus vite dans le virage, il faut **rajouter du poids supplémentaire à l'intérieur du virage**. L'idée consiste alors à décaler tout le pilote sur la selle vers **l'intérieur du virage**. Tout ce que l'on a dit précédemment reste valable mais typiquement il cherche maintenant à caller sa raie des fesses dans le coin de la selle. Ensuite, il va rajouter encore de la masse en posant le pied intérieur au bout du cale-pied. Il va s'en servir comme d'une rotule lorsqu'il va ouvrir son genou. Ici, ce n'est pas "il nous faut plus de dents" mais "il nous faut plus de poids à l'intérieur".
