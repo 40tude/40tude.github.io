@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-06-10 16:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-06-10 18:46:22
+last_modified_date: 2026-06-10 18:48:45
 ---
 
 
@@ -48,9 +48,8 @@ last_modified_date: 2026-06-10 18:46:22
 
 
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
-<img
-    src="./assets/img00.webp"
+<figure style="max-width: 500px; margin: auto; text-align: center;">
+<img src="./assets/img00.webp"
     alt="TODO: Add a description"
     style="width: 100%; height: auto;"
     loading="lazy"
