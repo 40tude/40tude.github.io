@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 author: 40tude
 # lang: en-US
 layout: default
@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-05-29 14:03:30
+last_modified_date: 2026-06-10 18:13:34
 ---
 
 

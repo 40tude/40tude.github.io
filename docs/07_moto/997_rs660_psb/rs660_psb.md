@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-06-10 16:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-06-10 17:52:34
+last_modified_date: 2026-06-10 18:13:34
 ---
 
 
@@ -38,11 +38,11 @@ last_modified_date: 2026-06-10 17:52:34
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## TL;DR
+<!-- ## TL;DR
 {: .no_toc }
 
 * Point 1
-* Point 2
+* Point 2 -->
 
 
 
@@ -68,10 +68,10 @@ last_modified_date: 2026-06-10 17:52:34
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
-## Table of Contents
+<!-- ## Table of Contents
 {: .no_toc .text-delta}
 - TOC
-{:toc}
+{:toc} -->
 
 
 
@@ -83,15 +83,9 @@ last_modified_date: 2026-06-10 17:52:34
 
 
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Introduction
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit tincidunt. Nunc et laoreet ipsum. Fusce neque nisi, blandit vitae magna nec, sollicitudin commodo felis. Morbi a viverra lorem, ut sollicitudin lacus. Pellentesque euismod magna et enim fermentum tempor. Etiam vel sagittis mauris. Praesent dictum nisl sit amet tellus rhoncus mollis. Aenean nisi nibh, tincidunt at massa eget, luctus aliquet lectus. Mauris ac massa dolor. Sed fringilla tristique est. Suspendisse nec leo et magna tincidunt ultrices. Suspendisse lacinia leo sed congue ornare. Mauris congue eu dui posuere ultricies. Duis volutpat volutpat erat, ut consequat nisl bibendum gravida. Curabitur fringilla tincidunt auctor.
 
 <!-- Link to a video -->
-<figure style="max-width: 560px; margin: auto;">
+<!-- <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/MIeYz6aMBbk"
@@ -101,7 +95,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit t
     </iframe>
 </div>
 <figcaption style="text-align: center;">TODO: Add a legend</figcaption>
-</figure>
+</figure> -->
 
 
 
@@ -118,11 +112,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit t
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img01.webp"
-    alt="TODO: Add a description"
+    alt="On commence par libérer la tringlerie du sélecteur"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>On commence par libérer la tringlerie du sélecteur</figcaption>
 </figure>
 
 * Déviser les 5 vis Torx qui tiennent le carter de chaîne en plastique
@@ -134,11 +128,11 @@ On accède alors au pignon de sortie de boîte. Là, faut être patient et fort 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img02.webp"
-    alt="TODO: Add a description"
+    alt="Le pignon de sortie de boîte original du RS 660"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Le pignon de sortie de boîte original du RS 660</figcaption>
 </figure>
 
 
@@ -147,25 +141,25 @@ Pauv' bête. Complètement enduite de Loctite... Tu notes sur la photo qu'il y a
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img03.webp"
-    alt="TODO: Add a description"
+    alt="La vis du PSB"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>La vis du PSB</figcaption>
 </figure>
 
 
 
-La chaîne (neuve, 2_000 km) était pas mal détendue. J'ai pus extraire le pignon directement. Si besoin faudra peut être déserrer l'axe de la roue AR et faire avancer cette dernière pour gagner un peu de mou dans la chaîne.
+La chaîne (neuve, 2_000 km) était pas mal détendue. J'ai pu extraire le pignon directement. Si besoin faudra peut être desserrer l'axe de la roue AR et faire avancer cette dernière pour gagner un peu de mou dans la chaîne.
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img04.webp"
-    alt="TODO: Add a description"
+    alt="Le pignon est extrait. Note la quantité de Loctite sur les filets..."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Le pignon est extrait. Note la quantité de Loctite sur les filets...</figcaption>
 </figure>
 
 Avant d'insérer le nouveau pignon je prends un peu de temps pour enlever la graisse et faire un peu de nettoyage au niveau du pignon et du carter (pétrole désaromatisé, pinceau, chiffons).
@@ -175,11 +169,11 @@ Si besoin, afin de vérifier dans quel sens mettre le pignon, on peut mettre cô
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img05.webp"
-    alt="TODO: Add a description"
+    alt="Le nouveau pignon de sortie de boite à gauche, l'ancien à droite"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Le nouveau pignon de sortie de boite à gauche, l'ancien à droite</figcaption>
 </figure>
 
 Ensuite j'enlève la Loctite du pas de la vis (brosse métal), je remet un peu (j'ai dit un peu) de Loctite bleue 243 en bout de filet et je serre la vis au couple (50 Nm)
@@ -190,11 +184,11 @@ Il est temps de remonter mais avant on va faire la vaisselle... Pétrole désaro
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img06.webp"
-    alt="TODO: Add a description"
+    alt="Un cache pignon tout propre."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Un cache pignon tout propre.</figcaption>
 </figure>
 
 Pas de commentaire particulier pour le cache chaîne.
@@ -202,11 +196,11 @@ Pas de commentaire particulier pour le cache chaîne.
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img07.webp"
-    alt="TODO: Add a description"
+    alt="Un carter de chaîne tout propre aussi"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Un carter de chaîne tout propre aussi</figcaption>
 </figure>
 
 La mauvaise surprise... Au moment de remettre en place le cache pignon je réalise qu'une des vis est complètement "machouillée". C'est pas moi m'sieur, moi j'ai juste dévissé. Je sais pas ce qu'ils ont fichu. Du coup j'ai gagné un aller-retour chez mon concessionaire préféré (St Maur Moto) qui me donne une nouvelle vis.
@@ -214,26 +208,25 @@ La mauvaise surprise... Au moment de remettre en place le cache pignon je réali
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img08.webp"
-    alt="TODO: Add a description"
+    alt="Une des vis du cache pignon telle que je l'ai retrouvée"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Une des vis du cache pignon telle que je l'ai retrouvée</figcaption>
 </figure>
 
- La pauvre bête, toute moche à côté de sa remplaçante.
 
 
-
+La pauvre bête, toute moche à côté de sa remplaçante.
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img09.webp"
-    alt="TODO: Add a description"
+    alt="L'ancienne et la nouvelle vis"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>L'ancienne et la nouvelle vis</figcaption>
 </figure>
 
 
@@ -243,11 +236,11 @@ Sinon, super, les couple de serrage de ces vis ne sont pas indiqué dans la docu
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img14.webp"
-    alt="TODO: Add a description"
+    alt="Les couples de serrages recommandés par Aprilia"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Les couples de serrages recommandés par Aprilia</figcaption>
 </figure>
 
 
@@ -264,11 +257,11 @@ Ci-dessous le maillon rouge c'est juste un maillon recouvert de vernis à ongle.
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img10.webp"
-    alt="TODO: Add a description"
+    alt="Pour le coup la chaîne est carrément détendue"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Pour le coup la chaîne est carrément détendue</figcaption>
 </figure>
 
 La doc indique que, la moto sur ses roues, la chaîne doit avoir un débattement de 30mm à 250 mm de l'axe de la roue. Si y a un peu plus c'est pas très grave. Attention surtout à ne pas mettre moins. Si il n'y a pas assez de débattement, le bras oscillant ne pourra pas travailler correctement, la chaîne va tirer sur le PSB... Pas une bonne idée.
@@ -278,11 +271,11 @@ J'en profite pour vérifier au laser l'alignement de la chaîne. Ci-dessous on v
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img11.webp"
-    alt="TODO: Add a description"
+    alt="Vérification de l'alignement de la chaîne"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Vérification de l'alignement de la chaîne</figcaption>
 </figure>
 
 Je garde le doigt sur le laser, je fais tourner la roue. Plus loin on retrouve bien le point rouge sur le dessus du maillon extérieur. La chaine est bien alignée. C'est bien comme outil. On perd un peu de temps mais ça rassure.
@@ -290,11 +283,11 @@ Je garde le doigt sur le laser, je fais tourner la roue. Plus loin on retrouve b
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img12.webp"
-    alt="TODO: Add a description"
+    alt="Tu vois le point rouge sur la chaîne, au niveau du cale-pied?"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Tu vois le point rouge sur la chaîne, au niveau du cale-pied?</figcaption>
 </figure>
 
 
@@ -303,11 +296,11 @@ Pour finir faut resserer l'axe de la roue (écrou de 27, 120 Nm). Un coup de chi
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img13.webp"
-    alt="TODO: Add a description"
+    alt="Terminé. Reste plus qu'à calibrer"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Terminé. Reste plus qu'à calibrer</figcaption>
 </figure>
 
 Non c'est pas terminé. Faut encore sortir et faire une calibration
