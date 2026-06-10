@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-09 11:02:56
+last_modified_date: 2026-06-10 08:11:06
 ---
 
 
@@ -571,7 +571,7 @@ En fait, il faut garder en tête que le but du freinage c'est de fixer la vitess
 
 Pour illustrer la construction du freinage, prenons le cas du bout de la plus grande ligne droite du circuit. Voici la checklist que je te propose de suivre :
 
-* À 200 m avant le prochain PMSA (en tout cas plus tôt que ce que tu as l'habitude de faire)
+* À 200 m avant le prochain PMSA (en tout cas beaucoup plus tôt que ce que tu as l'habitude de faire)
 * Tu roules à 1 cm et parallèlement à la ligne blanche (je ne sais même pas pourquoi je le rappelle)
 * Tu relèves le buste comme un diable qui sort de sa boîte (normal, tu étais couché sur le réservoir, les fesses en arrière et les genoux serrés de chaque côté du réservoir)
 * Tu tends les bras, tu serres les genoux afin que tes fesses n'avancent pas vers le réservoir
