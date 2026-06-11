@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-06-10 16:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-06-11 08:34:58
+last_modified_date: 2026-06-11 08:37:08
 ---
 
 
@@ -333,7 +333,7 @@ Non! C'est pas terminé. Faut encore sortir et faire une calibration
 
 Pour le coup, là, on a terminé.
 
-Bon, allez, la suite au prochain numéro. D’ici-là vous pouvez préparer votre (première journée sur piste)[{%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}], relire les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faire des squats pour préparer les prochains roulages.
+Bon, allez, la suite au prochain numéro. D’ici-là vous pouvez préparer votre [première journée sur piste]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}), relire les [notes de pilotage]({%link docs/07_moto/001_notes_pilotage/index.md%}) ou faire des squats pour préparer les prochains roulages.
 
 
 <figure style="max-width: 560px; margin: auto;">
