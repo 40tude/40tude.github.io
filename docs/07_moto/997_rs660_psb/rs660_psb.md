@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-06-10 16:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-06-11 15:19:55
+last_modified_date: 2026-06-11 15:30:53
 ---
 
 
@@ -291,7 +291,7 @@ Ci-dessous le maillon rouge c'est juste un maillon recouvert de vernis à ongle.
 
 La documentation indique que, la moto sur ses roues, la chaîne doit avoir un débattement de 30mm à 250 mm de l'axe de la roue AR. Si y a un peu plus c'est pas très grave. Attention surtout à ce qu'il n'y ait pas moins. Si il n'y a pas assez de débattement, le bras oscillant ne pourra pas travailler correctement, la chaîne va tirer sur le PSB... Pas une bonne idée.
 
-J'en profite pour vérifier au laser l'alignement de la chaîne. Ci-dessous on voit le point rouge sur le dessus du maillon extérieur.
+J'en profite pour vérifier au [laser](https://www.profi-products.de/fr/profi-cat-laser/) l'alignement de la chaîne. Ci-dessous on voit le point rouge sur le dessus du maillon extérieur.
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
@@ -303,7 +303,7 @@ J'en profite pour vérifier au laser l'alignement de la chaîne. Ci-dessous on v
 <figcaption>Vérification de l'alignement de la chaîne</figcaption>
 </figure>
 
-Je garde le doigt sur le laser, je fais tourner la roue. Plus loin on retrouve bien le point rouge toujours sur le dessus du maillon extérieur. La chaîne est donc bien alignée. C'est bien comme outil. Faut juste ne pas vouloir être plus royaliste que le roi et y passer 3H pour régler l'alignement au 1/100.
+Je garde le doigt sur le laser, je fais tourner la roue vers l'arrière. Plus loin on retrouve bien le point rouge toujours sur le dessus du maillon extérieur. La chaîne est donc bien alignée. C'est bien comme outil. Faut juste ne pas vouloir être plus royaliste que le roi et y passer 3H pour régler l'alignement au 1/100.
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
