@@ -11,7 +11,7 @@ parent: "Notes de pilotage moto sur circuit"
 nav_order: 9
 #math: mathjax
 date: 2019-09-22 15:51:16
-last_modified_date: 2026-04-25 09:17:00
+last_modified_date: 2026-06-11 14:49:45
 ---
 
 
@@ -242,7 +242,7 @@ Bon allez, je crois qu'on a notre dose, j'arrête là.
   + La seule chose qu'on modifie c'est qu'en sortie, on tire sur le bracelet intérieur. Il est peut-être préférable de commencer par un virage à droite car alors on tire sur le bracelet droit et on tourne la poignée d'accélérateur en même temps. À voir, mais moi, ça me parait un peu plus facile.
 * Certains pilotes disent qu'en sortie de virage, il faut repousser la moto avec ses bras pour qu'elle se mette, de plus en plus verticale alors qu'on reste penché et qu'on enroule l'accélérateur. Oui, oui ils ont raison et si toutes ces histoires de contre braquage te saoule essaies de faire ça.
 
-Je te propose l'exercice suivant... Enferme toi dans une pice parce que tu va avoir l'air d'un con Jean-Pierre... Assieds-toi sur une chaise. Prends un balai avec tes deux mains et tu le mets à l'horizontale devant toi. Penche ton buste un peu vers la gauche et fais en sorte que le manche à balais te suive (le côté gauche est donc plus bas que le côté droit). OK, maintenant, en restant le buste penché à gauche, sans trop réfléchir, essaies de repousser le balai un peu vers la droite. En ce qui me concerne, je me retrouve toujours penché mais avec le bras gauche un peu plié et le bras droit un peu tendu. Finalement mon buste et le balai sont toujours penchés vers la gauche mais la partie gauche du manche est dorénavant plus proche de moi alors que la partie droite est plus loin de moi. Bref, tout se passe comme si on avait tiré sur le bras intérieur du virage. **Conclusion :** repousser la moto en sortie de virage revient à **tirer** sur le bracelet intérieur et donc à contre-braquer. CQFD 😁
+Je te propose l'exercice suivant... Enferme toi dans une piece parce que tu va avoir l'air d'un con Jean-Pierre... Assieds-toi sur une chaise. Prends un balai avec tes deux mains et tu le mets à l'horizontale devant toi. Penche ton buste un peu vers la gauche et fais en sorte que le manche à balais te suive (le côté gauche est donc plus bas que le côté droit). OK, maintenant, en restant le buste penché à gauche, sans trop réfléchir, essaies de repousser le balai un peu vers la droite. En ce qui me concerne, je me retrouve toujours penché mais avec le bras gauche un peu plié et le bras droit un peu tendu. Finalement mon buste et le balai sont toujours penchés vers la gauche mais la partie gauche du manche est dorénavant plus proche de moi alors que la partie droite est plus loin de moi. Bref, tout se passe comme si on avait tiré sur le bras intérieur du virage. **Conclusion :** repousser la moto en sortie de virage revient à **tirer** sur le bracelet intérieur et donc à contre-braquer. CQFD 😁
 
 Il faut rester déhanché en sortie de virage alors que la moto se relève. Relire si besoin la note de pilotage sur la [Conduite du Virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%}).
 

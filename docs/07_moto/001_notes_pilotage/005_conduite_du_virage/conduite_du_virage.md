@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 7
 date: 2019-09-08 18:33:15
-last_modified_date: 2026-06-11 11:00:15
+last_modified_date: 2026-06-11 14:49:45
 ---
 
 # {{ page.title }}
@@ -569,11 +569,7 @@ La vidéo suivante traite spécifiquement du sujet.
 {: .no_toc }
 
 
-Si tout se passe bien c'est en effet ce qu'il faut rechercher. Il ne faut pas oublier un truc. On n'est pas sur une Xbox et donc même si on est 100% gaz au PC on n'aura pas tout de suite toute la cavalerie à la roue arrière. À cause de l'inertie de la mécanique, cette dernière n'arrivera qu'une fois le PC passé alors qu'on est en train de relever la moto et qu'on a de plus en plus de grip à la roue arrière. Perso je n'y arrive toujours pas et je sais pas si j'y arriverais un jour.
-
-
-
-
+Si tout se passe bien c'est en effet ce qu'il faut rechercher. Attention l'objectif c'est d'être 100% gaz au point de corde en ayant commencé à accéléré tout de suite après avoir fait pivoté la moto. Donc la vitesse de la moto est en accord avec l'ouverture des gaz. Faut surtout pas passer PC, réaliser qu'on est pas 100%, ouvrir en grand alors qu'on se traine à 2 à l'heure. En effet, dans quelques metres le couple du moteur va faire déraper la roue arrière et c'est le highside garantit. Non, ce que l'on doit faire c'est faire pivoter la moto et tout de suite après commencer à appliquer la Throttle Rule. Du coup la position de la poignée de gaz et la vitesse de rotation de la roue arrière sont synchros et il n'y a aucun risque de perdre l'arrière. Mais bon du coup pour être 100% gaz au PC faut commencer à accélérer très très tôt. Perso je n'y arrive toujours pas et je sais pas si j'y arriverais un jour.
 
 
 
@@ -622,7 +618,7 @@ Voir la vidéo ci-dessous :
 
 
 
-### Les plus gros gains sont dans les virages rapides (et les lignes droites)
+### Les plus gros gains sont dans les courbes rapides (et les lignes droites)
 {: .no_toc }
 
 
@@ -678,7 +674,7 @@ Si dans un virage on est tenté, en cours de route, de couper les gaz ou de frei
 ### Virage en Hook
 {: .no_toc }
 
-Lire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p59. Faut mettre du poids sur l'avant et en bas pour être capable de faire un virage en Hook et pas en Arc ("Bite and Turn")
+Lire [ATOTW II]({% link docs/07_moto/001_notes_pilotage/000_introduction/introduction.md%}#livres) p59. Faut mettre du poids sur l'avant et à l'intérieur pour être capable de faire un virage en Hook et pas en Arc ("Bite and Turn")
 
 Si on rallume les gaz trop tôt on a une trajectoire en Arc
 
@@ -696,7 +692,7 @@ Pour s'en convaincre il n'y a qu'à voir les photos de roue arrière en sortie d
 </figure>
 
 
-Pour avoir un virage en Hook (crochet, comme le capitaine, pas le tricot) il faut pencher le buste en avant et en bas, à l'intérieur du virage
+Pour avoir un virage en Hook (crochet, comme le capitaine, pas le tricot) il faut pencher le buste en avant et à l'intérieur du virage
 
 **Steering Rule N°1**
 * *One single steering action per turn*
@@ -818,9 +814,9 @@ Sur le dessin ça ne se voit pas bien mais au milieu du virage (en C) on doit ê
 * Dans la moitié intérieure de la piste.
 * Bien voir qu'on n'est toujours pas à la corde.
 * Noter qu'on est à la corde qu'en un seul point (en B).
-* Que c'est en C qu'on prend le plus d'angle car c'est là qu'on fait tourner la moto
+* Que c'est en C qu'on a la vitesse la plus faible, qu'on prend le plus d'angle et que c'est là qu'on fait tourner la moto
 
-Donc on ne passe pas tout notre temps à longer la corde. Les pneus touchent la corde une fois et une seule.
+Donc on ne passe pas tout notre temps à longer la corde. Les pneus touchent la corde une fois et une seule (en B).
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-28.webp"
