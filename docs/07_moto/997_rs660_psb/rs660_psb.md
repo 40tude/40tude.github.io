@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-06-10 16:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-06-11 11:00:15
+last_modified_date: 2026-06-11 15:19:55
 ---
 
 
@@ -30,7 +30,7 @@ last_modified_date: 2026-06-11 11:00:15
 
 
 
-<h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2>
+<!-- <h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2> -->
 
 
 
@@ -105,10 +105,10 @@ last_modified_date: 2026-06-11 11:00:15
 <!-- ###################################################################### -->
 
 On va commencer par libérer la tringlerie du sélecteur
-    * Faire un marque au feutre ou au stylo à peinture pour pouvoir remettre la biellette exactement à la même position.
-    * Dévisser ensuite la vis hexagonale
-    * Extraire (plus ou moins facilement) la biellette. Faut le faire uniquement avec les mains.
-    * Quand c'est fait, la mettre sur le côté (ne rien débrancher)
+* Faire une marque au feutre ou au stylo à peinture pour pouvoir remettre la biellette exactement à la même position.
+* Dévisser ensuite la vis hexagonale
+* Extraire (plus ou moins facilement) la biellette. Faut le faire uniquement avec les mains.
+* Quand c'est fait, la mettre sur le côté (ne rien débrancher)
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
@@ -225,16 +225,19 @@ Pas de commentaire particulier pour le cache chaîne.
 <figcaption>Un carter de chaîne tout propre aussi</figcaption>
 </figure>
 
-La mauvaise surprise... Au moment de remettre en place le cache pignon je réalise qu'une des vis est complètement "machouillée". C'est pas moi m'sieur, moi j'ai juste dévissé. Je sais pas ce qu'ils ont fichu. Du coup j'ai gagné un aller-retour chez mon concessionaire préféré ([Saint Maur Moto](https://www.saintmaurmotos.fr/)) qui me donne une nouvelle vis.
+
+Au moment de présenter le cache pignon, il faut prendre soin de bine faire passer le cable à l'intérieur. Il y a une gorge, un chemin. Si on ne le fait pas, le cable se trouve coincé.
+
+Sinon, mauvaise surprise... Au moment de remettre en place le cache pignon je réalise qu'une des vis est complètement "machouillée". C'est pas moi m'sieur, moi j'ai juste dévissé. Je sais pas ce qu'ils ont fichu. Du coup j'ai gagné un aller-retour chez mon concessionaire préféré ([Saint Maur Moto](https://www.saintmaurmotos.fr/)) qui m'a gentiment donné une nouvelle vis.
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
     src="./assets/img08.webp"
-    alt="Une des vis du cache pignon telle que je l'ai retrouvée"
+    alt="Une des vis du cache pignon telle que je l'ai retrouvée. Les autres sont OK."
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Une des vis du cache pignon telle que je l'ai retrouvée</figcaption>
+<figcaption>Une des vis du cache pignon telle que je l'ai retrouvée. Les autres sont OK.</figcaption>
 </figure>
 
 
@@ -252,7 +255,7 @@ La pauvre bête, toute moche à côté de sa remplaçante.
 </figure>
 
 
-Sinon, super, les couple de serrage de ces vis ne sont pas indiqué dans la documentation. Le seul truc qu'on a c'est un tableau générique. Comme ici les vis sont des M6 je nettoie les pas de vis, je mets une goutte de Loctite en bout de filet et je serre à 10 Nm.
+Sinon, super, les couple de serrage de ces vis ne sont pas indiqués dans la documentation. Le seul truc qu'on a c'est un tableau générique. Comme ici les vis sont des M6 je nettoie les pas de vis, je mets une goutte de Loctite en bout de filet et je serre à 10 Nm.
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -266,7 +269,7 @@ Sinon, super, les couple de serrage de ces vis ne sont pas indiqué dans la docu
 </figure>
 
 
-Idem pour les Torx du carter de chaîne. Aucun couple indiqué. Ce sont des M5, donc selon le tableau on devrait serrer à 5.5 Nm. Je nettoie le pas de vis, je met une goutte de Loctite en bout de filet et je serre à la main (5.5 Nm ça me parait bien faible)
+Idem pour les Torx du carter de chaîne. Aucun couple indiqué. Ce sont des M5, donc selon le tableau on devrait serrer à 5.5 Nm. Je nettoie le pas de vis, je met une goutte de Loctite en bout de filet et je serre à la main sans trop forcer (5.5 Nm ça me parait bien faible).
 
 
 
@@ -274,7 +277,7 @@ Idem pour les Torx du carter de chaîne. Aucun couple indiqué. Ce sont des M5, 
 
 Ok, c'est bien gentil tout ça mais comme le pignon est plus petit, la chaîne pend carrément sur le pot d'échappement. On a gagné une tension de chaîne.
 
-Ci-dessous le maillon rouge c'est juste un maillon recouvert de vernis à ongle. Il me sert de repère quand je nettoie la chaîne.
+Ci-dessous le maillon rouge c'est juste un maillon recouvert de vernis à ongle. Il me sert de repère quand je nettoie la chaîne. Ca évite de mettre trop de graisse par exemple.
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
@@ -286,7 +289,7 @@ Ci-dessous le maillon rouge c'est juste un maillon recouvert de vernis à ongle.
 <figcaption>Pour le coup la chaîne est carrément détendue</figcaption>
 </figure>
 
-La documentation indique que, la moto sur ses roues, la chaîne doit avoir un débattement de 30mm à 250 mm de l'axe de la roue. Si y a un peu plus c'est pas très grave. Attention surtout à ne pas mettre moins. Si il n'y a pas assez de débattement, le bras oscillant ne pourra pas travailler correctement, la chaîne va tirer sur le PSB... Pas une bonne idée.
+La documentation indique que, la moto sur ses roues, la chaîne doit avoir un débattement de 30mm à 250 mm de l'axe de la roue AR. Si y a un peu plus c'est pas très grave. Attention surtout à ce qu'il n'y ait pas moins. Si il n'y a pas assez de débattement, le bras oscillant ne pourra pas travailler correctement, la chaîne va tirer sur le PSB... Pas une bonne idée.
 
 J'en profite pour vérifier au laser l'alignement de la chaîne. Ci-dessous on voit le point rouge sur le dessus du maillon extérieur.
 
