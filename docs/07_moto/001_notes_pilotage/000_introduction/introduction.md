@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-05-05 18:57:31
+last_modified_date: 2026-06-11 11:00:15
 ---
 
 # {{ page.title }}
@@ -21,11 +21,11 @@ last_modified_date: 2026-05-05 18:57:31
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/img01.webp"
-    alt="Describe the image here"
+    alt="Tout premier roulage avec le MT 07"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Tout premier roulage avec le MT 07</figcaption>
 </figure>
 
 
@@ -64,10 +64,10 @@ Comme son nom l'indique, la section **Basics** ci-dessous s'intéresse aux fonda
 2. **[Découverte de la piste 2/2]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%})** : On continue à découvrir la piste, on se couche sur la moto et on ouvre les gaz à 100%, **en butée**.
 3. **[Three steps]({%link docs/07_moto/001_notes_pilotage/003_three_steps/three_steps.md%})** : On parle de la façon de décomposer le virage, des endroits où il faut fixer son regard, quand, comment... Le but est de simplifier la lecture du virage ce qui permet de se concentrer sur autre chose et surtout d'être régulier d'un tour à l'autre.
 4. **[Freinage]({%link docs/07_moto/001_notes_pilotage/004_freinage/freinage.md%})** : Ce que l'on cherche, c'est de sortir fort du virage afin de favoriser la vitesse de pointe au bout de la ligne droite qui suit. Dans cette première page consacrée au freinage on ne parle QUE du freinage en ligne droite, de ses différentes phases et on termine avec la mise sur l'angle... Il y a aussi quelques remarques à propos des réglages des commandes. Plus loin il y a une page consacrée au freinage sur l'angle.
-5. **[Conduite du virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%})** : On assemble les briques élémentaires précédentes pour construire une base solide sur laquelle on va pouvoir s'appuyer avant de passer à la section Advanced. On ne survit plus en virage, on en subit plus le virage, au contraire, on conduit le virage.
+5. **[Conduite du virage]({%link docs/07_moto/001_notes_pilotage/005_conduite_du_virage/conduite_du_virage.md%})** : On assemble les briques élémentaires précédentes pour construire une base solide sur laquelle on va pouvoir s'appuyer avant de passer à la section Advanced. On ne survit plus en virage, on ne subit plus le virage, au contraire, on conduit le virage.
 
 ### Advanced
-6. **[Hook Turns]({%link docs/07_moto/001_notes_pilotage/006_hook_turns/hook_turns.md%})** : On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner... En gros, on verrouille le bas du corps "dans" la moto alors que le buste est très mobile. Ensuite on cherche à déplacer le centre de gravité de l'ensemble moto-pilote encore plus vers l'**intérieur du virage**. On en parle que maintenant car il faut que pas mal de choses soient déjà en place avant de s'attaquer à ce sujet.
+6. **[Hook Turns]({%link docs/07_moto/001_notes_pilotage/006_hook_turns/hook_turns.md%})** : On parle ici d'une technique qui permet de resserrer les virages. Pour rappel, on souhaite resserrer les virages pour pouvoir au prochain tour avoir de la marge pour sortir plus fort. Bref, ça n'en finit jamais cette histoire, il y a toujours un truc à peaufiner... En gros, on verrouille le bas du corps "dans" la moto alors que le buste est très mobile. Ensuite on cherche à déplacer le centre de gravité de l'ensemble moto-pilote encore plus vers l'**intérieur du virage** et **l'avant de la moto**. On en parle que maintenant car il faut que pas mal de choses soient déjà en place avant de s'attaquer à ce sujet.
 7. **[Contre braquage en sortie de virage]({%link docs/07_moto/001_notes_pilotage/007_contre_braquage_en_sortie_de_virage/contre_braquage_en_sortie_de_virage.md%})** : En entrée de virage, pour mettre la moto rapidement sur l'angle, je pousse sur le guidon intérieur. En sortie de virage, pour relever la moto rapidement, je tire sur le guidon intérieur. Fallait juste y penser...
 8. **[Knee to knee]({%link docs/07_moto/001_notes_pilotage/008_knee_to_knee/knee_to_knee.md%})** : On ajoute à notre toolbox un outil à qui va nous permettre de passer efficacement d'un côté à l'autre de la moto. Ensuite on s'attaquera aux pif-paf.
 9. **[Pif-paf]({%link docs/07_moto/001_notes_pilotage/009_pif_paf/pif_paf.md%})** : Je prends le temps de décomposer le pif-paf. Ce n'est pas évident car il faut sacrifier l'entrée pour optimiser la vitesse de sortie (c'est toujours la même chose en fait). Comment on fait ? Quelle trajectoire favoriser ? Je vous explique ce que je crois avoir compris.
@@ -222,7 +222,8 @@ Si vous avez d'autres propositions n'hésitez pas à laisser un commentaire.
 ## Sites
 
 * [Les secrets du pilotage](http://dmic.free.fr/Pilotage/Secrets-du-pilotage-shared-by-Micboy.pdf)
-* [Motopiste.net](http://www.motopiste.net/)
+* Le site de [Arnaud Scherhag](https://www.arnaudscherhag.com/devenir-plus-rapide). Certains pdf sont accessibles en échange de votre adr mail sinon il y a la chaîne YouTube et un e-bouquin à 29€ que j'ai pas encore acheté.
+* [Motopiste.net](http://www.motopiste.net/) où il y a une section Technique Pilotage
 * [Life at Lean](https://lifeatlean.com/free-guide-and-training-series/)
 
 

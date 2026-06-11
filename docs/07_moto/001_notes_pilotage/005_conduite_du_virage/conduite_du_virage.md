@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 7
 date: 2019-09-08 18:33:15
-last_modified_date: 2026-05-05 17:49:40
+last_modified_date: 2026-06-11 11:00:15
 ---
 
 # {{ page.title }}
@@ -201,7 +201,7 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 
 On a terminé le freinage en ligne droite, on est gaz coupé, on ne touche plus aux freins avant et on vient tout juste de mettre la moto sur l'angle.
 * La moto est passée sur l'angle le plus tard possible afin de prolonger le plus longtemps possible la ligne droite précédente et le freinage dans l'axe.
-    * Je rappelle que l'idée ici c'est de ne **PAS** faire de freinage sur l'angle (enfin, [pas encore] NOT YET TRANSFERED (https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/) 😁)
+    * Je rappelle que l'idée ici c'est de ne **PAS** faire de [freinage sur l'angle]({%link docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/freinage_sur_langle_trail_breaking.md%})
 * La mise sur l'angle doit être **rapide** (j'explique pourquoi plus loin). Pour accélérer la mise sur l'angle il faut s'entraîner à contre braquer :
     * En poussant **consciemment** sur le bras intérieur... Il faut vraiment prendre conscience qu'à l'instant où on le décide, on pousse sur le bracelet intérieur pour mettre la moto sur l'angle. L'idée c'est d'arrêter de réaliser, après coup, que la moto est sur l'angle sans vraiment savoir pourquoi, comment... Non, non, non. Nous sommes aux commandes et la mise sur l'angle, c'est comme la méditation, cela se fait en [pleine conscience](https://www.association-mindfulness.org/quest-ce-que-la-mindfulness.php). C'est nous qui décidons.
     * On peut aussi s'assurer qu'on vise bien le point de corde avec le menton. Normalement c'est le cas mais en faisant la vérification, on va faire tourner la tête, les épaules, le corps et la moto. Ce faisant on va aussi mécaniquement mettre plus de poids sur le cale-pied intérieur. C'est peut-être un détail pour vous mais pour la moto ça veut dire beaucoup 🎶. Ça va contribuer à la faire passer sur l'angle plus rapidement. Mais bon, faut pas se leurrer, appuyer sur les cale-pieds c'est beaucoup moins efficace en terme de rapidité que le contre braquage au guidon. Pour t'en convaincre essaie de prendre une épingle en appuyant uniquement sur les cale-pieds. Good luck.
@@ -221,7 +221,7 @@ Ce qui va très certainement se passer pendant la session
 * Faut pas hésiter à copier le marshall ou ceux qui restent large en entrée de virage et qui donnent l'impression, à un moment, de "plonger" à la corde.
 * On en a déjà parlé mais normalement les roues touchent la corde 1 fois, une fraction de seconde. Si pendant la session c'est pas le cas, au prochain tour, dans ce virage, faut se forcer à aller chercher un PV plus loin dans le virage
 
-**Second point** : On n'est pas suicidaire et généralement on a freiné trop tôt, trop fort. On entre dans le virage trop lentement et on est obligé de remettre un peu d'accélérateur (filet de gaz) pour empêcher la moto de plonger à la corde. En fait, on accélère pour ouvrir la trajectoire de la moto car, par manque de vitesse l'ensemble moto/pilote est survireur. Si ça arrive pendant la session, au prochain tour il faut retarder le freinage de une ou 2 motos de long, relâcher les freins au même endroit et exécuter une inscription sur l'angle plus rapide. On va alors rentrer un peu plus vite. Si la marque de freinage est la bonne on pourra rejoindre PV gaz coupé. À partir de là c'est trop facile. On claque la moto pour la faire pivoter rapidement et tout de suite après, on commence à enrouler. Comme la moto est sur la ligne PV-PC-PS, on roule sur PC (au millimètre, j'insiste) avec les roues orientées vers PS (j'insiste encore). Trop facile je te dis...
+**Second point** : On n'est pas suicidaire et généralement on a freiné trop tôt, trop fort. On entre dans le virage trop lentement et on est obligé de remettre un peu d'accélérateur (filet de gaz) pour empêcher la moto de plonger à la corde. En fait, on accélère pour ouvrir la trajectoire de la moto car, par manque de vitesse l'ensemble moto/pilote est survireur. Si ça arrive pendant la session, au prochain tour il faut garder son point de freinage et son freinage à l'identique mais relâcher les freins un peu plus tôt. On va alors rentrer un peu plus vite. Si la marque de freinage est la bonne on pourra rejoindre PV gaz coupé. À partir de là c'est trop facile. On claque la moto pour la faire pivoter rapidement et tout de suite après, on commence à enrouler. Comme la moto est sur la ligne PV-PC-PS, on roule sur PC (au millimètre, j'insiste) avec les roues orientées vers PS (j'insiste encore). Trop facile je te dis...
 
 Si on remet les gaz trop tôt, trop fort on va s'écarter de la ligne idéale
 * Faudra couper, réaligner et réaccélérer ce qui est très mauvais pour le grip de la moto
@@ -257,7 +257,7 @@ Dans la vidéo ci-dessous pensez à mettre les sous-titres en Anglais et la vite
 </figure>
 
 
-Dans la vidéo suivante Simon Crafar revient en détail sur sa préférence de conduire le virage gaz fermé et sans aucune utilisation des freins (vs [Trail Braking](https://www.40tude.fr/pilotage-moto-09-freinage-sur-langle-trail-breaking/)). Pas d'offense, mais j'avoue que j'ai un peu de mal avec son anglais de néo-zélandais.
+Dans la vidéo suivante Simon Crafar revient en détail sur sa préférence de conduire le virage gaz fermé et sans aucune utilisation des freins (vs [Trail Braking]({%link docs/07_moto/001_notes_pilotage/010_freinage_sur_langle_trail_breaking/freinage_sur_langle_trail_breaking.md%})). Pas d'offense, mais j'avoue que j'ai un peu de mal avec son anglais de néo-zélandais.
 
 
 <figure style="max-width: 560px; margin: auto;">

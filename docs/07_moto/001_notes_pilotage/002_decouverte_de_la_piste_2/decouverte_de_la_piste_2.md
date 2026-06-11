@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 4
 date:               2020-02-02 17:35:30
-last_modified_date: 2026-05-27 11:44:02
+last_modified_date: 2026-06-11 11:00:15
 ---
 
 # {{ page.title }}
@@ -126,8 +126,8 @@ Comme cette session est dédiée à la poignée de gaz qu'on va mettre **en but�
 {: .no_toc }
 
 * Jouer avec la poignée de gaz signifie, augmenter les gaz, puis les diminuer, puis en remettre une lichette, oups, je suis allé trop loin, je coupe...
-* Dit autrement, cela concerne les cas où, avant le point de corde, on rajoute des gaz car on est rentré trop lentement dans le virage. Au prochain tour il faudra retarder la mise sur l'angle.
-* Cela concerne aussi les cas où, après le point de corde, on coupe les gaz car on est beaucoup trop vite. Au prochain tour il faudra avancer la mise sur l'angle.
+* Dit autrement, cela concerne les cas où, avant le point de corde, on rajoute des gaz car on est rentré trop lentement dans le virage. Au prochain tour il faudra retarder de 1 ou 2 moto de long le freinage et la mise sur l'angle.
+* Cela concerne aussi les cas où, après le point de corde, on coupe les gaz car on est beaucoup trop vite. Au prochain tour il faudra effectuer la mise sur l'angle plus tôt.
 * Au début, en mode découverte de la piste, on peut se faire surprendre et jouer avec la poignée de gaz dans les virages qui ont un rayon de courbure qui se resserre par exemple
 * On ne souhaite pas jouer avec la poignée de gaz car si on joue avec les gaz cela veut dire qu'on n'est PAS encore sur la ligne idéale (plus d'explications plus loin).
 * Au prochain tour il faudra donc rentrer beaucoup moins vite dans CE virage
@@ -198,7 +198,7 @@ On en parle dans cette vidéo :
 ### Est-ce que tu t'es couché dans la ligne droite que tu avais choisie ?
 {: .no_toc }
 
-Si oui bravo ! Bon ben reprends ton plan. Identifie le prochain endroit où tu vas te coucher sur la moto (ça peut être une ligne droite ou un grand virage) lors de la prochaine session. En faisant ainsi, étape par étape, en fin de journée tu auras tout couvert. En tout cas, bravo !
+Si oui bravo ! Bon ben reprends ton plan. Identifie le prochain endroit où tu vas te coucher sur la moto (ça peut être une ligne droite ou une grande courbe) lors de la prochaine session. En faisant ainsi, étape par étape, en fin de journée tu auras tout couvert. En tout cas, bravo !
 
 Si tu as "oublié" de te coucher sur la moto ce n'est pas grave. Oublie tout et considère la prochaine session comme la première session de [Découverte de la piste]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%}). C'est vrai que cela fait beaucoup de choses à la fois, qu'il y a pas mal de monde, du bruit, de la vitesse et que très rapidement on se prend au jeu... Enfin bref, respire, concentre-toi uniquement sur cet objectif.
 
@@ -241,6 +241,8 @@ Il n'y a pas de honte... C'est vrai qu'à rouler quotidiennement à 80 km/h on n
 {: .no_toc }
 
 Je ne souhaite pas être grossier pour être grossier mais c'est vrai que la première fois que je me suis trouvé dans un grand gauche, la moto anglée, la tête pas trop loin du guidon et que j'ai vu les vibreurs blancs et rouge me foncer dessus... J'ai coupé. Ensuite j'ai arrêté d'accélérer... Ensuite je continuais à enrouler. Là aussi, je pense qu'il faut laisser du temps au temps afin que les muscles, la vision et le cerveau s'habituent à ces nouvelles positions, ces nouveaux points de vue etc. Là aussi, Rossi ce n'est pas fait un jour, il est normal que plusieurs sessions soient nécessaires.
+
+Le truc qui aide vraiment c'est de regarder loin. Oui tu es près de la ligne mais c'est ton regard qui guide la moto. Lève les yeux, vise "le coup" d'après. Tout va défiler moins vite et cela va t'aider à rester dans tes 75%.
 
 Il ne faut pas mettre la charrue avant les bœufs et tant qu'on n'est pas à l'aise avec la vitesse, les vibreurs qui jaillissent etc... Mieux vaut rester en mode découverte de la piste et se dire que le temps qu'on passe là, à se forcer à ouvrir en grand dès qu'on en a l'occasion est un investissement pour plus tard.
 
@@ -302,7 +304,7 @@ Plus tard [Note de Pilotage N°10]({%link docs/07_moto/001_notes_pilotage/010_fr
 * Faire plusieurs tours de circuit en restant sur un seul rapport. Au pire on en utilise 2 (la 2 et la 3 par exemple) mais utiliser un seul rapport c'est ce qu'il y a de mieux.
 * **SANS FREIN** (c'est le plus important dans l'exercice). Donc, en bout de ligne droite on coupe les gaz, on ne freine pas, on rentre dans le virage avec ce que l'on a comme vitesse.
 * Le but est de tout faire à l'accélérateur (accélération et ralentissement)
-* Pour des raisons évidentes de sécurité, lors des journées de roulages, ce n'est pas possible. Cela dit, c'est un super exercice qui permet de réaliser qu'en règle générale, on rentre beaucoup trop lentement dans les virages. C'est un exercice qui a été initialement inventé par [Keith Code](https://en.wikipedia.org/wiki/Keith_Code) pour la California Superbike School. Cet exercice est réalisé lors des [stages de pilotage DRRS] NOT YET TRANSFERED  ou [LFG] NOT YET TRANSFERED .
+* Pour des raisons évidentes de sécurité, lors des journées de roulages, ce n'est pas possible. Cela dit, c'est un super exercice qui permet de réaliser qu'en règle générale, on rentre beaucoup trop lentement dans les virages. C'est un exercice qui a été initialement inventé par [Keith Code](https://en.wikipedia.org/wiki/Keith_Code) pour la California Superbike School. Cet exercice est réalisé lors des [stages de pilotage DRRS]({%link docs/07_moto/500_stage_de_radigues_rider_school_drrs/stage_de_radigues_rider_school_drrs.md%}) .
 
 
 <figure style="max-width: 560px; margin: auto;">

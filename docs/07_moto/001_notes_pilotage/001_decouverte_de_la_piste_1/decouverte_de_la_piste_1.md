@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 3
 date:               2019-09-07 18:48:13
-last_modified_date: 2026-05-05 18:57:31
+last_modified_date: 2026-06-11 11:00:15
 ---
 
 
@@ -199,7 +199,7 @@ Imagine que tu saute à la corde. Quand tu atterris tu es sur la partie la plus 
 * Idéalement, plus tard, tu devra faire passer tes roues à 1cm de chacun d'entre eux.
     * Pour le 1 et le 3 c'est trop facile car tu roules, tout à gauche ou tout à droite sur la piste. J'en parle même pas. Trop facile je te dis.
     * Le second cône lui par contre... Good luck. On en reparle plus tard.
-* Pour l'instant, t'es à 75%, en mode repérage, donc tu note juste où sont les cônes et garde en tête qu'à terme tu veux faire passer tes roues dessus (j'ai bien dis tes roues)
+* Pour l'instant, t'es à 75%, en mode repérage, donc tu notes juste où sont les cônes et tu gardes en tête qu'à terme tu veux faire passer tes roues dessus (j'ai bien dis tes roues)
 
 
 
@@ -240,18 +240,18 @@ Oui, je sais, ça fait bizarre. D'un côté on dit qu'on roule à 75% de nos moy
 
 Bref, en ligne droite il ne faut plus de bras tendus, de nez au vent... Non, non, on est menton sur le réservoir, bras pliés et resserrés sur ce dernier. Quand je dis menton, c'est vraiment ça. Le casque doit toucher le réservoir (tu dois entendre le "poc"). Il ne faut pas hésiter à s’entraîner à la maison, en statique dans le garage avec le casque sur la tête. Cela permet vraiment de voir ce que cela donne. Quand l'avant du casque touche le réservoir, qu'est-ce que je vois devant? Rien, pas grand-chose... Si je veux que ma vision passe juste au-dessus du tableau de bord comment je dois être sur la moto? Est-ce que mes coudes touchent mes genoux, est-ce qu'il y a de la place (ou pas) ... Enfin bref, autant prendre 15 minutes dans le garage ou l'aire plane du circuit pour vérifier tout ça.
 
-Faudra en profiter pour mettre du scotch à peinture bleu sur le compteur (pas la peine d'être tenté de regarder autre chose que la piste le jour du roulage).
+Faudra en profiter pour mettre du scotch à peinture bleu sur le compteur (pas la peine d'être tenté de regarder autre chose que le compte tours et la piste le jour du roulage).
 
-Si c'est difficile ou si cela ne passe pas au niveau des bras, pense à reculer tes fesses sur la selle. Si tu es très grand, n'hésite pas à les pousser jusqu'à la section du passager ou alors à carrément t’asseoir sur le dosseret de selle (mais là à mon avis tu mesures 2 m ou tu roules en Piwi).
+Si c'est difficile ou si cela ne passe pas au niveau des bras, pense à reculer tes fesses sur la selle. Si tu es très grand, n'hésites pas à les pousser jusqu'à la section du passager ou alors à carrément t’asseoir sur le dosseret de selle (mais là à mon avis tu mesures 2 m ou tu roules en Piwi).
 
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/image-1-1.webp"
-    alt="Describe the image here"
+    alt="Tu vois l'avant du casque qui touche le réservoir?"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Tu vois l'avant du casque qui touche le réservoir?</figcaption>
 </figure>
 
 Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas encore là. Perso j'ai un mal de chien à le faire car je me casse les cervicales et que je ne vois pas grand-chose... En plus ce n'est toujours pas devenu un réflexe naturel... Y a du boulot...
@@ -311,7 +311,7 @@ Bref, on a "l'air d'un coureur" même si pour l'instant les chronos ne sont pas 
 ### Avant de partir
 {: .no_toc }
 
-Il faudra bien se couvrir... Ça on sait. Cela dit, pense peut-être à bien remonter l'avant de ton casque quitte à avoir l'impression que ton menton ressort (ça fait bizarre au départ). Le truc c'est qu'une fois couché sur la moto, si ton casque est positionné comme pour la route tu ne vas pas voir grand-chose ou tu vas t'exploser les cervicales. Si tu oublies à le première session, crois moi, tu le feras à la seconde session 😂.
+Il faudra bien se couvrir... Ça on sait. Cela dit, pense peut-être à bien remonter l'avant de ton casque quitte à avoir l'impression que ton menton ressort (ça fait bizarre au départ). Le truc c'est qu'une fois couché sur la moto, si ton casque est positionné comme pour la route tu ne vas pas voir grand-chose ou tu vas t'exploser les cervicales. Si tu oublies à le première session, crois moi, tu le feras à la seconde 😂.
 
 
 
@@ -355,13 +355,13 @@ Dans un même ordre d'idée, en ligne droite je dois être capable de tenir l'ac
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/h24XjzybrA0?start=0"
-    title="I'm a legend"
+    title="Tenir la poignée de gaz avec 3 doigts"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
     </iframe>
 </div>
 <figcaption style="text-align: center;">
-    I'm a legend
+    Tenir la poignée de gaz avec 3 doigts
 </figcaption>
 </figure>
 

@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 5
 date:               2019-09-08 00:47:37
-last_modified_date: 2026-04-25 09:17:00
+last_modified_date: 2026-06-11 11:00:15
 ---
 
 # {{ page.title }}
@@ -268,21 +268,21 @@ Perso j'ai tendance à vouloir aller trop vite, trop rapidement. Je ne prends pa
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/img_01.webp"
-    alt="Describe the image here"
+    alt="Les roues passent à 1m dela ligne blanche"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Les roues passent à 1m de la ligne blanche</figcaption>
 </figure>
 Oui…mais non
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/img_02.webp"
-    alt="Describe the image here"
+    alt="Body over the paint et roues sur la ligne blanche"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Body over the paint et roues sur la ligne blanche</figcaption>
 </figure>
 
 Oui. Dans les 2 photos, notez la différence d'écartement entre les pneus et la bande blanche.
@@ -329,7 +329,7 @@ Qu'est-ce qui va se passer? Rien. Tu vas sortir comme une balle du virage. Aucun
 Il va donc falloir trouver un compromis entre "je roule collé à la corde" et "je pars du bord de la piste dans la bonne direction". Ce compromis c'est le point de pivot (PV ci-dessus).
 
 On reprend...
-* Tu as terminé le freinage au PMSA et tu vise le PC avec ton menton
+* Tu as terminé le freinage au PMSA et tu vises le PC avec ton menton
 * Tu es gaz coupé et tes doigts ne touchent plus le levier de frein.
 * Tu ne plonges **PAS** à la corde
 * Au contraire, tu restes large, tu as peu d'angle et tu "t'enfonces" dans le virage
@@ -337,7 +337,7 @@ On reprend...
 * C'est possible car tu ne freine pas, tu n’accélère pas, tu ne fais rien. Il ne peut rien t'arriver.
 * Tu arrêtes de faire pivoter la moto quand ses roues sont alignées sur la droite qui va de PC à PS
 * Tu vises PS du menton. Là c'est facile tu es dans l'axe
-* Tu commences à accélérer tout de suite après PV (pas en 2 mais en 3). Tu appliques la **Throttle Rule**. Il ne peut rien arriver car tes roues sont dans la bonne direction. Tu vas juste aller de plus en plus vite entre PV, PC et PS. Rien de plus. Plus la moto se relève de plus en plus, tu enroule le câble d'accélérateur.
+* Tu commences à accélérer tout de suite après PV (pas au point 2 ci-dessus mais au point 3). Tu appliques la **Throttle Rule**. Il ne peut rien arriver car tes roues sont dans la bonne direction. Tu vas juste aller de plus en plus vite entre PV, PC et PS. Rien de plus. Plus la moto se relève de plus en plus, tu enroules le câble d'accélérateur.
 * N'hésites pas à tirer sur le bracelet intérieur pour aider la moto à se relever plus vite.
 
 Si on compare avec le pilote qui reste collé à la corde:
@@ -346,7 +346,7 @@ Si on compare avec le pilote qui reste collé à la corde:
 * Qui va avoir la vitesse la plus élevée au PC?
 * Qui des deux va être le premier 100% gaz, **en butée**?
 * Qui va avoir la vitesse la plus élevée au bout de la ligne droite qui suit?
-* Qui va faire un "poutou" à la grid girl de service (mon seul objectif dans la vien en fait)
+* Qui va faire un "poutou" à la grid girl de service (mon seul objectif dans la vie en fait)
 
 T'as compris le truc.
 
@@ -368,7 +368,7 @@ Un truc qui peut aider au début c'est de river ses yeux et son menton sur le po
 
 J'arrive au virage, je chope le cône du PC du regard et du menton. Je ne regarde rien d'autre. Je fais abstraction de tout le reste et jusqu'à ce que je sois sur le point de rouler dessus (2 ou 3 motos de long) je ne le lâche pas.
 
-Faut vraiment sentir que notre tête s'incline au fur et à mesure qu'on approche du cône. Il ne faut pas regarder l'entrée du virage dans son ensemble. Faut être "laser focus" sur le cône (pense aux lasers des yeux de superman).
+Faut vraiment sentir que notre tête change d'orientation au fur et à mesure qu'on s'enfonce dans le virage. Il ne faut pas regarder l'entrée du virage dans son ensemble. Faut être "laser focus" sur le cône (pense aux lasers des yeux de superman).
 
 <figure style="max-width: 560px; margin: auto; text-align: center;">
 <img src="./assets/img_03.webp"
@@ -418,7 +418,7 @@ Le seul truc à regarder dans la photo ci-dessous c'est la position des pneus. I
 ### Je suis lourd
 {: .no_toc }
 
-Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tour passer plus vite en plaçant toujours ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique QUE, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
+Finalement, avec un peu de recul, je crois que c'est le placement des roues sur le point de corde (position **et** direction) qui est le plus important. Au début il faut donc aller doucement, placer ses roues puis tour après tour passer plus vite, faire pivoter la moto plus vite en continuant à placer ses roues sur le point de corde. Il faut apprendre à avoir la tête sur l'herbe, au-delà du vibreur. Ensuite, et seulement ensuite il sera temps d'affiner son freinage, sa position sur la moto, le moment où on ré-accélère dans le virage... En effet, tout cela ne sera bénéfique QUE, si et seulement si, ils s'ajoutent à un placement correct des pneus au point de corde (**sur** PC **et** dans la direction de PS)
 
 Prenons un exemple. Il est illusoire de vouloir améliorer son accélération en sortie de virage alors que mes roues ne passent toujours pas au point de corde. Pourquoi ? Tout simple. Je suis en intermédiaire, mes temps ne sont pas ridicules, j'ai, je pense des freinages de tueur etc. Je me dis qu'il faut maintenant que je soigne ma façon d'accélérer et de sortir des virages. Cela dit, je passe systématiquement à un mètre des points de corde (ma tête est au-dessus de la ligne blanche et/ou mon slider est sur la bande blanche).
 
@@ -686,7 +686,7 @@ Allez, une autre vidéo sur le sujet. J'aime bien la démo à **1:11** ainsi que
   + Prenons un cas extrême pour fixer les idées. Si on commençait à accélérer à la toute fin de la courbe, notre virage se terminerait "officiellement" au milieu de la ligne droite qui suit le virage en question.
   + Pour un autre pilote qui accélérerait au tout début de la courbe (c'est un exemple théorique), la fin "officielle" de son virage se situerait peut-être juste après le point de sortie (PS) ou plus vraisemblablement au SAMU local.
 * En gros, dans un virage, on est sur la ligne idéale quand on applique la **Throttle Rule**. Relire si besoin la [seconde]({%link docs/07_moto/001_notes_pilotage/002_decouverte_de_la_piste_2/decouverte_de_la_piste_2.md%}) note de pilotage
-* À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde (oui, oui bien sûr ça dépend du vriage). Avec la **Throttle Rule**, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde (juste après PV). Ouvrir les gaz, permet de répartir la charge de manière idéale entre l'avant (40%) et l'arrière (60%). Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque.
+* À garder en tête pour plus tard : Théoriquement, on est censé être 100% gaz au point de corde (oui, oui bien sûr ça dépend aussi du virage). Avec la **Throttle Rule**, cela veut dire qu'on a commencé à enrouler de manière imperceptible avant le point corde (juste après PV). Ouvrir les gaz, permet de répartir la charge de manière idéale entre l'avant (40%) et l'arrière (60%). Ensuite au point de corde on est full gaz mais bon, comme on n'est pas sur une PlayStation, il s'écoule un certain temps entre la commande et le fait d'avoir toute la cavalerie à la roue arrière. À ce moment-là on aura dépassé le point de corde et on aura pas mal relevé la moto. Il n'y aura aucun risque.
 
 Mouai... Ben moi j'ai beau le savoir et l'expliquer, je n'arrive toujours pas à le faire comme je voudrais.
 

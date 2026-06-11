@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-10 09:32:33
+last_modified_date: 2026-06-11 11:00:15
 ---
 
 
@@ -39,7 +39,7 @@ J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais 
 <img src="./assets/image-24.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-Je ne vais pas parler ici de la logistique ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
+Je ne vais pas parler ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
 
 Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Sinon, tu peux regarder cette série de vidéos :
 

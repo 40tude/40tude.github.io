@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 6
 date: 2019-09-08 15:51:36
-last_modified_date: 2026-05-25 12:04:17
+last_modified_date: 2026-06-11 11:00:15
 ---
 
 # {{ page.title }}
@@ -105,7 +105,8 @@ On ne pourra pas dire qu'on n'en a pas parlé...
 {: .no_toc }
 
 
-On **an-ti-ci-pe** et on se positionne sur la moto très longtemps avant le prochain virage :
+On **an-ti-ci-pe** et on se positionne sur la moto très longtemps avant le prochain virage
+* Pense à la **CAF**: **C**orps **A**vant les **F**reins. À partir de maintenant tu as le droit de toucher les freins qui si et seulement si ton corps est en place
 * Reculé sur la selle (un poing entre le réservoir et nous)
 * **Une** fesse sortie, buste et épaules décalées mais pas trop
     * Hang off early and **NOT** too far
@@ -125,7 +126,6 @@ En ce qui me concerne je pense qu'il faut que j'ai "l'intention" de sortir 2 fes
 
 Voir ci-dessous la vidéo dont est extraite la photo :
 
-<
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
@@ -484,7 +484,7 @@ Plateau. On garde une pression constante. Pas la peine de se mettre dans le roug
 
 
 * On relâche ensuite **progressivement** le frein jusqu'au point de mise sur l'angle
-    * C'est ce qui permet d'ajuster la vitesse de passage précisément
+    * C'est ce qui permet d'ajuster la vitesse de passage précisément.
     Si l'accélérateur fixe la vitesse en sortie de virage, les freins fixent la vitesse en entrée de virage. Le degré de précision est exactement le même !
     Encore une fois… Progressif sur la libération des freins. Si on n'est pas progressif, la fourche rebondit, il y a transfert de charge vers l'arrière, l'avant qui est allégé a moins de grip, la roue avant a tendance à se bloquer plus facilement etc.
     Ici on considère que le freinage doit être terminé au moment de la mise sur l'angle. Les doigts ne sont donc plus sur le levier de frein.
