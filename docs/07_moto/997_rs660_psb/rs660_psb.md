@@ -13,7 +13,7 @@ parent: "Motos"
 math: mathjax
 date:               2026-06-10 16:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-06-11 15:30:53
+last_modified_date: 2026-06-12 09:56:58
 ---
 
 
@@ -50,11 +50,11 @@ last_modified_date: 2026-06-11 15:30:53
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img src="./assets/img00.webp"
-    alt="TODO: Add a description"
+    alt="Premier roulage avec la RS 660"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Premier roulage avec la RS 660</figcaption>
 </figure>
 
 
@@ -105,10 +105,10 @@ last_modified_date: 2026-06-11 15:30:53
 <!-- ###################################################################### -->
 
 On va commencer par libérer la tringlerie du sélecteur
-* Faire une marque au feutre ou au stylo à peinture pour pouvoir remettre la biellette exactement à la même position.
+* Faire une marque au feutre ou au stylo à peinture pour pouvoir remettre la biellette exactement dans la même position.
 * Dévisser ensuite la vis hexagonale
 * Extraire (plus ou moins facilement) la biellette. Faut le faire uniquement avec les mains.
-* Quand c'est fait, la mettre sur le côté (ne rien débrancher)
+* Quand c'est fait, mettre la tige et la biellette sur le côté (ne rien débrancher)
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
@@ -226,7 +226,7 @@ Pas de commentaire particulier pour le cache chaîne.
 </figure>
 
 
-Au moment de présenter le cache pignon, il faut prendre soin de bine faire passer le cable à l'intérieur. Il y a une gorge, un chemin. Si on ne le fait pas, le cable se trouve coincé.
+Au moment de présenter le cache pignon, il faut prendre soin de bien faire passer le cable à l'intérieur. Il y a une gorge, un chemin. Si on ne le fait pas, le cable se trouve coincé.
 
 Sinon, mauvaise surprise... Au moment de remettre en place le cache pignon je réalise qu'une des vis est complètement "machouillée". C'est pas moi m'sieur, moi j'ai juste dévissé. Je sais pas ce qu'ils ont fichu. Du coup j'ai gagné un aller-retour chez mon concessionaire préféré ([Saint Maur Moto](https://www.saintmaurmotos.fr/)) qui m'a gentiment donné une nouvelle vis.
 
@@ -316,7 +316,7 @@ Je garde le doigt sur le laser, je fais tourner la roue vers l'arrière. Plus lo
 </figure>
 
 
-Pour finir faut resserer l'axe de la roue (écrou de 27, 120 Nm). Je vérifie que la chaîne est bien détendue, un coup de chiffon et c'est terminé. Non?
+Pour finir faut resserrer l'axe de la roue (écrou de 27, 120 Nm). Je vérifie que la chaîne est bien détendue, un coup de chiffon et c'est terminé. Non?
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
