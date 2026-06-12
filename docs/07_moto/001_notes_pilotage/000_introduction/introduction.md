@@ -10,7 +10,7 @@ twitter:
 parent: "Notes de pilotage moto sur circuit"
 nav_order: 2
 date:               2025-01-16 16:00:00 +0000
-last_modified_date: 2026-06-11 11:00:15
+last_modified_date: 2026-06-12 08:07:56
 ---
 
 # {{ page.title }}
@@ -57,7 +57,7 @@ Comme son nom l'indique, la section **Basics** ci-dessous s'intéresse aux fonda
 
 **Compléments** ça dit bien ce que ça veut dire. C'est du plus en plus. Ce qu'il y a d’intéressant c'est que les mêmes sujets sont abordés MAIS avec un autre vocabulaire, d'autres expressions, d'autres images. Là pour le coup, faut pas hésiter à aller voir ces vidéos à l'issue de votre [Première fois sur circuit]({%link docs/07_moto/000_premiere_fois_sur_circuit/premiere_fois_sur_circuit.md%}) ou après avoir lu les Basics.
 
-
+Un dernier conseil avant que vous ne vous lanciez dans la lecture... Je vous propose de lire les chapitre dans l'ordre et de vous limiter à un chapitre par jour. Entre 2, vous aurez la nuit pour y réfléchir, critiquer, confirmer etc. Tout lire d'un seul trait me paraît déraisonnable. Y en a qui ont essayé ils ont eu des problèmes. C'est vous qui voyez...
 
 ### Basics
 1. **[Découverte de la piste 1/2]({%link docs/07_moto/001_notes_pilotage/001_decouverte_de_la_piste_1/decouverte_de_la_piste_1.md%})** : On se prépare pour la journée, on découvre la piste à 75% de nos capacités et on apprend à se coucher sur la moto.
