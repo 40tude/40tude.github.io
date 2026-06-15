@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-14 11:20:53
+last_modified_date: 2026-06-15 10:03:13
 ---
 
 
@@ -31,6 +31,13 @@ last_modified_date: 2026-06-14 11:20:53
 
 [US version available here]({%link docs/07_moto/000_premiere_fois_sur_circuit/first_track_day.md%}).
 
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ## Introduction
 
 J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais mis les pieds sur un circuit et qui avait une furieuse envie de le faire. Alors oui, il y a bien les [Notes de Pilotage Moto]({%link docs/07_moto/001_notes_pilotage/index.md%}) mais idéalement, elle aurait souhaité quelque chose de plus court, de moins complet, un truc actionnable par quelqu'un qui découvre tout et qui l'aide à tirer le meilleur de sa première fois sur circuit. Bref, idéalement, un planning qu'elle pourrait imprimer sur une feuille A4 et garder à portée de main lors de la journée de roulage.
@@ -68,10 +75,30 @@ Pour le reste, dans ce billet il y aura :
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ## Le planning synthétique
 
 Lors de notre discussion nous (ma nouvelle pote et moi) avons décidé de nous caler sur l'agenda d'une journée de roulage type qui est divisée en 6 sessions de 20 minutes chacune. Si jamais la journée comporte une septième session on ne va pas se plaindre, ce sera du plus en plus. On s'est mis aussi d'accord sur le fait qu'elle viendra sur le circuit avec :
-1. une copie papier du planning
+1. [une copie papier du planning](assets/agenda_roulage.pdf)
 1. une copie papier du plan de la piste
 1. un crayon à papier et une gomme
 
@@ -87,6 +114,21 @@ Du point de vue de la journée, afin de découvrir un maximum de choses, on a au
 1. [Conduite du virage](#6-conduite-du-virage)
 1. [La septième session](#7-la-septième-session)
 
+Nous nous sommes placés dans le cas ou le motard met les roues sur un circuit pour la toute première fois. Du coup on consacre la matin à vérifier que les fondamentaux, la base de notre pyramide, sont en place (reco, accèl et couché). Quand ça c'est acquis ou confirmé, on peut s'attaquer aux étage supérieurs de la pyramide : trajectoire, freinage et conduite du virage.
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ## Le planning en mode action
 
 Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en mode sms. Pour le comprendre il faut lire la section suivante.
@@ -94,6 +136,14 @@ Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en 
 [Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)
 
 
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ## Le planning en mode détaillé
 
 
@@ -794,6 +844,25 @@ Cela dit, **réfléchis**. Tu es vraiment mort ou tu as juste la flemme de remet
 * Si tes potes te proposent de rouler ensemble "pour la dernière", refuse.
 Laisse-les partir devant. Tu ne sais pas dans quel état de "fraîcheur" ils sont. Comme dit le vieux proverbe Indien : "Si ça sent l'arsouille, ça sent l'embrouille".
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
+<!-- ########################################################################## -->
 ## Et maintenant, que vais-je faire ?
 
 **Attention**. Parce qu'on ne rigole pas avec la sécurité, en sortant de la dernière session tu vas directement remettre tes pneus à leur pression "route".
