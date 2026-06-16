@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-15 10:03:13
+last_modified_date: 2026-06-16 12:13:29
 ---
 
 
@@ -233,7 +233,7 @@ Tu consacres les 20 minutes de cette session à t'assurer que dans les lignes dr
 
 C'est la base, et donc avant de faire autre chose, il faut que tu t'habitues à mettre la poignée de gaz **en butée** (oui, oui **en butée**). On ne le fait jamais sur route et on entend rarement le moteur très haut dans les tours. Bref, c'est un truc nouveau qu'il faut apprendre à faire. Par exemple, cela peut être en sortie de virage, sur la ligne droite qui suit. Tu es en 2 et la poignée est **en butée** au moment où tu passes la 3. L'objectif n'est pas d'être en 6, à fond et de finir au SAMU local. L'objectif n'est pas non plus de mettre la poignée de gaz à 100% en plein virage. Non, non l'objectif est de s'habituer à tourner la poignée et de sentir qu'on atteint la **butée** ✊. Donc en 2, en 3, 100% gaz quand la moto est verticale, en ligne droite, c'est très bien.
 
-Faut apprendre à le faire car le chrono dépend principalement de ta vitesse au bout des lignes droite et pas vraiment de ta vitesse dans les parties lentes. En plus, il faut habituer notre cerveau à la vitesse car à force de rouler à 80 km/h tous les jours, on est un peu largué au début quand on arrive sur circuit. Enfin, plus tard, si on est en butée au bout d'une ligne droite, on sera sûr de commencer à freiner (voir plus loin) en étant plus ou moins toujours à la même vitesse. Cela nous permettra d'être constant, régulier et donc de nous simplifier l'entrée dans le virage à venir.
+Faut apprendre à le faire car le chrono dépend principalement de ta vitesse au bout des lignes droite et pas vraiment de ta vitesse dans les parties lentes. En plus, il faut habituer notre cerveau à la vitesse car à force de rouler à 80 km/h tous les jours, on est un peu largué au début quand on arrive sur circuit. Enfin, plus tard, si on est en **butée** au bout d'une ligne droite, on sera sûr de commencer à freiner (voir plus loin) en étant plus ou moins toujours à la même vitesse. Cela nous permettra d'être constant, régulier et donc de nous simplifier l'entrée dans le virage à venir.
 
 **Attention**, tu restes bien à 75% de tes capacités. Cela veut dire que dans telle ou telle ligne droite, tu mets 100% gaz mais que tu freines, peut-être, plus tôt que ce que tu faisais lors de la première session. Ne va pas te mettre en mode panique au freinage alors qu'ici on veut travailler l'accélération.
 
@@ -295,7 +295,7 @@ Ajoute des +1 et des -1 sur ton plan du circuit.
 
 **Idée d'entraînement sur la route avant de venir**
 1. Dans le garage, sur la béquille latérale, entraîne toi à tourner la poignée en butée. Faut tourner beaucoup ou pas? Comment est ton poignet? As tu besoin de serrer la poignée? Peux tu faire l'exercice avec 3 doigts? Peux tu le faire sans serrer la poignée de gaz?
-1. En respectant les limitations de vitesse, en 2 avec la moto verticale. amène **progressivement** la poignée de gaz en butée et passe un rapport avant la zone rouge. Ne fait pas du 0-100%. Si ta moto est trop puissante attend d'être sur circuit. L'idée c'est de s'accoutumer et de réaliser comment ça fait "vraiment" quand on est en butée (le bruit, la vitesse, le poignet) et de réaliser que "Nom de Zeus, Marty, y a des chevaux..."
+1. En respectant les limitations de vitesse, en 2 avec la moto verticale. amène **progressivement** la poignée de gaz en **butée** et passe un rapport avant la zone rouge. Ne fait pas du 0-100%. Si ta moto est trop puissante attend d'être sur circuit. L'idée c'est de s'accoutumer et de réaliser comment ça fait "vraiment" quand on est en **butée** (le bruit, la vitesse, le poignet) et de réaliser que "Nom de Zeus, Marty, y a des chevaux..."
 
 
 
@@ -487,7 +487,7 @@ Au PC tu as du gaz. La moto a moins d'angle qu'au PV. Plus tard, au PC, tu n'aur
 
 Le truc **très important**, l'image que tu dois garder en tête...
 Si on arrête le temps quand la moto est au PC, si on la met verticale sur ses deux roues et qu'on met 100% gaz rien de fâcheux ne doit arriver. En effet, ses roues doivent être orientées vers le PS et pas vers le bac à gravier. Donc, si c'est bien le cas, qu'est ce qui va se passer ? La moto va juste sortir du virage comme une balle en toute sécurité dans la direction du PS. Regarde l'orientation, la direction de la flèche verte du dessin.
-En revanche, si au PC les roues ne sont pas bien alignées (en fait cela veut dire que la moto n'a pas fini de pivoté) et si on met 100% gaz tu vas droit dans le gravier.
+En revanche, si au PC les roues ne sont pas bien alignées (en fait cela veut dire que la moto n'a pas fini de pivoter) et si on met 100% gaz tu vas droit dans le gravier.
 
 Relis ce paragraphe plusieurs fois si besoin. C'est important que tu gardes cette image mentale: au point de corde PC tu es déjà en train d'**enrouler** le cable d'accélérateur, les roues de la moto sont dans la bonne **direction** **ET** elles passent à **1 cm** de ce dernier.
 
@@ -523,7 +523,7 @@ Il faut que les deux conditions soient réunies et c'est pour cela qu'il est plu
 * Respecte la phase neutre. Ça, c'est difficile. Au début, ce qui va probablement se passer, c'est que tu vas trop freiner et qu'au PMSA tu n'auras plus assez de vitesse pour rejoindre le PV et y faire pivoter la moto. Nous avons tous tendance à vouloir atteindre notre vitesse minimale au PMSA. C'est rassurant, mais c'est une erreur : la vitesse la plus faible du virage doit être atteinte au PV. Comme il reste une certaine distance à parcourir entre le PMSA et le PV, la vitesse au PMSA doit être suffisante pour rejoindre le PV en toute sécurité, gaz coupé et sans utiliser les freins. Une fois arrivé au PV, à la vitesse où l'on se sent capable de faire pivoter la moto, on la fait tourner jusqu'à ce que ses roues soient alignées sur la trajectoire reliant PC à PS. Tout de suite après, on peut commencer à accélérer. Une façon utile de voir les choses est de considérer que le freinage se décompose en deux phases. La première utilise les freins et le frein moteur pour amener la moto jusqu'au PMSA. La seconde, qui correspond à la phase neutre, n'utilise **que** le frein moteur pour rejoindre le PV. Si la vitesse est déjà trop faible au PMSA, la moto n'aura plus suffisamment d'élan pour atteindre correctement le PV.
 
 * *Pourquoi tu insistes autant pour qu'on arrive au PMSA en longeant la ligne blanche?*
-On va utiliser la figure ci-dessous dans laquelle on arrive du bas. On est sorti d'un virage qui tournait à droite et qui était suivit d'un petit bout de ligne droite. Donc, à la sortie du premier virage on était tout à gauche de la piste et on doit négocier le prochain virage, qui lui, tourne à gauche.
+On va utiliser la figure ci-dessous dans laquelle on arrive du bas. On est sorti d'un virage qui tournait à droite et qui était suivi d'un petit bout de ligne droite. Donc, à la sortie du premier virage on était tout à gauche de la piste et on doit négocier le prochain virage, qui lui, tourne à gauche.
 
 <div align="center">
 <img src="./assets/img04.webp" alt="" width="450" loading="lazy"/>
@@ -560,7 +560,7 @@ C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui dép
     * Es-tu sûr de bien viser le PS et pas un point au 3/4 de la piste à l'extérieur ? La moto va là où tu regardes.
     * Es-tu sûr qu'à aucun moment tu n'arrêtes pas d'ouvrir les gaz ?
     * Enroule le câble d'accélérateur à la même vitesse qu'avant mais, après PV et avant PC, commence à accélérer plus tôt. Tu vas donc passer moins de temps sans frein ni gaz. Tu vas réduire le temps de la phase neutre. C'est bien, c'est ce que l'on cherche à faire.
-    * Commence à enrouler le câble d'accélérateur comme avant mais enroule-le de plus en plus vite et assure-toi d'atteindre la butée. En fait, au début tu vas transférer la charge vers l'arrière. La moto va relever son nez de manière imperceptible, elle va se retrouver dans sa position idéale avec 40% du poids à l'avant et 60% à l'arrière. Quand ça s'est fait et qu'elle est calée, tu peux enrouler de plus en plus vite tout en redressant la moto. Oui, on peut dire qu'on accélère en 2 phases :
+    * Commence à enrouler le câble d'accélérateur comme avant mais enroule-le de plus en plus vite et assure-toi d'atteindre la butée. En fait, au début tu vas transférer la charge vers l'arrière. La moto va relever son nez de manière imperceptible, elle va se retrouver dans sa position idéale avec 40% du poids à l'avant et 60% à l'arrière. Quand ça c'est fait et qu'elle est calée, tu peux enrouler de plus en plus vite tout en redressant la moto. Oui, on peut dire qu'on accélère en 2 phases :
         1. Je cale
         1. Grosse louche
 
@@ -642,7 +642,7 @@ Bon, ben il ne reste plus qu'à faire la même chose avec tous les autres virage
 **Objectif à la fin de la session**
 
 * Il y a au moins un virage dans lequel tu es constant sur ton freinage.
-* En freinant en 3 temps (enfonce l'avant, serre fort, relâche doucement) tu dois freiner beaucoup plus court que ce matin.
+* En freinant en 3 temps (enfonce l'avant, serre fort, relâche doucement) tu dois plus régulier et freiner plus court que ce matin.
 
 **Remarques**
 
@@ -773,7 +773,7 @@ Dorénavant, à vitesse de passage identique, la moto prend moins d'angle. Tu es
   + Au PMSA, tu claques la moto sur l'angle rapidement, tu pousses la poignée intérieure en regardant le PC
   + Phase neutre. Sans frein, ni gaz. Belle vitesse d'entrée (ça c'est difficile). Tu patientes, tu patientes, tu patientes
   + Au PV, tu fais pivoter la moto en désignant PC avec ton menton
-  + Pas de filet de gaz. Après le PV et avant le PC tu commences à enrouler le câble d'accélérateur. Début imperceptible. Tu enroules de plus en plus vite. Idéalement tu es 100% gaz au PC, tu tires la poignée intérieure et tu désignes le PS avec ton menton.
+  + Pas de filet de gaz. Après le PV et avant le PC tu commences à enrouler le câble d'accélérateur. Début imperceptible. Tu enroules de plus en plus vite, tu tires la poignée intérieure et tu désignes le PS avec ton menton.
   + Résumé du résumé : freine, claque, patiente, gaz. Trop facile moi je dis... ✊
 * Quand tu penses que ta position est complètement ridicule c'est que tu commences à ressembler à un pilote.
 
@@ -865,7 +865,7 @@ Laisse-les partir devant. Tu ne sais pas dans quel état de "fraîcheur" ils son
 <!-- ########################################################################## -->
 ## Et maintenant, que vais-je faire ?
 
-**Attention**. Parce qu'on ne rigole pas avec la sécurité, en sortant de la dernière session tu vas directement remettre tes pneus à leur pression "route".
+**Attention**. Parce qu'on ne rigole pas avec la sécurité, en sortant de la dernière session tu vas remettre tes pneus à leur pression "route".
 
 Maintenant il y a deux cas de figure :
 
@@ -882,7 +882,7 @@ Quand ça s'est fait, redonne-toi une chance sur circuit et/ou fais une journée
 
 2. Dans le second cas, si tu as la banane alors que tu es crevé et que tu sais que tu as encore 12 000 trucs à apprendre... Welcome. J'ai juste 3 recommandations :
     * Ta moto est bien meilleure que toi. Donc, pour l'instant, continue avec elle, telle qu'elle est. Ne dépense rien. Entretiens-la correctement (pneus, plaquettes de frein AV, liquide de frein, vidange de fourche, joints spi de fourche, entretien moteur classique...) et ne vas pas mettre 1500€ dans un échappement. C'est de la connerie.
-    * En revanche, si tu as vraiment l'intention de refaire de la piste achète un chrono GPS (n'utilise pas ton téléphone ou alors mets le sous la selle). On peut dire ce que l'on veut, "le chrono ne ment pas". Tu pourras te faire les films que tu veux, te trouver les excuses que tu veux... Soit, tu vas plus vite soit tu es moins efficace. Point. En plus, le chrono tu pourras l'utiliser sur d'autres motos par la suite.
+    * En revanche, si tu as vraiment l'intention de refaire de la piste achète un chrono GPS (n'utilise pas ton téléphone ou alors mets le sous la selle). On peut dire ce que l'on veut, "le chrono ne ment pas". Tu pourras te faire les films que tu veux, te trouver les excuses que tu veux... Soit, tu vas plus vite soit tu es moins efficace. Point. En plus, le chrono tu pourras l'utiliser sur d'autres motos par la suite. Ah oui, comme je suis gentil je t’autorise à acheter des [grip de réservoir](https://nrbike.fr/grip-de-reservoir-stompgrip-universel.html).
     * Participe rapidement à un stage de 1 ou 2 jours. C'est un sacré investissement (600 € environ rien que pour le stage de 2 jours) mais c'est cadré, pro etc. C'est un budget mais cela va te faire gagner beaucoup plus de secondes au tour que n'importe quel accessoire carbone, commande reculée ou pot d'échappement en Mithril. C'est comme apprendre le Snowboard tout seul ou en passant par l'ESF. Il n'y a pas photo. **Attention**, il faudra que tu arrives au stage en forme (abdos, cuisses) et reposé car le rythme y est soutenu. Ce n'est pas un stage commandos de marine mais il faut se donner, pas perdre de temps entre les sessions et tenir jusqu'au bout (physique & mental). Exemple avec mon tout premier [stage avec DRRS en 2019]({%link docs/07_moto/500_stage_de_radigues_rider_school_drrs/stage_de_radigues_rider_school_drrs.md%}).
 
 Pense à aller voir les photos de la journée. Soit, elles sont déjà consultables sur le circuit soit, tu les auras la semaine prochaine en ligne. Achète la moins moche d'entre elles et mets-la de côté. On en reparlera l'année prochaine ou dans 2 ans😊.
