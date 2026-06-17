@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-16 12:13:29
+last_modified_date: 2026-06-17 08:47:50
 ---
 
 
@@ -46,12 +46,20 @@ J'ai eu l'occasion de discuter l'autre jour avec une motarde qui n'avait jamais 
 <img src="./assets/image-24.webp" alt="" width="450" loading="lazy"/>
 </div>
 
-Je ne vais pas parler ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif.
+Lors de notre discussion nous (ma nouvelle pote et moi) avons décidé de nous caler sur l'agenda d'une journée de roulage type qui est divisée en 6 sessions de 20 minutes chacune. Si jamais la journée comporte une septième session on ne va pas se plaindre, ce sera du plus en plus. On s'est mis aussi d'accord sur le fait qu'elle viendra sur le circuit avec :
+1. [une copie papier du planning](assets/agenda_roulage.pdf)
+1. une copie papier du plan de la piste
+1. un crayon à papier et une gomme
 
-Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Sinon, tu peux regarder cette série de vidéos :
+Allez, c'est parti.
 
 
-<figure style="max-width: 560px; margin: auto;">
+<!-- Je ne vais pas parler ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif. -->
+
+<!-- Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Sinon, tu peux regarder cette série de vidéos : -->
+
+
+<!-- <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
     src="https://www.youtube.com/embed/aPERgBZrk4c"
@@ -63,15 +71,15 @@ Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais 
 <figcaption style="text-align: center;">
     1ère fois sur circuit - EP 01
 </figcaption>
-</figure>
+</figure> -->
 
 
 
-Pour le reste, dans ce billet il y aura :
+<!-- Pour le reste, dans ce billet il y aura :
 
 * [Le planning en mode synthétique](#le-planning-synthétique) : ça donne une idée du programme.
 * [Le planning en mode action](#le-planning-en-mode-action) : c'est la partie à imprimer et à garder à portée de main.
-* [Le planning en mode détaillé](#le-planning-en-mode-détaillé) : à lire **avant** d'aller sur le circuit et à relire sur son téléphone le midi de la journée de roulage. C'est dans cette partie que je prends du temps pour expliquer le contenu des différentes sessions.
+* [Le planning en mode détaillé](#le-planning-en-mode-détaillé) : à lire **avant** d'aller sur le circuit et à relire sur son téléphone le midi de la journée de roulage. C'est dans cette partie que je prends du temps pour expliquer le contenu des différentes sessions. -->
 
 
 
@@ -95,7 +103,7 @@ Pour le reste, dans ce billet il y aura :
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-## Le planning synthétique
+<!-- ## Le planning synthétique
 
 Lors de notre discussion nous (ma nouvelle pote et moi) avons décidé de nous caler sur l'agenda d'une journée de roulage type qui est divisée en 6 sessions de 20 minutes chacune. Si jamais la journée comporte une septième session on ne va pas se plaindre, ce sera du plus en plus. On s'est mis aussi d'accord sur le fait qu'elle viendra sur le circuit avec :
 1. [une copie papier du planning](assets/agenda_roulage.pdf)
@@ -116,6 +124,8 @@ Du point de vue de la journée, afin de découvrir un maximum de choses, on a au
 
 Nous nous sommes placés dans le cas ou le motard met les roues sur un circuit pour la toute première fois. Du coup on consacre la matin à vérifier que les fondamentaux, la base de notre pyramide, sont en place (reco, accèl et couché). Quand ça c'est acquis ou confirmé, on peut s'attaquer aux étage supérieurs de la pyramide : trajectoire, freinage et conduite du virage.
 
+-->
+
 
 
 
@@ -129,11 +139,11 @@ Nous nous sommes placés dans le cas ou le motard met les roues sur un circuit p
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-## Le planning en mode action
+<!-- ## Le planning en mode action
 
 Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en mode sms. Pour le comprendre il faut lire la section suivante.
 
-[Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)
+[Agenda de la Journee de Roulage](assets/agenda_roulage.pdf) -->
 
 
 
@@ -144,7 +154,7 @@ Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-## Le planning en mode détaillé
+<!-- ## Le planning en mode détaillé -->
 
 
 
@@ -152,7 +162,7 @@ Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en 
 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-### 1. Reconnaissance de la piste
+## 1. Reconnaissance de la piste
 
 <div align="center">
 <img src="./assets/image-21-1.webp" alt="" width="450" loading="lazy"/>
@@ -221,7 +231,7 @@ Peux-tu mettre des +1 et des -1 sur le plan ? Si tu ne sais pas ce n'est pas gra
 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-### 2. Accélération dans les lignes droites
+## 2. Accélération dans les lignes droites
 
 
 <div align="center">
@@ -314,7 +324,7 @@ Ajoute des +1 et des -1 sur ton plan du circuit.
 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-### 3. Se coucher sur la moto
+## 3. Se coucher sur la moto
 
 <div align="center">
 <img src="./assets/image-21.webp" alt="" width="450" loading="lazy"/>
@@ -407,7 +417,7 @@ Lors de la prochaine session, quand tu auras sanglé ton casque, mets une main s
 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-### 4. Point de corde et trajectoire
+## 4. Point de corde et trajectoire
 
 <div align="center">
 <img src="./assets/img02.webp" alt="" width="450" loading="lazy"/>
@@ -604,7 +614,7 @@ C'est parce que tu n'accélères pas assez fort. C'est l'accélération qui dép
 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-### 5. Freinage
+## 5. Freinage
 
 <div align="center">
 <img src="./assets/image-22.webp" alt="" width="450" loading="lazy"/>
@@ -704,7 +714,7 @@ Il faut être **pro-gre-ssif** et y aller doucement pour ne pas brusquer la moto
 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-### 6. Conduite du virage
+## 6. Conduite du virage
 
 <div align="center">
 <img src="./assets/img03.webp" alt="" width="450" loading="lazy"/>
@@ -824,7 +834,7 @@ Mais bon, "avant de savoir courir il faut savoir marcher". Mettre tout ça en pl
 
 <!-- ########################################################################## -->
 <!-- ########################################################################## -->
-### 7. La septième session
+## 7. La septième session
 
 Y a petit air de 7eme compagnie et de Pithivier. Tu trouves pas? Quoiqu'il en soit, c'est celle qu'on n'attendait pas. C'est donc que du bonus, que du bonheur.
 
@@ -882,7 +892,7 @@ Quand ça s'est fait, redonne-toi une chance sur circuit et/ou fais une journée
 
 2. Dans le second cas, si tu as la banane alors que tu es crevé et que tu sais que tu as encore 12 000 trucs à apprendre... Welcome. J'ai juste 3 recommandations :
     * Ta moto est bien meilleure que toi. Donc, pour l'instant, continue avec elle, telle qu'elle est. Ne dépense rien. Entretiens-la correctement (pneus, plaquettes de frein AV, liquide de frein, vidange de fourche, joints spi de fourche, entretien moteur classique...) et ne vas pas mettre 1500€ dans un échappement. C'est de la connerie.
-    * En revanche, si tu as vraiment l'intention de refaire de la piste achète un chrono GPS (n'utilise pas ton téléphone ou alors mets le sous la selle). On peut dire ce que l'on veut, "le chrono ne ment pas". Tu pourras te faire les films que tu veux, te trouver les excuses que tu veux... Soit, tu vas plus vite soit tu es moins efficace. Point. En plus, le chrono tu pourras l'utiliser sur d'autres motos par la suite. Ah oui, comme je suis gentil je t’autorise à acheter des [grip de réservoir](https://nrbike.fr/grip-de-reservoir-stompgrip-universel.html).
+    * En revanche, si tu as vraiment l'intention de refaire de la piste achète un chrono GPS (n'utilise pas ton téléphone ou alors mets le sous la selle). On peut dire ce que l'on veut, "le chrono ne ment pas". Tu pourras te faire les films que tu veux, te trouver les excuses que tu veux... Soit, tu vas plus vite soit tu es moins efficace. Point. En plus, le chrono tu pourras l'utiliser sur d'autres motos par la suite. Ah oui, comme je suis gentil je t’autorise à acheter des [grips de réservoir](https://nrbike.fr/grip-de-reservoir-stompgrip-universel.html).
     * Participe rapidement à un stage de 1 ou 2 jours. C'est un sacré investissement (600 € environ rien que pour le stage de 2 jours) mais c'est cadré, pro etc. C'est un budget mais cela va te faire gagner beaucoup plus de secondes au tour que n'importe quel accessoire carbone, commande reculée ou pot d'échappement en Mithril. C'est comme apprendre le Snowboard tout seul ou en passant par l'ESF. Il n'y a pas photo. **Attention**, il faudra que tu arrives au stage en forme (abdos, cuisses) et reposé car le rythme y est soutenu. Ce n'est pas un stage commandos de marine mais il faut se donner, pas perdre de temps entre les sessions et tenir jusqu'au bout (physique & mental). Exemple avec mon tout premier [stage avec DRRS en 2019]({%link docs/07_moto/500_stage_de_radigues_rider_school_drrs/stage_de_radigues_rider_school_drrs.md%}).
 
 Pense à aller voir les photos de la journée. Soit, elles sont déjà consultables sur le circuit soit, tu les auras la semaine prochaine en ligne. Achète la moins moche d'entre elles et mets-la de côté. On en reparlera l'année prochaine ou dans 2 ans😊.
