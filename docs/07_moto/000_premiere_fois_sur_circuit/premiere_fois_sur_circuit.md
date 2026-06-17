@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-17 08:51:52
+last_modified_date: 2026-06-17 11:24:49
 ---
 
 
@@ -51,7 +51,9 @@ Lors de notre discussion nous (ma nouvelle pote et moi) avons décidé de nous c
 1. une copie papier du plan de la piste
 1. un crayon à papier et une gomme
 
-Allez, c'est parti.
+Comme tu vas le voir, on consacre la matin à vérifier que les fondamentaux, la base de notre pyramide, sont en place (reco, accèl et couché). Quand ça c'est acquis ou confirmé, on peut s'attaquer aux étages supérieurs de la pyramide : trajectoire, freinage et conduite du virage.
+
+Allez, c'est parti, y a du boulot.
 
 
 
@@ -83,7 +85,7 @@ Pendant la session, prends le temps de repasser par la voie des stands. Tu repè
 
 **Attention**, et c'est d'ailleurs pour ça qu'on fait cet exercice. Quand tu t'insères sur le circuit, les autres sont déjà lancés. Donc, tu jettes ton œil (tu tournes franchement la tête et/ou tu lèves tes fesses de la moto et tu te retournes) et si c'est clair, tu accélères franchement. Ensuite, tu colles la ligne à l'extérieur du prochain virage. Tu fais attention, tu restes large dans le premier virage. Ensuite c'est bon, c'est reparti. Ceux qui sont derrière doivent prendre soin de toi (c'est comme au ski en fait).
 
-Le fait de sortir peut-être très utile si tu te retrouves dans un paquet et que tu n'es pas à l'aise (trop de monde, trop de bruit, trop stressant...). Le mieux dans ce cas-là c'est de passer par les stands puis de rentrer sur la piste tout de suite après afin de se retrouver seul, tranquille et safe. En effet, il ne faut pas suivre les autres de trop près, surtout en "Débutants" car tout peut arriver : rater une vitesse, changement de trajectoire inopiné, attaque de Martiens... Même chose si tu sens que tu manques de concentration... Tu sors, tu respires et tu repars. Cependant, si en fin de session tu es fatigué, tu sors. Il n'y a pas de honte à sortir un ou deux tours avant la fin d'une session.
+Le fait de sortir peut-être très utile si tu te retrouves dans un paquet et que tu n'es pas à l'aise (trop de monde, trop de bruit, trop stressant...). Le mieux dans ce cas-là c'est de passer par les stands puis de rentrer sur la piste tout de suite après afin de se retrouver seul, tranquille et safe. En effet, il ne faut pas suivre les autres de trop près, surtout en "Débutants" car tout peut arriver : rater une vitesse, changement de trajectoire inopiné, attaque de Martiens... Même chose si tu sens que tu manques de concentration... Tu sors, tu respires et tu repars. Cependant, si à la fin d'une session tu es fatigué, tu sors. Il n'y a pas de honte à sortir un ou deux tours avant la fin d'une session.
 
 
 **Objectif à la fin de la session**
@@ -110,7 +112,7 @@ Si tu n'es pas sûr, lors de la prochaine session, fais l'effort de souffler dan
 * Est-ce que tu sais sur quel rapport tu es dans les différentes sections du circuit ?
 Peux-tu mettre des +1 et des -1 sur le plan ? Si tu ne sais pas ce n'est pas grave. Lors de la prochaine session essaies d'en retenir 2 ou 3, puis encore 2 ou 3 à la session suivante. L'idée c'est de se libérer la tête et, par exemple, de retenir qu'en bout de ligne droite tu rentres 2 rapports (-2). C'est plus facile à gérer que de vérifier que tu es bien en 2 dans le virage après la ligne droite (à l'occasion, sur ton tableau de bord, met du scotch bleu à peinture sur tout, sauf le compte tours. Ça évite d'être dérangé par des informations inutiles).
 
-* Si entre les roulages un marshal organise des sessions de debriefing en salle ou sur l'aire plane spécifiquement pour les Débutants tu y vas. C'est non négociable. Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable le restant de ta vie : dès qu'un marshal consacre du temps à ton groupe (Débutants, Intermédiaires...) tu y vas.
+* Si entre les roulages un marshal organise des sessions de debriefing en salle ou sur l'aire plane spécifiquement pour les Débutants tu y vas. C'est **non négociable**. Il y a toujours des choses à apprendre et à entendre de nouveau. C'est valable le restant de ta vie : dès qu'un marshal consacre du temps à ton groupe (Débutants, Intermédiaires...) tu y vas.
 
 
 
