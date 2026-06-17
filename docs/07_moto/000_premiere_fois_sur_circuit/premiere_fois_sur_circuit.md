@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-17 08:47:50
+last_modified_date: 2026-06-17 08:51:52
 ---
 
 
@@ -52,109 +52,6 @@ Lors de notre discussion nous (ma nouvelle pote et moi) avons décidé de nous c
 1. un crayon à papier et une gomme
 
 Allez, c'est parti.
-
-
-<!-- Je ne vais pas parler ici de la [logistique]({%link docs/07_moto/003_checklist_roulage/checklist_roulage.md%}) ni de l'équipement. Je vais imaginer que le motard arrive sur le circuit par la route avec sa propre moto. Je vais me concentrer uniquement sur le pilotage et éviter de raconter trop de bêtises. À ce propos, si tu n'es pas d'accord avec ce que je dis ou si tu as des compléments d'information à partager, fais-le via les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Ils sont les bienvenus. Idem, si tu as des questions auxquelles je ne réponds pas. Un seul truc, restes courtois et constructif. -->
-
-<!-- Pour le reste, lors de la journée, il y aura le brief sécurité le matin mais si vraiment tu penses qu'il y a besoin d'un billet particulier sur la logistique et l'organisation dis le moi dans les [commentaires](https://github.com/40tude/40tude.github.io/discussions). Sinon, tu peux regarder cette série de vidéos : -->
-
-
-<!-- <figure style="max-width: 560px; margin: auto;">
-<div style="position: relative; padding-bottom: 56.25%; height: 0;">
-    <iframe
-    src="https://www.youtube.com/embed/aPERgBZrk4c"
-    title="1ère fois sur circuit - EP 01"
-    style="position: absolute; inset: 0; width: 100%; height: 100%;"
-    allowfullscreen>
-    </iframe>
-</div>
-<figcaption style="text-align: center;">
-    1ère fois sur circuit - EP 01
-</figcaption>
-</figure> -->
-
-
-
-<!-- Pour le reste, dans ce billet il y aura :
-
-* [Le planning en mode synthétique](#le-planning-synthétique) : ça donne une idée du programme.
-* [Le planning en mode action](#le-planning-en-mode-action) : c'est la partie à imprimer et à garder à portée de main.
-* [Le planning en mode détaillé](#le-planning-en-mode-détaillé) : à lire **avant** d'aller sur le circuit et à relire sur son téléphone le midi de la journée de roulage. C'est dans cette partie que je prends du temps pour expliquer le contenu des différentes sessions. -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ## Le planning synthétique
-
-Lors de notre discussion nous (ma nouvelle pote et moi) avons décidé de nous caler sur l'agenda d'une journée de roulage type qui est divisée en 6 sessions de 20 minutes chacune. Si jamais la journée comporte une septième session on ne va pas se plaindre, ce sera du plus en plus. On s'est mis aussi d'accord sur le fait qu'elle viendra sur le circuit avec :
-1. [une copie papier du planning](assets/agenda_roulage.pdf)
-1. une copie papier du plan de la piste
-1. un crayon à papier et une gomme
-
-Du point de vue de la journée, afin de découvrir un maximum de choses, on a aussi pris le parti de passer d'une session à la suivante même si la session précédente n'a pas été entièrement couronnée de succès. L'idée c'est, par exemple, d'éviter de passer les 3/4 de la journée à apprendre le circuit alors qu'on pourra continuer à le faire dans les sessions suivantes. Il y a tellement de choses à découvrir d'ici ce soir !
-
-*Bon alors ton planning, ça vient ?* Voili, voilà ce sur quoi on est tombé d'accord :
-
-1. [Reconnaissance de la piste](#1-reconnaissance-de-la-piste)
-1. [Accélération dans les lignes droites](#2-accélération-dans-les-lignes-droites)
-1. [Se coucher sur la moto](#3-se-coucher-sur-la-moto)
-1. [Point de corde et trajectoire](#4-point-de-corde-et-trajectoire)
-1. [Freinage](#5-freinage)
-1. [Conduite du virage](#6-conduite-du-virage)
-1. [La septième session](#7-la-septième-session)
-
-Nous nous sommes placés dans le cas ou le motard met les roues sur un circuit pour la toute première fois. Du coup on consacre la matin à vérifier que les fondamentaux, la base de notre pyramide, sont en place (reco, accèl et couché). Quand ça c'est acquis ou confirmé, on peut s'attaquer aux étage supérieurs de la pyramide : trajectoire, freinage et conduite du virage.
-
--->
-
-
-
-
-
-
-
-
-
-
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ## Le planning en mode action
-
-Il suffit de récupérer le `.pdf` ci-dessous et de l'imprimer. C'est écrit en mode sms. Pour le comprendre il faut lire la section suivante.
-
-[Agenda de la Journee de Roulage](assets/agenda_roulage.pdf) -->
-
-
-
-
-
-
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ########################################################################## -->
-<!-- ## Le planning en mode détaillé -->
 
 
 
@@ -347,9 +244,6 @@ Tu vas commencer par la plus grande ligne droite parce que c'est là que tu as l
 Heu... C'est peut-être un détail pour toi mais pour moi ça veut dire beaucoup 🎶. Quand tu abaisses le haut du corps tu ne t'accroches pas au guidon. Idéalement tu devrais être capable de baisser le torse sans utiliser tes mains (c'est d'ailleurs un bon exercice à faire en statique sur l'aire plane ou la veille dans ton garage). Le truc, c'est que moins on touche la moto mieux c'est et idéalement s'il n'y avait pas de pilote, la moto se comporterait bien mieux la plupart du temps. Donc, bref, tu ne tiens presque pas les poignées et tu fais tout avec **les abdos**. Oui, oui je confirme c'est un sport et tu vas bien dormir ce soir. Et non, tu n'as pas besoin de serrer l'accélérateur comme tu le fais. Tu peux le tenir ouvert à 100% avec 3 doigts. Là aussi, fais le test sur le parking ou quand tu roules la semaine qui précède le roulage.
 
 
-<!-- <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_qEe6Krz5JI?si=cIu0-Yq2E-y2WSpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div> -->
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
@@ -914,8 +808,3 @@ Bon, allez, la suite au prochain numéro et d’ici-là relis les [Notes de Pil
     Comment faire des squats
 </figcaption>
 </figure>
-
-
-
-
-
