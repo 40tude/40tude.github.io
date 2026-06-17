@@ -6,7 +6,7 @@ parent: "Motos"
 nav_order: 0
 math: mathjax
 date:               2023-05-23 18:40:48
-last_modified_date: 2026-06-17 13:26:33
+last_modified_date: 2026-06-17 16:05:44
 ---
 
 
@@ -371,7 +371,7 @@ Tu mets la moto sur l'angle. Tu arrives sur le point de pivot (PV). Là, tu fais
 
 Tu es toujours gaz coupé. La moto pivote, tu es patient, tu es patient... C'est très dur au début, car comme tu n'as pas assez de vitesse, tu vas avoir tendance à vouloir ouvrir les gaz trop tôt. Non, non, non. Tu attends, tu fais tourner la moto.
 
-Quand la moto a suffisamment pivoté, tu es un peu après PV, tu es encore "loin" du vibreur et tes roues sont dans la direction qui relie le PC au PS. **C'est LE truc important**.
+Quand la moto a suffisamment pivoté, tu as dépassé PV, tu es encore "loin" du vibreur, "loin" de PC mais tes roues sont dans la direction qui relie le PC au PS. **C'est LE truc important**.
 
 Quand les roues sont bien alignées, tu arrêtes de faire pivoter la moto et, alors que tu n'a pas encore atteint PC, tu "scan" avec tes yeux PC et PS et tu commences à ouvrir les gaz. Tu quittes donc la phase neutre. Au début, l'accélération doit être imperceptible. Faut à peine sentir le nez de la moto qui se relève.
 
