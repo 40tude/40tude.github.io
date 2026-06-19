@@ -7,7 +7,7 @@ description: "A gentle, story-driven introduction so you’ll never be confused 
 parent: "ML & AI"
 math: mathjax
 date:               2025-12-13 18:00:00 +0000
-last_modified_date: 2026-04-13 08:13:33
+last_modified_date: 2026-06-19 15:09:02
 ---
 
 
@@ -86,13 +86,14 @@ So fraud is exceptionally rare and this rarity is the root cause of many evaluat
 Assume we have 100_000 transactions.
 
 **Fraudulent transactions:**
-  $$
-  100{\_}000 \times 0.015\% = 15
-  $$
+$$
+100{\_}000 \times 0.015\% = 15
+$$
+
 **Legitimate transactions:**
-  $$
-  100{\_}000 - 15 = 99{\_}985
-  $$
+$$
+100{\_}000 - 15 = 99{\_}985
+$$
 
 So the dataset looks like this:
 
