@@ -44,3 +44,12 @@ python .\titanic.py
 cd docs\09_ml_ai\003_confusion_matrix\assets\python\matrix_confusion
 uv lock --upgrade-package tornado
 ```
+
+## Fix
+28/07/2026
+
+```powershell
+cd docs\09_ml_ai\003_confusion_matrix\assets\python\matrix_confusion
+uv lock --upgrade-package pillow
+```
+
