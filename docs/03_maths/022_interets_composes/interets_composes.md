@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-11 15:53:18
+last_modified_date: 2026-11-11 15:58:58
 ---
 
 
@@ -95,11 +95,11 @@ $$V_n = V_0 * (1 + 5\%)^n$$
 
 $$
 \begin{align*}
-\textrm{Montant final} &= \textrm{Montant initial} * (1 + 5\%)^n
-\textrm{Gain} &= \textrm{Montant final} - \textrm{Montant initial}
-\textrm{Gain} &= \textrm{Montant initial} * (1 + 5\%)^n - \textrm{Montant initial}
-G &= M * (1 + 5\%)^n - M
-G &= M * (1 + 5\%)^n - M
+\textrm{Montant final} &= \textrm{Montant initial} * (1 + 5\%)^n \\
+\textrm{Gain} &= \textrm{Montant final} - \textrm{Montant initial} \\
+\textrm{Gain} &= \textrm{Montant initial} * (1 + 5\%)^n - \textrm{Montant initial} \\
+G &= M * (1 + 5\%)^n - M \\
+G &= M * (1 + 5\%)^n - M \\
 G &= M [(1 + 5\%)^n - 1]
 \end{align*}
 $$
