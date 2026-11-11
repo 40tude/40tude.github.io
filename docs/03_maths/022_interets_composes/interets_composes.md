@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 author: 40tude
 lang: fr-FR
 layout: default
@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-11 15:50:26
+last_modified_date: 2026-11-11 15:53:18
 ---
 
 
