@@ -247,7 +247,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-11-11 15:50:26
 ---
 ```
 
@@ -265,7 +265,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-04-23 18:38:25
+last_modified_date: 2026-11-11 15:50:26
 ```
 
 Image OG ideale : PNG 1200px x 630px
@@ -343,6 +343,8 @@ $$\text{y\_target}$$    Does NOT work in rendering
 ```
 
 Exemples d'equations :
+L'alignement se fait sur le `&`. `align*` sans numérotation. `align` avec numérotation.
+
 ```
 d droit ``\mathrm{d}``
 $$\mathrm{\LaTeX}$$

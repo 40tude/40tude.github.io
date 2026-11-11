@@ -11,7 +11,7 @@ parent: "Maths"
 nav_order: 2
 math: mathjax
 date: 2023-03-21 23:27:31
-last_modified_date: 2026-03-24 15:00:00
+last_modified_date: 2026-11-11 15:50:26
 ---
 
 
@@ -186,7 +186,7 @@ Ah oui quand même... Ça me parait énorme et je n'ai pas envie de vider tes co
 
 T'inquiète Marty ma paupiette. Ce n'est pas tous les jours qu'on a 16 ans. J'avais donc décidé de marquer le coup. Considère ça comme ma contribution à tes [roulages moto sur circuit]({% link docs/07_moto/index.md %}). Tu as trouvé la solution. Bravo. Je suis très fière de toi.
 
-Pour le reste, cet argent je ne l'ai pas mis à la banque il y a 35 ans. Nan, en fait, à l'occasion d'un petit héritage en 2004, j'ai acheté de l'or avec cette somme sur laquelle je ne comptais pas. Crois-le si tu veux, depuis les cours de l'or ont été multipliés par 6 (voir ci-dessous). Ensuite, je me suis arrangé pour te raconter une histoire d'intérêts composés afin de te motiver un peu... 💰
+Pour le reste, cet argent je ne l'ai pas mis à la banque il y a 35 ans. Nan, en fait, à l'occasion d'un petit héritage en 2004, j'ai acheté de l'or avec cette somme sur laquelle je ne comptais pas. Crois-le si tu veux, depuis les cours de l'or ont été multipliés par 6 (voir ci-dessous). Ensuite, je me suis arrangée pour te raconter une histoire d'intérêts composés afin de te motiver un peu... 💰
 
 <div align="center">
 <img src="./assets/image-43.webp" alt="" loading="lazy"/>
@@ -245,7 +245,7 @@ Si on fait le calcul numérique il vient :
 
 $$n = \frac{\ln(2)}{\ln(1 + 5\%)} = \frac{\ln(2)}{\ln(1.05)} = 14.2 \textrm{ années }$$
 
-Avec un taux à 5% par an, si on veut recevoir deux fois ce que l'on a déposé, il faut donc attendre au minimum 14.2 année. Comme les intérêts sont payés en fin année, il faudra attendre 15 ans.
+Avec un taux à 5% par an, si on veut recevoir deux fois ce que l'on a déposé, il faut donc attendre au minimum 14.2 années. Comme les intérêts sont payés en fin année, il faudra attendre 15 ans.
 
 ### Question subsidiaire toute théorique pour se faire les dents
 
@@ -433,11 +433,11 @@ Question : Marty, en tant que bactérie, il nous reste combien de temps ?
 
 Mamie, la situation n'est pas si top que ça. Il ne nous reste que 2 minutes. À 10H00 la bouteille est pleine, à 10H01, 2 bouteilles sont pleines et à 10H02 les 4 bouteilles sont pleines. Mais bon, tes histoires de bouteilles et de bactéries, tout ça, c'est très théorique.
 
-Bien sûr, Marty, c'est une fable mais il ne faut pas se leurrer mon petit gars. Tu peux prendre les pourcentages que tu veux, on parle de croissances exponentielles. Et qu'il s'agisse d'eau potable, de pétrole, de population... Les temps de doublement vont varier (70 ans, 1 siècle, 5 minutes...), les pourcentages paraitront plus ou moins innocents (1%, 3%, 5%...) mais fondamentalement ce sont tous, toujours, des problèmes de croissance exponentielle.
+Bien sûr, Marty, c'est une fable mais il ne faut pas se leurrer mon petit gars. Tu peux prendre les pourcentages que tu veux, on parle de croissances exponentielles. Et qu'il s'agisse d'eau potable, de pétrole, de population... Les temps de doublement vont varier (70 ans, 1 siècle, 5 minutes...), les pourcentages paraîtront plus ou moins innocents (1%, 3%, 5%...) mais fondamentalement ce sont tous, toujours, des problèmes de croissance exponentielle.
 
 Ton père (pauvre garçon) est directeur commercial. Tu crois que s'il annonce fièrement que l'année prochaine il va s'attacher à consolider sa position auprès des clients existants et faire 0% de croissance avec son équipe il va rester longtemps en place ? Le conseil d'administration ne veut rien entendre en dessous de 15% de croissance par an et pour les banques auprès desquelles sa boîte a des emprunts c'est encore pire.
 
-On est piqué à la croissance : que ce soit à propos des salaires, du nombre de télés dans la maison... On en veut plus, toujours plus. On veut "progresser" et depuis trop longtemps nos politiques (qui ont, eux aussi, les mains liées par les banques car les maries, les régions, le pays, l'Europe... contractent des prêts avec des taux d'intérêt) ont fait du mot "croissance" un synonyme du mot "progrès". Du coup, si tu proposes de réfléchir au coup d'après, de lever le pied, tu es "has-been", tu prônes la décroissance, tu veux nous voir revenir à l'âge de pierre et porter des peaux de bêtes etc.
+On est piqué à la croissance : que ce soit à propos des salaires, du nombre de télés dans la maison... On en veut plus, toujours plus. On veut "progresser" et depuis trop longtemps nos politiques (qui ont, eux aussi, les mains liées par les banques car les mairies, les régions, le pays, l'Europe... contractent des prêts avec des taux d'intérêt) ont fait du mot "croissance" un synonyme du mot "progrès". Du coup, si tu proposes de réfléchir au coup d'après, de lever le pied, tu es "has-been", tu prônes la décroissance, tu veux nous voir revenir à l'âge de pierre et porter des peaux de bêtes etc.
 
 Bref, pas simple de se faire entendre quand les gens n'ont toujours pas compris que ces histoires de pourcentages c'étaient toujours des histoires de croissances exponentielles et que ces dernières ne sont tout simplement pas soutenables dans un monde aux ressources finies (quand il n'y a plus de cuivre, il n'y a plus de cuivre. Point).
 
@@ -447,11 +447,11 @@ Bref, pas simple de se faire entendre quand les gens n'ont toujours pas compris 
 <figure style="max-width: 225px; margin: auto; text-align: center;">
 <img
     src="./assets/image-68.webp"
-    alt="Describe the image here"
+    alt="Projet Dernière Chance - Andy Weir"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>J</figcaption>
+<figcaption>Projet Dernière Chance - Andy Weir</figcaption>
 </figure>
 
 ## Le sixième challenge de Mamie - L'échiquier de Sissa
@@ -463,7 +463,7 @@ Bref, pas simple de se faire entendre quand les gens n'ont toujours pas compris 
 
 À ce propos Marty je voudrais être sûr que tu as bien compris ce qu'est une croissance exponentielle. Tu es d'accord avec moi que, quel que soit le pourcentage de croissance annuel, dans plus ou moins longtemps, il y a aura un moment où on aura doublé la mise. OK ? Alors, laisse-moi te raconter l'histoire de [l'échiquier de Sissa](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa).
 
-Enjolive ça comme tu veux avec tes potes à l'école mais, en gros, un prince est tellement content du boulot que vient de faire l'un de ses arpettes qu'il lui propose de choisir sa récompense. Le gars regarde autour de lui, repère un échiquier et dit : sur la première case vous allez faire déposer un grain de blé, 2 sur la seconde, 4 sur la quatrième... Et ce, jusqu'à ce que toutes les cases aient leur lot de grains de blé. Telle sera ma récompense.
+Enjolive ça comme tu veux avec tes potes à l'école mais, en gros, un prince est tellement content du boulot que vient de faire l'un de ses arpettes qu'il lui propose de choisir sa récompense. Le gars regarde autour de lui, repère un échiquier et dit : sur la première case vous allez faire déposer un grain de blé, 2 sur la seconde, 4 sur la troisième... Et ce, jusqu'à ce que toutes les cases aient leur lot de grains de blé. Telle sera ma récompense.
 
 Bien sûr c'est une fable, une parabole, mais est-ce que tu comprends qu'on peut la regarder comme un problème de croissance à 100% ?
 
@@ -481,7 +481,7 @@ $$V_f = V_o * (1 + 3)$$
 
 $$V_f = V_o * 4 $$
 
-En conclusion, si on dit augmentation de "$$x\%$$" cela revient à multiplier la quantité initiale par $$(x + 1)$$.
+En conclusion, si on dit augmentation de "$$x\%$$" cela revient à multiplier la quantité initiale par $$(1 + \frac{x}{100})$$.
 
 Ici on a 100% d'augmentation donc on multiplie par 2.
 
@@ -499,9 +499,9 @@ Ah oui, quand même... Respect.
 
 Marty, on estime qu'un grain de blé pèse [0.05 gr](https://seppi.over-blog.com/2017/08/les-mathematiques-du-ble-et-du-pain.html#:~:text=Un%20grain%20de%20bl%C3%A9%20%3D%200,de%2035%20%C3%A0%2050%20grammes).). Donc on a $$9.22 * 10^{18} * 0.05 = 4.61 * 10^ {17}$$ grammes. Une tonne c'est 1 000 kg, c'est donc $$10^6$$ grammes. Pour finir, sur la dernière case il y a $$4.61 * 10^ {11}$$ tonnes de blé ou $$4.61 * 10^ {5}$$ millions de tonnes de blé. Si on considère [qu'on produit](https://www.yara.fr/fertilisation/solutions-pour-cultures/ble/production-mondiale-ble/#:~:text=Le%20bl%C3%A9%2C%20fleuron%20du%20march%C3%A9%20mondial%20des%20c%C3%A9r%C3%A9ales&text=Chaque%20ann%C3%A9e%2C%20650%20%C3%A0%20685,tonnes%20sont%20entrepos%C3%A9es%20en%20r%C3%A9serves.) 700 millions de tonnes de blé par an c'est environ 660 ans de production annuelle qu'il faut déposer sur la dernière case. Du délire... Et je ne te parle même pas du total de tout ce qui a été déposé sur les autres cases...
 
-Le drame des croissances exponentielles c'est qu'on commence avec 1 ou 2 grains de blé et qu'on termine avec 1000 fois la production annuelle... Faut vraiment en être conscient si on ne veut pas raconter de bêtises ou demander n'importe quoi à la planète.
+Le drame des croissances exponentielles c'est qu'on commence avec 1 ou 2 grains de blé et qu'on termine avec 1000 fois la production annuelle... Oui oui, je sais on vient de montrer que c'était 660 mais bon 1000 permet de fixer les idées. Faut vraiment en être conscient si on ne veut pas raconter de bêtises ou demander n'importe quoi à la planète.
 
-## Le septième challenge de Mamie -
+## Le septième challenge de Mamie - Plus que tout ce qui précède
 
 Marty, on n'en a pas terminé avec l'échiquier mais, comme je n'ai pas envie que tu me dises que "tout ça c'est très théorique" on va parler production. Choisis ce que tu veux : pétrole, cuivre, farine, motos... Peu importe. De plus, je te propose de prendre 5% de croissance annuelle et comme valeur de départ, on va prendre 100 si cela ne te fais rien. Tiens, j'ai préparé ce tableau prévisionnel pour toi.
 
@@ -510,7 +510,7 @@ Marty, on n'en a pas terminé avec l'échiquier mais, comme je n'ai pas envie qu
 </div>
 
 
-Tu remarques que je suis allé jusqu'à l'année 29 car elle correspond à la deuxième période de doublement de la valeur initiale. En effet si tu divises 70 par 5 tu trouves 14. Dans le tableau ci-dessus à T=15 on a bien doublé la valeur initiale et en T=29 on l'a quadruplé. C'est bon pour toi ? OK, on continue.
+Tu remarques que je suis allée jusqu'à l'année 29 car elle correspond à la deuxième période de doublement de la valeur initiale. En effet si tu divises 70 par 5 tu trouves 14. Dans le tableau ci-dessus à T=15 on a bien doublé la valeur initiale et en T=29 on l'a quadruplé. C'est bon pour toi ? OK, on continue.
 
 Question : quelle est la somme des valeurs entre l'indice 0 et l'indice n ? Cela n'a rien à voir avec les pourcentages, mais on en a besoin pour la suite. Aie confiance, crois en moi...
 
@@ -651,7 +651,7 @@ $$S_{n1+1-n2} = V_0* \frac{(q^{n_2+1} - q^{n_1+1})}{q -1}$$
 
 Maintenant il faut vérifier que l'on a :
 
-$$V_0* \frac{(q^{n-1+1} - 1)}{q -1} < V_0* \frac{(q^{n_2+1} - q^{n_1+1})}{q -1}$$
+$$V_0* \frac{(q^{n_1+1} - 1)}{q -1} < V_0* \frac{(q^{n_2+1} - q^{n_1+1})}{q -1}$$
 
 On peut déjà commencer par faire le ménage et comme $$V_0$$ n'est pas nul, on peut diviser à droite et à gauche par cette valeur. Ensuite on peut virer le $$q-1$$ qu'on retrouve dans les dénominateurs. Il ne reste plus que :
 
@@ -869,19 +869,19 @@ Dans le cas T=1 000 ans, toujours avec 1% de croissance, c'est pire car la resso
 
 Une dernière remarque. Parfois, on n'a pas accès à T, la durée pendant laquelle on va pouvoir, au rythme actuel, consommer telle ou telle ressource non renouvelable. Dans ce cas-là, pour s'en sortir, il faut trouver 2 autres valeurs :
 
-2. Le montant des réserves estimées.
+1. Le montant des réserves estimées.
 
-6. Le taux d'extraction (ou de consommation) actuel.
+2. Le taux d'extraction (ou de consommation) actuel.
 
 Ensuite, il ne faut pas sortir du [MIT](https://www.mit.edu/) pour faire la division du premier par le second et retrouver T.
 
 Allez, Marty, mettons ça en pratique.
 
-2. Sur ce [site](https://fr.statista.com/statistiques/571213/reserves-de-cuivre-dans-le-monde-par-pays/) tu trouves que les réserves de cuivre sont de 815 millions de tonnes
+1. Sur ce [site](https://fr.statista.com/statistiques/571213/reserves-de-cuivre-dans-le-monde-par-pays/) tu trouves que les réserves de cuivre sont de 815 millions de tonnes
 
-6. Sur ce [site](https://www.strategie.gouv.fr/sites/strategie.gouv.fr/files/atoms/files/fs-2020-dt-consommation-metaux-du-numerique-juin.pdf) tu trouves que la consommation de cuivre est de 24 millions de tonnes par an
+2. Sur ce [site](https://www.strategie.gouv.fr/sites/strategie.gouv.fr/files/atoms/files/fs-2020-dt-consommation-metaux-du-numerique-juin.pdf) tu trouves que la consommation de cuivre est de 24 millions de tonnes par an
 
-10. Sur le même site on t'indique que depuis 1900 la consommation progresse de 3.4% par an
+3. Sur le même site on t'indique que depuis 1900 la consommation progresse de 3.4% par an
 
 <div align="center">
 <img src="./assets/image-54.webp" alt="" width="900" loading="lazy"/>
