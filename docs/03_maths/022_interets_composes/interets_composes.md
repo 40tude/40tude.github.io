@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-12 11:06:28
+last_modified_date: 2026-11-12 12:35:50
 ---
 
 
@@ -183,12 +183,14 @@ plt.show()
 <figcaption>Évolution du gain de 1 000 € placés à 5% sur 35 ans</figcaption>
 </figure>
 
+
+
 Super. Maintenant on peut commencer à discuter. Tiens, affiche moi les 3 graphes quand on double
 1. le montant initial (2 000€ au lieu de 1 000 €)
-1. la durée (70 ans au lieu de 35)
 1. le rendement (10% au lieu de 5)
+1. la durée (70 ans au lieu de 35)
 
-Voilà ce que je vois. Respectivement 9 000 €, 29 000 € et 27 000 €
+Voilà ce que je vois. Respectivement 9 000 €, 27 000 € et 29 000 €
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img04.webp"
@@ -200,15 +202,6 @@ Voilà ce que je vois. Respectivement 9 000 €, 29 000 € et 27 000 €
 </figure>
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img src="./assets/img05.webp"
-    alt="Évolution du gain de 1 000 € placés à 5% sur 70 ans"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>Évolution du gain de 1 000 € placés à 5% sur 70 ans</figcaption>
-</figure>
-
-<figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img06.webp"
     alt="Évolution du gain de 1 000 € placés à 10% sur 35 ans"
     style="width: 100%; height: auto;"
@@ -217,15 +210,25 @@ Voilà ce que je vois. Respectivement 9 000 €, 29 000 € et 27 000 €
 <figcaption>Évolution du gain de 1 000 € placés à 10% sur 35 ans</figcaption>
 </figure>
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img05.webp"
+    alt="Évolution du gain de 1 000 € placés à 5% sur 70 ans"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Évolution du gain de 1 000 € placés à 5% sur 70 ans</figcaption>
+</figure>
+
+
 Et du coup Marty qu'est-ce qui te vient en tête?
 
-J'ai pas l'impression que de doubler la mise au départ soit si intéressant. En fait si, c'est rentable car on gagne 2 fois plus (9k au lieu de 4.5k) mais bon c'est linéaire. Dans les autres cas, c'est une toute autre histoire. Au bout de 70 ans, j'aurai une hanche en titane, plus de dents mais je pourrai m'acheter une Rolex avec les 29 k€ de gains mais... Le mieux, c'est peut être de trouver un placement qui double les intérêts car à 53 ans je pourrai alors m'acheter et profiter pendant quelques années encore d'une très belle moto à 27 000 balles.
+J'ai pas l'impression que de doubler la mise au départ soit si intéressant. En fait si, c'est rentable car on gagne 2 fois plus (9k au lieu de 4.5k) mais bon c'est linéaire. Dans les autres cas, c'est une toute autre histoire. Au bout de 70 ans, troisième cas, j'aurai une hanche en titane, plus de dents mais je pourrai m'acheter une Rolex avec les 29 k€ de gains mais... Le mieux, c'est peut être le compromis du second cas et de trouver un placement qui double les intérêts car alors à 53 ans ($$18+35=53$$) je pourrai alors m'acheter et profiter pendant quelques années encore d'une très belle moto à 27 000 balles.
 
-Tu es mon digne petit fils. Oui il y a 3 paramètres indépendants dans ton équation et en jouant sur les valeurs, on voit que certains on plus d'influence que d'autres. Alors commence pas à faire ta mijaurée ou ton wokiste de base. Imagine... Imagine que tu te balade sur une plage et qu'en marchant, tu rattrape une fille que tu vois de dos. Qu'est ce qui va faire que tu va vouloir engager la conversation? La longueur des cheveux, ses fesses, sa hauteur... Bon ben voilà t'as tout compris. Là aussi y a plusieurs paramètres mais certains sont plus importants que d'autres.
+Tu es mon digne petit fils. Oui, il y a 3 paramètres indépendants dans ton équation et en jouant sur les valeurs, on voit que certains ont plus d'influence que d'autres. Alors... Commence pas à faire ta mijaurée ou ton wokiste de base. Imagine... Imagine que tu te balades sur une plage et qu'en marchant, tu rattrapes une fille que tu vois de dos. Qu'est ce qui va faire que tu va vouloir engager la conversation? La longueur des cheveux, ses fesses, sa hauteur... Bon ben voilà, t'as tout compris. Là aussi y a plusieurs paramètres mais certains sont plus importants que d'autres.
 
 Du coup, la question à 1M$ c'est: dans le cadre de ton équation avec ses 3 paramètres, est-ce que tu es capable d'aller plus loin que les tests de doublement de valeur qu'on a fait et de retrouver, par calcul, l'influence de chacun d'entre eux?
 
-Ouai... Normalement c'est possible. On a vu ça en physique et mon prof qui lui n'est pas un obsédé avait un exemple tout aussi pertinent. Il disait: imaginez que vous êtes au sommet d'une petite colline avec votre snowboard. Le terrain c'est une surface dont l'altitude est une fonction de $$x$$ et de $$y$$, un truc du style $$z = f(x, y)$$. Du coup si tu pars vers le nord, $$x$$ ne change pas, seul $$y$$ varie et la pente est peut être douce. Si tu par vers l'ouest, $$y$$ ne change pas, seul $$x$$ varie et la pente est peut être plus prononcée, et donc plus de fun. Donc les gars, pas de panique, calculer une dérivée partielle ça revient à étudier la formule initiale en bloquant tous les paramètres sauf un et à regarder alors ce qui se passe.
+Ouai... Normalement c'est possible. On a vu ça en physique et mon prof qui lui n'est pas un obsédé avait un exemple tout aussi pertinent. Il disait: imaginez que vous êtes au sommet d'une petite colline avec votre snowboard. Le terrain c'est une surface dont l'altitude est une fonction de $$x$$ et de $$y$$, un truc du style $$z = f(x, y)$$. Du coup si tu pars vers le nord, $$x$$ ne change pas, seul $$y$$ varie et la pente est peut être douce. Si tu pars vers l'ouest, $$y$$ ne change pas, seul $$x$$ varie et la pente est peut être plus prononcée, et donc plus de fun. Donc les gars, pas de panique, calculer une dérivée partielle ça revient à étudier la formule initiale en bloquant tous les paramètres sauf un et à regarder alors ce qui se passe.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img07.webp"
@@ -256,12 +259,103 @@ $$
 
 ### Qu'est-ce qui se passe si le montant varie?
 
+Je ré-écris l'équation sous la forme
+
+$$
+y = x \left[ (1+r)^n - 1 \right]
+$$
+
+Il faut bien voir que $$x$$ est la variable et que $$r$$ et $$n$$ doivent être considérés comme des constantes. À l'extreme, on pourrait écrire l'équation précédente sous la forme :
+
+$$
+\begin{align*}
+y = x \left[ (1+r)^n - 1 \right] \\
+y = x K \\
+y = K x
+\end{align*}
+$$
+
+Si je dérive j'obtiens
+
+$$
+\begin{align*}
+y^\prime &= K \\
+y^\prime &= \left[ (1+r)^n - 1 \right] \\
+y^\prime &= (1+r)^n - 1 \\
+G^\prime &= (1+r)^n - 1
+\end{align*}
+$$
+
+Mais comme on veut se rappeler que ce qu'on a sous les yeux, c'est la variation du gain $$G$$ quand le montant $$M$$ varie, on écrit pas $$G^\prime$$ mais plutôt $$\frac{\partial G}{\partial M}$$. Un c'est trop la classe et deux ça veut juste dire, dérivée partielle de $$G$$ par rapport à $$M$$. Du coup j'écris :
+
+
 $$
 \frac{\partial G}{\partial M} = (1+r)^n - 1
 $$
 
+Et tu comprends ça comment mon petit Marty?
+
+Ben... Je me dis que si $$r$$ et $$n$$ sont des constantes, 5% et 35 ans par exemple, alors le membre de droite de l'égalité est constant lui aussi. Ici, avec les valeurs précédentes il vaut 4.5160. Y a pas de surprise. On avait $$ y = K x$$. La pente c'est $$K$$ (4.5160). Le gain varie linéairement avec le montant. Si on injecte 1000 € au début on va récupérer 4 516 € à la fin. Plus important, cela explique pourquoi quand on double le montant au départ (2000 vs 1000 par exemple) à la fin, on a "juste" doublé le gain.
+
+**À retenir** : La dérivée partielle du gain par rapport au montant initial est une constante donc le gain varie linéairement avec ce dernier.
+
+
+
+
+
+
+### Qu'est-ce qui se passe si le rendement varie?
+
+Je pars de l'équation
+
+$$
+G = M \left[ (1+r)^n - 1 \right]
+$$
+
+Je la ré-écris sous la forme
+
+$$
+y = M \left[ (1+x)^n - 1 \right]
+$$
+
+Ca ressemble à $$y = M [f(x) - 1]$$ dont la dérivée est de la forme $$y^\prime = M f^\prime(x)$$
+
+Ensuite la dérivée de $$(1+x)^n$$ c'est la dérivée de $$u^n$$ soit $$nu^{n-1}u^\prime$$ soit ici $$n (1+x)^{n-1} \, 1$$ car la dérivée de $$x$$ c'est $$1$$
+
+Du coup j'écris
+
+$$
+\frac{\partial y}{\partial x} = M \, n \, (1+r)^{n-1}
+$$
+
+Soit avec les noms des variables du début
+
+$$
+\frac{\partial G}{\partial r} = M \, n \, (1+r)^{n-1}
+$$
+
+Et qu'est-ce que ça veut dire en Français dans le texte?
+
+La dérivée partielle du gain par rapport au rendement est une fonction qui ressemble bigrement à $$y^\prime=Kx^n$$. Avec nos valeurs ça ressemble à $$y^\prime = 35000 \, x^{34}$$ où $$x$$ vaut en fait $$1+r$$ (1.05 si $$r = 5\%$$). $$y^\prime$$ n'est donc plus une constante comme avant, c'est une "parabole". La pente, le taux d'accroissement varie comme la puissance 34 du rendement.
+
+
+
+
+
 
 ### Qu'est-ce qui se passe si la durée varie?
+
+Je pars de l'équation
+
+$$
+G = M \left[ (1+r)^n - 1 \right]
+$$
+
+Je la ré-écris sous la forme
+
+$$
+y = M \left[ (1+r)^x - 1 \right]
+$$
 
 
 $$
@@ -271,11 +365,6 @@ $$
 
 
 
-### Qu'est-ce qui se passe si le rendement varie?
-
-$$
-\frac{\partial G}{\partial r} = M \, n \, (1+r)^{n-1}
-$$
 
 
 
