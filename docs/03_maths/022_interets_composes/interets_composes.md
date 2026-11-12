@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-12 12:35:50
+last_modified_date: 2026-11-12 17:17:38
 ---
 
 
@@ -285,6 +285,7 @@ y^\prime &= (1+r)^n - 1 \\
 G^\prime &= (1+r)^n - 1
 \end{align*}
 $$
+
 
 Mais comme on veut se rappeler que ce qu'on a sous les yeux, c'est la variation du gain $$G$$ quand le montant $$M$$ varie, on écrit pas $$G^\prime$$ mais plutôt $$\frac{\partial G}{\partial M}$$. Un c'est trop la classe et deux ça veut juste dire, dérivée partielle de $$G$$ par rapport à $$M$$. Du coup j'écris :
 
