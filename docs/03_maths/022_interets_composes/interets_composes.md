@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-13 10:01:30
+last_modified_date: 2026-11-13 17:58:09
 ---
 
 
@@ -500,11 +500,172 @@ $$
 y = M \left[ (1+r)^x - 1 \right]
 $$
 
+$$
+y = M \,(1+r)^x - M
+$$
+
+Du coup la dérivée de $$y$$ c'est la dérivée de $$M \,(1+r)^x$$ car la dérivée de $$M$$ par rapport à  $$x$$ c'est 0. Mais bon je suis coincé car je cherche la dérivée par rapport à $$x$$ d'un truc de la forme $$K^x$$ et ça, je sais pas faire. Mamie? Une idée?
+
+Non, débrouille toi tout seul t'es un grand garçon. Je veux bien admettre que vous êtes de plus en plus nul au point d'être quasiment dernier au classement [PISA](https://www.planetegrandesecoles.com/classement-pisa-france-resultats) mais bon faut pas pousser.
+
+OK, ok, ok... Te fâche pas. Le truc dont je me souviens c'est que si il y a une puissance, faut utiliser les log. Oui mais moi j'ai $$K^x$$. Le log de ce truc là ne m'arrange pas, je vais me retrouver avec $$\ln(K^x)$$... Moi ce que je veux c'est avoir un truc qui vaut $$K^x$$.
+
+Marty, si je te donne $$\ln(5)$$, comment tu retrouve $$5$$?
+
+Ben c'est évident, je prends l'exponentielle... Ayé, j'ai compris! J'ai $$K^x$$, pour jouer avec les puissances je veux utiliser $$\ln(K^x)$$ du coup j'écris $$e^{\ln(K^x)}$$.
+
+À partir de là, la vie est belle car dériver $$K^x$$ ça revient à dériver $$e^{\ln(K^x)}$$ ce qui revient à dériver $$e^X$$ et ça c'est facile c'est de la forme $$e^X \, X^\prime$$. Du coup je peux écrire :
+
+$$
+\begin{align*}
+\frac{\partial y}{\partial x} &= \frac{\partial (M \,(1+r)^x)}{\partial x} \\
+\frac{\partial y}{\partial x} &= M \, \frac{\partial ((1+r)^x)}{\partial x} \\
+\frac{\partial y}{\partial x} &= M \, \frac{\partial (e^{\ln(1+r)^x})}{\partial x} \\
+\frac{\partial y}{\partial x} &= M \, \frac{\partial (e^{x\ln(1+r)})}{\partial x} \\
+\frac{\partial y}{\partial x} &= M \, e^{x\ln(1+r)} \, \frac{\partial (x\ln(1+r))}{\partial x} \\
+\frac{\partial y}{\partial x} &= M \, e^{\ln(1+r)^x} \, \frac{\partial (x\ln(1+r))}{\partial x} \\
+\frac{\partial y}{\partial x} &= M \, (1+r)^x \, \frac{\partial (x\ln(1+r))}{\partial x} \\
+\frac{\partial y}{\partial x} &= M \, (1+r)^x \, \ln(1+r) \\
+
+\end{align*}
+$$
+
+
+Enfin, si je reprends les notations de la formule de départ j'arrive à :
+
 
 $$
 \frac{\partial G}{\partial n} = M \, (1+r)^n \ln(1+r)
 $$
 
+Et voilà Mamie, c'est plié!
+
+Pas si vite jeune homme. Une formule c'est bien joli mais tu sais ce que je pense des formules qu'on ne sait pas lire. Qu'est-ce qu'elle raconte la tienne?
+
+Alors... Déjà, si je regarde bien, $$M \,(1+r)^n$$ c'est le montant total sur le compte au bout de $$n$$ années. La mise plus le gain, $$M + G$$ quoi. Je peux donc écrire :
+
+$$
+\frac{\partial G}{\partial n} = (M + G) \ln(1+r)
+$$
+
+Ensuite, avec $$r=5\%$$, $$\ln(1.05) \approx 0.0488$$. C'est presque 5%. Autrement dit, une année de plus rapporte à peu près 5% de ce qu'il y a déjà sur le compte. Dit comme ça, ça paraît bête, c'est la définition même des intérêts... Mais la conséquence est énorme : la vitesse à laquelle le gain grossit est proportionnelle à ce qu'on a déjà accumulé. Plus la boule de neige est grosse, plus elle ramasse de neige à chaque tour. C'est la signature d'une exponentielle. Pour le rendement, $$r$$ était "en bas", dans une fonction puissance. Ici, $$n$$ est "en haut", dans l'exposant.
+
+Bien. Moi je suis une vieille dame, faut que je voie pour croire. Tu me fais la même chose que pour le rendement? Un tableau puis un graphe. Tu gardes les 1 000 € et les 5% et cette fois, tu fais varier la durée de 0 à 70 ans.
+
+Pas de souci. Dans le notebook, dans la section "Qu'est-ce qui se passe si la durée varie?", je recopie presque le code du rendement. Seule la fonction `derivee()` change (il faut un `import math` pour avoir le logarithme `math.log()`) et la boucle porte maintenant sur les années, de 5 en 5 :
+
+```python
+import math
+
+M = 1_000  # mise initiale (€)
+r = 0.05   # rendement annuel
+
+def gain(n):
+    return M * ((1 + r) ** n - 1)
+
+def derivee(n):
+    return M * (1 + r) ** n * math.log(1 + r)
+
+def fmt(x):
+    return f"{x:,.0f} €".replace(",", " ")
+
+print(f"{'n':>4} | {'Gain G':>10} | {'dG/dn':>10} | {'G(n+1) - G(n)':>13}")
+print("-" * 47)
+for n in range(0, 71, 5):
+    print(f"{n:>4} | {fmt(gain(n)):>10} | {fmt(derivee(n)):>10} | {fmt(gain(n + 1) - gain(n)):>13}")
+```
+
+À l'exécution je vois :
+
+```text
+   n |     Gain G |      dG/dn | G(n+1) - G(n)
+-----------------------------------------------
+   0 |        0 € |       49 € |          50 €
+   5 |      276 € |       62 € |          64 €
+  10 |      629 € |       79 € |          81 €
+  15 |    1 079 € |      101 € |         104 €
+  20 |    1 653 € |      129 € |         133 €
+  25 |    2 386 € |      165 € |         169 €
+  30 |    3 322 € |      211 € |         216 €
+  35 |    4 516 € |      269 € |         276 €
+  40 |    6 040 € |      343 € |         352 €
+  45 |    7 985 € |      438 € |         449 €
+  50 |   10 467 € |      559 € |         573 €
+  55 |   13 636 € |      714 € |         732 €
+  60 |   17 679 € |      911 € |         934 €
+  65 |   22 840 € |    1 163 € |       1 192 €
+  70 |   29 426 € |    1 485 € |       1 521 €
+```
+
+Attends, attends... Cette fois tu n'as pas divisé par 100? Elle est où ta colonne "Pente / point"?
+
+Bien vu Mamie, mais non, pas besoin. Pour le rendement, la dérivée était exprimée "par 100% de rendement" et il fallait la ramener à un point. Ici $$n$$ se compte en années, donc la dérivée est directement en "euros par an". Une année de plus c'est $$\Delta n = 1$$ et on lit la colonne telle quelle. À 35 ans, une année de plus rapporte environ 269 € selon la dérivée et 276 € en vrai (dernière colonne).
+
+Et là encore la dérivée sous-estime?
+
+Oui, pour la même raison que tout à l'heure : la courbe accélère et la tangente reste en dessous. Mais regarde, l'écart est minuscule et surtout il est toujours le même en proportion : 49 contre 50, 269 contre 276, 1 485 contre 1 521... La vraie valeur est toujours environ 2.5% au-dessus. C'est logique. Sur une année, la vraie augmentation c'est $$G(n+1) - G(n) = M(1+r)^n \times r$$, soit 5% du montant. La dérivée c'est $$M(1+r)^n \times \ln(1+r)$$, soit 4.88% du montant. Le rapport des deux vaut $$0.05 / 0.0488 \approx 1.025$$ et ce, quel que soit $$n$$.
+
+OK. Et si tu lis le tableau de haut en bas?
+
+La colonne "dG/dn" double à peu près tous les 14 ou 15 ans : 49 € au départ, 101 € à 15 ans, 211 € à 30 ans, 438 € à 45 ans, 911 € à 60 ans. Et je peux même le calculer. Doubler $$(1+r)^n$$ revient à avoir $$n \ln(1+r) = \ln 2$$ soit $$n = \ln 2 / \ln(1.05) \approx 14.2$$ ans.
+
+Ah! Ça, de mon temps, à la banque on appelait ça la règle de 72. Tu divises 72 par le rendement en pourcent et tu as le temps de doublement : $$72/5 = 14.4$$ ans. Pas besoin de logarithme, juste un crayon et le dos d'une enveloppe.
+
+Trop fort... Du coup ça veut dire que la première année m'a rapporté 50 € alors que la 70ème m'en rapportera plus de 1 500. Les 35 premières années rapportent 4 516 € et les 35 suivantes $$29\,426 - 4\,516 = 24\,910$$ €. Cinq fois plus pour la même durée!
+
+Voilà pourquoi je voulais que ton père t'ouvre ce PEA maintenant et pas quand tu auras 40 ans. Le temps, c'est le seul ingrédient que tu ne pourras jamais racheter. Bon, et ce graphe?
+
+Dans le notebook, je crée une section "Le gain en fonction de la durée" et je reprends le code du graphe du rendement. Sauf qu'en abscisse, on a maintenant la durée :
+
+```python
+import math
+import matplotlib.pyplot as plt
+
+M = 1_000  # mise initiale (€)
+r = 0.05   # rendement annuel
+N = 70     # durée max (années)
+n0 = 35    # point où l'on trace la tangente
+
+ns = [i / 10 for i in range(0, 10 * N + 1)]  # 0 à 70 ans
+gains = [M * ((1 + r) ** n - 1) for n in ns]
+
+G0 = M * ((1 + r) ** n0 - 1)
+pente = M * (1 + r) ** n0 * math.log(1 + r)
+tangente = [G0 + pente * (n - n0) for n in ns]
+
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot(ns, gains, label="Gain G(n)")
+ax.plot(ns, tangente, linestyle="--",
+        label=f"Tangente en n = {n0} ans (pente : {pente:,.0f} € par an)".replace(",", " "))
+ax.plot([n0], [G0], marker="o", color="black")
+ax.set_xlabel("Durée n (années)")
+ax.set_ylabel("Gain (€)")
+ax.set_title(f"Gain de {M:,.0f} € placés à {r:.0%} selon la durée".replace(",", " "))
+ax.yaxis.set_major_formatter(lambda y, _: f"{y:,.0f}".replace(",", " "))
+ax.grid(True, alpha=0.3)
+ax.legend()
+fig.tight_layout()
+plt.show()
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img09.webp"
+    alt="Gain de 1 000 € placés à 5% selon la durée, avec la tangente en n = 35 ans"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Gain de 1 000 € placés à 5% selon la durée, avec la tangente en n = 35 ans</figcaption>
+</figure>
+
+C'est le même principe que pour le rendement. On bloque la mise (1 000 €) et le rendement (5%) et on ne laisse bouger que la durée $$n$$.
+
+1. **La courbe pleine** c'est le gain $$G(n)$$. D'ailleurs, c'est la même courbe que celle du tout début quand on avait doublé la durée à 70 ans. Elle est presque plate pendant une vingtaine d'années puis elle décolle. C'est la colonne "dG/dn" qui double tous les 14 ans.
+1. **Le point noir** c'est encore notre cas de référence : 35 ans, 4 516 €.
+1. **Les pointillés** c'est la tangente en $$n = 35$$ ans, de pente 269 € par an. Toujours la même formule $$y = f(a) + f^\prime(a)(x - a)$$, avec cette fois $$a = 35$$.
+
+Pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. Elle se trompe de plus de moitié! Un an, c'est un petit pas et la tangente s'en sort très bien. 35 ans, c'est un pas de géant et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
+
+**À retenir** : La dérivée partielle du gain par rapport à la durée est proportionnelle à ce qu'il y a déjà sur le compte. Une année de plus rapporte environ $$r$$ % du montant accumulé. Elle croît de façon exponentielle et double à peu près tous les $$72/r$$ ans (14 ans à 5%). Ce sont donc les dernières années qui rapportent le plus : il faut commencer tôt et ne pas toucher au placement.
 
 
 
@@ -512,146 +673,343 @@ $$
 
 
 
-### Application numérique
+Pas mal, pas mal Marty. Du coup dans la formule
 
-**Exemple chiffré** : $$M = 10\,000\ \text{€}$$, $$r = 7\ \%$$, $$n = 20$$ ans, soit un gain $$G \approx 28\,700\ \text{€}$$.
+$$
+G = M \left[ (1+r)^n - 1 \right]
+$$
 
-- $$+1\ \text{€}$$ investi rapporte $$\approx 2{,}87\ \text{€}$$ de gain en plus.
-- $$+1$$ point de rendement ($$7\ \% \rightarrow 8\ \%$$) rapporte $$\approx +7\,200\ \text{€}$$ ($$+7\,900\ \text{€}$$ en calcul exact).
-- $$+1$$ année rapporte $$\approx +2\,600\ \text{€}$$ ($$+2\,830\ \text{€}$$ en calcul exact).
+On a 3 paramètres ($$M$$, $$r$$ et $$n$$). On a fait un premier test en les doublant pour voir ce qui se passait dans les chiffres. Ensuite, tu as utilisé les dérivées partielles pour examiner l'impact de chacun d'entre eux. Ceci dit y a un truc qui me chagrine...
 
-Ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles. Pour savoir quel levier est le plus puissant, il faut raisonner en **élasticités**, c'est-à-dire en effet relatif : « +1 % sur le paramètre donne combien de % de gain ? »
+Ca m'aurait étonné...
+
+Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraiment très fier de toi. Le truc, et tu aurai dû soulever le problème tout seul, c'est qu'on compare pas des pommes avec des pommes. En fait plutôt que de doubler le nombre d'années puis doubler le rendement puis comparer les 2 ce qui serait plus "honnête", ce serait de faire varier chacun des paramètres (($$M$$, $$r$$ et $$n$$)) de 1% puis de constater lequel de ces leviers a le plus d'impact sur le gain. Comprends tu mon problème ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Effet relatif, élasticité
+
+Ok Mamie, je vais le redire avec mes mots afin qu'on soit bien synchros. Ce que tu dis, c'est que ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles (mon prof de Physique serait aux anges de t'entendre dire ça). Pour savoir quel levier est le plus puissant, il faut raisonner en effet relatif : "+1 % sur le paramètre donne combien de % de gain ?". Et ça, sauf erreur de ma part ça s'appelle l'**élasticité** mais obn on s'en fout un peu.
+
+Pour faire court, je cherche un truc qui répond à la question : si $$r$$ augmente de 1 % de sa valeur, de combien de % augmente $$G$$ ?
+
+* La partie de la phrase "si $$r$$ augmente de 1 % de sa valeur" peut se traduire avec $$\frac{\Delta r}{r}$$
+* L'autre partie "de combien de % augmente $$G$$" peut se traduire avec $$\frac{\Delta G}{G}$$
+
+Du coup on peut s'amuser à faire le ratio des deux. Cela nous permettra de quantifier de combien varie $$G$$ quand $$r$$ varie de $$x\%$$ par exemple. Finalement j'écris :
+
+
+$$
+\begin{align*}
+E &= \frac{\text{Variation relative de } G \text{ en \%}}{\text{Variation relative de } r \text{ en \%}} \\
+E &= \frac{\frac{\Delta G}{G}}{\frac{\Delta r}{r}} \\
+E &= \frac{\Delta G}{G}\frac{r}{\Delta r} \\
+E &= \frac{\Delta G}{\Delta r}\frac{r}{G} \\
+\end{align*}
+$$
+
+Comme on va s’intéresser à des toutes petites variations je préfère écrire
+
+$$
+E_r = \frac{\partial G}{\partial r} \cdot \frac{r}{G}
+$$
+
+Comme on va s'intéresser à chacun des paramètres et pas uniquement au taux, j'écris
 
 $$
 E_x = \frac{\partial G}{\partial x} \cdot \frac{x}{G}
 $$
 
-- **Montant** : $$E_M = 1$$. C'est proportionnel, ni plus ni moins.
-- **Taux** :
+
+
+### Élasticité du montant
+
+On avait
+
+* $$ G = M \left[ (1+r)^n - 1 \right]$$
+* $$\frac{\partial G}{\partial M} = (1+r)^n - 1$$
+
+
+Du coup on va écrire
 
 $$
-E_r = \frac{n \, r \, (1+r)^{n-1}}{(1+r)^n - 1} \approx 1{,}76
+\begin{align*}
+E_M &= \frac{\partial G}{\partial M} \cdot \frac{M}{G} \\
+E_M &= \left[(1+r)^n - 1\right] \cdot \frac{M}{M \left[ (1+r)^n - 1 \right]} \\
+E_M &=  \frac{M \left[ (1+r)^n - 1 \right]}{M \left[ (1+r)^n - 1 \right]} \\
+E_M &= 1
+\end{align*}
 $$
 
-- **Durée** :
+
+
+Ça, ça veut dire que le gain varie dans les mêmes proportions que le montant initial. On retrouve ce que l'on avait testé : quand je double le montant initial, le gain final est doublé.
+
+C'est utile à savoir mais c'est pas très excitant, allez on passe au suivant.
+
+
+
+
+
+
+
+
+### Élasticité du taux
+
+On avait
+
+* $$ G = M \left[ (1+r)^n - 1 \right]$$
+* $$ \frac{\partial G}{\partial r} = M \, n \, (1+r)^{n-1}$$
+
+Du coup on va écrire
 
 $$
-E_n = \frac{n \, (1+r)^n \ln(1+r)}{(1+r)^n - 1} \approx 1{,}82
+\begin{align*}
+E_r &= \frac{\partial G}{\partial r} \cdot \frac{r}{G} \\
+E_r & = M \, n \, (1+r)^{n-1} \cdot \frac{r}{G} \\
+E_r & = M \, n \, (1+r)^{n-1} \cdot \frac{r}{M \left[ (1+r)^n - 1 \right]} \\
+E_r & = \frac{M \,n \, r \, (1+r)^{n-1}}{M \left[ (1+r)^n - 1 \right]} \\
+E_r & = \frac{n \, r \, (1+r)^{n-1}}{(1+r)^n - 1 } \\
+\end{align*}
 $$
+
+
+
+
+**Application numérique**
+On se place en $$M = 1000$$, $$r = 5\%$$ et $$n = 35$$
+
+
+$$
+\begin{align*}
+E_r & = \frac{n \, r \, (1+r)^{n-1}}{(1+r)^n - 1 } \\
+E_r & = \frac{35 \cdot 0.05 \cdot 1.05^{34}}{1.05^{35} - 1 } \\
+E_r & \approx \frac{9.1933}{4.5160} \\
+E_r & \approx 2.0357 \\
+\end{align*}
+$$
+
+On peut aussi faire une vérification "à la main" et augmenter le gain de $$5\%$$ à $$5.05\%$$. En utilisant notre super formule du départ :
+
+$$
+G = M [(1 + r)^n - 1]
+$$
+
+Je trouve $$G_{05} = 1000 (1.05^{35} - 1) = 4516$$ et $$G_{0505} = 1000 (1.0505^{35} - 1) = 4608$$ ce qui veut dire que le gain à augmenté de $$2.03\%$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Elasticité de la durée
+
+On avait
+
+* $$ G = M \left[ (1+r)^n - 1 \right]$$
+* $$\frac{\partial G}{\partial n} = M \, (1+r)^n \ln(1+r)$$
+
+
+Du coup on va écrire
+
+$$
+\begin{align*}
+E_n &= \frac{\partial G}{\partial n} \cdot \frac{n}{G} \\
+E_n &= M \, (1+r)^n \ln(1+r) \cdot \frac{n}{G} \\
+E_n &= M \, (1+r)^n \ln(1+r) \cdot \frac{n}{M \left[ (1+r)^n - 1 \right]} \\
+E_n &=  \frac{M \, (1+r)^n \ln(1+r) \cdot n}{M \left[ (1+r)^n - 1 \right]} \\
+E_n &= \frac{n \, (1+r)^n \ln(1+r)}{(1+r)^n - 1}
+\end{align*}
+$$
+
+
+
+**Application numérique**
+On se place en $$M = 1000$$, $$r = 5\%$$ et $$n = 35$$
+
+
+$$
+\begin{align*}
+E_n &= \frac{n \, (1+r)^n \ln(1+r)}{(1+r)^n - 1}\\
+E_n &= \frac{35 \cdot (1.05)^{35} \ln(1.05)}{(1.05)^{35} - 1}\\
+E_n & \approx \frac{9.4194}{4.5160}\\
+E_n & \approx 2.0857 \\
+\end{align*}
+$$
+
+Ici aussi je peux faire une vérification "à la mano". Je fais passer la durée de 35 à 35.35 ans ($$+1\%$$) dans notre formule du départ :
+
+$$
+G = M [(1 + r)^n - 1]
+$$
+
+Je trouve $$G_{35} = 1000 (1.05^{35} - 1) = 4516$$ et $$G_{3535} = 1000 (1.05^{35.35} - 1) = 4611$$ ce qui veut dire que dans ce cas là, le gain a augmenter de $$2.10\%$$
+
+
+
+
+Bien, bien, bien Marty... Donc selon tes calculs, faire varier la durée de placement ou la valeur du rendement ça revient au même. Tu peux me le prouver ou au moins me l'expliquer?
+
+Là je sais pas trop quoi te dire Mamie. C'est vrai qu'avec nos valeurs on a trouvé $$E_r=2.03$$ et $$E_n=2.08$$ mais bon... Les comparer... Ah si, je me rappelle ce que nous a dit notre prof de Physique l'autre jour. Il nous a parlé de la **loi de Weber-Fechner** et du fait qu'on est plus sensible aux rapports qu'aux différences. Par exemple entre 1 et 2 on voit la différence alors qu'entre 20 et 21 on ne la voit plus.
+
+Bref pour comparer des valeurs on fait leur rapport. Bon, hé ben évaluons le rapport $$\frac{E_n}{E_r}$$.
+
+Je commence en collant les expressions qu'on a précédemment déterminé:
+
+$$
+\begin{align*}
+\frac{E_n}{E_r} &= \frac{\frac{n \, (1+r)^n \ln(1+r)}{(1+r)^n - 1}}{\frac{n \, r \, (1+r)^{n-1}}{(1+r)^n - 1 }}\\
+
+\frac{E_n}{E_r} &= \frac{n \, (1+r)^n \ln(1+r)}{n \, r \, (1+r)^{n-1}}\\
+\frac{E_n}{E_r} &= \frac{(1+r) \ln(1+r)}{r}\\
+\frac{E_n}{E_r} &= \frac{(1+r)}{r} \cdot \ln(1+r)\\
+\end{align*}
+$$
+
+Si je me place à $$r=5\%$$ et que je fais le calcul je trouve $$\frac{E_n}{E_r} \approx 1.0245$$ alors qu'en prenant les valeurs respectives précédentes je trouve $$\frac{2.08}{2.03} = 1.0246$$. Au moins c'est cohérent.
+
+Mais bon, faut pas se voiler la face, là, le rapport il vend pas du rêve. Le truc à remarquer quand même c'est qu'il ne dépend que du rendement $$r$$, pas du montant $$M$$ ni de la durée $$n$$.
+
+Sinon, cette année on utilise pas mal les développements limités et je sais que pour $$x$$ petit on peut écrire $$\ln(1+x) = x - \frac{1}{x^2} + \frac{1}{x^3} ...$$
+
+Du coup, en première approximation, on peut dire
+
+$$
+\begin{align*}
+\frac{E_n}{E_r} &= \frac{(1+r)}{r} \cdot r \\
+\frac{E_n}{E_r} &= 1+r \\
+\end{align*}
+$$
+
+Là pour le coup c'est assez violent mais du coup, "de tête", je peux évaluer $$\frac{E_n}{E_r} \approx 1.05$$. Oui on est "loin" des $$1.025$$ mais bon, là aussi c'est homogène et en tout cas cela explique que les élasticités du rendement $$r$$ et de la durée $$n$$ sont du même ordre de grandeur.
+
+Jouer sur le taux $$r$$ est donc aussi efficace que de jouer sur la durée $$n$$.
+
+Très bonne analyse Marty. Moi de mon côté je note qu'en relatif, c'est match nul. Mais le temps, tu peux le choisir alors que le rendement tu le subis.
+
+Heu... Mamie, je vois l'heure qui tourne et j'ai toujours rien compris à ton histoire d'actions et de PEA...
+
+J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un petit script Python dans lequel je veux pouvoir simuler des frais annuels qui viendrait en soustraction du rendement. Idéalement, mais ça je sais que tu sais faire, je voudrais que tu affiche la courbe de gain sans frais et la courbe de gain avec frais. Fais simple prend 0.5% de frais par an par exemple.
+
+## Les frais composés
+
+En fait il n'y a rien de bien compliqué. Au lieu d'avoir 5% par an on aura 4.5% par an. Le plus "touchy" c'est de faire en sorte que le graphe soit assez sympa. Après pas mal de ratatouillages j'arrive à ce script :
+
+```python
+import matplotlib.pyplot as plt
+
+M = 1_000      # mise initiale (€)
+r = 0.05       # rendement annuel brut
+frais = 0.005  # frais annuels (0.5 %)
+N = 35         # durée (années)
+
+def gain(taux, n):
+    return M * ((1 + taux) ** n - 1)
+
+def fmt(x):
+    return f"{x:,.0f} €".replace(",", " ")
+
+annees = list(range(N + 1))
+sans_frais = [gain(r, n) for n in annees]
+avec_frais = [gain(r - frais, n) for n in annees]  # les frais se soustraient au rendement
+
+G_sans = sans_frais[-1]
+G_avec = avec_frais[-1]
+perte = G_sans - G_avec
+
+print(f"Gain sans frais ({r:.1%})          : {fmt(G_sans)}")
+print(f"Gain avec frais ({r - frais:.1%} net)      : {fmt(G_avec)}")
+print(f"Coût des frais au bout de {N} ans : {fmt(perte)} ({perte / G_sans:.0%} du gain)")
+
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot(annees, sans_frais, marker="o", markersize=3, label=f"Sans frais (rendement {r:.1%})")
+ax.plot(annees, avec_frais, marker="o", markersize=3, label=f"Avec {frais:.1%} de frais (rendement net {r - frais:.1%})")
+ax.fill_between(annees, avec_frais, sans_frais, color="red", alpha=0.15, label="Ce que coûtent les frais")
+ax.annotate(f"Frais : - {fmt(perte)}", (N, (G_sans + G_avec) / 2), xytext=(N - 9, G_avec * 0.5),
+            color="red", arrowprops=dict(arrowstyle="->", color="red"))
+ax.set_xlabel("Années")
+ax.set_ylabel("Gain (€)")
+ax.set_title(f"Gain de {fmt(M)} placés à {r:.0%} sur {N} ans, avec et sans {frais:.1%} de frais annuels")
+ax.yaxis.set_major_formatter(lambda y, _: f"{y:,.0f}".replace(",", " "))
+ax.grid(True, alpha=0.3)
+ax.legend(loc="upper left")
+fig.tight_layout()
+plt.show()
+```
+Et finalement à ce graphique
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img10.webp"
+    alt="Gain de 1 000 € placés à 5% sur 35 ans, avec et sans 0.5% de frais annuels"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Gain de 1 000 € placés à 5% sur 35 ans, avec et sans 0.5% de frais annuels</figcaption>
+</figure>
+
+
+Marty, tu n'es pas encore le Mozart de la finance mais ton savoir faire en Python m’impressionne. C'est "bô" et surtout c'est éducatif.Bon, cela dit je vais te calmer tout de suite. Comment tu peux résumer ton graphe en une phrase?
+
+Je note que :
+* Sans les frais le gain est toujours de 4 516€. Je commence à connaître ce chiffre par coeur.
+* 0.5% de frais c'est pas grand chose et je comprends tout à fait que le banquier qui tient les comptes, verse les intérêts cumulés etc. soit rémunéré.
+* Je note quand même que 0.5% par rapport à 5% de rendement ça fait 10% mais bon, OK, il faut que le banquier soit rémunéré
+* Avec les frais annualisés le gains passe à 3 667€. Là, ça fait moins rêver que 4.5k€ sans frais mais bon je dépose 1 000€, je les "oublie" 35 ans et zou je récupère 3.6 fois la somme à la sortie. Moi ça me va.
+* Heu attends 2 minutes. À la fin, les 849€ c'est 19% du gain. Là pour le coup je suis plus d'accord. Si les frais étaient de l'ordre de 0.5% à 2% je veux bien mais là 19%. C'est énorme. En plus j'apporte 100% du capital, j'ai plus accès à mon argent pendant 35 ans et au final je découvre que le banquier me ponctionne 19% du gain. Non, non, je suis pas d'accord du tout. Gilet jaune, rond point et tous à la manifestation!
+
+Ok Marty mais j'avais dit 1 phrase. Là tu me raconte ta vie...
+
+En une phrase Mamie? T'es sûr? Bon allez je me lance : "Si tu prête ton argent, prête attention aux frais!"
+
+Pas mal. Y a un financier (John Bogle, le fondateur de Vanguard) qui a dit un truc du style : "En matière d'investissement, vous payez pour ce que vous n'obtenez pas, donc si vous ne payez rien vous obtenez tout." Dans ce contexte, l'idée bien sûr c'est que si tu paie des frais tu n'obtiens pas le gain mais par contre si tu ne paie pas de frais tu obtiens tout le gain.
+
+Mais bon on va garder ta phrase.
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Ce qu'il faut en retenir
 
-1. **La durée et le taux sont des leviers « super-linéaires »**, et leur élasticité grandit avec $$n$$. À 40 ans, elle dépasse 3. Commencer tôt et ne pas vendre est donc le meilleur levier.
+1. **La durée et le taux sont des leviers "super-linéaires"**, et leur élasticité grandit avec $$n$$. À 35 ans, elle dépasse 2. Commencer tôt et ne pas vendre est donc le meilleur levier.
 2. **Le taux, on le subit en grande partie**, sauf sur un point : les **frais**. Ils se soustraient directement à $$r$$. Passer de $$0{,}8\ \%$$ à $$0{,}2\ \%$$ de frais revient à gagner $$+0{,}6$$ point de rendement, soit environ $$+4\,000\ \text{€}$$ dans l'exemple, sans prendre aucun risque supplémentaire.
 3. **Le montant est le levier le plus prévisible**, mais seulement linéaire. En pratique, des versements réguliers combinent montant et durée.
 
 Une précision : $$r$$ doit être le rendement **géométrique** moyen (le CAGR), pas la moyenne arithmétique des rendements annuels. Avec la volatilité, la moyenne arithmétique surestime le résultat.
 
 
-
-<!-- ###################################################################### -->
-### The Setup
-{: .no_toc }
-
-
-
-
-
-
-
-
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-## Elasticité
-
-Oui. Le point clé, c'est que **$$1{,}76$$ ne correspond pas à « +1 point de taux »** (de $$7\ \%$$ à $$8\ \%$$). Il correspond à **« +1 % du taux »**, c'est-à-dire de $$7\ \%$$ à $$7{,}07\ \%$$. C'est une variation relative.
-
-**1. La définition de l'élasticité**
-
-L'élasticité du gain $$G$$ par rapport au taux $$r$$ est :
-
-$$
-E = \frac{\text{variation relative de } G}{\text{variation relative de } r} = \frac{\partial G}{\partial r} \cdot \frac{r}{G}
-$$
-
-Elle répond à la question : « si $$r$$ augmente de 1 % de sa valeur, de combien de % augmente $$G$$ ? »
-
-**2. On remplace par les formules**
-
-$$
-G = M \left[ (1+r)^n - 1 \right]
-$$
-
-$$
-\frac{\partial G}{\partial r} = M \, n \, (1+r)^{n-1}
-$$
-
-Donc :
-
-$$
-E = \frac{M \, n \, (1+r)^{n-1} \cdot r}{M \left[ (1+r)^n - 1 \right]}
-$$
-
-Le $$M$$ disparaît (il est en haut et en bas), ce qui donne :
-
-$$
-\boxed{E = \frac{n \, r \, (1+r)^{n-1}}{(1+r)^n - 1}}
-$$
-
-**3. Application numérique** ($$n = 20$$, $$r = 0{,}07$$)
-
-$$
-(1{,}07)^{19} \approx 3{,}6165
-$$
-
-$$
-(1{,}07)^{20} \approx 3{,}8697
-$$
-
-Numérateur :
-
-$$
-20 \times 0{,}07 \times 3{,}6165 = 1{,}4 \times 3{,}6165 \approx 5{,}063
-$$
-
-Dénominateur :
-
-$$
-3{,}8697 - 1 \approx 2{,}870
-$$
-
-D'où :
-
-$$
-E = \frac{5{,}063}{2{,}870} \approx 1{,}76
-$$
-
-**4. Vérification « à la main »**
-
-On prend un taux de $$7\ \% \times 1{,}01 = 7{,}07\ \%$$, avec $$M = 10\,000\ \text{€}$$ et $$n = 20$$ :
-
-- À $$7\ \%$$ : $$G = 10\,000 \times (3{,}8697 - 1) \approx 28\,697\ \text{€}$$
-- À $$7{,}07\ \%$$ : $$(1{,}0707)^{20} \approx 3{,}9207$$, donc $$G \approx 29\,207\ \text{€}$$
-
-Le gain augmente de $$510\ \text{€}$$. Rapporté à $$28\,697\ \text{€}$$, cela fait :
-
-$$
-\frac{510}{28\,697} \approx +1{,}78\ \%
-$$
-
-C'est bien environ $$1{,}76$$ fois la hausse de 1 % du taux. Le petit écart vient du fait que la dérivée est une approximation linéaire.
-
-**5. Et pour +1 point ($$7\ \% \rightarrow 8\ \%$$) ?**
-
-Dans ce cas, le taux augmente de $$\frac{1}{7} \approx +14{,}3\ \%$$ en relatif. Le gain passe de $$28\,697\ \text{€}$$ à $$36\,610\ \text{€}$$, soit $$+27{,}6\ \%$$. Le rapport :
-
-$$
-\frac{27{,}6}{14{,}3} \approx 1{,}93
-$$
-
-est un peu plus élevé que $$1{,}76$$, parce que la courbe s'accentue quand $$r$$ augmente.
 
 
 
