@@ -4,7 +4,7 @@ author: 40tude
 lang: fr-FR
 layout: default
 title: "Intérêts Composés"
-description: "."
+description: "Encore un voyage au pays des intérêts composés où on va apprendre si il vaut mieux jouer sur la taux, la durée ou le montant. On en profitera des frais composés, des ETF sur un PEA et de la composition d'un complément de retraite."
 image: docs/03_maths/022_interets_composes/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-13 17:58:09
+last_modified_date: 2026-11-13 18:56:07
 ---
 
 
@@ -41,7 +41,10 @@ last_modified_date: 2026-11-13 17:58:09
 ## TL;DR
 {: .no_toc }
 
+* Dérivées partielles. Identifier les leviers les plus efficaces
 * Ne pas oublier les frais composés
+* Ne pas oublier l'inflation
+
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -79,7 +82,7 @@ last_modified_date: 2026-11-13 17:58:09
 <!-- ###################################################################### -->
 ## Introduction
 
-Y a deux ans, j'étais allé chez Mamie et à l'occasion de mon 16 eme anniversaire on avait fêté ce dernier à sa manière. Je vais pas me plaindre, j'étais sorti de là avec 5 500€ de plus sur mon compte. Si tu ne me crois pas, ou si tu te pose des questions à propos des pourcentages, vas lire cet [excellent article]({%link docs/03_maths/002_pourcentages/pourcentages.md%}).
+Y a deux ans, j'étais allé chez Mamie et à l'occasion de mon 16 eme anniversaire on avait fêté ce dernier à sa manière. Je vais pas me plaindre, j'étais sorti de là avec 5 500 € de plus sur mon compte. Si tu ne me crois pas, ou si tu te pose des questions à propos des pourcentages, vas lire cet [excellent article]({%link docs/03_maths/002_pourcentages/pourcentages.md%}).
 
 Cette année c'est bizarre. On a fêté mes 18 ans à la maison avec les parents et dans la soirée Mamie m'a envoyé un message WhatApps un peu énigmatique me demandant de venir la voir ce matin à 10H00 avec mon PC portable...
 
@@ -191,7 +194,7 @@ plt.show()
 
 
 Super. Maintenant on peut commencer à discuter. Tiens, affiche moi les 3 graphes quand on double
-1. le montant initial (2 000€ au lieu de 1 000 €)
+1. le montant initial (2 000 € au lieu de 1 000 €)
 1. le rendement (10% au lieu de 5)
 1. la durée (70 ans au lieu de 35)
 
@@ -248,6 +251,26 @@ Allez, c'est parti.
 
 
 
+<!-- ###################################################################### -->
+### Ce qu'il faut retenir
+
+Lorem...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -262,6 +285,7 @@ $$
 
 
 
+<!-- ###################################################################### -->
 ### Qu'est-ce qui se passe si le montant varie?
 
 Je ré-écris l'équation sous la forme
@@ -310,6 +334,7 @@ Ben... Je me dis que si $$r$$ et $$n$$ sont des constantes, 5% et 35 ans par exe
 
 
 
+<!-- ###################################################################### -->
 ### Qu'est-ce qui se passe si le rendement varie?
 
 Je pars de l'équation
@@ -486,6 +511,7 @@ On voit aussi que la tangente reste partout **sous** la courbe (la courbe est co
 
 
 
+<!-- ###################################################################### -->
 ### Qu'est-ce qui se passe si la durée varie?
 
 Je pars de l'équation
@@ -663,9 +689,9 @@ C'est le même principe que pour le rendement. On bloque la mise (1 000 €) et 
 1. **Le point noir** c'est encore notre cas de référence : 35 ans, 4 516 €.
 1. **Les pointillés** c'est la tangente en $$n = 35$$ ans, de pente 269 € par an. Toujours la même formule $$y = f(a) + f^\prime(a)(x - a)$$, avec cette fois $$a = 35$$.
 
-Pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. Elle se trompe de plus de moitié! Un an, c'est un petit pas et la tangente s'en sort très bien. 35 ans, c'est un pas de géant et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
+Tiens, pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. Elle se trompe de plus de moitié! Un an, c'est un petit pas et la tangente s'en sort très bien. 35 ans, c'est un pas de géant et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
 
-**À retenir** : La dérivée partielle du gain par rapport à la durée est proportionnelle à ce qu'il y a déjà sur le compte. Une année de plus rapporte environ $$r$$ % du montant accumulé. Elle croît de façon exponentielle et double à peu près tous les $$72/r$$ ans (14 ans à 5%). Ce sont donc les dernières années qui rapportent le plus : il faut commencer tôt et ne pas toucher au placement.
+**À retenir** : La dérivée partielle du gain par rapport à la durée est proportionnelle à ce qu'il y a déjà sur le compte. Une année de plus rapporte environ $$r$$ % du montant accumulé. Elle croît de façon exponentielle et double à peu près tous les $$70/r$$ ans (14 ans à 5%). Ce sont donc les dernières années qui rapportent le plus : il faut commencer tôt et ne pas toucher au placement.
 
 
 
@@ -681,17 +707,19 @@ $$
 
 On a 3 paramètres ($$M$$, $$r$$ et $$n$$). On a fait un premier test en les doublant pour voir ce qui se passait dans les chiffres. Ensuite, tu as utilisé les dérivées partielles pour examiner l'impact de chacun d'entre eux. Ceci dit y a un truc qui me chagrine...
 
-Ca m'aurait étonné...
+Ça m'aurait étonné...
 
-Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraiment très fier de toi. Le truc, et tu aurai dû soulever le problème tout seul, c'est qu'on compare pas des pommes avec des pommes. En fait plutôt que de doubler le nombre d'années puis doubler le rendement puis comparer les 2 ce qui serait plus "honnête", ce serait de faire varier chacun des paramètres (($$M$$, $$r$$ et $$n$$)) de 1% puis de constater lequel de ces leviers a le plus d'impact sur le gain. Comprends tu mon problème ?
-
-
+Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraiment très fier de toi. Le truc, et tu aurai dû soulever le problème tout seul, c'est qu'on compare pas des pommes avec des pommes. En fait plutôt que de doubler le nombre d'années puis doubler le rendement pour finalement comparer l'impact sur le gain, je pense qu'il serait plus "honnête" de faire varier chacun des paramètres (($$M$$, $$r$$ et $$n$$)) de 1% puis de constater lequel de ces leviers a le plus d'impact sur le gain. Comprends tu mon problème ?
 
 
 
 
 
 
+<!-- ###################################################################### -->
+### Ce qu'il faut retenir
+
+Lorem...
 
 
 
@@ -699,10 +727,12 @@ Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraim
 
 
 
-
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Effet relatif, élasticité
 
-Ok Mamie, je vais le redire avec mes mots afin qu'on soit bien synchros. Ce que tu dis, c'est que ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles (mon prof de Physique serait aux anges de t'entendre dire ça). Pour savoir quel levier est le plus puissant, il faut raisonner en effet relatif : "+1 % sur le paramètre donne combien de % de gain ?". Et ça, sauf erreur de ma part ça s'appelle l'**élasticité** mais obn on s'en fout un peu.
+Ok Mamie, je vais le redire avec mes mots afin qu'on soit bien synchros. Ce que tu dis, c'est que ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles (mon prof de Physique serait aux anges de t'entendre dire ça). Pour savoir quel levier est le plus puissant, il faut raisonner en effet relatif : "+1 % sur le paramètre donne combien de % de gain ?". Et ça, sauf erreur de ma part ça s'appelle l'**élasticité** mais bon on s'en fout un peu.
 
 Pour faire court, je cherche un truc qui répond à la question : si $$r$$ augmente de 1 % de sa valeur, de combien de % augmente $$G$$ ?
 
@@ -739,8 +769,9 @@ $$
 
 On avait
 
-* $$ G = M \left[ (1+r)^n - 1 \right]$$
-* $$\frac{\partial G}{\partial M} = (1+r)^n - 1$$
+$$ G = M \left[ (1+r)^n - 1 \right]$$
+
+$$\frac{\partial G}{\partial M} = (1+r)^n - 1$$
 
 
 Du coup on va écrire
@@ -771,8 +802,9 @@ C'est utile à savoir mais c'est pas très excitant, allez on passe au suivant.
 
 On avait
 
-* $$ G = M \left[ (1+r)^n - 1 \right]$$
-* $$ \frac{\partial G}{\partial r} = M \, n \, (1+r)^{n-1}$$
+$$ G = M \left[ (1+r)^n - 1 \right]$$
+
+$$ \frac{\partial G}{\partial r} = M \, n \, (1+r)^{n-1}$$
 
 Du coup on va écrire
 
@@ -790,8 +822,8 @@ $$
 
 
 **Application numérique**
-On se place en $$M = 1000$$, $$r = 5\%$$ et $$n = 35$$
 
+On se place en $$M = 1\,000\ \text{€}$$, $$r = 5\%$$ et $$n = 35$$ ans
 
 $$
 \begin{align*}
@@ -830,8 +862,9 @@ Je trouve $$G_{05} = 1000 (1.05^{35} - 1) = 4516$$ et $$G_{0505} = 1000 (1.0505^
 
 On avait
 
-* $$ G = M \left[ (1+r)^n - 1 \right]$$
-* $$\frac{\partial G}{\partial n} = M \, (1+r)^n \ln(1+r)$$
+$$ G = M \left[ (1+r)^n - 1 \right]$$
+
+$$\frac{\partial G}{\partial n} = M \, (1+r)^n \ln(1+r)$$
 
 
 Du coup on va écrire
@@ -849,7 +882,7 @@ $$
 
 
 **Application numérique**
-On se place en $$M = 1000$$, $$r = 5\%$$ et $$n = 35$$
+On se place en $$M = 1\,000\ \text{€}$$, $$r = 5\%$$ et $$n = 35$$ ans
 
 
 $$
@@ -876,7 +909,7 @@ Bien, bien, bien Marty... Donc selon tes calculs, faire varier la durée de plac
 
 Là je sais pas trop quoi te dire Mamie. C'est vrai qu'avec nos valeurs on a trouvé $$E_r=2.03$$ et $$E_n=2.08$$ mais bon... Les comparer... Ah si, je me rappelle ce que nous a dit notre prof de Physique l'autre jour. Il nous a parlé de la **loi de Weber-Fechner** et du fait qu'on est plus sensible aux rapports qu'aux différences. Par exemple entre 1 et 2 on voit la différence alors qu'entre 20 et 21 on ne la voit plus.
 
-Bref pour comparer des valeurs on fait leur rapport. Bon, hé ben évaluons le rapport $$\frac{E_n}{E_r}$$.
+Bref, pour comparer des valeurs on fait leur rapport. Bon, hé ben évaluons le rapport $$\frac{E_n}{E_r}$$.
 
 Je commence en collant les expressions qu'on a précédemment déterminé:
 
@@ -905,7 +938,7 @@ $$
 \end{align*}
 $$
 
-Là pour le coup c'est assez violent mais du coup, "de tête", je peux évaluer $$\frac{E_n}{E_r} \approx 1.05$$. Oui on est "loin" des $$1.025$$ mais bon, là aussi c'est homogène et en tout cas cela explique que les élasticités du rendement $$r$$ et de la durée $$n$$ sont du même ordre de grandeur.
+Là pour le coup c'est assez violent mais, "de tête", je peux évaluer $$\frac{E_n}{E_r} \approx 1.05$$. Oui, on est "loin" des $$1.025$$ mais bon, là aussi c'est homogène et en tout cas cela explique que les élasticités du rendement $$r$$ et de la durée $$n$$ sont du même ordre de grandeur.
 
 Jouer sur le taux $$r$$ est donc aussi efficace que de jouer sur la durée $$n$$.
 
@@ -913,11 +946,38 @@ Très bonne analyse Marty. Moi de mon côté je note qu'en relatif, c'est match 
 
 Heu... Mamie, je vois l'heure qui tourne et j'ai toujours rien compris à ton histoire d'actions et de PEA...
 
-J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un petit script Python dans lequel je veux pouvoir simuler des frais annuels qui viendrait en soustraction du rendement. Idéalement, mais ça je sais que tu sais faire, je voudrais que tu affiche la courbe de gain sans frais et la courbe de gain avec frais. Fais simple prend 0.5% de frais par an par exemple.
+J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un petit script Python dans lequel je veux pouvoir simuler des frais **annuels** (attention le mot est important) qui viendraient en soustraction du rendement. Idéalement, mais ça je sais que tu sais faire, je voudrais que tu affiche la courbe de gain sans frais et la courbe de gain avec frais. Fais simple prend 0.5% de frais par an par exemple.
 
+
+
+
+<!-- ###################################################################### -->
+### Ce qu'il faut retenir
+
+Lorem...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 ## Les frais composés
 
-En fait il n'y a rien de bien compliqué. Au lieu d'avoir 5% par an on aura 4.5% par an. Le plus "touchy" c'est de faire en sorte que le graphe soit assez sympa. Après pas mal de ratatouillages j'arrive à ce script :
+En fait Mamie, il n'y a rien de bien compliqué. Au lieu d'avoir 5% par an on aura 4.5% par an. Le plus "touchy" dans l'histoire c'est de faire en sorte que le graphe soit assez sympa.
+
+Après pas mal de ratatouillages j'arrive à ce script :
 
 ```python
 import matplotlib.pyplot as plt
@@ -972,18 +1032,18 @@ Et finalement à ce graphique
 </figure>
 
 
-Marty, tu n'es pas encore le Mozart de la finance mais ton savoir faire en Python m’impressionne. C'est "bô" et surtout c'est éducatif.Bon, cela dit je vais te calmer tout de suite. Comment tu peux résumer ton graphe en une phrase?
+Marty, tu n'es pas encore le Mozart de la finance mais ton savoir faire en Python m’impressionne. C'est "bô" et surtout c'est éducatif. Bon, cela dit je vais te calmer tout de suite. Comment tu peux résumer ton graphe en une phrase?
 
 Je note que :
-* Sans les frais le gain est toujours de 4 516€. Je commence à connaître ce chiffre par coeur.
+* Sans les frais le gain est toujours de 4 516 €. Je commence à connaître ce chiffre par coeur.
 * 0.5% de frais c'est pas grand chose et je comprends tout à fait que le banquier qui tient les comptes, verse les intérêts cumulés etc. soit rémunéré.
-* Je note quand même que 0.5% par rapport à 5% de rendement ça fait 10% mais bon, OK, il faut que le banquier soit rémunéré
-* Avec les frais annualisés le gains passe à 3 667€. Là, ça fait moins rêver que 4.5k€ sans frais mais bon je dépose 1 000€, je les "oublie" 35 ans et zou je récupère 3.6 fois la somme à la sortie. Moi ça me va.
-* Heu attends 2 minutes. À la fin, les 849€ c'est 19% du gain. Là pour le coup je suis plus d'accord. Si les frais étaient de l'ordre de 0.5% à 2% je veux bien mais là 19%. C'est énorme. En plus j'apporte 100% du capital, j'ai plus accès à mon argent pendant 35 ans et au final je découvre que le banquier me ponctionne 19% du gain. Non, non, je suis pas d'accord du tout. Gilet jaune, rond point et tous à la manifestation!
+* Je note quand même que 0.5% par rapport à 5% de rendement ça fait 10% mais bon, OK, il faut que le banquier soit rémunéré.
+* Avec les frais annualisés le gains passe à 3 667 €. Là, ça fait moins rêver que 4.5 k€ sans frais mais bon je dépose 1 000 €, je les "oublie" 35 ans et zou je récupère 3.6 fois la somme à la sortie. Moi ça me va.
+* Heu attends 2 minutes... À la fin, les 849 € de frais, c'est 19% du gain. Là pour le coup je suis plus d'accord. Si les frais étaient de l'ordre de 0.5% à 2% du gain, je veux bien mais là, 19%. C'est énorme. En plus j'apporte 100% du capital, j'ai plus accès à mon argent pendant 35 ans et au final je découvre que le banquier me ponctionne 19% du gain. Non, non, je suis pas d'accord du tout. Gilet jaune, rond point et tous à la manifestation!
 
-Ok Marty mais j'avais dit 1 phrase. Là tu me raconte ta vie...
+Ok Marty mais j'avais dit une phrase. Là, tu me raconte ta vie...
 
-En une phrase Mamie? T'es sûr? Bon allez je me lance : "Si tu prête ton argent, prête attention aux frais!"
+En une phrase Mamie? T'es sûr? Bon allez je me lance : "**Si tu prêtes ton argent, tu prêtes attention aux frais.**"
 
 Pas mal. Y a un financier (John Bogle, le fondateur de Vanguard) qui a dit un truc du style : "En matière d'investissement, vous payez pour ce que vous n'obtenez pas, donc si vous ne payez rien vous obtenez tout." Dans ce contexte, l'idée bien sûr c'est que si tu paie des frais tu n'obtiens pas le gain mais par contre si tu ne paie pas de frais tu obtiens tout le gain.
 
@@ -997,17 +1057,18 @@ Mais bon on va garder ta phrase.
 
 
 
+<!-- ###################################################################### -->
+### Ce qu'il faut retenir
 
-
-
-
-### Ce qu'il faut en retenir
+<!--
 
 1. **La durée et le taux sont des leviers "super-linéaires"**, et leur élasticité grandit avec $$n$$. À 35 ans, elle dépasse 2. Commencer tôt et ne pas vendre est donc le meilleur levier.
 2. **Le taux, on le subit en grande partie**, sauf sur un point : les **frais**. Ils se soustraient directement à $$r$$. Passer de $$0{,}8\ \%$$ à $$0{,}2\ \%$$ de frais revient à gagner $$+0{,}6$$ point de rendement, soit environ $$+4\,000\ \text{€}$$ dans l'exemple, sans prendre aucun risque supplémentaire.
 3. **Le montant est le levier le plus prévisible**, mais seulement linéaire. En pratique, des versements réguliers combinent montant et durée.
 
 Une précision : $$r$$ doit être le rendement **géométrique** moyen (le CAGR), pas la moyenne arithmétique des rendements annuels. Avec la volatilité, la moyenne arithmétique surestime le résultat.
+
+-->
 
 
 
