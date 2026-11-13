@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-12 17:17:38
+last_modified_date: 2026-11-13 10:01:30
 ---
 
 
@@ -92,6 +92,11 @@ Ok Mamie, super, mais j'ai rien compris... T'es bien le fils de ton père! Genti
 Alors mon ptit gars... Est-ce que tu te rappelle le marché que je t'avais proposé y a 2 ans et le raisonnement que tu avais dû poser afin de me répondre? Tu avais le choix entre 1 000 € tout de suite ou la somme correspondant à 1 000 € placé à 5% pendant 35 ans.
 
 Tu m'étonnes. Bien sûr que je m'en rappelle. Je crois que c'est LA formule que je n'oublierai jamais...
+
+
+
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -296,7 +301,7 @@ $$
 
 Et tu comprends ça comment mon petit Marty?
 
-Ben... Je me dis que si $$r$$ et $$n$$ sont des constantes, 5% et 35 ans par exemple, alors le membre de droite de l'égalité est constant lui aussi. Ici, avec les valeurs précédentes il vaut 4.5160. Y a pas de surprise. On avait $$ y = K x$$. La pente c'est $$K$$ (4.5160). Le gain varie linéairement avec le montant. Si on injecte 1000 € au début on va récupérer 4 516 € à la fin. Plus important, cela explique pourquoi quand on double le montant au départ (2000 vs 1000 par exemple) à la fin, on a "juste" doublé le gain.
+Ben... Je me dis que si $$r$$ et $$n$$ sont des constantes, 5% et 35 ans par exemple, alors le membre de droite de l'égalité est constant lui aussi. Ici, avec les valeurs précédentes il vaut 4.5160. Y a pas de surprise. On avait $$ y = K x$$. La pente c'est $$K$$ (4.5160). Le gain varie linéairement avec le montant. Si on injecte 1000 € au début on va récupérer 4 516 € à la fin. Plus important, cela explique pourquoi quand on double le montant au départ (2000 € vs 1000 € par exemple) à la fin, on a "juste" doublé le gain.
 
 **À retenir** : La dérivée partielle du gain par rapport au montant initial est une constante donc le gain varie linéairement avec ce dernier.
 
@@ -319,14 +324,14 @@ $$
 y = M \left[ (1+x)^n - 1 \right]
 $$
 
-Ca ressemble à $$y = M [f(x) - 1]$$ dont la dérivée est de la forme $$y^\prime = M f^\prime(x)$$
+Ça ressemble à $$y = M [f(x) - 1]$$ dont la dérivée est de la forme $$y^\prime = M f^\prime(x)$$
 
 Ensuite la dérivée de $$(1+x)^n$$ c'est la dérivée de $$u^n$$ soit $$nu^{n-1}u^\prime$$ soit ici $$n (1+x)^{n-1} \, 1$$ car la dérivée de $$x$$ c'est $$1$$
 
 Du coup j'écris
 
 $$
-\frac{\partial y}{\partial x} = M \, n \, (1+r)^{n-1}
+\frac{\partial y}{\partial x} = M \, n \, (1+x)^{n-1}
 $$
 
 Soit avec les noms des variables du début
@@ -337,8 +342,145 @@ $$
 
 Et qu'est-ce que ça veut dire en Français dans le texte?
 
-La dérivée partielle du gain par rapport au rendement est une fonction qui ressemble bigrement à $$y^\prime=Kx^n$$. Avec nos valeurs ça ressemble à $$y^\prime = 35000 \, x^{34}$$ où $$x$$ vaut en fait $$1+r$$ (1.05 si $$r = 5\%$$). $$y^\prime$$ n'est donc plus une constante comme avant, c'est une "parabole". La pente, le taux d'accroissement varie comme la puissance 34 du rendement.
+La dérivée partielle du gain par rapport au rendement est une fonction qui ressemble bigrement à $$y^\prime=K \,X^N$$. J'ai remplacé $$1+r$$ par $$X$$ et $$n-1$$ par $$N$$ pour bien faire ressortir le fait qu'on a une "simple" fonction puissance de $$X$$, qui grimpe vite, très vite.
 
+
+
+
+
+
+
+Mouais... C'est bien joli tout ça mon petit Marty, mais tes $$X^N$$, ils me disent pas combien je gagne, moi. Tu peux me faire une application numérique? Tu gardes les 1 000 € et les 35 ans, et tu fais varier le rendement de 1% à 10% par exemple.
+
+Pas de souci Mamie. Je retourne dans mon notebook, je créé une section "Qu'est-ce qui se passe si le rendement varie?" et après quelques tâtonnements j'obtiens ce code :
+
+```python
+M = 1_000  # mise initiale (€)
+n = 35     # nombre d'années
+
+def gain(r):
+    return M * ((1 + r) ** n - 1)
+
+def derivee(r):
+    return M * n * (1 + r) ** (n - 1)
+
+def fmt(x):
+    return f"{x:,.0f} €".replace(",", " ")
+
+print(f"{'r':>5} | {'Gain G':>10} | {'dG/dr':>12} | {'Pente / point':>13} | {'G(r+1%) - G(r)':>14}")
+print("-" * 68)
+for pct in range(1, 11):
+    r = pct / 100
+    print(f"{r:>5.0%} | {fmt(gain(r)):>10} | {fmt(derivee(r)):>12} | "
+          f"{fmt(derivee(r) / 100):>13} | {fmt(gain(r + 0.01) - gain(r)):>14}")
+```
+
+La fonction `gain()` c'est la formule du début et la fonction `derivee()` c'est la dérivée partielle qu'on vient de calculer. Ensuite, pour chaque rendement de 1% à 10%, j'affiche une ligne du tableau. À l'exécution je vois :
+
+```text
+    r |     Gain G |        dG/dr | Pente / point | G(r+1%) - G(r)
+--------------------------------------------------------------------
+   1% |      417 € |     49 090 € |         491 € |          583 €
+   2% |    1 000 € |     68 624 € |         686 € |          814 €
+   3% |    1 814 € |     95 617 € |         956 € |        1 132 €
+   4% |    2 946 € |    132 801 € |       1 328 € |        1 570 €
+   5% |    4 516 € |    183 867 € |       1 839 € |        2 170 €
+   6% |    6 686 € |    253 786 € |       2 538 € |        2 990 €
+   7% |    9 677 € |    349 234 € |       3 492 € |        4 109 €
+   8% |   13 785 € |    479 155 € |       4 792 € |        5 629 €
+   9% |   19 414 € |    655 494 € |       6 555 € |        7 688 €
+  10% |   27 102 € |    894 168 € |       8 942 € |       10 472 €
+```
+
+Attends, attends... Doit y avoir une erreur dans le code? Ligne 5%, ta dérivée elle vaut 183 867 €. Avec 1 000 € de mise? Tu vas me faire croire que je vais gagner 183 k€?
+
+Non, non Mamie... Regarde l'en-tête de la colonne. C'est pas un montant c'est une dérivée, un taux d'accroissement. Elle dit de combien bouge $$G$$ quand $$r$$ bouge de 1. Sauf que $$r = 1$$ ça veut dire 100%. Autrement dit 183 867 €, c'est ce qu'on gagnerait en plus si le rendement passait de 5% à 105%, et encore, seulement si la pente restait la même tout du long. Personne ne fait ça. Nous, ce qui nous intéresse, c'est de passer de 5% à 6%, donc un point de rendement, donc $$\Delta r = 0.01$$. Il faut donc diviser par 100 :
+
+$$
+\Delta G \approx \frac{\partial G}{\partial r} \times \Delta r = 183\,867 \times 0.01 \approx 1\,839 \text{ €}
+$$
+
+C'est comme le compteur de la voiture. Si tu roules à 90 km/h pendant une minute, tu ne fais pas 90 km. Tu fais $$90/60 = 1.5$$ km. Le compteur donne une vitesse "par heure", la dérivée donne une pente "par 100% de rendement". Dans les deux cas, il faut ramener ça à la durée, ou à la variation, qui nous intéresse. C'est ce que montre la colonne "Pente / point" : à 5%, un point de rendement en plus rapporte environ 1 839 € de plus au bout de 35 ans.
+
+Mouais. Et comment je sais que ton truc est juste?
+
+Facile, c'est la dernière colonne. Là je ne fais aucune dérivée, je calcule bêtement le gain à 6% puis le gain à 5% et je fais la différence : $$6\,686 - 4\,516 = 2\,170$$ €. On est dans les mêmes eaux que les 1 839 € mais la dérivée sous-estime un peu. Et c'est normal. La dérivée c'est la pente **au point** 5%. Or entre 5% et 6% la pente ne reste pas constante, elle continue de grimper (à 6%, elle vaut déjà 2 538 € par point). Si on utilise la pente du départ pour tout le trajet, on "oublie" l'accélération. C'est comme une voiture qui accélère : si tu estimes la distance de la prochaine minute avec ta vitesse actuelle, tu te trompes forcément par défaut. D'ailleurs, regarde, la vraie valeur (2 170 €) est bien coincée entre la pente à 5% (1 839 €) et la pente à 6% (2 538 €).
+
+
+Tiens, pour bien visualiser ces histoires d'erreur, dans le notebook je créé une section "La tangente sous-estime une courbe qui accélère" dans laquelle je te propose le code et l'illustration suivante avec la fonction $$x^2$$. Le code est "compliqué" car il y a beaucoup de choses à faire pour avoir un graphe "sympa". Sinon on trace juste la fonction $$y=x^2$$, la tangente à la courbe en $$x=2$$ et on calcule, en $$x=3$$, la différence entre la valeur de la fonction et la hauteur à laquelle se trouve la dérivée.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img07_5.webp"
+    alt="La tangente sous-estime une courbe qui accélère"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>La tangente sous-estime une courbe qui accélère</figcaption>
+</figure>
+
+
+
+
+Ok c'est clair maintenant. Et sinon, si tu lis le tableau de haut en bas, tu vois quoi?
+
+Que la colonne "Pente / point" s'envole. Un point de rendement en plus, ça vaut 491 € quand on est à 1% et presque 9 000 € quand on est à 10%. C'est 18 fois plus pour le même point! C'est ça la "fonction puissance qui grimpe vite" de tout à l'heure. Et c'est très différent du cas du montant où la dérivée était une constante : chaque millier d'euros en plus au départ rapportait 4 516 € de plus, que l'on parte de 1 000 € ou de 10 000 €.
+
+Parfait. Peux tu illustrer tout ça avec un graphe?
+
+Dans le notebook, je crée une section que je nomme "Illustration du tableau précédent", je me gratte un peu la tête et finalement j'obtiens le code ci-dessous et le graphe :
+
+```python
+import matplotlib.pyplot as plt
+
+M = 1_000  # mise initiale (€)
+n = 35     # nombre d'années
+r0 = 0.05  # point où l'on trace la tangente
+
+rs = [i / 1000 for i in range(0, 101)]  # 0 % à 10 %
+gains = [M * ((1 + r) ** n - 1) for r in rs]
+
+G0 = M * ((1 + r0) ** n - 1)
+pente = M * n * (1 + r0) ** (n - 1)
+tangente = [G0 + pente * (r - r0) for r in rs]
+
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot([r * 100 for r in rs], gains, label="Gain G(r)")
+ax.plot([r * 100 for r in rs], tangente, linestyle="--",
+        label=f"Tangente en r = {r0:.0%} (pente : {pente / 100:,.0f} € par point)".replace(",", " "))
+ax.plot([r0 * 100], [G0], marker="o", color="black")
+ax.set_xlabel("Rendement annuel r (%)")
+ax.set_ylabel("Gain (€)")
+ax.set_title(f"Gain de {M:,.0f} € placés sur {n} ans selon le rendement".replace(",", " "))
+ax.yaxis.set_major_formatter(lambda y, _: f"{y:,.0f}".replace(",", " "))
+ax.grid(True, alpha=0.3)
+ax.legend()
+fig.tight_layout()
+plt.show()
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img08.webp"
+    alt="Gain de 1 000 € placés sur 35 ans selon le rendement, avec la tangente en r = 5%"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Gain de 1 000 € placés sur 35 ans selon le rendement, avec la tangente en r = 5%</figcaption>
+</figure>
+
+C'est graphique mais bon Marty, comment on lit ça?
+
+Cette fois-ci, en abscisse on n'a plus les années mais le rendement, de 0% à 10%. La durée est bloquée à 35 ans et la mise à 1 000 €. C'est exactement l'idée de la dérivée partielle : on bloque tout sauf le paramètre qui nous intéresse (ici le rendement $$r$$).
+
+1. **La courbe pleine** c'est le gain $$G(r)$$, la colonne "Gain G" du tableau mais avec beaucoup plus de points. Elle est presque à l'horizontale à gauche et elle se redresse de plus en plus vers la droite. Plus on avance, plus elle est raide. Ça, c'est la colonne "Pente / point" qui s'envole.
+1. **Le point noir** c'est notre cas de référence : 5%, 4 516 €.
+1. **Les pointillés** c'est la tangente à la courbe en ce point. C'est la droite qui "frôle" la courbe en $$r=5\%$$ et qui a exactement la même pente qu'elle à cet endroit. Tu te rappelles l'équation de la tangente que tu m'avais fait réviser en long et en large quand j'étais en Première? $$y = f(a) + f^\prime(a)(x - a)$$. Ben c'est exactement la ligne `tangente = [G0 + pente * (r - r0) for r in rs]` du code, avec $$a = 5\%$$ et $$f^\prime(a) = 183\,867$$.
+
+Et maintenant Mamie, le plus intéressant. Pose ton doigt sur $$r=6\%$$ en abscisse. La tangente donne $$4\,516 + 1\,839 = 6\,355$$ €. La courbe, elle, donne 6 686 €. L'écart entre les deux (331 €), c'est exactement l'écart entre les colonnes "Pente / point" et "G(r+1%) - G(r)" du tableau ($$2\,170 - 1\,839$$). Le tableau et le dessin racontent la même histoire.
+
+On voit aussi que la tangente reste partout **sous** la courbe (la courbe est convexe). C'est pour ça que l'approximation par la dérivée est toujours un peu trop pessimiste ici. Enfin, si on s'éloigne trop de 5%, la tangente raconte n'importe quoi. Vers la gauche elle finit même par passer sous zéro, ce qui n'a aucun sens pour un gain. La dérivée c'est un outil local, un zoom autour d'un point. Pour des petites variations elle est top, pour des grandes variations il vaut mieux refaire le calcul complet.
+
+
+**À retenir** : La dérivée partielle du gain par rapport au rendement n'est pas constante. Elle augmente très vite avec $$r$$. Un point de rendement en plus vaut d'autant plus que le rendement est déjà élevé (491 € à 1%, 8 942 € à 10%, avec 1 000 € sur 35 ans).
 
 
 
