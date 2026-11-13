@@ -4,7 +4,7 @@ author: 40tude
 lang: fr-FR
 layout: default
 title: "Intérêts Composés"
-description: "Encore un voyage au pays des intérêts composés où on va apprendre si il vaut mieux jouer sur la taux, la durée ou le montant. On en profitera des frais composés, des ETF sur un PEA et de la composition d'un complément de retraite."
+description: "Encore un voyage au pays des intérêts composés où on va apprendre si il vaut mieux jouer sur le taux, la durée ou le montant. On en profitera pour parler des frais composés, des ETF sur un PEA et de la composition d'un complément de retraite."
 image: docs/03_maths/022_interets_composes/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-13 18:56:07
+last_modified_date: 2026-11-14 00:30:53
 ---
 
 
@@ -86,13 +86,15 @@ Y a deux ans, j'étais allé chez Mamie et à l'occasion de mon 16 eme anniversa
 
 Cette année c'est bizarre. On a fêté mes 18 ans à la maison avec les parents et dans la soirée Mamie m'a envoyé un message WhatApps un peu énigmatique me demandant de venir la voir ce matin à 10H00 avec mon PC portable...
 
-J'aime toujours autant ma grand-mère alors ni une ni deux, à 10H00 pétante je sonne à sa porte.
+Je suis très proche de ma grand-mère alors ni une ni deux, à 10H00 pétante, je sonne à sa porte.
 
-Salut Marty chéri. Je sais que tu as un truc de prévu ce midi avec tes potes alors on va faire court et efficace. Tiens, prends un café et assieds toi là. Alleluia, il va pleuvoir des grenouilles demain mais pour une fois ton père m'a écouté... La semaine dernière il t'a ouvert un [PEA Jeune](https://www.yomoni.fr/apprendre/pea-jeune). En deux mots c'est une enveloppe fiscale. Arrête de me regarder avec ces yeux là tu vas voir c'est simple. En gros tu vas pouvoir l'utiliser pour acheter, entre autres, des actions. Tu ne pourras pas y déposer plus de 20 k€ mais même si un jour tes intérêts font que la somme montant+dividende va au delà de ce montant, ce ne sera pas un problème. En effet seuls les versements sont limités à 20 k€, pas la somme totale. Mais bon, à ce stade on s'en fout car à mon avis tu ne seras pas concerné. Quand tu quittera fiscalement le foyer fiscal de tes parents (t'es pas un Tanguy, rassure moi, tu vas partir avant tes 25 ans) il sera automatiquement transformé en PEA. Là ce sera cool car il ne perdra pas son antériorité, tu pourras le garder toute ta vie, y déposer jusqu'à 150 k€ et comme il aura plus de 5 ans, les taxes à payer seront un peu allégées.
+Salut Marty chéri. Je sais que tu as un truc de prévu ce midi avec tes potes alors on va faire court et efficace. Tiens, prends un café et assieds toi là. Alleluia, il va pleuvoir des grenouilles demain mais pour une fois ton père m'a écouté... La semaine dernière il t'a ouvert un [PEA Jeune](https://www.yomoni.fr/apprendre/pea-jeune). En deux mots c'est une enveloppe fiscale. Arrête de me regarder avec ces yeux là tu vas voir c'est simple. En gros, tu vas pouvoir l'utiliser pour acheter, entre autres, des actions. Tu ne pourras pas y déposer plus de 20 k€ mais même si un jour tes intérêts font que la somme montant+dividende va au delà de ce montant, ce ne sera pas un problème. En effet, seuls les versements sont limités à 20 k€, pas la somme totale. Mais bon, à ce stade on s'en fout car à mon avis tu ne seras pas concerné. Quand tu quittera fiscalement le foyer fiscal de tes parents (t'es pas un Tanguy, rassure moi, tu vas partir avant tes 25 ans) il sera automatiquement transformé en PEA. Là ce sera cool car il ne perdra pas son antériorité, tu pourras le garder toute ta vie, y déposer jusqu'à 150 k€ et comme il aura plus de 5 ans, les taxes à payer quand tu sortira de l'argent seront, un peu, allégées.
 
-Ok Mamie, super, mais j'ai rien compris... T'es bien le fils de ton père! Gentil mais il percute pas vite. Bon, alors là tout de suite ce qu'il faut que tu retiennes c'est que tu a un compte, que tu peux acheter des actions, laisser l'argent travailler pour toi etc. Moi, ce que je veux voir avec toi ce matin, c'est comprendre comment ça marche afin que tu puisse en tirer le meilleur. Et tu vas voir que c'est encore une question d'intérêts composés.
+Ok Mamie, super, mais j'ai rien compris... T'es bien le fils de ton père! Gentil mais il percute pas vite. Bon, alors là tout de suite ce qu'il faut que tu retiennes c'est que tu as un compte, que tu peux acheter des actions, laisser l'argent travailler pour toi etc.
 
-Alors mon ptit gars... Est-ce que tu te rappelle le marché que je t'avais proposé y a 2 ans et le raisonnement que tu avais dû poser afin de me répondre? Tu avais le choix entre 1 000 € tout de suite ou la somme correspondant à 1 000 € placé à 5% pendant 35 ans.
+Moi, ce que je veux voir avec toi ce matin, c'est comprendre comment ça marche afin que tu puisse en tirer le meilleur. Et tu vas voir que c'est encore une question d'intérêts composés.
+
+Alors mon p'tit gars... Est-ce que tu te rappelle le marché que je t'avais proposé y a 2 ans et le raisonnement que tu avais dû poser afin de me répondre? Tu avais le choix entre 1 000 € tout de suite ou la somme correspondant à 1 000 € placé à 5% pendant 35 ans.
 
 Tu m'étonnes. Bien sûr que je m'en rappelle. Je crois que c'est LA formule que je n'oublierai jamais...
 
@@ -112,9 +114,10 @@ $$V_n = V_0 * (1 + 5\%)^n$$
 
 Dans lequel $$V_n$$ c'était la valeur au bout de $$n$$ années, $$V_0$$ le montant initial et $$n$$ le nombre d'années. Tu vois, je m'en rappelle comme si c'était hier. Mais bon pourquoi tu me pose la question?
 
-Patience petit Padawan... Bon t'es plus un gamin, est que tu peux m'écrire la formule qui donne le gain au bout de $$n$$ années?
+Patience petit Padawan... Bon, t'es plus un gamin, est que tu peux m'écrire la formule qui donne le gain au bout de $$n$$ années?
 
 Ben oui... Je vais partir de l'égalité précédente. Ensuite j'ai envie d'écrire un truc du style:
+
 $$
 \begin{align*}
 \textrm{Montant final} &= \textrm{Montant initial} * (1 + 5\%)^n \\
@@ -127,11 +130,11 @@ G &= M [(1 + r)^n - 1]
 \end{align*}
 $$
 
-où $$M$$ est la mise initiale, $$r$$ le rendement annuel et $$n$$ le nombre d'années.
+où $$M$$ est le montant initial, $$r$$ le rendement annuel et $$n$$ le nombre d'années.
 
 OK Marty. Imagine que pour tes 18 ans je te donne 1000 € à placer sur ton PEA Jeune. Non, non ne me remercie pas car tu ne les a pas encore gagné. J'imagine que dans ton école vous apprenez à écrire des scripts en Python. Si c'est pas le cas, sors de cette maison je te déshérite, hahaha! Plus sérieusement, ouvre ton PC et écris moi un script de 3 lignes qui calcule le gains au bout de 35 ans de tes 1 000 € placés à 5%.
 
-OK... Du coup j'ouvre mon PC puis VSCode et dans un notebook `interets_composes.ipynb` j'écris:
+OK... Du coup j'ouvre mon PC puis VSCode et dans un notebook que je nomme `interets_composes.ipynb` j'écris:
 
 ```python
 M = 1_000  # mise initiale (EUR)
@@ -228,13 +231,13 @@ Voilà ce que je vois. Respectivement 9 000 €, 27 000 € et 29 000 €
 </figure>
 
 
-Et du coup Marty qu'est-ce qui te vient en tête?
+Et du coup Marty, qu'est-ce qui te vient en tête?
 
-J'ai pas l'impression que de doubler la mise au départ soit si intéressant. En fait si, c'est rentable car on gagne 2 fois plus (9k au lieu de 4.5k) mais bon c'est linéaire. Dans les autres cas, c'est une toute autre histoire. Au bout de 70 ans, troisième cas, j'aurai une hanche en titane, plus de dents mais je pourrai m'acheter une Rolex avec les 29 k€ de gains mais... Le mieux, c'est peut être le compromis du second cas et de trouver un placement qui double les intérêts car alors à 53 ans ($$18+35=53$$) je pourrai alors m'acheter et profiter pendant quelques années encore d'une très belle moto à 27 000 balles.
+J'ai pas l'impression que doubler la mise au départ soit si intéressant. En fait si, c'est rentable car on gagne 2 fois plus (9k au lieu de 4.5k) mais bon c'est linéaire. Dans les autres cas, c'est une toute autre histoire. Au bout de 70 ans, troisième cas, j'aurai une hanche en titane, plus de dents mais je pourrai m'acheter une Rolex avec les 29 k€ de gains mais... Le mieux, c'est peut être le compromis du second cas et trouver un placement qui double les intérêts. Dans ce cas à 53 ans ($$18+35=53$$) je pourrai m'acheter et profiter pendant quelques années encore d'une très belle moto à 27 000 balles.
 
-Tu es mon digne petit fils. Oui, il y a 3 paramètres indépendants dans ton équation et en jouant sur les valeurs, on voit que certains ont plus d'influence que d'autres. Alors... Commence pas à faire ta mijaurée ou ton wokiste de base. Imagine... Imagine que tu te balades sur une plage et qu'en marchant, tu rattrapes une fille que tu vois de dos. Qu'est ce qui va faire que tu va vouloir engager la conversation? La longueur des cheveux, ses fesses, sa hauteur... Bon ben voilà, t'as tout compris. Là aussi y a plusieurs paramètres mais certains sont plus importants que d'autres.
+Tu es mon digne petit fils. Oui, il y a 3 paramètres indépendants dans ton équation et en jouant sur les valeurs, on voit que certains ont plus d'influence que d'autres. Alors... Commence pas à faire ta mijaurée ou ton wokiste de base. Imagine... Imagine que tu te balades sur une plage et qu'en marchant, tu rattrapes une fille que tu vois de dos. Qu'est ce qui va faire que tu vas vouloir engager la conversation avec elle? La longueur des cheveux, ses fesses, son bronzage... Bon ben voilà, t'as tout compris. Là aussi y a plusieurs paramètres mais certains sont plus importants que d'autres.
 
-Du coup, la question à 1M$ c'est: dans le cadre de ton équation avec ses 3 paramètres, est-ce que tu es capable d'aller plus loin que les tests de doublement de valeur qu'on a fait et de retrouver, par calcul, l'influence de chacun d'entre eux?
+Du coup, la question à 1M$ c'est: est-ce que tu es capable d'aller plus loin que les tests de doublement de valeur qu'on a fait tout à l'heure et de retrouver, par calcul, l'influence de chacun des 3 paramètres?
 
 Ouai... Normalement c'est possible. On a vu ça en physique et mon prof qui lui n'est pas un obsédé avait un exemple tout aussi pertinent. Il disait: imaginez que vous êtes au sommet d'une petite colline avec votre snowboard. Le terrain c'est une surface dont l'altitude est une fonction de $$x$$ et de $$y$$, un truc du style $$z = f(x, y)$$. Du coup si tu pars vers le nord, $$x$$ ne change pas, seul $$y$$ varie et la pente est peut être douce. Si tu pars vers l'ouest, $$y$$ ne change pas, seul $$x$$ varie et la pente est peut être plus prononcée, et donc plus de fun. Donc les gars, pas de panique, calculer une dérivée partielle ça revient à étudier la formule initiale en bloquant tous les paramètres sauf un et à regarder alors ce qui se passe.
 
@@ -252,9 +255,11 @@ Allez, c'est parti.
 
 
 <!-- ###################################################################### -->
+<!--
 ### Ce qu'il faut retenir
 
 Lorem...
+-->
 
 
 
@@ -434,6 +439,50 @@ Facile, c'est la dernière colonne. Là je ne fais aucune dérivée, je calcule 
 
 Tiens, pour bien visualiser ces histoires d'erreur, dans le notebook je créé une section "La tangente sous-estime une courbe qui accélère" dans laquelle je te propose le code et l'illustration suivante avec la fonction $$x^2$$. Le code est "compliqué" car il y a beaucoup de choses à faire pour avoir un graphe "sympa". Sinon on trace juste la fonction $$y=x^2$$, la tangente à la courbe en $$x=2$$ et on calcule, en $$x=3$$, la différence entre la valeur de la fonction et la hauteur à laquelle se trouve la dérivée.
 
+```python
+import matplotlib.pyplot as plt
+
+x0 = 2   # point où l'on trace la tangente
+x1 = 3   # point où l'on utilise la tangente pour estimer f
+
+def f(x):
+    return x ** 2
+
+pente = 2 * x0  # f'(x) = 2x
+
+xs = [i / 100 for i in range(0, 351)]  # 0 à 3.5
+courbe = [f(x) for x in xs]
+tangente = [f(x0) + pente * (x - x0) for x in xs]
+
+vrai = f(x1)                               # vraie valeur
+estim = f(x0) + pente * (x1 - x0)          # estimation par la tangente
+erreur = vrai - estim
+
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot(xs, courbe, label="y = x²")
+ax.plot(xs, tangente, linestyle="--", label=f"Tangente en x = {x0} (pente {pente})")
+ax.plot([x0], [f(x0)], marker="o", color="black")
+ax.plot([x1], [vrai], marker="o", color="tab:blue")
+ax.plot([x1], [estim], marker="o", color="tab:orange")
+
+# Erreur : écart vertical entre la courbe et la tangente en x1
+ax.vlines(x1, estim, vrai, color="red", linewidth=3, label=f"Erreur = {erreur:g}")
+ax.annotate(f"vraie valeur : {x1}² = {vrai:g}", (x1, vrai), xytext=(-150, 10), textcoords="offset points")
+ax.annotate(f"tangente : {f(x0):g} + {pente} × {x1 - x0} = {estim:g}", (x1, estim),
+            xytext=(-190, -15), textcoords="offset points")
+
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_title("La tangente sous-estime une courbe qui accélère")
+ax.grid(True, alpha=0.3)
+ax.legend(loc="upper left")
+fig.tight_layout()
+plt.show()
+
+print(f"f({x1}) = {vrai:g}, tangente en x = {x1} : {estim:g}, erreur = {erreur:g}")
+
+```
+
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img07_5.webp"
     alt="La tangente sous-estime une courbe qui accélère"
@@ -448,7 +497,25 @@ Tiens, pour bien visualiser ces histoires d'erreur, dans le notebook je créé u
 
 Ok c'est clair maintenant. Et sinon, si tu lis le tableau de haut en bas, tu vois quoi?
 
-Que la colonne "Pente / point" s'envole. Un point de rendement en plus, ça vaut 491 € quand on est à 1% et presque 9 000 € quand on est à 10%. C'est 18 fois plus pour le même point! C'est ça la "fonction puissance qui grimpe vite" de tout à l'heure. Et c'est très différent du cas du montant où la dérivée était une constante : chaque millier d'euros en plus au départ rapportait 4 516 € de plus, que l'on parte de 1 000 € ou de 10 000 €.
+Déjà, voilà le tableau
+
+```text
+    r |     Gain G |        dG/dr | Pente / point | G(r+1%) - G(r)
+--------------------------------------------------------------------
+   1% |      417 € |     49 090 € |         491 € |          583 €
+   2% |    1 000 € |     68 624 € |         686 € |          814 €
+   3% |    1 814 € |     95 617 € |         956 € |        1 132 €
+   4% |    2 946 € |    132 801 € |       1 328 € |        1 570 €
+   5% |    4 516 € |    183 867 € |       1 839 € |        2 170 €
+   6% |    6 686 € |    253 786 € |       2 538 € |        2 990 €
+   7% |    9 677 € |    349 234 € |       3 492 € |        4 109 €
+   8% |   13 785 € |    479 155 € |       4 792 € |        5 629 €
+   9% |   19 414 € |    655 494 € |       6 555 € |        7 688 €
+  10% |   27 102 € |    894 168 € |       8 942 € |       10 472 €
+```
+
+
+Je vois que la colonne "Pente / point" s'envole. Un point de rendement en plus, ça vaut 491 € quand on est à 1% et presque 9 000 € quand on est à 10%. C'est 18 fois plus pour le même point! C'est ça la "fonction puissance qui grimpe vite" de tout à l'heure. Et c'est très différent du cas de la dérivée partielle par rapport au montant qui était constante : chaque millier d'euros en plus au départ rapportait 4 516 € de plus, que l'on parte de 1 000 € ou de 10 000 €.
 
 Parfait. Peux tu illustrer tout ça avec un graphe?
 
@@ -498,7 +565,7 @@ Cette fois-ci, en abscisse on n'a plus les années mais le rendement, de 0% à 1
 
 1. **La courbe pleine** c'est le gain $$G(r)$$, la colonne "Gain G" du tableau mais avec beaucoup plus de points. Elle est presque à l'horizontale à gauche et elle se redresse de plus en plus vers la droite. Plus on avance, plus elle est raide. Ça, c'est la colonne "Pente / point" qui s'envole.
 1. **Le point noir** c'est notre cas de référence : 5%, 4 516 €.
-1. **Les pointillés** c'est la tangente à la courbe en ce point. C'est la droite qui "frôle" la courbe en $$r=5\%$$ et qui a exactement la même pente qu'elle à cet endroit. Tu te rappelles l'équation de la tangente que tu m'avais fait réviser en long et en large quand j'étais en Première? $$y = f(a) + f^\prime(a)(x - a)$$. Ben c'est exactement la ligne `tangente = [G0 + pente * (r - r0) for r in rs]` du code, avec $$a = 5\%$$ et $$f^\prime(a) = 183\,867$$.
+1. **Les pointillés** c'est la tangente à la courbe en ce point. C'est la droite qui "frôle" la courbe en $$r=5\%$$ et qui a exactement la même pente qu'elle à cet endroit. Tu te rappelles l'équation de la tangente que tu m'avais fait réviser en long et en large quand j'étais en Première? $$y = f(a) + f^\prime(a)(x - a)$$. Ben, c'est exactement la ligne `tangente = [G0 + pente * (r - r0) for r in rs]` du code, avec $$a = 5\%$$ et $$f^\prime(a) = 183\,867$$.
 
 Et maintenant Mamie, le plus intéressant. Pose ton doigt sur $$r=6\%$$ en abscisse. La tangente donne $$4\,516 + 1\,839 = 6\,355$$ €. La courbe, elle, donne 6 686 €. L'écart entre les deux (331 €), c'est exactement l'écart entre les colonnes "Pente / point" et "G(r+1%) - G(r)" du tableau ($$2\,170 - 1\,839$$). Le tableau et le dessin racontent la même histoire.
 
@@ -574,7 +641,7 @@ $$
 \frac{\partial G}{\partial n} = (M + G) \ln(1+r)
 $$
 
-Ensuite, avec $$r=5\%$$, $$\ln(1.05) \approx 0.0488$$. C'est presque 5%. Autrement dit, une année de plus rapporte à peu près 5% de ce qu'il y a déjà sur le compte. Dit comme ça, ça paraît bête, c'est la définition même des intérêts... Mais la conséquence est énorme : la vitesse à laquelle le gain grossit est proportionnelle à ce qu'on a déjà accumulé. Plus la boule de neige est grosse, plus elle ramasse de neige à chaque tour. C'est la signature d'une exponentielle. Pour le rendement, $$r$$ était "en bas", dans une fonction puissance. Ici, $$n$$ est "en haut", dans l'exposant.
+Ensuite, avec $$r=5\%$$, $$\ln(1.05) \approx 0.0488$$. C'est presque 5%. Autrement dit, une année de plus rapporte à peu près 5% de ce qu'il y a déjà sur le compte. Dit comme ça, ça paraît bête, c'est la définition même des intérêts... Mais la conséquence est énorme : **la vitesse à laquelle le gain grossit est proportionnelle à ce qu'on a déjà accumulé**. Plus la boule de neige qui descend de la montagne est grosse, plus elle ramasse de neige à chaque tour. C'est la signature d'une exponentielle. Pour le rendement, $$r$$ était "en bas", dans une fonction puissance. Ici, $$n$$ est "en haut", dans l'exposant.
 
 Bien. Moi je suis une vieille dame, faut que je voie pour croire. Tu me fais la même chose que pour le rendement? Un tableau puis un graphe. Tu gardes les 1 000 € et les 5% et cette fois, tu fais varier la durée de 0 à 70 ans.
 
@@ -635,11 +702,11 @@ OK. Et si tu lis le tableau de haut en bas?
 
 La colonne "dG/dn" double à peu près tous les 14 ou 15 ans : 49 € au départ, 101 € à 15 ans, 211 € à 30 ans, 438 € à 45 ans, 911 € à 60 ans. Et je peux même le calculer. Doubler $$(1+r)^n$$ revient à avoir $$n \ln(1+r) = \ln 2$$ soit $$n = \ln 2 / \ln(1.05) \approx 14.2$$ ans.
 
-Ah! Ça, de mon temps, à la banque on appelait ça la règle de 72. Tu divises 72 par le rendement en pourcent et tu as le temps de doublement : $$72/5 = 14.4$$ ans. Pas besoin de logarithme, juste un crayon et le dos d'une enveloppe.
+Ah! Ça, de mon temps, à la banque on appelait ça la règle de 70. Tu divises 70 par le rendement en pourcent et tu as le temps de doublement : $$70/5 = 14$$ ans. Pas besoin de logarithme, juste un crayon et le dos d'une enveloppe.
 
 Trop fort... Du coup ça veut dire que la première année m'a rapporté 50 € alors que la 70ème m'en rapportera plus de 1 500. Les 35 premières années rapportent 4 516 € et les 35 suivantes $$29\,426 - 4\,516 = 24\,910$$ €. Cinq fois plus pour la même durée!
 
-Voilà pourquoi je voulais que ton père t'ouvre ce PEA maintenant et pas quand tu auras 40 ans. Le temps, c'est le seul ingrédient que tu ne pourras jamais racheter. Bon, et ce graphe?
+Voilà pourquoi je voulais que ton père t'ouvre ce PEA maintenant et pas quand tu auras 40 ans. **Le temps, c'est le seul ingrédient que tu ne pourras jamais racheter**. Bon, et ce graphe?
 
 Dans le notebook, je crée une section "Le gain en fonction de la durée" et je reprends le code du graphe du rendement. Sauf qu'en abscisse, on a maintenant la durée :
 
@@ -689,7 +756,7 @@ C'est le même principe que pour le rendement. On bloque la mise (1 000 €) et 
 1. **Le point noir** c'est encore notre cas de référence : 35 ans, 4 516 €.
 1. **Les pointillés** c'est la tangente en $$n = 35$$ ans, de pente 269 € par an. Toujours la même formule $$y = f(a) + f^\prime(a)(x - a)$$, avec cette fois $$a = 35$$.
 
-Tiens, pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. Elle se trompe de plus de moitié! Un an, c'est un petit pas et la tangente s'en sort très bien. 35 ans, c'est un pas de géant et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
+Tiens, pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. La dérivée se trompe de plus de moitié! Un an, c'est un petit pas l'homme et la tangente s'en sort très bien. 35 ans, c'est un pas de géant pour l'humanité et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
 
 **À retenir** : La dérivée partielle du gain par rapport à la durée est proportionnelle à ce qu'il y a déjà sur le compte. Une année de plus rapporte environ $$r$$ % du montant accumulé. Elle croît de façon exponentielle et double à peu près tous les $$70/r$$ ans (14 ans à 5%). Ce sont donc les dernières années qui rapportent le plus : il faut commencer tôt et ne pas toucher au placement.
 
@@ -717,9 +784,9 @@ Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraim
 
 
 <!-- ###################################################################### -->
-### Ce qu'il faut retenir
+<!-- ### Ce qu'il faut retenir
 
-Lorem...
+Lorem... -->
 
 
 
@@ -732,7 +799,7 @@ Lorem...
 <!-- ###################################################################### -->
 ## Effet relatif, élasticité
 
-Ok Mamie, je vais le redire avec mes mots afin qu'on soit bien synchros. Ce que tu dis, c'est que ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles (mon prof de Physique serait aux anges de t'entendre dire ça). Pour savoir quel levier est le plus puissant, il faut raisonner en effet relatif : "+1 % sur le paramètre donne combien de % de gain ?". Et ça, sauf erreur de ma part ça s'appelle l'**élasticité** mais bon on s'en fout un peu.
+Ok Mamie, je vais le redire avec mes mots afin de m'assurer qu'on est bien synchros. Ce que tu dis, c'est que ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles (mon prof de Physique serait aux anges de t'entendre dire ça). Pour savoir quel levier est le plus puissant, il faut raisonner en effet relatif : "+1 % sur le paramètre donne combien de % de gain ?". Et ça, sauf erreur de ma part ça s'appelle l'**élasticité** mais bon on s'en fout un peu.
 
 Pour faire court, je cherche un truc qui répond à la question : si $$r$$ augmente de 1 % de sa valeur, de combien de % augmente $$G$$ ?
 
@@ -882,6 +949,7 @@ $$
 
 
 **Application numérique**
+
 On se place en $$M = 1\,000\ \text{€}$$, $$r = 5\%$$ et $$n = 35$$ ans
 
 
@@ -942,7 +1010,7 @@ Là pour le coup c'est assez violent mais, "de tête", je peux évaluer $$\frac{
 
 Jouer sur le taux $$r$$ est donc aussi efficace que de jouer sur la durée $$n$$.
 
-Très bonne analyse Marty. Moi de mon côté je note qu'en relatif, c'est match nul. Mais le temps, tu peux le choisir alors que le rendement tu le subis.
+Très bonne analyse Marty. Moi de mon côté je note qu'en relatif, c'est match nul. Mais **le temps, tu peux le choisir alors que le rendement tu le subis**.
 
 Heu... Mamie, je vois l'heure qui tourne et j'ai toujours rien compris à ton histoire d'actions et de PEA...
 
@@ -952,9 +1020,9 @@ J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un peti
 
 
 <!-- ###################################################################### -->
-### Ce qu'il faut retenir
+<!-- ### Ce qu'il faut retenir
 
-Lorem...
+Lorem... -->
 
 
 
@@ -1032,14 +1100,14 @@ Et finalement à ce graphique
 </figure>
 
 
-Marty, tu n'es pas encore le Mozart de la finance mais ton savoir faire en Python m’impressionne. C'est "bô" et surtout c'est éducatif. Bon, cela dit je vais te calmer tout de suite. Comment tu peux résumer ton graphe en une phrase?
+Marty, tu n'es pas encore le Mozart de la finance mais ton savoir faire en Python m’impressionne. C'est "bô" et surtout c'est instructif. Bon, cela dit je vais te calmer tout de suite. Comment tu peux résumer ton graphe en une phrase?
 
 Je note que :
 * Sans les frais le gain est toujours de 4 516 €. Je commence à connaître ce chiffre par coeur.
 * 0.5% de frais c'est pas grand chose et je comprends tout à fait que le banquier qui tient les comptes, verse les intérêts cumulés etc. soit rémunéré.
 * Je note quand même que 0.5% par rapport à 5% de rendement ça fait 10% mais bon, OK, il faut que le banquier soit rémunéré.
 * Avec les frais annualisés le gains passe à 3 667 €. Là, ça fait moins rêver que 4.5 k€ sans frais mais bon je dépose 1 000 €, je les "oublie" 35 ans et zou je récupère 3.6 fois la somme à la sortie. Moi ça me va.
-* Heu attends 2 minutes... À la fin, les 849 € de frais, c'est 19% du gain. Là pour le coup je suis plus d'accord. Si les frais étaient de l'ordre de 0.5% à 2% du gain, je veux bien mais là, 19%. C'est énorme. En plus j'apporte 100% du capital, j'ai plus accès à mon argent pendant 35 ans et au final je découvre que le banquier me ponctionne 19% du gain. Non, non, je suis pas d'accord du tout. Gilet jaune, rond point et tous à la manifestation!
+* Heu, attends 2 minutes... À la fin, les 849 € de frais, c'est 19% du gain. Là pour le coup je suis plus trop d'accord. Si les frais étaient de l'ordre de 0.5% à 2% du gain, je veux bien mais là, 19%. C'est énorme. En plus j'apporte 100% du capital, j'ai plus accès à mon argent pendant 35 ans et au final je découvre que le banquier a ponctionné 19% du gain. Non, non, je suis pas d'accord du tout. Gilet jaune, rond point et tous à la manif!
 
 Ok Marty mais j'avais dit une phrase. Là, tu me raconte ta vie...
 
