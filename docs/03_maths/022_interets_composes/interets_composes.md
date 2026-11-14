@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-14 00:30:53
+last_modified_date: 2026-11-14 12:00:21
 ---
 
 
@@ -33,18 +33,23 @@ last_modified_date: 2026-11-14 00:30:53
 
 
 
-
-
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## TL;DR
 {: .no_toc }
 
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## TODO
+{: .no_toc }
+
 * Dérivées partielles. Identifier les leviers les plus efficaces
 * Ne pas oublier les frais composés
 * Ne pas oublier l'inflation
-
+* Liens sur les vidéos de dérivées
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -239,7 +244,7 @@ Tu es mon digne petit fils. Oui, il y a 3 paramètres indépendants dans ton éq
 
 Du coup, la question à 1M$ c'est: est-ce que tu es capable d'aller plus loin que les tests de doublement de valeur qu'on a fait tout à l'heure et de retrouver, par calcul, l'influence de chacun des 3 paramètres?
 
-Ouai... Normalement c'est possible. On a vu ça en physique et mon prof qui lui n'est pas un obsédé avait un exemple tout aussi pertinent. Il disait: imaginez que vous êtes au sommet d'une petite colline avec votre snowboard. Le terrain c'est une surface dont l'altitude est une fonction de $$x$$ et de $$y$$, un truc du style $$z = f(x, y)$$. Du coup si tu pars vers le nord, $$x$$ ne change pas, seul $$y$$ varie et la pente est peut être douce. Si tu pars vers l'ouest, $$y$$ ne change pas, seul $$x$$ varie et la pente est peut être plus prononcée, et donc plus de fun. Donc les gars, pas de panique, calculer une dérivée partielle ça revient à étudier la formule initiale en bloquant tous les paramètres sauf un et à regarder alors ce qui se passe.
+Mouai... Normalement c'est possible. On a vu ça en physique et mon prof qui lui n'est pas un obsédé avait un exemple tout aussi pertinent. Il disait: imaginez que vous êtes au sommet d'une petite colline avec votre snowboard. Le terrain c'est une surface dont l'altitude est une fonction de $$x$$ et de $$y$$, un truc du style $$z = f(x, y)$$. Du coup si tu pars vers le nord, $$x$$ ne change pas, seul $$y$$ varie et la pente est peut être douce. Si tu pars vers l'ouest, $$y$$ ne change pas, seul $$x$$ varie et la pente est peut être plus prononcée, et donc plus de fun. Donc les gars, pas de panique, calculer une dérivée partielle ça revient à étudier la formule initiale en bloquant tous les paramètres sauf un et à regarder alors ce qui se passe.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img07.webp"
@@ -255,11 +260,13 @@ Allez, c'est parti.
 
 
 <!-- ###################################################################### -->
-<!--
 ### Ce qu'il faut retenir
 
-Lorem...
--->
+1. Le gain d'un placement à intérêts composés s'écrit $$G = M \left[ (1+r)^n - 1 \right]$$ avec $$M$$ le montant initial, $$r$$ le rendement annuel (0.05 pour 5%) et $$n$$ le nombre d'années.
+
+1. Les 3 paramètres n'ont pas la même influence sur le gain. Le montant a une influence linéaire. Le rendement et la durée semblent avoir un effet beaucoup plus important mais similaire entre eux.
+
+1. Pour quantifier l'influence de chaque paramètre on va devoir calculer les dérivées partielles.
 
 
 
@@ -332,7 +339,7 @@ Et tu comprends ça comment mon petit Marty?
 
 Ben... Je me dis que si $$r$$ et $$n$$ sont des constantes, 5% et 35 ans par exemple, alors le membre de droite de l'égalité est constant lui aussi. Ici, avec les valeurs précédentes il vaut 4.5160. Y a pas de surprise. On avait $$ y = K x$$. La pente c'est $$K$$ (4.5160). Le gain varie linéairement avec le montant. Si on injecte 1000 € au début on va récupérer 4 516 € à la fin. Plus important, cela explique pourquoi quand on double le montant au départ (2000 € vs 1000 € par exemple) à la fin, on a "juste" doublé le gain.
 
-**À retenir** : La dérivée partielle du gain par rapport au montant initial est une constante donc le gain varie linéairement avec ce dernier.
+
 
 
 
@@ -572,7 +579,6 @@ Et maintenant Mamie, le plus intéressant. Pose ton doigt sur $$r=6\%$$ en absci
 On voit aussi que la tangente reste partout **sous** la courbe (la courbe est convexe). C'est pour ça que l'approximation par la dérivée est toujours un peu trop pessimiste ici. Enfin, si on s'éloigne trop de 5%, la tangente raconte n'importe quoi. Vers la gauche elle finit même par passer sous zéro, ce qui n'a aucun sens pour un gain. La dérivée c'est un outil local, un zoom autour d'un point. Pour des petites variations elle est top, pour des grandes variations il vaut mieux refaire le calcul complet.
 
 
-**À retenir** : La dérivée partielle du gain par rapport au rendement n'est pas constante. Elle augmente très vite avec $$r$$. Un point de rendement en plus vaut d'autant plus que le rendement est déjà élevé (491 € à 1%, 8 942 € à 10%, avec 1 000 € sur 35 ans).
 
 
 
@@ -756,12 +762,7 @@ C'est le même principe que pour le rendement. On bloque la mise (1 000 €) et 
 1. **Le point noir** c'est encore notre cas de référence : 35 ans, 4 516 €.
 1. **Les pointillés** c'est la tangente en $$n = 35$$ ans, de pente 269 € par an. Toujours la même formule $$y = f(a) + f^\prime(a)(x - a)$$, avec cette fois $$a = 35$$.
 
-Tiens, pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. La dérivée se trompe de plus de moitié! Un an, c'est un petit pas l'homme et la tangente s'en sort très bien. 35 ans, c'est un pas de géant pour l'humanité et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
-
-**À retenir** : La dérivée partielle du gain par rapport à la durée est proportionnelle à ce qu'il y a déjà sur le compte. Une année de plus rapporte environ $$r$$ % du montant accumulé. Elle croît de façon exponentielle et double à peu près tous les $$70/r$$ ans (14 ans à 5%). Ce sont donc les dernières années qui rapportent le plus : il faut commencer tôt et ne pas toucher au placement.
-
-
-
+Tiens Mamie, pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. La dérivée se trompe de plus de moitié! Un an, c'est un petit pas l'homme et la tangente s'en sort très bien. 35 ans, c'est un pas de géant pour l'humanité et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
 
 
 
@@ -781,12 +782,18 @@ Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraim
 
 
 
-
-
 <!-- ###################################################################### -->
-<!-- ### Ce qu'il faut retenir
+### Ce qu'il faut retenir
 
-Lorem... -->
+1. La dérivée partielle du gain par rapport au montant initial est une constante et donc le gain varie linéairement avec ce dernier.
+
+1. La dérivée partielle du gain par rapport au rendement n'est pas constante. Elle augmente très vite avec $$r$$. Un point de rendement en plus vaut d'autant plus que le rendement est déjà élevé (491 € à 1%, 8 942 € à 10%, avec 1 000 € sur 35 ans).
+
+1. La dérivée partielle du gain par rapport à la durée est proportionnelle à ce qu'il y a déjà sur le compte. Une année de plus rapporte environ $$r$$ % du montant accumulé. Elle croît de façon exponentielle et double à peu près tous les $$70/r$$ ans (14 ans à 5%). Ce sont donc les dernières années qui rapportent le plus : il faut commencer tôt et ne pas toucher au placement.
+
+
+
+
 
 
 
@@ -811,7 +818,7 @@ Du coup on peut s'amuser à faire le ratio des deux. Cela nous permettra de quan
 
 $$
 \begin{align*}
-E &= \frac{\text{Variation relative de } G \text{ en \%}}{\text{Variation relative de } r \text{ en \%}} \\
+E &= \frac{\text{Variation relative de } G \text{ en } \%}{\text{Variation relative de } r \text{ en } \%} \\
 E &= \frac{\frac{\Delta G}{G}}{\frac{\Delta r}{r}} \\
 E &= \frac{\Delta G}{G}\frac{r}{\Delta r} \\
 E &= \frac{\Delta G}{\Delta r}\frac{r}{G} \\
@@ -901,7 +908,7 @@ E_r & \approx 2.0357 \\
 \end{align*}
 $$
 
-On peut aussi faire une vérification "à la main" et augmenter le gain de $$5\%$$ à $$5.05\%$$. En utilisant notre super formule du départ :
+On peut aussi faire une vérification "à la main" et augmenter le rendement de $$5\%$$ à $$5.05\%$$. En utilisant notre super formule du départ :
 
 $$
 G = M [(1 + r)^n - 1]
@@ -995,7 +1002,7 @@ Si je me place à $$r=5\%$$ et que je fais le calcul je trouve $$\frac{E_n}{E_r}
 
 Mais bon, faut pas se voiler la face, là, le rapport il vend pas du rêve. Le truc à remarquer quand même c'est qu'il ne dépend que du rendement $$r$$, pas du montant $$M$$ ni de la durée $$n$$.
 
-Sinon, cette année on utilise pas mal les développements limités et je sais que pour $$x$$ petit on peut écrire $$\ln(1+x) = x - \frac{1}{x^2} + \frac{1}{x^3} ...$$
+Sinon, cette année on utilise pas mal les développements limités et je sais que pour $$x$$ petit on peut écrire $$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots$$
 
 Du coup, en première approximation, on peut dire
 
@@ -1020,9 +1027,13 @@ J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un peti
 
 
 <!-- ###################################################################### -->
-<!-- ### Ce qu'il faut retenir
+### Ce qu'il faut retenir
 
-Lorem... -->
+1. Les dérivées partielles ont des unités différentes, on ne peut pas les comparer telles quelles. On compare plutôt les élasticités $$E_x = \frac{\partial G}{\partial x} \cdot \frac{x}{G}$$ qui répondent à la question : si $$x$$ augmente de 1%, de combien de % augmente le gain ?
+
+1. L'élasticité du montant vaut 1 : +1% de mise donne +1% de gain. Avec 1 000 € placés à 5% sur 35 ans, les élasticités du rendement et de la durée valent environ 2 ($$E_r \approx 2.04$$ et $$E_n \approx 2.09$$) : +1% sur l'un ou l'autre donne environ +2% de gain.
+
+1. Le rapport $$\frac{E_n}{E_r} = \frac{(1+r)\ln(1+r)}{r} \approx 1 + r$$ ne dépend que du rendement. En relatif, rendement et durée font match nul. Mais la durée on la choisit alors que le rendement on le subit : il faut commencer tôt.
 
 
 
@@ -1128,17 +1139,7 @@ Mais bon on va garder ta phrase.
 <!-- ###################################################################### -->
 ### Ce qu'il faut retenir
 
-<!--
-
-1. **La durée et le taux sont des leviers "super-linéaires"**, et leur élasticité grandit avec $$n$$. À 35 ans, elle dépasse 2. Commencer tôt et ne pas vendre est donc le meilleur levier.
-2. **Le taux, on le subit en grande partie**, sauf sur un point : les **frais**. Ils se soustraient directement à $$r$$. Passer de $$0{,}8\ \%$$ à $$0{,}2\ \%$$ de frais revient à gagner $$+0{,}6$$ point de rendement, soit environ $$+4\,000\ \text{€}$$ dans l'exemple, sans prendre aucun risque supplémentaire.
-3. **Le montant est le levier le plus prévisible**, mais seulement linéaire. En pratique, des versements réguliers combinent montant et durée.
-
-Une précision : $$r$$ doit être le rendement **géométrique** moyen (le CAGR), pas la moyenne arithmétique des rendements annuels. Avec la volatilité, la moyenne arithmétique surestime le résultat.
-
--->
-
-
+Lorem
 
 
 
@@ -1150,10 +1151,7 @@ Une précision : $$r$$ doit être le rendement **géométrique** moyen (le CAGR)
 <!-- ###################################################################### -->
 ## Conclusion
 
-Lorem...
-
-
-
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit laboriosam illum, quisquam assumenda dolores at dolore optio corrupti hic libero!
 
 
 
