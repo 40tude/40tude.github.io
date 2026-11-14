@@ -18,6 +18,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
   - [Sous-titre](#sous-titre)
   - [Tableaux](#tableaux)
   - [Regex utiles](#regex-utiles)
+  - [Apercu VSCode et equations](#apercu-vscode-et-equations)
   - [PowerShell](#powershell)
   - [Liquid](#liquid)
 - [Publication](#publication)
@@ -247,7 +248,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-11-11 15:50:26
+last_modified_date: 2026-11-14 15:47:24
 ---
 ```
 
@@ -265,7 +266,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-11-11 15:50:26
+last_modified_date: 2026-11-14 15:47:24
 ```
 
 Image OG ideale : PNG 1200px x 630px
@@ -369,6 +370,84 @@ $$
 \end{align}
 $$
 ```
+
+
+### Apercu VSCode et equations
+
+Objectif : que l'apercu VSCode (`CTRL + K V`) affiche les equations comme le site dans Edge, pour relire un article sans surprise.
+
+#### Qui affiche quoi
+
+| Ou                      | Moteur Markdown          | Moteur equations |
+|-------------------------|--------------------------|------------------|
+| Site (Edge)             | Jekyll + kramdown        | MathJax 3 (voir `_includes/mathjax.html`) |
+| Apercu VSCode `CTRL+K V`| Markdown Preview Enhanced (MPE) | MathJax (force dans `settings.json`) |
+
+* `CTRL + K V` est associe a 2 commandes : l'apercu natif de VSCode ET celui de MPE. C'est MPE qui gagne (raccourci d'extension prioritaire).
+* Verifier : `CTRL + K CTRL + S` > icone clavier "Record Keys" > taper `CTRL + K V`. Colonne Source.
+* Verifier dans l'apercu : clic droit. Si on voit "Open in Browser", "Export"... c'est MPE.
+
+#### Probleme 1 : `\%` dans `\text{}`
+
+Symptome : `\text{ en \%}` OK dans VSCode, affiche `\%` en clair dans Edge.
+
+* MathJax n'interprete PAS les commandes a l'interieur de `\text{}` (il faudrait l'extension `textmacros`, non chargee sur le site).
+* KaTeX (moteur par defaut de MPE et de l'apercu natif) les interprete. D'ou la difference.
+
+Solutions :
+1. Ecrire le `%` hors du `\text{}` : `\text{Variation de } G \text{ en } \%` (garder l'espace dans `\text{ en }`).
+2. Dans `settings.json` (`C:\Users\phili\AppData\Roaming\Code\User\settings.json`), MPE est passe en MathJax pour voir les memes erreurs que le site :
+
+```json
+"markdown-preview-enhanced.mathRenderingOption": "MathJax",
+```
+
+#### Probleme 2 : `$$...$$` dans une phrase
+
+Symptome : dans l'apercu VSCode, `Dans lequel $$V_n$$ c'etait...` coupe le paragraphe, `V_n` se retrouve centre sur sa propre ligne. Sur le site, tout est OK.
+
+Cause : kramdown et MPE ne lisent pas `$$` de la meme facon.
+* kramdown : `$$...$$` au milieu d'une ligne de texte = equation **inline**. Seul sur sa ligne (paragraphe a part) = equation **centree**.
+* MPE : `$$...$$` = toujours equation centree.
+* On ne peut pas passer le site aux `$` simples (voir DONE, discussion just-the-docs #1593). Donc on adapte l'apercu, pas les articles.
+
+Solution : le script `.crossnote/parser.js` (a la racine du repo).
+* `.crossnote/` = dossier de config de MPE pour le workspace (MPE est base sur la lib `crossnote`).
+* MPE appelle `onWillParseMarkdown(markdown)` AVANT d'afficher le fichier. Le script recoit le texte, le modifie et le renvoie. Le fichier `.md` sur disque n'est jamais modifie.
+* Ce qu'il fait : remplace les `$$...$$` qui sont au milieu d'une ligne par `$...$` (inline pour MPE).
+* Ce qu'il ne touche pas :
+    * les blocs de code (```` ``` ```` ou `~~~`)
+    * le code inline entre backticks
+    * les lignes qui ne contiennent qu'une equation : `$$V_n = V_0 (1 + r)^n$$`
+    * les blocs multi-lignes entre deux lignes `$$` (`\begin{align*}`...)
+* Jekyll ignore les dossiers qui commencent par un point : `.crossnote/` n'est pas publie sur le site.
+* Depuis MPE 0.8.x, `parser.js` tourne dans un bac a sable (QuickJS). Pas d'acces au disque ni au reseau, juste du JavaScript pur.
+
+Exemple :
+```text
+Avant  : Dans lequel $$V_n$$ c'etait la valeur au bout de $$n$$ annees
+Apres  : Dans lequel $V_n$ c'etait la valeur au bout de $n$ annees     (vu par MPE seulement)
+```
+
+Apres une modif de `parser.js` : fermer l'apercu et le rouvrir. Sinon `CTRL + SHIFT + P` > "Developer: Reload Window".
+
+Tester le script hors VSCode (affiche les lignes transformees) :
+```powershell
+$js = @'
+const fs = require('fs');
+const hooks = eval(fs.readFileSync(process.argv[2], 'utf8'));
+hooks.onWillParseMarkdown(fs.readFileSync(process.argv[3], 'utf8')).then(o => console.log(o));
+'@
+Set-Content ./temp/test_parser.js $js
+node ./temp/test_parser.js ./.crossnote/parser.js ./docs/03_maths/022_interets_composes/interets_composes.md
+```
+
+Limites connues :
+* Un `$` isole dans le texte (ex. "la question a 1M$") peut etre pris pour un debut d'equation par MPE. Sans consequence si le paragraphe ne contient pas d'equation.
+* Le script ne connait que les cas ci-dessus. Si un rendu bizarre apparait uniquement dans VSCode, penser a lui en premier.
+* Desactiver : renommer ou supprimer `.crossnote/parser.js`, puis rouvrir l'apercu.
+
+Sur un autre PC : il suffit que `.crossnote/parser.js` soit commite et que MPE soit installe, avec le reglage MathJax ci-dessus dans `settings.json`.
 
 
 ### PowerShell
