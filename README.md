@@ -2,15 +2,15 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 
 ---
 
-## Table des matieres
+## Table des matières
 
-- [Edition](#edition)
+- [Édition](#édition)
   - [Longueur des posts](#longueur-des-posts)
   - [VSCode Snippets](#vscode-snippets)
-  - [Caracteres speciaux et tirets](#caracteres-speciaux-et-tirets)
+  - [Caractères spéciaux et tirets](#caractères-spéciaux-et-tirets)
   - [Callouts](#callouts)
-  - [Video avec legende](#video-avec-legende)
-  - [Image avec legende](#image-avec-legende)
+  - [Vidéo avec légende](#vidéo-avec-légende)
+  - [Image avec légende](#image-avec-légende)
   - [Liens et ancres](#liens-et-ancres)
   - [Note de bas de page](#note-de-bas-de-page)
   - [Table of content dans un article](#table-of-content-dans-un-article)
@@ -18,36 +18,38 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
   - [Sous-titre](#sous-titre)
   - [Tableaux](#tableaux)
   - [Regex utiles](#regex-utiles)
-  - [Apercu VSCode et equations](#apercu-vscode-et-equations)
+  - [Aperçu VSCode et équations](#aperçu-vscode-et-équations)
   - [PowerShell](#powershell)
+  - [Template d'article](#template-darticle)
   - [Liquid](#liquid)
+- [NoteBook Python](#notebook-python)
 - [Publication](#publication)
-  - [Alerte de securite Dependabot](#alerte-de-securite-dependabot)
+  - [Alerte de sécurité Dependabot via Mail](#alerte-de-sécurité-dependabot-via-mail)
+  - [Alerte Dependabot sur le site GitHub](#alerte-dependabot-sur-le-site-github)
 - [SEO](#seo)
   - [Tester et outils](#tester-et-outils)
   - [Indexation Google](#indexation-google)
 - [Communication](#communication)
-- [Idees de billets](#idees-de-billets)
+- [Idées de billets](#idées-de-billets)
 - [TODO](#todo)
 - [DONE](#done)
 
 ---
 
-## Edition
+## Édition
 
 ### Longueur des posts
 * 3_000 mots
-* Decouper en serie le cas echeant
+* Découper en série le cas échéant
 * Utiliser `word2read` ./blablabla.md (voir dans assets\wordcount)
 
 
 ### VSCode Snippets
-Roue Crantee en bas a gauche > Snippets > Choisir markdown.json
+Roue crantée en bas à gauche > Snippets > Choisir markdown.json
 Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 
 
-### Caracteres speciaux et tirets
-* C cedille majuscule = ALT + 128 (du pave numérique)
+### Caractères spéciaux et tirets
 
 ```json
 "em dash": {
@@ -59,12 +61,14 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 
 * `-` hyphen
 * `–` en dash (tiret demi-cadratin)
-* `—` em dash (tiret cadratin) : inserer une remarque parenthetique, plus expressif que la virgule - ALT + 0150
+* `—` em dash (tiret cadratin) : insérer une remarque parenthétique, plus expressif que la virgule - ALT + 0150
+* `É` : ALT + 144
+* `Ç` : ALT +128
 
 Supprimer les espaces vides en fin de ligne : `[ \t]+$`
 (Voir aussi settings.json : `"files.trimTrailingWhitespace": true`)
 
-Numerotes cercles :
+Numéros cerclés :
 * ❶ U+2776  ❷ U+2777  ❸ U+2778  ❹ U+2779  ❺ U+277A  ❻ U+277B  ❼ U+277C  ❽ U+277D  ❾ U+277E
 
 Sans Serif :
@@ -97,9 +101,9 @@ Voir `_config.yml`
 > A paragraph with a custom title callout
 ```
 
-Reference : <https://just-the-docs.com/docs/ui-components/callouts/>
+Référence : <https://just-the-docs.com/docs/ui-components/callouts/>
 
-Bannieres a copier-coller dans un article en cours :
+Bannières à copier-coller dans un article en cours :
 
 <h2 align="center">
 <span style="color:red"><b>This post is still being written.</b></span>
@@ -110,7 +114,7 @@ Bannieres a copier-coller dans un article en cours :
 </h2>
 
 
-### Video avec legende
+### Vidéo avec légende
 
 ```html
 <figure style="text-align: center;">
@@ -119,7 +123,7 @@ Bannieres a copier-coller dans un article en cours :
 </figure>
 ```
 
-Centrer une video YouTube sans legende :
+Centrer une vidéo YouTube sans légende :
 ```html
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?start=31" frameborder="0" allowfullscreen></iframe>
@@ -127,7 +131,7 @@ Centrer une video YouTube sans legende :
 ```
 
 
-### Image avec legende
+### Image avec légende
 
 ```html
 <div align="center">
@@ -151,7 +155,7 @@ Lien sur une page du site :
 [Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%})
 ```
 
-Lien sur un fichier a telecharger :
+Lien sur un fichier à télécharger :
 ```
 [Agenda de la Journee de Roulage](assets/agenda_roulage.pdf)
 ```
@@ -178,9 +182,9 @@ See [this section]({% post_url 2025-09-01-post-a %}#my-important-section).
 [indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)
 ```
 
-Ancre dans la meme page (ou depuis une autre page) :
+Ancre dans la même page (ou depuis une autre page) :
 ```
-[Aller a cette section](#short-id)
+[Aller à cette section](#short-id)
 ## Un titre long pour une section <a id="short-id"></a>
 ```
 
@@ -213,7 +217,7 @@ Tout en bas de l'article :
 ### Table of content dans un article
 
 ```
-Mettre {:toc} que sur les titres de niveau 2. Eviter 3 et +
+Mettre {:toc} que sur les titres de niveau 2. Éviter 3 et +
 
 # Corps cetoniques
 {: .no_toc }
@@ -248,7 +252,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-11-14 15:47:24
+last_modified_date: 2026-11-14 16:12:57
 ---
 ```
 
@@ -266,10 +270,10 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-11-14 15:47:24
+last_modified_date: 2026-11-14 16:12:57
 ```
 
-Image OG ideale : PNG 1200px x 630px
+Image OG idéale : PNG 1200px x 630px
 ```
 ┌───────────────────────────────────────────────────┐
 │                                                   │
@@ -300,12 +304,12 @@ From basic syntax to building plugins with once_cell and organizing your Rust pr
 ### Tableaux
 
 ```
-| Aligne a gauche  | Centre          | Aligne a droite  |
+| Aligné à gauche  | Centré          | Aligné à droite  |
 | :--------------- |:---------------:| ----------------:|
-| Aligne a gauche  | Ce texte        |  Aligne a droite |
+| Aligné à gauche  | Ce texte        |  Aligné à droite |
 ```
 
-Compter les articles du site / date de derniere modif :
+Compter les articles du site / date de dernière modif :
 ```
 <p>Nombre d'articles du site : {{ site.pages | size }}</p>
 {% for page in site.pages limit: 1 %}
@@ -323,14 +327,14 @@ CTRL + H + Exp Reg
 $1 $2
 ```
 
-Centrer les videos Youtube :
+Centrer les vidéos YouTube :
 ```
 CTRL + H + Exp Reg
 (<iframe.*?<\/iframe>)
 <div align="center">\n$1\n</div>
 ```
 
-Equations - remplacer les $ seuls par $$ :
+Équations - remplacer les $ seuls par $$ :
 ```
 CTRL + H + Exp Reg
 (?<!\$)\$(?!\$)
@@ -343,7 +347,7 @@ $$\text{y_target}$$     Does NOT work in VSCode
 $$\text{y\_target}$$    Does NOT work in rendering
 ```
 
-Exemples d'equations :
+Exemples d'équations :
 L'alignement se fait sur le `&`. `align*` sans numérotation. `align` avec numérotation.
 
 ```
@@ -372,66 +376,66 @@ $$
 ```
 
 
-### Apercu VSCode et equations
+### Aperçu VSCode et équations
 
-Objectif : que l'apercu VSCode (`CTRL + K V`) affiche les equations comme le site dans Edge, pour relire un article sans surprise.
+Objectif : que l'aperçu VSCode (`CTRL + K V`) affiche les équations comme le site dans Edge, pour relire un article sans surprise.
 
 #### Qui affiche quoi
 
-| Ou                      | Moteur Markdown          | Moteur equations |
+| Où                      | Moteur Markdown          | Moteur équations |
 |-------------------------|--------------------------|------------------|
 | Site (Edge)             | Jekyll + kramdown        | MathJax 3 (voir `_includes/mathjax.html`) |
-| Apercu VSCode `CTRL+K V`| Markdown Preview Enhanced (MPE) | MathJax (force dans `settings.json`) |
+| Aperçu VSCode `CTRL+K V`| Markdown Preview Enhanced (MPE) | MathJax (forcé dans `settings.json`) |
 
-* `CTRL + K V` est associe a 2 commandes : l'apercu natif de VSCode ET celui de MPE. C'est MPE qui gagne (raccourci d'extension prioritaire).
-* Verifier : `CTRL + K CTRL + S` > icone clavier "Record Keys" > taper `CTRL + K V`. Colonne Source.
-* Verifier dans l'apercu : clic droit. Si on voit "Open in Browser", "Export"... c'est MPE.
+* `CTRL + K V` est associé à 2 commandes : l'aperçu natif de VSCode ET celui de MPE. C'est MPE qui gagne (raccourci d'extension prioritaire).
+* Vérifier : `CTRL + K CTRL + S` > icône clavier "Record Keys" > taper `CTRL + K V`. Colonne Source.
+* Vérifier dans l'aperçu : clic droit. Si on voit "Open in Browser", "Export"... c'est MPE.
 
-#### Probleme 1 : `\%` dans `\text{}`
+#### Problème 1 : `\%` dans `\text{}`
 
-Symptome : `\text{ en \%}` OK dans VSCode, affiche `\%` en clair dans Edge.
+Symptôme : `\text{ en \%}` OK dans VSCode, affiche `\%` en clair dans Edge.
 
-* MathJax n'interprete PAS les commandes a l'interieur de `\text{}` (il faudrait l'extension `textmacros`, non chargee sur le site).
-* KaTeX (moteur par defaut de MPE et de l'apercu natif) les interprete. D'ou la difference.
+* MathJax n'interprète PAS les commandes à l'intérieur de `\text{}` (il faudrait l'extension `textmacros`, non chargée sur le site).
+* KaTeX (moteur par défaut de MPE et de l'aperçu natif) les interprète. D'où la différence.
 
 Solutions :
-1. Ecrire le `%` hors du `\text{}` : `\text{Variation de } G \text{ en } \%` (garder l'espace dans `\text{ en }`).
-2. Dans `settings.json` (`C:\Users\phili\AppData\Roaming\Code\User\settings.json`), MPE est passe en MathJax pour voir les memes erreurs que le site :
+1. Écrire le `%` hors du `\text{}` : `\text{Variation de } G \text{ en } \%` (garder l'espace dans `\text{ en }`).
+2. Dans `settings.json` (`C:\Users\phili\AppData\Roaming\Code\User\settings.json`), MPE est passé en MathJax pour voir les mêmes erreurs que le site :
 
 ```json
 "markdown-preview-enhanced.mathRenderingOption": "MathJax",
 ```
 
-#### Probleme 2 : `$$...$$` dans une phrase
+#### Problème 2 : `$$...$$` dans une phrase
 
-Symptome : dans l'apercu VSCode, `Dans lequel $$V_n$$ c'etait...` coupe le paragraphe, `V_n` se retrouve centre sur sa propre ligne. Sur le site, tout est OK.
+Symptôme : dans l'aperçu VSCode, `Dans lequel $$V_n$$ c'était...` coupe le paragraphe, `V_n` se retrouve centré sur sa propre ligne. Sur le site, tout est OK.
 
-Cause : kramdown et MPE ne lisent pas `$$` de la meme facon.
-* kramdown : `$$...$$` au milieu d'une ligne de texte = equation **inline**. Seul sur sa ligne (paragraphe a part) = equation **centree**.
-* MPE : `$$...$$` = toujours equation centree.
-* On ne peut pas passer le site aux `$` simples (voir DONE, discussion just-the-docs #1593). Donc on adapte l'apercu, pas les articles.
+Cause : kramdown et MPE ne lisent pas `$$` de la même façon.
+* kramdown : `$$...$$` au milieu d'une ligne de texte = équation **inline**. Seul sur sa ligne (paragraphe à part) = équation **centrée**.
+* MPE : `$$...$$` = toujours équation centrée.
+* On ne peut pas passer le site aux `$` simples (voir DONE, discussion just-the-docs #1593). Donc on adapte l'aperçu, pas les articles.
 
-Solution : le script `.crossnote/parser.js` (a la racine du repo).
-* `.crossnote/` = dossier de config de MPE pour le workspace (MPE est base sur la lib `crossnote`).
-* MPE appelle `onWillParseMarkdown(markdown)` AVANT d'afficher le fichier. Le script recoit le texte, le modifie et le renvoie. Le fichier `.md` sur disque n'est jamais modifie.
+Solution : le script `.crossnote/parser.js` (à la racine du repo).
+* `.crossnote/` = dossier de config de MPE pour le workspace (MPE est basé sur la lib `crossnote`).
+* MPE appelle `onWillParseMarkdown(markdown)` AVANT d'afficher le fichier. Le script reçoit le texte, le modifie et le renvoie. Le fichier `.md` sur disque n'est jamais modifié.
 * Ce qu'il fait : remplace les `$$...$$` qui sont au milieu d'une ligne par `$...$` (inline pour MPE).
 * Ce qu'il ne touche pas :
     * les blocs de code (```` ``` ```` ou `~~~`)
     * le code inline entre backticks
-    * les lignes qui ne contiennent qu'une equation : `$$V_n = V_0 (1 + r)^n$$`
+    * les lignes qui ne contiennent qu'une équation : `$$V_n = V_0 (1 + r)^n$$`
     * les blocs multi-lignes entre deux lignes `$$` (`\begin{align*}`...)
-* Jekyll ignore les dossiers qui commencent par un point : `.crossnote/` n'est pas publie sur le site.
-* Depuis MPE 0.8.x, `parser.js` tourne dans un bac a sable (QuickJS). Pas d'acces au disque ni au reseau, juste du JavaScript pur.
+* Jekyll ignore les dossiers qui commencent par un point : `.crossnote/` n'est pas publié sur le site.
+* Depuis MPE 0.8.x, `parser.js` tourne dans un bac à sable (QuickJS). Pas d'accès au disque ni au réseau, juste du JavaScript pur.
 
 Exemple :
 ```text
-Avant  : Dans lequel $$V_n$$ c'etait la valeur au bout de $$n$$ annees
-Apres  : Dans lequel $V_n$ c'etait la valeur au bout de $n$ annees     (vu par MPE seulement)
+Avant  : Dans lequel $$V_n$$ c'était la valeur au bout de $$n$$ années
+Après  : Dans lequel $V_n$ c'était la valeur au bout de $n$ années     (vu par MPE seulement)
 ```
 
-Apres une modif de `parser.js` : fermer l'apercu et le rouvrir. Sinon `CTRL + SHIFT + P` > "Developer: Reload Window".
+Après une modif de `parser.js` : fermer l'aperçu et le rouvrir. Sinon `CTRL + SHIFT + P` > "Developer: Reload Window".
 
-Tester le script hors VSCode (affiche les lignes transformees) :
+Tester le script hors VSCode (affiche les lignes transformées) :
 ```powershell
 $js = @'
 const fs = require('fs');
@@ -443,11 +447,11 @@ node ./temp/test_parser.js ./.crossnote/parser.js ./docs/03_maths/022_interets_c
 ```
 
 Limites connues :
-* Un `$` isole dans le texte (ex. "la question a 1M$") peut etre pris pour un debut d'equation par MPE. Sans consequence si le paragraphe ne contient pas d'equation.
-* Le script ne connait que les cas ci-dessus. Si un rendu bizarre apparait uniquement dans VSCode, penser a lui en premier.
-* Desactiver : renommer ou supprimer `.crossnote/parser.js`, puis rouvrir l'apercu.
+* Un `$` isolé dans le texte (ex. "la question à 1M$") peut être pris pour un début d'équation par MPE. Sans conséquence si le paragraphe ne contient pas d'équation.
+* Le script ne connaît que les cas ci-dessus. Si un rendu bizarre apparaît uniquement dans VSCode, penser à lui en premier.
+* Désactiver : renommer ou supprimer `.crossnote/parser.js`, puis rouvrir l'aperçu.
 
-Sur un autre PC : il suffit que `.crossnote/parser.js` soit commite et que MPE soit installe, avec le reglage MathJax ci-dessus dans `settings.json`.
+Sur un autre PC : il suffit que `.crossnote/parser.js` soit commité et que MPE soit installé, avec le réglage MathJax ci-dessus dans `settings.json`.
 
 
 ### PowerShell
@@ -460,7 +464,7 @@ cd C:\Users\phili\OneDrive\Documents\40tude_to_repair\converted_to_markdown\docs
 Get-ChildItem -Path . -Recurse -Filter *.md | Sort-Object -Property Length -Descending | Select-Object -First 10 | Format-Table FullName, @{Name="Size (KB)"; Expression={"{0:N2}" -f ($_.Length / 1KB)}}
 ```
 
-Lister tous les fichiers qui ne sont pas .webp dans les sous-repertoires /assets :
+Lister tous les fichiers qui ne sont pas .webp dans les sous-répertoires /assets :
 
 ```powershell
 Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
@@ -475,7 +479,7 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 ### Template d'article
 
 * Utilise Liquid pour écrire une seule fois le titre et la description
-* La date et l'heure de dernière mise à jour sont maintenue grâce à un hook de pre-commit qui est dans `40tude.github.io/.git/hooks/pre-commit`
+* La date et l'heure de dernière mise à jour sont maintenues grâce à un hook de pre-commit qui est dans `40tude.github.io/.git/hooks/pre-commit`
     * Si un jour on déplace le dossier du site faudra recréer le hook. Voir le code ci-dessous.
 
 ```bash
@@ -608,13 +612,13 @@ done
 
 ```
 
-Prompt type pour generer une version Medium d'un article :
+Prompt type pour générer une version Medium d'un article :
 ```
-Le fichier monolith_to_distributed.md est trop long et pas fait pour etre publie sur Medium.
-Peux tu deposer dans raw_assets/ une version que je peux poster sur Medium.
-Pense peut etre a utiliser les quelques unes des images img04 a img12 ou img14 pour illustrer.
-Idealement je souhaite juste a avoir a coller le fichier que tu vas generer.
-Evite les dash, les em-dash et les emojis. Ton de la discussion.
+Le fichier monolith_to_distributed.md est trop long et pas fait pour être publié sur Medium.
+Peux-tu déposer dans raw_assets/ une version que je peux poster sur Medium.
+Pense peut-être à utiliser quelques-unes des images img04 à img12 ou img14 pour illustrer.
+Idéalement je souhaite juste avoir à coller le fichier que tu vas générer.
+Évite les dash, les em-dash et les emojis. Ton de la discussion.
 ```
 
 Afficher du JSON brut sans que Jekyll le parse :
@@ -629,7 +633,7 @@ Afficher du JSON brut sans que Jekyll le parse :
 ```
 {% endraw %}
 
-References :
+Références :
 * <https://just-the-docs.github.io/just-the-docs/>
 * <https://jekyllcodex.org/without-plugins/>
 * <https://mademistakes.com/>
@@ -642,28 +646,115 @@ References :
 
 ---
 
+## NoteBook Python
+
+Objectif : un billet + son notebook Jupyter, édités dans le VSCode ouvert sur la racine du site.
+Exemple de référence : `docs/03_maths/022_interets_composes/`.
+
+### Organisation
+
+```text
+docs/<categorie>/<NNN_billet>/
+    <billet>.md                 article publié
+    assets/                     images publiées (.webp)
+    raw_assets/                 IGNORE PAR GIT (.gitignore : **/raw_assets/)
+        .venv/                  env Python propre au notebook
+        <billet>.ipynb          notebook de travail
+        README.md               mode d'emploi lecteur (installer uv, VSCode, kernel...)
+```
+
+* `raw_assets/` n'est ni commité ni publié. Pour proposer le notebook en telechargement, le copier dans `assets/` et le lier depuis l'article.
+* Modèle de README lecteur : `docs/03_maths/022_interets_composes/raw_assets/README.md` (pas sur GitHub, le garder sur OneDrive).
+
+### Pourquoi VSCode ne trouve pas le `.venv`
+
+VSCode ne détecte automatiquement un `.venv` qu'à la racine du dossier ouvert (`40tude.github.io`).
+Un `.venv` dans `docs/.../raw_assets/` est trop profond : le kernel picker ne propose que les Python globaux de `uv` (`AppData\Roaming\uv\python\...`).
+Ne PAS cliquer "Create Python Environment" : ça crée un `.venv` à la racine du site.
+
+### Checklist nouveau notebook
+
+1. Créer le dossier et l'environnement :
+
+```powershell
+cd docs/<categorie>/<NNN_billet>
+New-Item -ItemType Directory -Force raw_assets/
+cd raw_assets
+uv venv
+uv pip install ipykernel numpy matplotlib scipy
+```
+
+2. Vérifier que le kernel est utilisable :
+
+```powershell
+./.venv/Scripts/python.exe -c "import ipykernel; print('ipykernel ok')"
+```
+
+3. Copier le chemin complet du Python du `.venv` dans le presse-papier :
+
+```powershell
+(Resolve-Path ./.venv/Scripts/python.exe).Path | Set-Clipboard
+```
+
+4. Dans VSCode : `CTRL + SHIFT + P` > `Python: Select Interpreter` > `Enter interpreter path...` > `CTRL + V` > Entrée.
+5. Créer ou ouvrir `raw_assets/<billet>.ipynb`.
+6. En haut à droite du notebook : `Select Kernel` > `Python Environments...` > icône Refresh > choisir l'entrée `.venv` (prompt = `raw_assets`, chemin `...\raw_assets\.venv\Scripts\python.exe`).
+    * Si absent : `CTRL + SHIFT + P` > `Developer: Reload Window`, puis recommencer l'étape 6.
+7. Vérifier dans une cellule :
+
+```python
+import sys; print(sys.executable)   # doit finir par raw_assets\.venv\Scripts\python.exe
+```
+
+8. Ajouter un package plus tard (depuis `raw_assets/`) : `uv pip install <package>`. Pas besoin de rechoisir le kernel, juste `Restart` du kernel.
+9. Rédiger billet et notebook en parallèle. Images du notebook à publier : export en `.webp` dans `assets/`.
+10. Publication : copier le `.ipynb` (et le README lecteur si utile) dans `assets/`, ajouter le lien dans l'article :
+
+```
+[Télécharger le notebook](assets/<billet>.ipynb)
+```
+
+### Alternatives
+
+* Ouvrir seulement le dossier du notebook : `code docs/<...>/raw_assets` (le `.venv` est alors à la racine, détecté tout seul). Pratique pour travailler le notebook seul, mais on perd le reste du site.
+* `File > Add Folder to Workspace...` > `raw_assets` : le site reste ouvert et le `.venv` est détecté.
+
+### Réinstaller l'env (autre PC, `.venv` cassé, version Python changée)
+
+```powershell
+cd docs/<...>/raw_assets
+Remove-Item -Recurse -Force .venv
+uv venv
+uv pip install ipykernel numpy matplotlib scipy
+```
+
+Puis refaire les étapes 3 à 7 de la checklist.
+
+---
+
 ## Publication
 
-### Alerte de securite Dependabot via Mail
+### Alerte de sécurité Dependabot via Mail
 
 Mail, titre typique : `[40tude] A security advisory on addressable affects at least one of your repositories`
 
 0. Dans le mail, cliquer sur le lien en bas. Renvoie par exemple sur `https://github.com/40tude/40tude.github.io/security/dependabot/11`
 1. Aller sur la page de l'alerte
-2. Cliquer sur "Create Dependabot security update" (en haut a droite)
-3. Dependabot cree une PR automatiquement
+2. Cliquer sur "Create Dependabot security update" (en haut à droite)
+3. Dependabot crée une PR automatiquement
 4. Aller sur la PR, cliquer "Merge pull request"
-5. GitHub Pages rebuildera avec la version corrigee
+5. GitHub Pages rebuildera avec la version corrigée
 
 
-### Alerte Dependabot sur le site GitHUb
-0. Sur le GitHub du  site regarder "Securirty & quality"
+### Alerte Dependabot sur le site GitHub
+0. Sur le GitHub du site regarder "Security & quality"
 1. Cliquer dessus si besoin
 2. Aller dans la catégorie Dependabot
 3. Cliquer sur `Create Dependabot security update` (bouton vert)
 4. Cliquer sur `Review Security Update` (bouton vert)
-4. Cliquer `Merge Pull Request` (bouton vert)
-5. Cliquer `Confirm Merge` (bouton vert)
+5. Cliquer `Merge Pull Request` (bouton vert)
+6. Cliquer `Confirm Merge` (bouton vert)
+
 ---
 
 ## SEO
@@ -674,7 +765,7 @@ Tester l'affichage sur Facebook/Twitter :
 * <https://www.opengraph.xyz/>
 * <https://metatags.io/>
 
-Verifier qu'une page est bien indexee :
+Vérifier qu'une page est bien indexée :
 ```
 site:https://www.40tude.fr/docs/06_programmation/rust/016_errors/errors_02.html
 ```
@@ -687,34 +778,34 @@ Tooling :
 * GTMetrix : <https://gtmetrix.com/>
 * Pingdom Tools : <https://tools.pingdom.com/>
 
-Front matter SEO - ajouter ALT sur les images. Image OG ideale 1200x630px.
+Front matter SEO - ajouter ALT sur les images. Image OG idéale 1200x630px.
 
 
 ### Indexation Google
 
-Pour s'assurer que toutes les pages de documentation sont indexees :
+Pour s'assurer que toutes les pages de documentation sont indexées :
 
-#### Etape A : Identifier la raison
+#### Étape A : Identifier la raison
 
-Dans le menu **Pages** de Google Search Console, faire defiler sous le graphe. Raisons courantes :
-* **Crawled - currently not indexed** : Google connait la page mais n'a pas decide de l'indexer (signal qualite/autorite)
-* **Discovered - currently not indexed** : Google connait l'URL mais ne l'a pas encore crawlee
-* **Excluded by 'noindex' tag** : Verifier si le generateur de site a ajoute un tag noindex par erreur
+Dans le menu **Pages** de Google Search Console, faire défiler sous le graphe. Raisons courantes :
+* **Crawled - currently not indexed** : Google connaît la page mais n'a pas décidé de l'indexer (signal qualité/autorité)
+* **Discovered - currently not indexed** : Google connaît l'URL mais ne l'a pas encore crawlée
+* **Excluded by 'noindex' tag** : Vérifier si le générateur de site a ajouté un tag noindex par erreur
 
-#### Etape B : Optimiser le maillage interne
+#### Étape B : Optimiser le maillage interne
 
-* S'assurer que chaque page est liee depuis la sidebar, une table des matieres, ou un bouton Suivant/Precedent
-* Google priorise les pages bien connectees
+* S'assurer que chaque page est liée depuis la sidebar, une table des matières, ou un bouton Suivant/Précédent
+* Google priorise les pages bien connectées
 
-#### Etape C : Revalider le sitemap
+#### Étape C : Revalider le sitemap
 
 1. Menu **Sitemaps** dans GSC
-2. Verifier que l'URL du sitemap affiche "Success"
+2. Vérifier que l'URL du sitemap affiche "Success"
 3. Si pas lu depuis des semaines, re-saisir l'URL et cliquer **Submit**
 
-#### Etape D : Valider le correctif
+#### Étape D : Valider le correctif
 
-Cliquer sur la raison identifiee (ex : "Crawled - currently not indexed"), puis cliquer sur **Validate Fix**.
+Cliquer sur la raison identifiée (ex : "Crawled - currently not indexed"), puis cliquer sur **Validate Fix**.
 
 ---
 
@@ -730,74 +821,74 @@ Hashtags : `#RustLang` `@rustlang`
 
 ---
 
-## Idees de billets
+## Idées de billets
 
 * Pareto et 50%-1%
 * SOS Chapitres IV et suivants
-* IA et ML - Relire les notes OneNote de preparation certification Architect IA
+* IA et ML - Relire les notes OneNote de préparation certification Architect IA
 * 52 nuances de physique
 
 ---
 
 ## TODO
 
-* Mettre a jour la page : Knee to knee
-* Dans la home page faire apparaitre la categorie (avec un lien) et la date de derniere mise a jour ?
+* Mettre à jour la page : Knee to knee
+* Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
 * Faire un billet sur le portage de WP vers markdown
-* Mettre a jour la page : 022_compile_cpp_code_with_vscode
+* Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Voir les histoires de balise `rel="canonical"`
 * Voir les histoires de plugins
-    * Va etre chaud
-    * Faut installer ruby meme si on a un plugin sous forme de gem
+    * Va être chaud
+    * Faut installer Ruby même si on a un plugin sous forme de gem
     * Faut l'installer avec Bundle etc.
 * SEO
-    * Pas sur de comprendre grand chose au sujet
-    * En plus je suis pas interesse par le sujet
+    * Pas sûr de comprendre grand-chose au sujet
+    * En plus je suis pas intéressé par le sujet
 * Optimization
     * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire
     * F12 ou Ctrl+Shift+I pour ouvrir les DevTools
     * Onglet Lighthouse > Performance, Accessibility, SEO, Best Practices, cliquer "Generate report"
     * Pagespeed Insights (<https://pagespeed.web.dev/>) : conseils prioritaires
-    * WebPageTest (<https://www.webpagetest.org/>) : analyse depuis differents lieux
+    * WebPageTest (<https://www.webpagetest.org/>) : analyse depuis différents lieux
 
 ---
 
 ## DONE
 
 * ~~Pages en anglais avec lang=en avant le Head~~
-    * Voir `_layouts\default.html`. Si just the docs le modifie, recuperer la nouvelle version depuis `https://github.com/just-the-docs/just-the-docs/blob/main/_layouts/default.html`
+    * Voir `_layouts\default.html`. Si just the docs le modifie, récupérer la nouvelle version depuis `https://github.com/just-the-docs/just-the-docs/blob/main/_layouts/default.html`
 * ~~Mettre les liens des urls dans les billets en gras~~
 * ~~S'assurer que Google indexe bien le site~~
-    * Y a toujours des soucis avec les vieilles pages pirates mais les bonnes pages sont bien indexees
+    * Y a toujours des soucis avec les vieilles pages pirates mais les bonnes pages sont bien indexées
 * ~~Liens LinkedIn Youtube Github dans le footer de la navbar~~
-* ~~Voir dans le repo GitHub si y a pas des articles a rapatrier~~
-    * Notes de maths : Loi binomiale, Equation canonique
+* ~~Voir dans le repo GitHub si y a pas des articles à rapatrier~~
+    * Notes de maths : Loi binomiale, Équation canonique
 * ~~Lightbox pour zoomer sur les images~~
-    * On peut cliquer sur toutes les images et zoomer sur PC et telephone
+    * On peut cliquer sur toutes les images et zoomer sur PC et téléphone
 * ~~Ajouter un espace pour les discussions~~
 * ~~Rapatrier la page Git Survival de GitHub ici~~
 * ~~Rapatrier la page install Linux Mint qui est sur GitHub~~
 * ~~Faire une feuille Sessions.pdf pour docs\07_moto\002_feuille_sessions\feuille_sessions.md~~
 * ~~Faire une checklist.pdf~~
 * ~~implement 404 page~~
-* ~~Sur la 1ere page, la liste des 10 derniers billets mis a jour~~
-* ~~Centrer les videos~~
-* ~~Remplacer les CTRL + A par **CTRL + A** (verifier ALT et WIN)~~
-* ~~Mettre a jour la facon d'ecrire Latex partout sur le site~~ : `$$\mathrm{\LaTeX}$$`
-* ~~Page Linux Mint a rapatrier~~
-* ~~Snowboard, ajouter des photos et des videos~~
+* ~~Sur la 1re page, la liste des 10 derniers billets mis à jour~~
+* ~~Centrer les vidéos~~
+* ~~Remplacer les CTRL + A par **CTRL + A** (vérifier ALT et WIN)~~
+* ~~Mettre à jour la façon d'écrire LaTeX partout sur le site~~ : `$$\mathrm{\LaTeX}$$`
+* ~~Page Linux Mint à rapatrier~~
+* ~~Snowboard, ajouter des photos et des vidéos~~
 * ~~Voir cette histoire de pull request de la part de Just The Docs~~
-* ~~robots.txt~~ : verifier dans Google Search Console > Parametres
+* ~~robots.txt~~ : vérifier dans Google Search Console > Paramètres
 * ~~sitemap~~ : fix url in _config.yml + modify _includes\head_custom.html
 * ~~Test du site avec outils Google~~ : Google Search Console, PageSpeed Insights
-* ~~Ajouter un indicateur de duree de lecture en haut des pages~~
+* ~~Ajouter un indicateur de durée de lecture en haut des pages~~
 * ~~Installer Google Analytics~~
-* ~~Configurer le site pour supporter les simple $ pour les equations~~
+* ~~Configurer le site pour supporter les simples $ pour les équations~~
     * Impossible : <https://github.com/just-the-docs/just-the-docs/discussions/1593>
-* ~~Comment faire des liens (ancres) au sein d'une meme page en markdown~~
+* ~~Comment faire des liens (ancres) au sein d'une même page en markdown~~
 * ~~Correcteur ortho FR dans VScode~~
-* ~~Voir comment permettre le telechargement de fichiers pdf, zip, xlsx...~~
-* ~~Porter les pages de SOS pour tester les outils de recuperation du site WP~~
+* ~~Voir comment permettre le téléchargement de fichiers pdf, zip, xlsx...~~
+* ~~Porter les pages de SOS pour tester les outils de récupération du site WP~~
 * ~~Voir les histoires de permalinks~~ : <https://jekyllrb.com/docs/permalinks/#front-matter>
 * ~~Back to Top~~
 * ~~First et last Edit en bas de page~~
