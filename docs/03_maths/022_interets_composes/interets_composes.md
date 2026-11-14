@@ -4,7 +4,7 @@ author: 40tude
 lang: fr-FR
 layout: default
 title: "Intérêts Composés"
-description: "Encore un voyage au pays des intérêts composés où on va apprendre si il vaut mieux jouer sur le taux, la durée ou le montant. On en profitera pour parler des frais composés, des ETF sur un PEA et de la composition d'un complément de retraite."
+description: "Un second voyage au pays des intérêts composés où on va apprendre si il vaut mieux jouer sur le taux, la durée ou le montant. On en profitera pour parler des frais composés, des ETF sur un PEA et de la composition d'un complément de retraite."
 image: docs/03_maths/022_interets_composes/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-14 12:00:21
+last_modified_date: 2026-11-14 17:25:14
 ---
 
 
@@ -46,10 +46,11 @@ last_modified_date: 2026-11-14 12:00:21
 ## TODO
 {: .no_toc }
 
-* Dérivées partielles. Identifier les leviers les plus efficaces
-* Ne pas oublier les frais composés
-* Ne pas oublier l'inflation
-* Liens sur les vidéos de dérivées
+* Parler des frais composés
+* Parler de l'inflation
+* ~~Dérivées partielles. Identifier les leviers les plus efficaces~~
+* ~~Liens sur les vidéos de dérivées~~
+* ~~Liens sur pages web du site~~
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -79,6 +80,13 @@ last_modified_date: 2026-11-14 12:00:21
 {:toc}
 
 
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Prérequis
+* Normalement un niveau de maths de terminale scientifique devrait suffire
+* Je vous conseille sérieusement d'avoir lu cette [page]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) **AVANT** de commencer à lire le reste
 
 
 
@@ -138,6 +146,16 @@ $$
 où $$M$$ est le montant initial, $$r$$ le rendement annuel et $$n$$ le nombre d'années.
 
 OK Marty. Imagine que pour tes 18 ans je te donne 1000 € à placer sur ton PEA Jeune. Non, non ne me remercie pas car tu ne les a pas encore gagné. J'imagine que dans ton école vous apprenez à écrire des scripts en Python. Si c'est pas le cas, sors de cette maison je te déshérite, hahaha! Plus sérieusement, ouvre ton PC et écris moi un script de 3 lignes qui calcule le gains au bout de 35 ans de tes 1 000 € placés à 5%.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img01.webp"
+    alt="Marty écrit un script Python pour Mamie"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Marty écrit un script Python pour Mamie</figcaption>
+</figure>
+
 
 OK... Du coup j'ouvre mon PC puis VSCode et dans un notebook que je nomme `interets_composes.ipynb` j'écris:
 
@@ -574,6 +592,22 @@ Cette fois-ci, en abscisse on n'a plus les années mais le rendement, de 0% à 1
 1. **Le point noir** c'est notre cas de référence : 5%, 4 516 €.
 1. **Les pointillés** c'est la tangente à la courbe en ce point. C'est la droite qui "frôle" la courbe en $$r=5\%$$ et qui a exactement la même pente qu'elle à cet endroit. Tu te rappelles l'équation de la tangente que tu m'avais fait réviser en long et en large quand j'étais en Première? $$y = f(a) + f^\prime(a)(x - a)$$. Ben, c'est exactement la ligne `tangente = [G0 + pente * (r - r0) for r in rs]` du code, avec $$a = 5\%$$ et $$f^\prime(a) = 183\,867$$.
 
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------------  -->
+#### Note
+{: .no_toc }
+
+Si c'est la panique à propos de l'équation de la droite qui porte la dérivée tu peux lire cet excellent [article](https://www.40tude.fr/docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.html)
+
+
+
+
+
 Et maintenant Mamie, le plus intéressant. Pose ton doigt sur $$r=6\%$$ en abscisse. La tangente donne $$4\,516 + 1\,839 = 6\,355$$ €. La courbe, elle, donne 6 686 €. L'écart entre les deux (331 €), c'est exactement l'écart entre les colonnes "Pente / point" et "G(r+1%) - G(r)" du tableau ($$2\,170 - 1\,839$$). Le tableau et le dessin racontent la même histoire.
 
 On voit aussi que la tangente reste partout **sous** la courbe (la courbe est convexe). C'est pour ça que l'approximation par la dérivée est toujours un peu trop pessimiste ici. Enfin, si on s'éloigne trop de 5%, la tangente raconte n'importe quoi. Vers la gauche elle finit même par passer sous zéro, ce qui n'a aucun sens pour un gain. La dérivée c'est un outil local, un zoom autour d'un point. Pour des petites variations elle est top, pour des grandes variations il vaut mieux refaire le calcul complet.
@@ -806,7 +840,7 @@ Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraim
 <!-- ###################################################################### -->
 ## Effet relatif, élasticité
 
-Ok Mamie, je vais le redire avec mes mots afin de m'assurer qu'on est bien synchros. Ce que tu dis, c'est que ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles (mon prof de Physique serait aux anges de t'entendre dire ça). Pour savoir quel levier est le plus puissant, il faut raisonner en effet relatif : "+1 % sur le paramètre donne combien de % de gain ?". Et ça, sauf erreur de ma part ça s'appelle l'**élasticité** mais bon on s'en fout un peu.
+Ok Mamie, je vais le redire avec mes mots afin de m'assurer qu'on est bien synchros. Ce que tu dis, c'est que ces dérivées ont des unités différentes (€, %, années), donc on ne peut pas les comparer telles quelles (mon prof de Physique serait aux anges de t'entendre dire ça). Pour savoir quel levier est le plus puissant, il faut raisonner en effet relatif : "+1 % sur le paramètre donne combien de % de gain ?". Et ça, sauf erreur de ma part, ça s'appelle l'**élasticité** mais bon on s'en fout un peu.
 
 Pour faire court, je cherche un truc qui répond à la question : si $$r$$ augmente de 1 % de sa valeur, de combien de % augmente $$G$$ ?
 
@@ -839,6 +873,7 @@ $$
 
 
 
+<!-- ###################################################################### -->
 ### Élasticité du montant
 
 On avait
@@ -872,6 +907,7 @@ C'est utile à savoir mais c'est pas très excitant, allez on passe au suivant.
 
 
 
+<!-- ###################################################################### -->
 ### Élasticité du taux
 
 On avait
@@ -914,7 +950,7 @@ $$
 G = M [(1 + r)^n - 1]
 $$
 
-Je trouve $$G_{05} = 1000 (1.05^{35} - 1) = 4516$$ et $$G_{0505} = 1000 (1.0505^{35} - 1) = 4608$$ ce qui veut dire que le gain à augmenté de $$2.03\%$$
+Je trouve $$G_{05} = 1000 (1.05^{35} - 1) = 4516$$ et $$G_{0505} = 1000 (1.0505^{35} - 1) = 4608$$ ce qui veut dire que le gain à augmenté de $$2.05\%$$
 
 
 
@@ -931,8 +967,8 @@ Je trouve $$G_{05} = 1000 (1.05^{35} - 1) = 4516$$ et $$G_{0505} = 1000 (1.0505^
 
 
 
-
-### Elasticité de la durée
+<!-- ###################################################################### -->
+### Élasticité de la durée
 
 On avait
 
@@ -979,10 +1015,100 @@ Je trouve $$G_{35} = 1000 (1.05^{35} - 1) = 4516$$ et $$G_{3535} = 1000 (1.05^{3
 
 
 
+Ok Marty, tes vérifications "à la mano" tiennent la route. Mais tout ça, c'est pour 35 ans. Qu'est-ce qui se passe si je place mes sous 10 ans ? Ou 50 ans ?
 
-Bien, bien, bien Marty... Donc selon tes calculs, faire varier la durée de placement ou la valeur du rendement ça revient au même. Tu peux me le prouver ou au moins me l'expliquer?
+Là pour le coup, plutôt que de refaire les calculs pour chaque durée, je retourne dans mon notebook. Dans une section "Effet relatif, élasticité" j'écris un script qui calcule $$E_r$$ et $$E_n$$ pour des durées allant de 0 à 50 ans et qui trace les deux courbes. Pour l'instant je garde $$r = 5\%$$.
 
-Là je sais pas trop quoi te dire Mamie. C'est vrai qu'avec nos valeurs on a trouvé $$E_r=2.03$$ et $$E_n=2.08$$ mais bon... Les comparer... Ah si, je me rappelle ce que nous a dit notre prof de Physique l'autre jour. Il nous a parlé de la **loi de Weber-Fechner** et du fait qu'on est plus sensible aux rapports qu'aux différences. Par exemple entre 1 et 2 on voit la différence alors qu'entre 20 et 21 on ne la voit plus.
+J'arrive à ça:
+
+```python
+import math
+import matplotlib.pyplot as plt
+
+r = 0.05   # rendement annuel
+N = 50     # durée max (années)
+n0 = 35    # durée de référence
+
+def E_r(n):
+    return n * r * (1 + r) ** (n - 1) / ((1 + r) ** n - 1)
+
+def E_n(n):
+    return n * (1 + r) ** n * math.log(1 + r) / ((1 + r) ** n - 1)
+
+print(f"{'n':>4} | {'E_r':>6} | {'E_n':>6} | {'E_n / E_r':>9}")
+print("-" * 35)
+for n in [1] + list(range(5, N + 1, 5)):
+    print(f"{n:>4} | {E_r(n):>6.3f} | {E_n(n):>6.3f} | {E_n(n) / E_r(n):>9.4f}")
+
+ns = [i / 10 for i in range(1, 10 * N + 1)]  # 0.1 à 50 ans (n = 0 interdit : division par 0)
+er = [E_r(n) for n in ns]
+en = [E_n(n) for n in ns]
+
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot(ns, er, label="Élasticité du rendement $E_r$")
+ax.plot(ns, en, linestyle="--", label="Élasticité de la durée $E_n$")
+ax.axhline(1, color="gray", linestyle=":", label="Élasticité du montant $E_M = 1$")
+
+# Point de référence : 35 ans
+ax.plot([n0, n0], [E_r(n0), E_n(n0)], marker="o", linestyle="none", color="black")
+ax.annotate(f"À {n0} ans : $E_r$ = {E_r(n0):.2f}, $E_n$ = {E_n(n0):.2f}\n"
+            f"+1 % sur r ou sur n donne environ +{E_r(n0):.0f} % de gain",
+            (n0, E_r(n0)), xytext=(n0 - 12, 0.35),
+            arrowprops=dict(arrowstyle="->"))
+
+ax.set_xlim(0, N)
+ax.set_ylim(0, None)
+ax.set_xlabel("Durée du placement n (années)")
+ax.set_ylabel("Élasticité (% de gain pour +1 %)")
+ax.set_title(f"Élasticités du gain selon la durée (rendement {r:.0%})")
+ax.grid(True, alpha=0.3)
+ax.legend(loc="upper left")
+fig.tight_layout()
+plt.show()
+```
+
+Les fonctions `E_r()` et `E_n()` sont juste les deux formules qu'on vient d'établir. Le seul piège c'est $$n = 0$$ : le dénominateur $$(1+r)^n - 1$$ vaut 0, donc je démarre à 0.1 an. À l'exécution je vois :
+
+```text
+   n |    E_r |    E_n | E_n / E_r
+-----------------------------------
+   1 |  1.000 |  1.025 |    1.0246
+   5 |  1.100 |  1.127 |    1.0246
+  10 |  1.233 |  1.264 |    1.0246
+  15 |  1.376 |  1.410 |    1.0246
+  20 |  1.528 |  1.566 |    1.0246
+  25 |  1.689 |  1.731 |    1.0246
+  30 |  1.859 |  1.904 |    1.0246
+  35 |  2.036 |  2.086 |    1.0246
+  40 |  2.220 |  2.275 |    1.0246
+  45 |  2.411 |  2.471 |    1.0246
+  50 |  2.608 |  2.673 |    1.0246
+```
+
+Et le graphe ressemble à ça :
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img09_5.webp"
+    alt="Élasticités du rendement et de la durée en fonction de la durée du placement, à 5%"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Élasticités du rendement et de la durée en fonction de la durée du placement, à 5%</figcaption>
+</figure>
+
+Ok Marty et tu commente ça comment?
+
+Je remarque que :
+1. Les deux courbes sont quasiment l'une sur l'autre, et ce, quelle que soit la durée. Le faible écart qu'on a trouvé à 35 ans n'était donc pas particulier.
+1. Dans le tableau, la dernière colonne affiche toujours 1.0246. On dirait que le rapport $$\frac{E_n}{E_r}$$ ne dépend pas de la durée. Bizarre... Je garde ça dans un coin de la tête.
+1. Les deux élasticités augmentent avec la durée, presque en ligne droite. Elles valent à peu près 1 au début, 2 à 35 ans et plus de 2.6 à 50 ans. Autrement dit, plus le placement est long, plus le gain devient sensible au rendement et à la durée. Et passé la première année, elles sont toutes les deux au-dessus de l'élasticité du montant, qui si je me rappelle bien, reste bloquée à 1.
+
+
+
+
+Donc selon tes calculs, Marty, faire varier la durée de placement ou la valeur du rendement ça revient au même. Tu peux me le prouver ou au moins me l'expliquer?
+
+Là je sais pas trop quoi te dire Mamie. C'est vrai qu'avec nos valeurs on a trouvé $$E_r=2.04$$ et $$E_n=2.09$$ mais bon... Les comparer... Ah si, je me rappelle ce que nous a dit notre prof de Physique l'autre jour. Il nous a parlé de la **loi de Weber-Fechner** et du fait qu'on est plus sensible aux rapports qu'aux différences. Par exemple entre 1 et 2 on voit la différence alors qu'entre 20 et 21 on ne la voit plus.
 
 Bref, pour comparer des valeurs on fait leur rapport. Bon, hé ben évaluons le rapport $$\frac{E_n}{E_r}$$.
 
@@ -998,9 +1124,9 @@ $$
 \end{align*}
 $$
 
-Si je me place à $$r=5\%$$ et que je fais le calcul je trouve $$\frac{E_n}{E_r} \approx 1.0245$$ alors qu'en prenant les valeurs respectives précédentes je trouve $$\frac{2.08}{2.03} = 1.0246$$. Au moins c'est cohérent.
+Si je me place à $$r=5\%$$ et que je fais le calcul je trouve $$\frac{E_n}{E_r} \approx 1.0246$$ alors qu'en prenant les valeurs respectives précédentes je trouve $$\frac{2.0857}{2.0357} \approx 1.0246$$. Au moins c'est cohérent.
 
-Mais bon, faut pas se voiler la face, là, le rapport il vend pas du rêve. Le truc à remarquer quand même c'est qu'il ne dépend que du rendement $$r$$, pas du montant $$M$$ ni de la durée $$n$$.
+Mais bon, faut pas se voiler la face, là, le rapport il vend pas du rêve. Le truc à remarquer quand même c'est qu'il ne dépend que du rendement $$r$$, pas du montant $$M$$ ni de la durée $$n$$. Voilà pourquoi la dernière colonne de mon tableau était constante !
 
 Sinon, cette année on utilise pas mal les développements limités et je sais que pour $$x$$ petit on peut écrire $$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots$$
 
@@ -1178,11 +1304,26 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit laboriosam ill
 <!-- ###################################################################### -->
 ## Webliography
 
+* Une formidable vidéo (la meilleure de web c'est sûr) qui parle de la dérivation de $$a^x$$
+  * Il y a d'autres vidéo sur la chaine à propos de la dérivation et de ses applications
+  * Il y a même une seconde vidéo qui traite de la dérivation de $$a^x$$ (je l'avais oublié)
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://youtu.be/zYY7hyGGsaE?si=uBTP9bRV-WIZgX3L?start=0"
+    title="Une façon de dériver a^x"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Une façon de dériver a^x
+</figcaption>
+</figure>
 
 * [Pourcentages, croissance, gestion des ressources…]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
+* [Dérivée et différentielle]({%link docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.md%})
 
 
-<!-- * [Link to a web page](https://cleonis.nl/physics/phys256/energy_position_equation.php).
-* [Link to a page of the site]({%link docs/03_maths/013_gauss_forme_integrale_differentielle/gauss_forme_integrale_et_differentielle.md%})
--->
 
