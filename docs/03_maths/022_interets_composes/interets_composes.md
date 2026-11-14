@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-14 17:39:34
+last_modified_date: 2026-11-14 18:09:36
 ---
 
 
@@ -1250,9 +1250,26 @@ Ok Marty mais j'avais dit une phrase. Là, tu me raconte ta vie...
 
 En une phrase Mamie? T'es sûr? Bon allez je me lance : "**Si tu prêtes ton argent, tu prêtes attention aux frais.**"
 
-Pas mal. Y a un financier (John Bogle, le fondateur de Vanguard) qui a dit un truc du style : "En matière d'investissement, vous payez pour ce que vous n'obtenez pas, donc si vous ne payez rien vous obtenez tout." Dans ce contexte, l'idée bien sûr c'est que si tu paie des frais tu n'obtiens pas le gain mais par contre si tu ne paie pas de frais tu obtiens tout le gain.
+Pas mal. Y a un financier (John Bogle, le fondateur de Vanguard) qui a dit un truc du style : "We investors as a group get precisely what we *don't* pay for. If we pay nothing, we get everything" (ISBN 978-1-119-40450-7, p42). J'aime bien car c'est le contre pied de l'adage qui dit "On en a pour son argent". Dans le contexte de l'investissement, l'idée c'est que si tu paies des frais tu n'obtiens pas le gain mais par contre si tu ne paie pas de frais tu obtiens tout le gain.
 
 Mais bon on va garder ta phrase.
+
+<!-- ---------------------------------------------------------------------  -->
+#### Note
+{: .no_toc }
+
+Le livre de John C. BOGLE sur [Amazon](https://amzn.eu/d/0iV9ZL8S). Il existe en version audio, en Français...
+
+<figure style="max-width: 225px; margin: auto; text-align: center;">
+<img src="./assets/img11.webp"
+    alt="Common Sense Investing"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Common Sense Investing</figcaption>
+</figure>
+
+
 
 
 
@@ -1265,7 +1282,7 @@ Mais bon on va garder ta phrase.
 <!-- ###################################################################### -->
 ### Ce qu'il faut retenir
 
-Lorem
+* Si tu prêtes ton argent, tu prêtes attention aux frais.
 
 
 
@@ -1304,9 +1321,10 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit laboriosam ill
 <!-- ###################################################################### -->
 ## Webliography
 
-* Une formidable vidéo (la meilleure de web c'est sûr) qui parle de la dérivation de $$a^x$$
-  * Il y a d'autres vidéo sur la chaine à propos de la dérivation et de ses applications
-  * Il y a même une seconde vidéo qui traite de la dérivation de $$a^x$$ (je l'avais oublié)
+* Une formidable vidéo (la meilleure du web, c'est sûr) qui parle de la dérivation de $$a^x$$
+  * Il y a d'autres vidéos sur la [chaîne](https://www.youtube.com/@frbaucop) à propos de la dérivation et de ses applications
+  * Il y a même une seconde vidéo qui montre comment dériver $$a^x$$ différement (ooops, je l'avais oublié)
+
 
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
