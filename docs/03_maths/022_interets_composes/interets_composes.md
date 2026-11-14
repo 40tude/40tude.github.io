@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-14 17:25:14
+last_modified_date: 2026-11-14 17:39:34
 ---
 
 
@@ -1311,7 +1311,7 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit laboriosam ill
 <figure style="max-width: 560px; margin: auto;">
 <div style="position: relative; padding-bottom: 56.25%; height: 0;">
     <iframe
-    src="https://youtu.be/zYY7hyGGsaE?si=uBTP9bRV-WIZgX3L?start=0"
+    src="https://www.youtube.com/embed/zYY7hyGGsaE?start=0"
     title="Une façon de dériver a^x"
     style="position: absolute; inset: 0; width: 100%; height: 100%;"
     allowfullscreen>
@@ -1321,6 +1321,10 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit laboriosam ill
     Une façon de dériver a^x
 </figcaption>
 </figure>
+
+
+
+
 
 * [Pourcentages, croissance, gestion des ressources…]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
 * [Dérivée et différentielle]({%link docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.md%})
