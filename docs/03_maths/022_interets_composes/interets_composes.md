@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-14 18:09:36
+last_modified_date: 2026-11-15 00:53:38
 ---
 
 
@@ -47,7 +47,7 @@ last_modified_date: 2026-11-14 18:09:36
 {: .no_toc }
 
 * Parler des frais composés
-* Parler de l'inflation
+* Parler de l'inflation (1000€ y a 35 ans ca correspond à combien aujourd'hui, € constants vs € courants)
 * ~~Dérivées partielles. Identifier les leviers les plus efficaces~~
 * ~~Liens sur les vidéos de dérivées~~
 * ~~Liens sur pages web du site~~
@@ -97,13 +97,15 @@ last_modified_date: 2026-11-14 18:09:36
 
 Y a deux ans, j'étais allé chez Mamie et à l'occasion de mon 16 eme anniversaire on avait fêté ce dernier à sa manière. Je vais pas me plaindre, j'étais sorti de là avec 5 500 € de plus sur mon compte. Si tu ne me crois pas, ou si tu te pose des questions à propos des pourcentages, vas lire cet [excellent article]({%link docs/03_maths/002_pourcentages/pourcentages.md%}).
 
-Cette année c'est bizarre. On a fêté mes 18 ans à la maison avec les parents et dans la soirée Mamie m'a envoyé un message WhatApps un peu énigmatique me demandant de venir la voir ce matin à 10H00 avec mon PC portable...
+Cette année c'est bizarre. On a fêté mes 18 ans à la maison avec les parents et tard dans la soirée Mamie m'a envoyé un message WhatApps un peu énigmatique me demandant de venir la voir ce matin à 10H00 avec mon PC portable...
 
 Je suis très proche de ma grand-mère alors ni une ni deux, à 10H00 pétante, je sonne à sa porte.
 
-Salut Marty chéri. Je sais que tu as un truc de prévu ce midi avec tes potes alors on va faire court et efficace. Tiens, prends un café et assieds toi là. Alleluia, il va pleuvoir des grenouilles demain mais pour une fois ton père m'a écouté... La semaine dernière il t'a ouvert un [PEA Jeune](https://www.yomoni.fr/apprendre/pea-jeune). En deux mots c'est une enveloppe fiscale. Arrête de me regarder avec ces yeux là tu vas voir c'est simple. En gros, tu vas pouvoir l'utiliser pour acheter, entre autres, des actions. Tu ne pourras pas y déposer plus de 20 k€ mais même si un jour tes intérêts font que la somme montant+dividende va au delà de ce montant, ce ne sera pas un problème. En effet, seuls les versements sont limités à 20 k€, pas la somme totale. Mais bon, à ce stade on s'en fout car à mon avis tu ne seras pas concerné. Quand tu quittera fiscalement le foyer fiscal de tes parents (t'es pas un Tanguy, rassure moi, tu vas partir avant tes 25 ans) il sera automatiquement transformé en PEA. Là ce sera cool car il ne perdra pas son antériorité, tu pourras le garder toute ta vie, y déposer jusqu'à 150 k€ et comme il aura plus de 5 ans, les taxes à payer quand tu sortira de l'argent seront, un peu, allégées.
+Salut Marty chéri. Je sais que tu as un truc de prévu ce midi avec tes potes alors on va faire court et efficace. Tiens, prends un café et assieds toi là. Alleluia, il va pleuvoir des grenouilles demain mais pour une fois ton père m'a écouté... La semaine dernière il t'a ouvert un [PEA Jeune](https://www.yomoni.fr/apprendre/pea-jeune). En deux mots c'est une enveloppe fiscale. Arrête de me regarder avec ces yeux là tu vas voir c'est simple. En gros, tu vas pouvoir l'utiliser pour acheter, entre autres, des actions. Tu ne pourras pas y déposer plus de 20 k€ mais même si un jour tes intérêts font que la somme montant+dividende va au delà de ce montant, ce ne sera pas un problème. En effet, seuls les versements sont limités à 20 k€, pas la somme totale. Mais bon, à ce stade on s'en fout car à mon avis tu ne seras pas concerné. Quand tu quitteras fiscalement le foyer fiscal de tes parents (t'es pas un Tanguy, rassure moi, tu vas partir avant tes 25 ans) il sera automatiquement transformé en PEA. Là ce sera cool car il ne perdra pas son antériorité, tu pourras le garder toute ta vie, y déposer jusqu'à 150 k€ et comme il aura plus de 5 ans, les taxes à payer quand tu sortiras de l'argent seront, un peu, allégées.
 
-Ok Mamie, super, mais j'ai rien compris... T'es bien le fils de ton père! Gentil mais il percute pas vite. Bon, alors là tout de suite ce qu'il faut que tu retiennes c'est que tu as un compte, que tu peux acheter des actions, laisser l'argent travailler pour toi etc.
+Ok Mamie, super, mais j'ai rien compris...
+
+T'es bien le fils de ton père! Gentil mais il percute pas vite. Bon, alors là tout de suite ce qu'il faut que tu retiennes c'est que tu as un compte, que tu peux acheter des actions, laisser l'argent travailler pour toi etc.
 
 Moi, ce que je veux voir avec toi ce matin, c'est comprendre comment ça marche afin que tu puisse en tirer le meilleur. Et tu vas voir que c'est encore une question d'intérêts composés.
 
@@ -145,15 +147,15 @@ $$
 
 où $$M$$ est le montant initial, $$r$$ le rendement annuel et $$n$$ le nombre d'années.
 
-OK Marty. Imagine que pour tes 18 ans je te donne 1000 € à placer sur ton PEA Jeune. Non, non ne me remercie pas car tu ne les a pas encore gagné. J'imagine que dans ton école vous apprenez à écrire des scripts en Python. Si c'est pas le cas, sors de cette maison je te déshérite, hahaha! Plus sérieusement, ouvre ton PC et écris moi un script de 3 lignes qui calcule le gains au bout de 35 ans de tes 1 000 € placés à 5%.
+OK Marty. Imagine que pour tes 18 ans je te donne 1000 € à placer sur ton PEA Jeune. Non, non ne me remercie pas car tu ne les a pas encore gagné. J'imagine que dans ton école vous apprenez à écrire des scripts en Python. Si c'est pas le cas, sors de cette maison je te déshérite, hahaha! Plus sérieusement, ouvre ton PC et écris moi un script de 3 lignes qui calcule le gain au bout de 35 ans de tes 1 000 € placés à 5%.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img01.webp"
-    alt="Marty écrit un script Python pour Mamie"
+    alt="Marty écrit un script Python pour sa Mamie"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Marty écrit un script Python pour Mamie</figcaption>
+<figcaption>Marty écrit un script Python pour sa Mamie</figcaption>
 </figure>
 
 
@@ -183,7 +185,7 @@ print(f"Gain          : {G:,.2f} €".replace(",", " "))
 
 Mamie, c'est pas pour me vanter mais l'honneur est sauf. On retrouve bien les 5 500 € de mes 16 ans mais ici comme on imagine que la mise de fond est de 1 000 €, à la fin le gain est de 4 500 € environ.
 
-Bien, bien, bien... Je vois que tu as au moins appris 1 ou 2 trucs dans ton école. Est-ce que tu peux afficher tout ça dans un graphe?
+Bien, bien, bien... Je vois que tu as au moins appris 1 ou 2 trucs dans ton école. Est-ce que tu peux afficher tout ça dans un graphe s'il te plaît?
 
 Tes désirs sont des ordres...
 
@@ -256,13 +258,17 @@ Voilà ce que je vois. Respectivement 9 000 €, 27 000 € et 29 000 €
 
 Et du coup Marty, qu'est-ce qui te vient en tête?
 
-J'ai pas l'impression que doubler la mise au départ soit si intéressant. En fait si, c'est rentable car on gagne 2 fois plus (9k au lieu de 4.5k) mais bon c'est linéaire. Dans les autres cas, c'est une toute autre histoire. Au bout de 70 ans, troisième cas, j'aurai une hanche en titane, plus de dents mais je pourrai m'acheter une Rolex avec les 29 k€ de gains mais... Le mieux, c'est peut être le compromis du second cas et trouver un placement qui double les intérêts. Dans ce cas à 53 ans ($$18+35=53$$) je pourrai m'acheter et profiter pendant quelques années encore d'une très belle moto à 27 000 balles.
+J'ai pas l'impression que doubler la mise au départ soit si intéressant. En fait si, c'est rentable car on gagne 2 fois plus (9k au lieu de 4.5k) mais bon c'est linéaire.
 
-Tu es mon digne petit fils. Oui, il y a 3 paramètres indépendants dans ton équation et en jouant sur les valeurs, on voit que certains ont plus d'influence que d'autres. Alors... Commence pas à faire ta mijaurée ou ton wokiste de base. Imagine... Imagine que tu te balades sur une plage et qu'en marchant, tu rattrapes une fille que tu vois de dos. Qu'est ce qui va faire que tu vas vouloir engager la conversation avec elle? La longueur des cheveux, ses fesses, son bronzage... Bon ben voilà, t'as tout compris. Là aussi y a plusieurs paramètres mais certains sont plus importants que d'autres.
+Dans les autres cas, c'est une toute autre histoire. Au bout de 70 ans, troisième cas, j'aurai une hanche en titane, plus de dents mais je pourrai m'acheter une Rolex avec les 29 k€ de gains mais...
 
-Du coup, la question à 1M$ c'est: est-ce que tu es capable d'aller plus loin que les tests de doublement de valeur qu'on a fait tout à l'heure et de retrouver, par calcul, l'influence de chacun des 3 paramètres?
+Le mieux, c'est peut être le compromis du second cas et trouver un placement qui double les intérêts. Dans ce cas à 53 ans ($$18+35=53$$) je pourrai m'acheter et profiter pendant quelques années encore d'une très belle moto à 27 000 balles.
 
-Mouai... Normalement c'est possible. On a vu ça en physique et mon prof qui lui n'est pas un obsédé avait un exemple tout aussi pertinent. Il disait: imaginez que vous êtes au sommet d'une petite colline avec votre snowboard. Le terrain c'est une surface dont l'altitude est une fonction de $$x$$ et de $$y$$, un truc du style $$z = f(x, y)$$. Du coup si tu pars vers le nord, $$x$$ ne change pas, seul $$y$$ varie et la pente est peut être douce. Si tu pars vers l'ouest, $$y$$ ne change pas, seul $$x$$ varie et la pente est peut être plus prononcée, et donc plus de fun. Donc les gars, pas de panique, calculer une dérivée partielle ça revient à étudier la formule initiale en bloquant tous les paramètres sauf un et à regarder alors ce qui se passe.
+Tu es mon digne petit fils. Oui, il y a 3 paramètres indépendants dans ton équation et en jouant sur les valeurs, on voit que certains ont plus d'influence que d'autres. Alors... Commence pas à faire ta mijaurée ou ton wokiste de base. Imagine... Imagine que tu te balades sur une plage et qu'en marchant, tu rattrapes une fille que tu vois de dos. Qu'est ce qui va faire que tu vas vouloir engager la conversation avec elle? La longueur des cheveux, ses fesses, son bronzage... Bon ben voilà, t'as tout compris. Là aussi y a plusieurs paramètres indépendants mais certains sont plus importants que d'autres.
+
+Du coup, la question à 1M$ c'est: est-ce que tu es capable d'aller plus loin que les tests de doublement de valeur qu'on vient de faire et retrouver, par calcul, l'influence de chacun des 3 paramètres?
+
+Mouai... Normalement c'est possible. On a vu ça en physique et mon prof qui lui n'est pas un obsédé avait un exemple tout aussi pertinent. Il disait: imaginez que vous êtes au sommet d'une petite colline avec votre snowboard. Le terrain c'est une surface dont l'altitude est une fonction de $$x$$ et de $$y$$, un truc du style $$z = f(x, y)$$. Du coup si tu pars vers le nord, $$x$$ ne change pas, seul $$y$$ varie et la pente est peut être douce. Si tu pars vers l'ouest, $$y$$ ne change pas, seul $$x$$ varie et la pente est peut être plus prononcée, et c'est donc plus de fun assuré (In tartiflette we trust!). Donc les gars, pas de panique, calculer une dérivée partielle ça revient à étudier la formule initiale en bloquant tous les paramètres sauf un et à regarder alors ce qui se passe.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img07.webp"
@@ -405,7 +411,7 @@ La dérivée partielle du gain par rapport au rendement est une fonction qui res
 
 
 
-Mouais... C'est bien joli tout ça mon petit Marty, mais tes $$X^N$$, ils me disent pas combien je gagne, moi. Tu peux me faire une application numérique? Tu gardes les 1 000 € et les 35 ans, et tu fais varier le rendement de 1% à 10% par exemple.
+Mouai... C'est bien joli tout ça mon petit Marty, mais tes $$X^N$$, ils me disent pas combien je gagne, moi. Tu peux me faire une application numérique? Tu gardes les 1 000 € et les 35 ans, et tu fais varier le rendement de 1% à 10% par exemple.
 
 Pas de souci Mamie. Je retourne dans mon notebook, je créé une section "Qu'est-ce qui se passe si le rendement varie?" et après quelques tâtonnements j'obtiens ce code :
 
@@ -457,7 +463,7 @@ $$
 
 C'est comme le compteur de la voiture. Si tu roules à 90 km/h pendant une minute, tu ne fais pas 90 km. Tu fais $$90/60 = 1.5$$ km. Le compteur donne une vitesse "par heure", la dérivée donne une pente "par 100% de rendement". Dans les deux cas, il faut ramener ça à la durée, ou à la variation, qui nous intéresse. C'est ce que montre la colonne "Pente / point" : à 5%, un point de rendement en plus rapporte environ 1 839 € de plus au bout de 35 ans.
 
-Mouais. Et comment je sais que ton truc est juste?
+Mouai. Et comment je sais que ton truc est juste?
 
 Facile, c'est la dernière colonne. Là je ne fais aucune dérivée, je calcule bêtement le gain à 6% puis le gain à 5% et je fais la différence : $$6\,686 - 4\,516 = 2\,170$$ €. On est dans les mêmes eaux que les 1 839 € mais la dérivée sous-estime un peu. Et c'est normal. La dérivée c'est la pente **au point** 5%. Or entre 5% et 6% la pente ne reste pas constante, elle continue de grimper (à 6%, elle vaut déjà 2 538 € par point). Si on utilise la pente du départ pour tout le trajet, on "oublie" l'accélération. C'est comme une voiture qui accélère : si tu estimes la distance de la prochaine minute avec ta vitesse actuelle, tu te trompes forcément par défaut. D'ailleurs, regarde, la vraie valeur (2 170 €) est bien coincée entre la pente à 5% (1 839 €) et la pente à 6% (2 538 €).
 
@@ -522,7 +528,7 @@ print(f"f({x1}) = {vrai:g}, tangente en x = {x1} : {estim:g}, erreur = {erreur:g
 
 Ok c'est clair maintenant. Et sinon, si tu lis le tableau de haut en bas, tu vois quoi?
 
-Déjà, voilà le tableau
+Déjà, re-voilà le tableau
 
 ```text
     r |     Gain G |        dG/dr | Pente / point | G(r+1%) - G(r)
@@ -639,7 +645,7 @@ $$
 
 Du coup la dérivée de $$y$$ c'est la dérivée de $$M \,(1+r)^x$$ car la dérivée de $$M$$ par rapport à  $$x$$ c'est 0. Mais bon je suis coincé car je cherche la dérivée par rapport à $$x$$ d'un truc de la forme $$K^x$$ et ça, je sais pas faire. Mamie? Une idée?
 
-Non, débrouille toi tout seul t'es un grand garçon. Je veux bien admettre que vous êtes de plus en plus nul au point d'être quasiment dernier au classement [PISA](https://www.planetegrandesecoles.com/classement-pisa-france-resultats) mais bon faut pas pousser.
+Non, débrouille toi tout seul t'es un grand garçon. Je veux bien admettre que vous êtes de plus en plus nuls au point d'être quasiment dernier au classement [PISA](https://www.planetegrandesecoles.com/classement-pisa-france-resultats) mais bon faut pas pousser.
 
 OK, ok, ok... Te fâche pas. Le truc dont je me souviens c'est que si il y a une puissance, faut utiliser les log. Oui mais moi j'ai $$K^x$$. Le log de ce truc là ne m'arrange pas, je vais me retrouver avec $$\ln(K^x)$$... Moi ce que je veux c'est avoir un truc qui vaut $$K^x$$.
 
@@ -742,7 +748,7 @@ OK. Et si tu lis le tableau de haut en bas?
 
 La colonne "dG/dn" double à peu près tous les 14 ou 15 ans : 49 € au départ, 101 € à 15 ans, 211 € à 30 ans, 438 € à 45 ans, 911 € à 60 ans. Et je peux même le calculer. Doubler $$(1+r)^n$$ revient à avoir $$n \ln(1+r) = \ln 2$$ soit $$n = \ln 2 / \ln(1.05) \approx 14.2$$ ans.
 
-Ah! Ça, de mon temps, à la banque on appelait ça la règle de 70. Tu divises 70 par le rendement en pourcent et tu as le temps de doublement : $$70/5 = 14$$ ans. Pas besoin de logarithme, juste un crayon et le dos d'une enveloppe.
+Ah! Ça, de mon temps, à la banque on appelait ça [la règle du 70]({%link docs/03_maths/002_pourcentages/pourcentages.md%}#la-règle-du-70). Tu divises 70 par le rendement en pourcent et tu as le temps de doublement : $$70/5 = 14$$ ans. Pas besoin de logarithme, juste un crayon et le dos d'une enveloppe.
 
 Trop fort... Du coup ça veut dire que la première année m'a rapporté 50 € alors que la 70ème m'en rapportera plus de 1 500. Les 35 premières années rapportent 4 516 € et les 35 suivantes $$29\,426 - 4\,516 = 24\,910$$ €. Cinq fois plus pour la même durée!
 
@@ -796,7 +802,7 @@ C'est le même principe que pour le rendement. On bloque la mise (1 000 €) et 
 1. **Le point noir** c'est encore notre cas de référence : 35 ans, 4 516 €.
 1. **Les pointillés** c'est la tangente en $$n = 35$$ ans, de pente 269 € par an. Toujours la même formule $$y = f(a) + f^\prime(a)(x - a)$$, avec cette fois $$a = 35$$.
 
-Tiens Mamie, pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. La dérivée se trompe de plus de moitié! Un an, c'est un petit pas l'homme et la tangente s'en sort très bien. 35 ans, c'est un pas de géant pour l'humanité et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
+Tiens Mamie, pose ton doigt sur $$n = 36$$ ans. La tangente donne $$4\,516 + 269 = 4\,785$$ € et la courbe 4 792 €. À l'oeil, on ne voit même pas la différence. Maintenant, pose ton doigt sur 70 ans. La tangente annonce environ 13 900 € alors que la courbe est à 29 426 €. La dérivée se trompe de plus de moitié! Un an, c'est un petit pas pour l'homme et la tangente s'en sort très bien. 35 ans, c'est un pas de géant pour l'humanité et l'outil local qu'est la dérivée ne suffit plus. Et comme pour le rendement, si on part trop vers la gauche, la tangente passe sous zéro (vers 18 ans) ce qui n'a aucun sens pour un gain.
 
 
 
@@ -811,7 +817,7 @@ On a 3 paramètres ($$M$$, $$r$$ et $$n$$). On a fait un premier test en les dou
 
 Ça m'aurait étonné...
 
-Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraiment très fier de toi. Le truc, et tu aurai dû soulever le problème tout seul, c'est qu'on compare pas des pommes avec des pommes. En fait plutôt que de doubler le nombre d'années puis doubler le rendement pour finalement comparer l'impact sur le gain, je pense qu'il serait plus "honnête" de faire varier chacun des paramètres (($$M$$, $$r$$ et $$n$$)) de 1% puis de constater lequel de ces leviers a le plus d'impact sur le gain. Comprends tu mon problème ?
+Sérieux, Marty, tes formules, tes graphes tout ça c'est super et je suis vraiment très fier de toi. Le truc, et tu aurais dû soulever le problème tout seul, c'est qu'on compare pas des pommes avec des pommes. En fait, plutôt que de doubler le nombre d'années puis doubler le rendement pour finalement comparer l'impact sur le gain, je pense qu'il serait plus "honnête" de faire varier chacun des paramètres (($$M$$, $$r$$ et $$n$$)) de 1% puis de constater lequel de ces leviers a le plus d'impact sur le gain. Comprends tu mon problème ?
 
 
 
@@ -859,7 +865,7 @@ E &= \frac{\Delta G}{\Delta r}\frac{r}{G} \\
 \end{align*}
 $$
 
-Comme on va s’intéresser à des toutes petites variations je préfère écrire
+Comme on va s’intéresser à de toutes petites variations je préfère écrire
 
 $$
 E_r = \frac{\partial G}{\partial r} \cdot \frac{r}{G}
@@ -1106,7 +1112,16 @@ Je remarque que :
 
 
 
-Donc selon tes calculs, Marty, faire varier la durée de placement ou la valeur du rendement ça revient au même. Tu peux me le prouver ou au moins me l'expliquer?
+Donc selon tes calculs, Marty, faire varier la durée de placement ou la valeur du rendement ça revient quasiment au même. Tu peux me le prouver ou au moins me l'expliquer?
+
+<!-- ******************************************* -->
+<!-- ******************************************* -->
+<!-- ******************************************* -->
+<!-- ******************************************* -->
+<!-- ******************************************* -->
+<!-- ******************************************* -->
+<!-- ******************************************* -->
+
 
 Là je sais pas trop quoi te dire Mamie. C'est vrai qu'avec nos valeurs on a trouvé $$E_r=2.04$$ et $$E_n=2.09$$ mais bon... Les comparer... Ah si, je me rappelle ce que nous a dit notre prof de Physique l'autre jour. Il nous a parlé de la **loi de Weber-Fechner** et du fait qu'on est plus sensible aux rapports qu'aux différences. Par exemple entre 1 et 2 on voit la différence alors qu'entre 20 et 21 on ne la voit plus.
 
