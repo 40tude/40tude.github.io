@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-15 00:53:38
+last_modified_date: 2026-11-15 09:44:09
 ---
 
 
@@ -1123,7 +1123,7 @@ Donc selon tes calculs, Marty, faire varier la durée de placement ou la valeur 
 <!-- ******************************************* -->
 
 
-Là je sais pas trop quoi te dire Mamie. C'est vrai qu'avec nos valeurs on a trouvé $$E_r=2.04$$ et $$E_n=2.09$$ mais bon... Les comparer... Ah si, je me rappelle ce que nous a dit notre prof de Physique l'autre jour. Il nous a parlé de la **loi de Weber-Fechner** et du fait qu'on est plus sensible aux rapports qu'aux différences. Par exemple entre 1 et 2 on voit la différence alors qu'entre 20 et 21 on ne la voit plus.
+Là je sais pas trop quoi te dire Mamie. C'est vrai qu'avec nos valeurs on a trouvé $$E_r=2.04$$ et $$E_n=2.09$$ mais bon... Les comparer... Ah si, je me rappelle ce que nous a dit notre prof de Physique l'autre jour. Il nous a parlé de la [loi de Weber-Fechner](https://fr.wikipedia.org/wiki/Loi_de_Weber-Fechner) et du fait qu'on est plus sensible aux rapports qu'aux différences. Par exemple entre 1 et 2 on voit la différence alors qu'entre 20 et 21 on ne la voit plus.
 
 Bref, pour comparer des valeurs on fait leur rapport. Bon, hé ben évaluons le rapport $$\frac{E_n}{E_r}$$.
 
@@ -1145,7 +1145,7 @@ Mais bon, faut pas se voiler la face, là, le rapport il vend pas du rêve. Le t
 
 Sinon, cette année on utilise pas mal les développements limités et je sais que pour $$x$$ petit on peut écrire $$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots$$
 
-Du coup, en première approximation, on peut dire
+Du coup, en première approximation, quand je garde que le terme de degré 1 dans le développement limité car $$\frac{x^2}{2}$$ c'est tout petit ($$=0.00125$$), on peut dire que:
 
 $$
 \begin{align*}
@@ -1158,11 +1158,11 @@ Là pour le coup c'est assez violent mais, "de tête", je peux évaluer $$\frac{
 
 Jouer sur le taux $$r$$ est donc aussi efficace que de jouer sur la durée $$n$$.
 
-Très bonne analyse Marty. Moi de mon côté je note qu'en relatif, c'est match nul. Mais **le temps, tu peux le choisir alors que le rendement tu le subis**.
+Très bonne analyse Marty. Moi de mon côté je note qu'en relatif, c'est match nul. Mais **le temps, tu peux le choisir alors que le rendement tu le subis**. IOW (c'est une expression de jeunes ça, non?) il faut commencer à épargner tôt, très tôt.
 
 Heu... Mamie, je vois l'heure qui tourne et j'ai toujours rien compris à ton histoire d'actions et de PEA...
 
-J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un petit script Python dans lequel je veux pouvoir simuler des frais **annuels** (attention le mot est important) qui viendraient en soustraction du rendement. Idéalement, mais ça je sais que tu sais faire, je voudrais que tu affiche la courbe de gain sans frais et la courbe de gain avec frais. Fais simple prend 0.5% de frais par an par exemple.
+J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un petit script Python dans lequel je veux pouvoir simuler des frais **annuels** (attention, le mot est important) qui viendraient en soustraction du rendement. Idéalement, mais ça je sais que tu sais faire, je voudrais que tu affiche la courbe de gain sans frais et la courbe de gain avec frais. Fais simple prend 0.5% de frais par an par exemple.
 
 
 
@@ -1170,11 +1170,11 @@ J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un peti
 <!-- ###################################################################### -->
 ### Ce qu'il faut retenir
 
-1. Les dérivées partielles ont des unités différentes, on ne peut pas les comparer telles quelles. On compare plutôt les élasticités $$E_x = \frac{\partial G}{\partial x} \cdot \frac{x}{G}$$ qui répondent à la question : si $$x$$ augmente de 1%, de combien de % augmente le gain ?
+1. Les dérivées partielles ont des unités différentes. Les comparer c'est comparer des $$kg$$ avec des $$ms^{-1}$$. On compare leurs élasticités $$E_x = \frac{\partial G}{\partial x} \cdot \frac{x}{G}$$ qui répondent à la question : si $$x$$ augmente de 1%, de combien de % augmente le gain ?
 
 1. L'élasticité du montant vaut 1 : +1% de mise donne +1% de gain. Avec 1 000 € placés à 5% sur 35 ans, les élasticités du rendement et de la durée valent environ 2 ($$E_r \approx 2.04$$ et $$E_n \approx 2.09$$) : +1% sur l'un ou l'autre donne environ +2% de gain.
 
-1. Le rapport $$\frac{E_n}{E_r} = \frac{(1+r)\ln(1+r)}{r} \approx 1 + r$$ ne dépend que du rendement. En relatif, rendement et durée font match nul. Mais la durée on la choisit alors que le rendement on le subit : il faut commencer tôt.
+1. Le rapport $$\frac{E_n}{E_r} = \frac{(1+r)\ln(1+r)}{r} \approx 1 + r$$ ne dépend que du rendement. En relatif, rendement et durée font match nul. Mais la durée on la choisit alors que le rendement on le subit : il faut commencer à épargner tôt, très tôt.
 
 
 
@@ -1195,9 +1195,9 @@ J'y viens j'y viens mon lapin. Mais avant ça j'ai besoin que tu écrive un peti
 <!-- ###################################################################### -->
 ## Les frais composés
 
-En fait Mamie, il n'y a rien de bien compliqué. Au lieu d'avoir 5% par an on aura 4.5% par an. Le plus "touchy" dans l'histoire c'est de faire en sorte que le graphe soit assez sympa.
+En fait Mamie, il n'y a rien de bien compliqué. Au lieu d'avoir 5% par an on aura 4.5% par an. Le plus "touchy" dans l'histoire c'est de faire en sorte que le graphe soit facile à comprendre.
 
-Après pas mal de ratatouillages j'arrive à ce script :
+Après pas mal de *ratatouillages* j'arrive à ce script :
 
 ```python
 import matplotlib.pyplot as plt
@@ -1240,7 +1240,7 @@ ax.legend(loc="upper left")
 fig.tight_layout()
 plt.show()
 ```
-Et finalement à ce graphique
+Qui affiche ce graphique
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img10.webp"
@@ -1256,10 +1256,10 @@ Marty, tu n'es pas encore le Mozart de la finance mais ton savoir faire en Pytho
 
 Je note que :
 * Sans les frais le gain est toujours de 4 516 €. Je commence à connaître ce chiffre par coeur.
-* 0.5% de frais c'est pas grand chose et je comprends tout à fait que le banquier qui tient les comptes, verse les intérêts cumulés etc. soit rémunéré.
+* 0.5% de frais c'est pas grand chose (50 centimes pour 100 balles placés) et je comprends tout à fait que le banquier qui tient les comptes, verse les intérêts cumulés etc. soit rémunéré.
 * Je note quand même que 0.5% par rapport à 5% de rendement ça fait 10% mais bon, OK, il faut que le banquier soit rémunéré.
 * Avec les frais annualisés le gains passe à 3 667 €. Là, ça fait moins rêver que 4.5 k€ sans frais mais bon je dépose 1 000 €, je les "oublie" 35 ans et zou je récupère 3.6 fois la somme à la sortie. Moi ça me va.
-* Heu, attends 2 minutes... À la fin, les 849 € de frais, c'est 19% du gain. Là pour le coup je suis plus trop d'accord. Si les frais étaient de l'ordre de 0.5% à 2% du gain, je veux bien mais là, 19%. C'est énorme. En plus j'apporte 100% du capital, j'ai plus accès à mon argent pendant 35 ans et au final je découvre que le banquier a ponctionné 19% du gain. Non, non, je suis pas d'accord du tout. Gilet jaune, rond point et tous à la manif!
+* Heu, attends 2 minutes... À la fin, les 849 € de frais, c'est 19% du gain. Là, pour le coup, je suis plus trop d'accord. Si les frais étaient de l'ordre de 0.5% à 2% du gain, je veux bien mais là, 19%. C'est énorme. En plus j'apporte 100% du capital, j'ai plus accès à mon argent pendant 35 ans et au final je découvre que le banquier a ponctionné 19% du gain. Non, non, je suis pas d'accord du tout. Gilet jaune, rond point et tous à la manif!
 
 Ok Marty mais j'avais dit une phrase. Là, tu me raconte ta vie...
 
