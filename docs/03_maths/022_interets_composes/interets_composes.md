@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-15 09:44:09
+last_modified_date: 2026-11-15 19:03:12
 ---
 
 
@@ -1285,6 +1285,207 @@ Le livre de John C. BOGLE sur [Amazon](https://amzn.eu/d/0iV9ZL8S). Il existe en
 </figure>
 
 
+J'ai parlé du livre de BOGLE. À l'occasion lis le. Mais sinon dans le chapitre 4, il prend l'exemple de 10 000$, placés 50 ans à 7% par an avec 2% de frais annuels. Tu peux changer les paramètres de ton script et confirmer qu'on retrouve ses chiffres
+
+Je suis assez confiant. Tiens voilà ce que je j'obtiens. Le titre du graphe parle d'€ mais c'est pas le plus important:
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img12.webp"
+    alt="Gains pour 10 000$ placés 50 ans à 7% par an avec 2% de frais annuels"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Gains pour 10 000$ placés 50 ans à 7% par an avec 2% de frais annuels</figcaption>
+</figure>
+
+C'est parfait. Dans le livre il parle de 294 k$ et 114 k$ mais c'est parce qu'il parle de la somme totale et pas uniquement du gain. Du coup nous sommes complètement raccord avec lui. Bravo.
+
+Un dernier point. Tu as noté que dans ce cas, les coûts ont consommés **63% du gain**. On en revient à ce que tu disais tout à l'heure. L'investisseur (celui qui investi, toi, moi)
+1. il apporte 100% de capital (10 000$ ici),
+1. il assume tous les riquess. Imagine que l'argent est placé sur des actions qui montent et qui descendent. La banque n'assume aucun risque. Si les actions baissent c'est toi qui perd.
+1. il n'accède pas à son argent pendant 50 ans, il ne fait aucun retrait pour bénéficier au maximum des intérêts composés
+
+Et à la fin, au lieu de 100% du gain, l'investisseur ne récupère que 37% de ce dernier. Le reste est dans la poche de la banque. Oui je sais, c'est confiscatoire, honteux tout ce que tu veux mais cela doit vraiment t'inciter **à prêter attention aux frais**.
+
+Oui mais Mamie là tu exagère... 2% de frais annuels personne ne va signer ça. Non?
+
+Détrompe toi Marty. Tu dis ça parce que je t'ai mis le nez dedant ce matin et que tu en a pris conscience (bravo). Mais entre nous qui prend le temps d'ouvrir Excel pour faire une espèce de simulation. Qui cherche un site Web pour faire les calculs d'intérêts et de frais composés que nous avons fait. Tout le monde se dit que 2% c'est 2€ de frais si je place 100 € mais personne ne réalise vraiment que ça c'est vrai uniquement pour la première année et qu'ensuite ça se cumule.
+
+Tiens, je cru comprendre que tu étais assez proche de la petite Jennifer PARKER. Sa mère est venue me voir le mois dernier car son banquier voulait lui faire signer un contrat et elle voulait mon avis. Tiens, regarde, j'ai fait une photocopie d'une partie du document :
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img13.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Exemple de contrat</figcaption>
+</figure>
+
+Maintenant que sais ce que tu sais, qu'est-ce que tu regarde en premier, qu'est-ce que tu note?
+
+Ben j'en sais rien Mamie... Déjà je lis les en-tête de colonne et je vois:
+* Colonne 1 - Performance brute sur 1 an : ça c'est le rendement
+* Colonne 3 - dont frais rétrocédés : ça, ça doit dire que la société qui émet le contrat paie des commisions à celui qui fait signé le contrat. En plus c'est annuel. Le vendeur à donc tout intérêt à ce que le client garde le contrat le plus longtemps possible. Mais du coup ça veut dire que le banquier de la mère de Jenyfer est interéssé à la chose et qu'il agit plus en commercial qu'en conseiller patrimonial.
+* Colonne 5 - FG avec une étoile : ça, ce sont les frais de gestion. 1%
+* Colonne 7 - Performance finale : 1.63%
+
+Ah oui... En fait on nous vend un contrat qui rapporte 2.96% mais finalement il ne rapporte que 1.63% car il y a 1.33% de frais annuel. Les frais accaparent $$\frac{1.33}{2.96}=45%$$ du gain auquel on pourrait s'attendre.
+
+Du coup je trouve très bien que toutes les informations soient écrites noir sur blanc dans le contrat, mais "nom de Zeus" qui va prendre le temps de lire ça, qui va avoir le temps de vraiment comprendre à quelle sauce ses gains partent en fumée, ou plus exactement dans la poche de la banque?
+
+Eh, Marty on est en 2026. Du coup voilà ce que j'ai montré à Mme PARKER:
+
+* Une photocopie pour avoir une version PDF
+* Copier coller dans Chat GPT pour lui demander son avis
+
+Tiens regarde ce que cela donne. Sa réponse est beaucoup plus longue mais bon c'est clair, les frais sont élevés, trop élevés.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img14.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Exemple de contrat</figcaption>
+</figure>
+
+Du coup j'ai conseillé à la "manman" de la belle Jennyfer de trouver un contrat d'assurance vie (ou autre chose), en ligne, un truc facile à comprendre avec des frais annuels les plus bas possible. Normalement elle repasse ici demain après-midi pour qu'on fasse le point sur ce qu'elle a trouvé.
+
+Bon allez, maintenant que tu sais de quoi on parle on va parler de ton PEA, tu vas voir ça va être court.
+
+
+
+<!-- ###################################################################### -->
+### Ce qu'il faut retenir
+
+* Si tu prêtes ton argent, tu prêtes attention aux frais.
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Mise en application - le PEA Jeune de Marty
+
+<!-- ---------------------------------------------------------------------  -->
+#### Note
+{: .no_toc }
+
+*Le contenu suivant est fourni uniquement à titre informatif et éducatif. Il ne constitue en aucun cas un conseil en investissement, une recommandation financière ou une incitation à acheter ou vendre des produits financiers. Investir en bourse, notamment dans des ETF, comporte un risque de perte en capital. Les performances passées ne préjugent pas des performances futures. Faites toujours vos propres recherches ou consultez un conseiller financier agréé avant toute décision.*
+
+
+Je te l'ai dit, j'ai demandé à ton père de t'ouvrir un **PEA Jeune** dans une banque en ligne.
+
+Pourquoi "Jeune" parce que normalement il faut être majeur et fiscalement domicilié en France.
+
+Pourquoi en ligne? Pour limiter les frais bien sûr! En plus je suis persuadée qu'à moyen terme (10-20 ans) les banques classiques vont disparaître. Aux yeux de leurs DAF qui gèrent avec une feuille Excel, leurs réseaux d'agences coûtent trop cher, localement les conseillers ne peuvent plus prendre de décision sans consulter "le siège", elles sont lentes, pas compétitives... En plus, elles investissent toutes dans des banques en ligne. C'est un signe qui ne trompe pas.
+
+Pourquoi PEA? Parce que comparé à un livret A qui en 2026 rapporte péniblement [1.6%](https://www.magnolia.fr/placement/produits-epargne/reglementes/livret-a/historique) sans risque, dans un PEA tu peux acheter des actions. C'est plus risqué mais sur les 20 dernières années, en moyenne annuelle, on parle de plus de 10 % par an pour le S&P 500 (hors dividendes réinvestis) et de 6 % pour le CAC 40 Français (là aussi hors dividendes réinvestis).
+
+Bref, un PEA Jeune dans une banque en ligne. Je crois qu'il a ouvert ça chez Boursobank mais on s'en fiche ce serait pareil chez les autres.
+
+En plus, depuis les années 90 (c'est pas tout jeune non plus, je sais) les investisseurs comme toi et moi peuvent investir sur des paniers d'actions. En fait tu achètes une "action" qui "recopie" les variations du CAC40 ou du S&P 500. Ça c'est super car si une des 500 actions du S&P 500 se casse la figure, l'indice ne s'écroule pas complètement. En plus ni toi, ni moi n'y connaissons quoi que ce soit, il y a donc très peu de chance pour qu'on déniche, achète et garde une action du Apple ou du NVIDIA "de dans" 20 ans.
+
+En plus, bonne nouvelle, les frais annuels des ETF sont en général faibles (0.5%, 0.05%). Tiens regardes ce que je peux afficher sur le site [JustETF](https://www.justetf.com/fr/search.html?search=ETFS&sortOrder=asc&sortField=ter&productGroup=epg-longOnly&ls=XPAR&pea=true&distributionPolicy=distributionPolicy-accumulating&fsg=more100&resetPage=true) après un filtrage rapide:
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img15.webp"
+    alt="Exemples d'ETF éligibles au PEA, classés par frais."
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Exemples d'ETF éligibles au PEA, classés par frais.</figcaption>
+</figure>
+
+Enfin avec une banque en ligne, généralement les frais des passages d'ordres sont gratuits et les droits de garde sont à 0% aussi. T'inquiète ils se rattrapent ailleurs.
+
+Si tu compare, par exemple, avec ce que propose la Caisse d'Epargne (ce serait similaire avec une autre banque classique) tu vas découvrir que les passages d'ordres coûtent entre 0.5% (via internet) ou carrément 1.2% quand l'ordre est passé depuis l'agence.
+
+En plus il y a des droits de garde qui sont facturés au semestre et dont le taux dépend, bien sûr, du montant. Vas-y explique moi en quoi une ligne dans une base de données où il y a écrit 100 k€ coûte plus cher à garder qu'une autre ligne sur laquelle il y a écrit 10 k€. Ils se fichent de nous. Ne me crois pas. Vas vérifier par toi même sur cette
+[page](https://www.boursedescredits.com/guide-pea-caisse-epargne-avis-frais-courtage-conditions-pea-6681.php) par exemple.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img16.webp"
+    alt="Les frais du PEA chez Caisse d'Epargne selon BourseDesCrédit au 17/10/26"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Les frais du PEA chez Caisse d'Epargne selon BourseDesCrédit au 17/10/26</figcaption>
+</figure>
+
+Bref un PEA Jeune, dans une banque en ligne dans lequel tu achètes des ETF. On va choisir ces derniers "capitalisantt". Cela veut dire que les dividendes sont tout suite réinvesti. Cela permet de bénéficier des intérêts composés. Comme les rendements $$r$$ sont élévé, qu'il y a peu de frais et que tu vas laisser du temps au temps ça devrait bien se passer.
+
+Tu n'y connais rien donc à titre d'exemple je te propose de faire très simple et de choisir ce que font pas mal de gens:
+
+* Un ETF qui réplique l'indice des capitalisations des plus grandes sociétés des pays développés (code [ISIN FR001400U5Q4](https://www.amundietf.fr/fr/professionnels/produits/equity/amundi-pea-monde-msci-world-ucits-etf/fr001400u5q4) par exemple)
+* Un ETF qui réplique l'indice des capitalisations des plus grandes sociétés des pays emergeants (code [ISIN FR0013412020](https://www.amundietf.fr/fr/professionnels/produits/equity/amundi-pea-emergent-msci-emerging-esg-transition-ucits-etf-acc/fr0013412020))
+* Je te propose de les répartir en 80/20
+
+Juste pour s'amuser... Avant que tu n'arrives, je suis allé sur le site TradingView et j'ai regardé l'historique de l'ETF qui s'appelle "Amundi MSCI World Swap UCITS ETF (CW8)" et dont le code ISIN est LU1681043599. Il est capitalisant et il a été créé le 16 juin 2009. Sa valeur au départ, à l'ouverture était de 81.24 et sa valeur à la fermeture le 02 novembre 2026 était de 708.80. Peux tu me calculer le taux de croissance annualisé (CAGR)?
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img17.webp"
+    alt="L'historique de Amundi MSCI World Swap UCITS ETF (CW8) - ISIN:LU1681043599"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>L'historique de Amundi MSCI World Swap UCITS ETF (CW8) - ISIN:LU1681043599</figcaption>
+</figure>
+
+Du coup je sais même pas ce que c'est que le CAGR. Je vais sur Wikipedia et je vois:
+
+$$
+CAGR = (\frac{\textrm{Valeur finale}}{\textrm{Valeur initiale}})^{\frac{1}{n}} - 1
+$$
+
+En fait le CAGR c'est rien d'autre que le rendement composé équivalent. À la fin on pourra dire qu'entre 2009 et 2026 tout s'est passé comme si on avait bénéficié d'une rendement composé de x% et ce même si entre temps l'indice à connu des hauts et des bas.
+
+Maintenant, il faut que je sois prudent car j'ai des dates de jour précis. Donc j'utilise le web et je trouve qu'entre le 16/06/2009 et le 02/11/2026 inclus il y a 6 349 jours. Pour convertir ça en années je dois diviser par 365.25 à cause des années bissextiles. Du coup j'arrive à :
+
+$$
+(\frac{\textrm{708.8}}{\textrm{81.24}})^{\frac{1}{\frac{6349}{365.25}}} - 1 = (8.7247)^{0.0575} -1 = 1.1326 - 1 = 0.1326 = 13.26\%
+$$
+
+Bien. Maintenant, peux tu m'afficher le graphe précédent mais en utilisant les 5500 € de tes 16 ans, 10.00% de rendement (tu notes qu'en prenant 10% au lieu de 13% je prends une bonne marge de sécurité) et 0.2% de frais. Enfin on va imaginer que tu commence à faire travailler ton argent à partir de demain et que tu prendras ta retraite à 70 ans (70-18 = 52 ans d'investissement).
+
+Allez, montre moi ce que cela donnerait avec le graphe précédent mais dans le Notebook crée une nouvelle cellule car on va devoir prendre en compte d'autres éléments.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img18.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
+
+
+J'y crois pas Mamie. On arrive à 700 k€ sans les frais. Si je meurs à 100 ans ça veut dire que je vais avoir un complément de retraite d'environ $$\frac{700}{30*12}\approx 2000 € $$. Ça va être la fête à l'EHPAD!
+
+
+<!-- ###################################################################### -->
+### Ce qu'il faut retenir
+
+* Un PEA (Jeune) dans une banque en ligne : accès aux actions, pas de frais de courtage ni de droits de garde.
+* Des ETF plutôt que des actions en direct : un panier de centaines de sociétés, donc du risque dilué, et des frais annuels très faibles (0.05% à 0.5%).
+* Des ETF capitalisants : les dividendes sont réinvestis automatiquement, les intérêts composés travaillent à plein.
+* Le CAGR, c'est le rendement composé équivalent : $$CAGR = (\frac{\textrm{Valeur finale}}{\textrm{Valeur initiale}})^{\frac{1}{n}} - 1$$. Avec des dates précises, $$n$$ = nombre de jours / 365.25.
+* Pour une simulation, prendre un rendement inférieur au rendement historique (10% au lieu de 13%) : c'est une marge de sécurité.
+* 5 500 € à 10% pendant 52 ans avec 0.2% de frais donnent environ 700 k€ de gain. Les frais en coûtent quand même 70 k€ (9% du gain).
+
+
+
+
+
+
+
 
 
 
@@ -1295,11 +1496,112 @@ Le livre de John C. BOGLE sur [Amazon](https://amzn.eu/d/0iV9ZL8S). Il existe en
 
 
 <!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Le complément de retraite de Marty
+
+Non! Tu as tout faux mon petit lapin car tu as oublié de prendre en compte trois paramètres très importants. Allez, je te donne les deux premiers
+1. Un point positif. À tes 70 ans tu ne vas pas retirer toute ton épargne d'un coup. Normalement tu ne seras pas complètement sénile, il te resteras un peu de jugeotte. Du coup, chaque mois, si besoin, tu retiras ton complément de retraite et tu laissera le reste travailler.
+2. Un autre point positif. Normalement, un jour tu vas commencer à travailler. Disons que tu bosses à $$18+5=23$$ ans à 70 ans. On peut raisonnablement penser que tu puisse, dès réception de ton salaire, en prendre 1% et le verser sur ton PEA. Du coup en plus des 5500€ de départ tu auras ajouté 1% de ton salaire entre 25 et 70 ans. Cela n'a l'air de rien mais rappelle toi les frais des banques. Les premiers 1% vont te rapporter énormément. Le turc ici c'est la discipline et l'automatisation. À réception de ta première feuille de salaire tu automatises le versement de 1% de ton salaires sur ton PEA (fais un recherche sur le terme DCA, dollar cost average mais garde en tête que moi je te dis de verser 1% de ton salaire et pas une somme fixe).
+3. Du coup, pour le troisième point, vas y je t'écoute... ⚠️C'est un point négatif malheuresement...
+
+Là je suis sec Mamie. J'y connais rien à tout ces trucs. Comment veux tu que j'imagine ce qui va m'impacter négativement sur une si longue période...
+
+Je sais pas pourquoi mais je me doutais que tu allais caler là dessus. Mais bon c'est normal, tu vas voir c'est pernicieux. Tu vas manger au kebab?
+
+Oui, bien sûr, comme tout le monde.
+
+Non, moi j'y vais pas et c'est pour ça que je me sens jeune et belle. Plus sérieusement j'ai vérifié ce matin et sauf erreur de ma part le prix moyen d'un menu en France a grimpé d'environ 40 % en cinq ans, passant d'environ 6 € ou 7 € avant 2021 à une fourchette comprise entre 10 € et 12 € en 2026. Tiens fais toi plaisir va lire cette [page](https://restopilot.ai/blog/40-sur-le-menu-kebab-en-cinq-ans/) et note que 40% sur 5 ans c'est 7% par an annualisé. Alors, le Mozart du Python, une idée, une pensée...
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img19.webp"
+    alt="+40 % sur le menu kebab en cinq ans"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>+40 % sur le menu kebab en cinq ans</figcaption>
+</figure>
+
+C'est vrai que ça commence à coûter une blinde le kebab. Ayé j'ai trouvé. La hausse du coût de la vie, l'inflation tous ces trucs là.
+
+Hé oui, mon pauv' monsieur, La vie est chère. En 2020, avec un billet de 20 €, il était possible d'acheter 3 menus kebabs à 6,50 €. En 2026, avec le même billet de 20 €, on peut même plus en acheter 2 complets à 11 €. L'argent n'a pas disparu mais sa valeur d'échange a baissé.
+
+Il en va de même pour la retraite des vieux comme moi ou des profs. Si le montant des retraites ou les salaires de l'administration ne sont pas revalorisés lorsque les prix montent (et ils montent toujours) les gens n'ont plus les moyen de remplir leur cady comme avant, ils partent moins longtemps en vacance, ils épargnent plus, les fin de mois sont difficiles...
+
+As tu une idée de l'inflation en France? Tiens va lire cette [page](https://www.insee.fr/fr/statistiques/9107965). Tu peux ne pas être d'accord mais l'INSEE annonce 3.4% sur un ans. Je te rappelle que le livret A est à 1.7%.
+
+Sinon j'imagine aisément que tu as aucune idée de l'inflation ces dernières années? Pour le coup, va lire cette [page](https://www.insee.fr/fr/statistiques/4268033) tu y verra ce superbe graphique :
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img20.webp"
+    alt="Évolution annuelle moyenne de l'indice des prix à la consommation 2000-2025"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Évolution annuelle moyenne de l'indice des prix à la consommation 2000-2025</figcaption>
+</figure>
+
+Ce qui est très important à comprendre c'est que
+1. Si tu laisse ton argent sur un compte non rémunéré tu perds environ 2% par an
+1. Si tu le met sur un livret A (rendement 1.7% alors que l'inflation est a 3.4%) tu perds un peu moins d'argent.
+1. Il faut que tes investissements "remontent la rivière" est aillent bien au delà de l'inflation et ce sur toute la durée de ton placement.
+
+Peux tu copier/coller/modifier le script précédent de telle sorte que:
+
+1. Il tienne compte d'une inflation à 2% par an (je prends 2% car c'est l'objectif de la BCE mais on pourra le modifier si besoin)
+1. Il simule un DCA de 1% de ton salaire à partir de tes 23 ans. Pour déterminer ton salaire je vais dire 36 k€ aujourd'hui pour un jeune developpeur. Dans 5 ans avec 2% d'inflation... On vas dire 40k€ brut environ, soit 2500€ net après impôt, donc un DCA de 250 €. En ce qui concerne ton taux augmentation sur ta carrière, faut en faire un paramètre et le mettre à 2.5% pour commencer (un peu plus que l'inflation). On va faire simple : même si le DCA fait que tu verse plus de 150 k€ on va garder le PEA afin de pas compliquer les choses.
+1. Enfin faut étendre la simulation sur 82 années si on suppose que tu décède à 100 ans. Il y aura donc 3 grandes périodes
+  * De 18 à 25. Les 5500 travaillent à 10%. Les frais sont à 0.2%
+  * De 25 à 70. DCA mensuel de 1% de ton salaire. Fais simple. Augment ton salaire chaque année. Les frais sont à 0.2%
+  * À partir de 70 ans et jusqu'à 100 ans tu retire 4% de ton épargne par an (faudra faire des 4% un paramètre). Attention il ne faudra pas oublier la fiscalité qui va te prendre 18.6% de tes bénéfices à chaque retrait.
+
+
+
+Mamie, ça y est j'ai enfin terminé. Je ne te montre pas le script mais voilà ce que je vois à l'écran. Normalement c'est bon :
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img21.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
+
+* Au tout début, jusqu'à la fin de mes études il n'y a que les 5500€ qui travaillent sur le PEA
+* À 25 ans, avec 2500€ net, mes premiers DCA valent 25€ (un abonnement téléphonique ou 2 kébab complets)
+* Ensuite mon salaire augmente un peu plus que l'inflation (2.5% vs 2.0%)
+* L'automatisation du DCA fais que je ne me rend compte de rien
+* À 70 ans le montant du PEA s'élève à plus de 1 M€ bien que je n'ai versé que un peu moins de 32 k€
+* Ensuite, je retire 4% par an. Mon premier complément mensuel sera, en euro constants, de 1000 € et le dernier de 2 700€. C'est normal car le capital restant travaille plus que ce que je ne retire. Du coup mon PEA continue de progresser.
+
+C'est trop cool. Je vais rouler en chaise roualnte plaquée or!
+
+Mouai... Calme toi mon petit Antonelli parce qu'il y a encore quelques réglages à faire. Par exemple, là tout se passe comme si tu gardais tes actions jusqu'au bout mais en fait passé un certains age on souhaite sécuriser son capital. On diminue la part en action et on investit dans des obligations, des fonds euros, des trucs et des machins qui rapportent moins mais qui sont sanctuarise une partie de ton épargne.
+
+Là, le truc, c'est qu'il faut que tu réalise vraiment que:
+
+* On a choisit un rendement élevé. On l'a tempéré 10% vs 13% mais quand même c'est pas les 1.7% du Livret A
+* On a réduit les frais. Voir les 0.2% vs les 2% d'une banque (j'exagère mais à peine)
+* On fait travailler l'argent très longtemps (52 ans c'est énorme comparé à la majorité des français)
+* On part avec un montant significatif (5500 € c'est pas 0 € ou 100 €)
+* Du coup on coche toutes les cases de ton étude précédente (rendement $$r$$, temps $$n$$ et montant $$M$$)
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Ce qu'il faut retenir
 
-* Si tu prêtes ton argent, tu prêtes attention aux frais.
-
-
+* L'inflation est un ennemi silencieux : à 2% par an, les prix doublent en 35 ans. Un placement doit rapporter nettement plus que l'inflation, sinon on s'appauvrit.
+* Euros courants vs euros constants : pour comparer des montants séparés de plusieurs décennies, il faut raisonner en euros constants (corrigés de l'inflation).
+* Le DCA en pourcentage du salaire : un petit versement mensuel (1%), automatisé, qui grandit avec le salaire. La discipline et l'automatisation comptent plus que le montant.
+* À la retraite, on ne retire pas tout : on retire un pourcentage (4% par an) et le reste continue de travailler.
+* La fiscalité du PEA ne porte que sur la part de gain de chaque retrait (18.6%), pas sur les versements.
+* Le résultat spectaculaire vient du fait qu'on coche toutes les cases : un rendement $$r$$ élevé, des frais faibles, une durée $$n$$ très longue et un montant de départ $$M$$ significatif.
+* Ce n'est qu'une simulation : rendement constant, pas de krach, pas de sécurisation du capital en fin de vie. Dans la réalité, il faudra ajuster et s'ajuster.
 
 
 
