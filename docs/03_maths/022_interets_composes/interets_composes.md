@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-16 09:33:18
+last_modified_date: 2026-11-16 19:03:28
 ---
 
 
@@ -80,7 +80,7 @@ last_modified_date: 2026-11-16 09:33:18
 <!-- ###################################################################### -->
 ## Prérequis
 * Normalement un niveau de maths de terminale scientifique devrait suffire
-* Si par moment vous pensez que vous êtes dépassez, sautez la série d'égalités, rejoignez le prochain paragraphe. J'essaie d'expliquer ce que nous racontent les équations. Vous en retiendrez toujours quelque chose.
+* Si par moment vous pensez que vous êtes dépassé, sautez la série d'égalités, rejoignez le prochain paragraphe. J'essaie à chaque fois d'expliquer en Français ce que nous racontent les équations. Vous en retiendrez toujours quelque chose.
 * Je vous conseille très sérieusement d'avoir lu cette [page]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) **AVANT** de commencer à lire celle-ci.
 
 
@@ -88,8 +88,11 @@ last_modified_date: 2026-11-16 09:33:18
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## À propos du notebook Python
+
+Sur les liens suivants, faites un click droit et choisissez l'option "Enregistrez le lien sous"
+
 * Le notebook qui accompagne ce billet c'est [interets_composes.ipynb](assets/interets_composes.ipynb)
-* Prenez le temps de lire le fichier [README.md](assets/README.md) qui contient les instructions pour installer tout ce dont vous avez besoin pour pouvoir exécuter le notebook dans la joie et la bonne humeur. Je ne peux pas le faire à votre place. Je ne fais aucune supposition sur les outils dont vous disposez déjà du coup j'explique comment installer `VSCode`, `uv` etc.
+* Prenez le temps de lire le fichier [README.md](assets/README.md) qui contient les instructions pour installer tout ce dont vous avez besoin pour pouvoir exécuter le notebook Python dans la joie et la bonne humeur. Je ne peux pas le faire à votre place. Je ne fais aucune supposition sur les outils dont vous disposez déjà. Du coup j'explique comment installer `VSCode`, `uv` etc.
 
 
 

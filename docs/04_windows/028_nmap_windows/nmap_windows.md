@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-16 18:23:33
+last_modified_date: 2026-11-16 19:03:28
 ---
 
 
@@ -70,10 +70,10 @@ last_modified_date: 2026-11-16 18:23:33
 
 * Sous Windows 11, installe Nmap en natif avec l'installeur officiel de nmap.org (pas `winget`, resté en 7.80), pas sous WSL2. Lance PowerShell en administrateur.
 * Vu de l'intérieur : `nmap -sn` pour l'inventaire, `nmap -A` pour les services, `--script vuln` pour les failles connues, `ndiff` pour suivre l'évolution dans le temps.
-* La box te protège bien par défaut. Les vraies portes d'entrée ce sont les exceptions : redirections de ports, DMZ, UPnP, IPv6 et services de la box elle-même.
-* Pour savoir ce que voit Internet, il faut scanner ton IP publique **depuis l'extérieur**, par exemple via le partage 4G/5G de ton téléphone. Sans oublier l'IPv6.
+* La box protège bien par défaut. Les vraies portes d'entrée ce sont les exceptions qu'on oublie : redirections de ports, DMZ, UPnP, IPv6 et services de la box elle-même.
+* Pour savoir ce que voit Internet, il faut scanner l'IP publique **depuis l'extérieur**, par exemple via le partage 4G/5G d'un téléphone. Ne pas oublier l'IPv6.
 * L'intérieur compte quand même : la plupart des attaques domestiques partent d'une machine déjà derrière la box (PC infecté, objet connecté douteux, Wi-Fi faible).
-* Ne scanne que ce qui t'appartient.
+* Ne scanner que ce qui nous appartient.
 
 
 
