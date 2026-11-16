@@ -11,7 +11,7 @@ parent: "Maths"
 nav_order: 2
 math: mathjax
 date: 2023-03-21 23:27:31
-last_modified_date: 2026-11-16 09:33:18
+last_modified_date: 2026-11-16 18:23:33
 ---
 
 
@@ -949,4 +949,4 @@ Et si ce n'est pas le cas... tu peux toujours partager l'URL de ce billet.
 
 
 ## Webliographie
-* Cet [article]({%link docs/03_maths/022_interets_composes/interets_composes.md%}) est la suite naturelle de celui-ci. On rentre un peu plus dans les détails de la formule des intérêts composé afin de bien comprendre quels sont les leviers les plus important. On y parle de placement, de retraite et surtout il y a un notebook Python pour tout vérifier.
+* Cet [article]({%link docs/03_maths/022_interets_composes/interets_composes.md%}) est la suite naturelle de celui-ci. On rentre un peu plus dans les détails de la formule des intérêts composés afin de bien comprendre quels sont les leviers les plus importants. On y parle de placement, de retraite et surtout il y a un notebook Python pour tout vérifier.
