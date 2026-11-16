@@ -3,8 +3,8 @@ published: true
 author: 40tude
 lang: fr-FR
 layout: default
-title: "Intérêts Composés"
-description: "Un second voyage au pays des intérêts composés où on va apprendre si il vaut mieux jouer sur le taux, la durée ou le montant. On en profitera pour parler des frais composés, des ETF sur un PEA et de la composition d'un complément de retraite."
+title: "Intérêts composés : montant, taux ou durée, quel levier ?"
+description: "Pourquoi 2% de frais peuvent manger 60% de vos gains sur 50 ans ? Intérêts composés, ETF, PEA Jeune et retraite expliqués avec des maths de terminale et Python."
 image: docs/03_maths/022_interets_composes/assets/img00.webp
 twitter:
   card: summary_large_image
@@ -13,19 +13,9 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-16 00:21:06
+last_modified_date: 2026-11-16 09:33:18
 ---
 
-
-
-
-<!--
-
-Date d'ouverture du PEA Jeune : l'introduction (ligne 104) dit que le père l'a ouvert « la semaine dernière ». Marty avait alors 17 ans, alors qu'il faut en avoir 18.
-
-Chiffres historiques : environ -40 % en 2008, point bas en mars 2009 et étude Trinity en 1998. Chiffres à confirmer.
-
--->
 
 # {{ page.title }}
 {: .no_toc }
@@ -37,7 +27,7 @@ Chiffres historiques : environ -40 % en 2008, point bas en mars 2009 et étude T
 
 
 
-<h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2>
+<!-- <h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2> -->
 
 
 
@@ -90,7 +80,16 @@ Chiffres historiques : environ -40 % en 2008, point bas en mars 2009 et étude T
 <!-- ###################################################################### -->
 ## Prérequis
 * Normalement un niveau de maths de terminale scientifique devrait suffire
-* Je vous conseille sérieusement d'avoir lu cette [page]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) **AVANT** de commencer à lire le reste
+* Si par moment vous pensez que vous êtes dépassez, sautez la série d'égalités, rejoignez le prochain paragraphe. J'essaie d'expliquer ce que nous racontent les équations. Vous en retiendrez toujours quelque chose.
+* Je vous conseille très sérieusement d'avoir lu cette [page]({%link docs/03_maths/002_pourcentages/pourcentages.md%}) **AVANT** de commencer à lire celle-ci.
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## À propos du notebook Python
+* Le notebook qui accompagne ce billet c'est [interets_composes.ipynb](assets/interets_composes.ipynb)
+* Prenez le temps de lire le fichier [README.md](assets/README.md) qui contient les instructions pour installer tout ce dont vous avez besoin pour pouvoir exécuter le notebook dans la joie et la bonne humeur. Je ne peux pas le faire à votre place. Je ne fais aucune supposition sur les outils dont vous disposez déjà du coup j'explique comment installer `VSCode`, `uv` etc.
 
 
 
@@ -101,7 +100,7 @@ Chiffres historiques : environ -40 % en 2008, point bas en mars 2009 et étude T
 
 Y a deux ans, j'étais allé chez Mamie et à l'occasion de mon 16 eme anniversaire on avait fêté ce dernier à sa manière. Je vais pas me plaindre, j'étais sorti de là avec 5 500 € de plus sur mon compte. Si tu ne me crois pas, ou si tu te pose des questions à propos des pourcentages, vas lire cet [excellent article]({%link docs/03_maths/002_pourcentages/pourcentages.md%}).
 
-Cette année c'est bizarre. On a fêté mes 18 ans à la maison avec les parents et tard dans la soirée Mamie m'a envoyé un message WhatApps un peu énigmatique me demandant de venir la voir ce matin à 10H00 avec mon PC portable...
+Cette année c'est bizarre. Comme mon école est loin et que je ne rentre plus à la maison qu'un week-end sur deux, on a fêté mes 18 ans en petit comité avec un peu de retard. Ensuite, assez tard dans la soirée Mamie m'a envoyé un message WhatApps un peu énigmatique me demandant de venir la voir ce matin à 10H00 avec mon PC portable...
 
 Je suis très proche de ma grand-mère alors ni une ni deux, à 10H00 pétante, je sonne à sa porte.
 
@@ -1512,7 +1511,7 @@ Allez, montre moi ce que cela donnerait avec le graphe précédent mais dans le 
 </figure>
 
 
-J'y crois pas Mamie. On arrive à 700 k€ de gain, et encore, c'est après les frais. Si je meurs à 100 ans ça veut dire que je vais avoir un complément de retraite d'environ $$\frac{700}{30*12}\approx 2000$$ €. Ça va être la fête à l'EHPAD!
+J'y crois pas Mamie. On arrive à 700 k€ de gain, et encore, c'est après les frais. Si je meurs à 100 ans ça veut dire que je vais avoir un complément de retraite d'environ $$\frac{700000}{30*12}\approx 2000$$ €. Ça va être la fête à l'EHPAD!
 
 
 <!-- ###################################################################### -->
@@ -1766,9 +1765,6 @@ Et si un jour quelqu'un te vend un placement "sans risque" à 8% par an, avec "d
     Une façon de dériver a^x
 </figcaption>
 </figure>
-
-
-
 
 
 * [Pourcentages, croissance, gestion des ressources…]({%link docs/03_maths/002_pourcentages/pourcentages.md%})
