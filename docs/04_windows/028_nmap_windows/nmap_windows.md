@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-17 12:35:33
+last_modified_date: 2026-11-17 13:52:56
 ---
 
 
@@ -896,6 +896,8 @@ C'est mon cas : la Livebox a bien l'IPv6 activé, mais il est désactivé sur la
 
 Coupe le Wi-Fi de la maison sur ton PC, puis connecte-le au partage de connexion de ton téléphone. C'est indispensable : si tu restes sur ton réseau, la box répond "de l'intérieur" et le résultat est complètement faussé.
 
+Attention au piège : le **téléphone** ne doit pas être connecté au Wi-Fi de la maison non plus. Sinon il partage ce Wi-Fi au lieu de la 4G/5G, et tu sors toujours par la box (sur les Samsung, c'est l'option "Partage Wi-Fi" du point d'accès). Coupe le Wi-Fi du téléphone, garde les données mobiles, et vérifie depuis le PC que `curl.exe -4 ifconfig.me` n'affiche **plus** l'adresse publique de la maison.
+
 Si tu fais aussi l'IPv6, vérifie que ta connexion mobile en a bien une. C'est généralement le cas chez les opérateurs français. Une fois sur le partage de connexion, un `curl.exe -6 ifconfig.me` qui répond te le confirme.
 
 <figure style="max-width: 482px; margin: auto; text-align: center;">
@@ -1162,11 +1164,13 @@ Pas besoin d'être expert en PowerShell pour suivre cette partie. Il suffit de f
 <!-- ###################################################################### -->
 ### Ce que fait le script
 
-Le script [Invoke-NmapAudit.ps1](./assets/Invoke-NmapAudit.ps1) fait en une commande ce qu'on a fait à la main dans ce billet :
+Le script **Invoke-NmapAudit.ps1** (disponible plus bas) fait en une commande ce qu'on a fait à la main dans ce billet :
 
 * **Audit interne** (par défaut) : il trouve tout seul ton réseau local (`192.168.1.0/24` par exemple) et lance `nmap -sV -T4`.
-* **Audit externe** (`-External`) : il scanne les 65 535 ports TCP de ton adresse publique avec `nmap -Pn -sT -p-`. Il utilise `-sT`, la connexion complète, pour ne pas se faire piéger par l'anti-scan de la box. Avant de lancer le scan, il vérifie que tu n'es **pas** sur le réseau de la maison, et il s'arrête si c'est le cas.
-* **Rangement** : les résultats vont dans `$HOME\nmap-audits\internal` ou `$HOME\nmap-audits\external`. Ces dossiers sont créés automatiquement s'ils n'existent pas. Le script ne garde que les **2 derniers audits** de chaque type, c'est tout ce qu'il faut pour comparer.
+* **Audit externe IPv4** (`-External -PublicIP`) : il scanne les 65 535 ports TCP de ton adresse publique avec `nmap -Pn -sT -p-`. Il utilise `-sT`, la connexion complète, pour ne pas se faire piéger par l'anti-scan de la box.
+* **Audit externe IPv6** (`-External -PublicIPv6`), si tu as l'IPv6 : il scanne les 1000 ports les plus courants de la box et des appareils que tu lui indiques, avec `nmap -6 -Pn -sT`.
+* **Sécurité** : avant tout scan externe, il vérifie que tu n'es **pas** sur le réseau de la maison (en IPv4 comme en IPv6), et il s'arrête si c'est le cas.
+* **Rangement** : les résultats vont dans `$HOME\nmap-audits\internal`, `\external` (IPv4) ou `\external6` (IPv6). Ces dossiers sont créés automatiquement s'ils n'existent pas. Le script ne garde que les **2 derniers audits** de chaque type, c'est tout ce qu'il faut pour comparer.
 * **Comparaison** : à la fin, il lance `ndiff` entre les deux derniers audits, affiche le résultat et l'enregistre dans un fichier `.diff.txt`. Au tout premier lancement, il n'y a rien à comparer et il le dit.
 
 Le script ne modifie rien sur ton réseau ni sur ta box. Il lance Nmap, range des fichiers et en supprime d'anciens, uniquement dans ses propres dossiers.
@@ -1203,13 +1207,24 @@ Invoke-WebRequest -Uri "https://www.40tude.fr/docs/04_windows/028_nmap_windows/a
 
 Bonne question à se poser : **ne jamais lancer un script téléchargé sans savoir ce qu'il fait**. Y compris le mien. Il y a trois choses à faire.
 
-**1. Le lire.** Il fait moins de 200 lignes, avec des commentaires. Ouvre-le avec le Bloc-notes :
+**1. Le lire.** Il fait moins de 200 lignes, avec des commentaires. Ouvre-le avec le Bloc-notes ou l'excellent Edit :
 
 ```powershell
-notepad "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
+edit "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
+# notepad "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
 ```
 
-Ce qu'il faut y retrouver : des appels à `nmap` et `ndiff`, un appel à `curl.exe -4 ifconfig.me` (pour vérifier ton adresse publique en mode externe), des créations de dossiers et des suppressions de fichiers `audit_*` dans `nmap-audits`. Rien d'autre. Si tu ne comprends pas un passage, colle le script dans Claude et demande-lui de te l'expliquer ligne par ligne.
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img11.webp"
+    alt="Relecture du script Invoke-NmapAudit.ps1 dans Edit"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Relecture du script Invoke-NmapAudit.ps1 dans Edit</figcaption>
+</figure>
+
+
+Ce qu'il faut y retrouver : des appels à `nmap` et `ndiff`, des appels à `curl.exe -4 ifconfig.me` et `curl.exe -6 ifconfig.me` (pour vérifier ton adresse publique en mode externe), des créations de dossiers et des suppressions de fichiers `audit_*` dans `nmap-audits`. Rien d'autre. Si tu ne comprends pas un passage, colle le script dans Claude et demande-lui de te l'expliquer ligne par ligne.
 
 **2. Le débloquer.** Windows marque les fichiers téléchargés comme "venant d'Internet". Avec la stratégie par défaut (`RemoteSigned`), PowerShell refuse de lancer un script téléchargé qui n'est pas signé. Une fois que tu l'as lu et que tu es d'accord avec ce qu'il fait, retire cette marque :
 
@@ -1254,6 +1269,8 @@ Si la détection automatique du réseau se trompe (VPN, plusieurs cartes réseau
 
 Compte quelques minutes. Au premier lancement, le script te dit qu'il n'a rien à comparer. C'est normal, la comparaison commence le mois suivant.
 
+L'audit interne ne se fait qu'en IPv4, même si tu as l'IPv6. Ce n'est pas un oubli : tes appareils ont tous aussi une adresse IPv4, donc l'inventaire est complet. Et un réseau IPv6 local contient des milliards de milliards d'adresses, impossible à balayer une par une.
+
 
 
 
@@ -1261,15 +1278,53 @@ Compte quelques minutes. Au premier lancement, le script te dit qu'il n'a rien �
 ### Étape 4 : lancer l'audit externe
 
 1. À la maison, relève ton adresse publique : `curl.exe -4 ifconfig.me`
-1. Coupe le Wi-Fi de la maison et connecte le PC au partage de connexion du téléphone
+1. Sur le téléphone, **coupe le Wi-Fi** (garde les données mobiles) et active le partage de connexion
+1. Sur le PC, coupe le Wi-Fi de la maison et connecte-toi au partage de connexion du téléphone
+1. Vérifie que `curl.exe -4 ifconfig.me` affiche une **autre** adresse que celle relevée à la maison
 1. Dans un PowerShell administrateur :
 
 ```powershell
 & "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -External -PublicIP 83.x.x.x
 ```
 
-Remplace `83.x.x.x` par ton adresse. Le scan des 65 535 ports prend plusieurs minutes en 4G. Si tu as oublié de couper le Wi-Fi de la maison, le script le voit et s'arrête.
+Remplace `83.x.x.x` par ton adresse. Le scan des 65 535 ports prend plusieurs minutes en 4G. Si tu sors encore par la box (Wi-Fi de la maison oublié sur le PC **ou** sur le téléphone), le script le voit et s'arrête avec le message "you are still on the home network".
 
+<!-- ---------------------------------------------------------------------- -->
+#### Et si tu as l'IPv6 ?
+Alors cette étape est **indispensable** en IPv6 aussi. En IPv6 il n'y a pas de NAT : chaque appareil de la maison a sa propre adresse publique. Seul le pare-feu IPv6 de la box le protège. Scanner l'IPv4 ne dit rien sur l'IPv6.
+
+**À la maison, relève les adresses IPv6** de la box et des appareils importants (PC, NAS, caméra...) :
+
+* dans l'interface de la box, la liste des appareils connectés
+* ou avec `ipconfig` sur chaque PC : prends la ligne "Adresse IPv6", **pas** "Adresse IPv6 temporaire". L'adresse temporaire change toutes les quelques heures, elle ne servirait à rien le mois suivant.
+
+Les bonnes adresses commencent par `2` ou `3` (par exemple `2a01:...` chez Orange). Celles en `fe80::` sont locales, inutiles ici.
+
+**Depuis le partage de connexion**, vérifie que ta connexion mobile a l'IPv6 : `curl.exe -6 ifconfig.me` doit répondre une adresse. Puis :
+
+```powershell
+# IPv6 only
+& "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -External -PublicIPv6 2a01:xxxx::1, 2a01:xxxx::abcd
+
+# IPv4 and IPv6 in one go
+& "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -External -PublicIP 83.x.x.x -PublicIPv6 2a01:xxxx::1, 2a01:xxxx::abcd
+```
+
+Les adresses sont séparées par des virgules. En IPv6, le script ne scanne que les 1000 ports les plus courants de chaque appareil, sinon ce serait interminable en 4G. Il s'arrête si ta connexion mobile n'a pas l'IPv6, ou si ton adresse IPv6 actuelle est sur le même réseau que les cibles (tu es encore à la maison).
+
+Ce qu'il faut voir dans le résultat : des ports `filtered` partout sur les appareils. Un appareil derrière la box qui a un port `open` en IPv6, c'est le signal d'alarme : le pare-feu IPv6 de la box le laisse passer.
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img11a.webp"
+    alt="Resultats de l'audit externe"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Resultats de l'audit externe</figcaption>
+</figure>
+
+Bien voir le 1697 secondes tout en bas... Donc pas de panique si ça prend du temps.
 
 
 
@@ -1289,7 +1344,7 @@ Si tu veux garder plus d'historique, par exemple les 12 derniers mois, ajoute `-
 <!-- ###################################################################### -->
 ### Étape 6 : le rappel dans le calendrier
 
-Crée un événement récurrent, le premier samedi du mois par exemple, et colle ceci dans la description :
+Crée un événement récurrent, le second lundi du mois par exemple, et colle ceci dans la description :
 
 ```text
 Audit réseau mensuel (Nmap)
@@ -1302,15 +1357,29 @@ Audit réseau mensuel (Nmap)
    - curl.exe -4 ifconfig.me
 
 3. Audit externe, depuis le téléphone
-   - Couper le Wi-Fi de la maison
+   - Téléphone : couper le Wi-Fi, garder les données mobiles
    - Activer le partage de connexion du téléphone
+   - PC : couper le Wi-Fi de la maison, se connecter au téléphone
+   - curl.exe -4 ifconfig.me doit afficher une AUTRE adresse
    - & "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -External -PublicIP <adresse relevée>
+   - Avec l'IPv6, ajouter : -PublicIPv6 <box>, <appareil1>, <appareil2>
 
 4. Lire les différences
    - Nouvel appareil inconnu ? Nouveau port ouvert ?
-   - Les fichiers sont dans $HOME\nmap-audits\internal et \external
+   - Les fichiers sont dans $HOME\nmap-audits\internal, \external et \external6
 
-5. Rebrancher le Wi-Fi de la maison
+5. Rebrancher le Wi-Fi de la maison (PC et téléphone)
 ```
 
 Une vingtaine de minutes par mois, café compris.
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img12.webp"
+    alt="Planification mensuelle avec rappel la veille par mail."
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Planification mensuelle avec rappel la veille par mail.</figcaption>
+</figure>
+
