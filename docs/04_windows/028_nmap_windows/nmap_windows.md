@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-17 09:45:42
+last_modified_date: 2026-11-17 10:15:47
 ---
 
 
@@ -149,6 +149,8 @@ Si tu veux t'entraîner sur une cible extérieure autorisée, les auteurs de Nma
 <!-- ###################################################################### -->
 ## Installation
 
+
+<!-- ###################################################################### -->
 ### Windows natif plutôt que WSL2
 
 Je te conseille d'installer Nmap directement sous Windows, avec l'installeur officiel : le fichier `nmap-<version>-setup.exe` sur [nmap.org/download](https://nmap.org/download.html).
@@ -202,9 +204,19 @@ Enfin tu lance l'installeur en acceptant les options par défaut. Il ajoute auss
 <figcaption>Installation de Nmap, Npcap et Zenmap sous Windows 11</figcaption>
 </figure>
 
+
+
+<!-- ---------------------------------------------------------------------- -->
 #### Pourquoi pas sous WSL2 ?
 Par défaut, WSL2 tourne derrière un réseau virtuel en NAT. Il ne voit donc pas vraiment ton réseau local et les scans bas niveau y fonctionnent mal. Si tu tiens absolument à Linux, il faut activer le mode réseau `mirrored` de WSL. Ça marche, mais le Nmap natif reste plus simple.
 
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### PowerShell en administrateur
 
 Sans droits administrateur, Nmap ne peut pas forger ses propres paquets. Il se rabat alors sur des méthodes plus lentes et moins précises, et il ne voit pas les adresses MAC des appareils. Donc : clic droit sur Windows Terminal, "Exécuter en tant qu'administrateur".
@@ -235,6 +247,9 @@ nmap --version
 <!-- ###################################################################### -->
 ## Partie 1 : le réseau vu de l'intérieur
 
+
+
+<!-- ###################################################################### -->
 ### Repérer ton réseau
 
 La commande `ipconfig` te donne ton adresse et celle de ta passerelle (la box).
@@ -255,6 +270,10 @@ Si ton adresse ressemble à `192.168.1.x` avec un masque `255.255.255.0`, alors 
 </figure>
 
 
+
+
+
+<!-- ###################################################################### -->
 ### Inventorier les appareils
 
 On commence par une simple découverte des machines, sans scanner les ports :
@@ -278,6 +297,10 @@ Prends le temps de mettre un nom sur chaque ligne. Un appareil que tu n'arrives 
 </figure>
 
 
+
+
+
+<!-- ###################################################################### -->
 ### Scanner les ports et identifier les services
 
 Ensuite, on regarde quels ports sont ouverts, puis on demande à Nmap d'identifier les services, leurs versions et le système d'exploitation.
@@ -348,6 +371,14 @@ HOP RTT     ADDRESS
 
 Nmap done: 1 IP address (1 host up) scanned in 94.37 seconds
 ```
+
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------------- -->
 #### Remarques
 
 - **53 (DNS), 80 et 443 (interface d'administration)** : rien d'anormal pour une box vue du réseau local.
@@ -359,6 +390,10 @@ Nmap done: 1 IP address (1 host up) scanned in 94.37 seconds
 
 
 
+
+
+
+<!-- ###################################################################### -->
 ### Chercher les vulnérabilités connues
 
 Nmap embarque un moteur de scripts, NSE (Nmap Scripting Engine). La catégorie `vuln` regroupe des scripts qui testent des vulnérabilités connues.
@@ -370,6 +405,10 @@ nmap --script vuln 192.168.1.10
 
 C'est plus intrusif que les scans précédents. Certains scripts envoient de vraies requêtes d'exploitation (sans charge malveillante, mais quand même). Du coup, cible une machine précise plutôt que tout le réseau, et évite de le faire sur un NAS en pleine sauvegarde.
 
+
+
+
+<!-- ###################################################################### -->
 ### Ce qui doit nous alerter
 
 Quand tu relis les résultats, voilà ce qui doit faire lever un sourcil :
@@ -382,6 +421,11 @@ Quand tu relis les résultats, voilà ce qui doit faire lever un sourcil :
 * des **versions de firmware anciennes** repérées par `-sV`
 
 
+
+
+
+
+<!-- ###################################################################### -->
 ### Test sur un portable sous Linux
 
 ```powershell
@@ -405,7 +449,13 @@ Host script results:
 Nmap done: 1 IP address (1 host up) scanned in 46.69 seconds
 ```
 
-#### Commentaires
+
+
+
+
+
+<!-- ---------------------------------------------------------------------- -->
+#### Remarques
 Rien d'alarmant sur ce scan. En revanche, il pose une question utile : as-tu besoin de Samba sur ce portable ?
 
 **Ce que montre le scan**
@@ -420,6 +470,7 @@ Rien d'alarmant sur ce scan. En revanche, il pose une question utile : as-tu bes
 
 
 
+<!-- ---------------------------------------------------------------------- -->
 #### Pour aller plus loin, depuis Windows
 
 Je peux saisir
@@ -448,6 +499,7 @@ Alors je vois
 
 
 
+<!-- ---------------------------------------------------------------------- -->
 #### Pour aller plus loin, sous Linux
 
 Je peux saisir
@@ -482,6 +534,7 @@ En fait tout ça est conforme à l'installation de ma config Linux qui est expli
 
 
 
+<!-- ###################################################################### -->
 ### Test sur l'imprimante de la maison
 
 Je vois :
@@ -518,11 +571,23 @@ Pendant le scan l'imprimante à imprimé 2 pages avec des signes cabalistiques. 
 </figure>
 
 
+
+
+
+<!-- ---------------------------------------------------------------------- -->
 #### Pourquoi l'imprimante a imprimé?
 - **Port 9100 (`jetdirect`), l'impression « brute » :** l'imprimante imprime tout ce qu'elle reçoit sur ce port, sans vérification ni authentification.
 - **Les scripts NSE de la catégorie `vuln` envoient des requêtes de test sur les ports ouverts.** L'imprimante a reçu ces octets sur le 9100 et les a imprimés tels quels, d'où les signes cabalistiques.
 - **La détection de version (`-sV`, `-A`) évite ce problème :** elle exclut par défaut les ports 9100 à 9107 pour cette raison (directive `Exclude` du fichier `nmap-service-probes`). Les scripts lancés par `--script vuln` ne suivent pas cette exclusion. Du moins, c'est l'explication la plus probable ; je n'ai pas identifié lequel a déclenché l'impression.
 
+
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------------- -->
 #### Comment l'éviter?
 
 ```powershell
@@ -530,7 +595,12 @@ Pendant le scan l'imprimante à imprimé 2 pages avec des signes cabalistiques. 
 nmap --script vuln --exclude-ports 9100-9107 192.168.1.17
 ```
 
-### Que dit le résultat?
+
+
+
+
+<!-- ---------------------------------------------------------------------- -->
+#### Que dit le résultat?
 - **80/tcp (interface web) :** aucune faille XSS ni CSRF détectée. Ce n'est pas une garantie, ces scripts ne testent que quelques cas.
 - **515/tcp (LPD) et 9100/tcp :** n'importe quel appareil du réseau local peut imprimer sans authentification. C'est normal pour une imprimante domestique, mais ces ports ne doivent jamais apparaître dans le scan externe.
 
@@ -543,6 +613,7 @@ nmap --script vuln --exclude-ports 9100-9107 192.168.1.17
 
 
 
+<!-- ###################################################################### -->
 ### Suivre le réseau dans le temps
 
 Il vaut mieux se déplacer dans un répertoire temporaire pour faire ses premiers tests
@@ -559,7 +630,11 @@ Un scan, c'est une photo. Ce qui est intéressant c'est le film. Enregistre tes 
 nmap -sV -T4 -oA audit_2026-11-16 192.168.1.0/24
 ```
 
-#### Remarque
+
+
+
+<!-- ---------------------------------------------------------------------- -->
+#### Remarques
 Ci-dessus la ligne `-A` est en commentaire car lorsque j'utilise `ndiff` ensuite, ça part en vrille (bug dans un script Python je crois). Du coup je me rabat sur l'option `-sV`
 
 
@@ -659,6 +734,11 @@ C'est LA question que je me posais en regardant la vidéo. La réponse courte : 
 </figure>
 
 
+
+
+
+
+<!-- ###################################################################### -->
 ### Pourquoi la box protège
 
 Par défaut, la box bloque toutes les connexions qui viennent d'Internet sans avoir été demandées depuis chez toi. Quand ton PC va sur un site web, la box se souvient de la demande et laisse passer la réponse. En revanche, si quelqu'un frappe à la porte sans avoir été invité, la box ne sait pas à qui transmettre et elle rejette la demande.
@@ -666,6 +746,15 @@ Par défaut, la box bloque toutes les connexions qui viennent d'Internet sans av
 Résultat : quelqu'un à l'extérieur ne voit que la box elle-même, pas tes appareils.
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Les vraies failles côté extérieur
 
 Ce sont les exceptions à cette règle. Celles que tu as ouvertes toi-même, parfois sans le savoir :
@@ -677,9 +766,17 @@ Ce sont les exceptions à cette règle. Celles que tu as ouvertes toi-même, par
 * **Les services de la box elle-même** : administration à distance, serveur de fichiers, VPN, etc.
 
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Pourquoi l'intérieur compte quand même
 
-**C'est LE truc que j'avais pas vraiment réalisé**
+**C'est LE truc que j'avais pas vraiment compris**
 
 La plupart des attaques à la maison ne passent pas par une entrée directe à travers la box. Elles viennent de l'intérieur :
 
@@ -708,6 +805,13 @@ Scanner depuis chez toi ne montre pas ce que voit Internet. Pour ça il faut sca
 Je pars sur la première, c'est gratuit et on a tous un téléphone dans la poche.
 
 
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Récupérer tes adresses publiques
 
 Depuis chez toi, connecté normalement, note :
@@ -727,6 +831,13 @@ curl.exe -6 ifconfig.me
 Avec une IPv4 dynamique, l'adresse peut changer. Refais ce relevé juste avant le scan.
 
 
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Te placer à l'extérieur
 
 Coupe le Wi-Fi de la maison sur ton PC, puis connecte-le au partage de connexion de ton téléphone. C'est indispensable : si tu restes sur ton réseau, la box répond "de l'intérieur" et le résultat est complètement faussé.
@@ -744,6 +855,12 @@ Pour l'IPv6, vérifie que ta connexion mobile en a bien une. C'est généralemen
 </figure> -->
 
 
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Lancer les scans
 
 Toujours dans un PowerShell administrateur. L'option `-Pn` est importante : une box bien configurée ne répond pas au ping, et sans cette option Nmap la croirait éteinte et s'arrêterait là.
@@ -772,6 +889,14 @@ nmap -6 -Pn -T4 2a01:xxxx::abcd
 Le scan des 65 535 ports peut prendre un moment sur une connexion mobile. Va te faire un café.
 
 
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Lire les résultats
 
 Nmap classe chaque port dans l'un de ces trois états :
@@ -795,6 +920,15 @@ Un appareil derrière la box qui répond en IPv6, c'est le signal d'alarme : le 
 </figure> -->
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Corriger dans l'interface de la box
 
 Pour chaque port ouvert que tu n'as pas voulu, va vérifier dans l'interface de la box :
@@ -820,6 +954,15 @@ Les menus changent d'une box à l'autre, mais on retrouve à peu près toujours 
 Ensuite, refais le scan externe pour confirmer que les corrections ont bien été prises en compte.
 
 
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
 ### Deux précautions
 
 * Ne scanne que **ta propre** adresse. Je sais, je me répète.
