@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-16 19:03:28
+last_modified_date: 2026-11-17 09:45:42
 ---
 
 
@@ -71,7 +71,7 @@ last_modified_date: 2026-11-16 19:03:28
 * Sous Windows 11, installe Nmap en natif avec l'installeur officiel de nmap.org (pas `winget`, resté en 7.80), pas sous WSL2. Lance PowerShell en administrateur.
 * Vu de l'intérieur : `nmap -sn` pour l'inventaire, `nmap -A` pour les services, `--script vuln` pour les failles connues, `ndiff` pour suivre l'évolution dans le temps.
 * La box protège bien par défaut. Les vraies portes d'entrée ce sont les exceptions qu'on oublie : redirections de ports, DMZ, UPnP, IPv6 et services de la box elle-même.
-* Pour savoir ce que voit Internet, il faut scanner l'IP publique **depuis l'extérieur**, par exemple via le partage 4G/5G d'un téléphone. Ne pas oublier l'IPv6.
+* Pour savoir ce que voit Internet, il faut scanner l'IP publique **depuis l'extérieur**, par exemple via le partage 4G/5G d'un téléphone. Ne pas oublier IPv6.
 * L'intérieur compte quand même : la plupart des attaques domestiques partent d'une machine déjà derrière la box (PC infecté, objet connecté douteux, Wi-Fi faible).
 * Ne scanner que ce qui nous appartient.
 
@@ -116,7 +116,7 @@ L'autre soir je suis tombé sur une vidéo YouTube à propos de Nmap. Le gars sc
 
 Et là, la question qui me venait c'était plutôt : qui, depuis l'extérieur, est capable de passer à travers la box pour venir se promener dans mon réseau ? Parce que ce que j'avais compris jusque-là, c'est que derrière ma box j'étais relativement tranquille.
 
-En creusant un peu, la réponse est "oui mais". Oui la box protège bien. Mais ce n'est pas la seule question à se poser, et surtout il y a des façons simples de vérifier tout ça soi-même.
+En creusant un peu, la réponse est "oui mais". Oui la box protège bien. Mais c'est pas la seule question à se poser, et surtout il y a des façons simples de vérifier tout ça soi-même.
 
 Dans ce billet on va donc faire les deux :
 
@@ -176,6 +176,8 @@ Si tu l'as déjà installé via `winget`, désinstalle-le d'abord :
 winget uninstall Insecure.Nmap
 ```
 
+Ensuite tu vas sur [nmap.org](https://nmap.org/) et tu clique sur Download. Là tu récupère la dernière version disponible pour Windows.
+
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img01b.webp"
     alt="Récupération de la dernière version de Nmap depuis le site web"
@@ -185,7 +187,7 @@ winget uninstall Insecure.Nmap
 <figcaption>Récupération de la dernière version de Nmap depuis le site web</figcaption>
 </figure>
 
-Puis lance l'installeur téléchargé sur nmap.org en acceptant les options par défaut. Il ajoute aussi :
+Enfin tu lance l'installeur en acceptant les options par défaut. Il ajoute aussi :
 
 * **Npcap** : le pilote de capture réseau dont Nmap a besoin pour ses scans bas niveau
 * **Zenmap** : une interface graphique, pratique pour visualiser les résultats
@@ -463,7 +465,7 @@ Dans `/etc/ssh/sshd_config` je vois que 2 lignes sensibles sont toujours comment
 * `#PermitRootLogin prohibit-password`
 
 
-En fait tout ça est conforme à l'installation de ma config Linux qui est expliquée sur cette [page](docs/05_linux/012_install_config_mint/install_config.md)
+En fait tout ça est conforme à l'installation de ma config Linux qui est expliquée sur cette [page]({%link docs/05_linux/012_install_config_mint/install_config.md%})
 
 
 
@@ -543,7 +545,7 @@ nmap --script vuln --exclude-ports 9100-9107 192.168.1.17
 
 ### Suivre le réseau dans le temps
 
-Il vaut mieux se déplacer dans un répertoire temporaire pour faire des tests
+Il vaut mieux se déplacer dans un répertoire temporaire pour faire ses premiers tests
 
 ```powershell
 cd $env:TEMP
@@ -557,9 +559,16 @@ Un scan, c'est une photo. Ce qui est intéressant c'est le film. Enregistre tes 
 nmap -sV -T4 -oA audit_2026-11-16 192.168.1.0/24
 ```
 
+#### Remarque
+Ci-dessus la ligne `-A` est en commentaire car lorsque j'utilise `ndiff` ensuite, ça part en vrille (bug dans un script Python je crois). Du coup je me rabat sur l'option `-sV`
+
+
+
 ```powershell
 ls audit*
 ```
+
+
 
 <figure style="max-width: 826px; margin: auto; text-align: center;">
 <img src="./assets/img05c.webp"
