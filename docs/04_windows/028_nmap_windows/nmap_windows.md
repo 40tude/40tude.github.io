@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-17 14:07:25
+last_modified_date: 2026-11-17 14:17:52
 ---
 
 
@@ -1181,7 +1181,7 @@ Le script ne modifie rien sur ton réseau ni sur ta box. Il lance Nmap, range de
 <!-- ###################################################################### -->
 ### Étape 1 : créer le dossier et y mettre le script
 
-On met tout au même endroit : le script et ses résultats. Dans un terminal PowerShell (pas besoin d'être administrateur pour cette étape) :
+On met tout au même endroit : le script et ses résultats. Dans un terminal PowerShell (**pas besoin d'être administrateur** pour cette étape) :
 
 ```powershell
 # Create the folder (no error if it already exists)
@@ -1207,7 +1207,7 @@ Invoke-WebRequest -Uri "https://www.40tude.fr/docs/04_windows/028_nmap_windows/a
 
 Bonne question à se poser : **ne jamais lancer un script téléchargé sans savoir ce qu'il fait**. Y compris le mien. Il y a trois choses à faire.
 
-**1. Le lire.** Il fait moins de 200 lignes, avec des commentaires. Ouvre-le avec le Bloc-notes ou l'excellent Edit :
+**1. Le lire.** Il fait moins de 250 lignes, avec des commentaires. Ouvre-le avec le Bloc-notes ou l'excellent Edit :
 
 ```powershell
 edit "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
