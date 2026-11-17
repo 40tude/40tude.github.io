@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-17 13:52:56
+last_modified_date: 2026-11-17 14:07:25
 ---
 
 
@@ -1317,11 +1317,11 @@ Ce qu'il faut voir dans le résultat : des ports `filtered` partout sur les appa
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img11a.webp"
-    alt="Resultats de l'audit externe"
+    alt="Resultats de l'audit IPv4 externe"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Resultats de l'audit externe</figcaption>
+<figcaption>Resultats de l'audit IPv4 externe</figcaption>
 </figure>
 
 Bien voir le 1697 secondes tout en bas... Donc pas de panique si ça prend du temps.
@@ -1342,9 +1342,9 @@ Si tu veux garder plus d'historique, par exemple les 12 derniers mois, ajoute `-
 
 
 <!-- ###################################################################### -->
-### Étape 6 : le rappel dans le calendrier
+### Étape 6 : ajouter un rappel dans le calendrier
 
-Crée un événement récurrent, le second lundi du mois par exemple, et colle ceci dans la description :
+Crée un événement récurrent, le second lundi du mois par exemple, et colle le texte ci-dessous dans la description. Assure toi que ton calendrider garde bien la mise en page du message collé. C'est pas le cas avec Googlge Calendar.
 
 ```text
 Audit réseau mensuel (Nmap)
@@ -1353,19 +1353,28 @@ Audit réseau mensuel (Nmap)
    - PowerShell administrateur (WIN + X puis A)
    - & "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
 
-2. Relever l'adresse publique
-   - curl.exe -4 ifconfig.me
+2. Relever les adresses publiques, à la maison
+   - IPv4 : curl.exe -4 ifconfig.me
+   - IPv6 (si tu l'as) : adresses de la box et des appareils
+     (ipconfig, ligne "Adresse IPv6", pas "temporaire")
+     Elles changent rarement : note-les ici une fois pour toutes
+     Box : 2a01:...
+     NAS : 2a01:...
 
 3. Audit externe, depuis le téléphone
    - Téléphone : couper le Wi-Fi, garder les données mobiles
    - Activer le partage de connexion du téléphone
    - PC : couper le Wi-Fi de la maison, se connecter au téléphone
    - curl.exe -4 ifconfig.me doit afficher une AUTRE adresse
-   - & "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -External -PublicIP <adresse relevée>
-   - Avec l'IPv6, ajouter : -PublicIPv6 <box>, <appareil1>, <appareil2>
+   - IPv6 : curl.exe -6 ifconfig.me doit répondre (sinon pas d'IPv6 en 4G)
+   - IPv4 seule :
+     & "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -External -PublicIP <IPv4>
+   - IPv4 et IPv6 :
+     & "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -External -PublicIP <IPv4> -PublicIPv6 <box>, <appareil1>
 
 4. Lire les différences
    - Nouvel appareil inconnu ? Nouveau port ouvert ?
+   - IPv6 : un port open sur un appareil derrière la box = alerte
    - Les fichiers sont dans $HOME\nmap-audits\internal, \external et \external6
 
 5. Rebrancher le Wi-Fi de la maison (PC et téléphone)
