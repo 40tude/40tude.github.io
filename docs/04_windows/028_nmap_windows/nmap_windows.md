@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-17 14:17:52
+last_modified_date: 2026-11-17 17:49:06
 ---
 
 
@@ -43,9 +43,10 @@ last_modified_date: 2026-11-17 14:17:52
 * Vu de l'intérieur : `nmap -sn` pour l'inventaire, `nmap -A` pour les services, `--script vuln` pour les failles connues, `ndiff` pour suivre l'évolution dans le temps.
 * La box protège bien par défaut. Les vraies portes d'entrée ce sont les exceptions qu'on oublie : redirections de ports, DMZ, UPnP, IPv6 et services de la box elle-même.
 * Pour savoir ce que voit Internet, il faut scanner l'IP publique **depuis l'extérieur**, par exemple via le partage 4G/5G d'un téléphone. Ne pas oublier IPv6.
+* Depuis la 4G, l'opérateur peut répondre "open" à la place de la cible (21, 80, 443, 554...). Avant de croire un port ouvert, scanner une adresse qui n'existe pas.
 * L'intérieur compte quand même : la plupart des attaques domestiques partent d'une machine déjà derrière la box (PC infecté, objet connecté douteux, Wi-Fi faible).
 * Ne scanner que ce qui nous appartient.
-* Ne pas hésiter à coller les sorties des commandes dans Claude et à demander de l'aide
+* Ne pas hésiter à coller les sorties des commandes dans Claude et à demander de l'aide pour "traduire"
 
 
 
@@ -881,7 +882,7 @@ Si la carte utilisée (ici `Wi-Fi`) affiche `False`, c'est elle qui bloque. Pour
 Enable-NetAdapterBinding -Name 'Wi-Fi' -ComponentID ms_tcpip6
 ```
 
-C'est mon cas : la Livebox a bien l'IPv6 activé, mais il est désactivé sur la carte Wi-Fi de mon PC. Je ne vais pas l'activer maintenant : **dans la suite, je reste en IPv4**. Si tu as l'IPv6 chez toi, note quand même les adresses : la logique du scan reste la même.
+C'est mon cas : la Livebox a bien l'IPv6 activé, mais il est désactivé sur la carte Wi-Fi de mon PC. Je ne vais pas l'activer maintenant : **dans la suite, je reste en IPv4**. Si tu as l'IPv6 chez toi, note quand même les adresses : la logique du scan reste la même. J'ai finalement fait le test IPv6 un peu plus tard, tout est raconté dans la partie "Et l'IPv6 ?" plus bas.
 
 
 
@@ -1036,6 +1037,127 @@ Plus de doute : c'est **la Livebox elle-même**. Le certificat est émis par Ora
 Le risque est limité, puisque la box ferme la connexion sans rien afficher. Mais l'interface d'administration de la box est joignable depuis Internet, et ce n'est pas idéal : il suffirait d'une faille dans ce service pour que ça devienne un problème. Prochaine étape : vérifier dans l'interface de la Livebox si l'accès à distance est activé (voir plus bas).
 
 Au passage, le certificat donne le modèle de la box et son numéro de série (masqué ici). N'importe qui peut le lire de la même façon.
+
+
+
+
+
+
+
+
+
+<!-- ###################################################################### -->
+### Et l'IPv6 ?
+
+Plus haut, j'avais dit que je restais en IPv4. Ayé, j'ai trouvé deux minutes pour faire le test en IPv6 avec le PC Windows. Je vais être honnête : je ne l'ai pas réussi du premier coup. Voilà tout ce que j'ai fait, erreurs comprises, parce qu'elles sont instructives.
+
+<!-- ---------------------------------------------------------------------- -->
+#### Premier essai : je scanne mon propre PC
+Comme l'IPv6 était désactivé sur la carte Wi-Fi du PC, j'ai branché un câble réseau sur la box pour récupérer une adresse IPv6 sur la carte Ethernet. Ensuite, comme pour l'IPv4 : Wi-Fi du téléphone coupé, partage de connexion activé, PC connecté au téléphone en Wi-Fi. Et j'ai scanné l'adresse IPv6 que `ipconfig` me donnait :
+
+```powershell
+nmap -6 -Pn -T4 2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:6969
+```
+
+```
+Nmap scan report for 2a01xxxx....ipv6.abo.wanadoo.fr (2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:6969)
+Host is up (0.000084s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+445/tcp  open  microsoft-ds
+2179/tcp open  vmrdp
+5357/tcp open  wsdapi
+```
+
+Au premier coup d'œil, c'est la panique : SMB (445) ouvert sur Internet ! En réalité, ce scan ne veut rien dire :
+
+* **La latence : 84 microsecondes.** À travers la 4G, on est à quelques dizaines de millisecondes. Ici, les paquets ne sont jamais sortis du PC.
+* **Les ports** sont ceux de Windows lui-même (RPC, partage de fichiers, Hyper-V, découverte réseau). Le pare-feu Windows ne filtre pas ce qu'une machine s'envoie à elle-même.
+* **L'adresse** était celle de la carte Ethernet du PC, encore branchée à la box. Windows a vu que c'était la sienne et s'est répondu tout seul.
+
+Et débrancher le câble n'aurait pas suffi. Dès que le PC quitte la maison, cette adresse n'existe plus, et le scan dirait "filtered" partout simplement parce qu'il n'y a plus personne. **La machine qu'on scanne doit rester à la maison, et celle qui scanne doit en être sortie.** Ce ne peut pas être la même.
+
+<!-- ---------------------------------------------------------------------- -->
+#### La bonne configuration
+Il faut donc deux machines :
+
+* **La cible : le portable sous Linux**, rallumé et branché **par câble** sur la box. Il reste à la maison et reçoit une adresse IPv6 publique.
+* **Le scanneur : le PC Windows**, câble **débranché**, connecté en Wi-Fi au partage de connexion du téléphone. Le téléphone a son Wi-Fi coupé, pour sortir par la 4G/5G.
+
+Sur le portable Linux, `ip -6 addr show scope global` affiche deux adresses en `2a01:...`. Celle marquée `temporary` sert aux connexions sortantes et change régulièrement. L'autre est stable. Les deux font l'affaire pour le test.
+
+Je lance le scan depuis le PC Windows :
+
+```
+setup_target: failed to determine route to 2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:c918
+WARNING: No targets were specified, so 0 hosts scanned.
+```
+
+Cette fois, Nmap n'a même pas essayé : le PC n'a aucune route IPv6 pour sortir. Normal, je l'avais écrit moi-même plus haut : **l'IPv6 est désactivé sur la carte Wi-Fi**, et c'est justement par le Wi-Fi que le PC passe par le téléphone. Dans un PowerShell administrateur :
+
+```powershell
+# Enable IPv6 on the Wi-Fi adapter
+Enable-NetAdapterBinding -Name 'Wi-Fi' -ComponentID ms_tcpip6
+
+# Check: must show an address that is NOT the home prefix
+curl.exe -6 ifconfig.me
+```
+
+Si `curl.exe -6` échoue alors que l'IPv6 est activé sur la carte, c'est la connexion mobile qui n'en fournit pas. Sur un Samsung, ça se règle dans Paramètres > Connexions > Réseaux mobiles > Noms des points d'accès : le protocole APN doit être sur `IPv4/IPv6`.
+
+<!-- ---------------------------------------------------------------------- -->
+#### Le résultat... et le piège de l'opérateur
+Cette fois, ça passe :
+
+```
+nmap -6 -Pn -T4 2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:c918
+Nmap scan report for 2a01xxxx....ipv6.abo.wanadoo.fr (2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:c918)
+Host is up (0.035s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT    STATE SERVICE
+21/tcp  open  ftp
+80/tcp  open  http
+443/tcp open  https
+554/tcp open  rtsp
+```
+
+La latence de 35 ms confirme qu'on passe bien par la 4G. Les 996 ports `filtered` montrent que le pare-feu IPv6 de la box fait son travail. Mais 4 ports ouverts ? Un portable Linux qui serait serveur FTP et serveur vidéo RTSP, ça m'étonne beaucoup.
+
+21, 80, 443 et 554, c'est exactement la liste des ports que certains opérateurs mobiles interceptent avec un **proxy transparent**. C'est un équipement de l'opérateur qui répond "ouvert" à la place de la cible. Pour en avoir le cœur net, je scanne une adresse qui **n'existe pas** dans mon préfixe :
+
+```powershell
+nmap -6 -Pn -T4 --reason -p 21,80,443,554 2a01:xxxx:xxxx:xxxx::dead:beef
+```
+
+```
+Host is up, received user-set (0.025s latency).
+
+PORT    STATE SERVICE REASON
+21/tcp  open  ftp     syn-ack ttl 61
+80/tcp  open  http    syn-ack ttl 61
+443/tcp open  https   syn-ack ttl 61
+554/tcp open  rtsp    syn-ack ttl 61
+```
+
+Une machine fantôme avec 4 ports ouverts : c'est donc bien l'opérateur qui répond. Le `ttl 61` le confirme. Un équipement réseau part en général de 64 et chaque routeur retire 1 au passage, donc la réponse vient de 3 sauts seulement, chez l'opérateur mobile, et pas de ma box à l'autre bout d'Internet.
+
+Conclusion pour l'IPv6 : **le portable Linux est protégé par le pare-feu IPv6 de la box.** Pour les ports 21, 80, 443 et 554, Nmap ne peut rien dire depuis cette connexion mobile, puisque ses paquets n'atteignent jamais la cible. Pour les tester vraiment, il faudrait scanner depuis un autre point d'Internet : un VPN activé sur le PC, la box d'un ami, le bureau...
+
+Et retiens la méthode, elle sert partout : **avant de croire un port `open` vu de l'extérieur, scanne une adresse qui n'existe pas.** Si elle a les mêmes ports ouverts, c'est le réseau qui te ment, pas la cible.
+
+Ça m'oblige aussi à relire honnêtement la partie IPv4 : les ports 80 et 443 "ouverts" de la Livebox sont peut-être, eux aussi, d'abord une réponse du proxy. Cela pourrait expliquer les résultats qui changent d'une minute à l'autre. En revanche, le certificat lu sur 443 est bien celui de la Livebox : derrière le proxy, c'est bien elle qui répond. La conclusion sur l'interface d'administration joignable depuis Internet tient donc toujours. Si tu veux vérifier chez toi, fais le même test en IPv4 sur une adresse publique au hasard (`nmap -Pn --reason -p 21,80,443,554 1.2.3.4`) et compare les TTL.
+
+<!-- ---------------------------------------------------------------------- -->
+#### Je garde l'IPv6 sur le Wi-Fi
+Le test terminé, je me suis posé la question : je remets le Wi-Fi du PC en IPv4 seul, ou pas ? Je le **garde en IPv6**, pour plusieurs raisons :
+
+* **C'est la configuration normale de Windows.** Microsoft déconseille de désactiver l'IPv6, certains composants du système comptent dessus. La carte Ethernet l'avait déjà, c'était la carte Wi-Fi qui faisait exception (un vieux réglage dont je ne me souviens même plus).
+* **Le désactiver sur un seul PC ne protège pas la maison.** Le portable Linux, les téléphones, la TV et la box ont tous de l'IPv6. Ce qui les protège, c'est le pare-feu IPv6 de la box, et le test vient de montrer qu'il fait son travail.
+* **Mon PC est protégé deux fois** : par le pare-feu de la box, puis par le pare-feu Windows, qui fonctionne aussi bien en IPv6 qu'en IPv4. Sur un Wi-Fi public (hôtel, gare), c'est le profil "Public" du pare-feu Windows qui s'applique, en IPv6 comme en IPv4.
+* **Ça peut être un peu plus direct** vers les gros services (Google, Microsoft, Netflix...), sans NAT au milieu. Je ne verrai sans doute pas la différence, mais ça ne coûte rien.
+
+Si le test avait montré un vrai port ouvert sur le portable Linux, la bonne réaction n'aurait pas été de couper l'IPv6 sur le PC, mais de corriger le pare-feu IPv6 dans l'interface de la box. C'est la suite.
 
 
 
@@ -1312,7 +1434,7 @@ Les bonnes adresses commencent par `2` ou `3` (par exemple `2a01:...` chez Orang
 
 Les adresses sont séparées par des virgules. En IPv6, le script ne scanne que les 1000 ports les plus courants de chaque appareil, sinon ce serait interminable en 4G. Il s'arrête si ta connexion mobile n'a pas l'IPv6, ou si ton adresse IPv6 actuelle est sur le même réseau que les cibles (tu es encore à la maison).
 
-Ce qu'il faut voir dans le résultat : des ports `filtered` partout sur les appareils. Un appareil derrière la box qui a un port `open` en IPv6, c'est le signal d'alarme : le pare-feu IPv6 de la box le laisse passer.
+Ce qu'il faut voir dans le résultat : des ports `filtered` partout sur les appareils. Un appareil derrière la box qui a un port `open` en IPv6, c'est le signal d'alarme : le pare-feu IPv6 de la box le laisse passer. Sauf si ce sont 21, 80, 443 ou 554 : vérifie d'abord avec une adresse qui n'existe pas, comme expliqué dans "Et l'IPv6 ?", que ce n'est pas le proxy de l'opérateur mobile.
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
