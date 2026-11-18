@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-16 19:03:28
+last_modified_date: 2026-11-18 11:21:30
 ---
 
 
@@ -336,7 +336,7 @@ $$
 y = x \left[ (1+r)^n - 1 \right]
 $$
 
-Il faut bien voir que $$x$$ est la variable et que $$r$$ et $$n$$ doivent être considérés comme des constantes. À l'extreme, on pourrait écrire l'équation précédente sous la forme :
+Il faut bien voir que $$x$$ est la variable indépendante et que $$r$$ et $$n$$ doivent être considérés comme des constantes. À l’extrême, on pourrait écrire l'équation précédente sous la forme :
 
 $$
 \begin{align*}
@@ -358,7 +358,7 @@ G^\prime &= (1+r)^n - 1
 $$
 
 
-Mais comme on veut se rappeler que ce qu'on a sous les yeux, c'est la variation du gain $$G$$ quand le montant $$M$$ varie, on écrit pas $$G^\prime$$ mais plutôt $$\frac{\partial G}{\partial M}$$. Un c'est trop la classe et deux ça veut juste dire, dérivée partielle de $$G$$ par rapport à $$M$$. Du coup j'écris :
+Mais comme on veut se rappeler que ce qu'on a sous les yeux, c'est la variation du gain $$G$$ quand le montant $$M$$ varie, on écrit pas $$G^\prime$$ mais plutôt $$\frac{\partial G}{\partial M}$$. Un, c'est trop la classe et deux, ça veut juste dire, dérivée partielle de $$G$$ par rapport à $$M$$. Du coup j'écris :
 
 
 $$
@@ -471,7 +471,7 @@ C'est comme le compteur de la voiture. Si tu roules à 90 km/h pendant une minut
 
 Mouai. Et comment je sais que ton truc est juste?
 
-Facile, c'est la dernière colonne. Là je ne fais aucune dérivée, je calcule bêtement le gain à 6% puis le gain à 5% et je fais la différence : $$6\,686 - 4\,516 = 2\,170$$ €. On est dans les mêmes eaux que les 1 839 € mais la dérivée sous-estime un peu. Et c'est normal. La dérivée c'est la pente **au point** 5%. Or entre 5% et 6% la pente ne reste pas constante, elle continue de grimper (à 6%, elle vaut déjà 2 538 € par point). Si on utilise la pente du départ pour tout le trajet, on "oublie" l'accélération. C'est comme une voiture qui accélère : si tu estimes la distance de la prochaine minute avec ta vitesse actuelle, tu te trompes forcément par défaut. D'ailleurs, regarde, la vraie valeur (2 170 €) est bien coincée entre la pente à 5% (1 839 €) et la pente à 6% (2 538 €).
+Facile, c'est la dernière colonne. Là je ne fais aucune dérivée, je calcule bêtement le gain à 6% puis le gain à 5% et je fais la différence : $$6\,686 - 4\,516 = 2\,170$$ €. On est dans les mêmes eaux que les 1 839 € mais la dérivée sous-estime un peu. Et c'est normal. La dérivée c'est la pente **au point** 5%. Or entre 5% et 6% la pente ne reste pas constante, elle continue de grimper (à 6%, elle vaut déjà 2 538 € par point). Si on utilise la pente du départ (à5%) pour tout le trajet qui va de 5% à 6%, on "oublie" l'accélération. C'est comme une voiture qui accélère : si tu estimes la distance de la prochaine minute avec ta vitesse actuelle, tu te trompes forcément par défaut. D'ailleurs, regarde, la vraie valeur (2 170 €) est bien coincée entre la pente à 5% (1 839 €) et la pente à 6% (2 538 €).
 
 
 Tiens, pour bien visualiser ces histoires d'erreur, dans le notebook je créé une section "La tangente sous-estime une courbe qui accélère" dans laquelle je te propose le code et l'illustration suivante avec la fonction $$x^2$$. Le code est "compliqué" car il y a beaucoup de choses à faire pour avoir un graphe "sympa". Sinon on trace juste la fonction $$y=x^2$$, la tangente à la courbe en $$x=2$$ et on calcule, en $$x=3$$, la différence entre la valeur de la fonction et la hauteur à laquelle se trouve la dérivée.
@@ -552,7 +552,7 @@ Déjà, re-voilà le tableau
 ```
 
 
-Je vois que la colonne "Pente / point" s'envole. Un point de rendement en plus, ça vaut 491 € quand on est à 1% et presque 9 000 € quand on est à 10%. C'est 18 fois plus pour le même point! C'est ça la "fonction puissance qui grimpe vite" de tout à l'heure. Et c'est très différent du cas de la dérivée partielle par rapport au montant qui était constante : chaque millier d'euros en plus au départ rapportait 4 516 € de plus, que l'on parte de 1 000 € ou de 10 000 €.
+Je vois que la colonne "Pente / point" s'envole. Un point de rendement en plus, ça vaut 491 € quand on est à 1% et presque 9 000 € quand on est à 10%. C'est 18 fois plus pour le même point de pourcentage! C'est ça la "fonction puissance qui grimpe vite" de tout à l'heure. Et c'est très différent du cas de la dérivée partielle par rapport au montant qui était constante : chaque millier d'euros en plus au départ rapportait 4 516 € de plus, que l'on parte de 1 000 € ou de 10 000 €.
 
 Parfait. Peux tu illustrer tout ça avec un graphe?
 
@@ -651,7 +651,7 @@ $$
 
 Du coup la dérivée de $$y$$ c'est la dérivée de $$M \,(1+r)^x$$ car la dérivée de $$M$$ par rapport à  $$x$$ c'est 0. Mais bon je suis coincé car je cherche la dérivée par rapport à $$x$$ d'un truc de la forme $$K^x$$ et ça, je sais pas faire. Mamie? Une idée?
 
-Non, débrouille toi tout seul t'es un grand garçon. Je veux bien admettre que vous êtes de plus en plus nuls au point d'être quasiment dernier au classement [PISA](https://www.planetegrandesecoles.com/classement-pisa-france-resultats) mais bon faut pas pousser.
+Non, débrouille toi tout seul t'es un grand garçon. Je veux bien admettre que vous êtes de plus en plus nuls au point d'être quasiment dernier au classement [PISA](https://www.planetegrandesecoles.com/classement-pisa-france-resultats) mais bon, faut pas pousser.
 
 OK, ok, ok... Te fâche pas. Le truc dont je me souviens c'est que si il y a une puissance, faut utiliser les log. Oui mais moi j'ai $$K^x$$. Le log de ce truc là ne m'arrange pas, je vais me retrouver avec $$\ln(K^x)$$... Moi ce que je veux c'est avoir un truc qui vaut $$K^x$$.
 
@@ -1113,7 +1113,7 @@ Ok Marty et tu commente ça comment?
 Je remarque que :
 1. Les deux courbes sont quasiment l'une sur l'autre, et ce, quelle que soit la durée. Le faible écart qu'on a trouvé à 35 ans n'était donc pas particulier.
 1. Dans le tableau, la dernière colonne affiche toujours 1.0246. On dirait que le rapport $$\frac{E_n}{E_r}$$ ne dépend pas de la durée. Bizarre... Je garde ça dans un coin de la tête.
-1. Les deux élasticités augmentent avec la durée, presque en ligne droite. Elles valent à peu près 1 au début, 2 à 35 ans et plus de 2.6 à 50 ans. Autrement dit, plus le placement est long, plus le gain devient sensible au rendement et à la durée. Et passé la première année, elles sont toutes les deux au-dessus de l'élasticité du montant, qui si je me rappelle bien, reste bloquée à 1.
+1. Les deux élasticités augmentent avec la durée, presque en ligne droite. Elles valent à peu près 1 au début, 2 à 35 ans et plus de 2.6 à 50 ans. Autrement dit, plus le placement est long, plus le gain devient sensible au rendement et à la durée. Et passé la première année, elles sont toutes les deux au-dessus de l'élasticité du montant, qui reste bloquée à 1.
 
 
 
@@ -1310,7 +1310,7 @@ Le livre de John C. BOGLE sur [Amazon](https://amzn.eu/d/0iV9ZL8S). Il existe en
 </figure>
 
 
-J'ai parlé du livre de BOGLE. À l'occasion lis le. Mais sinon dans le chapitre 4, il prend l'exemple de 10 000$, placés 50 ans à 7% par an avec 2% de frais annuels. Tu peux changer les paramètres de ton script et confirmer qu'on retrouve ses chiffres
+J'ai parlé du livre de BOGLE. À l'occasion lis-le. Mais sinon dans le chapitre 4, il prend l'exemple de 10 000$, placés 50 ans à 7% par an avec 2% de frais annuels. Tu peux changer les paramètres de ton script et confirmer qu'on retrouve ses chiffres
 
 Je suis assez confiant. Tiens voilà ce que je j'obtiens. Le titre du graphe parle d'€ mais c'est pas le plus important:
 
@@ -1336,9 +1336,9 @@ Et tu te rappelles ce que je te disais tout à l'heure? Le rendement, tu en subi
 
 Oui mais Mamie là tu exagère... 2% de frais annuels personne ne va signer ça. Non?
 
-Détrompe toi Marty. Tu dis ça parce que je t'ai mis le nez dedant ce matin et que tu en a pris conscience (bravo). Mais entre nous qui prend le temps d'ouvrir Excel pour faire une espèce de simulation. Qui cherche un site Web pour faire les calculs d'intérêts et de frais composés que nous avons fait. Tout le monde se dit que 2% c'est 2€ de frais si je place 100 € mais personne ne réalise vraiment que ça c'est vrai uniquement pour la première année et qu'ensuite ça se cumule.
+Détrompe toi Marty. Tu dis ça parce que je t'ai mis le nez dedant ce matin et que tu en a pris conscience (bravo). Mais, entre nous, qui prend le temps d'ouvrir Excel pour faire une espèce de simulation. Qui cherche un site Web pour faire les calculs d'intérêts et de frais composés que nous avons fait. Tout le monde se dit que 2% c'est 2€ de frais si je place 100 € mais personne ne réalise vraiment que ça c'est vrai uniquement pour la première année et qu'ensuite ça se cumule.
 
-Tiens, j'ai cru comprendre que tu étais assez proche de la petite Jennifer PARKER. Sa mère est venue me voir le mois dernier car son banquier voulait lui faire signer un contrat et elle voulait mon avis. Tiens, regarde, j'ai fait une photocopie d'une partie du document :
+Tiens, j'ai cru comprendre que tu étais assez proche de la petite Jennifer PARKER. Sa mère est venue me voir le mois dernier car son banquier voulait lui faire signer un contrat et elle voulait mon avis. Regarde, j'ai fait une photocopie d'une partie du document :
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -1350,7 +1350,7 @@ Tiens, j'ai cru comprendre que tu étais assez proche de la petite Jennifer PARK
 <figcaption>Exemple de contrat</figcaption>
 </figure>
 
-Maintenant que je sais ce que tu sais, je peux te poser la question: qu'est-ce que tu regarde en premier, qu'est-ce que tu note?
+Maintenant que je sais ce que tu sais, je peux te poser la question: qu'est-ce que tu regardes en premier, qu'est-ce que tu notes?
 
 Ben j'en sais rien Mamie... Déjà je lis les en-tête de colonne et je vois:
 * Colonne 1 - Performance brute sur 1 an : ça c'est le rendement
@@ -1369,7 +1369,7 @@ Eh, Marty on est en 2026. Du coup voilà ce que j'ai montré à Mme PARKER:
 
 Tiens regarde ce que cela donne. Sa réponse est beaucoup plus longue mais bon c'est clair, les frais sont élevés, trop élevés.
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 600px; margin: auto; text-align: center;">
 <img src="./assets/img14.webp"
     alt="Réponse d'un assistant IA qui analyse les frais du contrat : 1.33% de frais annuels absorbent près de 45% de la performance brute"
     style="width: 100%; height: auto;"
@@ -1387,7 +1387,7 @@ Bon allez, maintenant que tu sais de quoi on parle on va parler de ton PEA, tu v
 <!-- ###################################################################### -->
 ### Ce qu'il faut retenir
 
-* Si tu prêtes ton argent, tu prêtes attention aux frais.
+* **Si tu prêtes ton argent, tu prêtes attention aux frais.**
 * Les frais se composent comme les intérêts, mais à l'envers. Chez BOGLE, 2% de frais annuels sur 50 ans consomment 63% du gain.
 * Le rendement brut tu le subis, le rendement net (brut - frais) tu le pilotes.
 
@@ -1420,9 +1420,9 @@ Pourquoi PEA? Parce que comparé à un livret A qui en 2026 rapporte péniblemen
 
 Bref, un PEA Jeune dans une banque en ligne. Je crois qu'il a ouvert ça chez Boursobank mais on s'en fiche ce serait pareil chez les autres.
 
-En plus, depuis les années 90 (c'est pas tout jeune non plus, je sais) les investisseurs comme toi et moi peuvent investir sur des paniers d'actions. En fait tu achètes une "action" qui "recopie" les variations du CAC40 ou du S&P 500. Ça c'est super car si une des 500 actions du S&P 500 se casse la figure, l'indice ne s'écroule pas complètement. En plus ni toi, ni moi n'y connaissons quoi que ce soit, il y a donc très peu de chance pour qu'on déniche, achète et garde une action du Apple ou du NVIDIA "de dans" 20 ans.
+En plus, depuis les années 90 (c'est pas tout jeune non plus, je sais) les investisseurs comme toi et moi peuvent investir sur des paniers d'actions. En fait tu achètes une "action" qui "recopie" les variations du CAC40 ou du S&P 500 par exemple. Ça c'est super car si une des 500 actions du S&P 500 se casse la figure, l'indice ne s'écroule pas complètement. En plus, ni toi ni moi n'y connaissons quoi que ce soit, il y a donc très peu de chance pour qu'on déniche, achète et garde une action du Apple ou du NVIDIA "de dans" 20 ans.
 
-En plus, bonne nouvelle, les frais annuels des ETF sont en général faibles (0.5%, 0.05%). Tiens regardes ce que je peux afficher sur le site [JustETF](https://www.justetf.com/fr/search.html?search=ETFS&sortOrder=asc&sortField=ter&productGroup=epg-longOnly&ls=XPAR&pea=true&distributionPolicy=distributionPolicy-accumulating&fsg=more100&resetPage=true) après un filtrage rapide:
+Sinon, bonne nouvelle, les frais annuels des ETF sont en général faibles (0.5%, 0.05%). Tiens regardes ce que je peux afficher sur le site [JustETF](https://www.justetf.com/fr/search.html?search=ETFS&sortOrder=asc&sortField=ter&productGroup=epg-longOnly&ls=XPAR&pea=true&distributionPolicy=distributionPolicy-accumulating&fsg=more100&resetPage=true) après un filtrage rapide:
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img15.webp"
@@ -1433,9 +1433,11 @@ En plus, bonne nouvelle, les frais annuels des ETF sont en général faibles (0.
 <figcaption>Exemples d'ETF éligibles au PEA, classés par frais.</figcaption>
 </figure>
 
+Prends le temps de lire la quatrième colonne... Ça laisse rêveur. Non?
+
 Enfin avec une banque en ligne, généralement les frais des passages d'ordres sont gratuits et les droits de garde sont à 0% aussi. T'inquiète ils se rattrapent ailleurs.
 
-Si tu compare, par exemple, avec ce que propose la Caisse d'Epargne (ce serait similaire avec une autre banque classique) tu vas découvrir que les passages d'ordres coûtent entre 0.5% (via internet) ou carrément 1.2% quand l'ordre est passé depuis l'agence.
+Si tu compares, par exemple, avec ce que propose la Caisse d'Epargne (ce serait similaire avec une autre banque classique) tu vas découvrir que les passages d'ordres coûtent entre 0.5% (via internet) ou carrément 1.2% quand l'ordre est passé depuis l'agence.
 
 En plus il y a des droits de garde qui sont facturés au semestre et dont le taux dépend, bien sûr, du montant. Vas-y explique moi en quoi une ligne dans une base de données où il y a écrit 100 k€ coûte plus cher à garder qu'une autre ligne sur laquelle il y a écrit 10 k€. Ils se fichent de nous. Ne me crois pas. Vas vérifier par toi même sur cette
 [page](https://www.boursedescredits.com/guide-pea-caisse-epargne-avis-frais-courtage-conditions-pea-6681.php) par exemple.
@@ -1516,6 +1518,8 @@ Allez, montre moi ce que cela donnerait avec le graphe précédent mais dans le 
 
 J'y crois pas Mamie. On arrive à 700 k€ de gain, et encore, c'est après les frais. Si je meurs à 100 ans ça veut dire que je vais avoir un complément de retraite d'environ $$\frac{700000}{30*12}\approx 2000$$ €. Ça va être la fête à l'EHPAD!
 
+Oui, mais non... On en parle tout de suite.
+
 
 <!-- ###################################################################### -->
 ### Ce qu'il faut retenir
@@ -1551,7 +1555,7 @@ J'y crois pas Mamie. On arrive à 700 k€ de gain, et encore, c'est après les 
 
 Non! Désolé, ça va pas être la fête à l'EHPAD. T'as tout faux mon petit lapin car tu as oublié de prendre en compte trois paramètres très importants. Allez, je te donne les deux premiers
 1. Un point positif. À tes 70 ans tu ne vas pas retirer toute ton épargne d'un coup. Normalement tu ne seras pas complètement sénile, il te resteras un peu de jugeotte. Du coup, chaque mois, si besoin, tu retireras ton complément de retraite et tu laissera le reste travailler.
-2. Un autre point positif. Normalement, un jour tu vas commencer à travailler. Disons que tu bosses de $$18+5=23$$ ans à 70 ans. On peut raisonnablement penser que tu puisses, dès réception de ton salaire, en prendre 1% et le verser sur ton PEA. Du coup en plus des 5500€ de départ tu auras ajouté 1% de ton salaire entre 23 et 70 ans. Cela n'a l'air de rien mais rappelle toi les frais des banques. Les premiers 1% vont te rapporter énormément. Le truc ici c'est la discipline et l'automatisation. À réception de ta première feuille de salaire tu automatises le versement de 1% de ton salaires sur ton PEA (fais une recherche sur le terme DCA, *dollar cost average*, mais garde en tête que moi je te dis de verser 1% de ton salaire et pas une somme fixe).
+2. Un autre point positif. Normalement, un jour tu vas commencer à travailler. Disons que tu bosses de $$18+5=23$$ ans à 70 ans. On peut raisonnablement penser que tu puisses, dès réception de ton salaire, en prendre 1% et le verser sur ton PEA. Du coup, en plus des 5500€ de départ tu auras ajouté 1% de tes salaires entre 23 et 70 ans. Cela n'a l'air de rien mais rappelle toi les frais des banques. Les premiers 1% vont te rapporter énormément. Le truc ici c'est la discipline et l'automatisation. À réception de ta première feuille de salaire tu automatises le versement de 1% de ton salaire sur ton PEA (fais une recherche sur le terme DCA, *dollar cost average*, mais garde en tête que moi je te dis de verser 1% de ton salaire et pas une somme fixe).
 3. Du coup, pour le troisième point, vas y je t'écoute... ⚠️C'est un point négatif malheuresement...
 
 Là je suis sec Mamie. J'y connais rien à tout ces trucs. Comment veux tu que j'imagine ce qui va m'impacter négativement sur une si longue période...
@@ -1576,11 +1580,11 @@ C'est vrai que ça commence à coûter une blinde le kebab. Ayé j'ai trouvé. L
 
 Hé oui, mon pauv' monsieur, la vie est chère. En 2020, avec un billet de 20 €, il était possible d'acheter 3 menus kebabs à 6,50 €. En 2026, avec le même billet de 20 €, on peut même plus en acheter 2 complets à 11 €. L'argent n'a pas disparu mais sa valeur d'échange a baissé.
 
-Il en va de même pour la retraite des vieux comme moi ou des profs. Si le montant des retraites ou les salaires de l'administration ne sont pas revalorisés lorsque les prix montent (et ils montent toujours) les gens n'ont plus les moyens de remplir leur caddie comme avant, ils partent moins longtemps en vacances, ils n'épargnent plus, ils commencent à faire des crédits et tombent entre les griffes de Cetelem et consorts, les fins de mois sont difficiles...
+Il en va de même pour la retraite des vieux comme moi ou des profs. Si le montant des retraites ou les salaires de l'administration ne sont pas revalorisés lorsque les prix montent (et ils montent toujours) les gens n'ont plus les moyens de remplir leur caddie comme avant, ils partent moins longtemps en vacances, ils n'épargnent plus, ils commencent à faire des crédits et tombent entre les griffes de Cetelem et consorts...
 
-As tu une idée de l'inflation en France? Tiens va lire cette [page](https://www.insee.fr/fr/statistiques/9107965). Tu peux ne pas être d'accord mais l'INSEE annonce 3.4% sur un an. Je te rappelle que le Livret A rapporte en moyenne 1.6% sur 2026.
+As tu une idée de l'inflation en 2026 en France? Tiens va lire cette [page](https://www.insee.fr/fr/statistiques/9107965). Tu peux ne pas être d'accord mais l'INSEE annonce 3.4% sur un an (de oct 25 à oct 26). Je te rappelle que le Livret A rapporte en moyenne 1.6% sur 2026.
 
-Sinon j'imagine aisément que tu as aucune idée de l'inflation ces dernières années? Pour le coup, va lire cette [page](https://www.insee.fr/fr/statistiques/4268033) tu y verras ce superbe graphique :
+Sinon j'imagine aisément que tu as aucune idée de l'inflation ces dernières années? Pour le coup, va lire cette autre [page](https://www.insee.fr/fr/statistiques/4268033) tu y verras ce superbe graphique :
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img20.webp"
@@ -1594,7 +1598,7 @@ Sinon j'imagine aisément que tu as aucune idée de l'inflation ces dernières a
 Ce qui est très important à comprendre c'est que
 1. Si tu laisses ton argent sur un compte non rémunéré tu perds, en pouvoir d'achat, l'équivalent de l'inflation chaque année. Environ 2% par an en moyenne sur le long terme, 3.4% en ce moment.
 1. Si tu le mets sur un Livret A (rendement 1.6% alors que l'inflation est à 3.4%) tu perds un peu moins d'argent, mais tu en perds quand même.
-1. Il faut que tes investissements "remontent la rivière" et aillent bien au delà de l'inflation et ce sur toute la durée de ton placement.
+1. Il faut que tes investissements "remontent la rivière" et aillent bien au delà de l'inflation et ce, sur toute la durée de ton placement.
 
 Ok Mamie, mais concrètement, je calcule ça comment?
 
