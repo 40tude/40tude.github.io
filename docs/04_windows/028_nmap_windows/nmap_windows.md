@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-17 17:49:06
+last_modified_date: 2026-11-18 12:34:58
 ---
 
 
@@ -134,7 +134,7 @@ Mon premier réflexe était d'utiliser `winget`. Mauvaise idée. Avant d'install
 winget show Insecure.Nmap
 ```
 
-<figure style="max-width: 900px; margin: auto; text-align: center;">
+<figure style="max-width: 600px; margin: auto; text-align: center;">
 <img src="./assets/img01a.webp"
     alt="winget show Insecure.Nmap propose la version 7.80"
     style="width: 100%; height: auto;"
@@ -168,7 +168,7 @@ Enfin tu lances l'installeur en acceptant les options par défaut. Il ajoute aus
 * **Zenmap** : une interface graphique, pratique pour visualiser les résultats
 * **ndiff** : un petit outil qui compare deux scans, on s'en servira plus loin
 
-<figure style="max-width: 623px; margin: auto; text-align: center;">
+<figure style="max-width: 600px; margin: auto; text-align: center;">
 <img src="./assets/img01.webp"
     alt="Installation de Nmap, Npcap et Zenmap sous Windows 11"
     style="width: 100%; height: auto;"
@@ -243,6 +243,11 @@ Si ton adresse ressemble à `192.168.1.x` avec un masque `255.255.255.0`, alors 
 </figure>
 
 
+
+<!-- ---------------------------------------------------------------------- -->
+#### Ça veut dire quoi `192.168.1.0/24`?
+
+Les 24 premiers bits de l'adresse IP sont bloqués pour identifier le réseau, laissant les 8 derniers bits libres pour les appareils. Ces 8 bits offrent 254 adresses utilisables allant de 192.168.1.1 à 192.168.1.254, car la première et la dernière adresse sont réservées.
 
 
 
