@@ -63,7 +63,8 @@ Le fichier est dans `C:\Users\phili\AppData\Roaming\Code\User\snippets`
 * `–` en dash (tiret demi-cadratin)
 * `—` em dash (tiret cadratin) : insérer une remarque parenthétique, plus expressif que la virgule - ALT + 0150
 * `É` : ALT + 144
-* `Ç` : ALT +128
+* `Ç` : ALT + 128
+* ` ` : espace insécable ALT + 0160 (MS Edit par exemple)
 
 Supprimer les espaces vides en fin de ligne : `[ \t]+$`
 (Voir aussi settings.json : `"files.trimTrailingWhitespace": true`)
@@ -252,7 +253,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-11-14 16:12:57
+last_modified_date: 2026-11-19 11:23:00
 ---
 ```
 
@@ -270,7 +271,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-11-14 16:12:57
+last_modified_date: 2026-11-19 11:23:00
 ```
 
 Image OG idéale : PNG 1200px x 630px

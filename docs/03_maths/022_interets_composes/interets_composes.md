@@ -1,7 +1,7 @@
 ---
 published: true
 author: 40tude
-lang: fr-FR
+lang: fr
 layout: default
 title: "Intérêts composés : montant, taux ou durée, quel levier ?"
 description: "Pourquoi 2% de frais peuvent manger 60% de vos gains sur 50 ans ? Intérêts composés, ETF, PEA Jeune et retraite expliqués avec des maths de terminale et Python."
@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-18 11:21:30
+last_modified_date: 2026-11-19 11:23:00
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 published: true
 author: 40tude
-lang: fr-FR
+lang: fr
 layout: default
 title: "Raccourcis clavier"
 description: "La liste des raccourcis Windows que j'utilise au quotidien"
@@ -13,7 +13,7 @@ parent: "Windows"
 # nav_order: 36
 #math: mathjax
 date: 2015-09-27 21:38:30
-last_modified_date: 2026-04-13 15:23:38
+last_modified_date: 2026-11-19 11:23:00
 ---
 
 

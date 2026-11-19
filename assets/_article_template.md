@@ -1,11 +1,12 @@
 ---
 published: false
 author: 40tude
+# lang: fr
 lang: en-US
 layout: default
 title: "TODO: Add a title"
 description: "TODO: Add a description"
-image: TODO: Full path to the first image. Example: docs/03_maths/020_equa_diff_in_physics/assets/img00.webp
+image: "TODO: Full path to the first image. Example: docs/03_maths/020_equa_diff_in_physics/assets/img00.webp"
 twitter:
   card: summary_large_image
 parent: "TODO: Add category"
@@ -13,7 +14,7 @@ parent: "TODO: Add category"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-04-13 11:16:29
+last_modified_date: 2026-11-19 11:23:00
 ---
 
 
@@ -125,6 +126,9 @@ $$
 $$
 
 
+<!-- ---------------------------------------------------------------------- -->
+#### Comments
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos velit eum neque reiciendis corrupti itaque minima, molestias maxime reprehenderit explicabo quasi ut hic mollitia inventore nam, expedita labore cumque non.
 
 
 

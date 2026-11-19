@@ -1,7 +1,7 @@
 ---
 published: true
 author: 40tude
-lang: fr-FR
+lang: fr
 layout: default
 title: "Nmap sous Windows : auditer son réseau domestique, dedans et dehors"
 description: "Ma box me protège-t-elle vraiment ? Installer Nmap sous Windows 11, inventorier son réseau local, puis le scanner depuis Internet pour voir ce qu'un attaquant voit vraiment."
@@ -12,7 +12,7 @@ parent: "Windows"
 # nav_order: 36
 date:               2026-11-16 12:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-18 12:34:58
+last_modified_date: 2026-11-19 11:23:00
 ---
 
 
@@ -43,7 +43,7 @@ last_modified_date: 2026-11-18 12:34:58
 * Vu de l'intérieur : `nmap -sn` pour l'inventaire, `nmap -A` pour les services, `--script vuln` pour les failles connues, `ndiff` pour suivre l'évolution dans le temps.
 * La box protège bien par défaut. Les vraies portes d'entrée ce sont les exceptions qu'on oublie : redirections de ports, DMZ, UPnP, IPv6 et services de la box elle-même.
 * Pour savoir ce que voit Internet, il faut scanner l'IP publique **depuis l'extérieur**, par exemple via le partage 4G/5G d'un téléphone. Ne pas oublier IPv6.
-* Depuis la 4G, l'opérateur peut répondre "open" à la place de la cible (21, 80, 443, 554...). Avant de croire un port ouvert, scanner une adresse qui n'existe pas.
+* Depuis la 4G, l'opérateur peut répondre "open" à la place de la cible (21, 80, 443, 554…). Avant de croire un port ouvert, scanner une adresse qui n'existe pas.
 * L'intérieur compte quand même : la plupart des attaques domestiques partent d'une machine déjà derrière la box (PC infecté, objet connecté douteux, Wi-Fi faible).
 * Ne scanner que ce qui nous appartient.
 * Ne pas hésiter à coller les sorties des commandes dans Claude et à demander de l'aide pour "traduire"
@@ -85,13 +85,13 @@ last_modified_date: 2026-11-18 12:34:58
 <!-- ###################################################################### -->
 ## Introduction
 
-L'autre soir je suis tombé sur une vidéo YouTube à propos de Nmap. Le gars scannait son réseau, listait les appareils, trouvait des ports ouverts, des services un peu vieux... Bref, ça faisait peur. Sauf qu'à un moment je me suis dit : "attends, tout ça il le fait **derrière** sa box."
+L'autre soir, je suis tombé sur une vidéo YouTube à propos de Nmap. Le gars scannait son réseau, listait les appareils, trouvait des ports ouverts, des services un peu vieux… Bref, ça faisait peur. Sauf qu'à un moment, je me suis dit : "attends, tout ça il le fait **derrière** sa box."
 
-Et là, la question qui me venait c'était plutôt : qui, depuis l'extérieur, est capable de passer à travers la box pour venir se promener dans mon réseau ? Parce que ce que j'avais compris jusque-là, c'est que derrière ma box j'étais relativement tranquille.
+Et là, la question qui me venait, c'était plutôt : qui, depuis l'extérieur, est capable de passer à travers la box pour venir se promener dans mon réseau ? Parce que ce que j'avais compris jusque-là, c'est que derrière ma box, j'étais relativement tranquille.
 
-En creusant un peu, la réponse est "oui mais". Oui la box protège bien. Mais c'est pas la seule question à se poser, et surtout il y a des façons simples de vérifier tout ça soi-même.
+En creusant un peu, la réponse est "oui mais". Oui la box protège bien. Mais ce n'est pas la seule question à se poser, et surtout, il y a des façons simples de vérifier tout ça soi-même.
 
-Dans ce billet on va donc faire les deux :
+Dans ce billet, on va donc faire les deux :
 
 1. installer Nmap proprement sous Windows 11
 1. auditer le réseau **de l'intérieur** : quels appareils, quels services, quelles failles connues
@@ -151,7 +151,7 @@ Si tu l'as déjà installé via `winget`, désinstalle-le d'abord :
 winget uninstall Insecure.Nmap
 ```
 
-Ensuite tu vas sur [nmap.org](https://nmap.org/) et tu cliques sur Download. Là tu récupères la dernière version disponible pour Windows.
+Ensuite, tu vas sur [nmap.org](https://nmap.org/) et tu cliques sur Download. Là, tu récupères la dernière version disponible pour Windows.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img01b.webp"
@@ -162,7 +162,7 @@ Ensuite tu vas sur [nmap.org](https://nmap.org/) et tu cliques sur Download. Là
 <figcaption>Récupération de la dernière version de Nmap depuis le site web</figcaption>
 </figure>
 
-Enfin tu lances l'installeur en acceptant les options par défaut. Il ajoute aussi :
+Enfin, tu lances l'installeur en acceptant les options par défaut. Il ajoute aussi :
 
 * **Npcap** : le pilote de capture réseau dont Nmap a besoin pour ses scans bas niveau
 * **Zenmap** : une interface graphique, pratique pour visualiser les résultats
@@ -231,7 +231,7 @@ La commande `ipconfig` te donne ton adresse et celle de ta passerelle (la box).
 ipconfig
 ```
 
-Si ton adresse ressemble à `192.168.1.x` avec un masque `255.255.255.0`, alors ton réseau c'est `192.168.1.0/24`. C'est-à-dire les 254 adresses de `192.168.1.1` à `192.168.1.254`. Dans la suite j'utilise ce réseau là. Adapte à ton cas (`192.168.0.0/24` est aussi très courant).
+Si ton adresse ressemble à `192.168.1.x` avec un masque `255.255.255.0`, alors ton réseau, c'est `192.168.1.0/24`. C'est-à-dire les 254 adresses de `192.168.1.1` à `192.168.1.254`. Dans la suite, j'utilise ce réseau-là. Adapte à ton cas (`192.168.0.0/24` est aussi très courant).
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img03.webp"
@@ -245,7 +245,7 @@ Si ton adresse ressemble à `192.168.1.x` avec un masque `255.255.255.0`, alors 
 
 
 <!-- ---------------------------------------------------------------------- -->
-#### Ça veut dire quoi `192.168.1.0/24`?
+#### Ça veut dire quoi `192.168.1.0/24` ?
 
 Les 24 premiers bits de l'adresse IP sont bloqués pour identifier le réseau, laissant les 8 derniers bits libres pour les appareils. Ces 8 bits offrent 254 adresses utilisables allant de 192.168.1.1 à 192.168.1.254, car la première et la dernière adresse sont réservées.
 
@@ -261,7 +261,7 @@ On commence par une simple découverte des machines, sans scanner les ports :
 nmap -sn 192.168.1.0/24
 ```
 
-Tu obtiens la liste des appareils connectés, avec leur adresse MAC et souvent le fabricant. C'est déjà très instructif. On y trouve souvent une prise connectée, une vieille tablette ou une télé qu'on avait complètement oubliées.
+Tu obtiens la liste des appareils connectés, avec leur adresse MAC et souvent le fabricant. C'est déjà très instructif. On y trouve une prise connectée, une vieille tablette ou une télé qu'on avait complètement oubliée.
 
 Prends le temps de mettre un nom sur chaque ligne. Un appareil que tu n'arrives pas à identifier, c'est déjà un sujet.
 
@@ -296,7 +296,7 @@ nmap -sU --top-ports 100 192.168.1.1
 
 Quelques explications :
 
-* `-T4` : un profil de timing un peu plus rapide que celui par défaut. Sur un réseau local c'est sans problème.
+* `-T4` : un profil de timing un peu plus rapide que celui par défaut. Sur un réseau local, c'est sans problème.
 * `-A` : fait tout d'un coup. Détection des versions (`-sV`), du système d'exploitation (`-O`), scripts par défaut (`-sC`) et traceroute.
 * `-sU` : le scan UDP. Il est **beaucoup** plus lent, mais il révèle des choses comme UPnP (port 1900) ou SNMP (port 161) qu'un scan TCP ne verra jamais.
 
@@ -330,16 +330,16 @@ PORT    STATE  SERVICE   VERSION
 |     HTTP/1.0 200 OK
 |     X-Frame-Options: SAMEORIGIN
 |     Strict-Transport-Security: max-age=31536000; includeSubDomains
-|     ...
+|     …
 113/tcp closed ident
 443/tcp open   ssl/https
-|   ...
+|   …
 2 services unrecognized despite returning data.
-[...]
+[…]
 MAC Address: 68:3F:7D:XX:XX:XX (Ingram Micro Services)
 Device type: general purpose|media device|storage-misc|broadband router
-Running (JUST GUESSING): Linux 2.6.X|3.X (92%), ...
-Aggressive OS guesses: Linux 2.6.32 (92%), ...
+Running (JUST GUESSING): Linux 2.6.X|3.X (92%), …
+Aggressive OS guesses: Linux 2.6.32 (92%), …
 No exact OS matches for host (test conditions non-ideal).
 Network Distance: 1 hop
 
@@ -368,10 +368,10 @@ Pour lire ce résultat, et tous ceux qui suivent, il faut savoir que Nmap classe
 #### Remarques
 
 - **53 (DNS), 80 et 443 (interface d'administration)** : rien d'anormal pour une box vue du réseau local.
-- **Le port 80 répond aussi en HTTP simple** : c'est un des points de la liste « ce qui doit alerter ». Ici le risque est faible, puisque ce n'est visible que depuis le réseau local. Mieux vaut quand même se connecter à l'interface en `https://`.
+- **Le port 80 répond aussi en HTTP simple** : c'est un des points de la liste « ce qui doit alerter ». Ici le risque est faible, puisque ce n'est visible que depuis le réseau local. Il vaut mieux quand même se connecter à l'interface en `https://`.
 - **996 ports en `filtered`, même depuis l'intérieur** : la box se protège aussi du réseau local, c'est bon signe.
 - **Système d'exploitation « JUST GUESSING »** : la détection de l'OS reste une estimation, ce n'est pas une vérité.
-- **« Ingram Micro Services »** : c'est le fabricant associé au préfixe de l'adresse MAC, pas forcément la marque de la box. Faut donc se calmer si on retrouve pas la marque de la box.
+- **« Ingram Micro Services »** : c'est le fabricant associé au préfixe de l'adresse MAC, pas forcément la marque de la box. Il faut donc se calmer si on ne retrouve pas la marque de la box.
 
 
 
@@ -445,13 +445,13 @@ Nmap done: 1 IP address (1 host up) scanned in 46.69 seconds
 Rien d'alarmant sur ce scan. En revanche, il pose une question utile : as-tu besoin de Samba sur ce portable ?
 
 **Ce que montre le scan**
-- **997 ports en `filtered`** : un pare-feu est en effet actif sur la machine. Je sais plus si c'est `ufw` ou `firewalld`. Seuls 3 ports passent.
+- **997 ports en `filtered`** : un pare-feu est en effet actif sur la machine. Je ne sais plus si c'est `ufw` ou `firewalld`. Seuls 3 ports passent.
 - **22/tcp (SSH)** : pratique pour administrer le portable à distance.
 - **139 et 445 (SMB)** : c'est Samba, le partage de fichiers à la Windows. C'est pile le cas « SMB ouvert sur des appareils qui n'en ont pas besoin ».
 
 **Les résultats des scripts**
 - **`smb-vuln-ms10-054: false`** : cette faille-là n'est pas présente.
-- **Les deux « Could not negotiate a connection »** : ces scripts datent de 2010 à 2012 et parlent SMBv1. Les Samba récents désactivent SMBv1 par défaut, donc la conversation échoue. Ce n'est pas une preuve d'absence de faille, mais c'est plutôt bon signe : SMBv1 est coupé.
+- **Les deux « Could not negotiate a connection »** : ces scripts datent de 2010 à 2012 et parlent SMBv1. Les versions récentes de Samba désactivent SMBv1 par défaut, donc la conversation échoue. Ce n'est pas une preuve d'absence de faille, mais c'est plutôt bon signe : SMBv1 est coupé.
 
 
 
@@ -459,7 +459,7 @@ Rien d'alarmant sur ce scan. En revanche, il pose une question utile : as-tu bes
 <!-- ---------------------------------------------------------------------- -->
 #### Pour aller plus loin, depuis Windows
 
-Je peux saisir
+Je peux saisir par exemple :
 
 ```powershell
 # Versions of SSH and Samba
@@ -471,7 +471,7 @@ nmap -p 445 --script smb-protocols 192.168.1.30
 # SSH authentication methods (password should ideally be absent)
 nmap -p 22 --script ssh-auth-methods --script-args ssh.user=root 192.168.1.30
 ```
-Alors je vois
+Alors, je vois
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img05a.webp"
@@ -488,7 +488,7 @@ Alors je vois
 <!-- ---------------------------------------------------------------------- -->
 #### Pour aller plus loin, sous Linux
 
-Je peux saisir
+Je peux saisir :
 
 ```bash
 # Who listens on which port
@@ -498,7 +498,7 @@ sudo ss -tlnp
 sudo systemctl disable --now smbd nmbd
 ```
 
-Dans `/etc/ssh/sshd_config` je vois que 2 lignes sensibles sont toujours commentées
+Dans `/etc/ssh/sshd_config` je vois que 2 lignes sensibles sont toujours commentées.
 * `#PasswordAuthentication yes`
 * `#PermitRootLogin prohibit-password`
 
@@ -545,7 +545,7 @@ Nmap done: 1 IP address (1 host up) scanned in 74.17 seconds
 
 ```
 
-Pendant le scan l'imprimante a imprimé 2 pages avec des signes cabalistiques. C'est pas un piratage, c'est un effet de bord connu de Nmap sur les imprimantes.
+Pendant le scan l'imprimante a imprimé 2 pages avec des signes cabalistiques. Ce n'est pas un piratage, c'est un effet de bord connu de Nmap sur les imprimantes.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img05b.webp"
@@ -561,10 +561,10 @@ Pendant le scan l'imprimante a imprimé 2 pages avec des signes cabalistiques. C
 
 
 <!-- ---------------------------------------------------------------------- -->
-#### Pourquoi l'imprimante a imprimé?
+#### Pourquoi l'imprimante a imprimé ?
 - **Port 9100 (`jetdirect`), l'impression « brute » :** l'imprimante imprime tout ce qu'elle reçoit sur ce port, sans vérification ni authentification.
 - **Les scripts NSE de la catégorie `vuln` envoient des requêtes de test sur les ports ouverts.** L'imprimante a reçu ces octets sur le 9100 et les a imprimés tels quels, d'où les signes cabalistiques.
-- **La détection de version (`-sV`, `-A`) évite ce problème :** elle exclut par défaut les ports 9100 à 9107 pour cette raison (directive `Exclude` du fichier `nmap-service-probes`). Les scripts lancés par `--script vuln` ne suivent pas cette exclusion. Du moins, c'est l'explication la plus probable ; je n'ai pas identifié lequel a déclenché l'impression.
+- **La détection de version (`-sV`, `-A`) évite ce problème :** elle exclut par défaut les ports 9 100 à 9 107 pour cette raison (directive `Exclude` du fichier `nmap-service-probes`). Les scripts lancés par `--script vuln` ne suivent pas cette exclusion. Du moins, c'est l'explication la plus probable ; je n'ai pas identifié lequel a déclenché l'impression.
 
 
 
@@ -574,7 +574,7 @@ Pendant le scan l'imprimante a imprimé 2 pages avec des signes cabalistiques. C
 
 
 <!-- ---------------------------------------------------------------------- -->
-#### Comment l'éviter?
+#### Comment l'éviter ?
 
 ```powershell
 # Skip raw printing ports
@@ -586,7 +586,7 @@ nmap --script vuln --exclude-ports 9100-9107 192.168.1.17
 
 
 <!-- ---------------------------------------------------------------------- -->
-#### Que dit le résultat?
+#### Que dit le résultat ?
 - **80/tcp (interface web) :** aucune faille XSS ni CSRF détectée. Ce n'est pas une garantie, ces scripts ne testent que quelques cas.
 - **515/tcp (LPD) et 9100/tcp :** n'importe quel appareil du réseau local peut imprimer sans authentification. C'est normal pour une imprimante domestique, mais ces ports ne doivent jamais apparaître dans le scan externe.
 
@@ -608,7 +608,7 @@ Il vaut mieux se déplacer dans un répertoire temporaire pour faire ses premier
 cd $env:TEMP
 ```
 
-Un scan, c'est une photo. Ce qui est intéressant c'est le film. Enregistre tes résultats dans tous les formats avec `-oA` :
+Un scan, c'est une photo. Ce qui est intéressant, c'est le film. Enregistre tes résultats dans tous les formats avec `-oA` :
 
 ```powershell
 # Save results in all formats for later comparison
@@ -621,14 +621,12 @@ nmap -sV -T4 -oA audit_2026-11-16 192.168.1.0/24
 
 <!-- ---------------------------------------------------------------------- -->
 #### Remarques
-Ci-dessus la ligne `-A` est en commentaire car lorsque j'utilise `ndiff` ensuite, ça part en vrille (bug dans un script Python je crois). Du coup je me rabats sur l'option `-sV`
-
+Ci-dessus la ligne `-A` est en commentaire, car lorsque j'utilise `ndiff` ensuite, ça part en vrille (bug dans un script Python, je crois). Du coup, je me rabats sur l'option `-sV`.
 
 
 ```powershell
 ls audit*
 ```
-
 
 
 <figure style="max-width: 826px; margin: auto; text-align: center;">
@@ -657,7 +655,7 @@ ndiff audit_2026-11-16.xml audit_2026-11-16_2.xml
 <figcaption>ndiff : ce qui a changé entre deux scans</figcaption>
 </figure> -->
 
-Par exemple, ci-dessous j'ai lancé deux scans à 6 minutes d'intervalle. Entre les deux, j'ai éteint le PC Linux.
+Par exemple, ci-dessous, j'ai lancé deux scans à six minutes d'intervalle. Entre les deux, j'ai éteint le PC Linux.
 
 ```powershell
 ❯ ndiff audit_2026-11-16.xml audit_2026-11-16_2.xml
@@ -692,12 +690,12 @@ Par exemple, ci-dessous j'ai lancé deux scans à 6 minutes d'intervalle. Entre 
 Les lignes qui commencent par `-` viennent du premier scan, celles qui commencent par `+` du second. Une ligne sans signe est identique dans les deux. Prenons les blocs un par un :
 
 * **Les deux lignes `Nmap`** : ce sont simplement les commandes des deux scans. `ndiff` les affiche toujours.
-* **`livebox.home`** : les ports 80 et 443 passent de `closed` à `open`. Ça ressemble à une alerte... sauf que ces ports étaient déjà ouverts lors du `nmap -A` sur la box un peu plus tôt. Le plus probable, c'est que pendant le premier scan l'interface web de la box a refusé les connexions sous la charge de `-T4`. Avant de paniquer, on rescanne juste ces ports : `nmap -sV -p 80,443 192.168.1.1`. On retrouvera ce phénomène de ports qui "clignotent" dans la partie 2, avec la protection anti-scan de la box.
-* **`s25-40tude.home`** : un nouvel appareil. C'est mon téléphone, revenu sur le Wi-Fi entre les deux scans. Remarque son adresse MAC `06:1F:C7:...` : le deuxième caractère, `6`, indique une adresse "administrée localement". C'est l'adresse Wi-Fi privée (aléatoire) d'Android ou d'iOS, c'est pour ça que Nmap n'affiche aucun fabricant. Et ses 1000 ports fermés, c'est ce qu'on attend d'un téléphone.
+* **`livebox.home`** : les ports 80 et 443 passent de `closed` à `open`. Ça ressemble à une alerte… sauf que ces ports étaient déjà ouverts lors du `nmap -A` sur la box un peu plus tôt. Le plus probable, c'est que pendant le premier scan l'interface web de la box a refusé les connexions sous la charge de `-T4`. Avant de paniquer, on relance un scan de ces ports : `nmap -sV -p 80,443 192.168.1.1`. On retrouvera ce phénomène de ports qui "clignotent" dans la partie 2, avec la protection anti-scan de la box.
+* **`s25-40tude.home`** : un nouvel appareil. C'est mon téléphone, revenu sur le Wi-Fi entre les deux scans. Remarque son adresse MAC `06:1F:C7:…` : le deuxième caractère, `6`, indique une adresse "administrée localement". C'est l'adresse Wi-Fi privée (aléatoire) d'Android ou d'iOS, c'est pour ça que Nmap n'affiche aucun fabricant. Et ses 1000 ports fermés, c'est ce qu'on attend d'un téléphone.
 * **`5pro.home`** : pas d'adresse MAC, c'est normal, c'est le PC qui lance le scan. Nmap n'affiche pas sa propre adresse MAC. Le port 5357 (WSDAPI, la découverte réseau de Windows) est ouvert dans les deux scans. Seul le libellé change : la détection de version (`-sV`) n'a pas donné la même réponse les deux fois. Encore du bruit.
-* **`latitude-2.home`** : l'appareil a disparu, puisque je l'ai éteint. Au passage, on récupère les versions repérées par `-sV` : OpenSSH 8.9p1, donc une Ubuntu 22.04, et Samba 4. Attention, Ubuntu corrige les failles sans changer le numéro de version principal. Un "8.9p1" qui a l'air ancien n'est donc pas forcément vulnérable : c'est le suffixe `3ubuntu0.18` qui compte.
+* **`latitude-2.home`** : l'appareil a disparu, puisque je l'ai éteint. Au passage, on récupère les versions repérées par `-sV` : OpenSSH 8.9p1, donc une Ubuntu 22.04, et Samba 4. Attention, Ubuntu corrige les failles sans changer le numéro de version principal. Un "8.9p1" qui a l'air ancien n'est pas forcément vulnérable : c'est le suffixe `3ubuntu0.18` qui compte.
 
-Ce qu'il faut retenir : `ndiff` remonte **beaucoup de bruit**. Des appareils qui vont et viennent (téléphones, portables), des libellés de version qui changent, des ports qui "clignotent" sur un scan rapide. Le vrai signal, c'est un **nouveau port ouvert sur un appareil stable** (box, NAS, caméra, imprimante) ou un **appareil inconnu qui reste** d'un scan à l'autre. Dans le doute, on rescanne l'appareil concerné, sur les ports concernés.
+Ce qu'il faut retenir : `ndiff` remonte **beaucoup de bruit**. Des appareils qui vont et viennent (téléphones, portables), des libellés de version qui changent, des ports qui "clignotent" sur un scan rapide. Le vrai signal, c'est un **nouveau port ouvert sur un appareil stable** (box, NAS, caméra, imprimante) ou un **appareil inconnu qui reste** d'un scan à l'autre. Dans le doute, on relance un scan de l'appareil concerné, sur les ports concernés.
 
 
 
@@ -707,7 +705,7 @@ Ce qu'il faut retenir : `ndiff` remonte **beaucoup de bruit**. Des appareils qui
 <!-- ###################################################################### -->
 ## Mais au fait, ma box ne me protège pas ?
 
-C'est LA question que je me posais en regardant la vidéo. La réponse courte : vu de l'extérieur, la box protège déjà bien mais ce n'est pas la seule question à se poser.
+C'est LA question que je me posais en regardant la vidéo. La réponse : vu de l'extérieur, la box protège déjà bien, mais ce n'est pas la seule question à se poser.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img07.webp"
@@ -761,13 +759,13 @@ Ce sont les exceptions à cette règle. Celles que tu as ouvertes toi-même, par
 <!-- ###################################################################### -->
 ### Pourquoi l'intérieur compte quand même
 
-**C'est LE truc que j'avais pas vraiment compris**
+**C'est LE truc que je n'avais pas vraiment compris**
 
 La plupart des attaques à la maison ne passent pas par une entrée directe à travers la box. Elles viennent de l'intérieur :
 
-* un PC infecté par une pièce jointe ou un téléchargement douteux
-* un objet connecté mal sécurisé qui contacte **lui-même** un serveur pirate. La box laisse passer puisque la connexion part de chez toi. Et une fois la connexion établie, elle fonctionne dans les deux sens.
-* un Wi-Fi au mot de passe faible, ou partagé avec des invités
+* Un PC infecté par une pièce jointe ou un téléchargement douteux
+* Un objet connecté mal sécurisé qui contacte **lui-même** un serveur pirate. La box laisse passer puisque la connexion part de chez toi. Et une fois la connexion établie, elle fonctionne dans les deux sens.
+* Un Wi-Fi au mot de passe faible ou partagé avec des invités
 
 Une fois qu'une machine est compromise, l'attaquant est **derrière** la box. Et c'est exactement là que le scan interne de la partie 1 devient utile : il montre ce que cet attaquant pourrait atteindre depuis la machine infectée.
 
@@ -801,7 +799,7 @@ Je pars sur la première option, c'est gratuit et on a tous un téléphone dans 
 
 Depuis chez toi, connecté normalement, note :
 
-* **ton adresse IPv4 publique**. Elle est affichée dans l'interface de ta box, ou tu peux la demander à un site comme `ifconfig.me` :
+* **Ton adresse IPv4 publique**. Elle est affichée dans l'interface de ta box, ou tu peux la demander à un site comme `ifconfig.me` :
 
 ```powershell
 curl.exe -4 ifconfig.me
@@ -816,9 +814,9 @@ curl.exe -4 ifconfig.me
 <figcaption>Mon IPv4 publique avec curl.exe -4 ifconfig.me</figcaption>
 </figure>
 
-Avec une IPv4 dynamique, l'adresse peut changer. Faut penser à refaire ce relevé juste avant le scan.
+Avec une IPv4 dynamique, l'adresse peut changer. Il faut penser à refaire ce relevé juste avant le scan.
 
-* **l'adresse IPv6 de la box** et celles de quelques appareils importants : PC, NAS, caméra... Tu les trouves avec `ipconfig` sur chaque machine (prends la ligne "Adresse IPv6", pas "Adresse IPv6 temporaire"), ou dans la liste des appareils de la box.
+* **L'adresse IPv6 de la box** et celles de quelques appareils importants : PC, NAS, caméra… Tu les trouves avec `ipconfig` sur chaque machine (prends la ligne "Adresse IPv6", pas "Adresse IPv6 temporaire"), ou dans la liste des appareils de la box.
 
 ```powershell
 curl.exe -6 ifconfig.me
@@ -854,7 +852,7 @@ Get-NetRoute -AddressFamily IPv6 -DestinationPrefix '::/0'
 
 Si tu ne vois que des adresses commençant par `fe80::` (adresses locales au lien) et aucune route `::/0`, il y a deux suspects :
 
-* **la box** ne distribue pas d'IPv6. Sur une Livebox Orange, regarde dans l'interface d'administration (`http://192.168.1.1`), menu Réseau, onglet IPv6. La case "Activer la connectivité IPv6" doit être cochée et un préfixe doit être affiché.
+* **La box** ne distribue pas d'IPv6. Sur une Livebox Orange, regarde dans l'interface d'administration (`http://192.168.1.1`), menu Réseau, onglet IPv6. La case "Activer la connectivité IPv6" doit être cochée et un préfixe doit être affiché.
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -867,7 +865,7 @@ Si tu ne vois que des adresses commençant par `fe80::` (adresses locales au lie
 </figure>
 
 
-* **la carte réseau du PC** a l'IPv6 désactivé. Vérifie avec :
+* **La carte réseau du PC** a l'IPv6 désactivé. Vérifie avec :
 
 ```powershell
 Get-NetAdapterBinding -ComponentID ms_tcpip6 | Select-Object Name, Enabled
@@ -924,7 +922,7 @@ Si tu fais aussi l'IPv6, vérifie que ta connexion mobile en a bien une. C'est g
 <!-- ###################################################################### -->
 ### Lancer les scans
 
-Toujours dans un PowerShell administrateur. L'option `-Pn` est importante : une box bien configurée ne répond pas au ping, et sans cette option Nmap la croirait éteinte et s'arrêterait là.
+Toujours dans un PowerShell administrateur. L'option `-Pn` est importante : une box bien configurée ne répond pas au `ping`, et sans cette option Nmap la croirait éteinte et s'arrêterait là.
 
 ```powershell
 # Replace with your real public addresses
@@ -965,7 +963,7 @@ Ce que je lis dans ce résultat :
 * **Le nom de la machine.** Nmap affiche le nom inverse de l'adresse, du genre `lfbn-xxx.abo.wanadoo.fr`. Rien de secret, mais ça dit à n'importe qui que c'est une ligne Orange, et même à peu près dans quelle région.
 * **`Host is up` malgré `-Pn`.** La box ne répond pas au ping, mais elle répond sur certains ports. Nmap en déduit qu'il y a bien quelqu'un.
 * **65 528 ports `filtered`.** C'est l'essentiel : sur presque tous les ports, la box ne répond rien. C'est ce qu'on veut.
-* **5 ports `closed`** (53, 113, 1990, 8883, 60000). La box répond "il n'y a rien ici" au lieu de se taire. Ce n'est pas dangereux, mais elle se montre. Ils sont probablement liés aux services d'Orange (DNS, ident, gestion à distance, MQTT...). Je ne peux pas les régler et je les laisse.
+* **5 ports `closed`** (53, 113, 1990, 8883, 60000). La box répond "il n'y a rien ici" au lieu de se taire. Ce n'est pas dangereux, mais elle se montre. Ils sont probablement liés aux services d'Orange (DNS, ident, gestion à distance, MQTT…). Je ne peux pas les régler et je les laisse.
 * **2 ports `open`** (80 et 443). C'est ce qui doit retenir l'attention. Un serveur web répond depuis Internet. Soit c'est voulu (un NAS ou un serveur que je publie volontairement), soit c'est l'interface de la box ou une redirection oubliée.
 * **La durée.** Le scan complet a pris un peu plus de 3 minutes en 4G. C'est raisonnable.
 
@@ -998,15 +996,15 @@ curl.exe -v --max-time 10 "http://$ip4"
 
 ```
 * Established connection to 83.x.x.x (83.x.x.x port 80) from 10.x.x.x port 1131
-...
+…
 curl: (52) Empty reply from server
 ```
 
-La connexion TCP aboutit, puis le serveur la ferme sans rien répondre. Sur 443, c'est pareil : la négociation TLS va jusqu'au bout, puis le serveur ferme proprement sans envoyer de page. Quelque chose écoute bien, mais refuse de parler à un inconnu.
+La connexion TCP aboutit puis le serveur la ferme sans rien répondre. Sur 443, c'est pareil : la négociation TLS va jusqu'au bout, ensuite le serveur ferme proprement sans envoyer de page. Quelque chose écoute bien, mais refuse de parler à un inconnu.
 
 <!-- ---------------------------------------------------------------------- -->
 #### Remarque : des résultats qui changent d'une minute à l'autre
-En relançant un scan juste après, je trouve 443 en `filtered`. Puis, avec un scan en connexion complète (`-sT`, comme le ferait un navigateur), 80 et 443 redeviennent `open` :
+En relançant un scan juste après, je trouve 443 en `filtered`. Ensuite, avec un scan en connexion complète (`-sT`, comme le ferait un navigateur), 80 et 443 redeviennent `open` :
 
 ```powershell
 nmap -Pn -sT -p 80,443 --reason $ip4
@@ -1065,7 +1063,7 @@ nmap -6 -Pn -T4 2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:6969
 ```
 
 ```
-Nmap scan report for 2a01xxxx....ipv6.abo.wanadoo.fr (2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:6969)
+Nmap scan report for 2a01xxxx….ipv6.abo.wanadoo.fr (2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:6969)
 Host is up (0.000084s latency).
 Not shown: 996 closed tcp ports (reset)
 PORT     STATE SERVICE
@@ -1078,19 +1076,20 @@ PORT     STATE SERVICE
 Au premier coup d'œil, c'est la panique : SMB (445) ouvert sur Internet ! En réalité, ce scan ne veut rien dire :
 
 * **La latence : 84 microsecondes.** À travers la 4G, on est à quelques dizaines de millisecondes. Ici, les paquets ne sont jamais sortis du PC.
-* **Les ports** sont ceux de Windows lui-même (RPC, partage de fichiers, Hyper-V, découverte réseau). Le pare-feu Windows ne filtre pas ce qu'une machine s'envoie à elle-même.
-* **L'adresse** était celle de la carte Ethernet du PC, encore branchée à la box. Windows a vu que c'était la sienne et s'est répondu tout seul.
+* **Les ports** sont ceux de Windows lui-même (RPC, partage de fichiers, Hyper-V, découverte du réseau). Le pare-feu Windows ne filtre pas ce qu'une machine s'envoie à elle-même.
+* **L'adresse** était celle de la carte Ethernet du PC, encore branchée à la box. Windows a vu que c'était la sienne et il se répond à lui-même.
 
 Et débrancher le câble n'aurait pas suffi. Dès que le PC quitte la maison, cette adresse n'existe plus, et le scan dirait "filtered" partout simplement parce qu'il n'y a plus personne. **La machine qu'on scanne doit rester à la maison, et celle qui scanne doit en être sortie.** Ce ne peut pas être la même.
 
 <!-- ---------------------------------------------------------------------- -->
 #### La bonne configuration
+
 Il faut donc deux machines :
 
 * **La cible : le portable sous Linux**, rallumé et branché **par câble** sur la box. Il reste à la maison et reçoit une adresse IPv6 publique.
-* **Le scanneur : le PC Windows**, câble **débranché**, connecté en Wi-Fi au partage de connexion du téléphone. Le téléphone a son Wi-Fi coupé, pour sortir par la 4G/5G.
+* **Le scanneur : le PC Windows**, câble **débranché**, connecté en Wi-Fi au partage de connexion du téléphone. Wi-Fi du téléphone est coupé pour sortir par la 4G/5G.
 
-Sur le portable Linux, `ip -6 addr show scope global` affiche deux adresses en `2a01:...`. Celle marquée `temporary` sert aux connexions sortantes et change régulièrement. L'autre est stable. Les deux font l'affaire pour le test.
+Sur le portable Linux, `ip -6 addr show scope global` affiche deux adresses en `2a01:…`. Celle marquée `temporary` sert aux connexions sortantes et change régulièrement. L'autre est stable. Les deux font l'affaire pour le test.
 
 Je lance le scan depuis le PC Windows :
 
@@ -1112,12 +1111,12 @@ curl.exe -6 ifconfig.me
 Si `curl.exe -6` échoue alors que l'IPv6 est activé sur la carte, c'est la connexion mobile qui n'en fournit pas. Sur un Samsung, ça se règle dans Paramètres > Connexions > Réseaux mobiles > Noms des points d'accès : le protocole APN doit être sur `IPv4/IPv6`.
 
 <!-- ---------------------------------------------------------------------- -->
-#### Le résultat... et le piège de l'opérateur
+#### Le résultat… et le piège de l'opérateur
 Cette fois, ça passe :
 
 ```
 nmap -6 -Pn -T4 2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:c918
-Nmap scan report for 2a01xxxx....ipv6.abo.wanadoo.fr (2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:c918)
+Nmap scan report for 2a01xxxx….ipv6.abo.wanadoo.fr (2a01:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:c918)
 Host is up (0.035s latency).
 Not shown: 996 filtered tcp ports (no-response)
 PORT    STATE SERVICE
@@ -1145,9 +1144,9 @@ PORT    STATE SERVICE REASON
 554/tcp open  rtsp    syn-ack ttl 61
 ```
 
-Une machine fantôme avec 4 ports ouverts : c'est donc bien l'opérateur qui répond. Le `ttl 61` le confirme. Un équipement réseau part en général de 64 et chaque routeur retire 1 au passage, donc la réponse vient de 3 sauts seulement, chez l'opérateur mobile, et pas de ma box à l'autre bout d'Internet.
+Une machine fantôme avec 4 ports ouverts : c'est donc bien l'opérateur qui répond. Le `ttl 61` le confirme. Un équipement réseau part en général de 64 et chaque routeur retire 1 au passage. La réponse provient de 3 sauts seulement (chez l'opérateur mobile) et pas de ma box à l'autre bout d'Internet.
 
-Conclusion pour l'IPv6 : **le portable Linux est protégé par le pare-feu IPv6 de la box.** Pour les ports 21, 80, 443 et 554, Nmap ne peut rien dire depuis cette connexion mobile, puisque ses paquets n'atteignent jamais la cible. Pour les tester vraiment, il faudrait scanner depuis un autre point d'Internet : un VPN activé sur le PC, la box d'un ami, le bureau...
+Conclusion pour l'IPv6 : **le portable Linux est protégé par le pare-feu IPv6 de la box.** Pour les ports 21, 80, 443 et 554, Nmap ne peut rien dire depuis cette connexion mobile, puisque ses paquets n'atteignent jamais la cible. Pour les tester vraiment, il faudrait scanner depuis un autre point d'Internet : un VPN activé sur le PC, la box d'un ami, le bureau…
 
 Et retiens la méthode, elle sert partout : **avant de croire un port `open` vu de l'extérieur, scanne une adresse qui n'existe pas.** Si elle a les mêmes ports ouverts, c'est le réseau qui te ment, pas la cible.
 
@@ -1155,12 +1154,12 @@ Et retiens la méthode, elle sert partout : **avant de croire un port `open` vu 
 
 <!-- ---------------------------------------------------------------------- -->
 #### Je garde l'IPv6 sur le Wi-Fi
-Le test terminé, je me suis posé la question : je remets le Wi-Fi du PC en IPv4 seul, ou pas ? Je le **garde en IPv6**, pour plusieurs raisons :
+Le test terminé, je me suis posé la question : je remets le Wi-Fi du PC en IPv4 seul, ou non ? Je le **garde en IPv6**, pour plusieurs raisons :
 
 * **C'est la configuration normale de Windows.** Microsoft déconseille de désactiver l'IPv6, certains composants du système comptent dessus. La carte Ethernet l'avait déjà, c'était la carte Wi-Fi qui faisait exception (un vieux réglage dont je ne me souviens même plus).
 * **Le désactiver sur un seul PC ne protège pas la maison.** Le portable Linux, les téléphones, la TV et la box ont tous de l'IPv6. Ce qui les protège, c'est le pare-feu IPv6 de la box, et le test vient de montrer qu'il fait son travail.
-* **Mon PC est protégé deux fois** : par le pare-feu de la box, puis par le pare-feu Windows, qui fonctionne aussi bien en IPv6 qu'en IPv4. Sur un Wi-Fi public (hôtel, gare), c'est le profil "Public" du pare-feu Windows qui s'applique, en IPv6 comme en IPv4.
-* **Ça peut être un peu plus direct** vers les gros services (Google, Microsoft, Netflix...), sans NAT au milieu. Je ne verrai sans doute pas la différence, mais ça ne coûte rien.
+* **Mon PC est protégé deux fois** : par le pare-feu de la box, puis par le pare-feu Windows, qui fonctionne aussi bien en IPv6 qu'en IPv4. Sur un Wi-Fi public (hôtel, gare), c'est le profil "Public" du pare-feu Windows qui s'applique en IPv6 comme en IPv4.
+* **Ça peut être un peu plus direct** vers les gros services (Google, Microsoft, Netflix…), sans NAT au milieu. Je ne verrai sans doute pas la différence, mais ça ne coûte rien.
 
 Si le test avait montré un vrai port ouvert sur le portable Linux, la bonne réaction n'aurait pas été de couper l'IPv6 sur le PC, mais de corriger le pare-feu IPv6 dans l'interface de la box. C'est la suite.
 
@@ -1208,6 +1207,7 @@ Ensuite, refais le scan externe pour confirmer que les corrections ont bien ét�
 
 <!-- ---------------------------------------------------------------------- -->
 #### Mon cas
+
 J'ai fait le tour des onglets de la Livebox :
 
 * **NAT/PAT** : aucune redirection de port.
@@ -1217,10 +1217,10 @@ J'ai fait le tour des onglets de la Livebox :
 
 Pour l'UPnP, je le **garde**. Je l'avoue, c'est surtout par flemme. Si j'avais un peu de temps et si j'étais un gars sérieux, je ferais ça :
 
-1. décocher l'UPnP IGD
-1. attendre quelques minutes (l'anti-scan...) puis refaire le scan externe, pour vérifier que rien n'a bougé côté Internet
-1. vivre quelques jours comme ça : visio, jeux en ligne, consoles, NAS, appareils connectés...
-1. si rien ne casse, le laisser désactivé. Si un appareil en a vraiment besoin, créer une redirection de port à la main pour lui seul plutôt que de laisser n'importe quel appareil du réseau ouvrir des ports tout seul
+1. Décocher l'UPnP IGD
+1. Attendre quelques minutes (l'anti-scan…) puis refaire le scan externe, pour vérifier que rien n'a bougé côté Internet
+1. Vivre quelques jours comme ça : visio, jeux en ligne, consoles, NAS, appareils connectés…
+1. Si rien ne casse, le laisser désactivé. Si un appareil en a vraiment besoin, créer une redirection de port à la main pour lui seul plutôt que de laisser n'importe quel appareil du réseau ouvrir des ports tout seul
 
 Pourquoi ça vaut le coup ? Parce que l'UPnP, c'est exactement le scénario de la partie "Pourquoi l'intérieur compte quand même" : un appareil infecté derrière la box peut demander lui-même l'ouverture d'un port, sans rien te demander. Et ça, le scan externe ne le verra que le jour où ça arrive.
 
@@ -1237,7 +1237,7 @@ Pourquoi ça vaut le coup ? Parce que l'UPnP, c'est exactement le scénario de l
 ### Deux précautions
 
 * Ne scanne que **ta propre** adresse. Je sais, je me répète.
-* Évite les scans trop agressifs (`-T5`, scans massifs en boucle) sur le réseau mobile, ton opérateur pourrait couper ta connexion. Les réglages ci-dessus suffisent largement. Et attends quelques minutes entre deux scans complets, sinon la protection anti-scan de la box fausse les résultats.
+* Évite les scans trop agressifs (`-T5`, scans massifs en boucle) sur le réseau mobile, ton opérateur pourrait couper ta connexion. Les réglages ci-dessus suffisent largement. Et attends quelques minutes entre deux scans complets, sinon la protection anti-scan de la box peut fausser les résultats.
 
 
 
@@ -1248,13 +1248,13 @@ Pourquoi ça vaut le coup ? Parce que l'UPnP, c'est exactement le scénario de l
 <!-- ###################################################################### -->
 ## Conclusion
 
-Pour répondre à ma question de départ : oui, derrière ta box tu es relativement protégé. Mais "relativement" fait beaucoup de travail dans cette phrase.
+Pour répondre à ma question de départ : oui, derrière ta box, tu es relativement protégé. Mais "relativement" fait beaucoup de travail dans cette phrase.
 
-Vu de l'extérieur, la box ne laisse passer que ce qu'on lui a demandé de laisser passer. Le problème, c'est qu'au fil des années on lui demande des choses : une redirection de port pour un jeu, l'UPnP activé par défaut, une DMZ "juste pour tester", l'IPv6 qui arrive sans qu'on s'en rende compte... Le scan externe depuis le téléphone prend dix minutes et permet de vérifier que la porte est bien fermée.
+Vu de l'extérieur, la box ne laisse passer que ce qu'on lui a demandé de laisser passer. Le problème, c'est qu'au fil des années, on lui demande des choses : une redirection de port pour un jeu, l'UPnP activé par défaut, une DMZ "juste pour tester", l'IPv6 qui arrive sans qu'on s'en rende compte… Le scan externe depuis le téléphone prend dix minutes et permet de vérifier que la porte est bien fermée.
 
 Vu de l'intérieur, c'est une autre histoire. La menace la plus probable n'enfonce pas la porte, elle est déjà dans la maison : un PC qui a ouvert la mauvaise pièce jointe, une caméra à 15 euros qui discute avec un serveur à l'autre bout du monde. Le scan interne te montre ce que cette machine pourrait atteindre.
 
-Du coup une petite alarme mensuelle dans le calendrier avec dans la description la procédure à suivre (passer par le téléphone, le nom du script à lancer...). Un petit script PowerShell qui lance l'audit, garde uniquement les 2 derniers et lance `ndiff`. On devrait être bons. Le script et le mode d'emploi sont dans le bonus, à la fin du billet.
+Du coup une petite alarme mensuelle dans le calendrier avec, dans la description la procédure à suivre (passer par le téléphone, le nom du script à lancer…). Un petit script PowerShell qui lance l'audit, garde uniquement les 2 derniers et lance `ndiff`. On devrait être bon. Le script et le mode d'emploi sont dans le bonus, à la fin du billet.
 
 
 
@@ -1295,7 +1295,7 @@ Le script **Invoke-NmapAudit.ps1** (disponible plus bas) fait en une commande ce
 
 * **Audit interne** (par défaut) : il trouve tout seul ton réseau local (`192.168.1.0/24` par exemple) et lance `nmap -sV -T4`.
 * **Audit externe IPv4** (`-External -PublicIP`) : il scanne les 65 535 ports TCP de ton adresse publique avec `nmap -Pn -sT -p-`. Il utilise `-sT`, la connexion complète, pour ne pas se faire piéger par l'anti-scan de la box.
-* **Audit externe IPv6** (`-External -PublicIPv6`), si tu as l'IPv6 : il scanne les 1000 ports les plus courants de la box et des appareils que tu lui indiques, avec `nmap -6 -Pn -sT`.
+* **Audit externe IPv6** (`-External -PublicIPv6`), si tu as l'IPv6 : il scanne les 1000 ports les plus courants de la box et des appareils que tu lui indiques avec `nmap -6 -Pn -sT`.
 * **Sécurité** : avant tout scan externe, il vérifie que tu n'es **pas** sur le réseau de la maison (en IPv4 comme en IPv6), et il s'arrête si c'est le cas.
 * **Rangement** : les résultats vont dans `$HOME\nmap-audits\internal`, `\external` (IPv4) ou `\external6` (IPv6). Ces dossiers sont créés automatiquement s'ils n'existent pas. Le script ne garde que les **2 derniers audits** de chaque type, c'est tout ce qu'il faut pour comparer.
 * **Comparaison** : à la fin, il lance `ndiff` entre les deux derniers audits, affiche le résultat et l'enregistre dans un fichier `.diff.txt`. Au tout premier lancement, il n'y a rien à comparer et il le dit.
@@ -1317,7 +1317,7 @@ New-Item -ItemType Directory -Path "$HOME\nmap-audits" -Force
 
 `$HOME`, c'est ton dossier personnel, par exemple `C:\Users\toto`. Le dossier sera donc `C:\Users\toto\nmap-audits`.
 
-Ensuite, télécharge le script : clic droit sur ce lien [Invoke-NmapAudit.ps1](./assets/Invoke-NmapAudit.ps1), "Enregistrer le lien sous...", et choisis le dossier `nmap-audits` qu'on vient de créer.
+Ensuite, télécharge le script : clic droit sur ce lien [Invoke-NmapAudit.ps1](./assets/Invoke-NmapAudit.ps1), "Enregistrer le lien sous…", et choisis le dossier `nmap-audits` qu'on vient de créer.
 
 Tu peux aussi le faire en ligne de commande :
 
@@ -1334,7 +1334,7 @@ Invoke-WebRequest -Uri "https://www.40tude.fr/docs/04_windows/028_nmap_windows/a
 
 Bonne question à se poser : **ne jamais lancer un script téléchargé sans savoir ce qu'il fait**. Y compris le mien. Il y a trois choses à faire.
 
-**1. Le lire.** Il fait moins de 250 lignes, avec des commentaires. Ouvre-le avec le Bloc-notes ou l'excellent Edit :
+**1. Lire le script.** Il fait moins de 250 lignes, avec des commentaires. Ouvre-le avec le Bloc-notes ou l'excellent MS Edit :
 
 ```powershell
 edit "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
@@ -1353,7 +1353,7 @@ edit "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
 
 Ce qu'il faut y retrouver : des appels à `nmap` et `ndiff`, des appels à `curl.exe -4 ifconfig.me` et `curl.exe -6 ifconfig.me` (pour vérifier ton adresse publique en mode externe), des créations de dossiers et des suppressions de fichiers `audit_*` dans `nmap-audits`. Rien d'autre. Si tu ne comprends pas un passage, colle le script dans Claude et demande-lui de te l'expliquer ligne par ligne.
 
-**2. Le débloquer.** Windows marque les fichiers téléchargés comme "venant d'Internet". Avec la stratégie par défaut (`RemoteSigned`), PowerShell refuse de lancer un script téléchargé qui n'est pas signé. Une fois que tu l'as lu et que tu es d'accord avec ce qu'il fait, retire cette marque :
+**2. Débloquer le script.** Windows marque les fichiers téléchargés comme "venant d'Internet". Avec la stratégie par défaut (`RemoteSigned`), PowerShell refuse de lancer un script téléchargé qui n'est pas signé. Une fois que tu l'as lu et que tu es d'accord avec ce qu'il fait, retire cette marque :
 
 ```powershell
 Unblock-File -Path "$HOME\nmap-audits\Invoke-NmapAudit.ps1"
@@ -1388,7 +1388,7 @@ Depuis la maison, dans un **PowerShell administrateur** (WIN + X puis A) :
 
 Le `&` au début dit à PowerShell "exécute ce fichier". Il faut le mettre parce que le chemin est entre guillemets. Si tu oublies d'être administrateur, le script s'arrête tout de suite avec un message clair.
 
-Si la détection automatique du réseau se trompe (VPN, plusieurs cartes réseau...), indique-le toi-même :
+Si la détection automatique du réseau se trompe (VPN, plusieurs cartes réseau…), indique-le toi-même :
 
 ```powershell
 & "$HOME\nmap-audits\Invoke-NmapAudit.ps1" -Network 192.168.1.0/24
@@ -1418,16 +1418,16 @@ Remplace `83.x.x.x` par ton adresse. Le scan des 65 535 ports prend plusieurs mi
 
 <!-- ---------------------------------------------------------------------- -->
 #### Et si tu as l'IPv6 ?
-Alors cette étape est **indispensable** en IPv6 aussi. En IPv6 il n'y a pas de NAT : chaque appareil de la maison a sa propre adresse publique. Seul le pare-feu IPv6 de la box le protège. Scanner l'IPv4 ne dit rien sur l'IPv6.
+Alors cette étape est **indispensable** en IPv6 aussi. En IPv6, il n'y a pas de NAT : chaque appareil de la maison a sa propre adresse publique. Seul le pare-feu IPv6 de la box le protège. Scanner l'IPv4 ne dit rien sur l'IPv6.
 
-**À la maison, relève les adresses IPv6** de la box et des appareils importants (PC, NAS, caméra...) :
+**À la maison, relève les adresses IPv6** de la box et des appareils importants (PC, NAS, caméra…) :
 
-* dans l'interface de la box, la liste des appareils connectés
+* Dans l'interface de la box, la liste des appareils connectés
 * ou avec `ipconfig` sur chaque PC : prends la ligne "Adresse IPv6", **pas** "Adresse IPv6 temporaire". L'adresse temporaire change toutes les quelques heures, elle ne servirait à rien le mois suivant.
 
-Les bonnes adresses commencent par `2` ou `3` (par exemple `2a01:...` chez Orange). Celles en `fe80::` sont locales, inutiles ici.
+Les bonnes adresses commencent par `2` ou `3` (par exemple `2a01:…` chez Orange). Celles en `fe80::` sont locales, inutiles ici.
 
-**Depuis le partage de connexion**, vérifie que ta connexion mobile a l'IPv6 : `curl.exe -6 ifconfig.me` doit répondre une adresse. Puis :
+**Depuis le partage de connexion**, vérifie que ta connexion mobile supporte l'IPv6 : `curl.exe -6 ifconfig.me` doit répondre une adresse. Puis :
 
 ```powershell
 # IPv6 only
@@ -1451,7 +1451,7 @@ Ce qu'il faut voir dans le résultat : des ports `filtered` partout sur les appa
 <figcaption>Resultats de l'audit IPv4 externe</figcaption>
 </figure>
 
-Bien voir le 1697 secondes tout en bas... Donc pas de panique si ça prend du temps.
+Bien voir le 1697 secondes tout en bas… Donc pas de panique si ça prend du temps.
 
 
 
@@ -1459,7 +1459,7 @@ Bien voir le 1697 secondes tout en bas... Donc pas de panique si ça prend du te
 ### Étape 5 : lire le résultat
 
 * **"No difference since the previous audit."** : rien n'a changé. Parfait.
-* **Des différences** : elles s'affichent avec des `-` (avant) et des `+` (maintenant). Relis la section "Suivre le réseau dans le temps" pour les interpréter. Le plus souvent c'est du bruit : un téléphone absent, un libellé de version qui change. Ce qui compte, c'est un **nouveau port ouvert sur un appareil stable**, un **appareil inconnu**, et en externe, **n'importe quel nouveau port `open`**.
+* **Des différences** : elles s'affichent avec des `-` (avant) et des `+` (maintenant). Relis la section "Suivre le réseau dans le temps" pour les interpréter. Le plus souvent, c'est du bruit : un téléphone absent, un libellé de version qui change. Ce qui compte, c'est un **nouveau port ouvert sur un appareil stable**, un **appareil inconnu**, et en externe, **n'importe quel nouveau port `open`**.
 
 Dans le doute, colle le contenu du fichier `.diff.txt` dans Claude.
 
@@ -1471,7 +1471,7 @@ Si tu veux garder plus d'historique, par exemple les 12 derniers mois, ajoute `-
 <!-- ###################################################################### -->
 ### Étape 6 : ajouter un rappel dans le calendrier
 
-Crée un événement récurrent, le second lundi du mois par exemple, et colle le texte ci-dessous dans la description. Assure toi que ton calendrider garde bien la mise en page du message collé. C'est pas le cas avec Googlge Calendar.
+Crée un événement récurrent, le second lundi du mois par exemple, et colle le texte ci-dessous dans la description. Assure-toi que ton calendrier garde bien la mise en page du message collé. Ce n'est pas le cas avec Google Calendar.
 
 ```text
 Audit réseau mensuel (Nmap)
@@ -1485,8 +1485,8 @@ Audit réseau mensuel (Nmap)
    - IPv6 (si tu l'as) : adresses de la box et des appareils
      (ipconfig, ligne "Adresse IPv6", pas "temporaire")
      Elles changent rarement : note-les ici une fois pour toutes
-     Box : 2a01:...
-     NAS : 2a01:...
+     Box : 2a01:…
+     NAS : 2a01:…
 
 3. Audit externe, depuis le téléphone
    - Téléphone : couper le Wi-Fi, garder les données mobiles
