@@ -12,7 +12,7 @@ parent: "ML & AI"
 # nav_order: 36
 math: mathjax
 date:               2026-04-02 15:00:00
-last_modified_date: 2026-05-06 09:27:46
+last_modified_date: 2026-11-19 14:42:41
 ---
 
 
@@ -61,6 +61,8 @@ last_modified_date: 2026-05-06 09:27:46
 />
 <figcaption>Use a WAT (Workflows, Agents, Tools) Task Pipeline when you're processing something one-off</figcaption>
 </figure>
+
+
 
 
 
