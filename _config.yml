@@ -65,10 +65,11 @@ ga_tracking_anonymize_ip: true
 
 exclude:
   # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
-  - README.md
-  - LICENSE
+  - CLAUDE.md
   - Gemfile
   - Gemfile.lock
+  - LICENSE
+  - README.md
   - scrap_book/
   - tools/
   # - docs/maths/

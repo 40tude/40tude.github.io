@@ -13,8 +13,8 @@ parent: "TODO: Add category"
 # nav_order: 36
 math: mathjax
 date:               2026-04-10 15:00:00
-# last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-19 14:27:48
+# last_modified_date is updated by tools/hooks/pre-commit
+last_modified_date: 2026-11-19 16:14:53
 ---
 
 
