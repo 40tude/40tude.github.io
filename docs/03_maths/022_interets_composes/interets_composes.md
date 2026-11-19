@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-19 13:34:26
+last_modified_date: 2026-11-19 13:38:41
 ---
 
 
@@ -1531,7 +1531,7 @@ Oui, mais non… On en parle tout de suite.
 * Un CAGR dépend énormément des dates de départ et d'arrivée. Toujours se demander "entre quand et quand ?".
 * Pour une simulation, prendre un rendement inférieur au rendement historique (10 % au lieu de 13 %) : c'est une **marge de sécurité**.
 * Un rendement moyen de 10 % cache des années à -30 %. Les intérêts composés ne fonctionnent que si on ne vend pas en pleine panique. Pendant un krach, la meilleure chose à faire c'est souvent rien.
-* 5 500 € à 10 % pendant 52 ans avec 0.2 % de frais génèrent environ 700 k€ de gain. Les frais en coûtent quand même 70 k€ (9 % du gain).
+* 5 500 € à 10 % pendant 52 ans avec 0.2 % de frais génèrent environ 700 k€ de gain. Les frais mangent quand même 70 k€ (9 % du gain).
 
 
 
