@@ -14,7 +14,7 @@ parent: "TODO: Add category"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-19 11:23:00
+last_modified_date: 2026-11-19 14:27:48
 ---
 
 
@@ -89,7 +89,7 @@ last_modified_date: 2026-11-19 11:23:00
 <!-- ###################################################################### -->
 ## Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit tincidunt. Nunc et laoreet ipsum. Fusce neque nisi, blandit vitae magna nec, sollicitudin commodo felis. Morbi a viverra lorem, ut sollicitudin lacus. Pellentesque euismod magna et enim fermentum tempor. Etiam vel sagittis mauris. Praesent dictum nisl sit amet tellus rhoncus mollis. Aenean nisi nibh, tincidunt at massa eget, luctus aliquet lectus. Mauris ac massa dolor. Sed fringilla tristique est. Suspendisse nec leo et magna tincidunt ultrices. Suspendisse lacinia leo sed congue ornare. Mauris congue eu dui posuere ultricies. Duis volutpat volutpat erat, ut consequat nisl bibendum gravida. Curabitur fringilla tincidunt auctor.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 <!-- Link to a video -->
 <figure style="max-width: 560px; margin: auto;">
@@ -111,13 +111,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit t
 <!-- ###################################################################### -->
 ## Level 2 Section
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam luctus blandit tincidunt. Nunc et laoreet ipsum. Fusce neque nisi, blandit vitae magna nec, sollicitudin commodo felis. Morbi a viverra lorem, ut sollicitudin lacus. Pellentesque euismod magna et enim fermentum tempor. Etiam vel sagittis mauris. Praesent dictum nisl sit amet tellus rhoncus mollis. Aenean nisi nibh, tincidunt at massa eget, luctus aliquet lectus. Mauris ac massa dolor. Sed fringilla tristique est. Suspendisse nec leo et magna tincidunt ultrices. Suspendisse lacinia leo sed congue ornare. Mauris congue eu dui posuere ultricies. Duis volutpat volutpat erat, ut consequat nisl bibendum gravida. Curabitur fringilla tincidunt auctor.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 <!-- ###################################################################### -->
 ### Level 3 Section
 {: .no_toc }
 
-Cras dui ex, scelerisque et magna et, lacinia convallis nunc. Proin sapien nunc, eleifend a mi semper, efficitur pharetra justo. Etiam sit amet ex lacinia, consequat orci sed, malesuada leo. Donec commodo felis eu commodo suscipit. Praesent vitae lorem a dui porta volutpat. Pellentesque efficitur pharetra velit, at placerat nulla iaculis in. Praesent placerat turpis sit amet mauris bibendum interdum. Sed consectetur massa lacus, tempus congue purus dictum nec.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
 
 Math inline $$x(t)$$ and, below, math offline:
 
@@ -128,7 +129,7 @@ $$
 
 <!-- ---------------------------------------------------------------------- -->
 #### Comments
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos velit eum neque reiciendis corrupti itaque minima, molestias maxime reprehenderit explicabo quasi ut hic mollitia inventore nam, expedita labore cumque non.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 
 
@@ -143,9 +144,7 @@ Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos velit eum neque re
 <!-- ###################################################################### -->
 ## Conclusion
 
-Maecenas in arcu id erat interdum tristique sed fermentum tortor. Donec eget felis ornare sem dapibus tincidunt at vitae justo. Mauris feugiat tristique augue at maximus. Vivamus euismod blandit mi, ut pretium libero tempor sit amet. In tristique nisi vel mi molestie, ac ornare enim blandit. Phasellus bibendum diam massa, in tempor purus imperdiet a. Curabitur mattis mauris eget cursus molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-Aliquam blandit malesuada purus at porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum efficitur sapien leo, id iaculis sem sagittis ac. Praesent dolor nisl, fringilla fermentum maximus id, ornare id justo. Morbi at gravida purus, eu imperdiet risus.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 
 

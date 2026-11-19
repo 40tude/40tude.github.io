@@ -5,6 +5,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 ## Table des matières
 
 - [Édition](#édition)
+  - [Nouvel article (new-post)](#nouvel-article-new-post)
   - [Longueur des posts](#longueur-des-posts)
   - [VSCode Snippets](#vscode-snippets)
   - [Caractères spéciaux et tirets](#caractères-spéciaux-et-tirets)
@@ -253,7 +254,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-11-19 11:23:00
+last_modified_date: 2026-11-19 14:27:48
 ---
 ```
 
@@ -271,7 +272,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-11-19 11:23:00
+last_modified_date: 2026-11-19 14:27:48
 ```
 
 Image OG idéale : PNG 1200px x 630px
@@ -491,6 +492,35 @@ for file in $(git diff --cached --name-only | grep '\.md$'); do
 sed -i "s/^last_modified_date:.*$/last_modified_date: $now/" "$file"
 git add "$file"
 done
+```
+
+
+### Nouvel article (new-post)
+
+Script `tools/New-Post.ps1` qui crée un article à partir de `assets/_article_template.md`.
+
+```powershell
+cd docs\03_maths              # un dossier de catégorie (doit contenir un index.md)
+new-post mon_article          # numéro auto : max du dossier + 1 (les 9xx sont ignorés)
+new-post 088_mon_article      # numéro imposé
+```
+
+Résultat :
+
+* `088_mon_article/` avec `assets/` et `raw_assets/` (vide, pas sur Git mais sur OneDrive)
+* `088_mon_article/mon_article.md` copié depuis le template
+* `assets/img00.webp` : image bidon copiée depuis `assets/_article_template_img00.webp`
+* Front matter ajusté : `parent` (= `title:` de `index.md` du dossier courant), `image`, `date` et `last_modified_date` à l'heure courante. Le reste (`title`, `description`, `lang`...) reste comme dans le template.
+* Ouvre le `.md` dans VSCode
+
+Le script refuse si : pas dans un dossier sous `docs/`, pas d'`index.md`, dossier déjà existant ou numéro déjà pris.
+
+**Attention** : la commande `new-post` vient d'une fonction ajoutée dans `$PROFILE` (`code $PROFILE` pour la voir). Si le site change de dossier ou de machine, la recréer :
+
+```powershell
+function new-post {
+    & "$HOME\OneDrive\Documents\40tude.github.io\tools\New-Post.ps1" @args
+}
 ```
 
 
