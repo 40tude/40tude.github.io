@@ -254,7 +254,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-11-19 14:27:48
+last_modified_date: 2026-11-19 14:42:19
 ---
 ```
 
@@ -272,7 +272,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-11-19 14:27:48
+last_modified_date: 2026-11-19 14:42:19
 ```
 
 Image OG idéale : PNG 1200px x 630px
@@ -481,18 +481,17 @@ Get-ChildItem -Recurse -Directory -Filter "assets" | ForEach-Object {
 ### Template d'article
 
 * Utilise Liquid pour écrire une seule fois le titre et la description
-* La date et l'heure de dernière mise à jour sont maintenues grâce à un hook de pre-commit qui est dans `40tude.github.io/.git/hooks/pre-commit`
-    * Si un jour on déplace le dossier du site faudra recréer le hook. Voir le code ci-dessous.
+* La date et l'heure de dernière mise à jour (`last_modified_date`) sont maintenues par un hook de pre-commit versionné dans `tools/hooks/pre-commit`
+    * `.git/hooks/` n'est pas versionné, donc Git est configuré pour utiliser `tools/hooks/`
+    * Après un clone (autre PC, dossier déplacé), activer le hook une fois :
 
-```bash
-# .git/hooks/pre-commit
-#!/bin/bash
-now=$(date +"%Y-%m-%d %H:%M:%S")
-for file in $(git diff --cached --name-only | grep '\.md$'); do
-sed -i "s/^last_modified_date:.*$/last_modified_date: $now/" "$file"
-git add "$file"
-done
+```powershell
+git config core.hooksPath tools/hooks
+git config core.hooksPath   # vérif : doit afficher tools/hooks
 ```
+
+* `.gitattributes` force LF sur `tools/hooks/*` (sinon `autocrlf` passe en CRLF et bash plante)
+* `tools/generate_last_update.ps1` lit ces dates et génère `tools/last_update_YYYYMMDD.md` (articles triés du plus récent au plus ancien)
 
 
 ### Nouvel article (new-post)

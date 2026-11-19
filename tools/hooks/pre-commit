@@ -1,0 +1,11 @@
+#!/bin/bash
+# Updates last_modified_date in staged .md files before commit
+
+now=$(date +"%Y-%m-%d %H:%M:%S")
+
+for file in $(git diff --cached --name-only | grep '\.md$' | grep -v '^index\.md$'); do
+  if [ -f "$file" ]; then
+    sed -i "s/^last_modified_date:.*$/last_modified_date: $now/" "$file"
+    git add "$file"
+  fi
+done
