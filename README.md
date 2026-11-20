@@ -27,6 +27,7 @@ C'est le portage du site 40tude.fr de WordPress + OVH vers markdown + Jekyll + J
 - [Publication](#publication)
   - [Alerte de sécurité Dependabot via Mail](#alerte-de-sécurité-dependabot-via-mail)
   - [Alerte Dependabot sur le site GitHub](#alerte-dependabot-sur-le-site-github)
+  - [Warning "Node.js 20 is deprecated" dans GitHub Actions](#warning-nodejs-20-is-deprecated-dans-github-actions)
 - [SEO](#seo)
   - [Tester et outils](#tester-et-outils)
   - [Indexation Google](#indexation-google)
@@ -283,7 +284,7 @@ parent: "Simple OS"
 # math: mathjax
 # permalink: /sos/
 date:               2023-11-19 00:20:43
-last_modified_date: 2026-11-20 12:48:30
+last_modified_date: 2026-11-20 13:20:35
 ---
 ```
 
@@ -301,7 +302,7 @@ twitter:
 parent: "Rust"
 nav_order: 35
 date:               2026-02-11 10:00:00
-last_modified_date: 2026-11-20 12:48:30
+last_modified_date: 2026-11-20 13:20:35
 ```
 
 Image OG idéale : PNG 1200px x 630px
@@ -786,6 +787,41 @@ Mail, titre typique : `[40tude] A security advisory on addressable affects at le
 4. Cliquer sur `Review Security Update` (bouton vert)
 5. Cliquer `Merge Pull Request` (bouton vert)
 6. Cliquer `Confirm Merge` (bouton vert)
+
+
+### Warning "Node.js 20 is deprecated" dans GitHub Actions
+
+Symptôme, dans les annotations d'un run (onglet Actions) :
+
+```text
+Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, ...
+```
+
+**Ça ne concerne pas le PC local.** Inutile d'installer Node.js 24. Le build et le déploiement tournent sur les serveurs de GitHub (les *runners*), selon `.github/workflows/pages.yml`. Chaque action (`checkout`, `deploy-pages`...) déclare dans son `action.yml` la version de Node avec laquelle elle tourne. Quand GitHub retire une version de Node, les vieilles versions des actions sont forcées sur la nouvelle : ça marche encore, mais c'est fragile, d'où le warning.
+
+Correctif : monter les versions des actions dans `pages.yml`. Fait le 2026-11-20 :
+
+| Action                          | Avant | Après                                 |
+|---------------------------------|-------|---------------------------------------|
+| `actions/checkout`              | v4    | v7                                    |
+| `actions/configure-pages`       | v5    | v6                                    |
+| `actions/upload-pages-artifact` | v3    | v5 (utilise `upload-artifact@v7`)     |
+| `actions/deploy-pages`          | v4    | v5                                    |
+
+`ruby/setup-ruby@v1` ne bouge pas : ce tag suit toujours la dernière version.
+
+La prochaine fois (Node 24 retiré un jour), même méthode :
+
+```powershell
+# Latest release of each action
+foreach ($r in 'actions/checkout','actions/configure-pages','actions/upload-pages-artifact','actions/deploy-pages') {
+    "$r -> " + (gh api "repos/$r/releases/latest" --jq .tag_name)
+}
+# Node runtime declared by a given release ('using: node24')
+(Invoke-WebRequest "https://raw.githubusercontent.com/actions/checkout/v7.0.1/action.yml").Content -split "`n" | Select-String 'using:|uses:'
+```
+
+Puis mettre à jour les `@vN` dans `pages.yml`, commit, push, et vérifier dans l'onglet Actions que les annotations ont disparu.
 
 ---
 
