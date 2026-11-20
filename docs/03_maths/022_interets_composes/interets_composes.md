@@ -13,7 +13,7 @@ parent: "Maths"
 math: mathjax
 date:               2026-11-10 11:00:00
 # last_modified_date is updated by .git/hooks/pre-commit
-last_modified_date: 2026-11-19 13:38:41
+last_modified_date: 2026-11-20 16:53:54
 ---
 
 
@@ -469,6 +469,12 @@ $$
 
 C'est comme le compteur de la voiture. Si tu roules à 90 km/h pendant une minute, tu ne fais pas 90 km. Tu fais $$90/60 = 1.5$$ km. Le compteur donne une vitesse "par heure", la dérivée donne une pente "par 100 % de rendement". Dans les deux cas, il faut ramener ça à la durée, ou à la variation, qui nous intéresse. C'est ce que montre la colonne "Pente / point" : à 5 %, un point de rendement en plus rapporte environ 1 839 € de plus au bout de 35 ans.
 
+<!-- ---------------------------------------------------------------------  -->
+#### Note
+{: .no_toc }
+
+Je le redis pour ceux qui dorment au fond de la classe. Si c'est un peu la panique à propos des dérivées, différentielles et autres tangentes à la coubevous pouvez lire cette [page](https://www.40tude.fr/docs/03_maths/005_derivee_differentielle/005_derivee_differentielle.html)
+
 Mouai. Et comment je sais que ton truc est juste ?
 
 Facile, c'est la dernière colonne. Là, je ne fais aucune dérivée, je calcule bêtement le gain à 6 % puis le gain à 5 % et je fais la différence : $$6\,686 - 4\,516 = 2\,170$$ €. On est dans les mêmes eaux que les 1 839 € mais la dérivée sous-estime un peu. Et c'est normal. La dérivée c'est la pente **au point** 5 %. Or entre 5 % et 6 % la pente ne reste pas constante, elle continue de grimper (à 6 %, elle vaut déjà 2 538 € par point). Si on utilise la pente du départ (à 5 %) pour tout le trajet qui va de 5 % à 6 %, on "oublie" l'accélération. C'est comme une voiture qui accélère : si tu estimes la distance de la prochaine minute avec ta vitesse actuelle, tu te trompes forcément par défaut. D'ailleurs, regarde, la vraie valeur (2 170 €) est bien coincée entre la pente à 5 % (1 839 €) et la pente à 6 % (2 538 €).
@@ -754,7 +760,7 @@ OK. Et si tu lis le tableau de haut en bas ?
 
 La colonne "dG/dn" double à peu près tous les 14 ou 15 ans : 49 € au départ, 101 € à 15 ans, 211 € à 30 ans, 438 € à 45 ans, 911 € à 60 ans. Et je peux même le calculer. Doubler $$(1+r)^n$$ revient à avoir $$n \ln(1+r) = \ln 2$$ soit $$n = \ln 2 / \ln(1.05) \approx 14.2$$ ans.
 
-Ah ! Ça, de mon temps, à la banque on appelait ça [la règle du 70]({%link docs/03_maths/002_pourcentages/pourcentages.md%}#la-règle-du-70). Tu divises 70 par le rendement en pourcent et tu as le temps de doublement : $$70/5 = 14$$ ans. Pas besoin de logarithme, juste un crayon et le dos d'une enveloppe.
+Ah ! Ça, de mon temps, on appelait ça [la règle du 70]({%link docs/03_maths/002_pourcentages/pourcentages.md%}#la-règle-du-70). Rappelle-toi Barbara, on en a parlé à ton [anniversaire]({%link docs/03_maths/002_pourcentages/pourcentages.md%}). Tu divises 70 par le rendement en pourcent et tu as le temps de doublement : $$70/5 = 14$$ ans. Pas besoin de logarithme, juste un crayon et le dos d'une enveloppe.
 
 Trop fort… Du coup ça veut dire que la première année m'a rapporté 50 € alors que la 70ᵉ m'en rapportera plus de 1 500. Les 35 premières années rapportent 4 516 € et les 35 suivantes $$29\,426 - 4\,516 = 24\,910$$ €. Cinq fois plus pour la même durée !
 

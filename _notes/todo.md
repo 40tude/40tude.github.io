@@ -20,7 +20,7 @@ Idées de billets, choses à faire, choses faites.
 ---
 
 ## TODO
-
+* Ordonner les articles Rust (pas envie de faire des sous catégories)
 * Mettre à jour la page : Knee to knee
 * Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
 * Faire un billet sur le portage de WP vers markdown
