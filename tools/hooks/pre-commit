@@ -1,11 +1,15 @@
 #!/bin/bash
-# Updates last_modified_date in staged .md files before commit
+# Updates last_modified_date in staged .md files before commit.
+# Only the front matter is touched (block between the "---" on line 1
+# and the next "---"), so examples inside code blocks stay as written.
+# Files without front matter are left alone. CRLF files are matched too
+# (Git for Windows sed may write them back as LF, Git normalizes anyway).
 
 now=$(date +"%Y-%m-%d %H:%M:%S")
 
-for file in $(git diff --cached --name-only | grep '\.md$' | grep -v '^index\.md$'); do
-  if [ -f "$file" ]; then
-    sed -i "s/^last_modified_date:.*$/last_modified_date: $now/" "$file"
+for file in $(git diff --cached --name-only --diff-filter=ACMR | grep '\.md$' | grep -v '^index\.md$'); do
+  if [ -f "$file" ] && head -n 1 "$file" | grep -qE '^---[[:space:]]*$'; then
+    sed -i "1,/^---\r\?$/ s/^last_modified_date:[^\r]*/last_modified_date: $now/" "$file"
     git add "$file"
   fi
 done
