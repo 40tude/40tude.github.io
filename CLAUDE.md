@@ -39,7 +39,7 @@ scrap_book/                         drafts, not published
 ## Front matter
 - Never edit `last_modified_date`: the pre-commit hook `tools/hooks/pre-commit` sets it (`core.hooksPath = tools/hooks`).
 - Never change `date` of an existing article.
-- `image`: full path from repo root (`docs/.../assets/img00.webp`). Also used for Open Graph.
+- `image`: full path from repo root (`docs/.../assets/img00.webp`). Also used for Open Graph and as the home page thumbnail (`index.md`). Must point to an existing file: update it when renaming the hero image.
 - `published: false` hides a draft.
 
 ## Markdown / kramdown rules

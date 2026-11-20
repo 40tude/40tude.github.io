@@ -10,29 +10,70 @@ last_modified_date: 1964-02-25 11:14:06
 
 # 40tude.fr
 
+{% comment %}
+  Home page = "latest updates" list.
+  Note: site.pages counts every generated page (articles, but also category
+  index.md files and this page), so the number below is an upper bound.
+  Liquid comments like this one are stripped at build time: nothing reaches the HTML.
+{% endcomment %}
 Nombre d'articles sur le site : **{{ site.pages | size }}**
 
+{% comment %}
+  Table of the N most recently modified pages.
+  - last_modified_date is set by the pre-commit hook (tools/hooks/pre-commit).
+  - This page has last_modified_date in 1964 so it always sorts last
+    and never shows up in its own list.
+  Each row: thumbnail (150 px) | title + description.
+{% endcomment %}
 <table>
   <tbody>
-  {% assign nb_articles = 10 %}
-  {% assign nb_words = 20 %}
+  {% assign nb_articles = 10 %}  {% comment %} number of rows {% endcomment %}
+  {% assign nb_words = 20 %}     {% comment %} description length, in words {% endcomment %}
   {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
   {% for page in articles_sorted limit: nb_articles %}
     <tr>
       <td>
+        {% comment %}
+          Thumbnail, first match wins:
+            1. front matter `image:` (full path from repo root, same image as Open Graph)
+            2. first <img> found in the page content
+            3. site default /assets/images/40tude_150.webp
+          `image` holds the raw src found in step 2 (usually "./assets/imgNN.webp"),
+          `image_full_path` the final URL used in the <img> below.
+        {% endcomment %}
         {% assign image = '' %}
-        {% capture page_content %}{{ page.content }}{% endcapture %}
-        {% assign img_tag_start = '<img src="' %}
-        {% assign parts = page_content | split: img_tag_start %}
-        {% if parts.size > 1 %}
-          {% assign img_part = parts[1] %}
-          {% assign image = img_part | split: '"' | first %}
+        {% assign image_full_path = '' %}
+        {% if page.image and page.image != '' %}
+          {% comment %} 1. relative_url turns "docs/.../img00.webp" into "/docs/.../img00.webp" {% endcomment %}
+          {% assign image_full_path = page.image | relative_url %}
+        {% else %}
+          {% comment %}
+            2. Split on '<img', then look for src=" inside the first tag.
+            Works whatever the tag layout: the article template writes
+            <img on one line and src="..." on the next one.
+          {% endcomment %}
+          {% capture page_content %}{{ page.content }}{% endcapture %}
+          {% assign parts = page_content | split: '<img' %}
+          {% if parts.size > 1 %}
+            {% assign src_parts = parts[1] | split: 'src="' %}
+            {% if src_parts.size > 1 %}
+              {% assign image = src_parts[1] | split: '"' | first %}
+            {% endif %}
+          {% endif %}
         {% endif %}
 
-        {% assign image_full_path = '' %}
-        {% if image == '' %}
+        {% if image_full_path != '' %}
+          {% comment %} already resolved in step 1, nothing to do {% endcomment %}
+        {% elsif image == '' %}
+          {% comment %} 3. no image anywhere: site default {% endcomment %}
           {% assign image_full_path = '/assets/images/40tude_150.webp' %}
         {% else %}
+          {% comment %}
+            Step 2 found a src relative to the article (e.g. "./assets/img00.webp").
+            The home page lives at "/", so prefix it with the article's folder:
+            page.url "/docs/a/b/article.html" -> page_dir "/docs/a/b/".
+            (Splitting on '/' gives a leading empty part, which restores the first '/'.)
+          {% endcomment %}
           {% assign page_dir = '' %}
           {% assign parts = page.url | split: '/' %}
           {% for part in parts %}
@@ -46,6 +87,7 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         <img src="{{ image_full_path }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy" class="lightbox-image" />
       </td>
       <td>
+        {% comment %} Text: front matter description if any, else the first nb_words words of the content {% endcomment %}
         <h2><a href="{{ page.url }}">{{ page.title }} :</a></h2>
         {% if page.description and page.description != '' %}{{ page.description | truncatewords: nb_words }}{% else %}{{ page.content | markdownify | strip_html | truncatewords: nb_words }}{% endif %}
       </td>
