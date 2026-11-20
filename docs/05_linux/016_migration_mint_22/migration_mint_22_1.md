@@ -5,7 +5,7 @@ lang: fr
 layout: default
 title: "Mise à jour Linux Mint 21 vers 22 (Partie 1) : le grand ménage"
 description: "Une soirée pour faire le ménage sur un vieux portable sous Mint 21.3 avant la migration. Avec toutes les commandes, les erreurs et les allers-retours."
-image: docs/05_linux/016_migration_mint_22/assets/img00_1.webp
+image: docs/05_linux/016_migration_mint_22/assets/img00.webp
 twitter:
   card: summary_large_image
 parent: "Linux"
@@ -13,7 +13,7 @@ parent: "Linux"
 # math: mathjax
 date:               2026-11-20 11:15:26
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-20 12:48:29
+last_modified_date: 2026-11-20 12:52:26
 ---
 
 
@@ -52,12 +52,12 @@ last_modified_date: 2026-11-20 12:48:29
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
-    src="./assets/img00_1.webp"
-    alt="Un vieux portable Dell sous Linux Mint en plein ménage"
+    src="./assets/img00.webp"
+    alt="Mon vieux portable Dell sous Linux Mint en plein ménage"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Mon vieux portable Dell sous Linux Mint en plein ménage</figcaption>
 </figure>
 
 
