@@ -2,7 +2,10 @@
 
 Personal blog, Jekyll + Just the Docs theme, hosted on GitHub Pages (www.40tude.fr).
 Push to `master` = publish. Never commit or push unless asked.
-Author's full editing cheat sheet (French): `README.md`. Read the relevant section before unusual edits.
+Author's notes (French), in `_notes/` (not published, Jekyll skips `_` folders):
+- `_notes/edition.md`: editing cheat sheet. Read the relevant section before unusual edits.
+- `_notes/exploitation.md`: site operations (Dependabot, GitHub Actions warnings, SEO).
+- `_notes/todo.md`: post ideas, TODO, DONE.
 
 ## Language
 - Article text follows the article: its `lang` front matter and existing prose (most `en-US`, some `fr`). This overrides the global "US English artifacts" rule for article content.
@@ -32,6 +35,7 @@ docs/<NN_category>/                 category, has index.md (its title = articles
 assets/_article_template.md         article template
 tools/                              scripts, not published (excluded in _config.yml)
 scrap_book/                         drafts, not published
+_notes/                             author's notes, not published
 ```
 - New article: `tools/New-Post.ps1` run from a category folder (`new-post my_slug`). Do not hand-build the folder.
 - Target ~3,000 words per article; suggest a series beyond that.
