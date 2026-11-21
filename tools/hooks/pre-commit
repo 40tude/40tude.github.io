@@ -7,7 +7,11 @@
 
 now=$(date +"%Y-%m-%d %H:%M:%S")
 
-for file in $(git diff --cached --name-only --diff-filter=ACMR | grep '\.md$' | grep -v '^index\.md$'); do
+# Read one path per line so names with spaces stay whole.
+# core.quotePath=false keeps non-ASCII names (accents) unquoted.
+git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR \
+  | grep '\.md$' | grep -v '^index\.md$' \
+  | while IFS= read -r file; do
   if [ -f "$file" ] && head -n 1 "$file" | grep -qE '^---[[:space:]]*$'; then
     sed -i "1,/^---\r\?$/ s/^last_modified_date:[^\r]*/last_modified_date: $now/" "$file"
     git add "$file"
