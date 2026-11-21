@@ -5,17 +5,18 @@ title: "Rust"
 parent: "Programmation"
 # math: mathjax
 date:               2025-03-27 13:00:00 +0000
-last_modified_date: 2026-11-21 11:06:41
+last_modified_date: 2026-11-21 11:11:07
 #last_modified_date: 2025-01-05 14:00:00 +0000
 nav_order: 0
 permalink: /rust
+image: docs/06_programmation/rust/assets/img00.webp
 ---
 
 # Rust
 {: .no_toc }
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img src="./assets/img00.webp"
+<img src="{{ '/docs/06_programmation/rust/assets/img00.webp' | relative_url }}"
     alt="A smiling 1970s-style developer in a flowery suit and tinted glasses points at the viewer, sitting at a vintage computer showing code and a glowing gear, surrounded by psychedelic swirls, a disco ball, a lava lamp, and floating architecture diagrams."
     style="width: 100%; height: auto;"
     loading="lazy"
