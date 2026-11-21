@@ -11,10 +11,10 @@ twitter:
   card: summary_large_image
 parent: "Windows"
 # nav_order: 36
-math: mathjax
+# math: mathjax
 date:               2026-11-21 15:20:13
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-21 22:45:41
+last_modified_date: 2026-11-21 23:05:14
 ---
 
 
@@ -29,7 +29,7 @@ last_modified_date: 2026-11-21 22:45:41
 
 
 
-<h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2>
+<!-- <h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2> -->
 
 
 
@@ -411,12 +411,16 @@ whoami /groups | Select-String "Administrators|Mandatory Label"
 ```
 
 - [ ] **Quick test:** launch Windows Sandbox, copy-paste the installer into the Sandbox window, install, test, close the window. Everything is gone.
-- [ ] **One `.wsb` file per scenario**, for example `Test-AppA.wsb`, with networking off and a shared folder. To keep things tidy, everything lives under `$env:USERPROFILE\Sandbox\`: one subfolder per scenario, plus its `.wsb` file.
+- [ ] **One `.wsb` file per scenario**, for example `Test-AppA.wsb`, with networking off and a shared folder. To keep things tidy, everything lives under `Documents\Sandbox\`: one subfolder per scenario, plus its `.wsb` file. Putting it in `Documents` means it is backed up if `Documents` is synced with OneDrive.
 
-A `.wsb` file is plain XML and does **not** expand `$env:USERPROFILE`. So we let PowerShell write it, with the real path already filled in:
+{: .note }
+> When OneDrive backs up `Documents`, the real folder is `C:\Users\<name>\OneDrive\Documents`, **not** `$env:USERPROFILE\Documents`. That is why the scripts below ask Windows for the actual path with `[Environment]::GetFolderPath("MyDocuments")`. Without OneDrive, it simply returns `C:\Users\<name>\Documents`: the scripts work the same, with or without OneDrive.
+
+A `.wsb` file is plain XML and does **not** expand PowerShell variables or environment variables. So we let PowerShell write it, with the real path already filled in:
 
 ```powershell
-$hostFolder = "$env:USERPROFILE\Sandbox\AppA"
+$sandboxRoot = Join-Path ([Environment]::GetFolderPath("MyDocuments")) "Sandbox"
+$hostFolder  = Join-Path $sandboxRoot "AppA"
 New-Item -ItemType Directory -Path $hostFolder -Force | Out-Null   # HostFolder must exist
 
 @"
@@ -433,10 +437,10 @@ New-Item -ItemType Directory -Path $hostFolder -Force | Out-Null   # HostFolder 
     <Command>explorer.exe C:\Test</Command>
   </LogonCommand>
 </Configuration>
-"@ | Set-Content -Path "$env:USERPROFILE\Sandbox\Test-AppA.wsb" -Encoding UTF8
+"@ | Set-Content -Path (Join-Path $sandboxRoot "Test-AppA.wsb") -Encoding UTF8
 ```
 
-- [ ] Drop the installers to test into `$env:USERPROFILE\Sandbox\AppA`. In the Sandbox, they show up in `C:\Test`.
+- [ ] Drop the installers to test into `Documents\Sandbox\AppA`. In the Sandbox, they show up in `C:\Test`.
 - [ ] Double-click `Test-AppA.wsb` to start a Sandbox with those settings.
 - [ ] Use `<ReadOnly>true</ReadOnly>` when the mapped folder only holds installers, so the Sandbox cannot write back to the host.
 - [ ] On Windows 11 24H2+, script it with the CLI: `wsb start`, `wsb list`, `wsb exec`, `wsb stop`.
@@ -467,12 +471,13 @@ Do not add `-UseMSI`: the script would look for an `.msi` that no longer exists 
 
 The idea: download the `.zip` once on the host, share its folder read-only with the Sandbox, and let a `LogonCommand` unzip it and open PowerShell 7.
 
-Keep in mind that a `.wsb` file is plain XML: it does **not** expand `$env:USERPROFILE` (nor `%USERPROFILE%`). On top of that, inside the Sandbox `$env:USERPROFILE` points to `C:\Users\WDAGUtilityAccount`, not to our own profile. So we let PowerShell write the `.wsb` file with the host path already expanded, and we use a fixed path (`C:\Setup`) on the Sandbox side.
+Keep in mind that a `.wsb` file is plain XML: it does **not** expand `$env:USERPROFILE` (nor `%USERPROFILE%`, nor any other variable). On top of that, inside the Sandbox `$env:USERPROFILE` points to `C:\Users\WDAGUtilityAccount`, not to our own profile. So we let PowerShell write the `.wsb` file with the host path already expanded, and we use a fixed path (`C:\Setup`) on the Sandbox side.
 
 - [ ] On the host, in a PowerShell terminal (no need to be admin), copy and paste the code below:
 
 ```powershell
-$root = "$env:USERPROFILE\Sandbox\Setup"
+$sandboxRoot = Join-Path ([Environment]::GetFolderPath("MyDocuments")) "Sandbox"
+$root        = Join-Path $sandboxRoot "Setup"
 New-Item -ItemType Directory -Path $root -Force | Out-Null
 
 # 1. Download the latest PowerShell 7 x64 zip from GitHub
@@ -510,7 +515,7 @@ if ($zip) {
     <Command>powershell.exe -ExecutionPolicy Bypass -File C:\Setup\setup.ps1</Command>
   </LogonCommand>
 </Configuration>
-"@ | Set-Content -Path "$env:USERPROFILE\Sandbox\Sandbox-Pwsh7.wsb" -Encoding UTF8
+"@ | Set-Content -Path (Join-Path $sandboxRoot "Sandbox-Pwsh7.wsb") -Encoding UTF8
 ```
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -522,15 +527,15 @@ if ($zip) {
 <figcaption>After running the script: the Setup folder (zip + setup.ps1) and the Sandbox-Pwsh7.wsb file to double-click.</figcaption>
 </figure>
 
-- [ ] Check the generated file. `HostFolder` must contain the real path (`C:\Users\<name>\Sandbox\Setup`), not `$root`:
+- [ ] Check the generated file. `HostFolder` must contain the real path (for example `C:\Users\<name>\OneDrive\Documents\Sandbox\Setup`), not `$root`:
 
 ```powershell
-Get-Content "$env:USERPROFILE\Sandbox\Sandbox-Pwsh7.wsb"
+Get-Content (Join-Path ([Environment]::GetFolderPath("MyDocuments")) "Sandbox\Sandbox-Pwsh7.wsb")
 ```
 
 - [ ] On the host, double-click `Sandbox-Pwsh7.wsb`. Once the Sandbox desktop shows up, `setup.ps1` runs in the background and unzips PowerShell 7. Give it a few more seconds: a PowerShell 7 window then opens by itself. The `Setup` folder is shared read-only, so the Sandbox cannot write to our PC.
 - [ ] If we close that terminal window, `C:\pwsh` is in the machine `PATH`: `Win + R`, type `pwsh`, Enter.
-- [ ] To update PowerShell later, delete the old `.zip` from `$env:USERPROFILE\Sandbox\Setup` and rerun the script above.
+- [ ] To update PowerShell later, delete the old `.zip` from `Documents\Sandbox\Setup` and rerun the script above.
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
