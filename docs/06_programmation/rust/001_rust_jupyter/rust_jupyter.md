@@ -4,7 +4,7 @@ lang: en-US
 title: "Using Rust in Jupyter Notebooks on Windows"
 parent: "Rust"
 #math: mathjax
-nav_order: 3
+nav_order: 30
 date: 2025-03-27 13:00:00
 last_modified_date: 2025-06-23 22:00:00
 ---

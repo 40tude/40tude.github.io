@@ -9,7 +9,7 @@ image: docs/06_programmation/rust/027_speckit/assets/img04.webp
 twitter:
   card: summary_large_image
 parent: "Rust"
-nav_order: 36
+nav_order: 620
 date:               2026-03-05 11:00:00
 last_modified_date: 2026-05-06 09:27:46
 ---

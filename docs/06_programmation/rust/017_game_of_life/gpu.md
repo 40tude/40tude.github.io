@@ -6,7 +6,7 @@ title: "Rust, Winit & Pixels: Understanding GPU Selection and Performance"
 description: A beginner-friendly guide to exploring GPU backends in Rust using Pixels, Winit, and wgpu.
 parent: Rust
 #math: mathjax
-nav_order: 10
+nav_order: 421
 date               : 2025-11-02 07:00:00
 last_modified_date : 2025-11-03 11:00:00
 ---

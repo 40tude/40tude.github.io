@@ -5,7 +5,7 @@ lang: en-US
 title: "Multithreaded Mandelbrot Sets in Rust"
 parent: "Rust"
 #math: mathjax
-nav_order: 15
+nav_order: 400
 date               : 2025-04-21 12:00:00
 last_modified_date : 2025-06-24 12:00:00
 ---

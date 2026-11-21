@@ -5,7 +5,7 @@ layout: default
 title: "Who Owns What in Rust Loops? (And Why It Matters)"
 parent: "Rust"
 #math: mathjax
-nav_order: 14
+nav_order: 120
 date               : 2025-06-26 17:00:00
 last_modified_date : 2025-07-29 09:00:00
 ---

@@ -9,7 +9,7 @@ image: /docs/06_programmation/rust/025_modular_monolith/assets/img12.webp
 twitter:
   card: summary_large_image
 parent: "Rust"
-nav_order: 34
+nav_order: 541
 date:               2026-01-29 15:00:00
 last_modified_date: 2026-02-10 01:00:00
 ---

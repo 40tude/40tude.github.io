@@ -5,7 +5,7 @@ lang: en-US
 title: "Bindings in Rust: Much More Than Just Variables"
 parent: "Rust"
 #math: mathjax
-nav_order: 16
+nav_order: 100
 date               : 2025-05-15 11:00:00
 last_modified_date : 2025-06-30 11:00:00
 ---

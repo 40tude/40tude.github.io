@@ -8,7 +8,7 @@ image: docs/06_programmation/rust/022_solid/assets/img00.webp
 twitter:
   card: summary_large_image
 parent: "Rust"
-nav_order: 31
+nav_order: 501
 date:               2026-01-12 16:00:00
 last_modified_date: 2026-04-11 09:59:55
 ---

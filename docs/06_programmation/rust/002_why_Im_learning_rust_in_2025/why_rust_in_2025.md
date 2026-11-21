@@ -4,6 +4,7 @@ layout: default
 lang: en-US
 title: "Why I’m Learning Rust in 2025"
 parent: "Rust"
+nav_order: 5
 #math: mathjax
 date               : 2025-03-30 11:00:00
 last_modified_date : 2025-03-30 11:00:00

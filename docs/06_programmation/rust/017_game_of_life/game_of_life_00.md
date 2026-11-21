@@ -6,7 +6,7 @@ title: Building Conway’s Game of Life in Rust with Pixels and Winit
 description: A beginner-friendly guide to using the Pixels and Winit crates to create a graphical version of Conway’s Game of Life in Rust.
 parent: Rust
 #math: mathjax
-nav_order: 9
+nav_order: 420
 date               : 2025-10-29 07:00:00
 last_modified_date : 2025-11-05 17:00:00
 ---

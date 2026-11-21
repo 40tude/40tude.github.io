@@ -5,7 +5,7 @@ layout: default
 title: "Rust Dereferencing vs Destructuring — For the Kids 1/2"
 parent: "Rust"
 #math: mathjax
-nav_order: 18
+nav_order: 140
 date               : 2025-06-27 09:00:00
 last_modified_date : 2025-06-30 12:00:00
 ---

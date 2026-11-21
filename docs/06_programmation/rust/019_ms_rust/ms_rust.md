@@ -9,7 +9,7 @@ twitter:
   card: summary_large_image
 parent: Rust
 #math: mathjax
-nav_order: 2
+nav_order: 600
 date               : 2025-11-19 01:00:00
 last_modified_date : 2026-04-05 19:00:00
 ---

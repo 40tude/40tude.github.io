@@ -5,7 +5,7 @@ layout: default
 title: "Functions, Methods, Closures, Iterators, and Coroutines in Rust"
 description: "A short, practical reminder with working examples."
 parent: "Rust"
-nav_order: 32
+nav_order: 180
 date:               2026-01-22 11:00:00
 last_modified_date: 2026-01-23 10:00:00
 ---

@@ -5,7 +5,7 @@ layout: default
 title: "Hexagonal Architecture in Rust: A Beginner’s Guide"
 description: "Learn how to structure your Rust code with ports, adapters, and clean separation of concerns using practical examples."
 parent: "Rust"
-nav_order: 33
+nav_order: 520
 date:               2026-01-24 15:00:00
 last_modified_date: 2026-04-13 15:03:54
 ---

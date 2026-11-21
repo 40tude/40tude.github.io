@@ -5,7 +5,7 @@ layout: default
 title: "From Source File to Executable: A Gentle Walk Through the Rust Build System"
 parent: "Rust"
 #math: mathjax
-nav_order: 13
+nav_order: 220
 date               : 2025-08-25 14:45:00
 last_modified_date : 2025-08-26 09:00:00
 ---

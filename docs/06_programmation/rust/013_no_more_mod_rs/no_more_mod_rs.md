@@ -5,7 +5,7 @@ layout: default
 title: "From Folders to Crates: A Practical Guide to Modern Rust Module Trees (No mod.rs, No Tears)"
 parent: "Rust"
 #math: mathjax
-nav_order: 6
+nav_order: 200
 date               : 2025-08-22 17:45:00
 last_modified_date : 2025-10-02 10:45:00
 ---

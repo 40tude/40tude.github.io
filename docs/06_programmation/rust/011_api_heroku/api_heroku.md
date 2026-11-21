@@ -5,7 +5,7 @@ layout: default
 title: "How to Deploy Your Rust API on Heroku (The Easy Way)"
 parent: "Rust"
 #math: mathjax
-nav_order: 7
+nav_order: 440
 date               : 2025-08-01 16:00:00
 last_modified_date : 2025-08-01 16:00:00
 ---

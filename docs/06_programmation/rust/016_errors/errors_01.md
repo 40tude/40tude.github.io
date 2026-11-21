@@ -6,7 +6,7 @@ title: Rust Error Handling, Demystified - 01
 description: A beginner-friendly conversation on Errors, Results, Options, and beyond.
 parent: Rust
 #math: mathjax
-nav_order: 20
+nav_order: 321
 date               : 2025-09-20 18:00:00
 last_modified_date : 2025-09-23 10:00:00
 ---
