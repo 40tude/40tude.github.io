@@ -14,7 +14,7 @@ parent: "Windows"
 # math: mathjax
 date:               2026-11-21 15:20:13
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-21 23:05:14
+last_modified_date: 2026-11-22 00:50:59
 ---
 
 
@@ -410,7 +410,7 @@ whoami /groups | Select-String "Administrators|Mandatory Label"
 # "High Mandatory Level" means the process is elevated
 ```
 
-- [ ] **Quick test:** launch Windows Sandbox, copy-paste the installer into the Sandbox window, install, test, close the window. Everything is gone.
+- [ ] **Quick test:** launch Windows Sandbox, copy-paste into the Sandbox window the installer of the application to test, install, test, close the window. Everything is gone.
 - [ ] **One `.wsb` file per scenario**, for example `Test-AppA.wsb`, with networking off and a shared folder. To keep things tidy, everything lives under `Documents\Sandbox\`: one subfolder per scenario, plus its `.wsb` file. Putting it in `Documents` means it is backed up if `Documents` is synced with OneDrive.
 
 {: .note }
@@ -440,7 +440,7 @@ New-Item -ItemType Directory -Path $hostFolder -Force | Out-Null   # HostFolder 
 "@ | Set-Content -Path (Join-Path $sandboxRoot "Test-AppA.wsb") -Encoding UTF8
 ```
 
-- [ ] Drop the installers to test into `Documents\Sandbox\AppA`. In the Sandbox, they show up in `C:\Test`.
+- [ ] Drop the installers to test into `Documents\Sandbox\AppA`. In the Sandbox, they show up in `C:\Test`. If not sure, double check `SandboxFolder` above.
 - [ ] Double-click `Test-AppA.wsb` to start a Sandbox with those settings.
 - [ ] Use `<ReadOnly>true</ReadOnly>` when the mapped folder only holds installers, so the Sandbox cannot write back to the host.
 - [ ] On Windows 11 24H2+, script it with the CLI: `wsb start`, `wsb list`, `wsb exec`, `wsb stop`.
@@ -534,7 +534,7 @@ Get-Content (Join-Path ([Environment]::GetFolderPath("MyDocuments")) "Sandbox\Sa
 ```
 
 - [ ] On the host, double-click `Sandbox-Pwsh7.wsb`. Once the Sandbox desktop shows up, `setup.ps1` runs in the background and unzips PowerShell 7. Give it a few more seconds: a PowerShell 7 window then opens by itself. The `Setup` folder is shared read-only, so the Sandbox cannot write to our PC.
-- [ ] If we close that terminal window, `C:\pwsh` is in the machine `PATH`: `Win + R`, type `pwsh`, Enter.
+- [ ] If we close that terminal window, `C:\pwsh` is in the machine `PATH`: Press `Win + R`, type `pwsh` then `Enter`.
 - [ ] To update PowerShell later, delete the old `.zip` from `Documents\Sandbox\Setup` and rerun the script above.
 
 
