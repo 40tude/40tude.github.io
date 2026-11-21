@@ -14,7 +14,7 @@ parent: "Windows"
 math: mathjax
 date:               2026-11-21 15:20:13
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-21 19:21:12
+last_modified_date: 2026-11-21 22:45:41
 ---
 
 
@@ -61,11 +61,11 @@ last_modified_date: 2026-11-21 19:21:12
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img00.webp"
-    alt="Windows Sandbox running on Windows 11"
+    alt="A Windows Sandbox window showing a fresh Windows 11 desktop, running on top of the host desktop"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Windows Sandbox: test, close, forget.</figcaption>
+<figcaption>A clean Windows 11 desktop in a window, inside our own. Test, close, forget.</figcaption>
 </figure>
 
 
@@ -233,11 +233,11 @@ sfc /scannow
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img01.webp"
-    alt="Search for Windows Sandbox in the Start menu."
+    alt="Windows Start menu search for 'sand', with Windows Sandbox listed as the best match"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Search for Windows Sandbox in the Start menu.</figcaption>
+<figcaption>Typing "sand" in the Start menu is enough to find Windows Sandbox (French UI).</figcaption>
 </figure>
 
 
@@ -245,7 +245,7 @@ sfc /scannow
 
 ```powershell
 wsb --version
-0.8.114.0 # on my machine today
+# 0.8.114.0 on my machine today
 ```
 
 - [ ] If `wsb` is not recognized, we are on an older Sandbox version. The Sandbox still works fine. To get the newer version, run Windows Update, then go to Microsoft Store > Library > *Get updates*.
@@ -266,47 +266,56 @@ If the Sandbox window opens and stays open, jump to [Step 5](#step-5-use-it-day-
 
 Symptom: every time, a warning dialog shows up saying *"The connection to the Windows Sandbox environment was lost. Do you want to reconnect?"*
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img01a.webp"
+    alt="Warning dialog: the connection to the Windows Sandbox environment was lost, with Reconnect and Close buttons"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The "connection lost" dialog (French UI). Clicking Reconnect does not help: it comes back every time.</figcaption>
+</figure>
+
 
 
 <!-- ###################################################################### -->
 ### Things I Ruled Out
 {: .no_toc }
 
-* **Memory.** Task Manager (CTRL+SHIFT+ESC) showed 31.7 GB usable out of 32 GB (276 MB hardware-reserved, which is normal) and 18.6 GB available. Not the issue. If Docker/WSL2 is running and RAM is tight, free some memory first:
+* **Memory.** Task Manager (`Ctrl + Shift + Esc`) showed 31.7 GB usable out of 32 GB (276 MB hardware-reserved, which is normal) and 17.5 GB available. Not the issue.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img02.webp"
-    alt="Windows Task Manager - Performance pan"
+    alt="Windows Task Manager, Performance tab, Memory page: 32 GB DDR5, 31.7 GB usable, 276 MB hardware reserved"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Windows Task Manager - Performance pan</figcaption>
+<figcaption>Task Manager > Performance > Memory (French UI). Plenty of free RAM: memory is not the culprit.</figcaption>
 </figure>
 
-{: .note }
-> Did you ever try [TMOG](https://tmog.org/) ?
-
-
-<figure style="max-width: 450px; margin: auto; text-align: center;">
-<img src="./assets/img03.webp"
-    alt="TMOG main window"
-    style="width: 100%; height: auto;"
-    loading="lazy"
-/>
-<figcaption>TMOG main window</figcaption>
-</figure>
-
-
+If Docker/WSL2 is running and RAM is tight, free some memory first:
 
 ```powershell
 wsl --shutdown
 ```
 
-* **A `.wsb` file with vGPU disabled.**
+{: .note }
+> Did you ever try [TMOG](https://tmog.org/){:target="_blank"}?
 
-* Create a new file `test.wsb` on the desktop
-* Add the following content then save it
-* Double click on it and see what happens
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/img03.webp"
+    alt="TMOG Summary page showing CPU, clock, temperature, GPU gauges, top CPU processes, and memory utilization"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>TMOG Summary page: CPU, GPU, memory, and top processes on a single screen.</figcaption>
+</figure>
+
+
+
+* **A `.wsb` file with vGPU disabled.**
+    * Create a new file `test.wsb` on the desktop.
+    * Add the following content, then save it.
+    * Double-click on it and see what happens.
 
 ```xml
 <Configuration>
@@ -314,6 +323,7 @@ wsl --shutdown
   <MemoryInMB>4096</MemoryInMB>
 </Configuration>
 ```
+
 It did not help in my case.
 
 
@@ -335,6 +345,15 @@ On a hybrid-GPU laptop (Intel Iris Xe + NVIDIA RTX), GPU sharing with the Sandbo
 
 {: .warning }
 > **Pitfall #3:** the *Windows Sandbox* node was **missing** from `gpedit.msc` on my machine (no ADMX template installed).
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img03a.webp"
+    alt="Local Group Policy Editor, Windows Components list with no Windows Sandbox entry"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>gpedit.msc > Windows Components (French UI): no Windows Sandbox node in the list.</figcaption>
+</figure>
 
 No need to create it. A Group Policy setting is just a registry value, so we can write it directly.
 
@@ -379,7 +398,7 @@ Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Sandbox" -N
 ## Step 5: Use It Day to Day
 
 {: .warning }
-> **Everything we run in the Sandbox runs as administrator.** Opening PowerShell, for example, always gives an elevated prompt. Even if you try to open it with `WIN+X, I`. The hypervisor protects the host, but a malicious program has full rights *inside* the Sandbox: it can write to any mapped folder opened in write mode and use the network if it is enabled. When testing untrusted software, disable networking and map folders read-only.
+> **Everything we run in the Sandbox runs as administrator.** Opening PowerShell, for example, always gives an elevated prompt. Even `Win + X`, `I` (normally a non-admin terminal) opens an elevated one. The hypervisor protects the host, but a malicious program has full rights *inside* the Sandbox: it can write to any mapped folder opened in write mode and use the network if it is enabled. When testing untrusted software, disable networking and map folders read-only.
 
 To check the account and elevation level from inside the Sandbox:
 
@@ -392,14 +411,20 @@ whoami /groups | Select-String "Administrators|Mandatory Label"
 ```
 
 - [ ] **Quick test:** launch Windows Sandbox, copy-paste the installer into the Sandbox window, install, test, close the window. Everything is gone.
-- [ ] **One `.wsb` file per scenario**, for example `Test-AppA.wsb`, with networking off and a shared folder:
+- [ ] **One `.wsb` file per scenario**, for example `Test-AppA.wsb`, with networking off and a shared folder. To keep things tidy, everything lives under `$env:USERPROFILE\Sandbox\`: one subfolder per scenario, plus its `.wsb` file.
 
-```xml
+A `.wsb` file is plain XML and does **not** expand `$env:USERPROFILE`. So we let PowerShell write it, with the real path already filled in:
+
+```powershell
+$hostFolder = "$env:USERPROFILE\Sandbox\AppA"
+New-Item -ItemType Directory -Path $hostFolder -Force | Out-Null   # HostFolder must exist
+
+@"
 <Configuration>
   <Networking>Disable</Networking>
   <MappedFolders>
     <MappedFolder>
-      <HostFolder>C:\Sandbox\AppA</HostFolder>
+      <HostFolder>$hostFolder</HostFolder>
       <SandboxFolder>C:\Test</SandboxFolder>
       <ReadOnly>false</ReadOnly>
     </MappedFolder>
@@ -408,13 +433,114 @@ whoami /groups | Select-String "Administrators|Mandatory Label"
     <Command>explorer.exe C:\Test</Command>
   </LogonCommand>
 </Configuration>
+"@ | Set-Content -Path "$env:USERPROFILE\Sandbox\Test-AppA.wsb" -Encoding UTF8
 ```
 
-- [ ] Double-click the `.wsb` file to start a Sandbox with those settings.
+- [ ] Drop the installers to test into `$env:USERPROFILE\Sandbox\AppA`. In the Sandbox, they show up in `C:\Test`.
+- [ ] Double-click `Test-AppA.wsb` to start a Sandbox with those settings.
 - [ ] Use `<ReadOnly>true</ReadOnly>` when the mapped folder only holds installers, so the Sandbox cannot write back to the host.
 - [ ] On Windows 11 24H2+, script it with the CLI: `wsb start`, `wsb list`, `wsb exec`, `wsb stop`.
 
 
+<!-- ###################################################################### -->
+### What If We Need PowerShell 7 in Every Sandbox?
+{: .no_toc }
+
+The Sandbox only ships with Windows PowerShell 5.1, and it starts from scratch every time. Two options.
+
+{: .note }
+> Starting with PowerShell 7.7.0, the GitHub release no longer includes an `.msi` installer (only `.zip` and `.msixbundle`). The commands below use the `.zip` package, which needs no installation.
+
+**Option 1: quick and easy (one-off)**
+
+- [ ] In the Sandbox, open a PowerShell 5.1 terminal (networking must be enabled):
+
+```powershell
+iex "& { $(irm https://aka.ms/install-powershell.ps1) } -AddToPath"
+```
+
+- [ ] Open a new terminal and run `pwsh`.
+
+Do not add `-UseMSI`: the script would look for an `.msi` that no longer exists and fail.
+
+**Option 2: automatic install on each Sandbox start**
+
+The idea: download the `.zip` once on the host, share its folder read-only with the Sandbox, and let a `LogonCommand` unzip it and open PowerShell 7.
+
+Keep in mind that a `.wsb` file is plain XML: it does **not** expand `$env:USERPROFILE` (nor `%USERPROFILE%`). On top of that, inside the Sandbox `$env:USERPROFILE` points to `C:\Users\WDAGUtilityAccount`, not to our own profile. So we let PowerShell write the `.wsb` file with the host path already expanded, and we use a fixed path (`C:\Setup`) on the Sandbox side.
+
+- [ ] On the host, in a PowerShell terminal (no need to be admin), copy and paste the code below:
+
+```powershell
+$root = "$env:USERPROFILE\Sandbox\Setup"
+New-Item -ItemType Directory -Path $root -Force | Out-Null
+
+# 1. Download the latest PowerShell 7 x64 zip from GitHub
+$release = Invoke-RestMethod https://api.github.com/repos/PowerShell/PowerShell/releases/latest
+$asset   = $release.assets | Where-Object name -like "PowerShell-*-win-x64.zip"
+Invoke-WebRequest -Uri $asset.browser_download_url -OutFile (Join-Path $root $asset.name)
+
+# 2. Script run inside the Sandbox at logon
+@'
+# Unzip PowerShell 7 from the mapped (read-only) folder, add it to PATH, then open it
+$zip = Get-ChildItem -Path $PSScriptRoot -Filter "PowerShell-*-win-x64.zip" |
+    Sort-Object Name -Descending | Select-Object -First 1
+if ($zip) {
+    Expand-Archive -Path $zip.FullName -DestinationPath "C:\pwsh" -Force
+    # Machine PATH, so pwsh can be relaunched from Win + R or any new terminal
+    $machinePath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+    if ($machinePath -notlike "*C:\pwsh*") {
+        [Environment]::SetEnvironmentVariable("Path", "$machinePath;C:\pwsh", "Machine")
+    }
+    Start-Process "C:\pwsh\pwsh.exe"
+}
+'@ | Set-Content -Path (Join-Path $root "setup.ps1") -Encoding UTF8
+
+# 3. Sandbox config, with the host path expanded now
+@"
+<Configuration>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>$root</HostFolder>
+      <SandboxFolder>C:\Setup</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <LogonCommand>
+    <Command>powershell.exe -ExecutionPolicy Bypass -File C:\Setup\setup.ps1</Command>
+  </LogonCommand>
+</Configuration>
+"@ | Set-Content -Path "$env:USERPROFILE\Sandbox\Sandbox-Pwsh7.wsb" -Encoding UTF8
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img04.webp"
+    alt="File Explorer showing the user's Sandbox folder with a Setup subfolder and the Sandbox-Pwsh7.wsb file"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>After running the script: the Setup folder (zip + setup.ps1) and the Sandbox-Pwsh7.wsb file to double-click.</figcaption>
+</figure>
+
+- [ ] Check the generated file. `HostFolder` must contain the real path (`C:\Users\<name>\Sandbox\Setup`), not `$root`:
+
+```powershell
+Get-Content "$env:USERPROFILE\Sandbox\Sandbox-Pwsh7.wsb"
+```
+
+- [ ] On the host, double-click `Sandbox-Pwsh7.wsb`. Once the Sandbox desktop shows up, `setup.ps1` runs in the background and unzips PowerShell 7. Give it a few more seconds: a PowerShell 7 window then opens by itself. The `Setup` folder is shared read-only, so the Sandbox cannot write to our PC.
+- [ ] If we close that terminal window, `C:\pwsh` is in the machine `PATH`: `Win + R`, type `pwsh`, Enter.
+- [ ] To update PowerShell later, delete the old `.zip` from `$env:USERPROFILE\Sandbox\Setup` and rerun the script above.
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img05.webp"
+    alt="Windows Sandbox desktop with an Administrator: C:\pwsh\pwsh.exe window showing PowerShell 7.7.0"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>A few seconds after logon, PowerShell 7 opens by itself. Note the "Administrator" title bar.</figcaption>
+</figure>
 
 
 <!-- ###################################################################### -->
