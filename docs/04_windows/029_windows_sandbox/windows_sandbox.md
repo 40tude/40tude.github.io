@@ -14,7 +14,7 @@ parent: "Windows"
 math: mathjax
 date:               2026-11-21 15:20:13
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-21 19:02:13
+last_modified_date: 2026-11-21 19:19:14
 ---
 
 
@@ -283,9 +283,9 @@ Symptom: every time, a warning dialog shows up saying *"The connection to the Wi
 <figcaption>Windows Task Manager - Performance pan</figcaption>
 </figure>
 
-<!--  -->
 {: .note }
-> Did you ver try [TMOG](https://tmog.org/) ?
+> Did you ever try [TMOG](https://tmog.org/) ?
+
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img src="./assets/img03.webp"
@@ -327,6 +327,7 @@ Restart-Service vmcompute, CmService -Force
 
 <!-- ###################################################################### -->
 ### The Fix: Disable vGPU Sharing via Policy (Registry)
+
 {: .no_toc }
 
 On a hybrid-GPU laptop (Intel Iris Xe + NVIDIA RTX), GPU sharing with the Sandbox (vGPU) is the usual suspect. The normal route is a Group Policy setting:
