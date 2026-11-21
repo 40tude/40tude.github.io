@@ -14,7 +14,7 @@ parent: "Windows"
 math: mathjax
 date:               2026-11-21 15:20:13
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-21 19:19:14
+last_modified_date: 2026-11-21 19:21:12
 ---
 
 
@@ -327,7 +327,6 @@ Restart-Service vmcompute, CmService -Force
 
 <!-- ###################################################################### -->
 ### The Fix: Disable vGPU Sharing via Policy (Registry)
-
 {: .no_toc }
 
 On a hybrid-GPU laptop (Intel Iris Xe + NVIDIA RTX), GPU sharing with the Sandbox (vGPU) is the usual suspect. The normal route is a Group Policy setting:
