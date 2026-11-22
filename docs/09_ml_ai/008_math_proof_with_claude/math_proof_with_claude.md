@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-21 15:27:39
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-22 17:08:01
+last_modified_date: 2026-11-22 18:16:48
 ---
 
 
@@ -29,7 +29,7 @@ last_modified_date: 2026-11-22 17:08:01
 
 
 
-<h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2>
+<!-- <h2 align="center"><span style="color:orange"><b> 🚧 This post is under construction 🚧</b></span></h2> -->
 
 
 
@@ -183,7 +183,7 @@ $$
 \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = 1 + \frac{1}{2^s} + \frac{1}{3^s} + \frac{1}{4^s} + \dots
 $$
 
-Fun fact: Euler had already shown that $$\zeta(2) = 1 + \frac{1}{4} + \frac{1}{9} + \frac{1}{16} + \dots = \frac{\pi^2}{6}$$. Yes, $$\pi$$ shows up in a sum of inverse squares. Math is weird.
+Fun fact: Euler had already shown that $$\zeta(2) = 1 + \frac{1}{4} + \frac{1}{9} + \frac{1}{16} + \dots = \frac{\pi^2}{6}$$. Yes, $$\pi$$ shows up in a sum of inverse squares.
 
 Euler also discovered the bridge between this sum over *all* integers and the *primes*:
 
@@ -221,8 +221,12 @@ The **generalized** Riemann Hypothesis extends the same statement to a whole fam
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Fermat had no room in the margin. The AI has all the room it wants, and ticks every line of a "proof" made of derivatives and integrals that proves nothing at all. Green check marks are not a proof: someone has to check the checker.</figcaption>
+<figcaption>Fermat had no room in the margin. The AI has all the room it wants.</figcaption>
 </figure>
+
+<!--
+, and ticks every line of a "proof" made of derivatives and integrals that proves nothing at all. Green check marks are not a proof: someone has to check the checker
+-->
 
 
 <!-- ###################################################################### -->
@@ -230,7 +234,7 @@ The **generalized** Riemann Hypothesis extends the same statement to a whole fam
 <!-- ###################################################################### -->
 ## Why We Need a Machine to Check Proofs
 
-A proof of the Riemann Hypothesis will not be two pages long. It will probably be a long, dense document, building on decades of previous results. Checking it by hand takes months, sometimes years. And history shows that even the best make mistakes:
+A proof of the Riemann Hypothesis will not be two pages long (Levent mentions a Claude scrap book of 250,000 pages and a formal proof of 14 blocks of Lean). I suppose it will be a dense document, building on decades of previous results. Checking it by hand takes months, sometimes years. And history shows that even the best make mistakes:
 
 * **Fermat's Last Theorem.** Andrew Wiles announced his proof in 1993. A gap was found during the review. It took him (and Richard Taylor) more than a year to fix it.
 * **The Kepler conjecture** (the best way to stack oranges). Thomas Hales proved it in 1998. After years of work, the referees said they were "99% sure". Hales was not satisfied with 99%, so he launched a project to have the proof checked **by a machine**. It was completed in 2014.
@@ -253,7 +257,7 @@ Now, add an AI to the picture. An AI can write a proof that *looks* perfect: cle
 
 Behind Lean, there is **Mathlib**, a huge community library of formalized mathematics: more than 200,000 theorems, from basic arithmetic to research-level topics. When our proof says "a finite, non-empty set of natural numbers has a maximum", we don't have to prove it again: Mathlib already has it, already checked.
 
-And why can we trust Lean itself? Because the part that actually checks proofs, the **kernel**, is small. It is a few thousand lines of code that many experts have scrutinized. Everything else (the tactics, the automation, the AI that wrote the proof) can be as clever or as buggy as it wants: in the end, every proof goes through the kernel, and the kernel says yes or no.
+And why can we trust Lean itself? Because the part that actually checks proofs, the **kernel**, is small. It is a few thousand lines of code that many experts have scrutinized. Everything else (the tactics, the automation, the AI that wrote the proof) can be as clever or as buggy as it wants: in the end of the day, every proof goes through the kernel, and the kernel says yes or no.
 
 {: .important }
 > **The trust shifts.** We no longer have to trust the AI's reasoning. We only have to trust Lean's small kernel and **our own reading of the statement**. Lean guarantees that the proof proves the statement. It does **not** guarantee that the statement says what we meant. That part stays our job.
@@ -377,9 +381,9 @@ Claude produced a file named [`EvenInfinite.lean`](assets/EvenInfinite.lean). No
 <!-- ###################################################################### -->
 ## Step 3: Start a Clean Windows Sandbox with PowerShell 7
 
-Now we need Lean. Let's install it inside the Sandbox so that our PC stays untouched.
+Now we need **Lean**. Let's install it inside the Sandbox so that our PC stays untouched.
 
-- [ ] Launch **Windows Sandbox** from the Start menu. If anything goes wrong at this point, see my [Windows Sandbox checklist]({%link docs/04_windows/029_windows_sandbox/windows_sandbox.md%}).
+- [ ] Launch **Windows Sandbox** from the Start menu. If anything goes wrong at this point, see my [Windows Sandbox checklist]({%link docs/04_windows/029_windows_sandbox/windows_sandbox.md%}){:target="_blank"}.
 - [ ] Inside the Sandbox, right-click the Start button, then **Terminal** (or search for **PowerShell** or even faster: `Win + X`, then `I`). We get Windows PowerShell **5.1**, the old one. Note the title bar: we are **Administrator**, always, inside the Sandbox.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
@@ -420,9 +424,9 @@ iex "& { $(irm https://aka.ms/install-powershell.ps1) } -AddToPath"
 </figure>
 
 {: .note }
-> Recent PowerShell releases (7.7.0 and later) no longer ship an `.msi` installer, so the `-UseMSI` flag you may see in older tutorials can fail. Use `-AddToPath` as above. And if you don't want to redo this every time, my [Sandbox checklist]({%link docs/04_windows/029_windows_sandbox/windows_sandbox.md%}) shows how to get PowerShell 7 automatically at each Sandbox start with a `.wsb` file.
+> Recent PowerShell releases (7.7.0 and later) no longer ship an `.msi` installer, so the `-UseMSI` flag you may see in older tutorials can fail. Use `-AddToPath` as above. And if you don't want to redo this every time, my [Sandbox checklist]({%link docs/04_windows/029_windows_sandbox/windows_sandbox.md%}{:target="_blank"}) shows how to get PowerShell 7 automatically at each Sandbox start with a `.wsb` file.
 
-From now on, **every command in this article is typed in the PowerShell 7 window**. The prompt should look like `PS C:\Users\WDAGUtilityAccount>`. `WDAGUtilityAccount` is the name of the user account inside the Sandbox, and `C:\Users\WDAGUtilityAccount` is our home folder.
+From now on, **every command in this article is typed in the PowerShell 7 window**. The prompt should look like `PS C:\Users\WDAGUtilityAccount>` where `WDAGUtilityAccount` is the name of the user account inside the Sandbox, and `C:\Users\WDAGUtilityAccount` is our home folder.
 
 We can close the PowerShell 5.1 window.
 
@@ -646,11 +650,11 @@ This prints the exact Lean version of the project. This is the version worth men
 <!-- ###################################################################### -->
 ## Step 6: Wire Our File into the Project
 
-Here is something that surprised me. `lake` does **not** scan the folder `./Preuves` for `.lean` files. It builds the library root (`Preuves.lean`) and everything that root imports. **A file that nobody imports is simply ignored.** If you know Rust: a module not declared from `lib.rs` is never compiled either.
+`lake` does **not** scan the folder `./Preuves` for `.lean` files. It builds the library root (`Preuves.lean`) and everything that root imports. **A file that nobody imports is simply ignored.** If you know [Rust](../../06_programmation/rust/index.md){:target="_blank"}: a module not declared from `lib.rs` is never compiled either.
 
 So two things to do: copy the file, and import it.
 
-- [ ] **Copy the file into the Sandbox.** On the main PC, in File Explorer, select `EvenInfinite.lean` (in `Downloads`) and press `Ctrl + C`. In the Sandbox, open the project folder:
+- [ ] **Copy the file into the Sandbox.** On the main PC, in File Explorer, select `EvenInfinite.lean` (in `Downloads`) and press `Ctrl + C`. In the Sandbox, in the open terminal, use the following command to open the project folder:
 
 ```powershell
 explorer .\Preuves
@@ -679,7 +683,7 @@ edit .\Preuves.lean
 ```
 
 {: .note }
-> If the line above does not work, in File Explorer, right-click on the name of the file (`Preuves.lean`), select `Open with...` then point to `C:\Windows\System32\edit.exe`
+> If the command above does not work, in File Explorer, right-click on the name of the file (`Preuves.lean`), select `Open with...` then point to `C:\Windows\System32\edit.exe`
 
 
 - [ ] Add a line `import Preuves.EvenInfinite` and save.
@@ -935,9 +939,10 @@ And our main PC? Untouched. No Lean, no Git, no Mathlib. Clean.
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Next level: the cathedral of mathematics is still there, but the floor has turned into a circuit. Time to let Claude walk the corridor on its own, with Lean lighting the way.</figcaption>
+<figcaption>Next level: same math, new workflow.</figcaption>
 </figure>
 
+<!-- the floor has turned into a circuit. Time to let Claude walk the corridor on its own, with Lean lighting the way -->
 
 
 <!-- ###################################################################### -->
@@ -1084,15 +1089,15 @@ When it's done, open `Preuves\InfinitePrimes.lean` in VS Code, walk through the 
 
 Let's step back for a moment.
 
-What we did today is small. A theorem that fits in five lines, known for more than two thousand years. But the **loop** we ran is exactly the one that will matter for the big results: an AI proposes, a machine checks, a human reads the statement. Each one does what it does best. Claude **finds** and **translates**. Lean **certifies**. We **understand** and **decide** what is worth proving.
+What we did today is small. A theorem that fits in five lines, known for more than two thousand years. But the **loop** we ran is exactly the one that will matter for the big results: a human asks, an AI proposes, a machine checks, a human reads the statement. Each one does what it does best. Claude **finds** and **translates**. Lean **certifies**. We **understand** and **decide** what is worth proving.
 
 A few years ago, this loop was reserved for a handful of specialists, after months of training. Today, a high-school student with a Windows 11 PC, a Sandbox, and a chat window can run it on a Sunday afternoon. Errors included, fixed by pasting them back to the AI. This alone would have been science fiction not so long ago.
 
-And on Friday, a mathematician and an AI, working together, may have solved a problem that resisted humanity for 167 years. Whether the proof holds in every detail, the community will tell, with the patience and the rigor it deserves. Human referees, proof assistants, or both: the tools are ready. But whatever the verdict, something has already changed. **The question is no longer whether AI can do research-level mathematics. The question is what we, humans, will do with such partners.**
+And on Friday, a mathematician and an AI, working together for 6 weeks, may have solved a problem that resisted humanity for 167 years. Whether the proof holds in every detail, the community will tell, with the patience and the rigor it deserves. Human referees, proof assistants, or both: the tools are ready. But whatever the verdict, something has already changed. **The question is no longer whether AI can do research-level mathematics. The question is what we, humans, will do with such partners.**
 
 We live in amazing times. We are at a tipping point, and we have a front-row seat. So, to Levent Alpöge and to Claude: congratulations, and thank you for the show.
 
-And to you, reader: open a Sandbox, install Lean, and prove something. Even something small. You'll see, it feels good when the machine says *"Build completed successfully"*.
+OK, I'll stop here. I hope you will get hooked and keep playing with the Sandbox and Lean. Start small, keep it simple, and be proud of yourself when the machine says *"Build completed successfully"*.
 
 
 
@@ -1103,9 +1108,9 @@ And to you, reader: open a Sandbox, install Lean, and prove something. Even some
 ## Webliography
 
 * TODO: Anthropic's post, if any.
-* [Levent Alpöge's announcement and preprint](https://alpo.ge/remark.pdf)
+* [Levent Alpöge's announcement and preprint](https://alpo.ge/remark.pdf){:target="_blank"}
 * [Levent Alpöge](https://fr.wikipedia.org/wiki/Levent_Alp%C3%B6ge){:target="_blank"}, Wikipedia page.
-* [Windows Sandbox on Windows 11: A Hands-On Checklist]({%link docs/04_windows/029_windows_sandbox/windows_sandbox.md%})
+* [Windows Sandbox on Windows 11: A Hands-On Checklist]({%link docs/04_windows/029_windows_sandbox/windows_sandbox.md%}){:target="_blank"}
 * [Lean 4](https://lean-lang.org/){:target="_blank"}, the official website.
 * [Mathlib and the Lean community](https://leanprover-community.github.io/){:target="_blank"}.
 * [elan](https://github.com/leanprover/elan){:target="_blank"}, the Lean version manager.
