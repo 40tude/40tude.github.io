@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-21 15:27:39
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-22 16:07:54
+last_modified_date: 2026-11-22 16:55:58
 ---
 
 
@@ -205,7 +205,14 @@ The **generalized** Riemann Hypothesis extends the same statement to a whole fam
 {: .note }
 > **Does this break RSA and my credit card?** No. RSA security relies on the difficulty of factoring a number $$n = p \times q$$ into its two big primes. The Riemann Hypothesis describes how primes are distributed *on average*. It gives no method to factor anything. Besides, cryptographers already assumed it was true. The real long-term threat to RSA is quantum computing, not Riemann.
 
-
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00a.webp"
+    alt="Pierre de Fermat, quill in hand, at a desk covered with old books, next to a glowing blue humanoid AI writing on a transparent screen. The screen shows Fermat's Last Theorem, a^n + b^n = c^n with n > 2, followed by a chain of derivatives and integrals that ends with 'Contradiction for integer n > 2', every line ticked with a green check mark"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Fermat had no room in the margin. The AI has all the room it wants, and ticks every line of a "proof" made of derivatives and integrals that proves nothing at all. Green check marks are not a proof: someone has to check the checker.</figcaption>
+</figure>
 
 
 <!-- ###################################################################### -->
@@ -912,6 +919,16 @@ And our main PC? Untouched. No Lean, no Git, no Mathlib. Clean.
 
 
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00b.webp"
+    alt="A long gothic nave seen in perspective, its pillars and walls covered with glowing equations, diagrams and tables. The floor is a luminous cyan circuit grid leading straight to a bright rose window at the far end"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Next level: the cathedral of mathematics is still there, but the floor has turned into a circuit. Time to let Claude walk the corridor on its own, with Lean lighting the way.</figcaption>
+</figure>
+
+
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -1075,8 +1092,8 @@ And to you, reader: open a Sandbox, install Lean, and prove something. Even some
 <!-- ###################################################################### -->
 ## Webliography
 
-* TODO: Levent Alpöge's announcement and preprint.
 * TODO: Anthropic's post, if any.
+* [Levent Alpöge's announcement and preprint](https://alpo.ge/remark.pdf)
 * [Levent Alpöge](https://fr.wikipedia.org/wiki/Levent_Alp%C3%B6ge){:target="_blank"}, Wikipedia page.
 * [Windows Sandbox on Windows 11: A Hands-On Checklist]({%link docs/04_windows/029_windows_sandbox/windows_sandbox.md%})
 * [Lean 4](https://lean-lang.org/){:target="_blank"}, the official website.
@@ -1086,6 +1103,29 @@ And to you, reader: open a Sandbox, install Lean, and prove something. Even some
 * [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/){:target="_blank"}, the free online book, once the game is done.
 * [The Riemann Hypothesis](https://www.claymath.org/millennium/riemann-hypothesis/){:target="_blank"}, on the Clay Mathematics Institute website.
 * [Git for Windows releases](https://github.com/git-for-windows/git/releases){:target="_blank"} (MinGit is there).
+
+
+
+
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/sD0NjbwqlYw?start=0"
+    title="
+But what is the Riemann hypothesis? Visualizing analytic continuation - 3Blue1Brown"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    But what is the Riemann hypothesis? Visualizing analytic continuation - 3Blue1Brown
+</figcaption>
+</figure>
+
+
+
+
+
 
 
 <figure style="max-width: 560px; margin: auto;">
