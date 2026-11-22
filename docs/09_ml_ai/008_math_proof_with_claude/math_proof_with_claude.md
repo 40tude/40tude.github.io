@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-21 15:27:39
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-22 16:55:58
+last_modified_date: 2026-11-22 17:08:01
 ---
 
 
@@ -106,10 +106,20 @@ As I write these lines (Sunday, November 22), the claim is **not yet verified**.
 
 And this is exactly the topic of this article. Not the Riemann Hypothesis itself (I am not crazy), but the **loop** behind it:
 
-1. an AI **proposes** a proof,
-2. a machine **checks** it, step by step,
-3. the errors go **back** to the AI,
-4. until the proof is accepted.
+1. a human **asks** a question (here, a theorem to prove),
+2. an AI **proposes** a proof,
+3. a machine **checks** it, step by step,
+4. the errors go **back** to the AI,
+5. until the proof is accepted.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00c.webp"
+    alt="Diagram of the proof loop. On the left, a human labeled You asks a question to a blue box labeled Claude, the AI. Claude sends a proof to an orange box labeled Lean 4, the checker, which checks every step. A dashed red arrow sends the errors back to Claude. When there is no error, a green arrow leads to a box with a check mark: proof accepted"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The whole article in one picture: a human asks, the AI proposes, the checker checks, the errors go back, and we go around again until the checker has nothing left to say.</figcaption>
+</figure>
 
 We will replay that loop on a deliberately trivial theorem: **"the set of even natural numbers is infinite"**. A high-school student knows it is true and even a [French student](https://www.oecd.org/en/publications/pisa-2025-results-volume-i_73451bc5-en.html){:target="_blank"} should be able to prove it. The point is not the theorem. The point is to see, with our own eyes, on our own Windows 11 PC, what it takes for a machine to *certify* a proof.
 
