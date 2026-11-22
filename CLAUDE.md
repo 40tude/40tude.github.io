@@ -38,7 +38,7 @@ scrap_book/                         drafts, not published
 _notes/                             author's notes, not published
 ```
 - New article: `tools/New-Post.ps1` run from a category folder (`new-post my_slug`). Do not hand-build the folder.
-- Target ~3,000 words per article; suggest a series beyond that.
+- Target ~3,000 words per article; suggest a series beyond that. Count with `words2read <file.md>` (installed in `~\.cargo\bin`, see README).
 
 ## Front matter
 - Never edit `last_modified_date`: the pre-commit hook `tools/hooks/pre-commit` sets it (`core.hooksPath = tools/hooks`).

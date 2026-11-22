@@ -59,9 +59,21 @@ function new-post {
 
 
 ### Longueur des posts
-* 3_000 mots
-* Découper en série le cas échéant
-* Utiliser `word2read` ./blablabla.md (voir dans assets\wordcount)
+* 3_000 mots idéalement
+* Dans une première version ne pas se poser de question mais ensuite, découper en épisodes le cas échéant
+* Compter avec `words2read`
+  * installation : voir le README du dépôt
+  * Sinon aller voir dans `..\Documents\Programmation\rust\00_cli\words2read`
+
+```powershell
+# from ..\Documents\40tude.github.io
+words2read .\docs\09_ml_ai\008_math_proof_with_claude\math_proof_with_claude.md
+
+Words to read : 6087
+
+Excerpt after 3000 words:
+offers three options....
+```
 
 
 ### VSCode Snippets

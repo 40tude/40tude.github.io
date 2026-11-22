@@ -29,3 +29,34 @@ tools/                          scripts, non publiés
 scrap_book/                     brouillons, non publiés
 _notes/                         notes de travail, non publiées
 ```
+
+---
+
+## Outils externes
+
+### words2read
+
+Compte les mots réellement lus d'un article, une fois converti en HTML : front matter, blocs de code et commentaires sont exclus. Au-delà de 3 000 mots, affiche le passage où la limite est franchie, pour savoir où découper l'article en épisodes.
+
+- Source : `C:\Users\phili\OneDrive\Documents\Programmation\rust\00_cli\words2read` (projet Rust séparé, hors de ce dépôt).
+- Installation (une seule fois, à refaire après une modification du code) :
+
+```powershell
+cd C:\Users\phili\OneDrive\Documents\Programmation\rust\00_cli\words2read
+cargo install --path .
+```
+
+  L'exécutable est copié dans `~\.cargo\bin`, qui est dans le `PATH` : la commande marche ensuite depuis n'importe quel dossier.
+
+- Utilisation :
+
+```powershell
+words2read .\docs\09_ml_ai\008_math_proof_with_claude\math_proof_with_claude.md
+```
+
+```text
+Words to read : 6087
+
+Excerpt after 3000 words:
+offers three options....
+```
