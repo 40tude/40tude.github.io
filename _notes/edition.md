@@ -7,12 +7,12 @@ Aide-mémoire pour écrire les articles : Markdown, kramdown, Liquid, équations
 - [Édition](#édition-1)
   - [Nouvel article (new-post)](#nouvel-article-new-post)
   - [Longueur des posts](#longueur-des-posts)
+  - [Liens et ancres](#liens-et-ancres)
+  - [Callouts](#callouts)
   - [VSCode Snippets](#vscode-snippets)
   - [Caractères spéciaux et tirets](#caractères-spéciaux-et-tirets)
-  - [Callouts](#callouts)
   - [Vidéo avec légende](#vidéo-avec-légende)
   - [Image avec légende](#image-avec-légende)
-  - [Liens et ancres](#liens-et-ancres)
   - [Note de bas de page](#note-de-bas-de-page)
   - [Table of content dans un article](#table-of-content-dans-un-article)
   - [Front matter](#front-matter)
@@ -185,7 +185,7 @@ Sur une page avec permalink :
 
 Lien sur une page du site :
 ```
-[Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%})
+[Coding Interview Patterns problems]({%link docs/06_programmation/rust/007_coding_interview_patterns/13_graphs/268_longest_increasing_path.md%}){:target="_blank"}
 ```
 
 Lien sur un fichier à télécharger :
@@ -207,12 +207,12 @@ This is the content I want to link to.
 
 ```
 <!--post-b.md -->
-See [this section]({% post_url 2025-09-01-post-a %}#my-important-section).
-[expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions)
-[statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement)
-[function]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#function-method-procedure)
-[invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant)
-[indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection)
+See [this section]({% post_url 2025-09-01-post-a %}#my-important-section){:target="_blank"}.
+[expression]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#expressions){:target="_blank"}
+[statement]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#statement){:target="_blank"}
+[function]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#function-method-procedure){:target="_blank"}
+[invariant]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#invariant){:target="_blank"}
+[indirection]({%link docs/06_programmation/001_computer_science_vocabulary/computer_science_vocabulary.md%}#indirection){:target="_blank"}
 ```
 
 Ancre dans la même page (ou depuis une autre page) :
@@ -228,7 +228,7 @@ Ancre dans la même page (ou depuis une autre page) :
 
 Option avec accents :
 ```
-[Le planning en mode synthetique](#le-planning-synthetique)
+[Le planning en mode synthétique](#le-planning-synthetique)
 ```
 
 
