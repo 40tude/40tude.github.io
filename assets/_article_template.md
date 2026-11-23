@@ -14,7 +14,7 @@ parent: "TODO: Add category"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-19 16:14:53
+last_modified_date: 2026-11-23 19:01:52
 ---
 
 
@@ -103,6 +103,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </div>
 <figcaption style="text-align: center;">TODO: Add a legend</figcaption>
 </figure>
+
+
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+## Prerequisites
+
+* This
+* That
+
 
 
 

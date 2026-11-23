@@ -13,6 +13,7 @@ Aide-mémoire pour écrire les articles : Markdown, kramdown, Liquid, équations
   - [Caractères spéciaux et tirets](#caractères-spéciaux-et-tirets)
   - [Vidéo avec légende](#vidéo-avec-légende)
   - [Image avec légende](#image-avec-légende)
+  - [Images : format, taille, compression](#images--format-taille-compression)
   - [Note de bas de page](#note-de-bas-de-page)
   - [Table of content dans un article](#table-of-content-dans-un-article)
   - [Front matter](#front-matter)
@@ -179,6 +180,95 @@ Sur une page avec permalink :
 <img src="{%link docs/08_snowboard/assets/img_05.webp%}" alt="" width="450" loading="lazy"/>
 </div>
 ```
+
+
+### Images : format, taille, compression
+
+Choix appliqués sur le blog depuis nov. 2026 (série *How Attention Works*).
+
+**Règle de base : le mode (avec ou sans perte) dépend du type d'image, le chiffre de qualité vient après.**
+
+| Type d'image | Mode WebP | Qualité | Largeur |
+|---|---|---|---|
+| Couverture `img00.webp` (photo, illustration) | avec perte | 75 à 85 (80 par défaut) | **1200** (1200 x 675 en 16:9, idéal OG : 1200 x 630) |
+| Photo dans le corps de l'article | avec perte | 75 à 85 | **1200** |
+| Capture d'écran (interface, code, texte) | **sans perte** | sans objet | taille native, ne pas réduire |
+| Schéma, diapo dense (draw.io, etc.) | avec perte en général | 85 à 90 | taille native, ne pas réduire sous **1800** (draw.io : export `-s 2`) |
+
+**Largeur : deux chiffres, deux familles d'images**
+* **1200** pour ce qui se regarde (couverture, photo). **1800 ou plus** pour ce qui se lit (texte, étiquettes, code).
+* Pourquoi plus de 900 alors que les figures font `max-width: 900px` ? Ce sont des pixels *CSS*. Sur un portable Windows à 150 % ou un écran haute densité (2x), 900 px CSS = 1350 à 1800 pixels réels. Image plus petite = agrandie par le navigateur = floue.
+* Une photo agrandie de 1200 à 1800 reste agréable. Un texte de 8 px agrandi devient pénible à lire.
+* La lightbox (ci-dessous) affiche l'image à sa taille réelle, dans la limite de 90 % de la fenêtre. Une image de 1200 px y reste à 1200 px CSS ; un schéma de 2400 px remplit l'écran. Encore une raison de garder les schémas denses en grand.
+
+**Lightbox : toutes les images du site sont cliquables**
+* Script maison `assets/js/lightbox.js`, chargé par `_includes/footer_custom.html` (ajouté le 2025-01-25).
+* Au chargement, il ajoute la classe `lightbox-image` à chaque `<img>` dont le `src` finit par `.jpg`, `.jpeg`, `.png`, `.gif` ou `.webp`. Clic = image sur fond noir, `max-width` et `max-height` à 90 % de la fenêtre. Fermeture : croix en haut à droite ou clic à côté de l'image.
+* Rien à faire dans l'article : pas besoin d'entourer l'image d'un `<a href>`.
+* `assets/js/lightbox_00.js` et `assets/css/lightbox_00.css` = restes d'un premier essai avec zoom (abandonné, commit « Retour en arriere le zoom fonctionne pas »). Non chargés.
+
+**Pourquoi le texte bave en WebP avec perte**
+* Le mode avec perte stocke la couleur à demi-résolution (1 pixel de couleur pour un bloc 2 x 2).
+* Invisible sur une photo. Sur du texte fin, surtout coloré sur fond coloré (coloration syntaxique), ça bave et ça fait des halos.
+* Monter la qualité à 90 ou 100 ne change rien : la perte de couleur est faite quelle que soit la qualité.
+* Une capture d'écran = grands aplats de couleur unie : le sans perte la compresse très bien. Il est souvent **plus léger** que le avec perte.
+
+**Mesures (nov. 2026)**
+
+| Image | avec perte q80 | q90 | q100 | sans perte |
+|---|---|---|---|---|
+| Capture JupyterLab 1293 x 831 | 50 Ko | 65 Ko | 95 Ko | **35 Ko** |
+| Schéma draw.io 925 x 2225 | **42 Ko** | 56 Ko | 88 Ko | 130 Ko |
+
+Le schéma est l'exception : l'anti-aliasing du texte et les ombres créent beaucoup de nuances, le sans perte gonfle. Dans le doute, exporter les deux et garder le plus léger qui est propre.
+
+**Choisir le chiffre de qualité (mode avec perte)**
+1. Exporter à 90 et à 80.
+2. Comparer à 100 % de zoom sur les zones difficiles : texte, bords nets, dégradés.
+3. Garder la valeur la plus basse sans différence visible. Photo ou couverture : presque toujours entre 75 et 85.
+
+Au-delà de 90, le poids grimpe vite pour un gain invisible (capture ci-dessus : 65 Ko à q90, 95 Ko à q100).
+
+**Outils**
+* Paint.NET + plugin WebPFileType : décocher « Sans perte » + qualité 80 pour une couverture, cocher « Sans perte » pour une capture.
+* Paint.NET, redimensionner (Image > Redimensionner) :
+  * « En taille absolue », « Conserver les proportions » coché, régler la largeur.
+  * « Utiliser la correction gamma » **coché** : la moyenne se fait sur la luminosité réelle, les traits fins et le texte noir ne s'épaississent pas et ne foncent pas.
+  * Résolution (pixels/pouce) et taille d'impression : sans effet sur le web, ignorer.
+  * Ré-échantillonnage :
+
+| Option | Usage |
+|---|---|
+| **Adaptatif (net)** | **par défaut** : couverture, photo. Choisit la méthode selon le facteur de réduction et accentue un peu. |
+| **Fant** | schéma, capture avec texte. Moyenne exacte des pixels couverts, aucun halo, rendu un peu plus doux. |
+| Bicubique | correct pour une réduction modérée (1675 -> 1200), moins bon pour une forte réduction. |
+| Lanczos | très net mais petits halos clairs autour des traits noirs. Plutôt photos. |
+| Bicubique (lisse), Bilinéaire | plus flous, sans intérêt ici. |
+| Bilinéaire (basse qualité), Plus proche voisin | à éviter (crénelage). Le plus proche voisin ne sert qu'au pixel art ou pour agrandir des icônes. |
+
+  * Contrôle : zoom 100 % autour du texte. Liseré clair autour des traits noirs avec « Adaptatif (net) » -> repasser en Fant.
+  * Largeur cible : voir « Largeur : deux chiffres » plus haut (1200 pour une couverture ou une photo, pas sous 1800 pour un schéma dense).
+* En ligne de commande (pas besoin d'ImageMagick) :
+
+```powershell
+# Couverture : redimensionner + avec perte
+uv run --no-project --with pillow python -c "from PIL import Image; Image.open('img00.png').resize((1200, 675), Image.LANCZOS).save('img00.webp', 'WEBP', quality=80, method=6)"
+
+# Capture d'écran : sans perte
+uv run --no-project --with pillow python -c "from PIL import Image; Image.open('capture.png').save('img01.webp', 'WEBP', lossless=True, quality=100, method=6)"
+```
+
+* Schémas draw.io : script `raw_assets/export_views.ps1` de l'article (exemple : `docs/09_ml_ai/009_how_attention_works/`). Un zoom = recadrage d'une vue exportée, défini dans le script.
+
+**Nommage et intégration**
+* `assets/img00.webp` = couverture, aussi utilisée pour Open Graph et la vignette de la page d'accueil (`image:` du front matter). Ne jamais publier avec le placeholder gris.
+* Images du corps : `img01.webp`, `img02.webp`... Images ajoutées après coup dans une section déjà numérotée : `img00a`, `img00b`... plutôt que de tout renuméroter.
+* Toujours `<figure>` + `alt` descriptif + `<figcaption>`, `loading="lazy"`. Image haute et étroite : réduire `max-width` (450 px par exemple).
+* Sources (PNG, `.drawio`, captures brutes) dans `raw_assets/` (ignoré par git), jamais dans `assets/`.
+
+**Pièges**
+* **Flouter** dans les captures d'écran la barre de favoris, les onglets, les comptes, avant l'export WebP.
+* Coller une image dans VS Code crée un `image.png` **à côté de l'article** et insère `![alt text](image.png)` là où se trouve le curseur. Le fichier est alors suivi par git et publié par Jekyll. Vérifier `git status` avant de committer.
 
 
 ### Liens et ancres

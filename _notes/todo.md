@@ -12,22 +12,22 @@ Idées de billets, choses à faire, choses faites.
 
 ## Idées de billets
 
+* GPG & Pass
 * Pareto et 50%-1%
 * SOS Chapitres IV et suivants
 * IA et ML - Relire les notes OneNote de préparation certification Architect IA
 * 52 nuances de physique
+* Faire un billet sur le portage de WP vers markdown
+* Mettre à jour la page : 022_compile_cpp_code_with_vscode
+* Mettre à jour la page : Knee to knee
 
 ---
 
 ## TODO
-* Ordonner les articles Rust (pas envie de faire des sous catégories)
-* Mettre à jour la page : Knee to knee
 * Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
-* Faire un billet sur le portage de WP vers markdown
-* Mettre à jour la page : 022_compile_cpp_code_with_vscode
 * Voir les histoires de balise `rel="canonical"`
 * Voir les histoires de plugins
-    * Va être chaud
+    * Ça va être chaud
     * Faut installer Ruby même si on a un plugin sous forme de gem
     * Faut l'installer avec Bundle etc.
 * SEO
@@ -43,7 +43,8 @@ Idées de billets, choses à faire, choses faites.
 ---
 
 ## DONE
-
+* ~~Voir ces histoire de Warning "Node.js 20 is deprecated" dans GitHub Actions~~ Voir le fix et les explication dans [exploitation.md](exploitation.md)
+* ~~Ordonner les articles Rust (pas envie de faire des sous catégories)~~
 * ~~Pages en anglais avec lang=en avant le Head~~
     * Voir `_layouts\default.html`. Si just the docs le modifie, récupérer la nouvelle version depuis `https://github.com/just-the-docs/just-the-docs/blob/main/_layouts/default.html`
 * ~~Mettre les liens des urls dans les billets en gras~~
