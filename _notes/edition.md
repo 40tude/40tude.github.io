@@ -150,36 +150,43 @@ Bannières à copier-coller dans un article en cours :
 
 ### Vidéo avec légende
 
+Faut utiliser le snippet `div+CTRL+TAB`
+
 ```html
-<figure style="text-align: center;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/EZfM2VMs_vI?si=FHS-1PFIqBG70Ffs&amp;start=55" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  <figcaption>I love the opening theme. It gives me goosebumps every time.</figcaption>
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/EZfM2VMs_vI?start=55"
+    title="I'm a legend"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    I love the opening theme. It gives me goosebumps every time.
+</figcaption>
 </figure>
 ```
 
-Centrer une vidéo YouTube sans légende :
-```html
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZbZSe6N_BXs?start=31" frameborder="0" allowfullscreen></iframe>
-</div>
-```
+
 
 
 ### Image avec légende
 
+Faut utiliser le snippet `fig+CTRL+TAB`
+
+
 ```html
-<div align="center">
-<img src="./assets/img_02.webp" alt="" width="450" loading="lazy"/><br/>
-<span>1986...</span>
-</div>
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00.webp"
+    alt="Describe the image here"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 ```
 
-Sur une page avec permalink :
-```html
-<div align="center">
-<img src="{%link docs/08_snowboard/assets/img_05.webp%}" alt="" width="450" loading="lazy"/>
-</div>
-```
 
 
 ### Images : format, taille, compression

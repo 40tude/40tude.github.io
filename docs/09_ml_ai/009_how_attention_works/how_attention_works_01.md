@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-23 18:05:56
+last_modified_date: 2026-11-23 21:21:15
 ---
 
 
@@ -663,3 +663,6 @@ That will be the topic of [Episode 02]({%link docs/09_ml_ai/009_how_attention_wo
 **Explanations**
 * [Gated Recurrent Units (GRU)](https://d2l.ai/chapter_recurrent-modern/gru.html){:target="_blank"}, *Dive into Deep Learning*.
 * Christopher Olah, [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/){:target="_blank"}.
+
+
+

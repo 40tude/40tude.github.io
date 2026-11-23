@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-23 18:06:15
+last_modified_date: 2026-11-23 21:21:15
 ---
 
 
@@ -114,7 +114,7 @@ Restore the links below (and in the Conclusion) when each episode is published:
 <!-- ###################################################################### -->
 ## Prologue
 
-In 2024 I went back to school. Several months of training in data science and AI, with two French professional certifications at the end of the road ([RNCP 35288](https://www.francecompetences.fr/recherche/rncp/35288/){:target="_blank"} and [RNCP 38777](https://www.francecompetences.fr/recherche/rncp/38777/){:target="_blank"}). It was fun, project oriented and intense. Every week a new topic, every day a new notebook, and every evening the feeling that I had *almost* understood.
+In 2024 I went back to school. Several months of training in data science and AI, with two French professional certifications at the end of the road ([RNCP 35288](https://www.francecompetences.fr/recherche/rncp/35288/){:target="_blank"} and [RNCP 38777](https://www.francecompetences.fr/recherche/rncp/38777/){:target="_blank"}). It was fun, projects oriented and intense. Every week a new topic, every day a new notebook, and every evening the feeling that I had *almost* understood.
 
 During the training I did what many of us do: I built a big OneNote with one page per day plus a review deck, one+ slides per topic, to keep everything in one place. One of those slides was about **attention**, the mechanism that lets a neural network translate a sentence without losing track of what it is translating. It is also the idea that, a few years later, gave birth to the Transformers and therefore to the LLMs we all use today.
 
@@ -126,7 +126,16 @@ Two years later, I opened the slide again. And... nothing. Boxes, arrows, `W1`, 
 
 So this article is my second attempt. This time I will not stop halfway. I will rebuild the slide piece by piece, asking the dumb questions out loud, until every box and every arrow makes sense. The target reader is someone like me two years ago (or today): curious, comfortable with a bit of Python, who has heard of neural networks but who gets lost as soon as the diagrams start to look like the plumbing of a submarine.
 
-To do that, I need help. You may already know them from [Why Alice and Bob are here?]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#why-alice-and-bob-are-here): **Alice** and **Bob** are back. There is a twist, though. In the Rust series, Bob was the expert. Here, neither of them is. They just came out of class with the very same slide in their hands, and they are just as lost as I was.
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/img00e.webp"
+    alt="Plumging of a submarine"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>We all live in a yellow submarine 🎶</figcaption>
+</figure>
+
+To do that, I need help. You may already know them from [Why Alice and Bob are here?]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#why-alice-and-bob-are-here){:target="_blank"}: **Alice** and **Bob** are back. There is a twist, though. In the Rust series, Bob was the expert. Here, neither of them is. They just came out of class with the very same slide in their hands, and they are just as lost as I was.
 
 From now on, I'll let them speak.
 
@@ -141,7 +150,7 @@ From now on, I'll let them speak.
 Not much, really:
 
 * **Python**: we will read a few lines of code, nothing fancy.
-* **The idea of a neural network**: layers with weights, a loss that tells how wrong we are, and weights that get adjusted to reduce that loss. If "gradient descent" does not ring a bell, start with [Understanding Gradient Descent]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}).
+* **The idea of a neural network**: layers with weights, a loss that tells how wrong we are, and weights that get adjusted to reduce that loss. If "gradient descent" does not ring a bell, start with [Understanding Gradient Descent]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}){:target="_blank"}.
 * **Matrix-vector product**: knowing that a matrix of shape `m x n` times a vector of length `n` gives a vector of length `m`. If you want a visual refresher, the [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab){:target="_blank"} series by 3Blue1Brown is perfect.
 
 Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained along the way, or linked when a good explanation already exists somewhere else.
@@ -163,7 +172,7 @@ Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained alo
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>The slide. Yes, all of it. On a single page.</figcaption>
+<figcaption>The slide on a single page. Click on it to zoom in.</figcaption>
 </figure>
 
 **Bob:** So... Did you get it?
@@ -174,7 +183,7 @@ Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained alo
 
 **Alice:** Look at this thing. `W1`, `W2`, `V`, a `+`, a `tanh`, a `softmax`, a multiplication, a sum... And these little switches, numbered 2 and 3. What are they doing in a neural network? It looks like an electrical diagram.
 
-**Bob:** She said to sleep on it tonight and look for videos on YouTube tomorrow.
+**Bob:** She said to sleep on it tonight and to look for videos on YouTube tomorrow.
 
 **Alice:** Yeah, and we'll nod again. I don't want to nod. I want to be able to explain it. To someone. Without the slide.
 
@@ -267,9 +276,9 @@ i like write some code clean in rust .
 ```
 
 {: .note }
-> Check by yourself
+> Check by yourself.
 >
-> Go to [jupyter.org](https://jupyter.org/), click `Try` then `JupyterLab`. In the Notebook, copy'n paste the code above. Press `CTRL+ENTER` (run the cell) or `SHIFT+ENTER` (run the cell and move to the next one).
+> Go to [jupyter.org](https://jupyter.org/){:target="_blank"}, click `Try` then `JupyterLab`. In the Notebook, copy'n paste the code above. Press `CTRL+ENTER` (run the cell) or `SHIFT+ENTER` (run the cell and move to the next one).
 >
 
 
@@ -387,6 +396,16 @@ print(ids)
 
 **Bob:** Because with a few tens of thousands of pieces you can rebuild almost any word, even ones you've never seen. If you want to play with it, the [OpenAI tokenizer](https://platform.openai.com/tokenizer){:target="_blank"} shows how a real model cuts your text, and the [Hugging Face course](https://huggingface.co/learn/llm-course/chapter2/4){:target="_blank"} explains the different strategies.
 
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00f.webp"
+    alt="Playing with OpenAI tokeniser"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Playing with OpenAI tokeniser</figcaption>
+</figure>
+
 **Alice:** Okay. So for us, today: lowercase everything, so that "Rust" and "rust" are the same token, split `j'` off, punctuation is a token. Good enough.
 
 **Bob:** Good enough. And what about `<start>` and `<end>`?
@@ -474,7 +493,7 @@ print(ids)
 
 **Alice:** And what does the box *do* with that matrix?
 
-**Bob:** Nothing fancy. It's a **lookup**. You give it `33`, it gives you back row `33`. You give it the 11 indices of our sentence, it gives you back 11 rows. Look:
+**Bob:** Nothing fancy. It's a **lookup**. You give it `33`, it gives you back row number `33`. You give it the 11 indices of our sentence, it gives you back 11 rows. Look:
 
 ```python
 import numpy as np
@@ -504,6 +523,15 @@ print(X.shape)
 **Alice:** `(11, 4)`. So `seq_len x emb_dim`. *(checks the slide)* Yes! It's written right above the box: `seq_len x emb_dim`, with the little grid. We still have 11 tokens, in the same order, but each one is now a row of `emb_dim` numbers instead of one integer.
 
 **Bob:** Told you, rule 4 works. One box at a time.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00g.webp"
+    alt="We have seq_len tokens, in the same order and each one is now a row of `emb_dim` numbers."
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>We have seq_len tokens, in the same order and each one is now a row of `emb_dim` numbers.</figcaption>
+</figure>
 
 **Alice:** Don't celebrate yet. Something bugs me. You say “lookup”, but this is a neural network. Networks multiply matrices, they don't look things up in tables.
 
