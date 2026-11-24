@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-23 21:21:15
+last_modified_date: 2026-11-24 11:05:53
 ---
 
 
@@ -113,7 +113,7 @@ They chose a sentence harder than the one on the slide, "J'aime écrire du code 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
-    src="./assets/img00a.webp"
+    src="./assets/img03.webp"
     alt="The original slide from the class: an encoder, a decoder with an attention layer, W1, W2, V, tanh, softmax, switches and two embeddings"
     style="width: 100%; height: auto;"
     loading="lazy"
@@ -238,7 +238,7 @@ True
 
 <figure style="max-width: 500px; margin: auto; text-align: center;">
 <img
-    src="./assets/img01.webp"
+    src="./assets/img13.webp"
     alt="The encoder: the 11 token indices go through the Embedding (vocab_size x emb_dim), giving a seq_len x emb_dim matrix, then through the GRU with n_units, which produces output (seq_len x n_units) and state (n_units)"
     style="width: 100%; height: auto;"
     loading="lazy"
@@ -334,10 +334,10 @@ True
 <!--
 ######################################################################
 TODO: CHECK THE OUTPUT SOFTMAX
-The original slide (img00a) shows no softmax box after "fc Dense", only "pred (x)" with vocab_size.
+The original slide (img03) shows no softmax box after "fc Dense", only "pred (x)" with vocab_size.
 The text below assumes the output softmax is implied by "pred". The author no longer remembers
 what was intended on the slide. Our own diagram (attention.drawio) labels it "pred (probabilities)".
-Options: keep as is / redraw a softmax box in img03..img05 / reword Bob's answer.
+Options: keep as is / redraw a softmax box in img15..img17 / reword Bob's answer.
 See raw_assets/TODO.md.
 ######################################################################
 -->

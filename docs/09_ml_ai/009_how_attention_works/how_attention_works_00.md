@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-23 21:21:15
+last_modified_date: 2026-11-24 11:05:53
 ---
 
 
@@ -46,9 +46,9 @@ Restore the links below (and in the Conclusion) when each episode is published:
 -->
 
 {: .note }
-> This post is a series in **4 episodes**. Alice and Bob need two evenings to rebuild the slide, one box at a time.
+> This post is a series in **4 episodes**. Alice and Bob need two evenings to rebuild a complex diagram, "one box at a time".
 >
-> * [Episode 00]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}) **(you are here)**: Day 1. Leaving class with the slide. Why word-by-word translation fails, from words to tokens, from tokens to vectors.
+> * [Episode 00]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}) **(you are here)**: Day 1. Leaving class with the printed slide. Why word-by-word translation fails, from words to tokens, from tokens to vectors.
 > * Episode 01 *(coming soon)*: Day 1, later that evening. Reading in order with a GRU, encoder and decoder, the bottleneck, and the idea of attention.
 > * Episode 02 *(coming soon)*: Day 2. The attention layer step by step: scores, softmax, context vector, one iteration of the decoder.
 > * Episode 03 *(coming soon)*: Day 2, later that evening. Training with teacher forcing, inference, what we simplified, and a peek at Transformers.
@@ -75,11 +75,11 @@ Restore the links below (and in the Conclusion) when each episode is published:
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img00.webp"
-    alt="TODO: Add a description"
+    alt="Alice and Bob, puzzled, in front of a laptop, a printed copy of the attention slide in Alice's hand and a large version pinned on the blackboard"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>One slide, two students, zero idea. Yet.</figcaption>
 </figure>
 
 
@@ -116,26 +116,36 @@ Restore the links below (and in the Conclusion) when each episode is published:
 
 In 2024 I went back to school. Several months of training in data science and AI, with two French professional certifications at the end of the road ([RNCP 35288](https://www.francecompetences.fr/recherche/rncp/35288/){:target="_blank"} and [RNCP 38777](https://www.francecompetences.fr/recherche/rncp/38777/){:target="_blank"}). It was fun, projects oriented and intense. Every week a new topic, every day a new notebook, and every evening the feeling that I had *almost* understood.
 
-During the training I did what many of us do: I built a big OneNote with one page per day plus a review deck, one+ slides per topic, to keep everything in one place. One of those slides was about **attention**, the mechanism that lets a neural network translate a sentence without losing track of what it is translating. It is also the idea that, a few years later, gave birth to the Transformers and therefore to the LLMs we all use today.
+
+During the training I did what many of us do: I built a big OneNote with one page per day plus a review deck with one or more slides per topic, to keep everything in one place. One of those slides was about **attention**, the mechanism that lets a neural network translate a sentence without losing track of what it is translating. It is also the idea that, a few years later, gave birth to the Transformers and therefore to the LLMs we all use today.
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/img01.webp"
+    alt="A OneNote page from the training, about recurrent neural networks: a crossed-out TODO list, an LSTM cell diagram with its gates, notes comparing LSTM and GRU, and a whiteboard photo at the bottom"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>One page of my OneNote, the day we studied recurrent neural networks (here, the LSTM).</figcaption>
+</figure>
 
 <!-- On that topic, I remember the teacher saying something like: "Watch this YouTube video, it explains it better than I do." I watched it. I nodded. I drew the slide. I moved on. -->
 
-On that topic, I remember spending quite some time designing a slide with my own explanations, and testing it on other students. There was a lot of back and forth. In the end, I had the opportunity to present it to one of our teachers, who advised me to give the same explanations again, but in a YouTube video. Well, you know how it goes... Too many things to do, no time... Priorities change, and in the end I never recorded the video.
+On that topic, I remember spending quite some time designing the slide with my own explanations, and testing it on other students. There was a lot of back and forth. In the end, I had the opportunity to present it to one of our teachers, who advised me to give the same explanations again, but in a YouTube video. Well, you know how it goes... Too many things to do, no time... Priorities change, and in the end I never recorded the video.
 
-Two years later, I opened the slide again. And... nothing. Boxes, arrows, `W1`, `W2`, `V`, `tanh`, `softmax`, a few switches, two embeddings (a blue one and a red one) and absolutely no idea of what was going on. I had forgotten everything. Worse: I was not even sure I had understood it in the first place.
+Two years later, I opened the slide again. And… nothing. Boxes, arrows, `W1`, `W2`, `V`, `tanh`, `softmax`, a few switches, two embeddings (a blue one and a red one) and absolutely no idea of what was going on. I had forgotten everything. Worse: I was not even sure I had understood it in the first place.
 
 So this article is my second attempt. This time I will not stop halfway. I will rebuild the slide piece by piece, asking the dumb questions out loud, until every box and every arrow makes sense. The target reader is someone like me two years ago (or today): curious, comfortable with a bit of Python, who has heard of neural networks but who gets lost as soon as the diagrams start to look like the plumbing of a submarine.
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
-<img src="./assets/img00e.webp"
-    alt="Plumging of a submarine"
+<img src="./assets/img02.webp"
+    alt="The engine room of a ship: pipes, valves and gauges in every direction"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>We all live in a yellow submarine 🎶</figcaption>
 </figure>
 
-To do that, I need help. You may already know them from [Why Alice and Bob are here?]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#why-alice-and-bob-are-here){:target="_blank"}: **Alice** and **Bob** are back. There is a twist, though. In the Rust series, Bob was the expert. Here, neither of them is. They just came out of class with the very same slide in their hands, and they are just as lost as I was.
+To do that, I need help. You may already know them from [Why Alice and Bob are here?]({%link docs/06_programmation/rust/016_errors/errors_00.md%}#why-alice-and-bob-are-here){:target="_blank"}: **Alice** and **Bob** are back. There is a twist, though. In the [Rust series]({%link docs/06_programmation/rust/index.md%}){:target="_blank"}, Bob was the expert. Here, neither of them is. They just came out of class with the very same slide in their hands, and they are just as lost as I was.
 
 From now on, I'll let them speak.
 
@@ -167,12 +177,12 @@ Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained alo
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
-    src="./assets/img00a.webp"
+    src="./assets/img03.webp"
     alt="The original slide from the class: an encoder, a decoder with an attention layer, W1, W2, V, tanh, softmax, switches and two embeddings"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>The slide on a single page. Click on it to zoom in.</figcaption>
+<figcaption>The diagram we will rebuild, one box at a time. Click on it to zoom in.</figcaption>
 </figure>
 
 **Bob:** So... Did you get it?
@@ -183,7 +193,7 @@ Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained alo
 
 **Alice:** Look at this thing. `W1`, `W2`, `V`, a `+`, a `tanh`, a `softmax`, a multiplication, a sum... And these little switches, numbered 2 and 3. What are they doing in a neural network? It looks like an electrical diagram.
 
-**Bob:** She said to sleep on it tonight and to look for videos on YouTube tomorrow.
+**Bob:** She said to sleep on it tonight and to look for videos on YouTube tomorrow morning.
 
 **Alice:** Yeah, and we'll nod again. I don't want to nod. I want to be able to explain it. To someone. Without the slide.
 
@@ -209,11 +219,11 @@ Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained alo
 2. **"Explain it differently"** is always allowed. Jargon is a red flag, not a proof of intelligence.
 3. **When we're stuck, we go back to the sources** (articles, docs, videos), then we try again.
 
-**Bob:** I'd add a fourth one: we rebuild the slide piece by piece. Not the whole thing at once. One box at a time, and we only move on when we can redraw the box ourselves.
+**Bob:** I'd add a fourth one: **4. one box at a time**. We should rebuild the slide piece by piece. Not the whole thing at once, and we only move on when we can redraw the box ourselves.
 
-**Alice:** Deal. And I'll keep asking "what size is that thing?" every time a matrix shows up. Half of my confusion comes from not knowing what goes through the arrows.
+**Alice:** Deal. And I'll keep asking "*what size is that thing?*" every time a matrix shows up. Half of my confusion comes from not knowing what goes through the arrows.
 
-**Bob:** And I'll keep asking "what would that look like in code?". Between the two of us, we might end up with something.
+**Bob:** And I'll keep asking "*what would that look like in code?*". Between the two of us, we might end up with something.
 
 **Alice:** When?
 
@@ -283,7 +293,7 @@ i like write some code clean in rust .
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img src="./assets/img00b.webp"
+<img src="./assets/img04.webp"
     alt="JupyterLab running in the browser on jupyter.org: a notebook cell with the word-by-word dictionary translator and its output, i like write some code clean in rust ."
     style="width: 100%; height: auto;"
     loading="lazy"
@@ -398,12 +408,12 @@ print(ids)
 
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img src="./assets/img00f.webp"
-    alt="Playing with OpenAI tokeniser"
+<img src="./assets/img05.webp"
+    alt="The OpenAI tokenizer web page with the sentence J'aime écrire du code propre en Rust: 8 tokens, 36 characters, and the list of token IDs"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>Playing with OpenAI tokeniser</figcaption>
+<figcaption>Our sentence in the OpenAI tokenizer: 8 tokens, and much bigger lockers than ours (the vocabulary has about 200,000 entries).</figcaption>
 </figure>
 
 **Alice:** Okay. So for us, today: lowercase everything, so that "Rust" and "rust" are the same token, split `j'` off, punctuation is a token. Good enough.
@@ -422,6 +432,16 @@ print(ids)
 
 **Bob:** No, a second one. One vocabulary for French, one for English. Look at the red side of the slide: `0`, `9`, `7`, `58` for `<start> I love Rust`. So `i` is in locker `9`, `love` in `7`, `rust` in `58`. For our sentence I'll put `like` in `14`, and so on. And here's the trap: `rust` is `42` in French but `58` in English. And `5` in the English vocabulary could be anything. Same number, different lockers in a different building.
 
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img06.webp"
+    alt="Zoom on the bottom right of the slide, the red side: the English sentence start I love Rust and its column of indices 0, 9, 7, 58, next to switch number 3"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Zoom on the red side of the slide: the English sentence and its own indices (0, 9, 7, 58).</figcaption>
+</figure>
+
 **Alice:** Okay. Now my question. *(taps the slide)* What size is that thing?
 
 **Bob:** Which thing?
@@ -434,11 +454,25 @@ print(ids)
 
 **Bob:** Yes. *(checks the slide)* Look, there's a blue label `seq_len` right next to the column. And the other label, on the side of the first box: `vocab_size`.
 
+**Alice:** Wait. Whoever made this slide left us notes everywhere. Sizes on every arrow, names on every box. It's like Harry's old potions book in *Harry Potter and the Half-Blood Prince*: a second-hand book, full of notes in the margins written by a mysterious former student.
+
+**Bob:** And those notes made Harry the best in the class. I'll take it. From now on, every time we're stuck, we look for the Prince's notes first.
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img07.webp"
+    alt="An old copy of Advanced Potion-Making, open on a dark wooden table, its pages covered with handwritten notes, corrections and sketches"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>A second-hand book, full of notes from its previous owner. Sounds familiar?</figcaption>
+</figure>
+
+
 *Alice redraws the bottom of the blue part on a sheet of paper, with their sentence instead of "J'aime Rust".*
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img
-    src="./assets/img00c.webp"
+    src="./assets/img08.webp"
     alt="Zoom on the bottom of the encoder: the 11 token indices of the French sentence, from start (0) to end (1), labeled seq_len, go up into the Embedding box, labeled vocab_size on its side and emb_dim on its top"
     style="width: 100%; height: auto;"
     loading="lazy"
@@ -512,7 +546,7 @@ print(X.shape)
 ```
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img src="./assets/img00d.webp"
+<img src="./assets/img09.webp"
     alt="JupyterLab running in the browser on jupyter.org: one notebook cell builds the French vocabulary and prints the 11 token indices, the next cell does the embedding lookup and prints the shape (11, 4)"
     style="width: 100%; height: auto;"
     loading="lazy"
@@ -525,12 +559,12 @@ print(X.shape)
 **Bob:** Told you, rule 4 works. One box at a time.
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
-<img src="./assets/img00g.webp"
-    alt="We have seq_len tokens, in the same order and each one is now a row of `emb_dim` numbers."
+<img src="./assets/img10.webp"
+    alt="Bottom of the encoder with our sentence: the 11 token indices go into the Embedding box, and a seq_len x emb_dim grid comes out on top"
     style="width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>We have seq_len tokens, in the same order and each one is now a row of `emb_dim` numbers.</figcaption>
+<figcaption>Still seq_len tokens, in the same order, but each one is now a row of emb_dim numbers.</figcaption>
 </figure>
 
 **Alice:** Don't celebrate yet. Something bugs me. You say “lookup”, but this is a neural network. Networks multiply matrices, they don't look things up in tables.
@@ -573,7 +607,16 @@ So the lookup *is* a matrix product. A very lazy one. And the sizes match: `voca
 
 **Bob:** And what does the $$2^n$$ mean in the legend, next to `emb_dim`?
 
-**Alice:** I'd say it's just a habit: people pick powers of 2, like 64, 128, 256. Computers like them. Nothing magic.
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img11.webp"
+    alt="Zoom on the bottom left of the original slide: the legend, in French, with a red circle around the (2^n) next to emb_dim"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The legend of the original slide (in French), and the mysterious (2^n) next to emb_dim.</figcaption>
+</figure>
+
+**Alice:** I'd say it's just a habit: people pick powers of 2, like 64, 128, 256. Processors like to manipulate blocks of memory whose size is a power of 2. Remember, computer hardware operates entirely in binary (base-2), making powers of 2 the most natural, fast, and cost-effective way to address and route data. Nothing magic.
 
 **Bob:** Last thing. There are two `Embedding` boxes on the slide. A blue one in the encoder, a red one in the decoder.
 
@@ -596,6 +639,16 @@ So the lookup *is* a matrix product. A very lazy one. And the sizes match: `voca
 **Bob:** So we still need something that reads the rows **in order**, and remembers what it has read. *(points at the slide)* The `GRU`.
 
 **Alice:** The box with the tiny unreadable drawing inside. Great.
+
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img12.webp"
+    alt="Zoom on the GRU box of the original slide: a tiny diagram of the cell with its update and reset gates, labeled n_units"
+    style="width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Zoom on the GRU box of the slide. Unreadable, as promised. That's for Episode 01.</figcaption>
+</figure>
 
 
 
