@@ -6,7 +6,7 @@ lang: en-US
 layout: default
 title: "How Attention Works - 02"
 description: "Two lost students, one cryptic slide, and the Feynman method: let's rebuild attention, one box at a time."
-image: docs/09_ml_ai/009_how_attention_works/assets/img00.webp
+image: docs/09_ml_ai/009_how_attention_works/assets/img00_02.webp
 twitter:
   card: summary_large_image
 parent: "ML & AI"
@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-24 11:23:35
+last_modified_date: 2026-11-24 12:13:54
 ---
 
 
@@ -64,7 +64,7 @@ last_modified_date: 2026-11-24 11:23:35
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
-    src="./assets/img00.webp"
+    src="./assets/img00_02.webp"
     alt="TODO: Add a description"
     style="max-width: 100%; height: auto;"
     loading="lazy"

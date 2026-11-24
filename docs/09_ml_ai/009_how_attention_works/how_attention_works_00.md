@@ -6,7 +6,7 @@ lang: en-US
 layout: default
 title: "How Attention Works - 00"
 description: "Two lost students, one cryptic slide, and the Feynman method: let's rebuild attention, one box at a time."
-image: docs/09_ml_ai/009_how_attention_works/assets/img00.webp
+image: docs/09_ml_ai/009_how_attention_works/assets/img00_00.webp
 twitter:
   card: summary_large_image
 parent: "ML & AI"
@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-24 11:23:35
+last_modified_date: 2026-11-24 12:13:54
 ---
 
 
@@ -74,7 +74,7 @@ Restore the links below (and in the Conclusion) when each episode is published:
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
-    src="./assets/img00.webp"
+    src="./assets/img00_00.webp"
     alt="Alice and Bob, puzzled, in front of a laptop, a printed copy of the attention slide in Alice's hand and a large version pinned on the blackboard"
     style="max-width: 100%; height: auto;"
     loading="lazy"

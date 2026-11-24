@@ -264,8 +264,8 @@ Au-delà de 90, le poids grimpe vite pour un gain invisible (capture ci-dessus :
 * En ligne de commande (pas besoin d'ImageMagick) :
 
 ```powershell
-# Couverture : redimensionner + avec perte
-uv run --no-project --with pillow python -c "from PIL import Image; Image.open('img00.png').resize((1200, 675), Image.LANCZOS).save('img00.webp', 'WEBP', quality=80, method=6)"
+# Couverture : mise à l'échelle + recadrage centré en 1200x675 (pas de déformation si la source n'est pas en 16:9), avec perte
+uv run --no-project --with pillow python -c "from PIL import Image, ImageOps; ImageOps.fit(Image.open('img00.jpg').convert('RGB'), (1200, 675), Image.LANCZOS).save('img00.webp', 'WEBP', quality=80, method=6)"
 
 # Capture d'écran : sans perte
 uv run --no-project --with pillow python -c "from PIL import Image; Image.open('capture.png').save('img01.webp', 'WEBP', lossless=True, quality=100, method=6)"
@@ -275,7 +275,8 @@ uv run --no-project --with pillow python -c "from PIL import Image; Image.open('
 
 **Nommage et intégration**
 * `assets/img00.webp` = couverture, aussi utilisée pour Open Graph et la vignette de la page d'accueil (`image:` du front matter). Ne jamais publier avec le placeholder gris.
-* Images du corps : `img01.webp`, `img02.webp`... Images ajoutées après coup dans une section déjà numérotée : `img00a`, `img00b`... plutôt que de tout renuméroter.
+* Série en plusieurs épisodes dans un même dossier : un hero par épisode, `img00_00`, `img00_01`... (badge « Épisode N/M »). Images du corps : numérotation unique pour toute la série, qui continue d'un épisode à l'autre.
+* Images du corps : `img01`, `img02`... dans l'ordre de lecture. Une ou deux images ajoutées après coup : suffixe lettre (`img04a`) toléré. Au-delà, renuméroter avant publication (une fois publié, ne plus renommer : liens externes, cache).
 * Toujours `<figure>` + `alt` descriptif + `<figcaption>`, `loading="lazy"`. Image haute et étroite : réduire `max-width` (450 px par exemple).
 * Sources (PNG, `.drawio`, captures brutes) dans `raw_assets/` (ignoré par git), jamais dans `assets/`.
 
