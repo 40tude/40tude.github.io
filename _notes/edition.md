@@ -180,12 +180,18 @@ Faut utiliser le snippet `fig+CTRL+TAB`
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img00.webp"
     alt="Describe the image here"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>I'm a legend</figcaption>
 </figure>
 ```
+
+**`max-width: 100%` et pas `width: 100%` sur `<img>`** (depuis nov. 2026)
+* `max-width: 900px` sur `<figure>` limite le *cadre*, pas l'image. Avec `width: 100%`, l'image remplit toujours le cadre : une image de 510 px est étirée à ~800 px et devient floue.
+* Avec `max-width: 100%`, l'image garde sa taille native (1 pixel de l'image = 1 px CSS), centrée, et ne rétrécit que si le cadre est plus étroit (mobile, ou image plus large que 900 px).
+* Conséquence : une petite image (zoom, crop) s'affiche petite. Pour qu'elle s'affiche plus grand, il faut une image plus grande (réexport), pas du CSS.
+* Les articles antérieurs à nov. 2026 utilisent encore `width: 100%` (non migrés).
 
 
 

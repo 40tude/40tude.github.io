@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-24 11:05:53
+last_modified_date: 2026-11-24 11:23:35
 ---
 
 
@@ -76,7 +76,7 @@ Restore the links below (and in the Conclusion) when each episode is published:
 <img
     src="./assets/img00.webp"
     alt="Alice and Bob, puzzled, in front of a laptop, a printed copy of the attention slide in Alice's hand and a large version pinned on the blackboard"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>One slide, two students, zero idea. Yet.</figcaption>
@@ -122,7 +122,7 @@ During the training I did what many of us do: I built a big OneNote with one pag
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img src="./assets/img01.webp"
     alt="A OneNote page from the training, about recurrent neural networks: a crossed-out TODO list, an LSTM cell diagram with its gates, notes comparing LSTM and GRU, and a whiteboard photo at the bottom"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>One page of my OneNote, the day we studied recurrent neural networks (here, the LSTM).</figcaption>
@@ -139,7 +139,7 @@ So this article is my second attempt. This time I will not stop halfway. I will 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img src="./assets/img02.webp"
     alt="The engine room of a ship: pipes, valves and gauges in every direction"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>We all live in a yellow submarine 🎶</figcaption>
@@ -179,7 +179,7 @@ Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained alo
 <img
     src="./assets/img03.webp"
     alt="The original slide from the class: an encoder, a decoder with an attention layer, W1, W2, V, tanh, softmax, switches and two embeddings"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>The diagram we will rebuild, one box at a time. Click on it to zoom in.</figcaption>
@@ -295,7 +295,7 @@ i like write some code clean in rust .
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img04.webp"
     alt="JupyterLab running in the browser on jupyter.org: a notebook cell with the word-by-word dictionary translator and its output, i like write some code clean in rust ."
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Bob's word-by-word translator in JupyterLab, straight from the browser. Nothing to install, and the same wrong translation.</figcaption>
@@ -410,7 +410,7 @@ print(ids)
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img05.webp"
     alt="The OpenAI tokenizer web page with the sentence J'aime écrire du code propre en Rust: 8 tokens, 36 characters, and the list of token IDs"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Our sentence in the OpenAI tokenizer: 8 tokens, and much bigger lockers than ours (the vocabulary has about 200,000 entries).</figcaption>
@@ -436,7 +436,7 @@ print(ids)
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img06.webp"
     alt="Zoom on the bottom right of the slide, the red side: the English sentence start I love Rust and its column of indices 0, 9, 7, 58, next to switch number 3"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Zoom on the red side of the slide: the English sentence and its own indices (0, 9, 7, 58).</figcaption>
@@ -461,7 +461,7 @@ print(ids)
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img07.webp"
     alt="An old copy of Advanced Potion-Making, open on a dark wooden table, its pages covered with handwritten notes, corrections and sketches"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>A second-hand book, full of notes from its previous owner. Sounds familiar?</figcaption>
@@ -474,7 +474,7 @@ print(ids)
 <img
     src="./assets/img08.webp"
     alt="Zoom on the bottom of the encoder: the 11 token indices of the French sentence, from start (0) to end (1), labeled seq_len, go up into the Embedding box, labeled vocab_size on its side and emb_dim on its top"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Zoom on the bottom of the blue part, with our sentence: 11 token indices (seq_len) go into the Embedding (vocab_size, emb_dim).</figcaption>
@@ -548,7 +548,7 @@ print(X.shape)
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img09.webp"
     alt="JupyterLab running in the browser on jupyter.org: one notebook cell builds the French vocabulary and prints the 11 token indices, the next cell does the embedding lookup and prints the shape (11, 4)"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Bob's third Python script, right after the vocabulary: the embedding turns the 11 indices into an (11, 4) matrix, that is seq_len x emb_dim.</figcaption>
@@ -561,7 +561,7 @@ print(X.shape)
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img10.webp"
     alt="Bottom of the encoder with our sentence: the 11 token indices go into the Embedding box, and a seq_len x emb_dim grid comes out on top"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Still seq_len tokens, in the same order, but each one is now a row of emb_dim numbers.</figcaption>
@@ -610,7 +610,7 @@ So the lookup *is* a matrix product. A very lazy one. And the sizes match: `voca
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img11.webp"
     alt="Zoom on the bottom left of the original slide: the legend, in French, with a red circle around the (2^n) next to emb_dim"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>The legend of the original slide (in French), and the mysterious (2^n) next to emb_dim.</figcaption>
@@ -644,7 +644,7 @@ So the lookup *is* a matrix product. A very lazy one. And the sizes match: `voca
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img12.webp"
     alt="Zoom on the GRU box of the original slide: a tiny diagram of the cell with its update and reset gates, labeled n_units"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>Zoom on the GRU box of the slide. Unreadable, as promised. That's for Episode 01.</figcaption>

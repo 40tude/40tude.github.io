@@ -14,7 +14,7 @@ parent: "TODO: Add category"
 math: mathjax
 date:               2026-04-10 15:00:00
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-24 11:05:52
+last_modified_date: 2026-11-24 11:23:35
 ---
 
 
@@ -51,7 +51,7 @@ last_modified_date: 2026-11-24 11:05:52
 <img
     src="./assets/img00.webp"
     alt="TODO: Add a description"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>TODO: Add a legend</figcaption>

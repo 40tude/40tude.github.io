@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-24 11:05:53
+last_modified_date: 2026-11-24 11:23:35
 ---
 
 
@@ -69,7 +69,7 @@ last_modified_date: 2026-11-24 11:05:53
 <img
     src="./assets/img00.webp"
     alt="TODO: Add a description"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>TODO: Add a legend</figcaption>
@@ -115,7 +115,7 @@ They chose a sentence harder than the one on the slide, "J'aime écrire du code 
 <img
     src="./assets/img03.webp"
     alt="The original slide from the class: an encoder, a decoder with an attention layer, W1, W2, V, tanh, softmax, switches and two embeddings"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>The slide, still on the table.</figcaption>
@@ -240,7 +240,7 @@ True
 <img
     src="./assets/img13.webp"
     alt="The encoder: the 11 token indices go through the Embedding (vocab_size x emb_dim), giving a seq_len x emb_dim matrix, then through the GRU with n_units, which produces output (seq_len x n_units) and state (n_units)"
-    style="width: 100%; height: auto;"
+    style="max-width: 100%; height: auto;"
     loading="lazy"
 />
 <figcaption>The blue part of the slide, redrawn by Alice with our sentence.</figcaption>
