@@ -42,7 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
     lightboxImages.forEach(image => {
         image.addEventListener("click", function () {
             var lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.setAttribute('src', this.getAttribute('src'));
+            // Show the full-size image when the page provides one (data-full): on the home page,
+            // src is a 300 px thumbnail (see tools/thumbnails/) and data-full the original image.
+            lightboxImg.setAttribute('src', this.getAttribute('data-full') || this.getAttribute('src'));
             lightboxImg.setAttribute('alt', this.getAttribute('alt') || '');
             lightbox.style.display = 'flex';
         });
