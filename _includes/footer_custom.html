@@ -12,4 +12,11 @@
 
 <!-- lightbox -->
 <!-- <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/lightbox.css"> -->
-<script type="text/javascript" src="{{ site.baseurl }}/assets/js/lightbox.js"></script>
+{% comment %}
+  defer (added 2026-11-25, perf point 3.2): the browser downloads lightbox.js in parallel and
+  runs it only once the whole HTML has been parsed, instead of pausing the parsing of the page
+  right here to fetch and run it. Safe because lightbox.js only does its work in a
+  "DOMContentLoaded" listener, and deferred scripts always run just BEFORE that event fires:
+  the listener is registered in time and the lightbox behaves exactly as before.
+{% endcomment %}
+<script type="text/javascript" src="{{ site.baseurl }}/assets/js/lightbox.js" defer></script>
