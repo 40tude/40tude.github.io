@@ -23,6 +23,12 @@ Idées de billets, choses à faire, choses faites.
 
 ---
 
+## MAINTENANCE & BUGS
+* 07_moto/500_stage_de_radigues… : le champ image: utilise des \ au lieu de /, donc l'image de l'accueil est cassée.
+* 06_programmation/rust/020_some : image: pointe vers assets/assets/image_name.webp, qui n'existe pas.
+* 03_maths/010_onde_stationaire… : la première image est une URL externe, et l'accueil la transforme en chemin local cassé.
+
+
 ## TODO
 * Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
 * Voir les histoires de balise `rel="canonical"`
