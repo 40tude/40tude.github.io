@@ -262,7 +262,7 @@ function renderChart(m, runs) {
   for (let k = 0; k <= 4; k++) {
     const v = (yMax * k) / 4, yy = y(v);
     svg += '<line x1="' + PAD.l + '" x2="' + (W - PAD.r) + '" y1="' + yy + '" y2="' + yy + '" stroke="var(--grid)" stroke-width="1"/>';
-    const lab = m.scale ? (v / m.scale).toFixed(1) : Math.round(v).toLocaleString('fr-FR');
+    const lab = m.scale ? String(Math.round((v / m.scale) * 100) / 100) : Math.round(v).toLocaleString('fr-FR');
     svg += '<text x="' + (PAD.l - 8) + '" y="' + (yy + 4) + '" text-anchor="end">' + lab + '</text>';
   }
   // X labels: thin out to about 8 ticks
