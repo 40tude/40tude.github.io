@@ -25,6 +25,7 @@ Aide-mémoire pour écrire les articles : Markdown, kramdown, Liquid, équations
   - [Template d'article](#template-darticle)
   - [Vignettes de la page d'accueil](#vignettes-de-la-page-daccueil)
   - [Styles et icônes du site](#styles-et-icônes-du-site)
+  - [En cas de mise à jour de Just the Docs](#en-cas-de-mise-à-jour-de-just-the-docs)
   - [Liquid](#liquid)
 - [NoteBook Python](#notebook-python)
 
@@ -678,6 +679,125 @@ Réglages (300 px, qualité 75) en haut de `make-thumbnails.mjs`. Détails : `to
 * **Icônes du bas de la barre latérale** (GitHub, LinkedIn, YouTube, RSS) : SVG écrits directement dans `_includes/nav_footer_custom.html` (icônes Simple Icons, domaine public). Plus de Font Awesome : il chargeait un CSS et une police depuis cdnjs (deux requêtes bloquantes) pour 4 icônes.
 * Ajouter une icône : copier un `<li>` existant, prendre le `path` SVG de l'icône sur <https://simpleicons.org/>, garder `fill="currentColor"` (la couleur suit le texte ou le `style` du lien).
 * Le CSS et les icônes des slides (`docs/.../slides/`) sont à part et n'ont pas changé.
+
+### En cas de mise à jour de Just the Docs
+
+Le thème est **figé** dans le `Gemfile` (`gem "just-the-docs", "0.12.0"`) : il ne change jamais tout seul. C'est voulu, car le site remplace deux fichiers du thème par des copies modifiées. Une montée de version automatique mélangerait ces vieilles copies avec un thème plus récent, avec des bugs silencieux (recherche cassée, langue des pages fausse...).
+
+Dependabot (`.github/dependabot.yml`, `bundler`) peut ouvrir une PR de mise à jour du thème : **ne pas la fusionner telle quelle**, suivre la procédure ci-dessous (sur la branche de la PR ou sur une branche à soi).
+
+#### Étape 1 : quelle version utilise le site ?
+
+```powershell
+# From the repository root
+Select-String -Path Gemfile, Gemfile.lock -Pattern 'just-the-docs'
+```
+
+Les deux doivent afficher la même version (aujourd'hui `0.12.0`).
+
+#### Étape 2 : quelle est la dernière version ?
+
+```powershell
+# Latest version published on RubyGems
+(Invoke-RestMethod https://rubygems.org/api/v1/versions/just-the-docs/latest.json).version
+```
+
+Ou à la main : <https://rubygems.org/gems/just-the-docs> et le CHANGELOG <https://github.com/just-the-docs/just-the-docs/blob/main/CHANGELOG.md>.
+
+Même version : rien à faire, s'arrêter là. Sinon, lire le CHANGELOG : chercher « breaking », et ce qui touche la recherche (`search`), `default.html`, les includes `*_custom.html`, `custom.scss`.
+
+#### Étape 3 : monter la version sur une branche
+
+```powershell
+git switch master
+git pull
+git switch -c theme/just-the-docs-0.13.0      # adapt the version number
+
+# Edit the Gemfile: gem "just-the-docs", "0.13.0"
+bundle update just-the-docs                   # updates Gemfile.lock
+Select-String -Path Gemfile.lock -Pattern 'just-the-docs'   # check
+```
+
+#### Étape 4 : reporter les fichiers modifiés du thème
+
+Le site a **deux vraies surcharges** (fichiers du thème copiés puis modifiés). Il faut repartir de la nouvelle version du thème et y remettre nos modifications.
+
+Où trouver les fichiers de la nouvelle version :
+
+```powershell
+# Folder of the installed gem (after bundle update)
+bundle info just-the-docs --path
+```
+
+1. **`assets/js/just-the-docs.js`** (recherche différée, perf point 1)
+    * Copier le nouveau `assets/js/just-the-docs.js` de la gem par-dessus le nôtre, puis remettre les blocs marqués `40tude` (chercher `40tude` dans l'ancienne version : `git show master:assets/js/just-the-docs.js | Select-String 40tude`).
+    * Il y a 3 endroits : le commentaire d'en-tête, la ligne qui relance la recherche après chargement de l'index (`searchLoaded`), et le bloc « lazy search » qui remplace l'appel direct à `initSearch()`.
+    * Si la nouvelle version charge déjà la recherche à la demande (à vérifier dans le CHANGELOG), supprimer notre copie : `git rm assets/js/just-the-docs.js`.
+2. **`_layouts/default.html`** (langue de la page : `page.lang` avant `site.lang`)
+    * Copier le nouveau `_layouts/default.html` de la gem par-dessus le nôtre, puis remettre la ligne :
+
+```html
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+```
+
+Les autres fichiers ne sont **pas** des copies : ce sont des points d'accroche prévus par le thème, vides à l'origine. Il suffit de vérifier dans le CHANGELOG qu'ils existent toujours :
+
+| Fichier | Rôle |
+|---|---|
+| `_includes/head_custom.html` | ajouts dans `<head>` (sitemap, Google Analytics...) |
+| `_includes/header_custom.html` | haut de page |
+| `_includes/footer_custom.html` | bas de page, chargement de `lightbox.js` |
+| `_includes/nav_footer_custom.html` | icônes SVG en bas de la barre latérale |
+| `_sass/custom/custom.scss` | styles maison, ajoutés à la fin du CSS du thème |
+
+`_includes/mathjax.html`, `_includes/reading-time.html` et `_layouts/mathjax.html` sont à nous, le thème ne les a pas.
+
+Pour lister les surcharges si un doute (un fichier du dépôt qui existe aussi dans la gem) :
+
+```powershell
+$gem = bundle info just-the-docs --path
+git ls-files _includes _layouts _sass assets | Where-Object { Test-Path (Join-Path $gem $_) }
+```
+
+#### Étape 5 : vérifier en local
+
+```powershell
+bundle exec jekyll serve      # http://localhost:4000
+```
+
+* La recherche : cliquer dans la barre, taper un mot, des résultats apparaissent (après une petite seconde la première fois).
+* Une page `lang: fr` : F12 > Elements, `<html lang="fr">`.
+* Les icônes en bas de la barre latérale, les liens en semi-gras, une image qui s'ouvre en grand (lightbox), la page d'accueil avec ses vignettes, une page avec des équations.
+* Mode sombre si utilisé.
+
+Puis mesurer, avant/après sur le même PC :
+
+```powershell
+./tools/perf/Measure-Perf.ps1 -Local -Label "just-the-docs 0.13.0"
+```
+
+Comparer avec la dernière mesure `local` du tableau de bord (`-DashboardOnly -Open`). Une note qui chute ou un TBT qui remonte à plusieurs secondes = la recherche différée a sauté (étape 4.1).
+
+#### Étape 6 : publier et mesurer
+
+```powershell
+git add Gemfile Gemfile.lock assets/js/just-the-docs.js _layouts/default.html
+git commit -m "Update just-the-docs to 0.13.0"
+git push -u origin theme/just-the-docs-0.13.0
+```
+
+Ouvrir la PR sur GitHub, la fusionner, attendre que « Deploy Jekyll site to Pages » soit vert (onglet Actions), puis :
+
+```powershell
+git switch master
+git pull
+./tools/perf/Measure-Perf.ps1 -Label "après just-the-docs 0.13.0"
+git add tools/perf
+git commit -m "perf measurements après just-the-docs 0.13.0"
+git push
+```
+
+Enfin mettre à jour la version citée dans cette section (étape 1).
 
 ### Liquid
 
