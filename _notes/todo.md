@@ -15,6 +15,7 @@ Idées de billets, choses à faire, choses faites.
 * GPG & Pass
 * Pareto et 50%-1%
 * SOS Chapitres IV et suivants
+  * Faire un driver de carte réseau avec Claude?
 * IA et ML - Relire les notes OneNote de préparation certification Architect IA
 * 52 nuances de physique
 * Faire un billet sur le portage de WP vers markdown
@@ -24,10 +25,7 @@ Idées de billets, choses à faire, choses faites.
 ---
 
 ## MAINTENANCE & BUGS
-* 07_moto/500_stage_de_radigues… : le champ image: utilise des \ au lieu de /, donc l'image de l'accueil est cassée.
-* 06_programmation/rust/020_some : image: pointe vers assets/assets/image_name.webp, qui n'existe pas.
-* 03_maths/010_onde_stationaire… : la première image est une URL externe, et l'accueil la transforme en chemin local cassé.
-
+* .
 
 ## TODO
 * Dans la home page faire apparaître la catégorie (avec un lien) et la date de dernière mise à jour ?
@@ -50,6 +48,8 @@ Idées de billets, choses à faire, choses faites.
 ---
 
 ## DONE
+* ~~07_moto/500_stage_de_radigues… : le champ image: utilise des \ au lieu de /, donc l'image de l'accueil est cassée.~~
+* ~~03_maths/010_onde_stationaire… : la première image est une URL externe, et l'accueil la transforme en chemin local cassé.~~
 * ~~Optimiser le site pour la vitesse (just-the-docs.js = 1.6s je vois pas quoi faire)~~ Fait en nov. 2026 : recherche différée, vignettes, icônes SVG, lightbox `defer`, CSS maison dans le thème. Banc de mesure, commandes et acronymes dans [exploitation.md](exploitation.md#performance)
 * ~~Voir ces histoire de Warning "Node.js 20 is deprecated" dans GitHub Actions~~ Voir le fix et les explication dans [exploitation.md](exploitation.md)
 * ~~Ordonner les articles Rust (pas envie de faire des sous catégories)~~

@@ -5,10 +5,19 @@ parent: "Maths"
 #nav_order: 2
 math: mathjax
 date: 2015-10-10 01:46:34
-last_modified_date: 2022-11-24 06:43:56
+last_modified_date: 2026-11-26 00:19:40
 ---
 
 # Onde stationnaire et onde progressive a une dimension
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img00.webp"
+    alt="Laboratoire futuriste où une onde stationnaire lumineuse bleue présente plusieurs nœuds et ventres entre deux dispositifs métalliques, avec un tableau affichant l'équation y = A cos(kx) et la relation k = 2π/λ."
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>L'onde stationnaire ne bouge pas... mais elle n'en est pas moins spectaculaire</figcaption>
+</figure>
 
 ## Onde stationnaire
 
@@ -23,15 +32,15 @@ $$y = A \cos(kx)$$
 Cette onde ne se déplace pas. Par exemple ses maximums et ses minimums restent à la même place. Pensez à une corde de guitare que vous pincez. Les 2 extrémités sont fixes. Ci-dessous une illustration que l'on trouve sur [Wikipedia](https://fr.wikipedia.org/wiki/Onde_stationnaire)
 
 <div align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Standing_wave.gif/400px-Standing_wave.gif" width=600 alt="" loading="lazy"/>
+<img src="./assets/Standing_wave_2.gif" width=600 alt="" loading="lazy"/>
 </div>
 
 
-Ici $$A$$ est simplement l'amplitude maximum. Dans la suite on va dire qu'elle vaut 1. 
+Ici $$A$$ est simplement l'amplitude maximum. Dans la suite on va dire qu'elle vaut 1.
 
 La question qui se pose maintenant, c'est : **mais c'est quoi ce $$k$$?**
 
-On appelle **longueur d'onde** $$\lambda$$ la distance entre 2 points identiques successifs sur l'onde. Par exemple, prenez 2 points rouges successifs sur l'onde ci-dessus. On sait que $$\cos()$$ et $$\sin()$$ ont une période de $$2\pi$$ donc on pourrait se dire que la distance entre 2 points c'est $$2\pi$$. 
+On appelle **longueur d'onde** $$\lambda$$ la distance entre 2 points identiques successifs sur l'onde. Par exemple, prenez 2 points rouges successifs sur l'onde ci-dessus. On sait que $$\cos()$$ et $$\sin()$$ ont une période de $$2\pi$$ donc on pourrait se dire que la distance entre 2 points c'est $$2\pi$$.
 
 Nan... ça ne marche pas. Imaginez qu'on pince une corde de guitare. Il y a aucune raison pour que les nœuds et les ventres de l'onde soient espacés de 3.14 (et puis d'abord, on ne sait même pas si ce sont des mètres ou des centimètres).
 
@@ -65,7 +74,7 @@ $$y = \cos(\frac{2 \pi x}{6 \lambda})$$
 
 $$y = \cos(\frac{2 \pi \frac{x}{6}}{ \lambda})$$
 
-Je "vois" alors que j'ai affaire à une fonction dans laquelle $$\frac{x}{6}$$ doit parcourir $$2\pi$$ pour retrouver un point identique. Donc $$x$$ doit parcourir $$12 \pi$$ avant de retrouver un point similaire. 
+Je "vois" alors que j'ai affaire à une fonction dans laquelle $$\frac{x}{6}$$ doit parcourir $$2\pi$$ pour retrouver un point identique. Donc $$x$$ doit parcourir $$12 \pi$$ avant de retrouver un point similaire.
 
 La longueur d'onde de la nouvelle fonction est donc $$12 \pi$$ c'est à dire 6 fois plus grande que la précédente.
 
@@ -94,7 +103,7 @@ $$k = \frac{2*\pi}{\lambda} $$
 
 La question est donc: **mais c'est quoi ce $$\omega$$ ?**
 
-Pour cela on va définir la **fréquence** $$f$$ de l'onde comme étant le nombre de maximums qui passent devant nos yeux par unité de temps. 
+Pour cela on va définir la **fréquence** $$f$$ de l'onde comme étant le nombre de maximums qui passent devant nos yeux par unité de temps.
 
 Imaginez que l'onde se déplace vers la droite à la vitesse **v** et que chaque fois que vous voyez un max, vous ajoutez 1. Au bout d'une seconde vous avez compté $$f$$ maximums.
 
@@ -102,9 +111,9 @@ Pour le coup, on peut "s'amuser" à définir la vitesse de l'onde par :
 
 $$v = f \lambda$$
 
-En effet, si je compte 3 pics en une seconde et que je sais que les pics sont séparés par 100m alors je sais que j'ai vu passé devant moi 3x100 m en une seconde. Et ça, c'est bien une vitesse et elle vaut 300 ms-1. 
+En effet, si je compte 3 pics en une seconde et que je sais que les pics sont séparés par 100m alors je sais que j'ai vu passé devant moi 3x100 m en une seconde. Et ça, c'est bien une vitesse et elle vaut 300 ms-1.
 
-On peut aussi en profiter pour se mettre dans le crâne, une bonne fois pour toute, qu'**une fréquence c'est l'inverse d'un temps**. 
+On peut aussi en profiter pour se mettre dans le crâne, une bonne fois pour toute, qu'**une fréquence c'est l'inverse d'un temps**.
 
 En effet, on a dit :
 
@@ -124,7 +133,7 @@ $$ \omega = 2 \pi f \text{(en rad s}^{-1})$$
 
 On peut se demander dans quel sens circule l'onde (vers la gauche ou vers la droite?).
 
-Pour cela je fixe $$x$$ et je le prends par exemple égal à 0. Alors à $$t=0$$ et en $$x=0$$ l'amplitude vaut 1. 
+Pour cela je fixe $$x$$ et je le prends par exemple égal à 0. Alors à $$t=0$$ et en $$x=0$$ l'amplitude vaut 1.
 
 Ensuite je pose $$t=1$$ et je regarde l'amplitude toujours en $$x=0$$.
 
@@ -162,7 +171,7 @@ Conclusion **l'onde se déplace vers la droite**. Si on avait $$y = A \cos(kx +
 
 ## Note spécifique à la mécanique quantique
 
-Il est possible que je commence une série de billets à propos de la mécanique quantique (MQ). Autant anticiper l'action 😁. 
+Il est possible que je commence une série de billets à propos de la mécanique quantique (MQ). Autant anticiper l'action 😁.
 
 Dans le cadre de la MQ, on souhaite écrire $$k$$ en fonction de $$p$$ la quantité de mouvement.
 
@@ -180,7 +189,7 @@ On utilise ensuite le fait que pour un photon, son énergie E vaut  $$E = h\nu$
 
 $$p$$ peut alors s'écrire $$ p = \frac{E}{c} = \frac{h\nu}{c} $$
 
-Si on se rappelle (voir dans le résumé juste ci-dessus) que pour le photon qui a une vitesse $$c$$ et une fréquence $$\nu$$ 
+Si on se rappelle (voir dans le résumé juste ci-dessus) que pour le photon qui a une vitesse $$c$$ et une fréquence $$\nu$$
 
 $$c = \nu\lambda$$
 

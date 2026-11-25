@@ -4,13 +4,13 @@ author: 40tude
 layout: default
 title: "Stage De Radiguès Rider School (DRRS) — Compte rendu complet : La Ferté Gaucher, 2019"
 description: "Deux jours de stage DRRS à La Ferté Gaucher pour découvrir que je conduisais comme un gendarme, que mes fesses ne sortaient pas et que poser le genou, c'est une autre histoire. Récit honnête, session par session."
-image: docs\07_moto\500_stage_de_radigues_rider_school_drrs\assets\2019-05-15-12.20.15.webp
+image: docs/07_moto/500_stage_de_radigues_rider_school_drrs/assets/2019-05-15-12.20.15.webp
 twitter:
   card: summary_large_image
 parent: "Motos"
 #math: mathjax
 date: 2019-05-19 18:24:52
-last_modified_date: 2026-05-05 18:57:31
+last_modified_date: 2026-11-26 00:19:40
 ---
 
 
