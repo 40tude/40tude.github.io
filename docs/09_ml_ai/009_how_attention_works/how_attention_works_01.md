@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-25 11:59:08
+last_modified_date: 2026-11-25 18:23:14
 ---
 
 
@@ -38,8 +38,12 @@ last_modified_date: 2026-11-25 11:59:08
 ### This is Episode 01
 {: .no_toc }
 
+
+
 <!-- TODO: episodes 02..03 are published: false. A {%raw%}{%link%}{%endraw%} to an unpublished page breaks the Jekyll build.
 Restore the links below (and in the Conclusion) when each episode is published:
+[Episode 00]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}{%endraw%})
+[Episode 01]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}{%endraw%})
 [Episode 02]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}{%endraw%})
 [Episode 03]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_03.md%}{%endraw%})
 -->
@@ -193,7 +197,7 @@ $$
 h_j = \tanh(W_x\, x_j + W_h\, h_{j-1} + b)
 $$
 
-**Bob:** And `j` is the position in the sentence. `h_1` after `<start>`, `h_2` after `j'`... `h_{11}` after `<end>`.
+**Bob:** And $$j$$ is the position in the sentence. $$h_1$$ after `<start>`, $$h_2$$ after `j'`... $$h_{11}$$ after `<end>`.
 
 **Alice:** So `n_units` is the size of the memory. That's the label on the GRU box on the slide: `n_units`.
 
@@ -214,6 +218,16 @@ $$
 **Alice:** And that's the tiny drawing inside the box? The green rectangles?
 
 **Bob:** Yes, "Update Gate" and "Reset Gate". But honestly, I don't think we need the details to understand attention. From the outside, a GRU does exactly what my loop does: it reads one token, it updates a memory of size `n_units`. It's just better at it.
+
+<figure style="max-width: 700px; margin: auto; text-align: center;">
+<img
+    src="./assets/img21.webp"
+    alt="Inside a GRU cell: from the previous memory h(j-1) and the current input x(j), an update gate and a reset gate (sigmoids) are computed; the reset gate filters the old memory before a tanh candidate is computed; the update gate then mixes the old memory and the candidate to give the new memory h(j)"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>For the curious: inside a GRU cell. Not needed to follow the rest of the story.</figcaption>
+</figure>
 
 **Alice:** I'm not totally satisfied, but okay. Rule 3, we write the links down and we'll read them later.
 

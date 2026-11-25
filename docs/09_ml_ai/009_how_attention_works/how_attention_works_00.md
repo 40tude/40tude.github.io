@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-25 11:59:08
+last_modified_date: 2026-11-25 18:23:14
 ---
 
 
@@ -38,8 +38,11 @@ last_modified_date: 2026-11-25 11:59:08
 ### This is Episode 00
 {: .no_toc }
 
+
 <!-- TODO: episodes 02..03 are published: false. A {%raw%}{%link%}{%endraw%} to an unpublished page breaks the Jekyll build.
 Restore the links below (and in the Conclusion) when each episode is published:
+[Episode 00]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}{%endraw%})
+[Episode 01]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}{%endraw%})
 [Episode 02]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}{%endraw%})
 [Episode 03]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_03.md%}{%endraw%})
 -->
