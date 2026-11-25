@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-25 18:23:14
+last_modified_date: 2026-11-25 19:02:18
 ---
 
 
@@ -78,11 +78,11 @@ Restore the links below (and in the Conclusion) when each episode is published:
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img
     src="./assets/img00_01.webp"
-    alt="TODO: Add a description"
+    alt="Alice and Bob, late in the evening, in front of a laptop. Bob holds up a yellow post-it next to the attention slide pinned on the wall. On the blackboard: 'Tout tenir sur un post-it ?' and the chain Matrice, GRU, État, Décodeur"
     style="max-width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>TODO: Add a legend</figcaption>
+<figcaption>Can a whole sentence fit on a post-it? Same evening, same table, one more box.</figcaption>
 </figure>
 
 
