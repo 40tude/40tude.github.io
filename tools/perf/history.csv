@@ -7,3 +7,11 @@ timestamp,label,target,commit,page,profile,runs,perf,a11y,best_practices,seo,fcp
 2026-11-25T20:15:49+00:00,lazy search index,local,22ac8d7+dirty,home,desktop,3,99,100,96,100,432,970,0,0,436,978,1281,21,0,results/2026-11-25_201549_local/home_desktop.html
 2026-11-25T20:15:49+00:00,lazy search index,local,22ac8d7+dirty,article,mobile,3,99,96,96,100,1687,1847,0,0,1687,1858,522,21,0,results/2026-11-25_201549_local/article_mobile.html
 2026-11-25T20:15:49+00:00,lazy search index,local,22ac8d7+dirty,article,desktop,3,100,97,96,100,478,489,0,0,544,489,522,21,0,results/2026-11-25_201549_local/article_desktop.html
+2026-11-25T21:33:22+01:00,my first measurements,live,19024778,home,mobile,3,99,96,100,100,1717,1717,27,0,1717,4308,1607,24,0,results/2026-11-25_213322/home_mobile.html
+2026-11-25T21:33:22+01:00,my first measurements,live,19024778,home,desktop,3,100,100,100,100,488,488,0,0,488,488,1607,24,0,results/2026-11-25_213322/home_desktop.html
+2026-11-25T21:33:22+01:00,my first measurements,live,19024778,article,mobile,3,92,96,96,100,1784,2774,128,0,3696,12785,2449,35,0,results/2026-11-25_213322/article_mobile.html
+2026-11-25T21:33:22+01:00,my first measurements,live,19024778,article,desktop,3,96,97,96,100,1050,1076,1,0,1052,2373,2449,35,0,results/2026-11-25_213322/article_desktop.html
+2026-11-25T21:48:35+01:00,baseline Lighthouse 13,live,1e56f4c8,home,mobile,3,99,96,100,100,1701,1701,16,0,1701,3901,1607,24,0,results/2026-11-25_214835/home_mobile.html
+2026-11-25T21:48:35+01:00,baseline Lighthouse 13,live,1e56f4c8,home,desktop,3,100,100,100,100,501,501,0,0,501,501,1607,24,0,results/2026-11-25_214835/home_desktop.html
+2026-11-25T21:48:35+01:00,baseline Lighthouse 13,live,1e56f4c8,article,mobile,3,70,96,96,100,4684,4684,141,0,4684,12029,2454,35,0,results/2026-11-25_214835/article_mobile.html
+2026-11-25T21:48:35+01:00,baseline Lighthouse 13,live,1e56f4c8,article,desktop,3,100,97,96,100,574,574,3,0,894,2292,2454,35,0,results/2026-11-25_214835/article_desktop.html
