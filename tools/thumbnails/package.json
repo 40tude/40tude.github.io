@@ -1,0 +1,12 @@
+{
+  "name": "40tude-thumbnails",
+  "private": true,
+  "description": "Generates the home page thumbnails (xxx_thumb.webp) next to each article's hero image",
+  "type": "module",
+  "scripts": {
+    "all": "node make-thumbnails.mjs --all"
+  },
+  "dependencies": {
+    "sharp": "0.35.5"
+  }
+}
