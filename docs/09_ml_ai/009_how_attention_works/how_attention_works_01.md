@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 author: 40tude
 # lang: fr
 lang: en-US
@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-24 12:13:54
+last_modified_date: 2026-11-25 11:59:08
 ---
 
 
@@ -38,13 +38,19 @@ last_modified_date: 2026-11-24 12:13:54
 ### This is Episode 01
 {: .no_toc }
 
+<!-- TODO: episodes 02..03 are published: false. A {%raw%}{%link%}{%endraw%} to an unpublished page breaks the Jekyll build.
+Restore the links below (and in the Conclusion) when each episode is published:
+[Episode 02]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}{%endraw%})
+[Episode 03]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_03.md%}{%endraw%})
+-->
+
 {: .note }
 > This post is a series in **4 episodes**. Alice and Bob need two evenings to rebuild the slide, one box at a time.
 >
 > * [Episode 00]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}): Day 1. Leaving class with the slide. Why word-by-word translation fails, from words to tokens, from tokens to vectors.
 > * [Episode 01]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}) **(you are here)**: Day 1, later that evening. Reading in order with a GRU, encoder and decoder, the bottleneck, and the idea of attention.
-> * [Episode 02]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}): Day 2. The attention layer step by step: scores, softmax, context vector, one iteration of the decoder.
-> * [Episode 03]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_03.md%}): Day 2, later that evening. Training with teacher forcing, inference, what we simplified, and a peek at Transformers.
+> * Episode 02 *(coming soon)*: Day 2. The attention layer step by step: scores, softmax, context vector, one iteration of the decoder.
+> * Episode 03 *(coming soon)*: Day 2, later that evening. Training with teacher forcing, inference, what we simplified, and a peek at Transformers.
 
 
 
@@ -158,6 +164,15 @@ They chose a sentence harder than the one on the slide, "J'aime écrire du code 
 **Bob:** Fine. In code, it's a loop. I'll do the simplest version first, a plain RNN, not a GRU:
 
 ```python
+import numpy as np
+
+# Same setup as episode 00: 11 tokens, emb_dim = 4
+vocab_size, emb_dim = 100, 4
+rng = np.random.default_rng(42)
+E = rng.normal(size=(vocab_size, emb_dim))
+ids = [0, 18, 5, 27, 12, 33, 61, 8, 42, 3, 1]
+X = E[ids]                                  # seq_len x emb_dim = (11, 4)
+
 n_units = 3
 
 W_x = rng.normal(size=(n_units, emb_dim))   # reads the current token
@@ -169,6 +184,7 @@ outputs = []
 for x in X:                                 # one token at a time, in order
     h = np.tanh(W_x @ x + W_h @ h + b)      # new memory = f(current token, old memory)
     outputs.append(h)
+                                            # No output yet. See the next cell below
 ```
 
 **Alice:** Wait, let me check the sizes, it's the only way I'll trust this. `x` is one row of `X`, so `emb_dim`. `W_x` is `n_units x emb_dim`, so `W_x @ x` is a vector of `n_units`. Matrix times vector, that's the prerequisite. `h` is `n_units`, `W_h` is `n_units x n_units`, so `W_h @ h` is also `n_units`. I add the two, I squash with `tanh` between -1 and +1, and I get the new `h`, still `n_units`.
@@ -206,6 +222,16 @@ $$
 
 **Bob:** Now look at the top of the blue box. Two exits: `output` and `state`.
 
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img18.webp"
+    alt="Zoom on the top of the encoder: the GRU box, labeled n_units, has two exits, output with a seq_len x n_units matrix and state with a vector of n_units"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Zoom on the top of the blue part: the GRU (n_units) and its two exits, output (seq_len x n_units) and state (n_units).</figcaption>
+</figure>
+
 **Alice:** `output` has the label `seq_len x n_units`. `state` has the label `n_units`.
 
 **Bob:** In my loop, `outputs` is the list of all the `h`, one per token. If I stack them...
@@ -221,6 +247,15 @@ print(np.allclose(output[-1], state))
 (11, 3) (3,)
 True
 ```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img18a.webp"
+    alt="Describe the image here"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>I'm a legend</figcaption>
+</figure>
 
 **Alice:** `(11, 3)`: `seq_len x n_units`. And `(3,)`: `n_units`. It matches the slide. And `True` means...
 
@@ -297,10 +332,10 @@ True
  j' aime écrire du code propre en rust .        i like writing clean code in rust .
                  |                                              ^
                  v                                              |
-          +-------------+      state       +-------------+
-          |   ENCODER   | ---------------> |   DECODER   |
-          | (blue part) |  n_units numbers |  (red part) |
-          +-------------+                  +-------------+
+          +-------------+              state             +-------------+
+          |   ENCODER   | -----------------------------> |   DECODER   |
+          | (blue part) |         n_units numbers        |  (red part) |
+          +-------------+                                +-------------+
 ```
 
 **Bob:** That's it. Everything the decoder knows about the French sentence is in that arrow.
@@ -310,6 +345,16 @@ True
 **Bob:** Rule 4. For now we mentally erase everything on the left of the red box: `W1`, `W2`, `+`, `tanh`, `V`, `softmax`, the multiplication, the sum, `concat`. That's the attention part, we keep it for later. What's left?
 
 **Alice:** *(covers half of the slide with her hand)* At the bottom, a red `Embedding`. Above, a `GRU`. Above, `fc Dense`, with `vocab_size` written on it. Then `pred`. And a green wire that goes from `argmax()` all the way down to switch 3.
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img19.webp"
+    alt="The decoder alone, with the attention part erased: the token index 0 goes through the red Embedding (vocab_size, emb_dim), concat, the GRU (n_units), fc Dense and softmax (vocab_size) to pred; a green wire goes from softmax to argmax and back down to switch 3"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The red part with the attention erased (Rule 4): Embedding, GRU, fc Dense, pred, and the green wire back to switch 3.</figcaption>
+</figure>
 
 **Bob:** Let me tell the story of one step and you check the sizes.
 
@@ -321,7 +366,28 @@ True
 
 **Bob:** Yes. So: `<start>` goes through the red embedding, we get a vector of `emb_dim`. The GRU takes that vector and the memory $$s_0$$, and computes a new memory $$s_1$$.
 
-**Alice:** Same as in the encoder. Token in, memory updated. $$s_1$$ is `n_units`.
+**Alice:** Same as in the encoder. Token in, memory updated. $$s_1$$ is `n_units`. *(back to the slide, frowns)* Wait. On the slide, only one wire goes into the GRU, the one coming from below. Where does $$s_0$$ come in?
+
+**Bob:** *(follows the wires with his finger)* Hmm. Switch 2 sends `state` to `W2`, in the part we erased. And that's it. Nothing goes into the GRU from the side.
+
+**Alice:** Then the GRU has no memory. Your encoder loop has `W_h @ h` in it. No `h`, no memory.
+
+**Bob:** Right. A GRU always has two inputs: the current token and the old memory. Without the second one, it starts from zero at every step, and the decoder forgets what it has already written.
+
+**Alice:** So the slide is wrong?
+
+**Bob:** Incomplete, I'd say. My guess is that it was drawn from the code of an old TensorFlow tutorial. In that code, the previous memory was given to the attention, but not to the GRU. The drawing is faithful to the code. The code forgot a wire.
+
+**Alice:** Then I'm adding it. In my drawings, the memory of the previous step, $$s_{t-1}$$, goes into the GRU from the side.
+
+**Bob:** Deal. Two inputs, like every GRU.
+
+<!--
+TODO: CHECK THE TENSORFLOW TUTORIAL CLAIM
+Bob says the slide follows an old TensorFlow NMT tutorial where the decoder called
+self.gru(x) without passing the previous hidden state (hidden only fed the attention).
+Verify in the archived tutorial before publishing, or soften Bob's line.
+-->
 
 **Bob:** Then `fc Dense`. A plain dense layer that goes from `n_units` to `vocab_size`, the size of the *English* vocabulary. So we get one score per English token.
 
@@ -526,6 +592,16 @@ for _ in range(max_len):
 
 **Alice:** It fits. One weight per row of the book.
 
+<figure style="max-width: 400px; margin: auto; text-align: center;">
+<img
+    src="./assets/img20.webp"
+    alt="Zoom on the attention part of the red box: W1 Dense and W2 Dense, a plus, tanh, V Dense and softmax produce the attention weights (seq_len); the multiplication with output (seq_len x n_units) and the sum over seq_len give the context vector (n_units)"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Zoom on the left half of the red box: Attention weights (seq_len) at the top, and the Context vector (n_units) coming out of the sum.</figcaption>
+</figure>
+
 **Bob:** *(phone)* Rule 3, let me check we're not inventing it. Here: Bahdanau, Cho and Bengio, 2014 again, [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473){:target="_blank"}. That's the paper of the slide, I'm pretty sure. "Align": which French words go with which English word. That's exactly what you did with your eyes.
 
 **Alice:** And "jointly learning": the network learns to translate and, at the same time, learns where to look. Nobody tells it that `clean` goes with `propre`.
@@ -644,7 +720,7 @@ At the end of this first evening, Alice and Bob have not computed a single atten
 
 That is the idea. What remains is the machinery: how the decoder scores each source token, how these scores become weights, how the weights become a context vector, and how the whole thing is trained and then used. In other words, the left half of the red box and the switches.
 
-That will be the topic of [Episode 02]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}), on the evening of day 2. Alice and Bob will have slept on it. So will we.
+That will be the topic of Episode 02 (coming soon), on the evening of day 2. Alice and Bob will have slept on it. So will we.
 
 
 

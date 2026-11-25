@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-24 12:13:54
+last_modified_date: 2026-11-25 11:59:08
 ---
 
 
@@ -38,9 +38,8 @@ last_modified_date: 2026-11-24 12:13:54
 ### This is Episode 00
 {: .no_toc }
 
-<!-- TODO: episodes 01..03 are published: false. A {%raw%}{%link%}{%endraw%} to an unpublished page breaks the Jekyll build.
+<!-- TODO: episodes 02..03 are published: false. A {%raw%}{%link%}{%endraw%} to an unpublished page breaks the Jekyll build.
 Restore the links below (and in the Conclusion) when each episode is published:
-[Episode 01]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}{%endraw%})
 [Episode 02]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}{%endraw%})
 [Episode 03]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_03.md%}{%endraw%})
 -->
@@ -49,7 +48,7 @@ Restore the links below (and in the Conclusion) when each episode is published:
 > This post is a series in **4 episodes**. Alice and Bob need two evenings to rebuild a complex diagram, "one box at a time".
 >
 > * [Episode 00]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}) **(you are here)**: Day 1. Leaving class with the printed slide. Why word-by-word translation fails, from words to tokens, from tokens to vectors.
-> * Episode 01 *(coming soon)*: Day 1, later that evening. Reading in order with a GRU, encoder and decoder, the bottleneck, and the idea of attention.
+> * [Episode 01]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}): Day 1, later that evening. Reading in order with a GRU, encoder and decoder, the bottleneck, and the idea of attention.
 > * Episode 02 *(coming soon)*: Day 2. The attention layer step by step: scores, softmax, context vector, one iteration of the decoder.
 > * Episode 03 *(coming soon)*: Day 2, later that evening. Training with teacher forcing, inference, what we simplified, and a peek at Transformers.
 
@@ -662,7 +661,7 @@ Let's step out of the library for a minute.
 
 In this first episode, Alice and Bob have not touched the attention mechanism yet. But they now know what problem the slide is trying to solve: a translation is not a word-by-word substitution. And they know how a sentence enters the network: cut into tokens, turned into indices, then into vectors by a learned embedding.
 
-What they have at the end of the episode is a `seq_len x emb_dim` matrix where each row describes one token, but knows nothing about its neighbors. In Episode 01 (coming soon), same evening, same table, they will read that matrix in order with a GRU, build an encoder and a decoder, hit the bottleneck, and finally understand why attention was invented.
+What they have at the end of the episode is a `seq_len x emb_dim` matrix where each row describes one token, but knows nothing about its neighbors. In [Episode 01]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}), same evening, same table, they will read that matrix in order with a GRU, build an encoder and a decoder, hit the bottleneck, and finally understand why attention was invented.
 
 
 
