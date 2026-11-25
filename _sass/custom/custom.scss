@@ -1,0 +1,42 @@
+// -----------------------------------------------------------------------------
+// Site-specific CSS rules, appended at the END of the theme stylesheet.
+//
+// Just the Docs mechanism: the theme imports _sass/custom/custom.scss as the
+// last part of assets/css/just-the-docs-*.css (default, light and dark), so the
+// rules below override the theme exactly as before.
+//
+// History: these rules used to live in assets/css/custom.css, loaded by a
+// separate <link> in _includes/head_custom.html. Moved here on 2026-11-25 (perf
+// point 3.3): one render-blocking request less on every page, same rendering.
+//
+// Plain CSS is valid SCSS, so rules can be written as usual. Comments starting
+// with // (like this one) are removed from the published CSS; /* ... */ comments
+// are kept in it.
+// -----------------------------------------------------------------------------
+
+/* 
+font-weight : les valeurs disponibles vont de 100 (très fin) à 900 (très gras). 
+font-weight: bold; correspond souvent à 700. 
+*/
+main a {
+    /* au lieu de bold */
+    font-weight: 600;
+}
+
+/* Tighten line height for code blocks */
+.highlight pre,
+pre.highlight,
+pre code {
+    /* try 1.15–1.30 to taste */
+    line-height: 1.1;
+}
+
+/* Reset inside numbered code blocks produced by Rouge (rouge-table) */
+/* .rouge-table pre, */
+/* .rouge-table pre code, */
+/* .rouge-table td, */
+/* .rouge-table .lineno { */
+/* use a consistent (and larger) line height to match both columns */
+/* line-height: 1.1; */
+/* or 'normal' */
+/* } */
