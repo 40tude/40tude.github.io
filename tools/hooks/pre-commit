@@ -17,3 +17,28 @@ git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR \
     git add "$file"
   fi
 done
+
+# -----------------------------------------------------------------------------
+# Home page thumbnails (see tools/thumbnails/README.md).
+# For every staged article under docs/ (new or updated), create the missing
+# <hero>_thumb.webp next to its hero image; for every staged image that already
+# has a thumbnail, refresh it. New thumbnails are added to the commit.
+# Never blocks the commit: if Node.js or the npm packages are missing, warn only.
+thumbs_dir="tools/thumbnails"
+mapfile -d '' thumb_inputs < <(
+  git -c core.quotePath=false diff --cached --name-only -z --diff-filter=ACMR -- \
+    'docs/*.md' 'docs/*.webp' 'docs/*.png' 'docs/*.jpg' 'docs/*.jpeg' 'docs/*.gif'
+)
+if [ "${#thumb_inputs[@]}" -gt 0 ]; then
+  if ! command -v node >/dev/null 2>&1; then
+    echo "pre-commit: node not found, home page thumbnails not generated (see $thumbs_dir/README.md)" >&2
+  elif [ ! -d "$thumbs_dir/node_modules/sharp" ]; then
+    echo "pre-commit: run 'npm ci' in $thumbs_dir to enable home page thumbnails" >&2
+  else
+    thumbs_out=$(node "$thumbs_dir/make-thumbnails.mjs" "${thumb_inputs[@]}" 2>&1)
+    printf '%s\n' "$thumbs_out" | grep -E '^(THUMB|WARN) ' >&2
+    printf '%s\n' "$thumbs_out" | sed -n 's/^THUMB //p' | while IFS= read -r thumb; do
+      git add -- "$thumb"
+    done
+  fi
+fi

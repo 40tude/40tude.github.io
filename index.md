@@ -30,6 +30,10 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
   {% assign nb_articles = 10 %}  {% comment %} number of rows {% endcomment %}
   {% assign nb_words = 20 %}     {% comment %} description length, in words {% endcomment %}
   {% assign articles_sorted = site.pages | sort: 'last_modified_date' | reverse %}
+  {% comment %}
+    All generated thumbnails (xxx_thumb.webp, see tools/thumbnails/), as "/docs/.../assets/xxx_thumb.webp"
+  {% endcomment %}
+  {% assign thumb_paths = site.static_files | where_exp: "f", "f.path contains '_thumb.webp'" | map: "path" %}
   {% for page in articles_sorted limit: nb_articles %}
     <tr>
       <td>
@@ -84,7 +88,31 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
           {% assign image_full_path = page_dir | append: image %}
         {% endif %}
 
-        <img src="{{ image_full_path }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy" class="lightbox-image" />
+        {% comment %}
+          Prefer the 300 px thumbnail generated next to the image (tools/thumbnails/), if it exists.
+          Normalize the path first: "/docs/a/b/./assets/x.webp" or "/docs/a/b/../assets/x.webp"
+          must match the static file path (compared URL-decoded, e.g. %20). Then swap the
+          extension for "_thumb.webp".
+        {% endcomment %}
+        {% assign segs = image_full_path | split: '/' %}
+        {% assign norm = '' | split: '' %}
+        {% for s in segs %}
+          {% if s == '..' %}
+            {% assign norm = norm | pop %}
+          {% elsif s != '.' and s != '' %}
+            {% assign norm = norm | push: s %}
+          {% endif %}
+        {% endfor %}
+        {% assign norm_path = norm | join: '/' | prepend: '/' %}
+        {% assign ext = norm_path | split: '.' | last %}
+        {% assign base_len = norm_path.size | minus: ext.size | minus: 1 %}
+        {% assign thumb_path = norm_path | slice: 0, base_len | append: '_thumb.webp' %}
+        {% assign thumb_key = thumb_path | url_decode %}
+        {% if thumb_paths contains thumb_key %}
+          {% assign image_full_path = thumb_path %}
+        {% endif %}
+
+        <img src="{{ image_full_path }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy" decoding="async" class="lightbox-image" />
       </td>
       <td>
         {% comment %} Text: front matter description if any, else the first nb_words words of the content {% endcomment %}
