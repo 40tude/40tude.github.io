@@ -1,0 +1,7 @@
+{
+  "liveBaseUrl": "https://www.40tude.fr",
+  "pages": [
+    { "id": "home", "path": "/" },
+    { "id": "article", "path": "/docs/09_ml_ai/009_how_attention_works/how_attention_works_00.html" }
+  ]
+}

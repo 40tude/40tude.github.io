@@ -1,0 +1,5 @@
+timestamp,label,target,commit,page,profile,runs,perf,a11y,best_practices,seo,fcp_ms,lcp_ms,tbt_ms,cls,si_ms,tti_ms,total_kib,requests,search_data_kib,report
+2026-11-25T19:57:17+00:00,baseline (before any fix),local,c621a15,home,mobile,3,50,96,96,100,1534,5336,5844,0,1534,23378,2865,22,1584,results/2026-11-25_195717_local/home_mobile.html
+2026-11-25T19:57:17+00:00,baseline (before any fix),local,c621a15,home,desktop,3,69,100,96,100,438,991,1699,0,448,4676,2865,22,1584,results/2026-11-25_195717_local/home_desktop.html
+2026-11-25T19:57:17+00:00,baseline (before any fix),local,c621a15,article,mobile,3,69,96,96,100,1686,1747,7664,0,1686,20138,2106,22,1584,results/2026-11-25_195717_local/article_mobile.html
+2026-11-25T19:57:17+00:00,baseline (before any fix),local,c621a15,article,desktop,3,70,97,96,100,479,479,1983,0,479,4271,2106,22,1584,results/2026-11-25_195717_local/article_desktop.html
