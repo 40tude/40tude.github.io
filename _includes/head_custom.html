@@ -5,8 +5,12 @@
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}/feed.xml">
 
-<!-- Polices pour le custom nav footer (linkedin, youtube...) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% comment %}
+  Font Awesome (cdnjs) was loaded here for the 4 icons of the nav footer (LinkedIn, GitHub,
+  YouTube, RSS). Removed on 2026-11-25 (perf point 3.1): it was a render-blocking third-party
+  CSS + ~150 KB of fonts on every page. The icons are now inline SVG, see
+  _includes/nav_footer_custom.html. Do not add it back for a single icon: copy an SVG instead.
+{% endcomment %}
 
 <!-- custom styles to set the url link in bold etc. -->
 <!-- <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}"> -->
