@@ -33,21 +33,23 @@ Idées de billets, choses à faire, choses faites.
 * SEO
     * Pas sûr de comprendre grand-chose au sujet
     * En plus je suis pas intéressé par le sujet
-* Optimization
-    * Optimiser le site pour la vitesse ? just-the-docs.js = 1.6s je vois pas quoi faire
-    * F12 ou Ctrl+Shift+I pour ouvrir les DevTools
-    * Onglet Lighthouse > Performance, Accessibility, SEO, Best Practices, cliquer "Generate report"
-    * Pagespeed Insights (<https://pagespeed.web.dev/>) : conseils prioritaires
-    * WebPageTest (<https://www.webpagetest.org/>) : analyse depuis différents lieux
+* Performance : suite possible, voir « Pistes restantes » dans [exploitation.md](exploitation.md#pistes-restantes)
+    * Façade YouTube
+    * `defer` sur `lunr.min.js` et `just-the-docs.js`
+* Réparer la couverture (absente de la page d'accueil) de 3 articles
+    * `docs/07_moto/500_stage_de_radigues_rider_school_drrs` : `image:` avec des `\` au lieu de `/`
+    * `docs/06_programmation/rust/020_some` : `image:` en `assets/assets/...`
+    * `docs/03_maths/010_onde_stationaire_onde_progressive` : première image = URL externe
 
 ---
 
 ## DONE
+* ~~Optimiser le site pour la vitesse (just-the-docs.js = 1.6s je vois pas quoi faire)~~ Fait en nov. 2026 : recherche différée, vignettes, icônes SVG, lightbox `defer`, CSS maison dans le thème. Banc de mesure, commandes et acronymes dans [exploitation.md](exploitation.md#performance)
 * ~~Voir ces histoire de Warning "Node.js 20 is deprecated" dans GitHub Actions~~ Voir le fix et les explication dans [exploitation.md](exploitation.md)
 * ~~Ordonner les articles Rust (pas envie de faire des sous catégories)~~
 * ~~Pages en anglais avec lang=en avant le Head~~
     * Voir `_layouts\default.html`. Si just the docs le modifie, récupérer la nouvelle version depuis `https://github.com/just-the-docs/just-the-docs/blob/main/_layouts/default.html`
-* ~~Mettre les liens des urls dans les billets en gras~~
+* ~~Mettre les liens des urls dans les billets en gras~~ (règle dans `_sass/custom/custom.scss`)
 * ~~S'assurer que Google indexe bien le site~~
     * Y a toujours des soucis avec les vieilles pages pirates mais les bonnes pages sont bien indexées
 * ~~Liens LinkedIn Youtube Github dans le footer de la navbar~~
