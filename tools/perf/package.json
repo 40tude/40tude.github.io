@@ -1,0 +1,15 @@
+{
+  "name": "40tude-perf",
+  "private": true,
+  "description": "Lighthouse measurement bench for www.40tude.fr",
+  "type": "module",
+  "scripts": {
+    "measure": "node measure.mjs"
+  },
+  "dependencies": {
+    "chrome-launcher": "1.2.3",
+    "compression": "1.8.2",
+    "lighthouse": "12.8.2",
+    "serve-handler": "6.1.8"
+  }
+}
