@@ -12,9 +12,12 @@
   _includes/nav_footer_custom.html. Do not add it back for a single icon: copy an SVG instead.
 {% endcomment %}
 
-<!-- custom styles to set the url link in bold etc. -->
-<!-- <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}"> -->
-<link rel="stylesheet" href="/assets/css/custom.css">
+{% comment %}
+  Custom styles (links in semi-bold, tighter code blocks...) used to be loaded here from
+  /assets/css/custom.css. Moved on 2026-11-25 (perf point 3.3) to _sass/custom/custom.scss,
+  which Just the Docs appends to its own stylesheet: one render-blocking request less.
+  Edit _sass/custom/custom.scss to change them; do not add a separate <link> again.
+{% endcomment %}
 
 {% assign math = page.math | default: layout.math | default: site.math %}
 
