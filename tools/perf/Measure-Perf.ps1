@@ -30,11 +30,20 @@
 .PARAMETER Pages
     Page ids from pages.json (default all).
 
+.PARAMETER Open
+    Opens dashboard.html in the default browser at the end.
+
+.PARAMETER DashboardOnly
+    Does not measure anything: only regenerates dashboard.html from history.csv.
+
 .EXAMPLE
     ./tools/perf/Measure-Perf.ps1 -Label "baseline"
 
 .EXAMPLE
     ./tools/perf/Measure-Perf.ps1 -Local -Label "lazy search" -Pages home
+
+.EXAMPLE
+    ./tools/perf/Measure-Perf.ps1 -DashboardOnly -Open
 #>
 [CmdletBinding()]
 param(
@@ -44,7 +53,9 @@ param(
     [int]      $Runs = 3,
     [ValidateSet('mobile', 'desktop')]
     [string[]] $Profiles = @('mobile', 'desktop'),
-    [string[]] $Pages
+    [string[]] $Pages,
+    [switch]   $Open,
+    [switch]   $DashboardOnly
 )
 
 $ErrorActionPreference = 'Stop'
@@ -56,7 +67,7 @@ foreach ($cmd in @('node', 'npm')) {
         throw "$cmd not found. Install Node.js LTS (winget install OpenJS.NodeJS.LTS)."
     }
 }
-if ($Local -and -not (Get-Command 'bundle' -ErrorAction SilentlyContinue)) {
+if ($Local -and -not $DashboardOnly -and -not (Get-Command 'bundle' -ErrorAction SilentlyContinue)) {
     throw "bundle not found. -Local needs Ruby and 'bundle install' at the repository root."
 }
 
@@ -74,19 +85,29 @@ if (-not (Test-Path $stamp) -or (Get-Item $lock).LastWriteTime -gt (Get-Item $st
 }
 
 # Build the argument list for the Node.js script
-$nodeArgs = @(
-    (Join-Path $here 'measure.mjs'),
-    '--target', $(if ($Local) { 'local' } else { 'live' }),
-    '--runs', $Runs,
-    '--profiles', ($Profiles -join ',')
-)
-if ($Label) { $nodeArgs += @('--label', $Label) }
-if ($Pages) { $nodeArgs += @('--pages', ($Pages -join ',')) }
+if ($DashboardOnly) {
+    $nodeArgs = @((Join-Path $here 'measure.mjs'), '--dashboard-only')
+}
+else {
+    $nodeArgs = @(
+        (Join-Path $here 'measure.mjs'),
+        '--target', $(if ($Local) { 'local' } else { 'live' }),
+        '--runs', $Runs,
+        '--profiles', ($Profiles -join ',')
+    )
+    if ($Label) { $nodeArgs += @('--label', $Label) }
+    if ($Pages) { $nodeArgs += @('--pages', ($Pages -join ',')) }
 
-Write-Host "Measuring $(if ($Local) { 'the local build' } else { 'www.40tude.fr' }): $Runs run(s) x $($Profiles -join '+')"
+    Write-Host "Measuring $(if ($Local) { 'the local build' } else { 'www.40tude.fr' }): $Runs run(s) x $($Profiles -join '+')"
+}
 Push-Location $here
 try {
     node @nodeArgs
     if ($LASTEXITCODE -ne 0) { throw "Measurement failed (exit code $LASTEXITCODE)." }
 }
 finally { Pop-Location }
+
+if ($Open) {
+    # Opens the file with the default browser (Windows); falls back to the OS opener elsewhere
+    Invoke-Item (Join-Path $here 'dashboard.html')
+}

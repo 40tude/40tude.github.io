@@ -1,0 +1,356 @@
+// Generates tools/perf/dashboard.html from the rows of history.csv.
+//
+// The page is self-contained (data embedded as JSON, inline CSS/JS, no CDN),
+// so it opens with a double-click, offline, without any web server.
+
+import fs from 'node:fs';
+
+export function writeDashboard(rows, outFile) {
+  // Keep only what the page needs; numbers as numbers
+  const num = (v) => (v === undefined || v === null || v === '' ? null : Number(v));
+  const data = rows.map((r) => ({
+    t: r.timestamp,
+    label: r.label || '',
+    target: r.target,
+    commit: r.commit,
+    machine: r.machine || '',
+    lighthouse: r.lighthouse || '',
+    page: r.page,
+    profile: r.profile,
+    perf: num(r.perf),
+    fcp: num(r.fcp_ms),
+    lcp: num(r.lcp_ms),
+    tbt: num(r.tbt_ms),
+    cls: num(r.cls),
+    kib: num(r.total_kib),
+    req: num(r.requests),
+    report: r.report || '',
+  }));
+  // "</" must not appear raw inside the <script> block
+  const json = JSON.stringify(data).replace(/</g, '\\u003c');
+  fs.writeFileSync(outFile, TEMPLATE.replace('/*__DATA__*/[]', json), 'utf8');
+}
+
+const TEMPLATE = String.raw`<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perf 40tude.fr</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-2: #f6f6f4;
+  --border: #e3e3df;
+  --grid: #ececea;
+  --text-primary: #191919;
+  --text-secondary: #666666;
+  --good: #008a17;
+  --bad: #c92a2a;
+  --series-1: #257de0;
+  --series-2: #f47230;
+  --series-3: #00b894;
+  --series-4: #6a4ce2;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #191919;
+    --surface-2: #222220;
+    --border: #3a3a37;
+    --grid: #2c2c2a;
+    --text-primary: #efefef;
+    --text-secondary: #9c9c9c;
+    --good: #0aac23;
+    --bad: #eb6263;
+    --series-1: #338ced;
+    --series-2: #e76624;
+    --series-3: #00a888;
+    --series-4: #9887ef;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #191919;
+  --surface-2: #222220;
+  --border: #3a3a37;
+  --grid: #2c2c2a;
+  --text-primary: #efefef;
+  --text-secondary: #9c9c9c;
+  --good: #0aac23;
+  --bad: #eb6263;
+  --series-1: #338ced;
+  --series-2: #e76624;
+  --series-3: #00a888;
+  --series-4: #9887ef;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--surface); color: var(--text-primary);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 32px 0 12px; }
+.sub { color: var(--text-secondary); margin: 0 0 20px; }
+.controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 8px; }
+.controls label { color: var(--text-secondary); display: flex; gap: 6px; align-items: center; }
+select { font: inherit; color: var(--text-primary); background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0 4px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px; }
+.card { border: 1px solid var(--border); border-radius: 10px; padding: 14px 14px 8px; background: var(--surface); position: relative; }
+.card h3 { font-size: 14px; margin: 0 0 2px; }
+.card p { margin: 0 0 6px; color: var(--text-secondary); font-size: 12px; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { fill: var(--text-secondary); font-size: 11px; }
+.tip { position: absolute; pointer-events: none; background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 10px; font-size: 12px; min-width: 190px; display: none; z-index: 2;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+.tip b { display: block; margin-bottom: 2px; }
+.tip .muted { color: var(--text-secondary); }
+.tip table { border-collapse: collapse; margin-top: 4px; }
+.tip td { padding: 1px 8px 1px 0; }
+.sw { display: inline-block; width: 10px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 4px; }
+.table-wrap { overflow-x: auto; }
+table.data { border-collapse: collapse; width: 100%; font-size: 13px; }
+table.data th, table.data td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+table.data th:first-child, table.data td:first-child,
+table.data th.l, table.data td.l { text-align: left; }
+table.data th { color: var(--text-secondary); font-weight: 600; }
+.up { color: var(--good); } .down { color: var(--bad); }
+.empty { color: var(--text-secondary); padding: 24px 0; }
+a { color: var(--series-1); }
+details summary { cursor: pointer; color: var(--text-secondary); margin: 24px 0 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Performance de www.40tude.fr</h1>
+  <p class="sub" id="sub"></p>
+
+  <div class="controls">
+    <label>Cible <select id="f-target"></select></label>
+    <label>Machine <select id="f-machine"></select></label>
+  </div>
+
+  <h2>Dernière mesure</h2>
+  <div id="latest" class="table-wrap"></div>
+
+  <h2>Évolution</h2>
+  <div class="legend" id="legend"></div>
+  <div class="grid" id="charts"></div>
+
+  <details>
+    <summary>Tableau complet des mesures</summary>
+    <div id="all" class="table-wrap"></div>
+  </details>
+</main>
+<script>
+const DATA = /*__DATA__*/[];
+
+const SERIES = [
+  { key: 'home|mobile', name: 'Accueil mobile', color: 'var(--series-1)' },
+  { key: 'home|desktop', name: 'Accueil desktop', color: 'var(--series-2)' },
+  { key: 'article|mobile', name: 'Article mobile', color: 'var(--series-3)' },
+  { key: 'article|desktop', name: 'Article desktop', color: 'var(--series-4)' },
+];
+const METRICS = [
+  { id: 'perf', title: 'Score Performance', note: '0 à 100, plus haut = mieux', fmt: (v) => String(v), better: 'up', min0: true, max: 100 },
+  { id: 'tbt', title: 'Total Blocking Time', note: 'ms, plus bas = mieux', fmt: (v) => v.toLocaleString('fr-FR') + ' ms', better: 'down', min0: true },
+  { id: 'lcp', title: 'Largest Contentful Paint', note: 'secondes, plus bas = mieux', fmt: (v) => (v / 1000).toFixed(2) + ' s', better: 'down', min0: true, scale: 1000 },
+  { id: 'kib', title: 'Poids de la page', note: 'Kio transférés, plus bas = mieux', fmt: (v) => v.toLocaleString('fr-FR') + ' Kio', better: 'down', min0: true },
+];
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmtDate = (iso) => { const d = new Date(iso); return isNaN(d) ? iso : d.toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }); };
+const fmtDay = (iso) => { const d = new Date(iso); return isNaN(d) ? iso : d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }); };
+
+function load(key, def) { try { return localStorage.getItem('perf40tude.' + key) || def; } catch { return def; } }
+function save(key, v) { try { localStorage.setItem('perf40tude.' + key, v); } catch { /* ignore */ } }
+
+// ---------------------------------------------------------------- filters
+const targets = [...new Set(DATA.map((r) => r.target))];
+const machines = [...new Set(DATA.map((r) => r.machine || '(inconnue)'))];
+function fillSelect(sel, values, labels, def) {
+  sel.innerHTML = values.map((v, i) => '<option value="' + esc(v) + '">' + esc(labels[i]) + '</option>').join('');
+  sel.value = values.includes(def) ? def : values[0];
+}
+fillSelect($('f-target'), targets, targets.map((t) => t === 'live' ? 'Site en ligne (live)' : 'Build local (local)'),
+  load('target', targets.includes('live') ? 'live' : targets[0]));
+fillSelect($('f-machine'), ['*', ...machines], ['Toutes', ...machines], load('machine', '*'));
+$('f-target').onchange = () => { save('target', $('f-target').value); render(); };
+$('f-machine').onchange = () => { save('machine', $('f-machine').value); render(); };
+
+function filtered() {
+  const t = $('f-target').value, m = $('f-machine').value;
+  return DATA.filter((r) => r.target === t && (m === '*' || (r.machine || '(inconnue)') === m));
+}
+
+// One "run" = all rows sharing the same timestamp
+function groupRuns(rows) {
+  const map = new Map();
+  for (const r of rows) {
+    if (!map.has(r.t)) map.set(r.t, { t: r.t, label: r.label, commit: r.commit, machine: r.machine, lighthouse: r.lighthouse, rows: {} });
+    map.get(r.t).rows[r.page + '|' + r.profile] = r;
+  }
+  return [...map.values()].sort((a, b) => new Date(a.t) - new Date(b.t));
+}
+
+// ---------------------------------------------------------------- latest table
+function deltaCell(cur, prev, m) {
+  if (cur == null) return '<td>-</td>';
+  let d = '';
+  if (prev != null && prev !== cur) {
+    const diff = cur - prev;
+    const good = m.better === 'up' ? diff > 0 : diff < 0;
+    const txt = (diff > 0 ? '+' : '−') + m.fmt(Math.abs(diff));
+    d = ' <span class="' + (good ? 'up' : 'down') + '">(' + txt + ')</span>';
+  }
+  return '<td>' + m.fmt(cur) + d + '</td>';
+}
+
+function renderLatest(runs) {
+  if (runs.length === 0) { $('latest').innerHTML = '<p class="empty">Aucune mesure pour ces filtres.</p>'; return; }
+  const last = runs[runs.length - 1];
+  // Previous value per series = most recent earlier run that has it
+  const prevOf = (key) => { for (let i = runs.length - 2; i >= 0; i--) if (runs[i].rows[key]) return runs[i].rows[key]; return null; };
+  let html = '<p class="sub">' + esc(fmtDate(last.t)) + (last.label ? ' · « ' + esc(last.label) + ' »' : '')
+    + ' · commit ' + esc(last.commit) + (last.lighthouse ? ' · Lighthouse ' + esc(last.lighthouse) : '')
+    + '. Entre parenthèses : écart avec la mesure précédente.</p>';
+  html += '<table class="data"><thead><tr><th>Page</th>' + METRICS.map((m) => '<th>' + esc(m.title) + '</th>').join('') + '<th>Rapport</th></tr></thead><tbody>';
+  for (const s of SERIES) {
+    const r = last.rows[s.key];
+    if (!r) continue;
+    const p = prevOf(s.key);
+    html += '<tr><td class="l"><span class="sw" style="background:' + s.color + '"></span>' + esc(s.name) + '</td>'
+      + METRICS.map((m) => deltaCell(r[m.id], p ? p[m.id] : null, m)).join('')
+      + '<td>' + (r.report ? '<a href="' + esc(r.report) + '">ouvrir</a>' : '-') + '</td></tr>';
+  }
+  $('latest').innerHTML = html + '</tbody></table>';
+}
+
+// ---------------------------------------------------------------- charts
+const W = 560, H = 230, PAD = { l: 52, r: 96, t: 10, b: 30 };
+
+function niceMax(v) {
+  if (v <= 0) return 1;
+  const p = Math.pow(10, Math.floor(Math.log10(v)));
+  for (const k of [1, 2, 2.5, 5, 10]) if (k * p >= v) return k * p;
+  return 10 * p;
+}
+
+function renderChart(m, runs) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = '<h3>' + esc(m.title) + '</h3><p>' + esc(m.note) + '</p>';
+  if (runs.length === 0) { card.innerHTML += '<p class="empty">Aucune donnée.</p>'; return card; }
+
+  const vals = runs.flatMap((r) => SERIES.map((s) => r.rows[s.key] ? r.rows[s.key][m.id] : null)).filter((v) => v != null);
+  const yMax = m.max != null ? m.max : niceMax(Math.max(...vals) * 1.05);
+  const iw = W - PAD.l - PAD.r, ih = H - PAD.t - PAD.b;
+  const n = runs.length;
+  const x = (i) => PAD.l + (n === 1 ? iw / 2 : (i * iw) / (n - 1));
+  const y = (v) => PAD.t + ih - (v / yMax) * ih;
+
+  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(m.title) + '">';
+  // Horizontal grid + y labels
+  for (let k = 0; k <= 4; k++) {
+    const v = (yMax * k) / 4, yy = y(v);
+    svg += '<line x1="' + PAD.l + '" x2="' + (W - PAD.r) + '" y1="' + yy + '" y2="' + yy + '" stroke="var(--grid)" stroke-width="1"/>';
+    const lab = m.scale ? (v / m.scale).toFixed(1) : Math.round(v).toLocaleString('fr-FR');
+    svg += '<text x="' + (PAD.l - 8) + '" y="' + (yy + 4) + '" text-anchor="end">' + lab + '</text>';
+  }
+  // X labels: thin out to about 8 ticks
+  const step = Math.max(1, Math.ceil(n / 8));
+  runs.forEach((r, i) => {
+    if (i % step === 0 || i === n - 1) svg += '<text x="' + x(i) + '" y="' + (H - 8) + '" text-anchor="middle">' + esc(fmtDay(r.t)) + '</text>';
+  });
+  // Lines + markers, end labels
+  const ends = [];
+  for (const s of SERIES) {
+    const pts = runs.map((r, i) => r.rows[s.key] && r.rows[s.key][m.id] != null ? [x(i), y(r.rows[s.key][m.id]), r.rows[s.key][m.id]] : null);
+    const segs = pts.filter(Boolean);
+    if (segs.length === 0) continue;
+    svg += '<polyline fill="none" stroke="' + s.color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="'
+      + segs.map((p) => p[0] + ',' + p[1]).join(' ') + '"/>';
+    for (const p of segs) svg += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="4" fill="' + s.color + '" stroke="var(--surface)" stroke-width="2"/>';
+    const last = segs[segs.length - 1];
+    ends.push({ y: last[1], text: s.name, color: s.color });
+  }
+  // Spread end labels vertically so they do not collide
+  ends.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 13) ends[i].y = ends[i - 1].y + 13;
+  // Then pull the stack back up if it overflows the plot area
+  const bottom = PAD.t + ih;
+  for (let i = ends.length - 1; i >= 0; i--) {
+    const limit = i === ends.length - 1 ? bottom : ends[i + 1].y - 13;
+    if (ends[i].y > limit) ends[i].y = limit;
+  }
+  for (const e of ends) svg += '<text x="' + (W - PAD.r + 8) + '" y="' + (e.y + 4) + '" style="fill:var(--text-primary)">' + esc(e.text) + '</text>';
+  // Crosshair + hit area
+  svg += '<line class="xh" x1="0" x2="0" y1="' + PAD.t + '" y2="' + (PAD.t + ih) + '" stroke="var(--text-secondary)" stroke-dasharray="3 3" visibility="hidden"/>';
+  svg += '<rect class="hit" x="' + PAD.l + '" y="' + PAD.t + '" width="' + iw + '" height="' + ih + '" fill="transparent"/>';
+  svg += '</svg>';
+  card.insertAdjacentHTML('beforeend', svg + '<div class="tip"></div>');
+
+  const el = card.querySelector('svg'), hit = card.querySelector('.hit'), xh = card.querySelector('.xh'), tip = card.querySelector('.tip');
+  const show = (evt) => {
+    const box = el.getBoundingClientRect();
+    const sx = ((evt.clientX - box.left) / box.width) * W;
+    const i = n === 1 ? 0 : Math.max(0, Math.min(n - 1, Math.round(((sx - PAD.l) / iw) * (n - 1))));
+    const r = runs[i];
+    xh.setAttribute('x1', x(i)); xh.setAttribute('x2', x(i)); xh.setAttribute('visibility', 'visible');
+    let h = '<b>' + esc(r.label || '(sans label)') + '</b><span class="muted">' + esc(fmtDate(r.t)) + ' · ' + esc(r.commit) + '</span><table>';
+    for (const s of SERIES) if (r.rows[s.key] && r.rows[s.key][m.id] != null)
+      h += '<tr><td><span class="sw" style="background:' + s.color + '"></span>' + esc(s.name) + '</td><td>' + m.fmt(r.rows[s.key][m.id]) + '</td></tr>';
+    tip.innerHTML = h + '</table>';
+    tip.style.display = 'block';
+    const cb = card.getBoundingClientRect();
+    let left = (x(i) / W) * box.width + (box.left - cb.left) + 12;
+    if (left + tip.offsetWidth > cb.width - 4) left -= tip.offsetWidth + 24;
+    tip.style.left = Math.max(4, left) + 'px';
+    tip.style.top = (box.top - cb.top + 8) + 'px';
+  };
+  const hide = () => { tip.style.display = 'none'; xh.setAttribute('visibility', 'hidden'); };
+  hit.addEventListener('pointermove', show);
+  hit.addEventListener('pointerdown', show);
+  hit.addEventListener('pointerleave', hide);
+  return card;
+}
+
+// ---------------------------------------------------------------- full table
+function renderAll(rows) {
+  const sorted = [...rows].sort((a, b) => new Date(b.t) - new Date(a.t));
+  let html = '<table class="data"><thead><tr><th>Date</th><th class="l">Label</th><th class="l">Page</th><th class="l">Profil</th>'
+    + '<th>Perf</th><th>FCP</th><th>LCP</th><th>TBT</th><th>CLS</th><th>Poids</th><th>Req.</th><th class="l">Commit</th><th class="l">Machine</th><th class="l">LH</th><th>Rapport</th></tr></thead><tbody>';
+  for (const r of sorted) {
+    html += '<tr><td>' + esc(fmtDate(r.t)) + '</td><td class="l">' + esc(r.label) + '</td><td class="l">' + esc(r.page) + '</td><td class="l">' + esc(r.profile)
+      + '</td><td>' + (r.perf ?? '-') + '</td><td>' + (r.fcp != null ? (r.fcp / 1000).toFixed(2) + ' s' : '-')
+      + '</td><td>' + (r.lcp != null ? (r.lcp / 1000).toFixed(2) + ' s' : '-') + '</td><td>' + (r.tbt ?? '-') + ' ms</td><td>' + (r.cls ?? '-')
+      + '</td><td>' + (r.kib ?? '-') + ' Kio</td><td>' + (r.req ?? '-') + '</td><td class="l">' + esc(r.commit) + '</td><td class="l">' + esc(r.machine || '-')
+      + '</td><td class="l">' + esc(r.lighthouse || '-') + '</td><td>' + (r.report ? '<a href="' + esc(r.report) + '">ouvrir</a>' : '-') + '</td></tr>';
+  }
+  $('all').innerHTML = html + '</tbody></table>';
+}
+
+function render() {
+  const rows = filtered();
+  const runs = groupRuns(rows);
+  $('sub').textContent = DATA.length + ' lignes dans history.csv · ' + runs.length + ' mesure(s) affichée(s). Survoler un graphique pour le détail.';
+  renderLatest(runs);
+  $('legend').innerHTML = SERIES.map((s) => '<span><i style="background:' + s.color + '"></i>' + esc(s.name) + '</span>').join('');
+  const charts = $('charts');
+  charts.innerHTML = '';
+  for (const m of METRICS) charts.appendChild(renderChart(m, runs));
+  renderAll(rows);
+}
+render();
+</script>
+</body>
+</html>
+`;

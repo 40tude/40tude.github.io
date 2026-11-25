@@ -8,6 +8,7 @@
 // Usually started through Measure-Perf.ps1, but can be run directly:
 //   node measure.mjs [--target live|local] [--label "text"] [--runs 3]
 //                    [--profiles mobile,desktop] [--pages home,article]
+//   node measure.mjs --dashboard-only    (only regenerate dashboard.html)
 
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -23,14 +24,17 @@ import desktopConfig from 'lighthouse/core/config/desktop-config.js';
 import { computeMedianRun } from 'lighthouse/core/lib/median-run.js';
 import serveHandler from 'serve-handler';
 
+import { writeDashboard } from './dashboard.mjs';
+
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(HERE, '..', '..');
 const RESULTS_DIR = path.join(HERE, 'results');
 const HISTORY_CSV = path.join(HERE, 'history.csv');
+const DASHBOARD_HTML = path.join(HERE, 'dashboard.html');
 const LOCAL_PORT = 4848;
 
 const CSV_COLUMNS = [
-  'timestamp', 'label', 'target', 'commit', 'page', 'profile', 'runs',
+  'timestamp', 'label', 'target', 'commit', 'machine', 'lighthouse', 'page', 'profile', 'runs',
   'perf', 'a11y', 'best_practices', 'seo',
   'fcp_ms', 'lcp_ms', 'tbt_ms', 'cls', 'si_ms', 'tti_ms',
   'total_kib', 'requests', 'search_data_kib', 'report',
@@ -40,7 +44,7 @@ const CSV_COLUMNS = [
 // Command line
 
 function parseArgs(argv) {
-  const opts = { target: 'live', label: '', runs: 3, profiles: ['mobile', 'desktop'], pages: null };
+  const opts = { target: 'live', label: '', runs: 3, profiles: ['mobile', 'desktop'], pages: null, dashboardOnly: false };
   for (let i = 0; i < argv.length; i++) {
     const key = argv[i];
     const next = () => {
@@ -53,6 +57,7 @@ function parseArgs(argv) {
       case '--runs': opts.runs = Number.parseInt(next(), 10); break;
       case '--profiles': opts.profiles = next().split(',').map((s) => s.trim()).filter(Boolean); break;
       case '--pages': opts.pages = next().split(',').map((s) => s.trim()).filter(Boolean); break;
+      case '--dashboard-only': opts.dashboardOnly = true; break;
       default: throw new Error(`Unknown argument: ${key}`);
     }
   }
@@ -122,10 +127,22 @@ function readHistory() {
   });
 }
 
+function toCsvLines(rows) {
+  return rows.map((r) => CSV_COLUMNS.map((c) => csvField(r[c])).join(','));
+}
+
 function appendHistory(rows) {
   const exists = fs.existsSync(HISTORY_CSV) && fs.statSync(HISTORY_CSV).size > 0;
-  const text = (exists ? '' : CSV_COLUMNS.join(',') + '\n')
-    + rows.map((r) => CSV_COLUMNS.map((c) => csvField(r[c])).join(',')).join('\n') + '\n';
+  if (exists) {
+    const header = fs.readFileSync(HISTORY_CSV, 'utf8').split(/\r?\n/, 1)[0];
+    if (header !== CSV_COLUMNS.join(',')) {
+      // Older file layout: rewrite it with the current columns (missing values stay empty)
+      const old = readHistory();
+      fs.writeFileSync(HISTORY_CSV, [CSV_COLUMNS.join(','), ...toCsvLines(old), ...toCsvLines(rows)].join('\n') + '\n', 'utf8');
+      return;
+    }
+  }
+  const text = (exists ? '' : CSV_COLUMNS.join(',') + '\n') + toCsvLines(rows).join('\n') + '\n';
   fs.appendFileSync(HISTORY_CSV, text, 'utf8');
 }
 
@@ -233,7 +250,7 @@ function printSummary(rows, previous) {
     console.log(`    Weight ${r.total_kib} KiB${delta(r.total_kib, p?.total_kib, true)}`
       + `  Requests ${r.requests}  search-data.json ${r.search_data_kib} KiB`);
   }
-  if (previous.size > 0) console.log('\n  Deltas compare with the previous run of the same target/page/profile.');
+  if (previous.size > 0) console.log('\n  Deltas compare with the previous run of the same target/page/profile on this machine.');
 }
 
 function writeRunSummary(dir, meta, rows) {
@@ -259,6 +276,11 @@ function writeRunSummary(dir, meta, rows) {
 
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
+  if (opts.dashboardOnly) {
+    writeDashboard(readHistory(), DASHBOARD_HTML);
+    console.log(`Dashboard: ${path.relative(process.cwd(), DASHBOARD_HTML) || DASHBOARD_HTML}`);
+    return;
+  }
   const cfg = JSON.parse(fs.readFileSync(path.join(HERE, 'pages.json'), 'utf8'));
   let pages = cfg.pages;
   if (opts.pages) {
@@ -281,7 +303,13 @@ async function main() {
   fs.mkdirSync(runDir, { recursive: true });
 
   const previous = new Map();
-  for (const h of readHistory()) previous.set(`${h.target}|${h.page}|${h.profile}`, h);
+  // Compare with the last run of the same target/page/profile on this machine
+  // (rows written before the "machine" column existed match any machine)
+  const host = os.hostname();
+  for (const h of readHistory()) {
+    if (h.machine && h.machine !== host) continue;
+    previous.set(`${h.target}|${h.page}|${h.profile}`, h);
+  }
 
   const rows = [];
   let lighthouseVersion = '';
@@ -311,6 +339,8 @@ async function main() {
           label: opts.label,
           target: opts.target,
           commit,
+          machine: os.hostname(),
+          lighthouse: best.lhr.lighthouseVersion,
           page: page.id,
           profile,
           runs: opts.runs,
@@ -328,9 +358,11 @@ async function main() {
     iso, label: opts.label, target: opts.target, baseUrl, commit, runs: opts.runs, lighthouseVersion,
     userAgent: userAgent.replace(/\(.*?\)/, '').trim(),
   }, rows);
+  writeDashboard(readHistory(), DASHBOARD_HTML);
   printSummary(rows, previous);
   console.log(`\nReports: ${path.relative(process.cwd(), runDir) || runDir}`);
   console.log(`History: ${path.relative(process.cwd(), HISTORY_CSV) || HISTORY_CSV}`);
+  console.log(`Dashboard: ${path.relative(process.cwd(), DASHBOARD_HTML) || DASHBOARD_HTML}`);
 }
 
 main().catch((err) => {
