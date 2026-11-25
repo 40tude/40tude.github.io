@@ -23,6 +23,8 @@ Aide-mémoire pour écrire les articles : Markdown, kramdown, Liquid, équations
   - [Aperçu VSCode et équations](#aperçu-vscode-et-équations)
   - [PowerShell](#powershell)
   - [Template d'article](#template-darticle)
+  - [Vignettes de la page d'accueil](#vignettes-de-la-page-daccueil)
+  - [Styles et icônes du site](#styles-et-icônes-du-site)
   - [Liquid](#liquid)
 - [NoteBook Python](#notebook-python)
 
@@ -215,9 +217,10 @@ Choix appliqués sur le blog depuis nov. 2026 (série *How Attention Works*).
 * La lightbox (ci-dessous) affiche l'image à sa taille réelle, dans la limite de 90 % de la fenêtre. Une image de 1200 px y reste à 1200 px CSS ; un schéma de 2400 px remplit l'écran. Encore une raison de garder les schémas denses en grand.
 
 **Lightbox : toutes les images du site sont cliquables**
-* Script maison `assets/js/lightbox.js`, chargé par `_includes/footer_custom.html` (ajouté le 2025-01-25).
+* Script maison `assets/js/lightbox.js`, chargé par `_includes/footer_custom.html` (ajouté le 2025-01-25). Depuis le 2026-11-25 il est chargé avec `defer` : il s'exécute après la lecture de la page et ne retarde plus l'affichage.
 * Au chargement, il ajoute la classe `lightbox-image` à chaque `<img>` dont le `src` finit par `.jpg`, `.jpeg`, `.png`, `.gif` ou `.webp`. Clic = image sur fond noir, `max-width` et `max-height` à 90 % de la fenêtre. Fermeture : croix en haut à droite ou clic à côté de l'image.
 * Rien à faire dans l'article : pas besoin d'entourer l'image d'un `<a href>`.
+* Si l'image a un attribut `data-full="..."`, la lightbox ouvre ce fichier au lieu du `src`. Sert à la page d'accueil : elle affiche la vignette, mais le clic ouvre la couverture en grand.
 * `assets/js/lightbox_00.js` et `assets/css/lightbox_00.css` = restes d'un premier essai avec zoom (abandonné, commit « Retour en arriere le zoom fonctionne pas »). Non chargés.
 
 **Pourquoi le texte bave en WebP avec perte**
@@ -275,6 +278,7 @@ uv run --no-project --with pillow python -c "from PIL import Image; Image.open('
 
 **Nommage et intégration**
 * `assets/img00.webp` = couverture, aussi utilisée pour Open Graph et la vignette de la page d'accueil (`image:` du front matter). Ne jamais publier avec le placeholder gris.
+* Vignette de la page d'accueil : `assets/img00_thumb.webp` (300 px, ~10 Ko), **générée automatiquement** au commit à côté de la couverture. Ne pas la faire à la main. Voir [Vignettes de la page d'accueil](#vignettes-de-la-page-daccueil).
 * Série en plusieurs épisodes dans un même dossier : un hero par épisode, `img00_00`, `img00_01`... (badge « Épisode N/M »). Images du corps : numérotation unique pour toute la série, qui continue d'un épisode à l'autre.
 * Images du corps : `img01`, `img02`... dans l'ordre de lecture. Une ou deux images ajoutées après coup : suffixe lettre (`img04a`) toléré. Au-delà, renuméroter avant publication (une fois publié, ne plus renommer : liens externes, cache).
 * Toujours `<figure>` + `alt` descriptif + `<figcaption>`, `loading="lazy"`. Image haute et étroite : réduire `max-width` (450 px par exemple).
@@ -626,10 +630,54 @@ git config core.hooksPath   # vérif : doit afficher tools/hooks
 ```
 
 * `.gitattributes` force LF sur `tools/hooks/*` (sinon `autocrlf` passe en CRLF et bash plante)
+* Le même hook génère la vignette de la page d'accueil des articles modifiés (voir [Vignettes de la page d'accueil](#vignettes-de-la-page-daccueil))
 * `tools/generate_last_update.ps1` lit ces dates et génère `tools/last_update_YYYYMMDD.md` (articles triés du plus récent au plus ancien)
 
 
 
+
+### Vignettes de la page d'accueil
+
+La page d'accueil (`index.md`) liste les 10 articles **modifiés** en dernier (pas les plus récents), chacun avec une image de 150 px. Au lieu de la couverture (100 à 180 Ko), elle affiche une vignette WebP de 300 px (~10 Ko) rangée à côté :
+
+```text
+docs/<categorie>/<article>/assets/img00.webp          couverture
+docs/<categorie>/<article>/assets/img00_thumb.webp    vignette (générée)
+```
+
+* La couverture est trouvée comme le fait `index.md` : `image:` du front matter, sinon le premier `<img src="...">` de l'article.
+* **Automatique** : au `git commit`, le hook `tools/hooks/pre-commit` lance `tools/thumbnails/make-thumbnails.mjs` sur les fichiers indexés. Article nouveau ou modifié : vignette créée si absente, refaite si la couverture est plus récente. Couverture modifiée seule : vignette refaite. Les vignettes sont ajoutées au même commit (la sortie du hook affiche `THUMB ...`).
+* Donc mettre à jour un vieil article (qui remonte en haut de l'accueil) lui crée sa vignette au passage.
+* S'il manque Node.js ou les paquets npm, le hook affiche un avertissement et le commit passe quand même. L'accueil utilise alors la couverture : rien de cassé, juste plus lourd.
+* Pas de vignette = `index.md` reprend l'image d'origine.
+
+Installation une fois par PC (après un clone) :
+
+```powershell
+# From the repository root. Node.js LTS is required (winget install OpenJS.NodeJS.LTS)
+npm ci --prefix tools/thumbnails
+git config core.hooksPath tools/hooks
+```
+
+À la main :
+
+```powershell
+# All articles (only missing or outdated thumbnails are written)
+node tools/thumbnails/make-thumbnails.mjs --all
+
+# One article
+node tools/thumbnails/make-thumbnails.mjs docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md
+```
+
+Réglages (300 px, qualité 75) en haut de `make-thumbnails.mjs`. Détails : `tools/thumbnails/README.md`.
+
+### Styles et icônes du site
+
+* **Styles maison** (liens en semi-gras, interligne serré des blocs de code) : `_sass/custom/custom.scss`. Just the Docs l'ajoute à la fin de sa propre feuille de style. Avant le 2026-11-25 c'était `assets/css/custom.css`, chargé à part (une requête bloquante de plus). Ne pas recréer de fichier CSS séparé.
+* Du CSS normal est du SCSS valide : on peut coller du CSS tel quel dans `custom.scss`.
+* **Icônes du bas de la barre latérale** (GitHub, LinkedIn, YouTube, RSS) : SVG écrits directement dans `_includes/nav_footer_custom.html` (icônes Simple Icons, domaine public). Plus de Font Awesome : il chargeait un CSS et une police depuis cdnjs (deux requêtes bloquantes) pour 4 icônes.
+* Ajouter une icône : copier un `<li>` existant, prendre le `path` SVG de l'icône sur <https://simpleicons.org/>, garder `fill="currentColor"` (la couleur suit le texte ou le `style` du lien).
+* Le CSS et les icônes des slides (`docs/.../slides/`) sont à part et n'ont pas changé.
 
 ### Liquid
 
