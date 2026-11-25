@@ -107,12 +107,14 @@ Nombre d'articles sur le site : **{{ site.pages | size }}**
         {% assign ext = norm_path | split: '.' | last %}
         {% assign base_len = norm_path.size | minus: ext.size | minus: 1 %}
         {% assign thumb_path = norm_path | slice: 0, base_len | append: '_thumb.webp' %}
+        {% comment %} Keep the full-size image for the lightbox (data-full below) {% endcomment %}
+        {% assign full_image_path = image_full_path %}
         {% assign thumb_key = thumb_path | url_decode %}
         {% if thumb_paths contains thumb_key %}
           {% assign image_full_path = thumb_path %}
         {% endif %}
 
-        <img src="{{ image_full_path }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy" decoding="async" class="lightbox-image" />
+        <img src="{{ image_full_path }}" data-full="{{ full_image_path }}" alt="Illustration de {{ page.title }}" width="150" loading="lazy" decoding="async" class="lightbox-image" />
       </td>
       <td>
         {% comment %} Text: front matter description if any, else the first nb_words words of the content {% endcomment %}
