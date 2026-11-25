@@ -17,7 +17,7 @@ defaults:
 # Read https://just-the-docs.com/docs/ui-components/code/line-numbers/
 # Turn on line numbers for fenced code blocks globally
 # I don't use it because it does not work when I try to reduce the high of src code line
-# See assets/css/custom.css
+# See _sass/custom/custom.scss
 # kramdown:
 #   syntax_highlighter_opts:
 #     block:
