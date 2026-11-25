@@ -19,3 +19,7 @@ timestamp,label,target,commit,machine,lighthouse,page,profile,runs,perf,a11y,bes
 2026-11-25T22:37:06+01:00,après point 2,live,fafff276,5PRO,13.6.0,home,desktop,3,100,100,100,100,569,569,0,0,569,569,553,24,0,results/2026-11-25_223706/home_desktop.html
 2026-11-25T22:37:06+01:00,après point 2,live,fafff276,5PRO,13.6.0,article,mobile,3,70,96,96,100,4670,4670,132,0,4670,12045,2454,35,0,results/2026-11-25_223706/article_mobile.html
 2026-11-25T22:37:06+01:00,après point 2,live,fafff276,5PRO,13.6.0,article,desktop,3,97,97,96,100,1017,1017,6,0,1017,2239,2454,35,0,results/2026-11-25_223706/article_desktop.html
+2026-11-25T23:02:10+01:00,après point 3.1,live,6b0d594a+dirty,5PRO,13.6.0,home,mobile,3,100,96,100,100,1145,1145,13,0,1145,3061,390,21,0,results/2026-11-25_230210/home_mobile.html
+2026-11-25T23:02:10+01:00,après point 3.1,live,6b0d594a+dirty,5PRO,13.6.0,home,desktop,3,100,100,100,100,380,380,0,0,380,380,390,21,0,results/2026-11-25_230210/home_desktop.html
+2026-11-25T23:02:10+01:00,après point 3.1,live,6b0d594a+dirty,5PRO,13.6.0,article,mobile,3,90,96,96,100,2319,2319,236,0,3628,11160,2293,33,0,results/2026-11-25_230210/article_mobile.html
+2026-11-25T23:02:10+01:00,après point 3.1,live,6b0d594a+dirty,5PRO,13.6.0,article,desktop,3,96,97,96,100,1093,1093,2,0,1093,2128,2292,32,0,results/2026-11-25_230210/article_desktop.html
