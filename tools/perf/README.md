@@ -16,7 +16,7 @@ tools/perf/
 
 ## Prerequisites
 
-- PowerShell 7, Node.js LTS (`winget install OpenJS.NodeJS.LTS`), Google Chrome.
+- PowerShell 7, Node.js LTS 22.19 or later (`winget install OpenJS.NodeJS.LTS`, Lighthouse 13 requirement), Google Chrome.
 - For `-Local` only: Ruby and the site's gems (`bundle install` at the repository root).
 - npm dependencies (Lighthouse...) are installed in `tools/perf/node_modules` on first run.
 

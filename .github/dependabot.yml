@@ -6,3 +6,21 @@ updates:
       interval: daily
     allow:
       - dependency-type: direct
+
+  # Lighthouse measurement bench (local tool, not part of the published site).
+  # Weekly, and every update (version or security) grouped in a single PR
+  # so a burst of advisories on transitive deps produces one PR, not ten.
+  - package-ecosystem: npm
+    directory: /tools/perf
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 1
+    groups:
+      perf-bench-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+      perf-bench:
+        applies-to: version-updates
+        patterns:
+          - "*"
