@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 11:21:18
+last_modified_date: 2026-11-26 11:41:51
 ---
 
 
@@ -1089,8 +1089,21 @@ What remains is the part where steps follow one another and where the random wei
 * NumPy documentation, [Broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html){:target="_blank"}.
 
 **Videos**
-* 3Blue1Brown, [Attention in transformers, step-by-step](https://www.youtube.com/watch?v=eMlx5fFNoYc){:target="_blank"}. Another architecture, but the same "scores, softmax, weights" idea, animated.
+* 3Blue1Brown, another architecture, but the same "scores, softmax, weights" idea, animated.
 
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/eMlx5fFNoYc?start=0"
+    title="Attention in transformers, step-by-step - 3Blue1Brown"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Attention in transformers, step-by-step - 3Blue1Brown
+</figcaption>
+</figure>
 
 
 ----
