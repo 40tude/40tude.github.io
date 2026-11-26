@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-25 19:02:18
+last_modified_date: 2026-11-26 11:21:18
 ---
 
 
@@ -40,21 +40,13 @@ last_modified_date: 2026-11-25 19:02:18
 
 
 
-<!-- TODO: episodes 02..03 are published: false. A {%raw%}{%link%}{%endraw%} to an unpublished page breaks the Jekyll build.
-Restore the links below (and in the Conclusion) when each episode is published:
-[Episode 00]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}{%endraw%})
-[Episode 01]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}{%endraw%})
-[Episode 02]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}{%endraw%})
-[Episode 03]({%raw%}{%link docs/09_ml_ai/009_how_attention_works/how_attention_works_03.md%}{%endraw%})
--->
-
 {: .note }
 > This post is a series in **4 episodes**. Alice and Bob need two evenings to rebuild the slide, one box at a time.
 >
 > * [Episode 00]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_00.md%}): Day 1. Leaving class with the slide. Why word-by-word translation fails, from words to tokens, from tokens to vectors.
 > * [Episode 01]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_01.md%}) **(you are here)**: Day 1, later that evening. Reading in order with a GRU, encoder and decoder, the bottleneck, and the idea of attention.
-> * Episode 02 *(coming soon)*: Day 2. The attention layer step by step: scores, softmax, context vector, one iteration of the decoder.
-> * Episode 03 *(coming soon)*: Day 2, later that evening. Training with teacher forcing, inference, what we simplified, and a peek at Transformers.
+> * [Episode 02]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}): Day 2. The attention layer step by step: scores, softmax, context vector, one iteration of the decoder.
+> * [Episode 03]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_03.md%}): Day 2, later that evening. Training with teacher forcing, inference, what we simplified, and a peek at Transformers.
 
 
 
@@ -411,16 +403,6 @@ Verify in the archived tutorial before publishing, or soften Bob's line.
 
 **Alice:** Wait. There's a `softmax` on the slide, but it's in the middle, in the part we just erased.
 
-<!--
-######################################################################
-TODO: CHECK THE OUTPUT SOFTMAX
-The original slide (img03) shows no softmax box after "fc Dense", only "pred (x)" with vocab_size.
-The text below assumes the output softmax is implied by "pred". The author no longer remembers
-what was intended on the slide. Our own diagram (attention.drawio) labels it "pred (probabilities)".
-Options: keep as is / redraw a softmax box in img15..img17 / reword Bob's answer.
-See raw_assets/TODO.md.
-######################################################################
--->
 **Bob:** Yeah, that one belongs to the attention, different story. The softmax of the output is not drawn as a box, it's hidden in `pred`. Don't ask me why, ask whoever drew it.
 
 **Alice:** Fine. And then?
@@ -734,7 +716,7 @@ At the end of this first evening, Alice and Bob have not computed a single atten
 
 That is the idea. What remains is the machinery: how the decoder scores each source token, how these scores become weights, how the weights become a context vector, and how the whole thing is trained and then used. In other words, the left half of the red box and the switches.
 
-That will be the topic of Episode 02 (coming soon), on the evening of day 2. Alice and Bob will have slept on it. So will we.
+That will be the topic of [Episode 02]({%link docs/09_ml_ai/009_how_attention_works/how_attention_works_02.md%}), on the evening of day 2. Alice and Bob will have slept on it. So will we.
 
 
 
