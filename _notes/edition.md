@@ -164,7 +164,7 @@ Bannières à copier-coller dans un article en cours :
 </h2>
 
 <h2 align="center">
-<span style="color:#b54708"><b>This post is still being reviewed.</b></span>
+<span style="color:#F87115"><b>This post is still being reviewed.</b></span>
 </h2>
 
 
