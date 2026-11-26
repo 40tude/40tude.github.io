@@ -58,6 +58,9 @@ callouts:
     color: green
   highlight:
     color: yellow
+  fortytude: # class names cannot start with a digit, hence not "40tude"
+    title: 40tude
+    color: orange # $orange-000 / $orange-300 defined in _sass/custom/setup.scss
 
 
 ga_tracking: G-HEDHH8MLQE

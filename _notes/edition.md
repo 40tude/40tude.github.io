@@ -119,9 +119,16 @@ Sans Serif :
 Voir `_config.yml`
 
 ```
-    purple        red              blue               green        yellow
-{: .note }    {: .warning }    {: .important }    {: .new }    {: .highlight }
+    purple        red              blue               green        yellow           orange
+{: .note }    {: .warning }    {: .important }    {: .new }    {: .highlight }    {: .fortytude }
 ```
+
+Just the Docs 0.12 ne dessine que des bordures (aucun fond, que `callouts_level` soit `quiet` ou `loud`). Le fond teinté (alpha 0.12) est ajouté à la main dans `_sass/custom/custom.scss`. `callouts_opacity` n'a plus d'effet depuis les anciennes versions du thème.
+
+Callout maison `fortytude` (titre « 40tude », couleurs du logo) :
+- Le nom ne peut pas être `40tude` : une classe CSS ne peut pas commencer par un chiffre (le build casserait).
+- Just the Docs n'a pas de couleur `orange` : `$orange-000` (`#fd851c`, orange du logo, bordure fine + fond) et `$orange-300` (`#b54708`, titre + bordure gauche, plus foncé pour le contraste) sont définis dans `_sass/custom/setup.scss`.
+- Pour créer un autre callout : 1) définir `$<couleur>-000` et `$<couleur>-300` dans `setup.scss` si la couleur n'existe pas, 2) ajouter le callout dans `_config.yml` (section `callouts`), 3) ajouter sa ligne de fond dans `custom.scss`.
 
 ```
 > A paragraph

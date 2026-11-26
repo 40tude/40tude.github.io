@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// Site-specific SCSS variables, loaded by Just the Docs BEFORE its own styles.
+// Put variables here (not rules): they become usable in the theme, in
+// _config.yml callouts (color: orange -> $orange-000 / $orange-300) and in
+// _sass/custom/custom.scss.
+// -----------------------------------------------------------------------------
+
+// Oranges used by the "fortytude" callout.
+// 000 = light shade (thin border, background tint): orange of the site logo
+//       (assets/images/40tude_150.webp, gradient #f76d13 to #fd851c).
+// 300 = dark shade (left border, title). The logo orange #f76d13 only gives a
+//       2.6:1 contrast on the tinted background, too pale for the title. #b54708
+//       gives 4.9:1 (WCAG AA), in line with the other callouts (red 4.2:1,
+//       green 5.8:1, purple 10.9:1).
+$orange-000: #fd851c;
+$orange-300: #b54708;
