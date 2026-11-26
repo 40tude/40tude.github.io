@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 17:59:45
+last_modified_date: 2026-11-26 19:35:34
 ---
 
 
@@ -111,7 +111,7 @@ last_modified_date: 2026-11-26 17:59:45
 In 2024 I went back to school. Several months of training in data science and AI, with two French professional certifications at the end of the road ([RNCP 35288](https://www.francecompetences.fr/recherche/rncp/35288/){:target="_blank"} and [RNCP 38777](https://www.francecompetences.fr/recherche/rncp/38777/){:target="_blank"}). It was fun, projects oriented and intense. Every week a new topic, every day a new notebook, and every evening the feeling that I had *almost* understood.
 
 
-During the training I did what many of us do: I built a big OneNote with one page per day plus a review deck with one or more slides per topic, to keep everything in one place. One of those slides was about **attention**, the mechanism that lets a neural network translate a sentence without losing track of what it is translating. It is also the idea that, a few years later, gave birth to the Transformers and therefore to the LLMs we all use today.
+During the training I did what many of us do: I built a big OneNote with one page per day plus a review deck (you can check [course_review_fullstack.pptx](https://github.com/40tude/fullstack_mars_2024_3/tree/main/12_assets)) with one or more slides per topic, to keep everything in one place. One of those slides (#56) was about **attention**, the mechanism that lets a neural network translate a sentence without losing track of what it is translating. It is also the idea that, a few years later, gave birth to the Transformers and therefore to the LLMs we all use today.
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
 <img src="./assets/img01.webp"
@@ -156,6 +156,23 @@ Not much, really:
 * **Python**: we will read a few lines of code, nothing fancy.
 * **The idea of a neural network**: layers with weights, a loss that tells how wrong we are, and weights that get adjusted to reduce that loss. If "gradient descent" does not ring a bell, start with [Understanding Gradient Descent]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}){:target="_blank"}.
 * **Matrix-vector product**: knowing that a matrix of shape `m x n` times a vector of length `n` gives a vector of length `m`. If you want a visual refresher, the [Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab){:target="_blank"} series by 3Blue1Brown is perfect.
+
+
+{: .fortytude}
+>This is importatn so let's make sure were are in sync.Multiply a 2 × 3 matrix by a 3 × 1 vector, means multiple a 2 rows, 3 columns matrix by a 3 rows by 1 column vector.:
+>
+>$$
+>A=\begin{bmatrix}2&3&0\\ 1&2&-1\end{bmatrix},\quad \mathbf{x}=\begin{bmatrix}2\\ 1\\ 3\end{bmatrix}
+>$$
+>
+>1. First entry ($$y_1$$): $$(2 \times 2) + (3 \times 1) + (0 \times 3) = 4 + 3 + 0 = 7$$
+>2. Second entry ($$y_2$$): $$(1 \times 2) + (2 \times 1) + (-1 \times 3) = 2 + 2 - 3 = 1$$
+>
+>Resulting 2 × 1 vector:
+>
+>$$
+>\mathbf{y}=\begin{bmatrix}7\\ 1\end{bmatrix}
+>$$
 
 Everything else (tokens, embeddings, RNN, GRU, softmax...) will be explained along the way, or linked when a good explanation already exists somewhere else.
 
