@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 11:41:51
+last_modified_date: 2026-11-26 11:56:06
 ---
 
 
@@ -350,11 +350,11 @@ True
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img14a.webp"
-    alt="Describe the image here"
+    alt="JupyterLab running in the browser: a self-contained notebook cell rebuilds the book and the post-it, creates the random W1, W2 and v of the attention layer, computes keys and query, and prints the shapes (11, 3) and (3,), then True"
     style="max-width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>The first cell of the section in JupyterLab: keys is seq_len x n_units, query is n_units.</figcaption>
 </figure>
 
 
@@ -450,7 +450,7 @@ $$
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img14b.webp"
-    alt="Neural Machine Translation by Jointly Learning to Align and Translate"
+    alt="First page of the paper Neural Machine Translation by Jointly Learning to Align and Translate, by Dzmitry Bahdanau, KyungHyun Cho and Yoshua Bengio: title, authors, abstract and the beginning of the introduction"
     style="max-width: 100%; height: auto;"
     loading="lazy"
 />

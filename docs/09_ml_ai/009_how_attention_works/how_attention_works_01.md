@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 11:21:18
+last_modified_date: 2026-11-26 11:56:06
 ---
 
 
@@ -256,11 +256,11 @@ True
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img18a.webp"
-    alt="Describe the image here"
+    alt="JupyterLab running in the browser: a first notebook cell rebuilds the embedding and runs the plain RNN loop over the 11 tokens, a second cell stacks the memories and prints the shapes (11, 3) and (3,), then True"
     style="max-width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>Bob's RNN loop in JupyterLab: output is seq_len x n_units, state is n_units, and state is the last row of output.</figcaption>
 </figure>
 
 **Alice:** `(11, 3)`: `seq_len x n_units`. And `(3,)`: `n_units`. It matches the slide. And `True` means...

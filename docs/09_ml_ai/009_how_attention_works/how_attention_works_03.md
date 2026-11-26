@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 11:41:51
+last_modified_date: 2026-11-26 11:56:06
 ---
 
 
@@ -286,11 +286,11 @@ total loss: 46.19
 
 <figure style="max-width: 900px; margin: auto; text-align: center;">
 <img src="./assets/img16a.webp"
-    alt="Describe the image here"
+    alt="JupyterLab running in the browser: the self-contained cell of the training section rebuilds the encoder, the attention and the decoder with random weights, computes the keys once, and defines decoder_step()"
     style="max-width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>I'm a legend</figcaption>
+<figcaption>The training cell in JupyterLab: everything from Episodes 00 to 02 in one cell, and the keys computed once, outside the loop.</figcaption>
 </figure>
 
 **Alice:** Wait, I'm reading the "in" column. `<start>`, `i`, `like`, `writing`... it's the English sentence, shifted by one. And the "expected" column is the same sentence, one step ahead. The decoder gets the true sentence as input and must guess the next token, every time.
