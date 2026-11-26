@@ -118,31 +118,41 @@ Sans Serif :
 
 Voir `_config.yml`
 
-```
+```text
     purple        red              blue               green        yellow           orange
 {: .note }    {: .warning }    {: .important }    {: .new }    {: .highlight }    {: .fortytude }
 ```
 
-Just the Docs 0.12 ne dessine que des bordures (aucun fond, que `callouts_level` soit `quiet` ou `loud`). Le fond teinté (alpha 0.12) est ajouté à la main dans `_sass/custom/custom.scss`. `callouts_opacity` n'a plus d'effet depuis les anciennes versions du thème.
+Just the Docs 0.12 ne dessine que des bordures (aucun fond, que `callouts_level` soit `quiet` ou `loud`). Le fond teinté (alpha 0.12) est ajouté à la main dans `_sass/custom/custom.scss`. `callouts_opacity` est une option des anciennes versions du thème, sans effet en 0.12..
 
 Callout maison `fortytude` (titre « 40tude », couleurs du logo) :
 - Le nom ne peut pas être `40tude` : une classe CSS ne peut pas commencer par un chiffre (le build casserait).
 - Just the Docs n'a pas de couleur `orange` : `$orange-000` (`#fd851c`, orange du logo, bordure fine + fond) et `$orange-300` (`#b54708`, titre + bordure gauche, plus foncé pour le contraste) sont définis dans `_sass/custom/setup.scss`.
-- Pour créer un autre callout : 1) définir `$<couleur>-000` et `$<couleur>-300` dans `setup.scss` si la couleur n'existe pas, 2) ajouter le callout dans `_config.yml` (section `callouts`), 3) ajouter sa ligne de fond dans `custom.scss`.
+- Pour créer un autre callout :
+  1. définir `$<couleur>-000` et `$<couleur>-300` dans `setup.scss` si la couleur n'existe pas,
+  1. ajouter le callout dans `_config.yml` (section `callouts`),
+  1. ajouter sa ligne de fond dans `custom.scss`.
 
-```
+
+```markdown
+{: .warning }
 > A paragraph
 >
 > Another paragraph
->
-> The last paragraph
 ```
 
-```
-{: .note-title }
-> Side Note:
+```markdown
+{: .warning-title }
+> The Title
 >
-> A paragraph with a custom title callout
+> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, corporis.
+```
+
+```markdown
+{: .fortytude-title }
+> The Title
+>
+> If `.fortytude` is used then the default title is `40tude` (displayed in uppercas)
 ```
 
 Référence : <https://just-the-docs.com/docs/ui-components/callouts/>
@@ -154,7 +164,7 @@ Bannières à copier-coller dans un article en cours :
 </h2>
 
 <h2 align="center">
-<span style="color:orange"><b>This post is still being reviewed.</b></span>
+<span style="color:#b54708"><b>This post is still being reviewed.</b></span>
 </h2>
 
 
