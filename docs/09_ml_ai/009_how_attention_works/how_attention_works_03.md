@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 11:56:06
+last_modified_date: 2026-11-26 11:58:25
 ---
 
 
@@ -199,9 +199,21 @@ They checked every shape with random weights. The decoder answered `95` instead 
 
 **Alice:** Of course. That's how it learns to stop. After `.`, the right answer is `<end>`, and it gets a bad mark if it says anything else.
 
-**Bob:** Now the mark. The decoder gives a probability to every English token: `pred`, `vocab_size` numbers. At step 1, the expected token is `i`. The mark only looks at one number: the probability given to `i`.
+**Alice:** Now the mark. Easy one. At step 1, `argmax()` says `95`, the right answer is `i`: wrong, 1 point of penalty. If it had said `i`: right, 0. We add the penalties over the sentence, and training means making that number smaller.
 
-**Alice:** If it gives 0.99 to `i`, good mark. If it gives 0.001, bad mark.
+**Bob:** Like counting the mistakes in the dictation. *(thinks)* Hmm, wait. With our random weights, it's wrong everywhere: 9 mistakes out of 9. Now I nudge one weight a tiny bit. What happens?
+
+**Alice:** The probabilities move a tiny bit, and... `argmax()` still picks `95`. Still wrong. Still 9.
+
+**Bob:** And another tiny nudge, still 9. And another one... Until one day, the `argmax()` jumps to another token, and the count jumps too.
+
+**Alice:** *(groans)* "Nothing, nothing, nothing, jump". The `argmax` wall, again. We had exactly this discussion about the mix, before the pizza. A count of mistakes can't tell the network which way to go.
+
+**Bob:** So the mark must change smoothly when the weights change smoothly. Not "right or wrong", but "how close to right".
+
+**Alice:** Then forget `argmax()`. The decoder gives a probability to every English token: `pred`, `vocab_size` numbers. At step 1, the expected token is `i`. We only look at one number: the probability given to `i`. That number moves a tiny bit at every nudge.
+
+**Bob:** If it gives 0.99 to `i`, good mark. If it gives 0.001, bad mark. And everything in between.
 
 **Bob:** And the "mark" is a loss: small is good. We take minus the log of that probability.
 
@@ -493,9 +505,17 @@ print(produced)
 <!-- ###################################################################### -->
 ## Where Does `clean` Look?
 
-**Bob:** *(turns his laptop towards her, a little too proud)* While you were ordering the pizza.
+**Bob:** *(turns his laptop towards her, a little too proud)* I have a confession.
 
-**Alice:** What's that?
+**Alice:** You ate the last cookie.
+
+**Bob:** That too. But no. Last night, when I couldn't sleep, I found the PyTorch tutorial, the one with `query` and `keys`. It trains a real translation model with attention. So I copied it, and I spent the night renaming everything with the names of the slide, and replacing its sentences with ours. I didn't understand half of it. But I told myself: if tonight we understand the slide, tomorrow I'll understand the code.
+
+**Alice:** And today?
+
+**Bob:** Today I understand much more than half. And while you were ordering the pizza, I let it train. A few minutes on my laptop.
+
+**Alice:** Show me.
 
 **Bob:** The slide, in PyTorch. Same boxes, same names: blue embedding, encoder GRU, `W1`, `W2`, `V`, `concat`, decoder GRU, `fc`. A real GRU this time, with `emb_dim = 16` and `n_units = 32`. And a tiny training set: I generated French and English sentences on the model of ours. `tu aimes lire du code sale en python` -> `you like reading dirty code in python`, `nous aimons tester du code en go` -> `we like testing code in go`... 5 subjects, 4 verbs, 5 adjectives or none, 5 languages. 600 pairs.
 
@@ -553,8 +573,14 @@ print(produced)
 
 **Bob:** Bahdanau et al. (2014), Figure 3. The same kind of picture, on real English-French sentences, with real vocabularies. And the same thing: mostly a diagonal, because the two languages roughly follow the same order, with little detours where the order changes. Adjectives and nouns, like our `code propre`.
 
-{: .note }
-> The script that trained this tiny model and drew the heatmap is here: [heatmap_toy.py](./assets/heatmap_toy.py). It is about 150 lines of PyTorch and follows the names of the slide. It runs on a laptop CPU in a few minutes: `uv run --with torch --with matplotlib --with pillow --with numpy python heatmap_toy.py img22.webp`. With another random seed, the translation stays the same and `i`, `writing`, `clean` and `rust` stay sharp, sometimes one row off (a row also knows the tokens before it). The "wandering" columns change from one seed to the other.
+{: .note-title }
+> Let's be honest
+>
+> Two students who discovered attention the day before would not write this script in one night, even with a tutorial. Bob gets a little help from the author here. The script that trained this tiny model and drew the heatmap is [heatmap_toy.py](./assets/heatmap_toy.py). It is about 150 lines of PyTorch, inspired by the PyTorch tutorial of the Webliography, and it follows the names of the slide.
+>
+> Once you have read the four episodes, you should be able to read it. That's the real test of the series.
+>
+> It runs on a laptop CPU in a few minutes: `uv run --with torch --with matplotlib --with pillow --with numpy python heatmap_toy.py img22.webp`. With another random seed, the translation stays the same and `i`, `writing`, `clean` and `rust` stay sharp, sometimes one row off (a row also knows the tokens before it). The "wandering" columns change from one seed to the other.
 
 
 

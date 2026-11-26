@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 11:56:06
+last_modified_date: 2026-11-26 11:58:25
 ---
 
 
@@ -655,13 +655,19 @@ print(softmax(scores_for(s_b)))
 
 **Alice:** The `x`. A multiplication. Two wires go in: the weights, from softmax, `seq_len`. And... *(follows the wire with her finger)* ...a big `seq_len x n_units` matrix, coming from the left. That's the book.
 
-**Bob:** Which version of the book? The one translated by `W1`, or the original?
+**Bob:** The translated book, then. The output of `W1`, the `keys`. We computed them, we have them, it's the obvious thing to multiply. *(starts typing)* `weights @ keys`...
 
-**Alice:** *(follows the wire again, all the way down)* The original. The wire comes straight from `output`, it splits before `W1`. One branch goes into `W1`, the other goes to the `x`.
+**Alice:** Wait. Why "obvious"?
 
-**Bob:** Interesting. So `W1` was only used to compute the scores. To decide *where* to look. But what we actually read is the book itself.
+**Bob:** Because... it's the last version of the book we've seen? Everything after `W1` uses the translated rows. The `+`, the `tanh`, `V`...
 
-**Alice:** Makes sense. The translated rows were in the "common language", for the comparison. The decoder doesn't need the comparison language, it needs the content.
+**Alice:** *(follows the wire with her finger, all the way down)* Hmm. No. Look. This wire doesn't come out of `W1`. It comes straight from `output`, and it splits *before* `W1`. One branch goes into `W1`, the other one goes up to the `x`.
+
+**Bob:** *(leans over the slide)* Oh. You're right. I'd have bet my cookies on `keys`. *(deletes the line)*
+
+**Alice:** Good thing you didn't. *(pause)* And it makes sense, actually. The translated rows were in the "common language", only to compare them with the memory. To decide *where* to look. But once we know where to look, what do we want to read?
+
+**Bob:** The book itself. The content, not the comparison language. Okay, I'm convinced. And a bit vexed.
 
 **Bob:** Now, the multiplication. A vector of 11 weights times a matrix of 11 rows.
 
@@ -956,7 +962,9 @@ predicted index: 95 with probability 0.3
 
 **Bob:** So at step 2, the attention gets a new memory. The book doesn't change: same 11 rows, the French sentence hasn't moved. But the question changes. So...
 
-**Alice:** ...the scores change, so the weights change. Show me.
+**Alice:** ...the scores change, so the weights change. Let me guess how. At step 1, it should look at the beginning of the sentence. At step 2, one row further. At step 3, one more. The attention slides along the French sentence, like a finger under the words.
+
+**Bob:** Sounds reasonable. Let's see if the weights agree.
 
 ```python
 weights_2, context_2 = attention(s)         # step t = 2: same book, new memory s_1
@@ -978,11 +986,19 @@ for token, w1, w2 in zip(tokens, weights, weights_2):
    <end> 0.04  0.07
 ```
 
-**Alice:** Small changes, because nothing is trained. But they move. `<start>` goes from 0.11 to 0.08, `<end>` from 0.04 to 0.07. Same book, new memory, new weights. New post-it.
+**Alice:** Small changes, because nothing is trained. But they move. `<start>` goes from 0.11 to 0.08, `<end>` from 0.04 to 0.07. *(frowns)* But not the way I said. `j'` goes *down*. `<end>`, at the other end of the sentence, goes *up*. No finger sliding to the next row.
 
-**Bob:** And that's a big deal. The decoder doesn't "advance" in the French sentence, one row per step. At every step, it looks at *all* the rows again and recomputes all the weights. What changes is the memory, so the question.
+**Bob:** Random weights, maybe? A trained one would slide?
 
-**Alice:** And that's why `code propre` can become `clean code`. To write `clean`, at step 4, it can look at `propre`, row 7, even though it hasn't "used" row 6, `code`, yet. There's no reading head moving left to right. The decoder can jump anywhere at any step.
+**Alice:** *(thinks, then shakes her head)* No, it's not about the training. Look at the code. Where is the "next row" in there? There's no counter, no position, nothing that says "row 2 now". There's only the book, always all of it, and the memory. My finger doesn't exist.
+
+**Bob:** So at every step, it looks at *all* the rows again and recomputes all the weights. What changes is only the memory, so the question.
+
+**Alice:** Same book, new memory, new weights. New post-it. And if a trained network looks at the rows in order, it's because it *learned* to, not because the machine forces it.
+
+**Bob:** And that's a big deal. Because sometimes the order should *not* be followed.
+
+**Alice:** `code propre` -> `clean code`. To write `clean`, at step 4, it can look at `propre`, row 7, even though it hasn't "used" row 6, `code`, yet. With my finger sliding left to right, it would have looked at `code` first, and written `code clean`. Without the finger, the decoder can jump anywhere at any step.
 
 **Bob:** Feynman check? I'll do this one, it's the biggest.
 
