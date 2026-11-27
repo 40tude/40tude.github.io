@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-27 17:54:44
+last_modified_date: 2026-11-27 18:26:29
 ---
 
 
@@ -108,6 +108,17 @@ last_modified_date: 2026-11-27 17:54:44
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 ## The Bottleneck
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img19.webp"
+    alt="The decoder redrawn by Alice, attention erased: the token index 0 goes through the red Embedding (vocab_size, emb_dim), concat, the GRU (n_units), fc Dense and softmax (vocab_size) to pred; the previous memory s(t-1) now enters the GRU from the side; a green wire goes from softmax to argmax and back down to switch 3"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The red part redrawn by Alice, attention erased (Rule 4), with the missing wire: the previous memory s(t-1) enters the GRU from the side.</figcaption>
+</figure>
+
 
 **Alice:** Wait. Let me say it with sizes, it's my thing. `state` has `n_units` numbers. Always. Whatever the sentence.
 
