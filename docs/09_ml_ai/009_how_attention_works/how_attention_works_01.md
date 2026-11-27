@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 17:59:45
+last_modified_date: 2026-11-27 11:57:38
 ---
 
 
@@ -59,10 +59,11 @@ last_modified_date: 2026-11-26 17:59:45
 ## TL;DR
 {: .no_toc }
 
-* A **GRU** reads the embedded sentence one token at a time and keeps a memory (the hidden state) of `n_units` numbers. It returns `output`, all the memories (`seq_len x n_units`), and `state`, the last one (`n_units`), which is also the last row of `output`.
+* A **GRU** (Gated Recurrent Unit) is a type of recurrent neural network (RNN) designed to process sequential data (text, audio, time series) while retaining information over long sequences.
+* Here the **GRU** reads the embedded sentence one token at a time and keeps a memory (the hidden state) of `n_units` numbers. It returns `output` (a matrix), all the memories (`seq_len x n_units`), and `state` (a vector), the last one (`n_units`), which is also the last row of `output`.
 * **seq2seq** (2014): an **encoder** reads the source sentence, a **decoder** writes the translation one token at a time, starting from `state` and stopping on `<end>`. Lengths and word order are free.
 * The **bottleneck**: the whole sentence has to fit in `state`, a fixed-size vector. Like translating a novel from a post-it. Quality drops on long sentences.
-* The idea of **attention**: keep `output`, the whole encoded sentence, and at every step build a new post-it, the **context vector**, as a weighted mix of its rows. Big weights on the rows that matter for the next word.
+* The idea of **attention**: keep the `output` matrix, the whole encoded sentence, and at every step build a new post-it, the **context vector**, as a weighted mix of its rows. Big weights on the rows that matter for the next word.
 * Still open: how the decoder computes these weights. That's the left half of the red box, and that's for Episode 02.
 
 
@@ -172,22 +173,79 @@ X = E[ids]                                  # seq_len x emb_dim = (11, 4)
 n_units = 3
 
 W_x = rng.normal(size=(n_units, emb_dim))   # reads the current token
+                                            # n_units x emb_dim = (3, 4)
 W_h = rng.normal(size=(n_units, n_units))   # reads the memory
-b = np.zeros(n_units)
+                                            # n_units x n_units = (3, 3)
+
+b = np.zeros(n_units)                       # 1 x n_units = (1, 3)
 
 h = np.zeros(n_units)                       # empty memory before the first token
+                                            # 1 x n_units = (1, 3)
 outputs = []
 for x in X:                                 # one token at a time, in order
     h = np.tanh(W_x @ x + W_h @ h + b)      # new memory = f(current token, old memory)
     outputs.append(h)
                                             # No output yet. See the next cell below
+
 ```
 
-**Alice:** Wait, let me check the sizes, it's the only way I'll trust this. `x` is one row of `X`, so `emb_dim`. `W_x` is `n_units x emb_dim`, so `W_x @ x` is a vector of `n_units`. Matrix times vector, that's the prerequisite. `h` is `n_units`, `W_h` is `n_units x n_units`, so `W_h @ h` is also `n_units`. I add the two, I squash with `tanh` between -1 and +1, and I get the new `h`, still `n_units`.
+**Alice:** Let me read it out loud. The first block is Episode 00 again: an embedding table `E`, the 11 token ids of our sentence, and `X = E[ids]` picks one row per token. Then `n_units = 3`, two weight matrices drawn at random, `W_x` for the token and `W_h` for the memory, a bias `b` full of zeros, and `h` full of zeros too, because before the first token we remember nothing.
+
+**Bob:** So far, so good.
+
+**Alice:** Then the loop. `for x in X` walks through the rows of `X`, so `x` is one token at a time, in the order of the sentence. The line `h = np.tanh(...)` is the heart of it. And what is this `@`? I've never seen it in Python.
+
+**Bob:** It's the matrix multiplication operator. It has been in Python since version 3.5, and NumPy implements it. `W_x @ x` is exactly the matrix-vector product of the prerequisites, the same thing as `np.matmul(W_x, x)` or `W_x.dot(x)`, just easier to read.
+
+**Alice:** And `*` would not do the job?
+
+**Bob:** No. With NumPy arrays, `*` multiplies element by element. `@` is the "row times column" product we learned at school.
+
+**Alice:** Okay. So that line reads: take the current token, pass it through `W_x`; take the old memory, pass it through `W_h`; add the two plus the bias; squash the whole thing with `tanh`; and that becomes the new memory. Then `outputs.append(h)` keeps a copy of `h`, one per token.
+
+**Bob:** Exactly. One small nuance about the comments: for NumPy, `b` and `h` are plain 1D arrays of shape `(3,)`, not `(1, 3)`. A 1D array is neither a row nor a column, and that's why `W_x @ x` works without any transpose.
+
+**Alice:** Noted. Wait, let me check the sizes, it's the only way I'll trust this. `x` is one row of `X`, so `emb_dim`. `W_x` is `n_units x emb_dim`, so `W_x @ x` is a vector of `n_units`. Matrix times vector, that's the prerequisite. `h` is `n_units`, `W_h` is `n_units x n_units`, so `W_h @ h` is also `n_units`. I add the two, I squash with `tanh` between -1 and +1, and I get the new `h`, still `n_units`.
 
 $$
 h_j = \tanh(W_x\, x_j + W_h\, h_{j-1} + b)
 $$
+
+**Bob:** Two words about `tanh`, since it does the squashing. It's the hyperbolic tangent, an S-shaped curve. It's a cousin of the **logistic function** (the sigmoid): same S shape, but stretched to go from -1 to +1 instead of 0 to 1. Let's draw it:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-6, 6, 500)
+
+plt.plot(x, np.tanh(x), label="tanh(x)")
+plt.axhline(1, color="gray", linestyle="--", label="upper bound = +1")
+plt.axhline(-1, color="gray", linestyle="--", label="lower bound = -1")
+plt.xlabel("x")
+plt.ylabel("tanh(x)")
+plt.title("The hyperbolic tangent")
+plt.grid(True)
+plt.legend()
+plt.show()
+```
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img03a.webp"
+    alt="The hyperbolic tangent - tanh(x)"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The hyperbolic tangent - tanh(x)</figcaption>
+</figure>
+
+**Bob:** Now put your finger anywhere on the x-axis. -6, 0.5, 1000, whatever. Go up or down to the curve: each time, the result $$f(x)$$ is between the lower bound and the upper bound, -1 and +1. Near 0 the curve is almost a straight line, and far away it flattens and sticks to the bounds.
+
+**Alice:** So whatever comes out of `W_x @ x + W_h @ h + b`, even a huge number, `tanh` brings it back between -1 and +1. And since the loop turns 11 times and feeds `h` back into itself, without that squashing the memory could blow up step after step.
+
+**Bob:** That's it. The memory always stays in a box of known size.
+
+**Alice:** Got it.
 
 **Bob:** And $$j$$ is the position in the sentence. $$h_1$$ after `<start>`, $$h_2$$ after `j'`... $$h_{11}$$ after `<end>`.
 
