@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-27 11:57:38
+last_modified_date: 2026-11-27 16:00:25
 ---
 
 
@@ -251,6 +251,15 @@ plt.show()
 
 **Alice:** So `n_units` is the size of the memory. That's the label on the GRU box on the slide: `n_units`.
 
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/img03b.webp"
+    alt="The Embedding block (vocab_size x emb_dim) sends a seq_len x emb_dim matrix to the GRU block, whose memory has n_units values"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The Embedding feeds the GRU, one row (one token) at a time. The memory of the GRU has n_units values.</figcaption>
+</figure>
+
 **Bob:** Yes. Bigger `n_units`, bigger memory. 3 in my toy code, a few hundred in real life.
 
 **Alice:** One thing surprises me. There's only one `W_x` and one `W_h`. They're the same at every step?
@@ -259,13 +268,13 @@ plt.show()
 
 **Alice:** Okay, that's elegant. So why a GRU and not this?
 
-**Bob:** Because this simple version has a bad memory. On long sentences, the beginning fades away. Each step mixes the old `h` with the new token, again and again, and after twenty steps the first words are almost gone. And during training it's even worse: the gradient has to travel back through all the steps, and it gets smaller and smaller on the way. The network can barely learn to remember things from far away.
+**Bob:** Because this simple version has a bad memory. A bit like French students who, in the last PISA assessment, showed they [struggle with texts longer than 400 words](https://colombiaone.com/2026/09/09/reading-comprehension-pisa/){:target="_blank"}. On long sentences, the beginning fades away. Each step mixes the old `h` with the new token, again and again, and after twenty steps the first words are almost gone. And during training it's even worse: the gradient has to travel back through all the steps, and it gets smaller and smaller on the way. The network can barely learn to remember things from far away.
 
 **Alice:** And the GRU fixes that how?
 
 **Bob:** With **gates**. Small switches, computed from the data, that decide at each step how much of the old memory to keep and how much to replace with the new token. That's the "Gated" in GRU. Sometimes it can just say "nothing interesting here, keep the memory as it is".
 
-**Alice:** And that's the tiny drawing inside the box? The green rectangles?
+**Alice:** And that's the tiny drawing inside the box? The light blue rectangles?
 
 **Bob:** Yes, "Update Gate" and "Reset Gate". But honestly, I don't think we need the details to understand attention. From the outside, a GRU does exactly what my loop does: it reads one token, it updates a memory of size `n_units`. It's just better at it.
 
@@ -376,7 +385,7 @@ True
 
 **Alice:** Before the slide... You mean before attention?
 
-**Bob:** Yes. Attention didn't fall from the sky, it fixed something. So there was a "before". *(types on his phone)* Here. 2014, [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215){:target="_blank"}, by Sutskever, Vinyals and Le. People call it **seq2seq**. And the same year, Cho et al. published [almost the same idea](https://arxiv.org/abs/1406.1078){:target="_blank"}. Fun fact: that's the paper where the GRU was introduced.
+**Bob:** Yes. Attention didn't fall from the sky, it fixed something. So there was a "before". *(types on his phone)* Here. 2014, [Sequence to Sequence Learning with Neural Networks](https://arxiv.org/abs/1409.3215){:target="_blank"}, by Sutskever, Vinyals and Le (on right hand side, click on `View PDF`). People call it **seq2seq**. And the same year, Cho et al. published [almost the same idea](https://arxiv.org/abs/1406.1078){:target="_blank"}. Fun fact: that's the paper where the GRU was introduced.
 
 **Alice:** So our GRU and the translation problem were born together. Okay. What's the idea?
 
@@ -406,18 +415,17 @@ True
 
 **Alice:** Okay, now the decoder. How does it write? On the slide, the red part is full of stuff. `W1`, `W2`, `V`, `softmax`, `concat`...
 
-**Bob:** Rule 4. For now we mentally erase everything on the left of the red box: `W1`, `W2`, `+`, `tanh`, `V`, `softmax`, the multiplication, the sum, `concat`. That's the attention part, we keep it for later. What's left?
+**Bob:** Rule 4. For now we mentally erase everything on the left of the red box: `W1`, `W2`, `+`, `tanh`, `V`, `softmax`, the multiplication, the sum. That's the attention part, we keep it for later. What's left?
 
-**Alice:** *(covers half of the slide with her hand)* At the bottom, a red `Embedding`. Above, a `GRU`. Above, `fc Dense`, with `vocab_size` written on it. Then `pred`. And a green wire that goes from `argmax()` all the way down to switch 3.
+**Alice:** *(covers half of the slide with her hand)* At the bottom, a red `Embedding`. Above, a `concat`, but its left input comes from the part under my hand. So for now it just lets the embedding through. Above, a `GRU`. Above, `fc Dense`, with `vocab_size` written on it. Then `pred`. And a green wire that goes from `argmax()` all the way down to switch 3.
 
 <figure style="max-width: 450px; margin: auto; text-align: center;">
-<img
-    src="./assets/img19.webp"
-    alt="The decoder alone, with the attention part erased: the token index 0 goes through the red Embedding (vocab_size, emb_dim), concat, the GRU (n_units), fc Dense and softmax (vocab_size) to pred; a green wire goes from softmax to argmax and back down to switch 3"
+<img src="./assets/img18b.webp"
+    alt="The red part of the original slide with its left half blurred: from the bottom, switch 3 (teacher forcing or inference), the token index 0, the red Embedding (vocab_size, emb_dim), concat (n_units + emb_dim), the GRU (n_units), fc Dense (vocab_size) and pred; a green argmax() wire goes back down to switch 3, and a State exit leaves the GRU on the right"
     style="max-width: 100%; height: auto;"
     loading="lazy"
 />
-<figcaption>The red part with the attention erased (Rule 4): Embedding, GRU, fc Dense, pred, and the green wire back to switch 3.</figcaption>
+<figcaption>The red part of the original slide, with the attention half hidden by Alice's hand (Rule 4).</figcaption>
 </figure>
 
 **Bob:** Let me tell the story of one step and you check the sizes.
@@ -438,11 +446,34 @@ True
 
 **Bob:** Right. A GRU always has two inputs: the current token and the old memory. Without the second one, it starts from zero at every step, and the decoder forgets what it has already written.
 
+**Alice:** Hold on. Then my drawing of the encoder is wrong too. In the blue part, only one wire goes into the GRU: the `seq_len x emb_dim` matrix. Nothing comes from the side.
+
+**Bob:** Good catch. The difference is *who runs the loop*. In the encoder, we give the GRU the whole sentence at once, all 11 rows. The `for` loop is *inside* the box. Look at my code: `h` comes out of one step and goes back into the next one, but it never leaves the loop. The second input is there, it's just a wire that loops back inside the box, so nobody draws it. And before the first token, `h = np.zeros(n_units)`: the starting memory is zero, nobody needs to bring it from outside.
+
+**Alice:** And in the decoder?
+
+**Bob:** In the decoder, we can't give the whole sentence at once. The English sentence doesn't exist yet: the token of step 2 is the prediction of step 1. So the loop is *outside* the GRU. We call the GRU once per token, and at each call we must hand it the memory left by the previous call. That memory comes from outside, so it needs a visible wire. And for the very first call, it's not zero: it's $$s_0$$, the `state` of the encoder.
+
+**Alice:** Loop inside the box, the wire is hidden. Loop outside the box, the wire must be drawn. And on the slide, it's missing.
+
+**Bob:** Exactly.
+
 **Alice:** So the slide is wrong?
 
 **Bob:** Incomplete, I'd say. My guess is that it was drawn from the code of an old TensorFlow tutorial. In that code, the previous memory was given to the attention, but not to the GRU. The drawing is faithful to the code. The code forgot a wire.
 
 **Alice:** Then I'm adding it. In my drawings, the memory of the previous step, $$s_{t-1}$$, goes into the GRU from the side.
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img
+    src="./assets/img19.webp"
+    alt="The decoder redrawn by Alice, attention erased: the token index 0 goes through the red Embedding (vocab_size, emb_dim), concat, the GRU (n_units), fc Dense and softmax (vocab_size) to pred; the previous memory s(t-1) now enters the GRU from the side; a green wire goes from softmax to argmax and back down to switch 3"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The red part redrawn by Alice, attention erased (Rule 4), with the missing wire: the previous memory s(t-1) enters the GRU from the side.</figcaption>
+</figure>
+
 
 **Bob:** Deal. Two inputs, like every GRU.
 
