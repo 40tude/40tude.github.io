@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 09:43:48
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 19:35:34
+last_modified_date: 2026-11-27 10:14:04
 ---
 
 
@@ -29,7 +29,7 @@ last_modified_date: 2026-11-26 19:35:34
 
 
 
-<h2 align="center"><span style="color:#F87115"><b> 🚧 This post is under construction 🚧</b></span></h2>
+<!-- <h2 align="center"><span style="color:#F87115"><b> 🚧 This post is under construction 🚧</b></span></h2> -->
 
 
 
@@ -159,11 +159,15 @@ Not much, really:
 
 
 {: .fortytude}
->This is importatn so let's make sure were are in sync.Multiply a 2 × 3 matrix by a 3 × 1 vector, means multiple a 2 rows, 3 columns matrix by a 3 rows by 1 column vector.:
+>This one matters, so let's make sure we are in sync. Multiplying a $$2 \times 3$$ matrix by a $$3 \times 1$$ vector means multiplying a matrix with 2 rows and 3 columns by a vector with 3 rows and 1 column.
+>
+>Believe it or not, I can never remember which comes first, rows or columns. My trick: on a page, I first have to find the line (the row), then I read the n-th word on that line (the column). Rows first, columns second.
 >
 >$$
 >A=\begin{bmatrix}2&3&0\\ 1&2&-1\end{bmatrix},\quad \mathbf{x}=\begin{bmatrix}2\\ 1\\ 3\end{bmatrix}
 >$$
+>
+>Each entry of the result is the **dot product** of one row of $$A$$ with $$\mathbf{x}$$: multiply element by element, add everything up, and you get a single number. In French we don't say "dot product" but "produit scalaire" (scalar product), which tells exactly what comes out: a scalar.
 >
 >1. First entry ($$y_1$$): $$(2 \times 2) + (3 \times 1) + (0 \times 3) = 4 + 3 + 0 = 7$$
 >2. Second entry ($$y_2$$): $$(1 \times 2) + (2 \times 1) + (-1 \times 3) = 2 + 2 - 3 = 1$$
@@ -534,6 +538,15 @@ print(ids)
 
 **Alice:** One row per token of the vocabulary, then. Row `0` for `<start>`, row `18` for `j'`, row `33` for `code`...
 
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img08a.webp"
+    alt="The WE embedding matrix, vocab_size rows by emb_dim columns: rows 0 (start), 18 (j') and 33 (code) are highlighted, and a lookup arrow copies row 33 out as the vector of code"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The WE matrix: one row per token of the vocabulary, emb_dim numbers per row. The lookup E[33] simply copies row 33.</figcaption>
+</figure>
+
 **Bob:** And each row is a list of `emb_dim` numbers. That's the trick, I think: instead of describing `code` with a single locker number, we describe it with a whole row of numbers.
 
 **Alice:** And what does the box *do* with that matrix?
@@ -592,13 +605,23 @@ $$
 \underbrace{\text{onehot}(33)^\top}_{1 \times vocab\_size} \; \underbrace{E}_{vocab\_size \times emb\_dim} = \underbrace{E_{33}}_{1 \times emb\_dim}
 $$
 
+
+<figure style="max-width: 900px; margin: auto; text-align: center;">
+<img src="./assets/img10a.webp"
+    alt="The one-hot row vector of index 33 times the matrix E gives row 33 of E: the single 1 keeps row 33, every 0 wipes out its row"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>The lookup as a matrix product: onehot(33) transposed (1 x vocab_size) times E (vocab_size x emb_dim) gives E_33 (1 x emb_dim).</figcaption>
+</figure>
+
 So the lookup *is* a matrix product. A very lazy one. And the sizes match: `vocab_size` cancels out, `emb_dim` remains.
 
 **Bob:** And nobody computes it that way, because multiplying thousands of zeros is a waste of time. The lookup gives the same result, faster. In PyTorch it's `nn.Embedding(vocab_size, emb_dim)`, and that's what it does inside.
 
 **Alice:** Fine. Now the real question. In your code, `E` is random. `rng.normal()`. Where do the "good" numbers come from? Who decides that row `33` describes `code`?
 
-**Bob:** Nobody. That's the beautiful part. At the beginning, the matrix is random. Then, during training, its values are adjusted like any other weight of the network. Gradient descent, the loss, all that. If moving row `33` a little bit makes the translation better, it moves.
+**Bob:** Nobody. That's the beautiful part. At the beginning, the matrix is random. Then, during training, its values are adjusted like any other weight of the network. [Gradient descent]({%link docs/09_ml_ai/002_gradient_descent/gradient_descent.md%}), the loss, all that. If moving row `33` a little bit makes the translation better, it moves.
 
 **Alice:** So the embedding is **learned**. It's not a dictionary somebody wrote. It's a table of weights that ends up being useful for the task.
 
@@ -708,6 +731,16 @@ What they have at the end of the episode is a `seq_len x emb_dim` matrix where e
 
 
 
-
-
-
+<figure style="max-width: 560px; margin: auto;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+    <iframe
+    src="https://www.youtube.com/embed/PSs6nxngL6k?start=0"
+    title="Attention for Neural Networks, Clearly Explained"
+    style="position: absolute; inset: 0; width: 100%; height: 100%;"
+    allowfullscreen>
+    </iframe>
+</div>
+<figcaption style="text-align: center;">
+    Attention for Neural Networks, Clearly Explained
+</figcaption>
+</figure>

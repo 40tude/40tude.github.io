@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-26 17:59:45
+last_modified_date: 2026-11-27 10:14:04
 ---
 
 
@@ -788,3 +788,16 @@ And if you need someone to explain it to, you now know two people who would be h
 </figcaption>
 </figure>
 
+
+**Books**
+
+* [Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](https://amzn.eu/d/08QKYbwr){:target="_blank"}. Another version using PyTorch exists (I haven't read it yet).
+
+<figure style="max-width: 450px; margin: auto; text-align: center;">
+<img src="./assets/img23.webp"
+    alt="Cover of Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow, third edition, by Aurelien Geron, with a fire salamander"
+    style="max-width: 100%; height: auto;"
+    loading="lazy"
+/>
+<figcaption>Hands-On Machine Learning with Scikit-Learn, Keras &amp; TensorFlow, Aurélien Géron (3rd edition).</figcaption>
+</figure>
