@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-27 16:14:06
+last_modified_date: 2026-11-27 16:47:49
 ---
 
 
@@ -29,7 +29,7 @@ last_modified_date: 2026-11-27 16:14:06
 
 
 
-<h2 align="center"><span style="color:#F87115"><b> 🚧 This post is under construction 🚧</b></span></h2>
+<!-- <h2 align="center"><span style="color:#F87115"><b> 🚧 This post is under construction 🚧</b></span></h2> -->
 
 
 
@@ -559,9 +559,9 @@ for _ in range(max_len):
 
 **Bob:** Feynman check?
 
-**Alice:** Me again? Fine. The encoder reads the French sentence and summarizes it in one vector, `state`. The decoder starts from that summary and writes the English sentence one token at a time: each token it writes becomes the input of the next step. It stops when it writes `<end>`. The two sentences can have different lengths and different orders.
+**Alice:** Me again? Fine. The encoder reads the French sentence and summarizes it *in one vector*, `state`. The decoder starts from that summary and writes the English sentence one token at a time: each token it writes becomes the input of the next step. It stops when it writes `<end>`. The two sentences can have different lengths and different orders.
 
-**Bob:** Approved. Now... *(taps the arrow in Alice's drawing)* Read your own summary again. "Summarizes it in one vector".
+**Bob:** Approved. Now... *(taps the arrow in Alice's drawing)* Read your own summary again. "Summarizes it *in one vector*".
 
 **Alice:** Yes?
 
