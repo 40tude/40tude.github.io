@@ -14,7 +14,7 @@ parent: "ML & AI"
 math: mathjax
 date:               2026-11-23 12:30:28
 # last_modified_date is updated by tools/hooks/pre-commit
-last_modified_date: 2026-11-27 16:00:25
+last_modified_date: 2026-11-27 16:14:06
 ---
 
 
@@ -484,15 +484,33 @@ self.gru(x) without passing the previous hidden state (hidden only fed the atten
 Verify in the archived tutorial before publishing, or soften Bob's line.
 -->
 
-**Bob:** Then `fc Dense`. A plain dense layer that goes from `n_units` to `vocab_size`, the size of the *English* vocabulary. So we get one score per English token.
+**Alice:** One more thing on my drawing. Above the GRU, two wires: `State`, with `n_units`, leaves the red part, and a vector of `n_units` goes up into `fc Dense`. But where is `output`? In the encoder, the GRU gave us a whole `seq_len x n_units` matrix.
 
-**Alice:** A matrix `vocab_size x n_units` times the vector $$s_1$$. One score for `i`, one for `love`, one for `rust`, one for `table`, one for `banana`... thousands of scores.
+**Bob:** Because the encoder GRU read 11 tokens in one call, so it had 11 memories to give back, one row per token. Here, one call reads *one* token. One token in, one memory out: $$s_1$$, a single row of `n_units`. There is no `seq_len` in a decoder step.
 
-**Bob:** And we turn these scores into probabilities with a softmax: all positive, sum equal to 1. That's `pred` on the slide.
+**Alice:** And `State`? It's also `n_units`.
+
+**Bob:** It's the same vector. Remember the `True` in the encoder: `state` was the last row of `output`. With a single row, the last row *is* the output. So both wires carry $$s_1$$. One goes up, to predict the current token. The other leaves the red part because we need it again: it becomes the $$s_{t-1}$$ of the next step.
+
+**Alice:** So the matrix doesn't exist in the decoder. We could build it by stacking $$s_1$$, $$s_2$$, $$s_3$$... step after step, but nobody needs it: each memory is used right away to predict one token, and then it's passed on.
+
+**Bob:** Exactly. Now `fc Dense`. "fc" means *fully connected*: each of the `vocab_size` outputs is connected to each of the `n_units` inputs. In practice it's one matrix and one bias, like `W_x @ x + b` in my loop, without the `tanh`. Here, the matrix is `vocab_size x n_units`, and `vocab_size` is the size of the *English* vocabulary.
+
+**Alice:** A matrix `vocab_size x n_units` times the vector $$s_1$$. So we get one score per English token. One score for `i`, one for `love`, one for `rust`, one for `table`, one for `banana`... thousands of scores.
+
+**Bob:** Think of it as a jury. One judge per English word, `vocab_size` judges. They all look at the same memory $$s_1$$, the `n_units` numbers. But each judge has their own row of weights, so each one reads the memory in their own way, and gives a score to their word. The judge of `i` gives a high score if the memory looks like "we're at the beginning of a sentence that starts with *je*". Training is what teaches each judge their row.
+
+**Alice:** And with `vocab_size` in the thousands and `n_units` in the hundreds, that's millions of weights.
+
+**Bob:** Yes. It's often the biggest layer of the decoder. Its only job: translate the memory, which is in a language only the network speaks, into one score per English word. Then we turn these scores into probabilities with a softmax: all positive, sum equal to 1. That's `pred` on the slide.
 
 **Alice:** Wait. There's a `softmax` on the slide, but it's in the middle, in the part we just erased.
 
 **Bob:** Yeah, that one belongs to the attention, different story. The softmax of the output is not drawn as a box, it's hidden in `pred`. Don't ask me why, ask whoever drew it.
+
+**Alice:** Not in my drawing. I gave it its own box, right above `fc Dense`: scores in, probabilities out. And that's where the green wire starts.
+
+**Bob:** Good. A box that does something deserves to be drawn.
 
 **Alice:** Fine. And then?
 
